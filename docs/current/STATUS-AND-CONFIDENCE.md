@@ -31,4 +31,4 @@ Only the first two may feed an evidence-gated consumer, and an ambiguous NP may 
 
 Confidence must be derived from verified sources, manually reviewed natural examples, speaker count, unresolved analyses, and code–documentation agreement. Test counts are reported separately.
 
-The active owner is [`../research/CONSTRUCTION-STATUS-REGISTRY-v0.5.184-R2.tsv`](../research/CONSTRUCTION-STATUS-REGISTRY-v0.5.184-R2.tsv). In v0.5.184 the runtime and registry statuses are aligned across all 171 active labels.
+The active owner is one note per construction under [`../../grammar/`](../../grammar/), indexed by [`../../GRAMMAR-INDEX.md`](../../GRAMMAR-INDEX.md). In v0.5.184 the runtime and construction-note statuses are aligned across all 171 active labels. The former wide TSV/JSON registry is frozen under `archive/registry-pre-obsidian-v0.5.184/`.

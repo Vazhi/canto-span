@@ -28,11 +28,16 @@ Reduce ceremony, drift risk, and file bloat without restarting the parser or dis
 - checkpoint-state, recovery-package, and packaging-manifest files are archived;
 - a remote may be added later but is not required for Git history or diffs.
 
-### Phase 2 — Construction notes in Obsidian: next
+### Phase 2 — Construction notes in Obsidian: complete
 
-Create one note per active construction under `grammar/`, mechanically verify the note count against the 171-row registry, and archive the old full-schema registry as historical reference.
+- 171 active labels were exported to 171 notes under `grammar/`;
+- note filenames and frontmatter construction names match exactly;
+- source citations, locators, speaker scope, claims, boundary references, implementation state, blockers, and related-construction links were migrated;
+- the export passed 3,641 mechanical checks;
+- the former wide registries were archived under `archive/registry-pre-obsidian-v0.5.184/`;
+- `grammar/*.md` is now the active authoring-time status owner.
 
-### Phase 3 — Runtime metadata reduction: pending
+### Phase 3 — Runtime metadata reduction: next
 
 Move authoring-time evidence metadata out of `main.js`, retaining parser heuristics and the minimal active-label information required at runtime.
 

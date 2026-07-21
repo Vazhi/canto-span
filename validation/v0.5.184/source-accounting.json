@@ -1,11 +1,11 @@
 {
-  "schema": "canto-span-source-accounting-audit-v4",
-  "checkpoint": "v0.5.184-np-subsystem-r1",
+  "schema": "canto-span-source-accounting-audit-v5",
+  "checkpoint": "v0.5.184-obsidian-registry-migration",
   "runtime_registry_labels": 171,
-  "active_governance_labels": 171,
+  "construction_notes": 171,
   "retired_labels": 10,
-  "total": 16,
-  "passed": 16,
+  "total": 13,
+  "passed": 13,
   "failed": 0,
   "status": "PASS",
   "checks": [
@@ -15,12 +15,12 @@
       "detail": "171"
     },
     {
-      "name": "active governance has 171 labels",
+      "name": "construction notes have 171 labels",
       "pass": true,
       "detail": "171"
     },
     {
-      "name": "runtime exactly equals active governance",
+      "name": "runtime exactly equals construction notes",
       "pass": true
     },
     {
@@ -33,35 +33,16 @@
       "pass": true
     },
     {
-      "name": "legitimacy has 171 active rows",
-      "pass": true,
-      "detail": "171"
-    },
-    {
-      "name": "source accounting has 171 active rows",
-      "pass": true,
-      "detail": "171"
-    },
-    {
-      "name": "legitimacy covers active governance",
+      "name": "all note statuses match runtime",
       "pass": true
     },
     {
-      "name": "source accounting covers active governance",
+      "name": "all source counts match source IDs",
       "pass": true
     },
     {
-      "name": "source accounting statuses match current governance",
+      "name": "every mapped source has a note section",
       "pass": true
-    },
-    {
-      "name": "runtime statuses match current governance",
-      "pass": true
-    },
-    {
-      "name": "re-audit ledger remains 23 rows",
-      "pass": true,
-      "detail": "23"
     },
     {
       "name": "supported_productive remains zero",
@@ -76,7 +57,11 @@
       "pass": true
     },
     {
-      "name": "no active row is promotion eligible",
+      "name": "no note claims productive eligibility",
+      "pass": true
+    },
+    {
+      "name": "frozen wide registry exists",
       "pass": true
     }
   ],

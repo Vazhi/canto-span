@@ -1,0 +1,101 @@
+---
+title: "DesiderativeVP"
+type: "canto-span-construction"
+construction: "DesiderativeVP"
+status: "research_pending"
+confidence: "not_assigned_research_pending"
+claim_layer: "language"
+lane: "LANE-08"
+last_reviewed: "unknown"
+last_status_migrated: "2026-07-21"
+speaker_count: 1
+source_count: 2
+source_ids: ["SRC-LUKE-NANCARROW-1998-AUXILIARIES", "SRC-YIP-MATTHEWS-2000-BASIC"]
+runtime_active: true
+runtime_code_references: 9
+accepted_fixtures: 12
+tags: ["canto-span/grammar", "canto-span/status/research_pending", "canto-span/lane/lane-08"]
+---
+
+# DesiderativeVP
+
+## Plain-language claim
+
+Cantonese may instantiate the structural family represented by DesiderativeVP; exact productivity and boundaries require pattern-specific independent evidence.
+
+This is a linguistic claim only to the extent allowed by the status and evidence below. The runtime label is not assumed to be standard linguistic terminology.
+
+## Current status
+
+- Linguistic status: `research_pending`
+- Linguistic confidence: `not_assigned_research_pending`
+- Current action: `retain_but_quarantine_from_new_grammar_acceptance`
+- Productive acceptance eligible: **no**
+- Last linguistic review: not recorded
+
+## Sources
+
+### SRC-LUKE-NANCARROW-1998-AUXILIARIES
+
+- Citation: [Luke, K. K. and O. T. Nancarrow. 1998. Auxiliary Verbs in Cantonese. In Stephen Matthews (ed.), Studies in Cantonese Linguistics. Hong Kong: Linguistic Society of Hong Kong.](https://lshk.org/wp-content/uploads/2022/11/STUDIES-IN-CANTONESE-LINGUISTICS.pdf)
+- Locator: printed pp. 89-98; PDF pp. 95-104
+- Verification: `VERIFIED_SCHOLARLY_FULL_TEXT_SCAN`
+- What it supports: Both occur as frequent modal auxiliaries, but only 要 also centrally expresses obligation and has productive NP-taking main-verb uses in the inspected analysis.
+- Limit: Do not merge 想 and 要 into one interchangeable want marker.
+
+### SRC-YIP-MATTHEWS-2000-BASIC
+
+- Citation: [Yip, V. and Matthews, S. 2000. Basic Cantonese: A Grammar and Workbook. London/New York: Routledge.](https://culturequote.wordpress.com/wp-content/uploads/2013/03/cantonese-basic.pdf)
+- Locator: Unit 20, printed p. 105; PDF p. 118
+- Verification: `VERIFIED_FULL_TEXT`
+- What it supports: Basic Cantonese gives paired examples of 唔要 and 唔使 with different meanings.
+- Limit: Do not treat 唔使 as compositional 唔 + 使 inside DesiderativeVP.
+
+## Native-speaker review
+
+- Independent speaker records: **1**
+- Scope: `ONE_SPEAKER_SENTENCE_NATURALNESS_ONLY_NOT_ANALYSIS_VALIDATION`
+- Surface judgments: 4 total; 4 accepted; 0 rejected.
+- Structural-analysis validations: 0.
+
+## Negative and boundary cases
+
+- Evidence state: `fixture_level_not_provenance_linked`
+- Executable or review records containing this label:
+  - `test-data/a1-context-status-fixture.tsv`
+  - `test-data/cp021b-lx1-construction-freeze-baseline.json`
+  - `test-data/grammar-claim-provenance-CP021B.json`
+  - `test-data/grammar-claim-provenance-CP021B.tsv`
+  - `test-data/grammar-legitimacy-audit.json`
+  - `test-data/grammar-legitimacy-audit.tsv`
+  - `test-data/native-speaker-naturalness-evidence-v1.json`
+  - `test-data/native-speaker-naturalness-evidence-v1.tsv`
+  - `test-data/pre-intermediate-gold-corpus.tsv`
+  - `test-data/regression-snapshots.json`
+  - `test-data/w17-corpus-semantic-disposition.tsv`
+
+## Implementation state
+
+- Lifecycle: `runtime_referenced_with_accepted_fixtures`
+- Visible/focused tests: `not_assessed_in_current_definition_of_done_review`
+- Render review: `not_assessed_in_current_definition_of_done_review`
+- Held-out evaluation: `NOT_ESTABLISHED`
+- Regression: `not_assessed_in_current_definition_of_done_review`
+- Code–documentation comparison: `pending_current_definition_of_done_line_by_line_review`
+
+## Open questions and blockers
+
+- no explicit external claim-source edge
+- Runtime metadata and current governance agree in v0.5.184.
+- Research question: Which externally documented Cantonese constructions, if any, justify the scope and boundaries currently represented by DesiderativeVP?
+
+## Related constructions
+
+- [[IntentionFrame]]
+- [[PreferenceVP]]
+
+## Migration provenance
+
+- Full pre-migration record: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
+- Status migration date: 2026-07-21.
+- The frozen JSON preserves the former wide schema; this note is the active authoring record.

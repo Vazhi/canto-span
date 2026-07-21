@@ -21,7 +21,9 @@ Do not assume continuity from an earlier conversation unless these checks succee
 2. `docs/current/NOUN-PHRASE-SUBSYSTEM.md`
 3. `docs/current/DOCTRINE.md`
 4. `docs/current/DEFINITION-OF-DONE.md`
-5. `docs/current/INFRASTRUCTURE-MIGRATION.md`
+5. `docs/current/CONSTRUCTION-NOTES.md`
+6. `docs/current/INFRASTRUCTURE-MIGRATION.md`
+7. `GRAMMAR-INDEX.md`
 
 ## Binding state
 
@@ -36,14 +38,15 @@ Do not assume continuity from an earlier conversation unless these checks succee
 
 ## Current substantive task
 
-Continue the shared NP subsystem without broadening construction claims:
+Complete infrastructure migration Phase 3:
 
-1. represent unresolved `啲 A 嘅 N` attachment explicitly;
-2. support nested or complex NP conjuncts compositionally;
-3. define a reviewable lexical-class onboarding path;
-4. connect licensed NP inputs to additional consumers only where this corrects structural assembly.
+1. move authoring-time evidence metadata out of `main.js`;
+2. retain parser heuristics and minimal active-label/runtime status data only;
+3. update audits to read construction notes for evidence and status;
+4. prove parser output and the 545-case regression suite are unchanged;
+5. commit the reduction as a readable diff.
 
-Do not create example-string whitelists.
+Do not resume broad construction expansion before the Phase 4 promotion validator is in place.
 
 ## Save after meaningful work
 

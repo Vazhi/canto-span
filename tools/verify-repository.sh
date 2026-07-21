@@ -13,10 +13,14 @@ required=(
   main.js
   manifest.json
   styles.css
+  GRAMMAR-INDEX.md
+  grammar/PostverbalZoPerfectiveVP.md
   docs/current/00-START-HERE.md
   docs/current/DEFINITION-OF-DONE.md
   docs/current/GIT-WORKFLOW.md
-  docs/research/CONSTRUCTION-STATUS-REGISTRY-v0.5.184-R2.tsv
+  docs/current/INFRASTRUCTURE-MIGRATION.md
+  archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json
+  tools/verify-construction-notes.js
 )
 
 for path in "${required[@]}"; do
@@ -26,9 +30,12 @@ for path in "${required[@]}"; do
   }
 done
 
-printf 'repository=%s\nbranch=%s\ncommit=%s\ntracked_files=%s\nstatus_lines=%s\n' \
+node tools/verify-construction-notes.js >/dev/null
+
+printf 'repository=%s\nbranch=%s\ncommit=%s\ntracked_files=%s\nconstruction_notes=%s\nstatus_lines=%s\n' \
   "$repo" \
   "$(git branch --show-current)" \
   "$(git rev-parse HEAD)" \
   "$(git ls-files | wc -l | tr -d ' ')" \
+  "$(find grammar -maxdepth 1 -type f -name '*.md' | wc -l | tr -d ' ')" \
   "$(git status --porcelain | wc -l | tr -d ' ')"

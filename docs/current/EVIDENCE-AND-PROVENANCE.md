@@ -47,9 +47,12 @@ Prospective held-out testing detects overfitting to visible cases. It is an impl
 
 ## Current records
 
-- status registry: [`../research/CONSTRUCTION-STATUS-REGISTRY-v0.5.184-R2.tsv`](../research/CONSTRUCTION-STATUS-REGISTRY-v0.5.184-R2.tsv)
-- re-audit ledger: [`../research/CONSTRUCTION-EVIDENCE-REAUDIT-LEDGER-v0.5.184-R1.tsv`](../research/CONSTRUCTION-EVIDENCE-REAUDIT-LEDGER-v0.5.184-R1.tsv)
-- source accounting: [`../research/ACTIVE-SOURCE-ACCOUNTING-v0.5.184-R1.tsv`](../research/ACTIVE-SOURCE-ACCOUNTING-v0.5.184-R1.tsv)
+- construction evidence and status: one note per active label under [`../../grammar/`](../../grammar/)
+- construction index: [`../../GRAMMAR-INDEX.md`](../../GRAMMAR-INDEX.md)
+- source registers, source matrices, and detailed research records: [`../research/`](../research/)
 - speaker queue: [`../research/SECOND-SPEAKER-REVIEW-QUEUE-v0.5.184-R1.tsv`](../research/SECOND-SPEAKER-REVIEW-QUEUE-v0.5.184-R1.tsv)
 - second-speaker freeze: [`../research/SECOND-SPEAKER-WORK-FREEZE-2026-07-21.md`](../research/SECOND-SPEAKER-WORK-FREEZE-2026-07-21.md)
 - current provenance: [`../research/CURRENT-RESEARCH-PROVENANCE.md`](../research/CURRENT-RESEARCH-PROVENANCE.md)
+- frozen pre-migration wide registry: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
+
+The construction notes are the authoring-time status owner. Source registers and detailed research files remain supporting evidence, not parallel status registries.

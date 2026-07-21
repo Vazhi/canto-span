@@ -1,5 +1,14 @@
 # Changelog
 
+## Infrastructure migration Phase 2 — Obsidian construction notes
+
+- Exported all 171 active runtime labels to one note each under `grammar/`.
+- Migrated status, confidence, plain-language claims, source citations and locators, speaker scope, boundary references, implementation state, blockers, and same-family links.
+- Made `grammar/*.md` the active authoring-time status owner and added `GRAMMAR-INDEX.md`.
+- Froze the former wide status, source-accounting, and re-audit registries under `archive/registry-pre-obsidian-v0.5.184/`.
+- Added deterministic migration and validation tools; the note export passes 3,641 checks and exactly matches the 171-label runtime registry.
+- Changed no parser, lexicon, Jyutping, construction status, or runtime behavior.
+
 ## v0.5.184 — truthful runtime metadata and compositional NP first slice
 
 - Synchronized all 171 active runtime statuses with current governance; current `supported_productive` is 0.

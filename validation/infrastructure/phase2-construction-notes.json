@@ -1,0 +1,17 @@
+{
+  "schema": "canto-span-construction-notes-validation-v1",
+  "runtime_version": "v0.5.184",
+  "construction_notes": 171,
+  "status_counts": {
+    "research_pending": 58,
+    "unsupported_generalization": 87,
+    "parser_heuristic": 21,
+    "lexicalized_only": 3,
+    "provisional_reaudit": 2
+  },
+  "total": 3641,
+  "passed": 3641,
+  "failed": 0,
+  "status": "PASS",
+  "failures": []
+}

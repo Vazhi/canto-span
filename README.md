@@ -20,6 +20,8 @@ Validation at the baseline commit:
 
 Read [`docs/current/00-START-HERE.md`](docs/current/00-START-HERE.md).
 
+Browse active construction records through [`GRAMMAR-INDEX.md`](GRAMMAR-INDEX.md).
+
 For repository restoration and export, read [`docs/current/GIT-WORKFLOW.md`](docs/current/GIT-WORKFLOW.md).
 
 The sandbox copy is temporary. Keep the newest complete repository ZIP, including `.git/`, in a folder you control.

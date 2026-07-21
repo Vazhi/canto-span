@@ -1,0 +1,125 @@
+{
+  "schema": "canto-span-current-focused-result-v8",
+  "checkpoint": "v0.5.184-obsidian-registry-migration",
+  "parser_behavior_changed": false,
+  "registry_owner": "grammar/*.md",
+  "status_counts": {
+    "research_pending": 58,
+    "unsupported_generalization": 87,
+    "parser_heuristic": 21,
+    "lexicalized_only": 3,
+    "provisional_reaudit": 2
+  },
+  "total": 25,
+  "passed": 25,
+  "failed": 0,
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "required file: docs/current/00-START-HERE.md",
+      "pass": true
+    },
+    {
+      "name": "required file: docs/current/DOCTRINE.md",
+      "pass": true
+    },
+    {
+      "name": "required file: docs/current/DEFINITION-OF-DONE.md",
+      "pass": true
+    },
+    {
+      "name": "required file: docs/current/STATUS-AND-CONFIDENCE.md",
+      "pass": true
+    },
+    {
+      "name": "required file: docs/current/EVIDENCE-AND-PROVENANCE.md",
+      "pass": true
+    },
+    {
+      "name": "required file: docs/current/WORKFLOW.md",
+      "pass": true
+    },
+    {
+      "name": "required file: docs/current/VALIDATION-AND-ACCEPTANCE.md",
+      "pass": true
+    },
+    {
+      "name": "required file: docs/current/PROJECT-STATE.md",
+      "pass": true
+    },
+    {
+      "name": "required file: docs/current/GIT-WORKFLOW.md",
+      "pass": true
+    },
+    {
+      "name": "required file: docs/current/INFRASTRUCTURE-MIGRATION.md",
+      "pass": true
+    },
+    {
+      "name": "required file: GRAMMAR-INDEX.md",
+      "pass": true
+    },
+    {
+      "name": "required file: archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json",
+      "pass": true
+    },
+    {
+      "name": "required file: test-data/grammar-legitimacy-audit.tsv",
+      "pass": true
+    },
+    {
+      "name": "required file: test-data/grammar-legitimacy-audit.json",
+      "pass": true
+    },
+    {
+      "name": "171 construction notes",
+      "pass": true,
+      "detail": "171"
+    },
+    {
+      "name": "supported count zero",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "two provisional_reaudit",
+      "pass": true,
+      "detail": "2"
+    },
+    {
+      "name": "ordinary provisional zero",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "research_pending 58",
+      "pass": true,
+      "detail": "58"
+    },
+    {
+      "name": "project state names grammar notes as registry",
+      "pass": true
+    },
+    {
+      "name": "Definition of Done controls supported_productive",
+      "pass": true
+    },
+    {
+      "name": "Definition of Done controls provisional",
+      "pass": true
+    },
+    {
+      "name": "Definition of Done requires two speakers",
+      "pass": true
+    },
+    {
+      "name": "doctrine rejects raw corpus counts",
+      "pass": true
+    },
+    {
+      "name": "current docs do not name archived wide registries",
+      "pass": true
+    }
+  ],
+  "failures": []
+}

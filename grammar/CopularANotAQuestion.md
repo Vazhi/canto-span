@@ -1,0 +1,104 @@
+---
+title: "CopularANotAQuestion"
+type: "canto-span-construction"
+construction: "CopularANotAQuestion"
+status: "unsupported_generalization"
+confidence: "unsupported"
+claim_layer: "language"
+lane: "LANE-07"
+last_reviewed: "unknown"
+last_status_migrated: "2026-07-21"
+speaker_count: 0
+source_count: 3
+source_ids: ["SRC-LAW-2001-ANOTA", "SRC-LI-2017-ANOTA", "SRC-YIP-1988-NEGATION"]
+runtime_active: true
+runtime_code_references: 5
+accepted_fixtures: 0
+tags: ["canto-span/grammar", "canto-span/status/unsupported_generalization", "canto-span/lane/lane-07"]
+---
+
+# CopularANotAQuestion
+
+## Plain-language claim
+
+Cantonese may instantiate the structural family represented by CopularANotAQuestion; exact productivity and boundaries require pattern-specific independent evidence.
+
+This is a linguistic claim only to the extent allowed by the status and evidence below. The runtime label is not assumed to be standard linguistic terminology.
+
+## Current status
+
+- Linguistic status: `unsupported_generalization`
+- Linguistic confidence: `unsupported`
+- Current action: `quarantine_unexercised_runtime_path`
+- Productive acceptance eligible: **no**
+- Last linguistic review: not recorded
+
+## Sources
+
+### SRC-LAW-2001-ANOTA
+
+- Citation: [Law, Ann. 2001. A-not-A Questions in Cantonese. UCL Working Papers in Linguistics 13: 295-318.](https://www.phon.ucl.ac.uk/publications/WPL/01papers/law.pdf)
+- Locator: pp. 315-317, discussion around examples (57)-(65)
+- Verification: `VERIFIED_FULL_TEXT`
+- What it supports: Law argues against analyses that treat the form as a special emphatic/yes-no construction and proposes ordinary copular A-not-A.
+- Limit: Do not present the copular A-not-A analysis as settled consensus.
+
+### SRC-LI-2017-ANOTA
+
+- Citation: [Li, Clare. 2017. The Syntactic and Pragmatic Properties of A-not-A Question in Chinese. MA thesis, University of Canterbury.](https://ir.canterbury.ac.nz/items/0764332d-7d53-44d8-a034-a0e316f2145f)
+- Locator: PDF pp. 52-55 and methodology pp. 9, 47-49
+- Verification: `VERIFIED_FULL_TEXT`
+- What it supports: Li discusses copular A-not-A alternatives but reports no actual Cantonese 係唔係 token in the three-film sample, which also contains 係咪/tag-like alternatives.
+- Limit: Do not interpret absence from three films as evidence that 係唔係 is rare, unacceptable, or absent from Cantonese.
+
+### SRC-YIP-1988-NEGATION
+
+- Citation: [Yip, Moira. 1988. Negation in Cantonese as a Lexical Rule. Bulletin of the Institute of History and Philology 59: 449-477.](https://www11.ihp.sinica.edu.tw/storage/w2_file/3407pXasnae.pdf)
+- Locator: p. 449 abstract; discussion of suppletive 有/冇
+- Verification: `VERIFIED_FULL_TEXT`
+- What it supports: Yip’s account distinguishes ordinary 唔-negation from the special suppletive negative of 有, supporting a boundary between 係唔係 and 有冇 families.
+- Limit: Do not infer a complete answer-grammar or response-generation system from this lexical observation.
+
+## Native-speaker review
+
+- Independent speaker records: **0**
+- Scope: `NOT_ESTABLISHED`
+- Surface judgments: 0 total; 0 accepted; 0 rejected.
+- Structural-analysis validations: 0.
+
+## Negative and boundary cases
+
+- Evidence state: `none_recorded`
+- Executable or review records containing this label:
+  - `test-data/grammar-claim-provenance-CP021B.json`
+  - `test-data/grammar-claim-provenance-CP021B.tsv`
+  - `test-data/grammar-legitimacy-audit.json`
+  - `test-data/grammar-legitimacy-audit.tsv`
+  - `test-data/pre-intermediate-gold-corpus.tsv`
+
+## Implementation state
+
+- Lifecycle: `runtime_referenced_without_accepted_fixtures`
+- Visible/focused tests: `not_assessed_in_current_definition_of_done_review`
+- Render review: `not_assessed_in_current_definition_of_done_review`
+- Held-out evaluation: `NOT_ESTABLISHED`
+- Regression: `not_assessed_in_current_definition_of_done_review`
+- Code–documentation comparison: `pending_current_definition_of_done_line_by_line_review`
+
+## Open questions and blockers
+
+- no explicit external claim-source edge
+- Runtime metadata and current governance agree in v0.5.184.
+- Research question: Which externally documented Cantonese constructions, if any, justify the scope and boundaries currently represented by CopularANotAQuestion?
+
+## Related constructions
+
+- [[ANotAQuestion]]
+- [[AcceptabilityANotA]]
+- [[ModalANotAQuestion]]
+
+## Migration provenance
+
+- Full pre-migration record: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
+- Status migration date: 2026-07-21.
+- The frozen JSON preserves the former wide schema; this note is the active authoring record.

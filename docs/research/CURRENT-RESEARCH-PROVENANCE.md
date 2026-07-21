@@ -15,12 +15,13 @@
 
 ## Current evidence records
 
-- [`CONSTRUCTION-EVIDENCE-REAUDIT-LEDGER-v0.5.184-R1.tsv`](CONSTRUCTION-EVIDENCE-REAUDIT-LEDGER-v0.5.184-R1.tsv)
+- active construction records: [`../../GRAMMAR-INDEX.md`](../../GRAMMAR-INDEX.md) and `grammar/*.md`
 - [`SECOND-SPEAKER-REVIEW-QUEUE-v0.5.184-R1.tsv`](SECOND-SPEAKER-REVIEW-QUEUE-v0.5.184-R1.tsv)
 - [`SECOND-SPEAKER-WORK-FREEZE-2026-07-21.md`](SECOND-SPEAKER-WORK-FREEZE-2026-07-21.md)
-- [`ACTIVE-SOURCE-ACCOUNTING-v0.5.184-R1.tsv`](ACTIVE-SOURCE-ACCOUNTING-v0.5.184-R1.tsv)
-- [`CONSTRUCTION-STATUS-REGISTRY-v0.5.184-R2.tsv`](CONSTRUCTION-STATUS-REGISTRY-v0.5.184-R2.tsv)
 - [`RETIRED-CONSTRUCTION-ARCHIVE-v0.5.183-R1.tsv`](RETIRED-CONSTRUCTION-ARCHIVE-v0.5.183-R1.tsv)
+- frozen pre-migration registry: `../../archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
+
+Source registers, matrices, and detailed review files in this directory support the construction notes but do not independently own status.
 
 ## Postverbal `咗` result
 
@@ -34,7 +35,7 @@ The earlier three-natural-attestation claim was withdrawn. Current reviewed evid
 
 ## Current implementation priority
 
-The bounded compositional NP first slice is implemented and independently tested. The next NP work is to represent unresolved `啲 A 嘅 N` attachment explicitly, support nested or structurally complex conjuncts without string enumeration, and connect licensed NP spans to additional object-taking components without changing their linguistic status.
+Infrastructure migration Phase 2 is complete. The next project task is Phase 3: remove authoring-time evidence metadata from `main.js`, retain minimal runtime label data and parser logic, and prove parser output is unchanged. Further NP expansion is deferred until the mechanical promotion validator is in place.
 
 ## Frozen work
 

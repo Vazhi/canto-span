@@ -11,18 +11,21 @@
 7. `WORKFLOW.md` — execution sequence.
 8. `VALIDATION-AND-ACCEPTANCE.md` — validation and dispositions.
 9. `GIT-WORKFLOW.md` — repository, export, and restore rules.
-10. `INFRASTRUCTURE-MIGRATION.md` — migration phases and current phase state.
-11. Root `README.md` and `HANDOFF.md` — concise entry and resume pointers.
-12. `docs/research/` and `test-data/` — evidence and executable records.
-13. `archive/` — historical material only.
+10. `CONSTRUCTION-NOTES.md` — construction-note schema and ownership rules.
+11. `INFRASTRUCTURE-MIGRATION.md` — migration phases and current phase state.
+12. `grammar/*.md` and root `GRAMMAR-INDEX.md` — active construction status and evidence records.
+13. Root `README.md` and `HANDOFF.md` — concise entry and resume pointers.
+14. `docs/research/` and `test-data/` — supporting evidence and executable records.
+15. `archive/` — historical material only.
 
 ## Current machine-readable owners
 
-- combined status: `docs/research/CONSTRUCTION-STATUS-REGISTRY-v0.5.184-R2.tsv`
-- status summary: `docs/research/CONSTRUCTION-STATUS-SUMMARY-v0.5.184-R2.json`
-- grammar governance: `test-data/grammar-legitimacy-audit.json`
+- construction status and evidence: `grammar/*.md` frontmatter and body records
+- construction index: `GRAMMAR-INDEX.md`
+- grammar governance runtime snapshot: `test-data/grammar-legitimacy-audit.json`
 - NP matrix: `test-data/np-subsystem-v0.5.184.json`
 - regression snapshots: `test-data/regression-snapshots.json`
+- frozen pre-migration wide registry: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
 
 ## Conflict rules
 

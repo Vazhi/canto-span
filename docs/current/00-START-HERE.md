@@ -23,11 +23,12 @@ Read in this order:
 8. [`VALIDATION-AND-ACCEPTANCE.md`](VALIDATION-AND-ACCEPTANCE.md)
 9. [`GIT-WORKFLOW.md`](GIT-WORKFLOW.md)
 10. [`INFRASTRUCTURE-MIGRATION.md`](INFRASTRUCTURE-MIGRATION.md)
-11. [`DOCUMENTATION-MAP.md`](DOCUMENTATION-MAP.md)
-12. [`../research/CONSTRUCTION-STATUS-REGISTRY-v0.5.184-R2.tsv`](../research/CONSTRUCTION-STATUS-REGISTRY-v0.5.184-R2.tsv)
+11. [`CONSTRUCTION-NOTES.md`](CONSTRUCTION-NOTES.md)
+12. [`DOCUMENTATION-MAP.md`](DOCUMENTATION-MAP.md)
+13. [`../../GRAMMAR-INDEX.md`](../../GRAMMAR-INDEX.md)
 
 ## Interpretation rule
 
-Current authority is `docs/current/`, root `README.md` and `HANDOFF.md`, the v0.5.184 status registry, and the Git history. Research records are evidence, not current instruction. Archived material is historical only.
+Current authority is `docs/current/`, the 171 notes under `grammar/`, root `README.md` and `HANDOFF.md`, and the Git history. Research records are evidence, not current instruction. Archived material is historical only.
 
 Code is ground truth for parser behavior. Current documentation is ground truth for governance and intended design. A mismatch blocks release rather than being documented away.

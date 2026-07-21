@@ -1,0 +1,107 @@
+---
+title: "IntransitiveVP"
+type: "canto-span-construction"
+construction: "IntransitiveVP"
+status: "unsupported_generalization"
+confidence: "unsupported"
+claim_layer: "language"
+lane: "LANE-10"
+last_reviewed: "unknown"
+last_status_migrated: "2026-07-21"
+speaker_count: 1
+source_count: 3
+source_ids: ["SRC-ALDERETE-ETAL-2017-SYNOPSIS", "SRC-YIP-MATTHEWS-2000-SYNTACTIC-TRANSFER", "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"]
+runtime_active: true
+runtime_code_references: 3
+accepted_fixtures: 4
+tags: ["canto-span/grammar", "canto-span/status/unsupported_generalization", "canto-span/lane/lane-10"]
+---
+
+# IntransitiveVP
+
+## Plain-language claim
+
+Cantonese may instantiate the structural family represented by IntransitiveVP; exact productivity and boundaries require pattern-specific independent evidence.
+
+This is a linguistic claim only to the extent allowed by the status and evidence below. The runtime label is not assumed to be standard linguistic terminology.
+
+## Current status
+
+- Linguistic status: `unsupported_generalization`
+- Linguistic confidence: `unsupported`
+- Current action: `quarantine_and_research_before_retention`
+- Productive acceptance eligible: **no**
+- Last linguistic review: not recorded
+
+## Sources
+
+### SRC-ALDERETE-ETAL-2017-SYNOPSIS
+
+- Citation: [Alderete, John, Queenie Chan, Macarius Chan, Gloria Fan, and Olivia Nickel. 2017. Cantonese Grammar Synopsis.](https://www.sfu.ca/~alderete/pubs/aldereteEtal2017_cantgsyn2017-10-31.pdf)
+- Locator: printed p. 27, auxiliary definition
+- Verification: `VERIFIED_FULL_TEXT`
+- What it supports: The synopsis notes that a clear main verb may be dropped with auxiliary support.
+- Limit: Do not extend this auxiliary property to ordinary lexical verbs without evidence.
+
+### SRC-YIP-MATTHEWS-2000-SYNTACTIC-TRANSFER
+
+- Citation: [Yip, Virginia, and Stephen Matthews. 2000. Syntactic transfer in a Cantonese–English bilingual child. Bilingualism: Language and Cognition 3(3):193-208. DOI: 10.1017/S136672890000033X.](https://talkbank.org/childes/access/Biling/0docs/Yip2000.pdf)
+- Locator: article pp. 195-196 and p. 201
+- Verification: `VERIFIED_FULL_TEXT_AND_OFFICIAL_PUBLISHER_METADATA`
+- What it supports: The paper explicitly conditions adult Cantonese null objects on prior mention or contextual recoverability and gives 放(喺)呢度 and 要買 examples.
+- Limit: Do not use mere object absence as sufficient evidence for either null-object or intransitive analysis.
+
+### SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE
+
+- Citation: [鄭定歐、張勵妍、高石英. 2021. 粵語（香港話）教程（修訂版）（錄音掃碼即聽版）. 香港: 三聯書店.](https://www.jointpublishing.com/publishing/%E7%B2%B5%E8%AA%9E%EF%BC%88%E9%A6%99%E6%B8%AF%E8%A9%B1%EF%BC%89%E6%95%99%E7%A8%8B/)
+- Locator: printed p. 219 and associated discussion prompt
+- Verification: `VERIFIED_USER_PROVIDED_FULL_TEXT_AND_OFFICIAL_PUBLISHER_METADATA`
+- What it supports: The course asks whether the learner agrees with a stated proposition and presents agreement responses in that discourse frame.
+- Limit: Do not infer that every bare 同意 is licensed without context or that the textbook establishes one formal complement structure.
+
+## Native-speaker review
+
+- Independent speaker records: **1**
+- Scope: `ONE_SPEAKER_SENTENCE_NATURALNESS_ONLY_NOT_ANALYSIS_VALIDATION`
+- Surface judgments: 1 total; 1 accepted; 0 rejected.
+- Structural-analysis validations: 0.
+
+## Negative and boundary cases
+
+- Evidence state: `fixture_level_not_provenance_linked`
+- Executable or review records containing this label:
+  - `review-packets/cp022-evaluation/EP-CP022-I1A-I02-D1/development-baseline.json`
+  - `test-data/cp021b-lx1-construction-freeze-baseline.json`
+  - `test-data/grammar-claim-provenance-CP021B.json`
+  - `test-data/grammar-claim-provenance-CP021B.tsv`
+  - `test-data/grammar-legitimacy-audit.json`
+  - `test-data/grammar-legitimacy-audit.tsv`
+  - `test-data/native-speaker-naturalness-evidence-v1.json`
+  - `test-data/native-speaker-naturalness-evidence-v1.tsv`
+  - `test-data/regression-snapshots.json`
+
+## Implementation state
+
+- Lifecycle: `runtime_referenced_with_accepted_fixtures`
+- Visible/focused tests: `not_assessed_in_current_definition_of_done_review`
+- Render review: `not_assessed_in_current_definition_of_done_review`
+- Held-out evaluation: `NOT_ESTABLISHED`
+- Regression: `not_assessed_in_current_definition_of_done_review`
+- Code–documentation comparison: `pending_current_definition_of_done_line_by_line_review`
+
+## Open questions and blockers
+
+- no explicit external claim-source edge
+- Runtime metadata and current governance agree in v0.5.184.
+- Research question: Which externally documented Cantonese constructions, if any, justify the scope and boundaries currently represented by IntransitiveVP?
+
+## Related constructions
+
+- [[ProductiveVO]]
+- [[TransitiveVP]]
+
+## Migration provenance
+
+- Full pre-migration record: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
+- Status migration date: 2026-07-21.
+- The frozen JSON preserves the former wide schema; this note is the active authoring record.

@@ -28,3 +28,7 @@ Current entry points:
 - `CP026-P1-RUL01-R1-REAUDIT-CHECKPOINT.md`
 
 When any research record conflicts with current doctrine or state, follow `../current/`.
+
+## Active construction registry
+
+Per-construction status and evidence now live in `grammar/*.md`. Files in this directory provide supporting source, corpus, and research detail; they are not a parallel status owner. The pre-migration wide registry is frozen under `archive/registry-pre-obsidian-v0.5.184/`.

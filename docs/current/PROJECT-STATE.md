@@ -12,7 +12,7 @@
 - second-speaker work: **frozen; requirement retained**
 - DEMO01 promotion track: **abandoned**
 
-The canonical combined registry is [`../research/CONSTRUCTION-STATUS-REGISTRY-v0.5.184-R2.tsv`](../research/CONSTRUCTION-STATUS-REGISTRY-v0.5.184-R2.tsv).
+The canonical construction registry is the 171-note collection under [`../../grammar/`](../../grammar/), indexed by [`../../GRAMMAR-INDEX.md`](../../GRAMMAR-INDEX.md).
 
 | Linguistic status | Count |
 |---|---:|
@@ -89,6 +89,10 @@ The DEMO01 promotion, render, and held-out track is abandoned. Its historical vi
 
 Git history is now the authoritative change record. The baseline commit preserves the complete v0.5.184 tree before migration. Checkpoint-state files, recovery-package manifests, and combined recovery-package tooling are archived. Full working-copy exports must include `.git/` and be stored outside the sandbox.
 
+## Infrastructure migration state
+
+Phase 2 is complete. The active registry now consists of 171 Obsidian construction notes. The former wide status, source-accounting, and re-audit tables are frozen under `archive/registry-pre-obsidian-v0.5.184/`.
+
 ## Next action
 
-Complete infrastructure migration Phase 2: mechanically export one Obsidian construction note per active registry row, verify an exact count of 171, and preserve the full old-schema registry as historical reference. Normal NP work may resume after the mechanical promotion validator is in place.
+Complete infrastructure migration Phase 3: remove authoring-time evidence metadata from `main.js`, retain only runtime parser logic and minimal active-label information, and prove that parser behavior is unchanged. Phase 4 will then enforce status promotion mechanically from construction-note frontmatter.
