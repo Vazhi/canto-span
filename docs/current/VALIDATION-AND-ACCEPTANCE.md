@@ -36,9 +36,22 @@ Before integration, the NP subsystem must pass:
 
 Making the motivating perfective examples pass is not sufficient.
 
-## Productive promotion
+## Mechanical promotion gate
 
-A construction may become `supported_productive` only after every Definition-of-Done item and every applicable implementation check passes. No prior acceptance is exempt. Second-speaker work is frozen, so no construction requiring that missing review can currently be promoted.
+Before any status change is accepted, run:
+
+```bash
+node tools/test-promotion-gate.js
+node tools/enforce-promotion-rules.js
+```
+
+The gate reads the construction-note frontmatter and fails closed:
+
+- `supported_productive` requires at least one verified source, two independent speakers, drafted and executable passing negative cases, reviewed corpus hits when corpus evidence is used, exact code-document reconciliation, independent evidence beyond internal tests, and separate implementation/linguistic reporting;
+- `provisional` requires at least one verified source, one independent speaker, drafted negative cases, independent evidence beyond internal tests, and a plain-language claim;
+- every other current status is non-promoted by default.
+
+A construction may become `supported_productive` only after every Definition-of-Done item and every applicable implementation check passes. No prior acceptance is exempt. Second-speaker work is frozen, so no construction can currently satisfy a missing two-speaker requirement.
 
 ## Dispositions
 

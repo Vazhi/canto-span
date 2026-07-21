@@ -10,6 +10,17 @@ last_reviewed: "unknown"
 last_status_migrated: "2026-07-21"
 speaker_count: 0
 source_count: 3
+verified_source_count: 3
+independent_speaker_count: 0
+negative_cases_drafted: true
+negative_tests_executable: false
+negative_tests_passing: false
+corpus_evidence_used: false
+corpus_hits_reviewed: false
+code_document_reconciled: false
+implementation_validation_separate: true
+independent_evidence_beyond_internal_tests: true
+promotion_gate_version: "v1"
 source_ids: ["SRC-ALDERETE-ETAL-2017-SYNOPSIS", "SRC-TSUNO-2021-VOICE-TRANSITIVITY", "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"]
 runtime_active: true
 runtime_code_references: 20

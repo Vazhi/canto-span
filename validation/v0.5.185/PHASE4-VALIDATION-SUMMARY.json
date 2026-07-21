@@ -1,0 +1,60 @@
+{
+  "schema": "canto-span-infrastructure-phase4-validation-v1",
+  "runtime_version": "0.5.185",
+  "phase": "mechanical_promotion_validation",
+  "runtime_changed": false,
+  "status": "PASS",
+  "promotion_gate": {
+    "construction_notes": 171,
+    "gate_counts": {
+      "quarantined": 171
+    },
+    "promoted_status_records": 0,
+    "eligible_promoted_status_records": 0,
+    "failed": 0
+  },
+  "focused_gate_tests": {
+    "passed": 8,
+    "total": 8,
+    "failed": 0
+  },
+  "construction_notes": {
+    "passed": 6377,
+    "total": 6377,
+    "failed": 0
+  },
+  "source_accounting": {
+    "passed": 13,
+    "total": 13,
+    "failed": 0
+  },
+  "claim_provenance": {
+    "passed": 304,
+    "total": 304,
+    "failed": 0
+  },
+  "documentation": {
+    "broken_local_links": 0,
+    "status": "PASS"
+  },
+  "np_subsystem": {
+    "passed": 43,
+    "total": 43,
+    "failed": 0
+  },
+  "regression": {
+    "passed": 545,
+    "total": 545,
+    "failed": 0
+  },
+  "semantic_acceptance": {
+    "passed": 15,
+    "total": 15,
+    "failed": 0
+  },
+  "structural_topology": {
+    "passed": 545,
+    "total": 545,
+    "failed": 0
+  }
+}

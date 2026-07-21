@@ -21,9 +21,10 @@ Do not assume continuity from an earlier conversation unless these checks succee
 2. `docs/current/NOUN-PHRASE-SUBSYSTEM.md`
 3. `docs/current/DOCTRINE.md`
 4. `docs/current/DEFINITION-OF-DONE.md`
-5. `docs/current/CONSTRUCTION-NOTES.md`
-6. `docs/current/INFRASTRUCTURE-MIGRATION.md`
-7. `GRAMMAR-INDEX.md`
+5. `docs/current/PROMOTION-GATE.md`
+6. `docs/current/CONSTRUCTION-NOTES.md`
+7. `docs/current/INFRASTRUCTURE-MIGRATION.md`
+8. `GRAMMAR-INDEX.md`
 
 ## Binding state
 
@@ -39,17 +40,15 @@ Do not assume continuity from an earlier conversation unless these checks succee
 
 ## Current substantive task
 
-Complete infrastructure migration Phase 4:
+Begin infrastructure migration Phase 5:
 
-1. read status, sources, speaker count, and boundaries from `grammar/*.md`;
-2. enforce the binding Definition of Done mechanically;
-3. fail any unsupported promotion before it can ship;
-4. keep the runtime independent of authoring evidence metadata;
-5. add focused tests for both accepted and rejected status transitions.
+1. define one standard test directory and file format per active construction;
+2. migrate active positive and boundary cases mechanically without deleting historical fixtures;
+3. provide one command for the standard construction suite;
+4. keep linguistic promotion controlled by `tools/enforce-promotion-rules.js`;
+5. avoid turning historical render-review documents into active test authority.
 
-Phase 3 is complete. `main.js` contains parser logic and the active construction-label registry only. The 545-case equivalence check confirms unchanged structural behavior from v0.5.184.
-
-Do not resume broad construction expansion before the Phase 4 promotion validator is in place.
+Phase 4 is complete. All 171 notes carry explicit promotion-evidence fields, the focused promotion-gate suite passes 8/8, and every current status is non-promoted. `main.js` remains independent of authoring evidence metadata.
 
 ## Save after meaningful work
 

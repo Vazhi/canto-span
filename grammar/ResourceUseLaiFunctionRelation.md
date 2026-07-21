@@ -10,6 +10,17 @@ last_reviewed: "2026-07-21"
 last_status_migrated: "2026-07-21"
 speaker_count: 0
 source_count: 5
+verified_source_count: 5
+independent_speaker_count: 0
+negative_cases_drafted: true
+negative_tests_executable: false
+negative_tests_passing: false
+corpus_evidence_used: false
+corpus_hits_reviewed: false
+code_document_reconciled: false
+implementation_validation_separate: true
+independent_evidence_beyond_internal_tests: true
+promotion_gate_version: "v1"
 source_ids: ["SRC-CCO-LAICHIWO-VILLAGE-HOUSE", "SRC-CHEUNG-2018-LAI", "SRC-CHOR-2018-DIRECTIONAL-PARTICLES", "SRC-HKMEMORY-SHAPU-ORAL-HISTORY", "SRC-WONG-2023-LSA"]
 runtime_active: true
 runtime_code_references: 5

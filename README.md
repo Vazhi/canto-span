@@ -11,7 +11,8 @@ This repository is the canonical project working tree for the v0.5.185 baseline 
 - `supported_productive`: **0**
 - prior accepted constructions under re-audit: **2**
 - second-speaker work: **frozen; requirement retained**
-- current migration focus: **mechanical promotion validation from construction notes**
+- promotion gate: **active; 171/171 notes checked, 0 promoted statuses**
+- current migration focus: **standard executable construction tests**
 
 Validation at the baseline commit:
 

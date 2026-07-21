@@ -10,6 +10,17 @@ last_reviewed: "unknown"
 last_status_migrated: "2026-07-21"
 speaker_count: 1
 source_count: 6
+verified_source_count: 6
+independent_speaker_count: 1
+negative_cases_drafted: true
+negative_tests_executable: false
+negative_tests_passing: false
+corpus_evidence_used: false
+corpus_hits_reviewed: false
+code_document_reconciled: false
+implementation_validation_separate: true
+independent_evidence_beyond_internal_tests: true
+promotion_gate_version: "v1"
 source_ids: ["SRC-ALDERETE-ETAL-2017-SYNOPSIS", "SRC-CHENG-2022-HAI6-RESPONSE", "SRC-LEE-PAN-2024-VP-ELLIPSIS", "SRC-LUKE-NANCARROW-1998-AUXILIARIES", "SRC-YIP-MATTHEWS-2000-SYNTACTIC-TRANSFER", "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"]
 runtime_active: true
 runtime_code_references: 7

@@ -1,0 +1,176 @@
+{
+  "schema": "canto-span-promotion-gate-tests-v1",
+  "total": 8,
+  "passed": 8,
+  "failed": 0,
+  "status": "PASS",
+  "results": [
+    {
+      "name": "supported productive passes all requirements",
+      "pass": true,
+      "result": {
+        "construction": "supported productive passes all requirements",
+        "status": "supported_productive",
+        "gate_class": "supported_productive",
+        "eligible": true,
+        "blockers": [],
+        "requirements": {
+          "verified_source": true,
+          "plain_language_claim": true,
+          "implementation_validation_separate": true,
+          "two_independent_speakers": true,
+          "negative_cases_drafted": true,
+          "negative_tests_executable": true,
+          "negative_tests_passing": true,
+          "corpus_hits_reviewed_if_used": true,
+          "code_document_reconciled": true,
+          "independent_evidence_beyond_internal_tests": true
+        }
+      }
+    },
+    {
+      "name": "supported productive fails with one speaker",
+      "pass": true,
+      "result": {
+        "construction": "supported productive fails with one speaker",
+        "status": "supported_productive",
+        "gate_class": "supported_productive",
+        "eligible": false,
+        "blockers": [
+          "requirement_failed:two_independent_speakers"
+        ],
+        "requirements": {
+          "verified_source": true,
+          "plain_language_claim": true,
+          "implementation_validation_separate": true,
+          "two_independent_speakers": false,
+          "negative_cases_drafted": true,
+          "negative_tests_executable": true,
+          "negative_tests_passing": true,
+          "corpus_hits_reviewed_if_used": true,
+          "code_document_reconciled": true,
+          "independent_evidence_beyond_internal_tests": true
+        }
+      }
+    },
+    {
+      "name": "supported productive fails unreviewed corpus evidence",
+      "pass": true,
+      "result": {
+        "construction": "supported productive fails unreviewed corpus evidence",
+        "status": "supported_productive",
+        "gate_class": "supported_productive",
+        "eligible": false,
+        "blockers": [
+          "requirement_failed:corpus_hits_reviewed_if_used"
+        ],
+        "requirements": {
+          "verified_source": true,
+          "plain_language_claim": true,
+          "implementation_validation_separate": true,
+          "two_independent_speakers": true,
+          "negative_cases_drafted": true,
+          "negative_tests_executable": true,
+          "negative_tests_passing": true,
+          "corpus_hits_reviewed_if_used": false,
+          "code_document_reconciled": true,
+          "independent_evidence_beyond_internal_tests": true
+        }
+      }
+    },
+    {
+      "name": "supported productive fails without executable boundaries",
+      "pass": true,
+      "result": {
+        "construction": "supported productive fails without executable boundaries",
+        "status": "supported_productive",
+        "gate_class": "supported_productive",
+        "eligible": false,
+        "blockers": [
+          "requirement_failed:negative_tests_executable",
+          "requirement_failed:negative_tests_passing"
+        ],
+        "requirements": {
+          "verified_source": true,
+          "plain_language_claim": true,
+          "implementation_validation_separate": true,
+          "two_independent_speakers": true,
+          "negative_cases_drafted": true,
+          "negative_tests_executable": false,
+          "negative_tests_passing": false,
+          "corpus_hits_reviewed_if_used": true,
+          "code_document_reconciled": true,
+          "independent_evidence_beyond_internal_tests": true
+        }
+      }
+    },
+    {
+      "name": "provisional passes narrower requirements",
+      "pass": true,
+      "result": {
+        "construction": "provisional passes narrower requirements",
+        "status": "provisional",
+        "gate_class": "provisional",
+        "eligible": true,
+        "blockers": [],
+        "requirements": {
+          "verified_source": true,
+          "plain_language_claim": true,
+          "implementation_validation_separate": true,
+          "independent_speaker": true,
+          "negative_cases_drafted": true,
+          "independent_evidence_beyond_internal_tests": true
+        }
+      }
+    },
+    {
+      "name": "provisional fails without a speaker",
+      "pass": true,
+      "result": {
+        "construction": "provisional fails without a speaker",
+        "status": "provisional",
+        "gate_class": "provisional",
+        "eligible": false,
+        "blockers": [
+          "requirement_failed:independent_speaker"
+        ],
+        "requirements": {
+          "verified_source": true,
+          "plain_language_claim": true,
+          "implementation_validation_separate": true,
+          "independent_speaker": false,
+          "negative_cases_drafted": true,
+          "independent_evidence_beyond_internal_tests": true
+        }
+      }
+    },
+    {
+      "name": "research pending is quarantined without failure",
+      "pass": true,
+      "result": {
+        "construction": "research pending is quarantined without failure",
+        "status": "research_pending",
+        "gate_class": "quarantined",
+        "eligible": false,
+        "blockers": [
+          "executable_boundaries_without_drafted_boundaries"
+        ],
+        "requirements": {}
+      }
+    },
+    {
+      "name": "unknown status fails loudly",
+      "pass": true,
+      "result": {
+        "construction": "unknown status fails loudly",
+        "status": "invented_status",
+        "gate_class": "quarantined",
+        "eligible": false,
+        "blockers": [
+          "unknown_status:invented_status"
+        ],
+        "requirements": {}
+      }
+    }
+  ]
+}

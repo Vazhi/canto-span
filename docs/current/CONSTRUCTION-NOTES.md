@@ -23,7 +23,13 @@ Each construction note records:
 - claim layer and research lane;
 - last recorded review date, or `unknown`;
 - independent speaker count;
-- mapped source count and source IDs;
+- mapped and verified source counts plus source IDs;
+- drafted and executable boundary state;
+- corpus-use and corpus-review state;
+- code-document reconciliation state;
+- separation of implementation and linguistic validation;
+- independent evidence beyond internal tests;
+- promotion-gate schema version;
 - runtime activity and basic fixture/reference counts.
 
 The note body records the plain-language claim, citations and locators, speaker-review scope, negative and boundary references, implementation state, blockers, and related constructions.
@@ -46,6 +52,8 @@ Run:
 
 ```bash
 node tools/verify-construction-notes.js
+node tools/test-promotion-gate.js
+node tools/enforce-promotion-rules.js
 ```
 
 The command must confirm:
@@ -61,4 +69,6 @@ The command must confirm:
 
 ## Editing rule
 
-After migration, edit the construction note rather than the archived TSV/JSON registry. Phase 4 will add the validator that enforces the Definition of Done directly from these notes before any status change can ship.
+Edit the construction note rather than the archived TSV/JSON registry. Any change to `status`, speaker count, source verification, boundary state, corpus use, or code-document alignment must update the corresponding frontmatter fields in the same commit.
+
+A note marked `provisional` or `supported_productive` cannot ship unless `tools/enforce-promotion-rules.js` passes. Other statuses are non-promoted by default and cannot become eligible merely because some evidence fields are true.

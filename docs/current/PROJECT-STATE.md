@@ -93,8 +93,15 @@ Git history is now the authoritative change record. The baseline commit preserve
 
 ## Infrastructure migration state
 
-Phase 3 is complete. The active authoring registry consists of 171 Obsidian construction notes, while `main.js` retains only active-label information. The former wide status, source-accounting, and re-audit tables are frozen under `archive/registry-pre-obsidian-v0.5.184/`.
+Phase 4 is complete. The active authoring registry consists of 171 Obsidian construction notes, `main.js` retains only active-label information, and promotion eligibility is enforced mechanically from note frontmatter. The former wide status, source-accounting, and re-audit tables remain frozen under `archive/registry-pre-obsidian-v0.5.184/`.
+
+Current promotion-gate result:
+
+- construction notes checked: **171**;
+- promoted status records: **0**;
+- non-promoted/quarantined records: **171**;
+- focused gate tests: **8/8 PASS**.
 
 ## Next action
 
-Complete infrastructure migration Phase 4: implement a Node validator that reads `grammar/*.md` and mechanically rejects status promotions that fail the current Definition of Done.
+Begin infrastructure migration Phase 5: consolidate active positive and boundary cases into one standard executable test directory and one command without rewriting historical fixtures.

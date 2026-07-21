@@ -10,6 +10,17 @@ last_reviewed: "unknown"
 last_status_migrated: "2026-07-21"
 speaker_count: 1
 source_count: 6
+verified_source_count: 6
+independent_speaker_count: 1
+negative_cases_drafted: true
+negative_tests_executable: false
+negative_tests_passing: false
+corpus_evidence_used: false
+corpus_hits_reviewed: false
+code_document_reconciled: false
+implementation_validation_separate: true
+independent_evidence_beyond_internal_tests: true
+promotion_gate_version: "v1"
 source_ids: ["SRC-BODOMO-LAM-YU-2003", "SRC-CHIN-2011-BEI", "SRC-LI-LEE-2021-DATIVE", "SRC-NGAI-2023-BEI", "SRC-WONG-2023-BEI", "SRC-XU-PEYRAUBE-1997-DOC"]
 runtime_active: true
 runtime_code_references: 6

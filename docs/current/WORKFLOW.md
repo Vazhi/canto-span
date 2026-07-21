@@ -11,8 +11,10 @@ Every status change and release handoff must satisfy [`DEFINITION-OF-DONE.md`](D
 5. Compare the documented claim with the actual heuristic.
 6. Implement only the narrow evidence-faithful change.
 7. Run focused, boundary, preservation, regression, semantic, render, and prospective held-out checks as applicable.
-8. Report implementation results separately from linguistic status.
-9. Accept, revise, quarantine, reject, or retire.
+8. Update the construction note's machine-readable evidence fields.
+9. Run `node tools/test-promotion-gate.js` and `node tools/enforce-promotion-rules.js`.
+10. Report implementation results separately from linguistic status.
+11. Accept, revise, quarantine, reject, or retire.
 
 ## B. Shared parser-subsystem work
 

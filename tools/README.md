@@ -8,7 +8,10 @@
 - `run-regression-suite.js` — runs aggregate regression tests.
 - `run-construction-registry-audit.js` — checks that runtime active labels exactly match the 171 construction notes and exclude retired labels.
 - `verify-phase3-runtime-equivalence.js` — compares v0.5.185 with the v0.5.184 Phase 2 commit across all 545 regression cases after removing only the intentionally migrated metadata fields.
-- `verify-construction-notes.js` — validates the 171 active Obsidian construction notes.
+- `verify-construction-notes.js` — validates the 171 active Obsidian construction notes and their promotion-evidence schema.
+- `test-promotion-gate.js` — proves accepted and rejected status transitions against focused synthetic cases.
+- `enforce-promotion-rules.js` — blocks any `provisional` or `supported_productive` status that fails the current Definition of Done.
+- `promotion-gate-lib.js` — shared fail-closed promotion rules.
 - `migrate-construction-registry-to-notes.js` — reproducible one-time export from the frozen pre-migration registry snapshot.
 - `audit-source-accounting.js` — checks source/status coverage through the construction notes.
 - `run-claim-provenance-audit.js` — checks claim provenance.

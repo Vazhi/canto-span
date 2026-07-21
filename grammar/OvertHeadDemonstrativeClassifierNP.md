@@ -10,6 +10,17 @@ last_reviewed: "unknown"
 last_status_migrated: "2026-07-21"
 speaker_count: 1
 source_count: 5
+verified_source_count: 5
+independent_speaker_count: 1
+negative_cases_drafted: true
+negative_tests_executable: false
+negative_tests_passing: false
+corpus_evidence_used: true
+corpus_hits_reviewed: true
+code_document_reconciled: true
+implementation_validation_separate: true
+independent_evidence_beyond_internal_tests: true
+promotion_gate_version: "v1"
 source_ids: ["SRC-BOND-SIO-2024-CLASSIFIERS", "SRC-LAM-LAU-LEE-2024-SEGMENTATION", "SRC-XIA-2025-CLASSIFIERS", "SRC-YU-2006-NOMINAL-MODIFIERS", "SRC-HKCANCOR-PYCANTONESE-CP024-DEMO01"]
 runtime_active: true
 runtime_code_references: 14

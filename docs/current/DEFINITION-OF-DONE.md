@@ -58,6 +58,25 @@ These do NOT, by themselves, make a construction or a release done:
 - A version number increment.
 - Confidence-label language (`provisional`, `medium confidence`) without the underlying source count, speaker count, and corpus review it is supposed to summarize.
 
+## Mechanical enforcement
+
+Each construction note carries the machine-readable fields consumed by `tools/enforce-promotion-rules.js`. The authored status and the evidence fields must change in the same commit.
+
+The gate is intentionally fail-closed:
+
+- a missing field is a failure;
+- an unknown status is a failure;
+- `negative_tests_passing: true` without executable drafted boundaries is a failure;
+- a `provisional` or `supported_productive` status with any unmet requirement is a failure;
+- non-promoted statuses remain ineligible even when some individual evidence requirements happen to pass.
+
+Run the focused rule tests and the project gate before accepting any status change:
+
+```bash
+node tools/test-promotion-gate.js
+node tools/enforce-promotion-rules.js
+```
+
 ## Guiding principle
 
 A small grammar with a few genuinely well-evidenced constructions is the target — not a large table of confidently labeled but thinly supported ones. A low `supported_productive` count is an acceptable, expected state, not a problem to fix by loosening any of the above.

@@ -5,6 +5,7 @@ const fs = require("fs");
 const path = require("path");
 const vm = require("vm");
 const { loadConstructionNotes } = require("./construction-notes-lib");
+const { countVerifiedSourceRecords } = require("./promotion-gate-lib");
 
 const root = path.resolve(__dirname, "..");
 const notes = loadConstructionNotes(root);
@@ -46,11 +47,17 @@ for (const note of notes) {
   byLabel.set(label, note);
   const filename = path.basename(note.file, ".md");
   check(`filename matches construction: ${filename}`, filename === label, `${filename} != ${label}`);
-  for (const field of ["title", "type", "construction", "status", "confidence", "claim_layer", "lane", "last_reviewed", "speaker_count", "source_count", "source_ids", "runtime_active"]) {
+  for (const field of ["title", "type", "construction", "status", "confidence", "claim_layer", "lane", "last_reviewed", "speaker_count", "source_count", "verified_source_count", "independent_speaker_count", "negative_cases_drafted", "negative_tests_executable", "negative_tests_passing", "corpus_evidence_used", "corpus_hits_reviewed", "code_document_reconciled", "implementation_validation_separate", "independent_evidence_beyond_internal_tests", "promotion_gate_version", "source_ids", "runtime_active"]) {
     check(`${label} has ${field}`, Object.prototype.hasOwnProperty.call(fm, field));
   }
   check(`${label} type is construction`, fm.type === "canto-span-construction", String(fm.type));
   check(`${label} source count matches IDs`, Number(fm.source_count) === (Array.isArray(fm.source_ids) ? fm.source_ids.length : -1));
+  const verificationCount = countVerifiedSourceRecords(note);
+  check(`${label} verified source count matches source records`, Number(fm.verified_source_count) === verificationCount, `${fm.verified_source_count} != ${verificationCount}`);
+  check(`${label} independent speaker count matches speaker count`, Number(fm.independent_speaker_count) === Number(fm.speaker_count), `${fm.independent_speaker_count} != ${fm.speaker_count}`);
+  check(`${label} promotion gate version`, fm.promotion_gate_version === "v1", String(fm.promotion_gate_version));
+  check(`${label} passing boundaries require executable boundaries`, fm.negative_tests_passing !== true || fm.negative_tests_executable === true);
+  check(`${label} executable boundaries require drafted boundaries`, fm.negative_tests_executable !== true || fm.negative_cases_drafted === true);
   check(`${label} has plain-language claim`, /## Plain-language claim\n\n\S/.test(note.body));
   check(`${label} has boundary section`, /## Negative and boundary cases/.test(note.body));
   check(`${label} has no aliased wiki links`, !/\[\[[^\]]+\|[^\]]+\]\]/.test(note.text));

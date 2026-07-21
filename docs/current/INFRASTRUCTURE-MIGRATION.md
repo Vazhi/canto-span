@@ -47,9 +47,14 @@ Reduce ceremony, drift risk, and file bloat without restarting the parser or dis
 - verified all 545 regression cases and a 545-case normalized before/after runtime-equivalence comparison;
 - reduced `main.js` by approximately 340 KB without changing structural parser behavior.
 
-### Phase 4 — Mechanical promotion validation: next
+### Phase 4 — Mechanical promotion validation: complete
 
-Add a Node validation command that reads construction-note frontmatter and rejects status changes that fail the Definition of Done.
+- added explicit promotion-evidence fields to all 171 construction notes;
+- added `tools/enforce-promotion-rules.js`, which fails closed on unsupported `provisional` or `supported_productive` status records;
+- enforced the full current Definition of Done, including reviewed corpus evidence when used, two independent speakers for productive status, executable passing boundaries, code-document reconciliation, and separation of implementation validation from linguistic confidence;
+- classified all current non-promoted statuses as quarantined or non-promotional by default;
+- added focused accepted and rejected transition tests;
+- integrated the promotion gate into `tools/verify-repository.sh`.
 
 ### Phase 5 — Standard executable construction tests: pending
 
