@@ -28,7 +28,7 @@ function loadApi(mainPath) {
     console, setTimeout, clearTimeout, Buffer,
   };
   vm.runInNewContext(
-    fs.readFileSync(mainPath, "utf8") + "\nmodule.exports.__researchApi={analyzeLine,diagnosticFinalRows,diagnosticSummary,rootSpanCoverageForDiagnostic,runtimeVersion:CANTO_SPAN_RUNTIME_VERSION,policyVersion:GRAMMAR_LEGITIMACY_POLICY_VERSION};",
+    fs.readFileSync(mainPath, "utf8") + "\nmodule.exports.__researchApi={analyzeLine,diagnosticFinalRows,diagnosticSummary,rootSpanCoverageForDiagnostic,runtimeVersion:CANTO_SPAN_RUNTIME_VERSION,registryVersion:RUNTIME_CONSTRUCTION_REGISTRY_VERSION};",
     context, { filename: mainPath }
   );
   return moduleShim.exports.__researchApi;

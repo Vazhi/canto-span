@@ -22,7 +22,8 @@
 
 - construction status and evidence: `grammar/*.md` frontmatter and body records
 - construction index: `GRAMMAR-INDEX.md`
-- grammar governance runtime snapshot: `test-data/grammar-legitimacy-audit.json`
+- historical pre-note governance snapshot used by legacy audits: `test-data/grammar-legitimacy-audit.json`
+- active linguistic status and evidence: `grammar/*.md`
 - NP matrix: `test-data/np-subsystem-v0.5.184.json`
 - regression snapshots: `test-data/regression-snapshots.json`
 - frozen pre-migration wide registry: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`

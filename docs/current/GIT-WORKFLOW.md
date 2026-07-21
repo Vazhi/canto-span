@@ -4,7 +4,8 @@ Git is the authoritative record of project changes. The repository inside a Chat
 
 ## Canonical-copy rule
 
-- Keep the newest complete repository export on the user's machine.
+- Keep the canonical working repository on the user's machine and push meaningful commits to the configured GitHub remote.
+- Keep the newest complete repository export available for transfer into ChatGPT, because the sandbox cannot rely on private-remote credentials.
 - The export must contain the whole `canto-span/` directory, including `.git/`.
 - At the start of a new conversation, upload that export before work begins.
 - Restore it, then verify `git status`, `git log`, and `git fsck` before assuming continuity.
@@ -65,7 +66,13 @@ It is not a project backup and does not replace the full Git export.
 
 ## Remote repository
 
-A user-controlled Git remote may be added later. A successful push would be an additional backup, not a replacement for local repository exports. No remote is currently configured.
+The configured remote is:
+
+```text
+origin  https://github.com/Vazhi/canto-span.git
+```
+
+Push each accepted commit from the user-controlled local repository. The remote is the durable shared history; the full `.git` ZIP remains the transfer format for restoring work inside ChatGPT without exposing private credentials.
 
 ## Retired workflow
 

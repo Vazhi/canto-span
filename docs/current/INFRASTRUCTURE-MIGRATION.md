@@ -26,7 +26,7 @@ Reduce ceremony, drift risk, and file bloat without restarting the parser or dis
 - the sandbox repository is explicitly temporary;
 - full exports include `.git`;
 - checkpoint-state, recovery-package, and packaging-manifest files are archived;
-- a remote may be added later but is not required for Git history or diffs.
+- `origin` is configured as `https://github.com/Vazhi/canto-span.git` and the local `main` branch tracks `origin/main`; full `.git` exports remain the ChatGPT transfer mechanism.
 
 ### Phase 2 — Construction notes in Obsidian: complete
 
@@ -37,11 +37,17 @@ Reduce ceremony, drift risk, and file bloat without restarting the parser or dis
 - the former wide registries were archived under `archive/registry-pre-obsidian-v0.5.184/`;
 - `grammar/*.md` is now the active authoring-time status owner.
 
-### Phase 3 — Runtime metadata reduction: next
+### Phase 3 — Runtime metadata reduction: complete
 
-Move authoring-time evidence metadata out of `main.js`, retaining parser heuristics and the minimal active-label information required at runtime.
+- removed linguistic status, confidence, source, corpus, speaker, held-out, and promotion metadata from `main.js`;
+- removed per-construction authoring metadata from runtime parse nodes and diagnostic exports;
+- retained parser logic plus the 171-label active runtime registry;
+- replaced the former runtime legitimacy lane with an active-label registration audit;
+- archived tools whose purpose was synchronizing the embedded evidence registry;
+- verified all 545 regression cases and a 545-case normalized before/after runtime-equivalence comparison;
+- reduced `main.js` by approximately 340 KB without changing structural parser behavior.
 
-### Phase 4 — Mechanical promotion validation: pending
+### Phase 4 — Mechanical promotion validation: next
 
 Add a Node validation command that reads construction-note frontmatter and rejects status changes that fail the Definition of Done.
 

@@ -31,4 +31,4 @@ Only the first two may feed an evidence-gated consumer, and an ambiguous NP may 
 
 Confidence must be derived from verified sources, manually reviewed natural examples, speaker count, unresolved analyses, and code–documentation agreement. Test counts are reported separately.
 
-The active owner is one note per construction under [`../../grammar/`](../../grammar/), indexed by [`../../GRAMMAR-INDEX.md`](../../GRAMMAR-INDEX.md). In v0.5.184 the runtime and construction-note statuses are aligned across all 171 active labels. The former wide TSV/JSON registry is frozen under `archive/registry-pre-obsidian-v0.5.184/`.
+The active owner is one note per construction under [`../../grammar/`](../../grammar/), indexed by [`../../GRAMMAR-INDEX.md`](../../GRAMMAR-INDEX.md). From v0.5.185, construction-note status is the only active linguistic-status record. The runtime stores only the 171 active labels and therefore cannot drift into a contradictory linguistic status. The former wide TSV/JSON registry is frozen under `archive/registry-pre-obsidian-v0.5.184/`.

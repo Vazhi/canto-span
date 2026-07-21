@@ -3,11 +3,15 @@
 
 const fs = require("fs");
 const path = require("path");
+const { loadConstructionNotes } = require("./construction-notes-lib");
 
 const root = path.resolve(__dirname, "..");
 const dataDir = path.join(root, "test-data");
 const validationDir = path.join(root, "validation");
 const audit = JSON.parse(fs.readFileSync(path.join(dataDir, "grammar-legitimacy-audit.json"), "utf8"));
+const manifest = JSON.parse(fs.readFileSync(path.join(root, "manifest.json"), "utf8"));
+const constructionNotes = loadConstructionNotes(root);
+const notesByLabel = new Map(constructionNotes.map((note) => [note.frontmatter.construction, note]));
 
 function parseTsv(filePath) {
   const lines = fs.readFileSync(filePath, "utf8").trimEnd().split(/\r?\n/);
@@ -47,7 +51,12 @@ function claimLayer(row) {
   return "language";
 }
 
-const inventory = audit.patterns.map((row) => {
+const inventory = constructionNotes.map((note) => {
+  const row = patternsByLabel.get(note.frontmatter.construction);
+  if (!row) throw new Error(`Missing historical claim metadata for ${note.frontmatter.construction}`);
+  const currentStatus = note.frontmatter.status;
+  const currentActionMatch = note.body.match(/- Current action: `([^`]+)`/);
+  const currentAction = currentActionMatch ? currentActionMatch[1] : "not_recorded";
   const layer = claimLayer(row);
   const labelEdges = edgesByLabel.get(row.pattern) || [];
   const authority = authorityByLabel.get(row.pattern) || null;
@@ -64,13 +73,13 @@ const inventory = audit.patterns.map((row) => {
   const sourceLinkStatus = languageClaim
     ? (authority ? "authority_origin_scoped_edges_recorded" : (labelEdges.length ? "scoped_edges_recorded" : "no_pattern_specific_external_edge"))
     : "external_language_source_not_applicable_to_internal_claim";
-  const acceptedAuthorityClaim = languageClaim && authority && row.status === "supported_productive";
+  const acceptedAuthorityClaim = languageClaim && authority && currentStatus === "supported_productive";
   const requiredDisposition = languageClaim
     ? (acceptedAuthorityClaim
       ? "retain_narrow_supported_productive_scope_and_reaudit_on_conflict"
-      : authority && row.status === "provisional_reaudit"
+      : authority && currentStatus === "provisional_reaudit"
       ? "complete_current_reaudit_or_narrow_reclassify_retire"
-      : authority && row.status === "research_pending"
+      : authority && currentStatus === "research_pending"
       ? "remain_research_pending_until_current_provisional_checklist_passes"
       : authority
       ? "retain_bounded_nonproductive_authority_origin_record"
@@ -82,11 +91,11 @@ const inventory = audit.patterns.map((row) => {
   return {
     claim_id: `GCLAIM::${row.pattern}::${layer}`,
     runtime_label: row.pattern,
-    lane: row.lane,
+    lane: note.frontmatter.lane || row.lane,
     claim_layer: layer,
     primary_claim_type: row.primary_claim_type,
-    current_status: row.status,
-    current_action: row.action,
+    current_status: currentStatus,
+    current_action: currentAction,
     origin_status: originStatus,
     source_link_status: sourceLinkStatus,
     external_source_ids: externalSourceIds,
@@ -97,9 +106,9 @@ const inventory = audit.patterns.map((row) => {
     promotion_blocker: acceptedAuthorityClaim
       ? ""
       : languageClaim
-      ? (authority && row.status === "provisional_reaudit"
+      ? (authority && currentStatus === "provisional_reaudit"
         ? "full current Definition of Done remains incomplete"
-        : authority && row.status === "research_pending"
+        : authority && currentStatus === "research_pending"
         ? "current provisional checklist remains incomplete"
         : authority
         ? "authority-origin evidence remains bounded and has not passed every productive-acceptance gate"
@@ -126,10 +135,12 @@ function check(name, condition, detail = "") {
 const allowedRelationships = new Set(["supports", "restricts", "contradicts", "attests_only"]);
 const inventoryLabels = inventory.map((row) => row.runtime_label).sort();
 const auditLabels = audit.patterns.map((row) => row.pattern).sort();
+const noteLabels = constructionNotes.map((note) => note.frontmatter.construction).sort();
 check("current governance has exactly 171 active labels", audit.patterns.length === 171, String(audit.patterns.length));
 check("current provenance inventory has exactly 171 active claims", inventory.length === 171, String(inventory.length));
 check("provenance inventory labels are unique", new Set(inventoryLabels).size === inventory.length);
-check("provenance inventory exactly covers the legitimacy audit", JSON.stringify(inventoryLabels) === JSON.stringify(auditLabels));
+check("provenance inventory exactly covers construction notes", JSON.stringify(inventoryLabels) === JSON.stringify(noteLabels));
+check("historical claim metadata covers construction notes", JSON.stringify(noteLabels) === JSON.stringify(auditLabels));
 check("claim-source edge identifiers are unique", new Set(edges.map((row) => row.edge_id)).size === edges.length);
 check("source-register identifiers are unique", sourceIds.size === sourceRegister.length);
 check("source-locator identifiers are unique", locatorBySource.size === locators.length);
@@ -170,9 +181,9 @@ for (const row of inventory) {
 
 const result = {
   schema: "canto-span-claim-provenance-audit-result-v1",
-  batch_id: "v0.5.184-NP-SUBSYSTEM-R1",
-  generated_at: new Date().toISOString(),
-  runtime_version: audit.runtime_version,
+  batch_id: "v0.5.185-RUNTIME-METADATA-REDUCTION",
+  runtime_version: manifest.version,
+  authoring_registry_owner: "grammar/*.md",
   policy: {
     external_authority_required_for_cantonese_language_claims: true,
     internal_behavior_may_open_only_a_neutral_research_question: true,
@@ -208,27 +219,7 @@ const result = {
 };
 
 fs.mkdirSync(validationDir, { recursive: true });
-fs.writeFileSync(path.join(dataDir, "grammar-claim-provenance-CP021B.json"), JSON.stringify({
-  schema: "canto-span-claim-provenance-inventory-v1",
-  batch_id: "v0.5.184-NP-SUBSYSTEM-R1",
-  generated_at: result.generated_at,
-  policy: result.policy,
-  summary: result.summary,
-  claims: inventory,
-}, null, 2) + "\n");
-
-const columns = [
-  "claim_id", "runtime_label", "lane", "claim_layer", "primary_claim_type",
-  "current_status", "current_action", "origin_status", "source_link_status",
-  "external_source_ids", "claim_source_edge_ids", "edge_count",
-  "required_disposition", "grammar_promotion_eligible", "promotion_blocker", "next_research_form",
-];
-const tsvRows = [columns.join("\t"), ...inventory.map((row) => columns.map((column) => {
-  const value = Array.isArray(row[column]) ? row[column].join(";") : row[column];
-  return tsvCell(value);
-}).join("\t"))];
-fs.writeFileSync(path.join(dataDir, "grammar-claim-provenance-CP021B.tsv"), tsvRows.join("\n") + "\n");
-const currentDir = path.join(validationDir, "v0.5.184");
+const currentDir = path.join(validationDir, "v0.5.185");
 fs.mkdirSync(currentDir, { recursive: true });
 fs.writeFileSync(path.join(currentDir, "claim-provenance.json"), JSON.stringify(result, null, 2) + "\n");
 fs.writeFileSync(path.join(validationDir, "claim-provenance-audit-current.json"), JSON.stringify(result, null, 2) + "\n");

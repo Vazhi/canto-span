@@ -123,16 +123,16 @@ check("literal context remains visible in the summary", () => {
   assert(zi && zi.role === "what", `wrong literal 字 role ${zi && zi.role}`);
 });
 
-check("grammar legitimacy remains separate from parser coverage", () => {
+check("runtime exports omit authoring evidence and retain active-label checks", () => {
   assert(bundle.full.coverage.status === "PASS", `parser coverage ${bundle.full.coverage.status}`);
-  assert(bundle.full.coverage.grammar_legitimacy_audit_status === "WARN", `legitimacy ${bundle.full.coverage.grammar_legitimacy_audit_status}`);
-  assert(bundle.summary.coverage.audit_statuses.grammar_legitimacy === "WARN", "summary legitimacy lane missing");
+  assert(bundle.full.coverage.runtime_construction_registry_audit_status === "PASS", `runtime registry ${bundle.full.coverage.runtime_construction_registry_audit_status}`);
+  assert(bundle.summary.coverage.audit_statuses.runtime_construction_registry === "PASS", "summary runtime-registry lane missing");
   for (const row of bundle.summary.rows) {
     const constructions = row.compact_final_construction_tree.filter((item) => item.kind === "construction");
-    assert(constructions.every((item) => item.grammar_legitimacy && item.grammar_legitimacy.status), `${row.source}: legitimacy metadata missing`);
-    assert(row.full_review.reasons.some((reason) => reason.startsWith("grammar_legitimacy:") || reason === "audit:grammar_legitimacy:WARN"), `${row.source}: legitimacy review trigger missing`);
+    assert(constructions.every((item) => item.runtime_registry && item.runtime_registry.active === true), `${row.source}: active runtime registry state missing`);
+    assert(constructions.every((item) => !Object.prototype.hasOwnProperty.call(item, "grammar_legitimacy")), `${row.source}: authoring evidence leaked into runtime export`);
   }
-  assert(bundle.summary.inspection_policy.required_process.some((line) => line.includes("corpus candidate hits")), "anti-circularity inspection rule missing");
+  assert(bundle.summary.inspection_policy.required_process.some((line) => line.includes("grammar/*.md")), "authoring-note inspection rule missing");
 });
 
 check("conservative full-review triggers cover risky rows", () => {

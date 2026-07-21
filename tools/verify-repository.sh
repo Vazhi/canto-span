@@ -21,6 +21,8 @@ required=(
   docs/current/INFRASTRUCTURE-MIGRATION.md
   archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json
   tools/verify-construction-notes.js
+  tools/run-construction-registry-audit.js
+  tools/verify-phase3-runtime-equivalence.js
 )
 
 for path in "${required[@]}"; do
@@ -31,6 +33,7 @@ for path in "${required[@]}"; do
 done
 
 node tools/verify-construction-notes.js >/dev/null
+node tools/run-construction-registry-audit.js >/dev/null
 
 printf 'repository=%s\nbranch=%s\ncommit=%s\ntracked_files=%s\nconstruction_notes=%s\nstatus_lines=%s\n' \
   "$repo" \

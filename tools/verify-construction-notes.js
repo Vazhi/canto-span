@@ -30,7 +30,7 @@ function loadRuntime() {
   };
   const file = path.join(root, "main.js");
   vm.runInNewContext(
-    fs.readFileSync(file, "utf8") + "\nmodule.exports.__notesAudit={labels:[...CONSTRUCTION_LABEL_REGISTRY],legitimacy:grammarLegitimacyFor};",
+    fs.readFileSync(file, "utf8") + "\nmodule.exports.__notesAudit={runtimeVersion:CANTO_SPAN_RUNTIME_VERSION,labels:[...CONSTRUCTION_LABEL_REGISTRY]};",
     context,
     { filename: file }
   );
@@ -61,7 +61,7 @@ const noteLabels = new Set(byLabel.keys());
 check("exactly 171 construction notes", notes.length === 171, String(notes.length));
 check("runtime has 171 active labels", runtimeLabels.size === 171, String(runtimeLabels.size));
 check("notes exactly match runtime labels", noteLabels.size === runtimeLabels.size && [...runtimeLabels].every((label) => noteLabels.has(label)));
-check("all note statuses match runtime", notes.every((note) => runtime.legitimacy(note.frontmatter.construction).status === note.frontmatter.status));
+check("all notes are runtime active", notes.every((note) => note.frontmatter.runtime_active === true));
 
 for (const note of notes) {
   for (const target of [...note.text.matchAll(/\[\[([^\]|]+)\]\]/g)].map((m) => m[1])) {
@@ -85,11 +85,11 @@ const expectedCounts = {
   lexicalized_only: 3,
   provisional_reaudit: 2,
 };
-check("status counts match v0.5.184", JSON.stringify(counts) === JSON.stringify(expectedCounts), JSON.stringify(counts));
+check("status counts remain unchanged after runtime-metadata removal", JSON.stringify(counts) === JSON.stringify(expectedCounts), JSON.stringify(counts));
 
 const result = {
   schema: "canto-span-construction-notes-validation-v1",
-  runtime_version: "v0.5.184",
+  runtime_version: runtime.runtimeVersion,
   construction_notes: notes.length,
   status_counts: counts,
   total: checks.length,
@@ -98,8 +98,8 @@ const result = {
   status: failures.length ? "FAIL" : "PASS",
   failures,
 };
-const outDir = path.join(root, "validation", "infrastructure");
+const outDir = path.join(root, "validation", `v${runtime.runtimeVersion}`);
 fs.mkdirSync(outDir, { recursive: true });
-fs.writeFileSync(path.join(outDir, "phase2-construction-notes.json"), JSON.stringify(result, null, 2) + "\n");
+fs.writeFileSync(path.join(outDir, "construction-notes.json"), JSON.stringify(result, null, 2) + "\n");
 console.log(JSON.stringify(result, null, 2));
 if (failures.length) process.exit(1);

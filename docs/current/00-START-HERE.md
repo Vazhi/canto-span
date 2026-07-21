@@ -2,12 +2,13 @@
 
 ## Current baseline
 
-- runtime candidate: **v0.5.184**
+- runtime candidate: **v0.5.185**
 - active labels: **171**
-- runtime/governance alignment: **PASS**
+- runtime labels / construction notes: **171 / 171**
+- authoring evidence embedded in runtime: **none**
 - current `supported_productive`: **0**
 - prior accepted constructions under re-audit: **2**
-- current implementation focus: **shared compositional NP subsystem**
+- current migration focus: **mechanical promotion validator**
 - second-speaker work: **frozen; requirement retained**
 - DEMO01 promotion track: **abandoned**
 

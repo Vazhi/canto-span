@@ -1,0 +1,20 @@
+{
+  "schema": "canto-span-phase3-runtime-equivalence-v1",
+  "baseline_commit": "6502742",
+  "baseline_runtime_version": "0.5.184",
+  "current_runtime_version": "0.5.185",
+  "baseline_main_js_bytes": 1657354,
+  "current_main_js_bytes": 1314766,
+  "removed_bytes": 342588,
+  "metadata_leaks": [],
+  "compared_cases": 545,
+  "authoring_fields_intentionally_removed": [
+    "grammar_legitimacy",
+    "grammar_freeze_active"
+  ],
+  "runtime_field_intentionally_added": "runtime_registry.active",
+  "passed": 545,
+  "failed": 0,
+  "status": "PASS",
+  "failures": []
+}

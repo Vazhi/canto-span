@@ -6,7 +6,7 @@ const vm = require("vm");
 const { loadConstructionNotes } = require("./construction-notes-lib");
 
 const root = path.resolve(__dirname, "..");
-const outDir = path.join(root, "validation", "v0.5.184");
+const outDir = path.join(root, "validation", "v0.5.185");
 fs.mkdirSync(outDir, { recursive: true });
 function parseTsv(file) {
   const text = fs.readFileSync(file, "utf8").replace(/^\uFEFF/, "").trimEnd();
@@ -19,7 +19,7 @@ function loadRuntime() {
   const m = { exports: {} };
   const c = { module: m, exports: m.exports, require: (id) => id === "obsidian" ? { Plugin, PluginSettingTab, Setting, Notice } : require(id), console, setTimeout, clearTimeout, Buffer };
   const file = path.join(root, "main.js");
-  vm.runInNewContext(fs.readFileSync(file, "utf8") + "\nmodule.exports.__api={labels:[...CONSTRUCTION_LABEL_REGISTRY],legitimacy:grammarLegitimacyFor};", c, { filename: file });
+  vm.runInNewContext(fs.readFileSync(file, "utf8") + "\nmodule.exports.__api={runtimeVersion:CANTO_SPAN_RUNTIME_VERSION,labels:[...CONSTRUCTION_LABEL_REGISTRY]};", c, { filename: file });
   return m.exports.__api;
 }
 const api = loadRuntime();
@@ -34,7 +34,7 @@ check("construction notes have 171 labels", noteMap.size === 171, String(noteMap
 check("runtime exactly equals construction notes", runtime.size === noteMap.size && [...runtime].every((x) => noteMap.has(x)));
 check("ten labels are archived as retired", retiredSet.size === 10, String(retiredSet.size));
 check("retired labels are absent from runtime", [...retiredSet].every((x) => !runtime.has(x)));
-check("all note statuses match runtime", notes.every((n) => api.legitimacy(n.frontmatter.construction).status === n.frontmatter.status));
+check("all notes are marked runtime active", notes.every((n) => n.frontmatter.runtime_active === true));
 check("all source counts match source IDs", notes.every((n) => Number(n.frontmatter.source_count) === n.frontmatter.source_ids.length));
 check("every mapped source has a note section", notes.every((n) => n.frontmatter.source_ids.every((id) => n.body.includes(`### ${id}`))));
 check("supported_productive remains zero", notes.filter((n) => n.frontmatter.status === "supported_productive").length === 0);
@@ -42,7 +42,7 @@ check("two rows remain provisional_reaudit", notes.filter((n) => n.frontmatter.s
 check("ordinary provisional remains zero", notes.filter((n) => n.frontmatter.status === "provisional").length === 0);
 check("no note claims productive eligibility", notes.every((n) => /Productive acceptance eligible: \*\*no\*\*/.test(n.body)));
 check("frozen wide registry exists", fs.existsSync(path.join(root, "archive", "registry-pre-obsidian-v0.5.184", "full-construction-registry.json")));
-const result = { schema: "canto-span-source-accounting-audit-v5", checkpoint: "v0.5.184-obsidian-registry-migration", runtime_registry_labels: runtime.size, construction_notes: noteMap.size, retired_labels: retiredSet.size, total: checks.length, passed: checks.length - failures.length, failed: failures.length, status: failures.length ? "FAIL" : "PASS", checks, failures };
+const result = { schema: "canto-span-source-accounting-audit-v5", checkpoint: "v0.5.185-runtime-metadata-reduction", runtime_registry_labels: runtime.size, construction_notes: noteMap.size, retired_labels: retiredSet.size, total: checks.length, passed: checks.length - failures.length, failed: failures.length, status: failures.length ? "FAIL" : "PASS", checks, failures };
 fs.writeFileSync(path.join(outDir, "source-accounting.json"), JSON.stringify(result, null, 2) + "\n");
 console.log(JSON.stringify(result, null, 2));
 if (failures.length) process.exit(1);

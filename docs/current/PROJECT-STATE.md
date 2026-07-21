@@ -2,10 +2,11 @@
 
 ## Current baseline
 
-- runtime candidate: **v0.5.184**
+- runtime candidate: **v0.5.185**
 - active runtime registry: **171 labels**
-- active governance registry: **171 labels**
-- runtime/governance status mismatches: **0**
+- active authoring registry: **171 construction notes**
+- runtime-label / construction-note mismatch: **0**
+- authoring evidence embedded in runtime: **none**
 - retired-label runtime residues: **0**
 - current `supported_productive`: **0**
 - current `provisional_reaudit`: **2**
@@ -24,14 +25,14 @@ The canonical construction registry is the 171-note collection under [`../../gra
 | `lexicalized_only` | 3 |
 | `parser_heuristic` | 21 |
 
-## v0.5.184 runtime correction
+## Runtime and governance separation
 
-The previous documentation/runtime contradiction is closed.
+v0.5.185 removes linguistic status from the runtime entirely rather than trying to keep a second copy synchronized.
 
-- `PostverbalZoPerfectiveVP` is embedded as `provisional_reaudit`, not `supported_productive/high`.
-- `ResourceUseLaiFunctionRelation` is embedded as `provisional_reaudit`.
-- all other active statuses match the current registry;
-- the ten labels retired in v0.5.183 are removed from the active runtime registry;
+- `main.js` contains the active label registry but no construction status, confidence, source, corpus, speaker, or promotion records;
+- `PostverbalZoPerfectiveVP` and `ResourceUseLaiFunctionRelation` remain `provisional_reaudit` in their construction notes;
+- all other linguistic statuses are owned by `grammar/*.md`;
+- the ten retired labels remain absent from the active runtime registry;
 - no status was promoted.
 
 ## Compositional NP subsystem
@@ -81,18 +82,19 @@ The DEMO01 promotion, render, and held-out track is abandoned. Its historical vi
 
 - NP subsystem: **43/43 PASS**
 - aggregate regression: **545/545 PASS**
-- runtime/governance alignment: **PASS**
+- runtime-label / construction-note alignment: **PASS**
+- normalized v0.5.184 → v0.5.185 runtime equivalence: **545/545 PASS**
 - active label count: **171**
 - `supported_productive`: **0**
 
 ## Infrastructure state
 
-Git history is now the authoritative change record. The baseline commit preserves the complete v0.5.184 tree before migration. Checkpoint-state files, recovery-package manifests, and combined recovery-package tooling are archived. Full working-copy exports must include `.git/` and be stored outside the sandbox.
+Git history is now the authoritative change record. The baseline commit preserves the complete v0.5.184 tree before migration, and v0.5.185 records the runtime-metadata reduction as a separate diff. Checkpoint-state files, recovery-package manifests, and combined recovery-package tooling are archived. Full working-copy exports must include `.git/` and be stored outside the sandbox.
 
 ## Infrastructure migration state
 
-Phase 2 is complete. The active registry now consists of 171 Obsidian construction notes. The former wide status, source-accounting, and re-audit tables are frozen under `archive/registry-pre-obsidian-v0.5.184/`.
+Phase 3 is complete. The active authoring registry consists of 171 Obsidian construction notes, while `main.js` retains only active-label information. The former wide status, source-accounting, and re-audit tables are frozen under `archive/registry-pre-obsidian-v0.5.184/`.
 
 ## Next action
 
-Complete infrastructure migration Phase 3: remove authoring-time evidence metadata from `main.js`, retain only runtime parser logic and minimal active-label information, and prove that parser behavior is unchanged. Phase 4 will then enforce status promotion mechanically from construction-note frontmatter.
+Complete infrastructure migration Phase 4: implement a Node validator that reads `grammar/*.md` and mechanically rejects status promotions that fail the current Definition of Done.

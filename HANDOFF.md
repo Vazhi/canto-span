@@ -27,9 +27,10 @@ Do not assume continuity from an earlier conversation unless these checks succee
 
 ## Binding state
 
-- runtime: **v0.5.184**
+- runtime: **v0.5.185**
 - active labels: **171**
-- runtime/governance mismatches: **0**
+- runtime labels / construction notes: **171 / 171**
+- authoring evidence embedded in runtime: **none**
 - `supported_productive`: **0**
 - `PostverbalZoPerfectiveVP`: **provisional_reaudit; Speaker A complete**
 - `ResourceUseLaiFunctionRelation`: **provisional_reaudit**
@@ -38,13 +39,15 @@ Do not assume continuity from an earlier conversation unless these checks succee
 
 ## Current substantive task
 
-Complete infrastructure migration Phase 3:
+Complete infrastructure migration Phase 4:
 
-1. move authoring-time evidence metadata out of `main.js`;
-2. retain parser heuristics and minimal active-label/runtime status data only;
-3. update audits to read construction notes for evidence and status;
-4. prove parser output and the 545-case regression suite are unchanged;
-5. commit the reduction as a readable diff.
+1. read status, sources, speaker count, and boundaries from `grammar/*.md`;
+2. enforce the binding Definition of Done mechanically;
+3. fail any unsupported promotion before it can ship;
+4. keep the runtime independent of authoring evidence metadata;
+5. add focused tests for both accepted and rejected status transitions.
+
+Phase 3 is complete. `main.js` contains parser logic and the active construction-label registry only. The 545-case equivalence check confirms unchanged structural behavior from v0.5.184.
 
 Do not resume broad construction expansion before the Phase 4 promotion validator is in place.
 

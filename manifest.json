@@ -1,9 +1,9 @@
 {
   "id": "canto-span",
   "name": "Canto Span",
-  "version": "0.5.184",
+  "version": "0.5.185",
   "minAppVersion": "1.5.0",
-  "description": "v0.5.184 truthful-governance and compositional-NP candidate: retired labels removed, stale accepted statuses corrected, DEMO01 track abandoned, and licensed NP structure separated from evidence-gated construction claims.",
+  "description": "v0.5.185 runtime-metadata reduction: parser logic and active labels only in main.js; linguistic status, evidence, speaker scope, and promotion rules live in grammar notes and external validators.",
   "author": "Chris Crawford / OpenAI ChatGPT",
   "authorUrl": "",
   "isDesktopOnly": false

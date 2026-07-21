@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.5.185 — runtime metadata reduction
+
+- Removed the 171-record authoring-time evidence registry from `main.js`.
+- Removed linguistic status, confidence, source counts, corpus counts, speaker records, held-out state, and promotion eligibility from runtime parse nodes and diagnostic exports.
+- Retained parser logic and one minimal 171-label active construction registry.
+- Replaced the former runtime grammar-legitimacy diagnostic with an active-label registration audit.
+- Archived tools that synchronized or audited the removed embedded registry.
+- Kept linguistic governance in `grammar/*.md`, where Phase 4 will enforce promotion mechanically.
+- Reduced `main.js` from 1,657,354 to 1,314,766 bytes: 342,588 bytes (20.67%).
+- Passed 545/545 aggregate regressions and 545/545 normalized before/after runtime-equivalence cases.
+
 ## Infrastructure migration Phase 2 — Obsidian construction notes
 
 - Exported all 171 active runtime labels to one note each under `grammar/`.

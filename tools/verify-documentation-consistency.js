@@ -53,7 +53,7 @@ for (const file of markdownFiles) {
 
 const result = {
   schema: "canto-span-documentation-consistency-v1",
-  checkpoint: "v0.5.184-np-subsystem-r1",
+  checkpoint: "v0.5.185-runtime-metadata-reduction",
   status: errors.length === 0 ? "PASS" : "FAIL",
   json_files: jsonFiles.length,
   markdown_files: markdownFiles.length,

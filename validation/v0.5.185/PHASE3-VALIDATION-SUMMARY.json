@@ -1,0 +1,60 @@
+{
+  "schema": "canto-span-phase3-validation-summary-v1",
+  "runtime_version": "0.5.185",
+  "baseline_commit": "6502742",
+  "change": "remove authoring-time linguistic evidence and status metadata from shipped runtime",
+  "main_js": {
+    "before_bytes": 1657354,
+    "after_bytes": 1314766,
+    "removed_bytes": 342588,
+    "reduction_percent": 20.67,
+    "forbidden_metadata_leaks": []
+  },
+  "checks": {
+    "normalized_runtime_equivalence": {
+      "passed": 545,
+      "total": 545,
+      "status": "PASS"
+    },
+    "aggregate_regression": {
+      "passed": 545,
+      "total": 545,
+      "status": "PASS"
+    },
+    "np_subsystem": {
+      "passed": 43,
+      "total": 43,
+      "status": "PASS"
+    },
+    "structural_topology": {
+      "passed": 545,
+      "total": 545,
+      "status": "PASS"
+    },
+    "runtime_registry": {
+      "active_labels": 171,
+      "notes": 171,
+      "status": "PASS"
+    },
+    "construction_notes": {
+      "passed": 3641,
+      "total": 3641,
+      "status": "PASS"
+    },
+    "source_accounting": {
+      "passed": 13,
+      "total": 13,
+      "status": "PASS"
+    },
+    "claim_provenance": {
+      "passed": 304,
+      "total": 304,
+      "status": "PASS"
+    },
+    "documentation": {
+      "broken_local_links": 0,
+      "status": "PASS"
+    }
+  },
+  "overall_status": "PASS"
+}
