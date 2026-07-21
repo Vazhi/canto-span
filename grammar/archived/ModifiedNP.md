@@ -49,6 +49,7 @@ standard_test_file: "tests/constructions/ModifiedNP.json"
 standard_test_coverage: "positive_only"
 standard_positive_test_count: 38
 standard_boundary_test_count: 0
+standard_implementation_probe_count: 0
 standard_executable_test_count: 38
 source_ids: ["SRC-SIO-2011-GE3", "SRC-YU-2006-NOMINAL-MODIFIERS"]
 runtime_active: true

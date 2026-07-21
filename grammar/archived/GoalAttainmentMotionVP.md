@@ -49,6 +49,7 @@ standard_test_file: "tests/constructions/GoalAttainmentMotionVP.json"
 standard_test_coverage: "positive_only"
 standard_positive_test_count: 2
 standard_boundary_test_count: 0
+standard_implementation_probe_count: 0
 standard_executable_test_count: 2
 source_ids: ["SRC-SHAN-JIN-2025-MOTION-TYPOLOGY", "SRC-WONG-2023-LANGUAGE-SAMPLE"]
 runtime_active: true

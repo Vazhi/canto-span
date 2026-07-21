@@ -49,6 +49,7 @@ standard_test_file: "tests/constructions/ProgressiveTransitivePredicate.json"
 standard_test_coverage: "no_direct_cases"
 standard_positive_test_count: 0
 standard_boundary_test_count: 0
+standard_implementation_probe_count: 0
 standard_executable_test_count: 0
 source_ids: ["SRC-ALDERETE-ETAL-2017-SYNOPSIS", "SRC-FAN-2024-JAU-VP-ASPECT"]
 runtime_active: true

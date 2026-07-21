@@ -49,6 +49,7 @@ standard_test_file: "tests/constructions/CognitionDelimitedVP.json"
 standard_test_coverage: "no_direct_cases"
 standard_positive_test_count: 0
 standard_boundary_test_count: 0
+standard_implementation_probe_count: 0
 standard_executable_test_count: 0
 source_ids: ["SRC-SIO-BOND-2025", "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"]
 runtime_active: true

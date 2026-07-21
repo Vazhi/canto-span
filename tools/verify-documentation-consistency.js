@@ -53,7 +53,7 @@ for (const file of markdownFiles) {
 
 const result = {
   schema: "canto-span-documentation-consistency-v1",
-  checkpoint: "v0.5.188-rul-survey-readiness",
+  checkpoint: "v0.5.189-runtime-reachability",
   status: errors.length === 0 ? "PASS" : "FAIL",
   json_files: jsonFiles.length,
   markdown_files: markdownFiles.length,

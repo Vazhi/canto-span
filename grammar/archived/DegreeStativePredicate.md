@@ -49,6 +49,7 @@ standard_test_file: "tests/constructions/DegreeStativePredicate.json"
 standard_test_coverage: "positive_only"
 standard_positive_test_count: 21
 standard_boundary_test_count: 0
+standard_implementation_probe_count: 0
 standard_executable_test_count: 21
 source_ids: ["SRC-ALDERETE-ETAL-2017-SYNOPSIS", "SRC-LAM-LAU-LEE-2024-SEGMENTATION"]
 runtime_active: true

@@ -31,7 +31,8 @@ for (const [construction, record] of byConstruction) {
   text = setFrontmatter(text, "standard_test_coverage", JSON.stringify(record.state), "standard_test_file");
   text = setFrontmatter(text, "standard_positive_test_count", String(record.positive_case_count), "standard_test_coverage");
   text = setFrontmatter(text, "standard_boundary_test_count", String(record.boundary_case_count), "standard_positive_test_count");
-  text = setFrontmatter(text, "standard_executable_test_count", String(record.executable_case_count), "standard_boundary_test_count");
+  text = setFrontmatter(text, "standard_implementation_probe_count", String(record.implementation_probe_count || 0), "standard_boundary_test_count");
+  text = setFrontmatter(text, "standard_executable_test_count", String(record.executable_case_count), "standard_implementation_probe_count");
   if (record.boundary_case_count > 0) {
     text = setFrontmatter(text, "negative_tests_executable", "true");
     text = setFrontmatter(text, "negative_tests_passing", "true");

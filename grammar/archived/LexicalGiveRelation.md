@@ -49,6 +49,7 @@ standard_test_file: "tests/constructions/LexicalGiveRelation.json"
 standard_test_coverage: "positive_only"
 standard_positive_test_count: 4
 standard_boundary_test_count: 0
+standard_implementation_probe_count: 0
 standard_executable_test_count: 4
 source_ids: ["SRC-BODOMO-LAM-YU-2003", "SRC-CHIN-2011-BEI", "SRC-LI-LEE-2021-DATIVE", "SRC-NGAI-2023-BEI", "SRC-WONG-2023-BEI", "SRC-XU-PEYRAUBE-1997-DOC"]
 runtime_active: true

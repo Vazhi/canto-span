@@ -47,7 +47,7 @@ for (const note of notes) {
   byLabel.set(label, note);
   const filename = path.basename(note.file, ".md");
   check(`filename matches construction: ${filename}`, filename === label, `${filename} != ${label}`);
-  for (const field of [...new Set(["title", "type", "construction", "status", "confidence", "claim_layer", "lane", "last_reviewed", ...REQUIRED_FIELDS, "standard_test_file", "standard_test_coverage", "standard_positive_test_count", "standard_boundary_test_count", "standard_executable_test_count", "source_ids", "runtime_active", "workflow_state", "workflow_priority", "workflow_since", "workflow_reason"])]) {
+  for (const field of [...new Set(["title", "type", "construction", "status", "confidence", "claim_layer", "lane", "last_reviewed", ...REQUIRED_FIELDS, "standard_test_file", "standard_test_coverage", "standard_positive_test_count", "standard_boundary_test_count", "standard_implementation_probe_count", "standard_executable_test_count", "source_ids", "runtime_active", "workflow_state", "workflow_priority", "workflow_since", "workflow_reason"])]) {
     check(`${label} has ${field}`, Object.prototype.hasOwnProperty.call(fm, field));
   }
   check(`${label} type is construction`, fm.type === "canto-span-construction", String(fm.type));
@@ -87,6 +87,8 @@ for (const note of notes) {
     check(`${label} standard coverage matches`, testSpec.coverage?.state === fm.standard_test_coverage, `${testSpec.coverage?.state} != ${fm.standard_test_coverage}`);
     check(`${label} standard positive count matches`, Number(testSpec.coverage?.positive_case_count) === Number(fm.standard_positive_test_count), `${testSpec.coverage?.positive_case_count} != ${fm.standard_positive_test_count}`);
     check(`${label} standard boundary count matches`, Number(testSpec.coverage?.boundary_case_count) === Number(fm.standard_boundary_test_count), `${testSpec.coverage?.boundary_case_count} != ${fm.standard_boundary_test_count}`);
+    check(`${label} standard implementation probe count matches`, Number(testSpec.coverage?.implementation_probe_count || 0) === Number(fm.standard_implementation_probe_count), `${testSpec.coverage?.implementation_probe_count || 0} != ${fm.standard_implementation_probe_count}`);
+    check(`${label} implementation probes carry zero linguistic evidence weight`, (testSpec.implementation_probe_cases || []).every((item) => item.linguistic_evidence_weight === 0 && item.purpose === "runtime_reachability_only"));
     check(`${label} standard executable count matches`, Number(testSpec.coverage?.executable_case_count) === Number(fm.standard_executable_test_count), `${testSpec.coverage?.executable_case_count} != ${fm.standard_executable_test_count}`);
     check(`${label} executable-boundary flag matches standard cases`, fm.negative_tests_executable !== true || Number(testSpec.coverage?.boundary_case_count) > 0);
   }
@@ -126,7 +128,7 @@ const expectedCounts = {
   parser_heuristic: 20,
   lexicalized_only: 3,
 };
-check("status counts match v0.5.188 RUL survey-readiness checkpoint", Object.entries(expectedCounts).every(([status, count]) => counts[status] === count) && Object.keys(counts).length === Object.keys(expectedCounts).length, JSON.stringify(counts));
+check("status counts match v0.5.189 runtime-reachability checkpoint", Object.entries(expectedCounts).every(([status, count]) => counts[status] === count) && Object.keys(counts).length === Object.keys(expectedCounts).length, JSON.stringify(counts));
 
 const result = {
   schema: "canto-span-construction-notes-validation-v2",

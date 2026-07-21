@@ -46,10 +46,11 @@ implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: false
 promotion_gate_version: "v3"
 standard_test_file: "tests/constructions/Topic.json"
-standard_test_coverage: "no_direct_cases"
+standard_test_coverage: "implementation_positive_only"
 standard_positive_test_count: 0
 standard_boundary_test_count: 0
-standard_executable_test_count: 0
+standard_implementation_probe_count: 1
+standard_executable_test_count: 1
 source_ids: []
 runtime_active: true
 workflow_state: "archived"
@@ -91,6 +92,7 @@ No pattern-specific external source is currently mapped.
 ## Negative and boundary cases
 
 - Standard executable test file: `tests/constructions/Topic.json`
+- Implementation-only reachability: `REACH-014` emits this label for `呢隻杯我用嚟飲水。`; linguistic evidence weight is **0**; provenance: `review-packets/v0.5.182/IFR02-D1/focused-evaluation-packet.json#development_set.cases[19]`.
 - Evidence state: `none_recorded`
 - Executable or review records containing this label:
   - `review-packets/cp022-evaluation/EP-CP022-I1A-I01-D1/development-baseline.json`

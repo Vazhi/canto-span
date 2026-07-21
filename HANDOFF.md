@@ -13,7 +13,7 @@ The recovery ZIP must include `.git/`.
 
 ## Binding state
 
-- runtime: **v0.5.188**
+- runtime: **v0.5.189**
 - runtime labels / current construction notes: **170 / 170**
 - workflow: **2 active / 168 archived**
 - retired labels: **11**
@@ -48,13 +48,16 @@ clean instrument.
 4. `docs/current/NATIVE-SPEAKER-REVIEW.md`
 5. `review-packets/native-panel/active-v2/panel-policy.json`
 6. `review-packets/native-panel/active-v2/panel-review-state.json`
-7. `docs/research/CP032-P1-RUL01-SURVEY-READINESS-R1.md`
-8. `docs/research/CP032-P1-RUL01-CONTRAST-REQUIREMENTS-R1.tsv`
+7. `docs/research/CP033-P1-RUNTIME-REACHABILITY-AUDIT-R1.md`
+8. `docs/research/CP033-P1-RUNTIME-REACHABILITY-INVENTORY-R1.tsv`
+9. `docs/research/CP032-P1-RUL01-SURVEY-READINESS-R1.md`
+10. `docs/research/CP032-P1-RUL01-CONTRAST-REQUIREMENTS-R1.tsv`
 
 ## Next substantive work
 
-The RUL source/runtime contrast map is complete. Before creating any new survey,
-remind the user to provide the prompt that will guide survey creation. Then build
-one mixed PFV/RUL `pilot-v1` with a graded scale, uncertainty option,
-interpretation questions, contexts, unrelated fillers, counterbalanced order,
-and adjacent correction fields. Every respondent uses the same instrument.
+Continue the implementation-only reachability audit with the 53 labels that
+remain `no_direct_cases`. Work in small related families, inspect exact runtime
+constructors, and add only semantically coherent zero-weight probes. Do not infer
+linguistic support from reachability. When native-panel evidence becomes the
+blocking dependency again, remind the user to provide the survey-guidance prompt
+before drafting the instrument.

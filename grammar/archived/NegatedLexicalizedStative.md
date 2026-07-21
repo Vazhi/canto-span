@@ -49,6 +49,7 @@ standard_test_file: "tests/constructions/NegatedLexicalizedStative.json"
 standard_test_coverage: "no_direct_cases"
 standard_positive_test_count: 0
 standard_boundary_test_count: 0
+standard_implementation_probe_count: 0
 standard_executable_test_count: 0
 source_ids: ["SRC-CHIN-2018-PROHIBITIVES", "SRC-LAM-LAU-LEE-2024-SEGMENTATION", "SRC-YIP-1988-NEGATION"]
 runtime_active: true

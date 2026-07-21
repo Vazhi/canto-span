@@ -50,6 +50,7 @@ standard_test_file: "tests/constructions/PostverbalZoPerfectiveVP.json"
 standard_test_coverage: "positive_and_boundary"
 standard_positive_test_count: 32
 standard_boundary_test_count: 12
+standard_implementation_probe_count: 0
 standard_executable_test_count: 45
 source_ids: ["SRC-FAN-CHAN-2022", "SRC-SIO-BOND-2025", "SRC-SYBESMA-2013", "SRC-YIP-MATTHEWS-2000-BASIC"]
 runtime_active: true

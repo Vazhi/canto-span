@@ -65,6 +65,11 @@ required=(
   docs/research/CP032-P1-RUL01-SURVEY-READINESS-R1.md
   docs/research/CP032-P1-RUL01-CONTRAST-REQUIREMENTS-R1.tsv
   docs/releases/v0.5.188-rul-survey-readiness-audit.json
+  docs/research/CP033-P1-RUNTIME-REACHABILITY-AUDIT-R1.md
+  docs/research/CP033-P1-RUNTIME-REACHABILITY-INVENTORY-R1.tsv
+  docs/releases/v0.5.189-runtime-reachability-audit.json
+  test-data/runtime-reachability-probes-v1.json
+  tools/verify-runtime-reachability.js
   test-data/rul-survey-readiness-probes-v1.json
   tools/verify-rul-survey-readiness.js
   tools/verify-release-handoff.js
@@ -101,6 +106,7 @@ node tools/verify-active-working-set.js >/dev/null
 node tools/run-current-focused.js >/dev/null
 node tools/verify-active-review-workflow.js >/dev/null
 node tools/verify-rul-survey-readiness.js >/dev/null
+node tools/verify-runtime-reachability.js >/dev/null
 node tools/audit-native-conflict-burden.js >/dev/null
 node tools/verify-native-panel-snapshot.js >/dev/null
 node tools/verify-pfv-panel-snapshot.js >/dev/null

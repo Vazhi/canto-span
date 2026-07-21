@@ -49,6 +49,7 @@ standard_test_file: "tests/constructions/CompoundDirectionalMotionVP.json"
 standard_test_coverage: "no_direct_cases"
 standard_positive_test_count: 0
 standard_boundary_test_count: 0
+standard_implementation_probe_count: 0
 standard_executable_test_count: 0
 source_ids: ["SRC-CHOR-2018-DIRECTIONALS", "SRC-WONG-2023-LANGUAGE-SAMPLE", "SRC-YIU-2016-DIRECTIONAL-ASPECT"]
 runtime_active: true

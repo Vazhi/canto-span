@@ -49,6 +49,7 @@ standard_test_file: "tests/constructions/DesiderativeVP.json"
 standard_test_coverage: "positive_only"
 standard_positive_test_count: 12
 standard_boundary_test_count: 0
+standard_implementation_probe_count: 0
 standard_executable_test_count: 12
 source_ids: ["SRC-LUKE-NANCARROW-1998-AUXILIARIES", "SRC-YIP-MATTHEWS-2000-BASIC"]
 runtime_active: true

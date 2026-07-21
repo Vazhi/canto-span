@@ -49,6 +49,7 @@ standard_test_file: "tests/constructions/ExperientialYesNoQuestion.json"
 standard_test_coverage: "positive_only"
 standard_positive_test_count: 2
 standard_boundary_test_count: 0
+standard_implementation_probe_count: 0
 standard_executable_test_count: 2
 source_ids: ["SRC-FAN-2024-JAU-VP-ASPECT", "SRC-HARA-2023-POLAR", "SRC-MATTHEWS-YIP-2011-ASPECT-MULTIMEDIA", "SRC-YIP-MATTHEWS-2000-BASIC"]
 runtime_active: true

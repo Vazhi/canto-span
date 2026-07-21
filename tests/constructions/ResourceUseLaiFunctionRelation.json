@@ -179,6 +179,7 @@
     }
   ],
   "np_cases": [],
+  "implementation_probe_cases": [],
   "coverage": {
     "state": "positive_and_boundary",
     "exact_snapshot_positive_count": 0,
@@ -186,6 +187,7 @@
     "focused_boundary_count": 14,
     "focused_review_only_count": 0,
     "np_case_count": 0,
+    "implementation_probe_count": 0,
     "positive_case_count": 7,
     "boundary_case_count": 14,
     "executable_case_count": 21

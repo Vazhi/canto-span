@@ -394,6 +394,7 @@
       "expected_classifier_compatibility": "incompatible"
     }
   ],
+  "implementation_probe_cases": [],
   "coverage": {
     "state": "positive_only",
     "exact_snapshot_positive_count": 23,
@@ -401,6 +402,7 @@
     "focused_boundary_count": 0,
     "focused_review_only_count": 0,
     "np_case_count": 19,
+    "implementation_probe_count": 0,
     "positive_case_count": 42,
     "boundary_case_count": 0,
     "executable_case_count": 42

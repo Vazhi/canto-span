@@ -29,24 +29,28 @@ This replaces active bespoke render-review documents and scattered entry-point c
 
 ### Per-construction files
 
-Every one of the 171 active labels has exactly one file under `tests/constructions/`.
+Every one of the 170 active labels has exactly one file under `tests/constructions/`.
 
 Each file records the current executable cases assigned to that construction and an explicit coverage state. The construction-note frontmatter points to the file and records its positive, boundary, and total executable counts.
 
-Current Phase 5 coverage:
+Current v0.5.189 coverage:
 
 | Coverage state | Constructions |
 |---|---:|
 | positive and boundary | 2 |
 | positive only | 100 |
+| implementation positive only | 15 |
 | boundary only | 0 |
-| no direct cases | 69 |
+| no direct cases | 53 |
 
-The 69 uncovered labels are visible test debt. Their empty files do not claim that the constructions are correct, natural, or supported.
+`implementation_positive_only` means the parser emits the label on a frozen
+reachability probe, but the case has explicit zero linguistic evidence weight.
+The 53 uncovered labels remain visible test debt. Empty files do not claim that
+the constructions are correct, natural, supported, or unreachable.
 
 ## Boundary suites
 
-`PostverbalZoPerfectiveVP` and `ResourceUseLaiFunctionRelation` currently have explicit standardized positive and boundary suites. Both suites pass, but executable behavior is only one part of the Definition of Done. PFV is narrowly `provisional`; RUL is `research_pending`.
+`PostverbalZoPerfectiveVP` and `ResourceUseLaiFunctionRelation` currently have explicit standardized positive and boundary suites. Both suites pass, but executable behavior is only one part of the Definition of Done. Both PFV and RUL remain `research_pending`.
 
 ## Updating tests
 
@@ -56,7 +60,10 @@ The 69 uncovered labels are visible test debt. Their empty files do not claim th
 4. Update the corresponding construction note counts with `node tools/sync-construction-test-metadata.js` when the file inventory changes.
 5. Run `./tools/verify-repository.sh` before committing.
 
-`tools/build-construction-tests.js` is the mechanical Phase 5 migration/rebuild tool. Do not run it casually after hand-editing construction files, because it regenerates them from the canonical regression fixture, NP matrix, and the two migrated focused packets.
+`tools/build-construction-tests.js` is the mechanical construction-test rebuild
+tool. Do not run it casually after hand-editing construction files, because it
+regenerates them from the canonical regression fixture, NP matrix, the two
+migrated focused packets, and the zero-weight runtime-reachability probe file.
 
 ## Evidence boundary
 

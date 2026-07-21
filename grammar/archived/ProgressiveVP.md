@@ -49,6 +49,7 @@ standard_test_file: "tests/constructions/ProgressiveVP.json"
 standard_test_coverage: "positive_only"
 standard_positive_test_count: 6
 standard_boundary_test_count: 0
+standard_implementation_probe_count: 0
 standard_executable_test_count: 6
 source_ids: ["SRC-ALDERETE-ETAL-2017-SYNOPSIS", "SRC-FAN-2024-JAU-VP-ASPECT", "SRC-KATAOKA-2018-PROGRESSIVE-GAN", "SRC-MATTHEWS-YIP-2011-ASPECT-MULTIMEDIA", "SRC-SIO-BOND-2025"]
 runtime_active: true

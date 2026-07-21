@@ -49,6 +49,7 @@ standard_test_file: "tests/constructions/ModalANotAQuestion.json"
 standard_test_coverage: "positive_only"
 standard_positive_test_count: 2
 standard_boundary_test_count: 0
+standard_implementation_probe_count: 0
 standard_executable_test_count: 2
 source_ids: ["SRC-LAW-2001-ANOTA", "SRC-LI-2017-ANOTA"]
 runtime_active: true

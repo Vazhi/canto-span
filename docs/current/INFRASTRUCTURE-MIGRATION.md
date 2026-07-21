@@ -113,3 +113,13 @@ The fixed two-role reviewer workflow is historical. Active evidence governance
 now uses one role-neutral panel, item-level usable-judgment thresholds, and
 clean-instrument gates. The former v1 Google Forms package is preserved only as
 provenance for collected legacy data.
+
+## v0.5.189 runtime-reachability checkpoint
+
+- scanned 1,885 unique Cantonese-bearing strings from bounded structured project materials;
+- identified 15 of the 68 formerly uncovered labels as observable in existing material;
+- added one zero-linguistic-weight executable reachability probe for each observed label;
+- introduced `implementation_positive_only` to keep runtime reachability separate from direct linguistic cases;
+- retained 53 labels as `no_direct_cases`; “not observed” is not treated as unreachable;
+- retired no labels because all 68 retain runtime code references;
+- changed no parser span behavior or linguistic status.

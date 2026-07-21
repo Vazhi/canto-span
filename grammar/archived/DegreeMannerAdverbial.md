@@ -49,6 +49,7 @@ standard_test_file: "tests/constructions/DegreeMannerAdverbial.json"
 standard_test_coverage: "positive_only"
 standard_positive_test_count: 3
 standard_boundary_test_count: 0
+standard_implementation_probe_count: 0
 standard_executable_test_count: 3
 source_ids: ["SRC-CHOW-2007-CANTONESE-EVERYONE", "SRC-WONG-2023-LANGUAGE-SAMPLE", "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"]
 runtime_active: true

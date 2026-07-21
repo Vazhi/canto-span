@@ -4,7 +4,7 @@
 
 | Measure | Current value |
 |---|---:|
-| Runtime | v0.5.188 |
+| Runtime | v0.5.189 |
 | Runtime labels | 170 |
 | Current construction notes | 170 |
 | Active working notes | 2 |
@@ -19,6 +19,26 @@
 | `parser_heuristic` | 20 |
 
 The canonical registry is the union of `grammar/active/*.md` and `grammar/archived/*.md`; it matches the 170 runtime labels exactly.
+
+## v0.5.189 runtime-reachability checkpoint
+
+The 68 labels that had no direct standardized case at v0.5.188 were checked
+against 1,885 unique Cantonese-bearing strings extracted from structured project
+materials. Fifteen labels were observed and now have one executable
+`implementation_positive_only` probe each. Every probe has zero linguistic
+evidence weight. Fifty-three labels remain `no_direct_cases` and require
+code-specific reachability review.
+
+No label was retired: every audited label still has at least one runtime code
+reference. “Not observed” is not treated as “unreachable.” Parser behavior and
+linguistic status are unchanged.
+
+Current construction coverage:
+
+- positive and boundary: **2**;
+- positive only: **100**;
+- implementation positive only: **15**;
+- no direct cases: **53**.
 
 ## v0.5.188 RUL survey-readiness checkpoint
 
@@ -72,14 +92,14 @@ critical-item sample remains zero.
 
 - regression: **545 cases**;
 - NP subsystem: **43 cases**;
-- construction assertions: **1,156**;
+- construction assertions: **1,171**;
 - construction test files: **170**;
 - no parser span behavior changed in this migration.
 
 ## Next milestone
 
-Wait for the user prompt that will guide survey creation, then build a role-neutral
-mixed RUL/PFV `pilot-v1` from the frozen CP032 contrast requirements. Release it
-only as a pilot, collect 5–10 usable judgments per item, and audit the instrument
-before locking any larger collection. Do not reopen the broad archived backlog
-until the wave reaches an adjudicated disposition.
+Continue the 53-label implementation reachability backlog in small related
+families. The first family should cover low-reference wrappers and clause labels,
+with exact constructor inspection before any probe is added. Survey work remains
+blocked until the user supplies the requested survey-guidance prompt; at that
+point resume the mixed RUL/PFV `pilot-v1` lifecycle.

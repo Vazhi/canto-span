@@ -49,6 +49,7 @@ standard_test_file: "tests/constructions/SpeechTransferClause.json"
 standard_test_coverage: "no_direct_cases"
 standard_positive_test_count: 0
 standard_boundary_test_count: 0
+standard_implementation_probe_count: 0
 standard_executable_test_count: 0
 source_ids: ["SRC-MATTHEWS-2006-SVC", "SRC-YIP-MATTHEWS-2017-INTERMEDIATE"]
 runtime_active: true

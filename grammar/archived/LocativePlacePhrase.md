@@ -49,6 +49,7 @@ standard_test_file: "tests/constructions/LocativePlacePhrase.json"
 standard_test_coverage: "positive_only"
 standard_positive_test_count: 15
 standard_boundary_test_count: 0
+standard_implementation_probe_count: 0
 standard_executable_test_count: 15
 source_ids: ["SRC-KWAN-2010-LOCATIVE", "SRC-YIP-MATTHEWS-2000-BASIC"]
 runtime_active: true

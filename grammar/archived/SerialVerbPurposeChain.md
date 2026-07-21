@@ -49,6 +49,7 @@ standard_test_file: "tests/constructions/SerialVerbPurposeChain.json"
 standard_test_coverage: "positive_only"
 standard_positive_test_count: 5
 standard_boundary_test_count: 0
+standard_implementation_probe_count: 0
 standard_executable_test_count: 5
 source_ids: ["SRC-CHOR-2018-DIRECTIONALS", "SRC-LAM-BODOMO-2003-VERB-ORDER", "SRC-MATTHEWS-2006-SVC"]
 runtime_active: true

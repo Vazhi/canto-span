@@ -49,6 +49,7 @@ standard_test_file: "tests/constructions/DiMarkedNP.json"
 standard_test_coverage: "positive_only"
 standard_positive_test_count: 5
 standard_boundary_test_count: 0
+standard_implementation_probe_count: 0
 standard_executable_test_count: 5
 source_ids: ["SRC-WINTERSTEIN-ETAL-2023-NOMINAL-EXPRESSIONS"]
 runtime_active: true

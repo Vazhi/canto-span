@@ -49,6 +49,7 @@ standard_test_file: "tests/constructions/ConditionalClause.json"
 standard_test_coverage: "positive_only"
 standard_positive_test_count: 4
 standard_boundary_test_count: 0
+standard_implementation_probe_count: 0
 standard_executable_test_count: 4
 source_ids: ["SRC-CHENG-2023-TP-SFP-CONDITIONAL", "SRC-IIDA-2009-CONDITIONAL-GE3", "SRC-LIANG-MAI-2025-GRAMMAR-CODING", "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"]
 runtime_active: true

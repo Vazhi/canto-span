@@ -393,6 +393,7 @@
       "forbid_narrow_pfv": true
     }
   ],
+  "implementation_probe_cases": [],
   "coverage": {
     "state": "positive_and_boundary",
     "exact_snapshot_positive_count": 16,
@@ -400,6 +401,7 @@
     "focused_boundary_count": 7,
     "focused_review_only_count": 1,
     "np_case_count": 11,
+    "implementation_probe_count": 0,
     "positive_case_count": 32,
     "boundary_case_count": 12,
     "executable_case_count": 45

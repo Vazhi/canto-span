@@ -1,3 +1,12 @@
+## v0.5.189 — runtime reachability audit
+
+- Scanned 1,885 unique Cantonese-bearing strings from structured project materials.
+- Found 15 of the 68 formerly uncovered labels in existing parser output and added one zero-weight implementation probe for each.
+- Added the distinct `implementation_positive_only` coverage state so reachability is not confused with linguistic evidence.
+- Left 53 labels as `no_direct_cases`; none were declared unreachable or retired.
+- Increased standardized construction assertions from 1,156 to 1,171.
+- Changed no parser span behavior, runtime label, or linguistic status.
+
 ## v0.5.188 — RUL survey-readiness checkpoint
 
 - Reopened the checked RUL sources and preserved the competing instrumental-SVC, purposive-linker, and intended-function analyses.

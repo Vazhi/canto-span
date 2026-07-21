@@ -49,6 +49,7 @@ standard_test_file: "tests/constructions/CognitionStatementClause.json"
 standard_test_coverage: "positive_only"
 standard_positive_test_count: 8
 standard_boundary_test_count: 0
+standard_implementation_probe_count: 0
 standard_executable_test_count: 8
 source_ids: ["SRC-LUI-2025-REPORTED-THOUGHT", "SRC-YAP-WONG-CHOR-2014-STANCE"]
 runtime_active: true

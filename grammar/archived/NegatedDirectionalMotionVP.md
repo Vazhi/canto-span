@@ -49,6 +49,7 @@ standard_test_file: "tests/constructions/NegatedDirectionalMotionVP.json"
 standard_test_coverage: "positive_only"
 standard_positive_test_count: 10
 standard_boundary_test_count: 0
+standard_implementation_probe_count: 0
 standard_executable_test_count: 10
 source_ids: ["SRC-LIANG-MAI-2025-GRAMMAR-CODING", "SRC-WONG-2023-LANGUAGE-SAMPLE", "SRC-YIU-2016-DIRECTIONAL-ASPECT"]
 runtime_active: true

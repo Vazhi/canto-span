@@ -49,6 +49,7 @@ standard_test_file: "tests/constructions/PossessiveTransferClause.json"
 standard_test_coverage: "no_direct_cases"
 standard_positive_test_count: 0
 standard_boundary_test_count: 0
+standard_implementation_probe_count: 0
 standard_executable_test_count: 0
 source_ids: ["SRC-LAM-LAU-LEE-2024-SEGMENTATION", "SRC-LI-LEE-2021-DATIVE", "SRC-LUKE-NANCARROW-1998-AUXILIARIES"]
 runtime_active: true

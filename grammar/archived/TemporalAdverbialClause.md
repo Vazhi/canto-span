@@ -49,6 +49,7 @@ standard_test_file: "tests/constructions/TemporalAdverbialClause.json"
 standard_test_coverage: "no_direct_cases"
 standard_positive_test_count: 0
 standard_boundary_test_count: 0
+standard_implementation_probe_count: 0
 standard_executable_test_count: 0
 source_ids: ["SRC-YIP-2024-TEMPORAL-ADVERBIAL-CLAUSES"]
 runtime_active: true

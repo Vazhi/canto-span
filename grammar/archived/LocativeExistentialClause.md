@@ -49,6 +49,7 @@ standard_test_file: "tests/constructions/LocativeExistentialClause.json"
 standard_test_coverage: "positive_only"
 standard_positive_test_count: 6
 standard_boundary_test_count: 0
+standard_implementation_probe_count: 0
 standard_executable_test_count: 6
 source_ids: ["SRC-LAM-2018-NEGATION-ASPECT", "SRC-LAM-LAU-LEE-2024-SEGMENTATION", "SRC-YIP-MATTHEWS-2000-BASIC"]
 runtime_active: true

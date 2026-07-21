@@ -49,6 +49,7 @@ standard_test_file: "tests/constructions/ImpersonalEnvironmentalClause.json"
 standard_test_coverage: "positive_only"
 standard_positive_test_count: 15
 standard_boundary_test_count: 0
+standard_implementation_probe_count: 0
 standard_executable_test_count: 15
 source_ids: ["SRC-ALDERETE-ETAL-2017-SYNOPSIS", "SRC-TSUNO-2021-VOICE-TRANSITIVITY", "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"]
 runtime_active: true

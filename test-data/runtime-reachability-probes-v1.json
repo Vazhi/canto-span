@@ -1,0 +1,158 @@
+{
+  "schema": "canto-span-runtime-reachability-probes-v1",
+  "runtime_version": "0.5.189",
+  "linguistic_evidence_weight": 0,
+  "policy": "These cases protect observed runtime reachability only. They do not attest naturalness, productivity, construction identity, or promotion eligibility.",
+  "cases": [
+    {
+      "case_id": "REACH-001",
+      "construction": "AcceptabilityANotA",
+      "source": "得唔得？",
+      "provenance": "test-data/cp021b-lx1-construction-freeze-baseline.json#cases[407].context_source",
+      "source_role": "historical_context_fixture",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "REACH-002",
+      "construction": "CopularANotAQuestion",
+      "source": "係唔係你嘅？",
+      "provenance": "test-data/pre-intermediate-gold-corpus.tsv#PI-MODQ-012",
+      "source_role": "candidate_unverified_corpus_item",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "REACH-003",
+      "construction": "DegreeMannerModifiedVP",
+      "source": "快啲嚟。",
+      "provenance": "test-data/pre-intermediate-gold-corpus.tsv#PI-ADJ-007",
+      "source_role": "candidate_unverified_corpus_item",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "REACH-004",
+      "construction": "IdentificationFragment",
+      "source": "就係冇屋就可以㗎嘛。",
+      "provenance": "test-data/natural-corpus-wechat-father-daughter-001-units.tsv#U059",
+      "source_role": "sanitized_natural_corpus_unit",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "REACH-005",
+      "construction": "IntendedFunctionRelation",
+      "source": "呢隻杯我用嚟飲水。",
+      "provenance": "review-packets/v0.5.182/IFR02-D1/focused-evaluation-packet.json#development_set.cases[19]",
+      "source_role": "historical_focused_probe",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "REACH-006",
+      "construction": "LocativeFragment",
+      "source": "喺屋企。",
+      "provenance": "review-packets/cp022-evaluation/EP-CP022-I1A-I01-D1/focused-evaluation-packet.json#negative_boundaries[3]",
+      "source_role": "historical_focused_boundary",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "REACH-007",
+      "construction": "LocativePostureVP",
+      "source": "佢坐喺度。",
+      "provenance": "test-data/pre-intermediate-gold-corpus.tsv#PI-VP-010",
+      "source_role": "candidate_unverified_corpus_item",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "REACH-008",
+      "construction": "MannerAdverbialVP",
+      "source": "佢慢慢行。",
+      "provenance": "test-data/pre-intermediate-gold-corpus.tsv#PI-ADJ-005",
+      "source_role": "candidate_unverified_corpus_item",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "REACH-009",
+      "construction": "NegatedStativePredicate",
+      "source": "你好似唔開心噃。",
+      "provenance": "test-data/w17-naturalized-alternatives.tsv#COR-W17-013",
+      "source_role": "reviewed_naturalized_alternative",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "REACH-010",
+      "construction": "PostThemeParticipantRelation",
+      "source": "我買咗杯咖啡畀佢。",
+      "provenance": "review-packets/cp021b-native-expert-design-v1/stage-b-expert/completed/ADJUDICATION-FORM-CP021B-AI-ADJ-01.tsv#CP021B-NR0-N01",
+      "source_role": "historical_adjudication_surface",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "REACH-011",
+      "construction": "PreferenceVP",
+      "source": "好似我噉，我就鍾意跑步。",
+      "provenance": "test-data/w17-glossika-corpus.tsv#COR-W17-006",
+      "source_role": "reviewed_corpus_surface",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "REACH-012",
+      "construction": "PriorityMarkerClause",
+      "source": "唔同你講住先。",
+      "provenance": "test-data/natural-corpus-wechat-father-daughter-001-units.tsv#U033",
+      "source_role": "sanitized_natural_corpus_unit",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "REACH-013",
+      "construction": "SuggestionQuestion",
+      "source": "你攰唔攰？不如休息吓。",
+      "provenance": "test-data/w17-glossika-corpus.tsv#COR-W17-010",
+      "source_role": "reviewed_corpus_surface",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "REACH-014",
+      "construction": "Topic",
+      "source": "呢隻杯我用嚟飲水。",
+      "provenance": "review-packets/v0.5.182/IFR02-D1/focused-evaluation-packet.json#development_set.cases[19]",
+      "source_role": "historical_focused_probe",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "REACH-015",
+      "construction": "VocativeAddressTerm",
+      "source": "阿妹，過嚟。",
+      "provenance": "test-data/WECHAT-GX-TRAVEL-002-LEXICON-PATCH-TEST-MATRIX-R2.tsv#line-31",
+      "source_role": "lexicon_patch_probe",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    }
+  ]
+}

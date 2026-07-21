@@ -49,6 +49,7 @@ standard_test_file: "tests/constructions/ProgressiveDirectionalVP.json"
 standard_test_coverage: "positive_only"
 standard_positive_test_count: 1
 standard_boundary_test_count: 0
+standard_implementation_probe_count: 0
 standard_executable_test_count: 1
 source_ids: ["SRC-KATAOKA-2018-PROGRESSIVE-GAN", "SRC-SHAN-JIN-2025-MOTION-TYPOLOGY", "SRC-YIU-2016-DIRECTIONAL-ASPECT"]
 runtime_active: true

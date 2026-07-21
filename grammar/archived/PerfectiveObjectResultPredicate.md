@@ -49,6 +49,7 @@ standard_test_file: "tests/constructions/PerfectiveObjectResultPredicate.json"
 standard_test_coverage: "no_direct_cases"
 standard_positive_test_count: 0
 standard_boundary_test_count: 0
+standard_implementation_probe_count: 0
 standard_executable_test_count: 0
 source_ids: ["SRC-KEDZIOR-2023", "SRC-MATTHEWS-YIP-2011-ASPECT-MULTIMEDIA"]
 runtime_active: true

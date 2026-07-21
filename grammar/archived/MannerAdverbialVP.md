@@ -46,10 +46,11 @@ implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
 standard_test_file: "tests/constructions/MannerAdverbialVP.json"
-standard_test_coverage: "no_direct_cases"
+standard_test_coverage: "implementation_positive_only"
 standard_positive_test_count: 0
 standard_boundary_test_count: 0
-standard_executable_test_count: 0
+standard_implementation_probe_count: 1
+standard_executable_test_count: 1
 source_ids: ["SRC-LEUNG-2014-COVERBS", "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"]
 runtime_active: true
 workflow_state: "archived"
@@ -105,6 +106,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 ## Negative and boundary cases
 
 - Standard executable test file: `tests/constructions/MannerAdverbialVP.json`
+- Implementation-only reachability: `REACH-008` emits this label for `佢慢慢行。`; linguistic evidence weight is **0**; provenance: `test-data/pre-intermediate-gold-corpus.tsv#PI-ADJ-005`.
 - Evidence state: `none_recorded`
 - Executable or review records containing this label:
   - `test-data/grammar-claim-provenance-CP021B.json`

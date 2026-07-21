@@ -49,6 +49,7 @@ standard_test_file: "tests/constructions/ClauseSpan.json"
 standard_test_coverage: "positive_only"
 standard_positive_test_count: 118
 standard_boundary_test_count: 0
+standard_implementation_probe_count: 0
 standard_executable_test_count: 118
 source_ids: []
 runtime_active: true

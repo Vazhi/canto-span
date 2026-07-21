@@ -49,6 +49,7 @@ standard_test_file: "tests/constructions/VerbComplementVP.json"
 standard_test_coverage: "positive_only"
 standard_positive_test_count: 9
 standard_boundary_test_count: 0
+standard_implementation_probe_count: 0
 standard_executable_test_count: 9
 source_ids: ["SRC-CHENG-SYBESMA-2004-POSTVERBAL-DAK", "SRC-LAU-LEE-2021-RVC", "SRC-SHAN-JIN-2025-MOTION-TYPOLOGY"]
 runtime_active: true

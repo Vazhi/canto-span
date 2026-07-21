@@ -11,6 +11,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 10,
       "boundary_case_count": 0,
       "executable_case_count": 10
@@ -18,15 +19,16 @@
     {
       "construction": "AcceptabilityANotA",
       "file": "tests/constructions/AcceptabilityANotA.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 1,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "AcceptabilityClause",
@@ -37,6 +39,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -50,6 +53,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 3,
       "boundary_case_count": 0,
       "executable_case_count": 3
@@ -63,6 +67,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 3,
       "boundary_case_count": 0,
       "executable_case_count": 3
@@ -76,6 +81,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 2,
+      "implementation_probe_count": 0,
       "positive_case_count": 3,
       "boundary_case_count": 0,
       "executable_case_count": 3
@@ -89,6 +95,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -102,6 +109,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -115,6 +123,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -128,6 +137,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 2,
       "boundary_case_count": 0,
       "executable_case_count": 2
@@ -141,6 +151,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 27,
       "boundary_case_count": 0,
       "executable_case_count": 27
@@ -154,6 +165,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 47,
       "boundary_case_count": 0,
       "executable_case_count": 47
@@ -167,6 +179,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 30,
       "boundary_case_count": 0,
       "executable_case_count": 30
@@ -180,6 +193,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 118,
       "boundary_case_count": 0,
       "executable_case_count": 118
@@ -193,6 +207,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 4,
       "boundary_case_count": 0,
       "executable_case_count": 4
@@ -206,6 +221,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -219,6 +235,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -232,6 +249,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 8,
       "boundary_case_count": 0,
       "executable_case_count": 8
@@ -245,6 +263,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -258,6 +277,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -271,6 +291,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 5,
       "boundary_case_count": 0,
       "executable_case_count": 5
@@ -284,6 +305,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 8,
       "boundary_case_count": 0,
       "executable_case_count": 8
@@ -297,6 +319,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -310,6 +333,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 7,
       "boundary_case_count": 0,
       "executable_case_count": 7
@@ -323,6 +347,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -336,6 +361,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -349,6 +375,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 4,
       "boundary_case_count": 0,
       "executable_case_count": 4
@@ -362,6 +389,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 2,
+      "implementation_probe_count": 0,
       "positive_case_count": 2,
       "boundary_case_count": 0,
       "executable_case_count": 2
@@ -369,15 +397,16 @@
     {
       "construction": "CopularANotAQuestion",
       "file": "tests/constructions/CopularANotAQuestion.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 1,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "CopularIdentificationFrame",
@@ -388,6 +417,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 2,
       "boundary_case_count": 0,
       "executable_case_count": 2
@@ -401,6 +431,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 1,
       "boundary_case_count": 0,
       "executable_case_count": 1
@@ -414,6 +445,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 5,
       "boundary_case_count": 0,
       "executable_case_count": 5
@@ -427,6 +459,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -440,6 +473,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -453,6 +487,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 3,
       "boundary_case_count": 0,
       "executable_case_count": 3
@@ -460,15 +495,16 @@
     {
       "construction": "DegreeMannerModifiedVP",
       "file": "tests/constructions/DegreeMannerModifiedVP.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 1,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "DegreeModifiedLexicalStative",
@@ -479,6 +515,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -492,6 +529,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 21,
       "boundary_case_count": 0,
       "executable_case_count": 21
@@ -505,6 +543,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 7,
       "boundary_case_count": 0,
       "executable_case_count": 7
@@ -518,6 +557,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -531,6 +571,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -544,6 +585,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 12,
       "boundary_case_count": 0,
       "executable_case_count": 12
@@ -557,6 +599,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 5,
       "boundary_case_count": 0,
       "executable_case_count": 5
@@ -570,6 +613,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 6,
       "boundary_case_count": 0,
       "executable_case_count": 6
@@ -583,6 +627,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 72,
       "boundary_case_count": 0,
       "executable_case_count": 72
@@ -596,6 +641,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 19,
       "boundary_case_count": 0,
       "executable_case_count": 19
@@ -609,6 +655,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -622,6 +669,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -635,6 +683,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 1,
       "boundary_case_count": 0,
       "executable_case_count": 1
@@ -648,6 +697,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -661,6 +711,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 4,
       "boundary_case_count": 0,
       "executable_case_count": 4
@@ -674,6 +725,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 4,
       "boundary_case_count": 0,
       "executable_case_count": 4
@@ -687,6 +739,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 5,
       "boundary_case_count": 0,
       "executable_case_count": 5
@@ -700,6 +753,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 5,
       "boundary_case_count": 0,
       "executable_case_count": 5
@@ -713,6 +767,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 1,
       "boundary_case_count": 0,
       "executable_case_count": 1
@@ -726,6 +781,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -739,6 +795,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -752,6 +809,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 3,
       "boundary_case_count": 0,
       "executable_case_count": 3
@@ -765,6 +823,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 2,
       "boundary_case_count": 0,
       "executable_case_count": 2
@@ -778,6 +837,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 8,
       "boundary_case_count": 0,
       "executable_case_count": 8
@@ -791,6 +851,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 31,
       "boundary_case_count": 0,
       "executable_case_count": 31
@@ -804,6 +865,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 8,
       "boundary_case_count": 0,
       "executable_case_count": 8
@@ -817,6 +879,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 2,
       "boundary_case_count": 0,
       "executable_case_count": 2
@@ -830,6 +893,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 2,
       "boundary_case_count": 0,
       "executable_case_count": 2
@@ -843,6 +907,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 2,
       "boundary_case_count": 0,
       "executable_case_count": 2
@@ -850,15 +915,16 @@
     {
       "construction": "IdentificationFragment",
       "file": "tests/constructions/IdentificationFragment.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 1,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "IdentityWhQuestion",
@@ -869,6 +935,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -882,6 +949,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 15,
       "boundary_case_count": 0,
       "executable_case_count": 15
@@ -889,15 +957,16 @@
     {
       "construction": "IntendedFunctionRelation",
       "file": "tests/constructions/IntendedFunctionRelation.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 1,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "IntentionFrame",
@@ -908,6 +977,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -921,6 +991,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 4,
       "boundary_case_count": 0,
       "executable_case_count": 4
@@ -934,6 +1005,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 4,
       "boundary_case_count": 0,
       "executable_case_count": 4
@@ -947,6 +1019,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 6,
       "boundary_case_count": 0,
       "executable_case_count": 6
@@ -954,15 +1027,16 @@
     {
       "construction": "LocativeFragment",
       "file": "tests/constructions/LocativeFragment.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 1,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "LocativeFrameClause",
@@ -973,6 +1047,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 4,
       "boundary_case_count": 0,
       "executable_case_count": 4
@@ -986,6 +1061,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 15,
       "boundary_case_count": 0,
       "executable_case_count": 15
@@ -993,15 +1069,16 @@
     {
       "construction": "LocativePostureVP",
       "file": "tests/constructions/LocativePostureVP.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 1,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "LocativeWhQuestion",
@@ -1012,6 +1089,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 6,
       "boundary_case_count": 0,
       "executable_case_count": 6
@@ -1025,6 +1103,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 15,
       "boundary_case_count": 0,
       "executable_case_count": 15
@@ -1032,15 +1111,16 @@
     {
       "construction": "MannerAdverbialVP",
       "file": "tests/constructions/MannerAdverbialVP.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 1,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "MeasureExpression",
@@ -1051,6 +1131,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 12,
       "boundary_case_count": 0,
       "executable_case_count": 12
@@ -1064,6 +1145,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 2,
       "boundary_case_count": 0,
       "executable_case_count": 2
@@ -1077,6 +1159,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -1090,6 +1173,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 15,
       "boundary_case_count": 0,
       "executable_case_count": 15
@@ -1103,6 +1187,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 38,
       "boundary_case_count": 0,
       "executable_case_count": 38
@@ -1116,6 +1201,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 2,
       "boundary_case_count": 0,
       "executable_case_count": 2
@@ -1129,6 +1215,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -1142,6 +1229,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 40,
       "boundary_case_count": 0,
       "executable_case_count": 40
@@ -1155,6 +1243,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 1,
       "boundary_case_count": 0,
       "executable_case_count": 1
@@ -1168,6 +1257,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -1181,6 +1271,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 73,
       "boundary_case_count": 0,
       "executable_case_count": 73
@@ -1194,6 +1285,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 10,
       "boundary_case_count": 0,
       "executable_case_count": 10
@@ -1207,6 +1299,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 2,
       "boundary_case_count": 0,
       "executable_case_count": 2
@@ -1220,6 +1313,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 11,
       "boundary_case_count": 0,
       "executable_case_count": 11
@@ -1233,6 +1327,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -1240,15 +1335,16 @@
     {
       "construction": "NegatedStativePredicate",
       "file": "tests/constructions/NegatedStativePredicate.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 1,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "NegatedVP",
@@ -1259,6 +1355,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 1,
       "boundary_case_count": 0,
       "executable_case_count": 1
@@ -1272,6 +1369,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 1,
       "boundary_case_count": 0,
       "executable_case_count": 1
@@ -1285,6 +1383,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -1298,6 +1397,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 5,
       "boundary_case_count": 0,
       "executable_case_count": 5
@@ -1311,6 +1411,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 2,
       "boundary_case_count": 0,
       "executable_case_count": 2
@@ -1324,6 +1425,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 1,
+      "implementation_probe_count": 0,
       "positive_case_count": 28,
       "boundary_case_count": 0,
       "executable_case_count": 28
@@ -1337,6 +1439,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 12,
       "boundary_case_count": 0,
       "executable_case_count": 12
@@ -1350,6 +1453,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -1363,6 +1467,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 15,
       "boundary_case_count": 0,
       "executable_case_count": 15
@@ -1376,6 +1481,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -1389,6 +1495,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 2,
+      "implementation_probe_count": 0,
       "positive_case_count": 30,
       "boundary_case_count": 0,
       "executable_case_count": 30
@@ -1402,6 +1509,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -1415,6 +1523,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 1,
       "boundary_case_count": 0,
       "executable_case_count": 1
@@ -1428,6 +1537,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 2,
       "boundary_case_count": 0,
       "executable_case_count": 2
@@ -1441,6 +1551,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -1454,6 +1565,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -1467,6 +1579,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 21,
       "boundary_case_count": 0,
       "executable_case_count": 21
@@ -1480,6 +1593,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 6,
       "boundary_case_count": 0,
       "executable_case_count": 6
@@ -1493,6 +1607,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -1506,6 +1621,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -1519,6 +1635,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -1526,15 +1643,16 @@
     {
       "construction": "PostThemeParticipantRelation",
       "file": "tests/constructions/PostThemeParticipantRelation.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 1,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "PostposedExistentialQuestion",
@@ -1545,6 +1663,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -1558,6 +1677,7 @@
       "focused_boundary_count": 7,
       "focused_review_only_count": 1,
       "np_case_count": 11,
+      "implementation_probe_count": 0,
       "positive_case_count": 32,
       "boundary_case_count": 12,
       "executable_case_count": 45
@@ -1571,6 +1691,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 2,
       "boundary_case_count": 0,
       "executable_case_count": 2
@@ -1584,6 +1705,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 3,
       "boundary_case_count": 0,
       "executable_case_count": 3
@@ -1591,28 +1713,30 @@
     {
       "construction": "PreferenceVP",
       "file": "tests/constructions/PreferenceVP.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 1,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "PriorityMarkerClause",
       "file": "tests/constructions/PriorityMarkerClause.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 1,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "ProductiveVO",
@@ -1623,6 +1747,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 20,
       "boundary_case_count": 0,
       "executable_case_count": 20
@@ -1636,6 +1761,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 1,
       "boundary_case_count": 0,
       "executable_case_count": 1
@@ -1649,6 +1775,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -1662,6 +1789,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -1675,6 +1803,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -1688,6 +1817,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 6,
       "boundary_case_count": 0,
       "executable_case_count": 6
@@ -1701,6 +1831,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 1,
       "boundary_case_count": 0,
       "executable_case_count": 1
@@ -1714,6 +1845,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 1,
       "boundary_case_count": 0,
       "executable_case_count": 1
@@ -1727,6 +1859,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -1740,6 +1873,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 19,
+      "implementation_probe_count": 0,
       "positive_case_count": 42,
       "boundary_case_count": 0,
       "executable_case_count": 42
@@ -1753,6 +1887,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 1,
       "boundary_case_count": 0,
       "executable_case_count": 1
@@ -1766,6 +1901,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 13,
       "boundary_case_count": 0,
       "executable_case_count": 13
@@ -1779,6 +1915,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 3,
       "boundary_case_count": 0,
       "executable_case_count": 3
@@ -1792,6 +1929,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 3,
       "boundary_case_count": 0,
       "executable_case_count": 3
@@ -1805,6 +1943,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 3,
       "boundary_case_count": 0,
       "executable_case_count": 3
@@ -1818,6 +1957,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 3,
       "boundary_case_count": 0,
       "executable_case_count": 3
@@ -1831,6 +1971,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 7,
       "boundary_case_count": 0,
       "executable_case_count": 7
@@ -1844,6 +1985,7 @@
       "focused_boundary_count": 14,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 7,
       "boundary_case_count": 14,
       "executable_case_count": 21
@@ -1857,6 +1999,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 1,
       "boundary_case_count": 0,
       "executable_case_count": 1
@@ -1870,6 +2013,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 1,
       "boundary_case_count": 0,
       "executable_case_count": 1
@@ -1883,6 +2027,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 3,
       "boundary_case_count": 0,
       "executable_case_count": 3
@@ -1896,6 +2041,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -1909,6 +2055,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -1922,6 +2069,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -1935,6 +2083,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -1948,6 +2097,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -1961,6 +2111,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -1974,6 +2125,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 5,
       "boundary_case_count": 0,
       "executable_case_count": 5
@@ -1987,6 +2139,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 4,
       "boundary_case_count": 0,
       "executable_case_count": 4
@@ -2000,6 +2153,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -2013,6 +2167,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 1,
       "boundary_case_count": 0,
       "executable_case_count": 1
@@ -2026,6 +2181,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 6,
       "boundary_case_count": 0,
       "executable_case_count": 6
@@ -2033,15 +2189,16 @@
     {
       "construction": "SuggestionQuestion",
       "file": "tests/constructions/SuggestionQuestion.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 1,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "TemporalAdverbialClause",
@@ -2052,6 +2209,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -2065,6 +2223,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 6,
       "boundary_case_count": 0,
       "executable_case_count": 6
@@ -2078,6 +2237,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 1,
       "boundary_case_count": 0,
       "executable_case_count": 1
@@ -2091,6 +2251,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -2098,15 +2259,16 @@
     {
       "construction": "Topic",
       "file": "tests/constructions/Topic.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 1,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "TopicComment",
@@ -2117,6 +2279,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 1,
       "boundary_case_count": 0,
       "executable_case_count": 1
@@ -2130,6 +2293,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -2143,6 +2307,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -2156,6 +2321,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 29,
       "boundary_case_count": 0,
       "executable_case_count": 29
@@ -2169,6 +2335,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 0
@@ -2182,6 +2349,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 9,
       "boundary_case_count": 0,
       "executable_case_count": 9
@@ -2189,15 +2357,16 @@
     {
       "construction": "VocativeAddressTerm",
       "file": "tests/constructions/VocativeAddressTerm.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 1,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "WhClassifierQuestion",
@@ -2208,6 +2377,7 @@
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
+      "implementation_probe_count": 0,
       "positive_case_count": 3,
       "boundary_case_count": 0,
       "executable_case_count": 3

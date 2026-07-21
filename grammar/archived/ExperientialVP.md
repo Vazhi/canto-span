@@ -49,6 +49,7 @@ standard_test_file: "tests/constructions/ExperientialVP.json"
 standard_test_coverage: "positive_only"
 standard_positive_test_count: 3
 standard_boundary_test_count: 0
+standard_implementation_probe_count: 0
 standard_executable_test_count: 3
 source_ids: ["SRC-FAN-2024-JAU-VP-ASPECT", "SRC-MATTHEWS-YIP-2011-ASPECT-MULTIMEDIA", "SRC-SIO-BOND-2025", "SRC-YIP-MATTHEWS-2000-BASIC"]
 runtime_active: true

@@ -6,15 +6,27 @@
   "snapshot_cases": [],
   "focused_cases": [],
   "np_cases": [],
+  "implementation_probe_cases": [
+    {
+      "case_id": "REACH-011",
+      "source": "好似我噉，我就鍾意跑步。",
+      "assertion": "construction_present",
+      "provenance": "test-data/w17-glossika-corpus.tsv#COR-W17-006",
+      "source_role": "reviewed_corpus_surface",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    }
+  ],
   "coverage": {
-    "state": "no_direct_cases",
+    "state": "implementation_positive_only",
     "exact_snapshot_positive_count": 0,
     "focused_positive_count": 0,
     "focused_boundary_count": 0,
     "focused_review_only_count": 0,
     "np_case_count": 0,
+    "implementation_probe_count": 1,
     "positive_case_count": 0,
     "boundary_case_count": 0,
-    "executable_case_count": 0
+    "executable_case_count": 1
   }
 }

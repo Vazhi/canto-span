@@ -50,6 +50,7 @@ standard_test_file: "tests/constructions/ResourceUseLaiFunctionRelation.json"
 standard_test_coverage: "positive_and_boundary"
 standard_positive_test_count: 7
 standard_boundary_test_count: 14
+standard_implementation_probe_count: 0
 standard_executable_test_count: 21
 source_ids: ["SRC-CCO-LAICHIWO-VILLAGE-HOUSE", "SRC-CHEUNG-2018-LAI", "SRC-CHOR-2018-DIRECTIONAL-PARTICLES", "SRC-HKMEMORY-SHAPU-ORAL-HISTORY", "SRC-WONG-2023-LSA"]
 runtime_active: true

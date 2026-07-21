@@ -46,10 +46,11 @@ implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
 standard_test_file: "tests/constructions/NegatedStativePredicate.json"
-standard_test_coverage: "no_direct_cases"
+standard_test_coverage: "implementation_positive_only"
 standard_positive_test_count: 0
 standard_boundary_test_count: 0
-standard_executable_test_count: 0
+standard_implementation_probe_count: 1
+standard_executable_test_count: 1
 source_ids: ["SRC-ALDERETE-ETAL-2017-SYNOPSIS", "SRC-YIP-1988-NEGATION"]
 runtime_active: true
 workflow_state: "archived"
@@ -105,6 +106,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 ## Negative and boundary cases
 
 - Standard executable test file: `tests/constructions/NegatedStativePredicate.json`
+- Implementation-only reachability: `REACH-009` emits this label for `你好似唔開心噃。`; linguistic evidence weight is **0**; provenance: `test-data/w17-naturalized-alternatives.tsv#COR-W17-013`.
 - Evidence state: `none_recorded`
 - Executable or review records containing this label:
   - `test-data/grammar-claim-provenance-CP021B.json`

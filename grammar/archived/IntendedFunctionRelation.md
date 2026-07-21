@@ -46,10 +46,11 @@ implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
 standard_test_file: "tests/constructions/IntendedFunctionRelation.json"
-standard_test_coverage: "no_direct_cases"
+standard_test_coverage: "implementation_positive_only"
 standard_positive_test_count: 0
 standard_boundary_test_count: 0
-standard_executable_test_count: 0
+standard_implementation_probe_count: 1
+standard_executable_test_count: 1
 source_ids: ["SRC-MATTHEWS-2006-SVC", "SRC-WONG-2023-LANGUAGE-SAMPLE"]
 runtime_active: true
 workflow_state: "archived"
@@ -106,6 +107,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 ## Negative and boundary cases
 
 - Standard executable test file: `tests/constructions/IntendedFunctionRelation.json`
+- Implementation-only reachability: `REACH-005` emits this label for `呢隻杯我用嚟飲水。`; linguistic evidence weight is **0**; provenance: `review-packets/v0.5.182/IFR02-D1/focused-evaluation-packet.json#development_set.cases[19]`.
 - Evidence state: `CP015_58_ROW_AND_CP019_64_ROW_FROZEN_BOUNDARIES`
 - Executable or review records containing this label:
   - `review-packets/v0.5.181/IFR01-D1/development-baseline.json`

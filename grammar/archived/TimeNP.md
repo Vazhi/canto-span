@@ -49,6 +49,7 @@ standard_test_file: "tests/constructions/TimeNP.json"
 standard_test_coverage: "positive_only"
 standard_positive_test_count: 1
 standard_boundary_test_count: 0
+standard_implementation_probe_count: 0
 standard_executable_test_count: 1
 source_ids: ["SRC-TANG-2024-CANTONESE-GRAMMAR-GUIDE", "SRC-WONG-2002-CANTONESE-ADVERBS", "SRC-YIP-2024-TEMPORAL-ADVERBIAL-CLAUSES", "SRC-YIP-MATTHEWS-2000-BASIC"]
 runtime_active: true

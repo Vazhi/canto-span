@@ -10,6 +10,7 @@ const root = path.resolve(__dirname, "..");
 const outDir = path.join(root, "tests", "constructions");
 const regressionPath = path.join(root, "tests", "fixtures", "regression-snapshots.json");
 const npPath = path.join(root, "tests", "fixtures", "np-subsystem.json");
+const reachabilityPath = path.join(root, "test-data", "runtime-reachability-probes-v1.json");
 const api = loadRuntimeApi(path.join(root, "main.js"));
 
 function readJson(file) { return JSON.parse(fs.readFileSync(file, "utf8")); }
@@ -34,6 +35,7 @@ const files = new Map(labels.map((label) => [label, {
   snapshot_cases: [],
   focused_cases: [],
   np_cases: [],
+  implementation_probe_cases: [],
   coverage: {},
 }]));
 
@@ -80,6 +82,31 @@ for (const rel of focusedPacketPaths) {
       ...(testCase.source_locator ? { source_locator: testCase.source_locator } : {}),
     });
   }
+}
+
+const reachability = readJson(reachabilityPath);
+if (reachability.schema !== "canto-span-runtime-reachability-probes-v1") {
+  throw new Error(`Unexpected reachability schema: ${reachability.schema}`);
+}
+if (reachability.linguistic_evidence_weight !== 0) {
+  throw new Error("Runtime reachability probes must have zero linguistic evidence weight");
+}
+for (const testCase of reachability.cases) {
+  const target = files.get(testCase.construction);
+  if (!target) throw new Error(`Missing construction note for reachability probe ${testCase.construction}`);
+  if (testCase.linguistic_evidence_weight !== 0 || testCase.purpose !== "runtime_reachability_only") {
+    throw new Error(`Reachability probe ${testCase.case_id} has nonzero or ambiguous evidence weight`);
+  }
+  target.implementation_probe_cases.push({
+    case_id: testCase.case_id,
+    source: testCase.source,
+    ...(testCase.context_source ? { context_source: testCase.context_source } : {}),
+    assertion: testCase.assertion,
+    provenance: testCase.provenance,
+    source_role: testCase.source_role,
+    linguistic_evidence_weight: 0,
+    purpose: "runtime_reachability_only",
+  });
 }
 
 for (const testCase of np.cases) {
@@ -130,11 +157,13 @@ for (const label of labels) {
   const npPositive = record.np_cases.filter((item) => item.assertion === "construction_present" || item.assertion === "np_matrix_case").length;
   const npBoundary = record.np_cases.filter((item) => item.assertion === "construction_absent").length;
   const positiveCount = record.snapshot_cases.length + focusedPositive + npPositive;
+  const implementationProbeCount = record.implementation_probe_cases.length;
   const boundaryCount = focusedBoundary + npBoundary;
   let coverageState = "no_direct_cases";
   if (positiveCount && boundaryCount) coverageState = "positive_and_boundary";
   else if (positiveCount) coverageState = "positive_only";
   else if (boundaryCount) coverageState = "boundary_only";
+  else if (implementationProbeCount) coverageState = "implementation_positive_only";
   record.coverage = {
     state: coverageState,
     exact_snapshot_positive_count: record.snapshot_cases.length,
@@ -142,9 +171,10 @@ for (const label of labels) {
     focused_boundary_count: focusedBoundary,
     focused_review_only_count: reviewOnly,
     np_case_count: record.np_cases.length,
+    implementation_probe_count: implementationProbeCount,
     positive_case_count: positiveCount,
     boundary_case_count: boundaryCount,
-    executable_case_count: record.snapshot_cases.length + record.focused_cases.length + record.np_cases.length,
+    executable_case_count: record.snapshot_cases.length + record.focused_cases.length + record.np_cases.length + implementationProbeCount,
   };
   const file = `${label}.json`;
   writeJson(path.join(outDir, file), record);

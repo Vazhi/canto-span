@@ -1,6 +1,6 @@
 {
   "schema": "canto-span-current-focused-result-v9",
-  "checkpoint": "v0.5.188-rul-survey-readiness",
+  "checkpoint": "v0.5.189-runtime-reachability",
   "parser_behavior_changed": false,
   "registry_owner": "grammar/active/*.md + grammar/archived/*.md",
   "status_counts": {

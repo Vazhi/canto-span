@@ -49,6 +49,7 @@ standard_test_file: "tests/constructions/PassivePermissiveRelation.json"
 standard_test_coverage: "no_direct_cases"
 standard_positive_test_count: 0
 standard_boundary_test_count: 0
+standard_implementation_probe_count: 0
 standard_executable_test_count: 0
 source_ids: ["SRC-BODOMO-LAM-YU-2003", "SRC-CHAN-2021-BEI", "SRC-CHIN-2011-BEI", "SRC-CHOW-2018-INDIRECT-PASSIVE", "SRC-CHOW-2019-PASSIVE-PERMISSIVE", "SRC-WONG-2023-BEI"]
 runtime_active: true

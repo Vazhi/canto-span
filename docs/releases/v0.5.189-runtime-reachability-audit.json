@@ -1,0 +1,31 @@
+{
+  "schema": "canto-span-release-handoff-audit-v2",
+  "release_id": "v0.5.189-runtime-reachability",
+  "handoff_sequence": 13,
+  "status_changes": [],
+  "changed_construction_audit": [],
+  "supported_productive_pending_reaudit": [],
+  "implementation_validation": "PASS required before handoff: 545 regression cases, 43 NP cases, 1,171 standardized construction assertions, 170 note/test alignment, the 1,885-string runtime-reachability scan, 15 zero-weight reachability probes, panel workflow, promotion and release gates, documentation links, and repository verification.",
+  "linguistic_confidence": "No linguistic status changed and no linguistic evidence was added. The 15 new probes have explicit zero evidence weight. Fifty-three labels remain without a direct standardized case, and absence from the bounded scan is not treated as unreachability.",
+  "code_analysis_overclaim_review": true,
+  "overclaim_review_scope": "Compared the 68 baseline no-direct labels with runtime output over 1,885 structured candidate strings. Added probes only where the current parser demonstrably emitted the label. Preserved separate implementation_positive_only coverage and made no naturalness, productivity, construction-identity, or promotion claim.",
+  "release_documents": [
+    "docs/research/CP033-P1-RUNTIME-REACHABILITY-AUDIT-R1.md",
+    "docs/research/CP033-P1-RUNTIME-REACHABILITY-INVENTORY-R1.tsv",
+    "test-data/runtime-reachability-probes-v1.json",
+    "tools/verify-runtime-reachability.js",
+    "tests/construction-test-index.json",
+    "docs/current/PROJECT-STATE.md",
+    "docs/current/TESTING.md",
+    "HANDOFF.md",
+    "CHANGELOG.md"
+  ],
+  "external_audit_ready": true,
+  "unresolved_release_questions": [
+    "Fifty-three runtime-referenced labels remain unobserved in the bounded structured-material scan.",
+    "Each remaining label requires constructor-specific inspection before a coherent reachability probe or retirement decision can be made.",
+    "The full dormant-label review window is now open and remains due by handoff sequence 23.",
+    "RUL and PFV survey evidence remains blocked until the user supplies the survey-guidance prompt."
+  ],
+  "base_tree": "c79f1aa11e78aac41c1cbf9ded3b5cd7d9aef159"
+}

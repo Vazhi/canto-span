@@ -49,6 +49,7 @@ standard_test_file: "tests/constructions/FocusParticleFrame.json"
 standard_test_coverage: "positive_only"
 standard_positive_test_count: 8
 standard_boundary_test_count: 0
+standard_implementation_probe_count: 0
 standard_executable_test_count: 8
 source_ids: []
 runtime_active: true

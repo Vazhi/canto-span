@@ -49,6 +49,7 @@ standard_test_file: "tests/constructions/RelativeClauseNP.json"
 standard_test_coverage: "positive_only"
 standard_positive_test_count: 3
 standard_boundary_test_count: 0
+standard_implementation_probe_count: 0
 standard_executable_test_count: 3
 source_ids: ["SRC-CHAN-ETAL-2018-RC", "SRC-CHAN-MATTHEWS-YIP-2011-RC"]
 runtime_active: true

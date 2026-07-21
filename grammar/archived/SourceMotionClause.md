@@ -49,6 +49,7 @@ standard_test_file: "tests/constructions/SourceMotionClause.json"
 standard_test_coverage: "positive_only"
 standard_positive_test_count: 4
 standard_boundary_test_count: 0
+standard_implementation_probe_count: 0
 standard_executable_test_count: 4
 source_ids: ["SRC-LEUNG-2014-COVERBS", "SRC-LEUNG-2026-MOTION", "SRC-YIP-MATTHEWS-2000-BASIC"]
 runtime_active: true

@@ -49,6 +49,7 @@ standard_test_file: "tests/constructions/ProhibitiveImperative.json"
 standard_test_coverage: "positive_only"
 standard_positive_test_count: 1
 standard_boundary_test_count: 0
+standard_implementation_probe_count: 0
 standard_executable_test_count: 1
 source_ids: ["SRC-CHIN-2018-PROHIBITIVES", "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"]
 runtime_active: true

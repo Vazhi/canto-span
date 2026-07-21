@@ -34,7 +34,7 @@ function trace(row) { return row && row.trace_detail || {}; }
 
 const results = [];
 const failures = [];
-const coverage = { positive_and_boundary: 0, positive_only: 0, boundary_only: 0, no_direct_cases: 0 };
+const coverage = { positive_and_boundary: 0, positive_only: 0, boundary_only: 0, implementation_positive_only: 0, no_direct_cases: 0 };
 let executed = 0;
 
 function record(construction, caseId, source, category, fn) {
@@ -77,6 +77,16 @@ for (const file of files) {
       } else {
         throw new Error(`Unknown focused assertion ${testCase.assertion}`);
       }
+    });
+  }
+
+  for (const testCase of spec.implementation_probe_cases || []) {
+    record(spec.construction, testCase.case_id, testCase.source, "implementation_reachability_zero_evidence_weight", () => {
+      assert.strictEqual(testCase.linguistic_evidence_weight, 0);
+      assert.strictEqual(testCase.purpose, "runtime_reachability_only");
+      assert.strictEqual(testCase.assertion, "construction_present");
+      const labels = labelsFor(testCase.source, testCase.context_source || null);
+      assert(labels.includes(spec.construction), `${spec.construction} should be present in reachability probe`);
     });
   }
 

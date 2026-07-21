@@ -1,0 +1,11 @@
+{
+  "schema": "canto-span-native-panel-snapshot-audit-v2",
+  "construction": "ResourceUseLaiFunctionRelation",
+  "response_count": 23,
+  "item_count": 21,
+  "check_count": 112,
+  "passed": 112,
+  "failed": 0,
+  "status": "PASS",
+  "failures": []
+}
