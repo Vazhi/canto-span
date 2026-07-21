@@ -1,0 +1,12 @@
+{
+  "name": "canto-span",
+  "private": true,
+  "version": "0.5.185",
+  "description": "Cantonese parser and evidence-governance project",
+  "scripts": {
+    "test": "node tests/run-all.js",
+    "test:constructions": "node tests/run-constructions.js",
+    "test:regression": "node tests/run-regression.js",
+    "test:np": "node tests/run-np-subsystem.js"
+  }
+}

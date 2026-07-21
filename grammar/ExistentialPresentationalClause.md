@@ -21,6 +21,11 @@ code_document_reconciled: false
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v1"
+standard_test_file: "tests/constructions/ExistentialPresentationalClause.json"
+standard_test_coverage: "positive_only"
+standard_positive_test_count: 4
+standard_boundary_test_count: 0
+standard_executable_test_count: 4
 source_ids: ["SRC-LAM-LAU-LEE-2024-SEGMENTATION", "SRC-YIP-MATTHEWS-2000-BASIC"]
 runtime_active: true
 runtime_code_references: 4
@@ -71,6 +76,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 ## Negative and boundary cases
 
+- Standard executable test file: `tests/constructions/ExistentialPresentationalClause.json`
 - Evidence state: `fixture_level_not_provenance_linked`
 - Executable or review records containing this label:
   - `test-data/cp021b-lx1-construction-freeze-baseline.json`
@@ -78,7 +84,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
   - `test-data/grammar-claim-provenance-CP021B.tsv`
   - `test-data/grammar-legitimacy-audit.json`
   - `test-data/grammar-legitimacy-audit.tsv`
-  - `test-data/regression-snapshots.json`
+  - `tests/fixtures/regression-snapshots.json`
 
 ## Implementation state
 

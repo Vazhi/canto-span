@@ -1,0 +1,134 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "QuantifiedTimeNP",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [
+    {
+      "case_id": "REG-0002",
+      "source": "一日。",
+      "origins": [
+        "run-a1-quantified-time-np.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0003",
+      "source": "一日啊。",
+      "origins": [
+        "run-a1-quantified-time-np.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0004",
+      "source": "一年。",
+      "origins": [
+        "run-a1-quantified-time-np.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0009",
+      "source": "一個月。",
+      "origins": [
+        "run-a1-bare-classifier-np-context-boundary.js",
+        "run-a1-quantified-time-np.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0010",
+      "source": "一個字。",
+      "origins": [
+        "run-a1-conventional-duration-ambiguity-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0017",
+      "source": "三年。",
+      "origins": [
+        "run-a1-quantified-time-np.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0019",
+      "source": "三個月。",
+      "origins": [
+        "run-a1-conventional-duration-ambiguity-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0020",
+      "source": "三個字啊。",
+      "origins": [
+        "run-a1-approximate-quantified-object.js",
+        "run-a1-bare-classifier-np-context-boundary.js",
+        "run-a1-conventional-duration-ambiguity-boundary.js",
+        "run-a1-quantified-time-np.js",
+        "run-diagnostics-dual-json-export.js",
+        "run-diagnostics-root-span-inventory-unification.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0025",
+      "source": "六個月。",
+      "origins": [
+        "run-a1-quantified-time-np.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0056",
+      "source": "四個字啊。",
+      "origins": [
+        "run-a1-approximate-quantified-object.js",
+        "run-diagnostics-dual-json-export.js",
+        "run-diagnostics-root-span-inventory-unification.js",
+        "run-diagnostics-root-span-role-provenance.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0317",
+      "source": "每一日。",
+      "origins": [
+        "run-a1-quantified-time-np.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0320",
+      "source": "兩年喇。",
+      "origins": [
+        "run-a1-quantified-time-np.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0459",
+      "source": "幾多年前？",
+      "origins": [
+        "run-a1-quantified-time-np.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    }
+  ],
+  "focused_cases": [],
+  "np_cases": [],
+  "coverage": {
+    "state": "positive_only",
+    "exact_snapshot_positive_count": 13,
+    "focused_positive_count": 0,
+    "focused_boundary_count": 0,
+    "focused_review_only_count": 0,
+    "np_case_count": 0,
+    "positive_case_count": 13,
+    "boundary_case_count": 0,
+    "executable_case_count": 13
+  }
+}

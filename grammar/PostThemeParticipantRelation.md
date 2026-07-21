@@ -21,6 +21,11 @@ code_document_reconciled: false
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v1"
+standard_test_file: "tests/constructions/PostThemeParticipantRelation.json"
+standard_test_coverage: "no_direct_cases"
+standard_positive_test_count: 0
+standard_boundary_test_count: 0
+standard_executable_test_count: 0
 source_ids: ["SRC-BODOMO-LAM-YU-2003", "SRC-CHIN-2011-BEI", "SRC-LI-LEE-2021-DATIVE", "SRC-WONG-2023-BEI", "SRC-XU-PEYRAUBE-1997-DOC"]
 runtime_active: true
 runtime_code_references: 5
@@ -96,6 +101,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 ## Negative and boundary cases
 
+- Standard executable test file: `tests/constructions/PostThemeParticipantRelation.json`
 - Evidence state: `CP021B_FROZEN_24_ROW_DESIGN_BOUNDARIES`
 - Executable or review records containing this label:
   - `test-data/grammar-authority-origin-CP021B.tsv`

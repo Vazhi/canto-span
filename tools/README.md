@@ -4,8 +4,11 @@
 
 - `verify-repository.sh` — verifies Git object integrity and required current files after restore.
 - `export-git-working-copy.sh` — exports the complete repository including `.git/`.
-- `run-np-subsystem-v0.5.184.js` — runs the independent NP subsystem matrix.
-- `run-regression-suite.js` — runs aggregate regression tests.
+- `../tests/run-all.js` / `npm test` — canonical standard test command.
+- `run-np-subsystem-v0.5.184.js` — compatibility wrapper for the canonical NP runner.
+- `run-regression-suite.js` — compatibility wrapper for the canonical regression runner.
+- `build-construction-tests.js` — reproducible Phase 5 generator for the 171 standard construction files.
+- `sync-construction-test-metadata.js` — synchronizes construction-note test paths and counts after a controlled test-inventory change.
 - `run-construction-registry-audit.js` — checks that runtime active labels exactly match the 171 construction notes and exclude retired labels.
 - `verify-phase3-runtime-equivalence.js` — compares v0.5.185 with the v0.5.184 Phase 2 commit across all 545 regression cases after removing only the intentionally migrated metadata fields.
 - `verify-construction-notes.js` — validates the 171 active Obsidian construction notes and their promotion-evidence schema.

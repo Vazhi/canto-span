@@ -1,0 +1,53 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "ExistentialClause",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [
+    {
+      "case_id": "REG-0167",
+      "source": "佢有時間。",
+      "origins": [
+        "run-current-focused-v0.5.162-r1.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0225",
+      "source": "我有一個故事，我睇咗，佢都睇咗。",
+      "origins": [
+        "run-a1-topic-chain-null-object-linkage.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0228",
+      "source": "我有書。",
+      "origins": [
+        "run-current-focused-v0.5.162-r1.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0542",
+      "source": "佢有三歲。",
+      "origins": [
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    }
+  ],
+  "focused_cases": [],
+  "np_cases": [],
+  "coverage": {
+    "state": "positive_only",
+    "exact_snapshot_positive_count": 4,
+    "focused_positive_count": 0,
+    "focused_boundary_count": 0,
+    "focused_review_only_count": 0,
+    "np_case_count": 0,
+    "positive_case_count": 4,
+    "boundary_case_count": 0,
+    "executable_case_count": 4
+  }
+}

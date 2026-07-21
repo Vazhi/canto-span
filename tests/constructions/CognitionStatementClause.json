@@ -1,0 +1,90 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "CognitionStatementClause",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [
+    {
+      "case_id": "REG-0239",
+      "source": "我知。",
+      "origins": [
+        "run-a1-bounded-formula-repetition.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0240",
+      "source": "我知。",
+      "context_source": "你食唔食？",
+      "origins": [
+        "run-current-focused-v0.5.158-a1-final-live-families-broad-closure.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0241",
+      "source": "我知。",
+      "context_source": "佢會唔會嚟？",
+      "origins": [
+        "run-current-focused-v0.5.158-a1-final-live-families-broad-closure.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0243",
+      "source": "我知你知。",
+      "origins": [
+        "run-a1-bounded-formula-repetition.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0273",
+      "source": "我唔知。",
+      "origins": [
+        "run-current-focused-v0.5.158-a1-final-live-families-broad-closure.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0274",
+      "source": "我唔知。",
+      "context_source": "你知唔知？",
+      "origins": [
+        "run-current-focused-v0.5.158-a1-final-live-families-broad-closure.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0275",
+      "source": "我唔知。",
+      "context_source": "佢會唔會嚟？",
+      "origins": [
+        "run-current-focused-v0.5.158-a1-final-live-families-broad-closure.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0358",
+      "source": "係啊，我知。",
+      "origins": [
+        "run-a1-acknowledgement-variant-boundaries.js",
+        "run-a1-bounded-formula-repetition.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    }
+  ],
+  "focused_cases": [],
+  "np_cases": [],
+  "coverage": {
+    "state": "positive_only",
+    "exact_snapshot_positive_count": 8,
+    "focused_positive_count": 0,
+    "focused_boundary_count": 0,
+    "focused_review_only_count": 0,
+    "np_case_count": 0,
+    "positive_case_count": 8,
+    "boundary_case_count": 0,
+    "executable_case_count": 8
+  }
+}

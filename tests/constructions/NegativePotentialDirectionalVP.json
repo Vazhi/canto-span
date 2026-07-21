@@ -1,0 +1,37 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "NegativePotentialDirectionalVP",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [
+    {
+      "case_id": "REG-0097",
+      "source": "行唔入去。",
+      "origins": [
+        "run-current-focused.js:v0.5.160-r2-rendered-accepted"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0513",
+      "source": "攞唔返嚟。",
+      "origins": [
+        "run-current-focused.js:v0.5.160-r2-rendered-accepted"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    }
+  ],
+  "focused_cases": [],
+  "np_cases": [],
+  "coverage": {
+    "state": "positive_only",
+    "exact_snapshot_positive_count": 2,
+    "focused_positive_count": 0,
+    "focused_boundary_count": 0,
+    "focused_review_only_count": 0,
+    "np_case_count": 0,
+    "positive_case_count": 2,
+    "boundary_case_count": 0,
+    "executable_case_count": 2
+  }
+}

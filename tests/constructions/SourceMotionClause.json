@@ -1,0 +1,53 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "SourceMotionClause",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [
+    {
+      "case_id": "REG-0218",
+      "source": "我由屋企返學。",
+      "origins": [
+        "run-current-focused.js:v0.5.160-r2-rendered-accepted"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0219",
+      "source": "我由香港去日本。",
+      "origins": [
+        "run-current-focused.js:v0.5.160-r2-rendered-accepted"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0220",
+      "source": "我由學校返屋企。",
+      "origins": [
+        "run-current-focused.js:v0.5.160-r2-rendered-accepted"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0292",
+      "source": "我琴日由屋企行去學校。",
+      "origins": [
+        "run-current-focused.js:v0.5.160-r2-rendered-accepted"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    }
+  ],
+  "focused_cases": [],
+  "np_cases": [],
+  "coverage": {
+    "state": "positive_only",
+    "exact_snapshot_positive_count": 4,
+    "focused_positive_count": 0,
+    "focused_boundary_count": 0,
+    "focused_review_only_count": 0,
+    "np_case_count": 0,
+    "positive_case_count": 4,
+    "boundary_case_count": 0,
+    "executable_case_count": 4
+  }
+}

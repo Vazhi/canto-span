@@ -21,6 +21,11 @@ code_document_reconciled: false
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v1"
+standard_test_file: "tests/constructions/ExperientialMotionGoalVP.json"
+standard_test_coverage: "no_direct_cases"
+standard_positive_test_count: 0
+standard_boundary_test_count: 0
+standard_executable_test_count: 0
 source_ids: ["SRC-YIP-MATTHEWS-2000-BASIC"]
 runtime_active: true
 runtime_code_references: 3
@@ -63,6 +68,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 ## Negative and boundary cases
 
+- Standard executable test file: `tests/constructions/ExperientialMotionGoalVP.json`
 - Evidence state: `none_recorded`
 - Executable or review records containing this label:
   - `test-data/grammar-claim-provenance-CP021B.json`

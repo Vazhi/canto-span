@@ -1,0 +1,184 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "DiscourseParticleFrame",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [
+    {
+      "case_id": "REG-0111",
+      "source": "你去啩？",
+      "origins": [
+        "run-a1-final-gwaa3-epistemic-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0116",
+      "source": "你走啦。",
+      "origins": [
+        "run-a1-laa1-laa3-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0135",
+      "source": "你食飯啩。",
+      "origins": [
+        "run-a1-final-gwaa3-epistemic-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0136",
+      "source": "你食飯喎。",
+      "origins": [
+        "run-a1-final-wo3-evidential-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0170",
+      "source": "佢走喇。",
+      "origins": [
+        "run-a1-laa1-laa3-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0173",
+      "source": "佢返咗屋企啩。",
+      "origins": [
+        "run-a1-final-gwaa3-epistemic-scope-boundary.js",
+        "run-a1-final-wo3-evidential-scope-boundary.js",
+        "run-a1-laa1-laa3-scope-boundary.js",
+        "run-a1-ordered-particle-cluster-scope.js",
+        "run-a1-restrictive-focus-particle-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0180",
+      "source": "佢返咗屋企㗎喇。",
+      "origins": [
+        "run-a1-ordered-particle-cluster-scope.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0193",
+      "source": "佢會返嚟啩。",
+      "origins": [
+        "run-a1-final-gwaa3-epistemic-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0194",
+      "source": "佢會嚟喎？",
+      "origins": [
+        "run-a1-final-wo3-evidential-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0195",
+      "source": "佢會嚟喎。",
+      "origins": [
+        "run-a1-final-wo3-evidential-scope-boundary.js",
+        "run-a1-laa1-laa3-scope-boundary.js",
+        "run-a1-ordered-particle-cluster-scope.js",
+        "run-a1-restrictive-focus-particle-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0202",
+      "source": "佢話會嚟喎。",
+      "origins": [
+        "run-a1-final-wo3-evidential-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0217",
+      "source": "我可以去啩。",
+      "origins": [
+        "run-a1-final-gwaa3-epistemic-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0233",
+      "source": "我走啦。",
+      "origins": [
+        "run-a1-laa1-laa3-scope-boundary.js",
+        "run-a1-ordered-particle-cluster-scope.js",
+        "run-a1-restrictive-focus-particle-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0234",
+      "source": "我走喇。",
+      "origins": [
+        "run-a1-laa1-laa3-scope-boundary.js",
+        "run-a1-ordered-particle-cluster-scope.js",
+        "run-a1-restrictive-focus-particle-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0308",
+      "source": "我覺得佢好開心喎。",
+      "origins": [
+        "run-a1-final-wo3-evidential-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0348",
+      "source": "返屋企啦。",
+      "origins": [
+        "run-a1-laa1-laa3-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0349",
+      "source": "返屋企啩。",
+      "origins": [
+        "run-a1-final-gwaa3-epistemic-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0350",
+      "source": "返屋企喇。",
+      "origins": [
+        "run-a1-laa1-laa3-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0351",
+      "source": "返屋企喎。",
+      "origins": [
+        "run-a1-final-wo3-evidential-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    }
+  ],
+  "focused_cases": [],
+  "np_cases": [],
+  "coverage": {
+    "state": "positive_only",
+    "exact_snapshot_positive_count": 19,
+    "focused_positive_count": 0,
+    "focused_boundary_count": 0,
+    "focused_review_only_count": 0,
+    "np_case_count": 0,
+    "positive_case_count": 19,
+    "boundary_case_count": 0,
+    "executable_case_count": 19
+  }
+}

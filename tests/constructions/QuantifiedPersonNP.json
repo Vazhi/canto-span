@@ -1,0 +1,30 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "QuantifiedPersonNP",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [
+    {
+      "case_id": "REG-0473",
+      "source": "跟住好多人都做唔晒囖所以。",
+      "origins": [
+        "run-a1-have-or-not-question-boundary.js",
+        "run-a1-nonblocking-debt-cleanup.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    }
+  ],
+  "focused_cases": [],
+  "np_cases": [],
+  "coverage": {
+    "state": "positive_only",
+    "exact_snapshot_positive_count": 1,
+    "focused_positive_count": 0,
+    "focused_boundary_count": 0,
+    "focused_review_only_count": 0,
+    "np_case_count": 0,
+    "positive_case_count": 1,
+    "boundary_case_count": 0,
+    "executable_case_count": 1
+  }
+}

@@ -1,0 +1,191 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "ProductiveVO",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [
+    {
+      "case_id": "REG-0058",
+      "source": "打電話。",
+      "origins": [
+        "run-current-focused.js",
+        "run-current-focused-v0.5.162-r1.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0062",
+      "source": "再做功課。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0132",
+      "source": "你食飯未？",
+      "origins": [
+        "run-a1-completion-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0133",
+      "source": "你食飯咩？",
+      "origins": [
+        "run-a1-final-me1-polar-question-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0134",
+      "source": "你食飯啦。",
+      "origins": [
+        "run-a1-laa1-laa3-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0135",
+      "source": "你食飯啩。",
+      "origins": [
+        "run-a1-final-gwaa3-epistemic-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0136",
+      "source": "你食飯喎。",
+      "origins": [
+        "run-a1-final-wo3-evidential-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0183",
+      "source": "佢要飲水。",
+      "origins": [
+        "run-semantic-acceptance.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0188",
+      "source": "佢喺屋企食飯。",
+      "origins": [
+        "run-current-focused-v0.5.162-r1.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0201",
+      "source": "佢話我食飯。",
+      "origins": [
+        "run-a1-nonblocking-debt-cleanup.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0221",
+      "source": "我先食飯，再做功課。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0222",
+      "source": "我先食飯，做功課。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0226",
+      "source": "我有冇食飯？",
+      "origins": [
+        "run-a1-have-or-not-question-boundary.js",
+        "run-a1-nonblocking-debt-cleanup.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0227",
+      "source": "我有冇食飯。",
+      "origins": [
+        "run-a1-approximate-quantified-object.js",
+        "run-a1-bare-classifier-np-context-boundary.js",
+        "run-a1-conventional-duration-ambiguity-boundary.js",
+        "run-a1-have-or-not-question-boundary.js",
+        "run-a1-hover-opinion-stance-folded.js",
+        "run-a1-negative-existential-response-generalization.js",
+        "run-a1-nonblocking-debt-cleanup.js",
+        "run-a1-quantified-time-np.js",
+        "run-diagnostics-root-span-inventory-unification.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0268",
+      "source": "我食飯，再做功課。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0269",
+      "source": "我食飯嘅時候，佢打電話畀我。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0290",
+      "source": "我喺屋企食飯。",
+      "origins": [
+        "run-current-focused.js:v0.5.160-r2-rendered-accepted"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0293",
+      "source": "我琴日喺屋企食飯。",
+      "origins": [
+        "run-current-focused.js:v0.5.160-r2-rendered-accepted"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0301",
+      "source": "我落嚟摘芒果食。",
+      "origins": [
+        "run-current-focused.js:v0.5.160-r2-rendered-accepted"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0472",
+      "source": "落嚟摘芒果食。",
+      "origins": [
+        "run-current-focused.js:v0.5.160-r2-rendered-accepted"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    }
+  ],
+  "focused_cases": [],
+  "np_cases": [],
+  "coverage": {
+    "state": "positive_only",
+    "exact_snapshot_positive_count": 20,
+    "focused_positive_count": 0,
+    "focused_boundary_count": 0,
+    "focused_review_only_count": 0,
+    "np_case_count": 0,
+    "positive_case_count": 20,
+    "boundary_case_count": 0,
+    "executable_case_count": 20
+  }
+}

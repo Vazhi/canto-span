@@ -21,6 +21,11 @@ code_document_reconciled: false
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v1"
+standard_test_file: "tests/constructions/NegatedLexicalizedStative.json"
+standard_test_coverage: "no_direct_cases"
+standard_positive_test_count: 0
+standard_boundary_test_count: 0
+standard_executable_test_count: 0
 source_ids: ["SRC-CHIN-2018-PROHIBITIVES", "SRC-LAM-LAU-LEE-2024-SEGMENTATION", "SRC-YIP-1988-NEGATION"]
 runtime_active: true
 runtime_code_references: 10
@@ -79,6 +84,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 ## Negative and boundary cases
 
+- Standard executable test file: `tests/constructions/NegatedLexicalizedStative.json`
 - Evidence state: `none_recorded`
 - Executable or review records containing this label:
   - `test-data/grammar-claim-provenance-CP021B.json`

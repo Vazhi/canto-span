@@ -56,9 +56,15 @@ Reduce ceremony, drift risk, and file bloat without restarting the parser or dis
 - added focused accepted and rejected transition tests;
 - integrated the promotion gate into `tools/verify-repository.sh`.
 
-### Phase 5 — Standard executable construction tests: pending
+### Phase 5 — Standard executable construction tests: complete
 
-Consolidate active boundary and positive cases into one test directory and one command, while retaining historical test records under `archive/`.
+- created `tests/` as the active executable-test authority;
+- created exactly 171 files under `tests/constructions/`, one per active runtime label;
+- migrated the 545 exact regression snapshots and 43 NP cases into `tests/fixtures/`;
+- migrated focused positive and boundary cases for `PostverbalZoPerfectiveVP` and `ResourceUseLaiFunctionRelation`;
+- added `npm test` as the single standard command;
+- archived the former active fixture locations and manual render-review documents under `archive/migration-phase5-retired-test-workflow/`;
+- exposed remaining coverage debt: 2 labels have positive and boundary tests, 100 have positive-only coverage, and 69 have no direct standardized case.
 
 ### Phase 6 — Active versus archived construction triage: pending
 

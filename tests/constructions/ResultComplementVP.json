@@ -1,0 +1,45 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "ResultComplementVP",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [
+    {
+      "case_id": "REG-0258",
+      "source": "我食到飯。",
+      "origins": [
+        "run-current-focused.js:v0.5.160-r2-rendered-accepted"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0419",
+      "source": "做好功課。",
+      "origins": [
+        "run-current-focused.js:v0.5.160-r2-rendered-accepted"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0420",
+      "source": "做好咗功課。",
+      "origins": [
+        "run-current-focused.js:v0.5.160-r2-rendered-accepted"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    }
+  ],
+  "focused_cases": [],
+  "np_cases": [],
+  "coverage": {
+    "state": "positive_only",
+    "exact_snapshot_positive_count": 3,
+    "focused_positive_count": 0,
+    "focused_boundary_count": 0,
+    "focused_review_only_count": 0,
+    "np_case_count": 0,
+    "positive_case_count": 3,
+    "boundary_case_count": 0,
+    "executable_case_count": 3
+  }
+}

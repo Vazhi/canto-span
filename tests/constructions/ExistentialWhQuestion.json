@@ -1,0 +1,62 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "ExistentialWhQuestion",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [
+    {
+      "case_id": "REG-0080",
+      "source": "有咩書？",
+      "origins": [
+        "run-a1-direct-wh-determiner-np-boundary.js",
+        "run-a1-final-me1-polar-question-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0081",
+      "source": "有咩書啦？",
+      "origins": [
+        "run-a1-laa1-laa3-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0082",
+      "source": "有咩書啩？",
+      "origins": [
+        "run-a1-final-gwaa3-epistemic-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0083",
+      "source": "有咩書喎？",
+      "origins": [
+        "run-a1-final-wo3-evidential-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0084",
+      "source": "有咩書㗎喇？",
+      "origins": [
+        "run-a1-ordered-particle-cluster-scope.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    }
+  ],
+  "focused_cases": [],
+  "np_cases": [],
+  "coverage": {
+    "state": "positive_only",
+    "exact_snapshot_positive_count": 5,
+    "focused_positive_count": 0,
+    "focused_boundary_count": 0,
+    "focused_review_only_count": 0,
+    "np_case_count": 0,
+    "positive_case_count": 5,
+    "boundary_case_count": 0,
+    "executable_case_count": 5
+  }
+}

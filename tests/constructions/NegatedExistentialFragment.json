@@ -1,0 +1,112 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "NegatedExistentialFragment",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [
+    {
+      "case_id": "REG-0026",
+      "source": "冇，冇。",
+      "origins": [
+        "run-a1-negative-existential-response-generalization.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0027",
+      "source": "冇。",
+      "origins": [
+        "run-a1-negative-existential-response-generalization.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0030",
+      "source": "冇呀。",
+      "origins": [
+        "run-a1-negative-existential-response-generalization.js",
+        "run-a1-typed-fragment-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0032",
+      "source": "冇啊。",
+      "origins": [
+        "run-a1-negative-existential-response-generalization.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0034",
+      "source": "冇啫。",
+      "origins": [
+        "run-a1-negative-existential-response-generalization.js",
+        "run-a1-restrictive-focus-particle-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0035",
+      "source": "冇喇。",
+      "origins": [
+        "run-a1-negative-existential-response-generalization.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0036",
+      "source": "冇喎。",
+      "origins": [
+        "run-a1-final-wo3-evidential-scope-boundary.js",
+        "run-a1-negative-existential-response-generalization.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0162",
+      "source": "佢冇啊。",
+      "origins": [
+        "run-a1-negative-existential-response-generalization.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0208",
+      "source": "我冇啊。",
+      "origins": [
+        "run-a1-negative-existential-response-generalization.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0281",
+      "source": "我都冇。",
+      "origins": [
+        "run-a1-negative-existential-response-generalization.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0452",
+      "source": "都冇啊。",
+      "origins": [
+        "run-a1-negative-existential-response-generalization.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    }
+  ],
+  "focused_cases": [],
+  "np_cases": [],
+  "coverage": {
+    "state": "positive_only",
+    "exact_snapshot_positive_count": 11,
+    "focused_positive_count": 0,
+    "focused_boundary_count": 0,
+    "focused_review_only_count": 0,
+    "np_case_count": 0,
+    "positive_case_count": 11,
+    "boundary_case_count": 0,
+    "executable_case_count": 11
+  }
+}

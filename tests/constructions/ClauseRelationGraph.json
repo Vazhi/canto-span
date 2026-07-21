@@ -1,0 +1,423 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "ClauseRelationGraph",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [
+    {
+      "case_id": "REG-0005",
+      "source": "一見到佢，我笑。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0006",
+      "source": "一見到佢，我就笑。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0014",
+      "source": "人，人，人。",
+      "origins": [
+        "run-a1-bounded-formula-repetition.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0063",
+      "source": "因為打風，所以我冇去。",
+      "origins": [
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0064",
+      "source": "因為落雨，我冇去。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0065",
+      "source": "因為落雨，所以我冇去。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking",
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0070",
+      "source": "如果你去，我去。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0071",
+      "source": "如果你去，我就去。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0072",
+      "source": "如果你覺得佢啱，我就同意。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0090",
+      "source": "有嘅話，我哋再同大家講講。",
+      "origins": [
+        "run-a1-approximate-quantified-object.js",
+        "run-a1-bare-classifier-np-context-boundary.js",
+        "run-a1-conditional-coverb-boundary.js",
+        "run-a1-conventional-duration-ambiguity-boundary.js",
+        "run-a1-have-or-not-question-boundary.js",
+        "run-a1-hover-opinion-stance-folded.js",
+        "run-a1-nonblocking-debt-cleanup.js",
+        "run-a1-quantified-time-np.js",
+        "run-diagnostics-root-span-inventory-unification.js",
+        "v0.5.159 intentional hierarchical-clause-relation migration"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0102",
+      "source": "你去，我就去。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0159",
+      "source": "你嚟嘅時候，我喺屋企。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0165",
+      "source": "佢好攰，但係仲做緊。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0205",
+      "source": "我冇去，因為落雨。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0221",
+      "source": "我先食飯，再做功課。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0222",
+      "source": "我先食飯，做功課。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0225",
+      "source": "我有一個故事，我睇咗，佢都睇咗。",
+      "origins": [
+        "run-a1-topic-chain-null-object-linkage.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0256",
+      "source": "我食完飯，返屋企。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0257",
+      "source": "我食完飯，然後返屋企。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0268",
+      "source": "我食飯，再做功課。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0269",
+      "source": "我食飯嘅時候，佢打電話畀我。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0318",
+      "source": "見到佢，我就笑。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0330",
+      "source": "呢個故事，我返咗屋企，佢都返咗屋企。",
+      "origins": [
+        "run-a1-topic-chain-null-object-linkage.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0331",
+      "source": "呢個故事，我食咗，佢都食咗。",
+      "origins": [
+        "run-a1-topic-chain-null-object-linkage.js",
+        "run-w17-overt-object-selection-compatibility-guard.js",
+        "run-w17-selection-review-wrapper-structural-preservation.js",
+        "run-current-focused-v0.5.156-topic-frame-linker-accounting.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0332",
+      "source": "呢個故事，我睇咗，佢都睇咗。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking",
+        "run-a1-topic-chain-null-object-linkage.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0333",
+      "source": "呢個故事，我睇咗故事，佢都睇咗故事。",
+      "origins": [
+        "run-a1-topic-chain-null-object-linkage.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0334",
+      "source": "呢個故事，我Book咗，佢都Book咗。",
+      "origins": [
+        "run-a1-topic-chain-null-object-linkage.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0336",
+      "source": "呢個問題，我想講吓。",
+      "origins": [
+        "run-current-focused-v0.5.156-topic-frame-linker-accounting.js",
+        "run-current-focused-v0.5.157-relational-coverb-wrapper-accounting.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0337",
+      "source": "呢個蘋果，我食咗，佢都食咗。",
+      "origins": [
+        "run-a1-topic-chain-null-object-linkage.js",
+        "run-w17-overt-object-selection-compatibility-guard.js",
+        "run-w17-selection-review-wrapper-structural-preservation.js",
+        "run-current-focused-v0.5.156-topic-frame-linker-accounting.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0352",
+      "source": "係呀，日日OT到好夜。",
+      "origins": [
+        "review-only-promotion-v0.5.161-batch1"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0353",
+      "source": "係呀，我最近好大壓力。",
+      "origins": [
+        "run-w17-lexical-boundary-blockers.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0358",
+      "source": "係啊，我知。",
+      "origins": [
+        "run-a1-acknowledgement-variant-boundaries.js",
+        "run-a1-bounded-formula-repetition.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0361",
+      "source": "係喇，噉又係。",
+      "origins": [
+        "run-a1-acknowledgement-variant-boundaries.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0470",
+      "source": "落雨，所以我冇去。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0475",
+      "source": "對呢個故事，我想食吓。",
+      "origins": [
+        "run-current-focused-v0.5.157-relational-coverb-wrapper-accounting.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0476",
+      "source": "對呢個問題，我想去。",
+      "origins": [
+        "run-current-focused-v0.5.157-relational-coverb-wrapper-accounting.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0477",
+      "source": "對呢個問題，我想講吓。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking",
+        "run-current-focused-v0.5.157-relational-coverb-wrapper-accounting.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0478",
+      "source": "對呢個問題，我想講呢個故事。",
+      "origins": [
+        "run-current-focused-v0.5.157-relational-coverb-wrapper-accounting.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0480",
+      "source": "對於呢個問題，我想講吓。",
+      "origins": [
+        "run-current-focused-v0.5.157-relational-coverb-wrapper-accounting.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0495",
+      "source": "講返正題，你尋日去咗邊度呀？",
+      "origins": [
+        "run-w17-lexical-boundary-blockers.js",
+        "run-w17-perfective-locative-wh-question.js",
+        "run-w17-perfective-motion-goal-declarative.js",
+        "review-only-promotion-v0.5.161-batch1"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0498",
+      "source": "雖然好攰，但係佢仲做緊。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0499",
+      "source": "雖然好攰，佢仲做緊。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0505",
+      "source": "關於呢個故事，我想食吓。",
+      "origins": [
+        "run-current-focused-v0.5.156-topic-frame-linker-accounting.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0506",
+      "source": "關於呢個故事，我想講吓。",
+      "origins": [
+        "run-current-focused-v0.5.156-topic-frame-linker-accounting.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0507",
+      "source": "關於呢個問題，我想去。",
+      "origins": [
+        "run-current-focused-v0.5.156-topic-frame-linker-accounting.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0508",
+      "source": "關於呢個問題，我想講吓。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking",
+        "run-current-focused-v0.5.156-topic-frame-linker-accounting.js",
+        "run-current-focused-v0.5.157-relational-coverb-wrapper-accounting.js",
+        "review-only-promotion-v0.5.161-batch1"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0509",
+      "source": "關於呢個問題，我想講呢個故事。",
+      "origins": [
+        "run-current-focused-v0.5.156-topic-frame-linker-accounting.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    }
+  ],
+  "focused_cases": [],
+  "np_cases": [],
+  "coverage": {
+    "state": "positive_only",
+    "exact_snapshot_positive_count": 47,
+    "focused_positive_count": 0,
+    "focused_boundary_count": 0,
+    "focused_review_only_count": 0,
+    "np_case_count": 0,
+    "positive_case_count": 47,
+    "boundary_case_count": 0,
+    "executable_case_count": 47
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "LocativeExistentialClause",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [
+    {
+      "case_id": "REG-0373",
+      "source": "屋企冇人。",
+      "origins": [
+        "run-current-focused-v0.5.162-r1.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0374",
+      "source": "屋企冇書。",
+      "origins": [
+        "run-current-focused-v0.5.162-r1.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0376",
+      "source": "屋企有本書。",
+      "origins": [
+        "run-current-focused-v0.5.162-r1.js",
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0377",
+      "source": "屋企有個人。",
+      "origins": [
+        "run-current-focused-v0.5.162-r1.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0378",
+      "source": "枱上面有支筆。",
+      "origins": [
+        "run-current-focused-v0.5.162-r1.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0487",
+      "source": "學校有個學生。",
+      "origins": [
+        "run-current-focused-v0.5.162-r1.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    }
+  ],
+  "focused_cases": [],
+  "np_cases": [],
+  "coverage": {
+    "state": "positive_only",
+    "exact_snapshot_positive_count": 6,
+    "focused_positive_count": 0,
+    "focused_boundary_count": 0,
+    "focused_review_only_count": 0,
+    "np_case_count": 0,
+    "positive_case_count": 6,
+    "boundary_case_count": 0,
+    "executable_case_count": 6
+  }
+}

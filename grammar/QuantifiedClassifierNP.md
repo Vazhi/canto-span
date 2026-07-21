@@ -21,6 +21,11 @@ code_document_reconciled: false
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v1"
+standard_test_file: "tests/constructions/QuantifiedClassifierNP.json"
+standard_test_coverage: "positive_only"
+standard_positive_test_count: 42
+standard_boundary_test_count: 0
+standard_executable_test_count: 42
 source_ids: ["SRC-BOND-SIO-2024-CLASSIFIERS", "SRC-LAM-LAU-LEE-2024-SEGMENTATION", "SRC-XIA-2025-CLASSIFIERS"]
 runtime_active: true
 runtime_code_references: 22
@@ -80,6 +85,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 ## Negative and boundary cases
 
+- Standard executable test file: `tests/constructions/QuantifiedClassifierNP.json`
 - Evidence state: `fixture_level_not_provenance_linked`
 - Executable or review records containing this label:
   - `test-data/WECHAT-GX-TRAVEL-002-ADJUDICATION-MATRIX.json`
@@ -97,8 +103,8 @@ This is a linguistic claim only to the extent allowed by the status and evidence
   - `test-data/grammar-legitimacy-audit.tsv`
   - `test-data/native-speaker-naturalness-evidence-v1.json`
   - `test-data/native-speaker-naturalness-evidence-v1.tsv`
-  - `test-data/np-subsystem-v0.5.184.json`
-  - `test-data/regression-snapshots.json`
+  - `tests/fixtures/np-subsystem.json`
+  - `tests/fixtures/regression-snapshots.json`
 
 ## Implementation state
 

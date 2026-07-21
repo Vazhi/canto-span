@@ -21,6 +21,11 @@ code_document_reconciled: false
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v1"
+standard_test_file: "tests/constructions/ANotAQuestion.json"
+standard_test_coverage: "positive_only"
+standard_positive_test_count: 10
+standard_boundary_test_count: 0
+standard_executable_test_count: 10
 source_ids: ["SRC-FAN-2026-JAU-VP", "SRC-HARA-2023-POLAR", "SRC-LAW-2001-ANOTA", "SRC-LI-2017-ANOTA", "SRC-YIP-1988-NEGATION"]
 runtime_active: true
 runtime_code_references: 11
@@ -95,6 +100,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 ## Negative and boundary cases
 
+- Standard executable test file: `tests/constructions/ANotAQuestion.json`
 - Evidence state: `fixture_level_not_provenance_linked`
 - Executable or review records containing this label:
   - `test-data/cp021b-lx1-construction-freeze-baseline.json`
@@ -105,7 +111,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
   - `test-data/native-speaker-naturalness-evidence-v1.json`
   - `test-data/native-speaker-naturalness-evidence-v1.tsv`
   - `test-data/pre-intermediate-gold-corpus.tsv`
-  - `test-data/regression-snapshots.json`
+  - `tests/fixtures/regression-snapshots.json`
 
 ## Implementation state
 

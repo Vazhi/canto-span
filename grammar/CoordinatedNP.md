@@ -21,6 +21,11 @@ code_document_reconciled: false
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v1"
+standard_test_file: "tests/constructions/CoordinatedNP.json"
+standard_test_coverage: "positive_only"
+standard_positive_test_count: 2
+standard_boundary_test_count: 0
+standard_executable_test_count: 2
 source_ids: ["SRC-WONG-2023-LANGUAGE-SAMPLE", "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"]
 runtime_active: true
 runtime_code_references: 9
@@ -71,6 +76,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 ## Negative and boundary cases
 
+- Standard executable test file: `tests/constructions/CoordinatedNP.json`
 - Evidence state: `none_recorded`
 - Executable or review records containing this label:
   - `review-packets/cp022-evaluation/EP-CP022-I1A-I01-D1/development-baseline.json`
@@ -80,7 +86,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
   - `test-data/grammar-claim-provenance-CP021B.tsv`
   - `test-data/grammar-legitimacy-audit.json`
   - `test-data/grammar-legitimacy-audit.tsv`
-  - `test-data/np-subsystem-v0.5.184.json`
+  - `tests/fixtures/np-subsystem.json`
 
 ## Implementation state
 

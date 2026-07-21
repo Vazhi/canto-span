@@ -22,9 +22,10 @@ Do not assume continuity from an earlier conversation unless these checks succee
 3. `docs/current/DOCTRINE.md`
 4. `docs/current/DEFINITION-OF-DONE.md`
 5. `docs/current/PROMOTION-GATE.md`
-6. `docs/current/CONSTRUCTION-NOTES.md`
-7. `docs/current/INFRASTRUCTURE-MIGRATION.md`
-8. `GRAMMAR-INDEX.md`
+6. `docs/current/TESTING.md`
+7. `docs/current/CONSTRUCTION-NOTES.md`
+8. `docs/current/INFRASTRUCTURE-MIGRATION.md`
+9. `GRAMMAR-INDEX.md`
 
 ## Binding state
 
@@ -40,15 +41,9 @@ Do not assume continuity from an earlier conversation unless these checks succee
 
 ## Current substantive task
 
-Begin infrastructure migration Phase 5:
+Begin infrastructure migration Phase 6: choose a genuinely small active working set and move all other construction notes into an explicitly archived collection without deleting evidence or runtime labels prematurely.
 
-1. define one standard test directory and file format per active construction;
-2. migrate active positive and boundary cases mechanically without deleting historical fixtures;
-3. provide one command for the standard construction suite;
-4. keep linguistic promotion controlled by `tools/enforce-promotion-rules.js`;
-5. avoid turning historical render-review documents into active test authority.
-
-Phase 4 is complete. All 171 notes carry explicit promotion-evidence fields, the focused promotion-gate suite passes 8/8, and every current status is non-promoted. `main.js` remains independent of authoring evidence metadata.
+Phase 5 is complete. `npm test` runs 545 exact regressions, 43 NP cases, and 1,156 per-construction assertions across 171 standard construction files. Coverage debt remains explicit: 69 active labels have no direct standardized case.
 
 ## Save after meaningful work
 

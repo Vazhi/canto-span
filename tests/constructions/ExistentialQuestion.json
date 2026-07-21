@@ -1,0 +1,68 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "ExistentialQuestion",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [
+    {
+      "case_id": "REG-0074",
+      "source": "有冇？",
+      "origins": [
+        "run-a1-negative-existential-response-generalization.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0077",
+      "source": "有冇嘢食啊？",
+      "origins": [
+        "run-a1-have-or-not-question-boundary.js",
+        "run-a1-nonblocking-debt-cleanup.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0113",
+      "source": "你有冇吖？",
+      "origins": [
+        "run-a1-have-or-not-question-boundary.js",
+        "run-a1-nonblocking-debt-cleanup.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0114",
+      "source": "你有冇書？",
+      "origins": [
+        "run-a1-bounded-formula-repetition.js",
+        "run-a1-have-or-not-question-boundary.js",
+        "run-a1-negative-existential-response-generalization.js",
+        "run-a1-nonblocking-debt-cleanup.js",
+        "run-a1-typed-fragment-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0329",
+      "source": "呢度有冇人？",
+      "origins": [
+        "run-a1-have-or-not-question-boundary.js",
+        "run-a1-nonblocking-debt-cleanup.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    }
+  ],
+  "focused_cases": [],
+  "np_cases": [],
+  "coverage": {
+    "state": "positive_only",
+    "exact_snapshot_positive_count": 5,
+    "focused_positive_count": 0,
+    "focused_boundary_count": 0,
+    "focused_review_only_count": 0,
+    "np_case_count": 0,
+    "positive_case_count": 5,
+    "boundary_case_count": 0,
+    "executable_case_count": 5
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "schema": "canto-span-infrastructure-phase5-validation-v1",
+  "phase": 5,
+  "runtime_version": "0.5.185",
+  "status": "PASS",
+  "parser_behavior_changed": false,
+  "linguistic_status_changed": false,
+  "active_test_authority": "tests/",
+  "standard_command": "npm test",
+  "construction_test_files": 171,
+  "exact_regression": {
+    "total": 545,
+    "passed": 545,
+    "failed": 0
+  },
+  "np_subsystem": {
+    "total": 43,
+    "passed": 43,
+    "failed": 0
+  },
+  "construction_assertions": {
+    "files": 171,
+    "executable_references": 1156,
+    "passed": 1156,
+    "failed": 0,
+    "coverage": {
+      "positive_and_boundary": 2,
+      "positive_only": 100,
+      "boundary_only": 0,
+      "no_direct_cases": 69
+    },
+    "uncovered_constructions": 69
+  },
+  "coverage_debt": {
+    "no_direct_cases": 69,
+    "note": "Empty construction test files expose missing direct coverage and are not treated as linguistic or implementation acceptance."
+  },
+  "note_validation": {
+    "total": 8601,
+    "passed": 8601,
+    "failed": 0
+  },
+  "promotion_gate": {
+    "status": "PASS",
+    "construction_notes": 171,
+    "promoted_status_records": 0,
+    "failed": 0
+  },
+  "source_accounting": {
+    "status": "PASS",
+    "total": 13,
+    "passed": 13,
+    "failed": 0
+  },
+  "documentation": {
+    "status": "PASS",
+    "json_files": 423,
+    "markdown_files": 310,
+    "broken_local_links": 0
+  },
+  "retired_label_scan": {
+    "status": "PASS",
+    "case_count": 588,
+    "output_hits": 0
+  },
+  "archived_pre_phase5_paths": [
+    "archive/migration-phase5-retired-test-workflow/test-data/regression-snapshots.json",
+    "archive/migration-phase5-retired-test-workflow/test-data/np-subsystem-v0.5.184.json",
+    "archive/migration-phase5-retired-test-workflow/render-review/"
+  ]
+}

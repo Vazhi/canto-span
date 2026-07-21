@@ -1,0 +1,629 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "DirectionalMotionVP",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [
+    {
+      "case_id": "REG-0042",
+      "source": "去七杯度。",
+      "origins": [
+        "run-a1-approximate-quantified-object.js",
+        "run-diagnostics-root-span-inventory-unification.js",
+        "run-diagnostics-root-span-role-provenance.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0043",
+      "source": "去咗香港。",
+      "origins": [
+        "run-w17-perfective-motion-goal-declarative.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0044",
+      "source": "去咗邊度呀？",
+      "origins": [
+        "run-w17-perfective-locative-wh-question.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0045",
+      "source": "去咩？",
+      "origins": [
+        "run-a1-final-me1-polar-question-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0046",
+      "source": "去香港",
+      "origins": [
+        "review-only-promotion-v0.5.161-batch1"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0063",
+      "source": "因為打風，所以我冇去。",
+      "origins": [
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0064",
+      "source": "因為落雨，我冇去。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0065",
+      "source": "因為落雨，所以我冇去。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking",
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0070",
+      "source": "如果你去，我去。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0071",
+      "source": "如果你去，我就去。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0092",
+      "source": "行入去。",
+      "origins": [
+        "run-current-focused.js:v0.5.160-r2-rendered-accepted"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0093",
+      "source": "行出嚟。",
+      "origins": [
+        "run-current-focused.js:v0.5.160-r2-rendered-accepted"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0096",
+      "source": "行返過嚟。",
+      "origins": [
+        "run-current-focused.js:v0.5.160-r2-rendered-accepted"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0101",
+      "source": "但係佢唔嚟。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0102",
+      "source": "你去，我就去。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0103",
+      "source": "你去咗香港。",
+      "origins": [
+        "run-w17-perfective-motion-goal-declarative.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0104",
+      "source": "你去咗邊度？",
+      "origins": [
+        "run-w17-perfective-locative-wh-question.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0105",
+      "source": "你去咩？",
+      "origins": [
+        "run-a1-direct-wh-determiner-np-boundary.js",
+        "run-a1-final-gwaa3-epistemic-scope-boundary.js",
+        "run-a1-final-me1-polar-question-boundary.js",
+        "run-a1-final-wo3-evidential-scope-boundary.js",
+        "run-a1-laa1-laa3-scope-boundary.js",
+        "run-a1-ordered-particle-cluster-scope.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0106",
+      "source": "你去咩。",
+      "origins": [
+        "run-a1-final-me1-polar-question-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0107",
+      "source": "你去咩啦？",
+      "origins": [
+        "run-a1-laa1-laa3-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0108",
+      "source": "你去咩啩？",
+      "origins": [
+        "run-a1-final-gwaa3-epistemic-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0109",
+      "source": "你去咩喎？",
+      "origins": [
+        "run-a1-final-wo3-evidential-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0110",
+      "source": "你去啦。",
+      "origins": [
+        "run-a1-laa1-laa3-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0111",
+      "source": "你去啩？",
+      "origins": [
+        "run-a1-final-gwaa3-epistemic-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0112",
+      "source": "你去㗎咩？",
+      "origins": [
+        "run-a1-ordered-particle-cluster-scope.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0116",
+      "source": "你走啦。",
+      "origins": [
+        "run-a1-laa1-laa3-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0117",
+      "source": "你使唔使去？",
+      "origins": [
+        "run-current-focused-v0.5.158-a1-final-live-families-broad-closure.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0138",
+      "source": "你尋日去咗香港。",
+      "origins": [
+        "run-w17-overt-object-selection-compatibility-guard.js",
+        "run-w17-perfective-locative-wh-question.js",
+        "run-w17-perfective-motion-goal-declarative.js",
+        "run-w17-selection-review-wrapper-structural-preservation.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0139",
+      "source": "你尋日去咗香港未？",
+      "origins": [
+        "run-w17-perfective-motion-goal-declarative.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0140",
+      "source": "你尋日去咗邊度呀？",
+      "origins": [
+        "run-w17-overt-object-selection-compatibility-guard.js",
+        "run-w17-perfective-locative-wh-question.js",
+        "run-w17-perfective-motion-goal-declarative.js",
+        "run-w17-selection-review-wrapper-structural-preservation.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0141",
+      "source": "你尋日去咗邊個呀？",
+      "origins": [
+        "run-w17-perfective-locative-wh-question.js",
+        "run-w17-perfective-motion-goal-declarative.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0142",
+      "source": "你尋日去香港。",
+      "origins": [
+        "run-w17-perfective-motion-goal-declarative.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0143",
+      "source": "你尋日去邊度呀？",
+      "origins": [
+        "run-w17-perfective-locative-wh-question.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0159",
+      "source": "你嚟嘅時候，我喺屋企。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0170",
+      "source": "佢走喇。",
+      "origins": [
+        "run-a1-laa1-laa3-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0185",
+      "source": "佢唔嚟。",
+      "origins": [
+        "run-a1-final-me1-polar-question-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0193",
+      "source": "佢會返嚟啩。",
+      "origins": [
+        "run-a1-final-gwaa3-epistemic-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0194",
+      "source": "佢會嚟喎？",
+      "origins": [
+        "run-a1-final-wo3-evidential-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0195",
+      "source": "佢會嚟喎。",
+      "origins": [
+        "run-a1-final-wo3-evidential-scope-boundary.js",
+        "run-a1-laa1-laa3-scope-boundary.js",
+        "run-a1-ordered-particle-cluster-scope.js",
+        "run-a1-restrictive-focus-particle-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0198",
+      "source": "佢話如果落雨，佢就唔去。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0200",
+      "source": "佢話佢唔嚟。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking",
+        "run-a1-hover-opinion-stance-folded.js",
+        "run-a1-nonblocking-debt-cleanup.js",
+        "run-a1-quantified-time-np.js",
+        "run-semantic-acceptance.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0202",
+      "source": "佢話會嚟喎。",
+      "origins": [
+        "run-a1-final-wo3-evidential-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0204",
+      "source": "我上去。",
+      "origins": [
+        "run-current-focused.js:v0.5.160-r2-rendered-accepted"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0205",
+      "source": "我冇去，因為落雨。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0212",
+      "source": "我去咗中環呀。",
+      "origins": [
+        "run-w17-perfective-motion-goal-declarative.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0215",
+      "source": "我可以去。",
+      "origins": [
+        "run-semantic-acceptance.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0216",
+      "source": "我可以去咩？",
+      "origins": [
+        "run-a1-final-me1-polar-question-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0217",
+      "source": "我可以去啩。",
+      "origins": [
+        "run-a1-final-gwaa3-epistemic-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0219",
+      "source": "我由香港去日本。",
+      "origins": [
+        "run-current-focused.js:v0.5.160-r2-rendered-accepted"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0233",
+      "source": "我走啦。",
+      "origins": [
+        "run-a1-laa1-laa3-scope-boundary.js",
+        "run-a1-ordered-particle-cluster-scope.js",
+        "run-a1-restrictive-focus-particle-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0234",
+      "source": "我走喇。",
+      "origins": [
+        "run-a1-laa1-laa3-scope-boundary.js",
+        "run-a1-ordered-particle-cluster-scope.js",
+        "run-a1-restrictive-focus-particle-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0242",
+      "source": "我知如果佢去，我就去。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0244",
+      "source": "我知佢唔嚟。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking",
+        "run-current-focused-v0.5.158-a1-final-live-families-broad-closure.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0250",
+      "source": "我相信如果佢去，我就去。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0252",
+      "source": "我要去。",
+      "origins": [
+        "run-current-focused-v0.5.158-a1-final-live-families-broad-closure.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0270",
+      "source": "我唔可以去。",
+      "origins": [
+        "run-current-focused-v0.5.158-a1-final-live-families-broad-closure.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0272",
+      "source": "我唔使去。",
+      "origins": [
+        "run-current-focused-v0.5.158-a1-final-live-families-broad-closure.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0277",
+      "source": "我唔要去。",
+      "origins": [
+        "run-current-focused-v0.5.158-a1-final-live-families-broad-closure.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0278",
+      "source": "我帶咗三部機去啊。",
+      "origins": [
+        "run-a1-bare-classifier-np-context-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0298",
+      "source": "我想去。",
+      "origins": [
+        "run-a1-bare-numeral-guards.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0300",
+      "source": "我落嚟。",
+      "origins": [
+        "run-current-focused.js:v0.5.160-r2-rendered-accepted",
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0301",
+      "source": "我落嚟摘芒果食。",
+      "origins": [
+        "run-current-focused.js:v0.5.160-r2-rendered-accepted"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0307",
+      "source": "我覺得如果佢去，我就去。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0316",
+      "source": "我攞本書返嚟畀你睇。",
+      "origins": [
+        "run-current-focused.js:v0.5.160-r2-rendered-accepted",
+        "run-current-focused-v0.5.162-r1.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0431",
+      "source": "寄返去。",
+      "origins": [
+        "run-current-focused.js:v0.5.160-r2-rendered-accepted"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0458",
+      "source": "尋日去咗香港。",
+      "origins": [
+        "run-w17-perfective-motion-goal-declarative.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0470",
+      "source": "落雨，所以我冇去。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0472",
+      "source": "落嚟摘芒果食。",
+      "origins": [
+        "run-current-focused.js:v0.5.160-r2-rendered-accepted"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0476",
+      "source": "對呢個問題，我想去。",
+      "origins": [
+        "run-current-focused-v0.5.157-relational-coverb-wrapper-accounting.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0495",
+      "source": "講返正題，你尋日去咗邊度呀？",
+      "origins": [
+        "run-w17-lexical-boundary-blockers.js",
+        "run-w17-perfective-locative-wh-question.js",
+        "run-w17-perfective-motion-goal-declarative.js",
+        "review-only-promotion-v0.5.161-batch1"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0507",
+      "source": "關於呢個問題，我想去。",
+      "origins": [
+        "run-current-focused-v0.5.156-topic-frame-linker-accounting.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0512",
+      "source": "攞返嚟。",
+      "origins": [
+        "run-current-focused.js:v0.5.160-r2-rendered-accepted"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    }
+  ],
+  "focused_cases": [],
+  "np_cases": [],
+  "coverage": {
+    "state": "positive_only",
+    "exact_snapshot_positive_count": 72,
+    "focused_positive_count": 0,
+    "focused_boundary_count": 0,
+    "focused_review_only_count": 0,
+    "np_case_count": 0,
+    "positive_case_count": 72,
+    "boundary_case_count": 0,
+    "executable_case_count": 72
+  }
+}

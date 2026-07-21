@@ -21,6 +21,11 @@ code_document_reconciled: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v1"
+standard_test_file: "tests/constructions/OvertHeadDemonstrativeClassifierNP.json"
+standard_test_coverage: "positive_only"
+standard_positive_test_count: 30
+standard_boundary_test_count: 0
+standard_executable_test_count: 30
 source_ids: ["SRC-BOND-SIO-2024-CLASSIFIERS", "SRC-LAM-LAU-LEE-2024-SEGMENTATION", "SRC-XIA-2025-CLASSIFIERS", "SRC-YU-2006-NOMINAL-MODIFIERS", "SRC-HKCANCOR-PYCANTONESE-CP024-DEMO01"]
 runtime_active: true
 runtime_code_references: 14
@@ -96,6 +101,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 ## Negative and boundary cases
 
+- Standard executable test file: `tests/constructions/OvertHeadDemonstrativeClassifierNP.json`
 - Evidence state: `source_linked_visible_packet_headless_overt_numeral_di_wh_and_incomplete_boundaries`
 - Executable or review records containing this label:
   - `test-data/grammar-authority-origin-CP021B.tsv`
@@ -104,7 +110,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
   - `test-data/grammar-claim-source-edges-CP021A.tsv`
   - `test-data/grammar-legitimacy-audit.json`
   - `test-data/grammar-legitimacy-audit.tsv`
-  - `test-data/np-subsystem-v0.5.184.json`
+  - `tests/fixtures/np-subsystem.json`
 
 ## Implementation state
 

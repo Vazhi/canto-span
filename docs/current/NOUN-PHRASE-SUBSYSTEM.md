@@ -94,7 +94,7 @@ The NP subsystem determines the object boundary and structural licensing. It doe
 
 ## Executable validation
 
-The test matrix is [`../../test-data/np-subsystem-v0.5.184.json`](../../test-data/np-subsystem-v0.5.184.json), executed by [`../../tools/run-np-subsystem-v0.5.184.js`](../../tools/run-np-subsystem-v0.5.184.js).
+The test matrix is [`../../tests/fixtures/np-subsystem.json`](../../tests/fixtures/np-subsystem.json), executed through the standard [`../../tests/run-all.js`](../../tests/run-all.js) command (`npm test`).
 
 It includes:
 

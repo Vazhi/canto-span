@@ -1,0 +1,144 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "ImpersonalEnvironmentalClause",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [
+    {
+      "case_id": "REG-0024",
+      "source": "今日好凍。",
+      "origins": [
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0039",
+      "source": "天光喇。",
+      "origins": [
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0040",
+      "source": "出面好熱。",
+      "origins": [
+        "run-current-focused.js",
+        "run-current-focused-v0.5.162-r1.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0057",
+      "source": "打風。",
+      "origins": [
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0063",
+      "source": "因為打風，所以我冇去。",
+      "origins": [
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0064",
+      "source": "因為落雨，我冇去。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0065",
+      "source": "因為落雨，所以我冇去。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking",
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0198",
+      "source": "佢話如果落雨，佢就唔去。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0205",
+      "source": "我冇去，因為落雨。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0468",
+      "source": "會唔會落雨？",
+      "origins": [
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0470",
+      "source": "落雨，所以我冇去。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0471",
+      "source": "落雨。",
+      "origins": [
+        "run-current-focused.js",
+        "run-current-focused-v0.5.162-r1.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0518",
+      "source": "聽日打風。",
+      "origins": [
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0519",
+      "source": "聽日會落雨。",
+      "origins": [
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0520",
+      "source": "聽日落雨。",
+      "origins": [
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    }
+  ],
+  "focused_cases": [],
+  "np_cases": [],
+  "coverage": {
+    "state": "positive_only",
+    "exact_snapshot_positive_count": 15,
+    "focused_positive_count": 0,
+    "focused_boundary_count": 0,
+    "focused_review_only_count": 0,
+    "np_case_count": 0,
+    "positive_case_count": 15,
+    "boundary_case_count": 0,
+    "executable_case_count": 15
+  }
+}

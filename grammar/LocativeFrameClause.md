@@ -21,6 +21,11 @@ code_document_reconciled: false
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v1"
+standard_test_file: "tests/constructions/LocativeFrameClause.json"
+standard_test_coverage: "positive_only"
+standard_positive_test_count: 4
+standard_boundary_test_count: 0
+standard_executable_test_count: 4
 source_ids: ["SRC-ALDERETE-ETAL-2017-SYNOPSIS", "SRC-LUI-2020-LOCATIVE-INVERSION", "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"]
 runtime_active: true
 runtime_code_references: 10
@@ -79,6 +84,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 ## Negative and boundary cases
 
+- Standard executable test file: `tests/constructions/LocativeFrameClause.json`
 - Evidence state: `fixture_level_not_provenance_linked`
 - Executable or review records containing this label:
   - `review-packets/cp022-evaluation/EP-CP022-P1-PFV01-D1/development-baseline.json`
@@ -87,7 +93,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
   - `test-data/grammar-claim-provenance-CP021B.tsv`
   - `test-data/grammar-legitimacy-audit.json`
   - `test-data/grammar-legitimacy-audit.tsv`
-  - `test-data/regression-snapshots.json`
+  - `tests/fixtures/regression-snapshots.json`
 
 ## Implementation state
 

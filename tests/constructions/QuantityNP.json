@@ -1,0 +1,45 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "QuantityNP",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [
+    {
+      "case_id": "REG-0436",
+      "source": "得十蚊咋。",
+      "origins": [
+        "run-a1-restrictive-focus-particle-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0535",
+      "source": "三十蚊。",
+      "origins": [
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0544",
+      "source": "佢三蚊。",
+      "origins": [
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    }
+  ],
+  "focused_cases": [],
+  "np_cases": [],
+  "coverage": {
+    "state": "positive_only",
+    "exact_snapshot_positive_count": 3,
+    "focused_positive_count": 0,
+    "focused_boundary_count": 0,
+    "focused_review_only_count": 0,
+    "np_case_count": 0,
+    "positive_case_count": 3,
+    "boundary_case_count": 0,
+    "executable_case_count": 3
+  }
+}

@@ -21,6 +21,11 @@ code_document_reconciled: false
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: false
 promotion_gate_version: "v1"
+standard_test_file: "tests/constructions/NominalHeadSpan.json"
+standard_test_coverage: "positive_only"
+standard_positive_test_count: 28
+standard_boundary_test_count: 0
+standard_executable_test_count: 28
 source_ids: []
 runtime_active: true
 runtime_code_references: 18
@@ -57,13 +62,14 @@ No pattern-specific external source is currently mapped.
 
 ## Negative and boundary cases
 
+- Standard executable test file: `tests/constructions/NominalHeadSpan.json`
 - Evidence state: `fixture_level_not_provenance_linked`
 - Executable or review records containing this label:
   - `test-data/grammar-claim-provenance-CP021B.json`
   - `test-data/grammar-claim-provenance-CP021B.tsv`
   - `test-data/grammar-legitimacy-audit.json`
   - `test-data/grammar-legitimacy-audit.tsv`
-  - `test-data/np-subsystem-v0.5.184.json`
+  - `tests/fixtures/np-subsystem.json`
 
 ## Implementation state
 

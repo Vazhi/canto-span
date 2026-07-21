@@ -17,6 +17,15 @@ Active construction notes: **171**
 - `research_pending`: **58**
 - `unsupported_generalization`: **87**
 
+
+## Standard test coverage
+
+- positive and boundary: **2**
+- positive only: **100**
+- boundary only: **0**
+- no direct standardized cases: **69**
+- command: `npm test`
+
 ## Constructions
 
 - [[ANotAQuestion]] — `research_pending`

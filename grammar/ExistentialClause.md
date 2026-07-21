@@ -21,6 +21,11 @@ code_document_reconciled: false
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v1"
+standard_test_file: "tests/constructions/ExistentialClause.json"
+standard_test_coverage: "positive_only"
+standard_positive_test_count: 4
+standard_boundary_test_count: 0
+standard_executable_test_count: 4
 source_ids: ["SRC-FAN-2026-JAU-VP", "SRC-LAM-LAU-LEE-2024-SEGMENTATION", "SRC-YIP-MATTHEWS-2000-BASIC"]
 runtime_active: true
 runtime_code_references: 7
@@ -79,6 +84,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 ## Negative and boundary cases
 
+- Standard executable test file: `tests/constructions/ExistentialClause.json`
 - Evidence state: `fixture_level_not_provenance_linked`
 - Executable or review records containing this label:
   - `test-data/a1-context-status-fixture.tsv`
@@ -90,7 +96,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
   - `test-data/native-speaker-naturalness-evidence-v1.json`
   - `test-data/native-speaker-naturalness-evidence-v1.tsv`
   - `test-data/pre-intermediate-gold-corpus.tsv`
-  - `test-data/regression-snapshots.json`
+  - `tests/fixtures/regression-snapshots.json`
 
 ## Implementation state
 

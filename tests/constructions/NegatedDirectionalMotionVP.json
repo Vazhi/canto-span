@@ -1,0 +1,107 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "NegatedDirectionalMotionVP",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [
+    {
+      "case_id": "REG-0063",
+      "source": "因為打風，所以我冇去。",
+      "origins": [
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0064",
+      "source": "因為落雨，我冇去。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0065",
+      "source": "因為落雨，所以我冇去。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking",
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0101",
+      "source": "但係佢唔嚟。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0185",
+      "source": "佢唔嚟。",
+      "origins": [
+        "run-a1-final-me1-polar-question-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0198",
+      "source": "佢話如果落雨，佢就唔去。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0200",
+      "source": "佢話佢唔嚟。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking",
+        "run-a1-hover-opinion-stance-folded.js",
+        "run-a1-nonblocking-debt-cleanup.js",
+        "run-a1-quantified-time-np.js",
+        "run-semantic-acceptance.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0205",
+      "source": "我冇去，因為落雨。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0244",
+      "source": "我知佢唔嚟。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking",
+        "run-current-focused-v0.5.158-a1-final-live-families-broad-closure.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0470",
+      "source": "落雨，所以我冇去。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    }
+  ],
+  "focused_cases": [],
+  "np_cases": [],
+  "coverage": {
+    "state": "positive_only",
+    "exact_snapshot_positive_count": 10,
+    "focused_positive_count": 0,
+    "focused_boundary_count": 0,
+    "focused_review_only_count": 0,
+    "np_case_count": 0,
+    "positive_case_count": 10,
+    "boundary_case_count": 0,
+    "executable_case_count": 10
+  }
+}

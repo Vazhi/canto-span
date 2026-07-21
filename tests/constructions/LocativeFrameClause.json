@@ -1,0 +1,55 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "LocativeFrameClause",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [
+    {
+      "case_id": "REG-0040",
+      "source": "出面好熱。",
+      "origins": [
+        "run-current-focused.js",
+        "run-current-focused-v0.5.162-r1.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0375",
+      "source": "屋企好靜。",
+      "origins": [
+        "run-current-focused-v0.5.162-r1.js",
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0491",
+      "source": "牆上面擺咗部電話。",
+      "origins": [
+        "run-current-focused-v0.5.162-r1.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0492",
+      "source": "牆上面擺咗部機。",
+      "origins": [
+        "run-current-focused-v0.5.162-r1.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    }
+  ],
+  "focused_cases": [],
+  "np_cases": [],
+  "coverage": {
+    "state": "positive_only",
+    "exact_snapshot_positive_count": 4,
+    "focused_positive_count": 0,
+    "focused_boundary_count": 0,
+    "focused_review_only_count": 0,
+    "np_case_count": 0,
+    "positive_case_count": 4,
+    "boundary_case_count": 0,
+    "executable_case_count": 4
+  }
+}

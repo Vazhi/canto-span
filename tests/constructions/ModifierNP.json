@@ -1,0 +1,39 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "ModifierNP",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [
+    {
+      "case_id": "REG-0287",
+      "source": "我最近好大壓力。",
+      "origins": [
+        "run-w17-lexical-boundary-blockers.js",
+        "run-w17-perfective-locative-wh-question.js",
+        "run-w17-perfective-motion-goal-declarative.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0353",
+      "source": "係呀，我最近好大壓力。",
+      "origins": [
+        "run-w17-lexical-boundary-blockers.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    }
+  ],
+  "focused_cases": [],
+  "np_cases": [],
+  "coverage": {
+    "state": "positive_only",
+    "exact_snapshot_positive_count": 2,
+    "focused_positive_count": 0,
+    "focused_boundary_count": 0,
+    "focused_review_only_count": 0,
+    "np_case_count": 0,
+    "positive_case_count": 2,
+    "boundary_case_count": 0,
+    "executable_case_count": 2
+  }
+}

@@ -21,6 +21,11 @@ code_document_reconciled: false
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: false
 promotion_gate_version: "v1"
+standard_test_file: "tests/constructions/DemonstrativeClassifierNP.json"
+standard_test_coverage: "no_direct_cases"
+standard_positive_test_count: 0
+standard_boundary_test_count: 0
+standard_executable_test_count: 0
 source_ids: []
 runtime_active: true
 runtime_code_references: 14
@@ -57,6 +62,7 @@ No pattern-specific external source is currently mapped.
 
 ## Negative and boundary cases
 
+- Standard executable test file: `tests/constructions/DemonstrativeClassifierNP.json`
 - Evidence state: `fixture_level_not_provenance_linked`
 - Executable or review records containing this label:
   - `review-packets/cp022-evaluation/EP-CP022-I1A-I01-D1/development-baseline.json`
@@ -76,9 +82,9 @@ No pattern-specific external source is currently mapped.
   - `test-data/grammar-legitimacy-audit.tsv`
   - `test-data/native-speaker-naturalness-evidence-v1.json`
   - `test-data/native-speaker-naturalness-evidence-v1.tsv`
-  - `test-data/np-subsystem-v0.5.184.json`
+  - `tests/fixtures/np-subsystem.json`
   - `test-data/pre-intermediate-gold-corpus.tsv`
-  - `test-data/regression-snapshots.json`
+  - `tests/fixtures/regression-snapshots.json`
 
 ## Implementation state
 

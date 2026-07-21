@@ -47,7 +47,7 @@ for (const note of notes) {
   byLabel.set(label, note);
   const filename = path.basename(note.file, ".md");
   check(`filename matches construction: ${filename}`, filename === label, `${filename} != ${label}`);
-  for (const field of ["title", "type", "construction", "status", "confidence", "claim_layer", "lane", "last_reviewed", "speaker_count", "source_count", "verified_source_count", "independent_speaker_count", "negative_cases_drafted", "negative_tests_executable", "negative_tests_passing", "corpus_evidence_used", "corpus_hits_reviewed", "code_document_reconciled", "implementation_validation_separate", "independent_evidence_beyond_internal_tests", "promotion_gate_version", "source_ids", "runtime_active"]) {
+  for (const field of ["title", "type", "construction", "status", "confidence", "claim_layer", "lane", "last_reviewed", "speaker_count", "source_count", "verified_source_count", "independent_speaker_count", "negative_cases_drafted", "negative_tests_executable", "negative_tests_passing", "corpus_evidence_used", "corpus_hits_reviewed", "code_document_reconciled", "implementation_validation_separate", "independent_evidence_beyond_internal_tests", "promotion_gate_version", "standard_test_file", "standard_test_coverage", "standard_positive_test_count", "standard_boundary_test_count", "standard_executable_test_count", "source_ids", "runtime_active"]) {
     check(`${label} has ${field}`, Object.prototype.hasOwnProperty.call(fm, field));
   }
   check(`${label} type is construction`, fm.type === "canto-span-construction", String(fm.type));
@@ -58,6 +58,18 @@ for (const note of notes) {
   check(`${label} promotion gate version`, fm.promotion_gate_version === "v1", String(fm.promotion_gate_version));
   check(`${label} passing boundaries require executable boundaries`, fm.negative_tests_passing !== true || fm.negative_tests_executable === true);
   check(`${label} executable boundaries require drafted boundaries`, fm.negative_tests_executable !== true || fm.negative_cases_drafted === true);
+  const standardTestPath = path.join(root, String(fm.standard_test_file || ""));
+  check(`${label} standard test file path`, fm.standard_test_file === `tests/constructions/${label}.json`, String(fm.standard_test_file));
+  check(`${label} standard test file exists`, fs.existsSync(standardTestPath), String(fm.standard_test_file));
+  if (fs.existsSync(standardTestPath)) {
+    const testSpec = JSON.parse(fs.readFileSync(standardTestPath, "utf8"));
+    check(`${label} standard test construction matches`, testSpec.construction === label, String(testSpec.construction));
+    check(`${label} standard coverage matches`, testSpec.coverage?.state === fm.standard_test_coverage, `${testSpec.coverage?.state} != ${fm.standard_test_coverage}`);
+    check(`${label} standard positive count matches`, Number(testSpec.coverage?.positive_case_count) === Number(fm.standard_positive_test_count), `${testSpec.coverage?.positive_case_count} != ${fm.standard_positive_test_count}`);
+    check(`${label} standard boundary count matches`, Number(testSpec.coverage?.boundary_case_count) === Number(fm.standard_boundary_test_count), `${testSpec.coverage?.boundary_case_count} != ${fm.standard_boundary_test_count}`);
+    check(`${label} standard executable count matches`, Number(testSpec.coverage?.executable_case_count) === Number(fm.standard_executable_test_count), `${testSpec.coverage?.executable_case_count} != ${fm.standard_executable_test_count}`);
+    check(`${label} executable-boundary flag matches standard cases`, fm.negative_tests_executable !== true || Number(testSpec.coverage?.boundary_case_count) > 0);
+  }
   check(`${label} has plain-language claim`, /## Plain-language claim\n\n\S/.test(note.body));
   check(`${label} has boundary section`, /## Negative and boundary cases/.test(note.body));
   check(`${label} has no aliased wiki links`, !/\[\[[^\]]+\|[^\]]+\]\]/.test(note.text));
@@ -66,6 +78,7 @@ for (const note of notes) {
 const runtimeLabels = new Set(runtime.labels);
 const noteLabels = new Set(byLabel.keys());
 check("exactly 171 construction notes", notes.length === 171, String(notes.length));
+check("exactly 171 standard construction test files", fs.readdirSync(path.join(root, "tests", "constructions")).filter((name) => name.endsWith(".json")).length === 171);
 check("runtime has 171 active labels", runtimeLabels.size === 171, String(runtimeLabels.size));
 check("notes exactly match runtime labels", noteLabels.size === runtimeLabels.size && [...runtimeLabels].every((label) => noteLabels.has(label)));
 check("all notes are runtime active", notes.every((note) => note.frontmatter.runtime_active === true));

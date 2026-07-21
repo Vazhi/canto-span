@@ -21,6 +21,11 @@ code_document_reconciled: false
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: false
 promotion_gate_version: "v1"
+standard_test_file: "tests/constructions/ClauseRelationGraph.json"
+standard_test_coverage: "positive_only"
+standard_positive_test_count: 47
+standard_boundary_test_count: 0
+standard_executable_test_count: 47
 source_ids: []
 runtime_active: true
 runtime_code_references: 17
@@ -57,6 +62,7 @@ No pattern-specific external source is currently mapped.
 
 ## Negative and boundary cases
 
+- Standard executable test file: `tests/constructions/ClauseRelationGraph.json`
 - Evidence state: `fixture_level_not_provenance_linked`
 - Executable or review records containing this label:
   - `review-packets/cp022-evaluation/EP-CP022-I1A-I02-D1/README.md`

@@ -93,7 +93,7 @@ if (updateV05184Np) {
   baseline.generated_from = "v0.5.184 compositional NP subsystem: three explicit topology corrections";
   fs.writeFileSync(baselinePath, JSON.stringify(baseline, null, 2) + "\n");
 }
-const regressionPath = path.join(root, "test-data", "regression-snapshots.json");
+const regressionPath = path.join(root, "tests", "fixtures", "regression-snapshots.json");
 const regression = JSON.parse(fs.readFileSync(regressionPath, "utf8"));
 const exclusions = new Set((regression.current_focused_exclusions || []).map((row) => `${row.source || ""}\u0000${row.context_source || ""}`));
 const activeCases = [];

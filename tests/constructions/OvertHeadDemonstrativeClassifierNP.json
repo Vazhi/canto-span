@@ -1,0 +1,279 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "OvertHeadDemonstrativeClassifierNP",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [
+    {
+      "case_id": "REG-0328",
+      "source": "呢本書。",
+      "origins": [
+        "run-a1-typed-fragment-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0330",
+      "source": "呢個故事，我返咗屋企，佢都返咗屋企。",
+      "origins": [
+        "run-a1-topic-chain-null-object-linkage.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0331",
+      "source": "呢個故事，我食咗，佢都食咗。",
+      "origins": [
+        "run-a1-topic-chain-null-object-linkage.js",
+        "run-w17-overt-object-selection-compatibility-guard.js",
+        "run-w17-selection-review-wrapper-structural-preservation.js",
+        "run-current-focused-v0.5.156-topic-frame-linker-accounting.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0332",
+      "source": "呢個故事，我睇咗，佢都睇咗。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking",
+        "run-a1-topic-chain-null-object-linkage.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0333",
+      "source": "呢個故事，我睇咗故事，佢都睇咗故事。",
+      "origins": [
+        "run-a1-topic-chain-null-object-linkage.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0334",
+      "source": "呢個故事，我Book咗，佢都Book咗。",
+      "origins": [
+        "run-a1-topic-chain-null-object-linkage.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0335",
+      "source": "呢個故事。佢睇咗。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking",
+        "run-a1-topic-chain-null-object-linkage.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0336",
+      "source": "呢個問題，我想講吓。",
+      "origins": [
+        "run-current-focused-v0.5.156-topic-frame-linker-accounting.js",
+        "run-current-focused-v0.5.157-relational-coverb-wrapper-accounting.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0337",
+      "source": "呢個蘋果，我食咗，佢都食咗。",
+      "origins": [
+        "run-a1-topic-chain-null-object-linkage.js",
+        "run-w17-overt-object-selection-compatibility-guard.js",
+        "run-w17-selection-review-wrapper-structural-preservation.js",
+        "run-current-focused-v0.5.156-topic-frame-linker-accounting.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0475",
+      "source": "對呢個故事，我想食吓。",
+      "origins": [
+        "run-current-focused-v0.5.157-relational-coverb-wrapper-accounting.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0476",
+      "source": "對呢個問題，我想去。",
+      "origins": [
+        "run-current-focused-v0.5.157-relational-coverb-wrapper-accounting.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0477",
+      "source": "對呢個問題，我想講吓。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking",
+        "run-current-focused-v0.5.157-relational-coverb-wrapper-accounting.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0478",
+      "source": "對呢個問題，我想講呢個故事。",
+      "origins": [
+        "run-current-focused-v0.5.157-relational-coverb-wrapper-accounting.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0479",
+      "source": "對呢個問題。",
+      "origins": [
+        "run-current-focused-v0.5.157-relational-coverb-wrapper-accounting.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0480",
+      "source": "對於呢個問題，我想講吓。",
+      "origins": [
+        "run-current-focused-v0.5.157-relational-coverb-wrapper-accounting.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0505",
+      "source": "關於呢個故事，我想食吓。",
+      "origins": [
+        "run-current-focused-v0.5.156-topic-frame-linker-accounting.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0506",
+      "source": "關於呢個故事，我想講吓。",
+      "origins": [
+        "run-current-focused-v0.5.156-topic-frame-linker-accounting.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0507",
+      "source": "關於呢個問題，我想去。",
+      "origins": [
+        "run-current-focused-v0.5.156-topic-frame-linker-accounting.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0508",
+      "source": "關於呢個問題，我想講吓。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking",
+        "run-current-focused-v0.5.156-topic-frame-linker-accounting.js",
+        "run-current-focused-v0.5.157-relational-coverb-wrapper-accounting.js",
+        "review-only-promotion-v0.5.161-batch1"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0509",
+      "source": "關於呢個問題，我想講呢個故事。",
+      "origins": [
+        "run-current-focused-v0.5.156-topic-frame-linker-accounting.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0510",
+      "source": "關於呢個問題。",
+      "origins": [
+        "run-current-focused-v0.5.156-topic-frame-linker-accounting.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0525",
+      "source": "呢個學生十歲。",
+      "origins": [
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0527",
+      "source": "呢本書一百蚊。",
+      "origins": [
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0529",
+      "source": "呢間房五百呎。",
+      "origins": [
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0530",
+      "source": "呢間屋五百呎。",
+      "origins": [
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0533",
+      "source": "呢張枱十呎長。",
+      "origins": [
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0543",
+      "source": "呢本書三十。",
+      "origins": [
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0545",
+      "source": "呢本書三歲。",
+      "origins": [
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    }
+  ],
+  "focused_cases": [],
+  "np_cases": [
+    {
+      "case_id": "NP-L014",
+      "source": "呢本書。",
+      "group": "licensed_np",
+      "assertion": "np_matrix_case",
+      "expected_internal": "OvertHeadDemonstrativeClassifierNP",
+      "expected_surface": "呢本書",
+      "expected_license": "licensed_np",
+      "expected_classifier_compatibility": "verified_compatible"
+    },
+    {
+      "case_id": "NP-L015",
+      "source": "嗰間餐廳。",
+      "group": "licensed_np_unseen_combination",
+      "assertion": "np_matrix_case",
+      "expected_internal": "OvertHeadDemonstrativeClassifierNP",
+      "expected_surface": "嗰間餐廳",
+      "expected_license": "licensed_np",
+      "expected_classifier_compatibility": "verified_compatible"
+    }
+  ],
+  "coverage": {
+    "state": "positive_only",
+    "exact_snapshot_positive_count": 28,
+    "focused_positive_count": 0,
+    "focused_boundary_count": 0,
+    "focused_review_only_count": 0,
+    "np_case_count": 2,
+    "positive_case_count": 30,
+    "boundary_case_count": 0,
+    "executable_case_count": 30
+  }
+}

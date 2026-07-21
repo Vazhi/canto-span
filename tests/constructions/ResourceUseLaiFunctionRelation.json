@@ -1,0 +1,193 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "ResourceUseLaiFunctionRelation",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [],
+  "focused_cases": [
+    {
+      "case_id": "v0.5.182-IFR02-D1:IFR-E01",
+      "source": "呢個用嚟切嘢。",
+      "class": "exact_source_attestation_with_omitted_noun",
+      "expected_profile": "narrow_subtype_present_context_debt_preserved",
+      "assertion": "construction_present",
+      "provenance": "review-packets/v0.5.182/IFR02-D1/focused-evaluation-packet.json",
+      "source_ids": [
+        "SRC-WONG-2023-LANGUAGE-SAMPLE"
+      ],
+      "source_locator": "official PDF p. 60, lines 2217-2220"
+    },
+    {
+      "case_id": "v0.5.182-IFR02-D1:IFR-V01",
+      "source": "呢張枱用嚟食飯。",
+      "class": "explicit_resource_function",
+      "expected_profile": "narrow_subtype_present",
+      "assertion": "construction_present",
+      "provenance": "review-packets/v0.5.182/IFR02-D1/focused-evaluation-packet.json"
+    },
+    {
+      "case_id": "v0.5.182-IFR02-D1:IFR-V02",
+      "source": "呢把刀用嚟切肉。",
+      "class": "explicit_resource_function",
+      "expected_profile": "narrow_subtype_present",
+      "assertion": "construction_present",
+      "provenance": "review-packets/v0.5.182/IFR02-D1/focused-evaluation-packet.json"
+    },
+    {
+      "case_id": "v0.5.182-IFR02-D1:IFR-V03",
+      "source": "呢個杯用嚟飲水。",
+      "class": "explicit_resource_function",
+      "expected_profile": "narrow_subtype_present",
+      "assertion": "construction_present",
+      "provenance": "review-packets/v0.5.182/IFR02-D1/focused-evaluation-packet.json"
+    },
+    {
+      "case_id": "v0.5.182-IFR02-D1:IFR-V04",
+      "source": "呢支筆用嚟寫字。",
+      "class": "explicit_resource_function",
+      "expected_profile": "narrow_subtype_present",
+      "assertion": "construction_present",
+      "provenance": "review-packets/v0.5.182/IFR02-D1/focused-evaluation-packet.json"
+    },
+    {
+      "case_id": "v0.5.182-IFR02-D1:IFR-V05",
+      "source": "呢張紙用來寫字。",
+      "class": "orthographic_lai_variant",
+      "expected_profile": "narrow_subtype_present",
+      "assertion": "construction_present",
+      "provenance": "review-packets/v0.5.182/IFR02-D1/focused-evaluation-packet.json"
+    },
+    {
+      "case_id": "v0.5.182-IFR02-D1:IFR-N01",
+      "source": "啲錢我用嚟買晒嗰堆嘢。",
+      "class": "separate_user_actual_use_boundary",
+      "expected_profile": "narrow_subtype_absent_broad_relation_may_remain",
+      "assertion": "construction_absent",
+      "provenance": "review-packets/v0.5.182/IFR02-D1/focused-evaluation-packet.json"
+    },
+    {
+      "case_id": "v0.5.182-IFR02-D1:IFR-N02",
+      "source": "呢個可以用嚟切嘢。",
+      "class": "modal_affordance_boundary",
+      "expected_profile": "narrow_subtype_absent_broad_relation_review_bearing",
+      "assertion": "construction_absent",
+      "provenance": "review-packets/v0.5.182/IFR02-D1/focused-evaluation-packet.json"
+    },
+    {
+      "case_id": "v0.5.182-IFR02-D1:IFR-N03",
+      "source": "呢個係用嚟切嘢。",
+      "class": "copular_boundary",
+      "expected_profile": "narrow_subtype_absent_broad_relation_may_remain",
+      "assertion": "construction_absent",
+      "provenance": "review-packets/v0.5.182/IFR02-D1/focused-evaluation-packet.json"
+    },
+    {
+      "case_id": "v0.5.182-IFR02-D1:IFR-N04",
+      "source": "呢個用咗嚟切嘢。",
+      "class": "aspect_interrupted_actual_use_boundary",
+      "expected_profile": "narrow_subtype_absent",
+      "assertion": "construction_absent",
+      "provenance": "review-packets/v0.5.182/IFR02-D1/focused-evaluation-packet.json"
+    },
+    {
+      "case_id": "v0.5.182-IFR02-D1:IFR-N05",
+      "source": "我用刀切嘢。",
+      "class": "ordinary_instrumental_use_boundary",
+      "expected_profile": "narrow_subtype_absent",
+      "assertion": "construction_absent",
+      "provenance": "review-packets/v0.5.182/IFR02-D1/focused-evaluation-packet.json"
+    },
+    {
+      "case_id": "v0.5.182-IFR02-D1:IFR-N06",
+      "source": "我買刀嚟切嘢。",
+      "class": "general_purposive_lai_boundary",
+      "expected_profile": "narrow_subtype_absent",
+      "assertion": "construction_absent",
+      "provenance": "review-packets/v0.5.182/IFR02-D1/focused-evaluation-packet.json"
+    },
+    {
+      "case_id": "v0.5.182-IFR02-D1:IFR-N07",
+      "source": "呢個唔用嚟切嘢。",
+      "class": "negated_boundary",
+      "expected_profile": "narrow_subtype_absent",
+      "assertion": "construction_absent",
+      "provenance": "review-packets/v0.5.182/IFR02-D1/focused-evaluation-packet.json"
+    },
+    {
+      "case_id": "v0.5.182-IFR02-D1:IFR-N08",
+      "source": "呢個用唔用嚟切嘢？",
+      "class": "a_not_a_boundary",
+      "expected_profile": "narrow_subtype_absent",
+      "assertion": "construction_absent",
+      "provenance": "review-packets/v0.5.182/IFR02-D1/focused-evaluation-packet.json"
+    },
+    {
+      "case_id": "v0.5.182-IFR02-D1:IFR-N09",
+      "source": "用來用去。",
+      "class": "reduplication_boundary",
+      "expected_profile": "narrow_subtype_absent",
+      "assertion": "construction_absent",
+      "provenance": "review-packets/v0.5.182/IFR02-D1/focused-evaluation-packet.json"
+    },
+    {
+      "case_id": "v0.5.182-IFR02-D1:IFR-N10",
+      "source": "我用嚟切嘢。",
+      "class": "lone_user_missing_resource_boundary",
+      "expected_profile": "narrow_subtype_absent",
+      "assertion": "construction_absent",
+      "provenance": "review-packets/v0.5.182/IFR02-D1/focused-evaluation-packet.json"
+    },
+    {
+      "case_id": "v0.5.182-IFR02-D1:IFR-N11",
+      "source": "呢個用嚟。",
+      "class": "missing_predicate_boundary",
+      "expected_profile": "narrow_subtype_absent",
+      "assertion": "construction_absent",
+      "provenance": "review-packets/v0.5.182/IFR02-D1/focused-evaluation-packet.json"
+    },
+    {
+      "case_id": "v0.5.182-IFR02-D1:IFR-N12",
+      "source": "呢個用嚟切咗嘢。",
+      "class": "perfective_actual_use_boundary",
+      "expected_profile": "narrow_subtype_absent_broad_relation_review_bearing",
+      "assertion": "construction_absent",
+      "provenance": "review-packets/v0.5.182/IFR02-D1/focused-evaluation-packet.json"
+    },
+    {
+      "case_id": "v0.5.182-IFR02-D1:IFR2-R01",
+      "source": "呢隻杯用嚟飲水。",
+      "class": "consumed_hidden_cup_noun_positive",
+      "expected_profile": "narrow_subtype_present_cup_noun_role",
+      "assertion": "construction_present",
+      "provenance": "review-packets/v0.5.182/IFR02-D1/focused-evaluation-packet.json"
+    },
+    {
+      "case_id": "v0.5.182-IFR02-D1:IFR2-R02",
+      "source": "呢隻杯我用嚟飲水。",
+      "class": "consumed_hidden_separate_user_boundary",
+      "expected_profile": "narrow_subtype_absent_broad_relation_may_remain",
+      "assertion": "construction_absent",
+      "provenance": "review-packets/v0.5.182/IFR02-D1/focused-evaluation-packet.json"
+    },
+    {
+      "case_id": "v0.5.182-IFR02-D1:IFR2-R03",
+      "source": "呢隻杯用嚟飲咗水。",
+      "class": "consumed_hidden_actual_use_boundary",
+      "expected_profile": "narrow_subtype_absent_broad_relation_review_bearing",
+      "assertion": "construction_absent",
+      "provenance": "review-packets/v0.5.182/IFR02-D1/focused-evaluation-packet.json"
+    }
+  ],
+  "np_cases": [],
+  "coverage": {
+    "state": "positive_and_boundary",
+    "exact_snapshot_positive_count": 0,
+    "focused_positive_count": 7,
+    "focused_boundary_count": 14,
+    "focused_review_only_count": 0,
+    "np_case_count": 0,
+    "positive_case_count": 7,
+    "boundary_case_count": 14,
+    "executable_case_count": 21
+  }
+}

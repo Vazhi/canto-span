@@ -21,6 +21,11 @@ code_document_reconciled: false
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v1"
+standard_test_file: "tests/constructions/LocativeFragment.json"
+standard_test_coverage: "no_direct_cases"
+standard_positive_test_count: 0
+standard_boundary_test_count: 0
+standard_executable_test_count: 0
 source_ids: ["SRC-KWAN-2010-LOCATIVE", "SRC-LEE-PAN-2024-VP-ELLIPSIS", "SRC-YIP-MATTHEWS-2000-BASIC"]
 runtime_active: true
 runtime_code_references: 2
@@ -79,6 +84,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 ## Negative and boundary cases
 
+- Standard executable test file: `tests/constructions/LocativeFragment.json`
 - Evidence state: `none_recorded`
 - Executable or review records containing this label:
   - `review-packets/cp022-evaluation/EP-CP022-I1A-I01-D1/development-baseline.json`

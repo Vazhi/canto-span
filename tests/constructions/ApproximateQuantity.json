@@ -1,0 +1,54 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "ApproximateQuantity",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [
+    {
+      "case_id": "REG-0013",
+      "source": "七杯度。",
+      "origins": [
+        "run-a1-approximate-quantified-object.js",
+        "run-diagnostics-root-span-inventory-unification.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0296",
+      "source": "我飲七杯度喇。",
+      "origins": [
+        "run-a1-approximate-quantified-object.js",
+        "run-a1-laa1-laa3-scope-boundary.js",
+        "run-diagnostics-root-span-inventory-unification.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0465",
+      "source": "飲七杯度喇。",
+      "origins": [
+        "run-a1-approximate-quantified-object.js",
+        "run-a1-bare-classifier-np-context-boundary.js",
+        "run-a1-conventional-duration-ambiguity-boundary.js",
+        "run-a1-laa1-laa3-scope-boundary.js",
+        "run-diagnostics-dual-json-export.js",
+        "run-diagnostics-root-span-inventory-unification.js",
+        "run-diagnostics-root-span-role-provenance.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    }
+  ],
+  "focused_cases": [],
+  "np_cases": [],
+  "coverage": {
+    "state": "positive_only",
+    "exact_snapshot_positive_count": 3,
+    "focused_positive_count": 0,
+    "focused_boundary_count": 0,
+    "focused_review_only_count": 0,
+    "np_case_count": 0,
+    "positive_case_count": 3,
+    "boundary_case_count": 0,
+    "executable_case_count": 3
+  }
+}

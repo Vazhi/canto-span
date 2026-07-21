@@ -21,6 +21,11 @@ code_document_reconciled: false
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v1"
+standard_test_file: "tests/constructions/TemporalClause.json"
+standard_test_coverage: "positive_only"
+standard_positive_test_count: 6
+standard_boundary_test_count: 0
+standard_executable_test_count: 6
 source_ids: ["SRC-WONG-2002-CANTONESE-ADVERBS", "SRC-YIP-2024-TEMPORAL-ADVERBIAL-CLAUSES", "SRC-YIP-MATTHEWS-2000-BASIC"]
 runtime_active: true
 runtime_code_references: 9
@@ -80,6 +85,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 ## Negative and boundary cases
 
+- Standard executable test file: `tests/constructions/TemporalClause.json`
 - Evidence state: `fixture_level_not_provenance_linked`
 - Executable or review records containing this label:
   - `test-data/WECHAT-GX-TRAVEL-002-ADJUDICATION-MATRIX.json`
@@ -94,7 +100,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
   - `test-data/native-naturalness-conflict-dispositions.tsv`
   - `test-data/native-speaker-naturalness-evidence-v1.json`
   - `test-data/native-speaker-naturalness-evidence-v1.tsv`
-  - `test-data/regression-snapshots.json`
+  - `tests/fixtures/regression-snapshots.json`
 
 ## Implementation state
 

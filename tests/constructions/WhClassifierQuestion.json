@@ -1,0 +1,47 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "WhClassifierQuestion",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [
+    {
+      "case_id": "REG-0155",
+      "source": "你睇邊本書？",
+      "origins": [
+        "run-a1-direct-wh-determiner-np-boundary.js",
+        "run-current-focused-v0.5.162-r1.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0501",
+      "source": "邊本書？",
+      "origins": [
+        "run-a1-direct-wh-determiner-np-boundary.js",
+        "run-current-focused-v0.5.162-r1.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0504",
+      "source": "邊間屋？",
+      "origins": [
+        "run-a1-direct-wh-determiner-np-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    }
+  ],
+  "focused_cases": [],
+  "np_cases": [],
+  "coverage": {
+    "state": "positive_only",
+    "exact_snapshot_positive_count": 3,
+    "focused_positive_count": 0,
+    "focused_boundary_count": 0,
+    "focused_review_only_count": 0,
+    "np_case_count": 0,
+    "positive_case_count": 3,
+    "boundary_case_count": 0,
+    "executable_case_count": 3
+  }
+}

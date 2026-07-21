@@ -1,0 +1,22 @@
+{
+  "schema": "canto-span-retired-label-output-absence-v2",
+  "checkpoint": "v0.5.185-standard-construction-tests",
+  "runtime_version": "0.5.185",
+  "retired_labels": [
+    "AdjectivalPredicateClause",
+    "BareClassifierNP",
+    "DemonstrativeQuantifiedClassifierNP",
+    "DirectionalCausedMotionVP",
+    "ModalResponseFragment",
+    "NegativeHaveClause",
+    "NominalModifierNP",
+    "PossessiveNP",
+    "PossessiveNominalFragment",
+    "ProhibitiveFragment"
+  ],
+  "case_count": 588,
+  "active_registry_residue": [],
+  "retired_label_output_hits": 0,
+  "status": "PASS",
+  "hits": []
+}

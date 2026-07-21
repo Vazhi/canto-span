@@ -1,0 +1,87 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "FocusParticleFrame",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [
+    {
+      "case_id": "REG-0434",
+      "source": "得一個咋。",
+      "origins": [
+        "run-a1-restrictive-focus-particle-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0435",
+      "source": "得一個啫。",
+      "origins": [
+        "run-a1-ordered-particle-cluster-scope.js",
+        "run-a1-restrictive-focus-particle-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0436",
+      "source": "得十蚊咋。",
+      "origins": [
+        "run-a1-restrictive-focus-particle-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0437",
+      "source": "得三本書咋。",
+      "origins": [
+        "run-a1-restrictive-focus-particle-boundary.js",
+        "run-current-focused-v0.5.162-r1.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0438",
+      "source": "得三個人咋。",
+      "origins": [
+        "run-a1-restrictive-focus-particle-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0439",
+      "source": "得少少啫.",
+      "origins": [
+        "run-a1-restrictive-focus-particle-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0440",
+      "source": "得少少啫。",
+      "origins": [
+        "run-a1-restrictive-focus-particle-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0441",
+      "source": "得兩個啫。",
+      "origins": [
+        "run-a1-restrictive-focus-particle-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    }
+  ],
+  "focused_cases": [],
+  "np_cases": [],
+  "coverage": {
+    "state": "positive_only",
+    "exact_snapshot_positive_count": 8,
+    "focused_positive_count": 0,
+    "focused_boundary_count": 0,
+    "focused_review_only_count": 0,
+    "np_case_count": 0,
+    "positive_case_count": 8,
+    "boundary_case_count": 0,
+    "executable_case_count": 8
+  }
+}

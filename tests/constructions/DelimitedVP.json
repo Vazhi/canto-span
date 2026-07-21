@@ -1,0 +1,82 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "DelimitedVP",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [
+    {
+      "case_id": "REG-0336",
+      "source": "呢個問題，我想講吓。",
+      "origins": [
+        "run-current-focused-v0.5.156-topic-frame-linker-accounting.js",
+        "run-current-focused-v0.5.157-relational-coverb-wrapper-accounting.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0475",
+      "source": "對呢個故事，我想食吓。",
+      "origins": [
+        "run-current-focused-v0.5.157-relational-coverb-wrapper-accounting.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0477",
+      "source": "對呢個問題，我想講吓。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking",
+        "run-current-focused-v0.5.157-relational-coverb-wrapper-accounting.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0480",
+      "source": "對於呢個問題，我想講吓。",
+      "origins": [
+        "run-current-focused-v0.5.157-relational-coverb-wrapper-accounting.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0505",
+      "source": "關於呢個故事，我想食吓。",
+      "origins": [
+        "run-current-focused-v0.5.156-topic-frame-linker-accounting.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0506",
+      "source": "關於呢個故事，我想講吓。",
+      "origins": [
+        "run-current-focused-v0.5.156-topic-frame-linker-accounting.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0508",
+      "source": "關於呢個問題，我想講吓。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking",
+        "run-current-focused-v0.5.156-topic-frame-linker-accounting.js",
+        "run-current-focused-v0.5.157-relational-coverb-wrapper-accounting.js",
+        "review-only-promotion-v0.5.161-batch1"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    }
+  ],
+  "focused_cases": [],
+  "np_cases": [],
+  "coverage": {
+    "state": "positive_only",
+    "exact_snapshot_positive_count": 7,
+    "focused_positive_count": 0,
+    "focused_boundary_count": 0,
+    "focused_review_only_count": 0,
+    "np_case_count": 0,
+    "positive_case_count": 7,
+    "boundary_case_count": 0,
+    "executable_case_count": 7
+  }
+}

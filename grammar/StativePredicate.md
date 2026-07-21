@@ -21,6 +21,11 @@ code_document_reconciled: false
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v1"
+standard_test_file: "tests/constructions/StativePredicate.json"
+standard_test_coverage: "positive_only"
+standard_positive_test_count: 6
+standard_boundary_test_count: 0
+standard_executable_test_count: 6
 source_ids: ["SRC-ALDERETE-ETAL-2017-SYNOPSIS", "SRC-FRANCIS-MATTHEWS-2005-VERB-CATEGORY", "SRC-YIP-1988-NEGATION"]
 runtime_active: true
 runtime_code_references: 14
@@ -79,6 +84,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 ## Negative and boundary cases
 
+- Standard executable test file: `tests/constructions/StativePredicate.json`
 - Evidence state: `fixture_level_not_provenance_linked`
 - Executable or review records containing this label:
   - `test-data/WECHAT-GX-TRAVEL-002-ADJUDICATION-MATRIX.json`
@@ -95,7 +101,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
   - `test-data/grammar-legitimacy-audit.tsv`
   - `test-data/native-speaker-naturalness-evidence-v1.json`
   - `test-data/native-speaker-naturalness-evidence-v1.tsv`
-  - `test-data/regression-snapshots.json`
+  - `tests/fixtures/regression-snapshots.json`
   - `test-data/review-only-readiness.tsv`
 
 ## Implementation state

@@ -1,0 +1,408 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "QuantifiedClassifierNP",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [
+    {
+      "case_id": "REG-0007",
+      "source": "一個。",
+      "origins": [
+        "run-a1-approximate-quantified-object.js",
+        "run-a1-bare-classifier-np-context-boundary.js",
+        "run-a1-conventional-duration-ambiguity-boundary.js",
+        "run-diagnostics-root-span-inventory-unification.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0008",
+      "source": "一個人。",
+      "origins": [
+        "run-a1-bare-classifier-np-context-boundary.js",
+        "run-a1-quantified-time-np.js",
+        "run-diagnostics-dual-json-export.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0011",
+      "source": "一個咋.",
+      "origins": [
+        "run-a1-restrictive-focus-particle-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0012",
+      "source": "一個啫。",
+      "origins": [
+        "run-a1-restrictive-focus-particle-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0018",
+      "source": "三個人。",
+      "origins": [
+        "run-a1-conventional-duration-ambiguity-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0225",
+      "source": "我有一個故事，我睇咗，佢都睇咗。",
+      "origins": [
+        "run-a1-topic-chain-null-object-linkage.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0255",
+      "source": "我食一個蘋果。",
+      "origins": [
+        "run-a1-bare-numeral-guards.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0278",
+      "source": "我帶咗三部機去啊。",
+      "origins": [
+        "run-a1-bare-classifier-np-context-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0279",
+      "source": "我得一個啫。",
+      "origins": [
+        "run-a1-restrictive-focus-particle-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0321",
+      "source": "兩部。",
+      "origins": [
+        "run-a1-approximate-quantified-object.js",
+        "run-a1-bare-classifier-np-context-boundary.js",
+        "run-a1-conventional-duration-ambiguity-boundary.js",
+        "run-a1-quantified-time-np.js",
+        "run-diagnostics-root-span-inventory-unification.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0322",
+      "source": "兩部機。",
+      "origins": [
+        "run-a1-bare-classifier-np-context-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0326",
+      "source": "呢句有幾多個字？",
+      "origins": [
+        "run-a1-approximate-quantified-object.js",
+        "run-a1-conventional-duration-ambiguity-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0434",
+      "source": "得一個咋。",
+      "origins": [
+        "run-a1-restrictive-focus-particle-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0435",
+      "source": "得一個啫。",
+      "origins": [
+        "run-a1-ordered-particle-cluster-scope.js",
+        "run-a1-restrictive-focus-particle-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0437",
+      "source": "得三本書咋。",
+      "origins": [
+        "run-a1-restrictive-focus-particle-boundary.js",
+        "run-current-focused-v0.5.162-r1.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0438",
+      "source": "得三個人咋。",
+      "origins": [
+        "run-a1-restrictive-focus-particle-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0441",
+      "source": "得兩個啫。",
+      "origins": [
+        "run-a1-restrictive-focus-particle-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0464",
+      "source": "飲七杯。",
+      "origins": [
+        "run-a1-approximate-quantified-object.js",
+        "run-diagnostics-root-span-inventory-unification.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0534",
+      "source": "三歲。",
+      "origins": [
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0536",
+      "source": "五百呎。",
+      "origins": [
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0537",
+      "source": "張枱三呎。",
+      "origins": [
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0542",
+      "source": "佢有三歲。",
+      "origins": [
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0545",
+      "source": "呢本書三歲。",
+      "origins": [
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    }
+  ],
+  "focused_cases": [],
+  "np_cases": [
+    {
+      "case_id": "NP-L002",
+      "source": "兩本書。",
+      "group": "licensed_np_unseen_combination",
+      "assertion": "np_matrix_case",
+      "expected_internal": "QuantifiedClassifierNP",
+      "expected_surface": "兩本書",
+      "expected_license": "licensed_np",
+      "expected_classifier_compatibility": "verified_compatible"
+    },
+    {
+      "case_id": "NP-L003",
+      "source": "三杯茶。",
+      "group": "licensed_np_unseen_combination",
+      "assertion": "np_matrix_case",
+      "expected_internal": "QuantifiedClassifierNP",
+      "expected_surface": "三杯茶",
+      "expected_license": "licensed_np",
+      "expected_classifier_compatibility": "verified_compatible"
+    },
+    {
+      "case_id": "NP-L004",
+      "source": "兩間屋。",
+      "group": "licensed_np_unseen_combination",
+      "assertion": "np_matrix_case",
+      "expected_internal": "QuantifiedClassifierNP",
+      "expected_surface": "兩間屋",
+      "expected_license": "licensed_np",
+      "expected_classifier_compatibility": "verified_compatible"
+    },
+    {
+      "case_id": "NP-L005",
+      "source": "三隻貓。",
+      "group": "licensed_np_unseen_combination",
+      "assertion": "np_matrix_case",
+      "expected_internal": "QuantifiedClassifierNP",
+      "expected_surface": "三隻貓",
+      "expected_license": "licensed_np",
+      "expected_classifier_compatibility": "verified_compatible"
+    },
+    {
+      "case_id": "NP-L006",
+      "source": "兩個老師。",
+      "group": "licensed_np_unseen_combination",
+      "assertion": "np_matrix_case",
+      "expected_internal": "QuantifiedClassifierNP",
+      "expected_surface": "兩個老師",
+      "expected_license": "licensed_np",
+      "expected_classifier_compatibility": "verified_compatible"
+    },
+    {
+      "case_id": "NP-L007",
+      "source": "三個問題。",
+      "group": "licensed_np_unseen_combination",
+      "assertion": "np_matrix_case",
+      "expected_internal": "QuantifiedClassifierNP",
+      "expected_surface": "三個問題",
+      "expected_license": "licensed_np",
+      "expected_classifier_compatibility": "verified_compatible"
+    },
+    {
+      "case_id": "NP-L008",
+      "source": "兩支筆。",
+      "group": "licensed_np_unseen_combination",
+      "assertion": "np_matrix_case",
+      "expected_internal": "QuantifiedClassifierNP",
+      "expected_surface": "兩支筆",
+      "expected_license": "licensed_np",
+      "expected_classifier_compatibility": "verified_compatible"
+    },
+    {
+      "case_id": "NP-L009",
+      "source": "三件衫。",
+      "group": "licensed_np_unseen_combination",
+      "assertion": "np_matrix_case",
+      "expected_internal": "QuantifiedClassifierNP",
+      "expected_surface": "三件衫",
+      "expected_license": "licensed_np",
+      "expected_classifier_compatibility": "verified_compatible"
+    },
+    {
+      "case_id": "NP-L010",
+      "source": "兩張紙。",
+      "group": "licensed_np_unseen_combination",
+      "assertion": "np_matrix_case",
+      "expected_internal": "QuantifiedClassifierNP",
+      "expected_surface": "兩張紙",
+      "expected_license": "licensed_np",
+      "expected_classifier_compatibility": "verified_compatible"
+    },
+    {
+      "case_id": "NP-L011",
+      "source": "兩架車。",
+      "group": "licensed_np_unseen_combination",
+      "assertion": "np_matrix_case",
+      "expected_internal": "QuantifiedClassifierNP",
+      "expected_surface": "兩架車",
+      "expected_license": "licensed_np",
+      "expected_classifier_compatibility": "verified_compatible"
+    },
+    {
+      "case_id": "NP-L012",
+      "source": "三部電話。",
+      "group": "licensed_np_unseen_combination",
+      "assertion": "np_matrix_case",
+      "expected_internal": "QuantifiedClassifierNP",
+      "expected_surface": "三部電話",
+      "expected_license": "licensed_np",
+      "expected_classifier_compatibility": "verified_compatible"
+    },
+    {
+      "case_id": "NP-L013",
+      "source": "兩碗飯。",
+      "group": "licensed_np_unseen_combination",
+      "assertion": "np_matrix_case",
+      "expected_internal": "QuantifiedClassifierNP",
+      "expected_surface": "兩碗飯",
+      "expected_license": "licensed_np",
+      "expected_classifier_compatibility": "verified_compatible"
+    },
+    {
+      "case_id": "NP-P001",
+      "source": "三歲。",
+      "group": "provisional_headless",
+      "assertion": "np_matrix_case",
+      "expected_internal": "QuantifiedClassifierNP",
+      "expected_surface": "三歲",
+      "expected_license": "provisional_np_candidate"
+    },
+    {
+      "case_id": "NP-P002",
+      "source": "三本水。",
+      "group": "classifier_incompatible",
+      "assertion": "np_matrix_case",
+      "expected_internal": "QuantifiedClassifierNP",
+      "expected_surface": "三本水",
+      "expected_license": "provisional_np_candidate",
+      "expected_classifier_compatibility": "incompatible"
+    },
+    {
+      "case_id": "NP-P003",
+      "source": "三杯書。",
+      "group": "classifier_incompatible",
+      "assertion": "np_matrix_case",
+      "expected_internal": "QuantifiedClassifierNP",
+      "expected_surface": "三杯書",
+      "expected_license": "provisional_np_candidate",
+      "expected_classifier_compatibility": "incompatible"
+    },
+    {
+      "case_id": "NP-P004",
+      "source": "三間醫生。",
+      "group": "classifier_incompatible",
+      "assertion": "np_matrix_case",
+      "expected_internal": "QuantifiedClassifierNP",
+      "expected_surface": "三間醫生",
+      "expected_license": "provisional_np_candidate",
+      "expected_classifier_compatibility": "incompatible"
+    },
+    {
+      "case_id": "NP-P005",
+      "source": "三隻餐廳。",
+      "group": "classifier_incompatible",
+      "assertion": "np_matrix_case",
+      "expected_internal": "QuantifiedClassifierNP",
+      "expected_surface": "三隻餐廳",
+      "expected_license": "provisional_np_candidate",
+      "expected_classifier_compatibility": "incompatible"
+    },
+    {
+      "case_id": "NP-P006",
+      "source": "三本電話。",
+      "group": "classifier_incompatible",
+      "assertion": "np_matrix_case",
+      "expected_internal": "QuantifiedClassifierNP",
+      "expected_surface": "三本電話",
+      "expected_license": "provisional_np_candidate",
+      "expected_classifier_compatibility": "incompatible"
+    },
+    {
+      "case_id": "NP-P007",
+      "source": "三張水。",
+      "group": "classifier_incompatible",
+      "assertion": "np_matrix_case",
+      "expected_internal": "QuantifiedClassifierNP",
+      "expected_surface": "三張水",
+      "expected_license": "provisional_np_candidate",
+      "expected_classifier_compatibility": "incompatible"
+    }
+  ],
+  "coverage": {
+    "state": "positive_only",
+    "exact_snapshot_positive_count": 23,
+    "focused_positive_count": 0,
+    "focused_boundary_count": 0,
+    "focused_review_only_count": 0,
+    "np_case_count": 19,
+    "positive_case_count": 42,
+    "boundary_case_count": 0,
+    "executable_case_count": 42
+  }
+}

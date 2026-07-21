@@ -181,3 +181,12 @@ This file summarizes current release history. The complete historical changelog 
 - Archived the superseded files and combined recovery-package tools without deleting their history.
 - Added repository verification and export scripts.
 - No parser, grammar, lexicon, Jyutping, status, or test expectation changed.
+
+## Infrastructure migration Phase 5
+
+- Consolidated active executable tests under `tests/`.
+- Added one standard JSON test file for each of 171 active constructions.
+- Added `npm test` as the single command for 545 exact regressions, 43 NP cases, and 1,156 construction assertions.
+- Migrated focused positive and boundary suites for `PostverbalZoPerfectiveVP` and `ResourceUseLaiFunctionRelation`.
+- Archived manual render-review documents and the former active fixture locations.
+- No parser behavior or linguistic status changed.

@@ -1,0 +1,74 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "PolarQuestionFrame",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [
+    {
+      "case_id": "REG-0045",
+      "source": "去咩？",
+      "origins": [
+        "run-a1-final-me1-polar-question-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0105",
+      "source": "你去咩？",
+      "origins": [
+        "run-a1-direct-wh-determiner-np-boundary.js",
+        "run-a1-final-gwaa3-epistemic-scope-boundary.js",
+        "run-a1-final-me1-polar-question-boundary.js",
+        "run-a1-final-wo3-evidential-scope-boundary.js",
+        "run-a1-laa1-laa3-scope-boundary.js",
+        "run-a1-ordered-particle-cluster-scope.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0112",
+      "source": "你去㗎咩？",
+      "origins": [
+        "run-a1-ordered-particle-cluster-scope.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0133",
+      "source": "你食飯咩？",
+      "origins": [
+        "run-a1-final-me1-polar-question-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0172",
+      "source": "佢返咗屋企咩？",
+      "origins": [
+        "run-a1-final-me1-polar-question-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0216",
+      "source": "我可以去咩？",
+      "origins": [
+        "run-a1-final-me1-polar-question-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    }
+  ],
+  "focused_cases": [],
+  "np_cases": [],
+  "coverage": {
+    "state": "positive_only",
+    "exact_snapshot_positive_count": 6,
+    "focused_positive_count": 0,
+    "focused_boundary_count": 0,
+    "focused_review_only_count": 0,
+    "np_case_count": 0,
+    "positive_case_count": 6,
+    "boundary_case_count": 0,
+    "executable_case_count": 6
+  }
+}

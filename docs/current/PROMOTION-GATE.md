@@ -38,7 +38,7 @@ Every `grammar/<ConstructionName>.md` note contains:
 - `independent_evidence_beyond_internal_tests`;
 - `promotion_gate_version` — currently `v1`.
 
-A missing field is a validation failure. Passing executable boundaries require drafted boundaries. Passing boundary tests cannot be asserted when executable tests are absent.
+A missing field is a validation failure. Passing executable boundaries require drafted boundaries. Passing boundary tests cannot be asserted when executable tests are absent. Each note also names its `tests/constructions/<ConstructionName>.json` file and records standardized positive, boundary, and total executable counts.
 
 ## Status rules
 
@@ -83,4 +83,4 @@ Unknown, missing, pending, or merely present verification text does not count.
 
 ## Editing rule
 
-When evidence changes, update the note body and the corresponding frontmatter fields together. A status-only edit is not valid evidence work.
+When evidence changes, update the note body and the corresponding frontmatter fields together. A status-only edit is not valid evidence work. Run `npm test` before asserting that standardized boundary tests pass.

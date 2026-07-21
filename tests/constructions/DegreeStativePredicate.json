@@ -1,0 +1,194 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "DegreeStativePredicate",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [
+    {
+      "case_id": "REG-0024",
+      "source": "今日好凍。",
+      "origins": [
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0040",
+      "source": "出面好熱。",
+      "origins": [
+        "run-current-focused.js",
+        "run-current-focused-v0.5.162-r1.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0061",
+      "source": "仲有幾耐先到？",
+      "origins": [
+        "run-a1-conventional-duration-ambiguity-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0068",
+      "source": "好凍。",
+      "origins": [
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0069",
+      "source": "好熱。",
+      "origins": [
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0165",
+      "source": "佢好攰，但係仲做緊。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0166",
+      "source": "佢好高。",
+      "origins": [
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0224",
+      "source": "我好熱。",
+      "origins": [
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0282",
+      "source": "我都覺得好貴。",
+      "origins": [
+        "run-a1-hover-opinion-stance-folded.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0287",
+      "source": "我最近好大壓力。",
+      "origins": [
+        "run-w17-lexical-boundary-blockers.js",
+        "run-w17-perfective-locative-wh-question.js",
+        "run-w17-perfective-motion-goal-declarative.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0295",
+      "source": "我買嘅書好貴。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0308",
+      "source": "我覺得佢好開心喎。",
+      "origins": [
+        "run-a1-final-wo3-evidential-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0326",
+      "source": "呢句有幾多個字？",
+      "origins": [
+        "run-a1-approximate-quantified-object.js",
+        "run-a1-conventional-duration-ambiguity-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0352",
+      "source": "係呀，日日OT到好夜。",
+      "origins": [
+        "review-only-promotion-v0.5.161-batch1"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0353",
+      "source": "係呀，我最近好大壓力。",
+      "origins": [
+        "run-w17-lexical-boundary-blockers.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0375",
+      "source": "屋企好靜。",
+      "origins": [
+        "run-current-focused-v0.5.162-r1.js",
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0383",
+      "source": "要等幾耐啊？",
+      "origins": [
+        "run-a1-conventional-duration-ambiguity-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0459",
+      "source": "幾多年前？",
+      "origins": [
+        "run-a1-quantified-time-np.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0498",
+      "source": "雖然好攰，但係佢仲做緊。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0499",
+      "source": "雖然好攰，佢仲做緊。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0500",
+      "source": "簽死幾耐啊？",
+      "origins": [
+        "run-a1-quantified-time-np.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    }
+  ],
+  "focused_cases": [],
+  "np_cases": [],
+  "coverage": {
+    "state": "positive_only",
+    "exact_snapshot_positive_count": 21,
+    "focused_positive_count": 0,
+    "focused_boundary_count": 0,
+    "focused_review_only_count": 0,
+    "np_case_count": 0,
+    "positive_case_count": 21,
+    "boundary_case_count": 0,
+    "executable_case_count": 21
+  }
+}

@@ -21,6 +21,11 @@ code_document_reconciled: false
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v1"
+standard_test_file: "tests/constructions/AssociativeNP.json"
+standard_test_coverage: "positive_only"
+standard_positive_test_count: 3
+standard_boundary_test_count: 0
+standard_executable_test_count: 3
 source_ids: ["SRC-SIO-2011-GE3", "SRC-YU-2006-NOMINAL-MODIFIERS"]
 runtime_active: true
 runtime_code_references: 4
@@ -71,6 +76,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 ## Negative and boundary cases
 
+- Standard executable test file: `tests/constructions/AssociativeNP.json`
 - Evidence state: `none_recorded`
 - Executable or review records containing this label:
   - `test-data/CP023-P1-PROG01-nominal-design-cases-r3.tsv`
@@ -80,9 +86,9 @@ This is a linguistic claim only to the extent allowed by the status and evidence
   - `test-data/grammar-claim-provenance-CP021B.tsv`
   - `test-data/grammar-legitimacy-audit.json`
   - `test-data/grammar-legitimacy-audit.tsv`
-  - `test-data/np-subsystem-v0.5.184.json`
+  - `tests/fixtures/np-subsystem.json`
   - `test-data/pre-intermediate-gold-corpus.tsv`
-  - `test-data/regression-snapshots.json`
+  - `tests/fixtures/regression-snapshots.json`
 
 ## Implementation state
 

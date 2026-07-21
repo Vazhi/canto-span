@@ -21,6 +21,11 @@ code_document_reconciled: false
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v1"
+standard_test_file: "tests/constructions/ComplementEllipsisFragment.json"
+standard_test_coverage: "positive_only"
+standard_positive_test_count: 5
+standard_boundary_test_count: 0
+standard_executable_test_count: 5
 source_ids: ["SRC-ALDERETE-ETAL-2017-SYNOPSIS", "SRC-CHENG-2022-HAI6-RESPONSE", "SRC-LEE-PAN-2024-VP-ELLIPSIS", "SRC-LUKE-NANCARROW-1998-AUXILIARIES", "SRC-YIP-MATTHEWS-2000-SYNTACTIC-TRANSFER", "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"]
 runtime_active: true
 runtime_code_references: 7
@@ -103,6 +108,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 ## Negative and boundary cases
 
+- Standard executable test file: `tests/constructions/ComplementEllipsisFragment.json`
 - Evidence state: `fixture_level_not_provenance_linked`
 - Executable or review records containing this label:
   - `test-data/cp021b-lx1-construction-freeze-baseline.json`
@@ -112,7 +118,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
   - `test-data/grammar-legitimacy-audit.tsv`
   - `test-data/native-speaker-naturalness-evidence-v1.json`
   - `test-data/native-speaker-naturalness-evidence-v1.tsv`
-  - `test-data/regression-snapshots.json`
+  - `tests/fixtures/regression-snapshots.json`
 
 ## Implementation state
 

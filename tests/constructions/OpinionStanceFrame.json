@@ -1,0 +1,147 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "OpinionStanceFrame",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [
+    {
+      "case_id": "REG-0072",
+      "source": "如果你覺得佢啱，我就同意。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0211",
+      "source": "我以為佢走咗。",
+      "origins": [
+        "run-current-focused-v0.5.158-a1-final-live-families-broad-closure.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0250",
+      "source": "我相信如果佢去，我就去。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0282",
+      "source": "我都覺得好貴。",
+      "origins": [
+        "run-a1-hover-opinion-stance-folded.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0283",
+      "source": "我都覺得有。",
+      "origins": [
+        "run-a1-hover-opinion-stance-folded.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0284",
+      "source": "我都覺得佢係。",
+      "origins": [
+        "run-a1-hover-opinion-stance-folded.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0285",
+      "source": "我都覺得係。",
+      "origins": [
+        "run-a1-hover-opinion-stance-folded.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0286",
+      "source": "我都覺得係啊。",
+      "origins": [
+        "run-a1-hover-opinion-stance-folded.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0307",
+      "source": "我覺得如果佢去，我就去。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0308",
+      "source": "我覺得佢好開心喎。",
+      "origins": [
+        "run-a1-final-wo3-evidential-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0309",
+      "source": "我覺得佢啱。",
+      "origins": [
+        "run-current-focused-v0.5.158-a1-final-live-families-broad-closure.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0310",
+      "source": "我覺得係真嘅。",
+      "origins": [
+        "run-a1-hover-opinion-stance-folded.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0311",
+      "source": "我覺得唔係。",
+      "origins": [
+        "run-a1-hover-opinion-stance-folded.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0313",
+      "source": "我覺得啱。",
+      "context_source": "你覺得佢啱唔啱？",
+      "origins": [
+        "run-current-focused-v0.5.158-a1-final-live-families-broad-closure.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0314",
+      "source": "我覺得都可以試。",
+      "origins": [
+        "run-a1-approximate-quantified-object.js",
+        "run-a1-bare-classifier-np-context-boundary.js",
+        "run-a1-conventional-duration-ambiguity-boundary.js",
+        "run-a1-hover-opinion-stance-folded.js",
+        "run-a1-quantified-time-np.js",
+        "run-diagnostics-root-span-inventory-unification.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    }
+  ],
+  "focused_cases": [],
+  "np_cases": [],
+  "coverage": {
+    "state": "positive_only",
+    "exact_snapshot_positive_count": 15,
+    "focused_positive_count": 0,
+    "focused_boundary_count": 0,
+    "focused_review_only_count": 0,
+    "np_case_count": 0,
+    "positive_case_count": 15,
+    "boundary_case_count": 0,
+    "executable_case_count": 15
+  }
+}

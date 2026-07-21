@@ -21,6 +21,11 @@ code_document_reconciled: false
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v1"
+standard_test_file: "tests/constructions/PostverbalZoPerfectiveVP.json"
+standard_test_coverage: "positive_and_boundary"
+standard_positive_test_count: 32
+standard_boundary_test_count: 12
+standard_executable_test_count: 45
 source_ids: ["SRC-FAN-CHAN-2022", "SRC-SIO-BOND-2025", "SRC-SYBESMA-2013", "SRC-YIP-MATTHEWS-2000-BASIC"]
 runtime_active: true
 runtime_code_references: 5
@@ -88,6 +93,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 ## Negative and boundary cases
 
+- Standard executable test file: `tests/constructions/PostverbalZoPerfectiveVP.json`
 - Evidence state: `executable_boundaries_present_but_code_document_and_object_integration_repair_incomplete`
 - Executable or review records containing this label:
   - `review-packets/cp022-evaluation/EP-CP022-P1-PFV01-D1/focused-evaluation-packet.json`
@@ -98,7 +104,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
   - `test-data/grammar-claim-source-edges-CP021A.tsv`
   - `test-data/grammar-legitimacy-audit.json`
   - `test-data/grammar-legitimacy-audit.tsv`
-  - `test-data/regression-snapshots.json`
+  - `tests/fixtures/regression-snapshots.json`
 
 ## Implementation state
 

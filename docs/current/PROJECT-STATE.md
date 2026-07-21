@@ -80,8 +80,12 @@ The DEMO01 promotion, render, and held-out track is abandoned. Its historical vi
 
 ## Validation
 
+- standard command: **`npm test`**
 - NP subsystem: **43/43 PASS**
 - aggregate regression: **545/545 PASS**
+- per-construction assertions: **1,156/1,156 PASS**
+- construction test files: **171/171**
+- coverage: **2 positive+boundary; 100 positive-only; 69 no direct cases**
 - runtime-label / construction-note alignment: **PASS**
 - normalized v0.5.184 → v0.5.185 runtime equivalence: **545/545 PASS**
 - active label count: **171**
@@ -93,7 +97,7 @@ Git history is now the authoritative change record. The baseline commit preserve
 
 ## Infrastructure migration state
 
-Phase 4 is complete. The active authoring registry consists of 171 Obsidian construction notes, `main.js` retains only active-label information, and promotion eligibility is enforced mechanically from note frontmatter. The former wide status, source-accounting, and re-audit tables remain frozen under `archive/registry-pre-obsidian-v0.5.184/`.
+Phase 5 is complete. The active authoring registry consists of 171 Obsidian construction notes, `main.js` retains only active-label information, promotion eligibility is enforced mechanically, and current executable behavior is consolidated under `tests/`. The former wide status, source-accounting, and re-audit tables remain frozen under `archive/registry-pre-obsidian-v0.5.184/`.
 
 Current promotion-gate result:
 
@@ -104,4 +108,4 @@ Current promotion-gate result:
 
 ## Next action
 
-Begin infrastructure migration Phase 5: consolidate active positive and boundary cases into one standard executable test directory and one command without rewriting historical fixtures.
+Begin infrastructure migration Phase 6: select a small active working set and archive the remainder at the authoring-workflow level without deleting evidence, tests, or runtime history.

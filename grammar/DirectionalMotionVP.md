@@ -21,6 +21,11 @@ code_document_reconciled: false
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v1"
+standard_test_file: "tests/constructions/DirectionalMotionVP.json"
+standard_test_coverage: "positive_only"
+standard_positive_test_count: 72
+standard_boundary_test_count: 0
+standard_executable_test_count: 72
 source_ids: ["SRC-SHAN-JIN-2025-MOTION-TYPOLOGY", "SRC-YIU-2016-DIRECTIONAL-ASPECT"]
 runtime_active: true
 runtime_code_references: 29
@@ -72,6 +77,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 ## Negative and boundary cases
 
+- Standard executable test file: `tests/constructions/DirectionalMotionVP.json`
 - Evidence state: `fixture_level_not_provenance_linked`
 - Executable or review records containing this label:
   - `review-packets/cp022-evaluation/EP-CP022-I1A-I01-D1/development-baseline.json`

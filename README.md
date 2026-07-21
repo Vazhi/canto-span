@@ -12,12 +12,16 @@ This repository is the canonical project working tree for the v0.5.185 baseline 
 - prior accepted constructions under re-audit: **2**
 - second-speaker work: **frozen; requirement retained**
 - promotion gate: **active; 171/171 notes checked, 0 promoted statuses**
-- current migration focus: **standard executable construction tests**
+- standard test command: **`npm test`**
+- current migration focus: **active versus archived construction triage**
 
 Validation at the baseline commit:
 
 - NP subsystem: **43/43**
 - aggregate regression: **545/545**
+- NP subsystem: **43/43**
+- per-construction assertions: **1,156/1,156**
+- construction test files: **171/171**
 
 ## Start
 

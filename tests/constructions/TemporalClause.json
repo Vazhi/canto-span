@@ -1,0 +1,69 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "TemporalClause",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [
+    {
+      "case_id": "REG-0021",
+      "source": "下年哩個時間咪過囖。",
+      "origins": [
+        "run-a1-quantified-time-np.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0024",
+      "source": "今日好凍。",
+      "origins": [
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0352",
+      "source": "係呀，日日OT到好夜。",
+      "origins": [
+        "review-only-promotion-v0.5.161-batch1"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0458",
+      "source": "尋日去咗香港。",
+      "origins": [
+        "run-w17-perfective-motion-goal-declarative.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0518",
+      "source": "聽日打風。",
+      "origins": [
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0520",
+      "source": "聽日落雨。",
+      "origins": [
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    }
+  ],
+  "focused_cases": [],
+  "np_cases": [],
+  "coverage": {
+    "state": "positive_only",
+    "exact_snapshot_positive_count": 6,
+    "focused_positive_count": 0,
+    "focused_boundary_count": 0,
+    "focused_review_only_count": 0,
+    "np_case_count": 0,
+    "positive_case_count": 6,
+    "boundary_case_count": 0,
+    "executable_case_count": 6
+  }
+}

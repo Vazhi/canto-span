@@ -1,0 +1,407 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "PostverbalZoPerfectiveVP",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [
+    {
+      "case_id": "REG-0123",
+      "source": "你食咗香港未？",
+      "origins": [
+        "run-w17-overt-object-selection-compatibility-guard.js",
+        "run-w17-selection-review-wrapper-structural-preservation.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0124",
+      "source": "你食咗飯未？",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking",
+        "run-w17-overt-object-selection-compatibility-guard.js",
+        "run-w17-selection-review-wrapper-structural-preservation.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0144",
+      "source": "你尋日食咗故事。",
+      "origins": [
+        "run-w17-overt-object-selection-compatibility-guard.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0145",
+      "source": "你尋日食咗香港。",
+      "origins": [
+        "run-w17-overt-object-selection-compatibility-guard.js",
+        "run-w17-perfective-motion-goal-declarative.js",
+        "run-w17-selection-review-wrapper-structural-preservation.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0146",
+      "source": "你尋日食咗飯。",
+      "origins": [
+        "run-w17-overt-object-selection-compatibility-guard.js",
+        "run-w17-selection-review-wrapper-structural-preservation.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0147",
+      "source": "你尋日食咗邊度呀？",
+      "origins": [
+        "run-w17-perfective-locative-wh-question.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0148",
+      "source": "你尋日食咗蘋果。",
+      "origins": [
+        "run-w17-overt-object-selection-compatibility-guard.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0149",
+      "source": "你尋日睇咗香港。",
+      "origins": [
+        "run-w17-overt-object-selection-compatibility-guard.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0150",
+      "source": "你尋日飲咗水。",
+      "origins": [
+        "run-w17-overt-object-selection-compatibility-guard.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0151",
+      "source": "你尋日飲咗香港。",
+      "origins": [
+        "run-w17-overt-object-selection-compatibility-guard.js",
+        "run-w17-selection-review-wrapper-structural-preservation.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0184",
+      "source": "佢食咗飯喇。",
+      "origins": [
+        "run-a1-laa1-laa3-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0192",
+      "source": "佢睇咗故事。",
+      "origins": [
+        "run-a1-topic-chain-null-object-linkage.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0261",
+      "source": "我食咗飯。",
+      "origins": [
+        "run-a1-bare-numeral-guards.js",
+        "run-a1-completion-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0333",
+      "source": "呢個故事，我睇咗故事，佢都睇咗故事。",
+      "origins": [
+        "run-a1-topic-chain-null-object-linkage.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0390",
+      "source": "食咗香港嘅飯。",
+      "origins": [
+        "run-w17-overt-object-selection-compatibility-guard.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0391",
+      "source": "食咗飯。",
+      "origins": [
+        "run-current-focused.js:v0.5.160-r2-rendered-accepted",
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    }
+  ],
+  "focused_cases": [
+    {
+      "case_id": "EP-CP022-P1-PFV01-D1:P1-E01",
+      "source": "我食咗麵。",
+      "class": "exact_source_attestation",
+      "expected_profile": "narrow_subtype_present",
+      "assertion": "construction_present",
+      "provenance": "review-packets/cp022-evaluation/EP-CP022-P1-PFV01-D1/focused-evaluation-packet.json",
+      "source_ids": [
+        "SRC-SIO-BOND-2025"
+      ],
+      "source_locator": "PDF p. 3, example (2a)"
+    },
+    {
+      "case_id": "EP-CP022-P1-PFV01-D1:P1-E02",
+      "source": "你食咗飯未？",
+      "class": "source_linked_final_meih_question",
+      "expected_profile": "narrow_subtype_nested",
+      "assertion": "construction_present",
+      "provenance": "review-packets/cp022-evaluation/EP-CP022-P1-PFV01-D1/focused-evaluation-packet.json",
+      "source_ids": [
+        "SRC-YIP-MATTHEWS-2000-BASIC"
+      ],
+      "source_locator": "Unit 18 and Unit 23 final 未 question pattern"
+    },
+    {
+      "case_id": "EP-CP022-P1-PFV01-D1:P1-V01",
+      "source": "我食咗飯。",
+      "class": "consumption_variant",
+      "expected_profile": "narrow_subtype_present",
+      "assertion": "construction_present",
+      "provenance": "review-packets/cp022-evaluation/EP-CP022-P1-PFV01-D1/focused-evaluation-packet.json"
+    },
+    {
+      "case_id": "EP-CP022-P1-PFV01-D1:P1-V02",
+      "source": "我飲咗水。",
+      "class": "consumption_variant",
+      "expected_profile": "narrow_subtype_present",
+      "assertion": "construction_present",
+      "provenance": "review-packets/cp022-evaluation/EP-CP022-P1-PFV01-D1/focused-evaluation-packet.json"
+    },
+    {
+      "case_id": "EP-CP022-P1-PFV01-D1:P1-V03",
+      "source": "佢睇咗書。",
+      "class": "perception_variant",
+      "expected_profile": "narrow_subtype_present",
+      "assertion": "construction_present",
+      "provenance": "review-packets/cp022-evaluation/EP-CP022-P1-PFV01-D1/focused-evaluation-packet.json"
+    },
+    {
+      "case_id": "EP-CP022-P1-PFV01-D1:P1-V04",
+      "source": "我聽咗歌。",
+      "class": "perception_variant",
+      "expected_profile": "narrow_subtype_present",
+      "assertion": "construction_present",
+      "provenance": "review-packets/cp022-evaluation/EP-CP022-P1-PFV01-D1/focused-evaluation-packet.json"
+    },
+    {
+      "case_id": "EP-CP022-P1-PFV01-D1:P1-V05",
+      "source": "你寫咗字。",
+      "class": "creation_variant",
+      "expected_profile": "narrow_subtype_present",
+      "assertion": "construction_present",
+      "provenance": "review-packets/cp022-evaluation/EP-CP022-P1-PFV01-D1/focused-evaluation-packet.json"
+    },
+    {
+      "case_id": "EP-CP022-P1-PFV01-D1:P1-V06",
+      "source": "佢做咗功課。",
+      "class": "activity_variant",
+      "expected_profile": "narrow_subtype_present",
+      "assertion": "construction_present",
+      "provenance": "review-packets/cp022-evaluation/EP-CP022-P1-PFV01-D1/focused-evaluation-packet.json"
+    },
+    {
+      "case_id": "EP-CP022-P1-PFV01-D1:P1-V07",
+      "source": "我打咗電話。",
+      "class": "activity_variant",
+      "expected_profile": "narrow_subtype_present",
+      "assertion": "construction_present",
+      "provenance": "review-packets/cp022-evaluation/EP-CP022-P1-PFV01-D1/focused-evaluation-packet.json"
+    },
+    {
+      "case_id": "EP-CP022-P1-PFV01-D1:P1-V08",
+      "source": "佢煮咗飯。",
+      "class": "creation_variant",
+      "expected_profile": "narrow_subtype_present",
+      "assertion": "construction_present",
+      "provenance": "review-packets/cp022-evaluation/EP-CP022-P1-PFV01-D1/focused-evaluation-packet.json"
+    },
+    {
+      "case_id": "EP-CP022-P1-PFV01-D1:P1-N01",
+      "source": "食咗。",
+      "class": "objectless_boundary",
+      "expected_profile": "narrow_subtype_absent",
+      "assertion": "construction_absent",
+      "provenance": "review-packets/cp022-evaluation/EP-CP022-P1-PFV01-D1/focused-evaluation-packet.json"
+    },
+    {
+      "case_id": "EP-CP022-P1-PFV01-D1:P1-N02",
+      "source": "食完咗飯。",
+      "class": "inner_result_boundary",
+      "expected_profile": "narrow_subtype_absent",
+      "assertion": "construction_absent",
+      "provenance": "review-packets/cp022-evaluation/EP-CP022-P1-PFV01-D1/focused-evaluation-packet.json"
+    },
+    {
+      "case_id": "EP-CP022-P1-PFV01-D1:P1-N03",
+      "source": "去咗香港。",
+      "class": "motion_goal_boundary",
+      "expected_profile": "narrow_subtype_absent",
+      "assertion": "construction_absent",
+      "provenance": "review-packets/cp022-evaluation/EP-CP022-P1-PFV01-D1/focused-evaluation-packet.json"
+    },
+    {
+      "case_id": "EP-CP022-P1-PFV01-D1:P1-N04",
+      "source": "我食過飯。",
+      "class": "experiential_boundary",
+      "expected_profile": "narrow_subtype_absent",
+      "assertion": "construction_absent",
+      "provenance": "review-packets/cp022-evaluation/EP-CP022-P1-PFV01-D1/focused-evaluation-packet.json"
+    },
+    {
+      "case_id": "EP-CP022-P1-PFV01-D1:P1-N05",
+      "source": "我食緊飯。",
+      "class": "progressive_boundary",
+      "expected_profile": "narrow_subtype_absent",
+      "assertion": "construction_absent",
+      "provenance": "review-packets/cp022-evaluation/EP-CP022-P1-PFV01-D1/focused-evaluation-packet.json"
+    },
+    {
+      "case_id": "EP-CP022-P1-PFV01-D1:P1-N06",
+      "source": "我食咗香港。",
+      "class": "selectional_incompatibility_boundary",
+      "expected_profile": "narrow_subtype_may_parse_but_semantic_acceptance_not_clean",
+      "assertion": "review_only_parse_succeeds",
+      "provenance": "review-packets/cp022-evaluation/EP-CP022-P1-PFV01-D1/focused-evaluation-packet.json"
+    },
+    {
+      "case_id": "EP-CP022-P1-PFV01-D1:P1-N07",
+      "source": "我食飯。",
+      "class": "unmarked_aspect_boundary",
+      "expected_profile": "narrow_subtype_absent",
+      "assertion": "construction_absent",
+      "provenance": "review-packets/cp022-evaluation/EP-CP022-P1-PFV01-D1/focused-evaluation-packet.json"
+    },
+    {
+      "case_id": "EP-CP022-P1-PFV01-D1:P1-N08",
+      "source": "牆上面擺咗部電話。",
+      "class": "placement_boundary",
+      "expected_profile": "narrow_subtype_absent",
+      "assertion": "construction_absent",
+      "provenance": "review-packets/cp022-evaluation/EP-CP022-P1-PFV01-D1/focused-evaluation-packet.json"
+    }
+  ],
+  "np_cases": [
+    {
+      "case_id": "NP-I001",
+      "source": "我睇咗兩本書。",
+      "group": "pfv_integration_unseen_combination",
+      "assertion": "construction_present",
+      "expected_pfv_surface": "睇咗兩本書",
+      "expected_object_internal": "QuantifiedClassifierNP",
+      "expected_object_surface": "兩本書",
+      "expected_object_license": "licensed_np"
+    },
+    {
+      "case_id": "NP-I002",
+      "source": "我睇咗三個醫生。",
+      "group": "pfv_integration",
+      "assertion": "construction_present",
+      "expected_pfv_surface": "睇咗三個醫生",
+      "expected_object_internal": "QuantifiedClassifierNP",
+      "expected_object_surface": "三個醫生",
+      "expected_object_license": "licensed_np"
+    },
+    {
+      "case_id": "NP-I003",
+      "source": "我答咗你嘅問題。",
+      "group": "pfv_integration",
+      "assertion": "construction_present",
+      "expected_pfv_surface": "答咗你嘅問題",
+      "expected_object_internal": "AssociativeNP",
+      "expected_object_surface": "你嘅問題",
+      "expected_object_license": "licensed_np"
+    },
+    {
+      "case_id": "NP-I004",
+      "source": "我買咗書同埋筆。",
+      "group": "pfv_integration_unseen_combination",
+      "assertion": "construction_present",
+      "expected_pfv_surface": "買咗書同埋筆",
+      "expected_object_internal": "CoordinatedNP",
+      "expected_object_surface": "書同埋筆",
+      "expected_object_license": "licensed_np"
+    },
+    {
+      "case_id": "NP-I005",
+      "source": "食咗香港嘅飯。",
+      "group": "pfv_integration_boundary_correction",
+      "assertion": "construction_present",
+      "expected_pfv_surface": "食咗香港嘅飯",
+      "expected_object_internal": "AssociativeNP",
+      "expected_object_surface": "香港嘅飯",
+      "expected_object_license": "licensed_np"
+    },
+    {
+      "case_id": "NP-I006",
+      "source": "我買咗兩支筆。",
+      "group": "pfv_integration_unseen_combination",
+      "assertion": "construction_present",
+      "expected_pfv_surface": "買咗兩支筆",
+      "expected_object_internal": "QuantifiedClassifierNP",
+      "expected_object_surface": "兩支筆",
+      "expected_object_license": "licensed_np"
+    },
+    {
+      "case_id": "NP-N001",
+      "source": "我飲咗三本水。",
+      "group": "pfv_forbidden_classifier_incompatible",
+      "assertion": "construction_absent",
+      "forbid_narrow_pfv": true
+    },
+    {
+      "case_id": "NP-N002",
+      "source": "我睇咗三杯書。",
+      "group": "pfv_forbidden_classifier_incompatible",
+      "assertion": "construction_absent",
+      "forbid_narrow_pfv": true
+    },
+    {
+      "case_id": "NP-N003",
+      "source": "我睇咗三書。",
+      "group": "pfv_forbidden_unsupported_np",
+      "assertion": "construction_absent",
+      "forbid_narrow_pfv": true
+    },
+    {
+      "case_id": "NP-N004",
+      "source": "我睇咗三個𠮶。",
+      "group": "pfv_forbidden_unknown_head",
+      "assertion": "construction_absent",
+      "forbid_narrow_pfv": true
+    },
+    {
+      "case_id": "NP-N005",
+      "source": "你買咗呢隻牌子未呀？",
+      "group": "pfv_forbidden_unverified_example",
+      "assertion": "construction_absent",
+      "forbid_narrow_pfv": true
+    }
+  ],
+  "coverage": {
+    "state": "positive_and_boundary",
+    "exact_snapshot_positive_count": 16,
+    "focused_positive_count": 10,
+    "focused_boundary_count": 7,
+    "focused_review_only_count": 1,
+    "np_case_count": 11,
+    "positive_case_count": 32,
+    "boundary_case_count": 12,
+    "executable_case_count": 45
+  }
+}

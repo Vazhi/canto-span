@@ -1,0 +1,62 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "ConditionalClause",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [
+    {
+      "case_id": "REG-0037",
+      "source": "冇嘅話。",
+      "origins": [
+        "run-a1-conditional-coverb-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0090",
+      "source": "有嘅話，我哋再同大家講講。",
+      "origins": [
+        "run-a1-approximate-quantified-object.js",
+        "run-a1-bare-classifier-np-context-boundary.js",
+        "run-a1-conditional-coverb-boundary.js",
+        "run-a1-conventional-duration-ambiguity-boundary.js",
+        "run-a1-have-or-not-question-boundary.js",
+        "run-a1-hover-opinion-stance-folded.js",
+        "run-a1-nonblocking-debt-cleanup.js",
+        "run-a1-quantified-time-np.js",
+        "run-diagnostics-root-span-inventory-unification.js",
+        "v0.5.159 intentional hierarchical-clause-relation migration"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0091",
+      "source": "有嘅話。",
+      "origins": [
+        "run-a1-conditional-coverb-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0448",
+      "source": "得嘅話。",
+      "origins": [
+        "run-a1-conditional-coverb-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    }
+  ],
+  "focused_cases": [],
+  "np_cases": [],
+  "coverage": {
+    "state": "positive_only",
+    "exact_snapshot_positive_count": 4,
+    "focused_positive_count": 0,
+    "focused_boundary_count": 0,
+    "focused_review_only_count": 0,
+    "np_case_count": 0,
+    "positive_case_count": 4,
+    "boundary_case_count": 0,
+    "executable_case_count": 4
+  }
+}

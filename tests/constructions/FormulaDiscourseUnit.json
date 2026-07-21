@@ -1,0 +1,289 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "FormulaDiscourseUnit",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [
+    {
+      "case_id": "REG-0050",
+      "source": "可以呀。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking",
+        "run-semantic-acceptance.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0051",
+      "source": "可以啊。",
+      "origins": [
+        "run-semantic-acceptance.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0066",
+      "source": "好，好，好，好。",
+      "origins": [
+        "run-a1-acknowledgement-variant-boundaries.js",
+        "run-a1-bounded-formula-repetition.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0067",
+      "source": "好呀。",
+      "origins": [
+        "run-a1-bounded-formula-repetition.js",
+        "run-a1-typed-fragment-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0073",
+      "source": "有，有。",
+      "origins": [
+        "run-a1-bounded-formula-repetition.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0079",
+      "source": "有有有。",
+      "origins": [
+        "run-a1-acknowledgement-variant-boundaries.js",
+        "run-a1-bounded-formula-repetition.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0087",
+      "source": "有啊，有啊，有。",
+      "origins": [
+        "run-a1-bounded-formula-repetition.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0238",
+      "source": "我知，我知。",
+      "origins": [
+        "run-a1-bounded-formula-repetition.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0245",
+      "source": "我知我知。",
+      "origins": [
+        "run-a1-acknowledgement-variant-boundaries.js",
+        "run-a1-bounded-formula-repetition.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0324",
+      "source": "到時見啦。",
+      "origins": [
+        "run-a1-laa1-laa3-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0338",
+      "source": "咁又係。",
+      "origins": [
+        "run-a1-acknowledgement-variant-boundaries.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0339",
+      "source": "放心啦。",
+      "origins": [
+        "run-a1-laa1-laa3-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0352",
+      "source": "係呀，日日OT到好夜。",
+      "origins": [
+        "review-only-promotion-v0.5.161-batch1"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0353",
+      "source": "係呀，我最近好大壓力。",
+      "origins": [
+        "run-w17-lexical-boundary-blockers.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0354",
+      "source": "係呀，係，係啊。",
+      "origins": [
+        "run-a1-bounded-formula-repetition.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0355",
+      "source": "係呀。",
+      "origins": [
+        "run-a1-bounded-formula-repetition.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0356",
+      "source": "係係係。",
+      "origins": [
+        "run-a1-bounded-formula-repetition.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0357",
+      "source": "係咩？",
+      "origins": [
+        "run-a1-direct-wh-determiner-np-boundary.js",
+        "run-a1-final-gwaa3-epistemic-scope-boundary.js",
+        "run-a1-final-me1-polar-question-boundary.js",
+        "run-a1-final-wo3-evidential-scope-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0358",
+      "source": "係啊，我知。",
+      "origins": [
+        "run-a1-acknowledgement-variant-boundaries.js",
+        "run-a1-bounded-formula-repetition.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0359",
+      "source": "係啊，係啊，係。",
+      "origins": [
+        "run-a1-acknowledgement-variant-boundaries.js",
+        "run-a1-bounded-formula-repetition.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0360",
+      "source": "係啊。",
+      "origins": [
+        "run-a1-bounded-formula-repetition.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0361",
+      "source": "係喇，噉又係。",
+      "origins": [
+        "run-a1-acknowledgement-variant-boundaries.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0362",
+      "source": "係喇，噉又食。",
+      "origins": [
+        "run-a1-acknowledgement-variant-boundaries.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0363",
+      "source": "係喇。",
+      "origins": [
+        "run-a1-acknowledgement-variant-boundaries.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0443",
+      "source": "得啦，得，得。",
+      "origins": [
+        "run-a1-bounded-formula-repetition.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0444",
+      "source": "得啦。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking",
+        "run-a1-acknowledgement-variant-boundaries.js",
+        "run-a1-bounded-formula-repetition.js",
+        "run-a1-laa1-laa3-scope-boundary.js",
+        "run-a1-restrictive-focus-particle-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0446",
+      "source": "得喇，得，得。",
+      "origins": [
+        "run-a1-acknowledgement-variant-boundaries.js",
+        "run-a1-bounded-formula-repetition.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0447",
+      "source": "得喇。",
+      "origins": [
+        "run-a1-acknowledgement-variant-boundaries.js",
+        "run-a1-final-gwaa3-epistemic-scope-boundary.js",
+        "run-a1-final-wo3-evidential-scope-boundary.js",
+        "run-a1-laa1-laa3-scope-boundary.js",
+        "run-a1-restrictive-focus-particle-boundary.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0449",
+      "source": "得嘞。",
+      "origins": [
+        "run-a1-acknowledgement-variant-boundaries.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0481",
+      "source": "對唔住。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking",
+        "run-current-focused-v0.5.157-relational-coverb-wrapper-accounting.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0482",
+      "source": "噉又係。",
+      "origins": [
+        "run-a1-acknowledgement-variant-boundaries.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    }
+  ],
+  "focused_cases": [],
+  "np_cases": [],
+  "coverage": {
+    "state": "positive_only",
+    "exact_snapshot_positive_count": 31,
+    "focused_positive_count": 0,
+    "focused_boundary_count": 0,
+    "focused_review_only_count": 0,
+    "np_case_count": 0,
+    "positive_case_count": 31,
+    "boundary_case_count": 0,
+    "executable_case_count": 31
+  }
+}

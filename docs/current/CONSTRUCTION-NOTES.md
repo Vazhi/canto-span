@@ -30,6 +30,7 @@ Each construction note records:
 - separation of implementation and linguistic validation;
 - independent evidence beyond internal tests;
 - promotion-gate schema version;
+- standard construction-test file, coverage state, and positive/boundary/executable counts;
 - runtime activity and basic fixture/reference counts.
 
 The note body records the plain-language claim, citations and locators, speaker-review scope, negative and boundary references, implementation state, blockers, and related constructions.
@@ -51,6 +52,7 @@ They are retained for audit and recovery but are not edited as current status re
 Run:
 
 ```bash
+npm test
 node tools/verify-construction-notes.js
 node tools/test-promotion-gate.js
 node tools/enforce-promotion-rules.js
@@ -62,6 +64,8 @@ The command must confirm:
 - exact equality with the runtime active-label set;
 - status equality with the current runtime;
 - required frontmatter fields;
+- exact one-to-one construction-note / construction-test-file mapping;
+- standardized test-count consistency;
 - source-count consistency;
 - valid plain `[[ConstructionName]]` links;
 - no aliased wiki links;

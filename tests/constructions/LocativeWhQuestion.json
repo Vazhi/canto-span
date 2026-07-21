@@ -1,0 +1,75 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "LocativeWhQuestion",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [
+    {
+      "case_id": "REG-0044",
+      "source": "去咗邊度呀？",
+      "origins": [
+        "run-w17-perfective-locative-wh-question.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0104",
+      "source": "你去咗邊度？",
+      "origins": [
+        "run-w17-perfective-locative-wh-question.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0140",
+      "source": "你尋日去咗邊度呀？",
+      "origins": [
+        "run-w17-overt-object-selection-compatibility-guard.js",
+        "run-w17-perfective-locative-wh-question.js",
+        "run-w17-perfective-motion-goal-declarative.js",
+        "run-w17-selection-review-wrapper-structural-preservation.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0456",
+      "source": "喺邊度呀？",
+      "origins": [
+        "run-w17-perfective-locative-wh-question.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0495",
+      "source": "講返正題，你尋日去咗邊度呀？",
+      "origins": [
+        "run-w17-lexical-boundary-blockers.js",
+        "run-w17-perfective-locative-wh-question.js",
+        "run-w17-perfective-motion-goal-declarative.js",
+        "review-only-promotion-v0.5.161-batch1"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0502",
+      "source": "邊度呀？",
+      "origins": [
+        "run-w17-perfective-locative-wh-question.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    }
+  ],
+  "focused_cases": [],
+  "np_cases": [],
+  "coverage": {
+    "state": "positive_only",
+    "exact_snapshot_positive_count": 6,
+    "focused_positive_count": 0,
+    "focused_boundary_count": 0,
+    "focused_review_only_count": 0,
+    "np_case_count": 0,
+    "positive_case_count": 6,
+    "boundary_case_count": 0,
+    "executable_case_count": 6
+  }
+}

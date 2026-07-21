@@ -1,0 +1,61 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "ComplementEllipsisFragment",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [
+    {
+      "case_id": "REG-0283",
+      "source": "我都覺得有。",
+      "origins": [
+        "run-a1-hover-opinion-stance-folded.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0284",
+      "source": "我都覺得佢係。",
+      "origins": [
+        "run-a1-hover-opinion-stance-folded.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0285",
+      "source": "我都覺得係。",
+      "origins": [
+        "run-a1-hover-opinion-stance-folded.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0286",
+      "source": "我都覺得係啊。",
+      "origins": [
+        "run-a1-hover-opinion-stance-folded.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0311",
+      "source": "我覺得唔係。",
+      "origins": [
+        "run-a1-hover-opinion-stance-folded.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    }
+  ],
+  "focused_cases": [],
+  "np_cases": [],
+  "coverage": {
+    "state": "positive_only",
+    "exact_snapshot_positive_count": 5,
+    "focused_positive_count": 0,
+    "focused_boundary_count": 0,
+    "focused_review_only_count": 0,
+    "np_case_count": 0,
+    "positive_case_count": 5,
+    "boundary_case_count": 0,
+    "executable_case_count": 5
+  }
+}

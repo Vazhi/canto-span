@@ -10,8 +10,8 @@ Every status change and release handoff must satisfy [`DEFINITION-OF-DONE.md`](D
 4. Record Speaker A evidence when available. Preserve the two-speaker requirement; second-speaker work is currently frozen.
 5. Compare the documented claim with the actual heuristic.
 6. Implement only the narrow evidence-faithful change.
-7. Run focused, boundary, preservation, regression, semantic, render, and prospective held-out checks as applicable.
-8. Update the construction note's machine-readable evidence fields.
+7. Add or update the standard file under `tests/constructions/` and run `npm test`; run semantic and prospective held-out checks separately when applicable.
+8. Update the construction note's machine-readable evidence and standard-test fields.
 9. Run `node tools/test-promotion-gate.js` and `node tools/enforce-promotion-rules.js`.
 10. Report implementation results separately from linguistic status.
 11. Accept, revise, quarantine, reject, or retire.

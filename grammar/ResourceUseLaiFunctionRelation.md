@@ -13,14 +13,19 @@ source_count: 5
 verified_source_count: 5
 independent_speaker_count: 0
 negative_cases_drafted: true
-negative_tests_executable: false
-negative_tests_passing: false
+negative_tests_executable: true
+negative_tests_passing: true
 corpus_evidence_used: false
 corpus_hits_reviewed: false
 code_document_reconciled: false
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v1"
+standard_test_file: "tests/constructions/ResourceUseLaiFunctionRelation.json"
+standard_test_coverage: "positive_and_boundary"
+standard_positive_test_count: 7
+standard_boundary_test_count: 14
+standard_executable_test_count: 21
 source_ids: ["SRC-CCO-LAICHIWO-VILLAGE-HOUSE", "SRC-CHEUNG-2018-LAI", "SRC-CHOR-2018-DIRECTIONAL-PARTICLES", "SRC-HKMEMORY-SHAPU-ORAL-HISTORY", "SRC-WONG-2023-LSA"]
 runtime_active: true
 runtime_code_references: 5
@@ -96,6 +101,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 ## Negative and boundary cases
 
+- Standard executable test file: `tests/constructions/ResourceUseLaiFunctionRelation.json`
 - Evidence state: `source_linked_profile_split_plus_v0.5.182_locked_separate_user_modal_copular_actual_use_instrumental_general_purpose_negation_A_not_A_reduplication_and_omission_boundaries`
 - Executable or review records containing this label:
   - `review-packets/v0.5.181/IFR01-D1/focused-evaluation-packet.json`

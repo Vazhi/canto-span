@@ -21,6 +21,11 @@ code_document_reconciled: false
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: false
 promotion_gate_version: "v1"
+standard_test_file: "tests/constructions/TopicComment.json"
+standard_test_coverage: "positive_only"
+standard_positive_test_count: 1
+standard_boundary_test_count: 0
+standard_executable_test_count: 1
 source_ids: []
 runtime_active: true
 runtime_code_references: 10
@@ -57,6 +62,7 @@ No pattern-specific external source is currently mapped.
 
 ## Negative and boundary cases
 
+- Standard executable test file: `tests/constructions/TopicComment.json`
 - Evidence state: `fixture_level_not_provenance_linked`
 - Executable or review records containing this label:
   - `test-data/cp021b-lx1-construction-freeze-baseline.json`
@@ -64,7 +70,7 @@ No pattern-specific external source is currently mapped.
   - `test-data/grammar-claim-provenance-CP021B.tsv`
   - `test-data/grammar-legitimacy-audit.json`
   - `test-data/grammar-legitimacy-audit.tsv`
-  - `test-data/regression-snapshots.json`
+  - `tests/fixtures/regression-snapshots.json`
 
 ## Implementation state
 

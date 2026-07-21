@@ -9,7 +9,7 @@ const vm = require("vm");
 
 const root = path.resolve(__dirname, "..");
 const baselineCommit = "6502742";
-const fixture = JSON.parse(fs.readFileSync(path.join(root, "test-data", "regression-snapshots.json"), "utf8"));
+const fixture = JSON.parse(fs.readFileSync(path.join(root, "tests", "fixtures", "regression-snapshots.json"), "utf8"));
 
 function loadApi(source, filename) {
   class Plugin {} class PluginSettingTab {} class Setting {} class Notice {}

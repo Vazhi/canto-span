@@ -27,6 +27,16 @@ required=(
   tools/test-promotion-gate.js
   tools/promotion-gate-lib.js
   test-data/promotion-gate-v1.json
+  package.json
+  tests/README.md
+  tests/run-all.js
+  tests/run-constructions.js
+  tests/fixtures/regression-snapshots.json
+  tests/fixtures/np-subsystem.json
+  tests/construction-test-index.json
+  tests/constructions/PostverbalZoPerfectiveVP.json
+  tests/constructions/ResourceUseLaiFunctionRelation.json
+  docs/current/TESTING.md
 )
 
 for path in "${required[@]}"; do
@@ -36,6 +46,7 @@ for path in "${required[@]}"; do
   }
 done
 
+npm test >/dev/null
 node tools/verify-construction-notes.js >/dev/null
 node tools/run-construction-registry-audit.js >/dev/null
 node tools/test-promotion-gate.js >/dev/null
@@ -48,3 +59,6 @@ printf 'repository=%s\nbranch=%s\ncommit=%s\ntracked_files=%s\nconstruction_note
   "$(git ls-files | wc -l | tr -d ' ')" \
   "$(find grammar -maxdepth 1 -type f -name '*.md' | wc -l | tr -d ' ')" \
   "$(git status --porcelain | wc -l | tr -d ' ')"
+
+[[ ! -d render-review ]] || { echo "FAIL: active render-review directory should be archived" >&2; exit 1; }
+[[ "$(find tests/constructions -maxdepth 1 -type f -name '*.json' | wc -l | tr -d ' ')" == "171" ]] || { echo "FAIL: expected 171 construction test files" >&2; exit 1; }
