@@ -4,21 +4,36 @@
 
 | Measure | Current value |
 |---|---:|
-| Runtime | v0.5.189 |
-| Runtime labels | 170 |
-| Current construction notes | 170 |
+| Runtime | v0.5.190 |
+| Runtime labels | 169 |
+| Current construction notes | 169 |
 | Active working notes | 2 |
-| Workflow-archived notes | 168 |
-| Retired labels | 11 |
+| Workflow-archived notes | 167 |
+| Retired labels | 12 |
 | `supported_productive` | 0 |
 | `provisional_reaudit` | 0 |
 | `provisional` | 0 |
 | `research_pending` | 60 |
-| `unsupported_generalization` | 87 |
+| `unsupported_generalization` | 86 |
 | `lexicalized_only` | 3 |
 | `parser_heuristic` | 20 |
 
 The canonical registry is the union of `grammar/active/*.md` and `grammar/archived/*.md`; it matches the 170 runtime labels exactly.
+
+## v0.5.190 low-reference wrapper audit
+
+Five low-reference labels received constructor-specific review. `ComparativeStative`, `DefinitionExplanatoryFrame`, and internal `DefinitionComplement` now have one executable implementation-only probe each, all with zero linguistic evidence weight. `TemporalAdverbialClause` was retired because the runtime had no constructor, fixture, test, or output for it; its checked source and future subtype question remain archived.
+
+`Comment` remains unresolved. Its late internal fallback can create a `Comment` wrapper when invoked directly, but exhaustive parsing of every current topic-candidate followed by each of the 811 current lexicon terms produced zero complete-parser `Comment` outputs. This is treated as likely shadowing, not proof of total unreachability.
+
+Current construction coverage:
+
+- positive and boundary: **2**;
+- positive only: **100**;
+- implementation positive only: **18**;
+- no direct cases: **49**.
+
+No recognized parser span or retained linguistic status changed.
 
 ## v0.5.189 runtime-reachability checkpoint
 
@@ -92,7 +107,7 @@ critical-item sample remains zero.
 
 - regression: **545 cases**;
 - NP subsystem: **43 cases**;
-- construction assertions: **1,171**;
+- construction assertions: **1,174**;
 - construction test files: **170**;
 - no parser span behavior changed in this migration.
 

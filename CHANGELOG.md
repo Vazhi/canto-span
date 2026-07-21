@@ -1,3 +1,12 @@
+## v0.5.190 — low-reference wrapper audit
+
+- Audited `Comment`, `ComparativeStative`, `DefinitionComplement`, `DefinitionExplanatoryFrame`, and `TemporalAdverbialClause` at exact constructor level.
+- Added three zero-evidence implementation probes and increased construction assertions from 1,171 to 1,174.
+- Retired constructorless `TemporalAdverbialClause`; preserved its source record and former note in the retirement archive.
+- Kept `Comment` active but unresolved because its direct fallback exists while complete parser output remains unobserved in the bounded scan.
+- Reduced current labels from 170 to 169 and no-direct-case labels from 53 to 49.
+- Changed no recognized parser span or retained linguistic status.
+
 ## v0.5.189 — runtime reachability audit
 
 - Scanned 1,885 unique Cantonese-bearing strings from structured project materials.

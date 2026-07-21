@@ -7,10 +7,10 @@ tags: [canto-span/grammar, canto-span/index]
 
 # Grammar index
 
-- Current construction notes: **170**
+- Current construction notes: **169**
 - Active working set: **2**
-- Workflow-archived current records: **168**
-- Retired labels: **11**
+- Workflow-archived current records: **167**
+- Retired labels: **12**
 
 Workflow archiving parks a note outside current work. It does not retire its runtime label or change its linguistic status.
 
@@ -20,7 +20,7 @@ Workflow archiving parks a note outside current work. It does not retire its run
 - `provisional_reaudit`: **0**
 - `provisional`: **0**
 - `research_pending`: **60**
-- `unsupported_generalization`: **87**
+- `unsupported_generalization`: **86**
 - `lexicalized_only`: **3**
 - `parser_heuristic`: **20**
 
@@ -28,22 +28,22 @@ Workflow archiving parks a note outside current work. It does not retire its run
 
 - positive and boundary: **2**
 - positive only: **100**
-- implementation positive only: **15**
+- implementation positive only: **18**
 - boundary only: **0**
-- no direct standardized cases: **53**
+- no direct standardized cases: **49**
 - command: `npm test`
 
 ## Active working set
 
-1. [[ResourceUseLaiFunctionRelation]] — `research_pending`; anchor_construction_for_role_neutral_interpretation_sensitive_panel_wave
+1. [[ResourceUseLaiFunctionRelation]] — `research_pending`; survey_ready_anchor_awaiting_user_prompt_for_pilot_v1_creation
 2. [[PostverbalZoPerfectiveVP]] — `research_pending`; secondary_construction_for_role_neutral_panel_wave_and_lexical_scope_recheck
 
 ## Workflow-archived current records
 
+- [[ANotAQuestion]] — `research_pending`
 - [[AcceptabilityANotA]] — `unsupported_generalization`
 - [[AcceptabilityClause]] — `unsupported_generalization`
 - [[ActionStativeVP]] — `research_pending`
-- [[ANotAQuestion]] — `research_pending`
 - [[ApproximateQuantity]] — `unsupported_generalization`
 - [[AssociativeNP]] — `unsupported_generalization`
 - [[CausativeResultFrame]] — `unsupported_generalization`
@@ -65,8 +65,8 @@ Workflow archiving parks a note outside current work. It does not retire its run
 - [[CompletionThenClause]] — `unsupported_generalization`
 - [[CompletionVP]] — `research_pending`
 - [[CompoundDirectionalMotionVP]] — `unsupported_generalization`
-- [[ConditionalClause]] — `unsupported_generalization`
 - [[ConditionResult]] — `unsupported_generalization`
+- [[ConditionalClause]] — `unsupported_generalization`
 - [[CoordinatedNP]] — `unsupported_generalization`
 - [[CopularANotAQuestion]] — `unsupported_generalization`
 - [[CopularIdentificationFrame]] — `parser_heuristic`
@@ -157,8 +157,8 @@ Workflow archiving parks a note outside current work. It does not retire its run
 - [[PoliteImperativeClause]] — `unsupported_generalization`
 - [[PossessiveClassifierNP]] — `unsupported_generalization`
 - [[PossessiveTransferClause]] — `unsupported_generalization`
-- [[PostposedExistentialQuestion]] — `unsupported_generalization`
 - [[PostThemeParticipantRelation]] — `research_pending`
+- [[PostposedExistentialQuestion]] — `unsupported_generalization`
 - [[PotentialDirectionalVP]] — `research_pending`
 - [[PotentialResultVP]] — `research_pending`
 - [[PreferenceVP]] — `unsupported_generalization`
@@ -195,7 +195,6 @@ Workflow archiving parks a note outside current work. It does not retire its run
 - [[StativeNominalComplement]] — `research_pending`
 - [[StativePredicate]] — `unsupported_generalization`
 - [[SuggestionQuestion]] — `unsupported_generalization`
-- [[TemporalAdverbialClause]] — `unsupported_generalization`
 - [[TemporalClause]] — `research_pending`
 - [[TimeNP]] — `research_pending`
 - [[TimeToActionFrame]] — `unsupported_generalization`
@@ -204,7 +203,7 @@ Workflow archiving parks a note outside current work. It does not retire its run
 - [[TransformationResultFrame]] — `unsupported_generalization`
 - [[TransformationResultPredicate]] — `unsupported_generalization`
 - [[TransitiveVP]] — `research_pending`
+- [[VPComplementFrame]] — `parser_heuristic`
 - [[VerbComplementVP]] — `research_pending`
 - [[VocativeAddressTerm]] — `lexicalized_only`
-- [[VPComplementFrame]] — `parser_heuristic`
 - [[WhClassifierQuestion]] — `unsupported_generalization`

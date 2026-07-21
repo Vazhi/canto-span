@@ -46,11 +46,11 @@ implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: false
 promotion_gate_version: "v3"
 standard_test_file: "tests/constructions/DefinitionComplement.json"
-standard_test_coverage: "no_direct_cases"
+standard_test_coverage: "implementation_positive_only"
 standard_positive_test_count: 0
 standard_boundary_test_count: 0
-standard_implementation_probe_count: 0
-standard_executable_test_count: 0
+standard_implementation_probe_count: 1
+standard_executable_test_count: 1
 source_ids: []
 runtime_active: true
 workflow_state: "archived"
@@ -100,6 +100,8 @@ No pattern-specific external source is currently mapped.
   - `test-data/grammar-legitimacy-audit.tsv`
 
 ## Implementation state
+
+Implementation-only reachability: `LOWREF-003`. The same bounded frame exposes an internal `DefinitionComplement` child over `乜嘢`. The child is non-licensing and the probe has zero linguistic evidence weight.
 
 - Lifecycle: `runtime_referenced_without_accepted_fixtures`
 - Visible/focused tests: `not_assessed_in_current_definition_of_done_review`

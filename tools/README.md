@@ -9,7 +9,7 @@
 - `run-regression-suite.js` — compatibility wrapper for the canonical regression runner.
 - `build-construction-tests.js` — reproducible Phase 5 generator for the 171 standard construction files.
 - `sync-construction-test-metadata.js` — synchronizes construction-note test paths and counts after a controlled test-inventory change.
-- `run-construction-registry-audit.js` — checks that runtime active labels exactly match the 170 construction notes and exclude retired labels.
+- `run-construction-registry-audit.js` — checks that runtime active labels exactly match the 169 construction notes and exclude retired labels.
 - `verify-phase3-runtime-equivalence.js` — compares v0.5.185 with the v0.5.184 Phase 2 commit across all 545 regression cases after removing only the intentionally migrated metadata fields.
 - `verify-construction-notes.js` — validates all 171 current Obsidian construction notes across the active and archived workflow collections.
 - `verify-active-working-set.js` — enforces the two-note active set, 169-note parked set, path/state agreement, priorities, and no promoted archived notes.

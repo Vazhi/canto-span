@@ -51,10 +51,10 @@ function check(name, condition, detail = "") {
   if (!condition) failures.push({ name, detail });
 }
 
-check("runtime has 170 active labels", runtimeLabels.size === 170, String(runtimeLabels.size));
-check("notes have 170 current records", noteLabels.size === 170, String(noteLabels.size));
+check("runtime has 169 active labels", runtimeLabels.size === 169, String(runtimeLabels.size));
+check("notes have 169 current records", noteLabels.size === 169, String(noteLabels.size));
 check("runtime labels equal note labels", runtimeLabels.size === noteLabels.size && [...runtimeLabels].every((label) => noteLabels.has(label)));
-check("retired archive has eleven labels", retiredLabels.size === 11, String(retiredLabels.size));
+check("retired archive has twelve labels", retiredLabels.size === 12, String(retiredLabels.size));
 check("retired labels absent from runtime", [...retiredLabels].every((label) => !runtimeLabels.has(label)));
 check("all notes marked runtime_active", notes.every((note) => note.frontmatter.runtime_active === true));
 check("all statuses use controlled vocabulary", notes.every((note) => allowedStatuses.has(note.frontmatter.status)));
@@ -65,7 +65,7 @@ for (const note of notes) {
   statusCounts[note.frontmatter.status] = (statusCounts[note.frontmatter.status] || 0) + 1;
   workflowCounts[note.frontmatter.workflow_state] = (workflowCounts[note.frontmatter.workflow_state] || 0) + 1;
 }
-check("workflow split is two active and 168 archived", workflowCounts.active === 2 && workflowCounts.archived === 168, JSON.stringify(workflowCounts));
+check("workflow split is two active and 167 archived", workflowCounts.active === 2 && workflowCounts.archived === 167, JSON.stringify(workflowCounts));
 const result = {
   schema: "canto-span-runtime-construction-registry-audit-v1",
   runtime_version: runtime.runtimeVersion,

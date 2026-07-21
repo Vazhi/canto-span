@@ -24,6 +24,7 @@ module.exports.__testApi = {
   normalizationAuditSummary, registryAuditSummary, learnerDisplayAuditSummary,
   learnerUiHoverAuditSummary, wrapperCoverageAuditSummary, jyutpingAuditSummary,
   runtimeVersion: CANTO_SPAN_RUNTIME_VERSION,
+  labels: [...CONSTRUCTION_LABEL_REGISTRY],
 };`, context, { filename: mainPath });
   return moduleRecord.exports.__testApi;
 }

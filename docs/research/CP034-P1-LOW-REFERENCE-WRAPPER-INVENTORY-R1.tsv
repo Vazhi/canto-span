@@ -1,0 +1,6 @@
+construction	claim_layer	current_status	registry_reference	constructor_calls	context_only_references	complete_parser_output_observed	new_probe	current_disposition	reason
+Comment	internal	parser_heuristic	1	1	0	no		retain_unresolved_constructor_shadowing	The late wrapCore fallback can construct Comment internally, but exhaustive topic-candidate plus single-lexeme parsing found no complete parser output containing Comment; broader sequence reachability remains unresolved.
+ComparativeStative	language	unsupported_generalization	1	1	0	yes	LOWREF-001	implementation_probe_added_zero_evidence_weight	客氣啲 reaches the residual fallback. Existing sources do not justify treating every stative plus 啲 sequence as one comparative construction.
+DefinitionComplement	internal	parser_heuristic	1	1	0	yes	LOWREF-003	implementation_probe_added_zero_evidence_weight	The bounded definition frame exposes DefinitionComplement as an internal non-licensing child.
+DefinitionExplanatoryFrame	internal	parser_heuristic	1	3	0	yes	LOWREF-002	implementation_probe_added_zero_evidence_weight	The bounded 圖書館係乜嘢嚟㗎 frame reaches the wrapper directly.
+TemporalAdverbialClause	language	unsupported_generalization	1	0	1	no		retired_constructorless_placeholder	The label had no constructor, fixture, standardized case, or parser output. Checked research is preserved as a future explicit subtype question.

@@ -1,0 +1,9 @@
+{
+  "schema": "canto-span-documentation-consistency-v1",
+  "checkpoint": "v0.5.190-low-reference-wrapper-audit",
+  "status": "PASS",
+  "json_files": 522,
+  "markdown_files": 328,
+  "broken_local_links": 0,
+  "errors": []
+}

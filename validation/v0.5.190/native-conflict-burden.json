@@ -1,0 +1,71 @@
+{
+  "schema": "canto-span-native-conflict-burden-audit-v4",
+  "checkpoint": "v0.5.190-role-neutral-panel-model",
+  "status": "PASS",
+  "total": 13,
+  "passed": 13,
+  "failed": 0,
+  "policy": {
+    "publication_attestation_alone_sufficient": false,
+    "assumed_dialect_explanation": false,
+    "privileged_reviewer_roles": false,
+    "evidence_unit": "usable_adjudicated_judgment_per_critical_item",
+    "provisional_item_minimum": 10,
+    "supported_productive_item_minimum": 30
+  },
+  "checks": [
+    {
+      "name": "two exact V完咗O native rejections retained",
+      "pass": true
+    },
+    {
+      "name": "accepted completion contrasts retained",
+      "pass": true
+    },
+    {
+      "name": "higher-burden disposition remains recorded",
+      "pass": true
+    },
+    {
+      "name": "dialect or register explanation is not assumed",
+      "pass": true
+    },
+    {
+      "name": "no construction is currently supported_productive",
+      "pass": true
+    },
+    {
+      "name": "no construction is currently provisional",
+      "pass": true
+    },
+    {
+      "name": "PFV awaits a clean role-neutral panel",
+      "pass": true
+    },
+    {
+      "name": "ResourceUse awaits a clean role-neutral panel",
+      "pass": true
+    },
+    {
+      "name": "publication attestation alone remains insufficient",
+      "pass": true
+    },
+    {
+      "name": "role-neutral respondent policy is explicit",
+      "pass": true
+    },
+    {
+      "name": "item-level thresholds are explicit",
+      "pass": true
+    },
+    {
+      "name": "large limited panels cannot satisfy promotion",
+      "pass": true
+    },
+    {
+      "name": "internal validation remains necessary but insufficient",
+      "pass": true
+    }
+  ],
+  "failures": []
+}

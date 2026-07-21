@@ -1,0 +1,71 @@
+{
+  "schema": "canto-span-release-handoff-audit-v2",
+  "release_id": "v0.5.190-low-reference-wrapper-audit",
+  "handoff_sequence": 14,
+  "status_changes": [
+    {
+      "construction": "TemporalAdverbialClause",
+      "old_status": "unsupported_generalization",
+      "new_status": "retired"
+    }
+  ],
+  "changed_construction_audit": [
+    {
+      "construction": "TemporalAdverbialClause",
+      "old_status": "unsupported_generalization",
+      "new_status": "retired",
+      "plain_language_claim": "The active label represented no current parser behavior: there was no constructor, accepted fixture, standardized case, or observed output. It was removed while the checked temporal-subordination source and future subtype question were preserved.",
+      "code_locations": [
+        "main.js:CONSTRUCTION_LABEL_REGISTRY removal",
+        "main.js:contextSupportsQuantifiedTimeFragment cleanup",
+        "archive/retired-labels/v0.5.190-low-reference-wrapper-audit/TemporalAdverbialClause.md"
+      ],
+      "sources": [
+        {
+          "citation": "Yip, Ka-Fai. 2024. Two Types of Temporal Adverbial Clauses in Cantonese. WCCFL 39.",
+          "locator": "pp. 687-694; preserved source record in archived construction note",
+          "verification": "VERIFIED_OFFICIAL_PUBLISHER_FULL_TEXT"
+        },
+        {
+          "citation": "Canto Span constructor and output audit",
+          "locator": "docs/research/CP034-TEMPORALADVERBIALCLAUSE-RETIREMENT-R1.md",
+          "verification": "PASS_ZERO_CONSTRUCTOR_FIXTURE_TEST_AND_OUTPUT"
+        }
+      ],
+      "panel_response_count_total": 0,
+      "eligible_panel_response_count": 0,
+      "minimum_usable_judgments_per_critical_item": 0,
+      "survey_instrument_version": "not_applicable_retirement",
+      "survey_instrument_status": "not_applicable",
+      "quality_screen_status": "not_applicable",
+      "panel_adjudication_status": "not_applicable",
+      "unresolved_questions": []
+    }
+  ],
+  "supported_productive_pending_reaudit": [],
+  "implementation_validation": "PASS required before handoff: 545 regression cases, 43 NP cases, 1,174 construction assertions, 169 note/test alignment, three constructor-specific zero-weight probes, low-reference wrapper audit, panel workflow, promotion and release gates, documentation links, and repository verification.",
+  "linguistic_confidence": "No retained construction gained linguistic evidence or status. Three probes have zero evidence weight. TemporalAdverbialClause was retired because it encoded no implemented behavior; its checked source remains a future research record.",
+  "code_analysis_overclaim_review": true,
+  "overclaim_review_scope": "Inspected exact constructor calls and complete parser output for five low-reference labels. Distinguished internal direct-call fallback reachability from complete-parser output, avoided treating coherent probes as language evidence, and retired only the label with no constructor or output path.",
+  "release_documents": [
+    "docs/research/CP034-P1-LOW-REFERENCE-WRAPPER-AUDIT-R1.md",
+    "docs/research/CP034-P1-LOW-REFERENCE-WRAPPER-INVENTORY-R1.tsv",
+    "docs/research/CP034-TEMPORALADVERBIALCLAUSE-RETIREMENT-R1.md",
+    "test-data/constructor-specific-reachability-probes-v1.json",
+    "tools/verify-low-reference-wrapper-audit.js",
+    "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+    "docs/current/PROJECT-STATE.md",
+    "docs/current/TESTING.md",
+    "GRAMMAR-INDEX.md",
+    "HANDOFF.md",
+    "CHANGELOG.md"
+  ],
+  "external_audit_ready": true,
+  "unresolved_release_questions": [
+    "Forty-nine labels still have no direct standardized case.",
+    "Comment remains constructor-level reachable but unobserved in complete parser output under the bounded single-lexeme topic scan.",
+    "The full dormant-label review remains due by handoff sequence 23.",
+    "RUL and PFV survey evidence remains blocked until the user supplies the survey-guidance prompt."
+  ],
+  "base_tree": "7a22bb0585d0caa427e9040263e7a334cb85a5bd"
+}

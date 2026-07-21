@@ -9,7 +9,8 @@ const { Plugin, PluginSettingTab, Setting, Notice } = require("obsidian");
  * never overwrite child learner roles.
  */
 
-const CANTO_SPAN_RUNTIME_VERSION = "0.5.189";
+const CANTO_SPAN_RUNTIME_VERSION = "0.5.190";
+// v0.5.190: audits low-reference wrappers, adds three zero-evidence constructor-specific reachability probes, and retires constructorless TemporalAdverbialClause. No recognized parser span changes.
 // v0.5.189: adds zero-evidence runtime reachability probes for 15 previously unexercised labels and preserves 53 unobserved labels for later code-specific review. Parser span behavior and linguistic status are unchanged.
 // v0.5.188: freezes the RUL source/runtime contrast map and survey-readiness requirements without creating a survey instrument or changing parser span behavior. The next blocking input is the user prompt that will guide pilot-v1 creation.
 // v0.5.187: replaces the fixed two-reviewer evidence model with a role-neutral panel gate based on usable adjudicated judgments per critical item. PFV returns to research_pending because its mixed legacy instruments do not satisfy the clean panel threshold. Parser span behavior is unchanged.
@@ -61,7 +62,7 @@ const DEFAULT_SETTINGS = {
 // Runtime construction governance is deliberately minimal. Linguistic status,
 // confidence, sources, speaker records, corpus counts, and promotion eligibility
 // live in grammar/active/*.md and grammar/archived/*.md and are validated outside the shipped plugin.
-const RUNTIME_CONSTRUCTION_REGISTRY_VERSION = "0.5.189";
+const RUNTIME_CONSTRUCTION_REGISTRY_VERSION = "0.5.190";
 
 function runtimeConstructionStateFor(type) {
   const construction = String(type || "");
@@ -1245,7 +1246,6 @@ const CONSTRUCTION_LABEL_REGISTRY = new Set([
   "PotentialResultVP",
   "RelativeClauseNP",
   "ResultComplementVP",
-  "TemporalAdverbialClause",
   "ANotAQuestion",
   "AcceptabilityANotA",
   "AssociativeNP",
@@ -1523,6 +1523,7 @@ const RETIRED_CONSTRUCTION_LABEL_REGISTRY = new Map([
   ["RecipientFrame", "Retired by CP021B: the label asserted one recipient/beneficiary relation across predicate-dependent 畀/俾 surfaces; reviewed profiles now use PostThemeParticipantRelation without a fixed semantic role or marker category."],
   ["TransferDitransitiveVP", "Retired by CP021B: the label overcommitted to a ditransitive VP and forced roles in nonbaseline orders; reviewed lexical GIVE surfaces now use LexicalGiveRelation with bounded role policy."],
   ["UseForPurposeTopic", "Retired as frame-role-specific; use Topic with intended-function metadata inside IntendedFunctionRelation."],
+  ["TemporalAdverbialClause", "Retired at v0.5.190: no constructor, fixture, standardized case, or parser output used this label. Preserve explicit temporal-subordination research separately; current runtime uses TemporalClause or typed ClauseRelationEdge structures."],
 ]);
 
 
@@ -19828,7 +19829,7 @@ function contextSupportsQuantifiedTimeFragment(turn) {
     return slots.includes("time") || slots.includes("time_head") || slots.includes("temporal_modifier");
   });
   const hasTimeConstruction = constructions.some((row) => [
-    "QuantifiedTimeNP", "TimeNP", "TemporalClause", "TemporalAdverbialClause", "ScalarValueQuestion"
+    "QuantifiedTimeNP", "TimeNP", "TemporalClause", "ScalarValueQuestion"
   ].includes(row.type));
   const durationOrRateCue = /(幾耐|幾多(?:年|月|日)|時間|年|月|日|禮拜|星期|半年|人工|月薪|年薪|萬|蚊|錢|價|好未)/.test(source);
   return hasTimeMaterial || hasTimeConstruction || durationOrRateCue;

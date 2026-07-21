@@ -51,7 +51,7 @@ Reduce ceremony, drift risk, and file bloat without restarting the parser or dis
 
 - added explicit promotion-evidence fields to all 171 construction notes;
 - added `tools/enforce-promotion-rules.js`, which fails closed on unsupported `provisional` or `supported_productive` status records;
-- enforced the full current Definition of Done, including reviewed corpus evidence when used, two independent speakers for productive status, executable passing boundaries, code-document reconciliation, and separation of implementation validation from linguistic confidence;
+- enforced the full current Definition of Done, including reviewed corpus evidence when used, the then-current independent-speaker requirement for productive status, executable passing boundaries, code-document reconciliation, and separation of implementation validation from linguistic confidence;
 - classified all current non-promoted statuses as quarantined or non-promotional by default;
 - added focused accepted and rejected transition tests;
 - integrated the promotion gate into `tools/verify-repository.sh`.
@@ -123,3 +123,11 @@ provenance for collected legacy data.
 - retained 53 labels as `no_direct_cases`; “not observed” is not treated as unreachable;
 - retired no labels because all 68 retain runtime code references;
 - changed no parser span behavior or linguistic status.
+## v0.5.190 low-reference wrapper audit
+
+- inspected five low-reference wrapper and clause labels at exact constructor level;
+- added three semantically coherent zero-weight reachability probes;
+- distinguished complete-parser output from a directly callable but currently shadowed internal `Comment` fallback;
+- retired constructorless `TemporalAdverbialClause` while preserving its checked source and future research question;
+- reduced active labels to 169 and no-direct-case labels to 49;
+- changed no recognized parser span or retained linguistic status.

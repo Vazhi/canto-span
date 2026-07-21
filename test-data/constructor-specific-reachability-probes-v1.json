@@ -1,0 +1,41 @@
+{
+  "schema": "canto-span-constructor-specific-reachability-probes-v1",
+  "runtime_version": "0.5.190",
+  "linguistic_evidence_weight": 0,
+  "policy": "These cases protect constructor-specific runtime reachability only. They do not attest naturalness, productivity, construction identity, or promotion eligibility.",
+  "cases": [
+    {
+      "case_id": "LOWREF-001",
+      "construction": "ComparativeStative",
+      "source": "客氣啲。",
+      "provenance": "docs/research/CP034-P1-LOW-REFERENCE-WRAPPER-AUDIT-R1.md#LOWREF-001",
+      "source_role": "code_specific_coherent_probe",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only",
+      "scope_note": "Exercises the residual stative-plus-啲 fallback; it does not establish a unified comparative analysis."
+    },
+    {
+      "case_id": "LOWREF-002",
+      "construction": "DefinitionExplanatoryFrame",
+      "source": "圖書館係乜嘢嚟㗎。",
+      "provenance": "docs/research/CP034-P1-LOW-REFERENCE-WRAPPER-AUDIT-R1.md#LOWREF-002",
+      "source_role": "code_specific_coherent_probe",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only",
+      "scope_note": "Exercises the bounded definition/explanatory wrapper only."
+    },
+    {
+      "case_id": "LOWREF-003",
+      "construction": "DefinitionComplement",
+      "source": "圖書館係乜嘢嚟㗎。",
+      "provenance": "docs/research/CP034-P1-LOW-REFERENCE-WRAPPER-AUDIT-R1.md#LOWREF-003",
+      "source_role": "code_specific_coherent_probe",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only",
+      "scope_note": "Exercises the internal non-licensing complement child inside DefinitionExplanatoryFrame."
+    }
+  ]
+}

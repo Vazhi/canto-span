@@ -70,6 +70,13 @@ required=(
   docs/releases/v0.5.189-runtime-reachability-audit.json
   test-data/runtime-reachability-probes-v1.json
   tools/verify-runtime-reachability.js
+  docs/research/CP034-P1-LOW-REFERENCE-WRAPPER-AUDIT-R1.md
+  docs/research/CP034-P1-LOW-REFERENCE-WRAPPER-INVENTORY-R1.tsv
+  docs/research/CP034-TEMPORALADVERBIALCLAUSE-RETIREMENT-R1.md
+  docs/releases/v0.5.190-low-reference-wrapper-audit.json
+  test-data/constructor-specific-reachability-probes-v1.json
+  tools/verify-low-reference-wrapper-audit.js
+  archive/retired-labels/v0.5.190-low-reference-wrapper-audit/TemporalAdverbialClause.md
   test-data/rul-survey-readiness-probes-v1.json
   tools/verify-rul-survey-readiness.js
   tools/verify-release-handoff.js
@@ -107,6 +114,7 @@ node tools/run-current-focused.js >/dev/null
 node tools/verify-active-review-workflow.js >/dev/null
 node tools/verify-rul-survey-readiness.js >/dev/null
 node tools/verify-runtime-reachability.js >/dev/null
+node tools/verify-low-reference-wrapper-audit.js >/dev/null
 node tools/audit-native-conflict-burden.js >/dev/null
 node tools/verify-native-panel-snapshot.js >/dev/null
 node tools/verify-pfv-panel-snapshot.js >/dev/null
@@ -126,5 +134,5 @@ printf 'repository=%s\nbranch=%s\ncommit=%s\ntracked_files=%s\nconstruction_note
 
 [[ ! -d render-review ]] || { echo "FAIL: active render-review directory should be archived" >&2; exit 1; }
 [[ "$(find grammar/active -maxdepth 1 -type f -name '*.md' | wc -l | tr -d ' ')" == "2" ]] || { echo "FAIL: expected 2 active construction notes" >&2; exit 1; }
-[[ "$(find grammar/archived -maxdepth 1 -type f -name '*.md' | wc -l | tr -d ' ')" == "168" ]] || { echo "FAIL: expected 168 archived construction notes" >&2; exit 1; }
-[[ "$(find tests/constructions -maxdepth 1 -type f -name '*.json' | wc -l | tr -d ' ')" == "170" ]] || { echo "FAIL: expected 170 construction test files" >&2; exit 1; }
+[[ "$(find grammar/archived -maxdepth 1 -type f -name '*.md' | wc -l | tr -d ' ')" == "167" ]] || { echo "FAIL: expected 167 archived construction notes" >&2; exit 1; }
+[[ "$(find tests/constructions -maxdepth 1 -type f -name '*.json' | wc -l | tr -d ' ')" == "169" ]] || { echo "FAIL: expected 169 construction test files" >&2; exit 1; }

@@ -4,9 +4,9 @@
   "last_full_review_id": "v0.5.183-phase3-dormant-label-retirement",
   "recommended_interval_min": 10,
   "hard_interval_max": 20,
-  "current_handoff_sequence": 13,
+  "current_handoff_sequence": 14,
   "next_review_window_opens_at_sequence": 13,
   "review_required_by_sequence": 23,
-  "state": "review_window_open",
-  "notes": "The recommended retirement-review window opens at v0.5.189. This release audits runtime reachability for the 68 labels that previously had no direct standardized cases; none qualified for retirement because every label still has runtime references. A full retirement decision remains due by sequence 23."
+  "state": "review_window_open_partial_review_in_progress",
+  "notes": "The retirement window remains open. v0.5.190 completed a constructor-specific review of five low-reference labels, retired constructorless TemporalAdverbialClause, added three zero-weight probes, and left Comment unresolved because only an internal fallback was found. The full review remains due by sequence 23."
 }

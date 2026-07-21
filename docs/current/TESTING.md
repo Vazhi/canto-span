@@ -29,23 +29,23 @@ This replaces active bespoke render-review documents and scattered entry-point c
 
 ### Per-construction files
 
-Every one of the 170 active labels has exactly one file under `tests/constructions/`.
+Every one of the 169 active labels has exactly one file under `tests/constructions/`.
 
 Each file records the current executable cases assigned to that construction and an explicit coverage state. The construction-note frontmatter points to the file and records its positive, boundary, and total executable counts.
 
-Current v0.5.189 coverage:
+Current v0.5.190 coverage:
 
 | Coverage state | Constructions |
 |---|---:|
 | positive and boundary | 2 |
 | positive only | 100 |
-| implementation positive only | 15 |
+| implementation positive only | 18 |
 | boundary only | 0 |
-| no direct cases | 53 |
+| no direct cases | 49 |
 
 `implementation_positive_only` means the parser emits the label on a frozen
 reachability probe, but the case has explicit zero linguistic evidence weight.
-The 53 uncovered labels remain visible test debt. Empty files do not claim that
+The 49 uncovered labels remain visible test debt. Empty files do not claim that
 the constructions are correct, natural, supported, or unreachable.
 
 ## Boundary suites
@@ -63,7 +63,7 @@ the constructions are correct, natural, supported, or unreachable.
 `tools/build-construction-tests.js` is the mechanical construction-test rebuild
 tool. Do not run it casually after hand-editing construction files, because it
 regenerates them from the canonical regression fixture, NP matrix, the two
-migrated focused packets, and the zero-weight runtime-reachability probe file.
+migrated focused packets, and the zero-weight runtime-reachability probe inventories.
 
 ## Evidence boundary
 

@@ -153,7 +153,6 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 - [[CompletionThenClause]]
 - [[PriorityMarkerClause]]
-- [[TemporalAdverbialClause]]
 
 ## Migration provenance
 

@@ -1,6 +1,6 @@
 {
   "schema": "canto-span-construction-test-index-v1",
-  "active_construction_count": 170,
+  "active_construction_count": 169,
   "files": [
     {
       "construction": "ANotAQuestion",
@@ -271,16 +271,16 @@
     {
       "construction": "ComparativeStative",
       "file": "tests/constructions/ComparativeStative.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "ComplementEllipsisFragment",
@@ -453,30 +453,30 @@
     {
       "construction": "DefinitionComplement",
       "file": "tests/constructions/DefinitionComplement.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "DefinitionExplanatoryFrame",
       "file": "tests/constructions/DefinitionExplanatoryFrame.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "DegreeMannerAdverbial",
@@ -2199,20 +2199,6 @@
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 1
-    },
-    {
-      "construction": "TemporalAdverbialClause",
-      "file": "tests/constructions/TemporalAdverbialClause.json",
-      "state": "no_direct_cases",
-      "exact_snapshot_positive_count": 0,
-      "focused_positive_count": 0,
-      "focused_boundary_count": 0,
-      "focused_review_only_count": 0,
-      "np_case_count": 0,
-      "implementation_probe_count": 0,
-      "positive_case_count": 0,
-      "boundary_case_count": 0,
-      "executable_case_count": 0
     },
     {
       "construction": "TemporalClause",

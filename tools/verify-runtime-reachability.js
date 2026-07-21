@@ -16,6 +16,7 @@ const allowedKeys = new Set([
 ]);
 const excludedRelativePaths = new Set([
   "test-data/runtime-reachability-probes-v1.json",
+  "test-data/constructor-specific-reachability-probes-v1.json",
 ]);
 
 function parseTsv(file) {
@@ -93,9 +94,12 @@ for (const [source, provenance] of candidates) {
 const inventoryPath = path.join(root, "docs", "research", "CP033-P1-RUNTIME-REACHABILITY-INVENTORY-R1.tsv");
 const inventory = parseTsv(inventoryPath);
 const probes = JSON.parse(fs.readFileSync(path.join(root, "test-data", "runtime-reachability-probes-v1.json"), "utf8"));
+const laterProbes = JSON.parse(fs.readFileSync(path.join(root, "test-data", "constructor-specific-reachability-probes-v1.json"), "utf8"));
 const testIndex = JSON.parse(fs.readFileSync(path.join(root, "tests", "construction-test-index.json"), "utf8"));
 const indexByLabel = new Map(testIndex.files.map((item) => [item.construction, item]));
 const probeByLabel = new Map(probes.cases.map((item) => [item.construction, item]));
+const laterProbeByLabel = new Map(laterProbes.cases.map((item) => [item.construction, item]));
+const laterRetiredLabels = new Set(["TemporalAdverbialClause"]);
 const checks = [];
 const failures = [];
 function check(name, condition, detail = "") {
@@ -104,7 +108,7 @@ function check(name, condition, detail = "") {
   if (!pass) failures.push({ name, detail: String(detail) });
 }
 
-check("runtime version is 0.5.189", api.runtimeVersion === "0.5.189", api.runtimeVersion);
+check("runtime version is 0.5.190", api.runtimeVersion === "0.5.190", api.runtimeVersion);
 check("structured candidate count is frozen", candidates.size === 1885, candidates.size);
 check("structured scan has no parser errors", parseErrors.length === 0, JSON.stringify(parseErrors.slice(0, 5)));
 check("117 runtime labels observed somewhere in structured materials", observed.size === 117, observed.size);
@@ -128,6 +132,11 @@ for (const row of inventory) {
     `${isObserved}:${row.structured_material_observation}`);
   const probe = probeByLabel.get(label);
   const index = indexByLabel.get(label);
+  if (laterRetiredLabels.has(label)) {
+    check(`${label} later retirement removes current test index`, !index);
+    check(`${label} later retirement is absent from runtime`, !api.labels.includes(label));
+    continue;
+  }
   check(`${label} exists in construction test index`, Boolean(index));
   if (isObserved) {
     check(`${label} has one zero-weight probe`, Boolean(probe) && probe.linguistic_evidence_weight === 0 && probe.purpose === "runtime_reachability_only", probe?.case_id || "missing");
@@ -145,28 +154,42 @@ for (const row of inventory) {
     const noteText = noteFile ? fs.readFileSync(noteFile, "utf8") : "";
     check(`${label} note records zero-weight reachability`, noteText.includes(`Implementation-only reachability: \`${probe.case_id}\``) && noteText.includes("linguistic evidence weight is **0**"), noteFile ? path.relative(root, noteFile) : "missing");
   } else {
-    check(`${label} has no invented probe`, !probe, probe?.case_id || "");
-    check(`${label} remains no-direct`, index?.state === "no_direct_cases", index?.state || "missing");
-    check(`${label} current implementation probe count is zero`, Number(index?.implementation_probe_count || 0) === 0, index?.implementation_probe_count || 0);
+    check(`${label} has no baseline v0.5.189 probe`, !probe, probe?.case_id || "");
+    const laterProbe = laterProbeByLabel.get(label);
+    if (laterProbe) {
+      const labels = api.diagnosticFinalRows(api.analyzeLine(laterProbe.source, laterProbe.context_source || null))
+        .filter((item) => item.kind === "construction")
+        .map(internalConstruction);
+      check(`${label} later constructor-specific probe has zero evidence weight`, laterProbe.linguistic_evidence_weight === 0 && laterProbe.purpose === "runtime_reachability_only", laterProbe.case_id);
+      check(`${label} later constructor-specific probe reaches target`, labels.includes(label), laterProbe.source);
+      check(`${label} current coverage is implementation-only after later audit`, index?.state === "implementation_positive_only", index?.state || "missing");
+      check(`${label} current implementation probe count is one after later audit`, Number(index?.implementation_probe_count) === 1, index?.implementation_probe_count);
+      check(`${label} direct positive evidence count remains zero after later audit`, Number(index?.positive_case_count) === 0, index?.positive_case_count);
+    } else {
+      check(`${label} remains no-direct`, index?.state === "no_direct_cases", index?.state || "missing");
+      check(`${label} current implementation probe count is zero`, Number(index?.implementation_probe_count || 0) === 0, index?.implementation_probe_count || 0);
+    }
   }
 }
 check("15 baseline labels observed", observedInventory === 15, observedInventory);
 check("53 baseline labels not observed", unobservedInventory === 53, unobservedInventory);
-check("test index has 15 implementation-positive-only labels", testIndex.files.filter((item) => item.state === "implementation_positive_only").length === 15, testIndex.files.filter((item) => item.state === "implementation_positive_only").length);
-check("test index has 53 no-direct labels", testIndex.files.filter((item) => item.state === "no_direct_cases").length === 53, testIndex.files.filter((item) => item.state === "no_direct_cases").length);
+check("test index has 18 implementation-positive-only labels", testIndex.files.filter((item) => item.state === "implementation_positive_only").length === 18, testIndex.files.filter((item) => item.state === "implementation_positive_only").length);
+check("test index has 49 no-direct labels", testIndex.files.filter((item) => item.state === "no_direct_cases").length === 49, testIndex.files.filter((item) => item.state === "no_direct_cases").length);
 
 const result = {
   schema: "canto-span-runtime-reachability-audit-v1",
   runtime_version: api.runtimeVersion,
-  checkpoint: "v0.5.189-runtime-reachability",
+  checkpoint: "v0.5.190-low-reference-wrapper-audit",
   parser_behavior_changed: false,
   linguistic_status_changed: false,
   structured_candidate_count: candidates.size,
   runtime_labels_observed: observed.size,
   baseline_no_direct_labels: inventory.length,
   implementation_probes_added: probes.cases.length,
-  implementation_positive_only_labels: observedInventory,
-  no_direct_labels_remaining: unobservedInventory,
+  baseline_implementation_positive_only_labels: observedInventory,
+  baseline_no_direct_labels: unobservedInventory,
+  current_implementation_positive_only_labels: testIndex.files.filter((item) => item.state === "implementation_positive_only").length,
+  current_no_direct_labels_remaining: testIndex.files.filter((item) => item.state === "no_direct_cases").length,
   linguistic_evidence_weight_added: 0,
   total: checks.length,
   passed: checks.length - failures.length,

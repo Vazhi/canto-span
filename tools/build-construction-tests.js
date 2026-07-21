@@ -10,7 +10,10 @@ const root = path.resolve(__dirname, "..");
 const outDir = path.join(root, "tests", "constructions");
 const regressionPath = path.join(root, "tests", "fixtures", "regression-snapshots.json");
 const npPath = path.join(root, "tests", "fixtures", "np-subsystem.json");
-const reachabilityPath = path.join(root, "test-data", "runtime-reachability-probes-v1.json");
+const reachabilityPaths = [
+  path.join(root, "test-data", "runtime-reachability-probes-v1.json"),
+  path.join(root, "test-data", "constructor-specific-reachability-probes-v1.json"),
+];
 const api = loadRuntimeApi(path.join(root, "main.js"));
 
 function readJson(file) { return JSON.parse(fs.readFileSync(file, "utf8")); }
@@ -84,29 +87,35 @@ for (const rel of focusedPacketPaths) {
   }
 }
 
-const reachability = readJson(reachabilityPath);
-if (reachability.schema !== "canto-span-runtime-reachability-probes-v1") {
-  throw new Error(`Unexpected reachability schema: ${reachability.schema}`);
-}
-if (reachability.linguistic_evidence_weight !== 0) {
-  throw new Error("Runtime reachability probes must have zero linguistic evidence weight");
-}
-for (const testCase of reachability.cases) {
-  const target = files.get(testCase.construction);
-  if (!target) throw new Error(`Missing construction note for reachability probe ${testCase.construction}`);
-  if (testCase.linguistic_evidence_weight !== 0 || testCase.purpose !== "runtime_reachability_only") {
-    throw new Error(`Reachability probe ${testCase.case_id} has nonzero or ambiguous evidence weight`);
+const acceptedReachabilitySchemas = new Set([
+  "canto-span-runtime-reachability-probes-v1",
+  "canto-span-constructor-specific-reachability-probes-v1",
+]);
+for (const reachabilityPath of reachabilityPaths) {
+  const reachability = readJson(reachabilityPath);
+  if (!acceptedReachabilitySchemas.has(reachability.schema)) {
+    throw new Error(`Unexpected reachability schema: ${reachability.schema}`);
   }
-  target.implementation_probe_cases.push({
-    case_id: testCase.case_id,
-    source: testCase.source,
-    ...(testCase.context_source ? { context_source: testCase.context_source } : {}),
-    assertion: testCase.assertion,
-    provenance: testCase.provenance,
-    source_role: testCase.source_role,
-    linguistic_evidence_weight: 0,
-    purpose: "runtime_reachability_only",
-  });
+  if (reachability.linguistic_evidence_weight !== 0) {
+    throw new Error("Runtime reachability probes must have zero linguistic evidence weight");
+  }
+  for (const testCase of reachability.cases) {
+    const target = files.get(testCase.construction);
+    if (!target) throw new Error(`Missing construction note for reachability probe ${testCase.construction}`);
+    if (testCase.linguistic_evidence_weight !== 0 || testCase.purpose !== "runtime_reachability_only") {
+      throw new Error(`Reachability probe ${testCase.case_id} has nonzero or ambiguous evidence weight`);
+    }
+    target.implementation_probe_cases.push({
+      case_id: testCase.case_id,
+      source: testCase.source,
+      ...(testCase.context_source ? { context_source: testCase.context_source } : {}),
+      assertion: testCase.assertion,
+      provenance: testCase.provenance,
+      source_role: testCase.source_role,
+      linguistic_evidence_weight: 0,
+      purpose: "runtime_reachability_only",
+    });
+  }
 }
 
 for (const testCase of np.cases) {
