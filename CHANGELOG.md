@@ -1,3 +1,13 @@
+## v0.5.187 — role-neutral native-panel evidence
+
+- Retired the fixed Speaker A / Speaker B evidence model.
+- Required every respondent, including the user's wife, to use the same instrument and inclusion criteria with no special weight.
+- Replaced named-speaker counts with total and eligible panel responses, minimum usable judgments per critical item, instrument quality, contrast coverage, screening, and adjudication fields.
+- Set project thresholds at 10 clean judgments per critical item for `provisional` and 30 from a locked clean instrument for `supported_productive`.
+- Downgraded `PostverbalZoPerfectiveVP` from `provisional` to `research_pending` because its mixed legacy instruments do not satisfy panel-v2.
+- Preserved all historical PFV and RUL responses and recorded the user's report of 50 live RUL responses without treating unsnapshotted rows as canonical evidence.
+- Changed no parser span behavior, runtime label, fixture, or standardized construction expectation.
+
 ## v0.5.186 — active re-audit closure
 
 - Closed both current `provisional_reaudit` records without weakening the Definition of Done.

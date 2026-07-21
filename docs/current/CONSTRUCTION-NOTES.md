@@ -14,7 +14,7 @@ Every current runtime construction has exactly one authoring note in one of two 
 - `grammar/active/<ConstructionName>.md` — the small current working set;
 - `grammar/archived/<ConstructionName>.md` — current records parked outside the working set.
 
-The union of both directories is the canonical 171-note construction registry. Workflow archiving does **not** retire a label, mark it runtime-inactive, erase its evidence, or change its linguistic status. Retired labels are a separate concept and remain outside the active runtime registry.
+The union of both directories is the canonical 170-note construction registry. Workflow archiving does **not** retire a label, mark it runtime-inactive, erase its evidence, or change its linguistic status. Retired labels are a separate concept and remain outside the active runtime registry.
 
 `GRAMMAR-INDEX.md` links all 171 notes, lists the active working set first, and summarizes workflow, status, and standardized-test coverage.
 
@@ -35,7 +35,7 @@ Each construction note records:
 - linguistic status and confidence;
 - claim layer and research lane;
 - last recorded review date, or `unknown`;
-- counted, promotion-eligible, and same-contrast independent speaker counts;
+- total and eligible panel responses, minimum usable judgments per critical item, instrument version/status, contrast coverage, screening, adjudication, recruitment channels, and respondent-role neutrality;
 - mapped and verified source counts plus source IDs;
 - drafted, executable, passing, and complete-inventory boundary state;
 - corpus-use state plus candidate and per-classification hit counts;
@@ -43,14 +43,14 @@ Each construction note records:
 - separation of implementation and linguistic validation;
 - independent evidence beyond internal tests;
 - promotion-gate schema version;
-- for active re-audits, native-review protocol/state/form links, canonical source-verification file, and Speaker A/B workflow states;
+- panel evidence model, canonical panel policy/state links, and source-verification file;
 - standard construction-test file, coverage state, and positive/boundary/executable counts;
 - runtime activity and basic fixture/reference counts;
 - `workflow_state`: `active` or `archived`;
 - `workflow_priority`: a positive integer for active notes, otherwise `null`;
 - `workflow_since` and `workflow_reason`.
 
-The note body records the plain-language claim, citations and locators, speaker-review scope, negative and boundary references, implementation state, blockers, and related constructions.
+The note body records the plain-language claim, citations and locators, panel-review scope, negative and boundary references, implementation state, blockers, and related constructions.
 
 ## Linking rule
 
@@ -91,10 +91,10 @@ The commands must confirm:
 - valid plain `[[ConstructionName]]` links;
 - no aliased wiki links;
 - preservation of the frozen full-schema snapshot;
-- for the active working set, exact source-checklist linkage, form/spec synchronization, speaker-state consistency, and non-automatic response counting.
+- for the active working set, exact source-checklist linkage, panel-policy/state synchronization, instrument-quality consistency, and non-automatic response counting.
 
 ## Editing rule
 
-Edit the current construction note rather than the archived TSV/JSON registry. Any change to `status`, speaker count, source verification, boundary state, corpus use, code-document alignment, or workflow state must update the corresponding frontmatter fields in the same commit.
+Edit the current construction note rather than the archived TSV/JSON registry. Any change to `status`, panel evidence fields, source verification, boundary state, corpus use, code-document alignment, or workflow state must update the corresponding frontmatter fields in the same commit.
 
 A note marked `provisional` or `supported_productive` cannot ship unless `tools/enforce-promotion-rules.js` passes. Other statuses are non-promoted by default and cannot become eligible merely because some evidence fields are true.

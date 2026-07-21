@@ -8,17 +8,18 @@
 4. `NOUN-PHRASE-SUBSYSTEM.md` — current shared NP implementation boundary.
 5. `STATUS-AND-CONFIDENCE.md` — linguistic, implementation, and NP-licensing states.
 6. `EVIDENCE-AND-PROVENANCE.md` — source, corpus, and speaker requirements.
-7. `NATIVE-SPEAKER-REVIEW.md` — active source-checking, form, screening, normalization, and adjudication workflow.
-8. `WORKFLOW.md` — execution sequence.
-9. `VALIDATION-AND-ACCEPTANCE.md` — validation and dispositions.
-10. `GIT-WORKFLOW.md` — repository, export, and restore rules.
-11. `TESTING.md` — standard executable test directory, command, and coverage states.
-12. `CONSTRUCTION-NOTES.md` — construction-note schema and ownership rules.
-13. `INFRASTRUCTURE-MIGRATION.md` — migration phases and current phase state.
-14. `grammar/active/*.md`, `grammar/archived/*.md`, and root `GRAMMAR-INDEX.md` — current construction status, evidence, and workflow records.
-15. Root `README.md` and `HANDOFF.md` — concise entry and resume pointers.
-16. `docs/research/`, `test-data/`, and `tests/` — supporting evidence, research data, and executable records.
-17. top-level `archive/` — historical material only; this is distinct from the current workflow collection `grammar/archived/`.
+7. `NATIVE-SPEAKER-REVIEW.md` — role-neutral panel screening and adjudication workflow.
+8. `SURVEY-BATCHING.md` — survey release milestones, batching, instrument quality, and item-level thresholds.
+9. `WORKFLOW.md — execution sequence.
+10. `VALIDATION-AND-ACCEPTANCE.md` — validation and dispositions.
+11. `GIT-WORKFLOW.md` — repository, export, and restore rules.
+12. `TESTING.md` — standard executable test directory, command, and coverage states.
+13. `CONSTRUCTION-NOTES.md` — construction-note schema and ownership rules.
+14. `INFRASTRUCTURE-MIGRATION.md` — migration phases and current phase state.
+15. `grammar/active/*.md`, `grammar/archived/*.md`, and root `GRAMMAR-INDEX.md` — current construction status, evidence, and workflow records.
+16. Root `README.md` and `HANDOFF.md` — concise entry and resume pointers.
+17. `docs/research/`, `test-data/`, and `tests/` — supporting evidence, research data, and executable records.
+18. top-level `archive/` — historical material only; this is distinct from the current workflow collection `grammar/archived/`.
 
 ## Current machine-readable owners
 
@@ -29,8 +30,9 @@
 - standard construction tests: `tests/constructions/*.json`
 - NP matrix: `tests/fixtures/np-subsystem.json`
 - regression snapshots: `tests/fixtures/regression-snapshots.json`
-- active reviewer state: `review-packets/native-speaker/active-v1/active-review-state.json`
-- active form specifications: `review-packets/native-speaker/active-v1/form-specs.json`
+- active native-panel state: `review-packets/native-panel/active-v2/panel-review-state.json`
+- active native-panel policy: `review-packets/native-panel/active-v2/panel-policy.json`
+- historical reviewer/form provenance: `review-packets/native-speaker/active-v1/`
 - frozen pre-migration wide registry: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
 
 ## Conflict rules

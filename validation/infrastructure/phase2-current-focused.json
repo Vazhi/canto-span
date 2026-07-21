@@ -1,14 +1,13 @@
 {
-  "schema": "canto-span-current-focused-result-v8",
-  "checkpoint": "v0.5.184-obsidian-registry-migration",
+  "schema": "canto-span-current-focused-result-v9",
+  "checkpoint": "v0.5.187-panel-model-migration",
   "parser_behavior_changed": false,
-  "registry_owner": "grammar/*.md",
+  "registry_owner": "grammar/active/*.md + grammar/archived/*.md",
   "status_counts": {
-    "research_pending": 58,
     "unsupported_generalization": 87,
-    "parser_heuristic": 21,
-    "lexicalized_only": 3,
-    "provisional_reaudit": 2
+    "research_pending": 60,
+    "parser_heuristic": 20,
+    "lexicalized_only": 3
   },
   "total": 25,
   "passed": 25,
@@ -72,9 +71,9 @@
       "pass": true
     },
     {
-      "name": "171 construction notes",
+      "name": "170 construction notes",
       "pass": true,
-      "detail": "171"
+      "detail": "170"
     },
     {
       "name": "supported count zero",
@@ -82,9 +81,9 @@
       "detail": "0"
     },
     {
-      "name": "two provisional_reaudit",
+      "name": "provisional_reaudit zero",
       "pass": true,
-      "detail": "2"
+      "detail": "0"
     },
     {
       "name": "ordinary provisional zero",
@@ -92,9 +91,9 @@
       "detail": "0"
     },
     {
-      "name": "research_pending 58",
+      "name": "research_pending 60",
       "pass": true,
-      "detail": "58"
+      "detail": "60"
     },
     {
       "name": "project state names grammar notes as registry",
@@ -109,7 +108,7 @@
       "pass": true
     },
     {
-      "name": "Definition of Done requires two speakers",
+      "name": "Definition of Done requires role-neutral item-level panel thresholds",
       "pass": true
     },
     {

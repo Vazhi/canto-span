@@ -1,0 +1,20 @@
+{
+  "schema": "canto-span-active-working-set-validation-v1",
+  "active_count": 2,
+  "archived_count": 168,
+  "active_working_set": [
+    {
+      "construction": "ResourceUseLaiFunctionRelation",
+      "priority": 1,
+      "reason": "anchor_construction_for_role_neutral_interpretation_sensitive_panel_wave"
+    },
+    {
+      "construction": "PostverbalZoPerfectiveVP",
+      "priority": 2,
+      "reason": "secondary_construction_for_role_neutral_panel_wave_and_lexical_scope_recheck"
+    }
+  ],
+  "failed": 0,
+  "status": "PASS",
+  "failures": []
+}

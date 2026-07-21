@@ -5,7 +5,7 @@ const fs = require("fs");
 const path = require("path");
 const vm = require("vm");
 const { loadConstructionNotes } = require("./construction-notes-lib");
-const { REQUIRED_FIELDS, countSourceRecords, countVerifiedSourceRecords, promotionEligibleSpeakerCount, corpusClassificationTotal } = require("./promotion-gate-lib");
+const { REQUIRED_FIELDS, countSourceRecords, countVerifiedSourceRecords, corpusClassificationTotal } = require("./promotion-gate-lib");
 
 const root = path.resolve(__dirname, "..");
 const notes = loadConstructionNotes(root);
@@ -47,7 +47,7 @@ for (const note of notes) {
   byLabel.set(label, note);
   const filename = path.basename(note.file, ".md");
   check(`filename matches construction: ${filename}`, filename === label, `${filename} != ${label}`);
-  for (const field of [...new Set(["title", "type", "construction", "status", "confidence", "claim_layer", "lane", "last_reviewed", "speaker_count", ...REQUIRED_FIELDS, "standard_test_file", "standard_test_coverage", "standard_positive_test_count", "standard_boundary_test_count", "standard_executable_test_count", "source_ids", "runtime_active", "workflow_state", "workflow_priority", "workflow_since", "workflow_reason"])]) {
+  for (const field of [...new Set(["title", "type", "construction", "status", "confidence", "claim_layer", "lane", "last_reviewed", ...REQUIRED_FIELDS, "standard_test_file", "standard_test_coverage", "standard_positive_test_count", "standard_boundary_test_count", "standard_executable_test_count", "source_ids", "runtime_active", "workflow_state", "workflow_priority", "workflow_since", "workflow_reason"])]) {
     check(`${label} has ${field}`, Object.prototype.hasOwnProperty.call(fm, field));
   }
   check(`${label} type is construction`, fm.type === "canto-span-construction", String(fm.type));
@@ -63,12 +63,17 @@ for (const note of notes) {
   check(`${label} source count matches source records`, Number(fm.source_count) === sourceRecordCount, `${fm.source_count} != ${sourceRecordCount}`);
   check(`${label} verified source count matches source records`, Number(fm.verified_source_count) === verificationCount, `${fm.verified_source_count} != ${verificationCount}`);
   check(`${label} verified sources do not exceed cited sources`, Number(fm.verified_source_count) <= Number(fm.source_count));
-  check(`${label} independent speaker count matches speaker count`, Number(fm.independent_speaker_count) === Number(fm.speaker_count), `${fm.independent_speaker_count} != ${fm.speaker_count}`);
-  check(`${label} promotion gate version`, fm.promotion_gate_version === "v2", String(fm.promotion_gate_version));
-  const eligibleSpeakerCount = promotionEligibleSpeakerCount(fm);
-  check(`${label} promotion-eligible speakers do not exceed counted speakers`, eligibleSpeakerCount <= Number(fm.independent_speaker_count), `${eligibleSpeakerCount} > ${fm.independent_speaker_count}`);
-  check(`${label} same-contrast speakers do not exceed promotion-eligible speakers`, Number(fm.same_contrast_independent_speaker_count) <= eligibleSpeakerCount, `${fm.same_contrast_independent_speaker_count} > ${eligibleSpeakerCount}`);
-  check(`${label} same-contrast records include positive and negative review`, Number(fm.same_contrast_independent_speaker_count) === 0 || (fm.native_positive_contrasts_reviewed === true && fm.native_negative_contrasts_reviewed === true));
+  check(`${label} promotion gate version`, fm.promotion_gate_version === "v3", String(fm.promotion_gate_version));
+  check(`${label} panel evidence model version`, fm.panel_evidence_model_version === "v2", String(fm.panel_evidence_model_version));
+  check(`${label} eligible panel responses do not exceed total`, Number(fm.eligible_panel_response_count) <= Number(fm.panel_response_count_total), `${fm.eligible_panel_response_count} > ${fm.panel_response_count_total}`);
+  check(`${label} minimum usable item n does not exceed eligible panel responses`, Number(fm.minimum_usable_judgments_per_critical_item) <= Number(fm.eligible_panel_response_count), `${fm.minimum_usable_judgments_per_critical_item} > ${fm.eligible_panel_response_count}`);
+  check(`${label} recruitment channels are an array`, Array.isArray(fm.recruitment_channels));
+  check(`${label} respondent role-neutral flag is boolean`, typeof fm.respondent_role_neutral === "boolean", String(fm.respondent_role_neutral));
+  check(`${label} panel review state path`, fm.panel_review_state_file === "review-packets/native-panel/active-v2/panel-review-state.json", String(fm.panel_review_state_file));
+  check(`${label} panel policy path`, fm.panel_policy_file === "review-packets/native-panel/active-v2/panel-policy.json", String(fm.panel_policy_file));
+  check(`${label} panel review state exists`, fs.existsSync(path.join(root, fm.panel_review_state_file)));
+  check(`${label} panel policy exists`, fs.existsSync(path.join(root, fm.panel_policy_file)));
+  check(`${label} instrument version present when panel evidence exists`, Number(fm.panel_response_count_total) === 0 || typeof fm.survey_instrument_version === "string");
   const classifiedHits = corpusClassificationTotal(fm);
   check(`${label} reviewed corpus hits are fully classified`, fm.corpus_hits_reviewed !== true || classifiedHits === Number(fm.corpus_candidate_hit_count), `${classifiedHits} != ${fm.corpus_candidate_hit_count}`);
   check(`${label} passing boundaries require executable boundaries`, fm.negative_tests_passing !== true || fm.negative_tests_executable === true);
@@ -116,16 +121,15 @@ if (fs.existsSync(snapshotFile)) {
 const counts = {};
 for (const note of notes) counts[note.frontmatter.status] = (counts[note.frontmatter.status] || 0) + 1;
 const expectedCounts = {
-  provisional: 1,
-  research_pending: 59,
+  research_pending: 60,
   unsupported_generalization: 87,
   parser_heuristic: 20,
   lexicalized_only: 3,
 };
-check("status counts match v0.5.186 re-audit closure", Object.entries(expectedCounts).every(([status, count]) => counts[status] === count) && Object.keys(counts).length === Object.keys(expectedCounts).length, JSON.stringify(counts));
+check("status counts match v0.5.187 panel-model migration", Object.entries(expectedCounts).every(([status, count]) => counts[status] === count) && Object.keys(counts).length === Object.keys(expectedCounts).length, JSON.stringify(counts));
 
 const result = {
-  schema: "canto-span-construction-notes-validation-v1",
+  schema: "canto-span-construction-notes-validation-v2",
   runtime_version: runtime.runtimeVersion,
   construction_notes: notes.length,
   status_counts: counts,

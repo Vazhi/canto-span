@@ -4,9 +4,9 @@ const fs = require("fs");
 const path = require("path");
 const { validateReleaseAudit } = require("./release-handoff-lib");
 const root = path.resolve(__dirname, "..");
-const cases = JSON.parse(fs.readFileSync(path.join(root, "test-data", "release-handoff-gate-v1.json"), "utf8"));
+const cases = JSON.parse(fs.readFileSync(path.join(root, "test-data", "release-handoff-gate-v2.json"), "utf8"));
 const baseAudit = {
-  schema: "canto-span-release-handoff-audit-v1",
+  schema: "canto-span-release-handoff-audit-v2",
   release_id: "test",
   base_tree: "4ea31798f0d98edc9df1278c262b53d0a9df0a4a",
   handoff_sequence: 9,
@@ -19,12 +19,7 @@ const baseAudit = {
   overclaim_review_scope: "Reviewed code and release claims.",
   external_audit_ready: true
 };
-const baseRetirement = {
-  schema: "canto-span-retirement-review-cadence-v1",
-  last_full_review_sequence: 3,
-  current_handoff_sequence: 9,
-  hard_interval_max: 20
-};
+const baseRetirement = {schema:"canto-span-retirement-review-cadence-v1",last_full_review_sequence:3,current_handoff_sequence:9,hard_interval_max:20};
 const results=[];
 for (const item of cases) {
   const audit={...baseAudit,...(item.audit_overrides||{})};
@@ -37,7 +32,7 @@ for (const item of cases) {
   results.push({name:item.name,pass,failures:result.failures});
 }
 const failed=results.filter((item)=>!item.pass).length;
-const report={schema:"canto-span-release-handoff-gate-tests-v1",total:results.length,passed:results.length-failed,failed,status:failed?"FAIL":"PASS",results};
+const report={schema:"canto-span-release-handoff-gate-tests-v2",total:results.length,passed:results.length-failed,failed,status:failed?"FAIL":"PASS",results};
 const manifest=JSON.parse(fs.readFileSync(path.join(root,"manifest.json"),"utf8"));
 const outDir=path.join(root,"validation",`v${manifest.version}`); fs.mkdirSync(outDir,{recursive:true});
 fs.writeFileSync(path.join(outDir,"release-handoff-gate-tests.json"),JSON.stringify(report,null,2)+"\n");

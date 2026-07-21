@@ -2,60 +2,68 @@
 
 ## Construction-level language evidence
 
-Every language claim needs proposition-level source records with exact locators. Each source relationship must be labeled as positive support, restriction, contradiction, competing analysis, surface attestation, or background. Only verified, scope-matched positive support contributes to promotion.
-
-Every cited source used for current status must be independently rechecked. Earlier source records remain leads until verified.
+Every language claim needs proposition-level source records with exact locators.
+Each relationship is labeled as positive support, restriction, contradiction,
+competing analysis, surface attestation, or background. Only verified,
+scope-matched support contributes to promotion.
 
 ## Shared subsystem grounding
 
-A reusable parser subsystem is grounded at the rule level, not by citing every sentence it can parse.
-
-For the NP subsystem, records must identify reference-grammar support for the structural patterns, the exact implemented scope, known exclusions, and unresolved analyses. Unseen-combination tests demonstrate software generalization; they do not establish a new productive construction.
-
-Lexical entries support token analysis. They must not be counted as evidence that a complete phrase or consuming construction is productive.
+Reusable parser subsystems are grounded at the rule level. Unseen-combination
+tests demonstrate software generalization; they do not establish a new
+productive language construction. Lexical entries support token analysis and
+cannot prove a complete phrase productive.
 
 ## Natural examples and corpora
 
-Corpus search counts are retrieval metadata only. Every example used as evidence must be manually classified as:
+Raw corpus counts are retrieval metadata. Every used hit must be classified as
+genuine, false positive, ambiguous, or unusable. Those classifications must
+account for every candidate hit used for productive support.
 
-- clean instance of the exact target;
-- false positive;
-- structurally or contextually ambiguous;
-- unusable because of missing context, transcription problems, or uncertain provenance.
+## Native-panel evidence
 
-Only clean reviewed examples count as positive support. The construction note must record candidate, genuine, false-positive, ambiguous, and unusable counts; when corpus evidence is used for productive support, those classifications must account for every candidate hit.
+All eligible native Cantonese respondents use the same instrument and criteria.
+No named respondent receives special status or weight. Record instrument
+version, recruitment channel, eligibility, independence, exact response,
+correction, uncertainty, quality-screen outcome, adjudication decision, and
+usable judgment counts per critical item.
 
-## Native-speaker evidence
+- `provisional` requires at least 10 usable adjudicated judgments per critical
+  positive and boundary item from a clean role-neutral instrument.
+- `supported_productive` requires at least 30 per critical item from a locked
+  clean instrument.
+- Total submissions do not substitute for per-item coverage.
+- Pilot and legacy responses remain evidence but cannot satisfy thresholds when
+  instrument defects affect the relevant contrast.
 
-Record variety, independence, task, exact sentence, response, correction, and uncertainty. Productive acceptance requires two promotion-eligible independent speakers reviewing the same relevant positive and negative contrasts. Total panel size is recorded separately from `same_contrast_independent_speaker_count`.
-
-Second-speaker form preparation and public collection are authorized for the two active construction re-audits. The archived backlog remains frozen. A public submission is not countable until native-language, independence, completeness, consent, duplicate, and comment review are recorded in a committed result.
+See [`NATIVE-SPEAKER-REVIEW.md`](NATIVE-SPEAKER-REVIEW.md) and
+[`SURVEY-BATCHING.md`](SURVEY-BATCHING.md).
 
 ## Internal tests
 
-Fixtures, generated probes, parser outputs, render notes, regression suites, unseen-combination tests, and held-out tests measure implementation. They never establish Cantonese grammar or raise linguistic confidence on their own.
-
-Prospective held-out testing detects overfitting to visible cases. It is an implementation gate, not external linguistic evidence.
+Fixtures, probes, parser output, render notes, regression suites, and held-out
+tests measure implementation. They never establish Cantonese grammar or raise
+linguistic confidence by themselves.
 
 ## Independence and counting
 
-- Reprints, mirrors, copied examples, and shared datasets are not separate evidence units.
-- Boundary and competing-analysis records cannot be counted as positive support.
-- Source counts without verified propositions and limitations are invalid.
-- Render, fixture, generated, and held-out cases cannot be recycled as natural attestations.
-- A native speaker used to create or tune examples is not automatically independent confirmation of the same material.
+- Reprints, mirrors, copied examples, and shared datasets are not independent
+  source units.
+- Boundary and competing-analysis records are not positive support.
+- A raw survey submission is not automatically usable evidence.
+- Respondents used during instrument development must still pass the same
+  locked-instrument inclusion and adjudication rules as everyone else.
 
 ## Current records
 
-- construction evidence and status: one current note per runtime-active label across [`../../grammar/active/`](../../grammar/active/) and [`../../grammar/archived/`](../../grammar/archived/)
+- construction notes: [`../../grammar/active/`](../../grammar/active/) and
+  [`../../grammar/archived/`](../../grammar/archived/)
 - construction index: [`../../GRAMMAR-INDEX.md`](../../GRAMMAR-INDEX.md)
-- source registers, source matrices, and detailed research records: [`../research/`](../research/)
-- speaker queue: [`../research/SECOND-SPEAKER-REVIEW-QUEUE-v0.5.184-R1.tsv`](../research/SECOND-SPEAKER-REVIEW-QUEUE-v0.5.184-R1.tsv)
-- native-speaker workflow: [`NATIVE-SPEAKER-REVIEW.md`](NATIVE-SPEAKER-REVIEW.md)
-- active review state and forms: [`../../review-packets/native-speaker/active-v1/`](../../review-packets/native-speaker/active-v1/)
-- second-speaker authorization: [`../research/SECOND-SPEAKER-WORK-AUTHORIZATION-2026-07-21.md`](../research/SECOND-SPEAKER-WORK-AUTHORIZATION-2026-07-21.md)
-- remaining-backlog freeze: [`../research/SECOND-SPEAKER-WORK-FREEZE-2026-07-21.md`](../research/SECOND-SPEAKER-WORK-FREEZE-2026-07-21.md)
+- source and research records: [`../research/`](../research/)
+- active native-panel policy and state:
+  [`../../review-packets/native-panel/active-v2/`](../../review-packets/native-panel/active-v2/)
+- frozen historical two-role workflow:
+  [`../../review-packets/native-speaker/active-v1/`](../../review-packets/native-speaker/active-v1/)
 - current provenance: [`../research/CURRENT-RESEARCH-PROVENANCE.md`](../research/CURRENT-RESEARCH-PROVENANCE.md)
-- frozen pre-migration wide registry: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
-
-The construction notes are the authoring-time status owner. Source registers and detailed research files remain supporting evidence, not parallel status registries.
+- frozen pre-migration registry:
+  `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`

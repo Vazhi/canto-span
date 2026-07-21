@@ -7,7 +7,7 @@ Every status change and release handoff must satisfy [`DEFINITION-OF-DONE.md`](D
 1. Select a bounded question.
 2. Verify every cited source and manually review every counted corpus example.
 3. State the exact claim, competing analyses, boundaries, and executable negative cases.
-4. Record Speaker A evidence when available. Preserve the two-speaker requirement; second-speaker work is currently frozen.
+4. Release a role-neutral panel survey only after the claim and critical contrasts are source-narrowed and instrument-ready.
 5. Compare the documented claim with the actual heuristic.
 6. Implement only the narrow evidence-faithful change.
 7. Add or update the standard file under `tests/constructions/` and run `npm test`; run semantic and prospective held-out checks separately when applicable.
@@ -51,9 +51,13 @@ Open a sealed held-out set once, only after its applicable linguistic blockers, 
 
 Abandoned evaluation packets must not be reused as prospective evidence for a later candidate.
 
-## Second-speaker freeze
+## Native-panel collection
 
-Do not recruit, schedule, prepare new Speaker B packets, or request second-speaker work until the user explicitly unfreezes it. The two-speaker requirement remains mandatory for `supported_productive`.
+All respondents use the same locked instrument and inclusion criteria. Do not
+create private reviewer roles or grant special status to any respondent. Batch
+two or three compatible focal constructions with unrelated fillers, pilot the
+instrument, lock it, then report usable judgments per critical item. See
+[`SURVEY-BATCHING.md`](SURVEY-BATCHING.md).
 
 ## Commit and export discipline
 

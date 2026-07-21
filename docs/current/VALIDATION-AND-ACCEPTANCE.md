@@ -14,7 +14,7 @@ Success on one question cannot substitute for another.
 
 - independent source re-verification;
 - manual corpus/example classification;
-- same-contrast speaker review, with two independent speakers required for `supported_productive`;
+- role-neutral native-panel review, with clean adjudicated item-level thresholds of 10 for `provisional` and 30 for `supported_productive`;
 - executable negative and boundary cases;
 - competing-analysis review;
 - line-by-line code-document comparison;
@@ -46,11 +46,11 @@ node tools/enforce-promotion-rules.js
 node tools/verify-release-handoff.js
 ```
 
-The v2 construction gate reads note frontmatter, source records, corpus classification counts, shared speaker-contrast metadata, standardized test coverage, and current code-review metadata. It fails closed when any required fact is missing or inconsistent.
+The v3 construction gate reads note frontmatter, source records, corpus classification counts, role-neutral panel metadata, minimum usable judgments per critical item, standardized test coverage, and current code-review metadata. It fails closed when any required fact is missing or inconsistent.
 
 The release gate independently derives status changes from Git. It requires an audit slice for every changed construction, rejects unre-audited `supported_productive` records, preserves separate implementation and linguistic reporting, and checks the dormant-label retirement cadence.
 
-No prior acceptance is exempt. Additional native-speaker review is authorized, but only screened, independent, same-contrast records can satisfy the speaker gate. Public pilot responses may be retained without becoming promotion eligible.
+No prior acceptance is exempt. Native-panel collection is authorized. Every respondent uses the same instrument and criteria; only screened and adjudicated item-level judgments from a clean role-neutral instrument can satisfy promotion thresholds. Limited pilots remain useful without becoming promotion eligible.
 
 ## Dispositions
 
@@ -60,4 +60,4 @@ No prior acceptance is exempt. Additional native-speaker review is authorized, b
 - **QUARANTINE** — retain for research or diagnostics while blocking productive licensing.
 - **RETIRE** — remove a redundant, dormant, or indefensible label while preserving history.
 
-A failure cannot be converted into a pass by widening the claim, adding example-specific strings, counting raw hits, treating one speaker as population evidence, or relabeling internal test success as linguistic confidence.
+A failure cannot be converted into a pass by widening the claim, adding example-specific strings, counting raw hits, treating one respondent or a raw submission count as item-level panel evidence, or relabeling internal test success as linguistic confidence.

@@ -1,0 +1,535 @@
+{
+  "schema": "canto-span-np-subsystem-test-result-v1",
+  "runtime_version": "0.5.187",
+  "matrix_runtime_version": "0.5.184",
+  "scope": "bounded_compositional_np_first_slice",
+  "total": 43,
+  "passed": 43,
+  "failed": 0,
+  "status": "PASS",
+  "group_counts": {
+    "licensed_np": {
+      "total": 4,
+      "passed": 4,
+      "failed": 0
+    },
+    "licensed_np_unseen_combination": {
+      "total": 15,
+      "passed": 15,
+      "failed": 0
+    },
+    "provisional_headless": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "classifier_incompatible": {
+      "total": 6,
+      "passed": 6,
+      "failed": 0
+    },
+    "unknown_head": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "unsupported_surface_pattern": {
+      "total": 2,
+      "passed": 2,
+      "failed": 0
+    },
+    "incomplete": {
+      "total": 2,
+      "passed": 2,
+      "failed": 0
+    },
+    "unknown_or_unverified_head": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "pfv_integration_unseen_combination": {
+      "total": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "pfv_integration": {
+      "total": 2,
+      "passed": 2,
+      "failed": 0
+    },
+    "pfv_integration_boundary_correction": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "pfv_forbidden_classifier_incompatible": {
+      "total": 2,
+      "passed": 2,
+      "failed": 0
+    },
+    "pfv_forbidden_unsupported_np": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "pfv_forbidden_unknown_head": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "pfv_forbidden_unverified_example": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    }
+  },
+  "results": [
+    {
+      "id": "NP-L001",
+      "surface": "書。",
+      "group": "licensed_np",
+      "status": "PASS",
+      "checks": [
+        "expected_np_span_present",
+        "np_license_status_exact"
+      ]
+    },
+    {
+      "id": "NP-L002",
+      "surface": "兩本書。",
+      "group": "licensed_np_unseen_combination",
+      "status": "PASS",
+      "checks": [
+        "expected_np_span_present",
+        "np_license_status_exact",
+        "classifier_head_compatibility_exact"
+      ]
+    },
+    {
+      "id": "NP-L003",
+      "surface": "三杯茶。",
+      "group": "licensed_np_unseen_combination",
+      "status": "PASS",
+      "checks": [
+        "expected_np_span_present",
+        "np_license_status_exact",
+        "classifier_head_compatibility_exact"
+      ]
+    },
+    {
+      "id": "NP-L004",
+      "surface": "兩間屋。",
+      "group": "licensed_np_unseen_combination",
+      "status": "PASS",
+      "checks": [
+        "expected_np_span_present",
+        "np_license_status_exact",
+        "classifier_head_compatibility_exact"
+      ]
+    },
+    {
+      "id": "NP-L005",
+      "surface": "三隻貓。",
+      "group": "licensed_np_unseen_combination",
+      "status": "PASS",
+      "checks": [
+        "expected_np_span_present",
+        "np_license_status_exact",
+        "classifier_head_compatibility_exact"
+      ]
+    },
+    {
+      "id": "NP-L006",
+      "surface": "兩個老師。",
+      "group": "licensed_np_unseen_combination",
+      "status": "PASS",
+      "checks": [
+        "expected_np_span_present",
+        "np_license_status_exact",
+        "classifier_head_compatibility_exact"
+      ]
+    },
+    {
+      "id": "NP-L007",
+      "surface": "三個問題。",
+      "group": "licensed_np_unseen_combination",
+      "status": "PASS",
+      "checks": [
+        "expected_np_span_present",
+        "np_license_status_exact",
+        "classifier_head_compatibility_exact"
+      ]
+    },
+    {
+      "id": "NP-L008",
+      "surface": "兩支筆。",
+      "group": "licensed_np_unseen_combination",
+      "status": "PASS",
+      "checks": [
+        "expected_np_span_present",
+        "np_license_status_exact",
+        "classifier_head_compatibility_exact"
+      ]
+    },
+    {
+      "id": "NP-L009",
+      "surface": "三件衫。",
+      "group": "licensed_np_unseen_combination",
+      "status": "PASS",
+      "checks": [
+        "expected_np_span_present",
+        "np_license_status_exact",
+        "classifier_head_compatibility_exact"
+      ]
+    },
+    {
+      "id": "NP-L010",
+      "surface": "兩張紙。",
+      "group": "licensed_np_unseen_combination",
+      "status": "PASS",
+      "checks": [
+        "expected_np_span_present",
+        "np_license_status_exact",
+        "classifier_head_compatibility_exact"
+      ]
+    },
+    {
+      "id": "NP-L011",
+      "surface": "兩架車。",
+      "group": "licensed_np_unseen_combination",
+      "status": "PASS",
+      "checks": [
+        "expected_np_span_present",
+        "np_license_status_exact",
+        "classifier_head_compatibility_exact"
+      ]
+    },
+    {
+      "id": "NP-L012",
+      "surface": "三部電話。",
+      "group": "licensed_np_unseen_combination",
+      "status": "PASS",
+      "checks": [
+        "expected_np_span_present",
+        "np_license_status_exact",
+        "classifier_head_compatibility_exact"
+      ]
+    },
+    {
+      "id": "NP-L013",
+      "surface": "兩碗飯。",
+      "group": "licensed_np_unseen_combination",
+      "status": "PASS",
+      "checks": [
+        "expected_np_span_present",
+        "np_license_status_exact",
+        "classifier_head_compatibility_exact"
+      ]
+    },
+    {
+      "id": "NP-L014",
+      "surface": "呢本書。",
+      "group": "licensed_np",
+      "status": "PASS",
+      "checks": [
+        "expected_np_span_present",
+        "np_license_status_exact",
+        "classifier_head_compatibility_exact"
+      ]
+    },
+    {
+      "id": "NP-L015",
+      "surface": "嗰間餐廳。",
+      "group": "licensed_np_unseen_combination",
+      "status": "PASS",
+      "checks": [
+        "expected_np_span_present",
+        "np_license_status_exact",
+        "classifier_head_compatibility_exact"
+      ]
+    },
+    {
+      "id": "NP-L016",
+      "surface": "我嘅書。",
+      "group": "licensed_np",
+      "status": "PASS",
+      "checks": [
+        "expected_np_span_present",
+        "np_license_status_exact"
+      ]
+    },
+    {
+      "id": "NP-L017",
+      "surface": "香港嘅飯。",
+      "group": "licensed_np_unseen_combination",
+      "status": "PASS",
+      "checks": [
+        "expected_np_span_present",
+        "np_license_status_exact"
+      ]
+    },
+    {
+      "id": "NP-L018",
+      "surface": "書同筆。",
+      "group": "licensed_np",
+      "status": "PASS",
+      "checks": [
+        "expected_np_span_present",
+        "np_license_status_exact"
+      ]
+    },
+    {
+      "id": "NP-L019",
+      "surface": "茶同埋水。",
+      "group": "licensed_np_unseen_combination",
+      "status": "PASS",
+      "checks": [
+        "expected_np_span_present",
+        "np_license_status_exact"
+      ]
+    },
+    {
+      "id": "NP-P001",
+      "surface": "三歲。",
+      "group": "provisional_headless",
+      "status": "PASS",
+      "checks": [
+        "expected_np_span_present",
+        "np_license_status_exact"
+      ]
+    },
+    {
+      "id": "NP-P002",
+      "surface": "三本水。",
+      "group": "classifier_incompatible",
+      "status": "PASS",
+      "checks": [
+        "expected_np_span_present",
+        "np_license_status_exact",
+        "classifier_head_compatibility_exact"
+      ]
+    },
+    {
+      "id": "NP-P003",
+      "surface": "三杯書。",
+      "group": "classifier_incompatible",
+      "status": "PASS",
+      "checks": [
+        "expected_np_span_present",
+        "np_license_status_exact",
+        "classifier_head_compatibility_exact"
+      ]
+    },
+    {
+      "id": "NP-P004",
+      "surface": "三間醫生。",
+      "group": "classifier_incompatible",
+      "status": "PASS",
+      "checks": [
+        "expected_np_span_present",
+        "np_license_status_exact",
+        "classifier_head_compatibility_exact"
+      ]
+    },
+    {
+      "id": "NP-P005",
+      "surface": "三隻餐廳。",
+      "group": "classifier_incompatible",
+      "status": "PASS",
+      "checks": [
+        "expected_np_span_present",
+        "np_license_status_exact",
+        "classifier_head_compatibility_exact"
+      ]
+    },
+    {
+      "id": "NP-P006",
+      "surface": "三本電話。",
+      "group": "classifier_incompatible",
+      "status": "PASS",
+      "checks": [
+        "expected_np_span_present",
+        "np_license_status_exact",
+        "classifier_head_compatibility_exact"
+      ]
+    },
+    {
+      "id": "NP-P007",
+      "surface": "三張水。",
+      "group": "classifier_incompatible",
+      "status": "PASS",
+      "checks": [
+        "expected_np_span_present",
+        "np_license_status_exact",
+        "classifier_head_compatibility_exact"
+      ]
+    },
+    {
+      "id": "NP-X001",
+      "surface": "三個𠮶。",
+      "group": "unknown_head",
+      "status": "PASS",
+      "checks": [
+        "no_licensed_np"
+      ]
+    },
+    {
+      "id": "NP-X002",
+      "surface": "三書。",
+      "group": "unsupported_surface_pattern",
+      "status": "PASS",
+      "checks": [
+        "no_licensed_np"
+      ]
+    },
+    {
+      "id": "NP-X003",
+      "surface": "呢書。",
+      "group": "unsupported_surface_pattern",
+      "status": "PASS",
+      "checks": [
+        "no_licensed_np"
+      ]
+    },
+    {
+      "id": "NP-X004",
+      "surface": "我嘅。",
+      "group": "incomplete",
+      "status": "PASS",
+      "checks": [
+        "no_licensed_np"
+      ]
+    },
+    {
+      "id": "NP-X005",
+      "surface": "書同。",
+      "group": "incomplete",
+      "status": "PASS",
+      "checks": [
+        "no_licensed_np"
+      ]
+    },
+    {
+      "id": "NP-X006",
+      "surface": "呢隻牌子。",
+      "group": "unknown_or_unverified_head",
+      "status": "PASS",
+      "checks": [
+        "no_licensed_np"
+      ]
+    },
+    {
+      "id": "NP-I001",
+      "surface": "我睇咗兩本書。",
+      "group": "pfv_integration_unseen_combination",
+      "status": "PASS",
+      "checks": [
+        "narrow_pfv_present",
+        "pfv_consumes_licensed_np_without_evidence_expansion",
+        "object_np_span_exact"
+      ]
+    },
+    {
+      "id": "NP-I002",
+      "surface": "我睇咗三個醫生。",
+      "group": "pfv_integration",
+      "status": "PASS",
+      "checks": [
+        "narrow_pfv_present",
+        "pfv_consumes_licensed_np_without_evidence_expansion",
+        "object_np_span_exact"
+      ]
+    },
+    {
+      "id": "NP-I003",
+      "surface": "我答咗你嘅問題。",
+      "group": "pfv_integration",
+      "status": "PASS",
+      "checks": [
+        "narrow_pfv_present",
+        "pfv_consumes_licensed_np_without_evidence_expansion",
+        "object_np_span_exact"
+      ]
+    },
+    {
+      "id": "NP-I004",
+      "surface": "我買咗書同埋筆。",
+      "group": "pfv_integration_unseen_combination",
+      "status": "PASS",
+      "checks": [
+        "narrow_pfv_present",
+        "pfv_consumes_licensed_np_without_evidence_expansion",
+        "object_np_span_exact"
+      ]
+    },
+    {
+      "id": "NP-I005",
+      "surface": "食咗香港嘅飯。",
+      "group": "pfv_integration_boundary_correction",
+      "status": "PASS",
+      "checks": [
+        "narrow_pfv_present",
+        "pfv_consumes_licensed_np_without_evidence_expansion",
+        "object_np_span_exact"
+      ]
+    },
+    {
+      "id": "NP-I006",
+      "surface": "我買咗兩支筆。",
+      "group": "pfv_integration_unseen_combination",
+      "status": "PASS",
+      "checks": [
+        "narrow_pfv_present",
+        "pfv_consumes_licensed_np_without_evidence_expansion",
+        "object_np_span_exact"
+      ]
+    },
+    {
+      "id": "NP-N001",
+      "surface": "我飲咗三本水。",
+      "group": "pfv_forbidden_classifier_incompatible",
+      "status": "PASS",
+      "checks": [
+        "narrow_pfv_absent"
+      ]
+    },
+    {
+      "id": "NP-N002",
+      "surface": "我睇咗三杯書。",
+      "group": "pfv_forbidden_classifier_incompatible",
+      "status": "PASS",
+      "checks": [
+        "narrow_pfv_absent"
+      ]
+    },
+    {
+      "id": "NP-N003",
+      "surface": "我睇咗三書。",
+      "group": "pfv_forbidden_unsupported_np",
+      "status": "PASS",
+      "checks": [
+        "narrow_pfv_absent"
+      ]
+    },
+    {
+      "id": "NP-N004",
+      "surface": "我睇咗三個𠮶。",
+      "group": "pfv_forbidden_unknown_head",
+      "status": "PASS",
+      "checks": [
+        "narrow_pfv_absent"
+      ]
+    },
+    {
+      "id": "NP-N005",
+      "surface": "你買咗呢隻牌子未呀？",
+      "group": "pfv_forbidden_unverified_example",
+      "status": "PASS",
+      "checks": [
+        "narrow_pfv_absent"
+      ]
+    }
+  ],
+  "failures": []
+}

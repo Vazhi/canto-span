@@ -18,8 +18,8 @@ Workflow archiving parks a note outside current work. It does not retire its run
 
 - `supported_productive`: **0**
 - `provisional_reaudit`: **0**
-- `provisional`: **1**
-- `research_pending`: **59**
+- `provisional`: **0**
+- `research_pending`: **60**
 - `unsupported_generalization`: **87**
 - `lexicalized_only`: **3**
 - `parser_heuristic`: **20**
@@ -34,8 +34,8 @@ Workflow archiving parks a note outside current work. It does not retire its run
 
 ## Active working set
 
-1. [[PostverbalZoPerfectiveVP]] — `provisional`; current_reaudit_non_speaker_semantic_and_implementation_narrowing
-2. [[ResourceUseLaiFunctionRelation]] — `research_pending`; current_reaudit_source_boundary_and_code_document_reconciliation
+1. [[ResourceUseLaiFunctionRelation]] — `research_pending`; anchor_construction_for_role_neutral_interpretation_sensitive_panel_wave
+2. [[PostverbalZoPerfectiveVP]] — `research_pending`; secondary_construction_for_role_neutral_panel_wave_and_lexical_scope_recheck
 
 ## Workflow-archived current records
 

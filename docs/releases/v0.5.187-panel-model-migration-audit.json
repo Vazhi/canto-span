@@ -1,0 +1,56 @@
+{
+  "schema": "canto-span-release-handoff-audit-v2",
+  "release_id": "v0.5.187-panel-model-migration",
+  "handoff_sequence": 11,
+  "status_changes": [
+    {"construction":"PostverbalZoPerfectiveVP","old_status":"provisional","new_status":"research_pending"}
+  ],
+  "changed_construction_audit": [
+    {
+      "construction": "PostverbalZoPerfectiveVP",
+      "old_status": "provisional",
+      "new_status": "research_pending",
+      "plain_language_claim": "Checked sources still support a narrow visible action-predicate plus perfective 咗 plus overt licensed-NP research target, but its eleven historical responses came from mixed legacy instruments. Under the role-neutral panel standard, it has zero usable critical-item judgments from a clean instrument and therefore cannot remain provisional.",
+      "code_locations": ["main.js:3083-3103", "main.js:13644-13735", "main.js:15348-15426", "main.js:21168"],
+      "sources": [
+        {"citation":"Fan and Chan 2022, Language and Linguistics 23(3):371-410","locator":"p. 374 example (3c) and article discussion","verification":"PASS"},
+        {"citation":"Sio and Bond 2025, Inner and outer aspect in Cantonese","locator":"section 2, example (2a), Tables 1-2","verification":"PASS"},
+        {"citation":"Sybesma 2013, Cantonese sin1","locator":"chapter pp. 17-18, example (25a)","verification":"PASS"},
+        {"citation":"Yip and Matthews 2000, Basic Cantonese","locator":"Units 18 and 23","verification":"PASS"}
+      ],
+      "panel_response_count_total": 11,
+      "eligible_panel_response_count": 0,
+      "minimum_usable_judgments_per_critical_item": 0,
+      "survey_instrument_version": "PFV01-legacy-mixed-v1",
+      "survey_instrument_status": "legacy_limited",
+      "quality_screen_status": "partial",
+      "panel_adjudication_status": "complete_historical_only",
+      "unresolved_questions": [
+        "A clean role-neutral instrument has not yet covered every critical positive and boundary item.",
+        "The lexical range of predicate-object combinations remains narrower than the runtime action-verb inventory.",
+        "The split final-未 brand question needs a better contextual and lexical design."
+      ]
+    }
+  ],
+  "supported_productive_pending_reaudit": [],
+  "implementation_validation": "PASS required before handoff: 545 regression cases, 43 NP cases, 1,156 standardized construction assertions, 170 note/test alignment, promotion-gate v3 tests and enforcement, release-gate v2 tests and enforcement, panel-workflow audit, documentation links, and repository verification.",
+  "linguistic_confidence": "supported_productive and provisional are both 0. PFV and RUL are research_pending. PFV has four checked sources but zero clean panel-v2 critical-item coverage. RUL has five checked sources and 23 committed eligible pilot responses, but zero promotion-grade critical-item coverage because the instrument remains limited.",
+  "code_analysis_overclaim_review": true,
+  "overclaim_review_scope": "Reviewed the unchanged PFV runtime rule and semantic guard against the downgraded public claim, the new panel thresholds, all active note prose, and release documents. No document represents historical response volume as clean promotion-grade evidence.",
+  "release_documents": [
+    "docs/research/CP031-v0.5.187-NATIVE-PANEL-MODEL-MIGRATION-R1.md",
+    "docs/current/DEFINITION-OF-DONE.md",
+    "docs/current/SURVEY-BATCHING.md",
+    "docs/current/NATIVE-SPEAKER-REVIEW.md",
+    "docs/current/PROJECT-STATE.md",
+    "HANDOFF.md",
+    "CHANGELOG.md"
+  ],
+  "external_audit_ready": true,
+  "unresolved_release_questions": [
+    "No construction is supported_productive or provisional under panel-v2.",
+    "The next clean wave must mix PFV and RUL with unrelated fillers and interpretation-sensitive items.",
+    "The reported 50 live RUL responses require a new frozen snapshot before they can update canonical counts."
+  ],
+  "base_tree": "6789eb515208d06e2b762852192b134b1fc43073"
+}

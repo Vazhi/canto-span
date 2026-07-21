@@ -1,0 +1,148 @@
+[
+  {
+    "name": "supported productive passes panel definition",
+    "status": "supported_productive",
+    "fields": {
+      "source_count": 2,
+      "verified_source_count": 2,
+      "panel_response_count_total": 40,
+      "eligible_panel_response_count": 36,
+      "minimum_usable_judgments_per_critical_item": 32,
+      "critical_contrast_coverage": "complete",
+      "survey_instrument_version": "TEST-locked-v1",
+      "survey_instrument_status": "locked_clean",
+      "survey_instrument_quality_resolved": true,
+      "quality_screen_status": "complete",
+      "panel_adjudication_status": "complete",
+      "recruitment_channels": ["public_social_media"],
+      "respondent_role_neutral": true,
+      "native_positive_contrasts_reviewed": true,
+      "native_negative_contrasts_reviewed": true,
+      "panel_evidence_model_version": "v2",
+      "panel_review_state_file": "review-packets/native-panel/active-v2/panel-review-state.json",
+      "panel_policy_file": "review-packets/native-panel/active-v2/panel-policy.json",
+      "negative_cases_drafted": true,
+      "negative_tests_executable": true,
+      "negative_tests_passing": true,
+      "negative_boundary_inventory_complete": true,
+      "corpus_evidence_used": false,
+      "corpus_hits_reviewed": false,
+      "corpus_candidate_hit_count": 0,
+      "corpus_genuine_hit_count": 0,
+      "corpus_false_positive_count": 0,
+      "corpus_ambiguous_hit_count": 0,
+      "corpus_unusable_hit_count": 0,
+      "code_document_reconciled": true,
+      "code_document_review_date": "2026-07-21",
+      "code_document_review_commit": "abcdef1",
+      "code_document_code_locations": ["main.js:100-140"],
+      "current_standard_reaudit_complete": true,
+      "implementation_validation_separate": true,
+      "independent_evidence_beyond_internal_tests": true,
+      "promotion_gate_version": "v3"
+    },
+    "expected_eligible": true
+  },
+  {
+    "name": "supported fails below thirty usable judgments per critical item",
+    "status": "supported_productive",
+    "overrides": {"minimum_usable_judgments_per_critical_item": 29},
+    "expected_eligible": false,
+    "expected_blocker": "requirement_failed:minimum_thirty_usable_judgments_per_critical_item"
+  },
+  {
+    "name": "supported fails with pilot instrument",
+    "status": "supported_productive",
+    "overrides": {"survey_instrument_status": "pilot_clean"},
+    "expected_eligible": false,
+    "expected_blocker": "requirement_failed:locked_clean_panel_instrument"
+  },
+  {
+    "name": "supported fails when one cited source unchecked",
+    "status": "supported_productive",
+    "overrides": {"verified_source_count": 1},
+    "expected_eligible": false,
+    "expected_blocker": "requirement_failed:every_cited_source_verified"
+  },
+  {
+    "name": "supported fails with unclassified corpus hits",
+    "status": "supported_productive",
+    "overrides": {"corpus_evidence_used": true, "corpus_candidate_hit_count": 3, "corpus_hits_reviewed": false},
+    "expected_eligible": false,
+    "expected_blocker": "requirement_failed:corpus_hits_individually_classified_if_used"
+  },
+  {
+    "name": "supported passes classified corpus hits",
+    "status": "supported_productive",
+    "overrides": {"corpus_evidence_used": true, "corpus_hits_reviewed": true, "corpus_candidate_hit_count": 3, "corpus_genuine_hit_count": 1, "corpus_false_positive_count": 1, "corpus_ambiguous_hit_count": 1},
+    "expected_eligible": true
+  },
+  {
+    "name": "supported fails incomplete boundary inventory",
+    "status": "supported_productive",
+    "overrides": {"negative_boundary_inventory_complete": false},
+    "expected_eligible": false,
+    "expected_blocker": "requirement_failed:negative_boundary_inventory_complete"
+  },
+  {
+    "name": "supported fails without current code review metadata",
+    "status": "supported_productive",
+    "overrides": {"code_document_review_date": null, "code_document_review_commit": null, "code_document_code_locations": []},
+    "expected_eligible": false,
+    "expected_blocker": "requirement_failed:current_code_review_metadata"
+  },
+  {
+    "name": "provisional passes clean ten-item panel threshold",
+    "status": "provisional",
+    "overrides": {"minimum_usable_judgments_per_critical_item": 10, "survey_instrument_status": "pilot_clean", "negative_tests_executable": false, "negative_tests_passing": false, "negative_boundary_inventory_complete": false, "code_document_reconciled": false, "code_document_review_date": null, "code_document_review_commit": null, "code_document_code_locations": [], "current_standard_reaudit_complete": false},
+    "expected_eligible": true
+  },
+  {
+    "name": "provisional fails below ten usable judgments",
+    "status": "provisional",
+    "overrides": {"minimum_usable_judgments_per_critical_item": 9, "survey_instrument_status": "pilot_clean"},
+    "expected_eligible": false,
+    "expected_blocker": "requirement_failed:minimum_ten_usable_judgments_per_critical_item"
+  },
+  {
+    "name": "provisional fails with unresolved pilot instrument",
+    "status": "provisional",
+    "overrides": {"minimum_usable_judgments_per_critical_item": 23, "survey_instrument_status": "pilot_limited", "survey_instrument_quality_resolved": false},
+    "expected_eligible": false,
+    "expected_blocker": "requirement_failed:clean_panel_instrument"
+  },
+  {
+    "name": "provisional fails when respondent roles are privileged",
+    "status": "provisional",
+    "overrides": {"minimum_usable_judgments_per_critical_item": 10, "survey_instrument_status": "pilot_clean", "respondent_role_neutral": false},
+    "expected_eligible": false,
+    "expected_blocker": "requirement_failed:role_neutral_panel"
+  },
+  {
+    "name": "provisional fails without complete critical contrast coverage",
+    "status": "provisional",
+    "overrides": {"minimum_usable_judgments_per_critical_item": 10, "survey_instrument_status": "pilot_clean", "critical_contrast_coverage": "partial"},
+    "expected_eligible": false,
+    "expected_blocker": "requirement_failed:critical_contrast_coverage_complete"
+  },
+  {
+    "name": "research pending remains quarantined",
+    "status": "research_pending",
+    "overrides": {"source_count": 0, "verified_source_count": 0, "panel_response_count_total": 0, "eligible_panel_response_count": 0, "minimum_usable_judgments_per_critical_item": 0, "critical_contrast_coverage": "none", "survey_instrument_version": null, "survey_instrument_status": "not_started", "survey_instrument_quality_resolved": false, "quality_screen_status": "not_started", "panel_adjudication_status": "not_started", "recruitment_channels": [], "native_positive_contrasts_reviewed": false, "native_negative_contrasts_reviewed": false, "negative_cases_drafted": false, "independent_evidence_beyond_internal_tests": false},
+    "expected_eligible": false,
+    "expected_gate_class": "quarantined"
+  },
+  {
+    "name": "minimum item n cannot exceed eligible responses",
+    "status": "research_pending",
+    "overrides": {"panel_response_count_total": 10, "eligible_panel_response_count": 8, "minimum_usable_judgments_per_critical_item": 9},
+    "expected_eligible": false,
+    "expected_blocker": "minimum_item_n_exceeds_eligible_panel_responses"
+  },
+  {
+    "name": "unknown status fails loudly",
+    "status": "invented_status",
+    "expected_eligible": false,
+    "expected_blocker_prefix": "unknown_status:"
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "schema": "canto-span-release-handoff-gate-v2",
+  "release_id": "v0.5.187-panel-model-migration",
+  "base_tree": "6789eb515208d06e2b762852192b134b1fc43073",
+  "actual_status_changes": [
+    {
+      "construction": "PostverbalZoPerfectiveVP",
+      "old_status": "provisional",
+      "new_status": "research_pending"
+    }
+  ],
+  "supported_productive_count": 0,
+  "supported_productive_pending_reaudit": [],
+  "retirement_review_gap": 8,
+  "failed": 0,
+  "status": "PASS",
+  "failures": []
+}

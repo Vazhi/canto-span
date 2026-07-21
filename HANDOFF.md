@@ -13,34 +13,44 @@ The recovery ZIP must include `.git/`.
 
 ## Binding state
 
-- runtime: **v0.5.186**
+- runtime: **v0.5.187**
 - runtime labels / current construction notes: **170 / 170**
 - workflow: **2 active / 168 archived**
 - retired labels: **11**
 - `supported_productive`: **0**
-- `PostverbalZoPerfectiveVP`: **provisional**
-- `ResourceUseLaiFunctionRelation`: **research_pending**
-- `provisional_reaudit`: **0**
+- `provisional`: **0**
+- `research_pending`: **60**
+- active constructions: PFV and RUL, both `research_pending`
 
-## Milestone result
+## Panel evidence model
 
-v0.5.186 closes the active re-audit milestone.
+The fixed two-person workflow is retired. All qualified respondents use the
+same locked instrument and criteria. The user's wife receives no private form,
+named role, special weight, or separate evidentiary status.
 
-1. PFV is a narrow structural provisional claim. It has four checked sources and one clean independent same-contrast speaker. Ten legacy public responses are preserved as external panel evidence but add zero promotion eligibility.
-2. RUL is research pending. Five checked sources and 23 pilot responses show useful surface judgments, but the intended parse, semantic scope, and code/document boundaries remain unresolved.
-3. `TopicCommentClause` is retired as an unused duplicate. Its complete historical note remains archived.
+Promotion thresholds are based on the minimum usable adjudicated judgments per
+critical item: 10 for `provisional`, 30 for `supported_productive` from a locked
+clean instrument.
 
-No construction satisfies `supported_productive` under the current Definition of Done.
+## Current evidence
+
+- PFV: 11 historical responses from mixed legacy instruments; zero clean
+  critical-item coverage under panel-v2.
+- RUL: 23 committed pilot responses; the user reports 50 live responses, but
+  additional rows are not canonical until snapshotted and adjudicated.
+- Neither current instrument can satisfy promotion.
 
 ## Read next
 
 1. `docs/current/PROJECT-STATE.md`
 2. `docs/current/DEFINITION-OF-DONE.md`
-3. `docs/research/CP030-v0.5.186-ACTIVE-REAUDIT-CLOSURE-R1.md`
-4. `grammar/active/PostverbalZoPerfectiveVP.md`
-5. `grammar/active/ResourceUseLaiFunctionRelation.md`
-6. `docs/releases/v0.5.186-active-reaudit-closure-audit.json`
+3. `docs/current/SURVEY-BATCHING.md`
+4. `docs/current/NATIVE-SPEAKER-REVIEW.md`
+5. `review-packets/native-panel/active-v2/panel-policy.json`
+6. `review-packets/native-panel/active-v2/panel-review-state.json`
 
 ## Next substantive work
 
-Do not reopen the broad archived backlog yet. Build a revised interpretation-sensitive RUL instrument, obtain the controlled Speaker A review, and reconcile the RUL code with a narrowly stated claim. PFV promotion remains blocked until a second clean independent speaker judges the same positive and negative contrasts.
+Create one mixed PFV/RUL pilot wave with a graded scale, uncertainty option,
+interpretation questions, contexts, unrelated fillers, counterbalanced order,
+and adjacent correction fields. Every respondent uses the same instrument.

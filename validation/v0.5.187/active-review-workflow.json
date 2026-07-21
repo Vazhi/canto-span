@@ -1,0 +1,10 @@
+{
+  "schema": "canto-span-native-panel-workflow-audit-v2",
+  "protocol_version": "panel-v2",
+  "active_constructions": 2,
+  "check_count": 107,
+  "passed": 107,
+  "failed": 0,
+  "status": "PASS",
+  "failures": []
+}

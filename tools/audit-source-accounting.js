@@ -38,12 +38,12 @@ check("all source counts match source IDs", notes.every((n) => Number(n.frontmat
 check("every mapped source has a note section", notes.every((n) => n.frontmatter.source_ids.every((id) => n.body.includes(`### ${id}`))));
 check("supported_productive remains zero", notes.filter((n) => n.frontmatter.status === "supported_productive").length === 0);
 check("no rows remain provisional_reaudit", notes.filter((n) => n.frontmatter.status === "provisional_reaudit").length === 0);
-check("one construction is provisional", notes.filter((n) => n.frontmatter.status === "provisional").length === 1);
+check("no construction is provisional", notes.filter((n) => n.frontmatter.status === "provisional").length === 0);
 check("no note claims productive eligibility", notes.every((n) => /Productive acceptance eligible: \*\*no\*\*/.test(n.body)));
 check("frozen wide registry exists", fs.existsSync(path.join(root, "archive", "registry-pre-obsidian-v0.5.184", "full-construction-registry.json")));
 const outDir = path.join(root, "validation", `v${api.runtimeVersion}`);
 fs.mkdirSync(outDir, { recursive: true });
-const result = { schema: "canto-span-source-accounting-audit-v5", checkpoint: "v0.5.186-active-reaudit-closure", runtime_registry_labels: runtime.size, construction_notes: noteMap.size, retired_labels: retiredSet.size, total: checks.length, passed: checks.length - failures.length, failed: failures.length, status: failures.length ? "FAIL" : "PASS", checks, failures };
+const result = { schema: "canto-span-source-accounting-audit-v6", checkpoint: "v0.5.187-panel-model-migration", runtime_registry_labels: runtime.size, construction_notes: noteMap.size, retired_labels: retiredSet.size, total: checks.length, passed: checks.length - failures.length, failed: failures.length, status: failures.length ? "FAIL" : "PASS", checks, failures };
 fs.writeFileSync(path.join(outDir, "source-accounting.json"), JSON.stringify(result, null, 2) + "\n");
 console.log(JSON.stringify(result, null, 2));
 if (failures.length) process.exit(1);

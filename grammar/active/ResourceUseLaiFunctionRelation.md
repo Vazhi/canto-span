@@ -8,15 +8,24 @@ claim_layer: "language"
 lane: "LANE-01"
 last_reviewed: "2026-07-21"
 last_status_migrated: "2026-07-21"
-speaker_count: 23
 source_count: 5
 verified_source_count: 5
-independent_speaker_count: 23
-promotion_eligible_independent_speaker_count: 0
-same_contrast_independent_speaker_count: 0
+panel_response_count_total: 23
+eligible_panel_response_count: 23
+minimum_usable_judgments_per_critical_item: 0
+critical_contrast_coverage: "partial"
+survey_instrument_version: "RUL01-pilot-v0"
+survey_instrument_status: "pilot_limited"
+survey_instrument_quality_resolved: false
+quality_screen_status: "complete"
+panel_adjudication_status: "complete_for_23_response_snapshot"
+recruitment_channels: ["public_social_media"]
+respondent_role_neutral: true
 native_positive_contrasts_reviewed: false
 native_negative_contrasts_reviewed: false
-pilot_panel_response_count: 23
+panel_evidence_model_version: "v2"
+panel_review_state_file: "review-packets/native-panel/active-v2/panel-review-state.json"
+panel_policy_file: "review-packets/native-panel/active-v2/panel-policy.json"
 negative_cases_drafted: true
 negative_tests_executable: true
 negative_tests_passing: true
@@ -35,13 +44,8 @@ code_document_code_locations: []
 current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
-promotion_gate_version: "v2"
-native_review_protocol_version: "v1"
-native_review_state_file: "review-packets/native-speaker/active-v1/active-review-state.json"
-native_form_spec_file: "review-packets/native-speaker/active-v1/form-specs.json"
+promotion_gate_version: "v3"
 source_verification_file: "docs/research/CP026-P1-RUL01-SOURCE-VERIFICATION-R1.tsv"
-speaker_a_state: "form_ready_response_pending"
-speaker_b_state: "pilot_panel_counted_exception"
 standard_test_file: "tests/constructions/ResourceUseLaiFunctionRelation.json"
 standard_test_coverage: "positive_and_boundary"
 standard_positive_test_count: 7
@@ -50,9 +54,9 @@ standard_executable_test_count: 21
 source_ids: ["SRC-CCO-LAICHIWO-VILLAGE-HOUSE", "SRC-CHEUNG-2018-LAI", "SRC-CHOR-2018-DIRECTIONAL-PARTICLES", "SRC-HKMEMORY-SHAPU-ORAL-HISTORY", "SRC-WONG-2023-LSA"]
 runtime_active: true
 workflow_state: "active"
-workflow_priority: 2
+workflow_priority: 1
 workflow_since: "2026-07-21"
-workflow_reason: "current_reaudit_source_boundary_and_code_document_reconciliation"
+workflow_reason: "anchor_construction_for_role_neutral_interpretation_sensitive_panel_wave"
 runtime_code_references: 5
 accepted_fixtures: 29
 tags: ["canto-span/grammar", "canto-span/status/research_pending", "canto-span/lane/lane-01", "canto-span/workflow/active"]
@@ -70,7 +74,7 @@ This is a research target, not a current productive Cantonese grammar claim. The
 
 - Linguistic status: `research_pending`
 - Linguistic confidence: `pilot_support_analysis_unresolved`
-- Current action: `design_controlled_interpretation_instrument_and_reconcile_resource_scope_before_reconsidering_provisional`
+- Current action: `design_role_neutral_interpretation_sensitive_panel_wave_and_reconcile_resource_scope`
 - Productive acceptance eligible: **no**
 - Current-standard re-audit disposition: **complete; downgraded rather than promoted**
 - Last linguistic review: 2026-07-21
@@ -119,13 +123,13 @@ This is a research target, not a current productive Cantonese grammar claim. The
 
 ## Native-speaker review
 
-- Independent native-panel response records: **23** under the explicit `RUL01-PUBLIC-PILOT-EXCEPTION-2026-07-21`.
-- Promotion-eligible independent speaker records: **0**.
-- Scope: `SPEAKER_A_PRIVATE_REVIEW_PENDING; SPEAKER_B_PUBLIC_PILOT_PANEL_COUNTED_WITH_LIMITATIONS`.
-- Surface judgments: 483 binary item judgments across 23 complete responses.
-- Structural-analysis validations: 0; naturalness did not identify unique parses.
+- Committed panel snapshot: **23** eligible responses from the same public pilot instrument.
+- The user reports **50** live responses, but only the committed 23-response snapshot is canonical until a new export is screened and adjudicated.
+- Minimum usable judgments per critical item for promotion: **0**, because the instrument is `pilot_limited` rather than clean.
+- Instrument limitations: binary scale, fixed order, no unrelated fillers, context-free ambiguous items, and one late global comment field.
+- Surface judgments total 483 across the committed snapshot, but naturalness alone did not identify the parser relation.
+- No respondent, including the user's wife, receives a private instrument, named role, special status, or additional weight.
 - Result record: `docs/research/CP026-P1-RUL01-PUBLIC-PANEL-R1-RESULT.md`.
-- Second-speaker state: `23_RESPONSE_PANEL_COUNTED_AS_EXTERNAL_EVIDENCE; CLEAN_PROMOTION_REQUIREMENT_NOT_SATISFIED`.
 
 ## Negative and boundary cases
 
@@ -153,11 +157,11 @@ This is a research target, not a current productive Cantonese grammar claim. The
 
 ## Open questions and blockers
 
-- No promotion-eligible controlled speaker has yet judged the same positive, negative, and interpretation contrasts.
-- The public pilot establishes acceptability patterns but does not identify the structural reading assigned by respondents.
+- The public pilot establishes useful acceptability patterns but does not identify the structural reading assigned by respondents.
 - Resource semantics, coordinated predicates, modal and copular frames, actual-use `用咗嚟`, negation, A-not-A, and contextual ellipsis require separate analyses.
 - The runtime and public claim are not reconciled closely enough for `provisional`.
-- Next evidence action: complete the revised private Speaker A instrument, then collect an independent clean response using the same locked instrument. Include graded naturalness, interpretation choices, contexts, unrelated fillers, randomized order, and per-item correction fields.
+- A large response count does not repair the pilot's design defects or create usable promotion-grade item coverage.
+- Next evidence action: snapshot and preserve the expanded pilot, then build a clean role-neutral multi-construction wave with graded judgments, interpretation choices, contexts, unrelated fillers, randomized or counterbalanced order, and per-item correction fields.
 
 ## Related constructions
 

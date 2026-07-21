@@ -1,0 +1,72 @@
+{
+  "schema": "canto-span-native-panel-review-state-v2",
+  "protocol_version": "panel-v2",
+  "last_updated": "2026-07-21",
+  "policy_file": "review-packets/native-panel/active-v2/panel-policy.json",
+  "supersedes": "review-packets/native-speaker/active-v1/active-review-state.json",
+  "respondent_model": {
+    "named_roles_removed": true,
+    "same_instrument_for_all_respondents": true,
+    "special_status_for_users_wife": false,
+    "evidence_unit": "usable_adjudicated_judgment_per_critical_item"
+  },
+  "constructions": [
+    {
+      "construction": "PostverbalZoPerfectiveVP",
+      "source_verification_file": "docs/research/CP025-P1-PFV01-SOURCE-VERIFICATION-R1.tsv",
+      "counted_source_ids": [
+        "SRC-FAN-CHAN-2022",
+        "SRC-SIO-BOND-2025",
+        "SRC-SYBESMA-2013",
+        "SRC-YIP-MATTHEWS-2000-BASIC"
+      ],
+      "panel_response_count_total": 11,
+      "eligible_panel_response_count": 0,
+      "minimum_usable_judgments_per_critical_item": 0,
+      "critical_contrast_coverage": "partial",
+      "survey_instrument_version": "PFV01-legacy-mixed-v1",
+      "survey_instrument_status": "legacy_limited",
+      "survey_instrument_quality_resolved": false,
+      "quality_screen_status": "partial",
+      "panel_adjudication_status": "complete_historical_only",
+      "recruitment_channels": ["private_historical", "public_social_media"],
+      "respondent_role_neutral": false,
+      "historical_records": [
+        "docs/research/CP025-P1-PFV01-SPEAKER-A-RESULT-R2.md",
+        "docs/research/CP029-P1-PFV01-PUBLIC-PANEL-R1-RESULT.md",
+        "review-packets/native-speaker/active-v1/completed/PFV01-SPEAKER-B-PUBLIC-R1/PFV01-PUBLIC-PANEL-SNAPSHOT-R1.json"
+      ],
+      "current_disposition": "research_pending",
+      "next_action": "include_PFV_in_a_clean_role_neutral_multi_construction_survey_wave"
+    },
+    {
+      "construction": "ResourceUseLaiFunctionRelation",
+      "source_verification_file": "docs/research/CP026-P1-RUL01-SOURCE-VERIFICATION-R1.tsv",
+      "counted_source_ids": [
+        "SRC-CCO-LAICHIWO-VILLAGE-HOUSE",
+        "SRC-CHEUNG-2018-LAI",
+        "SRC-CHOR-2018-DIRECTIONAL-PARTICLES",
+        "SRC-HKMEMORY-SHAPU-ORAL-HISTORY",
+        "SRC-WONG-2023-LSA"
+      ],
+      "panel_response_count_total": 23,
+      "eligible_panel_response_count": 23,
+      "reported_live_response_count_not_yet_snapshotted": 50,
+      "minimum_usable_judgments_per_critical_item": 0,
+      "critical_contrast_coverage": "partial",
+      "survey_instrument_version": "RUL01-pilot-v0",
+      "survey_instrument_status": "pilot_limited",
+      "survey_instrument_quality_resolved": false,
+      "quality_screen_status": "complete",
+      "panel_adjudication_status": "complete_for_23_response_snapshot",
+      "recruitment_channels": ["public_social_media"],
+      "respondent_role_neutral": true,
+      "historical_records": [
+        "docs/research/CP026-P1-RUL01-PUBLIC-PANEL-R1-RESULT.md",
+        "review-packets/native-speaker/active-v1/completed/RUL01-SPEAKER-B-PUBLIC-R1/RUL01-PUBLIC-PANEL-SNAPSHOT-R1.json"
+      ],
+      "current_disposition": "research_pending",
+      "next_action": "close_or_snapshot_the_pilot_then_build_a_clean_interpretation_sensitive_multi_construction_wave"
+    }
+  ]
+}

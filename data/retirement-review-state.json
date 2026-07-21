@@ -4,9 +4,9 @@
   "last_full_review_id": "v0.5.183-phase3-dormant-label-retirement",
   "recommended_interval_min": 10,
   "hard_interval_max": 20,
-  "current_handoff_sequence": 10,
+  "current_handoff_sequence": 11,
   "next_review_window_opens_at_sequence": 13,
   "review_required_by_sequence": 23,
   "state": "not_yet_due",
-  "notes": "Phase 3 performed the last full dormant-label review. v0.5.186 separately retired TopicCommentClause after confirming zero fixtures, runtime constructors, direct tests, and unique purpose; the next full review is not yet due."
+  "notes": "Phase 3 performed the last full dormant-label review. v0.5.186 separately retired TopicCommentClause. v0.5.187 changes only evidence governance and does not alter the retirement schedule."
 }

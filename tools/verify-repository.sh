@@ -22,6 +22,9 @@ required=(
   docs/current/GIT-WORKFLOW.md
   docs/current/INFRASTRUCTURE-MIGRATION.md
   docs/current/NATIVE-SPEAKER-REVIEW.md
+  docs/current/SURVEY-BATCHING.md
+  review-packets/native-panel/active-v2/panel-policy.json
+  review-packets/native-panel/active-v2/panel-review-state.json
   docs/research/SECOND-SPEAKER-WORK-AUTHORIZATION-2026-07-21.md
   review-packets/native-speaker/active-v1/form-specs.json
   review-packets/native-speaker/active-v1/active-review-state.json
@@ -57,12 +60,14 @@ required=(
   docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv
   archive/retired-labels/v0.5.186-active-reaudit-closure/TopicCommentClause.md
   docs/releases/v0.5.186-active-reaudit-closure-audit.json
+  docs/research/CP031-v0.5.187-NATIVE-PANEL-MODEL-MIGRATION-R1.md
+  docs/releases/v0.5.187-panel-model-migration-audit.json
   tools/verify-release-handoff.js
-  test-data/release-handoff-gate-v1.json
+  test-data/release-handoff-gate-v2.json
   tools/test-release-handoff.js
   tools/release-handoff-lib.js
   tools/promotion-gate-lib.js
-  test-data/promotion-gate-v2.json
+  test-data/promotion-gate-v3.json
   package.json
   tests/README.md
   tests/run-all.js
@@ -88,7 +93,9 @@ node tools/run-construction-registry-audit.js >/dev/null
 node tools/run-research-construction-registry.js >/dev/null
 node tools/audit-source-accounting.js >/dev/null
 node tools/verify-active-working-set.js >/dev/null
+node tools/run-current-focused.js >/dev/null
 node tools/verify-active-review-workflow.js >/dev/null
+node tools/audit-native-conflict-burden.js >/dev/null
 node tools/verify-native-panel-snapshot.js >/dev/null
 node tools/verify-pfv-panel-snapshot.js >/dev/null
 node tools/test-promotion-gate.js >/dev/null

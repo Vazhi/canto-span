@@ -9,7 +9,7 @@ const { evaluatePromotion } = require("./promotion-gate-lib");
 const { validateReleaseAudit } = require("./release-handoff-lib");
 
 const root = path.resolve(__dirname, "..");
-const auditPath = process.argv[2] || path.join(root, "docs", "releases", "v0.5.186-active-reaudit-closure-audit.json");
+const auditPath = process.argv[2] || path.join(root, "docs", "releases", "v0.5.187-panel-model-migration-audit.json");
 const audit = JSON.parse(fs.readFileSync(auditPath, "utf8"));
 const failures = [];
 
@@ -81,7 +81,7 @@ failures.push(...auditValidation.failures);
 const gap = auditValidation.gap;
 
 const report = {
-  schema: "canto-span-release-handoff-gate-v1",
+  schema: "canto-span-release-handoff-gate-v2",
   release_id: audit.release_id,
   base_tree: audit.base_tree,
   actual_status_changes: actualChanges,

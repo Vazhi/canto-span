@@ -2,7 +2,7 @@
 
 function validateReleaseAudit({ audit, actualChanges, supportedPending, retirement }) {
   const failures = [];
-  if (audit.schema !== "canto-span-release-handoff-audit-v1") failures.push("invalid_schema");
+  if (audit.schema !== "canto-span-release-handoff-audit-v2") failures.push("invalid_schema");
   if (!/^[0-9a-f]{40}$/.test(String(audit.base_tree || ""))) failures.push("invalid_base_tree");
 
   const recordedChanges = [...(audit.status_changes || [])].sort((a, b) => a.construction.localeCompare(b.construction));
@@ -17,7 +17,12 @@ function validateReleaseAudit({ audit, actualChanges, supportedPending, retireme
     if (!String(item.plain_language_claim || "").trim()) failures.push(`missing_plain_language_claim:${change.construction}`);
     if (!Array.isArray(item.code_locations) || !item.code_locations.length) failures.push(`missing_code_locations:${change.construction}`);
     if (!Array.isArray(item.sources) || !item.sources.every((source) => source && source.citation && source.locator && source.verification)) failures.push(`missing_verifiable_sources:${change.construction}`);
-    if (!Number.isFinite(Number(item.promotion_eligible_speaker_count))) failures.push(`missing_speaker_count:${change.construction}`);
+    for (const field of ["panel_response_count_total", "eligible_panel_response_count", "minimum_usable_judgments_per_critical_item"]) {
+      if (!Number.isFinite(Number(item[field]))) failures.push(`missing_panel_field:${change.construction}:${field}`);
+    }
+    for (const field of ["survey_instrument_version", "survey_instrument_status", "quality_screen_status", "panel_adjudication_status"]) {
+      if (!String(item[field] || "").trim()) failures.push(`missing_panel_field:${change.construction}:${field}`);
+    }
     if (!Array.isArray(item.unresolved_questions)) failures.push(`missing_unresolved_questions:${change.construction}`);
   }
   if (auditByConstruction.size !== sortedActual.length) failures.push("changed_construction_audit_has_extra_or_missing_records");

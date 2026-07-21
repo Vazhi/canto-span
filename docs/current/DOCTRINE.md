@@ -44,11 +44,15 @@ A construction such as `VERB + 咗 + OBJECT_NP` may consume a licensed NP span w
 
 Unknown or low-confidence nominal recovery may be represented as `provisional_np_candidate`, but it must not license an evidence-gated construction. See [`NOUN-PHRASE-SUBSYSTEM.md`](NOUN-PHRASE-SUBSYSTEM.md).
 
-## Native-speaker requirement
+## Native-panel requirement
 
-A construction cannot become `supported_productive` until at least two independent native Cantonese speakers have reviewed the same relevant positive and negative contrasts. One speaker's judgment is useful evidence but is insufficient for productive acceptance.
-
-Second-speaker work is currently frozen by the user. Preserve every unmet requirement visibly, but do not recruit, schedule, prepare new Speaker B packets, or request second-speaker work until explicitly unfrozen.
+Native-speaker evidence is a role-neutral panel, not a fixed two-person system.
+All eligible respondents use the same instrument and criteria, and no named
+respondent receives special weight. `provisional` requires at least 10 usable
+adjudicated judgments per critical positive and negative item from a clean
+instrument. `supported_productive` requires at least 30 per critical item from
+a locked clean instrument. Total submissions without per-item coverage do not
+satisfy either threshold.
 
 ## Native-conflict escalation
 
@@ -96,4 +100,4 @@ Record meaningful work as a Git commit and export the full repository including 
 
 The assistant may autonomously research, specify, implement, validate, revise, quarantine, retire, commit, and export changes under this doctrine. Separate user approval is not required for each family.
 
-User participation is required when evidence cannot be created internally without compromising independence, especially native-speaker review and user-visible Obsidian rendering. Frozen work must remain visibly deferred rather than silently waived.
+User participation is required when evidence cannot be created internally without compromising independence, especially independent panel recruitment and user-visible Obsidian rendering. Frozen work must remain visibly deferred rather than silently waived.

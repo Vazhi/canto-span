@@ -1,3 +1,7 @@
+# Frozen historical native-review packet v1
+
+This directory is preserved only as provenance for already-collected PFV and RUL responses. It is superseded by `review-packets/native-panel/active-v2/`. Do not create new private or public forms from this package for current evidence collection.
+
 # Active native-speaker review packet v1
 
 This directory is the canonical Phase 7 review packet for the two active construction re-audits.

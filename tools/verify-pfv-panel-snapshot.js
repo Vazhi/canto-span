@@ -75,15 +75,17 @@ check("protocol exception exists", Boolean(exception));
 check("PFV public panel state is counted legacy exception", pfvState?.speaker_b?.state === "legacy_panel_counted_exception", pfvState?.speaker_b?.state);
 check("PFV state counts 11 total independent responses", Number(pfvState?.counted_independent_speakers) === 11, pfvState?.counted_independent_speakers);
 check("PFV state promotion-eligible count remains one", Number(pfvState?.promotion_eligible_independent_speakers) === 1, pfvState?.promotion_eligible_independent_speakers);
-check("construction note counts 11 total responses", Number(note?.frontmatter?.independent_speaker_count) === 11, note?.frontmatter?.independent_speaker_count);
-check("construction note records one promotion-eligible speaker", Number(note?.frontmatter?.promotion_eligible_independent_speaker_count) === 1, note?.frontmatter?.promotion_eligible_independent_speaker_count);
-check("construction note records one same-contrast clean speaker", Number(note?.frontmatter?.same_contrast_independent_speaker_count) === 1, note?.frontmatter?.same_contrast_independent_speaker_count);
-check("construction closes narrowly as provisional", note?.frontmatter?.status === "provisional", note?.frontmatter?.status);
+check("construction note records 11 historical panel responses", Number(note?.frontmatter?.panel_response_count_total) === 11, note?.frontmatter?.panel_response_count_total);
+check("construction note records zero clean role-neutral eligible responses", Number(note?.frontmatter?.eligible_panel_response_count) === 0, note?.frontmatter?.eligible_panel_response_count);
+check("construction note does not invent clean item coverage", Number(note?.frontmatter?.minimum_usable_judgments_per_critical_item) === 0, note?.frontmatter?.minimum_usable_judgments_per_critical_item);
+check("construction note preserves legacy instrument limitation", note?.frontmatter?.survey_instrument_status === "legacy_limited", note?.frontmatter?.survey_instrument_status);
+check("construction returns to research pending under panel v2", note?.frontmatter?.status === "research_pending", note?.frontmatter?.status);
+check("construction note uses panel evidence model v2", note?.frontmatter?.panel_evidence_model_version === "v2", note?.frontmatter?.panel_evidence_model_version);
 check("exception does not invent clean eligibility", Number(exception?.promotion_eligible_independent_speakers) === 0, exception?.promotion_eligible_independent_speakers);
 check("exception scope preserves missing-field limitations", exception?.scope === "count_as_external_same_contrast_panel_evidence_without_inventing_missing_native_confirmation_or_consent_fields", exception?.scope);
 
 const report = {
-  schema: "canto-span-native-panel-snapshot-audit-v1",
+  schema: "canto-span-native-panel-snapshot-audit-v2",
   construction: "PostverbalZoPerfectiveVP",
   response_count: matrix.rows.length,
   item_count: itemHeaders.length,

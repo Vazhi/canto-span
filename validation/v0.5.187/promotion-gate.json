@@ -1,0 +1,18 @@
+{
+  "schema": "canto-span-promotion-gate-v3",
+  "construction_notes": 170,
+  "status_counts": {
+    "unsupported_generalization": 87,
+    "research_pending": 60,
+    "parser_heuristic": 20,
+    "lexicalized_only": 3
+  },
+  "gate_counts": {
+    "quarantined": 170
+  },
+  "promoted_status_records": 0,
+  "eligible_promoted_status_records": 0,
+  "failed": 0,
+  "status": "PASS",
+  "failures": []
+}

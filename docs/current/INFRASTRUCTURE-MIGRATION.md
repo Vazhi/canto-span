@@ -98,3 +98,10 @@ Reduce ceremony, drift risk, and file bloat without restarting the parser or dis
 - added focused promotion-gate cases and a 109-check panel-snapshot audit that recomputes every item count;
 - documented the next-instrument requirements: graded scale, per-item correction/context fields, randomized item blocks, fillers, contextualized ellipsis, interpretation checks, and semantic-plausibility separation;
 - changed no parser behavior, runtime label, construction status, source count, or executable construction expectation.
+
+## v0.5.187 panel-model migration
+
+The fixed two-role reviewer workflow is historical. Active evidence governance
+now uses one role-neutral panel, item-level usable-judgment thresholds, and
+clean-instrument gates. The former v1 Google Forms package is preserved only as
+provenance for collected legacy data.

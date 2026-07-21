@@ -1,0 +1,55 @@
+{
+  "schema": "canto-span-native-panel-policy-v2",
+  "protocol_version": "panel-v2",
+  "effective_date": "2026-07-21",
+  "respondent_policy": {
+    "same_instrument_for_all_respondents": true,
+    "privileged_or_named_reviewer_roles": false,
+    "special_weighting_for_user_relatives": false,
+    "independent_submission_required": true,
+    "native_cantonese_eligibility_screen_required": true,
+    "anonymous_use_consent_required_for_public_collection": true,
+    "duplicate_and_quality_screen_required": true
+  },
+  "evidence_thresholds": {
+    "pilot_usable_judgments_per_item_min": 5,
+    "pilot_usable_judgments_per_item_max": 10,
+    "provisional_minimum_usable_judgments_per_critical_item": 10,
+    "supported_productive_minimum_usable_judgments_per_critical_item": 30
+  },
+  "instrument_requirements": {
+    "provisional_allowed_statuses": ["pilot_clean", "locked_clean", "closed_clean"],
+    "supported_productive_allowed_statuses": ["locked_clean", "closed_clean"],
+    "graded_naturalness_scale": true,
+    "genuine_context_or_uncertainty_option": true,
+    "randomized_or_counterbalanced_item_order": true,
+    "unrelated_natural_and_degraded_fillers": true,
+    "context_for_ellipsis_dependent_items": true,
+    "interpretation_questions_for_structurally_ambiguous_items": true,
+    "per_item_comment_or_correction_field": true,
+    "locked_instrument_must_not_be_edited_in_place": true
+  },
+  "batching": {
+    "focal_constructions_per_public_wave_min": 2,
+    "focal_constructions_per_public_wave_max": 3,
+    "recommended_rated_items_per_participant_min": 24,
+    "recommended_rated_items_per_participant_max": 36,
+    "recommended_unrelated_fillers_min": 8,
+    "recommended_unrelated_fillers_max": 15,
+    "group_by_compatible_response_architecture": true,
+    "do_not_group_only_by_shared_surface_marker": true
+  },
+  "lifecycle": [
+    "research_question",
+    "source_narrowed",
+    "pilot_ready",
+    "pilot_collection",
+    "instrument_audit",
+    "instrument_locked",
+    "collection",
+    "mid_collection_audit",
+    "adjudicated",
+    "construction_disposition",
+    "closed"
+  ]
+}

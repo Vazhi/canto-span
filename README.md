@@ -4,14 +4,13 @@ This repository is the canonical project working tree for the Cantonese parser a
 
 ## Current state
 
-- runtime: **v0.5.186**
+- runtime: **v0.5.187**
 - active runtime labels / construction notes: **170 / 170**
 - construction workflow: **2 active / 168 workflow-archived**
 - retired labels: **11**
 - `supported_productive`: **0**
-- `provisional`: **1** — `PostverbalZoPerfectiveVP`
-- `research_pending`: **59**, including `ResourceUseLaiFunctionRelation`
-- `provisional_reaudit`: **0**
+- `provisional`: **0**
+- `research_pending`: **60**, including both active constructions
 - standard test command: **`npm test`**
 
 Current validation targets:
@@ -21,6 +20,6 @@ Current validation targets:
 - per-construction assertions: **1,156**
 - construction test files: **170**
 
-The v0.5.186 milestone closes the two active current-standard re-audits without manufacturing a productive promotion. PFV is retained as a narrow structural provisional claim; RUL returns to research pending; the unused duplicate `TopicCommentClause` label is retired.
+v0.5.187 replaces named reviewer roles with one role-neutral native-Cantonese panel. Promotion depends on usable adjudicated judgments per critical item: 10 for `provisional` and 30 from a locked clean instrument for `supported_productive`. Parser span behavior is unchanged.
 
 Read [`docs/current/00-START-HERE.md`](docs/current/00-START-HERE.md), then [`docs/current/PROJECT-STATE.md`](docs/current/PROJECT-STATE.md).

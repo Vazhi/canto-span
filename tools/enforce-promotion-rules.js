@@ -21,8 +21,7 @@ for (let index = 0; index < notes.length; index += 1) {
   if (Number(fm.source_count) !== sourceRecordCount) result.blockers.push(`source_count_mismatch:${fm.source_count}!=${sourceRecordCount}`);
   if (Number(fm.verified_source_count) !== verificationCount) result.blockers.push(`verified_source_count_mismatch:${fm.verified_source_count}!=${verificationCount}`);
   if (Number(fm.verified_source_count) > Number(fm.source_count)) result.blockers.push("verified_sources_exceed_cited_sources");
-  if (Number(fm.independent_speaker_count) !== Number(fm.speaker_count)) result.blockers.push(`speaker_count_mismatch:${fm.independent_speaker_count}!=${fm.speaker_count}`);
-  if (fm.promotion_gate_version !== "v2") result.blockers.push(`unsupported_promotion_gate_version:${String(fm.promotion_gate_version)}`);
+  if (fm.promotion_gate_version !== "v3") result.blockers.push(`unsupported_promotion_gate_version:${String(fm.promotion_gate_version)}`);
 
   const testFile = path.join(root, String(fm.standard_test_file || ""));
   if (!fs.existsSync(testFile)) {
@@ -54,7 +53,7 @@ for (const result of results) {
 }
 const promoted = results.filter((result) => result.gate_class !== "quarantined");
 const report = {
-  schema: "canto-span-promotion-gate-v2",
+  schema: "canto-span-promotion-gate-v3",
   construction_notes: notes.length,
   status_counts: statusCounts,
   gate_counts: gateCounts,
@@ -64,7 +63,6 @@ const report = {
   status: failures.length ? "FAIL" : "PASS",
   failures,
 };
-
 const manifest = JSON.parse(fs.readFileSync(path.join(root, "manifest.json"), "utf8"));
 const outDir = path.join(root, "validation", `v${manifest.version}`);
 fs.mkdirSync(outDir, { recursive: true });

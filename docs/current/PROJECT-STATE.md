@@ -4,7 +4,7 @@
 
 | Measure | Current value |
 |---|---:|
-| Runtime | v0.5.186 |
+| Runtime | v0.5.187 |
 | Runtime labels | 170 |
 | Current construction notes | 170 |
 | Active working notes | 2 |
@@ -12,56 +12,58 @@
 | Retired labels | 11 |
 | `supported_productive` | 0 |
 | `provisional_reaudit` | 0 |
-| `provisional` | 1 |
-| `research_pending` | 59 |
+| `provisional` | 0 |
+| `research_pending` | 60 |
 | `unsupported_generalization` | 87 |
 | `lexicalized_only` | 3 |
 | `parser_heuristic` | 20 |
 
-The runtime labels and current construction notes match exactly. Linguistic evidence and status remain outside `main.js`.
+The canonical registry is the union of `grammar/active/*.md` and `grammar/archived/*.md`; it matches the 170 runtime labels exactly.
 
-## v0.5.186 disposition
+## v0.5.187 panel-model migration
 
-### `PostverbalZoPerfectiveVP` — provisional
+The fixed Speaker A / Speaker B model is retired. Every qualified respondent,
+including the user's wife, now uses the same survey instrument and inclusion
+criteria and receives no special status or weight. Promotion depends on usable
+adjudicated judgments per critical item.
 
-The defensible claim is structural: an overt action predicate can be followed by perfective `咗` and an overt licensed NP. This node does not by itself settle full completion, current relevance, or predicate–object naturalness. The semantic selection guard remains separate.
+### `PostverbalZoPerfectiveVP` — research pending
 
-Evidence:
-
-- four checked external sources;
-- one clean independent speaker who judged the relevant positive and negative contrasts;
-- ten additional independent public responses preserved under a one-time legacy-form exception;
-- complete executable boundary inventory for the current narrow scope;
-- line-by-line code/document reconciliation against commit `d08367d`.
-
-The public panel adds zero clean promotion-eligible speakers because explicit native-language confirmation and anonymous-use consent were not collected. PFV therefore remains below `supported_productive`.
+Four checked sources and eleven historical response records remain preserved.
+Those responses came from mixed legacy instruments and provide zero usable
+critical-item judgments under the clean role-neutral panel standard. PFV was
+therefore downgraded from `provisional` to `research_pending`. Its parser logic,
+boundary tests, and code/document reconciliation remain unchanged.
 
 ### `ResourceUseLaiFunctionRelation` — research pending
 
-Five checked sources and the 23-response public pilot show that many ordinary `用嚟` surfaces are acceptable. They do not establish that the strings instantiate the parser's narrow direct-resource relation. Overt-user, ellipsis, modal, copular, coordinated, actual-use, and semantic-resource readings remain confounded. The code/document scope is not reconciled, so no defensible provisional claim is currently closed.
+The committed snapshot contains 23 eligible responses from the same public
+pilot. The user reports 50 live responses, but rows beyond the committed
+snapshot remain uncounted until exported, screened, and adjudicated. The pilot
+is still limited by its binary scale, fixed order, missing fillers, ambiguous
+context-free items, and late global comment field. Its minimum promotion-grade
+critical-item sample remains zero.
 
-### `TopicCommentClause` — retired
+## Panel thresholds
 
-The label had zero runtime constructors, zero fixtures, zero direct standardized tests, and no unique purpose beyond `TopicComment`. It was removed from the current registry and preserved in the retirement archive.
+- pilot: 5–10 usable judgments per item;
+- `provisional`: 10 usable judgments per critical positive and boundary item
+  from a clean role-neutral instrument;
+- `supported_productive`: 30 per critical item from a locked clean instrument,
+  plus every other Definition-of-Done requirement.
 
-## Validation
+## Validation baseline
 
-- regression: **545 cases**
-- NP subsystem: **43 cases**
-- construction assertions: **1,156**
-- construction test files: **170**
-- direct coverage: **2 positive+boundary; 100 positive-only; 68 no-direct-case labels**
-- promotion gate: current v2 enforcement
-- release gate: Git-derived status-change audit
+- regression: **545 cases**;
+- NP subsystem: **43 cases**;
+- construction assertions: **1,156**;
+- construction test files: **170**;
+- no parser span behavior changed in this migration.
 
 ## Next milestone
 
-The next linguistic milestone should be **RUL instrument repair and disposition**, not broad backlog expansion.
-
-Exit criteria:
-
-1. complete the controlled Speaker A review using a revised instrument;
-2. add graded judgments, fillers, randomized order, contexts, and interpretation questions;
-3. reconcile each RUL runtime branch with a plain-language claim;
-4. retain, narrow, split, or retire the label based on that evidence;
-5. do not promote from raw public-response count alone.
+Build and pilot one role-neutral mixed-construction survey wave containing PFV
+and RUL as the two focal constructions plus unrelated fillers. Lock the revised
+instrument only after a 5–10 response-per-item pilot shows no material defect.
+Do not reopen the broad archived backlog until that wave reaches an adjudicated
+disposition.

@@ -73,13 +73,16 @@ check("protocol exception exists", Boolean(exception));
 check("RUL public panel state is counted exception", rulState?.speaker_b?.state === "pilot_panel_counted_exception", rulState?.speaker_b?.state);
 check("RUL state counts 23 panel speakers", Number(rulState?.counted_independent_speakers) === 23, rulState?.counted_independent_speakers);
 check("RUL state promotion-eligible count remains zero", Number(rulState?.promotion_eligible_independent_speakers) === 0, rulState?.promotion_eligible_independent_speakers);
-check("construction note counts 23 responses", Number(note?.frontmatter?.independent_speaker_count) === 23, note?.frontmatter?.independent_speaker_count);
-check("construction note promotion-eligible count remains zero", Number(note?.frontmatter?.promotion_eligible_independent_speaker_count) === 0, note?.frontmatter?.promotion_eligible_independent_speaker_count);
+check("construction note records 23 total panel responses", Number(note?.frontmatter?.panel_response_count_total) === 23, note?.frontmatter?.panel_response_count_total);
+check("construction note records 23 eligible pilot respondents", Number(note?.frontmatter?.eligible_panel_response_count) === 23, note?.frontmatter?.eligible_panel_response_count);
+check("construction note does not convert pilot count into clean item coverage", Number(note?.frontmatter?.minimum_usable_judgments_per_critical_item) === 0, note?.frontmatter?.minimum_usable_judgments_per_critical_item);
+check("construction note preserves pilot instrument limitation", note?.frontmatter?.survey_instrument_status === "pilot_limited", note?.frontmatter?.survey_instrument_status);
+check("construction note uses panel evidence model v2", note?.frontmatter?.panel_evidence_model_version === "v2", note?.frontmatter?.panel_evidence_model_version);
 check("construction returns to research pending", note?.frontmatter?.status === "research_pending", note?.frontmatter?.status);
 check("exception does not authorize automatic promotion", exception?.scope === "count_as_external_panel_evidence_without_waiving_instrument_limitations_or_promotion_gate", exception?.scope);
 
 const report = {
-  schema: "canto-span-native-panel-snapshot-audit-v1",
+  schema: "canto-span-native-panel-snapshot-audit-v2",
   construction: "ResourceUseLaiFunctionRelation",
   response_count: matrix.rows.length,
   item_count: itemHeaders.length,
