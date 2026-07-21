@@ -153,3 +153,11 @@ This file summarizes current release history. The complete historical changelog 
 ## CP025 PFV01 re-audit
 
 `PostverbalZoPerfectiveVP` remains `provisional_reaudit`. Four sources were reverified, but the re-audit found that the old completion/current-relevance exclusion was too strong, the broad `action_verb` and selectional scope is not fully source-backed, the legacy six-hit corpus count has no row-level provenance, only one prior speaker sentence exactly instantiates the target, and the frozen runtime covers only 2 of 6 controlled positive probes. See `docs/research/CP025-P1-PFV01-R1-REAUDIT-CHECKPOINT.md`.
+
+## Infrastructure migration — Git Phase 1
+
+- Initialized Git with an untouched v0.5.184 baseline commit.
+- Replaced active checkpoint-state, packaging-manifest, and recovery-ZIP workflow with Git commits and full working-copy exports containing `.git/`.
+- Archived the superseded files and combined recovery-package tools without deleting their history.
+- Added repository verification and export scripts.
+- No parser, grammar, lexicon, Jyutping, status, or test expectation changed.

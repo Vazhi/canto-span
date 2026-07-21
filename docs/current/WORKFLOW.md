@@ -53,8 +53,8 @@ Abandoned evaluation packets must not be reused as prospective evidence for a la
 
 Do not recruit, schedule, prepare new Speaker B packets, or request second-speaker work until the user explicitly unfreezes it. The two-speaker requirement remains mandatory for `supported_productive`.
 
-## Checkpoint discipline
+## Commit and export discipline
 
-Create a recovery package at a material recovery point: changed parser behavior, verified evidence that changes a claim, a legitimate status change, a retirement, or a binding design decision that directly enables implementation.
+Commit after changed parser behavior, executable tests, verified evidence that changes a claim, a legitimate status change, a retirement, or a binding design decision that directly enables implementation.
 
-Do not create parallel ledgers or repeated packages merely to restate unchanged validation results.
+After the commit, export the full repository including `.git/` with `tools/export-git-working-copy.sh` and store it outside the sandbox. Do not create parallel ledgers or recovery packages merely to restate unchanged validation results.

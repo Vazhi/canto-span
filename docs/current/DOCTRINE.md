@@ -84,16 +84,16 @@ A smaller registry can represent progress when broad or unsupported labels are r
 
 Runtime heuristics are the ground truth for what the parser currently checks. Documentation must describe those checks accurately. When code and documentation disagree, fix one and revalidate.
 
-Status metadata is separate from parse behavior. The frozen runtime still contains legacy statuses and ten retired label names. Current governance overrides that metadata until a later runtime maintenance candidate synchronizes it.
+Status metadata is separate from parse behavior. In v0.5.184, runtime and governance statuses are synchronized and retired labels are absent from the active runtime registry. A future mismatch blocks release rather than being documented away.
 
 ## Work-product discipline
 
-Work is measured by changed parser behavior, verified evidence, a defensible status change, an actual retirement, or a binding design decision that directly enables implementation. Avoid parallel ledgers, repetitive validation summaries, and checkpoint packages that merely restate unchanged information.
+Work is measured by changed parser behavior, executable tests, verified evidence, a defensible status change, an actual retirement, or a binding design decision that directly enables implementation. Avoid parallel ledgers and repetitive validation summaries that merely restate unchanged information.
 
-A new package is warranted at a material recovery point, not after every clerical edit.
+Record meaningful work as a Git commit and export the full repository including `.git/` outside the sandbox. Plugin ZIPs are installation artifacts, not project-state records.
 
 ## Autonomous governance
 
-The assistant may autonomously research, specify, implement, validate, revise, quarantine, retire, and package changes under this doctrine. Separate user approval is not required for each family.
+The assistant may autonomously research, specify, implement, validate, revise, quarantine, retire, commit, and export changes under this doctrine. Separate user approval is not required for each family.
 
 User participation is required when evidence cannot be created internally without compromising independence, especially native-speaker review and user-visible Obsidian rendering. Frozen work must remain visibly deferred rather than silently waived.

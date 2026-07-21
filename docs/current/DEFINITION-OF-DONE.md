@@ -67,4 +67,4 @@ A small grammar with a few genuinely well-evidenced constructions is the target 
 - No earlier `supported_productive` or `provisional` classification is grandfathered.
 - A formerly accepted construction remains `provisional_reaudit` while any current productive checklist item is unchecked; it does not count as supported.
 - A formerly provisional construction returns to `research_pending` until the provisional checklist has been reverified.
-- A documentation or research recovery checkpoint may be packaged before a release is done, but it must be labeled as a checkpoint rather than a completed externally auditable release.
+- Research or documentation progress may be committed before a release is done, but it must not be described as a completed externally auditable release.

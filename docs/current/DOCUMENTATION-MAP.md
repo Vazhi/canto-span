@@ -10,10 +10,11 @@
 6. `EVIDENCE-AND-PROVENANCE.md` — source, corpus, and speaker requirements.
 7. `WORKFLOW.md` — execution sequence.
 8. `VALIDATION-AND-ACCEPTANCE.md` — validation and dispositions.
-9. `PACKAGING-AND-RECOVERY.md` — package boundaries.
-10. Root state pointers.
-11. `docs/research/` and `test-data/` — evidence and executable records.
-12. `archive/` — historical material only.
+9. `GIT-WORKFLOW.md` — repository, export, and restore rules.
+10. `INFRASTRUCTURE-MIGRATION.md` — migration phases and current phase state.
+11. Root `README.md` and `HANDOFF.md` — concise entry and resume pointers.
+12. `docs/research/` and `test-data/` — evidence and executable records.
+13. `archive/` — historical material only.
 
 ## Current machine-readable owners
 

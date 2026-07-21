@@ -85,6 +85,10 @@ The DEMO01 promotion, render, and held-out track is abandoned. Its historical vi
 - active label count: **171**
 - `supported_productive`: **0**
 
+## Infrastructure state
+
+Git history is now the authoritative change record. The baseline commit preserves the complete v0.5.184 tree before migration. Checkpoint-state files, recovery-package manifests, and combined recovery-package tooling are archived. Full working-copy exports must include `.git/` and be stored outside the sandbox.
+
 ## Next action
 
-Extend the NP subsystem to explicit attachment ambiguity and complex/nested NP composition, then connect licensed NP spans to other object-taking parser components where doing so corrects structural assembly without changing construction status.
+Complete infrastructure migration Phase 2: mechanically export one Obsidian construction note per active registry row, verify an exact count of 171, and preserve the full old-schema registry as historical reference. Normal NP work may resume after the mechanical promotion validator is in place.

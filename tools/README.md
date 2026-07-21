@@ -1,24 +1,16 @@
-# Validation and packaging tools
+# Tools
 
-## Current accepted baseline
+## Current entry points
 
-The accepted runtime is **v0.5.182** and there is no active candidate.
+- `verify-repository.sh` — verifies Git object integrity and required current files after restore.
+- `export-git-working-copy.sh` — exports the complete repository including `.git/`.
+- `run-np-subsystem-v0.5.184.js` — runs the independent NP subsystem matrix.
+- `run-regression-suite.js` — runs aggregate regression tests.
+- `run-grammar-legitimacy-audit.js` — checks active runtime/governance status alignment.
+- `audit-source-accounting.js` — checks active source-accounting coverage.
+- `run-claim-provenance-audit.js` — checks claim provenance.
+- `verify-documentation-consistency.js` — checks current Markdown links and JSON validity.
 
-Primary current entry points:
+Version-specific scripts remain as historical reference. To reproduce an old result exactly, check out the commit that originally contained its expected root files; do not treat those scripts or their embedded status wording as current authority.
 
-- `run-current-focused.js` — runs the consolidated accepted-baseline validation set.
-- `audit-v0.5.182-acceptance.js` — verifies the accepted v0.5.182 release.
-- `verify-documentation-consistency.js` — checks JSON validity and non-archive local Markdown links.
-- `audit-package-separation.py` — checks runtime/recovery separation.
-- `build-packages.py` — builds canonical runtime and recovery ZIPs.
-
-General validation tools remain authoritative for regression, semantic acceptance, corpus evaluation, source accounting, claim provenance, native conflict, native naturalness, topology, documentation, and package separation.
-
-Version-specific v0.5.180, v0.5.181, and CP021/CP022 scripts are retained to reproduce their recorded packets and releases. Their embedded status wording and counts are historical test expectations, not current project state.
-## Active CP023 research tools
-
-- `run-research-probe-packet.js` — records visible construction behavior without treating it as an acceptance gate.
-- `run-lexicon-baseline-probes.js` — records reproducible token, Jyutping, construction, and root-coverage baselines for source vocabulary.
-- `audit-cp023-p1-prog01-r2.py` — reproduces the R2 blueprint checkpoint.
-- `audit-cp023-p1-prog01-r3.py` — verifies the R3 compatibility matrix, nominal designs, supersession record, state pointers, and runtime identity.
-
+The former combined runtime/recovery package builder and package-separation audit are archived under `archive/migration-phase1-retired-workflow/tools/`. Git exports now preserve project state. A minimal runtime ZIP may still be built separately for Obsidian installation.

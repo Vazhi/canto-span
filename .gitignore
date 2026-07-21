@@ -1,0 +1,15 @@
+# Local exports and generated archives
+*.zip
+exports/
+
+# Temporary files
+*.tmp
+*.bak
+*.orig
+*.pyc
+__pycache__/
+
+# Dependency and editor noise
+node_modules/
+.DS_Store
+Thumbs.db
