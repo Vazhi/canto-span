@@ -1,3 +1,12 @@
+## v0.5.188 — RUL survey-readiness checkpoint
+
+- Reopened the checked RUL sources and preserved the competing instrumental-SVC, purposive-linker, and intended-function analyses.
+- Mapped 30 implementation-only probes across direct resources, semantic mismatches, person/ellipsis readings, modal and copular frames, aspect, separate users, coordination, questions, and adverb attachment.
+- Defined twelve source- and runtime-linked contrast requirements for the next mixed RUL/PFV pilot.
+- Marked every generated probe as zero-weight implementation mapping rather than linguistic evidence.
+- Created no survey instrument; the next blocking input is the user prompt that will guide `pilot-v1` creation.
+- Changed no parser span behavior, runtime label, linguistic status, fixture expectation, or standardized construction assertion.
+
 ## v0.5.187 — role-neutral native-panel evidence
 
 - Retired the fixed Speaker A / Speaker B evidence model.

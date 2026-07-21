@@ -1,0 +1,69 @@
+{
+  "schema": "canto-span-source-accounting-audit-v6",
+  "checkpoint": "v0.5.188-rul-survey-readiness",
+  "runtime_registry_labels": 170,
+  "construction_notes": 170,
+  "retired_labels": 11,
+  "total": 13,
+  "passed": 13,
+  "failed": 0,
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "runtime registry has 170 labels",
+      "pass": true,
+      "detail": "170"
+    },
+    {
+      "name": "construction notes have 170 labels",
+      "pass": true,
+      "detail": "170"
+    },
+    {
+      "name": "runtime exactly equals construction notes",
+      "pass": true
+    },
+    {
+      "name": "eleven labels are archived as retired",
+      "pass": true,
+      "detail": "11"
+    },
+    {
+      "name": "retired labels are absent from runtime",
+      "pass": true
+    },
+    {
+      "name": "all notes are marked runtime active",
+      "pass": true
+    },
+    {
+      "name": "all source counts match source IDs",
+      "pass": true
+    },
+    {
+      "name": "every mapped source has a note section",
+      "pass": true
+    },
+    {
+      "name": "supported_productive remains zero",
+      "pass": true
+    },
+    {
+      "name": "no rows remain provisional_reaudit",
+      "pass": true
+    },
+    {
+      "name": "no construction is provisional",
+      "pass": true
+    },
+    {
+      "name": "no note claims productive eligibility",
+      "pass": true
+    },
+    {
+      "name": "frozen wide registry exists",
+      "pass": true
+    }
+  ],
+  "failures": []
+}

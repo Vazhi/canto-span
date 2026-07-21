@@ -29,7 +29,10 @@
       "survey_instrument_quality_resolved": false,
       "quality_screen_status": "partial",
       "panel_adjudication_status": "complete_historical_only",
-      "recruitment_channels": ["private_historical", "public_social_media"],
+      "recruitment_channels": [
+        "private_historical",
+        "public_social_media"
+      ],
       "respondent_role_neutral": false,
       "historical_records": [
         "docs/research/CP025-P1-PFV01-SPEAKER-A-RESULT-R2.md",
@@ -37,7 +40,7 @@
         "review-packets/native-speaker/active-v1/completed/PFV01-SPEAKER-B-PUBLIC-R1/PFV01-PUBLIC-PANEL-SNAPSHOT-R1.json"
       ],
       "current_disposition": "research_pending",
-      "next_action": "include_PFV_in_a_clean_role_neutral_multi_construction_survey_wave"
+      "next_action": "serve_as_secondary_focal_construction_after_user_prompt_for_mixed_pilot_v1"
     },
     {
       "construction": "ResourceUseLaiFunctionRelation",
@@ -59,14 +62,25 @@
       "survey_instrument_quality_resolved": false,
       "quality_screen_status": "complete",
       "panel_adjudication_status": "complete_for_23_response_snapshot",
-      "recruitment_channels": ["public_social_media"],
+      "recruitment_channels": [
+        "public_social_media"
+      ],
       "respondent_role_neutral": true,
       "historical_records": [
         "docs/research/CP026-P1-RUL01-PUBLIC-PANEL-R1-RESULT.md",
         "review-packets/native-speaker/active-v1/completed/RUL01-SPEAKER-B-PUBLIC-R1/RUL01-PUBLIC-PANEL-SNAPSHOT-R1.json"
       ],
       "current_disposition": "research_pending",
-      "next_action": "close_or_snapshot_the_pilot_then_build_a_clean_interpretation_sensitive_multi_construction_wave"
+      "next_action": "await_user_prompt_then_create_mixed_RUL_PFV_pilot_v1",
+      "survey_readiness_record": "docs/research/CP032-P1-RUL01-SURVEY-READINESS-R1.md",
+      "contrast_requirements_file": "docs/research/CP032-P1-RUL01-CONTRAST-REQUIREMENTS-R1.tsv"
     }
-  ]
+  ],
+  "survey_creation_control": {
+    "user_prompt_required_before_instrument_creation": true,
+    "user_prompt_received": false,
+    "survey_instrument_created_in_current_checkpoint": false,
+    "readiness_record": "docs/research/CP032-P1-RUL01-SURVEY-READINESS-R1.md",
+    "contrast_requirements_file": "docs/research/CP032-P1-RUL01-CONTRAST-REQUIREMENTS-R1.tsv"
+  }
 }

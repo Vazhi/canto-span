@@ -1,6 +1,6 @@
 {
   "schema": "canto-span-current-focused-result-v9",
-  "checkpoint": "v0.5.187-panel-model-migration",
+  "checkpoint": "v0.5.188-rul-survey-readiness",
   "parser_behavior_changed": false,
   "registry_owner": "grammar/active/*.md + grammar/archived/*.md",
   "status_counts": {

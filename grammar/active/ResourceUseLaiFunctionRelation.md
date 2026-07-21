@@ -3,7 +3,7 @@ title: "ResourceUseLaiFunctionRelation"
 type: "canto-span-construction"
 construction: "ResourceUseLaiFunctionRelation"
 status: "research_pending"
-confidence: "pilot_support_analysis_unresolved"
+confidence: "source_runtime_map_complete_survey_prompt_pending"
 claim_layer: "language"
 lane: "LANE-01"
 last_reviewed: "2026-07-21"
@@ -38,9 +38,9 @@ corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
 code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
+code_document_review_date: "2026-07-21"
+code_document_review_commit: "58e70f13bb15edf8ce6602d9b9275e928f7f3455"
+code_document_code_locations: ["main.js:7963-8252"]
 current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
@@ -56,7 +56,7 @@ runtime_active: true
 workflow_state: "active"
 workflow_priority: 1
 workflow_since: "2026-07-21"
-workflow_reason: "anchor_construction_for_role_neutral_interpretation_sensitive_panel_wave"
+workflow_reason: "survey_ready_anchor_awaiting_user_prompt_for_pilot_v1_creation"
 runtime_code_references: 5
 accepted_fixtures: 29
 tags: ["canto-span/grammar", "canto-span/status/research_pending", "canto-span/lane/lane-01", "canto-span/workflow/active"]
@@ -70,11 +70,13 @@ Checked sources and the 23-response predominantly Hong Kong pilot show that seve
 
 This is a research target, not a current productive Cantonese grammar claim. The runtime label is not assumed to be standard linguistic terminology.
 
+A checked published source classifies the exact surface `呢個用嚟切嘢` as an instrumental serial-verb construction, while other checked sources analyze broader `V1 + 嚟 + V2` material as purposive and conventionalized `用嚟/用來`. The current label therefore remains one candidate analysis rather than an established unique parse.
+
 ## Current status
 
 - Linguistic status: `research_pending`
-- Linguistic confidence: `pilot_support_analysis_unresolved`
-- Current action: `design_role_neutral_interpretation_sensitive_panel_wave_and_reconcile_resource_scope`
+- Linguistic confidence: `source_runtime_map_complete_survey_prompt_pending`
+- Current action: `await_user_prompt_then_create_role_neutral_interpretation_sensitive_pilot_v1`
 - Productive acceptance eligible: **no**
 - Current-standard re-audit disposition: **complete; downgraded rather than promoted**
 - Last linguistic review: 2026-07-21
@@ -161,7 +163,16 @@ This is a research target, not a current productive Cantonese grammar claim. The
 - Resource semantics, coordinated predicates, modal and copular frames, actual-use `用咗嚟`, negation, A-not-A, and contextual ellipsis require separate analyses.
 - The runtime and public claim are not reconciled closely enough for `provisional`.
 - A large response count does not repair the pilot's design defects or create usable promotion-grade item coverage.
-- Next evidence action: snapshot and preserve the expanded pilot, then build a clean role-neutral multi-construction wave with graded judgments, interpretation choices, contexts, unrelated fillers, randomized or counterbalanced order, and per-item correction fields.
+- Survey-readiness research is complete in `docs/research/CP032-P1-RUL01-SURVEY-READINESS-R1.md` and `CP032-P1-RUL01-CONTRAST-REQUIREMENTS-R1.tsv`. The next step is blocked on the user prompt that will guide creation of a mixed RUL/PFV `pilot-v1`; no instrument has been created in this checkpoint.
+
+## Survey-readiness checkpoint
+
+- Research record: `docs/research/CP032-P1-RUL01-SURVEY-READINESS-R1.md`.
+- Contrast requirements: `docs/research/CP032-P1-RUL01-CONTRAST-REQUIREMENTS-R1.tsv`.
+- Implementation-only probe set: `test-data/rul-survey-readiness-probes-v1.json`.
+- The 30 probes freeze current parser profiles and have zero linguistic evidence weight.
+- No survey instrument, item list, or locked manifest has been created.
+- Blocking next input: the user prompt that will guide creation of the mixed RUL/PFV pilot.
 
 ## Related constructions
 

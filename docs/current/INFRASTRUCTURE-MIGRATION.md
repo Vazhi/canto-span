@@ -99,6 +99,14 @@ Reduce ceremony, drift risk, and file bloat without restarting the parser or dis
 - documented the next-instrument requirements: graded scale, per-item correction/context fields, randomized item blocks, fillers, contextualized ellipsis, interpretation checks, and semantic-plausibility separation;
 - changed no parser behavior, runtime label, construction status, source count, or executable construction expectation.
 
+## v0.5.188 RUL survey-readiness checkpoint
+
+- froze a 30-case implementation-only RUL runtime map with zero linguistic evidence weight;
+- recorded twelve contrast domains required before the next panel wave;
+- preserved the competing instrumental-SVC, purposive-linker, and intended-function analyses;
+- created no survey instrument and recorded the user prompt as the next required input;
+- changed no parser behavior or linguistic status.
+
 ## v0.5.187 panel-model migration
 
 The fixed two-role reviewer workflow is historical. Active evidence governance

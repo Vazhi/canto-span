@@ -40,6 +40,10 @@ check("provisional threshold is 10 per critical item", policy.evidence_threshold
 check("supported threshold is 30 per critical item", policy.evidence_thresholds.supported_productive_minimum_usable_judgments_per_critical_item === 30);
 check("public waves batch two to three focal constructions", policy.batching.focal_constructions_per_public_wave_min === 2 && policy.batching.focal_constructions_per_public_wave_max === 3);
 check("historical v1 workflow remains traceable", fs.existsSync(path.join(root, state.supersedes)));
+check("survey creation waits for user guidance prompt", state.survey_creation_control && state.survey_creation_control.user_prompt_required_before_instrument_creation === true && state.survey_creation_control.user_prompt_received === false);
+check("current checkpoint created no survey instrument", state.survey_creation_control && state.survey_creation_control.survey_instrument_created_in_current_checkpoint === false);
+check("RUL survey-readiness record exists", state.survey_creation_control && fs.existsSync(path.join(root, state.survey_creation_control.readiness_record)));
+check("RUL contrast requirements exist", state.survey_creation_control && fs.existsSync(path.join(root, state.survey_creation_control.contrast_requirements_file)));
 
 const stateConstructions = new Set(state.constructions.map((entry) => entry.construction));
 const activeConstructions = new Set(notes.map((note) => note.frontmatter.construction));

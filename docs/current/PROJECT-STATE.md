@@ -4,7 +4,7 @@
 
 | Measure | Current value |
 |---|---:|
-| Runtime | v0.5.187 |
+| Runtime | v0.5.188 |
 | Runtime labels | 170 |
 | Current construction notes | 170 |
 | Active working notes | 2 |
@@ -19,6 +19,22 @@
 | `parser_heuristic` | 20 |
 
 The canonical registry is the union of `grammar/active/*.md` and `grammar/archived/*.md`; it matches the 170 runtime labels exactly.
+
+## v0.5.188 RUL survey-readiness checkpoint
+
+The checked source record now explicitly preserves the competing analyses of the
+RUL surface: Wong 2023 treats `呢個用嚟切嘢` as an instrumental serial-verb
+construction, while Cheung 2018 and Chor 2018 place `嚟` in a broader purposive
+system. The current runtime label is therefore not treated as a uniquely
+established linguistic analysis.
+
+The v0.5.187 runtime was mapped across 30 implementation-only probes and twelve
+contrast domains. The probes have zero linguistic evidence weight; they expose
+semantic overbreadth, person/ellipsis ambiguity, modal/copular and actual-use
+boundaries, coordination undercoverage, and adverb-attachment inconsistency.
+
+No survey instrument was created. The next blocking input is the user prompt
+that will guide creation of a mixed RUL/PFV `pilot-v1`.
 
 ## v0.5.187 panel-model migration
 
@@ -62,8 +78,8 @@ critical-item sample remains zero.
 
 ## Next milestone
 
-Build and pilot one role-neutral mixed-construction survey wave containing PFV
-and RUL as the two focal constructions plus unrelated fillers. Lock the revised
-instrument only after a 5–10 response-per-item pilot shows no material defect.
-Do not reopen the broad archived backlog until that wave reaches an adjudicated
-disposition.
+Wait for the user prompt that will guide survey creation, then build a role-neutral
+mixed RUL/PFV `pilot-v1` from the frozen CP032 contrast requirements. Release it
+only as a pilot, collect 5–10 usable judgments per item, and audit the instrument
+before locking any larger collection. Do not reopen the broad archived backlog
+until the wave reaches an adjudicated disposition.

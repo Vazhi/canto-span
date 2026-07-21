@@ -1,0 +1,30 @@
+{
+  "schema": "canto-span-release-handoff-audit-v2",
+  "release_id": "v0.5.188-rul-survey-readiness",
+  "handoff_sequence": 12,
+  "status_changes": [],
+  "changed_construction_audit": [],
+  "supported_productive_pending_reaudit": [],
+  "implementation_validation": "PASS required before handoff: 545 regression cases, 43 NP cases, 1,156 standardized construction assertions, 170 note/test alignment, the 30-case RUL survey-readiness runtime map, panel workflow, promotion and release gates, documentation links, and repository verification.",
+  "linguistic_confidence": "No construction status changed. PFV and RUL remain research_pending. RUL has five checked sources and a completed source/runtime contrast map, but zero clean promotion-grade item coverage and no new survey instrument.",
+  "code_analysis_overclaim_review": true,
+  "overclaim_review_scope": "Re-read the RUL runtime at main.js:7963-8252 against Wong 2023, Cheung 2018, Chor 2018, the existing public claim, and 30 implementation-only probes. The release describes the node as a candidate analysis and does not treat parser output, pilot volume, or generated probes as linguistic proof.",
+  "release_documents": [
+    "docs/research/CP032-P1-RUL01-SURVEY-READINESS-R1.md",
+    "docs/research/CP032-P1-RUL01-CONTRAST-REQUIREMENTS-R1.tsv",
+    "test-data/rul-survey-readiness-probes-v1.json",
+    "grammar/active/ResourceUseLaiFunctionRelation.md",
+    "review-packets/native-panel/active-v2/panel-review-state.json",
+    "docs/current/PROJECT-STATE.md",
+    "HANDOFF.md",
+    "CHANGELOG.md"
+  ],
+  "external_audit_ready": true,
+  "unresolved_release_questions": [
+    "The RUL label still competes with an instrumental-SVC analysis and broader purposive-lai analyses.",
+    "No clean role-neutral panel instrument has been created or piloted.",
+    "The next blocking input is the user's prompt to guide survey creation.",
+    "The reported 50 live RUL responses remain outside the canonical 23-response snapshot."
+  ],
+  "base_tree": "c2a10ce9baa095a236e677998e197cde1844ab79"
+}

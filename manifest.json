@@ -1,9 +1,9 @@
 {
   "id": "canto-span",
   "name": "Canto Span",
-  "version": "0.5.187",
+  "version": "0.5.188",
   "minAppVersion": "1.5.0",
-  "description": "v0.5.187 role-neutral native-panel evidence migration: item-level thresholds replace named reviewer roles; PFV returns to research_pending; parser behavior is unchanged.",
+  "description": "v0.5.188 RUL survey-readiness checkpoint: competing analyses, runtime profiles, and contrast requirements are frozen; no survey instrument or parser behavior change.",
   "author": "Chris Crawford / OpenAI ChatGPT",
   "authorUrl": "",
   "isDesktopOnly": false

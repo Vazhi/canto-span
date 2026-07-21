@@ -9,7 +9,8 @@ const { Plugin, PluginSettingTab, Setting, Notice } = require("obsidian");
  * never overwrite child learner roles.
  */
 
-const CANTO_SPAN_RUNTIME_VERSION = "0.5.187";
+const CANTO_SPAN_RUNTIME_VERSION = "0.5.188";
+// v0.5.188: freezes the RUL source/runtime contrast map and survey-readiness requirements without creating a survey instrument or changing parser span behavior. The next blocking input is the user prompt that will guide pilot-v1 creation.
 // v0.5.187: replaces the fixed two-reviewer evidence model with a role-neutral panel gate based on usable adjudicated judgments per critical item. PFV returns to research_pending because its mixed legacy instruments do not satisfy the clean panel threshold. Parser span behavior is unchanged.
 // v0.5.186: closes the bounded PFV/RUL re-audit milestone. TopicCommentClause is retired as an unused duplicate; PFV structural metadata is clarified without changing span recognition. Linguistic status remains owned by grammar notes and external validation tools.
 // v0.5.185: removes authoring-time evidence, speaker, corpus, confidence, and linguistic-status metadata from the shipped runtime. main.js now retains parser logic and the active construction-label registry only; governance is owned by grammar/active/*.md and grammar/archived/*.md and external validation tools. Structural parser behavior is unchanged from v0.5.184.
@@ -59,7 +60,7 @@ const DEFAULT_SETTINGS = {
 // Runtime construction governance is deliberately minimal. Linguistic status,
 // confidence, sources, speaker records, corpus counts, and promotion eligibility
 // live in grammar/active/*.md and grammar/archived/*.md and are validated outside the shipped plugin.
-const RUNTIME_CONSTRUCTION_REGISTRY_VERSION = "0.5.187";
+const RUNTIME_CONSTRUCTION_REGISTRY_VERSION = "0.5.188";
 
 function runtimeConstructionStateFor(type) {
   const construction = String(type || "");

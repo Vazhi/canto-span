@@ -1,0 +1,69 @@
+{
+  "schema": "canto-span-release-handoff-gate-tests-v2",
+  "total": 8,
+  "passed": 8,
+  "failed": 0,
+  "status": "PASS",
+  "results": [
+    {
+      "name": "clean no-status-change handoff passes",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "name": "unrecorded status change fails",
+      "pass": true,
+      "failures": [
+        "status_changes_mismatch:[]!=[{\"construction\":\"Example\",\"old_status\":\"research_pending\",\"new_status\":\"provisional\"}]",
+        "missing_changed_construction_audit:Example",
+        "changed_construction_audit_has_extra_or_missing_records"
+      ]
+    },
+    {
+      "name": "changed construction needs audit slice",
+      "pass": true,
+      "failures": [
+        "missing_changed_construction_audit:Example",
+        "changed_construction_audit_has_extra_or_missing_records"
+      ]
+    },
+    {
+      "name": "audit slice needs exact code location",
+      "pass": true,
+      "failures": [
+        "missing_code_locations:Example"
+      ]
+    },
+    {
+      "name": "audit slice needs panel metrics",
+      "pass": true,
+      "failures": [
+        "missing_panel_field:Example:panel_response_count_total",
+        "missing_panel_field:Example:eligible_panel_response_count",
+        "missing_panel_field:Example:minimum_usable_judgments_per_critical_item"
+      ]
+    },
+    {
+      "name": "unreaudited supported construction fails",
+      "pass": true,
+      "failures": [
+        "supported_pending_reaudit_mismatch:[]!=[\"Example\"]",
+        "supported_productive_not_current_standard:Example"
+      ]
+    },
+    {
+      "name": "validation and confidence must be separate",
+      "pass": true,
+      "failures": [
+        "implementation_and_linguistic_reporting_not_separate"
+      ]
+    },
+    {
+      "name": "retirement review cannot exceed twenty handoffs",
+      "pass": true,
+      "failures": [
+        "retirement_review_overdue:21>20"
+      ]
+    }
+  ]
+}
