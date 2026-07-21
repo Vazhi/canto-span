@@ -32,3 +32,10 @@ The former flat-layout exporter is preserved under `archive/migration-phase6-ret
 ## Native panel snapshot
 
 `verify-native-panel-snapshot.js` recomputes the committed RUL01 public-panel aggregates from the anonymized 23 × 21 matrix, verifies its SHA-256, and checks that total panel evidence remains separate from the promotion-eligible speaker count.
+
+## Definition-of-Done gates
+
+- `test-promotion-gate.js` tests promotion gate v2.
+- `enforce-promotion-rules.js` validates every construction note against the current evidence schema.
+- `test-release-handoff.js` tests release-gate failure behavior.
+- `verify-release-handoff.js` derives status changes from Git and validates the release audit slice and retirement cadence.

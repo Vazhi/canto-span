@@ -1,0 +1,12 @@
+{
+  "schema": "canto-span-release-handoff-gate-v1",
+  "release_id": "v0.5.185-phase9-definition-of-done-enforcement",
+  "base_tree": "4ea31798f0d98edc9df1278c262b53d0a9df0a4a",
+  "actual_status_changes": [],
+  "supported_productive_count": 0,
+  "supported_productive_pending_reaudit": [],
+  "retirement_review_gap": 6,
+  "failed": 0,
+  "status": "PASS",
+  "failures": []
+}

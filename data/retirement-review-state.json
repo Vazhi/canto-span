@@ -1,0 +1,12 @@
+{
+  "schema": "canto-span-retirement-review-cadence-v1",
+  "last_full_review_sequence": 3,
+  "last_full_review_id": "v0.5.183-phase3-dormant-label-retirement",
+  "recommended_interval_min": 10,
+  "hard_interval_max": 20,
+  "current_handoff_sequence": 9,
+  "next_review_window_opens_at_sequence": 13,
+  "review_required_by_sequence": 23,
+  "state": "not_yet_due",
+  "notes": "Phase 3 performed the last full dormant-label retirement review. Workflow archiving in Phase 6 is not retirement."
+}

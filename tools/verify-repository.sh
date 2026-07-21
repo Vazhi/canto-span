@@ -43,8 +43,15 @@ required=(
   tools/verify-active-working-set.js
   tools/enforce-promotion-rules.js
   tools/test-promotion-gate.js
+  docs/research/CP027-DEFINITION-OF-DONE-ENFORCEMENT-R1.md
+  data/retirement-review-state.json
+  docs/releases/v0.5.185-phase9-audit.json
+  tools/verify-release-handoff.js
+  test-data/release-handoff-gate-v1.json
+  tools/test-release-handoff.js
+  tools/release-handoff-lib.js
   tools/promotion-gate-lib.js
-  test-data/promotion-gate-v1.json
+  test-data/promotion-gate-v2.json
   package.json
   tests/README.md
   tests/run-all.js
@@ -72,6 +79,8 @@ node tools/verify-active-review-workflow.js >/dev/null
 node tools/verify-native-panel-snapshot.js >/dev/null
 node tools/test-promotion-gate.js >/dev/null
 node tools/enforce-promotion-rules.js >/dev/null
+node tools/test-release-handoff.js >/dev/null
+node tools/verify-release-handoff.js >/dev/null
 
 printf 'repository=%s\nbranch=%s\ncommit=%s\ntracked_files=%s\nconstruction_notes=%s\nstatus_lines=%s\n' \
   "$repo" \

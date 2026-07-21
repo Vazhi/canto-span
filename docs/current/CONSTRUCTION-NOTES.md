@@ -35,11 +35,11 @@ Each construction note records:
 - linguistic status and confidence;
 - claim layer and research lane;
 - last recorded review date, or `unknown`;
-- independent speaker count;
+- counted, promotion-eligible, and same-contrast independent speaker counts;
 - mapped and verified source counts plus source IDs;
-- drafted and executable boundary state;
-- corpus-use and corpus-review state;
-- code-document reconciliation state;
+- drafted, executable, passing, and complete-inventory boundary state;
+- corpus-use state plus candidate and per-classification hit counts;
+- current code-document reconciliation date, commit, and exact code locations;
 - separation of implementation and linguistic validation;
 - independent evidence beyond internal tests;
 - promotion-gate schema version;
@@ -75,6 +75,8 @@ node tools/verify-active-working-set.js
 node tools/verify-active-review-workflow.js
 node tools/test-promotion-gate.js
 node tools/enforce-promotion-rules.js
+node tools/test-release-handoff.js
+node tools/verify-release-handoff.js
 ```
 
 The commands must confirm:

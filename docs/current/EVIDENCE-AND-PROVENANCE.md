@@ -23,11 +23,11 @@ Corpus search counts are retrieval metadata only. Every example used as evidence
 - structurally or contextually ambiguous;
 - unusable because of missing context, transcription problems, or uncertain provenance.
 
-Only clean reviewed examples count as positive support.
+Only clean reviewed examples count as positive support. The construction note must record candidate, genuine, false-positive, ambiguous, and unusable counts; when corpus evidence is used for productive support, those classifications must account for every candidate hit.
 
 ## Native-speaker evidence
 
-Record variety, independence, task, exact sentence, response, correction, and uncertainty. Productive acceptance requires two independent speakers reviewing the same relevant positive and negative contrasts.
+Record variety, independence, task, exact sentence, response, correction, and uncertainty. Productive acceptance requires two promotion-eligible independent speakers reviewing the same relevant positive and negative contrasts. Total panel size is recorded separately from `same_contrast_independent_speaker_count`.
 
 Second-speaker form preparation and public collection are authorized for the two active construction re-audits. The archived backlog remains frozen. A public submission is not countable until native-language, independence, completeness, consent, duplicate, and comment review are recorded in a committed result.
 

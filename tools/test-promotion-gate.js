@@ -6,19 +6,13 @@ const path = require("path");
 const { evaluatePromotion } = require("./promotion-gate-lib");
 
 const root = path.resolve(__dirname, "..");
-const cases = JSON.parse(fs.readFileSync(path.join(root, "test-data", "promotion-gate-v1.json"), "utf8"));
+const cases = JSON.parse(fs.readFileSync(path.join(root, "test-data", "promotion-gate-v2.json"), "utf8"));
 const base = cases[0].fields;
 const results = [];
 let failed = 0;
 
 for (const item of cases) {
-  const fm = {
-    construction: item.name,
-    status: item.status,
-    ...base,
-    ...(item.fields || {}),
-    ...(item.overrides || {}),
-  };
+  const fm = { construction: item.name, status: item.status, ...base, ...(item.fields || {}), ...(item.overrides || {}) };
   const note = { frontmatter: fm, body: "## Plain-language claim\n\nA concrete checked claim.\n" };
   const result = evaluatePromotion(note);
   const checks = [result.eligible === item.expected_eligible];
@@ -31,7 +25,7 @@ for (const item of cases) {
 }
 
 const report = {
-  schema: "canto-span-promotion-gate-tests-v1",
+  schema: "canto-span-promotion-gate-tests-v2",
   total: results.length,
   passed: results.filter((result) => result.pass).length,
   failed,

@@ -1,159 +1,340 @@
 {
-  "schema": "canto-span-promotion-gate-tests-v1",
-  "total": 10,
-  "passed": 10,
+  "schema": "canto-span-promotion-gate-tests-v2",
+  "total": 15,
+  "passed": 15,
   "failed": 0,
   "status": "PASS",
   "results": [
     {
-      "name": "supported productive passes all requirements",
+      "name": "supported productive passes exact definition",
       "pass": true,
       "result": {
-        "construction": "supported productive passes all requirements",
+        "construction": "supported productive passes exact definition",
         "status": "supported_productive",
         "gate_class": "supported_productive",
         "eligible": true,
         "blockers": [],
         "requirements": {
-          "verified_source": true,
           "plain_language_claim": true,
-          "implementation_validation_separate": true,
-          "two_independent_speakers": true,
+          "independent_evidence_beyond_internal_tests": true,
+          "at_least_one_source": true,
+          "every_cited_source_verified": true,
+          "two_speakers_same_positive_negative_contrasts": true,
           "negative_cases_drafted": true,
+          "negative_boundary_inventory_complete": true,
           "negative_tests_executable": true,
           "negative_tests_passing": true,
-          "corpus_hits_reviewed_if_used": true,
+          "corpus_hits_individually_classified_if_used": true,
           "code_document_reconciled": true,
-          "independent_evidence_beyond_internal_tests": true
+          "current_code_review_metadata": true,
+          "implementation_validation_separate": true,
+          "current_standard_reaudit_complete": true
         }
       }
     },
     {
-      "name": "supported productive fails with one speaker",
+      "name": "supported fails when one cited source unchecked",
       "pass": true,
       "result": {
-        "construction": "supported productive fails with one speaker",
+        "construction": "supported fails when one cited source unchecked",
         "status": "supported_productive",
         "gate_class": "supported_productive",
         "eligible": false,
         "blockers": [
-          "requirement_failed:two_independent_speakers"
+          "requirement_failed:every_cited_source_verified"
         ],
         "requirements": {
-          "verified_source": true,
           "plain_language_claim": true,
-          "implementation_validation_separate": true,
-          "two_independent_speakers": false,
+          "independent_evidence_beyond_internal_tests": true,
+          "at_least_one_source": true,
+          "every_cited_source_verified": false,
+          "two_speakers_same_positive_negative_contrasts": true,
           "negative_cases_drafted": true,
+          "negative_boundary_inventory_complete": true,
           "negative_tests_executable": true,
           "negative_tests_passing": true,
-          "corpus_hits_reviewed_if_used": true,
+          "corpus_hits_individually_classified_if_used": true,
           "code_document_reconciled": true,
-          "independent_evidence_beyond_internal_tests": true
+          "current_code_review_metadata": true,
+          "implementation_validation_separate": true,
+          "current_standard_reaudit_complete": true
         }
       }
     },
     {
-      "name": "supported productive fails unreviewed corpus evidence",
+      "name": "supported fails when speakers reviewed different contrasts",
       "pass": true,
       "result": {
-        "construction": "supported productive fails unreviewed corpus evidence",
+        "construction": "supported fails when speakers reviewed different contrasts",
         "status": "supported_productive",
         "gate_class": "supported_productive",
         "eligible": false,
         "blockers": [
-          "requirement_failed:corpus_hits_reviewed_if_used"
+          "requirement_failed:two_speakers_same_positive_negative_contrasts"
         ],
         "requirements": {
-          "verified_source": true,
           "plain_language_claim": true,
-          "implementation_validation_separate": true,
-          "two_independent_speakers": true,
+          "independent_evidence_beyond_internal_tests": true,
+          "at_least_one_source": true,
+          "every_cited_source_verified": true,
+          "two_speakers_same_positive_negative_contrasts": false,
           "negative_cases_drafted": true,
+          "negative_boundary_inventory_complete": true,
           "negative_tests_executable": true,
           "negative_tests_passing": true,
-          "corpus_hits_reviewed_if_used": false,
+          "corpus_hits_individually_classified_if_used": true,
           "code_document_reconciled": true,
-          "independent_evidence_beyond_internal_tests": true
+          "current_code_review_metadata": true,
+          "implementation_validation_separate": true,
+          "current_standard_reaudit_complete": true
         }
       }
     },
     {
-      "name": "supported productive fails without executable boundaries",
+      "name": "supported fails with unclassified corpus hits",
       "pass": true,
       "result": {
-        "construction": "supported productive fails without executable boundaries",
+        "construction": "supported fails with unclassified corpus hits",
         "status": "supported_productive",
         "gate_class": "supported_productive",
         "eligible": false,
         "blockers": [
-          "requirement_failed:negative_tests_executable",
-          "requirement_failed:negative_tests_passing"
+          "requirement_failed:corpus_hits_individually_classified_if_used"
         ],
         "requirements": {
-          "verified_source": true,
           "plain_language_claim": true,
-          "implementation_validation_separate": true,
-          "two_independent_speakers": true,
+          "independent_evidence_beyond_internal_tests": true,
+          "at_least_one_source": true,
+          "every_cited_source_verified": true,
+          "two_speakers_same_positive_negative_contrasts": true,
           "negative_cases_drafted": true,
-          "negative_tests_executable": false,
-          "negative_tests_passing": false,
-          "corpus_hits_reviewed_if_used": true,
+          "negative_boundary_inventory_complete": true,
+          "negative_tests_executable": true,
+          "negative_tests_passing": true,
+          "corpus_hits_individually_classified_if_used": false,
           "code_document_reconciled": true,
-          "independent_evidence_beyond_internal_tests": true
+          "current_code_review_metadata": true,
+          "implementation_validation_separate": true,
+          "current_standard_reaudit_complete": true
         }
       }
     },
     {
-      "name": "provisional passes narrower requirements",
+      "name": "supported passes classified corpus hits",
       "pass": true,
       "result": {
-        "construction": "provisional passes narrower requirements",
+        "construction": "supported passes classified corpus hits",
+        "status": "supported_productive",
+        "gate_class": "supported_productive",
+        "eligible": true,
+        "blockers": [],
+        "requirements": {
+          "plain_language_claim": true,
+          "independent_evidence_beyond_internal_tests": true,
+          "at_least_one_source": true,
+          "every_cited_source_verified": true,
+          "two_speakers_same_positive_negative_contrasts": true,
+          "negative_cases_drafted": true,
+          "negative_boundary_inventory_complete": true,
+          "negative_tests_executable": true,
+          "negative_tests_passing": true,
+          "corpus_hits_individually_classified_if_used": true,
+          "code_document_reconciled": true,
+          "current_code_review_metadata": true,
+          "implementation_validation_separate": true,
+          "current_standard_reaudit_complete": true
+        }
+      }
+    },
+    {
+      "name": "supported fails incomplete boundary inventory",
+      "pass": true,
+      "result": {
+        "construction": "supported fails incomplete boundary inventory",
+        "status": "supported_productive",
+        "gate_class": "supported_productive",
+        "eligible": false,
+        "blockers": [
+          "requirement_failed:negative_boundary_inventory_complete"
+        ],
+        "requirements": {
+          "plain_language_claim": true,
+          "independent_evidence_beyond_internal_tests": true,
+          "at_least_one_source": true,
+          "every_cited_source_verified": true,
+          "two_speakers_same_positive_negative_contrasts": true,
+          "negative_cases_drafted": true,
+          "negative_boundary_inventory_complete": false,
+          "negative_tests_executable": true,
+          "negative_tests_passing": true,
+          "corpus_hits_individually_classified_if_used": true,
+          "code_document_reconciled": true,
+          "current_code_review_metadata": true,
+          "implementation_validation_separate": true,
+          "current_standard_reaudit_complete": true
+        }
+      }
+    },
+    {
+      "name": "supported fails without current code review metadata",
+      "pass": true,
+      "result": {
+        "construction": "supported fails without current code review metadata",
+        "status": "supported_productive",
+        "gate_class": "supported_productive",
+        "eligible": false,
+        "blockers": [
+          "requirement_failed:current_code_review_metadata"
+        ],
+        "requirements": {
+          "plain_language_claim": true,
+          "independent_evidence_beyond_internal_tests": true,
+          "at_least_one_source": true,
+          "every_cited_source_verified": true,
+          "two_speakers_same_positive_negative_contrasts": true,
+          "negative_cases_drafted": true,
+          "negative_boundary_inventory_complete": true,
+          "negative_tests_executable": true,
+          "negative_tests_passing": true,
+          "corpus_hits_individually_classified_if_used": true,
+          "code_document_reconciled": true,
+          "current_code_review_metadata": false,
+          "implementation_validation_separate": true,
+          "current_standard_reaudit_complete": true
+        }
+      }
+    },
+    {
+      "name": "supported fails when not reaudit complete",
+      "pass": true,
+      "result": {
+        "construction": "supported fails when not reaudit complete",
+        "status": "supported_productive",
+        "gate_class": "supported_productive",
+        "eligible": false,
+        "blockers": [
+          "requirement_failed:current_standard_reaudit_complete"
+        ],
+        "requirements": {
+          "plain_language_claim": true,
+          "independent_evidence_beyond_internal_tests": true,
+          "at_least_one_source": true,
+          "every_cited_source_verified": true,
+          "two_speakers_same_positive_negative_contrasts": true,
+          "negative_cases_drafted": true,
+          "negative_boundary_inventory_complete": true,
+          "negative_tests_executable": true,
+          "negative_tests_passing": true,
+          "corpus_hits_individually_classified_if_used": true,
+          "code_document_reconciled": true,
+          "current_code_review_metadata": true,
+          "implementation_validation_separate": true,
+          "current_standard_reaudit_complete": false
+        }
+      }
+    },
+    {
+      "name": "provisional passes narrower definition",
+      "pass": true,
+      "result": {
+        "construction": "provisional passes narrower definition",
         "status": "provisional",
         "gate_class": "provisional",
         "eligible": true,
         "blockers": [],
         "requirements": {
-          "verified_source": true,
           "plain_language_claim": true,
-          "implementation_validation_separate": true,
-          "independent_speaker": true,
-          "negative_cases_drafted": true,
-          "independent_evidence_beyond_internal_tests": true
+          "independent_evidence_beyond_internal_tests": true,
+          "verified_source": true,
+          "one_speaker_same_positive_negative_contrasts": true,
+          "negative_cases_drafted": true
         }
       }
     },
     {
-      "name": "provisional fails without a speaker",
+      "name": "provisional fails without same positive and negative contrast review",
       "pass": true,
       "result": {
-        "construction": "provisional fails without a speaker",
+        "construction": "provisional fails without same positive and negative contrast review",
         "status": "provisional",
         "gate_class": "provisional",
         "eligible": false,
         "blockers": [
-          "requirement_failed:independent_speaker"
+          "requirement_failed:one_speaker_same_positive_negative_contrasts"
         ],
         "requirements": {
-          "verified_source": true,
           "plain_language_claim": true,
-          "implementation_validation_separate": true,
-          "independent_speaker": false,
-          "negative_cases_drafted": true,
-          "independent_evidence_beyond_internal_tests": true
+          "independent_evidence_beyond_internal_tests": true,
+          "verified_source": true,
+          "one_speaker_same_positive_negative_contrasts": false,
+          "negative_cases_drafted": true
         }
       }
     },
     {
-      "name": "research pending is quarantined without failure",
+      "name": "provisional fails without external evidence",
       "pass": true,
       "result": {
-        "construction": "research pending is quarantined without failure",
+        "construction": "provisional fails without external evidence",
+        "status": "provisional",
+        "gate_class": "provisional",
+        "eligible": false,
+        "blockers": [
+          "requirement_failed:independent_evidence_beyond_internal_tests"
+        ],
+        "requirements": {
+          "plain_language_claim": true,
+          "independent_evidence_beyond_internal_tests": false,
+          "verified_source": true,
+          "one_speaker_same_positive_negative_contrasts": true,
+          "negative_cases_drafted": true
+        }
+      }
+    },
+    {
+      "name": "pilot panel does not satisfy shared contrast gate",
+      "pass": true,
+      "result": {
+        "construction": "pilot panel does not satisfy shared contrast gate",
+        "status": "provisional",
+        "gate_class": "provisional",
+        "eligible": false,
+        "blockers": [
+          "requirement_failed:one_speaker_same_positive_negative_contrasts"
+        ],
+        "requirements": {
+          "plain_language_claim": true,
+          "independent_evidence_beyond_internal_tests": true,
+          "verified_source": true,
+          "one_speaker_same_positive_negative_contrasts": false,
+          "negative_cases_drafted": true
+        }
+      }
+    },
+    {
+      "name": "research pending remains quarantined",
+      "pass": true,
+      "result": {
+        "construction": "research pending remains quarantined",
         "status": "research_pending",
         "gate_class": "quarantined",
         "eligible": false,
         "blockers": [
           "executable_boundaries_without_drafted_boundaries"
+        ],
+        "requirements": {}
+      }
+    },
+    {
+      "name": "same contrast count cannot exceed eligible speakers",
+      "pass": true,
+      "result": {
+        "construction": "same contrast count cannot exceed eligible speakers",
+        "status": "research_pending",
+        "gate_class": "quarantined",
+        "eligible": false,
+        "blockers": [
+          "same_contrast_speakers_exceed_promotion_eligible_speakers"
         ],
         "requirements": {}
       }
@@ -168,41 +349,6 @@
         "eligible": false,
         "blockers": [
           "unknown_status:invented_status"
-        ],
-        "requirements": {}
-      }
-    },
-    {
-      "name": "pilot_panel_counted_but_not_promotion_eligible",
-      "pass": true,
-      "result": {
-        "construction": "pilot_panel_counted_but_not_promotion_eligible",
-        "status": "provisional",
-        "gate_class": "provisional",
-        "eligible": false,
-        "blockers": [
-          "requirement_failed:independent_speaker"
-        ],
-        "requirements": {
-          "verified_source": true,
-          "plain_language_claim": true,
-          "implementation_validation_separate": true,
-          "independent_speaker": false,
-          "negative_cases_drafted": true,
-          "independent_evidence_beyond_internal_tests": true
-        }
-      }
-    },
-    {
-      "name": "promotion_eligible_count_cannot_exceed_total",
-      "pass": true,
-      "result": {
-        "construction": "promotion_eligible_count_cannot_exceed_total",
-        "status": "research_pending",
-        "gate_class": "quarantined",
-        "eligible": false,
-        "blockers": [
-          "promotion_eligible_speakers_exceed_counted_speakers"
         ],
         "requirements": {}
       }

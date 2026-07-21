@@ -1,0 +1,130 @@
+[
+  {
+    "name": "supported productive passes exact definition",
+    "status": "supported_productive",
+    "fields": {
+      "source_count": 2,
+      "verified_source_count": 2,
+      "speaker_count": 2,
+      "independent_speaker_count": 2,
+      "same_contrast_independent_speaker_count": 2,
+      "native_positive_contrasts_reviewed": true,
+      "native_negative_contrasts_reviewed": true,
+      "negative_cases_drafted": true,
+      "negative_tests_executable": true,
+      "negative_tests_passing": true,
+      "negative_boundary_inventory_complete": true,
+      "corpus_evidence_used": false,
+      "corpus_hits_reviewed": false,
+      "corpus_candidate_hit_count": 0,
+      "corpus_genuine_hit_count": 0,
+      "corpus_false_positive_count": 0,
+      "corpus_ambiguous_hit_count": 0,
+      "corpus_unusable_hit_count": 0,
+      "code_document_reconciled": true,
+      "code_document_review_date": "2026-07-21",
+      "code_document_review_commit": "abcdef1",
+      "code_document_code_locations": ["main.js:100-140"],
+      "current_standard_reaudit_complete": true,
+      "implementation_validation_separate": true,
+      "independent_evidence_beyond_internal_tests": true,
+      "promotion_gate_version": "v2"
+    },
+    "expected_eligible": true
+  },
+  {
+    "name": "supported fails when one cited source unchecked",
+    "status": "supported_productive",
+    "overrides": {"verified_source_count": 1},
+    "expected_eligible": false,
+    "expected_blocker": "requirement_failed:every_cited_source_verified"
+  },
+  {
+    "name": "supported fails when speakers reviewed different contrasts",
+    "status": "supported_productive",
+    "overrides": {"same_contrast_independent_speaker_count": 1},
+    "expected_eligible": false,
+    "expected_blocker": "requirement_failed:two_speakers_same_positive_negative_contrasts"
+  },
+  {
+    "name": "supported fails with unclassified corpus hits",
+    "status": "supported_productive",
+    "overrides": {"corpus_evidence_used": true, "corpus_candidate_hit_count": 3, "corpus_hits_reviewed": false},
+    "expected_eligible": false,
+    "expected_blocker": "requirement_failed:corpus_hits_individually_classified_if_used"
+  },
+  {
+    "name": "supported passes classified corpus hits",
+    "status": "supported_productive",
+    "overrides": {"corpus_evidence_used": true, "corpus_hits_reviewed": true, "corpus_candidate_hit_count": 3, "corpus_genuine_hit_count": 1, "corpus_false_positive_count": 1, "corpus_ambiguous_hit_count": 1},
+    "expected_eligible": true
+  },
+  {
+    "name": "supported fails incomplete boundary inventory",
+    "status": "supported_productive",
+    "overrides": {"negative_boundary_inventory_complete": false},
+    "expected_eligible": false,
+    "expected_blocker": "requirement_failed:negative_boundary_inventory_complete"
+  },
+  {
+    "name": "supported fails without current code review metadata",
+    "status": "supported_productive",
+    "overrides": {"code_document_review_date": null, "code_document_review_commit": null, "code_document_code_locations": []},
+    "expected_eligible": false,
+    "expected_blocker": "requirement_failed:current_code_review_metadata"
+  },
+  {
+    "name": "supported fails when not reaudit complete",
+    "status": "supported_productive",
+    "overrides": {"current_standard_reaudit_complete": false},
+    "expected_eligible": false,
+    "expected_blocker": "requirement_failed:current_standard_reaudit_complete"
+  },
+  {
+    "name": "provisional passes narrower definition",
+    "status": "provisional",
+    "overrides": {"verified_source_count": 1, "speaker_count": 1, "independent_speaker_count": 1, "same_contrast_independent_speaker_count": 1, "negative_tests_executable": false, "negative_tests_passing": false, "negative_boundary_inventory_complete": false, "code_document_reconciled": false, "code_document_review_date": null, "code_document_review_commit": null, "code_document_code_locations": [], "current_standard_reaudit_complete": false},
+    "expected_eligible": true
+  },
+  {
+    "name": "provisional fails without same positive and negative contrast review",
+    "status": "provisional",
+    "overrides": {"speaker_count": 1, "independent_speaker_count": 1, "same_contrast_independent_speaker_count": 0},
+    "expected_eligible": false,
+    "expected_blocker": "requirement_failed:one_speaker_same_positive_negative_contrasts"
+  },
+  {
+    "name": "provisional fails without external evidence",
+    "status": "provisional",
+    "overrides": {"independent_evidence_beyond_internal_tests": false},
+    "expected_eligible": false,
+    "expected_blocker": "requirement_failed:independent_evidence_beyond_internal_tests"
+  },
+  {
+    "name": "pilot panel does not satisfy shared contrast gate",
+    "status": "provisional",
+    "overrides": {"speaker_count": 23, "independent_speaker_count": 23, "promotion_eligible_independent_speaker_count": 0, "same_contrast_independent_speaker_count": 0},
+    "expected_eligible": false,
+    "expected_blocker": "requirement_failed:one_speaker_same_positive_negative_contrasts"
+  },
+  {
+    "name": "research pending remains quarantined",
+    "status": "research_pending",
+    "overrides": {"source_count": 0, "verified_source_count": 0, "speaker_count": 0, "independent_speaker_count": 0, "same_contrast_independent_speaker_count": 0, "native_positive_contrasts_reviewed": false, "native_negative_contrasts_reviewed": false, "negative_cases_drafted": false, "independent_evidence_beyond_internal_tests": false},
+    "expected_eligible": false,
+    "expected_gate_class": "quarantined"
+  },
+  {
+    "name": "same contrast count cannot exceed eligible speakers",
+    "status": "research_pending",
+    "overrides": {"speaker_count": 1, "independent_speaker_count": 1, "promotion_eligible_independent_speaker_count": 1, "same_contrast_independent_speaker_count": 2},
+    "expected_eligible": false,
+    "expected_blocker": "same_contrast_speakers_exceed_promotion_eligible_speakers"
+  },
+  {
+    "name": "unknown status fails loudly",
+    "status": "invented_status",
+    "expected_eligible": false,
+    "expected_blocker_prefix": "unknown_status:"
+  }
+]

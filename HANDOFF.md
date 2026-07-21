@@ -43,7 +43,10 @@ Do not assume continuity from an earlier conversation unless these checks succee
 
 ## Current substantive task
 
-Infrastructure migration Phase 8 is complete.
+Infrastructure migration Phase 9 is complete.
+
+
+Phase 9 adopts the user-supplied Definition of Done as the controlling completion text and upgrades enforcement to promotion gate v2. It also adds `tools/verify-release-handoff.js`, a Git-derived release audit, and a 10–20 handoff retirement-review cadence. No parser behavior or linguistic status changed.
 
 The active working set is:
 

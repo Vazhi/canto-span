@@ -36,22 +36,21 @@ Before integration, the NP subsystem must pass:
 
 Making the motivating perfective examples pass is not sufficient.
 
-## Mechanical promotion gate
+## Mechanical promotion and release gates
 
-Before any status change is accepted, run:
+Before any status change or version handoff is accepted, run:
 
 ```bash
 node tools/test-promotion-gate.js
 node tools/enforce-promotion-rules.js
+node tools/verify-release-handoff.js
 ```
 
-The gate reads the construction-note frontmatter and fails closed:
+The v2 construction gate reads note frontmatter, source records, corpus classification counts, shared speaker-contrast metadata, standardized test coverage, and current code-review metadata. It fails closed when any required fact is missing or inconsistent.
 
-- `supported_productive` requires at least one verified source, two independent speakers, drafted and executable passing negative cases, reviewed corpus hits when corpus evidence is used, exact code-document reconciliation, independent evidence beyond internal tests, and separate implementation/linguistic reporting;
-- `provisional` requires at least one verified source, one independent speaker, drafted negative cases, independent evidence beyond internal tests, and a plain-language claim;
-- every other current status is non-promoted by default.
+The release gate independently derives status changes from Git. It requires an audit slice for every changed construction, rejects unre-audited `supported_productive` records, preserves separate implementation and linguistic reporting, and checks the dormant-label retirement cadence.
 
-A construction may become `supported_productive` only after every Definition-of-Done item and every applicable implementation check passes. No prior acceptance is exempt. Second-speaker work is frozen, so no construction can currently satisfy a missing two-speaker requirement.
+No prior acceptance is exempt. Additional native-speaker review is authorized, but only screened, independent, same-contrast records can satisfy the speaker gate. Public pilot responses may be retained without becoming promotion eligible.
 
 ## Dispositions
 

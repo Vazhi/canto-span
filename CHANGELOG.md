@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.5.185 — infrastructure migration Phase 9
+
+- Adopted the user-supplied Definition of Done as the controlling completion text.
+- Upgraded construction promotion enforcement to v2: every cited source checked for productive support, corpus candidates individually classified, same positive/negative contrasts shared across eligible speakers, complete executable boundary inventories, and current code-document review metadata.
+- Added a Git-derived release-handoff gate and explicit dormant-label retirement cadence.
+- Reclassified five manually reviewed HKCanCor examples as five individually classified genuine corpus hits.
+- Parser behavior and linguistic statuses did not change.
+
+
 ## Infrastructure migration Phase 8
 
 - Integrated a 23-response RUL01 public native-speaker panel snapshot under a user-authorized one-time protocol exception.

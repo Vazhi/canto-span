@@ -9,78 +9,93 @@ related: "[[DEFINITION-OF-DONE]]"
 
 ## Purpose
 
-`tools/enforce-promotion-rules.js` prevents a construction note from shipping with `status: provisional` or `status: supported_productive` unless its machine-readable evidence fields satisfy the current [[DEFINITION-OF-DONE]].
+`tools/enforce-promotion-rules.js` rejects `provisional` and `supported_productive` statuses that do not satisfy the current [[DEFINITION-OF-DONE]]. It does not promote constructions and does not treat passing parser tests as linguistic evidence.
 
-The gate does not promote constructions. It only rejects unsupported authored statuses.
+The current schema is `promotion_gate_version: "v2"`.
 
 ## Commands
 
 ```bash
 node tools/test-promotion-gate.js
 node tools/enforce-promotion-rules.js
+node tools/test-release-handoff.js
+node tools/verify-release-handoff.js
 ```
 
-Both commands are also run by `tools/verify-repository.sh`.
+All four are run by `tools/verify-repository.sh`.
 
-## Required frontmatter fields
+## Source enforcement
 
-Every current note under `grammar/active/` or `grammar/archived/` contains:
+Every construction note records both `source_count` and `verified_source_count`. The gate independently counts `### SRC-*` records and recognized `Verification` states in the note.
 
-- `verified_source_count` — source records whose verification state is explicitly recognized as checked;
-- `independent_speaker_count` — independent project speaker records, equal to `speaker_count`;
-- `negative_cases_drafted`;
-- `negative_tests_executable`;
-- `negative_tests_passing`;
-- `corpus_evidence_used`;
-- `corpus_hits_reviewed`;
-- `code_document_reconciled`;
-- `implementation_validation_separate`;
-- `independent_evidence_beyond_internal_tests`;
-- `promotion_gate_version` — currently `v1`.
+For `supported_productive`:
 
-A missing field is a validation failure. Workflow state does not itself grant or block promotion; the evidence gate applies to every current note in either collection. Passing executable boundaries require drafted boundaries. Passing boundary tests cannot be asserted when executable tests are absent. Each note also names its `tests/constructions/<ConstructionName>.json` file and records standardized positive, boundary, and total executable counts.
+- at least one external source must be cited;
+- every cited source must have a recognized checked state;
+- the declared counts must equal the actual source records.
 
-## Status rules
+For `provisional`, at least one checked source must support the narrower claim. Unchecked additional citations do not help satisfy that minimum.
 
-### `supported_productive`
+## Corpus enforcement
 
-Requires all of the following:
+The following fields are separate:
 
-- at least one verified source;
-- at least two independent speakers;
-- drafted, executable, passing negative and boundary tests;
-- every corpus hit reviewed when corpus evidence is used;
-- code and documentation reconciled;
-- implementation validation reported separately from linguistic evidence;
-- independent evidence beyond internal tests;
-- a non-empty plain-language claim.
+- `corpus_candidate_hit_count`;
+- `corpus_genuine_hit_count`;
+- `corpus_false_positive_count`;
+- `corpus_ambiguous_hit_count`;
+- `corpus_unusable_hit_count`.
 
-### `provisional`
+When corpus evidence is used for `supported_productive`, every candidate must be classified and the four classification totals must exactly equal the candidate count. A raw hit count or a broad `corpus_hits_reviewed` assertion is insufficient.
 
-Requires:
+## Native-speaker enforcement
 
-- at least one verified source;
-- at least one independent speaker;
-- drafted negative and boundary cases;
-- independent evidence beyond internal tests;
-- a non-empty plain-language claim.
+`independent_speaker_count` records all counted speaker evidence. `promotion_eligible_independent_speaker_count`, when present, excludes retained but methodologically limited evidence. `same_contrast_independent_speaker_count` records only independent promotion-eligible speakers who judged the same relevant positive and negative contrasts.
 
-### Other current statuses
+- `provisional` requires at least one such speaker.
+- `supported_productive` requires at least two.
 
-`provisional_reaudit`, `research_pending`, `unsupported_generalization`, `parser_heuristic`, and `lexicalized_only` are non-promoted by default. Satisfying some evidence fields does not make them eligible automatically; the authored status must be changed explicitly in the same reviewed commit.
+A public pilot may remain useful evidence without satisfying either gate.
 
-## Verified source states
+## Boundary enforcement
 
-The gate counts only explicit checked states:
+`provisional` requires drafted negative and boundary cases.
 
-- `PASS`;
-- `VERIFIED_*`;
-- `MANUALLY_REVIEWED_*`;
-- `CURRENT_PAGE_REOPENED`;
-- `FULL_TEXT_REOPENED`.
+`supported_productive` additionally requires:
 
-Unknown, missing, pending, or merely present verification text does not count.
+- `negative_boundary_inventory_complete: true`;
+- executable boundary tests;
+- passing boundary tests;
+- at least one boundary case in the standardized construction test file;
+- exact agreement between note metadata and the test file's coverage counts.
 
-## Editing rule
+The completeness field is a reviewed inventory assertion: it states that every known must-not-match case in the construction's documented scope has an executable test. It cannot be inferred from the existence of some negative tests.
 
-When evidence changes, update the note body and the corresponding frontmatter fields together. A status-only edit is not valid evidence work. Run `npm test` before asserting that standardized boundary tests pass.
+## Code-document enforcement
+
+`supported_productive` requires all of the following from the current re-audit:
+
+- `code_document_reconciled: true`;
+- a dated `code_document_review_date`;
+- the reviewed Git commit in `code_document_review_commit`;
+- exact entries in `code_document_code_locations`;
+- `current_standard_reaudit_complete: true`.
+
+Historical implementation acceptance does not satisfy these fields.
+
+## Release enforcement
+
+`tools/verify-release-handoff.js` reads the current release audit record and:
+
+- derives actual status changes from Git rather than trusting release prose;
+- requires a complete audit-slice entry for every changed construction;
+- rejects any `supported_productive` construction that has not passed the current gate;
+- requires separate implementation-validation and linguistic-confidence lines;
+- requires an explicit code-versus-release-document overclaim review;
+- checks the 10–20 handoff dormant-label review cadence.
+
+The current audit record is `docs/releases/v0.5.185-phase9-audit.json`.
+
+## Non-promoted statuses
+
+`provisional_reaudit`, `research_pending`, `unsupported_generalization`, `parser_heuristic`, and `lexicalized_only` remain non-promoted regardless of how many individual evidence fields happen to pass. Status changes require an explicit reviewed commit.

@@ -1,0 +1,25 @@
+{
+  "schema": "canto-span-release-handoff-audit-v1",
+  "release_id": "v0.5.185-phase9-definition-of-done-enforcement",
+  "handoff_sequence": 9,
+  "status_changes": [],
+  "changed_construction_audit": [],
+  "supported_productive_pending_reaudit": [],
+  "implementation_validation": "PASS required before handoff: repository verification, regression, NP subsystem, standardized construction assertions, promotion-gate v2 tests, promotion enforcement, and release-handoff verification.",
+  "linguistic_confidence": "No linguistic status changed. supported_productive remains 0; PostverbalZoPerfectiveVP and ResourceUseLaiFunctionRelation remain provisional_reaudit. The RUL01 public pilot remains 23 counted panel responses and 0 promotion-eligible same-contrast speakers.",
+  "code_analysis_overclaim_review": true,
+  "overclaim_review_scope": "Reviewed the Phase 9 handoff, current project-state documents, active construction claims, and release notes against unchanged main.js behavior. This phase changes governance metadata and validators only.",
+  "release_documents": [
+    "docs/research/CP027-DEFINITION-OF-DONE-ENFORCEMENT-R1.md",
+    "HANDOFF.md",
+    "docs/current/PROJECT-STATE.md",
+    "CHANGELOG.md"
+  ],
+  "external_audit_ready": true,
+  "unresolved_release_questions": [
+    "Neither active construction satisfies the supported_productive checklist.",
+    "PFV01 still lacks a second independent same-contrast speaker and exact code-document reconciliation.",
+    "RUL01 still lacks a controlled promotion-eligible native-speaker record and exact code-document reconciliation."
+  ],
+  "base_tree": "4ea31798f0d98edc9df1278c262b53d0a9df0a4a"
+}

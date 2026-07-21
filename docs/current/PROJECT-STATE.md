@@ -92,6 +92,9 @@ The DEMO01 promotion, render, and held-out track is abandoned. Its historical vi
 - normalized v0.5.184 → v0.5.185 runtime equivalence: **545/545 PASS**
 - active label count: **171**
 - `supported_productive`: **0**
+- promotion gate v2 tests: **15/15 PASS**
+- release-handoff gate tests: **7/7 PASS**
+- release-handoff audit: **PASS; 0 status changes**
 
 ## Infrastructure state
 
@@ -112,6 +115,21 @@ Current promotion-gate result:
 - active source/reviewer workflow: **130/130 PASS**;
 - RUL01 panel snapshot audit: **109/109 PASS**;
 - native-review CSV library: **9/9 PASS**.
+
+## Phase 9 Definition-of-Done enforcement
+
+Phase 9 adopts the user-supplied Definition of Done as the controlling completion text and upgrades mechanical enforcement without changing parser behavior or linguistic status.
+
+- promotion gate schema: **v2**;
+- every cited source must be verified for `supported_productive`;
+- corpus candidates must be individually classified when used as evidence;
+- speaker evidence distinguishes total panel size from promotion-eligible speakers who judged the same positive and negative contrasts;
+- productive boundary inventories must be complete, executable, and passing;
+- current code-document review requires a date, commit, and exact code locations;
+- release audit derives status changes from Git and requires a complete audit slice;
+- dormant-label review must occur within 20 handoffs of the previous full review.
+
+Current result: `supported_productive` remains **0**, `provisional` remains **0**, and both active constructions remain `provisional_reaudit`.
 
 ## Phase 8 public-panel integration
 
