@@ -68,3 +68,8 @@ All second-speaker recruitment and review work is frozen at the user's request. 
 - the required second speaker is frozen, not waived.
 
 No held-out set was opened and no runtime change was made.
+
+
+## Subsequent public-panel update
+
+A later 23-response public panel snapshot was screened and committed under a one-time pilot exception. It counts as limited external panel evidence but contributes zero promotion-eligible independent speakers. See `CP026-P1-RUL01-PUBLIC-PANEL-R1-RESULT.md`. This addendum does not alter the original checkpoint's historical state at the time it was written.

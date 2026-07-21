@@ -87,3 +87,14 @@ Reduce ceremony, drift risk, and file bloat without restarting the parser or dis
 - added CSV normalization with native-language, completeness, consent, and independence screening while forcing all normalized responses to remain uncounted pending duplicate review and manual adjudication;
 - recorded the user’s packet-scoped authorization for the two active public Speaker B forms while leaving the archived backlog frozen;
 - changed no parser behavior, linguistic status, source count, speaker count, runtime label, or standardized construction test.
+
+
+### Phase 8 — Public-panel evidence integration: complete
+
+- committed an anonymized 23-response × 21-item RUL01 public-panel matrix, item summary, comments, and construction-specific adjudication;
+- recorded the user's one-time protocol exception without silently treating the flawed pilot as clean promotion evidence;
+- separated total counted speaker evidence from `promotion_eligible_independent_speaker_count`;
+- updated the promotion gate so a large pilot panel cannot satisfy the clean one- or two-speaker requirement automatically;
+- added focused promotion-gate cases and a 109-check panel-snapshot audit that recomputes every item count;
+- documented the next-instrument requirements: graded scale, per-item correction/context fields, randomized item blocks, fillers, contextualized ellipsis, interpretation checks, and semantic-plausibility separation;
+- changed no parser behavior, runtime label, construction status, source count, or executable construction expectation.

@@ -1,0 +1,283 @@
+{
+  "schema": "canto-span-native-panel-snapshot-v1",
+  "construction": "ResourceUseLaiFunctionRelation",
+  "form_id": "RUL01-SPEAKER-B-PUBLIC-R1",
+  "instrument_id": "RUL01-R2",
+  "snapshot_date": "2026-07-21",
+  "source_sheet_url": "https://docs.google.com/spreadsheets/d/1XGFHnL5aNL8RID6QVZwFuSNkhI_XphqfkH5NpqZU9hI/edit?usp=sharing",
+  "source_response_rows": "2-24",
+  "last_visible_response_timestamp_raw": "7/21/2026 17:56:04",
+  "timestamp_timezone": "not_recorded_in_public_sheet_view",
+  "response_count": 23,
+  "screening": {
+    "native_cantonese_confirmed": 23,
+    "daily_use": 23,
+    "complete_judgments": 23,
+    "consent_confirmed": 23,
+    "independence_confirmed": 23,
+    "distinct_reviewer_codes": 23,
+    "exact_duplicate_judgment_vectors": 1,
+    "duplicate_vector_members": [
+      "RUL-EXT-005",
+      "RUL-EXT-023"
+    ],
+    "duplicate_disposition": "retained; distinct codes and timestamps, and an identical binary vector alone is insufficient evidence of duplicate identity"
+  },
+  "background_counts": {
+    "hong_kong": 22,
+    "hong_kong_guangzhou": 1
+  },
+  "protocol_class": "pilot_binary_fixed_order_context_free_global_comment",
+  "exception": {
+    "authorized_by_user": true,
+    "authorization_date": "2026-07-21",
+    "counted_as_native_panel_evidence": true,
+    "counted_independent_speaker_responses": 23,
+    "promotion_eligible_independent_speaker_responses": 0,
+    "reason": "one-time exception preserves valuable completed responses without treating the pilot instrument as clean promotion-gating evidence"
+  },
+  "limitations": [
+    "binary scale collapses fully natural and merely acceptable judgments",
+    "fixed order and construction-heavy item set may create response-strategy and order effects",
+    "no true unrelated filler calibration set",
+    "context-free presentation weakens ellipsis and interpretation items",
+    "semantic plausibility is confounded with grammaticality in several boundary items",
+    "one global comment field reduced correction usability",
+    "naturalness alone cannot identify which structural analysis a respondent assigned"
+  ],
+  "comments": [
+    {
+      "comment_id": "RUL-COMMENT-001",
+      "type": "semantic_clarity",
+      "text": "有一些句子語意極度不明，如［香港用嚟切嘢］。"
+    },
+    {
+      "comment_id": "RUL-COMMENT-002",
+      "type": "alternative_expression",
+      "text": "愛嚟 / 要嚟，例如：「呢樣嘢愛嚟做咩」、「呢樣嘢要嚟做乜」"
+    },
+    {
+      "comment_id": "RUL-COMMENT-003",
+      "type": "instrument_usability",
+      "text": "喺 page 3 先見到補充問題，好難返去 page 2 搵返句子；應該一早提示，或者喺每句下面即時提供補充欄。"
+    },
+    {
+      "comment_id": "RUL-COMMENT-004",
+      "type": "orthography_register",
+      "text": "「來」唔係廣東話。"
+    }
+  ],
+  "items": [
+    {
+      "display_number": 1,
+      "item_id": "RUL-P03",
+      "sentence": "呢把刀用嚟切肉。",
+      "natural_or_acceptable": 21,
+      "unnatural": 2,
+      "natural_percent": 91.3,
+      "disposition": "core_surface_support",
+      "evidence_note": "Strong panel support for overt instrument/resource + 用嚟 + purpose VP."
+    },
+    {
+      "display_number": 2,
+      "item_id": "RUL-B02",
+      "sentence": "呢個可以用嚟切嘢。",
+      "natural_or_acceptable": 20,
+      "unnatural": 3,
+      "natural_percent": 87.0,
+      "disposition": "acceptable_broader_modal_frame",
+      "evidence_note": "Acceptability does not establish membership in the narrow subtype because 可以 is overt."
+    },
+    {
+      "display_number": 3,
+      "item_id": "RUL-P01",
+      "sentence": "呢個用嚟切嘢。",
+      "natural_or_acceptable": 22,
+      "unnatural": 1,
+      "natural_percent": 95.7,
+      "disposition": "core_surface_support",
+      "evidence_note": "Strong panel support for the exact published surface 呢個用嚟切嘢."
+    },
+    {
+      "display_number": 4,
+      "item_id": "RUL-B05",
+      "sentence": "我用刀切嘢。",
+      "natural_or_acceptable": 17,
+      "unnatural": 6,
+      "natural_percent": 73.9,
+      "disposition": "control_warning",
+      "evidence_note": "Ordinary transitive control was rejected by 6/23, showing residual instrument/context contamination."
+    },
+    {
+      "display_number": 5,
+      "item_id": "RUL-S01",
+      "sentence": "香港用嚟切嘢。",
+      "natural_or_acceptable": 1,
+      "unnatural": 22,
+      "natural_percent": 4.3,
+      "disposition": "semantic_plausibility_confounded_rejection",
+      "evidence_note": "Strong rejection, but place-as-resource implausibility prevents a clean syntactic conclusion."
+    },
+    {
+      "display_number": 6,
+      "item_id": "RUL-P04",
+      "sentence": "呢個杯用嚟飲水。",
+      "natural_or_acceptable": 21,
+      "unnatural": 2,
+      "natural_percent": 91.3,
+      "disposition": "core_surface_support",
+      "evidence_note": "Strong support for overt container/resource + 用嚟 + activity predicate."
+    },
+    {
+      "display_number": 7,
+      "item_id": "RUL-B01",
+      "sentence": "啲錢我用嚟買晒嗰堆嘢。",
+      "natural_or_acceptable": 20,
+      "unnatural": 3,
+      "natural_percent": 87.0,
+      "disposition": "acceptable_broader_overt_user_frame",
+      "evidence_note": "Acceptable broader frame with separate overt user; excluded from narrow subtype."
+    },
+    {
+      "display_number": 8,
+      "item_id": "RUL-B11",
+      "sentence": "呢個用嚟。",
+      "natural_or_acceptable": 4,
+      "unnatural": 19,
+      "natural_percent": 17.4,
+      "disposition": "context_free_ellipsis_boundary",
+      "evidence_note": "Strong rejection in isolation only; contextual ellipsis remains untested."
+    },
+    {
+      "display_number": 9,
+      "item_id": "RUL-P06",
+      "sentence": "呢張紙用來寫字。",
+      "natural_or_acceptable": 12,
+      "unnatural": 11,
+      "natural_percent": 52.2,
+      "disposition": "orthography_confounded",
+      "evidence_note": "用來 spelling/register confound; one comment explicitly rejected 來 as non-Cantonese."
+    },
+    {
+      "display_number": 10,
+      "item_id": "RUL-B07",
+      "sentence": "呢個唔用嚟切嘢。",
+      "natural_or_acceptable": 7,
+      "unnatural": 16,
+      "natural_percent": 30.4,
+      "disposition": "negation_boundary_candidate",
+      "evidence_note": "Majority rejection; requires matched contextual follow-up before a categorical rule."
+    },
+    {
+      "display_number": 11,
+      "item_id": "RUL-Q01",
+      "sentence": "呢個用嚟做咩㗎？",
+      "natural_or_acceptable": 23,
+      "unnatural": 0,
+      "natural_percent": 100.0,
+      "disposition": "question_surface_support",
+      "evidence_note": "Unanimous support for the 做咩 question surface."
+    },
+    {
+      "display_number": 12,
+      "item_id": "RUL-P02",
+      "sentence": "呢張枱用嚟食飯。",
+      "natural_or_acceptable": 21,
+      "unnatural": 2,
+      "natural_percent": 91.3,
+      "disposition": "core_surface_support",
+      "evidence_note": "Strong support for overt object/resource + 用嚟 + activity predicate."
+    },
+    {
+      "display_number": 13,
+      "item_id": "RUL-B12",
+      "sentence": "呢個用嚟切咗嘢。",
+      "natural_or_acceptable": 3,
+      "unnatural": 20,
+      "natural_percent": 13.0,
+      "disposition": "perfective_inside_purpose_boundary",
+      "evidence_note": "Strong rejection of 用嚟 + V咗 in this item; useful narrow boundary evidence."
+    },
+    {
+      "display_number": 14,
+      "item_id": "RUL-B03",
+      "sentence": "呢個係用嚟切嘢。",
+      "natural_or_acceptable": 23,
+      "unnatural": 0,
+      "natural_percent": 100.0,
+      "disposition": "copular_surface_support",
+      "evidence_note": "Unanimous support for 係用嚟 + VP; broader than the narrow no-copula subtype."
+    },
+    {
+      "display_number": 15,
+      "item_id": "RUL-S02",
+      "sentence": "呢個問題用嚟切嘢。",
+      "natural_or_acceptable": 0,
+      "unnatural": 23,
+      "natural_percent": 0.0,
+      "disposition": "semantic_plausibility_confounded_rejection",
+      "evidence_note": "Unanimous rejection, but abstract-problem + cutting semantics confound syntax and plausibility."
+    },
+    {
+      "display_number": 16,
+      "item_id": "RUL-P05",
+      "sentence": "呢支筆用嚟寫字。",
+      "natural_or_acceptable": 19,
+      "unnatural": 4,
+      "natural_percent": 82.6,
+      "disposition": "core_surface_support",
+      "evidence_note": "Strong support for overt instrument/resource + 用嚟 + activity predicate."
+    },
+    {
+      "display_number": 17,
+      "item_id": "RUL-B06",
+      "sentence": "我買刀嚟切嘢。",
+      "natural_or_acceptable": 18,
+      "unnatural": 5,
+      "natural_percent": 78.3,
+      "disposition": "purpose_chain_support_not_narrow_subtype",
+      "evidence_note": "Majority support for 買刀嚟切嘢; a different purposive chain, not direct resource + 用嚟."
+    },
+    {
+      "display_number": 18,
+      "item_id": "RUL-B08",
+      "sentence": "呢個用唔用嚟切嘢？",
+      "natural_or_acceptable": 7,
+      "unnatural": 16,
+      "natural_percent": 30.4,
+      "disposition": "a_not_a_boundary_candidate",
+      "evidence_note": "Majority rejection; requires a better matched form before categorical exclusion."
+    },
+    {
+      "display_number": 19,
+      "item_id": "RUL-B04",
+      "sentence": "呢個用咗嚟切嘢。",
+      "natural_or_acceptable": 19,
+      "unnatural": 4,
+      "natural_percent": 82.6,
+      "disposition": "actual_use_perfective_support",
+      "evidence_note": "Strong support for 用咗嚟 + VP, directly showing the broader actual-use frame is acceptable."
+    },
+    {
+      "display_number": 20,
+      "item_id": "RUL-B10",
+      "sentence": "我用嚟切嘢。",
+      "natural_or_acceptable": 20,
+      "unnatural": 3,
+      "natural_percent": 87.0,
+      "disposition": "structurally_ambiguous_acceptability",
+      "evidence_note": "Strong acceptability, but omitted object/discourse recovery prevents person-as-resource inference."
+    },
+    {
+      "display_number": 21,
+      "item_id": "RUL-B09",
+      "sentence": "用來用去。",
+      "natural_or_acceptable": 15,
+      "unnatural": 8,
+      "natural_percent": 65.2,
+      "disposition": "orthography_reduplication_confounded",
+      "evidence_note": "Mixed result combines 用來 orthography and 用來用去 reduplication; not a clean boundary."
+    }
+  ],
+  "matrix_sha256": "ce150b70c6a268240cf7eb75959f32e4bc34fec6b2182e61444b4ef1026d70df"
+}

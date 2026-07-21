@@ -8,10 +8,12 @@ claim_layer: "language"
 lane: "LANE-01"
 last_reviewed: "2026-07-21"
 last_status_migrated: "2026-07-21"
-speaker_count: 0
+speaker_count: 23
 source_count: 5
 verified_source_count: 5
-independent_speaker_count: 0
+independent_speaker_count: 23
+promotion_eligible_independent_speaker_count: 0
+pilot_panel_response_count: 23
 negative_cases_drafted: true
 negative_tests_executable: true
 negative_tests_passing: true
@@ -26,7 +28,7 @@ native_review_state_file: "review-packets/native-speaker/active-v1/active-review
 native_form_spec_file: "review-packets/native-speaker/active-v1/form-specs.json"
 source_verification_file: "docs/research/CP026-P1-RUL01-SOURCE-VERIFICATION-R1.tsv"
 speaker_a_state: "form_ready_response_pending"
-speaker_b_state: "form_authorized_response_pending"
+speaker_b_state: "pilot_panel_counted_exception"
 standard_test_file: "tests/constructions/ResourceUseLaiFunctionRelation.json"
 standard_test_coverage: "positive_and_boundary"
 standard_positive_test_count: 7
@@ -47,7 +49,7 @@ tags: ["canto-span/grammar", "canto-span/status/provisional_reaudit", "canto-spa
 
 ## Plain-language claim
 
-Reviewed sources attest direct resource + 用嚟/用來 + use/function predicates, but the evidence does not establish Canto Span’s full semantic resource class or all current exclusions. The runtime label remains under re-audit.
+Reviewed sources and a 23-response predominantly Hong Kong native-speaker pilot panel support several ordinary direct-resource `NP + 用嚟 + VP` surfaces. The same panel also accepts several modal, copular, overt-user, actual-use, and ellipsis-compatible strings outside the narrow subtype. Instrument limitations and unresolved semantic/code boundaries prevent a broader productive claim, so the runtime label remains under re-audit.
 
 This is a linguistic claim only to the extent allowed by the status and evidence below. The runtime label is not assumed to be standard linguistic terminology.
 
@@ -103,11 +105,13 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 ## Native-speaker review
 
-- Independent speaker records: **0**
-- Scope: `SPEAKER_A_PRIVATE_FORM_READY_AND_SPEAKER_B_PUBLIC_FORM_AUTHORIZED_RESPONSES_PENDING`
-- Surface judgments: 0 total; 0 accepted; 0 rejected.
-- Structural-analysis validations: 0.
-- Second-speaker state: `PUBLIC_FORM_AUTHORIZED; RESPONSE_PENDING; REQUIREMENT_NOT_WAIVED`.
+- Independent native-panel response records: **23** under the explicit `RUL01-PUBLIC-PILOT-EXCEPTION-2026-07-21`.
+- Promotion-eligible independent speaker records: **0**.
+- Scope: `SPEAKER_A_PRIVATE_REVIEW_PENDING; SPEAKER_B_PUBLIC_PILOT_PANEL_COUNTED_WITH_LIMITATIONS`.
+- Surface judgments: 483 binary item judgments across 23 complete responses.
+- Structural-analysis validations: 0; naturalness did not identify unique parses.
+- Result record: `docs/research/CP026-P1-RUL01-PUBLIC-PANEL-R1-RESULT.md`.
+- Second-speaker state: `23_RESPONSE_PANEL_COUNTED_AS_EXTERNAL_EVIDENCE; CLEAN_PROMOTION_REQUIREMENT_NOT_SATISFIED`.
 
 ## Negative and boundary cases
 
@@ -136,12 +140,12 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 ## Open questions and blockers
 
 - full current Definition of Done remains incomplete
-- required before promotion: one independent Speaker A positive+comparison review and one independently screened Speaker B review; plain-language claim narrowed to current evidence
-- Speaker A and Speaker B responses pending; semantic resource/predicate scope; coordination coverage; exact code-doc alignment
-- CP026 found one direct quote, one editorial interview-derived narrative, one published illustrative example, one purposive/conventionalization source, and one boundary source. Runtime status metadata is aligned in v0.5.184; semantic resource/predicate scope and coordinated predicate coverage remain unresolved. No speaker response is currently counted; the Speaker A private form and Speaker B public form are ready.
-- Runtime status metadata now agrees with governance. Semantic resource/predicate licensing and coordinated source-predicate coverage remain unresolved; Speaker B response collection is authorized, but no response is counted until screening and adjudication are committed.
+- required before promotion: at least two promotion-eligible independent speaker reviews using a controlled instrument, including Speaker A; the 23-response public pilot is counted panel evidence but contributes zero promotion-eligible speakers
+- Speaker A controlled response pending; public panel integrated under a one-time pilot exception; semantic resource/predicate scope; coordination coverage; exact code-doc alignment
+- CP026 found one direct quote, one editorial interview-derived narrative, one published illustrative example, one purposive/conventionalization source, and one boundary source. Runtime status metadata is aligned in v0.5.184; semantic resource/predicate scope and coordinated predicate coverage remain unresolved. Twenty-three public panel responses are counted as limited external evidence, while zero responses from that pilot are promotion-eligible; the Speaker A controlled review remains pending.
+- Runtime status metadata now agrees with governance. Semantic resource/predicate licensing and coordinated source-predicate coverage remain unresolved; Speaker B public-panel screening and adjudication are committed for the 23-response snapshot, but the pilot instrument remains ineligible for the clean promotion gate.
 - Research question: Which externally documented Cantonese constructions, if any, justify the scope and boundaries currently represented by ResourceUseLaiFunctionRelation?
-- Next evidence action: Send the private RUL01 form to Speaker A and distribute the authorized public Speaker B form; independently continue narrowing the resource-function interface and code-document alignment.
+- Next evidence action: complete Speaker A with a revised controlled instrument, then continue narrowing the resource-function interface and code-document alignment. Preserve the public R1 panel as pilot evidence rather than reusing it as a clean gate.
 
 ## Related constructions
 

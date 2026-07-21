@@ -43,6 +43,13 @@ function countVerifiedSourceRecords(note) {
     .length;
 }
 
+function promotionEligibleSpeakerCount(fm) {
+  if (Object.prototype.hasOwnProperty.call(fm, "promotion_eligible_independent_speaker_count")) {
+    return Number(fm.promotion_eligible_independent_speaker_count);
+  }
+  return Number(fm.independent_speaker_count);
+}
+
 function hasPlainLanguageClaim(note) {
   return /## Plain-language claim\n\n\S/.test(note.body || note.text || "");
 }
@@ -66,6 +73,9 @@ function evaluatePromotion(note) {
   const internalConsistency = [];
   if (Number(fm.verified_source_count) < 0) internalConsistency.push("negative_verified_source_count");
   if (Number(fm.independent_speaker_count) < 0) internalConsistency.push("negative_independent_speaker_count");
+  const eligibleSpeakerCount = promotionEligibleSpeakerCount(fm);
+  if (eligibleSpeakerCount < 0) internalConsistency.push("negative_promotion_eligible_independent_speaker_count");
+  if (eligibleSpeakerCount > Number(fm.independent_speaker_count)) internalConsistency.push("promotion_eligible_speakers_exceed_counted_speakers");
   if (asBoolean(fm.negative_tests_passing) && !asBoolean(fm.negative_tests_executable)) {
     internalConsistency.push("passing_boundaries_without_executable_boundaries");
   }
@@ -82,14 +92,14 @@ function evaluatePromotion(note) {
 
   const provisionalRequirements = {
     ...common,
-    independent_speaker: Number(fm.independent_speaker_count) >= 1,
+    independent_speaker: eligibleSpeakerCount >= 1,
     negative_cases_drafted: asBoolean(fm.negative_cases_drafted),
     independent_evidence_beyond_internal_tests: asBoolean(fm.independent_evidence_beyond_internal_tests),
   };
 
   const supportedRequirements = {
     ...common,
-    two_independent_speakers: Number(fm.independent_speaker_count) >= 2,
+    two_independent_speakers: eligibleSpeakerCount >= 2,
     negative_cases_drafted: asBoolean(fm.negative_cases_drafted),
     negative_tests_executable: asBoolean(fm.negative_tests_executable),
     negative_tests_passing: asBoolean(fm.negative_tests_passing),
@@ -129,4 +139,5 @@ module.exports = {
   evaluatePromotion,
   countVerifiedSourceRecords,
   isVerifiedSourceState,
+  promotionEligibleSpeakerCount,
 };

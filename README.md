@@ -10,10 +10,10 @@ This repository is the canonical project working tree for the v0.5.185 baseline 
 - authoring metadata embedded in `main.js`: **none**
 - `supported_productive`: **0**
 - prior accepted constructions under re-audit: **2**
-- second-speaker forms: **authorized for the two active constructions; responses pending; archived backlog frozen**
+- native-speaker evidence: **RUL01 public pilot snapshot integrated at 23 responses; clean controlled reviews still pending**
 - promotion gate: **active; 171/171 notes checked, 0 promoted statuses**
 - standard test command: **`npm test`**
-- infrastructure migration Phase 7: **complete**
+- infrastructure migration Phase 8: **complete**
 
 Current validation:
 

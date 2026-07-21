@@ -34,3 +34,13 @@ Normalization does not alter construction notes or count speakers. Before a resp
 5. reviewer codes and response patterns must be screened for likely duplicate submissions;
 6. corrections/context must be manually reviewed;
 7. a result record must be committed and linked from `active-review-state.json` and the construction note.
+
+
+## Pilot-panel exception handling
+
+A protocol exception must be explicit, construction-specific, and committed. It must record both:
+
+- total retained panel responses; and
+- the smaller `promotion_eligible_independent_speaker_count`.
+
+The RUL01 public R1 snapshot retains 23 responses as panel evidence and sets the promotion-eligible count to 0. Do not overwrite that snapshot when more live responses arrive; create a new dated snapshot and record the changed cutoff.

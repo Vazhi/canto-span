@@ -26,11 +26,16 @@ required=(
   review-packets/native-speaker/active-v1/form-specs.json
   review-packets/native-speaker/active-v1/active-review-state.json
   review-packets/native-speaker/active-v1/Code.gs
+  review-packets/native-speaker/active-v1/completed/RUL01-SPEAKER-B-PUBLIC-R1/RUL01-PUBLIC-PANEL-SNAPSHOT-R1.json
+  review-packets/native-speaker/active-v1/completed/RUL01-SPEAKER-B-PUBLIC-R1/RUL01-PUBLIC-PANEL-ANONYMIZED-MATRIX-R1.tsv
+  review-packets/native-speaker/active-v1/completed/RUL01-SPEAKER-B-PUBLIC-R1/RUL01-PUBLIC-PANEL-ITEM-SUMMARY-R1.tsv
+  docs/research/CP026-P1-RUL01-PUBLIC-PANEL-R1-RESULT.md
   tools/build-native-review-form-script.js
   tools/native-review-lib.js
   tools/import-native-review-csv.js
   tools/test-native-review-lib.js
   tools/verify-active-review-workflow.js
+  tools/verify-native-panel-snapshot.js
   archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json
   tools/verify-construction-notes.js
   tools/run-construction-registry-audit.js
@@ -64,6 +69,7 @@ node tools/verify-construction-notes.js >/dev/null
 node tools/run-construction-registry-audit.js >/dev/null
 node tools/verify-active-working-set.js >/dev/null
 node tools/verify-active-review-workflow.js >/dev/null
+node tools/verify-native-panel-snapshot.js >/dev/null
 node tools/test-promotion-gate.js >/dev/null
 node tools/enforce-promotion-rules.js >/dev/null
 

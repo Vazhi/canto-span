@@ -1,5 +1,14 @@
 # Changelog
 
+## Infrastructure migration Phase 8
+
+- Integrated a 23-response RUL01 public native-speaker panel snapshot under a user-authorized one-time protocol exception.
+- Committed an anonymized 23 × 21 judgment matrix, item-level aggregates, comments, and a construction-specific result record.
+- Counted all 23 retained responses as external panel evidence while setting promotion-eligible independent speakers to 0 because the pilot was binary, fixed-order, context-free, and used one late global comment field.
+- Added promotion-gate support for separating total counted speakers from promotion-eligible speakers.
+- Added a 109-check snapshot audit and expanded active reviewer workflow validation.
+- Changed no parser behavior, linguistic status, source count, or standardized construction expectation.
+
 ## Infrastructure migration Phase 7
 
 - Formalized source verification and native-speaker review for the two active construction re-audits.

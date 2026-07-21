@@ -38,12 +38,12 @@ Do not assume continuity from an earlier conversation unless these checks succee
 - `supported_productive`: **0**
 - `PostverbalZoPerfectiveVP`: **provisional_reaudit; Speaker A complete**
 - `ResourceUseLaiFunctionRelation`: **provisional_reaudit**
-- second-speaker forms: **authorized for both active constructions; responses pending; requirement not waived**
+- native-speaker evidence: **RUL01 public pilot snapshot counted at 23 responses with 0 promotion-eligible speakers; PFV01 Speaker B and controlled RUL01 Speaker A remain pending**
 - DEMO01: **abandoned**
 
 ## Current substantive task
 
-Infrastructure migration Phase 7 is complete.
+Infrastructure migration Phase 8 is complete.
 
 The active working set is:
 
@@ -52,7 +52,7 @@ The active working set is:
 
 The other 169 current records are under `grammar/archived/`. They remain runtime-active and retain all evidence, status, and standardized tests. Workflow archiving is not retirement.
 
-Phase 7 formalized source verification and native-speaker review. The canonical packet is `review-packets/native-speaker/active-v1/`: PFV01 has Speaker A complete and a public Speaker B form ready; RUL01 has a private Speaker A form and a public Speaker B form ready. Public forms may be distributed through social media. No returned response changes speaker counts until normalization, duplicate screening, manual adjudication, and a committed result record.
+Phase 7 formalized source verification and native-speaker review. Phase 8 commits the first RUL01 public-panel result: 23 complete responses are retained as external panel evidence under a one-time exception, while `promotion_eligible_independent_speaker_count` remains 0 because the instrument was a binary fixed-order context-free pilot with one late global comment field. The canonical snapshot and result are under `review-packets/native-speaker/active-v1/completed/RUL01-SPEAKER-B-PUBLIC-R1/` and `docs/research/CP026-P1-RUL01-PUBLIC-PANEL-R1-RESULT.md`. Later live responses require a new dated snapshot rather than mutation of R1.
 
 `npm test` runs 545 exact regressions, 43 NP cases, and 1,156 per-construction assertions across 171 standard construction files. Coverage debt remains explicit: 69 runtime-active labels have no direct standardized case.
 

@@ -9,6 +9,7 @@
     "test:regression": "node tests/run-regression.js",
     "test:np": "node tests/run-np-subsystem.js",
     "test:review": "node tools/verify-active-review-workflow.js",
-    "build:forms": "node tools/build-native-review-form-script.js"
+    "build:forms": "node tools/build-native-review-form-script.js",
+    "test:panel": "node tools/verify-native-panel-snapshot.js"
   }
 }

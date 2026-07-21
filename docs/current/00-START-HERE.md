@@ -10,8 +10,8 @@
 - current `supported_productive`: **0**
 - prior accepted constructions under re-audit: **2**
 - standard test command: **`npm test`**
-- infrastructure migration Phase 7: **complete**
-- second-speaker forms: **authorized for the two active constructions; responses pending; archived backlog frozen**
+- infrastructure migration Phase 8: **complete**
+- native-speaker review: **RUL01 public pilot snapshot integrated at 23 responses; promotion-eligible controlled reviews remain pending**
 - DEMO01 promotion track: **abandoned**
 
 Read in this order:

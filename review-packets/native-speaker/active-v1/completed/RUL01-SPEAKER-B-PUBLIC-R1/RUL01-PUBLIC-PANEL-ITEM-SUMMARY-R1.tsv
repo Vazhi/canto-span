@@ -1,0 +1,22 @@
+display_number	item_id	sentence	response_count	natural_or_acceptable	unnatural	natural_percent	disposition	evidence_note
+1	RUL-P03	呢把刀用嚟切肉。	23	21	2	91.3	core_surface_support	Strong panel support for overt instrument/resource + 用嚟 + purpose VP.
+2	RUL-B02	呢個可以用嚟切嘢。	23	20	3	87.0	acceptable_broader_modal_frame	Acceptability does not establish membership in the narrow subtype because 可以 is overt.
+3	RUL-P01	呢個用嚟切嘢。	23	22	1	95.7	core_surface_support	Strong panel support for the exact published surface 呢個用嚟切嘢.
+4	RUL-B05	我用刀切嘢。	23	17	6	73.9	control_warning	Ordinary transitive control was rejected by 6/23, showing residual instrument/context contamination.
+5	RUL-S01	香港用嚟切嘢。	23	1	22	4.3	semantic_plausibility_confounded_rejection	Strong rejection, but place-as-resource implausibility prevents a clean syntactic conclusion.
+6	RUL-P04	呢個杯用嚟飲水。	23	21	2	91.3	core_surface_support	Strong support for overt container/resource + 用嚟 + activity predicate.
+7	RUL-B01	啲錢我用嚟買晒嗰堆嘢。	23	20	3	87.0	acceptable_broader_overt_user_frame	Acceptable broader frame with separate overt user; excluded from narrow subtype.
+8	RUL-B11	呢個用嚟。	23	4	19	17.4	context_free_ellipsis_boundary	Strong rejection in isolation only; contextual ellipsis remains untested.
+9	RUL-P06	呢張紙用來寫字。	23	12	11	52.2	orthography_confounded	用來 spelling/register confound; one comment explicitly rejected 來 as non-Cantonese.
+10	RUL-B07	呢個唔用嚟切嘢。	23	7	16	30.4	negation_boundary_candidate	Majority rejection; requires matched contextual follow-up before a categorical rule.
+11	RUL-Q01	呢個用嚟做咩㗎？	23	23	0	100.0	question_surface_support	Unanimous support for the 做咩 question surface.
+12	RUL-P02	呢張枱用嚟食飯。	23	21	2	91.3	core_surface_support	Strong support for overt object/resource + 用嚟 + activity predicate.
+13	RUL-B12	呢個用嚟切咗嘢。	23	3	20	13.0	perfective_inside_purpose_boundary	Strong rejection of 用嚟 + V咗 in this item; useful narrow boundary evidence.
+14	RUL-B03	呢個係用嚟切嘢。	23	23	0	100.0	copular_surface_support	Unanimous support for 係用嚟 + VP; broader than the narrow no-copula subtype.
+15	RUL-S02	呢個問題用嚟切嘢。	23	0	23	0.0	semantic_plausibility_confounded_rejection	Unanimous rejection, but abstract-problem + cutting semantics confound syntax and plausibility.
+16	RUL-P05	呢支筆用嚟寫字。	23	19	4	82.6	core_surface_support	Strong support for overt instrument/resource + 用嚟 + activity predicate.
+17	RUL-B06	我買刀嚟切嘢。	23	18	5	78.3	purpose_chain_support_not_narrow_subtype	Majority support for 買刀嚟切嘢; a different purposive chain, not direct resource + 用嚟.
+18	RUL-B08	呢個用唔用嚟切嘢？	23	7	16	30.4	a_not_a_boundary_candidate	Majority rejection; requires a better matched form before categorical exclusion.
+19	RUL-B04	呢個用咗嚟切嘢。	23	19	4	82.6	actual_use_perfective_support	Strong support for 用咗嚟 + VP, directly showing the broader actual-use frame is acceptable.
+20	RUL-B10	我用嚟切嘢。	23	20	3	87.0	structurally_ambiguous_acceptability	Strong acceptability, but omitted object/discourse recovery prevents person-as-resource inference.
+21	RUL-B09	用來用去。	23	15	8	65.2	orthography_reduplication_confounded	Mixed result combines 用來 orthography and 用來用去 reduplication; not a clean boundary.

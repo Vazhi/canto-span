@@ -12,7 +12,7 @@
 - retired-label runtime residues: **0**
 - current `supported_productive`: **0**
 - current `provisional_reaudit`: **2**
-- second-speaker forms: **authorized for the two active constructions; responses pending; archived backlog frozen**
+- native-speaker review: **RUL01 public pilot snapshot integrated at 23 responses; PFV01 Speaker B and RUL01 controlled Speaker A remain pending; archived backlog frozen**
 - DEMO01 promotion track: **abandoned**
 
 The canonical construction registry is the union of 2 active notes under [`../../grammar/active/`](../../grammar/active/) and 169 workflow-archived notes under [`../../grammar/archived/`](../../grammar/archived/), indexed by [`../../GRAMMAR-INDEX.md`](../../GRAMMAR-INDEX.md). Workflow archiving does not retire runtime labels or change linguistic status.
@@ -74,7 +74,7 @@ It does not fire for classifier-incompatible or structurally unsupported objects
 - classifier compatibility covers a bounded initial set, not the complete Cantonese classifier system.
 - `呢隻牌子` remains unlicensed because the noun/classifier analysis and native judgment are unresolved.
 - final-`未` question wrapping still does not preserve every possible licensed object analysis.
-- second-speaker requirements remain unmet. Active-construction forms are ready, but no Speaker B response is adjudicated or counted.
+- clean promotion-eligible speaker requirements remain unmet. RUL01 has 23 counted public-panel responses under a one-time pilot exception, but their promotion-eligible speaker count is 0; controlled Speaker A review remains pending.
 
 ## DEMO01 disposition
 
@@ -108,9 +108,20 @@ Current promotion-gate result:
 - construction notes checked: **171**;
 - promoted status records: **0**;
 - non-promoted/quarantined records: **171**;
-- focused gate tests: **8/8 PASS**;
-- active source/reviewer workflow: **117/117 PASS**;
+- focused gate tests: **10/10 PASS**;
+- active source/reviewer workflow: **130/130 PASS**;
+- RUL01 panel snapshot audit: **109/109 PASS**;
 - native-review CSV library: **9/9 PASS**.
+
+## Phase 8 public-panel integration
+
+Phase 8 integrates the first RUL01 public-panel snapshot without changing parser behavior or linguistic status.
+
+- 23/23 retained respondents confirmed native Cantonese from childhood, daily use, complete answers, consent, and independent completion.
+- The anonymized 23 × 21 matrix and item-level aggregate are committed.
+- The user-authorized exception counts 23 external panel responses while keeping `promotion_eligible_independent_speaker_count: 0`.
+- Strong support is recorded for several ordinary direct-resource surfaces, while broader accepted frames, semantic confounds, and instrument defects remain explicit.
+- A mechanical audit recomputes every item count from the anonymized matrix.
 
 ## Phase 7 reviewer workflow
 
@@ -124,4 +135,4 @@ Phase 7 is complete. `review-packets/native-speaker/active-v1/` now owns the two
 
 ## Next action
 
-Create and distribute the generated forms. When responses return, export the linked response sheet as CSV, normalize with `tools/import-native-review-csv.js`, then manually screen duplicates, background, comments, and independence before committing any result record. In parallel, continue semantic and code-document narrowing for both active constructions.
+Complete a controlled RUL01 Speaker A review with a revised instrument, snapshot any later public responses separately, and continue semantic/code-document narrowing. PFV01 public Speaker B remains pending. Do not promote RUL01 from the pilot-panel count alone.

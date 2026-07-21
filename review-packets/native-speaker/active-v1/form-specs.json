@@ -166,6 +166,16 @@
           "item_id": "RUL-B09",
           "sentence": "用來用去。"
         }
+      ],
+      "instrument_class": "pilot_binary_fixed_order_context_free_global_comment",
+      "evidence_tier": "pilot_limited",
+      "known_limitations": [
+        "binary judgment scale",
+        "fixed item order",
+        "no unrelated filler calibration",
+        "context-free ellipsis and interpretation items",
+        "semantic plausibility confounds",
+        "single global comment field after all judgments"
       ]
     }
   ],
@@ -188,7 +198,7 @@
       "title": "廣東話句子自然度評估（二）— 私人評審",
       "description": "請你按平時講廣東話嘅直覺，獨立判斷每句說話聽落自唔自然。唔需要分析語法，表格亦冇提供語法標籤、解析結果或者預設答案。交表之前請唔好同其他評審討論。",
       "consent_required": false,
-      "status": "ready_to_create_and_send_to_speaker_a"
+      "status": "legacy_pilot_form_available_revised_clean_instrument_recommended"
     },
     {
       "form_id": "RUL01-SPEAKER-B-PUBLIC-R1",
@@ -198,7 +208,7 @@
       "title": "廣東話句子自然度評估（二）",
       "description": "請你按平時講廣東話嘅直覺，獨立判斷每句說話聽落自唔自然。唔需要分析語法，表格亦冇提供語法標籤或者預設答案。填表之前請唔好睇其他人嘅答案或者留言，交表之前亦唔好同其他人討論。表格唔收集姓名或者電郵。",
       "consent_required": true,
-      "status": "authorized_ready_to_create_and_distribute"
+      "status": "live_pilot_snapshot_23_committed_2026-07-21"
     }
   ]
 }

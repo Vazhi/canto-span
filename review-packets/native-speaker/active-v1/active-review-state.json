@@ -59,11 +59,32 @@
         "result_record": null
       },
       "speaker_b": {
-        "state": "form_authorized_response_pending",
+        "state": "pilot_panel_counted_exception",
         "form_id": "RUL01-SPEAKER-B-PUBLIC-R1",
-        "result_record": null
+        "response_count": 23,
+        "eligible_response_count": 23,
+        "raw_record": "review-packets/native-speaker/active-v1/completed/RUL01-SPEAKER-B-PUBLIC-R1/RUL01-PUBLIC-PANEL-ANONYMIZED-MATRIX-R1.tsv",
+        "result_record": "docs/research/CP026-P1-RUL01-PUBLIC-PANEL-R1-RESULT.md",
+        "instrument_class": "pilot_binary_fixed_order_context_free_global_comment",
+        "counted_independent_speakers": 23,
+        "promotion_eligible_independent_speakers": 0
       },
-      "counted_independent_speakers": 0
+      "counted_independent_speakers": 23,
+      "promotion_eligible_independent_speakers": 0
+    }
+  ],
+  "protocol_exceptions": [
+    {
+      "exception_id": "RUL01-PUBLIC-PILOT-EXCEPTION-2026-07-21",
+      "construction": "ResourceUseLaiFunctionRelation",
+      "form_id": "RUL01-SPEAKER-B-PUBLIC-R1",
+      "authorized_by_user": true,
+      "authorization_date": "2026-07-21",
+      "counted_native_panel_responses": 23,
+      "promotion_eligible_independent_speakers": 0,
+      "result_record": "docs/research/CP026-P1-RUL01-PUBLIC-PANEL-R1-RESULT.md",
+      "snapshot_record": "review-packets/native-speaker/active-v1/completed/RUL01-SPEAKER-B-PUBLIC-R1/RUL01-PUBLIC-PANEL-SNAPSHOT-R1.json",
+      "scope": "count_as_external_panel_evidence_without_waiving_instrument_limitations_or_promotion_gate"
     }
   ]
 }

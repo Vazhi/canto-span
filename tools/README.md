@@ -27,3 +27,8 @@ The former combined runtime/recovery package builder and package-separation audi
 The current construction registry is the union of `grammar/active/*.md` and `grammar/archived/*.md`. Only the two notes in `grammar/active/` are selected for current work; all 171 records remain runtime-active. The former wide TSV/JSON inputs are frozen under `archive/registry-pre-obsidian-v0.5.184/` and must not be edited as current status records.
 
 The former flat-layout exporter is preserved under `archive/migration-phase6-retired-flat-construction-workflow/` because running it would destroy the Phase 6 triage layout.
+
+
+## Native panel snapshot
+
+`verify-native-panel-snapshot.js` recomputes the committed RUL01 public-panel aggregates from the anonymized 23 × 21 matrix, verifies its SHA-256, and checks that total panel evidence remains separate from the promotion-eligible speaker count.
