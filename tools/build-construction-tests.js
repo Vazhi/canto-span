@@ -4,9 +4,9 @@
 const fs = require("fs");
 const path = require("path");
 const { loadRuntimeApi, internalConstruction } = require("../tests/lib/runtime-api");
+const { loadConstructionNotes } = require("./construction-notes-lib");
 
 const root = path.resolve(__dirname, "..");
-const grammarDir = path.join(root, "grammar");
 const outDir = path.join(root, "tests", "constructions");
 const regressionPath = path.join(root, "tests", "fixtures", "regression-snapshots.json");
 const npPath = path.join(root, "tests", "fixtures", "np-subsystem.json");
@@ -15,9 +15,8 @@ const api = loadRuntimeApi(path.join(root, "main.js"));
 function readJson(file) { return JSON.parse(fs.readFileSync(file, "utf8")); }
 function writeJson(file, value) { fs.writeFileSync(file, JSON.stringify(value, null, 2) + "\n"); }
 
-const labels = fs.readdirSync(grammarDir)
-  .filter((name) => name.endsWith(".md"))
-  .map((name) => name.slice(0, -3))
+const labels = loadConstructionNotes(root)
+  .map((note) => note.frontmatter.construction)
   .sort();
 
 const regression = readJson(regressionPath);

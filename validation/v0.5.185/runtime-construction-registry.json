@@ -2,13 +2,17 @@
   "schema": "canto-span-runtime-construction-registry-audit-v1",
   "runtime_version": "0.5.185",
   "registry_version": "0.5.185",
-  "registry_owner": "grammar/*.md",
+  "registry_owner": "grammar/active/*.md + grammar/archived/*.md",
   "runtime_active_labels": 171,
   "construction_notes": 171,
+  "workflow_counts": {
+    "archived": 169,
+    "active": 2
+  },
   "retired_labels": 10,
   "status_counts_authoring_only": {
-    "research_pending": 58,
     "unsupported_generalization": 87,
+    "research_pending": 58,
     "parser_heuristic": 21,
     "lexicalized_only": 3,
     "provisional_reaudit": 2

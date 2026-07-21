@@ -3,6 +3,7 @@
 
 const fs = require("fs");
 const path = require("path");
+const { findConstructionNote } = require("./construction-notes-lib");
 
 const root = path.resolve(__dirname, "..");
 const index = JSON.parse(fs.readFileSync(path.join(root, "tests", "construction-test-index.json"), "utf8"));
@@ -21,7 +22,8 @@ function setFrontmatter(text, key, serialized, afterKey = null) {
 }
 
 for (const [construction, record] of byConstruction) {
-  const file = path.join(root, "grammar", `${construction}.md`);
+  const note = findConstructionNote(root, construction);
+  const file = note.file;
   let text = fs.readFileSync(file, "utf8");
   const original = text;
   const standardPath = `tests/constructions/${construction}.json`;

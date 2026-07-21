@@ -47,7 +47,7 @@ Prospective held-out testing detects overfitting to visible cases. It is an impl
 
 ## Current records
 
-- construction evidence and status: one note per active label under [`../../grammar/`](../../grammar/)
+- construction evidence and status: one current note per runtime-active label across [`../../grammar/active/`](../../grammar/active/) and [`../../grammar/archived/`](../../grammar/archived/)
 - construction index: [`../../GRAMMAR-INDEX.md`](../../GRAMMAR-INDEX.md)
 - source registers, source matrices, and detailed research records: [`../research/`](../research/)
 - speaker queue: [`../research/SECOND-SPEAKER-REVIEW-QUEUE-v0.5.184-R1.tsv`](../research/SECOND-SPEAKER-REVIEW-QUEUE-v0.5.184-R1.tsv)

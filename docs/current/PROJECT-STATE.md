@@ -4,7 +4,9 @@
 
 - runtime candidate: **v0.5.185**
 - active runtime registry: **171 labels**
-- active authoring registry: **171 construction notes**
+- current authoring registry: **171 construction notes**
+- active working set: **2 notes**
+- workflow-archived current records: **169 notes**
 - runtime-label / construction-note mismatch: **0**
 - authoring evidence embedded in runtime: **none**
 - retired-label runtime residues: **0**
@@ -13,7 +15,7 @@
 - second-speaker work: **frozen; requirement retained**
 - DEMO01 promotion track: **abandoned**
 
-The canonical construction registry is the 171-note collection under [`../../grammar/`](../../grammar/), indexed by [`../../GRAMMAR-INDEX.md`](../../GRAMMAR-INDEX.md).
+The canonical construction registry is the union of 2 active notes under [`../../grammar/active/`](../../grammar/active/) and 169 workflow-archived notes under [`../../grammar/archived/`](../../grammar/archived/), indexed by [`../../GRAMMAR-INDEX.md`](../../GRAMMAR-INDEX.md). Workflow archiving does not retire runtime labels or change linguistic status.
 
 | Linguistic status | Count |
 |---|---:|
@@ -31,7 +33,7 @@ v0.5.185 removes linguistic status from the runtime entirely rather than trying 
 
 - `main.js` contains the active label registry but no construction status, confidence, source, corpus, speaker, or promotion records;
 - `PostverbalZoPerfectiveVP` and `ResourceUseLaiFunctionRelation` remain `provisional_reaudit` in their construction notes;
-- all other linguistic statuses are owned by `grammar/*.md`;
+- all linguistic statuses are owned by the union of `grammar/active/*.md` and `grammar/archived/*.md`;
 - the ten retired labels remain absent from the active runtime registry;
 - no status was promoted.
 
@@ -97,7 +99,9 @@ Git history is now the authoritative change record. The baseline commit preserve
 
 ## Infrastructure migration state
 
-Phase 5 is complete. The active authoring registry consists of 171 Obsidian construction notes, `main.js` retains only active-label information, promotion eligibility is enforced mechanically, and current executable behavior is consolidated under `tests/`. The former wide status, source-accounting, and re-audit tables remain frozen under `archive/registry-pre-obsidian-v0.5.184/`.
+Phase 6 is complete. The active working set is limited to `PostverbalZoPerfectiveVP` and `ResourceUseLaiFunctionRelation`; the other 169 current records are parked under `grammar/archived/`. The 171 runtime labels, evidence bodies, standard tests, and Git history are unchanged. Path/state, priority, and count checks now fail closed.
+
+Phase 5 remains complete. The active authoring registry consists of 171 Obsidian construction notes, `main.js` retains only active-label information, promotion eligibility is enforced mechanically, and current executable behavior is consolidated under `tests/`. The former wide status, source-accounting, and re-audit tables remain frozen under `archive/registry-pre-obsidian-v0.5.184/`.
 
 Current promotion-gate result:
 
@@ -108,4 +112,4 @@ Current promotion-gate result:
 
 ## Next action
 
-Begin infrastructure migration Phase 6: select a small active working set and archive the remainder at the authoring-workflow level without deleting evidence, tests, or runtime history.
+Phase 7 may formalize the repeatable source-checking and native-speaker review workflow. Second-speaker work remains frozen; no new native-speaker form is required by Phase 6.

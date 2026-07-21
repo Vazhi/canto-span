@@ -20,6 +20,6 @@ const unknown = api.labels.filter((x) => !active.has(x) && !retiredSet.has(x));
 const mismatched = [];
 const counts = {};
 for (const status of active.values()) counts[status] = (counts[status] || 0) + 1;
-const result = { runtime_version: api.runtimeVersion, registry_owner: "grammar/*.md", status: (!missing.length && !unknown.length && !mismatched.length && active.size === 171 && retiredSet.size === 10) ? "PASS" : "FAIL", runtime_registry_labels: api.labels.length, active_construction_notes: active.size, retired_labels: retiredSet.size, status_counts: counts, missing_active_labels: missing, unclassified_runtime_labels: unknown, runtime_status_mismatches_not_applicable: mismatched };
+const result = { runtime_version: api.runtimeVersion, registry_owner: "grammar/active/*.md + grammar/archived/*.md", status: (!missing.length && !unknown.length && !mismatched.length && active.size === 171 && retiredSet.size === 10) ? "PASS" : "FAIL", runtime_registry_labels: api.labels.length, active_construction_notes: active.size, retired_labels: retiredSet.size, status_counts: counts, missing_active_labels: missing, unclassified_runtime_labels: unknown, runtime_status_mismatches_not_applicable: mismatched };
 console.log(JSON.stringify(result, null, 2));
 if (result.status !== "PASS") process.exit(1);

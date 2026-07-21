@@ -47,10 +47,16 @@ for (const note of notes) {
   byLabel.set(label, note);
   const filename = path.basename(note.file, ".md");
   check(`filename matches construction: ${filename}`, filename === label, `${filename} != ${label}`);
-  for (const field of ["title", "type", "construction", "status", "confidence", "claim_layer", "lane", "last_reviewed", "speaker_count", "source_count", "verified_source_count", "independent_speaker_count", "negative_cases_drafted", "negative_tests_executable", "negative_tests_passing", "corpus_evidence_used", "corpus_hits_reviewed", "code_document_reconciled", "implementation_validation_separate", "independent_evidence_beyond_internal_tests", "promotion_gate_version", "standard_test_file", "standard_test_coverage", "standard_positive_test_count", "standard_boundary_test_count", "standard_executable_test_count", "source_ids", "runtime_active"]) {
+  for (const field of ["title", "type", "construction", "status", "confidence", "claim_layer", "lane", "last_reviewed", "speaker_count", "source_count", "verified_source_count", "independent_speaker_count", "negative_cases_drafted", "negative_tests_executable", "negative_tests_passing", "corpus_evidence_used", "corpus_hits_reviewed", "code_document_reconciled", "implementation_validation_separate", "independent_evidence_beyond_internal_tests", "promotion_gate_version", "standard_test_file", "standard_test_coverage", "standard_positive_test_count", "standard_boundary_test_count", "standard_executable_test_count", "source_ids", "runtime_active", "workflow_state", "workflow_priority", "workflow_since", "workflow_reason"]) {
     check(`${label} has ${field}`, Object.prototype.hasOwnProperty.call(fm, field));
   }
   check(`${label} type is construction`, fm.type === "canto-span-construction", String(fm.type));
+  check(`${label} workflow state controlled`, ["active", "archived"].includes(fm.workflow_state), String(fm.workflow_state));
+  check(`${label} workflow path matches state`, path.dirname(note.file) === path.join(root, "grammar", String(fm.workflow_state)), note.file);
+  check(`${label} active priority present`, fm.workflow_state !== "active" || (Number.isInteger(fm.workflow_priority) && fm.workflow_priority > 0), String(fm.workflow_priority));
+  check(`${label} archived priority absent`, fm.workflow_state !== "archived" || fm.workflow_priority === null, String(fm.workflow_priority));
+  check(`${label} workflow date valid`, /^\d{4}-\d{2}-\d{2}$/.test(String(fm.workflow_since)), String(fm.workflow_since));
+  check(`${label} workflow reason present`, typeof fm.workflow_reason === "string" && fm.workflow_reason.length > 0, String(fm.workflow_reason));
   check(`${label} source count matches IDs`, Number(fm.source_count) === (Array.isArray(fm.source_ids) ? fm.source_ids.length : -1));
   const verificationCount = countVerifiedSourceRecords(note);
   check(`${label} verified source count matches source records`, Number(fm.verified_source_count) === verificationCount, `${fm.verified_source_count} != ${verificationCount}`);
@@ -78,6 +84,8 @@ for (const note of notes) {
 const runtimeLabels = new Set(runtime.labels);
 const noteLabels = new Set(byLabel.keys());
 check("exactly 171 construction notes", notes.length === 171, String(notes.length));
+check("exactly two active working notes", notes.filter((note) => note.frontmatter.workflow_state === "active").length === 2, String(notes.filter((note) => note.frontmatter.workflow_state === "active").length));
+check("exactly 169 archived working notes", notes.filter((note) => note.frontmatter.workflow_state === "archived").length === 169, String(notes.filter((note) => note.frontmatter.workflow_state === "archived").length));
 check("exactly 171 standard construction test files", fs.readdirSync(path.join(root, "tests", "constructions")).filter((name) => name.endsWith(".json")).length === 171);
 check("runtime has 171 active labels", runtimeLabels.size === 171, String(runtimeLabels.size));
 check("notes exactly match runtime labels", noteLabels.size === runtimeLabels.size && [...runtimeLabels].every((label) => noteLabels.has(label)));
@@ -105,7 +113,7 @@ const expectedCounts = {
   lexicalized_only: 3,
   provisional_reaudit: 2,
 };
-check("status counts remain unchanged after runtime-metadata removal", JSON.stringify(counts) === JSON.stringify(expectedCounts), JSON.stringify(counts));
+check("status counts remain unchanged after runtime-metadata removal", Object.entries(expectedCounts).every(([status, count]) => counts[status] === count) && Object.keys(counts).length === Object.keys(expectedCounts).length, JSON.stringify(counts));
 
 const result = {
   schema: "canto-span-construction-notes-validation-v1",

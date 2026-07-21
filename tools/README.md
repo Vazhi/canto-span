@@ -11,11 +11,11 @@
 - `sync-construction-test-metadata.js` — synchronizes construction-note test paths and counts after a controlled test-inventory change.
 - `run-construction-registry-audit.js` — checks that runtime active labels exactly match the 171 construction notes and exclude retired labels.
 - `verify-phase3-runtime-equivalence.js` — compares v0.5.185 with the v0.5.184 Phase 2 commit across all 545 regression cases after removing only the intentionally migrated metadata fields.
-- `verify-construction-notes.js` — validates the 171 active Obsidian construction notes and their promotion-evidence schema.
+- `verify-construction-notes.js` — validates all 171 current Obsidian construction notes across the active and archived workflow collections.
+- `verify-active-working-set.js` — enforces the two-note active set, 169-note parked set, path/state agreement, priorities, and no promoted archived notes.
 - `test-promotion-gate.js` — proves accepted and rejected status transitions against focused synthetic cases.
 - `enforce-promotion-rules.js` — blocks any `provisional` or `supported_productive` status that fails the current Definition of Done.
 - `promotion-gate-lib.js` — shared fail-closed promotion rules.
-- `migrate-construction-registry-to-notes.js` — reproducible one-time export from the frozen pre-migration registry snapshot.
 - `audit-source-accounting.js` — checks source/status coverage through the construction notes.
 - `run-claim-provenance-audit.js` — checks claim provenance.
 - `verify-documentation-consistency.js` — checks current Markdown links and JSON validity.
@@ -24,4 +24,6 @@ The former embedded-metadata synchronization and legitimacy-audit tools are arch
 
 The former combined runtime/recovery package builder and package-separation audit are archived under `archive/migration-phase1-retired-workflow/tools/`. Git exports now preserve project state. A minimal runtime ZIP may still be built separately for Obsidian installation.
 
-The active construction registry is `grammar/*.md`. The former wide TSV/JSON inputs are frozen under `archive/registry-pre-obsidian-v0.5.184/` and must not be edited as current status records.
+The current construction registry is the union of `grammar/active/*.md` and `grammar/archived/*.md`. Only the two notes in `grammar/active/` are selected for current work; all 171 records remain runtime-active. The former wide TSV/JSON inputs are frozen under `archive/registry-pre-obsidian-v0.5.184/` and must not be edited as current status records.
+
+The former flat-layout exporter is preserved under `archive/migration-phase6-retired-flat-construction-workflow/` because running it would destroy the Phase 6 triage layout.

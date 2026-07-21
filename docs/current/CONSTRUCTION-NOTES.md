@@ -9,17 +9,30 @@ related: "[[DEFINITION-OF-DONE]]"
 
 ## Authority
 
-Each active construction has exactly one note under `grammar/<ConstructionName>.md`. These notes are the authoring-time owner for linguistic status, confidence, sources, speaker scope, claims, boundary records, implementation state, and unresolved questions.
+Every current runtime construction has exactly one authoring note in one of two workflow collections:
 
-`GRAMMAR-INDEX.md` links all active notes and summarizes status counts.
+- `grammar/active/<ConstructionName>.md` — the small current working set;
+- `grammar/archived/<ConstructionName>.md` — current records parked outside the working set.
+
+The union of both directories is the canonical 171-note construction registry. Workflow archiving does **not** retire a label, mark it runtime-inactive, erase its evidence, or change its linguistic status. Retired labels are a separate concept and remain outside the active runtime registry.
+
+`GRAMMAR-INDEX.md` links all 171 notes, lists the active working set first, and summarizes workflow, status, and standardized-test coverage.
+
+## Current working-set rule
+
+The active working set must remain genuinely small. At this checkpoint it contains exactly:
+
+1. `PostverbalZoPerfectiveVP`;
+2. `ResourceUseLaiFunctionRelation`.
+
+A parked note may return to `grammar/active/` only through the same commit that records its new work reason and priority. Workflow state is independent of linguistic status: a supported or provisional construction may be parked when no substantive work is currently scheduled.
 
 ## Required frontmatter
 
 Each construction note records:
 
 - construction name;
-- linguistic status;
-- linguistic confidence;
+- linguistic status and confidence;
 - claim layer and research lane;
 - last recorded review date, or `unknown`;
 - independent speaker count;
@@ -31,13 +44,16 @@ Each construction note records:
 - independent evidence beyond internal tests;
 - promotion-gate schema version;
 - standard construction-test file, coverage state, and positive/boundary/executable counts;
-- runtime activity and basic fixture/reference counts.
+- runtime activity and basic fixture/reference counts;
+- `workflow_state`: `active` or `archived`;
+- `workflow_priority`: a positive integer for active notes, otherwise `null`;
+- `workflow_since` and `workflow_reason`.
 
 The note body records the plain-language claim, citations and locators, speaker-review scope, negative and boundary references, implementation state, blockers, and related constructions.
 
 ## Linking rule
 
-Use plain links such as `[[PostverbalZoPerfectiveVP]]`. Do not use pipe aliases in framework or construction notes.
+Use plain links such as `[[PostverbalZoPerfectiveVP]]`. Do not use pipe aliases in framework or construction notes. Obsidian resolves these links across the active and archived subdirectories by note name.
 
 ## Historical wide schema
 
@@ -54,16 +70,17 @@ Run:
 ```bash
 npm test
 node tools/verify-construction-notes.js
+node tools/verify-active-working-set.js
 node tools/test-promotion-gate.js
 node tools/enforce-promotion-rules.js
 ```
 
-The command must confirm:
+The commands must confirm:
 
-- exactly 171 construction notes;
+- exactly 171 current construction notes;
+- exactly 2 active and 169 workflow-archived notes;
 - exact equality with the runtime active-label set;
-- status equality with the current runtime;
-- required frontmatter fields;
+- required frontmatter fields and path/state agreement;
 - exact one-to-one construction-note / construction-test-file mapping;
 - standardized test-count consistency;
 - source-count consistency;
@@ -73,6 +90,6 @@ The command must confirm:
 
 ## Editing rule
 
-Edit the construction note rather than the archived TSV/JSON registry. Any change to `status`, speaker count, source verification, boundary state, corpus use, or code-document alignment must update the corresponding frontmatter fields in the same commit.
+Edit the current construction note rather than the archived TSV/JSON registry. Any change to `status`, speaker count, source verification, boundary state, corpus use, code-document alignment, or workflow state must update the corresponding frontmatter fields in the same commit.
 
 A note marked `provisional` or `supported_productive` cannot ship unless `tools/enforce-promotion-rules.js` passes. Other statuses are non-promoted by default and cannot become eligible merely because some evidence fields are true.

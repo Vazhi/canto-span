@@ -5,11 +5,12 @@
 - runtime candidate: **v0.5.185**
 - active labels: **171**
 - runtime labels / construction notes: **171 / 171**
+- construction workflow: **2 active / 169 archived**
 - authoring evidence embedded in runtime: **none**
 - current `supported_productive`: **0**
 - prior accepted constructions under re-audit: **2**
 - standard test command: **`npm test`**
-- current migration focus: **active versus archived construction triage**
+- infrastructure migration Phase 6: **complete**
 - second-speaker work: **frozen; requirement retained**
 - DEMO01 promotion track: **abandoned**
 
@@ -33,6 +34,6 @@ Read in this order:
 
 ## Interpretation rule
 
-Current authority is `docs/current/`, the 171 notes under `grammar/`, root `README.md` and `HANDOFF.md`, and the Git history. Research records are evidence, not current instruction. Archived material is historical only.
+Current authority is `docs/current/`, the 171 construction notes under `grammar/active/` and `grammar/archived/`, root `README.md` and `HANDOFF.md`, and the Git history. `grammar/archived/` is a current workflow collection, not historical retirement. Top-level `archive/` and research records remain supporting or historical material rather than current instruction.
 
 Code is ground truth for parser behavior. Current documentation is ground truth for governance and intended design. A mismatch blocks release rather than being documented away.

@@ -1,0 +1,20 @@
+{
+  "schema": "canto-span-active-working-set-validation-v1",
+  "active_count": 2,
+  "archived_count": 169,
+  "active_working_set": [
+    {
+      "construction": "PostverbalZoPerfectiveVP",
+      "priority": 1,
+      "reason": "current_reaudit_non_speaker_semantic_and_implementation_narrowing"
+    },
+    {
+      "construction": "ResourceUseLaiFunctionRelation",
+      "priority": 2,
+      "reason": "current_reaudit_source_boundary_and_code_document_reconciliation"
+    }
+  ],
+  "failed": 0,
+  "status": "PASS",
+  "failures": []
+}

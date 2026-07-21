@@ -84,7 +84,7 @@ A smaller registry can represent progress when broad or unsupported labels are r
 
 Runtime heuristics are the ground truth for what the parser currently checks. Documentation must describe those checks accurately. When code and documentation disagree, fix one and revalidate.
 
-Status metadata is separate from parse behavior. From v0.5.185, linguistic status exists only in `grammar/*.md`; `main.js` stores active labels, not a duplicate status registry. Retired labels are absent from the active runtime registry. A label/note mismatch blocks release.
+Status metadata is separate from parse behavior. From v0.5.185, linguistic status exists only in the union of `grammar/active/*.md` and `grammar/archived/*.md`; `main.js` stores active labels, not a duplicate status registry. Retired labels are absent from the active runtime registry. A label/note mismatch blocks release.
 
 ## Work-product discipline
 

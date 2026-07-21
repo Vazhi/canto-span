@@ -35,7 +35,7 @@ Reduce ceremony, drift risk, and file bloat without restarting the parser or dis
 - source citations, locators, speaker scope, claims, boundary references, implementation state, blockers, and related-construction links were migrated;
 - the export passed 3,641 mechanical checks;
 - the former wide registries were archived under `archive/registry-pre-obsidian-v0.5.184/`;
-- `grammar/*.md` is now the active authoring-time status owner.
+- the union of `grammar/active/*.md` and `grammar/archived/*.md` is now the authoring-time status owner.
 
 ### Phase 3 — Runtime metadata reduction: complete
 
@@ -66,9 +66,17 @@ Reduce ceremony, drift risk, and file bloat without restarting the parser or dis
 - archived the former active fixture locations and manual render-review documents under `archive/migration-phase5-retired-test-workflow/`;
 - exposed remaining coverage debt: 2 labels have positive and boundary tests, 100 have positive-only coverage, and 69 have no direct standardized case.
 
-### Phase 6 — Active versus archived construction triage: pending
+### Phase 6 — Active versus archived construction triage: complete
 
-Choose a small active working set and move the remainder to an explicitly archived collection without deleting their records.
+- selected exactly two current working notes: `PostverbalZoPerfectiveVP` and `ResourceUseLaiFunctionRelation`;
+- moved the other 169 current construction records to `grammar/archived/`;
+- retained `runtime_active: true`, evidence, status, tests, links, and runtime history for every parked note;
+- added explicit workflow state, priority, date, reason, and matching Obsidian tags;
+- updated all current loaders and test-metadata tools to read both workflow collections;
+- added fail-closed path/state, count, priority, and archived-promotion checks;
+- retired the destructive flat-layout regeneration tool to a historical Phase 6 archive;
+- changed no parser behavior, linguistic status, test inventory, or runtime label.
+
 
 ### Phase 7 — Repeatable reviewer workflow: pending
 

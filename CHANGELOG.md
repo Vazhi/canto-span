@@ -1,5 +1,14 @@
 # Changelog
 
+## Infrastructure migration Phase 6
+
+- Limited the active authoring working set to `PostverbalZoPerfectiveVP` and `ResourceUseLaiFunctionRelation`.
+- Moved the other 169 current construction notes to `grammar/archived/` without changing runtime activity, evidence, linguistic status, or tests.
+- Added explicit workflow metadata and fail-closed validation for state, paths, priorities, counts, and promotion attempts.
+- Updated current note loaders, construction-test regeneration, metadata synchronization, documentation, and the grammar index for the split layout.
+- Archived the former flat-layout note exporter because it would erase Phase 6 triage.
+- Changed no parser behavior, runtime labels, source claims, speaker evidence, or standardized test inventory.
+
 ## v0.5.185 — runtime metadata reduction
 
 - Removed the 171-record authoring-time evidence registry from `main.js`.

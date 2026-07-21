@@ -7,16 +7,19 @@ tags: [canto-span/grammar, canto-span/index]
 
 # Grammar index
 
-Active construction notes: **171**
+- Current construction notes: **171**
+- Active working set: **2**
+- Workflow-archived current records: **169**
+
+Workflow archiving parks a note outside current work. It does not retire its runtime label or change its linguistic status.
 
 ## Status counts
 
-- `lexicalized_only`: **3**
-- `parser_heuristic`: **21**
 - `provisional_reaudit`: **2**
 - `research_pending`: **58**
 - `unsupported_generalization`: **87**
-
+- `lexicalized_only`: **3**
+- `parser_heuristic`: **21**
 
 ## Standard test coverage
 
@@ -26,12 +29,17 @@ Active construction notes: **171**
 - no direct standardized cases: **69**
 - command: `npm test`
 
-## Constructions
+## Active working set
 
-- [[ANotAQuestion]] — `research_pending`
+1. [[PostverbalZoPerfectiveVP]] — `provisional_reaudit`; current_reaudit_non_speaker_semantic_and_implementation_narrowing
+2. [[ResourceUseLaiFunctionRelation]] — `provisional_reaudit`; current_reaudit_source_boundary_and_code_document_reconciliation
+
+## Workflow-archived current records
+
 - [[AcceptabilityANotA]] — `unsupported_generalization`
 - [[AcceptabilityClause]] — `unsupported_generalization`
 - [[ActionStativeVP]] — `research_pending`
+- [[ANotAQuestion]] — `research_pending`
 - [[ApproximateQuantity]] — `unsupported_generalization`
 - [[AssociativeNP]] — `unsupported_generalization`
 - [[CausativeResultFrame]] — `unsupported_generalization`
@@ -53,8 +61,8 @@ Active construction notes: **171**
 - [[CompletionThenClause]] — `unsupported_generalization`
 - [[CompletionVP]] — `research_pending`
 - [[CompoundDirectionalMotionVP]] — `unsupported_generalization`
-- [[ConditionResult]] — `unsupported_generalization`
 - [[ConditionalClause]] — `unsupported_generalization`
+- [[ConditionResult]] — `unsupported_generalization`
 - [[CoordinatedNP]] — `unsupported_generalization`
 - [[CopularANotAQuestion]] — `unsupported_generalization`
 - [[CopularIdentificationFrame]] — `parser_heuristic`
@@ -145,9 +153,8 @@ Active construction notes: **171**
 - [[PoliteImperativeClause]] — `unsupported_generalization`
 - [[PossessiveClassifierNP]] — `unsupported_generalization`
 - [[PossessiveTransferClause]] — `unsupported_generalization`
-- [[PostThemeParticipantRelation]] — `research_pending`
 - [[PostposedExistentialQuestion]] — `unsupported_generalization`
-- [[PostverbalZoPerfectiveVP]] — `provisional_reaudit`
+- [[PostThemeParticipantRelation]] — `research_pending`
 - [[PotentialDirectionalVP]] — `research_pending`
 - [[PotentialResultVP]] — `research_pending`
 - [[PreferenceVP]] — `unsupported_generalization`
@@ -169,7 +176,6 @@ Active construction notes: **171**
 - [[RelativeClauseNP]] — `research_pending`
 - [[RepetitiveComplementVP]] — `unsupported_generalization`
 - [[ReportedSpeech]] — `research_pending`
-- [[ResourceUseLaiFunctionRelation]] — `provisional_reaudit`
 - [[RestorativeComplementVP]] — `unsupported_generalization`
 - [[ResultComplement]] — `research_pending`
 - [[ResultComplementVP]] — `research_pending`
@@ -195,7 +201,7 @@ Active construction notes: **171**
 - [[TransformationResultFrame]] — `unsupported_generalization`
 - [[TransformationResultPredicate]] — `unsupported_generalization`
 - [[TransitiveVP]] — `research_pending`
-- [[VPComplementFrame]] — `parser_heuristic`
 - [[VerbComplementVP]] — `research_pending`
 - [[VocativeAddressTerm]] — `lexicalized_only`
+- [[VPComplementFrame]] — `parser_heuristic`
 - [[WhClassifierQuestion]] — `unsupported_generalization`

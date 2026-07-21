@@ -2,8 +2,8 @@
   "schema": "canto-span-promotion-gate-v1",
   "construction_notes": 171,
   "status_counts": {
-    "research_pending": 58,
     "unsupported_generalization": 87,
+    "research_pending": 58,
     "parser_heuristic": 21,
     "lexicalized_only": 3,
     "provisional_reaudit": 2

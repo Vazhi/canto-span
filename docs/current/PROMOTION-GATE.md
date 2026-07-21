@@ -24,7 +24,7 @@ Both commands are also run by `tools/verify-repository.sh`.
 
 ## Required frontmatter fields
 
-Every `grammar/<ConstructionName>.md` note contains:
+Every current note under `grammar/active/` or `grammar/archived/` contains:
 
 - `verified_source_count` — source records whose verification state is explicitly recognized as checked;
 - `independent_speaker_count` — independent project speaker records, equal to `speaker_count`;
@@ -38,7 +38,7 @@ Every `grammar/<ConstructionName>.md` note contains:
 - `independent_evidence_beyond_internal_tests`;
 - `promotion_gate_version` — currently `v1`.
 
-A missing field is a validation failure. Passing executable boundaries require drafted boundaries. Passing boundary tests cannot be asserted when executable tests are absent. Each note also names its `tests/constructions/<ConstructionName>.json` file and records standardized positive, boundary, and total executable counts.
+A missing field is a validation failure. Workflow state does not itself grant or block promotion; the evidence gate applies to every current note in either collection. Passing executable boundaries require drafted boundaries. Passing boundary tests cannot be asserted when executable tests are absent. Each note also names its `tests/constructions/<ConstructionName>.json` file and records standardized positive, boundary, and total executable counts.
 
 ## Status rules
 

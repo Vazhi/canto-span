@@ -14,17 +14,17 @@
 10. `TESTING.md` — standard executable test directory, command, and coverage states.
 11. `CONSTRUCTION-NOTES.md` — construction-note schema and ownership rules.
 12. `INFRASTRUCTURE-MIGRATION.md` — migration phases and current phase state.
-13. `grammar/*.md` and root `GRAMMAR-INDEX.md` — active construction status and evidence records.
+13. `grammar/active/*.md`, `grammar/archived/*.md`, and root `GRAMMAR-INDEX.md` — current construction status, evidence, and workflow records.
 14. Root `README.md` and `HANDOFF.md` — concise entry and resume pointers.
 15. `docs/research/`, `test-data/`, and `tests/` — supporting evidence, research data, and executable records.
-16. `archive/` — historical material only.
+16. top-level `archive/` — historical material only; this is distinct from the current workflow collection `grammar/archived/`.
 
 ## Current machine-readable owners
 
-- construction status and evidence: `grammar/*.md` frontmatter and body records
+- construction status and evidence: the union of `grammar/active/*.md` and `grammar/archived/*.md`
 - construction index: `GRAMMAR-INDEX.md`
 - historical pre-note governance snapshot used by legacy audits: `test-data/grammar-legitimacy-audit.json`
-- active linguistic status and evidence: `grammar/*.md`
+- active linguistic-status authority: the union of `grammar/active/*.md` and `grammar/archived/*.md`
 - standard construction tests: `tests/constructions/*.json`
 - NP matrix: `tests/fixtures/np-subsystem.json`
 - regression snapshots: `tests/fixtures/regression-snapshots.json`

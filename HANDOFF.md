@@ -30,8 +30,9 @@ Do not assume continuity from an earlier conversation unless these checks succee
 ## Binding state
 
 - runtime: **v0.5.185**
-- active labels: **171**
+- active runtime labels: **171**
 - runtime labels / construction notes: **171 / 171**
+- construction workflow: **2 active / 169 archived**
 - authoring evidence embedded in runtime: **none**
 - `supported_productive`: **0**
 - `PostverbalZoPerfectiveVP`: **provisional_reaudit; Speaker A complete**
@@ -41,9 +42,18 @@ Do not assume continuity from an earlier conversation unless these checks succee
 
 ## Current substantive task
 
-Begin infrastructure migration Phase 6: choose a genuinely small active working set and move all other construction notes into an explicitly archived collection without deleting evidence or runtime labels prematurely.
+Infrastructure migration Phase 6 is complete.
 
-Phase 5 is complete. `npm test` runs 545 exact regressions, 43 NP cases, and 1,156 per-construction assertions across 171 standard construction files. Coverage debt remains explicit: 69 active labels have no direct standardized case.
+The active working set is:
+
+1. `grammar/active/PostverbalZoPerfectiveVP.md`;
+2. `grammar/active/ResourceUseLaiFunctionRelation.md`.
+
+The other 169 current records are under `grammar/archived/`. They remain runtime-active and retain all evidence, status, and standardized tests. Workflow archiving is not retirement.
+
+Phase 7 may formalize source-checking and native-speaker review checklists. Second-speaker work remains frozen. Use the stored blinded form method only when a specific evidence gap requires user-mediated review; Phase 6 itself required no native-speaker form.
+
+`npm test` runs 545 exact regressions, 43 NP cases, and 1,156 per-construction assertions across 171 standard construction files. Coverage debt remains explicit: 69 runtime-active labels have no direct standardized case.
 
 ## Save after meaningful work
 

@@ -14,7 +14,9 @@ required=(
   manifest.json
   styles.css
   GRAMMAR-INDEX.md
-  grammar/PostverbalZoPerfectiveVP.md
+  grammar/README.md
+  grammar/active/PostverbalZoPerfectiveVP.md
+  grammar/active/ResourceUseLaiFunctionRelation.md
   docs/current/00-START-HERE.md
   docs/current/DEFINITION-OF-DONE.md
   docs/current/GIT-WORKFLOW.md
@@ -23,6 +25,7 @@ required=(
   tools/verify-construction-notes.js
   tools/run-construction-registry-audit.js
   tools/verify-phase3-runtime-equivalence.js
+  tools/verify-active-working-set.js
   tools/enforce-promotion-rules.js
   tools/test-promotion-gate.js
   tools/promotion-gate-lib.js
@@ -49,6 +52,7 @@ done
 npm test >/dev/null
 node tools/verify-construction-notes.js >/dev/null
 node tools/run-construction-registry-audit.js >/dev/null
+node tools/verify-active-working-set.js >/dev/null
 node tools/test-promotion-gate.js >/dev/null
 node tools/enforce-promotion-rules.js >/dev/null
 
@@ -57,8 +61,10 @@ printf 'repository=%s\nbranch=%s\ncommit=%s\ntracked_files=%s\nconstruction_note
   "$(git branch --show-current)" \
   "$(git rev-parse HEAD)" \
   "$(git ls-files | wc -l | tr -d ' ')" \
-  "$(find grammar -maxdepth 1 -type f -name '*.md' | wc -l | tr -d ' ')" \
+  "$(find grammar/active grammar/archived -maxdepth 1 -type f -name '*.md' | wc -l | tr -d ' ')" \
   "$(git status --porcelain | wc -l | tr -d ' ')"
 
 [[ ! -d render-review ]] || { echo "FAIL: active render-review directory should be archived" >&2; exit 1; }
+[[ "$(find grammar/active -maxdepth 1 -type f -name '*.md' | wc -l | tr -d ' ')" == "2" ]] || { echo "FAIL: expected 2 active construction notes" >&2; exit 1; }
+[[ "$(find grammar/archived -maxdepth 1 -type f -name '*.md' | wc -l | tr -d ' ')" == "169" ]] || { echo "FAIL: expected 169 archived construction notes" >&2; exit 1; }
 [[ "$(find tests/constructions -maxdepth 1 -type f -name '*.json' | wc -l | tr -d ' ')" == "171" ]] || { echo "FAIL: expected 171 construction test files" >&2; exit 1; }

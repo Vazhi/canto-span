@@ -52,7 +52,7 @@ function check(name, condition, detail = "") {
 }
 
 check("runtime has 171 active labels", runtimeLabels.size === 171, String(runtimeLabels.size));
-check("notes have 171 active records", noteLabels.size === 171, String(noteLabels.size));
+check("notes have 171 current records", noteLabels.size === 171, String(noteLabels.size));
 check("runtime labels equal note labels", runtimeLabels.size === noteLabels.size && [...runtimeLabels].every((label) => noteLabels.has(label)));
 check("retired archive has ten labels", retiredLabels.size === 10, String(retiredLabels.size));
 check("retired labels absent from runtime", [...retiredLabels].every((label) => !runtimeLabels.has(label)));
@@ -60,14 +60,20 @@ check("all notes marked runtime_active", notes.every((note) => note.frontmatter.
 check("all statuses use controlled vocabulary", notes.every((note) => allowedStatuses.has(note.frontmatter.status)));
 
 const statusCounts = {};
-for (const note of notes) statusCounts[note.frontmatter.status] = (statusCounts[note.frontmatter.status] || 0) + 1;
+const workflowCounts = {};
+for (const note of notes) {
+  statusCounts[note.frontmatter.status] = (statusCounts[note.frontmatter.status] || 0) + 1;
+  workflowCounts[note.frontmatter.workflow_state] = (workflowCounts[note.frontmatter.workflow_state] || 0) + 1;
+}
+check("workflow split is two active and 169 archived", workflowCounts.active === 2 && workflowCounts.archived === 169, JSON.stringify(workflowCounts));
 const result = {
   schema: "canto-span-runtime-construction-registry-audit-v1",
   runtime_version: runtime.runtimeVersion,
   registry_version: runtime.registryVersion,
-  registry_owner: "grammar/*.md",
+  registry_owner: "grammar/active/*.md + grammar/archived/*.md",
   runtime_active_labels: runtimeLabels.size,
   construction_notes: noteLabels.size,
+  workflow_counts: workflowCounts,
   retired_labels: retiredLabels.size,
   status_counts_authoring_only: statusCounts,
   failed: failures.length,

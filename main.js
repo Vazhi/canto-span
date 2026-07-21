@@ -10,7 +10,7 @@ const { Plugin, PluginSettingTab, Setting, Notice } = require("obsidian");
  */
 
 const CANTO_SPAN_RUNTIME_VERSION = "0.5.185";
-// v0.5.185: removes authoring-time evidence, speaker, corpus, confidence, and linguistic-status metadata from the shipped runtime. main.js now retains parser logic and the active construction-label registry only; governance is owned by grammar/*.md and external validation tools. Structural parser behavior is unchanged from v0.5.184.
+// v0.5.185: removes authoring-time evidence, speaker, corpus, confidence, and linguistic-status metadata from the shipped runtime. main.js now retains parser logic and the active construction-label registry only; governance is owned by grammar/active/*.md and grammar/archived/*.md and external validation tools. Structural parser behavior is unchanged from v0.5.184.
 // v0.5.178: CP022-I1A-I02 performs authorized internal clause-relation graph cleanup only: ClauseLinkingSequence, ClauseRelation, and ClauseRelationMember are represented internally as ClauseRelationGraph, ClauseRelationEdge, and ClauseRelationMemberSpan with compatibility aliases, explicit subtype provenance, and no independent semantic licensing. The global new-grammar freeze remains active outside EP-CP022-I1A-I02-D1.
 // v0.5.177: CP022-I1A-I04 performs authorized internal nominal-wrapper cleanup only: ModifierPhrase is retired, HeadNP is internally renamed NominalHeadSpan, and bounded MeasureExpression/DefinitionComplement representation remains non-licensing. The global new-grammar freeze remains active outside EP-R37-I04.
 // v0.5.176: CP021B-LX1 adds bounded study-suite lexical and Jyutping coverage with grammar construction behavior frozen.
@@ -56,7 +56,7 @@ const DEFAULT_SETTINGS = {
 
 // Runtime construction governance is deliberately minimal. Linguistic status,
 // confidence, sources, speaker records, corpus counts, and promotion eligibility
-// live in grammar/*.md and are validated outside the shipped plugin.
+// live in grammar/active/*.md and grammar/archived/*.md and are validated outside the shipped plugin.
 const RUNTIME_CONSTRUCTION_REGISTRY_VERSION = "0.5.185";
 
 function runtimeConstructionStateFor(type) {
@@ -20360,7 +20360,7 @@ function runtimeConstructionRegistryAuditSummary(analysis) {
   return {
     status: unregisteredRows.length ? "FAIL" : "PASS",
     registry_version: RUNTIME_CONSTRUCTION_REGISTRY_VERSION,
-    policy: "Runtime audit only: every emitted construction label must be present in the active label registry. Linguistic status and evidence are validated from grammar/*.md outside the plugin.",
+    policy: "Runtime audit only: every emitted construction label must be present in the active label registry. Linguistic status and evidence are validated from grammar/active/*.md and grammar/archived/*.md outside the plugin.",
     construction_row_count: rows.length,
     unique_construction_count: new Set(rows.map((row) => row.construction)).size,
     active_row_count: rows.length - unregisteredRows.length,
@@ -22256,7 +22256,7 @@ function noteDiagnosticCoverageSummary(markdown, collected) {
   delete runtimeConstructionRegistryAggregate.constructions;
   runtimeConstructionRegistryAggregate.status = runtimeConstructionRegistryAggregate.unregistered_row_count ? "FAIL" : "PASS";
   runtimeConstructionRegistryAggregate.registry_version = RUNTIME_CONSTRUCTION_REGISTRY_VERSION;
-  runtimeConstructionRegistryAggregate.policy = "Runtime audit only: emitted construction labels must be active. Linguistic status and evidence are validated from grammar/*.md outside the plugin.";
+  runtimeConstructionRegistryAggregate.policy = "Runtime audit only: emitted construction labels must be active. Linguistic status and evidence are validated from grammar/active/*.md and grammar/archived/*.md outside the plugin.";
   const semanticAcceptanceAggregate = renderedSources.reduce((acc, row) => {
     const status = row.semantic_acceptance_status || "REVIEW_REQUIRED";
     acc.status_counts[status] = (acc.status_counts[status] || 0) + 1;
@@ -22964,7 +22964,7 @@ function diagnosticAcceptanceSummaryPayloadFromFull(fullPayload, metadata = {}) 
         "Open the matching full diagnostic whenever compact structure, role assignment, Jyutping, context linkage, doctrine fit, or runtime-label registration looks suspicious even if no trigger fired.",
         "Spot-check at least one row not marked for full review against the full artifact to verify compact/full alignment.",
         "Do not accept a patch solely because audits pass.",
-        "Consult the matching grammar/*.md note for linguistic status, sources, speaker scope, boundaries, and promotion eligibility; the runtime export intentionally omits these authoring records.",
+        "Consult the matching grammar/active/*.md and grammar/archived/*.md note for linguistic status, sources, speaker scope, boundaries, and promotion eligibility; the runtime export intentionally omits these authoring records.",
         "Do not treat parser fixtures, generated probes, or corpus candidate hits as independent validation of a Cantonese grammar claim.",
       ],
       conservative_full_review_triggers: [

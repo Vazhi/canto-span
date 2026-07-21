@@ -3,6 +3,8 @@
 const fs = require("fs");
 const path = require("path");
 
+const WORKFLOW_STATES = ["active", "archived"];
+
 function parseScalar(raw) {
   const value = raw.trim();
   if (value === "null") return null;
@@ -28,13 +30,42 @@ function parseConstructionNote(file) {
   return { file, text, frontmatter, body: text.slice(match[0].length) };
 }
 
-function loadConstructionNotes(root) {
+function constructionNoteDirectories(root) {
   const grammarDir = path.join(root, "grammar");
-  if (!fs.existsSync(grammarDir)) return [];
-  return fs.readdirSync(grammarDir)
-    .filter((name) => name.endsWith(".md"))
-    .sort()
-    .map((name) => parseConstructionNote(path.join(grammarDir, name)));
+  return Object.fromEntries(WORKFLOW_STATES.map((state) => [state, path.join(grammarDir, state)]));
 }
 
-module.exports = { parseConstructionNote, loadConstructionNotes };
+function loadConstructionNotes(root, workflowState = null) {
+  if (workflowState !== null && !WORKFLOW_STATES.includes(workflowState)) {
+    throw new Error(`Unknown construction workflow state: ${workflowState}`);
+  }
+  const directories = constructionNoteDirectories(root);
+  const states = workflowState === null ? WORKFLOW_STATES : [workflowState];
+  const files = [];
+  for (const state of states) {
+    const directory = directories[state];
+    if (!fs.existsSync(directory)) continue;
+    for (const name of fs.readdirSync(directory).filter((item) => item.endsWith(".md")).sort()) {
+      files.push(path.join(directory, name));
+    }
+  }
+  return files.map(parseConstructionNote).sort((a, b) =>
+    String(a.frontmatter.construction).localeCompare(String(b.frontmatter.construction))
+  );
+}
+
+function findConstructionNote(root, construction) {
+  const matches = loadConstructionNotes(root).filter((note) => note.frontmatter.construction === construction);
+  if (matches.length !== 1) {
+    throw new Error(`Expected one construction note for ${construction}; found ${matches.length}`);
+  }
+  return matches[0];
+}
+
+module.exports = {
+  WORKFLOW_STATES,
+  parseConstructionNote,
+  constructionNoteDirectories,
+  loadConstructionNotes,
+  findConstructionNote,
+};

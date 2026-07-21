@@ -4,8 +4,8 @@
   "baseline_runtime_version": "0.5.184",
   "current_runtime_version": "0.5.185",
   "baseline_main_js_bytes": 1657354,
-  "current_main_js_bytes": 1314766,
-  "removed_bytes": 342588,
+  "current_main_js_bytes": 1314931,
+  "removed_bytes": 342423,
   "metadata_leaks": [],
   "compared_cases": 545,
   "authoring_fields_intentionally_removed": [

@@ -1,0 +1,122 @@
+---
+title: "PossessiveTransferClause"
+type: "canto-span-construction"
+construction: "PossessiveTransferClause"
+status: "unsupported_generalization"
+confidence: "unsupported"
+claim_layer: "language"
+lane: "LANE-06"
+last_reviewed: "unknown"
+last_status_migrated: "2026-07-21"
+speaker_count: 0
+source_count: 3
+verified_source_count: 3
+independent_speaker_count: 0
+negative_cases_drafted: false
+negative_tests_executable: false
+negative_tests_passing: false
+corpus_evidence_used: false
+corpus_hits_reviewed: false
+code_document_reconciled: false
+implementation_validation_separate: true
+independent_evidence_beyond_internal_tests: true
+promotion_gate_version: "v1"
+standard_test_file: "tests/constructions/PossessiveTransferClause.json"
+standard_test_coverage: "no_direct_cases"
+standard_positive_test_count: 0
+standard_boundary_test_count: 0
+standard_executable_test_count: 0
+source_ids: ["SRC-LAM-LAU-LEE-2024-SEGMENTATION", "SRC-LI-LEE-2021-DATIVE", "SRC-LUKE-NANCARROW-1998-AUXILIARIES"]
+runtime_active: true
+workflow_state: "archived"
+workflow_priority: null
+workflow_since: "2026-07-21"
+workflow_reason: "not_selected_for_current_bounded_working_set"
+runtime_code_references: 5
+accepted_fixtures: 0
+tags: ["canto-span/grammar", "canto-span/status/unsupported_generalization", "canto-span/lane/lane-06", "canto-span/workflow/archived"]
+---
+
+# PossessiveTransferClause
+
+## Plain-language claim
+
+Cantonese may instantiate the structural family represented by PossessiveTransferClause; exact productivity and boundaries require pattern-specific independent evidence.
+
+This is a linguistic claim only to the extent allowed by the status and evidence below. The runtime label is not assumed to be standard linguistic terminology.
+
+## Current status
+
+- Linguistic status: `unsupported_generalization`
+- Linguistic confidence: `unsupported`
+- Current action: `quarantine_unexercised_runtime_path`
+- Productive acceptance eligible: **no**
+- Last linguistic review: not recorded
+
+## Sources
+
+### SRC-LAM-LAU-LEE-2024-SEGMENTATION
+
+- Citation: [Lam, Charles, Chaak Ming Lau, and Jackson L. Lee. 2024. Multi-Tiered Cantonese Word Segmentation. Proceedings of LREC-COLING 2024, 11993-12002.](https://aclanthology.org/2024.lrec-main.1047/)
+- Locator: PDF p. 5 section 4.5.2; explicit-subject 有 example
+- Verification: `VERIFIED_FULL_TEXT`
+- What it supports: The source distinguishes verbal possessive 有 with an explicit subject from existential-marker 有 without an overt subject.
+- Limit: Do not treat every 有 clause as transfer or combine possession with a later modal automatically.
+
+### SRC-LI-LEE-2021-DATIVE
+
+- Citation: [Li, J. and Lee, P. C. 2021. Syntactic Distribution of the Semantic Classes of Dative Verbs in English and Cantonese.](https://aclanthology.org/2021.paclic-1.66/)
+- Locator: pp. 628-629; examples 2-6
+- Verification: `VERIFIED_FULL_TEXT`
+- What it supports: The paper illustrates bounded lexical GIVE double-object orders and dative verb classes.
+- Limit: Do not infer that every 畀 is transfer, that order is universal, or that a preceding 有+NP licenses the combined clause.
+
+### SRC-LUKE-NANCARROW-1998-AUXILIARIES
+
+- Citation: [Luke, K. K. and O. T. Nancarrow. 1998. Auxiliary Verbs in Cantonese. In Stephen Matthews (ed.), Studies in Cantonese Linguistics. Hong Kong: Linguistic Society of Hong Kong.](https://lshk.org/wp-content/uploads/2022/11/STUDIES-IN-CANTONESE-LINGUISTICS.pdf)
+- Locator: printed pp. 81-98; core/non-core inventories and examples 41-55
+- Verification: `VERIFIED_SCHOLARLY_FULL_TEXT_SCAN`
+- What it supports: Luke and Nancarrow distinguish auxiliary and main-verb uses and discuss position, scope, and lexical meanings including 要.
+- Limit: Do not infer obligation, intention, or one complement type from token presence alone.
+
+## Native-speaker review
+
+- Independent speaker records: **0**
+- Scope: `NOT_ESTABLISHED`
+- Surface judgments: 0 total; 0 accepted; 0 rejected.
+- Structural-analysis validations: 0.
+
+## Negative and boundary cases
+
+- Standard executable test file: `tests/constructions/PossessiveTransferClause.json`
+- Evidence state: `none_recorded`
+- Executable or review records containing this label:
+  - `test-data/grammar-claim-provenance-CP021B.json`
+  - `test-data/grammar-claim-provenance-CP021B.tsv`
+  - `test-data/grammar-legitimacy-audit.json`
+  - `test-data/grammar-legitimacy-audit.tsv`
+
+## Implementation state
+
+- Lifecycle: `runtime_referenced_without_accepted_fixtures`
+- Visible/focused tests: `not_assessed_in_current_definition_of_done_review`
+- Render review: `not_assessed_in_current_definition_of_done_review`
+- Held-out evaluation: `NOT_ESTABLISHED`
+- Regression: `not_assessed_in_current_definition_of_done_review`
+- Code–documentation comparison: `pending_current_definition_of_done_line_by_line_review`
+
+## Open questions and blockers
+
+- no explicit external claim-source edge
+- Runtime metadata and current governance agree in v0.5.184.
+- Research question: Which externally documented Cantonese constructions, if any, justify the scope and boundaries currently represented by PossessiveTransferClause?
+
+## Related constructions
+
+- [[PossessiveClassifierNP]]
+
+## Migration provenance
+
+- Full pre-migration record: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
+- Status migration date: 2026-07-21.
+- The frozen JSON preserves the former wide schema; this note is the active authoring record.
