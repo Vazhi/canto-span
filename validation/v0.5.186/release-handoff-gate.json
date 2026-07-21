@@ -1,0 +1,28 @@
+{
+  "schema": "canto-span-release-handoff-gate-v1",
+  "release_id": "v0.5.186-active-reaudit-closure",
+  "base_tree": "02e93cc3c432d3b0d85ad2d53381b92f52729874",
+  "actual_status_changes": [
+    {
+      "construction": "PostverbalZoPerfectiveVP",
+      "old_status": "provisional_reaudit",
+      "new_status": "provisional"
+    },
+    {
+      "construction": "ResourceUseLaiFunctionRelation",
+      "old_status": "provisional_reaudit",
+      "new_status": "research_pending"
+    },
+    {
+      "construction": "TopicCommentClause",
+      "old_status": "parser_heuristic",
+      "new_status": "retired"
+    }
+  ],
+  "supported_productive_count": 0,
+  "supported_productive_pending_reaudit": [],
+  "retirement_review_gap": 7,
+  "failed": 0,
+  "status": "PASS",
+  "failures": []
+}

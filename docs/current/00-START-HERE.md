@@ -2,17 +2,14 @@
 
 ## Current baseline
 
-- runtime candidate: **v0.5.185**
-- active labels: **171**
-- runtime labels / construction notes: **171 / 171**
-- construction workflow: **2 active / 169 archived**
-- authoring evidence embedded in runtime: **none**
-- current `supported_productive`: **0**
-- prior accepted constructions under re-audit: **2**
+- runtime: **v0.5.186**
+- active labels / construction notes: **170 / 170**
+- workflow: **2 active / 168 archived**
+- retired labels: **11**
+- `supported_productive`: **0**
+- `provisional`: **1**
+- `provisional_reaudit`: **0**
 - standard test command: **`npm test`**
-- infrastructure migration Phase 9: **complete**
-- native-speaker review: **RUL01 public pilot snapshot integrated at 23 responses; promotion-eligible controlled reviews remain pending**
-- DEMO01 promotion track: **abandoned**
 
 Read in this order:
 
@@ -21,20 +18,12 @@ Read in this order:
 3. [`DEFINITION-OF-DONE.md`](DEFINITION-OF-DONE.md)
 4. [`PROMOTION-GATE.md`](PROMOTION-GATE.md)
 5. [`TESTING.md`](TESTING.md)
-6. [`NOUN-PHRASE-SUBSYSTEM.md`](NOUN-PHRASE-SUBSYSTEM.md)
-7. [`STATUS-AND-CONFIDENCE.md`](STATUS-AND-CONFIDENCE.md)
-8. [`EVIDENCE-AND-PROVENANCE.md`](EVIDENCE-AND-PROVENANCE.md)
-9. [`NATIVE-SPEAKER-REVIEW.md`](NATIVE-SPEAKER-REVIEW.md)
-10. [`WORKFLOW.md`](WORKFLOW.md)
-11. [`VALIDATION-AND-ACCEPTANCE.md`](VALIDATION-AND-ACCEPTANCE.md)
-12. [`GIT-WORKFLOW.md`](GIT-WORKFLOW.md)
-13. [`INFRASTRUCTURE-MIGRATION.md`](INFRASTRUCTURE-MIGRATION.md)
-14. [`CONSTRUCTION-NOTES.md`](CONSTRUCTION-NOTES.md)
-15. [`DOCUMENTATION-MAP.md`](DOCUMENTATION-MAP.md)
-16. [`../../GRAMMAR-INDEX.md](../../GRAMMAR-INDEX.md)
+6. [`NATIVE-SPEAKER-REVIEW.md`](NATIVE-SPEAKER-REVIEW.md)
+7. [`GIT-WORKFLOW.md`](GIT-WORKFLOW.md)
+8. [`../../GRAMMAR-INDEX.md`](../../GRAMMAR-INDEX.md)
 
 ## Interpretation rule
 
-Current authority is `docs/current/`, the 171 construction notes under `grammar/active/` and `grammar/archived/`, root `README.md` and `HANDOFF.md`, and the Git history. `grammar/archived/` is a current workflow collection, not historical retirement. Top-level `archive/` and research records remain supporting or historical material rather than current instruction.
+Code is ground truth for parser behavior. Current construction notes are ground truth for linguistic status and evidence. A mismatch blocks release.
 
-Code is ground truth for parser behavior. Current documentation is ground truth for governance and intended design. A mismatch blocks release rather than being documented away.
+Workflow archiving does not retire a label. Retired labels are preserved separately under `archive/retired-labels/` and removed from the current registry.

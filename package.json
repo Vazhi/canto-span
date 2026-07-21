@@ -12,6 +12,7 @@
     "build:forms": "node tools/build-native-review-form-script.js",
     "test:panel": "node tools/verify-native-panel-snapshot.js",
     "test:promotion": "node tools/test-promotion-gate.js && node tools/enforce-promotion-rules.js",
-    "test:release": "node tools/test-release-handoff.js && node tools/verify-release-handoff.js"
+    "test:release": "node tools/test-release-handoff.js && node tools/verify-release-handoff.js",
+    "test:pfv-panel": "node tools/verify-pfv-panel-snapshot.js"
   }
 }

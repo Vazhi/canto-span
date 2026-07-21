@@ -1,3 +1,11 @@
+## v0.5.186 — active re-audit closure
+
+- Closed both current `provisional_reaudit` records without weakening the Definition of Done.
+- Retained `PostverbalZoPerfectiveVP` as a narrow structural `provisional` construction with four checked sources and one clean same-contrast speaker; preserved ten legacy-panel responses as non-promotional evidence.
+- Returned `ResourceUseLaiFunctionRelation` to `research_pending` because its pilot does not resolve the intended parse or code/document boundaries.
+- Retired the unused duplicate `TopicCommentClause` label and preserved its historical record.
+- Runtime now contains 170 labels; `supported_productive` remains 0.
+
 # Changelog
 
 ## v0.5.185 — infrastructure migration Phase 9

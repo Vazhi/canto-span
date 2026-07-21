@@ -26,6 +26,12 @@ required=(
   review-packets/native-speaker/active-v1/form-specs.json
   review-packets/native-speaker/active-v1/active-review-state.json
   review-packets/native-speaker/active-v1/Code.gs
+  review-packets/native-speaker/active-v1/completed/PFV01-SPEAKER-B-PUBLIC-R1/PFV01-PUBLIC-PANEL-SNAPSHOT-R1.json
+  review-packets/native-speaker/active-v1/completed/PFV01-SPEAKER-B-PUBLIC-R1/PFV01-PUBLIC-PANEL-ANONYMIZED-MATRIX-R1.tsv
+  review-packets/native-speaker/active-v1/completed/PFV01-SPEAKER-B-PUBLIC-R1/PFV01-PUBLIC-PANEL-ITEM-SUMMARY-R1.tsv
+  docs/research/CP029-P1-PFV01-PUBLIC-PANEL-R1-RESULT.md
+  docs/research/CP029-P1-PFV01-BOUNDARY-INVENTORY-R1.tsv
+  docs/research/CP029-P1-PFV01-CODE-DOCUMENT-RECONCILIATION-R2.tsv
   review-packets/native-speaker/active-v1/completed/RUL01-SPEAKER-B-PUBLIC-R1/RUL01-PUBLIC-PANEL-SNAPSHOT-R1.json
   review-packets/native-speaker/active-v1/completed/RUL01-SPEAKER-B-PUBLIC-R1/RUL01-PUBLIC-PANEL-ANONYMIZED-MATRIX-R1.tsv
   review-packets/native-speaker/active-v1/completed/RUL01-SPEAKER-B-PUBLIC-R1/RUL01-PUBLIC-PANEL-ITEM-SUMMARY-R1.tsv
@@ -36,6 +42,7 @@ required=(
   tools/test-native-review-lib.js
   tools/verify-active-review-workflow.js
   tools/verify-native-panel-snapshot.js
+  tools/verify-pfv-panel-snapshot.js
   archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json
   tools/verify-construction-notes.js
   tools/run-construction-registry-audit.js
@@ -45,7 +52,11 @@ required=(
   tools/test-promotion-gate.js
   docs/research/CP027-DEFINITION-OF-DONE-ENFORCEMENT-R1.md
   data/retirement-review-state.json
-  docs/releases/v0.5.185-phase9-audit.json
+  docs/research/CP028-TOPICCOMMENTCLAUSE-RETIREMENT-R1.md
+  docs/research/CP030-v0.5.186-ACTIVE-REAUDIT-CLOSURE-R1.md
+  docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv
+  archive/retired-labels/v0.5.186-active-reaudit-closure/TopicCommentClause.md
+  docs/releases/v0.5.186-active-reaudit-closure-audit.json
   tools/verify-release-handoff.js
   test-data/release-handoff-gate-v1.json
   tools/test-release-handoff.js
@@ -74,13 +85,17 @@ done
 npm test >/dev/null
 node tools/verify-construction-notes.js >/dev/null
 node tools/run-construction-registry-audit.js >/dev/null
+node tools/run-research-construction-registry.js >/dev/null
+node tools/audit-source-accounting.js >/dev/null
 node tools/verify-active-working-set.js >/dev/null
 node tools/verify-active-review-workflow.js >/dev/null
 node tools/verify-native-panel-snapshot.js >/dev/null
+node tools/verify-pfv-panel-snapshot.js >/dev/null
 node tools/test-promotion-gate.js >/dev/null
 node tools/enforce-promotion-rules.js >/dev/null
 node tools/test-release-handoff.js >/dev/null
 node tools/verify-release-handoff.js >/dev/null
+node tools/verify-documentation-consistency.js >/dev/null
 
 printf 'repository=%s\nbranch=%s\ncommit=%s\ntracked_files=%s\nconstruction_notes=%s\nstatus_lines=%s\n' \
   "$repo" \
@@ -92,5 +107,5 @@ printf 'repository=%s\nbranch=%s\ncommit=%s\ntracked_files=%s\nconstruction_note
 
 [[ ! -d render-review ]] || { echo "FAIL: active render-review directory should be archived" >&2; exit 1; }
 [[ "$(find grammar/active -maxdepth 1 -type f -name '*.md' | wc -l | tr -d ' ')" == "2" ]] || { echo "FAIL: expected 2 active construction notes" >&2; exit 1; }
-[[ "$(find grammar/archived -maxdepth 1 -type f -name '*.md' | wc -l | tr -d ' ')" == "169" ]] || { echo "FAIL: expected 169 archived construction notes" >&2; exit 1; }
-[[ "$(find tests/constructions -maxdepth 1 -type f -name '*.json' | wc -l | tr -d ' ')" == "171" ]] || { echo "FAIL: expected 171 construction test files" >&2; exit 1; }
+[[ "$(find grammar/archived -maxdepth 1 -type f -name '*.md' | wc -l | tr -d ' ')" == "168" ]] || { echo "FAIL: expected 168 archived construction notes" >&2; exit 1; }
+[[ "$(find tests/constructions -maxdepth 1 -type f -name '*.json' | wc -l | tr -d ' ')" == "170" ]] || { echo "FAIL: expected 170 construction test files" >&2; exit 1; }

@@ -1,0 +1,83 @@
+{
+  "schema": "canto-span-release-handoff-audit-v1",
+  "release_id": "v0.5.186-active-reaudit-closure",
+  "handoff_sequence": 10,
+  "status_changes": [
+    {"construction":"PostverbalZoPerfectiveVP","old_status":"provisional_reaudit","new_status":"provisional"},
+    {"construction":"ResourceUseLaiFunctionRelation","old_status":"provisional_reaudit","new_status":"research_pending"},
+    {"construction":"TopicCommentClause","old_status":"parser_heuristic","new_status":"retired"}
+  ],
+  "changed_construction_audit": [
+    {
+      "construction": "PostverbalZoPerfectiveVP",
+      "old_status": "provisional_reaudit",
+      "new_status": "provisional",
+      "plain_language_claim": "The parser may record the visible structural sequence action predicate plus perfective 咗 plus an overt licensed noun phrase. That structural node does not by itself decide full completion, current relevance, or predicate-object naturalness; semantic incompatibility is handled separately.",
+      "code_locations": ["main.js:3083-3103", "main.js:13644-13735", "main.js:15348-15426", "main.js:21168"],
+      "sources": [
+        {"citation":"Fan and Chan 2022, Language and Linguistics 23(3):371-410","locator":"p. 374 example (3c) and article discussion","verification":"PASS"},
+        {"citation":"Sio and Bond 2025, Inner and outer aspect in Cantonese","locator":"section 2, example (2a), Tables 1-2","verification":"PASS"},
+        {"citation":"Sybesma 2013, Cantonese sin1","locator":"chapter pp. 17-18, example (25a)","verification":"PASS"},
+        {"citation":"Yip and Matthews 2000, Basic Cantonese","locator":"Units 18 and 23","verification":"PASS"}
+      ],
+      "promotion_eligible_speaker_count": 1,
+      "unresolved_questions": [
+        "A second clean independent speaker has not yet judged the same positive and negative contrasts.",
+        "The lexical range of predicate-object combinations remains narrower than the runtime action-verb inventory.",
+        "The split final-未 brand question is excluded from the narrow supported core."
+      ]
+    },
+    {
+      "construction": "ResourceUseLaiFunctionRelation",
+      "old_status": "provisional_reaudit",
+      "new_status": "research_pending",
+      "plain_language_claim": "Several NP plus 用嚟 plus VP strings are acceptable, but current evidence does not establish which accepted strings instantiate the parser's narrow direct-resource relation. Resource scope, overt-user readings, ellipsis, coordination, modal and copular forms, and actual-use readings remain unresolved.",
+      "code_locations": ["main.js:1403", "main.js:1422", "main.js:1447", "main.js:4669", "main.js:8195-8216"],
+      "sources": [
+        {"citation":"Hong Kong Countryside Conservation Office, 細說村屋歷史","locator":"屋主三民叔 quotation containing 呢間屋用嚟...","verification":"CURRENT_PAGE_REOPENED"},
+        {"citation":"Cheung 2018, 緣自何來","locator":"article pp. 20-21, section 5 and footnote 9","verification":"FULL_TEXT_REOPENED"},
+        {"citation":"Chor 2018, directional particles","locator":"checked source record in CP026 source-verification table","verification":"PASS"},
+        {"citation":"Hong Kong Memory, 沙埔 oral history","locator":"checked transcript record in CP026 source-verification table","verification":"PASS"},
+        {"citation":"Wong 2023 LSA paper","locator":"checked source record in CP026 source-verification table","verification":"PASS"}
+      ],
+      "promotion_eligible_speaker_count": 0,
+      "unresolved_questions": [
+        "The controlled Speaker A form has not been completed.",
+        "The public pilot uses a binary fixed-order context-free instrument and does not resolve intended interpretations.",
+        "The runtime's resource classes and relation boundaries have not been reconciled line by line with a defensible linguistic claim."
+      ]
+    },
+    {
+      "construction": "TopicCommentClause",
+      "old_status": "parser_heuristic",
+      "new_status": "retired",
+      "plain_language_claim": "The unused label provided no distinct runtime behavior and duplicated the active TopicComment label, so it was removed from the current grammar while its complete historical note was preserved in the retirement archive.",
+      "code_locations": ["main.js:CONSTRUCTION_LABEL_REGISTRY removal", "archive/retired-labels/v0.5.186-active-reaudit-closure/TopicCommentClause.md"],
+      "sources": [
+        {"citation":"Canto Span dormant-label audit and runtime search","locator":"docs/research/CP028-TOPICCOMMENTCLAUSE-RETIREMENT-R1.md","verification":"PASS_ZERO_RUNTIME_FIXTURE_AND_TEST_REFERENCES"}
+      ],
+      "promotion_eligible_speaker_count": 0,
+      "unresolved_questions": []
+    }
+  ],
+  "supported_productive_pending_reaudit": [],
+  "implementation_validation": "PASS required before handoff: 545 regression cases, 43 NP cases, 1,156 standardized construction assertions, registry and note alignment, both panel audits, promotion-gate tests and enforcement, release-gate tests, and repository verification.",
+  "linguistic_confidence": "supported_productive remains 0. PFV is narrowly provisional with four checked sources, one clean same-contrast speaker, and ten additional grandfathered panel responses that add zero promotion eligibility. RUL is research_pending with five checked sources, a 23-response limited pilot, and zero promotion-eligible speakers. Corpus evidence is not used for either active construction.",
+  "code_analysis_overclaim_review": true,
+  "overclaim_review_scope": "Reviewed the PFV structural template, semantic selection guard, compositional wrapping, learner gloss, RUL relation builder, all changed construction notes, and current release prose. The release does not describe a cleaner or broader analysis than the code implements.",
+  "release_documents": [
+    "docs/research/CP030-v0.5.186-ACTIVE-REAUDIT-CLOSURE-R1.md",
+    "docs/research/CP029-P1-PFV01-PUBLIC-PANEL-R1-RESULT.md",
+    "docs/research/CP028-TOPICCOMMENTCLAUSE-RETIREMENT-R1.md",
+    "HANDOFF.md",
+    "docs/current/PROJECT-STATE.md",
+    "CHANGELOG.md"
+  ],
+  "external_audit_ready": true,
+  "unresolved_release_questions": [
+    "No construction is supported_productive under the current Definition of Done.",
+    "PFV still needs a second clean same-contrast speaker before productive promotion can be considered.",
+    "RUL needs a revised interpretation-sensitive instrument and exact code-document reconciliation before provisional status can be reconsidered."
+  ],
+  "base_tree": "02e93cc3c432d3b0d85ad2d53381b92f52729874"
+}

@@ -46,7 +46,7 @@ The 69 uncovered labels are visible test debt. Their empty files do not claim th
 
 ## Boundary suites
 
-`PostverbalZoPerfectiveVP` and `ResourceUseLaiFunctionRelation` currently have explicit standardized positive and boundary suites. Both suites pass, but both constructions remain `provisional_reaudit` because executable behavior is only one part of the Definition of Done.
+`PostverbalZoPerfectiveVP` and `ResourceUseLaiFunctionRelation` currently have explicit standardized positive and boundary suites. Both suites pass, but executable behavior is only one part of the Definition of Done. PFV is narrowly `provisional`; RUL is `research_pending`.
 
 ## Updating tests
 

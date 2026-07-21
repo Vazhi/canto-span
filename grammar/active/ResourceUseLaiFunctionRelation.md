@@ -2,8 +2,8 @@
 title: "ResourceUseLaiFunctionRelation"
 type: "canto-span-construction"
 construction: "ResourceUseLaiFunctionRelation"
-status: "provisional_reaudit"
-confidence: "not_assigned_pending_reaudit"
+status: "research_pending"
+confidence: "pilot_support_analysis_unresolved"
 claim_layer: "language"
 lane: "LANE-01"
 last_reviewed: "2026-07-21"
@@ -32,7 +32,7 @@ code_document_reconciled: false
 code_document_review_date: null
 code_document_review_commit: null
 code_document_code_locations: []
-current_standard_reaudit_complete: false
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v2"
@@ -55,23 +55,24 @@ workflow_since: "2026-07-21"
 workflow_reason: "current_reaudit_source_boundary_and_code_document_reconciliation"
 runtime_code_references: 5
 accepted_fixtures: 29
-tags: ["canto-span/grammar", "canto-span/status/provisional_reaudit", "canto-span/lane/lane-01", "canto-span/workflow/active"]
+tags: ["canto-span/grammar", "canto-span/status/research_pending", "canto-span/lane/lane-01", "canto-span/workflow/active"]
 ---
 
 # ResourceUseLaiFunctionRelation
 
 ## Plain-language claim
 
-Reviewed sources and a 23-response predominantly Hong Kong native-speaker pilot panel support several ordinary direct-resource `NP + 用嚟 + VP` surfaces. The same panel also accepts several modal, copular, overt-user, actual-use, and ellipsis-compatible strings outside the narrow subtype. Instrument limitations and unresolved semantic/code boundaries prevent a broader productive claim, so the runtime label remains under re-audit.
+Checked sources and the 23-response predominantly Hong Kong pilot show that several ordinary `NP + 用嚟 + VP` strings are acceptable. They also show that modal, copular, overt-user, actual-use, and ellipsis-compatible strings can be acceptable for reasons outside the current narrow parser label. Because the pilot cannot identify the intended parse and the runtime's resource classes, predicate scope, coordination behavior, and broader `用...嚟` relations remain unresolved, no defensible construction claim is ready for `provisional`. The label returns to `research_pending`.
 
-This is a linguistic claim only to the extent allowed by the status and evidence below. The runtime label is not assumed to be standard linguistic terminology.
+This is a research target, not a current productive Cantonese grammar claim. The runtime label is not assumed to be standard linguistic terminology.
 
 ## Current status
 
-- Linguistic status: `provisional_reaudit`
-- Linguistic confidence: `not_assigned_pending_reaudit`
-- Current action: `prior_acceptance_withdrawn_pending_current_definition_of_done_reaudit`
+- Linguistic status: `research_pending`
+- Linguistic confidence: `pilot_support_analysis_unresolved`
+- Current action: `design_controlled_interpretation_instrument_and_reconcile_resource_scope_before_reconsidering_provisional`
 - Productive acceptance eligible: **no**
+- Current-standard re-audit disposition: **complete; downgraded rather than promoted**
 - Last linguistic review: 2026-07-21
 
 ## Sources
@@ -152,13 +153,11 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 ## Open questions and blockers
 
-- full current Definition of Done remains incomplete
-- required before promotion: at least two promotion-eligible independent speaker reviews using a controlled instrument, including Speaker A; the 23-response public pilot is counted panel evidence but contributes zero promotion-eligible speakers
-- Speaker A controlled response pending; public panel integrated under a one-time pilot exception; semantic resource/predicate scope; coordination coverage; exact code-doc alignment
-- CP026 found one direct quote, one editorial interview-derived narrative, one published illustrative example, one purposive/conventionalization source, and one boundary source. Runtime status metadata is aligned in v0.5.184; semantic resource/predicate scope and coordinated predicate coverage remain unresolved. Twenty-three public panel responses are counted as limited external evidence, while zero responses from that pilot are promotion-eligible; the Speaker A controlled review remains pending.
-- Runtime status metadata now agrees with governance. Semantic resource/predicate licensing and coordinated source-predicate coverage remain unresolved; Speaker B public-panel screening and adjudication are committed for the 23-response snapshot, but the pilot instrument remains ineligible for the clean promotion gate.
-- Research question: Which externally documented Cantonese constructions, if any, justify the scope and boundaries currently represented by ResourceUseLaiFunctionRelation?
-- Next evidence action: complete Speaker A with a revised controlled instrument, then continue narrowing the resource-function interface and code-document alignment. Preserve the public R1 panel as pilot evidence rather than reusing it as a clean gate.
+- No promotion-eligible controlled speaker has yet judged the same positive, negative, and interpretation contrasts.
+- The public pilot establishes acceptability patterns but does not identify the structural reading assigned by respondents.
+- Resource semantics, coordinated predicates, modal and copular frames, actual-use `用咗嚟`, negation, A-not-A, and contextual ellipsis require separate analyses.
+- The runtime and public claim are not reconciled closely enough for `provisional`.
+- Next evidence action: complete the revised private Speaker A instrument, then collect an independent clean response using the same locked instrument. Include graded naturalness, interpretation choices, contexts, unrelated fillers, randomized order, and per-item correction fields.
 
 ## Related constructions
 

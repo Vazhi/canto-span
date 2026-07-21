@@ -92,11 +92,11 @@ for (const note of notes) {
 
 const runtimeLabels = new Set(runtime.labels);
 const noteLabels = new Set(byLabel.keys());
-check("exactly 171 construction notes", notes.length === 171, String(notes.length));
+check("exactly 170 construction notes", notes.length === 170, String(notes.length));
 check("exactly two active working notes", notes.filter((note) => note.frontmatter.workflow_state === "active").length === 2, String(notes.filter((note) => note.frontmatter.workflow_state === "active").length));
-check("exactly 169 archived working notes", notes.filter((note) => note.frontmatter.workflow_state === "archived").length === 169, String(notes.filter((note) => note.frontmatter.workflow_state === "archived").length));
-check("exactly 171 standard construction test files", fs.readdirSync(path.join(root, "tests", "constructions")).filter((name) => name.endsWith(".json")).length === 171);
-check("runtime has 171 active labels", runtimeLabels.size === 171, String(runtimeLabels.size));
+check("exactly 168 archived working notes", notes.filter((note) => note.frontmatter.workflow_state === "archived").length === 168, String(notes.filter((note) => note.frontmatter.workflow_state === "archived").length));
+check("exactly 170 standard construction test files", fs.readdirSync(path.join(root, "tests", "constructions")).filter((name) => name.endsWith(".json")).length === 170);
+check("runtime has 170 active labels", runtimeLabels.size === 170, String(runtimeLabels.size));
 check("notes exactly match runtime labels", noteLabels.size === runtimeLabels.size && [...runtimeLabels].every((label) => noteLabels.has(label)));
 check("all notes are runtime active", notes.every((note) => note.frontmatter.runtime_active === true));
 
@@ -116,13 +116,13 @@ if (fs.existsSync(snapshotFile)) {
 const counts = {};
 for (const note of notes) counts[note.frontmatter.status] = (counts[note.frontmatter.status] || 0) + 1;
 const expectedCounts = {
-  research_pending: 58,
+  provisional: 1,
+  research_pending: 59,
   unsupported_generalization: 87,
-  parser_heuristic: 21,
+  parser_heuristic: 20,
   lexicalized_only: 3,
-  provisional_reaudit: 2,
 };
-check("status counts remain unchanged after runtime-metadata removal", Object.entries(expectedCounts).every(([status, count]) => counts[status] === count) && Object.keys(counts).length === Object.keys(expectedCounts).length, JSON.stringify(counts));
+check("status counts match v0.5.186 re-audit closure", Object.entries(expectedCounts).every(([status, count]) => counts[status] === count) && Object.keys(counts).length === Object.keys(expectedCounts).length, JSON.stringify(counts));
 
 const result = {
   schema: "canto-span-construction-notes-validation-v1",

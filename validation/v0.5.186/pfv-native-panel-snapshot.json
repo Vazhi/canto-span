@@ -1,0 +1,11 @@
+{
+  "schema": "canto-span-native-panel-snapshot-audit-v1",
+  "construction": "PostverbalZoPerfectiveVP",
+  "response_count": 10,
+  "item_count": 14,
+  "check_count": 85,
+  "passed": 85,
+  "failed": 0,
+  "status": "PASS",
+  "failures": []
+}

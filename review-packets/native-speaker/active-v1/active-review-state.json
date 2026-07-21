@@ -37,11 +37,19 @@
         "result_record": "docs/research/CP025-P1-PFV01-SPEAKER-A-RESULT-R2.md"
       },
       "speaker_b": {
-        "state": "form_authorized_response_pending",
+        "state": "legacy_panel_counted_exception",
         "form_id": "PFV01-SPEAKER-B-PUBLIC-R1",
-        "result_record": null
+        "response_count": 10,
+        "eligible_response_count": 10,
+        "raw_record": "review-packets/native-speaker/active-v1/completed/PFV01-SPEAKER-B-PUBLIC-R1/PFV01-PUBLIC-PANEL-ANONYMIZED-MATRIX-R1.tsv",
+        "result_record": "docs/research/CP029-P1-PFV01-PUBLIC-PANEL-R1-RESULT.md",
+        "instrument_class": "legacy_binary_fixed_order_per_item_comment_no_explicit_native_or_consent_fields",
+        "counted_independent_speakers": 10,
+        "promotion_eligible_independent_speakers": 0
       },
-      "counted_independent_speakers": 1
+      "counted_independent_speakers": 11,
+      "promotion_eligible_independent_speakers": 1,
+      "current_disposition": "provisional"
     },
     {
       "construction": "ResourceUseLaiFunctionRelation",
@@ -70,7 +78,8 @@
         "promotion_eligible_independent_speakers": 0
       },
       "counted_independent_speakers": 23,
-      "promotion_eligible_independent_speakers": 0
+      "promotion_eligible_independent_speakers": 0,
+      "current_disposition": "research_pending"
     }
   ],
   "protocol_exceptions": [
@@ -85,6 +94,18 @@
       "result_record": "docs/research/CP026-P1-RUL01-PUBLIC-PANEL-R1-RESULT.md",
       "snapshot_record": "review-packets/native-speaker/active-v1/completed/RUL01-SPEAKER-B-PUBLIC-R1/RUL01-PUBLIC-PANEL-SNAPSHOT-R1.json",
       "scope": "count_as_external_panel_evidence_without_waiving_instrument_limitations_or_promotion_gate"
+    },
+    {
+      "exception_id": "PFV01-LEGACY-PANEL-EXCEPTION-2026-07-21",
+      "construction": "PostverbalZoPerfectiveVP",
+      "form_id": "PFV01-SPEAKER-B-PUBLIC-R1",
+      "authorized_by_user": true,
+      "authorization_date": "2026-07-21",
+      "counted_native_panel_responses": 10,
+      "promotion_eligible_independent_speakers": 0,
+      "result_record": "docs/research/CP029-P1-PFV01-PUBLIC-PANEL-R1-RESULT.md",
+      "snapshot_record": "review-packets/native-speaker/active-v1/completed/PFV01-SPEAKER-B-PUBLIC-R1/PFV01-PUBLIC-PANEL-SNAPSHOT-R1.json",
+      "scope": "count_as_external_same_contrast_panel_evidence_without_inventing_missing_native_confirmation_or_consent_fields"
     }
   ]
 }

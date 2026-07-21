@@ -94,7 +94,7 @@ Historical implementation acceptance does not satisfy these fields.
 - requires an explicit code-versus-release-document overclaim review;
 - checks the 10–20 handoff dormant-label review cadence.
 
-The current audit record is `docs/releases/v0.5.185-phase9-audit.json`.
+The current audit record is `docs/releases/v0.5.186-active-reaudit-closure-audit.json`.
 
 ## Non-promoted statuses
 

@@ -1,0 +1,6 @@
+review_area	code_location	runtime_behavior	public_documentation	result
+core_template	main.js:3083-3103	action_verb + perfective_aspect + licensed object; no hidden arguments	Narrow structural V + 咗 + overt licensed NP claim	MATCH
+completion_semantics	main.js:3095-3103	no separate completion/result node; completion semantics explicitly not decided by this node	Does not deny completion, boundedness, temporal, or current-relevance interpretations	MATCH
+compositional_np_object	main.js:15348-15426	recomposes complete licensed bare, quantified, associative, coordinated, or other supported NP objects	Claim is limited to overt licensed NP objects and does not assert the full Cantonese NP system	MATCH
+selectional_compatibility	main.js:13644-13735	structural span preserved; high-confidence incompatibility wraps analysis as NeedsContext	Structural recognition and semantic naturalness are documented separately	MATCH
+learner_gloss	main.js:21168	plain-language perfective structural gloss with separate interpretation	Public description uses ordinary prose and avoids no-completion overstatement	MATCH

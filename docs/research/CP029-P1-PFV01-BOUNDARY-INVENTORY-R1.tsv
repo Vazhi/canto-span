@@ -1,0 +1,14 @@
+boundary_id	profile	example	expected_parser_disposition	executable_reference	review_result
+PFV-BOUND-01	objectless_perfective	我食咗。	PostverbalZoPerfectiveVP absent; broader PerfectiveVP allowed	tests/constructions/PostverbalZoPerfectiveVP.json P1-N01	PASS
+PFV-BOUND-02	completion_marker_before_zo	我食完咗飯。	PostverbalZoPerfectiveVP absent; CompletionVP route	tests/constructions/PostverbalZoPerfectiveVP.json P1-N02	PASS
+PFV-BOUND-03	motion_goal_perfective	我去咗香港。	PostverbalZoPerfectiveVP absent; MotionGoalVP route	tests/constructions/PostverbalZoPerfectiveVP.json P1-N03	PASS
+PFV-BOUND-04	experiential_marker	我食過飯。	PostverbalZoPerfectiveVP absent; ExperientialVP route	tests/constructions/PostverbalZoPerfectiveVP.json P1-N04	PASS
+PFV-BOUND-05	progressive_marker	我食緊飯。	PostverbalZoPerfectiveVP absent; progressive route	tests/constructions/PostverbalZoPerfectiveVP.json P1-N05	PASS
+PFV-BOUND-06	bare_vo	我食飯。	PostverbalZoPerfectiveVP absent	tests/constructions/PostverbalZoPerfectiveVP.json P1-N07	PASS
+PFV-BOUND-07	placement_profile	牆上面擺咗部電話。	PostverbalZoPerfectiveVP absent; placement profile retained	tests/constructions/PostverbalZoPerfectiveVP.json P1-N08	PASS
+PFV-BOUND-08	selectional_anomaly	我食咗香港。	structural PFV span may remain; clean clause blocked under NeedsContext	tests/constructions/PostverbalZoPerfectiveVP.json P1-N06 plus exact snapshots	PASS
+PFV-BOUND-09	classifier_incompatible_object	我飲咗三本水。	PostverbalZoPerfectiveVP absent	tests/constructions/PostverbalZoPerfectiveVP.json NP-N001	PASS
+PFV-BOUND-10	classifier_incompatible_object	我睇咗三杯書。	PostverbalZoPerfectiveVP absent	tests/constructions/PostverbalZoPerfectiveVP.json NP-N002	PASS
+PFV-BOUND-11	unsupported_numeral_noun_shape	我睇咗三書。	PostverbalZoPerfectiveVP absent	tests/constructions/PostverbalZoPerfectiveVP.json NP-N003	PASS
+PFV-BOUND-12	unknown_nominal_head	我睇咗三個𠮶。	PostverbalZoPerfectiveVP absent	tests/constructions/PostverbalZoPerfectiveVP.json NP-N004	PASS
+PFV-BOUND-13	unverified_brand_question	你買咗呢隻牌子未呀？	outside current licensed-object claim; narrow subtype absent	tests/constructions/PostverbalZoPerfectiveVP.json NP-N005	PASS

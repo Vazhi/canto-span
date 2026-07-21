@@ -1,0 +1,17 @@
+{
+  "schema": "canto-span-standard-construction-test-result-v1",
+  "runtime_version": "0.5.186",
+  "construction_file_count": 170,
+  "coverage": {
+    "positive_and_boundary": 2,
+    "positive_only": 100,
+    "boundary_only": 0,
+    "no_direct_cases": 68
+  },
+  "uncovered_construction_count": 68,
+  "executable_reference_count": 1156,
+  "passed": 1156,
+  "failed": 0,
+  "status": "PASS",
+  "failures": []
+}

@@ -7,32 +7,35 @@ tags: [canto-span/grammar, canto-span/index]
 
 # Grammar index
 
-- Current construction notes: **171**
+- Current construction notes: **170**
 - Active working set: **2**
-- Workflow-archived current records: **169**
+- Workflow-archived current records: **168**
+- Retired labels: **11**
 
 Workflow archiving parks a note outside current work. It does not retire its runtime label or change its linguistic status.
 
 ## Status counts
 
-- `provisional_reaudit`: **2**
-- `research_pending`: **58**
+- `supported_productive`: **0**
+- `provisional_reaudit`: **0**
+- `provisional`: **1**
+- `research_pending`: **59**
 - `unsupported_generalization`: **87**
 - `lexicalized_only`: **3**
-- `parser_heuristic`: **21**
+- `parser_heuristic`: **20**
 
 ## Standard test coverage
 
 - positive and boundary: **2**
 - positive only: **100**
 - boundary only: **0**
-- no direct standardized cases: **69**
+- no direct standardized cases: **68**
 - command: `npm test`
 
 ## Active working set
 
-1. [[PostverbalZoPerfectiveVP]] — `provisional_reaudit`; current_reaudit_non_speaker_semantic_and_implementation_narrowing
-2. [[ResourceUseLaiFunctionRelation]] — `provisional_reaudit`; current_reaudit_source_boundary_and_code_document_reconciliation
+1. [[PostverbalZoPerfectiveVP]] — `provisional`; current_reaudit_non_speaker_semantic_and_implementation_narrowing
+2. [[ResourceUseLaiFunctionRelation]] — `research_pending`; current_reaudit_source_boundary_and_code_document_reconciliation
 
 ## Workflow-archived current records
 
@@ -197,7 +200,6 @@ Workflow archiving parks a note outside current work. It does not retire its run
 - [[TimeToActionFrame]] — `unsupported_generalization`
 - [[Topic]] — `parser_heuristic`
 - [[TopicComment]] — `parser_heuristic`
-- [[TopicCommentClause]] — `parser_heuristic`
 - [[TransformationResultFrame]] — `unsupported_generalization`
 - [[TransformationResultPredicate]] — `unsupported_generalization`
 - [[TransitiveVP]] — `research_pending`

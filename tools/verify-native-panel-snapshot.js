@@ -75,7 +75,7 @@ check("RUL state counts 23 panel speakers", Number(rulState?.counted_independent
 check("RUL state promotion-eligible count remains zero", Number(rulState?.promotion_eligible_independent_speakers) === 0, rulState?.promotion_eligible_independent_speakers);
 check("construction note counts 23 responses", Number(note?.frontmatter?.independent_speaker_count) === 23, note?.frontmatter?.independent_speaker_count);
 check("construction note promotion-eligible count remains zero", Number(note?.frontmatter?.promotion_eligible_independent_speaker_count) === 0, note?.frontmatter?.promotion_eligible_independent_speaker_count);
-check("construction remains provisional re-audit", note?.frontmatter?.status === "provisional_reaudit", note?.frontmatter?.status);
+check("construction returns to research pending", note?.frontmatter?.status === "research_pending", note?.frontmatter?.status);
 check("exception does not authorize automatic promotion", exception?.scope === "count_as_external_panel_evidence_without_waiving_instrument_limitations_or_promotion_gate", exception?.scope);
 
 const report = {

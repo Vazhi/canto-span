@@ -100,10 +100,10 @@ for (const entry of state.constructions) {
 
   for (const slotName of ["speaker_a", "speaker_b"]) {
     const slot = entry[slotName];
-    if (["complete_counted", "pilot_panel_counted_exception"].includes(slot.state)) {
+    if (["complete_counted", "pilot_panel_counted_exception", "legacy_panel_counted_exception"].includes(slot.state)) {
       check(`${entry.construction} ${slotName} raw record exists`, Boolean(slot.raw_record) && fs.existsSync(path.join(root, slot.raw_record)));
       check(`${entry.construction} ${slotName} result record exists`, Boolean(slot.result_record) && fs.existsSync(path.join(root, slot.result_record)));
-      if (slot.state === "pilot_panel_counted_exception") {
+      if (["pilot_panel_counted_exception", "legacy_panel_counted_exception"].includes(slot.state)) {
         check(`${entry.construction} ${slotName} pilot form remains traceable`, Boolean(slot.form_id) && formsById.has(slot.form_id));
         check(`${entry.construction} ${slotName} pilot count is positive`, Number(slot.counted_independent_speakers) > 0, slot.counted_independent_speakers);
         check(`${entry.construction} ${slotName} pilot does not satisfy clean promotion count`, Number(slot.promotion_eligible_independent_speakers) === 0, slot.promotion_eligible_independent_speakers);
@@ -113,6 +113,15 @@ for (const entry of state.constructions) {
       check(`${entry.construction} ${slotName} pending state has a form`, Boolean(slot.form_id) && formsById.has(slot.form_id));
     }
   }
+}
+
+const pfvException = (state.protocol_exceptions || []).find((entry) => entry.exception_id === "PFV01-LEGACY-PANEL-EXCEPTION-2026-07-21");
+check("PFV legacy-panel exception is recorded", Boolean(pfvException));
+if (pfvException) {
+  check("PFV legacy-panel exception counts 10 panel responses", Number(pfvException.counted_native_panel_responses) === 10, pfvException.counted_native_panel_responses);
+  check("PFV legacy-panel exception keeps promotion eligible count at zero", Number(pfvException.promotion_eligible_independent_speakers) === 0, pfvException.promotion_eligible_independent_speakers);
+  check("PFV legacy-panel result record exists", fs.existsSync(path.join(root, pfvException.result_record)));
+  check("PFV legacy-panel snapshot record exists", fs.existsSync(path.join(root, pfvException.snapshot_record)));
 }
 
 const rulException = (state.protocol_exceptions || []).find((entry) => entry.exception_id === "RUL01-PUBLIC-PILOT-EXCEPTION-2026-07-21");

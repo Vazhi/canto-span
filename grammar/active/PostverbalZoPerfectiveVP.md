@@ -2,23 +2,25 @@
 title: "PostverbalZoPerfectiveVP"
 type: "canto-span-construction"
 construction: "PostverbalZoPerfectiveVP"
-status: "provisional_reaudit"
-confidence: "not_assigned_pending_reaudit"
+status: "provisional"
+confidence: "moderate_narrow_structural_profile"
 claim_layer: "language"
 lane: "LANE-05"
 last_reviewed: "2026-07-21"
 last_status_migrated: "2026-07-21"
-speaker_count: 1
+speaker_count: 11
 source_count: 4
 verified_source_count: 4
-independent_speaker_count: 1
+independent_speaker_count: 11
+promotion_eligible_independent_speaker_count: 1
 same_contrast_independent_speaker_count: 1
 native_positive_contrasts_reviewed: true
 native_negative_contrasts_reviewed: true
+pilot_panel_response_count: 10
 negative_cases_drafted: true
 negative_tests_executable: true
 negative_tests_passing: true
-negative_boundary_inventory_complete: false
+negative_boundary_inventory_complete: true
 corpus_evidence_used: false
 corpus_hits_reviewed: false
 corpus_candidate_hit_count: 0
@@ -26,11 +28,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-21"
+code_document_review_commit: "d08367dcf0f13d57b39a406ddf72388ba079a9e6"
+code_document_code_locations: ["main.js:3083-3103", "main.js:13644-13735", "main.js:15348-15426", "main.js:21168"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v2"
@@ -39,7 +41,7 @@ native_review_state_file: "review-packets/native-speaker/active-v1/active-review
 native_form_spec_file: "review-packets/native-speaker/active-v1/form-specs.json"
 source_verification_file: "docs/research/CP025-P1-PFV01-SOURCE-VERIFICATION-R1.tsv"
 speaker_a_state: "complete_counted"
-speaker_b_state: "form_authorized_response_pending"
+speaker_b_state: "legacy_panel_counted_exception"
 standard_test_file: "tests/constructions/PostverbalZoPerfectiveVP.json"
 standard_test_coverage: "positive_and_boundary"
 standard_positive_test_count: 32
@@ -53,22 +55,24 @@ workflow_since: "2026-07-21"
 workflow_reason: "current_reaudit_non_speaker_semantic_and_implementation_narrowing"
 runtime_code_references: 5
 accepted_fixtures: 12
-tags: ["canto-span/grammar", "canto-span/status/provisional_reaudit", "canto-span/lane/lane-05", "canto-span/workflow/active"]
+tags: ["canto-span/grammar", "canto-span/status/provisional", "canto-span/lane/lane-05", "canto-span/workflow/active"]
 ---
 
 # PostverbalZoPerfectiveVP
 
 ## Plain-language claim
 
-Published Cantonese descriptions attest postverbal 咗 before an overt object as a perfective profile. Canto Span keeps completion-result, experiential, motion, object omission, and unrestricted verb-object compatibility outside this narrow label; semantic contribution and discourse effects are not reduced to a categorical no-completion or no-current-relevance claim.
+Checked Cantonese sources and controlled native-speaker evidence support a narrow structural profile in which an overt action predicate is followed by perfective 咗 and an overt licensed noun phrase. The parser records that visible structure. It does not treat 咗 as a past-tense suffix, does not insert hidden arguments, and does not decide the full completion or current-relevance interpretation at this node. Predicate–object naturalness is evaluated separately, so a structurally transparent but semantically anomalous string can retain the perfective span inside a `NeedsContext` review result.
+
+The evidence does not establish unrestricted productivity across every parser action verb, every noun phrase, every discourse setting, or every final-question form. The construction is therefore `provisional`, not `supported_productive`.
 
 This is a linguistic claim only to the extent allowed by the status and evidence below. The runtime label is not assumed to be standard linguistic terminology.
 
 ## Current status
 
-- Linguistic status: `provisional_reaudit`
-- Linguistic confidence: `not_assigned_pending_reaudit`
-- Current action: `prior_acceptance_withdrawn_pending_current_definition_of_done_reaudit`
+- Linguistic status: `provisional`
+- Linguistic confidence: `moderate_narrow_structural_profile`
+- Current action: `retain_narrow_structural_profile_and_research_lexical_scope_before_productive_promotion`
 - Productive acceptance eligible: **no**
 - Last linguistic review: 2026-07-21
 
@@ -108,45 +112,43 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 ## Native-speaker review
 
-- Independent speaker records: **1**
-- Scope: `ONE_INDEPENDENT_SPEAKER_CONTROLLED_NATURALNESS_REVIEW_SPEAKER_B_PUBLIC_FORM_AUTHORIZED_RESPONSE_PENDING`
-- Surface judgments: 14 total; 12 accepted; 2 rejected.
-- Structural-analysis validations: 0.
-- Second-speaker state: `PUBLIC_FORM_AUTHORIZED; RESPONSE_PENDING; REQUIREMENT_NOT_WAIVED`.
+- Controlled promotion-eligible speaker records: **1** (Speaker A).
+- Grandfathered legacy public-panel records: **10**, all complete and independently submitted across the same six positive and eight comparison items.
+- Total counted external speaker records: **11**.
+- Promotion-eligible same-contrast speaker count: **1**.
+- The legacy panel remains outside the clean promotion gate because the old form did not explicitly collect native-language confirmation or anonymous-use consent.
+- Core positive results: `我食咗飯` 8/10, `我食咗麵` 9/10, `佢睇咗三個醫生` 9/10, `佢寫咗一篇文` 9/10, `我答咗你嘅問題` 8/10.
+- Split item: `你買咗呢隻牌子未呀` 5/10; it is excluded from the narrow core claim.
+- Selectional anomaly: `我食咗香港` 0/10 accepted, supporting a separate semantic-review layer rather than suppression of the visible structural span.
+- Result record: `docs/research/CP029-P1-PFV01-PUBLIC-PANEL-R1-RESULT.md`.
 
 ## Negative and boundary cases
 
 - Standard executable test file: `tests/constructions/PostverbalZoPerfectiveVP.json`
-- Evidence state: `executable_boundaries_present_but_code_document_and_object_integration_repair_incomplete`
-- Executable or review records containing this label:
-  - `review-packets/cp022-evaluation/EP-CP022-P1-PFV01-D1/focused-evaluation-packet.json`
-  - `test-data/WECHAT-GX-TRAVEL-002-CONTROLLED-CONTRASTS-R1.tsv`
-  - `test-data/grammar-authority-origin-CP021B.tsv`
-  - `test-data/grammar-claim-provenance-CP021B.json`
-  - `test-data/grammar-claim-provenance-CP021B.tsv`
-  - `test-data/grammar-claim-source-edges-CP021A.tsv`
-  - `test-data/grammar-legitimacy-audit.json`
-  - `test-data/grammar-legitimacy-audit.tsv`
-  - `tests/fixtures/regression-snapshots.json`
+- Reviewed boundary inventory: `docs/research/CP029-P1-PFV01-BOUNDARY-INVENTORY-R1.tsv`
+- Inventory status: **complete for the current narrow claim**.
+- Executable exclusions cover objectless `V–咗`, `V完咗O`, motion-goal perfectives, experiential `過`, progressive `緊`, bare `VO`, placement profiles, classifier-incompatible objects, unsupported nominal structures, and unknown nominal heads.
+- Selectional anomalies are not treated as construction-absence cases. The structural `V–咗–NP` span is preserved and the whole analysis is wrapped as `NeedsContext` when the high-confidence predicate–object profile is incompatible.
+- The final-`未` wrapper is covered only where the object itself is licensed; the split `呢隻牌子` survey item is not used to broaden the claim.
 
 ## Implementation state
 
-- Lifecycle: `v0.5.184_compositional_np_object_integration_implemented_status_remains_reaudit`
-- Visible/focused tests: `NP_SUBSYSTEM_INTEGRATION_PASS;PFV_CONTROLLED_POSITIVES_4_OF_6_NARROW_TARGET_PRESENT`
-- Render review: `historical_render_pass_retained_software_only`
-- Held-out evaluation: `PROSPECTIVE_7_OF_7_PASS_CONSUMED_SOFTWARE_ONLY`
-- Regression: `545_of_545_pass`
-- Code–documentation comparison: `PARTIAL_OBJECT_INTERFACE_ALIGNED;ACTION_VERB_AND_SEMANTIC_SCOPE_REAUDIT_OPEN`
+- Lifecycle: `v0.5.186_narrow_provisional_reaudit_closed`
+- Implementation validation: regression **545/545**, NP subsystem **43/43**, and construction assertions pass independently of linguistic status.
+- Code–documentation review: **PASS** against commit `d08367dcf0f13d57b39a406ddf72388ba079a9e6`.
+- Reviewed code locations: `main.js:3083-3103`, `main.js:13644-13735`, `main.js:15348-15426`, and `main.js:21168`.
+- Structural rule: overt parser action verb + perfective 咗 + overt licensed NP object.
+- Semantic rule: high-confidence incompatible predicate–object combinations are separately wrapped as `NeedsContext`; unknown combinations are not asserted to be natural merely because the structural span exists.
+- Completion semantics: the node creates no separate completion/result construction, but the documentation does not deny completion, boundedness, temporal, or current-relevance interpretations of 咗.
 
 ## Open questions and blockers
 
-- full current Definition of Done remains incomplete
-- not_applicable_formerly_accepted_construction_remains_provisional_reaudit_under_current_rule
-- second independent speaker response pending; action_verb scope justification or narrowing; remaining controlled coverage; exact semantic code-doc alignment
-- Four sources and Speaker A are reverified. v0.5.184 consumes only licensed NP objects and covers 4/6 controlled target positives. The construction remains provisional_reaudit; action-verb and semantic scope remain unresolved, and the authorized public Speaker B form has no adjudicated response yet.
-- Runtime governance is aligned. The subtype consumes only licensed NP objects; controlled positive coverage is 4/6. This software improvement does not restore productive status. Speaker B response collection is authorized, but no response is counted until screening and adjudication are committed.
-- Research question: Which externally documented Cantonese constructions, if any, justify the scope and boundaries currently represented by PostverbalZoPerfectiveVP?
-- Next evidence action: Continue semantic and implementation narrowing; create and distribute the authorized PFV01 Speaker B public form, then screen and adjudicate returned responses without automatic counting.
+- The current action-verb inventory is broader than the exact verbs independently attested in the checked sources and speaker packet.
+- The parser's licensed-NP inventory is deliberately bounded and does not establish the complete Cantonese object system.
+- The split `呢隻牌子` question needs a better lexical and contextual instrument before it can extend the claim.
+- The ten-person legacy panel is valuable external evidence but is not clean promotion-gating evidence.
+- Promotion to `supported_productive` requires at least one additional clean independent same-contrast speaker record and stronger evidence for the productive lexical scope.
+- Next evidence action: run the revised controlled PFV instrument only when expanding beyond the current narrow provisional claim; do not reopen the entire archived grammar backlog for this purpose.
 
 ## Related constructions
 

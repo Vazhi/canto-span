@@ -16,7 +16,7 @@ function check(name, condition, detail = "") {
 }
 
 check("exactly two active working notes", active.length === 2, String(active.length));
-check("exactly 169 archived working notes", archived.length === 169, String(archived.length));
+check("exactly 168 archived working notes", archived.length === 168, String(archived.length));
 check(
   "active set matches current bounded work",
   active.map((note) => note.frontmatter.construction).sort().join(",") === [...expectedActive].sort().join(","),
@@ -50,7 +50,8 @@ const report = {
   status: failures.length ? "FAIL" : "PASS",
   failures,
 };
-const outDir = path.join(root, "validation", "v0.5.185");
+const manifest = JSON.parse(fs.readFileSync(path.join(root, "manifest.json"), "utf8"));
+const outDir = path.join(root, "validation", `v${manifest.version}`);
 fs.mkdirSync(outDir, { recursive: true });
 fs.writeFileSync(path.join(outDir, "active-working-set.json"), JSON.stringify(report, null, 2) + "\n");
 console.log(JSON.stringify(report, null, 2));

@@ -1,35 +1,26 @@
 # Canto Span
 
-This repository is the canonical project working tree for the v0.5.185 baseline and later development.
+This repository is the canonical project working tree for the Cantonese parser and its evidence records.
 
 ## Current state
 
-- runtime: **v0.5.185**
-- active runtime labels: **171**
-- authoring construction notes: **171** (**2 active / 169 workflow-archived**)
-- authoring metadata embedded in `main.js`: **none**
+- runtime: **v0.5.186**
+- active runtime labels / construction notes: **170 / 170**
+- construction workflow: **2 active / 168 workflow-archived**
+- retired labels: **11**
 - `supported_productive`: **0**
-- prior accepted constructions under re-audit: **2**
-- native-speaker evidence: **RUL01 public pilot snapshot integrated at 23 responses; clean controlled reviews still pending**
-- promotion gate: **active; 171/171 notes checked, 0 promoted statuses**
+- `provisional`: **1** — `PostverbalZoPerfectiveVP`
+- `research_pending`: **59**, including `ResourceUseLaiFunctionRelation`
+- `provisional_reaudit`: **0**
 - standard test command: **`npm test`**
-- infrastructure migration Phase 8: **complete**
 
-Current validation:
+Current validation targets:
 
-- aggregate regression: **545/545**
-- NP subsystem: **43/43**
-- per-construction assertions: **1,156/1,156**
-- construction test files: **171/171**
+- aggregate regression: **545** cases
+- NP subsystem: **43** cases
+- per-construction assertions: **1,156**
+- construction test files: **170**
 
-## Start
+The v0.5.186 milestone closes the two active current-standard re-audits without manufacturing a productive promotion. PFV is retained as a narrow structural provisional claim; RUL returns to research pending; the unused duplicate `TopicCommentClause` label is retired.
 
-Read [`docs/current/00-START-HERE.md`](docs/current/00-START-HERE.md).
-
-Browse current construction records and the two-note active working set through [`GRAMMAR-INDEX.md`](GRAMMAR-INDEX.md).
-
-For the current source-checking and native-speaker form workflow, read [`docs/current/NATIVE-SPEAKER-REVIEW.md`](docs/current/NATIVE-SPEAKER-REVIEW.md).
-
-For repository restoration and export, read [`docs/current/GIT-WORKFLOW.md`](docs/current/GIT-WORKFLOW.md).
-
-The sandbox copy is temporary. The durable repository is `https://github.com/Vazhi/canto-span.git`; keep a complete `.git` ZIP for transfer into ChatGPT without sharing private credentials.
+Read [`docs/current/00-START-HERE.md`](docs/current/00-START-HERE.md), then [`docs/current/PROJECT-STATE.md`](docs/current/PROJECT-STATE.md).
