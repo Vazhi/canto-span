@@ -1,5 +1,15 @@
 # Changelog
 
+## Infrastructure migration Phase 7
+
+- Formalized source verification and native-speaker review for the two active construction re-audits.
+- Added canonical PFV01 and RUL01 instruments plus generated Google Apps Script for one private Speaker A form and two public Speaker B forms.
+- Added privacy-preserving public metadata collection, independence and consent declarations, hidden construction roles, and mixed stimulus order.
+- Added CSV normalization that screens response completeness and eligibility but never automatically counts a speaker.
+- Added a 117-check active-review workflow audit and 9 focused CSV/import tests.
+- Recorded packet-scoped authorization for public Speaker B collection while leaving the archived backlog frozen.
+- Changed no parser behavior, linguistic status, source count, speaker count, or standardized test inventory.
+
 ## Infrastructure migration Phase 6
 
 - Limited the active authoring working set to `PostverbalZoPerfectiveVP` and `ResourceUseLaiFunctionRelation`.

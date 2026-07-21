@@ -10,10 +10,10 @@ This repository is the canonical project working tree for the v0.5.185 baseline 
 - authoring metadata embedded in `main.js`: **none**
 - `supported_productive`: **0**
 - prior accepted constructions under re-audit: **2**
-- second-speaker work: **frozen; requirement retained**
+- second-speaker forms: **authorized for the two active constructions; responses pending; archived backlog frozen**
 - promotion gate: **active; 171/171 notes checked, 0 promoted statuses**
 - standard test command: **`npm test`**
-- infrastructure migration Phase 6: **complete**
+- infrastructure migration Phase 7: **complete**
 
 Current validation:
 
@@ -27,6 +27,8 @@ Current validation:
 Read [`docs/current/00-START-HERE.md`](docs/current/00-START-HERE.md).
 
 Browse current construction records and the two-note active working set through [`GRAMMAR-INDEX.md`](GRAMMAR-INDEX.md).
+
+For the current source-checking and native-speaker form workflow, read [`docs/current/NATIVE-SPEAKER-REVIEW.md`](docs/current/NATIVE-SPEAKER-REVIEW.md).
 
 For repository restoration and export, read [`docs/current/GIT-WORKFLOW.md`](docs/current/GIT-WORKFLOW.md).
 

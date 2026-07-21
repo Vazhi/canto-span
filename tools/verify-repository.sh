@@ -21,6 +21,16 @@ required=(
   docs/current/DEFINITION-OF-DONE.md
   docs/current/GIT-WORKFLOW.md
   docs/current/INFRASTRUCTURE-MIGRATION.md
+  docs/current/NATIVE-SPEAKER-REVIEW.md
+  docs/research/SECOND-SPEAKER-WORK-AUTHORIZATION-2026-07-21.md
+  review-packets/native-speaker/active-v1/form-specs.json
+  review-packets/native-speaker/active-v1/active-review-state.json
+  review-packets/native-speaker/active-v1/Code.gs
+  tools/build-native-review-form-script.js
+  tools/native-review-lib.js
+  tools/import-native-review-csv.js
+  tools/test-native-review-lib.js
+  tools/verify-active-review-workflow.js
   archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json
   tools/verify-construction-notes.js
   tools/run-construction-registry-audit.js
@@ -53,6 +63,7 @@ npm test >/dev/null
 node tools/verify-construction-notes.js >/dev/null
 node tools/run-construction-registry-audit.js >/dev/null
 node tools/verify-active-working-set.js >/dev/null
+node tools/verify-active-review-workflow.js >/dev/null
 node tools/test-promotion-gate.js >/dev/null
 node tools/enforce-promotion-rules.js >/dev/null
 

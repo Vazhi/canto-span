@@ -21,6 +21,12 @@ code_document_reconciled: false
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v1"
+native_review_protocol_version: "v1"
+native_review_state_file: "review-packets/native-speaker/active-v1/active-review-state.json"
+native_form_spec_file: "review-packets/native-speaker/active-v1/form-specs.json"
+source_verification_file: "docs/research/CP025-P1-PFV01-SOURCE-VERIFICATION-R1.tsv"
+speaker_a_state: "complete_counted"
+speaker_b_state: "form_authorized_response_pending"
 standard_test_file: "tests/constructions/PostverbalZoPerfectiveVP.json"
 standard_test_coverage: "positive_and_boundary"
 standard_positive_test_count: 32
@@ -90,10 +96,10 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 ## Native-speaker review
 
 - Independent speaker records: **1**
-- Scope: `ONE_INDEPENDENT_SPEAKER_CONTROLLED_NATURALNESS_REVIEW_SECOND_SPEAKER_FROZEN`
+- Scope: `ONE_INDEPENDENT_SPEAKER_CONTROLLED_NATURALNESS_REVIEW_SPEAKER_B_PUBLIC_FORM_AUTHORIZED_RESPONSE_PENDING`
 - Surface judgments: 14 total; 12 accepted; 2 rejected.
 - Structural-analysis validations: 0.
-- Second-speaker state: `FROZEN_BY_USER_NOT_WAIVED`.
+- Second-speaker state: `PUBLIC_FORM_AUTHORIZED; RESPONSE_PENDING; REQUIREMENT_NOT_WAIVED`.
 
 ## Negative and boundary cases
 
@@ -123,11 +129,11 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 - full current Definition of Done remains incomplete
 - not_applicable_formerly_accepted_construction_remains_provisional_reaudit_under_current_rule
-- second independent speaker frozen; action_verb scope justification or narrowing; remaining controlled coverage; exact semantic code-doc alignment
-- Four sources and Speaker A are reverified. v0.5.184 consumes only licensed NP objects and covers 4/6 controlled target positives. The construction remains provisional_reaudit; action-verb and semantic scope remain unresolved, and second-speaker work is frozen.
-- Runtime governance is aligned. The subtype consumes only licensed NP objects; controlled positive coverage is 4/6. This software improvement does not restore productive status. Second-speaker work remains frozen.
+- second independent speaker response pending; action_verb scope justification or narrowing; remaining controlled coverage; exact semantic code-doc alignment
+- Four sources and Speaker A are reverified. v0.5.184 consumes only licensed NP objects and covers 4/6 controlled target positives. The construction remains provisional_reaudit; action-verb and semantic scope remain unresolved, and the authorized public Speaker B form has no adjudicated response yet.
+- Runtime governance is aligned. The subtype consumes only licensed NP objects; controlled positive coverage is 4/6. This software improvement does not restore productive status. Speaker B response collection is authorized, but no response is counted until screening and adjudication are committed.
 - Research question: Which externally documented Cantonese constructions, if any, justify the scope and boundaries currently represented by PostverbalZoPerfectiveVP?
-- Next evidence action: Continue non-speaker semantic and implementation narrowing; do not recruit or schedule Speaker B until user unfreezes second-speaker work.
+- Next evidence action: Continue semantic and implementation narrowing; create and distribute the authorized PFV01 Speaker B public form, then screen and adjudicate returned responses without automatic counting.
 
 ## Related constructions
 

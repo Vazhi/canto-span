@@ -78,6 +78,12 @@ Reduce ceremony, drift risk, and file bloat without restarting the parser or dis
 - changed no parser behavior, linguistic status, test inventory, or runtime label.
 
 
-### Phase 7 — Repeatable reviewer workflow: pending
+### Phase 7 — Repeatable reviewer workflow: complete
 
-Formalize source checking and native-speaker review as reusable checklists. Second-speaker work remains frozen until explicitly unfrozen.
+- linked each active construction to one canonical source-verification TSV and exact counted source set;
+- added a fail-closed 117-check audit for source locators, findings, limitations, note counts, speaker state, form privacy, stimulus equivalence, generated-code synchronization, and non-automatic counting;
+- added two canonical instruments and three generated Google Forms: PFV01 Speaker B public, RUL01 Speaker A private, and RUL01 Speaker B public;
+- added public recruitment copy that hides construction labels and asks respondents not to discuss items before submission;
+- added CSV normalization with native-language, completeness, consent, and independence screening while forcing all normalized responses to remain uncounted pending duplicate review and manual adjudication;
+- recorded the user’s packet-scoped authorization for the two active public Speaker B forms while leaving the archived backlog frozen;
+- changed no parser behavior, linguistic status, source count, speaker count, runtime label, or standardized construction test.

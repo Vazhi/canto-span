@@ -21,6 +21,12 @@ code_document_reconciled: false
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v1"
+native_review_protocol_version: "v1"
+native_review_state_file: "review-packets/native-speaker/active-v1/active-review-state.json"
+native_form_spec_file: "review-packets/native-speaker/active-v1/form-specs.json"
+source_verification_file: "docs/research/CP026-P1-RUL01-SOURCE-VERIFICATION-R1.tsv"
+speaker_a_state: "form_ready_response_pending"
+speaker_b_state: "form_authorized_response_pending"
 standard_test_file: "tests/constructions/ResourceUseLaiFunctionRelation.json"
 standard_test_coverage: "positive_and_boundary"
 standard_positive_test_count: 7
@@ -98,10 +104,10 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 ## Native-speaker review
 
 - Independent speaker records: **0**
-- Scope: `NO_COMPLETED_CONTROLLED_SPEAKER_REVIEW_SECOND_SPEAKER_FROZEN`
+- Scope: `SPEAKER_A_PRIVATE_FORM_READY_AND_SPEAKER_B_PUBLIC_FORM_AUTHORIZED_RESPONSES_PENDING`
 - Surface judgments: 0 total; 0 accepted; 0 rejected.
 - Structural-analysis validations: 0.
-- Second-speaker state: `FROZEN_BY_USER_NOT_WAIVED`.
+- Second-speaker state: `PUBLIC_FORM_AUTHORIZED; RESPONSE_PENDING; REQUIREMENT_NOT_WAIVED`.
 
 ## Negative and boundary cases
 
@@ -130,12 +136,12 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 ## Open questions and blockers
 
 - full current Definition of Done remains incomplete
-- one independent Speaker A positive+comparison review; plain-language claim narrowed to current evidence
-- first-speaker review; second independent speaker frozen; semantic resource/predicate scope; coordination coverage; exact code-doc alignment
-- CP026 found one direct quote, one editorial interview-derived narrative, one published illustrative example, one purposive/conventionalization source, and one boundary source. Runtime status metadata is aligned in v0.5.184; semantic resource/predicate scope and coordinated predicate coverage remain unresolved. No speaker review; second-speaker work is frozen.
-- Runtime status metadata now agrees with governance. Semantic resource/predicate licensing and coordinated source-predicate coverage remain unresolved; second-speaker work remains frozen.
+- required before promotion: one independent Speaker A positive+comparison review and one independently screened Speaker B review; plain-language claim narrowed to current evidence
+- Speaker A and Speaker B responses pending; semantic resource/predicate scope; coordination coverage; exact code-doc alignment
+- CP026 found one direct quote, one editorial interview-derived narrative, one published illustrative example, one purposive/conventionalization source, and one boundary source. Runtime status metadata is aligned in v0.5.184; semantic resource/predicate scope and coordinated predicate coverage remain unresolved. No speaker response is currently counted; the Speaker A private form and Speaker B public form are ready.
+- Runtime status metadata now agrees with governance. Semantic resource/predicate licensing and coordinated source-predicate coverage remain unresolved; Speaker B response collection is authorized, but no response is counted until screening and adjudication are committed.
 - Research question: Which externally documented Cantonese constructions, if any, justify the scope and boundaries currently represented by ResourceUseLaiFunctionRelation?
-- Next evidence action: Specify a narrower evidence-backed resource-function interface; Speaker A may be collected when convenient; keep Speaker B frozen.
+- Next evidence action: Send the private RUL01 form to Speaker A and distribute the authorized public Speaker B form; independently continue narrowing the resource-function interface and code-document alignment.
 
 ## Related constructions
 

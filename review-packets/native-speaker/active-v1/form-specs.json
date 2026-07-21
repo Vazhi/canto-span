@@ -1,0 +1,204 @@
+{
+  "schema": "canto-span-native-review-form-spec-v1",
+  "protocol_version": "v1",
+  "authorization_date": "2026-07-21",
+  "authorization_scope": "active_constructions_only",
+  "privacy": {
+    "collect_email": false,
+    "collect_real_name": false,
+    "public_reviewer_code_required": true,
+    "public_reviewer_code_instruction": "Use a self-chosen code; do not enter a real name, phone number, or email address."
+  },
+  "judgment_options": [
+    "聽落自然／可以接受",
+    "聽落唔自然"
+  ],
+  "instruments": [
+    {
+      "instrument_id": "PFV01-R2",
+      "construction": "PostverbalZoPerfectiveVP",
+      "completed_reference_packet": "docs/research/CP025-P1-PFV01-SPEAKER-A-RAW-R2.md",
+      "items": [
+        {
+          "item_id": "PFV-P03",
+          "sentence": "佢睇咗三個醫生。"
+        },
+        {
+          "item_id": "PFV-B04",
+          "sentence": "我食緊飯。"
+        },
+        {
+          "item_id": "PFV-P01",
+          "sentence": "我食咗飯。"
+        },
+        {
+          "item_id": "PFV-B07",
+          "sentence": "我食咗香港。"
+        },
+        {
+          "item_id": "PFV-P05",
+          "sentence": "我答咗你嘅問題。"
+        },
+        {
+          "item_id": "PFV-B02",
+          "sentence": "我食完咗飯。"
+        },
+        {
+          "item_id": "PFV-P06",
+          "sentence": "你買咗呢隻牌子未呀？"
+        },
+        {
+          "item_id": "PFV-B08",
+          "sentence": "我食飯。"
+        },
+        {
+          "item_id": "PFV-P02",
+          "sentence": "我食咗麵。"
+        },
+        {
+          "item_id": "PFV-B05",
+          "sentence": "我去咗香港。"
+        },
+        {
+          "item_id": "PFV-P04",
+          "sentence": "佢寫咗一篇文。"
+        },
+        {
+          "item_id": "PFV-B01",
+          "sentence": "我食咗。"
+        },
+        {
+          "item_id": "PFV-B06",
+          "sentence": "牆上面擺咗部電話。"
+        },
+        {
+          "item_id": "PFV-B03",
+          "sentence": "我食過飯。"
+        }
+      ]
+    },
+    {
+      "instrument_id": "RUL01-R2",
+      "construction": "ResourceUseLaiFunctionRelation",
+      "completed_reference_packet": null,
+      "items": [
+        {
+          "item_id": "RUL-P03",
+          "sentence": "呢把刀用嚟切肉。"
+        },
+        {
+          "item_id": "RUL-B02",
+          "sentence": "呢個可以用嚟切嘢。"
+        },
+        {
+          "item_id": "RUL-P01",
+          "sentence": "呢個用嚟切嘢。"
+        },
+        {
+          "item_id": "RUL-B05",
+          "sentence": "我用刀切嘢。"
+        },
+        {
+          "item_id": "RUL-S01",
+          "sentence": "香港用嚟切嘢。"
+        },
+        {
+          "item_id": "RUL-P04",
+          "sentence": "呢個杯用嚟飲水。"
+        },
+        {
+          "item_id": "RUL-B01",
+          "sentence": "啲錢我用嚟買晒嗰堆嘢。"
+        },
+        {
+          "item_id": "RUL-B11",
+          "sentence": "呢個用嚟。"
+        },
+        {
+          "item_id": "RUL-P06",
+          "sentence": "呢張紙用來寫字。"
+        },
+        {
+          "item_id": "RUL-B07",
+          "sentence": "呢個唔用嚟切嘢。"
+        },
+        {
+          "item_id": "RUL-Q01",
+          "sentence": "呢個用嚟做咩㗎？"
+        },
+        {
+          "item_id": "RUL-P02",
+          "sentence": "呢張枱用嚟食飯。"
+        },
+        {
+          "item_id": "RUL-B12",
+          "sentence": "呢個用嚟切咗嘢。"
+        },
+        {
+          "item_id": "RUL-B03",
+          "sentence": "呢個係用嚟切嘢。"
+        },
+        {
+          "item_id": "RUL-S02",
+          "sentence": "呢個問題用嚟切嘢。"
+        },
+        {
+          "item_id": "RUL-P05",
+          "sentence": "呢支筆用嚟寫字。"
+        },
+        {
+          "item_id": "RUL-B06",
+          "sentence": "我買刀嚟切嘢。"
+        },
+        {
+          "item_id": "RUL-B08",
+          "sentence": "呢個用唔用嚟切嘢？"
+        },
+        {
+          "item_id": "RUL-B04",
+          "sentence": "呢個用咗嚟切嘢。"
+        },
+        {
+          "item_id": "RUL-B10",
+          "sentence": "我用嚟切嘢。"
+        },
+        {
+          "item_id": "RUL-B09",
+          "sentence": "用來用去。"
+        }
+      ]
+    }
+  ],
+  "forms": [
+    {
+      "form_id": "PFV01-SPEAKER-B-PUBLIC-R1",
+      "instrument_id": "PFV01-R2",
+      "reviewer_slot": "B",
+      "audience": "public_social_media",
+      "title": "廣東話句子自然度評估（一）",
+      "description": "請你按平時講廣東話嘅直覺，獨立判斷每句說話聽落自唔自然。唔需要分析語法，表格亦冇提供語法標籤或者預設答案。填表之前請唔好睇其他人嘅答案或者留言，交表之前亦唔好同其他人討論。表格唔收集姓名或者電郵。",
+      "consent_required": true,
+      "status": "authorized_ready_to_create_and_distribute"
+    },
+    {
+      "form_id": "RUL01-SPEAKER-A-PRIVATE-R1",
+      "instrument_id": "RUL01-R2",
+      "reviewer_slot": "A",
+      "audience": "private_known_reviewer",
+      "title": "廣東話句子自然度評估（二）— 私人評審",
+      "description": "請你按平時講廣東話嘅直覺，獨立判斷每句說話聽落自唔自然。唔需要分析語法，表格亦冇提供語法標籤、解析結果或者預設答案。交表之前請唔好同其他評審討論。",
+      "consent_required": false,
+      "status": "ready_to_create_and_send_to_speaker_a"
+    },
+    {
+      "form_id": "RUL01-SPEAKER-B-PUBLIC-R1",
+      "instrument_id": "RUL01-R2",
+      "reviewer_slot": "B",
+      "audience": "public_social_media",
+      "title": "廣東話句子自然度評估（二）",
+      "description": "請你按平時講廣東話嘅直覺，獨立判斷每句說話聽落自唔自然。唔需要分析語法，表格亦冇提供語法標籤或者預設答案。填表之前請唔好睇其他人嘅答案或者留言，交表之前亦唔好同其他人討論。表格唔收集姓名或者電郵。",
+      "consent_required": true,
+      "status": "authorized_ready_to_create_and_distribute"
+    }
+  ]
+}

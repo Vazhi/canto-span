@@ -12,7 +12,7 @@
 - retired-label runtime residues: **0**
 - current `supported_productive`: **0**
 - current `provisional_reaudit`: **2**
-- second-speaker work: **frozen; requirement retained**
+- second-speaker forms: **authorized for the two active constructions; responses pending; archived backlog frozen**
 - DEMO01 promotion track: **abandoned**
 
 The canonical construction registry is the union of 2 active notes under [`../../grammar/active/`](../../grammar/active/) and 169 workflow-archived notes under [`../../grammar/archived/`](../../grammar/archived/), indexed by [`../../GRAMMAR-INDEX.md`](../../GRAMMAR-INDEX.md). Workflow archiving does not retire runtime labels or change linguistic status.
@@ -74,7 +74,7 @@ It does not fire for classifier-incompatible or structurally unsupported objects
 - classifier compatibility covers a bounded initial set, not the complete Cantonese classifier system.
 - `呢隻牌子` remains unlicensed because the noun/classifier analysis and native judgment are unresolved.
 - final-`未` question wrapping still does not preserve every possible licensed object analysis.
-- second-speaker requirements remain unmet and frozen.
+- second-speaker requirements remain unmet. Active-construction forms are ready, but no Speaker B response is adjudicated or counted.
 
 ## DEMO01 disposition
 
@@ -108,8 +108,20 @@ Current promotion-gate result:
 - construction notes checked: **171**;
 - promoted status records: **0**;
 - non-promoted/quarantined records: **171**;
-- focused gate tests: **8/8 PASS**.
+- focused gate tests: **8/8 PASS**;
+- active source/reviewer workflow: **117/117 PASS**;
+- native-review CSV library: **9/9 PASS**.
+
+## Phase 7 reviewer workflow
+
+Phase 7 is complete. `review-packets/native-speaker/active-v1/` now owns the two active instruments, three Google Forms specifications, generated Apps Script, public recruitment copy, source-verification links, and counted/pending speaker state.
+
+- `PostverbalZoPerfectiveVP`: Speaker A remains counted; public Speaker B form authorized and ready.
+- `ResourceUseLaiFunctionRelation`: private Speaker A form ready; public Speaker B form authorized and ready.
+- Public forms collect no real names or email addresses.
+- CSV normalization never counts a speaker automatically.
+- The archived construction backlog remains frozen for second-speaker work.
 
 ## Next action
 
-Phase 7 may formalize the repeatable source-checking and native-speaker review workflow. Second-speaker work remains frozen; no new native-speaker form is required by Phase 6.
+Create and distribute the generated forms. When responses return, export the linked response sheet as CSV, normalize with `tools/import-native-review-csv.js`, then manually screen duplicates, background, comments, and independence before committing any result record. In parallel, continue semantic and code-document narrowing for both active constructions.

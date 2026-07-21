@@ -7,6 +7,8 @@
     "test": "node tests/run-all.js",
     "test:constructions": "node tests/run-constructions.js",
     "test:regression": "node tests/run-regression.js",
-    "test:np": "node tests/run-np-subsystem.js"
+    "test:np": "node tests/run-np-subsystem.js",
+    "test:review": "node tools/verify-active-review-workflow.js",
+    "build:forms": "node tools/build-native-review-form-script.js"
   }
 }

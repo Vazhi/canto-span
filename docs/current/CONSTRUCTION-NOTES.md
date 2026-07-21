@@ -43,6 +43,7 @@ Each construction note records:
 - separation of implementation and linguistic validation;
 - independent evidence beyond internal tests;
 - promotion-gate schema version;
+- for active re-audits, native-review protocol/state/form links, canonical source-verification file, and Speaker A/B workflow states;
 - standard construction-test file, coverage state, and positive/boundary/executable counts;
 - runtime activity and basic fixture/reference counts;
 - `workflow_state`: `active` or `archived`;
@@ -71,6 +72,7 @@ Run:
 npm test
 node tools/verify-construction-notes.js
 node tools/verify-active-working-set.js
+node tools/verify-active-review-workflow.js
 node tools/test-promotion-gate.js
 node tools/enforce-promotion-rules.js
 ```
@@ -86,7 +88,8 @@ The commands must confirm:
 - source-count consistency;
 - valid plain `[[ConstructionName]]` links;
 - no aliased wiki links;
-- preservation of the frozen full-schema snapshot.
+- preservation of the frozen full-schema snapshot;
+- for the active working set, exact source-checklist linkage, form/spec synchronization, speaker-state consistency, and non-automatic response counting.
 
 ## Editing rule
 

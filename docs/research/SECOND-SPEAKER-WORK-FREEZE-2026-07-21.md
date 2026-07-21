@@ -2,10 +2,12 @@
 
 Effective date: 2026-07-21
 
-The user has frozen all second-native-speaker recruitment and review work until explicit unfreezing.
+This freeze originally covered all second-native-speaker recruitment and review work. It is now partially superseded by [`SECOND-SPEAKER-WORK-AUTHORIZATION-2026-07-21.md`](SECOND-SPEAKER-WORK-AUTHORIZATION-2026-07-21.md).
 
-- Preserve the two-independent-speaker requirement for `supported_productive`.
-- Do not recruit, schedule, prepare new Speaker B packets, or request second-speaker follow-up.
-- Record completed Speaker A evidence normally.
-- Continue source verification, manual example review, boundary testing, code–documentation comparison, retirement, and provisional-level work.
-- Missing second-speaker evidence remains a visible blocker and is never treated as waived.
+Current effect:
+
+- second-speaker forms and public collection are authorized only for `PostverbalZoPerfectiveVP` and `ResourceUseLaiFunctionRelation`;
+- the remaining archived construction backlog stays frozen;
+- the two-independent-speaker requirement for `supported_productive` remains binding;
+- completed Speaker A evidence is recorded normally;
+- missing or unadjudicated Speaker B evidence remains a visible blocker and is never treated as waived.

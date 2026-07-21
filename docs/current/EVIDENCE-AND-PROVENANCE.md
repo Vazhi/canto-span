@@ -29,7 +29,7 @@ Only clean reviewed examples count as positive support.
 
 Record variety, independence, task, exact sentence, response, correction, and uncertainty. Productive acceptance requires two independent speakers reviewing the same relevant positive and negative contrasts.
 
-Second-speaker work is currently frozen. Record completed Speaker A evidence normally, preserve every unmet Speaker B requirement, and do not treat the freeze as a waiver.
+Second-speaker form preparation and public collection are authorized for the two active construction re-audits. The archived backlog remains frozen. A public submission is not countable until native-language, independence, completeness, consent, duplicate, and comment review are recorded in a committed result.
 
 ## Internal tests
 
@@ -51,7 +51,10 @@ Prospective held-out testing detects overfitting to visible cases. It is an impl
 - construction index: [`../../GRAMMAR-INDEX.md`](../../GRAMMAR-INDEX.md)
 - source registers, source matrices, and detailed research records: [`../research/`](../research/)
 - speaker queue: [`../research/SECOND-SPEAKER-REVIEW-QUEUE-v0.5.184-R1.tsv`](../research/SECOND-SPEAKER-REVIEW-QUEUE-v0.5.184-R1.tsv)
-- second-speaker freeze: [`../research/SECOND-SPEAKER-WORK-FREEZE-2026-07-21.md`](../research/SECOND-SPEAKER-WORK-FREEZE-2026-07-21.md)
+- native-speaker workflow: [`NATIVE-SPEAKER-REVIEW.md`](NATIVE-SPEAKER-REVIEW.md)
+- active review state and forms: [`../../review-packets/native-speaker/active-v1/`](../../review-packets/native-speaker/active-v1/)
+- second-speaker authorization: [`../research/SECOND-SPEAKER-WORK-AUTHORIZATION-2026-07-21.md`](../research/SECOND-SPEAKER-WORK-AUTHORIZATION-2026-07-21.md)
+- remaining-backlog freeze: [`../research/SECOND-SPEAKER-WORK-FREEZE-2026-07-21.md`](../research/SECOND-SPEAKER-WORK-FREEZE-2026-07-21.md)
 - current provenance: [`../research/CURRENT-RESEARCH-PROVENANCE.md`](../research/CURRENT-RESEARCH-PROVENANCE.md)
 - frozen pre-migration wide registry: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
 

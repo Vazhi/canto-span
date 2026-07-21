@@ -1,0 +1,69 @@
+{
+  "schema": "canto-span-active-review-state-v1",
+  "protocol_version": "v1",
+  "last_updated": "2026-07-21",
+  "second_speaker_authorization": {
+    "status": "authorized_for_active_construction_forms",
+    "scope": [
+      "PostverbalZoPerfectiveVP",
+      "ResourceUseLaiFunctionRelation"
+    ],
+    "allowed_actions": [
+      "prepare_forms",
+      "create_forms",
+      "distribute_public_forms",
+      "receive_responses",
+      "normalize_responses"
+    ],
+    "not_implied": [
+      "automatic_evidence_acceptance",
+      "automatic_status_promotion",
+      "waiver_of_independence_or_native_speaker_screening"
+    ]
+  },
+  "constructions": [
+    {
+      "construction": "PostverbalZoPerfectiveVP",
+      "source_verification_file": "docs/research/CP025-P1-PFV01-SOURCE-VERIFICATION-R1.tsv",
+      "counted_source_ids": [
+        "SRC-FAN-CHAN-2022",
+        "SRC-SIO-BOND-2025",
+        "SRC-SYBESMA-2013",
+        "SRC-YIP-MATTHEWS-2000-BASIC"
+      ],
+      "speaker_a": {
+        "state": "complete_counted",
+        "raw_record": "docs/research/CP025-P1-PFV01-SPEAKER-A-RAW-R2.md",
+        "result_record": "docs/research/CP025-P1-PFV01-SPEAKER-A-RESULT-R2.md"
+      },
+      "speaker_b": {
+        "state": "form_authorized_response_pending",
+        "form_id": "PFV01-SPEAKER-B-PUBLIC-R1",
+        "result_record": null
+      },
+      "counted_independent_speakers": 1
+    },
+    {
+      "construction": "ResourceUseLaiFunctionRelation",
+      "source_verification_file": "docs/research/CP026-P1-RUL01-SOURCE-VERIFICATION-R1.tsv",
+      "counted_source_ids": [
+        "SRC-CCO-LAICHIWO-VILLAGE-HOUSE",
+        "SRC-CHEUNG-2018-LAI",
+        "SRC-CHOR-2018-DIRECTIONAL-PARTICLES",
+        "SRC-HKMEMORY-SHAPU-ORAL-HISTORY",
+        "SRC-WONG-2023-LSA"
+      ],
+      "speaker_a": {
+        "state": "form_ready_response_pending",
+        "form_id": "RUL01-SPEAKER-A-PRIVATE-R1",
+        "result_record": null
+      },
+      "speaker_b": {
+        "state": "form_authorized_response_pending",
+        "form_id": "RUL01-SPEAKER-B-PUBLIC-R1",
+        "result_record": null
+      },
+      "counted_independent_speakers": 0
+    }
+  ]
+}

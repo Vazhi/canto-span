@@ -10,8 +10,8 @@
 - current `supported_productive`: **0**
 - prior accepted constructions under re-audit: **2**
 - standard test command: **`npm test`**
-- infrastructure migration Phase 6: **complete**
-- second-speaker work: **frozen; requirement retained**
+- infrastructure migration Phase 7: **complete**
+- second-speaker forms: **authorized for the two active constructions; responses pending; archived backlog frozen**
 - DEMO01 promotion track: **abandoned**
 
 Read in this order:
@@ -24,13 +24,14 @@ Read in this order:
 6. [`NOUN-PHRASE-SUBSYSTEM.md`](NOUN-PHRASE-SUBSYSTEM.md)
 7. [`STATUS-AND-CONFIDENCE.md`](STATUS-AND-CONFIDENCE.md)
 8. [`EVIDENCE-AND-PROVENANCE.md`](EVIDENCE-AND-PROVENANCE.md)
-9. [`WORKFLOW.md`](WORKFLOW.md)
-10. [`VALIDATION-AND-ACCEPTANCE.md`](VALIDATION-AND-ACCEPTANCE.md)
-11. [`GIT-WORKFLOW.md`](GIT-WORKFLOW.md)
-12. [`INFRASTRUCTURE-MIGRATION.md`](INFRASTRUCTURE-MIGRATION.md)
-13. [`CONSTRUCTION-NOTES.md`](CONSTRUCTION-NOTES.md)
-14. [`DOCUMENTATION-MAP.md`](DOCUMENTATION-MAP.md)
-15. [`../../GRAMMAR-INDEX.md`](../../GRAMMAR-INDEX.md)
+9. [`NATIVE-SPEAKER-REVIEW.md`](NATIVE-SPEAKER-REVIEW.md)
+10. [`WORKFLOW.md`](WORKFLOW.md)
+11. [`VALIDATION-AND-ACCEPTANCE.md`](VALIDATION-AND-ACCEPTANCE.md)
+12. [`GIT-WORKFLOW.md`](GIT-WORKFLOW.md)
+13. [`INFRASTRUCTURE-MIGRATION.md`](INFRASTRUCTURE-MIGRATION.md)
+14. [`CONSTRUCTION-NOTES.md`](CONSTRUCTION-NOTES.md)
+15. [`DOCUMENTATION-MAP.md`](DOCUMENTATION-MAP.md)
+16. [`../../GRAMMAR-INDEX.md](../../GRAMMAR-INDEX.md)
 
 ## Interpretation rule
 
