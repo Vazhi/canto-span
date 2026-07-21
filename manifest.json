@@ -1,9 +1,9 @@
 {
   "id": "canto-span",
   "name": "Canto Span",
-  "version": "0.5.185",
+  "version": "0.5.186",
   "minAppVersion": "1.5.0",
-  "description": "v0.5.185 runtime-metadata reduction: parser logic and active labels only in main.js; linguistic status, evidence, speaker scope, and promotion rules live in grammar notes and external validators.",
+  "description": "v0.5.186 active re-audit closure: PFV receives a narrow provisional disposition, RUL returns to research_pending, and dormant duplicate TopicCommentClause is retired.",
   "author": "Chris Crawford / OpenAI ChatGPT",
   "authorUrl": "",
   "isDesktopOnly": false

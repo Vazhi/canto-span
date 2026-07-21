@@ -18,7 +18,7 @@
 - active construction records: [`../../GRAMMAR-INDEX.md`](../../GRAMMAR-INDEX.md) and the union of `grammar/active/*.md` and `grammar/archived/*.md`
 - [`SECOND-SPEAKER-REVIEW-QUEUE-v0.5.184-R1.tsv`](SECOND-SPEAKER-REVIEW-QUEUE-v0.5.184-R1.tsv)
 - [`SECOND-SPEAKER-WORK-FREEZE-2026-07-21.md`](SECOND-SPEAKER-WORK-FREEZE-2026-07-21.md)
-- [`RETIRED-CONSTRUCTION-ARCHIVE-v0.5.183-R1.tsv`](RETIRED-CONSTRUCTION-ARCHIVE-v0.5.183-R1.tsv)
+- [`RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv`](RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv)
 - frozen pre-migration registry: `../../archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
 
 Source registers, matrices, and detailed review files in this directory support the construction notes but do not independently own status.

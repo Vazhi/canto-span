@@ -192,6 +192,22 @@ if (process.argv.includes("--absorb-current-focused")) {
   console.log(JSON.stringify({ runtime_version: api.runtimeVersion, updated_cases: updated, previous_candidate: previousCandidate }, null, 2));
   process.exit(focus.length && updated ? 0 : 1);
 }
+if (process.argv.includes("--update-v05186-pfv-metadata")) {
+  const spec = JSON.parse(fs.readFileSync(path.join(root, "tests", "constructions", "PostverbalZoPerfectiveVP.json"), "utf8"));
+  const sources = new Set((spec.snapshot_cases || []).map((row) => row.source));
+  let updated = 0;
+  for (const testCase of fixture.cases) {
+    if (!sources.has(testCase.source)) continue;
+    testCase.expected = JSON.parse(JSON.stringify(signature(api, testCase.source, testCase.context_source || null)));
+    testCase.accepted_transition = "v0.5.186_pfv_structural_metadata_clarification";
+    updated += 1;
+  }
+  fixture.runtime_version = api.runtimeVersion;
+  fixture.last_intentional_transition = "v0.5.186_active_reaudit_closure";
+  fs.writeFileSync(fixturePath, JSON.stringify(fixture, null, 2) + "\n");
+  console.log(JSON.stringify({ runtime_version: api.runtimeVersion, updated_cases: updated, selected_sources: sources.size }, null, 2));
+  process.exit(updated === sources.size ? 0 : 1);
+}
 const exclusions = Array.isArray(fixture.current_focused_exclusions) ? fixture.current_focused_exclusions : [];
 function isFocusedExclusion(testCase) {
   return exclusions.some((entry) => {

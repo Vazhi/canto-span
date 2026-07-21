@@ -8,7 +8,7 @@ const { loadConstructionNotes } = require("./construction-notes-lib");
 
 const root = path.resolve(__dirname, "..");
 const notes = loadConstructionNotes(root);
-const retiredFile = path.join(root, "docs", "research", "RETIRED-CONSTRUCTION-ARCHIVE-v0.5.183-R1.tsv");
+const retiredFile = path.join(root, "docs", "research", "RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv");
 
 function parseTsv(file) {
   const text = fs.readFileSync(file, "utf8").replace(/^\uFEFF/, "").trimEnd();

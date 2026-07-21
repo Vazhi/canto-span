@@ -12,7 +12,7 @@ const file = path.join(root, "main.js");
 vm.runInNewContext(fs.readFileSync(file, "utf8") + "\nmodule.exports.__a={runtimeVersion:CANTO_SPAN_RUNTIME_VERSION,labels:[...CONSTRUCTION_LABEL_REGISTRY]};", c, { filename: file });
 const api = m.exports.__a;
 const notes = loadConstructionNotes(root);
-const retired = parseTsv(path.join(root, "docs", "research", "RETIRED-CONSTRUCTION-ARCHIVE-v0.5.183-R1.tsv"));
+const retired = parseTsv(path.join(root, "docs", "research", "RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv"));
 const active = new Map(notes.map((n) => [n.frontmatter.construction, n.frontmatter.status]));
 const retiredSet = new Set(retired.map((r) => r.runtime_label));
 const missing = [...active.keys()].filter((x) => !api.labels.includes(x));

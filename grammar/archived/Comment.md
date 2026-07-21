@@ -109,7 +109,6 @@ No pattern-specific external source is currently mapped.
 
 - [[Topic]]
 - [[TopicComment]]
-- [[TopicCommentClause]]
 
 ## Migration provenance
 

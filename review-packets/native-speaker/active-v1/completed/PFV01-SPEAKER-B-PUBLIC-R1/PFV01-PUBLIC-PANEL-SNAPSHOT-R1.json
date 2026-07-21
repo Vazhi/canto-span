@@ -1,0 +1,196 @@
+{
+  "schema": "canto-span-native-panel-snapshot-v1",
+  "construction": "PostverbalZoPerfectiveVP",
+  "form_id": "PFV01-SPEAKER-B-PUBLIC-R1",
+  "instrument_id": "PFV01-LEGACY-R1",
+  "snapshot_date": "2026-07-21",
+  "source_workbook_filename": "廣東話句子自然度評估 — 評審 B (Responses).xlsx",
+  "source_workbook_sha256": "d5713736e8fd106c9f212c26beed662df9d9388d81727b91586d7fc24867816c",
+  "response_count": 10,
+  "screening": {
+    "complete_judgments": 10,
+    "independence_confirmed": 10,
+    "cantonese_background_field_completed": 10,
+    "explicit_native_cantonese_confirmation_collected": 0,
+    "explicit_anonymous_use_consent_collected": 0,
+    "distinct_anonymized_rows": 10
+  },
+  "background_counts": {
+    "hong_kong": 9,
+    "hong_kong_fujian_background": 1
+  },
+  "protocol_class": "legacy_binary_fixed_order_per_item_comment_no_explicit_native_or_consent_fields",
+  "exception": {
+    "authorized_by_user": true,
+    "authorization_date": "2026-07-21",
+    "counted_as_external_panel_evidence": true,
+    "counted_independent_speaker_responses": 10,
+    "promotion_eligible_independent_speaker_responses": 0,
+    "reason": "one-time exception preserves ten complete same-contrast responses while retaining the missing explicit native-language and anonymous-use consent fields as permanent limitations"
+  },
+  "limitations": [
+    "binary scale collapses fully natural and merely acceptable judgments",
+    "fixed order and no unrelated fillers may create response-strategy and order effects",
+    "context-free presentation affects objectless, experiential, placement, and bare-VO judgments",
+    "native Cantonese status was inferred from user recruitment and the completed Cantonese background field rather than an explicit yes/no question",
+    "anonymous-use consent was not explicitly collected in the legacy form",
+    "naturalness judgments do not by themselves validate the parser's structural analysis"
+  ],
+  "matrix_sha256": "f7d9b10fa9e49d369052be78b78f7c7af633bc584e1cf58699813fb9c572890c",
+  "items": [
+    {
+      "display_number": 1,
+      "item_id": "PFV-P01",
+      "sentence": "我食咗飯。",
+      "response_count": 10,
+      "natural_or_acceptable": 8,
+      "unnatural": 2,
+      "natural_percent": 80.0,
+      "disposition": "core_surface_support",
+      "evidence_note": "8/10 accepted; supports simple declarative V–咗–overt object, with sentence-final-particle preferences visible in comments."
+    },
+    {
+      "display_number": 2,
+      "item_id": "PFV-P02",
+      "sentence": "我食咗麵。",
+      "response_count": 10,
+      "natural_or_acceptable": 9,
+      "unnatural": 1,
+      "natural_percent": 90.0,
+      "disposition": "core_surface_support",
+      "evidence_note": "9/10 accepted; supports simple declarative V–咗–overt object."
+    },
+    {
+      "display_number": 3,
+      "item_id": "PFV-P03",
+      "sentence": "佢睇咗三個醫生。",
+      "response_count": 10,
+      "natural_or_acceptable": 9,
+      "unnatural": 1,
+      "natural_percent": 90.0,
+      "disposition": "quantified_object_surface_support",
+      "evidence_note": "9/10 accepted; supports an overt quantified NP object, though one respondent requested more discourse context."
+    },
+    {
+      "display_number": 4,
+      "item_id": "PFV-P04",
+      "sentence": "佢寫咗一篇文。",
+      "response_count": 10,
+      "natural_or_acceptable": 9,
+      "unnatural": 1,
+      "natural_percent": 90.0,
+      "disposition": "quantified_object_surface_support",
+      "evidence_note": "9/10 accepted; supports an overt numeral-classifier object; comments prefer classifier omission in some styles."
+    },
+    {
+      "display_number": 5,
+      "item_id": "PFV-P05",
+      "sentence": "我答咗你嘅問題。",
+      "response_count": 10,
+      "natural_or_acceptable": 8,
+      "unnatural": 2,
+      "natural_percent": 80.0,
+      "disposition": "associative_object_surface_support",
+      "evidence_note": "8/10 accepted; supports an overt associative NP object, with politeness/discourse comments not structural rejection."
+    },
+    {
+      "display_number": 6,
+      "item_id": "PFV-P06",
+      "sentence": "你買咗呢隻牌子未呀？",
+      "response_count": 10,
+      "natural_or_acceptable": 5,
+      "unnatural": 5,
+      "natural_percent": 50.0,
+      "disposition": "split_question_and_lexical_item",
+      "evidence_note": "5/10 accepted; the brand noun and final-question wording produce a split result, so this item is excluded from the narrow core claim."
+    },
+    {
+      "display_number": 7,
+      "item_id": "PFV-B01",
+      "sentence": "我食咗。",
+      "response_count": 10,
+      "natural_or_acceptable": 5,
+      "unnatural": 5,
+      "natural_percent": 50.0,
+      "disposition": "objectless_context_boundary",
+      "evidence_note": "5/10 accepted; objectless V–咗 is context-sensitive and belongs to the broader PerfectiveVP route, not this overt-object subtype."
+    },
+    {
+      "display_number": 8,
+      "item_id": "PFV-B02",
+      "sentence": "我食完咗飯。",
+      "response_count": 10,
+      "natural_or_acceptable": 0,
+      "unnatural": 10,
+      "natural_percent": 0.0,
+      "disposition": "completion_marker_boundary",
+      "evidence_note": "0/10 accepted in isolation; speakers consistently preferred either V完O or V咗O. This remains a distinct CompletionVP profile."
+    },
+    {
+      "display_number": 9,
+      "item_id": "PFV-B03",
+      "sentence": "我食過飯。",
+      "response_count": 10,
+      "natural_or_acceptable": 0,
+      "unnatural": 10,
+      "natural_percent": 0.0,
+      "disposition": "experiential_boundary_instrument_warning",
+      "evidence_note": "0/10 accepted in this context-free form despite known contextual uses; useful only as a structural 過-versus-咗 boundary, not as evidence that the sentence is generally ungrammatical."
+    },
+    {
+      "display_number": 10,
+      "item_id": "PFV-B04",
+      "sentence": "我食緊飯。",
+      "response_count": 10,
+      "natural_or_acceptable": 10,
+      "unnatural": 0,
+      "natural_percent": 100.0,
+      "disposition": "progressive_boundary",
+      "evidence_note": "10/10 accepted; confirms that a natural progressive string remains a separate construction rather than a negative grammaticality control."
+    },
+    {
+      "display_number": 11,
+      "item_id": "PFV-B05",
+      "sentence": "我去咗香港。",
+      "response_count": 10,
+      "natural_or_acceptable": 9,
+      "unnatural": 1,
+      "natural_percent": 90.0,
+      "disposition": "motion_goal_boundary",
+      "evidence_note": "9/10 accepted; confirms that a natural motion-goal perfective is separate from the overt-object subtype."
+    },
+    {
+      "display_number": 12,
+      "item_id": "PFV-B06",
+      "sentence": "牆上面擺咗部電話。",
+      "response_count": 10,
+      "natural_or_acceptable": 4,
+      "unnatural": 6,
+      "natural_percent": 40.0,
+      "disposition": "placement_boundary_with_lexical_confounds",
+      "evidence_note": "4/10 accepted; comments dispute 擺 with a wall location. It remains a placement-profile boundary, not a clean grammaticality control."
+    },
+    {
+      "display_number": 13,
+      "item_id": "PFV-B07",
+      "sentence": "我食咗香港。",
+      "response_count": 10,
+      "natural_or_acceptable": 0,
+      "unnatural": 10,
+      "natural_percent": 0.0,
+      "disposition": "selectional_anomaly",
+      "evidence_note": "0/10 accepted; supports the separate semantic incompatibility guard. The structural V–咗–NP span may still be preserved under NeedsContext."
+    },
+    {
+      "display_number": 14,
+      "item_id": "PFV-B08",
+      "sentence": "我食飯。",
+      "response_count": 10,
+      "natural_or_acceptable": 6,
+      "unnatural": 4,
+      "natural_percent": 60.0,
+      "disposition": "bare_vo_boundary",
+      "evidence_note": "6/10 accepted; context-sensitive bare VO remains separate from the perfective subtype."
+    }
+  ]
+}

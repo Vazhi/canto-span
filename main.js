@@ -9,7 +9,8 @@ const { Plugin, PluginSettingTab, Setting, Notice } = require("obsidian");
  * never overwrite child learner roles.
  */
 
-const CANTO_SPAN_RUNTIME_VERSION = "0.5.185";
+const CANTO_SPAN_RUNTIME_VERSION = "0.5.186";
+// v0.5.186: closes the bounded PFV/RUL re-audit milestone. TopicCommentClause is retired as an unused duplicate; PFV structural metadata is clarified without changing span recognition. Linguistic status remains owned by grammar notes and external validation tools.
 // v0.5.185: removes authoring-time evidence, speaker, corpus, confidence, and linguistic-status metadata from the shipped runtime. main.js now retains parser logic and the active construction-label registry only; governance is owned by grammar/active/*.md and grammar/archived/*.md and external validation tools. Structural parser behavior is unchanged from v0.5.184.
 // v0.5.178: CP022-I1A-I02 performs authorized internal clause-relation graph cleanup only: ClauseLinkingSequence, ClauseRelation, and ClauseRelationMember are represented internally as ClauseRelationGraph, ClauseRelationEdge, and ClauseRelationMemberSpan with compatibility aliases, explicit subtype provenance, and no independent semantic licensing. The global new-grammar freeze remains active outside EP-CP022-I1A-I02-D1.
 // v0.5.177: CP022-I1A-I04 performs authorized internal nominal-wrapper cleanup only: ModifierPhrase is retired, HeadNP is internally renamed NominalHeadSpan, and bounded MeasureExpression/DefinitionComplement representation remains non-licensing. The global new-grammar freeze remains active outside EP-R37-I04.
@@ -57,7 +58,7 @@ const DEFAULT_SETTINGS = {
 // Runtime construction governance is deliberately minimal. Linguistic status,
 // confidence, sources, speaker records, corpus counts, and promotion eligibility
 // live in grammar/active/*.md and grammar/archived/*.md and are validated outside the shipped plugin.
-const RUNTIME_CONSTRUCTION_REGISTRY_VERSION = "0.5.185";
+const RUNTIME_CONSTRUCTION_REGISTRY_VERSION = "0.5.186";
 
 function runtimeConstructionStateFor(type) {
   const construction = String(type || "");
@@ -1242,7 +1243,6 @@ const CONSTRUCTION_LABEL_REGISTRY = new Set([
   "RelativeClauseNP",
   "ResultComplementVP",
   "TemporalAdverbialClause",
-  "TopicCommentClause",
   "ANotAQuestion",
   "AcceptabilityANotA",
   "AssociativeNP",
@@ -3094,12 +3094,13 @@ const CATEGORY_SPAN_TEMPLATES = [
     aspect_category: "perfective_viewpoint",
     independent_past_tense_licensing: false,
     completion_or_result_licensing: false,
+    completion_semantics_status: "not_decided_by_this_structural_node",
     experiential_licensing: false,
     hidden_object_insertion: false,
     selectional_compatibility_bypass: false,
     subject_insertion_capability: false,
-    not_claims: ["not_past_tense_suffix", "not_completion_or_result_by_itself", "not_experiential", "not_hidden_object", "not_unrestricted_verb_object_compatibility"],
-    note: "Source-linked narrow perfective subtype: overt action predicate + postverbal 咗 + overt nominal object. The subtype does not itself license tense, endpoint completion, result state, experiential meaning, hidden arguments, or unrestricted verb-object compatibility."
+    not_claims: ["not_past_tense_suffix", "not_separate_completion_or_result_node", "not_experiential", "not_hidden_object", "not_unrestricted_verb_object_compatibility"],
+    note: "Source-linked structural subtype: an overt action predicate, postverbal 咗, and an overt licensed NP object. This node records perfective structure; it does not insert tense, hidden arguments, an experiential reading, or a separate completion/result node. Completion and current-relevance interpretations are not decided by this structural node, and predicate-object compatibility is reviewed separately."
   },
   {
     type: "PerfectiveVP",
@@ -21164,7 +21165,7 @@ const LEARNER_CONSTRUCTION_GLOSSES = {
   CompletionVP: ["finished-action phrase", "Shows that an action is finished or completed."],
   CompletionQuestion: ["finished-yet question", "Asks whether an action has been completed yet."],
   PerfectiveVP: ["perfective action phrase", "Marks an action as a viewed whole with 咗; context supplies its time interpretation."],
-  PostverbalZoPerfectiveVP: ["perfective action phrase", "Marks an overt action and object with postverbal 咗; it is not a past-tense suffix."],
+  PostverbalZoPerfectiveVP: ["perfective action phrase", "Marks a visible action + 咗 + overt object as perfective. Time, completion, and discourse interpretation are handled separately."],
   ExperientialVP: ["past-experience phrase", "Shows that someone has done or experienced the action before."],
   ReduplicatedVP: ["light-action phrase", "Repeating the verb makes the action sound brief, light, or casual."],
   CoverbFrame: ["pre-action relation phrase", "Introduces a participant, place, source, or tool before the main action."],

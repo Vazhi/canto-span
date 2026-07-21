@@ -1,6 +1,6 @@
 {
   "schema": "canto-span-construction-test-index-v1",
-  "active_construction_count": 171,
+  "active_construction_count": 170,
   "files": [
     {
       "construction": "ANotAQuestion",
@@ -2120,19 +2120,6 @@
       "positive_case_count": 1,
       "boundary_case_count": 0,
       "executable_case_count": 1
-    },
-    {
-      "construction": "TopicCommentClause",
-      "file": "tests/constructions/TopicCommentClause.json",
-      "state": "no_direct_cases",
-      "exact_snapshot_positive_count": 0,
-      "focused_positive_count": 0,
-      "focused_boundary_count": 0,
-      "focused_review_only_count": 0,
-      "np_case_count": 0,
-      "positive_case_count": 0,
-      "boundary_case_count": 0,
-      "executable_case_count": 0
     },
     {
       "construction": "TransformationResultFrame",

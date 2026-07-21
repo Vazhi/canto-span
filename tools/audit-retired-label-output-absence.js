@@ -4,7 +4,7 @@ const fs=require("fs"),path=require("path"),vm=require("vm");
 const root=path.resolve(__dirname,"..");
 function parseTsv(file){const text=fs.readFileSync(file,"utf8").trimEnd();if(!text)return[];const lines=text.split(/\r?\n/),h=lines.shift().split("\t");return lines.filter(Boolean).map(line=>{const v=line.split("\t");return Object.fromEntries(h.map((k,i)=>[k,v[i]??""]));});}
 class Plugin{}class PluginSettingTab{}class Setting{}class Notice{}const m={exports:{}},c={module:m,exports:m.exports,require:(id)=>id==="obsidian"?{Plugin,PluginSettingTab,Setting,Notice}:require(id),console,setTimeout,clearTimeout,Buffer};const main=path.join(root,"main.js");vm.runInNewContext(fs.readFileSync(main,"utf8")+`\nmodule.exports.__a={analyzeLine,diagnosticFinalRows,runtimeVersion:CANTO_SPAN_RUNTIME_VERSION,registry:[...CONSTRUCTION_LABEL_REGISTRY]};`,c,{filename:main});const api=m.exports.__a;
-const retired=parseTsv(path.join(root,"docs","research","RETIRED-CONSTRUCTION-ARCHIVE-v0.5.183-R1.tsv"));const retiredSet=new Set(retired.map(r=>r.runtime_label));
+const retired=parseTsv(path.join(root,"docs","research","RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv"));const retiredSet=new Set(retired.map(r=>r.runtime_label));
 const fixture=JSON.parse(fs.readFileSync(path.join(root,"tests","fixtures","regression-snapshots.json"),"utf8"));
 const np=JSON.parse(fs.readFileSync(path.join(root,"tests","fixtures","np-subsystem.json"),"utf8"));
 const cases=[];for(const x of fixture.cases||[])cases.push({set:"regression",id:x.id||x.source,source:x.source,context:x.context_source||null});for(const x of np.cases||[])cases.push({set:"np_subsystem",id:x.id||x.case_id||x.surface,source:x.surface,context:x.context_source||null});

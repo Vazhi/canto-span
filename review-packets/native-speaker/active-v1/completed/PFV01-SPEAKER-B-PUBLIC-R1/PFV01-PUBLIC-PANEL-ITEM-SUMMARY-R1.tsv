@@ -1,0 +1,15 @@
+display_number	item_id	sentence	response_count	natural_or_acceptable	unnatural	natural_percent	disposition	evidence_note
+1	PFV-P01	我食咗飯。	10	8	2	80.0	core_surface_support	8/10 accepted; supports simple declarative V–咗–overt object, with sentence-final-particle preferences visible in comments.
+2	PFV-P02	我食咗麵。	10	9	1	90.0	core_surface_support	9/10 accepted; supports simple declarative V–咗–overt object.
+3	PFV-P03	佢睇咗三個醫生。	10	9	1	90.0	quantified_object_surface_support	9/10 accepted; supports an overt quantified NP object, though one respondent requested more discourse context.
+4	PFV-P04	佢寫咗一篇文。	10	9	1	90.0	quantified_object_surface_support	9/10 accepted; supports an overt numeral-classifier object; comments prefer classifier omission in some styles.
+5	PFV-P05	我答咗你嘅問題。	10	8	2	80.0	associative_object_surface_support	8/10 accepted; supports an overt associative NP object, with politeness/discourse comments not structural rejection.
+6	PFV-P06	你買咗呢隻牌子未呀？	10	5	5	50.0	split_question_and_lexical_item	5/10 accepted; the brand noun and final-question wording produce a split result, so this item is excluded from the narrow core claim.
+7	PFV-B01	我食咗。	10	5	5	50.0	objectless_context_boundary	5/10 accepted; objectless V–咗 is context-sensitive and belongs to the broader PerfectiveVP route, not this overt-object subtype.
+8	PFV-B02	我食完咗飯。	10	0	10	0.0	completion_marker_boundary	0/10 accepted in isolation; speakers consistently preferred either V完O or V咗O. This remains a distinct CompletionVP profile.
+9	PFV-B03	我食過飯。	10	0	10	0.0	experiential_boundary_instrument_warning	0/10 accepted in this context-free form despite known contextual uses; useful only as a structural 過-versus-咗 boundary, not as evidence that the sentence is generally ungrammatical.
+10	PFV-B04	我食緊飯。	10	10	0	100.0	progressive_boundary	10/10 accepted; confirms that a natural progressive string remains a separate construction rather than a negative grammaticality control.
+11	PFV-B05	我去咗香港。	10	9	1	90.0	motion_goal_boundary	9/10 accepted; confirms that a natural motion-goal perfective is separate from the overt-object subtype.
+12	PFV-B06	牆上面擺咗部電話。	10	4	6	40.0	placement_boundary_with_lexical_confounds	4/10 accepted; comments dispute 擺 with a wall location. It remains a placement-profile boundary, not a clean grammaticality control.
+13	PFV-B07	我食咗香港。	10	0	10	0.0	selectional_anomaly	0/10 accepted; supports the separate semantic incompatibility guard. The structural V–咗–NP span may still be preserved under NeedsContext.
+14	PFV-B08	我食飯。	10	6	4	60.0	bare_vo_boundary	6/10 accepted; context-sensitive bare VO remains separate from the perfective subtype.

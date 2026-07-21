@@ -24,7 +24,7 @@ function loadRuntime() {
 }
 const api = loadRuntime();
 const notes = loadConstructionNotes(root);
-const retired = parseTsv(path.join(root, "docs", "research", "RETIRED-CONSTRUCTION-ARCHIVE-v0.5.183-R1.tsv"));
+const retired = parseTsv(path.join(root, "docs", "research", "RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv"));
 const noteMap = new Map(notes.map((n) => [n.frontmatter.construction, n]));
 const runtime = new Set(api.labels), retiredSet = new Set(retired.map((r) => r.runtime_label));
 const checks = [], failures = [];
