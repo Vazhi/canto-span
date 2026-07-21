@@ -215,30 +215,30 @@
     {
       "construction": "CognitionDelimitedObjectVP",
       "file": "tests/constructions/CognitionDelimitedObjectVP.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "CognitionDelimitedVP",
       "file": "tests/constructions/CognitionDelimitedVP.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "CognitionStatementClause",
@@ -775,30 +775,30 @@
     {
       "construction": "ExperientialMotionGoalVP",
       "file": "tests/constructions/ExperientialMotionGoalVP.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "ExperientialQuestion",
       "file": "tests/constructions/ExperientialQuestion.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "ExperientialVP",
@@ -1209,16 +1209,16 @@
     {
       "construction": "MotionDelimitedVP",
       "file": "tests/constructions/MotionDelimitedVP.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "MotionGoalVP",
@@ -1377,16 +1377,16 @@
     {
       "construction": "NegativeExperiential",
       "file": "tests/constructions/NegativeExperiential.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 2,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 2
     },
     {
       "construction": "NegativePotentialComplement",

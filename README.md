@@ -4,7 +4,7 @@ This repository is the canonical project working tree for the Cantonese parser a
 
 ## Current state
 
-- runtime: **v0.5.190**
+- runtime: **v0.5.191**
 - active runtime labels / construction notes: **169 / 169**
 - construction workflow: **2 active / 167 workflow-archived**
 - retired labels: **12**
@@ -17,9 +17,9 @@ Current validation targets:
 
 - aggregate regression: **545** cases
 - NP subsystem: **43** cases
-- per-construction assertions: **1,174**
+- per-construction assertions: **1,181**
 - construction test files: **169**
 
-v0.5.190 completes a constructor-specific audit of five low-reference wrappers. Three labels receive zero-weight implementation probes, `TemporalAdverbialClause` is retired because no constructor or parser output used it, and `Comment` remains unresolved pending broader path analysis. No recognized parser span changed.
+v0.5.191 audits six experiential and delimited-event wrappers. Seven zero-weight implementation probes preserve current reachability while documenting object-bearing negative-experiential routing gaps, missing `有冇 + V過` question coverage, and underparsed cognition-plus-clause content. No recognized parser span or linguistic status changed.
 
 Read [`docs/current/00-START-HERE.md`](docs/current/00-START-HERE.md), then [`docs/current/PROJECT-STATE.md`](docs/current/PROJECT-STATE.md).

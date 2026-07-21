@@ -123,6 +123,13 @@ provenance for collected legacy data.
 - retained 53 labels as `no_direct_cases`; “not observed” is not treated as unreachable;
 - retired no labels because all 68 retain runtime code references;
 - changed no parser span behavior or linguistic status.
+## v0.5.191 experiential and delimited wrapper audit
+
+- audited six related labels by complete-parser output and exact constructor behavior;
+- added seven zero-weight implementation probes across six labels;
+- reduced no-direct-case labels from 49 to 43;
+- recorded negative-experiential, experiential-question, and cognition-content routing gaps without changing parser spans or linguistic status.
+
 ## v0.5.190 low-reference wrapper audit
 
 - inspected five low-reference wrapper and clause labels at exact constructor level;

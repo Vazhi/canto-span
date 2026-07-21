@@ -17,6 +17,7 @@ const allowedKeys = new Set([
 const excludedRelativePaths = new Set([
   "test-data/runtime-reachability-probes-v1.json",
   "test-data/constructor-specific-reachability-probes-v1.json",
+  "test-data/experiential-delimited-reachability-probes-v1.json",
 ]);
 
 function parseTsv(file) {
@@ -95,10 +96,16 @@ const inventoryPath = path.join(root, "docs", "research", "CP033-P1-RUNTIME-REAC
 const inventory = parseTsv(inventoryPath);
 const probes = JSON.parse(fs.readFileSync(path.join(root, "test-data", "runtime-reachability-probes-v1.json"), "utf8"));
 const laterProbes = JSON.parse(fs.readFileSync(path.join(root, "test-data", "constructor-specific-reachability-probes-v1.json"), "utf8"));
+const newestProbes = JSON.parse(fs.readFileSync(path.join(root, "test-data", "experiential-delimited-reachability-probes-v1.json"), "utf8"));
 const testIndex = JSON.parse(fs.readFileSync(path.join(root, "tests", "construction-test-index.json"), "utf8"));
 const indexByLabel = new Map(testIndex.files.map((item) => [item.construction, item]));
 const probeByLabel = new Map(probes.cases.map((item) => [item.construction, item]));
 const laterProbeByLabel = new Map(laterProbes.cases.map((item) => [item.construction, item]));
+const newestProbeByLabel = new Map();
+for (const item of newestProbes.cases) {
+  if (!newestProbeByLabel.has(item.construction)) newestProbeByLabel.set(item.construction, []);
+  newestProbeByLabel.get(item.construction).push(item);
+}
 const laterRetiredLabels = new Set(["TemporalAdverbialClause"]);
 const checks = [];
 const failures = [];
@@ -108,7 +115,7 @@ function check(name, condition, detail = "") {
   if (!pass) failures.push({ name, detail: String(detail) });
 }
 
-check("runtime version is 0.5.190", api.runtimeVersion === "0.5.190", api.runtimeVersion);
+check("runtime version is 0.5.191", api.runtimeVersion === "0.5.191", api.runtimeVersion);
 check("structured candidate count is frozen", candidates.size === 1885, candidates.size);
 check("structured scan has no parser errors", parseErrors.length === 0, JSON.stringify(parseErrors.slice(0, 5)));
 check("117 runtime labels observed somewhere in structured materials", observed.size === 117, observed.size);
@@ -156,14 +163,18 @@ for (const row of inventory) {
   } else {
     check(`${label} has no baseline v0.5.189 probe`, !probe, probe?.case_id || "");
     const laterProbe = laterProbeByLabel.get(label);
-    if (laterProbe) {
-      const labels = api.diagnosticFinalRows(api.analyzeLine(laterProbe.source, laterProbe.context_source || null))
-        .filter((item) => item.kind === "construction")
-        .map(internalConstruction);
-      check(`${label} later constructor-specific probe has zero evidence weight`, laterProbe.linguistic_evidence_weight === 0 && laterProbe.purpose === "runtime_reachability_only", laterProbe.case_id);
-      check(`${label} later constructor-specific probe reaches target`, labels.includes(label), laterProbe.source);
+    const newest = newestProbeByLabel.get(label) || [];
+    const allLater = [...(laterProbe ? [laterProbe] : []), ...newest];
+    if (allLater.length) {
+      for (const probe of allLater) {
+        const labels = api.diagnosticFinalRows(api.analyzeLine(probe.source, probe.context_source || null))
+          .filter((item) => item.kind === "construction")
+          .map(internalConstruction);
+        check(`${label} later probe ${probe.case_id} has zero evidence weight`, probe.linguistic_evidence_weight === 0 && probe.purpose === "runtime_reachability_only", probe.case_id);
+        check(`${label} later probe ${probe.case_id} reaches target`, labels.includes(label), probe.source);
+      }
       check(`${label} current coverage is implementation-only after later audit`, index?.state === "implementation_positive_only", index?.state || "missing");
-      check(`${label} current implementation probe count is one after later audit`, Number(index?.implementation_probe_count) === 1, index?.implementation_probe_count);
+      check(`${label} current implementation probe count matches later audits`, Number(index?.implementation_probe_count) === allLater.length, `${index?.implementation_probe_count} != ${allLater.length}`);
       check(`${label} direct positive evidence count remains zero after later audit`, Number(index?.positive_case_count) === 0, index?.positive_case_count);
     } else {
       check(`${label} remains no-direct`, index?.state === "no_direct_cases", index?.state || "missing");
@@ -173,13 +184,13 @@ for (const row of inventory) {
 }
 check("15 baseline labels observed", observedInventory === 15, observedInventory);
 check("53 baseline labels not observed", unobservedInventory === 53, unobservedInventory);
-check("test index has 18 implementation-positive-only labels", testIndex.files.filter((item) => item.state === "implementation_positive_only").length === 18, testIndex.files.filter((item) => item.state === "implementation_positive_only").length);
-check("test index has 49 no-direct labels", testIndex.files.filter((item) => item.state === "no_direct_cases").length === 49, testIndex.files.filter((item) => item.state === "no_direct_cases").length);
+check("test index has 24 implementation-positive-only labels", testIndex.files.filter((item) => item.state === "implementation_positive_only").length === 24, testIndex.files.filter((item) => item.state === "implementation_positive_only").length);
+check("test index has 43 no-direct labels", testIndex.files.filter((item) => item.state === "no_direct_cases").length === 43, testIndex.files.filter((item) => item.state === "no_direct_cases").length);
 
 const result = {
   schema: "canto-span-runtime-reachability-audit-v1",
   runtime_version: api.runtimeVersion,
-  checkpoint: "v0.5.190-low-reference-wrapper-audit",
+  checkpoint: "v0.5.191-experiential-delimited-wrapper-audit",
   parser_behavior_changed: false,
   linguistic_status_changed: false,
   structured_candidate_count: candidates.size,

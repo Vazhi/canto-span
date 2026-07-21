@@ -4,7 +4,7 @@
 
 | Measure | Current value |
 |---|---:|
-| Runtime | v0.5.190 |
+| Runtime | v0.5.191 |
 | Runtime labels | 169 |
 | Current construction notes | 169 |
 | Active working notes | 2 |
@@ -18,7 +18,22 @@
 | `lexicalized_only` | 3 |
 | `parser_heuristic` | 20 |
 
-The canonical registry is the union of `grammar/active/*.md` and `grammar/archived/*.md`; it matches the 170 runtime labels exactly.
+The canonical registry is the union of `grammar/active/*.md` and `grammar/archived/*.md`; it matches the 169 runtime labels exactly.
+
+## v0.5.191 experiential and delimited wrapper audit
+
+Six related labels received constructor-specific review. Seven implementation-only probes now cover `NegativeExperiential`, `ExperientialQuestion`, `ExperientialMotionGoalVP`, `MotionDelimitedVP`, `CognitionDelimitedVP`, and `CognitionDelimitedObjectVP`; all have linguistic evidence weight zero.
+
+The audit records three unresolved runtime gaps rather than hiding them: object-bearing negative experiential statements can lose or change wrappers, `有冇 + V過` questions do not reach `ExperientialQuestion`, and the source-attested `你諗下係唔係` continuation does not reach the cognition-delimited wrappers.
+
+Current construction coverage:
+
+- positive and boundary: **2**;
+- positive only: **100**;
+- implementation positive only: **24**;
+- no direct cases: **43**.
+
+No recognized parser span, runtime label, or linguistic status changed.
 
 ## v0.5.190 low-reference wrapper audit
 
@@ -107,13 +122,13 @@ critical-item sample remains zero.
 
 - regression: **545 cases**;
 - NP subsystem: **43 cases**;
-- construction assertions: **1,174**;
+- construction assertions: **1,181**;
 - construction test files: **170**;
 - no parser span behavior changed in this migration.
 
 ## Next milestone
 
-Continue the 53-label implementation reachability backlog in small related
+Continue the 43-label implementation reachability backlog in small related
 families. The first family should cover low-reference wrappers and clause labels,
 with exact constructor inspection before any probe is added. Survey work remains
 blocked until the user supplies the requested survey-guidance prompt; at that

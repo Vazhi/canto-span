@@ -33,19 +33,19 @@ Every one of the 169 active labels has exactly one file under `tests/constructio
 
 Each file records the current executable cases assigned to that construction and an explicit coverage state. The construction-note frontmatter points to the file and records its positive, boundary, and total executable counts.
 
-Current v0.5.190 coverage:
+Current v0.5.191 coverage:
 
 | Coverage state | Constructions |
 |---|---:|
 | positive and boundary | 2 |
 | positive only | 100 |
-| implementation positive only | 18 |
+| implementation positive only | 24 |
 | boundary only | 0 |
-| no direct cases | 49 |
+| no direct cases | 43 |
 
 `implementation_positive_only` means the parser emits the label on a frozen
 reachability probe, but the case has explicit zero linguistic evidence weight.
-The 49 uncovered labels remain visible test debt. Empty files do not claim that
+The 43 uncovered labels remain visible test debt. Empty files do not claim that
 the constructions are correct, natural, supported, or unreachable.
 
 ## Boundary suites

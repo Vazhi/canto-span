@@ -1,0 +1,85 @@
+{
+  "schema": "canto-span-experiential-delimited-reachability-probes-v1",
+  "runtime_version": "0.5.191",
+  "linguistic_evidence_weight": 0,
+  "policy": "These cases protect current runtime reachability only. They do not attest naturalness, productivity, construction identity, complement type, negator semantics, or promotion eligibility.",
+  "cases": [
+    {
+      "case_id": "EXPDEL-001A",
+      "construction": "NegativeExperiential",
+      "source": "我未見過。",
+      "provenance": "docs/research/CP035-P1-EXPERIENTIAL-DELIMITED-WRAPPER-AUDIT-R1.md#EXPDEL-001A",
+      "source_role": "code_specific_context_dependent_probe",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only",
+      "scope_note": "Exercises the short 未 + V過 path only; it does not establish omitted-object licensing or equivalence with 冇 + V過."
+    },
+    {
+      "case_id": "EXPDEL-001B",
+      "construction": "NegativeExperiential",
+      "source": "我冇睇過。",
+      "provenance": "docs/research/CP035-P1-EXPERIENTIAL-DELIMITED-WRAPPER-AUDIT-R1.md#EXPDEL-001B",
+      "source_role": "code_specific_context_dependent_probe",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only",
+      "scope_note": "Exercises the short 冇 + V過 path only; it does not justify the runtime's shared generic-negator wrapper."
+    },
+    {
+      "case_id": "EXPDEL-002",
+      "construction": "ExperientialQuestion",
+      "source": "你飲過茶未？",
+      "provenance": "docs/research/CP035-P1-EXPERIENTIAL-DELIMITED-WRAPPER-AUDIT-R1.md#EXPDEL-002",
+      "source_role": "source_linked_surface_used_only_for_runtime_reachability",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only",
+      "scope_note": "Protects the final-未 question path without treating the parser node as an externally established construction analysis."
+    },
+    {
+      "case_id": "EXPDEL-003",
+      "construction": "ExperientialMotionGoalVP",
+      "source": "我未去過美國。",
+      "provenance": "docs/research/CP035-P1-EXPERIENTIAL-DELIMITED-WRAPPER-AUDIT-R1.md#EXPDEL-003",
+      "source_role": "source_linked_surface_used_only_for_runtime_reachability",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only",
+      "scope_note": "Protects the movement + 過 + goal child path only; it does not validate the surrounding negative analysis."
+    },
+    {
+      "case_id": "EXPDEL-004",
+      "construction": "MotionDelimitedVP",
+      "source": "去睇吓醫生。",
+      "provenance": "docs/research/CP035-P1-EXPERIENTIAL-DELIMITED-WRAPPER-AUDIT-R1.md#EXPDEL-004",
+      "source_role": "code_specific_semantically_coherent_probe",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only",
+      "scope_note": "Exercises movement verb + action verb + 吓; it does not establish one unified motion-delimitative construction."
+    },
+    {
+      "case_id": "EXPDEL-005",
+      "construction": "CognitionDelimitedVP",
+      "source": "諗吓。",
+      "provenance": "docs/research/CP035-P1-EXPERIENTIAL-DELIMITED-WRAPPER-AUDIT-R1.md#EXPDEL-005",
+      "source_role": "code_specific_context_dependent_probe",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only",
+      "scope_note": "Exercises cognition predicate + 吓 in isolation; it does not establish complement omission or a cognition-specific node."
+    },
+    {
+      "case_id": "EXPDEL-006",
+      "construction": "CognitionDelimitedObjectVP",
+      "source": "諗吓呢個問題。",
+      "provenance": "docs/research/CP035-P1-EXPERIENTIAL-DELIMITED-WRAPPER-AUDIT-R1.md#EXPDEL-006",
+      "source_role": "code_specific_semantically_coherent_probe",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only",
+      "scope_note": "Exercises the runtime's NP-object wrapper only; external sources require complement-type distinctions and do not validate a generic object template."
+    }
+  ]
+}

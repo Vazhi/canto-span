@@ -4,12 +4,34 @@
 const fs = require("fs");
 const path = require("path");
 const vm = require("vm");
+const crypto = require("crypto");
 const { loadRuntimeApi, internalConstruction } = require("../tests/lib/runtime-api");
 
 const root = path.resolve(__dirname, "..");
 const mainPath = path.join(root, "main.js");
 const mainText = fs.readFileSync(mainPath, "utf8");
 const api = loadRuntimeApi(mainPath);
+const fastMode = process.argv.includes("--fast");
+function sha256(file) { return crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex"); }
+if (fastMode) {
+  const cachedPath = path.join(root, "validation", `v${api.runtimeVersion}`, "low-reference-wrapper-audit.json");
+  const probePath = path.join(root, "test-data", "constructor-specific-reachability-probes-v1.json");
+  const inventoryPath = path.join(root, "docs", "research", "CP034-P1-LOW-REFERENCE-WRAPPER-INVENTORY-R1.tsv");
+  const failures = [];
+  let cached = null;
+  try { cached = JSON.parse(fs.readFileSync(cachedPath, "utf8")); } catch (error) { failures.push(`missing_or_invalid_cached_audit:${error.message}`); }
+  if (cached) {
+    if (cached.status !== "PASS") failures.push(`cached_audit_not_pass:${cached.status}`);
+    if (cached.runtime_version !== api.runtimeVersion) failures.push(`cached_runtime_mismatch:${cached.runtime_version}`);
+    if (cached.main_sha256 !== sha256(mainPath)) failures.push("cached_main_hash_mismatch");
+    if (cached.probe_file_sha256 !== sha256(probePath)) failures.push("cached_probe_hash_mismatch");
+    if (cached.inventory_sha256 !== sha256(inventoryPath)) failures.push("cached_inventory_hash_mismatch");
+  }
+  const result = { schema: "canto-span-low-reference-wrapper-fast-verification-v1", runtime_version: api.runtimeVersion, cached_audit: path.relative(root, cachedPath), failed: failures.length, status: failures.length ? "FAIL" : "PASS", failures };
+  console.log(JSON.stringify(result, null, 2));
+  if (failures.length) process.exit(1);
+  process.exit(0);
+}
 
 class Plugin {}
 class PluginSettingTab {}
@@ -66,7 +88,7 @@ function check(name, condition, detail = "") {
   if (!pass) failures.push({ name, detail: String(detail) });
 }
 
-check("runtime version is 0.5.190", api.runtimeVersion === "0.5.190", api.runtimeVersion);
+check("runtime version is 0.5.191", api.runtimeVersion === "0.5.191", api.runtimeVersion);
 check("inventory has five labels", inventory.length === 5, inventory.length);
 check("probe schema", probes.schema === "canto-span-constructor-specific-reachability-probes-v1", probes.schema);
 check("all three probes have zero evidence weight", probes.cases.length === 3 && probes.cases.every((row) => row.linguistic_evidence_weight === 0 && row.purpose === "runtime_reachability_only"), probes.cases.length);
@@ -104,8 +126,8 @@ check("TemporalAdverbialClause archived note preserved", fs.existsSync(path.join
 
 check("current registry has 169 labels", internal.CONSTRUCTION_LABEL_REGISTRY.size === 169, internal.CONSTRUCTION_LABEL_REGISTRY.size);
 check("test index has 169 labels", index.active_construction_count === 169 && index.files.length === 169, index.files.length);
-check("18 labels are implementation positive only", index.files.filter((row) => row.state === "implementation_positive_only").length === 18, index.files.filter((row) => row.state === "implementation_positive_only").length);
-check("49 labels remain no-direct", index.files.filter((row) => row.state === "no_direct_cases").length === 49, index.files.filter((row) => row.state === "no_direct_cases").length);
+check("24 labels are implementation positive only", index.files.filter((row) => row.state === "implementation_positive_only").length === 24, index.files.filter((row) => row.state === "implementation_positive_only").length);
+check("43 labels remain no-direct", index.files.filter((row) => row.state === "no_direct_cases").length === 43, index.files.filter((row) => row.state === "no_direct_cases").length);
 
 const result = {
   schema: "canto-span-low-reference-wrapper-audit-v1",
@@ -118,6 +140,9 @@ const result = {
   labels_retired: 1,
   complete_comment_single_lexeme_hits: completeCommentHits,
   linguistic_evidence_weight_added: 0,
+  main_sha256: sha256(mainPath),
+  probe_file_sha256: sha256(path.join(root, "test-data", "constructor-specific-reachability-probes-v1.json")),
+  inventory_sha256: sha256(path.join(root, "docs", "research", "CP034-P1-LOW-REFERENCE-WRAPPER-INVENTORY-R1.tsv")),
   total: checks.length,
   passed: checks.length - failures.length,
   failed: failures.length,

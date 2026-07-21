@@ -1,0 +1,33 @@
+{
+  "schema": "canto-span-release-handoff-audit-v2",
+  "release_id": "v0.5.191-experiential-delimited-wrapper-audit",
+  "handoff_sequence": 15,
+  "status_changes": [],
+  "changed_construction_audit": [],
+  "supported_productive_pending_reaudit": [],
+  "implementation_validation": "PASS required before handoff: 545 regression cases, 43 NP cases, 1,181 construction assertions, 169 note/test alignment, seven experiential/delimited zero-weight probes, historical reachability audits, panel workflow, promotion and release gates, documentation links, and repository verification.",
+  "linguistic_confidence": "No construction gained linguistic evidence or status. All seven probes have evidence weight zero. Existing checked source maps continue to require negator-type, question-strategy, motion-purpose, and cognition-complement distinctions before any promotion.",
+  "code_analysis_overclaim_review": true,
+  "overclaim_review_scope": "Inspected exact templates and complete parser output for six experiential and delimited labels. Recorded current reachability separately from source support and preserved object-bearing negative, 有冇-question, and clausal-content failures as unresolved implementation gaps.",
+  "release_documents": [
+    "docs/research/CP035-P1-EXPERIENTIAL-DELIMITED-WRAPPER-AUDIT-R1.md",
+    "docs/research/CP035-P1-EXPERIENTIAL-DELIMITED-WRAPPER-INVENTORY-R1.tsv",
+    "test-data/experiential-delimited-reachability-probes-v1.json",
+    "tools/verify-experiential-delimited-wrapper-audit.js",
+    "docs/current/PROJECT-STATE.md",
+    "docs/current/TESTING.md",
+    "GRAMMAR-INDEX.md",
+    "HANDOFF.md",
+    "CHANGELOG.md"
+  ],
+  "external_audit_ready": true,
+  "unresolved_release_questions": [
+    "Forty-three labels still have no direct standardized case.",
+    "Object-bearing 冇/未 + V過 statements do not consistently retain NegativeExperiential.",
+    "有冇 + V過 questions and cognition plus polar-clause content remain underrepresented.",
+    "Comment remains constructor-level reachable but unobserved in complete parser output under the bounded scan.",
+    "The full dormant-label review remains due by handoff sequence 23.",
+    "RUL and PFV survey evidence remains blocked until the user supplies the survey-guidance prompt."
+  ],
+  "base_tree": "60c20c2d9fe87c67f3aabea24adbb4e9cf21ddc4"
+}

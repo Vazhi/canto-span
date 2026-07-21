@@ -1,3 +1,11 @@
+## v0.5.191 — experiential and delimited wrapper audit
+
+- Reviewed six related no-direct-case labels by exact constructor and complete-parser output.
+- Added seven zero-evidence implementation probes across `NegativeExperiential`, `ExperientialQuestion`, `ExperientialMotionGoalVP`, `MotionDelimitedVP`, `CognitionDelimitedVP`, and `CognitionDelimitedObjectVP`.
+- Recorded unresolved routing gaps for object-bearing negative experiential statements, `有冇 + V過` questions, and source-attested cognition plus polar-clause content.
+- Increased construction assertions from 1,174 to 1,181.
+- Changed no parser span, runtime label, or linguistic status.
+
 ## v0.5.190 — low-reference wrapper audit
 
 - Audited `Comment`, `ComparativeStative`, `DefinitionComplement`, `DefinitionExplanatoryFrame`, and `TemporalAdverbialClause` at exact constructor level.
