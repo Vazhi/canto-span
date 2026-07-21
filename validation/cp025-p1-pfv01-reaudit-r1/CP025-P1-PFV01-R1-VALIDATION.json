@@ -1,0 +1,42 @@
+{
+  "schema": "canto-span-cp025-p1-pfv01-reaudit-validation-v1",
+  "checkpoint": "CP025-P1-PFV01-R1",
+  "runtime_changed": false,
+  "current_status": "provisional_reaudit",
+  "source_rows": 4,
+  "sources_verified": 4,
+  "positive_or_distribution_sources": 3,
+  "boundary_only_sources": 1,
+  "manually_classified_rows": 14,
+  "published_exact_positive_examples": 5,
+  "prior_speaker_exact_target_examples": 1,
+  "legacy_corpus_rows_traceable": 0,
+  "code_doc_review_items": 15,
+  "speaker_forms_created": 2,
+  "provisional_eligible": false,
+  "supported_productive_eligible": false,
+  "heldout_result_reused_as": "implementation_consistency_only",
+  "findings": [
+    "Old semantic exclusion of completion/current relevance is not supported and was withdrawn from current authority.",
+    "Old six-hit corpus aggregate has no row-level inventory and now carries zero evidence weight.",
+    "Only one of six prior speaker sentences exactly instantiates overt V + 咗 + object.",
+    "Runtime action_verb scope and selectional compatibility coverage are broader/weaker than the old documentation implied.",
+    "Speaker A and Speaker B must complete the same new controlled packet independently.",
+    "Frozen runtime instantiates the narrow subtype for only 2 of 6 controlled positive surfaces.",
+    "Quantified and associative nominal objects are not integrated into the subtype; two other positives expose lexical/Jyutping and question-wrapper gaps."
+  ],
+  "implementation_probe_cases": 14,
+  "controlled_positive_probe_cases": 6,
+  "controlled_positive_target_present": 2,
+  "controlled_positive_target_absent": 4,
+  "boundary_probe_cases": 8,
+  "structural_boundaries_target_absent": 7,
+  "selectional_anomaly_target_built_then_blocked": 1,
+  "missing_jyutping_probe_surfaces": [
+    "篇",
+    "文",
+    "牌",
+    "子"
+  ],
+  "code_doc_mismatches_or_limits": 10
+}

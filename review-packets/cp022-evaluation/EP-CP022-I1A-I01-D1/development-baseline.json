@@ -1,0 +1,2598 @@
+{
+  "schema": "canto-span-cp022-i1a-i01-development-baseline-v1",
+  "runtime_version": "0.5.178",
+  "generated_at": "2026-07-19T12:53:02.149Z",
+  "cases": [
+    {
+      "case_id": "I01-E01",
+      "surface": "我食飯。",
+      "coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "我食飯"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "top_constructions": [
+        "SubjectPredicateClause"
+      ],
+      "rows": [
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "SubjectPredicateClause",
+          "surface": "我食飯",
+          "label": "SubjPred",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "clause",
+            "co_participant",
+            "construction_span",
+            "head_noun",
+            "np",
+            "object",
+            "predicate",
+            "productive_vo",
+            "recipient",
+            "stance_holder",
+            "subject",
+            "subject_predicate_clause",
+            "topic",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "SubjectPredicateClause",
+          "construction": "",
+          "surface": "我",
+          "label": "",
+          "role": "who",
+          "jyutping": "ngo5",
+          "syntax": "subject_or_topic",
+          "slots": [
+            "co_participant",
+            "head_noun",
+            "np",
+            "recipient",
+            "stance_holder",
+            "subject",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 1,
+          "parent": "SubjectPredicateClause",
+          "construction": "ProductiveVO",
+          "surface": "食飯",
+          "label": "VP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "object",
+            "predicate",
+            "productive_vo",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "ProductiveVO",
+          "construction": "",
+          "surface": "食",
+          "label": "",
+          "role": "doing",
+          "jyutping": "sik6",
+          "syntax": "verb",
+          "slots": [
+            "action_verb",
+            "consumption_verb",
+            "main_verb",
+            "predicate",
+            "purpose_verb",
+            "stative_complement_head"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "ProductiveVO",
+          "construction": "",
+          "surface": "飯",
+          "label": "",
+          "role": "what",
+          "jyutping": "faan6",
+          "syntax": "object",
+          "slots": [
+            "head_noun",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "text",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "。",
+          "label": "",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [],
+          "trace": "punctuation_or_plain_text",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        }
+      ]
+    },
+    {
+      "case_id": "I01-E02",
+      "surface": "我喺屋企。",
+      "coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "我喺屋企"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "top_constructions": [
+        "SubjectPredicateClause"
+      ],
+      "rows": [
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "SubjectPredicateClause",
+          "surface": "我喺屋企",
+          "label": "SubjPred",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "clause",
+            "co_participant",
+            "construction_span",
+            "goal",
+            "head_noun",
+            "location",
+            "locative_marker",
+            "locative_phrase",
+            "locative_predicate",
+            "np",
+            "object",
+            "opinion_topic",
+            "predicate",
+            "recipient",
+            "stance_holder",
+            "subject",
+            "subject_predicate_clause",
+            "topic"
+          ],
+          "trace": "generative_template",
+          "predicate_subtype": "locative",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "SubjectPredicateClause",
+          "construction": "",
+          "surface": "我",
+          "label": "",
+          "role": "who",
+          "jyutping": "ngo5",
+          "syntax": "subject_or_topic",
+          "slots": [
+            "co_participant",
+            "head_noun",
+            "np",
+            "recipient",
+            "stance_holder",
+            "subject",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 1,
+          "parent": "SubjectPredicateClause",
+          "construction": "LocativePlacePhrase",
+          "surface": "喺屋企",
+          "label": "Location",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "construction_span",
+            "goal",
+            "head_noun",
+            "location",
+            "locative_marker",
+            "locative_phrase",
+            "locative_predicate",
+            "np",
+            "object",
+            "opinion_topic",
+            "predicate",
+            "topic"
+          ],
+          "trace": "generative_template",
+          "predicate_subtype": "locative",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "LocativePlacePhrase",
+          "construction": "",
+          "surface": "喺",
+          "label": "",
+          "role": "func",
+          "jyutping": "hai2",
+          "syntax": "locative_predicate_marker locative_marker",
+          "slots": [
+            "locative_marker"
+          ],
+          "trace": "construction_internal_parser_inactive_clone",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "LocativePlacePhrase",
+          "construction": "",
+          "surface": "屋企",
+          "label": "",
+          "role": "where",
+          "jyutping": "uk1 kei2",
+          "syntax": "place_or_goal",
+          "slots": [
+            "goal",
+            "head_noun",
+            "location",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "text",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "。",
+          "label": "",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [],
+          "trace": "punctuation_or_plain_text",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        }
+      ]
+    },
+    {
+      "case_id": "I01-E03",
+      "surface": "我一定可以去。",
+      "coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "我一定可以去"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "top_constructions": [
+        "SubjectModalPredicateClause"
+      ],
+      "rows": [
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "SubjectModalPredicateClause",
+          "surface": "我一定可以去",
+          "label": "SubjModal",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "clause",
+            "co_participant",
+            "construction_span",
+            "directional_motion_vp",
+            "head_noun",
+            "how",
+            "modal",
+            "modal_predicate",
+            "modal_predicate_clause",
+            "modal_vp",
+            "motion_predicate",
+            "movement_verb",
+            "np",
+            "predicate",
+            "recipient",
+            "stance_holder",
+            "subject",
+            "subject_modal_predicate_clause",
+            "topic",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "SubjectModalPredicateClause",
+          "construction": "",
+          "surface": "我",
+          "label": "",
+          "role": "who",
+          "jyutping": "ngo5",
+          "syntax": "subject_or_topic",
+          "slots": [
+            "co_participant",
+            "head_noun",
+            "np",
+            "recipient",
+            "stance_holder",
+            "subject",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "SubjectModalPredicateClause",
+          "construction": "",
+          "surface": "一定",
+          "label": "",
+          "role": "how",
+          "jyutping": "jat1 ding6",
+          "syntax": "certainty_adverb",
+          "slots": [
+            "how"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 1,
+          "parent": "SubjectModalPredicateClause",
+          "construction": "ModalVP",
+          "surface": "可以去",
+          "label": "ModalVP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "construction_span",
+            "directional_motion_vp",
+            "modal",
+            "modal_predicate",
+            "modal_vp",
+            "motion_predicate",
+            "movement_verb",
+            "predicate",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "ModalVP",
+          "construction": "",
+          "surface": "可以",
+          "label": "",
+          "role": "func",
+          "jyutping": "ho2 ji5",
+          "syntax": "modal_permission_or_ability",
+          "slots": [
+            "modal"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 2,
+          "parent": "ModalVP",
+          "construction": "DirectionalMotionVP",
+          "surface": "去",
+          "label": "MotionVP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "directional_motion_vp",
+            "motion_predicate",
+            "movement_verb",
+            "predicate",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 3,
+          "parent": "DirectionalMotionVP",
+          "construction": "",
+          "surface": "去",
+          "label": "",
+          "role": "doing",
+          "jyutping": "heoi3",
+          "syntax": "deictic_motion_marker",
+          "slots": [
+            "action_verb",
+            "deictic_motion_marker",
+            "main_verb",
+            "movement_verb",
+            "predicate"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "text",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "。",
+          "label": "",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [],
+          "trace": "punctuation_or_plain_text",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        }
+      ]
+    },
+    {
+      "case_id": "I01-E04",
+      "surface": "喺屋企可以食飯。",
+      "coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "喺屋企可以食飯"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "top_constructions": [
+        "LocativeModalPredicateClause"
+      ],
+      "rows": [
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "LocativeModalPredicateClause",
+          "surface": "喺屋企可以食飯",
+          "label": "LocModal",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "clause",
+            "construction_span",
+            "coverb_marker",
+            "goal",
+            "head_noun",
+            "location",
+            "locative_marker",
+            "locative_modal_predicate_clause",
+            "locative_phrase",
+            "modal",
+            "modal_predicate",
+            "modal_predicate_clause",
+            "modal_vp",
+            "np",
+            "object",
+            "opinion_topic",
+            "predicate",
+            "productive_vo",
+            "topic",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 1,
+          "parent": "LocativeModalPredicateClause",
+          "construction": "LocativePlacePhrase",
+          "surface": "喺屋企",
+          "label": "Location",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "construction_span",
+            "coverb_marker",
+            "goal",
+            "head_noun",
+            "location",
+            "locative_marker",
+            "locative_phrase",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "trace": "generative_template",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "LocativePlacePhrase",
+          "construction": "",
+          "surface": "喺",
+          "label": "",
+          "role": "func",
+          "jyutping": "hai2",
+          "syntax": "locative_coverb",
+          "slots": [
+            "coverb_marker",
+            "locative_marker"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "LocativePlacePhrase",
+          "construction": "",
+          "surface": "屋企",
+          "label": "",
+          "role": "where",
+          "jyutping": "uk1 kei2",
+          "syntax": "place_or_goal",
+          "slots": [
+            "goal",
+            "head_noun",
+            "location",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 1,
+          "parent": "LocativeModalPredicateClause",
+          "construction": "ModalVP",
+          "surface": "可以食飯",
+          "label": "ModalVP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "construction_span",
+            "modal",
+            "modal_predicate",
+            "modal_vp",
+            "object",
+            "predicate",
+            "productive_vo",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "ModalVP",
+          "construction": "",
+          "surface": "可以",
+          "label": "",
+          "role": "func",
+          "jyutping": "ho2 ji5",
+          "syntax": "modal_permission_or_ability",
+          "slots": [
+            "modal"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 2,
+          "parent": "ModalVP",
+          "construction": "ProductiveVO",
+          "surface": "食飯",
+          "label": "VP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "object",
+            "predicate",
+            "productive_vo",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 3,
+          "parent": "ProductiveVO",
+          "construction": "",
+          "surface": "食",
+          "label": "",
+          "role": "doing",
+          "jyutping": "sik6",
+          "syntax": "verb",
+          "slots": [
+            "action_verb",
+            "consumption_verb",
+            "main_verb",
+            "predicate",
+            "purpose_verb",
+            "stative_complement_head"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 3,
+          "parent": "ProductiveVO",
+          "construction": "",
+          "surface": "飯",
+          "label": "",
+          "role": "what",
+          "jyutping": "faan6",
+          "syntax": "object",
+          "slots": [
+            "head_noun",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "text",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "。",
+          "label": "",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [],
+          "trace": "punctuation_or_plain_text",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        }
+      ]
+    },
+    {
+      "case_id": "I01-E05",
+      "surface": "呢本書可以睇。",
+      "coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "呢本書可以睇"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "top_constructions": [
+        "TopicModalPredicateClause"
+      ],
+      "rows": [
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "TopicModalPredicateClause",
+          "surface": "呢本書可以睇",
+          "label": "TopicModal",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_verb",
+            "classifier",
+            "clause",
+            "construction_span",
+            "demonstrative",
+            "head_noun",
+            "main_verb",
+            "modal",
+            "modal_predicate",
+            "modal_predicate_clause",
+            "modal_vp",
+            "np",
+            "object",
+            "opinion_topic",
+            "predicate",
+            "topic",
+            "topic_modal_predicate_clause",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 1,
+          "parent": "TopicModalPredicateClause",
+          "construction": "DemonstrativeClassifierNP",
+          "surface": "呢本書",
+          "label": "NP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "classifier",
+            "construction_span",
+            "demonstrative",
+            "head_noun",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "trace": "generative_template",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "DemonstrativeClassifierNP",
+          "construction": "",
+          "surface": "呢",
+          "label": "",
+          "role": "func",
+          "jyutping": "ni1",
+          "syntax": "demonstrative_determiner",
+          "slots": [
+            "demonstrative"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "DemonstrativeClassifierNP",
+          "construction": "",
+          "surface": "本",
+          "label": "",
+          "role": "measure_word",
+          "jyutping": "bun2",
+          "syntax": "classifier_book",
+          "slots": [
+            "classifier"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "DemonstrativeClassifierNP",
+          "construction": "",
+          "surface": "書",
+          "label": "",
+          "role": "what",
+          "jyutping": "syu1",
+          "syntax": "object_np",
+          "slots": [
+            "head_noun",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 1,
+          "parent": "TopicModalPredicateClause",
+          "construction": "ModalVP",
+          "surface": "可以睇",
+          "label": "ModalVP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_verb",
+            "construction_span",
+            "main_verb",
+            "modal",
+            "modal_predicate",
+            "modal_vp",
+            "predicate",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "ModalVP",
+          "construction": "",
+          "surface": "可以",
+          "label": "",
+          "role": "func",
+          "jyutping": "ho2 ji5",
+          "syntax": "modal_permission_or_ability",
+          "slots": [
+            "modal"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "ModalVP",
+          "construction": "",
+          "surface": "睇",
+          "label": "",
+          "role": "doing",
+          "jyutping": "tai2",
+          "syntax": "verb transitive_affordance chain_select_perception",
+          "slots": [
+            "action_verb",
+            "main_verb",
+            "predicate"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "text",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "。",
+          "label": "",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [],
+          "trace": "punctuation_or_plain_text",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        }
+      ]
+    },
+    {
+      "case_id": "I01-E06",
+      "surface": "我同你可以去。",
+      "coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "我同你可以去"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "top_constructions": [
+        "CoordinatedSubjectModalPredicateClause"
+      ],
+      "rows": [
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "CoordinatedSubjectModalPredicateClause",
+          "surface": "我同你可以去",
+          "label": "CoordSubjModal",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_verb",
+            "clause",
+            "construction_span",
+            "coordinated_np",
+            "coordinated_subject",
+            "coordinated_subject_modal_predicate_clause",
+            "coordinator",
+            "deictic_motion_marker",
+            "left_np",
+            "main_verb",
+            "modal",
+            "modal_predicate",
+            "modal_predicate_clause",
+            "modal_vp",
+            "movement_verb",
+            "np",
+            "object",
+            "predicate",
+            "return_motion_verb",
+            "right_np",
+            "subject",
+            "topic",
+            "verb_complement",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 1,
+          "parent": "CoordinatedSubjectModalPredicateClause",
+          "construction": "CoordinatedNP",
+          "surface": "我同你",
+          "label": "CoordNP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "coordinated_np",
+            "coordinator",
+            "left_np",
+            "np",
+            "object",
+            "right_np",
+            "topic"
+          ],
+          "trace": "generative_template",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "CoordinatedNP",
+          "construction": "",
+          "surface": "我",
+          "label": "",
+          "role": "who",
+          "jyutping": "ngo5",
+          "syntax": "subject_or_topic",
+          "slots": [
+            "co_participant",
+            "head_noun",
+            "np",
+            "recipient",
+            "stance_holder",
+            "subject",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "CoordinatedNP",
+          "construction": "",
+          "surface": "同",
+          "label": "",
+          "role": "func",
+          "jyutping": "tung4",
+          "syntax": "coordinator",
+          "slots": [
+            "coordinator"
+          ],
+          "trace": "construction_internal_parser_inactive_clone",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "CoordinatedNP",
+          "construction": "",
+          "surface": "你",
+          "label": "",
+          "role": "who",
+          "jyutping": "nei5",
+          "syntax": "subject_or_topic",
+          "slots": [
+            "co_participant",
+            "head_noun",
+            "np",
+            "recipient",
+            "stance_holder",
+            "subject",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 1,
+          "parent": "CoordinatedSubjectModalPredicateClause",
+          "construction": "ModalVP",
+          "surface": "可以去",
+          "label": "ModalVP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_verb",
+            "construction_span",
+            "deictic_motion_marker",
+            "main_verb",
+            "modal",
+            "modal_predicate",
+            "modal_vp",
+            "movement_verb",
+            "predicate",
+            "return_motion_verb",
+            "verb_complement",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "ModalVP",
+          "construction": "",
+          "surface": "可以",
+          "label": "",
+          "role": "func",
+          "jyutping": "ho2 ji5",
+          "syntax": "modal_permission_or_ability",
+          "slots": [
+            "modal"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "ModalVP",
+          "construction": "",
+          "surface": "去",
+          "label": "",
+          "role": "doing",
+          "jyutping": "heoi3",
+          "syntax": "movement_verb",
+          "slots": [
+            "action_verb",
+            "deictic_motion_marker",
+            "main_verb",
+            "movement_verb",
+            "predicate",
+            "return_motion_verb",
+            "verb_complement"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "text",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "。",
+          "label": "",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [],
+          "trace": "punctuation_or_plain_text",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        }
+      ]
+    },
+    {
+      "case_id": "I01-E07",
+      "surface": "我食咗飯。",
+      "coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "我食咗飯"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "top_constructions": [
+        "SubjectPredicateClause"
+      ],
+      "rows": [
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "SubjectPredicateClause",
+          "surface": "我食咗飯",
+          "label": "SubjPred",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_verb",
+            "action_vp",
+            "aspect_marker",
+            "clause",
+            "co_participant",
+            "completion_vp",
+            "construction_span",
+            "consumption_verb",
+            "head_noun",
+            "main_verb",
+            "np",
+            "object",
+            "opinion_topic",
+            "perfective_aspect",
+            "perfective_vp",
+            "predicate",
+            "purpose_verb",
+            "recipient",
+            "stance_holder",
+            "stative_complement_head",
+            "subject",
+            "subject_predicate_clause",
+            "topic",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "SubjectPredicateClause",
+          "construction": "",
+          "surface": "我",
+          "label": "",
+          "role": "who",
+          "jyutping": "ngo5",
+          "syntax": "subject_or_topic",
+          "slots": [
+            "co_participant",
+            "head_noun",
+            "np",
+            "recipient",
+            "stance_holder",
+            "subject",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 1,
+          "parent": "SubjectPredicateClause",
+          "construction": "PerfectiveVP",
+          "surface": "食咗飯",
+          "label": "PerfectiveVP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_verb",
+            "action_vp",
+            "aspect_marker",
+            "completion_vp",
+            "construction_span",
+            "consumption_verb",
+            "head_noun",
+            "main_verb",
+            "np",
+            "object",
+            "opinion_topic",
+            "perfective_aspect",
+            "perfective_vp",
+            "predicate",
+            "purpose_verb",
+            "stative_complement_head",
+            "topic",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "PerfectiveVP",
+          "construction": "",
+          "surface": "食",
+          "label": "",
+          "role": "doing",
+          "jyutping": "sik6",
+          "syntax": "verb transitive_affordance chain_select_edible",
+          "slots": [
+            "action_verb",
+            "consumption_verb",
+            "main_verb",
+            "predicate",
+            "purpose_verb",
+            "stative_complement_head"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "PerfectiveVP",
+          "construction": "",
+          "surface": "咗",
+          "label": "",
+          "role": "func",
+          "jyutping": "zo2",
+          "syntax": "perfective_aspect",
+          "slots": [
+            "aspect_marker",
+            "perfective_aspect"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "PerfectiveVP",
+          "construction": "",
+          "surface": "飯",
+          "label": "",
+          "role": "what",
+          "jyutping": "faan6",
+          "syntax": "object_np",
+          "slots": [
+            "head_noun",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "text",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "。",
+          "label": "",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [],
+          "trace": "punctuation_or_plain_text",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        }
+      ]
+    },
+    {
+      "case_id": "I01-V01",
+      "surface": "我冇去。",
+      "coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "我冇去"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "top_constructions": [
+        "SubjectPredicateClause"
+      ],
+      "rows": [
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "SubjectPredicateClause",
+          "surface": "我冇去",
+          "label": "SubjPred",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "clause",
+            "negated_predicate",
+            "negative_clause",
+            "negator",
+            "predicate",
+            "subject",
+            "subject_predicate_clause"
+          ],
+          "trace": "generative_template",
+          "predicate_subtype": "",
+          "retired_label_alias": "SubjectNegatedPredicateClause",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "SubjectPredicateClause",
+          "construction": "",
+          "surface": "我",
+          "label": "",
+          "role": "who",
+          "jyutping": "ngo5",
+          "syntax": "subject_or_topic",
+          "slots": [
+            "co_participant",
+            "head_noun",
+            "np",
+            "recipient",
+            "stance_holder",
+            "subject",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 1,
+          "parent": "SubjectPredicateClause",
+          "construction": "NegatedDirectionalMotionVP",
+          "surface": "冇去",
+          "label": "NegMotionVP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "directional_motion_vp",
+            "motion_predicate",
+            "movement_verb",
+            "negated_directional_motion_vp",
+            "negator",
+            "predicate",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "NegatedDirectionalMotionVP",
+          "construction": "",
+          "surface": "冇",
+          "label": "",
+          "role": "func",
+          "jyutping": "mou5",
+          "syntax": "negator",
+          "slots": [
+            "m4_negator",
+            "negated_existential",
+            "negator"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 2,
+          "parent": "NegatedDirectionalMotionVP",
+          "construction": "DirectionalMotionVP",
+          "surface": "去",
+          "label": "MotionVP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "directional_motion_vp",
+            "motion_predicate",
+            "movement_verb",
+            "predicate",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 3,
+          "parent": "DirectionalMotionVP",
+          "construction": "",
+          "surface": "去",
+          "label": "",
+          "role": "doing",
+          "jyutping": "heoi3",
+          "syntax": "deictic_motion_marker",
+          "slots": [
+            "action_verb",
+            "deictic_motion_marker",
+            "main_verb",
+            "movement_verb",
+            "predicate"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "text",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "。",
+          "label": "",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [],
+          "trace": "punctuation_or_plain_text",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        }
+      ]
+    },
+    {
+      "case_id": "I01-V02",
+      "surface": "屋企可以食飯。",
+      "coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "屋企可以食飯"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "top_constructions": [
+        "LocativeModalPredicateClause"
+      ],
+      "rows": [
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "LocativeModalPredicateClause",
+          "surface": "屋企可以食飯",
+          "label": "LocModal",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "clause",
+            "construction_span",
+            "goal",
+            "head_noun",
+            "location",
+            "locative_modal_predicate_clause",
+            "modal",
+            "modal_predicate",
+            "modal_predicate_clause",
+            "modal_vp",
+            "np",
+            "object",
+            "opinion_topic",
+            "predicate",
+            "productive_vo",
+            "topic",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "LocativeModalPredicateClause",
+          "construction": "",
+          "surface": "屋企",
+          "label": "",
+          "role": "where",
+          "jyutping": "uk1 kei2",
+          "syntax": "place_or_goal",
+          "slots": [
+            "goal",
+            "head_noun",
+            "location",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 1,
+          "parent": "LocativeModalPredicateClause",
+          "construction": "ModalVP",
+          "surface": "可以食飯",
+          "label": "ModalVP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "construction_span",
+            "modal",
+            "modal_predicate",
+            "modal_vp",
+            "object",
+            "predicate",
+            "productive_vo",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "ModalVP",
+          "construction": "",
+          "surface": "可以",
+          "label": "",
+          "role": "func",
+          "jyutping": "ho2 ji5",
+          "syntax": "modal_permission_or_ability",
+          "slots": [
+            "modal"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 2,
+          "parent": "ModalVP",
+          "construction": "ProductiveVO",
+          "surface": "食飯",
+          "label": "VP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "object",
+            "predicate",
+            "productive_vo",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 3,
+          "parent": "ProductiveVO",
+          "construction": "",
+          "surface": "食",
+          "label": "",
+          "role": "doing",
+          "jyutping": "sik6",
+          "syntax": "verb",
+          "slots": [
+            "action_verb",
+            "consumption_verb",
+            "main_verb",
+            "predicate",
+            "purpose_verb",
+            "stative_complement_head"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 3,
+          "parent": "ProductiveVO",
+          "construction": "",
+          "surface": "飯",
+          "label": "",
+          "role": "what",
+          "jyutping": "faan6",
+          "syntax": "object",
+          "slots": [
+            "head_noun",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "text",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "。",
+          "label": "",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [],
+          "trace": "punctuation_or_plain_text",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        }
+      ]
+    },
+    {
+      "case_id": "I01-V03",
+      "surface": "書可以睇。",
+      "coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "書可以睇"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "top_constructions": [
+        "TopicModalPredicateClause"
+      ],
+      "rows": [
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "TopicModalPredicateClause",
+          "surface": "書可以睇",
+          "label": "TopicModal",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_verb",
+            "clause",
+            "construction_span",
+            "head_noun",
+            "main_verb",
+            "modal",
+            "modal_predicate",
+            "modal_predicate_clause",
+            "modal_vp",
+            "np",
+            "object",
+            "opinion_topic",
+            "predicate",
+            "topic",
+            "topic_modal_predicate_clause",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "TopicModalPredicateClause",
+          "construction": "",
+          "surface": "書",
+          "label": "",
+          "role": "what",
+          "jyutping": "syu1",
+          "syntax": "object_np",
+          "slots": [
+            "head_noun",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 1,
+          "parent": "TopicModalPredicateClause",
+          "construction": "ModalVP",
+          "surface": "可以睇",
+          "label": "ModalVP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_verb",
+            "construction_span",
+            "main_verb",
+            "modal",
+            "modal_predicate",
+            "modal_vp",
+            "predicate",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "ModalVP",
+          "construction": "",
+          "surface": "可以",
+          "label": "",
+          "role": "func",
+          "jyutping": "ho2 ji5",
+          "syntax": "modal_permission_or_ability",
+          "slots": [
+            "modal"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "ModalVP",
+          "construction": "",
+          "surface": "睇",
+          "label": "",
+          "role": "doing",
+          "jyutping": "tai2",
+          "syntax": "verb transitive_affordance chain_select_perception",
+          "slots": [
+            "action_verb",
+            "main_verb",
+            "predicate"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "text",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "。",
+          "label": "",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [],
+          "trace": "punctuation_or_plain_text",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        }
+      ]
+    },
+    {
+      "case_id": "I01-V04",
+      "surface": "你要唔要？",
+      "coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "你要唔要"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "top_constructions": [
+        "SubjectModalPredicateClause"
+      ],
+      "rows": [
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "SubjectModalPredicateClause",
+          "surface": "你要唔要",
+          "label": "SubjModal",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "clause",
+            "co_participant",
+            "construction_span",
+            "head_noun",
+            "m4_negator",
+            "modal",
+            "modal_predicate",
+            "modal_predicate_clause",
+            "modal_vp",
+            "negator",
+            "np",
+            "predicate",
+            "recipient",
+            "stance_holder",
+            "subject",
+            "subject_modal_predicate_clause",
+            "topic",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "SubjectModalPredicateClause",
+          "construction": "",
+          "surface": "你",
+          "label": "",
+          "role": "who",
+          "jyutping": "nei5",
+          "syntax": "subject_or_topic",
+          "slots": [
+            "co_participant",
+            "head_noun",
+            "np",
+            "recipient",
+            "stance_holder",
+            "subject",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 1,
+          "parent": "SubjectModalPredicateClause",
+          "construction": "ModalVP",
+          "surface": "要唔要",
+          "label": "ModalVP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "m4_negator",
+            "modal",
+            "modal_predicate",
+            "modal_vp",
+            "negator",
+            "predicate",
+            "vp"
+          ],
+          "trace": "generative_or_heuristic_slot_rule",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "ModalVP",
+          "construction": "",
+          "surface": "要",
+          "label": "",
+          "role": "func",
+          "jyutping": "jiu3",
+          "syntax": "modal_need_or_want",
+          "slots": [
+            "modal"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "ModalVP",
+          "construction": "",
+          "surface": "唔",
+          "label": "",
+          "role": "func",
+          "jyutping": "m4",
+          "syntax": "negator",
+          "slots": [
+            "m4_negator",
+            "negator"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "ModalVP",
+          "construction": "",
+          "surface": "要",
+          "label": "",
+          "role": "func",
+          "jyutping": "jiu3",
+          "syntax": "modal_need_or_want",
+          "slots": [
+            "modal"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "text",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "？",
+          "label": "",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [],
+          "trace": "punctuation_or_plain_text",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        }
+      ]
+    },
+    {
+      "case_id": "I01-N01",
+      "surface": "食飯。",
+      "coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "食飯"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "top_constructions": [
+        "ProductiveVO"
+      ],
+      "rows": [
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "ProductiveVO",
+          "surface": "食飯",
+          "label": "VP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "object",
+            "predicate",
+            "productive_vo",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "ProductiveVO",
+          "construction": "",
+          "surface": "食",
+          "label": "",
+          "role": "doing",
+          "jyutping": "sik6",
+          "syntax": "verb",
+          "slots": [
+            "action_verb",
+            "consumption_verb",
+            "main_verb",
+            "predicate",
+            "purpose_verb",
+            "stative_complement_head"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "ProductiveVO",
+          "construction": "",
+          "surface": "飯",
+          "label": "",
+          "role": "what",
+          "jyutping": "faan6",
+          "syntax": "object",
+          "slots": [
+            "head_noun",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "text",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "。",
+          "label": "",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [],
+          "trace": "punctuation_or_plain_text",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        }
+      ]
+    },
+    {
+      "case_id": "I01-N02",
+      "surface": "可以去。",
+      "coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "可以去"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "top_constructions": [
+        "NeedsContext"
+      ],
+      "rows": [
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "NeedsContext",
+          "surface": "可以去",
+          "label": "needs context",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "desiderative_modal",
+            "modal",
+            "needs_context",
+            "problem_span",
+            "review_candidate"
+          ],
+          "trace": "special_ambiguity_rule",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "NeedsContext",
+          "construction": "",
+          "surface": "可以",
+          "label": "",
+          "role": "func",
+          "jyutping": "ho2 ji5",
+          "syntax": "modal_permission_or_ability",
+          "slots": [
+            "modal"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "NeedsContext",
+          "construction": "",
+          "surface": "去",
+          "label": "",
+          "role": "doing",
+          "jyutping": "heoi3",
+          "syntax": "movement_verb",
+          "slots": [
+            "action_verb",
+            "deictic_motion_marker",
+            "main_verb",
+            "movement_verb",
+            "predicate",
+            "return_motion_verb",
+            "verb_complement"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "text",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "。",
+          "label": "",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [],
+          "trace": "punctuation_or_plain_text",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        }
+      ]
+    },
+    {
+      "case_id": "I01-N03",
+      "surface": "我同你。",
+      "coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "我同你"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "top_constructions": [
+        "CoordinatedNP"
+      ],
+      "rows": [
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "CoordinatedNP",
+          "surface": "我同你",
+          "label": "CoordNP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "coordinated_np",
+            "coordinator",
+            "left_np",
+            "np",
+            "object",
+            "right_np",
+            "topic"
+          ],
+          "trace": "generative_template",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "CoordinatedNP",
+          "construction": "",
+          "surface": "我",
+          "label": "",
+          "role": "who",
+          "jyutping": "ngo5",
+          "syntax": "subject_or_topic",
+          "slots": [
+            "co_participant",
+            "head_noun",
+            "np",
+            "recipient",
+            "stance_holder",
+            "subject",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "CoordinatedNP",
+          "construction": "",
+          "surface": "同",
+          "label": "",
+          "role": "func",
+          "jyutping": "tung4",
+          "syntax": "coordinator",
+          "slots": [
+            "coordinator"
+          ],
+          "trace": "construction_internal_parser_inactive_clone",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "CoordinatedNP",
+          "construction": "",
+          "surface": "你",
+          "label": "",
+          "role": "who",
+          "jyutping": "nei5",
+          "syntax": "subject_or_topic",
+          "slots": [
+            "co_participant",
+            "head_noun",
+            "np",
+            "recipient",
+            "stance_holder",
+            "subject",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "text",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "。",
+          "label": "",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [],
+          "trace": "punctuation_or_plain_text",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        }
+      ]
+    },
+    {
+      "case_id": "I01-N04",
+      "surface": "喺屋企。",
+      "coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "喺屋企"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "top_constructions": [
+        "LocativeFragment"
+      ],
+      "rows": [
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "LocativeFragment",
+          "surface": "喺屋企",
+          "label": "Location",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "clause",
+            "location",
+            "locative_fragment"
+          ],
+          "trace": "generative_template",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 1,
+          "parent": "LocativeFragment",
+          "construction": "LocativePlacePhrase",
+          "surface": "喺屋企",
+          "label": "Location",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "construction_span",
+            "coverb_marker",
+            "goal",
+            "head_noun",
+            "location",
+            "locative_marker",
+            "locative_phrase",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "trace": "generative_template",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "LocativePlacePhrase",
+          "construction": "",
+          "surface": "喺",
+          "label": "",
+          "role": "func",
+          "jyutping": "hai2",
+          "syntax": "locative_coverb",
+          "slots": [
+            "coverb_marker",
+            "locative_marker"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "LocativePlacePhrase",
+          "construction": "",
+          "surface": "屋企",
+          "label": "",
+          "role": "where",
+          "jyutping": "uk1 kei2",
+          "syntax": "place_or_goal",
+          "slots": [
+            "goal",
+            "head_noun",
+            "location",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        },
+        {
+          "kind": "text",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "。",
+          "label": "",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [],
+          "trace": "punctuation_or_plain_text",
+          "predicate_subtype": "",
+          "retired_label_alias": "",
+          "clause_modifier_profile": ""
+        }
+      ]
+    }
+  ]
+}

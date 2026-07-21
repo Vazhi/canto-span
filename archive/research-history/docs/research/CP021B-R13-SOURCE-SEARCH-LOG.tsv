@@ -1,0 +1,11 @@
+search_id	query_or_target	source_type	outcome	used_for	limit_or_disposition
+R13-S01	Kataoka 2018 粵語進行體標記 緊 official PDF	official journal PDF	VERIFIED	V緊 progressive, 緊/住 contrast, motion/state-like/extended-process examples	Does not prove unrestricted lexical productivity.
+R13-S02	Fan 2024 香港粵語 有 VP 時體意義 official PDF	official journal PDF	VERIFIED	過/喺度/住/緊 distinctions; V住 subordinate/accompanying distribution; 有V過	Theory-specific stative/dynamic analysis retained as analysis, not parser ontology.
+R13-S03	Matthews Yip Cantonese Grammar multimedia Chapter 11	university-hosted reference supplement	VERIFIED	exact 緊, 住, 過…未 examples	Example supplement, not productivity proof.
+R13-S04	Alderete et al. 2017 Cantonese Grammar Synopsis aspect and wh sections	university-hosted scholarly synopsis PDF	VERIFIED_EXTENDED_EXISTING_RECORD	V-Asp-(NP), aspect inventory, wh-in-situ components	Synopsis does not justify dedicated progressive-wh nodes.
+R13-S05	Sio Bond 2025 Inner and outer aspect in Cantonese	peer-reviewed conference PDF	VERIFIED_EXTENDED_EXISTING_RECORD	outer-aspect inventory and compatibility restrictions	Illustrative HPSG subset, not exhaustive lexicon.
+R13-S06	Basic Cantonese Units 18, 19, 23, 24	descriptive reference grammar PDF	VERIFIED_EXTENDED_EXISTING_RECORD	去過 goals, V過…未, 有冇+V過, 緊/住 contrast, wh-in-situ	Teaching examples do not establish unrestricted productivity.
+R13-S07	Shan Jin 2025 progressive complex directional example	peer-reviewed journal article	REUSED_VERIFIED_RECORD	爬緊返去海邊 and compositional motion boundary	Serial/path analysis is not adopted as settled parser ontology.
+R13-S08	Yiu 2016 directional/aspect ordering	academic edited-volume chapter	REUSED_VERIFIED_RECORD	directional ordering and lexical asymmetry	No free directional cross-product.
+R13-S09	Hara 2023 and Liang Mai 2026 polar/wh components	peer-reviewed chapter and journal supplement	REUSED_VERIFIED_RECORD	suppletive 有冇+VP and wh-in-situ components	Components do not prove dedicated progressive-wh constructions.
+R13-S10	沿 expansion into negative/habitual/delimitative aspect	scope screen	DEFERRED	family boundary	Excluded from R13; requires separate coherent research batch.

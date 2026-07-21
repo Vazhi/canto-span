@@ -1,0 +1,59 @@
+{
+  "schema": "canto-span-slim-packaging-manifest-v1",
+  "checkpoint": "CP022-I1A-I01-R1-SLIM1",
+  "runtime_candidate": "v0.5.179-cp022-i1a-i01-neutral-clause-span-consolidation-r1",
+  "packaging_change_only": true,
+  "parser_behavior_changed": false,
+  "source_full_zip": "canto-span-clean-project-CP022-I1A-I01-R1-render-pending.zip",
+  "source_full_zip_sha256": "364c331c6436728a0adca393228e6dae43b42a432bdd0d2fd6c9de1ddd0fcd71",
+  "source_file_count": 921,
+  "removed_file_count": 683,
+  "removed_uncompressed_bytes": 219471977,
+  "runtime_sha256": {
+    "main.js": "ec3f496b41d1b1d2ad6b44b9db17b2d6319646567a56f9b51e4fc6bc4ac1bc0f",
+    "manifest.json": "c07d7e282c51320f4669620f985a6e11a7e8dba14611f7b731556564fbcba776",
+    "styles.css": "5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a"
+  },
+  "required_files": [
+    "main.js",
+    "manifest.json",
+    "styles.css",
+    "README.md",
+    "CHECKPOINT-STATE.md",
+    "HANDOFF.md",
+    "PROGRESS-CHECKPOINT.json",
+    "docs/current/00-START-HERE.md",
+    "docs/current/CURRENT-STATE.md",
+    "docs/current/PACKAGING-AND-RETENTION-POLICY.md",
+    "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv",
+    "docs/research/PARSER-CONSTRUCTION-SOURCE-REGISTER-CP021B-R37.tsv",
+    "review-packets/cp022-evaluation/EP-CP022-I1A-I01-D1/focused-evaluation-packet.json",
+    "review-packets/cp022-evaluation/EP-CP022-I1A-I01-D1/heldout-lock-manifest.json",
+    "review-packets/cp022-evaluation/EP-CP022-I1A-I02-D1/focused-evaluation-packet.json",
+    "test-data/regression-snapshots.json",
+    "test-data/grammar-legitimacy-audit.json",
+    "tools/run-current-focused.js",
+    "tools/audit-slim-package.js",
+    "render-review/CP022-I1A-I01-R1-FOCUSED-RENDER-REVIEW.md",
+    "SLIM-REMOVED-ARTIFACTS.tsv"
+  ],
+  "forbidden_paths": [
+    "snapshot-artifacts",
+    "docs/history",
+    "validation/cp021b-r37",
+    "validation/cp022-i1a-i02-a1",
+    "validation/cp022-i1a-i04-a1"
+  ],
+  "slim_file_count": 246,
+  "slim_uncompressed_bytes": 15709668,
+  "validation_summary": {
+    "current_focused": "PASS",
+    "i01_visible": "100/100",
+    "i02_preservation": "24/24",
+    "aggregate_regression": "545/545",
+    "grammar_legitimacy": "1087/1087",
+    "semantic_acceptance": "15/15",
+    "pre_intermediate_corpus": "80/80",
+    "slim_package_audit": "42/42"
+  }
+}

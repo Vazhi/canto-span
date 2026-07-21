@@ -1,0 +1,284 @@
+{
+  "schema": "canto-span-cp022-p1-pfv01-visible-result-v1",
+  "checkpoint": "CP022-P1-PFV01-R1",
+  "runtime_version": "0.5.183",
+  "heldout_opened": true,
+  "visible_case_count": 18,
+  "render_case_count": 12,
+  "supported_productive_count": 1,
+  "total": 63,
+  "passed": 60,
+  "failed": 3,
+  "strict_ready": false,
+  "checks": [
+    {
+      "name": "runtime 0.5.180",
+      "pass": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ '0.5.183'\n- '0.5.180'\n         ^\n"
+    },
+    {
+      "name": "policy 0.5.180",
+      "pass": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ '0.5.183'\n- '0.5.180'\n         ^\n"
+    },
+    {
+      "name": "global freeze remains active",
+      "pass": true
+    },
+    {
+      "name": "registry 178",
+      "pass": false,
+      "error": "Expected values to be strictly equal:\n\n181 !== 178\n"
+    },
+    {
+      "name": "subtype active",
+      "pass": true
+    },
+    {
+      "name": "public alias exact",
+      "pass": true
+    },
+    {
+      "name": "internal scope exact",
+      "pass": true
+    },
+    {
+      "name": "narrow subtype supported productive after acceptance",
+      "pass": true
+    },
+    {
+      "name": "broad PerfectiveVP remains provisional",
+      "pass": true
+    },
+    {
+      "name": "P1-E01 public diagnostic signature unchanged",
+      "pass": true
+    },
+    {
+      "name": "P1-E01 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "P1-E01 exactly one narrow subtype",
+      "pass": true
+    },
+    {
+      "name": "P1-E02 public diagnostic signature unchanged",
+      "pass": true
+    },
+    {
+      "name": "P1-E02 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "P1-E02 exactly one narrow subtype",
+      "pass": true
+    },
+    {
+      "name": "P1-V01 public diagnostic signature unchanged",
+      "pass": true
+    },
+    {
+      "name": "P1-V01 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "P1-V01 exactly one narrow subtype",
+      "pass": true
+    },
+    {
+      "name": "P1-V02 public diagnostic signature unchanged",
+      "pass": true
+    },
+    {
+      "name": "P1-V02 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "P1-V02 exactly one narrow subtype",
+      "pass": true
+    },
+    {
+      "name": "P1-V03 public diagnostic signature unchanged",
+      "pass": true
+    },
+    {
+      "name": "P1-V03 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "P1-V03 exactly one narrow subtype",
+      "pass": true
+    },
+    {
+      "name": "P1-V04 public diagnostic signature unchanged",
+      "pass": true
+    },
+    {
+      "name": "P1-V04 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "P1-V04 exactly one narrow subtype",
+      "pass": true
+    },
+    {
+      "name": "P1-V05 public diagnostic signature unchanged",
+      "pass": true
+    },
+    {
+      "name": "P1-V05 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "P1-V05 exactly one narrow subtype",
+      "pass": true
+    },
+    {
+      "name": "P1-V06 public diagnostic signature unchanged",
+      "pass": true
+    },
+    {
+      "name": "P1-V06 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "P1-V06 exactly one narrow subtype",
+      "pass": true
+    },
+    {
+      "name": "P1-V07 public diagnostic signature unchanged",
+      "pass": true
+    },
+    {
+      "name": "P1-V07 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "P1-V07 exactly one narrow subtype",
+      "pass": true
+    },
+    {
+      "name": "P1-V08 public diagnostic signature unchanged",
+      "pass": true
+    },
+    {
+      "name": "P1-V08 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "P1-V08 exactly one narrow subtype",
+      "pass": true
+    },
+    {
+      "name": "P1-N01 public diagnostic signature unchanged",
+      "pass": true
+    },
+    {
+      "name": "P1-N01 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "P1-N01 narrow subtype absent",
+      "pass": true
+    },
+    {
+      "name": "P1-N02 public diagnostic signature unchanged",
+      "pass": true
+    },
+    {
+      "name": "P1-N02 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "P1-N02 narrow subtype absent",
+      "pass": true
+    },
+    {
+      "name": "P1-N03 public diagnostic signature unchanged",
+      "pass": true
+    },
+    {
+      "name": "P1-N03 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "P1-N03 narrow subtype absent",
+      "pass": true
+    },
+    {
+      "name": "P1-N04 public diagnostic signature unchanged",
+      "pass": true
+    },
+    {
+      "name": "P1-N04 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "P1-N04 narrow subtype absent",
+      "pass": true
+    },
+    {
+      "name": "P1-N05 public diagnostic signature unchanged",
+      "pass": true
+    },
+    {
+      "name": "P1-N05 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "P1-N05 narrow subtype absent",
+      "pass": true
+    },
+    {
+      "name": "P1-N06 public diagnostic signature unchanged",
+      "pass": true
+    },
+    {
+      "name": "P1-N06 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "P1-N06 selectional mismatch remains non-clean",
+      "pass": true
+    },
+    {
+      "name": "P1-N07 public diagnostic signature unchanged",
+      "pass": true
+    },
+    {
+      "name": "P1-N07 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "P1-N07 narrow subtype absent",
+      "pass": true
+    },
+    {
+      "name": "P1-N08 public diagnostic signature unchanged",
+      "pass": true
+    },
+    {
+      "name": "P1-N08 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "P1-N08 narrow subtype absent",
+      "pass": true
+    }
+  ],
+  "failures": [
+    {
+      "name": "runtime 0.5.180",
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ '0.5.183'\n- '0.5.180'\n         ^\n"
+    },
+    {
+      "name": "policy 0.5.180",
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ '0.5.183'\n- '0.5.180'\n         ^\n"
+    },
+    {
+      "name": "registry 178",
+      "error": "Expected values to be strictly equal:\n\n181 !== 178\n"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+candidate	probe_type	surface	expected	must_not	implementation_phase
+大伯	positive_lexical_recognition	我大伯去廣西旅遊。	target surface recognized with proposed Jyutping and bounded lexical role	no grammar promotion or hidden material	POST_v0.5.181_ONLY
+大伯	negative_or_boundary	大伯去咗。	lexical recognition may occur but semantic/context boundary remains visible	Do not infer exact genealogy or speaker relation from the token.	POST_v0.5.181_ONLY
+廣西	positive_lexical_recognition	佢哋去廣西旅遊。	target surface recognized with proposed Jyutping and bounded lexical role	no grammar promotion or hidden material	POST_v0.5.181_ONLY
+廣西	negative_or_boundary	廣西。	lexical recognition may occur but semantic/context boundary remains visible	Proper-name recognition must not independently license a motion goal or clause.	POST_v0.5.181_ONLY
+旅遊	positive_lexical_recognition	佢哋去廣西旅遊。	target surface recognized with proposed Jyutping and bounded lexical role	no grammar promotion or hidden material	POST_v0.5.181_ONLY
+旅遊	negative_or_boundary	旅遊。	lexical recognition may occur but semantic/context boundary remains visible	Install noun affordance only; no unrestricted verb or purpose-chain license.	POST_v0.5.181_ONLY
+嘛	positive_lexical_recognition	應該佢哋成班人上去玩嘛。	target surface recognized with proposed Jyutping and bounded lexical role	no grammar promotion or hidden material	POST_v0.5.181_ONLY
+嘛	negative_or_boundary	嘛。	lexical recognition may occur but semantic/context boundary remains visible	Token/Jyutping entry only; no broad scope or discourse relation claim.	POST_v0.5.181_ONLY
+酒	positive_lexical_recognition	我冇飲酒。	target surface recognized with proposed Jyutping and bounded lexical role	no grammar promotion or hidden material	POST_v0.5.181_ONLY
+酒	negative_or_boundary	酒冇飲。	lexical recognition may occur but semantic/context boundary remains visible	Lexical recognition must not independently license object-topic fronting.	POST_v0.5.181_ONLY
+千祈	positive_lexical_recognition	你千祈唔好開車。	target surface recognized with proposed Jyutping and bounded lexical role	no grammar promotion or hidden material	POST_v0.5.181_ONLY
+千祈	negative_or_boundary	千祈。	lexical recognition may occur but semantic/context boundary remains visible	Lexical anchor only; no promotion of the full prohibition frame.	POST_v0.5.181_ONLY
+一啖	positive_lexical_recognition	飲一啖水。	target surface recognized with proposed Jyutping and bounded lexical role	no grammar promotion or hidden material	POST_v0.5.181_ONLY
+一啖	negative_or_boundary	一啖。	lexical recognition may occur but semantic/context boundary remains visible	Install 啖 only; keep 一啖 compositional and do not license minimizer semantics.	POST_v0.5.181_ONLY
+尋晚黑	positive_lexical_recognition	尋晚黑就到廣西。	target surface recognized with proposed Jyutping and bounded lexical role	no grammar promotion or hidden material	POST_v0.5.181_ONLY
+尋晚黑	negative_or_boundary	尋晚黑。	lexical recognition may occur but semantic/context boundary remains visible	Time expression does not independently assign tense/aspect to a clause.	POST_v0.5.181_ONLY
+桂林	positive_lexical_recognition	聽日去桂林。	target surface recognized with proposed Jyutping and bounded lexical role	no grammar promotion or hidden material	POST_v0.5.181_ONLY
+桂林	negative_or_boundary	桂林。	lexical recognition may occur but semantic/context boundary remains visible	Proper-name recognition only; no motion/location relation license.	POST_v0.5.181_ONLY
+陽朔	positive_lexical_recognition	陽朔好靚㗎。	target surface recognized with proposed Jyutping and bounded lexical role	no grammar promotion or hidden material	POST_v0.5.181_ONLY
+陽朔	negative_or_boundary	陽朔。	lexical recognition may occur but semantic/context boundary remains visible	Proper-name recognition only; no predicate or location relation license.	POST_v0.5.181_ONLY
+公里	positive_lexical_recognition	廣州上嚟八百幾公里。	target surface recognized with proposed Jyutping and bounded lexical role	no grammar promotion or hidden material	POST_v0.5.181_ONLY
+公里	negative_or_boundary	八百幾公里。	lexical recognition may occur but semantic/context boundary remains visible	Does not independently license a distance predicate or duration construction.	POST_v0.5.181_ONLY
+揸	positive_lexical_recognition	你揸住部車周圍兜。	target surface recognized with proposed Jyutping and bounded lexical role	no grammar promotion or hidden material	POST_v0.5.181_ONLY
+揸	negative_or_boundary	揸。	lexical recognition may occur but semantic/context boundary remains visible	Preserve polysemy; do not force every occurrence into driving or insert an object.	POST_v0.5.181_ONLY
+周圍	positive_lexical_recognition	你揸住部車周圍兜。	target surface recognized with proposed Jyutping and bounded lexical role	no grammar promotion or hidden material	POST_v0.5.181_ONLY
+周圍	negative_or_boundary	周圍。	lexical recognition may occur but semantic/context boundary remains visible	Recognition must not create a route construction or decide adverb-versus-noun scope automatically.	POST_v0.5.181_ONLY
+差唔多	positive_lexical_recognition	啲風景差唔多。	target surface recognized with proposed Jyutping and bounded lexical role	no grammar promotion or hidden material	POST_v0.5.181_ONLY
+差唔多	negative_or_boundary	差唔多十個人。	lexical recognition may occur but semantic/context boundary remains visible	Preserve similarity and approximation senses separately; no comparison frame license.	POST_v0.5.181_ONLY
+阿妹	positive_lexical_recognition	我同阿妹喺屋企。	target surface recognized with proposed Jyutping and bounded lexical role	no grammar promotion or hidden material	POST_v0.5.181_ONLY
+阿妹	negative_or_boundary	阿妹，過嚟。	lexical recognition may occur but semantic/context boundary remains visible	Keep kinship and address senses distinct.	POST_v0.5.181_ONLY
+慣	positive_lexical_recognition	吳蘇陽佢話唔慣。	target surface recognized with proposed Jyutping and bounded lexical role	no grammar promotion or hidden material	POST_v0.5.181_ONLY
+慣	negative_or_boundary	佢唔慣食辣嘢。	lexical recognition may occur but semantic/context boundary remains visible	Bare 唔慣 remains context-dependent; never insert a hidden complement.	POST_v0.5.181_ONLY

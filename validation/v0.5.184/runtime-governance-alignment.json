@@ -1,0 +1,14 @@
+{
+  "schema": "canto-span-runtime-governance-alignment-v1",
+  "runtime_version": "0.5.184",
+  "active_registry_count": 171,
+  "embedded_legitimacy_count": 171,
+  "aligned_status_count": 171,
+  "misaligned_status_count": 0,
+  "supported_productive_count": 0,
+  "postverbal_status": "provisional_reaudit",
+  "resource_use_status": "provisional_reaudit",
+  "demo01_status": "research_pending",
+  "demo01_action": "retain_as_np_subsystem_structure_without_active_demo01_candidate",
+  "status": "PASS"
+}

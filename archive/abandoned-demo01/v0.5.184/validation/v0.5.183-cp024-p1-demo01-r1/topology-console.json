@@ -1,0 +1,27 @@
+{
+  "schema": "canto-span-lexicon-construction-freeze-gate-v2",
+  "runtime_version": "0.5.183",
+  "baseline_runtime_version": "0.5.180",
+  "baseline_checkpoint": "v0.5.180 accepted runtime baseline refresh",
+  "policy": "Lexicon work may change lexical recognition, token roles, glosses, token boundaries, and Jyutping. Existing construction nodes, root status, context licensing, structural traces, and unwrapped character coverage must match the accepted v0.5.180 baseline outside explicitly locked candidate exclusions. Excluded cases must be validated by the active packet and reabsorbed before acceptance.",
+  "baseline_total": 545,
+  "excluded_for_active_candidate": 2,
+  "total": 543,
+  "passed": 543,
+  "failed": 0,
+  "strict_ready": true,
+  "active_candidate": "v0.5.183-cp024-p1-demo01-r1",
+  "exclusions": [
+    {
+      "source": "呢本。",
+      "context_source": "",
+      "reason": "active_candidate_focused_exclusion"
+    },
+    {
+      "source": "呢個係問題。",
+      "context_source": "",
+      "reason": "active_candidate_focused_exclusion"
+    }
+  ],
+  "failures": []
+}

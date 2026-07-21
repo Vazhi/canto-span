@@ -1,0 +1,14 @@
+{
+  "status": "OBSERVATION_ONLY_NOT_ACCEPTANCE_GATE",
+  "counts": {
+    "total": 7,
+    "required": 0,
+    "required_exact": 0,
+    "required_wrong_or_incomplete": 0,
+    "required_absent": 0,
+    "forbidden": 0,
+    "forbidden_with_broad_family_present": 0,
+    "full_root_coverage": 3
+  },
+  "output": "/mnt/data/canto_span_work/recovery/canto-span/validation/cp023-p1-prog01/nominal-prerequisite-observation.json"
+}

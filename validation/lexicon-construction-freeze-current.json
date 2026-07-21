@@ -1,0 +1,16 @@
+{
+  "schema": "canto-span-structural-topology-gate-v3",
+  "runtime_version": "0.5.184",
+  "baseline_runtime_version": "0.5.184",
+  "baseline_checkpoint": "v0.5.184 compositional NP subsystem: three explicit topology corrections",
+  "policy": "Construction topology must match the cumulative accepted baseline. Intentional structural parser changes require an explicit named baseline update and independent regression evidence; ordinary lexicon changes may not alter construction topology.",
+  "baseline_total": 545,
+  "excluded_for_active_candidate": 0,
+  "total": 545,
+  "passed": 545,
+  "failed": 0,
+  "strict_ready": true,
+  "active_candidate": null,
+  "exclusions": [],
+  "failures": []
+}

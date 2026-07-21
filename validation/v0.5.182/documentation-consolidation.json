@@ -1,0 +1,45 @@
+{
+  "schema": "canto-span-documentation-consolidation-v1",
+  "runtime_version": "v0.5.182",
+  "status": "COMPLETE",
+  "runtime_behavior_changed": false,
+  "current_authority_entry": "docs/current/00-START-HERE.md",
+  "stale_root_files_moved": [
+    "CANTO-SPAN-v0.5.180-ACCEPTANCE.md",
+    "CANTO-SPAN-v0.5.181-AUTONOMOUS-RESEARCH-CHECKPOINT.md",
+    "CANTO-SPAN-v0.5.181-CORPUS-ADDENDUM.md",
+    "CANTO-SPAN-v0.5.181-CORPUS-ADJUDICATION.md",
+    "CANTO-SPAN-v0.5.181-LEXICON-VERIFICATION-CHECKPOINT.md",
+    "CANTO-SPAN-v0.5.181-R2-WAITING-RENDER-CHECKPOINT.md",
+    "CANTO-SPAN-v0.5.181-REJECTION.md",
+    "CANTO-SPAN-v0.5.181-RENDER-CORRECTION-PENDING.md",
+    "CANTO-SPAN-v0.5.181-RENDER-PENDING.md",
+    "CANTO-SPAN-v0.5.181-WAITING-RENDER-CHECKPOINT.md",
+    "CANTO-SPAN-v0.5.182-EVIDENCE-LIMITED-SNAPSHOT.md",
+    "CANTO-SPAN-v0.5.182-RENDER-PENDING.md"
+  ],
+  "history_destination": "archive/release-history/",
+  "rewritten_current_files": [
+    "docs/current/00-START-HERE.md",
+    "docs/current/DOCTRINE.md",
+    "docs/current/DOCUMENTATION-MAP.md",
+    "docs/current/EVIDENCE-AND-PROVENANCE.md",
+    "docs/current/PACKAGING-AND-RECOVERY.md",
+    "docs/current/PROJECT-STATE.md",
+    "docs/current/VALIDATION-AND-ACCEPTANCE.md",
+    "docs/current/WORKFLOW.md"
+  ],
+  "rewritten_root_pointers": [
+    "README.md",
+    "HANDOFF.md",
+    "CHECKPOINT-STATE.md",
+    "CHANGELOG.md"
+  ],
+  "historical_files_deleted": 0,
+  "updated_support_files": [
+    "docs/research/README.md",
+    "tools/README.md",
+    "tools/build-packages.py",
+    "archive/README.md"
+  ]
+}

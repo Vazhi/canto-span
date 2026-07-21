@@ -1,0 +1,447 @@
+{
+  "schema": "canto-span-cp023-p1-prog01-r3-audit-v1",
+  "checkpoint": "CP023-P1-PROG01-R3",
+  "accepted_runtime": "v0.5.182",
+  "status": "PASS",
+  "total": 102,
+  "passed": 102,
+  "failed": 0,
+  "runtime_behavior_changed": false,
+  "checks": [
+    {
+      "name": "exists: docs/research/CP023-P1-PROG01-SOURCE-REGISTER-R3.tsv",
+      "pass": true
+    },
+    {
+      "name": "exists: docs/research/CP023-P1-PROG01-PREDICATE-COMPATIBILITY-MATRIX-R3.tsv",
+      "pass": true
+    },
+    {
+      "name": "exists: docs/research/CP023-P1-PROG01-PREDICATE-COMPATIBILITY-FREEZE-R3.md",
+      "pass": true
+    },
+    {
+      "name": "exists: docs/research/CP023-P1-PROG01-NOMINAL-DI-ASSOCIATIVE-SCOPE-DESIGN-R3.md",
+      "pass": true
+    },
+    {
+      "name": "exists: docs/research/CP023-P1-PROG01-NOMINAL-COORDINATION-DESIGN-R3.md",
+      "pass": true
+    },
+    {
+      "name": "exists: docs/research/CP023-P1-PROG01-CLAIM-SOURCE-EDGES-R3.tsv",
+      "pass": true
+    },
+    {
+      "name": "exists: docs/research/CP023-P1-PROG01-R3-RESEARCH-CHECKPOINT.md",
+      "pass": true
+    },
+    {
+      "name": "exists: test-data/CP023-P1-PROG01-nominal-design-cases-r3.tsv",
+      "pass": true
+    },
+    {
+      "name": "exists: review-packets/cp023-p1-prog01/PROG01-R3/focused-research-packet.json",
+      "pass": true
+    },
+    {
+      "name": "exists: validation/cp023-p1-prog01/current-baseline-observation.json",
+      "pass": true
+    },
+    {
+      "name": "exists: validation/cp023-p1-prog01/lexicon-baseline-observation.json",
+      "pass": true
+    },
+    {
+      "name": "exists: validation/cp023-p1-prog01/nominal-prerequisite-observation.json",
+      "pass": true
+    },
+    {
+      "name": "valid JSON: PROGRESS-CHECKPOINT.json",
+      "pass": true
+    },
+    {
+      "name": "valid JSON: PACKAGING-MANIFEST.json",
+      "pass": true
+    },
+    {
+      "name": "valid JSON: review-packets/cp023-p1-prog01/PROG01-R3/focused-research-packet.json",
+      "pass": true
+    },
+    {
+      "name": "valid JSON: validation/cp023-p1-prog01/current-baseline-observation.json",
+      "pass": true
+    },
+    {
+      "name": "valid JSON: validation/cp023-p1-prog01/lexicon-baseline-observation.json",
+      "pass": true
+    },
+    {
+      "name": "valid JSON: validation/cp023-p1-prog01/nominal-prerequisite-observation.json",
+      "pass": true
+    },
+    {
+      "name": "active research package is R3",
+      "pass": true,
+      "detail": "'CP023-P1-PROG01-R3'"
+    },
+    {
+      "name": "no active implementation candidate",
+      "pass": true
+    },
+    {
+      "name": "supported_productive remains 2",
+      "pass": true,
+      "detail": "2"
+    },
+    {
+      "name": "heldout remains unselected",
+      "pass": true,
+      "detail": "'NOT_SELECTED'"
+    },
+    {
+      "name": "runtime behavior recorded unchanged",
+      "pass": true
+    },
+    {
+      "name": "predicate matrix row count recorded as 14",
+      "pass": true,
+      "detail": "14"
+    },
+    {
+      "name": "exact seed count recorded as 8",
+      "pass": true,
+      "detail": "8"
+    },
+    {
+      "name": "multiple-object seed count recorded as 2",
+      "pass": true,
+      "detail": "2"
+    },
+    {
+      "name": "nominal design count recorded as 14",
+      "pass": true,
+      "detail": "14"
+    },
+    {
+      "name": "R2 single-scope diagnosis recorded superseded",
+      "pass": true,
+      "detail": "'AMBIGUITY_AWARE_R2_SINGLE_SCOPE_SUPERSEDED'"
+    },
+    {
+      "name": "overt 同埋 design recorded frozen",
+      "pass": true,
+      "detail": "'OVERT_TUNGMAAI_EXTENSION_FROZEN'"
+    },
+    {
+      "name": "錫條 pronunciation remains quarantined",
+      "pass": true,
+      "detail": "'QUARANTINED_UNRESOLVED'"
+    },
+    {
+      "name": "predicate matrix has 14 rows",
+      "pass": true,
+      "detail": "14"
+    },
+    {
+      "name": "matrix has 8 exact overt-object seeds",
+      "pass": true,
+      "detail": "8"
+    },
+    {
+      "name": "matrix has 2 multiple-object-profile seeds",
+      "pass": true,
+      "detail": "{'MULTIPLE_OBJECT_PROFILES_ATTESTED': 2, 'EXACT_PAIR_ATTESTED': 2, 'EXACT_PAIR_SENSE_SPECIFIC': 1, 'EXACT_PAIR_EXTENDED_PROCESS': 1, 'CORPUS_PAIR_ATTESTED': 1, 'NATURAL_PAIR_ATTESTED': 1, 'BROAD_PROGRESSIVE_OUTSIDE_NARROW_TARGET': 2, 'CONTEXT_NEGATIVE_ONLY': 1, 'UNRESOLVED_HAVE_PROGRESSIVE': 1, 'VISIBLE_ONLY_NOT_EVIDENCE': 2}"
+    },
+    {
+      "name": "matrix has 2 broad outside-target boundaries",
+      "pass": true,
+      "detail": "{'MULTIPLE_OBJECT_PROFILES_ATTESTED': 2, 'EXACT_PAIR_ATTESTED': 2, 'EXACT_PAIR_SENSE_SPECIFIC': 1, 'EXACT_PAIR_EXTENDED_PROCESS': 1, 'CORPUS_PAIR_ATTESTED': 1, 'NATURAL_PAIR_ATTESTED': 1, 'BROAD_PROGRESSIVE_OUTSIDE_NARROW_TARGET': 2, 'CONTEXT_NEGATIVE_ONLY': 1, 'UNRESOLVED_HAVE_PROGRESSIVE': 1, 'VISIBLE_ONLY_NOT_EVIDENCE': 2}"
+    },
+    {
+      "name": "matrix has 2 visible-only non-evidence rows",
+      "pass": true,
+      "detail": "{'MULTIPLE_OBJECT_PROFILES_ATTESTED': 2, 'EXACT_PAIR_ATTESTED': 2, 'EXACT_PAIR_SENSE_SPECIFIC': 1, 'EXACT_PAIR_EXTENDED_PROCESS': 1, 'CORPUS_PAIR_ATTESTED': 1, 'NATURAL_PAIR_ATTESTED': 1, 'BROAD_PROGRESSIVE_OUTSIDE_NARROW_TARGET': 2, 'CONTEXT_NEGATIVE_ONLY': 1, 'UNRESOLVED_HAVE_PROGRESSIVE': 1, 'VISIBLE_ONLY_NOT_EVIDENCE': 2}"
+    },
+    {
+      "name": "matrix contains exactly 睇 and 食 as multiple-profile seeds",
+      "pass": true
+    },
+    {
+      "name": "every matrix row forbids an over-inference",
+      "pass": true
+    },
+    {
+      "name": "R3 source register has 8 rows",
+      "pass": true,
+      "detail": "8"
+    },
+    {
+      "name": "source register contains SRC-KATAOKA-2018-PROGRESSIVE-GAN",
+      "pass": true
+    },
+    {
+      "name": "source register contains SRC-FAN-2024-JAU-VP-ASPECT",
+      "pass": true
+    },
+    {
+      "name": "source register contains SRC-SIO-BOND-2025",
+      "pass": true
+    },
+    {
+      "name": "source register contains SRC-ALDERETE-ETAL-2017-CANTONESE-GRAMMAR-SYNOPSIS",
+      "pass": true
+    },
+    {
+      "name": "source register contains SRC-WINTERSTEIN-ETAL-2023-NOMINAL-EXPRESSIONS",
+      "pass": true
+    },
+    {
+      "name": "source register contains SRC-COI-DRINKING-WATER-2016-0111",
+      "pass": true
+    },
+    {
+      "name": "source register contains SRC-IRC-BUS-2018-1006",
+      "pass": true
+    },
+    {
+      "name": "source register contains PROJECT-CP023-P1-PROG01-R2-BASELINE",
+      "pass": true
+    },
+    {
+      "name": "every source has an explicit limitation",
+      "pass": true
+    },
+    {
+      "name": "R3 claim-source table has 8 edges",
+      "pass": true,
+      "detail": "8"
+    },
+    {
+      "name": "every R3 edge has a limitation",
+      "pass": true
+    },
+    {
+      "name": "R3 includes explicit R2 overclaim correction edge",
+      "pass": true
+    },
+    {
+      "name": "R3 includes overt 同埋 source edge",
+      "pass": true
+    },
+    {
+      "name": "nominal design table has 14 cases",
+      "pass": true,
+      "detail": "14"
+    },
+    {
+      "name": "nominal design contains NOM-R3-A03",
+      "pass": true
+    },
+    {
+      "name": "nominal design contains NOM-R3-A05",
+      "pass": true
+    },
+    {
+      "name": "nominal design contains NOM-R3-C02",
+      "pass": true
+    },
+    {
+      "name": "nominal design contains NOM-R3-C04",
+      "pass": true
+    },
+    {
+      "name": "nominal design contains NOM-R3-C05",
+      "pass": true
+    },
+    {
+      "name": "nominal design contains NOM-R3-C08",
+      "pass": true
+    },
+    {
+      "name": "all nominal design cases remain visible-only",
+      "pass": true
+    },
+    {
+      "name": "predicate freeze contains: no productive lexical class established",
+      "pass": true
+    },
+    {
+      "name": "predicate freeze contains: No free cross-product",
+      "pass": true
+    },
+    {
+      "name": "predicate freeze contains: No `supported_productive` promotion",
+      "pass": true
+    },
+    {
+      "name": "predicate freeze contains: lexical-sense and construction-profile level",
+      "pass": true
+    },
+    {
+      "name": "啲 design contains: Correction to the R2 working diagnosis",
+      "pass": true
+    },
+    {
+      "name": "啲 design contains: DiMarkedNP(啲, AssociativeNP(A, 嘅, N))",
+      "pass": true
+    },
+    {
+      "name": "啲 design contains: AssociativeNP(DiMarkedNP(啲, A), 嘅, N)",
+      "pass": true
+    },
+    {
+      "name": "啲 design contains: forced single attachment prohibited",
+      "pass": true
+    },
+    {
+      "name": "啲 design contains: inference from discourse context",
+      "pass": true
+    },
+    {
+      "name": "coordination design contains: Extend the existing internal `CoordinatedNP`",
+      "pass": true
+    },
+    {
+      "name": "coordination design contains: coordinator=同埋",
+      "pass": true
+    },
+    {
+      "name": "coordination design contains: Both conjuncts must independently be complete nominal expressions",
+      "pass": true
+    },
+    {
+      "name": "coordination design contains: Clause role is external",
+      "pass": true
+    },
+    {
+      "name": "coordination design contains: 報告同埋文件",
+      "pass": true
+    },
+    {
+      "name": "coordination design contains: 錫條` is quarantined",
+      "pass": true
+    },
+    {
+      "name": "packet id is R3",
+      "pass": true
+    },
+    {
+      "name": "packet implementation remains unauthorized",
+      "pass": true
+    },
+    {
+      "name": "packet custody archive remains null",
+      "pass": true
+    },
+    {
+      "name": "packet file resolves: predicate_freeze",
+      "pass": true,
+      "detail": "/mnt/data/canto_span_work/recovery/canto-span/docs/research/CP023-P1-PROG01-PREDICATE-COMPATIBILITY-FREEZE-R3.md"
+    },
+    {
+      "name": "packet hash matches: predicate_freeze",
+      "pass": true
+    },
+    {
+      "name": "packet file resolves: predicate_matrix",
+      "pass": true,
+      "detail": "/mnt/data/canto_span_work/recovery/canto-span/docs/research/CP023-P1-PROG01-PREDICATE-COMPATIBILITY-MATRIX-R3.tsv"
+    },
+    {
+      "name": "packet hash matches: predicate_matrix",
+      "pass": true
+    },
+    {
+      "name": "packet file resolves: di_scope_design",
+      "pass": true,
+      "detail": "/mnt/data/canto_span_work/recovery/canto-span/docs/research/CP023-P1-PROG01-NOMINAL-DI-ASSOCIATIVE-SCOPE-DESIGN-R3.md"
+    },
+    {
+      "name": "packet hash matches: di_scope_design",
+      "pass": true
+    },
+    {
+      "name": "packet file resolves: coordination_design",
+      "pass": true,
+      "detail": "/mnt/data/canto_span_work/recovery/canto-span/docs/research/CP023-P1-PROG01-NOMINAL-COORDINATION-DESIGN-R3.md"
+    },
+    {
+      "name": "packet hash matches: coordination_design",
+      "pass": true
+    },
+    {
+      "name": "packet file resolves: design_cases",
+      "pass": true,
+      "detail": "/mnt/data/canto_span_work/recovery/canto-span/test-data/CP023-P1-PROG01-nominal-design-cases-r3.tsv"
+    },
+    {
+      "name": "packet hash matches: design_cases",
+      "pass": true
+    },
+    {
+      "name": "packet file resolves: source_register",
+      "pass": true,
+      "detail": "/mnt/data/canto_span_work/recovery/canto-span/docs/research/CP023-P1-PROG01-SOURCE-REGISTER-R3.tsv"
+    },
+    {
+      "name": "packet hash matches: source_register",
+      "pass": true
+    },
+    {
+      "name": "packet file resolves: claim_source_edges",
+      "pass": true,
+      "detail": "/mnt/data/canto_span_work/recovery/canto-span/docs/research/CP023-P1-PROG01-CLAIM-SOURCE-EDGES-R3.tsv"
+    },
+    {
+      "name": "packet hash matches: claim_source_edges",
+      "pass": true
+    },
+    {
+      "name": "packet file resolves: checkpoint",
+      "pass": true,
+      "detail": "/mnt/data/canto_span_work/recovery/canto-span/docs/research/CP023-P1-PROG01-R3-RESEARCH-CHECKPOINT.md"
+    },
+    {
+      "name": "packet hash matches: checkpoint",
+      "pass": true
+    },
+    {
+      "name": "active state names R3: README.md",
+      "pass": true
+    },
+    {
+      "name": "active state names R3: CHECKPOINT-STATE.md",
+      "pass": true
+    },
+    {
+      "name": "active state names R3: HANDOFF.md",
+      "pass": true
+    },
+    {
+      "name": "active state names R3: docs/current/PROJECT-STATE.md",
+      "pass": true
+    },
+    {
+      "name": "active state names R3: docs/research/CURRENT-RESEARCH-PROVENANCE.md",
+      "pass": true
+    },
+    {
+      "name": "current project state supersedes R2 categorical preference",
+      "pass": true
+    },
+    {
+      "name": "runtime identity: main.js",
+      "pass": true
+    },
+    {
+      "name": "runtime identity: manifest.json",
+      "pass": true
+    },
+    {
+      "name": "runtime identity: styles.css",
+      "pass": true
+    }
+  ],
+  "failures": []
+}

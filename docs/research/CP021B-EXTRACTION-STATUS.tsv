@@ -1,0 +1,33 @@
+screen_id	screen_decision	extraction_state	proposition_count	access_or_exclusion_basis	remaining_requirement
+SCREEN-CP021B-001	INCLUDE	COMPLETE	9	Full ACL Anthology paper extracted with page locators.	None before synthesis; preserve judgment/theory limits.
+SCREEN-CP021B-002	INCLUDE	COMPLETE_WITH_LOCATOR_BOUNDARY	4	Author PDF is image-like in the present access path; chapter scope and propositions verified but exact example pages remain unresolved.	Recover page-level locators before any proposition is used as sole support.
+SCREEN-CP021B-003	INCLUDE	COMPLETE	8	Full article text extracted with page locators.	None before synthesis; preserve 1990s judgment scope.
+SCREEN-CP021B-004	INCLUDE_LIMITED	COMPLETE_LIMITED	7	Conference slides extracted at slide level, including methods and numeric results.	Do not treat elicited processing as conversation frequency.
+SCREEN-CP021B-005	INCLUDE_BOUNDARY	COMPLETE_ABSTRACT_BOUNDARY	1	Official one-page seminar abstract only.	Full paper/evidence required for any claim beyond historical competing-analysis boundary.
+SCREEN-CP021B-006	DISCOVERY_LEAD_AND_CORROBORATION	NO_INDEPENDENT_PROPOSITION	0	Secondary literature synthesis; its experiment concerns Mandarin transfer rather than native Cantonese distribution.	Use only to locate and reconcile primary sources.
+SCREEN-CP021B-007	INCLUDE	COMPLETE	10	Full official proceedings paper and all 13 reported class counts extracted.	Preserve 1990s corpus and analyst-coding limits.
+SCREEN-CP021B-008	INCLUDE_WITH_CORRECTION	COMPLETE_WITH_CORRECTION	2	Earlier taxonomy retained only as same-family context; later paper's encoding correction controls.	Do not count as independent replication or revive retracted no-agent passive class.
+SCREEN-CP021B-009	INCLUDE_LIMITED	COMPLETE_LIMITED	5	Full working paper extracted, including postselection and sparse-cell limits.	No construction-frequency inference from selected 219-response denominator.
+SCREEN-CP021B-010	INCLUDE	COMPLETE	7	Full dissertation sections extracted with page locators.	Treat lexical/order claims as judgment-based and same-family with SCREEN-CP021B-011.
+SCREEN-CP021B-011	INCLUDE_SAME_EVIDENCE_FAMILY	METADATA_LINKED_NO_NEW_INDEPENDENT_EVIDENCE	1	Publisher abstract/metadata verified; full journal text access-limited and dissertation carries accessible propositions.	Recover full article only to test whether it adds propositions absent from dissertation.
+SCREEN-CP021B-012	INCLUDE	COMPLETE	6	Full official proceedings paper extracted with page locators.	Discount independence for Lam overlap and retain formal-analysis scope.
+SCREEN-CP021B-013	INCLUDE	COMPLETE	9	Full university-hosted paper extracted with page locators.	Keep grammaticalization and category proposals separate from observed surface boundaries.
+SCREEN-CP021B-014	INCLUDE_ABSTRACT_BOUNDED	COMPLETE_WITH_PROVENANCE_CORRECTION	2	Official abstract extracted; prior author list and DOI were wrong and are corrected in the source screen.	Recover full coding tables before using any adult-input distribution; do not use unrelated DOI 10.1177/1367006910371025.
+SCREEN-CP021B-015	INCLUDE_ABSTRACT_BOUNDED	COMPLETE_ABSTRACT_BOUNDED	2	Official Cambridge abstract extracted.	Full tables/coding definitions required for exact rates.
+SCREEN-CP021B-016	INCLUDE_NON_TARGET_BOUNDARY	COMPLETE_BOUNDARY	1	Paper used only for causative/passive ambiguity boundary.	No transfer/dative proposition should be inferred.
+SCREEN-CP021B-017	INCLUDE_ALL_CANDIDATES	PROVENANCE_AND_CANDIDATE_INVENTORY_ONLY	2	Local clean snapshot preserves 476 candidate rows and 445 lexical hits but not the rendered utterance JSON required for fresh row review.	Recover source utterances and manually review candidates before corpus construction counts.
+SCREEN-CP021B-018	INCLUDE_PROVENANCE	COMPLETE_PROVENANCE_ONLY	1	Published corpus description retained as dataset provenance.	No independent usage proposition expected.
+SCREEN-CP021B-019	ACCESS_LIMITED_PROVENANCE	NO_PROPOSITION_EXTRACTED	0	Provenance endpoint only; primary analysis text unavailable.	Recover authoritative full text if it becomes necessary for corpus provenance.
+SCREEN-CP021B-020	ACCESS_LIMITED_NO_EXTRACTION	NO_PROPOSITION_EXTRACTED	0	Reference grammar text unavailable in a verifiable access path.	Recover exact edition and pages before use.
+SCREEN-CP021B-021	ACCESS_LIMITED_NO_EXTRACTION	NO_PROPOSITION_EXTRACTED	0	Reference grammar text unavailable in a verifiable access path.	Recover exact edition and pages before use.
+SCREEN-CP021B-022	INCLUDE_VARIETY_BOUNDARY	COMPLETE_BOUNDARY	1	Historical paper retained only as diachronic boundary.	Do not use as contemporary Hong Kong distribution evidence.
+SCREEN-CP021B-023	EXCLUDE_NO_INDEPENDENT_EVIDENCE	EXCLUDED	0	Low-confidence secondary paper adds no verifiable independent evidence.	None unless a primary source is identified.
+SCREEN-CP021B-024	ACCESS_LIMITED_NO_EXTRACTION	NO_PROPOSITION_EXTRACTED	0	Relevant article identified but authoritative full text unavailable.	Recover full text and exact locators before use.
+SCREEN-CP021B-025	ACCESS_LIMITED_NON_TARGET	NO_PROPOSITION_EXTRACTED	0	Access-limited and primary focus is outside neutral transfer/dative target.	Only revisit if synthesis exposes a specific boundary need.
+SCREEN-CP021B-026	LEXICAL_CORROBORATION_ONLY	COMPLETE_LEXICAL_BOUNDARY	1	Community dictionary corroborates polyfunctionality but is not an independent research dataset.	No grammar/distribution promotion.
+SCREEN-CP021B-027	EXCLUDE_UNSOURCED_OR_SECONDARY	EXCLUDED	0	Open encyclopedia/dictionary content lacks primary proposition authority.	None.
+SCREEN-CP021B-028	EXCLUDE_NO_PRIMARY_PROPOSITION	EXCLUDED	0	Teaching/hosting pages do not supply independent primary evidence.	None.
+SCREEN-CP021B-029	EXCLUDE_UNCONTROLLED	EXCLUDED	0	Social/community content has uncontrolled speaker and provenance conditions.	None.
+SCREEN-CP021B-030	EXCLUDE_WRONG_VARIETY	EXCLUDED	0	Evidence concerns the wrong language variety for the target question.	None.
+SCREEN-CP021B-031	EXCLUDE_DUPLICATE_WHERE_PRIMARY_AVAILABLE	EXCLUDED	0	Mirrors and indexes duplicate primary endpoints already screened.	None.
+SCREEN-CP021B-032	EXCLUDE_UNVERIFIABLE	EXCLUDED	0	Search-index output cannot be verified as a primary proposition source.	None.

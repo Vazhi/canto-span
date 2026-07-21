@@ -1,0 +1,61 @@
+{
+  "schema": "canto-span-native-conflict-burden-audit-v3",
+  "checkpoint": "v0.5.184-np-subsystem-r1",
+  "status": "PASS",
+  "total": 11,
+  "passed": 11,
+  "failed": 0,
+  "policy": {
+    "publication_attestation_alone_sufficient": false,
+    "assumed_dialect_explanation": false,
+    "second_speaker_required": true,
+    "second_speaker_work_frozen_not_waived": true
+  },
+  "checks": [
+    {
+      "name": "two exact V完咗O native rejections retained",
+      "pass": true
+    },
+    {
+      "name": "accepted completion contrasts retained",
+      "pass": true
+    },
+    {
+      "name": "higher-burden disposition remains recorded",
+      "pass": true
+    },
+    {
+      "name": "dialect or register explanation is not assumed",
+      "pass": true
+    },
+    {
+      "name": "no construction is currently supported_productive",
+      "pass": true
+    },
+    {
+      "name": "PFV remains under re-audit despite implementation gains",
+      "pass": true
+    },
+    {
+      "name": "ResourceUse remains under re-audit",
+      "pass": true
+    },
+    {
+      "name": "native conflict cannot be overridden by publication attestation",
+      "pass": true
+    },
+    {
+      "name": "two independent speakers remain required",
+      "pass": true
+    },
+    {
+      "name": "second-speaker freeze is explicit and does not waive the gate",
+      "pass": true
+    },
+    {
+      "name": "internal validation cannot substitute for linguistic evidence",
+      "pass": true
+    }
+  ],
+  "failures": []
+}

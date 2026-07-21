@@ -1,0 +1,108 @@
+{
+  "schema": "canto-span-cp022-i1a-i02-preservation-v1",
+  "checkpoint": "CP022-I1A-I01-R1",
+  "case_count": 12,
+  "total": 24,
+  "passed": 24,
+  "failed": 0,
+  "strict_ready": true,
+  "checks": [
+    {
+      "name": "DEV-I02-EX-01 I02 public signature preserved",
+      "pass": true
+    },
+    {
+      "name": "DEV-I02-EX-01 I02 Jyutping preserved",
+      "pass": true
+    },
+    {
+      "name": "DEV-I02-EX-02 I02 public signature preserved",
+      "pass": true
+    },
+    {
+      "name": "DEV-I02-EX-02 I02 Jyutping preserved",
+      "pass": true
+    },
+    {
+      "name": "DEV-I02-EX-03 I02 public signature preserved",
+      "pass": true
+    },
+    {
+      "name": "DEV-I02-EX-03 I02 Jyutping preserved",
+      "pass": true
+    },
+    {
+      "name": "DEV-I02-EX-04 I02 public signature preserved",
+      "pass": true
+    },
+    {
+      "name": "DEV-I02-EX-04 I02 Jyutping preserved",
+      "pass": true
+    },
+    {
+      "name": "DEV-I02-VAR-01 I02 public signature preserved",
+      "pass": true
+    },
+    {
+      "name": "DEV-I02-VAR-01 I02 Jyutping preserved",
+      "pass": true
+    },
+    {
+      "name": "DEV-I02-VAR-02 I02 public signature preserved",
+      "pass": true
+    },
+    {
+      "name": "DEV-I02-VAR-02 I02 Jyutping preserved",
+      "pass": true
+    },
+    {
+      "name": "DEV-I02-VAR-03 I02 public signature preserved",
+      "pass": true
+    },
+    {
+      "name": "DEV-I02-VAR-03 I02 Jyutping preserved",
+      "pass": true
+    },
+    {
+      "name": "DEV-I02-VAR-04 I02 public signature preserved",
+      "pass": true
+    },
+    {
+      "name": "DEV-I02-VAR-04 I02 Jyutping preserved",
+      "pass": true
+    },
+    {
+      "name": "DEV-I02-NEG-01 I02 public signature preserved",
+      "pass": true
+    },
+    {
+      "name": "DEV-I02-NEG-01 I02 Jyutping preserved",
+      "pass": true
+    },
+    {
+      "name": "DEV-I02-NEG-02 I02 public signature preserved",
+      "pass": true
+    },
+    {
+      "name": "DEV-I02-NEG-02 I02 Jyutping preserved",
+      "pass": true
+    },
+    {
+      "name": "DEV-I02-NEG-03 I02 public signature preserved",
+      "pass": true
+    },
+    {
+      "name": "DEV-I02-NEG-03 I02 Jyutping preserved",
+      "pass": true
+    },
+    {
+      "name": "DEV-I02-NEG-04 I02 public signature preserved",
+      "pass": true
+    },
+    {
+      "name": "DEV-I02-NEG-04 I02 Jyutping preserved",
+      "pass": true
+    }
+  ],
+  "failures": []
+}

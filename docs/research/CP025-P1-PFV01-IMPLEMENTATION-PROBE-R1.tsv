@@ -1,0 +1,15 @@
+case_id	surface	design_role	frozen_runtime_expectation	target_match_count	semantic_acceptance_status	missing_jyutping_surfaces	root_coverage_status	top_construction_surfaces	classification
+PFV-P01	我食咗飯。	positive simple profile	present	1	MANUAL_REVIEW_ELIGIBLE		PASS	我食咗飯	implemented_exact_positive
+PFV-P02	我食咗麵。	positive source example	present	1	MANUAL_REVIEW_ELIGIBLE		PASS	我食咗麵	implemented_exact_positive
+PFV-P03	佢睇咗三個醫生。	positive source-linked lexical variation	absent_known_object_integration_gap	0	BLOCKED		PARTIAL	睇咗 | 三個醫生	linguistic_positive_not_implemented_as_target
+PFV-P04	佢寫咗一篇文。	positive source-linked lexical variation	absent_known_lexicon_np_gap	0	BLOCKED	篇,文	PARTIAL	寫咗	linguistic_positive_not_implemented_as_target
+PFV-P05	我答咗你嘅問題。	positive source-linked lexical variation	absent_known_object_integration_gap	0	BLOCKED		PARTIAL	答咗 | 你嘅問題	linguistic_positive_not_implemented_as_target
+PFV-P06	你買咗呢隻牌子未呀？	positive profile inside final-未 question	absent_known_lexicon_question_integration_gap	0	BLOCKED	牌,子	PASS	你買咗呢隻牌子未呀	linguistic_positive_not_implemented_as_target
+PFV-B01	我食咗。	objectless boundary	absent	0	BLOCKED		PASS	我食咗	boundary_excluded_from_target
+PFV-B02	我食完咗飯。	inner-result boundary; known variation question	absent	0	MANUAL_REVIEW_ELIGIBLE		PASS	我食完咗飯	boundary_excluded_from_target
+PFV-B03	我食過飯。	experiential boundary	absent	0	MANUAL_REVIEW_ELIGIBLE		PASS	我食過飯	boundary_excluded_from_target
+PFV-B04	我食緊飯。	progressive boundary	absent	0	MANUAL_REVIEW_ELIGIBLE		PASS	我食緊飯	boundary_excluded_from_target
+PFV-B05	我去咗香港。	motion-goal boundary	absent	0	MANUAL_REVIEW_ELIGIBLE		PASS	我去咗香港	boundary_excluded_from_target
+PFV-B06	牆上面擺咗部電話。	placement/presentational boundary	absent	0	MANUAL_REVIEW_ELIGIBLE		PASS	牆上面擺咗部電話	boundary_excluded_from_target
+PFV-B07	我食咗香港。	selectional anomaly boundary	present_nonclean	1	BLOCKED		PASS	我食咗香港	selectional_anomaly_still_builds_target_then_blocks
+PFV-B08	我食飯。	unmarked-aspect boundary	absent	0	MANUAL_REVIEW_ELIGIBLE		PASS	我食飯	boundary_excluded_from_target

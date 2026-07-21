@@ -1,0 +1,239 @@
+{
+  "schema": "canto-span-cp025-p1-pfv01-reaudit-audit-v1",
+  "checkpoint": "CP025-P1-PFV01-R1",
+  "runtime_version": "0.5.183",
+  "parser_behavior_changed": false,
+  "current_linguistic_status": "provisional_reaudit",
+  "linguistic_evidence": {
+    "sources_reverified": 4,
+    "published_exact_positive_examples": 5,
+    "legacy_corpus_hits_with_evidence_weight": 0,
+    "qualifying_project_speaker_reviews": 0
+  },
+  "implementation_evidence": {
+    "controlled_positive_target_present": 2,
+    "controlled_positive_total": 6,
+    "boundary_target_absent": 7,
+    "selectional_anomaly_built_then_blocked": 1,
+    "regression_passed": 543,
+    "regression_total": 543
+  },
+  "runtime_hashes": {
+    "main.js": "e25b6f7142eafce66a172b68d8e409275f127cfe902e93bafaf7147152bfcbe9",
+    "manifest.json": "d7f5a9be248a4efd1839852e8a100a9968273050f0aa5953af2a35c3661801f5",
+    "styles.css": "5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a"
+  },
+  "total": 49,
+  "passed": 49,
+  "failed": 0,
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "four source rows recorded",
+      "pass": true,
+      "detail": 4
+    },
+    {
+      "name": "all four sources reverified",
+      "pass": true
+    },
+    {
+      "name": "source roles distinguish positive and boundary evidence",
+      "pass": true
+    },
+    {
+      "name": "four exact source locators are present",
+      "pass": true
+    },
+    {
+      "name": "fourteen examples manually classified",
+      "pass": true,
+      "detail": 14
+    },
+    {
+      "name": "five published exact positives retained",
+      "pass": true
+    },
+    {
+      "name": "two published boundary examples retained",
+      "pass": true
+    },
+    {
+      "name": "legacy six-hit aggregate is untraceable and unusable",
+      "pass": true
+    },
+    {
+      "name": "six prior speaker rows reclassified",
+      "pass": true,
+      "detail": 6
+    },
+    {
+      "name": "only one prior speaker row exactly matches target",
+      "pass": true
+    },
+    {
+      "name": "code-document comparison has 15 rows",
+      "pass": true,
+      "detail": 15
+    },
+    {
+      "name": "every code-review row has exact code location",
+      "pass": true
+    },
+    {
+      "name": "code review records semantic overstatement",
+      "pass": true
+    },
+    {
+      "name": "code review records broad runtime heuristic",
+      "pass": true
+    },
+    {
+      "name": "code review records source-linked implementation gaps",
+      "pass": true
+    },
+    {
+      "name": "target remains provisional_reaudit",
+      "pass": true
+    },
+    {
+      "name": "usable corpus evidence count is zero",
+      "pass": true
+    },
+    {
+      "name": "exact prior speaker count is one",
+      "pass": true
+    },
+    {
+      "name": "current source accounting records four sources",
+      "pass": true
+    },
+    {
+      "name": "current source accounting does not claim Definition-of-Done closure",
+      "pass": true
+    },
+    {
+      "name": "re-audit ledger blocks provisional and productive status",
+      "pass": true
+    },
+    {
+      "name": "speaker queue requires two new controlled forms",
+      "pass": true
+    },
+    {
+      "name": "four controlled source edges remain",
+      "pass": true,
+      "detail": 4
+    },
+    {
+      "name": "source-edge relationship vocabulary is controlled",
+      "pass": true
+    },
+    {
+      "name": "frozen-runtime visible audit passes its recorded baseline",
+      "pass": true
+    },
+    {
+      "name": "only two of six controlled positives instantiate target",
+      "pass": true
+    },
+    {
+      "name": "selectional anomaly still builds then blocks target",
+      "pass": true
+    },
+    {
+      "name": "known lexical Jyutping gaps are explicit",
+      "pass": true
+    },
+    {
+      "name": "speaker packet has six positives and eight boundaries",
+      "pass": true
+    },
+    {
+      "name": "Speaker A form contains all case IDs",
+      "pass": true
+    },
+    {
+      "name": "Speaker A form contains independence statement",
+      "pass": true
+    },
+    {
+      "name": "Speaker A form hides parser labels",
+      "pass": true
+    },
+    {
+      "name": "Speaker B form contains all case IDs",
+      "pass": true
+    },
+    {
+      "name": "Speaker B form contains independence statement",
+      "pass": true
+    },
+    {
+      "name": "Speaker B form hides parser labels",
+      "pass": true
+    },
+    {
+      "name": "current focused suite passes",
+      "pass": true
+    },
+    {
+      "name": "inherited regression passes 543 of 543",
+      "pass": true
+    },
+    {
+      "name": "source accounting audit passes",
+      "pass": true
+    },
+    {
+      "name": "claim provenance audit passes",
+      "pass": true
+    },
+    {
+      "name": "native evidence audit passes after stale assumptions corrected",
+      "pass": true
+    },
+    {
+      "name": "documentation consistency passes",
+      "pass": true
+    },
+    {
+      "name": "main.js remains byte-identical",
+      "pass": true,
+      "detail": "e25b6f7142eafce66a172b68d8e409275f127cfe902e93bafaf7147152bfcbe9"
+    },
+    {
+      "name": "manifest.json remains byte-identical",
+      "pass": true,
+      "detail": "d7f5a9be248a4efd1839852e8a100a9968273050f0aa5953af2a35c3661801f5"
+    },
+    {
+      "name": "styles.css remains byte-identical",
+      "pass": true,
+      "detail": "5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a"
+    },
+    {
+      "name": "sealed DEMO01 heldout remains excluded",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "project state points to R3 status registry",
+      "pass": true
+    },
+    {
+      "name": "project state points to CP025 source accounting",
+      "pass": true
+    },
+    {
+      "name": "current provenance reports 171 active labels",
+      "pass": true
+    },
+    {
+      "name": "all JSON files parse",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "failures": []
+}

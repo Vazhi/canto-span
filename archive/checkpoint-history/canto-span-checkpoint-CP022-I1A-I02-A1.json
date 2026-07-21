@@ -1,0 +1,86 @@
+{
+  "schema": "canto-span-implementation-acceptance-checkpoint-v1",
+  "checkpoint": "CP022-I1A-I02-A1",
+  "parent_checkpoint": "CP022-I1A-I02-R1",
+  "design_parent": "CP022-I1A-I02-D1",
+  "date": "2026-07-19",
+  "accepted_runtime": "v0.5.178-cp022-i1a-i02-clause-relation-graph-cleanup-r1",
+  "status": "ACCEPTED_PACKET_SCOPED_INTERNAL_CLEANUP",
+  "authorization": {
+    "explicit_user_authorization": true,
+    "scope": "EP-CP022-I1A-I02-D1_ONLY",
+    "standing_autonomous_freeze_authority_recorded": true,
+    "global_freeze_lifted": false,
+    "additional_family_changes_authorized_only_via_governed_packet": true
+  },
+  "accepted_changes": {
+    "internal_renames": {
+      "ClauseLinkingSequence": "ClauseRelationGraph",
+      "ClauseRelation": "ClauseRelationEdge",
+      "ClauseRelationMember": "ClauseRelationMemberSpan"
+    },
+    "compatibility_metadata_preserved": true,
+    "graph_nonlicensing": true,
+    "member_nonlicensing": true,
+    "edge_subtype_provenance_required": true,
+    "intended_semantic_change": "NONE",
+    "new_grammar_added": false,
+    "lexicon_changed": false,
+    "jyutping_changed": false
+  },
+  "validation": {
+    "visible_packet": {
+      "passed": 87,
+      "total": 87
+    },
+    "rendered_diagnostic_review": {
+      "passed": 12,
+      "total": 12,
+      "visual_layout_confirmation": "NOT_SEPARATELY_RECORDED"
+    },
+    "prospective_heldout": {
+      "passed": 6,
+      "total": 6,
+      "exact_signature_match": true
+    },
+    "aggregate_regression": {
+      "passed": 545,
+      "total": 545
+    },
+    "grammar_legitimacy": {
+      "passed": 1111,
+      "total": 1111,
+      "active_labels": 181,
+      "supported_productive": 0
+    },
+    "semantic_acceptance": {
+      "passed": 15,
+      "total": 15
+    },
+    "pre_intermediate_corpus": {
+      "passed": 80,
+      "total": 80
+    },
+    "i04_preservation": {
+      "passed": 45,
+      "total": 45
+    }
+  },
+  "held_out": {
+    "case_count": 6,
+    "opened_for_final_evaluation": true,
+    "opened_after_candidate_freeze": true,
+    "passed": 6,
+    "failed": 0,
+    "consumed": true,
+    "reusable_as_future_prospective_heldout": false,
+    "custody_archive_sha256": "e90541d4b1337e2e6ae61fb24f5ddf4e6337a697d26f3d966cef2343da1c0e34"
+  },
+  "global_grammar_freeze_active": true,
+  "supported_productive": 0,
+  "next": {
+    "recommended_packet": "I01 ClauseSpan",
+    "standing_authority_allows_autonomous_packet_scoped_unfreeze": true,
+    "packet_and_evaluation_gates_still_required": true
+  }
+}

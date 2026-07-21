@@ -1,0 +1,87 @@
+{
+  "schema": "canto-span-implementation-candidate-checkpoint-v1",
+  "checkpoint": "CP022-I1A-I01-R1",
+  "parent_checkpoint": "CP022-I1A-I02-A1",
+  "design_parent": "CP022-I1A-I01-D1",
+  "date": "2026-07-19",
+  "candidate": "v0.5.179-cp022-i1a-i01-neutral-clause-span-consolidation-r1",
+  "status": "VISIBLE_GATES_PASS_RENDER_REVIEW_PENDING_HELDOUT_UNOPENED",
+  "authorization": {
+    "standing_autonomous_freeze_authority": true,
+    "scope": "EP-CP022-I1A-I01-D1_ONLY",
+    "global_freeze_lifted": false,
+    "additional_family_changes_authorized_only_via_governed_packet": true
+  },
+  "changes": {
+    "internal_target": "ClauseSpan",
+    "retired_compatibility_labels": [
+      "SubjectPredicateClause",
+      "SubjectModalPredicateClause",
+      "LocativeModalPredicateClause",
+      "TopicModalPredicateClause",
+      "CoordinatedSubjectModalPredicateClause"
+    ],
+    "compatibility_metadata_preserved": true,
+    "intended_semantic_change": "NONE",
+    "new_grammar_added": false,
+    "lexicon_changed": false,
+    "jyutping_changed": false,
+    "learner_role_changed": false
+  },
+  "validation": {
+    "packet_lock": {
+      "passed": 31,
+      "total": 31
+    },
+    "visible_packet": {
+      "passed": 100,
+      "total": 100
+    },
+    "i02_preservation": {
+      "passed": 24,
+      "total": 24
+    },
+    "aggregate_regression": {
+      "passed": 545,
+      "total": 545
+    },
+    "grammar_legitimacy": {
+      "passed": 1087,
+      "total": 1087,
+      "active_labels": 177,
+      "supported_productive": 0
+    },
+    "semantic_acceptance": {
+      "passed": 15,
+      "total": 15
+    },
+    "pre_intermediate_corpus": {
+      "passed": 80,
+      "total": 80
+    },
+    "implementation_audit": {
+      "passed": 71,
+      "total": 71
+    },
+    "documentation_consistency": {
+      "passed": 19,
+      "total": 19
+    },
+    "parent_archive_comparison": {
+      "status": "PASS",
+      "missing_inherited_files": 0
+    }
+  },
+  "held_out": {
+    "case_count": 6,
+    "opened": false,
+    "surface_visible_to_implementation": false,
+    "custody_archive_sha256": "964b84052849087f227efd2df7591f5fdd9d1a2f7815776daf0e3519a0b75a1c"
+  },
+  "global_grammar_freeze_active": true,
+  "supported_productive": 0,
+  "lx1": {
+    "accepted_by_this_checkpoint": false
+  },
+  "next": "Render the ten focused rows. After acceptance, freeze this exact candidate and open only the six I01 evaluator-custody cases."
+}

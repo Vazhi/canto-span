@@ -1,0 +1,28 @@
+{
+  "schema": "canto-span-core-validation-summary-v1",
+  "checkpoint": "CP022-I1A-I01-A1",
+  "runtime": "v0.5.179-cp022-i1a-i01-neutral-clause-span-consolidation-r1",
+  "status": "PASS",
+  "gates": {
+    "visible_packet": "100/100 PASS",
+    "render_adjudication": "10/10 PASS",
+    "prospective_heldout": "6/6 PASS",
+    "i02_preservation": "24/24 PASS",
+    "aggregate_regression": "545/545 PASS",
+    "grammar_legitimacy": "1087/1087 PASS",
+    "semantic_acceptance": "15/15 PASS",
+    "pre_intermediate_corpus": "80/80 PASS",
+    "source_accounting": "PASS",
+    "documentation_consistency": "PASS (0 broken links)",
+    "acceptance_audit": "27/27 PASS",
+    "package_separation": "9/9 PASS"
+  },
+  "active_labels": 177,
+  "externally_mapped_language_labels": 156,
+  "explicit_source_gap": "ScalarRangeFragment",
+  "supported_productive": 0,
+  "active_candidate": null,
+  "next_program": "CP022-P1",
+  "runtime_package_file_count": 3,
+  "recovery_excludes_evaluator_custody": true
+}

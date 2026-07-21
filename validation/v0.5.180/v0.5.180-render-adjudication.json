@@ -1,0 +1,699 @@
+{
+  "schema": "canto-span-render-adjudication-v1",
+  "version": "0.5.180",
+  "internal_work_package": "CP022-P1-PFV01-R1-CORR2",
+  "generated_at": "2026-07-19T15:36:32.935817+00:00",
+  "status": "PASS",
+  "row_count": 12,
+  "rows_passed": 12,
+  "assertion_count": 91,
+  "assertions_passed": 91,
+  "hover_warning_disposition": {
+    "flagged_target_count": 5,
+    "missing_plain_learner_gloss_count": 0,
+    "internal_metadata_leak_count": 0,
+    "disposition": "generic inherited fallback glosses only; no internal metadata leakage; outside PFV01 scope"
+  },
+  "native_conflict_control": {
+    "v_yun_zo_o_row": 7,
+    "used_as_positive_evidence": false,
+    "disposition": "excluded adjacent family; native conflict remains unresolved and quarantined"
+  },
+  "limitations": {
+    "pixel_layout_independently_verified": false,
+    "scope": "rendered payload, construction trees, roles, Jyutping, hover payload, and audit metadata"
+  },
+  "checks": [
+    {
+      "diagnostic_index": 0,
+      "check": "subtype_count",
+      "status": "PASS",
+      "observed": 1,
+      "expected": 1
+    },
+    {
+      "diagnostic_index": 0,
+      "check": "semantic",
+      "status": "PASS",
+      "observed": "MANUAL_REVIEW_ELIGIBLE",
+      "expected": "MANUAL_REVIEW_ELIGIBLE"
+    },
+    {
+      "diagnostic_index": 0,
+      "check": "top",
+      "status": "PASS",
+      "observed": [
+        "SubjectPredicateClause"
+      ],
+      "expected": [
+        "SubjectPredicateClause"
+      ]
+    },
+    {
+      "diagnostic_index": 0,
+      "check": "root",
+      "status": "PASS",
+      "observed": "PASS",
+      "expected": "PASS"
+    },
+    {
+      "diagnostic_index": 0,
+      "check": "jyutping",
+      "status": "PASS",
+      "observed": "PASS",
+      "expected": "PASS"
+    },
+    {
+      "diagnostic_index": 0,
+      "check": "registry",
+      "status": "PASS",
+      "observed": "PASS",
+      "expected": "PASS"
+    },
+    {
+      "diagnostic_index": 0,
+      "check": "hover_no_internal_leak",
+      "status": "PASS",
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "diagnostic_index": 0,
+      "check": "subtype_guards",
+      "status": "PASS"
+    },
+    {
+      "diagnostic_index": 1,
+      "check": "subtype_count",
+      "status": "PASS",
+      "observed": 1,
+      "expected": 1
+    },
+    {
+      "diagnostic_index": 1,
+      "check": "semantic",
+      "status": "PASS",
+      "observed": "MANUAL_REVIEW_ELIGIBLE",
+      "expected": "MANUAL_REVIEW_ELIGIBLE"
+    },
+    {
+      "diagnostic_index": 1,
+      "check": "top",
+      "status": "PASS",
+      "observed": [
+        "CompletionQuestion"
+      ],
+      "expected": [
+        "CompletionQuestion"
+      ]
+    },
+    {
+      "diagnostic_index": 1,
+      "check": "root",
+      "status": "PASS",
+      "observed": "PASS",
+      "expected": "PASS"
+    },
+    {
+      "diagnostic_index": 1,
+      "check": "jyutping",
+      "status": "PASS",
+      "observed": "PASS",
+      "expected": "PASS"
+    },
+    {
+      "diagnostic_index": 1,
+      "check": "registry",
+      "status": "PASS",
+      "observed": "PASS",
+      "expected": "PASS"
+    },
+    {
+      "diagnostic_index": 1,
+      "check": "hover_no_internal_leak",
+      "status": "PASS",
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "diagnostic_index": 1,
+      "check": "subtype_guards",
+      "status": "PASS"
+    },
+    {
+      "diagnostic_index": 2,
+      "check": "subtype_count",
+      "status": "PASS",
+      "observed": 1,
+      "expected": 1
+    },
+    {
+      "diagnostic_index": 2,
+      "check": "semantic",
+      "status": "PASS",
+      "observed": "MANUAL_REVIEW_ELIGIBLE",
+      "expected": "MANUAL_REVIEW_ELIGIBLE"
+    },
+    {
+      "diagnostic_index": 2,
+      "check": "top",
+      "status": "PASS",
+      "observed": [
+        "SubjectPredicateClause"
+      ],
+      "expected": [
+        "SubjectPredicateClause"
+      ]
+    },
+    {
+      "diagnostic_index": 2,
+      "check": "root",
+      "status": "PASS",
+      "observed": "PASS",
+      "expected": "PASS"
+    },
+    {
+      "diagnostic_index": 2,
+      "check": "jyutping",
+      "status": "PASS",
+      "observed": "PASS",
+      "expected": "PASS"
+    },
+    {
+      "diagnostic_index": 2,
+      "check": "registry",
+      "status": "PASS",
+      "observed": "PASS",
+      "expected": "PASS"
+    },
+    {
+      "diagnostic_index": 2,
+      "check": "hover_no_internal_leak",
+      "status": "PASS",
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "diagnostic_index": 2,
+      "check": "subtype_guards",
+      "status": "PASS"
+    },
+    {
+      "diagnostic_index": 3,
+      "check": "subtype_count",
+      "status": "PASS",
+      "observed": 1,
+      "expected": 1
+    },
+    {
+      "diagnostic_index": 3,
+      "check": "semantic",
+      "status": "PASS",
+      "observed": "MANUAL_REVIEW_ELIGIBLE",
+      "expected": "MANUAL_REVIEW_ELIGIBLE"
+    },
+    {
+      "diagnostic_index": 3,
+      "check": "top",
+      "status": "PASS",
+      "observed": [
+        "SubjectPredicateClause"
+      ],
+      "expected": [
+        "SubjectPredicateClause"
+      ]
+    },
+    {
+      "diagnostic_index": 3,
+      "check": "root",
+      "status": "PASS",
+      "observed": "PASS",
+      "expected": "PASS"
+    },
+    {
+      "diagnostic_index": 3,
+      "check": "jyutping",
+      "status": "PASS",
+      "observed": "PASS",
+      "expected": "PASS"
+    },
+    {
+      "diagnostic_index": 3,
+      "check": "registry",
+      "status": "PASS",
+      "observed": "PASS",
+      "expected": "PASS"
+    },
+    {
+      "diagnostic_index": 3,
+      "check": "hover_no_internal_leak",
+      "status": "PASS",
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "diagnostic_index": 3,
+      "check": "subtype_guards",
+      "status": "PASS"
+    },
+    {
+      "diagnostic_index": 4,
+      "check": "subtype_count",
+      "status": "PASS",
+      "observed": 1,
+      "expected": 1
+    },
+    {
+      "diagnostic_index": 4,
+      "check": "semantic",
+      "status": "PASS",
+      "observed": "MANUAL_REVIEW_ELIGIBLE",
+      "expected": "MANUAL_REVIEW_ELIGIBLE"
+    },
+    {
+      "diagnostic_index": 4,
+      "check": "top",
+      "status": "PASS",
+      "observed": [
+        "SubjectPredicateClause"
+      ],
+      "expected": [
+        "SubjectPredicateClause"
+      ]
+    },
+    {
+      "diagnostic_index": 4,
+      "check": "root",
+      "status": "PASS",
+      "observed": "PASS",
+      "expected": "PASS"
+    },
+    {
+      "diagnostic_index": 4,
+      "check": "jyutping",
+      "status": "PASS",
+      "observed": "PASS",
+      "expected": "PASS"
+    },
+    {
+      "diagnostic_index": 4,
+      "check": "registry",
+      "status": "PASS",
+      "observed": "PASS",
+      "expected": "PASS"
+    },
+    {
+      "diagnostic_index": 4,
+      "check": "hover_no_internal_leak",
+      "status": "PASS",
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "diagnostic_index": 4,
+      "check": "subtype_guards",
+      "status": "PASS"
+    },
+    {
+      "diagnostic_index": 5,
+      "check": "subtype_count",
+      "status": "PASS",
+      "observed": 1,
+      "expected": 1
+    },
+    {
+      "diagnostic_index": 5,
+      "check": "semantic",
+      "status": "PASS",
+      "observed": "MANUAL_REVIEW_ELIGIBLE",
+      "expected": "MANUAL_REVIEW_ELIGIBLE"
+    },
+    {
+      "diagnostic_index": 5,
+      "check": "top",
+      "status": "PASS",
+      "observed": [
+        "SubjectPredicateClause"
+      ],
+      "expected": [
+        "SubjectPredicateClause"
+      ]
+    },
+    {
+      "diagnostic_index": 5,
+      "check": "root",
+      "status": "PASS",
+      "observed": "PASS",
+      "expected": "PASS"
+    },
+    {
+      "diagnostic_index": 5,
+      "check": "jyutping",
+      "status": "PASS",
+      "observed": "PASS",
+      "expected": "PASS"
+    },
+    {
+      "diagnostic_index": 5,
+      "check": "registry",
+      "status": "PASS",
+      "observed": "PASS",
+      "expected": "PASS"
+    },
+    {
+      "diagnostic_index": 5,
+      "check": "hover_no_internal_leak",
+      "status": "PASS",
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "diagnostic_index": 5,
+      "check": "subtype_guards",
+      "status": "PASS"
+    },
+    {
+      "diagnostic_index": 6,
+      "check": "subtype_count",
+      "status": "PASS",
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "diagnostic_index": 6,
+      "check": "semantic",
+      "status": "PASS",
+      "observed": "BLOCKED",
+      "expected": "BLOCKED"
+    },
+    {
+      "diagnostic_index": 6,
+      "check": "top",
+      "status": "PASS",
+      "observed": [
+        "NeedsContext"
+      ],
+      "expected": [
+        "NeedsContext"
+      ]
+    },
+    {
+      "diagnostic_index": 6,
+      "check": "root",
+      "status": "PASS",
+      "observed": "PASS",
+      "expected": "PASS"
+    },
+    {
+      "diagnostic_index": 6,
+      "check": "jyutping",
+      "status": "PASS",
+      "observed": "PASS",
+      "expected": "PASS"
+    },
+    {
+      "diagnostic_index": 6,
+      "check": "registry",
+      "status": "PASS",
+      "observed": "PASS",
+      "expected": "PASS"
+    },
+    {
+      "diagnostic_index": 6,
+      "check": "hover_no_internal_leak",
+      "status": "PASS",
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "diagnostic_index": 7,
+      "check": "subtype_count",
+      "status": "PASS",
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "diagnostic_index": 7,
+      "check": "semantic",
+      "status": "PASS",
+      "observed": "MANUAL_REVIEW_ELIGIBLE",
+      "expected": "MANUAL_REVIEW_ELIGIBLE"
+    },
+    {
+      "diagnostic_index": 7,
+      "check": "top",
+      "status": "PASS",
+      "observed": [
+        "PerfectiveVP"
+      ],
+      "expected": [
+        "PerfectiveVP"
+      ]
+    },
+    {
+      "diagnostic_index": 7,
+      "check": "root",
+      "status": "PASS",
+      "observed": "PASS",
+      "expected": "PASS"
+    },
+    {
+      "diagnostic_index": 7,
+      "check": "jyutping",
+      "status": "PASS",
+      "observed": "PASS",
+      "expected": "PASS"
+    },
+    {
+      "diagnostic_index": 7,
+      "check": "registry",
+      "status": "PASS",
+      "observed": "PASS",
+      "expected": "PASS"
+    },
+    {
+      "diagnostic_index": 7,
+      "check": "hover_no_internal_leak",
+      "status": "PASS",
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "diagnostic_index": 8,
+      "check": "subtype_count",
+      "status": "PASS",
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "diagnostic_index": 8,
+      "check": "semantic",
+      "status": "PASS",
+      "observed": "MANUAL_REVIEW_ELIGIBLE",
+      "expected": "MANUAL_REVIEW_ELIGIBLE"
+    },
+    {
+      "diagnostic_index": 8,
+      "check": "top",
+      "status": "PASS",
+      "observed": [
+        "MotionGoalVP"
+      ],
+      "expected": [
+        "MotionGoalVP"
+      ]
+    },
+    {
+      "diagnostic_index": 8,
+      "check": "root",
+      "status": "PASS",
+      "observed": "PASS",
+      "expected": "PASS"
+    },
+    {
+      "diagnostic_index": 8,
+      "check": "jyutping",
+      "status": "PASS",
+      "observed": "PASS",
+      "expected": "PASS"
+    },
+    {
+      "diagnostic_index": 8,
+      "check": "registry",
+      "status": "PASS",
+      "observed": "PASS",
+      "expected": "PASS"
+    },
+    {
+      "diagnostic_index": 8,
+      "check": "hover_no_internal_leak",
+      "status": "PASS",
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "diagnostic_index": 9,
+      "check": "subtype_count",
+      "status": "PASS",
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "diagnostic_index": 9,
+      "check": "semantic",
+      "status": "PASS",
+      "observed": "MANUAL_REVIEW_ELIGIBLE",
+      "expected": "MANUAL_REVIEW_ELIGIBLE"
+    },
+    {
+      "diagnostic_index": 9,
+      "check": "top",
+      "status": "PASS",
+      "observed": [
+        "ExperientialClause"
+      ],
+      "expected": [
+        "ExperientialClause"
+      ]
+    },
+    {
+      "diagnostic_index": 9,
+      "check": "root",
+      "status": "PASS",
+      "observed": "PASS",
+      "expected": "PASS"
+    },
+    {
+      "diagnostic_index": 9,
+      "check": "jyutping",
+      "status": "PASS",
+      "observed": "PASS",
+      "expected": "PASS"
+    },
+    {
+      "diagnostic_index": 9,
+      "check": "registry",
+      "status": "PASS",
+      "observed": "PASS",
+      "expected": "PASS"
+    },
+    {
+      "diagnostic_index": 9,
+      "check": "hover_no_internal_leak",
+      "status": "PASS",
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "diagnostic_index": 10,
+      "check": "subtype_count",
+      "status": "PASS",
+      "observed": 1,
+      "expected": 1
+    },
+    {
+      "diagnostic_index": 10,
+      "check": "semantic",
+      "status": "PASS",
+      "observed": "BLOCKED",
+      "expected": "BLOCKED"
+    },
+    {
+      "diagnostic_index": 10,
+      "check": "top",
+      "status": "PASS",
+      "observed": [
+        "NeedsContext"
+      ],
+      "expected": [
+        "NeedsContext"
+      ]
+    },
+    {
+      "diagnostic_index": 10,
+      "check": "root",
+      "status": "PASS",
+      "observed": "PASS",
+      "expected": "PASS"
+    },
+    {
+      "diagnostic_index": 10,
+      "check": "jyutping",
+      "status": "PASS",
+      "observed": "PASS",
+      "expected": "PASS"
+    },
+    {
+      "diagnostic_index": 10,
+      "check": "registry",
+      "status": "PASS",
+      "observed": "PASS",
+      "expected": "PASS"
+    },
+    {
+      "diagnostic_index": 10,
+      "check": "hover_no_internal_leak",
+      "status": "PASS",
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "diagnostic_index": 10,
+      "check": "subtype_guards",
+      "status": "PASS"
+    },
+    {
+      "diagnostic_index": 11,
+      "check": "subtype_count",
+      "status": "PASS",
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "diagnostic_index": 11,
+      "check": "semantic",
+      "status": "PASS",
+      "observed": "MANUAL_REVIEW_ELIGIBLE",
+      "expected": "MANUAL_REVIEW_ELIGIBLE"
+    },
+    {
+      "diagnostic_index": 11,
+      "check": "top",
+      "status": "PASS",
+      "observed": [
+        "LocativeFrameClause"
+      ],
+      "expected": [
+        "LocativeFrameClause"
+      ]
+    },
+    {
+      "diagnostic_index": 11,
+      "check": "root",
+      "status": "PASS",
+      "observed": "PASS",
+      "expected": "PASS"
+    },
+    {
+      "diagnostic_index": 11,
+      "check": "jyutping",
+      "status": "PASS",
+      "observed": "PASS",
+      "expected": "PASS"
+    },
+    {
+      "diagnostic_index": 11,
+      "check": "registry",
+      "status": "PASS",
+      "observed": "PASS",
+      "expected": "PASS"
+    },
+    {
+      "diagnostic_index": 11,
+      "check": "hover_no_internal_leak",
+      "status": "PASS",
+      "observed": 0,
+      "expected": 0
+    }
+  ]
+}

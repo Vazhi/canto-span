@@ -1,0 +1,46 @@
+{
+  "schema": "canto-span-doc1-core-validation-summary-v1",
+  "checkpoint": "CP022-I1A-I01-R1-DOC1",
+  "runtime_version": "0.5.179",
+  "parser_behavior_changed": false,
+  "runtime_bytes_changed": false,
+  "status": "PASS",
+  "gates": {
+    "current_focused": "10/10",
+    "i01_visible": "100/100",
+    "i02_preservation": "24/24",
+    "aggregate_regression": "545/545",
+    "grammar_legitimacy": "1087/1087",
+    "semantic_acceptance": "15/15",
+    "pre_intermediate_corpus": "80/80",
+    "native_naturalness_audit": "32/32",
+    "lexicon_topology": "545/545",
+    "documentation_consistency": "PASS",
+    "source_accounting_and_research_retention": "PASS",
+    "runtime_byte_comparison": "PASS"
+  },
+  "source_accounting": {
+    "active_registry_labels": 177,
+    "active_language_or_lexical_labels": 157,
+    "externally_mapped_active_language_labels": 156,
+    "explicit_source_gap_quarantines": 1,
+    "explicit_source_gap_labels": [
+      "ScalarRangeFragment"
+    ],
+    "active_internal_representation_or_heuristic_labels": 20,
+    "unaccounted_active_labels": [],
+    "cumulative_source_matrix_rows": 1084,
+    "cumulative_source_identifiers": 116,
+    "current_source_map_dossiers": 30,
+    "research_retention_manifest_rows": 466,
+    "research_retention_status_counts": {
+      "CURRENT_IDENTICAL": 141,
+      "RESTORED_TO_HISTORY_ARCHIVE": 323,
+      "CURRENT_MODIFIED_ORIGINAL_ARCHIVED": 2
+    },
+    "supported_productive": 0
+  },
+  "supported_productive": 0,
+  "heldout_opened": false,
+  "next": "Render and adjudicate I01, then open the six sealed cases once."
+}

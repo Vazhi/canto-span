@@ -1,0 +1,15 @@
+case_id	surface	role	speaker_id	judgment	correction_or_context	review_independent	speaker_background	review_date
+PFV-P01	我食咗飯。	target_positive	Speaker A	natural		true	not_supplied	not_supplied
+PFV-P02	我食咗麵。	target_positive	Speaker A	natural		true	not_supplied	not_supplied
+PFV-P03	佢睇咗三個醫生。	target_positive	Speaker A	natural		true	not_supplied	not_supplied
+PFV-P04	佢寫咗一篇文。	target_positive	Speaker A	natural		true	not_supplied	not_supplied
+PFV-P05	我答咗你嘅問題。	target_positive	Speaker A	natural		true	not_supplied	not_supplied
+PFV-P06	你買咗呢隻牌子未呀？	target_positive	Speaker A	natural		true	not_supplied	not_supplied
+PFV-B01	我食咗。	comparison_objectless_perfective	Speaker A	natural		true	not_supplied	not_supplied
+PFV-B02	我食完咗飯。	comparison_resultative	Speaker A	unnatural	我食完飯。	true	not_supplied	not_supplied
+PFV-B03	我食過飯。	comparison_experiential	Speaker A	natural		true	not_supplied	not_supplied
+PFV-B04	我食緊飯。	comparison_progressive	Speaker A	natural		true	not_supplied	not_supplied
+PFV-B05	我去咗香港。	comparison_motion	Speaker A	natural		true	not_supplied	not_supplied
+PFV-B06	牆上面擺咗部電話。	comparison_placement	Speaker A	natural		true	not_supplied	not_supplied
+PFV-B07	我食咗香港。	comparison_selectional_mismatch	Speaker A	unnatural	我食咗飯。	true	not_supplied	not_supplied
+PFV-B08	我食飯。	comparison_bare_verb_object	Speaker A	natural		true	not_supplied	not_supplied

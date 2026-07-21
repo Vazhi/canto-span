@@ -1,0 +1,1061 @@
+{
+  "schema": "canto-span-grammar-legitimacy-audit-result-v3",
+  "checkpoint": "v0.5.183-phase1-dormant-label-retirement-r1",
+  "runtime_version": "0.5.183",
+  "parser_behavior_changed": false,
+  "status_counts": {
+    "research_pending": 58,
+    "unsupported_generalization": 87,
+    "parser_heuristic": 21,
+    "lexicalized_only": 3,
+    "provisional_reaudit": 2
+  },
+  "runtime_status_mismatches": [
+    {
+      "pattern": "DegreeStativePredicate",
+      "runtime_status": "provisional",
+      "governance_status": "research_pending"
+    },
+    {
+      "pattern": "OvertHeadDemonstrativeClassifierNP",
+      "runtime_status": "provisional",
+      "governance_status": "research_pending"
+    },
+    {
+      "pattern": "DiMarkedNP",
+      "runtime_status": "provisional",
+      "governance_status": "research_pending"
+    },
+    {
+      "pattern": "DirectionalMotionVP",
+      "runtime_status": "provisional",
+      "governance_status": "research_pending"
+    },
+    {
+      "pattern": "ExperientialVP",
+      "runtime_status": "provisional",
+      "governance_status": "research_pending"
+    },
+    {
+      "pattern": "IntendedFunctionRelation",
+      "runtime_status": "provisional",
+      "governance_status": "research_pending"
+    },
+    {
+      "pattern": "LexicalGiveRelation",
+      "runtime_status": "provisional",
+      "governance_status": "research_pending"
+    },
+    {
+      "pattern": "ModalVP",
+      "runtime_status": "provisional",
+      "governance_status": "research_pending"
+    },
+    {
+      "pattern": "ModifiedNP",
+      "runtime_status": "provisional",
+      "governance_status": "research_pending"
+    },
+    {
+      "pattern": "ModifierNP",
+      "runtime_status": "provisional",
+      "governance_status": "research_pending"
+    },
+    {
+      "pattern": "NegatedDirectionalMotionVP",
+      "runtime_status": "provisional",
+      "governance_status": "research_pending"
+    },
+    {
+      "pattern": "NegatedExistentialFragment",
+      "runtime_status": "provisional",
+      "governance_status": "research_pending"
+    },
+    {
+      "pattern": "PassivePermissiveRelation",
+      "runtime_status": "provisional",
+      "governance_status": "research_pending"
+    },
+    {
+      "pattern": "PerfectiveVP",
+      "runtime_status": "provisional",
+      "governance_status": "research_pending"
+    },
+    {
+      "pattern": "PostThemeParticipantRelation",
+      "runtime_status": "provisional",
+      "governance_status": "research_pending"
+    },
+    {
+      "pattern": "PostverbalZoPerfectiveVP",
+      "runtime_status": "supported_productive",
+      "governance_status": "provisional_reaudit"
+    },
+    {
+      "pattern": "QuantifiedClassifierNP",
+      "runtime_status": "provisional",
+      "governance_status": "research_pending"
+    },
+    {
+      "pattern": "QuantityNP",
+      "runtime_status": "provisional",
+      "governance_status": "research_pending"
+    },
+    {
+      "pattern": "ReportedSpeech",
+      "runtime_status": "provisional",
+      "governance_status": "research_pending"
+    },
+    {
+      "pattern": "TemporalClause",
+      "runtime_status": "provisional",
+      "governance_status": "research_pending"
+    },
+    {
+      "pattern": "TransitiveVP",
+      "runtime_status": "provisional",
+      "governance_status": "research_pending"
+    },
+    {
+      "pattern": "VerbComplementVP",
+      "runtime_status": "provisional",
+      "governance_status": "research_pending"
+    },
+    {
+      "pattern": "ResourceUseLaiFunctionRelation",
+      "runtime_status": "supported_productive",
+      "governance_status": "provisional_reaudit"
+    }
+  ],
+  "runtime_retired_label_residue": [
+    "AdjectivalPredicateClause",
+    "BareClassifierNP",
+    "DemonstrativeQuantifiedClassifierNP",
+    "DirectionalCausedMotionVP",
+    "ModalResponseFragment",
+    "NegativeHaveClause",
+    "NominalModifierNP",
+    "PossessiveNP",
+    "PossessiveNominalFragment",
+    "ProhibitiveFragment"
+  ],
+  "total": 183,
+  "passed": 183,
+  "failed": 0,
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "runtime remains v0.5.183",
+      "pass": true,
+      "detail": "0.5.183"
+    },
+    {
+      "name": "grammar freeze remains active",
+      "pass": true
+    },
+    {
+      "name": "active audit has 171 rows",
+      "pass": true,
+      "detail": "171"
+    },
+    {
+      "name": "ten labels are retired",
+      "pass": true,
+      "detail": "10"
+    },
+    {
+      "name": "audit exactly covers runtime minus retired residue",
+      "pass": true
+    },
+    {
+      "name": "known status: ANotAQuestion",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: AcceptabilityANotA",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: AcceptabilityClause",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: ActionStativeVP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: ApproximateQuantity",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: AssociativeNP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: CausativeResultFrame",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: CausativeResultPredicate",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: ChangeIntoPredicate",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: ClassifierObjectNP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: ClauseRelationEdge",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known status: ClauseRelationGraph",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known status: ClauseRelationMemberSpan",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known status: ClauseSpan",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known status: CognitionContentFrame",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: CognitionDelimitedObjectVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: CognitionDelimitedVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: CognitionStatementClause",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: Comment",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known status: ComparativeStative",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: ComplementEllipsisFragment",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: CompletionQuestion",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: CompletionThenClause",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: CompletionVP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: CompoundDirectionalMotionVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: ConditionResult",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: ConditionalClause",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: CoordinatedNP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: CopularANotAQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: CopularIdentificationFrame",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known status: CopularRelationFrame",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known status: CoverbFrame",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: DefinitionComplement",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known status: DefinitionExplanatoryFrame",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known status: DegreeMannerAdverbial",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: DegreeMannerModifiedVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: DegreeModifiedLexicalStative",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: DegreeStativePredicate",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: DelimitedVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: DemonstrativeClassifierNP",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known status: OvertHeadDemonstrativeClassifierNP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: HeadlessDemonstrativeClassifierNP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: DemonstrativeHeadNP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: DesiderativeVP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: DiMarkedNP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: DirectedMannerMotionVP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: DirectionalMotionVP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: DiscourseParticleFrame",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known status: DisposalChangeIntoResultFrame",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: DitransitiveSpeechVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: DurativeVP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: EvaluationWithDouSyun",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: ExistentialClause",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: ExistentialPresentationalClause",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: ExistentialQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: ExistentialWhQuestion",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: ExperientialClause",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: ExperientialMotionGoalVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: ExperientialQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: ExperientialVP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: ExperientialYesNoQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: FocusParticleFrame",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known status: FormulaDiscourseUnit",
+      "pass": true,
+      "detail": "lexicalized_only"
+    },
+    {
+      "name": "known status: FragmentAnswer",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: FragmentQuestion",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: GoalAttainmentMotionVP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: IdentificationFragment",
+      "pass": true,
+      "detail": "lexicalized_only"
+    },
+    {
+      "name": "known status: IdentityWhQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: ImpersonalEnvironmentalClause",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: IntendedFunctionRelation",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: IntentionFrame",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: IntransitiveVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: LexicalGiveRelation",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: LocativeExistentialClause",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: LocativeFragment",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: LocativeFrameClause",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: LocativePlacePhrase",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: LocativePostureVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: LocativeWhQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: MalformedCandidate",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known status: MannerAdverbialVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: MeasureExpression",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known status: ModalANotAQuestion",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: ModalChangeIntoResultFrame",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: ModalVP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: ModifiedNP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: ModifierNP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: MotionDelimitedVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: MotionGoalVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: MotionPurposeChain",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: NamingClause",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: NeedsContext",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known status: NegatedDirectionalMotionVP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: NegatedExistentialClause",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: NegatedExistentialFragment",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: NegatedLexicalizedStative",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: NegatedStativePredicate",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: NegatedVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: NegativeCognitionFragment",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: NegativeExperiential",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: NegativePotentialComplement",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: NegativePotentialDirectionalVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: NominalHeadSpan",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known status: NominalPredicateClause",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: OpinionQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: OpinionStanceFrame",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: OrdinalClassifierNP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: PassivePermissiveRelation",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: PathPhrase",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: PerfectiveDirectionalVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: PerfectiveObjectResultPredicate",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: PerfectiveResultPredicate",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: PerfectiveVP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: PolarQuestionFrame",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known status: PoliteImperativeClause",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: PossessiveClassifierNP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: PossessiveTransferClause",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: PostThemeParticipantRelation",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: PostposedExistentialQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: PostverbalZoPerfectiveVP",
+      "pass": true,
+      "detail": "provisional_reaudit"
+    },
+    {
+      "name": "known status: PotentialDirectionalVP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: PotentialResultVP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: PreferenceVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: PriorityMarkerClause",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: ProductiveVO",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: ProgressiveDirectionalVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: ProgressivePlaceQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: ProgressivePurposeClause",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: ProgressiveTransitivePredicate",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: ProgressiveVP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: ProgressiveWhObjectQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: ProhibitiveImperative",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: PurposePredicate",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: QuantifiedClassifierNP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: QuantifiedPersonNP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: QuantifiedTimeNP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: QuantityNP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: ReduplicatedVP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: RelativeClauseNP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: RepetitiveComplementVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: ReportedSpeech",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: RestorativeComplementVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: ResultComplement",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: ResultComplementVP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: ResultStateClause",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: ScalarEvaluation",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: ScalarRangeFragment",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: ScalarValueQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: SchedulingQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: SeemingPerfectiveResultClause",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: SerialVerbPurposeChain",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: SourceMotionClause",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: SpeechTransferClause",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: StativeNominalComplement",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: StativePredicate",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: SuggestionQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: TemporalAdverbialClause",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: TemporalClause",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: TimeNP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: TimeToActionFrame",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: Topic",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known status: TopicComment",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known status: TopicCommentClause",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known status: TransformationResultFrame",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: TransformationResultPredicate",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: TransitiveVP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: VPComplementFrame",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known status: VerbComplementVP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known status: VocativeAddressTerm",
+      "pass": true,
+      "detail": "lexicalized_only"
+    },
+    {
+      "name": "known status: WhClassifierQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known status: ResourceUseLaiFunctionRelation",
+      "pass": true,
+      "detail": "provisional_reaudit"
+    },
+    {
+      "name": "supported_productive is zero",
+      "pass": true,
+      "detail": "{\"research_pending\":58,\"unsupported_generalization\":87,\"parser_heuristic\":21,\"lexicalized_only\":3,\"provisional_reaudit\":2}"
+    },
+    {
+      "name": "two prior acceptances remain under re-audit",
+      "pass": true,
+      "detail": "{\"research_pending\":58,\"unsupported_generalization\":87,\"parser_heuristic\":21,\"lexicalized_only\":3,\"provisional_reaudit\":2}"
+    },
+    {
+      "name": "ordinary provisional is zero",
+      "pass": true,
+      "detail": "{\"research_pending\":58,\"unsupported_generalization\":87,\"parser_heuristic\":21,\"lexicalized_only\":3,\"provisional_reaudit\":2}"
+    },
+    {
+      "name": "research_pending remains 58",
+      "pass": true,
+      "detail": "{\"research_pending\":58,\"unsupported_generalization\":87,\"parser_heuristic\":21,\"lexicalized_only\":3,\"provisional_reaudit\":2}"
+    },
+    {
+      "name": "unsupported_generalization is 87 after retirement",
+      "pass": true,
+      "detail": "{\"research_pending\":58,\"unsupported_generalization\":87,\"parser_heuristic\":21,\"lexicalized_only\":3,\"provisional_reaudit\":2}"
+    },
+    {
+      "name": "status mismatch queue remains 23",
+      "pass": true,
+      "detail": "23"
+    },
+    {
+      "name": "retired labels remain only as frozen runtime residue",
+      "pass": true
+    }
+  ],
+  "failures": []
+}

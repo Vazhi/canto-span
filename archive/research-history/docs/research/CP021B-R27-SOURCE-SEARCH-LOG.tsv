@@ -1,0 +1,13 @@
+search_id	date	query_or_action	source_or_engine	result	evidentiary_use	limitation
+R27-S01	2026-07-19	Verify R26 package, 92/92 audit, and frozen hashes	local package inspection	PASS	baseline integrity only	Package metadata is not linguistic authority.
+R27-S02	2026-07-19	Rank 41 remaining language labels by runtime references and non-held-out accepted snapshots	local runtime and regression snapshots	PASS	family selection	Counts rank impact but do not establish grammar.
+R27-S03	2026-07-19	Extract five directive/suggestion/priority templates and fallbacks	main.js	PASS	runtime claim extraction	Code is a research target only.
+R27-S04	2026-07-19	Confirm one accepted ProhibitiveImperative and zero accepted fixtures for four companion labels	non-held-out regression snapshots	PASS	fixture-impact record	Fixtures are not linguistic authority.
+R27-S05	2026-07-19	Inspect Chin 2018 official prohibitive abstract	official university repository metadata	PASS	marker-class boundary	Abstract-level evidence does not establish full distribution.
+R27-S06	2026-07-19	Inspect uploaded coursebook examples for 咪, 不如, 請, 唔該, 先啦, and V定…先	user-provided full-text PDF	PASS	exact pedagogical attestations	Pedagogical examples do not prove unrestricted productivity.
+R27-S07	2026-07-19	Inspect scanned beginner coursebook classroom requests	user-provided scanned PDF pages	PASS	exact polite-directive attestations	Scan evidence is item-level and pedagogical.
+R27-S08	2026-07-19	Inspect Zhou 2018 postverbal sin1 article	official publisher abstract and full-text copy	PASS	postverbal priority and polysemy	Diachronic/areal analysis is not parser ontology.
+R27-S09	2026-07-19	Extend Sybesma 2013 postverbal sin1 scope	author-uploaded full chapter	PASS	independent subtype boundary	Contact analysis and microvariation do not license universal rules.
+R27-S10	2026-07-19	Search exact runtime 請+addressee+沿住+path template	scholarly web and textbook search	NO_DIRECT_MATCH	records exact-template gap	Search failure is not ungrammaticality evidence.
+R27-S11	2026-07-19	Search exact 係時候+action frame in inspected scholarly and textbook sources	scholarly web and textbook search	NO_DIRECT_MATCH	records direct-source gap	Component attestation is not construction-level evidence.
+R27-S12	2026-07-19	Assemble 40-row matrix and run deterministic parent/source/protected-tree audit	local deterministic audit	PASS	provenance integrity	Audit verifies consistency, not linguistic truth.

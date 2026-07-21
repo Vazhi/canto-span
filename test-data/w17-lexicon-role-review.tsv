@@ -1,0 +1,60 @@
+id	surface	expected_default_learner_role	integration_mode	semantic_role_review_status	review_note	lifecycle_status
+LEX-W17-001	唔開心	like	compositional	PASS	Registered source phrase; runtime must preserve visible internal tokens.	PROMOTED_ACCEPTED
+LEX-W17-002	攰	like	atomic	PASS		PROMOTED_ACCEPTED
+LEX-W17-003	嬲	like	atomic	PASS		PROMOTED_ACCEPTED
+LEX-W17-004	驚	like	atomic	PASS		PROMOTED_ACCEPTED
+LEX-W17-005	擔心	doing	atomic	PASS		PROMOTED_ACCEPTED
+LEX-W17-006	悶	like	atomic	PASS		PROMOTED_ACCEPTED
+LEX-W17-007	緊張	like	atomic	PASS		PROMOTED_ACCEPTED
+LEX-W17-008	壓力	what	atomic	PASS		PROMOTED_ACCEPTED
+LEX-W17-009	辛苦	like	atomic	PASS		PROMOTED_ACCEPTED
+LEX-W17-010	感動	like	atomic	PASS		PROMOTED_ACCEPTED
+LEX-W17-011	激動	like	atomic	PASS		PROMOTED_ACCEPTED
+LEX-W17-012	失望	like	atomic	PASS		PROMOTED_ACCEPTED
+LEX-W17-013	放鬆	doing	atomic	PASS		PROMOTED_ACCEPTED
+LEX-W17-014	開心	like	existing_atomic	PASS		PROMOTED_ACCEPTED
+LEX-W17-015	傷心	like	atomic	PASS		PROMOTED_ACCEPTED
+LEX-W17-016	鍾意	like	existing_atomic	PASS		PROMOTED_ACCEPTED
+LEX-W17-017	唔鍾意	like	compositional	PASS	Registered source phrase; runtime must preserve visible internal tokens.	PROMOTED_ACCEPTED
+LEX-W17-018	興奮	like	atomic	PASS		PROMOTED_ACCEPTED
+LEX-W17-019	孤獨	like	atomic	PASS		PROMOTED_ACCEPTED
+LEX-W17-020	滿足	like	atomic	PASS		PROMOTED_ACCEPTED
+LEX-W17-021	驕傲	like	atomic_contextual_meaning	REVIEW	Role is stable stative; evaluative meaning varies by context.	PROMOTED_ACCEPTED
+LEX-W17-022	嫉妒	doing	atomic	PASS		PROMOTED_ACCEPTED
+LEX-W17-023	焦慮	like	atomic	PASS		PROMOTED_ACCEPTED
+LEX-W17-024	感激	doing	atomic	PASS		PROMOTED_ACCEPTED
+LEX-W17-025	慚愧	like	atomic	PASS		PROMOTED_ACCEPTED
+LEX-W17-026	害怕	doing	atomic	PASS		PROMOTED_ACCEPTED
+LEX-W17-027	感恩	doing	atomic	PASS		PROMOTED_ACCEPTED
+LEX-W17-028	好奇	like	atomic_reading_review	REVIEW	Role accepted; source Jyutping remains review-bearing.	REVIEW_ONLY
+LEX-W17-029	樂觀	like	atomic	PASS		PROMOTED_ACCEPTED
+LEX-W17-030	一千萬	how	compositional	PASS	Registered source phrase; runtime must preserve visible internal tokens.	PROMOTED_ACCEPTED
+LEX-W17-031	二千萬	how	compositional	PASS	Registered source phrase; runtime must preserve visible internal tokens.	PROMOTED_ACCEPTED
+LEX-W17-032	三千萬	how	compositional	PASS	Registered source phrase; runtime must preserve visible internal tokens.	PROMOTED_ACCEPTED
+LEX-W17-033	四千萬	how	compositional	PASS	Registered source phrase; runtime must preserve visible internal tokens.	PROMOTED_ACCEPTED
+LEX-W17-034	五千萬	how	compositional	PASS	Registered source phrase; runtime must preserve visible internal tokens.	PROMOTED_ACCEPTED
+LEX-W17-035	六千萬	how	compositional	PASS	Registered source phrase; runtime must preserve visible internal tokens.	PROMOTED_ACCEPTED
+LEX-W17-036	七千萬	how	compositional	PASS	Registered source phrase; runtime must preserve visible internal tokens.	PROMOTED_ACCEPTED
+LEX-W17-037	八千萬	how	compositional	PASS	Registered source phrase; runtime must preserve visible internal tokens.	PROMOTED_ACCEPTED
+LEX-W17-038	九千萬	how	compositional	PASS	Registered source phrase; runtime must preserve visible internal tokens.	PROMOTED_ACCEPTED
+LEX-W17-039	一億	how	compositional	PASS	Registered source phrase; runtime must preserve visible internal tokens.	PROMOTED_ACCEPTED
+LEX-W17-040	喺	func	existing_contextual	PASS	Existing lexical default retained; construction may activate a different contextual role or internal slot.	PROMOTED_ACCEPTED
+LEX-W17-041	去	doing	existing_contextual	PASS	Existing lexical default retained; construction may activate a different contextual role or internal slot.	PROMOTED_ACCEPTED
+LEX-W17-042	由	where	existing_contextual	PASS	Existing lexical default retained; construction may activate a different contextual role or internal slot.	PROMOTED_ACCEPTED
+LEX-W17-043	同	func	existing_contextual	PASS	Existing lexical default retained; construction may activate a different contextual role or internal slot.	PROMOTED_ACCEPTED
+LEX-W17-044	畀	doing	existing_contextual	PASS	Existing lexical default retained; construction may activate a different contextual role or internal slot.	PROMOTED_ACCEPTED
+LEX-W17-045	用	doing	existing_contextual	PASS	Existing lexical default retained; construction may activate a different contextual role or internal slot.	PROMOTED_ACCEPTED
+LEX-W17-046	對	func	atomic_contextual	PASS	Default learner role retained; construction/internal slots carry contextual function.	PROMOTED_ACCEPTED
+LEX-W17-047	除咗	func	atomic	PASS		PROMOTED_ACCEPTED
+LEX-W17-048	書	what	existing_atomic	PASS		PROMOTED_ACCEPTED
+LEX-W17-049	蘇	who	atomic_ambiguous	REVIEW	Conservative default only; alternate lexical sense requires sentence context.	PROMOTED_ACCEPTED
+LEX-W17-050	煮	doing	existing_atomic	PASS		PROMOTED_ACCEPTED
+LEX-W17-051	祖	who	atomic	PASS		PROMOTED_ACCEPTED
+LEX-W17-052	全	like	atomic	PASS		PROMOTED_ACCEPTED
+LEX-W17-053	存	doing	atomic	PASS		PROMOTED_ACCEPTED
+LEX-W17-054	如	func	atomic_contextual	REVIEW	Default learner role retained; construction/internal slots carry contextual function.	PROMOTED_ACCEPTED
+LEX-W17-055	油	what	atomic	PASS		PROMOTED_ACCEPTED
+LEX-W17-056	血	what	atomic	PASS		PROMOTED_ACCEPTED
+LEX-W17-057	闊	like	atomic	PASS		PROMOTED_ACCEPTED
+LEX-W17-058	聯	doing	atomic	PASS		PROMOTED_ACCEPTED
+LEX-W17-059	論	what	atomic_ambiguous	REVIEW	Conservative default only; alternate lexical sense requires sentence context.	PROMOTED_ACCEPTED

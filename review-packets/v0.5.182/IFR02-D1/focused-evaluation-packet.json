@@ -1,0 +1,220 @@
+{
+  "schema": "canto-span-v0.5.182-remediation-packet-v1",
+  "packet_id": "v0.5.182-IFR02-D1",
+  "status": "HELD_OUT_LOCKED",
+  "accepted_parent": "v0.5.180",
+  "rejected_predecessor": "v0.5.181",
+  "target_internal_construction": "ResourceUseLaiFunctionRelation",
+  "public_compatibility_alias": "IntendedFunctionRelation",
+  "remediation_scope": {
+    "required_changes": [
+      "Generalize 杯 noun recognition after demonstrative + classifier, including 呢/嗰 + 隻 + 杯.",
+      "Exclude overt resource + separate overt user + 用嚟/用來 from the narrow subtype."
+    ],
+    "forbidden_changes": [
+      "Do not widen the positive grammar claim.",
+      "Do not change broad IntendedFunctionRelation status.",
+      "Do not reuse any v0.5.181 evaluator case as prospective evidence.",
+      "Do not alter instrumental, modal, copular, perfective-actual-use, or general-purpose boundaries."
+    ]
+  },
+  "source_basis": [
+    {
+      "source_id": "SRC-WONG-2023-LANGUAGE-SAMPLE",
+      "role": "exact 呢個用嚟切嘢 attestation and instrumental-SVC competing analysis",
+      "evidence_polarity": "positive_support",
+      "counts_toward_positive_source_minimum": true,
+      "locator": "official PDF p. 60, lines 2200-2220"
+    },
+    {
+      "source_id": "SRC-CHEUNG-2018-LAI",
+      "role": "independent description of purposive V1+嚟+V2 and conventionalized 用嚟/用來",
+      "evidence_polarity": "positive_support",
+      "counts_toward_positive_source_minimum": true,
+      "locator": "journal pp. 19-20; PDF pp. 3-4, especially printed p. 20 footnote 9"
+    },
+    {
+      "source_id": "SRC-CHOR-2018-DIRECTIONALS",
+      "role": "boundary evidence for broader purposive 嚟, topic/user and actual-use profiles",
+      "evidence_polarity": "boundary_and_competing_analysis",
+      "counts_toward_positive_source_minimum": false
+    },
+    {
+      "source_id": "SRC-MATTHEWS-2006-SVC",
+      "role": "boundary evidence against unrestricted serial-purpose inference",
+      "evidence_polarity": "boundary_and_competing_analysis",
+      "counts_toward_positive_source_minimum": false
+    }
+  ],
+  "development_set": {
+    "cases": [
+      {
+        "case_id": "IFR-E01",
+        "surface": "呢個用嚟切嘢。",
+        "class": "exact_source_attestation_with_omitted_noun",
+        "expected": "narrow_subtype_present_context_debt_preserved",
+        "source_ids": [
+          "SRC-WONG-2023-LANGUAGE-SAMPLE"
+        ],
+        "source_locator": "official PDF p. 60, lines 2217-2220"
+      },
+      {
+        "case_id": "IFR-V01",
+        "surface": "呢張枱用嚟食飯。",
+        "class": "explicit_resource_function",
+        "expected": "narrow_subtype_present"
+      },
+      {
+        "case_id": "IFR-V02",
+        "surface": "呢把刀用嚟切肉。",
+        "class": "explicit_resource_function",
+        "expected": "narrow_subtype_present"
+      },
+      {
+        "case_id": "IFR-V03",
+        "surface": "呢個杯用嚟飲水。",
+        "class": "explicit_resource_function",
+        "expected": "narrow_subtype_present"
+      },
+      {
+        "case_id": "IFR-V04",
+        "surface": "呢支筆用嚟寫字。",
+        "class": "explicit_resource_function",
+        "expected": "narrow_subtype_present"
+      },
+      {
+        "case_id": "IFR-V05",
+        "surface": "呢張紙用來寫字。",
+        "class": "orthographic_lai_variant",
+        "expected": "narrow_subtype_present"
+      },
+      {
+        "case_id": "IFR-N01",
+        "surface": "啲錢我用嚟買晒嗰堆嘢。",
+        "class": "separate_user_actual_use_boundary",
+        "expected": "narrow_subtype_absent_broad_relation_may_remain"
+      },
+      {
+        "case_id": "IFR-N02",
+        "surface": "呢個可以用嚟切嘢。",
+        "class": "modal_affordance_boundary",
+        "expected": "narrow_subtype_absent_broad_relation_review_bearing"
+      },
+      {
+        "case_id": "IFR-N03",
+        "surface": "呢個係用嚟切嘢。",
+        "class": "copular_boundary",
+        "expected": "narrow_subtype_absent_broad_relation_may_remain"
+      },
+      {
+        "case_id": "IFR-N04",
+        "surface": "呢個用咗嚟切嘢。",
+        "class": "aspect_interrupted_actual_use_boundary",
+        "expected": "narrow_subtype_absent"
+      },
+      {
+        "case_id": "IFR-N05",
+        "surface": "我用刀切嘢。",
+        "class": "ordinary_instrumental_use_boundary",
+        "expected": "narrow_subtype_absent"
+      },
+      {
+        "case_id": "IFR-N06",
+        "surface": "我買刀嚟切嘢。",
+        "class": "general_purposive_lai_boundary",
+        "expected": "narrow_subtype_absent"
+      },
+      {
+        "case_id": "IFR-N07",
+        "surface": "呢個唔用嚟切嘢。",
+        "class": "negated_boundary",
+        "expected": "narrow_subtype_absent"
+      },
+      {
+        "case_id": "IFR-N08",
+        "surface": "呢個用唔用嚟切嘢？",
+        "class": "a_not_a_boundary",
+        "expected": "narrow_subtype_absent"
+      },
+      {
+        "case_id": "IFR-N09",
+        "surface": "用來用去。",
+        "class": "reduplication_boundary",
+        "expected": "narrow_subtype_absent"
+      },
+      {
+        "case_id": "IFR-N10",
+        "surface": "我用嚟切嘢。",
+        "class": "lone_user_missing_resource_boundary",
+        "expected": "narrow_subtype_absent"
+      },
+      {
+        "case_id": "IFR-N11",
+        "surface": "呢個用嚟。",
+        "class": "missing_predicate_boundary",
+        "expected": "narrow_subtype_absent"
+      },
+      {
+        "case_id": "IFR-N12",
+        "surface": "呢個用嚟切咗嘢。",
+        "class": "perfective_actual_use_boundary",
+        "expected": "narrow_subtype_absent_broad_relation_review_bearing"
+      },
+      {
+        "case_id": "IFR2-R01",
+        "surface": "呢隻杯用嚟飲水。",
+        "class": "consumed_hidden_cup_noun_positive",
+        "expected": "narrow_subtype_present_cup_noun_role"
+      },
+      {
+        "case_id": "IFR2-R02",
+        "surface": "呢隻杯我用嚟飲水。",
+        "class": "consumed_hidden_separate_user_boundary",
+        "expected": "narrow_subtype_absent_broad_relation_may_remain"
+      },
+      {
+        "case_id": "IFR2-R03",
+        "surface": "呢隻杯用嚟飲咗水。",
+        "class": "consumed_hidden_actual_use_boundary",
+        "expected": "narrow_subtype_absent_broad_relation_review_bearing"
+      }
+    ]
+  },
+  "render_review": {
+    "required": true,
+    "minimum_rows": 14,
+    "must_include": [
+      "IFR2-R01",
+      "IFR2-R02",
+      "IFR2-R03",
+      "IFR-E01",
+      "IFR-V05",
+      "IFR-N02",
+      "IFR-N05",
+      "IFR-N06"
+    ]
+  },
+  "acceptance_contract": {
+    "candidate_status_before_acceptance": "provisional",
+    "final_status_if_all_gates_pass": "supported_productive",
+    "supported_productive_delta": 1,
+    "prospective_heldout_required": true,
+    "render_review_required": true,
+    "all_core_gates_required": true,
+    "no_parser_code_revision_after_heldout_open": true,
+    "v0.5.181_consumed_cases_may_be_used_only_as_visible_regression": true
+  },
+  "held_out": {
+    "selection_state": "SELECTED_HASHED_LOCKED",
+    "commitment_count": 8,
+    "manifest_hash": "eb11d683f7fb8688a27927a88e3543fc6c9bfad0544592a77e946ca7387e4c97",
+    "custody_archive_filename": "CANTO-SPAN-v0.5.182-EVALUATOR-CUSTODY-DO-NOT-OPEN.zip",
+    "custody_archive_sha256": "66740cd82a1f4ebb90755a5deb575441ad5e48e406e7021c029234e0a216a483"
+  },
+  "native_conflict_policy": {
+    "policy": "higher_burden_when_publication_conflicts_with_native_naturalness",
+    "positive_family_conflict_status": "no_recorded_native_rejection_for_direct_resource_use_lai_profile",
+    "assumed_dialect_explanation": false,
+    "future_conflict_effect": "freeze_promotion_and_require_conflict_resolution"
+  }
+}

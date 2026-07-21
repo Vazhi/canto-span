@@ -1,0 +1,82 @@
+{
+  "schema": "canto-span-definition-of-done-addendum-validation-v1",
+  "checkpoint": "v0.5.183-definition-of-done-r3",
+  "status": "PASS",
+  "parser_behavior_changed": false,
+  "definition_of_done": "docs/current/DEFINITION-OF-DONE.md",
+  "governance_status_counts": {
+    "supported_productive": 0,
+    "provisional_reaudit": 2,
+    "provisional": 0,
+    "research_pending": 58,
+    "unsupported_generalization": 97,
+    "lexicalized_only": 3,
+    "parser_heuristic": 21
+  },
+  "status_corrections": {
+    "prior_ordinary_provisional_returned_to_research_pending": 21,
+    "patterns": [
+      "DegreeStativePredicate",
+      "OvertHeadDemonstrativeClassifierNP",
+      "DiMarkedNP",
+      "DirectionalMotionVP",
+      "ExperientialVP",
+      "IntendedFunctionRelation",
+      "LexicalGiveRelation",
+      "ModalVP",
+      "ModifiedNP",
+      "ModifierNP",
+      "NegatedDirectionalMotionVP",
+      "NegatedExistentialFragment",
+      "PassivePermissiveRelation",
+      "PerfectiveVP",
+      "PostThemeParticipantRelation",
+      "QuantifiedClassifierNP",
+      "QuantityNP",
+      "ReportedSpeech",
+      "TemporalClause",
+      "TransitiveVP",
+      "VerbComplementVP"
+    ]
+  },
+  "audits": {
+    "current_focused": {
+      "status": "PASS",
+      "total": 24,
+      "passed": 24,
+      "failed": 0
+    },
+    "source_accounting": {
+      "status": "PASS",
+      "total": 12,
+      "passed": 12,
+      "failed": 0
+    },
+    "grammar_legitimacy": {
+      "status": "PASS",
+      "total": 380,
+      "passed": 380,
+      "failed": 0
+    },
+    "documentation_consistency": {
+      "status": "PASS",
+      "json_files": 236,
+      "markdown_files": 143,
+      "broken_local_links": 0
+    },
+    "regression": {
+      "status": "PASS",
+      "total": 543,
+      "passed": 543,
+      "failed": 0
+    }
+  },
+  "runtime_hashes": {
+    "main.js": "e25b6f7142eafce66a172b68d8e409275f127cfe902e93bafaf7147152bfcbe9",
+    "manifest.json": "d7f5a9be248a4efd1839852e8a100a9968273050f0aa5953af2a35c3661801f5",
+    "styles.css": "5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a"
+  },
+  "runtime_identity": "UNCHANGED_FROM_V0.5.183_RENDER_CANDIDATE",
+  "heldout_state": "SEALED_VERIFIED_UNOPENED_AND_NOT_INCLUDED_IN_RECOVERY",
+  "release_handoff_status": "NOT_DONE_PENDING_CONSTRUCTION_LEVEL_CHECKLISTS_RENDER_AND_SPEAKER_REVIEW"
+}

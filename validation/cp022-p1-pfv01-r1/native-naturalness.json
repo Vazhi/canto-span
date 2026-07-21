@@ -1,0 +1,170 @@
+{
+  "schema": "canto-span-native-speaker-naturalness-audit-result-v1",
+  "runtime_version": "0.5.165",
+  "evidence_scope": "sentence_naturalness_only_not_parser_analysis_validation",
+  "total_judgments": 136,
+  "acceptable_judgments": 128,
+  "rejected_judgments": 8,
+  "accepted_pattern_screening": {
+    "total": 128,
+    "acceptable": 124,
+    "rejected": 4
+  },
+  "follow_up": {
+    "total": 3,
+    "acceptable": 2,
+    "rejected": 1
+  },
+  "controls": {
+    "total": 3,
+    "correctly_rejected": 3
+  },
+  "repeats": {
+    "total": 2,
+    "consistent": 2
+  },
+  "labels_with_candidate_mapping": 89,
+  "labels_with_native_analysis_validation": 0,
+  "conflict_unit_count": 4,
+  "total": 32,
+  "passed": 32,
+  "failed": 0,
+  "strict_ready": true,
+  "checks": [
+    {
+      "name": "evidence schema is recognized",
+      "pass": true,
+      "detail": "canto-span-native-speaker-naturalness-evidence-v1"
+    },
+    {
+      "name": "governance runtime is 0.5.165",
+      "pass": true,
+      "detail": "0.5.165"
+    },
+    {
+      "name": "evidence scope is naturalness only",
+      "pass": true,
+      "detail": "sentence_naturalness_only_not_parser_analysis_validation"
+    },
+    {
+      "name": "raw completed forms are not packaged",
+      "pass": true
+    },
+    {
+      "name": "all seven source records are complete",
+      "pass": true
+    },
+    {
+      "name": "all source records have SHA-256",
+      "pass": true
+    },
+    {
+      "name": "136 judgments ingested",
+      "pass": true,
+      "detail": "rows=136"
+    },
+    {
+      "name": "128 acceptable and 8 rejected",
+      "pass": true,
+      "detail": "acceptable=128;rejected=8"
+    },
+    {
+      "name": "accepted-pattern screening is 124 acceptable / 4 rejected",
+      "pass": true
+    },
+    {
+      "name": "follow-up is 2 acceptable / 1 rejected",
+      "pass": true
+    },
+    {
+      "name": "all three controls were rejected",
+      "pass": true
+    },
+    {
+      "name": "both repeat items are consistent",
+      "pass": true
+    },
+    {
+      "name": "no optional correction was silently invented",
+      "pass": true
+    },
+    {
+      "name": "89 labels have candidate naturalness mappings",
+      "pass": true
+    },
+    {
+      "name": "85 labels have acceptable surfaces",
+      "pass": true
+    },
+    {
+      "name": "nine labels have at least one rejected mapped surface",
+      "pass": true
+    },
+    {
+      "name": "native analysis validation remains zero",
+      "pass": true
+    },
+    {
+      "name": "four accepted screening units are quarantined",
+      "pass": true
+    },
+    {
+      "name": "five conflict-disposition rows recorded including follow-up",
+      "pass": true,
+      "detail": "rows=5"
+    },
+    {
+      "name": "V完咗O conflict is replicated with overt subject",
+      "pass": true
+    },
+    {
+      "name": "basic completion controls remain acceptable",
+      "pass": true
+    },
+    {
+      "name": "preverbal negated completion conflict is explicit",
+      "pass": true
+    },
+    {
+      "name": "approximate quantity fixture is quarantined",
+      "pass": true
+    },
+    {
+      "name": "adapted temporal sentence rejection is not over-attributed",
+      "pass": true
+    },
+    {
+      "name": "native screening did not promote any productive status",
+      "pass": true
+    },
+    {
+      "name": "acceptable surface mapping is not analysis validation",
+      "pass": true
+    },
+    {
+      "name": "rejected mapped surfaces remain review-bearing",
+      "pass": true
+    },
+    {
+      "name": "ApproximateQuantity remains unsupported",
+      "pass": true
+    },
+    {
+      "name": "NegatedVP remains unsupported",
+      "pass": true
+    },
+    {
+      "name": "CompletionVP remains research pending",
+      "pass": true
+    },
+    {
+      "name": "PerfectiveVP remains provisional, not validated",
+      "pass": true
+    },
+    {
+      "name": "source register includes the one-speaker limitation",
+      "pass": true
+    }
+  ],
+  "failures": []
+}

@@ -1,0 +1,59 @@
+{
+  "schema": "canto-span-documentation-evidence-realignment-validation-summary-v1",
+  "checkpoint": "v0.5.183-documentation-realigned-r2",
+  "status": "PASS",
+  "parser_behavior_changed": false,
+  "governance_status_counts": {
+    "supported_productive": 0,
+    "provisional_reaudit": 2,
+    "provisional": 21,
+    "research_pending": 37,
+    "unsupported_generalization": 97,
+    "lexicalized_only": 3,
+    "parser_heuristic": 21
+  },
+  "reaudit_queue": 23,
+  "second_speaker_queue": 23,
+  "immediate_dormant_retirement_candidates": 10,
+  "legacy_runtime_metadata_mismatch": {
+    "count": 2,
+    "patterns": [
+      "PostverbalZoPerfectiveVP",
+      "ResourceUseLaiFunctionRelation"
+    ],
+    "runtime_status": "supported_productive",
+    "governance_status": "provisional_reaudit"
+  },
+  "audits": {
+    "documentation_realign": {
+      "status": "PASS",
+      "total": 36,
+      "passed": 36,
+      "failed": 0
+    },
+    "current_focused": {
+      "status": "PASS",
+      "total": 18,
+      "passed": 18,
+      "failed": 0
+    },
+    "source_accounting": {
+      "status": "PASS",
+      "total": 10,
+      "passed": 10,
+      "failed": 0
+    },
+    "grammar_legitimacy": {
+      "status": "PASS",
+      "total": 376,
+      "passed": 376,
+      "failed": 0
+    }
+  },
+  "runtime_hashes": {
+    "main.js": "e25b6f7142eafce66a172b68d8e409275f127cfe902e93bafaf7147152bfcbe9",
+    "manifest.json": "d7f5a9be248a4efd1839852e8a100a9968273050f0aa5953af2a35c3661801f5",
+    "styles.css": "5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a"
+  },
+  "heldout_state": "SEALED_VERIFIED_UNOPENED_AND_EXCLUDED_FROM_RECOVERY"
+}

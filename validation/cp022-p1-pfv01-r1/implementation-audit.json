@@ -1,0 +1,137 @@
+{
+  "schema": "canto-span-cp022-p1-pfv01-implementation-audit-v1",
+  "checkpoint": "CP022-P1-PFV01-R1",
+  "status": "PASS",
+  "total": 30,
+  "passed": 30,
+  "failed": 0,
+  "heldout_opened": false,
+  "runtime_hashes": {
+    "main.js": "98969fd7cd29ca4c7c9f2ab916ef942764f8b8c729f7d8908c80eb9968f8bf94",
+    "manifest.json": "6dd24fc80b58ae6b7eb7cfab9d7eeac9de97f57ec2deb173c30740c78c297d9c",
+    "styles.css": "5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a"
+  },
+  "checks": [
+    {
+      "name": "runtime exact",
+      "pass": true
+    },
+    {
+      "name": "policy exact",
+      "pass": true
+    },
+    {
+      "name": "global freeze active",
+      "pass": true
+    },
+    {
+      "name": "registry 178 unique",
+      "pass": true
+    },
+    {
+      "name": "subtype active",
+      "pass": true
+    },
+    {
+      "name": "broad perfective active",
+      "pass": true
+    },
+    {
+      "name": "alias preserved",
+      "pass": true
+    },
+    {
+      "name": "scope bounded",
+      "pass": true
+    },
+    {
+      "name": "candidate provisional",
+      "pass": true
+    },
+    {
+      "name": "broad umbrella provisional",
+      "pass": true
+    },
+    {
+      "name": "supported productive zero",
+      "pass": true
+    },
+    {
+      "name": "packet exact",
+      "pass": true
+    },
+    {
+      "name": "packet locked",
+      "pass": true
+    },
+    {
+      "name": "seven hidden commitments",
+      "pass": true
+    },
+    {
+      "name": "custody absent",
+      "pass": true
+    },
+    {
+      "name": "hidden surfaces absent",
+      "pass": true
+    },
+    {
+      "name": "hidden salts absent",
+      "pass": true
+    },
+    {
+      "name": "visible gate pass",
+      "pass": true
+    },
+    {
+      "name": "packet gate pass",
+      "pass": true
+    },
+    {
+      "name": "aggregate pass",
+      "pass": true
+    },
+    {
+      "name": "16 focused exclusions",
+      "pass": true
+    },
+    {
+      "name": "render note 12 rows",
+      "pass": true
+    },
+    {
+      "name": "four source edges recorded",
+      "pass": true
+    },
+    {
+      "name": "source edges split positive versus boundary",
+      "pass": true
+    },
+    {
+      "name": "native conflict higher burden enforced",
+      "pass": true
+    },
+    {
+      "name": "source coverage row present",
+      "pass": true
+    },
+    {
+      "name": "runtime package policy documented",
+      "pass": true
+    },
+    {
+      "name": "manifest version exact",
+      "pass": true
+    },
+    {
+      "name": "styles present",
+      "pass": true
+    },
+    {
+      "name": "main hash recorded",
+      "pass": true
+    }
+  ],
+  "failures": []
+}

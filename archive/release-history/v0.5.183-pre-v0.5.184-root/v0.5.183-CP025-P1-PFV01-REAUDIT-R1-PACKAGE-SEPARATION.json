@@ -1,0 +1,10 @@
+{
+  "schema": "canto-span-package-separation-v1",
+  "checkpoint": "v0.5.183-cp025-p1-pfv01-reaudit-r1",
+  "runtime_policy": "exactly main.js, manifest.json, and styles.css under canto-span/",
+  "recovery_policy": "documentation, research, validation, provenance, tools, and handoff material; no nested ZIPs and no sealed external held-out packet",
+  "speaker_packet_policy": "README plus separate Speaker A and Speaker B forms; no internal design JSON, parser output, source analysis, or answers",
+  "full_suite_policy": "runtime ZIP, recovery ZIP, speaker-review ZIP, and key visible audit documents",
+  "parser_behavior_changed": false,
+  "sealed_demo01_heldout_included": false
+}

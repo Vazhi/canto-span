@@ -1,0 +1,120 @@
+{
+  "schema": "canto-span-acceptance-audit-v1",
+  "checkpoint": "CP022-I1A-I01-A1",
+  "status": "PASS",
+  "total": 27,
+  "passed": 27,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "accepted checkpoint exact",
+      "pass": true
+    },
+    {
+      "name": "accepted runtime exact",
+      "pass": true
+    },
+    {
+      "name": "no active candidate",
+      "pass": true
+    },
+    {
+      "name": "render 10/10",
+      "pass": true
+    },
+    {
+      "name": "heldout 6/6",
+      "pass": true
+    },
+    {
+      "name": "heldout commitments verified",
+      "pass": true
+    },
+    {
+      "name": "heldout consumed",
+      "pass": true
+    },
+    {
+      "name": "no post-freeze code revision",
+      "pass": true
+    },
+    {
+      "name": "current focused 15/15",
+      "pass": true
+    },
+    {
+      "name": "source accounting pass",
+      "pass": true
+    },
+    {
+      "name": "177 active labels",
+      "pass": true
+    },
+    {
+      "name": "156 externally mapped language labels",
+      "pass": true
+    },
+    {
+      "name": "one explicit source gap",
+      "pass": true
+    },
+    {
+      "name": "zero unaccounted labels",
+      "pass": true
+    },
+    {
+      "name": "research retention 466 rows",
+      "pass": true
+    },
+    {
+      "name": "documentation pass",
+      "pass": true
+    },
+    {
+      "name": "supported_productive zero",
+      "pass": true
+    },
+    {
+      "name": "global freeze governed",
+      "pass": true
+    },
+    {
+      "name": "runtime main matches frozen candidate",
+      "pass": true
+    },
+    {
+      "name": "runtime manifest matches frozen candidate",
+      "pass": true
+    },
+    {
+      "name": "runtime styles matches frozen candidate",
+      "pass": true
+    },
+    {
+      "name": "render diagnostic summary hash frozen",
+      "pass": true
+    },
+    {
+      "name": "render full diagnostic hash frozen",
+      "pass": true
+    },
+    {
+      "name": "no hidden surfaces in recovery tree",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "no hidden salts in recovery tree",
+      "pass": true
+    },
+    {
+      "name": "custody archive absent from recovery tree",
+      "pass": true
+    },
+    {
+      "name": "next program CP022-P1",
+      "pass": true
+    }
+  ],
+  "failures": []
+}

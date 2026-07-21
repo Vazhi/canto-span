@@ -1,0 +1,25 @@
+{
+  "schema": "canto-span-checkpoint-v1",
+  "checkpoint": "CP022-I1A-I01-R1-DOC1",
+  "parent_checkpoint": "CP022-I1A-I01-R1-SLIM1",
+  "artifact_kind": "documentation_provenance_packaging",
+  "runtime_candidate": "v0.5.179-cp022-i1a-i01-neutral-clause-span-consolidation-r1",
+  "parser_behavior_changed": false,
+  "runtime_bytes_changed": false,
+  "documentation_consolidated": true,
+  "source_accounting_status": "PASS",
+  "unaccounted_active_labels": 0,
+  "positive_external_mapping": {
+    "mapped": 156,
+    "active_language_or_lexical": 157
+  },
+  "explicit_source_gap_quarantine": [
+    "ScalarRangeFragment"
+  ],
+  "research_files_restored_to_history_archive": 323,
+  "runtime_package_profile": "three_file_runtime_only",
+  "recovery_package_profile": "separate_research_recovery",
+  "heldout_opened": false,
+  "supported_productive": 0,
+  "status": "PASS_I01_RENDER_PENDING_HELDOUT_SEALED"
+}

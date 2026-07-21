@@ -1,0 +1,5344 @@
+{
+  "schema": "canto-span-grammar-legitimacy-audit-result-v1",
+  "runtime_version": "0.5.182",
+  "policy_version": "0.5.182",
+  "freeze_new_grammar_acceptance": true,
+  "total_patterns": 179,
+  "status_counts": {
+    "research_pending": 36,
+    "unsupported_generalization": 97,
+    "parser_heuristic": 20,
+    "provisional": 22,
+    "lexicalized_only": 3,
+    "supported_productive": 1
+  },
+  "claim_type_counts": {
+    "cantonese_language_claim": 156,
+    "parser_representation_decision": 18,
+    "lexicalized_language_claim": 3,
+    "parser_heuristic": 2
+  },
+  "fully_supported_productive_patterns": 1,
+  "patterns_with_pattern_specific_external_sources": 8,
+  "patterns_with_external_corpus_candidate_hits": 54,
+  "total": 1100,
+  "passed": 1098,
+  "failed": 2,
+  "strict_ready": false,
+  "checks": [
+    {
+      "name": "runtime is candidate v0.5.182",
+      "pass": true,
+      "detail": "runtime=0.5.182"
+    },
+    {
+      "name": "legacy automatic grammar-acceptance guard remains active pending authority-origin candidate work",
+      "pass": true
+    },
+    {
+      "name": "policy version is 0.5.182",
+      "pass": true,
+      "detail": "policy=0.5.182"
+    },
+    {
+      "name": "audit schema is recognized",
+      "pass": true,
+      "detail": "canto-span-grammar-legitimacy-audit-v1"
+    },
+    {
+      "name": "audit declares freeze",
+      "pass": true
+    },
+    {
+      "name": "source register exists",
+      "pass": true
+    },
+    {
+      "name": "active registry contains 179 labels including IFR01 subtype",
+      "pass": true,
+      "detail": "runtime labels=179"
+    },
+    {
+      "name": "audit has exactly 179 active rows",
+      "pass": true,
+      "detail": "audit rows=179"
+    },
+    {
+      "name": "audit rows are unique",
+      "pass": true,
+      "detail": "unique=179"
+    },
+    {
+      "name": "audit exactly covers runtime registry",
+      "pass": true
+    },
+    {
+      "name": "embedded runtime map exactly covers registry",
+      "pass": true
+    },
+    {
+      "name": "required fields: ANotAQuestion",
+      "pass": true
+    },
+    {
+      "name": "known status: ANotAQuestion",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known claim type: ANotAQuestion",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ANotAQuestion",
+      "pass": true,
+      "detail": "10"
+    },
+    {
+      "name": "external-source count is nonnegative: ANotAQuestion",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ANotAQuestion",
+      "pass": true,
+      "detail": "research_pending vs research_pending"
+    },
+    {
+      "name": "required fields: AcceptabilityANotA",
+      "pass": true
+    },
+    {
+      "name": "known status: AcceptabilityANotA",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: AcceptabilityANotA",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: AcceptabilityANotA",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: AcceptabilityANotA",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: AcceptabilityANotA",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: AcceptabilityClause",
+      "pass": true
+    },
+    {
+      "name": "known status: AcceptabilityClause",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: AcceptabilityClause",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: AcceptabilityClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: AcceptabilityClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: AcceptabilityClause",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: ActionStativeVP",
+      "pass": true
+    },
+    {
+      "name": "known status: ActionStativeVP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known claim type: ActionStativeVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ActionStativeVP",
+      "pass": true,
+      "detail": "3"
+    },
+    {
+      "name": "external-source count is nonnegative: ActionStativeVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ActionStativeVP",
+      "pass": true,
+      "detail": "research_pending vs research_pending"
+    },
+    {
+      "name": "required fields: AdjectivalPredicateClause",
+      "pass": true
+    },
+    {
+      "name": "known status: AdjectivalPredicateClause",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: AdjectivalPredicateClause",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: AdjectivalPredicateClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: AdjectivalPredicateClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: AdjectivalPredicateClause",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: ApproximateQuantity",
+      "pass": true
+    },
+    {
+      "name": "known status: ApproximateQuantity",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: ApproximateQuantity",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ApproximateQuantity",
+      "pass": true,
+      "detail": "3"
+    },
+    {
+      "name": "external-source count is nonnegative: ApproximateQuantity",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ApproximateQuantity",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: AssociativeNP",
+      "pass": true
+    },
+    {
+      "name": "known status: AssociativeNP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: AssociativeNP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: AssociativeNP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: AssociativeNP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: AssociativeNP",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: BareClassifierNP",
+      "pass": true
+    },
+    {
+      "name": "known status: BareClassifierNP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: BareClassifierNP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: BareClassifierNP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: BareClassifierNP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: BareClassifierNP",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: CausativeResultFrame",
+      "pass": true
+    },
+    {
+      "name": "known status: CausativeResultFrame",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: CausativeResultFrame",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: CausativeResultFrame",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: CausativeResultFrame",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: CausativeResultFrame",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: CausativeResultPredicate",
+      "pass": true
+    },
+    {
+      "name": "known status: CausativeResultPredicate",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: CausativeResultPredicate",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: CausativeResultPredicate",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: CausativeResultPredicate",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: CausativeResultPredicate",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: ChangeIntoPredicate",
+      "pass": true
+    },
+    {
+      "name": "known status: ChangeIntoPredicate",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: ChangeIntoPredicate",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ChangeIntoPredicate",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: ChangeIntoPredicate",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ChangeIntoPredicate",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: ClassifierObjectNP",
+      "pass": true
+    },
+    {
+      "name": "known status: ClassifierObjectNP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: ClassifierObjectNP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ClassifierObjectNP",
+      "pass": true,
+      "detail": "4"
+    },
+    {
+      "name": "external-source count is nonnegative: ClassifierObjectNP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ClassifierObjectNP",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: ClauseRelationEdge",
+      "pass": true
+    },
+    {
+      "name": "known status: ClauseRelationEdge",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known claim type: ClauseRelationEdge",
+      "pass": true,
+      "detail": "parser_representation_decision"
+    },
+    {
+      "name": "fixture count is nonnegative: ClauseRelationEdge",
+      "pass": true,
+      "detail": "27"
+    },
+    {
+      "name": "external-source count is nonnegative: ClauseRelationEdge",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ClauseRelationEdge",
+      "pass": true,
+      "detail": "parser_heuristic vs parser_heuristic"
+    },
+    {
+      "name": "required fields: ClauseRelationGraph",
+      "pass": true
+    },
+    {
+      "name": "known status: ClauseRelationGraph",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known claim type: ClauseRelationGraph",
+      "pass": true,
+      "detail": "parser_representation_decision"
+    },
+    {
+      "name": "fixture count is nonnegative: ClauseRelationGraph",
+      "pass": true,
+      "detail": "47"
+    },
+    {
+      "name": "external-source count is nonnegative: ClauseRelationGraph",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ClauseRelationGraph",
+      "pass": true,
+      "detail": "parser_heuristic vs parser_heuristic"
+    },
+    {
+      "name": "required fields: ClauseRelationMemberSpan",
+      "pass": true
+    },
+    {
+      "name": "known status: ClauseRelationMemberSpan",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known claim type: ClauseRelationMemberSpan",
+      "pass": true,
+      "detail": "parser_representation_decision"
+    },
+    {
+      "name": "fixture count is nonnegative: ClauseRelationMemberSpan",
+      "pass": true,
+      "detail": "30"
+    },
+    {
+      "name": "external-source count is nonnegative: ClauseRelationMemberSpan",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ClauseRelationMemberSpan",
+      "pass": true,
+      "detail": "parser_heuristic vs parser_heuristic"
+    },
+    {
+      "name": "required fields: ClauseSpan",
+      "pass": true
+    },
+    {
+      "name": "known status: ClauseSpan",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known claim type: ClauseSpan",
+      "pass": true,
+      "detail": "parser_representation_decision"
+    },
+    {
+      "name": "fixture count is nonnegative: ClauseSpan",
+      "pass": true,
+      "detail": "118"
+    },
+    {
+      "name": "external-source count is nonnegative: ClauseSpan",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ClauseSpan",
+      "pass": true,
+      "detail": "parser_heuristic vs parser_heuristic"
+    },
+    {
+      "name": "required fields: CognitionContentFrame",
+      "pass": true
+    },
+    {
+      "name": "known status: CognitionContentFrame",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known claim type: CognitionContentFrame",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: CognitionContentFrame",
+      "pass": true,
+      "detail": "4"
+    },
+    {
+      "name": "external-source count is nonnegative: CognitionContentFrame",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: CognitionContentFrame",
+      "pass": true,
+      "detail": "research_pending vs research_pending"
+    },
+    {
+      "name": "required fields: CognitionDelimitedObjectVP",
+      "pass": true
+    },
+    {
+      "name": "known status: CognitionDelimitedObjectVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: CognitionDelimitedObjectVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: CognitionDelimitedObjectVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: CognitionDelimitedObjectVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: CognitionDelimitedObjectVP",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: CognitionDelimitedVP",
+      "pass": true
+    },
+    {
+      "name": "known status: CognitionDelimitedVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: CognitionDelimitedVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: CognitionDelimitedVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: CognitionDelimitedVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: CognitionDelimitedVP",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: CognitionStatementClause",
+      "pass": true
+    },
+    {
+      "name": "known status: CognitionStatementClause",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: CognitionStatementClause",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: CognitionStatementClause",
+      "pass": true,
+      "detail": "8"
+    },
+    {
+      "name": "external-source count is nonnegative: CognitionStatementClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: CognitionStatementClause",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: Comment",
+      "pass": true
+    },
+    {
+      "name": "known status: Comment",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known claim type: Comment",
+      "pass": true,
+      "detail": "parser_representation_decision"
+    },
+    {
+      "name": "fixture count is nonnegative: Comment",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: Comment",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: Comment",
+      "pass": true,
+      "detail": "parser_heuristic vs parser_heuristic"
+    },
+    {
+      "name": "required fields: ComparativeStative",
+      "pass": true
+    },
+    {
+      "name": "known status: ComparativeStative",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: ComparativeStative",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ComparativeStative",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: ComparativeStative",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ComparativeStative",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: ComplementEllipsisFragment",
+      "pass": true
+    },
+    {
+      "name": "known status: ComplementEllipsisFragment",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known claim type: ComplementEllipsisFragment",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ComplementEllipsisFragment",
+      "pass": true,
+      "detail": "5"
+    },
+    {
+      "name": "external-source count is nonnegative: ComplementEllipsisFragment",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ComplementEllipsisFragment",
+      "pass": true,
+      "detail": "research_pending vs research_pending"
+    },
+    {
+      "name": "required fields: CompletionQuestion",
+      "pass": true
+    },
+    {
+      "name": "known status: CompletionQuestion",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known claim type: CompletionQuestion",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: CompletionQuestion",
+      "pass": true,
+      "detail": "8"
+    },
+    {
+      "name": "external-source count is nonnegative: CompletionQuestion",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: CompletionQuestion",
+      "pass": true,
+      "detail": "research_pending vs research_pending"
+    },
+    {
+      "name": "required fields: CompletionThenClause",
+      "pass": true
+    },
+    {
+      "name": "known status: CompletionThenClause",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: CompletionThenClause",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: CompletionThenClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: CompletionThenClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: CompletionThenClause",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: CompletionVP",
+      "pass": true
+    },
+    {
+      "name": "known status: CompletionVP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known claim type: CompletionVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: CompletionVP",
+      "pass": true,
+      "detail": "7"
+    },
+    {
+      "name": "external-source count is nonnegative: CompletionVP",
+      "pass": true,
+      "detail": "4"
+    },
+    {
+      "name": "runtime and file status align: CompletionVP",
+      "pass": true,
+      "detail": "research_pending vs research_pending"
+    },
+    {
+      "name": "required fields: CompoundDirectionalMotionVP",
+      "pass": true
+    },
+    {
+      "name": "known status: CompoundDirectionalMotionVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: CompoundDirectionalMotionVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: CompoundDirectionalMotionVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: CompoundDirectionalMotionVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: CompoundDirectionalMotionVP",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: ConditionResult",
+      "pass": true
+    },
+    {
+      "name": "known status: ConditionResult",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: ConditionResult",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ConditionResult",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: ConditionResult",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ConditionResult",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: ConditionalClause",
+      "pass": true
+    },
+    {
+      "name": "known status: ConditionalClause",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: ConditionalClause",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ConditionalClause",
+      "pass": true,
+      "detail": "4"
+    },
+    {
+      "name": "external-source count is nonnegative: ConditionalClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ConditionalClause",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: CoordinatedNP",
+      "pass": true
+    },
+    {
+      "name": "known status: CoordinatedNP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: CoordinatedNP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: CoordinatedNP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: CoordinatedNP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: CoordinatedNP",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: CopularANotAQuestion",
+      "pass": true
+    },
+    {
+      "name": "known status: CopularANotAQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: CopularANotAQuestion",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: CopularANotAQuestion",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: CopularANotAQuestion",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: CopularANotAQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: CopularIdentificationFrame",
+      "pass": true
+    },
+    {
+      "name": "known status: CopularIdentificationFrame",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known claim type: CopularIdentificationFrame",
+      "pass": true,
+      "detail": "parser_representation_decision"
+    },
+    {
+      "name": "fixture count is nonnegative: CopularIdentificationFrame",
+      "pass": true,
+      "detail": "2"
+    },
+    {
+      "name": "external-source count is nonnegative: CopularIdentificationFrame",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: CopularIdentificationFrame",
+      "pass": true,
+      "detail": "parser_heuristic vs parser_heuristic"
+    },
+    {
+      "name": "required fields: CopularRelationFrame",
+      "pass": true
+    },
+    {
+      "name": "known status: CopularRelationFrame",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known claim type: CopularRelationFrame",
+      "pass": true,
+      "detail": "parser_representation_decision"
+    },
+    {
+      "name": "fixture count is nonnegative: CopularRelationFrame",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "external-source count is nonnegative: CopularRelationFrame",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: CopularRelationFrame",
+      "pass": true,
+      "detail": "parser_heuristic vs parser_heuristic"
+    },
+    {
+      "name": "required fields: CoverbFrame",
+      "pass": true
+    },
+    {
+      "name": "known status: CoverbFrame",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known claim type: CoverbFrame",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: CoverbFrame",
+      "pass": true,
+      "detail": "5"
+    },
+    {
+      "name": "external-source count is nonnegative: CoverbFrame",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: CoverbFrame",
+      "pass": true,
+      "detail": "research_pending vs research_pending"
+    },
+    {
+      "name": "required fields: DefinitionComplement",
+      "pass": true
+    },
+    {
+      "name": "known status: DefinitionComplement",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known claim type: DefinitionComplement",
+      "pass": true,
+      "detail": "parser_representation_decision"
+    },
+    {
+      "name": "fixture count is nonnegative: DefinitionComplement",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: DefinitionComplement",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: DefinitionComplement",
+      "pass": true,
+      "detail": "parser_heuristic vs parser_heuristic"
+    },
+    {
+      "name": "required fields: DefinitionExplanatoryFrame",
+      "pass": true
+    },
+    {
+      "name": "known status: DefinitionExplanatoryFrame",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known claim type: DefinitionExplanatoryFrame",
+      "pass": true,
+      "detail": "parser_representation_decision"
+    },
+    {
+      "name": "fixture count is nonnegative: DefinitionExplanatoryFrame",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: DefinitionExplanatoryFrame",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: DefinitionExplanatoryFrame",
+      "pass": true,
+      "detail": "parser_heuristic vs parser_heuristic"
+    },
+    {
+      "name": "required fields: DegreeMannerAdverbial",
+      "pass": true
+    },
+    {
+      "name": "known status: DegreeMannerAdverbial",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known claim type: DegreeMannerAdverbial",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: DegreeMannerAdverbial",
+      "pass": true,
+      "detail": "3"
+    },
+    {
+      "name": "external-source count is nonnegative: DegreeMannerAdverbial",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: DegreeMannerAdverbial",
+      "pass": true,
+      "detail": "research_pending vs research_pending"
+    },
+    {
+      "name": "required fields: DegreeMannerModifiedVP",
+      "pass": true
+    },
+    {
+      "name": "known status: DegreeMannerModifiedVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: DegreeMannerModifiedVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: DegreeMannerModifiedVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: DegreeMannerModifiedVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: DegreeMannerModifiedVP",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: DegreeModifiedLexicalStative",
+      "pass": true
+    },
+    {
+      "name": "known status: DegreeModifiedLexicalStative",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: DegreeModifiedLexicalStative",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: DegreeModifiedLexicalStative",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: DegreeModifiedLexicalStative",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: DegreeModifiedLexicalStative",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: DegreeStativePredicate",
+      "pass": true
+    },
+    {
+      "name": "known status: DegreeStativePredicate",
+      "pass": true,
+      "detail": "provisional"
+    },
+    {
+      "name": "known claim type: DegreeStativePredicate",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: DegreeStativePredicate",
+      "pass": true,
+      "detail": "21"
+    },
+    {
+      "name": "external-source count is nonnegative: DegreeStativePredicate",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: DegreeStativePredicate",
+      "pass": true,
+      "detail": "provisional vs provisional"
+    },
+    {
+      "name": "required fields: DelimitedVP",
+      "pass": true
+    },
+    {
+      "name": "known status: DelimitedVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: DelimitedVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: DelimitedVP",
+      "pass": true,
+      "detail": "7"
+    },
+    {
+      "name": "external-source count is nonnegative: DelimitedVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: DelimitedVP",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: DemonstrativeClassifierNP",
+      "pass": true
+    },
+    {
+      "name": "known status: DemonstrativeClassifierNP",
+      "pass": true,
+      "detail": "provisional"
+    },
+    {
+      "name": "known claim type: DemonstrativeClassifierNP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: DemonstrativeClassifierNP",
+      "pass": true,
+      "detail": "30"
+    },
+    {
+      "name": "external-source count is nonnegative: DemonstrativeClassifierNP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: DemonstrativeClassifierNP",
+      "pass": true,
+      "detail": "provisional vs provisional"
+    },
+    {
+      "name": "required fields: DemonstrativeHeadNP",
+      "pass": true
+    },
+    {
+      "name": "known status: DemonstrativeHeadNP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: DemonstrativeHeadNP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: DemonstrativeHeadNP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: DemonstrativeHeadNP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: DemonstrativeHeadNP",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: DemonstrativeQuantifiedClassifierNP",
+      "pass": true
+    },
+    {
+      "name": "known status: DemonstrativeQuantifiedClassifierNP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: DemonstrativeQuantifiedClassifierNP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: DemonstrativeQuantifiedClassifierNP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: DemonstrativeQuantifiedClassifierNP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: DemonstrativeQuantifiedClassifierNP",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: DesiderativeVP",
+      "pass": true
+    },
+    {
+      "name": "known status: DesiderativeVP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known claim type: DesiderativeVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: DesiderativeVP",
+      "pass": true,
+      "detail": "12"
+    },
+    {
+      "name": "external-source count is nonnegative: DesiderativeVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: DesiderativeVP",
+      "pass": true,
+      "detail": "research_pending vs research_pending"
+    },
+    {
+      "name": "required fields: DiMarkedNP",
+      "pass": true
+    },
+    {
+      "name": "known status: DiMarkedNP",
+      "pass": true,
+      "detail": "provisional"
+    },
+    {
+      "name": "known claim type: DiMarkedNP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: DiMarkedNP",
+      "pass": true,
+      "detail": "5"
+    },
+    {
+      "name": "external-source count is nonnegative: DiMarkedNP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: DiMarkedNP",
+      "pass": true,
+      "detail": "provisional vs provisional"
+    },
+    {
+      "name": "required fields: DirectedMannerMotionVP",
+      "pass": true
+    },
+    {
+      "name": "known status: DirectedMannerMotionVP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known claim type: DirectedMannerMotionVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: DirectedMannerMotionVP",
+      "pass": true,
+      "detail": "6"
+    },
+    {
+      "name": "external-source count is nonnegative: DirectedMannerMotionVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: DirectedMannerMotionVP",
+      "pass": true,
+      "detail": "research_pending vs research_pending"
+    },
+    {
+      "name": "required fields: DirectionalCausedMotionVP",
+      "pass": true
+    },
+    {
+      "name": "known status: DirectionalCausedMotionVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: DirectionalCausedMotionVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: DirectionalCausedMotionVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: DirectionalCausedMotionVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: DirectionalCausedMotionVP",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: DirectionalMotionVP",
+      "pass": true
+    },
+    {
+      "name": "known status: DirectionalMotionVP",
+      "pass": true,
+      "detail": "provisional"
+    },
+    {
+      "name": "known claim type: DirectionalMotionVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: DirectionalMotionVP",
+      "pass": true,
+      "detail": "72"
+    },
+    {
+      "name": "external-source count is nonnegative: DirectionalMotionVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: DirectionalMotionVP",
+      "pass": true,
+      "detail": "provisional vs provisional"
+    },
+    {
+      "name": "required fields: DiscourseParticleFrame",
+      "pass": true
+    },
+    {
+      "name": "known status: DiscourseParticleFrame",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known claim type: DiscourseParticleFrame",
+      "pass": true,
+      "detail": "parser_representation_decision"
+    },
+    {
+      "name": "fixture count is nonnegative: DiscourseParticleFrame",
+      "pass": true,
+      "detail": "20"
+    },
+    {
+      "name": "external-source count is nonnegative: DiscourseParticleFrame",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: DiscourseParticleFrame",
+      "pass": true,
+      "detail": "parser_heuristic vs parser_heuristic"
+    },
+    {
+      "name": "required fields: DisposalChangeIntoResultFrame",
+      "pass": true
+    },
+    {
+      "name": "known status: DisposalChangeIntoResultFrame",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: DisposalChangeIntoResultFrame",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: DisposalChangeIntoResultFrame",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: DisposalChangeIntoResultFrame",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: DisposalChangeIntoResultFrame",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: DitransitiveSpeechVP",
+      "pass": true
+    },
+    {
+      "name": "known status: DitransitiveSpeechVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: DitransitiveSpeechVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: DitransitiveSpeechVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: DitransitiveSpeechVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: DitransitiveSpeechVP",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: DurativeVP",
+      "pass": true
+    },
+    {
+      "name": "known status: DurativeVP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known claim type: DurativeVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: DurativeVP",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "external-source count is nonnegative: DurativeVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: DurativeVP",
+      "pass": true,
+      "detail": "research_pending vs research_pending"
+    },
+    {
+      "name": "required fields: EvaluationWithDouSyun",
+      "pass": true
+    },
+    {
+      "name": "known status: EvaluationWithDouSyun",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: EvaluationWithDouSyun",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: EvaluationWithDouSyun",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: EvaluationWithDouSyun",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: EvaluationWithDouSyun",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: ExistentialClause",
+      "pass": true
+    },
+    {
+      "name": "known status: ExistentialClause",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known claim type: ExistentialClause",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ExistentialClause",
+      "pass": true,
+      "detail": "4"
+    },
+    {
+      "name": "external-source count is nonnegative: ExistentialClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ExistentialClause",
+      "pass": true,
+      "detail": "research_pending vs research_pending"
+    },
+    {
+      "name": "required fields: ExistentialPresentationalClause",
+      "pass": true
+    },
+    {
+      "name": "known status: ExistentialPresentationalClause",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known claim type: ExistentialPresentationalClause",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ExistentialPresentationalClause",
+      "pass": true,
+      "detail": "4"
+    },
+    {
+      "name": "external-source count is nonnegative: ExistentialPresentationalClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ExistentialPresentationalClause",
+      "pass": true,
+      "detail": "research_pending vs research_pending"
+    },
+    {
+      "name": "required fields: ExistentialQuestion",
+      "pass": true
+    },
+    {
+      "name": "known status: ExistentialQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: ExistentialQuestion",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ExistentialQuestion",
+      "pass": true,
+      "detail": "5"
+    },
+    {
+      "name": "external-source count is nonnegative: ExistentialQuestion",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ExistentialQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: ExistentialWhQuestion",
+      "pass": true
+    },
+    {
+      "name": "known status: ExistentialWhQuestion",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known claim type: ExistentialWhQuestion",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ExistentialWhQuestion",
+      "pass": true,
+      "detail": "5"
+    },
+    {
+      "name": "external-source count is nonnegative: ExistentialWhQuestion",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ExistentialWhQuestion",
+      "pass": true,
+      "detail": "research_pending vs research_pending"
+    },
+    {
+      "name": "required fields: ExperientialClause",
+      "pass": true
+    },
+    {
+      "name": "known status: ExperientialClause",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: ExperientialClause",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ExperientialClause",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "external-source count is nonnegative: ExperientialClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ExperientialClause",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: ExperientialMotionGoalVP",
+      "pass": true
+    },
+    {
+      "name": "known status: ExperientialMotionGoalVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: ExperientialMotionGoalVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ExperientialMotionGoalVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: ExperientialMotionGoalVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ExperientialMotionGoalVP",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: ExperientialQuestion",
+      "pass": true
+    },
+    {
+      "name": "known status: ExperientialQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: ExperientialQuestion",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ExperientialQuestion",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: ExperientialQuestion",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ExperientialQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: ExperientialVP",
+      "pass": true
+    },
+    {
+      "name": "known status: ExperientialVP",
+      "pass": true,
+      "detail": "provisional"
+    },
+    {
+      "name": "known claim type: ExperientialVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ExperientialVP",
+      "pass": true,
+      "detail": "3"
+    },
+    {
+      "name": "external-source count is nonnegative: ExperientialVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ExperientialVP",
+      "pass": true,
+      "detail": "provisional vs provisional"
+    },
+    {
+      "name": "required fields: ExperientialYesNoQuestion",
+      "pass": true
+    },
+    {
+      "name": "known status: ExperientialYesNoQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: ExperientialYesNoQuestion",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ExperientialYesNoQuestion",
+      "pass": true,
+      "detail": "2"
+    },
+    {
+      "name": "external-source count is nonnegative: ExperientialYesNoQuestion",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ExperientialYesNoQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: FocusParticleFrame",
+      "pass": true
+    },
+    {
+      "name": "known status: FocusParticleFrame",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known claim type: FocusParticleFrame",
+      "pass": true,
+      "detail": "parser_representation_decision"
+    },
+    {
+      "name": "fixture count is nonnegative: FocusParticleFrame",
+      "pass": true,
+      "detail": "8"
+    },
+    {
+      "name": "external-source count is nonnegative: FocusParticleFrame",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: FocusParticleFrame",
+      "pass": true,
+      "detail": "parser_heuristic vs parser_heuristic"
+    },
+    {
+      "name": "required fields: FormulaDiscourseUnit",
+      "pass": true
+    },
+    {
+      "name": "known status: FormulaDiscourseUnit",
+      "pass": true,
+      "detail": "lexicalized_only"
+    },
+    {
+      "name": "known claim type: FormulaDiscourseUnit",
+      "pass": true,
+      "detail": "lexicalized_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: FormulaDiscourseUnit",
+      "pass": true,
+      "detail": "31"
+    },
+    {
+      "name": "external-source count is nonnegative: FormulaDiscourseUnit",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: FormulaDiscourseUnit",
+      "pass": true,
+      "detail": "lexicalized_only vs lexicalized_only"
+    },
+    {
+      "name": "required fields: FragmentAnswer",
+      "pass": true
+    },
+    {
+      "name": "known status: FragmentAnswer",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known claim type: FragmentAnswer",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: FragmentAnswer",
+      "pass": true,
+      "detail": "8"
+    },
+    {
+      "name": "external-source count is nonnegative: FragmentAnswer",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: FragmentAnswer",
+      "pass": true,
+      "detail": "research_pending vs research_pending"
+    },
+    {
+      "name": "required fields: FragmentQuestion",
+      "pass": true
+    },
+    {
+      "name": "known status: FragmentQuestion",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known claim type: FragmentQuestion",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: FragmentQuestion",
+      "pass": true,
+      "detail": "2"
+    },
+    {
+      "name": "external-source count is nonnegative: FragmentQuestion",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: FragmentQuestion",
+      "pass": true,
+      "detail": "research_pending vs research_pending"
+    },
+    {
+      "name": "required fields: GoalAttainmentMotionVP",
+      "pass": true
+    },
+    {
+      "name": "known status: GoalAttainmentMotionVP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known claim type: GoalAttainmentMotionVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: GoalAttainmentMotionVP",
+      "pass": true,
+      "detail": "2"
+    },
+    {
+      "name": "external-source count is nonnegative: GoalAttainmentMotionVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: GoalAttainmentMotionVP",
+      "pass": true,
+      "detail": "research_pending vs research_pending"
+    },
+    {
+      "name": "required fields: IdentificationFragment",
+      "pass": true
+    },
+    {
+      "name": "known status: IdentificationFragment",
+      "pass": true,
+      "detail": "lexicalized_only"
+    },
+    {
+      "name": "known claim type: IdentificationFragment",
+      "pass": true,
+      "detail": "lexicalized_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: IdentificationFragment",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: IdentificationFragment",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: IdentificationFragment",
+      "pass": true,
+      "detail": "lexicalized_only vs lexicalized_only"
+    },
+    {
+      "name": "required fields: IdentityWhQuestion",
+      "pass": true
+    },
+    {
+      "name": "known status: IdentityWhQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: IdentityWhQuestion",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: IdentityWhQuestion",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: IdentityWhQuestion",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: IdentityWhQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: ImpersonalEnvironmentalClause",
+      "pass": true
+    },
+    {
+      "name": "known status: ImpersonalEnvironmentalClause",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known claim type: ImpersonalEnvironmentalClause",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ImpersonalEnvironmentalClause",
+      "pass": true,
+      "detail": "15"
+    },
+    {
+      "name": "external-source count is nonnegative: ImpersonalEnvironmentalClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ImpersonalEnvironmentalClause",
+      "pass": true,
+      "detail": "research_pending vs research_pending"
+    },
+    {
+      "name": "required fields: IntendedFunctionRelation",
+      "pass": true
+    },
+    {
+      "name": "known status: IntendedFunctionRelation",
+      "pass": true,
+      "detail": "provisional"
+    },
+    {
+      "name": "known claim type: IntendedFunctionRelation",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: IntendedFunctionRelation",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: IntendedFunctionRelation",
+      "pass": true,
+      "detail": "3"
+    },
+    {
+      "name": "runtime and file status align: IntendedFunctionRelation",
+      "pass": true,
+      "detail": "provisional vs provisional"
+    },
+    {
+      "name": "required fields: IntentionFrame",
+      "pass": true
+    },
+    {
+      "name": "known status: IntentionFrame",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: IntentionFrame",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: IntentionFrame",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: IntentionFrame",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: IntentionFrame",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: IntransitiveVP",
+      "pass": true
+    },
+    {
+      "name": "known status: IntransitiveVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: IntransitiveVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: IntransitiveVP",
+      "pass": true,
+      "detail": "4"
+    },
+    {
+      "name": "external-source count is nonnegative: IntransitiveVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: IntransitiveVP",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: LexicalGiveRelation",
+      "pass": true
+    },
+    {
+      "name": "known status: LexicalGiveRelation",
+      "pass": true,
+      "detail": "provisional"
+    },
+    {
+      "name": "known claim type: LexicalGiveRelation",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: LexicalGiveRelation",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: LexicalGiveRelation",
+      "pass": true,
+      "detail": "4"
+    },
+    {
+      "name": "runtime and file status align: LexicalGiveRelation",
+      "pass": true,
+      "detail": "provisional vs provisional"
+    },
+    {
+      "name": "required fields: LocativeExistentialClause",
+      "pass": true
+    },
+    {
+      "name": "known status: LocativeExistentialClause",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known claim type: LocativeExistentialClause",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: LocativeExistentialClause",
+      "pass": true,
+      "detail": "6"
+    },
+    {
+      "name": "external-source count is nonnegative: LocativeExistentialClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: LocativeExistentialClause",
+      "pass": true,
+      "detail": "research_pending vs research_pending"
+    },
+    {
+      "name": "required fields: LocativeFragment",
+      "pass": true
+    },
+    {
+      "name": "known status: LocativeFragment",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: LocativeFragment",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: LocativeFragment",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: LocativeFragment",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: LocativeFragment",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: LocativeFrameClause",
+      "pass": true
+    },
+    {
+      "name": "known status: LocativeFrameClause",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known claim type: LocativeFrameClause",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: LocativeFrameClause",
+      "pass": true,
+      "detail": "4"
+    },
+    {
+      "name": "external-source count is nonnegative: LocativeFrameClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: LocativeFrameClause",
+      "pass": true,
+      "detail": "research_pending vs research_pending"
+    },
+    {
+      "name": "required fields: LocativePlacePhrase",
+      "pass": true
+    },
+    {
+      "name": "known status: LocativePlacePhrase",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: LocativePlacePhrase",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: LocativePlacePhrase",
+      "pass": true,
+      "detail": "14"
+    },
+    {
+      "name": "external-source count is nonnegative: LocativePlacePhrase",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: LocativePlacePhrase",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: LocativePostureVP",
+      "pass": true
+    },
+    {
+      "name": "known status: LocativePostureVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: LocativePostureVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: LocativePostureVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: LocativePostureVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: LocativePostureVP",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: LocativeWhQuestion",
+      "pass": true
+    },
+    {
+      "name": "known status: LocativeWhQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: LocativeWhQuestion",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: LocativeWhQuestion",
+      "pass": true,
+      "detail": "5"
+    },
+    {
+      "name": "external-source count is nonnegative: LocativeWhQuestion",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: LocativeWhQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: MalformedCandidate",
+      "pass": true
+    },
+    {
+      "name": "known status: MalformedCandidate",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known claim type: MalformedCandidate",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "fixture count is nonnegative: MalformedCandidate",
+      "pass": true,
+      "detail": "15"
+    },
+    {
+      "name": "external-source count is nonnegative: MalformedCandidate",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: MalformedCandidate",
+      "pass": true,
+      "detail": "parser_heuristic vs parser_heuristic"
+    },
+    {
+      "name": "required fields: MannerAdverbialVP",
+      "pass": true
+    },
+    {
+      "name": "known status: MannerAdverbialVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: MannerAdverbialVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: MannerAdverbialVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: MannerAdverbialVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: MannerAdverbialVP",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: MeasureExpression",
+      "pass": true
+    },
+    {
+      "name": "known status: MeasureExpression",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known claim type: MeasureExpression",
+      "pass": true,
+      "detail": "parser_representation_decision"
+    },
+    {
+      "name": "fixture count is nonnegative: MeasureExpression",
+      "pass": true,
+      "detail": "12"
+    },
+    {
+      "name": "external-source count is nonnegative: MeasureExpression",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: MeasureExpression",
+      "pass": true,
+      "detail": "parser_heuristic vs parser_heuristic"
+    },
+    {
+      "name": "required fields: ModalANotAQuestion",
+      "pass": true
+    },
+    {
+      "name": "known status: ModalANotAQuestion",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known claim type: ModalANotAQuestion",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ModalANotAQuestion",
+      "pass": true,
+      "detail": "2"
+    },
+    {
+      "name": "external-source count is nonnegative: ModalANotAQuestion",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ModalANotAQuestion",
+      "pass": true,
+      "detail": "research_pending vs research_pending"
+    },
+    {
+      "name": "required fields: ModalChangeIntoResultFrame",
+      "pass": true
+    },
+    {
+      "name": "known status: ModalChangeIntoResultFrame",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: ModalChangeIntoResultFrame",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ModalChangeIntoResultFrame",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: ModalChangeIntoResultFrame",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ModalChangeIntoResultFrame",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: ModalResponseFragment",
+      "pass": true
+    },
+    {
+      "name": "known status: ModalResponseFragment",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: ModalResponseFragment",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ModalResponseFragment",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: ModalResponseFragment",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ModalResponseFragment",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: ModalVP",
+      "pass": true
+    },
+    {
+      "name": "known status: ModalVP",
+      "pass": true,
+      "detail": "provisional"
+    },
+    {
+      "name": "known claim type: ModalVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ModalVP",
+      "pass": true,
+      "detail": "15"
+    },
+    {
+      "name": "external-source count is nonnegative: ModalVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ModalVP",
+      "pass": true,
+      "detail": "provisional vs provisional"
+    },
+    {
+      "name": "required fields: ModifiedNP",
+      "pass": true
+    },
+    {
+      "name": "known status: ModifiedNP",
+      "pass": true,
+      "detail": "provisional"
+    },
+    {
+      "name": "known claim type: ModifiedNP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ModifiedNP",
+      "pass": true,
+      "detail": "37"
+    },
+    {
+      "name": "external-source count is nonnegative: ModifiedNP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ModifiedNP",
+      "pass": true,
+      "detail": "provisional vs provisional"
+    },
+    {
+      "name": "required fields: ModifierNP",
+      "pass": true
+    },
+    {
+      "name": "known status: ModifierNP",
+      "pass": true,
+      "detail": "provisional"
+    },
+    {
+      "name": "known claim type: ModifierNP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ModifierNP",
+      "pass": true,
+      "detail": "2"
+    },
+    {
+      "name": "external-source count is nonnegative: ModifierNP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ModifierNP",
+      "pass": true,
+      "detail": "provisional vs provisional"
+    },
+    {
+      "name": "required fields: MotionDelimitedVP",
+      "pass": true
+    },
+    {
+      "name": "known status: MotionDelimitedVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: MotionDelimitedVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: MotionDelimitedVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: MotionDelimitedVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: MotionDelimitedVP",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: MotionGoalVP",
+      "pass": true
+    },
+    {
+      "name": "known status: MotionGoalVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: MotionGoalVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: MotionGoalVP",
+      "pass": true,
+      "detail": "40"
+    },
+    {
+      "name": "external-source count is nonnegative: MotionGoalVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: MotionGoalVP",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: MotionPurposeChain",
+      "pass": true
+    },
+    {
+      "name": "known status: MotionPurposeChain",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: MotionPurposeChain",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: MotionPurposeChain",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "external-source count is nonnegative: MotionPurposeChain",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: MotionPurposeChain",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: NamingClause",
+      "pass": true
+    },
+    {
+      "name": "known status: NamingClause",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: NamingClause",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: NamingClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: NamingClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: NamingClause",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: NeedsContext",
+      "pass": true
+    },
+    {
+      "name": "known status: NeedsContext",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known claim type: NeedsContext",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "fixture count is nonnegative: NeedsContext",
+      "pass": true,
+      "detail": "74"
+    },
+    {
+      "name": "external-source count is nonnegative: NeedsContext",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: NeedsContext",
+      "pass": true,
+      "detail": "parser_heuristic vs parser_heuristic"
+    },
+    {
+      "name": "required fields: NegatedDirectionalMotionVP",
+      "pass": true
+    },
+    {
+      "name": "known status: NegatedDirectionalMotionVP",
+      "pass": true,
+      "detail": "provisional"
+    },
+    {
+      "name": "known claim type: NegatedDirectionalMotionVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: NegatedDirectionalMotionVP",
+      "pass": true,
+      "detail": "10"
+    },
+    {
+      "name": "external-source count is nonnegative: NegatedDirectionalMotionVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: NegatedDirectionalMotionVP",
+      "pass": true,
+      "detail": "provisional vs provisional"
+    },
+    {
+      "name": "required fields: NegatedExistentialClause",
+      "pass": true
+    },
+    {
+      "name": "known status: NegatedExistentialClause",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: NegatedExistentialClause",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: NegatedExistentialClause",
+      "pass": true,
+      "detail": "2"
+    },
+    {
+      "name": "external-source count is nonnegative: NegatedExistentialClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: NegatedExistentialClause",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: NegatedExistentialFragment",
+      "pass": true
+    },
+    {
+      "name": "known status: NegatedExistentialFragment",
+      "pass": true,
+      "detail": "provisional"
+    },
+    {
+      "name": "known claim type: NegatedExistentialFragment",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: NegatedExistentialFragment",
+      "pass": true,
+      "detail": "11"
+    },
+    {
+      "name": "external-source count is nonnegative: NegatedExistentialFragment",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: NegatedExistentialFragment",
+      "pass": true,
+      "detail": "provisional vs provisional"
+    },
+    {
+      "name": "required fields: NegatedLexicalizedStative",
+      "pass": true
+    },
+    {
+      "name": "known status: NegatedLexicalizedStative",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: NegatedLexicalizedStative",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: NegatedLexicalizedStative",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: NegatedLexicalizedStative",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: NegatedLexicalizedStative",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: NegatedStativePredicate",
+      "pass": true
+    },
+    {
+      "name": "known status: NegatedStativePredicate",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: NegatedStativePredicate",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: NegatedStativePredicate",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: NegatedStativePredicate",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: NegatedStativePredicate",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: NegatedVP",
+      "pass": true
+    },
+    {
+      "name": "known status: NegatedVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: NegatedVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: NegatedVP",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "external-source count is nonnegative: NegatedVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: NegatedVP",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: NegativeCognitionFragment",
+      "pass": true
+    },
+    {
+      "name": "known status: NegativeCognitionFragment",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known claim type: NegativeCognitionFragment",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: NegativeCognitionFragment",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "external-source count is nonnegative: NegativeCognitionFragment",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: NegativeCognitionFragment",
+      "pass": true,
+      "detail": "research_pending vs research_pending"
+    },
+    {
+      "name": "required fields: NegativeExperiential",
+      "pass": true
+    },
+    {
+      "name": "known status: NegativeExperiential",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: NegativeExperiential",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: NegativeExperiential",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: NegativeExperiential",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: NegativeExperiential",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: NegativeHaveClause",
+      "pass": true
+    },
+    {
+      "name": "known status: NegativeHaveClause",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: NegativeHaveClause",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: NegativeHaveClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: NegativeHaveClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: NegativeHaveClause",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: NegativePotentialComplement",
+      "pass": true
+    },
+    {
+      "name": "known status: NegativePotentialComplement",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: NegativePotentialComplement",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: NegativePotentialComplement",
+      "pass": true,
+      "detail": "5"
+    },
+    {
+      "name": "external-source count is nonnegative: NegativePotentialComplement",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: NegativePotentialComplement",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: NegativePotentialDirectionalVP",
+      "pass": true
+    },
+    {
+      "name": "known status: NegativePotentialDirectionalVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: NegativePotentialDirectionalVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: NegativePotentialDirectionalVP",
+      "pass": true,
+      "detail": "2"
+    },
+    {
+      "name": "external-source count is nonnegative: NegativePotentialDirectionalVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: NegativePotentialDirectionalVP",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: NominalHeadSpan",
+      "pass": true
+    },
+    {
+      "name": "known status: NominalHeadSpan",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known claim type: NominalHeadSpan",
+      "pass": true,
+      "detail": "parser_representation_decision"
+    },
+    {
+      "name": "fixture count is nonnegative: NominalHeadSpan",
+      "pass": true,
+      "detail": "27"
+    },
+    {
+      "name": "external-source count is nonnegative: NominalHeadSpan",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: NominalHeadSpan",
+      "pass": true,
+      "detail": "parser_heuristic vs parser_heuristic"
+    },
+    {
+      "name": "required fields: NominalModifierNP",
+      "pass": true
+    },
+    {
+      "name": "known status: NominalModifierNP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: NominalModifierNP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: NominalModifierNP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: NominalModifierNP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: NominalModifierNP",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: NominalPredicateClause",
+      "pass": true
+    },
+    {
+      "name": "known status: NominalPredicateClause",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known claim type: NominalPredicateClause",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: NominalPredicateClause",
+      "pass": true,
+      "detail": "12"
+    },
+    {
+      "name": "external-source count is nonnegative: NominalPredicateClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: NominalPredicateClause",
+      "pass": true,
+      "detail": "research_pending vs research_pending"
+    },
+    {
+      "name": "required fields: OpinionQuestion",
+      "pass": true
+    },
+    {
+      "name": "known status: OpinionQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: OpinionQuestion",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: OpinionQuestion",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: OpinionQuestion",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: OpinionQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: OpinionStanceFrame",
+      "pass": true
+    },
+    {
+      "name": "known status: OpinionStanceFrame",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: OpinionStanceFrame",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: OpinionStanceFrame",
+      "pass": true,
+      "detail": "15"
+    },
+    {
+      "name": "external-source count is nonnegative: OpinionStanceFrame",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: OpinionStanceFrame",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: OrdinalClassifierNP",
+      "pass": true
+    },
+    {
+      "name": "known status: OrdinalClassifierNP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: OrdinalClassifierNP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: OrdinalClassifierNP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: OrdinalClassifierNP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: OrdinalClassifierNP",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: PassivePermissiveRelation",
+      "pass": true
+    },
+    {
+      "name": "known status: PassivePermissiveRelation",
+      "pass": true,
+      "detail": "provisional"
+    },
+    {
+      "name": "known claim type: PassivePermissiveRelation",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: PassivePermissiveRelation",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: PassivePermissiveRelation",
+      "pass": true,
+      "detail": "3"
+    },
+    {
+      "name": "runtime and file status align: PassivePermissiveRelation",
+      "pass": true,
+      "detail": "provisional vs provisional"
+    },
+    {
+      "name": "required fields: PathPhrase",
+      "pass": true
+    },
+    {
+      "name": "known status: PathPhrase",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: PathPhrase",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: PathPhrase",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "external-source count is nonnegative: PathPhrase",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: PathPhrase",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: PerfectiveDirectionalVP",
+      "pass": true
+    },
+    {
+      "name": "known status: PerfectiveDirectionalVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: PerfectiveDirectionalVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: PerfectiveDirectionalVP",
+      "pass": true,
+      "detail": "2"
+    },
+    {
+      "name": "external-source count is nonnegative: PerfectiveDirectionalVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: PerfectiveDirectionalVP",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: PerfectiveObjectResultPredicate",
+      "pass": true
+    },
+    {
+      "name": "known status: PerfectiveObjectResultPredicate",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: PerfectiveObjectResultPredicate",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: PerfectiveObjectResultPredicate",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: PerfectiveObjectResultPredicate",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: PerfectiveObjectResultPredicate",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: PerfectiveResultPredicate",
+      "pass": true
+    },
+    {
+      "name": "known status: PerfectiveResultPredicate",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: PerfectiveResultPredicate",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: PerfectiveResultPredicate",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: PerfectiveResultPredicate",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: PerfectiveResultPredicate",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: PerfectiveVP",
+      "pass": true
+    },
+    {
+      "name": "known status: PerfectiveVP",
+      "pass": true,
+      "detail": "provisional"
+    },
+    {
+      "name": "known claim type: PerfectiveVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: PerfectiveVP",
+      "pass": true,
+      "detail": "37"
+    },
+    {
+      "name": "external-source count is nonnegative: PerfectiveVP",
+      "pass": true,
+      "detail": "4"
+    },
+    {
+      "name": "runtime and file status align: PerfectiveVP",
+      "pass": true,
+      "detail": "provisional vs provisional"
+    },
+    {
+      "name": "required fields: PolarQuestionFrame",
+      "pass": true
+    },
+    {
+      "name": "known status: PolarQuestionFrame",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known claim type: PolarQuestionFrame",
+      "pass": true,
+      "detail": "parser_representation_decision"
+    },
+    {
+      "name": "fixture count is nonnegative: PolarQuestionFrame",
+      "pass": true,
+      "detail": "6"
+    },
+    {
+      "name": "external-source count is nonnegative: PolarQuestionFrame",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: PolarQuestionFrame",
+      "pass": true,
+      "detail": "parser_heuristic vs parser_heuristic"
+    },
+    {
+      "name": "required fields: PoliteImperativeClause",
+      "pass": true
+    },
+    {
+      "name": "known status: PoliteImperativeClause",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: PoliteImperativeClause",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: PoliteImperativeClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: PoliteImperativeClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: PoliteImperativeClause",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: PossessiveClassifierNP",
+      "pass": true
+    },
+    {
+      "name": "known status: PossessiveClassifierNP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: PossessiveClassifierNP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: PossessiveClassifierNP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: PossessiveClassifierNP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: PossessiveClassifierNP",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: PossessiveNP",
+      "pass": true
+    },
+    {
+      "name": "known status: PossessiveNP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: PossessiveNP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: PossessiveNP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: PossessiveNP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: PossessiveNP",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: PossessiveNominalFragment",
+      "pass": true
+    },
+    {
+      "name": "known status: PossessiveNominalFragment",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: PossessiveNominalFragment",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: PossessiveNominalFragment",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: PossessiveNominalFragment",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: PossessiveNominalFragment",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: PossessiveTransferClause",
+      "pass": true
+    },
+    {
+      "name": "known status: PossessiveTransferClause",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: PossessiveTransferClause",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: PossessiveTransferClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: PossessiveTransferClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: PossessiveTransferClause",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: PostThemeParticipantRelation",
+      "pass": true
+    },
+    {
+      "name": "known status: PostThemeParticipantRelation",
+      "pass": true,
+      "detail": "provisional"
+    },
+    {
+      "name": "known claim type: PostThemeParticipantRelation",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: PostThemeParticipantRelation",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: PostThemeParticipantRelation",
+      "pass": true,
+      "detail": "4"
+    },
+    {
+      "name": "runtime and file status align: PostThemeParticipantRelation",
+      "pass": true,
+      "detail": "provisional vs provisional"
+    },
+    {
+      "name": "required fields: PostposedExistentialQuestion",
+      "pass": true
+    },
+    {
+      "name": "known status: PostposedExistentialQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: PostposedExistentialQuestion",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: PostposedExistentialQuestion",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: PostposedExistentialQuestion",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: PostposedExistentialQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: PostverbalZoPerfectiveVP",
+      "pass": true
+    },
+    {
+      "name": "known status: PostverbalZoPerfectiveVP",
+      "pass": true,
+      "detail": "supported_productive"
+    },
+    {
+      "name": "known claim type: PostverbalZoPerfectiveVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: PostverbalZoPerfectiveVP",
+      "pass": true,
+      "detail": "12"
+    },
+    {
+      "name": "external-source count is nonnegative: PostverbalZoPerfectiveVP",
+      "pass": true,
+      "detail": "4"
+    },
+    {
+      "name": "runtime and file status align: PostverbalZoPerfectiveVP",
+      "pass": true,
+      "detail": "supported_productive vs supported_productive"
+    },
+    {
+      "name": "required fields: PotentialDirectionalVP",
+      "pass": true
+    },
+    {
+      "name": "known status: PotentialDirectionalVP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known claim type: PotentialDirectionalVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: PotentialDirectionalVP",
+      "pass": true,
+      "detail": "2"
+    },
+    {
+      "name": "external-source count is nonnegative: PotentialDirectionalVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: PotentialDirectionalVP",
+      "pass": true,
+      "detail": "research_pending vs research_pending"
+    },
+    {
+      "name": "required fields: PotentialResultVP",
+      "pass": true
+    },
+    {
+      "name": "known status: PotentialResultVP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known claim type: PotentialResultVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: PotentialResultVP",
+      "pass": true,
+      "detail": "3"
+    },
+    {
+      "name": "external-source count is nonnegative: PotentialResultVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: PotentialResultVP",
+      "pass": true,
+      "detail": "research_pending vs research_pending"
+    },
+    {
+      "name": "required fields: PreferenceVP",
+      "pass": true
+    },
+    {
+      "name": "known status: PreferenceVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: PreferenceVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: PreferenceVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: PreferenceVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: PreferenceVP",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: PriorityMarkerClause",
+      "pass": true
+    },
+    {
+      "name": "known status: PriorityMarkerClause",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: PriorityMarkerClause",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: PriorityMarkerClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: PriorityMarkerClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: PriorityMarkerClause",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: ProductiveVO",
+      "pass": true
+    },
+    {
+      "name": "known status: ProductiveVO",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known claim type: ProductiveVO",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ProductiveVO",
+      "pass": true,
+      "detail": "20"
+    },
+    {
+      "name": "external-source count is nonnegative: ProductiveVO",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ProductiveVO",
+      "pass": true,
+      "detail": "research_pending vs research_pending"
+    },
+    {
+      "name": "required fields: ProgressiveDirectionalVP",
+      "pass": true
+    },
+    {
+      "name": "known status: ProgressiveDirectionalVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: ProgressiveDirectionalVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ProgressiveDirectionalVP",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "external-source count is nonnegative: ProgressiveDirectionalVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ProgressiveDirectionalVP",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: ProgressivePlaceQuestion",
+      "pass": true
+    },
+    {
+      "name": "known status: ProgressivePlaceQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: ProgressivePlaceQuestion",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ProgressivePlaceQuestion",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: ProgressivePlaceQuestion",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ProgressivePlaceQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: ProgressivePurposeClause",
+      "pass": true
+    },
+    {
+      "name": "known status: ProgressivePurposeClause",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: ProgressivePurposeClause",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ProgressivePurposeClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: ProgressivePurposeClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ProgressivePurposeClause",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: ProgressiveTransitivePredicate",
+      "pass": true
+    },
+    {
+      "name": "known status: ProgressiveTransitivePredicate",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: ProgressiveTransitivePredicate",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ProgressiveTransitivePredicate",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: ProgressiveTransitivePredicate",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ProgressiveTransitivePredicate",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: ProgressiveVP",
+      "pass": true
+    },
+    {
+      "name": "known status: ProgressiveVP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known claim type: ProgressiveVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ProgressiveVP",
+      "pass": true,
+      "detail": "6"
+    },
+    {
+      "name": "external-source count is nonnegative: ProgressiveVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ProgressiveVP",
+      "pass": true,
+      "detail": "research_pending vs research_pending"
+    },
+    {
+      "name": "required fields: ProgressiveWhObjectQuestion",
+      "pass": true
+    },
+    {
+      "name": "known status: ProgressiveWhObjectQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: ProgressiveWhObjectQuestion",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ProgressiveWhObjectQuestion",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "external-source count is nonnegative: ProgressiveWhObjectQuestion",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ProgressiveWhObjectQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: ProhibitiveFragment",
+      "pass": true
+    },
+    {
+      "name": "known status: ProhibitiveFragment",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: ProhibitiveFragment",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ProhibitiveFragment",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: ProhibitiveFragment",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ProhibitiveFragment",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: ProhibitiveImperative",
+      "pass": true
+    },
+    {
+      "name": "known status: ProhibitiveImperative",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known claim type: ProhibitiveImperative",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ProhibitiveImperative",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "external-source count is nonnegative: ProhibitiveImperative",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ProhibitiveImperative",
+      "pass": true,
+      "detail": "research_pending vs research_pending"
+    },
+    {
+      "name": "required fields: PurposePredicate",
+      "pass": true
+    },
+    {
+      "name": "known status: PurposePredicate",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: PurposePredicate",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: PurposePredicate",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: PurposePredicate",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: PurposePredicate",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: QuantifiedClassifierNP",
+      "pass": true
+    },
+    {
+      "name": "known status: QuantifiedClassifierNP",
+      "pass": true,
+      "detail": "provisional"
+    },
+    {
+      "name": "known claim type: QuantifiedClassifierNP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: QuantifiedClassifierNP",
+      "pass": true,
+      "detail": "23"
+    },
+    {
+      "name": "external-source count is nonnegative: QuantifiedClassifierNP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: QuantifiedClassifierNP",
+      "pass": true,
+      "detail": "provisional vs provisional"
+    },
+    {
+      "name": "required fields: QuantifiedPersonNP",
+      "pass": true
+    },
+    {
+      "name": "known status: QuantifiedPersonNP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: QuantifiedPersonNP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: QuantifiedPersonNP",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "external-source count is nonnegative: QuantifiedPersonNP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: QuantifiedPersonNP",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: QuantifiedTimeNP",
+      "pass": true
+    },
+    {
+      "name": "known status: QuantifiedTimeNP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known claim type: QuantifiedTimeNP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: QuantifiedTimeNP",
+      "pass": true,
+      "detail": "13"
+    },
+    {
+      "name": "external-source count is nonnegative: QuantifiedTimeNP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: QuantifiedTimeNP",
+      "pass": true,
+      "detail": "research_pending vs research_pending"
+    },
+    {
+      "name": "required fields: QuantityNP",
+      "pass": true
+    },
+    {
+      "name": "known status: QuantityNP",
+      "pass": true,
+      "detail": "provisional"
+    },
+    {
+      "name": "known claim type: QuantityNP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: QuantityNP",
+      "pass": true,
+      "detail": "3"
+    },
+    {
+      "name": "external-source count is nonnegative: QuantityNP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: QuantityNP",
+      "pass": true,
+      "detail": "provisional vs provisional"
+    },
+    {
+      "name": "required fields: ReduplicatedVP",
+      "pass": true
+    },
+    {
+      "name": "known status: ReduplicatedVP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known claim type: ReduplicatedVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ReduplicatedVP",
+      "pass": true,
+      "detail": "3"
+    },
+    {
+      "name": "external-source count is nonnegative: ReduplicatedVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ReduplicatedVP",
+      "pass": true,
+      "detail": "research_pending vs research_pending"
+    },
+    {
+      "name": "required fields: RelativeClauseNP",
+      "pass": true
+    },
+    {
+      "name": "known status: RelativeClauseNP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known claim type: RelativeClauseNP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: RelativeClauseNP",
+      "pass": true,
+      "detail": "3"
+    },
+    {
+      "name": "external-source count is nonnegative: RelativeClauseNP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: RelativeClauseNP",
+      "pass": true,
+      "detail": "research_pending vs research_pending"
+    },
+    {
+      "name": "required fields: RepetitiveComplementVP",
+      "pass": true
+    },
+    {
+      "name": "known status: RepetitiveComplementVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: RepetitiveComplementVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: RepetitiveComplementVP",
+      "pass": true,
+      "detail": "3"
+    },
+    {
+      "name": "external-source count is nonnegative: RepetitiveComplementVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: RepetitiveComplementVP",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: ReportedSpeech",
+      "pass": true
+    },
+    {
+      "name": "known status: ReportedSpeech",
+      "pass": true,
+      "detail": "provisional"
+    },
+    {
+      "name": "known claim type: ReportedSpeech",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ReportedSpeech",
+      "pass": true,
+      "detail": "7"
+    },
+    {
+      "name": "external-source count is nonnegative: ReportedSpeech",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ReportedSpeech",
+      "pass": true,
+      "detail": "provisional vs provisional"
+    },
+    {
+      "name": "required fields: RestorativeComplementVP",
+      "pass": true
+    },
+    {
+      "name": "known status: RestorativeComplementVP",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: RestorativeComplementVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: RestorativeComplementVP",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "external-source count is nonnegative: RestorativeComplementVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: RestorativeComplementVP",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: ResultComplement",
+      "pass": true
+    },
+    {
+      "name": "known status: ResultComplement",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known claim type: ResultComplement",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ResultComplement",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "external-source count is nonnegative: ResultComplement",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ResultComplement",
+      "pass": true,
+      "detail": "research_pending vs research_pending"
+    },
+    {
+      "name": "required fields: ResultComplementVP",
+      "pass": true
+    },
+    {
+      "name": "known status: ResultComplementVP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known claim type: ResultComplementVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ResultComplementVP",
+      "pass": true,
+      "detail": "3"
+    },
+    {
+      "name": "external-source count is nonnegative: ResultComplementVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ResultComplementVP",
+      "pass": true,
+      "detail": "research_pending vs research_pending"
+    },
+    {
+      "name": "required fields: ResultStateClause",
+      "pass": true
+    },
+    {
+      "name": "known status: ResultStateClause",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: ResultStateClause",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ResultStateClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: ResultStateClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ResultStateClause",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: ScalarEvaluation",
+      "pass": true
+    },
+    {
+      "name": "known status: ScalarEvaluation",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: ScalarEvaluation",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ScalarEvaluation",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: ScalarEvaluation",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ScalarEvaluation",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: ScalarRangeFragment",
+      "pass": true
+    },
+    {
+      "name": "known status: ScalarRangeFragment",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: ScalarRangeFragment",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ScalarRangeFragment",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: ScalarRangeFragment",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ScalarRangeFragment",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: ScalarValueQuestion",
+      "pass": true
+    },
+    {
+      "name": "known status: ScalarValueQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: ScalarValueQuestion",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ScalarValueQuestion",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: ScalarValueQuestion",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: ScalarValueQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: SchedulingQuestion",
+      "pass": true
+    },
+    {
+      "name": "known status: SchedulingQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: SchedulingQuestion",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: SchedulingQuestion",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: SchedulingQuestion",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: SchedulingQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: SeemingPerfectiveResultClause",
+      "pass": true
+    },
+    {
+      "name": "known status: SeemingPerfectiveResultClause",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: SeemingPerfectiveResultClause",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: SeemingPerfectiveResultClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: SeemingPerfectiveResultClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: SeemingPerfectiveResultClause",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: SerialVerbPurposeChain",
+      "pass": true
+    },
+    {
+      "name": "known status: SerialVerbPurposeChain",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known claim type: SerialVerbPurposeChain",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: SerialVerbPurposeChain",
+      "pass": true,
+      "detail": "5"
+    },
+    {
+      "name": "external-source count is nonnegative: SerialVerbPurposeChain",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: SerialVerbPurposeChain",
+      "pass": true,
+      "detail": "research_pending vs research_pending"
+    },
+    {
+      "name": "required fields: SourceMotionClause",
+      "pass": true
+    },
+    {
+      "name": "known status: SourceMotionClause",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: SourceMotionClause",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: SourceMotionClause",
+      "pass": true,
+      "detail": "4"
+    },
+    {
+      "name": "external-source count is nonnegative: SourceMotionClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: SourceMotionClause",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: SpeechTransferClause",
+      "pass": true
+    },
+    {
+      "name": "known status: SpeechTransferClause",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: SpeechTransferClause",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: SpeechTransferClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: SpeechTransferClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: SpeechTransferClause",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: StativeNominalComplement",
+      "pass": true
+    },
+    {
+      "name": "known status: StativeNominalComplement",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known claim type: StativeNominalComplement",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: StativeNominalComplement",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "external-source count is nonnegative: StativeNominalComplement",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: StativeNominalComplement",
+      "pass": true,
+      "detail": "research_pending vs research_pending"
+    },
+    {
+      "name": "required fields: StativePredicate",
+      "pass": true
+    },
+    {
+      "name": "known status: StativePredicate",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: StativePredicate",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: StativePredicate",
+      "pass": true,
+      "detail": "6"
+    },
+    {
+      "name": "external-source count is nonnegative: StativePredicate",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: StativePredicate",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: SuggestionQuestion",
+      "pass": true
+    },
+    {
+      "name": "known status: SuggestionQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: SuggestionQuestion",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: SuggestionQuestion",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: SuggestionQuestion",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: SuggestionQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: TemporalAdverbialClause",
+      "pass": true
+    },
+    {
+      "name": "known status: TemporalAdverbialClause",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: TemporalAdverbialClause",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: TemporalAdverbialClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: TemporalAdverbialClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: TemporalAdverbialClause",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: TemporalClause",
+      "pass": true
+    },
+    {
+      "name": "known status: TemporalClause",
+      "pass": true,
+      "detail": "provisional"
+    },
+    {
+      "name": "known claim type: TemporalClause",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: TemporalClause",
+      "pass": true,
+      "detail": "6"
+    },
+    {
+      "name": "external-source count is nonnegative: TemporalClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: TemporalClause",
+      "pass": true,
+      "detail": "provisional vs provisional"
+    },
+    {
+      "name": "required fields: TimeNP",
+      "pass": true
+    },
+    {
+      "name": "known status: TimeNP",
+      "pass": true,
+      "detail": "research_pending"
+    },
+    {
+      "name": "known claim type: TimeNP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: TimeNP",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "external-source count is nonnegative: TimeNP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: TimeNP",
+      "pass": true,
+      "detail": "research_pending vs research_pending"
+    },
+    {
+      "name": "required fields: TimeToActionFrame",
+      "pass": true
+    },
+    {
+      "name": "known status: TimeToActionFrame",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: TimeToActionFrame",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: TimeToActionFrame",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: TimeToActionFrame",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: TimeToActionFrame",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: Topic",
+      "pass": true
+    },
+    {
+      "name": "known status: Topic",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known claim type: Topic",
+      "pass": true,
+      "detail": "parser_representation_decision"
+    },
+    {
+      "name": "fixture count is nonnegative: Topic",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: Topic",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: Topic",
+      "pass": true,
+      "detail": "parser_heuristic vs parser_heuristic"
+    },
+    {
+      "name": "required fields: TopicComment",
+      "pass": true
+    },
+    {
+      "name": "known status: TopicComment",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known claim type: TopicComment",
+      "pass": true,
+      "detail": "parser_representation_decision"
+    },
+    {
+      "name": "fixture count is nonnegative: TopicComment",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "external-source count is nonnegative: TopicComment",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: TopicComment",
+      "pass": true,
+      "detail": "parser_heuristic vs parser_heuristic"
+    },
+    {
+      "name": "required fields: TopicCommentClause",
+      "pass": true
+    },
+    {
+      "name": "known status: TopicCommentClause",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known claim type: TopicCommentClause",
+      "pass": true,
+      "detail": "parser_representation_decision"
+    },
+    {
+      "name": "fixture count is nonnegative: TopicCommentClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: TopicCommentClause",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: TopicCommentClause",
+      "pass": true,
+      "detail": "parser_heuristic vs parser_heuristic"
+    },
+    {
+      "name": "required fields: TransformationResultFrame",
+      "pass": true
+    },
+    {
+      "name": "known status: TransformationResultFrame",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: TransformationResultFrame",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: TransformationResultFrame",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: TransformationResultFrame",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: TransformationResultFrame",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: TransformationResultPredicate",
+      "pass": true
+    },
+    {
+      "name": "known status: TransformationResultPredicate",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: TransformationResultPredicate",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: TransformationResultPredicate",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: TransformationResultPredicate",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: TransformationResultPredicate",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: TransitiveVP",
+      "pass": true
+    },
+    {
+      "name": "known status: TransitiveVP",
+      "pass": true,
+      "detail": "provisional"
+    },
+    {
+      "name": "known claim type: TransitiveVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: TransitiveVP",
+      "pass": true,
+      "detail": "30"
+    },
+    {
+      "name": "external-source count is nonnegative: TransitiveVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: TransitiveVP",
+      "pass": true,
+      "detail": "provisional vs provisional"
+    },
+    {
+      "name": "required fields: VPComplementFrame",
+      "pass": true
+    },
+    {
+      "name": "known status: VPComplementFrame",
+      "pass": true,
+      "detail": "parser_heuristic"
+    },
+    {
+      "name": "known claim type: VPComplementFrame",
+      "pass": true,
+      "detail": "parser_representation_decision"
+    },
+    {
+      "name": "fixture count is nonnegative: VPComplementFrame",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: VPComplementFrame",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: VPComplementFrame",
+      "pass": true,
+      "detail": "parser_heuristic vs parser_heuristic"
+    },
+    {
+      "name": "required fields: VerbComplementVP",
+      "pass": true
+    },
+    {
+      "name": "known status: VerbComplementVP",
+      "pass": true,
+      "detail": "provisional"
+    },
+    {
+      "name": "known claim type: VerbComplementVP",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: VerbComplementVP",
+      "pass": true,
+      "detail": "9"
+    },
+    {
+      "name": "external-source count is nonnegative: VerbComplementVP",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: VerbComplementVP",
+      "pass": true,
+      "detail": "provisional vs provisional"
+    },
+    {
+      "name": "required fields: VocativeAddressTerm",
+      "pass": true
+    },
+    {
+      "name": "known status: VocativeAddressTerm",
+      "pass": true,
+      "detail": "lexicalized_only"
+    },
+    {
+      "name": "known claim type: VocativeAddressTerm",
+      "pass": true,
+      "detail": "lexicalized_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: VocativeAddressTerm",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "external-source count is nonnegative: VocativeAddressTerm",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: VocativeAddressTerm",
+      "pass": true,
+      "detail": "lexicalized_only vs lexicalized_only"
+    },
+    {
+      "name": "required fields: WhClassifierQuestion",
+      "pass": true
+    },
+    {
+      "name": "known status: WhClassifierQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization"
+    },
+    {
+      "name": "known claim type: WhClassifierQuestion",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: WhClassifierQuestion",
+      "pass": true,
+      "detail": "3"
+    },
+    {
+      "name": "external-source count is nonnegative: WhClassifierQuestion",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "runtime and file status align: WhClassifierQuestion",
+      "pass": true,
+      "detail": "unsupported_generalization vs unsupported_generalization"
+    },
+    {
+      "name": "required fields: ResourceUseLaiFunctionRelation",
+      "pass": true
+    },
+    {
+      "name": "known status: ResourceUseLaiFunctionRelation",
+      "pass": true,
+      "detail": "provisional"
+    },
+    {
+      "name": "known claim type: ResourceUseLaiFunctionRelation",
+      "pass": true,
+      "detail": "cantonese_language_claim"
+    },
+    {
+      "name": "fixture count is nonnegative: ResourceUseLaiFunctionRelation",
+      "pass": true,
+      "detail": "29"
+    },
+    {
+      "name": "external-source count is nonnegative: ResourceUseLaiFunctionRelation",
+      "pass": true,
+      "detail": "2"
+    },
+    {
+      "name": "runtime and file status align: ResourceUseLaiFunctionRelation",
+      "pass": true,
+      "detail": "provisional vs provisional"
+    },
+    {
+      "name": "no productive status bypasses minimum evidence",
+      "pass": true
+    },
+    {
+      "name": "exactly two narrow productive patterns are accepted",
+      "pass": false,
+      "detail": "productive=PostverbalZoPerfectiveVP"
+    },
+    {
+      "name": "v0.5.182 target accepted after render and heldout",
+      "pass": false
+    },
+    {
+      "name": "existing fixture success is not counted as independent provenance",
+      "pass": true
+    },
+    {
+      "name": "held-out evidence promotes only explicitly accepted subtypes",
+      "pass": true
+    },
+    {
+      "name": "eight authority-linked patterns carry pattern-specific evidence",
+      "pass": true
+    },
+    {
+      "name": "corpus hits alone do not promote any other pattern",
+      "pass": true
+    },
+    {
+      "name": "native naturalness candidate mapping covers 89 labels",
+      "pass": true
+    },
+    {
+      "name": "CP021B authority-origin relations remain provisional and nonproductive",
+      "pass": true
+    },
+    {
+      "name": "native analysis validation remains zero",
+      "pass": true
+    },
+    {
+      "name": "native naturalness alone does not promote any other pattern",
+      "pass": true
+    },
+    {
+      "name": "native-rejected mappings remain review-bearing",
+      "pass": true
+    },
+    {
+      "name": "audit summary records four accepted-positive conflict units",
+      "pass": true
+    },
+    {
+      "name": "status summary matches rows",
+      "pass": true,
+      "detail": "{\"research_pending\":36,\"unsupported_generalization\":97,\"parser_heuristic\":20,\"provisional\":22,\"lexicalized_only\":3,\"supported_productive\":1}"
+    },
+    {
+      "name": "claim-type summary matches rows",
+      "pass": true,
+      "detail": "{\"cantonese_language_claim\":156,\"parser_representation_decision\":18,\"lexicalized_language_claim\":3,\"parser_heuristic\":2}"
+    }
+  ],
+  "failures": [
+    {
+      "name": "exactly two narrow productive patterns are accepted",
+      "detail": "productive=PostverbalZoPerfectiveVP"
+    },
+    {
+      "name": "v0.5.182 target accepted after render and heldout",
+      "detail": ""
+    }
+  ]
+}

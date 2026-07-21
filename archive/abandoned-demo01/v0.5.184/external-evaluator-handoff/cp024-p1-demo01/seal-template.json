@@ -1,0 +1,14 @@
+{
+  "schema": "canto-span-external-heldout-seal-v1",
+  "packet_id": "CP024-P1-DEMO01-HELDOUT-EXTERNAL-1",
+  "created_by": "INDEPENDENT_EVALUATOR_IDENTIFIER",
+  "created_at": "ISO-8601",
+  "case_file": "heldout-cases.json",
+  "commitment_file": "commitments.json",
+  "sha256": {
+    "heldout-cases.json": "FILL_AFTER_CREATION",
+    "commitments.json": "FILL_AFTER_CREATION"
+  },
+  "disclosure_status": "SEALED_NOT_DISCLOSED_TO_IMPLEMENTER",
+  "reuse_policy": "CONSUME_ONCE_NEVER_REUSE_AS_PROSPECTIVE"
+}

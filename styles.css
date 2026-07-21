@@ -1,0 +1,947 @@
+/*
+ * Canto Span v0.5.18
+ *
+ * Visual model:
+ *   secondary role  = token text color
+ *   primary role    = phrase background
+ *   head            = solid underline
+ *   specifier       = dotted underline
+ *   pattern         = compact label below the phrase
+ */
+
+.canto-study-block {
+  border-left: 4px solid var(--interactive-accent);
+  background: #0B1020;
+  color: #F3F4F6;
+  color-scheme: dark;
+  border-radius: 8px;
+  padding: 0.85em 1em;
+  margin: 1em 0;
+}
+
+.canto-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75em;
+  margin-bottom: 0.55em;
+}
+
+.canto-title {
+  font-size: 1.08em;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.canto-context-review-warning {
+  margin: 0 0 0.55em;
+  padding: 0.45em 0.65em;
+  border-left: 3px solid var(--text-warning, #FFD166);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--text-warning, #FFD166) 12%, transparent);
+  color: var(--text-normal);
+  font-size: 0.84em;
+  line-height: 1.35;
+}
+
+.canto-context-review-boundaries {
+  margin: -0.25em 0 0.55em;
+  padding-left: 0.65em;
+  color: var(--text-muted);
+  font-size: 0.72em;
+  line-height: 1.25;
+}
+
+.canto-rendered {
+  font-size: 1.22em;
+  line-height: 2.45;
+}
+
+.canto-line {
+  margin: 0.35em 0;
+  padding-top: 1.05em; /* room for hover/tap Jyutping above */
+}
+
+/* -------------------------------------------------------------------------
+ * Secondary role layer: text color only.
+ * ---------------------------------------------------------------------- */
+
+.canto-token {
+  --cs-color: var(--text-normal);
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  vertical-align: baseline;
+  font-weight: 700;
+  padding: 0 0.10em;
+  margin: 0 0.025em;
+  border-radius: 4px;
+  min-width: 1.25em;
+  color: var(--cs-color);
+}
+
+.canto-token:focus {
+  outline: 1px solid var(--interactive-accent);
+  outline-offset: 2px;
+}
+
+.canto-hanzi {
+  line-height: 1.15;
+  white-space: nowrap;
+  color: var(--cs-color);
+}
+
+/* -------------------------------------------------------------------------
+ * Perceptual categorical colour system.
+ *
+ * Method: v0.5.4 keeps the Canto Span block as a dark teaching surface
+ * in both Obsidian light and dark themes, but switches the learner-role
+ * palette to a brighter neon-forward set after visual review found the
+ * softer v0.5.3 colors insufficiently salient. Role colors are authored from
+ * a perceptual OKLCH/OKLab direction and verified with CIE L*a*b*, CIEDE2000,
+ * WCAG contrast, CVD simulations, and grayscale checks in
+ * tools/verify-color-palette.js. Do not replace this with evenly spaced HSL
+ * hues: HSL spacing is not perceptually uniform.
+ *
+ * Constraints carried forward from user preference:
+ *   doing = red family
+ *   func  = white foreground
+ *   measure_word inherits the previous classifier purple path
+ *
+ * Normal mode is color-only. Because eleven learner roles cannot remain
+ * reliably distinct by color alone under protanopia/deuteranopia/tritanopia
+ * and grayscale, optional non-color markers are gated behind the
+ * canto-color-accessibility-enabled class.
+ * ---------------------------------------------------------------------- */
+.canto-study-block {
+  color-scheme: dark;
+  --canto-bg-assumed: #0B1020;
+  --canto-surface-text: #F3F4F6;
+  --canto-surface-muted: #B8C2CC;
+  --canto-surface-border: rgba(255, 255, 255, 0.18);
+
+  /* Keep Obsidian light-theme variables from leaking dark-on-dark text into
+   * the teaching surface. These overrides are scoped to the block only. */
+  --text-normal: var(--canto-surface-text);
+  --text-muted: var(--canto-surface-muted);
+  --background-primary: #0B1020;
+  --background-secondary: #111827;
+  --background-modifier-border: var(--canto-surface-border);
+
+  /* Token role palette: one dark-surface palette for all Obsidian themes. */
+  --canto-color-who: var(--canto-user-color-who, #FF80AB);
+  --canto-color-doing: var(--canto-user-color-doing, #FF3B30);
+  --canto-color-what: var(--canto-user-color-what, #00E5FF);
+  --canto-color-where: var(--canto-user-color-where, #40A9FF);
+  --canto-color-when: var(--canto-user-color-when, #FFF500);
+  --canto-color-why: var(--canto-user-color-why, #B967FF);
+  --canto-color-how: var(--canto-user-color-how, #FF9500);
+  --canto-color-like: var(--canto-user-color-like, #39FF14);
+  --canto-color-quantity: var(--canto-color-like);
+  --canto-color-classifier: var(--canto-user-color-classifier, #FF00D4);
+  --canto-color-measure-word: var(--canto-user-color-measure-word, #FF00D4);
+  --canto-color-func: var(--canto-user-color-func, #FFFFFF);
+  --canto-color-particle: var(--canto-user-color-particle, #BFD7EA);
+  --canto-color-neutral: var(--canto-surface-text);
+
+  /* Legacy aliases kept for older notes/classes. */
+  --canto-color-subject: var(--canto-color-who);
+  --canto-color-object: var(--canto-color-what);
+  --canto-color-to: var(--canto-color-how);
+  --canto-color-stance: var(--canto-color-why);
+
+  /* Primary phrase role colours: secondary visual layer. */
+  --canto-primary-subject-color: var(--canto-color-who);
+  --canto-primary-object-color: var(--canto-color-what);
+  --canto-primary-topic-color: var(--canto-color-why);
+  --canto-primary-complement-color: var(--canto-color-like);
+  --canto-primary-comment-color: var(--canto-color-particle);
+}
+
+.theme-light .canto-study-block,
+.theme-dark .canto-study-block {
+  color-scheme: dark;
+}
+
+.canto-token.cs-subject { --cs-color: var(--canto-color-subject); }
+.canto-token.cs-object { --cs-color: var(--canto-color-object); }
+.canto-token.cs-who { --cs-color: var(--canto-color-who); }
+.canto-token.cs-doing { --cs-color: var(--canto-color-doing); }
+.canto-token.cs-what { --cs-color: var(--canto-color-what); }
+.canto-token.cs-where { --cs-color: var(--canto-color-where); }
+.canto-token.cs-when { --cs-color: var(--canto-color-when); }
+.canto-token.cs-why { --cs-color: var(--canto-color-why); }
+.canto-token.cs-to { --cs-color: var(--canto-color-to); }
+.canto-token.cs-how { --cs-color: var(--canto-color-how); }
+.canto-token.cs-like { --cs-color: var(--canto-color-like); }
+.canto-token.cs-quantity { --cs-color: var(--canto-color-like); }
+.canto-token.cs-stance { --cs-color: var(--canto-color-stance); }
+.canto-token.cs-measure_word { --cs-color: var(--canto-color-measure-word, var(--canto-color-classifier)); }
+.canto-token.cs-classifier { --cs-color: var(--canto-color-classifier); }
+.canto-token.cs-func { --cs-color: var(--canto-color-func); }
+.canto-token.cs-particle { --cs-color: var(--canto-color-particle); }
+
+/* Role-specific non-color encodings are optional. Normal mode is color-only;
+ * accessibility marker mode adds shape/line differences for CVD and grayscale
+ * support without changing parser labels. The global body class makes setting
+ * toggles affect every rendered canto-span block in the current note without
+ * requiring a full Markdown re-render. */
+body.canto-global-color-accessibility-enabled .canto-study-block .canto-token.cs-who,
+.canto-study-block.canto-color-accessibility-enabled .canto-token.cs-who {
+  border-left: 0.14em solid currentColor;
+  padding-left: 0.16em;
+}
+
+body.canto-global-color-accessibility-enabled .canto-study-block .canto-token.cs-what .canto-hanzi,
+.canto-study-block.canto-color-accessibility-enabled .canto-token.cs-what .canto-hanzi {
+  border-bottom: 2px solid currentColor;
+  padding-bottom: 0.02em;
+}
+
+body.canto-global-color-accessibility-enabled .canto-study-block .canto-token.cs-why .canto-hanzi,
+.canto-study-block.canto-color-accessibility-enabled .canto-token.cs-why .canto-hanzi {
+  border-top: 2px solid currentColor;
+  padding-top: 0.03em;
+}
+
+body.canto-global-color-accessibility-enabled .canto-study-block .canto-token.cs-doing .canto-hanzi,
+.canto-study-block.canto-color-accessibility-enabled .canto-token.cs-doing .canto-hanzi {
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-thickness: 0.12em;
+  text-decoration-color: currentColor;
+  text-underline-offset: 0.15em;
+}
+
+body.canto-global-color-accessibility-enabled .canto-study-block .canto-token.cs-how .canto-hanzi,
+.canto-study-block.canto-color-accessibility-enabled .canto-token.cs-how .canto-hanzi {
+  text-decoration-line: underline;
+  text-decoration-style: double;
+  text-decoration-thickness: 0.08em;
+  text-decoration-color: currentColor;
+  text-underline-offset: 0.16em;
+}
+
+body.canto-global-color-accessibility-enabled .canto-study-block .canto-token.cs-when .canto-hanzi,
+.canto-study-block.canto-color-accessibility-enabled .canto-token.cs-when .canto-hanzi {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 0.08em;
+  text-decoration-color: currentColor;
+  text-underline-offset: 0.16em;
+}
+
+body.canto-global-color-accessibility-enabled .canto-study-block .canto-token.cs-like .canto-hanzi,
+.canto-study-block.canto-color-accessibility-enabled .canto-token.cs-like .canto-hanzi {
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  text-decoration-thickness: 0.08em;
+  text-decoration-color: currentColor;
+  text-underline-offset: 0.16em;
+}
+
+
+body.canto-global-color-accessibility-enabled .canto-study-block .canto-token.cs-measure_word .canto-hanzi,
+body.canto-global-color-accessibility-enabled .canto-study-block .canto-token.cs-classifier .canto-hanzi,
+.canto-study-block.canto-color-accessibility-enabled .canto-token.cs-measure_word .canto-hanzi,
+.canto-study-block.canto-color-accessibility-enabled .canto-token.cs-classifier .canto-hanzi {
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-thickness: 0.10em;
+  text-decoration-color: currentColor;
+  text-underline-offset: 0.15em;
+}
+
+body.canto-global-color-accessibility-enabled .canto-study-block .canto-token.cs-where .canto-hanzi,
+.canto-study-block.canto-color-accessibility-enabled .canto-token.cs-where .canto-hanzi {
+  box-shadow: inset 0 -0.18em 0 color-mix(in srgb, currentColor 22%, transparent);
+}
+
+body.canto-global-color-accessibility-enabled .canto-study-block .canto-token.cs-func .canto-hanzi,
+.canto-study-block.canto-color-accessibility-enabled .canto-token.cs-func .canto-hanzi {
+  outline: 1px solid color-mix(in srgb, currentColor 54%, transparent);
+  outline-offset: 0.08em;
+  border-radius: 0.16em;
+}
+
+body.canto-global-color-accessibility-enabled .canto-study-block .canto-token.cs-particle .canto-hanzi,
+.canto-study-block.canto-color-accessibility-enabled .canto-token.cs-particle .canto-hanzi {
+  border-top: 1.5px dotted currentColor;
+  padding-top: 0.03em;
+  opacity: 0.94;
+}
+
+/* Neutral lexical phrase: Rime/Jyutping says this is a real phrase, but the
+ * compiled lexicon does not yet know a learner-facing role. Keep it readable
+ * and stable without pretending it is func/what/etc. */
+.canto-token.canto-token-neutral {
+  --cs-color: var(--text-normal);
+  color: var(--text-normal);
+  opacity: 0.96;
+}
+
+.canto-token.canto-lexical-unknown .canto-hanzi {
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in srgb, var(--text-muted) 32%, transparent);
+  text-underline-offset: 0.16em;
+}
+
+/* -------------------------------------------------------------------------
+ * Primary role layer: one continuous background around a phrase.
+ * ---------------------------------------------------------------------- */
+
+.canto-primary-phrase {
+  display: inline;
+  border-radius: 0.28em;
+  padding: 0.04em 0.12em 0.06em;
+  margin: 0 0.025em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  line-height: 1.3;
+}
+
+.canto-primary-phrase .canto-token {
+  background: transparent;
+  box-shadow: none;
+}
+
+.canto-primary-phrase.canto-primary-subject {
+  background: color-mix(in srgb, var(--canto-primary-subject-color) 18%, transparent);
+  box-shadow:
+    inset 0 0 0 1.5px color-mix(in srgb, var(--canto-primary-subject-color) 60%, transparent),
+    inset 0 -0.28em 0 color-mix(in srgb, var(--canto-primary-subject-color) 32%, transparent),
+    0 0 0 1px color-mix(in srgb, var(--canto-primary-subject-color) 18%, transparent);
+}
+
+.canto-primary-phrase.canto-primary-object {
+  background: color-mix(in srgb, var(--canto-primary-object-color) 13%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--canto-primary-object-color) 35%, transparent);
+}
+
+.canto-primary-phrase.canto-primary-topic {
+  background: color-mix(in srgb, var(--canto-primary-topic-color) 12%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--canto-primary-topic-color) 32%, transparent);
+  outline: 1px dashed color-mix(in srgb, var(--canto-primary-topic-color) 30%, transparent);
+  outline-offset: -1px;
+}
+
+.canto-primary-phrase.canto-primary-complement {
+  background: color-mix(in srgb, var(--canto-primary-complement-color) 12%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--canto-primary-complement-color) 32%, transparent);
+}
+
+.canto-primary-phrase.canto-primary-comment {
+  background: color-mix(in srgb, var(--canto-primary-comment-color) 10%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--canto-primary-comment-color) 28%, transparent);
+}
+
+/* Punctuation glue keeps punctuation attached for wrapping but visually plain. */
+.canto-punc-glue {
+  display: inline-flex;
+  align-items: baseline;
+  white-space: nowrap;
+  vertical-align: baseline;
+}
+
+.canto-attached-punctuation {
+  display: inline-block;
+  color: var(--text-normal);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-left: 0.01em;
+  padding: 0;
+  text-decoration: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+.canto-punc-glue > .canto-pattern,
+.canto-punc-glue > .canto-primary-phrase {
+  margin-right: 0;
+}
+
+/* -------------------------------------------------------------------------
+ * Jyutping layer: hidden until hover/focus/tap.
+ * ---------------------------------------------------------------------- */
+
+.canto-jyutping {
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  transform: translateX(-50%);
+  min-width: 100%;
+  height: 1.28em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.06em;
+  white-space: nowrap;
+  line-height: 1;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.12s ease, visibility 0.12s ease;
+  color: var(--cs-color);
+  z-index: 5;
+}
+
+.canto-token:hover .canto-jyutping,
+.canto-token:focus-within .canto-jyutping,
+.canto-token:focus .canto-jyutping,
+.canto-token:active .canto-jyutping {
+  opacity: 1;
+  visibility: visible;
+}
+
+.vjp-syl {
+  display: inline-block;
+  position: relative;
+  font-size: 0.62em;
+  line-height: 1;
+  font-weight: 700;
+  transform-origin: center center;
+  letter-spacing: -0.02em;
+  color: inherit;
+  background: color-mix(in srgb, var(--background-secondary) 78%, transparent);
+  border-radius: 3px;
+  padding: 0.02em 0.03em;
+}
+
+.vjp-base { display: inline-block; color: inherit; }
+.vjp-num { display: inline-block; font-size: 0.72em; vertical-align: super; margin-left: 0.02em; opacity: 0.95; color: inherit; }
+.vjp-tone-1 { transform: translateY(-0.30em) rotate(0deg); }
+.vjp-tone-2 { transform: translateY(-0.12em) rotate(-15deg); }
+.vjp-tone-3 { transform: translateY(0.03em) rotate(0deg); }
+.vjp-tone-4 { transform: translateY(0.25em) rotate(15deg); }
+.vjp-tone-5 { transform: translateY(0.15em) rotate(-13deg); }
+.vjp-tone-6 { transform: translateY(0.30em) rotate(0deg); }
+.vjp-no-tone { transform: translateY(0.03em); color: inherit; }
+
+/* Compact per-character Jyutping for multi-CJK tokens. */
+.canto-hanzi-compact {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  white-space: nowrap;
+  gap: 0;
+}
+
+.canto-cjk-cell-compact {
+  display: inline-grid;
+  grid-template-areas: "stack";
+  align-items: center;
+  justify-items: center;
+  position: relative;
+  min-width: 1em;
+  width: max-content;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  vertical-align: baseline;
+}
+
+.canto-jy-measure,
+.canto-hanzi-slot-compact {
+  grid-area: stack;
+}
+
+.canto-hanzi-slot-compact {
+  display: inline-block;
+  min-width: 1em;
+  text-align: center;
+  line-height: 1.15;
+}
+
+.canto-jy-measure {
+  visibility: hidden;
+  pointer-events: none;
+  white-space: nowrap;
+  line-height: 1;
+  padding: 0 0.04em;
+}
+
+.canto-jyutping.canto-jyutping-cell {
+  left: 50%;
+  right: auto;
+  bottom: 100%;
+  transform: translateX(-50%);
+  min-width: max-content;
+  width: max-content;
+  height: 1.28em;
+  justify-content: center;
+  gap: 0;
+}
+
+/* -------------------------------------------------------------------------
+ * Local granularity and grammar-pattern labels.
+ * ---------------------------------------------------------------------- */
+
+.canto-granularity { display: inline; position: relative; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.canto-granularity-content { display: inline; }
+.canto-granularity-head { border-bottom: 2px solid color-mix(in srgb, var(--text-normal) 72%, var(--interactive-accent)); padding-bottom: 0.03em; }
+.canto-granularity-specifier { border-bottom: 1.5px dotted color-mix(in srgb, var(--text-muted) 70%, var(--interactive-accent)); padding-bottom: 0.02em; }
+.canto-granularity-head .canto-token,
+.canto-granularity-specifier .canto-token { margin-bottom: 0.02em; }
+
+.canto-pattern {
+  display: inline-grid;
+  grid-auto-rows: max-content;
+  align-items: start;
+  justify-items: stretch;
+  vertical-align: text-top;
+  margin: 0 0.02em;
+  padding: 0;
+  line-height: 1.06;
+  overflow: visible;
+  position: relative;
+}
+
+.canto-pattern-layered {
+  row-gap: 1px;
+}
+
+.canto-pattern-leaf {
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+  white-space: nowrap;
+  min-width: max-content;
+}
+
+.canto-construction-layer {
+  --canto-pattern-depth-color: var(--text-accent);
+  position: relative;
+  display: block;
+  min-width: 0;
+  width: 100%;
+  height: 1.02em;
+  line-height: 1;
+  overflow: visible;
+  pointer-events: none;
+  user-select: none;
+}
+
+.canto-construction-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: 0;
+  margin: 0;
+  border-top: 1px dotted var(--canto-pattern-depth-color);
+}
+
+.canto-pattern-label {
+  position: absolute;
+  left: 50%;
+  top: 2px;
+  transform: translateX(-50%);
+  display: block;
+  width: max-content;
+  max-width: none;
+  margin: 0;
+  padding: 0 0.22em;
+  border-radius: 999px;
+  font-size: 0.46em;
+  font-weight: 700;
+  line-height: 1.05;
+  white-space: nowrap;
+  color: var(--canto-pattern-depth-color);
+  background: color-mix(in srgb, var(--background-primary) 78%, transparent);
+  border: 1px solid color-mix(in srgb, var(--canto-pattern-depth-color) 28%, transparent);
+}
+
+.canto-construction-depth-0 { --canto-pattern-depth-color: color-mix(in srgb, var(--interactive-accent) 78%, #22d3ee); }
+.canto-construction-depth-1 { --canto-pattern-depth-color: color-mix(in srgb, var(--interactive-accent) 56%, #38bdf8); }
+.canto-construction-depth-2 { --canto-pattern-depth-color: color-mix(in srgb, var(--interactive-accent) 48%, #818cf8); }
+.canto-construction-depth-3 { --canto-pattern-depth-color: color-mix(in srgb, var(--interactive-accent) 42%, #a78bfa); }
+.canto-construction-depth-4 { --canto-pattern-depth-color: color-mix(in srgb, var(--interactive-accent) 36%, #f472b6); }
+.canto-construction-depth-5 { --canto-pattern-depth-color: color-mix(in srgb, var(--interactive-accent) 32%, #fb7185); }
+.canto-construction-depth-6 { --canto-pattern-depth-color: color-mix(in srgb, var(--interactive-accent) 28%, #f59e0b); }
+.canto-construction-depth-7 { --canto-pattern-depth-color: color-mix(in srgb, var(--interactive-accent) 24%, #84cc16); }
+
+/* -------------------------------------------------------------------------
+ * Dictionary markers. Markers are the only menu targets, preserving Android tap.
+ * ---------------------------------------------------------------------- */
+
+.canto-token.cs-ambiguous {
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: var(--text-warning, #FFD166);
+  outline: 1px dashed var(--text-warning, #FFD166);
+  outline-offset: 1px;
+  background: color-mix(in srgb, var(--text-warning, #FFD166) 12%, transparent);
+}
+
+.canto-token.cs-missing-role {
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: var(--text-accent, #7c8cff);
+  outline: 1px dotted var(--text-accent, #7c8cff);
+  outline-offset: 1px;
+  background: color-mix(in srgb, var(--text-accent, #7c8cff) 10%, transparent);
+}
+
+.canto-token.cs-custom-dict {
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in srgb, var(--interactive-accent) 45%, transparent);
+  text-underline-offset: 0.12em;
+}
+
+.canto-role-warning,
+.canto-custom-dict-indicator {
+  pointer-events: auto;
+  cursor: context-menu;
+  touch-action: manipulation;
+  display: inline-block;
+  line-height: 1;
+  vertical-align: super;
+}
+
+.canto-role-warning {
+  font-size: 0.62em;
+  margin-left: 0.12em;
+  padding: 0 0.18em;
+  border-radius: 999px;
+  color: var(--background-primary, #000);
+  background: var(--text-warning, #FFD166);
+}
+
+.canto-missing-role-warning {
+  background: var(--text-accent, #7c8cff);
+  color: var(--text-on-accent, #fff);
+}
+
+.canto-custom-dict-indicator {
+  font-size: 0.52em;
+  margin-left: 0.06em;
+  opacity: 0.55;
+  color: var(--text-accent);
+}
+
+.canto-token.cs-custom-dict:hover .canto-custom-dict-indicator,
+.canto-token.cs-custom-dict:focus .canto-custom-dict-indicator {
+  opacity: 0.95;
+}
+
+/* -------------------------------------------------------------------------
+ * On-demand primary-role legend.
+ * ---------------------------------------------------------------------- */
+
+.canto-role-legend {
+  display: none;
+  margin: 0.10em 0 0.35em;
+  font-size: 0.78em;
+  line-height: 1.25;
+}
+
+.canto-study-block.canto-legend-visible .canto-role-legend {
+  display: block;
+}
+
+.canto-role-legend-body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35em 0.7em;
+  align-items: center;
+  margin-top: 0.18em;
+  padding: 0.42em 0.55em;
+  border-radius: 0.55em;
+  background: color-mix(in srgb, var(--background-primary) 54%, transparent);
+  border: 1px solid color-mix(in srgb, var(--text-muted) 18%, transparent);
+}
+
+.canto-role-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  white-space: nowrap;
+  color: var(--text-muted);
+}
+
+.canto-primary-legend-swatch {
+  display: inline-block;
+  width: 1.65em;
+  height: 1.05em;
+  min-width: 1.65em;
+  padding: 0;
+  margin: 0;
+  vertical-align: middle;
+}
+
+.canto-role-legend-name { font-weight: 650; }
+
+/* English + note boxes */
+.canto-english,
+.canto-note {
+  margin-top: 0.75em;
+  font-size: 0.95em;
+  background: var(--background-primary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 6px;
+  padding: 0.45em 0.7em;
+}
+
+.canto-english summary,
+.canto-note summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.canto-english > div,
+.canto-note > div {
+  color: var(--text-muted);
+  margin-top: 0.45em;
+}
+
+/* Settings */
+.canto-settings-token-input { width: 7.5em; font-family: var(--font-monospace); }
+.canto-settings-title-input { min-width: 18em; }
+
+
+/* -------------------------------------------------------------------------
+ * Global settings-driven diagnostic visibility.
+ *
+ * v0.5.8 renders both normal and diagnostic DOM for every block, then uses
+ * body-level setting classes to switch the visible layer. This avoids
+ * Obsidian/code-block refresh gaps where only the first canto-span block in a
+ * note updates after a setting toggle.
+ * ---------------------------------------------------------------------- */
+
+.canto-title-diagnostic,
+.canto-legend-diagnostic,
+.canto-line-diagnostic,
+.canto-diagnostic-ui-only,
+details.canto-diagnostic {
+  display: none;
+}
+
+body.canto-global-diagnostics-enabled .canto-study-block .canto-title-normal {
+  display: none;
+}
+
+body.canto-global-diagnostics-enabled .canto-study-block .canto-title-diagnostic {
+  display: inline;
+}
+
+body.canto-global-diagnostics-enabled .canto-study-block .canto-legend-normal {
+  display: none;
+}
+
+body.canto-global-diagnostics-enabled .canto-study-block .canto-legend-diagnostic {
+  display: inline;
+}
+
+body.canto-global-diagnostics-enabled .canto-study-block .canto-line-normal {
+  display: none;
+}
+
+body.canto-global-diagnostics-enabled .canto-study-block .canto-line-diagnostic {
+  display: block;
+}
+
+body.canto-global-diagnostics-enabled .canto-study-block .canto-diagnostic-ui-only {
+  display: inline-flex;
+}
+
+body.canto-global-diagnostics-enabled .canto-study-block .canto-context-directive-diagnostic {
+  display: block;
+  margin: 0.45em 0 0.2em;
+  padding: 0.25em 0.5em;
+  border-left: 3px solid var(--interactive-accent);
+  color: var(--text-muted);
+  font-family: var(--font-monospace);
+  font-size: 0.85em;
+}
+
+body.canto-global-diagnostics-enabled .canto-study-block details.canto-diagnostic {
+  display: block;
+}
+
+body.canto-global-diagnostics-enabled.canto-global-diagnostics-expanded .canto-study-block details.canto-diagnostic > .canto-diagnostic-body {
+  display: block !important;
+}
+
+/* -------------------------------------------------------------------------
+ * Canto Span diagnostic layer.
+ * ---------------------------------------------------------------------- */
+
+.canto-diagnostic {
+  margin: 0.35em 0 0.9em;
+  padding: 0.45em 0.65em;
+  border-radius: 8px;
+  border: 1px solid color-mix(in srgb, var(--interactive-accent) 28%, transparent);
+  background: color-mix(in srgb, var(--background-primary) 72%, transparent);
+  font-size: 0.72em;
+  line-height: 1.35;
+}
+
+.canto-diagnostic summary,
+.canto-diagnostic-summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--text-accent);
+}
+
+.canto-diagnostic-body {
+  margin-top: 0.45em;
+}
+
+.canto-diagnostic-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.45em;
+  margin: 0.25em 0 0.45em;
+}
+
+.canto-study-block .canto-diagnostic-copy {
+  appearance: none;
+  border: 1px solid #93C5FD;
+  border-radius: 6px;
+  background: #0F172A;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.18) inset;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 0.72em;
+  font-weight: 750;
+  line-height: 1.2;
+  opacity: 1;
+  padding: 0.32em 0.65em;
+  text-shadow: none;
+  white-space: nowrap;
+}
+
+.canto-study-block .canto-diagnostic-copy:hover,
+.canto-study-block .canto-diagnostic-copy:focus {
+  border-color: #FFFFFF;
+  background: #1D4ED8;
+  color: #FFFFFF;
+  outline: 2px solid #38BDF8;
+  outline-offset: 2px;
+}
+
+.canto-study-block .canto-diagnostic-copy:active {
+  background: #1E40AF;
+  color: #FFFFFF;
+}
+
+.canto-diagnostic-caption {
+  margin: 0.55em 0 0.2em;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.canto-diagnostic-json {
+  max-height: 18em;
+  overflow: auto;
+  white-space: pre-wrap;
+  font-size: 0.86em;
+  line-height: 1.32;
+  border-radius: 6px;
+  border: 1px solid var(--background-modifier-border);
+  background: var(--background-secondary);
+  color: var(--text-normal);
+  padding: 0.55em 0.65em;
+}
+
+/* v0.5.109-r3 compact parser-shadow repair UI.
+ * The visible parse shows only a short Shadow chip group. Full repair notes remain
+ * in chip tooltips, expanded diagnostics, and copied diagnostic JSON. */
+.canto-normalization-shadow-repairs {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: fit-content;
+  max-width: 100%;
+  gap: 0.12em 0.22em;
+  margin: 0.08em 0 0.22em;
+  padding: 0.12em 0.28em;
+  border: 1px solid color-mix(in srgb, var(--canto-color-like, #39FF14) 34%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--canto-color-like, #39FF14) 7%, transparent);
+  color: var(--canto-surface-text, #F3F4F6);
+  font-size: 0.62em;
+  line-height: 1.12;
+  vertical-align: middle;
+}
+
+.canto-normalization-folded-repairs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.35em 0.45em;
+  margin: 0.2em 0 0.45em;
+  padding: 0.38em 0.55em;
+  border: 1px solid color-mix(in srgb, var(--canto-color-like, #39FF14) 38%, transparent);
+  border-radius: 7px;
+  background: color-mix(in srgb, var(--canto-color-like, #39FF14) 8%, transparent);
+  color: var(--canto-surface-text, #F3F4F6);
+  font-size: 0.72em;
+  line-height: 1.35;
+}
+
+.canto-normalization-shadow-label,
+.canto-normalization-folded-label {
+  color: var(--canto-surface-muted, #B8C2CC);
+  font-weight: 700;
+}
+
+.canto-normalization-shadow-label {
+  margin-right: 0.08em;
+}
+
+.canto-normalization-shadow-repair,
+.canto-normalization-folded-repair {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--background-secondary, #111827) 64%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, currentColor 18%, transparent);
+  white-space: nowrap;
+}
+
+.canto-normalization-shadow-repair {
+  gap: 0.08em;
+  padding: 0 0.22em;
+}
+
+.canto-normalization-folded-repair {
+  gap: 0.25em;
+  padding: 0.08em 0.35em;
+}
+
+.canto-normalization-shadow-raw,
+.canto-normalization-folded-raw {
+  font-weight: 800;
+  color: var(--canto-color-when, #FFF500);
+}
+
+.canto-normalization-shadow-arrow,
+.canto-normalization-folded-arrow {
+  color: var(--canto-surface-muted, #B8C2CC);
+}
+
+.canto-normalization-shadow-normalized,
+.canto-normalization-folded-normalized {
+  font-weight: 800;
+  color: var(--canto-color-what, #00E5FF);
+}
+
+.canto-normalization-shadow-kind,
+.canto-normalization-shadow-status {
+  display: none;
+}
+
+.canto-normalization-folded-status {
+  color: var(--canto-surface-muted, #B8C2CC);
+  font-size: 0.88em;
+}

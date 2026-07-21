@@ -1,0 +1,113 @@
+{
+  "schema": "canto-span-lexicon-patch-blueprint-audit-r2",
+  "status": "PASS",
+  "passed": 20,
+  "total": 20,
+  "runtime_hashes": {
+    "main.js": "6cb8aef9a279ff9abef2a84c77dc470b5f4abcf0ae7306ca39f7f3a5fc44494e",
+    "manifest.json": "63a5f17c633c89583cbfe64ac3262d41565ea8126c0f80668426a75d06891c57",
+    "styles.css": "5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a"
+  },
+  "checks": [
+    {
+      "check": "target_count_16",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "test_count_32",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "unversioned_until_acceptance",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "runtime_unchanged",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "custody_unopened",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "zero_promotion_weight",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "unique_install_surfaces",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "component_target_is_daam",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "proper_places_bounded",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "travel_noun_only",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "particle_scope_guard",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "cinkei_lexical_only",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "polysemy_guards",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "gwaan_no_hidden_complement",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "positive_and_boundary_per_target",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "excluded_yisang",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "excluded_existing_guangzhou",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "excluded_temporal_ganzyu",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "matches_verification_installable_set",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "runtime_byte_identical",
+      "status": "PASS",
+      "detail": "{'main.js': '6cb8aef9a279ff9abef2a84c77dc470b5f4abcf0ae7306ca39f7f3a5fc44494e', 'manifest.json': '63a5f17c633c89583cbfe64ac3262d41565ea8126c0f80668426a75d06891c57', 'styles.css': '5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a'}"
+    }
+  ]
+}

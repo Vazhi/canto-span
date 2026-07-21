@@ -1,0 +1,95 @@
+{
+  "schema": "canto-span-current-focused-result-v2",
+  "checkpoint": "CP022-I1A-I01-A1",
+  "runtime_version": "0.5.179",
+  "accepted_runtime": "v0.5.179-cp022-i1a-i01-neutral-clause-span-consolidation-r1",
+  "active_candidate": null,
+  "packet_id": "EP-CP022-I1A-I01-D1",
+  "status": "PASS",
+  "total": 15,
+  "passed": 15,
+  "failed": 0,
+  "strict_ready": true,
+  "visible_gate": {
+    "passed": 100,
+    "total": 100
+  },
+  "render_adjudication": {
+    "passed": 10,
+    "total": 10
+  },
+  "heldout": {
+    "passed": 6,
+    "total": 6,
+    "consumed": true
+  },
+  "aggregate_regression": {
+    "passed": 545,
+    "total": 545
+  },
+  "supported_productive": 0,
+  "next_program": "CP022-P1",
+  "checks": [
+    {
+      "name": "I01 accepted checkpoint exact",
+      "pass": true
+    },
+    {
+      "name": "I01 visible packet 100/100",
+      "pass": true
+    },
+    {
+      "name": "render adjudication 10/10",
+      "pass": true
+    },
+    {
+      "name": "prospective held-out 6/6",
+      "pass": true
+    },
+    {
+      "name": "held-out consumed and non-reusable",
+      "pass": true
+    },
+    {
+      "name": "no code revision after freeze",
+      "pass": true
+    },
+    {
+      "name": "I02 accepted behavior preserved 24/24",
+      "pass": true
+    },
+    {
+      "name": "aggregate regression 545/545",
+      "pass": true
+    },
+    {
+      "name": "grammar legitimacy 1087/1087",
+      "pass": true
+    },
+    {
+      "name": "supported_productive remains zero",
+      "pass": true
+    },
+    {
+      "name": "semantic acceptance 15/15",
+      "pass": true
+    },
+    {
+      "name": "pre-intermediate corpus 80/80",
+      "pass": true
+    },
+    {
+      "name": "no active parser candidate",
+      "pass": true
+    },
+    {
+      "name": "next program is productive pilot",
+      "pass": true
+    },
+    {
+      "name": "global grammar freeze remains governed",
+      "pass": true
+    }
+  ],
+  "failures": []
+}

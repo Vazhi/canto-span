@@ -1,0 +1,187 @@
+{
+  "schema": "canto-span-slim-package-audit-v1",
+  "checkpoint": "CP022-I1A-I01-R1-SLIM1",
+  "status": "PASS",
+  "file_count": 246,
+  "uncompressed_bytes": 15710046,
+  "total": 42,
+  "passed": 42,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "required: main.js",
+      "pass": true
+    },
+    {
+      "name": "required: manifest.json",
+      "pass": true
+    },
+    {
+      "name": "required: styles.css",
+      "pass": true
+    },
+    {
+      "name": "required: README.md",
+      "pass": true
+    },
+    {
+      "name": "required: CHECKPOINT-STATE.md",
+      "pass": true
+    },
+    {
+      "name": "required: HANDOFF.md",
+      "pass": true
+    },
+    {
+      "name": "required: PROGRESS-CHECKPOINT.json",
+      "pass": true
+    },
+    {
+      "name": "required: docs/current/00-START-HERE.md",
+      "pass": true
+    },
+    {
+      "name": "required: docs/current/CURRENT-STATE.md",
+      "pass": true
+    },
+    {
+      "name": "required: docs/current/PACKAGING-AND-RETENTION-POLICY.md",
+      "pass": true
+    },
+    {
+      "name": "required: docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv",
+      "pass": true
+    },
+    {
+      "name": "required: docs/research/PARSER-CONSTRUCTION-SOURCE-REGISTER-CP021B-R37.tsv",
+      "pass": true
+    },
+    {
+      "name": "required: review-packets/cp022-evaluation/EP-CP022-I1A-I01-D1/focused-evaluation-packet.json",
+      "pass": true
+    },
+    {
+      "name": "required: review-packets/cp022-evaluation/EP-CP022-I1A-I01-D1/heldout-lock-manifest.json",
+      "pass": true
+    },
+    {
+      "name": "required: review-packets/cp022-evaluation/EP-CP022-I1A-I02-D1/focused-evaluation-packet.json",
+      "pass": true
+    },
+    {
+      "name": "required: test-data/regression-snapshots.json",
+      "pass": true
+    },
+    {
+      "name": "required: test-data/grammar-legitimacy-audit.json",
+      "pass": true
+    },
+    {
+      "name": "required: tools/run-current-focused.js",
+      "pass": true
+    },
+    {
+      "name": "required: tools/audit-slim-package.js",
+      "pass": true
+    },
+    {
+      "name": "required: render-review/CP022-I1A-I01-R1-FOCUSED-RENDER-REVIEW.md",
+      "pass": true
+    },
+    {
+      "name": "required: SLIM-REMOVED-ARTIFACTS.tsv",
+      "pass": true
+    },
+    {
+      "name": "runtime hash: main.js",
+      "pass": true,
+      "detail": "ec3f496b41d1b1d2ad6b44b9db17b2d6319646567a56f9b51e4fc6bc4ac1bc0f vs ec3f496b41d1b1d2ad6b44b9db17b2d6319646567a56f9b51e4fc6bc4ac1bc0f"
+    },
+    {
+      "name": "runtime hash: manifest.json",
+      "pass": true,
+      "detail": "c07d7e282c51320f4669620f985a6e11a7e8dba14611f7b731556564fbcba776 vs c07d7e282c51320f4669620f985a6e11a7e8dba14611f7b731556564fbcba776"
+    },
+    {
+      "name": "runtime hash: styles.css",
+      "pass": true,
+      "detail": "5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a vs 5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a"
+    },
+    {
+      "name": "forbidden absent: snapshot-artifacts",
+      "pass": true
+    },
+    {
+      "name": "forbidden absent: docs/history",
+      "pass": true
+    },
+    {
+      "name": "forbidden absent: validation/cp021b-r37",
+      "pass": true
+    },
+    {
+      "name": "forbidden absent: validation/cp022-i1a-i02-a1",
+      "pass": true
+    },
+    {
+      "name": "forbidden absent: validation/cp022-i1a-i04-a1",
+      "pass": true
+    },
+    {
+      "name": "no custody archive",
+      "pass": true
+    },
+    {
+      "name": "no backup or temp files",
+      "pass": true
+    },
+    {
+      "name": "file count within slim bound",
+      "pass": true,
+      "detail": "246"
+    },
+    {
+      "name": "uncompressed size within slim bound",
+      "pass": true,
+      "detail": "15710046"
+    },
+    {
+      "name": "current focused PASS",
+      "pass": true
+    },
+    {
+      "name": "I01 visible 100/100",
+      "pass": true
+    },
+    {
+      "name": "aggregate regression 545/545",
+      "pass": true
+    },
+    {
+      "name": "supported_productive zero",
+      "pass": true
+    },
+    {
+      "name": "documentation PASS",
+      "pass": true
+    },
+    {
+      "name": "removed manifest substantial",
+      "pass": true,
+      "detail": "683"
+    },
+    {
+      "name": "snapshot artifacts excluded",
+      "pass": true
+    },
+    {
+      "name": "historical validation generations excluded",
+      "pass": true
+    },
+    {
+      "name": "current render review retained",
+      "pass": true
+    }
+  ],
+  "failures": []
+}

@@ -1,0 +1,927 @@
+{
+  "schema": "canto-span-claim-provenance-audit-result-v1",
+  "batch_id": "CP021B-IM1",
+  "generated_at": "2026-07-19T15:21:21.605Z",
+  "runtime_version": "0.5.180",
+  "policy": {
+    "external_authority_required_for_cantonese_language_claims": true,
+    "internal_behavior_may_open_only_a_neutral_research_question": true,
+    "source_counts_without_claim_source_edges_are_insufficient": true,
+    "regression_results_are_not_language_evidence": true,
+    "authority_is_evidence_not_parser_specification": true
+  },
+  "summary": {
+    "total_claims": 178,
+    "language_or_lexical_claims": 158,
+    "internal_representation_or_heuristic_claims": 20,
+    "legacy_language_claims_with_scoped_edges": 4,
+    "legacy_language_claims_without_edges": 151,
+    "externally_originated_claims": 3,
+    "explicit_claim_source_edges": 47,
+    "unique_sources_used_by_edges": 20,
+    "origin_status_counts": {
+      "legacy_origin_not_proven": 151,
+      "internal_representation_only": 18,
+      "legacy_source_linked_posthoc": 4,
+      "external_evidence_originated": 3,
+      "internal_heuristic_only": 2
+    },
+    "claim_layer_counts": {
+      "language": 158,
+      "representation": 18,
+      "heuristic": 2
+    },
+    "grammar_promotion_eligible": 0
+  },
+  "total_checks": 195,
+  "passed_checks": 195,
+  "failed_checks": 0,
+  "strict_ready": true,
+  "checks": [
+    {
+      "name": "audit candidate has exactly 178 active labels",
+      "pass": true,
+      "detail": "178"
+    },
+    {
+      "name": "provenance inventory has exactly 178 active claims",
+      "pass": true,
+      "detail": "178"
+    },
+    {
+      "name": "provenance inventory labels are unique",
+      "pass": true
+    },
+    {
+      "name": "provenance inventory exactly covers the legitimacy audit",
+      "pass": true
+    },
+    {
+      "name": "claim-source edge identifiers are unique",
+      "pass": true
+    },
+    {
+      "name": "source-register identifiers are unique",
+      "pass": true
+    },
+    {
+      "name": "source-locator identifiers are unique",
+      "pass": true
+    },
+    {
+      "name": "CP021B authority-origin labels are unique",
+      "pass": true
+    },
+    {
+      "name": "edge label exists: EDGE-CP021A-COMP-SIO",
+      "pass": true,
+      "detail": "CompletionVP"
+    },
+    {
+      "name": "edge source exists: EDGE-CP021A-COMP-SIO",
+      "pass": true,
+      "detail": "SRC-SIO-BOND-2025"
+    },
+    {
+      "name": "edge source has locator: EDGE-CP021A-COMP-SIO",
+      "pass": true,
+      "detail": "SRC-SIO-BOND-2025"
+    },
+    {
+      "name": "edge relationship is controlled: EDGE-CP021A-COMP-SIO",
+      "pass": true,
+      "detail": "supports"
+    },
+    {
+      "name": "edge claim id maps to label: EDGE-CP021A-COMP-SIO",
+      "pass": true,
+      "detail": "GCLAIM::CompletionVP::language"
+    },
+    {
+      "name": "edge exact locator is recorded: EDGE-CP021A-COMP-SIO",
+      "pass": true
+    },
+    {
+      "name": "edge proposition is recorded: EDGE-CP021A-COMP-SIO",
+      "pass": true
+    },
+    {
+      "name": "edge verification state is recorded: EDGE-CP021A-COMP-SIO",
+      "pass": true
+    },
+    {
+      "name": "edge limitations are recorded: EDGE-CP021A-COMP-SIO",
+      "pass": true
+    },
+    {
+      "name": "edge label exists: EDGE-CP021A-COMP-SYB",
+      "pass": true,
+      "detail": "CompletionVP"
+    },
+    {
+      "name": "edge source exists: EDGE-CP021A-COMP-SYB",
+      "pass": true,
+      "detail": "SRC-SYBESMA-2013"
+    },
+    {
+      "name": "edge source has locator: EDGE-CP021A-COMP-SYB",
+      "pass": true,
+      "detail": "SRC-SYBESMA-2013"
+    },
+    {
+      "name": "edge relationship is controlled: EDGE-CP021A-COMP-SYB",
+      "pass": true,
+      "detail": "supports"
+    },
+    {
+      "name": "edge claim id maps to label: EDGE-CP021A-COMP-SYB",
+      "pass": true,
+      "detail": "GCLAIM::CompletionVP::language"
+    },
+    {
+      "name": "edge exact locator is recorded: EDGE-CP021A-COMP-SYB",
+      "pass": true
+    },
+    {
+      "name": "edge proposition is recorded: EDGE-CP021A-COMP-SYB",
+      "pass": true
+    },
+    {
+      "name": "edge verification state is recorded: EDGE-CP021A-COMP-SYB",
+      "pass": true
+    },
+    {
+      "name": "edge limitations are recorded: EDGE-CP021A-COMP-SYB",
+      "pass": true
+    },
+    {
+      "name": "edge label exists: EDGE-CP021A-COMP-FAN",
+      "pass": true,
+      "detail": "CompletionVP"
+    },
+    {
+      "name": "edge source exists: EDGE-CP021A-COMP-FAN",
+      "pass": true,
+      "detail": "SRC-FAN-CHAN-2022"
+    },
+    {
+      "name": "edge source has locator: EDGE-CP021A-COMP-FAN",
+      "pass": true,
+      "detail": "SRC-FAN-CHAN-2022"
+    },
+    {
+      "name": "edge relationship is controlled: EDGE-CP021A-COMP-FAN",
+      "pass": true,
+      "detail": "supports"
+    },
+    {
+      "name": "edge claim id maps to label: EDGE-CP021A-COMP-FAN",
+      "pass": true,
+      "detail": "GCLAIM::CompletionVP::language"
+    },
+    {
+      "name": "edge exact locator is recorded: EDGE-CP021A-COMP-FAN",
+      "pass": true
+    },
+    {
+      "name": "edge proposition is recorded: EDGE-CP021A-COMP-FAN",
+      "pass": true
+    },
+    {
+      "name": "edge verification state is recorded: EDGE-CP021A-COMP-FAN",
+      "pass": true
+    },
+    {
+      "name": "edge limitations are recorded: EDGE-CP021A-COMP-FAN",
+      "pass": true
+    },
+    {
+      "name": "edge label exists: EDGE-CP021A-COMP-CHEUNG",
+      "pass": true,
+      "detail": "CompletionVP"
+    },
+    {
+      "name": "edge source exists: EDGE-CP021A-COMP-CHEUNG",
+      "pass": true,
+      "detail": "SRC-CHEUNG-1970"
+    },
+    {
+      "name": "edge source has locator: EDGE-CP021A-COMP-CHEUNG",
+      "pass": true,
+      "detail": "SRC-CHEUNG-1970"
+    },
+    {
+      "name": "edge relationship is controlled: EDGE-CP021A-COMP-CHEUNG",
+      "pass": true,
+      "detail": "supports"
+    },
+    {
+      "name": "edge claim id maps to label: EDGE-CP021A-COMP-CHEUNG",
+      "pass": true,
+      "detail": "GCLAIM::CompletionVP::language"
+    },
+    {
+      "name": "edge exact locator is recorded: EDGE-CP021A-COMP-CHEUNG",
+      "pass": true
+    },
+    {
+      "name": "edge proposition is recorded: EDGE-CP021A-COMP-CHEUNG",
+      "pass": true
+    },
+    {
+      "name": "edge verification state is recorded: EDGE-CP021A-COMP-CHEUNG",
+      "pass": true
+    },
+    {
+      "name": "edge limitations are recorded: EDGE-CP021A-COMP-CHEUNG",
+      "pass": true
+    },
+    {
+      "name": "edge label exists: EDGE-CP021A-PERF-SIO",
+      "pass": true,
+      "detail": "PerfectiveVP"
+    },
+    {
+      "name": "edge source exists: EDGE-CP021A-PERF-SIO",
+      "pass": true,
+      "detail": "SRC-SIO-BOND-2025"
+    },
+    {
+      "name": "edge source has locator: EDGE-CP021A-PERF-SIO",
+      "pass": true,
+      "detail": "SRC-SIO-BOND-2025"
+    },
+    {
+      "name": "edge relationship is controlled: EDGE-CP021A-PERF-SIO",
+      "pass": true,
+      "detail": "supports"
+    },
+    {
+      "name": "edge claim id maps to label: EDGE-CP021A-PERF-SIO",
+      "pass": true,
+      "detail": "GCLAIM::PerfectiveVP::language"
+    },
+    {
+      "name": "edge exact locator is recorded: EDGE-CP021A-PERF-SIO",
+      "pass": true
+    },
+    {
+      "name": "edge proposition is recorded: EDGE-CP021A-PERF-SIO",
+      "pass": true
+    },
+    {
+      "name": "edge verification state is recorded: EDGE-CP021A-PERF-SIO",
+      "pass": true
+    },
+    {
+      "name": "edge limitations are recorded: EDGE-CP021A-PERF-SIO",
+      "pass": true
+    },
+    {
+      "name": "edge label exists: EDGE-CP021A-PERF-SYB",
+      "pass": true,
+      "detail": "PerfectiveVP"
+    },
+    {
+      "name": "edge source exists: EDGE-CP021A-PERF-SYB",
+      "pass": true,
+      "detail": "SRC-SYBESMA-2013"
+    },
+    {
+      "name": "edge source has locator: EDGE-CP021A-PERF-SYB",
+      "pass": true,
+      "detail": "SRC-SYBESMA-2013"
+    },
+    {
+      "name": "edge relationship is controlled: EDGE-CP021A-PERF-SYB",
+      "pass": true,
+      "detail": "supports"
+    },
+    {
+      "name": "edge claim id maps to label: EDGE-CP021A-PERF-SYB",
+      "pass": true,
+      "detail": "GCLAIM::PerfectiveVP::language"
+    },
+    {
+      "name": "edge exact locator is recorded: EDGE-CP021A-PERF-SYB",
+      "pass": true
+    },
+    {
+      "name": "edge proposition is recorded: EDGE-CP021A-PERF-SYB",
+      "pass": true
+    },
+    {
+      "name": "edge verification state is recorded: EDGE-CP021A-PERF-SYB",
+      "pass": true
+    },
+    {
+      "name": "edge limitations are recorded: EDGE-CP021A-PERF-SYB",
+      "pass": true
+    },
+    {
+      "name": "edge label exists: EDGE-CP021A-PERF-FAN",
+      "pass": true,
+      "detail": "PerfectiveVP"
+    },
+    {
+      "name": "edge source exists: EDGE-CP021A-PERF-FAN",
+      "pass": true,
+      "detail": "SRC-FAN-CHAN-2022"
+    },
+    {
+      "name": "edge source has locator: EDGE-CP021A-PERF-FAN",
+      "pass": true,
+      "detail": "SRC-FAN-CHAN-2022"
+    },
+    {
+      "name": "edge relationship is controlled: EDGE-CP021A-PERF-FAN",
+      "pass": true,
+      "detail": "supports"
+    },
+    {
+      "name": "edge claim id maps to label: EDGE-CP021A-PERF-FAN",
+      "pass": true,
+      "detail": "GCLAIM::PerfectiveVP::language"
+    },
+    {
+      "name": "edge exact locator is recorded: EDGE-CP021A-PERF-FAN",
+      "pass": true
+    },
+    {
+      "name": "edge proposition is recorded: EDGE-CP021A-PERF-FAN",
+      "pass": true
+    },
+    {
+      "name": "edge verification state is recorded: EDGE-CP021A-PERF-FAN",
+      "pass": true
+    },
+    {
+      "name": "edge limitations are recorded: EDGE-CP021A-PERF-FAN",
+      "pass": true
+    },
+    {
+      "name": "edge label exists: EDGE-CP021A-PERF-CHEUNG",
+      "pass": true,
+      "detail": "PerfectiveVP"
+    },
+    {
+      "name": "edge source exists: EDGE-CP021A-PERF-CHEUNG",
+      "pass": true,
+      "detail": "SRC-CHEUNG-1970"
+    },
+    {
+      "name": "edge source has locator: EDGE-CP021A-PERF-CHEUNG",
+      "pass": true,
+      "detail": "SRC-CHEUNG-1970"
+    },
+    {
+      "name": "edge relationship is controlled: EDGE-CP021A-PERF-CHEUNG",
+      "pass": true,
+      "detail": "supports"
+    },
+    {
+      "name": "edge claim id maps to label: EDGE-CP021A-PERF-CHEUNG",
+      "pass": true,
+      "detail": "GCLAIM::PerfectiveVP::language"
+    },
+    {
+      "name": "edge exact locator is recorded: EDGE-CP021A-PERF-CHEUNG",
+      "pass": true
+    },
+    {
+      "name": "edge proposition is recorded: EDGE-CP021A-PERF-CHEUNG",
+      "pass": true
+    },
+    {
+      "name": "edge verification state is recorded: EDGE-CP021A-PERF-CHEUNG",
+      "pass": true
+    },
+    {
+      "name": "edge limitations are recorded: EDGE-CP021A-PERF-CHEUNG",
+      "pass": true
+    },
+    {
+      "name": "edge label exists: EDGE-CP021A-FUNC-CHOR",
+      "pass": true,
+      "detail": "IntendedFunctionRelation"
+    },
+    {
+      "name": "edge source exists: EDGE-CP021A-FUNC-CHOR",
+      "pass": true,
+      "detail": "SRC-CHOR-2018-DIRECTIONAL-PARTICLES"
+    },
+    {
+      "name": "edge source has locator: EDGE-CP021A-FUNC-CHOR",
+      "pass": true,
+      "detail": "SRC-CHOR-2018-DIRECTIONAL-PARTICLES"
+    },
+    {
+      "name": "edge relationship is controlled: EDGE-CP021A-FUNC-CHOR",
+      "pass": true,
+      "detail": "supports"
+    },
+    {
+      "name": "edge claim id maps to label: EDGE-CP021A-FUNC-CHOR",
+      "pass": true,
+      "detail": "GCLAIM::IntendedFunctionRelation::language"
+    },
+    {
+      "name": "edge exact locator is recorded: EDGE-CP021A-FUNC-CHOR",
+      "pass": true
+    },
+    {
+      "name": "edge proposition is recorded: EDGE-CP021A-FUNC-CHOR",
+      "pass": true
+    },
+    {
+      "name": "edge verification state is recorded: EDGE-CP021A-FUNC-CHOR",
+      "pass": true
+    },
+    {
+      "name": "edge limitations are recorded: EDGE-CP021A-FUNC-CHOR",
+      "pass": true
+    },
+    {
+      "name": "edge label exists: EDGE-CP021A-FUNC-WONG",
+      "pass": true,
+      "detail": "IntendedFunctionRelation"
+    },
+    {
+      "name": "edge source exists: EDGE-CP021A-FUNC-WONG",
+      "pass": true,
+      "detail": "SRC-WONG-2023-LSA"
+    },
+    {
+      "name": "edge source has locator: EDGE-CP021A-FUNC-WONG",
+      "pass": true,
+      "detail": "SRC-WONG-2023-LSA"
+    },
+    {
+      "name": "edge relationship is controlled: EDGE-CP021A-FUNC-WONG",
+      "pass": true,
+      "detail": "supports"
+    },
+    {
+      "name": "edge claim id maps to label: EDGE-CP021A-FUNC-WONG",
+      "pass": true,
+      "detail": "GCLAIM::IntendedFunctionRelation::language"
+    },
+    {
+      "name": "edge exact locator is recorded: EDGE-CP021A-FUNC-WONG",
+      "pass": true
+    },
+    {
+      "name": "edge proposition is recorded: EDGE-CP021A-FUNC-WONG",
+      "pass": true
+    },
+    {
+      "name": "edge verification state is recorded: EDGE-CP021A-FUNC-WONG",
+      "pass": true
+    },
+    {
+      "name": "edge limitations are recorded: EDGE-CP021A-FUNC-WONG",
+      "pass": true
+    },
+    {
+      "name": "edge label exists: EDGE-CP021A-FUNC-WORDSHK",
+      "pass": true,
+      "detail": "IntendedFunctionRelation"
+    },
+    {
+      "name": "edge source exists: EDGE-CP021A-FUNC-WORDSHK",
+      "pass": true,
+      "detail": "SRC-WORDSHK-USE-LAI"
+    },
+    {
+      "name": "edge source has locator: EDGE-CP021A-FUNC-WORDSHK",
+      "pass": true,
+      "detail": "SRC-WORDSHK-USE-LAI"
+    },
+    {
+      "name": "edge relationship is controlled: EDGE-CP021A-FUNC-WORDSHK",
+      "pass": true,
+      "detail": "supports"
+    },
+    {
+      "name": "edge claim id maps to label: EDGE-CP021A-FUNC-WORDSHK",
+      "pass": true,
+      "detail": "GCLAIM::IntendedFunctionRelation::language"
+    },
+    {
+      "name": "edge exact locator is recorded: EDGE-CP021A-FUNC-WORDSHK",
+      "pass": true
+    },
+    {
+      "name": "edge proposition is recorded: EDGE-CP021A-FUNC-WORDSHK",
+      "pass": true
+    },
+    {
+      "name": "edge verification state is recorded: EDGE-CP021A-FUNC-WORDSHK",
+      "pass": true
+    },
+    {
+      "name": "edge limitations are recorded: EDGE-CP021A-FUNC-WORDSHK",
+      "pass": true
+    },
+    {
+      "name": "edge label exists: EDGE-CP021A-FUNC-CORPUS",
+      "pass": true,
+      "detail": "IntendedFunctionRelation"
+    },
+    {
+      "name": "edge source exists: EDGE-CP021A-FUNC-CORPUS",
+      "pass": true,
+      "detail": "SRC-HKCANCOR-PYCANTONESE-CP015"
+    },
+    {
+      "name": "edge source has locator: EDGE-CP021A-FUNC-CORPUS",
+      "pass": true,
+      "detail": "SRC-HKCANCOR-PYCANTONESE-CP015"
+    },
+    {
+      "name": "edge relationship is controlled: EDGE-CP021A-FUNC-CORPUS",
+      "pass": true,
+      "detail": "attests_only"
+    },
+    {
+      "name": "edge claim id maps to label: EDGE-CP021A-FUNC-CORPUS",
+      "pass": true,
+      "detail": "GCLAIM::IntendedFunctionRelation::language"
+    },
+    {
+      "name": "edge exact locator is recorded: EDGE-CP021A-FUNC-CORPUS",
+      "pass": true
+    },
+    {
+      "name": "edge proposition is recorded: EDGE-CP021A-FUNC-CORPUS",
+      "pass": true
+    },
+    {
+      "name": "edge verification state is recorded: EDGE-CP021A-FUNC-CORPUS",
+      "pass": true
+    },
+    {
+      "name": "edge limitations are recorded: EDGE-CP021A-FUNC-CORPUS",
+      "pass": true
+    },
+    {
+      "name": "edge label exists: EDGE-CP021A-BEI-CHIN",
+      "pass": true,
+      "detail": "PassivePermissiveRelation"
+    },
+    {
+      "name": "edge source exists: EDGE-CP021A-BEI-CHIN",
+      "pass": true,
+      "detail": "SRC-CHIN-2011-BEI"
+    },
+    {
+      "name": "edge source has locator: EDGE-CP021A-BEI-CHIN",
+      "pass": true,
+      "detail": "SRC-CHIN-2011-BEI"
+    },
+    {
+      "name": "edge relationship is controlled: EDGE-CP021A-BEI-CHIN",
+      "pass": true,
+      "detail": "supports"
+    },
+    {
+      "name": "edge claim id maps to label: EDGE-CP021A-BEI-CHIN",
+      "pass": true,
+      "detail": "GCLAIM::PassivePermissiveRelation::language"
+    },
+    {
+      "name": "edge exact locator is recorded: EDGE-CP021A-BEI-CHIN",
+      "pass": true
+    },
+    {
+      "name": "edge proposition is recorded: EDGE-CP021A-BEI-CHIN",
+      "pass": true
+    },
+    {
+      "name": "edge verification state is recorded: EDGE-CP021A-BEI-CHIN",
+      "pass": true
+    },
+    {
+      "name": "edge limitations are recorded: EDGE-CP021A-BEI-CHIN",
+      "pass": true
+    },
+    {
+      "name": "edge label exists: EDGE-CP021A-BEI-CHOW",
+      "pass": true,
+      "detail": "PassivePermissiveRelation"
+    },
+    {
+      "name": "edge source exists: EDGE-CP021A-BEI-CHOW",
+      "pass": true,
+      "detail": "SRC-CHOW-2018-INDIRECT-PASSIVE"
+    },
+    {
+      "name": "edge source has locator: EDGE-CP021A-BEI-CHOW",
+      "pass": true,
+      "detail": "SRC-CHOW-2018-INDIRECT-PASSIVE"
+    },
+    {
+      "name": "edge relationship is controlled: EDGE-CP021A-BEI-CHOW",
+      "pass": true,
+      "detail": "supports"
+    },
+    {
+      "name": "edge claim id maps to label: EDGE-CP021A-BEI-CHOW",
+      "pass": true,
+      "detail": "GCLAIM::PassivePermissiveRelation::language"
+    },
+    {
+      "name": "edge exact locator is recorded: EDGE-CP021A-BEI-CHOW",
+      "pass": true
+    },
+    {
+      "name": "edge proposition is recorded: EDGE-CP021A-BEI-CHOW",
+      "pass": true
+    },
+    {
+      "name": "edge verification state is recorded: EDGE-CP021A-BEI-CHOW",
+      "pass": true
+    },
+    {
+      "name": "edge limitations are recorded: EDGE-CP021A-BEI-CHOW",
+      "pass": true
+    },
+    {
+      "name": "edge label exists: EDGE-CP021A-BEI-BODOMO",
+      "pass": true,
+      "detail": "PassivePermissiveRelation"
+    },
+    {
+      "name": "edge source exists: EDGE-CP021A-BEI-BODOMO",
+      "pass": true,
+      "detail": "SRC-BODOMO-LAM-YU-2003"
+    },
+    {
+      "name": "edge source has locator: EDGE-CP021A-BEI-BODOMO",
+      "pass": true,
+      "detail": "SRC-BODOMO-LAM-YU-2003"
+    },
+    {
+      "name": "edge relationship is controlled: EDGE-CP021A-BEI-BODOMO",
+      "pass": true,
+      "detail": "restricts"
+    },
+    {
+      "name": "edge claim id maps to label: EDGE-CP021A-BEI-BODOMO",
+      "pass": true,
+      "detail": "GCLAIM::PassivePermissiveRelation::language"
+    },
+    {
+      "name": "edge exact locator is recorded: EDGE-CP021A-BEI-BODOMO",
+      "pass": true
+    },
+    {
+      "name": "edge proposition is recorded: EDGE-CP021A-BEI-BODOMO",
+      "pass": true
+    },
+    {
+      "name": "edge verification state is recorded: EDGE-CP021A-BEI-BODOMO",
+      "pass": true
+    },
+    {
+      "name": "edge limitations are recorded: EDGE-CP021A-BEI-BODOMO",
+      "pass": true
+    },
+    {
+      "name": "edge label exists: EDGE-CP021A-BEI-CORPUS",
+      "pass": true,
+      "detail": "PassivePermissiveRelation"
+    },
+    {
+      "name": "edge source exists: EDGE-CP021A-BEI-CORPUS",
+      "pass": true,
+      "detail": "SRC-HKCANCOR-PYCANTONESE-CP014"
+    },
+    {
+      "name": "edge source has locator: EDGE-CP021A-BEI-CORPUS",
+      "pass": true,
+      "detail": "SRC-HKCANCOR-PYCANTONESE-CP014"
+    },
+    {
+      "name": "edge relationship is controlled: EDGE-CP021A-BEI-CORPUS",
+      "pass": true,
+      "detail": "attests_only"
+    },
+    {
+      "name": "edge claim id maps to label: EDGE-CP021A-BEI-CORPUS",
+      "pass": true,
+      "detail": "GCLAIM::PassivePermissiveRelation::language"
+    },
+    {
+      "name": "edge exact locator is recorded: EDGE-CP021A-BEI-CORPUS",
+      "pass": true
+    },
+    {
+      "name": "edge proposition is recorded: EDGE-CP021A-BEI-CORPUS",
+      "pass": true
+    },
+    {
+      "name": "edge verification state is recorded: EDGE-CP021A-BEI-CORPUS",
+      "pass": true
+    },
+    {
+      "name": "edge limitations are recorded: EDGE-CP021A-BEI-CORPUS",
+      "pass": true
+    },
+    {
+      "name": "edge label exists: EDGE-CP022-P1-PFV01-YIP",
+      "pass": true,
+      "detail": "PostverbalZoPerfectiveVP"
+    },
+    {
+      "name": "edge source exists: EDGE-CP022-P1-PFV01-YIP",
+      "pass": true,
+      "detail": "SRC-YIP-MATTHEWS-2000-BASIC"
+    },
+    {
+      "name": "edge source has locator: EDGE-CP022-P1-PFV01-YIP",
+      "pass": true,
+      "detail": "SRC-YIP-MATTHEWS-2000-BASIC"
+    },
+    {
+      "name": "edge relationship is controlled: EDGE-CP022-P1-PFV01-YIP",
+      "pass": true,
+      "detail": "supports"
+    },
+    {
+      "name": "edge claim id maps to label: EDGE-CP022-P1-PFV01-YIP",
+      "pass": true,
+      "detail": "GCLAIM::PostverbalZoPerfectiveVP::language"
+    },
+    {
+      "name": "edge exact locator is recorded: EDGE-CP022-P1-PFV01-YIP",
+      "pass": true
+    },
+    {
+      "name": "edge proposition is recorded: EDGE-CP022-P1-PFV01-YIP",
+      "pass": true
+    },
+    {
+      "name": "edge verification state is recorded: EDGE-CP022-P1-PFV01-YIP",
+      "pass": true
+    },
+    {
+      "name": "edge limitations are recorded: EDGE-CP022-P1-PFV01-YIP",
+      "pass": true
+    },
+    {
+      "name": "edge label exists: EDGE-CP022-P1-PFV01-SIO",
+      "pass": true,
+      "detail": "PostverbalZoPerfectiveVP"
+    },
+    {
+      "name": "edge source exists: EDGE-CP022-P1-PFV01-SIO",
+      "pass": true,
+      "detail": "SRC-SIO-BOND-2025"
+    },
+    {
+      "name": "edge source has locator: EDGE-CP022-P1-PFV01-SIO",
+      "pass": true,
+      "detail": "SRC-SIO-BOND-2025"
+    },
+    {
+      "name": "edge relationship is controlled: EDGE-CP022-P1-PFV01-SIO",
+      "pass": true,
+      "detail": "supports"
+    },
+    {
+      "name": "edge claim id maps to label: EDGE-CP022-P1-PFV01-SIO",
+      "pass": true,
+      "detail": "GCLAIM::PostverbalZoPerfectiveVP::language"
+    },
+    {
+      "name": "edge exact locator is recorded: EDGE-CP022-P1-PFV01-SIO",
+      "pass": true
+    },
+    {
+      "name": "edge proposition is recorded: EDGE-CP022-P1-PFV01-SIO",
+      "pass": true
+    },
+    {
+      "name": "edge verification state is recorded: EDGE-CP022-P1-PFV01-SIO",
+      "pass": true
+    },
+    {
+      "name": "edge limitations are recorded: EDGE-CP022-P1-PFV01-SIO",
+      "pass": true
+    },
+    {
+      "name": "edge label exists: EDGE-CP022-P1-PFV01-SYB",
+      "pass": true,
+      "detail": "PostverbalZoPerfectiveVP"
+    },
+    {
+      "name": "edge source exists: EDGE-CP022-P1-PFV01-SYB",
+      "pass": true,
+      "detail": "SRC-SYBESMA-2013"
+    },
+    {
+      "name": "edge source has locator: EDGE-CP022-P1-PFV01-SYB",
+      "pass": true,
+      "detail": "SRC-SYBESMA-2013"
+    },
+    {
+      "name": "edge relationship is controlled: EDGE-CP022-P1-PFV01-SYB",
+      "pass": true,
+      "detail": "restricts"
+    },
+    {
+      "name": "edge claim id maps to label: EDGE-CP022-P1-PFV01-SYB",
+      "pass": true,
+      "detail": "GCLAIM::PostverbalZoPerfectiveVP::language"
+    },
+    {
+      "name": "edge exact locator is recorded: EDGE-CP022-P1-PFV01-SYB",
+      "pass": true
+    },
+    {
+      "name": "edge proposition is recorded: EDGE-CP022-P1-PFV01-SYB",
+      "pass": true
+    },
+    {
+      "name": "edge verification state is recorded: EDGE-CP022-P1-PFV01-SYB",
+      "pass": true
+    },
+    {
+      "name": "edge limitations are recorded: EDGE-CP022-P1-PFV01-SYB",
+      "pass": true
+    },
+    {
+      "name": "edge label exists: EDGE-CP022-P1-PFV01-FAN",
+      "pass": true,
+      "detail": "PostverbalZoPerfectiveVP"
+    },
+    {
+      "name": "edge source exists: EDGE-CP022-P1-PFV01-FAN",
+      "pass": true,
+      "detail": "SRC-FAN-CHAN-2022"
+    },
+    {
+      "name": "edge source has locator: EDGE-CP022-P1-PFV01-FAN",
+      "pass": true,
+      "detail": "SRC-FAN-CHAN-2022"
+    },
+    {
+      "name": "edge relationship is controlled: EDGE-CP022-P1-PFV01-FAN",
+      "pass": true,
+      "detail": "restricts"
+    },
+    {
+      "name": "edge claim id maps to label: EDGE-CP022-P1-PFV01-FAN",
+      "pass": true,
+      "detail": "GCLAIM::PostverbalZoPerfectiveVP::language"
+    },
+    {
+      "name": "edge exact locator is recorded: EDGE-CP022-P1-PFV01-FAN",
+      "pass": true
+    },
+    {
+      "name": "edge proposition is recorded: EDGE-CP022-P1-PFV01-FAN",
+      "pass": true
+    },
+    {
+      "name": "edge verification state is recorded: EDGE-CP022-P1-PFV01-FAN",
+      "pass": true
+    },
+    {
+      "name": "edge limitations are recorded: EDGE-CP022-P1-PFV01-FAN",
+      "pass": true
+    },
+    {
+      "name": "four legacy language claims retain explicit posthoc source edges",
+      "pass": true,
+      "detail": "CompletionVP,IntendedFunctionRelation,PassivePermissiveRelation,PerfectiveVP"
+    },
+    {
+      "name": "three authority-origin provisional claims include PFV01",
+      "pass": true,
+      "detail": "LexicalGiveRelation,PostThemeParticipantRelation,PostverbalZoPerfectiveVP"
+    },
+    {
+      "name": "authority-origin records match legitimacy source counts",
+      "pass": true
+    },
+    {
+      "name": "authority-origin records preserve zero native structural validation",
+      "pass": true
+    },
+    {
+      "name": "all source-less language claims are assigned downgrade or quarantine",
+      "pass": true
+    },
+    {
+      "name": "internal claims are not disguised as externally sourced language claims",
+      "pass": true
+    },
+    {
+      "name": "no inventory row is grammar-promotion eligible",
+      "pass": true
+    }
+  ],
+  "failures": []
+}

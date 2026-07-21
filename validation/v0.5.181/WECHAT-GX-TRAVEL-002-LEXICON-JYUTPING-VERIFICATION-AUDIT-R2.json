@@ -1,0 +1,125 @@
+{
+  "schema": "canto-span-lexicon-jyutping-verification-audit-r2",
+  "corpus_id": "WECHAT-GX-TRAVEL-002",
+  "candidate_runtime_version": "0.5.181",
+  "status": "PASS",
+  "passed": 22,
+  "total": 22,
+  "runtime_hashes": {
+    "main.js": "6cb8aef9a279ff9abef2a84c77dc470b5f4abcf0ae7306ca39f7f3a5fc44494e",
+    "manifest.json": "63a5f17c633c89583cbfe64ac3262d41565ea8126c0f80668426a75d06891c57",
+    "styles.css": "5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a"
+  },
+  "checks": [
+    {
+      "check": "schema",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "candidate_count_39",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "unique_candidates",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "zero_promotion_weight",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "runtime_behavior_unchanged",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "grammar_status_unchanged",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "candidate_scoring_unchanged",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "custody_unopened",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "all_source_ids_resolve",
+      "status": "PASS",
+      "detail": "23 registered source IDs"
+    },
+    {
+      "check": "proper_names_local_only",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "proper_places_bounded",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "yisang_reading_corrected",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "yisang_gloss_blocked",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "ganzyu_temporal_not_accompaniment",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "journey_noun_only",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "yidaam_component_only",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "m4gwaan_context_preserved",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "deferred_regional_count_7",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "deferred_polysemy_count_4",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "bounded_patch_count_16",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "report_exists",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "runtime_files_byte_identical",
+      "status": "PASS",
+      "detail": "{\"main.js\": \"6cb8aef9a279ff9abef2a84c77dc470b5f4abcf0ae7306ca39f7f3a5fc44494e\", \"manifest.json\": \"63a5f17c633c89583cbfe64ac3262d41565ea8126c0f80668426a75d06891c57\", \"styles.css\": \"5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a\"}"
+    }
+  ]
+}

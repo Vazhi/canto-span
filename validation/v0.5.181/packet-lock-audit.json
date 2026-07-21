@@ -1,0 +1,96 @@
+{
+  "schema": "canto-span-v0.5.181-packet-lock-audit-v1",
+  "version": "0.5.181",
+  "status": "PASS",
+  "total": 21,
+  "passed": 21,
+  "failed": 0,
+  "heldout_opened": false,
+  "checks": [
+    {
+      "name": "packet identity",
+      "pass": true
+    },
+    {
+      "name": "accepted parent v0.5.180",
+      "pass": true
+    },
+    {
+      "name": "heldout locked",
+      "pass": true
+    },
+    {
+      "name": "target subtype exact",
+      "pass": true
+    },
+    {
+      "name": "visible inventory 18",
+      "pass": true
+    },
+    {
+      "name": "render inventory 12",
+      "pass": true
+    },
+    {
+      "name": "hidden commitments seven",
+      "pass": true
+    },
+    {
+      "name": "manifest hash frozen",
+      "pass": true
+    },
+    {
+      "name": "custody hash frozen",
+      "pass": true
+    },
+    {
+      "name": "surfaces invisible",
+      "pass": true
+    },
+    {
+      "name": "expected values invisible",
+      "pass": true
+    },
+    {
+      "name": "salts invisible",
+      "pass": true
+    },
+    {
+      "name": "custody absent from project",
+      "pass": true
+    },
+    {
+      "name": "promotion delta one",
+      "pass": true
+    },
+    {
+      "name": "candidate remains provisional before acceptance",
+      "pass": true
+    },
+    {
+      "name": "render required",
+      "pass": true
+    },
+    {
+      "name": "prospective heldout required",
+      "pass": true
+    },
+    {
+      "name": "scope requires resource use-lai predicate",
+      "pass": true
+    },
+    {
+      "name": "broad excluded profiles recorded",
+      "pass": true
+    },
+    {
+      "name": "two positive sources and two boundary sources",
+      "pass": true
+    },
+    {
+      "name": "native-conflict escalation retained",
+      "pass": true
+    }
+  ],
+  "failures": []
+}

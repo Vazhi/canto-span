@@ -1,0 +1,35 @@
+{
+  "schema": "canto-span-visible-packet-lock-v1",
+  "packet_id": "CP024-P1-DEMO01-R1",
+  "locked_at": "2026-07-20",
+  "status": "VISIBLE_PACKET_LOCKED_EXTERNAL_HELDOUT_SEALED_VERIFIED_UNOPENED",
+  "files": [
+    {
+      "path": "test-data/CP024-P1-DEMO01-visible-research-packet.tsv",
+      "sha256": "9097af8b2a3d59ab554bb6700b106f9d72e984a685bc348b10b6710b414d956f"
+    },
+    {
+      "path": "review-packets/cp024-p1-demo01/DEMO01-R1/focused-research-packet.json",
+      "sha256": "5d7f953ef8de84ce22a1297584b4104c3d8139b7a76af5873e30ca83fd81bd09"
+    },
+    {
+      "path": "docs/research/CP024-P1-DEMO01-QUESTION-AND-SOURCE-FREEZE-R1.md",
+      "sha256": "9a45dc39e34cc8e5111c4c5abab2836340e713bf82020b2def59414181dd4ca9"
+    },
+    {
+      "path": "docs/research/CP024-P1-DEMO01-IMPLEMENTATION-BLUEPRINT-R1.md",
+      "sha256": "b5fd88b7a1a174073abc2680a439afec2cb6cc09d931de8ada6229031799d161"
+    }
+  ],
+  "prospective_heldout": {
+    "status": "SEALED_EXTERNAL_VERIFIED_UNOPENED",
+    "filename": "CP024-P1-DEMO01-HELDOUT-EXTERNAL-1.zip",
+    "sha256": "7cda111ca194b6159a37c91b789984fdc0c35d6c35d643260810df0cdd5015c4",
+    "must_be_external_to_recovery_tree": true,
+    "opened": false,
+    "listed": false,
+    "extracted": false,
+    "reuse_forbidden": true,
+    "opening_condition": "only after passing Obsidian render review and confirming exact candidate hashes"
+  }
+}

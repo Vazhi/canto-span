@@ -1,0 +1,11 @@
+search_id	date	query_or_action	source_or_engine	result	evidentiary_use	limitation
+R30-S01	2026-07-19	Verify R29 package, 145/145 audit, and frozen hashes	local package inspection	PASS	baseline integrity	Package metadata is not linguistic authority.
+R30-S02	2026-07-19	Rank 20 remaining language labels by runtime and non-held-out regression reach	local runtime and regression snapshots	PASS	family selection	Counts rank impact only.
+R30-S03	2026-07-19	Inspect exact 唔做完 accepted tree and linguistic-evidence metadata	test-data/regression-snapshots.json	PASS	conflict and nonpositive-evidence boundary	Accepted behavior is not positive grammar evidence.
+R30-S04	2026-07-19	Inspect NegatedVP, NegativeHaveClause, AcceptabilityClause, OpinionQuestion, and SchedulingQuestion runtime references	main.js	PASS	runtime claim extraction	Code does not establish Cantonese grammar.
+R30-S05	2026-07-19	Extract textbook pages for ordinary negation, 未睇完, 都得, 覺得 questions, and scheduling questions	user-provided 粵語（香港話）教程 PDF	PASS	exact pedagogical attestation	Coursebook evidence does not prove frequency or unrestricted productivity.
+R30-S06	2026-07-19	Recheck Yip 1988 and Lam 2018 negation boundaries	official full texts and project source register	PASS	negator and complement-type split	Formal analyses remain theory-specific.
+R30-S07	2026-07-19	Verify Cheng and Sybesma 2004 postverbal 得 scope and metadata	publisher and author full text	PASS	得 polyfunctionality boundary	The paper does not directly analyze every 都得 profile.
+R30-S08	2026-07-19	Search exact stance+約+幾時+好 scheduling wrapper and opinion-question variants	web and local full-text search	PARTIAL	exact-gap recording and complement diversity	Search failure is not grammaticality evidence.
+R30-S09	2026-07-19	Assemble 30 claim-source rows and update five coverage records	local deterministic build	PASS	claim provenance	Matrix consistency is not linguistic truth.
+R30-S10	2026-07-19	Run deterministic audit and independent ZIP extraction comparison	local audit and archive verification	PASS	artifact integrity	Artifact integrity does not validate grammar.

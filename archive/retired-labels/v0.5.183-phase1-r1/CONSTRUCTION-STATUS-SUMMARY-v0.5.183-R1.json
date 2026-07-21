@@ -1,0 +1,52 @@
+{
+  "schema": "canto-span-construction-status-summary-v1",
+  "checkpoint": "v0.5.183-phase0-status-reconciliation-r1",
+  "active_labels": 181,
+  "linguistic_status_counts": {
+    "research_pending": 58,
+    "unsupported_generalization": 97,
+    "parser_heuristic": 21,
+    "lexicalized_only": 3,
+    "provisional_reaudit": 2
+  },
+  "runtime_embedded_status_counts": {
+    "research_pending": 37,
+    "unsupported_generalization": 97,
+    "parser_heuristic": 21,
+    "provisional": 21,
+    "lexicalized_only": 3,
+    "supported_productive": 2
+  },
+  "status_alignment_counts": {
+    "ALIGNED": 158,
+    "LEGACY_RUNTIME_METADATA_STALE": 23
+  },
+  "stale_runtime_metadata_labels": [
+    "DegreeStativePredicate",
+    "DiMarkedNP",
+    "DirectionalMotionVP",
+    "ExperientialVP",
+    "IntendedFunctionRelation",
+    "LexicalGiveRelation",
+    "ModalVP",
+    "ModifiedNP",
+    "ModifierNP",
+    "NegatedDirectionalMotionVP",
+    "NegatedExistentialFragment",
+    "OvertHeadDemonstrativeClassifierNP",
+    "PassivePermissiveRelation",
+    "PerfectiveVP",
+    "PostThemeParticipantRelation",
+    "PostverbalZoPerfectiveVP",
+    "QuantifiedClassifierNP",
+    "QuantityNP",
+    "ReportedSpeech",
+    "ResourceUseLaiFunctionRelation",
+    "TemporalClause",
+    "TransitiveVP",
+    "VerbComplementVP"
+  ],
+  "reaudit_queue_count": 23,
+  "supported_productive": 0,
+  "parser_behavior_changed": false
+}

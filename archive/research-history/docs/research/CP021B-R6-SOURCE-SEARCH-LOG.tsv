@@ -1,0 +1,8 @@
+search_id	construction_family	query_or_screen	candidate_source	outcome	use_or_exclusion_reason
+R6-S01	perfective and completion	Cantonese inner outer aspect 完 咗 V-IAP-OAP	Sio and Bond 2025	INCLUDED_PRIMARY	Current primary construction analysis with explicit ordering, endpoint distinction, examples, and implementation limits.
+R6-S02	perfective 咗	Cantonese 咗 aspect not tense V zo object final meih	Yip and Matthews 2000	INCLUDED_DESCRIPTIVE_PRIMARY	Exact teaching-grammar examples for V-咗-O, result/current relevance, negation, and final 未 questions.
+R6-S03	V完咗O	Cantonese 食完咗 object published example	Sybesma 2013	INCLUDED_EXACT_ATTESTATION	Author-uploaded full text contains 佢食完咗啲飯; used for form order only.
+R6-S04	V完咗O and 咗 placement	Cantonese 做完咗功課 Fan Chan 2022	Fan and Chan 2022	INCLUDED_PRIMARY_WITH_CRAWLER_LIMIT	Peer-reviewed publisher metadata, abstract, and crawler text expose p. 374 example (3c) and complex-VP placement claim.
+R6-S05	historical V完咗O	Cheung 1970 exact V完咗O locator	Cheung 1970	EXCLUDED_FROM_R6_ADDITIONS	Legacy dossier lacks a recovered exact example locator; not needed because three independently verified sources already support the form.
+R6-S06	CompletionQuestion broad fallback	bare Cantonese VP plus final 未 without 完 咗 過 result particle	reviewed source set	NO_AUTHORIZATION_FOUND	Reviewed sources license final 未 through visible completion/result or aspect material; no equivalent source was found for the generic bare-reviewed-VO runtime extension.
+R6-S07	晒 totality completion	Cantonese 晒 completion totality relation to 完	reviewed R6 source set	DEFERRED_SEPARATE_FAMILY	R6 sources do not map the current 晒 subtype sufficiently; retain as explicit open evidence gap rather than infer equivalence or ungrammaticality.

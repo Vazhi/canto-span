@@ -1,0 +1,21 @@
+case_id	section	surface	candidate_policy	expected_target_surfaces	purpose
+DEMO-R01	required	呢本書。	REQUIRED	呢本書	proximal D-CL-N with book classifier
+DEMO-R02	required	嗰個人。	REQUIRED	嗰個人	distal D-general-CL-N
+DEMO-R03	required	呢間公司。	REQUIRED	呢間公司	proximal D-CL-N organization head
+DEMO-R04	required	嗰份文件。	REQUIRED	嗰份文件	distal D-CL-N document head
+DEMO-R05	required	呢個問題。	REQUIRED	呢個問題	proximal D-general-CL-N abstract head
+DEMO-R06	required	呢杯水。	REQUIRED	呢杯水	proximal D-container/measure-N
+DEMO-R07	required	嗰架車。	REQUIRED	嗰架車	distal D-vehicle-classifier-N
+DEMO-R08	required	呢隻貓。	REQUIRED	呢隻貓	proximal D-animal-classifier-N
+DEMO-R09	required	呢個蘋果。	REQUIRED	呢個蘋果	blocks DemonstrativeHeadNP misanalysis
+DEMO-F01	forbidden	呢個。	FORBIDDEN		headless D-CL is a separate discourse-dependent subtype
+DEMO-F02	forbidden	呢本。	FORBIDDEN		headless D-CL with lexical classifier is separate
+DEMO-F03	forbidden	呢兩個人。	FORBIDDEN		overt numeral D-Num-CL-N is a separate subtype
+DEMO-F04	forbidden	呢啲書。	FORBIDDEN		D-di1-N plural/mass profile is separate
+DEMO-F05	forbidden	一個人。	FORBIDDEN		Num-CL-N lacks demonstrative
+DEMO-F06	forbidden	個人。	FORBIDDEN		bare CL-N lacks demonstrative
+DEMO-F07	forbidden	邊個人？	FORBIDDEN		wh-classifier nominal is separate
+DEMO-F08	forbidden	呢人。	FORBIDDEN		D-N without overt classifier is outside target
+DEMO-U01	unresolved	呢間好大嘅公司。	UNRESOLVED		modified D-CL-[modifier]-N requires nominal-scope analysis
+DEMO-U02	unresolved	中國移動嗰個業績。	UNRESOLVED		possessor/associative vs non-deictic demonstrative attachment ambiguity
+DEMO-U03	unresolved	嗰個少數族裔嘅福利同埋權利。	UNRESOLVED		attachment and coordination ambiguity from corpus literature

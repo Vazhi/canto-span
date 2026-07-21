@@ -1,0 +1,38 @@
+{
+  "schema": "canto-span-packaging-manifest-v1",
+  "version": "v0.5.182",
+  "status": "ACCEPTED_RELEASE",
+  "accepted_runtime": "v0.5.182",
+  "rejected_predecessor": "v0.5.181",
+  "active_candidate": null,
+  "runtime_filename": "canto-span-plugin-v0.5.182.zip",
+  "recovery_filename": "canto-span-recovery-v0.5.182.zip",
+  "consumed_evaluator_results_filename": "canto-span-evaluator-results-v0.5.182-consumed.zip",
+  "runtime_members": [
+    "canto-span/main.js",
+    "canto-span/manifest.json",
+    "canto-span/styles.css"
+  ],
+  "separation": {
+    "runtime_exact_three_files": true,
+    "recovery_excludes_private_evaluator": true,
+    "consumed_results_separate": true
+  },
+  "validation": {
+    "render_rows": 15,
+    "render_assertions": "133/133",
+    "heldout": "8/8 consumed",
+    "natural_attestations": "3/3 minimum",
+    "aggregate_regression": "545/545 inherited",
+    "supported_productive": 2
+  },
+  "checkpoint": "CANTO-SPAN-v0.5.182-ACCEPTANCE.md",
+  "documentation": {
+    "status": "CONSOLIDATED_WITH_ACTIVE_RESEARCH_CHECKPOINT",
+    "runtime_behavior_changed": false,
+    "authority_entry": "canto-span/docs/current/00-START-HERE.md",
+    "history_root": "canto-span/archive/release-history/",
+    "research_checkpoint": "canto-span/docs/research/CP023-P1-PROG01-R3-RESEARCH-CHECKPOINT.md"
+  },
+  "active_research_package": "CP023-P1-PROG01-R3"
+}

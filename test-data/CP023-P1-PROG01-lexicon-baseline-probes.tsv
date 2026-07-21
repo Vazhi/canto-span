@@ -1,0 +1,33 @@
+surface	research_note
+數據	atomic source noun
+九巴	atomic source proper name
+錫	metal homograph baseline
+線	wire/line noun baseline
+錫條	technical source noun
+錫線	technical source noun
+布甸	atomic source noun
+唱	source predicate
+兒歌	atomic source noun
+樓	property/building noun
+叉燒包	atomic source noun; false segmentation risk
+報告	known noun baseline
+信	polysemous noun/verb baseline
+封	letter classifier baseline
+封信	classifier NP baseline
+首歌	known classifier NP baseline
+首兒歌	source classifier NP
+嗰份報告	known demonstrative-classifier NP
+啲九巴嘅數據	source associative/plural object
+好靚嘅衫	known modified NP
+着	wear homograph baseline
+着衫	wear predicate plus object
+寫緊封信	progressive with polysemous noun
+睇緊嗰份報告	progressive with demonstrative-classifier NP
+聽緊首歌	progressive with classifier NP
+食緊叉燒包	progressive false segmentation risk
+唱緊首兒歌	source progressive
+着緊好靚嘅衫	source progressive
+買緊樓	source progressive
+整緊布甸	source progressive
+問緊錫條同埋錫線	source progressive coordinated object
+睇緊啲九巴嘅數據	source progressive associative/plural object

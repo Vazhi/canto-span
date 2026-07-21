@@ -1,0 +1,73 @@
+{
+  "schema": "canto-span-source-accounting-audit-v2",
+  "checkpoint": "v0.5.183-phase0-status-reconciliation-r1",
+  "active_labels": 181,
+  "re_audit_queue": 23,
+  "supported_productive": 0,
+  "provisional_reaudit": 2,
+  "ordinary_provisional": 0,
+  "research_pending": 58,
+  "total": 13,
+  "passed": 13,
+  "failed": 0,
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "runtime registry has 181 labels",
+      "pass": true,
+      "detail": "181"
+    },
+    {
+      "name": "legitimacy has 181 rows",
+      "pass": true,
+      "detail": "181"
+    },
+    {
+      "name": "source accounting has 181 rows",
+      "pass": true,
+      "detail": "181"
+    },
+    {
+      "name": "source accounting covers registry",
+      "pass": true
+    },
+    {
+      "name": "legitimacy covers registry",
+      "pass": true
+    },
+    {
+      "name": "re-audit ledger has 23 rows",
+      "pass": true,
+      "detail": "23"
+    },
+    {
+      "name": "no row is currently promotion eligible",
+      "pass": true
+    },
+    {
+      "name": "current supported_productive is zero",
+      "pass": true
+    },
+    {
+      "name": "two source-accounting rows are provisional_reaudit",
+      "pass": true
+    },
+    {
+      "name": "ordinary provisional is zero",
+      "pass": true
+    },
+    {
+      "name": "21 prior provisional rows returned to research_pending",
+      "pass": true
+    },
+    {
+      "name": "all re-audit ledger statuses match source accounting",
+      "pass": true
+    },
+    {
+      "name": "all re-audit rows remain ineligible for provisional or productive promotion",
+      "pass": true
+    }
+  ],
+  "failures": []
+}

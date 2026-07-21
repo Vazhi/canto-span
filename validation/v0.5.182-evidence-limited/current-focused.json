@@ -1,0 +1,82 @@
+{
+  "schema": "canto-span-current-focused-result-v6",
+  "version": "0.5.182",
+  "status": "EVIDENCE_LIMITED",
+  "strict_ready": false,
+  "accepted_baseline": "v0.5.180",
+  "rejected_predecessor": "v0.5.181",
+  "active_candidate": "v0.5.182",
+  "active_labels": 179,
+  "supported_productive": 1,
+  "render": {
+    "status": "PASS",
+    "rows": 15,
+    "assertions": "133/133"
+  },
+  "heldout": {
+    "status": "PASS_CONSUMED",
+    "count": 8,
+    "opened": true,
+    "passed": 8,
+    "reusable": false
+  },
+  "aggregate_regression": {
+    "passed": 545,
+    "total": 545,
+    "excluded": 0
+  },
+  "promotion": {
+    "status": "BLOCKED",
+    "target": "ResourceUseLaiFunctionRelation",
+    "current_status": "provisional",
+    "minimum_independent_natural_examples": 3,
+    "source_integrated_independent_examples": 1,
+    "additional_preliminary_candidates": 1,
+    "reason": "productive acceptance minimum not yet met"
+  },
+  "checks": [
+    {
+      "name": "render adjudication 133/133",
+      "pass": true
+    },
+    {
+      "name": "fresh heldout 8/8; consumed",
+      "pass": true
+    },
+    {
+      "name": "visible remediation 60/60",
+      "pass": true
+    },
+    {
+      "name": "implementation audit 21/21",
+      "pass": true
+    },
+    {
+      "name": "aggregate regression 545/545",
+      "pass": true
+    },
+    {
+      "name": "source accounting",
+      "pass": true
+    },
+    {
+      "name": "claim provenance 231/231",
+      "pass": true
+    },
+    {
+      "name": "documentation consistency",
+      "pass": true
+    },
+    {
+      "name": "three independent natural examples secured",
+      "pass": false,
+      "detail": "one fully integrated; one preliminary second candidate; at least one further qualifying attestation required"
+    }
+  ],
+  "failures": [
+    {
+      "name": "productive acceptance evidence minimum",
+      "detail": "independent natural example count is below 3"
+    }
+  ]
+}

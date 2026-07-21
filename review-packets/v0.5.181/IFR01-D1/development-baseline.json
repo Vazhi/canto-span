@@ -1,0 +1,3823 @@
+{
+  "schema": "canto-span-v0.5.181-ifr-development-baseline-v1",
+  "runtime_version": "0.5.180",
+  "cases": [
+    {
+      "case_id": "IFR-E01",
+      "surface": "呢個用嚟切嘢。",
+      "class": "exact_source_attestation_with_omitted_noun",
+      "expected": "narrow_subtype_present_context_debt_preserved",
+      "top_constructions": [
+        "IntendedFunctionRelation"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "呢個用嚟切嘢"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "rows": [
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "IntendedFunctionRelation",
+          "surface": "呢個用嚟切嘢",
+          "label": "Use / function",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "clause",
+            "function_relation",
+            "function_topic",
+            "intended_function_relation",
+            "predicate",
+            "purpose_lai_marker",
+            "purpose_predicate",
+            "purpose_use_verb",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "DemonstrativeClassifierNP",
+          "surface": "呢個",
+          "label": "NP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "classifier",
+            "demonstrative",
+            "head_noun",
+            "np",
+            "object",
+            "topic"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "DemonstrativeClassifierNP",
+          "construction": "",
+          "surface": "呢",
+          "label": "",
+          "role": "func",
+          "jyutping": "ni1",
+          "syntax": "demonstrative_determiner",
+          "slots": [
+            "demonstrative"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "DemonstrativeClassifierNP",
+          "construction": "",
+          "surface": "個",
+          "label": "",
+          "role": "measure_word",
+          "jyutping": "go3",
+          "syntax": "general_classifier",
+          "slots": [
+            "classifier"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "用",
+          "label": "",
+          "role": "func",
+          "jyutping": "jung6",
+          "syntax": "intended_function_use_marker",
+          "slots": [
+            "intended_function_marker",
+            "purpose_use_verb"
+          ],
+          "trace": "construction_internal_parser_inactive_clone",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "嚟",
+          "label": "",
+          "role": "func",
+          "jyutping": "lai4",
+          "syntax": "intended_function_lai_linker purposive_linker",
+          "slots": [
+            "purpose_lai_marker",
+            "purpose_linker"
+          ],
+          "trace": "construction_internal_parser_inactive_clone",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "切",
+          "label": "",
+          "role": "neutral",
+          "jyutping": "cit3",
+          "syntax": "unknown_cjk_or_text",
+          "slots": [],
+          "trace": "unknown_atomic",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "嘢",
+          "label": "",
+          "role": "what",
+          "jyutping": "je5",
+          "syntax": "object_np",
+          "slots": [
+            "head_noun",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "text",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "。",
+          "label": "",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [],
+          "trace": "punctuation_or_plain_text",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        }
+      ]
+    },
+    {
+      "case_id": "IFR-V01",
+      "surface": "呢張枱用嚟食飯。",
+      "class": "explicit_resource_function",
+      "expected": "narrow_subtype_present",
+      "top_constructions": [
+        "IntendedFunctionRelation"
+      ],
+      "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+      "coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "呢張枱用嚟食飯"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "rows": [
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "IntendedFunctionRelation",
+          "surface": "呢張枱用嚟食飯",
+          "label": "Use / function",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "clause",
+            "function_relation",
+            "function_topic",
+            "intended_function_relation",
+            "predicate",
+            "purpose_lai_marker",
+            "purpose_predicate",
+            "purpose_use_verb",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "DemonstrativeClassifierNP",
+          "surface": "呢張枱",
+          "label": "NP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "classifier",
+            "construction_span",
+            "demonstrative",
+            "head_noun",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "DemonstrativeClassifierNP",
+          "construction": "",
+          "surface": "呢",
+          "label": "",
+          "role": "func",
+          "jyutping": "ni1",
+          "syntax": "demonstrative_determiner",
+          "slots": [
+            "demonstrative"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "DemonstrativeClassifierNP",
+          "construction": "",
+          "surface": "張",
+          "label": "",
+          "role": "measure_word",
+          "jyutping": "zoeng1",
+          "syntax": "classifier_flat_surface_table",
+          "slots": [
+            "classifier"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "DemonstrativeClassifierNP",
+          "construction": "",
+          "surface": "枱",
+          "label": "",
+          "role": "what",
+          "jyutping": "toi2",
+          "syntax": "object_np location_base",
+          "slots": [
+            "head_noun",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "用",
+          "label": "",
+          "role": "func",
+          "jyutping": "jung6",
+          "syntax": "intended_function_use_marker",
+          "slots": [
+            "intended_function_marker",
+            "purpose_use_verb"
+          ],
+          "trace": "construction_internal_parser_inactive_clone",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "嚟",
+          "label": "",
+          "role": "func",
+          "jyutping": "lai4",
+          "syntax": "intended_function_lai_linker purposive_linker",
+          "slots": [
+            "purpose_lai_marker",
+            "purpose_linker"
+          ],
+          "trace": "construction_internal_parser_inactive_clone",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "食",
+          "label": "",
+          "role": "doing",
+          "jyutping": "sik6",
+          "syntax": "verb",
+          "slots": [
+            "action_verb",
+            "consumption_verb",
+            "main_verb",
+            "predicate",
+            "purpose_verb",
+            "stative_complement_head"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "飯",
+          "label": "",
+          "role": "what",
+          "jyutping": "faan6",
+          "syntax": "object",
+          "slots": [
+            "head_noun",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "text",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "。",
+          "label": "",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [],
+          "trace": "punctuation_or_plain_text",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        }
+      ]
+    },
+    {
+      "case_id": "IFR-V02",
+      "surface": "呢把刀用嚟切肉。",
+      "class": "explicit_resource_function",
+      "expected": "narrow_subtype_present",
+      "top_constructions": [
+        "IntendedFunctionRelation"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "呢把刀用嚟切肉"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "rows": [
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "IntendedFunctionRelation",
+          "surface": "呢把刀用嚟切肉",
+          "label": "Use / function",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "clause",
+            "function_relation",
+            "function_topic",
+            "intended_function_relation",
+            "predicate",
+            "purpose_lai_marker",
+            "purpose_predicate",
+            "purpose_use_verb",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "呢",
+          "label": "",
+          "role": "func",
+          "jyutping": "ni1",
+          "syntax": "demonstrative_determiner",
+          "slots": [
+            "demonstrative"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "把",
+          "label": "",
+          "role": "measure_word",
+          "jyutping": "baa2",
+          "syntax": "classifier_handled_object",
+          "slots": [
+            "classifier",
+            "object"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "刀",
+          "label": "",
+          "role": "neutral",
+          "jyutping": "dou1",
+          "syntax": "unknown_cjk_or_text",
+          "slots": [],
+          "trace": "unknown_atomic",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "用",
+          "label": "",
+          "role": "func",
+          "jyutping": "jung6",
+          "syntax": "intended_function_use_marker",
+          "slots": [
+            "intended_function_marker",
+            "purpose_use_verb"
+          ],
+          "trace": "construction_internal_parser_inactive_clone",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "嚟",
+          "label": "",
+          "role": "func",
+          "jyutping": "lai4",
+          "syntax": "intended_function_lai_linker purposive_linker",
+          "slots": [
+            "purpose_lai_marker",
+            "purpose_linker"
+          ],
+          "trace": "construction_internal_parser_inactive_clone",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "切",
+          "label": "",
+          "role": "neutral",
+          "jyutping": "cit3",
+          "syntax": "unknown_cjk_or_text",
+          "slots": [],
+          "trace": "unknown_atomic",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "肉",
+          "label": "",
+          "role": "what",
+          "jyutping": "juk6",
+          "syntax": "object_np",
+          "slots": [
+            "head_noun",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "text",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "。",
+          "label": "",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [],
+          "trace": "punctuation_or_plain_text",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        }
+      ]
+    },
+    {
+      "case_id": "IFR-V03",
+      "surface": "呢個杯用嚟飲水。",
+      "class": "explicit_resource_function",
+      "expected": "narrow_subtype_present",
+      "top_constructions": [
+        "IntendedFunctionRelation"
+      ],
+      "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+      "coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "呢個杯用嚟飲水"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "rows": [
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "IntendedFunctionRelation",
+          "surface": "呢個杯用嚟飲水",
+          "label": "Use / function",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "clause",
+            "function_relation",
+            "function_topic",
+            "intended_function_relation",
+            "predicate",
+            "purpose_lai_marker",
+            "purpose_predicate",
+            "purpose_use_verb",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "DemonstrativeClassifierNP",
+          "surface": "呢個",
+          "label": "NP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "classifier",
+            "demonstrative",
+            "head_noun",
+            "np",
+            "object",
+            "topic"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "DemonstrativeClassifierNP",
+          "construction": "",
+          "surface": "呢",
+          "label": "",
+          "role": "func",
+          "jyutping": "ni1",
+          "syntax": "demonstrative_determiner",
+          "slots": [
+            "demonstrative"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "DemonstrativeClassifierNP",
+          "construction": "",
+          "surface": "個",
+          "label": "",
+          "role": "measure_word",
+          "jyutping": "go3",
+          "syntax": "general_classifier",
+          "slots": [
+            "classifier"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "杯",
+          "label": "",
+          "role": "measure_word",
+          "jyutping": "bui1",
+          "syntax": "classifier_container_cup",
+          "slots": [
+            "classifier"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "用",
+          "label": "",
+          "role": "func",
+          "jyutping": "jung6",
+          "syntax": "intended_function_use_marker",
+          "slots": [
+            "intended_function_marker",
+            "purpose_use_verb"
+          ],
+          "trace": "construction_internal_parser_inactive_clone",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "嚟",
+          "label": "",
+          "role": "func",
+          "jyutping": "lai4",
+          "syntax": "intended_function_lai_linker purposive_linker",
+          "slots": [
+            "purpose_lai_marker",
+            "purpose_linker"
+          ],
+          "trace": "construction_internal_parser_inactive_clone",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "飲",
+          "label": "",
+          "role": "doing",
+          "jyutping": "jam2",
+          "syntax": "verb",
+          "slots": [
+            "action_verb",
+            "consumption_verb",
+            "main_verb",
+            "predicate",
+            "stative_complement_head"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "水",
+          "label": "",
+          "role": "what",
+          "jyutping": "seoi2",
+          "syntax": "object",
+          "slots": [
+            "head_noun",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "text",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "。",
+          "label": "",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [],
+          "trace": "punctuation_or_plain_text",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        }
+      ]
+    },
+    {
+      "case_id": "IFR-V04",
+      "surface": "呢支筆用嚟寫字。",
+      "class": "explicit_resource_function",
+      "expected": "narrow_subtype_present",
+      "top_constructions": [
+        "IntendedFunctionRelation"
+      ],
+      "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+      "coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "呢支筆用嚟寫字"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "rows": [
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "IntendedFunctionRelation",
+          "surface": "呢支筆用嚟寫字",
+          "label": "Use / function",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "clause",
+            "function_relation",
+            "function_topic",
+            "intended_function_relation",
+            "predicate",
+            "purpose_lai_marker",
+            "purpose_predicate",
+            "purpose_use_verb",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "DemonstrativeClassifierNP",
+          "surface": "呢支筆",
+          "label": "NP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "classifier",
+            "construction_span",
+            "demonstrative",
+            "head_noun",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "DemonstrativeClassifierNP",
+          "construction": "",
+          "surface": "呢",
+          "label": "",
+          "role": "func",
+          "jyutping": "ni1",
+          "syntax": "demonstrative_determiner",
+          "slots": [
+            "demonstrative"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "DemonstrativeClassifierNP",
+          "construction": "",
+          "surface": "支",
+          "label": "",
+          "role": "measure_word",
+          "jyutping": "zi1",
+          "syntax": "classifier_long_rigid pen_classifier",
+          "slots": [
+            "classifier"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "DemonstrativeClassifierNP",
+          "construction": "",
+          "surface": "筆",
+          "label": "",
+          "role": "what",
+          "jyutping": "bat1",
+          "syntax": "object_np instrument_np",
+          "slots": [
+            "head_noun",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "用",
+          "label": "",
+          "role": "func",
+          "jyutping": "jung6",
+          "syntax": "intended_function_use_marker",
+          "slots": [
+            "intended_function_marker",
+            "purpose_use_verb"
+          ],
+          "trace": "construction_internal_parser_inactive_clone",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "嚟",
+          "label": "",
+          "role": "func",
+          "jyutping": "lai4",
+          "syntax": "intended_function_lai_linker purposive_linker",
+          "slots": [
+            "purpose_lai_marker",
+            "purpose_linker"
+          ],
+          "trace": "construction_internal_parser_inactive_clone",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "寫",
+          "label": "",
+          "role": "doing",
+          "jyutping": "se2",
+          "syntax": "verb",
+          "slots": [
+            "action_verb",
+            "main_verb",
+            "predicate"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "字",
+          "label": "",
+          "role": "what",
+          "jyutping": "zi6",
+          "syntax": "object",
+          "slots": [
+            "head_noun",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "text",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "。",
+          "label": "",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [],
+          "trace": "punctuation_or_plain_text",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        }
+      ]
+    },
+    {
+      "case_id": "IFR-V05",
+      "surface": "呢張紙用來寫字。",
+      "class": "orthographic_lai_variant",
+      "expected": "narrow_subtype_present",
+      "top_constructions": [
+        "IntendedFunctionRelation"
+      ],
+      "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+      "coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "呢張紙用來寫字"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "rows": [
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "IntendedFunctionRelation",
+          "surface": "呢張紙用來寫字",
+          "label": "Use / function",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "clause",
+            "function_relation",
+            "function_topic",
+            "intended_function_relation",
+            "predicate",
+            "purpose_lai_marker",
+            "purpose_predicate",
+            "purpose_use_verb",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "DemonstrativeClassifierNP",
+          "surface": "呢張紙",
+          "label": "NP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "classifier",
+            "construction_span",
+            "demonstrative",
+            "head_noun",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "DemonstrativeClassifierNP",
+          "construction": "",
+          "surface": "呢",
+          "label": "",
+          "role": "func",
+          "jyutping": "ni1",
+          "syntax": "demonstrative_determiner",
+          "slots": [
+            "demonstrative"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "DemonstrativeClassifierNP",
+          "construction": "",
+          "surface": "張",
+          "label": "",
+          "role": "measure_word",
+          "jyutping": "zoeng1",
+          "syntax": "classifier_flat_surface_table",
+          "slots": [
+            "classifier"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "DemonstrativeClassifierNP",
+          "construction": "",
+          "surface": "紙",
+          "label": "",
+          "role": "what",
+          "jyutping": "zi2",
+          "syntax": "object_np flat_object_np",
+          "slots": [
+            "head_noun",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "用",
+          "label": "",
+          "role": "func",
+          "jyutping": "jung6",
+          "syntax": "intended_function_use_marker",
+          "slots": [
+            "intended_function_marker",
+            "purpose_use_verb"
+          ],
+          "trace": "construction_internal_parser_inactive_clone",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "來",
+          "label": "",
+          "role": "func",
+          "jyutping": "lai4",
+          "syntax": "intended_function_lai_linker purposive_linker",
+          "slots": [
+            "purpose_lai_marker",
+            "purpose_linker"
+          ],
+          "trace": "construction_internal_parser_inactive_clone",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "寫",
+          "label": "",
+          "role": "doing",
+          "jyutping": "se2",
+          "syntax": "verb",
+          "slots": [
+            "action_verb",
+            "main_verb",
+            "predicate"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "字",
+          "label": "",
+          "role": "what",
+          "jyutping": "zi6",
+          "syntax": "object",
+          "slots": [
+            "head_noun",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "text",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "。",
+          "label": "",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [],
+          "trace": "punctuation_or_plain_text",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        }
+      ]
+    },
+    {
+      "case_id": "IFR-N01",
+      "surface": "啲錢我用嚟買晒嗰堆嘢。",
+      "class": "separate_user_actual_use_boundary",
+      "expected": "narrow_subtype_absent_broad_relation_may_remain",
+      "top_constructions": [
+        "IntendedFunctionRelation"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "啲錢我用嚟買晒嗰堆嘢"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "rows": [
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "IntendedFunctionRelation",
+          "surface": "啲錢我用嚟買晒嗰堆嘢",
+          "label": "Use / function",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "clause",
+            "function_relation",
+            "function_topic",
+            "intended_function_relation",
+            "predicate",
+            "purpose_lai_marker",
+            "purpose_predicate",
+            "purpose_use_verb",
+            "subject",
+            "topic",
+            "user_subject",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "Topic",
+          "surface": "啲錢",
+          "label": "Topic",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "function_topic",
+            "np",
+            "topic"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 2,
+          "parent": "Topic",
+          "construction": "DiMarkedNP",
+          "surface": "啲錢",
+          "label": "NP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "di_marked_np",
+            "head_noun",
+            "np",
+            "object",
+            "quantity",
+            "topic"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 3,
+          "parent": "DiMarkedNP",
+          "construction": "",
+          "surface": "啲",
+          "label": "",
+          "role": "func",
+          "jyutping": "di1",
+          "syntax": "di_determiner",
+          "slots": [
+            "di_determiner",
+            "quantity"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 3,
+          "parent": "DiMarkedNP",
+          "construction": "",
+          "surface": "錢",
+          "label": "",
+          "role": "what",
+          "jyutping": "cin2",
+          "syntax": "object_np",
+          "slots": [
+            "head_noun",
+            "np",
+            "object",
+            "opinion_topic",
+            "price_noun",
+            "scalar_value_noun",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "我",
+          "label": "",
+          "role": "who",
+          "jyutping": "ngo5",
+          "syntax": "subject_or_topic",
+          "slots": [
+            "co_participant",
+            "head_noun",
+            "np",
+            "recipient",
+            "stance_holder",
+            "subject",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "用",
+          "label": "",
+          "role": "func",
+          "jyutping": "jung6",
+          "syntax": "intended_function_use_marker",
+          "slots": [
+            "intended_function_marker",
+            "purpose_use_verb"
+          ],
+          "trace": "construction_internal_parser_inactive_clone",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "嚟",
+          "label": "",
+          "role": "func",
+          "jyutping": "lai4",
+          "syntax": "intended_function_lai_linker purposive_linker",
+          "slots": [
+            "purpose_lai_marker",
+            "purpose_linker"
+          ],
+          "trace": "construction_internal_parser_inactive_clone",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "買",
+          "label": "",
+          "role": "doing",
+          "jyutping": "maai5",
+          "syntax": "verb",
+          "slots": [
+            "action_verb",
+            "main_verb",
+            "predicate"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "晒",
+          "label": "",
+          "role": "func",
+          "jyutping": "saai3",
+          "syntax": "completive_totality_aspect",
+          "slots": [
+            "completion_marker"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "嗰",
+          "label": "",
+          "role": "func",
+          "jyutping": "go2",
+          "syntax": "demonstrative_determiner",
+          "slots": [
+            "demonstrative"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "堆",
+          "label": "",
+          "role": "neutral",
+          "jyutping": "deoi1",
+          "syntax": "unknown_cjk_or_text",
+          "slots": [],
+          "trace": "unknown_atomic",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "嘢",
+          "label": "",
+          "role": "what",
+          "jyutping": "je5",
+          "syntax": "object_np",
+          "slots": [
+            "head_noun",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "text",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "。",
+          "label": "",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [],
+          "trace": "punctuation_or_plain_text",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        }
+      ]
+    },
+    {
+      "case_id": "IFR-N02",
+      "surface": "呢個可以用嚟切嘢。",
+      "class": "modal_affordance_boundary",
+      "expected": "narrow_subtype_absent_broad_relation_review_bearing",
+      "top_constructions": [
+        "IntendedFunctionRelation"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "呢個可以用嚟切嘢"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "rows": [
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "IntendedFunctionRelation",
+          "surface": "呢個可以用嚟切嘢",
+          "label": "Use / function",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "clause",
+            "function_relation",
+            "function_topic",
+            "intended_function_relation",
+            "modal",
+            "predicate",
+            "purpose_lai_marker",
+            "purpose_predicate",
+            "purpose_use_verb",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "DemonstrativeClassifierNP",
+          "surface": "呢個",
+          "label": "NP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "classifier",
+            "demonstrative",
+            "head_noun",
+            "np",
+            "object",
+            "topic"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "DemonstrativeClassifierNP",
+          "construction": "",
+          "surface": "呢",
+          "label": "",
+          "role": "func",
+          "jyutping": "ni1",
+          "syntax": "demonstrative_determiner",
+          "slots": [
+            "demonstrative"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "DemonstrativeClassifierNP",
+          "construction": "",
+          "surface": "個",
+          "label": "",
+          "role": "measure_word",
+          "jyutping": "go3",
+          "syntax": "general_classifier",
+          "slots": [
+            "classifier"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "可以",
+          "label": "",
+          "role": "func",
+          "jyutping": "ho2 ji5",
+          "syntax": "modal_permission_or_ability intended_function_modal",
+          "slots": [
+            "modal"
+          ],
+          "trace": "construction_internal_parser_inactive_clone",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "用",
+          "label": "",
+          "role": "func",
+          "jyutping": "jung6",
+          "syntax": "intended_function_use_marker",
+          "slots": [
+            "intended_function_marker",
+            "purpose_use_verb"
+          ],
+          "trace": "construction_internal_parser_inactive_clone",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "嚟",
+          "label": "",
+          "role": "func",
+          "jyutping": "lai4",
+          "syntax": "intended_function_lai_linker purposive_linker",
+          "slots": [
+            "purpose_lai_marker",
+            "purpose_linker"
+          ],
+          "trace": "construction_internal_parser_inactive_clone",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "切",
+          "label": "",
+          "role": "neutral",
+          "jyutping": "cit3",
+          "syntax": "unknown_cjk_or_text",
+          "slots": [],
+          "trace": "unknown_atomic",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "嘢",
+          "label": "",
+          "role": "what",
+          "jyutping": "je5",
+          "syntax": "object_np",
+          "slots": [
+            "head_noun",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "text",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "。",
+          "label": "",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [],
+          "trace": "punctuation_or_plain_text",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        }
+      ]
+    },
+    {
+      "case_id": "IFR-N03",
+      "surface": "呢個係用嚟切嘢。",
+      "class": "copular_boundary",
+      "expected": "narrow_subtype_absent_broad_relation_may_remain",
+      "top_constructions": [
+        "IntendedFunctionRelation"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "呢個係用嚟切嘢"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "rows": [
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "IntendedFunctionRelation",
+          "surface": "呢個係用嚟切嘢",
+          "label": "Use / function",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "clause",
+            "copula",
+            "function_relation",
+            "function_topic",
+            "intended_function_relation",
+            "predicate",
+            "purpose_lai_marker",
+            "purpose_predicate",
+            "purpose_use_verb",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "DemonstrativeClassifierNP",
+          "surface": "呢個",
+          "label": "NP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "classifier",
+            "demonstrative",
+            "head_noun",
+            "np",
+            "object",
+            "topic"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "DemonstrativeClassifierNP",
+          "construction": "",
+          "surface": "呢",
+          "label": "",
+          "role": "func",
+          "jyutping": "ni1",
+          "syntax": "demonstrative_determiner",
+          "slots": [
+            "demonstrative"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "DemonstrativeClassifierNP",
+          "construction": "",
+          "surface": "個",
+          "label": "",
+          "role": "measure_word",
+          "jyutping": "go3",
+          "syntax": "general_classifier",
+          "slots": [
+            "classifier"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "係",
+          "label": "",
+          "role": "func",
+          "jyutping": "hai6",
+          "syntax": "intended_function_copula",
+          "slots": [
+            "copula"
+          ],
+          "trace": "construction_internal_parser_inactive_clone",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "用",
+          "label": "",
+          "role": "func",
+          "jyutping": "jung6",
+          "syntax": "intended_function_use_marker",
+          "slots": [
+            "intended_function_marker",
+            "purpose_use_verb"
+          ],
+          "trace": "construction_internal_parser_inactive_clone",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "嚟",
+          "label": "",
+          "role": "func",
+          "jyutping": "lai4",
+          "syntax": "intended_function_lai_linker purposive_linker",
+          "slots": [
+            "purpose_lai_marker",
+            "purpose_linker"
+          ],
+          "trace": "construction_internal_parser_inactive_clone",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "切",
+          "label": "",
+          "role": "neutral",
+          "jyutping": "cit3",
+          "syntax": "unknown_cjk_or_text",
+          "slots": [],
+          "trace": "unknown_atomic",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "嘢",
+          "label": "",
+          "role": "what",
+          "jyutping": "je5",
+          "syntax": "object_np",
+          "slots": [
+            "head_noun",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "text",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "。",
+          "label": "",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [],
+          "trace": "punctuation_or_plain_text",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        }
+      ]
+    },
+    {
+      "case_id": "IFR-N04",
+      "surface": "呢個用咗嚟切嘢。",
+      "class": "aspect_interrupted_actual_use_boundary",
+      "expected": "narrow_subtype_absent",
+      "top_constructions": [
+        "DemonstrativeClassifierNP",
+        "PerfectiveVP",
+        "DirectionalMotionVP"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 3,
+        "top_construction_surfaces": [
+          "呢個",
+          "用咗",
+          "嚟"
+        ],
+        "unwrapped_root_nonpunctuation_count": 2,
+        "unwrapped_root_surfaces": [
+          "切",
+          "嘢"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "rows": [
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "DemonstrativeClassifierNP",
+          "surface": "呢個",
+          "label": "NP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "classifier",
+            "demonstrative",
+            "head_noun",
+            "np",
+            "object",
+            "topic"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "DemonstrativeClassifierNP",
+          "construction": "",
+          "surface": "呢",
+          "label": "",
+          "role": "func",
+          "jyutping": "ni1",
+          "syntax": "demonstrative_determiner",
+          "slots": [
+            "demonstrative"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "DemonstrativeClassifierNP",
+          "construction": "",
+          "surface": "個",
+          "label": "",
+          "role": "measure_word",
+          "jyutping": "go3",
+          "syntax": "general_classifier",
+          "slots": [
+            "classifier"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "PerfectiveVP",
+          "surface": "用咗",
+          "label": "PerfectiveVP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "completion_vp",
+            "particle",
+            "perfective_aspect",
+            "perfective_vp",
+            "predicate",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "PerfectiveVP",
+          "construction": "",
+          "surface": "用",
+          "label": "",
+          "role": "doing",
+          "jyutping": "jung6",
+          "syntax": "verb use_verb instrument_coverb",
+          "slots": [
+            "action_verb",
+            "coverb_marker",
+            "main_verb",
+            "predicate"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "PerfectiveVP",
+          "construction": "",
+          "surface": "咗",
+          "label": "",
+          "role": "func",
+          "jyutping": "zo2",
+          "syntax": "perfective_aspect",
+          "slots": [
+            "aspect_marker",
+            "perfective_aspect"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "DirectionalMotionVP",
+          "surface": "嚟",
+          "label": "MotionVP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "directional_motion_vp",
+            "motion_predicate",
+            "movement_verb",
+            "predicate",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "DirectionalMotionVP",
+          "construction": "",
+          "surface": "嚟",
+          "label": "",
+          "role": "doing",
+          "jyutping": "lai4",
+          "syntax": "deictic_motion_marker",
+          "slots": [
+            "action_verb",
+            "deictic_motion_marker",
+            "main_verb",
+            "movement_verb",
+            "predicate"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "切",
+          "label": "",
+          "role": "neutral",
+          "jyutping": "cit3",
+          "syntax": "unknown_cjk_or_text",
+          "slots": [],
+          "trace": "unknown_atomic",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "嘢",
+          "label": "",
+          "role": "what",
+          "jyutping": "je5",
+          "syntax": "object_np",
+          "slots": [
+            "head_noun",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "text",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "。",
+          "label": "",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [],
+          "trace": "punctuation_or_plain_text",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        }
+      ]
+    },
+    {
+      "case_id": "IFR-N05",
+      "surface": "我用刀切嘢。",
+      "class": "ordinary_instrumental_use_boundary",
+      "expected": "narrow_subtype_absent",
+      "top_constructions": [],
+      "semantic_acceptance_status": "BLOCKED",
+      "coverage": {
+        "status": "NO_TOP_CONSTRUCTION",
+        "top_construction_count": 0,
+        "top_construction_surfaces": [],
+        "unwrapped_root_nonpunctuation_count": 5,
+        "unwrapped_root_surfaces": [
+          "我",
+          "用",
+          "刀",
+          "切",
+          "嘢"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "rows": [
+        {
+          "kind": "token",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "我",
+          "label": "",
+          "role": "who",
+          "jyutping": "ngo5",
+          "syntax": "subject_or_topic",
+          "slots": [
+            "co_participant",
+            "head_noun",
+            "np",
+            "recipient",
+            "stance_holder",
+            "subject",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "用",
+          "label": "",
+          "role": "doing",
+          "jyutping": "jung6",
+          "syntax": "verb use_verb instrument_coverb",
+          "slots": [
+            "action_verb",
+            "coverb_marker",
+            "main_verb",
+            "predicate"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "刀",
+          "label": "",
+          "role": "neutral",
+          "jyutping": "dou1",
+          "syntax": "unknown_cjk_or_text",
+          "slots": [],
+          "trace": "unknown_atomic",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "切",
+          "label": "",
+          "role": "neutral",
+          "jyutping": "cit3",
+          "syntax": "unknown_cjk_or_text",
+          "slots": [],
+          "trace": "unknown_atomic",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "嘢",
+          "label": "",
+          "role": "what",
+          "jyutping": "je5",
+          "syntax": "object_np",
+          "slots": [
+            "head_noun",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "text",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "。",
+          "label": "",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [],
+          "trace": "punctuation_or_plain_text",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        }
+      ]
+    },
+    {
+      "case_id": "IFR-N06",
+      "surface": "我買刀嚟切嘢。",
+      "class": "general_purposive_lai_boundary",
+      "expected": "narrow_subtype_absent",
+      "top_constructions": [
+        "DirectionalMotionVP"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "嚟"
+        ],
+        "unwrapped_root_nonpunctuation_count": 5,
+        "unwrapped_root_surfaces": [
+          "我",
+          "買",
+          "刀",
+          "切",
+          "嘢"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "rows": [
+        {
+          "kind": "token",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "我",
+          "label": "",
+          "role": "who",
+          "jyutping": "ngo5",
+          "syntax": "subject_or_topic",
+          "slots": [
+            "co_participant",
+            "head_noun",
+            "np",
+            "recipient",
+            "stance_holder",
+            "subject",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "買",
+          "label": "",
+          "role": "doing",
+          "jyutping": "maai5",
+          "syntax": "verb",
+          "slots": [
+            "action_verb",
+            "main_verb",
+            "predicate"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "刀",
+          "label": "",
+          "role": "neutral",
+          "jyutping": "dou1",
+          "syntax": "unknown_cjk_or_text",
+          "slots": [],
+          "trace": "unknown_atomic",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "DirectionalMotionVP",
+          "surface": "嚟",
+          "label": "MotionVP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "directional_motion_vp",
+            "motion_predicate",
+            "movement_verb",
+            "predicate",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "DirectionalMotionVP",
+          "construction": "",
+          "surface": "嚟",
+          "label": "",
+          "role": "doing",
+          "jyutping": "lai4",
+          "syntax": "deictic_motion_marker",
+          "slots": [
+            "action_verb",
+            "deictic_motion_marker",
+            "main_verb",
+            "movement_verb",
+            "predicate"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "切",
+          "label": "",
+          "role": "neutral",
+          "jyutping": "cit3",
+          "syntax": "unknown_cjk_or_text",
+          "slots": [],
+          "trace": "unknown_atomic",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "嘢",
+          "label": "",
+          "role": "what",
+          "jyutping": "je5",
+          "syntax": "object_np",
+          "slots": [
+            "head_noun",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "text",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "。",
+          "label": "",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [],
+          "trace": "punctuation_or_plain_text",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        }
+      ]
+    },
+    {
+      "case_id": "IFR-N07",
+      "surface": "呢個唔用嚟切嘢。",
+      "class": "negated_boundary",
+      "expected": "narrow_subtype_absent",
+      "top_constructions": [
+        "DemonstrativeClassifierNP",
+        "NegatedDirectionalMotionVP"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 2,
+        "top_construction_surfaces": [
+          "呢個",
+          "唔用嚟"
+        ],
+        "unwrapped_root_nonpunctuation_count": 2,
+        "unwrapped_root_surfaces": [
+          "切",
+          "嘢"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "rows": [
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "DemonstrativeClassifierNP",
+          "surface": "呢個",
+          "label": "NP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "classifier",
+            "demonstrative",
+            "head_noun",
+            "np",
+            "object",
+            "topic"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "DemonstrativeClassifierNP",
+          "construction": "",
+          "surface": "呢",
+          "label": "",
+          "role": "func",
+          "jyutping": "ni1",
+          "syntax": "demonstrative_determiner",
+          "slots": [
+            "demonstrative"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "DemonstrativeClassifierNP",
+          "construction": "",
+          "surface": "個",
+          "label": "",
+          "role": "measure_word",
+          "jyutping": "go3",
+          "syntax": "general_classifier",
+          "slots": [
+            "classifier"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "NegatedDirectionalMotionVP",
+          "surface": "唔用嚟",
+          "label": "NegMotionVP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "directional_motion_vp",
+            "motion_predicate",
+            "movement_verb",
+            "negated_directional_motion_vp",
+            "negator",
+            "predicate",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "NegatedDirectionalMotionVP",
+          "construction": "",
+          "surface": "唔",
+          "label": "",
+          "role": "func",
+          "jyutping": "m4",
+          "syntax": "negator",
+          "slots": [
+            "m4_negator",
+            "negator"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 1,
+          "parent": "NegatedDirectionalMotionVP",
+          "construction": "VerbComplementVP",
+          "surface": "用嚟",
+          "label": "VerbCompVP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "directional_motion_vp",
+            "main_verb",
+            "predicate",
+            "verb_complement",
+            "verb_complement_vp",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "VerbComplementVP",
+          "construction": "",
+          "surface": "用",
+          "label": "",
+          "role": "doing",
+          "jyutping": "jung6",
+          "syntax": "main_verb",
+          "slots": [
+            "action_verb",
+            "coverb_marker",
+            "main_verb",
+            "predicate"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 2,
+          "parent": "VerbComplementVP",
+          "construction": "DirectionalMotionVP",
+          "surface": "嚟",
+          "label": "MotionVP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "directional_motion_vp",
+            "motion_predicate",
+            "movement_verb",
+            "predicate",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 3,
+          "parent": "DirectionalMotionVP",
+          "construction": "",
+          "surface": "嚟",
+          "label": "",
+          "role": "doing",
+          "jyutping": "lai4",
+          "syntax": "deictic_motion_marker",
+          "slots": [
+            "action_verb",
+            "deictic_motion_marker",
+            "main_verb",
+            "movement_verb",
+            "predicate"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "切",
+          "label": "",
+          "role": "neutral",
+          "jyutping": "cit3",
+          "syntax": "unknown_cjk_or_text",
+          "slots": [],
+          "trace": "unknown_atomic",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "嘢",
+          "label": "",
+          "role": "what",
+          "jyutping": "je5",
+          "syntax": "object_np",
+          "slots": [
+            "head_noun",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "text",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "。",
+          "label": "",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [],
+          "trace": "punctuation_or_plain_text",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        }
+      ]
+    },
+    {
+      "case_id": "IFR-N08",
+      "surface": "呢個用唔用嚟切嘢？",
+      "class": "a_not_a_boundary",
+      "expected": "narrow_subtype_absent",
+      "top_constructions": [
+        "DemonstrativeClassifierNP",
+        "VerbComplementVP"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 2,
+        "top_construction_surfaces": [
+          "呢個",
+          "用唔用嚟"
+        ],
+        "unwrapped_root_nonpunctuation_count": 2,
+        "unwrapped_root_surfaces": [
+          "切",
+          "嘢"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "rows": [
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "DemonstrativeClassifierNP",
+          "surface": "呢個",
+          "label": "NP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "classifier",
+            "demonstrative",
+            "head_noun",
+            "np",
+            "object",
+            "topic"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "DemonstrativeClassifierNP",
+          "construction": "",
+          "surface": "呢",
+          "label": "",
+          "role": "func",
+          "jyutping": "ni1",
+          "syntax": "demonstrative_determiner",
+          "slots": [
+            "demonstrative"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "DemonstrativeClassifierNP",
+          "construction": "",
+          "surface": "個",
+          "label": "",
+          "role": "measure_word",
+          "jyutping": "go3",
+          "syntax": "general_classifier",
+          "slots": [
+            "classifier"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "VerbComplementVP",
+          "surface": "用唔用嚟",
+          "label": "VerbCompVP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "directional_motion_vp",
+            "main_verb",
+            "predicate",
+            "verb_complement",
+            "verb_complement_vp",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "VerbComplementVP",
+          "construction": "",
+          "surface": "用",
+          "label": "",
+          "role": "doing",
+          "jyutping": "jung6",
+          "syntax": "main_verb",
+          "slots": [
+            "action_verb",
+            "coverb_marker",
+            "main_verb",
+            "predicate"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 1,
+          "parent": "VerbComplementVP",
+          "construction": "NegatedDirectionalMotionVP",
+          "surface": "唔用嚟",
+          "label": "NegMotionVP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "directional_motion_vp",
+            "motion_predicate",
+            "movement_verb",
+            "negated_directional_motion_vp",
+            "negator",
+            "predicate",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "NegatedDirectionalMotionVP",
+          "construction": "",
+          "surface": "唔",
+          "label": "",
+          "role": "func",
+          "jyutping": "m4",
+          "syntax": "negator",
+          "slots": [
+            "m4_negator",
+            "negator"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 2,
+          "parent": "NegatedDirectionalMotionVP",
+          "construction": "VerbComplementVP",
+          "surface": "用嚟",
+          "label": "VerbCompVP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "directional_motion_vp",
+            "main_verb",
+            "predicate",
+            "verb_complement",
+            "verb_complement_vp",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 3,
+          "parent": "VerbComplementVP",
+          "construction": "",
+          "surface": "用",
+          "label": "",
+          "role": "doing",
+          "jyutping": "jung6",
+          "syntax": "main_verb",
+          "slots": [
+            "action_verb",
+            "coverb_marker",
+            "main_verb",
+            "predicate"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 3,
+          "parent": "VerbComplementVP",
+          "construction": "DirectionalMotionVP",
+          "surface": "嚟",
+          "label": "MotionVP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "directional_motion_vp",
+            "motion_predicate",
+            "movement_verb",
+            "predicate",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 4,
+          "parent": "DirectionalMotionVP",
+          "construction": "",
+          "surface": "嚟",
+          "label": "",
+          "role": "doing",
+          "jyutping": "lai4",
+          "syntax": "deictic_motion_marker",
+          "slots": [
+            "action_verb",
+            "deictic_motion_marker",
+            "main_verb",
+            "movement_verb",
+            "predicate"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "切",
+          "label": "",
+          "role": "neutral",
+          "jyutping": "cit3",
+          "syntax": "unknown_cjk_or_text",
+          "slots": [],
+          "trace": "unknown_atomic",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "嘢",
+          "label": "",
+          "role": "what",
+          "jyutping": "je5",
+          "syntax": "object_np",
+          "slots": [
+            "head_noun",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "text",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "？",
+          "label": "",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [],
+          "trace": "punctuation_or_plain_text",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        }
+      ]
+    },
+    {
+      "case_id": "IFR-N09",
+      "surface": "用來用去。",
+      "class": "reduplication_boundary",
+      "expected": "narrow_subtype_absent",
+      "top_constructions": [
+        "VerbComplementVP"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "用去"
+        ],
+        "unwrapped_root_nonpunctuation_count": 2,
+        "unwrapped_root_surfaces": [
+          "用",
+          "來"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "rows": [
+        {
+          "kind": "token",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "用",
+          "label": "",
+          "role": "doing",
+          "jyutping": "jung6",
+          "syntax": "verb use_verb instrument_coverb",
+          "slots": [
+            "action_verb",
+            "coverb_marker",
+            "main_verb",
+            "predicate"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "來",
+          "label": "",
+          "role": "neutral",
+          "jyutping": "lai4",
+          "syntax": "unknown_cjk_or_text",
+          "slots": [],
+          "trace": "unknown_atomic",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "VerbComplementVP",
+          "surface": "用去",
+          "label": "VerbCompVP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "directional_motion_vp",
+            "main_verb",
+            "predicate",
+            "verb_complement",
+            "verb_complement_vp",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "VerbComplementVP",
+          "construction": "",
+          "surface": "用",
+          "label": "",
+          "role": "doing",
+          "jyutping": "jung6",
+          "syntax": "main_verb",
+          "slots": [
+            "action_verb",
+            "coverb_marker",
+            "main_verb",
+            "predicate"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 1,
+          "parent": "VerbComplementVP",
+          "construction": "DirectionalMotionVP",
+          "surface": "去",
+          "label": "MotionVP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "directional_motion_vp",
+            "motion_predicate",
+            "movement_verb",
+            "predicate",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "DirectionalMotionVP",
+          "construction": "",
+          "surface": "去",
+          "label": "",
+          "role": "doing",
+          "jyutping": "heoi3",
+          "syntax": "deictic_motion_marker",
+          "slots": [
+            "action_verb",
+            "deictic_motion_marker",
+            "main_verb",
+            "movement_verb",
+            "predicate"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "text",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "。",
+          "label": "",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [],
+          "trace": "punctuation_or_plain_text",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        }
+      ]
+    },
+    {
+      "case_id": "IFR-N10",
+      "surface": "我用嚟切嘢。",
+      "class": "lone_user_missing_resource_boundary",
+      "expected": "narrow_subtype_absent",
+      "top_constructions": [
+        "VerbComplementVP"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "用嚟"
+        ],
+        "unwrapped_root_nonpunctuation_count": 3,
+        "unwrapped_root_surfaces": [
+          "我",
+          "切",
+          "嘢"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "rows": [
+        {
+          "kind": "token",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "我",
+          "label": "",
+          "role": "who",
+          "jyutping": "ngo5",
+          "syntax": "subject_or_topic",
+          "slots": [
+            "co_participant",
+            "head_noun",
+            "np",
+            "recipient",
+            "stance_holder",
+            "subject",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "VerbComplementVP",
+          "surface": "用嚟",
+          "label": "VerbCompVP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "directional_motion_vp",
+            "main_verb",
+            "predicate",
+            "verb_complement",
+            "verb_complement_vp",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "VerbComplementVP",
+          "construction": "",
+          "surface": "用",
+          "label": "",
+          "role": "doing",
+          "jyutping": "jung6",
+          "syntax": "main_verb",
+          "slots": [
+            "action_verb",
+            "coverb_marker",
+            "main_verb",
+            "predicate"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 1,
+          "parent": "VerbComplementVP",
+          "construction": "DirectionalMotionVP",
+          "surface": "嚟",
+          "label": "MotionVP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "directional_motion_vp",
+            "motion_predicate",
+            "movement_verb",
+            "predicate",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "DirectionalMotionVP",
+          "construction": "",
+          "surface": "嚟",
+          "label": "",
+          "role": "doing",
+          "jyutping": "lai4",
+          "syntax": "deictic_motion_marker",
+          "slots": [
+            "action_verb",
+            "deictic_motion_marker",
+            "main_verb",
+            "movement_verb",
+            "predicate"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "切",
+          "label": "",
+          "role": "neutral",
+          "jyutping": "cit3",
+          "syntax": "unknown_cjk_or_text",
+          "slots": [],
+          "trace": "unknown_atomic",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "嘢",
+          "label": "",
+          "role": "what",
+          "jyutping": "je5",
+          "syntax": "object_np",
+          "slots": [
+            "head_noun",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "text",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "。",
+          "label": "",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [],
+          "trace": "punctuation_or_plain_text",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        }
+      ]
+    },
+    {
+      "case_id": "IFR-N11",
+      "surface": "呢個用嚟。",
+      "class": "missing_predicate_boundary",
+      "expected": "narrow_subtype_absent",
+      "top_constructions": [
+        "DemonstrativeClassifierNP",
+        "VerbComplementVP"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "coverage": {
+        "status": "MULTIPLE_ROOT_CONSTRUCTIONS",
+        "top_construction_count": 2,
+        "top_construction_surfaces": [
+          "呢個",
+          "用嚟"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "rows": [
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "DemonstrativeClassifierNP",
+          "surface": "呢個",
+          "label": "NP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "classifier",
+            "demonstrative",
+            "head_noun",
+            "np",
+            "object",
+            "topic"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "DemonstrativeClassifierNP",
+          "construction": "",
+          "surface": "呢",
+          "label": "",
+          "role": "func",
+          "jyutping": "ni1",
+          "syntax": "demonstrative_determiner",
+          "slots": [
+            "demonstrative"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "DemonstrativeClassifierNP",
+          "construction": "",
+          "surface": "個",
+          "label": "",
+          "role": "measure_word",
+          "jyutping": "go3",
+          "syntax": "general_classifier",
+          "slots": [
+            "classifier"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "VerbComplementVP",
+          "surface": "用嚟",
+          "label": "VerbCompVP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "directional_motion_vp",
+            "main_verb",
+            "predicate",
+            "verb_complement",
+            "verb_complement_vp",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "VerbComplementVP",
+          "construction": "",
+          "surface": "用",
+          "label": "",
+          "role": "doing",
+          "jyutping": "jung6",
+          "syntax": "main_verb",
+          "slots": [
+            "action_verb",
+            "coverb_marker",
+            "main_verb",
+            "predicate"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 1,
+          "parent": "VerbComplementVP",
+          "construction": "DirectionalMotionVP",
+          "surface": "嚟",
+          "label": "MotionVP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "directional_motion_vp",
+            "motion_predicate",
+            "movement_verb",
+            "predicate",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "DirectionalMotionVP",
+          "construction": "",
+          "surface": "嚟",
+          "label": "",
+          "role": "doing",
+          "jyutping": "lai4",
+          "syntax": "deictic_motion_marker",
+          "slots": [
+            "action_verb",
+            "deictic_motion_marker",
+            "main_verb",
+            "movement_verb",
+            "predicate"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "text",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "。",
+          "label": "",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [],
+          "trace": "punctuation_or_plain_text",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        }
+      ]
+    },
+    {
+      "case_id": "IFR-N12",
+      "surface": "呢個用嚟切咗嘢。",
+      "class": "perfective_actual_use_boundary",
+      "expected": "narrow_subtype_absent_broad_relation_review_bearing",
+      "top_constructions": [
+        "IntendedFunctionRelation"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "呢個用嚟切咗嘢"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "rows": [
+        {
+          "kind": "construction",
+          "depth": 0,
+          "parent": "",
+          "construction": "IntendedFunctionRelation",
+          "surface": "呢個用嚟切咗嘢",
+          "label": "Use / function",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "action_vp",
+            "clause",
+            "function_relation",
+            "function_topic",
+            "intended_function_relation",
+            "predicate",
+            "purpose_lai_marker",
+            "purpose_predicate",
+            "purpose_use_verb",
+            "vp"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "construction",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "DemonstrativeClassifierNP",
+          "surface": "呢個",
+          "label": "NP",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [
+            "classifier",
+            "demonstrative",
+            "head_noun",
+            "np",
+            "object",
+            "topic"
+          ],
+          "trace": "generative_template",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "DemonstrativeClassifierNP",
+          "construction": "",
+          "surface": "呢",
+          "label": "",
+          "role": "func",
+          "jyutping": "ni1",
+          "syntax": "demonstrative_determiner",
+          "slots": [
+            "demonstrative"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 2,
+          "parent": "DemonstrativeClassifierNP",
+          "construction": "",
+          "surface": "個",
+          "label": "",
+          "role": "measure_word",
+          "jyutping": "go3",
+          "syntax": "general_classifier",
+          "slots": [
+            "classifier"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "用",
+          "label": "",
+          "role": "func",
+          "jyutping": "jung6",
+          "syntax": "intended_function_use_marker",
+          "slots": [
+            "intended_function_marker",
+            "purpose_use_verb"
+          ],
+          "trace": "construction_internal_parser_inactive_clone",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "嚟",
+          "label": "",
+          "role": "func",
+          "jyutping": "lai4",
+          "syntax": "intended_function_lai_linker purposive_linker",
+          "slots": [
+            "purpose_lai_marker",
+            "purpose_linker"
+          ],
+          "trace": "construction_internal_parser_inactive_clone",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "切",
+          "label": "",
+          "role": "neutral",
+          "jyutping": "cit3",
+          "syntax": "unknown_cjk_or_text",
+          "slots": [],
+          "trace": "unknown_atomic",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "咗",
+          "label": "",
+          "role": "func",
+          "jyutping": "zo2",
+          "syntax": "perfective_aspect",
+          "slots": [
+            "aspect_marker",
+            "perfective_aspect"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "token",
+          "depth": 1,
+          "parent": "IntendedFunctionRelation",
+          "construction": "",
+          "surface": "嘢",
+          "label": "",
+          "role": "what",
+          "jyutping": "je5",
+          "syntax": "object_np",
+          "slots": [
+            "head_noun",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "trace": "atomic_lexicon",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        },
+        {
+          "kind": "text",
+          "depth": 0,
+          "parent": "",
+          "construction": "",
+          "surface": "。",
+          "label": "",
+          "role": "",
+          "jyutping": "",
+          "syntax": "",
+          "slots": [],
+          "trace": "punctuation_or_plain_text",
+          "semantic_status": "",
+          "context_requirement_status": ""
+        }
+      ]
+    }
+  ]
+}

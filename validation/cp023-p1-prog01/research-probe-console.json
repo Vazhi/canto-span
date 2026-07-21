@@ -1,0 +1,14 @@
+{
+  "status": "OBSERVATION_ONLY_NOT_ACCEPTANCE_GATE",
+  "counts": {
+    "total": 23,
+    "required": 13,
+    "required_exact": 4,
+    "required_wrong_or_incomplete": 7,
+    "required_absent": 2,
+    "forbidden": 9,
+    "forbidden_with_broad_family_present": 3,
+    "full_root_coverage": 14
+  },
+  "output": "/mnt/data/canto_span_work/recovery/canto-span/validation/cp023-p1-prog01/current-baseline-observation.json"
+}

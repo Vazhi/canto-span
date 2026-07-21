@@ -1,0 +1,195 @@
+{
+  "schema": "canto-span-phase0-status-reconciliation-validation-v1",
+  "checkpoint": "v0.5.183-phase0-status-reconciliation-r1",
+  "parser_behavior_changed": false,
+  "active_labels": 181,
+  "linguistic_status_counts": {
+    "research_pending": 58,
+    "unsupported_generalization": 97,
+    "parser_heuristic": 21,
+    "lexicalized_only": 3,
+    "provisional_reaudit": 2
+  },
+  "runtime_metadata_mismatch_count": 23,
+  "reaudit_queue_count": 23,
+  "runtime_hashes": {
+    "main.js": "e25b6f7142eafce66a172b68d8e409275f127cfe902e93bafaf7147152bfcbe9",
+    "manifest.json": "d7f5a9be248a4efd1839852e8a100a9968273050f0aa5953af2a35c3661801f5",
+    "styles.css": "5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a"
+  },
+  "total": 39,
+  "passed": 39,
+  "failed": 0,
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "source accounting has 181 rows",
+      "pass": true,
+      "detail": "181"
+    },
+    {
+      "name": "status registry has 181 rows",
+      "pass": true,
+      "detail": "181"
+    },
+    {
+      "name": "claim provenance has 181 rows",
+      "pass": true,
+      "detail": "181"
+    },
+    {
+      "name": "legitimacy table has 181 rows",
+      "pass": true,
+      "detail": "181"
+    },
+    {
+      "name": "registry labels unique",
+      "pass": true
+    },
+    {
+      "name": "all active label sets agree",
+      "pass": true
+    },
+    {
+      "name": "linguistic counts match current authority",
+      "pass": true,
+      "detail": "{\"lexicalized_only\": 3, \"parser_heuristic\": 21, \"provisional_reaudit\": 2, \"research_pending\": 58, \"unsupported_generalization\": 97}"
+    },
+    {
+      "name": "ordinary provisional is zero",
+      "pass": true
+    },
+    {
+      "name": "supported productive is zero",
+      "pass": true
+    },
+    {
+      "name": "23 re-audit rows",
+      "pass": true,
+      "detail": "23"
+    },
+    {
+      "name": "23 speaker queue rows",
+      "pass": true,
+      "detail": "23"
+    },
+    {
+      "name": "all re-audit statuses match source accounting",
+      "pass": true
+    },
+    {
+      "name": "all speaker statuses match source accounting",
+      "pass": true
+    },
+    {
+      "name": "all claim provenance statuses match source accounting",
+      "pass": true
+    },
+    {
+      "name": "all authority-origin statuses match source accounting",
+      "pass": true
+    },
+    {
+      "name": "no promotion eligibility in registry",
+      "pass": true
+    },
+    {
+      "name": "no promotion eligibility in source accounting",
+      "pass": true
+    },
+    {
+      "name": "no promotion eligibility in claim provenance",
+      "pass": true
+    },
+    {
+      "name": "exactly 23 frozen runtime metadata mismatches",
+      "pass": true,
+      "detail": "23"
+    },
+    {
+      "name": "former accepted labels are exact two mismatches",
+      "pass": true
+    },
+    {
+      "name": "other 21 mismatches are embedded provisional to research pending",
+      "pass": true
+    },
+    {
+      "name": "two obsolete operational ledgers removed from active path",
+      "pass": true
+    },
+    {
+      "name": "superseded ledgers archived",
+      "pass": true
+    },
+    {
+      "name": "CP021A status snapshots removed from active test-data",
+      "pass": true
+    },
+    {
+      "name": "CP021A status snapshots archived",
+      "pass": true
+    },
+    {
+      "name": "main.js byte-identical to phase0 input",
+      "pass": true,
+      "detail": "e25b6f7142eafce66a172b68d8e409275f127cfe902e93bafaf7147152bfcbe9"
+    },
+    {
+      "name": "manifest.json byte-identical to phase0 input",
+      "pass": true,
+      "detail": "d7f5a9be248a4efd1839852e8a100a9968273050f0aa5953af2a35c3661801f5"
+    },
+    {
+      "name": "styles.css byte-identical to phase0 input",
+      "pass": true,
+      "detail": "5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a"
+    },
+    {
+      "name": "runtime metadata sync tool is dry-run by default",
+      "pass": true
+    },
+    {
+      "name": "sync tool reports dry-run",
+      "pass": true,
+      "detail": "DRY_RUN_NO_WRITE"
+    },
+    {
+      "name": "sealed external heldout excluded from recovery tree",
+      "pass": true
+    },
+    {
+      "name": "all active and historical JSON files parse",
+      "pass": true
+    },
+    {
+      "name": "markdown local links resolve",
+      "pass": true
+    },
+    {
+      "name": "no active references to obsolete R1 operational ledgers",
+      "pass": true
+    },
+    {
+      "name": "checkpoint validation output exists: current-focused.json",
+      "pass": true
+    },
+    {
+      "name": "checkpoint validation output exists: source-accounting-audit.json",
+      "pass": true
+    },
+    {
+      "name": "checkpoint validation output exists: demo01-visible.json",
+      "pass": true
+    },
+    {
+      "name": "grammar legitimacy phase0 audit exists",
+      "pass": true
+    },
+    {
+      "name": "claim provenance audit current exists",
+      "pass": true
+    }
+  ],
+  "failures": []
+}

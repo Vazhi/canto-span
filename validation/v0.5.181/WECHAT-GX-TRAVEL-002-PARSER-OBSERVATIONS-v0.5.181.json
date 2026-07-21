@@ -1,0 +1,5329 @@
+{
+  "schema": "canto-span-natural-corpus-parser-observation-v1",
+  "corpus_id": "WECHAT-GX-TRAVEL-002",
+  "runtime_version": "0.5.181",
+  "generated_at": "2026-07-20T01:44:49.248Z",
+  "grammar_acceptance_effect": "none",
+  "units": [
+    {
+      "id": "U001",
+      "cantonese": "佢幾個人開車上去。",
+      "top_constructions": [
+        "ModifiedNP",
+        "DirectionalMotionVP"
+      ],
+      "internal_top_constructions": [
+        "ModifiedNP",
+        "DirectionalMotionVP"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 1,
+      "semantic_review_reason_count": 1,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 2,
+        "top_construction_surfaces": [
+          "個人開車",
+          "去"
+        ],
+        "unwrapped_root_nonpunctuation_count": 3,
+        "unwrapped_root_surfaces": [
+          "佢",
+          "幾",
+          "上"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "ModifiedNP",
+          "internal_construction": "ModifiedNP",
+          "surface": "個人開車",
+          "label": "NP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "ModifiedNP",
+          "legitimacy_status": "provisional"
+        },
+        {
+          "depth": 1,
+          "parent": "ModifiedNP",
+          "construction": "ModifiedNP",
+          "internal_construction": "ModifiedNP",
+          "surface": "個人",
+          "label": "NP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "ModifiedNP",
+          "legitimacy_status": "provisional"
+        },
+        {
+          "depth": 1,
+          "parent": "ModifiedNP",
+          "construction": "TransitiveVP",
+          "internal_construction": "TransitiveVP",
+          "surface": "開車",
+          "label": "VP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "TransitiveVP",
+          "legitimacy_status": "provisional"
+        },
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "DirectionalMotionVP",
+          "internal_construction": "DirectionalMotionVP",
+          "surface": "去",
+          "label": "MotionVP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "DirectionalMotionVP",
+          "legitimacy_status": "provisional"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "佢",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "keoi5"
+        },
+        {
+          "surface": "幾",
+          "role": "how",
+          "syntax": "degree_marker",
+          "jyutping": "gei2"
+        },
+        {
+          "surface": "個",
+          "role": "measure_word",
+          "syntax": "general_classifier",
+          "jyutping": "go3"
+        },
+        {
+          "surface": "人",
+          "role": "who",
+          "syntax": "person_np",
+          "jyutping": "jan4"
+        },
+        {
+          "surface": "開",
+          "role": "doing",
+          "syntax": "verb_or_modifier_head",
+          "jyutping": "hoi1"
+        },
+        {
+          "surface": "車",
+          "role": "what",
+          "syntax": "vehicle_noun object_np head_noun",
+          "jyutping": "ce1"
+        },
+        {
+          "surface": "上",
+          "role": "when",
+          "syntax": "temporal_modifier_previous movement_direction_up",
+          "jyutping": "soeng5"
+        },
+        {
+          "surface": "去",
+          "role": "doing",
+          "syntax": "deictic_motion_marker",
+          "jyutping": "heoi3"
+        }
+      ],
+      "missing_jyutping_tokens": [],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U002",
+      "cantonese": "上去玩啊。",
+      "top_constructions": [
+        "TemporalClause"
+      ],
+      "internal_top_constructions": [
+        "TemporalClause"
+      ],
+      "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+      "semantic_blocker_count": 0,
+      "semantic_review_reason_count": 0,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "上去玩啊"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "TemporalClause",
+          "internal_construction": "TemporalClause",
+          "surface": "上去玩啊",
+          "label": "Time",
+          "trace": "construction_function",
+          "legitimacy_pattern": "TemporalClause",
+          "legitimacy_status": "provisional"
+        },
+        {
+          "depth": 1,
+          "parent": "TemporalClause",
+          "construction": "DirectionalMotionVP",
+          "internal_construction": "DirectionalMotionVP",
+          "surface": "去",
+          "label": "MotionVP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "DirectionalMotionVP",
+          "legitimacy_status": "provisional"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "上",
+          "role": "when",
+          "syntax": "temporal_modifier_previous movement_direction_up",
+          "jyutping": "soeng5"
+        },
+        {
+          "surface": "去",
+          "role": "doing",
+          "syntax": "deictic_motion_marker",
+          "jyutping": "heoi3"
+        },
+        {
+          "surface": "玩",
+          "role": "doing",
+          "syntax": "verb",
+          "jyutping": "waan2"
+        },
+        {
+          "surface": "啊",
+          "role": "particle",
+          "syntax": "sentence_final_particle",
+          "jyutping": "aa3"
+        }
+      ],
+      "missing_jyutping_tokens": [],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U003",
+      "cantonese": "大伯佢去廣西旅遊啊。",
+      "top_constructions": [
+        "DirectionalMotionVP"
+      ],
+      "internal_top_constructions": [
+        "DirectionalMotionVP"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 6,
+      "semantic_review_reason_count": 0,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "去"
+        ],
+        "unwrapped_root_nonpunctuation_count": 7,
+        "unwrapped_root_surfaces": [
+          "大",
+          "伯",
+          "佢",
+          "廣",
+          "西",
+          "旅",
+          "遊"
+        ],
+        "ignored_root_remainder_count": 2
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "DirectionalMotionVP",
+          "internal_construction": "DirectionalMotionVP",
+          "surface": "去",
+          "label": "MotionVP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "DirectionalMotionVP",
+          "legitimacy_status": "provisional"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "大",
+          "role": "like",
+          "syntax": "stative_predicate",
+          "jyutping": "daai6"
+        },
+        {
+          "surface": "伯",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "佢",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "keoi5"
+        },
+        {
+          "surface": "去",
+          "role": "doing",
+          "syntax": "deictic_motion_marker",
+          "jyutping": "heoi3"
+        },
+        {
+          "surface": "廣",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "西",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "旅",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": "leoi5"
+        },
+        {
+          "surface": "遊",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "啊",
+          "role": "particle",
+          "syntax": "sentence_final_particle",
+          "jyutping": "aa3"
+        }
+      ],
+      "missing_jyutping_tokens": [
+        "伯",
+        "廣",
+        "西",
+        "遊"
+      ],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U004",
+      "cantonese": "阿豬仔去廣西旅遊啊。",
+      "top_constructions": [
+        "DirectionalMotionVP"
+      ],
+      "internal_top_constructions": [
+        "DirectionalMotionVP"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 7,
+      "semantic_review_reason_count": 0,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "去"
+        ],
+        "unwrapped_root_nonpunctuation_count": 7,
+        "unwrapped_root_surfaces": [
+          "阿",
+          "豬",
+          "仔",
+          "廣",
+          "西",
+          "旅",
+          "遊"
+        ],
+        "ignored_root_remainder_count": 2
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "DirectionalMotionVP",
+          "internal_construction": "DirectionalMotionVP",
+          "surface": "去",
+          "label": "MotionVP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "DirectionalMotionVP",
+          "legitimacy_status": "provisional"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "阿",
+          "role": "who",
+          "syntax": "address_prefix",
+          "jyutping": "aa3"
+        },
+        {
+          "surface": "豬",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "仔",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "去",
+          "role": "doing",
+          "syntax": "deictic_motion_marker",
+          "jyutping": "heoi3"
+        },
+        {
+          "surface": "廣",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "西",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "旅",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": "leoi5"
+        },
+        {
+          "surface": "遊",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "啊",
+          "role": "particle",
+          "syntax": "sentence_final_particle",
+          "jyutping": "aa3"
+        }
+      ],
+      "missing_jyutping_tokens": [
+        "豬",
+        "仔",
+        "廣",
+        "西",
+        "遊"
+      ],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U005",
+      "cantonese": "十幾個人啊。",
+      "top_constructions": [
+        "ModifiedNP"
+      ],
+      "internal_top_constructions": [
+        "ModifiedNP"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 1,
+      "semantic_review_reason_count": 1,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "個人"
+        ],
+        "unwrapped_root_nonpunctuation_count": 2,
+        "unwrapped_root_surfaces": [
+          "十",
+          "幾"
+        ],
+        "ignored_root_remainder_count": 2
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "ModifiedNP",
+          "internal_construction": "ModifiedNP",
+          "surface": "個人",
+          "label": "NP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "ModifiedNP",
+          "legitimacy_status": "provisional"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "十",
+          "role": "how",
+          "syntax": "quantity count_value numeral_ten",
+          "jyutping": "sap6"
+        },
+        {
+          "surface": "幾",
+          "role": "how",
+          "syntax": "degree_marker",
+          "jyutping": "gei2"
+        },
+        {
+          "surface": "個",
+          "role": "measure_word",
+          "syntax": "general_classifier",
+          "jyutping": "go3"
+        },
+        {
+          "surface": "人",
+          "role": "who",
+          "syntax": "person_np",
+          "jyutping": "jan4"
+        },
+        {
+          "surface": "啊",
+          "role": "particle",
+          "syntax": "sentence_final_particle",
+          "jyutping": "aa3"
+        }
+      ],
+      "missing_jyutping_tokens": [],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U006",
+      "cantonese": "可能有十個嘛。",
+      "top_constructions": [],
+      "internal_top_constructions": [],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 2,
+      "semantic_review_reason_count": 0,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "NO_TOP_CONSTRUCTION",
+        "top_construction_count": 0,
+        "top_construction_surfaces": [],
+        "unwrapped_root_nonpunctuation_count": 5,
+        "unwrapped_root_surfaces": [
+          "可能",
+          "有",
+          "十",
+          "個",
+          "嘛"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "construction_rows": [],
+      "token_rows": [
+        {
+          "surface": "可能",
+          "role": "func",
+          "syntax": "stance_possibility",
+          "jyutping": "ho2 nang4"
+        },
+        {
+          "surface": "有",
+          "role": "func",
+          "syntax": "existential_or_possessive",
+          "jyutping": "jau5"
+        },
+        {
+          "surface": "十",
+          "role": "how",
+          "syntax": "quantity count_value numeral_ten",
+          "jyutping": "sap6"
+        },
+        {
+          "surface": "個",
+          "role": "measure_word",
+          "syntax": "general_classifier",
+          "jyutping": "go3"
+        },
+        {
+          "surface": "嘛",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        }
+      ],
+      "missing_jyutping_tokens": [
+        "嘛"
+      ],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U007",
+      "cantonese": "十個定九個啊？",
+      "top_constructions": [
+        "QuantifiedClassifierNP"
+      ],
+      "internal_top_constructions": [
+        "QuantifiedClassifierNP"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 1,
+      "semantic_review_reason_count": 1,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "九個"
+        ],
+        "unwrapped_root_nonpunctuation_count": 3,
+        "unwrapped_root_surfaces": [
+          "十",
+          "個",
+          "定"
+        ],
+        "ignored_root_remainder_count": 2
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "QuantifiedClassifierNP",
+          "internal_construction": "QuantifiedClassifierNP",
+          "surface": "九個",
+          "label": "NP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "QuantifiedClassifierNP",
+          "legitimacy_status": "provisional"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "十",
+          "role": "how",
+          "syntax": "quantity count_value numeral_ten",
+          "jyutping": "sap6"
+        },
+        {
+          "surface": "個",
+          "role": "measure_word",
+          "syntax": "general_classifier",
+          "jyutping": "go3"
+        },
+        {
+          "surface": "定",
+          "role": "func",
+          "syntax": "alternative_question_connector",
+          "jyutping": "ding6"
+        },
+        {
+          "surface": "九",
+          "role": "how",
+          "syntax": "quantity count_value numeral",
+          "jyutping": "gau2"
+        },
+        {
+          "surface": "個",
+          "role": "measure_word",
+          "syntax": "general_classifier classifier nominal_head_ellipsis",
+          "jyutping": "go3"
+        },
+        {
+          "surface": "啊",
+          "role": "particle",
+          "syntax": "sentence_final_particle",
+          "jyutping": "aa3"
+        }
+      ],
+      "missing_jyutping_tokens": [],
+      "text_rows": [
+        "？"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U008",
+      "cantonese": "應該佢哋成班人上去玩啊。",
+      "top_constructions": [
+        "DirectionalMotionVP"
+      ],
+      "internal_top_constructions": [
+        "DirectionalMotionVP"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 3,
+      "semantic_review_reason_count": 0,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "去"
+        ],
+        "unwrapped_root_nonpunctuation_count": 7,
+        "unwrapped_root_surfaces": [
+          "應該",
+          "佢哋",
+          "成",
+          "班",
+          "人",
+          "上",
+          "玩"
+        ],
+        "ignored_root_remainder_count": 2
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "DirectionalMotionVP",
+          "internal_construction": "DirectionalMotionVP",
+          "surface": "去",
+          "label": "MotionVP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "DirectionalMotionVP",
+          "legitimacy_status": "provisional"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "應該",
+          "role": "func",
+          "syntax": "stance_probability_or_should",
+          "jyutping": "jing1 goi1"
+        },
+        {
+          "surface": "佢哋",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "keoi5 dei6"
+        },
+        {
+          "surface": "成",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "班",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "人",
+          "role": "who",
+          "syntax": "person_np",
+          "jyutping": "jan4"
+        },
+        {
+          "surface": "上",
+          "role": "when",
+          "syntax": "temporal_modifier_previous movement_direction_up",
+          "jyutping": "soeng5"
+        },
+        {
+          "surface": "去",
+          "role": "doing",
+          "syntax": "deictic_motion_marker",
+          "jyutping": "heoi3"
+        },
+        {
+          "surface": "玩",
+          "role": "doing",
+          "syntax": "verb",
+          "jyutping": "waan2"
+        },
+        {
+          "surface": "啊",
+          "role": "particle",
+          "syntax": "sentence_final_particle",
+          "jyutping": "aa3"
+        }
+      ],
+      "missing_jyutping_tokens": [
+        "成",
+        "班"
+      ],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U009",
+      "cantonese": "豬伯開架摩托車去廣西玩。",
+      "top_constructions": [
+        "DirectionalMotionVP"
+      ],
+      "internal_top_constructions": [
+        "DirectionalMotionVP"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 7,
+      "semantic_review_reason_count": 0,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "去"
+        ],
+        "unwrapped_root_nonpunctuation_count": 10,
+        "unwrapped_root_surfaces": [
+          "豬",
+          "伯",
+          "開",
+          "架",
+          "摩",
+          "托",
+          "車",
+          "廣",
+          "西",
+          "玩"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "DirectionalMotionVP",
+          "internal_construction": "DirectionalMotionVP",
+          "surface": "去",
+          "label": "MotionVP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "DirectionalMotionVP",
+          "legitimacy_status": "provisional"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "豬",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "伯",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "開",
+          "role": "doing",
+          "syntax": "verb_or_modifier_head",
+          "jyutping": "hoi1"
+        },
+        {
+          "surface": "架",
+          "role": "measure_word",
+          "syntax": "classifier_vehicle",
+          "jyutping": "gaa3"
+        },
+        {
+          "surface": "摩",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "托",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "車",
+          "role": "what",
+          "syntax": "vehicle_noun object_np head_noun",
+          "jyutping": "ce1"
+        },
+        {
+          "surface": "去",
+          "role": "doing",
+          "syntax": "deictic_motion_marker",
+          "jyutping": "heoi3"
+        },
+        {
+          "surface": "廣",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "西",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "玩",
+          "role": "doing",
+          "syntax": "verb",
+          "jyutping": "waan2"
+        }
+      ],
+      "missing_jyutping_tokens": [
+        "豬",
+        "伯",
+        "摩",
+        "托",
+        "廣",
+        "西"
+      ],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U010",
+      "cantonese": "係啊係啊。",
+      "top_constructions": [
+        "FormulaDiscourseUnit"
+      ],
+      "internal_top_constructions": [
+        "FormulaDiscourseUnit"
+      ],
+      "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+      "semantic_blocker_count": 0,
+      "semantic_review_reason_count": 0,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "係啊係啊"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "FormulaDiscourseUnit",
+          "internal_construction": "FormulaDiscourseUnit",
+          "surface": "係啊係啊",
+          "label": "Formula",
+          "trace": "governed_discourse_wrapper",
+          "legitimacy_pattern": "FormulaDiscourseUnit",
+          "legitimacy_status": "lexicalized_only"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "係",
+          "role": "func",
+          "syntax": "agreement_response_marker repeated_formula_part",
+          "jyutping": "hai6"
+        },
+        {
+          "surface": "啊",
+          "role": "particle",
+          "syntax": "sentence_final_particle acknowledgement_repetition_particle",
+          "jyutping": "aa3"
+        },
+        {
+          "surface": "係",
+          "role": "func",
+          "syntax": "agreement_response_marker repeated_formula_part",
+          "jyutping": "hai6"
+        },
+        {
+          "surface": "啊",
+          "role": "particle",
+          "syntax": "sentence_final_particle acknowledgement_repetition_particle",
+          "jyutping": "aa3"
+        }
+      ],
+      "missing_jyutping_tokens": [],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U011",
+      "cantonese": "啱啱去到。",
+      "top_constructions": [
+        "DirectionalMotionVP"
+      ],
+      "internal_top_constructions": [
+        "DirectionalMotionVP"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 1,
+      "semantic_review_reason_count": 0,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "去"
+        ],
+        "unwrapped_root_nonpunctuation_count": 3,
+        "unwrapped_root_surfaces": [
+          "啱",
+          "啱",
+          "到"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "DirectionalMotionVP",
+          "internal_construction": "DirectionalMotionVP",
+          "surface": "去",
+          "label": "MotionVP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "DirectionalMotionVP",
+          "legitimacy_status": "provisional"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "啱",
+          "role": "like",
+          "syntax": "stative_predicate",
+          "jyutping": "ngaam1"
+        },
+        {
+          "surface": "啱",
+          "role": "like",
+          "syntax": "stative_predicate",
+          "jyutping": "ngaam1"
+        },
+        {
+          "surface": "去",
+          "role": "doing",
+          "syntax": "deictic_motion_marker",
+          "jyutping": "heoi3"
+        },
+        {
+          "surface": "到",
+          "role": "func",
+          "syntax": "result_or_attainment",
+          "jyutping": "dou2"
+        }
+      ],
+      "missing_jyutping_tokens": [],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U012",
+      "cantonese": "琴日上嚟㗎喇。",
+      "top_constructions": [
+        "DiscourseParticleFrame"
+      ],
+      "internal_top_constructions": [
+        "DiscourseParticleFrame"
+      ],
+      "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+      "semantic_blocker_count": 0,
+      "semantic_review_reason_count": 0,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "琴日上嚟㗎喇"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "DiscourseParticleFrame",
+          "internal_construction": "DiscourseParticleFrame",
+          "surface": "琴日上嚟㗎喇",
+          "label": "Particles",
+          "trace": "generative_template",
+          "legitimacy_pattern": "DiscourseParticleFrame",
+          "legitimacy_status": "parser_heuristic"
+        },
+        {
+          "depth": 1,
+          "parent": "DiscourseParticleFrame",
+          "construction": "TemporalClause",
+          "internal_construction": "TemporalClause",
+          "surface": "琴日上嚟",
+          "label": "Time",
+          "trace": "generative_template",
+          "legitimacy_pattern": "TemporalClause",
+          "legitimacy_status": "provisional"
+        },
+        {
+          "depth": 2,
+          "parent": "TemporalClause",
+          "construction": "DirectionalMotionVP",
+          "internal_construction": "DirectionalMotionVP",
+          "surface": "上嚟",
+          "label": "MotionVP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "DirectionalMotionVP",
+          "legitimacy_status": "provisional"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "琴日",
+          "role": "when",
+          "syntax": "temporal_adjunct",
+          "jyutping": "kam4 jat6"
+        },
+        {
+          "surface": "上",
+          "role": "doing",
+          "syntax": "movement_direction",
+          "jyutping": "soeng5"
+        },
+        {
+          "surface": "嚟",
+          "role": "doing",
+          "syntax": "deictic_motion_marker",
+          "jyutping": "lai4"
+        },
+        {
+          "surface": "㗎",
+          "role": "particle",
+          "syntax": "sentence_final_particle inner_propositional_particle assertive_relevance_particle",
+          "jyutping": "gaa3"
+        },
+        {
+          "surface": "喇",
+          "role": "particle",
+          "syntax": "sentence_final_particle change_state_current_relevance_particle",
+          "jyutping": "laa3"
+        }
+      ],
+      "missing_jyutping_tokens": [],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U013",
+      "cantonese": "方子係咪開佢自己嗰部車嘅啫？",
+      "top_constructions": [
+        "TransitiveVP"
+      ],
+      "internal_top_constructions": [
+        "TransitiveVP"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 3,
+      "semantic_review_reason_count": 0,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "開佢自己嗰部車"
+        ],
+        "unwrapped_root_nonpunctuation_count": 5,
+        "unwrapped_root_surfaces": [
+          "方",
+          "子",
+          "係咪",
+          "嘅",
+          "啫"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "TransitiveVP",
+          "internal_construction": "TransitiveVP",
+          "surface": "開佢自己嗰部車",
+          "label": "VP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "TransitiveVP",
+          "legitimacy_status": "provisional"
+        },
+        {
+          "depth": 1,
+          "parent": "TransitiveVP",
+          "construction": "TransitiveVP",
+          "internal_construction": "TransitiveVP",
+          "surface": "開佢自己",
+          "label": "VP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "TransitiveVP",
+          "legitimacy_status": "provisional"
+        },
+        {
+          "depth": 2,
+          "parent": "TransitiveVP",
+          "construction": "ModifiedNP",
+          "internal_construction": "ModifiedNP",
+          "surface": "開佢",
+          "label": "NP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "ModifiedNP",
+          "legitimacy_status": "provisional"
+        },
+        {
+          "depth": 1,
+          "parent": "TransitiveVP",
+          "construction": "DemonstrativeClassifierNP",
+          "internal_construction": "DemonstrativeClassifierNP",
+          "surface": "嗰部車",
+          "label": "NP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "DemonstrativeClassifierNP",
+          "legitimacy_status": "provisional"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "方",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "子",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "係咪",
+          "role": "func",
+          "syntax": "yes_no_question_marker",
+          "jyutping": "hai6 mai6"
+        },
+        {
+          "surface": "開",
+          "role": "doing",
+          "syntax": "verb_or_modifier_head",
+          "jyutping": "hoi1"
+        },
+        {
+          "surface": "佢",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "keoi5"
+        },
+        {
+          "surface": "自己",
+          "role": "who",
+          "syntax": "reflexive_pronoun person_np",
+          "jyutping": "zi6 gei2"
+        },
+        {
+          "surface": "嗰",
+          "role": "func",
+          "syntax": "demonstrative_determiner",
+          "jyutping": "go2"
+        },
+        {
+          "surface": "部",
+          "role": "measure_word",
+          "syntax": "classifier_vehicle_machine",
+          "jyutping": "bou6"
+        },
+        {
+          "surface": "車",
+          "role": "what",
+          "syntax": "vehicle_noun object_np head_noun",
+          "jyutping": "ce1"
+        },
+        {
+          "surface": "嘅",
+          "role": "particle",
+          "syntax": "sentence_final_particle_or_nominalizer",
+          "jyutping": "ge3"
+        },
+        {
+          "surface": "啫",
+          "role": "particle",
+          "syntax": "sentence_final_particle restrictive_focus_particle minimizing_particle",
+          "jyutping": "ze1"
+        }
+      ],
+      "missing_jyutping_tokens": [
+        "方",
+        "子"
+      ],
+      "text_rows": [
+        "？"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U014",
+      "cantonese": "方子嗰部車係咪同阿拉嗰部一樣嘅啫？",
+      "top_constructions": [
+        "DemonstrativeClassifierNP",
+        "QuantifiedClassifierNP"
+      ],
+      "internal_top_constructions": [
+        "DemonstrativeClassifierNP",
+        "QuantifiedClassifierNP"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 4,
+      "semantic_review_reason_count": 1,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 2,
+        "top_construction_surfaces": [
+          "嗰部車",
+          "一樣"
+        ],
+        "unwrapped_root_nonpunctuation_count": 10,
+        "unwrapped_root_surfaces": [
+          "方",
+          "子",
+          "係咪",
+          "同",
+          "阿",
+          "拉",
+          "嗰",
+          "部",
+          "嘅",
+          "啫"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "DemonstrativeClassifierNP",
+          "internal_construction": "DemonstrativeClassifierNP",
+          "surface": "嗰部車",
+          "label": "NP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "DemonstrativeClassifierNP",
+          "legitimacy_status": "provisional"
+        },
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "QuantifiedClassifierNP",
+          "internal_construction": "QuantifiedClassifierNP",
+          "surface": "一樣",
+          "label": "NP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "QuantifiedClassifierNP",
+          "legitimacy_status": "provisional"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "方",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "子",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "嗰",
+          "role": "func",
+          "syntax": "demonstrative_determiner",
+          "jyutping": "go2"
+        },
+        {
+          "surface": "部",
+          "role": "measure_word",
+          "syntax": "classifier_vehicle_machine",
+          "jyutping": "bou6"
+        },
+        {
+          "surface": "車",
+          "role": "what",
+          "syntax": "vehicle_noun object_np head_noun",
+          "jyutping": "ce1"
+        },
+        {
+          "surface": "係咪",
+          "role": "func",
+          "syntax": "yes_no_question_marker",
+          "jyutping": "hai6 mai6"
+        },
+        {
+          "surface": "同",
+          "role": "func",
+          "syntax": "connector_or_coverb comitative_coverb interpersonal_coverb",
+          "jyutping": "tung4"
+        },
+        {
+          "surface": "阿",
+          "role": "who",
+          "syntax": "address_prefix",
+          "jyutping": "aa3"
+        },
+        {
+          "surface": "拉",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "嗰",
+          "role": "func",
+          "syntax": "demonstrative_determiner",
+          "jyutping": "go2"
+        },
+        {
+          "surface": "部",
+          "role": "measure_word",
+          "syntax": "classifier_vehicle_machine",
+          "jyutping": "bou6"
+        },
+        {
+          "surface": "一",
+          "role": "how",
+          "syntax": "quantity count_value numeral",
+          "jyutping": "jat1"
+        },
+        {
+          "surface": "樣",
+          "role": "measure_word",
+          "syntax": "general_classifier classifier nominal_head_ellipsis",
+          "jyutping": "joeng6"
+        },
+        {
+          "surface": "嘅",
+          "role": "particle",
+          "syntax": "sentence_final_particle_or_nominalizer",
+          "jyutping": "ge3"
+        },
+        {
+          "surface": "啫",
+          "role": "particle",
+          "syntax": "sentence_final_particle restrictive_focus_particle minimizing_particle",
+          "jyutping": "ze1"
+        }
+      ],
+      "missing_jyutping_tokens": [
+        "方",
+        "子",
+        "拉"
+      ],
+      "text_rows": [
+        "？"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U015",
+      "cantonese": "方子嗰部。",
+      "top_constructions": [],
+      "internal_top_constructions": [],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 3,
+      "semantic_review_reason_count": 0,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "NO_TOP_CONSTRUCTION",
+        "top_construction_count": 0,
+        "top_construction_surfaces": [],
+        "unwrapped_root_nonpunctuation_count": 4,
+        "unwrapped_root_surfaces": [
+          "方",
+          "子",
+          "嗰",
+          "部"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "construction_rows": [],
+      "token_rows": [
+        {
+          "surface": "方",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "子",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "嗰",
+          "role": "func",
+          "syntax": "demonstrative_determiner",
+          "jyutping": "go2"
+        },
+        {
+          "surface": "部",
+          "role": "measure_word",
+          "syntax": "classifier_vehicle_machine",
+          "jyutping": "bou6"
+        }
+      ],
+      "missing_jyutping_tokens": [
+        "方",
+        "子"
+      ],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U016",
+      "cantonese": "你飲咗酒，千祈唔好開車啊。",
+      "top_constructions": [
+        "ClauseLinkingSequence"
+      ],
+      "internal_top_constructions": [
+        "ClauseRelationGraph"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 2,
+      "semantic_review_reason_count": 1,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "你飲咗酒，千祈唔好開車啊"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "ClauseLinkingSequence",
+          "internal_construction": "ClauseRelationGraph",
+          "surface": "你飲咗酒，千祈唔好開車啊",
+          "label": "ClauseLink",
+          "trace": "governed_discourse_wrapper",
+          "legitimacy_pattern": "ClauseRelationGraph",
+          "legitimacy_status": "parser_heuristic"
+        },
+        {
+          "depth": 1,
+          "parent": "ClauseLinkingSequence",
+          "construction": "PerfectiveVP",
+          "internal_construction": "PerfectiveVP",
+          "surface": "飲咗",
+          "label": "PerfectiveVP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "PerfectiveVP",
+          "legitimacy_status": "provisional"
+        },
+        {
+          "depth": 1,
+          "parent": "ClauseLinkingSequence",
+          "construction": "TransitiveVP",
+          "internal_construction": "TransitiveVP",
+          "surface": "開車",
+          "label": "VP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "TransitiveVP",
+          "legitimacy_status": "provisional"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "你",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "nei5"
+        },
+        {
+          "surface": "飲",
+          "role": "doing",
+          "syntax": "verb transitive_affordance chain_select_drinkable",
+          "jyutping": "jam2"
+        },
+        {
+          "surface": "咗",
+          "role": "func",
+          "syntax": "perfective_aspect",
+          "jyutping": "zo2"
+        },
+        {
+          "surface": "酒",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "千",
+          "role": "how",
+          "syntax": "quantity count_value numeral_thousand",
+          "jyutping": "cin1"
+        },
+        {
+          "surface": "祈",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "唔好",
+          "role": "func",
+          "syntax": "prohibitive_marker_or_discourse_unit",
+          "jyutping": "m4 hou2"
+        },
+        {
+          "surface": "開",
+          "role": "doing",
+          "syntax": "verb_or_modifier_head",
+          "jyutping": "hoi1"
+        },
+        {
+          "surface": "車",
+          "role": "what",
+          "syntax": "vehicle_noun object_np head_noun",
+          "jyutping": "ce1"
+        },
+        {
+          "surface": "啊",
+          "role": "particle",
+          "syntax": "sentence_final_particle",
+          "jyutping": "aa3"
+        }
+      ],
+      "missing_jyutping_tokens": [
+        "酒",
+        "祈"
+      ],
+      "text_rows": [
+        "，",
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U017",
+      "cantonese": "我話畀你聽吓。",
+      "top_constructions": [
+        "ReportedSpeech"
+      ],
+      "internal_top_constructions": [
+        "ReportedSpeech"
+      ],
+      "semantic_acceptance_status": "REVIEW_REQUIRED",
+      "semantic_blocker_count": 0,
+      "semantic_review_reason_count": 1,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 1,
+      "root_span_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "我話畀你聽吓"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "ReportedSpeech",
+          "internal_construction": "ReportedSpeech",
+          "surface": "我話畀你聽吓",
+          "label": "Reported",
+          "trace": "legacy_surface_rule",
+          "legitimacy_pattern": "ReportedSpeech",
+          "legitimacy_status": "provisional"
+        },
+        {
+          "depth": 1,
+          "parent": "ReportedSpeech",
+          "construction": "DelimitedVP",
+          "internal_construction": "DelimitedVP",
+          "surface": "聽吓",
+          "label": "V吓",
+          "trace": "generative_template",
+          "legitimacy_pattern": "DelimitedVP",
+          "legitimacy_status": "unsupported_generalization"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "我",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "ngo5"
+        },
+        {
+          "surface": "話",
+          "role": "doing",
+          "syntax": "speech_reporting_verb",
+          "jyutping": "waa6"
+        },
+        {
+          "surface": "畀",
+          "role": "doing",
+          "syntax": "ditransitive_verb",
+          "jyutping": "bei2"
+        },
+        {
+          "surface": "你",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "nei5"
+        },
+        {
+          "surface": "聽",
+          "role": "doing",
+          "syntax": "verb",
+          "jyutping": "teng1"
+        },
+        {
+          "surface": "吓",
+          "role": "func",
+          "syntax": "delimitative_aspect",
+          "jyutping": "haa2"
+        }
+      ],
+      "missing_jyutping_tokens": [],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U018",
+      "cantonese": "唔係啊。",
+      "top_constructions": [],
+      "internal_top_constructions": [],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 1,
+      "semantic_review_reason_count": 0,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "NO_TOP_CONSTRUCTION",
+        "top_construction_count": 0,
+        "top_construction_surfaces": [],
+        "unwrapped_root_nonpunctuation_count": 1,
+        "unwrapped_root_surfaces": [
+          "唔係"
+        ],
+        "ignored_root_remainder_count": 2
+      },
+      "construction_rows": [],
+      "token_rows": [
+        {
+          "surface": "唔係",
+          "role": "func",
+          "syntax": "negated_copula",
+          "jyutping": "m4 hai6"
+        },
+        {
+          "surface": "啊",
+          "role": "particle",
+          "syntax": "sentence_final_particle",
+          "jyutping": "aa3"
+        }
+      ],
+      "missing_jyutping_tokens": [],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U019",
+      "cantonese": "係咪第三部車同阿拉嗰部一樣？",
+      "top_constructions": [
+        "QuantifiedClassifierNP",
+        "QuantifiedClassifierNP"
+      ],
+      "internal_top_constructions": [
+        "QuantifiedClassifierNP",
+        "QuantifiedClassifierNP"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 2,
+      "semantic_review_reason_count": 1,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 2,
+        "top_construction_surfaces": [
+          "三部車",
+          "一樣"
+        ],
+        "unwrapped_root_nonpunctuation_count": 7,
+        "unwrapped_root_surfaces": [
+          "係咪",
+          "第",
+          "同",
+          "阿",
+          "拉",
+          "嗰",
+          "部"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "QuantifiedClassifierNP",
+          "internal_construction": "QuantifiedClassifierNP",
+          "surface": "三部車",
+          "label": "NP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "QuantifiedClassifierNP",
+          "legitimacy_status": "provisional"
+        },
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "QuantifiedClassifierNP",
+          "internal_construction": "QuantifiedClassifierNP",
+          "surface": "一樣",
+          "label": "NP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "QuantifiedClassifierNP",
+          "legitimacy_status": "provisional"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "係咪",
+          "role": "func",
+          "syntax": "yes_no_question_marker",
+          "jyutping": "hai6 mai6"
+        },
+        {
+          "surface": "第",
+          "role": "func",
+          "syntax": "ordinal_prefix",
+          "jyutping": "dai6"
+        },
+        {
+          "surface": "三",
+          "role": "how",
+          "syntax": "quantity count_value numeral",
+          "jyutping": "saam1"
+        },
+        {
+          "surface": "部",
+          "role": "measure_word",
+          "syntax": "general_classifier classifier",
+          "jyutping": "bou6"
+        },
+        {
+          "surface": "車",
+          "role": "what",
+          "syntax": "vehicle_noun object_np head_noun",
+          "jyutping": "ce1"
+        },
+        {
+          "surface": "同",
+          "role": "func",
+          "syntax": "connector_or_coverb comitative_coverb interpersonal_coverb",
+          "jyutping": "tung4"
+        },
+        {
+          "surface": "阿",
+          "role": "who",
+          "syntax": "address_prefix",
+          "jyutping": "aa3"
+        },
+        {
+          "surface": "拉",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "嗰",
+          "role": "func",
+          "syntax": "demonstrative_determiner",
+          "jyutping": "go2"
+        },
+        {
+          "surface": "部",
+          "role": "measure_word",
+          "syntax": "classifier_vehicle_machine",
+          "jyutping": "bou6"
+        },
+        {
+          "surface": "一",
+          "role": "how",
+          "syntax": "quantity count_value numeral",
+          "jyutping": "jat1"
+        },
+        {
+          "surface": "樣",
+          "role": "measure_word",
+          "syntax": "general_classifier classifier nominal_head_ellipsis",
+          "jyutping": "joeng6"
+        }
+      ],
+      "missing_jyutping_tokens": [
+        "拉"
+      ],
+      "text_rows": [
+        "？"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U020",
+      "cantonese": "酒冇飲。",
+      "top_constructions": [],
+      "internal_top_constructions": [],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 2,
+      "semantic_review_reason_count": 0,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "NO_TOP_CONSTRUCTION",
+        "top_construction_count": 0,
+        "top_construction_surfaces": [],
+        "unwrapped_root_nonpunctuation_count": 3,
+        "unwrapped_root_surfaces": [
+          "酒",
+          "冇",
+          "飲"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "construction_rows": [],
+      "token_rows": [
+        {
+          "surface": "酒",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "冇",
+          "role": "func",
+          "syntax": "negated_existential",
+          "jyutping": "mou5"
+        },
+        {
+          "surface": "飲",
+          "role": "doing",
+          "syntax": "verb transitive_affordance chain_select_drinkable",
+          "jyutping": "jam2"
+        }
+      ],
+      "missing_jyutping_tokens": [
+        "酒"
+      ],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U021",
+      "cantonese": "水冇飲一啖啊。",
+      "top_constructions": [
+        "ActionStativeVP"
+      ],
+      "internal_top_constructions": [
+        "ActionStativeVP"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 2,
+      "semantic_review_reason_count": 0,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "飲一"
+        ],
+        "unwrapped_root_nonpunctuation_count": 3,
+        "unwrapped_root_surfaces": [
+          "水",
+          "冇",
+          "啖"
+        ],
+        "ignored_root_remainder_count": 2
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "ActionStativeVP",
+          "internal_construction": "ActionStativeVP",
+          "surface": "飲一",
+          "label": "VP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "ActionStativeVP",
+          "legitimacy_status": "research_pending"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "水",
+          "role": "what",
+          "syntax": "object_np liquid drink_object water_noun",
+          "jyutping": "seoi2"
+        },
+        {
+          "surface": "冇",
+          "role": "func",
+          "syntax": "negated_existential",
+          "jyutping": "mou5"
+        },
+        {
+          "surface": "飲",
+          "role": "doing",
+          "syntax": "verb transitive_affordance chain_select_drinkable",
+          "jyutping": "jam2"
+        },
+        {
+          "surface": "一",
+          "role": "like",
+          "syntax": "quantity count_value numeral_one",
+          "jyutping": "jat1"
+        },
+        {
+          "surface": "啖",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "啊",
+          "role": "particle",
+          "syntax": "sentence_final_particle",
+          "jyutping": "aa3"
+        }
+      ],
+      "missing_jyutping_tokens": [
+        "啖"
+      ],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U022",
+      "cantonese": "早知你坐佢架車咪仲好。",
+      "top_constructions": [
+        "ModifiedNP"
+      ],
+      "internal_top_constructions": [
+        "ModifiedNP"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 2,
+      "semantic_review_reason_count": 1,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "架車"
+        ],
+        "unwrapped_root_nonpunctuation_count": 8,
+        "unwrapped_root_surfaces": [
+          "早",
+          "知",
+          "你",
+          "坐",
+          "佢",
+          "咪",
+          "仲",
+          "好"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "ModifiedNP",
+          "internal_construction": "ModifiedNP",
+          "surface": "架車",
+          "label": "NP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "ModifiedNP",
+          "legitimacy_status": "provisional"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "早",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "知",
+          "role": "doing",
+          "syntax": "cognition_verb",
+          "jyutping": "zi1"
+        },
+        {
+          "surface": "你",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "nei5"
+        },
+        {
+          "surface": "坐",
+          "role": "doing",
+          "syntax": "verb",
+          "jyutping": "co5"
+        },
+        {
+          "surface": "佢",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "keoi5"
+        },
+        {
+          "surface": "架",
+          "role": "measure_word",
+          "syntax": "classifier_vehicle",
+          "jyutping": "gaa3"
+        },
+        {
+          "surface": "車",
+          "role": "what",
+          "syntax": "vehicle_noun object_np head_noun",
+          "jyutping": "ce1"
+        },
+        {
+          "surface": "咪",
+          "role": "func",
+          "syntax": "discourse_marker_review",
+          "jyutping": "mai6"
+        },
+        {
+          "surface": "仲",
+          "role": "how",
+          "syntax": "additive_continuative_adverb",
+          "jyutping": "zung6"
+        },
+        {
+          "surface": "好",
+          "role": "how",
+          "syntax": "degree_marker",
+          "jyutping": "hou2"
+        }
+      ],
+      "missing_jyutping_tokens": [
+        "早"
+      ],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U023",
+      "cantonese": "唔使自己開咁辛苦。",
+      "top_constructions": [
+        "ModalVP"
+      ],
+      "internal_top_constructions": [
+        "ModalVP"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 1,
+      "semantic_review_reason_count": 0,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "使自己開咁辛苦"
+        ],
+        "unwrapped_root_nonpunctuation_count": 1,
+        "unwrapped_root_surfaces": [
+          "唔"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "ModalVP",
+          "internal_construction": "ModalVP",
+          "surface": "使自己開咁辛苦",
+          "label": "ModalVP",
+          "trace": "generative_or_heuristic_slot_rule",
+          "legitimacy_pattern": "ModalVP",
+          "legitimacy_status": "provisional"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "唔",
+          "role": "func",
+          "syntax": "negator",
+          "jyutping": "m4"
+        },
+        {
+          "surface": "使",
+          "role": "func",
+          "syntax": "modal_necessity",
+          "jyutping": "sai2"
+        },
+        {
+          "surface": "自己",
+          "role": "who",
+          "syntax": "reflexive_pronoun person_np",
+          "jyutping": "zi6 gei2"
+        },
+        {
+          "surface": "開",
+          "role": "doing",
+          "syntax": "verb_or_modifier_head",
+          "jyutping": "hoi1"
+        },
+        {
+          "surface": "咁",
+          "role": "func",
+          "syntax": "discourse_marker",
+          "jyutping": "gam2"
+        },
+        {
+          "surface": "辛苦",
+          "role": "like",
+          "syntax": "stative_predicate emotion_state_stative",
+          "jyutping": "san1 fu2"
+        }
+      ],
+      "missing_jyutping_tokens": [],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U024",
+      "cantonese": "開吓飲吓水。",
+      "top_constructions": [
+        "TransitiveVP"
+      ],
+      "internal_top_constructions": [
+        "TransitiveVP"
+      ],
+      "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+      "semantic_blocker_count": 0,
+      "semantic_review_reason_count": 0,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "開吓飲吓水"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "TransitiveVP",
+          "internal_construction": "TransitiveVP",
+          "surface": "開吓飲吓水",
+          "label": "VP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "TransitiveVP",
+          "legitimacy_status": "provisional"
+        },
+        {
+          "depth": 1,
+          "parent": "TransitiveVP",
+          "construction": "DelimitedVP",
+          "internal_construction": "DelimitedVP",
+          "surface": "開吓飲吓",
+          "label": "V吓",
+          "trace": "generative_template",
+          "legitimacy_pattern": "DelimitedVP",
+          "legitimacy_status": "unsupported_generalization"
+        },
+        {
+          "depth": 2,
+          "parent": "DelimitedVP",
+          "construction": "DelimitedVP",
+          "internal_construction": "DelimitedVP",
+          "surface": "開吓",
+          "label": "V吓",
+          "trace": "generative_template",
+          "legitimacy_pattern": "DelimitedVP",
+          "legitimacy_status": "unsupported_generalization"
+        },
+        {
+          "depth": 2,
+          "parent": "DelimitedVP",
+          "construction": "DelimitedVP",
+          "internal_construction": "DelimitedVP",
+          "surface": "飲吓",
+          "label": "V吓",
+          "trace": "generative_template",
+          "legitimacy_pattern": "DelimitedVP",
+          "legitimacy_status": "unsupported_generalization"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "開",
+          "role": "doing",
+          "syntax": "verb_or_modifier_head",
+          "jyutping": "hoi1"
+        },
+        {
+          "surface": "吓",
+          "role": "func",
+          "syntax": "delimitative_aspect",
+          "jyutping": "haa2"
+        },
+        {
+          "surface": "飲",
+          "role": "doing",
+          "syntax": "verb transitive_affordance chain_select_drinkable",
+          "jyutping": "jam2"
+        },
+        {
+          "surface": "吓",
+          "role": "func",
+          "syntax": "delimitative_aspect",
+          "jyutping": "haa2"
+        },
+        {
+          "surface": "水",
+          "role": "what",
+          "syntax": "object_np liquid drink_object water_noun",
+          "jyutping": "seoi2"
+        }
+      ],
+      "missing_jyutping_tokens": [],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U025",
+      "cantonese": "酒就唔飲啫。",
+      "top_constructions": [],
+      "internal_top_constructions": [],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 2,
+      "semantic_review_reason_count": 0,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "NO_TOP_CONSTRUCTION",
+        "top_construction_count": 0,
+        "top_construction_surfaces": [],
+        "unwrapped_root_nonpunctuation_count": 4,
+        "unwrapped_root_surfaces": [
+          "酒",
+          "就",
+          "唔",
+          "飲"
+        ],
+        "ignored_root_remainder_count": 2
+      },
+      "construction_rows": [],
+      "token_rows": [
+        {
+          "surface": "酒",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "就",
+          "role": "func",
+          "syntax": "focus_or_sequence",
+          "jyutping": "zau6"
+        },
+        {
+          "surface": "唔",
+          "role": "func",
+          "syntax": "negator",
+          "jyutping": "m4"
+        },
+        {
+          "surface": "飲",
+          "role": "doing",
+          "syntax": "verb transitive_affordance chain_select_drinkable",
+          "jyutping": "jam2"
+        },
+        {
+          "surface": "啫",
+          "role": "particle",
+          "syntax": "sentence_final_particle restrictive_focus_particle minimizing_particle",
+          "jyutping": "ze1"
+        }
+      ],
+      "missing_jyutping_tokens": [
+        "酒"
+      ],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U026",
+      "cantonese": "開車飲水咋。",
+      "top_constructions": [
+        "TransitiveVP"
+      ],
+      "internal_top_constructions": [
+        "TransitiveVP"
+      ],
+      "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+      "semantic_blocker_count": 0,
+      "semantic_review_reason_count": 0,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "開車飲水"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 2
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "TransitiveVP",
+          "internal_construction": "TransitiveVP",
+          "surface": "開車飲水",
+          "label": "VP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "TransitiveVP",
+          "legitimacy_status": "provisional"
+        },
+        {
+          "depth": 1,
+          "parent": "TransitiveVP",
+          "construction": "TransitiveVP",
+          "internal_construction": "TransitiveVP",
+          "surface": "開車",
+          "label": "VP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "TransitiveVP",
+          "legitimacy_status": "provisional"
+        },
+        {
+          "depth": 1,
+          "parent": "TransitiveVP",
+          "construction": "ProductiveVO",
+          "internal_construction": "ProductiveVO",
+          "surface": "飲水",
+          "label": "VP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "ProductiveVO",
+          "legitimacy_status": "research_pending"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "開",
+          "role": "doing",
+          "syntax": "verb_or_modifier_head",
+          "jyutping": "hoi1"
+        },
+        {
+          "surface": "車",
+          "role": "what",
+          "syntax": "vehicle_noun object_np head_noun",
+          "jyutping": "ce1"
+        },
+        {
+          "surface": "飲",
+          "role": "doing",
+          "syntax": "verb",
+          "jyutping": "jam2"
+        },
+        {
+          "surface": "水",
+          "role": "what",
+          "syntax": "object",
+          "jyutping": "seoi2"
+        },
+        {
+          "surface": "咋",
+          "role": "particle",
+          "syntax": "sentence_final_particle restrictive_focus_particle exhaustive_limit_particle",
+          "jyutping": "zaa3"
+        }
+      ],
+      "missing_jyutping_tokens": [],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U027",
+      "cantonese": "尋晚黑就到廣西㗎喇。",
+      "top_constructions": [],
+      "internal_top_constructions": [],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 6,
+      "semantic_review_reason_count": 0,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "NO_TOP_CONSTRUCTION",
+        "top_construction_count": 0,
+        "top_construction_surfaces": [],
+        "unwrapped_root_nonpunctuation_count": 9,
+        "unwrapped_root_surfaces": [
+          "尋",
+          "晚",
+          "黑",
+          "就",
+          "到",
+          "廣",
+          "西",
+          "㗎",
+          "喇"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "construction_rows": [],
+      "token_rows": [
+        {
+          "surface": "尋",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "晚",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "黑",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "就",
+          "role": "func",
+          "syntax": "focus_or_sequence",
+          "jyutping": "zau6"
+        },
+        {
+          "surface": "到",
+          "role": "func",
+          "syntax": "result_or_attainment",
+          "jyutping": "dou2"
+        },
+        {
+          "surface": "廣",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "西",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "㗎",
+          "role": "particle",
+          "syntax": "explanatory_sentence_final_particle",
+          "jyutping": "gaa3"
+        },
+        {
+          "surface": "喇",
+          "role": "particle",
+          "syntax": "sentence_final_particle change_state_current_relevance_particle",
+          "jyutping": "laa3"
+        }
+      ],
+      "missing_jyutping_tokens": [
+        "尋",
+        "晚",
+        "黑",
+        "廣",
+        "西"
+      ],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U028",
+      "cantonese": "大概開咗五個鐘頭車左右啦。",
+      "top_constructions": [
+        "ApproximateQuantity"
+      ],
+      "internal_top_constructions": [
+        "ApproximateQuantity"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 1,
+      "semantic_review_reason_count": 1,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "大概開咗五個鐘頭車左右啦"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "ApproximateQuantity",
+          "internal_construction": "ApproximateQuantity",
+          "surface": "大概開咗五個鐘頭車左右啦",
+          "label": "Approx",
+          "trace": "construction_function",
+          "legitimacy_pattern": "ApproximateQuantity",
+          "legitimacy_status": "unsupported_generalization"
+        },
+        {
+          "depth": 1,
+          "parent": "ApproximateQuantity",
+          "construction": "PerfectiveVP",
+          "internal_construction": "PerfectiveVP",
+          "surface": "開咗",
+          "label": "PerfectiveVP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "PerfectiveVP",
+          "legitimacy_status": "provisional"
+        },
+        {
+          "depth": 1,
+          "parent": "ApproximateQuantity",
+          "construction": "QuantifiedTimeNP",
+          "internal_construction": "QuantifiedTimeNP",
+          "surface": "五個鐘",
+          "label": "Time",
+          "trace": "generative_template",
+          "legitimacy_pattern": "QuantifiedTimeNP",
+          "legitimacy_status": "research_pending"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "大概",
+          "role": "how",
+          "syntax": "approximation_adverb",
+          "jyutping": "daai6 koi3"
+        },
+        {
+          "surface": "開",
+          "role": "doing",
+          "syntax": "verb_or_modifier_head",
+          "jyutping": "hoi1"
+        },
+        {
+          "surface": "咗",
+          "role": "func",
+          "syntax": "perfective_aspect",
+          "jyutping": "zo2"
+        },
+        {
+          "surface": "五",
+          "role": "how",
+          "syntax": "quantity count_value numeral",
+          "jyutping": "ng5"
+        },
+        {
+          "surface": "個",
+          "role": "measure_word",
+          "syntax": "general_classifier classifier time_measure_classifier",
+          "jyutping": "go3"
+        },
+        {
+          "surface": "鐘",
+          "role": "when",
+          "syntax": "time_head temporal duration_unit",
+          "jyutping": "zung1"
+        },
+        {
+          "surface": "頭",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": "tau4"
+        },
+        {
+          "surface": "車",
+          "role": "what",
+          "syntax": "vehicle_noun object_np head_noun",
+          "jyutping": "ce1"
+        },
+        {
+          "surface": "左右",
+          "role": "how",
+          "syntax": "approximation_marker",
+          "jyutping": "zo2 jau6"
+        },
+        {
+          "surface": "啦",
+          "role": "particle",
+          "syntax": "sentence_final_particle directive_closure_particle",
+          "jyutping": "laa1"
+        }
+      ],
+      "missing_jyutping_tokens": [],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U029",
+      "cantonese": "加加埋埋。",
+      "top_constructions": [],
+      "internal_top_constructions": [],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 3,
+      "semantic_review_reason_count": 0,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "NO_TOP_CONSTRUCTION",
+        "top_construction_count": 0,
+        "top_construction_surfaces": [],
+        "unwrapped_root_nonpunctuation_count": 4,
+        "unwrapped_root_surfaces": [
+          "加",
+          "加",
+          "埋",
+          "埋"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "construction_rows": [],
+      "token_rows": [
+        {
+          "surface": "加",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "加",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "埋",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "埋",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        }
+      ],
+      "missing_jyutping_tokens": [
+        "加",
+        "加",
+        "埋",
+        "埋"
+      ],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U030",
+      "cantonese": "再開再開三四個鐘頭。",
+      "top_constructions": [
+        "NeedsContext"
+      ],
+      "internal_top_constructions": [
+        "NeedsContext"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 2,
+      "semantic_review_reason_count": 2,
+      "context_requirement_status": "context_required",
+      "missing_argument_slots": [
+        "left_relation_member"
+      ],
+      "review_count": 1,
+      "root_span_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "再開再開三四個鐘頭"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "NeedsContext",
+          "internal_construction": "NeedsContext",
+          "surface": "再開再開三四個鐘頭",
+          "label": "needs context",
+          "trace": "special_ambiguity_rule",
+          "legitimacy_pattern": "NeedsContext",
+          "legitimacy_status": "parser_heuristic"
+        },
+        {
+          "depth": 1,
+          "parent": "NeedsContext",
+          "construction": "ClauseRelationMember",
+          "internal_construction": "ClauseRelationMemberSpan",
+          "surface": "再開再開三四個鐘頭",
+          "label": "Relation-R",
+          "trace": "generative_template",
+          "legitimacy_pattern": "ClauseRelationMemberSpan",
+          "legitimacy_status": "parser_heuristic"
+        },
+        {
+          "depth": 2,
+          "parent": "ClauseRelationMember",
+          "construction": "QuantifiedTimeNP",
+          "internal_construction": "QuantifiedTimeNP",
+          "surface": "開三四個鐘",
+          "label": "Time",
+          "trace": "generative_template",
+          "legitimacy_pattern": "QuantifiedTimeNP",
+          "legitimacy_status": "research_pending"
+        },
+        {
+          "depth": 3,
+          "parent": "QuantifiedTimeNP",
+          "construction": "ActionStativeVP",
+          "internal_construction": "ActionStativeVP",
+          "surface": "開三",
+          "label": "VP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "ActionStativeVP",
+          "legitimacy_status": "research_pending"
+        },
+        {
+          "depth": 3,
+          "parent": "QuantifiedTimeNP",
+          "construction": "QuantifiedTimeNP",
+          "internal_construction": "QuantifiedTimeNP",
+          "surface": "四個鐘",
+          "label": "Time",
+          "trace": "generative_template",
+          "legitimacy_pattern": "QuantifiedTimeNP",
+          "legitimacy_status": "research_pending"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "再",
+          "role": "how",
+          "syntax": "sequence clause_relation_linker sequential_relation_linker",
+          "jyutping": "zoi3"
+        },
+        {
+          "surface": "開",
+          "role": "doing",
+          "syntax": "verb_or_modifier_head",
+          "jyutping": "hoi1"
+        },
+        {
+          "surface": "再",
+          "role": "how",
+          "syntax": "sequence",
+          "jyutping": "zoi3"
+        },
+        {
+          "surface": "開",
+          "role": "doing",
+          "syntax": "verb_or_modifier_head",
+          "jyutping": "hoi1"
+        },
+        {
+          "surface": "三",
+          "role": "like",
+          "syntax": "quantity count_value numeral_three",
+          "jyutping": "saam1"
+        },
+        {
+          "surface": "四",
+          "role": "how",
+          "syntax": "quantity count_value numeral",
+          "jyutping": "sei3"
+        },
+        {
+          "surface": "個",
+          "role": "measure_word",
+          "syntax": "general_classifier classifier time_measure_classifier",
+          "jyutping": "go3"
+        },
+        {
+          "surface": "鐘",
+          "role": "when",
+          "syntax": "time_head temporal duration_unit",
+          "jyutping": "zung1"
+        },
+        {
+          "surface": "頭",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": "tau4"
+        }
+      ],
+      "missing_jyutping_tokens": [],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U031",
+      "cantonese": "到遊覽區、到桂林嗰度。",
+      "top_constructions": [],
+      "internal_top_constructions": [],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 5,
+      "semantic_review_reason_count": 0,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "NO_TOP_CONSTRUCTION",
+        "top_construction_count": 0,
+        "top_construction_surfaces": [],
+        "unwrapped_root_nonpunctuation_count": 8,
+        "unwrapped_root_surfaces": [
+          "到",
+          "遊",
+          "覽",
+          "區",
+          "到",
+          "桂",
+          "林",
+          "嗰度"
+        ],
+        "ignored_root_remainder_count": 2
+      },
+      "construction_rows": [],
+      "token_rows": [
+        {
+          "surface": "到",
+          "role": "func",
+          "syntax": "result_or_attainment",
+          "jyutping": "dou2"
+        },
+        {
+          "surface": "遊",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "覽",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "區",
+          "role": "where",
+          "syntax": "area_noun place_head",
+          "jyutping": "keoi1"
+        },
+        {
+          "surface": "到",
+          "role": "func",
+          "syntax": "result_or_attainment",
+          "jyutping": "dou2"
+        },
+        {
+          "surface": "桂",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "林",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "嗰度",
+          "role": "where",
+          "syntax": "place",
+          "jyutping": "go2 dou6"
+        }
+      ],
+      "missing_jyutping_tokens": [
+        "遊",
+        "覽",
+        "桂",
+        "林"
+      ],
+      "text_rows": [
+        "、",
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U032",
+      "cantonese": "而家搵房住囉。",
+      "top_constructions": [
+        "TemporalClause"
+      ],
+      "internal_top_constructions": [
+        "TemporalClause"
+      ],
+      "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+      "semantic_blocker_count": 0,
+      "semantic_review_reason_count": 0,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "而家搵房住囉"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "TemporalClause",
+          "internal_construction": "TemporalClause",
+          "surface": "而家搵房住囉",
+          "label": "Time",
+          "trace": "construction_function",
+          "legitimacy_pattern": "TemporalClause",
+          "legitimacy_status": "provisional"
+        },
+        {
+          "depth": 1,
+          "parent": "TemporalClause",
+          "construction": "TransitiveVP",
+          "internal_construction": "TransitiveVP",
+          "surface": "搵房",
+          "label": "VP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "TransitiveVP",
+          "legitimacy_status": "provisional"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "而家",
+          "role": "when",
+          "syntax": "temporal_adjunct",
+          "jyutping": "ji4 gaa1"
+        },
+        {
+          "surface": "搵",
+          "role": "doing",
+          "syntax": "verb find_verb",
+          "jyutping": "wan2"
+        },
+        {
+          "surface": "房",
+          "role": "where",
+          "syntax": "place_or_goal interior_location",
+          "jyutping": "fong2"
+        },
+        {
+          "surface": "住",
+          "role": "doing",
+          "syntax": "verb residence_verb_or_durative_marker_homograph",
+          "jyutping": "zyu6"
+        },
+        {
+          "surface": "囉",
+          "role": "particle",
+          "syntax": "sentence_final_particle agreement_particle",
+          "jyutping": "lo1"
+        }
+      ],
+      "missing_jyutping_tokens": [],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U033",
+      "cantonese": "食完，聽日就正式旅遊啦。",
+      "top_constructions": [
+        "ClauseLinkingSequence"
+      ],
+      "internal_top_constructions": [
+        "ClauseRelationGraph"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 3,
+      "semantic_review_reason_count": 1,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "食完，聽日就正式旅遊啦"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "ClauseLinkingSequence",
+          "internal_construction": "ClauseRelationGraph",
+          "surface": "食完，聽日就正式旅遊啦",
+          "label": "ClauseLink",
+          "trace": "governed_discourse_wrapper",
+          "legitimacy_pattern": "ClauseRelationGraph",
+          "legitimacy_status": "parser_heuristic"
+        },
+        {
+          "depth": 1,
+          "parent": "ClauseLinkingSequence",
+          "construction": "ClauseRelation",
+          "internal_construction": "ClauseRelationEdge",
+          "surface": "食完，聽日就正式旅遊啦",
+          "label": "ClauseRel",
+          "trace": "generative_template",
+          "legitimacy_pattern": "ClauseRelationEdge",
+          "legitimacy_status": "parser_heuristic"
+        },
+        {
+          "depth": 2,
+          "parent": "ClauseRelation",
+          "construction": "ClauseRelationMember",
+          "internal_construction": "ClauseRelationMemberSpan",
+          "surface": "食完",
+          "label": "Relation-L",
+          "trace": "generative_template",
+          "legitimacy_pattern": "ClauseRelationMemberSpan",
+          "legitimacy_status": "parser_heuristic"
+        },
+        {
+          "depth": 3,
+          "parent": "ClauseRelationMember",
+          "construction": "CompletionVP",
+          "internal_construction": "CompletionVP",
+          "surface": "食完",
+          "label": "CompletionVP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "CompletionVP",
+          "legitimacy_status": "research_pending"
+        },
+        {
+          "depth": 2,
+          "parent": "ClauseRelation",
+          "construction": "ClauseRelationMember",
+          "internal_construction": "ClauseRelationMemberSpan",
+          "surface": "聽日就正式旅遊啦",
+          "label": "Relation-R",
+          "trace": "generative_template",
+          "legitimacy_pattern": "ClauseRelationMemberSpan",
+          "legitimacy_status": "parser_heuristic"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "食",
+          "role": "doing",
+          "syntax": "verb transitive_affordance chain_select_edible",
+          "jyutping": "sik6"
+        },
+        {
+          "surface": "完",
+          "role": "func",
+          "syntax": "completive_result",
+          "jyutping": "jyun4"
+        },
+        {
+          "surface": "聽日",
+          "role": "when",
+          "syntax": "temporal_adjunct",
+          "jyutping": "ting1 jat6"
+        },
+        {
+          "surface": "就",
+          "role": "func",
+          "syntax": "focus_or_sequence clause_relation_linker conditional_relation_linker",
+          "jyutping": "zau6"
+        },
+        {
+          "surface": "正",
+          "role": "like",
+          "syntax": "stative_predicate",
+          "jyutping": "zeng3"
+        },
+        {
+          "surface": "式",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "旅",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": "leoi5"
+        },
+        {
+          "surface": "遊",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "啦",
+          "role": "particle",
+          "syntax": "sentence_final_particle directive_closure_particle",
+          "jyutping": "laa1"
+        }
+      ],
+      "missing_jyutping_tokens": [
+        "式",
+        "遊"
+      ],
+      "text_rows": [
+        "，",
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U034",
+      "cantonese": "去陽朔、去桂林都係嗰度附近㗎啦。",
+      "top_constructions": [
+        "DirectionalMotionVP",
+        "DirectionalMotionVP"
+      ],
+      "internal_top_constructions": [
+        "DirectionalMotionVP",
+        "DirectionalMotionVP"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 5,
+      "semantic_review_reason_count": 1,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 2,
+        "top_construction_surfaces": [
+          "去",
+          "去"
+        ],
+        "unwrapped_root_nonpunctuation_count": 10,
+        "unwrapped_root_surfaces": [
+          "陽",
+          "朔",
+          "桂",
+          "林",
+          "都",
+          "係",
+          "嗰度",
+          "附近",
+          "㗎",
+          "啦"
+        ],
+        "ignored_root_remainder_count": 2
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "DirectionalMotionVP",
+          "internal_construction": "DirectionalMotionVP",
+          "surface": "去",
+          "label": "MotionVP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "DirectionalMotionVP",
+          "legitimacy_status": "provisional"
+        },
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "DirectionalMotionVP",
+          "internal_construction": "DirectionalMotionVP",
+          "surface": "去",
+          "label": "MotionVP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "DirectionalMotionVP",
+          "legitimacy_status": "provisional"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "去",
+          "role": "doing",
+          "syntax": "deictic_motion_marker",
+          "jyutping": "heoi3"
+        },
+        {
+          "surface": "陽",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "朔",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "去",
+          "role": "doing",
+          "syntax": "deictic_motion_marker",
+          "jyutping": "heoi3"
+        },
+        {
+          "surface": "桂",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "林",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "都",
+          "role": "how",
+          "syntax": "focus_adverb",
+          "jyutping": "dou1"
+        },
+        {
+          "surface": "係",
+          "role": "func",
+          "syntax": "copula",
+          "jyutping": "hai6"
+        },
+        {
+          "surface": "嗰度",
+          "role": "where",
+          "syntax": "place",
+          "jyutping": "go2 dou6"
+        },
+        {
+          "surface": "附近",
+          "role": "where",
+          "syntax": "relative_place_expression",
+          "jyutping": "fu6 gan6"
+        },
+        {
+          "surface": "㗎",
+          "role": "particle",
+          "syntax": "explanatory_sentence_final_particle",
+          "jyutping": "gaa3"
+        },
+        {
+          "surface": "啦",
+          "role": "particle",
+          "syntax": "sentence_final_particle directive_closure_particle",
+          "jyutping": "laa1"
+        }
+      ],
+      "missing_jyutping_tokens": [
+        "陽",
+        "朔",
+        "桂",
+        "林"
+      ],
+      "text_rows": [
+        "、",
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U035",
+      "cantonese": "兜晒嗰啲點啊。",
+      "top_constructions": [],
+      "internal_top_constructions": [],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 2,
+      "semantic_review_reason_count": 0,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "NO_TOP_CONSTRUCTION",
+        "top_construction_count": 0,
+        "top_construction_surfaces": [],
+        "unwrapped_root_nonpunctuation_count": 5,
+        "unwrapped_root_surfaces": [
+          "兜",
+          "晒",
+          "嗰",
+          "啲",
+          "點"
+        ],
+        "ignored_root_remainder_count": 2
+      },
+      "construction_rows": [],
+      "token_rows": [
+        {
+          "surface": "兜",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "晒",
+          "role": "func",
+          "syntax": "completive_totality_aspect",
+          "jyutping": "saai3"
+        },
+        {
+          "surface": "嗰",
+          "role": "func",
+          "syntax": "demonstrative_determiner",
+          "jyutping": "go2"
+        },
+        {
+          "surface": "啲",
+          "role": "how",
+          "syntax": "quantity_degree_or_plural",
+          "jyutping": "di1"
+        },
+        {
+          "surface": "點",
+          "role": "how",
+          "syntax": "wh_manner",
+          "jyutping": "dim2"
+        },
+        {
+          "surface": "啊",
+          "role": "particle",
+          "syntax": "sentence_final_particle",
+          "jyutping": "aa3"
+        }
+      ],
+      "missing_jyutping_tokens": [
+        "兜"
+      ],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U036",
+      "cantonese": "都要十幾日㗎。",
+      "top_constructions": [
+        "ModalVP"
+      ],
+      "internal_top_constructions": [
+        "ModalVP"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 1,
+      "semantic_review_reason_count": 0,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "要十幾日"
+        ],
+        "unwrapped_root_nonpunctuation_count": 1,
+        "unwrapped_root_surfaces": [
+          "都"
+        ],
+        "ignored_root_remainder_count": 2
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "ModalVP",
+          "internal_construction": "ModalVP",
+          "surface": "要十幾日",
+          "label": "ModalVP",
+          "trace": "generative_or_heuristic_slot_rule",
+          "legitimacy_pattern": "ModalVP",
+          "legitimacy_status": "provisional"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "都",
+          "role": "how",
+          "syntax": "focus_adverb",
+          "jyutping": "dou1"
+        },
+        {
+          "surface": "要",
+          "role": "func",
+          "syntax": "modal_need_or_want",
+          "jyutping": "jiu3"
+        },
+        {
+          "surface": "十",
+          "role": "how",
+          "syntax": "quantity count_value numeral_ten",
+          "jyutping": "sap6"
+        },
+        {
+          "surface": "幾",
+          "role": "how",
+          "syntax": "degree_marker",
+          "jyutping": "gei2"
+        },
+        {
+          "surface": "日",
+          "role": "when",
+          "syntax": "time_head temporal day_noun day_unit",
+          "jyutping": "jat6"
+        },
+        {
+          "surface": "㗎",
+          "role": "particle",
+          "syntax": "explanatory_sentence_final_particle",
+          "jyutping": "gaa3"
+        }
+      ],
+      "missing_jyutping_tokens": [],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U037",
+      "cantonese": "廣州上嚟八百幾公里啊。",
+      "top_constructions": [
+        "DirectionalMotionVP"
+      ],
+      "internal_top_constructions": [
+        "DirectionalMotionVP"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 3,
+      "semantic_review_reason_count": 0,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "上嚟"
+        ],
+        "unwrapped_root_nonpunctuation_count": 6,
+        "unwrapped_root_surfaces": [
+          "廣州",
+          "八",
+          "百",
+          "幾",
+          "公",
+          "里"
+        ],
+        "ignored_root_remainder_count": 2
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "DirectionalMotionVP",
+          "internal_construction": "DirectionalMotionVP",
+          "surface": "上嚟",
+          "label": "MotionVP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "DirectionalMotionVP",
+          "legitimacy_status": "provisional"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "廣州",
+          "role": "where",
+          "syntax": "proper_place city_name",
+          "jyutping": "gwong2 zau1"
+        },
+        {
+          "surface": "上",
+          "role": "doing",
+          "syntax": "movement_direction",
+          "jyutping": "soeng5"
+        },
+        {
+          "surface": "嚟",
+          "role": "doing",
+          "syntax": "deictic_motion_marker",
+          "jyutping": "lai4"
+        },
+        {
+          "surface": "八",
+          "role": "how",
+          "syntax": "quantity count_value numeral_eight",
+          "jyutping": "baat3"
+        },
+        {
+          "surface": "百",
+          "role": "how",
+          "syntax": "quantity count_value numeral_hundred",
+          "jyutping": "baak3"
+        },
+        {
+          "surface": "幾",
+          "role": "how",
+          "syntax": "degree_marker",
+          "jyutping": "gei2"
+        },
+        {
+          "surface": "公",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": "gung1"
+        },
+        {
+          "surface": "里",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "啊",
+          "role": "particle",
+          "syntax": "sentence_final_particle",
+          "jyutping": "aa3"
+        }
+      ],
+      "missing_jyutping_tokens": [
+        "里"
+      ],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U038",
+      "cantonese": "陽朔好靚㗎。",
+      "top_constructions": [
+        "DegreeStativePredicate"
+      ],
+      "internal_top_constructions": [
+        "DegreeStativePredicate"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 3,
+      "semantic_review_reason_count": 0,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "好靚"
+        ],
+        "unwrapped_root_nonpunctuation_count": 2,
+        "unwrapped_root_surfaces": [
+          "陽",
+          "朔"
+        ],
+        "ignored_root_remainder_count": 2
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "DegreeStativePredicate",
+          "internal_construction": "DegreeStativePredicate",
+          "surface": "好靚",
+          "label": "DegreeStative",
+          "trace": "generative_template",
+          "legitimacy_pattern": "DegreeStativePredicate",
+          "legitimacy_status": "provisional"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "陽",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "朔",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "好",
+          "role": "how",
+          "syntax": "degree_marker",
+          "jyutping": "hou2"
+        },
+        {
+          "surface": "靚",
+          "role": "like",
+          "syntax": "stative_predicate",
+          "jyutping": "leng3"
+        },
+        {
+          "surface": "㗎",
+          "role": "particle",
+          "syntax": "explanatory_sentence_final_particle",
+          "jyutping": "gaa3"
+        }
+      ],
+      "missing_jyutping_tokens": [
+        "陽",
+        "朔"
+      ],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U039",
+      "cantonese": "你揸住你哋部車周圍兜。",
+      "top_constructions": [
+        "ModifiedNP"
+      ],
+      "internal_top_constructions": [
+        "ModifiedNP"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 5,
+      "semantic_review_reason_count": 1,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "部車"
+        ],
+        "unwrapped_root_nonpunctuation_count": 7,
+        "unwrapped_root_surfaces": [
+          "你",
+          "揸",
+          "住",
+          "你哋",
+          "周",
+          "圍",
+          "兜"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "ModifiedNP",
+          "internal_construction": "ModifiedNP",
+          "surface": "部車",
+          "label": "NP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "ModifiedNP",
+          "legitimacy_status": "provisional"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "你",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "nei5"
+        },
+        {
+          "surface": "揸",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "住",
+          "role": "doing",
+          "syntax": "verb residence_verb_or_durative_marker_homograph",
+          "jyutping": "zyu6"
+        },
+        {
+          "surface": "你哋",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "nei5 dei6"
+        },
+        {
+          "surface": "部",
+          "role": "measure_word",
+          "syntax": "classifier_vehicle_machine",
+          "jyutping": "bou6"
+        },
+        {
+          "surface": "車",
+          "role": "what",
+          "syntax": "vehicle_noun object_np head_noun",
+          "jyutping": "ce1"
+        },
+        {
+          "surface": "周",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "圍",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "兜",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        }
+      ],
+      "missing_jyutping_tokens": [
+        "揸",
+        "周",
+        "圍",
+        "兜"
+      ],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U040",
+      "cantonese": "去嗰啲唔使錢嘅景點周圍兜就得㗎啦。",
+      "top_constructions": [
+        "DirectionalMotionVP",
+        "ModalVP"
+      ],
+      "internal_top_constructions": [
+        "DirectionalMotionVP",
+        "ModalVP"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 5,
+      "semantic_review_reason_count": 2,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 2,
+        "top_construction_surfaces": [
+          "去",
+          "使錢嘅景點周圍兜就得"
+        ],
+        "unwrapped_root_nonpunctuation_count": 5,
+        "unwrapped_root_surfaces": [
+          "嗰",
+          "啲",
+          "唔",
+          "㗎",
+          "啦"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "DirectionalMotionVP",
+          "internal_construction": "DirectionalMotionVP",
+          "surface": "去",
+          "label": "MotionVP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "DirectionalMotionVP",
+          "legitimacy_status": "provisional"
+        },
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "ModalVP",
+          "internal_construction": "ModalVP",
+          "surface": "使錢嘅景點周圍兜就得",
+          "label": "ModalVP",
+          "trace": "generative_or_heuristic_slot_rule",
+          "legitimacy_pattern": "ModalVP",
+          "legitimacy_status": "provisional"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "去",
+          "role": "doing",
+          "syntax": "deictic_motion_marker",
+          "jyutping": "heoi3"
+        },
+        {
+          "surface": "嗰",
+          "role": "func",
+          "syntax": "demonstrative_determiner",
+          "jyutping": "go2"
+        },
+        {
+          "surface": "啲",
+          "role": "how",
+          "syntax": "quantity_degree_or_plural",
+          "jyutping": "di1"
+        },
+        {
+          "surface": "唔",
+          "role": "func",
+          "syntax": "negator",
+          "jyutping": "m4"
+        },
+        {
+          "surface": "使",
+          "role": "func",
+          "syntax": "modal_necessity",
+          "jyutping": "sai2"
+        },
+        {
+          "surface": "錢",
+          "role": "what",
+          "syntax": "object_np",
+          "jyutping": "cin2"
+        },
+        {
+          "surface": "嘅",
+          "role": "particle",
+          "syntax": "sentence_final_particle_or_nominalizer",
+          "jyutping": "ge3"
+        },
+        {
+          "surface": "景",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "點",
+          "role": "how",
+          "syntax": "wh_manner",
+          "jyutping": "dim2"
+        },
+        {
+          "surface": "周",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "圍",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "兜",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "就",
+          "role": "func",
+          "syntax": "focus_or_sequence",
+          "jyutping": "zau6"
+        },
+        {
+          "surface": "得",
+          "role": "func",
+          "syntax": "acceptability_predicate",
+          "jyutping": "dak1"
+        },
+        {
+          "surface": "㗎",
+          "role": "particle",
+          "syntax": "explanatory_sentence_final_particle",
+          "jyutping": "gaa3"
+        },
+        {
+          "surface": "啦",
+          "role": "particle",
+          "syntax": "sentence_final_particle directive_closure_particle",
+          "jyutping": "laa1"
+        }
+      ],
+      "missing_jyutping_tokens": [
+        "景",
+        "周",
+        "圍",
+        "兜"
+      ],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U041",
+      "cantonese": "冇必要使錢去景點㗎。",
+      "top_constructions": [
+        "ModalVP"
+      ],
+      "internal_top_constructions": [
+        "ModalVP"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 3,
+      "semantic_review_reason_count": 1,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "要使錢去景點"
+        ],
+        "unwrapped_root_nonpunctuation_count": 2,
+        "unwrapped_root_surfaces": [
+          "冇",
+          "必"
+        ],
+        "ignored_root_remainder_count": 2
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "ModalVP",
+          "internal_construction": "ModalVP",
+          "surface": "要使錢去景點",
+          "label": "ModalVP",
+          "trace": "generative_or_heuristic_slot_rule",
+          "legitimacy_pattern": "ModalVP",
+          "legitimacy_status": "provisional"
+        },
+        {
+          "depth": 1,
+          "parent": "ModalVP",
+          "construction": "DirectionalMotionVP",
+          "internal_construction": "DirectionalMotionVP",
+          "surface": "去",
+          "label": "MotionVP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "DirectionalMotionVP",
+          "legitimacy_status": "provisional"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "冇",
+          "role": "func",
+          "syntax": "negated_existential",
+          "jyutping": "mou5"
+        },
+        {
+          "surface": "必",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "要",
+          "role": "func",
+          "syntax": "modal_need_or_want",
+          "jyutping": "jiu3"
+        },
+        {
+          "surface": "使",
+          "role": "func",
+          "syntax": "modal_necessity",
+          "jyutping": "sai2"
+        },
+        {
+          "surface": "錢",
+          "role": "what",
+          "syntax": "object_np",
+          "jyutping": "cin2"
+        },
+        {
+          "surface": "去",
+          "role": "doing",
+          "syntax": "deictic_motion_marker",
+          "jyutping": "heoi3"
+        },
+        {
+          "surface": "景",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "點",
+          "role": "how",
+          "syntax": "wh_manner",
+          "jyutping": "dim2"
+        },
+        {
+          "surface": "㗎",
+          "role": "particle",
+          "syntax": "explanatory_sentence_final_particle",
+          "jyutping": "gaa3"
+        }
+      ],
+      "missing_jyutping_tokens": [
+        "必",
+        "景"
+      ],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U042",
+      "cantonese": "一樣㗎咋。",
+      "top_constructions": [
+        "QuantifiedClassifierNP"
+      ],
+      "internal_top_constructions": [
+        "QuantifiedClassifierNP"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 1,
+      "semantic_review_reason_count": 1,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "一樣"
+        ],
+        "unwrapped_root_nonpunctuation_count": 2,
+        "unwrapped_root_surfaces": [
+          "㗎",
+          "咋"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "QuantifiedClassifierNP",
+          "internal_construction": "QuantifiedClassifierNP",
+          "surface": "一樣",
+          "label": "NP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "QuantifiedClassifierNP",
+          "legitimacy_status": "provisional"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "一",
+          "role": "how",
+          "syntax": "quantity count_value numeral",
+          "jyutping": "jat1"
+        },
+        {
+          "surface": "樣",
+          "role": "measure_word",
+          "syntax": "general_classifier classifier nominal_head_ellipsis",
+          "jyutping": "joeng6"
+        },
+        {
+          "surface": "㗎",
+          "role": "particle",
+          "syntax": "explanatory_sentence_final_particle",
+          "jyutping": "gaa3"
+        },
+        {
+          "surface": "咋",
+          "role": "particle",
+          "syntax": "sentence_final_particle restrictive_focus_particle exhaustive_limit_particle",
+          "jyutping": "zaa3"
+        }
+      ],
+      "missing_jyutping_tokens": [],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U043",
+      "cantonese": "啲風景差唔多。",
+      "top_constructions": [
+        "DiMarkedNP",
+        "ActionStativeVP"
+      ],
+      "internal_top_constructions": [
+        "DiMarkedNP",
+        "ActionStativeVP"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 2,
+      "semantic_review_reason_count": 1,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 2,
+        "top_construction_surfaces": [
+          "啲風",
+          "差唔多"
+        ],
+        "unwrapped_root_nonpunctuation_count": 1,
+        "unwrapped_root_surfaces": [
+          "景"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "DiMarkedNP",
+          "internal_construction": "DiMarkedNP",
+          "surface": "啲風",
+          "label": "NP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "DiMarkedNP",
+          "legitimacy_status": "provisional"
+        },
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "ActionStativeVP",
+          "internal_construction": "ActionStativeVP",
+          "surface": "差唔多",
+          "label": "VP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "ActionStativeVP",
+          "legitimacy_status": "research_pending"
+        },
+        {
+          "depth": 1,
+          "parent": "ActionStativeVP",
+          "construction": "NegatedStativePredicate",
+          "internal_construction": "NegatedStativePredicate",
+          "surface": "唔多",
+          "label": "NegStative",
+          "trace": "generative_template",
+          "legitimacy_pattern": "NegatedStativePredicate",
+          "legitimacy_status": "unsupported_generalization"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "啲",
+          "role": "func",
+          "syntax": "di_determiner",
+          "jyutping": "di1"
+        },
+        {
+          "surface": "風",
+          "role": "what",
+          "syntax": "weather_np wind_noun weather_phenomenon environmental_phenomenon",
+          "jyutping": "fung1"
+        },
+        {
+          "surface": "景",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "差",
+          "role": "doing",
+          "syntax": "verb subtraction_or_shortfall_marker",
+          "jyutping": "caa1"
+        },
+        {
+          "surface": "唔",
+          "role": "func",
+          "syntax": "negator",
+          "jyutping": "m4"
+        },
+        {
+          "surface": "多",
+          "role": "like",
+          "syntax": "stative_or_quantity",
+          "jyutping": "do1"
+        }
+      ],
+      "missing_jyutping_tokens": [
+        "景"
+      ],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U044",
+      "cantonese": "我姨甥喺上面單位做嘢嘛。",
+      "top_constructions": [
+        "LocativePlacePhrase",
+        "ModifiedNP"
+      ],
+      "internal_top_constructions": [
+        "LocativePlacePhrase",
+        "ModifiedNP"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 4,
+      "semantic_review_reason_count": 1,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 2,
+        "top_construction_surfaces": [
+          "喺上面",
+          "單位做嘢"
+        ],
+        "unwrapped_root_nonpunctuation_count": 4,
+        "unwrapped_root_surfaces": [
+          "我",
+          "姨",
+          "甥",
+          "嘛"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "LocativePlacePhrase",
+          "internal_construction": "LocativePlacePhrase",
+          "surface": "喺上面",
+          "label": "Location",
+          "trace": "generative_template",
+          "legitimacy_pattern": "LocativePlacePhrase",
+          "legitimacy_status": "unsupported_generalization"
+        },
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "ModifiedNP",
+          "internal_construction": "ModifiedNP",
+          "surface": "單位做嘢",
+          "label": "NP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "ModifiedNP",
+          "legitimacy_status": "provisional"
+        },
+        {
+          "depth": 1,
+          "parent": "ModifiedNP",
+          "construction": "ModifiedNP",
+          "internal_construction": "ModifiedNP",
+          "surface": "位做嘢",
+          "label": "NP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "ModifiedNP",
+          "legitimacy_status": "provisional"
+        },
+        {
+          "depth": 2,
+          "parent": "ModifiedNP",
+          "construction": "TransitiveVP",
+          "internal_construction": "TransitiveVP",
+          "surface": "做嘢",
+          "label": "VP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "TransitiveVP",
+          "legitimacy_status": "provisional"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "我",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "ngo5"
+        },
+        {
+          "surface": "姨",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "甥",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "喺",
+          "role": "func",
+          "syntax": "locative_coverb",
+          "jyutping": "hai2"
+        },
+        {
+          "surface": "上面",
+          "role": "where",
+          "syntax": "place_or_goal spatial_localizer upper_surface_localizer",
+          "jyutping": "soeng6 min6"
+        },
+        {
+          "surface": "單",
+          "role": "measure_word",
+          "syntax": "classifier_case_order_or_news_item",
+          "jyutping": "daan1"
+        },
+        {
+          "surface": "位",
+          "role": "measure_word",
+          "syntax": "classifier_person polite_person_classifier",
+          "jyutping": "wai2"
+        },
+        {
+          "surface": "做",
+          "role": "doing",
+          "syntax": "verb",
+          "jyutping": "zou6"
+        },
+        {
+          "surface": "嘢",
+          "role": "what",
+          "syntax": "object_np",
+          "jyutping": "je5"
+        },
+        {
+          "surface": "嘛",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        }
+      ],
+      "missing_jyutping_tokens": [
+        "姨",
+        "甥",
+        "嘛"
+      ],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U045",
+      "cantonese": "我冇去到啊。",
+      "top_constructions": [
+        "NegatedDirectionalMotionVP"
+      ],
+      "internal_top_constructions": [
+        "NegatedDirectionalMotionVP"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 1,
+      "semantic_review_reason_count": 0,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "冇去"
+        ],
+        "unwrapped_root_nonpunctuation_count": 2,
+        "unwrapped_root_surfaces": [
+          "我",
+          "到"
+        ],
+        "ignored_root_remainder_count": 2
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "NegatedDirectionalMotionVP",
+          "internal_construction": "NegatedDirectionalMotionVP",
+          "surface": "冇去",
+          "label": "NegMotionVP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "NegatedDirectionalMotionVP",
+          "legitimacy_status": "provisional"
+        },
+        {
+          "depth": 1,
+          "parent": "NegatedDirectionalMotionVP",
+          "construction": "DirectionalMotionVP",
+          "internal_construction": "DirectionalMotionVP",
+          "surface": "去",
+          "label": "MotionVP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "DirectionalMotionVP",
+          "legitimacy_status": "provisional"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "我",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "ngo5"
+        },
+        {
+          "surface": "冇",
+          "role": "func",
+          "syntax": "negator",
+          "jyutping": "mou5"
+        },
+        {
+          "surface": "去",
+          "role": "doing",
+          "syntax": "deictic_motion_marker",
+          "jyutping": "heoi3"
+        },
+        {
+          "surface": "到",
+          "role": "func",
+          "syntax": "result_or_attainment",
+          "jyutping": "dou2"
+        },
+        {
+          "surface": "啊",
+          "role": "particle",
+          "syntax": "sentence_final_particle",
+          "jyutping": "aa3"
+        }
+      ],
+      "missing_jyutping_tokens": [],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U046",
+      "cantonese": "我同阿妹喺屋企啊。",
+      "top_constructions": [
+        "LocativePlacePhrase"
+      ],
+      "internal_top_constructions": [
+        "LocativePlacePhrase"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 2,
+      "semantic_review_reason_count": 0,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "喺屋企"
+        ],
+        "unwrapped_root_nonpunctuation_count": 4,
+        "unwrapped_root_surfaces": [
+          "我",
+          "同",
+          "阿",
+          "妹"
+        ],
+        "ignored_root_remainder_count": 2
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "LocativePlacePhrase",
+          "internal_construction": "LocativePlacePhrase",
+          "surface": "喺屋企",
+          "label": "Location",
+          "trace": "generative_template",
+          "legitimacy_pattern": "LocativePlacePhrase",
+          "legitimacy_status": "unsupported_generalization"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "我",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "ngo5"
+        },
+        {
+          "surface": "同",
+          "role": "func",
+          "syntax": "connector_or_coverb comitative_coverb interpersonal_coverb",
+          "jyutping": "tung4"
+        },
+        {
+          "surface": "阿",
+          "role": "who",
+          "syntax": "address_prefix",
+          "jyutping": "aa3"
+        },
+        {
+          "surface": "妹",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "喺",
+          "role": "func",
+          "syntax": "locative_coverb",
+          "jyutping": "hai2"
+        },
+        {
+          "surface": "屋企",
+          "role": "where",
+          "syntax": "place_or_goal",
+          "jyutping": "uk1 kei2"
+        },
+        {
+          "surface": "啊",
+          "role": "particle",
+          "syntax": "sentence_final_particle",
+          "jyutping": "aa3"
+        }
+      ],
+      "missing_jyutping_tokens": [
+        "妹"
+      ],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U047",
+      "cantonese": "因為我要上班啊。",
+      "top_constructions": [
+        "NeedsContext"
+      ],
+      "internal_top_constructions": [
+        "NeedsContext"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 2,
+      "semantic_review_reason_count": 2,
+      "context_requirement_status": "context_required",
+      "missing_argument_slots": [
+        "right_relation_member"
+      ],
+      "review_count": 1,
+      "root_span_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "因為我要上班啊"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "NeedsContext",
+          "internal_construction": "NeedsContext",
+          "surface": "因為我要上班啊",
+          "label": "needs context",
+          "trace": "special_ambiguity_rule",
+          "legitimacy_pattern": "NeedsContext",
+          "legitimacy_status": "parser_heuristic"
+        },
+        {
+          "depth": 1,
+          "parent": "NeedsContext",
+          "construction": "ClauseRelationMember",
+          "internal_construction": "ClauseRelationMemberSpan",
+          "surface": "因為我要上班啊",
+          "label": "Relation-L",
+          "trace": "generative_template",
+          "legitimacy_pattern": "ClauseRelationMemberSpan",
+          "legitimacy_status": "parser_heuristic"
+        },
+        {
+          "depth": 2,
+          "parent": "ClauseRelationMember",
+          "construction": "SubjectModalPredicateClause",
+          "internal_construction": "ClauseSpan",
+          "surface": "我要上班啊",
+          "label": "SubjModal",
+          "trace": "generative_template",
+          "legitimacy_pattern": "ClauseSpan",
+          "legitimacy_status": "parser_heuristic"
+        },
+        {
+          "depth": 3,
+          "parent": "SubjectModalPredicateClause",
+          "construction": "ModalVP",
+          "internal_construction": "ModalVP",
+          "surface": "要上班啊",
+          "label": "ModalVP",
+          "trace": "generative_or_heuristic_slot_rule",
+          "legitimacy_pattern": "ModalVP",
+          "legitimacy_status": "provisional"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "因為",
+          "role": "func",
+          "syntax": "connector_reason clause_relation_linker causal_relation_linker",
+          "jyutping": "jan1 wai6"
+        },
+        {
+          "surface": "我",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "ngo5"
+        },
+        {
+          "surface": "要",
+          "role": "func",
+          "syntax": "modal_need_or_want",
+          "jyutping": "jiu3"
+        },
+        {
+          "surface": "上",
+          "role": "when",
+          "syntax": "temporal_modifier_previous movement_direction_up",
+          "jyutping": "soeng5"
+        },
+        {
+          "surface": "班",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "啊",
+          "role": "particle",
+          "syntax": "sentence_final_particle",
+          "jyutping": "aa3"
+        }
+      ],
+      "missing_jyutping_tokens": [
+        "班"
+      ],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U048",
+      "cantonese": "我冇得去啊。",
+      "top_constructions": [
+        "DirectionalMotionVP"
+      ],
+      "internal_top_constructions": [
+        "DirectionalMotionVP"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 1,
+      "semantic_review_reason_count": 0,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "去"
+        ],
+        "unwrapped_root_nonpunctuation_count": 3,
+        "unwrapped_root_surfaces": [
+          "我",
+          "冇",
+          "得"
+        ],
+        "ignored_root_remainder_count": 2
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "DirectionalMotionVP",
+          "internal_construction": "DirectionalMotionVP",
+          "surface": "去",
+          "label": "MotionVP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "DirectionalMotionVP",
+          "legitimacy_status": "provisional"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "我",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "ngo5"
+        },
+        {
+          "surface": "冇",
+          "role": "func",
+          "syntax": "negated_existential",
+          "jyutping": "mou5"
+        },
+        {
+          "surface": "得",
+          "role": "func",
+          "syntax": "acceptability_predicate",
+          "jyutping": "dak1"
+        },
+        {
+          "surface": "去",
+          "role": "doing",
+          "syntax": "deictic_motion_marker",
+          "jyutping": "heoi3"
+        },
+        {
+          "surface": "啊",
+          "role": "particle",
+          "syntax": "sentence_final_particle",
+          "jyutping": "aa3"
+        }
+      ],
+      "missing_jyutping_tokens": [],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U049",
+      "cantonese": "阿吳蘇陽又唔跟住去。",
+      "top_constructions": [
+        "DirectionalMotionVP"
+      ],
+      "internal_top_constructions": [
+        "DirectionalMotionVP"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 2,
+      "semantic_review_reason_count": 0,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "去"
+        ],
+        "unwrapped_root_nonpunctuation_count": 7,
+        "unwrapped_root_surfaces": [
+          "阿",
+          "吳",
+          "蘇",
+          "陽",
+          "又",
+          "唔",
+          "跟住"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "DirectionalMotionVP",
+          "internal_construction": "DirectionalMotionVP",
+          "surface": "去",
+          "label": "MotionVP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "DirectionalMotionVP",
+          "legitimacy_status": "provisional"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "阿",
+          "role": "who",
+          "syntax": "address_prefix",
+          "jyutping": "aa3"
+        },
+        {
+          "surface": "吳",
+          "role": "who",
+          "syntax": "surname_element proper_name_part",
+          "jyutping": "ng4"
+        },
+        {
+          "surface": "蘇",
+          "role": "who",
+          "syntax": "surname_proper_name verb_ambiguous",
+          "jyutping": "sou1"
+        },
+        {
+          "surface": "陽",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "又",
+          "role": "how",
+          "syntax": "focus_adverb",
+          "jyutping": "jau6"
+        },
+        {
+          "surface": "唔",
+          "role": "func",
+          "syntax": "negator",
+          "jyutping": "m4"
+        },
+        {
+          "surface": "跟住",
+          "role": "func",
+          "syntax": "sequence_connector discourse_marker",
+          "jyutping": "gan1 zyu6"
+        },
+        {
+          "surface": "去",
+          "role": "doing",
+          "syntax": "deictic_motion_marker",
+          "jyutping": "heoi3"
+        }
+      ],
+      "missing_jyutping_tokens": [
+        "陽"
+      ],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U050",
+      "cantonese": "咁樣放暑假都……",
+      "top_constructions": [],
+      "internal_top_constructions": [],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 2,
+      "semantic_review_reason_count": 0,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "NO_TOP_CONSTRUCTION",
+        "top_construction_count": 0,
+        "top_construction_surfaces": [],
+        "unwrapped_root_nonpunctuation_count": 7,
+        "unwrapped_root_surfaces": [
+          "咁",
+          "樣",
+          "放",
+          "暑",
+          "假",
+          "都",
+          "……"
+        ],
+        "ignored_root_remainder_count": 0
+      },
+      "construction_rows": [],
+      "token_rows": [
+        {
+          "surface": "咁",
+          "role": "func",
+          "syntax": "discourse_marker",
+          "jyutping": "gam2"
+        },
+        {
+          "surface": "樣",
+          "role": "measure_word",
+          "syntax": "classifier_kind_item",
+          "jyutping": "joeng6"
+        },
+        {
+          "surface": "放",
+          "role": "doing",
+          "syntax": "verb",
+          "jyutping": "fong3"
+        },
+        {
+          "surface": "暑",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "假",
+          "role": "like",
+          "syntax": "stative_predicate authenticity_property",
+          "jyutping": "gaa2"
+        },
+        {
+          "surface": "都",
+          "role": "how",
+          "syntax": "focus_adverb",
+          "jyutping": "dou1"
+        },
+        {
+          "surface": "……",
+          "role": "neutral",
+          "syntax": "ellipsis_punctuation",
+          "jyutping": ""
+        }
+      ],
+      "missing_jyutping_tokens": [
+        "暑",
+        "……"
+      ],
+      "text_rows": [],
+      "error": ""
+    },
+    {
+      "id": "U051",
+      "cantonese": "阿吳蘇陽唔跟佢去啊。",
+      "top_constructions": [
+        "DirectionalMotionVP"
+      ],
+      "internal_top_constructions": [
+        "DirectionalMotionVP"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 3,
+      "semantic_review_reason_count": 0,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 0,
+      "root_span_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "去"
+        ],
+        "unwrapped_root_nonpunctuation_count": 7,
+        "unwrapped_root_surfaces": [
+          "阿",
+          "吳",
+          "蘇",
+          "陽",
+          "唔",
+          "跟",
+          "佢"
+        ],
+        "ignored_root_remainder_count": 2
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "DirectionalMotionVP",
+          "internal_construction": "DirectionalMotionVP",
+          "surface": "去",
+          "label": "MotionVP",
+          "trace": "generative_template",
+          "legitimacy_pattern": "DirectionalMotionVP",
+          "legitimacy_status": "provisional"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "阿",
+          "role": "who",
+          "syntax": "address_prefix",
+          "jyutping": "aa3"
+        },
+        {
+          "surface": "吳",
+          "role": "who",
+          "syntax": "surname_element proper_name_part",
+          "jyutping": "ng4"
+        },
+        {
+          "surface": "蘇",
+          "role": "who",
+          "syntax": "surname_proper_name verb_ambiguous",
+          "jyutping": "sou1"
+        },
+        {
+          "surface": "陽",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "唔",
+          "role": "func",
+          "syntax": "negator",
+          "jyutping": "m4"
+        },
+        {
+          "surface": "跟",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "佢",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "keoi5"
+        },
+        {
+          "surface": "去",
+          "role": "doing",
+          "syntax": "deictic_motion_marker",
+          "jyutping": "heoi3"
+        },
+        {
+          "surface": "啊",
+          "role": "particle",
+          "syntax": "sentence_final_particle",
+          "jyutping": "aa3"
+        }
+      ],
+      "missing_jyutping_tokens": [
+        "陽",
+        "跟"
+      ],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    },
+    {
+      "id": "U052",
+      "cantonese": "吳蘇陽佢話唔慣啊。",
+      "top_constructions": [
+        "ReportedSpeech"
+      ],
+      "internal_top_constructions": [
+        "ReportedSpeech"
+      ],
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_blocker_count": 2,
+      "semantic_review_reason_count": 2,
+      "context_requirement_status": "context_not_required",
+      "missing_argument_slots": [],
+      "review_count": 1,
+      "root_span_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "吳蘇陽佢話唔慣啊"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "construction_rows": [
+        {
+          "depth": 0,
+          "parent": "",
+          "construction": "ReportedSpeech",
+          "internal_construction": "ReportedSpeech",
+          "surface": "吳蘇陽佢話唔慣啊",
+          "label": "Reported",
+          "trace": "legacy_surface_rule",
+          "legitimacy_pattern": "ReportedSpeech",
+          "legitimacy_status": "provisional"
+        }
+      ],
+      "token_rows": [
+        {
+          "surface": "吳",
+          "role": "who",
+          "syntax": "surname_element proper_name_part",
+          "jyutping": "ng4"
+        },
+        {
+          "surface": "蘇",
+          "role": "who",
+          "syntax": "surname_proper_name verb_ambiguous",
+          "jyutping": "sou1"
+        },
+        {
+          "surface": "陽",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "佢",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "keoi5"
+        },
+        {
+          "surface": "話",
+          "role": "doing",
+          "syntax": "speech_reporting_verb",
+          "jyutping": "waa6"
+        },
+        {
+          "surface": "唔",
+          "role": "func",
+          "syntax": "negator",
+          "jyutping": "m4"
+        },
+        {
+          "surface": "慣",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "surface": "啊",
+          "role": "particle",
+          "syntax": "sentence_final_particle",
+          "jyutping": "aa3"
+        }
+      ],
+      "missing_jyutping_tokens": [
+        "陽",
+        "慣"
+      ],
+      "text_rows": [
+        "。"
+      ],
+      "error": ""
+    }
+  ]
+}

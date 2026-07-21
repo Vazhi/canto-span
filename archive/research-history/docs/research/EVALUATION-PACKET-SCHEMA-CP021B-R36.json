@@ -1,0 +1,265 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Canto Span focused evaluation packet",
+  "type": "object",
+  "required": [
+    "schema",
+    "packet_id",
+    "canonical_family_id",
+    "status",
+    "development_set",
+    "negative_boundaries",
+    "ambiguity_pairs",
+    "context_pairs",
+    "native_review",
+    "expected_structure",
+    "forbidden_analyses",
+    "render_review",
+    "automated_gates",
+    "held_out"
+  ],
+  "properties": {
+    "schema": {
+      "const": "canto-span-focused-evaluation-packet-v1"
+    },
+    "packet_id": {
+      "type": "string"
+    },
+    "canonical_family_id": {
+      "type": "string"
+    },
+    "canonical_family": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "BLUEPRINT_ONLY",
+        "DEVELOPMENT_PACKET_FROZEN",
+        "HELD_OUT_LOCKED",
+        "RENDER_REVIEW_PENDING",
+        "ACCEPTED",
+        "REJECTED",
+        "BLOCKED_RESEARCH_GAP"
+      ]
+    },
+    "development_set": {
+      "type": "object",
+      "required": [
+        "exact_positive",
+        "positive_variants"
+      ],
+      "properties": {
+        "exact_positive": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/example"
+          }
+        },
+        "positive_variants": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/example"
+          }
+        }
+      }
+    },
+    "negative_boundaries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/example"
+      }
+    },
+    "ambiguity_pairs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/pair"
+      }
+    },
+    "context_pairs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/pair"
+      }
+    },
+    "native_review": {
+      "type": "object",
+      "required": [
+        "items",
+        "question"
+      ],
+      "properties": {
+        "question": {
+          "const": "Sounds unnatural"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/nativeItem"
+          }
+        }
+      }
+    },
+    "expected_structure": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "forbidden_analyses": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "render_review": {
+      "type": "object",
+      "required": [
+        "required",
+        "case_ids"
+      ],
+      "properties": {
+        "required": {
+          "type": "boolean"
+        },
+        "case_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "automated_gates": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "held_out": {
+      "type": "object",
+      "required": [
+        "selection_state",
+        "opened_during_design",
+        "manifest_hash",
+        "expected_output_visible_to_implementation"
+      ],
+      "properties": {
+        "selection_state": {
+          "enum": [
+            "NOT_SELECTED",
+            "SELECTED_HASHED_LOCKED",
+            "OPENED_FOR_FINAL_EVALUATION"
+          ]
+        },
+        "opened_during_design": {
+          "const": false
+        },
+        "manifest_hash": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "expected_output_visible_to_implementation": {
+          "const": false
+        }
+      }
+    }
+  },
+  "$defs": {
+    "example": {
+      "type": "object",
+      "required": [
+        "case_id",
+        "surface",
+        "provenance_class",
+        "expected",
+        "forbidden"
+      ],
+      "properties": {
+        "case_id": {
+          "type": "string"
+        },
+        "surface": {
+          "type": "string"
+        },
+        "context": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "provenance_class": {
+          "enum": [
+            "external_exact",
+            "external_constructed_variant",
+            "parser_preservation_seed",
+            "native_supplied",
+            "prospective_held_out"
+          ]
+        },
+        "expected": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "forbidden": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "pair": {
+      "type": "object",
+      "required": [
+        "pair_id",
+        "left",
+        "right",
+        "contrast"
+      ],
+      "properties": {
+        "pair_id": {
+          "type": "string"
+        },
+        "left": {
+          "$ref": "#/$defs/example"
+        },
+        "right": {
+          "$ref": "#/$defs/example"
+        },
+        "contrast": {
+          "type": "string"
+        }
+      }
+    },
+    "nativeItem": {
+      "type": "object",
+      "required": [
+        "case_id",
+        "surface",
+        "sounds_unnatural",
+        "optional_correction"
+      ],
+      "properties": {
+        "case_id": {
+          "type": "string"
+        },
+        "surface": {
+          "type": "string"
+        },
+        "sounds_unnatural": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "optional_correction": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+audit_id	target	method	result	evidence_limit
+R34-A01	R33 package integrity	independent extraction; parent source audit and runtime hashes verified	R33 audit 130/130 PASS; main.js fa753f61fa188bbed0e0d932b60f610d84ccb190ca6596bdc98ddc9dc5245a2c; manifest.json d7fbc5ba2dcb9dd652d04638e9c854c74eb03b183eedaa1967318b31a310f065	Integrity only; no linguistic inference.
+R34-A02	25 unmapped registry rows	coverage register, embedded grammar-legitimacy metadata, active constructor/reference screen	23 representation rows and 2 heuristic rows classified	Code and labels are research targets, not Cantonese evidence.
+R34-A03	accepted-fixture impact	non-held-out regression-snapshots tree count and parent/depth profile	15 labels occur in accepted trees; counts stored in disposition matrix	Fixture reach is migration impact only.
+R34-A04	hidden language dependency	screen matching conditions for particle force, topic status, complement selection, copular subtype, measure subtype, and exact surface profiles	Language-sensitive preconditions recorded for every affected internal wrapper	No internal wrapper is treated as independent external authority.
+R34-A05	held-out protection	no held-out rows or expected outputs opened; protected files preserved bytewise	PASS	File integrity checks only.

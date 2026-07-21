@@ -1,0 +1,349 @@
+{
+  "schema": "canto-span-v0.5.181-visible-result-v1",
+  "version": "0.5.181",
+  "runtime_version": "0.5.181",
+  "heldout_opened": false,
+  "visible_case_count": 18,
+  "render_case_count": 12,
+  "supported_productive_count": 1,
+  "target_status": "provisional",
+  "total": 83,
+  "passed": 83,
+  "failed": 0,
+  "strict_ready": true,
+  "checks": [
+    {
+      "name": "runtime 0.5.181",
+      "pass": true
+    },
+    {
+      "name": "policy 0.5.181",
+      "pass": true
+    },
+    {
+      "name": "global freeze active",
+      "pass": true
+    },
+    {
+      "name": "registry 179 unique",
+      "pass": true
+    },
+    {
+      "name": "target subtype active",
+      "pass": true
+    },
+    {
+      "name": "public alias exact",
+      "pass": true
+    },
+    {
+      "name": "internal scope exact",
+      "pass": true
+    },
+    {
+      "name": "candidate remains provisional",
+      "pass": true
+    },
+    {
+      "name": "broad relation remains provisional",
+      "pass": true
+    },
+    {
+      "name": "accepted perfective subtype preserved",
+      "pass": true
+    },
+    {
+      "name": "IFR-E01 lexicon-only public change explicitly bounded",
+      "pass": true
+    },
+    {
+      "name": "IFR-E01 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR-E01 exactly one narrow subtype with safeguards",
+      "pass": true
+    },
+    {
+      "name": "exact sourced elliptical resource stays overt-only",
+      "pass": true
+    },
+    {
+      "name": "IFR-V01 top construction compatibility",
+      "pass": true
+    },
+    {
+      "name": "IFR-V01 root coverage compatibility",
+      "pass": true
+    },
+    {
+      "name": "IFR-V01 public construction inventory unchanged",
+      "pass": true
+    },
+    {
+      "name": "IFR-V01 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR-V01 exactly one narrow subtype with safeguards",
+      "pass": true
+    },
+    {
+      "name": "IFR-V02 lexicon-only public change explicitly bounded",
+      "pass": true
+    },
+    {
+      "name": "IFR-V02 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR-V02 exactly one narrow subtype with safeguards",
+      "pass": true
+    },
+    {
+      "name": "IFR-V03 lexicon-only public change explicitly bounded",
+      "pass": true
+    },
+    {
+      "name": "IFR-V03 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR-V03 exactly one narrow subtype with safeguards",
+      "pass": true
+    },
+    {
+      "name": "cup resource keeps noun role",
+      "pass": true
+    },
+    {
+      "name": "IFR-V04 top construction compatibility",
+      "pass": true
+    },
+    {
+      "name": "IFR-V04 root coverage compatibility",
+      "pass": true
+    },
+    {
+      "name": "IFR-V04 public construction inventory unchanged",
+      "pass": true
+    },
+    {
+      "name": "IFR-V04 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR-V04 exactly one narrow subtype with safeguards",
+      "pass": true
+    },
+    {
+      "name": "IFR-V05 top construction compatibility",
+      "pass": true
+    },
+    {
+      "name": "IFR-V05 root coverage compatibility",
+      "pass": true
+    },
+    {
+      "name": "IFR-V05 public construction inventory unchanged",
+      "pass": true
+    },
+    {
+      "name": "IFR-V05 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR-V05 exactly one narrow subtype with safeguards",
+      "pass": true
+    },
+    {
+      "name": "written 來 keeps loi4 reading",
+      "pass": true
+    },
+    {
+      "name": "IFR-N01 top construction compatibility",
+      "pass": true
+    },
+    {
+      "name": "IFR-N01 root coverage compatibility",
+      "pass": true
+    },
+    {
+      "name": "IFR-N01 public construction inventory unchanged",
+      "pass": true
+    },
+    {
+      "name": "IFR-N01 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR-N01 narrow subtype absent",
+      "pass": true
+    },
+    {
+      "name": "IFR-N01 remains broad/review-bearing",
+      "pass": true
+    },
+    {
+      "name": "IFR-N02 lexicon-only public change explicitly bounded",
+      "pass": true
+    },
+    {
+      "name": "IFR-N02 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR-N02 narrow subtype absent",
+      "pass": true
+    },
+    {
+      "name": "IFR-N02 remains broad/review-bearing",
+      "pass": true
+    },
+    {
+      "name": "IFR-N03 lexicon-only public change explicitly bounded",
+      "pass": true
+    },
+    {
+      "name": "IFR-N03 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR-N03 narrow subtype absent",
+      "pass": true
+    },
+    {
+      "name": "IFR-N03 remains broad/review-bearing",
+      "pass": true
+    },
+    {
+      "name": "IFR-N04 lexicon-only public change explicitly bounded",
+      "pass": true
+    },
+    {
+      "name": "IFR-N04 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR-N04 narrow subtype absent",
+      "pass": true
+    },
+    {
+      "name": "IFR-N05 lexicon-only public change explicitly bounded",
+      "pass": true
+    },
+    {
+      "name": "IFR-N05 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR-N05 narrow subtype absent",
+      "pass": true
+    },
+    {
+      "name": "IFR-N06 lexicon-only public change explicitly bounded",
+      "pass": true
+    },
+    {
+      "name": "IFR-N06 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR-N06 narrow subtype absent",
+      "pass": true
+    },
+    {
+      "name": "IFR-N07 lexicon-only public change explicitly bounded",
+      "pass": true
+    },
+    {
+      "name": "IFR-N07 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR-N07 narrow subtype absent",
+      "pass": true
+    },
+    {
+      "name": "IFR-N08 lexicon-only public change explicitly bounded",
+      "pass": true
+    },
+    {
+      "name": "IFR-N08 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR-N08 narrow subtype absent",
+      "pass": true
+    },
+    {
+      "name": "IFR-N09 top construction compatibility",
+      "pass": true
+    },
+    {
+      "name": "IFR-N09 root coverage compatibility",
+      "pass": true
+    },
+    {
+      "name": "IFR-N09 public construction inventory unchanged",
+      "pass": true
+    },
+    {
+      "name": "IFR-N09 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR-N09 narrow subtype absent",
+      "pass": true
+    },
+    {
+      "name": "IFR-N10 lexicon-only public change explicitly bounded",
+      "pass": true
+    },
+    {
+      "name": "IFR-N10 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR-N10 narrow subtype absent",
+      "pass": true
+    },
+    {
+      "name": "IFR-N11 top construction compatibility",
+      "pass": true
+    },
+    {
+      "name": "IFR-N11 root coverage compatibility",
+      "pass": true
+    },
+    {
+      "name": "IFR-N11 public construction inventory unchanged",
+      "pass": true
+    },
+    {
+      "name": "IFR-N11 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR-N11 narrow subtype absent",
+      "pass": true
+    },
+    {
+      "name": "IFR-N12 lexicon-only public change explicitly bounded",
+      "pass": true
+    },
+    {
+      "name": "IFR-N12 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR-N12 narrow subtype absent",
+      "pass": true
+    },
+    {
+      "name": "IFR-N12 remains broad/review-bearing",
+      "pass": true
+    }
+  ],
+  "failures": []
+}

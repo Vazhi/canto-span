@@ -1,0 +1,26 @@
+{
+  "schema": "canto-span-cp023-p1-prog01-visible-research-packet-v1",
+  "packet_id": "CP023-P1-PROG01-R1",
+  "status": "VISIBLE_RESEARCH_PACKET_FROZEN_IMPLEMENTATION_NOT_AUTHORIZED",
+  "accepted_runtime": "v0.5.182",
+  "research_target": "PostverbalGanProgressiveVP",
+  "public_compatibility_family": "ProgressiveVP",
+  "target_profile": "overt predicate + adjacent postverbal 緊 + overt non-interrogative object, with lexical/constructional progressive compatibility",
+  "held_out": {
+    "selection_state": "NOT_SELECTED",
+    "custody_archive": null,
+    "implementation_authorized": false
+  },
+  "acceptance_contract": {
+    "runtime_change_in_this_checkpoint": false,
+    "candidate_status": "research_only",
+    "supported_productive_delta": 0,
+    "render_required_before_any_future_acceptance": true,
+    "fresh_prospective_heldout_required_before_implementation": true
+  },
+  "files": {
+    "visible_cases": "../../../test-data/CP023-P1-PROG01-visible-research-packet.tsv",
+    "source_freeze": "../../../docs/research/CP023-P1-PROG01-QUESTION-AND-SOURCE-FREEZE.md",
+    "claim_source_edges": "../../../docs/research/CP023-P1-PROG01-CLAIM-SOURCE-EDGES.tsv"
+  }
+}

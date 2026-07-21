@@ -1,0 +1,7 @@
+{
+  "runtime_version": "0.5.183",
+  "embedded_pattern_count": 181,
+  "main_path": "main.js",
+  "mode": "DRY_RUN_NO_WRITE",
+  "instruction": "No file changed. Pass --apply-runtime-metadata only in a new runtime candidate after freezing the intended metadata change."
+}

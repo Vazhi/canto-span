@@ -1,0 +1,79 @@
+{
+  "schema": "canto-span-accepted-checkpoint-v1",
+  "checkpoint": "CP022-I1A-I01-A1",
+  "parent_checkpoint": "CP022-I1A-I02-A1",
+  "candidate_checkpoint": "CP022-I1A-I01-R1",
+  "date": "2026-07-19",
+  "accepted_runtime": "v0.5.179-cp022-i1a-i01-neutral-clause-span-consolidation-r1",
+  "runtime_version": "0.5.179",
+  "status": "ACCEPTED_PACKET_SCOPED_INTERNAL_CLEANUP",
+  "packet_id": "EP-CP022-I1A-I01-D1",
+  "scope": "Neutral internal ClauseSpan consolidation only; intended semantic change NONE.",
+  "changes": {
+    "internal_target": "ClauseSpan",
+    "retired_to_public_compatibility": [
+      "SubjectPredicateClause",
+      "SubjectModalPredicateClause",
+      "LocativeModalPredicateClause",
+      "TopicModalPredicateClause",
+      "CoordinatedSubjectModalPredicateClause"
+    ],
+    "new_grammar_added": false,
+    "lexicon_changed": false,
+    "jyutping_changed": false,
+    "learner_role_changed": false,
+    "runtime_tuned_after_heldout": false
+  },
+  "validation": {
+    "packet_lock": {
+      "passed": 31,
+      "total": 31
+    },
+    "visible_packet": {
+      "passed": 100,
+      "total": 100
+    },
+    "render_adjudication": {
+      "passed": 10,
+      "total": 10
+    },
+    "prospective_heldout": {
+      "passed": 6,
+      "total": 6
+    },
+    "i02_preservation": {
+      "passed": 24,
+      "total": 24
+    },
+    "aggregate_regression": {
+      "passed": 545,
+      "total": 545
+    },
+    "grammar_legitimacy": {
+      "passed": 1087,
+      "total": 1087,
+      "active_labels": 177,
+      "supported_productive": 0
+    },
+    "semantic_acceptance": {
+      "passed": 15,
+      "total": 15
+    },
+    "pre_intermediate_corpus": {
+      "passed": 80,
+      "total": 80
+    }
+  },
+  "held_out": {
+    "case_count": 6,
+    "opened": true,
+    "consumed": true,
+    "reusable": false,
+    "custody_archive_sha256": "964b84052849087f227efd2df7591f5fdd9d1a2f7815776daf0e3519a0b75a1c"
+  },
+  "global_grammar_freeze_active": true,
+  "standing_autonomous_freeze_authority": true,
+  "supported_productive": 0,
+  "active_candidate": null,
+  "next_program": "CP022-P1 first supported_productive promotion pilot: rank narrow source-ready language families, lock a prospective packet, and promote only if the full evidence threshold passes."
+}

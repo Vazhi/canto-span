@@ -1,0 +1,20 @@
+id	section	register	traditional	jyutping	english	utterance_type	status	notes
+COR-W17-001	topic_management	casual	講返正題，你尋日去咗邊度呀？	gong2 faan1 zing3 tai4, nei5 cam4 jat6 heoi3 zo2 bin1 dou6 aa3?	Getting back to the point, where did you go yesterday?	discourse_transition_plus_wh_question	PASS	
+COR-W17-002	topic_management	casual	唔好離題喇。	m4 hou2 lei4 tai4 laa3.	Don't go off topic.	negative_imperative	PASS	喇 is a sentence-final particle, not perfective aspect
+COR-W17-003	topic_management	polite	關於呢個問題，我想講吓。	gwaan1 jyu1 ni1 go3 man6 tai4, ngo5 soeng2 gong2 haa5.	Regarding this issue, I'd like to say something.	topic_frame_plus_desiderative_statement	PASS	
+COR-W17-004	topic_management	polite	我哋返去頭先嘅話題。	ngo5 dei6 faan1 heoi3 tau4 sin1 ge3 waa6 tai4.	Let's return to the previous topic.	hortative_statement	PASS	
+COR-W17-005	enumeration_examples	casual	第一嘛，太貴；第二，太遠。	dai6 jat1 maa3, taai3 gwai3; dai6 ji6, taai3 jyun5.	First, too expensive; second, too far.	enumeration_sequence	PASS	
+COR-W17-006	enumeration_examples	casual	好似我噉，我就鍾意跑步。	hou2 ci5 ngo5 gam2, ngo5 zau6 zung1 ji3 paau2 bou6.	Take me for example, I like running.	example_frame_plus_preference_statement	PASS	噉 retained from source; 咁 is also common
+COR-W17-007	enumeration_examples	polite	例如中環同旺角都好出名。	lai6 jyu4 zung1 waan4 tung4 wong6 gok3 dou1 hou2 ceot1 meng2.	For example, both Central and Mong Kok are very famous.	example_statement	PASS	
+COR-W17-008	enumeration_examples	polite	一方面係時間，另一方面係費用。	jat1 fong1 min6 hai6 si4 gaan3, ling6 jat1 fong1 min6 hai6 fai3 jung6.	On one hand it's time; on the other hand, it's cost.	contrastive_enumeration	PASS	
+COR-W17-009	situation_patterns	casual	我最近好大壓力。	ngo5 zeoi3 gan6 hou2 daai6 aat3 lik6.	I've been under a lot of stress lately.	stative_statement	REVIEW	Understandable, but 我最近壓力好大 or 我最近有好大壓力 is structurally clearer
+COR-W17-010	situation_patterns	casual	你攰唔攰？不如休息吓。	nei5 gui6 m4 gui6? bat1 jyu4 jau1 sik1 haa5.	Are you tired? Why don't you take a break?	a_not_a_question_plus_suggestion	PASS	
+COR-W17-011	situation_patterns	casual	考完試好開心！	haau2 jyun4 si3 hou2 hoi1 sam1!	So happy the exams are over!	elliptical_result_state_clause	PASS	
+COR-W17-012	situation_patterns	casual	佢今日好似好嬲。	keoi5 gam1 jat6 hou2 ci5 hou2 nau1.	He seems really angry today.	seeming_stative_statement	PASS	
+COR-W17-013	mini_dialog	casual	你塊面好似唔開心噃。	nei5 faai3 min6 hou2 ci5 m4 hoi1 sam1 bo3.	You look unhappy.	seeming_stative_statement	REVIEW	Literally attributes the state to the person's face
+COR-W17-014	mini_dialog	casual	係呀，我最近好大壓力。	hai6 aa3, ngo5 zeoi3 gan6 hou2 daai6 aat3 lik6.	Yeah, I've been really stressed out lately.	response_plus_stative_statement	REVIEW	Same construction issue as COR-W17-009
+COR-W17-015	mini_dialog	casual	點解呀？做嘢太忙？	dim2 gaai2 aa3? zou6 je5 taai3 mong4?	Why? Too busy with work?	wh_question_plus_elliptical_question	PASS	
+COR-W17-016	mini_dialog	casual	係呀，日日OT到好夜。	hai6 aa3, jat6 jat6 ou1 ti1 dou3 hou2 je6.	Yeah, working overtime every day until very late.	response_plus_code_switched_clause	PASS	Natural Hong Kong English-Cantonese code-switching
+COR-W17-017	mini_dialog	casual	你要注意身體，唞多啲呀。	nei5 jiu3 zyu3 ji3 san1 tai2, tau2 do1 di1 aa3.	Take care of yourself and get more rest.	modal_clause_sequence	PASS	
+COR-W17-018	preposition_examples	standard	我喺香港住。	ngo5 hai2 hoeng1 gong2 zyu6.	I live in Hong Kong.	locative_clause	PASS	
+COR-W17-019	preposition_examples	standard	佢同朋友去買嘢。	keoi5 tung4 pang4 jau5 heoi3 maai5 je5.	He or she goes shopping with friends.	comitative_motion_purpose_clause	PASS

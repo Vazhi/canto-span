@@ -1,0 +1,58 @@
+{
+  "schema": "canto-span-cp022-p1-candidate-ranking-v1",
+  "checkpoint": "CP022-P1-PFV01-D1",
+  "selected": "PostverbalZoPerfectiveVP",
+  "criteria": [
+    "pattern-specific positive source support",
+    "source independence",
+    "exact natural attestations",
+    "negative-boundary quality",
+    "architectural independence",
+    "prospective-heldout feasibility",
+    "learner-risk containment"
+  ],
+  "candidates": [
+    {
+      "rank": 1,
+      "candidate": "PostverbalZoPerfectiveVP",
+      "score": 93,
+      "disposition": "SELECTED",
+      "reason": "Two independent sources support simple V-咗-O and aspect-not-tense; two more define the inner-result boundary; narrow implementation can be isolated from broad PerfectiveVP."
+    },
+    {
+      "rank": 2,
+      "candidate": "CompletionVP",
+      "score": 62,
+      "disposition": "DEFER",
+      "reason": "Selected V完咗O surfaces are published-attested, but the sole Guangzhou-native reviewer rejected both subjectless and overt-subject test forms; broad completion semantics and dialect/register conditions remain unresolved."
+    },
+    {
+      "rank": 3,
+      "candidate": "IntendedFunctionRelation",
+      "score": 56,
+      "disposition": "DEFER",
+      "reason": "Pattern-specific sources exist, but relation-family boundaries and lexical alternatives remain broader than this first pilot."
+    },
+    {
+      "rank": 4,
+      "candidate": "LexicalGiveRelation",
+      "score": 51,
+      "disposition": "DEFER",
+      "reason": "Authority-origin evidence exists, but transfer order and participant-role variation retain unresolved risk."
+    },
+    {
+      "rank": 5,
+      "candidate": "PassivePermissiveRelation",
+      "score": 49,
+      "disposition": "DEFER",
+      "reason": "Evidence is strong enough for bounded analysis, but polyfunctionality and omitted-agent boundaries make it a higher-risk first promotion."
+    },
+    {
+      "rank": 6,
+      "candidate": "PostThemeParticipantRelation",
+      "score": 46,
+      "disposition": "DEFER",
+      "reason": "Natural attestation is useful, but exact participant role remains intentionally underdetermined."
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "schema": "canto-span-progress-checkpoint-v3",
+  "artifact_kind": "runtime_governance_correction_and_compositional_np_first_slice",
+  "version": "v0.5.184",
+  "runtime_candidate": "v0.5.184",
+  "parser_behavior_changed": true,
+  "active_labels": 171,
+  "runtime_governance_alignment": "PASS",
+  "governance_status_counts": {
+    "supported_productive": 0,
+    "provisional_reaudit": 2,
+    "provisional": 0,
+    "research_pending": 58,
+    "unsupported_generalization": 87,
+    "lexicalized_only": 3,
+    "parser_heuristic": 21
+  },
+  "material_changes": [
+    "removed stale supported_productive/high runtime metadata",
+    "removed ten retired labels from active runtime registry",
+    "abandoned DEMO01 promotion/render/held-out track",
+    "implemented bounded compositional NP licensing",
+    "added classifier-head compatibility classes",
+    "integrated licensed quantified, associative, and coordinated NP objects with postverbal zo",
+    "blocked unknown and classifier-incompatible NPs from evidence-gated consumers"
+  ],
+  "validation": {
+    "np_subsystem": "43/43 PASS",
+    "aggregate_regression": "545/545 PASS",
+    "runtime_governance_alignment": "PASS",
+    "structural_topology": "545/545 PASS",
+    "grammar_legitimacy": "PASS",
+    "source_accounting": "PASS",
+    "claim_provenance": "PASS",
+    "retired_label_absence": "PASS",
+    "documentation_consistency": "PASS"
+  },
+  "construction_state": {
+    "PostverbalZoPerfectiveVP": {
+      "status": "provisional_reaudit",
+      "speaker_A": "COMPLETE",
+      "speaker_B": "FROZEN_PENDING_FUTURE",
+      "implementation": "licensed NP object integration improved; 4/6 controlled positives present",
+      "productive_acceptance_eligible": false
+    },
+    "ResourceUseLaiFunctionRelation": {
+      "status": "provisional_reaudit",
+      "implementation": "unchanged",
+      "speaker_B": "FROZEN_PENDING_FUTURE",
+      "productive_acceptance_eligible": false
+    },
+    "OvertHeadDemonstrativeClassifierNP": {
+      "status": "research_pending",
+      "active_promotion_candidate": false,
+      "implementation": "shared NP subsystem component"
+    }
+  },
+  "second_speaker_work": {
+    "state": "FROZEN_BY_USER",
+    "requirement_waived": false
+  },
+  "next": "Represent explicit 啲 A 嘅 N ambiguity and nested/complex NP coordination without phrase whitelists; preserve construction-status boundaries."
+}

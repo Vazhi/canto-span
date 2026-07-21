@@ -1,0 +1,11 @@
+search_id	date	query_or_action	source_or_engine	result	evidentiary_use	limitation
+R31-S01	2026-07-19	Verify R30 package, 143/143 audit, and frozen runtime hashes	local package inspection	PASS	baseline integrity	Package metadata is not linguistic authority.
+R31-S02	2026-07-19	Rank 15 remaining language labels by runtime and non-held-out accepted-fixture reach	coverage queue, main.js, and regression snapshots	PASS	family selection	Counts rank impact only.
+R31-S03	2026-07-19	Inspect five selected runtime templates, slot-model examples, and fallback triggers	main.js and data/slot-model.json	PASS	runtime claim extraction	Code and examples are internal provenance only.
+R31-S04	2026-07-19	Verify cognition + 下 exact example and 諗住 glossary senses	user-provided 粵語（香港話）教程 full text	PASS	exact attestation and polysemy boundary	Pedagogical source does not prove productivity or parser nodes.
+R31-S05	2026-07-19	Recheck delimitative 吓 inventory and selectional restrictions	Sio and Bond 2025 official conference PDF	PASS	marker core and lexical-selection boundary	HPSG implementation is not a theory-neutral ontology.
+R31-S06	2026-07-19	Verify exact communication sequence 我唔話你知 and source metadata	Yip and Matthews 2017 exact full-text transcription plus official Routledge metadata	PASS	speech-effect sequence	Pedagogical grammar does not establish unrestricted category cross-products.
+R31-S07	2026-07-19	Recheck Cantonese serial-verb diagnostics and analysis boundaries	Matthews 2006 full text	PASS	analysis-neutrality boundary	Diagnostics do not force one analysis for 話你知.
+R31-S08	2026-07-19	Verify lexicalized intention example 我諗住返屋企	Kędzior 2023 official journal PDF	PASS	exact intention use and small-class restriction	Introductory analysis does not establish every 諗住 sense or complement.
+R31-S09	2026-07-19	Assemble 30 claim-source rows and update five coverage records	local deterministic build	PASS	claim provenance	Matrix consistency is not linguistic truth.
+R31-S10	2026-07-19	Run deterministic audit and independent ZIP extraction comparison	local audit and archive verification	PASS	artifact integrity	Artifact integrity does not validate grammar.

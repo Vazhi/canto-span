@@ -1,0 +1,445 @@
+{
+  "schema": "canto-span-cp025-p1-pfv01-reaudit-visible-result-v1",
+  "checkpoint": "CP025-P1-PFV01-R1",
+  "runtime_version": "0.5.183",
+  "parser_behavior_changed": false,
+  "current_linguistic_status": "provisional_reaudit",
+  "runtime_embedded_status": "supported_productive",
+  "case_count": 14,
+  "linguistic_positive_probe_count": 6,
+  "linguistic_positive_target_present_count": 2,
+  "linguistic_positive_target_absent_count": 4,
+  "boundary_cases": 8,
+  "total": 35,
+  "passed": 35,
+  "failed": 0,
+  "strict_ready": true,
+  "case_results": [
+    {
+      "case_id": "PFV-P01",
+      "surface": "我食咗飯。",
+      "design_role": "positive simple profile",
+      "expected": "present",
+      "target_match_count": 1,
+      "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "我食咗飯"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "missing_jyutping_surfaces": []
+    },
+    {
+      "case_id": "PFV-P02",
+      "surface": "我食咗麵。",
+      "design_role": "positive source example",
+      "expected": "present",
+      "target_match_count": 1,
+      "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "我食咗麵"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "missing_jyutping_surfaces": []
+    },
+    {
+      "case_id": "PFV-P03",
+      "surface": "佢睇咗三個醫生。",
+      "design_role": "positive source-linked lexical variation",
+      "expected": "absent_known_object_integration_gap",
+      "target_match_count": 0,
+      "semantic_acceptance_status": "BLOCKED",
+      "root_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 2,
+        "top_construction_surfaces": [
+          "睇咗",
+          "三個醫生"
+        ],
+        "unwrapped_root_nonpunctuation_count": 1,
+        "unwrapped_root_surfaces": [
+          "佢"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "missing_jyutping_surfaces": []
+    },
+    {
+      "case_id": "PFV-P04",
+      "surface": "佢寫咗一篇文。",
+      "design_role": "positive source-linked lexical variation",
+      "expected": "absent_known_lexicon_np_gap",
+      "target_match_count": 0,
+      "semantic_acceptance_status": "BLOCKED",
+      "root_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "寫咗"
+        ],
+        "unwrapped_root_nonpunctuation_count": 4,
+        "unwrapped_root_surfaces": [
+          "佢",
+          "一",
+          "篇",
+          "文"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "missing_jyutping_surfaces": [
+        "篇",
+        "文"
+      ]
+    },
+    {
+      "case_id": "PFV-P05",
+      "surface": "我答咗你嘅問題。",
+      "design_role": "positive source-linked lexical variation",
+      "expected": "absent_known_object_integration_gap",
+      "target_match_count": 0,
+      "semantic_acceptance_status": "BLOCKED",
+      "root_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 2,
+        "top_construction_surfaces": [
+          "答咗",
+          "你嘅問題"
+        ],
+        "unwrapped_root_nonpunctuation_count": 1,
+        "unwrapped_root_surfaces": [
+          "我"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "missing_jyutping_surfaces": []
+    },
+    {
+      "case_id": "PFV-P06",
+      "surface": "你買咗呢隻牌子未呀？",
+      "design_role": "positive profile inside final-未 question",
+      "expected": "absent_known_lexicon_question_integration_gap",
+      "target_match_count": 0,
+      "semantic_acceptance_status": "BLOCKED",
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "你買咗呢隻牌子未呀"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "missing_jyutping_surfaces": [
+        "牌",
+        "子"
+      ]
+    },
+    {
+      "case_id": "PFV-B01",
+      "surface": "我食咗。",
+      "design_role": "objectless boundary",
+      "expected": "absent",
+      "target_match_count": 0,
+      "semantic_acceptance_status": "BLOCKED",
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "我食咗"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "missing_jyutping_surfaces": []
+    },
+    {
+      "case_id": "PFV-B02",
+      "surface": "我食完咗飯。",
+      "design_role": "inner-result boundary; known variation question",
+      "expected": "absent",
+      "target_match_count": 0,
+      "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "我食完咗飯"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "missing_jyutping_surfaces": []
+    },
+    {
+      "case_id": "PFV-B03",
+      "surface": "我食過飯。",
+      "design_role": "experiential boundary",
+      "expected": "absent",
+      "target_match_count": 0,
+      "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "我食過飯"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "missing_jyutping_surfaces": []
+    },
+    {
+      "case_id": "PFV-B04",
+      "surface": "我食緊飯。",
+      "design_role": "progressive boundary",
+      "expected": "absent",
+      "target_match_count": 0,
+      "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "我食緊飯"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "missing_jyutping_surfaces": []
+    },
+    {
+      "case_id": "PFV-B05",
+      "surface": "我去咗香港。",
+      "design_role": "motion-goal boundary",
+      "expected": "absent",
+      "target_match_count": 0,
+      "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "我去咗香港"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "missing_jyutping_surfaces": []
+    },
+    {
+      "case_id": "PFV-B06",
+      "surface": "牆上面擺咗部電話。",
+      "design_role": "placement/presentational boundary",
+      "expected": "absent",
+      "target_match_count": 0,
+      "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "牆上面擺咗部電話"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "missing_jyutping_surfaces": []
+    },
+    {
+      "case_id": "PFV-B07",
+      "surface": "我食咗香港。",
+      "design_role": "selectional anomaly boundary",
+      "expected": "present_nonclean",
+      "target_match_count": 1,
+      "semantic_acceptance_status": "BLOCKED",
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "我食咗香港"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "missing_jyutping_surfaces": []
+    },
+    {
+      "case_id": "PFV-B08",
+      "surface": "我食飯。",
+      "design_role": "unmarked-aspect boundary",
+      "expected": "absent",
+      "target_match_count": 0,
+      "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "我食飯"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "missing_jyutping_surfaces": []
+    }
+  ],
+  "checks": [
+    {
+      "name": "runtime remains 0.5.183",
+      "pass": true
+    },
+    {
+      "name": "grammar freeze remains active",
+      "pass": true
+    },
+    {
+      "name": "runtime registry remains 181",
+      "pass": true
+    },
+    {
+      "name": "target subtype remains registered",
+      "pass": true
+    },
+    {
+      "name": "public alias remains PerfectiveVP",
+      "pass": true
+    },
+    {
+      "name": "current governance is provisional_reaudit",
+      "pass": true
+    },
+    {
+      "name": "runtime metadata remains known-stale supported_productive",
+      "pass": true
+    },
+    {
+      "name": "PFV-P01 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "PFV-P01 exact target present",
+      "pass": true
+    },
+    {
+      "name": "PFV-P02 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "PFV-P02 exact target present",
+      "pass": true
+    },
+    {
+      "name": "PFV-P03 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "PFV-P03 target absent in frozen runtime",
+      "pass": true
+    },
+    {
+      "name": "PFV-P04 known lexical Jyutping gap remains visible",
+      "pass": true
+    },
+    {
+      "name": "PFV-P04 target absent in frozen runtime",
+      "pass": true
+    },
+    {
+      "name": "PFV-P05 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "PFV-P05 target absent in frozen runtime",
+      "pass": true
+    },
+    {
+      "name": "PFV-P06 known lexical Jyutping gap remains visible",
+      "pass": true
+    },
+    {
+      "name": "PFV-P06 target absent in frozen runtime",
+      "pass": true
+    },
+    {
+      "name": "PFV-B01 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "PFV-B01 target absent in frozen runtime",
+      "pass": true
+    },
+    {
+      "name": "PFV-B02 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "PFV-B02 target absent in frozen runtime",
+      "pass": true
+    },
+    {
+      "name": "PFV-B03 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "PFV-B03 target absent in frozen runtime",
+      "pass": true
+    },
+    {
+      "name": "PFV-B04 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "PFV-B04 target absent in frozen runtime",
+      "pass": true
+    },
+    {
+      "name": "PFV-B05 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "PFV-B05 target absent in frozen runtime",
+      "pass": true
+    },
+    {
+      "name": "PFV-B06 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "PFV-B06 target absent in frozen runtime",
+      "pass": true
+    },
+    {
+      "name": "PFV-B07 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "PFV-B07 target is present but semantically non-clean",
+      "pass": true
+    },
+    {
+      "name": "PFV-B08 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "PFV-B08 target absent in frozen runtime",
+      "pass": true
+    }
+  ],
+  "failures": []
+}

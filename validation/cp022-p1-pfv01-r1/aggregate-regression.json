@@ -1,0 +1,33 @@
+{
+  "schema": "canto-span-aggregate-regression-suite-result-v1",
+  "runtime_version": "0.5.180",
+  "fixture_runtime_version": "0.5.177",
+  "absorbed_historical_runner_count": 39,
+  "fixture_case_count": 545,
+  "current_focused_exclusion_count": 16,
+  "current_focused_excluded_case_count": 16,
+  "current_focused_excluded_sources": [
+    "你食咗香港未？",
+    "你食咗飯未？",
+    "你尋日食咗故事。",
+    "你尋日食咗香港。",
+    "你尋日食咗飯。",
+    "你尋日食咗邊度呀？",
+    "你尋日食咗蘋果。",
+    "你尋日睇咗香港。",
+    "你尋日飲咗水。",
+    "你尋日飲咗香港。",
+    "佢食咗飯喇。",
+    "佢睇咗故事。",
+    "我食咗飯。",
+    "呢個故事，我睇咗故事，佢都睇咗故事。",
+    "食咗香港嘅飯。",
+    "食咗飯。"
+  ],
+  "current_focused_candidate": "v0.5.180-cp022-p1-pfv01-postverbal-zo-overt-object-promotion-r1",
+  "total": 529,
+  "passed": 529,
+  "failed": 0,
+  "strict_ready": true,
+  "failures": []
+}

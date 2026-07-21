@@ -1,0 +1,373 @@
+{
+  "schema": "canto-span-cp022-i1a-i01-implementation-audit-v1",
+  "checkpoint": "CP022-I1A-I01-R1",
+  "candidate": "v0.5.179-cp022-i1a-i01-neutral-clause-span-consolidation-r1",
+  "status": "PASS",
+  "total": 71,
+  "passed": 71,
+  "failed": 0,
+  "heldout_opened": false,
+  "authorization_scope": "EP-CP022-I1A-I01-D1_ONLY",
+  "global_freeze_active": true,
+  "main_js_sha256": "ec3f496b41d1b1d2ad6b44b9db17b2d6319646567a56f9b51e4fc6bc4ac1bc0f",
+  "manifest_json_sha256": "c07d7e282c51320f4669620f985a6e11a7e8dba14611f7b731556564fbcba776",
+  "styles_css_sha256": "5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a",
+  "checks": [
+    {
+      "name": "runtime version 0.5.179",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "policy version 0.5.179",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "manifest version 0.5.179",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "manifest describes I01",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "global grammar freeze true",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "candidate identity exact",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "checkpoint render pending",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "standing authority recorded",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "authorization exact I01 packet",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "global freeze not lifted",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "authorization document excludes new grammar",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "ClauseSpan registry label present",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "ClauseSpan default compatibility alias",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "ClauseSpan scope neutral",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "central compatibility input set present",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "SubjectPredicateClause compatibility input retained",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "SubjectModalPredicateClause compatibility input retained",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "LocativeModalPredicateClause compatibility input retained",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "TopicModalPredicateClause compatibility input retained",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "CoordinatedSubjectModalPredicateClause compatibility input retained",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "central normalization to ClauseSpan present",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "neutral semantic status present",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "typed predicate preservation present",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "independent_grammar_licensing false guard present",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "subject_insertion_capability false guard present",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "topic_insertion_capability false guard present",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "argument_omission_licensing false guard present",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "context_resolution_capability false guard present",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "predicate_subtype_licensing false guard present",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "modal_licensing false guard present",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "packet identity frozen",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "packet semantic change none",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "packet standing authority true",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "packet heldout selected and locked",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "public manifest six commitments",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "custody archive absent from project",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "heldout unopened in checkpoint",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "heldout surface invisible",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "packet lock 31/31",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible packet 100/100",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "I02 preservation 24/24",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "aggregate regression 545/545",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "grammar legitimacy 1087/1087",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "active labels 177",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "supported_productive zero",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "semantic acceptance 15/15",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "pre-intermediate corpus 80/80",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "render contains 我食飯。",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "render contains 我喺屋企。",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "render contains 我一定可以去。",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "render contains 喺屋企可以食飯。",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "render contains 呢本書可以睇。",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "render contains 我同你可以去。",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "render contains 我冇去。",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "render contains 食飯。",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "render contains 可以去。",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "render contains 我同你。",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "render keeps custody sealed until acceptance",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "lexicon unchanged claimed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Jyutping unchanged claimed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "learner roles unchanged claimed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "new grammar not claimed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "LX1 unaccepted",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "temporary inspect script absent",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "temporary backup absent",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "documentation consistency PASS",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "parent archive comparison PASS",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no inherited file missing",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "protected sources unchanged",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "existing frozen packets unchanged",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no custody or backup leakage",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "failures": []
+}

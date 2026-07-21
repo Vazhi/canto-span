@@ -1,0 +1,39 @@
+{
+  "schema": "canto-span-productive-endpoint-program-v1",
+  "checkpoint": "CP024-P0-R1",
+  "accepted_runtime": "v0.5.182",
+  "family_counts": {
+    "internal_architecture": 5,
+    "hybrid_internal_language_sensitive": 2,
+    "diagnostic_only": 1,
+    "language_family": 40,
+    "lexicalized_family": 3,
+    "compositional_family": 1,
+    "architecture_family": 1
+  },
+  "productive_target_family_count": 40,
+  "label_endpoint_counts": {
+    "NARROW_SUPPORTED_PRODUCTIVE_SUBTYPE_REQUIRED": 102,
+    "RETIRE_MERGE_OR_RECLASSIFY": 38,
+    "INTERNAL_ONLY_NON_LICENSING": 20,
+    "RETIRE_PUBLIC_UMBRELLA_AFTER_DECOMPOSITION": 11,
+    "SUPPORTED_BOUNDED_LEXICALIZED": 6,
+    "ALREADY_SUPPORTED_PRODUCTIVE": 2
+  },
+  "current_supported_productive_labels": [
+    "PostverbalZoPerfectiveVP",
+    "ResourceUseLaiFunctionRelation"
+  ],
+  "active_throughput_target": "OvertHeadDemonstrativeClassifierNP",
+  "active_dependency_target": "ValencyAndArgumentStructure decomposition",
+  "nonnegotiable_rule": "No status promotion from label count, parser success, fixture success, or source quantity without exact-family evidence and prospective evaluation.",
+  "active_runtime_label_count": 179,
+  "current_status_counts": {
+    "research_pending": 36,
+    "unsupported_generalization": 97,
+    "parser_heuristic": 20,
+    "provisional": 21,
+    "lexicalized_only": 3,
+    "supported_productive": 2
+  }
+}

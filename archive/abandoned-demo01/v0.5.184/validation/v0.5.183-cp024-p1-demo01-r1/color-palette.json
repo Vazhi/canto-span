@@ -1,0 +1,201 @@
+{
+  "generatedAt": "2026-07-20T11:13:21.284Z",
+  "thresholds": {
+    "REQUIRED_CONTRAST": 4.5,
+    "PREFERRED_CONTRAST": 5,
+    "DISTANCE_WARN_DE00": 10,
+    "GRAYSCALE_WARN_LSTAR": 12
+  },
+  "summaries": [
+    {
+      "theme": "standard_dark_block",
+      "background": "#0B1020",
+      "minNormal": {
+        "pair": [
+          "particle",
+          "func"
+        ],
+        "deltaE00": 13.91
+      },
+      "minCvd": {
+        "pair": [
+          "where",
+          "why"
+        ],
+        "deltaE00": 3.28
+      },
+      "minGrayLstar": {
+        "pair": [
+          "why",
+          "measure_word"
+        ],
+        "deltaLstar": 1.14
+      },
+      "contrastFails": [],
+      "contrastBelowPreferred": [],
+      "colorOnlyMode": "PASS_CONTRAST_WARN_CVD_GRAYSCALE_CONFLICTS",
+      "accessibilityMarkerMode": "PASS_WITH_OPTIONAL_NON_COLOR_MITIGATIONS",
+      "markerMitigatedCvdCount": 7,
+      "markerMitigatedGrayCount": 19,
+      "unmitigatedCvd": [],
+      "unmitigatedGray": [],
+      "themeLightPaletteOverride": false
+    }
+  ],
+  "rows": [
+    {
+      "theme": "standard_dark_block",
+      "role": "who",
+      "selector": ".canto-token.cs-who",
+      "hex": "#FF80AB",
+      "oklch": "oklch(75.5% 0.160 0.2)",
+      "lab": "Lab(69.2 52.6 -0.0)",
+      "contrast": 8.05,
+      "contrastStatus": "PASS_PREFERRED",
+      "nearestNormal": "measure_word ΔE00=18.1",
+      "nearestCvd": "how minCVD=10.0",
+      "nearestGray": "how ΔL*=2.2",
+      "accessibilityMarker": "left_bar_pink"
+    },
+    {
+      "theme": "standard_dark_block",
+      "role": "doing",
+      "selector": ".canto-token.cs-doing",
+      "hex": "#FF3B30",
+      "oklch": "oklch(65.4% 0.232 28.7)",
+      "lab": "Lab(56.7 71.5 52.5)",
+      "contrast": 5.34,
+      "contrastStatus": "PASS_PREFERRED",
+      "nearestNormal": "who ΔE00=24.9",
+      "nearestCvd": "measure_word minCVD=4.0",
+      "nearestGray": "measure_word ΔL*=1.4",
+      "accessibilityMarker": "solid_underline_red"
+    },
+    {
+      "theme": "standard_dark_block",
+      "role": "what",
+      "selector": ".canto-token.cs-what",
+      "hex": "#00E5FF",
+      "oklch": "oklch(84.4% 0.146 209.3)",
+      "lab": "Lab(83.6 -36.5 -25.5)",
+      "contrast": 12.31,
+      "contrastStatus": "PASS_PREFERRED",
+      "nearestNormal": "particle ΔE00=17.5",
+      "nearestCvd": "where minCVD=6.6",
+      "nearestGray": "particle ΔL*=1.2",
+      "accessibilityMarker": "bottom_border_cyan"
+    },
+    {
+      "theme": "standard_dark_block",
+      "role": "where",
+      "selector": ".canto-token.cs-where",
+      "hex": "#40A9FF",
+      "oklch": "oklch(71.4% 0.158 247.3)",
+      "lab": "Lab(67.0 -1.8 -51.1)",
+      "contrast": 7.52,
+      "contrastStatus": "PASS_PREFERRED",
+      "nearestNormal": "particle ΔE00=18.6",
+      "nearestCvd": "why minCVD=3.3",
+      "nearestGray": "who ΔL*=2.2",
+      "accessibilityMarker": "low_highlight_blue"
+    },
+    {
+      "theme": "standard_dark_block",
+      "role": "when",
+      "selector": ".canto-token.cs-when",
+      "hex": "#FFF500",
+      "oklch": "oklch(94.7% 0.203 106.7)",
+      "lab": "Lab(94.6 -16.8 92.6)",
+      "contrast": 16.51,
+      "contrastStatus": "PASS_PREFERRED",
+      "nearestNormal": "like ΔE00=24.3",
+      "nearestCvd": "like minCVD=4.2",
+      "nearestGray": "func ΔL*=5.4",
+      "accessibilityMarker": "dashed_underline_yellow"
+    },
+    {
+      "theme": "standard_dark_block",
+      "role": "why",
+      "selector": ".canto-token.cs-why",
+      "hex": "#B967FF",
+      "oklch": "oklch(67.4% 0.221 306.2)",
+      "lab": "Lab(59.2 59.5 -63.2)",
+      "contrast": 5.81,
+      "contrastStatus": "PASS_PREFERRED",
+      "nearestNormal": "measure_word ΔE00=14.7",
+      "nearestCvd": "where minCVD=3.3",
+      "nearestGray": "measure_word ΔL*=1.1",
+      "accessibilityMarker": "top_border_violet"
+    },
+    {
+      "theme": "standard_dark_block",
+      "role": "how",
+      "selector": ".canto-token.cs-how",
+      "hex": "#FF9500",
+      "oklch": "oklch(76.5% 0.175 62.6)",
+      "lab": "Lab(71.4 32.2 76.7)",
+      "contrast": 8.61,
+      "contrastStatus": "PASS_PREFERRED",
+      "nearestNormal": "doing ΔE00=27.9",
+      "nearestCvd": "like minCVD=4.4",
+      "nearestGray": "who ΔL*=2.2",
+      "accessibilityMarker": "double_underline_orange"
+    },
+    {
+      "theme": "standard_dark_block",
+      "role": "like",
+      "selector": ".canto-token.cs-like",
+      "hex": "#39FF14",
+      "oklch": "oklch(87.1% 0.286 141.5)",
+      "lab": "Lab(88.2 -82.1 82.0)",
+      "contrast": 13.96,
+      "contrastStatus": "PASS_PREFERRED",
+      "nearestNormal": "when ΔE00=24.3",
+      "nearestCvd": "when minCVD=4.2",
+      "nearestGray": "particle ΔL*=3.4",
+      "accessibilityMarker": "wavy_underline_green"
+    },
+    {
+      "theme": "standard_dark_block",
+      "role": "measure_word",
+      "selector": ".canto-token.cs-measure_word",
+      "hex": "#FF00D4",
+      "oklch": "oklch(67.8% 0.297 338.3)",
+      "lab": "Lab(58.1 92.7 -40.3)",
+      "contrast": 5.59,
+      "contrastStatus": "PASS_PREFERRED",
+      "nearestNormal": "why ΔE00=14.7",
+      "nearestCvd": "doing minCVD=4.0",
+      "nearestGray": "why ΔL*=1.1",
+      "accessibilityMarker": "dotted_underline_purple"
+    },
+    {
+      "theme": "standard_dark_block",
+      "role": "particle",
+      "selector": ".canto-token.cs-particle",
+      "hex": "#BFD7EA",
+      "oklch": "oklch(86.7% 0.037 241.9)",
+      "lab": "Lab(84.8 -4.1 -12.0)",
+      "contrast": 12.73,
+      "contrastStatus": "PASS_PREFERRED",
+      "nearestNormal": "func ΔE00=13.9",
+      "nearestCvd": "what minCVD=8.5",
+      "nearestGray": "what ΔL*=1.2",
+      "accessibilityMarker": "dotted_overline_gray"
+    },
+    {
+      "theme": "standard_dark_block",
+      "role": "func",
+      "selector": ".canto-token.cs-func",
+      "hex": "#FFFFFF",
+      "oklch": "oklch(100.0% 0.000 89.9)",
+      "lab": "Lab(100.0 -0.0 0.0)",
+      "contrast": 18.93,
+      "contrastStatus": "PASS_PREFERRED",
+      "nearestNormal": "particle ΔE00=13.9",
+      "nearestCvd": "particle minCVD=12.5",
+      "nearestGray": "when ΔL*=5.4",
+      "accessibilityMarker": "thin_outline_white"
+    }
+  ]
+}

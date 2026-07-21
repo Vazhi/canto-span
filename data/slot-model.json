@@ -1,0 +1,1628 @@
+{
+  "model_version": "0.5.156",
+  "principle": "Positive-only generative slots. Tokens store compact lexical features; slot affordances are generated from those features; construction spans match slot types and render only present children. Learner display roles/colors are distinct from construction slots. Cantonese pro-drop and frequent ellipsis are supported through licensed optionality, not through making every template broadly optional.",
+  "forbidden_precedents": [
+    "No rejected-form registry",
+    "No negative token list",
+    "No null slots in parse instances",
+    "No lesson-specific Glossika JSON pack"
+  ],
+  "slot_generation_features": [
+    "surface",
+    "learner label",
+    "syntax hint",
+    "pos",
+    "semantic class",
+    "verb class"
+  ],
+  "slot_generation_examples": {
+    "noun": [
+      "object",
+      "topic",
+      "head_noun"
+    ],
+    "place noun": [
+      "object",
+      "topic",
+      "head_noun",
+      "location",
+      "goal"
+    ],
+    "person/pronoun": [
+      "subject",
+      "stance_holder",
+      "recipient",
+      "co_participant"
+    ],
+    "stance verb": [
+      "stance_predicate",
+      "predicate"
+    ],
+    "doing verb": [
+      "main_verb",
+      "action_verb",
+      "predicate"
+    ],
+    "stative": [
+      "stative_predicate",
+      "modifier"
+    ],
+    "sentence final particle": [
+      "particle"
+    ],
+    "direct nominal wh determiner": [
+      "direct_nominal_wh_determiner",
+      "wh_determiner"
+    ],
+    "epistemic sentence-final particle": [
+      "particle",
+      "epistemic_scope_particle"
+    ],
+    "evidential sentence-final particle": [
+      "particle",
+      "discourse_scope_particle",
+      "evidential_scope_particle"
+    ],
+    "directive sentence-final particle": [
+      "particle",
+      "discourse_scope_particle",
+      "directive_scope_particle"
+    ],
+    "change-state sentence-final particle": [
+      "particle",
+      "discourse_scope_particle",
+      "change_state_scope_particle"
+    ]
+  },
+  "construction_templates": [
+    {
+      "type": "OpinionQuestion",
+      "template": [
+        "subject?",
+        "stance_predicate!",
+        "topic_or_object?",
+        "evaluation_question!",
+        "particle?"
+      ]
+    },
+    {
+      "type": "OpinionStanceFrame",
+      "template": [
+        "subject?",
+        "stance_predicate!",
+        "stance_marker?",
+        "opinion_topic?",
+        "degree?",
+        "stative_predicate!",
+        "particle?"
+      ],
+      "note": "Opinion frame with optional explicit topic/content before the stative predicate."
+    },
+    {
+      "type": "DiscourseParticleFrame",
+      "template": [
+        "proposition_host!",
+        "discourse_scope_particle!"
+      ],
+      "note": "Broad licensed-host plus scoped discourse-particle frame. Accepted families include directive/interpersonal 啦, change-state/current-relevance 喇, epistemic 啩, and broad evidential/noteworthiness 喎; narrower subtype remains trace metadata."
+    },
+    {
+      "type": "ExperientialYesNoQuestion",
+      "template": [
+        "subject?",
+        "existential_question!",
+        "experiential_vp!",
+        "topic_or_object?",
+        "particle?"
+      ]
+    },
+    {
+      "type": "InterestQuestion",
+      "template": [
+        "subject?",
+        "existential_question!",
+        "abstract_object!",
+        "vp?",
+        "particle?"
+      ]
+    },
+    {
+      "type": "LocativeWhQuestion",
+      "template": [
+        "locative_marker?",
+        "location_question!",
+        "particle?"
+      ]
+    },
+    {
+      "type": "LocativeFragment",
+      "template": [
+        "locative_marker!",
+        "location!",
+        "particle?"
+      ]
+    },
+    {
+      "type": "NegativePriceEvaluation",
+      "template": [
+        "negator!",
+        "evaluation_marker!",
+        "degree?",
+        "stative_predicate!",
+        "particle?"
+      ]
+    },
+    {
+      "type": "EvaluationWithDouSyun",
+      "template": [
+        "focus_adverb?",
+        "evaluation_marker!",
+        "modifier?",
+        "price_noun!",
+        "particle?"
+      ]
+    },
+    {
+      "type": "PriceRangeFragment",
+      "template": [
+        "modifier?",
+        "price_range_noun!",
+        "particle?"
+      ],
+      "note": "Price-range fragment anchored by price_range_noun such as 價位. Do not use for price-topic + stative predicate clauses."
+    },
+    {
+      "type": "PriceEvaluation",
+      "template": [
+        "price_noun!",
+        "stative_predicate!",
+        "particle?"
+      ]
+    },
+    {
+      "type": "PriceQuestion",
+      "template": [
+        "quantity?",
+        "person_np?",
+        "approximation?",
+        "price_question!",
+        "particle?"
+      ]
+    },
+    {
+      "type": "SuggestionQuestion",
+      "template": [
+        "discourse_marker?",
+        "suggestion_marker!",
+        "vp!",
+        "particle?"
+      ]
+    },
+    {
+      "type": "ReminderObligation",
+      "template": [
+        "subject?",
+        "cognition_predicate!",
+        "modal!",
+        "vp!",
+        "particle?"
+      ]
+    },
+    {
+      "type": "ExistentialWhQuestion",
+      "template": [
+        "subject?",
+        "existential!",
+        "wh_determiner!",
+        "topic_or_object!",
+        "particle?"
+      ]
+    },
+    {
+      "type": "PreferenceVP",
+      "template": [
+        "subject?",
+        "preference_predicate!",
+        "vp!",
+        "particle?"
+      ]
+    },
+    {
+      "type": "TemporalClause",
+      "template": [
+        "time!",
+        "predicate!",
+        "particle?"
+      ]
+    },
+    {
+      "type": "ModalVP",
+      "template": [
+        "subject?",
+        "time?",
+        "negator?",
+        "modal!",
+        "manner?",
+        "vp!",
+        "particle?"
+      ]
+    },
+    {
+      "type": "CognitionDelimitedVP",
+      "template": [
+        "cognition_predicate!",
+        "delimitative_aspect!"
+      ],
+      "note": "Delimited VP for cognition predicates such as 諗吓; visible child role can still be doing."
+    },
+    {
+      "type": "ReduplicatedVP",
+      "template": [
+        "action_verb!",
+        "action_verb!"
+      ],
+      "constraints": {
+        "same_surface": true
+      },
+      "note": "Verb reduplication template. The same_surface constraint prevents broad action_verb + action_verb overmatching."
+    },
+    {
+      "type": "DesiderativeVP",
+      "template": [
+        "subject?",
+        "degree?",
+        "desiderative_modal!",
+        "vp!",
+        "particle?"
+      ],
+      "note": "Desiderative VP uses a specific desiderative_modal anchor so general modals like 可以 do not overmatch."
+    },
+    {
+      "type": "ExperientialClause",
+      "template": [
+        "subject?",
+        "experiential_vp!",
+        "particle?"
+      ],
+      "note": "Experiential clause with optional pro-drop subject and experiential_vp anchor."
+    },
+    {
+      "type": "ExperientialMotionGoalVP",
+      "template": [
+        "movement_verb!",
+        "experiential_aspect!",
+        "goal!"
+      ],
+      "note": "Specific motion-experience VP such as 去過中環. Kept separate from bare ExperientialVP so the goal/location is not detached."
+    },
+    {
+      "type": "ProgressiveWhObjectQuestion",
+      "template": [
+        "subject?",
+        "progressive_vp!",
+        "wh_object!",
+        "particle?"
+      ],
+      "note": "Progressive wh-object question such as 你講緊咩. Specific template should beat broader ReportedSpeech."
+    },
+    {
+      "type": "CognitionDelimitedObjectVP",
+      "template": [
+        "cognition_delimited_vp!",
+        "object!"
+      ],
+      "note": "Cognition-delimited VP with object/content NP, e.g. 諗吓 + 音樂嘅嘢. Requires iterative category wrapping so useful subspans are preserved."
+    },
+    {
+      "type": "TopicCommentEvaluation",
+      "template": [
+        "opinion_topic!",
+        "degree?",
+        "stative_predicate!"
+      ],
+      "note": "Explicit topic-comment evaluation construction. Keeps evaluation_clause and reported_content slots for compatibility."
+    },
+    {
+      "type": "TopicCommentEvaluation",
+      "template": [
+        "opinion_topic!",
+        "degree?",
+        "stative_predicate!"
+      ],
+      "subspan_kind": "topic_comment_evaluation",
+      "note": "Explicit topic-comment evaluation construction. Keeps evaluation_clause and reported_content slots for compatibility."
+    },
+    {
+      "type": "SpeechTransferClause",
+      "template": [
+        "subject?",
+        "speech_transfer_vp!",
+        "particle?"
+      ],
+      "note": "Clause wrapper for subject + DitransitiveSpeechVP, e.g. 我話你知."
+    },
+    {
+      "type": "DitransitiveSpeechVP",
+      "template": [
+        "speech_verb!",
+        "recipient!",
+        "cognition_predicate!"
+      ],
+      "role_overrides": {
+        "speech_verb": {
+          "label": "doing",
+          "syntax": "speech_transfer_verb",
+          "note": "In 話你知, 話 is learner-visible doing/tell, while still filling speech_verb."
+        }
+      },
+      "note": "Speech/transfer VP: tell someone know / let someone know."
+    },
+    {
+      "type": "DegreeStativePredicate",
+      "template": [
+        "degree!",
+        "degree?",
+        "stative_predicate!"
+      ],
+      "note": "Compositional degree + stative predicate wrapper for cases like 好遠, 好正, 好貴."
+    },
+    {
+      "type": "DegreeStativePredicate",
+      "template": [
+        "degree!",
+        "degree?",
+        "stative_complement_head!"
+      ],
+      "role_overrides": {
+        "stative_complement_head": {
+          "label": "like",
+          "syntax": "stative_predicate sensory_stative_head",
+          "note": "Contextual sensory stative head in 好食 / 好飲."
+        }
+      },
+      "note": "Compositional degree + sensory head wrapper for cases like 好食 / 好飲."
+    },
+    {
+      "type": "DegreeModifiedLexicalStative",
+      "template": [
+        "degree!",
+        "lexicalized_stative_predicate!"
+      ],
+      "examples": [
+        "好好食",
+        "幾好食",
+        "好好飲",
+        "好好睇",
+        "好好聽",
+        "好好味"
+      ],
+      "note": "Degree word modifies a dictionary-backed lexicalized 好X stative predicate. This is intentionally distinct from ordinary DegreeStativePredicate 好 + 遠."
+    },
+    {
+      "type": "DegreeStativePredicate",
+      "template": [
+        "degree!",
+        "degree?",
+        "ordinary_stative_predicate!"
+      ],
+      "examples": [
+        "好遠",
+        "好近",
+        "好貴",
+        "好平",
+        "好正",
+        "好靚",
+        "好出名",
+        "好適合"
+      ],
+      "note": "Ordinary degree + independently usable stative predicate. This path intentionally excludes lexicalized 好X statives such as 好食 and degree-modified lexicalized statives such as 好好食."
+    },
+    {
+      "type": "TopicCommentEvaluation",
+      "template": [
+        "opinion_topic!",
+        "comment_predicate!"
+      ],
+      "examples": [
+        "中環好遠",
+        "意粉好食",
+        "意粉好好食",
+        "音樂正",
+        "價錢貴"
+      ],
+      "note": "Topic-comment now accepts the safe comment predicate family rather than only a raw stative_predicate."
+    },
+    {
+      "type": "NegatedLexicalizedStative",
+      "template": [
+        "negator!",
+        "lexicalized_stative_predicate!"
+      ],
+      "examples": [
+        "唔好食",
+        "唔好飲",
+        "唔好睇",
+        "唔好聽"
+      ],
+      "note": "Negator plus positive lexicalized 好X stative predicate. Bare 唔好食 remains NeedsContext because it can also mean don't eat."
+    },
+    {
+      "type": "NegativeLexicalizedStative",
+      "template": [
+        "negative_lexicalized_stative_predicate!"
+      ],
+      "examples": [
+        "難食",
+        "難飲",
+        "難睇",
+        "難聽"
+      ],
+      "note": "Conventional negative lexicalized stative predicates, often 難X counterparts to 好X entries."
+    },
+    {
+      "type": "ModifiedNP",
+      "template": [
+        "direct_nominal_wh_determiner!",
+        "head_noun!"
+      ],
+      "note": "Direct nominal wh determiner plus visible noun head, e.g. 咩書 / 咩人 / 咩嘢; the broad ModifiedNP label is retained."
+    }
+  ],
+  "v0_3_3_notes": {
+    "positive_only": true,
+    "category_spans": [
+      "DemonstrativeClassifierNP = demonstrative + classifier + head_noun",
+      "WhClassifierQuestion = wh_determiner + classifier + optional particle",
+      "ModifiedNP = optional demonstrative/classifier + modifier/linker + head_noun",
+      "TimeNP = temporal_modifier + optional classifier + time_head"
+    ],
+    "no_negative_registry": true,
+    "no_null_slots_in_instances": true
+  },
+  "patch_doctrine": {
+    "workflow": "Use diagnostic-driven small-slice patches rather than broad parser refactors.",
+    "patch_when_diagnostics_show": [
+      "wrong top construction",
+      "legacy_surface_rule fallback",
+      "construction_function fallback",
+      "wrong broad wrapper such as ModifiedNP stealing verb material",
+      "detached licensed material",
+      "bad slot assignment"
+    ],
+    "before_each_patch": "Ask whether the case is a one-off fix or evidence for a general construction principle.",
+    "preference": "Prefer reusable generative templates and category spans over phrase-specific fixes.",
+    "deferred": "Do a dedicated Template Flexibility Audit later after enough diagnostics accumulate; do not add a global scoring/template-metadata system yet."
+  },
+  "flexibility_doctrine": {
+    "summary": "Support Cantonese pro-drop through licensed optionality, not greedy fully optional templates.",
+    "usually_optional_for_clause_like_templates": [
+      "subject",
+      "particle"
+    ],
+    "complements_optional_only_when": [
+      "the construction licenses ellipsis",
+      "the verb class licenses omission",
+      "the result is intentionally marked as a fragment or NeedsContext"
+    ],
+    "anti_greediness_rules": [
+      "keep strong identity anchors",
+      "prefer specific templates before broad templates",
+      "add contrast cases when a patch could overmatch",
+      "keep NeedsContext/special_ambiguity_rule for genuinely ambiguous short utterances"
+    ]
+  },
+  "learner_role_doctrine": {
+    "summary": "Learner role/color answers what the learner should notice in this sentence; construction slot answers what grammatical position the token fills.",
+    "examples": [
+      {
+        "surface": "諗",
+        "default_display_role": "doing",
+        "lexical_class": "cognition_verb",
+        "construction_slots": [
+          "predicate",
+          "cognition_predicate"
+        ],
+        "note": "In 我想諗吓, 諗 is the action being wanted, so it should display as doing."
+      },
+      {
+        "surface": "覺得",
+        "default_display_role": "doing",
+        "lexical_class": "cognition_opinion_predicate",
+        "construction_slots": [
+          "stance_predicate",
+          "cognition_predicate"
+        ],
+        "note": "In learner-facing color, 覺得 is still a verb-like predicate introducing an opinion frame, so it displays as doing while grammar slots/features carry cognition/stance details."
+      },
+      {
+        "surface": "間",
+        "default_display_role": "measure_word",
+        "lexical_class": "classifier_building_shop",
+        "construction_slots": [
+          "classifier"
+        ],
+        "note": "Learner-facing role is measure_word; internal grammar slot remains classifier inside demonstrative/classifier NPs such as 呢間餐廳."
+      }
+    ],
+    "anti_confusion_rule": "Do not infer learner color directly from assigned construction slot.",
+    "controlled_learner_roles": [
+      "who",
+      "doing",
+      "what",
+      "where",
+      "when",
+      "why",
+      "how",
+      "like",
+      "func",
+      "particle",
+      "measure_word",
+      "neutral"
+    ],
+    "classifier_boundary_rule": "classifier is an internal grammar slot, not a learner role. Measure-word/classifier tokens display as learner role measure_word."
+  },
+  "anti_greediness_examples": [
+    {
+      "case": "你可以睇睇。",
+      "principle": "Use a constrained ReduplicatedVP category rather than a broad action_verb + action_verb template.",
+      "target": "ModalVP(subject + modal + ReduplicatedVP)"
+    },
+    {
+      "case": "你可以睇睇。",
+      "problem": "Broad DesiderativeVP using modal! stole a general ModalVP sentence.",
+      "fix": "Use desiderative_modal! as the DesiderativeVP identity anchor.",
+      "target": "ModalVP(subject + modal + ReduplicatedVP)"
+    },
+    {
+      "case": "我哋去過中環。",
+      "problem": "Bare ExperientialVP wrapped 去過 and left subject/goal detached.",
+      "fix": "Add specific ExperientialMotionGoalVP and sentence-level ExperientialClause anchored on experiential_vp.",
+      "target": "ExperientialClause(subject + ExperientialMotionGoalVP)"
+    },
+    {
+      "case": "你講緊咩？",
+      "problem": "ReportedSpeech overmatched progressive what-object question because 講 is a speech verb and 咩 could fill reported_content.",
+      "fix": "Add wh_object and a specific ProgressiveWhObjectQuestion before ReportedSpeech.",
+      "target": "ProgressiveWhObjectQuestion(subject + ProgressiveVP + wh_object)"
+    },
+    {
+      "case": "我想諗吓音樂嘅嘢。",
+      "problem": "Missing 音樂 lexicon and lack of cognition-delimited object VP caused detached subject and ModalVP heuristic fallback.",
+      "fix": "Add 音樂 as a noun/modifier and combine CognitionDelimitedVP + object NP through iterative positive category wrapping.",
+      "target": "DesiderativeVP(subject + desiderative_modal + CognitionDelimitedObjectVP)"
+    },
+    {
+      "case": "我覺得音樂好正。",
+      "problem": "ModifiedNP overmatched 覺得音樂 because verb_modifier could alias any predicate.",
+      "fix": "Add opinion_topic to OpinionStanceFrame and restrict verb_modifier to explicit verb_modifier slots.",
+      "target": "OpinionStanceFrame(subject + stance_predicate + opinion_topic + stative_predicate)"
+    },
+    {
+      "case": "美玲話呢間餐廳好食。",
+      "problem": "OpinionStanceFrame overmatched speech-reporting 話 as stance_predicate.",
+      "fix": "Add EvaluationClause as reported_content and ensure ReportedSpeech wins for speech_verb + reported_content.",
+      "target": "ReportedSpeech(subject + speech_verb + EvaluationClause)"
+    },
+    {
+      "case": "美玲話呢間餐廳好食。",
+      "problem": "EvaluationClause existed only as a top-level template, so ReportedSpeech could not see reported_content.",
+      "fix": "Add EvaluationClause to category subspan templates for iterative wrapping.",
+      "target": "ReportedSpeech(subject + speech_verb + EvaluationClause)"
+    },
+    {
+      "case": "我話你知。",
+      "problem": "DitransitiveSpeechVP parsed correctly, but the subject remained detached and 話 stayed visually stance in a tell-action frame.",
+      "fix": "Add SpeechTransferClause and contextual role override for DitransitiveSpeechVP speech_verb.",
+      "target": "SpeechTransferClause(subject + DitransitiveSpeechVP), with 話 visible as doing and internally speech_verb."
+    },
+    {
+      "case": "呢間餐廳好食。",
+      "problem": "The structure parsed correctly as EvaluationClause, but the construction name hid the topic-comment nature.",
+      "fix": "Rename/represent as TopicCommentEvaluation while preserving evaluation/reported-content slots.",
+      "target": "TopicCommentEvaluation(opinion_topic + stative_predicate)"
+    },
+    {
+      "case": "價錢貴。",
+      "problem": "TopicCommentEvaluation parsed internally, but a broad PriceRangeFragment wrapped it because inherited child slots included price_noun.",
+      "fix": "Add price_range_noun and require it for PriceRangeFragment.",
+      "target": "Top construction remains TopicCommentEvaluation(topic/opinion_topic + comment/stative_predicate)."
+    },
+    {
+      "case": "中環好遠。",
+      "problem": "Topic-comment construction could not form because 遠 was unknown.",
+      "fix": "Add 遠/近 as distance stative predicates.",
+      "target": "TopicCommentEvaluation(opinion_topic + degree + stative_predicate)."
+    },
+    {
+      "case": "中環好遠。",
+      "problem": "The parse was correct, but 遠 appeared with feature verb_class: stance because distance_stative matched the substring 'stance'.",
+      "fix": "Use exact syntax-part matching for stance feature inference.",
+      "target": "遠 remains role like / stative_predicate with no stance verb_class."
+    },
+    {
+      "case": "意粉好食。",
+      "problem": "好食 was one opaque-like token while 好遠 split 好 + 遠, causing inconsistent color and Jyutping visibility.",
+      "fix": "Make common 好+stative phrases compositional and add DegreeStativePredicate.",
+      "target": "TopicCommentEvaluation(topic + DegreeStativePredicate(好 + 食))."
+    },
+    {
+      "case": "意粉好食。",
+      "problem": "v0.4.33 split 好食 into 好 + 食, which is useful compositional grammar but loses the dictionary-backed lexicalized predicate.",
+      "fix": "Add lexicalized 好X stative registry and allow 好食 to longest-match as one stative predicate.",
+      "target": "TopicCommentEvaluation(topic + lexicalized_stative_predicate)."
+    },
+    {
+      "case": "好多人話好好食。",
+      "problem": "Without a named degree-modified lexical-stative template, 好好食 could be interpreted as a generic degree-stative span or flattened as 好 + 好 + 食.",
+      "fix": "Add DegreeModifiedLexicalStative before ordinary DegreeStativePredicate.",
+      "target": "ReportedSpeech(..., DegreeModifiedLexicalStative(好 + 好食))."
+    },
+    {
+      "case": "中環好遠。 / 意粉好食。 / 意粉好好食。",
+      "problem": "A single broad DegreeStativePredicate path could blur ordinary degree + stative, base lexicalized 好X statives, and degree-modified lexicalized statives.",
+      "fix": "Make DegreeStativePredicate consume ordinary_stative_predicate only.",
+      "target": "好遠 → DegreeStativePredicate; 好食 → lexicalized_stative_predicate; 好好食 → DegreeModifiedLexicalStative."
+    },
+    {
+      "case": "我食飯。",
+      "problem": "If comment_predicate were aliased to every predicate/VP, ordinary subject-verb clauses could be misread as topic-comment.",
+      "fix": "Do not alias comment_predicate to generic predicate or vp.",
+      "target": "TopicCommentEvaluation accepts safe comment predicates only."
+    },
+    {
+      "case": "唔好食。",
+      "problem": "Bare 唔好食 can mean not tasty or don't eat.",
+      "fix": "Keep the bare form as NeedsContext while allowing topic/comment contexts to use NegatedLexicalizedStative.",
+      "target": "意粉唔好食 → topic + NegatedLexicalizedStative; 唔好食 → NeedsContext; 唔好食呢個 → ProhibitiveImperative."
+    },
+    {
+      "case": "好食 / 好好食 / 好遠",
+      "problem": "Longest-match plus a manual compositional list can regress if a lexicalized stative is accidentally marked compositional.",
+      "fix": "Use explicit lexical candidate scoring and make lexicalized stative registry entries immune to forced compositional splitting.",
+      "target": "好食 lexicalized; 好好食 = 好 + 好食; 好遠 = 好 + 遠."
+    },
+    {
+      "case": "好好食 / 好食 / 好遠",
+      "problem": "Without selection diagnostics, a correct parse does not explain why one phrase stayed lexicalized while another split compositionally.",
+      "fix": "Attach selection_decision to atomic token traces.",
+      "target": "Diagnostic output explains registry evidence, forced compositional exclusions, and ordinary lookup decisions."
+    }
+  ],
+  "lexical_additions": [
+    {
+      "surface": "音樂",
+      "label": "what",
+      "syntax": "noun_np_modifier_topic",
+      "note": "Needed for examples like 音樂嘅嘢; should not split into unknown 音 + 樂."
+    }
+  ],
+  "slot_notes": [
+    {
+      "slot": "opinion_topic",
+      "note": "An explicit noun/topic inside an opinion frame, e.g. 音樂 in 我覺得音樂好正."
+    },
+    {
+      "slot": "reportative_source",
+      "note": "For 話/聽講 as attributed-source or evidential/reportative material. This is different from direct opinion stance_predicate."
+    },
+    {
+      "slot": "price_range_noun",
+      "note": "Narrow slot for 價位 / price-point nouns. Prevents PriceRangeFragment from wrapping ordinary price-topic evaluations such as 價錢貴."
+    },
+    {
+      "slot": "stative_complement_head",
+      "note": "Context-only slot for 食/飲 after degree words. It avoids making 食 globally stative while allowing 好食 to display as 好 + 食."
+    },
+    {
+      "slot": "lexicalized_stative_predicate",
+      "note": "Registry-backed 好X stative predicates that should not be split by default, e.g. 好食, 好飲, 好睇, 好聽, 好味."
+    },
+    {
+      "slot": "degree_modified_lexical_stative",
+      "note": "Construction slot for degree + lexicalized 好X stative, e.g. 好 + 好食."
+    },
+    {
+      "slot": "ordinary_stative_predicate",
+      "note": "Derived from like/stative tokens that are not lexicalized_stative, not sensory_stative_head, and not already a degree_stative_predicate."
+    },
+    {
+      "slot": "comment_predicate",
+      "note": "Safe topic-comment comment family. Includes stative predicates, lexicalized 好X statives, ordinary degree-statives, and degree-modified lexicalized statives. Excludes generic VP/predicate to avoid overwrapping normal subject-verb clauses."
+    },
+    {
+      "slot": "negative_lexicalized_stative_predicate",
+      "note": "Dictionary-backed negative lexicalized stative predicate such as 難食 / 難飲 / 難睇 / 難聽."
+    }
+  ],
+  "topic_comment_doctrine": [
+    {
+      "principle": "Cantonese topic-comment clauses should be represented explicitly, not hidden under generic evaluation naming.",
+      "example": "呢間餐廳好食。",
+      "target": "TopicCommentEvaluation(topic/opinion_topic + comment/stative_predicate)",
+      "embedded_use": "Can serve as reported_content inside ReportedSpeech."
+    }
+  ],
+  "lexical_categories": [
+    {
+      "category": "distance_stative",
+      "surfaces": [
+        "遠",
+        "近"
+      ],
+      "visible_role": "like",
+      "internal_slots": [
+        "stative_predicate"
+      ],
+      "note": "Distance adjectives/statives participate in topic-comment evaluation, e.g. 中環好遠."
+    }
+  ],
+  "feature_doctrine": [
+    {
+      "principle": "Do exact syntax-part matching for stance features.",
+      "problem": "Substring matching made distance_stative count as stance because 'distance' contains 'stance'.",
+      "examples": [
+        "遠",
+        "近"
+      ],
+      "target": "遠/近 remain stative_predicate distance_stative, but do not receive verb_class stance."
+    }
+  ],
+  "visual_doctrine": [
+    {
+      "principle": "Degree-stative phrases should split visible degree and predicate components.",
+      "examples": [
+        "中環好遠。",
+        "意粉好食。",
+        "我覺得音樂好正。"
+      ],
+      "target": "好 is visible as how/degree; the following stative head is visible separately as like/comment."
+    },
+    {
+      "principle": "Base lexicalized 好X statives should remain one learner-visible predicate.",
+      "examples": [
+        "意粉好食。",
+        "呢杯嘢好飲。"
+      ],
+      "target": "好食/好飲 appear as one like-colored stative predicate; intensified forms like 好好食 remain candidates for degree + lexicalized predicate."
+    },
+    {
+      "principle": "Intensified lexicalized 好X statives should be degree + lexicalized predicate.",
+      "examples": [
+        "好好食",
+        "好好飲",
+        "好好睇"
+      ],
+      "target": "Show the first 好 separately as degree/how, then keep 好食/好飲/好睇 as one like-colored lexicalized stative predicate."
+    },
+    {
+      "principle": "Ordinary degree-stative predicates should remain compositional.",
+      "examples": [
+        "中環好遠。",
+        "價錢好貴。",
+        "音樂好正。"
+      ],
+      "target": "Show 好 separately as how/degree and the following ordinary stative as like/comment."
+    },
+    {
+      "principle": "TopicCommentEvaluation should accept any safe comment predicate, not only one surface kind of stative.",
+      "examples": [
+        "好食 as lexicalized stative",
+        "好好食 as degree-modified lexicalized stative",
+        "好遠 as ordinary degree-stative",
+        "貴 as simple stative"
+      ],
+      "target": "The topic-comment wrapper should choose topic + comment_predicate while preserving the internal comment analysis."
+    },
+    {
+      "principle": "Separate negation of a lexicalized stative from a negative lexicalized stative.",
+      "examples": [
+        "意粉唔好食。",
+        "意粉難食。",
+        "意粉好難食。"
+      ],
+      "target": "唔好食 with topic/comment context is negator + 好食; 難食 is a conventional negative stative; bare 唔好食 remains ambiguous."
+    }
+  ],
+  "lexicalized_stative_registry": [
+    {
+      "surface": "好食",
+      "jyutping": "hou2 sik6",
+      "visible_role": "like",
+      "internal_class": "lexicalized_stative_predicate",
+      "domain": "food",
+      "antonym": "難食",
+      "degreeable": true,
+      "base_behavior": "one stative predicate meaning tasty/delicious",
+      "intensified_behavior": "好好食 should be parsed as degree + 好食 in a later DegreeModifiedLexicalStative pass"
+    },
+    {
+      "surface": "好飲",
+      "jyutping": "hou2 jam2",
+      "visible_role": "like",
+      "internal_class": "lexicalized_stative_predicate",
+      "domain": "drink",
+      "antonym": "難飲",
+      "degreeable": true,
+      "base_behavior": "one stative predicate meaning good to drink"
+    },
+    {
+      "surface": "好睇",
+      "jyutping": "hou2 tai2",
+      "visible_role": "like",
+      "internal_class": "lexicalized_stative_predicate",
+      "domain": "visual/media",
+      "antonym": "難睇",
+      "degreeable": true,
+      "base_behavior": "one stative predicate meaning good-looking / enjoyable to watch"
+    },
+    {
+      "surface": "好聽",
+      "jyutping": "hou2 teng1",
+      "visible_role": "like",
+      "internal_class": "lexicalized_stative_predicate",
+      "domain": "sound/speech",
+      "antonym": "難聽",
+      "degreeable": true,
+      "base_behavior": "one stative predicate meaning pleasant-sounding / pleasant to hear"
+    },
+    {
+      "surface": "好味",
+      "jyutping": "hou2 mei6",
+      "visible_role": "like",
+      "internal_class": "lexicalized_stative_predicate",
+      "domain": "taste",
+      "degreeable": true,
+      "base_behavior": "one stative predicate meaning tasty/delicious"
+    }
+  ],
+  "negative_lexicalized_stative_registry": [
+    {
+      "surface": "難食",
+      "jyutping": "naan4 sik6",
+      "visible_role": "like",
+      "internal_class": "negative_lexicalized_stative_predicate",
+      "domain": "food",
+      "antonym": "好食",
+      "degreeable": true,
+      "base_behavior": "one negative stative predicate meaning bad-tasting / unpalatable"
+    },
+    {
+      "surface": "難飲",
+      "jyutping": "naan4 jam2",
+      "visible_role": "like",
+      "internal_class": "negative_lexicalized_stative_predicate",
+      "domain": "drink",
+      "antonym": "好飲",
+      "degreeable": true,
+      "base_behavior": "one negative stative predicate meaning bad to drink"
+    },
+    {
+      "surface": "難睇",
+      "jyutping": "naan4 tai2",
+      "visible_role": "like",
+      "internal_class": "negative_lexicalized_stative_predicate",
+      "domain": "visual/media",
+      "antonym": "好睇",
+      "degreeable": true,
+      "base_behavior": "one negative stative predicate meaning ugly / unpleasant to watch"
+    },
+    {
+      "surface": "難聽",
+      "jyutping": "naan4 teng1",
+      "visible_role": "like",
+      "internal_class": "negative_lexicalized_stative_predicate",
+      "domain": "sound/speech",
+      "antonym": "好聽",
+      "degreeable": true,
+      "base_behavior": "one negative stative predicate meaning unpleasant-sounding / harsh"
+    }
+  ],
+  "selection_rules": [
+    {
+      "rule": "prefer_lexicalized_stative_registry",
+      "implemented_in": "selectLexiconTerm",
+      "weight": 10000,
+      "principle": "When a registry-backed lexicalized stative is a tokenization candidate, prefer it over compositional splitting.",
+      "examples": {
+        "好食": "select 好食 as lexicalized_stative_predicate, not 好 + 食",
+        "好好食": "force outer 好好食 compositional, then select inner 好食",
+        "難食": "select 難食 as negative_lexicalized_stative_predicate, not 難 + 食",
+        "好難食": "select 好, then 難食"
+      },
+      "not_implemented_here": "Full human-readable diagnostic explanation is deferred to #7."
+    }
+  ],
+  "diagnostic_rules": [
+    {
+      "rule": "explain_lexicalized_vs_compositional_selection",
+      "implemented_in": [
+        "selectLexiconTerm",
+        "token trace_detail.selection_decision"
+      ],
+      "principle": "When tokenization chooses a lexical candidate, diagnostics should show the candidates, registry kind, score, forced-compositional exclusions, and reason.",
+      "examples": {
+        "好食": "selection_decision shows 好食 chosen by lexicalized_stative_registry scoring over 好",
+        "好好食": "first 好 shows 好好食 excluded as forced compositional; inner 好食 shows lexicalized registry choice",
+        "難食": "selection_decision shows negative_lexicalized_stative_registry",
+        "好遠": "selection_decision shows ordinary lookup, not lexicalized registry"
+      }
+    }
+  ],
+  "controlled_feature_schema": {
+    "status": "phase_3_stative_parser_active",
+    "parser_behavior": "unchanged",
+    "purpose": "Use controlled feature bundles as parser-active predicates for already-stabilized stative logic only.",
+    "doctrine": [
+      "Feature bundles are internal parser evidence, not learner-visible role labels.",
+      "Use +feature / -feature notation only as diagnostic shorthand.",
+      "Store features as enums, booleans, arrays, and provenance metadata.",
+      "No parser-active feature is promoted in Phase 1."
+    ],
+    "core_dimensions": {
+      "syntactic_category": {
+        "allowed_values": [
+          "V",
+          "N",
+          "PARTICLE",
+          "FUNCTION",
+          "UNKNOWN"
+        ],
+        "initial_parser_active": false
+      },
+      "morphological_category": {
+        "allowed_values": [
+          "verb_like",
+          "nominal_like",
+          "particle_like",
+          "function_like",
+          "unknown"
+        ],
+        "initial_parser_active": false
+      },
+      "gradability": {
+        "allowed_values": [
+          "gradable",
+          "non_gradable",
+          "contextual",
+          "unknown"
+        ],
+        "initial_parser_active": false,
+        "diagnostic_shorthand": [
+          "+gradable",
+          "-gradable"
+        ],
+        "phase_3_parser_active_when": "Only when the bundle is a stative predicate bundle."
+      },
+      "dynamicity": {
+        "allowed_values": [
+          "dynamic",
+          "non_dynamic",
+          "mixed",
+          "contextual",
+          "unknown"
+        ],
+        "initial_parser_active": false,
+        "diagnostic_shorthand": [
+          "+dynamic",
+          "-dynamic"
+        ]
+      },
+      "temporal_stability": {
+        "allowed_values": [
+          "permanent",
+          "transient",
+          "contextual",
+          "unknown"
+        ],
+        "initial_parser_active": false
+      }
+    },
+    "parser_features": {
+      "lexicalization_type": {
+        "allowed_values": [
+          "none",
+          "lexicalized_stative",
+          "negative_lexicalized_stative",
+          "protected_formula",
+          "productive_vo"
+        ],
+        "initial_parser_active": false,
+        "phase_3_parser_active_values": [
+          "lexicalized_stative",
+          "negative_lexicalized_stative"
+        ]
+      },
+      "semantic_domain": {
+        "allowed_values": [
+          "sensory_evaluation",
+          "food_evaluation",
+          "drink_evaluation",
+          "sound_evaluation",
+          "visual_evaluation",
+          "taste_evaluation",
+          "distance_property",
+          "price_property",
+          "emotion",
+          "cognition",
+          "speech",
+          "motion",
+          "consumption",
+          "unknown"
+        ],
+        "multi_value": true,
+        "initial_parser_active": false
+      },
+      "polarity_profile": {
+        "allowed_values": [
+          "positive",
+          "negative",
+          "neutral",
+          "contextual",
+          "unknown"
+        ],
+        "initial_parser_active": false
+      },
+      "predicate_subtype": {
+        "allowed_values": [
+          "action_verb",
+          "ordinary_stative",
+          "lexicalized_stative",
+          "negative_lexicalized_stative",
+          "speech_predicate",
+          "reportative_source",
+          "stance_predicate",
+          "cognition_predicate",
+          "motion_predicate",
+          "unknown"
+        ],
+        "multi_value": true,
+        "initial_parser_active": false,
+        "phase_3_parser_active_values": [
+          "ordinary_stative"
+        ]
+      }
+    },
+    "construction_affordances": {
+      "can_head_comment": {
+        "allowed_values": [
+          true,
+          false,
+          "contextual",
+          "unknown"
+        ],
+        "initial_parser_active": false,
+        "phase_3_parser_active_when": "Only when derived from a stative predicate bundle."
+      },
+      "can_take_degree_modifier": {
+        "allowed_values": [
+          true,
+          false,
+          "contextual",
+          "unknown"
+        ],
+        "initial_parser_active": false
+      },
+      "can_be_m4_negated": {
+        "allowed_values": [
+          true,
+          false,
+          "contextual",
+          "unknown"
+        ],
+        "initial_parser_active": false
+      },
+      "can_head_productive_vo": {
+        "allowed_values": [
+          true,
+          false,
+          "contextual",
+          "unknown"
+        ],
+        "initial_parser_active": false
+      },
+      "can_introduce_reported_content": {
+        "allowed_values": [
+          true,
+          false,
+          "contextual",
+          "unknown"
+        ],
+        "initial_parser_active": false
+      },
+      "can_take_recipient": {
+        "allowed_values": [
+          true,
+          false,
+          "contextual",
+          "unknown"
+        ],
+        "initial_parser_active": false
+      },
+      "can_head_opinion_frame": {
+        "allowed_values": [
+          true,
+          false,
+          "contextual",
+          "unknown"
+        ],
+        "initial_parser_active": false
+      }
+    },
+    "evidence_controls": {
+      "feature_confidence": {
+        "allowed_values": [
+          "high",
+          "medium",
+          "low",
+          "candidate_only"
+        ],
+        "required_for_parser_active": true
+      },
+      "feature_source": {
+        "allowed_values": [
+          "manual_gold",
+          "words_hk",
+          "jyutdictionary",
+          "research_generalization",
+          "native_speaker_review",
+          "corpus_attestation",
+          "runtime_inference"
+        ],
+        "multi_value": true,
+        "required_for_parser_active": true
+      },
+      "parser_active": {
+        "allowed_values": [
+          true,
+          false
+        ],
+        "required": true,
+        "phase_1_default": false,
+        "phase_3_default": "False except for explicitly migrated stative predicate bundle fields."
+      }
+    },
+    "phase_3_policy": {
+      "parser_active_scope": [
+        "lexicalization_type:lexicalized_stative",
+        "lexicalization_type:negative_lexicalized_stative",
+        "predicate_subtype:ordinary_stative",
+        "core_dimensions:gradability for stative predicates",
+        "construction_affordances:can_head_comment for stative predicates"
+      ],
+      "not_parser_active_yet": [
+        "speech/reportative logic",
+        "stance logic",
+        "cognition logic",
+        "productive VO logic",
+        "general NP logic",
+        "new ambiguity resolution"
+      ],
+      "behavior_contract": "No new grammar behavior; Phase 3 only replaces current stative string/slot checks with feature predicate helpers."
+    }
+  },
+  "feature_promotion_policy": {
+    "status": "phase_1_contract",
+    "promotion_requirements": [
+      "feature_source is present",
+      "feature_confidence is present",
+      "parser_active is explicit",
+      "positive example passes",
+      "contrast example passes",
+      "learner-visible role remains stable",
+      "diagnostic trace explains the feature if it affects parsing"
+    ],
+    "confidence_rules": [
+      {
+        "feature_confidence": "high",
+        "allowed_use": "May generate parser slots only after contrast tests pass and parser_active is explicitly true."
+      },
+      {
+        "feature_confidence": "medium",
+        "allowed_use": "May support parser slots only when construction context independently supports the parse."
+      },
+      {
+        "feature_confidence": "low",
+        "allowed_use": "Diagnostics only; not parser-active."
+      },
+      {
+        "feature_confidence": "candidate_only",
+        "allowed_use": "Quarantine/review only; never parser-active."
+      }
+    ],
+    "anti_rules": [
+      "Do not convert raw dictionary POS directly into parser truth.",
+      "Do not infer lexicalized_stative from every 好X phrase.",
+      "Do not infer comment eligibility from every predicate or VP.",
+      "Do not expose feature bundles as extra learner color roles.",
+      "Do not make low-confidence or runtime-inferred features parser-active."
+    ]
+  },
+  "controlled_feature_assignment_examples": [
+    {
+      "surface": "好食",
+      "display_role": "like",
+      "core_dimensions": {
+        "syntactic_category": "V",
+        "morphological_category": "verb_like",
+        "gradability": "gradable",
+        "dynamicity": "non_dynamic",
+        "temporal_stability": "contextual"
+      },
+      "parser_features": {
+        "lexicalization_type": "lexicalized_stative",
+        "semantic_domain": [
+          "sensory_evaluation",
+          "food_evaluation"
+        ],
+        "polarity_profile": "positive",
+        "predicate_subtype": [
+          "lexicalized_stative"
+        ]
+      },
+      "construction_affordances": {
+        "can_head_comment": true,
+        "can_take_degree_modifier": true,
+        "can_be_m4_negated": true,
+        "can_head_productive_vo": false,
+        "can_introduce_reported_content": false,
+        "can_take_recipient": false,
+        "can_head_opinion_frame": false
+      },
+      "evidence_controls": {
+        "feature_confidence": "high",
+        "feature_source": [
+          "manual_gold",
+          "words_hk",
+          "jyutdictionary"
+        ],
+        "parser_active": false
+      },
+      "diagnostic_shorthand": "+gradable -dynamic +lexicalized_stative +sensory_evaluation",
+      "phase_1_note": "Documented only; runtime remains unchanged."
+    },
+    {
+      "surface": "難食",
+      "display_role": "like",
+      "core_dimensions": {
+        "syntactic_category": "V",
+        "morphological_category": "verb_like",
+        "gradability": "gradable",
+        "dynamicity": "non_dynamic",
+        "temporal_stability": "contextual"
+      },
+      "parser_features": {
+        "lexicalization_type": "negative_lexicalized_stative",
+        "semantic_domain": [
+          "sensory_evaluation",
+          "food_evaluation"
+        ],
+        "polarity_profile": "negative",
+        "predicate_subtype": [
+          "negative_lexicalized_stative"
+        ]
+      },
+      "construction_affordances": {
+        "can_head_comment": true,
+        "can_take_degree_modifier": true,
+        "can_be_m4_negated": false,
+        "can_head_productive_vo": false,
+        "can_introduce_reported_content": false,
+        "can_take_recipient": false,
+        "can_head_opinion_frame": false
+      },
+      "evidence_controls": {
+        "feature_confidence": "high",
+        "feature_source": [
+          "manual_gold",
+          "words_hk",
+          "jyutdictionary"
+        ],
+        "parser_active": false
+      },
+      "diagnostic_shorthand": "+gradable -dynamic +negative_lexicalized_stative +sensory_evaluation",
+      "phase_1_note": "Documented only."
+    },
+    {
+      "surface": "遠",
+      "display_role": "like",
+      "core_dimensions": {
+        "syntactic_category": "V",
+        "morphological_category": "verb_like",
+        "gradability": "gradable",
+        "dynamicity": "non_dynamic",
+        "temporal_stability": "permanent"
+      },
+      "parser_features": {
+        "lexicalization_type": "none",
+        "semantic_domain": [
+          "distance_property"
+        ],
+        "polarity_profile": "neutral",
+        "predicate_subtype": [
+          "ordinary_stative"
+        ]
+      },
+      "construction_affordances": {
+        "can_head_comment": true,
+        "can_take_degree_modifier": true,
+        "can_be_m4_negated": true,
+        "can_head_productive_vo": false,
+        "can_introduce_reported_content": false,
+        "can_take_recipient": false,
+        "can_head_opinion_frame": false
+      },
+      "evidence_controls": {
+        "feature_confidence": "medium",
+        "feature_source": [
+          "manual_gold",
+          "research_generalization"
+        ],
+        "parser_active": false
+      },
+      "diagnostic_shorthand": "+gradable -dynamic +ordinary_stative +distance_property",
+      "phase_1_note": "Documented only."
+    },
+    {
+      "surface": "食",
+      "display_role": "doing",
+      "core_dimensions": {
+        "syntactic_category": "V",
+        "morphological_category": "verb_like",
+        "gradability": "non_gradable",
+        "dynamicity": "dynamic",
+        "temporal_stability": "transient"
+      },
+      "parser_features": {
+        "lexicalization_type": "none",
+        "semantic_domain": [
+          "consumption"
+        ],
+        "polarity_profile": "neutral",
+        "predicate_subtype": [
+          "action_verb"
+        ]
+      },
+      "construction_affordances": {
+        "can_head_comment": false,
+        "can_take_degree_modifier": false,
+        "can_be_m4_negated": "contextual",
+        "can_head_productive_vo": true,
+        "can_introduce_reported_content": false,
+        "can_take_recipient": false,
+        "can_head_opinion_frame": false
+      },
+      "evidence_controls": {
+        "feature_confidence": "high",
+        "feature_source": [
+          "manual_gold"
+        ],
+        "parser_active": false
+      },
+      "diagnostic_shorthand": "-gradable +dynamic +action_verb",
+      "phase_1_note": "Documented only."
+    },
+    {
+      "surface": "話",
+      "display_role": "stance/default",
+      "core_dimensions": {
+        "syntactic_category": "V",
+        "morphological_category": "verb_like",
+        "gradability": "non_gradable",
+        "dynamicity": "dynamic",
+        "temporal_stability": "transient"
+      },
+      "parser_features": {
+        "lexicalization_type": "none",
+        "semantic_domain": [
+          "speech"
+        ],
+        "polarity_profile": "neutral",
+        "predicate_subtype": [
+          "speech_predicate",
+          "reportative_source"
+        ]
+      },
+      "construction_affordances": {
+        "can_head_comment": false,
+        "can_take_degree_modifier": false,
+        "can_be_m4_negated": "contextual",
+        "can_head_productive_vo": false,
+        "can_introduce_reported_content": true,
+        "can_take_recipient": true,
+        "can_head_opinion_frame": false
+      },
+      "evidence_controls": {
+        "feature_confidence": "medium",
+        "feature_source": [
+          "manual_gold",
+          "research_generalization"
+        ],
+        "parser_active": false
+      },
+      "diagnostic_shorthand": "-gradable +dynamic +speech_predicate +reportative_source",
+      "phase_1_note": "Construction can override visible role."
+    },
+    {
+      "surface": "覺得",
+      "display_role": "stance",
+      "core_dimensions": {
+        "syntactic_category": "V",
+        "morphological_category": "verb_like",
+        "gradability": "non_gradable",
+        "dynamicity": "mixed",
+        "temporal_stability": "contextual"
+      },
+      "parser_features": {
+        "lexicalization_type": "none",
+        "semantic_domain": [
+          "cognition"
+        ],
+        "polarity_profile": "neutral",
+        "predicate_subtype": [
+          "stance_predicate"
+        ]
+      },
+      "construction_affordances": {
+        "can_head_comment": false,
+        "can_take_degree_modifier": false,
+        "can_be_m4_negated": "contextual",
+        "can_head_productive_vo": false,
+        "can_introduce_reported_content": false,
+        "can_take_recipient": false,
+        "can_head_opinion_frame": true
+      },
+      "evidence_controls": {
+        "feature_confidence": "high",
+        "feature_source": [
+          "manual_gold",
+          "research_generalization"
+        ],
+        "parser_active": false
+      },
+      "diagnostic_shorthand": "-gradable +stance_predicate +opinion_frame",
+      "phase_1_note": "Documented only."
+    },
+    {
+      "surface": "諗",
+      "display_role": "doing",
+      "core_dimensions": {
+        "syntactic_category": "V",
+        "morphological_category": "verb_like",
+        "gradability": "non_gradable",
+        "dynamicity": "dynamic",
+        "temporal_stability": "transient"
+      },
+      "parser_features": {
+        "lexicalization_type": "none",
+        "semantic_domain": [
+          "cognition"
+        ],
+        "polarity_profile": "neutral",
+        "predicate_subtype": [
+          "cognition_predicate"
+        ]
+      },
+      "construction_affordances": {
+        "can_head_comment": false,
+        "can_take_degree_modifier": false,
+        "can_be_m4_negated": "contextual",
+        "can_head_productive_vo": false,
+        "can_introduce_reported_content": false,
+        "can_take_recipient": false,
+        "can_head_opinion_frame": false
+      },
+      "evidence_controls": {
+        "feature_confidence": "high",
+        "feature_source": [
+          "manual_gold"
+        ],
+        "parser_active": false
+      },
+      "diagnostic_shorthand": "-gradable +dynamic +cognition_predicate",
+      "phase_1_note": "Visible role remains doing; cognition is internal."
+    },
+    {
+      "surface": "知",
+      "display_role": "doing",
+      "core_dimensions": {
+        "syntactic_category": "V",
+        "morphological_category": "verb_like",
+        "gradability": "non_gradable",
+        "dynamicity": "non_dynamic",
+        "temporal_stability": "contextual"
+      },
+      "parser_features": {
+        "lexicalization_type": "none",
+        "semantic_domain": [
+          "cognition"
+        ],
+        "polarity_profile": "neutral",
+        "predicate_subtype": [
+          "cognition_predicate"
+        ]
+      },
+      "construction_affordances": {
+        "can_head_comment": false,
+        "can_take_degree_modifier": false,
+        "can_be_m4_negated": "contextual",
+        "can_head_productive_vo": false,
+        "can_introduce_reported_content": false,
+        "can_take_recipient": false,
+        "can_head_opinion_frame": false
+      },
+      "evidence_controls": {
+        "feature_confidence": "high",
+        "feature_source": [
+          "manual_gold"
+        ],
+        "parser_active": false
+      },
+      "diagnostic_shorthand": "-gradable -dynamic +cognition_predicate",
+      "phase_1_note": "Visible role remains doing in 話你知; cognition is internal."
+    }
+  ],
+  "implementation_phases": [
+    {
+      "phase": "Controlled Feature Schema Phase 1",
+      "version": "0.4.41",
+      "status": "docs_data_only",
+      "behavior_change": "none",
+      "next_phase": "Derived runtime featureBundleFor helper, still behavior-preserving."
+    },
+    {
+      "phase": "Controlled Feature Schema Phase 2",
+      "version": "0.4.42",
+      "status": "runtime_helper_diagnostics_only",
+      "behavior_change": "none_intended",
+      "implemented": [
+        "featureBundleFor(surface, entry, features, slots)",
+        "token.feature_bundle",
+        "trace_detail.feature_bundle",
+        "diagnostic summary feature_bundle_count",
+        "parser_active_feature_bundle_count remains zero"
+      ],
+      "not_implemented": [
+        "slot generation from feature bundles",
+        "construction matching from feature bundles",
+        "parser-active feature promotion"
+      ]
+    }
+  ],
+  "runtime_feature_bundle_contract": {
+    "status": "phase_2_diagnostics_only",
+    "parser_behavior": "unchanged",
+    "parser_active_default": false,
+    "helper": "featureBundleFor(surface, entry, features, slots)",
+    "output_groups": [
+      "core_dimensions",
+      "parser_features",
+      "construction_affordances",
+      "evidence_controls",
+      "diagnostic_shorthand"
+    ],
+    "phase_2_rule": "Feature bundles may be shown in diagnostics but must not alter slots or construction matching."
+  },
+  "implementation": {
+    "phase": "Controlled Feature Schema Phase 3 stative parser-active migration",
+    "parser_behavior": "unchanged",
+    "diagnostic_patch": "話 remains speech_predicate/reportative_source, not stance_predicate.",
+    "version": "0.4.45",
+    "notes": [
+      "Parser-active feature bundle use is limited to the existing stative logic.",
+      "Speech, stance, cognition, productive VO, and general NP feature bundles remain parser-inactive.",
+      "Regression cases preserve v0.4.44 construction behavior."
+    ]
+  },
+  "v0_5_143_notes": {
+    "direct_wh_np": "咩 carries a direct_nominal_wh_determiner affordance and combines with a visible head noun under broad ModifiedNP.",
+    "attachment_guard": "A generic TransitiveVP over V + 咩 is deferred when a following head noun belongs inside the direct wh NP.",
+    "boundaries": [
+      "bare 咩 remains lexical wh material",
+      "sentence-final polar 咩 still requires a proposition host",
+      "邊 without classifier does not use the direct nominal pattern"
+    ]
+  },
+  "v0_5_146_notes": {
+    "laa_boundary": "Keep 啦 laa1 directive/interpersonal scope distinct from 喇 laa3 change-state/current-relevance scope despite ordinary spelling variation; neither particle licenses an unresolved host, and 喇 remains structurally separate from perfective 咗."
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "schema": "canto-span-cp022-i1a-i01-documentation-consistency-v1",
+  "checkpoint": "CP022-I1A-I01-R1",
+  "status": "PASS",
+  "total": 19,
+  "passed": 19,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "README.md exists",
+      "pass": true
+    },
+    {
+      "name": "HANDOFF.md exists",
+      "pass": true
+    },
+    {
+      "name": "CHECKPOINT-STATE.md exists",
+      "pass": true
+    },
+    {
+      "name": "PROGRESS-CHECKPOINT.json exists",
+      "pass": true
+    },
+    {
+      "name": "canto-span-checkpoint-CP022-I1A-I01-R1.json exists",
+      "pass": true
+    },
+    {
+      "name": "CANTO-SPAN-CHECKPOINT-CP022-I1A-I01-R1.md exists",
+      "pass": true
+    },
+    {
+      "name": "docs/research/CP022-I1A-I01-R1-RESEARCH-CHECKPOINT.md exists",
+      "pass": true
+    },
+    {
+      "name": "render-review/CP022-I1A-I01-R1-FOCUSED-RENDER-REVIEW.md exists",
+      "pass": true
+    },
+    {
+      "name": "README.md names I01",
+      "pass": true
+    },
+    {
+      "name": "README.md names runtime",
+      "pass": true
+    },
+    {
+      "name": "HANDOFF.md names I01",
+      "pass": true
+    },
+    {
+      "name": "HANDOFF.md names runtime",
+      "pass": true
+    },
+    {
+      "name": "CHECKPOINT-STATE.md names I01",
+      "pass": true
+    },
+    {
+      "name": "CHECKPOINT-STATE.md names runtime",
+      "pass": true
+    },
+    {
+      "name": "CANTO-SPAN-CHECKPOINT-CP022-I1A-I01-R1.md names I01",
+      "pass": true
+    },
+    {
+      "name": "CANTO-SPAN-CHECKPOINT-CP022-I1A-I01-R1.md names runtime",
+      "pass": true
+    },
+    {
+      "name": "progress active candidate exact",
+      "pass": true
+    },
+    {
+      "name": "progress heldout sealed",
+      "pass": true
+    },
+    {
+      "name": "progress productive zero",
+      "pass": true
+    }
+  ],
+  "failures": []
+}

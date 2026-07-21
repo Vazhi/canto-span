@@ -1,0 +1,80 @@
+proposition_id	synthesis_topic	disposition	claim_ids	rationale
+PROP-CP021B-0001	lexical GIVE and post-theme pattern	SUPPORTS_CLAIMS	CLAIM-CP021B-SY-002;CLAIM-CP021B-SY-004	Directly supplies lexical-GIVE theme-recipient and other-verb post-theme pattern descriptions.
+PROP-CP021B-0002	heavy theme and double-bij2	RESTRICTS_AND_SUPPORTS	CLAIM-CP021B-SY-002;CLAIM-CP021B-SY-005	Marks the alternative as possible but contextually marked under heaviness or focus.
+PROP-CP021B-0003	predicate classes	SUPPORTS_CLAIM	CLAIM-CP021B-SY-003	Supplies a source-specific semantic verb classification.
+PROP-CP021B-0004	spatial-goal boundary	RESTRICTS_CLAIM	CLAIM-CP021B-SY-003	Shows predicate-class sensitivity and a non-recipient spatial boundary.
+PROP-CP021B-0005	order inventory	SUPPORTS_CLAIMS	CLAIM-CP021B-SY-002;CLAIM-CP021B-SY-003	Directly distinguishes three surface orders.
+PROP-CP021B-0006	communication-verb restriction	RESTRICTS_CLAIM	CLAIM-CP021B-SY-003	Limits recipient-theme order to a source-described lexical set.
+PROP-CP021B-0007	possession interpretations	SUPPORTS_CLAIM	CLAIM-CP021B-SY-004	Shows interpretation dependence on the predicate and construction.
+PROP-CP021B-0008	DOC semantic restriction	RESTRICTS_CLAIMS	CLAIM-CP021B-SY-002;CLAIM-CP021B-SY-003	Prevents an unrestricted semantic generalization from the documented surface order.
+PROP-CP021B-0009	constructional analysis	COMPETING_ANALYSIS	CLAIM-CP021B-SY-008	Counters a simple deletion analysis and supports theory-neutral representation.
+PROP-CP021B-0010	inverted order contrast	SUPPORTS_CLAIM	CLAIM-CP021B-SY-003	Documents multiple order templates at chapter scope.
+PROP-CP021B-0011	Goal and lexical restriction	RESTRICTS_CLAIM	CLAIM-CP021B-SY-003	Makes alternative order role and predicate dependent.
+PROP-CP021B-0012	weight and discourse factors	SUPPORTS_WITH_ACCESS_BOUNDARY	CLAIM-CP021B-SY-003;CLAIM-CP021B-SY-005	Adds conditioning factors but lacks recovered page-level example locators.
+PROP-CP021B-0013	null or overt preposition theory	COMPETING_ANALYSIS	CLAIM-CP021B-SY-004;CLAIM-CP021B-SY-008	Retained as one theory, not selected as ontology.
+PROP-CP021B-0014	predominant and alternative orders	SUPPORTS_AND_RESTRICTS	CLAIM-CP021B-SY-002;CLAIM-CP021B-SY-003	Supports theme-recipient attestation while keeping alternative order and lexical limits visible.
+PROP-CP021B-0015	overt post-theme marker	SUPPORTS_CLAIM	CLAIM-CP021B-SY-004	Directly attests V-theme-bij2-recipient and a preposing boundary.
+PROP-CP021B-0016	verb-class order variation	SUPPORTS_CLAIM	CLAIM-CP021B-SY-003	Directly rejects a single freely alternating global order.
+PROP-CP021B-0017	Source versus Goal role	RESTRICTS_CLAIM	CLAIM-CP021B-SY-003	Supplies a thematic-role restriction.
+PROP-CP021B-0018	object weight	SUPPORTS_AND_RESTRICTS	CLAIM-CP021B-SY-003;CLAIM-CP021B-SY-005	Attests weight sensitivity but not a quantified rule.
+PROP-CP021B-0019	Goal marker and deletion difficulty	SUPPORTS_AND_RESTRICTS	CLAIM-CP021B-SY-003;CLAIM-CP021B-SY-004	Links marker use to Goal and object length in one analysis.
+PROP-CP021B-0020	prepositional category	COMPETING_ANALYSIS	CLAIM-CP021B-SY-004;CLAIM-CP021B-SY-008	One explicit category analysis retained without selection.
+PROP-CP021B-0021	diachronic evidence	HISTORICAL_BOUNDARY	CLAIM-CP021B-SY-008	Historical argument constrains analysis but cannot establish present distribution.
+PROP-CP021B-0022	canonical theme-recipient order	SUPPORTS_CLAIM	CLAIM-CP021B-SY-002	Direct source statement for the lexical-GIVE pattern.
+PROP-CP021B-0023	heavy-theme alternatives	SUPPORTS_CLAIM	CLAIM-CP021B-SY-005	Lists multiple restructuring strategies in the elicited context.
+PROP-CP021B-0024	complexity-conditioned counts	SUPPORTS_WITH_MEASUREMENT_WARNING	CLAIM-CP021B-SY-005	Counts show more alternatives with complexity, but the slide label is inconsistent.
+PROP-CP021B-0025	experimental scope	METHOD_LIMIT	CLAIM-CP021B-SY-005;CLAIM-CP021B-SY-009	Bounds inference to a small elicited processing study.
+PROP-CP021B-0026	processing accuracy effect	SUPPORTS_TENDENCY_ONLY	CLAIM-CP021B-SY-005	Supports processing sensitivity, not grammar or conversation frequency.
+PROP-CP021B-0027	imitation alternatives	ATTESTS_ONLY	CLAIM-CP021B-SY-005	Attests alternative outputs as task errors without productivity promotion.
+PROP-CP021B-0028	processing interpretation	COMPETING_ANALYSIS	CLAIM-CP021B-SY-005	Retains the author's processing account and unresolved zoeng category.
+PROP-CP021B-0029	historical or dialectal origin	HISTORICAL_COMPETING_ANALYSIS	CLAIM-CP021B-SY-008	Abstract-only historical theory does not determine modern representation.
+PROP-CP021B-0030	corpus scope and period	SUPPORTS_WITH_SCOPE_LIMIT	CLAIM-CP021B-SY-009	Provides a declared denominator but only for two 1990s corpora.
+PROP-CP021B-0031	corpus transfer-pattern counts	SUPPORTS_CLAIM	CLAIM-CP021B-SY-002	Directly attests the lexical-GIVE theme-recipient corpus class and alternatives.
+PROP-CP021B-0032	corpus order comparison	SUPPORTS_CLAIM	CLAIM-CP021B-SY-002	Theme-recipient exceeds recipient-theme within the stated coding and corpora.
+PROP-CP021B-0033	heavy-object sparse subset	RESTRICTS_CLAIMS	CLAIM-CP021B-SY-002;CLAIM-CP021B-SY-005;CLAIM-CP021B-SY-009	Explicitly blocks robust order, weight, and frequency conclusions from eight tokens.
+PROP-CP021B-0034	non-full and restructured forms	SUPPORTS_CLAIM	CLAIM-CP021B-SY-006	Directly attests omission, fronting, and zoeng classes.
+PROP-CP021B-0035	non-transfer conditional boundary	NON_TARGET_BOUNDARY	CLAIM-CP021B-SY-001	Prevents all bij2 tokens from being treated as participant-linking grammar.
+PROP-CP021B-0036	serial or beneficiary corpus class	SUPPORTS_CLAIMS	CLAIM-CP021B-SY-004;CLAIM-CP021B-SY-006	Attests the broad V-theme-bij2-NP-V surface class and predicate dependence.
+PROP-CP021B-0037	causative and passive corpus classes	SUPPORTS_CLAIMS	CLAIM-CP021B-SY-001;CLAIM-CP021B-SY-007	Direct counts and context-dependent classification establish the non-recipient boundary.
+PROP-CP021B-0038	later corpus correction	CORRECTION_CONTROL	CLAIM-CP021B-SY-007;CLAIM-CP021B-SY-009	The later correction controls over the earlier no-agent passive claim.
+PROP-CP021B-0039	taxonomy and sparse classes	RESTRICTS_CLAIMS	CLAIM-CP021B-SY-001;CLAIM-CP021B-SY-009	Prevents treating analyst classes or sparse counts as exhaustive current distribution.
+PROP-CP021B-0040	earlier corpus taxonomy	SAME_FAMILY_CONTEXT	CLAIM-CP021B-SY-001;CLAIM-CP021B-SY-009	Retained without independent replication weight.
+PROP-CP021B-0041	retracted no-agent class	RETRACTED	CLAIM-CP021B-SY-007	Supplies no positive evidence after the later correction.
+PROP-CP021B-0042	recent production methods	METHOD_LIMIT	CLAIM-CP021B-SY-005;CLAIM-CP021B-SY-009	Defines a small elicited, partly proficient sample rather than conversation.
+PROP-CP021B-0043	selected production counts	ATTESTS_ONLY	CLAIM-CP021B-SY-005	Attests canonical and double-bij2 outputs within selected responses.
+PROP-CP021B-0044	nonsignificant distance effect	RESTRICTS_CLAIM	CLAIM-CP021B-SY-005	Blocks a significant distance-based rule.
+PROP-CP021B-0045	sparse long-distance evidence	RESTRICTS_CLAIMS	CLAIM-CP021B-SY-005;CLAIM-CP021B-SY-009	Limits tendency and frequency inference.
+PROP-CP021B-0046	postselection boundary	RESTRICTS_CLAIMS	CLAIM-CP021B-SY-005;CLAIM-CP021B-SY-009	The selected denominator cannot estimate construction prevalence.
+PROP-CP021B-0047	lexically assigned form claim	SUPPORTS_AND_RESTRICTS	CLAIM-CP021B-SY-003;CLAIM-CP021B-SY-004	Supports lexical conditioning while preserving the author's nonalternation theory as scoped.
+PROP-CP021B-0048	GIVE versus other-verb order	SUPPORTS_CLAIMS	CLAIM-CP021B-SY-002;CLAIM-CP021B-SY-003	Direct verb-specific order contrast.
+PROP-CP021B-0049	pronoun and animacy judgments	RESTRICTS_CLAIM	CLAIM-CP021B-SY-003	Adds nominal-form restrictions but is judgment-based.
+PROP-CP021B-0050	heavy-theme three-way alternatives	SUPPORTS_CLAIM	CLAIM-CP021B-SY-005	Directly reports order and double-bij2 alternatives under heaviness.
+PROP-CP021B-0051	short-theme double-bij2 rejection	CONTRADICTS_OR_RESTRICTS	CLAIM-CP021B-SY-005	Conflicts with graded markedness elsewhere and vetoes a categorical trigger.
+PROP-CP021B-0052	heavy-recipient asymmetry	RESTRICTS_CLAIMS	CLAIM-CP021B-SY-003;CLAIM-CP021B-SY-005	Shows weight effects differ by participant and order.
+PROP-CP021B-0053	both-heavy alternatives	SUPPORTS_AND_RESTRICTS	CLAIM-CP021B-SY-003;CLAIM-CP021B-SY-005	Adds options for one lexical verb but contrasts other verbs.
+PROP-CP021B-0054	journal-dissertation evidence overlap	INDEPENDENCE_CONTROL	CLAIM-CP021B-SY-003;CLAIM-CP021B-SY-009	Prevents double-counting one research family.
+PROP-CP021B-0055	double-object versus serial distinction	SUPPORTS_CLAIM	CLAIM-CP021B-SY-004	Attests surface contrast while leaving formal diagnosis source-scoped.
+PROP-CP021B-0056	speaker-variable semantic nuance	RESTRICTS_CLAIMS	CLAIM-CP021B-SY-003;CLAIM-CP021B-SY-004	Unquantified speaker variation prevents generalized nuance.
+PROP-CP021B-0057	GIVE theme-beneficiary order	SUPPORTS_CLAIM	CLAIM-CP021B-SY-002	Independent-team example for theme-before-beneficiary with lexical GIVE.
+PROP-CP021B-0058	pronoun restrictions	RESTRICTS_CLAIM	CLAIM-CP021B-SY-003	Records claimed participant-form restrictions without hard-rule promotion.
+PROP-CP021B-0059	serial complex-predicate analysis	COMPETING_ANALYSIS	CLAIM-CP021B-SY-004;CLAIM-CP021B-SY-008	Attests the post-theme pattern but competes with prepositional accounts.
+PROP-CP021B-0060	borrow or lend disambiguation	SUPPORTS_CLAIMS	CLAIM-CP021B-SY-003;CLAIM-CP021B-SY-004	Shows predicate and role dependence in one analysis.
+PROP-CP021B-0061	lexical GIVE theme-recipient example	SUPPORTS_CLAIM	CLAIM-CP021B-SY-002	Direct modern example.
+PROP-CP021B-0062	heavy-theme order and contact note	SUPPORTS_WITH_SECONDARY_LIMIT	CLAIM-CP021B-SY-003;CLAIM-CP021B-SY-005	Supports speaker and weight variation; contact explanation is not independently extracted.
+PROP-CP021B-0063	transfer versus beneficiary distinction	SUPPORTS_CLAIMS	CLAIM-CP021B-SY-001;CLAIM-CP021B-SY-004	Same surface order receives predicate-valency-dependent functions.
+PROP-CP021B-0064	completeness and omission tension	SUPPORTS_AND_RESTRICTS	CLAIM-CP021B-SY-006	Directly prevents categorical overt-marker or participant obligatoriness.
+PROP-CP021B-0065	causative and passive shared frame	SUPPORTS_CLAIMS	CLAIM-CP021B-SY-001;CLAIM-CP021B-SY-007	Direct examples establish polyfunctionality and ambiguity.
+PROP-CP021B-0066	aspect diagnostic and verbal analysis	COMPETING_ANALYSIS	CLAIM-CP021B-SY-008	Theory-specific category diagnostic; not adopted as ontology.
+PROP-CP021B-0067	passive participant roles	SUPPORTS_CLAIM	CLAIM-CP021B-SY-007	Directly shows post-marker NP as agent rather than recipient in passive analysis.
+PROP-CP021B-0068	instrument historical and speaker boundary	HISTORICAL_VARIETY_BOUNDARY	CLAIM-CP021B-SY-001	Adds a narrowly bounded non-transfer function without productive modern-HK promotion.
+PROP-CP021B-0069	grammaticalization paths	COMPETING_ANALYSIS	CLAIM-CP021B-SY-001;CLAIM-CP021B-SY-008	Retains theory of related functions without converting it to parser ontology.
+PROP-CP021B-0070	child-input corpus scope	METHOD_AND_REGISTER_LIMIT	CLAIM-CP021B-SY-009	Abstract-bounded child-input evidence cannot establish unrestricted adult distribution.
+PROP-CP021B-0071	inconsistent order-role mapping in input	RESTRICTS_CLAIM	CLAIM-CP021B-SY-003	Supports caution against a fixed order-to-role mapping within abstract scope.
+PROP-CP021B-0072	parent-child full and non-full forms	SUPPORTS_WITH_ABSTRACT_LIMIT	CLAIM-CP021B-SY-006;CLAIM-CP021B-SY-009	Attests variants but exact rates and coding remain unavailable.
+PROP-CP021B-0073	adult prepositional or serial preference	SUPPORTS_WITH_ABSTRACT_LIMIT	CLAIM-CP021B-SY-004;CLAIM-CP021B-SY-006;CLAIM-CP021B-SY-009	Supports a register-bounded comparison without exact rates.
+PROP-CP021B-0074	causative or passive ambiguity	SUPPORTS_CLAIMS	CLAIM-CP021B-SY-001;CLAIM-CP021B-SY-007	Independent small boundary study corroborates ambiguity.
+PROP-CP021B-0075	local corpus candidate inventory	PROVENANCE_ONLY	CLAIM-CP021B-SY-009	Candidate counts are lexical retrieval, not construction analysis.
+PROP-CP021B-0076	manual-review requirement	PROVENANCE_AND_METHOD_LIMIT	CLAIM-CP021B-SY-009	Blocks corpus construction counts until source utterances are recovered and reviewed.
+PROP-CP021B-0077	corpus description provenance	PROVENANCE_ONLY	CLAIM-CP021B-SY-009	Documents dataset provenance but adds no usage proposition.
+PROP-CP021B-0078	historical marking change	HISTORICAL_BOUNDARY	CLAIM-CP021B-SY-008	Cannot establish modern Hong Kong distribution or parser category.
+PROP-CP021B-0079	lexical polyfunctionality corroboration	LEXICAL_CORROBORATION_ONLY	CLAIM-CP021B-SY-001	Corroborates multiple functions but carries no grammar or distribution promotion.

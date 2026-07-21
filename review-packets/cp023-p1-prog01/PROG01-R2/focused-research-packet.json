@@ -1,0 +1,55 @@
+{
+  "schema": "canto-span-cp023-p1-prog01-research-package-v2",
+  "packet_id": "CP023-P1-PROG01-R2",
+  "status": "REMEDIATION_BLUEPRINT_FROZEN_IMPLEMENTATION_AND_CUSTODY_BLOCKED",
+  "accepted_runtime": "v0.5.182",
+  "research_target": "PostverbalGanProgressiveVP",
+  "public_compatibility_family": "ProgressiveVP",
+  "target_profile": "overt lexical predicate + adjacent postverbal 緊 + complete overt non-interrogative object/NP, with independently supported progressive compatibility",
+  "held_out": {
+    "selection_state": "NOT_SELECTED",
+    "custody_archive": null,
+    "implementation_authorized": false
+  },
+  "acceptance_contract": {
+    "runtime_change_in_this_checkpoint": false,
+    "candidate_status": "research_only",
+    "supported_productive_delta": 0,
+    "render_required_before_any_future_acceptance": true,
+    "fresh_prospective_heldout_required_after_specification_freeze": true,
+    "visible_r1_r2_cases_reusable_as_heldout": false
+  },
+  "blockers": [
+    "predicate-progressive compatibility matrix not frozen",
+    "associative NP scope under 啲 not designed",
+    "coordinated nominal object not designed",
+    "source-word lexicon patch not implemented independently",
+    "exact 錫條 compound Jyutping unresolved",
+    "progressive whole-object representation not implemented",
+    "ProgressiveTransitivePredicate duplicate disposition not fixed"
+  ],
+  "files": {
+    "r1_visible_cases": "../../../test-data/CP023-P1-PROG01-visible-research-packet.tsv",
+    "nominal_probe_cases": "../../../test-data/CP023-P1-PROG01-nominal-prerequisite-probes.tsv",
+    "source_freeze": "../../../docs/research/CP023-P1-PROG01-QUESTION-AND-SOURCE-FREEZE.md",
+    "remediation_blueprint": "../../../docs/research/CP023-P1-PROG01-REMEDIATION-BLUEPRINT-R2.md",
+    "dependency_matrix": "../../../docs/research/CP023-P1-PROG01-REMEDIATION-DEPENDENCIES-R2.tsv",
+    "lexicon_verification": "../../../docs/research/CP023-P1-PROG01-LEXICON-JYUTPING-VERIFICATION-R2.md",
+    "lexicon_table": "../../../docs/research/CP023-P1-PROG01-LEXICON-JYUTPING-R2.tsv",
+    "checkpoint": "../../../docs/research/CP023-P1-PROG01-R2-RESEARCH-CHECKPOINT.md",
+    "progressive_baseline": "../../../validation/cp023-p1-prog01/current-baseline-observation.json",
+    "lexicon_baseline": "../../../validation/cp023-p1-prog01/lexicon-baseline-observation.json",
+    "nominal_baseline": "../../../validation/cp023-p1-prog01/nominal-prerequisite-observation.json",
+    "lexicon_probe_cases": "../../../test-data/CP023-P1-PROG01-lexicon-baseline-probes.tsv"
+  },
+  "sha256": {
+    "remediation_blueprint": "eeac27e3b6e9e2ca64736613819385c2fb5af2e0d68f8f6755f310e8ceb2c5bc",
+    "dependency_matrix": "651801a868e8fcd2e83391bd36398fdfa7e0549af3e9b746da4cec0802ec97f4",
+    "lexicon_verification": "32358066814eed7cc1fe33754e2e036eb0becca39c386210f1437d458a549525",
+    "lexicon_table": "8aed763165588b69c4c23f9a389026d58463a5d7d812c088165f460916c092ee",
+    "checkpoint": "244f0ba37bd33ad1b31dbed83358aff33f59b4ec76a47c5e0c40e491881ca15c",
+    "progressive_probe_packet": "6bb688bd11ce980780a95f9ba2da204fc36ddaffdca6384400a7f87b24f0b8bf",
+    "lexicon_probe_packet": "d2872ac738942d70cda14891bb7e1dcd15e0e6f63f63df3098463484cd22ab9d",
+    "nominal_probe_packet": "ce7c33de187522036b9d7b368f8f0ca6c250e9e24fe8a4f77badd5dcfc8894c2"
+  }
+}

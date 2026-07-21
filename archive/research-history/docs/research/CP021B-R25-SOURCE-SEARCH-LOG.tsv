@@ -1,0 +1,12 @@
+search_id	date	query_or_action	source_or_engine	result	evidentiary_use	limitation
+R25-S01	2026-07-19	Verify R24 package, 99/99 audit, and frozen hashes	local package inspection	PASS	baseline integrity only	Package metadata is not linguistic authority.
+R25-S02	2026-07-19	Rank 46 remaining language labels by main.js references and non-held-out regression reach	local runtime and accepted snapshots	PASS	family selection	Counts rank impact but do not establish grammar.
+R25-S03	2026-07-19	Extract ConditionalClause predicate+嘅話 fallback and protected marker behavior	main.js	PASS	runtime claim extraction	Code is a research target, not language evidence.
+R25-S04	2026-07-19	Extract ConditionResult and CompletionThenClause templates and fallbacks	main.js	PASS	runtime claim extraction	Template categories and lexical lists do not establish construction legitimacy.
+R25-S05	2026-07-19	Inspect accepted ConditionalClause snapshots without searching held-out files	test-data/regression-snapshots.json	PASS	non-held-out fixture impact	Accepted behavior is not linguistic authority.
+R25-S06	2026-07-19	Search primary/official research on Cantonese conditional 嘅 and 嘅話	CiNii and Hokkaido metadata	PARTIAL	bare 嘅 versus 嘅話 boundary	Iida full text was not recovered; only official metadata and abstract are used.
+R25-S07	2026-07-19	Inspect official journal PDF on Cantonese 嘅話 conditionals	CUHK Current Research in Chinese Linguistics	PASS	full antecedent, optional 如果, tone variation, postposed conditionals	Split-TP analysis and speaker-specific tone judgments are not universal parser rules.
+R25-S08	2026-07-19	Inspect official supplementary coding for 如果/就 and temporal 就	Cambridge University Press supplement	PASS	conditional schema and polyfunctionality boundary	Child-language coding is operational rather than exhaustive adult grammar.
+R25-S09	2026-07-19	Search user-provided Hong Kong Cantonese coursebook for conditional and completion+就 examples	uploaded full-text PDF	PASS	exact pedagogical attestations	Pedagogical examples do not establish frequency or unrestricted productivity.
+R25-S10	2026-07-19	Search exact external attestations of standalone 有嘅話, 冇嘅話, and 得嘅話	official research and uploaded coursebook searches	NO_DIRECT_MATCH	explicit source gap	Search failure is not evidence of unacceptability.
+R25-S11	2026-07-19	Assemble 30-row claim matrix and validate parent preservation/source resolution	local deterministic audit	PASS	provenance integrity	Audit verifies data integrity, not linguistic truth.

@@ -1,0 +1,8 @@
+case_id	case_class	surface	candidate_policy	expected_target_surfaces	source_ids	source_locator	research_note
+NOM-P01	associative_np_baseline	公司嘅報告	OBSERVE_ONLY				baseline possessive/associative NP
+NOM-P02	plural_associative_scope	啲公司嘅報告	OBSERVE_ONLY				test 啲 scope over possessor-plus-head NP
+NOM-P03	proper_name_associative_np	九巴嘅報告	OBSERVE_ONLY		SRC-IRC-BUS-2018-1006		proper-name lexical prerequisite
+NOM-P04	coordinate_np_baseline	報告同埋文件	OBSERVE_ONLY				coordinated nominal object prerequisite
+NOM-P05	progressive_coordinate_object	問緊報告同埋文件	OBSERVE_ONLY				whether whole coordinated NP is incorporated
+NOM-P06	progressive_associative_object	睇緊公司嘅報告	OBSERVE_ONLY				whether whole associative NP is incorporated
+NOM-P07	progressive_plural_associative_object	睇緊啲公司嘅報告	OBSERVE_ONLY				whether 啲 plus associative NP is scoped and incorporated

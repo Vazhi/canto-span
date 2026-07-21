@@ -1,0 +1,116 @@
+{
+  "schema": "canto-span-v0.5.181-implementation-audit-v1",
+  "version": "0.5.181",
+  "status": "PASS",
+  "total": 26,
+  "passed": 26,
+  "failed": 0,
+  "runtime_hash": "047284bf29ed8c972c033b45ead83e0c60b4edaed6a954d03dd32ccdeeef1b44",
+  "checks": [
+    {
+      "name": "runtime and policy version",
+      "pass": true
+    },
+    {
+      "name": "registry and alias",
+      "pass": true
+    },
+    {
+      "name": "candidate provisional only",
+      "pass": true
+    },
+    {
+      "name": "positive subtype 呢個用嚟切嘢。",
+      "pass": true
+    },
+    {
+      "name": "positive subtype 呢張枱用嚟食飯。",
+      "pass": true
+    },
+    {
+      "name": "positive subtype 呢個杯用嚟飲水。",
+      "pass": true
+    },
+    {
+      "name": "positive subtype 呢支筆用嚟寫字。",
+      "pass": true
+    },
+    {
+      "name": "positive subtype 呢張紙用來寫字。",
+      "pass": true
+    },
+    {
+      "name": "cup resource noun disambiguation",
+      "pass": true
+    },
+    {
+      "name": "written 來 keeps standard loi4 reading",
+      "pass": true
+    },
+    {
+      "name": "boundary excludes subtype 啲錢我用嚟買晒嗰堆嘢。",
+      "pass": true
+    },
+    {
+      "name": "boundary excludes subtype 呢個可以用嚟切嘢。",
+      "pass": true
+    },
+    {
+      "name": "boundary excludes subtype 呢個係用嚟切嘢。",
+      "pass": true
+    },
+    {
+      "name": "boundary excludes subtype 呢個用咗嚟切嘢。",
+      "pass": true
+    },
+    {
+      "name": "boundary excludes subtype 我用刀切嘢。",
+      "pass": true
+    },
+    {
+      "name": "boundary excludes subtype 我買刀嚟切嘢。",
+      "pass": true
+    },
+    {
+      "name": "boundary excludes subtype 呢個唔用嚟切嘢。",
+      "pass": true
+    },
+    {
+      "name": "boundary excludes subtype 呢個用唔用嚟切嘢？",
+      "pass": true
+    },
+    {
+      "name": "boundary excludes subtype 用來用去。",
+      "pass": true
+    },
+    {
+      "name": "boundary excludes subtype 我用嚟切嘢。",
+      "pass": true
+    },
+    {
+      "name": "boundary excludes subtype 呢個用嚟。",
+      "pass": true
+    },
+    {
+      "name": "boundary excludes subtype 呢個用嚟切咗嘢。",
+      "pass": true
+    },
+    {
+      "name": "source matrix has six subtype rows",
+      "pass": true
+    },
+    {
+      "name": "Cheung source is fully located",
+      "pass": true
+    },
+    {
+      "name": "custody not present in recovery tree",
+      "pass": true
+    },
+    {
+      "name": "runtime has exact lexicon cleanup",
+      "pass": true
+    }
+  ],
+  "failures": []
+}

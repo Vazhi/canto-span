@@ -1,0 +1,16 @@
+{
+  "schema": "canto-span-aggregate-regression-suite-result-v1",
+  "runtime_version": "0.5.179",
+  "fixture_runtime_version": "0.5.177",
+  "absorbed_historical_runner_count": 39,
+  "fixture_case_count": 545,
+  "current_focused_exclusion_count": 0,
+  "current_focused_excluded_case_count": 0,
+  "current_focused_excluded_sources": [],
+  "current_focused_candidate": "v0.5.177-cp022-i1a-i04-internal-wrapper-cleanup-r1",
+  "total": 545,
+  "passed": 545,
+  "failed": 0,
+  "strict_ready": true,
+  "failures": []
+}

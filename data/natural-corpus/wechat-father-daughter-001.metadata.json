@@ -1,0 +1,16 @@
+{
+  "corpus_id": "WECHAT-FD-001",
+  "title": "Sanitized WeChat father–daughter conversation 001",
+  "source_type": "user_supplied_sanitized_natural_conversation",
+  "register": "informal_family_wechat",
+  "speakers": [
+    "J",
+    "K"
+  ],
+  "date_received": "2026-07-16",
+  "privacy_status": "sanitized_user_supplied",
+  "evidence_role": "natural_attestation_and_parser_evaluation_not_productivity_proof",
+  "punctuation_status": "editorial_punctuation_not_original_prosody",
+  "grammar_acceptance_effect": "none",
+  "raw_transcript_sha256": "d749c2e738ef407fd535352f9cd08dd427436b7f9ab0d77e0835b5159dbeb771"
+}

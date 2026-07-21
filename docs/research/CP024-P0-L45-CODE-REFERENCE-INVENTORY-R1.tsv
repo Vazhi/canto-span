@@ -1,0 +1,118 @@
+line	matched_terms	code	reference_class
+7	ProductiveVO	* inside parent construction spans. Parent spans such as ProductiveVO/VP,	LEXICON_TAG
+65	IntransitiveVP,ProductiveVO,TransitiveVP	"const GRAMMAR_LEGITIMACY_BY_CONSTRUCTION = Object.freeze({""ANotAQuestion"":{""pattern"":""ANotAQuestion"",""lane"":""LANE-07"",""primary_claim_type"":""cantonese_language_claim"",""status"":""research_pending"",""confidence"":""low"",""action"":""retain_but_quarantine_from_new_grammar_acceptance"",""external_description_scope"":""lane_level"",""lane_external_reference_count"":7,""pattern_specific_external_source_count"":0,""natural_attestation_status"":""native_surface_acceptability_candidate_not_analysis_validated"",""external_corp"	LEXICON_TAG
+178	ProductiveVO	"""食飯"": { verb: ""食"", object: ""飯"", label: ""VP"", type: ""ProductiveVO"" },"	LEXICON_TAG
+179	ProductiveVO	"""煮飯"": { verb: ""煮"", object: ""飯"", label: ""VP"", type: ""ProductiveVO"" },"	LEXICON_TAG
+180	ProductiveVO	"""摘芒果"": { verb: ""摘"", object: ""芒果"", label: ""VP"", type: ""ProductiveVO"" },"	LEXICON_TAG
+181	ProductiveVO	"""買嘢"": { verb: ""買"", object: ""嘢"", label: ""VP"", type: ""ProductiveVO"" },"	LEXICON_TAG
+182	ProductiveVO	"""食嘢"": { verb: ""食"", object: ""嘢"", label: ""VP"", type: ""ProductiveVO"" },"	LEXICON_TAG
+183	ProductiveVO	"""飲水"": { verb: ""飲"", object: ""水"", label: ""VP"", type: ""ProductiveVO"" },"	LEXICON_TAG
+184	ProductiveVO	"""飲茶"": { verb: ""飲"", object: ""茶"", label: ""VP"", type: ""ProductiveVO"" },"	LEXICON_TAG
+185	ProductiveVO	"""寫字"": { verb: ""寫"", object: ""字"", label: ""VP"", type: ""ProductiveVO"" },"	LEXICON_TAG
+186	ProductiveVO	"""寫名"": { verb: ""寫"", object: ""名"", label: ""VP"", type: ""ProductiveVO"" },"	LEXICON_TAG
+187	ProductiveVO	"""睇書"": { verb: ""睇"", object: ""書"", label: ""VP"", type: ""ProductiveVO"" },"	LEXICON_TAG
+188	ProductiveVO	"""聽歌"": { verb: ""聽"", object: ""歌"", label: ""VP"", type: ""ProductiveVO"" },"	LEXICON_TAG
+189	ProductiveVO	"""講嘢"": { verb: ""講"", object: ""嘢"", label: ""VP"", type: ""ProductiveVO"" },"	LEXICON_TAG
+190	ProductiveVO	"""打電話"": { verb: ""打"", object: ""電話"", label: ""VP"", type: ""ProductiveVO"" },"	LEXICON_TAG
+191	ProductiveVO	"""聽電話"": { verb: ""聽"", object: ""電話"", label: ""VP"", type: ""ProductiveVO"" },"	LEXICON_TAG
+192	ProductiveVO	"""做功課"": { verb: ""做"", object: ""功課"", label: ""VP"", type: ""ProductiveVO"" },"	LEXICON_TAG
+193	ProductiveVO	"""返學"": { verb: ""返"", object: ""學"", label: ""VP"", type: ""ProductiveVO"" },"	LEXICON_TAG
+194	ProductiveVO	"""放學"": { verb: ""放"", object: ""學"", label: ""VP"", type: ""ProductiveVO"" },"	LEXICON_TAG
+195	ProductiveVO	"""瞓覺"": { verb: ""瞓"", object: ""覺"", label: ""VP"", type: ""ProductiveVO"" },"	LEXICON_TAG
+196	ProductiveVO	"""洗手"": { verb: ""洗"", object: ""手"", label: ""VP"", type: ""ProductiveVO"" },"	LEXICON_TAG
+197	ProductiveVO	"""沖涼"": { verb: ""沖"", object: ""涼"", label: ""VP"", type: ""ProductiveVO"" },"	LEXICON_TAG
+198	ProductiveVO	"""曬太陽"": { verb: ""曬"", object: ""太陽"", label: ""VP"", type: ""ProductiveVO"" },"	LEXICON_TAG
+199	ProductiveVO	"""打麻雀"": { verb: ""打"", object: ""麻雀"", label: ""VP"", type: ""ProductiveVO"" },"	LEXICON_TAG
+200	ProductiveVO	"""默書"": { verb: ""默"", object: ""書"", label: ""VP"", type: ""ProductiveVO"" },"	LEXICON_TAG
+201	ProductiveVO	"""炒股票"": { verb: ""炒"", object: ""股票"", label: ""VP"", type: ""ProductiveVO"" },"	LEXICON_TAG
+202	ProductiveVO	"""發脾氣"": { verb: ""發"", object: ""脾氣"", label: ""VP"", type: ""ProductiveVO"" },"	LEXICON_TAG
+203	ProductiveVO	"""食意粉"": { verb: ""食"", object: ""意粉"", label: ""VP"", type: ""ProductiveVO"" },"	LEXICON_TAG
+204	ProductiveVO	"""Book枱"": { verb: ""Book"", object: ""枱"", label: ""VP"", type: ""ProductiveVO"" },"	LEXICON_TAG
+468	transitive_affordance	"""戴"": { label: ""doing"", jyutping: ""daai3"", syntax: ""verb transitive_affordance wearing_action"", note: ""wear / put on"" },"	LEXICON_TAG
+481	transitive_affordance	"""寄"": { label: ""doing"", jyutping: ""gei3"", syntax: ""verb transitive_affordance transfer_action"", note: ""send / mail"" },"	LEXICON_TAG
+519	transitive_affordance	"""食"": { label: ""doing"", jyutping: ""sik6"", syntax: ""verb transitive_affordance chain_select_edible"", note: ""eat"" },"	LEXICON_TAG
+520	transitive_affordance	"""切"": { label: ""doing"", jyutping: ""cit3"", syntax: ""verb action_verb transitive_affordance"", note: ""cut; added for the sourced 用嚟 function example and ordinary lexical coverage."" },"	LEXICON_TAG
+521	transitive_affordance	"""畫"": { label: ""doing"", jyutping: ""waa2"", syntax: ""verb action_verb transitive_affordance"", note: ""draw / paint."" },"	LEXICON_TAG
+523	transitive_affordance	"""飲"": { label: ""doing"", jyutping: ""jam2"", syntax: ""verb transitive_affordance chain_select_drinkable"", note: ""drink"" },"	LEXICON_TAG
+524	transitive_affordance	"""睇"": { label: ""doing"", jyutping: ""tai2"", syntax: ""verb transitive_affordance chain_select_perception"", note: ""look/read/watch"" },"	LEXICON_TAG
+526	transitive_affordance	"""講"": { label: ""doing"", jyutping: ""gong2"", syntax: ""verb transitive_affordance chain_select_discourse_content"", note: ""speak"" },"	LEXICON_TAG
+545	ditransitive_verb	"""畀"": { label: ""doing"", jyutping: ""bei2"", syntax: ""ditransitive_verb"", note: ""give"" },"	LEXICON_TAG
+546	ditransitive_verb	"""俾"": { label: ""doing"", jyutping: ""bei2"", syntax: ""ditransitive_verb orthographic_variant_bei"", note: ""give; common spelling variant of 畀"" },"	LEXICON_TAG
+583	transitive_affordance	"""Book"": { label: ""doing"", jyutping: ""book1"", syntax: ""borrowed_verb transitive_affordance chain_select_bookable_resource"", note: ""book / reserve"" },"	LEXICON_TAG
+819	transitive_verb	"""見到"": { label: ""doing"", jyutping: ""gin3 dou2"", syntax: ""verb action_verb transitive_verb perception_verb immediate_temporal_trigger_predicate"", note: ""see / catch sight of"" },"	LEXICON_TAG
+820	intransitive_verb	"""笑"": { label: ""doing"", jyutping: ""siu3"", syntax: ""verb action_verb intransitive_verb"", note: ""laugh / smile"" },"	LEXICON_TAG
+920	transitive_verb	"""認識"": { label: ""doing"", jyutping: ""jing6 sik1"", syntax: ""verb cognition_social_acquaintance transitive_verb"", note: ""know / become acquainted with."" },"	LEXICON_TAG
+921	transitive_verb	"""訂"": { label: ""doing"", jyutping: ""ding6"", syntax: ""verb booking_ordering_verb transitive_verb"", note: ""book / reserve / order."" },"	LEXICON_TAG
+922	transitive_verb	"""讀"": { label: ""doing"", jyutping: ""duk6"", syntax: ""verb reading_pronunciation_verb transitive_verb"", note: ""read / pronounce."" },"	LEXICON_TAG
+927	transitive_verb	"""搭"": { label: ""doing"", jyutping: ""daap3"", syntax: ""verb transport_use_verb transitive_verb"", note: ""take / ride (transport)."" },"	LEXICON_TAG
+953	transitive_verb	"""練"": { label: ""doing"", jyutping: ""lin6"", syntax: ""verb practice_verb transitive_verb"", note: ""practise / train."" },"	LEXICON_TAG
+988	transitive_verb	"""改"": { label: ""doing"", jyutping: ""goi2"", syntax: ""verb change_verb transitive_verb"", note: ""change / alter."" },"	LEXICON_TAG
+998	transitive_verb	"""換"": { label: ""doing"", jyutping: ""wun6"", syntax: ""verb exchange_change_verb transitive_verb"", note: ""exchange / change."" },"	LEXICON_TAG
+1010	transitive_verb	"""簽"": { label: ""doing"", jyutping: ""cim1"", syntax: ""verb signing_verb transitive_verb"", note: ""sign."" },"	LEXICON_TAG
+1019	transitive_verb	"""提醒"": { label: ""doing"", jyutping: ""tai4 sing2"", syntax: ""verb reminder_verb transitive_verb"", note: ""remind."" },"	LEXICON_TAG
+1046	transitive_verb	"""解釋"": { label: ""doing"", jyutping: ""gaai2 sik1"", syntax: ""verb explanation_verb transitive_verb"", note: ""explain."" },"	LEXICON_TAG
+1364	IntransitiveVP	"""IntransitiveVP"","	LEXICON_TAG
+1412	ProductiveVO	"""ProductiveVO"","	LEXICON_TAG
+1447	TransitiveVP	"""TransitiveVP"","	LEXICON_TAG
+3032	ProductiveVO	"type: ""ProductiveVO"","	TEMPLATE_OR_REGISTRY
+3044	ProductiveVO	"note: ""Slot-template ProductiveVO: generated action_verb + object pair, constrained to reviewed productive VO sequences while preserving visible children."""	TEMPLATE_OR_REGISTRY
+3054	ProductiveVO	"note: ""Category-based serial purpose chain: optional directional motion already grouped, ProductiveVO, and explicit purpose verb."""	TEMPLATE_OR_REGISTRY
+3064	ProductiveVO	"note: ""Category-based serial purpose chain: ProductiveVO plus explicit purpose verb."""	TEMPLATE_OR_REGISTRY
+3333	TransitiveVP	"type: ""TransitiveVP"","	TEMPLATE_OR_REGISTRY
+3351	TransitiveVP	"type: ""TransitiveVP"","	TEMPLATE_OR_REGISTRY
+4324	ProductiveVO,transitive_affordance	"const canHeadProductiveVO = slotSet.has(""action_verb"") && syntaxHas(syntax, ""transitive_affordance"");"	TEMPLATE_OR_REGISTRY
+4373	ProductiveVO	"if (canHeadProductiveVO) parserActiveUses.push(""construction_affordances:can_head_productive_vo"");"	TEMPLATE_OR_REGISTRY
+4428	ProductiveVO	can_head_productive_vo: canHeadProductiveVO,	TEMPLATE_OR_REGISTRY
+4666	IntransitiveVP	"if ([""IntransitiveVP""].includes(type)) slots.push(""intransitive_vp"", ""action_vp"", ""vp"", ""predicate"", ""action_verb"");"	TEMPLATE_OR_REGISTRY
+4722	ProductiveVO	"if ([""ProductiveVO""].includes(type)) slots.push(""vp"", ""productive_vo"", ""action_vp"", ""predicate"", ""object"");"	TEMPLATE_OR_REGISTRY
+4737	TransitiveVP	"if ([""DelimitedVP"", ""CognitionDelimitedVP"", ""CognitionDelimitedObjectVP"", ""ReduplicatedVP"", ""CompletionVP"", ""DitransitiveSpeechVP"", ""TransitiveVP"", ""MotionDelimitedVP"", ""ActionStativeVP""].includes(type)) slots.push(""vp"", ""action_vp"", ""predicate"");"	TEMPLATE_OR_REGISTRY
+4738	TransitiveVP	"if ([""TransitiveVP""].includes(type)) slots.push(""transitive_vp"");"	TEMPLATE_OR_REGISTRY
+5257	TransitiveVP	"if (!candidate || candidate.type !== ""TransitiveVP"") return false;"	DIRECT_CONSTRUCTOR_OR_POLICY
+6046	ProductiveVO	"return node && node.kind === ""construction"" && node.type === ""ProductiveVO"";"	DIRECT_CONSTRUCTOR_OR_POLICY
+6289	ProductiveVO	"return node && node.kind === ""construction"" && node.type === ""ProductiveVO"" && SERIAL_PURPOSE_ACTION_VO_SURFACES.has(flattenSurface(node));"	DIRECT_CONSTRUCTOR_OR_POLICY
+6373	ProductiveVO	": ""Native speech often chains an action/object VP with an explicit purpose verb. Keep the ProductiveVO transparent and keep the purpose verb parser-inactive inside the parent purpose-chain wrapper."","	DIRECT_CONSTRUCTOR_OR_POLICY
+7661	TransitiveVP	if (predicate.type === 'TransitiveVP' && predicate.children && predicate.children.length === 2) {	DIRECT_CONSTRUCTOR_OR_POLICY
+7686	TransitiveVP	reason: 'v0.5.82 promotes progressive + wh-object questions before broad SubjectPredicateClause/TransitiveVP display can leave 咩 with generic wh_or_particle syntax.',	DIRECT_CONSTRUCTOR_OR_POLICY
+9239	TransitiveVP	"reason: ""v0.5.81 promotes 記得 + reviewed VP complement before broad TransitiveVP wrapping, so 記得Book枱 is a VP-complement frame rather than 記得 taking Book枱 as an object."","	DIRECT_CONSTRUCTOR_OR_POLICY
+9346	TransitiveVP	"wrappedComplement = [construction(""TransitiveVP"", ""VP"", vpChildren, {"	DIRECT_CONSTRUCTOR_OR_POLICY
+9348	TransitiveVP	"slots: templateDerivedSlots(""TransitiveVP"", vpChildren),"	DIRECT_CONSTRUCTOR_OR_POLICY
+9350	TransitiveVP	"construction_type: ""TransitiveVP"","	DIRECT_CONSTRUCTOR_OR_POLICY
+9596	ProductiveVO,TransitiveVP	"|| templateConstructionFor(nodes, [""VerbComplementVP"", ""TransitiveVP"", ""ProductiveVO"", ""CompletionVP"", ""DirectionalMotionVP"", ""MotionPurposeChain"", ""SerialVerbPurposeChain""]);"	DIRECT_CONSTRUCTOR_OR_POLICY
+10618	ProductiveVO,TransitiveVP	"const templated = templateConstructionFor(nodes, [""MotionGoalVP"", ""TransitiveVP"", ""ProductiveVO"", ""DirectionalMotionVP"", ""MotionPurposeChain"", ""SerialVerbPurposeChain""])"	DIRECT_CONSTRUCTOR_OR_POLICY
+10622	TransitiveVP	"return construction(""TransitiveVP"", ""VP"", nodes, {"	DIRECT_CONSTRUCTOR_OR_POLICY
+10624	TransitiveVP	"slots: templateDerivedSlots(""TransitiveVP"", nodes),"	DIRECT_CONSTRUCTOR_OR_POLICY
+10626	TransitiveVP	"construction_type: ""TransitiveVP"","	DIRECT_CONSTRUCTOR_OR_POLICY
+11266	ProductiveVO,TransitiveVP	"return categorySubspanFor(compact, [""TransitiveVP"", ""ProductiveVO"", ""CompletionVP"", ""VerbComplementVP""]);"	DIRECT_CONSTRUCTOR_OR_POLICY
+11689	TransitiveVP	"parent_type: candidate.aspect ? ""PerfectiveVP"" : ""TransitiveVP"","	DIRECT_CONSTRUCTOR_OR_POLICY
+11696	TransitiveVP	"const upstreamType = candidate.aspect ? ""PerfectiveVP"" : ""TransitiveVP"";"	DIRECT_CONSTRUCTOR_OR_POLICY
+12341	ProductiveVO	"const productiveVoPredicate = categorySubspanFor(compact, [""ProductiveVO""]);"	DIRECT_CONSTRUCTOR_OR_POLICY
+13437	ProductiveVO,TransitiveVP	"const OVERT_OBJECT_SELECTION_REVIEW_TYPES = new Set([""PerfectiveVP"", ""PostverbalZoPerfectiveVP"", ""TransitiveVP"", ""CompletionVP"", ""ProductiveVO""]);"	DIRECT_CONSTRUCTOR_OR_POLICY
+13834	ProductiveVO	// inserted, and unrelated ProductiveVO compounds keep their accepted parse.	DIRECT_CONSTRUCTOR_OR_POLICY
+13836	ProductiveVO	"&& motionNode.type === ""ProductiveVO"""	DIRECT_CONSTRUCTOR_OR_POLICY
+14184	ProductiveVO,TransitiveVP	"const action = categorySubspanFor([compact[0], object], [""ProductiveVO"", ""TransitiveVP""]) || construction(""ProductiveVO"", ""VO"", [compact[0], object], { slots: [""productive_vo"", ""vp"", ""action_vp"", ""predicate"", ""object""], trace: traceInfo(""generative_template"", { construction_type: ""ProductiveVO"", template_family: ""generative_template"", template: [""action_verb!"", ""object!""], assigned_slots: [""action_verb"", ""object""], surfaces: [flattenSurface(compact[0]), flattenSurface(object)] }) });"	DIRECT_CONSTRUCTOR_OR_POLICY
+14388	TransitiveVP	"const purpose = construction(""TransitiveVP"", ""VP"", purposeChildren, { slots: constructionSlotsByType(""TransitiveVP"", purposeChildren), trace: traceInfo(""generative_template"", { construction_type: ""TransitiveVP"", template_family: ""generative_template"", template: [""action_verb!"", ""object!""], assigned_slots: [""action_verb"", ""object""], surfaces: purposeChildren.map(flattenSurface), subspan: true }) });"	DIRECT_CONSTRUCTOR_OR_POLICY
+14398	TransitiveVP	"const action1 = construction(""TransitiveVP"", ""VP"", [rest[2], rest[3]], { slots: constructionSlotsByType(""TransitiveVP"", [rest[2], rest[3]]), trace: traceInfo(""generative_template"", { construction_type: ""TransitiveVP"", template_family: ""generative_template"", template: [""action_verb!"", ""object!""], assigned_slots: [""action_verb"", ""object""], surfaces: [rs[2], rs[3]], subspan: true }) });"	DIRECT_CONSTRUCTOR_OR_POLICY
+14399	TransitiveVP	"const action2 = construction(""TransitiveVP"", ""VP"", [rest[4], rest[5]], { slots: constructionSlotsByType(""TransitiveVP"", [rest[4], rest[5]]), trace: traceInfo(""generative_template"", { construction_type: ""TransitiveVP"", template_family: ""generative_template"", template: [""action_verb!"", ""object!""], assigned_slots: [""action_verb"", ""object""], surfaces: [rs[4], rs[5]], subspan: true }) });"	DIRECT_CONSTRUCTOR_OR_POLICY
+14407	TransitiveVP	"const action = construction(""TransitiveVP"", ""VP"", [rest[0], rest[1]], {"	DIRECT_CONSTRUCTOR_OR_POLICY
+14408	TransitiveVP	"slots: constructionSlotsByType(""TransitiveVP"", [rest[0], rest[1]]),"	DIRECT_CONSTRUCTOR_OR_POLICY
+14409	TransitiveVP	"trace: traceInfo(""generative_template"", { construction_type: ""TransitiveVP"", template_family: ""generative_template"", template: [""action_verb!"", ""object!""], assigned_slots: [""action_verb"", ""object""], surfaces: [rs[0], rs[1]], subspan: true }),"	DIRECT_CONSTRUCTOR_OR_POLICY
+15405	TransitiveVP	// category templates can rewrap it (for example, TransitiveVP as NominalHeadSpan).	DIRECT_CONSTRUCTOR_OR_POLICY
+15667	ProductiveVO	// A-not-A: V 唔 V Obj, or V 唔 ProductiveVO with same V.	DIRECT_CONSTRUCTOR_OR_POLICY
+15976	ProductiveVO	"const productiveChild = (parsed[0].children || []).find((child) => child && child.kind === ""construction"" && child.type === ""ProductiveVO"" && nodeCanFillSlot(child, ""vp""));"	DIRECT_CONSTRUCTOR_OR_POLICY
+16146	IntransitiveVP	"return construction(""IntransitiveVP"", ""VP"", compact, {"	DIRECT_CONSTRUCTOR_OR_POLICY
+16149	IntransitiveVP	"construction_type: ""IntransitiveVP"","	DIRECT_CONSTRUCTOR_OR_POLICY
+16170	TransitiveVP	"return construction(""TransitiveVP"", ""V+O"", children, {"	DIRECT_CONSTRUCTOR_OR_POLICY
+16173	TransitiveVP	"construction_type: ""TransitiveVP"","	DIRECT_CONSTRUCTOR_OR_POLICY
+16654	TransitiveVP	"const vp = construction(""TransitiveVP"", ""V+O"", [verb], {"	DIRECT_CONSTRUCTOR_OR_POLICY
+16657	TransitiveVP	"construction_type: ""TransitiveVP"","	DIRECT_CONSTRUCTOR_OR_POLICY
+17196	ProductiveVO	"""PerfectiveVP"", ""ProductiveVO"", ""ProgressiveVP"", ""ReduplicatedVP"", ""ResultComplement"","	DIRECT_CONSTRUCTOR_OR_POLICY
+17197	TransitiveVP	"""TransitiveVP"", ""VerbComplementVP"", ""VPComplementFrame"","	DIRECT_CONSTRUCTOR_OR_POLICY
+20254	TransitiveVP	"if (!node || node.kind !== ""construction"" || node.type !== ""TransitiveVP"") return """";"	DIRECT_CONSTRUCTOR_OR_POLICY
+20949	TransitiveVP	"TransitiveVP: [""action phrase"", ""An action with a thing after it.""],"	DIRECT_CONSTRUCTOR_OR_POLICY
+20950	ProductiveVO	"ProductiveVO: [""action phrase"", ""An action with a thing after it.""],"	DIRECT_CONSTRUCTOR_OR_POLICY
+23619	TransitiveVP	<!-- v0.5.81: Promotes 記得 + reviewed VP complement such as 記得Book枱 to VPComplementFrame before broad TransitiveVP wrapping. -->	DIRECT_CONSTRUCTOR_OR_POLICY
+23626	TransitiveVP	<!-- v0.5.74: Fixes semantic contract consistency after coverb cleanup: topic wrappers preserve demonstrative-classifier children and simple subject + TransitiveVP clauses keep the subject attached. -->	DIRECT_CONSTRUCTOR_OR_POLICY
+23640	TransitiveVP	<!-- v0.5.55: VerbComplementVP prevents nested TransitiveVP for transparent verb-complement predicates such as 還返啲書. -->	DIRECT_CONSTRUCTOR_OR_POLICY
+23644	TransitiveVP	<!-- v0.5.43: bare numeral object guard prevents premature TransitiveVP overwrap before classifier NP material. -->	DIRECT_CONSTRUCTOR_OR_POLICY
+23659	ProductiveVO	<!-- v0.5.93: ProductiveVO legacy trace retirement removes the obsolete ProductiveVO table-trace diagnostic lane after ProductiveVO slot-template migration; reviewed VO entries now tokenize into visible children and wrap via constrained generative ProductiveVO templates. -->	DIRECT_CONSTRUCTOR_OR_POLICY
+23679	TransitiveVP	<!-- v0.5.136: Adds a transparent ApproximateQuantity object for numeral + classifier + 度, promotes 飲七杯度喇 to broad TransitiveVP, and makes contextual hover audits catch duration/approximation gloss leakage. -->	DIRECT_CONSTRUCTOR_OR_POLICY

@@ -1,0 +1,22 @@
+{
+  "schema": "canto-span-progress-checkpoint-v1",
+  "checkpoint": "CP022-I1A-I01-R1",
+  "accepted_runtime": "v0.5.178-cp022-i1a-i02-clause-relation-graph-cleanup-r1",
+  "active_candidate": "v0.5.179-cp022-i1a-i01-neutral-clause-span-consolidation-r1",
+  "packet_id": "EP-CP022-I1A-I01-D1",
+  "packet_status": "IMPLEMENTED_RENDER_PENDING_HELDOUT_SEALED",
+  "parser_code_changed": true,
+  "implementation_authorized": true,
+  "authorization_scope": "EP-CP022-I1A-I01-D1_ONLY",
+  "standing_autonomous_freeze_authority": true,
+  "global_freeze_active": true,
+  "heldout_case_count": 6,
+  "heldout_opened": false,
+  "supported_productive": 0,
+  "next": "Render CP022-I1A-I01-R1 focused review; then evaluate the sealed prospective held-out partition.",
+  "packaging_checkpoint": "CP022-I1A-I01-R1-SLIM1",
+  "packaging_profile": "slim_development",
+  "full_parent_zip_sha256": "364c331c6436728a0adca393228e6dae43b42a432bdd0d2fd6c9de1ddd0fcd71",
+  "stale_files_removed": 683,
+  "parser_behavior_changed_by_packaging": false
+}

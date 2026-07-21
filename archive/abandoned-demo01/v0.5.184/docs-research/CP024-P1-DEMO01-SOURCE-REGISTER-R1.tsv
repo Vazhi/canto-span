@@ -1,0 +1,9 @@
+local_source_id	canonical_source_id	source_type	locator	supported_proposition	limitations
+DEMO-S01	SRC-CHENG-SYBESMA-1999-NP	peer-reviewed journal	pp. 509-515, 526-530; examples 3-4, 29-33	C-N constituency/distribution and nominal interpretation	Does not prescribe Canto Span nodes or settle all variation.
+DEMO-S02	SRC-SIMPSON-SOH-NOMOTO-2011-BARE-CL	peer-reviewed journal	pp. 168-172; examples 1-3	C-N without numeral; positional and speaker/variety variation	No invariant definiteness or classifier-alone analysis.
+DEMO-S03	SRC-BOND-SIO-2024-CLASSIFIERS	peer-reviewed conference	pp. 61-66; Table 1; examples 1-3	D-(X)-C-N, X-C-N, C-N, N schemata	Formal HPSG implementation is one analysis, not universal ontology.
+DEMO-S04	SRC-XIA-2025-CLASSIFIERS	peer-reviewed conference	pp. 1, 6-11; Table 1; examples 13-15; Figures 2-3	Dem-CL-N and other nominal profiles; no automatic silent jat1	Comparative judgments and branching analysis remain author analysis.
+DEMO-S05	SRC-LAM-LAU-LEE-2024-SEGMENTATION	peer-reviewed conference/corpus scheme	pp. 5-6; sections 4.4.3, 4.5.2, 4.6	Overt classifier NP and noun-ellipsis segmentation	Segmentation does not establish full syntax or productivity.
+DEMO-S06	SRC-YU-2006-NOMINAL-MODIFIERS	unpublished research paper	pp. 3-7; examples 3, 9, 11-12	Corroborative overt-head and headless D-CL examples	Not sole authority for productivity.
+DEMO-S07	KWONG-2018-DEMONSTRATIVES	peer-reviewed conference paper	pp. 1-4; examples 1-3; corpus methods	Conventional D-C-N/D-Num-C-N and corpus-based ambiguous/non-deictic uses	Main focus is discourse function; illustrative conventional examples are not necessarily natural attestations.
+DEMO-C01	HKCANCOR-LUKE-WONG	annotated spoken corpus	utterance-level locator required	Natural conversations, radio programs, and monologue	A corpus hit still requires exact family analysis and independence adjudication.

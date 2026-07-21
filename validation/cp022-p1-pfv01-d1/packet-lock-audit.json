@@ -1,0 +1,100 @@
+{
+  "schema": "canto-span-cp022-p1-pfv01-packet-lock-audit-v1",
+  "checkpoint": "CP022-P1-PFV01-D1",
+  "status": "PASS",
+  "total": 22,
+  "passed": 22,
+  "failed": 0,
+  "heldout_opened": false,
+  "checks": [
+    {
+      "name": "packet identity",
+      "pass": true
+    },
+    {
+      "name": "accepted I01 parent",
+      "pass": true
+    },
+    {
+      "name": "heldout locked",
+      "pass": true
+    },
+    {
+      "name": "standing authority recorded",
+      "pass": true
+    },
+    {
+      "name": "target subtype exact",
+      "pass": true
+    },
+    {
+      "name": "visible inventory 18",
+      "pass": true
+    },
+    {
+      "name": "render inventory 12",
+      "pass": true
+    },
+    {
+      "name": "hidden commitments seven",
+      "pass": true
+    },
+    {
+      "name": "manifest hash frozen",
+      "pass": true
+    },
+    {
+      "name": "custody hash frozen",
+      "pass": true
+    },
+    {
+      "name": "surfaces invisible",
+      "pass": true
+    },
+    {
+      "name": "expected values invisible",
+      "pass": true
+    },
+    {
+      "name": "salts invisible",
+      "pass": true
+    },
+    {
+      "name": "custody absent from project",
+      "pass": true
+    },
+    {
+      "name": "promotion delta one",
+      "pass": true
+    },
+    {
+      "name": "candidate remains provisional before acceptance",
+      "pass": true
+    },
+    {
+      "name": "render required",
+      "pass": true
+    },
+    {
+      "name": "prospective heldout required",
+      "pass": true
+    },
+    {
+      "name": "scope requires overt V zo O",
+      "pass": true
+    },
+    {
+      "name": "broad excluded profiles recorded",
+      "pass": true
+    },
+    {
+      "name": "source basis includes two positive and two boundary sources",
+      "pass": true
+    },
+    {
+      "name": "native-conflict escalation recorded",
+      "pass": true
+    }
+  ],
+  "failures": []
+}

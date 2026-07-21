@@ -1,0 +1,9 @@
+{
+  "schema": "canto-span-retention-integrity-v1",
+  "checkpoint": "v0.5.182-doc-consolidation",
+  "status": "PASS",
+  "rows": 511,
+  "passed": 511,
+  "failed_items": 0,
+  "failures": []
+}

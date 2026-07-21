@@ -1,0 +1,97 @@
+{
+  "schema": "canto-span-lexicon-construction-freeze-gate-v2",
+  "runtime_version": "0.5.180",
+  "baseline_runtime_version": "0.5.175",
+  "baseline_checkpoint": "CP021B-R31",
+  "policy": "CP021B-LX1 may change lexical recognition, token roles, glosses, token boundaries, and Jyutping. Existing construction nodes, root status, context licensing, structural traces, and unwrapped character coverage must match the live CP021B-R31 baseline outside the explicitly frozen active-candidate focused exclusions. Excluded cases are validated by the candidate packet and must be reabsorbed before acceptance.",
+  "baseline_total": 545,
+  "excluded_for_active_candidate": 16,
+  "total": 529,
+  "passed": 529,
+  "failed": 0,
+  "strict_ready": true,
+  "active_candidate": "v0.5.180-cp022-p1-pfv01-postverbal-zo-overt-object-promotion-r1",
+  "exclusions": [
+    {
+      "source": "你食咗香港未？",
+      "context_source": "",
+      "reason": "active_candidate_focused_exclusion"
+    },
+    {
+      "source": "你食咗飯未？",
+      "context_source": "",
+      "reason": "active_candidate_focused_exclusion"
+    },
+    {
+      "source": "你尋日食咗故事。",
+      "context_source": "",
+      "reason": "active_candidate_focused_exclusion"
+    },
+    {
+      "source": "你尋日食咗香港。",
+      "context_source": "",
+      "reason": "active_candidate_focused_exclusion"
+    },
+    {
+      "source": "你尋日食咗飯。",
+      "context_source": "",
+      "reason": "active_candidate_focused_exclusion"
+    },
+    {
+      "source": "你尋日食咗邊度呀？",
+      "context_source": "",
+      "reason": "active_candidate_focused_exclusion"
+    },
+    {
+      "source": "你尋日食咗蘋果。",
+      "context_source": "",
+      "reason": "active_candidate_focused_exclusion"
+    },
+    {
+      "source": "你尋日睇咗香港。",
+      "context_source": "",
+      "reason": "active_candidate_focused_exclusion"
+    },
+    {
+      "source": "你尋日飲咗水。",
+      "context_source": "",
+      "reason": "active_candidate_focused_exclusion"
+    },
+    {
+      "source": "你尋日飲咗香港。",
+      "context_source": "",
+      "reason": "active_candidate_focused_exclusion"
+    },
+    {
+      "source": "佢食咗飯喇。",
+      "context_source": "",
+      "reason": "active_candidate_focused_exclusion"
+    },
+    {
+      "source": "佢睇咗故事。",
+      "context_source": "",
+      "reason": "active_candidate_focused_exclusion"
+    },
+    {
+      "source": "我食咗飯。",
+      "context_source": "",
+      "reason": "active_candidate_focused_exclusion"
+    },
+    {
+      "source": "呢個故事，我睇咗故事，佢都睇咗故事。",
+      "context_source": "",
+      "reason": "active_candidate_focused_exclusion"
+    },
+    {
+      "source": "食咗香港嘅飯。",
+      "context_source": "",
+      "reason": "active_candidate_focused_exclusion"
+    },
+    {
+      "source": "食咗飯。",
+      "context_source": "",
+      "reason": "active_candidate_focused_exclusion"
+    }
+  ],
+  "failures": []
+}

@@ -1,0 +1,48 @@
+from_family_id	from_family	to_family_id	to_family	dependency
+I01	ClauseSpan	I02	ClauseRelationGraph	clause relation members must be typed clauses
+I03	ParticleScope	I01	ClauseSpan	particle scope requires a complete host
+I05	DiscourseRoleStructure	I01	ClauseSpan	comment must contain a typed clause or predicate
+I06	CopularComposition	I01	ClauseSpan	copular composition is ordinary clause composition
+I07	ComplementGrouping	L45	ValencyAndArgumentStructure	complement grouping requires valency/complement licensing
+L02	ConditionalRelations	I02	ClauseRelationGraph	conditional relation uses typed relation architecture
+L03	TemporalAndSequentialRelations	I02	ClauseRelationGraph	temporal/sequential relation uses typed relation architecture
+L05	FragmentsAndEllipsis	I08	ParserDiagnosticDisposition	ellipsis requires explicit context diagnostics
+L05	FragmentsAndEllipsis	L45	ValencyAndArgumentStructure	omission depends on valency and complement type
+L07	ExperientialAspect	L26	Negation	negative experiential requires negator subtype
+L11	Completion	L12	ResultAndPotentialComplements	completion and result complement boundaries interact
+L12	ResultAndPotentialComplements	L45	ValencyAndArgumentStructure	potential/result complements require valency and result-head selection
+L13	AspectDirectionalComposition	L06	PerfectiveAspect	directional perfective composition
+L13	AspectDirectionalComposition	L08	ProgressiveAspect	directional progressive composition
+L13	AspectDirectionalComposition	L33	DirectionalMotion	directional component
+L15	ResultativeAndChangePredication	L06	PerfectiveAspect	perfective marking must remain separate from result/change
+L15	ResultativeAndChangePredication	L45	ValencyAndArgumentStructure	resultative argument structure
+L16	ClassifierAndQuantityNP	I04	NominalAndMeasureSpan	nominal span architecture
+L17	DemonstrativeNP	L16	ClassifierAndQuantityNP	demonstrative classifier composition
+L19	NominalModificationAndRelatives	I04	NominalAndMeasureSpan	modifier span architecture
+L20	PossessiveNominals	I04	NominalAndMeasureSpan	possessive nominal span
+L22	WhNominals	L16	ClassifierAndQuantityNP	wh classifier/quantity structure
+L23	ANotAQuestions	I06	CopularComposition	copular A-not-A subtype
+L23	ANotAQuestions	L29	Modality	modal A-not-A subtype
+L24	ExistentialQuestions	L39	ExistentialAndPresentationalClauses	existential question predicates
+L25	TypedWhAndStanceQuestions	I03	ParticleScope	particle-scoped polar/wh profiles
+L25	TypedWhAndStanceQuestions	L31	CognitionAndStance	opinion and stance question complements
+L26	Negation	L39	ExistentialAndPresentationalClauses	existential/possessive negation
+L26	Negation	L42	StativePredication	stative negation
+L26	Negation	L33	DirectionalMotion	directional negation composition
+L28	DirectivesRequestsAndSuggestions	I03	ParticleScope	directive particles and scope
+L30	DesirePreferenceAndIntention	L29	Modality	desire/intention predicates and modal boundaries
+L31	CognitionAndStance	I07	ComplementGrouping	cognition complement selection
+L32	SpeechReportingAndCommunicationEffect	I07	ComplementGrouping	reported-speech complement selection
+L32	SpeechReportingAndCommunicationEffect	L01	CoverbAndParticipantRelations	communication-effect participant relations
+L34	GoalSourceAndPath	L33	DirectionalMotion	goal/source/path require directional motion distinctions
+L35	PurposeSerialRelations	I02	ClauseRelationGraph	purpose relation architecture
+L35	PurposeSerialRelations	L33	DirectionalMotion	motion-purpose composition
+L35	PurposeSerialRelations	L10	DelimitativeAspect	delimitative second predicate
+L36	LocativeAndPosturalPredication	L40	LocativeClauseFrames	locative phrase versus clause frame
+L37	MannerAndReduplication	L42	StativePredication	manner versus scalar/property modification
+L39	ExistentialAndPresentationalClauses	L45	ValencyAndArgumentStructure	existential argument/valency distinctions
+L40	LocativeClauseFrames	L36	LocativeAndPosturalPredication	locative phrase/predicate distinctions
+L42	StativePredication	L43	ScalarComparisonAndEvaluation	scalar evaluation depends on stative predication
+L44	TemporalAndMeasurePredication	I04	NominalAndMeasureSpan	measure span grouping
+L44	TemporalAndMeasurePredication	L42	StativePredication	nominal versus stative predication boundary
+L45	ValencyAndArgumentStructure	I01	ClauseSpan	valency architecture feeds clause composition

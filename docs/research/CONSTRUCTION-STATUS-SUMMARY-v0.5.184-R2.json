@@ -1,0 +1,17 @@
+{
+  "schema": "canto-span-construction-status-summary-v2",
+  "runtime_version": "0.5.184",
+  "registry": "CONSTRUCTION-STATUS-REGISTRY-v0.5.184-R2.tsv",
+  "active_label_count": 171,
+  "status_counts": {
+    "research_pending": 58,
+    "unsupported_generalization": 87,
+    "parser_heuristic": 21,
+    "lexicalized_only": 3,
+    "provisional_reaudit": 2
+  },
+  "runtime_governance_mismatch_count": 0,
+  "supported_productive": 0,
+  "demo01_active": false,
+  "note": "Linguistic status and implementation state are separate. DEMO01 is abandoned; the shared NP subsystem remains infrastructure."
+}

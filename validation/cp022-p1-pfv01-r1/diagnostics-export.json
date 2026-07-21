@@ -1,0 +1,50 @@
+{
+  "runtime_version": "0.5.180",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "runtime provenance",
+      "pass": true
+    },
+    {
+      "name": "two deterministic companion paths",
+      "pass": true
+    },
+    {
+      "name": "summary and full share provenance",
+      "pass": true
+    },
+    {
+      "name": "summary is row-complete",
+      "pass": true
+    },
+    {
+      "name": "summary preserves compact structure, learner roles, syntax, and Jyutping",
+      "pass": true
+    },
+    {
+      "name": "literal context remains visible in the summary",
+      "pass": true
+    },
+    {
+      "name": "grammar legitimacy remains separate from parser coverage",
+      "pass": true
+    },
+    {
+      "name": "conservative full-review triggers cover risky rows",
+      "pass": true
+    },
+    {
+      "name": "full artifact retains complete drill-down evidence",
+      "pass": true
+    },
+    {
+      "name": "summary explicitly prohibits summary-only acceptance",
+      "pass": true
+    }
+  ],
+  "failures": [],
+  "summary_bytes": 50424,
+  "full_bytes": 719408,
+  "summary_to_full_ratio": 0.0701
+}

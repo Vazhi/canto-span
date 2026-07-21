@@ -1,0 +1,249 @@
+{
+  "schema": "canto-span-cp022-p1-promotion-packet-v1",
+  "packet_id": "EP-CP022-P1-PFV01-D1",
+  "checkpoint": "CP022-P1-PFV01-D1",
+  "status": "HELD_OUT_LOCKED",
+  "accepted_parent": "v0.5.179-cp022-i1a-i01-neutral-clause-span-consolidation-r1",
+  "target_internal_construction": "PostverbalZoPerfectiveVP",
+  "public_compatibility_alias": "PerfectiveVP",
+  "standing_governed_authority": true,
+  "promotion_claim": {
+    "language_variety": "Hong Kong Cantonese",
+    "form": "overt action predicate + postverbal 咗 + overt nominal object",
+    "notation": "V + 咗 + O",
+    "claim": "The overt sequence is a perfective viewpoint-aspect construction. 咗 is not licensed as a past-tense suffix, and the subtype does not by itself assert endpoint completion, result state, experiential meaning, hidden arguments, or unrestricted verb-object compatibility."
+  },
+  "source_basis": [
+    {
+      "source_id": "SRC-YIP-MATTHEWS-2000-BASIC",
+      "role": "independent grammar and multiple V-咗-O examples; aspect-not-tense boundary",
+      "claim_ids": [
+        "PVP-C01",
+        "PVP-C02",
+        "PVP-C04"
+      ],
+      "evidence_polarity": "positive_support",
+      "counts_toward_positive_source_minimum": true
+    },
+    {
+      "source_id": "SRC-SIO-BOND-2025",
+      "role": "independent outer-perfective analysis and exact 我食咗麵 example",
+      "claim_ids": [
+        "PVP-C01",
+        "PVP-C02"
+      ],
+      "evidence_polarity": "positive_support",
+      "counts_toward_positive_source_minimum": true
+    },
+    {
+      "source_id": "SRC-SYBESMA-2013",
+      "role": "boundary evidence for V完咗O as a distinct inner-result profile",
+      "claim_ids": [
+        "PVP-C03"
+      ],
+      "evidence_polarity": "boundary_only_native_conflicted_adjacent_family",
+      "counts_toward_positive_source_minimum": false,
+      "native_conflict_note": "The cited V完咗O family conflicts with recorded Guangzhou-native rejection and is excluded from PFV01; the citation proves publication attestation only."
+    },
+    {
+      "source_id": "SRC-FAN-CHAN-2022",
+      "role": "boundary evidence for V完(咗)O and construction-specific optionality",
+      "claim_ids": [
+        "PVP-C03"
+      ],
+      "evidence_polarity": "boundary_only_native_conflicted_adjacent_family",
+      "counts_toward_positive_source_minimum": false,
+      "native_conflict_note": "The cited V完咗O family conflicts with recorded Guangzhou-native rejection and is excluded from PFV01; the citation proves publication attestation only."
+    }
+  ],
+  "positive_scope": {
+    "required": [
+      "overt action predicate",
+      "overt 咗 immediately after the predicate head for this simple profile",
+      "overt nominal object"
+    ],
+    "allowed_nesting": [
+      "ClauseSpan",
+      "CompletionQuestion with final 未"
+    ]
+  },
+  "excluded_profiles": [
+    "objectless V-咗",
+    "V-inner-result-咗-O including V完咗O",
+    "motion-goal V-咗-place",
+    "placement/presentational perfective",
+    "experiential 過",
+    "progressive 緊",
+    "unmarked V-O",
+    "selectionally incompatible V-O as automatically acceptable",
+    "hidden subject or object insertion"
+  ],
+  "development_set": {
+    "cases": [
+      {
+        "case_id": "P1-E01",
+        "surface": "我食咗麵。",
+        "class": "exact_source_attestation",
+        "expected": "narrow_subtype_present",
+        "source_ids": [
+          "SRC-SIO-BOND-2025"
+        ],
+        "source_locator": "PDF p. 3, example (2a)"
+      },
+      {
+        "case_id": "P1-E02",
+        "surface": "你食咗飯未？",
+        "class": "source_linked_final_meih_question",
+        "expected": "narrow_subtype_nested",
+        "source_ids": [
+          "SRC-YIP-MATTHEWS-2000-BASIC"
+        ],
+        "source_locator": "Unit 18 and Unit 23 final 未 question pattern"
+      },
+      {
+        "case_id": "P1-V01",
+        "surface": "我食咗飯。",
+        "class": "consumption_variant",
+        "expected": "narrow_subtype_present"
+      },
+      {
+        "case_id": "P1-V02",
+        "surface": "我飲咗水。",
+        "class": "consumption_variant",
+        "expected": "narrow_subtype_present"
+      },
+      {
+        "case_id": "P1-V03",
+        "surface": "佢睇咗書。",
+        "class": "perception_variant",
+        "expected": "narrow_subtype_present"
+      },
+      {
+        "case_id": "P1-V04",
+        "surface": "我聽咗歌。",
+        "class": "perception_variant",
+        "expected": "narrow_subtype_present"
+      },
+      {
+        "case_id": "P1-V05",
+        "surface": "你寫咗字。",
+        "class": "creation_variant",
+        "expected": "narrow_subtype_present"
+      },
+      {
+        "case_id": "P1-V06",
+        "surface": "佢做咗功課。",
+        "class": "activity_variant",
+        "expected": "narrow_subtype_present"
+      },
+      {
+        "case_id": "P1-V07",
+        "surface": "我打咗電話。",
+        "class": "activity_variant",
+        "expected": "narrow_subtype_present"
+      },
+      {
+        "case_id": "P1-V08",
+        "surface": "佢煮咗飯。",
+        "class": "creation_variant",
+        "expected": "narrow_subtype_present"
+      },
+      {
+        "case_id": "P1-N01",
+        "surface": "食咗。",
+        "class": "objectless_boundary",
+        "expected": "narrow_subtype_absent"
+      },
+      {
+        "case_id": "P1-N02",
+        "surface": "食完咗飯。",
+        "class": "inner_result_boundary",
+        "expected": "narrow_subtype_absent"
+      },
+      {
+        "case_id": "P1-N03",
+        "surface": "去咗香港。",
+        "class": "motion_goal_boundary",
+        "expected": "narrow_subtype_absent"
+      },
+      {
+        "case_id": "P1-N04",
+        "surface": "我食過飯。",
+        "class": "experiential_boundary",
+        "expected": "narrow_subtype_absent"
+      },
+      {
+        "case_id": "P1-N05",
+        "surface": "我食緊飯。",
+        "class": "progressive_boundary",
+        "expected": "narrow_subtype_absent"
+      },
+      {
+        "case_id": "P1-N06",
+        "surface": "我食咗香港。",
+        "class": "selectional_incompatibility_boundary",
+        "expected": "narrow_subtype_may_parse_but_semantic_acceptance_not_clean"
+      },
+      {
+        "case_id": "P1-N07",
+        "surface": "我食飯。",
+        "class": "unmarked_aspect_boundary",
+        "expected": "narrow_subtype_absent"
+      },
+      {
+        "case_id": "P1-N08",
+        "surface": "牆上面擺咗部電話。",
+        "class": "placement_boundary",
+        "expected": "narrow_subtype_absent"
+      }
+    ]
+  },
+  "render_review": {
+    "case_ids": [
+      "P1-E01",
+      "P1-E02",
+      "P1-V01",
+      "P1-V02",
+      "P1-V03",
+      "P1-V06",
+      "P1-N01",
+      "P1-N02",
+      "P1-N03",
+      "P1-N04",
+      "P1-N06",
+      "P1-N08"
+    ]
+  },
+  "acceptance_contract": {
+    "candidate_status_before_acceptance": "provisional",
+    "final_status_if_all_gates_pass": "supported_productive",
+    "supported_productive_delta": 1,
+    "public_diagnostic_compatibility_required": true,
+    "prospective_heldout_required": true,
+    "render_review_required": true,
+    "all_core_gates_required": true,
+    "no_code_revision_after_heldout_open": true
+  },
+  "held_out": {
+    "selection_state": "SELECTED_HASHED_LOCKED",
+    "commitment_count": 7,
+    "manifest_hash": "6d9fd0cbbde80076ec87d6f30307fd6b99ffb3b5c5de97a88a62b2e58a84b94b",
+    "custody_archive_filename": "CP022-P1-PFV01-D1-EVALUATOR-CUSTODY-DO-NOT-OPEN-DURING-IMPLEMENTATION.zip",
+    "custody_archive_sha256": "012ba217a261323a98ea4f5cad9434ec98979d5ee5ab2c72bb3979109efb5402"
+  },
+  "native_conflict_policy": {
+    "policy": "higher_burden_when_publication_conflicts_with_native_naturalness",
+    "positive_family_conflict_status": "no_recorded_native_rejection_for_simple_V_zo_O_development_family",
+    "adjacent_conflicted_family": "V完咗O",
+    "adjacent_family_status": "published_attested_native_conflicted_variation_unresolved_quarantined",
+    "promotion_use": "boundary_only_not_positive_support",
+    "assumed_dialect_explanation": false,
+    "required_for_future_reconsideration": [
+      "additional independent distribution_or_variation sources",
+      "controlled minimal contrasts",
+      "multi-speaker regional and register sampling",
+      "negative boundaries and competing analyses",
+      "new prospective held-out evaluation"
+    ]
+  }
+}

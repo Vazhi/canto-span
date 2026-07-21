@@ -1,0 +1,180 @@
+[
+  {
+    "id": "T01",
+    "corpus_id": "WECHAT-GX-TRAVEL-002",
+    "evidence_role": "natural_attestation_and_parser_evaluation_not_productivity_proof",
+    "privacy_status": "user_supplied_private_family_conversation_proper_names_preserved_by_request",
+    "grammar_acceptance_effect": "none",
+    "source_order": 1,
+    "speaker": "A",
+    "cantonese": "佢幾個人開車上去，上去玩啊。",
+    "english_translation": "A few of them drove up there to have fun.",
+    "transcription_confidence": "medium",
+    "normalization_note": "Clear repeated STT was collapsed; 開車 is preserved as spoken rather than replaced with 揸車.",
+    "unresolved_stt_spans": []
+  },
+  {
+    "id": "T02",
+    "corpus_id": "WECHAT-GX-TRAVEL-002",
+    "evidence_role": "natural_attestation_and_parser_evaluation_not_productivity_proof",
+    "privacy_status": "user_supplied_private_family_conversation_proper_names_preserved_by_request",
+    "grammar_acceptance_effect": "none",
+    "source_order": 2,
+    "speaker": "B",
+    "cantonese": "大伯，大伯佢去廣西旅遊啊。阿豬仔去廣西旅遊啊。十幾個人啊，可能有十個嘛，十個定九個啊？應該佢哋成班人上去玩啊。",
+    "english_translation": "Uncle—he went travelling in Guangxi. Ah Jyu-jai went travelling in Guangxi. There were more than ten people—maybe ten, or was it nine? Their whole group probably went up there to have fun.",
+    "transcription_confidence": "high",
+    "normalization_note": "Orthography and punctuation normalized; repetitions and self-repair preserved.",
+    "unresolved_stt_spans": []
+  },
+  {
+    "id": "T03",
+    "corpus_id": "WECHAT-GX-TRAVEL-002",
+    "evidence_role": "natural_attestation_and_parser_evaluation_not_productivity_proof",
+    "privacy_status": "user_supplied_private_family_conversation_proper_names_preserved_by_request",
+    "grammar_acceptance_effect": "none",
+    "source_order": 3,
+    "speaker": "B_CHAT",
+    "cantonese": "@Jamie 豬伯開架摩托車去廣西玩。",
+    "english_translation": "@Jamie, Uncle Jyu rode a motorcycle to Guangxi for fun.",
+    "transcription_confidence": "medium",
+    "normalization_note": "Likely classifier repair 他→架; retained as a chat-message turn rather than spoken audio.",
+    "unresolved_stt_spans": [
+      "他→架 is contextually likely but not audio-verified"
+    ]
+  },
+  {
+    "id": "T04",
+    "corpus_id": "WECHAT-GX-TRAVEL-002",
+    "evidence_role": "natural_attestation_and_parser_evaluation_not_productivity_proof",
+    "privacy_status": "user_supplied_private_family_conversation_proper_names_preserved_by_request",
+    "grammar_acceptance_effect": "none",
+    "source_order": 4,
+    "speaker": "C",
+    "cantonese": "係啊係啊，〔車數段落聽寫不清〕，開八部寶馬上嚟啊。啱啱去到。琴日上嚟㗎喇，琴日上嚟。",
+    "english_translation": "Yes, yes. [The vehicle-count passage is unclear in the STT.] Eight BMWs came up. They just arrived. They came up yesterday—yesterday.",
+    "transcription_confidence": "low",
+    "normalization_note": "No reconstruction was attempted for the unstable vehicle-count sequence.",
+    "unresolved_stt_spans": [
+      "開十開九部寶馬"
+    ]
+  },
+  {
+    "id": "T05",
+    "corpus_id": "WECHAT-GX-TRAVEL-002",
+    "evidence_role": "natural_attestation_and_parser_evaluation_not_productivity_proof",
+    "privacy_status": "user_supplied_private_family_conversation_proper_names_preserved_by_request",
+    "grammar_acceptance_effect": "none",
+    "source_order": 5,
+    "speaker": "B",
+    "cantonese": "喂，方子係咪開佢自己嗰部車嘅啫？方子嗰部車係咪同阿拉嗰部一樣嘅啫？方子嗰部。你飲咗酒，千祈唔好開車啊，我話畀你聽吓。",
+    "english_translation": "Hey, is Fongzi driving his own car? Is Fongzi’s car the same as Ala’s? Fongzi’s one. If you have been drinking, you absolutely must not drive—I am telling you.",
+    "transcription_confidence": "high",
+    "normalization_note": "Classifier 個 was normalized to 部 from immediate car context; discourse repetition preserved.",
+    "unresolved_stt_spans": []
+  },
+  {
+    "id": "T06",
+    "corpus_id": "WECHAT-GX-TRAVEL-002",
+    "evidence_role": "natural_attestation_and_parser_evaluation_not_productivity_proof",
+    "privacy_status": "user_supplied_private_family_conversation_proper_names_preserved_by_request",
+    "grammar_acceptance_effect": "none",
+    "source_order": 6,
+    "speaker": "C",
+    "cantonese": "唔係啊，係咪第三部車同阿拉嗰部一樣？",
+    "english_translation": "No. Is the third car the same as Ala’s?",
+    "transcription_confidence": "high",
+    "normalization_note": "台 normalized to Cantonese classifier 部 from context.",
+    "unresolved_stt_spans": []
+  },
+  {
+    "id": "T07",
+    "corpus_id": "WECHAT-GX-TRAVEL-002",
+    "evidence_role": "natural_attestation_and_parser_evaluation_not_productivity_proof",
+    "privacy_status": "user_supplied_private_family_conversation_proper_names_preserved_by_request",
+    "grammar_acceptance_effect": "none",
+    "source_order": 7,
+    "speaker": "C",
+    "cantonese": "酒冇飲，水冇飲一啖啊。",
+    "english_translation": "I did not drink alcohol; I did not even take a sip of water.",
+    "transcription_confidence": "high",
+    "normalization_note": "Parallel omission preserved; no 都 inserted.",
+    "unresolved_stt_spans": []
+  },
+  {
+    "id": "T08",
+    "corpus_id": "WECHAT-GX-TRAVEL-002",
+    "evidence_role": "natural_attestation_and_parser_evaluation_not_productivity_proof",
+    "privacy_status": "user_supplied_private_family_conversation_proper_names_preserved_by_request",
+    "grammar_acceptance_effect": "none",
+    "source_order": 8,
+    "speaker": "B",
+    "cantonese": "早知你坐佢架車咪仲好，唔使自己開咁辛苦。傻閪，開吓飲吓水，開吓飲吓水嘛。酒就唔飲啫，開車飲水咋，傻閪。尋日上嚟，尋晚黑就到廣西㗎喇，到廣西嗰個〔疑似：賀州〕嗰度。咁大概開咗五個鐘頭車左右啦，加加埋埋。咁再開再開三四個鐘頭，到遊覽區、到桂林嗰度。咁而家搵房住囉，食完，聽日就正式旅遊啦。又去陽朔，去陽朔、去桂林都係嗰度附近㗎啦。兜晒嗰啲點啊，都要十幾日㗎。廣州上嚟八百幾公里啊。",
+    "english_translation": "If you had known, it would have been better to ride in his car so you would not have had to drive yourself and work so hard. Idiot—drive a bit, drink some water, drive a bit, drink some water. You are not drinking alcohol; you are only drinking water while driving, idiot. They came up yesterday and reached Guangxi last night, around what may be Hezhou. They drove about five hours altogether, then another three or four hours to the tourist area around Guilin. They are finding a room now; after eating, tomorrow they will officially start sightseeing. They will visit Yangshuo and Guilin, which are near each other, and covering all those stops will take more than ten days. It is over 800 kilometres up from Guangzhou.",
+    "transcription_confidence": "medium",
+    "normalization_note": "Clear duplication and word-order STT errors repaired. The place name is retained as uncertain; no certainty is claimed.",
+    "unresolved_stt_spans": [
+      "河河橋→疑似賀州"
+    ]
+  },
+  {
+    "id": "T09",
+    "corpus_id": "WECHAT-GX-TRAVEL-002",
+    "evidence_role": "natural_attestation_and_parser_evaluation_not_productivity_proof",
+    "privacy_status": "user_supplied_private_family_conversation_proper_names_preserved_by_request",
+    "grammar_acceptance_effect": "none",
+    "source_order": 9,
+    "speaker": "D",
+    "cantonese": "陽朔好靚㗎。陽朔慢慢慢慢玩〔尾句聽寫不清〕。其實陽朔嘅話，你揸住你哋部車周圍兜，去嗰啲唔使錢嘅景點周圍兜就得㗎啦。冇必要使錢去景點㗎，一樣㗎咋，啲風景差唔多。",
+    "english_translation": "Yangshuo is beautiful. Take your time there [the end of the sentence is unclear]. In Yangshuo, you can drive your car around the free scenic places. There is no need to pay for attractions; the scenery is more or less the same.",
+    "transcription_confidence": "medium",
+    "normalization_note": "The stable advice sequence was normalized; the unclear phrase 玩豬八 was not reconstructed.",
+    "unresolved_stt_spans": [
+      "玩豬八"
+    ]
+  },
+  {
+    "id": "T10",
+    "corpus_id": "WECHAT-GX-TRAVEL-002",
+    "evidence_role": "natural_attestation_and_parser_evaluation_not_productivity_proof",
+    "privacy_status": "user_supplied_private_family_conversation_proper_names_preserved_by_request",
+    "grammar_acceptance_effect": "none",
+    "source_order": 10,
+    "speaker": "B",
+    "cantonese": "係，陽朔好靚㗎。我姨甥都喺嗰邊囉，我姨甥都喺嗰邊囉。陽朔，因為我姨甥喺上面單位做嘢嘛。我冇去到啊。吳嘉敏〔後接語句聽寫不清〕去啊。我同阿妹喺屋企啊，因為我要上班啊，我冇得去啊。",
+    "english_translation": "Yes, Yangshuo is beautiful. My nephew is over there—my nephew is over there. He works at a work unit up there. I did not get to go. Wu Jiamin [the following words are unclear] went. My younger sister and I stayed home because I had to work and could not go.",
+    "transcription_confidence": "medium",
+    "normalization_note": "吳嘉敏 is preserved as the user-confirmed proper name. 好靚囉 was interpreted as the contextually coherent 喺嗰邊囉; the words after 吳嘉敏 remain unresolved.",
+    "unresolved_stt_spans": [
+      "吳嘉敏千八去"
+    ]
+  },
+  {
+    "id": "T11",
+    "corpus_id": "WECHAT-GX-TRAVEL-002",
+    "evidence_role": "natural_attestation_and_parser_evaluation_not_productivity_proof",
+    "privacy_status": "user_supplied_private_family_conversation_proper_names_preserved_by_request",
+    "grammar_acceptance_effect": "none",
+    "source_order": 11,
+    "speaker": "D",
+    "cantonese": "阿吳蘇陽又唔跟住去，咁樣放暑假都……",
+    "english_translation": "Wu Suyang did not go along either, even though it is summer vacation…",
+    "transcription_confidence": "medium",
+    "normalization_note": "Turn-final incompleteness preserved.",
+    "unresolved_stt_spans": []
+  },
+  {
+    "id": "T12",
+    "corpus_id": "WECHAT-GX-TRAVEL-002",
+    "evidence_role": "natural_attestation_and_parser_evaluation_not_productivity_proof",
+    "privacy_status": "user_supplied_private_family_conversation_proper_names_preserved_by_request",
+    "grammar_acceptance_effect": "none",
+    "source_order": 12,
+    "speaker": "B",
+    "cantonese": "阿吳蘇陽唔跟佢去啊。吳蘇陽佢話唔慣啊。",
+    "english_translation": "Wu Suyang did not go with him. Wu Suyang said he was not used to it.",
+    "transcription_confidence": "high",
+    "normalization_note": "Duplicate 唔 removed; proper name preserved.",
+    "unresolved_stt_spans": []
+  }
+]

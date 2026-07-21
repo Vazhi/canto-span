@@ -1,0 +1,193 @@
+{
+  "schema": "canto-span-focused-research-packet-v1",
+  "packet_id": "CP024-P1-DEMO01-R1",
+  "accepted_runtime": "v0.5.182",
+  "status": "VISIBLE_PACKET_LOCKED_PROSPECTIVE_CUSTODY_MISSING",
+  "candidate": "OvertHeadDemonstrativeClassifierNP",
+  "definition": "overt proximal/distal demonstrative + overt classifier + overt complete nominal head; no overt numeral and no hidden material",
+  "case_counts": {
+    "total": 20,
+    "required": 9,
+    "forbidden": 8,
+    "unresolved": 3
+  },
+  "visible_cases": [
+    {
+      "case_id": "DEMO-R01",
+      "section": "required",
+      "surface": "呢本書。",
+      "candidate_policy": "REQUIRED",
+      "expected_target_surfaces": "呢本書",
+      "purpose": "proximal D-CL-N with book classifier"
+    },
+    {
+      "case_id": "DEMO-R02",
+      "section": "required",
+      "surface": "嗰個人。",
+      "candidate_policy": "REQUIRED",
+      "expected_target_surfaces": "嗰個人",
+      "purpose": "distal D-general-CL-N"
+    },
+    {
+      "case_id": "DEMO-R03",
+      "section": "required",
+      "surface": "呢間公司。",
+      "candidate_policy": "REQUIRED",
+      "expected_target_surfaces": "呢間公司",
+      "purpose": "proximal D-CL-N organization head"
+    },
+    {
+      "case_id": "DEMO-R04",
+      "section": "required",
+      "surface": "嗰份文件。",
+      "candidate_policy": "REQUIRED",
+      "expected_target_surfaces": "嗰份文件",
+      "purpose": "distal D-CL-N document head"
+    },
+    {
+      "case_id": "DEMO-R05",
+      "section": "required",
+      "surface": "呢個問題。",
+      "candidate_policy": "REQUIRED",
+      "expected_target_surfaces": "呢個問題",
+      "purpose": "proximal D-general-CL-N abstract head"
+    },
+    {
+      "case_id": "DEMO-R06",
+      "section": "required",
+      "surface": "呢杯水。",
+      "candidate_policy": "REQUIRED",
+      "expected_target_surfaces": "呢杯水",
+      "purpose": "proximal D-container/measure-N"
+    },
+    {
+      "case_id": "DEMO-R07",
+      "section": "required",
+      "surface": "嗰架車。",
+      "candidate_policy": "REQUIRED",
+      "expected_target_surfaces": "嗰架車",
+      "purpose": "distal D-vehicle-classifier-N"
+    },
+    {
+      "case_id": "DEMO-R08",
+      "section": "required",
+      "surface": "呢隻貓。",
+      "candidate_policy": "REQUIRED",
+      "expected_target_surfaces": "呢隻貓",
+      "purpose": "proximal D-animal-classifier-N"
+    },
+    {
+      "case_id": "DEMO-R09",
+      "section": "required",
+      "surface": "呢個蘋果。",
+      "candidate_policy": "REQUIRED",
+      "expected_target_surfaces": "呢個蘋果",
+      "purpose": "blocks DemonstrativeHeadNP misanalysis"
+    },
+    {
+      "case_id": "DEMO-F01",
+      "section": "forbidden",
+      "surface": "呢個。",
+      "candidate_policy": "FORBIDDEN",
+      "expected_target_surfaces": "",
+      "purpose": "headless D-CL is a separate discourse-dependent subtype"
+    },
+    {
+      "case_id": "DEMO-F02",
+      "section": "forbidden",
+      "surface": "呢本。",
+      "candidate_policy": "FORBIDDEN",
+      "expected_target_surfaces": "",
+      "purpose": "headless D-CL with lexical classifier is separate"
+    },
+    {
+      "case_id": "DEMO-F03",
+      "section": "forbidden",
+      "surface": "呢兩個人。",
+      "candidate_policy": "FORBIDDEN",
+      "expected_target_surfaces": "",
+      "purpose": "overt numeral D-Num-CL-N is a separate subtype"
+    },
+    {
+      "case_id": "DEMO-F04",
+      "section": "forbidden",
+      "surface": "呢啲書。",
+      "candidate_policy": "FORBIDDEN",
+      "expected_target_surfaces": "",
+      "purpose": "D-di1-N plural/mass profile is separate"
+    },
+    {
+      "case_id": "DEMO-F05",
+      "section": "forbidden",
+      "surface": "一個人。",
+      "candidate_policy": "FORBIDDEN",
+      "expected_target_surfaces": "",
+      "purpose": "Num-CL-N lacks demonstrative"
+    },
+    {
+      "case_id": "DEMO-F06",
+      "section": "forbidden",
+      "surface": "個人。",
+      "candidate_policy": "FORBIDDEN",
+      "expected_target_surfaces": "",
+      "purpose": "bare CL-N lacks demonstrative"
+    },
+    {
+      "case_id": "DEMO-F07",
+      "section": "forbidden",
+      "surface": "邊個人？",
+      "candidate_policy": "FORBIDDEN",
+      "expected_target_surfaces": "",
+      "purpose": "wh-classifier nominal is separate"
+    },
+    {
+      "case_id": "DEMO-F08",
+      "section": "forbidden",
+      "surface": "呢人。",
+      "candidate_policy": "FORBIDDEN",
+      "expected_target_surfaces": "",
+      "purpose": "D-N without overt classifier is outside target"
+    },
+    {
+      "case_id": "DEMO-U01",
+      "section": "unresolved",
+      "surface": "呢間好大嘅公司。",
+      "candidate_policy": "UNRESOLVED",
+      "expected_target_surfaces": "",
+      "purpose": "modified D-CL-[modifier]-N requires nominal-scope analysis"
+    },
+    {
+      "case_id": "DEMO-U02",
+      "section": "unresolved",
+      "surface": "中國移動嗰個業績。",
+      "candidate_policy": "UNRESOLVED",
+      "expected_target_surfaces": "",
+      "purpose": "possessor/associative vs non-deictic demonstrative attachment ambiguity"
+    },
+    {
+      "case_id": "DEMO-U03",
+      "section": "unresolved",
+      "surface": "嗰個少數族裔嘅福利同埋權利。",
+      "candidate_policy": "UNRESOLVED",
+      "expected_target_surfaces": "",
+      "purpose": "attachment and coordination ambiguity from corpus literature"
+    }
+  ],
+  "permitted_changes": [
+    "add narrow internal overt-head subtype after all preimplementation gates close",
+    "retire DemonstrativeHeadNP misanalysis",
+    "separate headless D-CL from overt-head subtype"
+  ],
+  "forbidden_changes": [
+    "no hidden numeral or noun",
+    "no broad definiteness claim",
+    "no generic nominal repair",
+    "no change to D-Num-CL-N, D-啲-N, C-N, or wh families",
+    "no implementation before independent custody"
+  ],
+  "external_gates": {
+    "exact_independent_natural_attestations": "PASS_5_MANUALLY_ADJUDICATED_RECORDS",
+    "prospective_heldout_custody": "OPEN",
+    "render_review": "NOT_APPLICABLE_UNTIL_IMPLEMENTED"
+  }
+}

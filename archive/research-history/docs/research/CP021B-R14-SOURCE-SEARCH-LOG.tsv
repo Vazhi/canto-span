@@ -1,0 +1,9 @@
+search_id	query_or_target	source_type	outcome	used_for	limit_or_disposition
+R14-S01	Luke Nancarrow 1998 Auxiliary Verbs in Cantonese full text	LSHK scholarly edited-volume scan	VERIFIED	auxiliary position, scope, complement diagnostics, inventories, 想/要/鍾意 use splits	Single corpus and author judgments do not prove unrestricted productivity.
+R14-S02	HKU Scholars Hub Auxiliary verbs in Cantonese bibliographic record	official university repository metadata	VERIFIED	authorship, year, chapter identity	Metadata does not replace full-text grammatical evidence.
+R14-S03	Basic Cantonese Unit 20 auxiliary verbs	descriptive reference grammar full text	VERIFIED	modal order, intervening adverbs, main/auxiliary contrasts, 要 polarity, postverbal 得 contrast	Teaching examples do not establish exhaustive lexical selection.
+R14-S04	Basic Cantonese 鍾意 VP examples	descriptive reference grammar full text	VERIFIED	independent attestation of 鍾意+VP	Does not settle main-verb versus auxiliary theory.
+R14-S05	runtime ModalVP template and modalVPFromNodes	internal runtime inspection	VERIFIED_INTERNAL	subject/time/negator/manner bundling and broad complement fallback	Internal parser behavior is not Cantonese evidence.
+R14-S06	runtime DesiderativeVP and desiderative slot	internal runtime inspection	VERIFIED_INTERNAL	想-only routing, optional degree, and boundary mismatch with 要	Internal parser behavior is not Cantonese evidence.
+R14-S07	runtime PreferenceVP template and fallback	internal runtime inspection	VERIFIED_INTERNAL	VP/object schema inconsistency and token-presence promotion	Internal parser behavior is not Cantonese evidence.
+R14-S08	generic web searches for Cantonese modal/desiderative/preference constructions	web discovery screen	SCREENED_NO_ADDITIONAL_PRIMARY_SOURCE_NEEDED	source discovery and bibliographic cross-checking	General summaries and mirrors were not used as claim authority.

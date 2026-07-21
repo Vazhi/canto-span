@@ -1,0 +1,13 @@
+search_id	date	query_or_action	source_or_engine	result	evidentiary_use	limitation
+R24-S01	2026-07-18	Verify R23 package, 107/107 audit, and frozen hashes	local package inspection	PASS	baseline integrity only	Package metadata is not linguistic authority.
+R24-S02	2026-07-18	Rank 49 remaining language labels by main.js references and non-held-out regression reach	local runtime and accepted snapshots	PASS	family selection	Counts rank impact but do not establish grammar.
+R24-S03	2026-07-18	Extract PerfectiveDirectionalVP template and accepted trees	main.js and regression-snapshots.json	PASS	runtime claims under audit	Code and fixtures are research targets only.
+R24-S04	2026-07-18	Extract ExperientialClause and NegativeExperiential registry templates	main.js	PASS	wrapper and negator-slot claims	Registry notes do not establish external grammar.
+R24-S05	2026-07-18	Inspect uploaded coursebook for 冇V過, 未V過, 未V完, 有冇V過, and overt-subject experiential examples	user-provided full-text PDF	PASS	exact pedagogical attestations and contrasts	Coursebook does not establish frequency or unrestricted productivity.
+R24-S06	2026-07-18	Recover official full text of Zhang 1970 predicate-suffix article	CUHK official archive	PASS	independent perfective/experiential distinctions and motion examples	Historical description; exact modern runtime strings not supplied.
+R24-S07	2026-07-18	Inspect Sio and Bond 2025 for outer-aspect inventory and ordering	official conference PDF	PASS	component category and compositional boundary	Illustrative HPSG implementation, not exhaustive grammar.
+R24-S08	2026-07-18	Reuse verified Shan and Jin 2025 and Yiu 2016 directional structure evidence	existing full-text source register	PASS	direction/deixis split	Competing analyses and lexical restrictions remain.
+R24-S09	2026-07-18	Reuse Fan 2024 and Lam 2018 aspect-negation distinctions	official journal full texts	PASS	experiential semantics and split negation	Theory-specific analyses are not imported as parser ontology.
+R24-S10	2026-07-18	Compare final 未 questions against preverbal 未 negative statements	reference supplement and coursebook	PASS	question/statement boundary	Exact examples do not prove exhaustive distribution.
+R24-S11	2026-07-18	Audit direct-source status of 入咗嚟 and 落咗去	registered research and textbook search	EXACT_FORM_GAP	explicit gap preservation	Non-recovery is not evidence of ungrammaticality.
+R24-S12	2026-07-18	Build 30-row additions and verify source IDs/dispositions	local deterministic build	PASS	provenance integrity	Matrix integrity does not itself validate claims.

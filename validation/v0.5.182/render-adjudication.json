@@ -1,0 +1,696 @@
+{
+  "schema": "canto-span-v0.5.182-render-adjudication-v1",
+  "version": "0.5.182",
+  "attempt": 1,
+  "generated_at": "2026-07-20T05:55:12.246294+00:00",
+  "status": "PASS",
+  "candidate_frozen": true,
+  "evaluator_custody_opened": false,
+  "summary": {
+    "rendered_rows": 15,
+    "checks_total": 133,
+    "checks_passed": 133,
+    "checks_failed": 0,
+    "positive_rows": 6,
+    "boundary_rows": 9,
+    "narrow_subtype_positive_count": 6,
+    "narrow_subtype_boundary_count": 0,
+    "remediations_verified": [
+      "隻 is classifier zek3 and 杯 is noun what/head_noun bui1 in 呢隻杯",
+      "an overt separate user remains outside ResourceUseLaiFunctionRelation",
+      "perfective predicates remain broad and review-bearing rather than narrow"
+    ]
+  },
+  "input_hashes": {
+    "CANTO-SPAN-v0.5.182-RENDER-REVIEW.canto-span-acceptance-summary.json": "c836e951da98e4aae12bb210bc96f41eb2ef1cc0734353fd807a7fe2ffa9cc28",
+    "CANTO-SPAN-v0.5.182-RENDER-REVIEW.canto-span-full-diagnostics.json": "9e18abee06a65f45b7b1f6a44f7d7893d67ddc59688237467d0e60a53184fbbb",
+    "CANTO-SPAN-v0.5.182-RENDER-REVIEW.md": "13a4f04c1b30b9ad286398ec946928afbb892d6df9a4a1ceb2486305ae9d3c18"
+  },
+  "checks": [
+    {
+      "name": "runtime version 0.5.182",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "coverage PASS",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "15 rendered rows",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "aggregate normalization PASS",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "aggregate jyutping PASS",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "aggregate registry PASS",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "aggregate learner_display PASS",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "aggregate learner_ui_hover PASS",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "aggregate wrapper_coverage PASS",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "aggregate label_transition PASS",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no extraction warnings",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no diagnostic errors",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "row 1 source aligns",
+      "pass": true,
+      "detail": "呢個用嚟切嘢。"
+    },
+    {
+      "name": "row 1 compact/full top constructions align",
+      "pass": true,
+      "detail": "compact=['IntendedFunctionRelation']; full=['IntendedFunctionRelation']"
+    },
+    {
+      "name": "row 2 source aligns",
+      "pass": true,
+      "detail": "呢張枱用嚟食飯。"
+    },
+    {
+      "name": "row 2 compact/full top constructions align",
+      "pass": true,
+      "detail": "compact=['IntendedFunctionRelation']; full=['IntendedFunctionRelation']"
+    },
+    {
+      "name": "row 3 source aligns",
+      "pass": true,
+      "detail": "呢個杯用嚟飲水。"
+    },
+    {
+      "name": "row 3 compact/full top constructions align",
+      "pass": true,
+      "detail": "compact=['IntendedFunctionRelation']; full=['IntendedFunctionRelation']"
+    },
+    {
+      "name": "row 4 source aligns",
+      "pass": true,
+      "detail": "呢隻杯用嚟飲水。"
+    },
+    {
+      "name": "row 4 compact/full top constructions align",
+      "pass": true,
+      "detail": "compact=['IntendedFunctionRelation']; full=['IntendedFunctionRelation']"
+    },
+    {
+      "name": "row 5 source aligns",
+      "pass": true,
+      "detail": "呢支筆用嚟寫字。"
+    },
+    {
+      "name": "row 5 compact/full top constructions align",
+      "pass": true,
+      "detail": "compact=['IntendedFunctionRelation']; full=['IntendedFunctionRelation']"
+    },
+    {
+      "name": "row 6 source aligns",
+      "pass": true,
+      "detail": "呢張紙用來寫字。"
+    },
+    {
+      "name": "row 6 compact/full top constructions align",
+      "pass": true,
+      "detail": "compact=['IntendedFunctionRelation']; full=['IntendedFunctionRelation']"
+    },
+    {
+      "name": "row 7 source aligns",
+      "pass": true,
+      "detail": "呢隻杯我用嚟飲水。"
+    },
+    {
+      "name": "row 7 compact/full top constructions align",
+      "pass": true,
+      "detail": "compact=['IntendedFunctionRelation']; full=['IntendedFunctionRelation']"
+    },
+    {
+      "name": "row 8 source aligns",
+      "pass": true,
+      "detail": "啲錢我用嚟買晒嗰堆嘢。"
+    },
+    {
+      "name": "row 8 compact/full top constructions align",
+      "pass": true,
+      "detail": "compact=['IntendedFunctionRelation']; full=['IntendedFunctionRelation']"
+    },
+    {
+      "name": "row 9 source aligns",
+      "pass": true,
+      "detail": "呢個可以用嚟切嘢。"
+    },
+    {
+      "name": "row 9 compact/full top constructions align",
+      "pass": true,
+      "detail": "compact=['IntendedFunctionRelation']; full=['IntendedFunctionRelation']"
+    },
+    {
+      "name": "row 10 source aligns",
+      "pass": true,
+      "detail": "呢個係用嚟切嘢。"
+    },
+    {
+      "name": "row 10 compact/full top constructions align",
+      "pass": true,
+      "detail": "compact=['IntendedFunctionRelation']; full=['IntendedFunctionRelation']"
+    },
+    {
+      "name": "row 11 source aligns",
+      "pass": true,
+      "detail": "呢個用咗嚟切嘢。"
+    },
+    {
+      "name": "row 11 compact/full top constructions align",
+      "pass": true,
+      "detail": "compact=['DemonstrativeClassifierNP', 'PerfectiveVP', 'DirectionalMotionVP', 'TransitiveVP']; full=['DemonstrativeClassifierNP', 'PerfectiveVP', 'DirectionalMotionVP', 'TransitiveVP']"
+    },
+    {
+      "name": "row 12 source aligns",
+      "pass": true,
+      "detail": "我用刀切嘢。"
+    },
+    {
+      "name": "row 12 compact/full top constructions align",
+      "pass": true,
+      "detail": "compact=['SubjectPredicateClause']; full=['SubjectPredicateClause']"
+    },
+    {
+      "name": "row 13 source aligns",
+      "pass": true,
+      "detail": "我買刀嚟切嘢。"
+    },
+    {
+      "name": "row 13 compact/full top constructions align",
+      "pass": true,
+      "detail": "compact=['VerbComplementVP', 'TransitiveVP']; full=['VerbComplementVP', 'TransitiveVP']"
+    },
+    {
+      "name": "row 14 source aligns",
+      "pass": true,
+      "detail": "呢隻杯用嚟飲咗水。"
+    },
+    {
+      "name": "row 14 compact/full top constructions align",
+      "pass": true,
+      "detail": "compact=['IntendedFunctionRelation']; full=['IntendedFunctionRelation']"
+    },
+    {
+      "name": "row 15 source aligns",
+      "pass": true,
+      "detail": "呢個用嚟切咗嘢。"
+    },
+    {
+      "name": "row 15 compact/full top constructions align",
+      "pass": true,
+      "detail": "compact=['IntendedFunctionRelation']; full=['IntendedFunctionRelation']"
+    },
+    {
+      "name": "row 1 exactly one narrow subtype",
+      "pass": true,
+      "detail": "count=1"
+    },
+    {
+      "name": "row 1 public alias preserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "row 1 resource subject/topic underdetermined",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "row 1 no hidden argument insertion",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "row 1 direct safeguards",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "row 1 root coverage PASS",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "row 2 exactly one narrow subtype",
+      "pass": true,
+      "detail": "count=1"
+    },
+    {
+      "name": "row 2 public alias preserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "row 2 resource subject/topic underdetermined",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "row 2 no hidden argument insertion",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "row 2 direct safeguards",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "row 2 root coverage PASS",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "row 3 exactly one narrow subtype",
+      "pass": true,
+      "detail": "count=1"
+    },
+    {
+      "name": "row 3 public alias preserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "row 3 resource subject/topic underdetermined",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "row 3 no hidden argument insertion",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "row 3 direct safeguards",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "row 3 root coverage PASS",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "row 4 exactly one narrow subtype",
+      "pass": true,
+      "detail": "count=1"
+    },
+    {
+      "name": "row 4 public alias preserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "row 4 resource subject/topic underdetermined",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "row 4 no hidden argument insertion",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "row 4 direct safeguards",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "row 4 root coverage PASS",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "row 5 exactly one narrow subtype",
+      "pass": true,
+      "detail": "count=1"
+    },
+    {
+      "name": "row 5 public alias preserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "row 5 resource subject/topic underdetermined",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "row 5 no hidden argument insertion",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "row 5 direct safeguards",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "row 5 root coverage PASS",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "row 6 exactly one narrow subtype",
+      "pass": true,
+      "detail": "count=1"
+    },
+    {
+      "name": "row 6 public alias preserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "row 6 resource subject/topic underdetermined",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "row 6 no hidden argument insertion",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "row 6 direct safeguards",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "row 6 root coverage PASS",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "row 1 用 learner role/Jyutping",
+      "pass": true,
+      "detail": "expected func/jung6; actual=[('func', 'intended_function_use_marker', 'jung6')]"
+    },
+    {
+      "name": "row 1 嚟 learner role/Jyutping",
+      "pass": true,
+      "detail": "expected func/lai4; actual=[('func', 'intended_function_lai_linker purposive_linker', 'lai4')]"
+    },
+    {
+      "name": "row 1 切 learner role/Jyutping",
+      "pass": true,
+      "detail": "expected doing/cit3; actual=[('doing', 'verb action_verb transitive_affordance', 'cit3')]"
+    },
+    {
+      "name": "row 1 嘢 learner role/Jyutping",
+      "pass": true,
+      "detail": "expected what/je5; actual=[('what', 'object_np', 'je5')]"
+    },
+    {
+      "name": "row 2 枱 learner role/Jyutping",
+      "pass": true,
+      "detail": "expected what/toi2; actual=[('what', 'object_np location_base', 'toi2')]"
+    },
+    {
+      "name": "row 2 用 learner role/Jyutping",
+      "pass": true,
+      "detail": "expected func/jung6; actual=[('func', 'intended_function_use_marker', 'jung6')]"
+    },
+    {
+      "name": "row 2 嚟 learner role/Jyutping",
+      "pass": true,
+      "detail": "expected func/lai4; actual=[('func', 'intended_function_lai_linker purposive_linker', 'lai4')]"
+    },
+    {
+      "name": "row 2 食 learner role/Jyutping",
+      "pass": true,
+      "detail": "expected doing/sik6; actual=[('doing', 'verb', 'sik6')]"
+    },
+    {
+      "name": "row 2 飯 learner role/Jyutping",
+      "pass": true,
+      "detail": "expected what/faan6; actual=[('what', 'object', 'faan6')]"
+    },
+    {
+      "name": "row 3 杯 learner role/Jyutping",
+      "pass": true,
+      "detail": "expected what/bui1; actual=[('what', 'head_noun object_np container_noun', 'bui1')]"
+    },
+    {
+      "name": "row 3 用 learner role/Jyutping",
+      "pass": true,
+      "detail": "expected func/jung6; actual=[('func', 'intended_function_use_marker', 'jung6')]"
+    },
+    {
+      "name": "row 3 嚟 learner role/Jyutping",
+      "pass": true,
+      "detail": "expected func/lai4; actual=[('func', 'intended_function_lai_linker purposive_linker', 'lai4')]"
+    },
+    {
+      "name": "row 3 飲 learner role/Jyutping",
+      "pass": true,
+      "detail": "expected doing/jam2; actual=[('doing', 'verb', 'jam2')]"
+    },
+    {
+      "name": "row 3 水 learner role/Jyutping",
+      "pass": true,
+      "detail": "expected what/seoi2; actual=[('what', 'object', 'seoi2')]"
+    },
+    {
+      "name": "row 4 隻 learner role/Jyutping",
+      "pass": true,
+      "detail": "expected measure_word/zek3; actual=[('measure_word', 'classifier_animal_body_part_one_of_pair', 'zek3')]"
+    },
+    {
+      "name": "row 4 杯 learner role/Jyutping",
+      "pass": true,
+      "detail": "expected what/bui1; actual=[('what', 'head_noun object_np container_noun', 'bui1')]"
+    },
+    {
+      "name": "row 4 用 learner role/Jyutping",
+      "pass": true,
+      "detail": "expected func/jung6; actual=[('func', 'intended_function_use_marker', 'jung6')]"
+    },
+    {
+      "name": "row 4 嚟 learner role/Jyutping",
+      "pass": true,
+      "detail": "expected func/lai4; actual=[('func', 'intended_function_lai_linker purposive_linker', 'lai4')]"
+    },
+    {
+      "name": "row 4 飲 learner role/Jyutping",
+      "pass": true,
+      "detail": "expected doing/jam2; actual=[('doing', 'verb', 'jam2')]"
+    },
+    {
+      "name": "row 4 水 learner role/Jyutping",
+      "pass": true,
+      "detail": "expected what/seoi2; actual=[('what', 'object', 'seoi2')]"
+    },
+    {
+      "name": "row 5 筆 learner role/Jyutping",
+      "pass": true,
+      "detail": "expected what/bat1; actual=[('what', 'object_np instrument_np', 'bat1')]"
+    },
+    {
+      "name": "row 5 用 learner role/Jyutping",
+      "pass": true,
+      "detail": "expected func/jung6; actual=[('func', 'intended_function_use_marker', 'jung6')]"
+    },
+    {
+      "name": "row 5 嚟 learner role/Jyutping",
+      "pass": true,
+      "detail": "expected func/lai4; actual=[('func', 'intended_function_lai_linker purposive_linker', 'lai4')]"
+    },
+    {
+      "name": "row 5 寫 learner role/Jyutping",
+      "pass": true,
+      "detail": "expected doing/se2; actual=[('doing', 'verb', 'se2')]"
+    },
+    {
+      "name": "row 5 字 learner role/Jyutping",
+      "pass": true,
+      "detail": "expected what/zi6; actual=[('what', 'object', 'zi6')]"
+    },
+    {
+      "name": "row 6 紙 learner role/Jyutping",
+      "pass": true,
+      "detail": "expected what/zi2; actual=[('what', 'object_np flat_object_np', 'zi2')]"
+    },
+    {
+      "name": "row 6 用 learner role/Jyutping",
+      "pass": true,
+      "detail": "expected func/jung6; actual=[('func', 'intended_function_use_marker', 'jung6')]"
+    },
+    {
+      "name": "row 6 來 learner role/Jyutping",
+      "pass": true,
+      "detail": "expected func/loi4; actual=[('func', 'intended_function_lai_linker purposive_linker', 'loi4')]"
+    },
+    {
+      "name": "row 6 寫 learner role/Jyutping",
+      "pass": true,
+      "detail": "expected doing/se2; actual=[('doing', 'verb', 'se2')]"
+    },
+    {
+      "name": "row 6 字 learner role/Jyutping",
+      "pass": true,
+      "detail": "expected what/zi6; actual=[('what', 'object', 'zi6')]"
+    },
+    {
+      "name": "row 7 narrow subtype absent",
+      "pass": true,
+      "detail": "count=0"
+    },
+    {
+      "name": "row 8 narrow subtype absent",
+      "pass": true,
+      "detail": "count=0"
+    },
+    {
+      "name": "row 9 narrow subtype absent",
+      "pass": true,
+      "detail": "count=0"
+    },
+    {
+      "name": "row 10 narrow subtype absent",
+      "pass": true,
+      "detail": "count=0"
+    },
+    {
+      "name": "row 11 narrow subtype absent",
+      "pass": true,
+      "detail": "count=0"
+    },
+    {
+      "name": "row 12 narrow subtype absent",
+      "pass": true,
+      "detail": "count=0"
+    },
+    {
+      "name": "row 13 narrow subtype absent",
+      "pass": true,
+      "detail": "count=0"
+    },
+    {
+      "name": "row 14 narrow subtype absent",
+      "pass": true,
+      "detail": "count=0"
+    },
+    {
+      "name": "row 15 narrow subtype absent",
+      "pass": true,
+      "detail": "count=0"
+    },
+    {
+      "name": "separate user remediation keeps broad relation only",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "separate user 我 remains visible",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "separate user resource topic remains explicit",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "separate user cup noun remains bui1",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "money resource separate user remains broad only",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "money resource 我 remains visible",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "modal boundary review-bearing",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "modal remains visible",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "copular frame remains broad only",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "copula remains visible",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "aspect interruption not reinterpreted",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "instrumental use remains outside subtype",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "general purpose chain remains outside subtype",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "row 14 actual-use perfective remains review-bearing",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "row 15 actual-use perfective remains review-bearing",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "perfective 隻杯 keeps cup noun",
+      "pass": true,
+      "detail": ""
+    }
+  ]
+}

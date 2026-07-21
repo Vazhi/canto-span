@@ -1,0 +1,93 @@
+{
+  "schema": "canto-span-regression-remediation-readiness-audit-r2",
+  "status": "PASS",
+  "passed": 16,
+  "total": 16,
+  "runtime_hashes": {
+    "main.js": "6cb8aef9a279ff9abef2a84c77dc470b5f4abcf0ae7306ca39f7f3a5fc44494e",
+    "manifest.json": "63a5f17c633c89583cbfe64ac3262d41565ea8126c0f80668426a75d06891c57",
+    "styles.css": "5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a"
+  },
+  "checks": [
+    {
+      "check": "unit_count_16",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "unique_units",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "runtime_unchanged",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "snapshots_unchanged",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "custody_unopened",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "zero_promotion_weight",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "ready_set_exact",
+      "status": "PASS",
+      "detail": "['U010', 'U012', 'U017', 'U047']"
+    },
+    {
+      "check": "duration_boundary",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "completion_boundary",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "attainment_opportunity_split",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "proper_name_local",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "causal_fragment_no_hidden_main",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "reported_speech_no_hidden_content",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "negative_response_no_hidden_complement",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "lexicon_not_grammar",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "runtime_byte_identical",
+      "status": "PASS",
+      "detail": "{'main.js': '6cb8aef9a279ff9abef2a84c77dc470b5f4abcf0ae7306ca39f7f3a5fc44494e', 'manifest.json': '63a5f17c633c89583cbfe64ac3262d41565ea8126c0f80668426a75d06891c57', 'styles.css': '5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a'}"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+example_id	evidence_type	source_or_record	surface	manual_classification	use_after_reaudit	note
+SRC-YIP-01	published_example	SRC-YIP-MATTHEWS-2000-BASIC	Ngóh tàuhsīn daap-jó léih ge mahntàih	genuine_exact_simple_V_ZO_overt_object	positive	Exact simple profile; source romanization retained.
+SRC-YIP-02	published_example	SRC-YIP-MATTHEWS-2000-BASIC	Kéuih tai-jó sàam go yīsāng	genuine_exact_simple_V_ZO_overt_object	positive	Overt quantified nominal object.
+SRC-YIP-03	published_example	SRC-YIP-MATTHEWS-2000-BASIC	Kéuih sé-jó yāt pīn mán	genuine_exact_simple_V_ZO_overt_object	positive	Overt quantified nominal object.
+SRC-YIP-04	published_example	SRC-YIP-MATTHEWS-2000-BASIC	máaih-jó nī jek pàaihjí	genuine_exact_simple_V_ZO_overt_object	positive	Exact V–咗–object profile inside a question context.
+SRC-SIO-01	published_example	SRC-SIO-BOND-2025	我食咗麵	genuine_exact_simple_V_ZO_overt_object	positive	Exact example (2a).
+SRC-SYB-01	published_example	SRC-SYBESMA-2013	佢食完咗啲飯	genuine_boundary_inner_result_before_ZO	boundary	Not a simple V–咗–object instance.
+SRC-FAN-01	published_example	SRC-FAN-CHAN-2022	琴日佢做完(咗)功課喇	genuine_boundary_inner_result_optional_ZO	boundary	Not a simple V–咗–object instance.
+CS160-P0-08	speaker_A_prior_screen	native-speaker-naturalness-evidence-v1	呢個故事，我睇咗，佢都睇咗。	not_target_objectless_discourse_linked	excluded	Both perfective predicates omit the object overtly.
+CS160-N019	speaker_A_prior_screen	native-speaker-naturalness-evidence-v1	我食咗飯。	genuine_exact_simple_V_ZO_overt_object	positive	Only prior speaker-A sentence that exactly instantiates the target.
+CS160-N105	speaker_A_prior_screen	native-speaker-naturalness-evidence-v1	我以為佢走咗。	not_target_objectless_motion_perfective	excluded	No overt object after 咗.
+CS160-N117	speaker_A_prior_screen	native-speaker-naturalness-evidence-v1	我有一個故事，我睇咗，佢都睇咗。	not_target_objectless_topic_chain	excluded	Discourse supplies a topic; no overt object follows either 咗.
+CS160-N025	speaker_A_prior_screen	native-speaker-naturalness-evidence-v1	我做好咗功課。	not_target_resultative_V_HOU_ZO_object	boundary	Resultative material intervenes before 咗.
+CS160-N033	speaker_A_prior_screen	native-speaker-naturalness-evidence-v1	你食咗未呀？	not_target_objectless_final_MEI_question	excluded	No overt object.
+LEGACY-CORPUS-AGGREGATE-6	legacy_aggregate	grammar-legitimacy-audit metadata	count=6	untraceable_aggregate_no_row_level_provenance	unusable	No six-row corpus inventory or per-hit classification was found. The old count receives zero evidence weight.

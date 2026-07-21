@@ -1,0 +1,87 @@
+{
+  "schema": "canto-span-implementation-acceptance-checkpoint-v1",
+  "checkpoint": "CP022-I1A-I04-A1",
+  "parent_checkpoint": "CP022-I1A-I04-R1",
+  "design_parent": "CP021B-R37",
+  "date": "2026-07-19",
+  "accepted_runtime": "v0.5.177-cp022-i1a-i04-internal-wrapper-cleanup-r1",
+  "status": "ACCEPTED_PACKET_SCOPED_INTERNAL_CLEANUP",
+  "authorization": {
+    "explicit_user_authorization": true,
+    "scope": "EP-R37-I04_ONLY",
+    "global_freeze_lifted": false,
+    "additional_family_changes_authorized": false,
+    "authorization_consumed_by_this_checkpoint": true
+  },
+  "accepted_changes": {
+    "modifier_phrase_retired": true,
+    "head_np_internal_rename": "NominalHeadSpan",
+    "head_np_compatibility_metadata_only": true,
+    "measure_expression_bounded_nonlicensing": true,
+    "definition_complement_bounded_nonlicensing": true,
+    "intended_semantic_change": "NONE",
+    "new_grammar_added": false,
+    "lexicon_changed": false,
+    "jyutping_changed": false
+  },
+  "validation": {
+    "visible_packet": {
+      "passed": 45,
+      "total": 45
+    },
+    "rendered_diagnostic_review": {
+      "passed": 11,
+      "total": 11,
+      "visual_layout_confirmation": "NOT_SEPARATELY_RECORDED"
+    },
+    "prospective_heldout": {
+      "passed": 5,
+      "total": 5,
+      "exact_signature_match": true
+    },
+    "aggregate_regression": {
+      "passed": 545,
+      "total": 545
+    },
+    "grammar_legitimacy": {
+      "passed": 1111,
+      "total": 1111,
+      "active_labels": 181,
+      "supported_productive": 0
+    },
+    "semantic_acceptance": {
+      "passed": 15,
+      "total": 15
+    },
+    "pre_intermediate_corpus": {
+      "passed": 80,
+      "total": 80
+    },
+    "lx1_preservation": {
+      "passed": 13,
+      "total": 13,
+      "status": "RENDER_PENDING_NOT_ACCEPTED"
+    }
+  },
+  "held_out": {
+    "case_count": 5,
+    "opened_for_final_evaluation": true,
+    "opened_after_candidate_freeze": true,
+    "passed": 5,
+    "failed": 0,
+    "consumed": true,
+    "reusable_as_future_prospective_heldout": false,
+    "custody_archive_sha256": "b0ea009f75039b8866756ae1c76cf815fb9d191d97a6362df71f987e65cee596"
+  },
+  "global_grammar_freeze_active": true,
+  "lx1": {
+    "status": "RENDER_PENDING_NOT_ACCEPTED",
+    "accepted_by_this_checkpoint": false
+  },
+  "next": {
+    "design_work_allowed_without_new_authorization": "Populate and lock the next evaluation packet.",
+    "recommended_next_packet": "EP-R36-I01 ClauseSpan, to be instantiated as a new checkpoint packet.",
+    "parser_change_authorization_required": true,
+    "authorization_scope_not_inherited": true
+  }
+}

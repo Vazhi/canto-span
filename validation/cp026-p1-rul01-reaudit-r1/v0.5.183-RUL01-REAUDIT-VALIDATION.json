@@ -1,0 +1,177 @@
+{
+  "schema": "canto-span-cp026-rul01-reaudit-validation-v1",
+  "checkpoint": "v0.5.183-cp026-p1-rul01-reaudit-r1",
+  "parser_behavior_changed": false,
+  "supported_productive": 0,
+  "provisional_reaudit": 2,
+  "second_speaker_work_frozen": true,
+  "total": 37,
+  "passed": 37,
+  "failed": 0,
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "main.js byte-identical",
+      "pass": true,
+      "detail": "e25b6f7142eafce66a172b68d8e409275f127cfe902e93bafaf7147152bfcbe9"
+    },
+    {
+      "name": "manifest.json byte-identical",
+      "pass": true,
+      "detail": "d7f5a9be248a4efd1839852e8a100a9968273050f0aa5953af2a35c3661801f5"
+    },
+    {
+      "name": "styles.css byte-identical",
+      "pass": true,
+      "detail": "5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a"
+    },
+    {
+      "name": "171 active labels",
+      "pass": true,
+      "detail": "171"
+    },
+    {
+      "name": "status counts exact",
+      "pass": true,
+      "detail": "{'research_pending': 58, 'unsupported_generalization': 87, 'parser_heuristic': 21, 'lexicalized_only': 3, 'provisional_reaudit': 2}"
+    },
+    {
+      "name": "PFV remains provisional_reaudit",
+      "pass": true
+    },
+    {
+      "name": "RUL remains provisional_reaudit",
+      "pass": true
+    },
+    {
+      "name": "six source records",
+      "pass": true,
+      "detail": "6"
+    },
+    {
+      "name": "five current evidence units",
+      "pass": true
+    },
+    {
+      "name": "Matthews has zero current weight",
+      "pass": true
+    },
+    {
+      "name": "manual example rows present",
+      "pass": true,
+      "detail": "6"
+    },
+    {
+      "name": "one direct quote",
+      "pass": true
+    },
+    {
+      "name": "published illustration not counted natural",
+      "pass": true
+    },
+    {
+      "name": "editorial narrative marked limited",
+      "pass": true
+    },
+    {
+      "name": "code-doc issues recorded",
+      "pass": true,
+      "detail": "7"
+    },
+    {
+      "name": "material overbreadth recorded",
+      "pass": true
+    },
+    {
+      "name": "stale metadata recorded",
+      "pass": true
+    },
+    {
+      "name": "22 probe cases",
+      "pass": true,
+      "detail": "22"
+    },
+    {
+      "name": "probe target count 6",
+      "pass": true
+    },
+    {
+      "name": "broad-only count 5",
+      "pass": true
+    },
+    {
+      "name": "no relation count 11",
+      "pass": true
+    },
+    {
+      "name": "PFV Speaker A 14 cases",
+      "pass": true,
+      "detail": "14"
+    },
+    {
+      "name": "all six PFV positives natural",
+      "pass": true
+    },
+    {
+      "name": "two PFV comparisons rejected",
+      "pass": true
+    },
+    {
+      "name": "23 speaker queue rows",
+      "pass": true,
+      "detail": "23"
+    },
+    {
+      "name": "all second-speaker work frozen",
+      "pass": true
+    },
+    {
+      "name": "two-speaker requirement still blocks support",
+      "pass": true
+    },
+    {
+      "name": "source accounting 171 rows",
+      "pass": true,
+      "detail": "171"
+    },
+    {
+      "name": "RUL source accounting count 5",
+      "pass": true
+    },
+    {
+      "name": "RUL not promotion eligible",
+      "pass": true
+    },
+    {
+      "name": "active markdown links unbroken",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "current docs use status registry R4",
+      "pass": true
+    },
+    {
+      "name": "current docs use reaudit ledger R3",
+      "pass": true
+    },
+    {
+      "name": "current docs use speaker queue R4",
+      "pass": true
+    },
+    {
+      "name": "current docs use CP026 source accounting",
+      "pass": true
+    },
+    {
+      "name": "old three-attestation claim only withdrawn",
+      "pass": true
+    },
+    {
+      "name": "no heldout archive in working tree",
+      "pass": true,
+      "detail": "[]"
+    }
+  ],
+  "failures": []
+}

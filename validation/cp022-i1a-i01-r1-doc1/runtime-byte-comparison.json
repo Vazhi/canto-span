@@ -1,0 +1,23 @@
+{
+  "schema": "canto-span-runtime-byte-comparison-v1",
+  "checkpoint": "CP022-I1A-I01-R1-DOC1",
+  "parent": "CP022-I1A-I01-R1",
+  "all_runtime_files_identical": true,
+  "files": {
+    "main.js": {
+      "current_sha256": "ec3f496b41d1b1d2ad6b44b9db17b2d6319646567a56f9b51e4fc6bc4ac1bc0f",
+      "parent_sha256": "ec3f496b41d1b1d2ad6b44b9db17b2d6319646567a56f9b51e4fc6bc4ac1bc0f",
+      "identical": true
+    },
+    "manifest.json": {
+      "current_sha256": "c07d7e282c51320f4669620f985a6e11a7e8dba14611f7b731556564fbcba776",
+      "parent_sha256": "c07d7e282c51320f4669620f985a6e11a7e8dba14611f7b731556564fbcba776",
+      "identical": true
+    },
+    "styles.css": {
+      "current_sha256": "5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a",
+      "parent_sha256": "5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a",
+      "identical": true
+    }
+  }
+}

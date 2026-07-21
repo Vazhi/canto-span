@@ -1,0 +1,5463 @@
+{
+  "schema": "canto-span-research-probe-observation-v1",
+  "checkpoint": "CP023-P1-PROG01-visible-research-packet.tsv",
+  "runtime_version": "0.5.182",
+  "policy_version": "0.5.182",
+  "status": "OBSERVATION_ONLY_NOT_ACCEPTANCE_GATE",
+  "counts": {
+    "total": 23,
+    "required": 13,
+    "required_exact": 4,
+    "required_wrong_or_incomplete": 7,
+    "required_absent": 2,
+    "forbidden": 9,
+    "forbidden_with_broad_family_present": 3,
+    "full_root_coverage": 14
+  },
+  "warning": "A root-coverage PASS does not establish correct target span, lexical compatibility, or linguistic legitimacy.",
+  "cases": [
+    {
+      "case_id": "PROG-E01",
+      "case_class": "direct_official_attestation",
+      "surface": "我哋而家睇緊呢個。",
+      "candidate_policy": "REQUIRED",
+      "expected_target_surfaces": [
+        "睇緊呢個"
+      ],
+      "source_ids": "SRC-IC-WANG-FUK-2026-0423",
+      "source_locator": "PDF p. 5 lines 136-138",
+      "research_note": "demonstrative object",
+      "observation": "EXACT_TARGET_PRESENT",
+      "actual_target_surfaces": [
+        "睇緊呢個"
+      ],
+      "exact_target_match_count": 1,
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "我哋而家睇緊呢個"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "我哋而家睇緊呢個。",
+        "parser_shadow_source": "我哋而家睇緊呢個。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 6,
+        "final_node_count": 10,
+        "construction_count": 3,
+        "top_constructions": [
+          "SubjectPredicateClause"
+        ],
+        "internal_top_constructions": [
+          "ClauseSpan"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "generative_template": 3,
+          "atomic_lexicon": 6,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 3
+        },
+        "review_count": 0,
+        "selection_decision_count": 4,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 6,
+        "parser_active_feature_bundle_count": 1,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PASS",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "我哋而家睇緊呢個"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "MANUAL_REVIEW_ELIGIBLE",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 0,
+          "review_reason_count": 0,
+          "outer_wrapper_blocked": false,
+          "blockers": [],
+          "review_reasons": [],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+        "semantic_acceptance_blocker_count": 0,
+        "semantic_acceptance_review_reason_count": 0,
+        "semantic_acceptance_outer_wrapper_blocked": false
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "我哋而家睇緊呢個",
+          "construction": "SubjectPredicateClause",
+          "internal_construction": "ClauseSpan",
+          "parent": "",
+          "internal_parent": "",
+          "role": "SubjPred",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "我哋",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "SubjectPredicateClause",
+          "internal_parent": "ClauseSpan",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "ngo5 dei6"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "而家",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "SubjectPredicateClause",
+          "internal_parent": "ClauseSpan",
+          "role": "when",
+          "syntax": "temporal_adjunct",
+          "jyutping": "ji4 gaa1"
+        },
+        {
+          "depth": 1,
+          "kind": "construction",
+          "surface": "睇緊呢個",
+          "construction": "ProgressiveVP",
+          "internal_construction": "ProgressiveVP",
+          "parent": "SubjectPredicateClause",
+          "internal_parent": "ClauseSpan",
+          "role": "ProgVP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 2,
+          "kind": "token",
+          "surface": "睇",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProgressiveVP",
+          "internal_parent": "ProgressiveVP",
+          "role": "doing",
+          "syntax": "verb transitive_affordance chain_select_perception",
+          "jyutping": "tai2"
+        },
+        {
+          "depth": 2,
+          "kind": "token",
+          "surface": "緊",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProgressiveVP",
+          "internal_parent": "ProgressiveVP",
+          "role": "func",
+          "syntax": "progressive_aspect",
+          "jyutping": "gan2"
+        },
+        {
+          "depth": 2,
+          "kind": "construction",
+          "surface": "呢個",
+          "construction": "DemonstrativeClassifierNP",
+          "internal_construction": "DemonstrativeClassifierNP",
+          "parent": "ProgressiveVP",
+          "internal_parent": "ProgressiveVP",
+          "role": "NP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "呢",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "func",
+          "syntax": "demonstrative_determiner",
+          "jyutping": "ni1"
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "個",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "measure_word",
+          "syntax": "general_classifier",
+          "jyutping": "go3"
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "PROG-E02",
+      "case_class": "interpreted_official_attestation",
+      "surface": "我哋而家就睇緊啲九巴嘅數據。",
+      "candidate_policy": "REQUIRED",
+      "expected_target_surfaces": [
+        "睇緊啲九巴嘅數據"
+      ],
+      "source_ids": "SRC-IRC-BUS-2018-1006",
+      "source_locator": "PDF p. 43 lines 1460-1462",
+      "research_note": "live interpreted output; occurrence only",
+      "observation": "TARGET_PRESENT_WRONG_OR_INCOMPLETE_SPAN",
+      "actual_target_surfaces": [
+        "睇緊"
+      ],
+      "exact_target_match_count": 0,
+      "root_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "睇緊"
+        ],
+        "unwrapped_root_nonpunctuation_count": 8,
+        "unwrapped_root_surfaces": [
+          "我哋",
+          "而家",
+          "就",
+          "啲",
+          "九",
+          "巴",
+          "數",
+          "據"
+        ],
+        "ignored_root_remainder_count": 2
+      },
+      "semantic_summary": {
+        "source": "我哋而家就睇緊啲九巴嘅數據。",
+        "parser_shadow_source": "我哋而家就睇緊啲九巴嘅數據。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 11,
+        "final_node_count": 13,
+        "construction_count": 1,
+        "top_constructions": [
+          "ProgressiveVP"
+        ],
+        "internal_top_constructions": [
+          "ProgressiveVP"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "atomic_lexicon": 9,
+          "generative_template": 1,
+          "unknown_atomic": 2,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 1
+        },
+        "review_count": 0,
+        "selection_decision_count": 9,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 11,
+        "parser_active_feature_bundle_count": 1,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PARTIAL",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "睇緊"
+        ],
+        "unwrapped_root_nonpunctuation_count": 8,
+        "unwrapped_root_surfaces": [
+          "我哋",
+          "而家",
+          "就",
+          "啲",
+          "九",
+          "巴",
+          "數",
+          "據"
+        ],
+        "ignored_root_remainder_count": 2,
+        "semantic_acceptance": {
+          "status": "BLOCKED",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 3,
+          "review_reason_count": 0,
+          "outer_wrapper_blocked": false,
+          "blockers": [
+            {
+              "code": "unknown_lexical_material",
+              "path": "數[數]",
+              "construction": "",
+              "surface": "數",
+              "depth": 0,
+              "syntax": "unknown_cjk_or_text",
+              "trace_kind": "unknown_atomic"
+            },
+            {
+              "code": "unknown_lexical_material",
+              "path": "據[據]",
+              "construction": "",
+              "surface": "據",
+              "depth": 0,
+              "syntax": "unknown_cjk_or_text",
+              "trace_kind": "unknown_atomic"
+            },
+            {
+              "code": "partial_root_span_unwrapped_material",
+              "path": "ROOT",
+              "construction": "",
+              "surface": "",
+              "depth": 0,
+              "unwrapped_root_surfaces": [
+                "我哋",
+                "而家",
+                "就",
+                "啲",
+                "九",
+                "巴",
+                "數",
+                "據"
+              ]
+            }
+          ],
+          "review_reasons": [],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "BLOCKED",
+        "semantic_acceptance_blocker_count": 3,
+        "semantic_acceptance_review_reason_count": 0,
+        "semantic_acceptance_outer_wrapper_blocked": false,
+        "semantic_review_flags": [
+          "partial_root_span_unwrapped_material"
+        ]
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "我哋",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "ngo5 dei6"
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "而家",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "when",
+          "syntax": "temporal_adjunct",
+          "jyutping": "ji4 gaa1"
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "就",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "func",
+          "syntax": "focus_or_sequence",
+          "jyutping": "zau6"
+        },
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "睇緊",
+          "construction": "ProgressiveVP",
+          "internal_construction": "ProgressiveVP",
+          "parent": "",
+          "internal_parent": "",
+          "role": "ProgVP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "睇",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProgressiveVP",
+          "internal_parent": "ProgressiveVP",
+          "role": "doing",
+          "syntax": "verb transitive_affordance chain_select_perception",
+          "jyutping": "tai2"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "緊",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProgressiveVP",
+          "internal_parent": "ProgressiveVP",
+          "role": "func",
+          "syntax": "progressive_aspect",
+          "jyutping": "gan2"
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "啲",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "how",
+          "syntax": "quantity_degree_or_plural",
+          "jyutping": "di1"
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "九",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "how",
+          "syntax": "quantity count_value numeral_nine",
+          "jyutping": "gau2"
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "巴",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "neutral",
+          "syntax": "pronunciation_drill_item lexical_character",
+          "jyutping": "baa1"
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "嘅",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "particle",
+          "syntax": "sentence_final_particle_or_nominalizer",
+          "jyutping": "ge3"
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "數",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "據",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "PROG-E03",
+      "case_class": "direct_official_attestation",
+      "surface": "都係問緊錫條同埋錫線？",
+      "candidate_policy": "REQUIRED",
+      "expected_target_surfaces": [
+        "問緊錫條同埋錫線"
+      ],
+      "source_ids": "SRC-COI-DRINKING-WATER-2016-0111",
+      "source_locator": "PDF viewer p. 75 lines 5241-5244",
+      "research_note": "coordinated object",
+      "observation": "TARGET_PRESENT_WRONG_OR_INCOMPLETE_SPAN",
+      "actual_target_surfaces": [
+        "問緊"
+      ],
+      "exact_target_match_count": 0,
+      "root_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "問緊"
+        ],
+        "unwrapped_root_nonpunctuation_count": 7,
+        "unwrapped_root_surfaces": [
+          "都",
+          "係",
+          "錫",
+          "條",
+          "同埋",
+          "錫",
+          "線"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "都係問緊錫條同埋錫線？",
+        "parser_shadow_source": "都係問緊錫條同埋錫線？",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 9,
+        "final_node_count": 11,
+        "construction_count": 1,
+        "top_constructions": [
+          "ProgressiveVP"
+        ],
+        "internal_top_constructions": [
+          "ProgressiveVP"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "atomic_lexicon": 6,
+          "generative_template": 1,
+          "unknown_atomic": 3,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 1
+        },
+        "review_count": 0,
+        "selection_decision_count": 6,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 9,
+        "parser_active_feature_bundle_count": 0,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PARTIAL",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "問緊"
+        ],
+        "unwrapped_root_nonpunctuation_count": 7,
+        "unwrapped_root_surfaces": [
+          "都",
+          "係",
+          "錫",
+          "條",
+          "同埋",
+          "錫",
+          "線"
+        ],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "BLOCKED",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 3,
+          "review_reason_count": 0,
+          "outer_wrapper_blocked": false,
+          "blockers": [
+            {
+              "code": "unknown_lexical_material",
+              "path": "錫[錫]",
+              "construction": "",
+              "surface": "錫",
+              "depth": 0,
+              "syntax": "unknown_cjk_or_text",
+              "trace_kind": "unknown_atomic"
+            },
+            {
+              "code": "unknown_lexical_material",
+              "path": "線[線]",
+              "construction": "",
+              "surface": "線",
+              "depth": 0,
+              "syntax": "unknown_cjk_or_text",
+              "trace_kind": "unknown_atomic"
+            },
+            {
+              "code": "partial_root_span_unwrapped_material",
+              "path": "ROOT",
+              "construction": "",
+              "surface": "",
+              "depth": 0,
+              "unwrapped_root_surfaces": [
+                "都",
+                "係",
+                "錫",
+                "條",
+                "同埋",
+                "錫",
+                "線"
+              ]
+            }
+          ],
+          "review_reasons": [],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "BLOCKED",
+        "semantic_acceptance_blocker_count": 3,
+        "semantic_acceptance_review_reason_count": 0,
+        "semantic_acceptance_outer_wrapper_blocked": false,
+        "semantic_review_flags": [
+          "partial_root_span_unwrapped_material"
+        ]
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "都",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "how",
+          "syntax": "focus_adverb",
+          "jyutping": "dou1"
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "係",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "func",
+          "syntax": "copula",
+          "jyutping": "hai6"
+        },
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "問緊",
+          "construction": "ProgressiveVP",
+          "internal_construction": "ProgressiveVP",
+          "parent": "",
+          "internal_parent": "",
+          "role": "ProgVP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "問",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProgressiveVP",
+          "internal_parent": "ProgressiveVP",
+          "role": "doing",
+          "syntax": "verb",
+          "jyutping": "man6"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "緊",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProgressiveVP",
+          "internal_parent": "ProgressiveVP",
+          "role": "func",
+          "syntax": "progressive_aspect",
+          "jyutping": "gan2"
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "錫",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "條",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "measure_word",
+          "syntax": "classifier_long_thin",
+          "jyutping": "tiu4"
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "同埋",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "func",
+          "syntax": "connector_additive",
+          "jyutping": "tung4 maai4"
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "錫",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "線",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "？",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "PROG-E04",
+      "case_class": "published_corpus_attestation",
+      "surface": "佢喺屋企整緊布甸。",
+      "candidate_policy": "REQUIRED",
+      "expected_target_surfaces": [
+        "整緊布甸"
+      ],
+      "source_ids": "SRC-KATAOKA-2018-PROGRESSIVE-GAN",
+      "source_locator": "p. 137 corpus summary",
+      "research_note": "edited vernacular corpus",
+      "observation": "TARGET_PRESENT_WRONG_OR_INCOMPLETE_SPAN",
+      "actual_target_surfaces": [
+        "整緊"
+      ],
+      "exact_target_match_count": 0,
+      "root_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 2,
+        "top_construction_surfaces": [
+          "喺屋企",
+          "整緊"
+        ],
+        "unwrapped_root_nonpunctuation_count": 3,
+        "unwrapped_root_surfaces": [
+          "佢",
+          "布",
+          "甸"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "佢喺屋企整緊布甸。",
+        "parser_shadow_source": "佢喺屋企整緊布甸。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 7,
+        "final_node_count": 10,
+        "construction_count": 2,
+        "top_constructions": [
+          "LocativePlacePhrase",
+          "ProgressiveVP"
+        ],
+        "internal_top_constructions": [
+          "LocativePlacePhrase",
+          "ProgressiveVP"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "atomic_lexicon": 5,
+          "generative_template": 2,
+          "unknown_atomic": 2,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 2
+        },
+        "review_count": 0,
+        "selection_decision_count": 5,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 7,
+        "parser_active_feature_bundle_count": 0,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PARTIAL",
+        "root_top_construction_count": 2,
+        "root_top_construction_surfaces": [
+          "喺屋企",
+          "整緊"
+        ],
+        "unwrapped_root_nonpunctuation_count": 3,
+        "unwrapped_root_surfaces": [
+          "佢",
+          "布",
+          "甸"
+        ],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "BLOCKED",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 3,
+          "review_reason_count": 1,
+          "outer_wrapper_blocked": false,
+          "blockers": [
+            {
+              "code": "unknown_lexical_material",
+              "path": "布[布]",
+              "construction": "",
+              "surface": "布",
+              "depth": 0,
+              "syntax": "unknown_cjk_or_text",
+              "trace_kind": "unknown_atomic"
+            },
+            {
+              "code": "unknown_lexical_material",
+              "path": "甸[甸]",
+              "construction": "",
+              "surface": "甸",
+              "depth": 0,
+              "syntax": "unknown_cjk_or_text",
+              "trace_kind": "unknown_atomic"
+            },
+            {
+              "code": "partial_root_span_unwrapped_material",
+              "path": "ROOT",
+              "construction": "",
+              "surface": "",
+              "depth": 0,
+              "unwrapped_root_surfaces": [
+                "佢",
+                "布",
+                "甸"
+              ]
+            }
+          ],
+          "review_reasons": [
+            {
+              "code": "multiple_top_constructions",
+              "path": "ROOT",
+              "construction": "",
+              "surface": "",
+              "depth": 0,
+              "top_construction_surfaces": [
+                "喺屋企",
+                "整緊"
+              ]
+            }
+          ],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "BLOCKED",
+        "semantic_acceptance_blocker_count": 3,
+        "semantic_acceptance_review_reason_count": 1,
+        "semantic_acceptance_outer_wrapper_blocked": false,
+        "semantic_review_flags": [
+          "multiple_top_constructions",
+          "partial_root_span_unwrapped_material"
+        ]
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "佢",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "keoi5"
+        },
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "喺屋企",
+          "construction": "LocativePlacePhrase",
+          "internal_construction": "LocativePlacePhrase",
+          "parent": "",
+          "internal_parent": "",
+          "role": "Location",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "喺",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "LocativePlacePhrase",
+          "internal_parent": "LocativePlacePhrase",
+          "role": "func",
+          "syntax": "locative_coverb",
+          "jyutping": "hai2"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "屋企",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "LocativePlacePhrase",
+          "internal_parent": "LocativePlacePhrase",
+          "role": "where",
+          "syntax": "place_or_goal",
+          "jyutping": "uk1 kei2"
+        },
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "整緊",
+          "construction": "ProgressiveVP",
+          "internal_construction": "ProgressiveVP",
+          "parent": "",
+          "internal_parent": "",
+          "role": "ProgVP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "整",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProgressiveVP",
+          "internal_parent": "ProgressiveVP",
+          "role": "doing",
+          "syntax": "verb make_fix_verb",
+          "jyutping": "zing2"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "緊",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProgressiveVP",
+          "internal_parent": "ProgressiveVP",
+          "role": "func",
+          "syntax": "progressive_aspect",
+          "jyutping": "gan2"
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "布",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "甸",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "PROG-E05",
+      "case_class": "scholarly_example",
+      "surface": "我而家食緊飯。",
+      "candidate_policy": "REQUIRED",
+      "expected_target_surfaces": [
+        "食緊飯"
+      ],
+      "source_ids": "SRC-FAN-2024-JAU-VP-ASPECT",
+      "source_locator": "p. 7 example 6b",
+      "research_note": "simple object",
+      "observation": "EXACT_TARGET_PRESENT",
+      "actual_target_surfaces": [
+        "食緊飯"
+      ],
+      "exact_target_match_count": 1,
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "我而家食緊飯"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "我而家食緊飯。",
+        "parser_shadow_source": "我而家食緊飯。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 5,
+        "final_node_count": 8,
+        "construction_count": 2,
+        "top_constructions": [
+          "SubjectPredicateClause"
+        ],
+        "internal_top_constructions": [
+          "ClauseSpan"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "generative_template": 2,
+          "atomic_lexicon": 5,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 2
+        },
+        "review_count": 0,
+        "selection_decision_count": 5,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 5,
+        "parser_active_feature_bundle_count": 1,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PASS",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "我而家食緊飯"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "MANUAL_REVIEW_ELIGIBLE",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 0,
+          "review_reason_count": 0,
+          "outer_wrapper_blocked": false,
+          "blockers": [],
+          "review_reasons": [],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+        "semantic_acceptance_blocker_count": 0,
+        "semantic_acceptance_review_reason_count": 0,
+        "semantic_acceptance_outer_wrapper_blocked": false
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "我而家食緊飯",
+          "construction": "SubjectPredicateClause",
+          "internal_construction": "ClauseSpan",
+          "parent": "",
+          "internal_parent": "",
+          "role": "SubjPred",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "我",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "SubjectPredicateClause",
+          "internal_parent": "ClauseSpan",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "ngo5"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "而家",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "SubjectPredicateClause",
+          "internal_parent": "ClauseSpan",
+          "role": "when",
+          "syntax": "temporal_adjunct",
+          "jyutping": "ji4 gaa1"
+        },
+        {
+          "depth": 1,
+          "kind": "construction",
+          "surface": "食緊飯",
+          "construction": "ProgressiveVP",
+          "internal_construction": "ProgressiveVP",
+          "parent": "SubjectPredicateClause",
+          "internal_parent": "ClauseSpan",
+          "role": "ProgVP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 2,
+          "kind": "token",
+          "surface": "食",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProgressiveVP",
+          "internal_parent": "ProgressiveVP",
+          "role": "doing",
+          "syntax": "verb transitive_affordance chain_select_edible",
+          "jyutping": "sik6"
+        },
+        {
+          "depth": 2,
+          "kind": "token",
+          "surface": "緊",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProgressiveVP",
+          "internal_parent": "ProgressiveVP",
+          "role": "func",
+          "syntax": "progressive_aspect",
+          "jyutping": "gan2"
+        },
+        {
+          "depth": 2,
+          "kind": "token",
+          "surface": "飯",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProgressiveVP",
+          "internal_parent": "ProgressiveVP",
+          "role": "what",
+          "syntax": "object_np",
+          "jyutping": "faan6"
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "PROG-E06",
+      "case_class": "scholarly_example",
+      "surface": "頭先八點嗰陣，阿樂唱緊首兒歌。",
+      "candidate_policy": "REQUIRED",
+      "expected_target_surfaces": [
+        "唱緊首兒歌"
+      ],
+      "source_ids": "SRC-FAN-2024-JAU-VP-ASPECT",
+      "source_locator": "p. 7 example 6a",
+      "research_note": "classifier NP object inside temporal frame",
+      "observation": "TARGET_ABSENT",
+      "actual_target_surfaces": [],
+      "exact_target_match_count": 0,
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "頭先八點嗰陣，阿樂唱緊首兒歌"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "頭先八點嗰陣，阿樂唱緊首兒歌。",
+        "parser_shadow_source": "頭先八點嗰陣，阿樂唱緊首兒歌。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 12,
+        "final_node_count": 18,
+        "construction_count": 4,
+        "top_constructions": [
+          "ClauseLinkingSequence"
+        ],
+        "internal_top_constructions": [
+          "ClauseRelationGraph"
+        ],
+        "top_child_constructions": [
+          "ClauseRelation"
+        ],
+        "top_child_construction_count": 1,
+        "trace_summary": {
+          "governed_discourse_wrapper": 1,
+          "generative_template": 3,
+          "unknown_atomic": 4,
+          "construction_internal_parser_inactive_clone": 1,
+          "atomic_lexicon": 7,
+          "punctuation_or_plain_text": 2
+        },
+        "template_family_summary": {
+          "generative_template": 3
+        },
+        "review_count": 0,
+        "selection_decision_count": 7,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 12,
+        "parser_active_feature_bundle_count": 0,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PASS",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "頭先八點嗰陣，阿樂唱緊首兒歌"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "BLOCKED",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 4,
+          "review_reason_count": 1,
+          "outer_wrapper_blocked": true,
+          "blockers": [
+            {
+              "code": "unknown_lexical_material",
+              "path": "ClauseRelationGraph[頭先八點嗰陣，阿樂唱緊首兒歌] > ClauseRelationEdge[頭先八點嗰陣，阿樂唱緊首兒歌] > ClauseRelationMemberSpan[頭先八點嗰陣] > 頭[頭]",
+              "construction": "",
+              "surface": "頭",
+              "depth": 3,
+              "syntax": "unknown_cjk_or_text",
+              "trace_kind": "unknown_atomic"
+            },
+            {
+              "code": "unknown_lexical_material",
+              "path": "ClauseRelationGraph[頭先八點嗰陣，阿樂唱緊首兒歌] > ClauseRelationEdge[頭先八點嗰陣，阿樂唱緊首兒歌] > ClauseRelationMemberSpan[阿樂唱緊首兒歌] > 樂[樂]",
+              "construction": "",
+              "surface": "樂",
+              "depth": 3,
+              "syntax": "unknown_cjk_or_text",
+              "trace_kind": "unknown_atomic"
+            },
+            {
+              "code": "unknown_lexical_material",
+              "path": "ClauseRelationGraph[頭先八點嗰陣，阿樂唱緊首兒歌] > ClauseRelationEdge[頭先八點嗰陣，阿樂唱緊首兒歌] > ClauseRelationMemberSpan[阿樂唱緊首兒歌] > 唱[唱]",
+              "construction": "",
+              "surface": "唱",
+              "depth": 3,
+              "syntax": "unknown_cjk_or_text",
+              "trace_kind": "unknown_atomic"
+            },
+            {
+              "code": "unknown_lexical_material",
+              "path": "ClauseRelationGraph[頭先八點嗰陣，阿樂唱緊首兒歌] > ClauseRelationEdge[頭先八點嗰陣，阿樂唱緊首兒歌] > ClauseRelationMemberSpan[阿樂唱緊首兒歌] > 兒[兒]",
+              "construction": "",
+              "surface": "兒",
+              "depth": 3,
+              "syntax": "unknown_cjk_or_text",
+              "trace_kind": "unknown_atomic"
+            }
+          ],
+          "review_reasons": [
+            {
+              "code": "outer_wrapper_contains_semantic_blocker",
+              "path": "ROOT",
+              "construction": "",
+              "surface": "",
+              "depth": 0,
+              "blocker_count_below_root": 4
+            }
+          ],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "BLOCKED",
+        "semantic_acceptance_blocker_count": 4,
+        "semantic_acceptance_review_reason_count": 1,
+        "semantic_acceptance_outer_wrapper_blocked": true
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "頭先八點嗰陣，阿樂唱緊首兒歌",
+          "construction": "ClauseLinkingSequence",
+          "internal_construction": "ClauseRelationGraph",
+          "parent": "",
+          "internal_parent": "",
+          "role": "ClauseLink",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "construction",
+          "surface": "頭先八點嗰陣，阿樂唱緊首兒歌",
+          "construction": "ClauseRelation",
+          "internal_construction": "ClauseRelationEdge",
+          "parent": "ClauseLinkingSequence",
+          "internal_parent": "ClauseRelationGraph",
+          "role": "ClauseRel",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 2,
+          "kind": "construction",
+          "surface": "頭先八點嗰陣",
+          "construction": "ClauseRelationMember",
+          "internal_construction": "ClauseRelationMemberSpan",
+          "parent": "ClauseRelation",
+          "internal_parent": "ClauseRelationEdge",
+          "role": "Relation-L",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "頭",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ClauseRelationMember",
+          "internal_parent": "ClauseRelationMemberSpan",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": "tau4"
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "先",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ClauseRelationMember",
+          "internal_parent": "ClauseRelationMemberSpan",
+          "role": "how",
+          "syntax": "sequence_or_focus clause_relation_linker sequential_relation_linker",
+          "jyutping": "sin1"
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "八",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ClauseRelationMember",
+          "internal_parent": "ClauseRelationMemberSpan",
+          "role": "how",
+          "syntax": "quantity count_value numeral_eight",
+          "jyutping": "baat3"
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "點",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ClauseRelationMember",
+          "internal_parent": "ClauseRelationMemberSpan",
+          "role": "how",
+          "syntax": "wh_manner",
+          "jyutping": "dim2"
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "嗰陣",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ClauseRelationMember",
+          "internal_parent": "ClauseRelationMemberSpan",
+          "role": "when",
+          "syntax": "time_np demonstrative_time",
+          "jyutping": "go2 zan6"
+        },
+        {
+          "depth": 2,
+          "kind": "text",
+          "surface": "，",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ClauseRelation",
+          "internal_parent": "ClauseRelationEdge",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 2,
+          "kind": "construction",
+          "surface": "阿樂唱緊首兒歌",
+          "construction": "ClauseRelationMember",
+          "internal_construction": "ClauseRelationMemberSpan",
+          "parent": "ClauseRelation",
+          "internal_parent": "ClauseRelationEdge",
+          "role": "Relation-R",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "阿",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ClauseRelationMember",
+          "internal_parent": "ClauseRelationMemberSpan",
+          "role": "who",
+          "syntax": "address_prefix",
+          "jyutping": "aa3"
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "樂",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ClauseRelationMember",
+          "internal_parent": "ClauseRelationMemberSpan",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "唱",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ClauseRelationMember",
+          "internal_parent": "ClauseRelationMemberSpan",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "緊",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ClauseRelationMember",
+          "internal_parent": "ClauseRelationMemberSpan",
+          "role": "func",
+          "syntax": "progressive_aspect",
+          "jyutping": "gan2"
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "首",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ClauseRelationMember",
+          "internal_parent": "ClauseRelationMemberSpan",
+          "role": "measure_word",
+          "syntax": "classifier_song_poem",
+          "jyutping": "sau2"
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "兒",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ClauseRelationMember",
+          "internal_parent": "ClauseRelationMemberSpan",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "歌",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ClauseRelationMember",
+          "internal_parent": "ClauseRelationMemberSpan",
+          "role": "what",
+          "syntax": "object_np",
+          "jyutping": "go1"
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "PROG-E07",
+      "case_class": "scholarly_example",
+      "surface": "爸爸返屋企嗰陣，我哋睇緊電視。",
+      "candidate_policy": "REQUIRED",
+      "expected_target_surfaces": [
+        "睇緊電視"
+      ],
+      "source_ids": "SRC-KATAOKA-2018-PROGRESSIVE-GAN",
+      "source_locator": "p. 134 example 2",
+      "research_note": "progressive inside reference-time clause",
+      "observation": "EXACT_TARGET_PRESENT",
+      "actual_target_surfaces": [
+        "睇緊電視"
+      ],
+      "exact_target_match_count": 1,
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "爸爸返屋企嗰陣，我哋睇緊電視"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "爸爸返屋企嗰陣，我哋睇緊電視。",
+        "parser_shadow_source": "爸爸返屋企嗰陣，我哋睇緊電視。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 8,
+        "final_node_count": 14,
+        "construction_count": 4,
+        "top_constructions": [
+          "ClauseLinkingSequence"
+        ],
+        "internal_top_constructions": [
+          "ClauseRelationGraph"
+        ],
+        "top_child_constructions": [
+          "MotionGoalVP",
+          "SubjectPredicateClause"
+        ],
+        "top_child_construction_count": 2,
+        "trace_summary": {
+          "governed_discourse_wrapper": 1,
+          "atomic_lexicon": 8,
+          "generative_template": 3,
+          "punctuation_or_plain_text": 2
+        },
+        "template_family_summary": {
+          "generative_template": 3
+        },
+        "review_count": 0,
+        "selection_decision_count": 8,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 8,
+        "parser_active_feature_bundle_count": 1,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PASS",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "爸爸返屋企嗰陣，我哋睇緊電視"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "MANUAL_REVIEW_ELIGIBLE",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 0,
+          "review_reason_count": 0,
+          "outer_wrapper_blocked": false,
+          "blockers": [],
+          "review_reasons": [],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+        "semantic_acceptance_blocker_count": 0,
+        "semantic_acceptance_review_reason_count": 0,
+        "semantic_acceptance_outer_wrapper_blocked": false
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "爸爸返屋企嗰陣，我哋睇緊電視",
+          "construction": "ClauseLinkingSequence",
+          "internal_construction": "ClauseRelationGraph",
+          "parent": "",
+          "internal_parent": "",
+          "role": "ClauseLink",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "爸爸",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ClauseLinkingSequence",
+          "internal_parent": "ClauseRelationGraph",
+          "role": "who",
+          "syntax": "person_np",
+          "jyutping": "baa1 baa1"
+        },
+        {
+          "depth": 1,
+          "kind": "construction",
+          "surface": "返屋企",
+          "construction": "MotionGoalVP",
+          "internal_construction": "MotionGoalVP",
+          "parent": "ClauseLinkingSequence",
+          "internal_parent": "ClauseRelationGraph",
+          "role": "MotionGoal",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 2,
+          "kind": "token",
+          "surface": "返",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "MotionGoalVP",
+          "internal_parent": "MotionGoalVP",
+          "role": "doing",
+          "syntax": "motion_goal_verb movement_verb",
+          "jyutping": "faan1"
+        },
+        {
+          "depth": 2,
+          "kind": "token",
+          "surface": "屋企",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "MotionGoalVP",
+          "internal_parent": "MotionGoalVP",
+          "role": "where",
+          "syntax": "motion_goal_location place_or_goal",
+          "jyutping": "uk1 kei2"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "嗰陣",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ClauseLinkingSequence",
+          "internal_parent": "ClauseRelationGraph",
+          "role": "when",
+          "syntax": "time_np demonstrative_time",
+          "jyutping": "go2 zan6"
+        },
+        {
+          "depth": 1,
+          "kind": "text",
+          "surface": "，",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ClauseLinkingSequence",
+          "internal_parent": "ClauseRelationGraph",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "construction",
+          "surface": "我哋睇緊電視",
+          "construction": "SubjectPredicateClause",
+          "internal_construction": "ClauseSpan",
+          "parent": "ClauseLinkingSequence",
+          "internal_parent": "ClauseRelationGraph",
+          "role": "SubjPred",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 2,
+          "kind": "token",
+          "surface": "我哋",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "SubjectPredicateClause",
+          "internal_parent": "ClauseSpan",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "ngo5 dei6"
+        },
+        {
+          "depth": 2,
+          "kind": "construction",
+          "surface": "睇緊電視",
+          "construction": "ProgressiveVP",
+          "internal_construction": "ProgressiveVP",
+          "parent": "SubjectPredicateClause",
+          "internal_parent": "ClauseSpan",
+          "role": "ProgVP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "睇",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProgressiveVP",
+          "internal_parent": "ProgressiveVP",
+          "role": "doing",
+          "syntax": "verb transitive_affordance chain_select_perception",
+          "jyutping": "tai2"
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "緊",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProgressiveVP",
+          "internal_parent": "ProgressiveVP",
+          "role": "func",
+          "syntax": "progressive_aspect",
+          "jyutping": "gan2"
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "電視",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProgressiveVP",
+          "internal_parent": "ProgressiveVP",
+          "role": "what",
+          "syntax": "media_noun object_np head_noun",
+          "jyutping": "din6 si6"
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "PROG-E08",
+      "case_class": "scholarly_contrast",
+      "surface": "媽媽着緊好靚嘅衫。",
+      "candidate_policy": "REQUIRED",
+      "expected_target_surfaces": [
+        "着緊好靚嘅衫"
+      ],
+      "source_ids": "SRC-KATAOKA-2018-PROGRESSIVE-GAN",
+      "source_locator": "p. 134 example 3",
+      "research_note": "contrast with 着住; modified NP object",
+      "observation": "TARGET_ABSENT",
+      "actual_target_surfaces": [],
+      "exact_target_match_count": 0,
+      "root_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "好靚嘅衫"
+        ],
+        "unwrapped_root_nonpunctuation_count": 3,
+        "unwrapped_root_surfaces": [
+          "媽媽",
+          "着",
+          "緊"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "媽媽着緊好靚嘅衫。",
+        "parser_shadow_source": "媽媽着緊好靚嘅衫。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 7,
+        "final_node_count": 11,
+        "construction_count": 3,
+        "top_constructions": [
+          "ModifierNP"
+        ],
+        "internal_top_constructions": [
+          "ModifierNP"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "atomic_lexicon": 6,
+          "unknown_atomic": 1,
+          "generative_template": 3,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 3
+        },
+        "review_count": 0,
+        "selection_decision_count": 6,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 7,
+        "parser_active_feature_bundle_count": 1,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PARTIAL",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "好靚嘅衫"
+        ],
+        "unwrapped_root_nonpunctuation_count": 3,
+        "unwrapped_root_surfaces": [
+          "媽媽",
+          "着",
+          "緊"
+        ],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "BLOCKED",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 2,
+          "review_reason_count": 1,
+          "outer_wrapper_blocked": false,
+          "blockers": [
+            {
+              "code": "unknown_lexical_material",
+              "path": "着[着]",
+              "construction": "",
+              "surface": "着",
+              "depth": 0,
+              "syntax": "unknown_cjk_or_text",
+              "trace_kind": "unknown_atomic"
+            },
+            {
+              "code": "partial_root_span_unwrapped_material",
+              "path": "ROOT",
+              "construction": "",
+              "surface": "",
+              "depth": 0,
+              "unwrapped_root_surfaces": [
+                "媽媽",
+                "着",
+                "緊"
+              ]
+            }
+          ],
+          "review_reasons": [
+            {
+              "code": "standalone_nominal_requires_fragment_or_context_review",
+              "path": "ROOT > ModifierNP",
+              "construction": "ModifierNP",
+              "surface": "好靚嘅衫",
+              "depth": 1
+            }
+          ],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "BLOCKED",
+        "semantic_acceptance_blocker_count": 2,
+        "semantic_acceptance_review_reason_count": 1,
+        "semantic_acceptance_outer_wrapper_blocked": false,
+        "semantic_review_flags": [
+          "partial_root_span_unwrapped_material"
+        ]
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "媽媽",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "who",
+          "syntax": "person_np",
+          "jyutping": "maa4 maa1"
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "着",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "緊",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "func",
+          "syntax": "progressive_aspect",
+          "jyutping": "gan2"
+        },
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "好靚嘅衫",
+          "construction": "ModifierNP",
+          "internal_construction": "ModifierNP",
+          "parent": "",
+          "internal_parent": "",
+          "role": "NP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "construction",
+          "surface": "好靚",
+          "construction": "DegreeStativePredicate",
+          "internal_construction": "DegreeStativePredicate",
+          "parent": "ModifierNP",
+          "internal_parent": "ModifierNP",
+          "role": "DegreeStative",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 2,
+          "kind": "token",
+          "surface": "好",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DegreeStativePredicate",
+          "internal_parent": "DegreeStativePredicate",
+          "role": "how",
+          "syntax": "degree_marker",
+          "jyutping": "hou2"
+        },
+        {
+          "depth": 2,
+          "kind": "token",
+          "surface": "靚",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DegreeStativePredicate",
+          "internal_parent": "DegreeStativePredicate",
+          "role": "like",
+          "syntax": "stative_predicate",
+          "jyutping": "leng3"
+        },
+        {
+          "depth": 1,
+          "kind": "construction",
+          "surface": "嘅衫",
+          "construction": "ModifiedNP",
+          "internal_construction": "ModifiedNP",
+          "parent": "ModifierNP",
+          "internal_parent": "ModifierNP",
+          "role": "NP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 2,
+          "kind": "token",
+          "surface": "嘅",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ModifiedNP",
+          "internal_parent": "ModifiedNP",
+          "role": "particle",
+          "syntax": "nominal_linker associative_linker",
+          "jyutping": "ge3"
+        },
+        {
+          "depth": 2,
+          "kind": "token",
+          "surface": "衫",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ModifiedNP",
+          "internal_parent": "ModifiedNP",
+          "role": "what",
+          "syntax": "object_np clothing_np",
+          "jyutping": "saam1"
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "PROG-E09",
+      "case_class": "scholarly_example",
+      "surface": "佢哋買緊樓。",
+      "candidate_policy": "REQUIRED",
+      "expected_target_surfaces": [
+        "買緊樓"
+      ],
+      "source_ids": "SRC-KATAOKA-2018-PROGRESSIVE-GAN",
+      "source_locator": "p. 135 example 7",
+      "research_note": "extended-process progressive",
+      "observation": "TARGET_PRESENT_WRONG_OR_INCOMPLETE_SPAN",
+      "actual_target_surfaces": [
+        "買緊"
+      ],
+      "exact_target_match_count": 0,
+      "root_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "買緊"
+        ],
+        "unwrapped_root_nonpunctuation_count": 2,
+        "unwrapped_root_surfaces": [
+          "佢哋",
+          "樓"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "佢哋買緊樓。",
+        "parser_shadow_source": "佢哋買緊樓。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 4,
+        "final_node_count": 6,
+        "construction_count": 1,
+        "top_constructions": [
+          "ProgressiveVP"
+        ],
+        "internal_top_constructions": [
+          "ProgressiveVP"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "atomic_lexicon": 3,
+          "generative_template": 1,
+          "unknown_atomic": 1,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 1
+        },
+        "review_count": 0,
+        "selection_decision_count": 3,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 4,
+        "parser_active_feature_bundle_count": 0,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PARTIAL",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "買緊"
+        ],
+        "unwrapped_root_nonpunctuation_count": 2,
+        "unwrapped_root_surfaces": [
+          "佢哋",
+          "樓"
+        ],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "BLOCKED",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 2,
+          "review_reason_count": 0,
+          "outer_wrapper_blocked": false,
+          "blockers": [
+            {
+              "code": "unknown_lexical_material",
+              "path": "樓[樓]",
+              "construction": "",
+              "surface": "樓",
+              "depth": 0,
+              "syntax": "unknown_cjk_or_text",
+              "trace_kind": "unknown_atomic"
+            },
+            {
+              "code": "partial_root_span_unwrapped_material",
+              "path": "ROOT",
+              "construction": "",
+              "surface": "",
+              "depth": 0,
+              "unwrapped_root_surfaces": [
+                "佢哋",
+                "樓"
+              ]
+            }
+          ],
+          "review_reasons": [],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "BLOCKED",
+        "semantic_acceptance_blocker_count": 2,
+        "semantic_acceptance_review_reason_count": 0,
+        "semantic_acceptance_outer_wrapper_blocked": false,
+        "semantic_review_flags": [
+          "partial_root_span_unwrapped_material"
+        ]
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "佢哋",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "keoi5 dei6"
+        },
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "買緊",
+          "construction": "ProgressiveVP",
+          "internal_construction": "ProgressiveVP",
+          "parent": "",
+          "internal_parent": "",
+          "role": "ProgVP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "買",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProgressiveVP",
+          "internal_parent": "ProgressiveVP",
+          "role": "doing",
+          "syntax": "verb",
+          "jyutping": "maai5"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "緊",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProgressiveVP",
+          "internal_parent": "ProgressiveVP",
+          "role": "func",
+          "syntax": "progressive_aspect",
+          "jyutping": "gan2"
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "樓",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "PROG-V01",
+      "case_class": "constructed_visible_variant",
+      "surface": "我問緊問題。",
+      "candidate_policy": "REQUIRED",
+      "expected_target_surfaces": [
+        "問緊問題"
+      ],
+      "source_ids": "",
+      "source_locator": "",
+      "research_note": "simple lexical variant; not evidence",
+      "observation": "EXACT_TARGET_PRESENT",
+      "actual_target_surfaces": [
+        "問緊問題"
+      ],
+      "exact_target_match_count": 1,
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "我問緊問題"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "我問緊問題。",
+        "parser_shadow_source": "我問緊問題。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 4,
+        "final_node_count": 7,
+        "construction_count": 2,
+        "top_constructions": [
+          "SubjectPredicateClause"
+        ],
+        "internal_top_constructions": [
+          "ClauseSpan"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "generative_template": 2,
+          "atomic_lexicon": 4,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 2
+        },
+        "review_count": 0,
+        "selection_decision_count": 4,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 4,
+        "parser_active_feature_bundle_count": 0,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PASS",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "我問緊問題"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "MANUAL_REVIEW_ELIGIBLE",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 0,
+          "review_reason_count": 0,
+          "outer_wrapper_blocked": false,
+          "blockers": [],
+          "review_reasons": [],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+        "semantic_acceptance_blocker_count": 0,
+        "semantic_acceptance_review_reason_count": 0,
+        "semantic_acceptance_outer_wrapper_blocked": false
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "我問緊問題",
+          "construction": "SubjectPredicateClause",
+          "internal_construction": "ClauseSpan",
+          "parent": "",
+          "internal_parent": "",
+          "role": "SubjPred",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "我",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "SubjectPredicateClause",
+          "internal_parent": "ClauseSpan",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "ngo5"
+        },
+        {
+          "depth": 1,
+          "kind": "construction",
+          "surface": "問緊問題",
+          "construction": "ProgressiveVP",
+          "internal_construction": "ProgressiveVP",
+          "parent": "SubjectPredicateClause",
+          "internal_parent": "ClauseSpan",
+          "role": "ProgVP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 2,
+          "kind": "token",
+          "surface": "問",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProgressiveVP",
+          "internal_parent": "ProgressiveVP",
+          "role": "doing",
+          "syntax": "verb",
+          "jyutping": "man6"
+        },
+        {
+          "depth": 2,
+          "kind": "token",
+          "surface": "緊",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProgressiveVP",
+          "internal_parent": "ProgressiveVP",
+          "role": "func",
+          "syntax": "progressive_aspect",
+          "jyutping": "gan2"
+        },
+        {
+          "depth": 2,
+          "kind": "token",
+          "surface": "問題",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProgressiveVP",
+          "internal_parent": "ProgressiveVP",
+          "role": "what",
+          "syntax": "object_np",
+          "jyutping": "man6 tai4"
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "PROG-V02",
+      "case_class": "constructed_visible_variant",
+      "surface": "佢寫緊封信。",
+      "candidate_policy": "REQUIRED",
+      "expected_target_surfaces": [
+        "寫緊封信"
+      ],
+      "source_ids": "",
+      "source_locator": "",
+      "research_note": "bare-classifier object; not evidence",
+      "observation": "TARGET_PRESENT_WRONG_OR_INCOMPLETE_SPAN",
+      "actual_target_surfaces": [
+        "寫緊"
+      ],
+      "exact_target_match_count": 0,
+      "root_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "寫緊"
+        ],
+        "unwrapped_root_nonpunctuation_count": 3,
+        "unwrapped_root_surfaces": [
+          "佢",
+          "封",
+          "信"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "佢寫緊封信。",
+        "parser_shadow_source": "佢寫緊封信。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 5,
+        "final_node_count": 7,
+        "construction_count": 1,
+        "top_constructions": [
+          "ProgressiveVP"
+        ],
+        "internal_top_constructions": [
+          "ProgressiveVP"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "atomic_lexicon": 4,
+          "generative_template": 1,
+          "unknown_atomic": 1,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 1
+        },
+        "review_count": 0,
+        "selection_decision_count": 4,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 5,
+        "parser_active_feature_bundle_count": 0,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PARTIAL",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "寫緊"
+        ],
+        "unwrapped_root_nonpunctuation_count": 3,
+        "unwrapped_root_surfaces": [
+          "佢",
+          "封",
+          "信"
+        ],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "BLOCKED",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 2,
+          "review_reason_count": 0,
+          "outer_wrapper_blocked": false,
+          "blockers": [
+            {
+              "code": "unknown_lexical_material",
+              "path": "封[封]",
+              "construction": "",
+              "surface": "封",
+              "depth": 0,
+              "syntax": "unknown_cjk_or_text",
+              "trace_kind": "unknown_atomic"
+            },
+            {
+              "code": "partial_root_span_unwrapped_material",
+              "path": "ROOT",
+              "construction": "",
+              "surface": "",
+              "depth": 0,
+              "unwrapped_root_surfaces": [
+                "佢",
+                "封",
+                "信"
+              ]
+            }
+          ],
+          "review_reasons": [],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "BLOCKED",
+        "semantic_acceptance_blocker_count": 2,
+        "semantic_acceptance_review_reason_count": 0,
+        "semantic_acceptance_outer_wrapper_blocked": false,
+        "semantic_review_flags": [
+          "partial_root_span_unwrapped_material"
+        ]
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "佢",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "keoi5"
+        },
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "寫緊",
+          "construction": "ProgressiveVP",
+          "internal_construction": "ProgressiveVP",
+          "parent": "",
+          "internal_parent": "",
+          "role": "ProgVP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "寫",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProgressiveVP",
+          "internal_parent": "ProgressiveVP",
+          "role": "doing",
+          "syntax": "verb write_verb",
+          "jyutping": "se2"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "緊",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProgressiveVP",
+          "internal_parent": "ProgressiveVP",
+          "role": "func",
+          "syntax": "progressive_aspect",
+          "jyutping": "gan2"
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "封",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "信",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "doing",
+          "syntax": "belief_verb",
+          "jyutping": "seon3"
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "PROG-V03",
+      "case_class": "constructed_visible_variant",
+      "surface": "我哋睇緊嗰份報告。",
+      "candidate_policy": "REQUIRED",
+      "expected_target_surfaces": [
+        "睇緊嗰份報告"
+      ],
+      "source_ids": "",
+      "source_locator": "",
+      "research_note": "demonstrative-classifier-noun object; not evidence",
+      "observation": "TARGET_PRESENT_WRONG_OR_INCOMPLETE_SPAN",
+      "actual_target_surfaces": [
+        "睇緊"
+      ],
+      "exact_target_match_count": 0,
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "我哋睇緊嗰份報告"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "我哋睇緊嗰份報告。",
+        "parser_shadow_source": "我哋睇緊嗰份報告。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 6,
+        "final_node_count": 11,
+        "construction_count": 4,
+        "top_constructions": [
+          "SubjectPredicateClause"
+        ],
+        "internal_top_constructions": [
+          "ClauseSpan"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "generative_template": 4,
+          "atomic_lexicon": 6,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 4
+        },
+        "review_count": 0,
+        "selection_decision_count": 6,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 6,
+        "parser_active_feature_bundle_count": 1,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PASS",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "我哋睇緊嗰份報告"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "MANUAL_REVIEW_ELIGIBLE",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 0,
+          "review_reason_count": 0,
+          "outer_wrapper_blocked": false,
+          "blockers": [],
+          "review_reasons": [],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+        "semantic_acceptance_blocker_count": 0,
+        "semantic_acceptance_review_reason_count": 0,
+        "semantic_acceptance_outer_wrapper_blocked": false
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "我哋睇緊嗰份報告",
+          "construction": "SubjectPredicateClause",
+          "internal_construction": "ClauseSpan",
+          "parent": "",
+          "internal_parent": "",
+          "role": "SubjPred",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "我哋",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "SubjectPredicateClause",
+          "internal_parent": "ClauseSpan",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "ngo5 dei6"
+        },
+        {
+          "depth": 1,
+          "kind": "construction",
+          "surface": "睇緊嗰份報告",
+          "construction": "TransitiveVP",
+          "internal_construction": "TransitiveVP",
+          "parent": "SubjectPredicateClause",
+          "internal_parent": "ClauseSpan",
+          "role": "VP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 2,
+          "kind": "construction",
+          "surface": "睇緊",
+          "construction": "ProgressiveVP",
+          "internal_construction": "ProgressiveVP",
+          "parent": "TransitiveVP",
+          "internal_parent": "TransitiveVP",
+          "role": "ProgVP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "睇",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProgressiveVP",
+          "internal_parent": "ProgressiveVP",
+          "role": "doing",
+          "syntax": "verb transitive_affordance chain_select_perception",
+          "jyutping": "tai2"
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "緊",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProgressiveVP",
+          "internal_parent": "ProgressiveVP",
+          "role": "func",
+          "syntax": "progressive_aspect",
+          "jyutping": "gan2"
+        },
+        {
+          "depth": 2,
+          "kind": "construction",
+          "surface": "嗰份報告",
+          "construction": "DemonstrativeClassifierNP",
+          "internal_construction": "DemonstrativeClassifierNP",
+          "parent": "TransitiveVP",
+          "internal_parent": "TransitiveVP",
+          "role": "NP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "嗰",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "func",
+          "syntax": "demonstrative_determiner",
+          "jyutping": "go2"
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "份",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "measure_word",
+          "syntax": "general_classifier document_task_classifier",
+          "jyutping": "fan6"
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "報告",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "what",
+          "syntax": "object_np document_np",
+          "jyutping": "bou3 gou3"
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "PROG-V04",
+      "case_class": "constructed_visible_variant",
+      "surface": "你聽緊首歌呀？",
+      "candidate_policy": "REQUIRED",
+      "expected_target_surfaces": [
+        "聽緊首歌"
+      ],
+      "source_ids": "",
+      "source_locator": "",
+      "research_note": "target VP inside polar question; not evidence",
+      "observation": "TARGET_PRESENT_WRONG_OR_INCOMPLETE_SPAN",
+      "actual_target_surfaces": [
+        "聽緊"
+      ],
+      "exact_target_match_count": 0,
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "你聽緊首歌呀"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "你聽緊首歌呀？",
+        "parser_shadow_source": "你聽緊首歌呀？",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 6,
+        "final_node_count": 11,
+        "construction_count": 4,
+        "top_constructions": [
+          "SubjectPredicateClause"
+        ],
+        "internal_top_constructions": [
+          "ClauseSpan"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "generative_template": 4,
+          "atomic_lexicon": 6,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 4
+        },
+        "review_count": 0,
+        "selection_decision_count": 6,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 6,
+        "parser_active_feature_bundle_count": 0,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PASS",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "你聽緊首歌呀"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "MANUAL_REVIEW_ELIGIBLE",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 0,
+          "review_reason_count": 0,
+          "outer_wrapper_blocked": false,
+          "blockers": [],
+          "review_reasons": [],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+        "semantic_acceptance_blocker_count": 0,
+        "semantic_acceptance_review_reason_count": 0,
+        "semantic_acceptance_outer_wrapper_blocked": false
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "你聽緊首歌呀",
+          "construction": "SubjectPredicateClause",
+          "internal_construction": "ClauseSpan",
+          "parent": "",
+          "internal_parent": "",
+          "role": "SubjPred",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "你",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "SubjectPredicateClause",
+          "internal_parent": "ClauseSpan",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "nei5"
+        },
+        {
+          "depth": 1,
+          "kind": "construction",
+          "surface": "聽緊首歌",
+          "construction": "TransitiveVP",
+          "internal_construction": "TransitiveVP",
+          "parent": "SubjectPredicateClause",
+          "internal_parent": "ClauseSpan",
+          "role": "VP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 2,
+          "kind": "construction",
+          "surface": "聽緊",
+          "construction": "ProgressiveVP",
+          "internal_construction": "ProgressiveVP",
+          "parent": "TransitiveVP",
+          "internal_parent": "TransitiveVP",
+          "role": "ProgVP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "聽",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProgressiveVP",
+          "internal_parent": "ProgressiveVP",
+          "role": "doing",
+          "syntax": "verb",
+          "jyutping": "teng1"
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "緊",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProgressiveVP",
+          "internal_parent": "ProgressiveVP",
+          "role": "func",
+          "syntax": "progressive_aspect",
+          "jyutping": "gan2"
+        },
+        {
+          "depth": 2,
+          "kind": "construction",
+          "surface": "首歌",
+          "construction": "ModifiedNP",
+          "internal_construction": "ModifiedNP",
+          "parent": "TransitiveVP",
+          "internal_parent": "TransitiveVP",
+          "role": "NP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "首",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ModifiedNP",
+          "internal_parent": "ModifiedNP",
+          "role": "measure_word",
+          "syntax": "classifier_song_poem",
+          "jyutping": "sau2"
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "歌",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ModifiedNP",
+          "internal_parent": "ModifiedNP",
+          "role": "what",
+          "syntax": "object_np",
+          "jyutping": "go1"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "呀",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "SubjectPredicateClause",
+          "internal_parent": "ClauseSpan",
+          "role": "particle",
+          "syntax": "sentence_final_particle",
+          "jyutping": "aa3"
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "？",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "PROG-N01",
+      "case_class": "preverbal_progressive_boundary",
+      "surface": "我而家喺度食飯。",
+      "candidate_policy": "FORBIDDEN",
+      "expected_target_surfaces": [],
+      "source_ids": "SRC-FAN-2024-JAU-VP-ASPECT",
+      "source_locator": "",
+      "research_note": "preverbal 喺度 is a different profile",
+      "observation": "NARROW_TARGET_ABSENT",
+      "actual_target_surfaces": [],
+      "exact_target_match_count": 0,
+      "root_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "食飯"
+        ],
+        "unwrapped_root_nonpunctuation_count": 3,
+        "unwrapped_root_surfaces": [
+          "我",
+          "而家",
+          "喺度"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "我而家喺度食飯。",
+        "parser_shadow_source": "我而家喺度食飯。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 5,
+        "final_node_count": 7,
+        "construction_count": 1,
+        "top_constructions": [
+          "ProductiveVO"
+        ],
+        "internal_top_constructions": [
+          "ProductiveVO"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "atomic_lexicon": 5,
+          "generative_template": 1,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 1
+        },
+        "review_count": 0,
+        "selection_decision_count": 3,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 5,
+        "parser_active_feature_bundle_count": 0,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PARTIAL",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "食飯"
+        ],
+        "unwrapped_root_nonpunctuation_count": 3,
+        "unwrapped_root_surfaces": [
+          "我",
+          "而家",
+          "喺度"
+        ],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "BLOCKED",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 1,
+          "review_reason_count": 0,
+          "outer_wrapper_blocked": false,
+          "blockers": [
+            {
+              "code": "partial_root_span_unwrapped_material",
+              "path": "ROOT",
+              "construction": "",
+              "surface": "",
+              "depth": 0,
+              "unwrapped_root_surfaces": [
+                "我",
+                "而家",
+                "喺度"
+              ]
+            }
+          ],
+          "review_reasons": [],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "BLOCKED",
+        "semantic_acceptance_blocker_count": 1,
+        "semantic_acceptance_review_reason_count": 0,
+        "semantic_acceptance_outer_wrapper_blocked": false,
+        "semantic_review_flags": [
+          "partial_root_span_unwrapped_material"
+        ]
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "我",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "ngo5"
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "而家",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "when",
+          "syntax": "temporal_adjunct",
+          "jyutping": "ji4 gaa1"
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "喺度",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "func",
+          "syntax": "progressive_or_locative_marker",
+          "jyutping": "hai2 dou6"
+        },
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "食飯",
+          "construction": "ProductiveVO",
+          "internal_construction": "ProductiveVO",
+          "parent": "",
+          "internal_parent": "",
+          "role": "VP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "食",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProductiveVO",
+          "internal_parent": "ProductiveVO",
+          "role": "doing",
+          "syntax": "verb",
+          "jyutping": "sik6"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "飯",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProductiveVO",
+          "internal_parent": "ProductiveVO",
+          "role": "what",
+          "syntax": "object",
+          "jyutping": "faan6"
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "PROG-N02",
+      "case_class": "continuous_zyu_boundary",
+      "surface": "我食住飯睇書。",
+      "candidate_policy": "FORBIDDEN",
+      "expected_target_surfaces": [],
+      "source_ids": "SRC-FAN-2024-JAU-VP-ASPECT",
+      "source_locator": "p. 7 example 7b",
+      "research_note": "住 and subordinate/accompanying VP",
+      "observation": "NARROW_TARGET_ABSENT",
+      "actual_target_surfaces": [],
+      "exact_target_match_count": 0,
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "我食住飯睇書"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "我食住飯睇書。",
+        "parser_shadow_source": "我食住飯睇書。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 6,
+        "final_node_count": 12,
+        "construction_count": 5,
+        "top_constructions": [
+          "SubjectPredicateClause"
+        ],
+        "internal_top_constructions": [
+          "ClauseSpan"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "generative_template": 5,
+          "atomic_lexicon": 6,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 5
+        },
+        "review_count": 0,
+        "selection_decision_count": 4,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 6,
+        "parser_active_feature_bundle_count": 1,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PASS",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "我食住飯睇書"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "MANUAL_REVIEW_ELIGIBLE",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 0,
+          "review_reason_count": 0,
+          "outer_wrapper_blocked": false,
+          "blockers": [],
+          "review_reasons": [],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+        "semantic_acceptance_blocker_count": 0,
+        "semantic_acceptance_review_reason_count": 0,
+        "semantic_acceptance_outer_wrapper_blocked": false
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "我食住飯睇書",
+          "construction": "SubjectPredicateClause",
+          "internal_construction": "ClauseSpan",
+          "parent": "",
+          "internal_parent": "",
+          "role": "SubjPred",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "我",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "SubjectPredicateClause",
+          "internal_parent": "ClauseSpan",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "ngo5"
+        },
+        {
+          "depth": 1,
+          "kind": "construction",
+          "surface": "食住飯睇書",
+          "construction": "TransitiveVP",
+          "internal_construction": "TransitiveVP",
+          "parent": "SubjectPredicateClause",
+          "internal_parent": "ClauseSpan",
+          "role": "VP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 2,
+          "kind": "construction",
+          "surface": "食住飯",
+          "construction": "TransitiveVP",
+          "internal_construction": "TransitiveVP",
+          "parent": "TransitiveVP",
+          "internal_parent": "TransitiveVP",
+          "role": "VP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "食",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "TransitiveVP",
+          "internal_parent": "TransitiveVP",
+          "role": "doing",
+          "syntax": "verb transitive_affordance chain_select_edible",
+          "jyutping": "sik6"
+        },
+        {
+          "depth": 3,
+          "kind": "construction",
+          "surface": "住飯",
+          "construction": "TransitiveVP",
+          "internal_construction": "TransitiveVP",
+          "parent": "TransitiveVP",
+          "internal_parent": "TransitiveVP",
+          "role": "VP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 4,
+          "kind": "token",
+          "surface": "住",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "TransitiveVP",
+          "internal_parent": "TransitiveVP",
+          "role": "doing",
+          "syntax": "verb residence_verb_or_durative_marker_homograph",
+          "jyutping": "zyu6"
+        },
+        {
+          "depth": 4,
+          "kind": "token",
+          "surface": "飯",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "TransitiveVP",
+          "internal_parent": "TransitiveVP",
+          "role": "what",
+          "syntax": "object_np",
+          "jyutping": "faan6"
+        },
+        {
+          "depth": 2,
+          "kind": "construction",
+          "surface": "睇書",
+          "construction": "ProductiveVO",
+          "internal_construction": "ProductiveVO",
+          "parent": "TransitiveVP",
+          "internal_parent": "TransitiveVP",
+          "role": "VP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "睇",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProductiveVO",
+          "internal_parent": "ProductiveVO",
+          "role": "doing",
+          "syntax": "verb",
+          "jyutping": "tai2"
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "書",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProductiveVO",
+          "internal_parent": "ProductiveVO",
+          "role": "what",
+          "syntax": "object",
+          "jyutping": "syu1"
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "PROG-N03",
+      "case_class": "objectless_boundary",
+      "surface": "佢食緊。",
+      "candidate_policy": "FORBIDDEN",
+      "expected_target_surfaces": [],
+      "source_ids": "",
+      "source_locator": "",
+      "research_note": "grammaticality not denied; outside overt-object subtype",
+      "observation": "BROAD_FAMILY_PRESENT_OUTSIDE_NARROW_TARGET",
+      "actual_target_surfaces": [
+        "食緊"
+      ],
+      "exact_target_match_count": 0,
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "佢食緊"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "佢食緊。",
+        "parser_shadow_source": "佢食緊。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 3,
+        "final_node_count": 6,
+        "construction_count": 2,
+        "top_constructions": [
+          "SubjectPredicateClause"
+        ],
+        "internal_top_constructions": [
+          "ClauseSpan"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "generative_template": 2,
+          "atomic_lexicon": 3,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 2
+        },
+        "review_count": 0,
+        "selection_decision_count": 3,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 3,
+        "parser_active_feature_bundle_count": 1,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PASS",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "佢食緊"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "MANUAL_REVIEW_ELIGIBLE",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 0,
+          "review_reason_count": 0,
+          "outer_wrapper_blocked": false,
+          "blockers": [],
+          "review_reasons": [],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+        "semantic_acceptance_blocker_count": 0,
+        "semantic_acceptance_review_reason_count": 0,
+        "semantic_acceptance_outer_wrapper_blocked": false
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "佢食緊",
+          "construction": "SubjectPredicateClause",
+          "internal_construction": "ClauseSpan",
+          "parent": "",
+          "internal_parent": "",
+          "role": "SubjPred",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "佢",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "SubjectPredicateClause",
+          "internal_parent": "ClauseSpan",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "keoi5"
+        },
+        {
+          "depth": 1,
+          "kind": "construction",
+          "surface": "食緊",
+          "construction": "ProgressiveVP",
+          "internal_construction": "ProgressiveVP",
+          "parent": "SubjectPredicateClause",
+          "internal_parent": "ClauseSpan",
+          "role": "ProgVP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 2,
+          "kind": "token",
+          "surface": "食",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProgressiveVP",
+          "internal_parent": "ProgressiveVP",
+          "role": "doing",
+          "syntax": "verb transitive_affordance chain_select_edible",
+          "jyutping": "sik6"
+        },
+        {
+          "depth": 2,
+          "kind": "token",
+          "surface": "緊",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProgressiveVP",
+          "internal_parent": "ProgressiveVP",
+          "role": "func",
+          "syntax": "progressive_aspect",
+          "jyutping": "gan2"
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "PROG-N04",
+      "case_class": "wh_object_boundary",
+      "surface": "你食緊咩？",
+      "candidate_policy": "FORBIDDEN",
+      "expected_target_surfaces": [],
+      "source_ids": "",
+      "source_locator": "",
+      "research_note": "progressive wh syntax remains compositional/outside subtype",
+      "observation": "BROAD_FAMILY_PRESENT_OUTSIDE_NARROW_TARGET",
+      "actual_target_surfaces": [
+        "食緊"
+      ],
+      "exact_target_match_count": 0,
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "你食緊咩"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "你食緊咩？",
+        "parser_shadow_source": "你食緊咩？",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 4,
+        "final_node_count": 7,
+        "construction_count": 2,
+        "top_constructions": [
+          "ProgressiveWhObjectQuestion"
+        ],
+        "internal_top_constructions": [
+          "ProgressiveWhObjectQuestion"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "generative_template": 2,
+          "atomic_lexicon": 4,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 2
+        },
+        "review_count": 0,
+        "selection_decision_count": 3,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 4,
+        "parser_active_feature_bundle_count": 1,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PASS",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "你食緊咩"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "MANUAL_REVIEW_ELIGIBLE",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 0,
+          "review_reason_count": 0,
+          "outer_wrapper_blocked": false,
+          "blockers": [],
+          "review_reasons": [],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+        "semantic_acceptance_blocker_count": 0,
+        "semantic_acceptance_review_reason_count": 0,
+        "semantic_acceptance_outer_wrapper_blocked": false
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "你食緊咩",
+          "construction": "ProgressiveWhObjectQuestion",
+          "internal_construction": "ProgressiveWhObjectQuestion",
+          "parent": "",
+          "internal_parent": "",
+          "role": "ProgWhQ",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "你",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProgressiveWhObjectQuestion",
+          "internal_parent": "ProgressiveWhObjectQuestion",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "nei5"
+        },
+        {
+          "depth": 1,
+          "kind": "construction",
+          "surface": "食緊",
+          "construction": "ProgressiveVP",
+          "internal_construction": "ProgressiveVP",
+          "parent": "ProgressiveWhObjectQuestion",
+          "internal_parent": "ProgressiveWhObjectQuestion",
+          "role": "ProgVP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 2,
+          "kind": "token",
+          "surface": "食",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProgressiveVP",
+          "internal_parent": "ProgressiveVP",
+          "role": "doing",
+          "syntax": "verb transitive_affordance chain_select_edible",
+          "jyutping": "sik6"
+        },
+        {
+          "depth": 2,
+          "kind": "token",
+          "surface": "緊",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProgressiveVP",
+          "internal_parent": "ProgressiveVP",
+          "role": "func",
+          "syntax": "progressive_aspect",
+          "jyutping": "gan2"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "咩",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProgressiveWhObjectQuestion",
+          "internal_parent": "ProgressiveWhObjectQuestion",
+          "role": "what",
+          "syntax": "wh_object",
+          "jyutping": "me1"
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "？",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "PROG-N05",
+      "case_class": "have_progressive_unresolved",
+      "surface": "佢有讀緊大學。",
+      "candidate_policy": "UNRESOLVED",
+      "expected_target_surfaces": [],
+      "source_ids": "SRC-FAN-2024-JAU-VP-ASPECT",
+      "source_locator": "pp. 4-5",
+      "research_note": "literature reports disputed and lexically varying judgments",
+      "observation": "UNRESOLVED_ENVIRONMENT_CURRENTLY_PARSED",
+      "actual_target_surfaces": [
+        "讀緊"
+      ],
+      "exact_target_match_count": 0,
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "佢有讀緊大學"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "佢有讀緊大學。",
+        "parser_shadow_source": "佢有讀緊大學。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 6,
+        "final_node_count": 11,
+        "construction_count": 4,
+        "top_constructions": [
+          "ExistentialClause"
+        ],
+        "internal_top_constructions": [
+          "ExistentialClause"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "generative_template": 4,
+          "atomic_lexicon": 6,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 4
+        },
+        "review_count": 0,
+        "selection_decision_count": 6,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 6,
+        "parser_active_feature_bundle_count": 1,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PASS",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "佢有讀緊大學"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "MANUAL_REVIEW_ELIGIBLE",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 0,
+          "review_reason_count": 0,
+          "outer_wrapper_blocked": false,
+          "blockers": [],
+          "review_reasons": [],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+        "semantic_acceptance_blocker_count": 0,
+        "semantic_acceptance_review_reason_count": 0,
+        "semantic_acceptance_outer_wrapper_blocked": false
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "佢有讀緊大學",
+          "construction": "ExistentialClause",
+          "internal_construction": "ExistentialClause",
+          "parent": "",
+          "internal_parent": "",
+          "role": "Have",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "佢",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ExistentialClause",
+          "internal_parent": "ExistentialClause",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "keoi5"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "有",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ExistentialClause",
+          "internal_parent": "ExistentialClause",
+          "role": "func",
+          "syntax": "existential_or_possessive",
+          "jyutping": "jau5"
+        },
+        {
+          "depth": 1,
+          "kind": "construction",
+          "surface": "讀緊大學",
+          "construction": "ActionStativeVP",
+          "internal_construction": "ActionStativeVP",
+          "parent": "ExistentialClause",
+          "internal_parent": "ExistentialClause",
+          "role": "VP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 2,
+          "kind": "construction",
+          "surface": "讀緊",
+          "construction": "ProgressiveVP",
+          "internal_construction": "ProgressiveVP",
+          "parent": "ActionStativeVP",
+          "internal_parent": "ActionStativeVP",
+          "role": "ProgVP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "讀",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProgressiveVP",
+          "internal_parent": "ProgressiveVP",
+          "role": "doing",
+          "syntax": "verb reading_pronunciation_verb transitive_verb",
+          "jyutping": "duk6"
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "緊",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProgressiveVP",
+          "internal_parent": "ProgressiveVP",
+          "role": "func",
+          "syntax": "progressive_aspect",
+          "jyutping": "gan2"
+        },
+        {
+          "depth": 2,
+          "kind": "construction",
+          "surface": "大學",
+          "construction": "ModifierNP",
+          "internal_construction": "ModifierNP",
+          "parent": "ActionStativeVP",
+          "internal_parent": "ActionStativeVP",
+          "role": "NP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "大",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ModifierNP",
+          "internal_parent": "ModifierNP",
+          "role": "like",
+          "syntax": "stative_predicate",
+          "jyutping": "daai6"
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "學",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ModifierNP",
+          "internal_parent": "ModifierNP",
+          "role": "what",
+          "syntax": "object_in_vo",
+          "jyutping": "hok6"
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "PROG-N06",
+      "case_class": "future_modal_negative_boundary",
+      "surface": "聽日八點嘅時候，我應該會瞓緊覺。",
+      "candidate_policy": "FORBIDDEN",
+      "expected_target_surfaces": [],
+      "source_ids": "SRC-FAN-2024-JAU-VP-ASPECT",
+      "source_locator": "p. 8 example 9b",
+      "research_note": "exact cited modal/future negative context",
+      "observation": "BROAD_FAMILY_PRESENT_OUTSIDE_NARROW_TARGET",
+      "actual_target_surfaces": [
+        "瞓緊覺"
+      ],
+      "exact_target_match_count": 0,
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "聽日八點嘅時候，我應該會瞓緊覺"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "聽日八點嘅時候，我應該會瞓緊覺。",
+        "parser_shadow_source": "聽日八點嘅時候，我應該會瞓緊覺。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 11,
+        "final_node_count": 21,
+        "construction_count": 8,
+        "top_constructions": [
+          "ClauseLinkingSequence"
+        ],
+        "internal_top_constructions": [
+          "ClauseRelationGraph"
+        ],
+        "top_child_constructions": [
+          "ClauseRelation"
+        ],
+        "top_child_construction_count": 1,
+        "trace_summary": {
+          "governed_discourse_wrapper": 1,
+          "generative_template": 6,
+          "construction_function": 1,
+          "atomic_lexicon": 10,
+          "construction_internal_parser_inactive_clone": 1,
+          "punctuation_or_plain_text": 2
+        },
+        "template_family_summary": {
+          "generative_template": 6
+        },
+        "review_count": 0,
+        "selection_decision_count": 10,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 11,
+        "parser_active_feature_bundle_count": 0,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PASS",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "聽日八點嘅時候，我應該會瞓緊覺"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "MANUAL_REVIEW_ELIGIBLE",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 0,
+          "review_reason_count": 0,
+          "outer_wrapper_blocked": false,
+          "blockers": [],
+          "review_reasons": [],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+        "semantic_acceptance_blocker_count": 0,
+        "semantic_acceptance_review_reason_count": 0,
+        "semantic_acceptance_outer_wrapper_blocked": false
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "聽日八點嘅時候，我應該會瞓緊覺",
+          "construction": "ClauseLinkingSequence",
+          "internal_construction": "ClauseRelationGraph",
+          "parent": "",
+          "internal_parent": "",
+          "role": "ClauseLink",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "construction",
+          "surface": "聽日八點嘅時候，我應該會瞓緊覺",
+          "construction": "ClauseRelation",
+          "internal_construction": "ClauseRelationEdge",
+          "parent": "ClauseLinkingSequence",
+          "internal_parent": "ClauseRelationGraph",
+          "role": "ClauseRel",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 2,
+          "kind": "construction",
+          "surface": "聽日八點嘅時候",
+          "construction": "ClauseRelationMember",
+          "internal_construction": "ClauseRelationMemberSpan",
+          "parent": "ClauseRelation",
+          "internal_parent": "ClauseRelationEdge",
+          "role": "Relation-L",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 3,
+          "kind": "construction",
+          "surface": "聽日八點嘅時候",
+          "construction": "RelativeClauseNP",
+          "internal_construction": "RelativeClauseNP",
+          "parent": "ClauseRelationMember",
+          "internal_parent": "ClauseRelationMemberSpan",
+          "role": "RelNP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 4,
+          "kind": "construction",
+          "surface": "聽日八點",
+          "construction": "TemporalClause",
+          "internal_construction": "TemporalClause",
+          "parent": "RelativeClauseNP",
+          "internal_parent": "RelativeClauseNP",
+          "role": "Time",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 5,
+          "kind": "token",
+          "surface": "聽日",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "TemporalClause",
+          "internal_parent": "TemporalClause",
+          "role": "when",
+          "syntax": "temporal_adjunct",
+          "jyutping": "ting1 jat6"
+        },
+        {
+          "depth": 5,
+          "kind": "token",
+          "surface": "八",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "TemporalClause",
+          "internal_parent": "TemporalClause",
+          "role": "how",
+          "syntax": "quantity count_value numeral_eight",
+          "jyutping": "baat3"
+        },
+        {
+          "depth": 5,
+          "kind": "token",
+          "surface": "點",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "TemporalClause",
+          "internal_parent": "TemporalClause",
+          "role": "how",
+          "syntax": "wh_manner",
+          "jyutping": "dim2"
+        },
+        {
+          "depth": 4,
+          "kind": "token",
+          "surface": "嘅",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "RelativeClauseNP",
+          "internal_parent": "RelativeClauseNP",
+          "role": "particle",
+          "syntax": "nominal_linker relative_clause_linker",
+          "jyutping": "ge3"
+        },
+        {
+          "depth": 4,
+          "kind": "token",
+          "surface": "時候",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "RelativeClauseNP",
+          "internal_parent": "RelativeClauseNP",
+          "role": "when",
+          "syntax": "time_np",
+          "jyutping": "si4 hau6"
+        },
+        {
+          "depth": 2,
+          "kind": "text",
+          "surface": "，",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ClauseRelation",
+          "internal_parent": "ClauseRelationEdge",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 2,
+          "kind": "construction",
+          "surface": "我應該會瞓緊覺",
+          "construction": "ClauseRelationMember",
+          "internal_construction": "ClauseRelationMemberSpan",
+          "parent": "ClauseRelation",
+          "internal_parent": "ClauseRelationEdge",
+          "role": "Relation-R",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "我",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ClauseRelationMember",
+          "internal_parent": "ClauseRelationMemberSpan",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "ngo5"
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "應該",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ClauseRelationMember",
+          "internal_parent": "ClauseRelationMemberSpan",
+          "role": "func",
+          "syntax": "stance_probability_or_should",
+          "jyutping": "jing1 goi1"
+        },
+        {
+          "depth": 3,
+          "kind": "construction",
+          "surface": "會瞓緊覺",
+          "construction": "ModalVP",
+          "internal_construction": "ModalVP",
+          "parent": "ClauseRelationMember",
+          "internal_parent": "ClauseRelationMemberSpan",
+          "role": "ModalVP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 4,
+          "kind": "token",
+          "surface": "會",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ModalVP",
+          "internal_parent": "ModalVP",
+          "role": "func",
+          "syntax": "modal_future_or_habitual",
+          "jyutping": "wui5"
+        },
+        {
+          "depth": 4,
+          "kind": "construction",
+          "surface": "瞓緊覺",
+          "construction": "ProgressiveVP",
+          "internal_construction": "ProgressiveVP",
+          "parent": "ModalVP",
+          "internal_parent": "ModalVP",
+          "role": "ProgVP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 5,
+          "kind": "token",
+          "surface": "瞓",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProgressiveVP",
+          "internal_parent": "ProgressiveVP",
+          "role": "doing",
+          "syntax": "verb",
+          "jyutping": "fan3"
+        },
+        {
+          "depth": 5,
+          "kind": "token",
+          "surface": "緊",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProgressiveVP",
+          "internal_parent": "ProgressiveVP",
+          "role": "func",
+          "syntax": "progressive_aspect",
+          "jyutping": "gan2"
+        },
+        {
+          "depth": 5,
+          "kind": "token",
+          "surface": "覺",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ProgressiveVP",
+          "internal_parent": "ProgressiveVP",
+          "role": "what",
+          "syntax": "object_in_vo",
+          "jyutping": "gaau3"
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "PROG-N07",
+      "case_class": "motion_objectless_boundary",
+      "surface": "有架巴士嚟緊。",
+      "candidate_policy": "FORBIDDEN",
+      "expected_target_surfaces": [],
+      "source_ids": "SRC-KATAOKA-2018-PROGRESSIVE-GAN",
+      "source_locator": "p. 135 example 5",
+      "research_note": "attested broad progressive but outside overt-object subtype",
+      "observation": "NARROW_TARGET_ABSENT",
+      "actual_target_surfaces": [],
+      "exact_target_match_count": 0,
+      "root_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 2,
+        "top_construction_surfaces": [
+          "架巴士",
+          "嚟"
+        ],
+        "unwrapped_root_nonpunctuation_count": 2,
+        "unwrapped_root_surfaces": [
+          "有",
+          "緊"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "有架巴士嚟緊。",
+        "parser_shadow_source": "有架巴士嚟緊。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 5,
+        "final_node_count": 8,
+        "construction_count": 2,
+        "top_constructions": [
+          "ModifiedNP",
+          "DirectionalMotionVP"
+        ],
+        "internal_top_constructions": [
+          "ModifiedNP",
+          "DirectionalMotionVP"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "atomic_lexicon": 5,
+          "generative_template": 2,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 2
+        },
+        "review_count": 0,
+        "selection_decision_count": 5,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 5,
+        "parser_active_feature_bundle_count": 0,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PARTIAL",
+        "root_top_construction_count": 2,
+        "root_top_construction_surfaces": [
+          "架巴士",
+          "嚟"
+        ],
+        "unwrapped_root_nonpunctuation_count": 2,
+        "unwrapped_root_surfaces": [
+          "有",
+          "緊"
+        ],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "BLOCKED",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 1,
+          "review_reason_count": 1,
+          "outer_wrapper_blocked": false,
+          "blockers": [
+            {
+              "code": "partial_root_span_unwrapped_material",
+              "path": "ROOT",
+              "construction": "",
+              "surface": "",
+              "depth": 0,
+              "unwrapped_root_surfaces": [
+                "有",
+                "緊"
+              ]
+            }
+          ],
+          "review_reasons": [
+            {
+              "code": "multiple_top_constructions",
+              "path": "ROOT",
+              "construction": "",
+              "surface": "",
+              "depth": 0,
+              "top_construction_surfaces": [
+                "架巴士",
+                "嚟"
+              ]
+            }
+          ],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "BLOCKED",
+        "semantic_acceptance_blocker_count": 1,
+        "semantic_acceptance_review_reason_count": 1,
+        "semantic_acceptance_outer_wrapper_blocked": false,
+        "semantic_review_flags": [
+          "multiple_top_constructions",
+          "partial_root_span_unwrapped_material"
+        ]
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "有",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "func",
+          "syntax": "existential_or_possessive",
+          "jyutping": "jau5"
+        },
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "架巴士",
+          "construction": "ModifiedNP",
+          "internal_construction": "ModifiedNP",
+          "parent": "",
+          "internal_parent": "",
+          "role": "NP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "架",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ModifiedNP",
+          "internal_parent": "ModifiedNP",
+          "role": "measure_word",
+          "syntax": "classifier_vehicle",
+          "jyutping": "gaa3"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "巴士",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ModifiedNP",
+          "internal_parent": "ModifiedNP",
+          "role": "what",
+          "syntax": "transport_noun object_np",
+          "jyutping": "baa1 si2"
+        },
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "嚟",
+          "construction": "DirectionalMotionVP",
+          "internal_construction": "DirectionalMotionVP",
+          "parent": "",
+          "internal_parent": "",
+          "role": "MotionVP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "嚟",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DirectionalMotionVP",
+          "internal_parent": "DirectionalMotionVP",
+          "role": "doing",
+          "syntax": "deictic_motion_marker",
+          "jyutping": "lai4"
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "緊",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "func",
+          "syntax": "progressive_aspect",
+          "jyutping": "gan2"
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "PROG-N08",
+      "case_class": "state_like_objectless_boundary",
+      "surface": "佢病緊。",
+      "candidate_policy": "FORBIDDEN",
+      "expected_target_surfaces": [],
+      "source_ids": "SRC-KATAOKA-2018-PROGRESSIVE-GAN",
+      "source_locator": "p. 135 example 6",
+      "research_note": "attested broad progressive but outside overt-object subtype",
+      "observation": "NARROW_TARGET_ABSENT",
+      "actual_target_surfaces": [],
+      "exact_target_match_count": 0,
+      "root_coverage": {
+        "status": "NO_TOP_CONSTRUCTION",
+        "top_construction_count": 0,
+        "top_construction_surfaces": [],
+        "unwrapped_root_nonpunctuation_count": 3,
+        "unwrapped_root_surfaces": [
+          "佢",
+          "病",
+          "緊"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "佢病緊。",
+        "parser_shadow_source": "佢病緊。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 3,
+        "final_node_count": 4,
+        "construction_count": 0,
+        "top_constructions": [],
+        "internal_top_constructions": [],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "atomic_lexicon": 2,
+          "unknown_atomic": 1,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {},
+        "review_count": 0,
+        "selection_decision_count": 2,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 3,
+        "parser_active_feature_bundle_count": 0,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "NO_TOP_CONSTRUCTION",
+        "root_top_construction_count": 0,
+        "root_top_construction_surfaces": [],
+        "unwrapped_root_nonpunctuation_count": 3,
+        "unwrapped_root_surfaces": [
+          "佢",
+          "病",
+          "緊"
+        ],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "BLOCKED",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 2,
+          "review_reason_count": 0,
+          "outer_wrapper_blocked": false,
+          "blockers": [
+            {
+              "code": "unknown_lexical_material",
+              "path": "病[病]",
+              "construction": "",
+              "surface": "病",
+              "depth": 0,
+              "syntax": "unknown_cjk_or_text",
+              "trace_kind": "unknown_atomic"
+            },
+            {
+              "code": "no_top_construction",
+              "path": "ROOT",
+              "construction": "",
+              "surface": "",
+              "depth": 0
+            }
+          ],
+          "review_reasons": [],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "BLOCKED",
+        "semantic_acceptance_blocker_count": 2,
+        "semantic_acceptance_review_reason_count": 0,
+        "semantic_acceptance_outer_wrapper_blocked": false,
+        "semantic_review_flags": [
+          "no_top_construction"
+        ]
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "佢",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "keoi5"
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "病",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "緊",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "func",
+          "syntax": "progressive_aspect",
+          "jyutping": "gan2"
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "PROG-P01",
+      "case_class": "preservation_perfective",
+      "surface": "我食咗飯。",
+      "candidate_policy": "FORBIDDEN",
+      "expected_target_surfaces": [],
+      "source_ids": "",
+      "source_locator": "",
+      "research_note": "accepted perfective subtype must remain separate",
+      "observation": "NARROW_TARGET_ABSENT",
+      "actual_target_surfaces": [],
+      "exact_target_match_count": 0,
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "我食咗飯"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "我食咗飯。",
+        "parser_shadow_source": "我食咗飯。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 4,
+        "final_node_count": 7,
+        "construction_count": 2,
+        "top_constructions": [
+          "SubjectPredicateClause"
+        ],
+        "internal_top_constructions": [
+          "ClauseSpan"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "generative_template": 2,
+          "atomic_lexicon": 4,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 2
+        },
+        "review_count": 0,
+        "selection_decision_count": 4,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 4,
+        "parser_active_feature_bundle_count": 1,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PASS",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "我食咗飯"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "MANUAL_REVIEW_ELIGIBLE",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 0,
+          "review_reason_count": 0,
+          "outer_wrapper_blocked": false,
+          "blockers": [],
+          "review_reasons": [],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+        "semantic_acceptance_blocker_count": 0,
+        "semantic_acceptance_review_reason_count": 0,
+        "semantic_acceptance_outer_wrapper_blocked": false
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "我食咗飯",
+          "construction": "SubjectPredicateClause",
+          "internal_construction": "ClauseSpan",
+          "parent": "",
+          "internal_parent": "",
+          "role": "SubjPred",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "我",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "SubjectPredicateClause",
+          "internal_parent": "ClauseSpan",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "ngo5"
+        },
+        {
+          "depth": 1,
+          "kind": "construction",
+          "surface": "食咗飯",
+          "construction": "PerfectiveVP",
+          "internal_construction": "PostverbalZoPerfectiveVP",
+          "parent": "SubjectPredicateClause",
+          "internal_parent": "ClauseSpan",
+          "role": "PerfectiveVP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 2,
+          "kind": "token",
+          "surface": "食",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "PerfectiveVP",
+          "internal_parent": "PostverbalZoPerfectiveVP",
+          "role": "doing",
+          "syntax": "verb transitive_affordance chain_select_edible",
+          "jyutping": "sik6"
+        },
+        {
+          "depth": 2,
+          "kind": "token",
+          "surface": "咗",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "PerfectiveVP",
+          "internal_parent": "PostverbalZoPerfectiveVP",
+          "role": "func",
+          "syntax": "perfective_aspect",
+          "jyutping": "zo2"
+        },
+        {
+          "depth": 2,
+          "kind": "token",
+          "surface": "飯",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "PerfectiveVP",
+          "internal_parent": "PostverbalZoPerfectiveVP",
+          "role": "what",
+          "syntax": "object_np",
+          "jyutping": "faan6"
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "PROG-P02",
+      "case_class": "preservation_experiential",
+      "surface": "我食過飯。",
+      "candidate_policy": "FORBIDDEN",
+      "expected_target_surfaces": [],
+      "source_ids": "",
+      "source_locator": "",
+      "research_note": "experiential aspect must remain separate",
+      "observation": "NARROW_TARGET_ABSENT",
+      "actual_target_surfaces": [],
+      "exact_target_match_count": 0,
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "我食過飯"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "我食過飯。",
+        "parser_shadow_source": "我食過飯。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 4,
+        "final_node_count": 8,
+        "construction_count": 3,
+        "top_constructions": [
+          "ExperientialClause"
+        ],
+        "internal_top_constructions": [
+          "ExperientialClause"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "generative_template": 3,
+          "atomic_lexicon": 4,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 3
+        },
+        "review_count": 0,
+        "selection_decision_count": 4,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 4,
+        "parser_active_feature_bundle_count": 1,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PASS",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "我食過飯"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "MANUAL_REVIEW_ELIGIBLE",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 0,
+          "review_reason_count": 0,
+          "outer_wrapper_blocked": false,
+          "blockers": [],
+          "review_reasons": [],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+        "semantic_acceptance_blocker_count": 0,
+        "semantic_acceptance_review_reason_count": 0,
+        "semantic_acceptance_outer_wrapper_blocked": false
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "我食過飯",
+          "construction": "ExperientialClause",
+          "internal_construction": "ExperientialClause",
+          "parent": "",
+          "internal_parent": "",
+          "role": "ExpClause",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "我",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ExperientialClause",
+          "internal_parent": "ExperientialClause",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "ngo5"
+        },
+        {
+          "depth": 1,
+          "kind": "construction",
+          "surface": "食過飯",
+          "construction": "TransitiveVP",
+          "internal_construction": "TransitiveVP",
+          "parent": "ExperientialClause",
+          "internal_parent": "ExperientialClause",
+          "role": "VP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 2,
+          "kind": "construction",
+          "surface": "食過",
+          "construction": "ExperientialVP",
+          "internal_construction": "ExperientialVP",
+          "parent": "TransitiveVP",
+          "internal_parent": "TransitiveVP",
+          "role": "ExpVP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "食",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ExperientialVP",
+          "internal_parent": "ExperientialVP",
+          "role": "doing",
+          "syntax": "verb transitive_affordance chain_select_edible",
+          "jyutping": "sik6"
+        },
+        {
+          "depth": 3,
+          "kind": "token",
+          "surface": "過",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ExperientialVP",
+          "internal_parent": "ExperientialVP",
+          "role": "func",
+          "syntax": "experiential_aspect",
+          "jyutping": "gwo3"
+        },
+        {
+          "depth": 2,
+          "kind": "token",
+          "surface": "飯",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "TransitiveVP",
+          "internal_parent": "TransitiveVP",
+          "role": "what",
+          "syntax": "object_np",
+          "jyutping": "faan6"
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,288 @@
+{
+  "schema": "canto-span-cp023-p1-prog01-r2-audit-v1",
+  "checkpoint": "CP023-P1-PROG01-R2",
+  "accepted_runtime": "v0.5.182",
+  "status": "PASS",
+  "total": 67,
+  "passed": 67,
+  "failed": 0,
+  "runtime_behavior_changed": false,
+  "checks": [
+    {
+      "name": "exists: docs/research/CP023-P1-PROG01-QUESTION-AND-SOURCE-FREEZE.md",
+      "pass": true
+    },
+    {
+      "name": "exists: docs/research/CP023-P1-PROG01-CLAIM-SOURCE-EDGES.tsv",
+      "pass": true
+    },
+    {
+      "name": "exists: docs/research/CP023-P1-PROG01-NATURAL-ATTESTATION-ADJUDICATION.md",
+      "pass": true
+    },
+    {
+      "name": "exists: docs/research/CP023-P1-PROG01-REMEDIATION-BLUEPRINT-R2.md",
+      "pass": true
+    },
+    {
+      "name": "exists: docs/research/CP023-P1-PROG01-REMEDIATION-DEPENDENCIES-R2.tsv",
+      "pass": true
+    },
+    {
+      "name": "exists: docs/research/CP023-P1-PROG01-LEXICON-JYUTPING-VERIFICATION-R2.md",
+      "pass": true
+    },
+    {
+      "name": "exists: docs/research/CP023-P1-PROG01-LEXICON-JYUTPING-R2.tsv",
+      "pass": true
+    },
+    {
+      "name": "exists: docs/research/CP023-P1-PROG01-LEXICON-SOURCE-REGISTER-R2.tsv",
+      "pass": true
+    },
+    {
+      "name": "exists: docs/research/CP023-P1-PROG01-R2-RESEARCH-CHECKPOINT.md",
+      "pass": true
+    },
+    {
+      "name": "exists: test-data/CP023-P1-PROG01-visible-research-packet.tsv",
+      "pass": true
+    },
+    {
+      "name": "exists: test-data/CP023-P1-PROG01-nominal-prerequisite-probes.tsv",
+      "pass": true
+    },
+    {
+      "name": "exists: test-data/CP023-P1-PROG01-lexicon-baseline-probes.tsv",
+      "pass": true
+    },
+    {
+      "name": "exists: validation/cp023-p1-prog01/current-baseline-observation.json",
+      "pass": true
+    },
+    {
+      "name": "exists: validation/cp023-p1-prog01/lexicon-baseline-observation.json",
+      "pass": true
+    },
+    {
+      "name": "exists: validation/cp023-p1-prog01/nominal-prerequisite-observation.json",
+      "pass": true
+    },
+    {
+      "name": "exists: review-packets/cp023-p1-prog01/PROG01-R2/focused-research-packet.json",
+      "pass": true
+    },
+    {
+      "name": "valid JSON: PROGRESS-CHECKPOINT.json",
+      "pass": true
+    },
+    {
+      "name": "valid JSON: PACKAGING-MANIFEST.json",
+      "pass": true
+    },
+    {
+      "name": "valid JSON: review-packets/cp023-p1-prog01/PROG01-R2/focused-research-packet.json",
+      "pass": true
+    },
+    {
+      "name": "valid JSON: validation/cp023-p1-prog01/current-baseline-observation.json",
+      "pass": true
+    },
+    {
+      "name": "valid JSON: validation/cp023-p1-prog01/lexicon-baseline-observation.json",
+      "pass": true
+    },
+    {
+      "name": "valid JSON: validation/cp023-p1-prog01/nominal-prerequisite-observation.json",
+      "pass": true
+    },
+    {
+      "name": "active research package is R2",
+      "pass": true,
+      "detail": "'CP023-P1-PROG01-R2'"
+    },
+    {
+      "name": "no active implementation candidate",
+      "pass": true
+    },
+    {
+      "name": "supported_productive remains 2",
+      "pass": true
+    },
+    {
+      "name": "heldout remains unselected",
+      "pass": true
+    },
+    {
+      "name": "runtime behavior recorded unchanged",
+      "pass": true
+    },
+    {
+      "name": "錫條 pronunciation explicitly unresolved",
+      "pass": true
+    },
+    {
+      "name": "R1 visible count 23",
+      "pass": true
+    },
+    {
+      "name": "R1 required exact 4",
+      "pass": true
+    },
+    {
+      "name": "R1 required incomplete 7",
+      "pass": true
+    },
+    {
+      "name": "R1 required absent 2",
+      "pass": true
+    },
+    {
+      "name": "R1 forbidden broad leakage 3",
+      "pass": true
+    },
+    {
+      "name": "lexicon baseline has 32 items",
+      "pass": true,
+      "detail": "32"
+    },
+    {
+      "name": "lexicon baseline contains 數據",
+      "pass": true
+    },
+    {
+      "name": "lexicon baseline contains 九巴",
+      "pass": true
+    },
+    {
+      "name": "lexicon baseline contains 布甸",
+      "pass": true
+    },
+    {
+      "name": "lexicon baseline contains 兒歌",
+      "pass": true
+    },
+    {
+      "name": "lexicon baseline contains 樓",
+      "pass": true
+    },
+    {
+      "name": "lexicon baseline contains 叉燒包",
+      "pass": true
+    },
+    {
+      "name": "lexicon baseline contains 信",
+      "pass": true
+    },
+    {
+      "name": "lexicon baseline contains 封信",
+      "pass": true
+    },
+    {
+      "name": "lexicon baseline contains 着",
+      "pass": true
+    },
+    {
+      "name": "lexicon baseline contains 錫條",
+      "pass": true
+    },
+    {
+      "name": "lexicon baseline contains 錫線",
+      "pass": true
+    },
+    {
+      "name": "叉燒包 baseline is not atomic",
+      "pass": true
+    },
+    {
+      "name": "信 baseline lacks noun NP",
+      "pass": true
+    },
+    {
+      "name": "nominal probe count 7",
+      "pass": true
+    },
+    {
+      "name": "nominal full root count 3",
+      "pass": true
+    },
+    {
+      "name": "associative NP baseline passes",
+      "pass": true
+    },
+    {
+      "name": "coordinate NP baseline has no top construction",
+      "pass": true
+    },
+    {
+      "name": "progressive coordinate object is partial",
+      "pass": true
+    },
+    {
+      "name": "啲 associative probe records premature DiMarkedNP",
+      "pass": true
+    },
+    {
+      "name": "啲 associative probe records detached 嘅報告",
+      "pass": true
+    },
+    {
+      "name": "lexicon verification table has 13 entries",
+      "pass": true,
+      "detail": "13"
+    },
+    {
+      "name": "錫條 row blocks hardcode",
+      "pass": true
+    },
+    {
+      "name": "dependency matrix covers 21 cases",
+      "pass": true,
+      "detail": "21"
+    },
+    {
+      "name": "dependency matrix separates nominal coordination",
+      "pass": true
+    },
+    {
+      "name": "dependency matrix preserves perfective",
+      "pass": true
+    },
+    {
+      "name": "blueprint contains: predicate–aspect compatibility",
+      "pass": true
+    },
+    {
+      "name": "blueprint contains: Coordinated nominal object",
+      "pass": true
+    },
+    {
+      "name": "blueprint contains: Associative NP under `啲`",
+      "pass": true
+    },
+    {
+      "name": "blueprint contains: Custody therefore remains unselected",
+      "pass": true
+    },
+    {
+      "name": "blueprint contains: supported_productive` remains **2**",
+      "pass": true
+    },
+    {
+      "name": "runtime identity: main.js",
+      "pass": true,
+      "detail": "86ff77131e12082885294eabe336bf95cbe0160469cd446a5c17b3e6c9a5b535 != 86ff77131e12082885294eabe336bf95cbe0160469cd446a5c17b3e6c9a5b535"
+    },
+    {
+      "name": "runtime identity: manifest.json",
+      "pass": true,
+      "detail": "84c0a1a885e2f841f66e6e9ec5be67d2a5ec8e16df490bdaef0f0150590c2f46 != 84c0a1a885e2f841f66e6e9ec5be67d2a5ec8e16df490bdaef0f0150590c2f46"
+    },
+    {
+      "name": "runtime identity: styles.css",
+      "pass": true,
+      "detail": "5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a != 5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a"
+    }
+  ],
+  "failures": []
+}

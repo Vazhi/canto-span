@@ -1,0 +1,88 @@
+{
+  "schema": "canto-span-source-accounting-audit-v3",
+  "checkpoint": "v0.5.183-cp026-p1-rul01-reaudit-r1",
+  "runtime_registry_labels": 181,
+  "active_governance_labels": 171,
+  "retired_labels": 10,
+  "total": 17,
+  "passed": 17,
+  "failed": 0,
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "frozen runtime registry has 181 labels",
+      "pass": true,
+      "detail": "181"
+    },
+    {
+      "name": "active governance has 171 labels",
+      "pass": true,
+      "detail": "171"
+    },
+    {
+      "name": "ten labels are retired",
+      "pass": true,
+      "detail": "10"
+    },
+    {
+      "name": "active and retired sets are disjoint",
+      "pass": true
+    },
+    {
+      "name": "runtime equals active plus retired residue",
+      "pass": true
+    },
+    {
+      "name": "legitimacy has 171 active rows",
+      "pass": true,
+      "detail": "171"
+    },
+    {
+      "name": "source accounting has 171 active rows",
+      "pass": true,
+      "detail": "171"
+    },
+    {
+      "name": "legitimacy covers active governance",
+      "pass": true
+    },
+    {
+      "name": "source accounting covers active governance",
+      "pass": true
+    },
+    {
+      "name": "retired labels absent from active legitimacy",
+      "pass": true
+    },
+    {
+      "name": "retired labels absent from active source accounting",
+      "pass": true
+    },
+    {
+      "name": "re-audit ledger remains 23 rows",
+      "pass": true,
+      "detail": "23"
+    },
+    {
+      "name": "supported_productive remains zero",
+      "pass": true
+    },
+    {
+      "name": "two rows remain provisional_reaudit",
+      "pass": true
+    },
+    {
+      "name": "ordinary provisional remains zero",
+      "pass": true
+    },
+    {
+      "name": "unsupported generalization reduced to 87",
+      "pass": true
+    },
+    {
+      "name": "no active row is promotion eligible",
+      "pass": true
+    }
+  ],
+  "failures": []
+}

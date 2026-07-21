@@ -1,0 +1,47 @@
+{
+  "checkpoint": "CP021B-SOURCE-DISCOVERY",
+  "status": "LEXICAL_CANDIDATE_INVENTORY_ONLY",
+  "generated_with_pycantonese": "5.0.0",
+  "corpus_name": "HKCanCor",
+  "corpus_files_in_distribution": 58,
+  "corpus_utterances_in_distribution": 16162,
+  "corpus_words_in_distribution": 153656,
+  "source_manifest_sha256": "d93b064614b38227889b2db20162eb0c2fee3fb75aa94e90dd9abfc64289c731",
+  "query": {
+    "exact_forms": [
+      "畀",
+      "俾"
+    ],
+    "primary_scope": "token.word exactly equals 畀 or 俾",
+    "expansion_scope": "token.word contains 畀 or 俾",
+    "parser_output_consulted": false,
+    "semantic_selection_performed": false
+  },
+  "counts": {
+    "exact_candidate_utterances": 444,
+    "expanded_candidate_utterances": 445,
+    "matched_tokens": 476,
+    "source_files_with_candidates": 50,
+    "matched_token_forms": {
+      "俾": 475,
+      "俾錢": 1
+    },
+    "matched_pos_tags": {
+      "p": 254,
+      "v": 219,
+      "vu": 3
+    },
+    "query_types": {
+      "exact_token": 475,
+      "substring_expansion": 1
+    }
+  },
+  "license_and_provenance": {
+    "repository": "https://github.com/fcbond/hkcancor",
+    "license": "CC BY 4.0",
+    "corpus_citation": "K. K. Luke and May L. Y. Wong (2015), The Hong Kong Cantonese Corpus: Design and Uses",
+    "recording_period": "1997-03 to 1998-08",
+    "distribution_limitation": "PyCantonese 5.0.0 supplies 58 files and 153,656 words; this is smaller than the repository's approximately 230,000-word description and is not a complete census of all Hong Kong Cantonese."
+  },
+  "interpretation_warning": "Lexical retrieval establishes candidate occurrence only. Rows are not gold syntactic analyses and cannot validate a parser construction."
+}

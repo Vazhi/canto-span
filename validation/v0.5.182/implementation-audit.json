@@ -1,0 +1,101 @@
+{
+  "schema": "canto-span-v0.5.182-implementation-audit-v1",
+  "status": "PASS",
+  "total": 21,
+  "passed": 21,
+  "failed": 0,
+  "heldout_opened": true,
+  "heldout_status": "CONSUMED",
+  "runtime_hashes": {
+    "main.js": "86ff77131e12082885294eabe336bf95cbe0160469cd446a5c17b3e6c9a5b535",
+    "manifest.json": "84c0a1a885e2f841f66e6e9ec5be67d2a5ec8e16df490bdaef0f0150590c2f46",
+    "styles.css": "5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a"
+  },
+  "checks": [
+    {
+      "name": "runtime exact",
+      "pass": true
+    },
+    {
+      "name": "policy exact",
+      "pass": true
+    },
+    {
+      "name": "registry 179 unique",
+      "pass": true
+    },
+    {
+      "name": "target accepted narrowly",
+      "pass": true
+    },
+    {
+      "name": "perfective accepted preserved",
+      "pass": true
+    },
+    {
+      "name": "alias preserved",
+      "pass": true
+    },
+    {
+      "name": "呢個杯用嚟飲水。 cup noun",
+      "pass": true
+    },
+    {
+      "name": "嗰個杯用嚟飲水。 cup noun",
+      "pass": true
+    },
+    {
+      "name": "呢隻杯用嚟飲水。 cup noun",
+      "pass": true
+    },
+    {
+      "name": "嗰隻杯用嚟飲水。 cup noun",
+      "pass": true
+    },
+    {
+      "name": "呢隻杯我用嚟飲水。 separate user excluded",
+      "pass": true
+    },
+    {
+      "name": "嗰隻杯佢用嚟飲水。 separate user excluded",
+      "pass": true
+    },
+    {
+      "name": "呢支筆我用嚟寫字。 separate user excluded",
+      "pass": true
+    },
+    {
+      "name": "written 來 loi4",
+      "pass": true
+    },
+    {
+      "name": "modal boundary",
+      "pass": true
+    },
+    {
+      "name": "actual-use boundary",
+      "pass": true
+    },
+    {
+      "name": "instrumental boundary",
+      "pass": true
+    },
+    {
+      "name": "visible gate pass",
+      "pass": true
+    },
+    {
+      "name": "packet lock pass",
+      "pass": true
+    },
+    {
+      "name": "manifest version",
+      "pass": true
+    },
+    {
+      "name": "custody absent",
+      "pass": true
+    }
+  ],
+  "failures": []
+}

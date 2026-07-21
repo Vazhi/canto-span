@@ -1,0 +1,358 @@
+{
+  "schema": "canto-span-cp024-p0-p1-r1-audit-v1",
+  "checkpoint": "CP024-P0-P1-R1",
+  "status": "PASS",
+  "passed": 69,
+  "failed": 0,
+  "total": 69,
+  "runtime_behavior_changed": false,
+  "supported_productive_delta": 0,
+  "checks": [
+    {
+      "name": "file exists: docs/research/CP024-P0-PRODUCTIVE-PROMOTION-PROGRAM-R1.md",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "file exists: docs/research/CP024-P0-PRODUCTIVE-ENDPOINT-FAMILY-LEDGER-R1.tsv",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "file exists: docs/research/CP024-P0-RUNTIME-LABEL-ENDPOINT-LEDGER-R1.tsv",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "file exists: docs/research/CP024-P0-PRODUCTIVE-ENDPOINT-SUMMARY-R1.json",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "file exists: docs/research/CP024-P0-OBSTACLE-REGISTER-R1.tsv",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "file exists: docs/research/CP024-P1-DEMO01-QUESTION-AND-SOURCE-FREEZE-R1.md",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "file exists: docs/research/CP024-P1-DEMO01-NATURAL-ATTESTATION-ADJUDICATION-R1.md",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "file exists: docs/research/CP024-P1-DEMO01-NATURAL-ATTESTATIONS-R1.tsv",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "file exists: docs/research/CP024-P1-DEMO01-IMPLEMENTATION-BLUEPRINT-R1.md",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "file exists: docs/research/CP024-P0-L45-VALENCY-DECOMPOSITION-FREEZE-R1.md",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "file exists: docs/research/CP024-P0-L45-CONSTRUCTOR-DEPENDENCY-MAP-R1.md",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "file exists: external-evaluator-handoff/cp024-p1-demo01/DEMO01-EVALUATOR-SPEC.md",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "file exists: test-data/CP024-P1-DEMO01-visible-research-packet.tsv",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "file exists: validation/cp024-p1-demo01/current-baseline-observation.json",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "53 canonical family rows",
+      "pass": true,
+      "detail": "53"
+    },
+    {
+      "name": "179 runtime label rows",
+      "pass": true,
+      "detail": "179"
+    },
+    {
+      "name": "runtime labels unique",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "productive target family count 40",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "endpoint counts match summary",
+      "pass": true,
+      "detail": "{'NARROW_SUPPORTED_PRODUCTIVE_SUBTYPE_REQUIRED': 102, 'RETIRE_MERGE_OR_RECLASSIFY': 38, 'INTERNAL_ONLY_NON_LICENSING': 20, 'RETIRE_PUBLIC_UMBRELLA_AFTER_DECOMPOSITION': 11, 'SUPPORTED_BOUNDED_LEXICALIZED': 6, 'ALREADY_SUPPORTED_PRODUCTIVE': 2}"
+    },
+    {
+      "name": "two already supported",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "20 internal-only",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "11 public umbrellas decompose",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "six bounded lexicalized",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "102 narrow subtype required",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "38 retire/merge/reclassify",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "obstacle IDs unique",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "natural attestation obstacle cleared",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "prospective custody remains external/open",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "render is later external gate",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "native conflict not triggered",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible packet 20 cases",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible policies 9/8/3",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "baseline total 20",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "baseline required 8/9 exact",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "baseline required absent one",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "baseline forbidden leakage two",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "baseline root coverage 16",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "required absent is 呢隻貓",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "leaks are headless 呢個/呢本",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "five natural attestation rows",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "five distinct source files",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "five distinct source hashes",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "at least four participant records",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "all exact manual adjudications",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "both proximal and distal natural forms",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "at least three classifiers",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "at least four head strings",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "source locators complete",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible packet lock status",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "locked hash: test-data/CP024-P1-DEMO01-visible-research-packet.tsv",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "locked hash: review-packets/cp024-p1-demo01/DEMO01-R1/focused-research-packet.json",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "locked hash: docs/research/CP024-P1-DEMO01-QUESTION-AND-SOURCE-FREEZE-R1.md",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "locked hash: docs/research/CP024-P1-DEMO01-IMPLEMENTATION-BLUEPRINT-R1.md",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "prospective heldout not selected",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "external recovery separation required",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "verb inventory nonempty",
+      "pass": true,
+      "detail": "113"
+    },
+    {
+      "name": "all verb inventory heuristic-only",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "constructor dependency map nonempty",
+      "pass": true,
+      "detail": "11"
+    },
+    {
+      "name": "code reference inventory nonempty",
+      "pass": true,
+      "detail": "117"
+    },
+    {
+      "name": "productive VO seed inventory 27",
+      "pass": true,
+      "detail": "27"
+    },
+    {
+      "name": "all VO seeds non-evidence",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "project state active CP024",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "project state natural gate pass",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "project state custody blocker",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "doctrine completion rule",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no false all-label productivity claim",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "runtime identity main.js",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "runtime identity manifest.json",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "runtime identity styles.css",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "failures": []
+}

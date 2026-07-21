@@ -1,0 +1,7 @@
+claim_id	claim	source_ids	support_relation	forbidden_inference
+DEMO-C01	Overt D-C-N is a documented Cantonese nominal profile	DEMO-S03;DEMO-S04;DEMO-S07	DIRECT_CONVERGENCE	Schema only; productivity still requires natural variation.
+DEMO-C02	D-C-N and D-Num-C-N must remain overtly distinct	DEMO-S03;DEMO-S04;DEMO-S07	DIRECT_CONVERGENCE	Do not infer a hidden one.
+DEMO-C03	Headless D-C is distinct from overt-head D-C-N	DEMO-S05;DEMO-S06	DIRECT_CORROBORATION	Discourse/antecedent conditions need their own packet.
+DEMO-C04	Classifier nominal structure is role-neutral	DEMO-S01;DEMO-S02;DEMO-S04	DIRECT_CONVERGENCE	Clause role belongs outside the nominal node.
+DEMO-C05	Non-deictic and ambiguous uses require exclusion or review	DEMO-S07	DIRECT_LIMITATION	Do not force a deictic overt-head analysis.
+DEMO-C06	Natural spoken corpus is available for candidate retrieval	DEMO-C01;DEMO-S07	RESOURCE_PROVENANCE	Individual hits are not yet adjudicated attestations.

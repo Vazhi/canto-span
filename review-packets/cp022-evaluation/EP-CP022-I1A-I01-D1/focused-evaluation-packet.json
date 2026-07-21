@@ -1,0 +1,186 @@
+{
+  "schema": "canto-span-focused-evaluation-packet-v1",
+  "packet_id": "EP-CP022-I1A-I01-D1",
+  "checkpoint": "CP022-I1A-I01-D1",
+  "canonical_family_id": "I01",
+  "canonical_family": "ClauseSpan",
+  "status": "HELD_OUT_LOCKED",
+  "implementation_authorized_under_standing_governed_authority": true,
+  "scope": "Internal ClauseSpan consolidation with intended semantic change NONE. Replace SubjectPredicateClause, SubjectModalPredicateClause, LocativeModalPredicateClause, TopicModalPredicateClause, and CoordinatedSubjectModalPredicateClause as active internal labels with one neutral ClauseSpan representation while preserving historical public diagnostic labels as compatibility metadata.",
+  "accepted_parent": "v0.5.178-cp022-i1a-i02-clause-relation-graph-cleanup-r1",
+  "dependency_status": "I02_ACCEPTED",
+  "responsibilities": {
+    "ClauseSpan": [
+      "overt clause-span accounting",
+      "preserve typed predicate child",
+      "preserve overt subject/topic/location/coordinated NP child",
+      "preserve source order and punctuation ownership"
+    ],
+    "forbidden": [
+      "independent valency licensing",
+      "word-order licensing",
+      "subject insertion",
+      "topic insertion",
+      "predicate-subtype licensing",
+      "modal licensing",
+      "argument omission licensing",
+      "context resolution",
+      "relation-subtype licensing",
+      "new Cantonese grammar acceptance"
+    ]
+  },
+  "active_label_plan": {
+    "add": [
+      "ClauseSpan"
+    ],
+    "retire_to_compatibility": [
+      "SubjectPredicateClause",
+      "SubjectModalPredicateClause",
+      "LocativeModalPredicateClause",
+      "TopicModalPredicateClause",
+      "CoordinatedSubjectModalPredicateClause"
+    ]
+  },
+  "development_set": {
+    "exact_positive": [
+      {
+        "case_id": "I01-E01",
+        "surface": "我食飯。",
+        "profile": "ordinary_subject_predicate",
+        "expected_public_top": "SubjectPredicateClause"
+      },
+      {
+        "case_id": "I01-E02",
+        "surface": "我喺屋企。",
+        "profile": "locative_subject_predicate",
+        "expected_public_top": "SubjectPredicateClause"
+      },
+      {
+        "case_id": "I01-E03",
+        "surface": "我一定可以去。",
+        "profile": "subject_modal_clause",
+        "expected_public_top": "SubjectModalPredicateClause"
+      },
+      {
+        "case_id": "I01-E04",
+        "surface": "喺屋企可以食飯。",
+        "profile": "locative_modal_clause",
+        "expected_public_top": "LocativeModalPredicateClause"
+      },
+      {
+        "case_id": "I01-E05",
+        "surface": "呢本書可以睇。",
+        "profile": "topic_modal_clause",
+        "expected_public_top": "TopicModalPredicateClause"
+      },
+      {
+        "case_id": "I01-E06",
+        "surface": "我同你可以去。",
+        "profile": "coordinated_subject_modal_clause",
+        "expected_public_top": "CoordinatedSubjectModalPredicateClause"
+      },
+      {
+        "case_id": "I01-E07",
+        "surface": "我食咗飯。",
+        "profile": "aspectual_typed_predicate_child",
+        "expected_public_top": "SubjectPredicateClause"
+      }
+    ],
+    "positive_variants": [
+      {
+        "case_id": "I01-V01",
+        "surface": "我冇去。",
+        "profile": "negative_typed_predicate_child",
+        "expected_public_top": "SubjectPredicateClause"
+      },
+      {
+        "case_id": "I01-V02",
+        "surface": "屋企可以食飯。",
+        "profile": "bare_place_modal_prefix",
+        "expected_public_top": "LocativeModalPredicateClause"
+      },
+      {
+        "case_id": "I01-V03",
+        "surface": "書可以睇。",
+        "profile": "bare_nominal_topic_modal_prefix",
+        "expected_public_top": "TopicModalPredicateClause"
+      },
+      {
+        "case_id": "I01-V04",
+        "surface": "你要唔要？",
+        "profile": "subject_modal_fallback",
+        "expected_public_top": "SubjectModalPredicateClause"
+      }
+    ]
+  },
+  "negative_boundaries": [
+    {
+      "case_id": "I01-N01",
+      "surface": "食飯。",
+      "profile": "predicate_without_overt_clause_prefix",
+      "forbidden_internal": "ClauseSpan"
+    },
+    {
+      "case_id": "I01-N02",
+      "surface": "可以去。",
+      "profile": "modal_vp_without_clause_prefix",
+      "forbidden_internal": "ClauseSpan"
+    },
+    {
+      "case_id": "I01-N03",
+      "surface": "我同你。",
+      "profile": "coordinated_np_fragment",
+      "forbidden_internal": "ClauseSpan"
+    },
+    {
+      "case_id": "I01-N04",
+      "surface": "喺屋企。",
+      "profile": "locative_fragment",
+      "forbidden_internal": "ClauseSpan"
+    }
+  ],
+  "render_review": {
+    "case_ids": [
+      "I01-E01",
+      "I01-E02",
+      "I01-E03",
+      "I01-E04",
+      "I01-E05",
+      "I01-E06",
+      "I01-V01",
+      "I01-N01",
+      "I01-N02",
+      "I01-N03"
+    ]
+  },
+  "acceptance_contract": {
+    "public_signature_unchanged": true,
+    "tokenization_unchanged": true,
+    "jyutping_unchanged": true,
+    "learner_roles_unchanged": true,
+    "root_coverage_unchanged": true,
+    "typed_predicate_children_unchanged": true,
+    "internal_clause_span_count": "exactly_one_for_each_positive_or_variant",
+    "negative_clause_span_count": 0,
+    "independent_grammar_licensing": false,
+    "supported_productive_delta": 0
+  },
+  "evidence_boundary": "I01 is an internal representation cleanup. It cannot validate SubjectPredicateClause or modal-clause grammar as productive Cantonese constructions.",
+  "held_out": {
+    "selection_state": "SELECTED_HASHED_LOCKED",
+    "case_count": 6,
+    "surface_visible_to_implementation": false,
+    "opened_after_lock": false,
+    "classes": [
+      "ordinary_subject_predicate",
+      "subject_modal",
+      "locative_modal",
+      "topic_modal",
+      "coordinated_subject_modal",
+      "non_clause_boundary"
+    ],
+    "manifest_hash": "3c112085036eef3c6aaab13b1b341a39a306abc04da439dd02a05a498bafa52e",
+    "custody_archive_filename": "CP022-I1A-I01-D1-EVALUATOR-CUSTODY-DO-NOT-OPEN-DURING-IMPLEMENTATION.zip",
+    "custody_archive_sha256": "964b84052849087f227efd2df7591f5fdd9d1a2f7815776daf0e3519a0b75a1c"
+  }
+}

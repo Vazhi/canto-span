@@ -1,0 +1,70 @@
+{
+  "schema": "canto-span-native-conflict-burden-audit-v2",
+  "checkpoint": "v0.5.181",
+  "status": "PASS",
+  "total": 13,
+  "passed": 13,
+  "failed": 0,
+  "policy": {
+    "publication_attestation_alone_sufficient": false,
+    "assumed_dialect_explanation": false,
+    "existing_conflicted_family": "V完咗O",
+    "candidate": "ResourceUseLaiFunctionRelation",
+    "future_conflict_effect": "freeze_promotion_and_require_conflict_resolution"
+  },
+  "checks": [
+    {
+      "name": "two exact V完咗O native rejections retained",
+      "pass": true
+    },
+    {
+      "name": "accepted completion contrasts retained",
+      "pass": true
+    },
+    {
+      "name": "higher-burden disposition remains recorded",
+      "pass": true
+    },
+    {
+      "name": "no minimizing variation assertion remains",
+      "pass": true
+    },
+    {
+      "name": "v0.5.181 packet has exactly two positive sources",
+      "pass": true
+    },
+    {
+      "name": "boundary sources cannot count as positive evidence",
+      "pass": true
+    },
+    {
+      "name": "dialect or register explanation is not assumed",
+      "pass": true
+    },
+    {
+      "name": "future native conflict freezes promotion",
+      "pass": true
+    },
+    {
+      "name": "target has no recorded native rejection",
+      "pass": true
+    },
+    {
+      "name": "target remains provisional before render and heldout",
+      "pass": true
+    },
+    {
+      "name": "only accepted non-conflicted subtype remains productive",
+      "pass": true
+    },
+    {
+      "name": "source matrix preserves limitations and competing analyses",
+      "pass": true
+    },
+    {
+      "name": "doctrine and acceptance retain conflict escalation",
+      "pass": true
+    }
+  ],
+  "failures": []
+}

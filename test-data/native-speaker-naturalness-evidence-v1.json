@@ -1,0 +1,4861 @@
+{
+  "schema": "canto-span-native-speaker-naturalness-evidence-v1",
+  "governance_runtime_version": "0.5.165",
+  "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+  "screened_parser_baseline": "v0.5.160-compositional-predicate-and-motion-event-architecture-r2",
+  "current_accepted_parser_behavior": "v0.5.163-lane10-age-price-measure-nominal-predication",
+  "reviewer_code": "NS-01",
+  "reviewer_count": 1,
+  "evidence_scope": "sentence_naturalness_only_not_parser_analysis_validation",
+  "raw_forms_included_in_package": false,
+  "source_forms": [
+    {
+      "batch_id": "P0",
+      "form_version": "0.1-pilot",
+      "source_kind": "normalized_pilot_result",
+      "source_filename": "canto-span-native-speaker-screening-pilot-P0-result.json",
+      "sha256": "70356621f4545305e602afedffb2b2fb6cb1ff67573d380cfe5924d39c7481cf",
+      "batch_completed": true
+    },
+    {
+      "batch_id": "B1",
+      "form_version": "1.0",
+      "source_kind": "completed_markdown_form",
+      "source_filename": "canto-span-native-speaker-screening-B1-v1.0(1).md",
+      "sha256": "570d82390c048871e7d8c1381e62764dbb61b507af785633f366bdd39f16c5a3",
+      "batch_completed": true
+    },
+    {
+      "batch_id": "B2",
+      "form_version": "1.0",
+      "source_kind": "completed_markdown_form",
+      "source_filename": "canto-span-native-speaker-screening-B2-v1.0(1).md",
+      "sha256": "7bc32ad5ef27af999a5e8d6ac2aab4a9fe259b4002c34daca33ef1645a4a91a4",
+      "batch_completed": true
+    },
+    {
+      "batch_id": "B3",
+      "form_version": "1.0",
+      "source_kind": "completed_markdown_form",
+      "source_filename": "canto-span-native-speaker-screening-B3-v1.0(1).md",
+      "sha256": "615f74e37fcf26f352ee6d74c3d8371760cd515dd5d4c149262f1662e5b26a1d",
+      "batch_completed": true
+    },
+    {
+      "batch_id": "B4",
+      "form_version": "1.0",
+      "source_kind": "completed_markdown_form",
+      "source_filename": "canto-span-native-speaker-screening-B4-v1.0(1).md",
+      "sha256": "d8a6d174239034a0ec51f8126991651850f33fb1f9cf1ca8ec7ec7427d501c38",
+      "batch_completed": true
+    },
+    {
+      "batch_id": "B5",
+      "form_version": "1.0",
+      "source_kind": "completed_markdown_form",
+      "source_filename": "canto-span-native-speaker-screening-B5-v1.0(1).md",
+      "sha256": "4e21486bcb5455a6467045f07c33cc486990bb3920f7bafd00b865c8ad42b184",
+      "batch_completed": true
+    },
+    {
+      "batch_id": "FU1",
+      "form_version": "1.0-follow-up",
+      "source_kind": "completed_markdown_form",
+      "source_filename": "canto-span-native-speaker-follow-up-FU1-v1.0(1).md",
+      "sha256": "21ef8542a58e7e3ef04383ef62c76e230647d27ffd9127321270b8e27d0e6b54",
+      "batch_completed": true
+    }
+  ],
+  "summary": {
+    "total_judgments": 136,
+    "acceptable_judgments": 128,
+    "rejected_judgments": 8,
+    "accepted_pattern_screening_judgments": 128,
+    "accepted_pattern_screening_acceptable": 124,
+    "accepted_pattern_screening_rejected": 4,
+    "follow_up_judgments": 3,
+    "follow_up_acceptable": 2,
+    "follow_up_rejected": 1,
+    "control_judgments": 3,
+    "controls_correctly_rejected": 3,
+    "repeat_judgments": 2,
+    "repeat_pairs_consistent": 2,
+    "corrections_provided": 0,
+    "labels_with_candidate_mapping": 89,
+    "labels_with_acceptable_surface_judgments": 85,
+    "labels_with_rejected_surface_judgments": 9,
+    "labels_with_only_rejected_surface_judgments": 4,
+    "native_analysis_validated_labels": 0,
+    "accepted_positive_fixture_conflict_units": 4
+  },
+  "repeat_consistency": [
+    {
+      "repeat_sentence_id": "CS160-R001",
+      "original_sentence_id": "CS160-P0-01",
+      "consistent": true
+    },
+    {
+      "repeat_sentence_id": "CS160-R002",
+      "original_sentence_id": "CS160-P0-05",
+      "consistent": true
+    }
+  ],
+  "accepted_positive_conflicts": [
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "P0",
+      "form_version": "0.1-pilot",
+      "sentence_id": "CS160-P0-03",
+      "display_order": 3,
+      "target_sentence": "食完咗飯。",
+      "minimal_context": "",
+      "naturalness_status": "marked_unnatural",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "PerfectiveVP",
+        "CompletionVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "accepted fixture",
+      "accepted_case_reference": "accepted v0.5.160 focused row",
+      "native_conflict": {
+        "conflict_class": "exact_accepted_fixture_native_rejection",
+        "disposition": "quarantine_as_positive_language_evidence_pending_aspect_analysis",
+        "analysis_note": "Subjectless 食完咗飯 was rejected. Follow-up with an overt subject was also rejected, while 我食完飯 and 我食完飯喇 were accepted; the observable issue is narrowed toward 完咗 ordering or compatibility rather than subject omission or completion generally."
+      }
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B1",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N005",
+      "display_order": 24,
+      "target_sentence": "下年呢個時間咪過囉。",
+      "minimal_context": "仲有成年先完，聽落好耐。",
+      "naturalness_status": "marked_unnatural",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "TemporalClause",
+        "TimeNP",
+        "ModifiedNP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "adapted_fixture",
+      "accepted_case_reference": "",
+      "native_conflict": {
+        "conflict_class": "adapted_accepted_fixture_native_rejection",
+        "disposition": "quarantine_adapted_surface_and_do_not_attribute_rejection_to_internal_labels_without_analysis",
+        "analysis_note": "The screened form was an orthographic adaptation of 下年哩個時間咪過囖. Rejection may involve wording, discourse fit, aspect or particle choice, or the temporal analysis; no single internal label is validated or falsified by this judgment."
+      }
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B2",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N031",
+      "display_order": 23,
+      "target_sentence": "唔做完。",
+      "minimal_context": "份功課今日點處理？",
+      "naturalness_status": "marked_unnatural",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "NegatedVP",
+        "CompletionVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "唔做完。",
+      "native_conflict": {
+        "conflict_class": "exact_accepted_fixture_native_rejection",
+        "disposition": "quarantine_exact_fixture_and_contrast_preverbal_negation_with_negative_potential",
+        "analysis_note": "唔做完 was rejected in the supplied context, while 做唔完份功課 was accepted elsewhere in the same screening. This is a subtype-level contrast, not analysis validation."
+      }
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B4",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N013",
+      "display_order": 4,
+      "target_sentence": "我飲七杯度喇。",
+      "minimal_context": "你今日飲咗幾多杯水？",
+      "naturalness_status": "marked_unnatural",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "SubjectPredicateClause",
+        "TransitiveVP",
+        "ApproximateQuantity"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我飲七杯度喇。",
+      "native_conflict": {
+        "conflict_class": "exact_accepted_fixture_native_rejection",
+        "disposition": "quarantine_approximate_quantity_fixture_pending_corpus_and_analysis_validation",
+        "analysis_note": "我飲七杯度喇 was rejected in a direct quantity-answer context. ApproximateQuantity remains unsupported and this fixture cannot serve as positive language evidence."
+      }
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "FU1",
+      "form_version": "1.0-follow-up",
+      "sentence_id": "CS160-FU1-01",
+      "display_order": 1,
+      "target_sentence": "我食完咗飯。",
+      "minimal_context": "",
+      "naturalness_status": "marked_unnatural",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "follow_up",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "SubjectPredicateClause",
+        "PerfectiveVP",
+        "CompletionVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "native_follow_up",
+      "accepted_case_reference": "follow-up to CS160-P0-03",
+      "native_conflict": {
+        "conflict_class": "follow_up_native_rejection",
+        "disposition": "supports_quarantine_of_V完咗O_surface_family",
+        "analysis_note": "Adding an overt subject did not make 我食完咗飯 acceptable."
+      }
+    }
+  ],
+  "label_candidate_mapping_summary": [
+    {
+      "construction_label": "ANotAQuestion",
+      "judgment_count": 2,
+      "acceptable_count": 2,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N104",
+        "CS160-N077"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "ActionStativeVP",
+      "judgment_count": 1,
+      "acceptable_count": 1,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N115"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "ApproximateQuantity",
+      "judgment_count": 1,
+      "acceptable_count": 0,
+      "rejected_count": 1,
+      "sentence_ids": [
+        "CS160-N013"
+      ],
+      "rejected_sentence_ids": [
+        "CS160-N013"
+      ],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "ClassifierObjectNP",
+      "judgment_count": 2,
+      "acceptable_count": 2,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N009",
+        "CS160-N029"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "ClauseLinkingSequence",
+      "judgment_count": 11,
+      "acceptable_count": 11,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-P0-08",
+        "CS160-N076",
+        "CS160-N114",
+        "CS160-N112",
+        "CS160-N117",
+        "CS160-N075",
+        "CS160-N109",
+        "CS160-N110",
+        "CS160-N113",
+        "CS160-N111",
+        "CS160-N074"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "ClauseRelation",
+      "judgment_count": 7,
+      "acceptable_count": 7,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N114",
+        "CS160-N108",
+        "CS160-N112",
+        "CS160-N109",
+        "CS160-N110",
+        "CS160-N113",
+        "CS160-N111"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "ClauseRelationMember",
+      "judgment_count": 7,
+      "acceptable_count": 7,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N114",
+        "CS160-N108",
+        "CS160-N112",
+        "CS160-N109",
+        "CS160-N110",
+        "CS160-N113",
+        "CS160-N111"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "CognitionContentFrame",
+      "judgment_count": 1,
+      "acceptable_count": 1,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N104"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "CognitionStatementClause",
+      "judgment_count": 2,
+      "acceptable_count": 2,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N102",
+        "CS160-N103"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "ComplementEllipsisFragment",
+      "judgment_count": 1,
+      "acceptable_count": 1,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N116"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "CompletionQuestion",
+      "judgment_count": 2,
+      "acceptable_count": 2,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N032",
+        "CS160-N033"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "CompletionVP",
+      "judgment_count": 7,
+      "acceptable_count": 4,
+      "rejected_count": 3,
+      "sentence_ids": [
+        "CS160-P0-03",
+        "CS160-N032",
+        "CS160-N023",
+        "CS160-N031",
+        "CS160-FU1-01",
+        "CS160-FU1-02",
+        "CS160-FU1-03"
+      ],
+      "rejected_sentence_ids": [
+        "CS160-P0-03",
+        "CS160-N031",
+        "CS160-FU1-01"
+      ],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "ConditionalClause",
+      "judgment_count": 1,
+      "acceptable_count": 1,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N114"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "CopularRelationFrame",
+      "judgment_count": 1,
+      "acceptable_count": 1,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N003"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "CoverbFrame",
+      "judgment_count": 3,
+      "acceptable_count": 3,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-P0-01",
+        "CS160-N114",
+        "CS160-N065"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "DegreeMannerAdverbial",
+      "judgment_count": 2,
+      "acceptable_count": 2,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N035",
+        "CS160-N034"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "DegreeStativePredicate",
+      "judgment_count": 5,
+      "acceptable_count": 5,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N014",
+        "CS160-N119",
+        "CS160-N106",
+        "CS160-N002",
+        "CS160-N113"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "DelimitedVP",
+      "judgment_count": 3,
+      "acceptable_count": 3,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N076",
+        "CS160-N075",
+        "CS160-N074"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "DemonstrativeClassifierNP",
+      "judgment_count": 6,
+      "acceptable_count": 6,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-P0-08",
+        "CS160-N016",
+        "CS160-N076",
+        "CS160-N006",
+        "CS160-N075",
+        "CS160-N074"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "DesiderativeVP",
+      "judgment_count": 4,
+      "acceptable_count": 4,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N076",
+        "CS160-N075",
+        "CS160-N073",
+        "CS160-N074"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "DiMarkedNP",
+      "judgment_count": 1,
+      "acceptable_count": 1,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N010"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "DirectedMannerMotionVP",
+      "judgment_count": 3,
+      "acceptable_count": 3,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N059",
+        "CS160-N054",
+        "CS160-N053"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "DirectionalMotionVP",
+      "judgment_count": 25,
+      "acceptable_count": 25,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-P0-02",
+        "CS160-N098",
+        "CS160-N039",
+        "CS160-N118",
+        "CS160-N057",
+        "CS160-N052",
+        "CS160-N097",
+        "CS160-N040",
+        "CS160-N058",
+        "CS160-N107",
+        "CS160-N108",
+        "CS160-N071",
+        "CS160-N069",
+        "CS160-N067",
+        "CS160-N004",
+        "CS160-N038",
+        "CS160-N041",
+        "CS160-N099",
+        "CS160-N109",
+        "CS160-N070",
+        "CS160-N110",
+        "CS160-N080",
+        "CS160-N068",
+        "CS160-N111",
+        "CS160-N073"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "DiscourseParticleFrame",
+      "judgment_count": 6,
+      "acceptable_count": 6,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N098",
+        "CS160-N096",
+        "CS160-N097",
+        "CS160-N064",
+        "CS160-N099",
+        "CS160-FU1-03"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "DurativeVP",
+      "judgment_count": 1,
+      "acceptable_count": 1,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N022"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "ExistentialClause",
+      "judgment_count": 2,
+      "acceptable_count": 2,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N120",
+        "CS160-N117"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "ExistentialQuestion",
+      "judgment_count": 3,
+      "acceptable_count": 3,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N084",
+        "CS160-N083",
+        "CS160-N081"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "ExistentialWhQuestion",
+      "judgment_count": 3,
+      "acceptable_count": 3,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N085",
+        "CS160-N087",
+        "CS160-N086"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "ExperientialClause",
+      "judgment_count": 1,
+      "acceptable_count": 1,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N021"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "ExperientialVP",
+      "judgment_count": 2,
+      "acceptable_count": 2,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N082",
+        "CS160-N021"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "ExperientialYesNoQuestion",
+      "judgment_count": 1,
+      "acceptable_count": 1,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N082"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "FocusParticleFrame",
+      "judgment_count": 3,
+      "acceptable_count": 3,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N008",
+        "CS160-N101",
+        "CS160-N018"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "FormulaDiscourseUnit",
+      "judgment_count": 2,
+      "acceptable_count": 2,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-P0-05",
+        "CS160-N095"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "FragmentAnswer",
+      "judgment_count": 3,
+      "acceptable_count": 3,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-P0-04",
+        "CS160-N121",
+        "CS160-N094"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "FragmentQuestion",
+      "judgment_count": 2,
+      "acceptable_count": 2,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N091",
+        "CS160-N092"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "GoalAttainmentMotionVP",
+      "judgment_count": 1,
+      "acceptable_count": 1,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N055"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "HeadNP",
+      "judgment_count": 5,
+      "acceptable_count": 5,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N114",
+        "CS160-N108",
+        "CS160-N028",
+        "CS160-N112",
+        "CS160-N111"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "IntransitiveVP",
+      "judgment_count": 1,
+      "acceptable_count": 1,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N112"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "LocativePlacePhrase",
+      "judgment_count": 2,
+      "acceptable_count": 2,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-P0-01",
+        "CS160-N065"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "LocativeWhQuestion",
+      "judgment_count": 1,
+      "acceptable_count": 1,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-P0-02"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "ModalANotAQuestion",
+      "judgment_count": 1,
+      "acceptable_count": 1,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N118"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "ModalVP",
+      "judgment_count": 8,
+      "acceptable_count": 8,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N097",
+        "CS160-N072",
+        "CS160-N071",
+        "CS160-N069",
+        "CS160-N067",
+        "CS160-N070",
+        "CS160-N066",
+        "CS160-N068"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "ModifiedNP",
+      "judgment_count": 7,
+      "acceptable_count": 6,
+      "rejected_count": 1,
+      "sentence_ids": [
+        "CS160-N012",
+        "CS160-N085",
+        "CS160-N005",
+        "CS160-N087",
+        "CS160-N017",
+        "CS160-N086",
+        "CS160-N115"
+      ],
+      "rejected_sentence_ids": [
+        "CS160-N005"
+      ],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "ModifierNP",
+      "judgment_count": 1,
+      "acceptable_count": 1,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N119"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "MotionGoalVP",
+      "judgment_count": 9,
+      "acceptable_count": 9,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-P0-06",
+        "CS160-N060",
+        "CS160-N096",
+        "CS160-N052",
+        "CS160-N056",
+        "CS160-N050",
+        "CS160-N049",
+        "CS160-N051",
+        "CS160-N004"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "MotionPurposeChain",
+      "judgment_count": 1,
+      "acceptable_count": 1,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N060"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "NeedsContext",
+      "judgment_count": 3,
+      "acceptable_count": 3,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N101",
+        "CS160-N100",
+        "CS160-N116"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "NegatedDirectionalMotionVP",
+      "judgment_count": 4,
+      "acceptable_count": 4,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N107",
+        "CS160-N108",
+        "CS160-N109",
+        "CS160-N110"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "NegatedExistentialClause",
+      "judgment_count": 1,
+      "acceptable_count": 1,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N088"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "NegatedExistentialFragment",
+      "judgment_count": 2,
+      "acceptable_count": 2,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N090",
+        "CS160-N089"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "NegatedVP",
+      "judgment_count": 1,
+      "acceptable_count": 0,
+      "rejected_count": 1,
+      "sentence_ids": [
+        "CS160-N031"
+      ],
+      "rejected_sentence_ids": [
+        "CS160-N031"
+      ],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "NegativeCognitionFragment",
+      "judgment_count": 1,
+      "acceptable_count": 1,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N093"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "NegativePotentialComplement",
+      "judgment_count": 2,
+      "acceptable_count": 2,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N030",
+        "CS160-N027"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "NegativePotentialDirectionalVP",
+      "judgment_count": 2,
+      "acceptable_count": 2,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N048",
+        "CS160-N046"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "OpinionStanceFrame",
+      "judgment_count": 5,
+      "acceptable_count": 5,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N121",
+        "CS160-N116",
+        "CS160-N003",
+        "CS160-N105",
+        "CS160-N106"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "PathPhrase",
+      "judgment_count": 1,
+      "acceptable_count": 1,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N053"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "PerfectiveDirectionalVP",
+      "judgment_count": 2,
+      "acceptable_count": 2,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N042",
+        "CS160-N043"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "PerfectiveVP",
+      "judgment_count": 8,
+      "acceptable_count": 6,
+      "rejected_count": 2,
+      "sentence_ids": [
+        "CS160-P0-03",
+        "CS160-P0-08",
+        "CS160-N019",
+        "CS160-N105",
+        "CS160-N117",
+        "CS160-N025",
+        "CS160-N033",
+        "CS160-FU1-01"
+      ],
+      "rejected_sentence_ids": [
+        "CS160-P0-03",
+        "CS160-FU1-01"
+      ],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "PolarQuestionFrame",
+      "judgment_count": 1,
+      "acceptable_count": 1,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N080"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "PotentialDirectionalVP",
+      "judgment_count": 2,
+      "acceptable_count": 2,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N045",
+        "CS160-N047"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "PotentialResultVP",
+      "judgment_count": 2,
+      "acceptable_count": 2,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N028",
+        "CS160-N029"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "ProductiveVO",
+      "judgment_count": 6,
+      "acceptable_count": 6,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-P0-01",
+        "CS160-N108",
+        "CS160-N065",
+        "CS160-N109",
+        "CS160-N110",
+        "CS160-N066"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "ProgressiveDirectionalVP",
+      "judgment_count": 1,
+      "acceptable_count": 1,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N044"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "ProgressiveVP",
+      "judgment_count": 3,
+      "acceptable_count": 3,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N020",
+        "CS160-N079",
+        "CS160-N113"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "ProgressiveWhObjectQuestion",
+      "judgment_count": 1,
+      "acceptable_count": 1,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N079"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "QuantifiedClassifierNP",
+      "judgment_count": 4,
+      "acceptable_count": 4,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N008",
+        "CS160-N101",
+        "CS160-N117",
+        "CS160-N007"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "QuantifiedPersonNP",
+      "judgment_count": 1,
+      "acceptable_count": 1,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N120"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "QuantifiedTimeNP",
+      "judgment_count": 1,
+      "acceptable_count": 1,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N015"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "QuantityNP",
+      "judgment_count": 1,
+      "acceptable_count": 1,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N018"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "RecipientFrame",
+      "judgment_count": 1,
+      "acceptable_count": 1,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N064"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "ReduplicatedVP",
+      "judgment_count": 1,
+      "acceptable_count": 1,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N114"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "RelativeClauseNP",
+      "judgment_count": 1,
+      "acceptable_count": 1,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N002"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "RepetitiveComplementVP",
+      "judgment_count": 2,
+      "acceptable_count": 2,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N009",
+        "CS160-N037"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "ReportedSpeech",
+      "judgment_count": 2,
+      "acceptable_count": 2,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N107",
+        "CS160-N108"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "RestorativeComplementVP",
+      "judgment_count": 1,
+      "acceptable_count": 1,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N036"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "ResultComplement",
+      "judgment_count": 1,
+      "acceptable_count": 1,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N026"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "ResultComplementVP",
+      "judgment_count": 2,
+      "acceptable_count": 2,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N024",
+        "CS160-N025"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "SerialVerbPurposeChain",
+      "judgment_count": 1,
+      "acceptable_count": 1,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-P0-06"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "SourceMotionClause",
+      "judgment_count": 4,
+      "acceptable_count": 4,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N052",
+        "CS160-N059",
+        "CS160-N050",
+        "CS160-N051"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "StativeNominalComplement",
+      "judgment_count": 1,
+      "acceptable_count": 1,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N003"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "StativePredicate",
+      "judgment_count": 1,
+      "acceptable_count": 1,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N121"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "SubjectModalPredicateClause",
+      "judgment_count": 1,
+      "acceptable_count": 1,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N072"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "SubjectPredicateClause",
+      "judgment_count": 32,
+      "acceptable_count": 30,
+      "rejected_count": 2,
+      "sentence_ids": [
+        "CS160-P0-06",
+        "CS160-P0-08",
+        "CS160-N001",
+        "CS160-N098",
+        "CS160-N055",
+        "CS160-N060",
+        "CS160-N096",
+        "CS160-N012",
+        "CS160-N057",
+        "CS160-N056",
+        "CS160-N078",
+        "CS160-N049",
+        "CS160-N107",
+        "CS160-N119",
+        "CS160-N105",
+        "CS160-N004",
+        "CS160-N013",
+        "CS160-N117",
+        "CS160-N099",
+        "CS160-N054",
+        "CS160-N109",
+        "CS160-N110",
+        "CS160-N007",
+        "CS160-N080",
+        "CS160-N002",
+        "CS160-N111",
+        "CS160-N053",
+        "CS160-N115",
+        "CS160-N011",
+        "CS160-FU1-01",
+        "CS160-FU1-02",
+        "CS160-FU1-03"
+      ],
+      "rejected_sentence_ids": [
+        "CS160-N013",
+        "CS160-FU1-01"
+      ],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "TemporalClause",
+      "judgment_count": 1,
+      "acceptable_count": 0,
+      "rejected_count": 1,
+      "sentence_ids": [
+        "CS160-N005"
+      ],
+      "rejected_sentence_ids": [
+        "CS160-N005"
+      ],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "TimeNP",
+      "judgment_count": 1,
+      "acceptable_count": 0,
+      "rejected_count": 1,
+      "sentence_ids": [
+        "CS160-N005"
+      ],
+      "rejected_sentence_ids": [
+        "CS160-N005"
+      ],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "TransferDitransitiveVP",
+      "judgment_count": 3,
+      "acceptable_count": 3,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N063",
+        "CS160-N061",
+        "CS160-N062"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "TransitiveVP",
+      "judgment_count": 13,
+      "acceptable_count": 12,
+      "rejected_count": 1,
+      "sentence_ids": [
+        "CS160-P0-06",
+        "CS160-N001",
+        "CS160-N060",
+        "CS160-N012",
+        "CS160-N082",
+        "CS160-N078",
+        "CS160-N013",
+        "CS160-N112",
+        "CS160-N021",
+        "CS160-N007",
+        "CS160-N002",
+        "CS160-N115",
+        "CS160-N011"
+      ],
+      "rejected_sentence_ids": [
+        "CS160-N013"
+      ],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "VerbComplementVP",
+      "judgment_count": 5,
+      "acceptable_count": 5,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N010",
+        "CS160-N035",
+        "CS160-N058",
+        "CS160-N034",
+        "CS160-N038"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    },
+    {
+      "construction_label": "WhClassifierQuestion",
+      "judgment_count": 1,
+      "acceptable_count": 1,
+      "rejected_count": 0,
+      "sentence_ids": [
+        "CS160-N011"
+      ],
+      "rejected_sentence_ids": [],
+      "native_analysis_validation_count": 0,
+      "interpretation": "Candidate mapping from internal screening design; the native speaker judged sentence naturalness only."
+    }
+  ],
+  "judgments": [
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "P0",
+      "form_version": "0.1-pilot",
+      "sentence_id": "CS160-P0-01",
+      "display_order": 1,
+      "target_sentence": "我琴日喺屋企食飯。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "CoverbFrame",
+        "LocativePlacePhrase",
+        "ProductiveVO"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "accepted fixture",
+      "accepted_case_reference": "ACCEPTED-458",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "P0",
+      "form_version": "0.1-pilot",
+      "sentence_id": "CS160-P0-02",
+      "display_order": 2,
+      "target_sentence": "你尋日去咗邊度呀？",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "LocativeWhQuestion",
+        "DirectionalMotionVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "accepted fixture",
+      "accepted_case_reference": "ACCEPTED-119",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "P0",
+      "form_version": "0.1-pilot",
+      "sentence_id": "CS160-P0-03",
+      "display_order": 3,
+      "target_sentence": "食完咗飯。",
+      "minimal_context": "",
+      "naturalness_status": "marked_unnatural",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "PerfectiveVP",
+        "CompletionVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "accepted fixture",
+      "accepted_case_reference": "accepted v0.5.160 focused row",
+      "native_conflict": {
+        "conflict_class": "exact_accepted_fixture_native_rejection",
+        "disposition": "quarantine_as_positive_language_evidence_pending_aspect_analysis",
+        "analysis_note": "Subjectless 食完咗飯 was rejected. Follow-up with an overt subject was also rejected, while 我食完飯 and 我食完飯喇 were accepted; the observable issue is narrowed toward 完咗 ordering or compatibility rather than subject omission or completion generally."
+      }
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "P0",
+      "form_version": "0.1-pilot",
+      "sentence_id": "CS160-P0-04",
+      "display_order": 4,
+      "target_sentence": "唔使。",
+      "minimal_context": "你使唔使去？",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "FragmentAnswer"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "accepted fixture",
+      "accepted_case_reference": "ACCEPTED-328",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "P0",
+      "form_version": "0.1-pilot",
+      "sentence_id": "CS160-P0-05",
+      "display_order": 5,
+      "target_sentence": "可以呀。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "FormulaDiscourseUnit"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "accepted fixture",
+      "accepted_case_reference": "ACCEPTED-043",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "P0",
+      "form_version": "0.1-pilot",
+      "sentence_id": "CS160-P0-06",
+      "display_order": 6,
+      "target_sentence": "我去街市買餸煮飯。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "SubjectPredicateClause",
+        "MotionGoalVP",
+        "SerialVerbPurposeChain",
+        "TransitiveVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "accepted fixture",
+      "accepted_case_reference": "ACCEPTED-480",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "P0",
+      "form_version": "0.1-pilot",
+      "sentence_id": "CS160-P0-07",
+      "display_order": 7,
+      "target_sentence": "我喺屋企琴日食飯。",
+      "minimal_context": "",
+      "naturalness_status": "marked_unnatural",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "control",
+      "control_item": true,
+      "repeat_item": false,
+      "candidate_construction_labels": [],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "accepted blocked fixture",
+      "accepted_case_reference": "ACCEPTED-459",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "P0",
+      "form_version": "0.1-pilot",
+      "sentence_id": "CS160-P0-08",
+      "display_order": 8,
+      "target_sentence": "呢個故事，我睇咗，佢都睇咗。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "ClauseLinkingSequence",
+        "DemonstrativeClassifierNP",
+        "PerfectiveVP",
+        "SubjectPredicateClause"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "accepted fixture",
+      "accepted_case_reference": "ACCEPTED-275",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B1",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N001",
+      "display_order": 1,
+      "target_sentence": "我講廣東話。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "SubjectPredicateClause",
+        "TransitiveVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我講廣東話。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B1",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N098",
+      "display_order": 2,
+      "target_sentence": "你走啦。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "DiscourseParticleFrame",
+        "SubjectPredicateClause",
+        "DirectionalMotionVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "你走啦。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B1",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N039",
+      "display_order": 3,
+      "target_sentence": "行入去。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "DirectionalMotionVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "行入去。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B1",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N095",
+      "display_order": 4,
+      "target_sentence": "咁又係。",
+      "minimal_context": "落雨就唔好出去喇。",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "FormulaDiscourseUnit"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "咁又係。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B1",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N055",
+      "display_order": 5,
+      "target_sentence": "我返到屋企。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "SubjectPredicateClause",
+        "GoalAttainmentMotionVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我返到屋企。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B1",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N042",
+      "display_order": 6,
+      "target_sentence": "入咗嚟。",
+      "minimal_context": "佢啱啱做咗咩？",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "PerfectiveDirectionalVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "入咗嚟。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B1",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N030",
+      "display_order": 7,
+      "target_sentence": "做唔完份功課。",
+      "minimal_context": "份功課太多喇。",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "NegativePotentialComplement"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "做唔完份功課。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B1",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N022",
+      "display_order": 8,
+      "target_sentence": "戴住眼鏡。",
+      "minimal_context": "佢而家係咩樣？",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "DurativeVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "戴住眼鏡。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B1",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N010",
+      "display_order": 9,
+      "target_sentence": "攞走啲書。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "VerbComplementVP",
+        "DiMarkedNP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "攞走啲書。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B1",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N090",
+      "display_order": 10,
+      "target_sentence": "冇喎。",
+      "minimal_context": "你有冇見到佢？",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "NegatedExistentialFragment"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "冇喎。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B1",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N060",
+      "display_order": 11,
+      "target_sentence": "我去餐廳食晏。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "SubjectPredicateClause",
+        "MotionPurposeChain",
+        "MotionGoalVP",
+        "TransitiveVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我去餐廳食晏。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B1",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N096",
+      "display_order": 12,
+      "target_sentence": "佢返咗屋企啩。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "DiscourseParticleFrame",
+        "SubjectPredicateClause",
+        "MotionGoalVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "佢返咗屋企啩。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B1",
+      "form_version": "1.0",
+      "sentence_id": "CS160-C002",
+      "display_order": 13,
+      "target_sentence": "食咗緊飯。",
+      "minimal_context": "",
+      "naturalness_status": "marked_unnatural",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "control",
+      "control_item": true,
+      "repeat_item": false,
+      "candidate_construction_labels": [],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "hidden_control",
+      "accepted_case_reference": "malformed aspect sequence",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B1",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N012",
+      "display_order": 14,
+      "target_sentence": "你買咩書？",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "SubjectPredicateClause",
+        "TransitiveVP",
+        "ModifiedNP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "你買咩書？",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B1",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N118",
+      "display_order": 15,
+      "target_sentence": "你使唔使去？",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "ModalANotAQuestion",
+        "DirectionalMotionVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "你使唔使去？",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B1",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N035",
+      "display_order": 16,
+      "target_sentence": "講大聲啲。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "VerbComplementVP",
+        "DegreeMannerAdverbial"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "講大聲啲。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B1",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N057",
+      "display_order": 17,
+      "target_sentence": "我上去。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "SubjectPredicateClause",
+        "DirectionalMotionVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我上去。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B1",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N082",
+      "display_order": 18,
+      "target_sentence": "有冇講過電話啊？",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "ExperientialYesNoQuestion",
+        "TransitiveVP",
+        "ExperientialVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "有冇講過電話啊？",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B1",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N052",
+      "display_order": 19,
+      "target_sentence": "我由香港去日本。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "SourceMotionClause",
+        "MotionGoalVP",
+        "DirectionalMotionVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我由香港去日本。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B1",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N085",
+      "display_order": 20,
+      "target_sentence": "有咩書？",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "ExistentialWhQuestion",
+        "ModifiedNP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "有咩書？",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B1",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N014",
+      "display_order": 21,
+      "target_sentence": "仲有幾耐先到？",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "DegreeStativePredicate"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "仲有幾耐先到？",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B1",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N027",
+      "display_order": 22,
+      "target_sentence": "我食唔到飯。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "NegativePotentialComplement"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "adapted_fixture",
+      "accepted_case_reference": "食唔到飯。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B1",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N056",
+      "display_order": 23,
+      "target_sentence": "我到咗屋企。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "SubjectPredicateClause",
+        "MotionGoalVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我到咗屋企。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B1",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N005",
+      "display_order": 24,
+      "target_sentence": "下年呢個時間咪過囉。",
+      "minimal_context": "仲有成年先完，聽落好耐。",
+      "naturalness_status": "marked_unnatural",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "TemporalClause",
+        "TimeNP",
+        "ModifiedNP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "adapted_fixture",
+      "accepted_case_reference": "",
+      "native_conflict": {
+        "conflict_class": "adapted_accepted_fixture_native_rejection",
+        "disposition": "quarantine_adapted_surface_and_do_not_attribute_rejection_to_internal_labels_without_analysis",
+        "analysis_note": "The screened form was an orthographic adaptation of 下年哩個時間咪過囖. Rejection may involve wording, discourse fit, aspect or particle choice, or the temporal analysis; no single internal label is validated or falsified by this judgment."
+      }
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B1",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N097",
+      "display_order": 25,
+      "target_sentence": "佢會嚟喎。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "DiscourseParticleFrame",
+        "ModalVP",
+        "DirectionalMotionVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "佢會嚟喎。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B2",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N019",
+      "display_order": 1,
+      "target_sentence": "我食咗飯。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "PerfectiveVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "adapted_fixture",
+      "accepted_case_reference": "食咗飯。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B2",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N016",
+      "display_order": 2,
+      "target_sentence": "呢本。",
+      "minimal_context": "你想要邊本書？",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "DemonstrativeClassifierNP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "呢本。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B2",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N104",
+      "display_order": 3,
+      "target_sentence": "我唔知佢嚟唔嚟。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "CognitionContentFrame",
+        "ANotAQuestion"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我唔知佢嚟唔嚟。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B2",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N032",
+      "display_order": 4,
+      "target_sentence": "你食完飯未？",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "CompletionQuestion",
+        "CompletionVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "你食完飯未？",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B2",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N059",
+      "display_order": 5,
+      "target_sentence": "我琴日由屋企行去學校。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "SourceMotionClause",
+        "DirectedMannerMotionVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我琴日由屋企行去學校。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B2",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N093",
+      "display_order": 6,
+      "target_sentence": "唔知呀。",
+      "minimal_context": "佢幾點嚟？",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "NegativeCognitionFragment"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "唔知呀。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B2",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N050",
+      "display_order": 7,
+      "target_sentence": "我由屋企返學。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "SourceMotionClause",
+        "MotionGoalVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我由屋企返學。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B2",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N040",
+      "display_order": 8,
+      "target_sentence": "行出嚟。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "DirectionalMotionVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "行出嚟。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B2",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N008",
+      "display_order": 9,
+      "target_sentence": "得三個人咋。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "FocusParticleFrame",
+        "QuantifiedClassifierNP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "得三個人咋。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B2",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N077",
+      "display_order": 10,
+      "target_sentence": "你食唔食飯？",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "ANotAQuestion"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "你食唔食飯？",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B2",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N009",
+      "display_order": 11,
+      "target_sentence": "飲返杯咖啡。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "RepetitiveComplementVP",
+        "ClassifierObjectNP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "飲返杯咖啡。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B2",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N102",
+      "display_order": 12,
+      "target_sentence": "我知。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "CognitionStatementClause"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我知。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B2",
+      "form_version": "1.0",
+      "sentence_id": "CS160-C003",
+      "display_order": 13,
+      "target_sentence": "我行學校去。",
+      "minimal_context": "",
+      "naturalness_status": "marked_unnatural",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "control",
+      "control_item": true,
+      "repeat_item": false,
+      "candidate_construction_labels": [],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "hidden_control",
+      "accepted_case_reference": "disfavored motion-goal order",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B2",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N020",
+      "display_order": 14,
+      "target_sentence": "我食緊飯。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "ProgressiveVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "adapted_fixture",
+      "accepted_case_reference": "食緊飯。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B2",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N063",
+      "display_order": 15,
+      "target_sentence": "畀佢本書。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "TransferDitransitiveVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "畀佢本書。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B2",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N058",
+      "display_order": 16,
+      "target_sentence": "寄返去。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "VerbComplementVP",
+        "DirectionalMotionVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "寄返去。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B2",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N015",
+      "display_order": 17,
+      "target_sentence": "三個字啊。",
+      "minimal_context": "仲要等幾耐？",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "QuantifiedTimeNP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "三個字啊。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B2",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N121",
+      "display_order": 18,
+      "target_sentence": "我覺得啱。",
+      "minimal_context": "你覺得呢個答案啱唔啱？",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "FragmentAnswer",
+        "OpinionStanceFrame",
+        "StativePredicate"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我覺得啱。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B2",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N023",
+      "display_order": 19,
+      "target_sentence": "我食完飯。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "CompletionVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "adapted_fixture",
+      "accepted_case_reference": "食完飯。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B2",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N101",
+      "display_order": 20,
+      "target_sentence": "得一個啫。",
+      "minimal_context": "仲有幾多個？",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "NeedsContext",
+        "FocusParticleFrame",
+        "QuantifiedClassifierNP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "得一個啫。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B2",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N044",
+      "display_order": 21,
+      "target_sentence": "佢行緊入去。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "ProgressiveDirectionalVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "adapted_fixture",
+      "accepted_case_reference": "行緊入去。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B2",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N072",
+      "display_order": 22,
+      "target_sentence": "你要唔要？",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "SubjectModalPredicateClause",
+        "ModalVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "你要唔要？",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B2",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N031",
+      "display_order": 23,
+      "target_sentence": "唔做完。",
+      "minimal_context": "份功課今日點處理？",
+      "naturalness_status": "marked_unnatural",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "NegatedVP",
+        "CompletionVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "唔做完。",
+      "native_conflict": {
+        "conflict_class": "exact_accepted_fixture_native_rejection",
+        "disposition": "quarantine_exact_fixture_and_contrast_preverbal_negation_with_negative_potential",
+        "analysis_note": "唔做完 was rejected in the supplied context, while 做唔完份功課 was accepted elsewhere in the same screening. This is a subtype-level contrast, not analysis validation."
+      }
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B2",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N084",
+      "display_order": 24,
+      "target_sentence": "呢度有冇人？",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "ExistentialQuestion"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "呢度有冇人？",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B2",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N078",
+      "display_order": 25,
+      "target_sentence": "你食咩？",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "SubjectPredicateClause",
+        "TransitiveVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "你食咩？",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B3",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N049",
+      "display_order": 1,
+      "target_sentence": "我返屋企。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "SubjectPredicateClause",
+        "MotionGoalVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我返屋企。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B3",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N107",
+      "display_order": 2,
+      "target_sentence": "佢話佢唔嚟。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "ReportedSpeech",
+        "SubjectPredicateClause",
+        "NegatedDirectionalMotionVP",
+        "DirectionalMotionVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "佢話佢唔嚟。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B3",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N045",
+      "display_order": 3,
+      "target_sentence": "行得入去。",
+      "minimal_context": "條路唔算窄。",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "PotentialDirectionalVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "行得入去。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B3",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N076",
+      "display_order": 4,
+      "target_sentence": "關於呢個問題，我想講吓。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "ClauseLinkingSequence",
+        "DemonstrativeClassifierNP",
+        "DesiderativeVP",
+        "DelimitedVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "關於呢個問題，我想講吓。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B3",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N079",
+      "display_order": 5,
+      "target_sentence": "你食緊咩？",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "ProgressiveWhObjectQuestion",
+        "ProgressiveVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "你食緊咩？",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B3",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N119",
+      "display_order": 6,
+      "target_sentence": "我最近好大壓力。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "SubjectPredicateClause",
+        "ModifierNP",
+        "DegreeStativePredicate"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我最近好大壓力。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B3",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N114",
+      "display_order": 7,
+      "target_sentence": "有嘅話，我哋再同大家講講。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "ClauseLinkingSequence",
+        "ClauseRelation",
+        "ClauseRelationMember",
+        "ConditionalClause",
+        "HeadNP",
+        "CoverbFrame",
+        "ReduplicatedVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "有嘅話，我哋再同大家講講。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B3",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N051",
+      "display_order": 8,
+      "target_sentence": "我由學校返屋企。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "SourceMotionClause",
+        "MotionGoalVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我由學校返屋企。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B3",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N024",
+      "display_order": 9,
+      "target_sentence": "做好功課。",
+      "minimal_context": "你今日最緊要做咩？",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "ResultComplementVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "做好功課。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B3",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N100",
+      "display_order": 10,
+      "target_sentence": "我食㗎喇。",
+      "minimal_context": "你唔使再叫我食。",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "NeedsContext"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我食㗎喇。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B3",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N047",
+      "display_order": 11,
+      "target_sentence": "攞得返嚟。",
+      "minimal_context": "件嘢仲喺嗰邊。",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "PotentialDirectionalVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "攞得返嚟。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B3",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N108",
+      "display_order": 12,
+      "target_sentence": "佢話如果落雨，佢就唔去。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "ReportedSpeech",
+        "ClauseRelation",
+        "ClauseRelationMember",
+        "ProductiveVO",
+        "HeadNP",
+        "NegatedDirectionalMotionVP",
+        "DirectionalMotionVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "佢話如果落雨，佢就唔去。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B3",
+      "form_version": "1.0",
+      "sentence_id": "CS160-R001",
+      "display_order": 13,
+      "target_sentence": "我琴日喺屋企食飯。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "repeat",
+      "control_item": false,
+      "repeat_item": true,
+      "candidate_construction_labels": [
+        "CoverbFrame",
+        "LocativePlacePhrase",
+        "ProductiveVO"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "repeat_reliability_item",
+      "accepted_case_reference": "CS160-P0-01",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B3",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N028",
+      "display_order": 14,
+      "target_sentence": "我食得到飯。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "PotentialResultVP",
+        "HeadNP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "adapted_fixture",
+      "accepted_case_reference": "食得到飯。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B3",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N006",
+      "display_order": 15,
+      "target_sentence": "呢本書。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "DemonstrativeClassifierNP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "呢本書。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B3",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N071",
+      "display_order": 16,
+      "target_sentence": "我唔要去。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "ModalVP",
+        "DirectionalMotionVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我唔要去。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B3",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N061",
+      "display_order": 17,
+      "target_sentence": "我畀錢你。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "TransferDitransitiveVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我畀錢你。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B3",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N034",
+      "display_order": 18,
+      "target_sentence": "行快啲。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "VerbComplementVP",
+        "DegreeMannerAdverbial"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "行快啲。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B3",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N116",
+      "display_order": 19,
+      "target_sentence": "我都覺得有。",
+      "minimal_context": "你覺得屋企仲有冇咖啡？",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "NeedsContext",
+        "OpinionStanceFrame",
+        "ComplementEllipsisFragment"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我都覺得有。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B3",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N069",
+      "display_order": 20,
+      "target_sentence": "我要去。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "ModalVP",
+        "DirectionalMotionVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我要去。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B3",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N103",
+      "display_order": 21,
+      "target_sentence": "我唔知。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "CognitionStatementClause"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我唔知。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B3",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N003",
+      "display_order": 22,
+      "target_sentence": "我覺得係真嘅。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "OpinionStanceFrame",
+        "CopularRelationFrame",
+        "StativeNominalComplement"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我覺得係真嘅。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B3",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N105",
+      "display_order": 23,
+      "target_sentence": "我以為佢走咗。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "OpinionStanceFrame",
+        "SubjectPredicateClause",
+        "PerfectiveVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我以為佢走咗。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B3",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N064",
+      "display_order": 24,
+      "target_sentence": "畀我啦。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "DiscourseParticleFrame",
+        "RecipientFrame"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "畀我啦。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B3",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N037",
+      "display_order": 25,
+      "target_sentence": "睇返一次。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "RepetitiveComplementVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "睇返一次。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B4",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N067",
+      "display_order": 1,
+      "target_sentence": "我可以去。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "ModalVP",
+        "DirectionalMotionVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我可以去。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B4",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N004",
+      "display_order": 2,
+      "target_sentence": "你尋日去咗香港。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "SubjectPredicateClause",
+        "MotionGoalVP",
+        "DirectionalMotionVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "你尋日去咗香港。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B4",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N048",
+      "display_order": 3,
+      "target_sentence": "我攞唔返嚟。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "NegativePotentialDirectionalVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "adapted_fixture",
+      "accepted_case_reference": "攞唔返嚟。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B4",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N013",
+      "display_order": 4,
+      "target_sentence": "我飲七杯度喇。",
+      "minimal_context": "你今日飲咗幾多杯水？",
+      "naturalness_status": "marked_unnatural",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "SubjectPredicateClause",
+        "TransitiveVP",
+        "ApproximateQuantity"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我飲七杯度喇。",
+      "native_conflict": {
+        "conflict_class": "exact_accepted_fixture_native_rejection",
+        "disposition": "quarantine_approximate_quantity_fixture_pending_corpus_and_analysis_validation",
+        "analysis_note": "我飲七杯度喇 was rejected in a direct quantity-answer context. ApproximateQuantity remains unsupported and this fixture cannot serve as positive language evidence."
+      }
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B4",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N065",
+      "display_order": 5,
+      "target_sentence": "我喺屋企食飯。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "CoverbFrame",
+        "LocativePlacePhrase",
+        "ProductiveVO"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我喺屋企食飯。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B4",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N038",
+      "display_order": 6,
+      "target_sentence": "攞返嚟。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "VerbComplementVP",
+        "DirectionalMotionVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "攞返嚟。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B4",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N041",
+      "display_order": 7,
+      "target_sentence": "行返過嚟。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "DirectionalMotionVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "行返過嚟。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B4",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N089",
+      "display_order": 8,
+      "target_sentence": "冇呀。",
+      "minimal_context": "你有冇帶遮？",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "NegatedExistentialFragment"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "冇呀。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B4",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N112",
+      "display_order": 9,
+      "target_sentence": "一見到佢，我就笑。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "ClauseLinkingSequence",
+        "ClauseRelation",
+        "ClauseRelationMember",
+        "TransitiveVP",
+        "HeadNP",
+        "IntransitiveVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "一見到佢，我就笑。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B4",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N120",
+      "display_order": 10,
+      "target_sentence": "有好多人。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "ExistentialClause",
+        "QuantifiedPersonNP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "newly_written",
+      "accepted_case_reference": "",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B4",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N117",
+      "display_order": 11,
+      "target_sentence": "我有一個故事，我睇咗，佢都睇咗。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "ClauseLinkingSequence",
+        "ExistentialClause",
+        "QuantifiedClassifierNP",
+        "SubjectPredicateClause",
+        "PerfectiveVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我有一個故事，我睇咗，佢都睇咗。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B4",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N099",
+      "display_order": 12,
+      "target_sentence": "我走喇。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "DiscourseParticleFrame",
+        "SubjectPredicateClause",
+        "DirectionalMotionVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我走喇。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B4",
+      "form_version": "1.0",
+      "sentence_id": "CS160-R002",
+      "display_order": 13,
+      "target_sentence": "可以呀。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "repeat",
+      "control_item": false,
+      "repeat_item": true,
+      "candidate_construction_labels": [
+        "FormulaDiscourseUnit"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "repeat_reliability_item",
+      "accepted_case_reference": "CS160-P0-05",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B4",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N087",
+      "display_order": 14,
+      "target_sentence": "有咩書㗎喇？",
+      "minimal_context": "你話間書店已經入齊貨。",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "ExistentialWhQuestion",
+        "ModifiedNP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "有咩書㗎喇？",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B4",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N021",
+      "display_order": 15,
+      "target_sentence": "我食過芒果。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "ExperientialClause",
+        "TransitiveVP",
+        "ExperientialVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "adapted_fixture",
+      "accepted_case_reference": "食過飯。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B4",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N075",
+      "display_order": 16,
+      "target_sentence": "對呢個問題，我想講吓。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "ClauseLinkingSequence",
+        "DemonstrativeClassifierNP",
+        "DesiderativeVP",
+        "DelimitedVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "對呢個問題，我想講吓。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B4",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N017",
+      "display_order": 17,
+      "target_sentence": "有幾個蘋果？",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "ModifiedNP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "有幾個蘋果？",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B4",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N054",
+      "display_order": 18,
+      "target_sentence": "我行去學校。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "SubjectPredicateClause",
+        "DirectedMannerMotionVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我行去學校。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B4",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N025",
+      "display_order": 19,
+      "target_sentence": "我做好咗功課。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "PerfectiveVP",
+        "ResultComplementVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "adapted_fixture",
+      "accepted_case_reference": "做好咗功課。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B4",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N094",
+      "display_order": 20,
+      "target_sentence": "唔得。",
+      "minimal_context": "今日可唔可以早走？",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "FragmentAnswer"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "唔得。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B4",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N109",
+      "display_order": 21,
+      "target_sentence": "因為落雨，所以我冇去。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "ClauseLinkingSequence",
+        "ClauseRelation",
+        "ClauseRelationMember",
+        "ProductiveVO",
+        "SubjectPredicateClause",
+        "NegatedDirectionalMotionVP",
+        "DirectionalMotionVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "因為落雨，所以我冇去。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B4",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N070",
+      "display_order": 22,
+      "target_sentence": "我唔使去。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "ModalVP",
+        "DirectionalMotionVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我唔使去。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B4",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N110",
+      "display_order": 23,
+      "target_sentence": "我冇去，因為落雨。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "ClauseLinkingSequence",
+        "ClauseRelation",
+        "ClauseRelationMember",
+        "SubjectPredicateClause",
+        "NegatedDirectionalMotionVP",
+        "DirectionalMotionVP",
+        "ProductiveVO"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我冇去，因為落雨。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B4",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N091",
+      "display_order": 24,
+      "target_sentence": "你呢？",
+      "minimal_context": "我會去。",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "FragmentQuestion"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "你呢？",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B4",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N029",
+      "display_order": 25,
+      "target_sentence": "我做得完份功課。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "PotentialResultVP",
+        "ClassifierObjectNP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "adapted_fixture",
+      "accepted_case_reference": "做得完份功課。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B5",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N083",
+      "display_order": 1,
+      "target_sentence": "你有冇書？",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "ExistentialQuestion"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "你有冇書？",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B5",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N007",
+      "display_order": 2,
+      "target_sentence": "我食一個蘋果。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "SubjectPredicateClause",
+        "TransitiveVP",
+        "QuantifiedClassifierNP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我食一個蘋果。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B5",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N046",
+      "display_order": 3,
+      "target_sentence": "佢行唔入去。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "NegativePotentialDirectionalVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "adapted_fixture",
+      "accepted_case_reference": "行唔入去。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B5",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N106",
+      "display_order": 4,
+      "target_sentence": "我都覺得好貴。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "OpinionStanceFrame",
+        "DegreeStativePredicate"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我都覺得好貴。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B5",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N043",
+      "display_order": 5,
+      "target_sentence": "落咗去。",
+      "minimal_context": "佢啱啱去咗邊？",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "PerfectiveDirectionalVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "落咗去。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B5",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N080",
+      "display_order": 6,
+      "target_sentence": "你去咩？",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "PolarQuestionFrame",
+        "SubjectPredicateClause",
+        "DirectionalMotionVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "你去咩？",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B5",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N018",
+      "display_order": 7,
+      "target_sentence": "得十蚊咋。",
+      "minimal_context": "你仲有幾多錢？",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "FocusParticleFrame",
+        "QuantityNP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "得十蚊咋。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B5",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N066",
+      "display_order": 8,
+      "target_sentence": "佢要飲水。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "ModalVP",
+        "ProductiveVO"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "佢要飲水。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B5",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N026",
+      "display_order": 9,
+      "target_sentence": "我食到飯。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "ResultComplement"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "adapted_fixture",
+      "accepted_case_reference": "食到飯。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B5",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N002",
+      "display_order": 10,
+      "target_sentence": "我買嘅書好貴。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "SubjectPredicateClause",
+        "RelativeClauseNP",
+        "TransitiveVP",
+        "DegreeStativePredicate"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我買嘅書好貴。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B5",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N062",
+      "display_order": 11,
+      "target_sentence": "畀本書佢。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "TransferDitransitiveVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "畀本書佢。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B5",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N113",
+      "display_order": 12,
+      "target_sentence": "雖然好攰，但係佢仲做緊。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "ClauseLinkingSequence",
+        "ClauseRelation",
+        "ClauseRelationMember",
+        "DegreeStativePredicate",
+        "ProgressiveVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "雖然好攰，但係佢仲做緊。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B5",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N086",
+      "display_order": 13,
+      "target_sentence": "有咩書喎？",
+      "minimal_context": "你話間書店有好多選擇。",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "ExistentialWhQuestion",
+        "ModifiedNP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "有咩書喎？",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B5",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N088",
+      "display_order": 14,
+      "target_sentence": "我冇書。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "NegatedExistentialClause"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我冇書。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B5",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N068",
+      "display_order": 15,
+      "target_sentence": "我唔可以去。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "ModalVP",
+        "DirectionalMotionVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我唔可以去。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B5",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N092",
+      "display_order": 16,
+      "target_sentence": "呢？",
+      "minimal_context": "講完第一樣之後，再指住第二樣。",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "FragmentQuestion"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "呢？",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B5",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N033",
+      "display_order": 17,
+      "target_sentence": "你食咗未呀？",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "CompletionQuestion",
+        "PerfectiveVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "你食咗未呀？",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B5",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N111",
+      "display_order": 18,
+      "target_sentence": "如果你去，我就去。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "ClauseLinkingSequence",
+        "ClauseRelation",
+        "ClauseRelationMember",
+        "SubjectPredicateClause",
+        "DirectionalMotionVP",
+        "HeadNP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "如果你去，我就去。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B5",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N053",
+      "display_order": 19,
+      "target_sentence": "我向前行。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "SubjectPredicateClause",
+        "DirectedMannerMotionVP",
+        "PathPhrase"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我向前行。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B5",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N115",
+      "display_order": 20,
+      "target_sentence": "我寫三個字。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "SubjectPredicateClause",
+        "TransitiveVP",
+        "ActionStativeVP",
+        "ModifiedNP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我寫三個字。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B5",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N073",
+      "display_order": 21,
+      "target_sentence": "我想去。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "DesiderativeVP",
+        "DirectionalMotionVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "我想去。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B5",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N036",
+      "display_order": 22,
+      "target_sentence": "整返好。",
+      "minimal_context": "部機整壞咗，而家要點？",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "RestorativeComplementVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "整返好。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B5",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N011",
+      "display_order": 23,
+      "target_sentence": "你睇邊本書？",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "SubjectPredicateClause",
+        "TransitiveVP",
+        "WhClassifierQuestion"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "你睇邊本書？",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B5",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N081",
+      "display_order": 24,
+      "target_sentence": "有冇嘢食啊？",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "ExistentialQuestion"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "有冇嘢食啊？",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "B5",
+      "form_version": "1.0",
+      "sentence_id": "CS160-N074",
+      "display_order": 25,
+      "target_sentence": "呢個問題，我想講吓。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "accepted_pattern_screening",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "ClauseLinkingSequence",
+        "DemonstrativeClassifierNP",
+        "DesiderativeVP",
+        "DelimitedVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "existing_fixture",
+      "accepted_case_reference": "呢個問題，我想講吓。",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "FU1",
+      "form_version": "1.0-follow-up",
+      "sentence_id": "CS160-FU1-01",
+      "display_order": 1,
+      "target_sentence": "我食完咗飯。",
+      "minimal_context": "",
+      "naturalness_status": "marked_unnatural",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "follow_up",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "SubjectPredicateClause",
+        "PerfectiveVP",
+        "CompletionVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "native_follow_up",
+      "accepted_case_reference": "follow-up to CS160-P0-03",
+      "native_conflict": {
+        "conflict_class": "follow_up_native_rejection",
+        "disposition": "supports_quarantine_of_V完咗O_surface_family",
+        "analysis_note": "Adding an overt subject did not make 我食完咗飯 acceptable."
+      }
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "FU1",
+      "form_version": "1.0-follow-up",
+      "sentence_id": "CS160-FU1-02",
+      "display_order": 2,
+      "target_sentence": "我食完飯。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "follow_up",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "SubjectPredicateClause",
+        "CompletionVP"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "native_follow_up",
+      "accepted_case_reference": "follow-up to CS160-P0-03",
+      "native_conflict": null
+    },
+    {
+      "screening_project_id": "CS-NS-NAT-v0.5.160-r2",
+      "reviewer_code": "NS-01",
+      "batch_id": "FU1",
+      "form_version": "1.0-follow-up",
+      "sentence_id": "CS160-FU1-03",
+      "display_order": 3,
+      "target_sentence": "我食完飯喇。",
+      "minimal_context": "",
+      "naturalness_status": "accepted_unchecked",
+      "optional_correction_raw": "",
+      "correction_provided": false,
+      "evidence_role": "follow_up",
+      "control_item": false,
+      "repeat_item": false,
+      "candidate_construction_labels": [
+        "SubjectPredicateClause",
+        "CompletionVP",
+        "DiscourseParticleFrame"
+      ],
+      "candidate_mapping_status": "internal_mapping_not_native_analysis_validation",
+      "source_type": "native_follow_up",
+      "accepted_case_reference": "follow-up to CS160-P0-03",
+      "native_conflict": null
+    }
+  ],
+  "doctrine_guards": [
+    "Unchecked means acceptable sentence naturalness, not structural analysis approval.",
+    "A label associated with an acceptable sentence is not thereby validated.",
+    "A rejected sentence does not automatically falsify every internal label mapped to it.",
+    "No construction status may be promoted from this screening alone.",
+    "Rejected accepted fixtures are quarantined as positive language evidence until analysis-level review."
+  ]
+}

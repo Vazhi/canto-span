@@ -1,0 +1,82 @@
+{
+  "schema": "canto-span-project-memory-safety-overrides-v1",
+  "governance_id": "CP021B-SF",
+  "date": "2026-07-17",
+  "status": "BINDING",
+  "conflict_rule": "Current governance and this registry override conflicting recovered chats, archived prompts, old handoffs, and historical specifications.",
+  "historical_record_policy": "Preserve historical text for auditability but never reactivate a superseded, revoked, or rejected directive.",
+  "overrides": [
+    {
+      "memory_id": "MEM-001",
+      "historical_directive": "Freeze all new grammar indefinitely.",
+      "status": "SUPERSEDED",
+      "replacement": "Keep unsupported legacy claims non-promotable; permit future language behavior only through the authority-origin lifecycle."
+    },
+    {
+      "memory_id": "MEM-002",
+      "historical_directive": "Admit grammar only as a one-for-one replacement for a debunked label.",
+      "status": "SUPERSEDED",
+      "replacement": "Replacement is preferred for corrections but is not a prerequisite for independently originated evidence-based coverage."
+    },
+    {
+      "memory_id": "MEM-003",
+      "historical_directive": "Preserve accepted behavior unless a concrete contradiction exists.",
+      "status": "NARROWED",
+      "replacement": "Use regression as a change detector; external evidence may justify deliberate fixture retirement or rebaselining."
+    },
+    {
+      "memory_id": "MEM-004",
+      "historical_directive": "Do not reopen accepted A1 behavior on audit warnings alone.",
+      "status": "NARROWED",
+      "replacement": "Internal warning alone is insufficient; external pattern evidence or materially false learner semantics may reopen it."
+    },
+    {
+      "memory_id": "MEM-005",
+      "historical_directive": "Treat unchecked native-screening items as natural.",
+      "status": "REVOKED",
+      "replacement": "Blank means missing evidence; record explicit natural, unnatural, uncertain/context, or unseen states."
+    },
+    {
+      "memory_id": "MEM-006",
+      "historical_directive": "One checkbox per native item is sufficient evidence.",
+      "status": "REVOKED_AS_EVIDENCE_DESIGN",
+      "replacement": "Distinguish affirmative, negative, uncertain/context-dependent, and unseen responses."
+    },
+    {
+      "memory_id": "MEM-007",
+      "historical_directive": "One coherent substantive batch may remain unexported.",
+      "status": "REVOKED",
+      "replacement": "Export verified recovery artifacts at every registered lifecycle boundary and material interruption risk."
+    },
+    {
+      "memory_id": "MEM-008",
+      "historical_directive": "Learner-role changes must never drive a standalone batch.",
+      "status": "NARROWED",
+      "replacement": "Bundle cosmetic work; allow independent correction of materially false learner semantics without treating roles as grammar evidence."
+    },
+    {
+      "memory_id": "MEM-009",
+      "historical_directive": "Source prestige or one preferred authority decides the parser analysis.",
+      "status": "REJECTED",
+      "replacement": "Preserve competing analyses and use a transparent theory-neutral internal representation when warranted."
+    },
+    {
+      "memory_id": "MEM-010",
+      "historical_directive": "Continue autonomously until only an unavailable dependency remains.",
+      "status": "NARROWED",
+      "replacement": "Autonomy requires a frozen question, evidence gates, bounded stop conditions, and verified recovery exports."
+    },
+    {
+      "memory_id": "MEM-011",
+      "historical_directive": "Use internal parser discoveries as grammar hypotheses.",
+      "status": "REJECTED",
+      "replacement": "Internal behavior may open only a neutral research question and supplies no preferred answer."
+    },
+    {
+      "memory_id": "MEM-012",
+      "historical_directive": "Search for evidence to back an already drafted unsupported claim.",
+      "status": "REJECTED",
+      "replacement": "Search from a neutral question and extract source propositions, contradictions, and boundaries before claim writing."
+    }
+  ]
+}

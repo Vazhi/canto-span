@@ -1,0 +1,81 @@
+id	stage	area	type	priority	source	expected_top_construction	expected_status	acceptance_status	notes
+PI-ACCEPT-001	stage1_seed	accepted_guardrail	positive	P0	给你水。	LexicalGiveRelation	positive	accepted_regression	Mixed pinyin fallout shadow repair, raw-first display; CP021B preserves person-before-thing roles as unresolved.
+PI-ACCEPT-002	stage1_seed	accepted_guardrail	positive	P0	没书。	NegatedExistentialClause	positive	accepted_regression	Folded lexical plus character-form parser shadow.
+PI-ACCEPT-003	stage1_seed	accepted_guardrail	positive	P0	大声啲。	DegreeMannerAdverbial	positive	accepted_regression	Degree/manner + 啲.
+PI-ACCEPT-004	stage1_seed	accepted_guardrail	positive	P0	讲紧。	ProgressiveVP	positive	accepted_regression	Progressive aspect guardrail.
+PI-ACCEPT-005	stage1_seed	accepted_guardrail	positive	P0	饮水。	ProductiveVO	positive	accepted_regression	Productive verb-object guardrail.
+PI-ACCEPT-006	stage1_seed	accepted_guardrail	positive	P0	食饭。	ProductiveVO	positive	accepted_regression	Productive verb-object guardrail.
+PI-ACCEPT-007	stage1_seed	accepted_guardrail	learner_error	P0	食一。	MalformedCandidate	semantic_review	accepted_regression	Bare numeral object should not become clean parse.
+PI-ACCEPT-008	stage1_seed	accepted_guardrail	fragment	P0	唔好食。	NeedsContext	semantic_review	accepted_regression	Ambiguous/incomplete prohibitive context guardrail.
+PI-NP-001	stage1_seed	np_structure	positive	P1	呢本書。	DemonstrativeClassifierNP	positive	candidate_unverified	demonstrative + classifier + noun
+PI-NP-002	stage1_seed	np_structure	positive	P1	嗰個人。	DemonstrativeClassifierNP	positive	candidate_unverified	distal demonstrative + classifier + noun
+PI-NP-003	stage1_seed	np_structure	positive	P1	三個小朋友。	NumberClassifierNP	positive	candidate_unverified	number + classifier + noun
+PI-NP-004	stage1_seed	np_structure	positive	P1	好多嘢。	QuantityNP	positive	candidate_unverified	quantity + noun
+PI-NP-005	stage1_seed	np_structure	positive	P1	啲書。	PluralMarkedNP	positive	candidate_unverified	plural/indefinite 啲 + noun
+PI-NP-006	stage1_seed	np_structure	positive	P1	我嘅書。	AssociativeNP	positive	candidate_unverified	possessive/associative 嘅
+PI-NP-007	stage1_seed	np_structure	positive	P1	好大嘅狗。	ModifiedNP	positive	candidate_unverified	stative/adjective modifier + 嘅 + noun
+PI-NP-008	stage1_seed	np_structure	positive	P1	紅色嘅花。	ModifiedNP	positive	candidate_unverified	color adjective + 嘅 + noun
+PI-NP-009	stage1_seed	np_structure	positive	P1	呢啲嘢。	DemonstrativeQuantityNP	positive	candidate_unverified	demonstrative + 啲 + noun
+PI-NP-010	stage1_seed	np_structure	positive	P1	每一日。	QuantifiedTimeNP	positive	candidate_unverified	quantified time expression
+PI-VP-001	stage1_seed	vp_aspect_complement	positive	P1	我食飯。	ProductiveVO	positive	candidate_unverified	subject + ProductiveVO
+PI-VP-002	stage1_seed	vp_aspect_complement	positive	P1	佢飲水。	ProductiveVO	positive	candidate_unverified	subject + ProductiveVO
+PI-VP-003	stage1_seed	vp_aspect_complement	positive	P1	我睇書。	ProductiveVO	positive	candidate_unverified	common verb-object
+PI-VP-004	stage1_seed	vp_aspect_complement	positive	P1	佢聽歌。	ProductiveVO	positive	candidate_unverified	common verb-object
+PI-VP-005	stage1_seed	vp_aspect_complement	positive	P1	我講緊嘢。	ProgressiveVP	positive	candidate_unverified	progressive + object
+PI-VP-006	stage1_seed	vp_aspect_complement	positive	P1	我食緊飯。	ProgressiveVP	positive	candidate_unverified	progressive aspect over ProductiveVO
+PI-VP-007	stage1_seed	vp_aspect_complement	positive	P1	我食咗飯。	PerfectiveAspectVP	positive	candidate_unverified	perfective 咗
+PI-VP-008	stage1_seed	vp_aspect_complement	positive	P1	我食過飯。	ExperientialAspectVP	positive	candidate_unverified	experiential 過
+PI-VP-009	stage1_seed	vp_aspect_complement	positive	P1	我食完飯。	CompletionAspectVP	positive	candidate_unverified	completion 完
+PI-VP-010	stage1_seed	vp_aspect_complement	positive	P1	佢坐喺度。	LocativePostureVP	positive	candidate_unverified	posture/location phrase
+PI-VP-011	stage1_seed	vp_aspect_complement	positive	P1	我返屋企。	DirectionalMotionVP	positive	candidate_unverified	motion + destination
+PI-VP-012	stage1_seed	vp_aspect_complement	positive	P1	攞返本書。	VerbComplementVP	positive	candidate_unverified	verb + 返 + object
+PI-MODQ-001	stage1_seed	modality_negation_questions	positive	P1	我想食飯。	DesiderativeVP	positive	candidate_unverified	want + VP
+PI-MODQ-002	stage1_seed	modality_negation_questions	positive	P1	佢要飲水。	ModalVP	positive	candidate_unverified	need/want + VP
+PI-MODQ-003	stage1_seed	modality_negation_questions	positive	P1	我可以去。	ModalVP	positive	candidate_unverified	permission/ability + VP
+PI-MODQ-004	stage1_seed	modality_negation_questions	positive	P1	你可唔可以幫我？	PermissionANotAQuestion	positive	candidate_unverified	modal A-not-A question
+PI-MODQ-005	stage1_seed	modality_negation_questions	positive	P1	你有冇書？	ExistentialQuestion	positive	candidate_unverified	有冇 question
+PI-MODQ-006	stage1_seed	modality_negation_questions	positive	P1	你食飯未？	CompletionQuestion	positive	candidate_unverified	completion 未 question
+PI-MODQ-007	stage1_seed	modality_negation_questions	positive	P1	我唔食飯。	NegatedVP	positive	candidate_unverified	唔 + VP
+PI-MODQ-008	stage1_seed	modality_negation_questions	positive	P1	我冇書。	NegatedExistentialClause	positive	candidate_unverified	冇 + NP
+PI-MODQ-009	stage1_seed	modality_negation_questions	positive	P1	唔好走。	Prohibitive	positive	candidate_unverified	prohibitive + VP
+PI-MODQ-010	stage1_seed	modality_negation_questions	positive	P1	佢會嚟。	ModalVP	positive	candidate_unverified	future/modal 會
+PI-MODQ-011	stage1_seed	modality_negation_questions	positive	P1	你想唔想去？	DesiderativeANotAQuestion	positive	candidate_unverified	want A-not-A
+PI-MODQ-012	stage1_seed	modality_negation_questions	positive	P1	係唔係你嘅？	CopularANotAQuestion	positive	candidate_unverified	係唔係 question
+PI-ADJ-001	stage1_seed	time_place_manner	positive	P2	我今日返學。	TimeAdjunctClause	positive	candidate_unverified	fronted/subject time adjunct
+PI-ADJ-002	stage1_seed	time_place_manner	positive	P2	佢而家食飯。	TimeAdjunctClause	positive	candidate_unverified	now + VP
+PI-ADJ-003	stage1_seed	time_place_manner	positive	P2	我聽日去公園。	TimePlaceClause	positive	candidate_unverified	time + motion + place
+PI-ADJ-004	stage1_seed	time_place_manner	positive	P2	我喺屋企食飯。	LocativeAdjunctClause	positive	candidate_unverified	locative adjunct
+PI-ADJ-005	stage1_seed	time_place_manner	positive	P2	佢慢慢行。	MannerAdverbialVP	positive	candidate_unverified	manner adverbial + VP
+PI-ADJ-006	stage1_seed	time_place_manner	positive	P2	講大聲啲。	DegreeMannerAdverbial	positive	candidate_unverified	verb + manner degree phrase
+PI-ADJ-007	stage1_seed	time_place_manner	positive	P2	快啲嚟。	UrgencyMarker	positive	candidate_unverified	快啲 urgency/degree + VP
+PI-ADJ-008	stage1_seed	time_place_manner	positive	P2	我同朋友去。	ComitativeClause	positive	candidate_unverified	comitative 同 + NP
+PI-ADJ-009	stage1_seed	time_place_manner	positive	P2	佢用筆寫字。	InstrumentalClause	positive	candidate_unverified	instrument + VP
+PI-ADJ-010	stage1_seed	time_place_manner	positive	P2	我由屋企嚟。	SourceMotionClause	positive	candidate_unverified	source + motion
+PI-CLINK-001	stage1_seed	clause_linking	positive	P2	因為落雨，所以我唔去。	CauseResultClauseSequence	positive	candidate_unverified	因為/所以 sequence
+PI-CLINK-002	stage1_seed	clause_linking	positive	P2	我想去，但係冇時間。	ContrastClauseSequence	positive	candidate_unverified	但係 linker
+PI-CLINK-003	stage1_seed	clause_linking	positive	P2	如果你去，我就去。	ConditionalClauseSequence	positive	candidate_unverified	如果/就 sequence
+PI-CLINK-004	stage1_seed	clause_linking	positive	P2	我食完飯，然後返屋企。	SequentialClauseSequence	positive	candidate_unverified	然後 sequence
+PI-CLINK-005	stage1_seed	clause_linking	positive	P2	我先食飯，再做功課。	OrderedClauseSequence	positive	candidate_unverified	先/再 sequence
+PI-CLINK-006	stage1_seed	clause_linking	positive	P2	你嚟嘅時候，我喺屋企。	TemporalSubordinateClause	positive	candidate_unverified	嘅時候 temporal clause
+PI-CLINK-007	stage1_seed	clause_linking	positive	P2	佢話佢唔嚟。	ReportedContentClause	positive	candidate_unverified	reported content
+PI-CLINK-008	stage1_seed	clause_linking	positive	P2	我知你想去。	CognitionContentClause	positive	candidate_unverified	cognition + content clause
+PI-PART-001	stage1_seed	particles_fragments_discourse	positive	P2	好呀。	FragmentAnswer	positive	candidate_unverified	short answer + particle
+PI-PART-002	stage1_seed	particles_fragments_discourse	positive	P2	唔知呀。	NegativeCognitionFragment	positive	candidate_unverified	negative cognition fragment + particle
+PI-PART-003	stage1_seed	particles_fragments_discourse	positive	P2	可以呀。	FragmentAnswer	positive	candidate_unverified	modal answer + particle
+PI-PART-004	stage1_seed	particles_fragments_discourse	positive	P2	係咩？	ParticleQuestion	positive	candidate_unverified	particle question
+PI-PART-005	stage1_seed	particles_fragments_discourse	positive	P2	你去啦。	ParticleClause	positive	candidate_unverified	imperative/suggestion particle
+PI-PART-006	stage1_seed	particles_fragments_discourse	positive	P2	我食咗喇。	ParticleClause	positive	candidate_unverified	aspect + particle
+PI-PART-007	stage1_seed	particles_fragments_discourse	positive	P2	呢？	FragmentQuestion	positive	candidate_unverified	single-particle fragment question
+PI-PART-008	stage1_seed	particles_fragments_discourse	positive	P2	冇呀。	NegatedExistentialFragment	positive	candidate_unverified	fragment + particle
+PI-PART-009	stage1_seed	particles_fragments_discourse	positive	P2	得啦。	AcceptabilityFragment	positive	candidate_unverified	acceptability fragment + particle
+PI-PART-010	stage1_seed	particles_fragments_discourse	positive	P2	係囉。	DiscourseAgreementFragment	positive	candidate_unverified	agreement/discourse particle
+PI-ERR-001	stage1_seed	learner_errors_boundaries	learner_error	P0	我食一。	MalformedCandidate	semantic_review	candidate_unverified	bare numeral object
+PI-ERR-002	stage1_seed	learner_errors_boundaries	learner_error	P0	我有冇食飯。	MalformedCandidate	semantic_review	candidate_unverified	misplaced 有冇 without question structure
+PI-ERR-003	stage1_seed	learner_errors_boundaries	learner_error	P0	唔好。	NeedsContext	context_needed	candidate_unverified	could be fragment/prohibitive; needs context
+PI-ERR-004	stage1_seed	learner_errors_boundaries	learner_error	P0	我想。	NeedsContext	context_needed	candidate_unverified	modal/desiderative missing complement
+PI-ERR-005	stage1_seed	learner_errors_boundaries	learner_error	P0	佢喺。	NeedsContext	context_needed	candidate_unverified	locative marker missing complement
+PI-ERR-006	stage1_seed	learner_errors_boundaries	learner_error	P0	我嘅。	FragmentAnswer	fragment	candidate_unverified	possessive fragment may be valid as answer
+PI-ERR-007	stage1_seed	learner_errors_boundaries	learner_error	P0	给他水。	NeedsContext	review	candidate_unverified	broad Mandarin conversion should not silently translate 他
+PI-ERR-008	stage1_seed	learner_errors_boundaries	learner_error	P0	没有书。	NeedsContext	review	candidate_unverified	Mandarin multi-character form should not silently become 冇書
+PI-ERR-009	stage1_seed	learner_errors_boundaries	learner_error	P0	不食飯。	NeedsContext	review	candidate_unverified	Mandarin negator should not silently become 唔
+PI-ERR-010	stage1_seed	learner_errors_boundaries	learner_error	P0	我是老師。	NeedsContext	review	candidate_unverified	Mandarin copula line should not silently translate 是 to 係

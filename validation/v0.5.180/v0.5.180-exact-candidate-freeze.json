@@ -1,0 +1,20 @@
+{
+  "schema": "canto-span-exact-candidate-freeze-v1",
+  "version": "0.5.180",
+  "internal_work_package": "CP022-P1-PFV01-R1-CORR2",
+  "frozen_at": "2026-07-19T15:36:32.935817+00:00",
+  "status": "FROZEN_AFTER_RENDER_BEFORE_HELDOUT",
+  "render_adjudication_status": "PASS",
+  "hashes": {
+    "main_js": "98969fd7cd29ca4c7c9f2ab916ef942764f8b8c729f7d8908c80eb9968f8bf94",
+    "manifest_json": "6dd24fc80b58ae6b7eb7cfab9d7eeac9de97f57ec2deb173c30740c78c297d9c",
+    "styles_css": "5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a",
+    "acceptance_summary": "08ebdf35bfbf2f0f994e877bfe7ef3eed6701489ae54bd1ff122e0a1da97629b",
+    "full_diagnostics": "544894a9714280632b5a4913a27d7e9a1e6f6ce914ad5ae6084ab655094a1fb4",
+    "runtime_zip": "a82f67026bc940c09d010deb22644b1071cd250d5a1580ad371dacd85f1dffbc",
+    "recovery_zip": "3a1c4ed2ce1aca0715cc79589fe90583fd5a6a7b87fa0cef818a1ee7440be9d7",
+    "custody_zip": "012ba217a261323a98ea4f5cad9434ec98979d5ee5ab2c72bb3979109efb5402"
+  },
+  "no_code_changes_allowed_before_heldout_evaluation": true,
+  "custody_opened": false
+}

@@ -1,0 +1,61 @@
+{
+  "schema": "canto-span-packaging-manifest-v2",
+  "checkpoint": "v0.5.184-np-subsystem-r1",
+  "status": "RUNTIME_CANDIDATE_VALIDATED",
+  "runtime_candidate": "v0.5.184",
+  "parser_behavior_changed": true,
+  "runtime_filename": "canto-span-plugin-v0.5.184.zip",
+  "recovery_filename": "canto-span-recovery-v0.5.184-np-subsystem-r1.zip",
+  "full_suite_filename": "canto-span-v0.5.184-np-subsystem-r1-full-download-suite.zip",
+  "runtime_members": [
+    "canto-span/main.js",
+    "canto-span/manifest.json",
+    "canto-span/styles.css"
+  ],
+  "separation": {
+    "runtime_exact_three_files": true,
+    "recovery_excludes_private_or_sealed_external_evaluator_outputs": true,
+    "abandoned_demo01_material_archived_only": true
+  },
+  "governance": {
+    "supported_productive": 0,
+    "provisional_reaudit": 2,
+    "ordinary_provisional": 0,
+    "research_pending": 58,
+    "unsupported_generalization": 87,
+    "lexicalized_only": 3,
+    "parser_heuristic": 21,
+    "active_governance_labels": 171,
+    "runtime_registry_labels": 171,
+    "runtime_status_mismatch_count": 0,
+    "runtime_retired_label_residue": 0
+  },
+  "validation": {
+    "np_subsystem": "43/43 PASS",
+    "aggregate_regression": "545/545 PASS",
+    "runtime_governance_alignment": "PASS",
+    "structural_topology": "545/545 PASS",
+    "grammar_legitimacy": "187/187 PASS",
+    "source_accounting": "16/16 PASS",
+    "claim_provenance": "303/303 PASS",
+    "native_naturalness_governance": "33/33 PASS",
+    "native_conflict_burden": "11/11 PASS",
+    "retired_label_absence": "588 cases / 0 hits PASS",
+    "semantic_acceptance": "15/15 PASS",
+    "documentation_consistency": "PASS"
+  },
+  "documentation": {
+    "authority_entry": "canto-span/docs/current/00-START-HERE.md",
+    "state_owner": "canto-span/docs/current/PROJECT-STATE.md",
+    "np_subsystem_authority": "canto-span/docs/current/NOUN-PHRASE-SUBSYSTEM.md",
+    "status_registry": "canto-span/docs/research/CONSTRUCTION-STATUS-REGISTRY-v0.5.184-R2.tsv",
+    "status_summary": "canto-span/docs/research/CONSTRUCTION-STATUS-SUMMARY-v0.5.184-R2.json",
+    "np_test_matrix": "canto-span/test-data/np-subsystem-v0.5.184.json",
+    "np_test_result": "canto-span/validation/v0.5.184/np-subsystem-results.json",
+    "regression_result": "canto-span/validation/v0.5.184/aggregate-regression.json",
+    "governance_alignment": "canto-span/validation/v0.5.184/runtime-governance-alignment.json",
+    "change_ledger": "canto-span/v0.5.184-NP-SUBSYSTEM-R1.md",
+    "source_accounting": "canto-span/docs/research/ACTIVE-SOURCE-ACCOUNTING-v0.5.184-R1.tsv",
+    "evidence_reaudit_ledger": "canto-span/docs/research/CONSTRUCTION-EVIDENCE-REAUDIT-LEDGER-v0.5.184-R1.tsv"
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "schema": "canto-span-current-focused-result-v4",
+  "version": "0.5.181",
+  "status": "PASS",
+  "total": 19,
+  "passed": 19,
+  "failed": 0,
+  "strict_ready": true,
+  "accepted_baseline": "v0.5.180",
+  "active_candidate": "v0.5.181",
+  "active_labels": 179,
+  "supported_productive": 1,
+  "render": {
+    "status": "PENDING",
+    "rows": 12
+  },
+  "heldout": {
+    "status": "SEALED",
+    "count": 7
+  },
+  "aggregate_regression": {
+    "passed": 545,
+    "total": 545,
+    "excluded": 0
+  },
+  "checks": [
+    {
+      "name": "frozen packet integrity 21/21",
+      "pass": true
+    },
+    {
+      "name": "visible packet clean; productive count remains one",
+      "pass": true
+    },
+    {
+      "name": "implementation audit",
+      "pass": true
+    },
+    {
+      "name": "I02 preservation 24/24",
+      "pass": true
+    },
+    {
+      "name": "aggregate regression with zero exclusions",
+      "pass": true
+    },
+    {
+      "name": "grammar legitimacy retains exactly one productive pattern",
+      "pass": true
+    },
+    {
+      "name": "semantic acceptance 15/15",
+      "pass": true
+    },
+    {
+      "name": "pre-intermediate corpus 80/80",
+      "pass": true
+    },
+    {
+      "name": "source accounting complete",
+      "pass": true
+    },
+    {
+      "name": "registry 179",
+      "pass": true
+    },
+    {
+      "name": "158 mapped language labels",
+      "pass": true
+    },
+    {
+      "name": "one explicit source gap",
+      "pass": true
+    },
+    {
+      "name": "native-conflict burden",
+      "pass": true
+    },
+    {
+      "name": "native-speaker naturalness audit",
+      "pass": true
+    },
+    {
+      "name": "accepted-baseline topology 545/545",
+      "pass": true
+    },
+    {
+      "name": "documentation consistency",
+      "pass": true
+    },
+    {
+      "name": "claim provenance audit",
+      "pass": true
+    },
+    {
+      "name": "current state names baseline and candidate",
+      "pass": true
+    },
+    {
+      "name": "candidate remains pre-acceptance render state",
+      "pass": true
+    }
+  ],
+  "failures": []
+}

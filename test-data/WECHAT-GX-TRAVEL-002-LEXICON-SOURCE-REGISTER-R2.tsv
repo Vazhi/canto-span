@@ -1,0 +1,24 @@
+source_id	source	locator	evidence_role	supports	limitations
+LX-WORDSHK-BAAK	粵典 Words.hk	伯 entry; 大伯 example/sense	direct lexical sense and reading	大伯 daai6 baak3; father’s elder/eldest brother; address-suffix caution	Does not determine the exact family relationship intended in this conversation.
+LX-WORDSHK-LEOIJAU	粵典 Words.hk	旅遊 entry	direct lexical sense and reading	旅遊 leoi5 jau4 as a noun for leisure travel/tourism	Does not independently license a verb sense or a travel construction.
+LX-WORDSHK-ZAUWAI	粵典 Words.hk	周圍 entry	direct lexical sense and reading	周圍 zau1 wai4; surrounding area / everywhere	Route-modifier behavior in 周圍兜 remains compositional and context-sensitive.
+LX-WORDSHK-GUNGLI	粵典 Words.hk	公里 entry	direct lexical sense and reading	公里 gung1 lei5; kilometre measure noun	Does not license a complete distance construction.
+LX-WORDSHK-GWAAN	粵典 Words.hk	慣 entry	direct lexical sense and reading	慣 gwaan3; be/get accustomed	The omitted complement in 唔慣 remains context unresolved.
+LX-WORDSHK-AAMUI	粵典 Words.hk	阿妹 entry	direct lexical polysemy	阿妹 aa3 mui6; younger sister and affectionate address to a girl/young woman	Runtime must not collapse kinship and address senses.
+LX-WORDSHK-GANZYU	粵典 Words.hk	跟住 entry	direct lexical sense boundary	跟住 gan1 zyu6 as temporal “then/afterwards”	Does not support the accompaniment sense in 唔跟住去.
+LX-WORDSHK-FAANGUNG	粵典 Words.hk	返工 entry; 上班 listed as synonym	indirect regional/register evidence	上班 corresponds to “go/be at work” in a written/regional register	Not an exact independent 上班 entry; retain regional label pending direct source.
+LX-WORDSHK-SEONGHOK	粵典 Words.hk	上學 entry; written-form label and 返學 contrast	regional/register analogy	上-activity forms may be written/regional relative to colloquial 返- forms	Analogy only; does not directly prove 上班 lexical scope.
+LX-WORDSHK-FUNGKINGKEOI	粵典 Words.hk	風景區 entry	component corroboration	風景 fung1 ging2 within 風景區	Not a direct atomic 風景 entry for all senses.
+LX-WORDSHK-CITMAT	粵典 Words.hk	切勿 entry; gloss references 千祈唔好	functional corroboration	千祈唔好 as a strong warning/prohibition expression	Does not define 千祈 independently or license the full grammar frame.
+LX-CANTODICT-CINKEI	CantoDict	千祈 entry and 千祈唔好 examples	direct lexical reading and use	千祈 cin1 kei4; by all means / must, commonly in strong warnings	Lexical anchor only; surrounding prohibition syntax requires separate evidence.
+LX-CUHK-CINKEI	CUHK / Lin Yutang lexical resource	千祈 lookup	independent lexical corroboration	existence and reading of 千祈	Historical/lexicographic phrasing is not a modern usage distribution study.
+LX-CANTODICT-JISANG	CantoDict	姨甥 entry	direct reading; one kinship interpretation	姨甥 ji4 sang1	Kinship scope conflicts with other descriptions; do not install a broad English gloss.
+LX-SHEIK-JISANG-VAR	Cantonese Sheik forum/reference discussion	姨甥 kinship discussion	variation/conflict evidence	multiple reported kinship scopes for 姨甥	Community discussion is not decisive authority; used only to prevent overconfident scope assignment.
+LX-CUHK-JI	CUHK 粵語審音配詞字庫	姨 character reading	character-reading corroboration	姨 ji4	Character reading alone does not establish compound meaning.
+LX-CUHK-SANG	CUHK 粵語審音配詞字庫	甥 character reading	character-reading corroboration	甥 sang1	Character reading alone does not establish compound meaning.
+LX-CUHK-DAU	CUHK 粵語審音配詞字庫	兜 character reading	reading corroboration	兜 dau1	Does not establish the corpus route/drive-around sense.
+LX-R1-DAAM	R1 direct dictionary verification	啖 entry checked in prior batch	inherited direct reading/sense verification	啖 daam6; sip/mouthful classifier	Install the classifier, not atomic 一啖.
+LX-R1-ZAA	R1 direct dictionary verification	揸 entry checked in prior batch	inherited direct reading/polysemy verification	揸 zaa1; hold/control, including vehicle-control sense	Must retain sense metadata; not every 揸 token means drive.
+LX-R1-CAAMDO	R1 direct dictionary verification	差唔多 entry checked in prior batch	inherited direct reading/polysemy verification	差唔多 caa1 m4 do1; approximation and similarity uses	Do not collapse numeric approximation and similarity predicate behavior.
+LX-R1-CAMMAANHAK	R1 direct dictionary verification	尋晚黑 entry checked in prior batch	inherited direct reading/time expression verification	尋晚黑 cam4 maan5 hak1/haak1; last night	Pronunciation variation must remain visible.
+LX-CORPUS-GX002	WECHAT-GX-TRAVEL-002	normalized native conversation and adjudicated units	natural attestation only	surface occurrence in one family conversation	Zero productive-promotion weight; does not prove general lexical distribution or parser analysis.

@@ -1,0 +1,133 @@
+{
+  "schema": "canto-span-v0.5.180-acceptance-audit-v1",
+  "version": "0.5.180",
+  "status": "PASS",
+  "total": 29,
+  "passed": 29,
+  "failed": 0,
+  "supported_productive": 1,
+  "runtime_hashes": {
+    "main.js": "9af06c49a40e64ae81fb7b6217f2ddca564ab5147b7bcdb7fd5d39ff88605917",
+    "manifest.json": "6dd24fc80b58ae6b7eb7cfab9d7eeac9de97f57ec2deb173c30740c78c297d9c",
+    "styles.css": "5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a"
+  },
+  "checks": [
+    {
+      "name": "runtime version 0.5.180",
+      "pass": true
+    },
+    {
+      "name": "manifest version 0.5.180",
+      "pass": true
+    },
+    {
+      "name": "policy version 0.5.180",
+      "pass": true
+    },
+    {
+      "name": "global freeze remains active",
+      "pass": true
+    },
+    {
+      "name": "registry has 178 unique labels",
+      "pass": true
+    },
+    {
+      "name": "exactly one supported productive pattern",
+      "pass": true
+    },
+    {
+      "name": "runtime subtype status supported productive",
+      "pass": true
+    },
+    {
+      "name": "broad PerfectiveVP remains provisional",
+      "pass": true
+    },
+    {
+      "name": "CompletionVP remains unpromoted",
+      "pass": true
+    },
+    {
+      "name": "public alias preserved",
+      "pass": true
+    },
+    {
+      "name": "internal scope bounded",
+      "pass": true
+    },
+    {
+      "name": "visible packet 63/63",
+      "pass": true
+    },
+    {
+      "name": "render 12/12",
+      "pass": true
+    },
+    {
+      "name": "render assertions 91/91",
+      "pass": true
+    },
+    {
+      "name": "native-conflicted row not positive evidence",
+      "pass": true
+    },
+    {
+      "name": "heldout commitments 7/7",
+      "pass": true
+    },
+    {
+      "name": "heldout evaluations 7/7",
+      "pass": true
+    },
+    {
+      "name": "heldout consumed and nonreusable",
+      "pass": true
+    },
+    {
+      "name": "aggregate 545/545",
+      "pass": true
+    },
+    {
+      "name": "aggregate exclusions zero",
+      "pass": true
+    },
+    {
+      "name": "post-heldout runtime diff metadata-only",
+      "pass": true
+    },
+    {
+      "name": "manifest unchanged after heldout",
+      "pass": true
+    },
+    {
+      "name": "styles unchanged after heldout",
+      "pass": true
+    },
+    {
+      "name": "source accounting unaccounted zero",
+      "pass": true
+    },
+    {
+      "name": "source accounting productive one",
+      "pass": true
+    },
+    {
+      "name": "native conflict burden 13/13",
+      "pass": true
+    },
+    {
+      "name": "V完咗O remains quarantined in acceptance record",
+      "pass": true
+    },
+    {
+      "name": "current documentation names semantic version",
+      "pass": true
+    },
+    {
+      "name": "runtime hashes present",
+      "pass": true
+    }
+  ],
+  "failures": []
+}

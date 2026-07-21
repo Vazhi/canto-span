@@ -1,0 +1,3458 @@
+{
+  "schema": "canto-span-evaluation-packet-blueprints-v1",
+  "checkpoint": "CP021B-R36",
+  "status": "BLUEPRINTS_ONLY_NO_HELD_OUT_SELECTED",
+  "packet_count": 53,
+  "packets": [
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-I01",
+      "canonical_family_id": "I01",
+      "canonical_family": "ClauseSpan",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "STRUCTURAL_EQUIVALENCE_PACKET",
+      "member_labels": [
+        "CoordinatedSubjectModalPredicateClause",
+        "LocativeModalPredicateClause",
+        "SubjectModalPredicateClause",
+        "SubjectPredicateClause",
+        "TopicModalPredicateClause"
+      ],
+      "development_seed_surfaces": [
+        "你要唔要？",
+        "一見到佢，我笑。",
+        "因為打風，所以我冇去。",
+        "因為落雨，我冇去。",
+        "因為落雨，所以我冇去。",
+        "如果你去，我去。",
+        "如果你去，我就去。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "STRUCTURAL_EQUIVALENCE_PACKET",
+        "exact": 4,
+        "variant": 0,
+        "negative": 4,
+        "ambiguity": 0,
+        "context": 0,
+        "native": 0,
+        "render": 8,
+        "heldout": 4,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "READY_SAFE_CLEANUP",
+      "primary_cp022_package": "CP022-I1A_INTERNAL_WRAPPER_CLEANUP",
+      "prerequisite_family_ids": [
+        "I02"
+      ]
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-I02",
+      "canonical_family_id": "I02",
+      "canonical_family": "ClauseRelationGraph",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "STRUCTURAL_EQUIVALENCE_PACKET",
+      "member_labels": [
+        "ClauseLinkingSequence",
+        "ClauseRelation",
+        "ClauseRelationMember"
+      ],
+      "development_seed_surfaces": [
+        "一見到佢，我笑。",
+        "一見到佢，我就笑。",
+        "人，人，人。",
+        "因為打風，所以我冇去。",
+        "因為落雨，我冇去。",
+        "因為落雨，所以我冇去。",
+        "如果你去，我去。",
+        "再做功課。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "STRUCTURAL_EQUIVALENCE_PACKET",
+        "exact": 4,
+        "variant": 0,
+        "negative": 4,
+        "ambiguity": 0,
+        "context": 0,
+        "native": 0,
+        "render": 8,
+        "heldout": 4,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "READY_SAFE_CLEANUP",
+      "primary_cp022_package": "CP022-I1A_INTERNAL_WRAPPER_CLEANUP",
+      "prerequisite_family_ids": []
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-I03",
+      "canonical_family_id": "I03",
+      "canonical_family": "ParticleScope",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "STRUCTURAL_REALIGNMENT_PACKET",
+      "member_labels": [
+        "DiscourseParticleFrame",
+        "FocusParticleFrame",
+        "PolarQuestionFrame"
+      ],
+      "development_seed_surfaces": [
+        "你去啩？",
+        "你走啦。",
+        "你食飯啩。",
+        "你食飯喎。",
+        "佢走喇。",
+        "佢返咗屋企啩。",
+        "得一個咋。",
+        "得一個啫。",
+        "得十蚊咋。",
+        "得三本書咋。",
+        "得三個人咋。",
+        "得少少啫.",
+        "去咩？",
+        "你去咩？",
+        "你去㗎咩？",
+        "你食飯咩？",
+        "佢返咗屋企咩？",
+        "我可以去咩？"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "STRUCTURAL_REALIGNMENT_PACKET",
+        "exact": 8,
+        "variant": 6,
+        "negative": 8,
+        "ambiguity": 4,
+        "context": 2,
+        "native": 6,
+        "render": 8,
+        "heldout": 8,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "PACKET_REQUIRED_STRUCTURAL_REALIGNMENT",
+      "primary_cp022_package": "CP022-I2A_PARTICLE_QUESTION_NEGATION_NARROWING",
+      "prerequisite_family_ids": [
+        "I01"
+      ]
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-I04",
+      "canonical_family_id": "I04",
+      "canonical_family": "NominalAndMeasureSpan",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "STRUCTURAL_EQUIVALENCE_PACKET",
+      "member_labels": [
+        "DefinitionComplement",
+        "HeadNP",
+        "MeasureExpression",
+        "ModifierPhrase"
+      ],
+      "development_seed_surfaces": [
+        "一見到佢，我笑。",
+        "一見到佢，我就笑。",
+        "人，人，人。",
+        "大家。",
+        "正題。",
+        "如果你去，我就去。",
+        "佢十歲。",
+        "我五歲。",
+        "個學生十歲。",
+        "呢個學生十歲。",
+        "本書三十蚊。",
+        "呢本書一百蚊。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "STRUCTURAL_EQUIVALENCE_PACKET",
+        "exact": 4,
+        "variant": 0,
+        "negative": 4,
+        "ambiguity": 0,
+        "context": 0,
+        "native": 0,
+        "render": 8,
+        "heldout": 4,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "READY_SAFE_CLEANUP",
+      "primary_cp022_package": "CP022-I1A_INTERNAL_WRAPPER_CLEANUP",
+      "prerequisite_family_ids": []
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-I05",
+      "canonical_family_id": "I05",
+      "canonical_family": "DiscourseRoleStructure",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "SPLIT_PACKET_CLEANUP_PLUS_RESEARCH_GAP",
+      "member_labels": [
+        "Comment",
+        "Topic",
+        "TopicComment",
+        "TopicCommentClause"
+      ],
+      "development_seed_surfaces": [
+        "呢本書三十。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "SPLIT_PACKET_CLEANUP_PLUS_RESEARCH_GAP",
+        "exact": 8,
+        "variant": 4,
+        "negative": 8,
+        "ambiguity": 4,
+        "context": 2,
+        "native": 6,
+        "render": 8,
+        "heldout": 8,
+        "research": 2
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "PARTIAL_CLEANUP_BLOCKED_SUBTYPES",
+      "primary_cp022_package": "CP022-I1A_INTERNAL_WRAPPER_CLEANUP",
+      "prerequisite_family_ids": [
+        "I01"
+      ]
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-I06",
+      "canonical_family_id": "I06",
+      "canonical_family": "CopularComposition",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "SPLIT_PACKET_CLEANUP_PLUS_RESEARCH_GAP",
+      "member_labels": [
+        "CopularIdentificationFrame",
+        "CopularRelationFrame",
+        "DefinitionExplanatoryFrame"
+      ],
+      "development_seed_surfaces": [
+        "佢係老師。",
+        "呢個係問題。",
+        "我覺得係真嘅。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "SPLIT_PACKET_CLEANUP_PLUS_RESEARCH_GAP",
+        "exact": 8,
+        "variant": 4,
+        "negative": 8,
+        "ambiguity": 4,
+        "context": 2,
+        "native": 6,
+        "render": 8,
+        "heldout": 8,
+        "research": 2
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "PARTIAL_CLEANUP_BLOCKED_SUBTYPES",
+      "primary_cp022_package": "CP022-I1A_INTERNAL_WRAPPER_CLEANUP",
+      "prerequisite_family_ids": [
+        "I01"
+      ]
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-I07",
+      "canonical_family_id": "I07",
+      "canonical_family": "ComplementGrouping",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "RESEARCH_GAP_PACKET_NO_IMPLEMENTATION",
+      "member_labels": [
+        "VPComplementFrame"
+      ],
+      "development_seed_surfaces": [],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "RESEARCH_GAP_PACKET_NO_IMPLEMENTATION",
+        "exact": 0,
+        "variant": 0,
+        "negative": 0,
+        "ambiguity": 0,
+        "context": 0,
+        "native": 0,
+        "render": 0,
+        "heldout": 0,
+        "research": 3
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "RESEARCH_GAP_BEFORE_FULL_IMPLEMENTATION",
+      "primary_cp022_package": "CP022-I5_VALENCY_COMPLEMENTS_STANCE_ARCHITECTURE",
+      "prerequisite_family_ids": [
+        "L45"
+      ]
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-I08",
+      "canonical_family_id": "I08",
+      "canonical_family": "ParserDiagnosticDisposition",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "STRUCTURAL_EQUIVALENCE_PACKET",
+      "member_labels": [
+        "MalformedCandidate",
+        "NeedsContext"
+      ],
+      "development_seed_surfaces": [
+        "行去入。",
+        "佢喺一。",
+        "我有冇食飯。",
+        "我行學校去。",
+        "我到返屋企。",
+        "我返屋企到。",
+        "一日。",
+        "一日啊。",
+        "一年。",
+        "一個月。",
+        "三年。",
+        "三個月。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "STRUCTURAL_EQUIVALENCE_PACKET",
+        "exact": 4,
+        "variant": 0,
+        "negative": 4,
+        "ambiguity": 0,
+        "context": 0,
+        "native": 0,
+        "render": 8,
+        "heldout": 4,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "READY_SAFE_CLEANUP",
+      "primary_cp022_package": "CP022-I1A_INTERNAL_WRAPPER_CLEANUP",
+      "prerequisite_family_ids": []
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L01",
+      "canonical_family_id": "L01",
+      "canonical_family": "CoverbAndParticipantRelations",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "STRUCTURAL_REALIGNMENT_PACKET",
+      "member_labels": [
+        "PassivePermissiveRelation",
+        "CoverbFrame",
+        "IntendedFunctionRelation",
+        "PostThemeParticipantRelation",
+        "LexicalGiveRelation"
+      ],
+      "development_seed_surfaces": [
+        "有嘅話，我哋再同大家講講。",
+        "佢喺屋企食飯。",
+        "我哋再同大家講講。",
+        "我喺屋企食飯。",
+        "我琴日喺屋企食飯。",
+        "我畀錢你。",
+        "畀本書佢。",
+        "畀佢本書。",
+        "给你水。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "STRUCTURAL_REALIGNMENT_PACKET",
+        "exact": 8,
+        "variant": 6,
+        "negative": 8,
+        "ambiguity": 4,
+        "context": 2,
+        "native": 6,
+        "render": 8,
+        "heldout": 8,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "PACKET_REQUIRED_STRUCTURAL_REALIGNMENT",
+      "primary_cp022_package": "CP022-I3_LOCATIVE_MOTION_SERIAL_RELATIONS",
+      "prerequisite_family_ids": []
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L02",
+      "canonical_family_id": "L02",
+      "canonical_family": "ConditionalRelations",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "STRUCTURAL_REALIGNMENT_PACKET",
+      "member_labels": [
+        "ConditionResult",
+        "ConditionalClause"
+      ],
+      "development_seed_surfaces": [
+        "冇嘅話。",
+        "有嘅話，我哋再同大家講講。",
+        "有嘅話。",
+        "得嘅話。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "STRUCTURAL_REALIGNMENT_PACKET",
+        "exact": 8,
+        "variant": 6,
+        "negative": 8,
+        "ambiguity": 4,
+        "context": 2,
+        "native": 6,
+        "render": 8,
+        "heldout": 8,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "PACKET_REQUIRED_STRUCTURAL_REALIGNMENT",
+      "primary_cp022_package": "CP022-I4_ASPECT_RESULT_AND_CLAUSE_RELATIONS",
+      "prerequisite_family_ids": [
+        "I02"
+      ]
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L03",
+      "canonical_family_id": "L03",
+      "canonical_family": "TemporalAndSequentialRelations",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "STRUCTURAL_REALIGNMENT_PACKET",
+      "member_labels": [
+        "CompletionThenClause",
+        "PriorityMarkerClause",
+        "TemporalAdverbialClause",
+        "TemporalClause"
+      ],
+      "development_seed_surfaces": [
+        "下年哩個時間咪過囖。",
+        "今日好凍。",
+        "係呀，日日OT到好夜。",
+        "尋日去咗香港。",
+        "聽日打風。",
+        "聽日落雨。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "STRUCTURAL_REALIGNMENT_PACKET",
+        "exact": 8,
+        "variant": 6,
+        "negative": 8,
+        "ambiguity": 4,
+        "context": 2,
+        "native": 6,
+        "render": 8,
+        "heldout": 8,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "PACKET_REQUIRED_STRUCTURAL_REALIGNMENT",
+      "primary_cp022_package": "CP022-I4_ASPECT_RESULT_AND_CLAUSE_RELATIONS",
+      "prerequisite_family_ids": [
+        "I02"
+      ]
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L04",
+      "canonical_family_id": "L04",
+      "canonical_family": "FormulaicDiscourse",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "FOCUSED_NARROWING_PACKET",
+      "member_labels": [
+        "FormulaDiscourseUnit"
+      ],
+      "development_seed_surfaces": [
+        "可以呀。",
+        "可以啊。",
+        "好，好，好，好。",
+        "好呀。",
+        "有，有。",
+        "有有有。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "FOCUSED_NARROWING_PACKET",
+        "exact": 6,
+        "variant": 4,
+        "negative": 6,
+        "ambiguity": 2,
+        "context": 1,
+        "native": 4,
+        "render": 6,
+        "heldout": 6,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "READY_AFTER_PACKET",
+      "primary_cp022_package": "CP022-I2A_PARTICLE_QUESTION_NEGATION_NARROWING",
+      "prerequisite_family_ids": []
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L05",
+      "canonical_family_id": "L05",
+      "canonical_family": "FragmentsAndEllipsis",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "SPLIT_PACKET_CLEANUP_PLUS_RESEARCH_GAP",
+      "member_labels": [
+        "ComplementEllipsisFragment",
+        "FragmentAnswer",
+        "FragmentQuestion",
+        "IdentificationFragment",
+        "LocativeFragment",
+        "ModalResponseFragment",
+        "NegatedExistentialFragment",
+        "NegativeCognitionFragment",
+        "PossessiveNominalFragment",
+        "ProhibitiveFragment"
+      ],
+      "development_seed_surfaces": [
+        "我都覺得有。",
+        "我都覺得佢係。",
+        "我都覺得係。",
+        "我都覺得係啊。",
+        "我覺得唔係。",
+        "可以。",
+        "我覺得啱。",
+        "要。",
+        "唔可以。",
+        "唔使。",
+        "唔要。",
+        "你呢？",
+        "呢？",
+        "冇，冇。",
+        "冇。",
+        "冇呀。",
+        "冇啊。",
+        "冇啫。",
+        "冇喇。",
+        "唔知呀。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "SPLIT_PACKET_CLEANUP_PLUS_RESEARCH_GAP",
+        "exact": 8,
+        "variant": 4,
+        "negative": 8,
+        "ambiguity": 4,
+        "context": 2,
+        "native": 6,
+        "render": 8,
+        "heldout": 8,
+        "research": 2
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "PARTIAL_CLEANUP_BLOCKED_SUBTYPES",
+      "primary_cp022_package": "CP022-I5_VALENCY_COMPLEMENTS_STANCE_ARCHITECTURE",
+      "prerequisite_family_ids": [
+        "I08",
+        "L45"
+      ]
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L06",
+      "canonical_family_id": "L06",
+      "canonical_family": "PerfectiveAspect",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "FOCUSED_NARROWING_PACKET",
+      "member_labels": [
+        "PerfectiveVP"
+      ],
+      "development_seed_surfaces": [
+        "你食咗未？",
+        "你食咗未呀？",
+        "你食咗香港未？",
+        "你食咗飯未？",
+        "你尋日食咗故事。",
+        "你尋日食咗香港。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "FOCUSED_NARROWING_PACKET",
+        "exact": 6,
+        "variant": 4,
+        "negative": 6,
+        "ambiguity": 2,
+        "context": 1,
+        "native": 4,
+        "render": 6,
+        "heldout": 6,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "READY_AFTER_PACKET",
+      "primary_cp022_package": "CP022-I2A_PARTICLE_QUESTION_NEGATION_NARROWING",
+      "prerequisite_family_ids": []
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L07",
+      "canonical_family_id": "L07",
+      "canonical_family": "ExperientialAspect",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "STRUCTURAL_REALIGNMENT_PACKET",
+      "member_labels": [
+        "ExperientialClause",
+        "ExperientialQuestion",
+        "ExperientialVP",
+        "ExperientialYesNoQuestion",
+        "NegativeExperiential"
+      ],
+      "development_seed_surfaces": [
+        "食過飯。",
+        "有冇人做過呢？",
+        "有冇講過電話啊？"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "STRUCTURAL_REALIGNMENT_PACKET",
+        "exact": 8,
+        "variant": 6,
+        "negative": 8,
+        "ambiguity": 4,
+        "context": 2,
+        "native": 6,
+        "render": 8,
+        "heldout": 8,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "PACKET_REQUIRED_STRUCTURAL_REALIGNMENT",
+      "primary_cp022_package": "CP022-I4_ASPECT_RESULT_AND_CLAUSE_RELATIONS",
+      "prerequisite_family_ids": [
+        "L26"
+      ]
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L08",
+      "canonical_family_id": "L08",
+      "canonical_family": "ProgressiveAspect",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "FOCUSED_NARROWING_PACKET",
+      "member_labels": [
+        "ProgressiveTransitivePredicate",
+        "ProgressiveVP"
+      ],
+      "development_seed_surfaces": [
+        "你食緊咩？",
+        "佢好攰，但係仲做緊。",
+        "食緊飯。",
+        "戴緊眼鏡。",
+        "雖然好攰，但係佢仲做緊。",
+        "雖然好攰，佢仲做緊。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "FOCUSED_NARROWING_PACKET",
+        "exact": 6,
+        "variant": 4,
+        "negative": 6,
+        "ambiguity": 2,
+        "context": 1,
+        "native": 4,
+        "render": 6,
+        "heldout": 6,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "READY_AFTER_PACKET",
+      "primary_cp022_package": "CP022-I2A_PARTICLE_QUESTION_NEGATION_NARROWING",
+      "prerequisite_family_ids": []
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L09",
+      "canonical_family_id": "L09",
+      "canonical_family": "DurativeContinuativeAspect",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "STRUCTURAL_REALIGNMENT_PACKET",
+      "member_labels": [
+        "DurativeVP"
+      ],
+      "development_seed_surfaces": [
+        "戴住眼鏡。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "STRUCTURAL_REALIGNMENT_PACKET",
+        "exact": 8,
+        "variant": 6,
+        "negative": 8,
+        "ambiguity": 4,
+        "context": 2,
+        "native": 6,
+        "render": 8,
+        "heldout": 8,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "PACKET_REQUIRED_STRUCTURAL_REALIGNMENT",
+      "primary_cp022_package": "CP022-I4_ASPECT_RESULT_AND_CLAUSE_RELATIONS",
+      "prerequisite_family_ids": []
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L10",
+      "canonical_family_id": "L10",
+      "canonical_family": "DelimitativeAspect",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "FOCUSED_NARROWING_PACKET",
+      "member_labels": [
+        "DelimitedVP"
+      ],
+      "development_seed_surfaces": [
+        "呢個問題，我想講吓。",
+        "對呢個故事，我想食吓。",
+        "對呢個問題，我想講吓。",
+        "對於呢個問題，我想講吓。",
+        "關於呢個故事，我想食吓。",
+        "關於呢個故事，我想講吓。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "FOCUSED_NARROWING_PACKET",
+        "exact": 6,
+        "variant": 4,
+        "negative": 6,
+        "ambiguity": 2,
+        "context": 1,
+        "native": 4,
+        "render": 6,
+        "heldout": 6,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "READY_AFTER_PACKET",
+      "primary_cp022_package": "CP022-I2A_PARTICLE_QUESTION_NEGATION_NARROWING",
+      "prerequisite_family_ids": []
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L11",
+      "canonical_family_id": "L11",
+      "canonical_family": "Completion",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "STRUCTURAL_REALIGNMENT_PACKET",
+      "member_labels": [
+        "CompletionQuestion",
+        "CompletionVP"
+      ],
+      "development_seed_surfaces": [
+        "你食完飯未？",
+        "你食咗未？",
+        "你食咗未呀？",
+        "你食咗香港未？",
+        "你食咗飯未？",
+        "你食飯未？",
+        "有冇人做晒啊？",
+        "我食完飯，返屋企。",
+        "我食完飯，然後返屋企。",
+        "食完咗飯。",
+        "食完飯。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "STRUCTURAL_REALIGNMENT_PACKET",
+        "exact": 8,
+        "variant": 6,
+        "negative": 8,
+        "ambiguity": 4,
+        "context": 2,
+        "native": 6,
+        "render": 8,
+        "heldout": 8,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "PACKET_REQUIRED_STRUCTURAL_REALIGNMENT",
+      "primary_cp022_package": "CP022-I4_ASPECT_RESULT_AND_CLAUSE_RELATIONS",
+      "prerequisite_family_ids": [
+        "L12"
+      ]
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L12",
+      "canonical_family_id": "L12",
+      "canonical_family": "ResultAndPotentialComplements",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "STRUCTURAL_REALIGNMENT_PACKET",
+      "member_labels": [
+        "NegativePotentialComplement",
+        "NegativePotentialDirectionalVP",
+        "PotentialDirectionalVP",
+        "PotentialResultVP",
+        "ResultComplement",
+        "ResultComplementVP",
+        "VerbComplementVP"
+      ],
+      "development_seed_surfaces": [
+        "我食唔到飯。",
+        "食唔到飯。",
+        "做唔完。",
+        "做唔完份功課。",
+        "聽唔到聲。",
+        "行唔入去。",
+        "攞唔返嚟。",
+        "行得入去。",
+        "攞得返嚟。",
+        "食得到飯。",
+        "做得完。",
+        "做得完份功課。",
+        "食到飯。",
+        "我食到飯。",
+        "做好功課。",
+        "做好咗功課。",
+        "行快啲。",
+        "我攞本書返嚟畀你睇。",
+        "寄返去。",
+        "講大聲啲。",
+        "講返正題，你尋日去咗邊度呀？",
+        "講返正題。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "STRUCTURAL_REALIGNMENT_PACKET",
+        "exact": 8,
+        "variant": 6,
+        "negative": 8,
+        "ambiguity": 4,
+        "context": 2,
+        "native": 6,
+        "render": 8,
+        "heldout": 8,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "PACKET_REQUIRED_STRUCTURAL_REALIGNMENT",
+      "primary_cp022_package": "CP022-I4_ASPECT_RESULT_AND_CLAUSE_RELATIONS",
+      "prerequisite_family_ids": [
+        "L45"
+      ]
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L13",
+      "canonical_family_id": "L13",
+      "canonical_family": "AspectDirectionalComposition",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "STRUCTURAL_EQUIVALENCE_PACKET",
+      "member_labels": [
+        "PerfectiveDirectionalVP",
+        "ProgressiveDirectionalVP"
+      ],
+      "development_seed_surfaces": [
+        "入咗嚟。",
+        "落咗去。",
+        "行緊入去。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "STRUCTURAL_EQUIVALENCE_PACKET",
+        "exact": 4,
+        "variant": 0,
+        "negative": 4,
+        "ambiguity": 0,
+        "context": 0,
+        "native": 0,
+        "render": 8,
+        "heldout": 4,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "READY_SAFE_CLEANUP",
+      "primary_cp022_package": "CP022-I1B_TRANSPARENT_WRAPPER_CLEANUP",
+      "prerequisite_family_ids": [
+        "L06",
+        "L08",
+        "L33"
+      ]
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L14",
+      "canonical_family_id": "L14",
+      "canonical_family": "Faan1ComplementProfiles",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "FOCUSED_NARROWING_PACKET",
+      "member_labels": [
+        "RepetitiveComplementVP",
+        "RestorativeComplementVP"
+      ],
+      "development_seed_surfaces": [
+        "睇返一次。",
+        "飲返杯咖啡。",
+        "講返一次。",
+        "整返好。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "FOCUSED_NARROWING_PACKET",
+        "exact": 6,
+        "variant": 4,
+        "negative": 6,
+        "ambiguity": 2,
+        "context": 1,
+        "native": 4,
+        "render": 6,
+        "heldout": 6,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "READY_AFTER_PACKET",
+      "primary_cp022_package": "CP022-I2A_PARTICLE_QUESTION_NEGATION_NARROWING",
+      "prerequisite_family_ids": []
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L15",
+      "canonical_family_id": "L15",
+      "canonical_family": "ResultativeAndChangePredication",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "SPLIT_PACKET_CLEANUP_PLUS_RESEARCH_GAP",
+      "member_labels": [
+        "CausativeResultFrame",
+        "CausativeResultPredicate",
+        "ChangeIntoPredicate",
+        "DisposalChangeIntoResultFrame",
+        "ModalChangeIntoResultFrame",
+        "PerfectiveObjectResultPredicate",
+        "PerfectiveResultPredicate",
+        "ResultStateClause",
+        "SeemingPerfectiveResultClause",
+        "TransformationResultFrame",
+        "TransformationResultPredicate"
+      ],
+      "development_seed_surfaces": [],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "SPLIT_PACKET_CLEANUP_PLUS_RESEARCH_GAP",
+        "exact": 8,
+        "variant": 4,
+        "negative": 8,
+        "ambiguity": 4,
+        "context": 2,
+        "native": 6,
+        "render": 8,
+        "heldout": 8,
+        "research": 2
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "PARTIAL_CLEANUP_BLOCKED_SUBTYPES",
+      "primary_cp022_package": "CP022-I4_ASPECT_RESULT_AND_CLAUSE_RELATIONS",
+      "prerequisite_family_ids": [
+        "L06",
+        "L45"
+      ]
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L16",
+      "canonical_family_id": "L16",
+      "canonical_family": "ClassifierAndQuantityNP",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "STRUCTURAL_REALIGNMENT_PACKET",
+      "member_labels": [
+        "ApproximateQuantity",
+        "BareClassifierNP",
+        "ClassifierObjectNP",
+        "DemonstrativeQuantifiedClassifierNP",
+        "QuantifiedClassifierNP",
+        "QuantifiedPersonNP",
+        "QuantifiedTimeNP",
+        "QuantityNP"
+      ],
+      "development_seed_surfaces": [
+        "七杯度。",
+        "我飲七杯度喇。",
+        "飲七杯度喇。",
+        "做得完份功課。",
+        "飲返杯咖啡。",
+        "一個。",
+        "一個人。",
+        "一個咋.",
+        "一個啫。",
+        "三個人。",
+        "我有一個故事，我睇咗，佢都睇咗。",
+        "跟住好多人都做唔晒囖所以。",
+        "一日。",
+        "一日啊。",
+        "一年。",
+        "一個月。",
+        "一個字。",
+        "三年。",
+        "得十蚊咋。",
+        "三十蚊。",
+        "佢三蚊。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "STRUCTURAL_REALIGNMENT_PACKET",
+        "exact": 8,
+        "variant": 6,
+        "negative": 8,
+        "ambiguity": 4,
+        "context": 2,
+        "native": 6,
+        "render": 8,
+        "heldout": 8,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "PACKET_REQUIRED_STRUCTURAL_REALIGNMENT",
+      "primary_cp022_package": "CP022-I2B_NOMINAL_MEASURE_AND_SCALAR_BOUNDARIES",
+      "prerequisite_family_ids": [
+        "I04"
+      ]
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L17",
+      "canonical_family_id": "L17",
+      "canonical_family": "DemonstrativeNP",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "FOCUSED_NARROWING_PACKET",
+      "member_labels": [
+        "DemonstrativeClassifierNP",
+        "DemonstrativeHeadNP"
+      ],
+      "development_seed_surfaces": [
+        "呢本。",
+        "呢本書。",
+        "呢個故事，我返咗屋企，佢都返咗屋企。",
+        "呢個故事，我食咗，佢都食咗。",
+        "呢個故事，我睇咗，佢都睇咗。",
+        "呢個故事，我睇咗故事，佢都睇咗故事。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "FOCUSED_NARROWING_PACKET",
+        "exact": 6,
+        "variant": 4,
+        "negative": 6,
+        "ambiguity": 2,
+        "context": 1,
+        "native": 4,
+        "render": 6,
+        "heldout": 6,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "READY_AFTER_PACKET",
+      "primary_cp022_package": "CP022-I2B_NOMINAL_MEASURE_AND_SCALAR_BOUNDARIES",
+      "prerequisite_family_ids": [
+        "L16"
+      ]
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L18",
+      "canonical_family_id": "L18",
+      "canonical_family": "AssociativeAndCoordinatedNP",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "STRUCTURAL_REALIGNMENT_PACKET",
+      "member_labels": [
+        "AssociativeNP",
+        "CoordinatedNP"
+      ],
+      "development_seed_surfaces": [],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "STRUCTURAL_REALIGNMENT_PACKET",
+        "exact": 8,
+        "variant": 6,
+        "negative": 8,
+        "ambiguity": 4,
+        "context": 2,
+        "native": 6,
+        "render": 8,
+        "heldout": 8,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "PACKET_REQUIRED_STRUCTURAL_REALIGNMENT",
+      "primary_cp022_package": "CP022-I2B_NOMINAL_MEASURE_AND_SCALAR_BOUNDARIES",
+      "prerequisite_family_ids": []
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L19",
+      "canonical_family_id": "L19",
+      "canonical_family": "NominalModificationAndRelatives",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "STRUCTURAL_REALIGNMENT_PACKET",
+      "member_labels": [
+        "ModifiedNP",
+        "ModifierNP",
+        "NominalModifierNP",
+        "RelativeClauseNP",
+        "StativeNominalComplement"
+      ],
+      "development_seed_surfaces": [
+        "下年哩個時間咪過囖。",
+        "有咩書？",
+        "有咩書啦？",
+        "有咩書啩？",
+        "有咩書喎？",
+        "有咩書㗎喇？",
+        "我最近好大壓力。",
+        "係呀，我最近好大壓力。",
+        "你嚟嘅時候，我喺屋企。",
+        "我食飯嘅時候，佢打電話畀我。",
+        "我買嘅書好貴。",
+        "我覺得係真嘅。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "STRUCTURAL_REALIGNMENT_PACKET",
+        "exact": 8,
+        "variant": 6,
+        "negative": 8,
+        "ambiguity": 4,
+        "context": 2,
+        "native": 6,
+        "render": 8,
+        "heldout": 8,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "PACKET_REQUIRED_STRUCTURAL_REALIGNMENT",
+      "primary_cp022_package": "CP022-I2B_NOMINAL_MEASURE_AND_SCALAR_BOUNDARIES",
+      "prerequisite_family_ids": [
+        "I04"
+      ]
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L20",
+      "canonical_family_id": "L20",
+      "canonical_family": "PossessiveNominals",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "STRUCTURAL_REALIGNMENT_PACKET",
+      "member_labels": [
+        "PossessiveClassifierNP",
+        "PossessiveNP",
+        "PossessiveTransferClause"
+      ],
+      "development_seed_surfaces": [],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "STRUCTURAL_REALIGNMENT_PACKET",
+        "exact": 8,
+        "variant": 6,
+        "negative": 8,
+        "ambiguity": 4,
+        "context": 2,
+        "native": 6,
+        "render": 8,
+        "heldout": 8,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "PACKET_REQUIRED_STRUCTURAL_REALIGNMENT",
+      "primary_cp022_package": "CP022-I2B_NOMINAL_MEASURE_AND_SCALAR_BOUNDARIES",
+      "prerequisite_family_ids": [
+        "I04"
+      ]
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L21",
+      "canonical_family_id": "L21",
+      "canonical_family": "OrdinalNominals",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "FOCUSED_NARROWING_PACKET",
+      "member_labels": [
+        "DiMarkedNP",
+        "OrdinalClassifierNP"
+      ],
+      "development_seed_surfaces": [
+        "但係，其實人哋咪又係貪你啲錢。",
+        "返咗啲書。",
+        "攞走啲書。",
+        "攞啲糖去食。",
+        "攞啲糖嚟食。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "FOCUSED_NARROWING_PACKET",
+        "exact": 6,
+        "variant": 4,
+        "negative": 6,
+        "ambiguity": 2,
+        "context": 1,
+        "native": 4,
+        "render": 6,
+        "heldout": 6,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "READY_AFTER_PACKET",
+      "primary_cp022_package": "CP022-I2B_NOMINAL_MEASURE_AND_SCALAR_BOUNDARIES",
+      "prerequisite_family_ids": []
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L22",
+      "canonical_family_id": "L22",
+      "canonical_family": "WhNominals",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "STRUCTURAL_REALIGNMENT_PACKET",
+      "member_labels": [
+        "WhClassifierQuestion"
+      ],
+      "development_seed_surfaces": [
+        "你睇邊本書？",
+        "邊本書？",
+        "邊間屋？"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "STRUCTURAL_REALIGNMENT_PACKET",
+        "exact": 8,
+        "variant": 6,
+        "negative": 8,
+        "ambiguity": 4,
+        "context": 2,
+        "native": 6,
+        "render": 8,
+        "heldout": 8,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "PACKET_REQUIRED_STRUCTURAL_REALIGNMENT",
+      "primary_cp022_package": "CP022-I2B_NOMINAL_MEASURE_AND_SCALAR_BOUNDARIES",
+      "prerequisite_family_ids": [
+        "L16"
+      ]
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L23",
+      "canonical_family_id": "L23",
+      "canonical_family": "ANotAQuestions",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "RESEARCH_GAP_PACKET_NO_IMPLEMENTATION",
+      "member_labels": [
+        "ANotAQuestion",
+        "AcceptabilityANotA",
+        "CopularANotAQuestion",
+        "ModalANotAQuestion"
+      ],
+      "development_seed_surfaces": [
+        "有冇人做晒啊？",
+        "你有冇問問題啊？",
+        "你食唔食？",
+        "你食唔食飯？",
+        "你食唔食飯啦？",
+        "你食唔食飯啩？",
+        "你使唔使去？",
+        "會唔會落雨？"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "RESEARCH_GAP_PACKET_NO_IMPLEMENTATION",
+        "exact": 0,
+        "variant": 0,
+        "negative": 0,
+        "ambiguity": 0,
+        "context": 0,
+        "native": 0,
+        "render": 0,
+        "heldout": 0,
+        "research": 3
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "RESEARCH_GAP_BEFORE_FULL_IMPLEMENTATION",
+      "primary_cp022_package": "CP022-I2A_PARTICLE_QUESTION_NEGATION_NARROWING",
+      "prerequisite_family_ids": [
+        "I06",
+        "L29"
+      ]
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L24",
+      "canonical_family_id": "L24",
+      "canonical_family": "ExistentialQuestions",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "RESEARCH_GAP_PACKET_NO_IMPLEMENTATION",
+      "member_labels": [
+        "ExistentialQuestion",
+        "ExistentialWhQuestion",
+        "PostposedExistentialQuestion"
+      ],
+      "development_seed_surfaces": [
+        "有冇？",
+        "有冇嘢食啊？",
+        "你有冇吖？",
+        "你有冇書？",
+        "呢度有冇人？",
+        "有咩書？",
+        "有咩書啦？",
+        "有咩書啩？",
+        "有咩書喎？",
+        "有咩書㗎喇？"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "RESEARCH_GAP_PACKET_NO_IMPLEMENTATION",
+        "exact": 0,
+        "variant": 0,
+        "negative": 0,
+        "ambiguity": 0,
+        "context": 0,
+        "native": 0,
+        "render": 0,
+        "heldout": 0,
+        "research": 3
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "RESEARCH_GAP_BEFORE_FULL_IMPLEMENTATION",
+      "primary_cp022_package": "CP022-I2A_PARTICLE_QUESTION_NEGATION_NARROWING",
+      "prerequisite_family_ids": [
+        "L39"
+      ]
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L25",
+      "canonical_family_id": "L25",
+      "canonical_family": "TypedWhAndStanceQuestions",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "SPLIT_PACKET_CLEANUP_PLUS_RESEARCH_GAP",
+      "member_labels": [
+        "IdentityWhQuestion",
+        "LocativeWhQuestion",
+        "OpinionQuestion",
+        "ProgressivePlaceQuestion",
+        "ProgressiveWhObjectQuestion",
+        "ScalarValueQuestion",
+        "SchedulingQuestion"
+      ],
+      "development_seed_surfaces": [
+        "去咗邊度呀？",
+        "你去咗邊度？",
+        "你尋日去咗邊度呀？",
+        "喺邊度呀？",
+        "講返正題，你尋日去咗邊度呀？",
+        "邊度呀？",
+        "你食緊咩？"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "SPLIT_PACKET_CLEANUP_PLUS_RESEARCH_GAP",
+        "exact": 8,
+        "variant": 4,
+        "negative": 8,
+        "ambiguity": 4,
+        "context": 2,
+        "native": 6,
+        "render": 8,
+        "heldout": 8,
+        "research": 2
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "PARTIAL_CLEANUP_BLOCKED_SUBTYPES",
+      "primary_cp022_package": "CP022-I2A_PARTICLE_QUESTION_NEGATION_NARROWING",
+      "prerequisite_family_ids": [
+        "I03",
+        "L31"
+      ]
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L26",
+      "canonical_family_id": "L26",
+      "canonical_family": "Negation",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "STRUCTURAL_REALIGNMENT_PACKET",
+      "member_labels": [
+        "NegatedDirectionalMotionVP",
+        "NegatedExistentialClause",
+        "NegatedLexicalizedStative",
+        "NegatedStativePredicate",
+        "NegatedVP",
+        "NegativeHaveClause"
+      ],
+      "development_seed_surfaces": [
+        "因為打風，所以我冇去。",
+        "因為落雨，我冇去。",
+        "因為落雨，所以我冇去。",
+        "但係佢唔嚟。",
+        "佢唔嚟。",
+        "佢話如果落雨，佢就唔去。",
+        "冇書。",
+        "我冇書。",
+        "唔做完。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "STRUCTURAL_REALIGNMENT_PACKET",
+        "exact": 8,
+        "variant": 6,
+        "negative": 8,
+        "ambiguity": 4,
+        "context": 2,
+        "native": 6,
+        "render": 8,
+        "heldout": 8,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "PACKET_REQUIRED_STRUCTURAL_REALIGNMENT",
+      "primary_cp022_package": "CP022-I2A_PARTICLE_QUESTION_NEGATION_NARROWING",
+      "prerequisite_family_ids": [
+        "L39",
+        "L42",
+        "L33"
+      ]
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L27",
+      "canonical_family_id": "L27",
+      "canonical_family": "AcceptabilityAndFreeChoice",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "STRUCTURAL_REALIGNMENT_PACKET",
+      "member_labels": [
+        "AcceptabilityClause"
+      ],
+      "development_seed_surfaces": [],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "STRUCTURAL_REALIGNMENT_PACKET",
+        "exact": 8,
+        "variant": 6,
+        "negative": 8,
+        "ambiguity": 4,
+        "context": 2,
+        "native": 6,
+        "render": 8,
+        "heldout": 8,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "PACKET_REQUIRED_STRUCTURAL_REALIGNMENT",
+      "primary_cp022_package": "CP022-I2A_PARTICLE_QUESTION_NEGATION_NARROWING",
+      "prerequisite_family_ids": []
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L28",
+      "canonical_family_id": "L28",
+      "canonical_family": "DirectivesRequestsAndSuggestions",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "STRUCTURAL_REALIGNMENT_PACKET",
+      "member_labels": [
+        "PoliteImperativeClause",
+        "ProhibitiveImperative",
+        "SuggestionQuestion"
+      ],
+      "development_seed_surfaces": [
+        "唔好離題喇。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "STRUCTURAL_REALIGNMENT_PACKET",
+        "exact": 8,
+        "variant": 6,
+        "negative": 8,
+        "ambiguity": 4,
+        "context": 2,
+        "native": 6,
+        "render": 8,
+        "heldout": 8,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "PACKET_REQUIRED_STRUCTURAL_REALIGNMENT",
+      "primary_cp022_package": "CP022-I2A_PARTICLE_QUESTION_NEGATION_NARROWING",
+      "prerequisite_family_ids": [
+        "I03"
+      ]
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L29",
+      "canonical_family_id": "L29",
+      "canonical_family": "Modality",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "ARCHITECTURE_PROGRAM_PACKET",
+      "member_labels": [
+        "ModalVP"
+      ],
+      "development_seed_surfaces": [
+        "你要唔要？",
+        "佢要飲水。",
+        "佢會返嚟啩。",
+        "佢會嚟喎？",
+        "佢會嚟喎。",
+        "我可以去。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "ARCHITECTURE_PROGRAM_PACKET",
+        "exact": 12,
+        "variant": 8,
+        "negative": 12,
+        "ambiguity": 6,
+        "context": 4,
+        "native": 8,
+        "render": 12,
+        "heldout": 12,
+        "research": 2
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "ARCHITECTURE_PROGRAM",
+      "primary_cp022_package": "CP022-I5_VALENCY_COMPLEMENTS_STANCE_ARCHITECTURE",
+      "prerequisite_family_ids": []
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L30",
+      "canonical_family_id": "L30",
+      "canonical_family": "DesirePreferenceAndIntention",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "STRUCTURAL_REALIGNMENT_PACKET",
+      "member_labels": [
+        "DesiderativeVP",
+        "IntentionFrame",
+        "PreferenceVP"
+      ],
+      "development_seed_surfaces": [
+        "我想去。",
+        "呢個問題，我想講吓。",
+        "對呢個故事，我想食吓。",
+        "對呢個問題，我想去。",
+        "對呢個問題，我想講吓。",
+        "對呢個問題，我想講呢個故事。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "STRUCTURAL_REALIGNMENT_PACKET",
+        "exact": 8,
+        "variant": 6,
+        "negative": 8,
+        "ambiguity": 4,
+        "context": 2,
+        "native": 6,
+        "render": 8,
+        "heldout": 8,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "PACKET_REQUIRED_STRUCTURAL_REALIGNMENT",
+      "primary_cp022_package": "CP022-I5_VALENCY_COMPLEMENTS_STANCE_ARCHITECTURE",
+      "prerequisite_family_ids": [
+        "L29"
+      ]
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L31",
+      "canonical_family_id": "L31",
+      "canonical_family": "CognitionAndStance",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "RESEARCH_GAP_PACKET_NO_IMPLEMENTATION",
+      "member_labels": [
+        "CognitionContentFrame",
+        "CognitionDelimitedObjectVP",
+        "CognitionDelimitedVP",
+        "CognitionStatementClause",
+        "OpinionStanceFrame"
+      ],
+      "development_seed_surfaces": [
+        "我知如果佢去，我就去。",
+        "我知你知。",
+        "我知佢唔嚟。",
+        "我唔知佢嚟唔嚟。",
+        "我知。",
+        "我唔知。",
+        "係啊，我知。",
+        "如果你覺得佢啱，我就同意。",
+        "我以為佢走咗。",
+        "我相信如果佢去，我就去。",
+        "我都覺得好貴。",
+        "我都覺得有。",
+        "我都覺得佢係。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "RESEARCH_GAP_PACKET_NO_IMPLEMENTATION",
+        "exact": 0,
+        "variant": 0,
+        "negative": 0,
+        "ambiguity": 0,
+        "context": 0,
+        "native": 0,
+        "render": 0,
+        "heldout": 0,
+        "research": 3
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "RESEARCH_GAP_BEFORE_FULL_IMPLEMENTATION",
+      "primary_cp022_package": "CP022-I5_VALENCY_COMPLEMENTS_STANCE_ARCHITECTURE",
+      "prerequisite_family_ids": [
+        "I07"
+      ]
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L32",
+      "canonical_family_id": "L32",
+      "canonical_family": "SpeechReportingAndCommunicationEffect",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "STRUCTURAL_REALIGNMENT_PACKET",
+      "member_labels": [
+        "DitransitiveSpeechVP",
+        "ReportedSpeech",
+        "SpeechTransferClause"
+      ],
+      "development_seed_surfaces": [
+        "佢話冇。",
+        "佢話如果落雨，佢就唔去。",
+        "佢話有。",
+        "佢話佢唔嚟。",
+        "佢話我食飯。",
+        "佢話會嚟喎。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "STRUCTURAL_REALIGNMENT_PACKET",
+        "exact": 8,
+        "variant": 6,
+        "negative": 8,
+        "ambiguity": 4,
+        "context": 2,
+        "native": 6,
+        "render": 8,
+        "heldout": 8,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "PACKET_REQUIRED_STRUCTURAL_REALIGNMENT",
+      "primary_cp022_package": "CP022-I5_VALENCY_COMPLEMENTS_STANCE_ARCHITECTURE",
+      "prerequisite_family_ids": [
+        "I07",
+        "L01"
+      ]
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L33",
+      "canonical_family_id": "L33",
+      "canonical_family": "DirectionalMotion",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "STRUCTURAL_REALIGNMENT_PACKET",
+      "member_labels": [
+        "CompoundDirectionalMotionVP",
+        "DirectedMannerMotionVP",
+        "DirectionalCausedMotionVP",
+        "DirectionalMotionVP"
+      ],
+      "development_seed_surfaces": [
+        "佢行入去。",
+        "佢行出嚟。",
+        "我向前行。",
+        "我行去學校。",
+        "我行落去。",
+        "我琴日由屋企行去學校。",
+        "去七杯度。",
+        "去咗香港。",
+        "去咗邊度呀？",
+        "去咩？",
+        "去香港",
+        "因為打風，所以我冇去。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "STRUCTURAL_REALIGNMENT_PACKET",
+        "exact": 8,
+        "variant": 6,
+        "negative": 8,
+        "ambiguity": 4,
+        "context": 2,
+        "native": 6,
+        "render": 8,
+        "heldout": 8,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "PACKET_REQUIRED_STRUCTURAL_REALIGNMENT",
+      "primary_cp022_package": "CP022-I3_LOCATIVE_MOTION_SERIAL_RELATIONS",
+      "prerequisite_family_ids": []
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L34",
+      "canonical_family_id": "L34",
+      "canonical_family": "GoalSourceAndPath",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "STRUCTURAL_REALIGNMENT_PACKET",
+      "member_labels": [
+        "ExperientialMotionGoalVP",
+        "GoalAttainmentMotionVP",
+        "MotionGoalVP",
+        "PathPhrase",
+        "SourceMotionClause"
+      ],
+      "development_seed_surfaces": [
+        "我行到學校。",
+        "我返到屋企。",
+        "去咗香港。",
+        "去香港",
+        "你去咗香港。",
+        "你尋日去咗香港。",
+        "你尋日去咗香港未？",
+        "你尋日去香港。",
+        "我向前行。",
+        "我由屋企返學。",
+        "我由香港去日本。",
+        "我由學校返屋企。",
+        "我琴日由屋企行去學校。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "STRUCTURAL_REALIGNMENT_PACKET",
+        "exact": 8,
+        "variant": 6,
+        "negative": 8,
+        "ambiguity": 4,
+        "context": 2,
+        "native": 6,
+        "render": 8,
+        "heldout": 8,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "PACKET_REQUIRED_STRUCTURAL_REALIGNMENT",
+      "primary_cp022_package": "CP022-I3_LOCATIVE_MOTION_SERIAL_RELATIONS",
+      "prerequisite_family_ids": [
+        "L33"
+      ]
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L35",
+      "canonical_family_id": "L35",
+      "canonical_family": "PurposeSerialRelations",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "STRUCTURAL_REALIGNMENT_PACKET",
+      "member_labels": [
+        "MotionDelimitedVP",
+        "MotionPurposeChain",
+        "ProgressivePurposeClause",
+        "PurposePredicate",
+        "SerialVerbPurposeChain"
+      ],
+      "development_seed_surfaces": [
+        "我去餐廳食晏。",
+        "我去街市買餸煮飯。",
+        "我落嚟摘芒果食。",
+        "落嚟摘芒果食。",
+        "攞啲糖去食。",
+        "攞啲糖嚟食。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "STRUCTURAL_REALIGNMENT_PACKET",
+        "exact": 8,
+        "variant": 6,
+        "negative": 8,
+        "ambiguity": 4,
+        "context": 2,
+        "native": 6,
+        "render": 8,
+        "heldout": 8,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "PACKET_REQUIRED_STRUCTURAL_REALIGNMENT",
+      "primary_cp022_package": "CP022-I3_LOCATIVE_MOTION_SERIAL_RELATIONS",
+      "prerequisite_family_ids": [
+        "I02",
+        "L33",
+        "L10"
+      ]
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L36",
+      "canonical_family_id": "L36",
+      "canonical_family": "LocativeAndPosturalPredication",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "STRUCTURAL_REALIGNMENT_PACKET",
+      "member_labels": [
+        "LocativePlacePhrase",
+        "LocativePostureVP"
+      ],
+      "development_seed_surfaces": [
+        "冇人喺度。",
+        "冇學生喺學校。",
+        "有個人喺門口。",
+        "有個學生喺學校。",
+        "你嚟嘅時候，我喺屋企。",
+        "佢喺屋企。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "STRUCTURAL_REALIGNMENT_PACKET",
+        "exact": 8,
+        "variant": 6,
+        "negative": 8,
+        "ambiguity": 4,
+        "context": 2,
+        "native": 6,
+        "render": 8,
+        "heldout": 8,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "PACKET_REQUIRED_STRUCTURAL_REALIGNMENT",
+      "primary_cp022_package": "CP022-I3_LOCATIVE_MOTION_SERIAL_RELATIONS",
+      "prerequisite_family_ids": [
+        "L40"
+      ]
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L37",
+      "canonical_family_id": "L37",
+      "canonical_family": "MannerAndReduplication",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "STRUCTURAL_REALIGNMENT_PACKET",
+      "member_labels": [
+        "DegreeMannerAdverbial",
+        "DegreeMannerModifiedVP",
+        "MannerAdverbialVP",
+        "ReduplicatedVP"
+      ],
+      "development_seed_surfaces": [
+        "行快啲。",
+        "講大聲啲。",
+        "講慢啲。",
+        "有嘅話，我哋再同大家講講。",
+        "我哋再同大家講講。",
+        "食食。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "STRUCTURAL_REALIGNMENT_PACKET",
+        "exact": 8,
+        "variant": 6,
+        "negative": 8,
+        "ambiguity": 4,
+        "context": 2,
+        "native": 6,
+        "render": 8,
+        "heldout": 8,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "PACKET_REQUIRED_STRUCTURAL_REALIGNMENT",
+      "primary_cp022_package": "CP022-I2B_NOMINAL_MEASURE_AND_SCALAR_BOUNDARIES",
+      "prerequisite_family_ids": [
+        "L42"
+      ]
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L38",
+      "canonical_family_id": "L38",
+      "canonical_family": "NamingAndAddress",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "FOCUSED_NARROWING_PACKET",
+      "member_labels": [
+        "NamingClause",
+        "VocativeAddressTerm"
+      ],
+      "development_seed_surfaces": [],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "FOCUSED_NARROWING_PACKET",
+        "exact": 6,
+        "variant": 4,
+        "negative": 6,
+        "ambiguity": 2,
+        "context": 1,
+        "native": 4,
+        "render": 6,
+        "heldout": 6,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "READY_AFTER_PACKET",
+      "primary_cp022_package": "CP022-I2A_PARTICLE_QUESTION_NEGATION_NARROWING",
+      "prerequisite_family_ids": []
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L39",
+      "canonical_family_id": "L39",
+      "canonical_family": "ExistentialAndPresentationalClauses",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "STRUCTURAL_REALIGNMENT_PACKET",
+      "member_labels": [
+        "ExistentialClause",
+        "ExistentialPresentationalClause",
+        "LocativeExistentialClause"
+      ],
+      "development_seed_surfaces": [
+        "佢有時間。",
+        "我有一個故事，我睇咗，佢都睇咗。",
+        "我有書。",
+        "佢有三歲。",
+        "冇人喺度。",
+        "冇學生喺學校。",
+        "有個人喺門口。",
+        "有個學生喺學校。",
+        "屋企冇人。",
+        "屋企冇書。",
+        "屋企有本書。",
+        "屋企有個人。",
+        "枱上面有支筆。",
+        "學校有個學生。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "STRUCTURAL_REALIGNMENT_PACKET",
+        "exact": 8,
+        "variant": 6,
+        "negative": 8,
+        "ambiguity": 4,
+        "context": 2,
+        "native": 6,
+        "render": 8,
+        "heldout": 8,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "PACKET_REQUIRED_STRUCTURAL_REALIGNMENT",
+      "primary_cp022_package": "CP022-I3_LOCATIVE_MOTION_SERIAL_RELATIONS",
+      "prerequisite_family_ids": [
+        "L45"
+      ]
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L40",
+      "canonical_family_id": "L40",
+      "canonical_family": "LocativeClauseFrames",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "STRUCTURAL_REALIGNMENT_PACKET",
+      "member_labels": [
+        "LocativeFrameClause"
+      ],
+      "development_seed_surfaces": [
+        "出面好熱。",
+        "屋企好靜。",
+        "牆上面擺咗部電話。",
+        "牆上面擺咗部機。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "STRUCTURAL_REALIGNMENT_PACKET",
+        "exact": 8,
+        "variant": 6,
+        "negative": 8,
+        "ambiguity": 4,
+        "context": 2,
+        "native": 6,
+        "render": 8,
+        "heldout": 8,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "PACKET_REQUIRED_STRUCTURAL_REALIGNMENT",
+      "primary_cp022_package": "CP022-I3_LOCATIVE_MOTION_SERIAL_RELATIONS",
+      "prerequisite_family_ids": [
+        "L36"
+      ]
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L41",
+      "canonical_family_id": "L41",
+      "canonical_family": "EnvironmentalClauses",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "STRUCTURAL_REALIGNMENT_PACKET",
+      "member_labels": [
+        "ImpersonalEnvironmentalClause"
+      ],
+      "development_seed_surfaces": [
+        "今日好凍。",
+        "天光喇。",
+        "出面好熱。",
+        "打風。",
+        "因為打風，所以我冇去。",
+        "因為落雨，我冇去。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "STRUCTURAL_REALIGNMENT_PACKET",
+        "exact": 8,
+        "variant": 6,
+        "negative": 8,
+        "ambiguity": 4,
+        "context": 2,
+        "native": 6,
+        "render": 8,
+        "heldout": 8,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "PACKET_REQUIRED_STRUCTURAL_REALIGNMENT",
+      "primary_cp022_package": "CP022-I3_LOCATIVE_MOTION_SERIAL_RELATIONS",
+      "prerequisite_family_ids": []
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L42",
+      "canonical_family_id": "L42",
+      "canonical_family": "StativePredication",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "ARCHITECTURE_PROGRAM_PACKET",
+      "member_labels": [
+        "ActionStativeVP",
+        "AdjectivalPredicateClause",
+        "DegreeModifiedLexicalStative",
+        "DegreeStativePredicate",
+        "StativePredicate"
+      ],
+      "development_seed_surfaces": [
+        "我寫三個字。",
+        "要等幾耐啊？",
+        "寫三個字。",
+        "今日好凍。",
+        "出面好熱。",
+        "仲有幾耐先到？",
+        "好凍。",
+        "好熱。",
+        "佢好攰，但係仲做緊。",
+        "一。",
+        "正。",
+        "我話貴。",
+        "我覺得啱。",
+        "兩。",
+        "近。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "ARCHITECTURE_PROGRAM_PACKET",
+        "exact": 12,
+        "variant": 8,
+        "negative": 12,
+        "ambiguity": 6,
+        "context": 4,
+        "native": 8,
+        "render": 12,
+        "heldout": 12,
+        "research": 2
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "ARCHITECTURE_PROGRAM",
+      "primary_cp022_package": "CP022-I5_VALENCY_COMPLEMENTS_STANCE_ARCHITECTURE",
+      "prerequisite_family_ids": [
+        "L43"
+      ]
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L43",
+      "canonical_family_id": "L43",
+      "canonical_family": "ScalarComparisonAndEvaluation",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "STRUCTURAL_REALIGNMENT_PACKET",
+      "member_labels": [
+        "ComparativeStative",
+        "EvaluationWithDouSyun",
+        "ScalarEvaluation",
+        "ScalarRangeFragment"
+      ],
+      "development_seed_surfaces": [],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "STRUCTURAL_REALIGNMENT_PACKET",
+        "exact": 8,
+        "variant": 6,
+        "negative": 8,
+        "ambiguity": 4,
+        "context": 2,
+        "native": 6,
+        "render": 8,
+        "heldout": 8,
+        "research": 0
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "PACKET_REQUIRED_STRUCTURAL_REALIGNMENT",
+      "primary_cp022_package": "CP022-I2B_NOMINAL_MEASURE_AND_SCALAR_BOUNDARIES",
+      "prerequisite_family_ids": []
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L44",
+      "canonical_family_id": "L44",
+      "canonical_family": "TemporalAndMeasurePredication",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "RESEARCH_GAP_PACKET_NO_IMPLEMENTATION",
+      "member_labels": [
+        "NominalPredicateClause",
+        "TimeNP",
+        "TimeToActionFrame"
+      ],
+      "development_seed_surfaces": [
+        "佢十歲。",
+        "我五歲。",
+        "個學生十歲。",
+        "呢個學生十歲。",
+        "本書三十蚊。",
+        "呢本書一百蚊。",
+        "下年哩個時間咪過囖。"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "RESEARCH_GAP_PACKET_NO_IMPLEMENTATION",
+        "exact": 0,
+        "variant": 0,
+        "negative": 0,
+        "ambiguity": 0,
+        "context": 0,
+        "native": 0,
+        "render": 0,
+        "heldout": 0,
+        "research": 3
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "RESEARCH_GAP_BEFORE_FULL_IMPLEMENTATION",
+      "primary_cp022_package": "CP022-I2B_NOMINAL_MEASURE_AND_SCALAR_BOUNDARIES",
+      "prerequisite_family_ids": [
+        "I04",
+        "L42"
+      ]
+    },
+    {
+      "schema": "canto-span-evaluation-packet-blueprint-v1",
+      "packet_id": "EP-R36-L45",
+      "canonical_family_id": "L45",
+      "canonical_family": "ValencyAndArgumentStructure",
+      "status": "BLUEPRINT_ONLY",
+      "packet_mode": "ARCHITECTURE_PROGRAM_PACKET",
+      "member_labels": [
+        "IntransitiveVP",
+        "ProductiveVO",
+        "TransitiveVP"
+      ],
+      "development_seed_surfaces": [
+        "一見到佢，我笑。",
+        "一見到佢，我就笑。",
+        "如果你覺得佢啱，我就同意。",
+        "見到佢，我就笑。",
+        "打電話。",
+        "再做功課。",
+        "你食飯未？",
+        "你食飯咩？",
+        "你食飯啦。",
+        "你食飯啩。",
+        "有冇講過電話啊？",
+        "你有冇問問題啊？",
+        "你食咩？",
+        "你睇咩？"
+      ],
+      "development_seed_limit": "Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.",
+      "minimum_requirements": {
+        "mode": "ARCHITECTURE_PROGRAM_PACKET",
+        "exact": 12,
+        "variant": 8,
+        "negative": 12,
+        "ambiguity": 6,
+        "context": 4,
+        "native": 8,
+        "render": 12,
+        "heldout": 12,
+        "research": 2
+      },
+      "required_sections": [
+        "external exact positives",
+        "constructed positive variants",
+        "negative near misses",
+        "ambiguity contrasts",
+        "context contrasts",
+        "expected structure",
+        "forbidden analyses",
+        "native naturalness review",
+        "render review",
+        "automated gates",
+        "prospective held-out manifest"
+      ],
+      "native_review_form": {
+        "question": "Sounds unnatural",
+        "correction": "optional",
+        "analysis_question_excluded": true
+      },
+      "held_out": {
+        "selection_state": "NOT_SELECTED",
+        "opened_during_r36": false,
+        "manifest_hash": null,
+        "expected_output_visible_to_implementation": false
+      },
+      "implementation_authorized": false,
+      "readiness_status": "ARCHITECTURE_PROGRAM",
+      "primary_cp022_package": "CP022-I5_VALENCY_COMPLEMENTS_STANCE_ARCHITECTURE",
+      "prerequisite_family_ids": [
+        "I01"
+      ]
+    }
+  ]
+}

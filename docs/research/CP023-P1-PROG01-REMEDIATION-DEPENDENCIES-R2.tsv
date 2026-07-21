@@ -1,0 +1,22 @@
+case_id	surface	dependency_streams	baseline_diagnosis	required_disposition
+PROG-E01	我哋而家睇緊呢個	NONE_FOR_EXACT_TARGET	already exact in R1	preserve
+PROG-E02	我哋而家就睇緊啲九巴嘅數據	LEXICON:九巴+數據; NOMINAL:啲_ASSOCIATIVE_SCOPE; PROGRESSIVE:WHOLE_OBJECT	proper name and data noun unknown; analogous scope is wrong	block implementation until all three
+PROG-E03	都係問緊錫條同埋錫線	LEXICON:錫條+錫線; NOMINAL:COORDINATION; PRONUNCIATION:錫條	coordination unsupported; exact 錫條 tone unresolved	quarantine exact lexeme until verified
+PROG-E04	佢喺屋企整緊布甸	LEXICON:布甸; PROGRESSIVE:WHOLE_OBJECT	object unknown	separate lexical from grammar patch
+PROG-E05	我而家食緊飯	NONE_FOR_EXACT_TARGET	already exact in R1	preserve
+PROG-E06	頭先八點嗰陣，阿樂唱緊首兒歌	LEXICON:唱+兒歌; NOMINAL:CLASSIFIER_NP; PROGRESSIVE:WHOLE_OBJECT	唱 and 兒 unknown; target lost inside larger relation	requires clause-preservation test
+PROG-E07	爸爸返屋企嗰陣，我哋睇緊電視	NONE_FOR_EXACT_TARGET	already exact in R1	preserve
+PROG-E08	媽媽着緊好靚嘅衫	LEXICON:着_WEAR_SENSE; PROGRESSIVE:WHOLE_OBJECT	object NP already assembles; predicate unknown	polysemy-safe verb addition
+PROG-E09	佢哋買緊樓	LEXICON:樓; PROGRESSIVE:WHOLE_OBJECT	property noun unknown	preserve lau2/lau4 sense split
+PROG-V01	我問緊問題	NONE_FOR_EXACT_TARGET	already exact in R1	preserve
+PROG-V02	佢寫緊封信	LEXICON:封+信_NOUN; NOMINAL:CLASSIFIER_NP; PROGRESSIVE:WHOLE_OBJECT	信 currently verb only	polysemy-safe noun sense required
+PROG-V03	我哋睇緊嗰份報告	PROGRESSIVE:WHOLE_OBJECT_REASSEMBLY	NP already correct; root PASS hides V緊-only aspect span	exact target-span gate
+PROG-V04	你聽緊首歌呀	PROGRESSIVE:WHOLE_OBJECT_REASSEMBLY	NP already correct; root PASS hides V緊-only aspect span	exact target-span gate
+PROG-N03	佢食緊	BOUNDARY:OBJECTLESS	broad progressive may be valid; narrow subtype forbidden	do not treat as negative grammar
+PROG-N04	你食緊咩	BOUNDARY:WH_OBJECT	broad progressive may be valid; narrow subtype forbidden	do not use as nominal-object support
+PROG-N05	佢有讀緊大學	BOUNDARY:UNRESOLVED_HAVE_PROGRESSIVE	literature reports variation	exclude without categorical rejection
+PROG-N06	聽日八點嘅時候，我應該會瞓緊覺	BOUNDARY:SOURCE_SPECIFIC_MODAL_FUTURE	one cited negative judgment	no universal modal ban
+PROG-N07	有架巴士嚟緊	BOUNDARY:MOTION_OBJECTLESS	attested broad progressive; outside subtype	preserve broad syntax separately
+PROG-N08	佢病緊	BOUNDARY:STATE_LIKE_OBJECTLESS	attested broad progressive; outside subtype	preserve broad syntax separately
+PROG-P01	我食咗飯	PRESERVATION:PERFECTIVE	accepted separate family	must not regress
+PROG-P02	我食過飯	PRESERVATION:EXPERIENTIAL	separate aspect family	must not regress

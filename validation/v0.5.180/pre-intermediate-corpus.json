@@ -1,0 +1,67 @@
+{
+  "corpus_path": "/mnt/data/v05180_accept/canto-span/test-data/pre-intermediate-gold-corpus.tsv",
+  "report": {
+    "total": 80,
+    "pass": 80,
+    "fail": 0,
+    "coverage_percent": 100,
+    "positive_construction_percent": 100,
+    "strict_ready": true,
+    "areas": {
+      "accepted_guardrail": {
+        "total": 8,
+        "pass": 8,
+        "fail": 0
+      },
+      "np_structure": {
+        "total": 10,
+        "pass": 10,
+        "fail": 0
+      },
+      "vp_aspect_complement": {
+        "total": 12,
+        "pass": 12,
+        "fail": 0
+      },
+      "modality_negation_questions": {
+        "total": 12,
+        "pass": 12,
+        "fail": 0
+      },
+      "time_place_manner": {
+        "total": 10,
+        "pass": 10,
+        "fail": 0
+      },
+      "clause_linking": {
+        "total": 8,
+        "pass": 8,
+        "fail": 0
+      },
+      "particles_fragments_discourse": {
+        "total": 10,
+        "pass": 10,
+        "fail": 0
+      },
+      "learner_errors_boundaries": {
+        "total": 10,
+        "pass": 10,
+        "fail": 0
+      }
+    },
+    "safety": {
+      "unsafe_normalization_count": 0,
+      "untraced_shadow_change_count": 0,
+      "applied_review_suggestion_count": 0,
+      "raw_display_replacement_count": 0,
+      "missing_shadow_repair_note_count": 0,
+      "invalid_learner_role_count": 0,
+      "invalid_slot_name_count": 0,
+      "invalid_construction_label_count": 0,
+      "invalid_parser_decision_label_count": 0,
+      "generic_hover_gloss_count": 0,
+      "wrapper_hole_count": 0
+    }
+  },
+  "failures": []
+}

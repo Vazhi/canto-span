@@ -1,0 +1,181 @@
+{
+  "schema": "canto-span-documentation-evidence-realignment-audit-v1",
+  "checkpoint": "v0.5.183-documentation-realigned-r2",
+  "parser_behavior_changed": false,
+  "status": "PASS",
+  "status_counts": {
+    "research_pending": 37,
+    "unsupported_generalization": 97,
+    "parser_heuristic": 21,
+    "provisional": 21,
+    "lexicalized_only": 3,
+    "provisional_reaudit": 2
+  },
+  "total": 36,
+  "passed": 36,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "status count supported_productive",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "status count provisional_reaudit",
+      "pass": true,
+      "detail": "2"
+    },
+    {
+      "name": "status count provisional",
+      "pass": true,
+      "detail": "21"
+    },
+    {
+      "name": "status count research_pending",
+      "pass": true,
+      "detail": "37"
+    },
+    {
+      "name": "status count unsupported_generalization",
+      "pass": true,
+      "detail": "97"
+    },
+    {
+      "name": "status count lexicalized_only",
+      "pass": true,
+      "detail": "3"
+    },
+    {
+      "name": "status count parser_heuristic",
+      "pass": true,
+      "detail": "21"
+    },
+    {
+      "name": "active legitimacy rows 181",
+      "pass": true,
+      "detail": "181"
+    },
+    {
+      "name": "former accepted rows exact",
+      "pass": true
+    },
+    {
+      "name": "all provisional confidence suspended",
+      "pass": true
+    },
+    {
+      "name": "docs/research/CONSTRUCTION-EVIDENCE-REAUDIT-LEDGER-v0.5.183-R1.tsv row count",
+      "pass": true,
+      "detail": "23"
+    },
+    {
+      "name": "docs/research/SECOND-SPEAKER-REVIEW-QUEUE-v0.5.183-R1.tsv row count",
+      "pass": true,
+      "detail": "23"
+    },
+    {
+      "name": "docs/research/DORMANT-LABEL-RETIREMENT-QUEUE-v0.5.183-R1.tsv row count",
+      "pass": true,
+      "detail": "10"
+    },
+    {
+      "name": "docs/research/ACTIVE-SOURCE-ACCOUNTING-v0.5.183-cp024-p1-demo01-r2.tsv row count",
+      "pass": true,
+      "detail": "181"
+    },
+    {
+      "name": "active markdown links valid",
+      "pass": true
+    },
+    {
+      "name": "no active supported count two",
+      "pass": true
+    },
+    {
+      "name": "no active native review not required",
+      "pass": true
+    },
+    {
+      "name": "no render-only heldout opening",
+      "pass": true
+    },
+    {
+      "name": "no active evidence closure jargon",
+      "pass": true
+    },
+    {
+      "name": "no active evaluator custody jargon",
+      "pass": true
+    },
+    {
+      "name": "json valid PROGRESS-CHECKPOINT.json",
+      "pass": true
+    },
+    {
+      "name": "json valid PACKAGING-MANIFEST.json",
+      "pass": true
+    },
+    {
+      "name": "json valid test-data/grammar-legitimacy-audit.json",
+      "pass": true
+    },
+    {
+      "name": "json valid test-data/grammar-claim-provenance-CP021B.json",
+      "pass": true
+    },
+    {
+      "name": "json valid validation/v0.5.183-documentation-realigned-r2/source-accounting-audit.json",
+      "pass": true
+    },
+    {
+      "name": "json valid validation/v0.5.183-documentation-realigned-r2/current-focused.json",
+      "pass": true
+    },
+    {
+      "name": "json valid validation/grammar-legitimacy-audit-v0.5.183-documentation-realigned-r2.json",
+      "pass": true
+    },
+    {
+      "name": "runtime hash unchanged main.js",
+      "pass": true,
+      "detail": "e25b6f7142eafce66a172b68d8e409275f127cfe902e93bafaf7147152bfcbe9"
+    },
+    {
+      "name": "runtime hash unchanged manifest.json",
+      "pass": true,
+      "detail": "d7f5a9be248a4efd1839852e8a100a9968273050f0aa5953af2a35c3661801f5"
+    },
+    {
+      "name": "runtime hash unchanged styles.css",
+      "pass": true,
+      "detail": "5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a"
+    },
+    {
+      "name": "runtime zip exact three files",
+      "pass": true,
+      "detail": "['canto-span/main.js', 'canto-span/manifest.json', 'canto-span/styles.css']"
+    },
+    {
+      "name": "runtime zip member matches recovery main.js",
+      "pass": true
+    },
+    {
+      "name": "runtime zip member matches recovery manifest.json",
+      "pass": true
+    },
+    {
+      "name": "runtime zip member matches recovery styles.css",
+      "pass": true
+    },
+    {
+      "name": "sealed heldout absent from recovery",
+      "pass": true
+    },
+    {
+      "name": "pre-realignment archive manifest valid",
+      "pass": true,
+      "detail": "rows=28 bad=[]"
+    }
+  ],
+  "failures": []
+}

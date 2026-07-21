@@ -1,0 +1,100 @@
+{
+  "schema": "canto-span-source-accounting-and-research-retention-audit-v1",
+  "checkpoint": "v0.5.182",
+  "runtime_version": "0.5.183",
+  "status": "FAIL",
+  "summary": {
+    "active_registry_labels": 181,
+    "active_language_or_lexical_labels": 160,
+    "externally_mapped_active_language_labels": 159,
+    "explicit_source_gap_quarantines": 1,
+    "explicit_source_gap_labels": [
+      "ScalarRangeFragment"
+    ],
+    "active_internal_representation_or_heuristic_labels": 21,
+    "unaccounted_active_labels": [],
+    "cumulative_source_matrix_rows": 1090,
+    "cumulative_source_identifiers": 118,
+    "current_source_map_dossiers": 31,
+    "research_retention_manifest_rows": 511,
+    "research_retention_status_counts": {
+      "CURRENT_IDENTICAL": 511
+    },
+    "supported_productive": 2
+  },
+  "interpretation": {
+    "all_active_labels_research_accounted": false,
+    "all_active_language_labels_positively_source_supported": false,
+    "reason": "ScalarRangeFragment is intentionally recorded as an unsupported source-gap quarantine rather than falsely source-supported.",
+    "internal_labels_are_language_claims": false
+  },
+  "runtime_hashes": {
+    "main.js": "99b8a9f5a2220724ae252c92ec0db6e756f17d5772be9532f80d9a1cc41ded1e",
+    "manifest.json": "d7f5a9be248a4efd1839852e8a100a9968273050f0aa5953af2a35c3661801f5",
+    "styles.css": "5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a"
+  },
+  "checks": [
+    {
+      "pass": false,
+      "detail": "active registry is 179 (181)"
+    },
+    {
+      "pass": true,
+      "detail": "active registry labels are unique"
+    },
+    {
+      "pass": true,
+      "detail": "every active label has an accounting row"
+    },
+    {
+      "pass": true,
+      "detail": "unaccounted active labels = 0"
+    },
+    {
+      "pass": false,
+      "detail": "active language/lexical labels = 159 (160)"
+    },
+    {
+      "pass": false,
+      "detail": "externally mapped active language labels = 158 (159)"
+    },
+    {
+      "pass": true,
+      "detail": "explicit source-gap quarantines = 1 (1)"
+    },
+    {
+      "pass": false,
+      "detail": "active internal labels = 20 (21)"
+    },
+    {
+      "pass": true,
+      "detail": "cumulative source matrix rows = 1090 (1090)"
+    },
+    {
+      "pass": true,
+      "detail": "cumulative source identifiers = 118 (118)"
+    },
+    {
+      "pass": true,
+      "detail": "current source-map dossiers = 31 (31)"
+    },
+    {
+      "pass": true,
+      "detail": "research-retention manifest rows = 511 (511)"
+    },
+    {
+      "pass": true,
+      "detail": "research-retention manifest has no missing file"
+    },
+    {
+      "pass": true,
+      "detail": "historical research archive exists"
+    }
+  ],
+  "failures": [
+    "active registry is 179 (181)",
+    "active language/lexical labels = 159 (160)",
+    "externally mapped active language labels = 158 (159)",
+    "active internal labels = 20 (21)"
+  ]
+}

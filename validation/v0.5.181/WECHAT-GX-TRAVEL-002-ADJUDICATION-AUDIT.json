@@ -1,0 +1,162 @@
+{
+  "schema": "canto-span-natural-corpus-adjudication-audit-v1",
+  "corpus_id": "WECHAT-GX-TRAVEL-002",
+  "runtime_version": "0.5.181",
+  "total": 15,
+  "passed": 15,
+  "failed": 0,
+  "status": "PASS",
+  "queue_membership_counts": {
+    "accepted_behavior_regression": 16,
+    "lexicon_jyutping_enrichment": 32,
+    "context_disfluency_research": 40,
+    "grammar_research_external_evidence": 46
+  },
+  "primary_queue_counts": {
+    "grammar_research_external_evidence": 30,
+    "context_disfluency_research": 9,
+    "lexicon_jyutping_enrichment": 7,
+    "accepted_behavior_regression": 6
+  },
+  "regression_readiness_counts": {
+    "not_ready": 18,
+    "after_lexicon_and_research": 23,
+    "after_lexicon": 3,
+    "ready_now": 2,
+    "ready_now_review_bearing": 3,
+    "remediation_candidate": 3
+  },
+  "coverage_counts": {
+    "PARTIAL": 29,
+    "PASS": 13,
+    "NO_TOP_CONSTRUCTION": 10
+  },
+  "semantic_status_counts": {
+    "BLOCKED": 45,
+    "MANUAL_REVIEW_ELIGIBLE": 6,
+    "REVIEW_REQUIRED": 1
+  },
+  "missing_jyutping_token_counts": {
+    "伯": 2,
+    "廣": 4,
+    "西": 4,
+    "遊": 4,
+    "豬": 2,
+    "仔": 1,
+    "嘛": 2,
+    "成": 1,
+    "班": 2,
+    "摩": 1,
+    "托": 1,
+    "方": 3,
+    "子": 3,
+    "拉": 2,
+    "酒": 3,
+    "祈": 1,
+    "啖": 1,
+    "早": 1,
+    "尋": 1,
+    "晚": 1,
+    "黑": 1,
+    "加": 2,
+    "埋": 2,
+    "覽": 1,
+    "桂": 2,
+    "林": 2,
+    "式": 1,
+    "陽": 5,
+    "朔": 2,
+    "兜": 3,
+    "里": 1,
+    "揸": 1,
+    "周": 2,
+    "圍": 2,
+    "景": 3,
+    "必": 1,
+    "姨": 1,
+    "甥": 1,
+    "妹": 1,
+    "暑": 1,
+    "……": 1,
+    "跟": 1,
+    "慣": 1
+  },
+  "checks": [
+    {
+      "name": "all 52 units adjudicated",
+      "pass": true,
+      "detail": "52"
+    },
+    {
+      "name": "unit ids unique",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "all units assigned a primary queue",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "all units assigned at least one queue",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "grammar research always requires external evidence",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "all grammar acceptance effects remain none",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "proper names are corpus-local only",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "parser observations cover every unit",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "parser observation runtime is 0.5.181",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no parser observation errors",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "uncertain STT excluded upstream",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "V完咗O not introduced",
+      "pass": true,
+      "detail": "Natural U033 is 食完 without 咗."
+    },
+    {
+      "name": "U033 explicitly excludes V完咗O",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "U028 duration kept outside v0.5.180 subtype",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "runtime files not modified by adjudication",
+      "pass": true,
+      "detail": "Matrix generation did not write main.js, manifest.json, or styles.css."
+    }
+  ],
+  "failures": []
+}

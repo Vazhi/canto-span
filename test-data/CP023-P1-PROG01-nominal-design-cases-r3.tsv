@@ -1,0 +1,15 @@
+case_id	surface	family	required_analysis	alternative_state	purpose	heldout_eligible
+NOM-R3-A01	公司嘅報告	associative_baseline	AssociativeNP(公司,嘅,報告)	none required	preserve working simple associative NP	NO_VISIBLE
+NOM-R3-A02	啲公司	di_baseline	DiMarkedNP(啲,公司)	none required	preserve working ordinary 啲 nominal	NO_VISIBLE
+NOM-R3-A03	啲公司嘅報告	attachment_ambiguity	complete candidate A and candidate B, or explicit review-required attachment	A=DiMarkedNP(啲,AssociativeNP(公司,嘅,報告)); B=AssociativeNP(DiMarkedNP(啲,公司),嘅,報告)	replace categorical R2 scope claim with transparent ambiguity	NO_VISIBLE
+NOM-R3-A04	九巴嘅數據	proper_name_associative	AssociativeNP(九巴,嘅,數據) after lexicon patch	none unless context supplies another analysis	proper-name and atomic-head prerequisite	NO_VISIBLE
+NOM-R3-A05	啲九巴嘅數據	context_preferred_attachment	complete alternatives; candidate A context-preferred, not grammar-forced	A=DiMarkedNP(啲,AssociativeNP(九巴,嘅,數據)); B retained if structurally licensed	source-context design target	NO_VISIBLE
+NOM-R3-A06	睇緊啲九巴嘅數據	progressive_integration	progressive object consumes complete selected nominal candidate	no prefix object closure	future integration target	NO_VISIBLE
+NOM-R3-C01	報告同文件	coordination_tung	existing CoordinatedNP preserved	同 ambiguity evaluated from containing structure	preservation control	NO_VISIBLE
+NOM-R3-C02	報告同埋文件	coordination_tungmaai	CoordinatedNP(報告,同埋,文件)	none in standalone nominal fragment	primary nominal extension target	NO_VISIBLE
+NOM-R3-C03	問緊報告同埋文件	coordination_progressive_integration	complete coordinated NP before progressive wrapper	broad parse allowed during prerequisite stage; narrow subtype must not stop after 報告	future whole-object integration	NO_VISIBLE
+NOM-R3-C04	同埋文件	coordination_negative_initial	no CoordinatedNP	connector plus nominal remains incomplete/review-bearing	left-conjunct guard	NO_VISIBLE
+NOM-R3-C05	報告同埋	coordination_negative_final	no CoordinatedNP	incomplete/review-bearing	right-conjunct guard	NO_VISIBLE
+NOM-R3-C06	我同你去	tung_ambiguity_boundary	do not resolve nominal coordination versus comitative solely from 同	candidate analyses or containing-clause evidence required	preserve conjunction/comitative ambiguity	NO_VISIBLE
+NOM-R3-C07	我同你	coordination_fragment_preservation	standalone CoordinatedNP preserved	not automatically a clause subject	existing behavior preservation	NO_VISIBLE
+NOM-R3-C08	錫條同埋錫線	technical_coordination_quarantine	structural target may be documented but lexicon/Jyutping hardcode blocked for 錫條	use 報告同埋文件 for implementation evaluation	separate natural attestation from pronunciation uncertainty	NO_VISIBLE

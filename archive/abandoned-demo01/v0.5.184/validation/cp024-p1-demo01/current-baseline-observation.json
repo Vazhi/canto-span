@@ -1,0 +1,3703 @@
+{
+  "schema": "canto-span-cp024-p1-demo01-baseline-v1",
+  "checkpoint": "CP024-P1-DEMO01-R1",
+  "runtime_version": "0.5.182",
+  "policy_version": "0.5.182",
+  "status": "OBSERVATION_ONLY_NOT_ACCEPTANCE_GATE",
+  "candidate_definition": "overt demonstrative + overt classifier + overt noun, with no overt numeral and no hidden material",
+  "counts": {
+    "total": 20,
+    "required": 9,
+    "required_exact": 8,
+    "required_wrong_or_incomplete": 0,
+    "required_absent": 1,
+    "forbidden": 8,
+    "forbidden_leakage": 2,
+    "full_root_coverage": 16
+  },
+  "cases": [
+    {
+      "case_id": "DEMO-R01",
+      "section": "required",
+      "surface": "呢本書。",
+      "candidate_policy": "REQUIRED",
+      "expected_target_surfaces": [
+        "呢本書"
+      ],
+      "purpose": "proximal D-CL-N with book classifier",
+      "observation": "EXACT_TARGET_PRESENT",
+      "actual_target_surfaces": [
+        "呢本書"
+      ],
+      "target_internal_types": [
+        "DemonstrativeClassifierNP"
+      ],
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "呢本書"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "呢本書。",
+        "parser_shadow_source": "呢本書。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 3,
+        "final_node_count": 5,
+        "construction_count": 1,
+        "top_constructions": [
+          "DemonstrativeClassifierNP"
+        ],
+        "internal_top_constructions": [
+          "DemonstrativeClassifierNP"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "generative_template": 1,
+          "atomic_lexicon": 3,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 1
+        },
+        "review_count": 0,
+        "selection_decision_count": 1,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 3,
+        "parser_active_feature_bundle_count": 0,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PASS",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "呢本書"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "REVIEW_REQUIRED",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 0,
+          "review_reason_count": 1,
+          "outer_wrapper_blocked": false,
+          "blockers": [],
+          "review_reasons": [
+            {
+              "code": "standalone_nominal_requires_fragment_or_context_review",
+              "path": "ROOT > DemonstrativeClassifierNP",
+              "construction": "DemonstrativeClassifierNP",
+              "surface": "呢本書",
+              "depth": 1
+            }
+          ],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "REVIEW_REQUIRED",
+        "semantic_acceptance_blocker_count": 0,
+        "semantic_acceptance_review_reason_count": 1,
+        "semantic_acceptance_outer_wrapper_blocked": false
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "呢本書",
+          "construction": "DemonstrativeClassifierNP",
+          "internal_construction": "DemonstrativeClassifierNP",
+          "parent": "",
+          "internal_parent": "",
+          "role": "NP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "呢",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "func",
+          "syntax": "demonstrative_determiner",
+          "jyutping": "ni1"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "本",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "measure_word",
+          "syntax": "classifier_book",
+          "jyutping": "bun2"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "書",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "what",
+          "syntax": "object_np",
+          "jyutping": "syu1"
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "DEMO-R02",
+      "section": "required",
+      "surface": "嗰個人。",
+      "candidate_policy": "REQUIRED",
+      "expected_target_surfaces": [
+        "嗰個人"
+      ],
+      "purpose": "distal D-general-CL-N",
+      "observation": "EXACT_TARGET_PRESENT",
+      "actual_target_surfaces": [
+        "嗰個人"
+      ],
+      "target_internal_types": [
+        "DemonstrativeClassifierNP"
+      ],
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "嗰個人"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "嗰個人。",
+        "parser_shadow_source": "嗰個人。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 3,
+        "final_node_count": 5,
+        "construction_count": 1,
+        "top_constructions": [
+          "DemonstrativeClassifierNP"
+        ],
+        "internal_top_constructions": [
+          "DemonstrativeClassifierNP"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "generative_template": 1,
+          "atomic_lexicon": 3,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 1
+        },
+        "review_count": 0,
+        "selection_decision_count": 1,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 3,
+        "parser_active_feature_bundle_count": 0,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PASS",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "嗰個人"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "REVIEW_REQUIRED",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 0,
+          "review_reason_count": 1,
+          "outer_wrapper_blocked": false,
+          "blockers": [],
+          "review_reasons": [
+            {
+              "code": "standalone_nominal_requires_fragment_or_context_review",
+              "path": "ROOT > DemonstrativeClassifierNP",
+              "construction": "DemonstrativeClassifierNP",
+              "surface": "嗰個人",
+              "depth": 1
+            }
+          ],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "REVIEW_REQUIRED",
+        "semantic_acceptance_blocker_count": 0,
+        "semantic_acceptance_review_reason_count": 1,
+        "semantic_acceptance_outer_wrapper_blocked": false
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "嗰個人",
+          "construction": "DemonstrativeClassifierNP",
+          "internal_construction": "DemonstrativeClassifierNP",
+          "parent": "",
+          "internal_parent": "",
+          "role": "NP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "嗰",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "func",
+          "syntax": "demonstrative_determiner",
+          "jyutping": "go2"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "個",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "measure_word",
+          "syntax": "general_classifier",
+          "jyutping": "go3"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "人",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "who",
+          "syntax": "person_np",
+          "jyutping": "jan4"
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "DEMO-R03",
+      "section": "required",
+      "surface": "呢間公司。",
+      "candidate_policy": "REQUIRED",
+      "expected_target_surfaces": [
+        "呢間公司"
+      ],
+      "purpose": "proximal D-CL-N organization head",
+      "observation": "EXACT_TARGET_PRESENT",
+      "actual_target_surfaces": [
+        "呢間公司"
+      ],
+      "target_internal_types": [
+        "DemonstrativeClassifierNP"
+      ],
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "呢間公司"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "呢間公司。",
+        "parser_shadow_source": "呢間公司。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 3,
+        "final_node_count": 5,
+        "construction_count": 1,
+        "top_constructions": [
+          "DemonstrativeClassifierNP"
+        ],
+        "internal_top_constructions": [
+          "DemonstrativeClassifierNP"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "generative_template": 1,
+          "atomic_lexicon": 3,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 1
+        },
+        "review_count": 0,
+        "selection_decision_count": 1,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 3,
+        "parser_active_feature_bundle_count": 0,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PASS",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "呢間公司"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "REVIEW_REQUIRED",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 0,
+          "review_reason_count": 1,
+          "outer_wrapper_blocked": false,
+          "blockers": [],
+          "review_reasons": [
+            {
+              "code": "standalone_nominal_requires_fragment_or_context_review",
+              "path": "ROOT > DemonstrativeClassifierNP",
+              "construction": "DemonstrativeClassifierNP",
+              "surface": "呢間公司",
+              "depth": 1
+            }
+          ],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "REVIEW_REQUIRED",
+        "semantic_acceptance_blocker_count": 0,
+        "semantic_acceptance_review_reason_count": 1,
+        "semantic_acceptance_outer_wrapper_blocked": false
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "呢間公司",
+          "construction": "DemonstrativeClassifierNP",
+          "internal_construction": "DemonstrativeClassifierNP",
+          "parent": "",
+          "internal_parent": "",
+          "role": "NP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "呢",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "func",
+          "syntax": "demonstrative_determiner",
+          "jyutping": "ni1"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "間",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "measure_word",
+          "syntax": "classifier_building_shop",
+          "jyutping": "gaan1"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "公司",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "what",
+          "syntax": "organization_np head_noun object_np",
+          "jyutping": "gung1 si1"
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "DEMO-R04",
+      "section": "required",
+      "surface": "嗰份文件。",
+      "candidate_policy": "REQUIRED",
+      "expected_target_surfaces": [
+        "嗰份文件"
+      ],
+      "purpose": "distal D-CL-N document head",
+      "observation": "EXACT_TARGET_PRESENT",
+      "actual_target_surfaces": [
+        "嗰份文件"
+      ],
+      "target_internal_types": [
+        "DemonstrativeClassifierNP"
+      ],
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "嗰份文件"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "嗰份文件。",
+        "parser_shadow_source": "嗰份文件。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 3,
+        "final_node_count": 5,
+        "construction_count": 1,
+        "top_constructions": [
+          "DemonstrativeClassifierNP"
+        ],
+        "internal_top_constructions": [
+          "DemonstrativeClassifierNP"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "generative_template": 1,
+          "atomic_lexicon": 3,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 1
+        },
+        "review_count": 0,
+        "selection_decision_count": 3,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 3,
+        "parser_active_feature_bundle_count": 0,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PASS",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "嗰份文件"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "REVIEW_REQUIRED",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 0,
+          "review_reason_count": 1,
+          "outer_wrapper_blocked": false,
+          "blockers": [],
+          "review_reasons": [
+            {
+              "code": "standalone_nominal_requires_fragment_or_context_review",
+              "path": "ROOT > DemonstrativeClassifierNP",
+              "construction": "DemonstrativeClassifierNP",
+              "surface": "嗰份文件",
+              "depth": 1
+            }
+          ],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "REVIEW_REQUIRED",
+        "semantic_acceptance_blocker_count": 0,
+        "semantic_acceptance_review_reason_count": 1,
+        "semantic_acceptance_outer_wrapper_blocked": false
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "嗰份文件",
+          "construction": "DemonstrativeClassifierNP",
+          "internal_construction": "DemonstrativeClassifierNP",
+          "parent": "",
+          "internal_parent": "",
+          "role": "NP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "嗰",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "func",
+          "syntax": "demonstrative_determiner",
+          "jyutping": "go2"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "份",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "measure_word",
+          "syntax": "general_classifier document_task_classifier",
+          "jyutping": "fan6"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "文件",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "what",
+          "syntax": "document_noun object_np",
+          "jyutping": "man4 gin2"
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "DEMO-R05",
+      "section": "required",
+      "surface": "呢個問題。",
+      "candidate_policy": "REQUIRED",
+      "expected_target_surfaces": [
+        "呢個問題"
+      ],
+      "purpose": "proximal D-general-CL-N abstract head",
+      "observation": "EXACT_TARGET_PRESENT",
+      "actual_target_surfaces": [
+        "呢個問題"
+      ],
+      "target_internal_types": [
+        "DemonstrativeClassifierNP"
+      ],
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "呢個問題"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "呢個問題。",
+        "parser_shadow_source": "呢個問題。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 3,
+        "final_node_count": 5,
+        "construction_count": 1,
+        "top_constructions": [
+          "DemonstrativeClassifierNP"
+        ],
+        "internal_top_constructions": [
+          "DemonstrativeClassifierNP"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "generative_template": 1,
+          "atomic_lexicon": 3,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 1
+        },
+        "review_count": 0,
+        "selection_decision_count": 1,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 3,
+        "parser_active_feature_bundle_count": 0,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PASS",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "呢個問題"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "REVIEW_REQUIRED",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 0,
+          "review_reason_count": 1,
+          "outer_wrapper_blocked": false,
+          "blockers": [],
+          "review_reasons": [
+            {
+              "code": "standalone_nominal_requires_fragment_or_context_review",
+              "path": "ROOT > DemonstrativeClassifierNP",
+              "construction": "DemonstrativeClassifierNP",
+              "surface": "呢個問題",
+              "depth": 1
+            }
+          ],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "REVIEW_REQUIRED",
+        "semantic_acceptance_blocker_count": 0,
+        "semantic_acceptance_review_reason_count": 1,
+        "semantic_acceptance_outer_wrapper_blocked": false
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "呢個問題",
+          "construction": "DemonstrativeClassifierNP",
+          "internal_construction": "DemonstrativeClassifierNP",
+          "parent": "",
+          "internal_parent": "",
+          "role": "NP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "呢",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "func",
+          "syntax": "demonstrative_determiner",
+          "jyutping": "ni1"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "個",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "measure_word",
+          "syntax": "general_classifier",
+          "jyutping": "go3"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "問題",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "what",
+          "syntax": "object_np",
+          "jyutping": "man6 tai4"
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "DEMO-R06",
+      "section": "required",
+      "surface": "呢杯水。",
+      "candidate_policy": "REQUIRED",
+      "expected_target_surfaces": [
+        "呢杯水"
+      ],
+      "purpose": "proximal D-container/measure-N",
+      "observation": "EXACT_TARGET_PRESENT",
+      "actual_target_surfaces": [
+        "呢杯水"
+      ],
+      "target_internal_types": [
+        "DemonstrativeClassifierNP"
+      ],
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "呢杯水"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "呢杯水。",
+        "parser_shadow_source": "呢杯水。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 3,
+        "final_node_count": 5,
+        "construction_count": 1,
+        "top_constructions": [
+          "DemonstrativeClassifierNP"
+        ],
+        "internal_top_constructions": [
+          "DemonstrativeClassifierNP"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "generative_template": 1,
+          "atomic_lexicon": 3,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 1
+        },
+        "review_count": 0,
+        "selection_decision_count": 1,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 3,
+        "parser_active_feature_bundle_count": 0,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PASS",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "呢杯水"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "REVIEW_REQUIRED",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 0,
+          "review_reason_count": 1,
+          "outer_wrapper_blocked": false,
+          "blockers": [],
+          "review_reasons": [
+            {
+              "code": "standalone_nominal_requires_fragment_or_context_review",
+              "path": "ROOT > DemonstrativeClassifierNP",
+              "construction": "DemonstrativeClassifierNP",
+              "surface": "呢杯水",
+              "depth": 1
+            }
+          ],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "REVIEW_REQUIRED",
+        "semantic_acceptance_blocker_count": 0,
+        "semantic_acceptance_review_reason_count": 1,
+        "semantic_acceptance_outer_wrapper_blocked": false
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "呢杯水",
+          "construction": "DemonstrativeClassifierNP",
+          "internal_construction": "DemonstrativeClassifierNP",
+          "parent": "",
+          "internal_parent": "",
+          "role": "NP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "呢",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "func",
+          "syntax": "demonstrative_determiner",
+          "jyutping": "ni1"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "杯",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "measure_word",
+          "syntax": "classifier_container_cup",
+          "jyutping": "bui1"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "水",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "what",
+          "syntax": "object_np liquid drink_object water_noun",
+          "jyutping": "seoi2"
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "DEMO-R07",
+      "section": "required",
+      "surface": "嗰架車。",
+      "candidate_policy": "REQUIRED",
+      "expected_target_surfaces": [
+        "嗰架車"
+      ],
+      "purpose": "distal D-vehicle-classifier-N",
+      "observation": "EXACT_TARGET_PRESENT",
+      "actual_target_surfaces": [
+        "嗰架車"
+      ],
+      "target_internal_types": [
+        "DemonstrativeClassifierNP"
+      ],
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "嗰架車"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "嗰架車。",
+        "parser_shadow_source": "嗰架車。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 3,
+        "final_node_count": 5,
+        "construction_count": 1,
+        "top_constructions": [
+          "DemonstrativeClassifierNP"
+        ],
+        "internal_top_constructions": [
+          "DemonstrativeClassifierNP"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "generative_template": 1,
+          "atomic_lexicon": 3,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 1
+        },
+        "review_count": 0,
+        "selection_decision_count": 3,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 3,
+        "parser_active_feature_bundle_count": 0,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PASS",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "嗰架車"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "REVIEW_REQUIRED",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 0,
+          "review_reason_count": 1,
+          "outer_wrapper_blocked": false,
+          "blockers": [],
+          "review_reasons": [
+            {
+              "code": "standalone_nominal_requires_fragment_or_context_review",
+              "path": "ROOT > DemonstrativeClassifierNP",
+              "construction": "DemonstrativeClassifierNP",
+              "surface": "嗰架車",
+              "depth": 1
+            }
+          ],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "REVIEW_REQUIRED",
+        "semantic_acceptance_blocker_count": 0,
+        "semantic_acceptance_review_reason_count": 1,
+        "semantic_acceptance_outer_wrapper_blocked": false
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "嗰架車",
+          "construction": "DemonstrativeClassifierNP",
+          "internal_construction": "DemonstrativeClassifierNP",
+          "parent": "",
+          "internal_parent": "",
+          "role": "NP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "嗰",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "func",
+          "syntax": "demonstrative_determiner",
+          "jyutping": "go2"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "架",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "measure_word",
+          "syntax": "classifier_vehicle",
+          "jyutping": "gaa3"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "車",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "what",
+          "syntax": "vehicle_noun object_np head_noun",
+          "jyutping": "ce1"
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "DEMO-R08",
+      "section": "required",
+      "surface": "呢隻貓。",
+      "candidate_policy": "REQUIRED",
+      "expected_target_surfaces": [
+        "呢隻貓"
+      ],
+      "purpose": "proximal D-animal-classifier-N",
+      "observation": "TARGET_ABSENT",
+      "actual_target_surfaces": [],
+      "target_internal_types": [],
+      "root_coverage": {
+        "status": "NO_TOP_CONSTRUCTION",
+        "top_construction_count": 0,
+        "top_construction_surfaces": [],
+        "unwrapped_root_nonpunctuation_count": 3,
+        "unwrapped_root_surfaces": [
+          "呢",
+          "隻",
+          "貓"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "呢隻貓。",
+        "parser_shadow_source": "呢隻貓。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 3,
+        "final_node_count": 4,
+        "construction_count": 0,
+        "top_constructions": [],
+        "internal_top_constructions": [],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "atomic_lexicon": 2,
+          "unknown_atomic": 1,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {},
+        "review_count": 0,
+        "selection_decision_count": 2,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 3,
+        "parser_active_feature_bundle_count": 0,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "NO_TOP_CONSTRUCTION",
+        "root_top_construction_count": 0,
+        "root_top_construction_surfaces": [],
+        "unwrapped_root_nonpunctuation_count": 3,
+        "unwrapped_root_surfaces": [
+          "呢",
+          "隻",
+          "貓"
+        ],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "BLOCKED",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 2,
+          "review_reason_count": 0,
+          "outer_wrapper_blocked": false,
+          "blockers": [
+            {
+              "code": "unknown_lexical_material",
+              "path": "貓[貓]",
+              "construction": "",
+              "surface": "貓",
+              "depth": 0,
+              "syntax": "unknown_cjk_or_text",
+              "trace_kind": "unknown_atomic"
+            },
+            {
+              "code": "no_top_construction",
+              "path": "ROOT",
+              "construction": "",
+              "surface": "",
+              "depth": 0
+            }
+          ],
+          "review_reasons": [],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "BLOCKED",
+        "semantic_acceptance_blocker_count": 2,
+        "semantic_acceptance_review_reason_count": 0,
+        "semantic_acceptance_outer_wrapper_blocked": false,
+        "semantic_review_flags": [
+          "no_top_construction"
+        ]
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "呢",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "func",
+          "syntax": "demonstrative_determiner",
+          "jyutping": "ni1"
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "隻",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "measure_word",
+          "syntax": "classifier_animal_body_part_one_of_pair",
+          "jyutping": "zek3"
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "貓",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "DEMO-R09",
+      "section": "required",
+      "surface": "呢個蘋果。",
+      "candidate_policy": "REQUIRED",
+      "expected_target_surfaces": [
+        "呢個蘋果"
+      ],
+      "purpose": "blocks DemonstrativeHeadNP misanalysis",
+      "observation": "EXACT_TARGET_PRESENT",
+      "actual_target_surfaces": [
+        "呢個蘋果"
+      ],
+      "target_internal_types": [
+        "DemonstrativeClassifierNP"
+      ],
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "呢個蘋果"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "呢個蘋果。",
+        "parser_shadow_source": "呢個蘋果。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 3,
+        "final_node_count": 5,
+        "construction_count": 1,
+        "top_constructions": [
+          "DemonstrativeClassifierNP"
+        ],
+        "internal_top_constructions": [
+          "DemonstrativeClassifierNP"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "generative_template": 1,
+          "atomic_lexicon": 3,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 1
+        },
+        "review_count": 0,
+        "selection_decision_count": 1,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 3,
+        "parser_active_feature_bundle_count": 0,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PASS",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "呢個蘋果"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "REVIEW_REQUIRED",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 0,
+          "review_reason_count": 1,
+          "outer_wrapper_blocked": false,
+          "blockers": [],
+          "review_reasons": [
+            {
+              "code": "standalone_nominal_requires_fragment_or_context_review",
+              "path": "ROOT > DemonstrativeClassifierNP",
+              "construction": "DemonstrativeClassifierNP",
+              "surface": "呢個蘋果",
+              "depth": 1
+            }
+          ],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "REVIEW_REQUIRED",
+        "semantic_acceptance_blocker_count": 0,
+        "semantic_acceptance_review_reason_count": 1,
+        "semantic_acceptance_outer_wrapper_blocked": false
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "呢個蘋果",
+          "construction": "DemonstrativeClassifierNP",
+          "internal_construction": "DemonstrativeClassifierNP",
+          "parent": "",
+          "internal_parent": "",
+          "role": "NP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "呢",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "func",
+          "syntax": "demonstrative_determiner",
+          "jyutping": "ni1"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "個",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "measure_word",
+          "syntax": "general_classifier",
+          "jyutping": "go3"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "蘋果",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "what",
+          "syntax": "object_np food",
+          "jyutping": "ping4 gwo2"
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "DEMO-F01",
+      "section": "forbidden",
+      "surface": "呢個。",
+      "candidate_policy": "FORBIDDEN",
+      "expected_target_surfaces": [],
+      "purpose": "headless D-CL is a separate discourse-dependent subtype",
+      "observation": "BROAD_OR_RETIRED_LABEL_PRESENT_OUTSIDE_TARGET",
+      "actual_target_surfaces": [
+        "呢個"
+      ],
+      "target_internal_types": [
+        "DemonstrativeClassifierNP"
+      ],
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "呢個"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "呢個。",
+        "parser_shadow_source": "呢個。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 2,
+        "final_node_count": 4,
+        "construction_count": 1,
+        "top_constructions": [
+          "DemonstrativeClassifierNP"
+        ],
+        "internal_top_constructions": [
+          "DemonstrativeClassifierNP"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "generative_template": 1,
+          "atomic_lexicon": 2,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 1
+        },
+        "review_count": 0,
+        "selection_decision_count": 0,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 2,
+        "parser_active_feature_bundle_count": 0,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PASS",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "呢個"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "REVIEW_REQUIRED",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 0,
+          "review_reason_count": 1,
+          "outer_wrapper_blocked": false,
+          "blockers": [],
+          "review_reasons": [
+            {
+              "code": "standalone_nominal_requires_fragment_or_context_review",
+              "path": "ROOT > DemonstrativeClassifierNP",
+              "construction": "DemonstrativeClassifierNP",
+              "surface": "呢個",
+              "depth": 1
+            }
+          ],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "REVIEW_REQUIRED",
+        "semantic_acceptance_blocker_count": 0,
+        "semantic_acceptance_review_reason_count": 1,
+        "semantic_acceptance_outer_wrapper_blocked": false
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "呢個",
+          "construction": "DemonstrativeClassifierNP",
+          "internal_construction": "DemonstrativeClassifierNP",
+          "parent": "",
+          "internal_parent": "",
+          "role": "NP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "呢",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "func",
+          "syntax": "demonstrative_determiner",
+          "jyutping": "ni1"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "個",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "measure_word",
+          "syntax": "general_classifier",
+          "jyutping": "go3"
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "DEMO-F02",
+      "section": "forbidden",
+      "surface": "呢本。",
+      "candidate_policy": "FORBIDDEN",
+      "expected_target_surfaces": [],
+      "purpose": "headless D-CL with lexical classifier is separate",
+      "observation": "BROAD_OR_RETIRED_LABEL_PRESENT_OUTSIDE_TARGET",
+      "actual_target_surfaces": [
+        "呢本"
+      ],
+      "target_internal_types": [
+        "DemonstrativeClassifierNP"
+      ],
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "呢本"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "呢本。",
+        "parser_shadow_source": "呢本。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 2,
+        "final_node_count": 4,
+        "construction_count": 1,
+        "top_constructions": [
+          "DemonstrativeClassifierNP"
+        ],
+        "internal_top_constructions": [
+          "DemonstrativeClassifierNP"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "generative_template": 1,
+          "atomic_lexicon": 2,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 1
+        },
+        "review_count": 0,
+        "selection_decision_count": 0,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 2,
+        "parser_active_feature_bundle_count": 0,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PASS",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "呢本"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "REVIEW_REQUIRED",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 0,
+          "review_reason_count": 1,
+          "outer_wrapper_blocked": false,
+          "blockers": [],
+          "review_reasons": [
+            {
+              "code": "standalone_nominal_requires_fragment_or_context_review",
+              "path": "ROOT > DemonstrativeClassifierNP",
+              "construction": "DemonstrativeClassifierNP",
+              "surface": "呢本",
+              "depth": 1
+            }
+          ],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "REVIEW_REQUIRED",
+        "semantic_acceptance_blocker_count": 0,
+        "semantic_acceptance_review_reason_count": 1,
+        "semantic_acceptance_outer_wrapper_blocked": false
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "呢本",
+          "construction": "DemonstrativeClassifierNP",
+          "internal_construction": "DemonstrativeClassifierNP",
+          "parent": "",
+          "internal_parent": "",
+          "role": "NP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "呢",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "func",
+          "syntax": "demonstrative_determiner",
+          "jyutping": "ni1"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "本",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "measure_word",
+          "syntax": "classifier_book",
+          "jyutping": "bun2"
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "DEMO-F03",
+      "section": "forbidden",
+      "surface": "呢兩個人。",
+      "candidate_policy": "FORBIDDEN",
+      "expected_target_surfaces": [],
+      "purpose": "overt numeral D-Num-CL-N is a separate subtype",
+      "observation": "TARGET_ABSENT_AS_REQUIRED",
+      "actual_target_surfaces": [],
+      "target_internal_types": [],
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "呢兩個人"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "呢兩個人。",
+        "parser_shadow_source": "呢兩個人。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 4,
+        "final_node_count": 7,
+        "construction_count": 2,
+        "top_constructions": [
+          "ModifiedNP"
+        ],
+        "internal_top_constructions": [
+          "ModifiedNP"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "generative_template": 2,
+          "atomic_lexicon": 4,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 2
+        },
+        "review_count": 0,
+        "selection_decision_count": 4,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 4,
+        "parser_active_feature_bundle_count": 0,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PASS",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "呢兩個人"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "REVIEW_REQUIRED",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 0,
+          "review_reason_count": 1,
+          "outer_wrapper_blocked": false,
+          "blockers": [],
+          "review_reasons": [
+            {
+              "code": "standalone_nominal_requires_fragment_or_context_review",
+              "path": "ROOT > ModifiedNP",
+              "construction": "ModifiedNP",
+              "surface": "呢兩個人",
+              "depth": 1
+            }
+          ],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "REVIEW_REQUIRED",
+        "semantic_acceptance_blocker_count": 0,
+        "semantic_acceptance_review_reason_count": 1,
+        "semantic_acceptance_outer_wrapper_blocked": false
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "呢兩個人",
+          "construction": "ModifiedNP",
+          "internal_construction": "ModifiedNP",
+          "parent": "",
+          "internal_parent": "",
+          "role": "NP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "呢",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ModifiedNP",
+          "internal_parent": "ModifiedNP",
+          "role": "func",
+          "syntax": "demonstrative_determiner",
+          "jyutping": "ni1"
+        },
+        {
+          "depth": 1,
+          "kind": "construction",
+          "surface": "兩個人",
+          "construction": "QuantifiedClassifierNP",
+          "internal_construction": "QuantifiedClassifierNP",
+          "parent": "ModifiedNP",
+          "internal_parent": "ModifiedNP",
+          "role": "NP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 2,
+          "kind": "token",
+          "surface": "兩",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "QuantifiedClassifierNP",
+          "internal_parent": "QuantifiedClassifierNP",
+          "role": "how",
+          "syntax": "quantity count_value numeral",
+          "jyutping": "loeng5"
+        },
+        {
+          "depth": 2,
+          "kind": "token",
+          "surface": "個",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "QuantifiedClassifierNP",
+          "internal_parent": "QuantifiedClassifierNP",
+          "role": "measure_word",
+          "syntax": "general_classifier classifier",
+          "jyutping": "go3"
+        },
+        {
+          "depth": 2,
+          "kind": "token",
+          "surface": "人",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "QuantifiedClassifierNP",
+          "internal_parent": "QuantifiedClassifierNP",
+          "role": "who",
+          "syntax": "person_np",
+          "jyutping": "jan4"
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "DEMO-F04",
+      "section": "forbidden",
+      "surface": "呢啲書。",
+      "candidate_policy": "FORBIDDEN",
+      "expected_target_surfaces": [],
+      "purpose": "D-di1-N plural/mass profile is separate",
+      "observation": "TARGET_ABSENT_AS_REQUIRED",
+      "actual_target_surfaces": [],
+      "target_internal_types": [],
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "呢啲書"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "呢啲書。",
+        "parser_shadow_source": "呢啲書。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 3,
+        "final_node_count": 6,
+        "construction_count": 2,
+        "top_constructions": [
+          "ModifiedNP"
+        ],
+        "internal_top_constructions": [
+          "ModifiedNP"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "generative_template": 2,
+          "atomic_lexicon": 3,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 2
+        },
+        "review_count": 0,
+        "selection_decision_count": 2,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 3,
+        "parser_active_feature_bundle_count": 0,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PASS",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "呢啲書"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "REVIEW_REQUIRED",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 0,
+          "review_reason_count": 1,
+          "outer_wrapper_blocked": false,
+          "blockers": [],
+          "review_reasons": [
+            {
+              "code": "standalone_nominal_requires_fragment_or_context_review",
+              "path": "ROOT > ModifiedNP",
+              "construction": "ModifiedNP",
+              "surface": "呢啲書",
+              "depth": 1
+            }
+          ],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "REVIEW_REQUIRED",
+        "semantic_acceptance_blocker_count": 0,
+        "semantic_acceptance_review_reason_count": 1,
+        "semantic_acceptance_outer_wrapper_blocked": false
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "呢啲書",
+          "construction": "ModifiedNP",
+          "internal_construction": "ModifiedNP",
+          "parent": "",
+          "internal_parent": "",
+          "role": "NP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "呢",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ModifiedNP",
+          "internal_parent": "ModifiedNP",
+          "role": "func",
+          "syntax": "demonstrative_determiner",
+          "jyutping": "ni1"
+        },
+        {
+          "depth": 1,
+          "kind": "construction",
+          "surface": "啲書",
+          "construction": "DiMarkedNP",
+          "internal_construction": "DiMarkedNP",
+          "parent": "ModifiedNP",
+          "internal_parent": "ModifiedNP",
+          "role": "NP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 2,
+          "kind": "token",
+          "surface": "啲",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DiMarkedNP",
+          "internal_parent": "DiMarkedNP",
+          "role": "func",
+          "syntax": "di_determiner",
+          "jyutping": "di1"
+        },
+        {
+          "depth": 2,
+          "kind": "token",
+          "surface": "書",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DiMarkedNP",
+          "internal_parent": "DiMarkedNP",
+          "role": "what",
+          "syntax": "object_np",
+          "jyutping": "syu1"
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "DEMO-F05",
+      "section": "forbidden",
+      "surface": "一個人。",
+      "candidate_policy": "FORBIDDEN",
+      "expected_target_surfaces": [],
+      "purpose": "Num-CL-N lacks demonstrative",
+      "observation": "TARGET_ABSENT_AS_REQUIRED",
+      "actual_target_surfaces": [],
+      "target_internal_types": [],
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "一個人"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "一個人。",
+        "parser_shadow_source": "一個人。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 3,
+        "final_node_count": 5,
+        "construction_count": 1,
+        "top_constructions": [
+          "QuantifiedClassifierNP"
+        ],
+        "internal_top_constructions": [
+          "QuantifiedClassifierNP"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "generative_template": 1,
+          "atomic_lexicon": 3,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 1
+        },
+        "review_count": 0,
+        "selection_decision_count": 1,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 3,
+        "parser_active_feature_bundle_count": 0,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PASS",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "一個人"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "REVIEW_REQUIRED",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 0,
+          "review_reason_count": 1,
+          "outer_wrapper_blocked": false,
+          "blockers": [],
+          "review_reasons": [
+            {
+              "code": "standalone_nominal_requires_fragment_or_context_review",
+              "path": "ROOT > QuantifiedClassifierNP",
+              "construction": "QuantifiedClassifierNP",
+              "surface": "一個人",
+              "depth": 1
+            }
+          ],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "REVIEW_REQUIRED",
+        "semantic_acceptance_blocker_count": 0,
+        "semantic_acceptance_review_reason_count": 1,
+        "semantic_acceptance_outer_wrapper_blocked": false
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "一個人",
+          "construction": "QuantifiedClassifierNP",
+          "internal_construction": "QuantifiedClassifierNP",
+          "parent": "",
+          "internal_parent": "",
+          "role": "NP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "一",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "QuantifiedClassifierNP",
+          "internal_parent": "QuantifiedClassifierNP",
+          "role": "how",
+          "syntax": "quantity count_value numeral",
+          "jyutping": "jat1"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "個",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "QuantifiedClassifierNP",
+          "internal_parent": "QuantifiedClassifierNP",
+          "role": "measure_word",
+          "syntax": "general_classifier classifier",
+          "jyutping": "go3"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "人",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "QuantifiedClassifierNP",
+          "internal_parent": "QuantifiedClassifierNP",
+          "role": "who",
+          "syntax": "person_np",
+          "jyutping": "jan4"
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "DEMO-F06",
+      "section": "forbidden",
+      "surface": "個人。",
+      "candidate_policy": "FORBIDDEN",
+      "expected_target_surfaces": [],
+      "purpose": "bare CL-N lacks demonstrative",
+      "observation": "TARGET_ABSENT_AS_REQUIRED",
+      "actual_target_surfaces": [],
+      "target_internal_types": [],
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "個人"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "個人。",
+        "parser_shadow_source": "個人。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 2,
+        "final_node_count": 4,
+        "construction_count": 1,
+        "top_constructions": [
+          "ModifiedNP"
+        ],
+        "internal_top_constructions": [
+          "ModifiedNP"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "generative_template": 1,
+          "atomic_lexicon": 2,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 1
+        },
+        "review_count": 0,
+        "selection_decision_count": 2,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 2,
+        "parser_active_feature_bundle_count": 0,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PASS",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "個人"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "REVIEW_REQUIRED",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 0,
+          "review_reason_count": 1,
+          "outer_wrapper_blocked": false,
+          "blockers": [],
+          "review_reasons": [
+            {
+              "code": "standalone_nominal_requires_fragment_or_context_review",
+              "path": "ROOT > ModifiedNP",
+              "construction": "ModifiedNP",
+              "surface": "個人",
+              "depth": 1
+            }
+          ],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "REVIEW_REQUIRED",
+        "semantic_acceptance_blocker_count": 0,
+        "semantic_acceptance_review_reason_count": 1,
+        "semantic_acceptance_outer_wrapper_blocked": false
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "個人",
+          "construction": "ModifiedNP",
+          "internal_construction": "ModifiedNP",
+          "parent": "",
+          "internal_parent": "",
+          "role": "NP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "個",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ModifiedNP",
+          "internal_parent": "ModifiedNP",
+          "role": "measure_word",
+          "syntax": "general_classifier",
+          "jyutping": "go3"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "人",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ModifiedNP",
+          "internal_parent": "ModifiedNP",
+          "role": "who",
+          "syntax": "person_np",
+          "jyutping": "jan4"
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "DEMO-F07",
+      "section": "forbidden",
+      "surface": "邊個人？",
+      "candidate_policy": "FORBIDDEN",
+      "expected_target_surfaces": [],
+      "purpose": "wh-classifier nominal is separate",
+      "observation": "TARGET_ABSENT_AS_REQUIRED",
+      "actual_target_surfaces": [],
+      "target_internal_types": [],
+      "root_coverage": {
+        "status": "NO_TOP_CONSTRUCTION",
+        "top_construction_count": 0,
+        "top_construction_surfaces": [],
+        "unwrapped_root_nonpunctuation_count": 2,
+        "unwrapped_root_surfaces": [
+          "邊個",
+          "人"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "邊個人？",
+        "parser_shadow_source": "邊個人？",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 2,
+        "final_node_count": 3,
+        "construction_count": 0,
+        "top_constructions": [],
+        "internal_top_constructions": [],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "atomic_lexicon": 2,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {},
+        "review_count": 0,
+        "selection_decision_count": 2,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 2,
+        "parser_active_feature_bundle_count": 0,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "NO_TOP_CONSTRUCTION",
+        "root_top_construction_count": 0,
+        "root_top_construction_surfaces": [],
+        "unwrapped_root_nonpunctuation_count": 2,
+        "unwrapped_root_surfaces": [
+          "邊個",
+          "人"
+        ],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "BLOCKED",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 1,
+          "review_reason_count": 0,
+          "outer_wrapper_blocked": false,
+          "blockers": [
+            {
+              "code": "no_top_construction",
+              "path": "ROOT",
+              "construction": "",
+              "surface": "",
+              "depth": 0
+            }
+          ],
+          "review_reasons": [],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "BLOCKED",
+        "semantic_acceptance_blocker_count": 1,
+        "semantic_acceptance_review_reason_count": 0,
+        "semantic_acceptance_outer_wrapper_blocked": false,
+        "semantic_review_flags": [
+          "no_top_construction"
+        ]
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "邊個",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "who",
+          "syntax": "wh_person",
+          "jyutping": "bin1 go3"
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "人",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "who",
+          "syntax": "person_np",
+          "jyutping": "jan4"
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "？",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "DEMO-F08",
+      "section": "forbidden",
+      "surface": "呢人。",
+      "candidate_policy": "FORBIDDEN",
+      "expected_target_surfaces": [],
+      "purpose": "D-N without overt classifier is outside target",
+      "observation": "TARGET_ABSENT_AS_REQUIRED",
+      "actual_target_surfaces": [],
+      "target_internal_types": [],
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "呢人"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "呢人。",
+        "parser_shadow_source": "呢人。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 2,
+        "final_node_count": 4,
+        "construction_count": 1,
+        "top_constructions": [
+          "ModifiedNP"
+        ],
+        "internal_top_constructions": [
+          "ModifiedNP"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "generative_template": 1,
+          "atomic_lexicon": 2,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 1
+        },
+        "review_count": 0,
+        "selection_decision_count": 2,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 2,
+        "parser_active_feature_bundle_count": 0,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PASS",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "呢人"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "REVIEW_REQUIRED",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 0,
+          "review_reason_count": 1,
+          "outer_wrapper_blocked": false,
+          "blockers": [],
+          "review_reasons": [
+            {
+              "code": "standalone_nominal_requires_fragment_or_context_review",
+              "path": "ROOT > ModifiedNP",
+              "construction": "ModifiedNP",
+              "surface": "呢人",
+              "depth": 1
+            }
+          ],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "REVIEW_REQUIRED",
+        "semantic_acceptance_blocker_count": 0,
+        "semantic_acceptance_review_reason_count": 1,
+        "semantic_acceptance_outer_wrapper_blocked": false
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "呢人",
+          "construction": "ModifiedNP",
+          "internal_construction": "ModifiedNP",
+          "parent": "",
+          "internal_parent": "",
+          "role": "NP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "呢",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ModifiedNP",
+          "internal_parent": "ModifiedNP",
+          "role": "func",
+          "syntax": "demonstrative_determiner",
+          "jyutping": "ni1"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "人",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ModifiedNP",
+          "internal_parent": "ModifiedNP",
+          "role": "who",
+          "syntax": "person_np",
+          "jyutping": "jan4"
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "DEMO-U01",
+      "section": "unresolved",
+      "surface": "呢間好大嘅公司。",
+      "candidate_policy": "UNRESOLVED",
+      "expected_target_surfaces": [],
+      "purpose": "modified D-CL-[modifier]-N requires nominal-scope analysis",
+      "observation": "UNRESOLVED_ENVIRONMENT_CURRENTLY_PARSED",
+      "actual_target_surfaces": [
+        "呢間"
+      ],
+      "target_internal_types": [
+        "DemonstrativeClassifierNP"
+      ],
+      "root_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "呢間好大嘅公司"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "呢間好大嘅公司。",
+        "parser_shadow_source": "呢間好大嘅公司。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 6,
+        "final_node_count": 11,
+        "construction_count": 4,
+        "top_constructions": [
+          "ModifiedNP"
+        ],
+        "internal_top_constructions": [
+          "ModifiedNP"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "generative_template": 4,
+          "atomic_lexicon": 6,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 4
+        },
+        "review_count": 0,
+        "selection_decision_count": 4,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 6,
+        "parser_active_feature_bundle_count": 1,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PASS",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "呢間好大嘅公司"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "REVIEW_REQUIRED",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 0,
+          "review_reason_count": 1,
+          "outer_wrapper_blocked": false,
+          "blockers": [],
+          "review_reasons": [
+            {
+              "code": "standalone_nominal_requires_fragment_or_context_review",
+              "path": "ROOT > ModifiedNP",
+              "construction": "ModifiedNP",
+              "surface": "呢間好大嘅公司",
+              "depth": 1
+            }
+          ],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "REVIEW_REQUIRED",
+        "semantic_acceptance_blocker_count": 0,
+        "semantic_acceptance_review_reason_count": 1,
+        "semantic_acceptance_outer_wrapper_blocked": false
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "呢間好大嘅公司",
+          "construction": "ModifiedNP",
+          "internal_construction": "ModifiedNP",
+          "parent": "",
+          "internal_parent": "",
+          "role": "NP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "construction",
+          "surface": "呢間",
+          "construction": "DemonstrativeClassifierNP",
+          "internal_construction": "DemonstrativeClassifierNP",
+          "parent": "ModifiedNP",
+          "internal_parent": "ModifiedNP",
+          "role": "NP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 2,
+          "kind": "token",
+          "surface": "呢",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "func",
+          "syntax": "demonstrative_determiner",
+          "jyutping": "ni1"
+        },
+        {
+          "depth": 2,
+          "kind": "token",
+          "surface": "間",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "measure_word",
+          "syntax": "classifier_building_shop",
+          "jyutping": "gaan1"
+        },
+        {
+          "depth": 1,
+          "kind": "construction",
+          "surface": "好大",
+          "construction": "DegreeStativePredicate",
+          "internal_construction": "DegreeStativePredicate",
+          "parent": "ModifiedNP",
+          "internal_parent": "ModifiedNP",
+          "role": "DegreeStative",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 2,
+          "kind": "token",
+          "surface": "好",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DegreeStativePredicate",
+          "internal_parent": "DegreeStativePredicate",
+          "role": "how",
+          "syntax": "degree_marker",
+          "jyutping": "hou2"
+        },
+        {
+          "depth": 2,
+          "kind": "token",
+          "surface": "大",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DegreeStativePredicate",
+          "internal_parent": "DegreeStativePredicate",
+          "role": "like",
+          "syntax": "stative_predicate",
+          "jyutping": "daai6"
+        },
+        {
+          "depth": 1,
+          "kind": "construction",
+          "surface": "嘅公司",
+          "construction": "ModifiedNP",
+          "internal_construction": "ModifiedNP",
+          "parent": "ModifiedNP",
+          "internal_parent": "ModifiedNP",
+          "role": "NP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 2,
+          "kind": "token",
+          "surface": "嘅",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ModifiedNP",
+          "internal_parent": "ModifiedNP",
+          "role": "particle",
+          "syntax": "nominal_linker associative_linker",
+          "jyutping": "ge3"
+        },
+        {
+          "depth": 2,
+          "kind": "token",
+          "surface": "公司",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "ModifiedNP",
+          "internal_parent": "ModifiedNP",
+          "role": "what",
+          "syntax": "organization_np head_noun object_np",
+          "jyutping": "gung1 si1"
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "DEMO-U02",
+      "section": "unresolved",
+      "surface": "中國移動嗰個業績。",
+      "candidate_policy": "UNRESOLVED",
+      "expected_target_surfaces": [],
+      "purpose": "possessor/associative vs non-deictic demonstrative attachment ambiguity",
+      "observation": "UNRESOLVED_ENVIRONMENT_CURRENTLY_PARSED",
+      "actual_target_surfaces": [
+        "嗰個"
+      ],
+      "target_internal_types": [
+        "DemonstrativeClassifierNP"
+      ],
+      "root_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "嗰個"
+        ],
+        "unwrapped_root_nonpunctuation_count": 5,
+        "unwrapped_root_surfaces": [
+          "中國",
+          "移",
+          "動",
+          "業",
+          "績"
+        ],
+        "ignored_root_remainder_count": 1
+      },
+      "semantic_summary": {
+        "source": "中國移動嗰個業績。",
+        "parser_shadow_source": "中國移動嗰個業績。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 7,
+        "final_node_count": 9,
+        "construction_count": 1,
+        "top_constructions": [
+          "DemonstrativeClassifierNP"
+        ],
+        "internal_top_constructions": [
+          "DemonstrativeClassifierNP"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "atomic_lexicon": 3,
+          "unknown_atomic": 4,
+          "generative_template": 1,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 1
+        },
+        "review_count": 0,
+        "selection_decision_count": 1,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 7,
+        "parser_active_feature_bundle_count": 0,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PARTIAL",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "嗰個"
+        ],
+        "unwrapped_root_nonpunctuation_count": 5,
+        "unwrapped_root_surfaces": [
+          "中國",
+          "移",
+          "動",
+          "業",
+          "績"
+        ],
+        "ignored_root_remainder_count": 1,
+        "semantic_acceptance": {
+          "status": "BLOCKED",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 5,
+          "review_reason_count": 1,
+          "outer_wrapper_blocked": false,
+          "blockers": [
+            {
+              "code": "unknown_lexical_material",
+              "path": "移[移]",
+              "construction": "",
+              "surface": "移",
+              "depth": 0,
+              "syntax": "unknown_cjk_or_text",
+              "trace_kind": "unknown_atomic"
+            },
+            {
+              "code": "unknown_lexical_material",
+              "path": "動[動]",
+              "construction": "",
+              "surface": "動",
+              "depth": 0,
+              "syntax": "unknown_cjk_or_text",
+              "trace_kind": "unknown_atomic"
+            },
+            {
+              "code": "unknown_lexical_material",
+              "path": "業[業]",
+              "construction": "",
+              "surface": "業",
+              "depth": 0,
+              "syntax": "unknown_cjk_or_text",
+              "trace_kind": "unknown_atomic"
+            },
+            {
+              "code": "unknown_lexical_material",
+              "path": "績[績]",
+              "construction": "",
+              "surface": "績",
+              "depth": 0,
+              "syntax": "unknown_cjk_or_text",
+              "trace_kind": "unknown_atomic"
+            },
+            {
+              "code": "partial_root_span_unwrapped_material",
+              "path": "ROOT",
+              "construction": "",
+              "surface": "",
+              "depth": 0,
+              "unwrapped_root_surfaces": [
+                "中國",
+                "移",
+                "動",
+                "業",
+                "績"
+              ]
+            }
+          ],
+          "review_reasons": [
+            {
+              "code": "standalone_nominal_requires_fragment_or_context_review",
+              "path": "ROOT > DemonstrativeClassifierNP",
+              "construction": "DemonstrativeClassifierNP",
+              "surface": "嗰個",
+              "depth": 1
+            }
+          ],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "BLOCKED",
+        "semantic_acceptance_blocker_count": 5,
+        "semantic_acceptance_review_reason_count": 1,
+        "semantic_acceptance_outer_wrapper_blocked": false,
+        "semantic_review_flags": [
+          "partial_root_span_unwrapped_material"
+        ]
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "中國",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "where",
+          "syntax": "proper_place country_name",
+          "jyutping": "zung1 gwok3"
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "移",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "動",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": "dung6"
+        },
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "嗰個",
+          "construction": "DemonstrativeClassifierNP",
+          "internal_construction": "DemonstrativeClassifierNP",
+          "parent": "",
+          "internal_parent": "",
+          "role": "NP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "嗰",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "func",
+          "syntax": "demonstrative_determiner",
+          "jyutping": "go2"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "個",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "measure_word",
+          "syntax": "general_classifier",
+          "jyutping": "go3"
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "業",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "績",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    },
+    {
+      "case_id": "DEMO-U03",
+      "section": "unresolved",
+      "surface": "嗰個少數族裔嘅福利同埋權利。",
+      "candidate_policy": "UNRESOLVED",
+      "expected_target_surfaces": [],
+      "purpose": "attachment and coordination ambiguity from corpus literature",
+      "observation": "UNRESOLVED_ENVIRONMENT_CURRENTLY_PARSED",
+      "actual_target_surfaces": [
+        "嗰個"
+      ],
+      "target_internal_types": [
+        "DemonstrativeClassifierNP"
+      ],
+      "root_coverage": {
+        "status": "PARTIAL",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "嗰個少"
+        ],
+        "unwrapped_root_nonpunctuation_count": 8,
+        "unwrapped_root_surfaces": [
+          "數",
+          "族",
+          "裔",
+          "福",
+          "利",
+          "同埋",
+          "權",
+          "利"
+        ],
+        "ignored_root_remainder_count": 2
+      },
+      "semantic_summary": {
+        "source": "嗰個少數族裔嘅福利同埋權利。",
+        "parser_shadow_source": "嗰個少數族裔嘅福利同埋權利。",
+        "raw_first_display": true,
+        "normalization_trace": [],
+        "parser_shadow_repairs": [],
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "missing_shadow_repair_note_count": 0,
+        "folded_lexical_repairs": [],
+        "folded_lexical_repair_count": 0,
+        "normalization_review_suggestions": [],
+        "normalization_review_suggestion_display": [],
+        "normalization_review_suggestion_display_count": 0,
+        "token_count": 12,
+        "final_node_count": 15,
+        "construction_count": 2,
+        "top_constructions": [
+          "TopicComment"
+        ],
+        "internal_top_constructions": [
+          "TopicComment"
+        ],
+        "top_child_constructions": [],
+        "top_child_construction_count": 0,
+        "trace_summary": {
+          "generative_template": 2,
+          "atomic_lexicon": 5,
+          "unknown_atomic": 7,
+          "punctuation_or_plain_text": 1
+        },
+        "template_family_summary": {
+          "generative_template": 2
+        },
+        "review_count": 0,
+        "selection_decision_count": 3,
+        "lexicalized_selection_count": 0,
+        "feature_bundle_count": 12,
+        "parser_active_feature_bundle_count": 1,
+        "explicit_context_supplied": false,
+        "explicit_context_turns": [],
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": "",
+        "root_span_coverage_status": "PARTIAL",
+        "root_top_construction_count": 1,
+        "root_top_construction_surfaces": [
+          "嗰個少"
+        ],
+        "unwrapped_root_nonpunctuation_count": 8,
+        "unwrapped_root_surfaces": [
+          "數",
+          "族",
+          "裔",
+          "福",
+          "利",
+          "同埋",
+          "權",
+          "利"
+        ],
+        "ignored_root_remainder_count": 2,
+        "semantic_acceptance": {
+          "status": "BLOCKED",
+          "automatic_acceptance": false,
+          "grammar_freeze_active": true,
+          "blocker_count": 7,
+          "review_reason_count": 0,
+          "outer_wrapper_blocked": false,
+          "blockers": [
+            {
+              "code": "unknown_lexical_material",
+              "path": "數[數]",
+              "construction": "",
+              "surface": "數",
+              "depth": 0,
+              "syntax": "unknown_cjk_or_text",
+              "trace_kind": "unknown_atomic"
+            },
+            {
+              "code": "unknown_lexical_material",
+              "path": "族[族]",
+              "construction": "",
+              "surface": "族",
+              "depth": 0,
+              "syntax": "unknown_cjk_or_text",
+              "trace_kind": "unknown_atomic"
+            },
+            {
+              "code": "unknown_lexical_material",
+              "path": "裔[裔]",
+              "construction": "",
+              "surface": "裔",
+              "depth": 0,
+              "syntax": "unknown_cjk_or_text",
+              "trace_kind": "unknown_atomic"
+            },
+            {
+              "code": "unknown_lexical_material",
+              "path": "福[福]",
+              "construction": "",
+              "surface": "福",
+              "depth": 0,
+              "syntax": "unknown_cjk_or_text",
+              "trace_kind": "unknown_atomic"
+            },
+            {
+              "code": "unknown_lexical_material",
+              "path": "利[利]",
+              "construction": "",
+              "surface": "利",
+              "depth": 0,
+              "syntax": "unknown_cjk_or_text",
+              "trace_kind": "unknown_atomic"
+            },
+            {
+              "code": "unknown_lexical_material",
+              "path": "權[權]",
+              "construction": "",
+              "surface": "權",
+              "depth": 0,
+              "syntax": "unknown_cjk_or_text",
+              "trace_kind": "unknown_atomic"
+            },
+            {
+              "code": "partial_root_span_unwrapped_material",
+              "path": "ROOT",
+              "construction": "",
+              "surface": "",
+              "depth": 0,
+              "unwrapped_root_surfaces": [
+                "數",
+                "族",
+                "裔",
+                "福",
+                "利",
+                "同埋",
+                "權",
+                "利"
+              ]
+            }
+          ],
+          "review_reasons": [],
+          "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+        },
+        "semantic_acceptance_status": "BLOCKED",
+        "semantic_acceptance_blocker_count": 7,
+        "semantic_acceptance_review_reason_count": 0,
+        "semantic_acceptance_outer_wrapper_blocked": false,
+        "semantic_review_flags": [
+          "partial_root_span_unwrapped_material"
+        ]
+      },
+      "rows": [
+        {
+          "depth": 0,
+          "kind": "construction",
+          "surface": "嗰個少",
+          "construction": "TopicComment",
+          "internal_construction": "TopicComment",
+          "parent": "",
+          "internal_parent": "",
+          "role": "TopicComment",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 1,
+          "kind": "construction",
+          "surface": "嗰個",
+          "construction": "DemonstrativeClassifierNP",
+          "internal_construction": "DemonstrativeClassifierNP",
+          "parent": "TopicComment",
+          "internal_parent": "TopicComment",
+          "role": "NP",
+          "syntax": "",
+          "jyutping": ""
+        },
+        {
+          "depth": 2,
+          "kind": "token",
+          "surface": "嗰",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "func",
+          "syntax": "demonstrative_determiner",
+          "jyutping": "go2"
+        },
+        {
+          "depth": 2,
+          "kind": "token",
+          "surface": "個",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "DemonstrativeClassifierNP",
+          "internal_parent": "DemonstrativeClassifierNP",
+          "role": "measure_word",
+          "syntax": "general_classifier",
+          "jyutping": "go3"
+        },
+        {
+          "depth": 1,
+          "kind": "token",
+          "surface": "少",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "TopicComment",
+          "internal_parent": "TopicComment",
+          "role": "like",
+          "syntax": "stative_or_quantity",
+          "jyutping": "siu2"
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "數",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "族",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "裔",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "嘅",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "particle",
+          "syntax": "sentence_final_particle_or_nominalizer",
+          "jyutping": "ge3"
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "福",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "利",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "同埋",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "func",
+          "syntax": "connector_additive",
+          "jyutping": "tung4 maai4"
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "權",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "depth": 0,
+          "kind": "token",
+          "surface": "利",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "neutral",
+          "syntax": "unknown_cjk_or_text",
+          "jyutping": ""
+        },
+        {
+          "depth": 0,
+          "kind": "text",
+          "surface": "。",
+          "construction": "",
+          "internal_construction": "",
+          "parent": "",
+          "internal_parent": "",
+          "role": "",
+          "syntax": "",
+          "jyutping": ""
+        }
+      ]
+    }
+  ]
+}

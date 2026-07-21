@@ -1,0 +1,53 @@
+{
+  "schema": "canto-span-cp022-i1a-i01-core-validation-summary-v1",
+  "checkpoint": "CP022-I1A-I01-R1",
+  "candidate": "v0.5.179-cp022-i1a-i01-neutral-clause-span-consolidation-r1",
+  "status": "PASS",
+  "heldout_opened": false,
+  "supported_productive": 0,
+  "gates": {
+    "packet_lock": {
+      "passed": 31,
+      "total": 31
+    },
+    "visible_packet": {
+      "passed": 100,
+      "total": 100
+    },
+    "i02_preservation": {
+      "passed": 24,
+      "total": 24
+    },
+    "aggregate_regression": {
+      "passed": 545,
+      "total": 545
+    },
+    "grammar_legitimacy": {
+      "passed": 1087,
+      "total": 1087,
+      "active_labels": 177,
+      "supported_productive": 0
+    },
+    "semantic_acceptance": {
+      "passed": 15,
+      "total": 15
+    },
+    "pre_intermediate_corpus": {
+      "passed": 80,
+      "total": 80
+    },
+    "implementation_audit": {
+      "passed": 71,
+      "total": 71
+    },
+    "documentation_consistency": {
+      "passed": 19,
+      "total": 19
+    },
+    "parent_archive_comparison": {
+      "status": "PASS",
+      "missing_inherited_files": 0,
+      "protected_scope_status": "PASS"
+    }
+  }
+}

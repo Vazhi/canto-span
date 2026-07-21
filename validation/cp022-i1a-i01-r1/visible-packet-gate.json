@@ -1,0 +1,419 @@
+{
+  "schema": "canto-span-cp022-i1a-i01-visible-packet-result-v1",
+  "checkpoint": "CP022-I1A-I01-R1",
+  "candidate": "v0.5.179-cp022-i1a-i01-neutral-clause-span-consolidation-r1",
+  "packet_id": "EP-CP022-I1A-I01-D1",
+  "runtime_version": "0.5.179",
+  "global_freeze_active": true,
+  "heldout_opened": false,
+  "visible_case_count": 15,
+  "render_case_count": 10,
+  "active_registry_label_count": 177,
+  "total": 100,
+  "passed": 100,
+  "failed": 0,
+  "strict_ready": true,
+  "checks": [
+    {
+      "name": "runtime is I01 R1",
+      "pass": true
+    },
+    {
+      "name": "candidate identity exact",
+      "pass": true
+    },
+    {
+      "name": "grammar policy 0.5.179",
+      "pass": true
+    },
+    {
+      "name": "global grammar freeze remains active",
+      "pass": true
+    },
+    {
+      "name": "packet exact",
+      "pass": true
+    },
+    {
+      "name": "packet held-out locked",
+      "pass": true
+    },
+    {
+      "name": "standing governed authorization recorded",
+      "pass": true
+    },
+    {
+      "name": "visible inventory 15",
+      "pass": true
+    },
+    {
+      "name": "render inventory 10",
+      "pass": true
+    },
+    {
+      "name": "heldout commitments six",
+      "pass": true
+    },
+    {
+      "name": "heldout surfaces absent",
+      "pass": true
+    },
+    {
+      "name": "heldout manifest hash frozen",
+      "pass": true
+    },
+    {
+      "name": "custody checksum frozen",
+      "pass": true
+    },
+    {
+      "name": "custody absent from project",
+      "pass": true
+    },
+    {
+      "name": "active registry 177 labels",
+      "pass": true
+    },
+    {
+      "name": "ClauseSpan active",
+      "pass": true
+    },
+    {
+      "name": "SubjectPredicateClause inactive",
+      "pass": true
+    },
+    {
+      "name": "SubjectPredicateClause retired compatibility metadata",
+      "pass": true
+    },
+    {
+      "name": "SubjectModalPredicateClause inactive",
+      "pass": true
+    },
+    {
+      "name": "SubjectModalPredicateClause retired compatibility metadata",
+      "pass": true
+    },
+    {
+      "name": "LocativeModalPredicateClause inactive",
+      "pass": true
+    },
+    {
+      "name": "LocativeModalPredicateClause retired compatibility metadata",
+      "pass": true
+    },
+    {
+      "name": "TopicModalPredicateClause inactive",
+      "pass": true
+    },
+    {
+      "name": "TopicModalPredicateClause retired compatibility metadata",
+      "pass": true
+    },
+    {
+      "name": "CoordinatedSubjectModalPredicateClause inactive",
+      "pass": true
+    },
+    {
+      "name": "CoordinatedSubjectModalPredicateClause retired compatibility metadata",
+      "pass": true
+    },
+    {
+      "name": "ClauseSpan default compatibility alias exact",
+      "pass": true
+    },
+    {
+      "name": "ClauseSpan scope neutral",
+      "pass": true
+    },
+    {
+      "name": "ClauseSpan not supported productive",
+      "pass": true
+    },
+    {
+      "name": "I01-E01 public signature unchanged",
+      "pass": true
+    },
+    {
+      "name": "I01-E01 token Jyutping complete",
+      "pass": true
+    },
+    {
+      "name": "I01-E01 emits no retired clause label internally",
+      "pass": true
+    },
+    {
+      "name": "I01-E02 public signature unchanged",
+      "pass": true
+    },
+    {
+      "name": "I01-E02 token Jyutping complete",
+      "pass": true
+    },
+    {
+      "name": "I01-E02 emits no retired clause label internally",
+      "pass": true
+    },
+    {
+      "name": "I01-E03 public signature unchanged",
+      "pass": true
+    },
+    {
+      "name": "I01-E03 token Jyutping complete",
+      "pass": true
+    },
+    {
+      "name": "I01-E03 emits no retired clause label internally",
+      "pass": true
+    },
+    {
+      "name": "I01-E04 public signature unchanged",
+      "pass": true
+    },
+    {
+      "name": "I01-E04 token Jyutping complete",
+      "pass": true
+    },
+    {
+      "name": "I01-E04 emits no retired clause label internally",
+      "pass": true
+    },
+    {
+      "name": "I01-E05 public signature unchanged",
+      "pass": true
+    },
+    {
+      "name": "I01-E05 token Jyutping complete",
+      "pass": true
+    },
+    {
+      "name": "I01-E05 emits no retired clause label internally",
+      "pass": true
+    },
+    {
+      "name": "I01-E06 public signature unchanged",
+      "pass": true
+    },
+    {
+      "name": "I01-E06 token Jyutping complete",
+      "pass": true
+    },
+    {
+      "name": "I01-E06 emits no retired clause label internally",
+      "pass": true
+    },
+    {
+      "name": "I01-E07 public signature unchanged",
+      "pass": true
+    },
+    {
+      "name": "I01-E07 token Jyutping complete",
+      "pass": true
+    },
+    {
+      "name": "I01-E07 emits no retired clause label internally",
+      "pass": true
+    },
+    {
+      "name": "I01-V01 public signature unchanged",
+      "pass": true
+    },
+    {
+      "name": "I01-V01 token Jyutping complete",
+      "pass": true
+    },
+    {
+      "name": "I01-V01 emits no retired clause label internally",
+      "pass": true
+    },
+    {
+      "name": "I01-V02 public signature unchanged",
+      "pass": true
+    },
+    {
+      "name": "I01-V02 token Jyutping complete",
+      "pass": true
+    },
+    {
+      "name": "I01-V02 emits no retired clause label internally",
+      "pass": true
+    },
+    {
+      "name": "I01-V03 public signature unchanged",
+      "pass": true
+    },
+    {
+      "name": "I01-V03 token Jyutping complete",
+      "pass": true
+    },
+    {
+      "name": "I01-V03 emits no retired clause label internally",
+      "pass": true
+    },
+    {
+      "name": "I01-V04 public signature unchanged",
+      "pass": true
+    },
+    {
+      "name": "I01-V04 token Jyutping complete",
+      "pass": true
+    },
+    {
+      "name": "I01-V04 emits no retired clause label internally",
+      "pass": true
+    },
+    {
+      "name": "I01-N01 public signature unchanged",
+      "pass": true
+    },
+    {
+      "name": "I01-N01 token Jyutping complete",
+      "pass": true
+    },
+    {
+      "name": "I01-N01 emits no retired clause label internally",
+      "pass": true
+    },
+    {
+      "name": "I01-N02 public signature unchanged",
+      "pass": true
+    },
+    {
+      "name": "I01-N02 token Jyutping complete",
+      "pass": true
+    },
+    {
+      "name": "I01-N02 emits no retired clause label internally",
+      "pass": true
+    },
+    {
+      "name": "I01-N03 public signature unchanged",
+      "pass": true
+    },
+    {
+      "name": "I01-N03 token Jyutping complete",
+      "pass": true
+    },
+    {
+      "name": "I01-N03 emits no retired clause label internally",
+      "pass": true
+    },
+    {
+      "name": "I01-N04 public signature unchanged",
+      "pass": true
+    },
+    {
+      "name": "I01-N04 token Jyutping complete",
+      "pass": true
+    },
+    {
+      "name": "I01-N04 emits no retired clause label internally",
+      "pass": true
+    },
+    {
+      "name": "I01-E01 has exactly one neutral ClauseSpan",
+      "pass": true
+    },
+    {
+      "name": "I01-E01 preserves a typed predicate child",
+      "pass": true
+    },
+    {
+      "name": "I01-E02 has exactly one neutral ClauseSpan",
+      "pass": true
+    },
+    {
+      "name": "I01-E02 preserves a typed predicate child",
+      "pass": true
+    },
+    {
+      "name": "I01-E03 has exactly one neutral ClauseSpan",
+      "pass": true
+    },
+    {
+      "name": "I01-E03 preserves a typed predicate child",
+      "pass": true
+    },
+    {
+      "name": "I01-E04 has exactly one neutral ClauseSpan",
+      "pass": true
+    },
+    {
+      "name": "I01-E04 preserves a typed predicate child",
+      "pass": true
+    },
+    {
+      "name": "I01-E05 has exactly one neutral ClauseSpan",
+      "pass": true
+    },
+    {
+      "name": "I01-E05 preserves a typed predicate child",
+      "pass": true
+    },
+    {
+      "name": "I01-E06 has exactly one neutral ClauseSpan",
+      "pass": true
+    },
+    {
+      "name": "I01-E06 preserves a typed predicate child",
+      "pass": true
+    },
+    {
+      "name": "I01-E07 has exactly one neutral ClauseSpan",
+      "pass": true
+    },
+    {
+      "name": "I01-E07 preserves a typed predicate child",
+      "pass": true
+    },
+    {
+      "name": "I01-V01 has exactly one neutral ClauseSpan",
+      "pass": true
+    },
+    {
+      "name": "I01-V01 preserves a typed predicate child",
+      "pass": true
+    },
+    {
+      "name": "I01-V02 has exactly one neutral ClauseSpan",
+      "pass": true
+    },
+    {
+      "name": "I01-V02 preserves a typed predicate child",
+      "pass": true
+    },
+    {
+      "name": "I01-V03 has exactly one neutral ClauseSpan",
+      "pass": true
+    },
+    {
+      "name": "I01-V03 preserves a typed predicate child",
+      "pass": true
+    },
+    {
+      "name": "I01-V04 has exactly one neutral ClauseSpan",
+      "pass": true
+    },
+    {
+      "name": "I01-V04 preserves a typed predicate child",
+      "pass": true
+    },
+    {
+      "name": "I01-N01 does not emit ClauseSpan",
+      "pass": true
+    },
+    {
+      "name": "I01-N02 does not emit ClauseSpan",
+      "pass": true
+    },
+    {
+      "name": "I01-N03 does not emit ClauseSpan",
+      "pass": true
+    },
+    {
+      "name": "I01-N04 does not emit ClauseSpan",
+      "pass": true
+    }
+  ],
+  "failures": []
+}

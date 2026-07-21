@@ -1,0 +1,69 @@
+{
+  "schema": "canto-span-native-conflict-burden-audit-v1",
+  "checkpoint": "CP022-P1-PFV01-R1",
+  "status": "PASS",
+  "total": 13,
+  "passed": 13,
+  "failed": 0,
+  "policy": {
+    "publication_attestation_alone_sufficient": false,
+    "assumed_dialect_explanation": false,
+    "conflicted_family": "V完咗O",
+    "pfv01_use": "boundary_only"
+  },
+  "checks": [
+    {
+      "name": "two exact native rejections retained",
+      "pass": true
+    },
+    {
+      "name": "accepted completion contrasts retained",
+      "pass": true
+    },
+    {
+      "name": "higher-burden disposition recorded",
+      "pass": true
+    },
+    {
+      "name": "no minimizing variation assertion remains",
+      "pass": true
+    },
+    {
+      "name": "packet positive source count exactly two",
+      "pass": true
+    },
+    {
+      "name": "packet boundary-only conflict sources exactly two",
+      "pass": true
+    },
+    {
+      "name": "dialect explanation not assumed",
+      "pass": true
+    },
+    {
+      "name": "future reconsideration burden complete",
+      "pass": true
+    },
+    {
+      "name": "V完咗O excluded from PFV01",
+      "pass": true
+    },
+    {
+      "name": "render note marks conflict row boundary-only",
+      "pass": true
+    },
+    {
+      "name": "source matrix limitations preserve native conflict",
+      "pass": true
+    },
+    {
+      "name": "doctrine and acceptance require escalation",
+      "pass": true
+    },
+    {
+      "name": "only the non-conflicted narrow subtype is productively accepted",
+      "pass": true
+    }
+  ],
+  "failures": []
+}

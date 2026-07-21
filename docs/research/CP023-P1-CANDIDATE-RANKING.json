@@ -1,0 +1,47 @@
+{
+  "schema": "canto-span-cp023-p1-candidate-ranking-v1",
+  "checkpoint": "CP023-P1-PROG01-R1",
+  "selected_research_candidate": "PostverbalGanProgressiveVP",
+  "implementation_candidate": null,
+  "scoring_limit": "Scores prioritize the next bounded research package; they are not grammatical confidence, productivity estimates, or acceptance decisions.",
+  "criteria": [
+    "pattern-specific authority",
+    "source independence",
+    "natural occurrence evidence",
+    "negative-boundary maturity",
+    "learner value",
+    "architectural isolation",
+    "current-runtime diagnostic value",
+    "fresh prospective-heldout feasibility"
+  ],
+  "candidates": [
+    {
+      "rank": 1,
+      "candidate": "PostverbalGanProgressiveVP",
+      "score": 87,
+      "disposition": "SELECTED_FOR_RESEARCH_ONLY",
+      "reason": "Multiple independent sources support postverbal 緊 and overt-object examples; the family is learner-important and architecturally isolated, but lexical compatibility, object assembly, broad-alias leakage, and prospective custody remain unresolved."
+    },
+    {
+      "rank": 2,
+      "candidate": "DemonstrativeNP consolidation",
+      "score": 78,
+      "disposition": "DEFER",
+      "reason": "Strong packet readiness and low risk, but the progressive family has greater learner-harm and diagnostic value because current output both misses source positives and overextends into unresolved environments."
+    },
+    {
+      "rank": 3,
+      "candidate": "FormulaDiscourseUnit",
+      "score": 69,
+      "disposition": "DEFER",
+      "reason": "Externally mapped and structurally isolated, but lexicalized discourse forms require more native review and offer less immediate parser-wide value."
+    },
+    {
+      "rank": 4,
+      "candidate": "DelimitedVP",
+      "score": 61,
+      "disposition": "DEFER",
+      "reason": "Useful aspect work, but lexical selection and event-structure boundaries are less mature than the narrow progressive overt-object profile."
+    }
+  ]
+}

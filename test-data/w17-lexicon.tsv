@@ -1,0 +1,60 @@
+id	surface	jyutping	category	pos	english	status	notes	lifecycle_status
+LEX-W17-001	唔開心	m4 hoi1 sam1	emotion_state	stative_phrase	unhappy	PASS		PROMOTED_ACCEPTED
+LEX-W17-002	攰	gui6	emotion_state	stative_verb	tired	PASS	Duplicate merged	PROMOTED_ACCEPTED
+LEX-W17-003	嬲	nau1	emotion_state	stative_verb	angry	PASS	Duplicate merged	PROMOTED_ACCEPTED
+LEX-W17-004	驚	geng1	emotion_state	stative_verb	scared; startled; surprised	PASS	Duplicate glosses merged	PROMOTED_ACCEPTED
+LEX-W17-005	擔心	daam1 sam1	emotion_state	mental_state_verb	worried; to worry	PASS		PROMOTED_ACCEPTED
+LEX-W17-006	悶	mun6	emotion_state	stative_verb	bored	PASS		PROMOTED_ACCEPTED
+LEX-W17-007	緊張	gan2 zoeng1	emotion_state	stative_verb	nervous; tense	PASS		PROMOTED_ACCEPTED
+LEX-W17-008	壓力	aat3 lik6	emotion_state	noun	pressure; stress	PASS		PROMOTED_ACCEPTED
+LEX-W17-009	辛苦	san1 fu2	emotion_state	stative_verb	tough; tiring; laborious	PASS		PROMOTED_ACCEPTED
+LEX-W17-010	感動	gam2 dung6	emotion_state	stative_verb	touched; emotionally moved	PASS		PROMOTED_ACCEPTED
+LEX-W17-011	激動	gik1 dung6	emotion_state	stative_verb	emotionally excited; agitated	PASS		PROMOTED_ACCEPTED
+LEX-W17-012	失望	sat1 mong6	emotion_state	stative_verb	disappointed	PASS		PROMOTED_ACCEPTED
+LEX-W17-013	放鬆	fong3 sung1	emotion_state	verb	to relax	PASS		PROMOTED_ACCEPTED
+LEX-W17-014	開心	hoi1 sam1	emotion_state	stative_verb	happy	PASS		PROMOTED_ACCEPTED
+LEX-W17-015	傷心	soeng1 sam1	emotion_state	stative_verb	sad; heartbroken	PASS		PROMOTED_ACCEPTED
+LEX-W17-016	鍾意	zung1 ji3	preference	mental_state_verb	to like	PASS		PROMOTED_ACCEPTED
+LEX-W17-017	唔鍾意	m4 zung1 ji3	preference	mental_state_phrase	to dislike; not like	PASS		PROMOTED_ACCEPTED
+LEX-W17-018	興奮	hing1 fan5	emotion_state	stative_verb	excited	PASS		PROMOTED_ACCEPTED
+LEX-W17-019	孤獨	gu1 duk6	emotion_state	stative_verb	lonely	PASS		PROMOTED_ACCEPTED
+LEX-W17-020	滿足	mun5 zuk1	emotion_state	stative_verb	satisfied	PASS		PROMOTED_ACCEPTED
+LEX-W17-021	驕傲	giu1 ngou6	emotion_state	stative_verb	proud; arrogant	PASS	Meaning depends on context	PROMOTED_ACCEPTED
+LEX-W17-022	嫉妒	zat6 dou3	emotion_state	mental_state_verb	jealous; envious	PASS		PROMOTED_ACCEPTED
+LEX-W17-023	焦慮	ziu1 leoi6	emotion_state	stative_verb	anxious	PASS		PROMOTED_ACCEPTED
+LEX-W17-024	感激	gam2 gik1	emotion_state	mental_state_verb	grateful; appreciative	PASS		PROMOTED_ACCEPTED
+LEX-W17-025	慚愧	caam4 kwai5	emotion_state	stative_verb	ashamed	PASS		PROMOTED_ACCEPTED
+LEX-W17-026	害怕	hoi6 paa3	emotion_state	mental_state_verb	afraid; to fear	PASS		PROMOTED_ACCEPTED
+LEX-W17-027	感恩	gam2 jan1	emotion_state	mental_state_verb	grateful; thankful	PASS		PROMOTED_ACCEPTED
+LEX-W17-028	好奇	hou2 kei4	emotion_state	stative_verb	curious	REVIEW	Source reading retained; dictionary verification recommended	REVIEW_ONLY
+LEX-W17-029	樂觀	lok6 gun1	emotion_state	stative_verb	optimistic	PASS		PROMOTED_ACCEPTED
+LEX-W17-030	一千萬	jat1 cin1 maan6	number	numeral	10 million	PASS		PROMOTED_ACCEPTED
+LEX-W17-031	二千萬	ji6 cin1 maan6	number	numeral	20 million	PASS		PROMOTED_ACCEPTED
+LEX-W17-032	三千萬	saam1 cin1 maan6	number	numeral	30 million	PASS		PROMOTED_ACCEPTED
+LEX-W17-033	四千萬	sei3 cin1 maan6	number	numeral	40 million	PASS		PROMOTED_ACCEPTED
+LEX-W17-034	五千萬	ng5 cin1 maan6	number	numeral	50 million	PASS		PROMOTED_ACCEPTED
+LEX-W17-035	六千萬	luk6 cin1 maan6	number	numeral	60 million	PASS		PROMOTED_ACCEPTED
+LEX-W17-036	七千萬	cat1 cin1 maan6	number	numeral	70 million	PASS		PROMOTED_ACCEPTED
+LEX-W17-037	八千萬	baat3 cin1 maan6	number	numeral	80 million	PASS		PROMOTED_ACCEPTED
+LEX-W17-038	九千萬	gau2 cin1 maan6	number	numeral	90 million	PASS		PROMOTED_ACCEPTED
+LEX-W17-039	一億	jat1 jik1	number	numeral	100 million	PASS		PROMOTED_ACCEPTED
+LEX-W17-040	喺	hai2	coverb_preposition	locative_coverb	at; in	PASS		PROMOTED_ACCEPTED
+LEX-W17-041	去	heoi3	coverb_preposition	verb_directional_coverb	go; to	PASS	Primarily a verb but may introduce a destination	PROMOTED_ACCEPTED
+LEX-W17-042	由	jau4	coverb_preposition	source_coverb	from	PASS		PROMOTED_ACCEPTED
+LEX-W17-043	同	tung4	coverb_preposition	comitative_coverb_conjunction	with; and	PASS	Multifunctional	PROMOTED_ACCEPTED
+LEX-W17-044	畀	bei2	coverb_preposition	verb_coverb_marker	give; to; for	PASS	Also used as a passive marker	PROMOTED_ACCEPTED
+LEX-W17-045	用	jung6	coverb_preposition	instrumental_verb_coverb	use; with; by means of	PASS		PROMOTED_ACCEPTED
+LEX-W17-046	對	deoi3	coverb_preposition	relational_coverb	toward; regarding	PASS		PROMOTED_ACCEPTED
+LEX-W17-047	除咗	ceoi4 zo2	coverb_preposition	complex_preposition	except; apart from	PASS		PROMOTED_ACCEPTED
+LEX-W17-048	書	syu1	phonics	noun	book	PASS		PROMOTED_ACCEPTED
+LEX-W17-049	蘇	sou1	phonics	proper_name_verb	Su, a surname; to revive	PASS		PROMOTED_ACCEPTED
+LEX-W17-050	煮	zyu2	phonics	verb	to cook	PASS		PROMOTED_ACCEPTED
+LEX-W17-051	祖	zou2	phonics	noun	ancestor	PASS		PROMOTED_ACCEPTED
+LEX-W17-052	全	cyun4	phonics	stative_verb	whole; complete	PASS	Verified same Jyutping as 存	PROMOTED_ACCEPTED
+LEX-W17-053	存	cyun4	phonics	verb	to store; exist	PASS	Verified same Jyutping as 全	PROMOTED_ACCEPTED
+LEX-W17-054	如	jyu4	phonics	verb_conjunction	if; like; as	PASS		PROMOTED_ACCEPTED
+LEX-W17-055	油	jau4	phonics	noun	oil	PASS		PROMOTED_ACCEPTED
+LEX-W17-056	血	hyut3	phonics	noun	blood	PASS		PROMOTED_ACCEPTED
+LEX-W17-057	闊	fut3	phonics	stative_verb	wide	PASS	Corrected from source kut3	PROMOTED_ACCEPTED
+LEX-W17-058	聯	lyun4	phonics	verb	to connect; unite	PASS		PROMOTED_ACCEPTED
+LEX-W17-059	論	leon6	phonics	noun_verb	theory; discussion; to discuss	PASS		PROMOTED_ACCEPTED

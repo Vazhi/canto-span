@@ -1,0 +1,52 @@
+{
+  "schema": "canto-span-package-separation-audit-v1",
+  "checkpoint": "v0.5.182",
+  "status": "PASS",
+  "runtime_zip": "canto-span-plugin-v0.5.182-identity-check-r3.zip",
+  "runtime_sha256": "8b908be33cdb35252344b06077bf94696c169a46b30c4ebbbe2eb8b8bd5741c3",
+  "recovery_zip": "canto-span-recovery-v0.5.182-cp023-p1-prog01-r3.zip",
+  "recovery_sha256": "e8acc0b1a631f9bc37616bb069e0dbc2f02ba5be93091fe8fca6403a68399da1",
+  "total": 9,
+  "passed": 9,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "runtime contains exactly three required files",
+      "pass": true,
+      "detail": "['canto-span/main.js', 'canto-span/manifest.json', 'canto-span/styles.css']"
+    },
+    {
+      "name": "runtime contains no documentation or recovery paths",
+      "pass": true
+    },
+    {
+      "name": "runtime unzip test",
+      "pass": true
+    },
+    {
+      "name": "recovery has one canto-span root",
+      "pass": true
+    },
+    {
+      "name": "recovery contains current doctrine",
+      "pass": true
+    },
+    {
+      "name": "recovery contains current source accounting",
+      "pass": true
+    },
+    {
+      "name": "recovery contains research history manifest",
+      "pass": true
+    },
+    {
+      "name": "recovery contains no evaluator custody",
+      "pass": true
+    },
+    {
+      "name": "recovery unzip test",
+      "pass": true
+    }
+  ],
+  "failures": []
+}

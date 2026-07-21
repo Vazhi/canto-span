@@ -1,0 +1,274 @@
+{
+  "schema": "canto-span-v0.5.182-visible-result-v1",
+  "version": "0.5.182",
+  "runtime_version": "0.5.183",
+  "heldout_opened": true,
+  "heldout_status": "CONSUMED",
+  "visible_case_count": 21,
+  "render_case_count": 0,
+  "supported_productive_count": 2,
+  "target_status": "supported_productive",
+  "total": 60,
+  "passed": 57,
+  "failed": 3,
+  "strict_ready": false,
+  "checks": [
+    {
+      "name": "runtime 0.5.182",
+      "pass": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ '0.5.183'\n- '0.5.182'\n         ^\n"
+    },
+    {
+      "name": "policy 0.5.182",
+      "pass": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ '0.5.183'\n- '0.5.182'\n         ^\n"
+    },
+    {
+      "name": "global freeze active",
+      "pass": true
+    },
+    {
+      "name": "registry 179 unique",
+      "pass": false,
+      "error": "Expected values to be strictly equal:\n\n181 !== 179\n"
+    },
+    {
+      "name": "target subtype active",
+      "pass": true
+    },
+    {
+      "name": "public alias exact",
+      "pass": true
+    },
+    {
+      "name": "internal scope exact",
+      "pass": true
+    },
+    {
+      "name": "target accepted narrowly",
+      "pass": true
+    },
+    {
+      "name": "accepted perfective subtype preserved",
+      "pass": true
+    },
+    {
+      "name": "IFR-E01 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR-E01 exactly one narrow subtype",
+      "pass": true
+    },
+    {
+      "name": "IFR-V01 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR-V01 exactly one narrow subtype",
+      "pass": true
+    },
+    {
+      "name": "IFR-V02 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR-V02 exactly one narrow subtype",
+      "pass": true
+    },
+    {
+      "name": "IFR-V03 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR-V03 exactly one narrow subtype",
+      "pass": true
+    },
+    {
+      "name": "IFR-V03 杯 is noun",
+      "pass": true
+    },
+    {
+      "name": "IFR-V04 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR-V04 exactly one narrow subtype",
+      "pass": true
+    },
+    {
+      "name": "IFR-V05 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR-V05 exactly one narrow subtype",
+      "pass": true
+    },
+    {
+      "name": "written 來 keeps loi4",
+      "pass": true
+    },
+    {
+      "name": "IFR-N01 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR-N01 narrow subtype absent",
+      "pass": true
+    },
+    {
+      "name": "IFR-N02 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR-N02 narrow subtype absent",
+      "pass": true
+    },
+    {
+      "name": "modal boundary review-bearing",
+      "pass": true
+    },
+    {
+      "name": "IFR-N03 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR-N03 narrow subtype absent",
+      "pass": true
+    },
+    {
+      "name": "IFR-N04 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR-N04 narrow subtype absent",
+      "pass": true
+    },
+    {
+      "name": "IFR-N05 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR-N05 narrow subtype absent",
+      "pass": true
+    },
+    {
+      "name": "instrumental boundary blocked",
+      "pass": true
+    },
+    {
+      "name": "IFR-N06 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR-N06 narrow subtype absent",
+      "pass": true
+    },
+    {
+      "name": "general purpose boundary outside subtype",
+      "pass": true
+    },
+    {
+      "name": "IFR-N07 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR-N07 narrow subtype absent",
+      "pass": true
+    },
+    {
+      "name": "IFR-N08 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR-N08 narrow subtype absent",
+      "pass": true
+    },
+    {
+      "name": "IFR-N09 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR-N09 narrow subtype absent",
+      "pass": true
+    },
+    {
+      "name": "IFR-N10 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR-N10 narrow subtype absent",
+      "pass": true
+    },
+    {
+      "name": "IFR-N11 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR-N11 narrow subtype absent",
+      "pass": true
+    },
+    {
+      "name": "IFR-N12 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR-N12 narrow subtype absent",
+      "pass": true
+    },
+    {
+      "name": "IFR-N12 actual-use remains review-bearing",
+      "pass": true
+    },
+    {
+      "name": "IFR2-R01 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR2-R01 exactly one narrow subtype",
+      "pass": true
+    },
+    {
+      "name": "IFR2-R01 杯 is noun",
+      "pass": true
+    },
+    {
+      "name": "IFR2-R02 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR2-R02 narrow subtype absent",
+      "pass": true
+    },
+    {
+      "name": "consumed separate-user failure remediated",
+      "pass": true
+    },
+    {
+      "name": "IFR2-R03 complete token Jyutping",
+      "pass": true
+    },
+    {
+      "name": "IFR2-R03 narrow subtype absent",
+      "pass": true
+    },
+    {
+      "name": "IFR2-R03 actual-use remains review-bearing",
+      "pass": true
+    }
+  ],
+  "failures": [
+    {
+      "name": "runtime 0.5.182",
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ '0.5.183'\n- '0.5.182'\n         ^\n"
+    },
+    {
+      "name": "policy 0.5.182",
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ '0.5.183'\n- '0.5.182'\n         ^\n"
+    },
+    {
+      "name": "registry 179 unique",
+      "error": "Expected values to be strictly equal:\n\n181 !== 179\n"
+    }
+  ]
+}

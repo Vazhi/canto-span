@@ -1,0 +1,14 @@
+item_id	surface	verified_or_provisional_jyutping	required_lexical_treatment	v0.5.182_observation	verification_state	source_locator	important_limit	disposition
+LEX-P01	數據	sou3 geoi3	noun; atomic	UNKNOWN_BOTH_CHARACTERS	VERIFIED	https://words.hk/zidin/數據	dictionary category/reading only	ADD_LATER_SEPARATE_LEXICON_PATCH
+LEX-P02	九巴	gau2 baa1	proper-name noun; atomic	SPLIT_AS_NUMERAL_PLUS_CHARACTER	VERIFIED	https://words.hk/zidin/九巴	proper-name identity only	ADD_LATER_SEPARATE_LEXICON_PATCH
+LEX-P03	布甸	bou3 din1	food noun; atomic	UNKNOWN_BOTH_CHARACTERS	VERIFIED	https://apps.itsc.cuhk.edu.hk/hanyu/Page/Search.aspx?id=17747	comparison database; no grammar claim	ADD_LATER_SEPARATE_LEXICON_PATCH
+LEX-P04	唱	coeng3	sing verb sense	UNKNOWN	VERIFIED	https://words.hk/zidin/唱	lexical reading/category only	ADD_LATER_WITH_ASPECT_COMPATIBILITY_SEPARATE
+LEX-P05	兒歌	ji4 go1	noun; atomic	兒_UNKNOWN_G歌_KNOWN	VERIFIED	https://words.hk/zidin/兒歌	noun/classifier evidence only	ADD_LATER_SEPARATE_LEXICON_PATCH
+LEX-P06	着	zoek3	wear/put-on verb sense	UNKNOWN	VERIFIED_SENSE_SPECIFIC	https://words.hk/zidin/着	must preserve zoek6 and other senses	ADD_LATER_POLYSEMY_SAFE
+LEX-P07	樓	lau2	property/building noun sense	UNKNOWN	VERIFIED_SENSE_SPECIFIC	https://words.hk/zidin/樓	lau4 surname reading remains separate	ADD_LATER_POLYSEMY_SAFE
+LEX-P08	叉燒包	caa1 siu1 baau1	food noun; atomic	FALSE_SEGMENTATION_AT叉	VERIFIED	https://words.hk/zidin/叉燒包	dictionary presence does not prove progressive productivity	ADD_LATER_ATOMIC_TO_BLOCK_FALSE_PARSE
+LEX-P09	信	seon3	letter/mail noun sense	BELIEF_VERB_ONLY	VERIFIED_POLYSEMY	https://words.hk/zidin/信	must preserve verb sense	ADD_LATER_POLYSEMY_SAFE
+LEX-P10	封	fung1	classifier for letters	UNKNOWN	VERIFIED_IN_ENTRY_EXAMPLE	https://words.hk/zidin/信	supported in 封信 context	ADD_LATER_CLASSIFIER
+LEX-P11	線	sin3	line/wire noun or morpheme	UNKNOWN	VERIFIED_TOKEN_READING	https://words.hk/zidin/直線	exact 錫線 domain entry not independently pronunciation-verified	ADD_ONLY_WITH_DOMAIN_TERM_REVIEW
+LEX-P12	錫線	sek3 sin3 (token-wise provisional)	technical noun; preferably atomic	錫_AND線_UNKNOWN	PARTIAL	SRC-COI-DRINKING-WATER-2016-0111	surface attested; exact compound reading not directly supplied by transcript	VERIFY_EXACT_DOMAIN_READING_BEFORE_PATCH
+LEX-P13	錫條	UNRESOLVED: sek3 + tiu4/tiu2	technical noun; atomic	錫_UNKNOWN_條_CLASSIFIER_tiu4	UNRESOLVED	SRC-COI-DRINKING-WATER-2016-0111; https://words.hk/zidin/條	compound-final 條 may undergo tone change in lexical compounds	BLOCK_HARDCODE_UNTIL_EXACT_VERIFICATION

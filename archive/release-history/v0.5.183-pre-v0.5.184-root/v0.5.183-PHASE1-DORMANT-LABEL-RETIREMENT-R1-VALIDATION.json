@@ -1,0 +1,174 @@
+{
+  "schema": "canto-span-phase1-dormant-label-retirement-validation-v1",
+  "checkpoint": "v0.5.183-phase1-dormant-label-retirement-r1",
+  "parser_behavior_changed": false,
+  "active_governance_labels": 171,
+  "runtime_registry_labels": 181,
+  "retired_this_checkpoint": 10,
+  "linguistic_status_counts": {
+    "provisional_reaudit": 2,
+    "research_pending": 58,
+    "unsupported_generalization": 87,
+    "lexicalized_only": 3,
+    "parser_heuristic": 21
+  },
+  "runtime_stale_governance_rows": 33,
+  "runtime_hashes": {
+    "main.js": "e25b6f7142eafce66a172b68d8e409275f127cfe902e93bafaf7147152bfcbe9",
+    "manifest.json": "d7f5a9be248a4efd1839852e8a100a9968273050f0aa5953af2a35c3661801f5",
+    "styles.css": "5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a"
+  },
+  "total": 33,
+  "passed": 33,
+  "failed": 0,
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "active status registry has 171 rows",
+      "pass": true,
+      "detail": "171"
+    },
+    {
+      "name": "active source accounting has 171 rows",
+      "pass": true,
+      "detail": "171"
+    },
+    {
+      "name": "active legitimacy table has 171 rows",
+      "pass": true,
+      "detail": "171"
+    },
+    {
+      "name": "active claim provenance has 171 rows",
+      "pass": true,
+      "detail": "171"
+    },
+    {
+      "name": "all active label sets agree",
+      "pass": true
+    },
+    {
+      "name": "retirement archive has 10 unique rows",
+      "pass": true,
+      "detail": "10"
+    },
+    {
+      "name": "retirement audit has the same ten labels",
+      "pass": true
+    },
+    {
+      "name": "retired labels absent from every active table",
+      "pass": true
+    },
+    {
+      "name": "all retired labels had zero fixtures",
+      "pass": true
+    },
+    {
+      "name": "all retired labels had zero verified parser outputs",
+      "pass": true
+    },
+    {
+      "name": "all retired labels preserve a future research target",
+      "pass": true
+    },
+    {
+      "name": "all retired labels preserve mapped source history",
+      "pass": true
+    },
+    {
+      "name": "linguistic counts match Phase 1 authority",
+      "pass": true,
+      "detail": "{'research_pending': 58, 'unsupported_generalization': 87, 'parser_heuristic': 21, 'lexicalized_only': 3, 'provisional_reaudit': 2}"
+    },
+    {
+      "name": "supported_productive remains zero",
+      "pass": true
+    },
+    {
+      "name": "ordinary provisional remains zero",
+      "pass": true
+    },
+    {
+      "name": "stale runtime inventory has 33 rows",
+      "pass": true,
+      "detail": "33"
+    },
+    {
+      "name": "stale inventory has 23 status mismatches",
+      "pass": true
+    },
+    {
+      "name": "stale inventory has 10 retired residues",
+      "pass": true
+    },
+    {
+      "name": "source accounting audit passes",
+      "pass": true
+    },
+    {
+      "name": "grammar legitimacy audit passes",
+      "pass": true
+    },
+    {
+      "name": "claim provenance audit passes",
+      "pass": true
+    },
+    {
+      "name": "565 cases contain no retired-label output",
+      "pass": true,
+      "detail": "565"
+    },
+    {
+      "name": "inherited regression passes 543 of 543",
+      "pass": true
+    },
+    {
+      "name": "DEMO01 visible required exact is 9 of 9",
+      "pass": true
+    },
+    {
+      "name": "DEMO01 forbidden leakage is zero",
+      "pass": true
+    },
+    {
+      "name": "main.js remains byte-identical",
+      "pass": true,
+      "detail": "e25b6f7142eafce66a172b68d8e409275f127cfe902e93bafaf7147152bfcbe9"
+    },
+    {
+      "name": "manifest.json remains byte-identical",
+      "pass": true,
+      "detail": "d7f5a9be248a4efd1839852e8a100a9968273050f0aa5953af2a35c3661801f5"
+    },
+    {
+      "name": "styles.css remains byte-identical",
+      "pass": true,
+      "detail": "5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a"
+    },
+    {
+      "name": "sealed external heldout excluded from recovery tree",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "all JSON files parse",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "current Markdown local links resolve",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "current docs use R2 status registry",
+      "pass": true
+    },
+    {
+      "name": "current docs use R4 source accounting",
+      "pass": true
+    }
+  ],
+  "failures": []
+}

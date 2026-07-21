@@ -1,0 +1,92 @@
+{
+  "schema": "canto-span-v0.5.184-validation-summary-v1",
+  "checkpoint": "v0.5.184-np-subsystem-r1",
+  "runtime_version": "0.5.184",
+  "parser_behavior_changed": true,
+  "linguistic_status_changed": false,
+  "demo01_status": "abandoned_unused",
+  "second_speaker_work": "frozen_requirement_not_waived",
+  "runtime_files": {
+    "main.js": "591dd2a9d470a06739d9807667778344fb99ee75b18df22ab260c58ad7a9063f",
+    "manifest.json": "b1b8600becfdc8f0401f2d9da70574f3da52b882749888309d2ac0f65f35fe2a",
+    "styles.css": "5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a"
+  },
+  "governance": {
+    "active_labels": 171,
+    "supported_productive": 0,
+    "provisional_reaudit": 2,
+    "runtime_status_mismatches": 0,
+    "retired_runtime_residue": 0
+  },
+  "material_results": [
+    "runtime metadata now matches current governance",
+    "ten retired labels removed from active runtime registry",
+    "compositional NP licensing implemented for the bounded first slice",
+    "unknown and classifier-incompatible NP candidates cannot license evidence-gated constructions",
+    "postverbal-Zo controlled positive coverage improved from 2/6 to 4/6 without changing linguistic status"
+  ],
+  "checks": {
+    "np_subsystem": {
+      "status": "PASS",
+      "passed": 43,
+      "total": 43
+    },
+    "aggregate_regression": {
+      "status": "PASS",
+      "passed": 545,
+      "total": 545
+    },
+    "structural_topology": {
+      "status": "PASS",
+      "passed": 545,
+      "total": 545
+    },
+    "semantic_acceptance": {
+      "status": "PASS",
+      "passed": 15,
+      "total": 15
+    },
+    "grammar_legitimacy": {
+      "status": "PASS",
+      "passed": 187,
+      "total": 187
+    },
+    "source_accounting": {
+      "status": "PASS",
+      "passed": 16,
+      "total": 16
+    },
+    "claim_provenance": {
+      "status": "PASS",
+      "passed": 303,
+      "total": 303
+    },
+    "native_naturalness_governance": {
+      "status": "PASS",
+      "passed": 33,
+      "total": 33
+    },
+    "native_conflict_burden": {
+      "status": "PASS",
+      "passed": 11,
+      "total": 11
+    },
+    "retired_label_absence": {
+      "status": "PASS",
+      "analyzed_cases": 588,
+      "hits": 0
+    },
+    "documentation_consistency": {
+      "status": "PASS",
+      "broken_local_links": 0
+    }
+  },
+  "known_limits": [
+    "Di A ge N attachment is not yet explicitly represented as ambiguity",
+    "complex or nested NP coordination remains outside the first slice",
+    "classifier compatibility coverage is intentionally incomplete",
+    "one篇文 lexical/category coverage and final-未 wrapper preservation remain unresolved",
+    "PostverbalZoPerfectiveVP and ResourceUseLaiFunctionRelation remain provisional_reaudit"
+  ],
+  "status": "PASS"
+}

@@ -1,0 +1,106 @@
+{
+  "schema": "canto-span-v0.5.182-packet-lock-audit-v1",
+  "status": "PASS",
+  "total": 19,
+  "passed": 19,
+  "failed": 0,
+  "heldout_opened": false,
+  "checks": [
+    {
+      "name": "packet identity",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "accepted parent v0.5.180",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "rejected predecessor v0.5.181",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "heldout locked",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "target exact",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "eight commitments",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "manifest hash frozen",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "custody hash frozen",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "surfaces invisible",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "expectations invisible",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "salts invisible",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "custody absent from project",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "development baseline present",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "consumed cases visible only",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "promotion delta one",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "render required",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "heldout required",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "bounded remediation count",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "forbidden widening recorded",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "failures": []
+}

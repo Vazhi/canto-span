@@ -1,0 +1,19 @@
+{
+  "schema": "canto-span-v0.5.182-post-evidence-acceptance-runtime-diff-v1",
+  "version": "0.5.182",
+  "generated_at": "2026-07-20T00:00:00+09:00",
+  "status": "PASS",
+  "frozen_provisional_main_sha256": "a01f6984669886bc480d1b4cd0aca046197481fa4cb67634f47fd3246f531008",
+  "accepted_main_sha256": "86ff77131e12082885294eabe336bf95cbe0160469cd446a5c17b3e6c9a5b535",
+  "line_count_before": 23714,
+  "line_count_after": 23714,
+  "changed_main_line_count": 1,
+  "changed_main_lines": [
+    65
+  ],
+  "changed_declaration": "GRAMMAR_LEGITIMACY_BY_CONSTRUCTION",
+  "parser_logic_outside_legitimacy_registry_identical": true,
+  "manifest_unchanged": true,
+  "styles_unchanged": true,
+  "permitted_change_scope": "evidence-closure legitimacy/provenance metadata only after frozen render and consumed prospective held-out PASS"
+}

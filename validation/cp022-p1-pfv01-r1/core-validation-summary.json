@@ -1,0 +1,117 @@
+{
+  "schema": "canto-span-core-validation-summary-v1",
+  "checkpoint": "CP022-P1-PFV01-R1",
+  "runtime_version": "0.5.180",
+  "candidate": "v0.5.180-cp022-p1-pfv01-postverbal-zo-overt-object-promotion-r1",
+  "status": "PASS",
+  "acceptance_state": "RENDER_PENDING_NOT_ACCEPTED",
+  "supported_productive": 0,
+  "heldout_opened": false,
+  "heldout_case_count": 7,
+  "broad_perfective_status": "provisional",
+  "candidate_subtype_status": "provisional",
+  "gates": {
+    "packet_lock": {
+      "passed": 21,
+      "total": 21,
+      "status": "PASS"
+    },
+    "visible_packet": {
+      "passed": 63,
+      "total": 63,
+      "status": "PASS"
+    },
+    "current_focused": {
+      "passed": 12,
+      "total": 12,
+      "status": "PASS"
+    },
+    "implementation_audit": {
+      "passed": 28,
+      "total": 28,
+      "status": "PASS"
+    },
+    "i02_preservation": {
+      "passed": 24,
+      "total": 24,
+      "status": "PASS"
+    },
+    "aggregate_regression_unaffected": {
+      "passed": 529,
+      "total": 529,
+      "excluded": 16,
+      "status": "PASS"
+    },
+    "grammar_legitimacy": {
+      "passed": 1093,
+      "total": 1093,
+      "supported_productive": 0,
+      "status": "PASS"
+    },
+    "semantic_acceptance": {
+      "passed": 15,
+      "total": 15,
+      "status": "PASS"
+    },
+    "pre_intermediate_corpus": {
+      "passed": 80,
+      "total": 80,
+      "status": "PASS"
+    },
+    "claim_provenance": {
+      "status": "PASS",
+      "explicit_claim_source_edges": 47
+    },
+    "source_accounting": {
+      "status": "PASS",
+      "active_labels": 178,
+      "unaccounted": 0
+    },
+    "lexicon_topology_unaffected": {
+      "passed": 529,
+      "total": 529,
+      "excluded": 16,
+      "status": "PASS"
+    },
+    "review_only_readiness": {
+      "passed": 1242,
+      "total": 1242,
+      "status": "PASS"
+    },
+    "native_naturalness_governance": {
+      "passed": 32,
+      "total": 32,
+      "status": "PASS"
+    },
+    "research_registry": {
+      "status": "PASS",
+      "active_labels": 178
+    },
+    "diagnostics_dual_json": {
+      "status": "PASS",
+      "checks": 10
+    },
+    "color_palette": {
+      "status": "PASS"
+    },
+    "documentation": {
+      "status": "PASS",
+      "broken_links": 0
+    },
+    "parent_archive_comparison": {
+      "status": "PASS",
+      "missing": 0
+    }
+  },
+  "runtime_hashes": {
+    "main.js": "98969fd7cd29ca4c7c9f2ab916ef942764f8b8c729f7d8908c80eb9968f8bf94",
+    "manifest.json": "6dd24fc80b58ae6b7eb7cfab9d7eeac9de97f57ec2deb173c30740c78c297d9c",
+    "styles.css": "5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a"
+  },
+  "custody_archive": {
+    "filename": "CP022-P1-PFV01-D1-EVALUATOR-CUSTODY-DO-NOT-OPEN-DURING-IMPLEMENTATION.zip",
+    "sha256": "012ba217a261323a98ea4f5cad9434ec98979d5ee5ab2c72bb3979109efb5402",
+    "opened": false
+  },
+  "next": "Render all 12 rows. If render adjudication passes, freeze exact hashes and open the seven-case evaluator custody once. Accept only the narrow subtype if held-out passes; otherwise reject or revise with a new partition."
+}

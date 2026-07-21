@@ -1,0 +1,84 @@
+{
+  "schema": "canto-span-source-accounting-audit-v4",
+  "checkpoint": "v0.5.184-np-subsystem-r1",
+  "runtime_registry_labels": 171,
+  "active_governance_labels": 171,
+  "retired_labels": 10,
+  "total": 16,
+  "passed": 16,
+  "failed": 0,
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "runtime registry has 171 labels",
+      "pass": true,
+      "detail": "171"
+    },
+    {
+      "name": "active governance has 171 labels",
+      "pass": true,
+      "detail": "171"
+    },
+    {
+      "name": "runtime exactly equals active governance",
+      "pass": true
+    },
+    {
+      "name": "ten labels are archived as retired",
+      "pass": true,
+      "detail": "10"
+    },
+    {
+      "name": "retired labels are absent from runtime",
+      "pass": true
+    },
+    {
+      "name": "legitimacy has 171 active rows",
+      "pass": true,
+      "detail": "171"
+    },
+    {
+      "name": "source accounting has 171 active rows",
+      "pass": true,
+      "detail": "171"
+    },
+    {
+      "name": "legitimacy covers active governance",
+      "pass": true
+    },
+    {
+      "name": "source accounting covers active governance",
+      "pass": true
+    },
+    {
+      "name": "source accounting statuses match current governance",
+      "pass": true
+    },
+    {
+      "name": "runtime statuses match current governance",
+      "pass": true
+    },
+    {
+      "name": "re-audit ledger remains 23 rows",
+      "pass": true,
+      "detail": "23"
+    },
+    {
+      "name": "supported_productive remains zero",
+      "pass": true
+    },
+    {
+      "name": "two rows remain provisional_reaudit",
+      "pass": true
+    },
+    {
+      "name": "ordinary provisional remains zero",
+      "pass": true
+    },
+    {
+      "name": "no active row is promotion eligible",
+      "pass": true
+    }
+  ],
+  "failures": []
+}

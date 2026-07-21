@@ -1,0 +1,374 @@
+{
+  "schema": "canto-span-focused-evaluation-packet-v1",
+  "packet_id": "EP-CP022-I1A-I02-D1",
+  "parent_packet_id": "EP-R36-I02",
+  "canonical_family_id": "I02",
+  "canonical_family": "ClauseRelationGraph",
+  "status": "HELD_OUT_LOCKED",
+  "packet_mode": "STRUCTURAL_EQUIVALENCE_PACKET",
+  "checkpoint": "CP022-I1A-I02-D1",
+  "scope": "Internal clause-relation graph cleanup only; intended semantic change NONE.",
+  "member_labels": [
+    "ClauseLinkingSequence",
+    "ClauseRelation",
+    "ClauseRelationMember"
+  ],
+  "target_actions": {
+    "ClauseLinkingSequence": "RENAME_INTERNAL_GRAPH_CONTAINER_TO_CLAUSE_RELATION_GRAPH_WITH_COMPATIBILITY_ALIAS",
+    "ClauseRelation": "RENAME_INTERNAL_TYPED_EDGE_TO_CLAUSE_RELATION_EDGE_AND_REQUIRE_INHERITED_SUBTYPE_PROVENANCE",
+    "ClauseRelationMember": "RENAME_INTERNAL_MEMBER_CONTAINER_TO_CLAUSE_RELATION_MEMBER_SPAN_WITH_NO_INDEPENDENT_LANGUAGE_STATUS"
+  },
+  "development_set": {
+    "exact_positive": [
+      {
+        "case_id": "DEV-I02-EX-01",
+        "surface": "因為落雨，所以我冇去。",
+        "provenance_class": "source_linked_subtype_plus_accepted_surface_seed",
+        "relation_profile": "paired_causal",
+        "relation_subtype": "causal",
+        "expected": [
+          "One graph container covers the full nonpunctuation sequence.",
+          "One typed causal relation edge contains exactly two overt member spans.",
+          "因為 and 所以 remain visible and owned by the left and right members respectively; the comma remains visible exactly once.",
+          "The weather clause and negative motion clause preserve their local typed analyses, roles, and Jyutping."
+        ],
+        "forbidden": [
+          "The graph container must not create causal meaning by itself.",
+          "No hidden subject, clause, linker, or result is inserted.",
+          "No linker or separator may be duplicated across graph, edge, and member layers."
+        ],
+        "source_ids": [
+          "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
+        ],
+        "surface_evidence": "accepted regression plus one-speaker naturalness screening; not native analysis validation"
+      },
+      {
+        "case_id": "DEV-I02-EX-02",
+        "surface": "如果你去，我就去。",
+        "provenance_class": "source_linked_subtype_plus_accepted_surface_seed",
+        "relation_profile": "paired_conditional",
+        "relation_subtype": "conditional",
+        "expected": [
+          "One graph container covers the full nonpunctuation sequence.",
+          "One typed conditional relation edge contains exactly two overt member spans.",
+          "如果 and 就 remain visible with left-linker and right-linker ownership; the comma remains visible exactly once.",
+          "Each local clause preserves its own overt subject and motion predicate."
+        ],
+        "forbidden": [
+          "Do not require shared subjects.",
+          "Do not infer conditionality from 就 alone.",
+          "No hidden consequent, subject, or linker."
+        ],
+        "source_ids": [
+          "SRC-CHENG-2023-TP-SFP-CONDITIONAL",
+          "SRC-LIANG-MAI-2025-GRAMMAR-CODING"
+        ],
+        "surface_evidence": "accepted regression plus one-speaker naturalness screening; exact subtype evidence is external, exact parser analysis is not"
+      },
+      {
+        "case_id": "DEV-I02-EX-03",
+        "surface": "我先食飯，再做功課。",
+        "provenance_class": "source_linked_subtype_plus_accepted_surface_seed",
+        "relation_profile": "paired_sequential",
+        "relation_subtype": "sequential",
+        "expected": [
+          "One graph container covers the full nonpunctuation sequence.",
+          "One typed sequential relation edge contains exactly two overt member spans.",
+          "先 and 再 remain visible and separately owned by the earlier and later members; the comma remains visible exactly once.",
+          "食飯 and 做功課 preserve their local VP analyses, roles, and Jyutping."
+        ],
+        "forbidden": [
+          "The graph or member label must not independently license temporal order.",
+          "Do not fabricate a second subject for the later member.",
+          "Do not flatten the two VPs into one opaque sequence."
+        ],
+        "source_ids": [
+          "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
+        ],
+        "surface_evidence": "accepted regression preservation seed; sequence subtype boundaries are source-linked elsewhere"
+      },
+      {
+        "case_id": "DEV-I02-EX-04",
+        "surface": "一見到佢，我就笑。",
+        "provenance_class": "source_linked_subtype_plus_accepted_surface_seed",
+        "relation_profile": "temporal_subordinate",
+        "relation_subtype": "temporal_subordinate",
+        "expected": [
+          "One graph container covers the full nonpunctuation sequence.",
+          "One typed temporal-subordinate relation edge contains exactly two overt member spans.",
+          "一 and 就 remain visible with member-specific linker ownership; the comma remains visible exactly once.",
+          "見到佢 and 我就笑 preserve local predicate and nominal material."
+        ],
+        "forbidden": [
+          "Do not infer all 一...就... strings from punctuation or adjacency alone.",
+          "Do not treat 就 as uniquely conditional.",
+          "No hidden temporal operator, subject, or clause."
+        ],
+        "source_ids": [
+          "SRC-YIP-2024-TEMPORAL-ADVERBIAL-CLAUSES",
+          "SRC-LIANG-MAI-2025-GRAMMAR-CODING"
+        ],
+        "surface_evidence": "accepted regression plus one-speaker naturalness screening; source links establish temporal/就 boundaries, not this parser ontology"
+      }
+    ],
+    "positive_variants": [
+      {
+        "case_id": "DEV-I02-VAR-01",
+        "surface": "我冇去，因為落雨。",
+        "provenance_class": "accepted_surface_preservation_seed",
+        "relation_profile": "postposed_reason",
+        "relation_subtype": "causal",
+        "expected": [
+          "The graph and one causal edge preserve the postposed reason order.",
+          "The left member remains the result/matrix clause and the right member remains the reason clause.",
+          "因為 stays overt inside the right member; the comma is preserved exactly once."
+        ],
+        "forbidden": [
+          "Do not reorder members into canonical reason-before-result order.",
+          "Do not assign causal meaning from the graph label alone.",
+          "No hidden 所以."
+        ]
+      },
+      {
+        "case_id": "DEV-I02-VAR-02",
+        "surface": "因為落雨，我冇去。",
+        "provenance_class": "accepted_surface_preservation_seed",
+        "relation_profile": "unpaired_causal_linker",
+        "relation_subtype": "causal",
+        "expected": [
+          "The graph and one causal edge preserve a left overt causal linker without inventing a paired right linker.",
+          "Both member spans and the comma remain overt and fully covered.",
+          "Local weather and negative-motion analyses remain unchanged."
+        ],
+        "forbidden": [
+          "No hidden 所以.",
+          "Do not require paired linkers.",
+          "Do not duplicate 因為 as graph-level material."
+        ]
+      },
+      {
+        "case_id": "DEV-I02-VAR-03",
+        "surface": "如果你去，我去。",
+        "provenance_class": "accepted_surface_preservation_seed",
+        "relation_profile": "conditional_without_right_linker",
+        "relation_subtype": "conditional",
+        "expected": [
+          "The graph and one conditional edge preserve an overt 如果 antecedent and an unmarked consequent.",
+          "Both overt subjects remain local to their clauses.",
+          "The comma remains visible exactly once."
+        ],
+        "forbidden": [
+          "No hidden 就.",
+          "Do not require subject identity.",
+          "Do not classify the graph container itself as the conditional construction."
+        ]
+      },
+      {
+        "case_id": "DEV-I02-VAR-04",
+        "surface": "見到佢，我就笑。",
+        "provenance_class": "accepted_surface_preservation_seed",
+        "relation_profile": "temporal_without_left_linker",
+        "relation_subtype": "temporal_subordinate",
+        "expected": [
+          "The graph and one temporal-subordinate edge preserve an unmarked left member and overt right-side 就.",
+          "Both member spans and the comma remain fully visible.",
+          "Local VP and nominal material remain unchanged."
+        ],
+        "forbidden": [
+          "No hidden 一.",
+          "Do not reinterpret 就 as automatically conditional.",
+          "Do not fabricate a left subject."
+        ]
+      }
+    ]
+  },
+  "negative_boundaries": [
+    {
+      "case_id": "DEV-I02-NEG-01",
+      "surface": "人，人，人。",
+      "provenance_class": "accepted_surface_preservation_seed",
+      "boundary_profile": "graph_without_typed_relation",
+      "expected": [
+        "A discourse/root accounting container may cover the three overt nominal spans and separators.",
+        "No typed relation edge or relation-member semantics are introduced.",
+        "All three 人 tokens and both commas remain visible."
+      ],
+      "forbidden": [
+        "No causal, conditional, sequential, temporal, concessive, or coordination relation from punctuation alone.",
+        "No hidden predicates or clauses.",
+        "No ClauseRelation or ClauseRelationMember solely because multiple spans are present."
+      ]
+    },
+    {
+      "case_id": "DEV-I02-NEG-02",
+      "surface": "再做功課。",
+      "provenance_class": "accepted_surface_preservation_seed",
+      "boundary_profile": "right_member_requires_context",
+      "expected": [
+        "The overt right-side sequential member remains under NeedsContext rather than a complete graph edge.",
+        "再 and 做功課 remain visible with their existing roles and Jyutping.",
+        "No absent earlier event is inserted."
+      ],
+      "forbidden": [
+        "No complete ClauseRelation edge.",
+        "No hidden left member, subject, or separator.",
+        "ClauseRelationMember must not independently license sequence meaning."
+      ]
+    },
+    {
+      "case_id": "DEV-I02-NEG-03",
+      "surface": "所以我冇去。",
+      "provenance_class": "constructed_boundary_checked_against_current_runtime",
+      "boundary_profile": "causal_result_member_requires_context",
+      "expected": [
+        "The overt right causal/result member remains under NeedsContext rather than a complete graph edge.",
+        "所以 and the local clause remain visible.",
+        "No missing reason clause is inserted."
+      ],
+      "forbidden": [
+        "No complete ClauseRelation edge.",
+        "No hidden 因為/reason clause.",
+        "No graph-level causal license from 所以 alone."
+      ]
+    },
+    {
+      "case_id": "DEV-I02-NEG-04",
+      "surface": "如果你去。",
+      "provenance_class": "constructed_boundary_checked_against_current_runtime",
+      "boundary_profile": "conditional_antecedent_requires_context",
+      "expected": [
+        "The overt conditional antecedent member remains under NeedsContext rather than a complete graph edge.",
+        "如果 and the local clause remain visible.",
+        "No missing consequent is inserted."
+      ],
+      "forbidden": [
+        "No complete ClauseRelation edge.",
+        "No hidden consequent or 就.",
+        "No standalone-complete status from the member wrapper."
+      ]
+    }
+  ],
+  "ambiguity_pairs": [],
+  "context_pairs": [],
+  "native_review": {
+    "question": "Sounds unnatural",
+    "items": [],
+    "not_required_reason": "No language-form change is authorized; exact surfaces are preservation anchors and the packet tests structural equivalence only."
+  },
+  "expected_structure": [
+    {
+      "invariant": "graph_container_neutrality",
+      "requirement": "The internal ClauseRelationGraph groups already parsed members, edges, separators, and discourse material; it cannot assign a semantic relation by itself."
+    },
+    {
+      "invariant": "typed_edge_provenance",
+      "requirement": "Every ClauseRelationEdge keeps an explicit relation subtype inherited from an already mapped language-sensitive rule; punctuation, adjacency, or graph membership is insufficient."
+    },
+    {
+      "invariant": "member_span_neutrality",
+      "requirement": "ClauseRelationMemberSpan stores one overt left/right member and its owned linker material; it cannot independently create a complete relation, missing clause, or context resolution."
+    },
+    {
+      "invariant": "single_ownership",
+      "requirement": "Every overt linker and separator is represented exactly once in the graph/edge/member accounting; no deletion or duplication is permitted."
+    },
+    {
+      "invariant": "local_structure_preservation",
+      "requirement": "Each member retains its local clause, VP, NP, roles, Jyutping, span, and provenance without flattening or hidden-token insertion."
+    },
+    {
+      "invariant": "incomplete_relation_boundary",
+      "requirement": "A lone left or right relation member remains context-required and does not become a complete edge or graph-level semantic claim."
+    },
+    {
+      "invariant": "graph_without_relation_boundary",
+      "requirement": "A multi-span discourse wrapper may exist without a typed edge; commas or repeated nominal spans do not establish a clause relation."
+    },
+    {
+      "invariant": "compatibility_alias",
+      "requirement": "Historical public diagnostic labels may remain as compatibility metadata only and cannot affect learner display, construction selection, or semantics."
+    }
+  ],
+  "forbidden_analyses": [
+    "Treating ClauseLinkingSequence, ClauseRelation, or ClauseRelationMember as independent Cantonese grammar claims.",
+    "Inferring causal, conditional, temporal, sequential, concessive, or topic-chain meaning from punctuation, adjacency, or graph membership alone.",
+    "Inserting a missing member, linker, subject, predicate, separator, or relation subtype.",
+    "Requiring paired linkers or shared subjects where the mapped subtype does not require them.",
+    "Deleting or duplicating overt linkers and separators during internal consolidation.",
+    "Letting a relation-member span become a complete relation or resolve its own context requirement.",
+    "Changing learner-visible tokens, roles, Jyutping, local structure, root coverage, or meaning under a cleanup labeled semantic change NONE."
+  ],
+  "render_review": {
+    "required": true,
+    "case_ids": [
+      "DEV-I02-EX-01",
+      "DEV-I02-EX-02",
+      "DEV-I02-EX-03",
+      "DEV-I02-EX-04",
+      "DEV-I02-VAR-01",
+      "DEV-I02-VAR-02",
+      "DEV-I02-VAR-03",
+      "DEV-I02-VAR-04"
+    ]
+  },
+  "automated_gates": [
+    "Packet identity, mode, family, actions, and authorization boundary validate.",
+    "Development minimums: 4 positive subtype anchors, 4 positive variants, 4 negative boundaries, and 8 render cases.",
+    "Baseline public-signature equivalence for all 12 visible cases.",
+    "Full-relation positives preserve one graph, one typed edge, two members, overt linkers, and separators.",
+    "Incomplete-member negatives preserve NeedsContext with no complete typed edge.",
+    "Graph-only negative preserves no typed edge or member semantics.",
+    "Aggregate regression and grammar-legitimacy gates remain at accepted baseline with supported_productive=0.",
+    "main.js, manifest.json, and styles.css remain unchanged during packet design.",
+    "No prospective held-out surface, salt, or expected signature is present in the clean project.",
+    "Evaluator-custody commitments and archive checksum verify."
+  ],
+  "held_out": {
+    "selection_state": "SELECTED_HASHED_LOCKED",
+    "opened_during_design": false,
+    "manifest_hash": "6e9d179111a4d56cce74982307a75050aaabf79a2484e2d1b83222744007e7cb",
+    "expected_output_visible_to_implementation": false,
+    "surface_visible_to_implementation": false,
+    "case_count": 6,
+    "custody_archive_sha256": "e90541d4b1337e2e6ae61fb24f5ddf4e6337a697d26f3d966cef2343da1c0e34",
+    "baseline_recorded_before_lock": true,
+    "opened_after_lock": false
+  },
+  "source_references": {
+    "SRC-CHENG-2023-TP-SFP-CONDITIONAL": {
+      "citation": "Cheng, Siu-Pong. 2023. Cantonese Sentence-final Particles Pertaining to the TP Domain.",
+      "locator": "pp. 90-92, examples 12-16; pp. 96-97",
+      "role": "conditional subtype and overt-marker boundaries; not parser-graph ontology"
+    },
+    "SRC-LIANG-MAI-2025-GRAMMAR-CODING": {
+      "citation": "Liang, Yuqing and Mai, Ziyin. 2025. Supplementary grammar coding scheme.",
+      "locator": "Appendix S1, Table S1, PDF pp. 10-12",
+      "role": "conditional versus temporal uses of 就; not exhaustive adult grammar"
+    },
+    "SRC-YIP-2024-TEMPORAL-ADVERBIAL-CLAUSES": {
+      "citation": "Yip, Ka-Fai. 2024. Two Types of Temporal Adverbial Clauses in Cantonese.",
+      "locator": "pp. 687-690",
+      "role": "overt temporal-clause subtype boundaries; theory-specific syntax excluded"
+    },
+    "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE": {
+      "citation": "鄭定歐、張勵妍、高石英. 2021. 粵語（香港話）教程（修訂版）.",
+      "locator": "user-provided full text; inherited conditional, causal, temporal, and sequence examples",
+      "role": "surface and linker profiles; not unrestricted productivity or internal graph terminology"
+    },
+    "INT-R34-REPRESENTATION-AUDIT": {
+      "citation": "Canto Span Representation-Heuristic Audit CP021B-R34.",
+      "locator": "ClauseRelationGraph findings and internal disposition matrix rows for the three member labels",
+      "role": "internal architecture provenance only"
+    },
+    "INT-R35-CANONICAL-CONSOLIDATION": {
+      "citation": "Canto Span Canonical Consolidation CP021B-R35.",
+      "locator": "I02 ClauseRelationGraph family and I01 dependency edge",
+      "role": "internal target-family and ordering provenance only"
+    }
+  },
+  "implementation_authorized": false,
+  "authorization_boundary": "NEW EXPLICIT USER AUTHORIZATION IS REQUIRED after packet review and before any I02 parser code change. Authorization for I04 is consumed and does not carry forward.",
+  "dependency_effect": "I02 must be accepted before I01 ClauseSpan implementation because relation members must contain typed clause spans.",
+  "accepted_parent_runtime": "v0.5.177-cp022-i1a-i04-internal-wrapper-cleanup-r1",
+  "inherited_lx1_status": "RENDER_CONFIRMATION_PENDING_NOT_ACCEPTED"
+}

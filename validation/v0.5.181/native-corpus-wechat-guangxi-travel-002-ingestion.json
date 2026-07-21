@@ -1,0 +1,67 @@
+{
+  "schema": "canto-span-native-corpus-ingestion-audit-v1",
+  "version": "0.5.181",
+  "corpus_id": "WECHAT-GX-TRAVEL-002",
+  "status": "PASS",
+  "turn_count": 12,
+  "parser_facing_unit_count": 52,
+  "checks": [
+    {
+      "name": "raw STT retained",
+      "pass": true
+    },
+    {
+      "name": "turn count is 12",
+      "pass": true,
+      "detail": "12"
+    },
+    {
+      "name": "parser-facing unit count is 52",
+      "pass": true,
+      "detail": "52"
+    },
+    {
+      "name": "Wu Jiamin preserved exactly",
+      "pass": true
+    },
+    {
+      "name": "uncertain span excluded from parser-facing units: 開十開九部寶馬",
+      "pass": true
+    },
+    {
+      "name": "uncertain span excluded from parser-facing units: 玩豬八",
+      "pass": true
+    },
+    {
+      "name": "uncertain span excluded from parser-facing units: 吳嘉敏千八去",
+      "pass": true
+    },
+    {
+      "name": "uncertain span excluded from parser-facing units: 賀州",
+      "pass": true
+    },
+    {
+      "name": "all units have no direct grammar acceptance effect",
+      "pass": true
+    },
+    {
+      "name": "all units marked non-productivity proof",
+      "pass": true
+    },
+    {
+      "name": "runtime unchanged: main.js",
+      "pass": true,
+      "detail": "6cb8aef9a279ff9abef2a84c77dc470b5f4abcf0ae7306ca39f7f3a5fc44494e expected 6cb8aef9a279ff9abef2a84c77dc470b5f4abcf0ae7306ca39f7f3a5fc44494e"
+    },
+    {
+      "name": "runtime unchanged: manifest.json",
+      "pass": true,
+      "detail": "63a5f17c633c89583cbfe64ac3262d41565ea8126c0f80668426a75d06891c57 expected 63a5f17c633c89583cbfe64ac3262d41565ea8126c0f80668426a75d06891c57"
+    },
+    {
+      "name": "runtime unchanged: styles.css",
+      "pass": true,
+      "detail": "5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a expected 5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a"
+    }
+  ]
+}

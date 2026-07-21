@@ -1,0 +1,373 @@
+{
+  "schema": "canto-span-review-only-readiness-audit-v3",
+  "policy": "The canonical readiness history is test-data/review-only-readiness.tsv. Current workflow and acceptance doctrine are maintained in docs/current. The deleted IMPACT-BACKLOG.json is historical and must not be restored as an active dependency.",
+  "tracked_unit_count": 97,
+  "review_only_unit_count": 28,
+  "promoted_accepted_count": 69,
+  "readiness_history_count": 97,
+  "active_counts_by_inventory": {
+    "w17-functional-corpus": 15,
+    "w17-lexicon": 1,
+    "w17-grammar-phrases": 7,
+    "w17-naturalized-alternatives": 5
+  },
+  "active_counts_by_window": {
+    "AUDIT_AFTER_DEPENDENCY": 10,
+    "AUDIT_WITH_OWNER_OR_NEXT_MILESTONE": 9,
+    "HOLD_EXTERNAL_EVIDENCE": 9
+  },
+  "unscored_source_count": 0,
+  "score_validation_status": "PASS",
+  "check_count": 1242,
+  "passed": 1242,
+  "failed": 0,
+  "failures": [],
+  "audit_now": [],
+  "promoted": [
+    {
+      "task_id": "ROA-COR-W17-001",
+      "source": "講返正題，你尋日去咗邊度呀？",
+      "promotion_target": "aggregate_regression_fixture"
+    },
+    {
+      "task_id": "ROA-COR-W17-002",
+      "source": "唔好離題喇。",
+      "promotion_target": "aggregate_regression_fixture"
+    },
+    {
+      "task_id": "ROA-COR-W17-003",
+      "source": "關於呢個問題，我想講吓。",
+      "promotion_target": "aggregate_regression_fixture"
+    },
+    {
+      "task_id": "ROA-COR-W17-016",
+      "source": "係呀，日日OT到好夜。",
+      "promotion_target": "aggregate_regression_fixture"
+    },
+    {
+      "task_id": "ROA-LEX-W17-001",
+      "source": "唔開心",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-002",
+      "source": "攰",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-003",
+      "source": "嬲",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-004",
+      "source": "驚",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-005",
+      "source": "擔心",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-006",
+      "source": "悶",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-007",
+      "source": "緊張",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-008",
+      "source": "壓力",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-009",
+      "source": "辛苦",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-010",
+      "source": "感動",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-011",
+      "source": "激動",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-012",
+      "source": "失望",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-013",
+      "source": "放鬆",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-014",
+      "source": "開心",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-015",
+      "source": "傷心",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-016",
+      "source": "鍾意",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-017",
+      "source": "唔鍾意",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-018",
+      "source": "興奮",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-019",
+      "source": "孤獨",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-020",
+      "source": "滿足",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-021",
+      "source": "驕傲",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-022",
+      "source": "嫉妒",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-023",
+      "source": "焦慮",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-024",
+      "source": "感激",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-025",
+      "source": "慚愧",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-026",
+      "source": "害怕",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-027",
+      "source": "感恩",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-029",
+      "source": "樂觀",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-030",
+      "source": "一千萬",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-031",
+      "source": "二千萬",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-032",
+      "source": "三千萬",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-033",
+      "source": "四千萬",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-034",
+      "source": "五千萬",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-035",
+      "source": "六千萬",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-036",
+      "source": "七千萬",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-037",
+      "source": "八千萬",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-038",
+      "source": "九千萬",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-039",
+      "source": "一億",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-040",
+      "source": "喺",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-041",
+      "source": "去",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-042",
+      "source": "由",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-043",
+      "source": "同",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-044",
+      "source": "畀",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-045",
+      "source": "用",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-046",
+      "source": "對",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-047",
+      "source": "除咗",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-048",
+      "source": "書",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-049",
+      "source": "蘇",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-050",
+      "source": "煮",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-051",
+      "source": "祖",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-052",
+      "source": "全",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-053",
+      "source": "存",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-054",
+      "source": "如",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-055",
+      "source": "油",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-056",
+      "source": "血",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-057",
+      "source": "闊",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-058",
+      "source": "聯",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-LEX-W17-059",
+      "source": "論",
+      "promotion_target": "accepted_lexical_overlay"
+    },
+    {
+      "task_id": "ROA-GRAM-W17-002",
+      "source": "去香港",
+      "promotion_target": "accepted_construction_regression_example"
+    },
+    {
+      "task_id": "ROA-PHO-W17-001",
+      "source": "書 / 蘇",
+      "promotion_target": "accepted_pronunciation_reference"
+    },
+    {
+      "task_id": "ROA-PHO-W17-002",
+      "source": "煮 / 祖",
+      "promotion_target": "accepted_pronunciation_reference"
+    },
+    {
+      "task_id": "ROA-PHO-W17-003",
+      "source": "全 / 存",
+      "promotion_target": "accepted_pronunciation_reference"
+    },
+    {
+      "task_id": "ROA-PHO-W17-004",
+      "source": "如 / 油",
+      "promotion_target": "accepted_pronunciation_reference"
+    },
+    {
+      "task_id": "ROA-PHO-W17-005",
+      "source": "血 / 闊",
+      "promotion_target": "accepted_pronunciation_reference"
+    },
+    {
+      "task_id": "ROA-PHO-W17-006",
+      "source": "聯 / 論",
+      "promotion_target": "accepted_pronunciation_reference"
+    }
+  ]
+}

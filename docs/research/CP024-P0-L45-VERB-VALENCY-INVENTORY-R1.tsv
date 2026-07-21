@@ -1,0 +1,114 @@
+surface	jyutping	runtime_syntax	runtime_profile	relevant_tags	runtime_note	evidence_status
+放鬆	fong3 sung1	verb action_verb	GENERIC_ACTION_TAG	action_verb	relax; W17 lexicon expansion.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+離題	lei4 tai4	verb topic_management_verb	VERB_NO_GENERAL_VALENCY_TAG		go off topic; W17 COR-002 lexical coverage.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+存	cyun4	verb existence_storage_verb	VERB_NO_GENERAL_VALENCY_TAG		store/exist; W17 phonics expansion.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+聯	lyun4	verb connection_verb	VERB_NO_GENERAL_VALENCY_TAG		connect/unite; W17 phonics expansion.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+戴	daai3	verb transitive_affordance wearing_action	TRANSITIVE_TAG	transitive_affordance	wear / put on	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+寄	gei3	verb transitive_affordance transfer_action	TRANSITIVE_TAG	transitive_affordance	send / mail	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+食	sik6	verb transitive_affordance chain_select_edible	TRANSITIVE_TAG	transitive_affordance	eat	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+切	cit3	verb action_verb transitive_affordance	TRANSITIVE_TAG	transitive_affordance,action_verb	cut; added for the sourced 用嚟 function example and ordinary lexical coverage.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+畫	waa2	verb action_verb transitive_affordance	TRANSITIVE_TAG	transitive_affordance,action_verb	draw / paint.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+畫畫	waa2 waa2	verb action_verb	GENERIC_ACTION_TAG	action_verb	draw / do drawing.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+飲	jam2	verb transitive_affordance chain_select_drinkable	TRANSITIVE_TAG	transitive_affordance	drink	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+睇	tai2	verb transitive_affordance chain_select_perception	TRANSITIVE_TAG	transitive_affordance	look/read/watch	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+聽	teng1	verb	VERB_NO_GENERAL_VALENCY_TAG		listen/hear	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+講	gong2	verb transitive_affordance chain_select_discourse_content	TRANSITIVE_TAG	transitive_affordance	speak	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+問	man6	verb	VERB_NO_GENERAL_VALENCY_TAG		ask	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+答	daap3	verb	VERB_NO_GENERAL_VALENCY_TAG		answer	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+坐	co5	verb	VERB_NO_GENERAL_VALENCY_TAG		sit	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+企	kei5	verb	VERB_NO_GENERAL_VALENCY_TAG		stand	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+瞓	fan3	verb	VERB_NO_GENERAL_VALENCY_TAG		sleep	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+玩	waan2	verb	VERB_NO_GENERAL_VALENCY_TAG		play	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+買	maai5	verb	VERB_NO_GENERAL_VALENCY_TAG		buy	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+賣	maai6	verb	VERB_NO_GENERAL_VALENCY_TAG		sell	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+煮	zyu2	verb	VERB_NO_GENERAL_VALENCY_TAG		cook; lexicon/Jyutping cleanup for 煮飯 examples.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+解決	gaai2 kyut3	verb	VERB_NO_GENERAL_VALENCY_TAG		solve / resolve; lexicon/Jyutping cleanup for UI example diagnostics.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+攞	lo2	verb	VERB_NO_GENERAL_VALENCY_TAG		take	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+鬧	naau6	verb transitive_social_action_verb	VERB_NO_GENERAL_VALENCY_TAG		scold / tell off	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+幫	bong1	verb help_benefactive_verb	VERB_NO_GENERAL_VALENCY_TAG		help / help someone do something.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+摘	zaak6	verb harvest_pick_verb	VERB_NO_GENERAL_VALENCY_TAG		pick / pluck, as in 摘芒果.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+畀	bei2	ditransitive_verb	DITRANSITIVE_TAG	ditransitive_verb	give	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+俾	bei2	ditransitive_verb orthographic_variant_bei	DITRANSITIVE_TAG	ditransitive_verb	give; common spelling variant of 畀	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+做	zou6	verb	VERB_NO_GENERAL_VALENCY_TAG		do	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+洗	sai2	verb	VERB_NO_GENERAL_VALENCY_TAG		wash	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+沖	cung1	verb	VERB_NO_GENERAL_VALENCY_TAG		rinse / bathe	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+打	daa2	verb	VERB_NO_GENERAL_VALENCY_TAG		hit / play / call	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+放	fong3	verb	VERB_NO_GENERAL_VALENCY_TAG		release / finish school	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+曬	saai3	verb	VERB_NO_GENERAL_VALENCY_TAG		sun / expose to sun	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+默	mak6	verb	VERB_NO_GENERAL_VALENCY_TAG		dictate from memory	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+炒	caau2	verb	VERB_NO_GENERAL_VALENCY_TAG		fry / speculate	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+發	faat3	verb	VERB_NO_GENERAL_VALENCY_TAG		issue / break out	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+陪	pui4	verb	VERB_NO_GENERAL_VALENCY_TAG		accompany	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+試	si3	verb	VERB_NO_GENERAL_VALENCY_TAG		try	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+慶祝	hing3 zuk1	verb	VERB_NO_GENERAL_VALENCY_TAG		celebrate	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+約	joek3	verb	VERB_NO_GENERAL_VALENCY_TAG		arrange / invite	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+分	fan1	verb	VERB_NO_GENERAL_VALENCY_TAG		divide / split	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+等	dang2	verb	VERB_NO_GENERAL_VALENCY_TAG		wait	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+Book	book1	borrowed_verb transitive_affordance chain_select_bookable_resource	TRANSITIVE_TAG	transitive_affordance	book / reserve	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+借	ze3	verb borrow_verb	VERB_NO_GENERAL_VALENCY_TAG		borrow/lend; transitive verb in the library corpus lines.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+交	gaau1	verb hand_over_verb	VERB_NO_GENERAL_VALENCY_TAG		hand over / deliver; reviewed CP021B predicate profile.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+織	zik1	verb creation_verb	VERB_NO_GENERAL_VALENCY_TAG		knit / weave; reviewed CP021B predicate profile.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+整理	zing2 lei5	verb organization_action	VERB_NO_GENERAL_VALENCY_TAG		organize / put in order; visible relative-clause predicate in a CP021B boundary.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+讚	zaan3	verb transitive_social_action_verb	VERB_NO_GENERAL_VALENCY_TAG		praise; predicate in a preserved CP020 passive example.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+還	waan4	verb return_borrowed_item	VERB_NO_GENERAL_VALENCY_TAG		return a borrowed item.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+保持	bou2 ci4	verb maintain_verb	VERB_NO_GENERAL_VALENCY_TAG		maintain / keep.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+用	jung6	verb use_verb instrument_coverb	VERB_NO_GENERAL_VALENCY_TAG		use; as a preverbal coverb it can mark an instrument before an action predicate.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+寫	se2	verb write_verb	VERB_NO_GENERAL_VALENCY_TAG		write.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+跳	tiu3	verb jump_verb	VERB_NO_GENERAL_VALENCY_TAG		jump.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+帶	daai3	verb take_bring_verb	VERB_NO_GENERAL_VALENCY_TAG		take / bring.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+度假	dou6 gaa3	verb vacation_verb	VERB_NO_GENERAL_VALENCY_TAG		go on holiday / vacation.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+直行	zik6 haang4	verb motion_verb go_straight	VERB_NO_GENERAL_VALENCY_TAG		go straight.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+蕩失路	dong6 sat1 lou6	verb get_lost_idiom	VERB_NO_GENERAL_VALENCY_TAG		get lost.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+到達	dou3 daat6	verb arrive_reach_verb	VERB_NO_GENERAL_VALENCY_TAG		arrive / reach.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+野餐	je5 caan1	verb picnic_verb	VERB_NO_GENERAL_VALENCY_TAG		have a picnic.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+整	zing2	verb make_fix_verb	VERB_NO_GENERAL_VALENCY_TAG		make / fix / repair.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+幫助	bong1 zo6	verb help_verb	VERB_NO_GENERAL_VALENCY_TAG		help.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+生長	sang1 zoeng2	verb grow_verb	VERB_NO_GENERAL_VALENCY_TAG		grow.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+搵	wan2	verb find_verb	VERB_NO_GENERAL_VALENCY_TAG		find / look for.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+掉落	diu6 lok6	verb drop_into_down	VERB_NO_GENERAL_VALENCY_TAG		drop / put down / fall down; contextually drop into a bin.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+變成	bin3 sing4	verb change_into_verb	VERB_NO_GENERAL_VALENCY_TAG		become / turn into.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+變	bin3	verb change_verb	VERB_NO_GENERAL_VALENCY_TAG		change / become; future change-result templates should keep 變+咗 transparent.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+冧	lam3	verb result_collapse_verb	VERB_NO_GENERAL_VALENCY_TAG		collapse / knock down; appears in 整冧咗.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+擺	baai2	verb action_verb positioning_verb	GENERIC_ACTION_TAG	action_verb	put / place; placement predicate in locative-inversion structures.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+上床	soeng5 cong4	verb get_into_bed	VERB_NO_GENERAL_VALENCY_TAG		go/get into bed.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+休息	jau1 sik1	verb rest_verb	VERB_NO_GENERAL_VALENCY_TAG		rest.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+停	ting4	verb stop_verb	VERB_NO_GENERAL_VALENCY_TAG		stop.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+笑	siu3	verb action_verb intransitive_verb	INTRANSITIVE_TAG	intransitive_verb,action_verb	laugh / smile	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+見到	gin3 dou2	verb action_verb transitive_verb perception_verb immediate_temporal_trigger_predicate	TRANSITIVE_TAG	transitive_verb,action_verb	see / catch sight of	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+同意	tung4 ji3	verb action_verb stance_agreement_predicate intransitive_use	INTRANSITIVE_TAG	intransitive_use,action_verb	agree / consent	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+行	haang4	verb action_verb walking_verb	GENERIC_ACTION_TAG	action_verb	walk / go on foot	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+見	gin3	verb	VERB_NO_GENERAL_VALENCY_TAG		see / meet	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+住	zyu6	verb residence_verb_or_durative_marker_homograph	VERB_NO_GENERAL_VALENCY_TAG		residence verb by lexical default; durative/state marker in constructional or utterance-final contexts.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+認識	jing6 sik1	verb cognition_social_acquaintance transitive_verb	TRANSITIVE_TAG	transitive_verb	know / become acquainted with.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+訂	ding6	verb booking_ordering_verb transitive_verb	TRANSITIVE_TAG	transitive_verb	book / reserve / order.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+讀	duk6	verb reading_pronunciation_verb transitive_verb	TRANSITIVE_TAG	transitive_verb	read / pronounce.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+搭	daap3	verb transport_use_verb transitive_verb	TRANSITIVE_TAG	transitive_verb	take / ride (transport).	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+埋單	maai4 daan1	verb restaurant_payment_formula	VERB_NO_GENERAL_VALENCY_TAG		ask for / settle the bill.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+郁	juk1	verb movement_verb	VERB_NO_GENERAL_VALENCY_TAG		move.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+開始	hoi1 ci2	verb inception_verb	VERB_NO_GENERAL_VALENCY_TAG		begin / start.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+報名	bou3 meng2	verb registration_verb	VERB_NO_GENERAL_VALENCY_TAG		register / sign up.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+練	lin6	verb practice_verb transitive_verb	TRANSITIVE_TAG	transitive_verb	practise / train.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+怕	paa3	verb emotion_predicate fear_verb	VERB_NO_GENERAL_VALENCY_TAG		fear / be afraid.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+轉	zyun3	verb direction_change_verb	VERB_NO_GENERAL_VALENCY_TAG		turn; lexical reading here is zyun3 for physical direction.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+改	goi2	verb change_verb transitive_verb	TRANSITIVE_TAG	transitive_verb	change / alter.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+行山	haang4 saan1	verb activity_predicate	VERB_NO_GENERAL_VALENCY_TAG		hike / go hiking.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+歡迎	fun1 jing4	verb greeting_welcome_verb	VERB_NO_GENERAL_VALENCY_TAG		welcome.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+換	wun6	verb exchange_change_verb transitive_verb	TRANSITIVE_TAG	transitive_verb	exchange / change.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+簽	cim1	verb signing_verb transitive_verb	TRANSITIVE_TAG	transitive_verb	sign.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+掉	diu6	verb disposal_verb	VERB_NO_GENERAL_VALENCY_TAG		throw away; standard-written item in the suite.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+提醒	tai4 sing2	verb reminder_verb transitive_verb	TRANSITIVE_TAG	transitive_verb	remind.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+搵工	wan2 gung1	verb job_search_activity	VERB_NO_GENERAL_VALENCY_TAG		look for work.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+轉工	zyun2 gung1	verb job_change_activity	VERB_NO_GENERAL_VALENCY_TAG		change jobs.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+估	gu2	verb cognition_guess_verb	VERB_NO_GENERAL_VALENCY_TAG		guess / suppose.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+轉車	zyun2 ce1	verb transport_transfer_activity	VERB_NO_GENERAL_VALENCY_TAG		change vehicles / transfer.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+記住	gei3 zyu6	verb cognition_memory_imperative	VERB_NO_GENERAL_VALENCY_TAG		remember.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+申請	san1 cing2	verb application_verb	VERB_NO_GENERAL_VALENCY_TAG		apply / application.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+慳	haan1	verb economize_save_verb	VERB_NO_GENERAL_VALENCY_TAG		save / economize.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+搬	bun1	verb relocation_verb	VERB_NO_GENERAL_VALENCY_TAG		move / relocate.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+解釋	gaai2 sik1	verb explanation_verb transitive_verb	TRANSITIVE_TAG	transitive_verb	explain.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+差	caa1	verb subtraction_or_shortfall_marker	VERB_NO_GENERAL_VALENCY_TAG		lack / be short of; used in clock expressions.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+姓	sing3	verb surname_relation_verb	VERB_NO_GENERAL_VALENCY_TAG		have the surname / be surnamed.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+找	zaau2	verb change_money_verb written_or_regional_form	VERB_NO_GENERAL_VALENCY_TAG		give change / make change in 找錢; distinct from 搵 'look for'.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+報警	bou3 ging2	verb emergency_report_verb	VERB_NO_GENERAL_VALENCY_TAG		call / report to the police.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+傾	king1	verb conversation_verb	VERB_NO_GENERAL_VALENCY_TAG		chat / talk.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE
+塞	sak1	verb blockage_or_traffic_jam_predicate	VERB_NO_GENERAL_VALENCY_TAG		block / be congested.	RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE

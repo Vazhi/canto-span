@@ -1,0 +1,27 @@
+{
+  "schema": "canto-span-checkpoint-v2",
+  "checkpoint": "CP022-P1-PFV01-R1",
+  "status": "RENDER_PENDING_PRODUCTIVE_PROMOTION_CANDIDATE",
+  "accepted_parent": "v0.5.179-cp022-i1a-i01-neutral-clause-span-consolidation-r1",
+  "candidate": "v0.5.180-cp022-p1-pfv01-postverbal-zo-overt-object-promotion-r1",
+  "packet_id": "EP-CP022-P1-PFV01-D1",
+  "target": "PostverbalZoPerfectiveVP",
+  "public_alias": "PerfectiveVP",
+  "supported_productive_before": 0,
+  "supported_productive_candidate_delta": 1,
+  "heldout_opened": false,
+  "heldout_case_count": 7,
+  "render_case_count": 12,
+  "limitations": [
+    "candidate remains provisional",
+    "broad PerfectiveVP remains provisional",
+    "no native structural-analysis validation",
+    "classifier-heavy objects outside this packet",
+    "selectional compatibility remains separately review-bearing",
+    "V完咗O boundary sources count as boundary-only and provide zero positive support"
+  ],
+  "native_conflict_policy": "HIGHER_BURDEN",
+  "native_conflicted_adjacent_family": "V完咗O",
+  "native_conflicted_family_status": "PUBLISHED_ATTESTED_NATIVE_CONFLICTED_VARIATION_UNRESOLVED_QUARANTINED",
+  "native_conflict_burden_audit": "13/13 PASS"
+}

@@ -1,0 +1,15 @@
+search_id	date	query_or_action	source_or_engine	result	evidentiary_use	limitation
+R23-S01	2026-07-18	Verify R22 package, 99/99 audit, and frozen runtime hashes	local package inspection	PASS	baseline integrity only	Package metadata is not linguistic authority.
+R23-S02	2026-07-18	Rank 53 remaining language labels by main.js references and non-held-out regression reach	local runtime and accepted snapshots	PASS	family selection	Implementation and fixture counts do not establish grammar.
+R23-S03	2026-07-18	Extract CoverbFrame marker, modifier, object, predicate, and subtype logic	main.js	PASS	runtime claims under audit	Code is the research target, not authority.
+R23-S04	2026-07-18	Extract DegreeMannerAdverbial and DegreeMannerModifiedVP templates	main.js	PASS	runtime claims and wrapper scope	Template metadata does not prove a language construction.
+R23-S05	2026-07-18	Extract MannerAdverbialVP bare-reduplication fallback	main.js	PASS	exact runtime mismatch target	Slot eligibility does not prove productivity.
+R23-S06	2026-07-18	Verify peer-reviewed coverb category and experimental abstract	Francis and Matthews 2006 HKU official record	PASS_ABSTRACT	coverb family and contested category boundary	Abstract-level only; no unverified example details used.
+R23-S07	2026-07-18	Inspect Leung 2014 full text for instrument, comitative, manner, and ordering examples	UC Berkeley full PDF	PASS	exact forms and order contrasts	Unpublished, judgment-based, theory-specific.
+R23-S08	2026-07-18	Inspect Wong 2023 for 喺/同, 快啲行上去, 靜啲, and 哥哥乖啲	official/publisher-authorized full PDF	PASS	exact forms and functional contrasts	Clinical/developmental coding framework.
+R23-S09	2026-07-18	Inspect Cantonese for Everyone scan for 講大聲啲 and 講慢啲	user-provided scan PDF p. 21	PASS	exact pedagogical attestations	Coursebook evidence is not corpus/productivity evidence.
+R23-S10	2026-07-18	Inspect Hong Kong Cantonese coursebook for 行快啲, 同大家講講, 同 functions, and 慢慢噉形成咗	user-provided searchable PDF	PASS	exact page-level forms and pedagogical distinctions	Coursebook rules do not settle exhaustive grammar or ontology.
+R23-S11	2026-07-18	Compare preposed 快啲行上去 with postverbal 行快啲	cross-source form comparison	PASS_ORDER_CONTRAST	position and wrapper boundary	Attestation of both orders does not prove free alternation.
+R23-S12	2026-07-18	Search inspected sources for exact bare 慢慢行 construction	registered full texts and textbooks	NO_DIRECT_EXACT_SOURCE_RECOVERED	records bare-form gap	No recovered source is not evidence of ungrammaticality.
+R23-S13	2026-07-18	Check held-out access during R23	operation and command review	PASS_NONE_OPENED	integrity disclosure	Inherited R18 incident remains historical only.
+R23-S14	2026-07-18	Audit source IDs, parent rows, coverage, trees, JSON, hashes, artifacts, and ZIP extraction	local deterministic audit	PENDING_AT_LOG_CREATION	checkpoint integrity	Final result is in audit JSON.

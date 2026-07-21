@@ -1,0 +1,315 @@
+{
+  "schema": "canto-span-cp024-p1-demo01-candidate-audit-v1",
+  "candidate": "v0.5.183-cp024-p1-demo01-r1",
+  "status": "PASS",
+  "total": 51,
+  "passed": 51,
+  "failed": 0,
+  "runtime_behavior_changed": true,
+  "promotion_performed": false,
+  "supported_productive_delta": 0,
+  "heldout_opened": false,
+  "checks": [
+    {
+      "name": "heldout file exists",
+      "pass": true,
+      "detail": "/mnt/data/cp024_demo01_candidate/input/CP024-P1-DEMO01-HELDOUT-EXTERNAL-1.zip"
+    },
+    {
+      "name": "heldout raw SHA-256 matches external commitment",
+      "pass": true,
+      "detail": "7cda111ca194b6159a37c91b789984fdc0c35d6c35d643260810df0cdd5015c4"
+    },
+    {
+      "name": "lock records sealed unopened state",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "lock checksum matches raw file",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "heldout content not extracted into project: heldout-cases.json",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "heldout content not extracted into project: commitments.json",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "heldout content not extracted into project: seal-manifest.json",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "heldout ZIP not packaged inside project",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "runtime version constant 0.5.183",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "policy version 0.5.183",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "manifest version 0.5.183",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "overt subtype registered",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "headless subtype registered",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "compatibility alias points overt subtype to old public name",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "overt exact template present",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "obsolete DemonstrativeHeadNP template absent",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "bounded cat lexicon exists",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "audit has 181 candidate rows",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "overt subtype remains provisional",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "overt heldout state remains sealed/unopened",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "headless remains research pending",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "compatibility label is internal only",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DemonstrativeHeadNP is retired misanalysis",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "accepted productive count stays two",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible gate is observation-only",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible 9/9 exact",
+      "pass": true,
+      "detail": "{'total': 20, 'required': 9, 'required_exact': 9, 'required_wrong_or_incomplete': 0, 'required_absent': 0, 'forbidden': 8, 'forbidden_leakage': 0, 'full_root_coverage': 17}"
+    },
+    {
+      "name": "visible forbidden leakage 0/8",
+      "pass": true,
+      "detail": "{'total': 20, 'required': 9, 'required_exact': 9, 'required_wrong_or_incomplete': 0, 'required_absent': 0, 'forbidden': 8, 'forbidden_leakage': 0, 'full_root_coverage': 17}"
+    },
+    {
+      "name": "visible full root coverage 17/20",
+      "pass": true,
+      "detail": "{'total': 20, 'required': 9, 'required_exact': 9, 'required_wrong_or_incomplete': 0, 'required_absent': 0, 'forbidden': 8, 'forbidden_leakage': 0, 'full_root_coverage': 17}"
+    },
+    {
+      "name": "all required use internal overt subtype",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "all forbidden exclude overt subtype",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "all unresolved exclude overt subtype",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "two headless examples use separate subtype",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "aggregate inherited regression 543/543",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "exactly two focused transitions",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "topology gate 543/543",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "semantic gate passes",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "pre-intermediate corpus passes",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "native naturalness audit passes",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "native conflict burden passes",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "grammar legitimacy audit passes",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "claim provenance passes",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "source accounting passes",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "candidate source counts exact",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "review readiness audit passes",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "documentation consistency passes",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "color gate has no hard failures",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "overt authority origin present",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "headless authority origin present",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "five overt claim-source edges present",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "one headless claim-source edge present",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "coverage rows include both subtypes",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "failures": [],
+  "freeze": {
+    "schema": "canto-span-render-candidate-freeze-v1",
+    "candidate": "v0.5.183-cp024-p1-demo01-r1",
+    "accepted_baseline": "v0.5.182",
+    "status": "RENDER_PENDING_HELDOUT_SEALED_UNOPENED",
+    "created_at": "2026-07-20",
+    "runtime_hashes": {
+      "main.js": "e25b6f7142eafce66a172b68d8e409275f127cfe902e93bafaf7147152bfcbe9",
+      "manifest.json": "d7f5a9be248a4efd1839852e8a100a9968273050f0aa5953af2a35c3661801f5",
+      "styles.css": "5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a"
+    },
+    "packet_hashes": {
+      "visible_packet": "9097af8b2a3d59ab554bb6700b106f9d72e984a685bc348b10b6710b414d956f",
+      "render_review": "82a7b32171f839f4052d09b3f6f6514d807e4ae83f863f490106106da2740a9c",
+      "packet_lock_manifest": "e164188f4acc2f1983430e5596cd3fbc5bf1eac2de5842e9bd310d8c0c620bf4",
+      "external_heldout_raw_zip": "7cda111ca194b6159a37c91b789984fdc0c35d6c35d643260810df0cdd5015c4"
+    },
+    "external_heldout": {
+      "filename": "CP024-P1-DEMO01-HELDOUT-EXTERNAL-1.zip",
+      "size_bytes": 5392,
+      "opened": false,
+      "listed": false,
+      "extracted": false,
+      "reuse_forbidden_after_consumption": true
+    },
+    "visible_counts": {
+      "total": 20,
+      "required": 9,
+      "required_exact": 9,
+      "required_wrong_or_incomplete": 0,
+      "required_absent": 0,
+      "forbidden": 8,
+      "forbidden_leakage": 0,
+      "full_root_coverage": 17
+    },
+    "regression": {
+      "inherited_passed": 543,
+      "inherited_total": 543,
+      "focused_exclusions": [
+        "呢本。",
+        "呢個係問題。"
+      ]
+    },
+    "supported_productive": 2
+  }
+}

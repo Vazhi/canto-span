@@ -1,0 +1,16 @@
+{
+  "schema": "canto-span-checkpoint-v1",
+  "checkpoint": "CP022-I1A-I01-R1-SLIM1",
+  "parent_checkpoint": "CP022-I1A-I01-R1",
+  "artifact_kind": "packaging_only",
+  "runtime_candidate": "v0.5.179-cp022-i1a-i01-neutral-clause-span-consolidation-r1",
+  "parser_behavior_changed": false,
+  "packaging_profile": "slim_development",
+  "source_full_zip": "canto-span-clean-project-CP022-I1A-I01-R1-render-pending.zip",
+  "source_full_zip_sha256": "364c331c6436728a0adca393228e6dae43b42a432bdd0d2fd6c9de1ddd0fcd71",
+  "removed_file_count": 683,
+  "removed_uncompressed_bytes": 219471977,
+  "heldout_opened": false,
+  "supported_productive": 0,
+  "status": "SLIM_PACKAGE_VALIDATED_RENDER_REVIEW_PENDING_HELDOUT_SEALED"
+}

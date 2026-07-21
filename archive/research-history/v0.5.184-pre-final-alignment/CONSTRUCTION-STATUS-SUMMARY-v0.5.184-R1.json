@@ -1,0 +1,19 @@
+{
+  "schema": "canto-span-construction-status-summary-v1",
+  "runtime_version": "0.5.184",
+  "active_label_count": 171,
+  "status_counts": {
+    "lexicalized_only": 3,
+    "parser_heuristic": 21,
+    "provisional_reaudit": 2,
+    "research_pending": 58,
+    "unsupported_generalization": 87
+  },
+  "supported_productive_count": 0,
+  "runtime_governance_alignment": "ALIGNED",
+  "retired_runtime_residue_count": 0,
+  "demo01_track": "ABANDONED",
+  "second_speaker_work": "FROZEN_REQUIREMENT_RETAINED",
+  "np_subsystem_test_matrix": "43_of_43_pass",
+  "aggregate_regression": "545_of_545_pass"
+}

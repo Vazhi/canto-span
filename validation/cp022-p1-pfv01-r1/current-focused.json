@@ -1,0 +1,82 @@
+{
+  "schema": "canto-span-current-focused-result-v2",
+  "checkpoint": "CP022-P1-PFV01-R1",
+  "runtime_version": "0.5.180",
+  "accepted_runtime": "v0.5.179-cp022-i1a-i01-neutral-clause-span-consolidation-r1",
+  "active_candidate": "v0.5.180-cp022-p1-pfv01-postverbal-zo-overt-object-promotion-r1",
+  "packet_id": "EP-CP022-P1-PFV01-D1",
+  "status": "PASS",
+  "total": 13,
+  "passed": 13,
+  "failed": 0,
+  "strict_ready": true,
+  "visible_gate": {
+    "passed": 63,
+    "total": 63
+  },
+  "aggregate_regression": {
+    "passed": 529,
+    "total": 529,
+    "excluded": 16
+  },
+  "supported_productive": 0,
+  "heldout": {
+    "count": 7,
+    "opened": false
+  },
+  "checks": [
+    {
+      "name": "packet lock 22/22",
+      "pass": true
+    },
+    {
+      "name": "visible 63/63",
+      "pass": true
+    },
+    {
+      "name": "I02 preservation 24/24",
+      "pass": true
+    },
+    {
+      "name": "inherited aggregate 529/529",
+      "pass": true
+    },
+    {
+      "name": "legitimacy 1093/1093 and productive zero",
+      "pass": true
+    },
+    {
+      "name": "semantic 15/15",
+      "pass": true
+    },
+    {
+      "name": "corpus 80/80",
+      "pass": true
+    },
+    {
+      "name": "source accounting complete",
+      "pass": true
+    },
+    {
+      "name": "registry 178",
+      "pass": true
+    },
+    {
+      "name": "157 mapped language labels",
+      "pass": true
+    },
+    {
+      "name": "one explicit source gap",
+      "pass": true
+    },
+    {
+      "name": "render note present",
+      "pass": true
+    },
+    {
+      "name": "native conflict burden 13/13",
+      "pass": true
+    }
+  ],
+  "failures": []
+}

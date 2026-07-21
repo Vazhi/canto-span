@@ -1,0 +1,87 @@
+{
+  "schema": "canto-span-natural-corpus-lexicon-readiness-audit-v1",
+  "corpus_id": "WECHAT-GX-TRAVEL-002",
+  "runtime_version": "0.5.181",
+  "total": 15,
+  "passed": 15,
+  "failed": 0,
+  "status": "PASS",
+  "candidate_count": 39,
+  "checks": [
+    {
+      "name": "all distinct queue candidates represented",
+      "pass": true,
+      "detail": "39"
+    },
+    {
+      "name": "candidate rows unique",
+      "pass": true,
+      "detail": "39"
+    },
+    {
+      "name": "all rows have unit ids",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "all rows have readiness",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "all rows have recommended action",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "all rows have caution",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "all grammar acceptance effects are none",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "all proper names corpus local",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "一啖 component-only",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "成班人 component-only",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "早知 grammar blocked",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "跟住 corpus sense not equated with temporal MWE",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "runtime behavior unchanged",
+      "pass": true,
+      "detail": "research-only"
+    },
+    {
+      "name": "candidate scoring unchanged",
+      "pass": true,
+      "detail": "research-only"
+    },
+    {
+      "name": "productive promotion weight zero",
+      "pass": true,
+      "detail": "0"
+    }
+  ]
+}

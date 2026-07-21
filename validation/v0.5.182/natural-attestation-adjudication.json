@@ -1,0 +1,80 @@
+{
+  "schema": "canto-span-v0.5.182-natural-attestation-adjudication-v1",
+  "version": "0.5.182",
+  "generated_at": "2026-07-20T00:00:00+09:00",
+  "status": "PASS",
+  "target": "ResourceUseLaiFunctionRelation",
+  "acceptance_scope": "overt non-person resource/artifact/spatial part + adjacent 用嚟/用來 + overt non-perfective action predicate; no separate user, modal, copula, negator, perfective actual-use, or hidden argument",
+  "policy_minimum": {
+    "independent_natural_examples": 3,
+    "independent_sources_or_speakers": 2
+  },
+  "qualifying_examples": [
+    {
+      "example_id": "RUL-N1-WONG-2023",
+      "surface": "呢個用嚟切嘢",
+      "source_id": "SRC-WONG-2023-LSA",
+      "source_kind": "published natural language sample",
+      "resource": "呢個",
+      "linker": "用嚟",
+      "predicate": "切嘢",
+      "independence_unit": "WONG_2023_LANGUAGE_SAMPLE",
+      "qualifies": true,
+      "limitations": "Does not settle subject/topic status, frequency, or unique parser analysis."
+    },
+    {
+      "example_id": "RUL-N2-HKMEMORY-SHAPU",
+      "surface": "另一邊用來儲物",
+      "source_id": "SRC-HKMEMORY-SHAPU-ORAL-HISTORY",
+      "source_kind": "official interview-derived oral-history narrative",
+      "resource": "另一邊",
+      "linker": "用來",
+      "predicate": "儲物",
+      "independence_unit": "HKMEMORY_NTW_RED_GU_SHAPU",
+      "qualifies": true,
+      "limitations": "Editorialized interview-derived narrative rather than marked verbatim speech; spatial-resource profile only."
+    },
+    {
+      "example_id": "RUL-N3-CCO-LAICHIWO",
+      "surface": "呢間屋用嚟擺嘢、養豬養牛",
+      "source_id": "SRC-CCO-LAICHIWO-VILLAGE-HOUSE",
+      "source_kind": "official government page with direct homeowner quotation",
+      "resource": "呢間屋",
+      "linker": "用嚟",
+      "predicate": "擺嘢、養豬養牛",
+      "independence_unit": "CCO_LAICHIWO_SAN_MAN_UNCLE",
+      "qualifies": true,
+      "limitations": "One speaker/context; does not license unrestricted resource classes, coordination, frequency, or parser terminology."
+    }
+  ],
+  "independent_natural_example_count": 3,
+  "independent_evidence_unit_count": 3,
+  "structural_support": [
+    {
+      "source_id": "SRC-CHEUNG-2018-LAI",
+      "role": "supports purposive 嚟 and conventionalized 用來/用嚟; not counted as a natural attestation"
+    }
+  ],
+  "boundary_sources": [
+    {
+      "source_id": "SRC-CHOR-2018-DIRECTIONAL-PARTICLES",
+      "role": "restricts broader purposive, participant, and actual-use profiles"
+    },
+    {
+      "source_id": "SRC-MATTHEWS-2006-SVC",
+      "role": "competing serial-purpose analyses and semantic/pragmatic restrictions"
+    }
+  ],
+  "excluded_from_count": [
+    "generated probes",
+    "render-review examples",
+    "parser fixtures",
+    "regression cases",
+    "unadjudicated corpus candidates",
+    "prospective held-out cases",
+    "modal/copular/separate-user/perfective/instrumental/general-purpose/negated/A-not-A/reduplicated/omission profiles"
+  ],
+  "decision": "Standing three-example minimum met without lowering the threshold; exact narrow subtype eligible for supported_productive after all other gates passed.",
+  "broad_alias_status": "IntendedFunctionRelation remains provisional",
+  "native_analysis_validation_count": 0
+}

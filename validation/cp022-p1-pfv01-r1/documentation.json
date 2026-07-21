@@ -1,0 +1,9 @@
+{
+  "schema": "canto-span-documentation-consistency-v1",
+  "checkpoint": "CP022-P1-PFV01-R1",
+  "status": "PASS",
+  "json_files": 99,
+  "markdown_files": 98,
+  "broken_local_links": 0,
+  "errors": []
+}

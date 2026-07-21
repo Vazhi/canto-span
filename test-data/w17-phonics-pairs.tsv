@@ -1,0 +1,7 @@
+id	word_a	jyutping_a	word_b	jyutping_b	relation	status	notes	lifecycle_status
+PHO-W17-001	書	syu1	蘇	sou1	yu_vs_ou	PASS	Retained as supplied	PROMOTED_ACCEPTED
+PHO-W17-002	煮	zyu2	祖	zou2	yu_vs_ou	PASS	Retained as supplied	PROMOTED_ACCEPTED
+PHO-W17-003	全	cyun4	存	cyun4	homophone_pair	PASS	Both verified with identical Jyutping	PROMOTED_ACCEPTED
+PHO-W17-004	如	jyu4	油	jau4	yu_vs_au	PASS	Included as requested	PROMOTED_ACCEPTED
+PHO-W17-005	血	hyut3	闊	fut3	yut_vs_ut	PASS	闊 corrected to fut3	PROMOTED_ACCEPTED
+PHO-W17-006	聯	lyun4	論	leon6	yun_vs_eon	PASS	Accepted as supplied	PROMOTED_ACCEPTED

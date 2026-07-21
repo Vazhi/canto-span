@@ -1,0 +1,109 @@
+{
+  "schema": "canto-span-current-focused-result-v6",
+  "version": "0.5.182",
+  "status": "PASS",
+  "total": 19,
+  "passed": 19,
+  "failed": 0,
+  "strict_ready": true,
+  "accepted_runtime": "v0.5.182",
+  "rejected_predecessor": "v0.5.181",
+  "active_candidate": null,
+  "active_labels": 179,
+  "supported_productive": 2,
+  "render": {
+    "status": "PASS",
+    "rows": 15,
+    "assertions": "133/133"
+  },
+  "heldout": {
+    "status": "PASS_CONSUMED",
+    "count": 8,
+    "opened": true,
+    "reusable": false
+  },
+  "aggregate_regression": {
+    "passed": 545,
+    "total": 545,
+    "excluded": 0
+  },
+  "checks": [
+    {
+      "name": "original fresh packet lock integrity 19/19",
+      "pass": true
+    },
+    {
+      "name": "visible remediation packet 60/60; productive count two",
+      "pass": true
+    },
+    {
+      "name": "bounded implementation audit 21/21",
+      "pass": true
+    },
+    {
+      "name": "I02 preservation 24/24",
+      "pass": true
+    },
+    {
+      "name": "aggregate regression 545/545 with zero exclusions",
+      "pass": true
+    },
+    {
+      "name": "grammar legitimacy passes with two narrow productive patterns",
+      "pass": true
+    },
+    {
+      "name": "semantic acceptance 15/15",
+      "pass": true
+    },
+    {
+      "name": "pre-intermediate corpus 80/80",
+      "pass": true
+    },
+    {
+      "name": "source accounting complete; productive count two",
+      "pass": true
+    },
+    {
+      "name": "registry/source totals 179 and 158",
+      "pass": true
+    },
+    {
+      "name": "research retention 511 rows",
+      "pass": true
+    },
+    {
+      "name": "native-conflict burden 13/13",
+      "pass": true
+    },
+    {
+      "name": "native-speaker naturalness 33/33",
+      "pass": true
+    },
+    {
+      "name": "accepted-baseline topology 545/545",
+      "pass": true
+    },
+    {
+      "name": "documentation consistency",
+      "pass": true
+    },
+    {
+      "name": "claim provenance passes with two eligible accepted claims",
+      "pass": true
+    },
+    {
+      "name": "current state names accepted and rejected versions",
+      "pass": true
+    },
+    {
+      "name": "render adjudication 133/133 across 15 rows",
+      "pass": true
+    },
+    {
+      "name": "heldout consumed and evidence-closure acceptance recorded",
+      "pass": true
+    }
+  ],
+  "failures": []
+}

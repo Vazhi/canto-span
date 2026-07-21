@@ -1,0 +1,106 @@
+{
+  "schema": "canto-span-current-focused-result-v3",
+  "version": "0.5.180",
+  "status": "PASS",
+  "total": 19,
+  "passed": 19,
+  "failed": 0,
+  "strict_ready": true,
+  "accepted_runtime": "v0.5.180",
+  "active_candidate": null,
+  "active_labels": 178,
+  "supported_productive": 1,
+  "render": {
+    "rows": 12,
+    "assertions": 91
+  },
+  "heldout": {
+    "count": 7,
+    "passed": 7,
+    "consumed": true
+  },
+  "aggregate_regression": {
+    "passed": 545,
+    "total": 545,
+    "excluded": 0
+  },
+  "checks": [
+    {
+      "name": "frozen packet integrity 22/22",
+      "pass": true
+    },
+    {
+      "name": "visible packet 63/63",
+      "pass": true
+    },
+    {
+      "name": "I02 preservation 24/24",
+      "pass": true
+    },
+    {
+      "name": "aggregate regression 545/545 with zero exclusions",
+      "pass": true
+    },
+    {
+      "name": "grammar legitimacy accepts exactly one productive pattern",
+      "pass": true
+    },
+    {
+      "name": "semantic acceptance 15/15",
+      "pass": true
+    },
+    {
+      "name": "pre-intermediate corpus 80/80",
+      "pass": true
+    },
+    {
+      "name": "source accounting complete with productive count one",
+      "pass": true
+    },
+    {
+      "name": "registry 178",
+      "pass": true
+    },
+    {
+      "name": "157 mapped language labels",
+      "pass": true
+    },
+    {
+      "name": "one explicit source gap",
+      "pass": true
+    },
+    {
+      "name": "native-conflict burden 13/13",
+      "pass": true
+    },
+    {
+      "name": "render 12/12 and 91/91",
+      "pass": true
+    },
+    {
+      "name": "held-out 7/7 consumed",
+      "pass": true
+    },
+    {
+      "name": "post-heldout change is metadata only",
+      "pass": true
+    },
+    {
+      "name": "documentation consistency",
+      "pass": true
+    },
+    {
+      "name": "claim provenance audit",
+      "pass": true
+    },
+    {
+      "name": "current state names v0.5.180",
+      "pass": true
+    },
+    {
+      "name": "no stale render-pending state",
+      "pass": true
+    }
+  ],
+  "failures": []
+}

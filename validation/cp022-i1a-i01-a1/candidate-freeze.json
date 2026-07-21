@@ -1,0 +1,14 @@
+{
+  "schema": "canto-span-candidate-freeze-v1",
+  "checkpoint": "CP022-I1A-I01-R1",
+  "candidate": "v0.5.179-cp022-i1a-i01-neutral-clause-span-consolidation-r1",
+  "packet_id": "EP-CP022-I1A-I01-D1",
+  "frozen": true,
+  "reason": "10/10 rendered diagnostic rows passed full-tree adjudication before held-out opening.",
+  "runtime_zip_sha256": "c6a054f089fbae8f2badb7bf8b9d617f0388568e425efc23200ccd19ebaff9aa",
+  "slim_project_zip_sha256": "5e5f7603b491fd79890a8d0d1a4aa10ce2a4c6d7bc3fe71f449837b6ddfaea11",
+  "acceptance_summary_sha256": "76f97c7de57401e06e5ae5942cf447a3be6bda145efd960f757a97a32e7994c7",
+  "full_diagnostics_sha256": "febee5f6a9507e5e8db3ddec04e533f2f3a1e281664400e2b879f231f7996165",
+  "custody_archive_sha256": "964b84052849087f227efd2df7591f5fdd9d1a2f7815776daf0e3519a0b75a1c",
+  "code_revision_after_freeze_permitted": false
+}

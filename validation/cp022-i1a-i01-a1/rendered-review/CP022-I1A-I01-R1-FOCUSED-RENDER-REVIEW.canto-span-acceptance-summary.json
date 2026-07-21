@@ -1,0 +1,4993 @@
+{
+  "schema": "canto-span-note-acceptance-summary-json-v1",
+  "artifact_kind": "acceptance_summary",
+  "runtime_version": "0.5.179",
+  "generated_at": "2026-07-19T13:22:42.563Z",
+  "export_id": "canto-span-0.5.179-2026-07-19T13:22:42.563Z-Canto Span/CP022-I1A-I01-R1-FOCUSED-RENDER-REVIEW.md",
+  "note_path": "Canto Span/CP022-I1A-I01-R1-FOCUSED-RENDER-REVIEW.md",
+  "companion_full_diagnostics_path": "Canto Span/CP022-I1A-I01-R1-FOCUSED-RENDER-REVIEW.canto-span-full-diagnostics.json",
+  "inspection_policy": {
+    "summary_is_not_semantic_acceptance": true,
+    "row_coverage_guarantee": "Every generated diagnostic has exactly one summary row with compact final structure, learner roles, Jyutping, context state, audit statuses, and a pointer into the full artifact.",
+    "required_process": [
+      "Inspect every summary row, not only rows marked for full review.",
+      "Open the matching full diagnostic whenever full_review.required is true.",
+      "Open the matching full diagnostic whenever compact structure, role assignment, Jyutping, context linkage, doctrine fit, or grammar-legitimacy status looks suspicious even if no trigger fired.",
+      "Spot-check at least one row not marked for full review against the full artifact to verify compact/full alignment.",
+      "Do not accept a patch solely because audits pass.",
+      "Do not treat parser fixtures, generated probes, or corpus candidate hits as independent validation of a Cantonese grammar claim."
+    ],
+    "conservative_full_review_triggers": [
+      "semantic review flag or review trace",
+      "missing or incompatible context",
+      "ambiguity selection",
+      "normalization or parser-shadow activity",
+      "non-PASS audit",
+      "nested/wrapper structure",
+      "contextual learner-role change",
+      "review-oriented trace family",
+      "parser-active feature bundle",
+      "missing or multiple top constructions",
+      "partial root span with unwrapped nonpunctuation material",
+      "contextual-role provenance mismatch",
+      "grammar legitimacy is provisional, pending, heuristic, lexicalized-only, or unsupported"
+    ]
+  },
+  "coverage": {
+    "status": "PASS",
+    "runtime_version": "0.5.179",
+    "canto_span_fence_openers_found": 10,
+    "canto_span_blocks_parsed": 10,
+    "source_lines_with_diagnostics": 10,
+    "generated_diagnostics": 10,
+    "context_directive_count": 0,
+    "context_linked_source_count": 0,
+    "context_directives": [],
+    "unique_sources": 10,
+    "duplicate_source_count": 0,
+    "duplicate_sources": [],
+    "extraction_warnings": [],
+    "diagnostic_errors": [],
+    "context_directive_warnings": [],
+    "audit_statuses": {
+      "normalization": "PASS",
+      "jyutping": "PASS",
+      "registry": "PASS",
+      "learner_display": "PASS",
+      "learner_ui_hover": "WARN",
+      "wrapper_coverage": "PASS",
+      "label_transition": "PASS",
+      "grammar_legitimacy": "WARN"
+    },
+    "audit_aggregates": {
+      "normalization": {
+        "normalization_trace_count": 0,
+        "parser_shadow_repair_count": 0,
+        "parser_shadow_repair_type_counts": {},
+        "missing_shadow_repair_note_count": 0,
+        "review_suggestion_count": 0,
+        "folded_lexical_repair_count": 0,
+        "normalized_source_count": 0,
+        "unsafe_normalization_count": 0,
+        "applied_review_suggestion_count": 0,
+        "raw_display_replacement_count": 0,
+        "untraced_shadow_change_count": 0,
+        "warning_rows": [],
+        "parser_shadow_repair_note_coverage_status": "PASS",
+        "raw_display_preservation_status": "PASS",
+        "status": "PASS",
+        "policy": "Normalization audit lane: high-confidence Simplified-to-Traditional parser-shadow changes and narrow one-character pinyin-fallout Cantonese lexical repairs are allowed with trace; raw learner display must not be replaced. parser_shadow_repairs is the comprehensive shadow-repair inventory.",
+        "review_reminder": "Normalization-audit reminder: even when the normalization audit passes, inspect raw source, parser shadow, trace counts, review-suggestion counts, unsafe-normalization counts, and raw-display preservation before accepting input behavior."
+      },
+      "jyutping": {
+        "missing_jyutping_count": 0,
+        "invalid_jyutping_format_count": 0,
+        "syllable_count_mismatch_count": 0,
+        "dictionary_disagreement_count": 0,
+        "status": "PASS"
+      },
+      "registry": {
+        "invalid_learner_role_count": 0,
+        "invalid_slot_name_count": 0,
+        "invalid_construction_label_count": 0,
+        "invalid_parser_decision_label_count": 0,
+        "learner_role_registry_status": "PASS",
+        "slot_name_registry_status": "PASS",
+        "construction_label_registry_status": "PASS",
+        "parser_decision_label_registry_status": "PASS",
+        "status": "PASS"
+      },
+      "learner_display": {
+        "hidden_internal_slot_reference_count": 200,
+        "status": "PASS"
+      },
+      "learner_ui_hover": {
+        "flagged_hover_target_count": 12,
+        "missing_plain_learner_gloss_count": 0,
+        "status": "WARN"
+      },
+      "wrapper_coverage": {
+        "wrapper_row_count": 0,
+        "unaccounted_wrapper_token_count": 0,
+        "status": "PASS"
+      },
+      "label_transition": {
+        "migration_candidate_count": 0,
+        "already_generative_count": 22,
+        "reviewed_table_or_guardrail_count": 1,
+        "needs_registry_decision_count": 0,
+        "transition_bucket_counts": {
+          "generative_template": 22,
+          "special_ambiguity_rule": 1
+        },
+        "transition_status_counts": {
+          "already_generative": 22,
+          "review_guardrail": 1
+        },
+        "recommended_next_promotions": [],
+        "status": "PASS"
+      },
+      "grammar_legitimacy": {
+        "construction_row_count": 23,
+        "missing_registry_count": 0,
+        "supported_productive_count": 0,
+        "unsupported_or_pending_count": 23,
+        "exact_independent_surface_match_count": 9,
+        "pattern_specific_external_source_count": 0,
+        "status_counts": {
+          "parser_heuristic": 8,
+          "research_pending": 3,
+          "unsupported_generalization": 4,
+          "provisional": 8
+        },
+        "claim_type_counts": {
+          "parser_representation_decision": 7,
+          "cantonese_language_claim": 15,
+          "parser_heuristic": 1
+        },
+        "unique_pattern_count": 9,
+        "patterns_requiring_review": [
+          "ClauseSpan",
+          "CoordinatedNP",
+          "DemonstrativeClassifierNP",
+          "DirectionalMotionVP",
+          "LocativePlacePhrase",
+          "ModalVP",
+          "NeedsContext",
+          "NegatedDirectionalMotionVP",
+          "ProductiveVO"
+        ],
+        "status": "WARN",
+        "freeze_new_grammar_acceptance": true,
+        "policy_version": "0.5.179",
+        "policy": "A clean parser regression is not a grammar-legitimacy pass. Unsupported, pending, heuristic, and lexicalized-only claims remain explicitly visible and block new productive grammar acceptance."
+      },
+      "semantic_acceptance": {
+        "status_counts": {
+          "MANUAL_REVIEW_ELIGIBLE": 8,
+          "BLOCKED": 1,
+          "REVIEW_REQUIRED": 1
+        },
+        "blocker_count": 1,
+        "review_reason_count": 2,
+        "outer_wrapper_blocked_count": 0,
+        "blocker_code_counts": {
+          "needs_context_construction": 1
+        },
+        "review_code_counts": {
+          "construction_trace_requires_semantic_review": 1,
+          "standalone_nominal_requires_fragment_or_context_review": 1
+        },
+        "automatic_acceptance_count": 0,
+        "freeze_active": true,
+        "policy": "Semantic-acceptance status is an explicit review gate, not parser success. BLOCKED and REVIEW_REQUIRED rows cannot be accepted automatically; MANUAL_REVIEW_ELIGIBLE rows still require human semantic review."
+      }
+    }
+  },
+  "diagnostic_row_count": 10,
+  "full_review_required_count": 10,
+  "rows_requiring_full_review": [
+    {
+      "diagnostic_index": 0,
+      "source": "我食飯。",
+      "reasons": [
+        "audit:grammar_legitimacy:WARN",
+        "grammar_legitimacy:parser_heuristic",
+        "grammar_legitimacy:research_pending"
+      ]
+    },
+    {
+      "diagnostic_index": 1,
+      "source": "我喺屋企。",
+      "reasons": [
+        "audit:grammar_legitimacy:WARN",
+        "grammar_legitimacy:parser_heuristic",
+        "grammar_legitimacy:unsupported_generalization"
+      ]
+    },
+    {
+      "diagnostic_index": 2,
+      "source": "我一定可以去。",
+      "reasons": [
+        "audit:learner_ui_hover:WARN",
+        "audit:grammar_legitimacy:WARN",
+        "grammar_legitimacy:parser_heuristic",
+        "grammar_legitimacy:provisional"
+      ]
+    },
+    {
+      "diagnostic_index": 3,
+      "source": "喺屋企可以食飯。",
+      "reasons": [
+        "audit:learner_ui_hover:WARN",
+        "audit:grammar_legitimacy:WARN",
+        "grammar_legitimacy:parser_heuristic",
+        "grammar_legitimacy:unsupported_generalization",
+        "grammar_legitimacy:provisional",
+        "grammar_legitimacy:research_pending"
+      ]
+    },
+    {
+      "diagnostic_index": 4,
+      "source": "呢本書可以睇。",
+      "reasons": [
+        "parser_active_feature_bundle",
+        "audit:learner_ui_hover:WARN",
+        "audit:grammar_legitimacy:WARN",
+        "grammar_legitimacy:parser_heuristic",
+        "grammar_legitimacy:provisional"
+      ]
+    },
+    {
+      "diagnostic_index": 5,
+      "source": "我同你可以去。",
+      "reasons": [
+        "audit:learner_ui_hover:WARN",
+        "audit:grammar_legitimacy:WARN",
+        "grammar_legitimacy:parser_heuristic",
+        "grammar_legitimacy:unsupported_generalization",
+        "grammar_legitimacy:provisional"
+      ]
+    },
+    {
+      "diagnostic_index": 6,
+      "source": "我冇去。",
+      "reasons": [
+        "audit:grammar_legitimacy:WARN",
+        "grammar_legitimacy:parser_heuristic",
+        "grammar_legitimacy:provisional"
+      ]
+    },
+    {
+      "diagnostic_index": 7,
+      "source": "食飯。",
+      "reasons": [
+        "audit:grammar_legitimacy:WARN",
+        "grammar_legitimacy:research_pending"
+      ]
+    },
+    {
+      "diagnostic_index": 8,
+      "source": "可以去。",
+      "reasons": [
+        "semantic_acceptance_blocked",
+        "review_trace_present",
+        "semantic:needs_context_parse",
+        "semantic:context_required_unresolved",
+        "semantic:review_trace_present",
+        "missing_argument_slots",
+        "context:context_required",
+        "audit:grammar_legitimacy:WARN",
+        "trace:special_ambiguity_rule",
+        "grammar_legitimacy:parser_heuristic"
+      ]
+    },
+    {
+      "diagnostic_index": 9,
+      "source": "我同你。",
+      "reasons": [
+        "semantic_acceptance_review_required",
+        "audit:learner_ui_hover:WARN",
+        "audit:grammar_legitimacy:WARN",
+        "grammar_legitimacy:unsupported_generalization"
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "diagnostic_index": 0,
+      "block_index": 1,
+      "block_start_line": 28,
+      "source_line_index": 1,
+      "source": "我食飯。",
+      "context_directive": null,
+      "explicit_context": {
+        "supplied": false,
+        "turns": []
+      },
+      "parser_shadow_source": "我食飯。",
+      "raw_display_preservation_status": "PASS",
+      "normalization_trace": [],
+      "parser_shadow_repairs": [],
+      "folded_lexical_repairs": [],
+      "normalization_review_suggestions": [],
+      "top_constructions": [
+        "SubjectPredicateClause"
+      ],
+      "top_child_constructions": [],
+      "trace_summary": {
+        "generative_template": 2,
+        "atomic_lexicon": 3,
+        "punctuation_or_plain_text": 1
+      },
+      "template_family_summary": {
+        "generative_template": 2
+      },
+      "review_count": 0,
+      "parser_active_feature_bundle_count": 0,
+      "context": {
+        "requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": ""
+      },
+      "semantic_review_flags": [],
+      "semantic_acceptance": {
+        "status": "MANUAL_REVIEW_ELIGIBLE",
+        "automatic_acceptance": false,
+        "grammar_freeze_active": true,
+        "blocker_count": 0,
+        "review_reason_count": 0,
+        "outer_wrapper_blocked": false,
+        "blockers": [],
+        "review_reasons": [],
+        "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+      },
+      "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+      "semantic_acceptance_blocker_count": 0,
+      "semantic_acceptance_review_reason_count": 0,
+      "semantic_acceptance_outer_wrapper_blocked": false,
+      "topic_chain": null,
+      "particle_cluster": null,
+      "root_span_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "我食飯"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "audit_statuses": {
+        "normalization": "PASS",
+        "jyutping": "PASS",
+        "registry": "PASS",
+        "learner_display": "PASS",
+        "learner_ui_hover": "PASS",
+        "wrapper_coverage": "PASS",
+        "label_transition": "PASS",
+        "grammar_legitimacy": "WARN"
+      },
+      "compact_final_construction_tree": [
+        {
+          "depth": 0,
+          "parent": "",
+          "surface": "我食飯",
+          "kind": "construction",
+          "trace": "generative_template",
+          "construction": "SubjectPredicateClause",
+          "label": "SubjPred",
+          "slots": [
+            "action_vp",
+            "clause",
+            "co_participant",
+            "construction_span",
+            "head_noun",
+            "np",
+            "object",
+            "predicate",
+            "productive_vo",
+            "recipient",
+            "stance_holder",
+            "subject",
+            "subject_predicate_clause",
+            "topic",
+            "vp"
+          ],
+          "learner_display_slots": [
+            "head_noun",
+            "np",
+            "object",
+            "predicate",
+            "subject",
+            "topic",
+            "vp"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "action_vp",
+            "clause",
+            "co_participant",
+            "construction_span",
+            "productive_vo",
+            "recipient",
+            "stance_holder",
+            "subject_predicate_clause"
+          ],
+          "trace_detail": {
+            "kind": "generative_template",
+            "construction_type": "SubjectPredicateClause",
+            "template_family": "generative_template",
+            "template": [
+              "subject!",
+              "predicate!",
+              "particle?"
+            ],
+            "assigned_slots": [
+              "subject",
+              "predicate"
+            ],
+            "surfaces": [
+              "我",
+              "食飯"
+            ],
+            "constraints": {
+              "predicate_must_have_any_slots": [
+                "transitive_vp",
+                "productive_vo",
+                "progressive_vp",
+                "perfective_vp",
+                "completion_vp",
+                "locative_posture_vp",
+                "directional_motion_vp",
+                "motion_goal_vp",
+                "motion_purpose_chain",
+                "serial_verb_purpose_chain"
+              ],
+              "disallow_child_slots": [
+                "negated_directional_motion_vp",
+                "negated_vp"
+              ]
+            }
+          },
+          "grammar_legitimacy": {
+            "pattern": "ClauseSpan",
+            "primary_claim_type": "parser_representation_decision",
+            "status": "parser_heuristic",
+            "confidence": "medium",
+            "action": "retain_as_bounded_internal_representation_only",
+            "pattern_specific_external_source_count": 0,
+            "native_validation_scope": "COMPATIBILITY_SURFACE_JUDGMENTS_ONLY_NOT_CLAUSESPAN_ANALYSIS_VALIDATION",
+            "native_naturalness_judgment_count": 33,
+            "native_naturalness_acceptable_count": 31,
+            "native_naturalness_rejected_count": 2,
+            "native_naturalness_conflict_sentence_ids": [
+              "CS160-FU1-01",
+              "CS160-N013"
+            ],
+            "native_analysis_validation_count": 0,
+            "native_conflict_disposition": "not_attributed_to_neutral_clause_span",
+            "held_out_performance": "NOT_YET_OPENED",
+            "freeze_new_grammar_acceptance": true
+          }
+        },
+        {
+          "depth": 1,
+          "parent": "SubjectPredicateClause",
+          "surface": "我",
+          "kind": "token",
+          "trace": "atomic_lexicon",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "ngo5",
+          "slots": [
+            "co_participant",
+            "head_noun",
+            "np",
+            "recipient",
+            "stance_holder",
+            "subject",
+            "topic"
+          ],
+          "learner_display_slots": [
+            "head_noun",
+            "np",
+            "subject",
+            "topic"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "co_participant",
+            "recipient",
+            "stance_holder"
+          ],
+          "contextual_role_affordances": [
+            {
+              "role": "who",
+              "slot": "",
+              "source": "lexical_default",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            },
+            {
+              "role": "what",
+              "slot": "head_noun",
+              "source": "nominal_affordance",
+              "active_before_construction_wrapping": false,
+              "active_in_final_construction": false,
+              "activated_by": ""
+            }
+          ],
+          "trace_detail": {
+            "kind": "atomic_lexicon",
+            "generated_slots": [
+              "co_participant",
+              "head_noun",
+              "np",
+              "recipient",
+              "stance_holder",
+              "subject",
+              "topic"
+            ]
+          }
+        },
+        {
+          "depth": 1,
+          "parent": "SubjectPredicateClause",
+          "surface": "食飯",
+          "kind": "construction",
+          "trace": "generative_template",
+          "construction": "ProductiveVO",
+          "label": "VP",
+          "slots": [
+            "action_vp",
+            "object",
+            "predicate",
+            "productive_vo",
+            "vp"
+          ],
+          "learner_display_slots": [
+            "object",
+            "predicate",
+            "vp"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "action_vp",
+            "productive_vo"
+          ],
+          "trace_detail": {
+            "kind": "generative_template",
+            "construction_type": "ProductiveVO",
+            "template_family": "generative_template",
+            "subspan": true,
+            "template": [
+              "action_verb!",
+              "object!"
+            ],
+            "assigned_slots": [
+              "action_verb",
+              "object"
+            ],
+            "surfaces": [
+              "食",
+              "飯"
+            ],
+            "constraints": {
+              "surface_sequence_in": [
+                "食飯",
+                "煮飯",
+                "摘芒果",
+                "買嘢",
+                "食嘢",
+                "飲水",
+                "飲茶",
+                "寫字",
+                "寫名",
+                "睇書",
+                "聽歌",
+                "講嘢",
+                "打電話",
+                "聽電話",
+                "做功課",
+                "返學",
+                "放學",
+                "瞓覺",
+                "洗手",
+                "沖涼",
+                "曬太陽",
+                "打麻雀",
+                "默書",
+                "炒股票",
+                "發脾氣",
+                "食意粉",
+                "Book枱"
+              ]
+            },
+            "role_overrides": {
+              "action_verb": {
+                "label": "doing",
+                "syntax": "verb",
+                "slots": []
+              },
+              "object": {
+                "label": "what",
+                "syntax": "object",
+                "slots": []
+              }
+            }
+          },
+          "grammar_legitimacy": {
+            "pattern": "ProductiveVO",
+            "primary_claim_type": "cantonese_language_claim",
+            "status": "research_pending",
+            "confidence": "low",
+            "action": "retain_but_quarantine_from_new_grammar_acceptance",
+            "pattern_specific_external_source_count": 0,
+            "native_validation_scope": "ONE_SPEAKER_SENTENCE_NATURALNESS_ONLY_NOT_ANALYSIS_VALIDATION",
+            "native_naturalness_judgment_count": 6,
+            "native_naturalness_acceptable_count": 6,
+            "native_naturalness_rejected_count": 0,
+            "native_naturalness_conflict_sentence_ids": [],
+            "native_analysis_validation_count": 0,
+            "native_conflict_disposition": "none",
+            "held_out_performance": "NOT_ESTABLISHED",
+            "freeze_new_grammar_acceptance": true
+          }
+        },
+        {
+          "depth": 2,
+          "parent": "ProductiveVO",
+          "surface": "食",
+          "kind": "token",
+          "trace": "atomic_lexicon",
+          "role": "doing",
+          "syntax": "verb",
+          "jyutping": "sik6",
+          "slots": [
+            "action_verb",
+            "consumption_verb",
+            "main_verb",
+            "predicate",
+            "purpose_verb",
+            "stative_complement_head"
+          ],
+          "learner_display_slots": [
+            "action_verb",
+            "main_verb",
+            "predicate"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "consumption_verb",
+            "purpose_verb",
+            "stative_complement_head"
+          ],
+          "contextual_role_affordances": [
+            {
+              "role": "doing",
+              "slot": "",
+              "source": "lexical_default",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            }
+          ],
+          "trace_detail": {
+            "kind": "atomic_lexicon",
+            "contextual_role_override": "ProductiveVO",
+            "original_role": "doing",
+            "generated_slots": [
+              "action_verb",
+              "consumption_verb",
+              "main_verb",
+              "predicate",
+              "purpose_verb",
+              "stative_complement_head"
+            ],
+            "role_resolution": {
+              "lexical_default_role": "doing",
+              "active_role": "doing",
+              "active_affordance_source": "ProductiveVO"
+            }
+          }
+        },
+        {
+          "depth": 2,
+          "parent": "ProductiveVO",
+          "surface": "飯",
+          "kind": "token",
+          "trace": "atomic_lexicon",
+          "role": "what",
+          "syntax": "object",
+          "jyutping": "faan6",
+          "slots": [
+            "head_noun",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "learner_display_slots": [
+            "head_noun",
+            "np",
+            "object",
+            "topic"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "opinion_topic"
+          ],
+          "contextual_role_affordances": [
+            {
+              "role": "what",
+              "slot": "",
+              "source": "lexical_default",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            },
+            {
+              "role": "what",
+              "slot": "object",
+              "source": "nominal_affordance",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            }
+          ],
+          "trace_detail": {
+            "kind": "atomic_lexicon",
+            "contextual_role_override": "ProductiveVO",
+            "original_role": "what",
+            "generated_slots": [
+              "head_noun",
+              "np",
+              "object",
+              "opinion_topic",
+              "topic"
+            ],
+            "role_resolution": {
+              "lexical_default_role": "what",
+              "active_role": "what",
+              "active_affordance_source": "ProductiveVO"
+            }
+          }
+        },
+        {
+          "depth": 0,
+          "parent": "",
+          "surface": "。",
+          "kind": "text",
+          "trace": "punctuation_or_plain_text",
+          "trace_detail": {
+            "kind": "punctuation_or_plain_text"
+          }
+        }
+      ],
+      "full_review": {
+        "required": true,
+        "reasons": [
+          "audit:grammar_legitimacy:WARN",
+          "grammar_legitimacy:parser_heuristic",
+          "grammar_legitimacy:research_pending"
+        ],
+        "full_diagnostics_path": "Canto Span/CP022-I1A-I01-R1-FOCUSED-RENDER-REVIEW.canto-span-full-diagnostics.json",
+        "full_diagnostic_index": 0
+      }
+    },
+    {
+      "diagnostic_index": 1,
+      "block_index": 2,
+      "block_start_line": 39,
+      "source_line_index": 1,
+      "source": "我喺屋企。",
+      "context_directive": null,
+      "explicit_context": {
+        "supplied": false,
+        "turns": []
+      },
+      "parser_shadow_source": "我喺屋企。",
+      "raw_display_preservation_status": "PASS",
+      "normalization_trace": [],
+      "parser_shadow_repairs": [],
+      "folded_lexical_repairs": [],
+      "normalization_review_suggestions": [],
+      "top_constructions": [
+        "SubjectPredicateClause"
+      ],
+      "top_child_constructions": [],
+      "trace_summary": {
+        "generative_template": 2,
+        "atomic_lexicon": 2,
+        "construction_internal_parser_inactive_clone": 1,
+        "punctuation_or_plain_text": 1
+      },
+      "template_family_summary": {
+        "generative_template": 2
+      },
+      "review_count": 0,
+      "parser_active_feature_bundle_count": 0,
+      "context": {
+        "requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": ""
+      },
+      "semantic_review_flags": [],
+      "semantic_acceptance": {
+        "status": "MANUAL_REVIEW_ELIGIBLE",
+        "automatic_acceptance": false,
+        "grammar_freeze_active": true,
+        "blocker_count": 0,
+        "review_reason_count": 0,
+        "outer_wrapper_blocked": false,
+        "blockers": [],
+        "review_reasons": [],
+        "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+      },
+      "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+      "semantic_acceptance_blocker_count": 0,
+      "semantic_acceptance_review_reason_count": 0,
+      "semantic_acceptance_outer_wrapper_blocked": false,
+      "topic_chain": null,
+      "particle_cluster": null,
+      "root_span_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "我喺屋企"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "audit_statuses": {
+        "normalization": "PASS",
+        "jyutping": "PASS",
+        "registry": "PASS",
+        "learner_display": "PASS",
+        "learner_ui_hover": "PASS",
+        "wrapper_coverage": "PASS",
+        "label_transition": "PASS",
+        "grammar_legitimacy": "WARN"
+      },
+      "compact_final_construction_tree": [
+        {
+          "depth": 0,
+          "parent": "",
+          "surface": "我喺屋企",
+          "kind": "construction",
+          "trace": "generative_template",
+          "construction": "SubjectPredicateClause",
+          "label": "SubjPred",
+          "slots": [
+            "clause",
+            "co_participant",
+            "construction_span",
+            "goal",
+            "head_noun",
+            "location",
+            "locative_marker",
+            "locative_phrase",
+            "locative_predicate",
+            "np",
+            "object",
+            "opinion_topic",
+            "predicate",
+            "recipient",
+            "stance_holder",
+            "subject",
+            "subject_predicate_clause",
+            "topic"
+          ],
+          "learner_display_slots": [
+            "head_noun",
+            "location",
+            "np",
+            "object",
+            "predicate",
+            "subject",
+            "topic"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "clause",
+            "co_participant",
+            "construction_span",
+            "goal",
+            "locative_marker",
+            "locative_phrase",
+            "locative_predicate",
+            "opinion_topic",
+            "recipient",
+            "stance_holder",
+            "subject_predicate_clause"
+          ],
+          "trace_detail": {
+            "kind": "generative_template",
+            "construction_type": "SubjectPredicateClause",
+            "template_family": "generative_template",
+            "reason": "Direct diagnostic review rejected the previous false positive where 我喺屋企 rendered only as LocativePlacePhrase. The subject must be preserved at clause level, and the assigned slot must match the locative_predicate template.",
+            "template": [
+              "subject!",
+              "locative_predicate!",
+              "particle?"
+            ],
+            "assigned_slots": [
+              "subject",
+              "locative_predicate"
+            ],
+            "surfaces": [
+              "我",
+              "喺屋企"
+            ],
+            "not_claims": [
+              "not_coverb_frame",
+              "not_bare_locative_phrase"
+            ]
+          },
+          "grammar_legitimacy": {
+            "pattern": "ClauseSpan",
+            "primary_claim_type": "parser_representation_decision",
+            "status": "parser_heuristic",
+            "confidence": "medium",
+            "action": "retain_as_bounded_internal_representation_only",
+            "pattern_specific_external_source_count": 0,
+            "native_validation_scope": "COMPATIBILITY_SURFACE_JUDGMENTS_ONLY_NOT_CLAUSESPAN_ANALYSIS_VALIDATION",
+            "native_naturalness_judgment_count": 33,
+            "native_naturalness_acceptable_count": 31,
+            "native_naturalness_rejected_count": 2,
+            "native_naturalness_conflict_sentence_ids": [
+              "CS160-FU1-01",
+              "CS160-N013"
+            ],
+            "native_analysis_validation_count": 0,
+            "native_conflict_disposition": "not_attributed_to_neutral_clause_span",
+            "held_out_performance": "NOT_YET_OPENED",
+            "freeze_new_grammar_acceptance": true
+          }
+        },
+        {
+          "depth": 1,
+          "parent": "SubjectPredicateClause",
+          "surface": "我",
+          "kind": "token",
+          "trace": "atomic_lexicon",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "ngo5",
+          "slots": [
+            "co_participant",
+            "head_noun",
+            "np",
+            "recipient",
+            "stance_holder",
+            "subject",
+            "topic"
+          ],
+          "learner_display_slots": [
+            "head_noun",
+            "np",
+            "subject",
+            "topic"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "co_participant",
+            "recipient",
+            "stance_holder"
+          ],
+          "contextual_role_affordances": [
+            {
+              "role": "who",
+              "slot": "",
+              "source": "lexical_default",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            },
+            {
+              "role": "what",
+              "slot": "head_noun",
+              "source": "nominal_affordance",
+              "active_before_construction_wrapping": false,
+              "active_in_final_construction": false,
+              "activated_by": ""
+            }
+          ],
+          "trace_detail": {
+            "kind": "atomic_lexicon",
+            "generated_slots": [
+              "co_participant",
+              "head_noun",
+              "np",
+              "recipient",
+              "stance_holder",
+              "subject",
+              "topic"
+            ]
+          }
+        },
+        {
+          "depth": 1,
+          "parent": "SubjectPredicateClause",
+          "surface": "喺屋企",
+          "kind": "construction",
+          "trace": "generative_template",
+          "construction": "LocativePlacePhrase",
+          "label": "Location",
+          "slots": [
+            "construction_span",
+            "goal",
+            "head_noun",
+            "location",
+            "locative_marker",
+            "locative_phrase",
+            "locative_predicate",
+            "np",
+            "object",
+            "opinion_topic",
+            "predicate",
+            "topic"
+          ],
+          "learner_display_slots": [
+            "head_noun",
+            "location",
+            "np",
+            "object",
+            "predicate",
+            "topic"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "construction_span",
+            "goal",
+            "locative_marker",
+            "locative_phrase",
+            "locative_predicate",
+            "opinion_topic"
+          ],
+          "trace_detail": {
+            "kind": "generative_template",
+            "construction_type": "LocativePlacePhrase",
+            "template_family": "generative_template",
+            "subspan": true,
+            "template": [
+              "locative_marker!",
+              "location!"
+            ],
+            "assigned_slots": [
+              "locative_marker",
+              "location"
+            ],
+            "surfaces": [
+              "喺",
+              "屋企"
+            ],
+            "not_claims": [
+              "not_coverb_frame_without_following_predicate"
+            ]
+          },
+          "grammar_legitimacy": {
+            "pattern": "LocativePlacePhrase",
+            "primary_claim_type": "cantonese_language_claim",
+            "status": "unsupported_generalization",
+            "confidence": "unsupported",
+            "action": "quarantine_and_research_before_retention",
+            "pattern_specific_external_source_count": 0,
+            "native_validation_scope": "ONE_SPEAKER_SENTENCE_NATURALNESS_ONLY_NOT_ANALYSIS_VALIDATION",
+            "native_naturalness_judgment_count": 2,
+            "native_naturalness_acceptable_count": 2,
+            "native_naturalness_rejected_count": 0,
+            "native_naturalness_conflict_sentence_ids": [],
+            "native_analysis_validation_count": 0,
+            "native_conflict_disposition": "none",
+            "held_out_performance": "NOT_ESTABLISHED",
+            "freeze_new_grammar_acceptance": true
+          }
+        },
+        {
+          "depth": 2,
+          "parent": "LocativePlacePhrase",
+          "surface": "喺",
+          "kind": "token",
+          "trace": "construction_internal_parser_inactive_clone",
+          "role": "func",
+          "syntax": "locative_predicate_marker locative_marker",
+          "jyutping": "hai2",
+          "slots": [
+            "locative_marker"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "locative_marker"
+          ],
+          "contextual_role_affordances": [
+            {
+              "role": "func",
+              "slot": "",
+              "source": "lexical_default",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            }
+          ],
+          "trace_detail": {
+            "kind": "construction_internal_parser_inactive_clone",
+            "reason": "喺 introduces a locative predicate in a subject-led location clause, not a preverbal coverb frame.",
+            "role_resolution": {
+              "lexical_default_role": "func",
+              "active_role": "func",
+              "active_affordance_source": "喺 introduces a locative predicate in a subject-led location clause, not a preverbal coverb frame."
+            }
+          }
+        },
+        {
+          "depth": 2,
+          "parent": "LocativePlacePhrase",
+          "surface": "屋企",
+          "kind": "token",
+          "trace": "atomic_lexicon",
+          "role": "where",
+          "syntax": "place_or_goal",
+          "jyutping": "uk1 kei2",
+          "slots": [
+            "goal",
+            "head_noun",
+            "location",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "learner_display_slots": [
+            "head_noun",
+            "location",
+            "np",
+            "object",
+            "topic"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "goal",
+            "opinion_topic"
+          ],
+          "contextual_role_affordances": [
+            {
+              "role": "where",
+              "slot": "",
+              "source": "lexical_default",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            },
+            {
+              "role": "what",
+              "slot": "object",
+              "source": "nominal_affordance",
+              "active_before_construction_wrapping": false,
+              "active_in_final_construction": false,
+              "activated_by": ""
+            }
+          ],
+          "trace_detail": {
+            "kind": "atomic_lexicon",
+            "generated_slots": [
+              "goal",
+              "head_noun",
+              "location",
+              "np",
+              "object",
+              "opinion_topic",
+              "topic"
+            ]
+          }
+        },
+        {
+          "depth": 0,
+          "parent": "",
+          "surface": "。",
+          "kind": "text",
+          "trace": "punctuation_or_plain_text",
+          "trace_detail": {
+            "kind": "punctuation_or_plain_text"
+          }
+        }
+      ],
+      "full_review": {
+        "required": true,
+        "reasons": [
+          "audit:grammar_legitimacy:WARN",
+          "grammar_legitimacy:parser_heuristic",
+          "grammar_legitimacy:unsupported_generalization"
+        ],
+        "full_diagnostics_path": "Canto Span/CP022-I1A-I01-R1-FOCUSED-RENDER-REVIEW.canto-span-full-diagnostics.json",
+        "full_diagnostic_index": 1
+      }
+    },
+    {
+      "diagnostic_index": 2,
+      "block_index": 3,
+      "block_start_line": 50,
+      "source_line_index": 1,
+      "source": "我一定可以去。",
+      "context_directive": null,
+      "explicit_context": {
+        "supplied": false,
+        "turns": []
+      },
+      "parser_shadow_source": "我一定可以去。",
+      "raw_display_preservation_status": "PASS",
+      "normalization_trace": [],
+      "parser_shadow_repairs": [],
+      "folded_lexical_repairs": [],
+      "normalization_review_suggestions": [],
+      "top_constructions": [
+        "SubjectModalPredicateClause"
+      ],
+      "top_child_constructions": [],
+      "trace_summary": {
+        "generative_template": 3,
+        "atomic_lexicon": 4,
+        "punctuation_or_plain_text": 1
+      },
+      "template_family_summary": {
+        "generative_template": 2
+      },
+      "review_count": 0,
+      "parser_active_feature_bundle_count": 0,
+      "context": {
+        "requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": ""
+      },
+      "semantic_review_flags": [],
+      "semantic_acceptance": {
+        "status": "MANUAL_REVIEW_ELIGIBLE",
+        "automatic_acceptance": false,
+        "grammar_freeze_active": true,
+        "blocker_count": 0,
+        "review_reason_count": 0,
+        "outer_wrapper_blocked": false,
+        "blockers": [],
+        "review_reasons": [],
+        "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+      },
+      "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+      "semantic_acceptance_blocker_count": 0,
+      "semantic_acceptance_review_reason_count": 0,
+      "semantic_acceptance_outer_wrapper_blocked": false,
+      "topic_chain": null,
+      "particle_cluster": null,
+      "root_span_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "我一定可以去"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "audit_statuses": {
+        "normalization": "PASS",
+        "jyutping": "PASS",
+        "registry": "PASS",
+        "learner_display": "PASS",
+        "learner_ui_hover": "WARN",
+        "wrapper_coverage": "PASS",
+        "label_transition": "PASS",
+        "grammar_legitimacy": "WARN"
+      },
+      "compact_final_construction_tree": [
+        {
+          "depth": 0,
+          "parent": "",
+          "surface": "我一定可以去",
+          "kind": "construction",
+          "trace": "generative_template",
+          "construction": "SubjectModalPredicateClause",
+          "label": "SubjModal",
+          "slots": [
+            "action_vp",
+            "clause",
+            "co_participant",
+            "construction_span",
+            "directional_motion_vp",
+            "head_noun",
+            "how",
+            "modal",
+            "modal_predicate",
+            "modal_predicate_clause",
+            "modal_vp",
+            "motion_predicate",
+            "movement_verb",
+            "np",
+            "predicate",
+            "recipient",
+            "stance_holder",
+            "subject",
+            "subject_modal_predicate_clause",
+            "topic",
+            "vp"
+          ],
+          "learner_display_slots": [
+            "head_noun",
+            "modal",
+            "np",
+            "predicate",
+            "subject",
+            "topic",
+            "vp"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "action_vp",
+            "clause",
+            "co_participant",
+            "construction_span",
+            "directional_motion_vp",
+            "how",
+            "modal_predicate",
+            "modal_predicate_clause",
+            "modal_vp",
+            "motion_predicate",
+            "movement_verb",
+            "recipient",
+            "stance_holder",
+            "subject_modal_predicate_clause"
+          ],
+          "trace_detail": {
+            "kind": "generative_template",
+            "construction_type": "SubjectModalPredicateClause",
+            "reason": "Wraps a generated topic/subject/location prefix plus an existing ModalVP without changing the ModalVP internals.",
+            "template": [
+              "subject!",
+              "how?",
+              "modal_vp!"
+            ],
+            "assigned_slots": [
+              "subject",
+              "how",
+              "modal_vp"
+            ],
+            "surfaces": [
+              "我",
+              "一定",
+              "可以去"
+            ]
+          },
+          "grammar_legitimacy": {
+            "pattern": "ClauseSpan",
+            "primary_claim_type": "parser_representation_decision",
+            "status": "parser_heuristic",
+            "confidence": "medium",
+            "action": "retain_as_bounded_internal_representation_only",
+            "pattern_specific_external_source_count": 0,
+            "native_validation_scope": "COMPATIBILITY_SURFACE_JUDGMENTS_ONLY_NOT_CLAUSESPAN_ANALYSIS_VALIDATION",
+            "native_naturalness_judgment_count": 33,
+            "native_naturalness_acceptable_count": 31,
+            "native_naturalness_rejected_count": 2,
+            "native_naturalness_conflict_sentence_ids": [
+              "CS160-FU1-01",
+              "CS160-N013"
+            ],
+            "native_analysis_validation_count": 0,
+            "native_conflict_disposition": "not_attributed_to_neutral_clause_span",
+            "held_out_performance": "NOT_YET_OPENED",
+            "freeze_new_grammar_acceptance": true
+          }
+        },
+        {
+          "depth": 1,
+          "parent": "SubjectModalPredicateClause",
+          "surface": "我",
+          "kind": "token",
+          "trace": "atomic_lexicon",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "ngo5",
+          "slots": [
+            "co_participant",
+            "head_noun",
+            "np",
+            "recipient",
+            "stance_holder",
+            "subject",
+            "topic"
+          ],
+          "learner_display_slots": [
+            "head_noun",
+            "np",
+            "subject",
+            "topic"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "co_participant",
+            "recipient",
+            "stance_holder"
+          ],
+          "contextual_role_affordances": [
+            {
+              "role": "who",
+              "slot": "",
+              "source": "lexical_default",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            },
+            {
+              "role": "what",
+              "slot": "head_noun",
+              "source": "nominal_affordance",
+              "active_before_construction_wrapping": false,
+              "active_in_final_construction": false,
+              "activated_by": ""
+            }
+          ],
+          "trace_detail": {
+            "kind": "atomic_lexicon",
+            "generated_slots": [
+              "co_participant",
+              "head_noun",
+              "np",
+              "recipient",
+              "stance_holder",
+              "subject",
+              "topic"
+            ]
+          }
+        },
+        {
+          "depth": 1,
+          "parent": "SubjectModalPredicateClause",
+          "surface": "一定",
+          "kind": "token",
+          "trace": "atomic_lexicon",
+          "role": "how",
+          "syntax": "certainty_adverb",
+          "jyutping": "jat1 ding6",
+          "slots": [
+            "how"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "how"
+          ],
+          "contextual_role_affordances": [
+            {
+              "role": "how",
+              "slot": "",
+              "source": "lexical_default",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            }
+          ],
+          "trace_detail": {
+            "kind": "atomic_lexicon",
+            "generated_slots": [
+              "how"
+            ]
+          }
+        },
+        {
+          "depth": 1,
+          "parent": "SubjectModalPredicateClause",
+          "surface": "可以去",
+          "kind": "construction",
+          "trace": "generative_template",
+          "construction": "ModalVP",
+          "label": "ModalVP",
+          "slots": [
+            "action_vp",
+            "construction_span",
+            "directional_motion_vp",
+            "modal",
+            "modal_predicate",
+            "modal_vp",
+            "motion_predicate",
+            "movement_verb",
+            "predicate",
+            "vp"
+          ],
+          "learner_display_slots": [
+            "modal",
+            "predicate",
+            "vp"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "action_vp",
+            "construction_span",
+            "directional_motion_vp",
+            "modal_predicate",
+            "modal_vp",
+            "motion_predicate",
+            "movement_verb"
+          ],
+          "trace_detail": {
+            "kind": "generative_template",
+            "construction_type": "ModalVP",
+            "template_family": "generative_template",
+            "template": [
+              "subject?",
+              "time?",
+              "negator?",
+              "modal!",
+              "manner?",
+              "vp!",
+              "particle?"
+            ],
+            "assigned_slots": [
+              "modal",
+              "vp"
+            ],
+            "surfaces": [
+              "可以",
+              "去"
+            ]
+          },
+          "grammar_legitimacy": {
+            "pattern": "ModalVP",
+            "primary_claim_type": "cantonese_language_claim",
+            "status": "provisional",
+            "confidence": "medium",
+            "action": "retain_provisional_pending_pattern_specific_attestation_and_heldout_review",
+            "pattern_specific_external_source_count": 0,
+            "native_validation_scope": "ONE_SPEAKER_SENTENCE_NATURALNESS_ONLY_NOT_ANALYSIS_VALIDATION",
+            "native_naturalness_judgment_count": 8,
+            "native_naturalness_acceptable_count": 8,
+            "native_naturalness_rejected_count": 0,
+            "native_naturalness_conflict_sentence_ids": [],
+            "native_analysis_validation_count": 0,
+            "native_conflict_disposition": "none",
+            "held_out_performance": "NOT_ESTABLISHED",
+            "freeze_new_grammar_acceptance": true
+          }
+        },
+        {
+          "depth": 2,
+          "parent": "ModalVP",
+          "surface": "可以",
+          "kind": "token",
+          "trace": "atomic_lexicon",
+          "role": "func",
+          "syntax": "modal_permission_or_ability",
+          "jyutping": "ho2 ji5",
+          "slots": [
+            "modal"
+          ],
+          "learner_display_slots": [
+            "modal"
+          ],
+          "contextual_role_affordances": [
+            {
+              "role": "func",
+              "slot": "",
+              "source": "lexical_default",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            }
+          ],
+          "trace_detail": {
+            "kind": "atomic_lexicon",
+            "generated_slots": [
+              "modal"
+            ]
+          }
+        },
+        {
+          "depth": 2,
+          "parent": "ModalVP",
+          "surface": "去",
+          "kind": "construction",
+          "trace": "generative_template",
+          "construction": "DirectionalMotionVP",
+          "label": "MotionVP",
+          "slots": [
+            "action_vp",
+            "directional_motion_vp",
+            "motion_predicate",
+            "movement_verb",
+            "predicate",
+            "vp"
+          ],
+          "learner_display_slots": [
+            "predicate",
+            "vp"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "action_vp",
+            "directional_motion_vp",
+            "motion_predicate",
+            "movement_verb"
+          ],
+          "trace_detail": {
+            "kind": "generative_template",
+            "construction_type": "DirectionalMotionVP",
+            "template_family": "generative_template",
+            "subspan": true,
+            "template": [
+              "deictic_motion_marker!"
+            ],
+            "assigned_slots": [
+              "deictic_motion_marker"
+            ],
+            "surfaces": [
+              "去"
+            ],
+            "role_overrides": {
+              "deictic_motion_marker": {
+                "label": "doing",
+                "syntax": "deictic_motion_marker",
+                "slots": []
+              }
+            }
+          },
+          "grammar_legitimacy": {
+            "pattern": "DirectionalMotionVP",
+            "primary_claim_type": "cantonese_language_claim",
+            "status": "provisional",
+            "confidence": "medium",
+            "action": "retain_provisional_pending_pattern_specific_attestation_and_heldout_review",
+            "pattern_specific_external_source_count": 0,
+            "native_validation_scope": "ONE_SPEAKER_SENTENCE_NATURALNESS_ONLY_NOT_ANALYSIS_VALIDATION",
+            "native_naturalness_judgment_count": 25,
+            "native_naturalness_acceptable_count": 25,
+            "native_naturalness_rejected_count": 0,
+            "native_naturalness_conflict_sentence_ids": [],
+            "native_analysis_validation_count": 0,
+            "native_conflict_disposition": "none",
+            "held_out_performance": "NOT_ESTABLISHED",
+            "freeze_new_grammar_acceptance": true
+          }
+        },
+        {
+          "depth": 3,
+          "parent": "DirectionalMotionVP",
+          "surface": "去",
+          "kind": "token",
+          "trace": "atomic_lexicon",
+          "role": "doing",
+          "syntax": "deictic_motion_marker",
+          "jyutping": "heoi3",
+          "slots": [
+            "action_verb",
+            "deictic_motion_marker",
+            "main_verb",
+            "movement_verb",
+            "predicate"
+          ],
+          "learner_display_slots": [
+            "action_verb",
+            "main_verb",
+            "predicate"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "deictic_motion_marker",
+            "movement_verb"
+          ],
+          "contextual_role_affordances": [
+            {
+              "role": "doing",
+              "slot": "",
+              "source": "lexical_default",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            },
+            {
+              "role": "doing",
+              "slot": "return_motion_verb",
+              "source": "motion_affordance",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            }
+          ],
+          "trace_detail": {
+            "kind": "atomic_lexicon",
+            "contextual_role_override": "DirectionalMotionVP",
+            "original_role": "doing",
+            "generated_slots": [
+              "action_verb",
+              "deictic_motion_marker",
+              "main_verb",
+              "movement_verb",
+              "predicate"
+            ],
+            "role_resolution": {
+              "lexical_default_role": "doing",
+              "active_role": "doing",
+              "active_affordance_source": "DirectionalMotionVP"
+            }
+          }
+        },
+        {
+          "depth": 0,
+          "parent": "",
+          "surface": "。",
+          "kind": "text",
+          "trace": "punctuation_or_plain_text",
+          "trace_detail": {
+            "kind": "punctuation_or_plain_text"
+          }
+        }
+      ],
+      "full_review": {
+        "required": true,
+        "reasons": [
+          "audit:learner_ui_hover:WARN",
+          "audit:grammar_legitimacy:WARN",
+          "grammar_legitimacy:parser_heuristic",
+          "grammar_legitimacy:provisional"
+        ],
+        "full_diagnostics_path": "Canto Span/CP022-I1A-I01-R1-FOCUSED-RENDER-REVIEW.canto-span-full-diagnostics.json",
+        "full_diagnostic_index": 2
+      }
+    },
+    {
+      "diagnostic_index": 3,
+      "block_index": 4,
+      "block_start_line": 61,
+      "source_line_index": 1,
+      "source": "喺屋企可以食飯。",
+      "context_directive": null,
+      "explicit_context": {
+        "supplied": false,
+        "turns": []
+      },
+      "parser_shadow_source": "喺屋企可以食飯。",
+      "raw_display_preservation_status": "PASS",
+      "normalization_trace": [],
+      "parser_shadow_repairs": [],
+      "folded_lexical_repairs": [],
+      "normalization_review_suggestions": [],
+      "top_constructions": [
+        "LocativeModalPredicateClause"
+      ],
+      "top_child_constructions": [],
+      "trace_summary": {
+        "generative_template": 4,
+        "atomic_lexicon": 5,
+        "punctuation_or_plain_text": 1
+      },
+      "template_family_summary": {
+        "generative_template": 3
+      },
+      "review_count": 0,
+      "parser_active_feature_bundle_count": 0,
+      "context": {
+        "requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": ""
+      },
+      "semantic_review_flags": [],
+      "semantic_acceptance": {
+        "status": "MANUAL_REVIEW_ELIGIBLE",
+        "automatic_acceptance": false,
+        "grammar_freeze_active": true,
+        "blocker_count": 0,
+        "review_reason_count": 0,
+        "outer_wrapper_blocked": false,
+        "blockers": [],
+        "review_reasons": [],
+        "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+      },
+      "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+      "semantic_acceptance_blocker_count": 0,
+      "semantic_acceptance_review_reason_count": 0,
+      "semantic_acceptance_outer_wrapper_blocked": false,
+      "topic_chain": null,
+      "particle_cluster": null,
+      "root_span_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "喺屋企可以食飯"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "audit_statuses": {
+        "normalization": "PASS",
+        "jyutping": "PASS",
+        "registry": "PASS",
+        "learner_display": "PASS",
+        "learner_ui_hover": "WARN",
+        "wrapper_coverage": "PASS",
+        "label_transition": "PASS",
+        "grammar_legitimacy": "WARN"
+      },
+      "compact_final_construction_tree": [
+        {
+          "depth": 0,
+          "parent": "",
+          "surface": "喺屋企可以食飯",
+          "kind": "construction",
+          "trace": "generative_template",
+          "construction": "LocativeModalPredicateClause",
+          "label": "LocModal",
+          "slots": [
+            "action_vp",
+            "clause",
+            "construction_span",
+            "coverb_marker",
+            "goal",
+            "head_noun",
+            "location",
+            "locative_marker",
+            "locative_modal_predicate_clause",
+            "locative_phrase",
+            "modal",
+            "modal_predicate",
+            "modal_predicate_clause",
+            "modal_vp",
+            "np",
+            "object",
+            "opinion_topic",
+            "predicate",
+            "productive_vo",
+            "topic",
+            "vp"
+          ],
+          "learner_display_slots": [
+            "head_noun",
+            "location",
+            "modal",
+            "np",
+            "object",
+            "predicate",
+            "topic",
+            "vp"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "action_vp",
+            "clause",
+            "construction_span",
+            "coverb_marker",
+            "goal",
+            "locative_marker",
+            "locative_modal_predicate_clause",
+            "locative_phrase",
+            "modal_predicate",
+            "modal_predicate_clause",
+            "modal_vp",
+            "opinion_topic",
+            "productive_vo"
+          ],
+          "trace_detail": {
+            "kind": "generative_template",
+            "construction_type": "LocativeModalPredicateClause",
+            "reason": "Wraps a generated topic/subject/location prefix plus an existing ModalVP without changing the ModalVP internals.",
+            "template": [
+              "location!",
+              "modal_vp!"
+            ],
+            "assigned_slots": [
+              "location",
+              "modal_vp"
+            ],
+            "surfaces": [
+              "喺屋企",
+              "可以食飯"
+            ]
+          },
+          "grammar_legitimacy": {
+            "pattern": "ClauseSpan",
+            "primary_claim_type": "parser_representation_decision",
+            "status": "parser_heuristic",
+            "confidence": "medium",
+            "action": "retain_as_bounded_internal_representation_only",
+            "pattern_specific_external_source_count": 0,
+            "native_validation_scope": "COMPATIBILITY_SURFACE_JUDGMENTS_ONLY_NOT_CLAUSESPAN_ANALYSIS_VALIDATION",
+            "native_naturalness_judgment_count": 33,
+            "native_naturalness_acceptable_count": 31,
+            "native_naturalness_rejected_count": 2,
+            "native_naturalness_conflict_sentence_ids": [
+              "CS160-FU1-01",
+              "CS160-N013"
+            ],
+            "native_analysis_validation_count": 0,
+            "native_conflict_disposition": "not_attributed_to_neutral_clause_span",
+            "held_out_performance": "NOT_YET_OPENED",
+            "freeze_new_grammar_acceptance": true
+          }
+        },
+        {
+          "depth": 1,
+          "parent": "LocativeModalPredicateClause",
+          "surface": "喺屋企",
+          "kind": "construction",
+          "trace": "generative_template",
+          "construction": "LocativePlacePhrase",
+          "label": "Location",
+          "slots": [
+            "construction_span",
+            "coverb_marker",
+            "goal",
+            "head_noun",
+            "location",
+            "locative_marker",
+            "locative_phrase",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "learner_display_slots": [
+            "head_noun",
+            "location",
+            "np",
+            "object",
+            "topic"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "construction_span",
+            "coverb_marker",
+            "goal",
+            "locative_marker",
+            "locative_phrase",
+            "opinion_topic"
+          ],
+          "trace_detail": {
+            "kind": "generative_template",
+            "construction_type": "LocativePlacePhrase",
+            "template_family": "generative_template",
+            "subspan": true,
+            "template": [
+              "locative_marker!",
+              "location!"
+            ],
+            "assigned_slots": [
+              "locative_marker",
+              "location"
+            ],
+            "surfaces": [
+              "喺",
+              "屋企"
+            ]
+          },
+          "grammar_legitimacy": {
+            "pattern": "LocativePlacePhrase",
+            "primary_claim_type": "cantonese_language_claim",
+            "status": "unsupported_generalization",
+            "confidence": "unsupported",
+            "action": "quarantine_and_research_before_retention",
+            "pattern_specific_external_source_count": 0,
+            "native_validation_scope": "ONE_SPEAKER_SENTENCE_NATURALNESS_ONLY_NOT_ANALYSIS_VALIDATION",
+            "native_naturalness_judgment_count": 2,
+            "native_naturalness_acceptable_count": 2,
+            "native_naturalness_rejected_count": 0,
+            "native_naturalness_conflict_sentence_ids": [],
+            "native_analysis_validation_count": 0,
+            "native_conflict_disposition": "none",
+            "held_out_performance": "NOT_ESTABLISHED",
+            "freeze_new_grammar_acceptance": true
+          }
+        },
+        {
+          "depth": 2,
+          "parent": "LocativePlacePhrase",
+          "surface": "喺",
+          "kind": "token",
+          "trace": "atomic_lexicon",
+          "role": "func",
+          "syntax": "locative_coverb",
+          "jyutping": "hai2",
+          "slots": [
+            "coverb_marker",
+            "locative_marker"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "coverb_marker",
+            "locative_marker"
+          ],
+          "contextual_role_affordances": [
+            {
+              "role": "func",
+              "slot": "",
+              "source": "lexical_default",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            }
+          ],
+          "trace_detail": {
+            "kind": "atomic_lexicon",
+            "generated_slots": [
+              "coverb_marker",
+              "locative_marker"
+            ]
+          }
+        },
+        {
+          "depth": 2,
+          "parent": "LocativePlacePhrase",
+          "surface": "屋企",
+          "kind": "token",
+          "trace": "atomic_lexicon",
+          "role": "where",
+          "syntax": "place_or_goal",
+          "jyutping": "uk1 kei2",
+          "slots": [
+            "goal",
+            "head_noun",
+            "location",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "learner_display_slots": [
+            "head_noun",
+            "location",
+            "np",
+            "object",
+            "topic"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "goal",
+            "opinion_topic"
+          ],
+          "contextual_role_affordances": [
+            {
+              "role": "where",
+              "slot": "",
+              "source": "lexical_default",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            },
+            {
+              "role": "what",
+              "slot": "object",
+              "source": "nominal_affordance",
+              "active_before_construction_wrapping": false,
+              "active_in_final_construction": false,
+              "activated_by": ""
+            }
+          ],
+          "trace_detail": {
+            "kind": "atomic_lexicon",
+            "generated_slots": [
+              "goal",
+              "head_noun",
+              "location",
+              "np",
+              "object",
+              "opinion_topic",
+              "topic"
+            ]
+          }
+        },
+        {
+          "depth": 1,
+          "parent": "LocativeModalPredicateClause",
+          "surface": "可以食飯",
+          "kind": "construction",
+          "trace": "generative_template",
+          "construction": "ModalVP",
+          "label": "ModalVP",
+          "slots": [
+            "action_vp",
+            "construction_span",
+            "modal",
+            "modal_predicate",
+            "modal_vp",
+            "object",
+            "predicate",
+            "productive_vo",
+            "vp"
+          ],
+          "learner_display_slots": [
+            "modal",
+            "object",
+            "predicate",
+            "vp"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "action_vp",
+            "construction_span",
+            "modal_predicate",
+            "modal_vp",
+            "productive_vo"
+          ],
+          "trace_detail": {
+            "kind": "generative_template",
+            "construction_type": "ModalVP",
+            "template_family": "generative_template",
+            "template": [
+              "subject?",
+              "time?",
+              "negator?",
+              "modal!",
+              "manner?",
+              "vp!",
+              "particle?"
+            ],
+            "assigned_slots": [
+              "modal",
+              "vp"
+            ],
+            "surfaces": [
+              "可以",
+              "食飯"
+            ]
+          },
+          "grammar_legitimacy": {
+            "pattern": "ModalVP",
+            "primary_claim_type": "cantonese_language_claim",
+            "status": "provisional",
+            "confidence": "medium",
+            "action": "retain_provisional_pending_pattern_specific_attestation_and_heldout_review",
+            "pattern_specific_external_source_count": 0,
+            "native_validation_scope": "ONE_SPEAKER_SENTENCE_NATURALNESS_ONLY_NOT_ANALYSIS_VALIDATION",
+            "native_naturalness_judgment_count": 8,
+            "native_naturalness_acceptable_count": 8,
+            "native_naturalness_rejected_count": 0,
+            "native_naturalness_conflict_sentence_ids": [],
+            "native_analysis_validation_count": 0,
+            "native_conflict_disposition": "none",
+            "held_out_performance": "NOT_ESTABLISHED",
+            "freeze_new_grammar_acceptance": true
+          }
+        },
+        {
+          "depth": 2,
+          "parent": "ModalVP",
+          "surface": "可以",
+          "kind": "token",
+          "trace": "atomic_lexicon",
+          "role": "func",
+          "syntax": "modal_permission_or_ability",
+          "jyutping": "ho2 ji5",
+          "slots": [
+            "modal"
+          ],
+          "learner_display_slots": [
+            "modal"
+          ],
+          "contextual_role_affordances": [
+            {
+              "role": "func",
+              "slot": "",
+              "source": "lexical_default",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            }
+          ],
+          "trace_detail": {
+            "kind": "atomic_lexicon",
+            "generated_slots": [
+              "modal"
+            ]
+          }
+        },
+        {
+          "depth": 2,
+          "parent": "ModalVP",
+          "surface": "食飯",
+          "kind": "construction",
+          "trace": "generative_template",
+          "construction": "ProductiveVO",
+          "label": "VP",
+          "slots": [
+            "action_vp",
+            "object",
+            "predicate",
+            "productive_vo",
+            "vp"
+          ],
+          "learner_display_slots": [
+            "object",
+            "predicate",
+            "vp"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "action_vp",
+            "productive_vo"
+          ],
+          "trace_detail": {
+            "kind": "generative_template",
+            "construction_type": "ProductiveVO",
+            "template_family": "generative_template",
+            "subspan": true,
+            "template": [
+              "action_verb!",
+              "object!"
+            ],
+            "assigned_slots": [
+              "action_verb",
+              "object"
+            ],
+            "surfaces": [
+              "食",
+              "飯"
+            ],
+            "constraints": {
+              "surface_sequence_in": [
+                "食飯",
+                "煮飯",
+                "摘芒果",
+                "買嘢",
+                "食嘢",
+                "飲水",
+                "飲茶",
+                "寫字",
+                "寫名",
+                "睇書",
+                "聽歌",
+                "講嘢",
+                "打電話",
+                "聽電話",
+                "做功課",
+                "返學",
+                "放學",
+                "瞓覺",
+                "洗手",
+                "沖涼",
+                "曬太陽",
+                "打麻雀",
+                "默書",
+                "炒股票",
+                "發脾氣",
+                "食意粉",
+                "Book枱"
+              ]
+            },
+            "role_overrides": {
+              "action_verb": {
+                "label": "doing",
+                "syntax": "verb",
+                "slots": []
+              },
+              "object": {
+                "label": "what",
+                "syntax": "object",
+                "slots": []
+              }
+            }
+          },
+          "grammar_legitimacy": {
+            "pattern": "ProductiveVO",
+            "primary_claim_type": "cantonese_language_claim",
+            "status": "research_pending",
+            "confidence": "low",
+            "action": "retain_but_quarantine_from_new_grammar_acceptance",
+            "pattern_specific_external_source_count": 0,
+            "native_validation_scope": "ONE_SPEAKER_SENTENCE_NATURALNESS_ONLY_NOT_ANALYSIS_VALIDATION",
+            "native_naturalness_judgment_count": 6,
+            "native_naturalness_acceptable_count": 6,
+            "native_naturalness_rejected_count": 0,
+            "native_naturalness_conflict_sentence_ids": [],
+            "native_analysis_validation_count": 0,
+            "native_conflict_disposition": "none",
+            "held_out_performance": "NOT_ESTABLISHED",
+            "freeze_new_grammar_acceptance": true
+          }
+        },
+        {
+          "depth": 3,
+          "parent": "ProductiveVO",
+          "surface": "食",
+          "kind": "token",
+          "trace": "atomic_lexicon",
+          "role": "doing",
+          "syntax": "verb",
+          "jyutping": "sik6",
+          "slots": [
+            "action_verb",
+            "consumption_verb",
+            "main_verb",
+            "predicate",
+            "purpose_verb",
+            "stative_complement_head"
+          ],
+          "learner_display_slots": [
+            "action_verb",
+            "main_verb",
+            "predicate"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "consumption_verb",
+            "purpose_verb",
+            "stative_complement_head"
+          ],
+          "contextual_role_affordances": [
+            {
+              "role": "doing",
+              "slot": "",
+              "source": "lexical_default",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            }
+          ],
+          "trace_detail": {
+            "kind": "atomic_lexicon",
+            "contextual_role_override": "ProductiveVO",
+            "original_role": "doing",
+            "generated_slots": [
+              "action_verb",
+              "consumption_verb",
+              "main_verb",
+              "predicate",
+              "purpose_verb",
+              "stative_complement_head"
+            ],
+            "role_resolution": {
+              "lexical_default_role": "doing",
+              "active_role": "doing",
+              "active_affordance_source": "ProductiveVO"
+            }
+          }
+        },
+        {
+          "depth": 3,
+          "parent": "ProductiveVO",
+          "surface": "飯",
+          "kind": "token",
+          "trace": "atomic_lexicon",
+          "role": "what",
+          "syntax": "object",
+          "jyutping": "faan6",
+          "slots": [
+            "head_noun",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "learner_display_slots": [
+            "head_noun",
+            "np",
+            "object",
+            "topic"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "opinion_topic"
+          ],
+          "contextual_role_affordances": [
+            {
+              "role": "what",
+              "slot": "",
+              "source": "lexical_default",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            },
+            {
+              "role": "what",
+              "slot": "object",
+              "source": "nominal_affordance",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            }
+          ],
+          "trace_detail": {
+            "kind": "atomic_lexicon",
+            "contextual_role_override": "ProductiveVO",
+            "original_role": "what",
+            "generated_slots": [
+              "head_noun",
+              "np",
+              "object",
+              "opinion_topic",
+              "topic"
+            ],
+            "role_resolution": {
+              "lexical_default_role": "what",
+              "active_role": "what",
+              "active_affordance_source": "ProductiveVO"
+            }
+          }
+        },
+        {
+          "depth": 0,
+          "parent": "",
+          "surface": "。",
+          "kind": "text",
+          "trace": "punctuation_or_plain_text",
+          "trace_detail": {
+            "kind": "punctuation_or_plain_text"
+          }
+        }
+      ],
+      "full_review": {
+        "required": true,
+        "reasons": [
+          "audit:learner_ui_hover:WARN",
+          "audit:grammar_legitimacy:WARN",
+          "grammar_legitimacy:parser_heuristic",
+          "grammar_legitimacy:unsupported_generalization",
+          "grammar_legitimacy:provisional",
+          "grammar_legitimacy:research_pending"
+        ],
+        "full_diagnostics_path": "Canto Span/CP022-I1A-I01-R1-FOCUSED-RENDER-REVIEW.canto-span-full-diagnostics.json",
+        "full_diagnostic_index": 3
+      }
+    },
+    {
+      "diagnostic_index": 4,
+      "block_index": 5,
+      "block_start_line": 72,
+      "source_line_index": 1,
+      "source": "呢本書可以睇。",
+      "context_directive": null,
+      "explicit_context": {
+        "supplied": false,
+        "turns": []
+      },
+      "parser_shadow_source": "呢本書可以睇。",
+      "raw_display_preservation_status": "PASS",
+      "normalization_trace": [],
+      "parser_shadow_repairs": [],
+      "folded_lexical_repairs": [],
+      "normalization_review_suggestions": [],
+      "top_constructions": [
+        "TopicModalPredicateClause"
+      ],
+      "top_child_constructions": [],
+      "trace_summary": {
+        "generative_template": 3,
+        "atomic_lexicon": 5,
+        "punctuation_or_plain_text": 1
+      },
+      "template_family_summary": {
+        "generative_template": 2
+      },
+      "review_count": 0,
+      "parser_active_feature_bundle_count": 1,
+      "context": {
+        "requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": ""
+      },
+      "semantic_review_flags": [],
+      "semantic_acceptance": {
+        "status": "MANUAL_REVIEW_ELIGIBLE",
+        "automatic_acceptance": false,
+        "grammar_freeze_active": true,
+        "blocker_count": 0,
+        "review_reason_count": 0,
+        "outer_wrapper_blocked": false,
+        "blockers": [],
+        "review_reasons": [],
+        "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+      },
+      "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+      "semantic_acceptance_blocker_count": 0,
+      "semantic_acceptance_review_reason_count": 0,
+      "semantic_acceptance_outer_wrapper_blocked": false,
+      "topic_chain": null,
+      "particle_cluster": null,
+      "root_span_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "呢本書可以睇"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "audit_statuses": {
+        "normalization": "PASS",
+        "jyutping": "PASS",
+        "registry": "PASS",
+        "learner_display": "PASS",
+        "learner_ui_hover": "WARN",
+        "wrapper_coverage": "PASS",
+        "label_transition": "PASS",
+        "grammar_legitimacy": "WARN"
+      },
+      "compact_final_construction_tree": [
+        {
+          "depth": 0,
+          "parent": "",
+          "surface": "呢本書可以睇",
+          "kind": "construction",
+          "trace": "generative_template",
+          "construction": "TopicModalPredicateClause",
+          "label": "TopicModal",
+          "slots": [
+            "action_verb",
+            "classifier",
+            "clause",
+            "construction_span",
+            "demonstrative",
+            "head_noun",
+            "main_verb",
+            "modal",
+            "modal_predicate",
+            "modal_predicate_clause",
+            "modal_vp",
+            "np",
+            "object",
+            "opinion_topic",
+            "predicate",
+            "topic",
+            "topic_modal_predicate_clause",
+            "vp"
+          ],
+          "learner_display_slots": [
+            "action_verb",
+            "measure_word",
+            "demonstrative",
+            "head_noun",
+            "main_verb",
+            "modal",
+            "np",
+            "object",
+            "predicate",
+            "topic",
+            "vp"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "clause",
+            "construction_span",
+            "modal_predicate",
+            "modal_predicate_clause",
+            "modal_vp",
+            "opinion_topic",
+            "topic_modal_predicate_clause"
+          ],
+          "trace_detail": {
+            "kind": "generative_template",
+            "construction_type": "TopicModalPredicateClause",
+            "reason": "Wraps a generated topic/subject/location prefix plus an existing ModalVP without changing the ModalVP internals.",
+            "template": [
+              "topic!",
+              "modal_vp!"
+            ],
+            "assigned_slots": [
+              "topic",
+              "modal_vp"
+            ],
+            "surfaces": [
+              "呢本書",
+              "可以睇"
+            ]
+          },
+          "grammar_legitimacy": {
+            "pattern": "ClauseSpan",
+            "primary_claim_type": "parser_representation_decision",
+            "status": "parser_heuristic",
+            "confidence": "medium",
+            "action": "retain_as_bounded_internal_representation_only",
+            "pattern_specific_external_source_count": 0,
+            "native_validation_scope": "COMPATIBILITY_SURFACE_JUDGMENTS_ONLY_NOT_CLAUSESPAN_ANALYSIS_VALIDATION",
+            "native_naturalness_judgment_count": 33,
+            "native_naturalness_acceptable_count": 31,
+            "native_naturalness_rejected_count": 2,
+            "native_naturalness_conflict_sentence_ids": [
+              "CS160-FU1-01",
+              "CS160-N013"
+            ],
+            "native_analysis_validation_count": 0,
+            "native_conflict_disposition": "not_attributed_to_neutral_clause_span",
+            "held_out_performance": "NOT_YET_OPENED",
+            "freeze_new_grammar_acceptance": true
+          }
+        },
+        {
+          "depth": 1,
+          "parent": "TopicModalPredicateClause",
+          "surface": "呢本書",
+          "kind": "construction",
+          "trace": "generative_template",
+          "construction": "DemonstrativeClassifierNP",
+          "label": "NP",
+          "slots": [
+            "classifier",
+            "construction_span",
+            "demonstrative",
+            "head_noun",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "learner_display_slots": [
+            "measure_word",
+            "demonstrative",
+            "head_noun",
+            "np",
+            "object",
+            "topic"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "construction_span",
+            "opinion_topic"
+          ],
+          "trace_detail": {
+            "kind": "generative_template",
+            "construction_type": "DemonstrativeClassifierNP",
+            "template_family": "generative_template",
+            "subspan": true,
+            "template": [
+              "demonstrative!",
+              "classifier!",
+              "head_noun!"
+            ],
+            "assigned_slots": [
+              "demonstrative",
+              "classifier",
+              "head_noun"
+            ],
+            "surfaces": [
+              "呢",
+              "本",
+              "書"
+            ]
+          },
+          "grammar_legitimacy": {
+            "pattern": "DemonstrativeClassifierNP",
+            "primary_claim_type": "cantonese_language_claim",
+            "status": "provisional",
+            "confidence": "medium",
+            "action": "retain_provisional_pending_pattern_specific_attestation_and_heldout_review",
+            "pattern_specific_external_source_count": 0,
+            "native_validation_scope": "ONE_SPEAKER_SENTENCE_NATURALNESS_ONLY_NOT_ANALYSIS_VALIDATION",
+            "native_naturalness_judgment_count": 6,
+            "native_naturalness_acceptable_count": 6,
+            "native_naturalness_rejected_count": 0,
+            "native_naturalness_conflict_sentence_ids": [],
+            "native_analysis_validation_count": 0,
+            "native_conflict_disposition": "none",
+            "held_out_performance": "NOT_ESTABLISHED",
+            "freeze_new_grammar_acceptance": true
+          }
+        },
+        {
+          "depth": 2,
+          "parent": "DemonstrativeClassifierNP",
+          "surface": "呢",
+          "kind": "token",
+          "trace": "atomic_lexicon",
+          "role": "func",
+          "syntax": "demonstrative_determiner",
+          "jyutping": "ni1",
+          "slots": [
+            "demonstrative"
+          ],
+          "learner_display_slots": [
+            "demonstrative"
+          ],
+          "contextual_role_affordances": [
+            {
+              "role": "func",
+              "slot": "",
+              "source": "lexical_default",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            }
+          ],
+          "trace_detail": {
+            "kind": "atomic_lexicon",
+            "reason": "Transparent split token inside a generated DemonstrativeClassifierNP; the NP construction carries the generative template trace.",
+            "generated_slots": [
+              "demonstrative"
+            ]
+          }
+        },
+        {
+          "depth": 2,
+          "parent": "DemonstrativeClassifierNP",
+          "surface": "本",
+          "kind": "token",
+          "trace": "atomic_lexicon",
+          "role": "measure_word",
+          "syntax": "classifier_book",
+          "jyutping": "bun2",
+          "slots": [
+            "classifier"
+          ],
+          "learner_display_slots": [
+            "measure_word"
+          ],
+          "contextual_role_affordances": [
+            {
+              "role": "measure_word",
+              "slot": "",
+              "source": "lexical_default",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            }
+          ],
+          "trace_detail": {
+            "kind": "atomic_lexicon",
+            "reason": "Transparent split token inside a generated DemonstrativeClassifierNP; the NP construction carries the generative template trace.",
+            "generated_slots": [
+              "classifier"
+            ]
+          }
+        },
+        {
+          "depth": 2,
+          "parent": "DemonstrativeClassifierNP",
+          "surface": "書",
+          "kind": "token",
+          "trace": "atomic_lexicon",
+          "role": "what",
+          "syntax": "object_np",
+          "jyutping": "syu1",
+          "slots": [
+            "head_noun",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "learner_display_slots": [
+            "head_noun",
+            "np",
+            "object",
+            "topic"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "opinion_topic"
+          ],
+          "contextual_role_affordances": [
+            {
+              "role": "what",
+              "slot": "",
+              "source": "lexical_default",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            },
+            {
+              "role": "what",
+              "slot": "object",
+              "source": "nominal_affordance",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            }
+          ],
+          "trace_detail": {
+            "kind": "atomic_lexicon",
+            "generated_slots": [
+              "head_noun",
+              "np",
+              "object",
+              "opinion_topic",
+              "topic"
+            ]
+          }
+        },
+        {
+          "depth": 1,
+          "parent": "TopicModalPredicateClause",
+          "surface": "可以睇",
+          "kind": "construction",
+          "trace": "generative_template",
+          "construction": "ModalVP",
+          "label": "ModalVP",
+          "slots": [
+            "action_verb",
+            "construction_span",
+            "main_verb",
+            "modal",
+            "modal_predicate",
+            "modal_vp",
+            "predicate",
+            "vp"
+          ],
+          "learner_display_slots": [
+            "action_verb",
+            "main_verb",
+            "modal",
+            "predicate",
+            "vp"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "construction_span",
+            "modal_predicate",
+            "modal_vp"
+          ],
+          "trace_detail": {
+            "kind": "generative_template",
+            "construction_type": "ModalVP",
+            "template_family": "generative_template",
+            "template": [
+              "subject?",
+              "time?",
+              "negator?",
+              "modal!",
+              "manner?",
+              "vp!",
+              "particle?"
+            ],
+            "assigned_slots": [
+              "modal",
+              "vp"
+            ],
+            "surfaces": [
+              "可以",
+              "睇"
+            ]
+          },
+          "grammar_legitimacy": {
+            "pattern": "ModalVP",
+            "primary_claim_type": "cantonese_language_claim",
+            "status": "provisional",
+            "confidence": "medium",
+            "action": "retain_provisional_pending_pattern_specific_attestation_and_heldout_review",
+            "pattern_specific_external_source_count": 0,
+            "native_validation_scope": "ONE_SPEAKER_SENTENCE_NATURALNESS_ONLY_NOT_ANALYSIS_VALIDATION",
+            "native_naturalness_judgment_count": 8,
+            "native_naturalness_acceptable_count": 8,
+            "native_naturalness_rejected_count": 0,
+            "native_naturalness_conflict_sentence_ids": [],
+            "native_analysis_validation_count": 0,
+            "native_conflict_disposition": "none",
+            "held_out_performance": "NOT_ESTABLISHED",
+            "freeze_new_grammar_acceptance": true
+          }
+        },
+        {
+          "depth": 2,
+          "parent": "ModalVP",
+          "surface": "可以",
+          "kind": "token",
+          "trace": "atomic_lexicon",
+          "role": "func",
+          "syntax": "modal_permission_or_ability",
+          "jyutping": "ho2 ji5",
+          "slots": [
+            "modal"
+          ],
+          "learner_display_slots": [
+            "modal"
+          ],
+          "contextual_role_affordances": [
+            {
+              "role": "func",
+              "slot": "",
+              "source": "lexical_default",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            }
+          ],
+          "trace_detail": {
+            "kind": "atomic_lexicon",
+            "generated_slots": [
+              "modal"
+            ]
+          }
+        },
+        {
+          "depth": 2,
+          "parent": "ModalVP",
+          "surface": "睇",
+          "kind": "token",
+          "trace": "atomic_lexicon",
+          "role": "doing",
+          "syntax": "verb transitive_affordance chain_select_perception",
+          "jyutping": "tai2",
+          "slots": [
+            "action_verb",
+            "main_verb",
+            "predicate"
+          ],
+          "learner_display_slots": [
+            "action_verb",
+            "main_verb",
+            "predicate"
+          ],
+          "contextual_role_affordances": [
+            {
+              "role": "doing",
+              "slot": "",
+              "source": "lexical_default",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            }
+          ],
+          "trace_detail": {
+            "kind": "atomic_lexicon",
+            "generated_slots": [
+              "action_verb",
+              "main_verb",
+              "predicate"
+            ]
+          }
+        },
+        {
+          "depth": 0,
+          "parent": "",
+          "surface": "。",
+          "kind": "text",
+          "trace": "punctuation_or_plain_text",
+          "trace_detail": {
+            "kind": "punctuation_or_plain_text"
+          }
+        }
+      ],
+      "full_review": {
+        "required": true,
+        "reasons": [
+          "parser_active_feature_bundle",
+          "audit:learner_ui_hover:WARN",
+          "audit:grammar_legitimacy:WARN",
+          "grammar_legitimacy:parser_heuristic",
+          "grammar_legitimacy:provisional"
+        ],
+        "full_diagnostics_path": "Canto Span/CP022-I1A-I01-R1-FOCUSED-RENDER-REVIEW.canto-span-full-diagnostics.json",
+        "full_diagnostic_index": 4
+      }
+    },
+    {
+      "diagnostic_index": 5,
+      "block_index": 6,
+      "block_start_line": 83,
+      "source_line_index": 1,
+      "source": "我同你可以去。",
+      "context_directive": null,
+      "explicit_context": {
+        "supplied": false,
+        "turns": []
+      },
+      "parser_shadow_source": "我同你可以去。",
+      "raw_display_preservation_status": "PASS",
+      "normalization_trace": [],
+      "parser_shadow_repairs": [],
+      "folded_lexical_repairs": [],
+      "normalization_review_suggestions": [],
+      "top_constructions": [
+        "CoordinatedSubjectModalPredicateClause"
+      ],
+      "top_child_constructions": [],
+      "trace_summary": {
+        "generative_template": 3,
+        "atomic_lexicon": 4,
+        "construction_internal_parser_inactive_clone": 1,
+        "punctuation_or_plain_text": 1
+      },
+      "template_family_summary": {
+        "generative_template": 1
+      },
+      "review_count": 0,
+      "parser_active_feature_bundle_count": 0,
+      "context": {
+        "requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": ""
+      },
+      "semantic_review_flags": [],
+      "semantic_acceptance": {
+        "status": "MANUAL_REVIEW_ELIGIBLE",
+        "automatic_acceptance": false,
+        "grammar_freeze_active": true,
+        "blocker_count": 0,
+        "review_reason_count": 0,
+        "outer_wrapper_blocked": false,
+        "blockers": [],
+        "review_reasons": [],
+        "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+      },
+      "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+      "semantic_acceptance_blocker_count": 0,
+      "semantic_acceptance_review_reason_count": 0,
+      "semantic_acceptance_outer_wrapper_blocked": false,
+      "topic_chain": null,
+      "particle_cluster": null,
+      "root_span_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "我同你可以去"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "audit_statuses": {
+        "normalization": "PASS",
+        "jyutping": "PASS",
+        "registry": "PASS",
+        "learner_display": "PASS",
+        "learner_ui_hover": "WARN",
+        "wrapper_coverage": "PASS",
+        "label_transition": "PASS",
+        "grammar_legitimacy": "WARN"
+      },
+      "compact_final_construction_tree": [
+        {
+          "depth": 0,
+          "parent": "",
+          "surface": "我同你可以去",
+          "kind": "construction",
+          "trace": "generative_template",
+          "construction": "CoordinatedSubjectModalPredicateClause",
+          "label": "CoordSubjModal",
+          "slots": [
+            "action_verb",
+            "clause",
+            "construction_span",
+            "coordinated_np",
+            "coordinated_subject",
+            "coordinated_subject_modal_predicate_clause",
+            "coordinator",
+            "deictic_motion_marker",
+            "left_np",
+            "main_verb",
+            "modal",
+            "modal_predicate",
+            "modal_predicate_clause",
+            "modal_vp",
+            "movement_verb",
+            "np",
+            "object",
+            "predicate",
+            "return_motion_verb",
+            "right_np",
+            "subject",
+            "topic",
+            "verb_complement",
+            "vp"
+          ],
+          "learner_display_slots": [
+            "action_verb",
+            "main_verb",
+            "modal",
+            "np",
+            "object",
+            "predicate",
+            "subject",
+            "topic",
+            "vp"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "clause",
+            "construction_span",
+            "coordinated_np",
+            "coordinated_subject",
+            "coordinated_subject_modal_predicate_clause",
+            "coordinator",
+            "deictic_motion_marker",
+            "left_np",
+            "modal_predicate",
+            "modal_predicate_clause",
+            "modal_vp",
+            "movement_verb",
+            "return_motion_verb",
+            "right_np",
+            "verb_complement"
+          ],
+          "trace_detail": {
+            "kind": "generative_template",
+            "construction_type": "CoordinatedSubjectModalPredicateClause",
+            "reason": "Adds a subject-preserving wrapper for the reviewed coordinated-subject modal pattern while keeping the ModalVP internals unchanged.",
+            "template": [
+              "subject!",
+              "modal_vp!",
+              "particle?"
+            ],
+            "assigned_slots": [
+              "subject",
+              "modal_vp"
+            ],
+            "surfaces": [
+              "我同你",
+              "可以去"
+            ]
+          },
+          "grammar_legitimacy": {
+            "pattern": "ClauseSpan",
+            "primary_claim_type": "parser_representation_decision",
+            "status": "parser_heuristic",
+            "confidence": "medium",
+            "action": "retain_as_bounded_internal_representation_only",
+            "pattern_specific_external_source_count": 0,
+            "native_validation_scope": "COMPATIBILITY_SURFACE_JUDGMENTS_ONLY_NOT_CLAUSESPAN_ANALYSIS_VALIDATION",
+            "native_naturalness_judgment_count": 33,
+            "native_naturalness_acceptable_count": 31,
+            "native_naturalness_rejected_count": 2,
+            "native_naturalness_conflict_sentence_ids": [
+              "CS160-FU1-01",
+              "CS160-N013"
+            ],
+            "native_analysis_validation_count": 0,
+            "native_conflict_disposition": "not_attributed_to_neutral_clause_span",
+            "held_out_performance": "NOT_YET_OPENED",
+            "freeze_new_grammar_acceptance": true
+          }
+        },
+        {
+          "depth": 1,
+          "parent": "CoordinatedSubjectModalPredicateClause",
+          "surface": "我同你",
+          "kind": "construction",
+          "trace": "generative_template",
+          "construction": "CoordinatedNP",
+          "label": "CoordNP",
+          "slots": [
+            "coordinated_np",
+            "coordinator",
+            "left_np",
+            "np",
+            "object",
+            "right_np",
+            "topic"
+          ],
+          "learner_display_slots": [
+            "np",
+            "object",
+            "topic"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "coordinated_np",
+            "coordinator",
+            "left_np",
+            "right_np"
+          ],
+          "trace_detail": {
+            "kind": "generative_template",
+            "construction_type": "CoordinatedNP",
+            "subspan": true,
+            "template": [
+              "left_np!",
+              "coordinator!",
+              "right_np!"
+            ],
+            "assigned_slots": [
+              "left_np",
+              "coordinator",
+              "right_np"
+            ],
+            "surfaces": [
+              "我",
+              "同",
+              "你"
+            ]
+          },
+          "grammar_legitimacy": {
+            "pattern": "CoordinatedNP",
+            "primary_claim_type": "cantonese_language_claim",
+            "status": "unsupported_generalization",
+            "confidence": "unsupported",
+            "action": "quarantine_unexercised_runtime_path",
+            "pattern_specific_external_source_count": 0,
+            "native_validation_scope": "NOT_ESTABLISHED",
+            "native_naturalness_judgment_count": 0,
+            "native_naturalness_acceptable_count": 0,
+            "native_naturalness_rejected_count": 0,
+            "native_naturalness_conflict_sentence_ids": [],
+            "native_analysis_validation_count": 0,
+            "native_conflict_disposition": "none",
+            "held_out_performance": "NOT_ESTABLISHED",
+            "freeze_new_grammar_acceptance": true
+          }
+        },
+        {
+          "depth": 2,
+          "parent": "CoordinatedNP",
+          "surface": "我",
+          "kind": "token",
+          "trace": "atomic_lexicon",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "ngo5",
+          "slots": [
+            "co_participant",
+            "head_noun",
+            "np",
+            "recipient",
+            "stance_holder",
+            "subject",
+            "topic"
+          ],
+          "learner_display_slots": [
+            "head_noun",
+            "np",
+            "subject",
+            "topic"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "co_participant",
+            "recipient",
+            "stance_holder"
+          ],
+          "contextual_role_affordances": [
+            {
+              "role": "who",
+              "slot": "",
+              "source": "lexical_default",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            },
+            {
+              "role": "what",
+              "slot": "head_noun",
+              "source": "nominal_affordance",
+              "active_before_construction_wrapping": false,
+              "active_in_final_construction": false,
+              "activated_by": ""
+            }
+          ],
+          "trace_detail": {
+            "kind": "atomic_lexicon",
+            "generated_slots": [
+              "co_participant",
+              "head_noun",
+              "np",
+              "recipient",
+              "stance_holder",
+              "subject",
+              "topic"
+            ]
+          }
+        },
+        {
+          "depth": 2,
+          "parent": "CoordinatedNP",
+          "surface": "同",
+          "kind": "token",
+          "trace": "construction_internal_parser_inactive_clone",
+          "role": "func",
+          "syntax": "coordinator",
+          "jyutping": "tung4",
+          "slots": [
+            "coordinator"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "coordinator"
+          ],
+          "contextual_role_affordances": [
+            {
+              "role": "func",
+              "slot": "",
+              "source": "lexical_default",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            },
+            {
+              "role": "what",
+              "slot": "np",
+              "source": "nominal_affordance",
+              "active_before_construction_wrapping": false,
+              "active_in_final_construction": false,
+              "activated_by": ""
+            }
+          ],
+          "trace_detail": {
+            "kind": "construction_internal_parser_inactive_clone",
+            "reason": "同 is interpreted as the coordinator inside a bounded coordinated NP, not as a coverb/comitative marker.",
+            "role_resolution": {
+              "lexical_default_role": "func",
+              "active_role": "func",
+              "active_affordance_source": "同 is interpreted as the coordinator inside a bounded coordinated NP, not as a coverb/comitative marker."
+            }
+          }
+        },
+        {
+          "depth": 2,
+          "parent": "CoordinatedNP",
+          "surface": "你",
+          "kind": "token",
+          "trace": "atomic_lexicon",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "nei5",
+          "slots": [
+            "co_participant",
+            "head_noun",
+            "np",
+            "recipient",
+            "stance_holder",
+            "subject",
+            "topic"
+          ],
+          "learner_display_slots": [
+            "head_noun",
+            "np",
+            "subject",
+            "topic"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "co_participant",
+            "recipient",
+            "stance_holder"
+          ],
+          "contextual_role_affordances": [
+            {
+              "role": "who",
+              "slot": "",
+              "source": "lexical_default",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            },
+            {
+              "role": "what",
+              "slot": "head_noun",
+              "source": "nominal_affordance",
+              "active_before_construction_wrapping": false,
+              "active_in_final_construction": false,
+              "activated_by": ""
+            }
+          ],
+          "trace_detail": {
+            "kind": "atomic_lexicon",
+            "generated_slots": [
+              "co_participant",
+              "head_noun",
+              "np",
+              "recipient",
+              "stance_holder",
+              "subject",
+              "topic"
+            ]
+          }
+        },
+        {
+          "depth": 1,
+          "parent": "CoordinatedSubjectModalPredicateClause",
+          "surface": "可以去",
+          "kind": "construction",
+          "trace": "generative_template",
+          "construction": "ModalVP",
+          "label": "ModalVP",
+          "slots": [
+            "action_verb",
+            "construction_span",
+            "deictic_motion_marker",
+            "main_verb",
+            "modal",
+            "modal_predicate",
+            "modal_vp",
+            "movement_verb",
+            "predicate",
+            "return_motion_verb",
+            "verb_complement",
+            "vp"
+          ],
+          "learner_display_slots": [
+            "action_verb",
+            "main_verb",
+            "modal",
+            "predicate",
+            "vp"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "construction_span",
+            "deictic_motion_marker",
+            "modal_predicate",
+            "modal_vp",
+            "movement_verb",
+            "return_motion_verb",
+            "verb_complement"
+          ],
+          "trace_detail": {
+            "kind": "generative_template",
+            "construction_type": "ModalVP",
+            "template_family": "generative_template",
+            "template": [
+              "subject?",
+              "time?",
+              "negator?",
+              "modal!",
+              "manner?",
+              "vp!",
+              "particle?"
+            ],
+            "assigned_slots": [
+              "modal",
+              "vp"
+            ],
+            "surfaces": [
+              "可以",
+              "去"
+            ]
+          },
+          "grammar_legitimacy": {
+            "pattern": "ModalVP",
+            "primary_claim_type": "cantonese_language_claim",
+            "status": "provisional",
+            "confidence": "medium",
+            "action": "retain_provisional_pending_pattern_specific_attestation_and_heldout_review",
+            "pattern_specific_external_source_count": 0,
+            "native_validation_scope": "ONE_SPEAKER_SENTENCE_NATURALNESS_ONLY_NOT_ANALYSIS_VALIDATION",
+            "native_naturalness_judgment_count": 8,
+            "native_naturalness_acceptable_count": 8,
+            "native_naturalness_rejected_count": 0,
+            "native_naturalness_conflict_sentence_ids": [],
+            "native_analysis_validation_count": 0,
+            "native_conflict_disposition": "none",
+            "held_out_performance": "NOT_ESTABLISHED",
+            "freeze_new_grammar_acceptance": true
+          }
+        },
+        {
+          "depth": 2,
+          "parent": "ModalVP",
+          "surface": "可以",
+          "kind": "token",
+          "trace": "atomic_lexicon",
+          "role": "func",
+          "syntax": "modal_permission_or_ability",
+          "jyutping": "ho2 ji5",
+          "slots": [
+            "modal"
+          ],
+          "learner_display_slots": [
+            "modal"
+          ],
+          "contextual_role_affordances": [
+            {
+              "role": "func",
+              "slot": "",
+              "source": "lexical_default",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            }
+          ],
+          "trace_detail": {
+            "kind": "atomic_lexicon",
+            "generated_slots": [
+              "modal"
+            ]
+          }
+        },
+        {
+          "depth": 2,
+          "parent": "ModalVP",
+          "surface": "去",
+          "kind": "token",
+          "trace": "atomic_lexicon",
+          "role": "doing",
+          "syntax": "movement_verb",
+          "jyutping": "heoi3",
+          "slots": [
+            "action_verb",
+            "deictic_motion_marker",
+            "main_verb",
+            "movement_verb",
+            "predicate",
+            "return_motion_verb",
+            "verb_complement"
+          ],
+          "learner_display_slots": [
+            "action_verb",
+            "main_verb",
+            "predicate"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "deictic_motion_marker",
+            "movement_verb",
+            "return_motion_verb",
+            "verb_complement"
+          ],
+          "contextual_role_affordances": [
+            {
+              "role": "doing",
+              "slot": "",
+              "source": "lexical_default",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            },
+            {
+              "role": "doing",
+              "slot": "return_motion_verb",
+              "source": "motion_affordance",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            }
+          ],
+          "trace_detail": {
+            "kind": "atomic_lexicon",
+            "generated_slots": [
+              "action_verb",
+              "deictic_motion_marker",
+              "main_verb",
+              "movement_verb",
+              "predicate",
+              "return_motion_verb",
+              "verb_complement"
+            ]
+          }
+        },
+        {
+          "depth": 0,
+          "parent": "",
+          "surface": "。",
+          "kind": "text",
+          "trace": "punctuation_or_plain_text",
+          "trace_detail": {
+            "kind": "punctuation_or_plain_text"
+          }
+        }
+      ],
+      "full_review": {
+        "required": true,
+        "reasons": [
+          "audit:learner_ui_hover:WARN",
+          "audit:grammar_legitimacy:WARN",
+          "grammar_legitimacy:parser_heuristic",
+          "grammar_legitimacy:unsupported_generalization",
+          "grammar_legitimacy:provisional"
+        ],
+        "full_diagnostics_path": "Canto Span/CP022-I1A-I01-R1-FOCUSED-RENDER-REVIEW.canto-span-full-diagnostics.json",
+        "full_diagnostic_index": 5
+      }
+    },
+    {
+      "diagnostic_index": 6,
+      "block_index": 7,
+      "block_start_line": 94,
+      "source_line_index": 1,
+      "source": "我冇去。",
+      "context_directive": null,
+      "explicit_context": {
+        "supplied": false,
+        "turns": []
+      },
+      "parser_shadow_source": "我冇去。",
+      "raw_display_preservation_status": "PASS",
+      "normalization_trace": [],
+      "parser_shadow_repairs": [],
+      "folded_lexical_repairs": [],
+      "normalization_review_suggestions": [],
+      "top_constructions": [
+        "SubjectPredicateClause"
+      ],
+      "top_child_constructions": [],
+      "trace_summary": {
+        "generative_template": 3,
+        "atomic_lexicon": 3,
+        "punctuation_or_plain_text": 1
+      },
+      "template_family_summary": {
+        "generative_template": 3
+      },
+      "review_count": 0,
+      "parser_active_feature_bundle_count": 0,
+      "context": {
+        "requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": ""
+      },
+      "semantic_review_flags": [],
+      "semantic_acceptance": {
+        "status": "MANUAL_REVIEW_ELIGIBLE",
+        "automatic_acceptance": false,
+        "grammar_freeze_active": true,
+        "blocker_count": 0,
+        "review_reason_count": 0,
+        "outer_wrapper_blocked": false,
+        "blockers": [],
+        "review_reasons": [],
+        "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+      },
+      "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+      "semantic_acceptance_blocker_count": 0,
+      "semantic_acceptance_review_reason_count": 0,
+      "semantic_acceptance_outer_wrapper_blocked": false,
+      "topic_chain": null,
+      "particle_cluster": null,
+      "root_span_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "我冇去"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "audit_statuses": {
+        "normalization": "PASS",
+        "jyutping": "PASS",
+        "registry": "PASS",
+        "learner_display": "PASS",
+        "learner_ui_hover": "PASS",
+        "wrapper_coverage": "PASS",
+        "label_transition": "PASS",
+        "grammar_legitimacy": "WARN"
+      },
+      "compact_final_construction_tree": [
+        {
+          "depth": 0,
+          "parent": "",
+          "surface": "我冇去",
+          "kind": "construction",
+          "trace": "generative_template",
+          "construction": "SubjectPredicateClause",
+          "label": "SubjPred",
+          "slots": [
+            "clause",
+            "negated_predicate",
+            "negative_clause",
+            "negator",
+            "predicate",
+            "subject",
+            "subject_predicate_clause"
+          ],
+          "learner_display_slots": [
+            "negator",
+            "predicate",
+            "subject"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "clause",
+            "negated_predicate",
+            "negative_clause",
+            "subject_predicate_clause"
+          ],
+          "trace_detail": {
+            "kind": "generative_template",
+            "construction_type": "SubjectPredicateClause",
+            "template_family": "generative_template",
+            "polarity": "negative",
+            "template": [
+              "subject!",
+              "predicate!",
+              "particle?"
+            ],
+            "assigned_slots": [
+              "subject",
+              "predicate"
+            ],
+            "surfaces": [
+              "我",
+              "冇去"
+            ],
+            "constraints": {
+              "predicate_must_have_any_slots": [
+                "negated_directional_motion_vp",
+                "negated_vp"
+              ]
+            }
+          },
+          "grammar_legitimacy": {
+            "pattern": "ClauseSpan",
+            "primary_claim_type": "parser_representation_decision",
+            "status": "parser_heuristic",
+            "confidence": "medium",
+            "action": "retain_as_bounded_internal_representation_only",
+            "pattern_specific_external_source_count": 0,
+            "native_validation_scope": "COMPATIBILITY_SURFACE_JUDGMENTS_ONLY_NOT_CLAUSESPAN_ANALYSIS_VALIDATION",
+            "native_naturalness_judgment_count": 33,
+            "native_naturalness_acceptable_count": 31,
+            "native_naturalness_rejected_count": 2,
+            "native_naturalness_conflict_sentence_ids": [
+              "CS160-FU1-01",
+              "CS160-N013"
+            ],
+            "native_analysis_validation_count": 0,
+            "native_conflict_disposition": "not_attributed_to_neutral_clause_span",
+            "held_out_performance": "NOT_YET_OPENED",
+            "freeze_new_grammar_acceptance": true
+          }
+        },
+        {
+          "depth": 1,
+          "parent": "SubjectPredicateClause",
+          "surface": "我",
+          "kind": "token",
+          "trace": "atomic_lexicon",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "ngo5",
+          "slots": [
+            "co_participant",
+            "head_noun",
+            "np",
+            "recipient",
+            "stance_holder",
+            "subject",
+            "topic"
+          ],
+          "learner_display_slots": [
+            "head_noun",
+            "np",
+            "subject",
+            "topic"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "co_participant",
+            "recipient",
+            "stance_holder"
+          ],
+          "contextual_role_affordances": [
+            {
+              "role": "who",
+              "slot": "",
+              "source": "lexical_default",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            },
+            {
+              "role": "what",
+              "slot": "head_noun",
+              "source": "nominal_affordance",
+              "active_before_construction_wrapping": false,
+              "active_in_final_construction": false,
+              "activated_by": ""
+            }
+          ],
+          "trace_detail": {
+            "kind": "atomic_lexicon",
+            "generated_slots": [
+              "co_participant",
+              "head_noun",
+              "np",
+              "recipient",
+              "stance_holder",
+              "subject",
+              "topic"
+            ]
+          }
+        },
+        {
+          "depth": 1,
+          "parent": "SubjectPredicateClause",
+          "surface": "冇去",
+          "kind": "construction",
+          "trace": "generative_template",
+          "construction": "NegatedDirectionalMotionVP",
+          "label": "NegMotionVP",
+          "slots": [
+            "action_vp",
+            "directional_motion_vp",
+            "motion_predicate",
+            "movement_verb",
+            "negated_directional_motion_vp",
+            "negator",
+            "predicate",
+            "vp"
+          ],
+          "learner_display_slots": [
+            "negator",
+            "predicate",
+            "vp"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "action_vp",
+            "directional_motion_vp",
+            "motion_predicate",
+            "movement_verb",
+            "negated_directional_motion_vp"
+          ],
+          "trace_detail": {
+            "kind": "generative_template",
+            "construction_type": "NegatedDirectionalMotionVP",
+            "template_family": "generative_template",
+            "subspan": true,
+            "template": [
+              "m4_negator!",
+              "directional_motion_vp!"
+            ],
+            "assigned_slots": [
+              "m4_negator",
+              "directional_motion_vp"
+            ],
+            "surfaces": [
+              "冇",
+              "去"
+            ],
+            "role_overrides": {
+              "m4_negator": {
+                "label": "func",
+                "syntax": "negator",
+                "slots": []
+              }
+            }
+          },
+          "grammar_legitimacy": {
+            "pattern": "NegatedDirectionalMotionVP",
+            "primary_claim_type": "cantonese_language_claim",
+            "status": "provisional",
+            "confidence": "medium",
+            "action": "retain_provisional_pending_pattern_specific_attestation_and_heldout_review",
+            "pattern_specific_external_source_count": 0,
+            "native_validation_scope": "ONE_SPEAKER_SENTENCE_NATURALNESS_ONLY_NOT_ANALYSIS_VALIDATION",
+            "native_naturalness_judgment_count": 4,
+            "native_naturalness_acceptable_count": 4,
+            "native_naturalness_rejected_count": 0,
+            "native_naturalness_conflict_sentence_ids": [],
+            "native_analysis_validation_count": 0,
+            "native_conflict_disposition": "none",
+            "held_out_performance": "NOT_ESTABLISHED",
+            "freeze_new_grammar_acceptance": true
+          }
+        },
+        {
+          "depth": 2,
+          "parent": "NegatedDirectionalMotionVP",
+          "surface": "冇",
+          "kind": "token",
+          "trace": "atomic_lexicon",
+          "role": "func",
+          "syntax": "negator",
+          "jyutping": "mou5",
+          "slots": [
+            "m4_negator",
+            "negated_existential",
+            "negator"
+          ],
+          "learner_display_slots": [
+            "negator"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "m4_negator",
+            "negated_existential"
+          ],
+          "contextual_role_affordances": [
+            {
+              "role": "func",
+              "slot": "",
+              "source": "lexical_default",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            }
+          ],
+          "trace_detail": {
+            "kind": "atomic_lexicon",
+            "contextual_role_override": "NegatedDirectionalMotionVP",
+            "original_role": "func",
+            "generated_slots": [
+              "m4_negator",
+              "negated_existential",
+              "negator"
+            ],
+            "role_resolution": {
+              "lexical_default_role": "func",
+              "active_role": "func",
+              "active_affordance_source": "NegatedDirectionalMotionVP"
+            }
+          }
+        },
+        {
+          "depth": 2,
+          "parent": "NegatedDirectionalMotionVP",
+          "surface": "去",
+          "kind": "construction",
+          "trace": "generative_template",
+          "construction": "DirectionalMotionVP",
+          "label": "MotionVP",
+          "slots": [
+            "action_vp",
+            "directional_motion_vp",
+            "motion_predicate",
+            "movement_verb",
+            "predicate",
+            "vp"
+          ],
+          "learner_display_slots": [
+            "predicate",
+            "vp"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "action_vp",
+            "directional_motion_vp",
+            "motion_predicate",
+            "movement_verb"
+          ],
+          "trace_detail": {
+            "kind": "generative_template",
+            "construction_type": "DirectionalMotionVP",
+            "template_family": "generative_template",
+            "subspan": true,
+            "template": [
+              "deictic_motion_marker!"
+            ],
+            "assigned_slots": [
+              "deictic_motion_marker"
+            ],
+            "surfaces": [
+              "去"
+            ],
+            "role_overrides": {
+              "deictic_motion_marker": {
+                "label": "doing",
+                "syntax": "deictic_motion_marker",
+                "slots": []
+              }
+            }
+          },
+          "grammar_legitimacy": {
+            "pattern": "DirectionalMotionVP",
+            "primary_claim_type": "cantonese_language_claim",
+            "status": "provisional",
+            "confidence": "medium",
+            "action": "retain_provisional_pending_pattern_specific_attestation_and_heldout_review",
+            "pattern_specific_external_source_count": 0,
+            "native_validation_scope": "ONE_SPEAKER_SENTENCE_NATURALNESS_ONLY_NOT_ANALYSIS_VALIDATION",
+            "native_naturalness_judgment_count": 25,
+            "native_naturalness_acceptable_count": 25,
+            "native_naturalness_rejected_count": 0,
+            "native_naturalness_conflict_sentence_ids": [],
+            "native_analysis_validation_count": 0,
+            "native_conflict_disposition": "none",
+            "held_out_performance": "NOT_ESTABLISHED",
+            "freeze_new_grammar_acceptance": true
+          }
+        },
+        {
+          "depth": 3,
+          "parent": "DirectionalMotionVP",
+          "surface": "去",
+          "kind": "token",
+          "trace": "atomic_lexicon",
+          "role": "doing",
+          "syntax": "deictic_motion_marker",
+          "jyutping": "heoi3",
+          "slots": [
+            "action_verb",
+            "deictic_motion_marker",
+            "main_verb",
+            "movement_verb",
+            "predicate"
+          ],
+          "learner_display_slots": [
+            "action_verb",
+            "main_verb",
+            "predicate"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "deictic_motion_marker",
+            "movement_verb"
+          ],
+          "contextual_role_affordances": [
+            {
+              "role": "doing",
+              "slot": "",
+              "source": "lexical_default",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            },
+            {
+              "role": "doing",
+              "slot": "return_motion_verb",
+              "source": "motion_affordance",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            }
+          ],
+          "trace_detail": {
+            "kind": "atomic_lexicon",
+            "contextual_role_override": "DirectionalMotionVP",
+            "original_role": "doing",
+            "generated_slots": [
+              "action_verb",
+              "deictic_motion_marker",
+              "main_verb",
+              "movement_verb",
+              "predicate"
+            ],
+            "role_resolution": {
+              "lexical_default_role": "doing",
+              "active_role": "doing",
+              "active_affordance_source": "DirectionalMotionVP"
+            }
+          }
+        },
+        {
+          "depth": 0,
+          "parent": "",
+          "surface": "。",
+          "kind": "text",
+          "trace": "punctuation_or_plain_text",
+          "trace_detail": {
+            "kind": "punctuation_or_plain_text"
+          }
+        }
+      ],
+      "full_review": {
+        "required": true,
+        "reasons": [
+          "audit:grammar_legitimacy:WARN",
+          "grammar_legitimacy:parser_heuristic",
+          "grammar_legitimacy:provisional"
+        ],
+        "full_diagnostics_path": "Canto Span/CP022-I1A-I01-R1-FOCUSED-RENDER-REVIEW.canto-span-full-diagnostics.json",
+        "full_diagnostic_index": 6
+      }
+    },
+    {
+      "diagnostic_index": 7,
+      "block_index": 8,
+      "block_start_line": 107,
+      "source_line_index": 1,
+      "source": "食飯。",
+      "context_directive": null,
+      "explicit_context": {
+        "supplied": false,
+        "turns": []
+      },
+      "parser_shadow_source": "食飯。",
+      "raw_display_preservation_status": "PASS",
+      "normalization_trace": [],
+      "parser_shadow_repairs": [],
+      "folded_lexical_repairs": [],
+      "normalization_review_suggestions": [],
+      "top_constructions": [
+        "ProductiveVO"
+      ],
+      "top_child_constructions": [],
+      "trace_summary": {
+        "generative_template": 1,
+        "atomic_lexicon": 2,
+        "punctuation_or_plain_text": 1
+      },
+      "template_family_summary": {
+        "generative_template": 1
+      },
+      "review_count": 0,
+      "parser_active_feature_bundle_count": 0,
+      "context": {
+        "requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": ""
+      },
+      "semantic_review_flags": [],
+      "semantic_acceptance": {
+        "status": "MANUAL_REVIEW_ELIGIBLE",
+        "automatic_acceptance": false,
+        "grammar_freeze_active": true,
+        "blocker_count": 0,
+        "review_reason_count": 0,
+        "outer_wrapper_blocked": false,
+        "blockers": [],
+        "review_reasons": [],
+        "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+      },
+      "semantic_acceptance_status": "MANUAL_REVIEW_ELIGIBLE",
+      "semantic_acceptance_blocker_count": 0,
+      "semantic_acceptance_review_reason_count": 0,
+      "semantic_acceptance_outer_wrapper_blocked": false,
+      "topic_chain": null,
+      "particle_cluster": null,
+      "root_span_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "食飯"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "audit_statuses": {
+        "normalization": "PASS",
+        "jyutping": "PASS",
+        "registry": "PASS",
+        "learner_display": "PASS",
+        "learner_ui_hover": "PASS",
+        "wrapper_coverage": "PASS",
+        "label_transition": "PASS",
+        "grammar_legitimacy": "WARN"
+      },
+      "compact_final_construction_tree": [
+        {
+          "depth": 0,
+          "parent": "",
+          "surface": "食飯",
+          "kind": "construction",
+          "trace": "generative_template",
+          "construction": "ProductiveVO",
+          "label": "VP",
+          "slots": [
+            "action_vp",
+            "object",
+            "predicate",
+            "productive_vo",
+            "vp"
+          ],
+          "learner_display_slots": [
+            "object",
+            "predicate",
+            "vp"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "action_vp",
+            "productive_vo"
+          ],
+          "trace_detail": {
+            "kind": "generative_template",
+            "construction_type": "ProductiveVO",
+            "template_family": "generative_template",
+            "subspan": true,
+            "template": [
+              "action_verb!",
+              "object!"
+            ],
+            "assigned_slots": [
+              "action_verb",
+              "object"
+            ],
+            "surfaces": [
+              "食",
+              "飯"
+            ],
+            "constraints": {
+              "surface_sequence_in": [
+                "食飯",
+                "煮飯",
+                "摘芒果",
+                "買嘢",
+                "食嘢",
+                "飲水",
+                "飲茶",
+                "寫字",
+                "寫名",
+                "睇書",
+                "聽歌",
+                "講嘢",
+                "打電話",
+                "聽電話",
+                "做功課",
+                "返學",
+                "放學",
+                "瞓覺",
+                "洗手",
+                "沖涼",
+                "曬太陽",
+                "打麻雀",
+                "默書",
+                "炒股票",
+                "發脾氣",
+                "食意粉",
+                "Book枱"
+              ]
+            },
+            "role_overrides": {
+              "action_verb": {
+                "label": "doing",
+                "syntax": "verb",
+                "slots": []
+              },
+              "object": {
+                "label": "what",
+                "syntax": "object",
+                "slots": []
+              }
+            }
+          },
+          "grammar_legitimacy": {
+            "pattern": "ProductiveVO",
+            "primary_claim_type": "cantonese_language_claim",
+            "status": "research_pending",
+            "confidence": "low",
+            "action": "retain_but_quarantine_from_new_grammar_acceptance",
+            "pattern_specific_external_source_count": 0,
+            "native_validation_scope": "ONE_SPEAKER_SENTENCE_NATURALNESS_ONLY_NOT_ANALYSIS_VALIDATION",
+            "native_naturalness_judgment_count": 6,
+            "native_naturalness_acceptable_count": 6,
+            "native_naturalness_rejected_count": 0,
+            "native_naturalness_conflict_sentence_ids": [],
+            "native_analysis_validation_count": 0,
+            "native_conflict_disposition": "none",
+            "held_out_performance": "NOT_ESTABLISHED",
+            "freeze_new_grammar_acceptance": true
+          }
+        },
+        {
+          "depth": 1,
+          "parent": "ProductiveVO",
+          "surface": "食",
+          "kind": "token",
+          "trace": "atomic_lexicon",
+          "role": "doing",
+          "syntax": "verb",
+          "jyutping": "sik6",
+          "slots": [
+            "action_verb",
+            "consumption_verb",
+            "main_verb",
+            "predicate",
+            "purpose_verb",
+            "stative_complement_head"
+          ],
+          "learner_display_slots": [
+            "action_verb",
+            "main_verb",
+            "predicate"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "consumption_verb",
+            "purpose_verb",
+            "stative_complement_head"
+          ],
+          "contextual_role_affordances": [
+            {
+              "role": "doing",
+              "slot": "",
+              "source": "lexical_default",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            }
+          ],
+          "trace_detail": {
+            "kind": "atomic_lexicon",
+            "contextual_role_override": "ProductiveVO",
+            "original_role": "doing",
+            "generated_slots": [
+              "action_verb",
+              "consumption_verb",
+              "main_verb",
+              "predicate",
+              "purpose_verb",
+              "stative_complement_head"
+            ],
+            "role_resolution": {
+              "lexical_default_role": "doing",
+              "active_role": "doing",
+              "active_affordance_source": "ProductiveVO"
+            }
+          }
+        },
+        {
+          "depth": 1,
+          "parent": "ProductiveVO",
+          "surface": "飯",
+          "kind": "token",
+          "trace": "atomic_lexicon",
+          "role": "what",
+          "syntax": "object",
+          "jyutping": "faan6",
+          "slots": [
+            "head_noun",
+            "np",
+            "object",
+            "opinion_topic",
+            "topic"
+          ],
+          "learner_display_slots": [
+            "head_noun",
+            "np",
+            "object",
+            "topic"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "opinion_topic"
+          ],
+          "contextual_role_affordances": [
+            {
+              "role": "what",
+              "slot": "",
+              "source": "lexical_default",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            },
+            {
+              "role": "what",
+              "slot": "object",
+              "source": "nominal_affordance",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            }
+          ],
+          "trace_detail": {
+            "kind": "atomic_lexicon",
+            "contextual_role_override": "ProductiveVO",
+            "original_role": "what",
+            "generated_slots": [
+              "head_noun",
+              "np",
+              "object",
+              "opinion_topic",
+              "topic"
+            ],
+            "role_resolution": {
+              "lexical_default_role": "what",
+              "active_role": "what",
+              "active_affordance_source": "ProductiveVO"
+            }
+          }
+        },
+        {
+          "depth": 0,
+          "parent": "",
+          "surface": "。",
+          "kind": "text",
+          "trace": "punctuation_or_plain_text",
+          "trace_detail": {
+            "kind": "punctuation_or_plain_text"
+          }
+        }
+      ],
+      "full_review": {
+        "required": true,
+        "reasons": [
+          "audit:grammar_legitimacy:WARN",
+          "grammar_legitimacy:research_pending"
+        ],
+        "full_diagnostics_path": "Canto Span/CP022-I1A-I01-R1-FOCUSED-RENDER-REVIEW.canto-span-full-diagnostics.json",
+        "full_diagnostic_index": 7
+      }
+    },
+    {
+      "diagnostic_index": 8,
+      "block_index": 9,
+      "block_start_line": 118,
+      "source_line_index": 1,
+      "source": "可以去。",
+      "context_directive": null,
+      "explicit_context": {
+        "supplied": false,
+        "turns": []
+      },
+      "parser_shadow_source": "可以去。",
+      "raw_display_preservation_status": "PASS",
+      "normalization_trace": [],
+      "parser_shadow_repairs": [],
+      "folded_lexical_repairs": [],
+      "normalization_review_suggestions": [],
+      "top_constructions": [
+        "NeedsContext"
+      ],
+      "top_child_constructions": [],
+      "trace_summary": {
+        "special_ambiguity_rule": 1,
+        "atomic_lexicon": 2,
+        "punctuation_or_plain_text": 1
+      },
+      "template_family_summary": {},
+      "review_count": 1,
+      "parser_active_feature_bundle_count": 0,
+      "context": {
+        "requirement_status": "context_required",
+        "antecedent_status": "not_observed",
+        "missing_argument_slots": [
+          "modal_or_volitional_complement",
+          "subject"
+        ],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": ""
+      },
+      "semantic_review_flags": [
+        "needs_context_parse",
+        "context_required_unresolved",
+        "review_trace_present"
+      ],
+      "semantic_acceptance": {
+        "status": "BLOCKED",
+        "automatic_acceptance": false,
+        "grammar_freeze_active": true,
+        "blocker_count": 1,
+        "review_reason_count": 1,
+        "outer_wrapper_blocked": false,
+        "blockers": [
+          {
+            "code": "needs_context_construction",
+            "path": "NeedsContext[可以去]",
+            "construction": "NeedsContext",
+            "surface": "可以去",
+            "depth": 0
+          }
+        ],
+        "review_reasons": [
+          {
+            "code": "construction_trace_requires_semantic_review",
+            "path": "NeedsContext[可以去]",
+            "construction": "NeedsContext",
+            "surface": "可以去",
+            "depth": 0,
+            "trace_flags": [
+              "needs_context_parse",
+              "incomplete_modal_predicate"
+            ]
+          }
+        ],
+        "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+      },
+      "semantic_acceptance_status": "BLOCKED",
+      "semantic_acceptance_blocker_count": 1,
+      "semantic_acceptance_review_reason_count": 1,
+      "semantic_acceptance_outer_wrapper_blocked": false,
+      "topic_chain": null,
+      "particle_cluster": null,
+      "root_span_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "可以去"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "audit_statuses": {
+        "normalization": "PASS",
+        "jyutping": "PASS",
+        "registry": "PASS",
+        "learner_display": "PASS",
+        "learner_ui_hover": "PASS",
+        "wrapper_coverage": "PASS",
+        "label_transition": "PASS",
+        "grammar_legitimacy": "WARN"
+      },
+      "compact_final_construction_tree": [
+        {
+          "depth": 0,
+          "parent": "",
+          "surface": "可以去",
+          "kind": "construction",
+          "trace": "special_ambiguity_rule",
+          "construction": "NeedsContext",
+          "label": "needs context",
+          "slots": [
+            "desiderative_modal",
+            "modal",
+            "needs_context",
+            "problem_span",
+            "review_candidate"
+          ],
+          "learner_display_slots": [
+            "modal"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "desiderative_modal",
+            "needs_context",
+            "problem_span",
+            "review_candidate"
+          ],
+          "trace_detail": {
+            "kind": "special_ambiguity_rule",
+            "context_requirement_status": "context_required",
+            "antecedent_status": "not_observed",
+            "subject_status": "omitted_unlicensed",
+            "reason": "Incomplete modal/desiderative span; do not accept it as a clean predicate clause without an overt or explicitly licensed complement.",
+            "template": [
+              "modal!"
+            ],
+            "missing_argument_slots": [
+              "modal_or_volitional_complement",
+              "subject"
+            ],
+            "missing_slot_details": [
+              {
+                "slot": "modal_or_volitional_complement",
+                "license_status": "unresolved"
+              },
+              {
+                "slot": "subject",
+                "license_status": "unresolved"
+              }
+            ],
+            "not_claims": [
+              "not_clean_modal_vp",
+              "not_subject_predicate_clause"
+            ],
+            "semantic_review_flags": [
+              "needs_context_parse",
+              "incomplete_modal_predicate"
+            ]
+          },
+          "grammar_legitimacy": {
+            "pattern": "NeedsContext",
+            "primary_claim_type": "parser_heuristic",
+            "status": "parser_heuristic",
+            "confidence": "medium",
+            "action": "retain_as_parser_disposition_only",
+            "pattern_specific_external_source_count": 0,
+            "native_validation_scope": "ONE_SPEAKER_SENTENCE_NATURALNESS_ONLY_NOT_ANALYSIS_VALIDATION",
+            "native_naturalness_judgment_count": 3,
+            "native_naturalness_acceptable_count": 3,
+            "native_naturalness_rejected_count": 0,
+            "native_naturalness_conflict_sentence_ids": [],
+            "native_analysis_validation_count": 0,
+            "native_conflict_disposition": "none",
+            "held_out_performance": "NOT_ESTABLISHED",
+            "freeze_new_grammar_acceptance": true
+          }
+        },
+        {
+          "depth": 1,
+          "parent": "NeedsContext",
+          "surface": "可以",
+          "kind": "token",
+          "trace": "atomic_lexicon",
+          "role": "func",
+          "syntax": "modal_permission_or_ability",
+          "jyutping": "ho2 ji5",
+          "slots": [
+            "modal"
+          ],
+          "learner_display_slots": [
+            "modal"
+          ],
+          "contextual_role_affordances": [
+            {
+              "role": "func",
+              "slot": "",
+              "source": "lexical_default",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            }
+          ],
+          "trace_detail": {
+            "kind": "atomic_lexicon",
+            "generated_slots": [
+              "modal"
+            ]
+          }
+        },
+        {
+          "depth": 1,
+          "parent": "NeedsContext",
+          "surface": "去",
+          "kind": "token",
+          "trace": "atomic_lexicon",
+          "role": "doing",
+          "syntax": "movement_verb",
+          "jyutping": "heoi3",
+          "slots": [
+            "action_verb",
+            "deictic_motion_marker",
+            "main_verb",
+            "movement_verb",
+            "predicate",
+            "return_motion_verb",
+            "verb_complement"
+          ],
+          "learner_display_slots": [
+            "action_verb",
+            "main_verb",
+            "predicate"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "deictic_motion_marker",
+            "movement_verb",
+            "return_motion_verb",
+            "verb_complement"
+          ],
+          "contextual_role_affordances": [
+            {
+              "role": "doing",
+              "slot": "",
+              "source": "lexical_default",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            },
+            {
+              "role": "doing",
+              "slot": "return_motion_verb",
+              "source": "motion_affordance",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            }
+          ],
+          "trace_detail": {
+            "kind": "atomic_lexicon",
+            "generated_slots": [
+              "action_verb",
+              "deictic_motion_marker",
+              "main_verb",
+              "movement_verb",
+              "predicate",
+              "return_motion_verb",
+              "verb_complement"
+            ]
+          }
+        },
+        {
+          "depth": 0,
+          "parent": "",
+          "surface": "。",
+          "kind": "text",
+          "trace": "punctuation_or_plain_text",
+          "trace_detail": {
+            "kind": "punctuation_or_plain_text"
+          }
+        }
+      ],
+      "full_review": {
+        "required": true,
+        "reasons": [
+          "semantic_acceptance_blocked",
+          "review_trace_present",
+          "semantic:needs_context_parse",
+          "semantic:context_required_unresolved",
+          "semantic:review_trace_present",
+          "missing_argument_slots",
+          "context:context_required",
+          "audit:grammar_legitimacy:WARN",
+          "trace:special_ambiguity_rule",
+          "grammar_legitimacy:parser_heuristic"
+        ],
+        "full_diagnostics_path": "Canto Span/CP022-I1A-I01-R1-FOCUSED-RENDER-REVIEW.canto-span-full-diagnostics.json",
+        "full_diagnostic_index": 8
+      }
+    },
+    {
+      "diagnostic_index": 9,
+      "block_index": 10,
+      "block_start_line": 129,
+      "source_line_index": 1,
+      "source": "我同你。",
+      "context_directive": null,
+      "explicit_context": {
+        "supplied": false,
+        "turns": []
+      },
+      "parser_shadow_source": "我同你。",
+      "raw_display_preservation_status": "PASS",
+      "normalization_trace": [],
+      "parser_shadow_repairs": [],
+      "folded_lexical_repairs": [],
+      "normalization_review_suggestions": [],
+      "top_constructions": [
+        "CoordinatedNP"
+      ],
+      "top_child_constructions": [],
+      "trace_summary": {
+        "generative_template": 1,
+        "atomic_lexicon": 2,
+        "construction_internal_parser_inactive_clone": 1,
+        "punctuation_or_plain_text": 1
+      },
+      "template_family_summary": {
+        "generative_template": 1
+      },
+      "review_count": 0,
+      "parser_active_feature_bundle_count": 0,
+      "context": {
+        "requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable",
+        "missing_argument_slots": [],
+        "context_turn_id": "",
+        "question_id": "",
+        "antecedent_span": "",
+        "selected_alternative": ""
+      },
+      "semantic_review_flags": [],
+      "semantic_acceptance": {
+        "status": "REVIEW_REQUIRED",
+        "automatic_acceptance": false,
+        "grammar_freeze_active": true,
+        "blocker_count": 0,
+        "review_reason_count": 1,
+        "outer_wrapper_blocked": false,
+        "blockers": [],
+        "review_reasons": [
+          {
+            "code": "standalone_nominal_requires_fragment_or_context_review",
+            "path": "ROOT > CoordinatedNP",
+            "construction": "CoordinatedNP",
+            "surface": "我同你",
+            "depth": 1
+          }
+        ],
+        "policy": "A clean outer construction and full root coverage cannot establish semantic acceptance when any decisive descendant is unknown, dropped, malformed, context-dependent, retired, debunked, or lacks required typed relation provenance."
+      },
+      "semantic_acceptance_status": "REVIEW_REQUIRED",
+      "semantic_acceptance_blocker_count": 0,
+      "semantic_acceptance_review_reason_count": 1,
+      "semantic_acceptance_outer_wrapper_blocked": false,
+      "topic_chain": null,
+      "particle_cluster": null,
+      "root_span_coverage": {
+        "status": "PASS",
+        "top_construction_count": 1,
+        "top_construction_surfaces": [
+          "我同你"
+        ],
+        "unwrapped_root_nonpunctuation_count": 0,
+        "unwrapped_root_surfaces": [],
+        "ignored_root_remainder_count": 1
+      },
+      "audit_statuses": {
+        "normalization": "PASS",
+        "jyutping": "PASS",
+        "registry": "PASS",
+        "learner_display": "PASS",
+        "learner_ui_hover": "WARN",
+        "wrapper_coverage": "PASS",
+        "label_transition": "PASS",
+        "grammar_legitimacy": "WARN"
+      },
+      "compact_final_construction_tree": [
+        {
+          "depth": 0,
+          "parent": "",
+          "surface": "我同你",
+          "kind": "construction",
+          "trace": "generative_template",
+          "construction": "CoordinatedNP",
+          "label": "CoordNP",
+          "slots": [
+            "coordinated_np",
+            "coordinator",
+            "left_np",
+            "np",
+            "object",
+            "right_np",
+            "topic"
+          ],
+          "learner_display_slots": [
+            "np",
+            "object",
+            "topic"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "coordinated_np",
+            "coordinator",
+            "left_np",
+            "right_np"
+          ],
+          "trace_detail": {
+            "kind": "generative_template",
+            "construction_type": "CoordinatedNP",
+            "template_family": "generative_template",
+            "reason": "Direct diagnostic review rejected bare [] as a successful negative guardrail and rejected the intermediate subject+coordinator+subject template as clause-role leakage. 我同你 is a coordinated NP/fragment, not a parse absence and not automatically a coordinated subject.",
+            "template": [
+              "left_np!",
+              "coordinator!",
+              "right_np!"
+            ],
+            "assigned_slots": [
+              "left_np",
+              "coordinator",
+              "right_np"
+            ],
+            "surfaces": [
+              "我",
+              "同",
+              "你"
+            ],
+            "not_claims": [
+              "not_coverb_frame",
+              "not_parse_absence",
+              "not_clause_subject_assignment"
+            ]
+          },
+          "grammar_legitimacy": {
+            "pattern": "CoordinatedNP",
+            "primary_claim_type": "cantonese_language_claim",
+            "status": "unsupported_generalization",
+            "confidence": "unsupported",
+            "action": "quarantine_unexercised_runtime_path",
+            "pattern_specific_external_source_count": 0,
+            "native_validation_scope": "NOT_ESTABLISHED",
+            "native_naturalness_judgment_count": 0,
+            "native_naturalness_acceptable_count": 0,
+            "native_naturalness_rejected_count": 0,
+            "native_naturalness_conflict_sentence_ids": [],
+            "native_analysis_validation_count": 0,
+            "native_conflict_disposition": "none",
+            "held_out_performance": "NOT_ESTABLISHED",
+            "freeze_new_grammar_acceptance": true
+          }
+        },
+        {
+          "depth": 1,
+          "parent": "CoordinatedNP",
+          "surface": "我",
+          "kind": "token",
+          "trace": "atomic_lexicon",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "ngo5",
+          "slots": [
+            "co_participant",
+            "head_noun",
+            "np",
+            "recipient",
+            "stance_holder",
+            "subject",
+            "topic"
+          ],
+          "learner_display_slots": [
+            "head_noun",
+            "np",
+            "subject",
+            "topic"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "co_participant",
+            "recipient",
+            "stance_holder"
+          ],
+          "contextual_role_affordances": [
+            {
+              "role": "who",
+              "slot": "",
+              "source": "lexical_default",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            },
+            {
+              "role": "what",
+              "slot": "head_noun",
+              "source": "nominal_affordance",
+              "active_before_construction_wrapping": false,
+              "active_in_final_construction": false,
+              "activated_by": ""
+            }
+          ],
+          "trace_detail": {
+            "kind": "atomic_lexicon",
+            "generated_slots": [
+              "co_participant",
+              "head_noun",
+              "np",
+              "recipient",
+              "stance_holder",
+              "subject",
+              "topic"
+            ]
+          }
+        },
+        {
+          "depth": 1,
+          "parent": "CoordinatedNP",
+          "surface": "同",
+          "kind": "token",
+          "trace": "construction_internal_parser_inactive_clone",
+          "role": "func",
+          "syntax": "coordinator",
+          "jyutping": "tung4",
+          "slots": [
+            "coordinator"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "coordinator"
+          ],
+          "contextual_role_affordances": [
+            {
+              "role": "func",
+              "slot": "",
+              "source": "lexical_default",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            },
+            {
+              "role": "what",
+              "slot": "np",
+              "source": "nominal_affordance",
+              "active_before_construction_wrapping": false,
+              "active_in_final_construction": false,
+              "activated_by": ""
+            }
+          ],
+          "trace_detail": {
+            "kind": "construction_internal_parser_inactive_clone",
+            "reason": "同 is interpreted as the coordinator inside a bounded coordinated NP, not as a coverb/comitative marker.",
+            "role_resolution": {
+              "lexical_default_role": "func",
+              "active_role": "func",
+              "active_affordance_source": "同 is interpreted as the coordinator inside a bounded coordinated NP, not as a coverb/comitative marker."
+            }
+          }
+        },
+        {
+          "depth": 1,
+          "parent": "CoordinatedNP",
+          "surface": "你",
+          "kind": "token",
+          "trace": "atomic_lexicon",
+          "role": "who",
+          "syntax": "subject_or_topic",
+          "jyutping": "nei5",
+          "slots": [
+            "co_participant",
+            "head_noun",
+            "np",
+            "recipient",
+            "stance_holder",
+            "subject",
+            "topic"
+          ],
+          "learner_display_slots": [
+            "head_noun",
+            "np",
+            "subject",
+            "topic"
+          ],
+          "internal_slots_hidden_from_learner_display": [
+            "co_participant",
+            "recipient",
+            "stance_holder"
+          ],
+          "contextual_role_affordances": [
+            {
+              "role": "who",
+              "slot": "",
+              "source": "lexical_default",
+              "active_before_construction_wrapping": true,
+              "active_in_final_construction": true,
+              "activated_by": ""
+            },
+            {
+              "role": "what",
+              "slot": "head_noun",
+              "source": "nominal_affordance",
+              "active_before_construction_wrapping": false,
+              "active_in_final_construction": false,
+              "activated_by": ""
+            }
+          ],
+          "trace_detail": {
+            "kind": "atomic_lexicon",
+            "generated_slots": [
+              "co_participant",
+              "head_noun",
+              "np",
+              "recipient",
+              "stance_holder",
+              "subject",
+              "topic"
+            ]
+          }
+        },
+        {
+          "depth": 0,
+          "parent": "",
+          "surface": "。",
+          "kind": "text",
+          "trace": "punctuation_or_plain_text",
+          "trace_detail": {
+            "kind": "punctuation_or_plain_text"
+          }
+        }
+      ],
+      "full_review": {
+        "required": true,
+        "reasons": [
+          "semantic_acceptance_review_required",
+          "audit:learner_ui_hover:WARN",
+          "audit:grammar_legitimacy:WARN",
+          "grammar_legitimacy:unsupported_generalization"
+        ],
+        "full_diagnostics_path": "Canto Span/CP022-I1A-I01-R1-FOCUSED-RENDER-REVIEW.canto-span-full-diagnostics.json",
+        "full_diagnostic_index": 9
+      }
+    }
+  ],
+  "final_review_reminder": "This summary is a loss-aware inspection index, not a replacement for the full diagnostics. Review all rows and drill into the companion full file whenever required or suspicious."
+}

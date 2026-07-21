@@ -1,0 +1,59 @@
+{
+  "schema": "canto-span-v0.5.181-candidate-freeze-v1",
+  "version": "0.5.181",
+  "generated_at": "2026-07-20T05:18:02.375963+00:00",
+  "status": "FROZEN_AFTER_RENDER_PASS_BEFORE_CUSTODY_OPEN",
+  "accepted_baseline": "0.5.180",
+  "target_internal_subtype": "ResourceUseLaiFunctionRelation",
+  "public_compatibility_label": "IntendedFunctionRelation",
+  "render_adjudication": {
+    "status": "PASS",
+    "checks": "90/90",
+    "rendered_rows": 12,
+    "sha256": "f04177aae6854db952d7f69e5715b17c48ec7441016199d156506a258ab10cb6"
+  },
+  "frozen_artifacts": {
+    "runtime_zip": {
+      "path": "/mnt/data/canto-span-plugin-v0.5.181.zip",
+      "sha256": "2a44b9c7eab984f4190fda9de7725e56433cfa806d79f168d2134d46eafbef81",
+      "bytes": 288373
+    },
+    "runtime_components": {
+      "canto-span/main.js": "047284bf29ed8c972c033b45ead83e0c60b4edaed6a954d03dd32ccdeeef1b44",
+      "canto-span/manifest.json": "63a5f17c633c89583cbfe64ac3262d41565ea8126c0f80668426a75d06891c57",
+      "canto-span/styles.css": "5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a"
+    },
+    "recovery_zip": {
+      "path": "/mnt/data/canto-span-recovery-v0.5.181-rerender-pending.zip",
+      "sha256": "aa93927adcb11993490abfe668d47798e9b977b81f74f3db3fc9b21ae34dd1b3",
+      "bytes": 7749033
+    },
+    "render_note": {
+      "path": "/mnt/data/CANTO-SPAN-v0.5.181-RENDER-REVIEW.md",
+      "sha256": "7a538f3780d530d24d710ae34adcfec44513f6d36730aaf6a3ad43622d705aa7",
+      "bytes": 3748
+    },
+    "acceptance_summary": {
+      "path": "/mnt/data/CANTO-SPAN-v0.5.181-RENDER-REVIEW.canto-span-acceptance-summary(2).json",
+      "sha256": "7dcd0f55b69f658e3352c0239371193066343c5fec9fb398af6821c6b8d8e922",
+      "bytes": 259828
+    },
+    "full_diagnostics": {
+      "path": "/mnt/data/CANTO-SPAN-v0.5.181-RENDER-REVIEW.canto-span-full-diagnostics(2).json",
+      "sha256": "fa3821cd95400b1e1e066fb567823b2e679dc81908c0aac8d9691aec04d3b41b",
+      "bytes": 3371900
+    },
+    "render_adjudication": {
+      "path": "/mnt/data/v0.5.181-render-adjudication.json",
+      "sha256": "f04177aae6854db952d7f69e5715b17c48ec7441016199d156506a258ab10cb6",
+      "bytes": 14636
+    },
+    "evaluator_custody": {
+      "path": "/mnt/data/CANTO-SPAN-v0.5.181-EVALUATOR-CUSTODY-DO-NOT-OPEN.zip",
+      "sha256": "f4c722dcbe5babec11d58d5164c4b04cf9661bbe364c4452384760c1bf19078e",
+      "bytes": 1431
+    }
+  },
+  "custody_opened": false,
+  "freeze_rule": "No parser, runtime, packet, diagnostic, or evaluator-custody artifact may change between this record and the one-time prospective held-out evaluation."
+}

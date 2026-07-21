@@ -1,0 +1,24 @@
+case_id	case_class	surface	candidate_policy	expected_target_surfaces	source_ids	source_locator	research_note
+PROG-E01	direct_official_attestation	我哋而家睇緊呢個。	REQUIRED	睇緊呢個	SRC-IC-WANG-FUK-2026-0423	PDF p. 5 lines 136-138	demonstrative object
+PROG-E02	interpreted_official_attestation	我哋而家就睇緊啲九巴嘅數據。	REQUIRED	睇緊啲九巴嘅數據	SRC-IRC-BUS-2018-1006	PDF p. 43 lines 1460-1462	live interpreted output; occurrence only
+PROG-E03	direct_official_attestation	都係問緊錫條同埋錫線？	REQUIRED	問緊錫條同埋錫線	SRC-COI-DRINKING-WATER-2016-0111	PDF viewer p. 75 lines 5241-5244	coordinated object
+PROG-E04	published_corpus_attestation	佢喺屋企整緊布甸。	REQUIRED	整緊布甸	SRC-KATAOKA-2018-PROGRESSIVE-GAN	p. 137 corpus summary	edited vernacular corpus
+PROG-E05	scholarly_example	我而家食緊飯。	REQUIRED	食緊飯	SRC-FAN-2024-JAU-VP-ASPECT	p. 7 example 6b	simple object
+PROG-E06	scholarly_example	頭先八點嗰陣，阿樂唱緊首兒歌。	REQUIRED	唱緊首兒歌	SRC-FAN-2024-JAU-VP-ASPECT	p. 7 example 6a	classifier NP object inside temporal frame
+PROG-E07	scholarly_example	爸爸返屋企嗰陣，我哋睇緊電視。	REQUIRED	睇緊電視	SRC-KATAOKA-2018-PROGRESSIVE-GAN	p. 134 example 2	progressive inside reference-time clause
+PROG-E08	scholarly_contrast	媽媽着緊好靚嘅衫。	REQUIRED	着緊好靚嘅衫	SRC-KATAOKA-2018-PROGRESSIVE-GAN	p. 134 example 3	contrast with 着住; modified NP object
+PROG-E09	scholarly_example	佢哋買緊樓。	REQUIRED	買緊樓	SRC-KATAOKA-2018-PROGRESSIVE-GAN	p. 135 example 7	extended-process progressive
+PROG-V01	constructed_visible_variant	我問緊問題。	REQUIRED	問緊問題			simple lexical variant; not evidence
+PROG-V02	constructed_visible_variant	佢寫緊封信。	REQUIRED	寫緊封信			bare-classifier object; not evidence
+PROG-V03	constructed_visible_variant	我哋睇緊嗰份報告。	REQUIRED	睇緊嗰份報告			demonstrative-classifier-noun object; not evidence
+PROG-V04	constructed_visible_variant	你聽緊首歌呀？	REQUIRED	聽緊首歌			target VP inside polar question; not evidence
+PROG-N01	preverbal_progressive_boundary	我而家喺度食飯。	FORBIDDEN		SRC-FAN-2024-JAU-VP-ASPECT		preverbal 喺度 is a different profile
+PROG-N02	continuous_zyu_boundary	我食住飯睇書。	FORBIDDEN		SRC-FAN-2024-JAU-VP-ASPECT	p. 7 example 7b	住 and subordinate/accompanying VP
+PROG-N03	objectless_boundary	佢食緊。	FORBIDDEN				grammaticality not denied; outside overt-object subtype
+PROG-N04	wh_object_boundary	你食緊咩？	FORBIDDEN				progressive wh syntax remains compositional/outside subtype
+PROG-N05	have_progressive_unresolved	佢有讀緊大學。	UNRESOLVED		SRC-FAN-2024-JAU-VP-ASPECT	pp. 4-5	literature reports disputed and lexically varying judgments
+PROG-N06	future_modal_negative_boundary	聽日八點嘅時候，我應該會瞓緊覺。	FORBIDDEN		SRC-FAN-2024-JAU-VP-ASPECT	p. 8 example 9b	exact cited modal/future negative context
+PROG-N07	motion_objectless_boundary	有架巴士嚟緊。	FORBIDDEN		SRC-KATAOKA-2018-PROGRESSIVE-GAN	p. 135 example 5	attested broad progressive but outside overt-object subtype
+PROG-N08	state_like_objectless_boundary	佢病緊。	FORBIDDEN		SRC-KATAOKA-2018-PROGRESSIVE-GAN	p. 135 example 6	attested broad progressive but outside overt-object subtype
+PROG-P01	preservation_perfective	我食咗飯。	FORBIDDEN				accepted perfective subtype must remain separate
+PROG-P02	preservation_experiential	我食過飯。	FORBIDDEN				experiential aspect must remain separate

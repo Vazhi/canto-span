@@ -1,0 +1,47 @@
+{
+  "schema": "canto-span-cp023-p1-prog01-research-package-v3",
+  "packet_id": "CP023-P1-PROG01-R3",
+  "status": "SPECIFICATIONS_FROZEN_RUNTIME_AND_CUSTODY_UNCHANGED",
+  "accepted_runtime": "v0.5.182",
+  "research_target": "PostverbalGanProgressiveVP",
+  "active_implementation_candidate": null,
+  "held_out": {
+    "selection_state": "NOT_SELECTED",
+    "custody_archive": null,
+    "implementation_authorized": false
+  },
+  "results": {
+    "predicate_matrix_rows": 14,
+    "exact_overt_object_seed_predicates": 8,
+    "multiple_object_profile_predicates": 2,
+    "nominal_design_cases": 14,
+    "tin_bar_jyutping": "QUARANTINED_UNRESOLVED"
+  },
+  "decisions": [
+    "no productive predicate class established",
+    "extend existing CoordinatedNP for overt 同埋 in a separate future package",
+    "preserve two candidate attachments for 啲 A 嘅 N instead of forcing R2 preferred scope",
+    "keep runtime and prospective custody unchanged"
+  ],
+  "next_package": "isolated CoordinatedNP NP+同埋+NP packet lock and external custody request",
+  "files": {
+    "predicate_freeze": "../../../docs/research/CP023-P1-PROG01-PREDICATE-COMPATIBILITY-FREEZE-R3.md",
+    "predicate_matrix": "../../../docs/research/CP023-P1-PROG01-PREDICATE-COMPATIBILITY-MATRIX-R3.tsv",
+    "di_scope_design": "../../../docs/research/CP023-P1-PROG01-NOMINAL-DI-ASSOCIATIVE-SCOPE-DESIGN-R3.md",
+    "coordination_design": "../../../docs/research/CP023-P1-PROG01-NOMINAL-COORDINATION-DESIGN-R3.md",
+    "design_cases": "../../../test-data/CP023-P1-PROG01-nominal-design-cases-r3.tsv",
+    "source_register": "../../../docs/research/CP023-P1-PROG01-SOURCE-REGISTER-R3.tsv",
+    "claim_source_edges": "../../../docs/research/CP023-P1-PROG01-CLAIM-SOURCE-EDGES-R3.tsv",
+    "checkpoint": "../../../docs/research/CP023-P1-PROG01-R3-RESEARCH-CHECKPOINT.md"
+  },
+  "sha256": {
+    "predicate_freeze": "89a563bb6d5d9786dd327d08ad2974488b175a2426635f2850f72b692eb07008",
+    "predicate_matrix": "fbebf349eb77e1ce2dd12353124bf2466cf1655de31afe8f408cc2d8ef3a0609",
+    "di_scope_design": "61e5618dd95f01d349f3f6c804cff18886684a5b99cf94bc44ad1707973f6786",
+    "coordination_design": "dab88ba5ac79198ecd43a991b43580818df84e11fed65168858196e296bf3809",
+    "design_cases": "996d70efa0375b9eb07b16e61b81530eba1ebc4e4054ef4030625c87f25fd87f",
+    "source_register": "efda490e2a414d8281271363d747f114f1b2a7c238fe26204a3097699f21d0a3",
+    "claim_source_edges": "fc05a1f93c4a2113c7e04b50fa3671b0f06aa7882f527c54121ac9d4bc8e536e",
+    "checkpoint": "f6638b3f2651712ddc48fece888cecb103c5000fa5829e4dfa83599515795dbc"
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "schema": "canto-span-cp022-i1a-i01-packet-lock-audit-v1",
+  "checkpoint": "CP022-I1A-I01-D1",
+  "status": "PASS",
+  "total": 31,
+  "passed": 31,
+  "failed": 0,
+  "heldout_opened": false,
+  "checks": [
+    {
+      "name": "packet identity",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "family I01",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "accepted I02 parent",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "heldout locked",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "standing authority recorded",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "semantic change none",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "15 visible cases",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "10 render cases",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "6 hidden commitments",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "manifest packet match",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "manifest hash frozen",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "custody hash frozen",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "surface invisible",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "expected values invisible",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "salts invisible",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "custody absent from project",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "positive inventory 7",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "variant inventory 4",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "negative inventory 4",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "supported productive delta zero",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "independent licensing false",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "forbidden boundary: independent valency licensing",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "forbidden boundary: word-order licensing",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "forbidden boundary: subject insertion",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "forbidden boundary: topic insertion",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "forbidden boundary: predicate-subtype licensing",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "forbidden boundary: modal licensing",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "forbidden boundary: argument omission licensing",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "forbidden boundary: context resolution",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "forbidden boundary: relation-subtype licensing",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "forbidden boundary: new Cantonese grammar acceptance",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "failures": []
+}

@@ -1,0 +1,32 @@
+{
+  "schema": "canto-span-progress-checkpoint-v1",
+  "artifact_kind": "render_pending_productive_candidate",
+  "version": "v0.5.183",
+  "accepted_runtime": "v0.5.182",
+  "active_candidate": "v0.5.183-cp024-p1-demo01-r1",
+  "active_labels": 181,
+  "supported_productive": 2,
+  "candidate_productive_delta": 0,
+  "demo01": {
+    "target": "OvertHeadDemonstrativeClassifierNP",
+    "visible_required_exact": "9/9",
+    "forbidden_leakage": "0/8",
+    "unresolved_promoted": "0/3",
+    "full_root_coverage": "17/20",
+    "regression": "543/543 inherited PASS; 2 exact focused exclusions",
+    "provenance": "PASS",
+    "source_accounting": "PASS",
+    "legitimacy": "PASS",
+    "render": "PENDING_USER",
+    "heldout": "SEALED_VERIFIED_UNOPENED",
+    "heldout_sha256": "7cda111ca194b6159a37c91b789984fdc0c35d6c35d643260810df0cdd5015c4"
+  },
+  "external_user_action": "Render CANTO-SPAN-v0.5.183-RENDER-REVIEW.md in Obsidian and return acceptance-summary and full-diagnostics JSON. Do not open the held-out ZIP.",
+  "next": "Verify render and candidate hashes, then consume the sealed held-out packet once.",
+  "runtime_hashes": {
+    "main.js": "e25b6f7142eafce66a172b68d8e409275f127cfe902e93bafaf7147152bfcbe9",
+    "manifest.json": "d7f5a9be248a4efd1839852e8a100a9968273050f0aa5953af2a35c3661801f5",
+    "styles.css": "5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a"
+  },
+  "candidate_audit": "51/51 PASS"
+}

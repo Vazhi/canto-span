@@ -1,0 +1,130 @@
+{
+  "schema": "canto-span-semantic-acceptance-current",
+  "total": 15,
+  "pass": 15,
+  "fail": 0,
+  "strict_ready": true,
+  "results": [
+    {
+      "source": "给你水。",
+      "pass": true,
+      "top": [
+        "LexicalGiveRelation"
+      ],
+      "error": ""
+    },
+    {
+      "source": "畀本書佢。",
+      "pass": true,
+      "top": [
+        "LexicalGiveRelation"
+      ],
+      "error": ""
+    },
+    {
+      "source": "畀佢本書。",
+      "pass": true,
+      "top": [
+        "LexicalGiveRelation"
+      ],
+      "error": ""
+    },
+    {
+      "source": "我畀錢你。",
+      "pass": true,
+      "top": [
+        "LexicalGiveRelation"
+      ],
+      "error": ""
+    },
+    {
+      "source": "講大聲啲。",
+      "pass": true,
+      "top": [
+        "VerbComplementVP"
+      ],
+      "error": ""
+    },
+    {
+      "source": "講慢啲。",
+      "pass": true,
+      "top": [
+        "VerbComplementVP"
+      ],
+      "error": ""
+    },
+    {
+      "source": "行快啲。",
+      "pass": true,
+      "top": [
+        "VerbComplementVP"
+      ],
+      "error": ""
+    },
+    {
+      "source": "佢話佢唔嚟。",
+      "pass": true,
+      "top": [
+        "ReportedSpeech"
+      ],
+      "error": ""
+    },
+    {
+      "source": "可以呀。",
+      "pass": true,
+      "top": [
+        "FormulaDiscourseUnit"
+      ],
+      "error": ""
+    },
+    {
+      "source": "可以啊。",
+      "pass": true,
+      "top": [
+        "FormulaDiscourseUnit"
+      ],
+      "error": ""
+    },
+    {
+      "source": "我可以去。",
+      "pass": true,
+      "top": [
+        "ModalVP"
+      ],
+      "error": ""
+    },
+    {
+      "source": "佢要飲水。",
+      "pass": true,
+      "top": [
+        "ModalVP"
+      ],
+      "error": ""
+    },
+    {
+      "source": "我食一。",
+      "pass": true,
+      "top": [
+        "MalformedCandidate"
+      ],
+      "error": ""
+    },
+    {
+      "source": "我食。",
+      "pass": true,
+      "top": [
+        "NeedsContext"
+      ],
+      "error": ""
+    },
+    {
+      "source": "不食飯。",
+      "pass": true,
+      "top": [
+        "NeedsContext"
+      ],
+      "error": ""
+    }
+  ],
+  "failures": []
+}

@@ -1,0 +1,86 @@
+{
+  "schema": "canto-span-current-focused-result-v7",
+  "checkpoint": "v0.5.183-documentation-realigned-r2",
+  "parser_behavior_changed": false,
+  "supported_productive": 0,
+  "provisional_reaudit": 2,
+  "total": 18,
+  "passed": 18,
+  "failed": 0,
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "required file: docs/current/00-START-HERE.md",
+      "pass": true
+    },
+    {
+      "name": "required file: docs/current/DOCTRINE.md",
+      "pass": true
+    },
+    {
+      "name": "required file: docs/current/STATUS-AND-CONFIDENCE.md",
+      "pass": true
+    },
+    {
+      "name": "required file: docs/current/EVIDENCE-AND-PROVENANCE.md",
+      "pass": true
+    },
+    {
+      "name": "required file: docs/current/WORKFLOW.md",
+      "pass": true
+    },
+    {
+      "name": "required file: docs/current/VALIDATION-AND-ACCEPTANCE.md",
+      "pass": true
+    },
+    {
+      "name": "required file: docs/current/PROJECT-STATE.md",
+      "pass": true
+    },
+    {
+      "name": "required file: docs/research/CONSTRUCTION-EVIDENCE-REAUDIT-LEDGER-v0.5.183-R1.tsv",
+      "pass": true
+    },
+    {
+      "name": "required file: docs/research/SECOND-SPEAKER-REVIEW-QUEUE-v0.5.183-R1.tsv",
+      "pass": true
+    },
+    {
+      "name": "required file: docs/research/ACTIVE-SOURCE-ACCOUNTING-v0.5.183-cp024-p1-demo01-r2.tsv",
+      "pass": true
+    },
+    {
+      "name": "required file: test-data/grammar-legitimacy-audit.tsv",
+      "pass": true
+    },
+    {
+      "name": "required file: test-data/grammar-legitimacy-audit.json",
+      "pass": true
+    },
+    {
+      "name": "state records supported count zero",
+      "pass": true
+    },
+    {
+      "name": "state records two provisional_reaudit",
+      "pass": true
+    },
+    {
+      "name": "doctrine requires two speakers",
+      "pass": true
+    },
+    {
+      "name": "doctrine rejects raw corpus counts",
+      "pass": true
+    },
+    {
+      "name": "render note blocks promotion",
+      "pass": true
+    },
+    {
+      "name": "held-out remains blocked after render alone",
+      "pass": true
+    }
+  ],
+  "failures": []
+}

@@ -1,0 +1,143 @@
+{
+  "schema": "canto-span-wechat-gx-travel-002-research-only-audit-r1",
+  "runtime_version": "0.5.181",
+  "status": "PASS",
+  "passed": 22,
+  "total": 22,
+  "runtime_changed": false,
+  "grammar_status_changed": false,
+  "candidate_scoring_changed": false,
+  "corpus_promotion_weight": 0,
+  "custody_opened": false,
+  "checks": [
+    {
+      "name": "frozen_hash:main.js",
+      "status": "PASS",
+      "detail": {
+        "expected": "6cb8aef9a279ff9abef2a84c77dc470b5f4abcf0ae7306ca39f7f3a5fc44494e",
+        "actual": "6cb8aef9a279ff9abef2a84c77dc470b5f4abcf0ae7306ca39f7f3a5fc44494e"
+      }
+    },
+    {
+      "name": "frozen_hash:manifest.json",
+      "status": "PASS",
+      "detail": {
+        "expected": "63a5f17c633c89583cbfe64ac3262d41565ea8126c0f80668426a75d06891c57",
+        "actual": "63a5f17c633c89583cbfe64ac3262d41565ea8126c0f80668426a75d06891c57"
+      }
+    },
+    {
+      "name": "frozen_hash:styles.css",
+      "status": "PASS",
+      "detail": {
+        "expected": "5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a",
+        "actual": "5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a"
+      }
+    },
+    {
+      "name": "frozen_hash:render-review/CANTO-SPAN-v0.5.181-RENDER-REVIEW.md",
+      "status": "PASS",
+      "detail": {
+        "expected": "dd52a3f578149f8793292c420c2b44612b4825f7c913755cdb441e9124a001c1",
+        "actual": "dd52a3f578149f8793292c420c2b44612b4825f7c913755cdb441e9124a001c1"
+      }
+    },
+    {
+      "name": "manifest_version",
+      "status": "PASS",
+      "detail": "0.5.181"
+    },
+    {
+      "name": "supported_productive_count_unchanged",
+      "status": "PASS",
+      "detail": 1
+    },
+    {
+      "name": "candidate_still_provisional",
+      "status": "PASS",
+      "detail": "ResourceUseLaiFunctionRelation remains provisional"
+    },
+    {
+      "name": "custody_file_present",
+      "status": "PASS",
+      "detail": "/mnt/data/CANTO-SPAN-v0.5.181-EVALUATOR-CUSTODY-DO-NOT-OPEN.zip"
+    },
+    {
+      "name": "custody_hash_unchanged",
+      "status": "PASS",
+      "detail": {
+        "expected": "f4c722dcbe5babec11d58d5164c4b04cf9661bbe364c4452384760c1bf19078e",
+        "actual": "f4c722dcbe5babec11d58d5164c4b04cf9661bbe364c4452384760c1bf19078e"
+      }
+    },
+    {
+      "name": "no_custody_extraction_directory",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "controlled_contrast_count",
+      "status": "PASS",
+      "detail": 14
+    },
+    {
+      "name": "controlled_contrasts_zero_promotion_weight",
+      "status": "PASS",
+      "detail": [
+        "0"
+      ]
+    },
+    {
+      "name": "duration_excluded_from_simple_vzo",
+      "status": "PASS",
+      "detail": "GX-R1-DUR-01"
+    },
+    {
+      "name": "vjyunzo_only_boundary",
+      "status": "PASS",
+      "detail": "GX-R1-CMP-03"
+    },
+    {
+      "name": "claim_source_edge_count",
+      "status": "PASS",
+      "detail": 16
+    },
+    {
+      "name": "claim_edges_no_acceptance_effect",
+      "status": "PASS",
+      "detail": [
+        "none"
+      ]
+    },
+    {
+      "name": "conference_lead_deferred",
+      "status": "PASS",
+      "detail": "official handbook lead has zero registered weight"
+    },
+    {
+      "name": "postverbal_dak_only_restricts",
+      "status": "PASS",
+      "detail": "no support edge for 冇得+VP"
+    },
+    {
+      "name": "research_note_required_boundaries",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "no_vjyunzo_positive_claim",
+      "status": "PASS",
+      "detail": "explicit negative boundary"
+    },
+    {
+      "name": "screening_lead_not_evidence",
+      "status": "PASS",
+      "detail": "deferred official-PDF discovery lead"
+    },
+    {
+      "name": "screening_lead_zero_weight_guard",
+      "status": "PASS",
+      "detail": "guard present"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "schema": "canto-span-native-review-packet-v1",
+  "packet_id": "CP025-P1-PFV01-SPEAKER-REVIEW-R1",
+  "construction_hidden_from_speakers": true,
+  "instructions": "Judge each sentence independently. Mark unnatural only when the sentence sounds unnatural in ordinary Cantonese. Optional correction/context notes are welcome. Do not discuss answers with the other speaker.",
+  "cases": [
+    {
+      "case_id": "PFV-P01",
+      "surface": "我食咗飯。",
+      "internal_design_role": "positive simple profile"
+    },
+    {
+      "case_id": "PFV-P02",
+      "surface": "我食咗麵。",
+      "internal_design_role": "positive source example"
+    },
+    {
+      "case_id": "PFV-P03",
+      "surface": "佢睇咗三個醫生。",
+      "internal_design_role": "positive source-linked lexical variation"
+    },
+    {
+      "case_id": "PFV-P04",
+      "surface": "佢寫咗一篇文。",
+      "internal_design_role": "positive source-linked lexical variation"
+    },
+    {
+      "case_id": "PFV-P05",
+      "surface": "我答咗你嘅問題。",
+      "internal_design_role": "positive source-linked lexical variation"
+    },
+    {
+      "case_id": "PFV-P06",
+      "surface": "你買咗呢隻牌子未呀？",
+      "internal_design_role": "positive profile inside final-未 question"
+    },
+    {
+      "case_id": "PFV-B01",
+      "surface": "我食咗。",
+      "internal_design_role": "objectless boundary"
+    },
+    {
+      "case_id": "PFV-B02",
+      "surface": "我食完咗飯。",
+      "internal_design_role": "inner-result boundary; known variation question"
+    },
+    {
+      "case_id": "PFV-B03",
+      "surface": "我食過飯。",
+      "internal_design_role": "experiential boundary"
+    },
+    {
+      "case_id": "PFV-B04",
+      "surface": "我食緊飯。",
+      "internal_design_role": "progressive boundary"
+    },
+    {
+      "case_id": "PFV-B05",
+      "surface": "我去咗香港。",
+      "internal_design_role": "motion-goal boundary"
+    },
+    {
+      "case_id": "PFV-B06",
+      "surface": "牆上面擺咗部電話。",
+      "internal_design_role": "placement/presentational boundary"
+    },
+    {
+      "case_id": "PFV-B07",
+      "surface": "我食咗香港。",
+      "internal_design_role": "selectional anomaly boundary"
+    },
+    {
+      "case_id": "PFV-B08",
+      "surface": "我食飯。",
+      "internal_design_role": "unmarked-aspect boundary"
+    }
+  ]
+}

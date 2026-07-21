@@ -1,0 +1,11 @@
+search_id	date	query_or_action	source_or_engine	result	evidentiary_use	limitation
+R29-S01	2026-07-19	Verify R28 package, 150/150 audit, and frozen hashes	local package inspection	PASS	baseline integrity	Package metadata is not linguistic authority.
+R29-S02	2026-07-19	Rank 25 remaining language labels by runtime and non-held-out regression reach	local runtime and regression snapshots	PASS	family selection	Counts rank impact only.
+R29-S03	2026-07-19	Inspect accepted ActionStativeVP nodes in 寫三個字 and 要等幾耐啊	main.js and regression snapshots	PASS	runtime claim extraction	Accepted trees are internal evidence only.
+R29-S04	2026-07-19	Inspect QuantifiedPersonNP, ComparativeStative, ScalarEvaluation, and EvaluationWithDouSyun definitions	main.js	PASS	runtime claim extraction	Code does not establish grammar.
+R29-S05	2026-07-19	Extract exact textbook pages for 幾耐, 好多人, 貴係貴啲, and 唔算貴	user-provided 粵語（香港話）教程 PDF	PASS	exact pedagogical attestation	Coursebook examples do not prove frequency or unrestricted productivity.
+R29-S06	2026-07-19	Verify existing classifier and nominal-expression sources	project source register and official full texts previously verified	PASS	nominal boundary corroboration	Formal analyses remain theory-specific.
+R29-S07	2026-07-19	Inspect Lam 2014 official ACL full text for 過 and bare property+啲 comparatives	ACL Anthology Y14-1043	PASS	comparative subtype boundary	Formal analysis does not license every X啲 use.
+R29-S08	2026-07-19	Search exact 都算 price/property wrapper in inspected coursebook and research	local full-text and source search	UNRESOLVED	records direct-source gap	Search failure is not grammaticality evidence.
+R29-S09	2026-07-19	Assemble 34 claim-source rows and update five coverage records	local deterministic build	PASS	claim provenance	Matrix consistency is not linguistic truth.
+R29-S10	2026-07-19	Run deterministic audit and independent ZIP extraction comparison	local audit and archive verification	PASS	artifact integrity	Artifact integrity does not validate grammar.

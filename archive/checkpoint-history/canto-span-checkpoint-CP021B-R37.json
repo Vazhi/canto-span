@@ -1,0 +1,56 @@
+{
+  "schema": "canto-span-research-checkpoint-v1",
+  "checkpoint": "CP021B-R37",
+  "parent_checkpoint": "CP021B-R36",
+  "date": "2026-07-19",
+  "status": "COMPLETE_I04_EVALUATION_PACKET_POPULATED_HELDOUT_LOCKED_NO_IMPLEMENTATION",
+  "accepted_parser": "v0.5.174-lane01-rendered-spatial-kinship-role-correction-r2",
+  "inherited_runtime_candidate": "v0.5.176-cp021b-lx1-render-candidate",
+  "inherited_lx1": {
+    "status": "RENDER_CONFIRMATION_PENDING_NOT_ACCEPTED",
+    "modified_by_r37": false
+  },
+  "counts": {
+    "registry_labels": 182,
+    "canonical_target_families": 53,
+    "external_sources": 87,
+    "internal_provenance_records": 37,
+    "cumulative_claim_source_rows": 1084,
+    "new_claim_source_rows": 0,
+    "supported_productive": 0,
+    "evaluation_packet_blueprints": 53,
+    "populated_packets": 1,
+    "heldout_locked_packets": 1,
+    "visible_development_cases": 12,
+    "render_review_cases": 8,
+    "prospective_heldout_cases": 5
+  },
+  "changes": {
+    "parser_behavior": false,
+    "main_js": false,
+    "manifest_json": false,
+    "lexicon": false,
+    "jyutping": false,
+    "fixtures": false,
+    "existing_heldout_opened": false,
+    "new_prospective_heldout_selected": true,
+    "new_prospective_heldout_locked": true,
+    "heldout_visible_to_implementation": false,
+    "implementation_authorized": false
+  },
+  "packet": {
+    "packet_id": "EP-R37-I04",
+    "family": "I04 NominalAndMeasureSpan",
+    "status": "HELD_OUT_LOCKED",
+    "intended_semantic_change": "NONE",
+    "public_manifest_sha256": "b98e7db79f597c7bdc2ce86c78623b9b7c91d79fc68f39653a33caf5b3b2e0de",
+    "custody_archive_sha256": "b0ea009f75039b8866756ae1c76cf815fb9d191d97a6362df71f987e65cee596"
+  },
+  "next": "Review EP-R37-I04 and obtain explicit authorization before any I04 parser cleanup; otherwise populate the next safe packet.",
+  "audit": {
+    "status": "PASS",
+    "passed": 60,
+    "total": 60,
+    "path": "validation/cp021b-r37/i04-packet-lock-audit.json"
+  }
+}

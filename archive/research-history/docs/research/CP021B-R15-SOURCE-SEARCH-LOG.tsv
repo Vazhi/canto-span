@@ -1,0 +1,13 @@
+search_id	query_or_target	source_type	outcome	used_for	limit_or_disposition
+R15-S01	ReportedSpeech/OpinionStanceFrame/CognitionContentFrame runtime extraction	internal runtime and fixture inspection	VERIFIED_INTERNAL	exact current claims, accepted surfaces, slot cross-products, context assumptions	Internal parser behavior is not Cantonese evidence.
+R15-S02	Alderete et al. 2017 reported speech and cognition pages	university-hosted scholarly synopsis PDF	VERIFIED	lexical 話 + clause; cognition verb + clausal complement	Synopsis does not establish unrestricted lexical selection or complementizer analysis.
+R15-S03	Yeung 2006 WAA6 official record	official journal open-access abstract	VERIFIED_ABSTRACT	lexical say/blame versus proposed complementizer distinctions	Abstract-level verification; detailed tests not independently inspected.
+R15-S04	Matthews 2021 complementizer problem	official HKU repository abstract	VERIFIED_ABSTRACT	analysis-contested boundary for post-predicate 話	No complete alternative grammar in the abstract.
+R15-S05	Yap Wong Chor 2014 stance deck	institutional repository full slide deck	VERIFIED	唔知 lexical/doubt/stance continuum; embedded wh; 話 lexical/hearsay development	Presentation evidence does not license a productive parser template.
+R15-S06	Lui 2025 Reported Thought in Cantonese	accepted author preprint	VERIFIED	reported thought versus reported speech distinction; implicit thought content	Focused on 心諗, not generic cognition predicates.
+R15-S07	Yip Matthews 2000 以為 example	descriptive reference grammar full text	VERIFIED	exact 以為 + clausal content	Teaching example does not define a complete stance lexicon.
+R15-S08	Cantonese 知 clausal/bare profiles	targeted scholarly web searches	PARTIALLY_VERIFIED	located overt 唔知 + wh and bare negative forms in Yap et al.	No direct primary source found for exact positive bare 我知 in this pass.
+R15-S09	Reported speech versus complementizer 話	cross-source comparison	VERIFIED_SYNTHESIS	separated surface attestation from disputed analysis	Synthesis does not resolve the theoretical dispute.
+R15-S10	Short reported/stance content 有冇係唔係	runtime/source comparison	SOURCE_GAP_RECORDED	identified project complement-ellipsis assumption	No equivalent primary construction analysis located.
+R15-S11	NegativeCognitionFragment 唔知呀	fixture and native evidence inspection	INTERNAL_ONLY	exact project surface and question context	Naturalness is not structural analysis; external exact-form mapping remains incomplete.
+R15-S12	generic web summaries and secondary mirrors	discovery screen	SCREENED_NOT_USED_AS_AUTHORITY	bibliographic discovery and cross-checking	Non-primary summaries were excluded from claim authority.

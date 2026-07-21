@@ -1,0 +1,13 @@
+search_id	date	query_or_action	source_or_engine	result	evidentiary_use	limitation
+R28-S01	2026-07-19	Verify R27 package, 112/112 audit, and frozen hashes	local package inspection	PASS	baseline integrity	Package metadata is not linguistic authority.
+R28-S02	2026-07-19	Rank 36 remaining language labels by runtime and non-held-out regression reach	local runtime and regression snapshots	PASS	family selection	Counts rank impact only.
+R28-S03	2026-07-19	Extract eleven result/change runtime profiles	main.js	PASS	runtime claim extraction	Code is a research target only.
+R28-S04	2026-07-19	Inspect CP010 result/change controls and diagnoses	test-data/lane05-final-evidence-CP010.tsv	PASS	internal provenance and duplicate-wrapper risks	Constructed/project controls are not language evidence.
+R28-S05	2026-07-19	Inspect Lai and Pang 2023 Cantonese CRC article	official open-access full text	PASS	broad CRC family and holistic argument boundary	One theoretical account does not validate exact runtime templates.
+R28-S06	2026-07-19	Inspect Kędzior 2023 aspect article	official full-text PDF	PASS	perfective/result distinction	Written-corpus synthesis does not settle all lexical categories.
+R28-S07	2026-07-19	Inspect CUHK comprehensive grammar Chapter 8 resultative examples	official multimedia reference	PASS	causative/resultative subtype distinctions	Illustrations do not establish runtime nodes.
+R28-S08	2026-07-19	Locate exact coursebook 會變成 example	user-provided searchable PDF	PASS	exact modal change predicate with wh complement	Pedagogical example does not prove unrestricted productivity.
+R28-S09	2026-07-19	Search exact 變咗做 sequence in registered and uploaded sources	local and scholarly source search	NO_DIRECT_MATCH	records exact-form gap	Search failure is not unacceptability evidence.
+R28-S10	2026-07-19	Search exact 停咗雨 and 解決咗 surfaces in inspected sources	local and scholarly source search	NO_DIRECT_MATCH	records exact lexical/valency gaps	Search failure is not unacceptability evidence.
+R28-S11	2026-07-19	Confirm zero accepted non-held-out regression snapshots for all eleven selected labels	regression snapshots	PASS	impact integrity	Zero fixtures does not imply linguistic impossibility.
+R28-S12	2026-07-19	Assemble 66-row matrix and deterministic integrity audit	local deterministic audit	PASS	provenance integrity	Audit consistency is not linguistic truth.

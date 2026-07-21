@@ -1,0 +1,25 @@
+{
+  "schema": "canto-span-documentation-runtime-identity-v1",
+  "checkpoint": "v0.5.182-doc-consolidation",
+  "status": "PASS",
+  "checks": [
+    {
+      "file": "main.js",
+      "recovery_sha256": "86ff77131e12082885294eabe336bf95cbe0160469cd446a5c17b3e6c9a5b535",
+      "original_runtime_sha256": "86ff77131e12082885294eabe336bf95cbe0160469cd446a5c17b3e6c9a5b535",
+      "identical": true
+    },
+    {
+      "file": "manifest.json",
+      "recovery_sha256": "84c0a1a885e2f841f66e6e9ec5be67d2a5ec8e16df490bdaef0f0150590c2f46",
+      "original_runtime_sha256": "84c0a1a885e2f841f66e6e9ec5be67d2a5ec8e16df490bdaef0f0150590c2f46",
+      "identical": true
+    },
+    {
+      "file": "styles.css",
+      "recovery_sha256": "5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a",
+      "original_runtime_sha256": "5e97a27bb3925dbc63c0af00f72899c3c860c5b1a407e3f8ea832b8ff0dd409a",
+      "identical": true
+    }
+  ]
+}
