@@ -15,6 +15,7 @@ const reachabilityPaths = [
   path.join(root, "test-data", "constructor-specific-reachability-probes-v1.json"),
   path.join(root, "test-data", "experiential-delimited-reachability-probes-v1.json"),
   path.join(root, "test-data", "result-change-state-reachability-probes-v1.json"),
+  path.join(root, "test-data", "nominal-wrapper-reachability-probes-v1.json"),
 ];
 const api = loadRuntimeApi(path.join(root, "main.js"));
 
@@ -94,6 +95,7 @@ const acceptedReachabilitySchemas = new Set([
   "canto-span-constructor-specific-reachability-probes-v1",
   "canto-span-experiential-delimited-reachability-probes-v1",
   "canto-span-result-change-state-reachability-probes-v1",
+  "canto-span-nominal-wrapper-reachability-probes-v1",
 ]);
 for (const reachabilityPath of reachabilityPaths) {
   const reachability = readJson(reachabilityPath);
@@ -114,6 +116,7 @@ for (const reachabilityPath of reachabilityPaths) {
       source: testCase.source,
       ...(testCase.context_source ? { context_source: testCase.context_source } : {}),
       assertion: testCase.assertion,
+      ...(testCase.internal_construction ? { internal_construction: testCase.internal_construction } : {}),
       provenance: testCase.provenance,
       source_role: testCase.source_role,
       linguistic_evidence_weight: 0,
@@ -171,11 +174,13 @@ for (const label of labels) {
   const npBoundary = record.np_cases.filter((item) => item.assertion === "construction_absent").length;
   const positiveCount = record.snapshot_cases.length + focusedPositive + npPositive;
   const implementationProbeCount = record.implementation_probe_cases.length;
+  const compatibilityAliasProbeCount = record.implementation_probe_cases.filter((item) => item.assertion === "compatibility_alias_present").length;
   const boundaryCount = focusedBoundary + npBoundary;
   let coverageState = "no_direct_cases";
   if (positiveCount && boundaryCount) coverageState = "positive_and_boundary";
   else if (positiveCount) coverageState = "positive_only";
   else if (boundaryCount) coverageState = "boundary_only";
+  else if (implementationProbeCount && compatibilityAliasProbeCount === implementationProbeCount) coverageState = "compatibility_alias_only";
   else if (implementationProbeCount) coverageState = "implementation_positive_only";
   record.coverage = {
     state: coverageState,
@@ -185,6 +190,7 @@ for (const label of labels) {
     focused_review_only_count: reviewOnly,
     np_case_count: record.np_cases.length,
     implementation_probe_count: implementationProbeCount,
+    compatibility_alias_probe_count: compatibilityAliasProbeCount,
     positive_case_count: positiveCount,
     boundary_case_count: boundaryCount,
     executable_case_count: record.snapshot_cases.length + record.focused_cases.length + record.np_cases.length + implementationProbeCount,

@@ -1,10 +1,10 @@
 {
   "schema": "canto-span-current-focused-result-v9",
-  "checkpoint": "v0.5.192-result-change-state-wrapper-audit",
+  "checkpoint": "v0.5.193-nominal-wrapper-audit",
   "parser_behavior_changed": false,
   "registry_owner": "grammar/active/*.md + grammar/archived/*.md",
   "status_counts": {
-    "unsupported_generalization": 86,
+    "unsupported_generalization": 85,
     "research_pending": 60,
     "parser_heuristic": 20,
     "lexicalized_only": 3
@@ -71,9 +71,9 @@
       "pass": true
     },
     {
-      "name": "169 construction notes",
+      "name": "168 construction notes",
       "pass": true,
-      "detail": "169"
+      "detail": "168"
     },
     {
       "name": "supported count zero",

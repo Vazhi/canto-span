@@ -9,7 +9,8 @@ const { Plugin, PluginSettingTab, Setting, Notice } = require("obsidian");
  * never overwrite child learner roles.
  */
 
-const CANTO_SPAN_RUNTIME_VERSION = "0.5.192";
+const CANTO_SPAN_RUNTIME_VERSION = "0.5.193";
+// v0.5.193: audits nominal wrappers, adds two zero-evidence direct probes plus one compatibility-alias probe, and retires constructorless DemonstrativeHeadNP. No recognized parser span or retained linguistic-status changes.
 // v0.5.192: audits result/change-state wrappers, adds ten zero-evidence reachability probes, and records one shadowed specialized perfective wrapper. No recognized parser span or linguistic-status changes.
 // v0.5.191: audits experiential and delimited wrappers with seven zero-evidence reachability probes and records unresolved routing gaps. No recognized parser span changes.
 // v0.5.189: adds zero-evidence runtime reachability probes for 15 previously unexercised labels and preserves 53 unobserved labels for later code-specific review. Parser span behavior and linguistic status are unchanged.
@@ -63,7 +64,7 @@ const DEFAULT_SETTINGS = {
 // Runtime construction governance is deliberately minimal. Linguistic status,
 // confidence, sources, speaker records, corpus counts, and promotion eligibility
 // live in grammar/active/*.md and grammar/archived/*.md and are validated outside the shipped plugin.
-const RUNTIME_CONSTRUCTION_REGISTRY_VERSION = "0.5.192";
+const RUNTIME_CONSTRUCTION_REGISTRY_VERSION = "0.5.193";
 
 function runtimeConstructionStateFor(type) {
   const construction = String(type || "");
@@ -1292,7 +1293,6 @@ const CONSTRUCTION_LABEL_REGISTRY = new Set([
   "OvertHeadDemonstrativeClassifierNP",
   "HeadlessDemonstrativeClassifierNP",
   "FragmentQuestion",
-  "DemonstrativeHeadNP",
   "DesiderativeVP",
   "DirectionalMotionVP",
   "DurativeVP",
@@ -4711,7 +4711,7 @@ function constructionSlotsByType(type, children = []) {
   if (["MotionPurposeChain"].includes(type)) slots.push("motion_purpose_chain", "motion_action_chain", "purpose_chain", "vp", "action_vp", "predicate");
   if (["CompletionVP"].includes(type)) slots.push("completion_vp");
   if (["DitransitiveSpeechVP"].includes(type)) slots.push("speech_transfer_vp", "reported_content");
-  if (["OvertHeadDemonstrativeClassifierNP", "DemonstrativeClassifierNP", "DemonstrativeHeadNP", "QuantifiedClassifierNP", "QuantifiedPersonNP", "QuantifiedTimeNP", "QuantityNP", "DiMarkedNP", "OrdinalClassifierNP", "AssociativeNP", "ModifiedNP", "ModifierNP", "NominalHeadSpan"].includes(type)) slots.push("np", "topic", "object", "head_noun");
+  if (["OvertHeadDemonstrativeClassifierNP", "DemonstrativeClassifierNP", "QuantifiedClassifierNP", "QuantifiedPersonNP", "QuantifiedTimeNP", "QuantityNP", "DiMarkedNP", "OrdinalClassifierNP", "AssociativeNP", "ModifiedNP", "ModifierNP", "NominalHeadSpan"].includes(type)) slots.push("np", "topic", "object", "head_noun");
   if (["HeadlessDemonstrativeClassifierNP"].includes(type)) slots.push("np", "topic", "object", "demonstrative", "classifier");
   if (["QuantifiedTimeNP"].includes(type)) slots.push("quantified_time_np", "time", "time_head", "quantity", "distributive_quantifier");
   if (["QuantityNP"].includes(type)) slots.push("quantity_np", "quantity");

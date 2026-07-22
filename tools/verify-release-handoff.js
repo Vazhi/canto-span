@@ -9,7 +9,7 @@ const { evaluatePromotion } = require("./promotion-gate-lib");
 const { validateReleaseAudit } = require("./release-handoff-lib");
 
 const root = path.resolve(__dirname, "..");
-const auditPath = process.argv[2] || path.join(root, "docs", "releases", "v0.5.192-result-change-state-wrapper-audit.json");
+const auditPath = process.argv[2] || path.join(root, "docs", "releases", "v0.5.193-nominal-wrapper-audit.json");
 const audit = JSON.parse(fs.readFileSync(auditPath, "utf8"));
 const failures = [];
 

@@ -1,3 +1,12 @@
+## v0.5.193 — nominal wrapper audit
+
+- Audited four nominal runtime labels at exact constructor and diagnostic-row level.
+- Added two zero-weight implementation probes for `OrdinalClassifierNP` and nested `PossessiveClassifierNP`.
+- Added a distinct `compatibility_alias_only` coverage state for `DemonstrativeClassifierNP`, which is exposed as the public alias of internal `OvertHeadDemonstrativeClassifierNP` rather than emitted as its own internal node.
+- Retired constructorless `DemonstrativeHeadNP` as a known misanalysis and preserved its source record in the retirement archive.
+- Increased construction assertions from 1,191 to 1,194 and reduced the no-direct backlog from 33 to 29 labels.
+- Changed no recognized parser span or retained linguistic status.
+
 ## v0.5.192 — Result/change-state wrapper audit
 
 - Audited eleven result and change-state runtime labels.

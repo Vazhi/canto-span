@@ -19,6 +19,7 @@ const excludedRelativePaths = new Set([
   "test-data/constructor-specific-reachability-probes-v1.json",
   "test-data/experiential-delimited-reachability-probes-v1.json",
   "test-data/result-change-state-reachability-probes-v1.json",
+  "test-data/nominal-wrapper-reachability-probes-v1.json",
 ]);
 
 function parseTsv(file) {
@@ -99,16 +100,17 @@ const probes = JSON.parse(fs.readFileSync(path.join(root, "test-data", "runtime-
 const laterProbes = JSON.parse(fs.readFileSync(path.join(root, "test-data", "constructor-specific-reachability-probes-v1.json"), "utf8"));
 const newestProbes = JSON.parse(fs.readFileSync(path.join(root, "test-data", "experiential-delimited-reachability-probes-v1.json"), "utf8"));
 const resultChangeProbes = JSON.parse(fs.readFileSync(path.join(root, "test-data", "result-change-state-reachability-probes-v1.json"), "utf8"));
+const nominalProbes = JSON.parse(fs.readFileSync(path.join(root, "test-data", "nominal-wrapper-reachability-probes-v1.json"), "utf8"));
 const testIndex = JSON.parse(fs.readFileSync(path.join(root, "tests", "construction-test-index.json"), "utf8"));
 const indexByLabel = new Map(testIndex.files.map((item) => [item.construction, item]));
 const probeByLabel = new Map(probes.cases.map((item) => [item.construction, item]));
 const laterProbeByLabel = new Map(laterProbes.cases.map((item) => [item.construction, item]));
 const newestProbeByLabel = new Map();
-for (const item of [...newestProbes.cases, ...resultChangeProbes.cases]) {
+for (const item of [...newestProbes.cases, ...resultChangeProbes.cases, ...nominalProbes.cases]) {
   if (!newestProbeByLabel.has(item.construction)) newestProbeByLabel.set(item.construction, []);
   newestProbeByLabel.get(item.construction).push(item);
 }
-const laterRetiredLabels = new Set(["TemporalAdverbialClause"]);
+const laterRetiredLabels = new Set(["TemporalAdverbialClause", "DemonstrativeHeadNP"]);
 const checks = [];
 const failures = [];
 function check(name, condition, detail = "") {
@@ -117,7 +119,7 @@ function check(name, condition, detail = "") {
   if (!pass) failures.push({ name, detail: String(detail) });
 }
 
-check("runtime version is 0.5.192", api.runtimeVersion === "0.5.192", api.runtimeVersion);
+check("runtime version is 0.5.193", api.runtimeVersion === "0.5.193", api.runtimeVersion);
 check("structured candidate count is frozen", candidates.size === 1885, candidates.size);
 check("structured scan has no parser errors", parseErrors.length === 0, JSON.stringify(parseErrors.slice(0, 5)));
 check("117 runtime labels observed somewhere in structured materials", observed.size === 117, observed.size);
@@ -169,13 +171,18 @@ for (const row of inventory) {
     const allLater = [...(laterProbe ? [laterProbe] : []), ...newest];
     if (allLater.length) {
       for (const probe of allLater) {
-        const labels = api.diagnosticFinalRows(api.analyzeLine(probe.source, probe.context_source || null))
-          .filter((item) => item.kind === "construction")
-          .map(internalConstruction);
+        const rows = api.diagnosticFinalRows(api.analyzeLine(probe.source, probe.context_source || null))
+          .filter((item) => item.kind === "construction");
+        const labels = rows.map(internalConstruction);
         check(`${label} later probe ${probe.case_id} has zero evidence weight`, probe.linguistic_evidence_weight === 0 && probe.purpose === "runtime_reachability_only", probe.case_id);
-        check(`${label} later probe ${probe.case_id} reaches target`, labels.includes(label), probe.source);
+        if (probe.assertion === "compatibility_alias_present") {
+          check(`${label} later probe ${probe.case_id} exposes compatibility alias`, rows.some((row) => row.compatibility_alias === label && internalConstruction(row) === probe.internal_construction), probe.source);
+        } else {
+          check(`${label} later probe ${probe.case_id} reaches target`, labels.includes(label), probe.source);
+        }
       }
-      check(`${label} current coverage is implementation-only after later audit`, index?.state === "implementation_positive_only", index?.state || "missing");
+      const aliasOnly = allLater.every((probe) => probe.assertion === "compatibility_alias_present");
+      check(`${label} current coverage matches later audit type`, index?.state === (aliasOnly ? "compatibility_alias_only" : "implementation_positive_only"), index?.state || "missing");
       check(`${label} current implementation probe count matches later audits`, Number(index?.implementation_probe_count) === allLater.length, `${index?.implementation_probe_count} != ${allLater.length}`);
       check(`${label} direct positive evidence count remains zero after later audit`, Number(index?.positive_case_count) === 0, index?.positive_case_count);
     } else {
@@ -186,13 +193,14 @@ for (const row of inventory) {
 }
 check("15 baseline labels observed", observedInventory === 15, observedInventory);
 check("53 baseline labels not observed", unobservedInventory === 53, unobservedInventory);
-check("test index has 34 implementation-positive-only labels", testIndex.files.filter((item) => item.state === "implementation_positive_only").length === 34, testIndex.files.filter((item) => item.state === "implementation_positive_only").length);
-check("test index has 33 no-direct labels", testIndex.files.filter((item) => item.state === "no_direct_cases").length === 33, testIndex.files.filter((item) => item.state === "no_direct_cases").length);
+check("test index has 36 implementation-positive-only labels", testIndex.files.filter((item) => item.state === "implementation_positive_only").length === 36, testIndex.files.filter((item) => item.state === "implementation_positive_only").length);
+check("test index has one compatibility-alias-only label", testIndex.files.filter((item) => item.state === "compatibility_alias_only").length === 1, testIndex.files.filter((item) => item.state === "compatibility_alias_only").length);
+check("test index has 29 no-direct labels", testIndex.files.filter((item) => item.state === "no_direct_cases").length === 29, testIndex.files.filter((item) => item.state === "no_direct_cases").length);
 
 const result = {
   schema: "canto-span-runtime-reachability-audit-v1",
   runtime_version: api.runtimeVersion,
-  checkpoint: "v0.5.192-result-change-state-wrapper-audit",
+  checkpoint: "v0.5.193-nominal-wrapper-audit",
   parser_behavior_changed: false,
   linguistic_status_changed: false,
   structured_candidate_count: candidates.size,
@@ -202,6 +210,7 @@ const result = {
   baseline_implementation_positive_only_labels: observedInventory,
   baseline_no_direct_labels: unobservedInventory,
   current_implementation_positive_only_labels: testIndex.files.filter((item) => item.state === "implementation_positive_only").length,
+  current_compatibility_alias_only_labels: testIndex.files.filter((item) => item.state === "compatibility_alias_only").length,
   current_no_direct_labels_remaining: testIndex.files.filter((item) => item.state === "no_direct_cases").length,
   linguistic_evidence_weight_added: 0,
   total: checks.length,

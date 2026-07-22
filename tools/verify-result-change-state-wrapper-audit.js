@@ -50,7 +50,7 @@ function check(name, condition, detail = "") {
   if (!pass) failures.push({ name, detail: String(detail) });
 }
 
-check("runtime version is 0.5.192", api.runtimeVersion === "0.5.192", api.runtimeVersion);
+check("runtime version is 0.5.193", api.runtimeVersion === "0.5.193", api.runtimeVersion);
 check("inventory has eleven labels", inventory.length === 11, inventory.length);
 check("probe schema", probes.schema === "canto-span-result-change-state-reachability-probes-v1", probes.schema);
 check("probe file has ten cases", probes.cases.length === 10, probes.cases.length);
@@ -82,14 +82,14 @@ check("PerfectiveResultPredicate has zero implementation probes", shadowedIndex 
 const shadowedNote = fs.readFileSync(path.join(root, "grammar", "archived", "PerfectiveResultPredicate.md"), "utf8");
 check("PerfectiveResultPredicate note records shadowing", shadowedNote.includes("complete parser output routes the same surface through `PerfectiveVP`") && shadowedNote.includes("remains `no_direct_cases`"));
 
-check("test index has 34 implementation-positive-only labels", index.files.filter((row) => row.state === "implementation_positive_only").length === 34, index.files.filter((row) => row.state === "implementation_positive_only").length);
-check("test index has 33 no-direct labels", index.files.filter((row) => row.state === "no_direct_cases").length === 33, index.files.filter((row) => row.state === "no_direct_cases").length);
-check("test index has 169 active labels", index.active_construction_count === 169 && index.files.length === 169, index.files.length);
+check("test index has 36 implementation-positive-only labels", index.files.filter((row) => row.state === "implementation_positive_only").length === 36, index.files.filter((row) => row.state === "implementation_positive_only").length);
+check("test index has 29 no-direct labels", index.files.filter((row) => row.state === "no_direct_cases").length === 29, index.files.filter((row) => row.state === "no_direct_cases").length);
+check("test index has 168 active labels", index.active_construction_count === 168 && index.files.length === 168, index.files.length);
 
 const result = {
   schema: "canto-span-result-change-state-wrapper-audit-v1",
   runtime_version: api.runtimeVersion,
-  checkpoint: "v0.5.192-result-change-state-wrapper-audit",
+  checkpoint: "v0.5.193-result-change-state-wrapper-audit",
   parser_recognized_span_behavior_changed: false,
   linguistic_status_changed: false,
   labels_audited: inventory.length,

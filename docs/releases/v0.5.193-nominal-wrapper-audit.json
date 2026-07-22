@@ -1,0 +1,77 @@
+{
+  "schema": "canto-span-release-handoff-audit-v2",
+  "release_id": "v0.5.193-nominal-wrapper-audit",
+  "handoff_sequence": 17,
+  "status_changes": [
+    {
+      "construction": "DemonstrativeHeadNP",
+      "old_status": "unsupported_generalization",
+      "new_status": "retired"
+    }
+  ],
+  "changed_construction_audit": [
+    {
+      "construction": "DemonstrativeHeadNP",
+      "old_status": "unsupported_generalization",
+      "new_status": "retired",
+      "plain_language_claim": "The label encoded a demonstrative-plus-head analysis without the overt classifier found in the relevant Cantonese forms. It had no constructor, accepted fixture, standardized case, or verified output, while the overt demonstrative-classifier-noun structure is already represented by OvertHeadDemonstrativeClassifierNP.",
+      "code_locations": [
+        "main.js:CONSTRUCTION_LABEL_REGISTRY removal",
+        "main.js:templateDerivedSlots compatibility-list cleanup",
+        "archive/retired-labels/v0.5.193-nominal-wrapper-audit/DemonstrativeHeadNP.md"
+      ],
+      "sources": [
+        {
+          "citation": "Bond, Francis and Joanna Ut-Seong Sio. 2024. A Construction-based Approach to Cantonese Classifiers.",
+          "locator": "Preserved source record in archived DemonstrativeHeadNP note; demonstrative-classifier-noun structure",
+          "verification": "VERIFIED_FULL_TEXT"
+        },
+        {
+          "citation": "Lam, Charles, Chaak Ming Lau, and Jackson L. Lee. 2024. Multi-Tiered Cantonese Word Segmentation.",
+          "locator": "Preserved source record in archived DemonstrativeHeadNP note; classifier segmentation evidence",
+          "verification": "VERIFIED_FULL_TEXT"
+        },
+        {
+          "citation": "Canto Span constructor and output audit",
+          "locator": "docs/research/CP037-DEMONSTRATIVEHEADNP-RETIREMENT-R1.md",
+          "verification": "PASS_ZERO_CONSTRUCTOR_FIXTURE_TEST_AND_OUTPUT"
+        }
+      ],
+      "panel_response_count_total": 0,
+      "eligible_panel_response_count": 0,
+      "minimum_usable_judgments_per_critical_item": 0,
+      "survey_instrument_version": "not_applicable_retirement",
+      "survey_instrument_status": "not_applicable",
+      "quality_screen_status": "not_applicable",
+      "panel_adjudication_status": "not_applicable",
+      "unresolved_questions": []
+    }
+  ],
+  "supported_productive_pending_reaudit": [],
+  "implementation_validation": "PASS required before handoff: 545 regression cases, 43 NP cases, 1,194 construction assertions, 168 note/test alignment, two direct implementation probes, one compatibility-alias probe, nominal-wrapper audit, historical reachability audits, panel workflow, promotion and release gates, documentation links, and repository verification.",
+  "linguistic_confidence": "No retained construction gained linguistic evidence or status. All three probes have evidence weight zero. DemonstrativeHeadNP was retired as a constructorless known misanalysis; its sources and history remain preserved.",
+  "code_analysis_overclaim_review": true,
+  "overclaim_review_scope": "Inspected constructor definitions, complete diagnostic rows, public compatibility aliases, and current notes for four nominal labels. Distinguished direct internal output from public alias exposure, recorded PossessiveClassifierNP as nested-only reachability, and retired only the constructorless label whose own source record contradicted its analysis.",
+  "release_documents": [
+    "docs/research/CP037-P1-NOMINAL-WRAPPER-AUDIT-R1.md",
+    "docs/research/CP037-P1-NOMINAL-WRAPPER-INVENTORY-R1.tsv",
+    "docs/research/CP037-DEMONSTRATIVEHEADNP-RETIREMENT-R1.md",
+    "test-data/nominal-wrapper-reachability-probes-v1.json",
+    "tools/verify-nominal-wrapper-audit.js",
+    "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+    "docs/current/PROJECT-STATE.md",
+    "docs/current/TESTING.md",
+    "GRAMMAR-INDEX.md",
+    "HANDOFF.md",
+    "CHANGELOG.md"
+  ],
+  "external_audit_ready": true,
+  "unresolved_release_questions": [
+    "Twenty-nine retained labels still have no direct standardized case.",
+    "PossessiveClassifierNP is currently observed only as a nested wrapper inside bounded result frames, not as a standalone possessive parser.",
+    "Comment and PerfectiveResultPredicate remain shadowed or unobserved in complete output.",
+    "The full dormant-label review remains due by handoff sequence 23.",
+    "RUL and PFV survey integration remains paused while collection proceeds."
+  ],
+  "base_tree": "ace31b08478c598f8fc087914a2fa0e39be68581"
+}

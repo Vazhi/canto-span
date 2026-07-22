@@ -137,3 +137,10 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Full pre-migration record: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
 - Status migration date: 2026-07-21.
 - The frozen JSON preserves the former wide schema; this note is the active authoring record.
+
+## Retirement record — v0.5.193
+
+- Retired at: `v0.5.193-nominal-wrapper-audit`
+- Final disposition: `RETIRED_FROM_ACTIVE_GRAMMAR_TABLE`
+- Reason: the label had no constructor, no fixture, no standardized case, and no verified parser output. Its own checked sources require an overt classifier in forms such as `呢個蘋果`, which is already represented by `OvertHeadDemonstrativeClassifierNP`; retaining a separate demonstrative-plus-head label would preserve a known misanalysis rather than a future implementation target.
+- Preserved research: demonstrative/classifier/head structure remains under `OvertHeadDemonstrativeClassifierNP`, `HeadlessDemonstrativeClassifierNP`, and the compatibility alias `DemonstrativeClassifierNP`.

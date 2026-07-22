@@ -46,11 +46,11 @@ implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: false
 promotion_gate_version: "v3"
 standard_test_file: "tests/constructions/DemonstrativeClassifierNP.json"
-standard_test_coverage: "no_direct_cases"
+standard_test_coverage: "compatibility_alias_only"
 standard_positive_test_count: 0
 standard_boundary_test_count: 0
-standard_implementation_probe_count: 0
-standard_executable_test_count: 0
+standard_implementation_probe_count: 1
+standard_executable_test_count: 1
 source_ids: []
 runtime_active: true
 workflow_state: "archived"
@@ -132,10 +132,15 @@ No pattern-specific external source is currently mapped.
 
 ## Related constructions
 
-- [[DemonstrativeHeadNP]]
 
 ## Migration provenance
 
 - Full pre-migration record: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
 - Status migration date: 2026-07-21.
 - The frozen JSON preserves the former wide schema; this note is the active authoring record.
+
+## CP037 compatibility-alias audit
+
+- Compatibility-only reachability: `NOMWRAP-003` with `呢本書。`
+- Complete output uses internal `OvertHeadDemonstrativeClassifierNP` and exposes `DemonstrativeClassifierNP` only as its public compatibility alias.
+- This probe has linguistic evidence weight **0** and does not create a separate linguistic construction claim.

@@ -7,10 +7,10 @@ tags: [canto-span/grammar, canto-span/index]
 
 # Grammar index
 
-- Current construction notes: **169**
+- Current construction notes: **168**
 - Active working set: **2**
-- Workflow-archived current records: **167**
-- Retired labels: **12**
+- Workflow-archived current records: **166**
+- Retired labels: **13**
 
 Workflow archiving parks a note outside current work. It does not retire its runtime label or change its linguistic status.
 
@@ -20,7 +20,7 @@ Workflow archiving parks a note outside current work. It does not retire its run
 - `provisional_reaudit`: **0**
 - `provisional`: **0**
 - `research_pending`: **60**
-- `unsupported_generalization`: **86**
+- `unsupported_generalization`: **85**
 - `lexicalized_only`: **3**
 - `parser_heuristic`: **20**
 
@@ -28,9 +28,10 @@ Workflow archiving parks a note outside current work. It does not retire its run
 
 - positive and boundary: **2**
 - positive only: **100**
-- implementation positive only: **34**
+- implementation positive only: **36**
+- compatibility alias only: **1**
 - boundary only: **0**
-- no direct standardized cases: **33**
+- no direct standardized cases: **29**
 - command: `npm test`
 
 ## Active working set
@@ -80,7 +81,6 @@ Workflow archiving parks a note outside current work. It does not retire its run
 - [[DegreeStativePredicate]] — `research_pending`
 - [[DelimitedVP]] — `unsupported_generalization`
 - [[DemonstrativeClassifierNP]] — `parser_heuristic`
-- [[DemonstrativeHeadNP]] — `unsupported_generalization`
 - [[DesiderativeVP]] — `research_pending`
 - [[DiMarkedNP]] — `research_pending`
 - [[DirectedMannerMotionVP]] — `research_pending`

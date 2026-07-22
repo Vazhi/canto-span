@@ -88,7 +88,7 @@ function check(name, condition, detail = "") {
   if (!pass) failures.push({ name, detail: String(detail) });
 }
 
-check("runtime version is 0.5.192", api.runtimeVersion === "0.5.192", api.runtimeVersion);
+check("runtime version is 0.5.193", api.runtimeVersion === "0.5.193", api.runtimeVersion);
 check("inventory has five labels", inventory.length === 5, inventory.length);
 check("probe schema", probes.schema === "canto-span-constructor-specific-reachability-probes-v1", probes.schema);
 check("all three probes have zero evidence weight", probes.cases.length === 3 && probes.cases.every((row) => row.linguistic_evidence_weight === 0 && row.purpose === "runtime_reachability_only"), probes.cases.length);
@@ -124,10 +124,10 @@ check("TemporalAdverbialClause current note absent", !fs.existsSync(path.join(ro
 check("TemporalAdverbialClause test file absent", !fs.existsSync(path.join(root, "tests/constructions/TemporalAdverbialClause.json")));
 check("TemporalAdverbialClause archived note preserved", fs.existsSync(path.join(root, "archive/retired-labels/v0.5.190-low-reference-wrapper-audit/TemporalAdverbialClause.md")));
 
-check("current registry has 169 labels", internal.CONSTRUCTION_LABEL_REGISTRY.size === 169, internal.CONSTRUCTION_LABEL_REGISTRY.size);
-check("test index has 169 labels", index.active_construction_count === 169 && index.files.length === 169, index.files.length);
-check("34 labels are implementation positive only", index.files.filter((row) => row.state === "implementation_positive_only").length === 34, index.files.filter((row) => row.state === "implementation_positive_only").length);
-check("33 labels remain no-direct", index.files.filter((row) => row.state === "no_direct_cases").length === 33, index.files.filter((row) => row.state === "no_direct_cases").length);
+check("current registry has 168 labels", internal.CONSTRUCTION_LABEL_REGISTRY.size === 168, internal.CONSTRUCTION_LABEL_REGISTRY.size);
+check("test index has 168 labels", index.active_construction_count === 168 && index.files.length === 168, index.files.length);
+check("36 labels are implementation positive only", index.files.filter((row) => row.state === "implementation_positive_only").length === 36, index.files.filter((row) => row.state === "implementation_positive_only").length);
+check("29 labels remain no-direct", index.files.filter((row) => row.state === "no_direct_cases").length === 29, index.files.filter((row) => row.state === "no_direct_cases").length);
 
 const result = {
   schema: "canto-span-low-reference-wrapper-audit-v1",

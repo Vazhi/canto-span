@@ -16,7 +16,7 @@ function check(name, condition, detail = "") {
 }
 
 check("exactly two active working notes", active.length === 2, String(active.length));
-check("exactly 167 archived working notes", archived.length === 167, String(archived.length));
+check("exactly 166 archived working notes", archived.length === 166, String(archived.length));
 check(
   "active set matches current bounded work",
   active.map((note) => note.frontmatter.construction).sort().join(",") === [...expectedActive].sort().join(","),

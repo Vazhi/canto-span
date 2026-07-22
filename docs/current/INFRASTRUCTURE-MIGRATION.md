@@ -123,7 +123,7 @@ provenance for collected legacy data.
 - retained 53 labels as `no_direct_cases`; “not observed” is not treated as unreachable;
 - retired no labels because all 68 retain runtime code references;
 - changed no parser span behavior or linguistic status.
-## v0.5.192 experiential and delimited wrapper audit
+## v0.5.193 experiential and delimited wrapper audit
 
 - audited six related labels by complete-parser output and exact constructor behavior;
 - added seven zero-weight implementation probes across six labels;
@@ -139,8 +139,15 @@ provenance for collected legacy data.
 - reduced active labels to 169 and no-direct-case labels to 49;
 - changed no recognized parser span or retained linguistic status.
 
-## Result/change-state wrapper audit
+## v0.5.192 result/change-state wrapper audit
 
-- v0.5.192 adds ten zero-weight implementation probes across ten result/change-state labels.
-- `PerfectiveResultPredicate` remains `no_direct_cases` because complete parser output is shadowed by `PerfectiveVP`.
-- Current coverage is 2 positive-and-boundary, 100 positive-only, 34 implementation-positive-only, and 33 no-direct labels.
+- added ten zero-weight implementation probes across ten result/change-state labels;
+- kept `PerfectiveResultPredicate` at `no_direct_cases` because complete parser output is shadowed by `PerfectiveVP`;
+- reduced the no-direct backlog to 33 labels without changing parser spans or linguistic statuses.
+
+## v0.5.193 nominal-wrapper audit
+
+- added direct zero-weight reachability probes for `OrdinalClassifierNP` and nested `PossessiveClassifierNP`;
+- represented `DemonstrativeClassifierNP` as a compatibility-alias-only label backed by internal `OvertHeadDemonstrativeClassifierNP`;
+- retired constructorless `DemonstrativeHeadNP` while preserving its historical record;
+- current coverage is 2 positive-and-boundary, 100 positive-only, 36 implementation-positive-only, 1 compatibility-alias-only, and 29 no-direct labels.

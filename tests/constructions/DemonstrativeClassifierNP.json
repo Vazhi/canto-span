@@ -6,17 +6,29 @@
   "snapshot_cases": [],
   "focused_cases": [],
   "np_cases": [],
-  "implementation_probe_cases": [],
+  "implementation_probe_cases": [
+    {
+      "case_id": "NOMWRAP-003",
+      "source": "呢本書。",
+      "assertion": "compatibility_alias_present",
+      "internal_construction": "OvertHeadDemonstrativeClassifierNP",
+      "provenance": "docs/research/CP037-P1-NOMINAL-WRAPPER-AUDIT-R1.md#NOMWRAP-003",
+      "source_role": "public_compatibility_alias_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    }
+  ],
   "coverage": {
-    "state": "no_direct_cases",
+    "state": "compatibility_alias_only",
     "exact_snapshot_positive_count": 0,
     "focused_positive_count": 0,
     "focused_boundary_count": 0,
     "focused_review_only_count": 0,
     "np_case_count": 0,
-    "implementation_probe_count": 0,
+    "implementation_probe_count": 1,
+    "compatibility_alias_probe_count": 1,
     "positive_case_count": 0,
     "boundary_case_count": 0,
-    "executable_case_count": 0
+    "executable_case_count": 1
   }
 }

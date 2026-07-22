@@ -4,9 +4,9 @@
   "last_full_review_id": "v0.5.183-phase3-dormant-label-retirement",
   "recommended_interval_min": 10,
   "hard_interval_max": 20,
-  "current_handoff_sequence": 16,
+  "current_handoff_sequence": 17,
   "next_review_window_opens_at_sequence": 13,
   "review_required_by_sequence": 23,
   "state": "review_window_open_partial_review_in_progress",
-  "notes": "The retirement window remains open. v0.5.192 reviewed eleven result/change-state wrappers, added ten zero-weight probes, and retained one shadowed label; no label in this family met the retirement rule. The full review remains due by sequence 23."
+  "notes": "The retirement window remains open. v0.5.193 reviewed four nominal wrappers, added two zero-weight direct probes and one compatibility-alias probe, and retired constructorless DemonstrativeHeadNP. The full review remains due by sequence 23."
 }

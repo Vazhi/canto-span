@@ -4,21 +4,37 @@
 
 | Measure | Current value |
 |---|---:|
-| Runtime | v0.5.192 |
-| Runtime labels | 169 |
-| Current construction notes | 169 |
+| Runtime | v0.5.193 |
+| Runtime labels | 168 |
+| Current construction notes | 168 |
 | Active working notes | 2 |
-| Workflow-archived notes | 167 |
-| Retired labels | 12 |
+| Workflow-archived notes | 166 |
+| Retired labels | 13 |
 | `supported_productive` | 0 |
 | `provisional_reaudit` | 0 |
 | `provisional` | 0 |
 | `research_pending` | 60 |
-| `unsupported_generalization` | 86 |
+| `unsupported_generalization` | 85 |
 | `lexicalized_only` | 3 |
 | `parser_heuristic` | 20 |
 
-The canonical registry is the union of `grammar/active/*.md` and `grammar/archived/*.md`; it matches the 169 runtime labels exactly.
+The canonical registry is the union of `grammar/active/*.md` and `grammar/archived/*.md`; it matches the 168 runtime labels exactly.
+
+## v0.5.193 nominal wrapper audit
+
+Four nominal labels received constructor-specific review. `OrdinalClassifierNP` and `PossessiveClassifierNP` now have semantically coherent zero-weight implementation probes. `DemonstrativeClassifierNP` is recorded separately as `compatibility_alias_only`: complete output uses internal `OvertHeadDemonstrativeClassifierNP` and exposes the broad name only as a public alias.
+
+`DemonstrativeHeadNP` was retired because it had no constructor, fixture, standardized case, or output and preserved a demonstrative-plus-head analysis that omitted the overt classifier required by its own checked sources.
+
+Current construction coverage:
+
+- positive and boundary: **2**;
+- positive only: **100**;
+- implementation positive only: **36**;
+- compatibility alias only: **1**;
+- no direct cases: **29**.
+
+No recognized parser span or retained linguistic status changed.
 
 ## v0.5.192 result and change-state wrapper audit
 
@@ -137,13 +153,13 @@ critical-item sample remains zero.
 
 - regression: **545 cases**;
 - NP subsystem: **43 cases**;
-- construction assertions: **1,191**;
-- construction test files: **169**;
+- construction assertions: **1,194**;
+- construction test files: **168**;
 - no parser span behavior changed in this migration.
 
 ## Next milestone
 
-Continue the 33-label implementation reachability backlog in small related
+Continue the 29-label implementation reachability backlog in small related
 families, with exact constructor inspection before any probe is added. Survey
 collection is proceeding separately; do not integrate results until a frozen
 export is supplied and adjudicated.
