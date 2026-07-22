@@ -1,74 +1,44 @@
 {
-  "schema": "canto-span-release-handoff-audit-v2",
-  "release_id": "v0.5.204-degree-modified-lexical-stative-reconciliation",
-  "handoff_sequence": 27,
-  "status_changes": [
-    {
-      "construction": "DegreeModifiedLexicalStative",
-      "old_status": "unsupported_generalization",
-      "new_status": "research_pending"
-    }
-  ],
-  "changed_construction_audit": [
-    {
-      "construction": "DegreeModifiedLexicalStative",
-      "old_status": "unsupported_generalization",
-      "new_status": "research_pending",
-      "plain_language_claim": "Independent sources attest the exact degree-modifier plus lexicalized-stative profile 好 + 好食; broader modifier, lexical, productivity, and negative boundaries remain unresolved.",
-      "code_locations": [
-        "main.js:DegreeModifiedLexicalStative category template",
-        "tests/fixtures/regression-snapshots.json:REG-0551",
-        "grammar/research_pending/DegreeModifiedLexicalStative.md"
-      ],
-      "sources": [
-        {
-          "citation": "Lam, Lau, and Lee. 2024. Multi-Tiered Cantonese Word Segmentation.",
-          "locator": "p. 6 degree-modification discussion",
-          "verification": "VERIFIED_FULL_TEXT"
-        },
-        {
-          "citation": "CUHK Independent Learning Centre. Cantonese Express, Daily Conversation 5.",
-          "locator": "vocabulary item 3: 好好食 hou2 hou2 sik6",
-          "verification": "VERIFIED_OFFICIAL_UNIVERSITY_WEB_RESOURCE"
-        },
-        {
-          "citation": "Words.hk / 粵典. 好食.",
-          "locator": "adjective entry and example ending 都覺得好好食",
-          "verification": "VERIFIED_CONTEMPORARY_DICTIONARY_ENTRY"
-        }
-      ],
-      "panel_response_count_total": 0,
-      "eligible_panel_response_count": 0,
-      "minimum_usable_judgments_per_critical_item": 0,
-      "survey_instrument_version": "none",
-      "survey_instrument_status": "not_started",
-      "quality_screen_status": "not_started",
-      "panel_adjudication_status": "not_started",
-      "unresolved_questions": [
-        "Which degree modifiers combine with which independently lexicalized statives?",
-        "Which strings require lexicalized rather than compositional analysis?",
-        "What negative boundaries distinguish degree modification from manner or verbal readings?"
-      ]
-    }
-  ],
+  "schema": "canto-span-release-handoff-audit-v3",
+  "release_id": "v0.5.208-copular-anota-reconciliation",
+  "handoff_sequence": 31,
+  "status_changes": [],
+  "changed_construction_audit": [],
   "supported_productive_pending_reaudit": [],
-  "implementation_validation": "Regression REG-0551 preserves complete DegreeModifiedLexicalStative coverage with visible degree 好 and lexicalized stative 好食. The aggregate regression, NP suite, and construction assertions are run through the existing profiles.",
-  "linguistic_confidence": "research_pending only. The exact 好好食 profile is attested, but unrestricted productivity, negative boundaries, and panel evidence are absent.",
+  "implementation_validation": "At v0.5.208, regression is 551/551, NP is 43/43, and 1,235 construction assertions pass. CopularANotAQuestion has two source-linked positives, one source-linked terminal-tag boundary, and one zero-weight implementation probe.",
+  "linguistic_confidence": "CopularANotAQuestion remains unsupported_generalization. The release reconciles a narrow overt full-form predicate/clause profile and tag boundary, but nominal/possessive support, contracted-form ontology, complement coverage, and role-neutral panel evidence remain incomplete.",
   "code_analysis_overclaim_review": true,
-  "overclaim_review_scope": "Separated the new source-linked exact fixture from historical zero-weight probe FRWRAP-004 and made no productive or universal-speaker claim.",
+  "overclaim_review_scope": "Re-read the CopularANotAQuestion fallback, slot metadata, public note, checked Law/Li/Wong/Yip source records, standardized tests, and the separate PolarQuestionFrame path. The release does not claim that every 係唔係 complement is licensed, that 係咪 is merged, or that a terminal tag is a copular A-not-A complement construction.",
   "release_documents": [
-    "docs/research/CP047-P1-DEGREE-MODIFIED-LEXICAL-STATIVE-RECONCILIATION-R1.md",
-    "grammar/research_pending/DegreeModifiedLexicalStative.md",
+    "docs/research/CP051-P1-COPULAR-ANOTA-RECONCILIATION-R1.md",
+    "docs/research/CP051-P1-COPULAR-ANOTA-SOURCE-VERIFICATION-R1.tsv",
+    "review-packets/cp051-p1-copular-anota-r1/focused-evaluation-packet.json",
+    "tests/constructions/CopularANotAQuestion.json",
+    "grammar/unsupported_generalization/CopularANotAQuestion.md",
+    "data/release-baselines/v0.5.207-construction-statuses.json",
     "docs/current/PROJECT-STATE.md",
+    "README.md",
+    "HANDOFF.md",
+    "CHANGELOG.md",
+    "docs/releases/v0.5.208-copular-anota-reconciliation-audit.json",
+    "main.js",
+    "tools/build-construction-tests.js",
+    "tests/construction-test-index.json",
     "docs/current/TESTING.md",
     "GRAMMAR-INDEX.md",
-    "CHANGELOG.md",
-    "HANDOFF.md"
+    "manifest.json",
+    "package.json"
   ],
   "external_audit_ready": true,
   "unresolved_release_questions": [
-    "Productive lexical and modifier range remains unresolved.",
-    "RUL and PFV survey integration remains paused while collection proceeds."
+    "The remaining 56 implementation-only labels still require source/runtime reconciliation.",
+    "CopularANotAQuestion still requires direct nominal/possessive evidence, contracted 係咪 ontology review, broader complement boundaries, and role-neutral panel evidence.",
+    "The full retirement-review window opened at handoff sequence 31 and must be completed no later than sequence 41.",
+    "RUL and PFV survey integration remains paused pending clean locked-instrument evidence."
   ],
-  "base_tree": "7b4d0023b5cff48142a1fd745fd959ef7f9e8411"
+  "base_status_snapshot": {
+    "path": "data/release-baselines/v0.5.207-construction-statuses.json",
+    "sha256": "73f099016cd38c71f3094f7947294fbdf8045e0201bba8a4a36dd4b4ce5b3aa0",
+    "runtime_version": "0.5.207"
+  }
 }

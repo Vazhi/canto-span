@@ -1,3 +1,45 @@
+## v0.5.208 — copular 係唔係 source/runtime reconciliation
+
+- Added source-linked positive coverage for `你係唔係識講德文咋？` and `係唔係每個學生都鍾意睇電視呀？`.
+- Added the published terminal-tag boundary `你唔去喇，係唔係呀？`, which must not receive `CopularANotAQuestion`.
+- Made complement classification explicit: typed predicate/clause versus bounded nominal/possessive.
+- Blocked broad NP wrappers from licensing a predicate complement only through inherited generic slots.
+- Kept contracted `係咪` on the existing `PolarQuestionFrame` route rather than silently merging internal analyses.
+- Moved standardized coverage from 3 to 4 positive-and-boundary labels and reduced implementation-only coverage from 57 to 56.
+- Increased construction assertions from 1,232 to 1,235; regression remains 551/551 and NP remains 43/43.
+- Kept `CopularANotAQuestion` at `unsupported_generalization`; no panel evidence, unrestricted complement claim, or tag-construction promotion was added.
+
+## v0.5.207 — portable release status baseline
+
+- Replaced clone-specific commit/tree release baselines with a checked-in, SHA-256-pinned construction-status snapshot.
+- Added schema, duplicate-label, allowed-status, count, digest, path, and runtime-version validation for baseline snapshots.
+- Added `npm run release:baseline -- <version>` to generate future baseline files from a clean released state.
+- Expanded release-gate tests from 8 to 14 cases, including snapshot integrity and path-safety failures.
+- Corrected the false v0.5.206 claim that a whole-repository tree object was portable across clones.
+- Changed no parser behavior, construction status, evidence record, panel result, survey conclusion, regression expectation, or construction assertion.
+
+## v0.5.206 — terminal 得唔得 source/runtime reconciliation
+
+- Narrowed the legacy `AcceptabilityANotA` fallback from unordered token co-occurrence to an adjacent terminal `得唔得` sequence, optionally followed by checked postposed `先`.
+- Added exact source-linked positive coverage for `而家問題係佢嗰度得唔得先。`.
+- Added the published restrictive-focus boundary `得唔得三個鐘你可以瞓？`, which must not receive `AcceptabilityANotA`.
+- Preserved simple `得唔得？`, prefixed terminal questions, and the existing zero-weight reachability probe.
+- Moved standardized coverage from 2 to 3 positive-and-boundary labels and reduced implementation-only coverage from 58 to 57.
+- Increased construction assertions from 1,230 to 1,232; regression remains 551/551 and NP remains 43/43.
+- Kept `AcceptabilityANotA` at `unsupported_generalization`; no eligible panel evidence, productive scope, or complete boundary inventory was claimed.
+- Reviewed `CopularANotAQuestion` but deferred changes because checked clause-complement and tag sources do not match the current nominal/possessive runtime scope.
+- Excluded regenerated `validation/current` snapshots from the patch boundary. The attempted Git-tree baseline was later replaced by the portable status-snapshot mechanism in v0.5.207.
+
+## v0.5.205 — documentation consolidation and count enforcement
+
+- Consolidated current status, evidence, native-panel, survey, workflow, validation, promotion, and release policy in `docs/current/GOVERNANCE.md`.
+- Reduced seven superseded policy files to compatibility pointers and replaced the completed infrastructure-migration plan with a concise historical pointer.
+- Corrected stale status counts: `research_pending` is 62 and `unsupported_generalization` is 81.
+- Extended the existing documentation-consistency verifier to check canonical versions, status/workflow totals, folder README counts, and executable-test totals.
+- Removed the obsolete standalone review-only-readiness audit script and stale root outputs.
+- Moved the stale v0.5.184 NP checkpoint out of the repository root into release history.
+- Changed no parser behavior, runtime label, construction status, evidence claim, survey result, or test expectation.
+
 ## v0.5.204 — degree-modified lexical stative reconciliation
 
 - Added the source-linked regression `好好食。` under `DegreeModifiedLexicalStative`.

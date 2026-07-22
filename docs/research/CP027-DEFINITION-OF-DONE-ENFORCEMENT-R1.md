@@ -17,7 +17,7 @@ The new gate distinguishes the following facts instead of compressing them into 
 - when and at which commit the code was re-read against the documented claim, including exact code locations;
 - whether the construction has completed re-audit under the current standard.
 
-A separate release-handoff gate now compares status changes against the previous Git commit, requires an audit slice for every changed construction, rejects unre-audited `supported_productive` records, verifies separate implementation and linguistic reporting, and enforces the dormant-label retirement-review deadline.
+A separate release-handoff gate compares status changes against a checked-in, SHA-256-pinned construction-status baseline, requires an audit slice for every changed construction, rejects unre-audited `supported_productive` records, verifies separate implementation and linguistic reporting, and enforces the dormant-label retirement-review deadline. The original Git-object baseline was replaced in v0.5.207 because clone-specific objects were not portable.
 
 ## Current application
 

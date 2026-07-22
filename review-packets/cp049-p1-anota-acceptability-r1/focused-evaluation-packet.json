@@ -1,0 +1,55 @@
+{
+  "schema": "canto-span-source-runtime-reconciliation-packet-v1",
+  "packet_id": "CP049-P1-ANOTA-ACCEPTABILITY-R1",
+  "checkpoint": "CP049-P1",
+  "status": "VISIBLE_SOURCE_LINKED_RECONCILIATION",
+  "accepted_parent": "v0.5.205",
+  "target_internal_construction": "AcceptabilityANotA",
+  "claim": {
+    "surface_profile": "clause-final adjacent 得唔得, optionally followed by 先",
+    "boundary": "preverbal restrictive-focus 得 does not become AcceptabilityANotA merely because a later 唔 and 得 are present",
+    "linguistic_status_after_checkpoint": "unsupported_generalization"
+  },
+  "source_basis": [
+    {
+      "source_id": "SRC-SYBESMA-2013",
+      "role": "exact positive clause-final 得唔得先 attestation",
+      "locator": "chapter p. 10, example (11c)",
+      "evidence_polarity": "positive_support"
+    },
+    {
+      "source_id": "SRC-LUI-2023-PREVERBAL-DAK",
+      "role": "explicit starred preverbal restrictive-focus 得唔得 boundary",
+      "locator": "article p. 71 / PDF p. 5, example (10b)",
+      "evidence_polarity": "negative_boundary"
+    }
+  ],
+  "development_set": {
+    "cases": [
+      {
+        "case_id": "ANOTA-E01",
+        "surface": "而家問題係佢嗰度得唔得先。",
+        "class": "exact_source_attestation_terminal_dak_m_dak_sin",
+        "expected": "construction_present",
+        "source_ids": [
+          "SRC-SYBESMA-2013"
+        ],
+        "source_locator": "chapter p. 10, example (11c)"
+      },
+      {
+        "case_id": "ANOTA-N01",
+        "surface": "得唔得三個鐘你可以瞓？",
+        "class": "preverbal_restrictive_focus_dak_a_not_a_boundary",
+        "expected": "construction_absent",
+        "source_ids": [
+          "SRC-LUI-2023-PREVERBAL-DAK"
+        ],
+        "source_locator": "article p. 71 / PDF p. 5, example (10b)"
+      }
+    ]
+  },
+  "status_decision": {
+    "status_changed": false,
+    "reason": "One checked positive and one checked boundary reconcile a narrow runtime profile, but no role-neutral panel evidence or complete productivity boundary inventory exists."
+  }
+}

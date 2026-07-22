@@ -1,9 +1,64 @@
 "use strict";
 
+const path = require("path");
+const { LINGUISTIC_STATUSES } = require("./construction-notes-lib");
+
+function isSafeRepositoryRelativePath(value) {
+  if (typeof value !== "string" || !value.trim()) return false;
+  if (path.isAbsolute(value)) return false;
+  const normalized = path.posix.normalize(value.replace(/\\/g, "/"));
+  return normalized === value.replace(/\\/g, "/")
+    && normalized !== "."
+    && !normalized.startsWith("../")
+    && !normalized.includes("/../");
+}
+
+function validateStatusBaselineSnapshot(snapshot) {
+  const failures = [];
+  if (!snapshot || snapshot.schema !== "canto-span-construction-status-baseline-v1") {
+    failures.push("invalid_status_baseline_schema");
+    return failures;
+  }
+  if (!/^\d+\.\d+\.\d+$/.test(String(snapshot.runtime_version || ""))) {
+    failures.push("invalid_status_baseline_runtime_version");
+  }
+  if (!Array.isArray(snapshot.statuses)) {
+    failures.push("invalid_status_baseline_statuses");
+    return failures;
+  }
+
+  const seen = new Set();
+  const derivedCounts = Object.fromEntries(LINGUISTIC_STATUSES.map((status) => [status, 0]));
+  for (const item of snapshot.statuses) {
+    const construction = String(item && item.construction || "").trim();
+    const status = String(item && item.status || "").trim();
+    if (!construction) failures.push("status_baseline_missing_construction");
+    else if (seen.has(construction)) failures.push(`status_baseline_duplicate_construction:${construction}`);
+    else seen.add(construction);
+    if (!LINGUISTIC_STATUSES.includes(status)) failures.push(`status_baseline_invalid_status:${construction}:${status}`);
+    else derivedCounts[status] += 1;
+  }
+
+  if (Number(snapshot.construction_count) !== snapshot.statuses.length) {
+    failures.push(`status_baseline_count_mismatch:${snapshot.construction_count}!=${snapshot.statuses.length}`);
+  }
+  const recordedCounts = snapshot.status_counts || {};
+  for (const status of LINGUISTIC_STATUSES) {
+    if (Number(recordedCounts[status] || 0) !== derivedCounts[status]) {
+      failures.push(`status_baseline_status_count_mismatch:${status}:${recordedCounts[status] || 0}!=${derivedCounts[status]}`);
+    }
+  }
+  return failures;
+}
+
 function validateReleaseAudit({ audit, actualChanges, supportedPending, retirement }) {
   const failures = [];
-  if (audit.schema !== "canto-span-release-handoff-audit-v2") failures.push("invalid_schema");
-  if (!/^[0-9a-f]{40}$/.test(String(audit.base_tree || ""))) failures.push("invalid_base_tree");
+  if (audit.schema !== "canto-span-release-handoff-audit-v3") failures.push("invalid_schema");
+
+  const baseline = audit.base_status_snapshot || {};
+  if (!isSafeRepositoryRelativePath(baseline.path) || !String(baseline.path).startsWith("data/release-baselines/")) failures.push("invalid_base_status_snapshot_path");
+  if (!/^[0-9a-f]{64}$/.test(String(baseline.sha256 || ""))) failures.push("invalid_base_status_snapshot_sha256");
+  if (!/^\d+\.\d+\.\d+$/.test(String(baseline.runtime_version || ""))) failures.push("invalid_base_status_snapshot_runtime_version");
 
   const recordedChanges = [...(audit.status_changes || [])].sort((a, b) => a.construction.localeCompare(b.construction));
   const sortedActual = [...actualChanges].sort((a, b) => a.construction.localeCompare(b.construction));
@@ -47,4 +102,8 @@ function validateReleaseAudit({ audit, actualChanges, supportedPending, retireme
   return { failures, gap };
 }
 
-module.exports = { validateReleaseAudit };
+module.exports = {
+  isSafeRepositoryRelativePath,
+  validateStatusBaselineSnapshot,
+  validateReleaseAudit,
+};

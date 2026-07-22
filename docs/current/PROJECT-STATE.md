@@ -4,7 +4,7 @@
 
 | Measure | Current value |
 |---|---:|
-| Runtime | v0.5.204 |
+| Runtime | v0.5.208 |
 | Runtime labels | 165 |
 | Current construction notes | 165 |
 | Active working notes | 2 |
@@ -18,64 +18,83 @@
 | `lexicalized_only` | 3 |
 | `parser_heuristic` | 19 |
 
-The canonical registry is the union of `grammar/<linguistic-status>/*.md`; each note is stored in the folder matching its frontmatter status, and the 165 notes match the runtime labels exactly.
+The canonical registry is the union of
+`grammar/<linguistic-status>/*.md`. The 165 construction notes match the 165
+runtime labels exactly.
 
-## v0.5.204 degree-modified lexical stative reconciliation
+## v0.5.208 copular A-not-A reconciliation
 
-`DegreeModifiedLexicalStative` now has one exact source-linked positive regression, `好好食。`, preserving degree `好` plus lexicalized stative `好食`. The construction moves to `research_pending`, but no productive lexical range, alternative modifier range, negative boundaries, or panel acceptance is claimed. The historical zero-weight reachability probe remains implementation provenance only.
+The `CopularANotAQuestion` fallback now explicitly distinguishes checked
+overt-full-form predicate/clause complements from bounded nominal/possessive
+implementation profiles. It preserves both arms of `係唔係`, rejects a
+no-complement terminal tag from this node, and leaves contracted `係咪` on the
+separate `PolarQuestionFrame` path.
 
-## v0.5.203 status-directory migration
+Standardized coverage adds two source-linked positive cases and one published
+tag boundary. The historical `係唔係你嘅？` case remains a zero-weight
+implementation probe. `CopularANotAQuestion` remains
+`unsupported_generalization`: direct nominal/possessive evidence, contracted
+form ontology, broader predicate boundaries, and role-neutral panel evidence
+remain incomplete.
 
-All 165 canonical construction notes are now grouped by linguistic status under `grammar/`. The former `active/` and `archived/` workflow directories were removed. Workflow selection remains in frontmatter, so the two active research notes stay visible inside `research_pending/` while every status can be reviewed directly from the filesystem. `grammar/retired/README.md` provides a navigation view for the 16 retired labels without duplicating their canonical historical records. Parser behavior, runtime labels, linguistic statuses, evidence, and test expectations are unchanged.
+## v0.5.207 release-baseline portability repair
 
-## v0.5.198 verification consolidation
+Release verification no longer depends on a Git commit or whole-repository tree
+object created in another clone. The current audit references a checked-in,
+SHA-256-pinned snapshot of the v0.5.206 construction/status inventory. This
+makes status-diff verification reproducible after `git am`, cherry-picking,
+rebasing, or regeneration of tracked verifier outputs.
 
-The verification infrastructure was reduced to a stable manifest-driven system:
+The patch changes release tooling and documentation only. Parser behavior,
+construction statuses, evidence records, and executable grammar coverage are
+unchanged from v0.5.206.
 
-- one current runner: `tools/verify-current-state.js`;
-- one profile manifest: `config/verification-profiles.json`;
-- one generated-output location: `validation/current/`;
-- one 65-case zero-weight implementation-probe inventory;
-- one generic implementation-reachability verifier;
-- core, research, release, and all-check profiles.
+## v0.5.206 acceptability A-not-A reconciliation
 
-Release-specific wrapper verifiers, eight separate probe files, obsolete version-specific audit scripts, and repeated v0.5.189–v0.5.197 generated validation directories were removed from the active tree. Git history remains the recovery source for those historical outputs.
+The legacy `AcceptabilityANotA` fallback formerly matched any clause containing
+two `得` tokens and one `唔`. It now requires an adjacent terminal `得唔得`
+sequence and allows only the checked postposed `先` after it.
 
-No parser span, runtime label, construction status, source claim, or survey result changed.
+The standardized construction file adds the source-attested
+`而家問題係佢嗰度得唔得先。` as a positive and the published restrictive-focus
+`得唔得三個鐘你可以瞓？` as an absence boundary. The historical standalone
+`得唔得？` probe remains zero-weight implementation evidence.
 
-## v0.5.202 ComparativeStative retirement
-
-`ComparativeStative` is retired. Its only observable path was a residual `stative + 啲` fallback that conflated scalar adjustment with overt comparison. The source-linked regression `客氣啲。` now uses `DegreeMannerAdverbial`. This does not establish unrestricted property + `啲` productivity, and it does not replace separate research on explicit surpass comparatives such as predicate + `過` + comparison standard.
-
-## v0.5.201 passive/permissive 畀 reconciliation
-
-`PassivePermissiveRelation` now has two source-linked positive regressions. The permissive example preserves `打籃球` as a nested reviewed `ProductiveVO`, preventing `籃球` from being misreported as a retained patient. The passive example preserves the transparent passive/permissive interpretation boundary. Status remains `research_pending`; no panel or productivity claim was added.
-
-## v0.5.199 manner-adverbial reconciliation
-
-`MannerAdverbialVP` now recognizes the independently attested repeated-property + overt `咁／噉` + VP pattern and preserves a constructed following VP as a child. One source-linked regression was added. The construction moved from `unsupported_generalization` to `research_pending`; unrestricted productivity, negative boundaries, and the bare `慢慢 + V` route remain unestablished. No new verification machinery was added.
-
-## Runtime-wrapper review outcome
-
-The v0.5.189–v0.5.197 review series is complete:
-
-- 58 labels have implementation-only coverage;
-- 1 label has compatibility-alias-only coverage;
-- 4 dead or shadowed labels were retired during the v0.5.189–v0.5.197 series; one additional misleading fallback was retired in v0.5.202;
-- no active label remains uncovered;
-- implementation reachability carries zero linguistic evidence weight.
-
-The detailed historical reasoning remains in the corresponding research and retirement records. It is no longer re-executed during every repository verification.
+`AcceptabilityANotA` remains `unsupported_generalization`: one narrow positive
+and one boundary do not establish productive lexical/discourse scope or satisfy
+the role-neutral panel requirements. `CopularANotAQuestion` was reviewed but
+left unchanged because the checked clause-complement and tag evidence does not
+match the current nominal/possessive runtime claim closely enough.
 
 ## Active research
 
-The two active constructions remain:
+The active working set remains:
 
-- `ResourceUseLaiFunctionRelation` — `research_pending`;
-- `PostverbalZoPerfectiveVP` — `research_pending`.
+1. `ResourceUseLaiFunctionRelation` — `research_pending`;
+2. `PostverbalZoPerfectiveVP` — `research_pending`.
 
-Survey integration remains paused while collection proceeds. No current instrument can independently satisfy promotion requirements without a locked clean instrument and adjudicated item-level coverage.
+Survey integration remains paused until a locked clean instrument has usable,
+adjudicated item-level coverage. Historical PFV and RUL responses remain
+available as diagnostic evidence but cannot satisfy current promotion
+thresholds.
+
+## Current implementation evidence
+
+- 551 regression cases pass;
+- 43 NP-subsystem cases pass;
+- 1,235 construction assertions across 165 construction files pass;
+- coverage is 4 positive-and-boundary, 104 positive-only, 56
+  implementation-only, and 1 compatibility-alias-only;
+- no active label is uncovered.
+
+Implementation reachability carries zero linguistic evidence weight.
 
 ## Next substantive work
 
-Continue source/runtime reconciliation among the remaining 58 implementation-only labels by learner impact and research tractability. `DegreeModifiedLexicalStative` is source-linked only for the narrow `好 + 好食` profile; preserve unresolved lexical and modifier boundaries. Do not create release-specific audit frameworks.
+Resume source/runtime reconciliation among the remaining 56
+implementation-only labels, ranked by learner impact, source availability, and
+whether the current node creates a misleading analysis. Treat the full
+`係唔係`/contracted `係咪` relationship as a separate ontology question rather
+than silently broadening the reconciled node. The full retirement-review window
+is open at sequence 31 and must close no later than sequence 41. Do not create
+another release-specific verifier or generated validation tree.

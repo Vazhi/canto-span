@@ -4,7 +4,44 @@
   "runtime_active": true,
   "migration_phase": 5,
   "snapshot_cases": [],
-  "focused_cases": [],
+  "focused_cases": [
+    {
+      "case_id": "CP051-P1-COPULAR-ANOTA-R1:COPA-E01",
+      "source": "你係唔係識講德文咋？",
+      "class": "full_copular_a_not_a_predicate_complement",
+      "expected_profile": "construction_present",
+      "assertion": "construction_present",
+      "provenance": "review-packets/cp051-p1-copular-anota-r1/focused-evaluation-packet.json",
+      "source_ids": [
+        "SRC-LAW-2001-ANOTA"
+      ],
+      "source_locator": "example (63), written-Cantonese normalization of source romanization"
+    },
+    {
+      "case_id": "CP051-P1-COPULAR-ANOTA-R1:COPA-E02",
+      "source": "係唔係每個學生都鍾意睇電視呀？",
+      "class": "full_copular_a_not_a_clause_complement",
+      "expected_profile": "construction_present",
+      "assertion": "construction_present",
+      "provenance": "review-packets/cp051-p1-copular-anota-r1/focused-evaluation-packet.json",
+      "source_ids": [
+        "SRC-LAW-2001-ANOTA"
+      ],
+      "source_locator": "example (60), written-Cantonese normalization of source romanization"
+    },
+    {
+      "case_id": "CP051-P1-COPULAR-ANOTA-R1:COPA-N01",
+      "source": "你唔去喇，係唔係呀？",
+      "class": "terminal_tag_boundary",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "review-packets/cp051-p1-copular-anota-r1/focused-evaluation-packet.json",
+      "source_ids": [
+        "SRC-WONG-2023-LANGUAGE-SAMPLE"
+      ],
+      "source_locator": "printed p. 55 / PDF p. 65"
+    }
+  ],
   "np_cases": [],
   "implementation_probe_cases": [
     {
@@ -18,16 +55,16 @@
     }
   ],
   "coverage": {
-    "state": "implementation_positive_only",
+    "state": "positive_and_boundary",
     "exact_snapshot_positive_count": 0,
-    "focused_positive_count": 0,
-    "focused_boundary_count": 0,
+    "focused_positive_count": 2,
+    "focused_boundary_count": 1,
     "focused_review_only_count": 0,
     "np_case_count": 0,
     "implementation_probe_count": 1,
     "compatibility_alias_probe_count": 0,
-    "positive_case_count": 0,
-    "boundary_case_count": 0,
-    "executable_case_count": 1
+    "positive_case_count": 2,
+    "boundary_case_count": 1,
+    "executable_case_count": 4
   }
 }

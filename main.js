@@ -9,8 +9,8 @@ const { Plugin, PluginSettingTab, Setting, Notice } = require("obsidian");
  * never overwrite child learner roles.
  */
 
-const CANTO_SPAN_RUNTIME_VERSION = "0.5.204";
-// v0.5.204: source-links the narrow degree-modifier + lexicalized-stative profile exemplified by 好好食 while keeping productivity and negative boundaries unresolved.
+const CANTO_SPAN_RUNTIME_VERSION = "0.5.208";
+// v0.5.208: source/runtime reconciliation for overt 係唔係 predicate-versus-tag profiles.
 // v0.5.203: stores canonical construction notes in linguistic-status folders while workflow state remains frontmatter-only; parser behavior is unchanged.
 // v0.5.202: retires the misleading ComparativeStative fallback and routes source-supported property + 啲 adjustment through DegreeMannerAdverbial.
 // v0.5.201: groups the source-attested 唔該 + addressee + scalar-adjustment request as a transparent polite imperative while preserving its children.
@@ -9618,6 +9618,37 @@ function permissionANotAQuestionFallback(core) {
   });
 }
 
+function copularANotAComplementCandidate(complementCore) {
+  const possessive = possessiveFragmentAnswerCandidate(complementCore);
+  if (possessive) return { node: possessive, profile: "possessive_fragment" };
+
+  const wrapped = applyConstructionPatterns(complementCore);
+  if (wrapped.length === 1 && wrapped[0] && wrapped[0].kind === "construction") {
+    const candidate = wrapped[0];
+    const nominalTypes = new Set([
+      "NominalHeadSpan", "OvertHeadDemonstrativeClassifierNP", "HeadlessDemonstrativeClassifierNP",
+      "QuantifiedClassifierNP", "QuantifiedPersonNP", "DiMarkedNP", "OrdinalClassifierNP",
+      "ClassifierObjectNP", "CoordinatedNP", "FragmentAnswer",
+    ]);
+    const blockedPredicateTypes = new Set([
+      "ModifierNP", "ModifiedNP", "NominalHeadSpan", "OvertHeadDemonstrativeClassifierNP",
+      "HeadlessDemonstrativeClassifierNP", "QuantifiedClassifierNP", "QuantifiedPersonNP",
+      "DiMarkedNP", "OrdinalClassifierNP", "ClassifierObjectNP", "CoordinatedNP",
+      "FragmentAnswer", "NeedsContext",
+    ]);
+    const predicateLike = !blockedPredicateTypes.has(candidate.type)
+      && (nodeCanFillSlot(candidate, "predicate") || directPredicateCapableNode(candidate));
+    if (predicateLike) return { node: candidate, profile: "clausal_or_predicate" };
+    if (nominalTypes.has(candidate.type)) return { node: candidate, profile: "nominal" };
+  }
+
+  if (complementCore.length === 1
+      && (nodeCanFillSlot(complementCore[0], "np") || nodeCanFillSlot(complementCore[0], "subject"))) {
+    return { node: complementCore[0], profile: "nominal" };
+  }
+  return null;
+}
+
 function copularANotAQuestionFallback(core) {
   // 嘅 may close a possessive complement (你嘅), so do not strip it as a
   // sentence-final particle before complement analysis. Other final particles
@@ -9639,16 +9670,12 @@ function copularANotAQuestionFallback(core) {
   const complementCore = bareCore.slice(complementStart);
   if (!complementCore.length) return null;
 
-  let complement = possessiveFragmentAnswerCandidate(complementCore);
-  if (!complement) {
-    const wrapped = applyConstructionPatterns(complementCore);
-    if (wrapped.length === 1 && (nodeCanFillSlot(wrapped[0], "np") || nodeCanFillSlot(wrapped[0], "copular_complement") || wrapped[0].type === "FragmentAnswer")) {
-      complement = wrapped[0];
-    } else if (complementCore.length === 1 && (nodeCanFillSlot(complementCore[0], "np") || nodeCanFillSlot(complementCore[0], "subject"))) {
-      complement = complementCore[0];
-    }
-  }
-  if (!complement) return null;
+  const complementCandidate = copularANotAComplementCandidate(complementCore);
+  if (!complementCandidate) return null;
+  const complement = complementCandidate.node;
+  const complementSlot = complementCandidate.profile === "clausal_or_predicate"
+    ? "copular_predicate_complement"
+    : "copular_nominal_complement";
 
   const positiveCopula = parserInactiveTokenClone(bareCore[offset], {
     label: "func", pos: "function", syntax: "copula copular_a_not_a_positive",
@@ -9678,18 +9705,23 @@ function copularANotAQuestionFallback(core) {
   const children = [...bareCore.slice(0, offset), positiveCopula, negator, negativeCopula, complement, ...particles];
   const assignedSlots = [
     ...bareCore.slice(0, offset).map(() => "subject"),
-    "copula_positive_arm", "negator", "copula_negative_arm", "copular_complement",
+    "copula_positive_arm", "negator", "copula_negative_arm", complementSlot,
     ...particles.map(() => "particle"),
   ];
   return construction("CopularANotAQuestion", "CopularQ", children, {
-    note: "Copular A-not-A question: optional subject + 係唔係 + nominal or possessive complement.",
-    slots: cleanSlots(["copular_a_not_a_question", "question_fragment", "copula", "negator", "copular_complement", "predicate", "clause", offset ? "subject" : "", ...templateDerivedSlots("CopularANotAQuestion", children)]),
+    note: complementCandidate.profile === "clausal_or_predicate"
+      ? "Copular A-not-A question: optional subject/topic + 係唔係 + overt predicate or clause complement."
+      : "Copular A-not-A question: optional subject + 係唔係 + bounded nominal or possessive complement.",
+    slots: cleanSlots(["copular_a_not_a_question", "question_fragment", "copula", "negator", "copular_complement", complementSlot, "predicate", "clause", offset ? "subject" : "", ...templateDerivedSlots("CopularANotAQuestion", children)]),
     trace: traceInfo("generative_template", {
       construction_type: "CopularANotAQuestion", template_family: "generative_template",
-      template: ["subject?", "copula_positive_arm!", "negator!", "copula_negative_arm!", "copular_complement!", "particle?"],
+      template: ["subject_or_topic?", "copula_positive_arm!", "negator!", "copula_negative_arm!", `${complementSlot}!`, "particle?"],
       assigned_slots: assignedSlots, surfaces: children.map((node) => flattenSurface(node)),
       tokenization_path: fusedNegativeArm ? "positive_copula_plus_fused_negative_copula" : "three_token_copular_a_not_a",
-      reason: "Preserve both copular arms, the negator, and a visible nominal/possessive complement in the common 係唔係 polar-question pattern.",
+      complement_profile: complementCandidate.profile,
+      tag_profile: "terminal_hai6_m4_hai6_excluded",
+      contracted_marker_profile: "hai6_mai6_remains_separate_polar_question_path",
+      reason: "Preserve both copular arms and classify the overt following material as a typed predicate/clause or a bounded nominal/possessive complement; terminal 係唔係 tags are outside this node.",
     }),
   });
 }
@@ -15925,9 +15957,27 @@ function wrapCore(core) {
       })
     })];
   }
-  if (hasSurface(core, "得") && hasSurface(core, "唔")) {
-    const dakIndexes = core.map((node, i) => surfaceOf(node) === "得" ? i : -1).filter((i) => i >= 0);
-    if (dakIndexes.length >= 2) return [construction("AcceptabilityANotA", "得唔得", core, { note: "A-not-A acceptability question: 得唔得.", trace: traceInfo("legacy_surface_rule", { rule: "has 得唔得", reason: "Surface A-not-A predicate fallback." }) })];
+  // Narrow fallback for an utterance-final acceptability predicate.  The three
+  // forms must be adjacent, and only the independently attested postposed 先
+  // may follow them.  This prevents preverbal restrictive-focus 得 from being
+  // relabelled as an acceptability question merely because another 得 and 唔
+  // occur later in the clause.
+  const acceptabilityANotAIndex = core.findIndex((node, index) =>
+    surfaceOf(node) === "得" &&
+    surfaceOf(core[index + 1]) === "唔" &&
+    surfaceOf(core[index + 2]) === "得"
+  );
+  if (acceptabilityANotAIndex >= 0) {
+    const tail = core.slice(acceptabilityANotAIndex + 3).map(surfaceOf);
+    if (tail.length === 0 || (tail.length === 1 && tail[0] === "先")) {
+      return [construction("AcceptabilityANotA", "得唔得", core, {
+        note: "Terminal A-not-A acceptability predicate: 得唔得, optionally followed by 先.",
+        trace: traceInfo("legacy_surface_rule", {
+          rule: "terminal adjacent 得唔得 (先)",
+          reason: "Narrow fallback for an overt terminal acceptability A-not-A sequence."
+        })
+      })];
+    }
   }
 
   // VP-complement fallback: normally handled by VPComplementFrame templates.

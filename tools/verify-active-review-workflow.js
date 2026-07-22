@@ -103,7 +103,7 @@ for (const entry of state.constructions) {
 
 const activeTexts = notes.map((note) => note.text).join("\n");
 check("active notes contain no Speaker A/B state fields", !/^(speaker_a_state|speaker_b_state):/m.test(activeTexts));
-check("survey batching doctrine exists", fs.existsSync(path.join(root, "docs/current/SURVEY-BATCHING.md")));
+check("consolidated governance exists", fs.existsSync(path.join(root, "docs/current/GOVERNANCE.md")));
 
 const report = {
   schema: "canto-span-native-panel-workflow-audit-v2",

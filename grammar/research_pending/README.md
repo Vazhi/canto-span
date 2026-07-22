@@ -1,7 +1,7 @@
 # Research pending
 
 **Frontmatter status:** `research_pending`
-**Current construction notes:** 61
+**Current construction notes:** 62
 
 A concrete linguistic question exists, but provisional requirements are incomplete.
 

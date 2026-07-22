@@ -8,7 +8,8 @@
 - `verify-implementation-reachability.js` — validates the single zero-weight implementation-probe inventory.
 - `build-construction-tests.js` — rebuilds standardized construction files from canonical fixtures and the consolidated probe inventory.
 - `sync-construction-test-metadata.js` — synchronizes construction-note test counts after controlled test-inventory changes.
-- `build-native-review-form-script.js`, `import-native-review-csv.js`, and `native-review-lib.js` — current native-panel utilities.
+- `import-native-review-csv.js` and `native-review-lib.js` — panel snapshot import and normalization utilities.
+- `build-native-review-form-script.js` — legacy Google Forms reproducibility only; current public survey delivery uses the locked SoSci workflow.
 - `export-git-working-copy.sh` — exports the complete repository including `.git/`.
 
 ## Verification profiles

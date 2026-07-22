@@ -1,53 +1,27 @@
 #!/usr/bin/env node
 "use strict";
 
+const crypto = require("crypto");
 const fs = require("fs");
 const path = require("path");
-const cp = require("child_process");
 const { loadConstructionNotes } = require("./construction-notes-lib");
 const { evaluatePromotion } = require("./promotion-gate-lib");
-const { validateReleaseAudit } = require("./release-handoff-lib");
+const {
+  isSafeRepositoryRelativePath,
+  validateStatusBaselineSnapshot,
+  validateReleaseAudit,
+} = require("./release-handoff-lib");
 
 const root = path.resolve(__dirname, "..");
 const auditPath = process.argv[2] || path.join(root, "docs", "releases", "current-release-audit.json");
 const audit = JSON.parse(fs.readFileSync(auditPath, "utf8"));
 const failures = [];
 
-function git(args) {
-  return cp.execFileSync("git", args, { cwd: root, encoding: "utf8" }).trim();
+function sha256(buffer) {
+  return crypto.createHash("sha256").update(buffer).digest("hex");
 }
-function parseScalar(raw) {
-  const value = raw.trim();
-  if (value === "null") return null;
-  if (value === "true") return true;
-  if (value === "false") return false;
-  if (/^-?\d+(\.\d+)?$/.test(value)) return Number(value);
-  if (value.startsWith("[") && value.endsWith("]")) return JSON.parse(value);
-  if (value.startsWith('"')) return JSON.parse(value);
-  return value;
-}
-function parseFrontmatter(text) {
-  const match = text.match(/^---\n([\s\S]*?)\n---\n/);
-  if (!match) throw new Error("missing frontmatter");
-  const fm = {};
-  for (const line of match[1].split(/\r?\n/)) {
-    if (!line.trim()) continue;
-    const colon = line.indexOf(":");
-    fm[line.slice(0, colon).trim()] = parseScalar(line.slice(colon + 1));
-  }
-  return fm;
-}
-function baselineStatuses(commit) {
-  const paths = git(["ls-tree", "-r", "--name-only", commit, "grammar"])
-    .split(/\r?\n/)
-    .filter((value) => value.endsWith(".md") && !value.endsWith("/README.md"));
-  const map = new Map();
-  for (const file of paths) {
-    const fm = parseFrontmatter(git(["show", `${commit}:${file}`]) + "\n");
-    if (fm.type !== "canto-span-construction") continue;
-    map.set(fm.construction, fm.status);
-  }
-  return map;
+function baselineStatuses(snapshot) {
+  return new Map(snapshot.statuses.map((item) => [item.construction, item.status]));
 }
 function normalizedChanges(base, current) {
   const labels = [...new Set([...base.keys(), ...current.keys()])].sort();
@@ -59,12 +33,37 @@ function normalizedChanges(base, current) {
   }
   return changes;
 }
-try { git(["cat-file", "-e", `${audit.base_tree}^{tree}`]); } catch { failures.push(`missing_base_tree:${audit.base_tree}`); }
+
+const baselineRef = audit.base_status_snapshot || {};
+let baselineSnapshot = null;
+let baselineUsable = false;
+if (isSafeRepositoryRelativePath(baselineRef.path) && String(baselineRef.path).startsWith("data/release-baselines/")) {
+  const baselinePath = path.resolve(root, baselineRef.path);
+  if (!baselinePath.startsWith(root + path.sep)) {
+    failures.push("base_status_snapshot_outside_repository");
+  } else if (!fs.existsSync(baselinePath)) {
+    failures.push(`missing_base_status_snapshot:${baselineRef.path}`);
+  } else {
+    const bytes = fs.readFileSync(baselinePath);
+    const actualHash = sha256(bytes);
+    const hashMatches = actualHash === baselineRef.sha256;
+    if (!hashMatches) failures.push(`base_status_snapshot_hash_mismatch:${baselineRef.sha256}!=${actualHash}`);
+    try {
+      baselineSnapshot = JSON.parse(bytes.toString("utf8"));
+      const snapshotFailures = validateStatusBaselineSnapshot(baselineSnapshot);
+      failures.push(...snapshotFailures);
+      const runtimeMatches = baselineSnapshot.runtime_version === baselineRef.runtime_version;
+      if (!runtimeMatches) failures.push(`base_status_snapshot_runtime_mismatch:${baselineRef.runtime_version}!=${baselineSnapshot.runtime_version}`);
+      baselineUsable = hashMatches && runtimeMatches && snapshotFailures.length === 0;
+    } catch (error) {
+      failures.push(`invalid_base_status_snapshot_json:${error.message}`);
+    }
+  }
+}
 
 const notes = loadConstructionNotes(root);
 const current = new Map(notes.map((note) => [note.frontmatter.construction, note.frontmatter.status]));
-let actualChanges = [];
-try { actualChanges = normalizedChanges(baselineStatuses(audit.base_tree), current); } catch (error) { failures.push(`status_diff_failed:${error.message}`); }
+const actualChanges = baselineUsable ? normalizedChanges(baselineStatuses(baselineSnapshot), current) : [];
 
 const supported = notes.filter((note) => note.frontmatter.status === "supported_productive");
 const pending = [];
@@ -83,9 +82,9 @@ failures.push(...auditValidation.failures);
 const gap = auditValidation.gap;
 
 const report = {
-  schema: "canto-span-release-handoff-gate-v2",
+  schema: "canto-span-release-handoff-gate-v3",
   release_id: audit.release_id,
-  base_tree: audit.base_tree,
+  base_status_snapshot: baselineRef,
   actual_status_changes: actualChanges,
   supported_productive_count: supported.length,
   supported_productive_pending_reaudit: pending,
@@ -94,7 +93,6 @@ const report = {
   status: failures.length ? "FAIL" : "PASS",
   failures,
 };
-const manifest = JSON.parse(fs.readFileSync(path.join(root, "manifest.json"), "utf8"));
 const outDir = path.join(root, "validation", "current");
 fs.mkdirSync(outDir, { recursive: true });
 fs.writeFileSync(path.join(outDir, "release-handoff-gate.json"), JSON.stringify(report, null, 2) + "\n");

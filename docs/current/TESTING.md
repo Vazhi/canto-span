@@ -19,9 +19,9 @@ It runs:
 
 - 551 exact regression cases;
 - 43 NP-subsystem cases;
-- 1,230 per-construction assertions across 165 construction files.
+- 1,235 per-construction assertions across 165 construction files.
 
-Current coverage is 2 positive-and-boundary, 104 positive-only, 58 implementation-only, and 1 compatibility-alias-only. No active label is uncovered.
+Current coverage is 4 positive-and-boundary, 104 positive-only, 56 implementation-only, and 1 compatibility-alias-only. No active label is uncovered.
 
 Implementation probes have linguistic evidence weight **0**. They prove only that a runtime path is observable.
 
@@ -50,6 +50,16 @@ All current generated results are written to:
 ```text
 validation/current/
 ```
+
+These files are verifier byproducts, not patch inputs. Release patches must not include changes under `validation/current/`; otherwise a contributor who has just run verification can receive false patch conflicts.
+
+Release status baselines are different: files under `data/release-baselines/` are canonical, reviewed inputs. They contain only construction/status pairs and are SHA-256-pinned by the current release audit. Before applying a handoff patch, discard only these generated changes:
+
+```bash
+git restore --staged --worktree validation/current
+```
+
+After verification, the same command returns the repository to a clean state without discarding canonical evidence or source changes.
 
 Do not create a new `validation/vX.Y.Z/` directory for each release. Historical generated results remain available in Git history; permanent evidence belongs in source records, research documents, release audits, fixtures, or panel snapshots rather than duplicated generated output trees.
 

@@ -1,7 +1,7 @@
 {
   "name": "canto-span",
   "private": true,
-  "version": "0.5.204",
+  "version": "0.5.208",
   "description": "Cantonese parser and evidence-governance project",
   "scripts": {
     "test": "node tests/run-all.js",
@@ -12,6 +12,7 @@
     "verify:research": "node tools/verify-current-state.js --profile research",
     "verify:release": "node tools/verify-current-state.js --profile release",
     "verify:all": "node tools/verify-current-state.js --profile all",
-    "build:legacy-forms": "node tools/build-native-review-form-script.js"
+    "build:legacy-forms": "node tools/build-native-review-form-script.js",
+    "release:baseline": "node tools/write-release-status-baseline.js"
   }
 }

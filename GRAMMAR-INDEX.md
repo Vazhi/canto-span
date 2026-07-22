@@ -38,8 +38,8 @@ Canonical construction notes are stored in the folder matching their linguistic 
 ## Standard test coverage
 
 - `compatibility_alias_only`: **1**
-- `implementation_positive_only`: **58**
-- `positive_and_boundary`: **2**
+- `implementation_positive_only`: **57**
+- `positive_and_boundary`: **3**
 - `positive_only`: **104**
 - command: `npm test`
 
@@ -132,7 +132,7 @@ Concrete research question; provisional requirements incomplete. Folder: [`gramm
 
 Current broad claim lacks a defensible supported scope. Folder: [`grammar/unsupported_generalization/`](grammar/unsupported_generalization/).
 
-- [[AcceptabilityANotA]] — parked; `LANE-07`; sources 1/1; boundaries incomplete; reviewed `unknown`
+- [[AcceptabilityANotA]] — parked; `LANE-07`; sources 3/3; boundaries incomplete; reviewed `2026-07-22`
 - [[AcceptabilityClause]] — parked; `LANE-07`; sources 2/2; boundaries incomplete; reviewed `unknown`
 - [[ApproximateQuantity]] — parked; `LANE-10`; sources 1/1; boundaries incomplete; reviewed `unknown`
 - [[AssociativeNP]] — parked; `LANE-06`; sources 2/2; boundaries incomplete; reviewed `unknown`
@@ -148,7 +148,7 @@ Current broad claim lacks a defensible supported scope. Folder: [`grammar/unsupp
 - [[ConditionalClause]] — parked; `LANE-02`; sources 4/4; boundaries incomplete; reviewed `unknown`
 - [[ConditionResult]] — parked; `LANE-02`; sources 3/3; boundaries incomplete; reviewed `unknown`
 - [[CoordinatedNP]] — parked; `LANE-06`; sources 2/2; boundaries incomplete; reviewed `unknown`
-- [[CopularANotAQuestion]] — parked; `LANE-07`; sources 3/3; boundaries incomplete; reviewed `unknown`
+- [[CopularANotAQuestion]] — parked; `LANE-07`; sources 4/4; boundaries incomplete; reviewed `2026-07-22`
 - [[DegreeMannerModifiedVP]] — parked; `LANE-10`; sources 2/2; boundaries incomplete; reviewed `unknown`
 - [[DelimitedVP]] — parked; `LANE-05`; sources 3/3; boundaries incomplete; reviewed `unknown`
 - [[DisposalChangeIntoResultFrame]] — parked; `LANE-05`; sources 2/2; boundaries incomplete; reviewed `unknown`

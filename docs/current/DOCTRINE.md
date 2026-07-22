@@ -56,7 +56,7 @@ satisfy either threshold.
 
 ## Native-conflict escalation
 
-When published analysis conflicts with recorded native-speaker naturalness, publication attestation proves only that the form was printed, elicited, or analyzed. The disputed family freezes until the conflict is investigated through independent sources, controlled contrasts, multiple speakers when available, relevant regional or contextual factors, negative boundaries, and competing analyses.
+When published analysis conflicts with recorded native-speaker naturalness, publication attestation proves only that the form was printed, elicited, or analyzed. The disputed family freezes until the conflict is investigated through independent sources, controlled contrasts, clean role-neutral item-level panel evidence, relevant regional or contextual factors, negative boundaries, and competing analyses.
 
 Do not invent dialect, register, or contextual explanations. A speaker judgment evaluates the presented sentence in its elicitation context; it does not by itself prove the parser's internal structure.
 

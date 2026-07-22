@@ -1,0 +1,66 @@
+{
+  "schema": "canto-span-source-runtime-reconciliation-packet-v1",
+  "packet_id": "CP051-P1-COPULAR-ANOTA-R1",
+  "checkpoint": "CP051-P1",
+  "status": "VISIBLE_SOURCE_LINKED_RECONCILIATION",
+  "accepted_parent": "v0.5.207",
+  "target_internal_construction": "CopularANotAQuestion",
+  "claim": {
+    "surface_profile": "overt full 係唔係 followed by a typed predicate/clause or bounded nominal/possessive complement",
+    "boundary": "terminal 係唔係 tag uses are excluded from CopularANotAQuestion",
+    "contracted_form_boundary": "係咪 remains represented through the separate PolarQuestionFrame runtime path",
+    "linguistic_status_after_checkpoint": "unsupported_generalization"
+  },
+  "source_basis": [
+    {
+      "source_id": "SRC-LAW-2001-ANOTA",
+      "role": "full 係唔係 before overt predicate/clause complements",
+      "locator": "examples (60) and (63), article pp. 315-316 / PDF pp. 20-21",
+      "evidence_polarity": "positive_support"
+    },
+    {
+      "source_id": "SRC-WONG-2023-LANGUAGE-SAMPLE",
+      "role": "explicit structural distinction between clause-internal copula questions and utterance-final tags",
+      "locator": "printed pp. 54-55 / PDF pp. 64-65",
+      "evidence_polarity": "negative_boundary"
+    }
+  ],
+  "development_set": {
+    "cases": [
+      {
+        "case_id": "COPA-E01",
+        "surface": "你係唔係識講德文咋？",
+        "class": "full_copular_a_not_a_predicate_complement",
+        "expected": "construction_present",
+        "source_ids": [
+          "SRC-LAW-2001-ANOTA"
+        ],
+        "source_locator": "example (63), written-Cantonese normalization of source romanization"
+      },
+      {
+        "case_id": "COPA-E02",
+        "surface": "係唔係每個學生都鍾意睇電視呀？",
+        "class": "full_copular_a_not_a_clause_complement",
+        "expected": "construction_present",
+        "source_ids": [
+          "SRC-LAW-2001-ANOTA"
+        ],
+        "source_locator": "example (60), written-Cantonese normalization of source romanization"
+      },
+      {
+        "case_id": "COPA-N01",
+        "surface": "你唔去喇，係唔係呀？",
+        "class": "terminal_tag_boundary",
+        "expected": "construction_absent",
+        "source_ids": [
+          "SRC-WONG-2023-LANGUAGE-SAMPLE"
+        ],
+        "source_locator": "printed p. 55 / PDF p. 65"
+      }
+    ]
+  },
+  "status_decision": {
+    "status_changed": false,
+    "reason": "The checked sources reconcile a narrow overt full-form and tag boundary, but nominal/possessive sourcing, contracted-form ontology, complement coverage, and role-neutral panel evidence remain incomplete."
+  }
+}

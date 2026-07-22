@@ -1,9 +1,9 @@
 {
   "id": "canto-span",
   "name": "Canto Span",
-  "version": "0.5.204",
+  "version": "0.5.208",
   "minAppVersion": "1.5.0",
-  "description": "v0.5.204 source-links the narrow degree-modifier + lexicalized-stative profile exemplified by 好好食; broader productivity remains unresolved.",
+  "description": "v0.5.208 reconciles overt full 係唔係 predicate/clause complements and terminal-tag boundaries while retaining unsupported status and a separate 係咪 runtime path.",
   "author": "Chris Crawford / OpenAI ChatGPT",
   "authorUrl": "",
   "isDesktopOnly": false
