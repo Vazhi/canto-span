@@ -1,3 +1,11 @@
+## v0.5.195 — evaluation, scalar, and question wrapper audit
+
+- Audited ten acceptability, scalar, evaluation, identity, scheduling, temporal, opinion, and existential-question labels at exact constructor and complete-output level.
+- Added ten semantically coherent zero-weight implementation probes.
+- Preserved source/runtime mismatches for `都得`, `都算`, broad scalar-domain grouping, identity questions, scheduling questions, `係時候`, and postposed existential questions.
+- Increased construction assertions from 1,200 to 1,210 and reduced the no-direct backlog from 23 to 13 labels.
+- Changed no recognized parser span, runtime label, or linguistic status.
+
 ## v0.5.194 — speech, transfer, and complement wrapper audit
 
 - Audited six speech, transfer, naming, intention, and VP-complement labels at exact constructor and complete-output level.

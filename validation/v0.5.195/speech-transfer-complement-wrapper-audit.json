@@ -1,0 +1,234 @@
+{
+  "schema": "canto-span-speech-transfer-complement-wrapper-audit-v1",
+  "runtime_version": "0.5.195",
+  "checkpoint": "v0.5.195-speech-transfer-complement-wrapper-audit",
+  "parser_recognized_span_behavior_changed": false,
+  "linguistic_status_changed": false,
+  "labels_audited": 6,
+  "implementation_probes_added": 6,
+  "linguistic_evidence_weight_added": 0,
+  "total": 45,
+  "passed": 45,
+  "failed": 0,
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "runtime version is 0.5.195",
+      "pass": true,
+      "detail": "0.5.195"
+    },
+    {
+      "name": "inventory has six labels",
+      "pass": true,
+      "detail": "6"
+    },
+    {
+      "name": "probe schema",
+      "pass": true,
+      "detail": "canto-span-speech-transfer-complement-reachability-probes-v1"
+    },
+    {
+      "name": "probe file has six cases",
+      "pass": true,
+      "detail": "6"
+    },
+    {
+      "name": "probe file has six unique target labels",
+      "pass": true
+    },
+    {
+      "name": "all probes have zero evidence weight",
+      "pass": true
+    },
+    {
+      "name": "STCWRAP-001A reaches SpeechTransferClause",
+      "pass": true,
+      "detail": "我唔話你知。: SpeechTransferClause,NegatedVP,DitransitiveSpeechVP"
+    },
+    {
+      "name": "SpeechTransferClause coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "SpeechTransferClause has one implementation probe",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "SpeechTransferClause keeps zero direct positives",
+      "pass": true
+    },
+    {
+      "name": "SpeechTransferClause note records CP038 zero-weight reachability",
+      "pass": true,
+      "detail": "grammar/archived/SpeechTransferClause.md"
+    },
+    {
+      "name": "STCWRAP-001B reaches DitransitiveSpeechVP",
+      "pass": true,
+      "detail": "我唔話你知。: SpeechTransferClause,NegatedVP,DitransitiveSpeechVP"
+    },
+    {
+      "name": "DitransitiveSpeechVP coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "DitransitiveSpeechVP has one implementation probe",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "DitransitiveSpeechVP keeps zero direct positives",
+      "pass": true
+    },
+    {
+      "name": "DitransitiveSpeechVP note records CP038 zero-weight reachability",
+      "pass": true,
+      "detail": "grammar/archived/DitransitiveSpeechVP.md"
+    },
+    {
+      "name": "STCWRAP-002 reaches IntentionFrame",
+      "pass": true,
+      "detail": "我諗住返屋企。: IntentionFrame,VerbComplementVP"
+    },
+    {
+      "name": "IntentionFrame coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "IntentionFrame has one implementation probe",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "IntentionFrame keeps zero direct positives",
+      "pass": true
+    },
+    {
+      "name": "IntentionFrame note records CP038 zero-weight reachability",
+      "pass": true,
+      "detail": "grammar/archived/IntentionFrame.md"
+    },
+    {
+      "name": "STCWRAP-003 reaches PossessiveTransferClause",
+      "pass": true,
+      "detail": "我有本書要畀你。: PossessiveTransferClause,ClassifierObjectNP,RecipientFrame"
+    },
+    {
+      "name": "PossessiveTransferClause coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "PossessiveTransferClause has one implementation probe",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "PossessiveTransferClause keeps zero direct positives",
+      "pass": true
+    },
+    {
+      "name": "PossessiveTransferClause note records CP038 zero-weight reachability",
+      "pass": true,
+      "detail": "grammar/archived/PossessiveTransferClause.md"
+    },
+    {
+      "name": "STCWRAP-004 reaches NamingClause",
+      "pass": true,
+      "detail": "我叫做 Chris。: NamingClause"
+    },
+    {
+      "name": "NamingClause coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "NamingClause has one implementation probe",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "NamingClause keeps zero direct positives",
+      "pass": true
+    },
+    {
+      "name": "NamingClause note records CP038 zero-weight reachability",
+      "pass": true,
+      "detail": "grammar/archived/NamingClause.md"
+    },
+    {
+      "name": "STCWRAP-005 reaches VPComplementFrame",
+      "pass": true,
+      "detail": "我記得要返屋企。: VPComplementFrame,MotionGoalVP"
+    },
+    {
+      "name": "VPComplementFrame coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "VPComplementFrame has one implementation probe",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "VPComplementFrame keeps zero direct positives",
+      "pass": true
+    },
+    {
+      "name": "VPComplementFrame note records CP038 zero-weight reachability",
+      "pass": true,
+      "detail": "grammar/archived/VPComplementFrame.md"
+    },
+    {
+      "name": "negative speech route contains outer and inner wrappers",
+      "pass": true,
+      "detail": "SpeechTransferClause,NegatedVP,DitransitiveSpeechVP"
+    },
+    {
+      "name": "positive speech route differs",
+      "pass": true,
+      "detail": "ReportedSpeech,CognitionStatementClause"
+    },
+    {
+      "name": "subjectless intention does not reach IntentionFrame",
+      "pass": true,
+      "detail": "VerbComplementVP"
+    },
+    {
+      "name": "source-style personal 叫 does not reach NamingClause",
+      "pass": true,
+      "detail": "ActionStativeVP"
+    },
+    {
+      "name": "exact ASCII 叫做 fallback reaches NamingClause",
+      "pass": true,
+      "detail": "NamingClause"
+    },
+    {
+      "name": "test index has 52 implementation-positive-only labels",
+      "pass": true,
+      "detail": "52"
+    },
+    {
+      "name": "test index has one compatibility-alias-only label",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "test index has 13 no-direct labels",
+      "pass": true,
+      "detail": "13"
+    },
+    {
+      "name": "test index has 168 active labels",
+      "pass": true,
+      "detail": "168"
+    }
+  ],
+  "failures": []
+}

@@ -46,11 +46,11 @@ implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
 standard_test_file: "tests/constructions/OpinionQuestion.json"
-standard_test_coverage: "no_direct_cases"
+standard_test_coverage: "implementation_positive_only"
 standard_positive_test_count: 0
 standard_boundary_test_count: 0
-standard_implementation_probe_count: 0
-standard_executable_test_count: 0
+standard_implementation_probe_count: 1
+standard_executable_test_count: 1
 source_ids: ["SRC-ALDERETE-ETAL-2017-SYNOPSIS", "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"]
 runtime_active: true
 workflow_state: "archived"
@@ -142,3 +142,9 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Full pre-migration record: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
 - Status migration date: 2026-07-21.
 - The frozen JSON preserves the former wide schema; this note is the active authoring record.
+
+## CP039 evaluation/scalar/question wrapper audit
+
+- Implementation-only reachability: `ESQWRAP-006` with `你覺得呢個點樣？`
+- Protects the current 覺得 + object/topic + 點樣 route only. Ordinary cognition-plus-question composition remains a competing analysis.
+- Its linguistic evidence weight is **0**; reachability does not establish naturalness, productivity, construction identity, or promotion eligibility.

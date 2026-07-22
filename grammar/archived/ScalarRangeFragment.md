@@ -46,11 +46,11 @@ implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: false
 promotion_gate_version: "v3"
 standard_test_file: "tests/constructions/ScalarRangeFragment.json"
-standard_test_coverage: "no_direct_cases"
+standard_test_coverage: "implementation_positive_only"
 standard_positive_test_count: 0
 standard_boundary_test_count: 0
-standard_implementation_probe_count: 0
-standard_executable_test_count: 0
+standard_implementation_probe_count: 1
+standard_executable_test_count: 1
 source_ids: []
 runtime_active: true
 workflow_state: "archived"
@@ -125,3 +125,9 @@ No pattern-specific external source is currently mapped.
 - Full pre-migration record: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
 - Status migration date: 2026-07-21.
 - The frozen JSON preserves the former wide schema; this note is the active authoring record.
+
+## CP039 evaluation/scalar/question wrapper audit
+
+- Implementation-only reachability: `ESQWRAP-004` with `中等價位。`
+- Protects the current 價位-anchored fragment route only. Fragment status and broader range-noun productivity remain unverified.
+- Its linguistic evidence weight is **0**; reachability does not establish naturalness, productivity, construction identity, or promotion eligibility.

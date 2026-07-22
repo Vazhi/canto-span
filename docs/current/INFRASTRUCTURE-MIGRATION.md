@@ -159,3 +159,10 @@ provenance for collected legacy data.
 - reduced the no-direct backlog from 29 to 23 labels;
 - current coverage is 2 positive-and-boundary, 100 positive-only, 42 implementation-positive-only, 1 compatibility-alias-only, and 23 no-direct labels;
 - changed no parser span, runtime label, or linguistic status.
+## v0.5.195 evaluation/scalar/question wrapper audit
+
+- added ten zero-weight implementation probes across acceptability, scalar, evaluation, opinion, identity, scheduling, time-to-action, and postposed existential-question wrappers;
+- preserved exact source/runtime and composition mismatches without granting linguistic evidence;
+- reduced the no-direct backlog from 23 to 13 labels;
+- current coverage is 2 positive-and-boundary, 100 positive-only, 52 implementation-positive-only, 1 compatibility-alias-only, and 13 no-direct labels;
+- changed no parser span, runtime label, or linguistic status.

@@ -1,0 +1,118 @@
+{
+  "schema": "canto-span-evaluation-scalar-question-reachability-probes-v1",
+  "runtime_version": "0.5.195",
+  "linguistic_evidence_weight": 0,
+  "policy": "These cases protect current runtime reachability only. They do not attest naturalness, productivity, construction identity, scalar semantics, question structure, discourse licensing, or promotion eligibility.",
+  "cases": [
+    {
+      "case_id": "ESQWRAP-001",
+      "construction": "AcceptabilityClause",
+      "source": "返工都得。",
+      "provenance": "docs/research/CP039-P1-EVALUATION-SCALAR-QUESTION-WRAPPER-AUDIT-R1.md#ESQWRAP-001",
+      "source_role": "code_specific_semantically_coherent_probe",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only",
+      "scope_note": "Protects the current bare action plus 都得 route only; it does not establish permission, free choice, or the optional-slot wrapper as one productive construction."
+    },
+    {
+      "case_id": "ESQWRAP-002",
+      "construction": "EvaluationWithDouSyun",
+      "source": "都算中等價位。",
+      "provenance": "docs/research/CP039-P1-EVALUATION-SCALAR-QUESTION-WRAPPER-AUDIT-R1.md#ESQWRAP-002",
+      "source_role": "code_specific_semantically_coherent_probe",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only",
+      "scope_note": "Protects the current 都 + 算 + price-domain heuristic only; checked evidence for 算 evaluation does not establish this exact wrapper or price-noun requirement."
+    },
+    {
+      "case_id": "ESQWRAP-003",
+      "construction": "ScalarEvaluation",
+      "source": "唔算貴。",
+      "provenance": "docs/research/CP039-P1-EVALUATION-SCALAR-QUESTION-WRAPPER-AUDIT-R1.md#ESQWRAP-003",
+      "source_role": "source_attested_surface_used_as_code_specific_probe",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only",
+      "scope_note": "Protects the exact negative 算 evaluation route only; attestation of the surface does not validate a broad ScalarEvaluation ontology or unrestricted scalar domains."
+    },
+    {
+      "case_id": "ESQWRAP-004",
+      "construction": "ScalarRangeFragment",
+      "source": "中等價位。",
+      "provenance": "docs/research/CP039-P1-EVALUATION-SCALAR-QUESTION-WRAPPER-AUDIT-R1.md#ESQWRAP-004",
+      "source_role": "code_specific_semantically_coherent_probe",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only",
+      "scope_note": "Protects the current 價位-anchored fragment route only; it does not establish fragment status, a general scalar-range construction, or omitted copular structure."
+    },
+    {
+      "case_id": "ESQWRAP-005",
+      "construction": "ScalarValueQuestion",
+      "source": "幾錢呀？",
+      "provenance": "docs/research/CP039-P1-EVALUATION-SCALAR-QUESTION-WRAPPER-AUDIT-R1.md#ESQWRAP-005",
+      "source_role": "source_attested_surface_used_as_code_specific_probe",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only",
+      "scope_note": "Protects the exact price-question route only; the attested surface does not prove that price, distance, duration, height, and other scalar questions share one construction."
+    },
+    {
+      "case_id": "ESQWRAP-006",
+      "construction": "OpinionQuestion",
+      "source": "你覺得呢個點樣？",
+      "provenance": "docs/research/CP039-P1-EVALUATION-SCALAR-QUESTION-WRAPPER-AUDIT-R1.md#ESQWRAP-006",
+      "source_role": "code_specific_semantically_coherent_probe",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only",
+      "scope_note": "Protects the current 覺得 + topic/object + 點樣 route only; checked sources favor ordinary cognition-plus-question composition rather than a special OpinionQuestion node."
+    },
+    {
+      "case_id": "ESQWRAP-007",
+      "construction": "IdentityWhQuestion",
+      "source": "邊個嚟㗎？",
+      "provenance": "docs/research/CP039-P1-EVALUATION-SCALAR-QUESTION-WRAPPER-AUDIT-R1.md#ESQWRAP-007",
+      "source_role": "code_specific_semantically_coherent_probe",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only",
+      "scope_note": "Protects the current narrow 邊個 + 嚟 identity route only; independently attested identity questions with overt topics or copulas currently route differently."
+    },
+    {
+      "case_id": "ESQWRAP-008",
+      "construction": "SchedulingQuestion",
+      "source": "你覺得約幾時好？",
+      "provenance": "docs/research/CP039-P1-EVALUATION-SCALAR-QUESTION-WRAPPER-AUDIT-R1.md#ESQWRAP-008",
+      "source_role": "code_specific_semantically_coherent_probe",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only",
+      "scope_note": "Protects the current stance + scheduling action + time wh + 好 route only; checked scheduling evidence does not require 覺得 or a final quality predicate."
+    },
+    {
+      "case_id": "ESQWRAP-009",
+      "construction": "TimeToActionFrame",
+      "source": "係時候返屋企。",
+      "provenance": "docs/research/CP039-P1-EVALUATION-SCALAR-QUESTION-WRAPPER-AUDIT-R1.md#ESQWRAP-009",
+      "source_role": "code_specific_semantically_coherent_probe",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only",
+      "scope_note": "Protects the current 係時候 + action fallback only; checked temporal-clause sources do not establish this exact construction or its productivity."
+    },
+    {
+      "case_id": "ESQWRAP-010",
+      "construction": "PostposedExistentialQuestion",
+      "source": "有書冇？",
+      "provenance": "docs/research/CP039-P1-EVALUATION-SCALAR-QUESTION-WRAPPER-AUDIT-R1.md#ESQWRAP-010",
+      "source_role": "code_specific_semantically_coherent_probe",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only",
+      "scope_note": "Protects the current postposed 有 + nominal + 冇 route only; checked reference evidence establishes preverbal 有冇 but does not establish this postposed question frame."
+    }
+  ]
+}

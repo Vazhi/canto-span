@@ -4,7 +4,7 @@
 
 | Measure | Current value |
 |---|---:|
-| Runtime | v0.5.194 |
+| Runtime | v0.5.195 |
 | Runtime labels | 168 |
 | Current construction notes | 168 |
 | Active working notes | 2 |
@@ -19,6 +19,22 @@
 | `parser_heuristic` | 20 |
 
 The canonical registry is the union of `grammar/active/*.md` and `grammar/archived/*.md`; it matches the 168 runtime labels exactly.
+
+## v0.5.195 evaluation, scalar, and question wrapper audit
+
+Ten related labels received constructor-specific review. `AcceptabilityClause`, `EvaluationWithDouSyun`, `ScalarEvaluation`, `ScalarRangeFragment`, `ScalarValueQuestion`, `OpinionQuestion`, `IdentityWhQuestion`, `SchedulingQuestion`, `TimeToActionFrame`, and `PostposedExistentialQuestion` now have semantically coherent zero-weight implementation probes.
+
+The audit preserves rather than resolves the principal mismatches: standalone `都得` routes differently from action-plus-`都得`; checked `算` evidence does not establish the runtime price-domain wrapper; one scalar label spans heterogeneous wh domains; sourced identity and scheduling questions do not reach the dedicated runtime labels; and checked existential evidence supports preverbal `有冇` rather than the postposed wrapper.
+
+Current construction coverage:
+
+- positive and boundary: **2**;
+- positive only: **100**;
+- implementation positive only: **52**;
+- compatibility alias only: **1**;
+- no direct cases: **13**.
+
+No recognized parser span, runtime label, or linguistic status changed.
 
 ## v0.5.194 speech, transfer, and complement wrapper audit
 

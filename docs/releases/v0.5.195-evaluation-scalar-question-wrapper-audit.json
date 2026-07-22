@@ -1,0 +1,37 @@
+{
+  "schema": "canto-span-release-handoff-audit-v2",
+  "release_id": "v0.5.195-evaluation-scalar-question-wrapper-audit",
+  "handoff_sequence": 19,
+  "status_changes": [],
+  "changed_construction_audit": [],
+  "supported_productive_pending_reaudit": [],
+  "implementation_validation": "PASS required before handoff: 545 regression cases, 43 NP cases, 1,210 construction assertions, 168 note/test alignment, ten evaluation/scalar/question zero-weight probes, historical reachability audits, panel workflow, promotion and release gates, documentation links, and repository verification.",
+  "linguistic_confidence": "No construction gained linguistic evidence or status. All ten probes have evidence weight zero. Composition, lexical-scope, source/runtime, scalar-domain, identity-question, scheduling-question, and postposed-existential mismatches remain unresolved.",
+  "code_analysis_overclaim_review": true,
+  "overclaim_review_scope": "Inspected exact templates and complete parser output for ten acceptability, scalar, evaluation, opinion, identity, scheduling, temporal, and existential-question labels. Recorded implementation reachability separately from source support and preserved every observed mismatch without promotion or normalization.",
+  "release_documents": [
+    "docs/research/CP039-P1-EVALUATION-SCALAR-QUESTION-WRAPPER-AUDIT-R1.md",
+    "docs/research/CP039-P1-EVALUATION-SCALAR-QUESTION-WRAPPER-INVENTORY-R1.tsv",
+    "test-data/evaluation-scalar-question-reachability-probes-v1.json",
+    "tools/verify-evaluation-scalar-question-wrapper-audit.js",
+    "docs/current/PROJECT-STATE.md",
+    "docs/current/TESTING.md",
+    "GRAMMAR-INDEX.md",
+    "HANDOFF.md",
+    "CHANGELOG.md"
+  ],
+  "external_audit_ready": true,
+  "unresolved_release_questions": [
+    "Thirteen retained labels still have no direct standardized case.",
+    "AcceptabilityClause still merges optional subject/action material with 都得 without a settled linguistic scope.",
+    "EvaluationWithDouSyun and ScalarEvaluation retain price-domain and broad-scalar analyses not established by their checked sources.",
+    "ScalarValueQuestion still groups heterogeneous scalar domains under one label.",
+    "OpinionQuestion and IdentityWhQuestion may duplicate ordinary cognition-plus-question or copular/question composition.",
+    "SchedulingQuestion requires runtime elements absent from the checked scheduling example.",
+    "TimeToActionFrame lacks a verified exact source for its dedicated 係時候 + action wrapper.",
+    "PostposedExistentialQuestion is reachable, but checked reference evidence establishes preverbal 有冇 rather than the postposed route.",
+    "The full dormant-label review remains due by handoff sequence 23.",
+    "RUL and PFV survey integration remains paused while collection proceeds."
+  ],
+  "base_tree": "94a4ab111969a2ee387fb88ca596def8c6f6f868"
+}

@@ -50,7 +50,7 @@ function check(name, condition, detail = "") {
   if (!pass) failures.push({ name, detail: String(detail) });
 }
 
-check("runtime version is 0.5.194", api.runtimeVersion === "0.5.194", api.runtimeVersion);
+check("runtime version is 0.5.195", api.runtimeVersion === "0.5.195", api.runtimeVersion);
 check("inventory has eleven labels", inventory.length === 11, inventory.length);
 check("probe schema", probes.schema === "canto-span-result-change-state-reachability-probes-v1", probes.schema);
 check("probe file has ten cases", probes.cases.length === 10, probes.cases.length);
@@ -66,7 +66,7 @@ for (const probe of probes.cases) {
   check(`${probe.construction} keeps zero direct positives`, row && row.positive_case_count === 0, row && row.positive_case_count);
   const notePath = [path.join(root, "grammar", "active", `${probe.construction}.md`), path.join(root, "grammar", "archived", `${probe.construction}.md`)].find(fs.existsSync);
   const note = notePath ? fs.readFileSync(notePath, "utf8") : "";
-  check(`${probe.construction} note records CP036 zero-weight reachability`, note.includes("CP036-P1 result and change-state wrapper audit") && note.includes(`\`${probe.case_id}\``) && note.includes("linguistic evidence weight is **0**"), notePath || "missing");
+  check(`${probe.construction} note records CP036 zero-weight reachability`, note.includes("CP036-P1 result and change-state wrapper audit") && note.includes(`\`${probe.case_id}\``) && note.includes("linguistic evidence weight is **0**"), notePath ? path.relative(root, notePath) : "missing");
 }
 
 const shadowedSource = "解決咗喇。";
@@ -82,14 +82,14 @@ check("PerfectiveResultPredicate has zero implementation probes", shadowedIndex 
 const shadowedNote = fs.readFileSync(path.join(root, "grammar", "archived", "PerfectiveResultPredicate.md"), "utf8");
 check("PerfectiveResultPredicate note records shadowing", shadowedNote.includes("complete parser output routes the same surface through `PerfectiveVP`") && shadowedNote.includes("remains `no_direct_cases`"));
 
-check("test index has 42 implementation-positive-only labels", index.files.filter((row) => row.state === "implementation_positive_only").length === 42, index.files.filter((row) => row.state === "implementation_positive_only").length);
-check("test index has 23 no-direct labels", index.files.filter((row) => row.state === "no_direct_cases").length === 23, index.files.filter((row) => row.state === "no_direct_cases").length);
+check("test index has 52 implementation-positive-only labels", index.files.filter((row) => row.state === "implementation_positive_only").length === 52, index.files.filter((row) => row.state === "implementation_positive_only").length);
+check("test index has 13 no-direct labels", index.files.filter((row) => row.state === "no_direct_cases").length === 13, index.files.filter((row) => row.state === "no_direct_cases").length);
 check("test index has 168 active labels", index.active_construction_count === 168 && index.files.length === 168, index.files.length);
 
 const result = {
   schema: "canto-span-result-change-state-wrapper-audit-v1",
   runtime_version: api.runtimeVersion,
-  checkpoint: "v0.5.194-result-change-state-wrapper-audit",
+  checkpoint: "v0.5.195-result-change-state-wrapper-audit",
   parser_recognized_span_behavior_changed: false,
   linguistic_status_changed: false,
   labels_audited: inventory.length,
