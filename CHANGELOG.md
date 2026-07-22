@@ -1,3 +1,11 @@
+## v0.5.194 — speech, transfer, and complement wrapper audit
+
+- Audited six speech, transfer, naming, intention, and VP-complement labels at exact constructor and complete-output level.
+- Added six semantically coherent zero-weight implementation probes.
+- Preserved routing differences between positive and negative `話你知`, subject-sensitive `IntentionFrame` reachability, the combined-component gap in `PossessiveTransferClause`, the `叫`/`叫做` naming mismatch, and predicate-specific VP-complement licensing.
+- Increased construction assertions from 1,194 to 1,200 and reduced the no-direct backlog from 29 to 23 labels.
+- Changed no recognized parser span, runtime label, or linguistic status.
+
 ## v0.5.193 — nominal wrapper audit
 
 - Audited four nominal runtime labels at exact constructor and diagnostic-row level.

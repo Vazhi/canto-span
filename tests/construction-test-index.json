@@ -695,17 +695,17 @@
     {
       "construction": "DitransitiveSpeechVP",
       "file": "tests/constructions/DitransitiveSpeechVP.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "compatibility_alias_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "DurativeVP",
@@ -1025,17 +1025,17 @@
     {
       "construction": "IntentionFrame",
       "file": "tests/constructions/IntentionFrame.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "compatibility_alias_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "IntransitiveVP",
@@ -1325,17 +1325,17 @@
     {
       "construction": "NamingClause",
       "file": "tests/constructions/NamingClause.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "compatibility_alias_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "NeedsContext",
@@ -1730,17 +1730,17 @@
     {
       "construction": "PossessiveTransferClause",
       "file": "tests/constructions/PossessiveTransferClause.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "compatibility_alias_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "PostThemeParticipantRelation",
@@ -2285,17 +2285,17 @@
     {
       "construction": "SpeechTransferClause",
       "file": "tests/constructions/SpeechTransferClause.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "compatibility_alias_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "StativeNominalComplement",
@@ -2465,17 +2465,17 @@
     {
       "construction": "VPComplementFrame",
       "file": "tests/constructions/VPComplementFrame.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "compatibility_alias_probe_count": 0,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "VerbComplementVP",

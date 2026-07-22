@@ -6,18 +6,28 @@
   "snapshot_cases": [],
   "focused_cases": [],
   "np_cases": [],
-  "implementation_probe_cases": [],
+  "implementation_probe_cases": [
+    {
+      "case_id": "STCWRAP-004",
+      "source": "我叫做 Chris。",
+      "assertion": "construction_present",
+      "provenance": "docs/research/CP038-P1-SPEECH-TRANSFER-COMPLEMENT-WRAPPER-AUDIT-R1.md#STCWRAP-004",
+      "source_role": "code_specific_semantically_coherent_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    }
+  ],
   "coverage": {
-    "state": "no_direct_cases",
+    "state": "implementation_positive_only",
     "exact_snapshot_positive_count": 0,
     "focused_positive_count": 0,
     "focused_boundary_count": 0,
     "focused_review_only_count": 0,
     "np_case_count": 0,
-    "implementation_probe_count": 0,
+    "implementation_probe_count": 1,
     "compatibility_alias_probe_count": 0,
     "positive_case_count": 0,
     "boundary_case_count": 0,
-    "executable_case_count": 0
+    "executable_case_count": 1
   }
 }

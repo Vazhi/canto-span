@@ -4,7 +4,7 @@ This repository is the canonical project working tree for the Cantonese parser a
 
 ## Current state
 
-- runtime: **v0.5.193**
+- runtime: **v0.5.194**
 - active runtime labels / construction notes: **168 / 168**
 - construction workflow: **2 active / 166 workflow-archived**
 - retired labels: **13**
@@ -17,9 +17,9 @@ Current validation targets:
 
 - aggregate regression: **545** cases
 - NP subsystem: **43** cases
-- per-construction assertions: **1,194**
+- per-construction assertions: **1,200**
 - construction test files: **168**
 
-v0.5.193 audits four nominal wrappers. Two zero-weight direct reachability probes and one compatibility-alias probe were added; `DemonstrativeHeadNP` was retired as a constructorless known misanalysis. No recognized parser span or retained linguistic status changed.
+v0.5.194 audits six speech, transfer, naming, intention, and VP-complement wrappers. Six zero-weight implementation probes were added, while known routing and lexical-analysis gaps remain explicit. No recognized parser span, runtime label, or linguistic status changed.
 
 Read [`docs/current/00-START-HERE.md`](docs/current/00-START-HERE.md), then [`docs/current/PROJECT-STATE.md`](docs/current/PROJECT-STATE.md).

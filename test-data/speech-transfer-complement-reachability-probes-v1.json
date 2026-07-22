@@ -1,0 +1,74 @@
+{
+  "schema": "canto-span-speech-transfer-complement-reachability-probes-v1",
+  "runtime_version": "0.5.194",
+  "linguistic_evidence_weight": 0,
+  "policy": "These cases protect current runtime reachability only. They do not attest naturalness, productivity, construction identity, complement structure, argument structure, lexical interchangeability, or promotion eligibility.",
+  "cases": [
+    {
+      "case_id": "STCWRAP-001A",
+      "construction": "SpeechTransferClause",
+      "source": "我唔話你知。",
+      "provenance": "docs/research/CP038-P1-SPEECH-TRANSFER-COMPLEMENT-WRAPPER-AUDIT-R1.md#STCWRAP-001A",
+      "source_role": "source_attested_surface_used_as_code_specific_probe",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only",
+      "scope_note": "Protects the current outer speech-transfer wrapper for the exact negative clause only; it does not establish that a special clause node is linguistically necessary."
+    },
+    {
+      "case_id": "STCWRAP-001B",
+      "construction": "DitransitiveSpeechVP",
+      "source": "我唔話你知。",
+      "provenance": "docs/research/CP038-P1-SPEECH-TRANSFER-COMPLEMENT-WRAPPER-AUDIT-R1.md#STCWRAP-001B",
+      "source_role": "source_attested_surface_used_as_code_specific_probe",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only",
+      "scope_note": "Protects the nested exact 話 + recipient + 知 path only; it does not license unrestricted speech-verb, recipient, and cognition-predicate combinations."
+    },
+    {
+      "case_id": "STCWRAP-002",
+      "construction": "IntentionFrame",
+      "source": "我諗住返屋企。",
+      "provenance": "docs/research/CP038-P1-SPEECH-TRANSFER-COMPLEMENT-WRAPPER-AUDIT-R1.md#STCWRAP-002",
+      "source_role": "source_attested_surface_used_as_code_specific_probe",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only",
+      "scope_note": "Protects the exact subject + 諗住 + motion VP route only; intention, maintained-thought, assumption, and ordinary V住 readings remain unresolved."
+    },
+    {
+      "case_id": "STCWRAP-003",
+      "construction": "PossessiveTransferClause",
+      "source": "我有本書要畀你。",
+      "provenance": "docs/research/CP038-P1-SPEECH-TRANSFER-COMPLEMENT-WRAPPER-AUDIT-R1.md#STCWRAP-003",
+      "source_role": "code_specific_semantically_coherent_probe",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only",
+      "scope_note": "Protects the exact possession + classifier-headed object + 要畀 recipient wrapper only; component evidence does not validate the combined clause ontology."
+    },
+    {
+      "case_id": "STCWRAP-004",
+      "construction": "NamingClause",
+      "source": "我叫做 Chris。",
+      "provenance": "docs/research/CP038-P1-SPEECH-TRANSFER-COMPLEMENT-WRAPPER-AUDIT-R1.md#STCWRAP-004",
+      "source_role": "code_specific_semantically_coherent_probe",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only",
+      "scope_note": "Protects the exact current subject + 叫做 + ASCII-name fallback only; it does not resolve the sourced personal 叫 versus definitional 叫做 split."
+    },
+    {
+      "case_id": "STCWRAP-005",
+      "construction": "VPComplementFrame",
+      "source": "我記得要返屋企。",
+      "provenance": "docs/research/CP038-P1-SPEECH-TRANSFER-COMPLEMENT-WRAPPER-AUDIT-R1.md#STCWRAP-005",
+      "source_role": "code_specific_semantically_coherent_probe",
+      "assertion": "construction_present",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only",
+      "scope_note": "Protects the broad 記得 + visible VP-complement wrapper only; complement selection and broader VP-complement productivity remain unverified."
+    }
+  ]
+}

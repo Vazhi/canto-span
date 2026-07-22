@@ -46,11 +46,11 @@ implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
 standard_test_file: "tests/constructions/SpeechTransferClause.json"
-standard_test_coverage: "no_direct_cases"
+standard_test_coverage: "implementation_positive_only"
 standard_positive_test_count: 0
 standard_boundary_test_count: 0
-standard_implementation_probe_count: 0
-standard_executable_test_count: 0
+standard_implementation_probe_count: 1
+standard_executable_test_count: 1
 source_ids: ["SRC-MATTHEWS-2006-SVC", "SRC-YIP-MATTHEWS-2017-INTERMEDIATE"]
 runtime_active: true
 workflow_state: "archived"
@@ -138,3 +138,9 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Full pre-migration record: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
 - Status migration date: 2026-07-21.
 - The frozen JSON preserves the former wide schema; this note is the active authoring record.
+
+## CP038 speech/transfer/complement wrapper audit
+
+- Implementation-only reachability: `STCWRAP-001A` with `我唔話你知。`
+- The probe protects the current outer negative-clause wrapper only. The exact surface is attested, but no independent marker establishes that this extra clause node is linguistically necessary.
+- Its linguistic evidence weight is **0**; reachability does not establish naturalness, productivity, or promotion eligibility.

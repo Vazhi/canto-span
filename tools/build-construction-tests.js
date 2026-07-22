@@ -16,6 +16,7 @@ const reachabilityPaths = [
   path.join(root, "test-data", "experiential-delimited-reachability-probes-v1.json"),
   path.join(root, "test-data", "result-change-state-reachability-probes-v1.json"),
   path.join(root, "test-data", "nominal-wrapper-reachability-probes-v1.json"),
+  path.join(root, "test-data", "speech-transfer-complement-reachability-probes-v1.json"),
 ];
 const api = loadRuntimeApi(path.join(root, "main.js"));
 
@@ -96,6 +97,7 @@ const acceptedReachabilitySchemas = new Set([
   "canto-span-experiential-delimited-reachability-probes-v1",
   "canto-span-result-change-state-reachability-probes-v1",
   "canto-span-nominal-wrapper-reachability-probes-v1",
+  "canto-span-speech-transfer-complement-reachability-probes-v1",
 ]);
 for (const reachabilityPath of reachabilityPaths) {
   const reachability = readJson(reachabilityPath);

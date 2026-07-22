@@ -1,0 +1,35 @@
+{
+  "schema": "canto-span-release-handoff-audit-v2",
+  "release_id": "v0.5.194-speech-transfer-complement-wrapper-audit",
+  "handoff_sequence": 18,
+  "status_changes": [],
+  "changed_construction_audit": [],
+  "supported_productive_pending_reaudit": [],
+  "implementation_validation": "PASS required before handoff: 545 regression cases, 43 NP cases, 1,200 construction assertions, 168 note/test alignment, six speech/transfer/complement zero-weight probes, historical reachability audits, panel workflow, promotion and release gates, documentation links, and repository verification.",
+  "linguistic_confidence": "No construction gained linguistic evidence or status. All six probes have evidence weight zero. Known routing, lexical-head, combined-wrapper, and complement-selection mismatches remain unresolved.",
+  "code_analysis_overclaim_review": true,
+  "overclaim_review_scope": "Inspected exact templates and complete parser output for six speech, transfer, naming, intention, and complement labels. Recorded implementation reachability separately from source support and preserved every observed routing or lexical mismatch without promoting or normalizing it.",
+  "release_documents": [
+    "docs/research/CP038-P1-SPEECH-TRANSFER-COMPLEMENT-WRAPPER-AUDIT-R1.md",
+    "docs/research/CP038-P1-SPEECH-TRANSFER-COMPLEMENT-WRAPPER-INVENTORY-R1.tsv",
+    "test-data/speech-transfer-complement-reachability-probes-v1.json",
+    "tools/verify-speech-transfer-complement-wrapper-audit.js",
+    "docs/current/PROJECT-STATE.md",
+    "docs/current/TESTING.md",
+    "GRAMMAR-INDEX.md",
+    "HANDOFF.md",
+    "CHANGELOG.md"
+  ],
+  "external_audit_ready": true,
+  "unresolved_release_questions": [
+    "Twenty-three retained labels still have no direct standardized case.",
+    "SpeechTransferClause and DitransitiveSpeechVP currently depend on the negative 話你知 route, while the positive surface routes elsewhere.",
+    "IntentionFrame is not preserved for the subjectless exact intention surface.",
+    "PossessiveTransferClause remains a combined wrapper whose components have stronger support than the combined ontology.",
+    "NamingClause still mismatches personal 叫 evidence and definitional or labeling 叫做 uses.",
+    "VPComplementFrame still requires predicate-specific complement licensing.",
+    "The full dormant-label review remains due by handoff sequence 23.",
+    "RUL and PFV survey integration remains paused while collection proceeds."
+  ],
+  "base_tree": "de1a7e0a8dd18de9583a62c7082a0dd5cb13b605"
+}

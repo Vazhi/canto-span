@@ -92,6 +92,11 @@ required=(
   docs/releases/v0.5.193-nominal-wrapper-audit.json
   test-data/nominal-wrapper-reachability-probes-v1.json
   tools/verify-nominal-wrapper-audit.js
+  docs/research/CP038-P1-SPEECH-TRANSFER-COMPLEMENT-WRAPPER-AUDIT-R1.md
+  docs/research/CP038-P1-SPEECH-TRANSFER-COMPLEMENT-WRAPPER-INVENTORY-R1.tsv
+  docs/releases/v0.5.194-speech-transfer-complement-wrapper-audit.json
+  test-data/speech-transfer-complement-reachability-probes-v1.json
+  tools/verify-speech-transfer-complement-wrapper-audit.js
   archive/retired-labels/v0.5.193-nominal-wrapper-audit/DemonstrativeHeadNP.md
   archive/retired-labels/v0.5.190-low-reference-wrapper-audit/TemporalAdverbialClause.md
   test-data/rul-survey-readiness-probes-v1.json
@@ -135,6 +140,7 @@ node tools/verify-low-reference-wrapper-audit.js --fast >/dev/null
 node tools/verify-experiential-delimited-wrapper-audit.js >/dev/null
 node tools/verify-result-change-state-wrapper-audit.js >/dev/null
 node tools/verify-nominal-wrapper-audit.js >/dev/null
+node tools/verify-speech-transfer-complement-wrapper-audit.js >/dev/null
 node tools/audit-native-conflict-burden.js >/dev/null
 node tools/verify-native-panel-snapshot.js >/dev/null
 node tools/verify-pfv-panel-snapshot.js >/dev/null

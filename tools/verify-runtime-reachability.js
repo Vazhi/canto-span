@@ -20,6 +20,7 @@ const excludedRelativePaths = new Set([
   "test-data/experiential-delimited-reachability-probes-v1.json",
   "test-data/result-change-state-reachability-probes-v1.json",
   "test-data/nominal-wrapper-reachability-probes-v1.json",
+  "test-data/speech-transfer-complement-reachability-probes-v1.json",
 ]);
 
 function parseTsv(file) {
@@ -101,12 +102,13 @@ const laterProbes = JSON.parse(fs.readFileSync(path.join(root, "test-data", "con
 const newestProbes = JSON.parse(fs.readFileSync(path.join(root, "test-data", "experiential-delimited-reachability-probes-v1.json"), "utf8"));
 const resultChangeProbes = JSON.parse(fs.readFileSync(path.join(root, "test-data", "result-change-state-reachability-probes-v1.json"), "utf8"));
 const nominalProbes = JSON.parse(fs.readFileSync(path.join(root, "test-data", "nominal-wrapper-reachability-probes-v1.json"), "utf8"));
+const speechComplementProbes = JSON.parse(fs.readFileSync(path.join(root, "test-data", "speech-transfer-complement-reachability-probes-v1.json"), "utf8"));
 const testIndex = JSON.parse(fs.readFileSync(path.join(root, "tests", "construction-test-index.json"), "utf8"));
 const indexByLabel = new Map(testIndex.files.map((item) => [item.construction, item]));
 const probeByLabel = new Map(probes.cases.map((item) => [item.construction, item]));
 const laterProbeByLabel = new Map(laterProbes.cases.map((item) => [item.construction, item]));
 const newestProbeByLabel = new Map();
-for (const item of [...newestProbes.cases, ...resultChangeProbes.cases, ...nominalProbes.cases]) {
+for (const item of [...newestProbes.cases, ...resultChangeProbes.cases, ...nominalProbes.cases, ...speechComplementProbes.cases]) {
   if (!newestProbeByLabel.has(item.construction)) newestProbeByLabel.set(item.construction, []);
   newestProbeByLabel.get(item.construction).push(item);
 }
@@ -119,7 +121,7 @@ function check(name, condition, detail = "") {
   if (!pass) failures.push({ name, detail: String(detail) });
 }
 
-check("runtime version is 0.5.193", api.runtimeVersion === "0.5.193", api.runtimeVersion);
+check("runtime version is 0.5.194", api.runtimeVersion === "0.5.194", api.runtimeVersion);
 check("structured candidate count is frozen", candidates.size === 1885, candidates.size);
 check("structured scan has no parser errors", parseErrors.length === 0, JSON.stringify(parseErrors.slice(0, 5)));
 check("117 runtime labels observed somewhere in structured materials", observed.size === 117, observed.size);
@@ -193,14 +195,14 @@ for (const row of inventory) {
 }
 check("15 baseline labels observed", observedInventory === 15, observedInventory);
 check("53 baseline labels not observed", unobservedInventory === 53, unobservedInventory);
-check("test index has 36 implementation-positive-only labels", testIndex.files.filter((item) => item.state === "implementation_positive_only").length === 36, testIndex.files.filter((item) => item.state === "implementation_positive_only").length);
+check("test index has 42 implementation-positive-only labels", testIndex.files.filter((item) => item.state === "implementation_positive_only").length === 42, testIndex.files.filter((item) => item.state === "implementation_positive_only").length);
 check("test index has one compatibility-alias-only label", testIndex.files.filter((item) => item.state === "compatibility_alias_only").length === 1, testIndex.files.filter((item) => item.state === "compatibility_alias_only").length);
-check("test index has 29 no-direct labels", testIndex.files.filter((item) => item.state === "no_direct_cases").length === 29, testIndex.files.filter((item) => item.state === "no_direct_cases").length);
+check("test index has 23 no-direct labels", testIndex.files.filter((item) => item.state === "no_direct_cases").length === 23, testIndex.files.filter((item) => item.state === "no_direct_cases").length);
 
 const result = {
   schema: "canto-span-runtime-reachability-audit-v1",
   runtime_version: api.runtimeVersion,
-  checkpoint: "v0.5.193-nominal-wrapper-audit",
+  checkpoint: "v0.5.194-speech-transfer-complement-wrapper-audit",
   parser_behavior_changed: false,
   linguistic_status_changed: false,
   structured_candidate_count: candidates.size,

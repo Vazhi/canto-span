@@ -13,7 +13,7 @@ The recovery ZIP must include `.git/`.
 
 ## Binding state
 
-- runtime: **v0.5.193**
+- runtime: **v0.5.194**
 - runtime labels / current construction notes: **168 / 168**
 - workflow: **2 active / 166 archived**
 - retired labels: **13**
@@ -40,15 +40,17 @@ Promotion thresholds are based on the minimum usable adjudicated judgments per c
 2. `docs/current/DEFINITION-OF-DONE.md`
 3. `docs/current/SURVEY-BATCHING.md`
 4. `docs/current/NATIVE-SPEAKER-REVIEW.md`
-5. `docs/research/CP037-P1-NOMINAL-WRAPPER-AUDIT-R1.md`
-6. `docs/research/CP037-P1-NOMINAL-WRAPPER-INVENTORY-R1.tsv`
-7. `docs/research/CP037-DEMONSTRATIVEHEADNP-RETIREMENT-R1.md`
-8. `docs/research/CP036-P1-RESULT-CHANGE-STATE-WRAPPER-AUDIT-R1.md`
-9. `docs/research/CP035-P1-EXPERIENTIAL-DELIMITED-WRAPPER-AUDIT-R1.md`
-10. `docs/research/CP034-P1-LOW-REFERENCE-WRAPPER-AUDIT-R1.md`
-11. `docs/research/CP033-P1-RUNTIME-REACHABILITY-AUDIT-R1.md`
-12. `docs/research/CP032-P1-RUL01-SURVEY-READINESS-R1.md`
+5. `docs/research/CP038-P1-SPEECH-TRANSFER-COMPLEMENT-WRAPPER-AUDIT-R1.md`
+6. `docs/research/CP038-P1-SPEECH-TRANSFER-COMPLEMENT-WRAPPER-INVENTORY-R1.tsv`
+7. `docs/research/CP037-P1-NOMINAL-WRAPPER-AUDIT-R1.md`
+8. `docs/research/CP037-P1-NOMINAL-WRAPPER-INVENTORY-R1.tsv`
+9. `docs/research/CP037-DEMONSTRATIVEHEADNP-RETIREMENT-R1.md`
+10. `docs/research/CP036-P1-RESULT-CHANGE-STATE-WRAPPER-AUDIT-R1.md`
+11. `docs/research/CP035-P1-EXPERIENTIAL-DELIMITED-WRAPPER-AUDIT-R1.md`
+12. `docs/research/CP034-P1-LOW-REFERENCE-WRAPPER-AUDIT-R1.md`
+13. `docs/research/CP033-P1-RUNTIME-REACHABILITY-AUDIT-R1.md`
+14. `docs/research/CP032-P1-RUL01-SURVEY-READINESS-R1.md`
 
 ## Next substantive work
 
-Continue constructor-specific review of the 29 labels that remain `no_direct_cases`. Prioritize coherent low-reference families, distinguish complete-parser reachability from internal fallback construction, and add only semantically coherent zero-weight probes. Do not infer linguistic support from reachability. When native-panel evidence becomes blocking again, remind the user to provide the survey-guidance prompt before drafting the instrument.
+Continue constructor-specific review of the 23 labels that remain `no_direct_cases`. Prioritize coherent low-reference families, distinguish complete-parser reachability from internal fallback construction, and add only semantically coherent zero-weight probes. Do not infer linguistic support from reachability. When native-panel evidence becomes blocking again, remind the user to provide the survey-guidance prompt before drafting the instrument.

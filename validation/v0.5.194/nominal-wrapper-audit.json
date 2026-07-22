@@ -1,0 +1,154 @@
+{
+  "schema": "canto-span-nominal-wrapper-audit-v1",
+  "runtime_version": "0.5.194",
+  "checkpoint": "v0.5.193-nominal-wrapper-audit",
+  "parser_recognized_span_behavior_changed": false,
+  "retired_labels": [
+    "DemonstrativeHeadNP"
+  ],
+  "labels_audited": 4,
+  "implementation_probes_added": 2,
+  "compatibility_alias_probes_added": 1,
+  "linguistic_evidence_weight_added": 0,
+  "total": 29,
+  "passed": 29,
+  "failed": 0,
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "runtime version is 0.5.194",
+      "pass": true,
+      "detail": "0.5.194"
+    },
+    {
+      "name": "inventory has four labels",
+      "pass": true,
+      "detail": "4"
+    },
+    {
+      "name": "probe schema",
+      "pass": true,
+      "detail": "canto-span-nominal-wrapper-reachability-probes-v1"
+    },
+    {
+      "name": "probe file has three cases",
+      "pass": true,
+      "detail": "3"
+    },
+    {
+      "name": "all probes have zero evidence weight",
+      "pass": true
+    },
+    {
+      "name": "OrdinalClassifierNP remains in test index",
+      "pass": true
+    },
+    {
+      "name": "NOMWRAP-001 reaches OrdinalClassifierNP",
+      "pass": true,
+      "detail": "OrdinalClassifierNP"
+    },
+    {
+      "name": "OrdinalClassifierNP coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "OrdinalClassifierNP has one zero-weight probe",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "OrdinalClassifierNP has zero direct positives",
+      "pass": true
+    },
+    {
+      "name": "PossessiveClassifierNP remains in test index",
+      "pass": true
+    },
+    {
+      "name": "NOMWRAP-002 reaches PossessiveClassifierNP",
+      "pass": true,
+      "detail": "CausativeResultFrame,CausativeResultPredicate,PossessiveClassifierNP,ModifiedNP"
+    },
+    {
+      "name": "PossessiveClassifierNP coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "PossessiveClassifierNP has one zero-weight probe",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "PossessiveClassifierNP has zero direct positives",
+      "pass": true
+    },
+    {
+      "name": "DemonstrativeClassifierNP remains in test index",
+      "pass": true
+    },
+    {
+      "name": "NOMWRAP-003 exposes DemonstrativeClassifierNP compatibility alias",
+      "pass": true,
+      "detail": "[{\"depth\":0,\"parent\":\"\",\"internal_parent\":\"\",\"surface\":\"呢本書\",\"display_surface\":\"呢本書\",\"parser_surface\":\"呢本書\",\"kind\":\"construction\",\"construction\":\"DemonstrativeClassifierNP\",\"internal_construction\":\"OvertHeadDemonstrativeClassifierNP\",\"compatibility_alias\":\"DemonstrativeClassifierNP\",\"internal_representation_scope\":\"\",\"label\":\"NP\",\"slots\":[\"classifier\",\"construction_span\",\"demonstrative\",\"head_noun\",\"np\",\"object\",\"opinion_topic\",\"topic\"],\"learner_display_slots\":[\"measure_word\",\"demonstrative\",\"head_noun\",\"np\",\"object\",\"topic\"],\"internal_slots_hidden_from_learner_display\":[\"construction_span\",\"opinion_topic\"],\"contextual_role_affordances\":[],\"trace\":\"generative_template\",\"trace_detail\":{\"kind\":\"generative_template\",\"construction_type\":\"DemonstrativeClassifierNP\",\"template_family\":\"generative_template\",\"template\":[\"demonstrative!\",\"classifier!\",\"head_noun!\"],\"constraints\":{\"slot_must_not_have_slots\":{\"demonstrative\":[\"quantity\",\"wh_determiner\",\"di_determiner\"],\"classifier\":[\"quantity\",\"wh_determiner\",\"di_determiner\"],\"head_noun\":[\"quantity\",\"classifier\",\"wh_determiner\",\"di_determiner\"]}},\"assigned_slots\":[\"demonstrative\",\"classifier\",\"head_noun\"],\"surfaces\":[\"呢\",\"本\",\"書\"],\"role_overrides\":{},\"subspan\":true,\"np_license_status\":\"licensed_np\",\"construction_licensing_allowed\":true,\"classifier_head_compatibility_status\":\"verified_compatible\",\"classifier_head_compatibility\":{\"status\":\"verified_compatible\",\"classifier_surface\":\"本\",\"head_surface\":\"書\",\"matched_head_classes\":[\"book\"],\"reason\":\"Classifier and overt noun head match a reviewed lexical compatibility class.\"},\"np_license_reason\":\"Classifier and overt noun head match a reviewed lexical compatibility class.\"},\"internal_trace_detail\":{\"kind\":\"generative_template\",\"construction_type\":\"OvertHeadDemonstrativeClassifierNP\",\"template_family\":\"generative_template\",\"template\":[\"demonstrative!\",\"classifier!\",\"head_noun!\"],\"constraints\":{\"slot_must_not_have_slots\":{\"demonstrative\":[\"quantity\",\"wh_determiner\",\"di_determiner\"],\"classifier\":[\"quantity\",\"wh_determiner\",\"di_determiner\"],\"head_noun\":[\"quantity\",\"classifier\",\"wh_determiner\",\"di_determiner\"]}},\"assigned_slots\":[\"demonstrative\",\"classifier\",\"head_noun\"],\"surfaces\":[\"呢\",\"本\",\"書\"],\"role_overrides\":{},\"subspan\":true,\"np_license_status\":\"licensed_np\",\"construction_licensing_allowed\":true,\"classifier_head_compatibility_status\":\"verified_compatible\",\"classifier_head_compatibility\":{\"status\":\"verified_compatible\",\"classifier_surface\":\"本\",\"head_surface\":\"書\",\"matched_head_classes\":[\"book\"],\"reason\":\"Classifier and overt noun head match a reviewed lexical compatibility class.\"},\"np_license_reason\":\"Classifier and overt noun head match a reviewed lexical compatibility class.\"},\"runtime_registry\":{\"construction\":\"OvertHeadDemonstrativeClassifierNP\",\"active\":true,\"registry_missing\":false}}]"
+    },
+    {
+      "name": "DemonstrativeClassifierNP coverage is compatibility alias only",
+      "pass": true,
+      "detail": "compatibility_alias_only"
+    },
+    {
+      "name": "DemonstrativeClassifierNP has one zero-weight probe",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "DemonstrativeClassifierNP has zero direct positives",
+      "pass": true
+    },
+    {
+      "name": "standalone possessive does not preserve PossessiveClassifierNP",
+      "pass": true,
+      "detail": "ModifiedNP"
+    },
+    {
+      "name": "DemonstrativeHeadNP absent from runtime",
+      "pass": true
+    },
+    {
+      "name": "DemonstrativeHeadNP absent from current test index",
+      "pass": true
+    },
+    {
+      "name": "DemonstrativeHeadNP archived retirement record exists",
+      "pass": true
+    },
+    {
+      "name": "DemonstrativeHeadNP current note removed",
+      "pass": true
+    },
+    {
+      "name": "test index has 42 implementation-positive-only labels",
+      "pass": true,
+      "detail": "42"
+    },
+    {
+      "name": "test index has one compatibility-alias-only label",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "test index has 23 no-direct labels",
+      "pass": true,
+      "detail": "23"
+    },
+    {
+      "name": "test index has 168 active labels",
+      "pass": true,
+      "detail": "168"
+    }
+  ],
+  "failures": []
+}

@@ -1,0 +1,12 @@
+{
+  "schema": "canto-span-release-handoff-gate-v2",
+  "release_id": "v0.5.194-speech-transfer-complement-wrapper-audit",
+  "base_tree": "de1a7e0a8dd18de9583a62c7082a0dd5cb13b605",
+  "actual_status_changes": [],
+  "supported_productive_count": 0,
+  "supported_productive_pending_reaudit": [],
+  "retirement_review_gap": 15,
+  "failed": 0,
+  "status": "PASS",
+  "failures": []
+}

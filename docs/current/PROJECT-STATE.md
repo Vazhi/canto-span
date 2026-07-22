@@ -4,7 +4,7 @@
 
 | Measure | Current value |
 |---|---:|
-| Runtime | v0.5.193 |
+| Runtime | v0.5.194 |
 | Runtime labels | 168 |
 | Current construction notes | 168 |
 | Active working notes | 2 |
@@ -19,6 +19,22 @@
 | `parser_heuristic` | 20 |
 
 The canonical registry is the union of `grammar/active/*.md` and `grammar/archived/*.md`; it matches the 168 runtime labels exactly.
+
+## v0.5.194 speech, transfer, and complement wrapper audit
+
+Six related labels received constructor-specific review. `SpeechTransferClause`, `DitransitiveSpeechVP`, `IntentionFrame`, `PossessiveTransferClause`, `NamingClause`, and internal `VPComplementFrame` now have semantically coherent zero-weight implementation probes.
+
+The audit preserves the mismatches instead of hiding them: positive and negative `話你知` surfaces route differently, subjectless `諗住返屋企` bypasses `IntentionFrame`, the exact possessive-transfer wrapper combines independently sourced components, the naming fallback reaches `叫做` with an ASCII name while checked personal-naming evidence centers on `叫`, and VP-complement licensing remains predicate-specific research debt.
+
+Current construction coverage:
+
+- positive and boundary: **2**;
+- positive only: **100**;
+- implementation positive only: **42**;
+- compatibility alias only: **1**;
+- no direct cases: **23**.
+
+No recognized parser span, runtime label, or linguistic status changed.
 
 ## v0.5.193 nominal wrapper audit
 
@@ -153,13 +169,13 @@ critical-item sample remains zero.
 
 - regression: **545 cases**;
 - NP subsystem: **43 cases**;
-- construction assertions: **1,194**;
+- construction assertions: **1,200**;
 - construction test files: **168**;
 - no parser span behavior changed in this migration.
 
 ## Next milestone
 
-Continue the 29-label implementation reachability backlog in small related
+Continue the 23-label implementation reachability backlog in small related
 families, with exact constructor inspection before any probe is added. Survey
 collection is proceeding separately; do not integrate results until a frozen
 export is supplied and adjudicated.

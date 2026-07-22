@@ -151,3 +151,11 @@ provenance for collected legacy data.
 - represented `DemonstrativeClassifierNP` as a compatibility-alias-only label backed by internal `OvertHeadDemonstrativeClassifierNP`;
 - retired constructorless `DemonstrativeHeadNP` while preserving its historical record;
 - current coverage is 2 positive-and-boundary, 100 positive-only, 36 implementation-positive-only, 1 compatibility-alias-only, and 29 no-direct labels.
+
+## v0.5.194 speech/transfer/complement wrapper audit
+
+- added six zero-weight implementation probes across speech-transfer, intention, possessive-transfer, naming, and VP-complement wrappers;
+- preserved exact routing mismatches for positive versus negative `話你知`, subjectless `諗住`, personal `叫` versus runtime `叫做`, and broad VP-complement selection;
+- reduced the no-direct backlog from 29 to 23 labels;
+- current coverage is 2 positive-and-boundary, 100 positive-only, 42 implementation-positive-only, 1 compatibility-alias-only, and 23 no-direct labels;
+- changed no parser span, runtime label, or linguistic status.

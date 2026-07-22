@@ -46,11 +46,11 @@ implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: false
 promotion_gate_version: "v3"
 standard_test_file: "tests/constructions/VPComplementFrame.json"
-standard_test_coverage: "no_direct_cases"
+standard_test_coverage: "implementation_positive_only"
 standard_positive_test_count: 0
 standard_boundary_test_count: 0
-standard_implementation_probe_count: 0
-standard_executable_test_count: 0
+standard_implementation_probe_count: 1
+standard_executable_test_count: 1
 source_ids: []
 runtime_active: true
 workflow_state: "archived"
@@ -123,3 +123,9 @@ No same-family active construction was identified in the canonical consolidation
 - Full pre-migration record: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
 - Status migration date: 2026-07-21.
 - The frozen JSON preserves the former wide schema; this note is the active authoring record.
+
+## CP038 speech/transfer/complement wrapper audit
+
+- Implementation-only reachability: `STCWRAP-005` with `我記得要返屋企。`
+- The probe protects the broad internal 記得 + visible VP-complement wrapper only. Predicate-specific complement licensing remains unverified.
+- Its linguistic evidence weight is **0**; reachability does not establish naturalness, productivity, or promotion eligibility.

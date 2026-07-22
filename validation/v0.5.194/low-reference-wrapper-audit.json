@@ -1,0 +1,168 @@
+{
+  "schema": "canto-span-low-reference-wrapper-audit-v1",
+  "runtime_version": "0.5.194",
+  "checkpoint": "v0.5.190-low-reference-wrapper-audit",
+  "parser_recognized_span_behavior_changed": false,
+  "retained_linguistic_status_changed": false,
+  "labels_audited": 5,
+  "implementation_probes_added": 3,
+  "labels_retired": 1,
+  "complete_comment_single_lexeme_hits": 0,
+  "linguistic_evidence_weight_added": 0,
+  "main_sha256": "cb8936cbd8f0fbbd5b6ad980766db2c3245b5c75bbeb238107a0a9ed8f75977a",
+  "probe_file_sha256": "4423020d6c6cca220cb951e89a95157c8d48596896ac249e0ce00b6ffafcfa6d",
+  "inventory_sha256": "c432b1d8d3e5a94f50e18740e82b092f6bf9d618d35c8e7cd7b4bee214a5837c",
+  "total": 32,
+  "passed": 32,
+  "failed": 0,
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "runtime version is 0.5.194",
+      "pass": true,
+      "detail": "0.5.194"
+    },
+    {
+      "name": "inventory has five labels",
+      "pass": true,
+      "detail": "5"
+    },
+    {
+      "name": "probe schema",
+      "pass": true,
+      "detail": "canto-span-constructor-specific-reachability-probes-v1"
+    },
+    {
+      "name": "all three probes have zero evidence weight",
+      "pass": true,
+      "detail": "3"
+    },
+    {
+      "name": "LOWREF-001 reaches ComparativeStative",
+      "pass": true,
+      "detail": "客氣啲。"
+    },
+    {
+      "name": "ComparativeStative coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "ComparativeStative has one implementation probe",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "ComparativeStative keeps zero direct positives",
+      "pass": true
+    },
+    {
+      "name": "LOWREF-002 reaches DefinitionExplanatoryFrame",
+      "pass": true,
+      "detail": "圖書館係乜嘢嚟㗎。"
+    },
+    {
+      "name": "DefinitionExplanatoryFrame coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "DefinitionExplanatoryFrame has one implementation probe",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "DefinitionExplanatoryFrame keeps zero direct positives",
+      "pass": true
+    },
+    {
+      "name": "LOWREF-003 reaches DefinitionComplement",
+      "pass": true,
+      "detail": "圖書館係乜嘢嚟㗎。"
+    },
+    {
+      "name": "DefinitionComplement coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "DefinitionComplement has one implementation probe",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "DefinitionComplement keeps zero direct positives",
+      "pass": true
+    },
+    {
+      "name": "Definition frame exposes internal complement",
+      "pass": true
+    },
+    {
+      "name": "Comparative fallback remains distinct on probe",
+      "pass": true
+    },
+    {
+      "name": "single-lexeme topic scan has no complete Comment output",
+      "pass": true
+    },
+    {
+      "name": "Comment fallback still exists at constructor level",
+      "pass": true,
+      "detail": "[\"TopicComment\",\"Topic\",\"Comment\"]"
+    },
+    {
+      "name": "Comment remains current but no-direct",
+      "pass": true
+    },
+    {
+      "name": "TemporalAdverbialClause absent from active registry",
+      "pass": true
+    },
+    {
+      "name": "TemporalAdverbialClause present in retired registry",
+      "pass": true
+    },
+    {
+      "name": "TemporalAdverbialClause constructor absent",
+      "pass": true
+    },
+    {
+      "name": "TemporalAdverbialClause removed from context support",
+      "pass": true
+    },
+    {
+      "name": "TemporalAdverbialClause current note absent",
+      "pass": true
+    },
+    {
+      "name": "TemporalAdverbialClause test file absent",
+      "pass": true
+    },
+    {
+      "name": "TemporalAdverbialClause archived note preserved",
+      "pass": true
+    },
+    {
+      "name": "current registry has 168 labels",
+      "pass": true,
+      "detail": "168"
+    },
+    {
+      "name": "test index has 168 labels",
+      "pass": true,
+      "detail": "168"
+    },
+    {
+      "name": "42 labels are implementation positive only",
+      "pass": true,
+      "detail": "42"
+    },
+    {
+      "name": "23 labels remain no-direct",
+      "pass": true,
+      "detail": "23"
+    }
+  ],
+  "failures": []
+}
