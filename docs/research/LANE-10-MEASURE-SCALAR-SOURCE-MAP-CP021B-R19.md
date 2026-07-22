@@ -51,6 +51,14 @@ Exact `幾錢呀` is corpus-attested. `幾多錢` and `幾多歲` are also docum
 | `ScalarRangeFragment` | `LEXICAL_PRICE_RANGE_WRAPPER_UNEXERCISED_MERGE_OR_RETIRE` | Merge lexical `價位` handling into ordinary nominal/scalar material or retire the dormant wrapper. |
 | `ScalarValueQuestion` | `PRICE_AMOUNT_AND_SCALAR_DIMENSION_QUESTION_SPLIT_REQUIRED` | Split lexical price-amount questions from compositional `幾`+dimension questions. |
 
+## v0.5.209 retirement follow-up
+
+`ScalarRangeFragment` was retired after a current runtime review confirmed that
+its only standardized case was the zero-weight `中等價位。` implementation
+probe. Removing the `價位`-triggered wrapper preserves ordinary nominal
+analyses and does not resolve the separate discourse question of when a nominal
+expression functions as a fragment.
+
 ## Forbidden inferences
 
 R19 does not authorize:

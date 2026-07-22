@@ -1,9 +1,9 @@
 {
   "id": "canto-span",
   "name": "Canto Span",
-  "version": "0.5.208",
+  "version": "0.5.211",
   "minAppVersion": "1.5.0",
-  "description": "v0.5.208 reconciles overt full 係唔係 predicate/clause complements and terminal-tag boundaries while retaining unsupported status and a separate 係咪 runtime path.",
+  "description": "v0.5.211 source-links preverbal 未/冇 experiential negation while preserving final-未 questions and general-negator boundaries.",
   "author": "Chris Crawford / OpenAI ChatGPT",
   "authorUrl": "",
   "isDesktopOnly": false

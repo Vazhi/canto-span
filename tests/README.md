@@ -16,9 +16,10 @@ node tests/run-all.js
 
 The command runs three layers:
 
-1. `run-regression.js` — 545 exact structural snapshots;
+1. `run-regression.js` — 551 exact structural snapshots;
 2. `run-np-subsystem.js` — 43 compositional NP and licensing cases;
-3. `run-constructions.js` — one JSON file per active construction under `tests/constructions/`.
+3. `run-constructions.js` — 1,246 assertions across one JSON file per active
+   construction under `tests/constructions/`.
 
 ## Construction files
 
@@ -39,10 +40,12 @@ Coverage states are:
 
 - `positive_and_boundary`;
 - `positive_only`;
-- `boundary_only`;
-- `no_direct_cases`.
+- `implementation_positive_only`;
+- `compatibility_alias_only`.
 
-A missing direct case is reported as a coverage gap. It is not converted into an automatic pass or evidence of linguistic support.
+Current coverage is 6 positive-and-boundary, 104 positive-only, 53
+implementation-positive-only, and 1 compatibility-alias-only. Implementation
+and alias probes have linguistic evidence weight zero.
 
 ## Fixtures
 

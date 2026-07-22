@@ -4,7 +4,104 @@
   "runtime_active": true,
   "migration_phase": 5,
   "snapshot_cases": [],
-  "focused_cases": [],
+  "focused_cases": [
+    {
+      "case_id": "CP055-P1-NEGATIVE-EXPERIENTIAL-R1:NEXP-E01",
+      "source": "我未見過王小姐。",
+      "class": "preverbal_not_yet_experiential_statement",
+      "expected_profile": "construction_present",
+      "assertion": "construction_present",
+      "provenance": "review-packets/cp055-p1-negative-experiential-r1/focused-evaluation-packet.json",
+      "source_ids": [
+        "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
+      ],
+      "source_locator": "user PDF p. 192"
+    },
+    {
+      "case_id": "CP055-P1-NEGATIVE-EXPERIENTIAL-R1:NEXP-E02",
+      "source": "我冇睇過今日嘅報紙。",
+      "class": "preverbal_aspectual_negative_experiential_statement",
+      "expected_profile": "construction_present",
+      "assertion": "construction_present",
+      "provenance": "review-packets/cp055-p1-negative-experiential-r1/focused-evaluation-packet.json",
+      "source_ids": [
+        "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
+      ],
+      "source_locator": "user PDF p. 192"
+    },
+    {
+      "case_id": "CP055-P1-NEGATIVE-EXPERIENTIAL-R1:NEXP-E03",
+      "source": "我未去過美國。",
+      "class": "preverbal_not_yet_experiential_motion_statement",
+      "expected_profile": "construction_present",
+      "assertion": "construction_present",
+      "provenance": "review-packets/cp055-p1-negative-experiential-r1/focused-evaluation-packet.json",
+      "source_ids": [
+        "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
+      ],
+      "source_locator": "user PDF p. 192"
+    },
+    {
+      "case_id": "CP055-P1-NEGATIVE-EXPERIENTIAL-R1:NEXP-N01",
+      "source": "今日嘅報紙我仲未睇完。",
+      "class": "non_experiential_not_yet_completion_boundary",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "review-packets/cp055-p1-negative-experiential-r1/focused-evaluation-packet.json",
+      "source_ids": [
+        "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
+      ],
+      "source_locator": "user PDF p. 192"
+    },
+    {
+      "case_id": "CP055-P1-NEGATIVE-EXPERIENTIAL-R1:NEXP-N02",
+      "source": "你飲過茶未？",
+      "class": "final_mei_experiential_question_boundary",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "review-packets/cp055-p1-negative-experiential-r1/focused-evaluation-packet.json",
+      "source_ids": [
+        "SRC-MATTHEWS-YIP-2011-ASPECT-MULTIMEDIA"
+      ],
+      "source_locator": "Chapter 11.2.5; lexically adapted from the exact final-未 pattern"
+    },
+    {
+      "case_id": "CP055-P1-NEGATIVE-EXPERIENTIAL-R1:NEXP-N03",
+      "source": "你有冇去過澳門呀？",
+      "class": "have_or_not_experiential_question_boundary",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "review-packets/cp055-p1-negative-experiential-r1/focused-evaluation-packet.json",
+      "source_ids": [
+        "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
+      ],
+      "source_locator": "user PDF p. 188"
+    },
+    {
+      "case_id": "CP055-P1-NEGATIVE-EXPERIENTIAL-R1:NEXP-N04",
+      "source": "我唔見過。",
+      "class": "general_negator_boundary",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "review-packets/cp055-p1-negative-experiential-r1/focused-evaluation-packet.json",
+      "source_ids": [
+        "SRC-LAM-2018-NEGATION-ASPECT"
+      ],
+      "source_locator": "pp. 216-218, split negation system"
+    },
+    {
+      "case_id": "CP055-P1-NEGATIVE-EXPERIENTIAL-R1:NEXP-N05",
+      "source": "我咪見過。",
+      "class": "prohibitive_negator_boundary",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "review-packets/cp055-p1-negative-experiential-r1/focused-evaluation-packet.json",
+      "source_ids": [
+        "SRC-LAM-2018-NEGATION-ASPECT"
+      ],
+      "source_locator": "source limit: no prohibitive analogy"
+    }
+  ],
   "np_cases": [],
   "implementation_probe_cases": [
     {
@@ -27,16 +124,16 @@
     }
   ],
   "coverage": {
-    "state": "implementation_positive_only",
+    "state": "positive_and_boundary",
     "exact_snapshot_positive_count": 0,
-    "focused_positive_count": 0,
-    "focused_boundary_count": 0,
+    "focused_positive_count": 3,
+    "focused_boundary_count": 5,
     "focused_review_only_count": 0,
     "np_case_count": 0,
     "implementation_probe_count": 2,
     "compatibility_alias_probe_count": 0,
-    "positive_case_count": 0,
-    "boundary_case_count": 0,
-    "executable_case_count": 2
+    "positive_case_count": 3,
+    "boundary_case_count": 5,
+    "executable_case_count": 10
   }
 }

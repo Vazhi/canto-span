@@ -1,0 +1,107 @@
+{
+  "schema": "canto-span-source-runtime-reconciliation-packet-v1",
+  "packet_id": "CP055-P1-NEGATIVE-EXPERIENTIAL-R1",
+  "checkpoint": "CP055-P1",
+  "status": "VISIBLE_SOURCE_LINKED_RECONCILIATION",
+  "accepted_parent": "v0.5.210",
+  "target_internal_construction": "NegativeExperiential",
+  "claim": {
+    "surface_profile": "preverbal 未 or 冇 before a VP containing experiential 過",
+    "boundary": "final 未 questions, 有冇 questions, non-experiential 未V, and general 唔 or prohibitive 咪 negation remain separate",
+    "linguistic_status_after_checkpoint": "research_pending"
+  },
+  "source_basis": [
+    {
+      "source_id": "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE",
+      "role": "exact preverbal 未/冇 experiential statements and 有冇 question contrast",
+      "locator": "user PDF pp. 188, 192",
+      "evidence_polarity": "positive_and_negative_boundary"
+    },
+    {
+      "source_id": "SRC-LAM-2018-NEGATION-ASPECT",
+      "role": "aspect-sensitive 冇 versus general 唔 distinction",
+      "locator": "pp. 215-218, Table 1 and examples (1)-(3)",
+      "evidence_polarity": "positive_and_negative_boundary"
+    },
+    {
+      "source_id": "SRC-MATTHEWS-YIP-2011-ASPECT-MULTIMEDIA",
+      "role": "final 未 experiential-question contrast",
+      "locator": "Chapter 11.2.5",
+      "evidence_polarity": "negative_boundary"
+    }
+  ],
+  "development_set": {
+    "cases": [
+      {
+        "case_id": "NEXP-E01",
+        "surface": "我未見過王小姐。",
+        "class": "preverbal_not_yet_experiential_statement",
+        "expected": "construction_present",
+        "source_ids": ["SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"],
+        "source_locator": "user PDF p. 192"
+      },
+      {
+        "case_id": "NEXP-E02",
+        "surface": "我冇睇過今日嘅報紙。",
+        "class": "preverbal_aspectual_negative_experiential_statement",
+        "expected": "construction_present",
+        "source_ids": ["SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"],
+        "source_locator": "user PDF p. 192"
+      },
+      {
+        "case_id": "NEXP-E03",
+        "surface": "我未去過美國。",
+        "class": "preverbal_not_yet_experiential_motion_statement",
+        "expected": "construction_present",
+        "source_ids": ["SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"],
+        "source_locator": "user PDF p. 192"
+      },
+      {
+        "case_id": "NEXP-N01",
+        "surface": "今日嘅報紙我仲未睇完。",
+        "class": "non_experiential_not_yet_completion_boundary",
+        "expected": "construction_absent",
+        "source_ids": ["SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"],
+        "source_locator": "user PDF p. 192"
+      },
+      {
+        "case_id": "NEXP-N02",
+        "surface": "你飲過茶未？",
+        "class": "final_mei_experiential_question_boundary",
+        "expected": "construction_absent",
+        "source_ids": ["SRC-MATTHEWS-YIP-2011-ASPECT-MULTIMEDIA"],
+        "source_locator": "Chapter 11.2.5; lexically adapted from the exact final-未 pattern"
+      },
+      {
+        "case_id": "NEXP-N03",
+        "surface": "你有冇去過澳門呀？",
+        "class": "have_or_not_experiential_question_boundary",
+        "expected": "construction_absent",
+        "source_ids": ["SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"],
+        "source_locator": "user PDF p. 188"
+      },
+      {
+        "case_id": "NEXP-N04",
+        "surface": "我唔見過。",
+        "class": "general_negator_boundary",
+        "expected": "construction_absent",
+        "source_ids": ["SRC-LAM-2018-NEGATION-ASPECT"],
+        "source_locator": "pp. 216-218, split negation system"
+      },
+      {
+        "case_id": "NEXP-N05",
+        "surface": "我咪見過。",
+        "class": "prohibitive_negator_boundary",
+        "expected": "construction_absent",
+        "source_ids": ["SRC-LAM-2018-NEGATION-ASPECT"],
+        "source_locator": "source limit: no prohibitive analogy"
+      }
+    ]
+  },
+  "status_decision": {
+    "status_changed": true,
+    "old_status": "unsupported_generalization",
+    "new_status": "research_pending",
+    "reason": "Three exact textbook positives and five source-defined boundaries support a narrow preverbal negative-experiential profile; productive scope and panel evidence remain incomplete."
+  }
+}

@@ -4,23 +4,62 @@
 
 | Measure | Current value |
 |---|---:|
-| Runtime | v0.5.208 |
-| Runtime labels | 165 |
-| Current construction notes | 165 |
+| Runtime | v0.5.211 |
+| Runtime labels | 164 |
+| Current construction notes | 164 |
 | Active working notes | 2 |
-| Workflow-archived notes | 163 |
-| Retired labels | 16 |
+| Workflow-archived notes | 162 |
+| Retired labels | 17 |
 | `supported_productive` | 0 |
 | `provisional_reaudit` | 0 |
 | `provisional` | 0 |
-| `research_pending` | 62 |
-| `unsupported_generalization` | 81 |
+| `research_pending` | 64 |
+| `unsupported_generalization` | 78 |
 | `lexicalized_only` | 3 |
 | `parser_heuristic` | 19 |
 
 The canonical registry is the union of
-`grammar/<linguistic-status>/*.md`. The 165 construction notes match the 165
+`grammar/<linguistic-status>/*.md`. The 164 construction notes match the 164
 runtime labels exactly.
+
+## v0.5.211 negative-experiential reconciliation
+
+`NegativeExperiential` now covers the narrow source-linked preverbal
+`未/冇 + V過` statement profile. Focused positives reproduce three exact
+coursebook examples; executable boundaries keep non-experiential `未V`,
+final-`未` questions, `有冇` questions, general `唔`, and prohibitive `咪`
+outside the node.
+
+The compatibility fallback is word-order-sensitive, and `未` no longer enters
+the existing `唔/冇` directional-negation template. `NegativeExperiential`
+moves from `unsupported_generalization` to `research_pending`; productive
+verb/object scope, particles, internal long-object parsing, and panel evidence
+remain unresolved.
+
+## v0.5.210 scalar-evaluation reconciliation
+
+`ScalarEvaluation` now retains one narrow source-linked family: negative
+lexical `算` evaluation with an overt property predicate. Focused positives
+cover `對皮鞋唔算貴`, `價錢唔算貴`, and `都唔算貴`; `中等價錢` is an executable
+ordinary-nominal boundary.
+
+The unrelated scalar-value-noun + stative-predicate template and the retired
+price-specific redirects were removed. `ScalarEvaluation` moves from
+`unsupported_generalization` to `research_pending`; complement productivity,
+the attested but undercovered `都唔算好差` profile, and panel evidence remain
+unresolved.
+
+## v0.5.209 scalar-range fragment retirement
+
+`ScalarRangeFragment` is retired. Its only complete-output evidence was the
+zero-weight probe `中等價位。`, while the fallback assigned fragment status to
+any core containing `價位` and had no mapped source, accepted fixture, or
+independent boundary.
+
+Removing the fallback preserves ordinary structure: `中等價位` remains a
+`ModifierNP`, bare `價位` remains nominal material, and `呢個價位` remains an
+overt demonstrative-classifier NP. The historical semantic-domain-specific
+`PriceRangeFragment` alias no longer redirects to an active construction.
 
 ## v0.5.208 copular A-not-A reconciliation
 
@@ -82,8 +121,8 @@ thresholds.
 
 - 551 regression cases pass;
 - 43 NP-subsystem cases pass;
-- 1,235 construction assertions across 165 construction files pass;
-- coverage is 4 positive-and-boundary, 104 positive-only, 56
+- 1,246 construction assertions across 164 construction files pass;
+- coverage is 6 positive-and-boundary, 104 positive-only, 53
   implementation-only, and 1 compatibility-alias-only;
 - no active label is uncovered.
 
@@ -91,10 +130,10 @@ Implementation reachability carries zero linguistic evidence weight.
 
 ## Next substantive work
 
-Resume source/runtime reconciliation among the remaining 56
+Resume source/runtime reconciliation among the remaining 53
 implementation-only labels, ranked by learner impact, source availability, and
 whether the current node creates a misleading analysis. Treat the full
 `係唔係`/contracted `係咪` relationship as a separate ontology question rather
 than silently broadening the reconciled node. The full retirement-review window
-is open at sequence 31 and must close no later than sequence 41. Do not create
+is open at sequence 34 and must close no later than sequence 41. Do not create
 another release-specific verifier or generated validation tree.

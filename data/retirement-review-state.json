@@ -4,9 +4,9 @@
   "last_full_review_id": "v0.5.197-shadowed-wrapper-retirement",
   "recommended_interval_min": 10,
   "hard_interval_max": 20,
-  "current_handoff_sequence": 31,
+  "current_handoff_sequence": 34,
   "next_review_window_opens_at_sequence": 31,
   "review_required_by_sequence": 41,
   "state": "full_review_complete",
-  "notes": "v0.5.197 completed the full dormant and uncovered-label review. v0.5.198 consolidated verification; v0.5.199 through v0.5.201 reconciled three retained constructions; v0.5.202 retired one misleading duplicate fallback; v0.5.203 reorganized notes by status; v0.5.204 source-linked one narrow degree-modification profile; v0.5.205 consolidated current governance documentation; v0.5.206 reconciled a narrow terminal 得唔得 profile and removed one misleading overmatch without adding or retiring labels; v0.5.207 replaced non-portable Git-object release baselines with checked-in status snapshots without changing labels or statuses.; v0.5.208 reconciled overt full 係唔係 predicate/clause complements and a terminal-tag boundary without changing label or status counts. The full retirement-review window is now open and remains required by sequence 41."
+  "notes": "v0.5.197 completed the last full dormant and uncovered-label review. v0.5.198 through v0.5.208 consolidated infrastructure and reconciled bounded retained constructions. v0.5.209 retired ScalarRangeFragment; v0.5.210 reconciled ScalarEvaluation; v0.5.211 reconciles a narrow sourced NegativeExperiential profile without changing label counts. The full retirement review remains open and required by sequence 41."
 }

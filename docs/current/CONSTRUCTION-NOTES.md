@@ -19,7 +19,7 @@ Every current runtime construction has exactly one canonical authoring note unde
 - `grammar/lexicalized_only/`
 - `grammar/parser_heuristic/`
 
-The union of those status directories is the canonical 165-note construction registry. A note must not be copied into more than one folder.
+The union of those status directories is the canonical 164-note construction registry. A note must not be copied into more than one folder.
 
 `grammar/retired/README.md` is a navigation index for labels removed from the runtime registry. It is not part of the current construction-note set and does not duplicate retired construction records.
 
@@ -101,8 +101,8 @@ npm run verify:release
 
 The checks confirm:
 
-- exactly 165 current construction notes;
-- exactly 2 workflow-active and 163 workflow-archived notes;
+- exactly 164 current construction notes;
+- exactly 2 workflow-active and 162 workflow-archived notes;
 - exact equality with the runtime active-label set;
 - required frontmatter fields;
 - exact status-folder/frontmatter agreement;

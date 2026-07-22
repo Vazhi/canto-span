@@ -1,0 +1,99 @@
+{
+  "schema": "canto-span-release-handoff-audit-v3",
+  "release_id": "v0.5.210-scalar-evaluation-reconciliation",
+  "handoff_sequence": 33,
+  "status_changes": [
+    {
+      "construction": "ScalarEvaluation",
+      "old_status": "unsupported_generalization",
+      "new_status": "research_pending"
+    }
+  ],
+  "changed_construction_audit": [
+    {
+      "construction": "ScalarEvaluation",
+      "old_status": "unsupported_generalization",
+      "new_status": "research_pending",
+      "plain_language_claim": "Cantonese attests negative lexical 算 evaluation with an overt property predicate. The productive predicate inventory, discourse scope, and complete boundaries remain unresolved.",
+      "code_locations": [
+        "main.js:ScalarEvaluation negative evaluation template",
+        "main.js:wrapCore negative 算 fallback",
+        "tests/constructions/ScalarEvaluation.json",
+        "review-packets/cp054-p1-scalar-evaluation-r1/focused-evaluation-packet.json"
+      ],
+      "sources": [
+        {
+          "citation": "Lam, Charles. 2014. A Unified Analysis to Surpass Comparative and Experiential Aspect.",
+          "locator": "pp. 368-376",
+          "verification": "VERIFIED_OFFICIAL_FULL_TEXT"
+        },
+        {
+          "citation": "鄭定歐、張勵妍、高石英. 2021. 粵語（香港話）教程（修訂版）.",
+          "locator": "user PDF p. 340, 對皮鞋唔算貴",
+          "verification": "VERIFIED_USER_PROVIDED_FULL_TEXT_AND_OFFICIAL_PUBLISHER_METADATA"
+        },
+        {
+          "citation": "Words.hk / CantoWords, 價錢 noun entry.",
+          "locator": "exact examples 價錢唔算貴 and 中等價錢",
+          "verification": "VERIFIED_CONTEMPORARY_DICTIONARY_ENTRY"
+        },
+        {
+          "citation": "Chinese University of Hong Kong Independent Learning Centre, 粵語網路課堂.",
+          "locator": "hotel-booking dialogue, 都唔算貴",
+          "verification": "VERIFIED_OFFICIAL_UNIVERSITY_WEB_RESOURCE"
+        },
+        {
+          "citation": "Hong Kong Legislative Council Hansard, 8 November 1995.",
+          "locator": "quoted assessment 都唔算好差",
+          "verification": "VERIFIED_OFFICIAL_PUBLIC_TRANSCRIPT"
+        }
+      ],
+      "panel_response_count_total": 0,
+      "eligible_panel_response_count": 0,
+      "minimum_usable_judgments_per_critical_item": 0,
+      "survey_instrument_version": "none",
+      "survey_instrument_status": "not_started",
+      "quality_screen_status": "not_started",
+      "panel_adjudication_status": "not_started",
+      "unresolved_questions": [
+        "Which property and degree-predicate complements are licensed after negative 算 evaluation?",
+        "What are the discourse and scope conditions on optional 都 and overt versus context-recovered topics?",
+        "How should the parser cover attested 都唔算好差 without turning category compatibility into unrestricted productivity?"
+      ]
+    }
+  ],
+  "supported_productive_pending_reaudit": [],
+  "implementation_validation": "At v0.5.210, regression remains 551/551, NP remains 43/43, and 1,238 construction assertions across 164 active labels pass. Three source-linked negative-算 positives produce ScalarEvaluation, while 中等價錢 remains ModifierNP and does not produce ScalarEvaluation.",
+  "linguistic_confidence": "The status is research_pending, not provisional or supported. Checked sources establish a narrow negative-算 evaluation family, while zero usable panel judgments and an incomplete complement/boundary inventory block promotion.",
+  "code_analysis_overclaim_review": true,
+  "overclaim_review_scope": "Reviewed both ScalarEvaluation templates, both whole-core fallbacks, semantic-domain aliases, construction slots, exact source-linked surfaces, nominal price-range boundaries, and the attested parser-undercoverage example 都唔算好差.",
+  "release_documents": [
+    "docs/research/CP054-P1-SCALAR-EVALUATION-RECONCILIATION-R1.md",
+    "review-packets/cp054-p1-scalar-evaluation-r1/focused-evaluation-packet.json",
+    "grammar/research_pending/ScalarEvaluation.md",
+    "tests/constructions/ScalarEvaluation.json",
+    "tools/build-construction-tests.js",
+    "data/release-baselines/v0.5.209-construction-statuses.json",
+    "data/retirement-review-state.json",
+    "docs/current/PROJECT-STATE.md",
+    "docs/current/TESTING.md",
+    "README.md",
+    "HANDOFF.md",
+    "CHANGELOG.md",
+    "main.js",
+    "tests/construction-test-index.json",
+    "manifest.json",
+    "package.json"
+  ],
+  "external_audit_ready": true,
+  "unresolved_release_questions": [
+    "The remaining 54 implementation-only labels still require source/runtime reconciliation.",
+    "The full retirement-review window remains open and must be completed no later than sequence 41.",
+    "RUL and PFV survey integration remains paused pending clean locked-instrument evidence."
+  ],
+  "base_status_snapshot": {
+    "path": "data/release-baselines/v0.5.209-construction-statuses.json",
+    "sha256": "24aa1d083fc59b3402e530355d0d30628d1c4ce8af95c99884d6570a407def93",
+    "runtime_version": "0.5.209"
+  }
+}
