@@ -4,7 +4,7 @@
 const fs = require("fs");
 const path = require("path");
 const vm = require("vm");
-const { loadConstructionNotes } = require("./construction-notes-lib");
+const { loadConstructionNotes, LINGUISTIC_STATUSES } = require("./construction-notes-lib");
 const { REQUIRED_FIELDS, countSourceRecords, countVerifiedSourceRecords, corpusClassificationTotal } = require("./promotion-gate-lib");
 
 const root = path.resolve(__dirname, "..");
@@ -51,8 +51,9 @@ for (const note of notes) {
     check(`${label} has ${field}`, Object.prototype.hasOwnProperty.call(fm, field));
   }
   check(`${label} type is construction`, fm.type === "canto-span-construction", String(fm.type));
+  check(`${label} status controlled`, LINGUISTIC_STATUSES.includes(fm.status), String(fm.status));
+  check(`${label} status path matches frontmatter`, path.dirname(note.file) === path.join(root, "grammar", String(fm.status)), note.file);
   check(`${label} workflow state controlled`, ["active", "archived"].includes(fm.workflow_state), String(fm.workflow_state));
-  check(`${label} workflow path matches state`, path.dirname(note.file) === path.join(root, "grammar", String(fm.workflow_state)), note.file);
   check(`${label} active priority present`, fm.workflow_state !== "active" || (Number.isInteger(fm.workflow_priority) && fm.workflow_priority > 0), String(fm.workflow_priority));
   check(`${label} archived priority absent`, fm.workflow_state !== "archived" || fm.workflow_priority === null, String(fm.workflow_priority));
   check(`${label} workflow date valid`, /^\d{4}-\d{2}-\d{2}$/.test(String(fm.workflow_since)), String(fm.workflow_since));

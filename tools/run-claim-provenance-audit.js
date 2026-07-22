@@ -183,7 +183,7 @@ const result = {
   schema: "canto-span-claim-provenance-audit-result-v1",
   batch_id: "v0.5.185-RUNTIME-METADATA-REDUCTION",
   runtime_version: manifest.version,
-  authoring_registry_owner: "grammar/active/*.md + grammar/archived/*.md",
+  authoring_registry_owner: "grammar/<linguistic-status>/*.md",
   policy: {
     external_authority_required_for_cantonese_language_claims: true,
     internal_behavior_may_open_only_a_neutral_research_question: true,

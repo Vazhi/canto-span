@@ -69,7 +69,7 @@ const result = {
   schema: "canto-span-runtime-construction-registry-audit-v1",
   runtime_version: runtime.runtimeVersion,
   registry_version: runtime.registryVersion,
-  registry_owner: "grammar/active/*.md + grammar/archived/*.md",
+  registry_owner: "grammar/<linguistic-status>/*.md",
   runtime_active_labels: runtimeLabels.size,
   construction_notes: noteLabels.size,
   workflow_counts: workflowCounts,

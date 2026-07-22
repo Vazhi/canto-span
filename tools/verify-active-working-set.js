@@ -22,8 +22,8 @@ check(
   active.map((note) => note.frontmatter.construction).sort().join(",") === [...expectedActive].sort().join(","),
   active.map((note) => note.frontmatter.construction).sort().join(",")
 );
-check("active notes are under grammar/active", active.every((note) => path.dirname(note.file) === path.join(root, "grammar", "active")));
-check("archived notes are under grammar/archived", archived.every((note) => path.dirname(note.file) === path.join(root, "grammar", "archived")));
+check("all notes are stored by linguistic status", notes.every((note) => path.dirname(note.file) === path.join(root, "grammar", String(note.frontmatter.status))));
+check("workflow state is independent of status directory", notes.every((note) => !["active", "archived"].includes(path.basename(path.dirname(note.file)))));
 check("all current notes remain runtime active", notes.every((note) => note.frontmatter.runtime_active === true));
 check("active priorities are unique positive integers", (() => {
   const priorities = active.map((note) => note.frontmatter.workflow_priority);

@@ -1,6 +1,6 @@
 {
   "schema": "canto-span-verification-summary-v1",
-  "runtime_version": "0.5.202",
+  "runtime_version": "0.5.203",
   "requested_profile": "release",
   "included_profiles": [
     "core",

@@ -1,17 +1,11 @@
 {
   "schema": "canto-span-release-handoff-gate-v2",
-  "release_id": "v0.5.202-comparative-stative-retirement",
-  "base_tree": "3b4f93fa5acce21e4cf71d1a76285c758527da69",
-  "actual_status_changes": [
-    {
-      "construction": "ComparativeStative",
-      "old_status": "unsupported_generalization",
-      "new_status": "retired"
-    }
-  ],
+  "release_id": "v0.5.203-grammar-status-directory-migration",
+  "base_tree": "aadb44581a690309e4c3901d02e048d39a922b89",
+  "actual_status_changes": [],
   "supported_productive_count": 0,
   "supported_productive_pending_reaudit": [],
-  "retirement_review_gap": 4,
+  "retirement_review_gap": 5,
   "failed": 0,
   "status": "PASS",
   "failures": []

@@ -1,9 +1,9 @@
 {
   "id": "canto-span",
   "name": "Canto Span",
-  "version": "0.5.202",
+  "version": "0.5.203",
   "minAppVersion": "1.5.0",
-  "description": "v0.5.202 retires the misleading ComparativeStative fallback and routes supported property + 啲 adjustment through DegreeMannerAdverbial.",
+  "description": "v0.5.203 organizes canonical construction notes by linguistic status for direct manual research review; parser behavior is unchanged.",
   "author": "Chris Crawford / OpenAI ChatGPT",
   "authorUrl": "",
   "isDesktopOnly": false

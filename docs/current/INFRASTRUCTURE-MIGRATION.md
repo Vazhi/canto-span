@@ -35,7 +35,7 @@ Reduce ceremony, drift risk, and file bloat without restarting the parser or dis
 - source citations, locators, speaker scope, claims, boundary references, implementation state, blockers, and related-construction links were migrated;
 - the export passed 3,641 mechanical checks;
 - the former wide registries were archived under `archive/registry-pre-obsidian-v0.5.184/`;
-- the union of `grammar/active/*.md` and `grammar/archived/*.md` is now the authoring-time status owner.
+- the workflow-directory union became the authoring-time status owner at v0.5.184 and was reorganized into linguistic-status folders in v0.5.203 without changing note contents.
 
 ### Phase 3 — Runtime metadata reduction: complete
 
@@ -98,6 +98,14 @@ Reduce ceremony, drift risk, and file bloat without restarting the parser or dis
 - added focused promotion-gate cases and a 109-check panel-snapshot audit that recomputes every item count;
 - documented the next-instrument requirements: graded scale, per-item correction/context fields, randomized item blocks, fillers, contextualized ellipsis, interpretation checks, and semantic-plausibility separation;
 - changed no parser behavior, runtime label, construction status, source count, or executable construction expectation.
+
+## v0.5.203 grammar status-directory migration
+
+- moved all 165 canonical construction notes from workflow directories into the folder matching each note's linguistic status;
+- retained workflow selection exclusively in frontmatter, with two active and 163 parked notes;
+- added status-folder guides, a central grammar guide, and a retired-label navigation index;
+- updated loaders and validation to require folder/status agreement and to compare releases across both old and new layouts;
+- changed no parser behavior, runtime label, linguistic status, evidence field, or test expectation.
 
 ## v0.5.188 RUL survey-readiness checkpoint
 

@@ -1,6 +1,6 @@
 {
   "schema": "canto-span-implementation-reachability-audit-v1",
-  "runtime_version": "0.5.202",
+  "runtime_version": "0.5.203",
   "probe_case_count": 64,
   "probed_construction_count": 63,
   "implementation_positive_only_labels": 59,

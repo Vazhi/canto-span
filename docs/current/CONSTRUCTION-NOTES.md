@@ -9,23 +9,51 @@ related: "[[DEFINITION-OF-DONE]]"
 
 ## Authority
 
-Every current runtime construction has exactly one authoring note in one of two workflow collections:
+Every current runtime construction has exactly one canonical authoring note under the folder matching its linguistic `status`:
 
-- `grammar/active/<ConstructionName>.md` — the small current working set;
-- `grammar/archived/<ConstructionName>.md` — current records parked outside the working set.
+- `grammar/supported_productive/`
+- `grammar/provisional_reaudit/`
+- `grammar/provisional/`
+- `grammar/research_pending/`
+- `grammar/unsupported_generalization/`
+- `grammar/lexicalized_only/`
+- `grammar/parser_heuristic/`
 
-The union of both directories is the canonical 170-note construction registry. Workflow archiving does **not** retire a label, mark it runtime-inactive, erase its evidence, or change its linguistic status. Retired labels are a separate concept and remain outside the active runtime registry.
+The union of those status directories is the canonical 165-note construction registry. A note must not be copied into more than one folder.
 
-`GRAMMAR-INDEX.md` links all 171 notes, lists the active working set first, and summarizes workflow, status, and standardized-test coverage.
+`grammar/retired/README.md` is a navigation index for labels removed from the runtime registry. It is not part of the current construction-note set and does not duplicate retired construction records.
 
-## Current working-set rule
+`GRAMMAR-INDEX.md` groups all current notes by linguistic status and marks the two active workflow items.
 
-The active working set must remain genuinely small. At this checkpoint it contains exactly:
+## Status path rule
 
-1. `PostverbalZoPerfectiveVP`;
-2. `ResourceUseLaiFunctionRelation`.
+The parent directory and frontmatter must agree. For example:
 
-A parked note may return to `grammar/active/` only through the same commit that records its new work reason and priority. Workflow state is independent of linguistic status: a supported or provisional construction may be parked when no substantive work is currently scheduled.
+```text
+grammar/research_pending/PostverbalZoPerfectiveVP.md
+```
+
+must contain:
+
+```yaml
+status: "research_pending"
+```
+
+A linguistic status change therefore moves the file and updates the status, confidence, evidence, boundaries, and current action in the same commit.
+
+## Workflow rule
+
+Workflow state is independent of linguistic status and is stored only in frontmatter:
+
+- `workflow_state: "active"` — selected for current bounded work;
+- `workflow_state: "archived"` — parked, but still current and runtime-active.
+
+At this checkpoint the active working set contains exactly:
+
+1. `ResourceUseLaiFunctionRelation`, priority 1;
+2. `PostverbalZoPerfectiveVP`, priority 2.
+
+Changing workflow state does not move a file. Workflow archiving does **not** retire a label, erase evidence, or change linguistic status.
 
 ## Required frontmatter
 
@@ -45,56 +73,45 @@ Each construction note records:
 - promotion-gate schema version;
 - panel evidence model, canonical panel policy/state links, and source-verification file;
 - standard construction-test file, coverage state, and positive/boundary/executable counts;
-- runtime activity and basic fixture/reference counts;
-- `workflow_state`: `active` or `archived`;
-- `workflow_priority`: a positive integer for active notes, otherwise `null`;
-- `workflow_since` and `workflow_reason`.
+- runtime activity and fixture/reference counts;
+- `workflow_state`, `workflow_priority`, `workflow_since`, and `workflow_reason`.
 
 The note body records the plain-language claim, citations and locators, panel-review scope, negative and boundary references, implementation state, blockers, and related constructions.
 
 ## Linking rule
 
-Use plain links such as `[[PostverbalZoPerfectiveVP]]`. Do not use pipe aliases in framework or construction notes. Obsidian resolves these links across the active and archived subdirectories by note name.
+Use plain links such as `[[PostverbalZoPerfectiveVP]]`. Do not use pipe aliases in framework or construction notes. Obsidian resolves note-name links across the status directories.
 
 ## Historical wide schema
 
-The former multi-table registry and the full embedded evidence snapshot are frozen under:
+The former multi-table registry and full embedded evidence snapshot are frozen under:
 
 `archive/registry-pre-obsidian-v0.5.184/`
 
-They are retained for audit and recovery but are not edited as current status records.
+They remain available for audit and recovery but are not edited as current status records.
 
 ## Mechanical checks
 
 Run:
 
 ```bash
-npm test
-node tools/verify-construction-notes.js
-node tools/verify-active-working-set.js
-node tools/verify-active-review-workflow.js
-node tools/test-promotion-gate.js
-node tools/enforce-promotion-rules.js
-node tools/test-release-handoff.js
-node tools/verify-release-handoff.js
+npm run verify
+npm run verify:release
 ```
 
-The commands must confirm:
+The checks confirm:
 
-- exactly 171 current construction notes;
-- exactly 2 active and 169 workflow-archived notes;
+- exactly 165 current construction notes;
+- exactly 2 workflow-active and 163 workflow-archived notes;
 - exact equality with the runtime active-label set;
-- required frontmatter fields and path/state agreement;
+- required frontmatter fields;
+- exact status-folder/frontmatter agreement;
 - exact one-to-one construction-note / construction-test-file mapping;
-- standardized test-count consistency;
-- source-count consistency;
+- standardized test-count and source-count consistency;
 - valid plain `[[ConstructionName]]` links;
 - no aliased wiki links;
-- preservation of the frozen full-schema snapshot;
-- for the active working set, exact source-checklist linkage, panel-policy/state synchronization, instrument-quality consistency, and non-automatic response counting.
+- promotion and release-handoff rules.
 
 ## Editing rule
 
-Edit the current construction note rather than the archived TSV/JSON registry. Any change to `status`, panel evidence fields, source verification, boundary state, corpus use, code-document alignment, or workflow state must update the corresponding frontmatter fields in the same commit.
-
-A note marked `provisional` or `supported_productive` cannot ship unless `tools/enforce-promotion-rules.js` passes. Other statuses are non-promoted by default and cannot become eligible merely because some evidence fields are true.
+Edit the canonical note in its status folder rather than the archived TSV/JSON registry. A note marked `provisional` or `supported_productive` cannot ship unless `tools/enforce-promotion-rules.js` passes. Other statuses are non-promoted by default and cannot become eligible merely because some implementation checks pass.

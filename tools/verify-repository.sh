@@ -55,5 +55,5 @@ printf 'repository=%s\nbranch=%s\ncommit=%s\ntracked_files=%s\nconstruction_note
   "$(git branch --show-current)" \
   "$(git rev-parse HEAD)" \
   "$(git ls-files | wc -l | tr -d ' ')" \
-  "$(find grammar/active grammar/archived -maxdepth 1 -type f -name '*.md' | wc -l | tr -d ' ')" \
+  "$(node -e 'const { loadConstructionNotes } = require("./tools/construction-notes-lib"); process.stdout.write(String(loadConstructionNotes(process.cwd()).length));')" \
   "$(git status --porcelain | wc -l | tr -d ' ')"

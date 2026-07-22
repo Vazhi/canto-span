@@ -15,7 +15,7 @@
 
 ## Current evidence records
 
-- active construction records: [`../../GRAMMAR-INDEX.md`](../../GRAMMAR-INDEX.md) and the union of `grammar/active/*.md` and `grammar/archived/*.md`
+- active construction records: [`../../GRAMMAR-INDEX.md`](../../GRAMMAR-INDEX.md) and the union of `grammar/<linguistic-status>/*.md`
 - [`SECOND-SPEAKER-REVIEW-QUEUE-v0.5.184-R1.tsv`](SECOND-SPEAKER-REVIEW-QUEUE-v0.5.184-R1.tsv)
 - [`SECOND-SPEAKER-WORK-FREEZE-2026-07-21.md`](SECOND-SPEAKER-WORK-FREEZE-2026-07-21.md)
 - [`RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv`](RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv)

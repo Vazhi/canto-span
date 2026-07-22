@@ -4,6 +4,15 @@ const fs = require("fs");
 const path = require("path");
 
 const WORKFLOW_STATES = ["active", "archived"];
+const LINGUISTIC_STATUSES = [
+  "supported_productive",
+  "provisional_reaudit",
+  "provisional",
+  "research_pending",
+  "unsupported_generalization",
+  "lexicalized_only",
+  "parser_heuristic",
+];
 
 function parseScalar(raw) {
   const value = raw.trim();
@@ -32,30 +41,40 @@ function parseConstructionNote(file) {
 
 function constructionNoteDirectories(root) {
   const grammarDir = path.join(root, "grammar");
-  return Object.fromEntries(WORKFLOW_STATES.map((state) => [state, path.join(grammarDir, state)]));
+  return Object.fromEntries(
+    LINGUISTIC_STATUSES.map((status) => [status, path.join(grammarDir, status)])
+  );
+}
+
+function constructionNoteFiles(root) {
+  const files = [];
+  for (const directory of Object.values(constructionNoteDirectories(root))) {
+    if (!fs.existsSync(directory)) continue;
+    for (const name of fs.readdirSync(directory).sort()) {
+      if (!name.endsWith(".md") || name === "README.md") continue;
+      files.push(path.join(directory, name));
+    }
+  }
+  return files;
 }
 
 function loadConstructionNotes(root, workflowState = null) {
   if (workflowState !== null && !WORKFLOW_STATES.includes(workflowState)) {
     throw new Error(`Unknown construction workflow state: ${workflowState}`);
   }
-  const directories = constructionNoteDirectories(root);
-  const states = workflowState === null ? WORKFLOW_STATES : [workflowState];
-  const files = [];
-  for (const state of states) {
-    const directory = directories[state];
-    if (!fs.existsSync(directory)) continue;
-    for (const name of fs.readdirSync(directory).filter((item) => item.endsWith(".md")).sort()) {
-      files.push(path.join(directory, name));
-    }
-  }
-  return files.map(parseConstructionNote).sort((a, b) =>
+  const notes = constructionNoteFiles(root).map(parseConstructionNote);
+  const filtered = workflowState === null
+    ? notes
+    : notes.filter((note) => note.frontmatter.workflow_state === workflowState);
+  return filtered.sort((a, b) =>
     String(a.frontmatter.construction).localeCompare(String(b.frontmatter.construction))
   );
 }
 
 function findConstructionNote(root, construction) {
-  const matches = loadConstructionNotes(root).filter((note) => note.frontmatter.construction === construction);
+  const matches = loadConstructionNotes(root).filter(
+    (note) => note.frontmatter.construction === construction
+  );
   if (matches.length !== 1) {
     throw new Error(`Expected one construction note for ${construction}; found ${matches.length}`);
   }
@@ -64,8 +83,10 @@ function findConstructionNote(root, construction) {
 
 module.exports = {
   WORKFLOW_STATES,
+  LINGUISTIC_STATUSES,
   parseConstructionNote,
   constructionNoteDirectories,
+  constructionNoteFiles,
   loadConstructionNotes,
   findConstructionNote,
 };

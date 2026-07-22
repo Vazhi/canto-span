@@ -132,7 +132,7 @@ check("runtime exports omit authoring evidence and retain active-label checks", 
     assert(constructions.every((item) => item.runtime_registry && item.runtime_registry.active === true), `${row.source}: active runtime registry state missing`);
     assert(constructions.every((item) => !Object.prototype.hasOwnProperty.call(item, "grammar_legitimacy")), `${row.source}: authoring evidence leaked into runtime export`);
   }
-  assert(bundle.summary.inspection_policy.required_process.some((line) => line.includes("grammar/active/*.md") && line.includes("grammar/archived/*.md")), "authoring-note inspection rule missing");
+  assert(bundle.summary.inspection_policy.required_process.some((line) => line.includes("grammar/<linguistic-status>/*.md")), "authoring-note inspection rule missing");
 });
 
 check("conservative full-review triggers cover risky rows", () => {

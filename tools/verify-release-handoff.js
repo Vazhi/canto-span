@@ -38,11 +38,13 @@ function parseFrontmatter(text) {
   return fm;
 }
 function baselineStatuses(commit) {
-  const paths = git(["ls-tree", "-r", "--name-only", commit, "grammar/active", "grammar/archived"])
-    .split(/\r?\n/).filter((value) => value.endsWith(".md"));
+  const paths = git(["ls-tree", "-r", "--name-only", commit, "grammar"])
+    .split(/\r?\n/)
+    .filter((value) => value.endsWith(".md") && !value.endsWith("/README.md"));
   const map = new Map();
   for (const file of paths) {
     const fm = parseFrontmatter(git(["show", `${commit}:${file}`]) + "\n");
+    if (fm.type !== "canto-span-construction") continue;
     map.set(fm.construction, fm.status);
   }
   return map;

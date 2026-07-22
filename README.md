@@ -4,7 +4,7 @@ This repository is the canonical project working tree for the Cantonese parser a
 
 ## Current state
 
-- runtime: **v0.5.202**
+- runtime: **v0.5.203**
 - active runtime labels / construction notes: **165 / 165**
 - construction workflow: **2 active / 163 workflow-archived**
 - retired labels: **16**
@@ -21,6 +21,6 @@ Current validation targets:
 - per-construction assertions: **1,229**
 - construction test files: **165**
 
-v0.5.202 retires the misleading `ComparativeStative` fallback. Source-supported property + `啲` adjustment now uses `DegreeMannerAdverbial`; explicit surpass comparatives remain a separate research question.
+v0.5.203 reorganizes the canonical construction notes into linguistic-status folders under `grammar/`. Workflow state remains frontmatter-only, and parser behavior, labels, statuses, evidence, and tests are unchanged.
 
-Read [`docs/current/00-START-HERE.md`](docs/current/00-START-HERE.md), then [`docs/current/PROJECT-STATE.md`](docs/current/PROJECT-STATE.md).
+Read [`grammar/README.md`](grammar/README.md) for direct status-based review, then [`docs/current/00-START-HERE.md`](docs/current/00-START-HERE.md) and [`docs/current/PROJECT-STATE.md`](docs/current/PROJECT-STATE.md).

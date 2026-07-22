@@ -2,7 +2,7 @@
 
 ## Current baseline
 
-- runtime: **v0.5.202**
+- runtime: **v0.5.203**
 - active labels / construction notes: **165 / 165**
 - workflow: **2 active / 163 archived**
 - retired labels: **16**
@@ -22,8 +22,9 @@ Read in this order:
 6. [`PROMOTION-GATE.md`](PROMOTION-GATE.md)
 7. [`TESTING.md`](TESTING.md)
 8. [`GIT-WORKFLOW.md`](GIT-WORKFLOW.md)
-9. [`../../GRAMMAR-INDEX.md`](../../GRAMMAR-INDEX.md)
+9. [`../../grammar/README.md`](../../grammar/README.md)
+10. [`../../GRAMMAR-INDEX.md`](../../GRAMMAR-INDEX.md)
 
 ## Interpretation rule
 
-Code is ground truth for parser behavior. Current construction notes are ground truth for linguistic status and evidence. A mismatch blocks release. Workflow archiving does not retire a label.
+Code is ground truth for parser behavior. Current construction notes in the matching linguistic-status folder are ground truth for linguistic status and evidence. A mismatch blocks release. Workflow archiving does not retire a label.

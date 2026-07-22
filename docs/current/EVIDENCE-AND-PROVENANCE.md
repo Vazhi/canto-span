@@ -56,8 +56,7 @@ linguistic confidence by themselves.
 
 ## Current records
 
-- construction notes: [`../../grammar/active/`](../../grammar/active/) and
-  [`../../grammar/archived/`](../../grammar/archived/)
+- construction notes: [`../../grammar/`](../../grammar/) status directories
 - construction index: [`../../GRAMMAR-INDEX.md`](../../GRAMMAR-INDEX.md)
 - source and research records: [`../research/`](../research/)
 - active native-panel policy and state:

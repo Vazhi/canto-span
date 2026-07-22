@@ -1,3 +1,12 @@
+## v0.5.203 — grammar status-directory migration
+
+- Reorganized all 165 canonical construction notes into folders named for their linguistic status.
+- Removed `grammar/active/` and `grammar/archived/`; workflow state now remains frontmatter-only.
+- Added `grammar/README.md`, status-specific review guides, and `grammar/retired/README.md`.
+- Regrouped `GRAMMAR-INDEX.md` by status with workflow, source, boundary, lane, and review-date summaries.
+- Updated current loaders, release comparison, diagnostics guidance, and documentation to use the status-directory registry.
+- Added no new verifier and changed no parser behavior, runtime label, linguistic status, evidence record, or test expectation.
+
 ## v0.5.202 — ComparativeStative retirement and degree-adjustment reconciliation
 
 - Retired `ComparativeStative`, whose residual `stative + 啲` fallback mislabeled a degree adjustment as a generic comparative construction.

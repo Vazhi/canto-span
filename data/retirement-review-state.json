@@ -4,9 +4,9 @@
   "last_full_review_id": "v0.5.197-shadowed-wrapper-retirement",
   "recommended_interval_min": 10,
   "hard_interval_max": 20,
-  "current_handoff_sequence": 25,
+  "current_handoff_sequence": 26,
   "next_review_window_opens_at_sequence": 31,
   "review_required_by_sequence": 41,
   "state": "full_review_complete",
-  "notes": "v0.5.197 completed the full dormant and uncovered-label review. v0.5.198 consolidated verification; v0.5.199 through v0.5.201 reconciled three retained constructions; v0.5.202 retires one misleading duplicate fallback. The next full review window opens at sequence 31 and is required by sequence 41."
+  "notes": "v0.5.197 completed the full dormant and uncovered-label review. v0.5.198 consolidated verification; v0.5.199 through v0.5.201 reconciled three retained constructions; v0.5.202 retired one misleading duplicate fallback; v0.5.203 reorganizes current notes by status without adding, retiring, or reclassifying labels. The next full review window opens at sequence 31 and is required by sequence 41."
 }

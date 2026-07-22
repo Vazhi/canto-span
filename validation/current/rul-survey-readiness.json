@@ -1,6 +1,6 @@
 {
   "schema": "canto-span-rul-survey-readiness-audit-v1",
-  "runtime_version": "0.5.198",
+  "runtime_version": "0.5.203",
   "parser_behavior_changed": false,
   "linguistic_status_changed": false,
   "probe_count": 30,

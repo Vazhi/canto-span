@@ -1,6 +1,6 @@
 {
   "schema": "canto-span-standard-construction-test-result-v1",
-  "runtime_version": "0.5.202",
+  "runtime_version": "0.5.203",
   "construction_file_count": 165,
   "coverage": {
     "positive_and_boundary": 2,

@@ -13,7 +13,7 @@ The recovery ZIP must include `.git/`.
 
 ## Binding state
 
-- runtime: **v0.5.202**
+- runtime: **v0.5.203**
 - runtime labels / current construction notes: **165 / 165**
 - workflow: **2 active / 163 archived**
 - retired labels: **16**
@@ -36,17 +36,20 @@ Promotion thresholds are based on the minimum usable adjudicated judgments per c
 
 ## Read next
 
-1. `docs/current/PROJECT-STATE.md`
-2. `docs/current/TESTING.md`
-3. `docs/current/DEFINITION-OF-DONE.md`
-4. `docs/current/SURVEY-BATCHING.md`
-5. `docs/current/NATIVE-SPEAKER-REVIEW.md`
-6. `docs/research/CP032-P1-RUL01-SURVEY-READINESS-R1.md`
-7. `docs/research/CP045-P1-COMPARATIVE-STATIVE-RETIREMENT-R1.md`
-8. `docs/research/CP043-P1-PASSIVE-PERMISSIVE-BEI-RECONCILIATION-R1.md`
-9. `docs/research/CP042-P1-MANNER-ADVERBIAL-RECONCILIATION-R1.md`
-10. `docs/research/CP041-COMMENT-RETIREMENT-R1.md`
-11. `docs/research/CP041-PERFECTIVERESULTPREDICATE-RETIREMENT-R1.md`
+1. `grammar/README.md`
+2. `GRAMMAR-INDEX.md`
+3. `docs/current/PROJECT-STATE.md`
+4. `docs/current/TESTING.md`
+5. `docs/current/DEFINITION-OF-DONE.md`
+6. `docs/current/SURVEY-BATCHING.md`
+7. `docs/current/NATIVE-SPEAKER-REVIEW.md`
+8. `docs/research/CP046-P1-GRAMMAR-STATUS-DIRECTORY-MIGRATION-R1.md`
+9. `docs/research/CP032-P1-RUL01-SURVEY-READINESS-R1.md`
+10. `docs/research/CP045-P1-COMPARATIVE-STATIVE-RETIREMENT-R1.md`
+11. `docs/research/CP043-P1-PASSIVE-PERMISSIVE-BEI-RECONCILIATION-R1.md`
+12. `docs/research/CP042-P1-MANNER-ADVERBIAL-RECONCILIATION-R1.md`
+13. `docs/research/CP041-COMMENT-RETIREMENT-R1.md`
+14. `docs/research/CP041-PERFECTIVERESULTPREDICATE-RETIREMENT-R1.md`
 
 ## Next substantive work
 

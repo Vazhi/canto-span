@@ -4,7 +4,7 @@
 
 | Measure | Current value |
 |---|---:|
-| Runtime | v0.5.202 |
+| Runtime | v0.5.203 |
 | Runtime labels | 165 |
 | Current construction notes | 165 |
 | Active working notes | 2 |
@@ -18,7 +18,11 @@
 | `lexicalized_only` | 3 |
 | `parser_heuristic` | 19 |
 
-The canonical registry is the union of `grammar/active/*.md` and `grammar/archived/*.md`; it matches the 165 runtime labels exactly.
+The canonical registry is the union of `grammar/<linguistic-status>/*.md`; each note is stored in the folder matching its frontmatter status, and the 165 notes match the runtime labels exactly.
+
+## v0.5.203 status-directory migration
+
+All 165 canonical construction notes are now grouped by linguistic status under `grammar/`. The former `active/` and `archived/` workflow directories were removed. Workflow selection remains in frontmatter, so the two active research notes stay visible inside `research_pending/` while every status can be reviewed directly from the filesystem. `grammar/retired/README.md` provides a navigation view for the 16 retired labels without duplicating their canonical historical records. Parser behavior, runtime labels, linguistic statuses, evidence, and test expectations are unchanged.
 
 ## v0.5.198 verification consolidation
 

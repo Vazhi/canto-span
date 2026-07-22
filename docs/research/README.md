@@ -31,4 +31,4 @@ When any research record conflicts with current doctrine or state, follow `../cu
 
 ## Active construction registry
 
-Per-construction status and evidence now live in the union of `grammar/active/*.md` and `grammar/archived/*.md`. Files in this directory provide supporting source, corpus, and research detail; they are not a parallel status owner. The pre-migration wide registry is frozen under `archive/registry-pre-obsidian-v0.5.184/`.
+Per-construction status and evidence now live in the union of `grammar/<linguistic-status>/*.md`. Files in this directory provide supporting source, corpus, and research detail; they are not a parallel status owner. The pre-migration wide registry is frozen under `archive/registry-pre-obsidian-v0.5.184/`.

@@ -1,69 +1,28 @@
 {
   "schema": "canto-span-release-handoff-audit-v2",
-  "release_id": "v0.5.202-comparative-stative-retirement",
-  "handoff_sequence": 25,
-  "status_changes": [
-    {
-      "construction": "ComparativeStative",
-      "old_status": "unsupported_generalization",
-      "new_status": "retired"
-    }
-  ],
-  "changed_construction_audit": [
-    {
-      "construction": "ComparativeStative",
-      "old_status": "unsupported_generalization",
-      "new_status": "retired",
-      "plain_language_claim": "The residual stative + 啲 fallback conflated scalar adjustment with comparison and had no independently supported boundary; source-supported property + 啲 adjustment is represented by DegreeMannerAdverbial.",
-      "code_locations": [
-        "main.js:wrapPredicate",
-        "main.js:LEXICON 客氣",
-        "tests/fixtures/regression-snapshots.json:REG-0550"
-      ],
-      "sources": [
-        {
-          "citation": "Lam, Charles. 2014. A Unified Analysis to Surpass Comparative and Experiential Aspect.",
-          "locator": "pp. 375–376, examples (31)–(32)",
-          "verification": "VERIFIED_OFFICIAL_FULL_TEXT"
-        },
-        {
-          "citation": "鄭定歐、張勵妍、高石英. 2021. 粵語（香港話）教程（修訂版）.",
-          "locator": "user PDF p. 171; inherited PDF pp. 40–41",
-          "verification": "VERIFIED_USER_PROVIDED_FULL_TEXT_AND_OFFICIAL_PUBLISHER_METADATA"
-        }
-      ],
-      "panel_response_count_total": 0,
-      "eligible_panel_response_count": 0,
-      "minimum_usable_judgments_per_critical_item": 0,
-      "survey_instrument_version": "none",
-      "survey_instrument_status": "not_started",
-      "quality_screen_status": "not_started",
-      "panel_adjudication_status": "not_started",
-      "unresolved_questions": [
-        "Which explicit Cantonese surpass-comparative strategies require their own parser representation?",
-        "Which property heads productively combine with 啲, and in which syntactic positions?"
-      ]
-    }
-  ],
+  "release_id": "v0.5.203-grammar-status-directory-migration",
+  "handoff_sequence": 26,
+  "status_changes": [],
+  "changed_construction_audit": [],
   "supported_productive_pending_reaudit": [],
-  "implementation_validation": "REG-0550 parses 客氣啲。 as DegreeMannerAdverbial. ComparativeStative is absent from the runtime registry, current construction notes, standardized test files, and implementation-probe inventory. The regression suite contains 550 cases and the standardized construction inventory contains 1,229 assertions across 165 labels.",
-  "linguistic_confidence": "DegreeMannerAdverbial remains research_pending. Retirement removes an unsupported duplicate analysis; it does not promote scalar adjustment or establish explicit comparative productivity.",
+  "implementation_validation": "All 165 canonical construction notes are loaded from controlled linguistic-status directories, match the 165 runtime labels exactly, and retain two workflow-active plus 163 workflow-archived records. Parser regression, NP, and construction expectations are unchanged.",
+  "linguistic_confidence": "No linguistic claim, status, confidence, source record, boundary record, corpus record, or panel record changes. This release changes authoring-note organization only.",
   "code_analysis_overclaim_review": true,
-  "overclaim_review_scope": "Separated source-supported scalar adjustment from explicit surpass comparison and removed a fallback whose activation depended on missing lexical slot metadata.",
+  "overclaim_review_scope": "Confirmed that status-folder placement mirrors existing frontmatter rather than inferring or promoting any construction. Workflow state remains independent and no implementation probe gains linguistic weight.",
   "release_documents": [
-    "docs/research/CP045-P1-COMPARATIVE-STATIVE-RETIREMENT-R1.md",
-    "grammar/archived/DegreeMannerAdverbial.md",
-    "archive/retired-labels/v0.5.202-comparative-stative-retirement/ComparativeStative.md",
+    "docs/research/CP046-P1-GRAMMAR-STATUS-DIRECTORY-MIGRATION-R1.md",
+    "grammar/README.md",
+    "grammar/retired/README.md",
+    "GRAMMAR-INDEX.md",
+    "docs/current/CONSTRUCTION-NOTES.md",
     "docs/current/PROJECT-STATE.md",
-    "docs/current/TESTING.md",
     "CHANGELOG.md",
     "HANDOFF.md"
   ],
   "external_audit_ready": true,
   "unresolved_release_questions": [
-    "Negative boundaries and lexical productivity for property + 啲 remain unresolved.",
-    "Explicit surpass-comparative structures remain separately under-researched.",
+    "The status distribution remains unchanged: 61 research_pending, 82 unsupported_generalization, 3 lexicalized_only, and 19 parser_heuristic.",
     "RUL and PFV survey integration remains paused while collection proceeds."
   ],
-  "base_tree": "3b4f93fa5acce21e4cf71d1a76285c758527da69"
+  "base_tree": "aadb44581a690309e4c3901d02e048d39a922b89"
 }
