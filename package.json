@@ -1,28 +1,17 @@
 {
   "name": "canto-span",
   "private": true,
-  "version": "0.5.197",
+  "version": "0.5.198",
   "description": "Cantonese parser and evidence-governance project",
   "scripts": {
     "test": "node tests/run-all.js",
     "test:constructions": "node tests/run-constructions.js",
     "test:regression": "node tests/run-regression.js",
     "test:np": "node tests/run-np-subsystem.js",
-    "test:review": "node tools/verify-active-review-workflow.js",
-    "test:panel": "node tools/verify-native-panel-snapshot.js",
-    "test:promotion": "node tools/test-promotion-gate.js && node tools/enforce-promotion-rules.js",
-    "test:release": "node tools/test-release-handoff.js && node tools/verify-release-handoff.js",
-    "test:pfv-panel": "node tools/verify-pfv-panel-snapshot.js",
-    "build:legacy-forms": "node tools/build-native-review-form-script.js",
-    "test:panel-model": "node tools/verify-active-review-workflow.js",
-    "test:rul-readiness": "node tools/verify-rul-survey-readiness.js",
-    "test:reachability": "node tools/verify-runtime-reachability.js",
-    "test:lowref": "node tools/verify-low-reference-wrapper-audit.js",
-    "test:expdel": "node tools/verify-experiential-delimited-wrapper-audit.js",
-    "test:reschg": "node tools/verify-result-change-state-wrapper-audit.js",
-    "test:nominal": "node tools/verify-nominal-wrapper-audit.js",
-    "test:speechcomp": "node tools/verify-speech-transfer-complement-wrapper-audit.js",
-    "test:evalq": "node tools/verify-evaluation-scalar-question-wrapper-audit.js",
-    "test:shadow": "node tools/verify-shadowed-wrapper-retirement.js"
+    "verify": "node tools/verify-current-state.js --profile core",
+    "verify:research": "node tools/verify-current-state.js --profile research",
+    "verify:release": "node tools/verify-current-state.js --profile release",
+    "verify:all": "node tools/verify-current-state.js --profile all",
+    "build:legacy-forms": "node tools/build-native-review-form-script.js"
   }
 }

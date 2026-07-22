@@ -1,0 +1,80 @@
+{
+  "schema": "canto-span-verification-summary-v1",
+  "runtime_version": "0.5.198",
+  "requested_profile": "research",
+  "included_profiles": [
+    "research"
+  ],
+  "command_count": 6,
+  "passed": 6,
+  "failed": 0,
+  "status": "PASS",
+  "results": [
+    {
+      "id": "active-review-workflow",
+      "profile": "research",
+      "command": [
+        "node",
+        "tools/verify-active-review-workflow.js"
+      ],
+      "exit_code": 0,
+      "signal": "",
+      "status": "PASS"
+    },
+    {
+      "id": "rul-survey-readiness",
+      "profile": "research",
+      "command": [
+        "node",
+        "tools/verify-rul-survey-readiness.js"
+      ],
+      "exit_code": 0,
+      "signal": "",
+      "status": "PASS"
+    },
+    {
+      "id": "native-conflict-burden",
+      "profile": "research",
+      "command": [
+        "node",
+        "tools/audit-native-conflict-burden.js"
+      ],
+      "exit_code": 0,
+      "signal": "",
+      "status": "PASS"
+    },
+    {
+      "id": "rul-panel-snapshot",
+      "profile": "research",
+      "command": [
+        "node",
+        "tools/verify-native-panel-snapshot.js"
+      ],
+      "exit_code": 0,
+      "signal": "",
+      "status": "PASS"
+    },
+    {
+      "id": "pfv-panel-snapshot",
+      "profile": "research",
+      "command": [
+        "node",
+        "tools/verify-pfv-panel-snapshot.js"
+      ],
+      "exit_code": 0,
+      "signal": "",
+      "status": "PASS"
+    },
+    {
+      "id": "native-review-library",
+      "profile": "research",
+      "command": [
+        "node",
+        "tools/test-native-review-lib.js"
+      ],
+      "exit_code": 0,
+      "signal": "",
+      "status": "PASS"
+    }
+  ]
+}

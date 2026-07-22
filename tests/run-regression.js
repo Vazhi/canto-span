@@ -244,6 +244,8 @@ const output = {
   strict_ready: failures.length === 0,
   failures,
 };
-fs.writeFileSync(path.join(root, "validation", "regression-suite.json"), JSON.stringify(output, null, 2) + "\n");
+const outputDir = path.join(root, "validation", "current");
+fs.mkdirSync(outputDir, { recursive: true });
+fs.writeFileSync(path.join(outputDir, "regression-suite.json"), JSON.stringify(output, null, 2) + "\n");
 console.log(JSON.stringify(output, null, 2));
 if (failures.length) process.exit(1);

@@ -1,0 +1,28 @@
+{
+  "schema": "canto-span-verification-profiles-v1",
+  "profiles": {
+    "core": [
+      { "id": "standard-tests", "command": ["npm", "test"] },
+      { "id": "construction-notes", "command": ["node", "tools/verify-construction-notes.js"] },
+      { "id": "runtime-registry", "command": ["node", "tools/run-construction-registry-audit.js"] },
+      { "id": "source-accounting", "command": ["node", "tools/audit-source-accounting.js"] },
+      { "id": "active-working-set", "command": ["node", "tools/verify-active-working-set.js"] },
+      { "id": "implementation-reachability", "command": ["node", "tools/verify-implementation-reachability.js"] },
+      { "id": "documentation", "command": ["node", "tools/verify-documentation-consistency.js", "--output", "validation/current/documentation-consistency.json"] }
+    ],
+    "research": [
+      { "id": "active-review-workflow", "command": ["node", "tools/verify-active-review-workflow.js"] },
+      { "id": "rul-survey-readiness", "command": ["node", "tools/verify-rul-survey-readiness.js"] },
+      { "id": "native-conflict-burden", "command": ["node", "tools/audit-native-conflict-burden.js"] },
+      { "id": "rul-panel-snapshot", "command": ["node", "tools/verify-native-panel-snapshot.js"] },
+      { "id": "pfv-panel-snapshot", "command": ["node", "tools/verify-pfv-panel-snapshot.js"] },
+      { "id": "native-review-library", "command": ["node", "tools/test-native-review-lib.js"] }
+    ],
+    "release": [
+      { "id": "promotion-gate-tests", "command": ["node", "tools/test-promotion-gate.js"] },
+      { "id": "promotion-rules", "command": ["node", "tools/enforce-promotion-rules.js"] },
+      { "id": "release-gate-tests", "command": ["node", "tools/test-release-handoff.js"] },
+      { "id": "release-handoff", "command": ["node", "tools/verify-release-handoff.js"] }
+    ]
+  }
+}

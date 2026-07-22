@@ -31,7 +31,7 @@ const report = {
   results,
 };
 const manifest = JSON.parse(fs.readFileSync(path.join(root, "manifest.json"), "utf8"));
-const outDir = path.join(root, "validation", `v${manifest.version}`);
+const outDir = path.join(root, "validation", "current");
 fs.mkdirSync(outDir, { recursive: true });
 fs.writeFileSync(path.join(outDir, "promotion-gate-tests.json"), JSON.stringify(report, null, 2) + "\n");
 console.log(JSON.stringify(report, null, 2));

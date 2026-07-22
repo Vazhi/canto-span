@@ -1,70 +1,74 @@
 ---
-title: Canto Span — Standard Testing
+title: Canto Span — Testing and Verification
 status: current
 tags: [canto-span/testing, canto-span/validation]
 related: "[[DEFINITION-OF-DONE]]"
 ---
 
-# Standard executable testing
+# Testing and verification
 
-## One command
+## Parser tests
 
-Run all current parser tests with:
+Run the canonical parser suite with:
 
 ```bash
 npm test
 ```
 
-This replaces active bespoke render-review documents and scattered entry-point commands. Historical review documents remain archived evidence, not current executable authority.
+It runs:
 
-## Test layers
+- 545 exact regression cases;
+- 43 NP-subsystem cases;
+- 1,221 per-construction assertions across 166 construction files.
 
-### Exact regression
+Current coverage is 2 positive-and-boundary, 100 positive-only, 63 implementation-only, and 1 compatibility-alias-only. No active label is uncovered.
 
-`tests/fixtures/regression-snapshots.json` contains 545 exact parser signatures. The runner checks full structural output and diagnostic audit summaries.
+Implementation probes have linguistic evidence weight **0**. They prove only that a runtime path is observable.
 
-### Shared NP subsystem
+## Verification profiles
 
-`tests/fixtures/np-subsystem.json` contains 43 cases covering licensed NPs, provisional and incompatible classifier phrases, unknown material, and integration with the narrow postverbal-`咗` subtype.
+The permanent verifier is manifest-driven. Profiles are configured in `config/verification-profiles.json`.
 
-### Per-construction files
+```bash
+npm run verify
+npm run verify:research
+npm run verify:release
+npm run verify:all
+```
 
-Every one of the 166 active labels has exactly one file under `tests/constructions/`.
+- `verify` runs stable structural checks: parser tests, construction notes, registry alignment, source accounting, active working set, implementation reachability, and current-document consistency.
+- `verify:research` runs panel, survey-readiness, conflict-burden, and native-review-library checks.
+- `verify:release` runs the core profile plus promotion and release-handoff gates.
+- `verify:all` runs all profiles.
 
-Each file records the current executable cases assigned to that construction and an explicit coverage state. The construction-note frontmatter points to the file and records its positive, boundary, and total executable counts.
+`./tools/verify-repository.sh` performs Git object validation and then runs only the stable core profile.
 
-Current v0.5.197 coverage:
+## Generated outputs
 
-| Coverage state | Constructions |
-|---|---:|
-| positive and boundary | 2 |
-| positive only | 100 |
-| implementation positive only | 63 |
-| compatibility alias only | 1 |
-| boundary only | 0 |
-| no direct cases | 0 |
+All current generated results are written to:
 
-`implementation_positive_only` means the parser emits the label on a frozen
-reachability probe, but the case has explicit zero linguistic evidence weight.
-`compatibility_alias_only` means the label is exposed as a public alias for a distinct internal construction rather than emitted as its own node. No active runtime label remains uncovered. Implementation-only and alias-only coverage still does not claim that a construction is correct, natural, supported, productive, or promotion-ready.
+```text
+validation/current/
+```
 
-## Boundary suites
+Do not create a new `validation/vX.Y.Z/` directory for each release. Historical generated results remain available in Git history; permanent evidence belongs in source records, research documents, release audits, fixtures, or panel snapshots rather than duplicated generated output trees.
 
-`PostverbalZoPerfectiveVP` and `ResourceUseLaiFunctionRelation` currently have explicit standardized positive and boundary suites. Both suites pass, but executable behavior is only one part of the Definition of Done. Both PFV and RUL remain `research_pending`.
+## Reachability probes
+
+All zero-weight implementation probes are stored in:
+
+```text
+test-data/implementation-reachability-probes-v1.json
+```
+
+The former release-specific probe files were consolidated. `tools/verify-implementation-reachability.js` checks the inventory generically without hardcoded release counts or wrapper-family scripts.
 
 ## Updating tests
 
-1. Edit or add the relevant `tests/constructions/<ConstructionName>.json` case.
-2. Update an exact snapshot only when a reviewed parser transition intentionally changes structural output.
-3. Run `npm test`.
-4. Update the corresponding construction note counts with `node tools/sync-construction-test-metadata.js` when the file inventory changes.
-5. Run `./tools/verify-repository.sh` before committing.
+1. Edit the canonical fixture or construction case.
+2. Run `npm test`.
+3. Run `node tools/sync-construction-test-metadata.js` when construction-file counts change.
+4. Run `npm run verify`.
+5. Run `npm run verify:release` only for a release or status transition.
 
-`tools/build-construction-tests.js` is the mechanical construction-test rebuild
-tool. Do not run it casually after hand-editing construction files, because it
-regenerates them from the canonical regression fixture, NP matrix, the two
-migrated focused packets, and the zero-weight runtime-reachability probe inventories.
-
-## Evidence boundary
-
-Executable tests validate implementation. They do not count as independent linguistic evidence and cannot promote a construction by themselves.
+Executable tests validate implementation. They cannot independently promote a linguistic construction.

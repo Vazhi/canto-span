@@ -9,7 +9,7 @@ const { evaluatePromotion } = require("./promotion-gate-lib");
 const { validateReleaseAudit } = require("./release-handoff-lib");
 
 const root = path.resolve(__dirname, "..");
-const auditPath = process.argv[2] || path.join(root, "docs", "releases", "v0.5.197-shadowed-wrapper-retirement-audit.json");
+const auditPath = process.argv[2] || path.join(root, "docs", "releases", "current-release-audit.json");
 const audit = JSON.parse(fs.readFileSync(auditPath, "utf8"));
 const failures = [];
 
@@ -93,7 +93,7 @@ const report = {
   failures,
 };
 const manifest = JSON.parse(fs.readFileSync(path.join(root, "manifest.json"), "utf8"));
-const outDir = path.join(root, "validation", `v${manifest.version}`);
+const outDir = path.join(root, "validation", "current");
 fs.mkdirSync(outDir, { recursive: true });
 fs.writeFileSync(path.join(outDir, "release-handoff-gate.json"), JSON.stringify(report, null, 2) + "\n");
 console.log(JSON.stringify(report, null, 2));

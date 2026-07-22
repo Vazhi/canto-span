@@ -97,7 +97,7 @@ const output = {
   results,
   failures,
 };
-const outputPath = path.join(root, "validation", `v${api.runtimeVersion}`, "np-subsystem-results.json");
+const outputPath = path.join(root, "validation", "current", "np-subsystem-results.json");
 fs.mkdirSync(path.dirname(outputPath), { recursive: true });
 fs.writeFileSync(outputPath, JSON.stringify(output, null, 2) + "\n");
 console.log(JSON.stringify(output, null, 2));

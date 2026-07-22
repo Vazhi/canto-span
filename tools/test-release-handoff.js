@@ -34,7 +34,7 @@ for (const item of cases) {
 const failed=results.filter((item)=>!item.pass).length;
 const report={schema:"canto-span-release-handoff-gate-tests-v2",total:results.length,passed:results.length-failed,failed,status:failed?"FAIL":"PASS",results};
 const manifest=JSON.parse(fs.readFileSync(path.join(root,"manifest.json"),"utf8"));
-const outDir=path.join(root,"validation",`v${manifest.version}`); fs.mkdirSync(outDir,{recursive:true});
+const outDir=path.join(root, "validation", "current"); fs.mkdirSync(outDir,{recursive:true});
 fs.writeFileSync(path.join(outDir,"release-handoff-gate-tests.json"),JSON.stringify(report,null,2)+"\n");
 console.log(JSON.stringify(report,null,2));
 if(failed) process.exit(1);

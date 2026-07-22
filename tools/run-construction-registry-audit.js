@@ -80,7 +80,7 @@ const result = {
   status: failures.length ? "FAIL" : "PASS",
   failures,
 };
-const outDir = path.join(root, "validation", `v${runtime.runtimeVersion}`);
+const outDir = path.join(root, "validation", "current");
 fs.mkdirSync(outDir, { recursive: true });
 fs.writeFileSync(path.join(outDir, "runtime-construction-registry.json"), JSON.stringify(result, null, 2) + "\n");
 console.log(JSON.stringify(result, null, 2));

@@ -2,14 +2,15 @@
 
 ## Current baseline
 
-- runtime: **v0.5.197**
+- runtime: **v0.5.198**
 - active labels / construction notes: **166 / 166**
 - workflow: **2 active / 164 archived**
 - retired labels: **15**
 - `supported_productive`: **0**
 - `provisional`: **0**
 - `research_pending`: **60**
-- standard test command: **`npm test`**
+- standard parser tests: **`npm test`**
+- stable verification: **`npm run verify`**
 
 Read in this order:
 

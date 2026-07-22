@@ -1,0 +1,93 @@
+{
+  "schema": "canto-span-verification-summary-v1",
+  "runtime_version": "0.5.198",
+  "requested_profile": "core",
+  "included_profiles": [
+    "core"
+  ],
+  "command_count": 7,
+  "passed": 7,
+  "failed": 0,
+  "status": "PASS",
+  "results": [
+    {
+      "id": "standard-tests",
+      "profile": "core",
+      "command": [
+        "npm",
+        "test"
+      ],
+      "exit_code": 0,
+      "signal": "",
+      "status": "PASS"
+    },
+    {
+      "id": "construction-notes",
+      "profile": "core",
+      "command": [
+        "node",
+        "tools/verify-construction-notes.js"
+      ],
+      "exit_code": 0,
+      "signal": "",
+      "status": "PASS"
+    },
+    {
+      "id": "runtime-registry",
+      "profile": "core",
+      "command": [
+        "node",
+        "tools/run-construction-registry-audit.js"
+      ],
+      "exit_code": 0,
+      "signal": "",
+      "status": "PASS"
+    },
+    {
+      "id": "source-accounting",
+      "profile": "core",
+      "command": [
+        "node",
+        "tools/audit-source-accounting.js"
+      ],
+      "exit_code": 0,
+      "signal": "",
+      "status": "PASS"
+    },
+    {
+      "id": "active-working-set",
+      "profile": "core",
+      "command": [
+        "node",
+        "tools/verify-active-working-set.js"
+      ],
+      "exit_code": 0,
+      "signal": "",
+      "status": "PASS"
+    },
+    {
+      "id": "implementation-reachability",
+      "profile": "core",
+      "command": [
+        "node",
+        "tools/verify-implementation-reachability.js"
+      ],
+      "exit_code": 0,
+      "signal": "",
+      "status": "PASS"
+    },
+    {
+      "id": "documentation",
+      "profile": "core",
+      "command": [
+        "node",
+        "tools/verify-documentation-consistency.js",
+        "--output",
+        "validation/current/documentation-consistency.json"
+      ],
+      "exit_code": 0,
+      "signal": "",
+      "status": "PASS"
+    }
+  ]
+}

@@ -128,7 +128,7 @@ const expectedCounts = {
   parser_heuristic: 19,
   lexicalized_only: 3,
 };
-check("status counts match v0.5.197 shadowed-wrapper retirement checkpoint", Object.entries(expectedCounts).every(([status, count]) => counts[status] === count) && Object.keys(counts).length === Object.keys(expectedCounts).length, JSON.stringify(counts));
+check("status counts match current v0.5.198 baseline", Object.entries(expectedCounts).every(([status, count]) => counts[status] === count) && Object.keys(counts).length === Object.keys(expectedCounts).length, JSON.stringify(counts));
 
 const result = {
   schema: "canto-span-construction-notes-validation-v2",
@@ -141,7 +141,7 @@ const result = {
   status: failures.length ? "FAIL" : "PASS",
   failures,
 };
-const outDir = path.join(root, "validation", `v${runtime.runtimeVersion}`);
+const outDir = path.join(root, "validation", "current");
 fs.mkdirSync(outDir, { recursive: true });
 fs.writeFileSync(path.join(outDir, "construction-notes.json"), JSON.stringify(result, null, 2) + "\n");
 console.log(JSON.stringify(result, null, 2));

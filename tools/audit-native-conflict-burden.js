@@ -115,7 +115,7 @@ const out = {
   checks,
   failures,
 };
-const outPath = path.join(root, "validation", `v${manifest.version}`, "native-conflict-burden.json");
+const outPath = path.join(root, "validation", "current", "native-conflict-burden.json");
 fs.mkdirSync(path.dirname(outPath), { recursive: true });
 fs.writeFileSync(outPath, JSON.stringify(out, null, 2) + "\n");
 console.log(JSON.stringify(out, null, 2));

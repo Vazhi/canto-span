@@ -10,16 +10,7 @@ const root = path.resolve(__dirname, "..");
 const outDir = path.join(root, "tests", "constructions");
 const regressionPath = path.join(root, "tests", "fixtures", "regression-snapshots.json");
 const npPath = path.join(root, "tests", "fixtures", "np-subsystem.json");
-const reachabilityPaths = [
-  path.join(root, "test-data", "runtime-reachability-probes-v1.json"),
-  path.join(root, "test-data", "constructor-specific-reachability-probes-v1.json"),
-  path.join(root, "test-data", "experiential-delimited-reachability-probes-v1.json"),
-  path.join(root, "test-data", "result-change-state-reachability-probes-v1.json"),
-  path.join(root, "test-data", "nominal-wrapper-reachability-probes-v1.json"),
-  path.join(root, "test-data", "speech-transfer-complement-reachability-probes-v1.json"),
-  path.join(root, "test-data", "evaluation-scalar-question-reachability-probes-v1.json"),
-  path.join(root, "test-data", "final-reachable-wrapper-reachability-probes-v1.json"),
-];
+const reachabilityPath = path.join(root, "test-data", "implementation-reachability-probes-v1.json");
 const api = loadRuntimeApi(path.join(root, "main.js"));
 
 function readJson(file) { return JSON.parse(fs.readFileSync(file, "utf8")); }
@@ -93,25 +84,15 @@ for (const rel of focusedPacketPaths) {
   }
 }
 
-const acceptedReachabilitySchemas = new Set([
-  "canto-span-runtime-reachability-probes-v1",
-  "canto-span-constructor-specific-reachability-probes-v1",
-  "canto-span-experiential-delimited-reachability-probes-v1",
-  "canto-span-result-change-state-reachability-probes-v1",
-  "canto-span-nominal-wrapper-reachability-probes-v1",
-  "canto-span-speech-transfer-complement-reachability-probes-v1",
-  "canto-span-evaluation-scalar-question-reachability-probes-v1",
-  "canto-span-final-reachable-wrapper-reachability-probes-v1",
-]);
-for (const reachabilityPath of reachabilityPaths) {
-  const reachability = readJson(reachabilityPath);
-  if (!acceptedReachabilitySchemas.has(reachability.schema)) {
-    throw new Error(`Unexpected reachability schema: ${reachability.schema}`);
-  }
-  if (reachability.linguistic_evidence_weight !== 0) {
-    throw new Error("Runtime reachability probes must have zero linguistic evidence weight");
-  }
-  for (const testCase of reachability.cases) {
+const acceptedReachabilitySchema = "canto-span-implementation-reachability-probes-v1";
+const reachability = readJson(reachabilityPath);
+if (reachability.schema !== acceptedReachabilitySchema) {
+  throw new Error(`Unexpected reachability schema: ${reachability.schema}`);
+}
+if (reachability.linguistic_evidence_weight !== 0) {
+  throw new Error("Runtime reachability probes must have zero linguistic evidence weight");
+}
+for (const testCase of reachability.cases) {
     const target = files.get(testCase.construction);
     if (!target) throw new Error(`Missing construction note for reachability probe ${testCase.construction}`);
     if (testCase.linguistic_evidence_weight !== 0 || testCase.purpose !== "runtime_reachability_only") {
@@ -128,7 +109,6 @@ for (const reachabilityPath of reachabilityPaths) {
       linguistic_evidence_weight: 0,
       purpose: "runtime_reachability_only",
     });
-  }
 }
 
 for (const testCase of np.cases) {

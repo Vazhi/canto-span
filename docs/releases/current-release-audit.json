@@ -1,0 +1,30 @@
+{
+  "schema": "canto-span-release-handoff-audit-v2",
+  "release_id": "v0.5.198-verification-consolidation",
+  "handoff_sequence": 22,
+  "status_changes": [],
+  "changed_construction_audit": [],
+  "supported_productive_pending_reaudit": [],
+  "implementation_validation": "Core verification is consolidated into one manifest-driven runner. Standard parser tests, note and registry alignment, source accounting, active-set checks, implementation reachability, and current-document validation remain executable through npm run verify.",
+  "linguistic_confidence": "No construction status, parser span, evidence claim, or survey result changed. This release changes verification organization only.",
+  "code_analysis_overclaim_review": true,
+  "overclaim_review_scope": "Reviewed the removed scripts and outputs as historical or duplicated infrastructure. Preserved current parser tests, evidence gates, panel checks, release gates, and all construction records.",
+  "release_documents": [
+    "docs/current/TESTING.md",
+    "docs/current/PROJECT-STATE.md",
+    "docs/current/INFRASTRUCTURE-MIGRATION.md",
+    "config/verification-profiles.json",
+    "test-data/implementation-reachability-probes-v1.json",
+    "tools/verify-current-state.js",
+    "tools/verify-implementation-reachability.js",
+    "tools/verify-repository.sh",
+    "CHANGELOG.md",
+    "HANDOFF.md"
+  ],
+  "external_audit_ready": true,
+  "unresolved_release_questions": [
+    "RUL and PFV survey integration remains paused while collection proceeds.",
+    "Implementation-only coverage remains zero-weight and cannot promote linguistic status."
+  ],
+  "base_tree": "8a2f4927abcbf756668cc62287ab3681b26d0ee3"
+}

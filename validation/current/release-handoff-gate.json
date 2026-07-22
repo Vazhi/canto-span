@@ -1,0 +1,12 @@
+{
+  "schema": "canto-span-release-handoff-gate-v2",
+  "release_id": "v0.5.198-verification-consolidation",
+  "base_tree": "8a2f4927abcbf756668cc62287ab3681b26d0ee3",
+  "actual_status_changes": [],
+  "supported_productive_count": 0,
+  "supported_productive_pending_reaudit": [],
+  "retirement_review_gap": 1,
+  "failed": 0,
+  "status": "PASS",
+  "failures": []
+}

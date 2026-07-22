@@ -9,8 +9,8 @@ const { Plugin, PluginSettingTab, Setting, Notice } = require("obsidian");
  * never overwrite child learner roles.
  */
 
-const CANTO_SPAN_RUNTIME_VERSION = "0.5.197";
-// v0.5.197: retires constructor-shadowed Comment and PerfectiveResultPredicate as transparent internal wrappers. Final parser spans and linguistic statuses remain unchanged.
+const CANTO_SPAN_RUNTIME_VERSION = "0.5.198";
+// v0.5.198: consolidates current verification profiles, validation outputs, and implementation reachability probes. Parser behavior and linguistic statuses remain unchanged.
 // v0.5.196: audits all thirteen remaining no-direct labels; eleven receive zero-evidence reachability probes while Comment and PerfectiveResultPredicate remain constructor-shadowed. No recognized parser span or linguistic-status changes.
 // v0.5.194: audits speech, transfer, naming, intention, and complement wrappers with six zero-evidence reachability probes. No recognized parser span or linguistic-status changes.
 // v0.5.193: audits nominal wrappers, adds two zero-evidence direct probes plus one compatibility-alias probe, and retires constructorless DemonstrativeHeadNP. No recognized parser span or retained linguistic-status changes.
@@ -67,7 +67,7 @@ const DEFAULT_SETTINGS = {
 // Runtime construction governance is deliberately minimal. Linguistic status,
 // confidence, sources, speaker records, corpus counts, and promotion eligibility
 // live in grammar/active/*.md and grammar/archived/*.md and are validated outside the shipped plugin.
-const RUNTIME_CONSTRUCTION_REGISTRY_VERSION = "0.5.197";
+const RUNTIME_CONSTRUCTION_REGISTRY_VERSION = "0.5.198";
 
 function runtimeConstructionStateFor(type) {
   const construction = String(type || "");

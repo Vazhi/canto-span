@@ -18,7 +18,7 @@ productive, well named, or eligible for promotion.
 
 ## Method
 
-`tools/verify-runtime-reachability.js` extracts Cantonese-bearing candidate
+Historical `tools/verify-runtime-reachability.js` extracted Cantonese-bearing candidate
 strings from structured JSON and TSV fields under:
 
 - `test-data/`;
@@ -48,7 +48,7 @@ The complete classification is in
 
 One existing repository surface was selected for each of the 15 observed
 labels. These cases are frozen in
-[`../../test-data/runtime-reachability-probes-v1.json`](../../test-data/runtime-reachability-probes-v1.json).
+[`../../test-data/implementation-reachability-probes-v1.json`](../../test-data/implementation-reachability-probes-v1.json).
 
 Each probe records:
 

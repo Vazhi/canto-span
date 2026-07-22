@@ -134,7 +134,7 @@ const output = {
   exclusions: excludedCases,
   failures,
 };
-const outDir = path.join(root, "validation", `v${api.runtimeVersion}`);
+const outDir = path.join(root, "validation", "current");
 fs.mkdirSync(outDir, { recursive: true });
 fs.writeFileSync(path.join(outDir, "structural-topology.json"), JSON.stringify(output, null, 2) + "\n");
 fs.writeFileSync(path.join(root, "validation", "lexicon-construction-freeze-current.json"), JSON.stringify(output, null, 2) + "\n");

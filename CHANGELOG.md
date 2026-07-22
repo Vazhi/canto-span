@@ -1,3 +1,12 @@
+## v0.5.198 — verification consolidation
+
+- Replaced the permanent chain of release-specific wrapper verifiers with one manifest-driven verification runner and separate core, research, and release profiles.
+- Consolidated eight implementation-reachability files into one 65-case zero-weight inventory and replaced family-specific verifiers with one generic check.
+- Moved all current generated results to `validation/current/`; removed repeated v0.5.189–v0.5.197 validation output directories from the active tree.
+- Removed obsolete version-specific acceptance, packet-lock, migration, and compatibility scripts from `tools/`.
+- Reduced the active tool directory from 77 files to 41 before generated cleanup.
+- Changed no parser behavior, runtime label, linguistic status, source claim, or survey result.
+
 ## v0.5.197 — shadowed-wrapper retirement
 
 - Retired redundant internal `Comment` and shadowed lexical-item-specific `PerfectiveResultPredicate`.

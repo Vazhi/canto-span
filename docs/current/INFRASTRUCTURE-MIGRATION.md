@@ -114,74 +114,18 @@ now uses one role-neutral panel, item-level usable-judgment thresholds, and
 clean-instrument gates. The former v1 Google Forms package is preserved only as
 provenance for collected legacy data.
 
-## v0.5.189 runtime-reachability checkpoint
+## v0.5.189–v0.5.197 runtime-wrapper review
 
-- scanned 1,885 unique Cantonese-bearing strings from bounded structured project materials;
-- identified 15 of the 68 formerly uncovered labels as observable in existing material;
-- added one zero-linguistic-weight executable reachability probe for each observed label;
-- introduced `implementation_positive_only` to keep runtime reachability separate from direct linguistic cases;
-- retained 53 labels as `no_direct_cases`; “not observed” is not treated as unreachable;
-- retired no labels because all 68 retain runtime code references;
-- changed no parser span behavior or linguistic status.
-## v0.5.193 experiential and delimited wrapper audit
+The staged wrapper review established implementation-only reachability for 63 labels, compatibility-alias-only coverage for one label, and retired four dead or shadowed labels. No active runtime label remains uncovered. Detailed evidence remains in the research and retirement records, but the release-specific executors are no longer part of the permanent verification suite.
 
-- audited six related labels by complete-parser output and exact constructor behavior;
-- added seven zero-weight implementation probes across six labels;
-- reduced no-direct-case labels from 49 to 43;
-- recorded negative-experiential, experiential-question, and cognition-content routing gaps without changing parser spans or linguistic status.
+## v0.5.198 verification consolidation
 
-## v0.5.190 low-reference wrapper audit
+The active verification system now uses:
 
-- inspected five low-reference wrapper and clause labels at exact constructor level;
-- added three semantically coherent zero-weight reachability probes;
-- distinguished complete-parser output from a directly callable but currently shadowed internal `Comment` fallback;
-- retired constructorless `TemporalAdverbialClause` while preserving its checked source and future research question;
-- reduced active labels to 169 and no-direct-case labels to 49;
-- changed no recognized parser span or retained linguistic status.
+- `config/verification-profiles.json`;
+- `tools/verify-current-state.js`;
+- `test-data/implementation-reachability-probes-v1.json`;
+- `tools/verify-implementation-reachability.js`;
+- `validation/current/`.
 
-## v0.5.192 result/change-state wrapper audit
-
-- added ten zero-weight implementation probes across ten result/change-state labels;
-- kept `PerfectiveResultPredicate` at `no_direct_cases` because complete parser output is shadowed by `PerfectiveVP`;
-- reduced the no-direct backlog to 33 labels without changing parser spans or linguistic statuses.
-
-## v0.5.193 nominal-wrapper audit
-
-- added direct zero-weight reachability probes for `OrdinalClassifierNP` and nested `PossessiveClassifierNP`;
-- represented `DemonstrativeClassifierNP` as a compatibility-alias-only label backed by internal `OvertHeadDemonstrativeClassifierNP`;
-- retired constructorless `DemonstrativeHeadNP` while preserving its historical record;
-- current coverage is 2 positive-and-boundary, 100 positive-only, 36 implementation-positive-only, 1 compatibility-alias-only, and 29 no-direct labels.
-
-## v0.5.194 speech/transfer/complement wrapper audit
-
-- added six zero-weight implementation probes across speech-transfer, intention, possessive-transfer, naming, and VP-complement wrappers;
-- preserved exact routing mismatches for positive versus negative `話你知`, subjectless `諗住`, personal `叫` versus runtime `叫做`, and broad VP-complement selection;
-- reduced the no-direct backlog from 29 to 23 labels;
-- current coverage is 2 positive-and-boundary, 100 positive-only, 42 implementation-positive-only, 1 compatibility-alias-only, and 23 no-direct labels;
-- changed no parser span, runtime label, or linguistic status.
-## v0.5.195 evaluation/scalar/question wrapper audit
-
-- added ten zero-weight implementation probes across acceptability, scalar, evaluation, opinion, identity, scheduling, time-to-action, and postposed existential-question wrappers;
-- preserved exact source/runtime and composition mismatches without granting linguistic evidence;
-- reduced the no-direct backlog from 23 to 13 labels;
-- current coverage is 2 positive-and-boundary, 100 positive-only, 52 implementation-positive-only, 1 compatibility-alias-only, and 13 no-direct labels;
-- changed no parser span, runtime label, or linguistic status.
-## v0.5.196 final reachable-wrapper audit
-
-The last thirteen uncovered labels were audited at constructor and complete-output level. Eleven labels gained zero-weight implementation probes. `Comment` and `PerfectiveResultPredicate` remain explicit constructor-shadowed debt rather than receiving fabricated coverage.
-
-- current coverage is 2 positive-and-boundary, 100 positive-only, 63 implementation-positive-only, 1 compatibility-alias-only, and 2 no-direct labels;
-- no recognized parser span, runtime label, or linguistic status changed;
-- the next structural task is a controlled merge/expose/retire disposition for the two shadowed labels.
-
-## v0.5.197 shadowed-wrapper retirement
-
-The two labels left uncovered by v0.5.196 were removed only after exact base-tree output comparison.
-
-- retired redundant internal `Comment`; commenthood remains role metadata under `TopicComment`;
-- retired lexical-item-specific `PerfectiveResultPredicate`; historical references migrate to `PerfectiveVP` while source records remain preserved;
-- compared 1,885 structured candidates and all 545 regression cases with v0.5.196, with zero complete-output differences;
-- reduced the active registry and current test/note inventory from 168 to 166 labels;
-- increased the retired archive from 13 to 15 labels;
-- current coverage is 2 positive-and-boundary, 100 positive-only, 63 implementation-positive-only, 1 compatibility-alias-only, and 0 no-direct labels;
-- closed the full dormant/uncovered-label review at handoff sequence 21.
+Version-specific validation directories, family-specific wrapper verifiers, and obsolete acceptance scripts were removed from the current tree. Historical outputs remain recoverable from Git history. Core verification is intentionally stable and bounded; research and release gates run through separate profiles.
