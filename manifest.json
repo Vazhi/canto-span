@@ -1,9 +1,9 @@
 {
   "id": "canto-span",
   "name": "Canto Span",
-  "version": "0.5.212",
+  "version": "0.5.213",
   "minAppVersion": "1.5.0",
-  "description": "v0.5.212 retires a conflated negated-lexicalized-stative label while preserving lexical 難X, compositional 唔 negation, and prohibitives.",
+  "description": "v0.5.213 source-links narrow copula-less 唔 + property predication and preserves the 唔係 + nominal-predicate boundary.",
   "author": "Chris Crawford / OpenAI ChatGPT",
   "authorUrl": "",
   "isDesktopOnly": false

@@ -4,7 +4,32 @@
   "runtime_active": true,
   "migration_phase": 5,
   "snapshot_cases": [],
-  "focused_cases": [],
+  "focused_cases": [
+    {
+      "case_id": "CP057-P1-NEGATED-STATIVE-PREDICATE-R1:NSP-E01",
+      "source": "呢個女仔唔靚。",
+      "class": "direct_m4_property_predicate_without_copula",
+      "expected_profile": "construction_present",
+      "assertion": "construction_present",
+      "provenance": "review-packets/cp057-p1-negated-stative-predicate-r1/focused-evaluation-packet.json",
+      "source_ids": [
+        "SRC-YIP-1988-NEGATION"
+      ],
+      "source_locator": "p. 452 example (7); Cantonese orthography normalized from the published romanization"
+    },
+    {
+      "case_id": "CP057-P1-NEGATED-STATIVE-PREDICATE-R1:NSP-N01",
+      "source": "佢老婆唔係廣東人。",
+      "class": "negative_nominal_predicate_requires_copula_boundary",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "review-packets/cp057-p1-negated-stative-predicate-r1/focused-evaluation-packet.json",
+      "source_ids": [
+        "SRC-YIP-1988-NEGATION"
+      ],
+      "source_locator": "p. 453 example (8b); Cantonese orthography normalized from the published romanization"
+    }
+  ],
   "np_cases": [],
   "implementation_probe_cases": [
     {
@@ -18,16 +43,16 @@
     }
   ],
   "coverage": {
-    "state": "implementation_positive_only",
+    "state": "positive_and_boundary",
     "exact_snapshot_positive_count": 0,
-    "focused_positive_count": 0,
-    "focused_boundary_count": 0,
+    "focused_positive_count": 1,
+    "focused_boundary_count": 1,
     "focused_review_only_count": 0,
     "np_case_count": 0,
     "implementation_probe_count": 1,
     "compatibility_alias_probe_count": 0,
-    "positive_case_count": 0,
-    "boundary_case_count": 0,
-    "executable_case_count": 1
+    "positive_case_count": 1,
+    "boundary_case_count": 1,
+    "executable_case_count": 3
   }
 }

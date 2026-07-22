@@ -64,6 +64,7 @@ const focusedPacketPaths = [
   "review-packets/cp051-p1-copular-anota-r1/focused-evaluation-packet.json",
   "review-packets/cp054-p1-scalar-evaluation-r1/focused-evaluation-packet.json",
   "review-packets/cp055-p1-negative-experiential-r1/focused-evaluation-packet.json",
+  "review-packets/cp057-p1-negated-stative-predicate-r1/focused-evaluation-packet.json",
 ];
 for (const rel of focusedPacketPaths) {
   const packet = readJson(path.join(root, rel));

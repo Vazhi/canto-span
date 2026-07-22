@@ -9,7 +9,8 @@ const { Plugin, PluginSettingTab, Setting, Notice } = require("obsidian");
  * never overwrite child learner roles.
  */
 
-const CANTO_SPAN_RUNTIME_VERSION = "0.5.212";
+const CANTO_SPAN_RUNTIME_VERSION = "0.5.213";
+// v0.5.213: source-links narrow copula-less 唔 + property predication and records the contrasting 唔係 + nominal predicate boundary without broadening other negators.
 // v0.5.212: retires the conflated NegatedLexicalizedStative label while preserving lexical 難X, compositional 唔 + lexicalized property predicates, and prohibitive/ambiguous 唔好 profiles.
 // v0.5.211: reconciles source-linked preverbal 未/冇 experiential negation while preserving final-未 questions and excluding general 唔/咪 negation.
 // v0.5.210: narrows ScalarEvaluation to sourced negative 算 evaluation and removes the unrelated price-noun predication profile.

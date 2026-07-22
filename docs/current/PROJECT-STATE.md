@@ -4,7 +4,7 @@
 
 | Measure | Current value |
 |---|---:|
-| Runtime | v0.5.212 |
+| Runtime | v0.5.213 |
 | Runtime labels | 163 |
 | Current construction notes | 163 |
 | Active working notes | 2 |
@@ -13,14 +13,25 @@
 | `supported_productive` | 0 |
 | `provisional_reaudit` | 0 |
 | `provisional` | 0 |
-| `research_pending` | 64 |
-| `unsupported_generalization` | 77 |
+| `research_pending` | 65 |
+| `unsupported_generalization` | 76 |
 | `lexicalized_only` | 3 |
 | `parser_heuristic` | 19 |
 
 The canonical registry is the union of
 `grammar/<linguistic-status>/*.md`. The 163 construction notes match the 163
 runtime labels exactly.
+
+## v0.5.213 negated-stative-predicate reconciliation
+
+`NegatedStativePredicate` now records a narrow source-linked profile for overt
+`唔` directly before an independently licensed property predicate, without an
+inserted copula. Yip’s `呢個女仔唔靚` supplies the exact positive; the paired
+negative nominal predicate `佢老婆唔係廣東人` is an executable absence boundary.
+
+The label moves from `unsupported_generalization` to `research_pending`.
+Productive predicate selection, other negators, discourse boundaries, corpus
+coverage, and role-neutral panel evidence remain unresolved.
 
 ## v0.5.212 negated-lexicalized-stative retirement
 
@@ -133,8 +144,8 @@ thresholds.
 
 - 551 regression cases pass;
 - 43 NP-subsystem cases pass;
-- 1,245 construction assertions across 163 construction files pass;
-- coverage is 6 positive-and-boundary, 104 positive-only, 52
+- 1,247 construction assertions across 163 construction files pass;
+- coverage is 7 positive-and-boundary, 104 positive-only, 51
   implementation-only, and 1 compatibility-alias-only;
 - no active label is uncovered.
 
@@ -142,10 +153,10 @@ Implementation reachability carries zero linguistic evidence weight.
 
 ## Next substantive work
 
-Resume source/runtime reconciliation among the remaining 52
+Resume source/runtime reconciliation among the remaining 51
 implementation-only labels, ranked by learner impact, source availability, and
 whether the current node creates a misleading analysis. Treat the full
 `係唔係`/contracted `係咪` relationship as a separate ontology question rather
 than silently broadening the reconciled node. The full retirement-review window
-is open at sequence 35 and must close no later than sequence 41. Do not create
+is open at sequence 36 and must close no later than sequence 41. Do not create
 another release-specific verifier or generated validation tree.

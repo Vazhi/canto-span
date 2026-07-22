@@ -6,8 +6,8 @@
 - `supported_productive`: **0**
 - `provisional_reaudit`: **0**
 - `provisional`: **0**
-- `research_pending`: **64**
-- `unsupported_generalization`: **77**
+- `research_pending`: **65**
+- `unsupported_generalization`: **76**
 - `lexicalized_only`: **3**
 - `parser_heuristic`: **19**
 
@@ -50,10 +50,10 @@ the instrument was binary, fixed-order, context-free, and interpretation-blind.
 
 ## Current implementation priority
 
-Continue source/runtime reconciliation among the 52 remaining
+Continue source/runtime reconciliation among the 51 remaining
 implementation-only labels, ranked by learner impact, exact source match, and
 risk of misleading analysis. The retirement-review window opened at handoff
-sequence 35 and must close by sequence 41. Do not create another
+sequence 36 and must close by sequence 41. Do not create another
 release-specific verifier or generated validation tree.
 
 ## `EvaluationWithDouSyun` external-evidence result
@@ -87,6 +87,13 @@ unresolved.
 retires the label that merged opaque lexical `難X`, compositional `唔`
 negation, and prohibitive `唔好`. Their separate existing analyses and the bare
 `唔好食` ambiguity remain; no replacement construction is promoted.
+
+## `NegatedStativePredicate` reconciliation result
+
+[`CP057-P1-NEGATED-STATIVE-PREDICATE-RECONCILIATION-R1.md`](CP057-P1-NEGATED-STATIVE-PREDICATE-RECONCILIATION-R1.md)
+source-links direct copula-less `唔 + property predicate` and the contrasting
+`唔係 + nominal predicate` boundary. The label is now `research_pending`;
+productive lexical scope, other negators, and panel evidence remain unresolved.
 
 ## Frozen work
 

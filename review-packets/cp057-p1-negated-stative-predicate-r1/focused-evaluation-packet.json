@@ -1,0 +1,53 @@
+{
+  "schema": "canto-span-source-runtime-reconciliation-packet-v1",
+  "packet_id": "CP057-P1-NEGATED-STATIVE-PREDICATE-R1",
+  "checkpoint": "CP057-P1",
+  "status": "VISIBLE_SOURCE_LINKED_RECONCILIATION",
+  "accepted_parent": "v0.5.212",
+  "target_internal_construction": "NegatedStativePredicate",
+  "claim": {
+    "surface_profile": "overt 唔 directly before an independently licensed property predicate, without a hidden copula",
+    "boundary": "negative nominal predication uses overt 唔係; other negators and productive property-predicate scope remain separate",
+    "linguistic_status_after_checkpoint": "research_pending"
+  },
+  "source_basis": [
+    {
+      "source_id": "SRC-YIP-1988-NEGATION",
+      "role": "exact direct-negated property predicate and paired negative nominal-predicate boundary",
+      "locator": "pp. 452-453, examples (7) and (8b)",
+      "evidence_polarity": "positive_and_negative_boundary"
+    },
+    {
+      "source_id": "SRC-ALDERETE-ETAL-2017-SYNOPSIS",
+      "role": "independent copula boundary for predicative adjectives",
+      "locator": "p. 24 entry (57) and p. 27 entry (71)",
+      "evidence_polarity": "corroborating_boundary"
+    }
+  ],
+  "development_set": {
+    "cases": [
+      {
+        "case_id": "NSP-E01",
+        "surface": "呢個女仔唔靚。",
+        "class": "direct_m4_property_predicate_without_copula",
+        "expected": "construction_present",
+        "source_ids": ["SRC-YIP-1988-NEGATION"],
+        "source_locator": "p. 452 example (7); Cantonese orthography normalized from the published romanization"
+      },
+      {
+        "case_id": "NSP-N01",
+        "surface": "佢老婆唔係廣東人。",
+        "class": "negative_nominal_predicate_requires_copula_boundary",
+        "expected": "construction_absent",
+        "source_ids": ["SRC-YIP-1988-NEGATION"],
+        "source_locator": "p. 453 example (8b); Cantonese orthography normalized from the published romanization"
+      }
+    ]
+  },
+  "status_decision": {
+    "status_changed": true,
+    "old_status": "unsupported_generalization",
+    "new_status": "research_pending",
+    "reason": "An exact source positive and paired nominal-predicate boundary support the runtime's narrow overt-唔 property-predicate profile; productive lexical scope and panel evidence remain incomplete."
+  }
+}

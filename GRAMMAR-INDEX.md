@@ -29,8 +29,8 @@ Canonical construction notes are stored in the folder matching their linguistic 
 | [`supported_productive/`](grammar/supported_productive/) | 0 | Full current-standard productive support. |
 | [`provisional_reaudit/`](grammar/provisional_reaudit/) | 0 | Former acceptance withdrawn pending current-standard re-audit. |
 | [`provisional/`](grammar/provisional/) | 0 | Narrow provisional support; productive requirements incomplete. |
-| [`research_pending/`](grammar/research_pending/) | 64 | Concrete research question; provisional requirements incomplete. |
-| [`unsupported_generalization/`](grammar/unsupported_generalization/) | 77 | Current broad claim lacks a defensible supported scope. |
+| [`research_pending/`](grammar/research_pending/) | 65 | Concrete research question; provisional requirements incomplete. |
+| [`unsupported_generalization/`](grammar/unsupported_generalization/) | 76 | Current broad claim lacks a defensible supported scope. |
 | [`lexicalized_only/`](grammar/lexicalized_only/) | 3 | Bounded lexical expressions only; no productive claim. |
 | [`parser_heuristic/`](grammar/parser_heuristic/) | 19 | Internal software representation, not a language claim. |
 | [`retired/`](grammar/retired/) | 18 | Navigation index for labels absent from the active runtime registry. |
@@ -38,8 +38,8 @@ Canonical construction notes are stored in the folder matching their linguistic 
 ## Standard test coverage
 
 - `compatibility_alias_only`: **1**
-- `implementation_positive_only`: **52**
-- `positive_and_boundary`: **6**
+- `implementation_positive_only`: **51**
+- `positive_and_boundary`: **7**
 - `positive_only`: **104**
 - command: `npm test`
 
@@ -61,7 +61,7 @@ Narrow provisional support; productive requirements incomplete. Folder: [`gramma
 
 *No current construction notes.*
 
-## research_pending (64)
+## research_pending (65)
 
 Concrete research question; provisional requirements incomplete. Folder: [`grammar/research_pending/`](grammar/research_pending/).
 
@@ -100,6 +100,7 @@ Concrete research question; provisional requirements incomplete. Folder: [`gramm
 - [[ModifierNP]] — parked; `LANE-06`; sources 2/2; boundaries incomplete; reviewed `unknown`
 - [[NegatedDirectionalMotionVP]] — parked; `LANE-09`; sources 3/3; boundaries incomplete; reviewed `unknown`
 - [[NegatedExistentialFragment]] — parked; `LANE-03`; sources 2/2; boundaries incomplete; reviewed `unknown`
+- [[NegatedStativePredicate]] — parked; `LANE-07`; sources 2/2; boundaries incomplete; reviewed `2026-07-22`
 - [[NegativeCognitionFragment]] — parked; `LANE-03`; sources 1/1; boundaries incomplete; reviewed `unknown`
 - [[NegativeExperiential]] — parked; `LANE-05`; sources 4/4; boundaries incomplete; reviewed `2026-07-22`
 - [[NominalPredicateClause]] — parked; `LANE-10`; sources 2/2; boundaries incomplete; reviewed `unknown`
@@ -130,7 +131,7 @@ Concrete research question; provisional requirements incomplete. Folder: [`gramm
 - [[TransitiveVP]] — parked; `LANE-10`; sources 2/2; boundaries incomplete; reviewed `unknown`
 - [[VerbComplementVP]] — parked; `LANE-05`; sources 3/3; boundaries incomplete; reviewed `unknown`
 
-## unsupported_generalization (77)
+## unsupported_generalization (76)
 
 Current broad claim lacks a defensible supported scope. Folder: [`grammar/unsupported_generalization/`](grammar/unsupported_generalization/).
 
@@ -174,7 +175,6 @@ Current broad claim lacks a defensible supported scope. Folder: [`grammar/unsupp
 - [[MotionPurposeChain]] — parked; `LANE-09`; sources 2/2; boundaries incomplete; reviewed `unknown`
 - [[NamingClause]] — parked; `LANE-10`; sources 2/2; boundaries incomplete; reviewed `unknown`
 - [[NegatedExistentialClause]] — parked; `LANE-07`; sources 3/3; boundaries incomplete; reviewed `unknown`
-- [[NegatedStativePredicate]] — parked; `LANE-07`; sources 2/2; boundaries incomplete; reviewed `unknown`
 - [[NegatedVP]] — parked; `LANE-07`; sources 3/3; boundaries incomplete; reviewed `unknown`
 - [[NegativePotentialComplement]] — parked; `LANE-05`; sources 1/1; boundaries incomplete; reviewed `unknown`
 - [[NegativePotentialDirectionalVP]] — parked; `LANE-05`; sources 1/1; boundaries incomplete; reviewed `unknown`

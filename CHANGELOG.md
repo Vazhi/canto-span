@@ -1,3 +1,11 @@
+## v0.5.213 — NegatedStativePredicate reconciliation
+
+- Source-linked Yip’s exact direct-negation example, normalized as `呢個女仔唔靚`, as a focused `NegatedStativePredicate` positive.
+- Added Yip’s paired negative nominal predicate, normalized as `佢老婆唔係廣東人`, as an executable absence boundary.
+- Confirmed that the existing runtime is restricted to overt `唔`, preserves the property predicate, and inserts no hidden copula; parser behavior is unchanged.
+- Moved `NegatedStativePredicate` from `unsupported_generalization` to `research_pending`; no productive or panel-backed promotion is claimed.
+- Increased positive-and-boundary coverage from 6 to 7, reduced implementation-only coverage from 52 to 51, and increased construction assertions from 1,245 to 1,247.
+
 ## v0.5.212 — NegatedLexicalizedStative retirement
 
 - Retired the label that merged opaque lexical `難X`, compositional `唔 + 好X`, and prohibitive `唔好 + V` profiles.

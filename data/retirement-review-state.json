@@ -4,9 +4,9 @@
   "last_full_review_id": "v0.5.197-shadowed-wrapper-retirement",
   "recommended_interval_min": 10,
   "hard_interval_max": 20,
-  "current_handoff_sequence": 35,
+  "current_handoff_sequence": 36,
   "next_review_window_opens_at_sequence": 31,
   "review_required_by_sequence": 41,
   "state": "full_review_complete",
-  "notes": "v0.5.197 completed the last full dormant and uncovered-label review. v0.5.198 through v0.5.208 consolidated infrastructure and reconciled bounded retained constructions. v0.5.209 retired ScalarRangeFragment; v0.5.210 reconciled ScalarEvaluation; v0.5.211 reconciled a narrow sourced NegativeExperiential profile; v0.5.212 retires the conflated NegatedLexicalizedStative label while preserving its distinct lexical, compositional-negation, and prohibitive profiles. The full retirement review remains open and required by sequence 41."
+  "notes": "v0.5.197 completed the last full dormant and uncovered-label review. v0.5.198 through v0.5.208 consolidated infrastructure and reconciled bounded retained constructions. v0.5.209 retired ScalarRangeFragment; v0.5.210 reconciled ScalarEvaluation; v0.5.211 reconciled a narrow sourced NegativeExperiential profile; v0.5.212 retired the conflated NegatedLexicalizedStative label; v0.5.213 reconciles narrow overt 唔 + property predication and its nominal-predicate boundary. The full retirement review remains open and required by sequence 41."
 }
