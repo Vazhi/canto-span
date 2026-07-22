@@ -27,10 +27,10 @@ Current release audits must reference a checked-in construction-status baseline 
 
 ## Binding state
 
-- runtime: **v0.5.211**
-- runtime labels / current construction notes: **164 / 164**
-- workflow: **2 active / 162 archived**
-- retired labels: **17**
+- runtime: **v0.5.212**
+- runtime labels / current construction notes: **163 / 163**
+- workflow: **2 active / 161 archived**
+- retired labels: **18**
 - `supported_productive`: **0**
 - `provisional`: **0**
 - `research_pending`: **64**
@@ -53,17 +53,18 @@ requirements.
 5. `docs/current/TESTING.md`
 6. `grammar/README.md`
 7. `GRAMMAR-INDEX.md`
-8. `docs/research/CP055-P1-NEGATIVE-EXPERIENTIAL-RECONCILIATION-R1.md`
-9. `docs/research/CP054-P1-SCALAR-EVALUATION-RECONCILIATION-R1.md`
-10. `docs/research/CP053-P1-EVALUATION-WITH-DOU-SYUN-EXTERNAL-EVIDENCE-R1.md`
-11. `docs/research/CP052-P1-SCALAR-RANGE-FRAGMENT-RETIREMENT-R1.md`
+8. `docs/research/CP056-P1-NEGATED-LEXICALIZED-STATIVE-RETIREMENT-R1.md`
+9. `docs/research/CP055-P1-NEGATIVE-EXPERIENTIAL-RECONCILIATION-R1.md`
+10. `docs/research/CP054-P1-SCALAR-EVALUATION-RECONCILIATION-R1.md`
+11. `docs/research/CP053-P1-EVALUATION-WITH-DOU-SYUN-EXTERNAL-EVIDENCE-R1.md`
+12. `docs/research/CP052-P1-SCALAR-RANGE-FRAGMENT-RETIREMENT-R1.md`
 
 ## Next substantive work
 
-Continue source/runtime reconciliation among the remaining 53
+Continue source/runtime reconciliation among the remaining 52
 implementation-only labels. Rank the next label by learner impact, exact source
 match, and risk of misleading analysis. Do not merge full `係唔係` with
 contracted `係咪`, promote nominal/possessive complements, or add a tag node
 without a separately bounded claim and executable evidence. The retirement
-review window is open at handoff sequence 34 and must be completed by sequence
+review window is open at handoff sequence 35 and must be completed by sequence
 41.
