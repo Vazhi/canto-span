@@ -173,6 +173,14 @@
         "run-current-focused.js:v0.5.160-r2-rendered-accepted"
       ],
       "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0546",
+      "source": "佢慢慢噉食飯。",
+      "origins": [
+        "v0.5.199-source-runtime-reconciliation"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
     }
   ],
   "focused_cases": [],
@@ -180,15 +188,15 @@
   "implementation_probe_cases": [],
   "coverage": {
     "state": "positive_only",
-    "exact_snapshot_positive_count": 20,
+    "exact_snapshot_positive_count": 21,
     "focused_positive_count": 0,
     "focused_boundary_count": 0,
     "focused_review_only_count": 0,
     "np_case_count": 0,
     "implementation_probe_count": 0,
     "compatibility_alias_probe_count": 0,
-    "positive_case_count": 20,
+    "positive_case_count": 21,
     "boundary_case_count": 0,
-    "executable_case_count": 20
+    "executable_case_count": 21
   }
 }

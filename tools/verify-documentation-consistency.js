@@ -7,6 +7,7 @@ const root = path.resolve(__dirname, "..");
 const outputIndex = process.argv.indexOf("--output");
 const requestedOutputPath = outputIndex !== -1 ? path.resolve(process.cwd(), process.argv[outputIndex + 1]) : null;
 const ignoredDirectories = new Set([".git", "node_modules", "archive"]);
+const runtimeVersion = JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8")).version;
 
 function walk(directory) {
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
@@ -53,7 +54,7 @@ for (const file of markdownFiles) {
 
 const result = {
   schema: "canto-span-documentation-consistency-v1",
-  checkpoint: "v0.5.198-verification-consolidation",
+  checkpoint: `v${runtimeVersion}-current`,
   status: errors.length === 0 ? "PASS" : "FAIL",
   json_files: jsonFiles.length,
   markdown_files: markdownFiles.length,

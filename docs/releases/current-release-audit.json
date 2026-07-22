@@ -1,30 +1,68 @@
 {
   "schema": "canto-span-release-handoff-audit-v2",
-  "release_id": "v0.5.198-verification-consolidation",
-  "handoff_sequence": 22,
-  "status_changes": [],
-  "changed_construction_audit": [],
+  "release_id": "v0.5.199-manner-adverbial-reconciliation",
+  "handoff_sequence": 23,
+  "status_changes": [
+    {
+      "construction": "MannerAdverbialVP",
+      "old_status": "unsupported_generalization",
+      "new_status": "research_pending"
+    }
+  ],
+  "changed_construction_audit": [
+    {
+      "construction": "MannerAdverbialVP",
+      "old_status": "unsupported_generalization",
+      "new_status": "research_pending",
+      "plain_language_claim": "Source-attested Cantonese examples support repeated property material followed by overt 咁／噉 before a following action VP; unrestricted productivity and the bare repeated-property route remain unresolved.",
+      "code_locations": [
+        "main.js:mannerAdverbialVPFallback",
+        "tests/fixtures/regression-snapshots.json:佢慢慢噉食飯。",
+        "grammar/archived/MannerAdverbialVP.md"
+      ],
+      "sources": [
+        {
+          "citation": "Leung, H. H. 2014. Cantonese Coverbs: A Syntactic Reanalysis.",
+          "locator": "pp. 13–15, examples (29a–b)",
+          "verification": "VERIFIED_FULL_TEXT_CORROBORATIVE"
+        },
+        {
+          "citation": "鄭定歐、張勵妍、高石英. 2021. 粵語（香港話）教程（修訂版）.",
+          "locator": "printed p. 336",
+          "verification": "VERIFIED_USER_PROVIDED_FULL_TEXT_AND_OFFICIAL_PUBLISHER_METADATA"
+        }
+      ],
+      "panel_response_count_total": 0,
+      "eligible_panel_response_count": 0,
+      "minimum_usable_judgments_per_critical_item": 0,
+      "survey_instrument_version": "none",
+      "survey_instrument_status": "not_started",
+      "quality_screen_status": "not_started",
+      "panel_adjudication_status": "not_started",
+      "unresolved_questions": [
+        "Which repeated property forms and predicate classes participate productively?",
+        "Is the bare 慢慢 + V route independently supported?",
+        "What negative boundaries distinguish manner-adverbial 噉 from discourse-marker uses?"
+      ]
+    }
+  ],
   "supported_productive_pending_reaudit": [],
-  "implementation_validation": "Core verification is consolidated into one manifest-driven runner. Standard parser tests, note and registry alignment, source accounting, active-set checks, implementation reachability, and current-document validation remain executable through npm run verify.",
-  "linguistic_confidence": "No construction status, parser span, evidence claim, or survey result changed. This release changes verification organization only.",
+  "implementation_validation": "The source-linked regression 佢慢慢噉食飯。 passes with full root coverage, overt 噉 preserved, and ProductiveVO retained as the nested predicate. The 546-case regression suite, 43-case NP suite, and 1,223 construction assertions pass through the core profile.",
+  "linguistic_confidence": "MannerAdverbialVP is research_pending only. The sources support the overt repeated-manner + 咁／噉 shape, but do not establish unrestricted productivity, bare-form licensing, negative boundaries, or speaker-panel acceptance.",
   "code_analysis_overclaim_review": true,
-  "overclaim_review_scope": "Reviewed the removed scripts and outputs as historical or duplicated infrastructure. Preserved current parser tests, evidence gates, panel checks, release gates, and all construction records.",
+  "overclaim_review_scope": "Separated the new source-linked overt-adverbializer case from the pre-existing zero-weight bare 慢慢行 reachability probe; preserved discourse uses of 咁／噉 and made no productive promotion claim.",
   "release_documents": [
-    "docs/current/TESTING.md",
+    "docs/research/CP042-P1-MANNER-ADVERBIAL-RECONCILIATION-R1.md",
+    "grammar/archived/MannerAdverbialVP.md",
     "docs/current/PROJECT-STATE.md",
-    "docs/current/INFRASTRUCTURE-MIGRATION.md",
-    "config/verification-profiles.json",
-    "test-data/implementation-reachability-probes-v1.json",
-    "tools/verify-current-state.js",
-    "tools/verify-implementation-reachability.js",
-    "tools/verify-repository.sh",
+    "docs/current/TESTING.md",
     "CHANGELOG.md",
     "HANDOFF.md"
   ],
   "external_audit_ready": true,
   "unresolved_release_questions": [
-    "RUL and PFV survey integration remains paused while collection proceeds.",
-    "Implementation-only coverage remains zero-weight and cannot promote linguistic status."
+    "Manner-adverbial negative boundaries and panel evidence remain absent.",
+    "RUL and PFV survey integration remains paused while collection proceeds."
   ],
-  "base_tree": "8a2f4927abcbf756668cc62287ab3681b26d0ee3"
+  "base_tree": "73d24e2919c747653f5f7de03bc7bb78f2adee6c"
 }

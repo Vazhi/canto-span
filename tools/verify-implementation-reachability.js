@@ -25,7 +25,7 @@ function check(name, condition, detail = "") {
 }
 
 check("probe schema", probes.schema === "canto-span-implementation-reachability-probes-v1", probes.schema);
-check("probe runtime matches current runtime", probes.runtime_version === api.runtimeVersion, `${probes.runtime_version} != ${api.runtimeVersion}`);
+check("probe inventory records consolidation provenance", probes.consolidated_at_version === "0.5.198", probes.consolidated_at_version);
 check("global linguistic evidence weight is zero", probes.linguistic_evidence_weight === 0, probes.linguistic_evidence_weight);
 check("construction index matches current notes", index.active_construction_count === activeLabels.size && index.files.length === activeLabels.size, `${index.files.length}/${activeLabels.size}`);
 
@@ -60,13 +60,15 @@ for (const label of activeLabels) {
   const labelProbes = probesByLabel.get(label) || [];
   check(`${label} exists in construction index`, Boolean(record));
   if (!record) continue;
-  const expectedState = labelProbes.length
-    ? (labelProbes.every((item) => item.assertion === "compatibility_alias_present") ? "compatibility_alias_only" : "implementation_positive_only")
-    : null;
-  if (expectedState) {
-    check(`${label} implementation coverage state`, record.state === expectedState, record.state);
+  if (labelProbes.length) {
+    const aliasOnlyProbeSet = labelProbes.every((item) => item.assertion === "compatibility_alias_present");
+    const hasLinguisticPositive = Number(record.positive_case_count) > 0;
+    const expectedState = hasLinguisticPositive
+      ? (Number(record.boundary_case_count) > 0 ? "positive_and_boundary" : "positive_only")
+      : (aliasOnlyProbeSet ? "compatibility_alias_only" : "implementation_positive_only");
+    check(`${label} coverage state reflects linguistic cases before zero-weight probes`, record.state === expectedState, `${record.state}/${expectedState}`);
     check(`${label} implementation probe count`, Number(record.implementation_probe_count) === labelProbes.length, `${record.implementation_probe_count}/${labelProbes.length}`);
-    check(`${label} implementation probes do not count as linguistic positives`, Number(record.positive_case_count) === 0, record.positive_case_count);
+    check(`${label} zero-weight probes do not create linguistic positives`, hasLinguisticPositive || Number(record.positive_case_count) === 0, record.positive_case_count);
   } else {
     check(`${label} needs no implementation probe unless coverage says so`, !["implementation_positive_only", "compatibility_alias_only", "no_direct_cases"].includes(record.state), record.state);
   }

@@ -2,13 +2,13 @@
 
 ## Current baseline
 
-- runtime: **v0.5.198**
+- runtime: **v0.5.199**
 - active labels / construction notes: **166 / 166**
 - workflow: **2 active / 164 archived**
 - retired labels: **15**
 - `supported_productive`: **0**
 - `provisional`: **0**
-- `research_pending`: **60**
+- `research_pending`: **61**
 - standard parser tests: **`npm test`**
 - stable verification: **`npm run verify`**
 

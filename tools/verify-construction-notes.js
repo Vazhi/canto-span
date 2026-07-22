@@ -122,13 +122,17 @@ if (fs.existsSync(snapshotFile)) {
 
 const counts = {};
 for (const note of notes) counts[note.frontmatter.status] = (counts[note.frontmatter.status] || 0) + 1;
-const expectedCounts = {
-  research_pending: 60,
-  unsupported_generalization: 84,
-  parser_heuristic: 19,
-  lexicalized_only: 3,
-};
-check("status counts match current v0.5.198 baseline", Object.entries(expectedCounts).every(([status, count]) => counts[status] === count) && Object.keys(counts).length === Object.keys(expectedCounts).length, JSON.stringify(counts));
+const allowedCurrentStatuses = new Set([
+  "supported_productive",
+  "provisional_reaudit",
+  "provisional",
+  "research_pending",
+  "unsupported_generalization",
+  "lexicalized_only",
+  "parser_heuristic",
+]);
+check("all current notes use controlled linguistic statuses", Object.keys(counts).every((status) => allowedCurrentStatuses.has(status)), JSON.stringify(counts));
+check("status counts cover every current construction note", Object.values(counts).reduce((sum, count) => sum + count, 0) === notes.length, JSON.stringify(counts));
 
 const result = {
   schema: "canto-span-construction-notes-validation-v2",

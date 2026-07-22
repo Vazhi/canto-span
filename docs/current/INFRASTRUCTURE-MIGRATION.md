@@ -116,7 +116,7 @@ provenance for collected legacy data.
 
 ## v0.5.189–v0.5.197 runtime-wrapper review
 
-The staged wrapper review established implementation-only reachability for 63 labels, compatibility-alias-only coverage for one label, and retired four dead or shadowed labels. No active runtime label remains uncovered. Detailed evidence remains in the research and retirement records, but the release-specific executors are no longer part of the permanent verification suite.
+The staged wrapper review established implementation-only reachability for 63 labels, compatibility-alias-only coverage for one label, and retired four dead or shadowed labels. The first source/runtime reconciliation in v0.5.199 moved one of those labels to positive coverage, leaving 62 implementation-only labels. No active runtime label remains uncovered. Detailed evidence remains in the research and retirement records, but the release-specific executors are no longer part of the permanent verification suite.
 
 ## v0.5.198 verification consolidation
 
@@ -129,3 +129,6 @@ The active verification system now uses:
 - `validation/current/`.
 
 Version-specific validation directories, family-specific wrapper verifiers, and obsolete acceptance scripts were removed from the current tree. Historical outputs remain recoverable from Git history. Core verification is intentionally stable and bounded; research and release gates run through separate profiles.
+## v0.5.199 stable-current cleanup
+
+The first substantive source/runtime reconciliation exposed three remaining release-pinned assumptions. Construction-note validation now accepts only the controlled status vocabulary without hardcoding one release's status totals; implementation probes can coexist with later source-linked positive cases; and current validation reports derive their checkpoint from the runtime version. The unreferenced Phase 2 focused runner and its two stale generated outputs were removed.

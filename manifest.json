@@ -1,7 +1,7 @@
 {
   "id": "canto-span",
   "name": "Canto Span",
-  "version": "0.5.198",
+  "version": "0.5.199",
   "minAppVersion": "1.5.0",
   "description": "v0.5.198 verification consolidation: one stable profile runner, one current validation directory, and one zero-weight implementation-reachability inventory; no parser or linguistic-status change.",
   "author": "Chris Crawford / OpenAI ChatGPT",

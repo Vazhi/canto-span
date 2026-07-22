@@ -47,10 +47,10 @@ independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
 standard_test_file: "tests/constructions/ProductiveVO.json"
 standard_test_coverage: "positive_only"
-standard_positive_test_count: 20
+standard_positive_test_count: 21
 standard_boundary_test_count: 0
 standard_implementation_probe_count: 0
-standard_executable_test_count: 20
+standard_executable_test_count: 21
 source_ids: ["SRC-ALDERETE-ETAL-2017-SYNOPSIS", "SRC-WONG-2023-LANGUAGE-SAMPLE"]
 runtime_active: true
 workflow_state: "archived"

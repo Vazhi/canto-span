@@ -1,3 +1,12 @@
+## v0.5.199 — overt 咁／噉 manner-adverbial reconciliation
+
+- Extended `MannerAdverbialVP` to preserve repeated manner material, overt `咁／噉`, and a complete following VP.
+- Added the source-linked regression `佢慢慢噉食飯。` while retaining the bare `慢慢行` route as zero-weight implementation evidence only.
+- Reclassified `MannerAdverbialVP` from `unsupported_generalization` to `research_pending`; no productive promotion or speaker evidence was claimed.
+- Increased regression coverage from 545 to 546 and construction assertions from 1,221 to 1,223.
+- Added no verifier, release-specific validation directory, or audit framework; removed the unreferenced Phase 2 focused runner and its stale generated outputs.
+- Replaced remaining release-pinned status and reachability checks with stable controlled-status, probe-provenance, and dynamic-current checks.
+
 ## v0.5.198 — verification consolidation
 
 - Replaced the permanent chain of release-specific wrapper verifiers with one manifest-driven verification runner and separate core, research, and release profiles.

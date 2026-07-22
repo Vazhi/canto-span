@@ -2,11 +2,11 @@
 title: "MannerAdverbialVP"
 type: "canto-span-construction"
 construction: "MannerAdverbialVP"
-status: "unsupported_generalization"
-confidence: "unsupported"
+status: "research_pending"
+confidence: "not_assigned_research_pending"
 claim_layer: "language"
 lane: "LANE-09"
-last_reviewed: "unknown"
+last_reviewed: "2026-07-22"
 last_status_migrated: "2026-07-21"
 source_count: 2
 verified_source_count: 2
@@ -37,20 +37,20 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
+code_document_reconciled: true
+code_document_review_date: "2026-07-22"
 code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_code_locations: ["main.js:mannerAdverbialVPFallback"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
 standard_test_file: "tests/constructions/MannerAdverbialVP.json"
-standard_test_coverage: "implementation_positive_only"
-standard_positive_test_count: 0
+standard_test_coverage: "positive_only"
+standard_positive_test_count: 1
 standard_boundary_test_count: 0
 standard_implementation_probe_count: 1
-standard_executable_test_count: 1
+standard_executable_test_count: 2
 source_ids: ["SRC-LEUNG-2014-COVERBS", "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"]
 runtime_active: true
 workflow_state: "archived"
@@ -58,25 +58,25 @@ workflow_priority: null
 workflow_since: "2026-07-21"
 workflow_reason: "not_selected_for_current_bounded_working_set"
 runtime_code_references: 4
-accepted_fixtures: 0
-tags: ["canto-span/grammar", "canto-span/status/unsupported_generalization", "canto-span/lane/lane-09", "canto-span/workflow/archived"]
+accepted_fixtures: 1
+tags: ["canto-span/grammar", "canto-span/status/research_pending", "canto-span/lane/lane-09", "canto-span/workflow/archived"]
 ---
 
 # MannerAdverbialVP
 
 ## Plain-language claim
 
-Cantonese may instantiate the structural family represented by MannerAdverbialVP; exact productivity and boundaries require pattern-specific independent evidence.
+Cantonese permits a repeated property expression followed by overt 咁／噉 before a following action VP in source-attested manner-adverbial examples. The bare repeated-property route remains an implementation hypothesis, and lexical productivity and boundaries remain unresolved.
 
 This is a linguistic claim only to the extent allowed by the status and evidence below. The runtime label is not assumed to be standard linguistic terminology.
 
 ## Current status
 
-- Linguistic status: `unsupported_generalization`
-- Linguistic confidence: `unsupported`
-- Current action: `quarantine_unexercised_runtime_path`
+- Linguistic status: `research_pending`
+- Linguistic confidence: `not_assigned_research_pending`
+- Current action: `retain_narrow_source_linked_overt_adverbializer_path`
 - Productive acceptance eligible: **no**
-- Last linguistic review: not recorded
+- Last linguistic review: 2026-07-22
 
 ## Sources
 
@@ -107,7 +107,8 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 - Standard executable test file: `tests/constructions/MannerAdverbialVP.json`
 - Implementation-only reachability: `REACH-008` emits this label for `佢慢慢行。`; linguistic evidence weight is **0**; provenance: `test-data/pre-intermediate-gold-corpus.tsv#PI-ADJ-005`.
-- Evidence state: `none_recorded`
+- Accepted regression: `佢慢慢噉食飯。` emits a complete `MannerAdverbialVP` with overt `噉` and nested `ProductiveVO` over `食飯` (`v0.5.199`).
+- Evidence state: `positive_source_linked_case_plus_zero_weight_implementation_probe`
 - Executable or review records containing this label:
   - `test-data/grammar-claim-provenance-CP021B.json`
   - `test-data/grammar-claim-provenance-CP021B.tsv`
@@ -117,17 +118,18 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 ## Implementation state
 
-- Lifecycle: `runtime_referenced_without_accepted_fixtures`
-- Visible/focused tests: `not_assessed_in_current_definition_of_done_review`
+- Lifecycle: `runtime_referenced_with_narrow_source_linked_fixture`
+- Visible/focused tests: `one_source_linked_positive_fixture_plus_one_zero_weight_reachability_probe`
 - Render review: `not_assessed_in_current_definition_of_done_review`
 - Held-out evaluation: `NOT_ESTABLISHED`
-- Regression: `not_assessed_in_current_definition_of_done_review`
-- Code–documentation comparison: `pending_current_definition_of_done_line_by_line_review`
+- Regression: `546/546 passing at v0.5.199`
+- Code–documentation comparison: `reconciled_for_overt_gam_path_at_v0.5.199`
 
 ## Open questions and blockers
 
-- no explicit external claim-source edge
-- Runtime metadata and current governance agree in v0.5.184.
+- The exact lexical productivity of repeated property forms remains untested.
+- The bare `慢慢行` route is still implementation-only and must not inherit the source weight of overt `咁／噉`.
+- Negative boundaries and speaker-panel evidence remain absent; promotion is not eligible.
 - Research question: Which externally documented Cantonese constructions, if any, justify the scope and boundaries currently represented by MannerAdverbialVP?
 
 ## Related constructions

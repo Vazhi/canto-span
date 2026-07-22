@@ -1,6 +1,6 @@
 {
   "schema": "canto-span-implementation-reachability-probes-v1",
-  "runtime_version": "0.5.198",
+  "consolidated_at_version": "0.5.198",
   "linguistic_evidence_weight": 0,
   "policy": "Implementation reachability only. These probes confirm observable runtime paths and carry zero linguistic evidence weight. Historical batch-specific files were consolidated at v0.5.198.",
   "consolidated_from": [

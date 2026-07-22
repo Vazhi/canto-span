@@ -1,9 +1,9 @@
 {
   "schema": "canto-span-implementation-reachability-audit-v1",
-  "runtime_version": "0.5.198",
+  "runtime_version": "0.5.199",
   "probe_case_count": 65,
   "probed_construction_count": 64,
-  "implementation_positive_only_labels": 63,
+  "implementation_positive_only_labels": 62,
   "compatibility_alias_only_labels": 1,
   "no_direct_labels": 0,
   "linguistic_evidence_weight_added": 0,
@@ -18,9 +18,9 @@
       "detail": "canto-span-implementation-reachability-probes-v1"
     },
     {
-      "name": "probe runtime matches current runtime",
+      "name": "probe inventory records consolidation provenance",
       "pass": true,
-      "detail": "0.5.198 != 0.5.198"
+      "detail": "0.5.198"
     },
     {
       "name": "global linguistic evidence weight is zero",
@@ -1662,9 +1662,9 @@
       "pass": true
     },
     {
-      "name": "AcceptabilityANotA implementation coverage state",
+      "name": "AcceptabilityANotA coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "AcceptabilityANotA implementation probe count",
@@ -1672,7 +1672,7 @@
       "detail": "1/1"
     },
     {
-      "name": "AcceptabilityANotA implementation probes do not count as linguistic positives",
+      "name": "AcceptabilityANotA zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -1681,9 +1681,9 @@
       "pass": true
     },
     {
-      "name": "AcceptabilityClause implementation coverage state",
+      "name": "AcceptabilityClause coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "AcceptabilityClause implementation probe count",
@@ -1691,7 +1691,7 @@
       "detail": "1/1"
     },
     {
-      "name": "AcceptabilityClause implementation probes do not count as linguistic positives",
+      "name": "AcceptabilityClause zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -1736,9 +1736,9 @@
       "pass": true
     },
     {
-      "name": "CausativeResultFrame implementation coverage state",
+      "name": "CausativeResultFrame coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "CausativeResultFrame implementation probe count",
@@ -1746,7 +1746,7 @@
       "detail": "1/1"
     },
     {
-      "name": "CausativeResultFrame implementation probes do not count as linguistic positives",
+      "name": "CausativeResultFrame zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -1755,9 +1755,9 @@
       "pass": true
     },
     {
-      "name": "CausativeResultPredicate implementation coverage state",
+      "name": "CausativeResultPredicate coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "CausativeResultPredicate implementation probe count",
@@ -1765,7 +1765,7 @@
       "detail": "1/1"
     },
     {
-      "name": "CausativeResultPredicate implementation probes do not count as linguistic positives",
+      "name": "CausativeResultPredicate zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -1774,9 +1774,9 @@
       "pass": true
     },
     {
-      "name": "ChangeIntoPredicate implementation coverage state",
+      "name": "ChangeIntoPredicate coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "ChangeIntoPredicate implementation probe count",
@@ -1784,7 +1784,7 @@
       "detail": "1/1"
     },
     {
-      "name": "ChangeIntoPredicate implementation probes do not count as linguistic positives",
+      "name": "ChangeIntoPredicate zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -1847,9 +1847,9 @@
       "pass": true
     },
     {
-      "name": "CognitionDelimitedObjectVP implementation coverage state",
+      "name": "CognitionDelimitedObjectVP coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "CognitionDelimitedObjectVP implementation probe count",
@@ -1857,7 +1857,7 @@
       "detail": "1/1"
     },
     {
-      "name": "CognitionDelimitedObjectVP implementation probes do not count as linguistic positives",
+      "name": "CognitionDelimitedObjectVP zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -1866,9 +1866,9 @@
       "pass": true
     },
     {
-      "name": "CognitionDelimitedVP implementation coverage state",
+      "name": "CognitionDelimitedVP coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "CognitionDelimitedVP implementation probe count",
@@ -1876,7 +1876,7 @@
       "detail": "1/1"
     },
     {
-      "name": "CognitionDelimitedVP implementation probes do not count as linguistic positives",
+      "name": "CognitionDelimitedVP zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -1894,9 +1894,9 @@
       "pass": true
     },
     {
-      "name": "ComparativeStative implementation coverage state",
+      "name": "ComparativeStative coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "ComparativeStative implementation probe count",
@@ -1904,7 +1904,7 @@
       "detail": "1/1"
     },
     {
-      "name": "ComparativeStative implementation probes do not count as linguistic positives",
+      "name": "ComparativeStative zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -1931,9 +1931,9 @@
       "pass": true
     },
     {
-      "name": "CompletionThenClause implementation coverage state",
+      "name": "CompletionThenClause coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "CompletionThenClause implementation probe count",
@@ -1941,7 +1941,7 @@
       "detail": "1/1"
     },
     {
-      "name": "CompletionThenClause implementation probes do not count as linguistic positives",
+      "name": "CompletionThenClause zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -1959,9 +1959,9 @@
       "pass": true
     },
     {
-      "name": "CompoundDirectionalMotionVP implementation coverage state",
+      "name": "CompoundDirectionalMotionVP coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "CompoundDirectionalMotionVP implementation probe count",
@@ -1969,7 +1969,7 @@
       "detail": "1/1"
     },
     {
-      "name": "CompoundDirectionalMotionVP implementation probes do not count as linguistic positives",
+      "name": "CompoundDirectionalMotionVP zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -1987,9 +1987,9 @@
       "pass": true
     },
     {
-      "name": "ConditionResult implementation coverage state",
+      "name": "ConditionResult coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "ConditionResult implementation probe count",
@@ -1997,7 +1997,7 @@
       "detail": "1/1"
     },
     {
-      "name": "ConditionResult implementation probes do not count as linguistic positives",
+      "name": "ConditionResult zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -2015,9 +2015,9 @@
       "pass": true
     },
     {
-      "name": "CopularANotAQuestion implementation coverage state",
+      "name": "CopularANotAQuestion coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "CopularANotAQuestion implementation probe count",
@@ -2025,7 +2025,7 @@
       "detail": "1/1"
     },
     {
-      "name": "CopularANotAQuestion implementation probes do not count as linguistic positives",
+      "name": "CopularANotAQuestion zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -2061,9 +2061,9 @@
       "pass": true
     },
     {
-      "name": "DefinitionComplement implementation coverage state",
+      "name": "DefinitionComplement coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "DefinitionComplement implementation probe count",
@@ -2071,7 +2071,7 @@
       "detail": "1/1"
     },
     {
-      "name": "DefinitionComplement implementation probes do not count as linguistic positives",
+      "name": "DefinitionComplement zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -2080,9 +2080,9 @@
       "pass": true
     },
     {
-      "name": "DefinitionExplanatoryFrame implementation coverage state",
+      "name": "DefinitionExplanatoryFrame coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "DefinitionExplanatoryFrame implementation probe count",
@@ -2090,7 +2090,7 @@
       "detail": "1/1"
     },
     {
-      "name": "DefinitionExplanatoryFrame implementation probes do not count as linguistic positives",
+      "name": "DefinitionExplanatoryFrame zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -2108,9 +2108,9 @@
       "pass": true
     },
     {
-      "name": "DegreeMannerModifiedVP implementation coverage state",
+      "name": "DegreeMannerModifiedVP coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "DegreeMannerModifiedVP implementation probe count",
@@ -2118,7 +2118,7 @@
       "detail": "1/1"
     },
     {
-      "name": "DegreeMannerModifiedVP implementation probes do not count as linguistic positives",
+      "name": "DegreeMannerModifiedVP zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -2127,9 +2127,9 @@
       "pass": true
     },
     {
-      "name": "DegreeModifiedLexicalStative implementation coverage state",
+      "name": "DegreeModifiedLexicalStative coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "DegreeModifiedLexicalStative implementation probe count",
@@ -2137,7 +2137,7 @@
       "detail": "1/1"
     },
     {
-      "name": "DegreeModifiedLexicalStative implementation probes do not count as linguistic positives",
+      "name": "DegreeModifiedLexicalStative zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -2164,9 +2164,9 @@
       "pass": true
     },
     {
-      "name": "DemonstrativeClassifierNP implementation coverage state",
+      "name": "DemonstrativeClassifierNP coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "compatibility_alias_only"
+      "detail": "compatibility_alias_only/compatibility_alias_only"
     },
     {
       "name": "DemonstrativeClassifierNP implementation probe count",
@@ -2174,7 +2174,7 @@
       "detail": "1/1"
     },
     {
-      "name": "DemonstrativeClassifierNP implementation probes do not count as linguistic positives",
+      "name": "DemonstrativeClassifierNP zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -2228,9 +2228,9 @@
       "pass": true
     },
     {
-      "name": "DisposalChangeIntoResultFrame implementation coverage state",
+      "name": "DisposalChangeIntoResultFrame coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "DisposalChangeIntoResultFrame implementation probe count",
@@ -2238,7 +2238,7 @@
       "detail": "1/1"
     },
     {
-      "name": "DisposalChangeIntoResultFrame implementation probes do not count as linguistic positives",
+      "name": "DisposalChangeIntoResultFrame zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -2247,9 +2247,9 @@
       "pass": true
     },
     {
-      "name": "DitransitiveSpeechVP implementation coverage state",
+      "name": "DitransitiveSpeechVP coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "DitransitiveSpeechVP implementation probe count",
@@ -2257,7 +2257,7 @@
       "detail": "1/1"
     },
     {
-      "name": "DitransitiveSpeechVP implementation probes do not count as linguistic positives",
+      "name": "DitransitiveSpeechVP zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -2275,9 +2275,9 @@
       "pass": true
     },
     {
-      "name": "EvaluationWithDouSyun implementation coverage state",
+      "name": "EvaluationWithDouSyun coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "EvaluationWithDouSyun implementation probe count",
@@ -2285,7 +2285,7 @@
       "detail": "1/1"
     },
     {
-      "name": "EvaluationWithDouSyun implementation probes do not count as linguistic positives",
+      "name": "EvaluationWithDouSyun zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -2339,9 +2339,9 @@
       "pass": true
     },
     {
-      "name": "ExperientialMotionGoalVP implementation coverage state",
+      "name": "ExperientialMotionGoalVP coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "ExperientialMotionGoalVP implementation probe count",
@@ -2349,7 +2349,7 @@
       "detail": "1/1"
     },
     {
-      "name": "ExperientialMotionGoalVP implementation probes do not count as linguistic positives",
+      "name": "ExperientialMotionGoalVP zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -2358,9 +2358,9 @@
       "pass": true
     },
     {
-      "name": "ExperientialQuestion implementation coverage state",
+      "name": "ExperientialQuestion coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "ExperientialQuestion implementation probe count",
@@ -2368,7 +2368,7 @@
       "detail": "1/1"
     },
     {
-      "name": "ExperientialQuestion implementation probes do not count as linguistic positives",
+      "name": "ExperientialQuestion zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -2449,9 +2449,9 @@
       "pass": true
     },
     {
-      "name": "IdentificationFragment implementation coverage state",
+      "name": "IdentificationFragment coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "IdentificationFragment implementation probe count",
@@ -2459,7 +2459,7 @@
       "detail": "1/1"
     },
     {
-      "name": "IdentificationFragment implementation probes do not count as linguistic positives",
+      "name": "IdentificationFragment zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -2468,9 +2468,9 @@
       "pass": true
     },
     {
-      "name": "IdentityWhQuestion implementation coverage state",
+      "name": "IdentityWhQuestion coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "IdentityWhQuestion implementation probe count",
@@ -2478,7 +2478,7 @@
       "detail": "1/1"
     },
     {
-      "name": "IdentityWhQuestion implementation probes do not count as linguistic positives",
+      "name": "IdentityWhQuestion zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -2496,9 +2496,9 @@
       "pass": true
     },
     {
-      "name": "IntendedFunctionRelation implementation coverage state",
+      "name": "IntendedFunctionRelation coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "IntendedFunctionRelation implementation probe count",
@@ -2506,7 +2506,7 @@
       "detail": "1/1"
     },
     {
-      "name": "IntendedFunctionRelation implementation probes do not count as linguistic positives",
+      "name": "IntendedFunctionRelation zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -2515,9 +2515,9 @@
       "pass": true
     },
     {
-      "name": "IntentionFrame implementation coverage state",
+      "name": "IntentionFrame coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "IntentionFrame implementation probe count",
@@ -2525,7 +2525,7 @@
       "detail": "1/1"
     },
     {
-      "name": "IntentionFrame implementation probes do not count as linguistic positives",
+      "name": "IntentionFrame zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -2561,9 +2561,9 @@
       "pass": true
     },
     {
-      "name": "LocativeFragment implementation coverage state",
+      "name": "LocativeFragment coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "LocativeFragment implementation probe count",
@@ -2571,7 +2571,7 @@
       "detail": "1/1"
     },
     {
-      "name": "LocativeFragment implementation probes do not count as linguistic positives",
+      "name": "LocativeFragment zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -2598,9 +2598,9 @@
       "pass": true
     },
     {
-      "name": "LocativePostureVP implementation coverage state",
+      "name": "LocativePostureVP coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "LocativePostureVP implementation probe count",
@@ -2608,7 +2608,7 @@
       "detail": "1/1"
     },
     {
-      "name": "LocativePostureVP implementation probes do not count as linguistic positives",
+      "name": "LocativePostureVP zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -2635,9 +2635,9 @@
       "pass": true
     },
     {
-      "name": "MannerAdverbialVP implementation coverage state",
+      "name": "MannerAdverbialVP coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "positive_only/positive_only"
     },
     {
       "name": "MannerAdverbialVP implementation probe count",
@@ -2645,9 +2645,9 @@
       "detail": "1/1"
     },
     {
-      "name": "MannerAdverbialVP implementation probes do not count as linguistic positives",
+      "name": "MannerAdverbialVP zero-weight probes do not create linguistic positives",
       "pass": true,
-      "detail": "0"
+      "detail": "1"
     },
     {
       "name": "MeasureExpression exists in construction index",
@@ -2672,9 +2672,9 @@
       "pass": true
     },
     {
-      "name": "ModalChangeIntoResultFrame implementation coverage state",
+      "name": "ModalChangeIntoResultFrame coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "ModalChangeIntoResultFrame implementation probe count",
@@ -2682,7 +2682,7 @@
       "detail": "1/1"
     },
     {
-      "name": "ModalChangeIntoResultFrame implementation probes do not count as linguistic positives",
+      "name": "ModalChangeIntoResultFrame zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -2718,9 +2718,9 @@
       "pass": true
     },
     {
-      "name": "MotionDelimitedVP implementation coverage state",
+      "name": "MotionDelimitedVP coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "MotionDelimitedVP implementation probe count",
@@ -2728,7 +2728,7 @@
       "detail": "1/1"
     },
     {
-      "name": "MotionDelimitedVP implementation probes do not count as linguistic positives",
+      "name": "MotionDelimitedVP zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -2755,9 +2755,9 @@
       "pass": true
     },
     {
-      "name": "NamingClause implementation coverage state",
+      "name": "NamingClause coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "NamingClause implementation probe count",
@@ -2765,7 +2765,7 @@
       "detail": "1/1"
     },
     {
-      "name": "NamingClause implementation probes do not count as linguistic positives",
+      "name": "NamingClause zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -2810,9 +2810,9 @@
       "pass": true
     },
     {
-      "name": "NegatedLexicalizedStative implementation coverage state",
+      "name": "NegatedLexicalizedStative coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "NegatedLexicalizedStative implementation probe count",
@@ -2820,7 +2820,7 @@
       "detail": "1/1"
     },
     {
-      "name": "NegatedLexicalizedStative implementation probes do not count as linguistic positives",
+      "name": "NegatedLexicalizedStative zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -2829,9 +2829,9 @@
       "pass": true
     },
     {
-      "name": "NegatedStativePredicate implementation coverage state",
+      "name": "NegatedStativePredicate coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "NegatedStativePredicate implementation probe count",
@@ -2839,7 +2839,7 @@
       "detail": "1/1"
     },
     {
-      "name": "NegatedStativePredicate implementation probes do not count as linguistic positives",
+      "name": "NegatedStativePredicate zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -2866,9 +2866,9 @@
       "pass": true
     },
     {
-      "name": "NegativeExperiential implementation coverage state",
+      "name": "NegativeExperiential coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "NegativeExperiential implementation probe count",
@@ -2876,7 +2876,7 @@
       "detail": "2/2"
     },
     {
-      "name": "NegativeExperiential implementation probes do not count as linguistic positives",
+      "name": "NegativeExperiential zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -2921,9 +2921,9 @@
       "pass": true
     },
     {
-      "name": "OpinionQuestion implementation coverage state",
+      "name": "OpinionQuestion coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "OpinionQuestion implementation probe count",
@@ -2931,7 +2931,7 @@
       "detail": "1/1"
     },
     {
-      "name": "OpinionQuestion implementation probes do not count as linguistic positives",
+      "name": "OpinionQuestion zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -2949,9 +2949,9 @@
       "pass": true
     },
     {
-      "name": "OrdinalClassifierNP implementation coverage state",
+      "name": "OrdinalClassifierNP coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "OrdinalClassifierNP implementation probe count",
@@ -2959,7 +2959,7 @@
       "detail": "1/1"
     },
     {
-      "name": "OrdinalClassifierNP implementation probes do not count as linguistic positives",
+      "name": "OrdinalClassifierNP zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -2977,9 +2977,9 @@
       "pass": true
     },
     {
-      "name": "PassivePermissiveRelation implementation coverage state",
+      "name": "PassivePermissiveRelation coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "PassivePermissiveRelation implementation probe count",
@@ -2987,7 +2987,7 @@
       "detail": "1/1"
     },
     {
-      "name": "PassivePermissiveRelation implementation probes do not count as linguistic positives",
+      "name": "PassivePermissiveRelation zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -3014,9 +3014,9 @@
       "pass": true
     },
     {
-      "name": "PerfectiveObjectResultPredicate implementation coverage state",
+      "name": "PerfectiveObjectResultPredicate coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "PerfectiveObjectResultPredicate implementation probe count",
@@ -3024,7 +3024,7 @@
       "detail": "1/1"
     },
     {
-      "name": "PerfectiveObjectResultPredicate implementation probes do not count as linguistic positives",
+      "name": "PerfectiveObjectResultPredicate zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -3051,9 +3051,9 @@
       "pass": true
     },
     {
-      "name": "PoliteImperativeClause implementation coverage state",
+      "name": "PoliteImperativeClause coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "PoliteImperativeClause implementation probe count",
@@ -3061,7 +3061,7 @@
       "detail": "1/1"
     },
     {
-      "name": "PoliteImperativeClause implementation probes do not count as linguistic positives",
+      "name": "PoliteImperativeClause zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -3070,9 +3070,9 @@
       "pass": true
     },
     {
-      "name": "PossessiveClassifierNP implementation coverage state",
+      "name": "PossessiveClassifierNP coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "PossessiveClassifierNP implementation probe count",
@@ -3080,7 +3080,7 @@
       "detail": "1/1"
     },
     {
-      "name": "PossessiveClassifierNP implementation probes do not count as linguistic positives",
+      "name": "PossessiveClassifierNP zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -3089,9 +3089,9 @@
       "pass": true
     },
     {
-      "name": "PossessiveTransferClause implementation coverage state",
+      "name": "PossessiveTransferClause coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "PossessiveTransferClause implementation probe count",
@@ -3099,7 +3099,7 @@
       "detail": "1/1"
     },
     {
-      "name": "PossessiveTransferClause implementation probes do not count as linguistic positives",
+      "name": "PossessiveTransferClause zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -3108,9 +3108,9 @@
       "pass": true
     },
     {
-      "name": "PostposedExistentialQuestion implementation coverage state",
+      "name": "PostposedExistentialQuestion coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "PostposedExistentialQuestion implementation probe count",
@@ -3118,7 +3118,7 @@
       "detail": "1/1"
     },
     {
-      "name": "PostposedExistentialQuestion implementation probes do not count as linguistic positives",
+      "name": "PostposedExistentialQuestion zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -3127,9 +3127,9 @@
       "pass": true
     },
     {
-      "name": "PostThemeParticipantRelation implementation coverage state",
+      "name": "PostThemeParticipantRelation coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "PostThemeParticipantRelation implementation probe count",
@@ -3137,7 +3137,7 @@
       "detail": "1/1"
     },
     {
-      "name": "PostThemeParticipantRelation implementation probes do not count as linguistic positives",
+      "name": "PostThemeParticipantRelation zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -3173,9 +3173,9 @@
       "pass": true
     },
     {
-      "name": "PreferenceVP implementation coverage state",
+      "name": "PreferenceVP coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "PreferenceVP implementation probe count",
@@ -3183,7 +3183,7 @@
       "detail": "1/1"
     },
     {
-      "name": "PreferenceVP implementation probes do not count as linguistic positives",
+      "name": "PreferenceVP zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -3192,9 +3192,9 @@
       "pass": true
     },
     {
-      "name": "PriorityMarkerClause implementation coverage state",
+      "name": "PriorityMarkerClause coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "PriorityMarkerClause implementation probe count",
@@ -3202,7 +3202,7 @@
       "detail": "1/1"
     },
     {
-      "name": "PriorityMarkerClause implementation probes do not count as linguistic positives",
+      "name": "PriorityMarkerClause zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -3229,9 +3229,9 @@
       "pass": true
     },
     {
-      "name": "ProgressivePlaceQuestion implementation coverage state",
+      "name": "ProgressivePlaceQuestion coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "ProgressivePlaceQuestion implementation probe count",
@@ -3239,7 +3239,7 @@
       "detail": "1/1"
     },
     {
-      "name": "ProgressivePlaceQuestion implementation probes do not count as linguistic positives",
+      "name": "ProgressivePlaceQuestion zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -3248,9 +3248,9 @@
       "pass": true
     },
     {
-      "name": "ProgressivePurposeClause implementation coverage state",
+      "name": "ProgressivePurposeClause coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "ProgressivePurposeClause implementation probe count",
@@ -3258,7 +3258,7 @@
       "detail": "1/1"
     },
     {
-      "name": "ProgressivePurposeClause implementation probes do not count as linguistic positives",
+      "name": "ProgressivePurposeClause zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -3267,9 +3267,9 @@
       "pass": true
     },
     {
-      "name": "ProgressiveTransitivePredicate implementation coverage state",
+      "name": "ProgressiveTransitivePredicate coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "ProgressiveTransitivePredicate implementation probe count",
@@ -3277,7 +3277,7 @@
       "detail": "1/1"
     },
     {
-      "name": "ProgressiveTransitivePredicate implementation probes do not count as linguistic positives",
+      "name": "ProgressiveTransitivePredicate zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -3313,9 +3313,9 @@
       "pass": true
     },
     {
-      "name": "PurposePredicate implementation coverage state",
+      "name": "PurposePredicate coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "PurposePredicate implementation probe count",
@@ -3323,7 +3323,7 @@
       "detail": "1/1"
     },
     {
-      "name": "PurposePredicate implementation probes do not count as linguistic positives",
+      "name": "PurposePredicate zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -3440,9 +3440,9 @@
       "pass": true
     },
     {
-      "name": "ResultStateClause implementation coverage state",
+      "name": "ResultStateClause coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "ResultStateClause implementation probe count",
@@ -3450,7 +3450,7 @@
       "detail": "1/1"
     },
     {
-      "name": "ResultStateClause implementation probes do not count as linguistic positives",
+      "name": "ResultStateClause zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -3459,9 +3459,9 @@
       "pass": true
     },
     {
-      "name": "ScalarEvaluation implementation coverage state",
+      "name": "ScalarEvaluation coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "ScalarEvaluation implementation probe count",
@@ -3469,7 +3469,7 @@
       "detail": "1/1"
     },
     {
-      "name": "ScalarEvaluation implementation probes do not count as linguistic positives",
+      "name": "ScalarEvaluation zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -3478,9 +3478,9 @@
       "pass": true
     },
     {
-      "name": "ScalarRangeFragment implementation coverage state",
+      "name": "ScalarRangeFragment coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "ScalarRangeFragment implementation probe count",
@@ -3488,7 +3488,7 @@
       "detail": "1/1"
     },
     {
-      "name": "ScalarRangeFragment implementation probes do not count as linguistic positives",
+      "name": "ScalarRangeFragment zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -3497,9 +3497,9 @@
       "pass": true
     },
     {
-      "name": "ScalarValueQuestion implementation coverage state",
+      "name": "ScalarValueQuestion coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "ScalarValueQuestion implementation probe count",
@@ -3507,7 +3507,7 @@
       "detail": "1/1"
     },
     {
-      "name": "ScalarValueQuestion implementation probes do not count as linguistic positives",
+      "name": "ScalarValueQuestion zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -3516,9 +3516,9 @@
       "pass": true
     },
     {
-      "name": "SchedulingQuestion implementation coverage state",
+      "name": "SchedulingQuestion coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "SchedulingQuestion implementation probe count",
@@ -3526,7 +3526,7 @@
       "detail": "1/1"
     },
     {
-      "name": "SchedulingQuestion implementation probes do not count as linguistic positives",
+      "name": "SchedulingQuestion zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -3535,9 +3535,9 @@
       "pass": true
     },
     {
-      "name": "SeemingPerfectiveResultClause implementation coverage state",
+      "name": "SeemingPerfectiveResultClause coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "SeemingPerfectiveResultClause implementation probe count",
@@ -3545,7 +3545,7 @@
       "detail": "1/1"
     },
     {
-      "name": "SeemingPerfectiveResultClause implementation probes do not count as linguistic positives",
+      "name": "SeemingPerfectiveResultClause zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -3572,9 +3572,9 @@
       "pass": true
     },
     {
-      "name": "SpeechTransferClause implementation coverage state",
+      "name": "SpeechTransferClause coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "SpeechTransferClause implementation probe count",
@@ -3582,7 +3582,7 @@
       "detail": "1/1"
     },
     {
-      "name": "SpeechTransferClause implementation probes do not count as linguistic positives",
+      "name": "SpeechTransferClause zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -3609,9 +3609,9 @@
       "pass": true
     },
     {
-      "name": "SuggestionQuestion implementation coverage state",
+      "name": "SuggestionQuestion coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "SuggestionQuestion implementation probe count",
@@ -3619,7 +3619,7 @@
       "detail": "1/1"
     },
     {
-      "name": "SuggestionQuestion implementation probes do not count as linguistic positives",
+      "name": "SuggestionQuestion zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -3646,9 +3646,9 @@
       "pass": true
     },
     {
-      "name": "TimeToActionFrame implementation coverage state",
+      "name": "TimeToActionFrame coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "TimeToActionFrame implementation probe count",
@@ -3656,7 +3656,7 @@
       "detail": "1/1"
     },
     {
-      "name": "TimeToActionFrame implementation probes do not count as linguistic positives",
+      "name": "TimeToActionFrame zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -3665,9 +3665,9 @@
       "pass": true
     },
     {
-      "name": "Topic implementation coverage state",
+      "name": "Topic coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "Topic implementation probe count",
@@ -3675,7 +3675,7 @@
       "detail": "1/1"
     },
     {
-      "name": "Topic implementation probes do not count as linguistic positives",
+      "name": "Topic zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -3693,9 +3693,9 @@
       "pass": true
     },
     {
-      "name": "TransformationResultFrame implementation coverage state",
+      "name": "TransformationResultFrame coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "TransformationResultFrame implementation probe count",
@@ -3703,7 +3703,7 @@
       "detail": "1/1"
     },
     {
-      "name": "TransformationResultFrame implementation probes do not count as linguistic positives",
+      "name": "TransformationResultFrame zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -3712,9 +3712,9 @@
       "pass": true
     },
     {
-      "name": "TransformationResultPredicate implementation coverage state",
+      "name": "TransformationResultPredicate coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "TransformationResultPredicate implementation probe count",
@@ -3722,7 +3722,7 @@
       "detail": "1/1"
     },
     {
-      "name": "TransformationResultPredicate implementation probes do not count as linguistic positives",
+      "name": "TransformationResultPredicate zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -3749,9 +3749,9 @@
       "pass": true
     },
     {
-      "name": "VocativeAddressTerm implementation coverage state",
+      "name": "VocativeAddressTerm coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "VocativeAddressTerm implementation probe count",
@@ -3759,7 +3759,7 @@
       "detail": "1/1"
     },
     {
-      "name": "VocativeAddressTerm implementation probes do not count as linguistic positives",
+      "name": "VocativeAddressTerm zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },
@@ -3768,9 +3768,9 @@
       "pass": true
     },
     {
-      "name": "VPComplementFrame implementation coverage state",
+      "name": "VPComplementFrame coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only"
+      "detail": "implementation_positive_only/implementation_positive_only"
     },
     {
       "name": "VPComplementFrame implementation probe count",
@@ -3778,7 +3778,7 @@
       "detail": "1/1"
     },
     {
-      "name": "VPComplementFrame implementation probes do not count as linguistic positives",
+      "name": "VPComplementFrame zero-weight probes do not create linguistic positives",
       "pass": true,
       "detail": "0"
     },

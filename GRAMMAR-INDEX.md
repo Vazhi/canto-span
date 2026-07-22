@@ -19,8 +19,8 @@ Workflow archiving parks a note outside current work. It does not retire its run
 - `supported_productive`: **0**
 - `provisional_reaudit`: **0**
 - `provisional`: **0**
-- `research_pending`: **60**
-- `unsupported_generalization`: **84**
+- `research_pending`: **61**
+- `unsupported_generalization`: **83**
 - `lexicalized_only`: **3**
 - `parser_heuristic`: **19**
 
@@ -118,7 +118,7 @@ Workflow archiving parks a note outside current work. It does not retire its run
 - [[LocativePostureVP]] — `unsupported_generalization`
 - [[LocativeWhQuestion]] — `unsupported_generalization`
 - [[MalformedCandidate]] — `parser_heuristic`
-- [[MannerAdverbialVP]] — `unsupported_generalization`
+- [[MannerAdverbialVP]] — `research_pending`
 - [[MeasureExpression]] — `parser_heuristic`
 - [[ModalANotAQuestion]] — `research_pending`
 - [[ModalChangeIntoResultFrame]] — `unsupported_generalization`

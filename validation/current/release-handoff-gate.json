@@ -1,11 +1,17 @@
 {
   "schema": "canto-span-release-handoff-gate-v2",
-  "release_id": "v0.5.198-verification-consolidation",
-  "base_tree": "8a2f4927abcbf756668cc62287ab3681b26d0ee3",
-  "actual_status_changes": [],
+  "release_id": "v0.5.199-manner-adverbial-reconciliation",
+  "base_tree": "73d24e2919c747653f5f7de03bc7bb78f2adee6c",
+  "actual_status_changes": [
+    {
+      "construction": "MannerAdverbialVP",
+      "old_status": "unsupported_generalization",
+      "new_status": "research_pending"
+    }
+  ],
   "supported_productive_count": 0,
   "supported_productive_pending_reaudit": [],
-  "retirement_review_gap": 1,
+  "retirement_review_gap": 2,
   "failed": 0,
   "status": "PASS",
   "failures": []

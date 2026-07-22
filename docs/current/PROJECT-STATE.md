@@ -4,7 +4,7 @@
 
 | Measure | Current value |
 |---|---:|
-| Runtime | v0.5.198 |
+| Runtime | v0.5.199 |
 | Runtime labels | 166 |
 | Current construction notes | 166 |
 | Active working notes | 2 |
@@ -13,8 +13,8 @@
 | `supported_productive` | 0 |
 | `provisional_reaudit` | 0 |
 | `provisional` | 0 |
-| `research_pending` | 60 |
-| `unsupported_generalization` | 84 |
+| `research_pending` | 61 |
+| `unsupported_generalization` | 83 |
 | `lexicalized_only` | 3 |
 | `parser_heuristic` | 19 |
 
@@ -35,11 +35,15 @@ Release-specific wrapper verifiers, eight separate probe files, obsolete version
 
 No parser span, runtime label, construction status, source claim, or survey result changed.
 
+## v0.5.199 manner-adverbial reconciliation
+
+`MannerAdverbialVP` now recognizes the independently attested repeated-property + overt `咁／噉` + VP pattern and preserves a constructed following VP as a child. One source-linked regression was added. The construction moved from `unsupported_generalization` to `research_pending`; unrestricted productivity, negative boundaries, and the bare `慢慢 + V` route remain unestablished. No new verification machinery was added.
+
 ## Runtime-wrapper review outcome
 
 The v0.5.189–v0.5.197 review series is complete:
 
-- 63 labels have implementation-only coverage;
+- 62 labels have implementation-only coverage;
 - 1 label has compatibility-alias-only coverage;
 - 4 dead or shadowed labels were retired during the series;
 - no active label remains uncovered;
@@ -58,4 +62,4 @@ Survey integration remains paused while collection proceeds. No current instrume
 
 ## Next substantive work
 
-Prioritize source/runtime mismatches among the 63 implementation-only labels by learner impact and research tractability. Do not create another release-specific audit framework for each batch; use the stable profiles and add permanent evidence only where it changes the current construction record.
+Continue source/runtime reconciliation among the remaining 62 implementation-only labels by learner impact and research tractability. `MannerAdverbialVP` is the first completed case: the overt repeated-manner + `咁／噉` path is source-linked and regression-tested, while the bare route remains zero-weight. Do not create release-specific audit frameworks; add permanent evidence only where it changes the construction record.
