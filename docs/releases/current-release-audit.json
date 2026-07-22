@@ -1,28 +1,74 @@
 {
   "schema": "canto-span-release-handoff-audit-v2",
-  "release_id": "v0.5.203-grammar-status-directory-migration",
-  "handoff_sequence": 26,
-  "status_changes": [],
-  "changed_construction_audit": [],
+  "release_id": "v0.5.204-degree-modified-lexical-stative-reconciliation",
+  "handoff_sequence": 27,
+  "status_changes": [
+    {
+      "construction": "DegreeModifiedLexicalStative",
+      "old_status": "unsupported_generalization",
+      "new_status": "research_pending"
+    }
+  ],
+  "changed_construction_audit": [
+    {
+      "construction": "DegreeModifiedLexicalStative",
+      "old_status": "unsupported_generalization",
+      "new_status": "research_pending",
+      "plain_language_claim": "Independent sources attest the exact degree-modifier plus lexicalized-stative profile 好 + 好食; broader modifier, lexical, productivity, and negative boundaries remain unresolved.",
+      "code_locations": [
+        "main.js:DegreeModifiedLexicalStative category template",
+        "tests/fixtures/regression-snapshots.json:REG-0551",
+        "grammar/research_pending/DegreeModifiedLexicalStative.md"
+      ],
+      "sources": [
+        {
+          "citation": "Lam, Lau, and Lee. 2024. Multi-Tiered Cantonese Word Segmentation.",
+          "locator": "p. 6 degree-modification discussion",
+          "verification": "VERIFIED_FULL_TEXT"
+        },
+        {
+          "citation": "CUHK Independent Learning Centre. Cantonese Express, Daily Conversation 5.",
+          "locator": "vocabulary item 3: 好好食 hou2 hou2 sik6",
+          "verification": "VERIFIED_OFFICIAL_UNIVERSITY_WEB_RESOURCE"
+        },
+        {
+          "citation": "Words.hk / 粵典. 好食.",
+          "locator": "adjective entry and example ending 都覺得好好食",
+          "verification": "VERIFIED_CONTEMPORARY_DICTIONARY_ENTRY"
+        }
+      ],
+      "panel_response_count_total": 0,
+      "eligible_panel_response_count": 0,
+      "minimum_usable_judgments_per_critical_item": 0,
+      "survey_instrument_version": "none",
+      "survey_instrument_status": "not_started",
+      "quality_screen_status": "not_started",
+      "panel_adjudication_status": "not_started",
+      "unresolved_questions": [
+        "Which degree modifiers combine with which independently lexicalized statives?",
+        "Which strings require lexicalized rather than compositional analysis?",
+        "What negative boundaries distinguish degree modification from manner or verbal readings?"
+      ]
+    }
+  ],
   "supported_productive_pending_reaudit": [],
-  "implementation_validation": "All 165 canonical construction notes are loaded from controlled linguistic-status directories, match the 165 runtime labels exactly, and retain two workflow-active plus 163 workflow-archived records. Parser regression, NP, and construction expectations are unchanged.",
-  "linguistic_confidence": "No linguistic claim, status, confidence, source record, boundary record, corpus record, or panel record changes. This release changes authoring-note organization only.",
+  "implementation_validation": "Regression REG-0551 preserves complete DegreeModifiedLexicalStative coverage with visible degree 好 and lexicalized stative 好食. The aggregate regression, NP suite, and construction assertions are run through the existing profiles.",
+  "linguistic_confidence": "research_pending only. The exact 好好食 profile is attested, but unrestricted productivity, negative boundaries, and panel evidence are absent.",
   "code_analysis_overclaim_review": true,
-  "overclaim_review_scope": "Confirmed that status-folder placement mirrors existing frontmatter rather than inferring or promoting any construction. Workflow state remains independent and no implementation probe gains linguistic weight.",
+  "overclaim_review_scope": "Separated the new source-linked exact fixture from historical zero-weight probe FRWRAP-004 and made no productive or universal-speaker claim.",
   "release_documents": [
-    "docs/research/CP046-P1-GRAMMAR-STATUS-DIRECTORY-MIGRATION-R1.md",
-    "grammar/README.md",
-    "grammar/retired/README.md",
-    "GRAMMAR-INDEX.md",
-    "docs/current/CONSTRUCTION-NOTES.md",
+    "docs/research/CP047-P1-DEGREE-MODIFIED-LEXICAL-STATIVE-RECONCILIATION-R1.md",
+    "grammar/research_pending/DegreeModifiedLexicalStative.md",
     "docs/current/PROJECT-STATE.md",
+    "docs/current/TESTING.md",
+    "GRAMMAR-INDEX.md",
     "CHANGELOG.md",
     "HANDOFF.md"
   ],
   "external_audit_ready": true,
   "unresolved_release_questions": [
-    "The status distribution remains unchanged: 61 research_pending, 82 unsupported_generalization, 3 lexicalized_only, and 19 parser_heuristic.",
+    "Productive lexical and modifier range remains unresolved.",
     "RUL and PFV survey integration remains paused while collection proceeds."
   ],
-  "base_tree": "aadb44581a690309e4c3901d02e048d39a922b89"
+  "base_tree": "7b4d0023b5cff48142a1fd745fd959ef7f9e8411"
 }

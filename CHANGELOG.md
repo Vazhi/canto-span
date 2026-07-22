@@ -1,3 +1,11 @@
+## v0.5.204 — degree-modified lexical stative reconciliation
+
+- Added the source-linked regression `好好食。` under `DegreeModifiedLexicalStative`.
+- Preserved transparent degree `好` plus dictionary-backed lexicalized stative `好食`.
+- Moved `DegreeModifiedLexicalStative` from `unsupported_generalization` to `research_pending` for this narrow attested profile only.
+- Kept the historical implementation probe at linguistic evidence weight zero and made no unrestricted productivity or panel claim.
+- Added no parser rule, verifier, or version-specific validation directory.
+
 ## v0.5.203 — grammar status-directory migration
 
 - Reorganized all 165 canonical construction notes into folders named for their linguistic status.

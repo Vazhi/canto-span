@@ -1,10 +1,10 @@
 {
   "schema": "canto-span-construction-notes-validation-v2",
-  "runtime_version": "0.5.203",
+  "runtime_version": "0.5.204",
   "construction_notes": 165,
   "status_counts": {
-    "unsupported_generalization": 82,
-    "research_pending": 61,
+    "unsupported_generalization": 81,
+    "research_pending": 62,
     "parser_heuristic": 19,
     "lexicalized_only": 3
   },

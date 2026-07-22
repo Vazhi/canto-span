@@ -4,7 +4,7 @@
 
 | Measure | Current value |
 |---|---:|
-| Runtime | v0.5.203 |
+| Runtime | v0.5.204 |
 | Runtime labels | 165 |
 | Current construction notes | 165 |
 | Active working notes | 2 |
@@ -13,12 +13,16 @@
 | `supported_productive` | 0 |
 | `provisional_reaudit` | 0 |
 | `provisional` | 0 |
-| `research_pending` | 61 |
-| `unsupported_generalization` | 82 |
+| `research_pending` | 62 |
+| `unsupported_generalization` | 81 |
 | `lexicalized_only` | 3 |
 | `parser_heuristic` | 19 |
 
 The canonical registry is the union of `grammar/<linguistic-status>/*.md`; each note is stored in the folder matching its frontmatter status, and the 165 notes match the runtime labels exactly.
+
+## v0.5.204 degree-modified lexical stative reconciliation
+
+`DegreeModifiedLexicalStative` now has one exact source-linked positive regression, `好好食。`, preserving degree `好` plus lexicalized stative `好食`. The construction moves to `research_pending`, but no productive lexical range, alternative modifier range, negative boundaries, or panel acceptance is claimed. The historical zero-weight reachability probe remains implementation provenance only.
 
 ## v0.5.203 status-directory migration
 
@@ -55,7 +59,7 @@ No parser span, runtime label, construction status, source claim, or survey resu
 
 The v0.5.189–v0.5.197 review series is complete:
 
-- 59 labels have implementation-only coverage;
+- 58 labels have implementation-only coverage;
 - 1 label has compatibility-alias-only coverage;
 - 4 dead or shadowed labels were retired during the v0.5.189–v0.5.197 series; one additional misleading fallback was retired in v0.5.202;
 - no active label remains uncovered;
@@ -74,4 +78,4 @@ Survey integration remains paused while collection proceeds. No current instrume
 
 ## Next substantive work
 
-Continue source/runtime reconciliation among the remaining 59 implementation-only labels by learner impact and research tractability. Preserve explicit comparison strategies separately from scalar `啲` adjustment. Do not create release-specific audit frameworks; add permanent evidence only where it changes the construction record.
+Continue source/runtime reconciliation among the remaining 58 implementation-only labels by learner impact and research tractability. `DegreeModifiedLexicalStative` is source-linked only for the narrow `好 + 好食` profile; preserve unresolved lexical and modifier boundaries. Do not create release-specific audit frameworks.

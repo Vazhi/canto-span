@@ -9,7 +9,8 @@ const { Plugin, PluginSettingTab, Setting, Notice } = require("obsidian");
  * never overwrite child learner roles.
  */
 
-const CANTO_SPAN_RUNTIME_VERSION = "0.5.203";
+const CANTO_SPAN_RUNTIME_VERSION = "0.5.204";
+// v0.5.204: source-links the narrow degree-modifier + lexicalized-stative profile exemplified by 好好食 while keeping productivity and negative boundaries unresolved.
 // v0.5.203: stores canonical construction notes in linguistic-status folders while workflow state remains frontmatter-only; parser behavior is unchanged.
 // v0.5.202: retires the misleading ComparativeStative fallback and routes source-supported property + 啲 adjustment through DegreeMannerAdverbial.
 // v0.5.201: groups the source-attested 唔該 + addressee + scalar-adjustment request as a transparent polite imperative while preserving its children.

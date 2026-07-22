@@ -1,9 +1,9 @@
 {
   "schema": "canto-span-implementation-reachability-audit-v1",
-  "runtime_version": "0.5.203",
+  "runtime_version": "0.5.204",
   "probe_case_count": 64,
   "probed_construction_count": 63,
-  "implementation_positive_only_labels": 59,
+  "implementation_positive_only_labels": 58,
   "compatibility_alias_only_labels": 1,
   "no_direct_labels": 0,
   "linguistic_evidence_weight_added": 0,
@@ -2085,7 +2085,7 @@
     {
       "name": "DegreeModifiedLexicalStative coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
+      "detail": "positive_only/positive_only"
     },
     {
       "name": "DegreeModifiedLexicalStative implementation probe count",
@@ -2095,7 +2095,7 @@
     {
       "name": "DegreeModifiedLexicalStative zero-weight probes do not create linguistic positives",
       "pass": true,
-      "detail": "0"
+      "detail": "1"
     },
     {
       "name": "DegreeStativePredicate exists in construction index",

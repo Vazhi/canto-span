@@ -29,8 +29,8 @@ Canonical construction notes are stored in the folder matching their linguistic 
 | [`supported_productive/`](grammar/supported_productive/) | 0 | Full current-standard productive support. |
 | [`provisional_reaudit/`](grammar/provisional_reaudit/) | 0 | Former acceptance withdrawn pending current-standard re-audit. |
 | [`provisional/`](grammar/provisional/) | 0 | Narrow provisional support; productive requirements incomplete. |
-| [`research_pending/`](grammar/research_pending/) | 61 | Concrete research question; provisional requirements incomplete. |
-| [`unsupported_generalization/`](grammar/unsupported_generalization/) | 82 | Current broad claim lacks a defensible supported scope. |
+| [`research_pending/`](grammar/research_pending/) | 62 | Concrete research question; provisional requirements incomplete. |
+| [`unsupported_generalization/`](grammar/unsupported_generalization/) | 81 | Current broad claim lacks a defensible supported scope. |
 | [`lexicalized_only/`](grammar/lexicalized_only/) | 3 | Bounded lexical expressions only; no productive claim. |
 | [`parser_heuristic/`](grammar/parser_heuristic/) | 19 | Internal software representation, not a language claim. |
 | [`retired/`](grammar/retired/) | 16 | Navigation index for labels absent from the active runtime registry. |
@@ -38,9 +38,9 @@ Canonical construction notes are stored in the folder matching their linguistic 
 ## Standard test coverage
 
 - `compatibility_alias_only`: **1**
-- `implementation_positive_only`: **59**
+- `implementation_positive_only`: **58**
 - `positive_and_boundary`: **2**
-- `positive_only`: **103**
+- `positive_only`: **104**
 - command: `npm test`
 
 ## supported_productive (0)
@@ -61,7 +61,7 @@ Narrow provisional support; productive requirements incomplete. Folder: [`gramma
 
 *No current construction notes.*
 
-## research_pending (61)
+## research_pending (62)
 
 Concrete research question; provisional requirements incomplete. Folder: [`grammar/research_pending/`](grammar/research_pending/).
 
@@ -73,6 +73,7 @@ Concrete research question; provisional requirements incomplete. Folder: [`gramm
 - [[CompletionVP]] — parked; `LANE-05`; sources 4/4; boundaries incomplete; reviewed `unknown`
 - [[CoverbFrame]] — parked; `LANE-01`; sources 5/5; boundaries incomplete; reviewed `unknown`
 - [[DegreeMannerAdverbial]] — parked; `LANE-10`; sources 3/3; boundaries incomplete; reviewed `unknown`
+- [[DegreeModifiedLexicalStative]] — parked; `LANE-10`; sources 3/3; boundaries incomplete; reviewed `2026-07-22`
 - [[DegreeStativePredicate]] — parked; `LANE-10`; sources 2/2; boundaries incomplete; reviewed `unknown`
 - [[DesiderativeVP]] — parked; `LANE-08`; sources 2/2; boundaries incomplete; reviewed `unknown`
 - [[DiMarkedNP]] — parked; `LANE-06`; sources 1/1; boundaries incomplete; reviewed `unknown`
@@ -127,7 +128,7 @@ Concrete research question; provisional requirements incomplete. Folder: [`gramm
 - [[TransitiveVP]] — parked; `LANE-10`; sources 2/2; boundaries incomplete; reviewed `unknown`
 - [[VerbComplementVP]] — parked; `LANE-05`; sources 3/3; boundaries incomplete; reviewed `unknown`
 
-## unsupported_generalization (82)
+## unsupported_generalization (81)
 
 Current broad claim lacks a defensible supported scope. Folder: [`grammar/unsupported_generalization/`](grammar/unsupported_generalization/).
 
@@ -149,7 +150,6 @@ Current broad claim lacks a defensible supported scope. Folder: [`grammar/unsupp
 - [[CoordinatedNP]] — parked; `LANE-06`; sources 2/2; boundaries incomplete; reviewed `unknown`
 - [[CopularANotAQuestion]] — parked; `LANE-07`; sources 3/3; boundaries incomplete; reviewed `unknown`
 - [[DegreeMannerModifiedVP]] — parked; `LANE-10`; sources 2/2; boundaries incomplete; reviewed `unknown`
-- [[DegreeModifiedLexicalStative]] — parked; `LANE-10`; sources 1/1; boundaries incomplete; reviewed `unknown`
 - [[DelimitedVP]] — parked; `LANE-05`; sources 3/3; boundaries incomplete; reviewed `unknown`
 - [[DisposalChangeIntoResultFrame]] — parked; `LANE-05`; sources 2/2; boundaries incomplete; reviewed `unknown`
 - [[DitransitiveSpeechVP]] — parked; `LANE-08`; sources 2/2; boundaries incomplete; reviewed `unknown`
