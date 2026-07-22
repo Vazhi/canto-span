@@ -4,7 +4,56 @@
   "runtime_active": true,
   "migration_phase": 5,
   "snapshot_cases": [],
-  "focused_cases": [],
+  "focused_cases": [
+    {
+      "case_id": "CP054-P1-SCALAR-EVALUATION-R1:SEV-E01",
+      "source": "對皮鞋唔算貴。",
+      "class": "overt_topic_negative_syun_property_evaluation",
+      "expected_profile": "construction_present",
+      "assertion": "construction_present",
+      "provenance": "review-packets/cp054-p1-scalar-evaluation-r1/focused-evaluation-packet.json",
+      "source_ids": [
+        "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
+      ],
+      "source_locator": "user PDF p. 340"
+    },
+    {
+      "case_id": "CP054-P1-SCALAR-EVALUATION-R1:SEV-E02",
+      "source": "價錢唔算貴。",
+      "class": "price_topic_negative_syun_property_evaluation",
+      "expected_profile": "construction_present",
+      "assertion": "construction_present",
+      "provenance": "review-packets/cp054-p1-scalar-evaluation-r1/focused-evaluation-packet.json",
+      "source_ids": [
+        "SRC-WORDSHK-GAACING"
+      ],
+      "source_locator": "價錢 noun entry, exact example"
+    },
+    {
+      "case_id": "CP054-P1-SCALAR-EVALUATION-R1:SEV-E03",
+      "source": "都唔算貴。",
+      "class": "focus_adverb_negative_syun_property_evaluation",
+      "expected_profile": "construction_present",
+      "assertion": "construction_present",
+      "provenance": "review-packets/cp054-p1-scalar-evaluation-r1/focused-evaluation-packet.json",
+      "source_ids": [
+        "SRC-CUHK-CANTONESE-ONLINE-B6"
+      ],
+      "source_locator": "hotel-booking dialogue, 李廣越 turn"
+    },
+    {
+      "case_id": "CP054-P1-SCALAR-EVALUATION-R1:SEV-N01",
+      "source": "中等價錢。",
+      "class": "nominal_price_range_boundary",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "review-packets/cp054-p1-scalar-evaluation-r1/focused-evaluation-packet.json",
+      "source_ids": [
+        "SRC-WORDSHK-GAACING"
+      ],
+      "source_locator": "價錢 noun entry, collocation 中等價錢"
+    }
+  ],
   "np_cases": [],
   "implementation_probe_cases": [
     {
@@ -18,16 +67,16 @@
     }
   ],
   "coverage": {
-    "state": "implementation_positive_only",
+    "state": "positive_and_boundary",
     "exact_snapshot_positive_count": 0,
-    "focused_positive_count": 0,
-    "focused_boundary_count": 0,
+    "focused_positive_count": 3,
+    "focused_boundary_count": 1,
     "focused_review_only_count": 0,
     "np_case_count": 0,
     "implementation_probe_count": 1,
     "compatibility_alias_probe_count": 0,
-    "positive_case_count": 0,
-    "boundary_case_count": 0,
-    "executable_case_count": 1
+    "positive_case_count": 3,
+    "boundary_case_count": 1,
+    "executable_case_count": 5
   }
 }

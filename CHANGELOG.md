@@ -1,3 +1,37 @@
+## v0.5.211 — NegativeExperiential reconciliation
+
+- Source-linked exact `我未見過王小姐`, `我冇睇過今日嘅報紙`, and `我未去過美國` as focused `NegativeExperiential` positives.
+- Added executable boundaries for non-experiential `未...完`, final-`未` questions, `有冇` questions, general `唔`, and prohibitive `咪`.
+- Made the compatibility fallback word-order-sensitive and excluded `未` from the existing `唔/冇` directional-negation template without changing its accepted snapshots.
+- Moved `NegativeExperiential` from `unsupported_generalization` to `research_pending`; no productive or panel-backed promotion is claimed.
+- Increased positive-and-boundary coverage from 5 to 6, reduced implementation-only coverage from 54 to 53, and increased construction assertions from 1,238 to 1,246.
+
+## v0.5.210 — ScalarEvaluation reconciliation
+
+- Source-linked `對皮鞋唔算貴`, `價錢唔算貴`, and `都唔算貴` as focused `ScalarEvaluation` positives.
+- Added `中等價錢` as an executable nominal boundary that remains outside `ScalarEvaluation`.
+- Removed the unrelated scalar-value-noun + stative-predicate template and stopped redirecting retired price-specific labels to the general evaluation node.
+- Moved `ScalarEvaluation` from `unsupported_generalization` to `research_pending`; no productive or panel-backed promotion is claimed.
+- Increased positive-and-boundary coverage from 4 to 5, reduced implementation-only coverage from 55 to 54, and increased construction assertions from 1,234 to 1,238.
+
+## v0.5.209 — ScalarRangeFragment retirement
+
+- Retired `ScalarRangeFragment`, whose fallback assigned fragment status to any
+  core containing `價位` without mapped source support, accepted fixtures, or
+  an independently supported fragment boundary.
+- Removed its zero-weight `中等價位。` reachability probe and active
+  construction-test file.
+- Preserved ordinary structure: `中等價位` remains `ModifierNP`, bare `價位`
+  remains nominal material, and `呢個價位` remains
+  `OvertHeadDemonstrativeClassifierNP`.
+- Stopped redirecting the retired semantic-domain-specific
+  `PriceRangeFragment` alias to an active label.
+- Reduced active labels and construction notes from 165 to 164, increased
+  retired labels from 16 to 17, and reduced implementation-only coverage from
+  56 to 55.
+- Changed no source, corpus, panel, or promotion evidence and added no verifier
+  or generated validation tree.
+
 ## v0.5.208 — copular 係唔係 source/runtime reconciliation
 
 - Added source-linked positive coverage for `你係唔係識講德文咋？` and `係唔係每個學生都鍾意睇電視呀？`.

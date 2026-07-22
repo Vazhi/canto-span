@@ -1,6 +1,6 @@
 # Retired construction labels
 
-**Current retired labels:** 16
+**Current retired labels:** 17
 
 These labels are absent from the active runtime registry. This file is a navigation view; the canonical retirement evidence remains in the retirement TSV, individual archived notes where available, and the corresponding research records.
 
@@ -22,6 +22,7 @@ These labels are absent from the active runtime registry. This file is a navigat
 | `Comment` | `parser_heuristic` | The standalone Comment node never survived complete parser output, had no accepted fixture or standardized case, and duplicated comment/comment_predicate role metadata already carried by TopicComment. | TopicComment plus independently evidenced discourse-role research | `v0.5.197-shadowed-wrapper-retirement` |
 | `PerfectiveResultPredicate` | `unsupported_generalization` | The dedicated 解決咗 constructor was consumed by ordinary PerfectiveVP composition before complete output and contributed no independently sourced boundary beyond lexical predicate plus perfective aspect. | PerfectiveVP plus result-complement and lexical-result research | `v0.5.197-shadowed-wrapper-retirement` |
 | `ComparativeStative` | `unsupported_generalization` | The fallback treated stative plus 啲 as a generic comparative whenever the governed degree template lacked lexical slot metadata; the only probe 客氣啲 is better represented as scalar adjustment. | DegreeMannerAdverbial for property plus 啲; separate explicit surpass-comparative research | `v0.5.202-comparative-stative-retirement` |
+| `ScalarRangeFragment` | `unsupported_generalization` | The fallback assigned fragment status to every core containing 價位 despite having no mapped source, accepted fixture, or independently supported boundary. | ordinary nominal/scalar structure; future discourse-fragment research if independently evidenced | `v0.5.209-scalar-range-fragment-retirement` |
 
 ## Canonical records
 

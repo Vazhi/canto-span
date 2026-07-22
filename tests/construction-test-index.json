@@ -1,6 +1,6 @@
 {
   "schema": "canto-span-construction-test-index-v1",
-  "active_construction_count": 165,
+  "active_construction_count": 164,
   "files": [
     {
       "construction": "ANotAQuestion",
@@ -1430,17 +1430,17 @@
     {
       "construction": "NegativeExperiential",
       "file": "tests/constructions/NegativeExperiential.json",
-      "state": "implementation_positive_only",
+      "state": "positive_and_boundary",
       "exact_snapshot_positive_count": 0,
-      "focused_positive_count": 0,
-      "focused_boundary_count": 0,
+      "focused_positive_count": 3,
+      "focused_boundary_count": 5,
       "focused_review_only_count": 0,
       "np_case_count": 0,
       "implementation_probe_count": 2,
       "compatibility_alias_probe_count": 0,
-      "positive_case_count": 0,
-      "boundary_case_count": 0,
-      "executable_case_count": 2
+      "positive_case_count": 3,
+      "boundary_case_count": 5,
+      "executable_case_count": 10
     },
     {
       "construction": "NegativePotentialComplement",
@@ -2135,32 +2135,17 @@
     {
       "construction": "ScalarEvaluation",
       "file": "tests/constructions/ScalarEvaluation.json",
-      "state": "implementation_positive_only",
+      "state": "positive_and_boundary",
       "exact_snapshot_positive_count": 0,
-      "focused_positive_count": 0,
-      "focused_boundary_count": 0,
+      "focused_positive_count": 3,
+      "focused_boundary_count": 1,
       "focused_review_only_count": 0,
       "np_case_count": 0,
       "implementation_probe_count": 1,
       "compatibility_alias_probe_count": 0,
-      "positive_case_count": 0,
-      "boundary_case_count": 0,
-      "executable_case_count": 1
-    },
-    {
-      "construction": "ScalarRangeFragment",
-      "file": "tests/constructions/ScalarRangeFragment.json",
-      "state": "implementation_positive_only",
-      "exact_snapshot_positive_count": 0,
-      "focused_positive_count": 0,
-      "focused_boundary_count": 0,
-      "focused_review_only_count": 0,
-      "np_case_count": 0,
-      "implementation_probe_count": 1,
-      "compatibility_alias_probe_count": 0,
-      "positive_case_count": 0,
-      "boundary_case_count": 0,
-      "executable_case_count": 1
+      "positive_case_count": 3,
+      "boundary_case_count": 1,
+      "executable_case_count": 5
     },
     {
       "construction": "ScalarValueQuestion",

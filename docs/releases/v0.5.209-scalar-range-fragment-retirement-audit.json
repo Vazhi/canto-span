@@ -1,0 +1,78 @@
+{
+  "schema": "canto-span-release-handoff-audit-v3",
+  "release_id": "v0.5.209-scalar-range-fragment-retirement",
+  "handoff_sequence": 32,
+  "status_changes": [
+    {
+      "construction": "ScalarRangeFragment",
+      "old_status": "unsupported_generalization",
+      "new_status": "retired"
+    }
+  ],
+  "changed_construction_audit": [
+    {
+      "construction": "ScalarRangeFragment",
+      "old_status": "unsupported_generalization",
+      "new_status": "retired",
+      "plain_language_claim": "The former 價位-triggered wrapper added unsupported fragment status to ordinary nominal/scalar material; removing it preserves visible nominal structure without inventing discourse or copular relations.",
+      "code_locations": [
+        "main.js:CONSTRUCTION_LABEL_REGISTRY",
+        "main.js:RETIRED_CONSTRUCTION_LABELS",
+        "main.js:wrapPredicate",
+        "main.js:restrictiveScalarHostForFinalParticle",
+        "main.js:CP018_FRAGMENT_CONSTRUCTION_TYPES"
+      ],
+      "sources": [
+        {
+          "citation": "Canto Span LANE-10 measure and scalar source map CP021B-R19",
+          "locator": "ScalarRangeFragment finding and disposition",
+          "verification": "REPOSITORY_RESEARCH_RECORD_REVIEWED"
+        }
+      ],
+      "panel_response_count_total": 0,
+      "eligible_panel_response_count": 0,
+      "minimum_usable_judgments_per_critical_item": 0,
+      "survey_instrument_version": "none",
+      "survey_instrument_status": "not_started",
+      "quality_screen_status": "not_started",
+      "panel_adjudication_status": "not_started",
+      "unresolved_questions": [
+        "Which independently documented discourse contexts license bare or modified 價位 nominal material as a fragment?",
+        "Which price-range meanings belong to lexical semantics rather than a dedicated construction node?"
+      ]
+    }
+  ],
+  "supported_productive_pending_reaudit": [],
+  "implementation_validation": "At v0.5.209, regression remains 551/551, NP remains 43/43, and 1,234 construction assertions across 164 active labels pass. 中等價位 retains ModifierNP, 價位 retains NominalHeadSpan, and 呢個價位 retains OvertHeadDemonstrativeClassifierNP without ScalarRangeFragment.",
+  "linguistic_confidence": "Retirement removes an unsupported fragment analysis. It does not establish a productive price-range construction, omitted copula, or discourse-fragment rule.",
+  "code_analysis_overclaim_review": true,
+  "overclaim_review_scope": "Reviewed the active registry, retired alias target, template metadata, whole-core 價位 fallback, slot rules, semantic fragment guard, restrictive-focus host dependency, zero-weight probe, construction note, and LANE-10 source-map disposition.",
+  "release_documents": [
+    "docs/research/CP052-P1-SCALAR-RANGE-FRAGMENT-RETIREMENT-R1.md",
+    "archive/retired-labels/v0.5.209-scalar-range-fragment-retirement/ScalarRangeFragment.md",
+    "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+    "grammar/retired/README.md",
+    "data/release-baselines/v0.5.208-construction-statuses.json",
+    "data/retirement-review-state.json",
+    "docs/current/PROJECT-STATE.md",
+    "docs/current/TESTING.md",
+    "README.md",
+    "HANDOFF.md",
+    "CHANGELOG.md",
+    "main.js",
+    "tests/construction-test-index.json",
+    "manifest.json",
+    "package.json"
+  ],
+  "external_audit_ready": true,
+  "unresolved_release_questions": [
+    "The remaining 55 implementation-only labels still require source/runtime reconciliation.",
+    "The full retirement-review window remains open and must be completed no later than sequence 41.",
+    "RUL and PFV survey integration remains paused pending clean locked-instrument evidence."
+  ],
+  "base_status_snapshot": {
+    "path": "data/release-baselines/v0.5.208-construction-statuses.json",
+    "sha256": "520c88c9f371d418d37c661635d021ecfe9de3466d3d387df6270f329b5e93fc",
+    "runtime_version": "0.5.208"
+  }
+}

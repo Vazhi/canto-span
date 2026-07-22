@@ -553,18 +553,6 @@
       "legacy_probe_batch": "evaluation-scalar-question"
     },
     {
-      "case_id": "ESQWRAP-004",
-      "construction": "ScalarRangeFragment",
-      "source": "中等價位。",
-      "provenance": "docs/research/CP039-P1-EVALUATION-SCALAR-QUESTION-WRAPPER-AUDIT-R1.md#ESQWRAP-004",
-      "source_role": "code_specific_semantically_coherent_probe",
-      "assertion": "construction_present",
-      "linguistic_evidence_weight": 0,
-      "purpose": "runtime_reachability_only",
-      "scope_note": "Protects the current 價位-anchored fragment route only; it does not establish fragment status, a general scalar-range construction, or omitted copular structure.",
-      "legacy_probe_batch": "evaluation-scalar-question"
-    },
-    {
       "case_id": "ESQWRAP-005",
       "construction": "ScalarValueQuestion",
       "source": "幾錢呀？",

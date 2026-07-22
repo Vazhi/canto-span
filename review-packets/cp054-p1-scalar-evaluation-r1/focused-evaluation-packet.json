@@ -1,0 +1,84 @@
+{
+  "schema": "canto-span-source-runtime-reconciliation-packet-v1",
+  "packet_id": "CP054-P1-SCALAR-EVALUATION-R1",
+  "checkpoint": "CP054-P1",
+  "status": "VISIBLE_SOURCE_LINKED_RECONCILIATION",
+  "accepted_parent": "v0.5.209",
+  "target_internal_construction": "ScalarEvaluation",
+  "claim": {
+    "surface_profile": "negative lexical 算 evaluation with an overt property predicate and optional visible topic/focus material",
+    "boundary": "ordinary price-range nominal material does not instantiate ScalarEvaluation",
+    "removed_profile": "scalar-value noun plus stative predicate is no longer grouped with lexical 算 evaluation",
+    "linguistic_status_after_checkpoint": "research_pending"
+  },
+  "source_basis": [
+    {
+      "source_id": "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE",
+      "role": "exact overt-topic negative 算 price evaluation",
+      "locator": "user PDF p. 340",
+      "evidence_polarity": "positive_support"
+    },
+    {
+      "source_id": "SRC-WORDSHK-GAACING",
+      "role": "exact price-topic negative 算 evaluation and ordinary nominal boundary",
+      "locator": "價錢 noun entry; examples 價錢唔算貴 and 中等價錢",
+      "evidence_polarity": "positive_and_negative_boundary"
+    },
+    {
+      "source_id": "SRC-CUHK-CANTONESE-ONLINE-B6",
+      "role": "focus-adverb negative 算 evaluation in a hotel-price dialogue",
+      "locator": "李廣越 turn 都唔算貴",
+      "evidence_polarity": "positive_support"
+    }
+  ],
+  "development_set": {
+    "cases": [
+      {
+        "case_id": "SEV-E01",
+        "surface": "對皮鞋唔算貴。",
+        "class": "overt_topic_negative_syun_property_evaluation",
+        "expected": "construction_present",
+        "source_ids": [
+          "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
+        ],
+        "source_locator": "user PDF p. 340"
+      },
+      {
+        "case_id": "SEV-E02",
+        "surface": "價錢唔算貴。",
+        "class": "price_topic_negative_syun_property_evaluation",
+        "expected": "construction_present",
+        "source_ids": [
+          "SRC-WORDSHK-GAACING"
+        ],
+        "source_locator": "價錢 noun entry, exact example"
+      },
+      {
+        "case_id": "SEV-E03",
+        "surface": "都唔算貴。",
+        "class": "focus_adverb_negative_syun_property_evaluation",
+        "expected": "construction_present",
+        "source_ids": [
+          "SRC-CUHK-CANTONESE-ONLINE-B6"
+        ],
+        "source_locator": "hotel-booking dialogue, 李廣越 turn"
+      },
+      {
+        "case_id": "SEV-N01",
+        "surface": "中等價錢。",
+        "class": "nominal_price_range_boundary",
+        "expected": "construction_absent",
+        "source_ids": [
+          "SRC-WORDSHK-GAACING"
+        ],
+        "source_locator": "價錢 noun entry, collocation 中等價錢"
+      }
+    ]
+  },
+  "status_decision": {
+    "status_changed": true,
+    "old_status": "unsupported_generalization",
+    "new_status": "research_pending",
+    "reason": "Three checked exact positives and one nominal boundary support a narrow negative 算 evaluation profile; productive complement scope and panel evidence remain incomplete."
+  }
+}

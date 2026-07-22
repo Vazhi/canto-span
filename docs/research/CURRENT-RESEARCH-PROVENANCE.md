@@ -2,16 +2,18 @@
 
 ## Governance counts
 
-- active labels: **171**
+- active labels: **164**
 - `supported_productive`: **0**
-- `provisional_reaudit`: **2**
+- `provisional_reaudit`: **0**
 - `provisional`: **0**
-- `research_pending`: **58**
-- `unsupported_generalization`: **87**
+- `research_pending`: **64**
+- `unsupported_generalization`: **78**
 - `lexicalized_only`: **3**
-- `parser_heuristic`: **21**
+- `parser_heuristic`: **19**
 
-`PostverbalZoPerfectiveVP` and `ResourceUseLaiFunctionRelation` remain under re-audit. Historical acceptance files are not current status authority.
+`PostverbalZoPerfectiveVP` and `ResourceUseLaiFunctionRelation` are the two
+workflow-active `research_pending` constructions. Historical acceptance files
+are not current status authority.
 
 ## Current evidence records
 
@@ -25,20 +27,66 @@ Source registers, matrices, and detailed review files in this directory support 
 
 ## Postverbal `咗` result
 
-The re-audit verified four sources, manually reviewed five published exact examples, removed evidence weight from the untraceable six-hit corpus count, and recorded one completed Speaker A review. The v0.5.184 runtime now recognizes 4 of 6 controlled target forms after compositional NP integration. The remaining failures are `一篇文` lexical/category coverage and preservation through the final-`未` question wrapper; the aspectual claim remains under re-audit.
+The re-audit verified four sources, manually reviewed five published exact
+examples, and removed evidence weight from the untraceable six-hit corpus
+count. The current runtime preserves the narrow overt action-predicate + `咗` +
+licensed-NP profile and its reviewed boundaries. The eleven historical response
+records came from mixed legacy instruments and contribute zero usable
+item-level judgments under the current role-neutral panel standard.
 
-The implementation defect is now understood as partly a shared NP-assembly problem. The current remedy is **not** a list of source-example objects or example-specific lexical additions. The binding design is [`../current/NOUN-PHRASE-SUBSYSTEM.md`](../current/NOUN-PHRASE-SUBSYSTEM.md): build and independently test reusable NP structure, then integrate the perfective consumer without broadening its aspectual claim.
+The binding NP design remains
+[`../current/NOUN-PHRASE-SUBSYSTEM.md`](../current/NOUN-PHRASE-SUBSYSTEM.md):
+reusable licensed structure may feed the perfective consumer without broadening
+its aspectual claim. The next evidence action is inclusion in a clean,
+role-neutral mixed-construction survey wave.
 
 ## Resource + `用嚟／用來` result
 
-The earlier three-natural-attestation claim was withdrawn. Current reviewed evidence consists of one direct quotation, one editorial interview-derived instance, one published illustrative example, a purposive/conventionalization description, and a broader boundary source. The runtime has semantic overbreadth, coordination undercoverage, and token/NP coverage gaps.
+The earlier three-natural-attestation claim was withdrawn. Five checked sources
+now delimit direct-resource, instrumental, purposive, actual-use, separate-user,
+and coordination profiles. The committed 23-response pilot is useful diagnostic
+evidence but contributes zero usable item-level judgments for promotion because
+the instrument was binary, fixed-order, context-free, and interpretation-blind.
 
 ## Current implementation priority
 
-Infrastructure migration Phase 2 is complete. The next project task is Phase 3: remove authoring-time evidence metadata from `main.js`, retain minimal runtime label data and parser logic, and prove parser output is unchanged. Further NP expansion is deferred until the mechanical promotion validator is in place.
+Continue source/runtime reconciliation among the 53 remaining
+implementation-only labels, ranked by learner impact, exact source match, and
+risk of misleading analysis. The retirement-review window opened at handoff
+sequence 34 and must close by sequence 41. Do not create another
+release-specific verifier or generated validation tree.
+
+## `EvaluationWithDouSyun` external-evidence result
+
+[`CP053-P1-EVALUATION-WITH-DOU-SYUN-EXTERNAL-EVIDENCE-R1.md`](CP053-P1-EVALUATION-WITH-DOU-SYUN-EXTERNAL-EVIDENCE-R1.md)
+records independent dictionary and natural-transcript evidence for ordinary
+lexical `都算` evaluation. It does not support the active price-noun-specific
+wrapper or its zero-weight probe. Keep the label quarantined while its general
+evaluation boundaries are researched; no parser change is authorized by this
+checkpoint.
+
+## `ScalarEvaluation` reconciliation result
+
+[`CP054-P1-SCALAR-EVALUATION-RECONCILIATION-R1.md`](CP054-P1-SCALAR-EVALUATION-RECONCILIATION-R1.md)
+source-links three negative-`算` evaluation profiles and one ordinary nominal
+boundary. The unrelated price-noun predication profile and semantic-domain
+aliases were removed. `ScalarEvaluation` is now `research_pending`; complement
+productivity and panel evidence remain unresolved.
+
+## `NegativeExperiential` reconciliation result
+
+[`CP055-P1-NEGATIVE-EXPERIENTIAL-RECONCILIATION-R1.md`](CP055-P1-NEGATIVE-EXPERIENTIAL-RECONCILIATION-R1.md)
+source-links three exact preverbal `未/冇 + V過` statements and five
+word-order/negator boundaries. `NegativeExperiential` is now
+`research_pending`; productive verb/object scope and panel evidence remain
+unresolved.
 
 ## Frozen work
 
-- All second-speaker recruitment, scheduling, packet creation, and requests are frozen until the user explicitly unfreezes them. The two-speaker promotion requirement remains binding.
+- Fixed Speaker A/B work is historical. Current evidence uses one role-neutral
+  panel, the same instrument and criteria for every respondent, and usable
+  adjudicated judgments per critical item.
+- RUL/PFV instrument creation awaits the user prompt identified in the active
+  RUL construction note. Survey work for the parked construction backlog
+  remains frozen.
 - DEMO01 is abandoned. Its historical visible materials are archived; no held-out result was opened or used, and no render work remains active.
-- The ResourceUse Speaker A form remains optional deferred user-dependent work.

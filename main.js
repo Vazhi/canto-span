@@ -9,8 +9,10 @@ const { Plugin, PluginSettingTab, Setting, Notice } = require("obsidian");
  * never overwrite child learner roles.
  */
 
-const CANTO_SPAN_RUNTIME_VERSION = "0.5.208";
-// v0.5.208: source/runtime reconciliation for overt 係唔係 predicate-versus-tag profiles.
+const CANTO_SPAN_RUNTIME_VERSION = "0.5.211";
+// v0.5.211: reconciles source-linked preverbal 未/冇 experiential negation while preserving final-未 questions and excluding general 唔/咪 negation.
+// v0.5.210: narrows ScalarEvaluation to sourced negative 算 evaluation and removes the unrelated price-noun predication profile.
+// v0.5.209: retires the unsupported 價位-triggered ScalarRangeFragment fallback while preserving ordinary nominal structure.
 // v0.5.203: stores canonical construction notes in linguistic-status folders while workflow state remains frontmatter-only; parser behavior is unchanged.
 // v0.5.202: retires the misleading ComparativeStative fallback and routes source-supported property + 啲 adjustment through DegreeMannerAdverbial.
 // v0.5.201: groups the source-attested 唔該 + addressee + scalar-adjustment request as a transparent polite imperative while preserving its children.
@@ -1371,7 +1373,6 @@ const CONSTRUCTION_LABEL_REGISTRY = new Set([
   "PostposedExistentialQuestion",
   "PreferenceVP",
   "ScalarEvaluation",
-  "ScalarRangeFragment",
   "ScalarValueQuestion",
   "PriorityMarkerClause",
   "ProductiveVO",
@@ -1515,10 +1516,10 @@ const RETIRED_CONSTRUCTION_LABEL_REGISTRY = new Map([
   ["DeicticClassifierTopic", "Retired as a fused form+role label; use Topic with trace_detail.retired_label_alias='DeicticClassifierTopic' and deictic/classifier metadata, while preserving DemonstrativeClassifierNP for full demonstrative-classifier-head noun phrases."],
   ["BenefactivePurposeVP", "Retired as benefactive-subtype-specific; use SerialVerbPurposeChain with recipient/beneficiary slots for 煮飯畀我食-style chains."],
   ["BenefactiveRecipientFrame", "Retired as benefactive-subtype-specific. CP021B also retires RecipientFrame; no alias redirects this old semantic claim to either new relation."],
-  ["NegativePriceEvaluation", "Retired as semantic-domain-specific; use ScalarEvaluation with trace_detail.polarity_profile='negative' and scalar_domain='price'."],
-  ["PriceEvaluation", "Retired as semantic-domain-specific; use ScalarEvaluation with scalar_domain='price' / semantic_domain='price_property' metadata."],
+  ["NegativePriceEvaluation", "Retired as semantic-domain-specific. Source-linked negative 算 evaluation uses ScalarEvaluation; price remains contextual metadata rather than an alias boundary."],
+  ["PriceEvaluation", "Retired as semantic-domain-specific. Ordinary price-noun predication remains nominal/topic-comment structure and does not redirect to ScalarEvaluation."],
   ["PriceQuestion", "Retired as semantic-domain-specific; use ScalarValueQuestion with scalar_domain='price' metadata for 幾錢-type value questions."],
-  ["PriceRangeFragment", "Retired as semantic-domain-specific; use ScalarRangeFragment with scalar_domain='price' metadata for 價位-type range fragments."],
+  ["PriceRangeFragment", "Retired as semantic-domain-specific. 價位 remains ordinary nominal/scalar material unless independently supported fragment evidence is established."],
   ["SubjectNegatedPredicateClause", "Retired as polarity-specific; use SubjectPredicateClause with trace_detail.retired_label_alias='SubjectNegatedPredicateClause' and negated-predicate slots."],
   ["SubjectStativePredicateClause", "Retired as predicate-subtype-specific; use SubjectPredicateClause with trace_detail.predicate_subtype='stative'."],
   ["SubjectTimeLocationPredicateClause", "Retired as modifier-stack-specific; use SubjectPredicateClause with assigned time/location slots."],
@@ -1535,6 +1536,7 @@ const RETIRED_CONSTRUCTION_LABEL_REGISTRY = new Map([
   ["Comment", "Retired at v0.5.197: the standalone child wrapper never survived complete parser output and duplicated the comment/comment_predicate role metadata already carried by TopicComment."],
   ["PerfectiveResultPredicate", "Retired at v0.5.197: the lexical-item-specific 解決咗 wrapper was shadowed by ordinary PerfectiveVP composition and added no independently supported boundary."],
   ["ComparativeStative", "Retired at v0.5.202: the residual stative + 啲 fallback mislabeled degree adjustment as a generic comparative. Source-supported property + 啲 forms use DegreeMannerAdverbial; explicit surpass comparatives require separate structure."],
+  ["ScalarRangeFragment", "Retired at v0.5.209: the 價位-triggered fallback added unsupported fragment status to ordinary nominal/scalar material and had no source-linked positive or accepted fixture."],
 ]);
 
 
@@ -1550,10 +1552,7 @@ const RETIRED_CONSTRUCTION_LABEL_ALIASES = new Map([
   ["InterestQuestion", "ExistentialQuestion"],
   ["DeicticClassifierTopic", "Topic"],
   ["BenefactivePurposeVP", "SerialVerbPurposeChain"],
-  ["NegativePriceEvaluation", "ScalarEvaluation"],
-  ["PriceEvaluation", "ScalarEvaluation"],
   ["PriceQuestion", "ScalarValueQuestion"],
-  ["PriceRangeFragment", "ScalarRangeFragment"],
   ["SubjectNegatedPredicateClause", "SubjectPredicateClause"],
   ["SubjectStativePredicateClause", "SubjectPredicateClause"],
   ["SubjectTimeLocationPredicateClause", "SubjectPredicateClause"],
@@ -2328,7 +2327,8 @@ const CONSTRUCTION_TEMPLATES = [
     type: "NegativeExperiential",
     label: "NegExp",
     template: ["subject?", "focus_adverb?", "negator!", "experiential_vp!", "particle?"],
-    note: "Negative/not-yet experiential: 未 + experiential VP."
+    constraints: { slot_surface_in: { negator: ["未", "冇"] } },
+    note: "Negative/not-yet experiential: preverbal 未/冇 + experiential VP."
   },
   {
     type: "ExperientialYesNoQuestion",
@@ -2400,10 +2400,8 @@ const CONSTRUCTION_TEMPLATES = [
     label: "ValueEval",
     template: ["negator!", "evaluation_marker!", "degree?", "stative_predicate!", "particle?"],
     output_slots: ["scalar_evaluation", "evaluation_clause", "predicate", "stative_predicate", "negator"],
-    retired_label_alias: "NegativePriceEvaluation",
     polarity_profile: "negative",
-    scalar_domain: "price",
-    note: "Negative scalar evaluation. Price is domain metadata, not the active construction label."
+    note: "Negative lexical 算 evaluation with an overt property predicate; subject/topic and focus material remain visible when present."
   },
   {
     type: "EvaluationWithDouSyun",
@@ -2416,24 +2414,6 @@ const CONSTRUCTION_TEMPLATES = [
     label: "Approx",
     template: ["price_noun!", "approximation!", "particle?"],
     note: "Approximate price/quantity fragment: amount + approximation marker."
-  },
-  {
-    type: "ScalarRangeFragment",
-    label: "ValueRange",
-    template: ["modifier?", "scalar_range_noun!", "particle?"],
-    output_slots: ["scalar_range_fragment", "scalar_range_noun", "scalar_value_noun"],
-    retired_label_alias: "PriceRangeFragment",
-    scalar_domain: "price",
-    note: "Scalar range fragment anchored by range/value nouns such as 價位. Price is domain metadata, not the active construction label."
-  },
-  {
-    type: "ScalarEvaluation",
-    label: "ValueEval",
-    template: ["scalar_value_noun!", "stative_predicate!", "particle?"],
-    output_slots: ["scalar_evaluation", "evaluation_clause", "scalar_value_noun", "predicate", "stative_predicate"],
-    retired_label_alias: "PriceEvaluation",
-    scalar_domain: "price",
-    note: "Scalar value noun plus stative predicate. Price is domain metadata, not the active construction label."
   },
   {
     type: "ScalarValueQuestion",
@@ -2834,11 +2814,13 @@ const CATEGORY_SPAN_TEMPLATES = [
     type: "NegatedDirectionalMotionVP",
     label: "NegMotionVP",
     template: ["m4_negator!", "directional_motion_vp!"],
+    template_family: "generative_template",
+    constraints: { slot_surface_in: { m4_negator: ["唔", "冇"] } },
     role_overrides: {
-      m4_negator: { label: "func", syntax: "negator", note: "唔 negates the following directional-motion VP." }
+      m4_negator: { label: "func", syntax: "negator", note: "唔 or aspect-sensitive 冇 negates the following directional-motion VP." }
     },
     output_slots: ["negated_directional_motion_vp", "directional_motion_vp", "vp", "action_vp", "predicate", "movement_verb", "motion_predicate", "negator"],
-    note: "Slot-based negated directional motion VP: m4 negator + directional-motion VP, e.g. 唔落嚟."
+    note: "Slot-based negated directional motion VP: licensed negator + directional-motion VP, e.g. 唔落嚟 or 冇去."
   },
   {
     type: "LocativePlacePhrase",
@@ -4657,8 +4639,7 @@ function constructionSlotsByType(type, children = []) {
     slots.push("scalar_value_question", "scalar_dimension_question", "question_fragment", "scalar_wh_degree", "scalar_dimension_predicate", "predicate");
     if (has("price_question") || has("price_noun") || has("scalar_value_noun")) slots.push("price_question");
   }
-  if (["ScalarEvaluation"].includes(type)) slots.push("scalar_evaluation", "evaluation_clause", "predicate", "stative_predicate", "comment", "comment_predicate", "scalar_value_noun", "price_noun");
-  if (["ScalarRangeFragment"].includes(type)) slots.push("scalar_range_fragment", "scalar_range_noun", "scalar_value_noun", "price_range_noun", "price_noun");
+  if (["ScalarEvaluation"].includes(type)) slots.push("scalar_evaluation", "evaluation_clause", "predicate", "stative_predicate", "comment", "comment_predicate", "negator", "evaluation_marker");
   if (["ConditionResult"].includes(type)) slots.push("condition_result", "condition_clause", "result_clause", "predicate");
   if (["ClauseRelationEdge"].includes(type)) slots.push("clause_relation", "left_relation_member", "right_relation_member", "antecedent_clause", "consequent_clause", "reason_clause", "result_clause", "concession_clause", "counterexpectation_clause", "earlier_event", "later_event", "temporal_subordinate", "matrix_clause", "linker_left", "linker_right", "predicate", "clause", "clause_like", "reported_content", "content_clause");
   if (["ClauseRelationMemberSpan"].includes(type)) slots.push("clause_relation_member", "left_relation_member", "right_relation_member", "predicate", "clause", "clause_like");
@@ -15841,9 +15822,30 @@ function wrapCore(core) {
     return [construction("ReportedSpeech", "Reported", reportedChildren, { note: "Reported speech/thought: NP 話 + clause.", trace: traceInfo("legacy_surface_rule", { rule: "NP before 話 and material after", reason: "Surface speech verb fallback." }) })];
   }
 
-  // Experiential/not-yet: V過未 / 未 V過.
-  if (hasConstruction(core, "ExperientialVP") && hasSurface(core, "未")) {
-    return [construction("ExperientialQuestion", "Exp未", core, { note: "Experiential/not-yet question or statement.", trace: traceInfo("legacy_surface_rule", { rule: "ExperientialVP + 未", reason: "Construction + marker fallback." }) })];
+  // Experiential negation and final-未 questions are order-sensitive.
+  const experientialIndex = core.findIndex((node) => nodeCanFillSlot(node, "experiential_vp"));
+  const negativeExperientialIndex = core.findIndex((node, index) =>
+    index < experientialIndex && ["未", "冇"].includes(flattenSurface(node))
+  );
+  if (experientialIndex >= 0 && negativeExperientialIndex >= 0) {
+    const negatorSurface = flattenSurface(core[negativeExperientialIndex]);
+    return [construction("NegativeExperiential", "NegExp", core, {
+      note: "Source-linked preverbal experiential negation: 未/冇 precedes a VP containing experiential 過.",
+      trace: traceInfo("generative_template", {
+        construction_type: "NegativeExperiential",
+        template_family: "generative_template",
+        template: ["subject?", "focus_adverb?", "negator!", "experiential_vp!", "topic_or_object?", "particle?"],
+        constraints: { slot_surface_in: { negator: ["未", "冇"] }, marker_precedes_experiential_vp: true },
+        assigned_slots: core.map((node, index) => index === negativeExperientialIndex ? "negator" : index === experientialIndex ? "experiential_vp" : nodeCanFillSlot(node, "subject") ? "subject" : nodeCanFillSlot(node, "topic_or_object") ? "topic_or_object" : "retained_material"),
+        polarity_profile: negatorSurface === "未" ? "not_yet" : "aspectual_negative",
+        surfaces: core.map((node) => flattenSurface(node)),
+        reason: "Order-sensitive fallback preserves source-attested preverbal negation when an overt object is not fully grouped."
+      })
+    })];
+  }
+  const finalMeiIndex = core.findIndex((node, index) => index > experientialIndex && flattenSurface(node) === "未");
+  if (experientialIndex >= 0 && finalMeiIndex >= 0) {
+    return [construction("ExperientialQuestion", "Exp未", core, { note: "Experiential question with final 未 after the experiential VP.", trace: traceInfo("legacy_surface_rule", { rule: "ExperientialVP before final 未", reason: "Order-sensitive construction + marker fallback." }) })];
   }
 
   // Intention fallback: normally handled by IntentionFrame template.
@@ -15854,14 +15856,13 @@ function wrapCore(core) {
     return [construction("DesiderativeVP", "WantVP", core, { note: "Desire/wanting construction, often 好想 + VP.", trace: traceInfo("legacy_surface_rule", { rule: "has 想 plus degree/VP", reason: "Surface modal fallback." }) })];
   }
 
-  // Price evaluation forms. Keep internal structure visible; native-speaker preferences belong in lesson notes.
-  if (hasSurface(core, "唔") && hasSurface(core, "算") && (hasSurface(core, "貴") || hasSurface(core, "價錢") || hasSurface(core, "價位"))) {
+  // Source-linked negative 算 evaluation. Keep the overt predicate and any subject/topic material visible.
+  if (hasSurface(core, "唔") && hasSurface(core, "算") && hasSurface(core, "貴")) {
     return [construction("ScalarEvaluation", "ValueEval", core, {
-      slots: ["scalar_evaluation", "evaluation_clause", "predicate", "stative_predicate", "negator", "price_noun"],
-      note: "Negative scalar evaluation in the price domain. Price is semantic-domain metadata, not the active construction label.",
+      slots: ["scalar_evaluation", "evaluation_clause", "predicate", "stative_predicate", "negator", "evaluation_marker"],
+      note: "Negative lexical 算 evaluation with an overt property predicate; visible subject/topic material remains outside the lexical predicate relation.",
       trace: traceInfo("generative_template", {
         construction_type: "ScalarEvaluation",
-        retired_label_alias: "NegativePriceEvaluation",
         template_family: "generative_template",
         template: ["negator!", "evaluation_marker!", "degree?", "stative_predicate!", "particle?"],
         assigned_slots: ["negator", "evaluation_marker", "stative_predicate"],
@@ -15869,7 +15870,7 @@ function wrapCore(core) {
         scalar_domain: "price",
         semantic_domain: "price_property",
         rule: "negator + evaluation marker + stative/scalar predicate",
-        reason: "Uses broad ScalarEvaluation; price remains domain metadata and negative polarity remains trace metadata.",
+        reason: "Uses the source-linked negative 算 evaluation profile; price is contextual metadata and negative polarity remains trace metadata.",
         surfaces: core.map((node) => flattenSurface(node)),
       })
     })];
@@ -15877,43 +15878,6 @@ function wrapCore(core) {
   if (hasSurface(core, "都") && hasSurface(core, "算") && (hasSurface(core, "中等") || hasSurface(core, "價錢") || hasSurface(core, "價位"))) {
     return [construction("EvaluationWithDouSyun", "都算", core, { note: "Evaluation with 都 + 算; child tokens keep their own roles.", trace: traceInfo("generative_or_heuristic_slot_rule", { rule: "focus_adverb + evaluation_marker + price candidates", reason: "Slot-based heuristic; not a full surface string." }) })];
   }
-  if (hasSurface(core, "價位")) {
-    return [construction("ScalarRangeFragment", "ValueRange", core, {
-      slots: ["scalar_range_fragment", "scalar_range_noun", "scalar_value_noun", "price_range_noun", "price_noun"],
-      note: "Scalar range fragment in the price domain. Keep 中 + 價位 visible when present.",
-      trace: traceInfo("generative_template", {
-        construction_type: "ScalarRangeFragment",
-        retired_label_alias: "PriceRangeFragment",
-        template_family: "generative_template",
-        template: ["modifier?", "scalar_range_noun!", "particle?"],
-        assigned_slots: ["scalar_range_noun"],
-        scalar_domain: "price",
-        semantic_domain: "price_property",
-        rule: "scalar range noun/價位 candidate",
-        reason: "Uses broad ScalarRangeFragment; price remains domain metadata.",
-        surfaces: core.map((node) => flattenSurface(node)),
-      })
-    })];
-  }
-  if ((hasSurface(core, "價錢") && hasSurface(core, "中等")) || (hasSurface(core, "中") && hasSurface(core, "價"))) {
-    return [construction("ScalarEvaluation", "ValueEval", core, {
-      slots: ["scalar_evaluation", "evaluation_clause", "scalar_value_noun", "price_noun", "predicate", "stative_predicate"],
-      note: "Scalar evaluation in the price domain. Runtime parses structure; native-speaker alternatives are lesson-note information.",
-      trace: traceInfo("generative_template", {
-        construction_type: "ScalarEvaluation",
-        retired_label_alias: "PriceEvaluation",
-        template_family: "generative_template",
-        template: ["scalar_value_noun!", "stative_predicate!", "particle?"],
-        assigned_slots: ["scalar_value_noun", "stative_predicate"],
-        scalar_domain: "price",
-        semantic_domain: "price_property",
-        rule: "scalar value noun + stative predicate",
-        reason: "Uses broad ScalarEvaluation; price remains domain metadata instead of the construction label.",
-        surfaces: core.map((node) => flattenSurface(node)),
-      })
-    })];
-  }
-
   // Scalar value question patterns. Price is domain metadata, not the construction label.
   if (hasSurface(core, "幾錢")) {
     const scalar = scalarValueQuestionFallback(core);
@@ -18253,7 +18217,6 @@ function restrictiveScalarHostForFinalParticle(nodes) {
     "QuantityNP",
     "ApproximateQuantity",
     "DiMarkedNP",
-    "ScalarRangeFragment",
   ].includes(host.type)) {
     if (restrictiveFocusHostHasUnresolvedClassifierHeadFusion(host)) return null;
     return host;
@@ -20542,7 +20505,6 @@ const CP018_FRAGMENT_CONSTRUCTION_TYPES = new Set([
   "LocativeFragment",
   "NegativeCognitionFragment",
   "NegatedExistentialFragment",
-  "ScalarRangeFragment",
 ]);
 
 const CP018_RELATION_SENSITIVE_MARKERS = new Set(["用", "畀", "俾", "同", "陪", "跟", "喺", "由", "對"]);
