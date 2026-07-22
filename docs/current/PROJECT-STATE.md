@@ -4,7 +4,7 @@
 
 | Measure | Current value |
 |---|---:|
-| Runtime | v0.5.200 |
+| Runtime | v0.5.201 |
 | Runtime labels | 166 |
 | Current construction notes | 166 |
 | Active working notes | 2 |
@@ -35,7 +35,7 @@ Release-specific wrapper verifiers, eight separate probe files, obsolete version
 
 No parser span, runtime label, construction status, source claim, or survey result changed.
 
-## v0.5.200 passive/permissive 畀 reconciliation
+## v0.5.201 passive/permissive 畀 reconciliation
 
 `PassivePermissiveRelation` now has two source-linked positive regressions. The permissive example preserves `打籃球` as a nested reviewed `ProductiveVO`, preventing `籃球` from being misreported as a retained patient. The passive example preserves the transparent passive/permissive interpretation boundary. Status remains `research_pending`; no panel or productivity claim was added.
 
@@ -66,4 +66,4 @@ Survey integration remains paused while collection proceeds. No current instrume
 
 ## Next substantive work
 
-Continue source/runtime reconciliation among the remaining 61 implementation-only labels by learner impact and research tractability. `MannerAdverbialVP` and `PassivePermissiveRelation` now have narrow source-linked positive coverage; their broader productivity and negative boundaries remain unresolved. Do not create release-specific audit frameworks; add permanent evidence only where it changes the construction record.
+Continue source/runtime reconciliation among the remaining 60 implementation-only labels by learner impact and research tractability. `MannerAdverbialVP`, `PassivePermissiveRelation`, and `PoliteImperativeClause` now have narrow source-linked positive coverage; their broader productivity and negative boundaries remain unresolved. Do not create release-specific audit frameworks; add permanent evidence only where it changes the construction record.

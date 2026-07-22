@@ -13,7 +13,7 @@ The recovery ZIP must include `.git/`.
 
 ## Binding state
 
-- runtime: **v0.5.200**
+- runtime: **v0.5.201**
 - runtime labels / current construction notes: **166 / 166**
 - workflow: **2 active / 164 archived**
 - retired labels: **15**
@@ -49,4 +49,4 @@ Promotion thresholds are based on the minimum usable adjudicated judgments per c
 
 ## Next substantive work
 
-Continue ranking the remaining 61 implementation-only labels by source/runtime mismatch and learner impact. `MannerAdverbialVP` and `PassivePermissiveRelation` now have narrow source-linked positive fixtures; their broader productivity and negative boundaries remain unresolved. The full dormant-label review is complete; no active label remains uncovered. RUL and PFV survey integration stays paused while collection proceeds. When native-panel evidence becomes blocking again, remind the user to provide the survey-guidance prompt before drafting or revising the instrument.
+Continue ranking the remaining 60 implementation-only labels by source/runtime mismatch and learner impact. `MannerAdverbialVP` and `PassivePermissiveRelation` now have narrow source-linked positive fixtures; their broader productivity and negative boundaries remain unresolved. The full dormant-label review is complete; no active label remains uncovered. RUL and PFV survey integration stays paused while collection proceeds. When native-panel evidence becomes blocking again, remind the user to provide the survey-guidance prompt before drafting or revising the instrument.

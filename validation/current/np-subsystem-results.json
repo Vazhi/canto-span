@@ -1,6 +1,6 @@
 {
   "schema": "canto-span-np-subsystem-test-result-v1",
-  "runtime_version": "0.5.200",
+  "runtime_version": "0.5.201",
   "matrix_runtime_version": "0.5.184",
   "scope": "bounded_compositional_np_first_slice",
   "total": 43,

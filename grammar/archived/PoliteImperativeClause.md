@@ -6,7 +6,7 @@ status: "unsupported_generalization"
 confidence: "unsupported"
 claim_layer: "language"
 lane: "LANE-10"
-last_reviewed: "unknown"
+last_reviewed: "2026-07-22"
 last_status_migrated: "2026-07-21"
 source_count: 2
 verified_source_count: 2
@@ -37,20 +37,20 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
+code_document_reconciled: true
+code_document_review_date: "2026-07-22"
+code_document_review_commit: "v0.5.201"
+code_document_code_locations: ["main.js:politeRequestAdjustmentFallback", "tests/fixtures/regression-snapshots.json:REG-0549"]
 current_standard_reaudit_complete: false
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
 standard_test_file: "tests/constructions/PoliteImperativeClause.json"
-standard_test_coverage: "implementation_positive_only"
-standard_positive_test_count: 0
+standard_test_coverage: "positive_only"
+standard_positive_test_count: 1
 standard_boundary_test_count: 0
 standard_implementation_probe_count: 1
-standard_executable_test_count: 1
+standard_executable_test_count: 2
 source_ids: ["SRC-CHOW-2007-CANTONESE-EVERYONE", "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"]
 runtime_active: true
 workflow_state: "archived"
@@ -58,7 +58,7 @@ workflow_priority: null
 workflow_since: "2026-07-21"
 workflow_reason: "not_selected_for_current_bounded_working_set"
 runtime_code_references: 5
-accepted_fixtures: 0
+accepted_fixtures: 1
 tags: ["canto-span/grammar", "canto-span/status/unsupported_generalization", "canto-span/lane/lane-10", "canto-span/workflow/archived"]
 ---
 
@@ -74,9 +74,9 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 - Linguistic status: `unsupported_generalization`
 - Linguistic confidence: `unsupported`
-- Current action: `quarantine_unexercised_runtime_path`
+- Current action: `retain_narrow_source_linked_request_profile_boundaries_unresolved`
 - Productive acceptance eligible: **no**
-- Last linguistic review: not recorded
+- Last linguistic review: 2026-07-22
 
 ## Sources
 
@@ -106,7 +106,8 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 ## Negative and boundary cases
 
 - Standard executable test file: `tests/constructions/PoliteImperativeClause.json`
-- Evidence state: `none_recorded`
+- Source-linked positive regression: `REG-0549` preserves `唔該你快啲。` as a transparent `PoliteImperativeClause` with nested `FormulaDiscourseUnit` and `DegreeMannerAdverbial`.
+- Evidence state: `one_narrow_attested_request_profile`
 - Executable or review records containing this label:
   - `test-data/grammar-claim-provenance-CP021B.json`
   - `test-data/grammar-claim-provenance-CP021B.tsv`
@@ -115,11 +116,11 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 ## Implementation state
 
-- Lifecycle: `runtime_referenced_without_accepted_fixtures`
+- Lifecycle: `source_linked_narrow_profile_with_unresolved_productivity`
 - Visible/focused tests: `not_assessed_in_current_definition_of_done_review`
 - Render review: `not_assessed_in_current_definition_of_done_review`
 - Held-out evaluation: `NOT_ESTABLISHED`
-- Regression: `not_assessed_in_current_definition_of_done_review`
+- Regression: `REG-0549_PASS`
 - Code–documentation comparison: `pending_current_definition_of_done_line_by_line_review`
 
 ## Open questions and blockers

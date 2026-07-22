@@ -47,10 +47,10 @@ independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
 standard_test_file: "tests/constructions/FormulaDiscourseUnit.json"
 standard_test_coverage: "positive_only"
-standard_positive_test_count: 31
+standard_positive_test_count: 32
 standard_boundary_test_count: 0
 standard_implementation_probe_count: 0
-standard_executable_test_count: 31
+standard_executable_test_count: 32
 source_ids: ["SRC-CHENG-2022-HAI6-RESPONSE", "SRC-HUANG-HER-KONG-2025-INTERROGATIVES", "SRC-LI-2006-FINAL-PARTICLES", "SRC-YIP-MATTHEWS-2000-BASIC"]
 runtime_active: true
 workflow_state: "archived"

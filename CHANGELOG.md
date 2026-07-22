@@ -1,3 +1,11 @@
+## v0.5.201 — polite request adjustment reconciliation
+
+- Added the source-linked regression `唔該你快啲。`.
+- Preserved `唔該` as a nested `FormulaDiscourseUnit`, `你` as the overt addressee, and `快啲` as a nested `DegreeMannerAdverbial`.
+- Kept standalone `唔該` and unrelated scalar-modifier structures unchanged.
+- Retained `PoliteImperativeClause` as `unsupported_generalization`; no unrestricted productivity, register equivalence, or panel claim was added.
+- Increased regression coverage to 549 and construction assertions to 1,229 without adding verification machinery.
+
 ## v0.5.200 — passive/permissive 畀 source/runtime reconciliation
 
 - Added source-linked regressions for permissive `我畀佢打籃球。` and passive `我畀阿媽鬧。`.

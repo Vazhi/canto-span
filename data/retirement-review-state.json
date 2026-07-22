@@ -8,5 +8,5 @@
   "next_review_window_opens_at_sequence": 31,
   "review_required_by_sequence": 41,
   "state": "full_review_complete",
-  "notes": "v0.5.197 completed the full dormant and uncovered-label review. v0.5.198 consolidated verification; v0.5.199 and v0.5.200 reconciled two retained constructions without adding or retiring labels. The next full review window opens at sequence 31 and is required by sequence 41."
+  "notes": "v0.5.197 completed the full dormant and uncovered-label review. v0.5.198 consolidated verification; v0.5.199 through v0.5.201 reconciled three retained constructions; v0.5.201 does not advance the retirement-review cadence because it changes no construction status or registry membership without adding or retiring labels. The next full review window opens at sequence 31 and is required by sequence 41."
 }

@@ -9,7 +9,8 @@ const { Plugin, PluginSettingTab, Setting, Notice } = require("obsidian");
  * never overwrite child learner roles.
  */
 
-const CANTO_SPAN_RUNTIME_VERSION = "0.5.200";
+const CANTO_SPAN_RUNTIME_VERSION = "0.5.201";
+// v0.5.201: groups the source-attested 唔該 + addressee + scalar-adjustment request as a transparent polite imperative while preserving its children.
 // v0.5.200: preserves source-attested permissive/passive 畀 frames while grouping 打籃球 as an activity VP rather than a retained patient.
 // v0.5.199: reconciles the source-attested repeated-manner + overt 咁/噉 pattern, preserves a nested VP, and removes stale release-pinned verification assumptions.
 // v0.5.198: consolidates current verification profiles, validation outputs, and implementation reachability probes. Parser behavior and linguistic statuses remain unchanged.
@@ -10685,6 +10686,38 @@ function pathPhraseFromParts(marker, path) {
   });
 }
 
+function politeRequestAdjustmentFallback(core) {
+  const { core: bareCore, particles } = withoutTrailingParticles(core);
+  const compact = withoutIgnorableSpaceText(bareCore);
+  if (compact.length < 3) return null;
+  const formulaSurface = flattenSurface(compact[0]);
+  if (formulaSurface !== "唔該") return null;
+  const addressee = compact[1];
+  if (!nodeCanFillSlot(addressee, "subject")) return null;
+  const adjustmentNodes = compact.slice(2);
+  const adjustment = adjustmentNodes.length === 1 && adjustmentNodes[0].kind === "construction" && adjustmentNodes[0].type === "DegreeMannerAdverbial"
+    ? adjustmentNodes[0]
+    : categorySubspanFor(adjustmentNodes, ["DegreeMannerAdverbial"]);
+  if (!adjustment || flattenSurface(adjustment) !== adjustmentNodes.map((node) => flattenSurface(node)).join("")) return null;
+  const formula = compact[0].kind === "construction" && compact[0].type === "FormulaDiscourseUnit"
+    ? compact[0]
+    : transparentDiscourseFormulaFallback([compact[0]]);
+  if (!formula || formula.type !== "FormulaDiscourseUnit") return null;
+  const children = [formula, addressee, adjustment, ...particles];
+  return construction("PoliteImperativeClause", "PoliteImperative", children, {
+    note: "Source-linked polite adjustment request: 唔該 + addressee + scalar adjustment.",
+    slots: mergeUnique(templateDerivedSlots("PoliteImperativeClause", children), ["polite_imperative_clause", "imperative", "politeness_marker", "subject", "modifier", "predicate", "clause"]),
+    trace: traceInfo("generative_template", {
+      construction_type: "PoliteImperativeClause",
+      template: ["politeness_formula!", "addressee!", "scalar_adjustment!", "particle?"],
+      assigned_slots: ["politeness_marker", "subject", "modifier", ...particles.map(() => "particle")],
+      surfaces: children.map((node) => flattenSurface(node)),
+      reason: "A conventional 唔該 request formula addresses a person and scopes over a following scalar adjustment while all overt material remains visible.",
+      not_claims: ["not_every_m4_goi1_is_an_imperative", "not_equivalent_to_cing2_in_all_registers", "not_unrestricted_productivity"],
+    }),
+  });
+}
+
 function politePathImperativeFallback(core) {
   const { core: bareCore, particles } = withoutTrailingParticles(core);
   const compact = withoutIgnorableSpaceText(bareCore);
@@ -15555,6 +15588,9 @@ function wrapCore(core) {
 
   const namingSelfIntroductionSpan = namingSelfIntroductionFrameFallback(core);
   if (namingSelfIntroductionSpan) return [namingSelfIntroductionSpan];
+
+  const politeRequestAdjustmentSpan = politeRequestAdjustmentFallback(core);
+  if (politeRequestAdjustmentSpan) return [politeRequestAdjustmentSpan];
 
   const transparentDiscourseFormulaSpan = transparentDiscourseFormulaFallback(core);
   if (transparentDiscourseFormulaSpan) return [transparentDiscourseFormulaSpan];

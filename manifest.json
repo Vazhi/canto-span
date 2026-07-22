@@ -1,9 +1,9 @@
 {
   "id": "canto-span",
   "name": "Canto Span",
-  "version": "0.5.200",
+  "version": "0.5.201",
   "minAppVersion": "1.5.0",
-  "description": "v0.5.200 passive/permissive 畀 reconciliation: preserves a reviewed activity VP inside the relation and adds source-linked permissive/passive regressions.",
+  "description": "v0.5.201 polite-request reconciliation: preserves 唔該, the addressee, and scalar adjustment inside a narrow source-linked wrapper.",
   "author": "Chris Crawford / OpenAI ChatGPT",
   "authorUrl": "",
   "isDesktopOnly": false
