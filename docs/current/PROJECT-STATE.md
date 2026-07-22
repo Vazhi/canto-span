@@ -4,7 +4,7 @@
 
 | Measure | Current value |
 |---|---:|
-| Runtime | v0.5.195 |
+| Runtime | v0.5.196 |
 | Runtime labels | 168 |
 | Current construction notes | 168 |
 | Active working notes | 2 |
@@ -19,6 +19,22 @@
 | `parser_heuristic` | 20 |
 
 The canonical registry is the union of `grammar/active/*.md` and `grammar/archived/*.md`; it matches the 168 runtime labels exactly.
+
+## v0.5.196 final reachable-wrapper audit
+
+All thirteen labels that remained `no_direct_cases` after v0.5.195 received exact constructor and complete-output review. Eleven reachable labels now have semantically coherent zero-weight implementation probes: `CompletionThenClause`, `CompoundDirectionalMotionVP`, `ConditionResult`, `DegreeModifiedLexicalStative`, `NegatedLexicalizedStative`, `PassivePermissiveRelation`, `PoliteImperativeClause`, `ProgressivePlaceQuestion`, `ProgressivePurposeClause`, `ProgressiveTransitivePredicate`, and `PurposePredicate`.
+
+`Comment` and `PerfectiveResultPredicate` remain uncovered because their constructors are shadowed in complete output. `Comment` is still planned for merge into `TopicComment` role metadata; the controlled `解決咗` wrapper is consumed by `PerfectiveVP`. No fabricated probes were added for either label.
+
+Current construction coverage:
+
+- positive and boundary: **2**;
+- positive only: **100**;
+- implementation positive only: **63**;
+- compatibility alias only: **1**;
+- no direct cases: **2**.
+
+No recognized parser span, runtime label, or linguistic status changed.
 
 ## v0.5.195 evaluation, scalar, and question wrapper audit
 

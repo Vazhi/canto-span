@@ -33,20 +33,20 @@ Every one of the 168 active labels has exactly one file under `tests/constructio
 
 Each file records the current executable cases assigned to that construction and an explicit coverage state. The construction-note frontmatter points to the file and records its positive, boundary, and total executable counts.
 
-Current v0.5.195 coverage:
+Current v0.5.196 coverage:
 
 | Coverage state | Constructions |
 |---|---:|
 | positive and boundary | 2 |
 | positive only | 100 |
-| implementation positive only | 52 |
+| implementation positive only | 63 |
 | compatibility alias only | 1 |
 | boundary only | 0 |
-| no direct cases | 13 |
+| no direct cases | 2 |
 
 `implementation_positive_only` means the parser emits the label on a frozen
 reachability probe, but the case has explicit zero linguistic evidence weight.
-`compatibility_alias_only` means the label is exposed as a public alias for a distinct internal construction rather than emitted as its own node. The 13 uncovered labels remain visible test debt. Empty files do not claim that
+`compatibility_alias_only` means the label is exposed as a public alias for a distinct internal construction rather than emitted as its own node. The two uncovered labels remain visible test debt: `Comment` and `PerfectiveResultPredicate` are constructor-present but shadowed in complete output. Empty files do not claim that
 the constructions are correct, natural, supported, or unreachable.
 
 ## Boundary suites

@@ -1,0 +1,329 @@
+{
+  "schema": "canto-span-result-change-state-wrapper-audit-v1",
+  "runtime_version": "0.5.196",
+  "checkpoint": "v0.5.196-result-change-state-wrapper-audit",
+  "parser_recognized_span_behavior_changed": false,
+  "linguistic_status_changed": false,
+  "labels_audited": 11,
+  "implementation_probes_added": 10,
+  "shadowed_labels_retained": 1,
+  "linguistic_evidence_weight_added": 0,
+  "total": 65,
+  "passed": 65,
+  "failed": 0,
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "runtime version is 0.5.196",
+      "pass": true,
+      "detail": "0.5.196"
+    },
+    {
+      "name": "inventory has eleven labels",
+      "pass": true,
+      "detail": "11"
+    },
+    {
+      "name": "probe schema",
+      "pass": true,
+      "detail": "canto-span-result-change-state-reachability-probes-v1"
+    },
+    {
+      "name": "probe file has ten cases",
+      "pass": true,
+      "detail": "10"
+    },
+    {
+      "name": "probe file has ten unique target labels",
+      "pass": true
+    },
+    {
+      "name": "all probes have zero evidence weight",
+      "pass": true
+    },
+    {
+      "name": "RESCHG-001A reaches CausativeResultFrame",
+      "pass": true,
+      "detail": "佢整冧咗間屋。: CausativeResultFrame,CausativeResultPredicate,ModifiedNP"
+    },
+    {
+      "name": "CausativeResultFrame coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "CausativeResultFrame has one implementation probe",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "CausativeResultFrame keeps zero direct positives",
+      "pass": true
+    },
+    {
+      "name": "CausativeResultFrame note records CP036 zero-weight reachability",
+      "pass": true,
+      "detail": "grammar/archived/CausativeResultFrame.md"
+    },
+    {
+      "name": "RESCHG-001B reaches CausativeResultPredicate",
+      "pass": true,
+      "detail": "佢整冧咗間屋。: CausativeResultFrame,CausativeResultPredicate,ModifiedNP"
+    },
+    {
+      "name": "CausativeResultPredicate coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "CausativeResultPredicate has one implementation probe",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "CausativeResultPredicate keeps zero direct positives",
+      "pass": true
+    },
+    {
+      "name": "CausativeResultPredicate note records CP036 zero-weight reachability",
+      "pass": true,
+      "detail": "grammar/archived/CausativeResultPredicate.md"
+    },
+    {
+      "name": "RESCHG-002A reaches ModalChangeIntoResultFrame",
+      "pass": true,
+      "detail": "佢會變成老師。: ModalChangeIntoResultFrame,ChangeIntoPredicate"
+    },
+    {
+      "name": "ModalChangeIntoResultFrame coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "ModalChangeIntoResultFrame has one implementation probe",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "ModalChangeIntoResultFrame keeps zero direct positives",
+      "pass": true
+    },
+    {
+      "name": "ModalChangeIntoResultFrame note records CP036 zero-weight reachability",
+      "pass": true,
+      "detail": "grammar/archived/ModalChangeIntoResultFrame.md"
+    },
+    {
+      "name": "RESCHG-002B reaches ChangeIntoPredicate",
+      "pass": true,
+      "detail": "佢會變成老師。: ModalChangeIntoResultFrame,ChangeIntoPredicate"
+    },
+    {
+      "name": "ChangeIntoPredicate coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "ChangeIntoPredicate has one implementation probe",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "ChangeIntoPredicate keeps zero direct positives",
+      "pass": true
+    },
+    {
+      "name": "ChangeIntoPredicate note records CP036 zero-weight reachability",
+      "pass": true,
+      "detail": "grammar/archived/ChangeIntoPredicate.md"
+    },
+    {
+      "name": "RESCHG-003 reaches DisposalChangeIntoResultFrame",
+      "pass": true,
+      "detail": "佢會將呢間屋變成餐廳。: DisposalChangeIntoResultFrame,OvertHeadDemonstrativeClassifierNP,ChangeIntoPredicate"
+    },
+    {
+      "name": "DisposalChangeIntoResultFrame coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "DisposalChangeIntoResultFrame has one implementation probe",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "DisposalChangeIntoResultFrame keeps zero direct positives",
+      "pass": true
+    },
+    {
+      "name": "DisposalChangeIntoResultFrame note records CP036 zero-weight reachability",
+      "pass": true,
+      "detail": "grammar/archived/DisposalChangeIntoResultFrame.md"
+    },
+    {
+      "name": "RESCHG-004 reaches ResultStateClause",
+      "pass": true,
+      "detail": "好多都熟咗喇。: ResultStateClause"
+    },
+    {
+      "name": "ResultStateClause coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "ResultStateClause has one implementation probe",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "ResultStateClause keeps zero direct positives",
+      "pass": true
+    },
+    {
+      "name": "ResultStateClause note records CP036 zero-weight reachability",
+      "pass": true,
+      "detail": "grammar/archived/ResultStateClause.md"
+    },
+    {
+      "name": "RESCHG-005A reaches TransformationResultFrame",
+      "pass": true,
+      "detail": "佢變咗做老師。: TransformationResultFrame,TransformationResultPredicate"
+    },
+    {
+      "name": "TransformationResultFrame coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "TransformationResultFrame has one implementation probe",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "TransformationResultFrame keeps zero direct positives",
+      "pass": true
+    },
+    {
+      "name": "TransformationResultFrame note records CP036 zero-weight reachability",
+      "pass": true,
+      "detail": "grammar/archived/TransformationResultFrame.md"
+    },
+    {
+      "name": "RESCHG-005B reaches TransformationResultPredicate",
+      "pass": true,
+      "detail": "佢變咗做老師。: TransformationResultFrame,TransformationResultPredicate"
+    },
+    {
+      "name": "TransformationResultPredicate coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "TransformationResultPredicate has one implementation probe",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "TransformationResultPredicate keeps zero direct positives",
+      "pass": true
+    },
+    {
+      "name": "TransformationResultPredicate note records CP036 zero-weight reachability",
+      "pass": true,
+      "detail": "grammar/archived/TransformationResultPredicate.md"
+    },
+    {
+      "name": "RESCHG-006A reaches SeemingPerfectiveResultClause",
+      "pass": true,
+      "detail": "呢度好似今日停咗雨。: SeemingPerfectiveResultClause,PerfectiveObjectResultPredicate"
+    },
+    {
+      "name": "SeemingPerfectiveResultClause coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "SeemingPerfectiveResultClause has one implementation probe",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "SeemingPerfectiveResultClause keeps zero direct positives",
+      "pass": true
+    },
+    {
+      "name": "SeemingPerfectiveResultClause note records CP036 zero-weight reachability",
+      "pass": true,
+      "detail": "grammar/archived/SeemingPerfectiveResultClause.md"
+    },
+    {
+      "name": "RESCHG-006B reaches PerfectiveObjectResultPredicate",
+      "pass": true,
+      "detail": "呢度好似今日停咗雨。: SeemingPerfectiveResultClause,PerfectiveObjectResultPredicate"
+    },
+    {
+      "name": "PerfectiveObjectResultPredicate coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "PerfectiveObjectResultPredicate has one implementation probe",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "PerfectiveObjectResultPredicate keeps zero direct positives",
+      "pass": true
+    },
+    {
+      "name": "PerfectiveObjectResultPredicate note records CP036 zero-weight reachability",
+      "pass": true,
+      "detail": "grammar/archived/PerfectiveObjectResultPredicate.md"
+    },
+    {
+      "name": "PerfectiveResultPredicate absent from complete output",
+      "pass": true,
+      "detail": "NeedsContext,PerfectiveVP"
+    },
+    {
+      "name": "PerfectiveVP consumes the same surface",
+      "pass": true,
+      "detail": "NeedsContext,PerfectiveVP"
+    },
+    {
+      "name": "PerfectiveResultPredicate fallback still exists internally",
+      "pass": true,
+      "detail": "PerfectiveResultPredicate"
+    },
+    {
+      "name": "PerfectiveResultPredicate remains no-direct",
+      "pass": true,
+      "detail": "no_direct_cases"
+    },
+    {
+      "name": "PerfectiveResultPredicate has zero implementation probes",
+      "pass": true
+    },
+    {
+      "name": "PerfectiveResultPredicate note records shadowing",
+      "pass": true
+    },
+    {
+      "name": "test index has 63 implementation-positive-only labels",
+      "pass": true,
+      "detail": "63"
+    },
+    {
+      "name": "test index has 2 no-direct labels",
+      "pass": true,
+      "detail": "2"
+    },
+    {
+      "name": "test index has 168 active labels",
+      "pass": true,
+      "detail": "168"
+    }
+  ],
+  "failures": []
+}

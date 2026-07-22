@@ -1,6 +1,6 @@
 {
   "schema": "canto-span-current-focused-result-v9",
-  "checkpoint": "v0.5.195-evaluation-scalar-question-wrapper-audit",
+  "checkpoint": "v0.5.196-final-reachable-wrapper-audit",
   "parser_behavior_changed": false,
   "registry_owner": "grammar/active/*.md + grammar/archived/*.md",
   "status_counts": {

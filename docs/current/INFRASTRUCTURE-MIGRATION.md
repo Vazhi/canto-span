@@ -166,3 +166,10 @@ provenance for collected legacy data.
 - reduced the no-direct backlog from 23 to 13 labels;
 - current coverage is 2 positive-and-boundary, 100 positive-only, 52 implementation-positive-only, 1 compatibility-alias-only, and 13 no-direct labels;
 - changed no parser span, runtime label, or linguistic status.
+## v0.5.196 final reachable-wrapper audit
+
+The last thirteen uncovered labels were audited at constructor and complete-output level. Eleven labels gained zero-weight implementation probes. `Comment` and `PerfectiveResultPredicate` remain explicit constructor-shadowed debt rather than receiving fabricated coverage.
+
+- current coverage is 2 positive-and-boundary, 100 positive-only, 63 implementation-positive-only, 1 compatibility-alias-only, and 2 no-direct labels;
+- no recognized parser span, runtime label, or linguistic status changed;
+- the next structural task is a controlled merge/expose/retire disposition for the two shadowed labels.

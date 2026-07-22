@@ -30,7 +30,7 @@ function check(name, condition, detail = "") {
   if (!pass) failures.push({ name, detail: String(detail) });
 }
 
-check("runtime version is 0.5.195", api.runtimeVersion === "0.5.195", api.runtimeVersion);
+check("runtime version is 0.5.196", api.runtimeVersion === "0.5.196", api.runtimeVersion);
 check("inventory has ten labels", inventory.length === 10, inventory.length);
 check("probe schema", probes.schema === "canto-span-evaluation-scalar-question-reachability-probes-v1", probes.schema);
 check("probe file has ten cases", probes.cases.length === 10, probes.cases.length);
@@ -59,15 +59,15 @@ check("sourced copular identity question does not reach IdentityWhQuestion", !la
 check("source-style scheduling question does not reach SchedulingQuestion", !labelsFor("你想約佢幾時呀？").includes("SchedulingQuestion"), labelsFor("你想約佢幾時呀？").join(","));
 check("postposed and preverbal existential questions route differently", labelsFor("有書冇？").includes("PostposedExistentialQuestion") && labelsFor("有冇書？").includes("ExistentialQuestion") && !labelsFor("有冇書？").includes("PostposedExistentialQuestion"), `${labelsFor("有書冇？").join(",")} / ${labelsFor("有冇書？").join(",")}`);
 
-check("test index has 52 implementation-positive-only labels", index.files.filter((row) => row.state === "implementation_positive_only").length === 52, index.files.filter((row) => row.state === "implementation_positive_only").length);
+check("test index has 63 implementation-positive-only labels", index.files.filter((row) => row.state === "implementation_positive_only").length === 63, index.files.filter((row) => row.state === "implementation_positive_only").length);
 check("test index has one compatibility-alias-only label", index.files.filter((row) => row.state === "compatibility_alias_only").length === 1, index.files.filter((row) => row.state === "compatibility_alias_only").length);
-check("test index has 13 no-direct labels", index.files.filter((row) => row.state === "no_direct_cases").length === 13, index.files.filter((row) => row.state === "no_direct_cases").length);
+check("test index has 2 no-direct labels", index.files.filter((row) => row.state === "no_direct_cases").length === 2, index.files.filter((row) => row.state === "no_direct_cases").length);
 check("test index has 168 active labels", index.active_construction_count === 168 && index.files.length === 168, index.files.length);
 
 const result = {
   schema: "canto-span-evaluation-scalar-question-wrapper-audit-v1",
   runtime_version: api.runtimeVersion,
-  checkpoint: "v0.5.195-evaluation-scalar-question-wrapper-audit",
+  checkpoint: "v0.5.196-evaluation-scalar-question-wrapper-audit",
   parser_recognized_span_behavior_changed: false,
   linguistic_status_changed: false,
   labels_audited: inventory.length,

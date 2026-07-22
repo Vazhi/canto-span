@@ -13,7 +13,7 @@ The recovery ZIP must include `.git/`.
 
 ## Binding state
 
-- runtime: **v0.5.195**
+- runtime: **v0.5.196**
 - runtime labels / current construction notes: **168 / 168**
 - workflow: **2 active / 166 archived**
 - retired labels: **13**
@@ -36,23 +36,21 @@ Promotion thresholds are based on the minimum usable adjudicated judgments per c
 
 ## Read next
 
-1. `docs/research/CP039-P1-EVALUATION-SCALAR-QUESTION-WRAPPER-AUDIT-R1.md`
-2. `docs/research/CP039-P1-EVALUATION-SCALAR-QUESTION-WRAPPER-INVENTORY-R1.tsv`
+1. `docs/research/CP040-P1-FINAL-REACHABLE-WRAPPER-AUDIT-R1.md`
+2. `docs/research/CP040-P1-FINAL-REACHABLE-WRAPPER-INVENTORY-R1.tsv`
 3. `docs/current/PROJECT-STATE.md`
 4. `docs/current/DEFINITION-OF-DONE.md`
 5. `docs/current/SURVEY-BATCHING.md`
 6. `docs/current/NATIVE-SPEAKER-REVIEW.md`
-7. `docs/research/CP038-P1-SPEECH-TRANSFER-COMPLEMENT-WRAPPER-AUDIT-R1.md`
-8. `docs/research/CP038-P1-SPEECH-TRANSFER-COMPLEMENT-WRAPPER-INVENTORY-R1.tsv`
+7. `docs/research/CP039-P1-EVALUATION-SCALAR-QUESTION-WRAPPER-AUDIT-R1.md`
+8. `docs/research/CP038-P1-SPEECH-TRANSFER-COMPLEMENT-WRAPPER-AUDIT-R1.md`
 9. `docs/research/CP037-P1-NOMINAL-WRAPPER-AUDIT-R1.md`
-10. `docs/research/CP037-P1-NOMINAL-WRAPPER-INVENTORY-R1.tsv`
-11. `docs/research/CP037-DEMONSTRATIVEHEADNP-RETIREMENT-R1.md`
-12. `docs/research/CP036-P1-RESULT-CHANGE-STATE-WRAPPER-AUDIT-R1.md`
-13. `docs/research/CP035-P1-EXPERIENTIAL-DELIMITED-WRAPPER-AUDIT-R1.md`
-14. `docs/research/CP034-P1-LOW-REFERENCE-WRAPPER-AUDIT-R1.md`
-15. `docs/research/CP033-P1-RUNTIME-REACHABILITY-AUDIT-R1.md`
-16. `docs/research/CP032-P1-RUL01-SURVEY-READINESS-R1.md`
+10. `docs/research/CP036-P1-RESULT-CHANGE-STATE-WRAPPER-AUDIT-R1.md`
+11. `docs/research/CP035-P1-EXPERIENTIAL-DELIMITED-WRAPPER-AUDIT-R1.md`
+12. `docs/research/CP034-P1-LOW-REFERENCE-WRAPPER-AUDIT-R1.md`
+13. `docs/research/CP033-P1-RUNTIME-REACHABILITY-AUDIT-R1.md`
+14. `docs/research/CP032-P1-RUL01-SURVEY-READINESS-R1.md`
 
 ## Next substantive work
 
-Continue constructor-specific review of the 13 labels that remain `no_direct_cases`. Prioritize coherent low-reference families, distinguish complete-parser reachability from internal fallback construction, and add only semantically coherent zero-weight probes. Do not infer linguistic support from reachability. When native-panel evidence becomes blocking again, remind the user to provide the survey-guidance prompt before drafting the instrument.
+Resolve the two constructor-shadowed labels that remain `no_direct_cases`: merge, expose narrowly, or retire `Comment` and `PerfectiveResultPredicate` without broadening grammar or changing recognized spans accidentally. The full dormant-label review is due by handoff sequence 23. When native-panel evidence becomes blocking again, remind the user to provide the survey-guidance prompt before drafting the instrument.

@@ -28,10 +28,10 @@ Workflow archiving parks a note outside current work. It does not retire its run
 
 - positive and boundary: **2**
 - positive only: **100**
-- implementation positive only: **52**
+- implementation positive only: **63**
 - compatibility alias only: **1**
 - boundary only: **0**
-- no direct standardized cases: **13**
+- no direct standardized cases: **2**
 - command: `npm test`
 
 ## Active working set

@@ -1,3 +1,11 @@
+## v0.5.196 — final reachable-wrapper audit
+
+- Audited all thirteen labels that remained without direct standardized cases after v0.5.195.
+- Added eleven semantically coherent zero-weight implementation probes across completion sequencing, directional motion, condition/result, lexical statives, `畀` relations, polite path commands, progressive-place questions, and progressive-purpose internals.
+- Retained `Comment` and `PerfectiveResultPredicate` as explicit constructor-shadowed labels instead of fabricating coverage.
+- Increased construction assertions from 1,210 to 1,221 and reduced the no-direct backlog from 13 to 2 labels.
+- Changed no recognized parser span, runtime label, or linguistic status.
+
 ## v0.5.195 — evaluation, scalar, and question wrapper audit
 
 - Audited ten acceptability, scalar, evaluation, identity, scheduling, temporal, opinion, and existential-question labels at exact constructor and complete-output level.

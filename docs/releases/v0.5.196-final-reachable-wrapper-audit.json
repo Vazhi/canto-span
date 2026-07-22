@@ -1,0 +1,38 @@
+{
+  "schema": "canto-span-release-handoff-audit-v2",
+  "release_id": "v0.5.196-final-reachable-wrapper-audit",
+  "handoff_sequence": 20,
+  "status_changes": [],
+  "changed_construction_audit": [],
+  "supported_productive_pending_reaudit": [],
+  "implementation_validation": "PASS required before handoff: 545 regression cases, 43 NP cases, 1,221 construction assertions, 168 note/test alignment, eleven final reachable-wrapper zero-weight probes, explicit checks for the two constructor-shadowed labels, historical reachability audits, panel workflow, promotion and release gates, documentation links, and repository verification.",
+  "linguistic_confidence": "No construction gained linguistic evidence or status. All eleven probes have evidence weight zero. Clause-linking, directional constituency, lexical-stative, passive/permissive, imperative, progressive word-order, and purpose-relation questions remain unresolved. Comment and PerfectiveResultPredicate remain constructor-shadowed.",
+  "code_analysis_overclaim_review": true,
+  "overclaim_review_scope": "Inspected exact constructors and complete parser output for all thirteen remaining no-direct labels. Added probes only for eleven complete-output-reachable labels, preserved code/source and composition mismatches, and refused to fabricate coverage for Comment or PerfectiveResultPredicate.",
+  "release_documents": [
+    "docs/research/CP040-P1-FINAL-REACHABLE-WRAPPER-AUDIT-R1.md",
+    "docs/research/CP040-P1-FINAL-REACHABLE-WRAPPER-INVENTORY-R1.tsv",
+    "test-data/final-reachable-wrapper-reachability-probes-v1.json",
+    "tools/verify-final-reachable-wrapper-audit.js",
+    "docs/current/PROJECT-STATE.md",
+    "docs/current/TESTING.md",
+    "GRAMMAR-INDEX.md",
+    "HANDOFF.md",
+    "CHANGELOG.md"
+  ],
+  "external_audit_ready": true,
+  "unresolved_release_questions": [
+    "Comment remains constructor-present but absent from complete parser output; its planned merge into TopicComment role metadata is not yet implemented.",
+    "PerfectiveResultPredicate remains constructor-present but is consumed by PerfectiveVP in complete output.",
+    "CompletionThenClause and ConditionResult still require dedicated evidence and composition review rather than reachability-based support.",
+    "CompoundDirectionalMotionVP remains narrower than the full sourced directional system and does not settle object order or combination productivity.",
+    "DegreeModifiedLexicalStative and NegatedLexicalizedStative remain lexicon-dependent analyses with unresolved productive boundaries.",
+    "PassivePermissiveRelation intentionally preserves unresolved passive-versus-permissive readings.",
+    "PoliteImperativeClause recognizes only a narrow path-command shape.",
+    "ProgressivePlaceQuestion remains order-sensitive and differs from ordinary preverbal-locative questions.",
+    "ProgressivePurposeClause and its two child wrappers infer purpose from bounded adjacency without an overt linker.",
+    "The full dormant-label review remains due by handoff sequence 23.",
+    "RUL and PFV survey integration remains paused while collection proceeds."
+  ],
+  "base_tree": "d00acfd8bf8f8f5f1252f2666e66e98510a38285"
+}

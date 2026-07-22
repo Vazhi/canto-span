@@ -2,7 +2,7 @@
 
 ## Current baseline
 
-- runtime: **v0.5.195**
+- runtime: **v0.5.196**
 - active labels / construction notes: **168 / 168**
 - workflow: **2 active / 166 archived**
 - retired labels: **13**

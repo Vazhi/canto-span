@@ -102,6 +102,11 @@ required=(
   docs/releases/v0.5.195-evaluation-scalar-question-wrapper-audit.json
   test-data/evaluation-scalar-question-reachability-probes-v1.json
   tools/verify-evaluation-scalar-question-wrapper-audit.js
+  docs/research/CP040-P1-FINAL-REACHABLE-WRAPPER-AUDIT-R1.md
+  docs/research/CP040-P1-FINAL-REACHABLE-WRAPPER-INVENTORY-R1.tsv
+  docs/releases/v0.5.196-final-reachable-wrapper-audit.json
+  test-data/final-reachable-wrapper-reachability-probes-v1.json
+  tools/verify-final-reachable-wrapper-audit.js
   archive/retired-labels/v0.5.193-nominal-wrapper-audit/DemonstrativeHeadNP.md
   archive/retired-labels/v0.5.190-low-reference-wrapper-audit/TemporalAdverbialClause.md
   test-data/rul-survey-readiness-probes-v1.json
@@ -147,6 +152,7 @@ node tools/verify-result-change-state-wrapper-audit.js >/dev/null
 node tools/verify-nominal-wrapper-audit.js >/dev/null
 node tools/verify-speech-transfer-complement-wrapper-audit.js >/dev/null
 node tools/verify-evaluation-scalar-question-wrapper-audit.js >/dev/null
+node tools/verify-final-reachable-wrapper-audit.js >/dev/null
 node tools/audit-native-conflict-burden.js >/dev/null
 node tools/verify-native-panel-snapshot.js >/dev/null
 node tools/verify-pfv-panel-snapshot.js >/dev/null

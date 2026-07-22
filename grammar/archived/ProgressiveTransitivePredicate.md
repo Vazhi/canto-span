@@ -46,11 +46,11 @@ implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
 standard_test_file: "tests/constructions/ProgressiveTransitivePredicate.json"
-standard_test_coverage: "no_direct_cases"
+standard_test_coverage: "implementation_positive_only"
 standard_positive_test_count: 0
 standard_boundary_test_count: 0
-standard_implementation_probe_count: 0
-standard_executable_test_count: 0
+standard_implementation_probe_count: 1
+standard_executable_test_count: 1
 source_ids: ["SRC-ALDERETE-ETAL-2017-SYNOPSIS", "SRC-FAN-2024-JAU-VP-ASPECT"]
 runtime_active: true
 workflow_state: "archived"
@@ -138,3 +138,9 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Full pre-migration record: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
 - Status migration date: 2026-07-21.
 - The frozen JSON preserves the former wide schema; this note is the active authoring record.
+
+## CP040 final reachable-wrapper audit
+
+- Implementation-only reachability: `FRWRAP-010` with `佢喺度洗緊菜煮飯。`
+- Protects the nested 洗緊菜 child inside the bounded parent only. It does not require this dedicated child rather than ordinary progressive/transitive composition.
+- Its linguistic evidence weight is **0**; reachability does not establish naturalness, productivity, construction identity, or promotion eligibility.

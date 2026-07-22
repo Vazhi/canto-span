@@ -1,0 +1,248 @@
+{
+  "schema": "canto-span-experiential-delimited-wrapper-audit-v1",
+  "runtime_version": "0.5.196",
+  "checkpoint": "v0.5.196-experiential-delimited-wrapper-audit",
+  "parser_recognized_span_behavior_changed": false,
+  "retained_linguistic_status_changed": false,
+  "labels_audited": 6,
+  "implementation_probes_added": 7,
+  "labels_retired": 0,
+  "linguistic_evidence_weight_added": 0,
+  "total": 49,
+  "passed": 49,
+  "failed": 0,
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "runtime version is 0.5.196",
+      "pass": true,
+      "detail": "0.5.196"
+    },
+    {
+      "name": "probe schema",
+      "pass": true,
+      "detail": "canto-span-experiential-delimited-reachability-probes-v1"
+    },
+    {
+      "name": "probe file has seven cases",
+      "pass": true,
+      "detail": "7"
+    },
+    {
+      "name": "all probes have zero evidence weight",
+      "pass": true
+    },
+    {
+      "name": "six labels audited",
+      "pass": true
+    },
+    {
+      "name": "EXPDEL-001A reaches NegativeExperiential",
+      "pass": true,
+      "detail": "我未見過。:NegativeExperiential,ExperientialVP"
+    },
+    {
+      "name": "EXPDEL-001B reaches NegativeExperiential",
+      "pass": true,
+      "detail": "我冇睇過。:NegativeExperiential,ExperientialVP"
+    },
+    {
+      "name": "EXPDEL-002 reaches ExperientialQuestion",
+      "pass": true,
+      "detail": "你飲過茶未？:ExperientialQuestion,TransitiveVP,ExperientialVP"
+    },
+    {
+      "name": "EXPDEL-003 reaches ExperientialMotionGoalVP",
+      "pass": true,
+      "detail": "我未去過美國。:ExperientialClause,ExperientialMotionGoalVP,NegatedDirectionalMotionVP,DirectionalMotionVP"
+    },
+    {
+      "name": "EXPDEL-004 reaches MotionDelimitedVP",
+      "pass": true,
+      "detail": "去睇吓醫生。:TransitiveVP,MotionDelimitedVP,DirectionalMotionVP"
+    },
+    {
+      "name": "EXPDEL-005 reaches CognitionDelimitedVP",
+      "pass": true,
+      "detail": "諗吓。:CognitionDelimitedVP"
+    },
+    {
+      "name": "EXPDEL-006 reaches CognitionDelimitedObjectVP",
+      "pass": true,
+      "detail": "諗吓呢個問題。:CognitionDelimitedObjectVP,CognitionDelimitedVP,OvertHeadDemonstrativeClassifierNP"
+    },
+    {
+      "name": "NegativeExperiential coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "NegativeExperiential implementation probe count",
+      "pass": true,
+      "detail": "2"
+    },
+    {
+      "name": "NegativeExperiential direct positive count stays zero",
+      "pass": true
+    },
+    {
+      "name": "NegativeExperiential boundary count stays zero",
+      "pass": true
+    },
+    {
+      "name": "NegativeExperiential note records CP035 reachability",
+      "pass": true,
+      "detail": "grammar/archived/NegativeExperiential.md"
+    },
+    {
+      "name": "ExperientialQuestion coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "ExperientialQuestion implementation probe count",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "ExperientialQuestion direct positive count stays zero",
+      "pass": true
+    },
+    {
+      "name": "ExperientialQuestion boundary count stays zero",
+      "pass": true
+    },
+    {
+      "name": "ExperientialQuestion note records CP035 reachability",
+      "pass": true,
+      "detail": "grammar/archived/ExperientialQuestion.md"
+    },
+    {
+      "name": "ExperientialMotionGoalVP coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "ExperientialMotionGoalVP implementation probe count",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "ExperientialMotionGoalVP direct positive count stays zero",
+      "pass": true
+    },
+    {
+      "name": "ExperientialMotionGoalVP boundary count stays zero",
+      "pass": true
+    },
+    {
+      "name": "ExperientialMotionGoalVP note records CP035 reachability",
+      "pass": true,
+      "detail": "grammar/archived/ExperientialMotionGoalVP.md"
+    },
+    {
+      "name": "MotionDelimitedVP coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "MotionDelimitedVP implementation probe count",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "MotionDelimitedVP direct positive count stays zero",
+      "pass": true
+    },
+    {
+      "name": "MotionDelimitedVP boundary count stays zero",
+      "pass": true
+    },
+    {
+      "name": "MotionDelimitedVP note records CP035 reachability",
+      "pass": true,
+      "detail": "grammar/archived/MotionDelimitedVP.md"
+    },
+    {
+      "name": "CognitionDelimitedVP coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "CognitionDelimitedVP implementation probe count",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "CognitionDelimitedVP direct positive count stays zero",
+      "pass": true
+    },
+    {
+      "name": "CognitionDelimitedVP boundary count stays zero",
+      "pass": true
+    },
+    {
+      "name": "CognitionDelimitedVP note records CP035 reachability",
+      "pass": true,
+      "detail": "grammar/archived/CognitionDelimitedVP.md"
+    },
+    {
+      "name": "CognitionDelimitedObjectVP coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "CognitionDelimitedObjectVP implementation probe count",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "CognitionDelimitedObjectVP direct positive count stays zero",
+      "pass": true
+    },
+    {
+      "name": "CognitionDelimitedObjectVP boundary count stays zero",
+      "pass": true
+    },
+    {
+      "name": "CognitionDelimitedObjectVP note records CP035 reachability",
+      "pass": true,
+      "detail": "grammar/archived/CognitionDelimitedObjectVP.md"
+    },
+    {
+      "name": "preverbal 未 object statement currently misroutes to ExperientialQuestion",
+      "pass": true,
+      "detail": "ExperientialQuestion,ExperientialVP"
+    },
+    {
+      "name": "冇 object statement currently loses NegativeExperiential",
+      "pass": true,
+      "detail": "ExperientialVP,ModifiedNP"
+    },
+    {
+      "name": "有冇 experiential question currently misses ExperientialQuestion",
+      "pass": true,
+      "detail": "DirectionalMotionVP"
+    },
+    {
+      "name": "source-linked cognition polar continuation currently misses delimited wrappers",
+      "pass": true
+    },
+    {
+      "name": "registry remains 168 labels",
+      "pass": true,
+      "detail": "168"
+    },
+    {
+      "name": "63 labels are implementation positive only",
+      "pass": true,
+      "detail": "63"
+    },
+    {
+      "name": "2 labels remain no-direct",
+      "pass": true,
+      "detail": "2"
+    }
+  ],
+  "failures": []
+}

@@ -128,7 +128,7 @@ const expectedCounts = {
   parser_heuristic: 20,
   lexicalized_only: 3,
 };
-check("status counts match v0.5.195 evaluation/scalar/question checkpoint", Object.entries(expectedCounts).every(([status, count]) => counts[status] === count) && Object.keys(counts).length === Object.keys(expectedCounts).length, JSON.stringify(counts));
+check("status counts match v0.5.196 evaluation/scalar/question checkpoint", Object.entries(expectedCounts).every(([status, count]) => counts[status] === count) && Object.keys(counts).length === Object.keys(expectedCounts).length, JSON.stringify(counts));
 
 const result = {
   schema: "canto-span-construction-notes-validation-v2",
