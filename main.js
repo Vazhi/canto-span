@@ -9,7 +9,8 @@ const { Plugin, PluginSettingTab, Setting, Notice } = require("obsidian");
  * never overwrite child learner roles.
  */
 
-const CANTO_SPAN_RUNTIME_VERSION = "0.5.199";
+const CANTO_SPAN_RUNTIME_VERSION = "0.5.200";
+// v0.5.200: preserves source-attested permissive/passive 畀 frames while grouping 打籃球 as an activity VP rather than a retained patient.
 // v0.5.199: reconciles the source-attested repeated-manner + overt 咁/噉 pattern, preserves a nested VP, and removes stale release-pinned verification assumptions.
 // v0.5.198: consolidates current verification profiles, validation outputs, and implementation reachability probes. Parser behavior and linguistic statuses remain unchanged.
 // v0.5.196: audits all thirteen remaining no-direct labels; eleven receive zero-evidence reachability probes while Comment and PerfectiveResultPredicate remain constructor-shadowed. No recognized parser span or linguistic-status changes.
@@ -160,6 +161,7 @@ const PRODUCTIVE_VO = {
   "聽歌": { verb: "聽", object: "歌", label: "VP", type: "ProductiveVO" },
   "講嘢": { verb: "講", object: "嘢", label: "VP", type: "ProductiveVO" },
   "打電話": { verb: "打", object: "電話", label: "VP", type: "ProductiveVO" },
+  "打籃球": { verb: "打", object: "籃球", label: "VP", type: "ProductiveVO" },
   "聽電話": { verb: "聽", object: "電話", label: "VP", type: "ProductiveVO" },
   "做功課": { verb: "做", object: "功課", label: "VP", type: "ProductiveVO" },
   "返學": { verb: "返", object: "學", label: "VP", type: "ProductiveVO" },
@@ -12238,16 +12240,21 @@ function passivePermissiveRelationFallback(core) {
     return Boolean(tok && (tok.label === "what" || tok.label === "measure_word")) || slots.includes("classifier") || slots.includes("object");
   });
   const participantIsPersonOnly = participantHasPerson && !participantHasObjectShape;
-  const retainedSpan = cp020TrailingObjectCandidateSpan(predicateNodes);
+  // Preserve a reviewed VP such as 打籃球 before looking for a retained patient.
+  // Otherwise the lexical object inside the activity VP is incorrectly exposed
+  // as an indirect-passive patient candidate.
+  const groupedPredicate = categorySubspanFor(predicateNodes, ["ProductiveVO", "TransitiveVP"]);
+  const predicateAnalysisNodes = groupedPredicate ? [groupedPredicate] : predicateNodes;
+  const retainedSpan = cp020TrailingObjectCandidateSpan(predicateAnalysisNodes);
   const retainedSurface = retainedSpan
-    ? predicateNodes.slice(retainedSpan.start, retainedSpan.end).map(flattenSurface).join("")
+    ? predicateAnalysisNodes.slice(retainedSpan.start, retainedSpan.end).map(flattenSurface).join("")
     : "";
   const agentSurface = agentNodes.map(flattenSurface).join("");
   const participantSurface = participantNodes.map(flattenSurface).join("");
 
   const semanticReviewFlags = [];
   const readingCandidates = [];
-  const permissiveFavored = participantIsPersonOnly && !retainedSurface && cp020PredicateFavorsPermissive(predicateNodes);
+  const permissiveFavored = participantIsPersonOnly && !retainedSurface && cp020PredicateFavorsPermissive(predicateAnalysisNodes);
   let passiveSubtype = "canonical_passive_candidate";
   let learnerLabel = "Passive";
   if (retainedSurface) {
@@ -12301,7 +12308,7 @@ function passivePermissiveRelationFallback(core) {
     }
     return node;
   });
-  const predicateChildren = cp020ContextualPredicateLearnerChildren(predicateNodes);
+  const predicateChildren = groupedPredicate ? [groupedPredicate] : cp020ContextualPredicateLearnerChildren(predicateNodes);
   const children = [...participantNodes, ...(modal ? [modal] : []), marker, ...agentChildren, ...predicateChildren, ...particles];
   return construction("PassivePermissiveRelation", learnerLabel, children, {
     note: "Transparent 畀/俾 passive–permissive relation. The relation preserves canonical-passive, retained-object/indirect-passive, and permissive alternatives instead of presenting generic affectedness as Cantonese grammar.",

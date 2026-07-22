@@ -1,9 +1,9 @@
 {
   "id": "canto-span",
   "name": "Canto Span",
-  "version": "0.5.199",
+  "version": "0.5.200",
   "minAppVersion": "1.5.0",
-  "description": "v0.5.198 verification consolidation: one stable profile runner, one current validation directory, and one zero-weight implementation-reachability inventory; no parser or linguistic-status change.",
+  "description": "v0.5.200 passive/permissive 畀 reconciliation: preserves a reviewed activity VP inside the relation and adds source-linked permissive/passive regressions.",
   "author": "Chris Crawford / OpenAI ChatGPT",
   "authorUrl": "",
   "isDesktopOnly": false

@@ -1,18 +1,18 @@
 {
   "schema": "canto-span-standard-construction-test-result-v1",
-  "runtime_version": "0.5.199",
+  "runtime_version": "0.5.200",
   "construction_file_count": 166,
   "coverage": {
     "positive_and_boundary": 2,
-    "positive_only": 101,
+    "positive_only": 102,
     "boundary_only": 0,
-    "implementation_positive_only": 62,
+    "implementation_positive_only": 61,
     "compatibility_alias_only": 1,
     "no_direct_cases": 0
   },
   "uncovered_construction_count": 0,
-  "executable_reference_count": 1223,
-  "passed": 1223,
+  "executable_reference_count": 1226,
+  "passed": 1226,
   "failed": 0,
   "status": "PASS",
   "failures": []

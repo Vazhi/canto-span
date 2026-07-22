@@ -6,7 +6,7 @@ status: "research_pending"
 confidence: "not_assigned_research_pending"
 claim_layer: "language"
 lane: "LANE-01"
-last_reviewed: "unknown"
+last_reviewed: "2026-07-22"
 last_status_migrated: "2026-07-21"
 source_count: 6
 verified_source_count: 6
@@ -37,20 +37,20 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
+code_document_reconciled: true
+code_document_review_date: "2026-07-22"
+code_document_review_commit: "v0.5.200"
+code_document_code_locations: ["main.js:passivePermissiveRelationFallback", "main.js:PRODUCTIVE_VO", "tests/fixtures/regression-snapshots.json:REG-0547", "tests/fixtures/regression-snapshots.json:REG-0548"]
 current_standard_reaudit_complete: false
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
 standard_test_file: "tests/constructions/PassivePermissiveRelation.json"
-standard_test_coverage: "implementation_positive_only"
-standard_positive_test_count: 0
+standard_test_coverage: "positive_only"
+standard_positive_test_count: 2
 standard_boundary_test_count: 0
 standard_implementation_probe_count: 1
-standard_executable_test_count: 1
+standard_executable_test_count: 3
 source_ids: ["SRC-BODOMO-LAM-YU-2003", "SRC-CHAN-2021-BEI", "SRC-CHIN-2011-BEI", "SRC-CHOW-2018-INDIRECT-PASSIVE", "SRC-CHOW-2019-PASSIVE-PERMISSIVE", "SRC-WONG-2023-BEI"]
 runtime_active: true
 workflow_state: "archived"
@@ -58,7 +58,7 @@ workflow_priority: null
 workflow_since: "2026-07-21"
 workflow_reason: "not_selected_for_current_bounded_working_set"
 runtime_code_references: 4
-accepted_fixtures: 0
+accepted_fixtures: 2
 tags: ["canto-span/grammar", "canto-span/status/research_pending", "canto-span/lane/lane-01", "canto-span/workflow/archived"]
 ---
 
@@ -76,7 +76,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Linguistic confidence: `not_assigned_research_pending`
 - Current action: `retain_narrow_transparent_passive_permissive_relation_pending_rendered_and_native_analysis_validation`
 - Productive acceptance eligible: **no**
-- Last linguistic review: not recorded
+- Last linguistic review: 2026-07-22
 
 ## Sources
 
@@ -99,9 +99,9 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 ### SRC-CHIN-2011-BEI
 
 - Citation: [Chin, A. C. 2011. Grammaticalization of the Cantonese Double Object Verb [pei35] 畀 in Typological and Areal Perspectives.](https://www.lib.eduhk.hk/pure-data/pub/201710799.pdf)
-- Locator: PDF pp. 3-14
+- Locator: PDF pp. 9-14; journal pp. 538 and 540 for the permissive and passive examples used in v0.5.200
 - Verification: `VERIFIED_FULL_TEXT`
-- What it supports: Lexical GIVE, beneficiary, causative/permissive, and passive functions are explicitly distinguished.
+- What it supports: Lexical GIVE, beneficiary, causative/permissive, and passive functions are explicitly distinguished. The exact examples `我畀佢打籃球` and `我畀阿媽鬧` instantiate permissive and passive uses of the shared surface frame.
 - Limit: Do not infer that the source's categories are exhaustive or computationally deterministic.
 
 ### SRC-CHOW-2018-INDIRECT-PASSIVE
@@ -183,3 +183,14 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Implementation-only reachability: `FRWRAP-006` with `我畀佢打。`
 - Protects the current transparent 畀 relation while preserving passive/permissive ambiguity. It does not select one reading or establish unrestricted argument structures.
 - Its linguistic evidence weight is **0**; reachability does not establish naturalness, productivity, construction identity, or promotion eligibility.
+
+
+## v0.5.200 source/runtime reconciliation
+
+- `REG-0547` links `我畀佢打籃球。` to the independently documented permissive use of 畀.
+- `打籃球` is preserved as a nested `ProductiveVO`; `籃球` is no longer exposed as a retained passive patient candidate.
+- The relation trace selects `permissive_candidate` with `permissive_let_allow` for this reviewed activity-VP profile.
+- `REG-0548` links `我畀阿媽鬧。` to the independently documented passive use. The parser still preserves passive-versus-permissive ambiguity when the isolated surface does not independently force one reading.
+- The existing zero-weight probe `我畀佢打。` remains implementation-only and is not upgraded by these source-linked fixtures.
+- Lexical GIVE, beneficiary/post-theme, indirect-passive, negated, aspect-marked, and broader predicate-class boundaries remain outside this narrow reconciliation.
+- Status remains `research_pending`; no productivity or panel-evidence claim is made.

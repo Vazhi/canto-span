@@ -17,11 +17,11 @@ npm test
 
 It runs:
 
-- 546 exact regression cases;
+- 548 exact regression cases;
 - 43 NP-subsystem cases;
-- 1,223 per-construction assertions across 166 construction files.
+- 1,226 per-construction assertions across 166 construction files.
 
-Current coverage is 2 positive-and-boundary, 101 positive-only, 62 implementation-only, and 1 compatibility-alias-only. No active label is uncovered.
+Current coverage is 2 positive-and-boundary, 102 positive-only, 61 implementation-only, and 1 compatibility-alias-only. No active label is uncovered.
 
 Implementation probes have linguistic evidence weight **0**. They prove only that a runtime path is observable.
 

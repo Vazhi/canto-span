@@ -116,7 +116,7 @@ provenance for collected legacy data.
 
 ## v0.5.189–v0.5.197 runtime-wrapper review
 
-The staged wrapper review established implementation-only reachability for 63 labels, compatibility-alias-only coverage for one label, and retired four dead or shadowed labels. The first source/runtime reconciliation in v0.5.199 moved one of those labels to positive coverage, leaving 62 implementation-only labels. No active runtime label remains uncovered. Detailed evidence remains in the research and retirement records, but the release-specific executors are no longer part of the permanent verification suite.
+The staged wrapper review established implementation-only reachability for 63 labels, compatibility-alias-only coverage for one label, and retired four dead or shadowed labels. Source/runtime reconciliations in v0.5.199 and v0.5.200 moved two of those labels to positive coverage, leaving 61 implementation-only labels. No active runtime label remains uncovered. Detailed evidence remains in the research and retirement records, but the release-specific executors are no longer part of the permanent verification suite.
 
 ## v0.5.198 verification consolidation
 

@@ -1,59 +1,18 @@
 {
   "schema": "canto-span-release-handoff-audit-v2",
-  "release_id": "v0.5.199-manner-adverbial-reconciliation",
-  "handoff_sequence": 23,
-  "status_changes": [
-    {
-      "construction": "MannerAdverbialVP",
-      "old_status": "unsupported_generalization",
-      "new_status": "research_pending"
-    }
-  ],
-  "changed_construction_audit": [
-    {
-      "construction": "MannerAdverbialVP",
-      "old_status": "unsupported_generalization",
-      "new_status": "research_pending",
-      "plain_language_claim": "Source-attested Cantonese examples support repeated property material followed by overt 咁／噉 before a following action VP; unrestricted productivity and the bare repeated-property route remain unresolved.",
-      "code_locations": [
-        "main.js:mannerAdverbialVPFallback",
-        "tests/fixtures/regression-snapshots.json:佢慢慢噉食飯。",
-        "grammar/archived/MannerAdverbialVP.md"
-      ],
-      "sources": [
-        {
-          "citation": "Leung, H. H. 2014. Cantonese Coverbs: A Syntactic Reanalysis.",
-          "locator": "pp. 13–15, examples (29a–b)",
-          "verification": "VERIFIED_FULL_TEXT_CORROBORATIVE"
-        },
-        {
-          "citation": "鄭定歐、張勵妍、高石英. 2021. 粵語（香港話）教程（修訂版）.",
-          "locator": "printed p. 336",
-          "verification": "VERIFIED_USER_PROVIDED_FULL_TEXT_AND_OFFICIAL_PUBLISHER_METADATA"
-        }
-      ],
-      "panel_response_count_total": 0,
-      "eligible_panel_response_count": 0,
-      "minimum_usable_judgments_per_critical_item": 0,
-      "survey_instrument_version": "none",
-      "survey_instrument_status": "not_started",
-      "quality_screen_status": "not_started",
-      "panel_adjudication_status": "not_started",
-      "unresolved_questions": [
-        "Which repeated property forms and predicate classes participate productively?",
-        "Is the bare 慢慢 + V route independently supported?",
-        "What negative boundaries distinguish manner-adverbial 噉 from discourse-marker uses?"
-      ]
-    }
-  ],
+  "release_id": "v0.5.200-passive-permissive-bei-reconciliation",
+  "handoff_sequence": 24,
+  "status_changes": [],
+  "changed_construction_audit": [],
   "supported_productive_pending_reaudit": [],
-  "implementation_validation": "The source-linked regression 佢慢慢噉食飯。 passes with full root coverage, overt 噉 preserved, and ProductiveVO retained as the nested predicate. The 546-case regression suite, 43-case NP suite, and 1,223 construction assertions pass through the core profile.",
-  "linguistic_confidence": "MannerAdverbialVP is research_pending only. The sources support the overt repeated-manner + 咁／噉 shape, but do not establish unrestricted productivity, bare-form licensing, negative boundaries, or speaker-panel acceptance.",
+  "implementation_validation": "The source-linked regressions 我畀佢打籃球。 and 我畀阿媽鬧。 pass. The permissive case preserves 打籃球 as a nested ProductiveVO and carries no retained-patient candidate. The 548-case regression suite, 43-case NP suite, and 1,226 construction assertions pass through the core profile.",
+  "linguistic_confidence": "PassivePermissiveRelation remains research_pending. Independent sources distinguish permissive and passive 畀 uses, but do not establish unrestricted predicate coverage, context-free disambiguation, negative boundaries, or panel acceptance.",
   "code_analysis_overclaim_review": true,
-  "overclaim_review_scope": "Separated the new source-linked overt-adverbializer case from the pre-existing zero-weight bare 慢慢行 reachability probe; preserved discourse uses of 咁／噉 and made no productive promotion claim.",
+  "overclaim_review_scope": "Separated the reviewed activity VP from retained-object indirect-passive candidates; preserved passive/permissive ambiguity where the isolated surface does not force one reading; retained lexical GIVE and post-theme boundaries.",
   "release_documents": [
-    "docs/research/CP042-P1-MANNER-ADVERBIAL-RECONCILIATION-R1.md",
-    "grammar/archived/MannerAdverbialVP.md",
+    "docs/research/CP043-P1-PASSIVE-PERMISSIVE-BEI-RECONCILIATION-R1.md",
+    "grammar/archived/PassivePermissiveRelation.md",
+    "grammar/archived/ProductiveVO.md",
     "docs/current/PROJECT-STATE.md",
     "docs/current/TESTING.md",
     "CHANGELOG.md",
@@ -61,8 +20,9 @@
   ],
   "external_audit_ready": true,
   "unresolved_release_questions": [
-    "Manner-adverbial negative boundaries and panel evidence remain absent.",
+    "Broader predicate-class productivity and negative boundaries remain unresolved.",
+    "No qualified native-panel evidence has been collected for this construction.",
     "RUL and PFV survey integration remains paused while collection proceeds."
   ],
-  "base_tree": "b288b5c51f87e4d4dfdbbfadc3385b15882a1c4f"
+  "base_tree": "0375e86ec6f90821b49d1784dbe404753aa267b1"
 }

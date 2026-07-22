@@ -1,9 +1,9 @@
 {
   "schema": "canto-span-implementation-reachability-audit-v1",
-  "runtime_version": "0.5.199",
+  "runtime_version": "0.5.200",
   "probe_case_count": 65,
   "probed_construction_count": 64,
-  "implementation_positive_only_labels": 62,
+  "implementation_positive_only_labels": 61,
   "compatibility_alias_only_labels": 1,
   "no_direct_labels": 0,
   "linguistic_evidence_weight_added": 0,
@@ -2979,7 +2979,7 @@
     {
       "name": "PassivePermissiveRelation coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
+      "detail": "positive_only/positive_only"
     },
     {
       "name": "PassivePermissiveRelation implementation probe count",
@@ -2989,7 +2989,7 @@
     {
       "name": "PassivePermissiveRelation zero-weight probes do not create linguistic positives",
       "pass": true,
-      "detail": "0"
+      "detail": "2"
     },
     {
       "name": "PathPhrase exists in construction index",

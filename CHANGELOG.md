@@ -1,3 +1,13 @@
+## v0.5.200 — passive/permissive 畀 source/runtime reconciliation
+
+- Added source-linked regressions for permissive `我畀佢打籃球。` and passive `我畀阿媽鬧。`.
+- Preserved `打籃球` as a nested reviewed `ProductiveVO` inside `PassivePermissiveRelation`.
+- Stopped exposing `籃球` as a retained passive-patient candidate in the permissive example.
+- Kept ambiguous surface frames transparent instead of treating 畀 as a context-free deterministic passive/permissive classifier.
+- Increased regression coverage from 546 to 548 and construction assertions from 1,223 to 1,226.
+- Moved `PassivePermissiveRelation` from implementation-only to positive coverage without changing its `research_pending` status.
+- Added no verifier or version-specific validation directory.
+
 ## v0.5.199 — overt 咁／噉 manner-adverbial reconciliation
 
 - Extended `MannerAdverbialVP` to preserve repeated manner material, overt `咁／噉`, and a complete following VP.

@@ -47,10 +47,10 @@ independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
 standard_test_file: "tests/constructions/ProductiveVO.json"
 standard_test_coverage: "positive_only"
-standard_positive_test_count: 21
+standard_positive_test_count: 22
 standard_boundary_test_count: 0
 standard_implementation_probe_count: 0
-standard_executable_test_count: 21
+standard_executable_test_count: 22
 source_ids: ["SRC-ALDERETE-ETAL-2017-SYNOPSIS", "SRC-WONG-2023-LANGUAGE-SAMPLE"]
 runtime_active: true
 workflow_state: "archived"
@@ -58,7 +58,7 @@ workflow_priority: null
 workflow_since: "2026-07-21"
 workflow_reason: "not_selected_for_current_bounded_working_set"
 runtime_code_references: 44
-accepted_fixtures: 20
+accepted_fixtures: 22
 tags: ["canto-span/grammar", "canto-span/status/research_pending", "canto-span/lane/lane-10", "canto-span/workflow/archived"]
 ---
 
@@ -147,3 +147,10 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Full pre-migration record: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
 - Status migration date: 2026-07-21.
 - The frozen JSON preserves the former wide schema; this note is the active authoring record.
+
+
+## v0.5.200 reviewed activity-VP addition
+
+- `打籃球` is added to the constrained reviewed `ProductiveVO` surface inventory because it is independently attested as the embedded activity VP in a permissive 畀 construction.
+- The addition preserves the visible verb and object children and prevents `籃球` from being misreported as a retained patient of the surrounding 畀 relation.
+- This does not license arbitrary `打 + noun` combinations or change the construction's `research_pending` status.
