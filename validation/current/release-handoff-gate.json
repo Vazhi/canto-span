@@ -1,7 +1,7 @@
 {
   "schema": "canto-span-release-handoff-gate-v2",
   "release_id": "v0.5.199-manner-adverbial-reconciliation",
-  "base_tree": "73d24e2919c747653f5f7de03bc7bb78f2adee6c",
+  "base_tree": "b288b5c51f87e4d4dfdbbfadc3385b15882a1c4f",
   "actual_status_changes": [
     {
       "construction": "MannerAdverbialVP",
