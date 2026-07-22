@@ -4,23 +4,35 @@
 
 | Measure | Current value |
 |---|---:|
-| Runtime | v0.5.211 |
-| Runtime labels | 164 |
-| Current construction notes | 164 |
+| Runtime | v0.5.212 |
+| Runtime labels | 163 |
+| Current construction notes | 163 |
 | Active working notes | 2 |
-| Workflow-archived notes | 162 |
-| Retired labels | 17 |
+| Workflow-archived notes | 161 |
+| Retired labels | 18 |
 | `supported_productive` | 0 |
 | `provisional_reaudit` | 0 |
 | `provisional` | 0 |
 | `research_pending` | 64 |
-| `unsupported_generalization` | 78 |
+| `unsupported_generalization` | 77 |
 | `lexicalized_only` | 3 |
 | `parser_heuristic` | 19 |
 
 The canonical registry is the union of
-`grammar/<linguistic-status>/*.md`. The 164 construction notes match the 164
+`grammar/<linguistic-status>/*.md`. The 163 construction notes match the 163
 runtime labels exactly.
+
+## v0.5.212 negated-lexicalized-stative retirement
+
+`NegatedLexicalizedStative` is retired because it merged three independently
+distinct profiles: opaque lexical `難X`, compositional `唔 + lexical property
+predicate`, and prohibitive `唔好 + V`. Its only standardized case was a
+zero-weight reachability probe and did not support the homogeneous claim.
+
+The retirement preserves the observed forms: `難食` remains a lexical
+`StativePredicate`; contextual `唔 + 好食` remains
+`NegatedStativePredicate`; overt-object `唔好 + 食` remains
+`ProhibitiveImperative`; and bare `唔好食` remains `NeedsContext`.
 
 ## v0.5.211 negative-experiential reconciliation
 
@@ -121,8 +133,8 @@ thresholds.
 
 - 551 regression cases pass;
 - 43 NP-subsystem cases pass;
-- 1,246 construction assertions across 164 construction files pass;
-- coverage is 6 positive-and-boundary, 104 positive-only, 53
+- 1,245 construction assertions across 163 construction files pass;
+- coverage is 6 positive-and-boundary, 104 positive-only, 52
   implementation-only, and 1 compatibility-alias-only;
 - no active label is uncovered.
 
@@ -130,10 +142,10 @@ Implementation reachability carries zero linguistic evidence weight.
 
 ## Next substantive work
 
-Resume source/runtime reconciliation among the remaining 53
+Resume source/runtime reconciliation among the remaining 52
 implementation-only labels, ranked by learner impact, source availability, and
 whether the current node creates a misleading analysis. Treat the full
 `係唔係`/contracted `係咪` relationship as a separate ontology question rather
 than silently broadening the reconciled node. The full retirement-review window
-is open at sequence 34 and must close no later than sequence 41. Do not create
+is open at sequence 35 and must close no later than sequence 41. Do not create
 another release-specific verifier or generated validation tree.

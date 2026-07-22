@@ -9,7 +9,8 @@ const { Plugin, PluginSettingTab, Setting, Notice } = require("obsidian");
  * never overwrite child learner roles.
  */
 
-const CANTO_SPAN_RUNTIME_VERSION = "0.5.211";
+const CANTO_SPAN_RUNTIME_VERSION = "0.5.212";
+// v0.5.212: retires the conflated NegatedLexicalizedStative label while preserving lexical 難X, compositional 唔 + lexicalized property predicates, and prohibitive/ambiguous 唔好 profiles.
 // v0.5.211: reconciles source-linked preverbal 未/冇 experiential negation while preserving final-未 questions and excluding general 唔/咪 negation.
 // v0.5.210: narrows ScalarEvaluation to sourced negative 算 evaluation and removes the unrelated price-noun predication profile.
 // v0.5.209: retires the unsupported 價位-triggered ScalarRangeFragment fallback while preserving ordinary nominal structure.
@@ -1352,7 +1353,6 @@ const CONSTRUCTION_LABEL_REGISTRY = new Set([
   "NegatedExistentialClause",
   "NegatedExistentialFragment",
   "NegatedVP",
-  "NegatedLexicalizedStative",
   "NegatedStativePredicate",
   "NegativeCognitionFragment",
   "NegativeExperiential",
@@ -1508,7 +1508,7 @@ const RETIRED_CONSTRUCTION_LABEL_REGISTRY = new Map([
   ["ClauseSequence", "Retired as the older broad wrapper name; use ClauseRelationGraph internally for comma/connector-governed clause linking with explicit wrapper coverage; diagnostics may retain ClauseLinkingSequence as a compatibility alias."],
   ["DefinitionTopic", "Retired as frame-role-specific; use Topic with definition_topic/function metadata inside DefinitionExplanatoryFrame."],
   ["LeaveTakingFormula", "Retired as formula-subtype-specific; use FormulaDiscourseUnit with trace_detail.retired_label_alias='LeaveTakingFormula'."],
-  ["NegativeLexicalizedStative", "Retired as polarity-wording duplicate; use NegatedLexicalizedStative plus negative polarity / negator metadata."],
+  ["NegativeLexicalizedStative", "Retired as a polarity-wording duplicate. Its former target NegatedLexicalizedStative is also retired because lexical 難X, compositional 唔 + lexicalized property predicates, and prohibitive 唔好 are distinct."],
   ["DesiderativeANotAQuestion", "Retired as modal-subtype-specific; use ModalANotAQuestion with trace_detail.modal_subtype='desiderative'."],
   ["PermissionANotAQuestion", "Retired as modal-subtype-specific; use ModalANotAQuestion with trace_detail.modal_subtype='permission'."],
   ["PermissionAcceptabilityClause", "Retired as permission-subtype-specific; use AcceptabilityClause with trace_detail.acceptability_subtype='permission' for 都得-style acceptability clauses."],
@@ -1537,6 +1537,7 @@ const RETIRED_CONSTRUCTION_LABEL_REGISTRY = new Map([
   ["PerfectiveResultPredicate", "Retired at v0.5.197: the lexical-item-specific 解決咗 wrapper was shadowed by ordinary PerfectiveVP composition and added no independently supported boundary."],
   ["ComparativeStative", "Retired at v0.5.202: the residual stative + 啲 fallback mislabeled degree adjustment as a generic comparative. Source-supported property + 啲 forms use DegreeMannerAdverbial; explicit surpass comparatives require separate structure."],
   ["ScalarRangeFragment", "Retired at v0.5.209: the 價位-triggered fallback added unsupported fragment status to ordinary nominal/scalar material and had no source-linked positive or accepted fixture."],
+  ["NegatedLexicalizedStative", "Retired at v0.5.212: the label conflated lexical negative meaning in opaque 難X units with compositional 唔 negation and the distinct prohibitive 唔好 profile."],
 ]);
 
 
@@ -1545,7 +1546,6 @@ const RETIRED_CONSTRUCTION_LABEL_ALIASES = new Map([
   ["ClauseSequence", "ClauseRelationGraph"],
   ["DefinitionTopic", "Topic"],
   ["LeaveTakingFormula", "FormulaDiscourseUnit"],
-  ["NegativeLexicalizedStative", "NegatedLexicalizedStative"],
   ["DesiderativeANotAQuestion", "ModalANotAQuestion"],
   ["PermissionANotAQuestion", "ModalANotAQuestion"],
   ["PermissionAcceptabilityClause", "AcceptabilityClause"],
@@ -2859,18 +2859,6 @@ const CATEGORY_SPAN_TEMPLATES = [
     note: "Category-based progressive VP: action verb + 緊."
   },
   {
-    type: "NegatedLexicalizedStative",
-    label: "NegLexicalStative",
-    template: ["negative_lexicalized_stative_predicate!"],
-    note: "Negative lexicalized stative predicate: dictionary-backed 難X counterpart such as 難食 / 難飲 / 難睇 / 難聽."
-  },
-  {
-    type: "NegatedLexicalizedStative",
-    label: "NegLexicalStative",
-    template: ["negator!", "lexicalized_stative_predicate!"],
-    note: "Negated lexicalized stative — 唔 + dictionary-backed lexicalized 好X stative, e.g. 唔 + 好食."
-  },
-  {
     type: "DegreeModifiedLexicalStative",
     label: "DegreeLexicalStative",
     template: ["degree!", "lexicalized_stative_predicate!"],
@@ -2886,7 +2874,17 @@ const CATEGORY_SPAN_TEMPLATES = [
     type: "NegatedStativePredicate",
     label: "NegStative",
     template: ["negator!", "ordinary_stative_predicate!"],
+    template_family: "generative_template",
+    constraints: { slot_surface_in: { negator: ["唔"] } },
     note: "Controlled negated ordinary stative predicate: 唔 + independently usable ordinary stative, e.g. 唔忙. Excludes lexicalized 好X statives such as 好味."
+  },
+  {
+    type: "NegatedStativePredicate",
+    label: "NegStative",
+    template: ["negator!", "lexicalized_stative_predicate!"],
+    template_family: "generative_template",
+    constraints: { slot_surface_in: { negator: ["唔"] } },
+    note: "Controlled compositional negation of a dictionary-backed lexical property predicate: 唔 + 好X, e.g. 唔 + 好食. Lexical 難X and prohibitive 唔好 + verb remain separate."
   },
   {
     type: "TopicComment",
@@ -4714,9 +4712,8 @@ function constructionSlotsByType(type, children = []) {
   if (type === "WhClassifierQuestion") slots.push("wh_fragment", "question_fragment", "topic_or_object");
   if (type === "TimeNP") slots.push("time");
   if (["Topic"].includes(type)) slots.push("topic", "np", "definition_topic", "purpose_topic", "function_topic");
-  if (["StativePredicate", "DegreeStativePredicate", "DegreeModifiedLexicalStative", "NegatedStativePredicate", "NegatedLexicalizedStative"].includes(type)) slots.push("stative_predicate", "predicate", "comment", "comment_predicate");
-  if (["LexicalizedStativePredicate", "DegreeModifiedLexicalStative", "NegatedLexicalizedStative"].includes(type)) slots.push("lexicalized_stative_predicate", "stative_predicate", "predicate", "comment", "comment_predicate");
-  if (["NegatedLexicalizedStative"].includes(type)) slots.push("negated_lexicalized_stative", "negator");
+  if (["StativePredicate", "DegreeStativePredicate", "DegreeModifiedLexicalStative", "NegatedStativePredicate"].includes(type)) slots.push("stative_predicate", "predicate", "comment", "comment_predicate");
+  if (["LexicalizedStativePredicate", "DegreeModifiedLexicalStative"].includes(type)) slots.push("lexicalized_stative_predicate", "stative_predicate", "predicate", "comment", "comment_predicate");
   if (["NegatedStativePredicate"].includes(type)) slots.push("negated_stative_predicate", "ordinary_stative_predicate", "negator");
   if (["DegreeStativePredicate"].includes(type)) slots.push("degree_stative_predicate", "ordinary_degree_stative_predicate", "ordinary_stative_predicate", "degree");
   if (["DegreeStativePredicate"].includes(type) && has("ambient_property_predicate")) slots.push("ambient_environmental_predicate");
@@ -5165,30 +5162,6 @@ function categorySubspanFor(nodes, allowedTypes = null) {
   return null;
 }
 
-function negativeLexicalizedStativeSubspanFor(node) {
-  if (!node || node.kind === "text" || node.kind === "construction") return null;
-  const template = CATEGORY_SPAN_TEMPLATES.find((item) => item.type === "NegatedLexicalizedStative");
-  if (!template) return null;
-  const assignments = matchTemplate([node], template.template);
-  if (!assignments || !templateConstraintsPass(assignments, template)) return null;
-  const children = applyRoleOverrides(assignments, template);
-  return construction(template.type, template.label, children, {
-    note: `${template.note} Matched by generated category slots: ${assignments.map((item) => item.slot).join(" → ")}.`,
-    slots: templateDerivedSlots(template.type, children),
-    trace: traceInfo("generative_template", {
-      construction_type: template.type,
-      template_family: templateFamilyForDefinition(template),
-      template: template.template,
-      constraints: template.constraints || {},
-      assigned_slots: assignments.map((item) => item.slot),
-      surfaces: children.map((child) => flattenSurface(child)),
-      role_overrides: template.role_overrides || {},
-      subspan: true,
-    }),
-  });
-}
-
-
 const COMPOSITIONAL_NP_SUBSPAN_TYPES = [
   "OvertHeadDemonstrativeClassifierNP",
   "QuantifiedClassifierNP",
@@ -5236,10 +5209,6 @@ function wrapCompositionalNpSubspans(nodes = []) {
     }
   }
   return result;
-}
-
-function wrapNegativeLexicalizedSingletons(nodes) {
-  return nodes.map((node) => negativeLexicalizedStativeSubspanFor(node) || node);
 }
 
 function shouldDeferPostverbalZoForFollowingComplement(candidate, nodes, index, length) {
@@ -5350,7 +5319,7 @@ function sameNodeSequence(a, b) {
 }
 
 function wrapCategorySubspans(nodes) {
-  let current = wrapNegativeLexicalizedSingletons(nodes);
+  let current = nodes;
   for (let pass = 0; pass < 4; pass++) {
     const next = wrapCategorySubspansOnce(current);
     if (sameNodeSequence(current, next)) return next;
@@ -7441,7 +7410,7 @@ function pushSpecialNotGoodEat(nodes, text, cursor) {
   if (bare) {
     const candidateAnalyses = [
       {
-        construction: "NegatedLexicalizedStative",
+        construction: "NegatedStativePredicate",
         split: ["唔", "好食"],
         meaning_hint: "not tasty",
         parser_active: false,
@@ -9077,7 +9046,6 @@ function contentNodeForOpinionStanceFrame(contentCore) {
     "DegreeStativePredicate",
     "NegatedStativePredicate",
     "DegreeModifiedLexicalStative",
-    "NegatedLexicalizedStative",
     "StativePredicate",
   ]);
   if (stativeContent) return { leadingModifiers, contentNode: stativeContent };
@@ -15464,7 +15432,7 @@ function wrapCore(core) {
   // Bare needs-context ambiguity: 唔好食.
   if (core.length === 1 && firstToken(core[0]) && firstToken(core[0]).syntax === "ambiguous_needs_context") {
     const candidateAnalyses = (firstToken(core[0]).trace && firstToken(core[0]).trace.candidate_analyses) || [
-      { construction: "NegatedLexicalizedStative", split: ["唔", "好食"], meaning_hint: "not tasty", parser_active: false },
+      { construction: "NegatedStativePredicate", split: ["唔", "好食"], meaning_hint: "not tasty", parser_active: false },
       { construction: "ProhibitiveImperative", split: ["唔好", "食"], meaning_hint: "don't eat", parser_active: false },
     ];
     return [construction("NeedsContext", "needs context", core, { note: "Ambiguous split: 唔 + 好食 or 唔好 + 食.", trace: traceInfo("special_ambiguity_rule", { surface: "唔好食", reason: "Needs context ambiguity.", candidate_analyses: candidateAnalyses }) })];

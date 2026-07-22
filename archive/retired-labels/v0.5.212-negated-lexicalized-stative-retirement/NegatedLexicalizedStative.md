@@ -64,6 +64,10 @@ tags: ["canto-span/grammar", "canto-span/status/unsupported_generalization", "ca
 
 # NegatedLexicalizedStative
 
+> Retired at v0.5.212. This preserved pre-retirement note is historical; the
+> canonical decision is recorded in
+> `docs/research/CP056-P1-NEGATED-LEXICALIZED-STATIVE-RETIREMENT-R1.md`.
+
 ## Plain-language claim
 
 Cantonese may instantiate the structural family represented by NegatedLexicalizedStative; exact productivity and boundaries require pattern-specific independent evidence.

@@ -134,7 +134,6 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 - [[NegatedDirectionalMotionVP]]
 - [[NegatedExistentialClause]]
-- [[NegatedLexicalizedStative]]
 - [[NegatedVP]]
 
 ## Migration provenance

@@ -673,18 +673,6 @@
       "legacy_probe_batch": "final-reachable-wrapper"
     },
     {
-      "case_id": "FRWRAP-005",
-      "construction": "NegatedLexicalizedStative",
-      "source": "難食。",
-      "provenance": "docs/research/CP040-P1-FINAL-REACHABLE-WRAPPER-AUDIT-R1.md#FRWRAP-005",
-      "source_role": "code_specific_semantically_coherent_probe",
-      "assertion": "construction_present",
-      "linguistic_evidence_weight": 0,
-      "purpose": "runtime_reachability_only",
-      "scope_note": "Protects the dictionary-backed 難食 route only; it does not equate lexical 難X forms with productive 唔 plus stative negation or validate the label as a general construction.",
-      "legacy_probe_batch": "final-reachable-wrapper"
-    },
-    {
       "case_id": "FRWRAP-006",
       "construction": "PassivePermissiveRelation",
       "source": "我畀佢打。",

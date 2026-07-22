@@ -1,3 +1,11 @@
+## v0.5.212 — NegatedLexicalizedStative retirement
+
+- Retired the label that merged opaque lexical `難X`, compositional `唔 + 好X`, and prohibitive `唔好 + V` profiles.
+- Preserved lexical `難食` as `StativePredicate`, contextual `唔 + 好食` as `NegatedStativePredicate`, overt-object prohibitives, and bare `唔好食` ambiguity.
+- Narrowed the ordinary negated-stative templates to overt `唔` and removed the obsolete zero-weight reachability probe.
+- Reduced active labels and construction notes from 164 to 163, increased retired labels from 17 to 18, reduced implementation-only coverage from 53 to 52, and reduced construction assertions from 1,246 to 1,245.
+- Added no promoted construction, panel evidence, new verifier, or generated validation tree.
+
 ## v0.5.211 — NegativeExperiential reconciliation
 
 - Source-linked exact `我未見過王小姐`, `我冇睇過今日嘅報紙`, and `我未去過美國` as focused `NegativeExperiential` positives.

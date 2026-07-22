@@ -1,9 +1,9 @@
 {
   "id": "canto-span",
   "name": "Canto Span",
-  "version": "0.5.211",
+  "version": "0.5.212",
   "minAppVersion": "1.5.0",
-  "description": "v0.5.211 source-links preverbal 未/冇 experiential negation while preserving final-未 questions and general-negator boundaries.",
+  "description": "v0.5.212 retires a conflated negated-lexicalized-stative label while preserving lexical 難X, compositional 唔 negation, and prohibitives.",
   "author": "Chris Crawford / OpenAI ChatGPT",
   "authorUrl": "",
   "isDesktopOnly": false

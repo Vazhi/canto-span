@@ -158,7 +158,6 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 ## Related constructions
 
 - [[NegatedExistentialClause]]
-- [[NegatedLexicalizedStative]]
 - [[NegatedStativePredicate]]
 - [[NegatedVP]]
 

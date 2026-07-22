@@ -1,6 +1,6 @@
 # Retired construction labels
 
-**Current retired labels:** 17
+**Current retired labels:** 18
 
 These labels are absent from the active runtime registry. This file is a navigation view; the canonical retirement evidence remains in the retirement TSV, individual archived notes where available, and the corresponding research records.
 
@@ -23,6 +23,7 @@ These labels are absent from the active runtime registry. This file is a navigat
 | `PerfectiveResultPredicate` | `unsupported_generalization` | The dedicated 解決咗 constructor was consumed by ordinary PerfectiveVP composition before complete output and contributed no independently sourced boundary beyond lexical predicate plus perfective aspect. | PerfectiveVP plus result-complement and lexical-result research | `v0.5.197-shadowed-wrapper-retirement` |
 | `ComparativeStative` | `unsupported_generalization` | The fallback treated stative plus 啲 as a generic comparative whenever the governed degree template lacked lexical slot metadata; the only probe 客氣啲 is better represented as scalar adjustment. | DegreeMannerAdverbial for property plus 啲; separate explicit surpass-comparative research | `v0.5.202-comparative-stative-retirement` |
 | `ScalarRangeFragment` | `unsupported_generalization` | The fallback assigned fragment status to every core containing 價位 despite having no mapped source, accepted fixture, or independently supported boundary. | ordinary nominal/scalar structure; future discourse-fragment research if independently evidenced | `v0.5.209-scalar-range-fragment-retirement` |
+| `NegatedLexicalizedStative` | `unsupported_generalization` | The label conflated opaque lexical 難X units, compositional 唔 negation of property predicates, and the distinct prohibitive 唔好 profile. | lexical stative entries, NegatedStativePredicate, and ProhibitiveImperative | `v0.5.212-negated-lexicalized-stative-retirement` |
 
 ## Canonical records
 

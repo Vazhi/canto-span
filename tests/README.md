@@ -18,7 +18,7 @@ The command runs three layers:
 
 1. `run-regression.js` — 551 exact structural snapshots;
 2. `run-np-subsystem.js` — 43 compositional NP and licensing cases;
-3. `run-constructions.js` — 1,246 assertions across one JSON file per active
+3. `run-constructions.js` — 1,245 assertions across one JSON file per active
    construction under `tests/constructions/`.
 
 ## Construction files

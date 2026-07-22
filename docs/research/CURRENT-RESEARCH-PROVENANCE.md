@@ -2,12 +2,12 @@
 
 ## Governance counts
 
-- active labels: **164**
+- active labels: **163**
 - `supported_productive`: **0**
 - `provisional_reaudit`: **0**
 - `provisional`: **0**
 - `research_pending`: **64**
-- `unsupported_generalization`: **78**
+- `unsupported_generalization`: **77**
 - `lexicalized_only`: **3**
 - `parser_heuristic`: **19**
 
@@ -50,10 +50,10 @@ the instrument was binary, fixed-order, context-free, and interpretation-blind.
 
 ## Current implementation priority
 
-Continue source/runtime reconciliation among the 53 remaining
+Continue source/runtime reconciliation among the 52 remaining
 implementation-only labels, ranked by learner impact, exact source match, and
 risk of misleading analysis. The retirement-review window opened at handoff
-sequence 34 and must close by sequence 41. Do not create another
+sequence 35 and must close by sequence 41. Do not create another
 release-specific verifier or generated validation tree.
 
 ## `EvaluationWithDouSyun` external-evidence result
@@ -80,6 +80,13 @@ source-links three exact preverbal `未/冇 + V過` statements and five
 word-order/negator boundaries. `NegativeExperiential` is now
 `research_pending`; productive verb/object scope and panel evidence remain
 unresolved.
+
+## `NegatedLexicalizedStative` retirement result
+
+[`CP056-P1-NEGATED-LEXICALIZED-STATIVE-RETIREMENT-R1.md`](CP056-P1-NEGATED-LEXICALIZED-STATIVE-RETIREMENT-R1.md)
+retires the label that merged opaque lexical `難X`, compositional `唔`
+negation, and prohibitive `唔好`. Their separate existing analyses and the bare
+`唔好食` ambiguity remain; no replacement construction is promoted.
 
 ## Frozen work
 
