@@ -46,11 +46,11 @@ implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
 standard_test_file: "tests/constructions/ResultStateClause.json"
-standard_test_coverage: "no_direct_cases"
+standard_test_coverage: "implementation_positive_only"
 standard_positive_test_count: 0
 standard_boundary_test_count: 0
-standard_implementation_probe_count: 0
-standard_executable_test_count: 0
+standard_implementation_probe_count: 1
+standard_executable_test_count: 1
 source_ids: ["SRC-FRANCIS-MATTHEWS-2005-VERB-CATEGORY", "SRC-KEDZIOR-2023"]
 runtime_active: true
 workflow_state: "archived"
@@ -146,3 +146,10 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Full pre-migration record: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
 - Status migration date: 2026-07-21.
 - The frozen JSON preserves the former wide schema; this note is the active authoring record.
+
+## Implementation reachability audit
+
+- Checkpoint: [CP036-P1 result and change-state wrapper audit](../../docs/research/CP036-P1-RESULT-CHANGE-STATE-WRAPPER-AUDIT-R1.md).
+- Implementation-only reachability: `RESCHG-004`.
+- These probes protect current parser reachability only; their linguistic evidence weight is **0**.
+- They do not change the construction status, source count, panel evidence, or promotion eligibility.

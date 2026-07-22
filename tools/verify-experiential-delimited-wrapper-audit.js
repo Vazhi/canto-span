@@ -32,7 +32,7 @@ function labels(source) {
     .filter(Boolean);
 }
 
-check("runtime version is 0.5.191", api.runtimeVersion === "0.5.191", api.runtimeVersion);
+check("runtime version is 0.5.192", api.runtimeVersion === "0.5.192", api.runtimeVersion);
 check("probe schema", probes.schema === "canto-span-experiential-delimited-reachability-probes-v1", probes.schema);
 check("probe file has seven cases", probes.cases.length === 7, probes.cases.length);
 check("all probes have zero evidence weight", probes.linguistic_evidence_weight === 0 && probes.cases.every((row) => row.linguistic_evidence_weight === 0 && row.purpose === "runtime_reachability_only"));
@@ -65,13 +65,13 @@ const cognitionClause = labels("你諗下係唔係。");
 check("source-linked cognition polar continuation currently misses delimited wrappers", !cognitionClause.includes("CognitionDelimitedVP") && !cognitionClause.includes("CognitionDelimitedObjectVP"), cognitionClause.join(","));
 
 check("registry remains 169 labels", api.labels.length === 169, api.labels.length);
-check("24 labels are implementation positive only", index.files.filter((row) => row.state === "implementation_positive_only").length === 24, index.files.filter((row) => row.state === "implementation_positive_only").length);
-check("43 labels remain no-direct", index.files.filter((row) => row.state === "no_direct_cases").length === 43, index.files.filter((row) => row.state === "no_direct_cases").length);
+check("34 labels are implementation positive only", index.files.filter((row) => row.state === "implementation_positive_only").length === 34, index.files.filter((row) => row.state === "implementation_positive_only").length);
+check("33 labels remain no-direct", index.files.filter((row) => row.state === "no_direct_cases").length === 33, index.files.filter((row) => row.state === "no_direct_cases").length);
 
 const result = {
   schema: "canto-span-experiential-delimited-wrapper-audit-v1",
   runtime_version: api.runtimeVersion,
-  checkpoint: "v0.5.191-experiential-delimited-wrapper-audit",
+  checkpoint: "v0.5.192-experiential-delimited-wrapper-audit",
   parser_recognized_span_behavior_changed: false,
   retained_linguistic_status_changed: false,
   labels_audited: auditedLabels.length,

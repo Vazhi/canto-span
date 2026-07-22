@@ -1,3 +1,11 @@
+## v0.5.192 — Result/change-state wrapper audit
+
+- Audited eleven result and change-state runtime labels.
+- Added ten semantically coherent zero-weight implementation reachability probes across ten labels.
+- Preserved `PerfectiveResultPredicate` as a shadowed `no_direct_cases` label rather than fabricating coverage.
+- Increased per-construction assertion references from 1,181 to 1,191.
+- Reduced the no-direct backlog from 43 to 33 labels without changing parser spans or linguistic statuses.
+
 ## v0.5.191 — experiential and delimited wrapper audit
 
 - Reviewed six related no-direct-case labels by exact constructor and complete-parser output.

@@ -33,7 +33,7 @@ Every one of the 169 active labels has exactly one file under `tests/constructio
 
 Each file records the current executable cases assigned to that construction and an explicit coverage state. The construction-note frontmatter points to the file and records its positive, boundary, and total executable counts.
 
-Current v0.5.191 coverage:
+Current v0.5.192 coverage:
 
 | Coverage state | Constructions |
 |---|---:|

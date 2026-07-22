@@ -81,6 +81,11 @@ required=(
   docs/releases/v0.5.191-experiential-delimited-wrapper-audit.json
   test-data/experiential-delimited-reachability-probes-v1.json
   tools/verify-experiential-delimited-wrapper-audit.js
+  docs/research/CP036-P1-RESULT-CHANGE-STATE-WRAPPER-AUDIT-R1.md
+  docs/research/CP036-P1-RESULT-CHANGE-STATE-WRAPPER-INVENTORY-R1.tsv
+  docs/releases/v0.5.192-result-change-state-wrapper-audit.json
+  test-data/result-change-state-reachability-probes-v1.json
+  tools/verify-result-change-state-wrapper-audit.js
   archive/retired-labels/v0.5.190-low-reference-wrapper-audit/TemporalAdverbialClause.md
   test-data/rul-survey-readiness-probes-v1.json
   tools/verify-rul-survey-readiness.js
@@ -121,6 +126,7 @@ node tools/verify-rul-survey-readiness.js >/dev/null
 node tools/verify-runtime-reachability.js >/dev/null
 node tools/verify-low-reference-wrapper-audit.js --fast >/dev/null
 node tools/verify-experiential-delimited-wrapper-audit.js >/dev/null
+node tools/verify-result-change-state-wrapper-audit.js >/dev/null
 node tools/audit-native-conflict-burden.js >/dev/null
 node tools/verify-native-panel-snapshot.js >/dev/null
 node tools/verify-pfv-panel-snapshot.js >/dev/null

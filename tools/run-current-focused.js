@@ -34,7 +34,7 @@ check("Definition of Done requires role-neutral item-level panel thresholds", /3
 check("doctrine rejects raw corpus counts", /Raw corpus hit counts have no evidence weight/i.test(doctrine));
 const currentText = fs.readdirSync(path.join(root, "docs/current")).filter((f) => f.endsWith(".md")).map((f) => fs.readFileSync(path.join(root, "docs/current", f), "utf8")).join("\n");
 check("current docs do not name archived wide registries", !/CONSTRUCTION-STATUS-REGISTRY-v0\.5\.184-R2|CONSTRUCTION-EVIDENCE-REAUDIT-LEDGER-v0\.5\.184-R1|ACTIVE-SOURCE-ACCOUNTING-v0\.5\.184-R1/.test(currentText));
-const result = { schema: "canto-span-current-focused-result-v9", checkpoint: "v0.5.191-low-reference-wrapper-audit", parser_behavior_changed: false, registry_owner: "grammar/active/*.md + grammar/archived/*.md", status_counts: counts, total: checks.length, passed: checks.length - failures.length, failed: failures.length, status: failures.length ? "FAIL" : "PASS", checks, failures };
+const result = { schema: "canto-span-current-focused-result-v9", checkpoint: "v0.5.192-result-change-state-wrapper-audit", parser_behavior_changed: false, registry_owner: "grammar/active/*.md + grammar/archived/*.md", status_counts: counts, total: checks.length, passed: checks.length - failures.length, failed: failures.length, status: failures.length ? "FAIL" : "PASS", checks, failures };
 const outDir = path.join(root, "validation", "infrastructure");
 fs.mkdirSync(outDir, { recursive: true });
 fs.writeFileSync(path.join(outDir, "phase2-current-focused.json"), JSON.stringify(result, null, 2) + "\n");

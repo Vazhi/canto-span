@@ -123,7 +123,7 @@ provenance for collected legacy data.
 - retained 53 labels as `no_direct_cases`; “not observed” is not treated as unreachable;
 - retired no labels because all 68 retain runtime code references;
 - changed no parser span behavior or linguistic status.
-## v0.5.191 experiential and delimited wrapper audit
+## v0.5.192 experiential and delimited wrapper audit
 
 - audited six related labels by complete-parser output and exact constructor behavior;
 - added seven zero-weight implementation probes across six labels;
@@ -138,3 +138,9 @@ provenance for collected legacy data.
 - retired constructorless `TemporalAdverbialClause` while preserving its checked source and future research question;
 - reduced active labels to 169 and no-direct-case labels to 49;
 - changed no recognized parser span or retained linguistic status.
+
+## Result/change-state wrapper audit
+
+- v0.5.192 adds ten zero-weight implementation probes across ten result/change-state labels.
+- `PerfectiveResultPredicate` remains `no_direct_cases` because complete parser output is shadowed by `PerfectiveVP`.
+- Current coverage is 2 positive-and-boundary, 100 positive-only, 34 implementation-positive-only, and 33 no-direct labels.

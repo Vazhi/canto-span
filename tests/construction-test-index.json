@@ -89,44 +89,44 @@
     {
       "construction": "CausativeResultFrame",
       "file": "tests/constructions/CausativeResultFrame.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "CausativeResultPredicate",
       "file": "tests/constructions/CausativeResultPredicate.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "ChangeIntoPredicate",
       "file": "tests/constructions/ChangeIntoPredicate.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "ClassifierObjectNP",
@@ -649,16 +649,16 @@
     {
       "construction": "DisposalChangeIntoResultFrame",
       "file": "tests/constructions/DisposalChangeIntoResultFrame.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "DitransitiveSpeechVP",
@@ -1153,16 +1153,16 @@
     {
       "construction": "ModalChangeIntoResultFrame",
       "file": "tests/constructions/ModalChangeIntoResultFrame.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "ModalVP",
@@ -1545,16 +1545,16 @@
     {
       "construction": "PerfectiveObjectResultPredicate",
       "file": "tests/constructions/PerfectiveObjectResultPredicate.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "PerfectiveResultPredicate",
@@ -2035,16 +2035,16 @@
     {
       "construction": "ResultStateClause",
       "file": "tests/constructions/ResultStateClause.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "ScalarEvaluation",
@@ -2105,16 +2105,16 @@
     {
       "construction": "SeemingPerfectiveResultClause",
       "file": "tests/constructions/SeemingPerfectiveResultClause.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "SerialVerbPurposeChain",
@@ -2273,30 +2273,30 @@
     {
       "construction": "TransformationResultFrame",
       "file": "tests/constructions/TransformationResultFrame.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "TransformationResultPredicate",
       "file": "tests/constructions/TransformationResultPredicate.json",
-      "state": "no_direct_cases",
+      "state": "implementation_positive_only",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 0,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "positive_case_count": 0,
       "boundary_case_count": 0,
-      "executable_case_count": 0
+      "executable_case_count": 1
     },
     {
       "construction": "TransitiveVP",

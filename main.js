@@ -9,8 +9,9 @@ const { Plugin, PluginSettingTab, Setting, Notice } = require("obsidian");
  * never overwrite child learner roles.
  */
 
-const CANTO_SPAN_RUNTIME_VERSION = "0.5.191";
-// v0.5.191: audits low-reference wrappers, adds three zero-evidence constructor-specific reachability probes, and retires constructorless TemporalAdverbialClause. No recognized parser span changes.
+const CANTO_SPAN_RUNTIME_VERSION = "0.5.192";
+// v0.5.192: audits result/change-state wrappers, adds ten zero-evidence reachability probes, and records one shadowed specialized perfective wrapper. No recognized parser span or linguistic-status changes.
+// v0.5.191: audits experiential and delimited wrappers with seven zero-evidence reachability probes and records unresolved routing gaps. No recognized parser span changes.
 // v0.5.189: adds zero-evidence runtime reachability probes for 15 previously unexercised labels and preserves 53 unobserved labels for later code-specific review. Parser span behavior and linguistic status are unchanged.
 // v0.5.188: freezes the RUL source/runtime contrast map and survey-readiness requirements without creating a survey instrument or changing parser span behavior. The next blocking input is the user prompt that will guide pilot-v1 creation.
 // v0.5.187: replaces the fixed two-reviewer evidence model with a role-neutral panel gate based on usable adjudicated judgments per critical item. PFV returns to research_pending because its mixed legacy instruments do not satisfy the clean panel threshold. Parser span behavior is unchanged.
@@ -62,7 +63,7 @@ const DEFAULT_SETTINGS = {
 // Runtime construction governance is deliberately minimal. Linguistic status,
 // confidence, sources, speaker records, corpus counts, and promotion eligibility
 // live in grammar/active/*.md and grammar/archived/*.md and are validated outside the shipped plugin.
-const RUNTIME_CONSTRUCTION_REGISTRY_VERSION = "0.5.191";
+const RUNTIME_CONSTRUCTION_REGISTRY_VERSION = "0.5.192";
 
 function runtimeConstructionStateFor(type) {
   const construction = String(type || "");

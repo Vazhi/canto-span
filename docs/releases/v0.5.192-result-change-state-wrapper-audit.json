@@ -1,0 +1,33 @@
+{
+  "schema": "canto-span-release-handoff-audit-v2",
+  "release_id": "v0.5.192-result-change-state-wrapper-audit",
+  "handoff_sequence": 16,
+  "status_changes": [],
+  "changed_construction_audit": [],
+  "supported_productive_pending_reaudit": [],
+  "implementation_validation": "PASS required before handoff: 545 regression cases, 43 NP cases, 1,191 construction assertions, 169 note/test alignment, ten result/change-state zero-weight probes, historical reachability audits, panel workflow, promotion and release gates, documentation links, and repository verification.",
+  "linguistic_confidence": "No construction gained linguistic evidence or status. All ten probes have evidence weight zero. PerfectiveResultPredicate remains no-direct because complete output is shadowed by PerfectiveVP.",
+  "code_analysis_overclaim_review": true,
+  "overclaim_review_scope": "Inspected exact templates and complete parser output for eleven result/change-state labels. Recorded ten reachable labels separately from one shadowed internal fallback; no reachability result is treated as naturalness or productivity evidence.",
+  "release_documents": [
+    "docs/research/CP036-P1-RESULT-CHANGE-STATE-WRAPPER-AUDIT-R1.md",
+    "docs/research/CP036-P1-RESULT-CHANGE-STATE-WRAPPER-INVENTORY-R1.tsv",
+    "test-data/result-change-state-reachability-probes-v1.json",
+    "tools/verify-result-change-state-wrapper-audit.js",
+    "docs/current/PROJECT-STATE.md",
+    "docs/current/TESTING.md",
+    "GRAMMAR-INDEX.md",
+    "HANDOFF.md",
+    "CHANGELOG.md"
+  ],
+  "external_audit_ready": true,
+  "unresolved_release_questions": [
+    "Thirty-three labels still have no direct standardized case.",
+    "PerfectiveResultPredicate remains shadowed by PerfectiveVP in complete parser output.",
+    "TransformationResultFrame remains sensitive to whether a multi-token topic is wrapped before the late fallback.",
+    "Comment remains constructor-level reachable but unobserved in complete parser output under the bounded scan.",
+    "The full dormant-label review remains due by handoff sequence 23.",
+    "RUL and PFV survey integration remains paused while collection proceeds."
+  ],
+  "base_tree": "8645eb6cf6c82640e1a06fb4a85f58cd3c47e9a5"
+}

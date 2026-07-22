@@ -4,7 +4,7 @@
 
 | Measure | Current value |
 |---|---:|
-| Runtime | v0.5.191 |
+| Runtime | v0.5.192 |
 | Runtime labels | 169 |
 | Current construction notes | 169 |
 | Active working notes | 2 |
@@ -19,6 +19,21 @@
 | `parser_heuristic` | 20 |
 
 The canonical registry is the union of `grammar/active/*.md` and `grammar/archived/*.md`; it matches the 169 runtime labels exactly.
+
+## v0.5.192 result and change-state wrapper audit
+
+Eleven related labels received constructor-specific review. Ten labels now have semantically coherent implementation-only probes: `CausativeResultFrame`, `CausativeResultPredicate`, `ChangeIntoPredicate`, `ModalChangeIntoResultFrame`, `DisposalChangeIntoResultFrame`, `ResultStateClause`, `TransformationResultFrame`, `TransformationResultPredicate`, `SeemingPerfectiveResultClause`, and `PerfectiveObjectResultPredicate`. All probes have linguistic evidence weight zero.
+
+`PerfectiveResultPredicate` remains unresolved: its direct `解決咗` fallback exists internally, but complete output is consumed by `PerfectiveVP`. No probe was added merely to improve coverage counts.
+
+Current construction coverage:
+
+- positive and boundary: **2**;
+- positive only: **100**;
+- implementation positive only: **34**;
+- no direct cases: **33**.
+
+No recognized parser span, runtime label, or linguistic status changed.
 
 ## v0.5.191 experiential and delimited wrapper audit
 
@@ -122,14 +137,13 @@ critical-item sample remains zero.
 
 - regression: **545 cases**;
 - NP subsystem: **43 cases**;
-- construction assertions: **1,181**;
-- construction test files: **170**;
+- construction assertions: **1,191**;
+- construction test files: **169**;
 - no parser span behavior changed in this migration.
 
 ## Next milestone
 
-Continue the 43-label implementation reachability backlog in small related
-families. The first family should cover low-reference wrappers and clause labels,
-with exact constructor inspection before any probe is added. Survey work remains
-blocked until the user supplies the requested survey-guidance prompt; at that
-point resume the mixed RUL/PFV `pilot-v1` lifecycle.
+Continue the 33-label implementation reachability backlog in small related
+families, with exact constructor inspection before any probe is added. Survey
+collection is proceeding separately; do not integrate results until a frozen
+export is supplied and adjudicated.
