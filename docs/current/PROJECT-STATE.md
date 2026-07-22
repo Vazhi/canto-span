@@ -4,21 +4,37 @@
 
 | Measure | Current value |
 |---|---:|
-| Runtime | v0.5.196 |
-| Runtime labels | 168 |
-| Current construction notes | 168 |
+| Runtime | v0.5.197 |
+| Runtime labels | 166 |
+| Current construction notes | 166 |
 | Active working notes | 2 |
-| Workflow-archived notes | 166 |
-| Retired labels | 13 |
+| Workflow-archived notes | 164 |
+| Retired labels | 15 |
 | `supported_productive` | 0 |
 | `provisional_reaudit` | 0 |
 | `provisional` | 0 |
 | `research_pending` | 60 |
-| `unsupported_generalization` | 85 |
+| `unsupported_generalization` | 84 |
 | `lexicalized_only` | 3 |
-| `parser_heuristic` | 20 |
+| `parser_heuristic` | 19 |
 
-The canonical registry is the union of `grammar/active/*.md` and `grammar/archived/*.md`; it matches the 168 runtime labels exactly.
+The canonical registry is the union of `grammar/active/*.md` and `grammar/archived/*.md`; it matches the 166 runtime labels exactly.
+
+## v0.5.197 shadowed-wrapper retirement
+
+The final two uncovered labels were retired after exact structural review. `Comment` was a redundant internal child wrapper whose role information is already represented by `TopicComment` slots. `PerfectiveResultPredicate` was a lexical-item-specific `解決咗` wrapper that complete parsing always consumed as `PerfectiveVP`.
+
+The retirement verifier compared v0.5.197 with the exact v0.5.196 base tree over 1,885 structured candidate strings and all 545 regression cases. Complete diagnostic output was identical in every comparison.
+
+Current construction coverage:
+
+- positive and boundary: **2**;
+- positive only: **100**;
+- implementation positive only: **63**;
+- compatibility alias only: **1**;
+- no direct cases: **0**.
+
+The active registry now contains **166** labels and the retired archive contains **15** labels. The full dormant/uncovered-label review is complete. No recognized parser span or retained linguistic status changed.
 
 ## v0.5.196 final reachable-wrapper audit
 

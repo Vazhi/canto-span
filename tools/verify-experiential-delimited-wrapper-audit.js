@@ -32,7 +32,7 @@ function labels(source) {
     .filter(Boolean);
 }
 
-check("runtime version is 0.5.196", api.runtimeVersion === "0.5.196", api.runtimeVersion);
+check("runtime version is 0.5.197", api.runtimeVersion === "0.5.197", api.runtimeVersion);
 check("probe schema", probes.schema === "canto-span-experiential-delimited-reachability-probes-v1", probes.schema);
 check("probe file has seven cases", probes.cases.length === 7, probes.cases.length);
 check("all probes have zero evidence weight", probes.linguistic_evidence_weight === 0 && probes.cases.every((row) => row.linguistic_evidence_weight === 0 && row.purpose === "runtime_reachability_only"));
@@ -64,14 +64,14 @@ check("有冇 experiential question currently misses ExperientialQuestion", !yau
 const cognitionClause = labels("你諗下係唔係。");
 check("source-linked cognition polar continuation currently misses delimited wrappers", !cognitionClause.includes("CognitionDelimitedVP") && !cognitionClause.includes("CognitionDelimitedObjectVP"), cognitionClause.join(","));
 
-check("registry remains 168 labels", api.labels.length === 168, api.labels.length);
+check("registry remains 166 labels", api.labels.length === 166, api.labels.length);
 check("63 labels are implementation positive only", index.files.filter((row) => row.state === "implementation_positive_only").length === 63, index.files.filter((row) => row.state === "implementation_positive_only").length);
-check("2 labels remain no-direct", index.files.filter((row) => row.state === "no_direct_cases").length === 2, index.files.filter((row) => row.state === "no_direct_cases").length);
+check("no labels remain no-direct", index.files.filter((row) => row.state === "no_direct_cases").length === 0, index.files.filter((row) => row.state === "no_direct_cases").length);
 
 const result = {
   schema: "canto-span-experiential-delimited-wrapper-audit-v1",
   runtime_version: api.runtimeVersion,
-  checkpoint: "v0.5.196-experiential-delimited-wrapper-audit",
+  checkpoint: "v0.5.197-experiential-delimited-wrapper-audit",
   parser_recognized_span_behavior_changed: false,
   retained_linguistic_status_changed: false,
   labels_audited: auditedLabels.length,

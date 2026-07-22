@@ -127,7 +127,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - [[ChangeIntoPredicate]]
 - [[DisposalChangeIntoResultFrame]]
 - [[PerfectiveObjectResultPredicate]]
-- [[PerfectiveResultPredicate]]
+- [[PerfectiveVP]]
 - [[ResultStateClause]]
 - [[SeemingPerfectiveResultClause]]
 - [[TransformationResultFrame]]

@@ -52,9 +52,6 @@ module.exports.__lowRefApi = {
   CONSTRUCTION_LABEL_REGISTRY,
   RETIRED_CONSTRUCTION_LABEL_REGISTRY,
   TOKEN_LEXICON,
-  token,
-  wrapCore,
-  flattenNodes,
 };`, context, { filename: mainPath });
 const internal = moduleRecord.exports.__lowRefApi;
 
@@ -72,10 +69,6 @@ function finalLabels(source) {
     .map(internalConstruction)
     .filter(Boolean);
 }
-function rawLabels(nodes) {
-  return internal.flattenNodes(nodes).filter((node) => node.kind === "construction").map((node) => node.type);
-}
-
 const inventory = parseTsv(path.join(root, "docs/research/CP034-P1-LOW-REFERENCE-WRAPPER-INVENTORY-R1.tsv"));
 const probes = JSON.parse(fs.readFileSync(path.join(root, "test-data/constructor-specific-reachability-probes-v1.json"), "utf8"));
 const index = JSON.parse(fs.readFileSync(path.join(root, "tests/construction-test-index.json"), "utf8"));
@@ -88,7 +81,7 @@ function check(name, condition, detail = "") {
   if (!pass) failures.push({ name, detail: String(detail) });
 }
 
-check("runtime version is 0.5.196", api.runtimeVersion === "0.5.196", api.runtimeVersion);
+check("runtime version is 0.5.197", api.runtimeVersion === "0.5.197", api.runtimeVersion);
 check("inventory has five labels", inventory.length === 5, inventory.length);
 check("probe schema", probes.schema === "canto-span-constructor-specific-reachability-probes-v1", probes.schema);
 check("all three probes have zero evidence weight", probes.cases.length === 3 && probes.cases.every((row) => row.linguistic_evidence_weight === 0 && row.purpose === "runtime_reachability_only"), probes.cases.length);
@@ -112,9 +105,12 @@ for (const topic of topicCandidates) {
   }
 }
 check("single-lexeme topic scan has no complete Comment output", completeCommentHits === 0, completeCommentHits);
-const directComment = rawLabels(internal.wrapCore([internal.token("呢個"), internal.token("未")]));
-check("Comment fallback still exists at constructor level", directComment.includes("Comment"), JSON.stringify(directComment));
-check("Comment remains current but no-direct", internal.CONSTRUCTION_LABEL_REGISTRY.has("Comment") && indexByLabel.get("Comment")?.state === "no_direct_cases");
+check("Comment is absent from the active registry", !internal.CONSTRUCTION_LABEL_REGISTRY.has("Comment"));
+check("Comment is present in the retired registry", internal.RETIRED_CONSTRUCTION_LABEL_REGISTRY.has("Comment"));
+check("Comment constructor is absent", !mainText.includes('construction("Comment"'));
+check("Comment current note is absent", !fs.existsSync(path.join(root, "grammar/archived/Comment.md")));
+check("Comment test file is absent", !fs.existsSync(path.join(root, "tests/constructions/Comment.json")));
+check("Comment retired note is preserved", fs.existsSync(path.join(root, "archive/retired-labels/v0.5.197-shadowed-wrapper-retirement/Comment.md")));
 
 check("TemporalAdverbialClause absent from active registry", !internal.CONSTRUCTION_LABEL_REGISTRY.has("TemporalAdverbialClause"));
 check("TemporalAdverbialClause present in retired registry", internal.RETIRED_CONSTRUCTION_LABEL_REGISTRY.has("TemporalAdverbialClause"));
@@ -124,10 +120,10 @@ check("TemporalAdverbialClause current note absent", !fs.existsSync(path.join(ro
 check("TemporalAdverbialClause test file absent", !fs.existsSync(path.join(root, "tests/constructions/TemporalAdverbialClause.json")));
 check("TemporalAdverbialClause archived note preserved", fs.existsSync(path.join(root, "archive/retired-labels/v0.5.190-low-reference-wrapper-audit/TemporalAdverbialClause.md")));
 
-check("current registry has 168 labels", internal.CONSTRUCTION_LABEL_REGISTRY.size === 168, internal.CONSTRUCTION_LABEL_REGISTRY.size);
-check("test index has 168 labels", index.active_construction_count === 168 && index.files.length === 168, index.files.length);
+check("current registry has 166 labels", internal.CONSTRUCTION_LABEL_REGISTRY.size === 166, internal.CONSTRUCTION_LABEL_REGISTRY.size);
+check("test index has 166 labels", index.active_construction_count === 166 && index.files.length === 166, index.files.length);
 check("63 labels are implementation positive only", index.files.filter((row) => row.state === "implementation_positive_only").length === 63, index.files.filter((row) => row.state === "implementation_positive_only").length);
-check("2 labels remain no-direct", index.files.filter((row) => row.state === "no_direct_cases").length === 2, index.files.filter((row) => row.state === "no_direct_cases").length);
+check("no labels remain no-direct", index.files.filter((row) => row.state === "no_direct_cases").length === 0, index.files.filter((row) => row.state === "no_direct_cases").length);
 
 const result = {
   schema: "canto-span-low-reference-wrapper-audit-v1",

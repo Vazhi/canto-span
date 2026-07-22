@@ -1,12 +1,12 @@
 {
   "schema": "canto-span-retirement-review-cadence-v1",
-  "last_full_review_sequence": 3,
-  "last_full_review_id": "v0.5.183-phase3-dormant-label-retirement",
+  "last_full_review_sequence": 21,
+  "last_full_review_id": "v0.5.197-shadowed-wrapper-retirement",
   "recommended_interval_min": 10,
   "hard_interval_max": 20,
-  "current_handoff_sequence": 20,
-  "next_review_window_opens_at_sequence": 13,
-  "review_required_by_sequence": 23,
-  "state": "review_window_open_partial_review_in_progress",
-  "notes": "The retirement window remains open. v0.5.196 reviewed all thirteen remaining no-direct labels, added eleven zero-weight implementation probes, and retained Comment plus PerfectiveResultPredicate as constructor-shadowed. No labels were retired. The full review remains due by sequence 23."
+  "current_handoff_sequence": 21,
+  "next_review_window_opens_at_sequence": 31,
+  "review_required_by_sequence": 41,
+  "state": "full_review_complete",
+  "notes": "v0.5.197 completes the full dormant and uncovered-label review. Comment and PerfectiveResultPredicate were retired after exact base-tree output equivalence confirmed that neither contributed an observable final parser span. All 166 active runtime labels now have standardized positive/boundary, zero-weight implementation, or compatibility-alias-only coverage. The next review window opens at sequence 31 and a full review is required by sequence 41."
 }

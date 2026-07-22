@@ -1,0 +1,428 @@
+{
+  "schema": "canto-span-final-reachable-wrapper-audit-v1",
+  "runtime_version": "0.5.197",
+  "checkpoint": "v0.5.197-shadowed-wrapper-retirement",
+  "parser_recognized_span_behavior_changed": false,
+  "linguistic_status_changed": false,
+  "labels_audited": 13,
+  "implementation_probes_added": 11,
+  "constructor_shadowed_labels_retained": 0,
+  "constructor_shadowed_labels_retired_later": 2,
+  "linguistic_evidence_weight_added": 0,
+  "total": 84,
+  "passed": 84,
+  "failed": 0,
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "runtime version is 0.5.197",
+      "pass": true,
+      "detail": "0.5.197"
+    },
+    {
+      "name": "inventory has thirteen labels",
+      "pass": true,
+      "detail": "13"
+    },
+    {
+      "name": "inventory records eleven reachable labels",
+      "pass": true,
+      "detail": "11"
+    },
+    {
+      "name": "inventory records two shadowed labels",
+      "pass": true,
+      "detail": "2"
+    },
+    {
+      "name": "probe schema",
+      "pass": true,
+      "detail": "canto-span-final-reachable-wrapper-reachability-probes-v1"
+    },
+    {
+      "name": "probe file has eleven cases",
+      "pass": true,
+      "detail": "11"
+    },
+    {
+      "name": "probe file has eleven unique target labels",
+      "pass": true
+    },
+    {
+      "name": "all probes have zero evidence weight",
+      "pass": true
+    },
+    {
+      "name": "FRWRAP-001 reaches CompletionThenClause",
+      "pass": true,
+      "detail": "我做完功課就瞓覺。: CompletionThenClause,CompletionVP,ProductiveVO"
+    },
+    {
+      "name": "CompletionThenClause coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "CompletionThenClause has one implementation probe",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "CompletionThenClause keeps zero direct positives",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "CompletionThenClause note records CP040 zero-weight reachability",
+      "pass": true,
+      "detail": "grammar/archived/CompletionThenClause.md"
+    },
+    {
+      "name": "FRWRAP-002 reaches CompoundDirectionalMotionVP",
+      "pass": true,
+      "detail": "返上嚟。: CompoundDirectionalMotionVP"
+    },
+    {
+      "name": "CompoundDirectionalMotionVP coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "CompoundDirectionalMotionVP has one implementation probe",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "CompoundDirectionalMotionVP keeps zero direct positives",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "CompoundDirectionalMotionVP note records CP040 zero-weight reachability",
+      "pass": true,
+      "detail": "grammar/archived/CompoundDirectionalMotionVP.md"
+    },
+    {
+      "name": "FRWRAP-003 reaches ConditionResult",
+      "pass": true,
+      "detail": "買就平啲。: ConditionResult,DegreeMannerAdverbial"
+    },
+    {
+      "name": "ConditionResult coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "ConditionResult has one implementation probe",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "ConditionResult keeps zero direct positives",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "ConditionResult note records CP040 zero-weight reachability",
+      "pass": true,
+      "detail": "grammar/archived/ConditionResult.md"
+    },
+    {
+      "name": "FRWRAP-004 reaches DegreeModifiedLexicalStative",
+      "pass": true,
+      "detail": "好好食。: DegreeModifiedLexicalStative"
+    },
+    {
+      "name": "DegreeModifiedLexicalStative coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "DegreeModifiedLexicalStative has one implementation probe",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "DegreeModifiedLexicalStative keeps zero direct positives",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "DegreeModifiedLexicalStative note records CP040 zero-weight reachability",
+      "pass": true,
+      "detail": "grammar/archived/DegreeModifiedLexicalStative.md"
+    },
+    {
+      "name": "FRWRAP-005 reaches NegatedLexicalizedStative",
+      "pass": true,
+      "detail": "難食。: NegatedLexicalizedStative"
+    },
+    {
+      "name": "NegatedLexicalizedStative coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "NegatedLexicalizedStative has one implementation probe",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "NegatedLexicalizedStative keeps zero direct positives",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "NegatedLexicalizedStative note records CP040 zero-weight reachability",
+      "pass": true,
+      "detail": "grammar/archived/NegatedLexicalizedStative.md"
+    },
+    {
+      "name": "FRWRAP-006 reaches PassivePermissiveRelation",
+      "pass": true,
+      "detail": "我畀佢打。: PassivePermissiveRelation"
+    },
+    {
+      "name": "PassivePermissiveRelation coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "PassivePermissiveRelation has one implementation probe",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "PassivePermissiveRelation keeps zero direct positives",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "PassivePermissiveRelation note records CP040 zero-weight reachability",
+      "pass": true,
+      "detail": "grammar/archived/PassivePermissiveRelation.md"
+    },
+    {
+      "name": "FRWRAP-007 reaches PoliteImperativeClause",
+      "pass": true,
+      "detail": "請你沿住馬路行。: PoliteImperativeClause,PathPhrase"
+    },
+    {
+      "name": "PoliteImperativeClause coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "PoliteImperativeClause has one implementation probe",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "PoliteImperativeClause keeps zero direct positives",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "PoliteImperativeClause note records CP040 zero-weight reachability",
+      "pass": true,
+      "detail": "grammar/archived/PoliteImperativeClause.md"
+    },
+    {
+      "name": "FRWRAP-008 reaches ProgressivePlaceQuestion",
+      "pass": true,
+      "detail": "你做緊嘢喺邊度呀？: ProgressivePlaceQuestion,ProgressiveVP,LocativePlacePhrase"
+    },
+    {
+      "name": "ProgressivePlaceQuestion coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "ProgressivePlaceQuestion has one implementation probe",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "ProgressivePlaceQuestion keeps zero direct positives",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "ProgressivePlaceQuestion note records CP040 zero-weight reachability",
+      "pass": true,
+      "detail": "grammar/archived/ProgressivePlaceQuestion.md"
+    },
+    {
+      "name": "FRWRAP-009 reaches ProgressivePurposeClause",
+      "pass": true,
+      "detail": "佢喺度洗緊菜煮飯。: ProgressivePurposeClause,ProgressiveTransitivePredicate,PurposePredicate"
+    },
+    {
+      "name": "ProgressivePurposeClause coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "ProgressivePurposeClause has one implementation probe",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "ProgressivePurposeClause keeps zero direct positives",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "ProgressivePurposeClause note records CP040 zero-weight reachability",
+      "pass": true,
+      "detail": "grammar/archived/ProgressivePurposeClause.md"
+    },
+    {
+      "name": "FRWRAP-010 reaches ProgressiveTransitivePredicate",
+      "pass": true,
+      "detail": "佢喺度洗緊菜煮飯。: ProgressivePurposeClause,ProgressiveTransitivePredicate,PurposePredicate"
+    },
+    {
+      "name": "ProgressiveTransitivePredicate coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "ProgressiveTransitivePredicate has one implementation probe",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "ProgressiveTransitivePredicate keeps zero direct positives",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "ProgressiveTransitivePredicate note records CP040 zero-weight reachability",
+      "pass": true,
+      "detail": "grammar/archived/ProgressiveTransitivePredicate.md"
+    },
+    {
+      "name": "FRWRAP-011 reaches PurposePredicate",
+      "pass": true,
+      "detail": "佢喺度洗緊菜煮飯。: ProgressivePurposeClause,ProgressiveTransitivePredicate,PurposePredicate"
+    },
+    {
+      "name": "PurposePredicate coverage is implementation only",
+      "pass": true,
+      "detail": "implementation_positive_only"
+    },
+    {
+      "name": "PurposePredicate has one implementation probe",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "PurposePredicate keeps zero direct positives",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "PurposePredicate note records CP040 zero-weight reachability",
+      "pass": true,
+      "detail": "grammar/archived/PurposePredicate.md"
+    },
+    {
+      "name": "completion sequence preserves CompletionVP",
+      "pass": true,
+      "detail": "CompletionThenClause,CompletionVP,ProductiveVO"
+    },
+    {
+      "name": "three-part and two-part directionals remain distinct",
+      "pass": true,
+      "detail": "CompoundDirectionalMotionVP / DirectionalMotionVP"
+    },
+    {
+      "name": "lexical and productive stative negation remain distinct",
+      "pass": true,
+      "detail": "NegatedLexicalizedStative / NeedsContext"
+    },
+    {
+      "name": "polite path command remains narrow",
+      "pass": true,
+      "detail": "PoliteImperativeClause,PathPhrase / "
+    },
+    {
+      "name": "progressive place wrapper remains order-sensitive",
+      "pass": true,
+      "detail": "ProgressivePlaceQuestion,ProgressiveVP,LocativePlacePhrase / LocativePlacePhrase,ProgressiveVP"
+    },
+    {
+      "name": "bounded progressive-purpose route exposes all three wrappers",
+      "pass": true,
+      "detail": "ProgressivePurposeClause,ProgressiveTransitivePredicate,PurposePredicate"
+    },
+    {
+      "name": "Comment is absent from active registry",
+      "pass": true
+    },
+    {
+      "name": "Comment is present in retired registry",
+      "pass": true
+    },
+    {
+      "name": "Comment remains absent from complete output",
+      "pass": true,
+      "detail": "TopicComment,HeadlessDemonstrativeClassifierNP"
+    },
+    {
+      "name": "Comment is absent from current test index",
+      "pass": true
+    },
+    {
+      "name": "Comment retired note is preserved",
+      "pass": true
+    },
+    {
+      "name": "PerfectiveResultPredicate is absent from active registry",
+      "pass": true
+    },
+    {
+      "name": "PerfectiveResultPredicate is present in retired registry",
+      "pass": true
+    },
+    {
+      "name": "PerfectiveResultPredicate compatibility maps to PerfectiveVP",
+      "pass": true
+    },
+    {
+      "name": "complete output still uses PerfectiveVP",
+      "pass": true,
+      "detail": "NeedsContext,PerfectiveVP"
+    },
+    {
+      "name": "PerfectiveResultPredicate is absent from current test index",
+      "pass": true
+    },
+    {
+      "name": "PerfectiveResultPredicate retired note is preserved",
+      "pass": true
+    },
+    {
+      "name": "test index has 63 implementation-positive-only labels",
+      "pass": true,
+      "detail": "63"
+    },
+    {
+      "name": "test index has one compatibility-alias-only label",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "test index has zero no-direct labels",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "test index has 166 active labels",
+      "pass": true,
+      "detail": "166"
+    }
+  ],
+  "failures": []
+}

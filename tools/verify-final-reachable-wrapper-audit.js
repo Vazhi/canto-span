@@ -42,11 +42,9 @@ function loadInternalApi() {
 module.exports.__internalAuditApi = {
   analyzeLine,
   diagnosticFinalRows,
-  wrapCore,
-  perfectiveResultPredicateFallback,
-  token,
-  flattenNodes,
   CONSTRUCTION_LABEL_REGISTRY,
+  RETIRED_CONSTRUCTION_LABEL_REGISTRY,
+  RETIRED_CONSTRUCTION_LABEL_ALIASES,
 };`, context, { filename: mainPath });
   return moduleRecord.exports.__internalAuditApi;
 }
@@ -60,7 +58,7 @@ function check(name, condition, detail = "") {
   if (!pass) failures.push({ name, detail: String(detail) });
 }
 
-check("runtime version is 0.5.196", api.runtimeVersion === "0.5.196", api.runtimeVersion);
+check("runtime version is 0.5.197", api.runtimeVersion === "0.5.197", api.runtimeVersion);
 check("inventory has thirteen labels", inventory.length === 13, inventory.length);
 check("inventory records eleven reachable labels", inventory.filter((row) => row.complete_parser_output_observed === "yes").length === 11, inventory.filter((row) => row.complete_parser_output_observed === "yes").length);
 check("inventory records two shadowed labels", inventory.filter((row) => row.complete_parser_output_observed === "no").length === 2, inventory.filter((row) => row.complete_parser_output_observed === "no").length);
@@ -89,35 +87,34 @@ check("progressive place wrapper remains order-sensitive", labelsFor("你做緊�
 const purposeLabels = labelsFor("佢喺度洗緊菜煮飯。");
 check("bounded progressive-purpose route exposes all three wrappers", ["ProgressivePurposeClause", "ProgressiveTransitivePredicate", "PurposePredicate"].every((label) => purposeLabels.includes(label)), purposeLabels.join(","));
 
-const directCommentResult = internal.wrapCore([internal.token("呢個"), internal.token("未")]);
-const directCommentLabels = internal.flattenNodes(directCommentResult).filter((node) => node.kind === "construction").map((node) => node.type);
-check("Comment constructor remains registered", internal.CONSTRUCTION_LABEL_REGISTRY.has("Comment"));
-check("Comment fallback remains callable internally", directCommentLabels.includes("Comment"), JSON.stringify(directCommentLabels));
+check("Comment is absent from active registry", !internal.CONSTRUCTION_LABEL_REGISTRY.has("Comment"));
+check("Comment is present in retired registry", internal.RETIRED_CONSTRUCTION_LABEL_REGISTRY.has("Comment"));
 check("Comment remains absent from complete output", !labelsFor("呢個好食。").includes("Comment"), labelsFor("呢個好食。").join(","));
-check("Comment remains no-direct", indexByLabel.get("Comment")?.state === "no_direct_cases", indexByLabel.get("Comment")?.state);
+check("Comment is absent from current test index", !indexByLabel.has("Comment"));
+check("Comment retired note is preserved", fs.existsSync(path.join(root, "archive", "retired-labels", "v0.5.197-shadowed-wrapper-retirement", "Comment.md")));
 
-const perfectiveTokens = internal.analyzeLine("解決咗喇。", null).tokens.filter((node) => node && node.kind !== "text");
-const directPerfectiveResult = internal.perfectiveResultPredicateFallback(perfectiveTokens);
-check("PerfectiveResultPredicate constructor remains registered", internal.CONSTRUCTION_LABEL_REGISTRY.has("PerfectiveResultPredicate"));
-check("PerfectiveResultPredicate fallback remains callable internally", directPerfectiveResult && directPerfectiveResult.type === "PerfectiveResultPredicate", directPerfectiveResult && directPerfectiveResult.type);
-check("complete output consumes specialized perfective result wrapper", labelsFor("解決咗喇。").includes("PerfectiveVP") && !labelsFor("解決咗喇。").includes("PerfectiveResultPredicate"), labelsFor("解決咗喇。").join(","));
-check("PerfectiveResultPredicate remains no-direct", indexByLabel.get("PerfectiveResultPredicate")?.state === "no_direct_cases", indexByLabel.get("PerfectiveResultPredicate")?.state);
+check("PerfectiveResultPredicate is absent from active registry", !internal.CONSTRUCTION_LABEL_REGISTRY.has("PerfectiveResultPredicate"));
+check("PerfectiveResultPredicate is present in retired registry", internal.RETIRED_CONSTRUCTION_LABEL_REGISTRY.has("PerfectiveResultPredicate"));
+check("PerfectiveResultPredicate compatibility maps to PerfectiveVP", internal.RETIRED_CONSTRUCTION_LABEL_ALIASES.get("PerfectiveResultPredicate") === "PerfectiveVP");
+check("complete output still uses PerfectiveVP", labelsFor("解決咗喇。").includes("PerfectiveVP") && !labelsFor("解決咗喇。").includes("PerfectiveResultPredicate"), labelsFor("解決咗喇。").join(","));
+check("PerfectiveResultPredicate is absent from current test index", !indexByLabel.has("PerfectiveResultPredicate"));
+check("PerfectiveResultPredicate retired note is preserved", fs.existsSync(path.join(root, "archive", "retired-labels", "v0.5.197-shadowed-wrapper-retirement", "PerfectiveResultPredicate.md")));
 
 check("test index has 63 implementation-positive-only labels", index.files.filter((row) => row.state === "implementation_positive_only").length === 63, index.files.filter((row) => row.state === "implementation_positive_only").length);
 check("test index has one compatibility-alias-only label", index.files.filter((row) => row.state === "compatibility_alias_only").length === 1, index.files.filter((row) => row.state === "compatibility_alias_only").length);
-check("test index has two no-direct labels", index.files.filter((row) => row.state === "no_direct_cases").length === 2, index.files.filter((row) => row.state === "no_direct_cases").length);
-check("only Comment and PerfectiveResultPredicate remain no-direct", JSON.stringify(index.files.filter((row) => row.state === "no_direct_cases").map((row) => row.construction).sort()) === JSON.stringify(["Comment", "PerfectiveResultPredicate"]));
-check("test index has 168 active labels", index.active_construction_count === 168 && index.files.length === 168, index.files.length);
+check("test index has zero no-direct labels", index.files.filter((row) => row.state === "no_direct_cases").length === 0, index.files.filter((row) => row.state === "no_direct_cases").length);
+check("test index has 166 active labels", index.active_construction_count === 166 && index.files.length === 166, index.files.length);
 
 const result = {
   schema: "canto-span-final-reachable-wrapper-audit-v1",
   runtime_version: api.runtimeVersion,
-  checkpoint: "v0.5.196-final-reachable-wrapper-audit",
+  checkpoint: "v0.5.197-shadowed-wrapper-retirement",
   parser_recognized_span_behavior_changed: false,
   linguistic_status_changed: false,
   labels_audited: inventory.length,
   implementation_probes_added: probes.cases.length,
-  constructor_shadowed_labels_retained: 2,
+  constructor_shadowed_labels_retained: 0,
+  constructor_shadowed_labels_retired_later: 2,
   linguistic_evidence_weight_added: 0,
   total: checks.length,
   passed: checks.length - failures.length,

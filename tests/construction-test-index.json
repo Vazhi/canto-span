@@ -1,6 +1,6 @@
 {
   "schema": "canto-span-construction-test-index-v1",
-  "active_construction_count": 168,
+  "active_construction_count": 166,
   "files": [
     {
       "construction": "ANotAQuestion",
@@ -271,21 +271,6 @@
       "positive_case_count": 8,
       "boundary_case_count": 0,
       "executable_case_count": 8
-    },
-    {
-      "construction": "Comment",
-      "file": "tests/constructions/Comment.json",
-      "state": "no_direct_cases",
-      "exact_snapshot_positive_count": 0,
-      "focused_positive_count": 0,
-      "focused_boundary_count": 0,
-      "focused_review_only_count": 0,
-      "np_case_count": 0,
-      "implementation_probe_count": 0,
-      "compatibility_alias_probe_count": 0,
-      "positive_case_count": 0,
-      "boundary_case_count": 0,
-      "executable_case_count": 0
     },
     {
       "construction": "ComparativeStative",
@@ -1651,21 +1636,6 @@
       "positive_case_count": 0,
       "boundary_case_count": 0,
       "executable_case_count": 1
-    },
-    {
-      "construction": "PerfectiveResultPredicate",
-      "file": "tests/constructions/PerfectiveResultPredicate.json",
-      "state": "no_direct_cases",
-      "exact_snapshot_positive_count": 0,
-      "focused_positive_count": 0,
-      "focused_boundary_count": 0,
-      "focused_review_only_count": 0,
-      "np_case_count": 0,
-      "implementation_probe_count": 0,
-      "compatibility_alias_probe_count": 0,
-      "positive_case_count": 0,
-      "boundary_case_count": 0,
-      "executable_case_count": 0
     },
     {
       "construction": "PerfectiveVP",

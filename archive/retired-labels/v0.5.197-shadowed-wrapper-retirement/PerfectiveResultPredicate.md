@@ -152,3 +152,10 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Checkpoint: [CP036-P1 result and change-state wrapper audit](../../docs/research/CP036-P1-RESULT-CHANGE-STATE-WRAPPER-AUDIT-R1.md).
 - The direct `解決 + 咗 + optional particle` fallback still exists internally, but complete parser output routes the same surface through `PerfectiveVP` before this wrapper can survive.
 - No implementation-only probe was added because the label is not observed in complete output. It remains `no_direct_cases` and carries no linguistic evidence.
+
+## Retirement record — v0.5.197
+
+- Retired at: `v0.5.197-shadowed-wrapper-retirement`
+- Final disposition: `RETIRED_FROM_ACTIVE_GRAMMAR_TABLE`
+- Reason: the constructor was hard-coded to `解決咗`, was consumed by the broader `PerfectiveVP` route before complete output, and added no independently sourced boundary beyond lexical predicate plus perfective aspect composition.
+- Preserved research: the mapped aspect and result-state sources remain preserved for `PerfectiveVP`, result-complement, and lexical-result research; they do not license a dedicated productive wrapper.

@@ -173,3 +173,15 @@ The last thirteen uncovered labels were audited at constructor and complete-outp
 - current coverage is 2 positive-and-boundary, 100 positive-only, 63 implementation-positive-only, 1 compatibility-alias-only, and 2 no-direct labels;
 - no recognized parser span, runtime label, or linguistic status changed;
 - the next structural task is a controlled merge/expose/retire disposition for the two shadowed labels.
+
+## v0.5.197 shadowed-wrapper retirement
+
+The two labels left uncovered by v0.5.196 were removed only after exact base-tree output comparison.
+
+- retired redundant internal `Comment`; commenthood remains role metadata under `TopicComment`;
+- retired lexical-item-specific `PerfectiveResultPredicate`; historical references migrate to `PerfectiveVP` while source records remain preserved;
+- compared 1,885 structured candidates and all 545 regression cases with v0.5.196, with zero complete-output differences;
+- reduced the active registry and current test/note inventory from 168 to 166 labels;
+- increased the retired archive from 13 to 15 labels;
+- current coverage is 2 positive-and-boundary, 100 positive-only, 63 implementation-positive-only, 1 compatibility-alias-only, and 0 no-direct labels;
+- closed the full dormant/uncovered-label review at handoff sequence 21.

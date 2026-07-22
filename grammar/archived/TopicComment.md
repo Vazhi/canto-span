@@ -118,7 +118,6 @@ No pattern-specific external source is currently mapped.
 
 ## Related constructions
 
-- [[Comment]]
 - [[Topic]]
 
 ## Migration provenance

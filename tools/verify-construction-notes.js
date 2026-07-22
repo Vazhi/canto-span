@@ -99,11 +99,11 @@ for (const note of notes) {
 
 const runtimeLabels = new Set(runtime.labels);
 const noteLabels = new Set(byLabel.keys());
-check("exactly 168 construction notes", notes.length === 168, String(notes.length));
+check("exactly 166 construction notes", notes.length === 166, String(notes.length));
 check("exactly two active working notes", notes.filter((note) => note.frontmatter.workflow_state === "active").length === 2, String(notes.filter((note) => note.frontmatter.workflow_state === "active").length));
-check("exactly 166 archived working notes", notes.filter((note) => note.frontmatter.workflow_state === "archived").length === 166, String(notes.filter((note) => note.frontmatter.workflow_state === "archived").length));
-check("exactly 168 standard construction test files", fs.readdirSync(path.join(root, "tests", "constructions")).filter((name) => name.endsWith(".json")).length === 168);
-check("runtime has 168 active labels", runtimeLabels.size === 168, String(runtimeLabels.size));
+check("exactly 164 archived working notes", notes.filter((note) => note.frontmatter.workflow_state === "archived").length === 164, String(notes.filter((note) => note.frontmatter.workflow_state === "archived").length));
+check("exactly 166 standard construction test files", fs.readdirSync(path.join(root, "tests", "constructions")).filter((name) => name.endsWith(".json")).length === 166);
+check("runtime has 166 active labels", runtimeLabels.size === 166, String(runtimeLabels.size));
 check("notes exactly match runtime labels", noteLabels.size === runtimeLabels.size && [...runtimeLabels].every((label) => noteLabels.has(label)));
 check("all notes are runtime active", notes.every((note) => note.frontmatter.runtime_active === true));
 
@@ -124,11 +124,11 @@ const counts = {};
 for (const note of notes) counts[note.frontmatter.status] = (counts[note.frontmatter.status] || 0) + 1;
 const expectedCounts = {
   research_pending: 60,
-  unsupported_generalization: 85,
-  parser_heuristic: 20,
+  unsupported_generalization: 84,
+  parser_heuristic: 19,
   lexicalized_only: 3,
 };
-check("status counts match v0.5.196 evaluation/scalar/question checkpoint", Object.entries(expectedCounts).every(([status, count]) => counts[status] === count) && Object.keys(counts).length === Object.keys(expectedCounts).length, JSON.stringify(counts));
+check("status counts match v0.5.197 shadowed-wrapper retirement checkpoint", Object.entries(expectedCounts).every(([status, count]) => counts[status] === count) && Object.keys(counts).length === Object.keys(expectedCounts).length, JSON.stringify(counts));
 
 const result = {
   schema: "canto-span-construction-notes-validation-v2",

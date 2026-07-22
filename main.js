@@ -9,7 +9,8 @@ const { Plugin, PluginSettingTab, Setting, Notice } = require("obsidian");
  * never overwrite child learner roles.
  */
 
-const CANTO_SPAN_RUNTIME_VERSION = "0.5.196";
+const CANTO_SPAN_RUNTIME_VERSION = "0.5.197";
+// v0.5.197: retires constructor-shadowed Comment and PerfectiveResultPredicate as transparent internal wrappers. Final parser spans and linguistic statuses remain unchanged.
 // v0.5.196: audits all thirteen remaining no-direct labels; eleven receive zero-evidence reachability probes while Comment and PerfectiveResultPredicate remain constructor-shadowed. No recognized parser span or linguistic-status changes.
 // v0.5.194: audits speech, transfer, naming, intention, and complement wrappers with six zero-evidence reachability probes. No recognized parser span or linguistic-status changes.
 // v0.5.193: audits nominal wrappers, adds two zero-evidence direct probes plus one compatibility-alias probe, and retires constructorless DemonstrativeHeadNP. No recognized parser span or retained linguistic-status changes.
@@ -66,7 +67,7 @@ const DEFAULT_SETTINGS = {
 // Runtime construction governance is deliberately minimal. Linguistic status,
 // confidence, sources, speaker records, corpus counts, and promotion eligibility
 // live in grammar/active/*.md and grammar/archived/*.md and are validated outside the shipped plugin.
-const RUNTIME_CONSTRUCTION_REGISTRY_VERSION = "0.5.196";
+const RUNTIME_CONSTRUCTION_REGISTRY_VERSION = "0.5.197";
 
 function runtimeConstructionStateFor(type) {
   const construction = String(type || "");
@@ -1271,7 +1272,6 @@ const CONSTRUCTION_LABEL_REGISTRY = new Set([
   "CognitionDelimitedObjectVP",
   "CognitionDelimitedVP",
   "CognitionStatementClause",
-  "Comment",
   "ComparativeStative",
   "CompletionQuestion",
   "CompletionThenClause",
@@ -1353,7 +1353,6 @@ const CONSTRUCTION_LABEL_REGISTRY = new Set([
   "OpinionStanceFrame",
   "PathPhrase",
   "PerfectiveObjectResultPredicate",
-  "PerfectiveResultPredicate",
   "PerfectiveVP",
   "PostverbalZoPerfectiveVP",
   "ModalANotAQuestion",
@@ -1527,6 +1526,8 @@ const RETIRED_CONSTRUCTION_LABEL_REGISTRY = new Map([
   ["TransferDitransitiveVP", "Retired by CP021B: the label overcommitted to a ditransitive VP and forced roles in nonbaseline orders; reviewed lexical GIVE surfaces now use LexicalGiveRelation with bounded role policy."],
   ["UseForPurposeTopic", "Retired as frame-role-specific; use Topic with intended-function metadata inside IntendedFunctionRelation."],
   ["TemporalAdverbialClause", "Retired at v0.5.191: no constructor, fixture, standardized case, or parser output used this label. Preserve explicit temporal-subordination research separately; current runtime uses TemporalClause or typed ClauseRelationEdge structures."],
+  ["Comment", "Retired at v0.5.197: the standalone child wrapper never survived complete parser output and duplicated the comment/comment_predicate role metadata already carried by TopicComment."],
+  ["PerfectiveResultPredicate", "Retired at v0.5.197: the lexical-item-specific 解決咗 wrapper was shadowed by ordinary PerfectiveVP composition and added no independently supported boundary."],
 ]);
 
 
@@ -1552,6 +1553,7 @@ const RETIRED_CONSTRUCTION_LABEL_ALIASES = new Map([
   ["SubjectTimePredicateClause", "SubjectPredicateClause"],
   ["TopicCommentEvaluation", "TopicComment"],
   ["UseForPurposeTopic", "Topic"],
+  ["PerfectiveResultPredicate", "PerfectiveVP"],
 ]);
 
 const CONSTRUCTION_LABEL_POLICY = Object.freeze({
@@ -4681,7 +4683,6 @@ function constructionSlotsByType(type, children = []) {
   if (["NegatedExistentialClause"].includes(type)) slots.push("negated_existential_clause", "possessive_clause", "predicate", "negated_existential", "object");
   if (["ExistentialQuestion", "PostposedExistentialQuestion"].includes(type)) slots.push("existential_question", "question_fragment", "possessive_question", "predicate", "object");
   if (["TopicComment"].includes(type)) slots.push("topic_comment", "evaluation_clause", "reported_content", "predicate", "content_topic", "opinion_topic", "comment", "comment_predicate", "stative_predicate");
-  if (["PerfectiveResultPredicate"].includes(type)) slots.push("perfective_result_predicate", "perfective_aspect", "changed_state", "result_state", "predicate", "comment", "comment_predicate", "vp");
   if (["PostThemeParticipantRelation"].includes(type)) slots.push("post_theme_participant_relation", "post_theme_link_marker", "post_theme_participant", "person_np", "np", "predicate", "vp", "action_vp");
   if (["BenefactivePurposeVP"].includes(type)) slots.push("benefactive_purpose_vp", "benefactive_action_chain", "purpose_chain", "vp", "action_vp", "predicate", "recipient");
   if (["LocativePlacePhrase"].includes(type)) slots.push("locative_phrase", "location", "goal");
@@ -9684,71 +9685,6 @@ function copularANotAQuestionFallback(core) {
       reason: "Preserve both copular arms, the negator, and a visible nominal/possessive complement in the common 係唔係 polar-question pattern.",
     }),
   });
-}
-
-function perfectiveResultPredicateFallback(nodes) {
-  const { core: bareCore, particles } = withoutTrailingParticles(nodes);
-  if (bareCore.length !== 2) return null;
-  const predicate = bareCore[0];
-  const aspect = bareCore[1];
-  const predicateToken = firstToken(predicate);
-  if (!predicateToken || predicateToken.surface !== "解決") return null;
-  if (!nodeCanFillSlot(predicate, "action_verb")) return null;
-  if (!nodeCanFillSlot(aspect, "perfective_aspect")) return null;
-  const predicateChild = parserInactiveTokenClone(predicate, {
-    label: predicate.label || "doing",
-    syntax: `${predicate.syntax || "verb"} perfective_result_predicate_head`,
-    slots: ["action_verb", "main_verb", "predicate"],
-    reason: "解決 is interpreted here as the controlled head of a perfective result predicate; the parent exposes topic-comment/result-state affordances.",
-  });
-  const aspectChild = parserInactiveTokenClone(aspect, {
-    label: aspect.label || "func",
-    syntax: `${aspect.syntax || "perfective_aspect"} perfective_result_aspect`,
-    slots: ["perfective_aspect", "aspect_marker"],
-    reason: "咗 stays parser-inactive inside the controlled perfective result predicate wrapper.",
-  });
-  const particleChildren = particles.map((particle) => parserInactiveTokenClone(particle, {
-    label: particle.label || "particle",
-    syntax: particle.syntax || "sentence_final_particle",
-    slots: ["particle"],
-    reason: "Final particle stays parser-inactive inside the controlled perfective result predicate wrapper.",
-  }));
-  const children = [predicateChild, aspectChild, ...particleChildren];
-  return construction("PerfectiveResultPredicate", "PerfectiveResult", children, {
-    note: "Controlled perfective result predicate: 解決 + 咗 + optional final particle. This is deliberately narrow and does not introduce a broad result-complement system.",
-    slots: templateDerivedSlots("PerfectiveResultPredicate", children),
-    trace: traceInfo("generative_or_heuristic_slot_rule", {
-      rule: "controlled 解決 + 咗 + optional final particle",
-      pattern: "resolved_state_predicate + perfective_aspect + final_particle?",
-      reason: "Allows determiner-marked topics such as 呢個問題 to combine with 解決咗喇 without broadening action-perfective grammar.",
-      surfaces: children.map((node) => flattenSurface(node)),
-    })
-  });
-}
-
-function wrapPerfectiveResultPredicateSubspans(nodes) {
-  const result = [];
-  let i = 0;
-  while (i < nodes.length) {
-    let matched = null;
-    for (const length of [3, 2]) {
-      const window = nodes.slice(i, i + length);
-      if (window.length !== length || window.some((node) => node.kind === "text")) continue;
-      const candidate = perfectiveResultPredicateFallback(window);
-      if (candidate) {
-        matched = { node: candidate, length };
-        break;
-      }
-    }
-    if (matched) {
-      result.push(matched.node);
-      i += matched.length;
-    } else {
-      result.push(nodes[i]);
-      i += 1;
-    }
-  }
-  return result;
 }
 
 function subjectStativePredicateClauseFallback(nodes) {
@@ -15665,7 +15601,6 @@ function wrapCore(core) {
   core = wrapPermissionAcceptabilitySubspans(core);
   core = wrapCategorySubspans(core);
   core = wrapNegatedVPSubspans(core);
-  core = wrapPerfectiveResultPredicateSubspans(core);
   core = wrapCategorySubspans(core);
   core = wrapCategorySubspans(core);
 
@@ -15959,8 +15894,14 @@ function wrapCore(core) {
   if (isTopicCandidate(core[0]) && core.length >= 2) {
     const topic = construction("Topic", "topic", [core[0]], { primary: "topic", note: "Topic with secondary semantic role what." });
     const commentChildren = wrapPredicate(core.slice(1));
-    const comment = construction("Comment", "comment", commentChildren, { primary: "comment" });
-    return [construction("TopicComment", "TopicComment", [topic, comment], { note: "Topic-comment construction.", trace: traceInfo("generative_or_heuristic_slot_rule", { rule: "topic candidate followed by comment", reason: "Structural heuristic." }) })];
+    return [construction("TopicComment", "TopicComment", [topic, ...commentChildren], {
+      note: "Topic-comment construction with comment represented as predicate-role metadata rather than a redundant child wrapper.",
+      slots: cleanSlots(["topic_comment", "topic", "comment", "comment_predicate", "predicate", "clause", ...templateDerivedSlots("TopicComment", [topic, ...commentChildren])]),
+      trace: traceInfo("generative_or_heuristic_slot_rule", {
+        rule: "topic candidate followed by typed comment predicate",
+        reason: "Structural heuristic; the comment relation is carried by TopicComment slots rather than a standalone Comment construction.",
+      }),
+    })];
   }
 
   // Prohibitive: 唔好 + V/VP + object.

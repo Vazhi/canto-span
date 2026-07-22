@@ -13,10 +13,10 @@ The recovery ZIP must include `.git/`.
 
 ## Binding state
 
-- runtime: **v0.5.196**
-- runtime labels / current construction notes: **168 / 168**
-- workflow: **2 active / 166 archived**
-- retired labels: **13**
+- runtime: **v0.5.197**
+- runtime labels / current construction notes: **166 / 166**
+- workflow: **2 active / 164 archived**
+- retired labels: **15**
 - `supported_productive`: **0**
 - `provisional`: **0**
 - `research_pending`: **60**
@@ -36,21 +36,21 @@ Promotion thresholds are based on the minimum usable adjudicated judgments per c
 
 ## Read next
 
-1. `docs/research/CP040-P1-FINAL-REACHABLE-WRAPPER-AUDIT-R1.md`
-2. `docs/research/CP040-P1-FINAL-REACHABLE-WRAPPER-INVENTORY-R1.tsv`
-3. `docs/current/PROJECT-STATE.md`
-4. `docs/current/DEFINITION-OF-DONE.md`
-5. `docs/current/SURVEY-BATCHING.md`
-6. `docs/current/NATIVE-SPEAKER-REVIEW.md`
-7. `docs/research/CP039-P1-EVALUATION-SCALAR-QUESTION-WRAPPER-AUDIT-R1.md`
-8. `docs/research/CP038-P1-SPEECH-TRANSFER-COMPLEMENT-WRAPPER-AUDIT-R1.md`
-9. `docs/research/CP037-P1-NOMINAL-WRAPPER-AUDIT-R1.md`
-10. `docs/research/CP036-P1-RESULT-CHANGE-STATE-WRAPPER-AUDIT-R1.md`
-11. `docs/research/CP035-P1-EXPERIENTIAL-DELIMITED-WRAPPER-AUDIT-R1.md`
-12. `docs/research/CP034-P1-LOW-REFERENCE-WRAPPER-AUDIT-R1.md`
-13. `docs/research/CP033-P1-RUNTIME-REACHABILITY-AUDIT-R1.md`
+1. `docs/research/CP041-P1-SHADOWED-WRAPPER-RETIREMENT-R1.md`
+2. `docs/research/CP041-P1-SHADOWED-WRAPPER-INVENTORY-R1.tsv`
+3. `docs/research/CP041-COMMENT-RETIREMENT-R1.md`
+4. `docs/research/CP041-PERFECTIVERESULTPREDICATE-RETIREMENT-R1.md`
+5. `docs/current/PROJECT-STATE.md`
+6. `docs/current/DEFINITION-OF-DONE.md`
+7. `docs/current/SURVEY-BATCHING.md`
+8. `docs/current/NATIVE-SPEAKER-REVIEW.md`
+9. `docs/research/CP040-P1-FINAL-REACHABLE-WRAPPER-AUDIT-R1.md`
+10. `docs/research/CP039-P1-EVALUATION-SCALAR-QUESTION-WRAPPER-AUDIT-R1.md`
+11. `docs/research/CP038-P1-SPEECH-TRANSFER-COMPLEMENT-WRAPPER-AUDIT-R1.md`
+12. `docs/research/CP037-P1-NOMINAL-WRAPPER-AUDIT-R1.md`
+13. `docs/research/CP036-P1-RESULT-CHANGE-STATE-WRAPPER-AUDIT-R1.md`
 14. `docs/research/CP032-P1-RUL01-SURVEY-READINESS-R1.md`
 
 ## Next substantive work
 
-Resolve the two constructor-shadowed labels that remain `no_direct_cases`: merge, expose narrowly, or retire `Comment` and `PerfectiveResultPredicate` without broadening grammar or changing recognized spans accidentally. The full dormant-label review is due by handoff sequence 23. When native-panel evidence becomes blocking again, remind the user to provide the survey-guidance prompt before drafting the instrument.
+Rank the 63 implementation-only labels by source/runtime mismatch and potential learner impact, then begin the highest-value source-linked audit without treating reachability probes as linguistic evidence. The full dormant-label review is complete; no active label remains uncovered. RUL and PFV survey integration stays paused while collection proceeds. When native-panel evidence becomes blocking again, remind the user to provide the survey-guidance prompt before drafting or revising the instrument.

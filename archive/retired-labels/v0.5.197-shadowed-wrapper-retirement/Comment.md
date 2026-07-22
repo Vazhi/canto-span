@@ -127,3 +127,10 @@ No pattern-specific external source is currently mapped.
 - Full pre-migration record: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
 - Status migration date: 2026-07-21.
 - The frozen JSON preserves the former wide schema; this note is the active authoring record.
+
+## Retirement record — v0.5.197
+
+- Retired at: `v0.5.197-shadowed-wrapper-retirement`
+- Final disposition: `RETIRED_FROM_ACTIVE_GRAMMAR_TABLE`
+- Reason: the standalone child wrapper was callable only inside a late fallback, never survived complete parser output, had no accepted fixture or standardized case, and duplicated the `comment` / `comment_predicate` role metadata already carried by `TopicComment`.
+- Preserved research: Cantonese topic-comment structure remains an open language-sensitive question under `TopicComment`; this retirement removes only a redundant internal container.

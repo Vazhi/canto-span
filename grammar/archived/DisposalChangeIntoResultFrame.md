@@ -135,7 +135,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - [[ChangeIntoPredicate]]
 - [[ModalChangeIntoResultFrame]]
 - [[PerfectiveObjectResultPredicate]]
-- [[PerfectiveResultPredicate]]
+- [[PerfectiveVP]]
 - [[ResultStateClause]]
 - [[SeemingPerfectiveResultClause]]
 - [[TransformationResultFrame]]

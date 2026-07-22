@@ -7,10 +7,10 @@ tags: [canto-span/grammar, canto-span/index]
 
 # Grammar index
 
-- Current construction notes: **168**
+- Current construction notes: **166**
 - Active working set: **2**
-- Workflow-archived current records: **166**
-- Retired labels: **13**
+- Workflow-archived current records: **164**
+- Retired labels: **15**
 
 Workflow archiving parks a note outside current work. It does not retire its runtime label or change its linguistic status.
 
@@ -20,9 +20,9 @@ Workflow archiving parks a note outside current work. It does not retire its run
 - `provisional_reaudit`: **0**
 - `provisional`: **0**
 - `research_pending`: **60**
-- `unsupported_generalization`: **85**
+- `unsupported_generalization`: **84**
 - `lexicalized_only`: **3**
-- `parser_heuristic`: **20**
+- `parser_heuristic`: **19**
 
 ## Standard test coverage
 
@@ -31,7 +31,7 @@ Workflow archiving parks a note outside current work. It does not retire its run
 - implementation positive only: **63**
 - compatibility alias only: **1**
 - boundary only: **0**
-- no direct standardized cases: **2**
+- no direct standardized cases: **0**
 - command: `npm test`
 
 ## Active working set
@@ -59,7 +59,6 @@ Workflow archiving parks a note outside current work. It does not retire its run
 - [[CognitionDelimitedObjectVP]] — `unsupported_generalization`
 - [[CognitionDelimitedVP]] — `unsupported_generalization`
 - [[CognitionStatementClause]] — `unsupported_generalization`
-- [[Comment]] — `parser_heuristic`
 - [[ComparativeStative]] — `unsupported_generalization`
 - [[ComplementEllipsisFragment]] — `research_pending`
 - [[CompletionQuestion]] — `research_pending`
@@ -151,7 +150,6 @@ Workflow archiving parks a note outside current work. It does not retire its run
 - [[PathPhrase]] — `unsupported_generalization`
 - [[PerfectiveDirectionalVP]] — `unsupported_generalization`
 - [[PerfectiveObjectResultPredicate]] — `unsupported_generalization`
-- [[PerfectiveResultPredicate]] — `unsupported_generalization`
 - [[PerfectiveVP]] — `research_pending`
 - [[PolarQuestionFrame]] — `parser_heuristic`
 - [[PoliteImperativeClause]] — `unsupported_generalization`

@@ -29,11 +29,11 @@ This replaces active bespoke render-review documents and scattered entry-point c
 
 ### Per-construction files
 
-Every one of the 168 active labels has exactly one file under `tests/constructions/`.
+Every one of the 166 active labels has exactly one file under `tests/constructions/`.
 
 Each file records the current executable cases assigned to that construction and an explicit coverage state. The construction-note frontmatter points to the file and records its positive, boundary, and total executable counts.
 
-Current v0.5.196 coverage:
+Current v0.5.197 coverage:
 
 | Coverage state | Constructions |
 |---|---:|
@@ -42,12 +42,11 @@ Current v0.5.196 coverage:
 | implementation positive only | 63 |
 | compatibility alias only | 1 |
 | boundary only | 0 |
-| no direct cases | 2 |
+| no direct cases | 0 |
 
 `implementation_positive_only` means the parser emits the label on a frozen
 reachability probe, but the case has explicit zero linguistic evidence weight.
-`compatibility_alias_only` means the label is exposed as a public alias for a distinct internal construction rather than emitted as its own node. The two uncovered labels remain visible test debt: `Comment` and `PerfectiveResultPredicate` are constructor-present but shadowed in complete output. Empty files do not claim that
-the constructions are correct, natural, supported, or unreachable.
+`compatibility_alias_only` means the label is exposed as a public alias for a distinct internal construction rather than emitted as its own node. No active runtime label remains uncovered. Implementation-only and alias-only coverage still does not claim that a construction is correct, natural, supported, productive, or promotion-ready.
 
 ## Boundary suites
 

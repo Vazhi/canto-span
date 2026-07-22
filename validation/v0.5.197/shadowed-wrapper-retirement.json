@@ -1,0 +1,138 @@
+{
+  "schema": "canto-span-shadowed-wrapper-retirement-audit-v1",
+  "runtime_version": "0.5.197",
+  "checkpoint": "v0.5.197-shadowed-wrapper-retirement",
+  "base_tree": "fea03cd188990b251fd70f46672ce7073344acf0",
+  "base_runtime_version": "0.5.196",
+  "parser_recognized_span_behavior_changed": false,
+  "retained_linguistic_status_changed": false,
+  "labels_retired": 2,
+  "retired_labels": [
+    "Comment",
+    "PerfectiveResultPredicate"
+  ],
+  "structured_candidate_count": 1885,
+  "structured_output_difference_count": 0,
+  "regression_case_count": 545,
+  "regression_output_difference_count": 0,
+  "remaining_no_direct_labels": 0,
+  "linguistic_evidence_weight_added": 0,
+  "total": 24,
+  "passed": 24,
+  "failed": 0,
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "current runtime version is 0.5.197",
+      "pass": true,
+      "detail": "0.5.197"
+    },
+    {
+      "name": "base runtime version is 0.5.196",
+      "pass": true,
+      "detail": "0.5.196"
+    },
+    {
+      "name": "structured candidate count remains 1885",
+      "pass": true,
+      "detail": "1885"
+    },
+    {
+      "name": "structured comparison has no parse errors",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "structured complete outputs are identical",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "all 545 regression complete outputs are identical",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "registry removes exactly two labels",
+      "pass": true,
+      "detail": "[\"Comment\",\"PerfectiveResultPredicate\"]"
+    },
+    {
+      "name": "registry adds no labels",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "current runtime has 166 labels",
+      "pass": true,
+      "detail": "166"
+    },
+    {
+      "name": "current notes have 166 labels",
+      "pass": true,
+      "detail": "166"
+    },
+    {
+      "name": "current test index has 166 labels",
+      "pass": true,
+      "detail": "166"
+    },
+    {
+      "name": "no active label remains no-direct",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "coverage distribution is complete",
+      "pass": true
+    },
+    {
+      "name": "retired archive records fifteen labels",
+      "pass": true,
+      "detail": "15"
+    },
+    {
+      "name": "Comment is retired without a whole-construction alias",
+      "pass": true
+    },
+    {
+      "name": "PerfectiveResultPredicate retires to PerfectiveVP compatibility",
+      "pass": true
+    },
+    {
+      "name": "Comment constructor residue is removed",
+      "pass": true
+    },
+    {
+      "name": "PerfectiveResultPredicate constructor residue is removed",
+      "pass": true
+    },
+    {
+      "name": "Comment retired note is preserved",
+      "pass": true
+    },
+    {
+      "name": "PerfectiveResultPredicate retired note is preserved",
+      "pass": true
+    },
+    {
+      "name": "Comment current note and test are absent",
+      "pass": true
+    },
+    {
+      "name": "PerfectiveResultPredicate current note and test are absent",
+      "pass": true
+    },
+    {
+      "name": "retained output still uses PerfectiveVP",
+      "pass": true,
+      "detail": "NeedsContext,PerfectiveVP"
+    },
+    {
+      "name": "full dormant review is closed at sequence 21",
+      "pass": true,
+      "detail": "{\"schema\":\"canto-span-retirement-review-cadence-v1\",\"last_full_review_sequence\":21,\"last_full_review_id\":\"v0.5.197-shadowed-wrapper-retirement\",\"recommended_interval_min\":10,\"hard_interval_max\":20,\"current_handoff_sequence\":21,\"next_review_window_opens_at_sequence\":31,\"review_required_by_sequence\":41,\"state\":\"full_review_complete\",\"notes\":\"v0.5.197 completes the full dormant and uncovered-label review. Comment and PerfectiveResultPredicate were retired after exact base-tree output equivalence confirmed that neither contributed an observable final parser span. All 166 active runtime labels now have standardized positive/boundary, zero-weight implementation, or compatibility-alias-only coverage. The next review window opens at sequence 31 and a full review is required by sequence 41.\"}"
+    }
+  ],
+  "failures": []
+}

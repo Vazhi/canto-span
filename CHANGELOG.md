@@ -1,3 +1,12 @@
+## v0.5.197 — shadowed-wrapper retirement
+
+- Retired redundant internal `Comment` and shadowed lexical-item-specific `PerfectiveResultPredicate`.
+- Preserved comment-role metadata under `TopicComment` and historical perfective-result references through a migration-only `PerfectiveVP` alias.
+- Verified exact complete-output equivalence to v0.5.196 over 1,885 structured candidates and all 545 regression cases.
+- Reduced the active registry, current notes, and construction test files from 168 to 166; increased retired labels from 13 to 15.
+- Eliminated the final two `no_direct_cases`; coverage is now 2 positive-and-boundary, 100 positive-only, 63 implementation-only, and 1 compatibility-alias-only.
+- Closed the full dormant/uncovered-label review without adding linguistic evidence, changing retained statuses, or changing recognized parser spans.
+
 ## v0.5.196 — final reachable-wrapper audit
 
 - Audited all thirteen labels that remained without direct standardized cases after v0.5.195.

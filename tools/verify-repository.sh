@@ -107,6 +107,14 @@ required=(
   docs/releases/v0.5.196-final-reachable-wrapper-audit.json
   test-data/final-reachable-wrapper-reachability-probes-v1.json
   tools/verify-final-reachable-wrapper-audit.js
+  docs/research/CP041-P1-SHADOWED-WRAPPER-RETIREMENT-R1.md
+  docs/research/CP041-P1-SHADOWED-WRAPPER-INVENTORY-R1.tsv
+  docs/research/CP041-COMMENT-RETIREMENT-R1.md
+  docs/research/CP041-PERFECTIVERESULTPREDICATE-RETIREMENT-R1.md
+  docs/releases/v0.5.197-shadowed-wrapper-retirement-audit.json
+  tools/verify-shadowed-wrapper-retirement.js
+  archive/retired-labels/v0.5.197-shadowed-wrapper-retirement/Comment.md
+  archive/retired-labels/v0.5.197-shadowed-wrapper-retirement/PerfectiveResultPredicate.md
   archive/retired-labels/v0.5.193-nominal-wrapper-audit/DemonstrativeHeadNP.md
   archive/retired-labels/v0.5.190-low-reference-wrapper-audit/TemporalAdverbialClause.md
   test-data/rul-survey-readiness-probes-v1.json
@@ -153,6 +161,7 @@ node tools/verify-nominal-wrapper-audit.js >/dev/null
 node tools/verify-speech-transfer-complement-wrapper-audit.js >/dev/null
 node tools/verify-evaluation-scalar-question-wrapper-audit.js >/dev/null
 node tools/verify-final-reachable-wrapper-audit.js >/dev/null
+node tools/verify-shadowed-wrapper-retirement.js >/dev/null
 node tools/audit-native-conflict-burden.js >/dev/null
 node tools/verify-native-panel-snapshot.js >/dev/null
 node tools/verify-pfv-panel-snapshot.js >/dev/null
@@ -172,5 +181,5 @@ printf 'repository=%s\nbranch=%s\ncommit=%s\ntracked_files=%s\nconstruction_note
 
 [[ ! -d render-review ]] || { echo "FAIL: active render-review directory should be archived" >&2; exit 1; }
 [[ "$(find grammar/active -maxdepth 1 -type f -name '*.md' | wc -l | tr -d ' ')" == "2" ]] || { echo "FAIL: expected 2 active construction notes" >&2; exit 1; }
-[[ "$(find grammar/archived -maxdepth 1 -type f -name '*.md' | wc -l | tr -d ' ')" == "166" ]] || { echo "FAIL: expected 166 archived construction notes" >&2; exit 1; }
-[[ "$(find tests/constructions -maxdepth 1 -type f -name '*.json' | wc -l | tr -d ' ')" == "168" ]] || { echo "FAIL: expected 168 construction test files" >&2; exit 1; }
+[[ "$(find grammar/archived -maxdepth 1 -type f -name '*.md' | wc -l | tr -d ' ')" == "164" ]] || { echo "FAIL: expected 164 archived construction notes" >&2; exit 1; }
+[[ "$(find tests/constructions -maxdepth 1 -type f -name '*.json' | wc -l | tr -d ' ')" == "166" ]] || { echo "FAIL: expected 166 construction test files" >&2; exit 1; }

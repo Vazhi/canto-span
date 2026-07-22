@@ -32,7 +32,7 @@ const context = {
   clearTimeout,
   Buffer,
 };
-vm.runInNewContext(mainText + `\nmodule.exports.__resultAuditApi = { tokenizeLine, perfectiveResultPredicateFallback };`, context, { filename: mainPath });
+vm.runInNewContext(mainText + `\nmodule.exports.__resultAuditApi = { CONSTRUCTION_LABEL_REGISTRY, RETIRED_CONSTRUCTION_LABEL_REGISTRY, RETIRED_CONSTRUCTION_LABEL_ALIASES };`, context, { filename: mainPath });
 const internal = moduleRecord.exports.__resultAuditApi;
 
 function finalLabels(source) {
@@ -50,7 +50,7 @@ function check(name, condition, detail = "") {
   if (!pass) failures.push({ name, detail: String(detail) });
 }
 
-check("runtime version is 0.5.196", api.runtimeVersion === "0.5.196", api.runtimeVersion);
+check("runtime version is 0.5.197", api.runtimeVersion === "0.5.197", api.runtimeVersion);
 check("inventory has eleven labels", inventory.length === 11, inventory.length);
 check("probe schema", probes.schema === "canto-span-result-change-state-reachability-probes-v1", probes.schema);
 check("probe file has ten cases", probes.cases.length === 10, probes.cases.length);
@@ -73,28 +73,28 @@ const shadowedSource = "解決咗喇。";
 const shadowedLabels = finalLabels(shadowedSource);
 check("PerfectiveResultPredicate absent from complete output", !shadowedLabels.includes("PerfectiveResultPredicate"), shadowedLabels.join(","));
 check("PerfectiveVP consumes the same surface", shadowedLabels.includes("PerfectiveVP"), shadowedLabels.join(","));
-const rawTokens = internal.tokenizeLine(shadowedSource).filter((node) => node.kind !== "text");
-const directFallback = internal.perfectiveResultPredicateFallback(rawTokens);
-check("PerfectiveResultPredicate fallback still exists internally", directFallback && directFallback.type === "PerfectiveResultPredicate", directFallback && directFallback.type);
-const shadowedIndex = indexByLabel.get("PerfectiveResultPredicate");
-check("PerfectiveResultPredicate remains no-direct", shadowedIndex && shadowedIndex.state === "no_direct_cases", shadowedIndex && shadowedIndex.state);
-check("PerfectiveResultPredicate has zero implementation probes", shadowedIndex && shadowedIndex.implementation_probe_count === 0, shadowedIndex && shadowedIndex.implementation_probe_count);
-const shadowedNote = fs.readFileSync(path.join(root, "grammar", "archived", "PerfectiveResultPredicate.md"), "utf8");
-check("PerfectiveResultPredicate note records shadowing", shadowedNote.includes("complete parser output routes the same surface through `PerfectiveVP`") && shadowedNote.includes("remains `no_direct_cases`"));
+check("PerfectiveResultPredicate is absent from the active registry", !internal.CONSTRUCTION_LABEL_REGISTRY.has("PerfectiveResultPredicate"));
+check("PerfectiveResultPredicate is present in the retired registry", internal.RETIRED_CONSTRUCTION_LABEL_REGISTRY.has("PerfectiveResultPredicate"));
+check("PerfectiveResultPredicate compatibility maps to PerfectiveVP", internal.RETIRED_CONSTRUCTION_LABEL_ALIASES.get("PerfectiveResultPredicate") === "PerfectiveVP");
+check("PerfectiveResultPredicate constructor is absent", !mainText.includes("function perfectiveResultPredicateFallback"));
+check("PerfectiveResultPredicate test file is absent", !fs.existsSync(path.join(root, "tests/constructions/PerfectiveResultPredicate.json")));
+const retiredNote = fs.readFileSync(path.join(root, "archive", "retired-labels", "v0.5.197-shadowed-wrapper-retirement", "PerfectiveResultPredicate.md"), "utf8");
+check("PerfectiveResultPredicate retirement note preserves shadowing evidence", retiredNote.includes("complete parser output routes the same surface through `PerfectiveVP`") && retiredNote.includes("Retirement record — v0.5.197"));
 
 check("test index has 63 implementation-positive-only labels", index.files.filter((row) => row.state === "implementation_positive_only").length === 63, index.files.filter((row) => row.state === "implementation_positive_only").length);
-check("test index has 2 no-direct labels", index.files.filter((row) => row.state === "no_direct_cases").length === 2, index.files.filter((row) => row.state === "no_direct_cases").length);
-check("test index has 168 active labels", index.active_construction_count === 168 && index.files.length === 168, index.files.length);
+check("test index has zero no-direct labels", index.files.filter((row) => row.state === "no_direct_cases").length === 0, index.files.filter((row) => row.state === "no_direct_cases").length);
+check("test index has 166 active labels", index.active_construction_count === 166 && index.files.length === 166, index.files.length);
 
 const result = {
   schema: "canto-span-result-change-state-wrapper-audit-v1",
   runtime_version: api.runtimeVersion,
-  checkpoint: "v0.5.196-result-change-state-wrapper-audit",
+  checkpoint: "v0.5.197-shadowed-wrapper-retirement",
   parser_recognized_span_behavior_changed: false,
   linguistic_status_changed: false,
   labels_audited: inventory.length,
   implementation_probes_added: probes.cases.length,
-  shadowed_labels_retained: 1,
+  shadowed_labels_retained: 0,
+  shadowed_labels_retired_later: 1,
   linguistic_evidence_weight_added: 0,
   total: checks.length,
   passed: checks.length - failures.length,

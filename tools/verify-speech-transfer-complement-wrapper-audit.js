@@ -30,7 +30,7 @@ function check(name, condition, detail = "") {
   if (!pass) failures.push({ name, detail: String(detail) });
 }
 
-check("runtime version is 0.5.196", api.runtimeVersion === "0.5.196", api.runtimeVersion);
+check("runtime version is 0.5.197", api.runtimeVersion === "0.5.197", api.runtimeVersion);
 check("inventory has six labels", inventory.length === 6, inventory.length);
 check("probe schema", probes.schema === "canto-span-speech-transfer-complement-reachability-probes-v1", probes.schema);
 check("probe file has six cases", probes.cases.length === 6, probes.cases.length);
@@ -59,13 +59,13 @@ check("exact ASCII 叫做 fallback reaches NamingClause", labelsFor("我叫做 C
 
 check("test index has 63 implementation-positive-only labels", index.files.filter((row) => row.state === "implementation_positive_only").length === 63, index.files.filter((row) => row.state === "implementation_positive_only").length);
 check("test index has one compatibility-alias-only label", index.files.filter((row) => row.state === "compatibility_alias_only").length === 1, index.files.filter((row) => row.state === "compatibility_alias_only").length);
-check("test index has 2 no-direct labels", index.files.filter((row) => row.state === "no_direct_cases").length === 2, index.files.filter((row) => row.state === "no_direct_cases").length);
-check("test index has 168 active labels", index.active_construction_count === 168 && index.files.length === 168, index.files.length);
+check("test index has zero no-direct labels", index.files.filter((row) => row.state === "no_direct_cases").length === 0, index.files.filter((row) => row.state === "no_direct_cases").length);
+check("test index has 166 active labels", index.active_construction_count === 166 && index.files.length === 166, index.files.length);
 
 const result = {
   schema: "canto-span-speech-transfer-complement-wrapper-audit-v1",
   runtime_version: api.runtimeVersion,
-  checkpoint: "v0.5.196-speech-transfer-complement-wrapper-audit",
+  checkpoint: "v0.5.197-speech-transfer-complement-wrapper-audit",
   parser_recognized_span_behavior_changed: false,
   linguistic_status_changed: false,
   labels_audited: inventory.length,

@@ -1,0 +1,120 @@
+{
+  "schema": "canto-span-release-handoff-audit-v2",
+  "release_id": "v0.5.197-shadowed-wrapper-retirement",
+  "handoff_sequence": 21,
+  "status_changes": [
+    {
+      "construction": "Comment",
+      "old_status": "parser_heuristic",
+      "new_status": "retired"
+    },
+    {
+      "construction": "PerfectiveResultPredicate",
+      "old_status": "unsupported_generalization",
+      "new_status": "retired"
+    }
+  ],
+  "changed_construction_audit": [
+    {
+      "construction": "Comment",
+      "old_status": "parser_heuristic",
+      "new_status": "retired",
+      "plain_language_claim": "The label was a redundant internal child container inside a possible TopicComment analysis. It never survived complete output and contributed no independent Cantonese grammar claim beyond comment-role metadata already carried by TopicComment.",
+      "code_locations": [
+        "main.js:CONSTRUCTION_LABEL_REGISTRY removal",
+        "main.js:late TopicComment fallback role-metadata consolidation",
+        "archive/retired-labels/v0.5.197-shadowed-wrapper-retirement/Comment.md"
+      ],
+      "sources": [
+        {
+          "citation": "Canto Span CP021B-R34 internal disposition matrix",
+          "locator": "docs/research/PARSER-CONSTRUCTION-INTERNAL-DISPOSITION-MATRIX-CP021B-R34.tsv: Comment row",
+          "verification": "COMPLETE_INTERNAL_DISPOSITION_MERGE_RECOMMENDATION"
+        },
+        {
+          "citation": "Canto Span CP034 low-reference wrapper audit",
+          "locator": "docs/research/CP034-P1-LOW-REFERENCE-WRAPPER-AUDIT-R1.md: Comment",
+          "verification": "PASS_ZERO_COMPLETE_OUTPUT_HITS"
+        },
+        {
+          "citation": "Canto Span CP041 behavior-equivalence audit",
+          "locator": "tools/verify-shadowed-wrapper-retirement.js",
+          "verification": "PASS_BASE_TREE_COMPLETE_OUTPUT_EQUIVALENCE"
+        }
+      ],
+      "panel_response_count_total": 0,
+      "eligible_panel_response_count": 0,
+      "minimum_usable_judgments_per_critical_item": 0,
+      "survey_instrument_version": "not_applicable_retirement",
+      "survey_instrument_status": "not_applicable",
+      "quality_screen_status": "not_applicable",
+      "panel_adjudication_status": "not_applicable",
+      "unresolved_questions": [
+        "The independent linguistic boundaries of Cantonese topic-comment structure remain under TopicComment research and are not settled by this internal cleanup."
+      ]
+    },
+    {
+      "construction": "PerfectiveResultPredicate",
+      "old_status": "unsupported_generalization",
+      "new_status": "retired",
+      "plain_language_claim": "The label was a lexical-item-specific 解決咗 wrapper that complete parsing always consumed as PerfectiveVP. The mapped sources support separating lexical result meaning from perfective aspect but do not establish this dedicated productive node.",
+      "code_locations": [
+        "main.js:perfectiveResultPredicateFallback removal",
+        "main.js:wrapPerfectiveResultPredicateSubspans removal",
+        "archive/retired-labels/v0.5.197-shadowed-wrapper-retirement/PerfectiveResultPredicate.md"
+      ],
+      "sources": [
+        {
+          "citation": "Fan, Xiaolei and Kin Wing Kevin Chan. 2022. Grammatical properties of zo 咗 in Hong Kong Cantonese.",
+          "locator": "Language and Linguistics 23(3):374 and article discussion",
+          "verification": "VERIFIED_PUBLISHER_TEXT_AND_METADATA"
+        },
+        {
+          "citation": "Kędzior, Adrian. 2023. Verbal Morphological Category of Aspect in the Cantonese Language.",
+          "locator": "Linguistica Silesiana 44(1):51-53",
+          "verification": "VERIFIED_OFFICIAL_FULL_TEXT"
+        },
+        {
+          "citation": "Canto Span CP036 and CP041 constructor/output audits",
+          "locator": "docs/research/CP036-P1-RESULT-CHANGE-STATE-WRAPPER-AUDIT-R1.md and tools/verify-shadowed-wrapper-retirement.js",
+          "verification": "PASS_SHADOWING_AND_BASE_TREE_EQUIVALENCE"
+        }
+      ],
+      "panel_response_count_total": 0,
+      "eligible_panel_response_count": 0,
+      "minimum_usable_judgments_per_critical_item": 0,
+      "survey_instrument_version": "not_applicable_retirement",
+      "survey_instrument_status": "not_applicable",
+      "quality_screen_status": "not_applicable",
+      "panel_adjudication_status": "not_applicable",
+      "unresolved_questions": [
+        "Result-state and perfective composition boundaries remain governed by the retained source-linked constructions and future native-panel evidence; retirement does not settle their productivity."
+      ]
+    }
+  ],
+  "supported_productive_pending_reaudit": [],
+  "implementation_validation": "PASS required before handoff: exact complete-output equivalence to the v0.5.196 base tree over 1,885 structured candidates, 545 regression cases, 43 NP cases, 1,221 construction assertions, 166 note/test alignment, zero uncovered labels, historical wrapper audits, panel workflow, promotion and release gates, documentation links, and full repository verification.",
+  "linguistic_confidence": "No retained construction gained evidence or status. Comment was retired as a redundant internal role wrapper. PerfectiveResultPredicate was retired as a shadowed lexical-item-specific wrapper while its two source records remain preserved. No survey result was integrated.",
+  "code_analysis_overclaim_review": true,
+  "overclaim_review_scope": "Compared the exact v0.5.196 and v0.5.197 complete diagnostic rows across the frozen 1,885 structured-candidate set, inspected both constructors and their prior source/disposition records, and retired only labels that added no observable final span or independent supported boundary.",
+  "release_documents": [
+    "docs/research/CP041-P1-SHADOWED-WRAPPER-RETIREMENT-R1.md",
+    "docs/research/CP041-P1-SHADOWED-WRAPPER-INVENTORY-R1.tsv",
+    "docs/research/CP041-COMMENT-RETIREMENT-R1.md",
+    "docs/research/CP041-PERFECTIVERESULTPREDICATE-RETIREMENT-R1.md",
+    "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+    "tools/verify-shadowed-wrapper-retirement.js",
+    "docs/current/PROJECT-STATE.md",
+    "docs/current/TESTING.md",
+    "GRAMMAR-INDEX.md",
+    "HANDOFF.md",
+    "CHANGELOG.md"
+  ],
+  "external_audit_ready": true,
+  "unresolved_release_questions": [
+    "The remaining implementation-only and compatibility-alias-only labels still require pattern-specific linguistic evidence before promotion.",
+    "RUL and PFV survey integration remains paused while collection proceeds.",
+    "When native-panel evidence becomes blocking again, the survey-guidance prompt must be requested before drafting or revising the instrument."
+  ],
+  "base_tree": "fea03cd188990b251fd70f46672ce7073344acf0"
+}
