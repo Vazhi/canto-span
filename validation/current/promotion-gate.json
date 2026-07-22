@@ -1,14 +1,14 @@
 {
   "schema": "canto-span-promotion-gate-v3",
-  "construction_notes": 166,
+  "construction_notes": 165,
   "status_counts": {
-    "unsupported_generalization": 83,
+    "unsupported_generalization": 82,
     "research_pending": 61,
     "parser_heuristic": 19,
     "lexicalized_only": 3
   },
   "gate_counts": {
-    "quarantined": 166
+    "quarantined": 165
   },
   "promoted_status_records": 0,
   "eligible_promoted_status_records": 0,

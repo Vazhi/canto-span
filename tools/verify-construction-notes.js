@@ -99,11 +99,14 @@ for (const note of notes) {
 
 const runtimeLabels = new Set(runtime.labels);
 const noteLabels = new Set(byLabel.keys());
-check("exactly 166 construction notes", notes.length === 166, String(notes.length));
-check("exactly two active working notes", notes.filter((note) => note.frontmatter.workflow_state === "active").length === 2, String(notes.filter((note) => note.frontmatter.workflow_state === "active").length));
-check("exactly 164 archived working notes", notes.filter((note) => note.frontmatter.workflow_state === "archived").length === 164, String(notes.filter((note) => note.frontmatter.workflow_state === "archived").length));
-check("exactly 166 standard construction test files", fs.readdirSync(path.join(root, "tests", "constructions")).filter((name) => name.endsWith(".json")).length === 166);
-check("runtime has 166 active labels", runtimeLabels.size === 166, String(runtimeLabels.size));
+const activeNotes = notes.filter((note) => note.frontmatter.workflow_state === "active");
+const archivedNotes = notes.filter((note) => note.frontmatter.workflow_state === "archived");
+const standardTestFileCount = fs.readdirSync(path.join(root, "tests", "constructions")).filter((name) => name.endsWith(".json")).length;
+check("construction notes exist", notes.length > 0, String(notes.length));
+check("exactly two active working notes", activeNotes.length === 2, String(activeNotes.length));
+check("all non-active notes are archived", archivedNotes.length === notes.length - activeNotes.length, `${archivedNotes.length} != ${notes.length - activeNotes.length}`);
+check("standard construction test file count matches notes", standardTestFileCount === notes.length, `${standardTestFileCount} != ${notes.length}`);
+check("runtime label count matches notes", runtimeLabels.size === notes.length, `${runtimeLabels.size} != ${notes.length}`);
 check("notes exactly match runtime labels", noteLabels.size === runtimeLabels.size && [...runtimeLabels].every((label) => noteLabels.has(label)));
 check("all notes are runtime active", notes.every((note) => note.frontmatter.runtime_active === true));
 

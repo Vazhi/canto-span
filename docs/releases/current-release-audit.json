@@ -1,18 +1,59 @@
 {
   "schema": "canto-span-release-handoff-audit-v2",
-  "release_id": "v0.5.200-passive-permissive-bei-reconciliation",
-  "handoff_sequence": 24,
-  "status_changes": [],
-  "changed_construction_audit": [],
+  "release_id": "v0.5.202-comparative-stative-retirement",
+  "handoff_sequence": 25,
+  "status_changes": [
+    {
+      "construction": "ComparativeStative",
+      "old_status": "unsupported_generalization",
+      "new_status": "retired"
+    }
+  ],
+  "changed_construction_audit": [
+    {
+      "construction": "ComparativeStative",
+      "old_status": "unsupported_generalization",
+      "new_status": "retired",
+      "plain_language_claim": "The residual stative + 啲 fallback conflated scalar adjustment with comparison and had no independently supported boundary; source-supported property + 啲 adjustment is represented by DegreeMannerAdverbial.",
+      "code_locations": [
+        "main.js:wrapPredicate",
+        "main.js:LEXICON 客氣",
+        "tests/fixtures/regression-snapshots.json:REG-0550"
+      ],
+      "sources": [
+        {
+          "citation": "Lam, Charles. 2014. A Unified Analysis to Surpass Comparative and Experiential Aspect.",
+          "locator": "pp. 375–376, examples (31)–(32)",
+          "verification": "VERIFIED_OFFICIAL_FULL_TEXT"
+        },
+        {
+          "citation": "鄭定歐、張勵妍、高石英. 2021. 粵語（香港話）教程（修訂版）.",
+          "locator": "user PDF p. 171; inherited PDF pp. 40–41",
+          "verification": "VERIFIED_USER_PROVIDED_FULL_TEXT_AND_OFFICIAL_PUBLISHER_METADATA"
+        }
+      ],
+      "panel_response_count_total": 0,
+      "eligible_panel_response_count": 0,
+      "minimum_usable_judgments_per_critical_item": 0,
+      "survey_instrument_version": "none",
+      "survey_instrument_status": "not_started",
+      "quality_screen_status": "not_started",
+      "panel_adjudication_status": "not_started",
+      "unresolved_questions": [
+        "Which explicit Cantonese surpass-comparative strategies require their own parser representation?",
+        "Which property heads productively combine with 啲, and in which syntactic positions?"
+      ]
+    }
+  ],
   "supported_productive_pending_reaudit": [],
-  "implementation_validation": "The source-linked regressions 我畀佢打籃球。 and 我畀阿媽鬧。 pass. The permissive case preserves 打籃球 as a nested ProductiveVO and carries no retained-patient candidate. The 548-case regression suite, 43-case NP suite, and 1,226 construction assertions pass through the core profile.",
-  "linguistic_confidence": "PassivePermissiveRelation remains research_pending. Independent sources distinguish permissive and passive 畀 uses, but do not establish unrestricted predicate coverage, context-free disambiguation, negative boundaries, or panel acceptance.",
+  "implementation_validation": "REG-0550 parses 客氣啲。 as DegreeMannerAdverbial. ComparativeStative is absent from the runtime registry, current construction notes, standardized test files, and implementation-probe inventory. The regression suite contains 550 cases and the standardized construction inventory contains 1,229 assertions across 165 labels.",
+  "linguistic_confidence": "DegreeMannerAdverbial remains research_pending. Retirement removes an unsupported duplicate analysis; it does not promote scalar adjustment or establish explicit comparative productivity.",
   "code_analysis_overclaim_review": true,
-  "overclaim_review_scope": "Separated the reviewed activity VP from retained-object indirect-passive candidates; preserved passive/permissive ambiguity where the isolated surface does not force one reading; retained lexical GIVE and post-theme boundaries.",
+  "overclaim_review_scope": "Separated source-supported scalar adjustment from explicit surpass comparison and removed a fallback whose activation depended on missing lexical slot metadata.",
   "release_documents": [
-    "docs/research/CP043-P1-PASSIVE-PERMISSIVE-BEI-RECONCILIATION-R1.md",
-    "grammar/archived/PassivePermissiveRelation.md",
-    "grammar/archived/ProductiveVO.md",
+    "docs/research/CP045-P1-COMPARATIVE-STATIVE-RETIREMENT-R1.md",
+    "grammar/archived/DegreeMannerAdverbial.md",
+    "archive/retired-labels/v0.5.202-comparative-stative-retirement/ComparativeStative.md",
     "docs/current/PROJECT-STATE.md",
     "docs/current/TESTING.md",
     "CHANGELOG.md",
@@ -20,9 +61,9 @@
   ],
   "external_audit_ready": true,
   "unresolved_release_questions": [
-    "Broader predicate-class productivity and negative boundaries remain unresolved.",
-    "No qualified native-panel evidence has been collected for this construction.",
+    "Negative boundaries and lexical productivity for property + 啲 remain unresolved.",
+    "Explicit surpass-comparative structures remain separately under-researched.",
     "RUL and PFV survey integration remains paused while collection proceeds."
   ],
-  "base_tree": "0375e86ec6f90821b49d1784dbe404753aa267b1"
+  "base_tree": "3b4f93fa5acce21e4cf71d1a76285c758527da69"
 }

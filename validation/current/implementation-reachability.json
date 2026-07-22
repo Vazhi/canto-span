@@ -1,14 +1,14 @@
 {
   "schema": "canto-span-implementation-reachability-audit-v1",
-  "runtime_version": "0.5.201",
-  "probe_case_count": 65,
-  "probed_construction_count": 64,
-  "implementation_positive_only_labels": 60,
+  "runtime_version": "0.5.202",
+  "probe_case_count": 64,
+  "probed_construction_count": 63,
+  "implementation_positive_only_labels": 59,
   "compatibility_alias_only_labels": 1,
   "no_direct_labels": 0,
   "linguistic_evidence_weight_added": 0,
-  "total": 791,
-  "passed": 791,
+  "total": 782,
+  "passed": 782,
   "failed": 0,
   "status": "PASS",
   "checks": [
@@ -30,7 +30,7 @@
     {
       "name": "construction index matches current notes",
       "pass": true,
-      "detail": "166/166"
+      "detail": "165/165"
     },
     {
       "name": "REACH-001 case id is unique",
@@ -406,31 +406,6 @@
       "name": "REACH-015 reaches target",
       "pass": true,
       "detail": "阿妹，過嚟。"
-    },
-    {
-      "name": "LOWREF-001 case id is unique",
-      "pass": true,
-      "detail": "LOWREF-001"
-    },
-    {
-      "name": "LOWREF-001 targets active label",
-      "pass": true,
-      "detail": "ComparativeStative"
-    },
-    {
-      "name": "LOWREF-001 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "LOWREF-001 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "LOWREF-001 reaches target",
-      "pass": true,
-      "detail": "客氣啲。"
     },
     {
       "name": "LOWREF-002 case id is unique",
@@ -1888,25 +1863,6 @@
       "name": "CognitionStatementClause needs no implementation probe unless coverage says so",
       "pass": true,
       "detail": "positive_only"
-    },
-    {
-      "name": "ComparativeStative exists in construction index",
-      "pass": true
-    },
-    {
-      "name": "ComparativeStative coverage state reflects linguistic cases before zero-weight probes",
-      "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "ComparativeStative implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "ComparativeStative zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
     },
     {
       "name": "ComplementEllipsisFragment exists in construction index",
@@ -3798,7 +3754,7 @@
     {
       "name": "all probe labels occur in current index",
       "pass": true,
-      "detail": "64"
+      "detail": "63"
     }
   ],
   "failures": []

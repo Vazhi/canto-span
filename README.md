@@ -4,10 +4,10 @@ This repository is the canonical project working tree for the Cantonese parser a
 
 ## Current state
 
-- runtime: **v0.5.201**
-- active runtime labels / construction notes: **166 / 166**
-- construction workflow: **2 active / 164 workflow-archived**
-- retired labels: **15**
+- runtime: **v0.5.202**
+- active runtime labels / construction notes: **165 / 165**
+- construction workflow: **2 active / 163 workflow-archived**
+- retired labels: **16**
 - `supported_productive`: **0**
 - `provisional`: **0**
 - `research_pending`: **61**, including both active constructions
@@ -16,11 +16,11 @@ This repository is the canonical project working tree for the Cantonese parser a
 
 Current validation targets:
 
-- aggregate regression: **548** cases
+- aggregate regression: **550** cases
 - NP subsystem: **43** cases
 - per-construction assertions: **1,229**
-- construction test files: **166**
+- construction test files: **165**
 
-v0.5.201 reconciles the independently documented permissive and passive 畀 frames with `PassivePermissiveRelation`. The permissive example preserves `打籃球` as a nested activity VP instead of a retained patient; status remains `research_pending` and no survey-dependent work changed.
+v0.5.202 retires the misleading `ComparativeStative` fallback. Source-supported property + `啲` adjustment now uses `DegreeMannerAdverbial`; explicit surpass comparatives remain a separate research question.
 
 Read [`docs/current/00-START-HERE.md`](docs/current/00-START-HERE.md), then [`docs/current/PROJECT-STATE.md`](docs/current/PROJECT-STATE.md).

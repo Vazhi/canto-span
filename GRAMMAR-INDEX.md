@@ -7,10 +7,10 @@ tags: [canto-span/grammar, canto-span/index]
 
 # Grammar index
 
-- Current construction notes: **166**
+- Current construction notes: **165**
 - Active working set: **2**
-- Workflow-archived current records: **164**
-- Retired labels: **15**
+- Workflow-archived current records: **163**
+- Retired labels: **16**
 
 Workflow archiving parks a note outside current work. It does not retire its runtime label or change its linguistic status.
 
@@ -20,15 +20,15 @@ Workflow archiving parks a note outside current work. It does not retire its run
 - `provisional_reaudit`: **0**
 - `provisional`: **0**
 - `research_pending`: **61**
-- `unsupported_generalization`: **83**
+- `unsupported_generalization`: **82**
 - `lexicalized_only`: **3**
 - `parser_heuristic`: **19**
 
 ## Standard test coverage
 
 - positive and boundary: **2**
-- positive only: **100**
-- implementation positive only: **63**
+- positive only: **103**
+- implementation positive only: **59**
 - compatibility alias only: **1**
 - boundary only: **0**
 - no direct standardized cases: **0**
@@ -59,7 +59,6 @@ Workflow archiving parks a note outside current work. It does not retire its run
 - [[CognitionDelimitedObjectVP]] — `unsupported_generalization`
 - [[CognitionDelimitedVP]] — `unsupported_generalization`
 - [[CognitionStatementClause]] — `unsupported_generalization`
-- [[ComparativeStative]] — `unsupported_generalization`
 - [[ComplementEllipsisFragment]] — `research_pending`
 - [[CompletionQuestion]] — `research_pending`
 - [[CompletionThenClause]] — `unsupported_generalization`

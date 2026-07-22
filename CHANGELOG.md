@@ -1,3 +1,12 @@
+## v0.5.202 — ComparativeStative retirement and degree-adjustment reconciliation
+
+- Retired `ComparativeStative`, whose residual `stative + 啲` fallback mislabeled a degree adjustment as a generic comparative construction.
+- Added the source-linked regression `客氣啲。` under the existing `DegreeMannerAdverbial` representation.
+- Preserved explicit surpass-comparative research separately; this patch does not treat every property + `啲` sequence as an overt comparison against a standard.
+- Reduced active runtime labels and construction notes from 166 to 165, increased retired labels from 15 to 16, and reduced implementation-only coverage from 60 to 59.
+- Increased the regression suite from 549 to 550 while keeping total construction assertions at 1,229.
+- Added no verifier or version-specific validation directory.
+
 ## v0.5.201 — polite request adjustment reconciliation
 
 - Added the source-linked regression `唔該你快啲。`.

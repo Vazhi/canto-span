@@ -9,7 +9,8 @@ const { Plugin, PluginSettingTab, Setting, Notice } = require("obsidian");
  * never overwrite child learner roles.
  */
 
-const CANTO_SPAN_RUNTIME_VERSION = "0.5.201";
+const CANTO_SPAN_RUNTIME_VERSION = "0.5.202";
+// v0.5.202: retires the misleading ComparativeStative fallback and routes source-supported property + 啲 adjustment through DegreeMannerAdverbial.
 // v0.5.201: groups the source-attested 唔該 + addressee + scalar-adjustment request as a transparent polite imperative while preserving its children.
 // v0.5.200: preserves source-attested permissive/passive 畀 frames while grouping 打籃球 as an activity VP rather than a retained patient.
 // v0.5.199: reconciles the source-attested repeated-manner + overt 咁/噉 pattern, preserves a nested VP, and removes stale release-pinned verification assumptions.
@@ -1036,7 +1037,7 @@ const TOKEN_LEXICON = {
   "Crawford": { label: "who", syntax: "latin_proper_name surname_np", note: "Latin-script surname; no Jyutping applicable." },
   "雲吞麵": { label: "what", jyutping: "wan4 tan1 min6", syntax: "food_noun object_np", note: "wonton noodles." },
   "咪": { label: "func", syntax: "polysemous_mai_marker", note: "咪 is context-sensitive: prohibitive mai5 before a predicate, but mai6 in several discourse/focus uses." },
-  "客氣": { label: "like", jyutping: "haak3 hei3", syntax: "stative_or_behavior_predicate politeness_property", note: "polite / ceremonious." },
+  "客氣": { label: "like", jyutping: "haak3 hei3", syntax: "stative_or_behavior_predicate politeness_property degree_manner_head", note: "polite / ceremonious; degreeable before 啲 in a scalar adjustment phrase." },
   "姓": { label: "doing", jyutping: "sing3", syntax: "verb surname_relation_verb", note: "have the surname / be surnamed." },
   "跟住": { label: "func", jyutping: "gan1 zyu6", syntax: "sequence_connector discourse_marker", note: "then / next / following that." },
   "麻麻地": { label: "like", jyutping: "maa4 maa2 dei2", syntax: "lexicalized_stative_predicate moderate_evaluation", note: "so-so / mediocre." },
@@ -1276,7 +1277,6 @@ const CONSTRUCTION_LABEL_REGISTRY = new Set([
   "CognitionDelimitedObjectVP",
   "CognitionDelimitedVP",
   "CognitionStatementClause",
-  "ComparativeStative",
   "CompletionQuestion",
   "CompletionThenClause",
   "CompletionVP",
@@ -1532,6 +1532,7 @@ const RETIRED_CONSTRUCTION_LABEL_REGISTRY = new Map([
   ["TemporalAdverbialClause", "Retired at v0.5.191: no constructor, fixture, standardized case, or parser output used this label. Preserve explicit temporal-subordination research separately; current runtime uses TemporalClause or typed ClauseRelationEdge structures."],
   ["Comment", "Retired at v0.5.197: the standalone child wrapper never survived complete parser output and duplicated the comment/comment_predicate role metadata already carried by TopicComment."],
   ["PerfectiveResultPredicate", "Retired at v0.5.197: the lexical-item-specific 解決咗 wrapper was shadowed by ordinary PerfectiveVP composition and added no independently supported boundary."],
+  ["ComparativeStative", "Retired at v0.5.202: the residual stative + 啲 fallback mislabeled degree adjustment as a generic comparative. Source-supported property + 啲 forms use DegreeMannerAdverbial; explicit surpass comparatives require separate structure."],
 ]);
 
 
@@ -16047,15 +16048,6 @@ function wrapPredicate(nodes) {
   // Existing one-token degree/stative phrases such as 好好食, 好貴, 抵食.
   if (nodes.length === 1 && isStativeToken(nodes[0])) {
     return [construction("StativePredicate", "Stative", nodes, { note: "Stative/property predicate fragment.", trace: traceInfo("generative_template", { construction_type: "StativePredicate", template_family: "generative_template", template: ["stative_predicate!"], assigned_slots: ["stative_predicate"], rule: "single stative token", reason: "Generated label/syntax indicates stative." }) })];
-  }
-
-  // Legacy comparative stative fallback. The productive stative/adjective or manner + 啲
-  // path above should normally catch these as DegreeMannerAdverbial through the
-  // governed generative-template lane.
-  if (nodes.length >= 2 && isStativeToken(nodes[0]) && isToken(nodes[1], "啲")) {
-    const degreeManner = categorySubspanFor(nodes.slice(0, 2), ["DegreeMannerAdverbial"]);
-    if (degreeManner) return [degreeManner, ...wrapPredicate(nodes.slice(2))];
-    return [construction("ComparativeStative", "Adj+啲", nodes, { note: "Comparative/degree stative predicate fallback.", trace: traceInfo("predicate_heuristic", { rule: "stative + 啲", reason: "Fallback only; DegreeMannerAdverbial should normally catch productive stative/adjective + 啲." }) })];
   }
 
   // Degree/stative: 好 開心, 太 貴, 有啲 貴

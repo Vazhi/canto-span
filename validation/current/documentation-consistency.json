@@ -1,8 +1,8 @@
 {
   "schema": "canto-span-documentation-consistency-v1",
-  "checkpoint": "v0.5.201-current",
+  "checkpoint": "v0.5.202-current",
   "status": "PASS",
-  "json_files": 516,
+  "json_files": 515,
   "markdown_files": 338,
   "broken_local_links": 0,
   "errors": []

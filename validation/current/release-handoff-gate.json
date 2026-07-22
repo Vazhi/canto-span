@@ -1,11 +1,17 @@
 {
   "schema": "canto-span-release-handoff-gate-v2",
-  "release_id": "v0.5.200-passive-permissive-bei-reconciliation",
-  "base_tree": "0375e86ec6f90821b49d1784dbe404753aa267b1",
-  "actual_status_changes": [],
+  "release_id": "v0.5.202-comparative-stative-retirement",
+  "base_tree": "3b4f93fa5acce21e4cf71d1a76285c758527da69",
+  "actual_status_changes": [
+    {
+      "construction": "ComparativeStative",
+      "old_status": "unsupported_generalization",
+      "new_status": "retired"
+    }
+  ],
   "supported_productive_count": 0,
   "supported_productive_pending_reaudit": [],
-  "retirement_review_gap": 3,
+  "retirement_review_gap": 4,
   "failed": 0,
   "status": "PASS",
   "failures": []

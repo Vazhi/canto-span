@@ -13,10 +13,10 @@ The recovery ZIP must include `.git/`.
 
 ## Binding state
 
-- runtime: **v0.5.201**
-- runtime labels / current construction notes: **166 / 166**
-- workflow: **2 active / 164 archived**
-- retired labels: **15**
+- runtime: **v0.5.202**
+- runtime labels / current construction notes: **165 / 165**
+- workflow: **2 active / 163 archived**
+- retired labels: **16**
 - `supported_productive`: **0**
 - `provisional`: **0**
 - `research_pending`: **61**
@@ -42,11 +42,12 @@ Promotion thresholds are based on the minimum usable adjudicated judgments per c
 4. `docs/current/SURVEY-BATCHING.md`
 5. `docs/current/NATIVE-SPEAKER-REVIEW.md`
 6. `docs/research/CP032-P1-RUL01-SURVEY-READINESS-R1.md`
-7. `docs/research/CP043-P1-PASSIVE-PERMISSIVE-BEI-RECONCILIATION-R1.md`
-8. `docs/research/CP042-P1-MANNER-ADVERBIAL-RECONCILIATION-R1.md`
-9. `docs/research/CP041-COMMENT-RETIREMENT-R1.md`
-10. `docs/research/CP041-PERFECTIVERESULTPREDICATE-RETIREMENT-R1.md`
+7. `docs/research/CP045-P1-COMPARATIVE-STATIVE-RETIREMENT-R1.md`
+8. `docs/research/CP043-P1-PASSIVE-PERMISSIVE-BEI-RECONCILIATION-R1.md`
+9. `docs/research/CP042-P1-MANNER-ADVERBIAL-RECONCILIATION-R1.md`
+10. `docs/research/CP041-COMMENT-RETIREMENT-R1.md`
+11. `docs/research/CP041-PERFECTIVERESULTPREDICATE-RETIREMENT-R1.md`
 
 ## Next substantive work
 
-Continue ranking the remaining 60 implementation-only labels by source/runtime mismatch and learner impact. `MannerAdverbialVP` and `PassivePermissiveRelation` now have narrow source-linked positive fixtures; their broader productivity and negative boundaries remain unresolved. The full dormant-label review is complete; no active label remains uncovered. RUL and PFV survey integration stays paused while collection proceeds. When native-panel evidence becomes blocking again, remind the user to provide the survey-guidance prompt before drafting or revising the instrument.
+Continue ranking the remaining 59 implementation-only labels by source/runtime mismatch and learner impact. `ComparativeStative` is retired; property + `啲` adjustment is represented by `DegreeMannerAdverbial`, while explicit surpass comparisons require separate evidence. The full dormant-label review remains complete. RUL and PFV survey integration stays paused while collection proceeds.

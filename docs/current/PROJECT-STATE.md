@@ -4,21 +4,21 @@
 
 | Measure | Current value |
 |---|---:|
-| Runtime | v0.5.201 |
-| Runtime labels | 166 |
-| Current construction notes | 166 |
+| Runtime | v0.5.202 |
+| Runtime labels | 165 |
+| Current construction notes | 165 |
 | Active working notes | 2 |
-| Workflow-archived notes | 164 |
-| Retired labels | 15 |
+| Workflow-archived notes | 163 |
+| Retired labels | 16 |
 | `supported_productive` | 0 |
 | `provisional_reaudit` | 0 |
 | `provisional` | 0 |
 | `research_pending` | 61 |
-| `unsupported_generalization` | 83 |
+| `unsupported_generalization` | 82 |
 | `lexicalized_only` | 3 |
 | `parser_heuristic` | 19 |
 
-The canonical registry is the union of `grammar/active/*.md` and `grammar/archived/*.md`; it matches the 166 runtime labels exactly.
+The canonical registry is the union of `grammar/active/*.md` and `grammar/archived/*.md`; it matches the 165 runtime labels exactly.
 
 ## v0.5.198 verification consolidation
 
@@ -35,6 +35,10 @@ Release-specific wrapper verifiers, eight separate probe files, obsolete version
 
 No parser span, runtime label, construction status, source claim, or survey result changed.
 
+## v0.5.202 ComparativeStative retirement
+
+`ComparativeStative` is retired. Its only observable path was a residual `stative + 啲` fallback that conflated scalar adjustment with overt comparison. The source-linked regression `客氣啲。` now uses `DegreeMannerAdverbial`. This does not establish unrestricted property + `啲` productivity, and it does not replace separate research on explicit surpass comparatives such as predicate + `過` + comparison standard.
+
 ## v0.5.201 passive/permissive 畀 reconciliation
 
 `PassivePermissiveRelation` now has two source-linked positive regressions. The permissive example preserves `打籃球` as a nested reviewed `ProductiveVO`, preventing `籃球` from being misreported as a retained patient. The passive example preserves the transparent passive/permissive interpretation boundary. Status remains `research_pending`; no panel or productivity claim was added.
@@ -47,9 +51,9 @@ No parser span, runtime label, construction status, source claim, or survey resu
 
 The v0.5.189–v0.5.197 review series is complete:
 
-- 61 labels have implementation-only coverage;
+- 59 labels have implementation-only coverage;
 - 1 label has compatibility-alias-only coverage;
-- 4 dead or shadowed labels were retired during the series;
+- 4 dead or shadowed labels were retired during the v0.5.189–v0.5.197 series; one additional misleading fallback was retired in v0.5.202;
 - no active label remains uncovered;
 - implementation reachability carries zero linguistic evidence weight.
 
@@ -66,4 +70,4 @@ Survey integration remains paused while collection proceeds. No current instrume
 
 ## Next substantive work
 
-Continue source/runtime reconciliation among the remaining 60 implementation-only labels by learner impact and research tractability. `MannerAdverbialVP`, `PassivePermissiveRelation`, and `PoliteImperativeClause` now have narrow source-linked positive coverage; their broader productivity and negative boundaries remain unresolved. Do not create release-specific audit frameworks; add permanent evidence only where it changes the construction record.
+Continue source/runtime reconciliation among the remaining 59 implementation-only labels by learner impact and research tractability. Preserve explicit comparison strategies separately from scalar `啲` adjustment. Do not create release-specific audit frameworks; add permanent evidence only where it changes the construction record.

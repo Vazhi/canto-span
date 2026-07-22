@@ -2,10 +2,10 @@
 
 ## Current baseline
 
-- runtime: **v0.5.201**
-- active labels / construction notes: **166 / 166**
-- workflow: **2 active / 164 archived**
-- retired labels: **15**
+- runtime: **v0.5.202**
+- active labels / construction notes: **165 / 165**
+- workflow: **2 active / 163 archived**
+- retired labels: **16**
 - `supported_productive`: **0**
 - `provisional`: **0**
 - `research_pending`: **61**
