@@ -20,6 +20,14 @@ const labels = loadConstructionNotes(root)
   .map((note) => note.frontmatter.construction)
   .sort();
 
+const existingFocusedCases = new Map();
+for (const label of labels) {
+  const file = path.join(outDir, `${label}.json`);
+  if (!fs.existsSync(file)) continue;
+  const record = readJson(file);
+  existingFocusedCases.set(label, Array.isArray(record.focused_cases) ? record.focused_cases : []);
+}
+
 const regression = readJson(regressionPath);
 regression.cases.forEach((testCase, index) => {
   if (!testCase.case_id) testCase.case_id = `REG-${String(index + 1).padStart(4, "0")}`;
@@ -33,7 +41,7 @@ const files = new Map(labels.map((label) => [label, {
   runtime_active: true,
   migration_phase: 5,
   snapshot_cases: [],
-  focused_cases: [],
+  focused_cases: existingFocusedCases.get(label) || [],
   np_cases: [],
   implementation_probe_cases: [],
   coverage: {},
@@ -76,7 +84,7 @@ for (const rel of focusedPacketPaths) {
     if (expectedText.includes("absent")) assertion = "construction_absent";
     else if (expectedText.includes("present") || expectedText.includes("nested")) assertion = "construction_present";
     else if (expectedText.includes("may_parse")) assertion = "review_only_parse_succeeds";
-    target.focused_cases.push({
+    const focusedCase = {
       case_id: `${packet.packet_id}:${testCase.case_id}`,
       source: testCase.surface,
       class: testCase.class || "",
@@ -85,7 +93,10 @@ for (const rel of focusedPacketPaths) {
       provenance: rel,
       ...(testCase.source_ids ? { source_ids: testCase.source_ids } : {}),
       ...(testCase.source_locator ? { source_locator: testCase.source_locator } : {}),
-    });
+    };
+    const existingIndex = target.focused_cases.findIndex((item) => item.case_id === focusedCase.case_id);
+    if (existingIndex >= 0) target.focused_cases[existingIndex] = focusedCase;
+    else target.focused_cases.push(focusedCase);
   }
 }
 
@@ -109,6 +120,9 @@ for (const testCase of reachability.cases) {
       ...(testCase.context_source ? { context_source: testCase.context_source } : {}),
       assertion: testCase.assertion,
       ...(testCase.internal_construction ? { internal_construction: testCase.internal_construction } : {}),
+      ...(testCase.expected_surface ? { expected_surface: testCase.expected_surface } : {}),
+      ...(testCase.expected_trace_detail ? { expected_trace_detail: testCase.expected_trace_detail } : {}),
+      ...(testCase.forbidden_trace_detail ? { forbidden_trace_detail: testCase.forbidden_trace_detail } : {}),
       provenance: testCase.provenance,
       source_role: testCase.source_role,
       linguistic_evidence_weight: 0,

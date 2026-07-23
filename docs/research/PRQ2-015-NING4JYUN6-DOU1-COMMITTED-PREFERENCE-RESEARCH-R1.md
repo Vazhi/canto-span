@@ -4,7 +4,7 @@ research_id: PRQ2-015
 status: active_research_unit
 baseline_version: 0.5.213
 created: 2026-07-23
-implementation_authorized: false
+implementation_authorized: true
 status_change_authorized: false
 ---
 
@@ -38,8 +38,11 @@ The evidence does not settle marker omission, the full range of complements,
 equivalence among `寧願`, `情願`, and `寧可`, the analysis of positive
 continuations other than `都要`, or register and prosodic constraints.
 
-This note authorizes no parser change, construction-status change, lexical
-installation, test promotion, or automatic acceptance rule.
+Implementation authorization granted on 2026-07-23 is limited to the overt
+comma-delimited rejection profile with `寧願 A` and
+`都唔想／都唔肯／都唔好 B`. It does not authorize the positive `都要`
+continuation, marker omission, lexical installation, a construction-status
+change, or a broader automatic acceptance rule.
 
 ## Sources
 
@@ -75,5 +78,6 @@ row. Empty-marker guards remain unrecognized, as desired.
 
 ## Disposition
 
-**Dedicated research unit; implementation and status changes remain
+**Dedicated research unit; the narrow overt rejection profile is implemented,
+while the positive continuation, broader profiles, and status changes remain
 unauthorized.**

@@ -26,9 +26,9 @@ native_negative_contrasts_reviewed: false
 panel_evidence_model_version: "v2"
 panel_review_state_file: "review-packets/native-panel/active-v2/panel-review-state.json"
 panel_policy_file: "review-packets/native-panel/active-v2/panel-policy.json"
-negative_cases_drafted: false
-negative_tests_executable: false
-negative_tests_passing: false
+negative_cases_drafted: true
+negative_tests_executable: true
+negative_tests_passing: true
 negative_boundary_inventory_complete: false
 corpus_evidence_used: false
 corpus_hits_reviewed: false
@@ -46,11 +46,11 @@ implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
 standard_test_file: "tests/constructions/SuggestionQuestion.json"
-standard_test_coverage: "implementation_positive_only"
-standard_positive_test_count: 0
-standard_boundary_test_count: 0
+standard_test_coverage: "positive_and_boundary"
+standard_positive_test_count: 1
+standard_boundary_test_count: 2
 standard_implementation_probe_count: 1
-standard_executable_test_count: 1
+standard_executable_test_count: 4
 source_ids: ["SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"]
 runtime_active: true
 workflow_state: "archived"
@@ -99,7 +99,10 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 - Standard executable test file: `tests/constructions/SuggestionQuestion.json`
 - Implementation-only reachability: `REACH-013` emits this label for `你攰唔攰？不如休息吓。`; linguistic evidence weight is **0**; provenance: `test-data/w17-glossika-corpus.tsv#COR-W17-010`.
-- Evidence state: `none_recorded`
+- Focused PRQ2-013 coverage retains lone suggestion `不如 B` while excluding
+  ordinary comparison `A 不如 B` and paired ordered preference
+  `與其 A，不如 B`.
+- Evidence state: `focused_positive_and_boundary`
 - Executable or review records containing this label:
   - `test-data/grammar-claim-provenance-CP021B.json`
   - `test-data/grammar-claim-provenance-CP021B.tsv`

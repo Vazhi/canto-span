@@ -63,16 +63,57 @@ grammar status or authorize parser work. Current status remains owned by
 | PRQ2-001 | [`yau5/mou5 dak1 availability`](PRQ2-001-YAU5-MOU5-DAK1-AVAILABILITY-RESEARCH-R1.md) |
 | PRQ2-002 | [`zou2zi1 hindsight regret`](PRQ2-002-ZOU2ZI1-HINDSIGHT-REGRET-RESEARCH-R1.md) |
 | PRQ2-003 | [`jyut6 scalar progression`](PRQ2-003-JYUT6-SCALAR-PROGRESSION-RESEARCH-R1.md) |
+| PRQ2-004 | [`caa1 di1 near miss`](PRQ2-004-CAA1DI1-NEAR-MISS-RESEARCH-R1.md) |
+| PRQ2-005 | [`hoi1 habitual established activity`](PRQ2-005-HOI1-HABITUAL-ESTABLISHED-ACTIVITY-RESEARCH-R1.md) |
 | PRQ2-008 | [`zi2 jiu3 sufficient condition`](PRQ2-008-ZI2JIU3-ZAU6-SUFFICIENT-CONDITION-RESEARCH-R1.md) |
-| PRQ2-014 | [`zi2 jau5 necessary condition`](PRQ2-014-ZI2JAU5-SIN1ZI3-NECESSARY-CONDITION-RESEARCH-R1.md) |
-| PRQ2-034 | [`mou4 leon6 unconditional invariance`](PRQ2-034-MOU4LEON6-DOU1-UNCONDITIONAL-RESEARCH-R1.md) |
 | PRQ2-009 | [`gei3 jin4 premise and response`](PRQ2-009-GEI3JIN4-PREMISE-RESPONSE-RESEARCH-R1.md) |
-| PRQ2-013 | [`jyu5 kei4 bat1 jyu4 ordered preference`](PRQ2-013-JYU5KEI4-BAT1JYU4-ORDERED-PREFERENCE-RESEARCH-R1.md) |
-| PRQ2-011 | [`m4 daan1 zi2 additive correlation`](PRQ2-011-M4DAAN1ZI2-ZUNG6-ADDITIVE-CORRELATIVE-RESEARCH-R1.md) |
-| PRQ2-033 | [`jau6-jau6 coexistence`](PRQ2-033-JAU6-JAU6-COEXISTENT-PREDICATE-RESEARCH-R1.md) |
-| PRQ2-012 | [`jat1 hai6 exclusive alternatives`](PRQ2-012-JAT1HAI6-EXCLUSIVE-ALTERNATIVE-RESEARCH-R1.md) |
-| PRQ2-015 | [`ning4 jyun6 dou1 committed preference`](PRQ2-015-NING4JYUN6-DOU1-COMMITTED-PREFERENCE-RESEARCH-R1.md) |
 | PRQ2-010 | [`ceoi4 zo2 zi1 ngoi6 exclusion and addition`](PRQ2-010-CEOI4ZO2-ZI1NGOI6-EXCLUSION-ADDITION-RESEARCH-R1.md) |
+| PRQ2-011 | [`m4 daan1 zi2 additive correlation`](PRQ2-011-M4DAAN1ZI2-ZUNG6-ADDITIVE-CORRELATIVE-RESEARCH-R1.md) |
+| PRQ2-012 | [`jat1 hai6 exclusive alternatives`](PRQ2-012-JAT1HAI6-EXCLUSIVE-ALTERNATIVE-RESEARCH-R1.md) |
+| PRQ2-013 | [`jyu5 kei4 bat1 jyu4 ordered preference`](PRQ2-013-JYU5KEI4-BAT1JYU4-ORDERED-PREFERENCE-RESEARCH-R1.md) |
+| PRQ2-014 | [`zi2 jau5 necessary condition`](PRQ2-014-ZI2JAU5-SIN1ZI3-NECESSARY-CONDITION-RESEARCH-R1.md) |
+| PRQ2-015 | [`ning4 jyun6 dou1 committed preference`](PRQ2-015-NING4JYUN6-DOU1-COMMITTED-PREFERENCE-RESEARCH-R1.md) |
+| PRQ2-033 | [`jau6-jau6 coexistence`](PRQ2-033-JAU6-JAU6-COEXISTENT-PREDICATE-RESEARCH-R1.md) |
+| PRQ2-034 | [`mou4 leon6 unconditional invariance`](PRQ2-034-MOU4LEON6-DOU1-UNCONDITIONAL-RESEARCH-R1.md) |
+
+## Clause-relation implementation priority
+
+This is a planning order derived from the completed source and collision
+records. It does not change grammar status or authorize a broader heuristic.
+
+| Tier | Units | Narrow implementation objective |
+|---|---|---|
+| 1 | PRQ2-013, PRQ2-008, PRQ2-014 | Add overt paired cores with explicit member roles while preserving child analyses and hard comparison, suggestion, conditional, temporal, and empty-member guards. |
+| 2 | PRQ2-015, PRQ2-009 | Add only the sourced rejection and premise-response profiles; defer positive-continuation and discourse-spanning generalization. |
+| 3 | PRQ2-034, PRQ2-012 | Require explicit domain or option structure before addressing free-choice, suggestion, list, and contextual readings. |
+| 4 | PRQ2-010, PRQ2-011 | Defer until profile splitting, marker omission, lexical substring, and context-dependent boundaries have dedicated implementation designs. |
+
+The first slice implements PRQ2-013's overt `與其 A，不如 B` core as an
+internal `ordered_preference` relation subtype. It retains lone suggestion
+`不如 B` and excludes ordinary comparison `A 不如 B` from `Suggest`.
+Optional `倒`, marker omission, and member types that do not yet yield two
+independent child analyses remain deferred.
+
+The second slice implements PRQ2-008's overt `只要 A，就 B` core as a
+`sufficient_condition` profile of the existing conditional relation. It does
+not merge lexical `只`+`要` globally, and omitted `就`, fragments, and
+discourse-spanning continuations remain deferred.
+
+The third slice implements PRQ2-014's overt
+`只有 A，先／先至／先可以 B` core as a `necessary_condition` profile of the
+existing conditional relation. It does not merge lexical `只`+`有` globally;
+unpunctuated participant restrictions, bare condition-plus-`先至`, short
+`至`, and temporal uses remain deferred.
+
+The fourth slice implements PRQ2-015's overt rejection profile
+`寧願 A，都唔想／唔肯／唔好 B` as a `committed_preference` relation.
+Positive `都要` continuations, marker omission, and related lexical preference
+markers remain deferred.
+
+The fifth slice implements PRQ2-009's clause-initial, comma-delimited
+`既然 A，B` core as a `premise_response` relation, including sourced unmarked,
+`就`, `噉／咁`, `不如`, and `等我` response profiles. Preposed-subject and
+discourse-spanning profiles remain deferred.
 
 ## Shared evidence
 

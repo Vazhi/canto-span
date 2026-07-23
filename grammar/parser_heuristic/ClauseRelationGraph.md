@@ -49,8 +49,8 @@ standard_test_file: "tests/constructions/ClauseRelationGraph.json"
 standard_test_coverage: "positive_only"
 standard_positive_test_count: 47
 standard_boundary_test_count: 0
-standard_implementation_probe_count: 0
-standard_executable_test_count: 47
+standard_implementation_probe_count: 29
+standard_executable_test_count: 76
 source_ids: []
 runtime_active: true
 workflow_state: "archived"
@@ -92,6 +92,24 @@ No pattern-specific external source is currently mapped.
 ## Negative and boundary cases
 
 - Standard executable test file: `tests/constructions/ClauseRelationGraph.json`
+- Implementation-only PRQ2-013 probes require the internal
+  `ordered_preference` subtype for overt `與其…不如…` pairs; these probes have
+  zero independent linguistic-evidence weight. Empty disfavored or preferred
+  members, optional `倒不如`, and different-marker `寧願` profiles remain
+  outside the subtype.
+- Implementation-only PRQ2-008 probes require the `sufficient_condition`
+  profile only when clause-initial adjacent `只`+`要` introduces the left
+  member and overt `就` marks the right member; bare and empty-member controls remain
+  unwrapped. Omitted-`就` and hypothetical `如果` controls do not receive the
+  profile, and subject-led lexical `只` plus modal `要` remains separate. These
+  probes also have zero independent linguistic-evidence weight.
+- Implementation-only PRQ2-014 probes require the `necessary_condition`
+  profile only when adjacent `只`+`有` occurs in the left member, `先` or
+  `先至` occurs in the right member, and both members contain overt content.
+  Temporal `先至`, empty-member, unpunctuated participant-restriction, and
+  sufficient-condition controls do not receive the profile. Lexical/existential
+  `只有` remains separate; these probes have zero independent
+  linguistic-evidence weight.
 - Evidence state: `fixture_level_not_provenance_linked`
 - Executable or review records containing this label:
   - `review-packets/cp022-evaluation/EP-CP022-I1A-I02-D1/README.md`

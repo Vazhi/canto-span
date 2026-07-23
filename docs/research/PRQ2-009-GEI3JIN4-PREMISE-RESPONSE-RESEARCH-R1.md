@@ -4,7 +4,7 @@ research_id: PRQ2-009
 status: active_research_unit
 baseline_version: 0.5.213
 created: 2026-07-23
-implementation_authorized: false
+implementation_authorized: true
 status_change_authorized: false
 ---
 
@@ -32,8 +32,13 @@ A，所以 B`, UC-RQ-038 `除非`, UC-RQ-035 temporal `一 A 就 B`, discourse
 under disagreement, subject placement, response-marker inventory, ellipsis,
 interrogative scope, register, prosody, or all response speech acts.
 
-This note authorizes no parser change, construction-status change, lexical
-installation, test promotion, or automatic acceptance rule.
+Implementation authorization granted on 2026-07-23 is limited to the
+clause-initial, overt comma-delimited `既然 A，B` core with a nonempty premise
+and response. The response may be unmarked or begin with sourced `就`,
+`噉／咁`, `不如`, or `等我`. It does not authorize preposed-subject
+`SUBJECT + 既然`, marker omission across discourse boundaries, a
+construction-status change, lexical installation, or a broader automatic
+acceptance rule.
 
 ## Sources
 
@@ -68,5 +73,5 @@ substrate.
 
 ## Disposition
 
-**Dedicated research unit; implementation and status changes remain
-unauthorized.**
+**Dedicated research unit; the narrow clause-initial premise-response core is
+implemented, while broader profiles and status changes remain unauthorized.**

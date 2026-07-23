@@ -4,7 +4,7 @@ research_id: PRQ2-008
 status: active_research_unit
 baseline_version: 0.5.213
 created: 2026-07-23
-implementation_authorized: false
+implementation_authorized: true
 status_change_authorized: false
 ---
 
@@ -34,8 +34,11 @@ The evidence does not settle whether every consequence marker is optional,
 inferences under negation, clause order, ellipsis, prosody, register, or all
 constituent and speech-act types.
 
-This note authorizes no parser change, construction-status change, lexical
-installation, test promotion, or automatic acceptance rule.
+Implementation authorization granted on 2026-07-23 is limited to the overt
+comma-delimited `只要 A，就 B` core, internal sufficient-condition profile
+metadata, and empty-member guards. It does not authorize a
+construction-status change, lexical merger of `只要`, omitted `就`,
+discourse-spanning inference, or a broader automatic acceptance rule.
 
 ## Sources
 
@@ -59,6 +62,12 @@ examples receive generic `ClauseRel`; omitted-`就` and corpus examples may be
 partially analyzed or unwrapped. The same generic relation covers an `如果`
 control, while necessary and exception controls are also untyped.
 
+The companion collision audit is a frozen pre-implementation observation.
+The authorized first slice now records `sufficient_condition` on overt paired
+cores while retaining the underlying `conditional` relation type. It requires
+adjacent `只`+`要` in the left member and overt `就` in the right member;
+omitted-marker, discourse-spanning, and fragmentary profiles remain deferred.
+
 ## Open boundaries
 
 - overt and omitted `就` and alternative consequence markers;
@@ -70,5 +79,5 @@ control, while necessary and exception controls are also untyped.
 
 ## Disposition
 
-**Dedicated research unit; implementation and status changes remain
-unauthorized.**
+**Dedicated research unit; the narrow overt paired core is implemented, while
+status changes and broader profiles remain unauthorized.**
