@@ -1,0 +1,18 @@
+{
+  "schema": "canto-span-research-provenance-baseline-v1",
+  "evidence_gate_prefixes": [
+    "PRQ2"
+  ],
+  "known_weak_core_ids": [
+    "PRQ2-008",
+    "PRQ2-009",
+    "PRQ2-010",
+    "PRQ2-011",
+    "PRQ2-013",
+    "PRQ2-014",
+    "PRQ2-033",
+    "PRQ2-034",
+    "PRQ2-035"
+  ],
+  "policy": "Known weak-core IDs are existing provenance debt. They remain warnings while Step 4 backfills or downgrades them. Any new PRQ2 promotion-style disposition without qualifying direct evidence fails verification."
+}
