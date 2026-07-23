@@ -6,9 +6,9 @@ and its evidence records.
 ## Current state
 
 - runtime: **v0.5.213**
-- active runtime labels / construction notes: **161 / 161**
-- construction workflow: **2 active / 159 workflow-archived**
-- retired labels: **20**
+- active runtime labels / construction notes: **160 / 160**
+- construction workflow: **2 active / 158 workflow-archived**
+- retired labels: **21**
 - `supported_productive`: **0**
 - `provisional`: **0**
 - `research_pending`: **65**
@@ -19,12 +19,11 @@ Current validation targets:
 
 - aggregate regression: **551** cases
 - NP subsystem: **43** cases
-- per-construction assertions: **1,278**
-- construction test files: **161**
+- per-construction assertions: **1,287**
+- construction test files: **160**
 
-v0.5.213 retains `NegatedStativePredicate` as `research_pending` for narrow
-copula-less `唔 + property predicate`. Negative nominal predicates with `唔係`,
-other negators, and productive lexical scope remain separate.
+v0.5.213-r5 retires `SchedulingQuestion`; sourced scheduling questions retain
+ordinary modal, VP, argument, and wh-time composition.
 
 Read [`grammar/README.md`](grammar/README.md), then
 [`docs/current/00-START-HERE.md`](docs/current/00-START-HERE.md).

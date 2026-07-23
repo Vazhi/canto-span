@@ -131,7 +131,6 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - [[OpinionQuestion]]
 - [[ProgressivePlaceQuestion]]
 - [[ScalarValueQuestion]]
-- [[SchedulingQuestion]]
 
 ## Migration provenance
 

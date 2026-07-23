@@ -5,21 +5,21 @@
 | Measure | Current value |
 |---|---:|
 | Runtime | v0.5.213 |
-| Runtime labels | 161 |
-| Current construction notes | 161 |
+| Runtime labels | 160 |
+| Current construction notes | 160 |
 | Active working notes | 2 |
-| Workflow-archived notes | 159 |
-| Retired labels | 20 |
+| Workflow-archived notes | 158 |
+| Retired labels | 21 |
 | `supported_productive` | 0 |
 | `provisional_reaudit` | 0 |
 | `provisional` | 0 |
 | `research_pending` | 65 |
-| `unsupported_generalization` | 74 |
+| `unsupported_generalization` | 73 |
 | `lexicalized_only` | 3 |
 | `parser_heuristic` | 19 |
 
 The canonical registry is the union of
-`grammar/<linguistic-status>/*.md`. The 161 construction notes match the 161
+`grammar/<linguistic-status>/*.md`. The 160 construction notes match the 160
 runtime labels exactly.
 
 ## v0.5.213-r1 ConditionResult retirement
@@ -156,12 +156,34 @@ adjudicated item-level coverage. Historical PFV and RUL responses remain
 available as diagnostic evidence but cannot satisfy current promotion
 thresholds.
 
+## v0.5.213-r5 SchedulingQuestion retirement
+
+`SchedulingQuestion` is retired because its only direct runtime route was the
+unsourced `覺得 + scheduling + 幾時 + 好` wrapper. The source-attested
+`你想約佢幾時？` already retains its overt subject, modal, scheduling action,
+object, and wh-time material through ordinary `ClauseSpan` and `ModalVP`
+composition.
+
+## v0.5.213-r4 opinion-question reconciliation
+
+`OpinionQuestion` now retains only the exact sourced structural profile with an
+overt subject, `覺得`, an overt evaluated referent, and `點樣`. The former broad
+token-cooccurrence fallback and its zero-weight `你覺得呢個點樣` probe are
+removed. Other cognition-question complement types remain separate.
+
+## v0.5.213-r3 acceptability-clause reconciliation
+
+`AcceptabilityClause` now requires an overt parsed action predicate before
+`都得`. The source-attested `轆咭都得` is an executable positive over the full
+span; nominal/wh-only and overt free-choice `…都得` forms are executable absence
+boundaries. The broader label remains `unsupported_generalization`.
+
 ## Current implementation evidence
 
 - 551 regression cases pass;
 - 43 NP-subsystem cases pass;
-- 1,278 construction assertions across 161 construction files pass;
-- coverage is 8 positive-and-boundary, 104 positive-only, 48
+- 1,287 construction assertions across 160 construction files pass;
+- coverage is 11 positive-and-boundary, 104 positive-only, 44
   implementation-only, and 1 compatibility-alias-only;
 - no active label is uncovered.
 
@@ -169,7 +191,7 @@ Implementation reachability carries zero linguistic evidence weight.
 
 ## Next substantive work
 
-Resume source/runtime reconciliation among the remaining 48
+Resume source/runtime reconciliation among the remaining 44
 implementation-only labels, ranked by learner impact, source availability, and
 whether the current node creates a misleading analysis. Treat the full
 `係唔係`/contracted `係咪` relationship as a separate ontology question rather

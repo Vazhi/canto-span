@@ -18,7 +18,7 @@ The command runs three layers:
 
 1. `run-regression.js` — 551 exact structural snapshots;
 2. `run-np-subsystem.js` — 43 compositional NP and licensing cases;
-3. `run-constructions.js` — 1,247 assertions across one JSON file per active
+3. `run-constructions.js` — 1,287 assertions across one JSON file per active
    construction under `tests/constructions/`.
 
 ## Construction files
@@ -43,7 +43,7 @@ Coverage states are:
 - `implementation_positive_only`;
 - `compatibility_alias_only`.
 
-Current coverage is 6 positive-and-boundary, 104 positive-only, 53
+Current coverage is 11 positive-and-boundary, 104 positive-only, 44
 implementation-positive-only, and 1 compatibility-alias-only. Implementation
 and alias probes have linguistic evidence weight zero.
 

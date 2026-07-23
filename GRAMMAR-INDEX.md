@@ -9,10 +9,10 @@ tags: [canto-span/grammar, canto-span/index]
 
 Canonical construction notes are stored in the folder matching their linguistic status. Workflow state is frontmatter-only and does not determine file location.
 
-- Current construction notes: **161**
+- Current construction notes: **160**
 - Active working set: **2**
-- Workflow-archived current records: **159**
-- Retired labels: **20**
+- Workflow-archived current records: **158**
+- Retired labels: **21**
 - Folder guide: [`grammar/README.md`](grammar/README.md)
 
 ## Current working set
@@ -35,16 +35,16 @@ it does not alter the statuses below.
 | [`provisional_reaudit/`](grammar/provisional_reaudit/) | 0 | Former acceptance withdrawn pending current-standard re-audit. |
 | [`provisional/`](grammar/provisional/) | 0 | Narrow provisional support; productive requirements incomplete. |
 | [`research_pending/`](grammar/research_pending/) | 65 | Concrete research question; provisional requirements incomplete. |
-| [`unsupported_generalization/`](grammar/unsupported_generalization/) | 74 | Current broad claim lacks a defensible supported scope. |
+| [`unsupported_generalization/`](grammar/unsupported_generalization/) | 73 | Current broad claim lacks a defensible supported scope. |
 | [`lexicalized_only/`](grammar/lexicalized_only/) | 3 | Bounded lexical expressions only; no productive claim. |
 | [`parser_heuristic/`](grammar/parser_heuristic/) | 19 | Internal software representation, not a language claim. |
-| [`retired/`](grammar/retired/) | 18 | Navigation index for labels absent from the active runtime registry. |
+| [`retired/`](grammar/retired/) | 21 | Navigation index for labels absent from the active runtime registry. |
 
 ## Standard test coverage
 
 - `compatibility_alias_only`: **1**
-- `implementation_positive_only`: **48**
-- `positive_and_boundary`: **8**
+- `implementation_positive_only`: **44**
+- `positive_and_boundary`: **11**
 - `positive_only`: **104**
 - command: `npm test`
 
@@ -136,7 +136,7 @@ Concrete research question; provisional requirements incomplete. Folder: [`gramm
 - [[TransitiveVP]] — parked; `LANE-10`; sources 2/2; boundaries incomplete; reviewed `unknown`
 - [[VerbComplementVP]] — parked; `LANE-05`; sources 3/3; boundaries incomplete; reviewed `unknown`
 
-## unsupported_generalization (74)
+## unsupported_generalization (73)
 
 Current broad claim lacks a defensible supported scope. Folder: [`grammar/unsupported_generalization/`](grammar/unsupported_generalization/).
 
@@ -204,7 +204,6 @@ Current broad claim lacks a defensible supported scope. Folder: [`grammar/unsupp
 - [[RestorativeComplementVP]] — parked; `LANE-05`; sources 2/2; boundaries incomplete; reviewed `unknown`
 - [[ResultStateClause]] — parked; `LANE-05`; sources 2/2; boundaries incomplete; reviewed `unknown`
 - [[ScalarValueQuestion]] — parked; `LANE-07`; sources 2/2; boundaries incomplete; reviewed `unknown`
-- [[SchedulingQuestion]] — parked; `LANE-07`; sources 2/2; boundaries incomplete; reviewed `unknown`
 - [[SeemingPerfectiveResultClause]] — parked; `LANE-05`; sources 2/2; boundaries incomplete; reviewed `unknown`
 - [[SourceMotionClause]] — parked; `LANE-09`; sources 3/3; boundaries incomplete; reviewed `unknown`
 - [[SpeechTransferClause]] — parked; `LANE-08`; sources 2/2; boundaries incomplete; reviewed `unknown`
