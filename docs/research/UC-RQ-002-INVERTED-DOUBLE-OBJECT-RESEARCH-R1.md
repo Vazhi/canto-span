@@ -4,6 +4,7 @@ research_id: UC-RQ-002
 status: active_research_unit
 baseline_version: 0.5.208
 created: 2026-07-23
+updated: 2026-07-23
 implementation_authorized: false
 status_change_authorized: false
 ---
@@ -37,7 +38,7 @@ Tong and Lee distinguish this from both:
 
 Their source judgments treat the first two as available for caused transfer with `送 sung3`, while the recipient-before-theme order is rejected for that reading. The same three orders do not generalize to every triadic verb: with `教 gaau3` ‘teach’, the source accepts recipient-before-theme and rejects both theme-before-recipient alternatives.
 
-This note therefore converts UC-RQ-002 from a discovery lead into a bounded research programme. It does **not** authorize a new runtime label, lexical expansion, parser fallback, grammar-note status, or promotion.
+This note therefore converts UC-RQ-002 from a discovery lead into a bounded research programme. The HKCanCor checkpoint merges the general transfer-order backlog into the existing transfer-family research and quarantines non-`畀` IDOC as an audio-dependent subtype. It does **not** authorize a new runtime label, lexical expansion, parser fallback, or grammar-note status.
 
 ## Narrow working description
 
@@ -114,6 +115,20 @@ Age, education, written-language influence, and register therefore belong in sam
 The existing CP021B source extraction independently records that Xu and Peyraube distinguish V-theme-recipient, V-recipient-theme, and V-theme-`畀`-recipient patterns, with lexical class, Goal versus Source role, object weight, and competing category analyses affecting distribution. The existing Tang 1998 screening record likewise documents direct comparisons, prosodic conditions, speaker variation, and discourse-completeness judgments.
 
 UC-RQ-002 therefore does not replace CP021B. It isolates the **non-lexical-GIVE, markerless, prosodically conditioned IDOC** as a dedicated research object that the broader `畀` synthesis did not evaluate with the 2024 large-sample audio evidence.
+
+### 7. HKCanCor lexical census supports quarantine, not absence
+
+The combined packet
+`UC-RQ-002-003-DOUBLE-OBJECT-HKCANCOR-CENSUS-R1.md` manually screens all
+95 exact `送`, `寄`, and `教` verb-token hits in the official UTF-8 HKCanCor
+release. It retains clear overt-marker transfer tokens and
+`教 Recipient Theme/content` tokens, but no unambiguous non-`畀`
+`V Theme Recipient` transfer token.
+
+That corpus zero is consistent with Tong and Lee's generally low ratings and with
+the existing need for audio/prosodic evidence. It is not a grammatical negative:
+the query is lexically narrow, the corpus lacks the controlled focus and weight
+conditions, and transcripts cannot recover the decisive acoustic contrasts.
 
 ## Collision audit
 
@@ -329,3 +344,4 @@ The critical task must use audio. Written forms may be included as a separate in
 | Is a new parser label authorized now? | **No.** |
 | Is a dedicated research unit justified? | **Yes.** |
 | Required next method | **Audio-based lexical-class and prosody study plus manually reviewed production/corpus evidence.** |
+| HKCanCor checkpoint | **Merge** the broad backlog into the transfer-family map; **quarantine** non-`畀` IDOC for audio validation; **retire** free alternation and text-only participant-role inference. |

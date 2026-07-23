@@ -4,6 +4,7 @@ research_id: UC-RQ-005
 status: active_research_unit
 baseline_version: 0.5.208
 created: 2026-07-23
+updated: 2026-07-23
 implementation_authorized: false
 status_change_authorized: false
 ---
@@ -27,8 +28,10 @@ analysis.
 Yiu 2024 independently treats lexical/directional verb, comparative marker,
 dative marker, experiential aspect, and iterative aspect as five functions in a
 polysemous family. Current Canto Span represents experiential and one bounded path
-use, but no comparative standard relation. This note does **not** authorize a new
-runtime label, lexical retyping, parser fallback, or grammar status change.
+use, but no comparative standard relation. The HKCanCor checkpoint promotes the
+overt-standard surpass comparative at research level while preserving the
+five-function boundary. This note does **not** authorize a new runtime label,
+lexical retyping, parser fallback, or grammar status change.
 
 ## Safest checked core
 
@@ -79,6 +82,19 @@ The official HKUST record and publisher DOI identify five functions of `gwo3`:
 The chapter uses historical and cross-dialectal evidence to analyze these as
 polysemy. Abstract-level access supports the five-way distinction and historical
 research scope, but not exact modern licensing rules for every function.
+
+### HKCanCor — natural comparative and same-utterance polysemy evidence
+
+The combined packet
+`UC-RQ-004-005-COMPARISON-HKCANCOR-ATTESTATION-R1.md` starts from all 403
+standalone `過` tokens and screens 79 immediate adjective-`過` candidates. It
+retains clear property-predicate comparatives with pronominal, temporal,
+proper-name, demonstrative, classifier-bearing, and event/stage standards, plus
+post-standard differentials such as `好過我好多`.
+
+One utterance directly juxtaposes comparative `勤力過A-level好多` with
+experiential `未試過咁勤力`. Both `過` tokens receive the corpus tag `/u/`, so
+token identity and POS tagging cannot replace constructional disambiguation.
 
 ## Exact collision audit
 
@@ -143,7 +159,8 @@ Future research must distinguish:
    experiential, path, dative, and iterative readings.
 4. Audit scalar-predicate classes, standard NP types, negation, questions,
    particles, differential measures, and omitted-standard possibilities.
-5. Collect and individually classify natural modern Hong Kong corpus hits.
+5. Extend the completed HKCanCor candidate screen to a larger recent corpus and
+   finish a full function-by-function census, including omitted standards.
 6. Use native-speaker interpretation tasks for structurally ambiguous strings.
 7. Audit parser output only after the linguistic contrasts are frozen.
 
@@ -158,6 +175,7 @@ Future research must distinguish:
 | Are the five `過` functions freely interchangeable? | **No; Yiu analyzes polysemy, not one surface-role rule.** |
 | Is a dedicated research unit justified? | **Yes.** |
 | Is parser implementation authorized? | **No.** |
+| HKCanCor checkpoint | **Promote** overt-standard surpass comparison as a naturally attested research construction; **quarantine** omitted standards and noncomparative functions; **retire** token/POS-only disambiguation. |
 
 ## Exit conditions
 

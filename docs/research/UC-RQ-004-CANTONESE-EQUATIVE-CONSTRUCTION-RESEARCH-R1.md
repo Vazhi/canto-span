@@ -4,6 +4,7 @@ research_id: UC-RQ-004
 status: active_research_unit
 baseline_version: 0.5.208
 created: 2026-07-23
+updated: 2026-07-23
 implementation_authorized: false
 status_change_authorized: false
 ---
@@ -23,8 +24,9 @@ comparee + 同 + standard + 一樣咁 + parameter
 The current parser has no equative node or standard-of-comparison relation.
 `ComparativeStative` was retired because it mislabeled residual property + `啲`
 adjustment, while `DegreeStativePredicate` and `ScalarEvaluation` represent
-different relations. This note does **not** authorize a new runtime label,
-parser fallback, grammar status change, or productive claim.
+different relations. The HKCanCor checkpoint promotes a typed equative research
+family while quarantining exact `一樣咁` productivity. This note does **not**
+authorize a new runtime label, parser fallback, or grammar status change.
 
 ## Safest checked modern core
 
@@ -82,6 +84,20 @@ The same study also shows regional diversity across Yue and neighboring Sinitic
 varieties. Guangzhou, Hong Kong, Zhaoqing, Nanning, and other Yue data must not be
 pooled into one unrestricted Cantonese rule.
 
+### HKCanCor — natural subtype separation
+
+The combined packet
+`UC-RQ-004-005-COMPARISON-HKCANCOR-ATTESTATION-R1.md` checks all 39 tagged
+`一樣` tokens and targeted `好似 ... 咁` candidates in the official UTF-8
+HKCanCor release. It retains natural `好似 Standard 咁 Parameter` tokens and
+parameterless `同 Standard 一樣` tokens. No adjacent `一樣咁` token occurs in
+this small 1997–1998 corpus.
+
+The absence does not overturn Lai's modern Hong Kong evidence. It instead supports
+a typed family: naturally attested resemblance and parameterless equality profiles
+must not be hidden inside the source-backed `同 Standard 一樣咁 Parameter`
+core, whose corpus distribution remains quarantined.
+
 ## Exact collision audit
 
 The collision ledger is:
@@ -134,8 +150,8 @@ Future work must keep at least these contrasts visible:
 1. Build a source-linked subtype inventory with exact Jyutping and orthographic
    variants for `咁`/`噉`, `一樣`, `同`, `好似/似`, and `有/冇`.
 2. Recover independent modern descriptions beyond the Lai research family.
-3. Collect natural modern Hong Kong attestations and classify every hit by subtype,
-   parameter class, polarity, and discourse interpretation.
+3. Extend the completed HKCanCor checkpoint to a larger recent Hong Kong corpus,
+   preserving subtype, parameter class, polarity, and discourse interpretation.
 4. Construct matched contrasts for `一樣`, `一樣咁`, bare `咁`, ordinary degree
    predication, coordination, similative readings, and `過` comparatives.
 5. Use native-speaker interpretation and naturalness tasks; do not infer
@@ -153,6 +169,7 @@ Future work must keep at least these contrasts visible:
 | Are bare `同 + standard + 咁` and no-`咁` `一樣` freely equivalent? | **No; the checked sources report interpretation and parameter restrictions.** |
 | Is one unrestricted parser label authorized? | **No.** |
 | Is a dedicated research unit justified? | **Yes.** |
+| HKCanCor checkpoint | **Promote** a typed equative research family; **quarantine** exact `一樣咁` productivity and parameter licensing; **retire** merger with surpass comparison or generic degree nodes. |
 
 ## Exit conditions
 

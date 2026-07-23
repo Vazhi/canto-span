@@ -4,6 +4,7 @@ research_id: UC-RQ-001
 status: active_research_unit
 baseline_version: 0.5.208
 created: 2026-07-22
+updated: 2026-07-23
 implementation_authorized: false
 status_change_authorized: false
 ---
@@ -21,9 +22,11 @@ independently described pretransitive pattern:
 Subject + 將 + affected/theme NP + predicate
 ```
 
-This note does **not** authorize a new runtime label, parser fallback, grammar-note
-status, or promotion. It converts UC-RQ-001 from a discovery lead into a bounded
-research program.
+This note does **not** authorize a new runtime label, parser fallback, or
+grammar-note status. The 2026-07-23 checkpoint promotes the construction's
+**evidence status** from a narrow source-backed lead to a naturally attested general
+research construction; runtime implementation and negative boundaries remain
+quarantined.
 
 ## Narrow working description
 
@@ -36,9 +39,11 @@ The safest currently supported core is a clause in which:
 4. the sequence is distinguished from ordinary postverbal-object SVO and from an
    unmarked left-dislocated object topic.
 
-Only the **placement/displacement/handling** core has strong direct support in the
-sources inspected for this checkpoint. A broad rule over every transitive or
-resultative predicate is not established.
+Placement/displacement/handling remains the safest positive core. The HKCanCor
+checkpoint additionally attests transformation, inscription, communication,
+administrative/financial change, and abstract construal predicates. This broader
+production evidence justifies a general research construction, but not a rule over
+every transitive, stative, or resultative predicate.
 
 ## Checked source findings
 
@@ -96,12 +101,52 @@ Yao also discusses earlier evidence that a definite bare NP can occur as a `將`
 Therefore, classifier-bearing NPs are a strong attested profile, not an absolute
 classifier requirement at this stage.
 
-### 4. Foundational and historical leads
+### 4. Natural conversational and broadcast attestation
+
+The official CC BY release of HKCanCor was checked at repository commit
+`39aeadf920e0b5ca93d0ad7792c59e740e7bdd65`. The exact classified packet is:
+
+`UC-RQ-001-GENERAL-ZOENG1-DISPOSAL-NATURAL-ATTESTATION-R1.tsv`
+
+Fifteen complete utterances were retained. The usable set includes:
+
+- physical displacement and placement: `將個口罩抌咗落地下`,
+  `將嗰啲功課擺落locker`;
+- physical or representational transformation: `將佢反轉過來`,
+  `將龍蝦肉切粒`, `將啲字寫返出來`;
+- communication and institutional action: `將個詳情講來聽下`,
+  `將嗰禮拜六日都扣埋`;
+- abstract construal: `將嗰樣嘢睇得太認真`, `將佢唔同噉睇`.
+
+The packet also contains pronominal, classifier-bearing, universal, bare-compound,
+and one repair-marked numeral-classifier NP. These are occurrence facts, not
+acceptability boundaries. Fragments, structurally opaque repairs, future expressions,
+and proper-name hits were excluded rather than repaired into evidence.
+
+### 5. Matched word-order illustration
+
+Leung and Li's Can-LARSP chapter gives a semantically matched positive pair:
+
+```text
+我搣開個橙。
+我將個橙搣開。
+```
+
+This directly demonstrates an SVO/pretransitive contrast while holding the lexical
+event constant. It is an author-provided grammatical illustration, not identified
+as a child-corpus token or preference experiment, so it cannot supply a negative
+boundary against either order.
+
+### 6. Foundational and historical leads
 
 Cheung's “The Pretransitive in Cantonese” is the foundational dedicated study cited
-by later work. Bibliographic existence and topic were verified, but its full
-argument and example inventory were not directly inspected here. It remains the
-highest-priority source-extraction task.
+by later work. Its exact republication was located as chapter 8, pages 151–208, of
+Cheung's 2023 *Cantonese: Since the 19th Century*, DOI
+`10.2307/jj.6988039.8`. CUHK Press confirms that the book became publicly open
+access on JSTOR in January 2026. JSTOR exposed the official chapter PDF endpoint,
+but its anti-bot layer returned HTTP 403 in this environment. The chapter's argument
+and example inventory therefore remain uninspected rather than inferred from
+metadata.
 
 Kataoka's historical work reports both `𢬿` and `將` in nineteenth-century
 Cantonese disposal constructions. This is relevant to diachrony and marker
@@ -273,8 +318,9 @@ misrepresented as a boundary of the baseline Hong Kong construction.
 
 ## Minimal contrast programme
 
-The next evidence phase should use matched lexical sets rather than isolated
-sentences.
+One matched positive SVO/`將` pair is now source-backed through Leung and Li. The
+next evidence phase still needs controlled matched lexical sets and independently
+adjudicated negative boundaries rather than isolated generated sentences.
 
 | Contrast block | Condition A | Condition B | Condition C | Main question |
 |---|---|---|---|---|
@@ -291,16 +337,17 @@ used as a grammatical boundary.
 
 ## Evidence collection plan
 
-1. Obtain and inspect the full Cheung 1992 chapter; extract every explicit positive,
-   marked, and negative example with page locators.
+1. Obtain the now-located open-access Cheung chapter through an access route not
+   blocked by JSTOR's anti-bot layer; extract every explicit positive, marked, and
+   negative example with page locators.
 2. Inspect the complete Mai, Kwan, and Yip materials for elicitation prompts,
    coding criteria, lexical frames, and exact baseline productions.
 3. Reconcile Yao's alternative SVCO analysis with the pretransitive literature,
    preserving genuine disagreement rather than selecting one account in advance.
-4. Search modern conversational and formal Cantonese corpora for `將`; classify
-   each usable hit by predicate class, NP form, register, region, and competing
-   analysis.
-5. Build semantically matched SVO, topicalization, and `將` contrast sets.
+4. Extend the completed HKCanCor checkpoint to a larger modern corpus and preserve
+   the same predicate, NP, repair, and provenance fields.
+5. Extend the completed Leung–Li SVO/`將` positive pair to topicalization and
+   controlled negative contrasts.
 6. Use a blinded native-speaker task that asks naturalness and preferred
    interpretation/order without exposing any parser mapping.
 7. Re-audit the current narrow `DisposalChangeIntoResultFrame` only after the
@@ -311,13 +358,15 @@ used as a grammatical boundary.
 | Question | Current answer |
 |---|---|
 | Is a modern Cantonese `將` pretransitive construction independently attested? | **Yes**, especially in handling/displacement contexts. |
+| Is it naturally attested beyond handling/displacement? | **Yes.** HKCanCor has retained tokens in transformation, inscription, communication, institutional/financial, and abstract-construal profiles. |
 | Is it equivalent to a general Mandarin-style `把` construction? | **Not established; challenged by Yao's distributional analysis.** |
 | Does the present runtime represent it generally? | **No.** |
 | Can the current narrow `會將…變成…` node stand for it? | **No; it covers only one transparent profile.** |
 | Is a new parser label authorized now? | **No.** |
 | Is a dedicated research unit justified? | **Yes.** |
-| Safest evidence-backed core | `S + 將 + affected/classifier-bearing NP + handling or caused-displacement predicate`. |
+| Safest evidence-backed core | `(overt or recoverable S) + 將 + referential affected/theme NP + bounded, directed, or construal predicate`; placement/displacement remains the least contested subtype. |
 | Main unresolved boundaries | predicate domain, affectedness, NP interpretation, subject type, register, prosody, region, and competition with SVO/topicalization. |
+| 2026-07-23 disposition | **Promote** as a naturally attested general research construction; **quarantine** runtime implementation and negative NP/predicate boundaries. |
 
 ## Exit conditions
 
