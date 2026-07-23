@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "1b18cd0"
+code_document_code_locations: ["main.js:2298-2320", "main.js:4534"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
@@ -169,4 +169,8 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Research finding: `SRC-FAN-2024-JAU-VP-ASPECT`; `SRC-SIO-BOND-2025`; `SRC-ZHANG-1970-PREDICATIVE-SUFFIXES`; coursebook evidence. Sources support `過` at VP/aspect level but do not require a dedicated clause wrapper.
 - Recommended disposition: Preserve the experiential phenomenon under `ExperientialVP`; retire or internalize only a redundant clause-level wrapper after confirming no unique clause semantics.
 - Retirement safeguard: Do not interpret wrapper redundancy as evidence against experiential aspect.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **quarantine and decompose/replace** the clause wrapper through `ExperientialVP`; retain the aspect phenomenon.
+- Runtime and reach: the wrapper template is `main.js:2298-2320`, with clause/VP slots at `main.js:4534`.
+- Evidence/boundaries: Fan, Sio–Bond, Zhang, and the coursebook locate `過` at VP/aspect level; one positive and two nonexperiential boundaries expose wrapper redundancy without denying the reading.
+- A1/schema: preserve compatibility at `unsupported_generalization` until `ExperientialVP` composition reproduces the complete output; no hidden time/count/result.
+- Open/release: unique clause semantics, selection, scope, and panel evidence remain open; this note, baseline, and release audit record the decision.

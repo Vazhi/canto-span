@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "583035c"
+code_document_code_locations: ["main.js:3385-3420", "main.js:7035-7080", "main.js:7747-8343"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
@@ -66,7 +66,7 @@ tags: ["canto-span/grammar", "canto-span/status/unsupported_generalization", "ca
 
 ## Plain-language claim
 
-Cantonese may instantiate the structural family represented by QuantifiedPersonNP; exact productivity and boundaries require pattern-specific independent evidence.
+The runtime preserves overt quantity + person-head material in a bounded NP. The sources do not support a special person-only syntax or a fixed subject/object interpretation.
 
 This is a linguistic claim only to the extent allowed by the status and evidence below. The runtime label is not assumed to be standard linguistic terminology.
 
@@ -169,4 +169,9 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Research finding: `SRC-BOND-SIO-2024-CLASSIFIERS`; `SRC-WINTERSTEIN-ETAL-2023-NOMINAL-EXPRESSIONS`; `SRC-XIA-2025-CLASSIFIERS`; coursebook evidence. Sources explicitly reject a special person-only syntax.
 - Recommended disposition: Merge into general quantified/classifier NP infrastructure while preserving overt `人`, classifier compatibility, and role neutrality.
 - Retirement safeguard: Strong retirement veto on the NP profile; only the person-specific label should disappear after migration.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **quarantine** the person-specific wrapper and **decompose/replace** it through general quantified NP infrastructure.
+- Runtime and complete-output reach: the bounded person-head template is `main.js:3385-3420`; the transparent `好多人` builder is `main.js:7035-7080`; NP consumers occur at `main.js:7747-8343`.
+- Checked scope and boundaries: classifier/nominal sources support role-neutral NP composition and overt heads; the coursebook attests `好多人`. One positive and two boundaries exclude classifier and temporal measure NPs from this label.
+- Migration map: preserve overt quantity and head, move licensing to the shared quantified NP layer, and let surrounding syntax assign subject/topic/object role.
+- A1/schema decision: retain the compatibility label and `unsupported_generalization` for v0.5.216; remove it only after consumer/snapshot migration.
+- Unresolved work and release files: quantity lexical classes, classifierless scope, corpus review, and clean panel evidence remain open; this note, NP documentation, baseline, and release audit record the decision.

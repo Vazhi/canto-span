@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "583035c"
+code_document_code_locations: ["main.js:3520-3555", "main.js:5491-5500", "main.js:16587"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
@@ -66,7 +66,7 @@ tags: ["canto-span/grammar", "canto-span/status/unsupported_generalization", "ca
 
 ## Plain-language claim
 
-Cantonese may instantiate the structural family represented by AssociativeNP; exact productivity and boundaries require pattern-specific independent evidence.
+The runtime label groups overt `nominal modifier + 嘅 + noun` structure. It does not denote or license the separately researched Cantonese associative-plural `X + (佢)哋` construction.
 
 This is a linguistic claim only to the extent allowed by the status and evidence below. The runtime label is not assumed to be standard linguistic terminology.
 
@@ -151,4 +151,9 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Research finding: `SRC-SIO-2011-GE3`; `SRC-YU-2006-NOMINAL-MODIFIERS`. Current tests are `MODIFIER + 嘅 + NOUN` (possessive/attributive modification), not associative plural. Lui 2026 separately establishes Cantonese associative plural `X + (佢)哋`.
 - Recommended disposition: Rename/decompose the current node into a `嘅`-marked modifier/possessive NP subsystem. Create only a separate research record for associative plural if runtime work is later authorized.
 - Retirement safeguard: Never use the label name as evidence. Do not retire the current `嘅` structure; retire or rename only the misleading name after compatibility migration.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **quarantine** the misleading public wrapper pending versioned rename/decomposition; retain every current `嘅`-marked NP surface.
+- Runtime and complete-output reach: the category template at `main.js:3520-3555` requires overt modifier, linker, and head; `main.js:5491-5500` preserves documented `啲/嘅` attachment ambiguity; NP consumers include the explicit type at `main.js:16587`.
+- Checked scope and boundaries: Sio and Yu support possessive/nominal modification and warn against one linker meaning. Three positives plus two executable absence boundaries protect the current span; Lui 2026 concerns a different associative-plural form.
+- Migration map: replace the label with a typed `嘅`-marked modifier/possessive NP rule; create no associative-plural runtime node in this track.
+- A1/schema decision: preserve the current label for v0.5.216 compatibility; no status promotion. A future rename must version all snapshots and preserve attachment metadata.
+- Unresolved work and release files: recursive modification, linker semantics, role-neutral panel evidence, and the separate associative-plural research question remain open; this note, baseline, NP documentation, and release audit record the decision.

@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "5d0ee01"
+code_document_code_locations: ["main.js:2245-2365", "main.js:15086-15102", "main.js:17180-17335"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
@@ -159,4 +159,8 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Research finding: `SRC-HARA-2023-POLAR`; `SRC-LIANG-MAI-2026-GRAMMAR-CODING`; `SRC-YIP-MATTHEWS-2000-BASIC`. Sources distinguish `有冇 + NP` existence from `有冇 + VP` event/experiential questions.
 - Recommended disposition: Split existential-NP and event/experiential polar profiles, or retain an umbrella only as internal question infrastructure with explicit subtypes.
 - Retirement safeguard: Strong retirement veto. Do not collapse existence, possession, event occurrence, and experiential questions into one interpretation.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **quarantine and decompose/replace** the umbrella into existential/possessive NP and event/experiential polar subtypes.
+- Runtime and complete-output reach: templates at `main.js:2245-2365`, the interest compatibility path at `main.js:15086-15102`, and typed `有冇` builders at `main.js:17180-17335` preserve the overt marker and complement.
+- Checked scope and boundaries: Hara supports event/experiential `有冇 + VP`; Liang–Mai and Yip–Matthews support existential `有冇 + NP` and exclude `有唔有`. Five positives and two question-family boundaries do not authorize one interpretation.
+- A1/schema decision: preserve the wrapper and subtype trace metadata at `unsupported_generalization` for v0.5.216; never insert possession, existence, or event meaning from the marker alone.
+- Unresolved work and release files: possession versus existence, VP licensing, contextual ellipsis, and panel evidence remain open; this note, baseline, and release audit record the decision.

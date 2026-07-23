@@ -27,7 +27,7 @@ Current release audits must reference a checked-in construction-status baseline 
 
 ## Binding state
 
-- runtime: **v0.5.215**
+- runtime: **v0.5.216**
 - runtime labels / current construction notes: **133 / 133**
 - workflow: **2 active / 131 archived**
 - retired labels: **48**
@@ -61,3 +61,8 @@ requirements.
 Follow the priorities and authorization boundaries in `docs/current/`. Research
 records under `docs/research/` are evidence and decision history only; their
 completion does not change grammar status or authorize runtime work.
+
+The v0.5.216 full review closed all 52 original unsupported/internal ontology
+dispositions without status promotion or retirement. Subsequent work should
+follow the note-local migration and unresolved-work fields rather than reopen
+the completed review as a batch.

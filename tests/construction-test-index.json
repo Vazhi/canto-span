@@ -131,11 +131,11 @@
       "focused_boundary_count": 2,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "compatibility_alias_probe_count": 0,
       "positive_case_count": 28,
       "boundary_case_count": 2,
-      "executable_case_count": 30
+      "executable_case_count": 31
     },
     {
       "construction": "ClauseRelationGraph",
@@ -161,11 +161,11 @@
       "focused_boundary_count": 2,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "compatibility_alias_probe_count": 0,
       "positive_case_count": 30,
       "boundary_case_count": 2,
-      "executable_case_count": 32
+      "executable_case_count": 33
     },
     {
       "construction": "ClauseSpan",
@@ -176,11 +176,11 @@
       "focused_boundary_count": 2,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "compatibility_alias_probe_count": 0,
       "positive_case_count": 118,
       "boundary_case_count": 2,
-      "executable_case_count": 120
+      "executable_case_count": 121
     },
     {
       "construction": "CognitionContentFrame",
@@ -326,11 +326,11 @@
       "focused_boundary_count": 2,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "compatibility_alias_probe_count": 0,
       "positive_case_count": 2,
       "boundary_case_count": 2,
-      "executable_case_count": 4
+      "executable_case_count": 5
     },
     {
       "construction": "CopularRelationFrame",
@@ -341,11 +341,11 @@
       "focused_boundary_count": 2,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "compatibility_alias_probe_count": 0,
       "positive_case_count": 1,
       "boundary_case_count": 2,
-      "executable_case_count": 3
+      "executable_case_count": 4
     },
     {
       "construction": "CoverbFrame",
@@ -521,11 +521,11 @@
       "focused_boundary_count": 2,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "compatibility_alias_probe_count": 0,
       "positive_case_count": 19,
       "boundary_case_count": 2,
-      "executable_case_count": 21
+      "executable_case_count": 22
     },
     {
       "construction": "DitransitiveSpeechVP",
@@ -701,11 +701,11 @@
       "focused_boundary_count": 2,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "compatibility_alias_probe_count": 0,
       "positive_case_count": 8,
       "boundary_case_count": 2,
-      "executable_case_count": 10
+      "executable_case_count": 11
     },
     {
       "construction": "FormulaDiscourseUnit",
@@ -941,11 +941,11 @@
       "focused_boundary_count": 2,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "compatibility_alias_probe_count": 0,
       "positive_case_count": 15,
       "boundary_case_count": 2,
-      "executable_case_count": 17
+      "executable_case_count": 18
     },
     {
       "construction": "MannerAdverbialVP",
@@ -971,11 +971,11 @@
       "focused_boundary_count": 2,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "compatibility_alias_probe_count": 0,
       "positive_case_count": 12,
       "boundary_case_count": 2,
-      "executable_case_count": 14
+      "executable_case_count": 15
     },
     {
       "construction": "ModalANotAQuestion",
@@ -1091,11 +1091,11 @@
       "focused_boundary_count": 2,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "compatibility_alias_probe_count": 0,
       "positive_case_count": 73,
       "boundary_case_count": 2,
-      "executable_case_count": 75
+      "executable_case_count": 76
     },
     {
       "construction": "NegatedDirectionalMotionVP",
@@ -1241,11 +1241,11 @@
       "focused_boundary_count": 2,
       "focused_review_only_count": 0,
       "np_case_count": 1,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "compatibility_alias_probe_count": 0,
       "positive_case_count": 28,
       "boundary_case_count": 2,
-      "executable_case_count": 30
+      "executable_case_count": 31
     },
     {
       "construction": "NominalPredicateClause",
@@ -1391,11 +1391,11 @@
       "focused_boundary_count": 2,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "compatibility_alias_probe_count": 0,
       "positive_case_count": 6,
       "boundary_case_count": 2,
-      "executable_case_count": 8
+      "executable_case_count": 9
     },
     {
       "construction": "PoliteImperativeClause",
@@ -1931,11 +1931,11 @@
       "focused_boundary_count": 2,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "compatibility_alias_probe_count": 0,
       "positive_case_count": 1,
       "boundary_case_count": 2,
-      "executable_case_count": 3
+      "executable_case_count": 4
     },
     {
       "construction": "TransitiveVP",

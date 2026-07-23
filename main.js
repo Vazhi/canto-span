@@ -9,7 +9,8 @@ const { Plugin, PluginSettingTab, Setting, Notice } = require("obsidian");
  * never overwrite child learner roles.
  */
 
-const CANTO_SPAN_RUNTIME_VERSION = "0.5.215";
+const CANTO_SPAN_RUNTIME_VERSION = "0.5.216";
+// v0.5.216: records evidence and ontology dispositions for all 52 active unsupported/internal labels and adds invariant probes without changing parser recognition or linguistic status.
 // v0.5.215: closes direct boundary coverage for every active language-facing label and corrects explanatory 嚟 plus dangling clause-linker overgeneration.
 // v0.5.213-r5: retires SchedulingQuestion because the sourced 想 + 約 + object + 幾時 profile already composes as ClauseSpan + ModalVP, while the dedicated wrapper only covered an unsourced 覺得…好 cross-product.
 // v0.5.213-r4: narrows OpinionQuestion to the source-linked overt subject + 覺得 + evaluated referent + 點樣 profile and removes its token-cooccurrence fallback.

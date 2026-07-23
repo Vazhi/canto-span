@@ -621,7 +621,23 @@
     }
   ],
   "np_cases": [],
-  "implementation_probe_cases": [],
+  "implementation_probe_cases": [
+    {
+      "case_id": "ONTO-C06-NEEDS-CONTEXT",
+      "source": "一日。",
+      "assertion": "trace_detail_equals",
+      "expected_surface": "一日",
+      "expected_trace_detail": {
+        "context_requirement_status": "context_required",
+        "antecedent_status": "not_observed",
+        "discourse_license_not_observed": true
+      },
+      "provenance": "docs/research/ACTIVE-LABEL-EVIDENCE-ONTOLOGY-CLOSURE-R1.md#contract-critical-infrastructure",
+      "source_role": "diagnostic_contract_invariant_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    }
+  ],
   "coverage": {
     "state": "positive_and_boundary",
     "exact_snapshot_positive_count": 73,
@@ -629,10 +645,10 @@
     "focused_boundary_count": 2,
     "focused_review_only_count": 0,
     "np_case_count": 0,
-    "implementation_probe_count": 0,
+    "implementation_probe_count": 1,
     "compatibility_alias_probe_count": 0,
     "positive_case_count": 73,
     "boundary_case_count": 2,
-    "executable_case_count": 75
+    "executable_case_count": 76
   }
 }

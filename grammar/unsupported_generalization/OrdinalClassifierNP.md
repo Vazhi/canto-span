@@ -39,8 +39,8 @@ corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
 code_document_reconciled: true
 code_document_review_date: "2026-07-23"
-code_document_review_commit: "working-tree-v0.5.213-r3"
-code_document_code_locations: ["main.js:579-581", "main.js:2038-2050", "main.js:3520-3536"]
+code_document_review_commit: "583035c"
+code_document_code_locations: ["main.js:3405-3475", "main.js:7747", "main.js:8343"]
 current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
@@ -165,4 +165,9 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Research finding: `SRC-LAM-LAU-LEE-2024-SEGMENTATION`; coursebook evidence. Sources distinguish true ordinal `第 + numeral + classifier (+ noun)` from lexical/contextual `第二` meaning next/other and permit headless classifier-compatible forms.
 - Recommended disposition: Retain the ordinal NP profile in the NP subsystem; split headed, headless, and nonordinal lexical senses.
 - Retirement safeguard: Do not retire. Correct the current claim/fixture mismatch and preserve omitted-head uncertainty without inventing the noun.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **retain narrow** with explicit headed, bounded-headless, and nonordinal lexical separation; keep the status quarantined.
+- Runtime and complete-output reach: `main.js:3405-3475` implements the headed template and exact headless `第二隻` profile with no inserted noun; NP/object consumers occur at `main.js:7747` and `main.js:8343`.
+- Checked scope and boundaries: Lam–Lau–Lee and coursebook records distinguish true `第 + numeral + classifier (+ noun)` from contextual “another/other” `第二`. The source-linked `第二隻` positive and `問第二個` absence boundary are executable; the headed path retains a zero-weight reachability probe.
+- Competing analysis and migration: lexical/contextual `第二個` remains outside ordinal licensing; omitted referents remain unresolved rather than reconstructed.
+- A1/schema decision: preserve the label and `np_subtype` metadata for both retained profiles; no promotion or hidden-head compatibility change.
+- Unresolved work and release files: broader headless classifier compatibility, lexical-sense coverage, corpus review, and role-neutral panel evidence remain open; this note, NP documentation, baseline, and release audit record the decision.

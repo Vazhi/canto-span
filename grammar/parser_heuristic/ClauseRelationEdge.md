@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "ac35fe9563f192f14a8842c2dd547f1466fab213"
+code_document_code_locations: ["main.js:15985-16043", "main.js:16073-16375"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: false
 promotion_gate_version: "v3"
@@ -49,8 +49,8 @@ standard_test_file: "tests/constructions/ClauseRelationEdge.json"
 standard_test_coverage: "positive_and_boundary"
 standard_positive_test_count: 28
 standard_boundary_test_count: 2
-standard_implementation_probe_count: 0
-standard_executable_test_count: 30
+standard_implementation_probe_count: 1
+standard_executable_test_count: 31
 source_ids: []
 runtime_active: true
 workflow_state: "archived"
@@ -132,4 +132,9 @@ No same-family active construction was identified in the canonical consolidation
 - Research finding: Serialized internal relation between two independently parsed members; high fixture count.
 - Recommended disposition: Retain as infrastructure. Document relation-type enum, member references, directionality, scope, and invariants.
 - Retirement safeguard: Do not retire without a versioned A1 migration for every relation consumer.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **retain narrow** as a typed internal edge between exactly two overt member spans.
+- Runtime and complete-output reach: `main.js:15985-16043` validates the subtype registry and serializes relation ID, source order, linker pair/ownership, subject linkage, and typed semantic roles; `main.js:16073-16375` supplies mapped relation consumers.
+- Stable semantics and invariant: an edge cannot independently license grammar or fabricate linkers, members, subjects, or a punctuation-only relation. `ONTO-C03-RELATION-EDGE` asserts registry validation and overt-linker ownership.
+- A1/schema decision: preserve `ClauseRelationEdge` internally and `ClauseRelation` only as compatibility metadata; subtype migrations must be versioned.
+- Evidence and unresolved work: sources license individual relation subtypes, not the container. Ambiguous relation readings must remain in subtype-specific records.
+- Release files: this note, shared reachability inventory, generated construction tests/index, baseline, and release audit.

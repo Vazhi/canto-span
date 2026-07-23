@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "69f871e"
+code_document_code_locations: ["main.js:8425-8445", "main.js:12830-12850", "main.js:19080-19120"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
@@ -152,4 +152,8 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Research finding: `SRC-LUI-2025-REPORTED-THOUGHT`; `SRC-YAP-WONG-CHOR-2014-STANCE`. Cantonese distinguishes complement-taking cognition predicates, reported thought, and grammaticalized/parenthetical stance uses.
 - Recommended disposition: Split lexical cognition-complement structure from stance-marker uses; preserve overt complement boundaries and ambiguity.
 - Retirement safeguard: Do not retire wholesale. First identify whether the runtime node adds a proposition boundary, a lexical selection claim, a discourse relation, or only a redundant outer wrapper.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **quarantine and decompose** lexical cognition complementation from reported thought and stance uses.
+- Runtime/reach: builders and context licensing are `main.js:8425-8445`, `main.js:12830-12850`, and `main.js:19080-19120`; no implicit content token is inserted.
+- Evidence/boundaries: Lui and Yap–Wong–Chor support distinct implicit-thought and bare not-knowing contexts; eight positives and two noncognition boundaries preserve overt complement structure without one universal frame.
+- A1/schema: keep `unsupported_generalization`; retain proposition-boundary/context metadata and ambiguity during decomposition.
+- Open/release: lexical selection, implicit-content licensing, stance overlap, corpus/panel evidence remain open; this note, baseline, and release audit record the decision.

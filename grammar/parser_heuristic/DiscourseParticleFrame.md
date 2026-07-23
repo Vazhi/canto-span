@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "69f871e"
+code_document_code_locations: ["main.js:17435-17760", "main.js:18098", "main.js:20930"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: false
 promotion_gate_version: "v3"
@@ -49,8 +49,8 @@ standard_test_file: "tests/constructions/DiscourseParticleFrame.json"
 standard_test_coverage: "positive_and_boundary"
 standard_positive_test_count: 19
 standard_boundary_test_count: 2
-standard_implementation_probe_count: 0
-standard_executable_test_count: 21
+standard_implementation_probe_count: 1
+standard_executable_test_count: 22
 source_ids: []
 runtime_active: true
 workflow_state: "archived"
@@ -143,4 +143,8 @@ No pattern-specific external source is currently mapped.
 - Research finding: Internal wrapper over particle-bearing clauses; rich external literature exists but no source is mapped to the broad frame.
 - Recommended disposition: Retain as internal infrastructure, but document particle sequence, scope, child clause, and nonlicensing semantics. Add particle-specific research links, not a broad productivity claim.
 - Retirement safeguard: Do not retire the frame merely because individual particles differ; test whether it is a useful stable serialization layer.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **retain narrow** as internal particle-scope infrastructure.
+- Runtime/reach: subtype builders are `main.js:17435-17760`; cluster selection is `main.js:18098`; learner rendering is `main.js:20930`.
+- Stable semantics: preserve overt proposition host, particle sequence/tone subtype, scope, context state, and nonclaims. `ONTO-D01-DISCOURSE-PARTICLE` asserts the final-`啩` contract.
+- A1/schema: preserve the internal frame; it cannot license a fragment, noun/question host, fabricated proposition, or broad particle productivity.
+- Open/release: particle-specific source mapping and ordered-cluster boundaries remain open; this note, shared probe inventory, generated tests/index, baseline, and release audit record the decision.

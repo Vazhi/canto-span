@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "1b18cd0"
+code_document_code_locations: ["main.js:13660-13675"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
@@ -165,4 +165,8 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Research finding: `SRC-SHAN-JIN-2025-MOTION-TYPOLOGY`; `SRC-SIO-BOND-2025`; `SRC-YIU-2016-DIRECTIONAL-ASPECT`; `SRC-ZHANG-1970-PREDICATIVE-SUFFIXES`. Research supports aspect + motion composition but not necessarily a named atomic category.
 - Recommended disposition: Prefer compositional `PerfectiveVP` + typed directional/motion structure; keep exact ordering and lexical asymmetries.
 - Retirement safeguard: Do not erase accepted surfaces. Retire only the redundant wrapper after child analyses and A1 output compatibility are secured.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **decompose/replace** through perfective + typed directional composition; retain compatibility wrapper.
+- Runtime and reach: `main.js:13660-13675` preserves directional head, overt `咗`, and final deictic marker in exact order.
+- Evidence/boundaries: four verified sources support aspect/motion composition and lexical asymmetry, not an atomic category; two positives and two nonmatching boundaries are executable.
+- A1/schema: keep `unsupported_generalization` until child analyses reproduce all surfaces and trace roles; do not treat deictics as interchangeable.
+- Open/release: exact three-part evidence, lexical scope, corpus review, and panel evidence remain open; this note, baseline, and release audit record the decision.

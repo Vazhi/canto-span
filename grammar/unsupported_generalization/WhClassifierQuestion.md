@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "583035c"
+code_document_code_locations: ["main.js:3475-3500", "main.js:5935-5950", "main.js:19195-19225"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
@@ -66,7 +66,7 @@ tags: ["canto-span/grammar", "canto-span/status/unsupported_generalization", "ca
 
 ## Plain-language claim
 
-Cantonese may instantiate the structural family represented by WhClassifierQuestion; exact productivity and boundaries require pattern-specific independent evidence.
+The checked profile contains overt `邊 + classifier (+ noun)` nominal material in wh-in-situ questions. The outer question wrapper does not license or reconstruct a hidden noun.
 
 This is a linguistic claim only to the extent allowed by the status and evidence below. The runtime label is not assumed to be standard linguistic terminology.
 
@@ -157,4 +157,9 @@ No same-family active construction was identified in the canonical consolidation
 - Research finding: `SRC-WONG-2023-LANGUAGE-SAMPLE`; `SRC-XIA-2025-CLASSIFIERS`; coursebook evidence directly support `邊 + classifier + noun` with wh-in-situ.
 - Recommended disposition: Move the wh-classifier NP into the NP subsystem and compose it with question structure; preserve overt-head and headless distinctions.
 - Retirement safeguard: Strong retirement veto on the source-backed nominal profile; only a redundant question wrapper may disappear.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **quarantine** the question-level wrapper and **decompose/replace** it with wh-classifier NP plus an independently typed question layer.
+- Runtime and complete-output reach: `main.js:3475-3500` defines the headless template; `main.js:5935-5950` implements the bounded `邊間呀` fragment; complete-output consumers are enumerated at `main.js:19195-19225`.
+- Checked scope and boundaries: Wong, Xia, and the coursebook support overt-head `邊 + classifier + noun` and wh-in-situ. Three positives and two question-family boundaries protect the profile without licensing every classifier combination.
+- Migration map: distinguish overt-head and genuinely headless NP subtypes, preserve the wh nominal role, and compose question force outside the NP.
+- A1/schema decision: preserve the compatibility wrapper at `unsupported_generalization` for v0.5.216; no hidden noun or status promotion.
+- Unresolved work and release files: headless licensing, classifier compatibility, question composition, corpus review, and clean panel evidence remain open; this note, NP documentation, baseline, and release audit record the decision.

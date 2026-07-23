@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "583035c"
+code_document_code_locations: ["main.js:2555-2580", "main.js:10590-10620", "main.js:12420-12450"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
@@ -66,7 +66,7 @@ tags: ["canto-span/grammar", "canto-span/status/unsupported_generalization", "ca
 
 ## Plain-language claim
 
-Cantonese may instantiate the structural family represented by CoordinatedNP; exact productivity and boundaries require pattern-specific independent evidence.
+The retained profile is simple overt NP coordination: one analyzed NP, overt `同` or `同埋`, and a second analyzed NP. It does not assign clause-subject status or absorb comitative uses.
 
 This is a linguistic claim only to the extent allowed by the status and evidence below. The runtime label is not assumed to be standard linguistic terminology.
 
@@ -149,4 +149,9 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Research finding: Current sources support overt NP coordination with `同`/`同埋`; newer Chan 2024 provides a dedicated Sinitic coordination study. `同` also has comitative/coverb uses.
 - Recommended disposition: Retain simple overt coordination in the NP subsystem; add explicit comitative and non-NP guards. Extend to nested coordination only through separate rules.
 - Retirement safeguard: Do not retire before checking whether all current outputs can be represented by the NP coordination subsystem without losing conjunct boundaries.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **retain narrow** in the NP subsystem, quarantined at `unsupported_generalization`.
+- Runtime and complete-output reach: the template at `main.js:2555-2580`, compositional builder at `main.js:10590-10620`, and standalone fragment wrapper at `main.js:12420-12450` preserve both conjuncts and the overt coordinator while withholding clause-role assignment.
+- Checked scope and boundaries: Wong and the coursebook distinguish conjunction from comitative/prepositional `同`. Two NP-matrix positives and two executable absence boundaries preserve simple coordination only.
+- Competing analysis and migration: comitative coverb uses remain separate; nested or non-NP coordination requires another rule. No replacement or status promotion is authorized.
+- A1/schema decision: preserve current serialization and conjunct boundaries; do not infer a coordinated subject from the NP node.
+- Unresolved work and release files: nested coordination, full `同埋` distribution, corpus review, and role-neutral panel evidence remain open; this note, NP documentation, baseline, and release audit record the decision.

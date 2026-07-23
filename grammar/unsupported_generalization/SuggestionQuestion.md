@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "5d0ee01"
+code_document_code_locations: ["main.js:2415-2430", "main.js:15190-15205"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
@@ -143,4 +143,8 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Research finding: Coursebook evidence supports contextual proposal `不如 B`; `PRQ2-013` explicitly separates lone suggestion, comparison `A 不如 B`, and paired ordered preference `與其 A，不如 B`. The current label is not necessarily a question.
 - Recommended disposition: Rename to `SuggestionClause`/typed suggestion relation or compose discourse context + `不如 B`. Preserve comparison and ordered-preference guards.
 - Retirement safeguard: Do not retire the lone suggestion profile. Do not use an implementation-only reachability probe as linguistic evidence.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **quarantine and rename** toward a suggestion clause/relation; the profile is not inherently a question.
+- Runtime and complete-output reach: the template is `main.js:2415-2430` and fallback is `main.js:15190-15205`; they preserve overt `不如` and following proposal material.
+- Checked scope and boundaries: the coursebook supports contextual lone suggestion; PRQ2-013 separates comparison and ordered preference. One source-linked positive, two executable boundaries, and one zero-weight reachability probe preserve that split.
+- A1/schema decision: retain the compatibility label at `unsupported_generalization` for v0.5.216; a rename must preserve suggestion/comparison/preference diagnostics.
+- Unresolved work and release files: discourse licensing, clause force, lexical scope, and clean panel evidence remain open; this note, baseline, and release audit record the decision.

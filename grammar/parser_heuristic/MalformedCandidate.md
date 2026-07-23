@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "ac35fe9563f192f14a8842c2dd547f1466fab213"
+code_document_code_locations: ["main.js:12458-12635", "main.js:13790-13820", "main.js:14002-14045"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: false
 promotion_gate_version: "v3"
@@ -49,8 +49,8 @@ standard_test_file: "tests/constructions/MalformedCandidate.json"
 standard_test_coverage: "positive_and_boundary"
 standard_positive_test_count: 15
 standard_boundary_test_count: 2
-standard_implementation_probe_count: 0
-standard_executable_test_count: 17
+standard_implementation_probe_count: 1
+standard_executable_test_count: 18
 source_ids: []
 runtime_active: true
 workflow_state: "archived"
@@ -135,4 +135,9 @@ No pattern-specific external source is currently mapped.
 - Research finding: Diagnostic parser disposition, not a language construction.
 - Recommended disposition: Move conceptually to a diagnostics/status schema if possible while preserving serialized compatibility. Define when it differs from `NeedsContext` and ordinary parse failure.
 - Retirement safeguard: Do not remove until downstream UI behavior and error rendering are migrated.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **internalize** as a learner-visible malformed-order diagnostic, distinct from missing context and ordinary parse failure.
+- Runtime and complete-output reach: `main.js:12458-12635`, `main.js:13790-13820`, and `main.js:14002-14045` preserve every overt problem marker and serialize malformed family/subtype, problem description, repair classes, and nonclaims.
+- Stable semantics and invariant: the diagnostic cannot silently repair input, invent a result/complement, or claim a clean construction. `ONTO-C07-MALFORMED` asserts the directional-order subtype contract.
+- A1/schema decision: preserve the serialized label until downstream diagnostic rendering is explicitly version-migrated.
+- Evidence and unresolved work: this is a parser disposition; source or panel evidence attaches only to any claimed well-formed repair, never to the diagnostic label.
+- Release files: this note, shared reachability inventory, generated tests/index, baseline, and release audit.

@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "69f871e"
+code_document_code_locations: ["main.js:4370-4435", "main.js:15325-15355"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
@@ -167,4 +167,8 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Research finding: `SRC-ALDERETE-ETAL-2017-SYNOPSIS`; `SRC-FRANCIS-MATTHEWS-2005-VERB-CATEGORY`; `SRC-YIP-1988-NEGATION`. Research supports copula-less property predication but warns against a simple adjective/verb binary.
 - Recommended disposition: Retain a narrow property/stative predicate family with lexical-semantic features and contextual bare-predicate allowances. Coordinate with `NegatedStativePredicate` and degree structures.
 - Retirement safeguard: Strong retirement veto. This is core Cantonese predication; the task is scope and feature design, not elimination.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **retain narrow** as feature-governed property/stative predication, not an English adjective class.
+- Runtime/reach: predicate-bundle classification and builders are `main.js:4370-4435` and `main.js:15325-15355`.
+- Evidence/boundaries: Alderete, Francis–Matthews, and Yip support copula-less property predication while rejecting a simple verb/adjective binary. Six positives and two action/event boundaries are executable.
+- A1/schema: keep `unsupported_generalization`; coordinate degree, negation, lexical-semantic features, and contextual bare predicates without inserting a copula.
+- Open/release: lexical feature inventory, bare-predicate context, degree/negation scope, corpus/panel evidence remain open; this note, baseline, and release audit record the decision.

@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "ac35fe9563f192f14a8842c2dd547f1466fab213"
+code_document_code_locations: ["main.js:5478-5504", "main.js:5915-5933", "main.js:7747-14510"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: false
 promotion_gate_version: "v3"
@@ -49,8 +49,8 @@ standard_test_file: "tests/constructions/NominalHeadSpan.json"
 standard_test_coverage: "positive_and_boundary"
 standard_positive_test_count: 28
 standard_boundary_test_count: 2
-standard_implementation_probe_count: 0
-standard_executable_test_count: 30
+standard_implementation_probe_count: 1
+standard_executable_test_count: 31
 source_ids: []
 runtime_active: true
 workflow_state: "archived"
@@ -132,4 +132,9 @@ No same-family active construction was identified in the canonical consolidation
 - Research finding: Neutral internal overt-nominal span with 28 positives.
 - Recommended disposition: Retain/rename to `OvertNominalSpan` or equivalent. Keep it subordinate to licensed/ambiguous/provisional NP states.
 - Retirement safeguard: Do not retire if it supplies stable boundaries needed by the NP subsystem.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **retain narrow** under the existing internal name; defer another rename because `HeadNP` compatibility migration is already active.
+- Runtime and complete-output reach: `main.js:5478-5504` assigns NP licensing metadata; `main.js:5915-5933` builds the overt nominal span; consumers in `main.js:7747-14510` use the span without treating it as a complete linguistic construction claim.
+- Stable semantics and invariant: only overt analyzed nominal material may receive the span; licensed, ambiguous, provisional, and invalid NP states remain authoritative. `ONTO-C04-NOMINAL-HEAD` asserts the licensed overt-head path.
+- A1/schema decision: preserve `NominalHeadSpan` internally and `HeadNP` only as compatibility metadata; no noun, ellipsis, argument role, or fragment status may be inferred.
+- Evidence and unresolved work: lexical and NP-subsystem evidence governs consumers. Unknown/headless and attachment-ambiguous material remains typed separately.
+- Release files: this note, NP documentation, shared reachability inventory, generated tests/index, baseline, and release audit.

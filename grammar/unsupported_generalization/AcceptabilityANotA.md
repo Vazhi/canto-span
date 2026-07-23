@@ -38,9 +38,9 @@ corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
 code_document_reconciled: true
-code_document_review_date: "2026-07-22"
-code_document_review_commit: "v0.5.206"
-code_document_code_locations: ["main.js:2457-2462", "main.js:15926-15952", "main.js:21258"]
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "5d0ee01"
+code_document_code_locations: ["main.js:2408-2425", "main.js:15210-15230"]
 current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
@@ -164,4 +164,8 @@ speaker-judgment boundaries are incomplete.
 - Research finding: `SRC-LI-2017-ANOTA`; `SRC-LUI-2023-PREVERBAL-DAK`; `SRC-SYBESMA-2013`. Current note already narrows the runtime to terminal adjacent `得唔得`, including checked postposed `先`, and excludes preverbal restrictive-focus `得`.
 - Recommended disposition: Retain the narrow profile; consider a clearer learner-facing name. Keep `unsupported_generalization` or `research_pending` until lexical, discourse, regional, and panel boundaries are complete.
 - Retirement safeguard: Do not retire unless the exact terminal profile can be represented transparently by another A-not-A node without loss of its `得`-specific boundary.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **retain narrow** for terminal adjacent `得唔得` with only checked postposed `先`.
+- Runtime and complete-output reach: the template and guarded fallback are `main.js:2408-2425` and `main.js:15210-15230`; both preserve the two `得` arms and overt postposed material.
+- Checked scope and boundaries: Sybesma supplies the exact positive, Lui supplies the preverbal restrictive-focus boundary, and Li supplies related but nonidentical A-not-A context. One positive, one boundary, and one zero-weight probe do not establish broader productivity.
+- A1/schema decision: preserve the label at `unsupported_generalization`; a clearer future name must retain the `得`-specific terminal boundary.
+- Unresolved work and release files: lexical/discourse/regional scope and clean panel evidence remain open; this note, baseline, and release audit record the decision.

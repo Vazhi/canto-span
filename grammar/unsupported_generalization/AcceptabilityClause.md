@@ -39,8 +39,8 @@ corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
 code_document_reconciled: true
 code_document_review_date: "2026-07-23"
-code_document_review_commit: "working-tree-v0.5.213-r3"
-code_document_code_locations: ["main.js:6890-7060"]
+code_document_review_commit: "69f871e"
+code_document_code_locations: ["main.js:6775-6865"]
 current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
@@ -161,4 +161,8 @@ No same-family active construction was identified in the canonical consolidation
 - Research finding: `SRC-CHENG-SYBESMA-2004-POSTVERBAL-DAK`; `SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE`. Directly attested overt action + clause-final `都得`; free-choice `…都得` is a separate domain.
 - Recommended disposition: Retain or rename the bounded feasibility/permission profile; keep free-choice quantification outside it.
 - Retirement safeguard: Do not retire until the source-linked action profile is either preserved under a replacement label or proven to be ordinary composition with identical learner-visible information.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **retain narrow** for overt parsed action + clause-final `都得`; keep free-choice domains separate.
+- Runtime/reach: `main.js:6775-6865` requires the action predicate and preserves the acceptability tail plus broad child clause.
+- Evidence/boundaries: Cheng–Sybesma limits general `得` inference; the coursebook supports action and separate free-choice domains. Two positives, four free-choice/wh boundaries, and one zero-weight probe are executable.
+- A1/schema: preserve `unsupported_generalization`; a future feasibility/permission rename must retain action, tail, and quantified-domain exclusions.
+- Open/release: feasibility versus permission, lexical scope, corpus/panel evidence remain open; this note, baseline, and release audit record the decision.

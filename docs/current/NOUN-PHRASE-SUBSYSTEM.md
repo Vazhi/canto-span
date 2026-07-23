@@ -115,3 +115,22 @@ Current result: **43/43 PASS**.
 - extend classifier compatibility only through reviewed reusable lexical classes;
 - preserve licensed NP objects through additional question and clause wrappers;
 - connect the subsystem to other object-taking components without changing their linguistic status.
+
+## Active-label ontology closure
+
+The v0.5.216 review keeps overt nominal phenomena while quarantining misleading
+outer wrappers:
+
+- `AssociativeNP` currently means a `嘅`-marked modifier/possessive NP, not
+  associative plural;
+- `ClassifierObjectNP` and `QuantifiedPersonNP` are compatibility wrappers
+  pending migration to role-neutral classifier/quantified NP rules;
+- `WhClassifierQuestion` is pending decomposition into a wh-classifier NP and
+  an independent question layer;
+- `CoordinatedNP` remains the simple overt two-conjunct rule, with comitative
+  `同` excluded;
+- `OrdinalClassifierNP` preserves headed and bounded headless profiles without
+  inventing an omitted noun.
+
+All six remain status-quarantined. The review changes neither NP licensing nor
+consumer eligibility.

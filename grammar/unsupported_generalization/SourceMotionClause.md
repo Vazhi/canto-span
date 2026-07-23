@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "0bf3532"
+code_document_code_locations: ["main.js:13440-13470", "main.js:13870-13890"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
@@ -161,4 +161,8 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Research finding: `SRC-LEUNG-2014-COVERBS`; `SRC-LEUNG-2026-MOTION`; `SRC-YIP-MATTHEWS-2000-BASIC`. Sources directly attest preverbal `由` source and source-to-goal movement.
 - Recommended disposition: Retain a typed source-motion relation or compose source PP + motion predicate + optional goal while preserving token order.
 - Retirement safeguard: Do not retire the source relation; only remove a redundant clause wrapper after composition is proven.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **retain narrow**, pending source-PP + motion + optional-goal composition.
+- Runtime/reach: builders at `main.js:13440-13470` and `main.js:13870-13890` preserve subject/time, overt `由`, source location, predicate, and goal order.
+- Evidence/boundaries: Leung 2014/2026 and Yip–Matthews attest preverbal source and source-to-goal motion while limiting arbitrary material. Four positives and two nonmotion boundaries are executable.
+- A1/schema: keep `unsupported_generalization` until compositional output is identical; do not infer a source, subject, or goal.
+- Open/release: optionality, place/predicate breadth, coverb analysis, corpus/panel evidence remain open; this note, baseline, and release audit record the decision.

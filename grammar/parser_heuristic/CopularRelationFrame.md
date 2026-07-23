@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "5d0ee01"
+code_document_code_locations: ["main.js:2590-2610", "main.js:8230-8255", "main.js:8675-8710", "main.js:10620-10660"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: false
 promotion_gate_version: "v3"
@@ -49,8 +49,8 @@ standard_test_file: "tests/constructions/CopularRelationFrame.json"
 standard_test_coverage: "positive_and_boundary"
 standard_positive_test_count: 1
 standard_boundary_test_count: 2
-standard_implementation_probe_count: 0
-standard_executable_test_count: 3
+standard_implementation_probe_count: 1
+standard_executable_test_count: 4
 source_ids: []
 runtime_active: true
 workflow_state: "archived"
@@ -136,4 +136,8 @@ No pattern-specific external source is currently mapped.
 - Research finding: Internal copular relation wrapper, currently used for explanatory `嚟` correction.
 - Recommended disposition: Retain/internalize with explicit child roles and exclusions; map underlying copular/explanatory sources without promoting the frame name.
 - Retirement safeguard: Do not retire while it prevents explanatory `嚟` from being misparsed as motion.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **internalize** as a typed copular relation/explanatory grouping.
+- Runtime and complete-output reach: template and fallback paths are `main.js:2590-2610`, `main.js:8230-8255`, `main.js:8675-8710`, and `main.js:10620-10660`; they preserve overt copula/complement structure and keep explanatory `嚟` outside motion.
+- Stable semantics and invariant: null subject status is serialized only under a licensed opinion-content host; no subject or complement is inserted. `ONTO-Q03-COPULAR-RELATION` asserts that embedded contract.
+- A1/schema decision: preserve the internal object and current explanatory compatibility behavior; the frame name is nonlicensing.
+- Unresolved work and release files: underlying copular/explanatory evidence and relation-versus-identification criteria remain open; this note, shared probe inventory, generated tests/index, baseline, and release audit record the decision.

@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "5d0ee01"
+code_document_code_locations: ["main.js:2330-2350", "main.js:15075-15090", "main.js:17225-17250"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
@@ -168,4 +168,8 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Research finding: `SRC-FAN-2024-JAU-VP-ASPECT`; `SRC-HARA-2023-POLAR`; `SRC-MATTHEWS-YIP-2011-ASPECT-MULTIMEDIA`; `SRC-YIP-MATTHEWS-2000-BASIC` directly support experiential questioning, including `有冇 + V過`.
 - Recommended disposition: Retain a narrow experiential polar-question subtype or compose `ExperientialVP` with a typed polar-question layer.
 - Retirement safeguard: Strong retirement veto until the source-linked question profile is preserved under a replacement ontology.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **retain narrow** as `有冇 + ExperientialVP`, pending composition with the typed question layer.
+- Runtime and complete-output reach: template, fallback, and typed builder paths are `main.js:2330-2350`, `main.js:15075-15090`, and `main.js:17225-17250`; overt `有冇`, verb, `過`, and object remain visible.
+- Checked scope and boundaries: Fan, Hara, Matthews–Yip, and Yip–Matthews support the experiential polar profile but not unrestricted insertion. Two positives plus boundaries exclude ordinary A-not-A and final-`未` questions.
+- A1/schema decision: preserve the wrapper at `unsupported_generalization`; a future decomposition must retain aspect scope, question subtype, and object boundary exactly.
+- Unresolved work and release files: lexical productivity, object scope, particles, corpus review, and clean panel evidence remain open; this note, baseline, and release audit record the decision.

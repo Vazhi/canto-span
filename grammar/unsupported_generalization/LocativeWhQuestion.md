@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "5d0ee01"
+code_document_code_locations: ["main.js:2368-2395", "main.js:15099-15112"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
@@ -170,4 +170,8 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Research finding: Four verified sources directly document in-situ place questions, overt `喺邊度`, destination `去邊度`, and contexts where omitted `喺` is analyzed differently.
 - Recommended disposition: Retain narrow wh-place profiles with explicit role (`location`, `goal`, `source`) and overt-token preservation.
 - Retirement safeguard: Do not retire or insert hidden `喺`. First resolve role-specific composition and bare/headless question behavior.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **retain narrow** as overt wh-place profiles, quarantined until spatial roles are typed.
+- Runtime and complete-output reach: role-bearing templates are `main.js:2368-2395`; the overt `喺 + 邊度` fallback is `main.js:15099-15112`. Motion-goal paths explicitly preserve this label’s precedence.
+- Checked scope and boundaries: four verified sources support in-situ place, overt locative, and destination questions while distinguishing omitted-`喺` analyses. Six positives and two unrelated-question boundaries preserve overt tokens.
+- A1/schema decision: preserve the label at `unsupported_generalization`; add role metadata without inserting hidden `喺`, source, or goal material.
+- Unresolved work and release files: location/goal/source composition, bare/headless behavior, regional scope, and clean panel evidence remain open; this note, baseline, and release audit record the decision.

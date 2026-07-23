@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "ac35fe9563f192f14a8842c2dd547f1466fab213"
+code_document_code_locations: ["main.js:1307-1309", "main.js:1417", "main.js:5478-5504", "main.js:6922-6998", "main.js:7105-7117"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: false
 promotion_gate_version: "v3"
@@ -152,4 +152,9 @@ No pattern-specific external source is currently mapped.
 - Research finding: Explicit compatibility alias only; 30 accepted fixtures but no independent licensing.
 - Recommended disposition: Keep as deprecated compatibility alias or version it out. Canonical analysis should use overt-head/headless demonstrative-classifier NP subtypes in the NP subsystem.
 - Retirement safeguard: Do not delete until all A1 consumers and stored snapshots are migrated.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **retain narrow** as a deprecated compatibility alias only.
+- Runtime and complete-output reach: registry and alias mapping occur at `main.js:1307-1309` and `main.js:1417`; NP licensing is assigned at `main.js:5478-5504`; `main.js:6922-6998` emits canonical overt-head/headless subtypes and exposes the compatibility alias; token trace compatibility is preserved at `main.js:7105-7117`.
+- Stable semantics and invariant: the alias has no constructor, independent licensing, positive linguistic case, or headless/overt-head collapse. `NOMWRAP-003` asserts alias-only exposure over `OvertHeadDemonstrativeClassifierNP`.
+- A1/schema decision: preserve the alias for v0.5.216; version it out only after all stored snapshots and consumers use the canonical subtypes.
+- Evidence and unresolved work: classifier research belongs to the canonical NP rules. The alias carries zero linguistic evidence and cannot broaden them.
+- Release files: this note, NP documentation, existing alias probe, baseline, and release audit.

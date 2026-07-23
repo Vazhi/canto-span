@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "69f871e"
+code_document_code_locations: ["main.js:15725-15750"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
@@ -159,4 +159,8 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Research finding: Mapped sources explicitly warn that Cantonese null objects can be discourse-recoverable. Francis & Matthews 2005 argues for a multidimensional verb-category analysis rather than a simple verb/adjective or valency binary.
 - Recommended disposition: Reclassify as internal valency/argument-realization analysis, or narrow to lexically established intransitive predicates. Preserve contextual null-object ambiguity.
 - Retirement safeguard: Do not retire merely because a broad intransitive class is hard to prove. First separate lexical valency, omitted arguments, and complete intransitive uses.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **quarantine and internalize/narrow** as valency/argument-realization analysis.
+- Runtime/reach: `main.js:15725-15750` builds only the current bounded predicate span.
+- Evidence/boundaries: Alderete, Yip–Matthews, and the coursebook show auxiliary ellipsis and context-recoverable null objects, not a simple object-absence test. Four positives and two nonmatching boundaries remain implementation evidence.
+- A1/schema: preserve `unsupported_generalization`; never infer intransitivity or a hidden/recovered object solely from surface absence.
+- Open/release: lexical valency, contextual omission, complete uses, corpus/panel evidence remain open; this note, baseline, and release audit record the decision.

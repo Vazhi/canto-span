@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "1b18cd0"
+code_document_code_locations: ["main.js:13670-13678"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
@@ -157,4 +157,8 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Research finding: `SRC-KATAOKA-2018-PROGRESSIVE-GAN`; `SRC-SHAN-JIN-2025-MOTION-TYPOLOGY`; `SRC-YIU-2016-DIRECTIONAL-ASPECT`. Direct examples show progressive motion sequences with lexical and ordering constraints.
 - Recommended disposition: Prefer progressive-aspect + directional/motion composition; retain a subtype only if it contributes stable constraints or learner value.
 - Retirement safeguard: Do not infer a free cross-product, but do not retire the attested profile before preserving it compositionally.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **decompose/replace** through progressive + path/deictic composition; retain the constrained wrapper for compatibility.
+- Runtime and reach: `main.js:13670-13678` requires overt movement verb, `緊`, path direction, and final deictic marker in order.
+- Evidence/boundaries: Kataoka, Shan–Jin, and Yiu support attested progressive motion with lexical asymmetries; one positive and two nonmatching boundaries do not authorize a free cross-product.
+- A1/schema: preserve `unsupported_generalization` and every child role until compositional output is identical.
+- Open/release: lexical inventory, marker ordering, corpus review, and panel evidence remain open; this note, baseline, and release audit record the decision.

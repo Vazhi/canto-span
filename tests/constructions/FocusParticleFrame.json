@@ -100,7 +100,24 @@
     }
   ],
   "np_cases": [],
-  "implementation_probe_cases": [],
+  "implementation_probe_cases": [
+    {
+      "case_id": "ONTO-D02-FOCUS-PARTICLE",
+      "source": "得一個咋。",
+      "assertion": "trace_detail_equals",
+      "expected_surface": "得一個咋",
+      "expected_trace_detail": {
+        "focus_relation": "scalar_restriction",
+        "particle_subtype": "restrictive_exhaustive_limit_zaa3",
+        "context_requirement_status": "context_required",
+        "antecedent_status": "not_observed"
+      },
+      "provenance": "docs/research/ACTIVE-LABEL-EVIDENCE-ONTOLOGY-CLOSURE-R1.md#cognition-stance-discourse-and-particles",
+      "source_role": "internal_contract_invariant_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    }
+  ],
   "coverage": {
     "state": "positive_and_boundary",
     "exact_snapshot_positive_count": 8,
@@ -108,10 +125,10 @@
     "focused_boundary_count": 2,
     "focused_review_only_count": 0,
     "np_case_count": 0,
-    "implementation_probe_count": 0,
+    "implementation_probe_count": 1,
     "compatibility_alias_probe_count": 0,
     "positive_case_count": 8,
     "boundary_case_count": 2,
-    "executable_case_count": 10
+    "executable_case_count": 11
   }
 }

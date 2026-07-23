@@ -5,7 +5,7 @@ and its evidence records.
 
 ## Current state
 
-- runtime: **v0.5.215**
+- runtime: **v0.5.216**
 - active runtime labels / construction notes: **133 / 133**
 - construction workflow: **2 active / 131 workflow-archived**
 - retired labels: **48**
@@ -19,12 +19,13 @@ Current validation targets:
 
 - aggregate regression: **551** cases
 - NP subsystem: **43** cases
-- per-construction assertions: **1,505**
+- per-construction assertions: **1,518**
 - construction test files: **133**
 
-v0.5.215 closes the boundary backlog: all 132 language-facing active labels now
-have direct positive and boundary coverage; the remaining compatibility alias is
-explicitly guarded.
+v0.5.216 records a final evidence-and-ontology disposition for each of the
+original 37 `unsupported_generalization` and 15 `parser_heuristic` labels.
+Statuses and parser recognition remain unchanged; 13 added invariant probes
+make the retained internal JSON semantics executable.
 
 Read [`grammar/README.md`](grammar/README.md), then
 [`docs/current/00-START-HERE.md`](docs/current/00-START-HERE.md).

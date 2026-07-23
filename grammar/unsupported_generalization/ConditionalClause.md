@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "69f871e"
+code_document_code_locations: ["main.js:13465-13535", "main.js:16945-17000"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
@@ -165,4 +165,8 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Research finding: Four verified source records plus extensive `UC-RQ-*` and `PRQ2-*` clause-relation packages. Existing research distinguishes conditional markers, relation members, and marker-specific subtypes.
 - Recommended disposition: Retain narrow source-backed conditional subtypes while using `ClauseRelationEdge`/`Graph` as internal infrastructure. Avoid one undifferentiated optional-slot wrapper.
 - Retirement safeguard: Strong retirement veto: conditionality is well established. Only redundant wrapper labels may retire after subtype and A1 migration.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **retain narrow and decompose** marker-specific conditional antecedents over typed clause-relation infrastructure.
+- Runtime/reach: marker grouping and conditional builder are `main.js:13465-13535`; result-edge integration is `main.js:16945-17000`.
+- Evidence/boundaries: four sources and existing UC/PRQ2 packages distinguish markers, antecedent, and consequent; four positives and two nonconditional boundaries forbid a hidden result.
+- A1/schema: retain `unsupported_generalization`, overt markers, and independent member spans; subtype migration must preserve edge/graph compatibility.
+- Open/release: marker-specific scope, bare-`嘅`, speaker variation, corpus/panel evidence remain open; this note, baseline, and release audit record the decision.

@@ -39,8 +39,8 @@ corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
 code_document_reconciled: true
 code_document_review_date: "2026-07-23"
-code_document_review_commit: "working-tree-v0.5.213-r4"
-code_document_code_locations: ["main.js:2180-2195"]
+code_document_review_commit: "5d0ee01"
+code_document_code_locations: ["main.js:2165-2200"]
 current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
@@ -163,4 +163,8 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Research finding: Current note already retains exact source-linked `你覺得佢哋點樣？` with 2 executable boundaries. Other cognition-question types compose differently.
 - Recommended disposition: Retain the exact profile or decompose into cognition predicate + evaluated referent + wh predicate. Keep broader complement ontology unresolved.
 - Retirement safeguard: Do not retire the sourced profile merely because the outer label may be redundant.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **retain narrow** for the exact overt `subject + 覺得 + referent + 點樣` profile, pending ordinary complement decomposition.
+- Runtime and complete-output reach: `main.js:2165-2200` requires every overt component; the former token-cooccurrence fallback is absent.
+- Checked scope and boundaries: the coursebook supplies the exact positive and broader complement inventory; Alderete et al. support ordinary component composition. One positive and two omission/lexeme boundaries block broad opinion-question licensing.
+- A1/schema decision: preserve the label at `unsupported_generalization`; future decomposition must retain experiencer, evaluated referent, wh role, and question morphology.
+- Unresolved work and release files: other cognition predicates/complements, evaluation-versus-manner readings, corpus review, and clean panel evidence remain open; this note, baseline, and release audit record the decision.

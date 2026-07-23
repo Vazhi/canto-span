@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "ac35fe9563f192f14a8842c2dd547f1466fab213"
+code_document_code_locations: ["main.js:15867-15919"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: false
 promotion_gate_version: "v3"
@@ -49,8 +49,8 @@ standard_test_file: "tests/constructions/ClauseRelationMemberSpan.json"
 standard_test_coverage: "positive_and_boundary"
 standard_positive_test_count: 30
 standard_boundary_test_count: 2
-standard_implementation_probe_count: 0
-standard_executable_test_count: 32
+standard_implementation_probe_count: 1
+standard_executable_test_count: 33
 source_ids: []
 runtime_active: true
 workflow_state: "archived"
@@ -132,4 +132,9 @@ No same-family active construction was identified in the canonical consolidation
 - Research finding: Internal member boundary preserving each clause/member analysis.
 - Recommended disposition: Retain as infrastructure. Document span identity, child ownership, and nonempty-member invariant.
 - Retirement safeguard: Do not flatten if doing so loses independent subjects, predicates, or relation boundaries.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **retain narrow** as a transparent internal relation-member span.
+- Runtime and complete-output reach: `main.js:15867-15919` constructs nonempty left/right members, preserves source order and child constructions, and serializes member role, relation ID, overt-subject state, and linker ownership.
+- Stable semantics and invariant: the member inherits, but never creates, its relation subtype; it cannot fabricate a clause, subject, linker, or context resolution. `ONTO-C02-RELATION-MEMBER` asserts these fields.
+- A1/schema decision: preserve `ClauseRelationMemberSpan` internally and `ClauseRelationMember` only as compatibility metadata.
+- Evidence and unresolved work: no language claim or panel requirement attaches to the container; subtype evidence belongs to the consuming relation rule.
+- Release files: this note, the shared reachability inventory, generated construction tests/index, baseline, and release audit.

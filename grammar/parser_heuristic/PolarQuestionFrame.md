@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "5d0ee01"
+code_document_code_locations: ["main.js:2545-2570", "main.js:10515-10540", "main.js:18090-18190"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: false
 promotion_gate_version: "v3"
@@ -49,8 +49,8 @@ standard_test_file: "tests/constructions/PolarQuestionFrame.json"
 standard_test_coverage: "positive_and_boundary"
 standard_positive_test_count: 6
 standard_boundary_test_count: 2
-standard_implementation_probe_count: 0
-standard_executable_test_count: 8
+standard_implementation_probe_count: 1
+standard_executable_test_count: 9
 source_ids: []
 runtime_active: true
 workflow_state: "archived"
@@ -136,4 +136,8 @@ No pattern-specific external source is currently mapped.
 - Research finding: Internal umbrella for particle/intonation/contracted polar profiles; rich external question research exists.
 - Recommended disposition: Retain as infrastructure with explicit subtype metadata. Keep A-not-A, `係咪`, `有冇`, final-`未`, and particle questions distinct.
 - Retirement safeguard: Do not retire before the full question ontology and response behavior are resolved.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **retain narrow** as an internal typed polar-question frame.
+- Runtime and complete-output reach: the broad template is `main.js:2545-2570`; contracted-marker composition is `main.js:10515-10540`; particle/cluster paths are `main.js:18090-18190`.
+- Stable semantics and invariant: subtype metadata must distinguish contracted `係咪`, sentence-final biased particles, and ordered clusters from A-not-A, `有冇`, final-`未`, and wh questions. `ONTO-Q01-POLAR-FRAME` asserts the biased-final-`咩` contract and overt proposition host.
+- A1/schema decision: preserve the internal frame and subtype fields; it carries no broad productive claim and cannot fabricate a proposition.
+- Unresolved work and release files: response behavior and particle-specific source mapping remain open; this note, shared probe inventory, generated tests/index, baseline, and release audit record the decision.
