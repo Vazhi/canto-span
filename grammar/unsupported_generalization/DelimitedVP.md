@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "1b18cd0"
+code_document_code_locations: ["main.js:2815-2840", "main.js:17104-17105"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
@@ -157,4 +157,8 @@ No same-family active construction was identified in the canonical consolidation
 - Research finding: `SRC-SIO-BOND-2025` and other mapped sources support delimitative/inner-aspect behavior, including lexical and situation-type restrictions.
 - Recommended disposition: Retain a narrow `V-吓` delimitative profile or move it into a typed inner-aspect subsystem. Do not treat every `吓` as the same construction.
 - Retirement safeguard: Do not retire the phenomenon. A wrapper may be replaced only after aspect semantics, selection restrictions, and A1 outputs are preserved.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **retain narrow** as typed `V-吓/下` inner aspect, pending subsystem migration.
+- Runtime and reach: the category template is `main.js:2815-2840`; consumer eligibility is listed at `main.js:17104-17105`.
+- Evidence/boundaries: CUHK, Sio–Bond, and the coursebook support composition and lexical/situation restrictions; seven positives and two ordinary-predicate boundaries are executable.
+- A1/schema: preserve overt graph identity and `unsupported_generalization`; unrelated `吓/下` uses and hidden objects remain excluded.
+- Open/release: selection restrictions, graph disambiguation, corpus review, and panel evidence remain open; this note, baseline, and release audit record the decision.

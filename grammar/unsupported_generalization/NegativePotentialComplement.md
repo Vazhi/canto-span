@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "1b18cd0"
+code_document_code_locations: ["main.js:2195-2215", "main.js:3045-3085", "main.js:13940-13965", "main.js:15285-15295"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
@@ -146,4 +146,8 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Research finding: `SRC-CHENG-SYBESMA-2004-POSTVERBAL-DAK` plus newer historical work distinguishes short/long potentials and permission/ability profiles.
 - Recommended disposition: Retain narrow negative-potential complement profiles; document the exact surface order and do not generate hidden `得`.
 - Retirement safeguard: Strong retirement veto. First reconcile positive/negative potential ontology and dialect/consultant limits.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **retain narrow** as overt negative-potential/result profiles with exact marker order.
+- Runtime and reach: templates and builders at `main.js:2195-2215`, `main.js:3045-3085`, `main.js:13940-13965`, and `main.js:15285-15295` preserve verb, `唔`, result, and object.
+- Evidence/boundaries: Cheng–Sybesma distinguishes potential from permission/ability negatives; five positives and two unrelated-VP boundaries are executable.
+- A1/schema: preserve the current label at `unsupported_generalization`; never generate hidden `得` or a hidden result.
+- Open/release: short/long potentials, dialect/consultant scope, positive contrast, and panel evidence remain open; this note, baseline, and release audit record the decision.

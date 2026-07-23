@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "1b18cd0"
+code_document_code_locations: ["main.js:6303-6335", "main.js:15012"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
@@ -161,4 +161,8 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Research finding: Mapped negation research distinguishes ordinary `唔`, existential/possessive `冇`, not-yet `未`, and aspect-related negation. One legacy speaker rejection targets a subtype, not all negative VPs.
 - Recommended disposition: Replace the broad umbrella with typed negative profiles or keep it strictly internal. Preserve overt marker identity and ambiguity.
 - Retirement safeguard: Do not retire all negative-VP structure based on one rejected item. Review the exact item and each marker family separately.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **quarantine and decompose/replace** the umbrella with marker-specific negative profiles.
+- Runtime and reach: `main.js:6303-6335` wraps only eligible overt negator + VP subspans; application occurs at `main.js:15012`.
+- Evidence/boundaries: Lam, Yip, and the coursebook distinguish `唔`, `冇`, and `未`; one positive and two nonnegative boundaries do not authorize a uniform slot.
+- A1/schema: preserve overt marker identity and current compatibility output at `unsupported_generalization`; do not infer a hidden positive counterpart.
+- Open/release: lexical eligibility, null arguments, marker-specific scope, and clean panel evidence remain open; this note, baseline, and release audit record the decision.

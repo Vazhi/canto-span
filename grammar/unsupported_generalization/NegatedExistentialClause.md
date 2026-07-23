@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "1b18cd0"
+code_document_code_locations: ["main.js:2250-2270", "main.js:8494-8999"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
@@ -161,4 +161,8 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Research finding: `SRC-LAM-2018-NEGATION-ASPECT`; `SRC-YIP-1988-NEGATION`; `SRC-YIP-MATTHEWS-2000-BASIC`. `冇` is the suppletive negative of `有`, but also participates in distinct aspect/event profiles.
 - Recommended disposition: Retain narrow existential/possessive `冇 + DP` structure; split event/perfective negation and do not insert hidden `有`.
 - Retirement safeguard: Strong retirement veto. The broad label may narrow, but the source-backed suppletive opposition must remain visible.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **retain narrow** for overt existential/possessive `冇 + DP`, quarantined from event/aspect negation.
+- Runtime and reach: template and consumers at `main.js:2250-2270` and `main.js:8494-8999` preserve overt `冇` and DP structure.
+- Evidence/boundaries: Lam, Yip, and Yip–Matthews support suppletive `有/冇` while separating aspectual uses; two positives and two ordinary-clause boundaries are executable.
+- A1/schema: preserve `冇` identity and the current label at `unsupported_generalization`; never insert hidden `有`.
+- Open/release: possession versus existence, DP breadth, corpus/panel evidence remain open; this note, baseline, and release audit record the decision.
