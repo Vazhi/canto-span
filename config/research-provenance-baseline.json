@@ -14,5 +14,20 @@
     "PRQ2-034",
     "PRQ2-035"
   ],
-  "policy": "Known weak-core IDs are existing provenance debt. They remain warnings while Step 4 backfills or downgrades them. Any new PRQ2 promotion-style disposition without qualifying direct evidence fails verification."
+  "known_legacy_ledger_ids": [
+    "UC-RQ-003",
+    "UC-RQ-018",
+    "UC-RQ-025",
+    "UC-RQ-026",
+    "PRQ2-006",
+    "PRQ2-007",
+    "PRQ2-015"
+  ],
+  "known_missing_companion_link_ids": [
+    "UC-RQ-020",
+    "UC-RQ-022",
+    "PRQ2-006",
+    "PRQ2-007"
+  ],
+  "policy": "Baseline entries are existing provenance debt or recognized historical formats. They remain warnings while later repair steps backfill sources, normalize ledgers, and add explicit companion links. New PRQ2 weak-core claims, new noncanonical ledgers, or new missing companion links fail verification."
 }
