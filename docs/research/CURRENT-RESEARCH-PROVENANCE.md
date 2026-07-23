@@ -63,16 +63,21 @@ grammar status or authorize parser work. Current status remains owned by
 | PRQ2-001 | [`yau5/mou5 dak1 availability`](PRQ2-001-YAU5-MOU5-DAK1-AVAILABILITY-RESEARCH-R1.md) |
 | PRQ2-002 | [`zou2zi1 hindsight regret`](PRQ2-002-ZOU2ZI1-HINDSIGHT-REGRET-RESEARCH-R1.md) |
 | PRQ2-003 | [`jyut6 scalar progression`](PRQ2-003-JYUT6-SCALAR-PROGRESSION-RESEARCH-R1.md) |
+| PRQ2-004 | [`caa1di1 near miss`](PRQ2-004-CAA1DI1-NEAR-MISS-RESEARCH-R1.md) |
+| PRQ2-005 | [`hoi1 habitual established activity`](PRQ2-005-HOI1-HABITUAL-ESTABLISHED-ACTIVITY-RESEARCH-R1.md) |
+| PRQ2-006 | [`lok6 heoi3 continuative aspect`](PRQ2-006-LOK6HEOI3-CONTINUATIVE-ASPECT-RESEARCH-R1.md) |
+| PRQ2-007 | [`hei2 soeng5 lai4 inchoative aspect`](PRQ2-007-HEI2SOENG5LAI4-INCHOATIVE-ASPECT-RESEARCH-R1.md) |
 | PRQ2-008 | [`zi2 jiu3 sufficient condition`](PRQ2-008-ZI2JIU3-ZAU6-SUFFICIENT-CONDITION-RESEARCH-R1.md) |
-| PRQ2-014 | [`zi2 jau5 necessary condition`](PRQ2-014-ZI2JAU5-SIN1ZI3-NECESSARY-CONDITION-RESEARCH-R1.md) |
-| PRQ2-034 | [`mou4 leon6 unconditional invariance`](PRQ2-034-MOU4LEON6-DOU1-UNCONDITIONAL-RESEARCH-R1.md) |
 | PRQ2-009 | [`gei3 jin4 premise and response`](PRQ2-009-GEI3JIN4-PREMISE-RESPONSE-RESEARCH-R1.md) |
-| PRQ2-013 | [`jyu5 kei4 bat1 jyu4 ordered preference`](PRQ2-013-JYU5KEI4-BAT1JYU4-ORDERED-PREFERENCE-RESEARCH-R1.md) |
-| PRQ2-011 | [`m4 daan1 zi2 additive correlation`](PRQ2-011-M4DAAN1ZI2-ZUNG6-ADDITIVE-CORRELATIVE-RESEARCH-R1.md) |
-| PRQ2-033 | [`jau6-jau6 coexistence`](PRQ2-033-JAU6-JAU6-COEXISTENT-PREDICATE-RESEARCH-R1.md) |
-| PRQ2-012 | [`jat1 hai6 exclusive alternatives`](PRQ2-012-JAT1HAI6-EXCLUSIVE-ALTERNATIVE-RESEARCH-R1.md) |
-| PRQ2-015 | [`ning4 jyun6 dou1 committed preference`](PRQ2-015-NING4JYUN6-DOU1-COMMITTED-PREFERENCE-RESEARCH-R1.md) |
 | PRQ2-010 | [`ceoi4 zo2 zi1 ngoi6 exclusion and addition`](PRQ2-010-CEOI4ZO2-ZI1NGOI6-EXCLUSION-ADDITION-RESEARCH-R1.md) |
+| PRQ2-011 | [`m4 daan1 zi2 additive correlation`](PRQ2-011-M4DAAN1ZI2-ZUNG6-ADDITIVE-CORRELATIVE-RESEARCH-R1.md) |
+| PRQ2-012 | [`jat1 hai6 exclusive alternatives`](PRQ2-012-JAT1HAI6-EXCLUSIVE-ALTERNATIVE-RESEARCH-R1.md) |
+| PRQ2-013 | [`jyu5 kei4 bat1 jyu4 ordered preference`](PRQ2-013-JYU5KEI4-BAT1JYU4-ORDERED-PREFERENCE-RESEARCH-R1.md) |
+| PRQ2-014 | [`zi2 jau5 necessary condition`](PRQ2-014-ZI2JAU5-SIN1ZI3-NECESSARY-CONDITION-RESEARCH-R1.md) |
+| PRQ2-015 | [`mui5/go3go3 dou1 distributive quantification`](PRQ2-015-MUI5-GO3GO3-DOU1-DISTRIBUTIVE-QUANTIFICATION-RESEARCH-R1.md) |
+| PRQ2-033 | [`jau6-jau6 coexistence`](PRQ2-033-JAU6-JAU6-COEXISTENT-PREDICATE-RESEARCH-R1.md) |
+| PRQ2-034 | [`mou4 leon6 unconditional invariance`](PRQ2-034-MOU4LEON6-DOU1-UNCONDITIONAL-RESEARCH-R1.md) |
+| PRQ2-035 | [`ning4 jyun6 dou1 committed preference`](PRQ2-035-NING4JYUN6-DOU1-COMMITTED-PREFERENCE-RESEARCH-R1.md) |
 
 ## Shared evidence
 
