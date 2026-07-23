@@ -4,7 +4,7 @@
 
 | Measure | Current value |
 |---|---:|
-| Runtime | v0.5.215 |
+| Runtime | v0.5.216 |
 | Runtime labels | 133 |
 | Current construction notes | 133 |
 | Active working notes | 2 |
@@ -21,6 +21,20 @@
 The canonical registry is the union of
 `grammar/<linguistic-status>/*.md`. The 133 construction notes match the 133
 runtime labels exactly.
+
+## v0.5.216 active-label evidence and ontology closure
+
+The original 37 `unsupported_generalization` and 15 `parser_heuristic` labels
+now have note-local final dispositions grounded in their exact runtime paths,
+tests, compatibility/A1 effects, research records, and source scope. Broad
+language-facing wrappers remain quarantined or explicitly targeted for narrow
+rename/decomposition; useful serialized internal nodes retain stable,
+nonlicensing JSON semantics.
+
+No label met the strict retirement gate, no construction status changed, and no
+parser-recognition path changed. Thirteen zero-linguistic-evidence invariant
+probes cover the retained contract, question/copular, and discourse nodes. The
+full retirement review is complete at handoff sequence 38.
 
 ## v0.5.213-r1 ConditionResult retirement
 
@@ -182,7 +196,7 @@ boundaries. The broader label remains `unsupported_generalization`.
 
 - 551 regression cases pass;
 - 43 NP-subsystem cases pass;
-- 1,505 construction assertions across 133 construction files pass;
+- 1,518 construction assertions across 133 construction files pass;
 - coverage is 132 positive-and-boundary, 0 positive-only, 0
   implementation-only, and 1 compatibility-alias-only;
 - no active label is uncovered.
@@ -191,10 +205,10 @@ Implementation reachability carries zero linguistic evidence weight.
 
 ## Next substantive work
 
-Use the now boundary-complete construction suite to drive targeted source/runtime
-reconciliation, ranked by learner impact, source availability, and whether a
-current node creates a misleading analysis. Treat the full
-`係唔係`/contracted `係咪` relationship as a separate ontology question rather
-than silently broadening the reconciled node. The full retirement-review window
-is open at sequence 36 and must close no later than sequence 41. Do not create
+Use the note-local v0.5.216 migration and unresolved-work fields to drive
+targeted source/runtime reconciliation, ranked by learner impact, source
+availability, and whether a current node creates a misleading analysis. Treat
+the full `係唔係`/contracted `係咪` relationship as a separate ontology question
+rather than silently broadening the reconciled node. The next retirement-review
+window opens at sequence 48 and is required by sequence 58. Do not create
 another release-specific verifier or generated validation tree.

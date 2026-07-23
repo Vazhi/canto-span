@@ -1,12 +1,12 @@
 {
   "schema": "canto-span-retirement-review-cadence-v1",
-  "last_full_review_sequence": 21,
-  "last_full_review_id": "v0.5.197-shadowed-wrapper-retirement",
+  "last_full_review_sequence": 38,
+  "last_full_review_id": "v0.5.216-active-label-evidence-ontology-closure",
   "recommended_interval_min": 10,
   "hard_interval_max": 20,
-  "current_handoff_sequence": 37,
-  "next_review_window_opens_at_sequence": 31,
-  "review_required_by_sequence": 41,
+  "current_handoff_sequence": 38,
+  "next_review_window_opens_at_sequence": 48,
+  "review_required_by_sequence": 58,
   "state": "full_review_complete",
-  "notes": "v0.5.197 completed the last full dormant and uncovered-label review. v0.5.198 through v0.5.208 consolidated infrastructure and reconciled bounded retained constructions. v0.5.209 through v0.5.214 reconciled or retired the remaining source/runtime backlog. v0.5.215 closes direct boundary coverage without changing linguistic status. The full retirement review remains open and required by sequence 41."
+  "notes": "v0.5.216 completed the full review of the original 37 unsupported-generalization and 15 parser-heuristic labels. Every label has a final note-local disposition. No label met the strict retirement gate, and no linguistic status or parser-recognition path changed."
 }
