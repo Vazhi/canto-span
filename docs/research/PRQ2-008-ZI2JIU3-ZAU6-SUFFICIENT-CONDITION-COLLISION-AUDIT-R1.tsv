@@ -1,0 +1,14 @@
+probe_or_target	current_runtime_result	overlap_or_failure	decisive_difference	current_disposition
+只要學呢啲嘢，就冇問題。	ClauseLink/ClauseRel with modal and nominal children	Generic relation coverage does not type sufficiency or member roles.	The teaching source assigns condition and consequence roles.	PAIRED_CORE_MASKED
+只要份工高人工，我就做咩工都唔介意。	ClauseLink/ClauseRel with local VP/NP children	The wh-plus-都 consequence and condition are untyped.	The sourced profile licenses any job given the salary condition.	INDETERMINATE_CONSEQUENCE_MISSING
+只要有得去玩，佢返唔返學都冇所謂。	ClauseLink with ModalVP, MotionVP, and A-not-A child	Omitted 就 prevents relation typing.	The source explicitly allows this omitted-marker profile.	OMITTED_ZAU6_PROFILE_MISSING
+只要你肯俾錢佢𠻺得𡃉嚹。	ModalVP and VP only	The natural corpus surface is unwrapped.	HKCanCor supplies an omitted-就 sufficient-condition profile.	CORPUS_OMITTED_MARKER_MISSING
+即係其實嗰陣時只要有一把溫暖熟識嘅聲音話俾佢聽，你冇事嘅，就call個朋友。	ClauseLink/Reported with local children	The long premise and delayed consequence are not typed.	HKCanCor supplies a discourse-spanning overt-就 continuation.	DISCOURSE_SPANNING_PROFILE_MASKED
+只要唔跣低。	ModalVP only	A natural fragment has no relation.	Context may recover a consequence; the core must not invent one.	CORPUS_FRAGMENT_QUARANTINE
+如果你肯俾錢，我就賣。	ClauseLink/ClauseRel with VP children	Uses the same generic substrate as paired targets.	A hypothetical condition does not itself mark the minimal sufficient condition.	RUGWO2_CONTROL_KEEP_SEPARATE
+只有你肯俾錢，我先至賣。	VP only	Necessary-condition control is untyped.	Reversing sufficiency to necessity changes inference and markers.	ONLY_IF_CONTROL_KEEP_SEPARATE
+除非你肯俾錢，否則我唔賣。	VP only	Exception conditional is untyped.	UC-RQ-038 owns 除非; paraphrase overlap does not justify merging.	CEOI4FEI1_CONTROL_KEEP_SEPARATE
+只要。	No construction rows	A bare marker receives no relation.	The core requires licensed member content unless ellipsis is established.	EMPTY_CONDITION_GUARD
+只要就。	ModalVP only	Marker adjacency produces lexical/modal coverage.	Markers without member content are insufficient.	EMPTY_MEMBER_GUARD
+ClauseRel and ClauseLink	Generic relation substrate	Can wrap target and 如果 surfaces.	They do not identify sufficiency, member roles, or marker omission.	POSSIBLE_PARENT_NOT_TARGET
+ModalVP, MotionVP, A-not-A, Reported, VP, and NP	Existing member-internal analyses	Can compose within either member.	A future higher relation must preserve these children.	RETAIN_AS_CHILDREN_ONLY

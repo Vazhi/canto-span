@@ -1,0 +1,12 @@
+probe_or_target	current_runtime_result	overlap_or_failure	decisive_difference	current_disposition
+與其我去，不如你去。	ClauseLink with MotionVP and Suggest children	The second option is treated as a suggestion; rejected A and preference ordering are lost.	Words.hk defines the exact paired different-subject example.	DIFFERENT_SUBJECT_CORE_MASKED
+與其話佢有智慧，不如話佢聰明。	ClauseLink with two Reported children	The parallel predicates survive but no preference relation or marker roles do.	The romanized lexicographic example ranks the two descriptions.	PARALLEL_PREDICATE_PROFILE_MASKED
+與其埋怨自己生不逢時，倒不如增值自己。	Suggest only	The entire paired surface collapses to the preferred-member label.	The sourced example includes optional 倒 and explicit rejected activity.	DOU2_PREFERENCE_PROFILE_MASKED
+與其等待機會，不如自己去爭取機會。	Suggest and MotionVP children	The rejected waiting option is not represented in the ordering.	EDB material explicitly teaches this paired alternative.	ACTIVITY_PREFERENCE_MISSING
+我哋與其胡亂猜測，不如直接向佢問個明白。	Suggest/VP/NP children	Shared subject and two alternatives are not linked.	The course example places the shared subject before 與其.	SHARED_SUBJECT_PROFILE_MISSING
+不如你估下？	Suggest	The local analysis is plausible but lacks a paired rejected option.	Unpaired suggestion is not automatically an ordered two-member relation.	LONE_SUGGESTION_CONTROL
+佢不如你咁高。	Suggest	The comparison control is misclassified as a suggestion.	CantoDict separately records the not-as-good-as comparison sense.	COMPARISON_CONTROL_OVERCLASSIFIED
+我寧願留喺屋企，都唔想出去。	ClauseLink with local Location/ModalVP/MotionVP children	Preference is expressed without target markers.	寧願 has a different polarity and marker profile requiring separate evidence.	NING4JYUN6_CONTROL_KEEP_SEPARATE
+與其。	No construction rows	A lone first marker has no relation.	Both alternatives are absent.	EMPTY_FIRST_MEMBER_GUARD
+與其不如。	Suggest only	Marker adjacency triggers only the local 不如 heuristic.	Two licensed option members are required.	EMPTY_MEMBER_GUARD
+ClauseLink, Suggest, Reported, MotionVP, VP, and NP	Generic and member-internal analyses	Can occur inside paired and control surfaces.	They do not encode option roles, rejection, or preference ordering.	RETAIN_AS_CHILDREN_ONLY

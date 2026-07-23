@@ -63,6 +63,11 @@ grammar status or authorize parser work. Current status remains owned by
 | PRQ2-001 | [`yau5/mou5 dak1 availability`](PRQ2-001-YAU5-MOU5-DAK1-AVAILABILITY-RESEARCH-R1.md) |
 | PRQ2-002 | [`zou2zi1 hindsight regret`](PRQ2-002-ZOU2ZI1-HINDSIGHT-REGRET-RESEARCH-R1.md) |
 | PRQ2-003 | [`jyut6 scalar progression`](PRQ2-003-JYUT6-SCALAR-PROGRESSION-RESEARCH-R1.md) |
+| PRQ2-008 | [`zi2 jiu3 sufficient condition`](PRQ2-008-ZI2JIU3-ZAU6-SUFFICIENT-CONDITION-RESEARCH-R1.md) |
+| PRQ2-014 | [`zi2 jau5 necessary condition`](PRQ2-014-ZI2JAU5-SIN1ZI3-NECESSARY-CONDITION-RESEARCH-R1.md) |
+| PRQ2-034 | [`mou4 leon6 unconditional invariance`](PRQ2-034-MOU4LEON6-DOU1-UNCONDITIONAL-RESEARCH-R1.md) |
+| PRQ2-009 | [`gei3 jin4 premise and response`](PRQ2-009-GEI3JIN4-PREMISE-RESPONSE-RESEARCH-R1.md) |
+| PRQ2-013 | [`jyu5 kei4 bat1 jyu4 ordered preference`](PRQ2-013-JYU5KEI4-BAT1JYU4-ORDERED-PREFERENCE-RESEARCH-R1.md) |
 | PRQ2-011 | [`m4 daan1 zi2 additive correlation`](PRQ2-011-M4DAAN1ZI2-ZUNG6-ADDITIVE-CORRELATIVE-RESEARCH-R1.md) |
 | PRQ2-033 | [`jau6-jau6 coexistence`](PRQ2-033-JAU6-JAU6-COEXISTENT-PREDICATE-RESEARCH-R1.md) |
 | PRQ2-012 | [`jat1 hai6 exclusive alternatives`](PRQ2-012-JAT1HAI6-EXCLUSIVE-ALTERNATIVE-RESEARCH-R1.md) |
