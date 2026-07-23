@@ -1,17 +1,15 @@
 {
-  "schema": "canto-span-release-handoff-gate-v2",
-  "release_id": "v0.5.204-degree-modified-lexical-stative-reconciliation",
-  "base_tree": "7b4d0023b5cff48142a1fd745fd959ef7f9e8411",
-  "actual_status_changes": [
-    {
-      "construction": "DegreeModifiedLexicalStative",
-      "old_status": "unsupported_generalization",
-      "new_status": "research_pending"
-    }
-  ],
+  "schema": "canto-span-release-handoff-gate-v3",
+  "release_id": "v0.5.215-boundary-complete-grammar",
+  "base_status_snapshot": {
+    "path": "data/release-baselines/v0.5.214-construction-statuses.json",
+    "sha256": "17c4a2173a09fe59e22ed2d2227a43e41529c40e2915c2fc008d918ac64ab5bc",
+    "runtime_version": "0.5.214"
+  },
+  "actual_status_changes": [],
   "supported_productive_count": 0,
   "supported_productive_pending_reaudit": [],
-  "retirement_review_gap": 6,
+  "retirement_review_gap": 16,
   "failed": 0,
   "status": "PASS",
   "failures": []

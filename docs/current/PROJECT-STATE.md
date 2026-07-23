@@ -4,7 +4,7 @@
 
 | Measure | Current value |
 |---|---:|
-| Runtime | v0.5.214 |
+| Runtime | v0.5.215 |
 | Runtime labels | 133 |
 | Current construction notes | 133 |
 | Active working notes | 2 |
@@ -182,8 +182,8 @@ boundaries. The broader label remains `unsupported_generalization`.
 
 - 551 regression cases pass;
 - 43 NP-subsystem cases pass;
-- 1,287 construction assertions across 160 construction files pass;
-- coverage is 11 positive-and-boundary, 104 positive-only, 44
+- 1,505 construction assertions across 133 construction files pass;
+- coverage is 132 positive-and-boundary, 0 positive-only, 0
   implementation-only, and 1 compatibility-alias-only;
 - no active label is uncovered.
 
@@ -191,9 +191,9 @@ Implementation reachability carries zero linguistic evidence weight.
 
 ## Next substantive work
 
-Resume source/runtime reconciliation among the remaining 44
-implementation-only labels, ranked by learner impact, source availability, and
-whether the current node creates a misleading analysis. Treat the full
+Use the now boundary-complete construction suite to drive targeted source/runtime
+reconciliation, ranked by learner impact, source availability, and whether a
+current node creates a misleading analysis. Treat the full
 `係唔係`/contracted `係咪` relationship as a separate ontology question rather
 than silently broadening the reconciled node. The full retirement-review window
 is open at sequence 36 and must close no later than sequence 41. Do not create

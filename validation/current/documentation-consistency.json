@@ -1,9 +1,33 @@
 {
-  "schema": "canto-span-documentation-consistency-v1",
-  "checkpoint": "v0.5.204-current",
+  "schema": "canto-span-documentation-consistency-v2",
+  "checkpoint": "v0.5.215-current",
   "status": "PASS",
-  "json_files": 515,
-  "markdown_files": 348,
+  "json_files": 502,
+  "markdown_files": 389,
   "broken_local_links": 0,
+  "canonical_counts": {
+    "runtime_version": "0.5.215",
+    "construction_notes": 133,
+    "workflow_active": 2,
+    "workflow_archived": 131,
+    "retired_labels": 48,
+    "statuses": {
+      "supported_productive": 0,
+      "provisional_reaudit": 0,
+      "provisional": 0,
+      "research_pending": 79,
+      "unsupported_generalization": 37,
+      "lexicalized_only": 2,
+      "parser_heuristic": 15
+    },
+    "regression_cases": 551,
+    "np_cases": 43,
+    "construction_files": 133,
+    "construction_assertions": 1505,
+    "coverage": {
+      "positive_and_boundary": 132,
+      "compatibility_alias_only": 1
+    }
+  },
   "errors": []
 }

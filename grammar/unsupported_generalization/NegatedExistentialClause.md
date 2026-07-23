@@ -27,8 +27,8 @@ panel_evidence_model_version: "v2"
 panel_review_state_file: "review-packets/native-panel/active-v2/panel-review-state.json"
 panel_policy_file: "review-packets/native-panel/active-v2/panel-policy.json"
 negative_cases_drafted: true
-negative_tests_executable: false
-negative_tests_passing: false
+negative_tests_executable: true
+negative_tests_passing: true
 negative_boundary_inventory_complete: false
 corpus_evidence_used: false
 corpus_hits_reviewed: false
@@ -46,11 +46,11 @@ implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
 standard_test_file: "tests/constructions/NegatedExistentialClause.json"
-standard_test_coverage: "positive_only"
+standard_test_coverage: "positive_and_boundary"
 standard_positive_test_count: 2
-standard_boundary_test_count: 0
+standard_boundary_test_count: 2
 standard_implementation_probe_count: 0
-standard_executable_test_count: 2
+standard_executable_test_count: 4
 source_ids: ["SRC-LAM-2018-NEGATION-ASPECT", "SRC-YIP-1988-NEGATION", "SRC-YIP-MATTHEWS-2000-BASIC"]
 runtime_active: true
 workflow_state: "archived"

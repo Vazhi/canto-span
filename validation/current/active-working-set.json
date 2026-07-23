@@ -1,7 +1,7 @@
 {
   "schema": "canto-span-active-working-set-validation-v1",
   "active_count": 2,
-  "archived_count": 163,
+  "archived_count": 131,
   "active_working_set": [
     {
       "construction": "ResourceUseLaiFunctionRelation",

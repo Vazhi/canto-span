@@ -1,7 +1,7 @@
 {
   "schema": "canto-span-aggregate-regression-suite-result-v1",
-  "runtime_version": "0.5.204",
-  "fixture_runtime_version": "0.5.204",
+  "runtime_version": "0.5.215",
+  "fixture_runtime_version": "0.5.208",
   "absorbed_historical_runner_count": 548,
   "fixture_case_count": 551,
   "current_focused_exclusion_count": 0,

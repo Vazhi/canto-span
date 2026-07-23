@@ -252,20 +252,37 @@
       "assertion": "construction_present_in_exact_snapshot"
     }
   ],
-  "focused_cases": [],
+  "focused_cases": [
+    {
+      "case_id": "CP061-TVP-N01",
+      "source": "佢瞓覺。",
+      "class": "lexical_activity_without_transitive_object",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/CP061-P1-HIGH-FANOUT-BOUNDARY-CLOSURE-R1.md#boundary-matrix"
+    },
+    {
+      "case_id": "CP061-TVP-N02",
+      "source": "佢好高。",
+      "class": "stative_predication_without_transitive_vp",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/CP061-P1-HIGH-FANOUT-BOUNDARY-CLOSURE-R1.md#boundary-matrix"
+    }
+  ],
   "np_cases": [],
   "implementation_probe_cases": [],
   "coverage": {
-    "state": "positive_only",
+    "state": "positive_and_boundary",
     "exact_snapshot_positive_count": 29,
     "focused_positive_count": 0,
-    "focused_boundary_count": 0,
+    "focused_boundary_count": 2,
     "focused_review_only_count": 0,
     "np_case_count": 0,
     "implementation_probe_count": 0,
     "compatibility_alias_probe_count": 0,
     "positive_case_count": 29,
-    "boundary_case_count": 0,
-    "executable_case_count": 29
+    "boundary_case_count": 2,
+    "executable_case_count": 31
   }
 }

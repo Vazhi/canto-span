@@ -10,6 +10,7 @@ const root = path.resolve(__dirname, "..");
 const outDir = path.join(root, "tests", "constructions");
 const regressionPath = path.join(root, "tests", "fixtures", "regression-snapshots.json");
 const npPath = path.join(root, "tests", "fixtures", "np-subsystem.json");
+const boundaryClosurePath = path.join(root, "tests", "fixtures", "boundary-closure-v1.json");
 const reachabilityPath = path.join(root, "test-data", "implementation-reachability-probes-v1.json");
 const api = loadRuntimeApi(path.join(root, "main.js"));
 
@@ -93,6 +94,29 @@ for (const rel of focusedPacketPaths) {
       provenance: rel,
       ...(testCase.source_ids ? { source_ids: testCase.source_ids } : {}),
       ...(testCase.source_locator ? { source_locator: testCase.source_locator } : {}),
+    };
+    const existingIndex = target.focused_cases.findIndex((item) => item.case_id === focusedCase.case_id);
+    if (existingIndex >= 0) target.focused_cases[existingIndex] = focusedCase;
+    else target.focused_cases.push(focusedCase);
+  }
+}
+
+const boundaryClosure = readJson(boundaryClosurePath);
+if (boundaryClosure.schema !== "canto-span-boundary-closure-v1") {
+  throw new Error(`Unexpected boundary closure schema: ${boundaryClosure.schema}`);
+}
+for (const boundarySet of boundaryClosure.boundary_sets) {
+  const target = files.get(boundarySet.construction);
+  if (!target) throw new Error(`Missing active construction note for boundary set ${boundarySet.construction}`);
+  for (const boundary of boundarySet.boundaries) {
+    const focusedCase = {
+      case_id: boundary.case_id,
+      source: boundary.source,
+      class: boundary.class,
+      expected_profile: "construction_absent",
+      assertion: "construction_absent",
+      provenance: boundaryClosure.provenance,
+      source_ids: boundaryClosure.source_ids,
     };
     const existingIndex = target.focused_cases.findIndex((item) => item.case_id === focusedCase.case_id);
     if (existingIndex >= 0) target.focused_cases[existingIndex] = focusedCase;

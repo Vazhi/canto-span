@@ -602,20 +602,37 @@
       "assertion": "construction_present_in_exact_snapshot"
     }
   ],
-  "focused_cases": [],
+  "focused_cases": [
+    {
+      "case_id": "CP061-NCX-N01",
+      "source": "我食飯。",
+      "class": "saturated_action_clause",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/CP061-P1-HIGH-FANOUT-BOUNDARY-CLOSURE-R1.md#boundary-matrix"
+    },
+    {
+      "case_id": "CP061-NCX-N02",
+      "source": "呢個女仔唔靚。",
+      "class": "saturated_negated_stative_clause",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/CP061-P1-HIGH-FANOUT-BOUNDARY-CLOSURE-R1.md#boundary-matrix"
+    }
+  ],
   "np_cases": [],
   "implementation_probe_cases": [],
   "coverage": {
-    "state": "positive_only",
+    "state": "positive_and_boundary",
     "exact_snapshot_positive_count": 73,
     "focused_positive_count": 0,
-    "focused_boundary_count": 0,
+    "focused_boundary_count": 2,
     "focused_review_only_count": 0,
     "np_case_count": 0,
     "implementation_probe_count": 0,
     "compatibility_alias_probe_count": 0,
     "positive_case_count": 73,
-    "boundary_case_count": 0,
-    "executable_case_count": 73
+    "boundary_case_count": 2,
+    "executable_case_count": 75
   }
 }

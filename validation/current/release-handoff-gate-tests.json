@@ -1,7 +1,7 @@
 {
-  "schema": "canto-span-release-handoff-gate-tests-v2",
-  "total": 8,
-  "passed": 8,
+  "schema": "canto-span-release-handoff-gate-tests-v3",
+  "total": 14,
+  "passed": 14,
   "failed": 0,
   "status": "PASS",
   "results": [
@@ -63,6 +63,46 @@
       "pass": true,
       "failures": [
         "retirement_review_overdue:21>20"
+      ]
+    },
+    {
+      "name": "baseline snapshot path must stay inside repository",
+      "pass": true,
+      "failures": [
+        "invalid_base_status_snapshot_path"
+      ]
+    },
+    {
+      "name": "baseline snapshot digest must be sha256",
+      "pass": true,
+      "failures": [
+        "invalid_base_status_snapshot_sha256"
+      ]
+    },
+    {
+      "name": "valid checked-in status baseline passes",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "name": "duplicate baseline construction fails",
+      "pass": true,
+      "failures": [
+        "status_baseline_duplicate_construction:Example"
+      ]
+    },
+    {
+      "name": "baseline count mismatch fails",
+      "pass": true,
+      "failures": [
+        "status_baseline_count_mismatch:2!=1"
+      ]
+    },
+    {
+      "name": "unknown baseline status fails",
+      "pass": true,
+      "failures": [
+        "status_baseline_invalid_status:Example:invented"
       ]
     }
   ]

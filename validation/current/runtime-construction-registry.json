@@ -1,20 +1,20 @@
 {
   "schema": "canto-span-runtime-construction-registry-audit-v1",
-  "runtime_version": "0.5.204",
+  "runtime_version": "0.5.215",
   "registry_version": "0.5.198",
   "registry_owner": "grammar/<linguistic-status>/*.md",
-  "runtime_active_labels": 165,
-  "construction_notes": 165,
+  "runtime_active_labels": 133,
+  "construction_notes": 133,
   "workflow_counts": {
-    "archived": 163,
+    "archived": 131,
     "active": 2
   },
-  "retired_labels": 16,
+  "retired_labels": 48,
   "status_counts_authoring_only": {
-    "unsupported_generalization": 81,
-    "research_pending": 62,
-    "parser_heuristic": 19,
-    "lexicalized_only": 3
+    "unsupported_generalization": 37,
+    "research_pending": 79,
+    "parser_heuristic": 15,
+    "lexicalized_only": 2
   },
   "failed": 0,
   "status": "PASS",

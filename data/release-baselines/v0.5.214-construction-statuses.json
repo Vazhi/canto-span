@@ -1,0 +1,548 @@
+{
+  "schema": "canto-span-construction-status-baseline-v1",
+  "runtime_version": "0.5.214",
+  "construction_count": 133,
+  "status_counts": {
+    "supported_productive": 0,
+    "provisional_reaudit": 0,
+    "provisional": 0,
+    "research_pending": 79,
+    "unsupported_generalization": 37,
+    "lexicalized_only": 2,
+    "parser_heuristic": 15
+  },
+  "statuses": [
+    {
+      "construction": "AcceptabilityANotA",
+      "status": "unsupported_generalization"
+    },
+    {
+      "construction": "AcceptabilityClause",
+      "status": "unsupported_generalization"
+    },
+    {
+      "construction": "ActionStativeVP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "ANotAQuestion",
+      "status": "research_pending"
+    },
+    {
+      "construction": "ApproximateQuantity",
+      "status": "unsupported_generalization"
+    },
+    {
+      "construction": "AssociativeNP",
+      "status": "unsupported_generalization"
+    },
+    {
+      "construction": "ChangeIntoPredicate",
+      "status": "research_pending"
+    },
+    {
+      "construction": "ClassifierObjectNP",
+      "status": "unsupported_generalization"
+    },
+    {
+      "construction": "ClauseRelationEdge",
+      "status": "parser_heuristic"
+    },
+    {
+      "construction": "ClauseRelationGraph",
+      "status": "parser_heuristic"
+    },
+    {
+      "construction": "ClauseRelationMemberSpan",
+      "status": "parser_heuristic"
+    },
+    {
+      "construction": "ClauseSpan",
+      "status": "parser_heuristic"
+    },
+    {
+      "construction": "CognitionContentFrame",
+      "status": "research_pending"
+    },
+    {
+      "construction": "CognitionStatementClause",
+      "status": "unsupported_generalization"
+    },
+    {
+      "construction": "ComplementEllipsisFragment",
+      "status": "research_pending"
+    },
+    {
+      "construction": "CompletionQuestion",
+      "status": "research_pending"
+    },
+    {
+      "construction": "CompletionVP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "CompoundDirectionalMotionVP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "ConditionalClause",
+      "status": "unsupported_generalization"
+    },
+    {
+      "construction": "CoordinatedNP",
+      "status": "unsupported_generalization"
+    },
+    {
+      "construction": "CopularANotAQuestion",
+      "status": "unsupported_generalization"
+    },
+    {
+      "construction": "CopularIdentificationFrame",
+      "status": "parser_heuristic"
+    },
+    {
+      "construction": "CopularRelationFrame",
+      "status": "parser_heuristic"
+    },
+    {
+      "construction": "CoverbFrame",
+      "status": "research_pending"
+    },
+    {
+      "construction": "DegreeMannerAdverbial",
+      "status": "research_pending"
+    },
+    {
+      "construction": "DegreeMannerModifiedVP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "DegreeModifiedLexicalStative",
+      "status": "research_pending"
+    },
+    {
+      "construction": "DegreeStativePredicate",
+      "status": "research_pending"
+    },
+    {
+      "construction": "DelimitedVP",
+      "status": "unsupported_generalization"
+    },
+    {
+      "construction": "DemonstrativeClassifierNP",
+      "status": "parser_heuristic"
+    },
+    {
+      "construction": "DesiderativeVP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "DiMarkedNP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "DirectedMannerMotionVP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "DirectionalMotionVP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "DiscourseParticleFrame",
+      "status": "parser_heuristic"
+    },
+    {
+      "construction": "DitransitiveSpeechVP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "DurativeVP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "ExistentialClause",
+      "status": "research_pending"
+    },
+    {
+      "construction": "ExistentialPresentationalClause",
+      "status": "research_pending"
+    },
+    {
+      "construction": "ExistentialQuestion",
+      "status": "unsupported_generalization"
+    },
+    {
+      "construction": "ExistentialWhQuestion",
+      "status": "research_pending"
+    },
+    {
+      "construction": "ExperientialClause",
+      "status": "unsupported_generalization"
+    },
+    {
+      "construction": "ExperientialMotionGoalVP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "ExperientialQuestion",
+      "status": "research_pending"
+    },
+    {
+      "construction": "ExperientialVP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "ExperientialYesNoQuestion",
+      "status": "unsupported_generalization"
+    },
+    {
+      "construction": "FocusParticleFrame",
+      "status": "parser_heuristic"
+    },
+    {
+      "construction": "FormulaDiscourseUnit",
+      "status": "lexicalized_only"
+    },
+    {
+      "construction": "FragmentAnswer",
+      "status": "research_pending"
+    },
+    {
+      "construction": "FragmentQuestion",
+      "status": "research_pending"
+    },
+    {
+      "construction": "GoalAttainmentMotionVP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "HeadlessDemonstrativeClassifierNP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "ImpersonalEnvironmentalClause",
+      "status": "research_pending"
+    },
+    {
+      "construction": "IntendedFunctionRelation",
+      "status": "research_pending"
+    },
+    {
+      "construction": "IntentionFrame",
+      "status": "research_pending"
+    },
+    {
+      "construction": "IntransitiveVP",
+      "status": "unsupported_generalization"
+    },
+    {
+      "construction": "LexicalGiveRelation",
+      "status": "research_pending"
+    },
+    {
+      "construction": "LocativeExistentialClause",
+      "status": "research_pending"
+    },
+    {
+      "construction": "LocativeFrameClause",
+      "status": "research_pending"
+    },
+    {
+      "construction": "LocativePlacePhrase",
+      "status": "unsupported_generalization"
+    },
+    {
+      "construction": "LocativePostureVP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "LocativeWhQuestion",
+      "status": "unsupported_generalization"
+    },
+    {
+      "construction": "MalformedCandidate",
+      "status": "parser_heuristic"
+    },
+    {
+      "construction": "MannerAdverbialVP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "MeasureExpression",
+      "status": "parser_heuristic"
+    },
+    {
+      "construction": "ModalANotAQuestion",
+      "status": "research_pending"
+    },
+    {
+      "construction": "ModalVP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "ModifiedNP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "ModifierNP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "MotionGoalVP",
+      "status": "unsupported_generalization"
+    },
+    {
+      "construction": "MotionPurposeChain",
+      "status": "unsupported_generalization"
+    },
+    {
+      "construction": "NamingClause",
+      "status": "research_pending"
+    },
+    {
+      "construction": "NeedsContext",
+      "status": "parser_heuristic"
+    },
+    {
+      "construction": "NegatedDirectionalMotionVP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "NegatedExistentialClause",
+      "status": "unsupported_generalization"
+    },
+    {
+      "construction": "NegatedExistentialFragment",
+      "status": "research_pending"
+    },
+    {
+      "construction": "NegatedStativePredicate",
+      "status": "research_pending"
+    },
+    {
+      "construction": "NegatedVP",
+      "status": "unsupported_generalization"
+    },
+    {
+      "construction": "NegativeCognitionFragment",
+      "status": "research_pending"
+    },
+    {
+      "construction": "NegativeExperiential",
+      "status": "research_pending"
+    },
+    {
+      "construction": "NegativePotentialComplement",
+      "status": "unsupported_generalization"
+    },
+    {
+      "construction": "NegativePotentialDirectionalVP",
+      "status": "unsupported_generalization"
+    },
+    {
+      "construction": "NominalHeadSpan",
+      "status": "parser_heuristic"
+    },
+    {
+      "construction": "NominalPredicateClause",
+      "status": "research_pending"
+    },
+    {
+      "construction": "OpinionQuestion",
+      "status": "unsupported_generalization"
+    },
+    {
+      "construction": "OpinionStanceFrame",
+      "status": "unsupported_generalization"
+    },
+    {
+      "construction": "OrdinalClassifierNP",
+      "status": "unsupported_generalization"
+    },
+    {
+      "construction": "OvertHeadDemonstrativeClassifierNP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "PassivePermissiveRelation",
+      "status": "research_pending"
+    },
+    {
+      "construction": "PathPhrase",
+      "status": "unsupported_generalization"
+    },
+    {
+      "construction": "PerfectiveDirectionalVP",
+      "status": "unsupported_generalization"
+    },
+    {
+      "construction": "PerfectiveVP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "PolarQuestionFrame",
+      "status": "parser_heuristic"
+    },
+    {
+      "construction": "PoliteImperativeClause",
+      "status": "unsupported_generalization"
+    },
+    {
+      "construction": "PossessiveClassifierNP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "PostThemeParticipantRelation",
+      "status": "research_pending"
+    },
+    {
+      "construction": "PostverbalZoPerfectiveVP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "PotentialDirectionalVP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "PotentialResultVP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "PreferenceVP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "PriorityMarkerClause",
+      "status": "research_pending"
+    },
+    {
+      "construction": "ProductiveVO",
+      "status": "research_pending"
+    },
+    {
+      "construction": "ProgressiveDirectionalVP",
+      "status": "unsupported_generalization"
+    },
+    {
+      "construction": "ProgressiveVP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "ProgressiveWhObjectQuestion",
+      "status": "unsupported_generalization"
+    },
+    {
+      "construction": "ProhibitiveImperative",
+      "status": "research_pending"
+    },
+    {
+      "construction": "QuantifiedClassifierNP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "QuantifiedPersonNP",
+      "status": "unsupported_generalization"
+    },
+    {
+      "construction": "QuantifiedTimeNP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "QuantityNP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "ReduplicatedVP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "RelativeClauseNP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "RepetitiveComplementVP",
+      "status": "unsupported_generalization"
+    },
+    {
+      "construction": "ReportedSpeech",
+      "status": "research_pending"
+    },
+    {
+      "construction": "ResourceUseLaiFunctionRelation",
+      "status": "research_pending"
+    },
+    {
+      "construction": "RestorativeComplementVP",
+      "status": "unsupported_generalization"
+    },
+    {
+      "construction": "ResultComplement",
+      "status": "research_pending"
+    },
+    {
+      "construction": "ResultComplementVP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "ScalarEvaluation",
+      "status": "research_pending"
+    },
+    {
+      "construction": "ScalarValueQuestion",
+      "status": "research_pending"
+    },
+    {
+      "construction": "SerialVerbPurposeChain",
+      "status": "research_pending"
+    },
+    {
+      "construction": "SourceMotionClause",
+      "status": "unsupported_generalization"
+    },
+    {
+      "construction": "StativeNominalComplement",
+      "status": "research_pending"
+    },
+    {
+      "construction": "StativePredicate",
+      "status": "unsupported_generalization"
+    },
+    {
+      "construction": "SuggestionQuestion",
+      "status": "unsupported_generalization"
+    },
+    {
+      "construction": "TemporalClause",
+      "status": "research_pending"
+    },
+    {
+      "construction": "TimeNP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "Topic",
+      "status": "research_pending"
+    },
+    {
+      "construction": "TopicComment",
+      "status": "parser_heuristic"
+    },
+    {
+      "construction": "TransitiveVP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "VerbComplementVP",
+      "status": "research_pending"
+    },
+    {
+      "construction": "VocativeAddressTerm",
+      "status": "lexicalized_only"
+    },
+    {
+      "construction": "WhClassifierQuestion",
+      "status": "unsupported_generalization"
+    }
+  ]
+}

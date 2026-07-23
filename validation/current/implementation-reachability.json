@@ -1,14 +1,14 @@
 {
   "schema": "canto-span-implementation-reachability-audit-v1",
-  "runtime_version": "0.5.204",
-  "probe_case_count": 64,
-  "probed_construction_count": 63,
-  "implementation_positive_only_labels": 58,
+  "runtime_version": "0.5.215",
+  "probe_case_count": 43,
+  "probed_construction_count": 14,
+  "implementation_positive_only_labels": 0,
   "compatibility_alias_only_labels": 1,
   "no_direct_labels": 0,
   "linguistic_evidence_weight_added": 0,
-  "total": 782,
-  "passed": 782,
+  "total": 593,
+  "passed": 593,
   "failed": 0,
   "status": "PASS",
   "checks": [
@@ -30,7 +30,7 @@
     {
       "name": "construction index matches current notes",
       "pass": true,
-      "detail": "165/165"
+      "detail": "133/133"
     },
     {
       "name": "REACH-001 case id is unique",
@@ -83,131 +83,6 @@
       "detail": "係唔係你嘅？"
     },
     {
-      "name": "REACH-003 case id is unique",
-      "pass": true,
-      "detail": "REACH-003"
-    },
-    {
-      "name": "REACH-003 targets active label",
-      "pass": true,
-      "detail": "DegreeMannerModifiedVP"
-    },
-    {
-      "name": "REACH-003 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "REACH-003 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "REACH-003 reaches target",
-      "pass": true,
-      "detail": "快啲嚟。"
-    },
-    {
-      "name": "REACH-004 case id is unique",
-      "pass": true,
-      "detail": "REACH-004"
-    },
-    {
-      "name": "REACH-004 targets active label",
-      "pass": true,
-      "detail": "IdentificationFragment"
-    },
-    {
-      "name": "REACH-004 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "REACH-004 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "REACH-004 reaches target",
-      "pass": true,
-      "detail": "就係冇屋就可以㗎嘛。"
-    },
-    {
-      "name": "REACH-005 case id is unique",
-      "pass": true,
-      "detail": "REACH-005"
-    },
-    {
-      "name": "REACH-005 targets active label",
-      "pass": true,
-      "detail": "IntendedFunctionRelation"
-    },
-    {
-      "name": "REACH-005 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "REACH-005 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "REACH-005 reaches target",
-      "pass": true,
-      "detail": "呢隻杯我用嚟飲水。"
-    },
-    {
-      "name": "REACH-006 case id is unique",
-      "pass": true,
-      "detail": "REACH-006"
-    },
-    {
-      "name": "REACH-006 targets active label",
-      "pass": true,
-      "detail": "LocativeFragment"
-    },
-    {
-      "name": "REACH-006 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "REACH-006 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "REACH-006 reaches target",
-      "pass": true,
-      "detail": "喺屋企。"
-    },
-    {
-      "name": "REACH-007 case id is unique",
-      "pass": true,
-      "detail": "REACH-007"
-    },
-    {
-      "name": "REACH-007 targets active label",
-      "pass": true,
-      "detail": "LocativePostureVP"
-    },
-    {
-      "name": "REACH-007 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "REACH-007 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "REACH-007 reaches target",
-      "pass": true,
-      "detail": "佢坐喺度。"
-    },
-    {
       "name": "REACH-008 case id is unique",
       "pass": true,
       "detail": "REACH-008"
@@ -258,81 +133,6 @@
       "detail": "你好似唔開心噃。"
     },
     {
-      "name": "REACH-010 case id is unique",
-      "pass": true,
-      "detail": "REACH-010"
-    },
-    {
-      "name": "REACH-010 targets active label",
-      "pass": true,
-      "detail": "PostThemeParticipantRelation"
-    },
-    {
-      "name": "REACH-010 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "REACH-010 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "REACH-010 reaches target",
-      "pass": true,
-      "detail": "我買咗杯咖啡畀佢。"
-    },
-    {
-      "name": "REACH-011 case id is unique",
-      "pass": true,
-      "detail": "REACH-011"
-    },
-    {
-      "name": "REACH-011 targets active label",
-      "pass": true,
-      "detail": "PreferenceVP"
-    },
-    {
-      "name": "REACH-011 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "REACH-011 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "REACH-011 reaches target",
-      "pass": true,
-      "detail": "好似我噉，我就鍾意跑步。"
-    },
-    {
-      "name": "REACH-012 case id is unique",
-      "pass": true,
-      "detail": "REACH-012"
-    },
-    {
-      "name": "REACH-012 targets active label",
-      "pass": true,
-      "detail": "PriorityMarkerClause"
-    },
-    {
-      "name": "REACH-012 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "REACH-012 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "REACH-012 reaches target",
-      "pass": true,
-      "detail": "唔同你講住先。"
-    },
-    {
       "name": "REACH-013 case id is unique",
       "pass": true,
       "detail": "REACH-013"
@@ -356,106 +156,6 @@
       "name": "REACH-013 reaches target",
       "pass": true,
       "detail": "你攰唔攰？不如休息吓。"
-    },
-    {
-      "name": "REACH-014 case id is unique",
-      "pass": true,
-      "detail": "REACH-014"
-    },
-    {
-      "name": "REACH-014 targets active label",
-      "pass": true,
-      "detail": "Topic"
-    },
-    {
-      "name": "REACH-014 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "REACH-014 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "REACH-014 reaches target",
-      "pass": true,
-      "detail": "呢隻杯我用嚟飲水。"
-    },
-    {
-      "name": "REACH-015 case id is unique",
-      "pass": true,
-      "detail": "REACH-015"
-    },
-    {
-      "name": "REACH-015 targets active label",
-      "pass": true,
-      "detail": "VocativeAddressTerm"
-    },
-    {
-      "name": "REACH-015 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "REACH-015 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "REACH-015 reaches target",
-      "pass": true,
-      "detail": "阿妹，過嚟。"
-    },
-    {
-      "name": "LOWREF-002 case id is unique",
-      "pass": true,
-      "detail": "LOWREF-002"
-    },
-    {
-      "name": "LOWREF-002 targets active label",
-      "pass": true,
-      "detail": "DefinitionExplanatoryFrame"
-    },
-    {
-      "name": "LOWREF-002 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "LOWREF-002 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "LOWREF-002 reaches target",
-      "pass": true,
-      "detail": "圖書館係乜嘢嚟㗎。"
-    },
-    {
-      "name": "LOWREF-003 case id is unique",
-      "pass": true,
-      "detail": "LOWREF-003"
-    },
-    {
-      "name": "LOWREF-003 targets active label",
-      "pass": true,
-      "detail": "DefinitionComplement"
-    },
-    {
-      "name": "LOWREF-003 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "LOWREF-003 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "LOWREF-003 reaches target",
-      "pass": true,
-      "detail": "圖書館係乜嘢嚟㗎。"
     },
     {
       "name": "EXPDEL-001A case id is unique",
@@ -508,381 +208,6 @@
       "detail": "我冇睇過。"
     },
     {
-      "name": "EXPDEL-002 case id is unique",
-      "pass": true,
-      "detail": "EXPDEL-002"
-    },
-    {
-      "name": "EXPDEL-002 targets active label",
-      "pass": true,
-      "detail": "ExperientialQuestion"
-    },
-    {
-      "name": "EXPDEL-002 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "EXPDEL-002 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "EXPDEL-002 reaches target",
-      "pass": true,
-      "detail": "你飲過茶未？"
-    },
-    {
-      "name": "EXPDEL-003 case id is unique",
-      "pass": true,
-      "detail": "EXPDEL-003"
-    },
-    {
-      "name": "EXPDEL-003 targets active label",
-      "pass": true,
-      "detail": "ExperientialMotionGoalVP"
-    },
-    {
-      "name": "EXPDEL-003 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "EXPDEL-003 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "EXPDEL-003 reaches target",
-      "pass": true,
-      "detail": "我未去過美國。"
-    },
-    {
-      "name": "EXPDEL-004 case id is unique",
-      "pass": true,
-      "detail": "EXPDEL-004"
-    },
-    {
-      "name": "EXPDEL-004 targets active label",
-      "pass": true,
-      "detail": "MotionDelimitedVP"
-    },
-    {
-      "name": "EXPDEL-004 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "EXPDEL-004 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "EXPDEL-004 reaches target",
-      "pass": true,
-      "detail": "去睇吓醫生。"
-    },
-    {
-      "name": "EXPDEL-005 case id is unique",
-      "pass": true,
-      "detail": "EXPDEL-005"
-    },
-    {
-      "name": "EXPDEL-005 targets active label",
-      "pass": true,
-      "detail": "CognitionDelimitedVP"
-    },
-    {
-      "name": "EXPDEL-005 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "EXPDEL-005 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "EXPDEL-005 reaches target",
-      "pass": true,
-      "detail": "諗吓。"
-    },
-    {
-      "name": "EXPDEL-006 case id is unique",
-      "pass": true,
-      "detail": "EXPDEL-006"
-    },
-    {
-      "name": "EXPDEL-006 targets active label",
-      "pass": true,
-      "detail": "CognitionDelimitedObjectVP"
-    },
-    {
-      "name": "EXPDEL-006 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "EXPDEL-006 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "EXPDEL-006 reaches target",
-      "pass": true,
-      "detail": "諗吓呢個問題。"
-    },
-    {
-      "name": "RESCHG-001A case id is unique",
-      "pass": true,
-      "detail": "RESCHG-001A"
-    },
-    {
-      "name": "RESCHG-001A targets active label",
-      "pass": true,
-      "detail": "CausativeResultFrame"
-    },
-    {
-      "name": "RESCHG-001A has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "RESCHG-001A uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "RESCHG-001A reaches target",
-      "pass": true,
-      "detail": "佢整冧咗間屋。"
-    },
-    {
-      "name": "RESCHG-001B case id is unique",
-      "pass": true,
-      "detail": "RESCHG-001B"
-    },
-    {
-      "name": "RESCHG-001B targets active label",
-      "pass": true,
-      "detail": "CausativeResultPredicate"
-    },
-    {
-      "name": "RESCHG-001B has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "RESCHG-001B uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "RESCHG-001B reaches target",
-      "pass": true,
-      "detail": "佢整冧咗間屋。"
-    },
-    {
-      "name": "RESCHG-002A case id is unique",
-      "pass": true,
-      "detail": "RESCHG-002A"
-    },
-    {
-      "name": "RESCHG-002A targets active label",
-      "pass": true,
-      "detail": "ModalChangeIntoResultFrame"
-    },
-    {
-      "name": "RESCHG-002A has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "RESCHG-002A uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "RESCHG-002A reaches target",
-      "pass": true,
-      "detail": "佢會變成老師。"
-    },
-    {
-      "name": "RESCHG-002B case id is unique",
-      "pass": true,
-      "detail": "RESCHG-002B"
-    },
-    {
-      "name": "RESCHG-002B targets active label",
-      "pass": true,
-      "detail": "ChangeIntoPredicate"
-    },
-    {
-      "name": "RESCHG-002B has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "RESCHG-002B uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "RESCHG-002B reaches target",
-      "pass": true,
-      "detail": "佢會變成老師。"
-    },
-    {
-      "name": "RESCHG-003 case id is unique",
-      "pass": true,
-      "detail": "RESCHG-003"
-    },
-    {
-      "name": "RESCHG-003 targets active label",
-      "pass": true,
-      "detail": "DisposalChangeIntoResultFrame"
-    },
-    {
-      "name": "RESCHG-003 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "RESCHG-003 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "RESCHG-003 reaches target",
-      "pass": true,
-      "detail": "佢會將呢間屋變成餐廳。"
-    },
-    {
-      "name": "RESCHG-004 case id is unique",
-      "pass": true,
-      "detail": "RESCHG-004"
-    },
-    {
-      "name": "RESCHG-004 targets active label",
-      "pass": true,
-      "detail": "ResultStateClause"
-    },
-    {
-      "name": "RESCHG-004 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "RESCHG-004 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "RESCHG-004 reaches target",
-      "pass": true,
-      "detail": "好多都熟咗喇。"
-    },
-    {
-      "name": "RESCHG-005A case id is unique",
-      "pass": true,
-      "detail": "RESCHG-005A"
-    },
-    {
-      "name": "RESCHG-005A targets active label",
-      "pass": true,
-      "detail": "TransformationResultFrame"
-    },
-    {
-      "name": "RESCHG-005A has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "RESCHG-005A uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "RESCHG-005A reaches target",
-      "pass": true,
-      "detail": "佢變咗做老師。"
-    },
-    {
-      "name": "RESCHG-005B case id is unique",
-      "pass": true,
-      "detail": "RESCHG-005B"
-    },
-    {
-      "name": "RESCHG-005B targets active label",
-      "pass": true,
-      "detail": "TransformationResultPredicate"
-    },
-    {
-      "name": "RESCHG-005B has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "RESCHG-005B uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "RESCHG-005B reaches target",
-      "pass": true,
-      "detail": "佢變咗做老師。"
-    },
-    {
-      "name": "RESCHG-006A case id is unique",
-      "pass": true,
-      "detail": "RESCHG-006A"
-    },
-    {
-      "name": "RESCHG-006A targets active label",
-      "pass": true,
-      "detail": "SeemingPerfectiveResultClause"
-    },
-    {
-      "name": "RESCHG-006A has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "RESCHG-006A uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "RESCHG-006A reaches target",
-      "pass": true,
-      "detail": "呢度好似今日停咗雨。"
-    },
-    {
-      "name": "RESCHG-006B case id is unique",
-      "pass": true,
-      "detail": "RESCHG-006B"
-    },
-    {
-      "name": "RESCHG-006B targets active label",
-      "pass": true,
-      "detail": "PerfectiveObjectResultPredicate"
-    },
-    {
-      "name": "RESCHG-006B has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "RESCHG-006B uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "RESCHG-006B reaches target",
-      "pass": true,
-      "detail": "呢度好似今日停咗雨。"
-    },
-    {
       "name": "NOMWRAP-001 case id is unique",
       "pass": true,
       "detail": "NOMWRAP-001"
@@ -906,31 +231,6 @@
       "name": "NOMWRAP-001 reaches target",
       "pass": true,
       "detail": "第二個故仔。"
-    },
-    {
-      "name": "NOMWRAP-002 case id is unique",
-      "pass": true,
-      "detail": "NOMWRAP-002"
-    },
-    {
-      "name": "NOMWRAP-002 targets active label",
-      "pass": true,
-      "detail": "PossessiveClassifierNP"
-    },
-    {
-      "name": "NOMWRAP-002 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "NOMWRAP-002 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "NOMWRAP-002 reaches target",
-      "pass": true,
-      "detail": "佢整冧咗我間屋。"
     },
     {
       "name": "NOMWRAP-003 case id is unique",
@@ -958,156 +258,6 @@
       "detail": "呢本書。"
     },
     {
-      "name": "STCWRAP-001A case id is unique",
-      "pass": true,
-      "detail": "STCWRAP-001A"
-    },
-    {
-      "name": "STCWRAP-001A targets active label",
-      "pass": true,
-      "detail": "SpeechTransferClause"
-    },
-    {
-      "name": "STCWRAP-001A has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "STCWRAP-001A uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "STCWRAP-001A reaches target",
-      "pass": true,
-      "detail": "我唔話你知。"
-    },
-    {
-      "name": "STCWRAP-001B case id is unique",
-      "pass": true,
-      "detail": "STCWRAP-001B"
-    },
-    {
-      "name": "STCWRAP-001B targets active label",
-      "pass": true,
-      "detail": "DitransitiveSpeechVP"
-    },
-    {
-      "name": "STCWRAP-001B has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "STCWRAP-001B uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "STCWRAP-001B reaches target",
-      "pass": true,
-      "detail": "我唔話你知。"
-    },
-    {
-      "name": "STCWRAP-002 case id is unique",
-      "pass": true,
-      "detail": "STCWRAP-002"
-    },
-    {
-      "name": "STCWRAP-002 targets active label",
-      "pass": true,
-      "detail": "IntentionFrame"
-    },
-    {
-      "name": "STCWRAP-002 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "STCWRAP-002 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "STCWRAP-002 reaches target",
-      "pass": true,
-      "detail": "我諗住返屋企。"
-    },
-    {
-      "name": "STCWRAP-003 case id is unique",
-      "pass": true,
-      "detail": "STCWRAP-003"
-    },
-    {
-      "name": "STCWRAP-003 targets active label",
-      "pass": true,
-      "detail": "PossessiveTransferClause"
-    },
-    {
-      "name": "STCWRAP-003 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "STCWRAP-003 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "STCWRAP-003 reaches target",
-      "pass": true,
-      "detail": "我有本書要畀你。"
-    },
-    {
-      "name": "STCWRAP-004 case id is unique",
-      "pass": true,
-      "detail": "STCWRAP-004"
-    },
-    {
-      "name": "STCWRAP-004 targets active label",
-      "pass": true,
-      "detail": "NamingClause"
-    },
-    {
-      "name": "STCWRAP-004 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "STCWRAP-004 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "STCWRAP-004 reaches target",
-      "pass": true,
-      "detail": "我叫做 Chris。"
-    },
-    {
-      "name": "STCWRAP-005 case id is unique",
-      "pass": true,
-      "detail": "STCWRAP-005"
-    },
-    {
-      "name": "STCWRAP-005 targets active label",
-      "pass": true,
-      "detail": "VPComplementFrame"
-    },
-    {
-      "name": "STCWRAP-005 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "STCWRAP-005 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "STCWRAP-005 reaches target",
-      "pass": true,
-      "detail": "我記得要返屋企。"
-    },
-    {
       "name": "ESQWRAP-001 case id is unique",
       "pass": true,
       "detail": "ESQWRAP-001"
@@ -1131,31 +281,6 @@
       "name": "ESQWRAP-001 reaches target",
       "pass": true,
       "detail": "返工都得。"
-    },
-    {
-      "name": "ESQWRAP-002 case id is unique",
-      "pass": true,
-      "detail": "ESQWRAP-002"
-    },
-    {
-      "name": "ESQWRAP-002 targets active label",
-      "pass": true,
-      "detail": "EvaluationWithDouSyun"
-    },
-    {
-      "name": "ESQWRAP-002 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "ESQWRAP-002 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "ESQWRAP-002 reaches target",
-      "pass": true,
-      "detail": "都算中等價位。"
     },
     {
       "name": "ESQWRAP-003 case id is unique",
@@ -1183,256 +308,6 @@
       "detail": "唔算貴。"
     },
     {
-      "name": "ESQWRAP-004 case id is unique",
-      "pass": true,
-      "detail": "ESQWRAP-004"
-    },
-    {
-      "name": "ESQWRAP-004 targets active label",
-      "pass": true,
-      "detail": "ScalarRangeFragment"
-    },
-    {
-      "name": "ESQWRAP-004 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "ESQWRAP-004 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "ESQWRAP-004 reaches target",
-      "pass": true,
-      "detail": "中等價位。"
-    },
-    {
-      "name": "ESQWRAP-005 case id is unique",
-      "pass": true,
-      "detail": "ESQWRAP-005"
-    },
-    {
-      "name": "ESQWRAP-005 targets active label",
-      "pass": true,
-      "detail": "ScalarValueQuestion"
-    },
-    {
-      "name": "ESQWRAP-005 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "ESQWRAP-005 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "ESQWRAP-005 reaches target",
-      "pass": true,
-      "detail": "幾錢呀？"
-    },
-    {
-      "name": "ESQWRAP-006 case id is unique",
-      "pass": true,
-      "detail": "ESQWRAP-006"
-    },
-    {
-      "name": "ESQWRAP-006 targets active label",
-      "pass": true,
-      "detail": "OpinionQuestion"
-    },
-    {
-      "name": "ESQWRAP-006 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "ESQWRAP-006 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "ESQWRAP-006 reaches target",
-      "pass": true,
-      "detail": "你覺得呢個點樣？"
-    },
-    {
-      "name": "ESQWRAP-007 case id is unique",
-      "pass": true,
-      "detail": "ESQWRAP-007"
-    },
-    {
-      "name": "ESQWRAP-007 targets active label",
-      "pass": true,
-      "detail": "IdentityWhQuestion"
-    },
-    {
-      "name": "ESQWRAP-007 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "ESQWRAP-007 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "ESQWRAP-007 reaches target",
-      "pass": true,
-      "detail": "邊個嚟㗎？"
-    },
-    {
-      "name": "ESQWRAP-008 case id is unique",
-      "pass": true,
-      "detail": "ESQWRAP-008"
-    },
-    {
-      "name": "ESQWRAP-008 targets active label",
-      "pass": true,
-      "detail": "SchedulingQuestion"
-    },
-    {
-      "name": "ESQWRAP-008 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "ESQWRAP-008 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "ESQWRAP-008 reaches target",
-      "pass": true,
-      "detail": "你覺得約幾時好？"
-    },
-    {
-      "name": "ESQWRAP-009 case id is unique",
-      "pass": true,
-      "detail": "ESQWRAP-009"
-    },
-    {
-      "name": "ESQWRAP-009 targets active label",
-      "pass": true,
-      "detail": "TimeToActionFrame"
-    },
-    {
-      "name": "ESQWRAP-009 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "ESQWRAP-009 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "ESQWRAP-009 reaches target",
-      "pass": true,
-      "detail": "係時候返屋企。"
-    },
-    {
-      "name": "ESQWRAP-010 case id is unique",
-      "pass": true,
-      "detail": "ESQWRAP-010"
-    },
-    {
-      "name": "ESQWRAP-010 targets active label",
-      "pass": true,
-      "detail": "PostposedExistentialQuestion"
-    },
-    {
-      "name": "ESQWRAP-010 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "ESQWRAP-010 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "ESQWRAP-010 reaches target",
-      "pass": true,
-      "detail": "有書冇？"
-    },
-    {
-      "name": "FRWRAP-001 case id is unique",
-      "pass": true,
-      "detail": "FRWRAP-001"
-    },
-    {
-      "name": "FRWRAP-001 targets active label",
-      "pass": true,
-      "detail": "CompletionThenClause"
-    },
-    {
-      "name": "FRWRAP-001 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "FRWRAP-001 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "FRWRAP-001 reaches target",
-      "pass": true,
-      "detail": "我做完功課就瞓覺。"
-    },
-    {
-      "name": "FRWRAP-002 case id is unique",
-      "pass": true,
-      "detail": "FRWRAP-002"
-    },
-    {
-      "name": "FRWRAP-002 targets active label",
-      "pass": true,
-      "detail": "CompoundDirectionalMotionVP"
-    },
-    {
-      "name": "FRWRAP-002 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "FRWRAP-002 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "FRWRAP-002 reaches target",
-      "pass": true,
-      "detail": "返上嚟。"
-    },
-    {
-      "name": "FRWRAP-003 case id is unique",
-      "pass": true,
-      "detail": "FRWRAP-003"
-    },
-    {
-      "name": "FRWRAP-003 targets active label",
-      "pass": true,
-      "detail": "ConditionResult"
-    },
-    {
-      "name": "FRWRAP-003 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "FRWRAP-003 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "FRWRAP-003 reaches target",
-      "pass": true,
-      "detail": "買就平啲。"
-    },
-    {
       "name": "FRWRAP-004 case id is unique",
       "pass": true,
       "detail": "FRWRAP-004"
@@ -1456,31 +331,6 @@
       "name": "FRWRAP-004 reaches target",
       "pass": true,
       "detail": "好好食。"
-    },
-    {
-      "name": "FRWRAP-005 case id is unique",
-      "pass": true,
-      "detail": "FRWRAP-005"
-    },
-    {
-      "name": "FRWRAP-005 targets active label",
-      "pass": true,
-      "detail": "NegatedLexicalizedStative"
-    },
-    {
-      "name": "FRWRAP-005 has zero evidence weight",
-      "pass": true,
-      "detail": "0/runtime_reachability_only"
-    },
-    {
-      "name": "FRWRAP-005 uses supported assertion",
-      "pass": true,
-      "detail": "construction_present"
-    },
-    {
-      "name": "FRWRAP-005 reaches target",
-      "pass": true,
-      "detail": "難食。"
     },
     {
       "name": "FRWRAP-006 case id is unique",
@@ -1533,104 +383,1095 @@
       "detail": "請你沿住馬路行。"
     },
     {
-      "name": "FRWRAP-008 case id is unique",
+      "name": "PRQ2-013-I01 case id is unique",
       "pass": true,
-      "detail": "FRWRAP-008"
+      "detail": "PRQ2-013-I01"
     },
     {
-      "name": "FRWRAP-008 targets active label",
+      "name": "PRQ2-013-I01 targets active label",
       "pass": true,
-      "detail": "ProgressivePlaceQuestion"
+      "detail": "ClauseRelationGraph"
     },
     {
-      "name": "FRWRAP-008 has zero evidence weight",
+      "name": "PRQ2-013-I01 has zero evidence weight",
       "pass": true,
       "detail": "0/runtime_reachability_only"
     },
     {
-      "name": "FRWRAP-008 uses supported assertion",
+      "name": "PRQ2-013-I01 uses supported assertion",
       "pass": true,
-      "detail": "construction_present"
+      "detail": "trace_detail_equals"
     },
     {
-      "name": "FRWRAP-008 reaches target",
+      "name": "PRQ2-013-I01 reaches trace target",
       "pass": true,
-      "detail": "你做緊嘢喺邊度呀？"
+      "detail": "與其我去，不如你去。"
     },
     {
-      "name": "FRWRAP-009 case id is unique",
-      "pass": true,
-      "detail": "FRWRAP-009"
+      "name": "PRQ2-013-I01 declares expected trace detail",
+      "pass": true
     },
     {
-      "name": "FRWRAP-009 targets active label",
+      "name": "PRQ2-013-I01 trace field clause_linking_subtype equals expected",
       "pass": true,
-      "detail": "ProgressivePurposeClause"
+      "detail": "ordered_preference"
     },
     {
-      "name": "FRWRAP-009 has zero evidence weight",
+      "name": "PRQ2-013-I01 trace field marker_profile equals expected",
+      "pass": true,
+      "detail": "jyu5kei4_bat1jyu4"
+    },
+    {
+      "name": "PRQ2-013-I01 trace field research_id equals expected",
+      "pass": true,
+      "detail": "PRQ2-013"
+    },
+    {
+      "name": "PRQ2-013-I02 case id is unique",
+      "pass": true,
+      "detail": "PRQ2-013-I02"
+    },
+    {
+      "name": "PRQ2-013-I02 targets active label",
+      "pass": true,
+      "detail": "ClauseRelationGraph"
+    },
+    {
+      "name": "PRQ2-013-I02 has zero evidence weight",
       "pass": true,
       "detail": "0/runtime_reachability_only"
     },
     {
-      "name": "FRWRAP-009 uses supported assertion",
+      "name": "PRQ2-013-I02 uses supported assertion",
       "pass": true,
-      "detail": "construction_present"
+      "detail": "trace_detail_equals"
     },
     {
-      "name": "FRWRAP-009 reaches target",
+      "name": "PRQ2-013-I02 reaches trace target",
       "pass": true,
-      "detail": "佢喺度洗緊菜煮飯。"
+      "detail": "我哋與其食飯，不如飲茶。"
     },
     {
-      "name": "FRWRAP-010 case id is unique",
-      "pass": true,
-      "detail": "FRWRAP-010"
+      "name": "PRQ2-013-I02 declares expected trace detail",
+      "pass": true
     },
     {
-      "name": "FRWRAP-010 targets active label",
+      "name": "PRQ2-013-I02 trace field clause_linking_subtype equals expected",
       "pass": true,
-      "detail": "ProgressiveTransitivePredicate"
+      "detail": "ordered_preference"
     },
     {
-      "name": "FRWRAP-010 has zero evidence weight",
+      "name": "PRQ2-013-I02 trace field marker_profile equals expected",
+      "pass": true,
+      "detail": "jyu5kei4_bat1jyu4"
+    },
+    {
+      "name": "PRQ2-013-I02 trace field research_id equals expected",
+      "pass": true,
+      "detail": "PRQ2-013"
+    },
+    {
+      "name": "PRQ2-013-N01 case id is unique",
+      "pass": true,
+      "detail": "PRQ2-013-N01"
+    },
+    {
+      "name": "PRQ2-013-N01 targets active label",
+      "pass": true,
+      "detail": "ClauseRelationGraph"
+    },
+    {
+      "name": "PRQ2-013-N01 has zero evidence weight",
       "pass": true,
       "detail": "0/runtime_reachability_only"
     },
     {
-      "name": "FRWRAP-010 uses supported assertion",
+      "name": "PRQ2-013-N01 uses supported assertion",
       "pass": true,
-      "detail": "construction_present"
+      "detail": "trace_detail_not_equals"
     },
     {
-      "name": "FRWRAP-010 reaches target",
-      "pass": true,
-      "detail": "佢喺度洗緊菜煮飯。"
+      "name": "PRQ2-013-N01 declares forbidden trace detail",
+      "pass": true
     },
     {
-      "name": "FRWRAP-011 case id is unique",
+      "name": "PRQ2-013-N01 trace field clause_linking_subtype excludes forbidden value",
       "pass": true,
-      "detail": "FRWRAP-011"
+      "detail": "ordered_preference"
     },
     {
-      "name": "FRWRAP-011 targets active label",
+      "name": "PRQ2-013-N02 case id is unique",
       "pass": true,
-      "detail": "PurposePredicate"
+      "detail": "PRQ2-013-N02"
     },
     {
-      "name": "FRWRAP-011 has zero evidence weight",
+      "name": "PRQ2-013-N02 targets active label",
+      "pass": true,
+      "detail": "ClauseRelationGraph"
+    },
+    {
+      "name": "PRQ2-013-N02 has zero evidence weight",
       "pass": true,
       "detail": "0/runtime_reachability_only"
     },
     {
-      "name": "FRWRAP-011 uses supported assertion",
+      "name": "PRQ2-013-N02 uses supported assertion",
       "pass": true,
-      "detail": "construction_present"
+      "detail": "trace_detail_not_equals"
     },
     {
-      "name": "FRWRAP-011 reaches target",
+      "name": "PRQ2-013-N02 declares forbidden trace detail",
+      "pass": true
+    },
+    {
+      "name": "PRQ2-013-N02 trace field clause_linking_subtype excludes forbidden value",
       "pass": true,
-      "detail": "佢喺度洗緊菜煮飯。"
+      "detail": "ordered_preference"
+    },
+    {
+      "name": "PRQ2-013-N03 case id is unique",
+      "pass": true,
+      "detail": "PRQ2-013-N03"
+    },
+    {
+      "name": "PRQ2-013-N03 targets active label",
+      "pass": true,
+      "detail": "ClauseRelationGraph"
+    },
+    {
+      "name": "PRQ2-013-N03 has zero evidence weight",
+      "pass": true,
+      "detail": "0/runtime_reachability_only"
+    },
+    {
+      "name": "PRQ2-013-N03 uses supported assertion",
+      "pass": true,
+      "detail": "trace_detail_not_equals"
+    },
+    {
+      "name": "PRQ2-013-N03 declares forbidden trace detail",
+      "pass": true
+    },
+    {
+      "name": "PRQ2-013-N03 trace field clause_linking_subtype excludes forbidden value",
+      "pass": true,
+      "detail": "ordered_preference"
+    },
+    {
+      "name": "PRQ2-013-N04 case id is unique",
+      "pass": true,
+      "detail": "PRQ2-013-N04"
+    },
+    {
+      "name": "PRQ2-013-N04 targets active label",
+      "pass": true,
+      "detail": "ClauseRelationGraph"
+    },
+    {
+      "name": "PRQ2-013-N04 has zero evidence weight",
+      "pass": true,
+      "detail": "0/runtime_reachability_only"
+    },
+    {
+      "name": "PRQ2-013-N04 uses supported assertion",
+      "pass": true,
+      "detail": "trace_detail_not_equals"
+    },
+    {
+      "name": "PRQ2-013-N04 declares forbidden trace detail",
+      "pass": true
+    },
+    {
+      "name": "PRQ2-013-N04 trace field clause_linking_subtype excludes forbidden value",
+      "pass": true,
+      "detail": "ordered_preference"
+    },
+    {
+      "name": "PRQ2-008-I01 case id is unique",
+      "pass": true,
+      "detail": "PRQ2-008-I01"
+    },
+    {
+      "name": "PRQ2-008-I01 targets active label",
+      "pass": true,
+      "detail": "ClauseRelationGraph"
+    },
+    {
+      "name": "PRQ2-008-I01 has zero evidence weight",
+      "pass": true,
+      "detail": "0/runtime_reachability_only"
+    },
+    {
+      "name": "PRQ2-008-I01 uses supported assertion",
+      "pass": true,
+      "detail": "trace_detail_equals"
+    },
+    {
+      "name": "PRQ2-008-I01 reaches trace target",
+      "pass": true,
+      "detail": "只要學呢啲嘢，就冇問題。"
+    },
+    {
+      "name": "PRQ2-008-I01 declares expected trace detail",
+      "pass": true
+    },
+    {
+      "name": "PRQ2-008-I01 trace field clause_linking_subtype equals expected",
+      "pass": true,
+      "detail": "sufficient_condition"
+    },
+    {
+      "name": "PRQ2-008-I01 trace field relation_subtype equals expected",
+      "pass": true,
+      "detail": "conditional"
+    },
+    {
+      "name": "PRQ2-008-I01 trace field relation_profile equals expected",
+      "pass": true,
+      "detail": "sufficient_condition"
+    },
+    {
+      "name": "PRQ2-008-I01 trace field research_id equals expected",
+      "pass": true,
+      "detail": "PRQ2-008"
+    },
+    {
+      "name": "PRQ2-008-I01 trace field relation_profile_scope equals expected",
+      "pass": true,
+      "detail": "left_initial_overt_marker_and_overt_right_linker_only"
+    },
+    {
+      "name": "PRQ2-008-I02 case id is unique",
+      "pass": true,
+      "detail": "PRQ2-008-I02"
+    },
+    {
+      "name": "PRQ2-008-I02 targets active label",
+      "pass": true,
+      "detail": "ClauseRelationGraph"
+    },
+    {
+      "name": "PRQ2-008-I02 has zero evidence weight",
+      "pass": true,
+      "detail": "0/runtime_reachability_only"
+    },
+    {
+      "name": "PRQ2-008-I02 uses supported assertion",
+      "pass": true,
+      "detail": "trace_detail_equals"
+    },
+    {
+      "name": "PRQ2-008-I02 reaches trace target",
+      "pass": true,
+      "detail": "只要份工高人工，我就做咩工都唔介意。"
+    },
+    {
+      "name": "PRQ2-008-I02 declares expected trace detail",
+      "pass": true
+    },
+    {
+      "name": "PRQ2-008-I02 trace field clause_linking_subtype equals expected",
+      "pass": true,
+      "detail": "sufficient_condition"
+    },
+    {
+      "name": "PRQ2-008-I02 trace field relation_subtype equals expected",
+      "pass": true,
+      "detail": "conditional"
+    },
+    {
+      "name": "PRQ2-008-I02 trace field relation_profile equals expected",
+      "pass": true,
+      "detail": "sufficient_condition"
+    },
+    {
+      "name": "PRQ2-008-I02 trace field research_id equals expected",
+      "pass": true,
+      "detail": "PRQ2-008"
+    },
+    {
+      "name": "PRQ2-008-I02 trace field relation_profile_scope equals expected",
+      "pass": true,
+      "detail": "left_initial_overt_marker_and_overt_right_linker_only"
+    },
+    {
+      "name": "PRQ2-008-N01 case id is unique",
+      "pass": true,
+      "detail": "PRQ2-008-N01"
+    },
+    {
+      "name": "PRQ2-008-N01 targets active label",
+      "pass": true,
+      "detail": "ClauseRelationGraph"
+    },
+    {
+      "name": "PRQ2-008-N01 has zero evidence weight",
+      "pass": true,
+      "detail": "0/runtime_reachability_only"
+    },
+    {
+      "name": "PRQ2-008-N01 uses supported assertion",
+      "pass": true,
+      "detail": "construction_absent"
+    },
+    {
+      "name": "PRQ2-008-N01 excludes target",
+      "pass": true,
+      "detail": "只要。"
+    },
+    {
+      "name": "PRQ2-008-N02 case id is unique",
+      "pass": true,
+      "detail": "PRQ2-008-N02"
+    },
+    {
+      "name": "PRQ2-008-N02 targets active label",
+      "pass": true,
+      "detail": "ClauseRelationGraph"
+    },
+    {
+      "name": "PRQ2-008-N02 has zero evidence weight",
+      "pass": true,
+      "detail": "0/runtime_reachability_only"
+    },
+    {
+      "name": "PRQ2-008-N02 uses supported assertion",
+      "pass": true,
+      "detail": "construction_absent"
+    },
+    {
+      "name": "PRQ2-008-N02 excludes target",
+      "pass": true,
+      "detail": "只要就。"
+    },
+    {
+      "name": "PRQ2-008-N03 case id is unique",
+      "pass": true,
+      "detail": "PRQ2-008-N03"
+    },
+    {
+      "name": "PRQ2-008-N03 targets active label",
+      "pass": true,
+      "detail": "ClauseRelationGraph"
+    },
+    {
+      "name": "PRQ2-008-N03 has zero evidence weight",
+      "pass": true,
+      "detail": "0/runtime_reachability_only"
+    },
+    {
+      "name": "PRQ2-008-N03 uses supported assertion",
+      "pass": true,
+      "detail": "trace_detail_not_equals"
+    },
+    {
+      "name": "PRQ2-008-N03 declares forbidden trace detail",
+      "pass": true
+    },
+    {
+      "name": "PRQ2-008-N03 trace field relation_profile excludes forbidden value",
+      "pass": true,
+      "detail": "sufficient_condition"
+    },
+    {
+      "name": "PRQ2-008-N04 case id is unique",
+      "pass": true,
+      "detail": "PRQ2-008-N04"
+    },
+    {
+      "name": "PRQ2-008-N04 targets active label",
+      "pass": true,
+      "detail": "ClauseRelationGraph"
+    },
+    {
+      "name": "PRQ2-008-N04 has zero evidence weight",
+      "pass": true,
+      "detail": "0/runtime_reachability_only"
+    },
+    {
+      "name": "PRQ2-008-N04 uses supported assertion",
+      "pass": true,
+      "detail": "trace_detail_not_equals"
+    },
+    {
+      "name": "PRQ2-008-N04 declares forbidden trace detail",
+      "pass": true
+    },
+    {
+      "name": "PRQ2-008-N04 trace field relation_profile excludes forbidden value",
+      "pass": true,
+      "detail": "sufficient_condition"
+    },
+    {
+      "name": "PRQ2-008-N05 case id is unique",
+      "pass": true,
+      "detail": "PRQ2-008-N05"
+    },
+    {
+      "name": "PRQ2-008-N05 targets active label",
+      "pass": true,
+      "detail": "ClauseRelationGraph"
+    },
+    {
+      "name": "PRQ2-008-N05 has zero evidence weight",
+      "pass": true,
+      "detail": "0/runtime_reachability_only"
+    },
+    {
+      "name": "PRQ2-008-N05 uses supported assertion",
+      "pass": true,
+      "detail": "trace_detail_not_equals"
+    },
+    {
+      "name": "PRQ2-008-N05 declares forbidden trace detail",
+      "pass": true
+    },
+    {
+      "name": "PRQ2-008-N05 trace field relation_profile excludes forbidden value",
+      "pass": true,
+      "detail": "sufficient_condition"
+    },
+    {
+      "name": "PRQ2-014-I01 case id is unique",
+      "pass": true,
+      "detail": "PRQ2-014-I01"
+    },
+    {
+      "name": "PRQ2-014-I01 targets active label",
+      "pass": true,
+      "detail": "ClauseRelationGraph"
+    },
+    {
+      "name": "PRQ2-014-I01 has zero evidence weight",
+      "pass": true,
+      "detail": "0/runtime_reachability_only"
+    },
+    {
+      "name": "PRQ2-014-I01 uses supported assertion",
+      "pass": true,
+      "detail": "trace_detail_equals"
+    },
+    {
+      "name": "PRQ2-014-I01 reaches trace target",
+      "pass": true,
+      "detail": "只有同心協力，啲嘢先至做得好。"
+    },
+    {
+      "name": "PRQ2-014-I01 declares expected trace detail",
+      "pass": true
+    },
+    {
+      "name": "PRQ2-014-I01 trace field clause_linking_subtype equals expected",
+      "pass": true,
+      "detail": "necessary_condition"
+    },
+    {
+      "name": "PRQ2-014-I01 trace field relation_subtype equals expected",
+      "pass": true,
+      "detail": "conditional"
+    },
+    {
+      "name": "PRQ2-014-I01 trace field relation_profile equals expected",
+      "pass": true,
+      "detail": "necessary_condition"
+    },
+    {
+      "name": "PRQ2-014-I01 trace field research_id equals expected",
+      "pass": true,
+      "detail": "PRQ2-014"
+    },
+    {
+      "name": "PRQ2-014-I01 trace field relation_profile_scope equals expected",
+      "pass": true,
+      "detail": "overt_left_marker_with_predicate_or_frame_and_overt_right_linker_only"
+    },
+    {
+      "name": "PRQ2-014-I02 case id is unique",
+      "pass": true,
+      "detail": "PRQ2-014-I02"
+    },
+    {
+      "name": "PRQ2-014-I02 targets active label",
+      "pass": true,
+      "detail": "ClauseRelationGraph"
+    },
+    {
+      "name": "PRQ2-014-I02 has zero evidence weight",
+      "pass": true,
+      "detail": "0/runtime_reachability_only"
+    },
+    {
+      "name": "PRQ2-014-I02 uses supported assertion",
+      "pass": true,
+      "detail": "trace_detail_equals"
+    },
+    {
+      "name": "PRQ2-014-I02 reaches trace target",
+      "pass": true,
+      "detail": "金融業只有喺多元化及繁榮嘅商業環境下，先可以興旺發展。"
+    },
+    {
+      "name": "PRQ2-014-I02 declares expected trace detail",
+      "pass": true
+    },
+    {
+      "name": "PRQ2-014-I02 trace field clause_linking_subtype equals expected",
+      "pass": true,
+      "detail": "necessary_condition"
+    },
+    {
+      "name": "PRQ2-014-I02 trace field relation_subtype equals expected",
+      "pass": true,
+      "detail": "conditional"
+    },
+    {
+      "name": "PRQ2-014-I02 trace field relation_profile equals expected",
+      "pass": true,
+      "detail": "necessary_condition"
+    },
+    {
+      "name": "PRQ2-014-I02 trace field research_id equals expected",
+      "pass": true,
+      "detail": "PRQ2-014"
+    },
+    {
+      "name": "PRQ2-014-I02 trace field relation_profile_scope equals expected",
+      "pass": true,
+      "detail": "overt_left_marker_with_predicate_or_frame_and_overt_right_linker_only"
+    },
+    {
+      "name": "PRQ2-014-N01 case id is unique",
+      "pass": true,
+      "detail": "PRQ2-014-N01"
+    },
+    {
+      "name": "PRQ2-014-N01 targets active label",
+      "pass": true,
+      "detail": "ClauseRelationGraph"
+    },
+    {
+      "name": "PRQ2-014-N01 has zero evidence weight",
+      "pass": true,
+      "detail": "0/runtime_reachability_only"
+    },
+    {
+      "name": "PRQ2-014-N01 uses supported assertion",
+      "pass": true,
+      "detail": "construction_absent"
+    },
+    {
+      "name": "PRQ2-014-N01 excludes target",
+      "pass": true,
+      "detail": "食完飯先至計啦。"
+    },
+    {
+      "name": "PRQ2-014-N02 case id is unique",
+      "pass": true,
+      "detail": "PRQ2-014-N02"
+    },
+    {
+      "name": "PRQ2-014-N02 targets active label",
+      "pass": true,
+      "detail": "ClauseRelationGraph"
+    },
+    {
+      "name": "PRQ2-014-N02 has zero evidence weight",
+      "pass": true,
+      "detail": "0/runtime_reachability_only"
+    },
+    {
+      "name": "PRQ2-014-N02 uses supported assertion",
+      "pass": true,
+      "detail": "construction_absent"
+    },
+    {
+      "name": "PRQ2-014-N02 excludes target",
+      "pass": true,
+      "detail": "只有，先至。"
+    },
+    {
+      "name": "PRQ2-014-N03 case id is unique",
+      "pass": true,
+      "detail": "PRQ2-014-N03"
+    },
+    {
+      "name": "PRQ2-014-N03 targets active label",
+      "pass": true,
+      "detail": "ClauseRelationGraph"
+    },
+    {
+      "name": "PRQ2-014-N03 has zero evidence weight",
+      "pass": true,
+      "detail": "0/runtime_reachability_only"
+    },
+    {
+      "name": "PRQ2-014-N03 uses supported assertion",
+      "pass": true,
+      "detail": "trace_detail_not_equals"
+    },
+    {
+      "name": "PRQ2-014-N03 declares forbidden trace detail",
+      "pass": true
+    },
+    {
+      "name": "PRQ2-014-N03 trace field relation_profile excludes forbidden value",
+      "pass": true,
+      "detail": "necessary_condition"
+    },
+    {
+      "name": "PRQ2-014-N04 case id is unique",
+      "pass": true,
+      "detail": "PRQ2-014-N04"
+    },
+    {
+      "name": "PRQ2-014-N04 targets active label",
+      "pass": true,
+      "detail": "ClauseRelationGraph"
+    },
+    {
+      "name": "PRQ2-014-N04 has zero evidence weight",
+      "pass": true,
+      "detail": "0/runtime_reachability_only"
+    },
+    {
+      "name": "PRQ2-014-N04 uses supported assertion",
+      "pass": true,
+      "detail": "trace_detail_not_equals"
+    },
+    {
+      "name": "PRQ2-014-N04 declares forbidden trace detail",
+      "pass": true
+    },
+    {
+      "name": "PRQ2-014-N04 trace field relation_profile excludes forbidden value",
+      "pass": true,
+      "detail": "necessary_condition"
+    },
+    {
+      "name": "PRQ2-014-N05 case id is unique",
+      "pass": true,
+      "detail": "PRQ2-014-N05"
+    },
+    {
+      "name": "PRQ2-014-N05 targets active label",
+      "pass": true,
+      "detail": "ClauseRelationGraph"
+    },
+    {
+      "name": "PRQ2-014-N05 has zero evidence weight",
+      "pass": true,
+      "detail": "0/runtime_reachability_only"
+    },
+    {
+      "name": "PRQ2-014-N05 uses supported assertion",
+      "pass": true,
+      "detail": "trace_detail_not_equals"
+    },
+    {
+      "name": "PRQ2-014-N05 declares forbidden trace detail",
+      "pass": true
+    },
+    {
+      "name": "PRQ2-014-N05 trace field relation_profile excludes forbidden value",
+      "pass": true,
+      "detail": "necessary_condition"
+    },
+    {
+      "name": "PRQ2-015-I01 case id is unique",
+      "pass": true,
+      "detail": "PRQ2-015-I01"
+    },
+    {
+      "name": "PRQ2-015-I01 targets active label",
+      "pass": true,
+      "detail": "ClauseRelationGraph"
+    },
+    {
+      "name": "PRQ2-015-I01 has zero evidence weight",
+      "pass": true,
+      "detail": "0/runtime_reachability_only"
+    },
+    {
+      "name": "PRQ2-015-I01 uses supported assertion",
+      "pass": true,
+      "detail": "trace_detail_equals"
+    },
+    {
+      "name": "PRQ2-015-I01 reaches trace target",
+      "pass": true,
+      "detail": "我寧願去啲唔鍾意嘅公司度做嘢，都唔想渾渾噩噩噉又過多年。"
+    },
+    {
+      "name": "PRQ2-015-I01 declares expected trace detail",
+      "pass": true
+    },
+    {
+      "name": "PRQ2-015-I01 trace field clause_linking_subtype equals expected",
+      "pass": true,
+      "detail": "committed_preference"
+    },
+    {
+      "name": "PRQ2-015-I01 trace field relation_subtype equals expected",
+      "pass": true,
+      "detail": "committed_preference"
+    },
+    {
+      "name": "PRQ2-015-I01 trace field relation_profile equals expected",
+      "pass": true,
+      "detail": "rejection"
+    },
+    {
+      "name": "PRQ2-015-I01 trace field research_id equals expected",
+      "pass": true,
+      "detail": "PRQ2-015"
+    },
+    {
+      "name": "PRQ2-015-I02 case id is unique",
+      "pass": true,
+      "detail": "PRQ2-015-I02"
+    },
+    {
+      "name": "PRQ2-015-I02 targets active label",
+      "pass": true,
+      "detail": "ClauseRelationGraph"
+    },
+    {
+      "name": "PRQ2-015-I02 has zero evidence weight",
+      "pass": true,
+      "detail": "0/runtime_reachability_only"
+    },
+    {
+      "name": "PRQ2-015-I02 uses supported assertion",
+      "pass": true,
+      "detail": "trace_detail_equals"
+    },
+    {
+      "name": "PRQ2-015-I02 reaches trace target",
+      "pass": true,
+      "detail": "阿Tom寧願行十公里路，都唔肯俾錢買飛搭巴士。"
+    },
+    {
+      "name": "PRQ2-015-I02 declares expected trace detail",
+      "pass": true
+    },
+    {
+      "name": "PRQ2-015-I02 trace field clause_linking_subtype equals expected",
+      "pass": true,
+      "detail": "committed_preference"
+    },
+    {
+      "name": "PRQ2-015-I02 trace field relation_subtype equals expected",
+      "pass": true,
+      "detail": "committed_preference"
+    },
+    {
+      "name": "PRQ2-015-I02 trace field relation_profile equals expected",
+      "pass": true,
+      "detail": "rejection"
+    },
+    {
+      "name": "PRQ2-015-I02 trace field research_id equals expected",
+      "pass": true,
+      "detail": "PRQ2-015"
+    },
+    {
+      "name": "PRQ2-015-N01 case id is unique",
+      "pass": true,
+      "detail": "PRQ2-015-N01"
+    },
+    {
+      "name": "PRQ2-015-N01 targets active label",
+      "pass": true,
+      "detail": "ClauseRelationGraph"
+    },
+    {
+      "name": "PRQ2-015-N01 has zero evidence weight",
+      "pass": true,
+      "detail": "0/runtime_reachability_only"
+    },
+    {
+      "name": "PRQ2-015-N01 uses supported assertion",
+      "pass": true,
+      "detail": "trace_detail_not_equals"
+    },
+    {
+      "name": "PRQ2-015-N01 declares forbidden trace detail",
+      "pass": true
+    },
+    {
+      "name": "PRQ2-015-N01 trace field clause_linking_subtype excludes forbidden value",
+      "pass": true,
+      "detail": "committed_preference"
+    },
+    {
+      "name": "PRQ2-009-I01 case id is unique",
+      "pass": true,
+      "detail": "PRQ2-009-I01"
+    },
+    {
+      "name": "PRQ2-009-I01 targets active label",
+      "pass": true,
+      "detail": "ClauseRelationGraph"
+    },
+    {
+      "name": "PRQ2-009-I01 has zero evidence weight",
+      "pass": true,
+      "detail": "0/runtime_reachability_only"
+    },
+    {
+      "name": "PRQ2-009-I01 uses supported assertion",
+      "pass": true,
+      "detail": "trace_detail_equals"
+    },
+    {
+      "name": "PRQ2-009-I01 reaches trace target",
+      "pass": true,
+      "detail": "既然其他國家都可以成功限制每日工作小時同埋實施最低工資，我相信喺香港都一定得。"
+    },
+    {
+      "name": "PRQ2-009-I01 declares expected trace detail",
+      "pass": true
+    },
+    {
+      "name": "PRQ2-009-I01 trace field clause_linking_subtype equals expected",
+      "pass": true,
+      "detail": "premise_response"
+    },
+    {
+      "name": "PRQ2-009-I01 trace field relation_subtype equals expected",
+      "pass": true,
+      "detail": "premise_response"
+    },
+    {
+      "name": "PRQ2-009-I01 trace field relation_profile equals expected",
+      "pass": true,
+      "detail": "established_premise_response"
+    },
+    {
+      "name": "PRQ2-009-I01 trace field response_marker_profile equals expected",
+      "pass": true,
+      "detail": "unmarked"
+    },
+    {
+      "name": "PRQ2-009-I01 trace field research_id equals expected",
+      "pass": true,
+      "detail": "PRQ2-009"
+    },
+    {
+      "name": "PRQ2-009-I02 case id is unique",
+      "pass": true,
+      "detail": "PRQ2-009-I02"
+    },
+    {
+      "name": "PRQ2-009-I02 targets active label",
+      "pass": true,
+      "detail": "ClauseRelationGraph"
+    },
+    {
+      "name": "PRQ2-009-I02 has zero evidence weight",
+      "pass": true,
+      "detail": "0/runtime_reachability_only"
+    },
+    {
+      "name": "PRQ2-009-I02 uses supported assertion",
+      "pass": true,
+      "detail": "trace_detail_equals"
+    },
+    {
+      "name": "PRQ2-009-I02 reaches trace target",
+      "pass": true,
+      "detail": "既然你都去圖書館，不如順便幫我還書啦。"
+    },
+    {
+      "name": "PRQ2-009-I02 declares expected trace detail",
+      "pass": true
+    },
+    {
+      "name": "PRQ2-009-I02 trace field clause_linking_subtype equals expected",
+      "pass": true,
+      "detail": "premise_response"
+    },
+    {
+      "name": "PRQ2-009-I02 trace field relation_subtype equals expected",
+      "pass": true,
+      "detail": "premise_response"
+    },
+    {
+      "name": "PRQ2-009-I02 trace field relation_profile equals expected",
+      "pass": true,
+      "detail": "established_premise_response"
+    },
+    {
+      "name": "PRQ2-009-I02 trace field response_marker_profile equals expected",
+      "pass": true,
+      "detail": "bat1jyu4"
+    },
+    {
+      "name": "PRQ2-009-I02 trace field research_id equals expected",
+      "pass": true,
+      "detail": "PRQ2-009"
+    },
+    {
+      "name": "PRQ2-009-I03 case id is unique",
+      "pass": true,
+      "detail": "PRQ2-009-I03"
+    },
+    {
+      "name": "PRQ2-009-I03 targets active label",
+      "pass": true,
+      "detail": "ClauseRelationGraph"
+    },
+    {
+      "name": "PRQ2-009-I03 has zero evidence weight",
+      "pass": true,
+      "detail": "0/runtime_reachability_only"
+    },
+    {
+      "name": "PRQ2-009-I03 uses supported assertion",
+      "pass": true,
+      "detail": "trace_detail_equals"
+    },
+    {
+      "name": "PRQ2-009-I03 reaches trace target",
+      "pass": true,
+      "detail": "既然佢唔得閒，噉我聽日再嚟過吖。"
+    },
+    {
+      "name": "PRQ2-009-I03 declares expected trace detail",
+      "pass": true
+    },
+    {
+      "name": "PRQ2-009-I03 trace field clause_linking_subtype equals expected",
+      "pass": true,
+      "detail": "premise_response"
+    },
+    {
+      "name": "PRQ2-009-I03 trace field relation_subtype equals expected",
+      "pass": true,
+      "detail": "premise_response"
+    },
+    {
+      "name": "PRQ2-009-I03 trace field relation_profile equals expected",
+      "pass": true,
+      "detail": "established_premise_response"
+    },
+    {
+      "name": "PRQ2-009-I03 trace field response_marker_profile equals expected",
+      "pass": true,
+      "detail": "gam2"
+    },
+    {
+      "name": "PRQ2-009-I03 trace field research_id equals expected",
+      "pass": true,
+      "detail": "PRQ2-009"
+    },
+    {
+      "name": "PRQ2-009-I04 case id is unique",
+      "pass": true,
+      "detail": "PRQ2-009-I04"
+    },
+    {
+      "name": "PRQ2-009-I04 targets active label",
+      "pass": true,
+      "detail": "ClauseRelationGraph"
+    },
+    {
+      "name": "PRQ2-009-I04 has zero evidence weight",
+      "pass": true,
+      "detail": "0/runtime_reachability_only"
+    },
+    {
+      "name": "PRQ2-009-I04 uses supported assertion",
+      "pass": true,
+      "detail": "trace_detail_equals"
+    },
+    {
+      "name": "PRQ2-009-I04 reaches trace target",
+      "pass": true,
+      "detail": "既然你嚟咗，就坐低啦。"
+    },
+    {
+      "name": "PRQ2-009-I04 declares expected trace detail",
+      "pass": true
+    },
+    {
+      "name": "PRQ2-009-I04 trace field clause_linking_subtype equals expected",
+      "pass": true,
+      "detail": "premise_response"
+    },
+    {
+      "name": "PRQ2-009-I04 trace field relation_subtype equals expected",
+      "pass": true,
+      "detail": "premise_response"
+    },
+    {
+      "name": "PRQ2-009-I04 trace field relation_profile equals expected",
+      "pass": true,
+      "detail": "established_premise_response"
+    },
+    {
+      "name": "PRQ2-009-I04 trace field response_marker_profile equals expected",
+      "pass": true,
+      "detail": "zau6"
+    },
+    {
+      "name": "PRQ2-009-I04 trace field research_id equals expected",
+      "pass": true,
+      "detail": "PRQ2-009"
+    },
+    {
+      "name": "PRQ2-009-N01 case id is unique",
+      "pass": true,
+      "detail": "PRQ2-009-N01"
+    },
+    {
+      "name": "PRQ2-009-N01 targets active label",
+      "pass": true,
+      "detail": "ClauseRelationGraph"
+    },
+    {
+      "name": "PRQ2-009-N01 has zero evidence weight",
+      "pass": true,
+      "detail": "0/runtime_reachability_only"
+    },
+    {
+      "name": "PRQ2-009-N01 uses supported assertion",
+      "pass": true,
+      "detail": "trace_detail_not_equals"
+    },
+    {
+      "name": "PRQ2-009-N01 declares forbidden trace detail",
+      "pass": true
+    },
+    {
+      "name": "PRQ2-009-N01 trace field clause_linking_subtype excludes forbidden value",
+      "pass": true,
+      "detail": "premise_response"
+    },
+    {
+      "name": "PRQ2-009-N02 case id is unique",
+      "pass": true,
+      "detail": "PRQ2-009-N02"
+    },
+    {
+      "name": "PRQ2-009-N02 targets active label",
+      "pass": true,
+      "detail": "ClauseRelationGraph"
+    },
+    {
+      "name": "PRQ2-009-N02 has zero evidence weight",
+      "pass": true,
+      "detail": "0/runtime_reachability_only"
+    },
+    {
+      "name": "PRQ2-009-N02 uses supported assertion",
+      "pass": true,
+      "detail": "construction_absent"
+    },
+    {
+      "name": "PRQ2-009-N02 excludes target",
+      "pass": true,
+      "detail": "既然就。"
     },
     {
       "name": "AcceptabilityANotA exists in construction index",
@@ -1639,7 +1480,7 @@
     {
       "name": "AcceptabilityANotA coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
+      "detail": "positive_and_boundary/positive_and_boundary"
     },
     {
       "name": "AcceptabilityANotA implementation probe count",
@@ -1649,7 +1490,7 @@
     {
       "name": "AcceptabilityANotA zero-weight probes do not create linguistic positives",
       "pass": true,
-      "detail": "0"
+      "detail": "1"
     },
     {
       "name": "AcceptabilityClause exists in construction index",
@@ -1658,7 +1499,7 @@
     {
       "name": "AcceptabilityClause coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
+      "detail": "positive_and_boundary/positive_and_boundary"
     },
     {
       "name": "AcceptabilityClause implementation probe count",
@@ -1668,7 +1509,7 @@
     {
       "name": "AcceptabilityClause zero-weight probes do not create linguistic positives",
       "pass": true,
-      "detail": "0"
+      "detail": "2"
     },
     {
       "name": "ActionStativeVP exists in construction index",
@@ -1677,7 +1518,7 @@
     {
       "name": "ActionStativeVP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "ANotAQuestion exists in construction index",
@@ -1686,7 +1527,7 @@
     {
       "name": "ANotAQuestion needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "ApproximateQuantity exists in construction index",
@@ -1695,7 +1536,7 @@
     {
       "name": "ApproximateQuantity needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "AssociativeNP exists in construction index",
@@ -1704,64 +1545,16 @@
     {
       "name": "AssociativeNP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
-    },
-    {
-      "name": "CausativeResultFrame exists in construction index",
-      "pass": true
-    },
-    {
-      "name": "CausativeResultFrame coverage state reflects linguistic cases before zero-weight probes",
-      "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "CausativeResultFrame implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "CausativeResultFrame zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
-    },
-    {
-      "name": "CausativeResultPredicate exists in construction index",
-      "pass": true
-    },
-    {
-      "name": "CausativeResultPredicate coverage state reflects linguistic cases before zero-weight probes",
-      "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "CausativeResultPredicate implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "CausativeResultPredicate zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "ChangeIntoPredicate exists in construction index",
       "pass": true
     },
     {
-      "name": "ChangeIntoPredicate coverage state reflects linguistic cases before zero-weight probes",
+      "name": "ChangeIntoPredicate needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "ChangeIntoPredicate implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "ChangeIntoPredicate zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "ClassifierObjectNP exists in construction index",
@@ -1770,7 +1563,7 @@
     {
       "name": "ClassifierObjectNP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "ClauseRelationEdge exists in construction index",
@@ -1779,16 +1572,26 @@
     {
       "name": "ClauseRelationEdge needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "ClauseRelationGraph exists in construction index",
       "pass": true
     },
     {
-      "name": "ClauseRelationGraph needs no implementation probe unless coverage says so",
+      "name": "ClauseRelationGraph coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary/positive_and_boundary"
+    },
+    {
+      "name": "ClauseRelationGraph implementation probe count",
+      "pass": true,
+      "detail": "29/29"
+    },
+    {
+      "name": "ClauseRelationGraph zero-weight probes do not create linguistic positives",
+      "pass": true,
+      "detail": "47"
     },
     {
       "name": "ClauseRelationMemberSpan exists in construction index",
@@ -1797,7 +1600,7 @@
     {
       "name": "ClauseRelationMemberSpan needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "ClauseSpan exists in construction index",
@@ -1806,7 +1609,7 @@
     {
       "name": "ClauseSpan needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "CognitionContentFrame exists in construction index",
@@ -1815,45 +1618,7 @@
     {
       "name": "CognitionContentFrame needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
-    },
-    {
-      "name": "CognitionDelimitedObjectVP exists in construction index",
-      "pass": true
-    },
-    {
-      "name": "CognitionDelimitedObjectVP coverage state reflects linguistic cases before zero-weight probes",
-      "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "CognitionDelimitedObjectVP implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "CognitionDelimitedObjectVP zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
-    },
-    {
-      "name": "CognitionDelimitedVP exists in construction index",
-      "pass": true
-    },
-    {
-      "name": "CognitionDelimitedVP coverage state reflects linguistic cases before zero-weight probes",
-      "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "CognitionDelimitedVP implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "CognitionDelimitedVP zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "CognitionStatementClause exists in construction index",
@@ -1862,7 +1627,7 @@
     {
       "name": "CognitionStatementClause needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "ComplementEllipsisFragment exists in construction index",
@@ -1871,7 +1636,7 @@
     {
       "name": "ComplementEllipsisFragment needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "CompletionQuestion exists in construction index",
@@ -1880,26 +1645,7 @@
     {
       "name": "CompletionQuestion needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
-    },
-    {
-      "name": "CompletionThenClause exists in construction index",
-      "pass": true
-    },
-    {
-      "name": "CompletionThenClause coverage state reflects linguistic cases before zero-weight probes",
-      "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "CompletionThenClause implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "CompletionThenClause zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "CompletionVP exists in construction index",
@@ -1908,26 +1654,16 @@
     {
       "name": "CompletionVP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "CompoundDirectionalMotionVP exists in construction index",
       "pass": true
     },
     {
-      "name": "CompoundDirectionalMotionVP coverage state reflects linguistic cases before zero-weight probes",
+      "name": "CompoundDirectionalMotionVP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "CompoundDirectionalMotionVP implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "CompoundDirectionalMotionVP zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "ConditionalClause exists in construction index",
@@ -1936,26 +1672,7 @@
     {
       "name": "ConditionalClause needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
-    },
-    {
-      "name": "ConditionResult exists in construction index",
-      "pass": true
-    },
-    {
-      "name": "ConditionResult coverage state reflects linguistic cases before zero-weight probes",
-      "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "ConditionResult implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "ConditionResult zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "CoordinatedNP exists in construction index",
@@ -1964,7 +1681,7 @@
     {
       "name": "CoordinatedNP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "CopularANotAQuestion exists in construction index",
@@ -1973,7 +1690,7 @@
     {
       "name": "CopularANotAQuestion coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
+      "detail": "positive_and_boundary/positive_and_boundary"
     },
     {
       "name": "CopularANotAQuestion implementation probe count",
@@ -1983,7 +1700,7 @@
     {
       "name": "CopularANotAQuestion zero-weight probes do not create linguistic positives",
       "pass": true,
-      "detail": "0"
+      "detail": "2"
     },
     {
       "name": "CopularIdentificationFrame exists in construction index",
@@ -1992,7 +1709,7 @@
     {
       "name": "CopularIdentificationFrame needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "CopularRelationFrame exists in construction index",
@@ -2001,7 +1718,7 @@
     {
       "name": "CopularRelationFrame needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "CoverbFrame exists in construction index",
@@ -2010,45 +1727,7 @@
     {
       "name": "CoverbFrame needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
-    },
-    {
-      "name": "DefinitionComplement exists in construction index",
-      "pass": true
-    },
-    {
-      "name": "DefinitionComplement coverage state reflects linguistic cases before zero-weight probes",
-      "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "DefinitionComplement implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "DefinitionComplement zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
-    },
-    {
-      "name": "DefinitionExplanatoryFrame exists in construction index",
-      "pass": true
-    },
-    {
-      "name": "DefinitionExplanatoryFrame coverage state reflects linguistic cases before zero-weight probes",
-      "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "DefinitionExplanatoryFrame implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "DefinitionExplanatoryFrame zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "DegreeMannerAdverbial exists in construction index",
@@ -2057,26 +1736,16 @@
     {
       "name": "DegreeMannerAdverbial needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "DegreeMannerModifiedVP exists in construction index",
       "pass": true
     },
     {
-      "name": "DegreeMannerModifiedVP coverage state reflects linguistic cases before zero-weight probes",
+      "name": "DegreeMannerModifiedVP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "DegreeMannerModifiedVP implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "DegreeMannerModifiedVP zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "DegreeModifiedLexicalStative exists in construction index",
@@ -2085,7 +1754,7 @@
     {
       "name": "DegreeModifiedLexicalStative coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "positive_only/positive_only"
+      "detail": "positive_and_boundary/positive_and_boundary"
     },
     {
       "name": "DegreeModifiedLexicalStative implementation probe count",
@@ -2104,7 +1773,7 @@
     {
       "name": "DegreeStativePredicate needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "DelimitedVP exists in construction index",
@@ -2113,7 +1782,7 @@
     {
       "name": "DelimitedVP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "DemonstrativeClassifierNP exists in construction index",
@@ -2141,7 +1810,7 @@
     {
       "name": "DesiderativeVP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "DiMarkedNP exists in construction index",
@@ -2150,7 +1819,7 @@
     {
       "name": "DiMarkedNP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "DirectedMannerMotionVP exists in construction index",
@@ -2159,7 +1828,7 @@
     {
       "name": "DirectedMannerMotionVP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "DirectionalMotionVP exists in construction index",
@@ -2168,7 +1837,7 @@
     {
       "name": "DirectionalMotionVP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "DiscourseParticleFrame exists in construction index",
@@ -2177,45 +1846,16 @@
     {
       "name": "DiscourseParticleFrame needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
-    },
-    {
-      "name": "DisposalChangeIntoResultFrame exists in construction index",
-      "pass": true
-    },
-    {
-      "name": "DisposalChangeIntoResultFrame coverage state reflects linguistic cases before zero-weight probes",
-      "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "DisposalChangeIntoResultFrame implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "DisposalChangeIntoResultFrame zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "DitransitiveSpeechVP exists in construction index",
       "pass": true
     },
     {
-      "name": "DitransitiveSpeechVP coverage state reflects linguistic cases before zero-weight probes",
+      "name": "DitransitiveSpeechVP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "DitransitiveSpeechVP implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "DitransitiveSpeechVP zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "DurativeVP exists in construction index",
@@ -2224,26 +1864,7 @@
     {
       "name": "DurativeVP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
-    },
-    {
-      "name": "EvaluationWithDouSyun exists in construction index",
-      "pass": true
-    },
-    {
-      "name": "EvaluationWithDouSyun coverage state reflects linguistic cases before zero-weight probes",
-      "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "EvaluationWithDouSyun implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "EvaluationWithDouSyun zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "ExistentialClause exists in construction index",
@@ -2252,7 +1873,7 @@
     {
       "name": "ExistentialClause needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "ExistentialPresentationalClause exists in construction index",
@@ -2261,7 +1882,7 @@
     {
       "name": "ExistentialPresentationalClause needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "ExistentialQuestion exists in construction index",
@@ -2270,7 +1891,7 @@
     {
       "name": "ExistentialQuestion needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "ExistentialWhQuestion exists in construction index",
@@ -2279,7 +1900,7 @@
     {
       "name": "ExistentialWhQuestion needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "ExperientialClause exists in construction index",
@@ -2288,45 +1909,25 @@
     {
       "name": "ExperientialClause needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "ExperientialMotionGoalVP exists in construction index",
       "pass": true
     },
     {
-      "name": "ExperientialMotionGoalVP coverage state reflects linguistic cases before zero-weight probes",
+      "name": "ExperientialMotionGoalVP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "ExperientialMotionGoalVP implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "ExperientialMotionGoalVP zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "ExperientialQuestion exists in construction index",
       "pass": true
     },
     {
-      "name": "ExperientialQuestion coverage state reflects linguistic cases before zero-weight probes",
+      "name": "ExperientialQuestion needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "ExperientialQuestion implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "ExperientialQuestion zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "ExperientialVP exists in construction index",
@@ -2335,7 +1936,7 @@
     {
       "name": "ExperientialVP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "ExperientialYesNoQuestion exists in construction index",
@@ -2344,7 +1945,7 @@
     {
       "name": "ExperientialYesNoQuestion needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "FocusParticleFrame exists in construction index",
@@ -2353,7 +1954,7 @@
     {
       "name": "FocusParticleFrame needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "FormulaDiscourseUnit exists in construction index",
@@ -2362,7 +1963,7 @@
     {
       "name": "FormulaDiscourseUnit needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "FragmentAnswer exists in construction index",
@@ -2371,7 +1972,7 @@
     {
       "name": "FragmentAnswer needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "FragmentQuestion exists in construction index",
@@ -2380,7 +1981,7 @@
     {
       "name": "FragmentQuestion needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "GoalAttainmentMotionVP exists in construction index",
@@ -2389,7 +1990,7 @@
     {
       "name": "GoalAttainmentMotionVP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "HeadlessDemonstrativeClassifierNP exists in construction index",
@@ -2398,45 +1999,7 @@
     {
       "name": "HeadlessDemonstrativeClassifierNP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
-    },
-    {
-      "name": "IdentificationFragment exists in construction index",
-      "pass": true
-    },
-    {
-      "name": "IdentificationFragment coverage state reflects linguistic cases before zero-weight probes",
-      "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "IdentificationFragment implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "IdentificationFragment zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
-    },
-    {
-      "name": "IdentityWhQuestion exists in construction index",
-      "pass": true
-    },
-    {
-      "name": "IdentityWhQuestion coverage state reflects linguistic cases before zero-weight probes",
-      "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "IdentityWhQuestion implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "IdentityWhQuestion zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "ImpersonalEnvironmentalClause exists in construction index",
@@ -2445,45 +2008,25 @@
     {
       "name": "ImpersonalEnvironmentalClause needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "IntendedFunctionRelation exists in construction index",
       "pass": true
     },
     {
-      "name": "IntendedFunctionRelation coverage state reflects linguistic cases before zero-weight probes",
+      "name": "IntendedFunctionRelation needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "IntendedFunctionRelation implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "IntendedFunctionRelation zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "IntentionFrame exists in construction index",
       "pass": true
     },
     {
-      "name": "IntentionFrame coverage state reflects linguistic cases before zero-weight probes",
+      "name": "IntentionFrame needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "IntentionFrame implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "IntentionFrame zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "IntransitiveVP exists in construction index",
@@ -2492,7 +2035,7 @@
     {
       "name": "IntransitiveVP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "LexicalGiveRelation exists in construction index",
@@ -2501,7 +2044,7 @@
     {
       "name": "LexicalGiveRelation needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "LocativeExistentialClause exists in construction index",
@@ -2510,26 +2053,7 @@
     {
       "name": "LocativeExistentialClause needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
-    },
-    {
-      "name": "LocativeFragment exists in construction index",
-      "pass": true
-    },
-    {
-      "name": "LocativeFragment coverage state reflects linguistic cases before zero-weight probes",
-      "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "LocativeFragment implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "LocativeFragment zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "LocativeFrameClause exists in construction index",
@@ -2538,7 +2062,7 @@
     {
       "name": "LocativeFrameClause needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "LocativePlacePhrase exists in construction index",
@@ -2547,26 +2071,16 @@
     {
       "name": "LocativePlacePhrase needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "LocativePostureVP exists in construction index",
       "pass": true
     },
     {
-      "name": "LocativePostureVP coverage state reflects linguistic cases before zero-weight probes",
+      "name": "LocativePostureVP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "LocativePostureVP implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "LocativePostureVP zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "LocativeWhQuestion exists in construction index",
@@ -2575,7 +2089,7 @@
     {
       "name": "LocativeWhQuestion needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "MalformedCandidate exists in construction index",
@@ -2584,7 +2098,7 @@
     {
       "name": "MalformedCandidate needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "MannerAdverbialVP exists in construction index",
@@ -2593,7 +2107,7 @@
     {
       "name": "MannerAdverbialVP coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "positive_only/positive_only"
+      "detail": "positive_and_boundary/positive_and_boundary"
     },
     {
       "name": "MannerAdverbialVP implementation probe count",
@@ -2612,7 +2126,7 @@
     {
       "name": "MeasureExpression needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "ModalANotAQuestion exists in construction index",
@@ -2621,26 +2135,7 @@
     {
       "name": "ModalANotAQuestion needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
-    },
-    {
-      "name": "ModalChangeIntoResultFrame exists in construction index",
-      "pass": true
-    },
-    {
-      "name": "ModalChangeIntoResultFrame coverage state reflects linguistic cases before zero-weight probes",
-      "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "ModalChangeIntoResultFrame implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "ModalChangeIntoResultFrame zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "ModalVP exists in construction index",
@@ -2649,7 +2144,7 @@
     {
       "name": "ModalVP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "ModifiedNP exists in construction index",
@@ -2658,7 +2153,7 @@
     {
       "name": "ModifiedNP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "ModifierNP exists in construction index",
@@ -2667,26 +2162,7 @@
     {
       "name": "ModifierNP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
-    },
-    {
-      "name": "MotionDelimitedVP exists in construction index",
-      "pass": true
-    },
-    {
-      "name": "MotionDelimitedVP coverage state reflects linguistic cases before zero-weight probes",
-      "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "MotionDelimitedVP implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "MotionDelimitedVP zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "MotionGoalVP exists in construction index",
@@ -2695,7 +2171,7 @@
     {
       "name": "MotionGoalVP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "MotionPurposeChain exists in construction index",
@@ -2704,26 +2180,16 @@
     {
       "name": "MotionPurposeChain needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "NamingClause exists in construction index",
       "pass": true
     },
     {
-      "name": "NamingClause coverage state reflects linguistic cases before zero-weight probes",
+      "name": "NamingClause needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "NamingClause implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "NamingClause zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "NeedsContext exists in construction index",
@@ -2732,7 +2198,7 @@
     {
       "name": "NeedsContext needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "NegatedDirectionalMotionVP exists in construction index",
@@ -2741,7 +2207,7 @@
     {
       "name": "NegatedDirectionalMotionVP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "NegatedExistentialClause exists in construction index",
@@ -2750,7 +2216,7 @@
     {
       "name": "NegatedExistentialClause needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "NegatedExistentialFragment exists in construction index",
@@ -2759,26 +2225,7 @@
     {
       "name": "NegatedExistentialFragment needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
-    },
-    {
-      "name": "NegatedLexicalizedStative exists in construction index",
-      "pass": true
-    },
-    {
-      "name": "NegatedLexicalizedStative coverage state reflects linguistic cases before zero-weight probes",
-      "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "NegatedLexicalizedStative implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "NegatedLexicalizedStative zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "NegatedStativePredicate exists in construction index",
@@ -2787,7 +2234,7 @@
     {
       "name": "NegatedStativePredicate coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
+      "detail": "positive_and_boundary/positive_and_boundary"
     },
     {
       "name": "NegatedStativePredicate implementation probe count",
@@ -2797,7 +2244,7 @@
     {
       "name": "NegatedStativePredicate zero-weight probes do not create linguistic positives",
       "pass": true,
-      "detail": "0"
+      "detail": "1"
     },
     {
       "name": "NegatedVP exists in construction index",
@@ -2806,7 +2253,7 @@
     {
       "name": "NegatedVP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "NegativeCognitionFragment exists in construction index",
@@ -2815,7 +2262,7 @@
     {
       "name": "NegativeCognitionFragment needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "NegativeExperiential exists in construction index",
@@ -2824,7 +2271,7 @@
     {
       "name": "NegativeExperiential coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
+      "detail": "positive_and_boundary/positive_and_boundary"
     },
     {
       "name": "NegativeExperiential implementation probe count",
@@ -2834,7 +2281,7 @@
     {
       "name": "NegativeExperiential zero-weight probes do not create linguistic positives",
       "pass": true,
-      "detail": "0"
+      "detail": "3"
     },
     {
       "name": "NegativePotentialComplement exists in construction index",
@@ -2843,7 +2290,7 @@
     {
       "name": "NegativePotentialComplement needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "NegativePotentialDirectionalVP exists in construction index",
@@ -2852,7 +2299,7 @@
     {
       "name": "NegativePotentialDirectionalVP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "NominalHeadSpan exists in construction index",
@@ -2861,7 +2308,7 @@
     {
       "name": "NominalHeadSpan needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "NominalPredicateClause exists in construction index",
@@ -2870,26 +2317,16 @@
     {
       "name": "NominalPredicateClause needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "OpinionQuestion exists in construction index",
       "pass": true
     },
     {
-      "name": "OpinionQuestion coverage state reflects linguistic cases before zero-weight probes",
+      "name": "OpinionQuestion needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "OpinionQuestion implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "OpinionQuestion zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "OpinionStanceFrame exists in construction index",
@@ -2898,7 +2335,7 @@
     {
       "name": "OpinionStanceFrame needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "OrdinalClassifierNP exists in construction index",
@@ -2907,7 +2344,7 @@
     {
       "name": "OrdinalClassifierNP coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
+      "detail": "positive_and_boundary/positive_and_boundary"
     },
     {
       "name": "OrdinalClassifierNP implementation probe count",
@@ -2917,7 +2354,7 @@
     {
       "name": "OrdinalClassifierNP zero-weight probes do not create linguistic positives",
       "pass": true,
-      "detail": "0"
+      "detail": "1"
     },
     {
       "name": "OvertHeadDemonstrativeClassifierNP exists in construction index",
@@ -2926,7 +2363,7 @@
     {
       "name": "OvertHeadDemonstrativeClassifierNP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "PassivePermissiveRelation exists in construction index",
@@ -2935,7 +2372,7 @@
     {
       "name": "PassivePermissiveRelation coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "positive_only/positive_only"
+      "detail": "positive_and_boundary/positive_and_boundary"
     },
     {
       "name": "PassivePermissiveRelation implementation probe count",
@@ -2954,7 +2391,7 @@
     {
       "name": "PathPhrase needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "PerfectiveDirectionalVP exists in construction index",
@@ -2963,26 +2400,7 @@
     {
       "name": "PerfectiveDirectionalVP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
-    },
-    {
-      "name": "PerfectiveObjectResultPredicate exists in construction index",
-      "pass": true
-    },
-    {
-      "name": "PerfectiveObjectResultPredicate coverage state reflects linguistic cases before zero-weight probes",
-      "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "PerfectiveObjectResultPredicate implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "PerfectiveObjectResultPredicate zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "PerfectiveVP exists in construction index",
@@ -2991,7 +2409,7 @@
     {
       "name": "PerfectiveVP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "PolarQuestionFrame exists in construction index",
@@ -3000,7 +2418,7 @@
     {
       "name": "PolarQuestionFrame needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "PoliteImperativeClause exists in construction index",
@@ -3009,7 +2427,7 @@
     {
       "name": "PoliteImperativeClause coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "positive_only/positive_only"
+      "detail": "positive_and_boundary/positive_and_boundary"
     },
     {
       "name": "PoliteImperativeClause implementation probe count",
@@ -3026,76 +2444,18 @@
       "pass": true
     },
     {
-      "name": "PossessiveClassifierNP coverage state reflects linguistic cases before zero-weight probes",
+      "name": "PossessiveClassifierNP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "PossessiveClassifierNP implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "PossessiveClassifierNP zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
-    },
-    {
-      "name": "PossessiveTransferClause exists in construction index",
-      "pass": true
-    },
-    {
-      "name": "PossessiveTransferClause coverage state reflects linguistic cases before zero-weight probes",
-      "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "PossessiveTransferClause implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "PossessiveTransferClause zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
-    },
-    {
-      "name": "PostposedExistentialQuestion exists in construction index",
-      "pass": true
-    },
-    {
-      "name": "PostposedExistentialQuestion coverage state reflects linguistic cases before zero-weight probes",
-      "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "PostposedExistentialQuestion implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "PostposedExistentialQuestion zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "PostThemeParticipantRelation exists in construction index",
       "pass": true
     },
     {
-      "name": "PostThemeParticipantRelation coverage state reflects linguistic cases before zero-weight probes",
+      "name": "PostThemeParticipantRelation needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "PostThemeParticipantRelation implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "PostThemeParticipantRelation zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "PostverbalZoPerfectiveVP exists in construction index",
@@ -3113,7 +2473,7 @@
     {
       "name": "PotentialDirectionalVP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "PotentialResultVP exists in construction index",
@@ -3122,45 +2482,25 @@
     {
       "name": "PotentialResultVP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "PreferenceVP exists in construction index",
       "pass": true
     },
     {
-      "name": "PreferenceVP coverage state reflects linguistic cases before zero-weight probes",
+      "name": "PreferenceVP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "PreferenceVP implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "PreferenceVP zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "PriorityMarkerClause exists in construction index",
       "pass": true
     },
     {
-      "name": "PriorityMarkerClause coverage state reflects linguistic cases before zero-weight probes",
+      "name": "PriorityMarkerClause needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "PriorityMarkerClause implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "PriorityMarkerClause zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "ProductiveVO exists in construction index",
@@ -3169,7 +2509,7 @@
     {
       "name": "ProductiveVO needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "ProgressiveDirectionalVP exists in construction index",
@@ -3178,64 +2518,7 @@
     {
       "name": "ProgressiveDirectionalVP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
-    },
-    {
-      "name": "ProgressivePlaceQuestion exists in construction index",
-      "pass": true
-    },
-    {
-      "name": "ProgressivePlaceQuestion coverage state reflects linguistic cases before zero-weight probes",
-      "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "ProgressivePlaceQuestion implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "ProgressivePlaceQuestion zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
-    },
-    {
-      "name": "ProgressivePurposeClause exists in construction index",
-      "pass": true
-    },
-    {
-      "name": "ProgressivePurposeClause coverage state reflects linguistic cases before zero-weight probes",
-      "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "ProgressivePurposeClause implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "ProgressivePurposeClause zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
-    },
-    {
-      "name": "ProgressiveTransitivePredicate exists in construction index",
-      "pass": true
-    },
-    {
-      "name": "ProgressiveTransitivePredicate coverage state reflects linguistic cases before zero-weight probes",
-      "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "ProgressiveTransitivePredicate implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "ProgressiveTransitivePredicate zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "ProgressiveVP exists in construction index",
@@ -3244,7 +2527,7 @@
     {
       "name": "ProgressiveVP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "ProgressiveWhObjectQuestion exists in construction index",
@@ -3253,7 +2536,7 @@
     {
       "name": "ProgressiveWhObjectQuestion needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "ProhibitiveImperative exists in construction index",
@@ -3262,26 +2545,7 @@
     {
       "name": "ProhibitiveImperative needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
-    },
-    {
-      "name": "PurposePredicate exists in construction index",
-      "pass": true
-    },
-    {
-      "name": "PurposePredicate coverage state reflects linguistic cases before zero-weight probes",
-      "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "PurposePredicate implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "PurposePredicate zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "QuantifiedClassifierNP exists in construction index",
@@ -3290,7 +2554,7 @@
     {
       "name": "QuantifiedClassifierNP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "QuantifiedPersonNP exists in construction index",
@@ -3299,7 +2563,7 @@
     {
       "name": "QuantifiedPersonNP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "QuantifiedTimeNP exists in construction index",
@@ -3308,7 +2572,7 @@
     {
       "name": "QuantifiedTimeNP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "QuantityNP exists in construction index",
@@ -3317,7 +2581,7 @@
     {
       "name": "QuantityNP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "ReduplicatedVP exists in construction index",
@@ -3326,7 +2590,7 @@
     {
       "name": "ReduplicatedVP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "RelativeClauseNP exists in construction index",
@@ -3335,7 +2599,7 @@
     {
       "name": "RelativeClauseNP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "RepetitiveComplementVP exists in construction index",
@@ -3344,7 +2608,7 @@
     {
       "name": "RepetitiveComplementVP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "ReportedSpeech exists in construction index",
@@ -3353,7 +2617,7 @@
     {
       "name": "ReportedSpeech needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "ResourceUseLaiFunctionRelation exists in construction index",
@@ -3371,7 +2635,7 @@
     {
       "name": "RestorativeComplementVP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "ResultComplement exists in construction index",
@@ -3380,7 +2644,7 @@
     {
       "name": "ResultComplement needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "ResultComplementVP exists in construction index",
@@ -3389,26 +2653,7 @@
     {
       "name": "ResultComplementVP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
-    },
-    {
-      "name": "ResultStateClause exists in construction index",
-      "pass": true
-    },
-    {
-      "name": "ResultStateClause coverage state reflects linguistic cases before zero-weight probes",
-      "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "ResultStateClause implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "ResultStateClause zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "ScalarEvaluation exists in construction index",
@@ -3417,7 +2662,7 @@
     {
       "name": "ScalarEvaluation coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
+      "detail": "positive_and_boundary/positive_and_boundary"
     },
     {
       "name": "ScalarEvaluation implementation probe count",
@@ -3427,83 +2672,16 @@
     {
       "name": "ScalarEvaluation zero-weight probes do not create linguistic positives",
       "pass": true,
-      "detail": "0"
-    },
-    {
-      "name": "ScalarRangeFragment exists in construction index",
-      "pass": true
-    },
-    {
-      "name": "ScalarRangeFragment coverage state reflects linguistic cases before zero-weight probes",
-      "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "ScalarRangeFragment implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "ScalarRangeFragment zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "3"
     },
     {
       "name": "ScalarValueQuestion exists in construction index",
       "pass": true
     },
     {
-      "name": "ScalarValueQuestion coverage state reflects linguistic cases before zero-weight probes",
+      "name": "ScalarValueQuestion needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "ScalarValueQuestion implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "ScalarValueQuestion zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
-    },
-    {
-      "name": "SchedulingQuestion exists in construction index",
-      "pass": true
-    },
-    {
-      "name": "SchedulingQuestion coverage state reflects linguistic cases before zero-weight probes",
-      "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "SchedulingQuestion implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "SchedulingQuestion zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
-    },
-    {
-      "name": "SeemingPerfectiveResultClause exists in construction index",
-      "pass": true
-    },
-    {
-      "name": "SeemingPerfectiveResultClause coverage state reflects linguistic cases before zero-weight probes",
-      "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "SeemingPerfectiveResultClause implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "SeemingPerfectiveResultClause zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "SerialVerbPurposeChain exists in construction index",
@@ -3512,7 +2690,7 @@
     {
       "name": "SerialVerbPurposeChain needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "SourceMotionClause exists in construction index",
@@ -3521,26 +2699,7 @@
     {
       "name": "SourceMotionClause needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
-    },
-    {
-      "name": "SpeechTransferClause exists in construction index",
-      "pass": true
-    },
-    {
-      "name": "SpeechTransferClause coverage state reflects linguistic cases before zero-weight probes",
-      "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "SpeechTransferClause implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "SpeechTransferClause zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "StativeNominalComplement exists in construction index",
@@ -3549,7 +2708,7 @@
     {
       "name": "StativeNominalComplement needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "StativePredicate exists in construction index",
@@ -3558,7 +2717,7 @@
     {
       "name": "StativePredicate needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "SuggestionQuestion exists in construction index",
@@ -3567,7 +2726,7 @@
     {
       "name": "SuggestionQuestion coverage state reflects linguistic cases before zero-weight probes",
       "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
+      "detail": "positive_and_boundary/positive_and_boundary"
     },
     {
       "name": "SuggestionQuestion implementation probe count",
@@ -3577,7 +2736,7 @@
     {
       "name": "SuggestionQuestion zero-weight probes do not create linguistic positives",
       "pass": true,
-      "detail": "0"
+      "detail": "1"
     },
     {
       "name": "TemporalClause exists in construction index",
@@ -3586,7 +2745,7 @@
     {
       "name": "TemporalClause needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "TimeNP exists in construction index",
@@ -3595,45 +2754,16 @@
     {
       "name": "TimeNP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
-    },
-    {
-      "name": "TimeToActionFrame exists in construction index",
-      "pass": true
-    },
-    {
-      "name": "TimeToActionFrame coverage state reflects linguistic cases before zero-weight probes",
-      "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "TimeToActionFrame implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "TimeToActionFrame zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "Topic exists in construction index",
       "pass": true
     },
     {
-      "name": "Topic coverage state reflects linguistic cases before zero-weight probes",
+      "name": "Topic needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "Topic implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "Topic zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "TopicComment exists in construction index",
@@ -3642,45 +2772,7 @@
     {
       "name": "TopicComment needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
-    },
-    {
-      "name": "TransformationResultFrame exists in construction index",
-      "pass": true
-    },
-    {
-      "name": "TransformationResultFrame coverage state reflects linguistic cases before zero-weight probes",
-      "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "TransformationResultFrame implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "TransformationResultFrame zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
-    },
-    {
-      "name": "TransformationResultPredicate exists in construction index",
-      "pass": true
-    },
-    {
-      "name": "TransformationResultPredicate coverage state reflects linguistic cases before zero-weight probes",
-      "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "TransformationResultPredicate implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "TransformationResultPredicate zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "TransitiveVP exists in construction index",
@@ -3689,7 +2781,7 @@
     {
       "name": "TransitiveVP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "VerbComplementVP exists in construction index",
@@ -3698,45 +2790,16 @@
     {
       "name": "VerbComplementVP needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "VocativeAddressTerm exists in construction index",
       "pass": true
     },
     {
-      "name": "VocativeAddressTerm coverage state reflects linguistic cases before zero-weight probes",
+      "name": "VocativeAddressTerm needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "VocativeAddressTerm implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "VocativeAddressTerm zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
-    },
-    {
-      "name": "VPComplementFrame exists in construction index",
-      "pass": true
-    },
-    {
-      "name": "VPComplementFrame coverage state reflects linguistic cases before zero-weight probes",
-      "pass": true,
-      "detail": "implementation_positive_only/implementation_positive_only"
-    },
-    {
-      "name": "VPComplementFrame implementation probe count",
-      "pass": true,
-      "detail": "1/1"
-    },
-    {
-      "name": "VPComplementFrame zero-weight probes do not create linguistic positives",
-      "pass": true,
-      "detail": "0"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "WhClassifierQuestion exists in construction index",
@@ -3745,7 +2808,7 @@
     {
       "name": "WhClassifierQuestion needs no implementation probe unless coverage says so",
       "pass": true,
-      "detail": "positive_only"
+      "detail": "positive_and_boundary"
     },
     {
       "name": "no active construction remains uncovered",
@@ -3754,7 +2817,7 @@
     {
       "name": "all probe labels occur in current index",
       "pass": true,
-      "detail": "63"
+      "detail": "14"
     }
   ],
   "failures": []

@@ -19,9 +19,9 @@ It runs:
 
 - 551 exact regression cases;
 - 43 NP-subsystem cases;
-- 1,297 per-construction assertions across 133 construction files.
+- 1,505 per-construction assertions across 133 construction files.
 
-Current coverage is 28 positive-and-boundary, 104 positive-only, 0 implementation-only, and 1 compatibility-alias-only. No active label is uncovered.
+Current coverage is 132 positive-and-boundary, 0 positive-only, 0 implementation-only, and 1 compatibility-alias-only. No active label is uncovered.
 
 Implementation probes have linguistic evidence weight **0**. They prove only that a runtime path is observable.
 

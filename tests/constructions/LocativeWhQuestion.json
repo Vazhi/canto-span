@@ -59,20 +59,47 @@
       "assertion": "construction_present_in_exact_snapshot"
     }
   ],
-  "focused_cases": [],
+  "focused_cases": [
+    {
+      "case_id": "CP061-LWQ-N01",
+      "source": "幾錢呀？",
+      "class": "scalar_question_not_locative_wh",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/CP061-P2-FULL-BOUNDARY-CLOSURE-R1.md#boundary-method",
+      "source_ids": [
+        "SRC-WONG-2023-LANGUAGE-SAMPLE",
+        "SRC-YIP-MATTHEWS-2000-BASIC",
+        "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
+      ]
+    },
+    {
+      "case_id": "CP061-LWQ-N02",
+      "source": "你食唔食飯？",
+      "class": "a_not_a_question_not_locative_wh",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/CP061-P2-FULL-BOUNDARY-CLOSURE-R1.md#boundary-method",
+      "source_ids": [
+        "SRC-WONG-2023-LANGUAGE-SAMPLE",
+        "SRC-YIP-MATTHEWS-2000-BASIC",
+        "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
+      ]
+    }
+  ],
   "np_cases": [],
   "implementation_probe_cases": [],
   "coverage": {
-    "state": "positive_only",
+    "state": "positive_and_boundary",
     "exact_snapshot_positive_count": 6,
     "focused_positive_count": 0,
-    "focused_boundary_count": 0,
+    "focused_boundary_count": 2,
     "focused_review_only_count": 0,
     "np_case_count": 0,
     "implementation_probe_count": 0,
     "compatibility_alias_probe_count": 0,
     "positive_case_count": 6,
-    "boundary_case_count": 0,
-    "executable_case_count": 6
+    "boundary_case_count": 2,
+    "executable_case_count": 8
   }
 }

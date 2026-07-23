@@ -1,9 +1,9 @@
 {
   "schema": "canto-span-source-accounting-audit-v6",
-  "checkpoint": "v0.5.204-current",
-  "runtime_registry_labels": 165,
-  "construction_notes": 165,
-  "retired_labels": 16,
+  "checkpoint": "v0.5.215-current",
+  "runtime_registry_labels": 133,
+  "construction_notes": 133,
+  "retired_labels": 48,
   "total": 12,
   "passed": 12,
   "failed": 0,
@@ -12,7 +12,7 @@
     {
       "name": "runtime and construction-note counts match",
       "pass": true,
-      "detail": "165 != 165"
+      "detail": "133 != 133"
     },
     {
       "name": "runtime exactly equals construction notes",
@@ -21,7 +21,7 @@
     {
       "name": "retired archive is nonempty",
       "pass": true,
-      "detail": "16"
+      "detail": "48"
     },
     {
       "name": "retired labels are absent from runtime",

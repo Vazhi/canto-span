@@ -9,8 +9,8 @@ const { Plugin, PluginSettingTab, Setting, Notice } = require("obsidian");
  * never overwrite child learner roles.
  */
 
-const CANTO_SPAN_RUNTIME_VERSION = "0.5.214";
-// v0.5.214: reconciles every implementation-only label: source-linked profiles receive positive/boundary coverage, unsupported wrappers are retired, and the implementation-only count reaches zero.
+const CANTO_SPAN_RUNTIME_VERSION = "0.5.215";
+// v0.5.215: closes direct boundary coverage for every active language-facing label and corrects explanatory 嚟 plus dangling clause-linker overgeneration.
 // v0.5.213-r5: retires SchedulingQuestion because the sourced 想 + 約 + object + 幾時 profile already composes as ClauseSpan + ModalVP, while the dedicated wrapper only covered an unsourced 覺得…好 cross-product.
 // v0.5.213-r4: narrows OpinionQuestion to the source-linked overt subject + 覺得 + evaluated referent + 點樣 profile and removes its token-cooccurrence fallback.
 // v0.5.213-r3: narrows AcceptabilityClause to overt action + 都得, source-links 轆咭都得 and 搵第二個都得, and excludes wh/free-choice tails from the action-feasibility node.
@@ -8198,7 +8198,7 @@ function scalarValueQuestionFallback(core) {
   });
 }
 
-function definitionExplanatoryFrameFallback(core) {
+function copularExplanatoryCompositionFallback(core) {
   const { core: bareCore, particles } = withoutTrailingParticles(core);
   if (!bareCore.length || !isDefinitionExplanatoryParticleSequence(particles)) return null;
 
@@ -8227,29 +8227,22 @@ function definitionExplanatoryFrameFallback(core) {
   const topic = definitionTopicFromNodes(topicNodes);
   if (!topic) return null;
   const copula = definitionFrameCopulaToken(copulaNode);
-  const complement = construction("DefinitionComplement", complementKind === "wh_definition_complement" ? "what" : "NP", complementNodes, {
-    slots: cleanSlots(["definition_complement", complementKind, "object", "np", "topic_or_object"]),
-    note: "Definition/identification complement inside a bounded 係...嚟㗎 frame.",
-    trace: traceInfo("generative_template", {
-      construction_type: "DefinitionExplanatoryFrame",
-      internal_child_construction: "DefinitionComplement",
-      internal_representation_scope: "bounded_definition_child_span",
-      independent_grammar_licensing: false,
-      licensing_parent: "DefinitionExplanatoryFrame",
-      assigned_slot: "definition_complement",
-      complement_kind: complementKind,
-      surfaces: complementNodes.map((node) => flattenSurface(node)),
-    }),
-  });
+  const complement = complementNodes.map((node) => parserInactiveTokenClone(firstToken(node) || node, {
+    label: complementKind === "wh_definition_complement" ? "what" : ((firstToken(node) || node).label || "what"),
+    pos: "np",
+    syntax: `${(firstToken(node) || node).syntax || "nominal"} copular_complement`,
+    slots: ["copular_complement", "object", "np", "topic_or_object"],
+    reason: "The overt wh/NP material is the visible complement of 係; no dedicated definition-complement wrapper is introduced.",
+  }));
   const lai = definitionFrameLaiMarker(bareCore[laiIndex]);
-  const children = [topic, copula, complement, lai, ...particles];
+  const children = [topic, copula, ...complement, lai, ...particles];
 
-  return construction("DefinitionExplanatoryFrame", "Def/Expl", children, {
-    slots: ["definition_explanatory_frame", "definition_frame", "identification_clause", "copular_clause", "explanatory_clause", "topic", "object", "np", "predicate", "clause"],
-    note: "Definition/explanatory frame: topic + 係 + wh/NP complement + 嚟 + explanatory particle, e.g. 圖書館係乜嘢嚟㗎. The 嚟 token is suppressed as motion only inside this bounded frame.",
+  return construction("CopularRelationFrame", "Copular", children, {
+    slots: ["copular_relation_frame", "copular_clause", "explanatory_clause", "topic", "object", "np", "predicate", "clause"],
+    note: "Compositional copular/explanatory clause: topic + 係 + wh/NP complement + 嚟 + explanatory particle. The visible pieces remain transparent without reviving the retired dedicated wrapper.",
     trace: traceInfo("generative_template", {
-      construction_type: "DefinitionExplanatoryFrame",
-      template: ["topic!", "definition_copula!", "definition_complement!", "definition_lai_marker!", "explanatory_particle!"],
+      construction_type: "CopularRelationFrame",
+      template: ["topic!", "copula!", "copular_complement!", "explanatory_linker!", "explanatory_particle!"],
       constraints: {
         required_copula: "係",
         required_lai_marker: "嚟",
@@ -8257,9 +8250,10 @@ function definitionExplanatoryFrameFallback(core) {
         complement_kind: complementKind,
         formula_guard_reanalysis: formulaCopulaWh ? "係咩 split only inside 係...嚟㗎" : "not_needed",
       },
-      assigned_slots: ["topic", "definition_copula", "definition_complement", "definition_lai_marker", "explanatory_particle"],
+      assigned_slots: ["topic", "copula", ...complement.map(() => "copular_complement"), "explanatory_linker", "explanatory_particle"],
       surfaces: children.map((node) => flattenSurface(node)),
-      reason: "Native-title parser-hole patch: prevent DirectionalMotionVP overreach for 嚟 only inside bounded definition/identification frames.",
+      reason: "Preserves the overt copular composition and prevents explanatory 嚟 from being mislabeled as literal DirectionalMotionVP.",
+      not_claims: ["not_dedicated_definition_frame", "not_directional_motion_lai"],
     }),
   });
 }
@@ -14842,6 +14836,9 @@ function wrapCore(core) {
   const perfectiveResultComposition = perfectiveResultCompositionFallback(core);
   if (perfectiveResultComposition) return [perfectiveResultComposition];
 
+  const copularExplanatoryComposition = copularExplanatoryCompositionFallback(core);
+  if (copularExplanatoryComposition) return [copularExplanatoryComposition];
+
   const directionalComposition = directionalCompositionFallback(core);
   if (directionalComposition) return [directionalComposition];
 
@@ -16853,6 +16850,16 @@ function wrapClauseSequenceByPunctuation(nodes) {
   const children = finalOnly ? nodes.slice(0, -1) : nodes.slice();
 
   const separatorIndex = children.findIndex(isClauseSequenceSeparator);
+  if (separatorIndex >= 0) {
+    const linkerOnlySide = (side) => {
+      const meaningfulSide = side.filter((node) => node && node.kind !== "text");
+      return meaningfulSide.length === 1
+        && CLAUSE_LINKER_SURFACES.has(flattenSurface(meaningfulSide[0]));
+    };
+    if (linkerOnlySide(children.slice(0, separatorIndex)) || linkerOnlySide(children.slice(separatorIndex + 1))) {
+      return nodes;
+    }
+  }
   const orderedPreferenceOpenerIndex = children.findIndex((node, index) =>
     index < separatorIndex &&
     node &&
