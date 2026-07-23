@@ -1,0 +1,33 @@
+probe_id	profile	cantonese	intended_distinction	runtime_result	observed_collision_or_gap	research_disposition
+P015-001	subject_domain	個個都讚佢。	reduplicated-classifier pronominal domain plus dou1	NO_TOP_CONSTRUCTION	No domain-dou1-predicate construction.	core_positive
+P015-002	subject_domain	個個學生都擔心自己嘅成績。	reduplicated-classifier nominal domain	PARTIAL	ModifiedNP 個個學生 and local VP only; dou1 and full predicate dependency absent.	core_positive
+P015-003	subject_domain	每間屋都有冷氣。	mui5 classifier domain	PARTIAL	Only 間屋 recognized; 每, 都, and predicate are not integrated.	core_positive
+P015-004	subject_domain	所有嘅同事都要準時到。	so2jau5 ge3 domain with modal predicate	PARTIAL	Local NP and ModalVP; 所有 and 都 remain outside a quantificational dependency.	comparison_positive
+P015-005	context_linked	我啲同事個個都好好人。	antecedent plural group plus member distribution	PARTIAL	Only 啲同事 recognized; 個個都 and predicate untyped.	core_positive
+P015-006	subject_domain	我哋個個都支持你。	pronoun group plus appositive individual distribution	NO_TOP_CONSTRUCTION	No coherent relation among antecedent, 個個, 都, and predicate.	core_positive
+P015-007	object_domain	警察每架車都檢查過。	preverbal quantified object	PARTIAL	Only 架車 recognized; 每, 都, and experiential predicate are disconnected.	core_positive
+P015-008	object_domain	佢本本書都睇過。	reduplicated-classifier object plus experiential predicate	PARTIAL	ModifiedNP 本本書 and ExperientialVP 睇過 remain unlinked; 都 omitted from structure.	core_positive
+P015-009	object_topic	隻隻貓我都鍾意。	quantified object before overt subject	ROOT_PASS_FALSE_WRAPPER	Full-span PreferenceVP plus malformed ModifiedNP 隻隻貓我 absorbs subject pronoun.	critical_false_positive
+P015-010	object_topic	條條題目佢都識答。	quantified object with modal predicate	PARTIAL	Only ModalVP 識答 recognized; object, subject, and 都 relation absent.	core_positive
+P015-011	recurring_event	每次叫佢幫手做家務，佢都話唔得閒。	repeated occasion paired with dou1 clause	ROOT_PASS_GENERIC	ClauseLinkingSequence masks missing recurring-event dependency; 每次 only local QuantifiedTimeNP.	core_positive
+P015-012	recurring_event	我每次考試都好緊張。	repeated exam-event domain	PARTIAL	每次 and 好緊張 are separate; 考試 and 都 unintegrated.	core_positive
+P015-013	recurring_event	佢次次都同我講大話。	reduplicated occasion domain	PARTIAL	False local ActionStativeVP 講大; no repeated-event dependency.	core_positive
+P015-014	recurring_interval	佢個個月都準時交租。	reduplicated calendar interval	NO_TOP_CONSTRUCTION	No recurring-interval or dou1 construction.	core_positive
+P015-015	recurring_event	佢次次都爭住埋單。	repeated event with aspectual predicate	NO_TOP_CONSTRUCTION	No recurring-event dependency.	core_positive
+P015-016	generic	每個人都會犯錯。	generic universal with modal predicate	PARTIAL	ModifiedNP 個人 and ModalVP 會犯錯; 每 and 都 outside structure.	core_positive
+P015-017	generic	個個細路都鍾意玩。	generic classifier-reduplication domain	ROOT_PASS_FALSE_WRAPPER	Broad PreferenceVP covers root without representing distribution.	critical_false_positive
+P015-018	negation_scope	個個學生都唔合格。	universal over negation	PARTIAL	Only local quantified NP; scope relation absent.	boundary_scope
+P015-019	negation_scope	唔係個個學生都合格。	negation over universal claim	PARTIAL	Only local quantified NP; contrast with P015-018 not represented.	boundary_scope
+P015-020	totality_interaction	個個都走晒。	distributive/exhaustive domain plus postverbal saai3	NO_TOP_CONSTRUCTION	Neither the dou1 dependency nor interaction with saai3 is integrated.	interaction_boundary
+P015-021	exhaustive_numeral	兩個學生都嚟咗。	fixed numeral group exhaustive totality	PARTIAL	QuantifiedClassifierNP recognized; 嚟 falsely directional; 都 and 咗 unintegrated.	exhaustive_boundary
+P015-022	collective_predicate	三個學生都一齊搬張枱。	exhaustive participation with collective event	PARTIAL	Local numeral NP and TransitiveVP only; 都 and collective 一齊 relation absent.	collective_boundary
+P015-023	missing_dou	個個學生擔心自己嘅成績。	reduplicated classifier without overt dou1	PARTIAL	Malformed ModifiedNP expands into predicate material; no safe omission analysis.	quarantine_not_simple_negative
+P015-024	missing_dou	每間屋有冷氣。	mui5 domain without overt dou1	PARTIAL	Only 間屋 recognized; omission status cannot be inferred from runtime.	quarantine_not_simple_negative
+P015-025	postverbal_object	佢通知個個學生。	postverbal reduplicated-classifier phrase boundary	PARTIAL	False TransitiveVP 知個個學生; no reliable quantificational object analysis.	lower_confidence_boundary
+P015-026	postverbal_object	警察檢查過每架車。	postverbal mui5 object order boundary	PARTIAL	Only 架車 recognized; runtime cannot adjudicate acceptability.	boundary_requires_native_data
+P015-027	definite_plural_totality	啲學生都嚟咗。	contextually definite plural exhaustive totality	PARTIAL	DiMarkedNP plus false DirectionalMotionVP; 都 and 咗 unintegrated.	exhaustive_boundary
+P015-028	wh_dou_neighbor	邊個都識。	wh-indeterminate universal/free-choice	NO_TOP_CONSTRUCTION	No wh-dou1 dependency.	separate_existing_research_family
+P015-029	even_focus_neighbor	連佢都識。	scalar/even focus	NO_TOP_CONSTRUCTION	No lin4-dou1 focus dependency.	separate_neighbor
+P015-030	additive_neighbor	我都識。	additive also	NO_TOP_CONSTRUCTION	No additive dou1 construction.	separate_neighbor
+P015-031	concessive_neighbor	就算落雨都去。	concessive dependency	ROOT_PASS_GENERIC	NeedsContext and clause-relation wrappers cover root without precise concessive dou1 analysis.	separate_neighbor
+P015-032	wh_object_neighbor	佢乜嘢秘密都知嘅。	wh-indeterminate object domain	NO_TOP_CONSTRUCTION	No wh-object-dou1 dependency.	separate_existing_research_family
