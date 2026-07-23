@@ -1,6 +1,6 @@
 ---
-title: PRQ2-015 — ning4 jyun6 dou1 committed-preference research
-research_id: PRQ2-015
+title: PRQ2-035 — ning4 jyun6 dou1 committed-preference research
+research_id: PRQ2-035
 status: active_research_unit
 baseline_version: 0.5.213
 created: 2026-07-23
@@ -8,7 +8,7 @@ implementation_authorized: false
 status_change_authorized: false
 ---
 
-# PRQ2-015 — `寧願 … 都 …` committed preference
+# PRQ2-035 — `寧願 … 都 …` committed preference
 
 ## Research decision
 
@@ -44,7 +44,7 @@ installation, test promotion, or automatic acceptance rule.
 ## Sources
 
 See
-`PRQ2-015-NING4JYUN6-DOU1-COMMITTED-PREFERENCE-SOURCE-VERIFICATION-R1.tsv`.
+`PRQ2-035-NING4JYUN6-DOU1-COMMITTED-PREFERENCE-SOURCE-VERIFICATION-R1.tsv`.
 
 - Jyut Dictionary supplies romanized Cantonese rejection examples with
   `都唔想` and `都唔肯`, a positive `都要` commitment example, and lone
@@ -57,7 +57,7 @@ See
 ## Runtime collision result
 
 See
-`PRQ2-015-NING4JYUN6-DOU1-COMMITTED-PREFERENCE-COLLISION-AUDIT-R1.tsv`.
+`PRQ2-035-NING4JYUN6-DOU1-COMMITTED-PREFERENCE-COLLISION-AUDIT-R1.tsv`.
 
 Runtime 0.5.213 has no paired committed-preference analysis. One long surface
 receives generic `ClauseLink` and a truncated local `Preference`; the other

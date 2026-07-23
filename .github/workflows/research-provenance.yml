@@ -1,0 +1,37 @@
+name: Research provenance
+
+on:
+  push:
+    branches:
+      - agent/research-provenance-repair
+  pull_request:
+    paths:
+      - "docs/research/**"
+      - "tools/*research-provenance*"
+      - "config/research-provenance-baseline.json"
+      - "config/verification-profiles.json"
+      - ".github/workflows/research-provenance.yml"
+
+jobs:
+  verify-research:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - id: verify
+        continue-on-error: true
+        run: npm run verify:research
+      - name: Upload provenance reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: research-provenance-reports
+          path: |
+            validation/current/research-provenance.json
+            validation/current/research-verification-summary.json
+          if-no-files-found: warn
+      - name: Enforce verification result
+        if: steps.verify.outcome != 'success'
+        run: exit 1
