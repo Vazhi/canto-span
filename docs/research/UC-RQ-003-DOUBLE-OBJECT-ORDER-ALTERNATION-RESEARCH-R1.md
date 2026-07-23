@@ -4,6 +4,7 @@ research_id: UC-RQ-003
 status: active_research_unit
 baseline_version: 0.5.208
 created: 2026-07-23
+updated: 2026-07-23
 implementation_authorized: false
 status_change_authorized: false
 ---
@@ -158,13 +159,27 @@ Chin (2022) investigates a “northern” Recipient–Theme pattern in modern Ho
 
 Only the publisher overview and chapter structure were accessible in this pass, so no numerical result or specific conditioning factor from the book is imported here. The verified point is that modern Recipient–Theme use outside inherited communication-predicate profiles is itself an empirical contact/variation question.
 
+### 10. HKCanCor separates instruction VRT from marked transfer
+
+The combined packet
+`UC-RQ-002-003-DOUBLE-OBJECT-HKCANCOR-CENSUS-R1.md` screens all 95 exact
+`送`, `寄`, and `教` verb-token hits in the official UTF-8 HKCanCor release.
+Natural tokens directly attest `教 Recipient Theme/content`, while the retained
+`送` and `寄` triadic transfer tokens use overt post-theme `俾`. A superficially
+compatible string, `送個炸彈殺佢`, is a Theme plus purpose/result clause rather
+than a markerless Recipient and demonstrates why order alone is unsafe.
+
+This promotes the instruction/communication VRT subtype at research level, merges
+the broad alternation backlog into the predicate-conditioned family map, and keeps
+non-`畀` IDOC quarantined for audio evidence.
+
 ## Construction-family map
 
 | Family | Surface profile | Core predicate domain | Current evidence strength | Parser policy |
 |---|---|---|---|---|
 | Lexical GIVE DOC | `畀 Theme Recipient` | lexical `畀/俾` | strong exact-source support; order variation still speaker-sensitive | retain separately; do not generalize to all verbs |
 | Marked dative | `V Theme 畀 Recipient/Goal` | broad dative classes except neutral lexical `畀`; caused possession, transfer, motion | strong source support, but role and marker category vary | preserve predicate and post-marker participant; avoid one universal role |
-| Communication VRT | `V Recipient Theme` | teach/ask/test/request/information predicates | explicit source lead; dedicated boundaries and corpus evidence incomplete | create dedicated research subunit before implementation |
+| Communication VRT | `V Recipient Theme` | teach/ask/test/request/information predicates | explicit source support plus natural `教 Recipient Theme/content` tokens; broader lexical boundaries incomplete | retain as dedicated research subtype before implementation |
 | Non-`畀` IDOC | `V Theme Recipient` | selected transfer predicates | attested but prosody/weight/age conditioned | UC-RQ-002; no text-only productive rule |
 | Spatial caused motion | `V Theme 去 Place` or related goal frame | send/throw/motion predicates | source-supported contrastive boundary | do not mislabel Place as Recipient |
 
@@ -336,7 +351,7 @@ Only after source, corpus, and panel evidence is adjudicated should the project 
 | Is Recipient–Theme generally available? | **Not established.** It is directly associated with communication/information predicates, while broader northern-pattern use is variable and contact-sensitive. |
 | Is a new generic parser label authorized? | **No.** |
 | Is a new research subunit justified? | **Yes:** communication/information V–Recipient–Theme. |
-| Should UC-RQ-003 remain in the master backlog? | Mark as **promoted to a family-mapping research unit**, with communication VRT remaining open. |
+| Should UC-RQ-003 remain in the master backlog? | **Merge** the broad alternation candidate into the family-mapping research unit; communication VRT is promoted as a research subtype, while non-`畀` IDOC remains quarantined. |
 
 ## Related project units
 

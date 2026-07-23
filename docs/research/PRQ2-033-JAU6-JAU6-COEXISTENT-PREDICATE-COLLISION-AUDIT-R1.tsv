@@ -1,0 +1,13 @@
+probe_or_target	current_runtime_result	overlap_or_failure	decisive_difference	current_disposition
+佢又聰明又靚。	No construction rows	The directly sourced property-pair core is wholly unrepresented.	Paired 又 marks two coexisting properties under one subject; loose tokens lose that relation.	PROPERTY_CORE_MISSING
+呢間房又大又光猛。	Only OvertHeadDemonstrativeClassifierNP 呢間房	The subject NP survives but both marked predicates and their shared domain disappear.	A future relation must preserve the NP child and link both property members.	SHARED_SUBJECT_PROPERTY_PAIR_MISSING
+我又要返工又要讀書。	ClauseSpan with one broad ModalVP spanning 要返工又要讀書	The wrapper hides two overt 又-marked modal/action members.	One modal span does not encode paired coexistence or member boundaries.	MODAL_ACTION_PAIR_MASKED
+又薯片又火腿噉。	No construction rows	The Words.hk nominal-list example type receives no representation.	Nominal listing is sourced but may require a typed list subtype rather than the property core.	NOMINAL_LIST_SUBTYPE_PENDING
+八千蚊又要交稅，又要還錢。	ClauseRelationGraph with QuantityNP and two ModalVP children	Generic root coverage preserves children but not the paired relation.	HKCanCor naturally attests the repeated obligations; clause linking alone is insufficient.	REJECT_ROOT_PASS_AS_TARGET_ANALYSIS
+今日又落雨喇。	TemporalClause with ImpersonalEnvironmentalClause child	Ordinary recurrence remains structurally analyzable.	One 又 means “again” here and is not half of a hidden paired construction.	RECURRENCE_CONTROL_KEEP_SEPARATE
+我又要！	No construction rows	A short additive-response use is context-dependent.	Words.hk records “I want [one] too”; no second paired member should be invented.	ADDITIVE_RESPONSE_CONTROL
+又幾正喎！	DegreeStativePredicate 幾正 only	Counter-expectation force and 又 are not typed.	The sourced single-又 plus particle profile is distinct from paired coexistence.	COUNTEREXPECTATION_CONTROL_KEEP_SEPARATE
+佢又聰明。	No construction rows	A lone first-looking marker is insufficient.	Do not create a paired analysis without a second member or separately established ellipsis context.	INCOMPLETE_PAIR_CONTROL
+佢聰明又靚。	No construction rows	Unpaired A又B surface is unresolved.	Current direct evidence establishes 又A又B; omission of the first marker requires separate verification.	UNPAIRED_VARIANT_QUARANTINE
+ClauseRelationGraph	Generic clause/linker substrate	Can cover long repeated-又 strings.	It does not encode shared domain, member pairing, coexistence, or the polysemy split.	POSSIBLE_PARENT_NOT_TARGET
+ModalVP and property children	Existing local predicate analyses	May occur inside paired members.	A future higher relation must retain member-internal modality, valency, and degree structure.	RETAIN_AS_CHILDREN_ONLY

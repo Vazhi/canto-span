@@ -60,7 +60,7 @@ The paper's reviewed VO diagnostics include:
 The paper's detailed examples in the background are partly Mandarin literature
 examples, while its quantitative comparison and separator tables are Cantonese. Exact
 Cantonese VO item profiles still require extraction from the appendix and underlying
-materials before any item is licensed.
+materials before inventory-wide licenses are proposed.
 
 ## Checked source findings
 
@@ -78,6 +78,15 @@ Study 1 uses string searches without controlled linguistic contexts and two judg
 Study 2 tests selected non-VO items with 45 participants, not the complete VO inventory.
 The paper itself notes that even VO compounds are less separable than commonly
 expected. The aggregate 62% rate must not become an item-level prediction.
+
+### HKCanCor item-level checkpoint
+
+`UC-RQ-014-015-SEPARABLE-COMPOUND-HKCANCOR-ATTESTATION-R1.md` verifies one
+high-value natural item profile. HKCanCor contains sixteen contiguous `結婚` tokens
+and four separated tokens: two `結咗婚`, one `結完婚`, and one `結晒婚`. The
+coexistence of contiguous and three separator-specific realizations promotes `結婚`
+as a naturally attested typed research item, while leaving every other VO item and
+separator quarantined.
 
 ## Exact collision audit
 
@@ -144,6 +153,7 @@ Future research must distinguish:
 | Can separated forms retain lexical compound meaning? | **Yes.** |
 | Does `ProductiveVO` preserve that lexical identity and item-specific license? | **No.** |
 | Are exact modern item-by-separator profiles complete? | **No; quarantined.** |
+| Is any individual profile naturally attested? | **Yes; `結婚` with `咗`, `完`, and `晒`.** |
 | Is a dedicated research unit justified? | **Yes.** |
 | Is parser implementation authorized? | **No.** |
 

@@ -53,19 +53,11 @@ requirements.
 5. `docs/current/TESTING.md`
 6. `grammar/README.md`
 7. `GRAMMAR-INDEX.md`
-8. `docs/research/CP057-P1-NEGATED-STATIVE-PREDICATE-RECONCILIATION-R1.md`
-9. `docs/research/CP056-P1-NEGATED-LEXICALIZED-STATIVE-RETIREMENT-R1.md`
-10. `docs/research/CP055-P1-NEGATIVE-EXPERIENTIAL-RECONCILIATION-R1.md`
-11. `docs/research/CP054-P1-SCALAR-EVALUATION-RECONCILIATION-R1.md`
-12. `docs/research/CP053-P1-EVALUATION-WITH-DOU-SYUN-EXTERNAL-EVIDENCE-R1.md`
-13. `docs/research/CP052-P1-SCALAR-RANGE-FRAGMENT-RETIREMENT-R1.md`
+8. `docs/research/CURRENT-RESEARCH-PROVENANCE.md`
+9. `docs/research/README.md`
 
 ## Next substantive work
 
-Continue source/runtime reconciliation among the remaining 51
-implementation-only labels. Rank the next label by learner impact, exact source
-match, and risk of misleading analysis. Do not merge full `係唔係` with
-contracted `係咪`, promote nominal/possessive complements, or add a tag node
-without a separately bounded claim and executable evidence. The retirement
-review window is open at handoff sequence 36 and must be completed by sequence
-41.
+Follow the priorities and authorization boundaries in `docs/current/`. Research
+records under `docs/research/` are evidence and decision history only; their
+completion does not change grammar status or authorize runtime work.

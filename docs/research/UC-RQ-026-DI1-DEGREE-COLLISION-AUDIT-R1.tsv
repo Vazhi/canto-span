@@ -1,4 +1,4 @@
-audit_id	surface_or_target	profile	current_runtime_or_role	collision_or_gap	evidence_weight_or_decisive_difference	recommended_disposition
+audit_id	surface_or_target	profile	current_runtime_or_role	collision_or_decisive_difference	recommended_disposition
 UC026-T01	DegreeMannerAdverbial	merger target	Two-token degree/manner head plus `啲`	Covers core surface but requires typed property, directive, preposed, postverbal, and standard-bearing profiles.	MERGE_CORE_RESEARCH_WITH_TYPED_SUBPROFILES
 UC026-T02	ComparativeStative (retired)	retired duplicate	Former generic stative-plus-`啲` fallback	Added no independent marker or relation.	KEEP_RETIRED_DO_NOT_REVIVE
 UC026-T03	DegreeModifiedLexicalStative	neighboring degree family	Preposed degree word plus lexicalized stative	No post-predicate `啲`; not a merger target.	KEEP_SEPARATE

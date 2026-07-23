@@ -78,6 +78,16 @@ final item licenses. Study 2 deliberately selected more separable candidates and
 297 judgments across three participant groups. Its class means do not prove that every
 member accepts the class-preferred separator.
 
+### HKCanCor item-level checkpoint
+
+`UC-RQ-014-015-SEPARABLE-COMPOUND-HKCANCOR-ATTESTATION-R1.md` checks ten
+published exemplars against natural conversational data. It finds contiguous `影印`,
+`小息`, `拍拖`, `遲到`, and `比賽` tokens but no checked short-separator sequence
+between their components; the other queried exemplars are absent. This is insufficient
+negative evidence to contradict the study, but it leaves natural item-by-separator
+licenses quarantined. In particular, contiguous `影印` followed by `咗` is not evidence
+for separated `影咗印`.
+
 ## Exact collision audit
 
 The collision ledger is:
@@ -149,6 +159,7 @@ Future research must distinguish:
 | Is final-component movement supported? | **No in the checked study.** |
 | Can result-complement nodes cover the whole family? | **No.** |
 | Are exact item-by-separator licenses complete? | **No; quarantined.** |
+| Did the focused natural-corpus check confirm one checked separation? | **No; only contiguous or absent forms occurred.** |
 | Is a dedicated research unit justified? | **Yes.** |
 | Is parser implementation authorized? | **No.** |
 

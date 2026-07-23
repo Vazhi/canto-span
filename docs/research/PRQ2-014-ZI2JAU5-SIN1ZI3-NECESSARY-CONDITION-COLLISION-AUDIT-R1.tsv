@@ -1,0 +1,13 @@
+probe_or_target	current_runtime_result	overlap_or_failure	decisive_difference	current_disposition
+只有佢先做得到。	No construction rows	The sourced participant restriction is wholly unrepresented.	Words.hk identifies 只有 and 先 as the correlated necessary-condition frame.	PARTICIPANT_RESTRICTION_MISSING
+只有同心協力，啲嘢先至做得好。	NP child only	The clausal necessary condition and result relation are absent.	The exact sourced example states that cooperation is required for a good result.	CLAUSAL_ONLY_IF_CORE_MISSING
+金融業只有喺多元化及繁榮嘅商業環境下，先可以興旺發展。	ModalVP child only	The environmental restriction and result are unlinked.	The sourced example pairs locative condition with 先可以.	ENVIRONMENTAL_NECESSITY_MISSING
+呢種地方色彩只有呢度先有。	No construction rows	The domain and unique location are unrepresented.	The sourced example restricts the property to one location.	LOCATIVE_RESTRICTION_MISSING
+你要有窿路先至得𠿪。	SubjModal/ModalVP only	The natural bare condition-plus-先至 profile lacks a relation.	HKCanCor supports a boundary, not automatic omission of 只有.	BARE_CONDITION_BOUNDARY
+你勤力啲至攞到好成績㗎。	No construction rows	Words.hk's short 至 conditional is unrepresented.	The result-marker entry licenses the relation without proving equivalence to every 只有 profile.	SHORT_ZI3_BOUNDARY
+只要你肯俾錢，我就賣。	ClauseLink/ClauseRel with local children	Generic relation coverage exists for the inverse control.	PRQ2-005 marks sufficiency; it must not be relabeled as necessary condition.	SUFFICIENT_CONDITION_CONTROL
+除非你肯俾錢，否則我唔賣。	VP only	The exception conditional is also untyped.	UC-RQ-038 owns the 除非 default/exception profile despite shared necessity semantics.	EXCEPTION_CONDITIONAL_CONTROL
+食完飯先至計啦。	CompletionVP only	先至 occurs without the target relation.	CantoDict identifies temporal “only then” uses; marker identity alone is insufficient.	TEMPORAL_SIN1ZI3_CONTROL
+只有。	No construction rows	A lexical marker has no construction.	No restricted member or result is present.	EMPTY_RESTRICTOR_GUARD
+只有先至。	No construction rows	Marker co-occurrence has no construction.	Two licensed members are required; adjacency alone is insufficient.	EMPTY_MEMBER_GUARD
+ModalVP, SubjModal, NP, and CompletionVP	Existing local analyses	Can appear inside target or control surfaces.	They do not encode restrictor, result, necessity, or profile.	RETAIN_AS_CHILDREN_ONLY

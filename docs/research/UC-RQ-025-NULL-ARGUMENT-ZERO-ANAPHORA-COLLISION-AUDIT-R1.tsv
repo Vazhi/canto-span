@@ -1,4 +1,4 @@
-audit_id	surface_or_target	profile	current_runtime_or_role	collision_or_gap	evidence_weight_or_decisive_difference	recommended_disposition
+audit_id	surface_or_target	profile	current_runtime_or_role	collision_or_decisive_difference	recommended_disposition
 UC025-T01	ComplementEllipsisFragment	typed omission family	OpinionStanceFrame-internal `有/冇` or `係/唔係` unresolved complement/domain omission	Requires discourse but does not cover ordinary transitive null NP objects.	KEEP_EXISTING_TYPED_PROFILE_SEPARATE
 UC025-T02	FragmentAnswer	fragment family	Context-dependent short answer	Can omit most of a proposition; null-object clauses retain overt clause structure and may occur outside answer turns.	KEEP_SEPARATE_ALLOW_COOCURRENCE
 UC025-T03	TopicComment	surface carrier	Overt topic-plus-comment heuristic	Antecedent may be outside the parsed span; overt topic structure does not independently license a gap.	OPTIONAL_CARRIER_NOT_MERGER

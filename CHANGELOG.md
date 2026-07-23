@@ -1,3 +1,14 @@
+## Documentation — research consolidation
+
+- Replaced the stale, duplicated research backlog/index with one current
+  canonical package overview for UC-RQ-001 through UC-RQ-040 and the two
+  completed repository-visible PRQ2 units.
+- Preserved shared multi-ID evidence records, repaired research links and two
+  malformed collision-ledger headers, and removed an accidental captured-output
+  file.
+- Changed no runtime code, grammar status, tests, versions, manifests,
+  validation rules, or release files.
+
 ## v0.5.213 — NegatedStativePredicate reconciliation
 
 - Source-linked Yip’s exact direct-negation example, normalized as `呢個女仔唔靚`, as a focused `NegatedStativePredicate` positive.

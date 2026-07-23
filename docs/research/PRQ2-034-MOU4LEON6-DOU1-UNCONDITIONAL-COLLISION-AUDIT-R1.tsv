@@ -1,0 +1,12 @@
+probe_or_target	current_runtime_result	overlap_or_failure	decisive_difference	current_disposition
+無論點，我都唔會放棄。	ModalVP only	The wh-domain and invariant negative consequence are unlinked.	Words.hk defines this exact no-matter profile.	WH_UNCONDITIONAL_CORE_MISSING
+無論發生咩事，我都會企喺你嗰邊。	ClauseLink with NP and modal children	Generic linking does not identify domain alternatives or invariant consequence.	The sourced event-wh profile quantifies over possible events.	EVENT_WH_PROFILE_MASKED
+無論老闆俾唔俾我放假，我聽日都會去聽演唱會。	ClauseLink with Passive, ModalVP, and MotionVP children	The A-not-A alternatives and invariant plan are untyped.	Hong Kong Vision explicitly teaches this A-not-A domain.	A_NOT_A_DOMAIN_MASKED
+無論係司機定係乘客都要配戴安全帶。	ModalVP only	The explicit alternatives and shared obligation are unrepresented.	Jyut Dictionary supplies the 定係 domain profile.	DISJUNCTIVE_DOMAIN_MISSING
+無論你身處邊度，都可以即刻轉移去另一個地方。	ModalVP/MotionVP/NP children only	The natural locative domain is not related to the modal consequence.	The EDB-hosted dialogue supplies the complete frame.	LOCATIVE_UNCONDITIONAL_MISSING
+邊個都可以參加。	SubjModal/ModalVP only	Free-choice member lacks the higher target markers.	UC-RQ-020 owns wh-plus-都; absence of 無論 prevents automatic PRQ2-034 analysis.	FREE_CHOICE_CONTROL_KEEP_SEPARATE
+就算落雨，我都會去。	ClauseLink with Environment, ModalVP, and MotionVP children	Generic linking resembles target surfaces.	UC-RQ-037 owns scalar concession over one supposed condition, not an alternative domain.	SCALAR_CONCESSIVE_CONTROL
+唔理你講咩，我都唔信。	VP only	The informal near-equivalent is unwrapped.	Register and marker differences require separate evidence; do not alias automatically.	M4LEI5_VARIANT_BOUNDARY
+無論如何。	No construction rows	The fixed expression receives no construction.	It may be a discourse adverb or an elided unconditional; context is required.	FIXED_EXPRESSION_BOUNDARY
+無論都。	No construction rows	Marker adjacency receives no relation.	A licensed alternative domain and consequence are required.	EMPTY_MEMBER_GUARD
+ClauseLink, ModalVP, MotionVP, NP, and SubjModal	Generic and member-internal analyses	Can compose inside complete targets.	They do not encode domain alternatives, invariance, or marker scope.	RETAIN_AS_CHILDREN_ONLY

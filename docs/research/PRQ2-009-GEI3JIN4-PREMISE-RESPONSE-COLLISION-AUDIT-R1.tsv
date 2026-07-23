@@ -1,0 +1,14 @@
+probe_or_target	current_runtime_result	overlap_or_failure	decisive_difference	current_disposition
+既然其他國家都可以成功限制每日工作小時同埋實施最低工資，我相信喺香港都一定得。	ClauseLink with local children	Generic linking does not type the premise or resulting opinion.	Words.hk defines this exact opinion-response profile without a second marker.	UNMARKED_OPINION_RESPONSE_MISSING
+既然你都去圖書館，不如順便幫我還書啦。	ClauseLink with MotionGoal/MotionVP and Suggest children	The suggestion is recognized locally but not related to the 既然 premise.	Words.hk presents the request as relevant given the library trip.	BAT1JYU4_RESPONSE_RELATION_MISSING
+既然佢唔得閒，噉我聽日再嚟過吖。	ClauseLink/ClauseRel with NegStative and MotionVP children	Generic members omit 既然 and the premise-to-decision relation.	Wenlin supplies the fully romanized 噉 response profile.	GAM2_RESPONSE_PROFILE_MASKED
+既然你嚟咗，就坐低啦。	ClauseLink/ClauseRel with MotionVP and VP children	The paired surface gets only generic relation coverage.	就 may introduce the response but does not identify the established-premise relation.	ZAU6_RESPONSE_PROFILE_MASKED
+我既然答應咗，就一定會做。	ClauseLink/ClauseRel with Clause and ModalVP children	Subject placement and commitment relation are untyped.	A pre-既然 subject is a boundary needing independent evidence.	SUBJECT_PLACEMENT_BOUNDARY
+既然落雨，點解你仲出去？	ClauseLink with Environment and motion children	The question response is not linked to the premise.	Words.hk includes related questions, but this constructed surface remains a boundary probe.	QUESTION_RESPONSE_BOUNDARY
+如果落雨，我就唔去。	ClauseLink/ClauseRel with Environment and NegMotionVP children	Uses the same generic substrate as target examples.	A hypothetical condition is not an accepted-premise 既然 relation.	CONDITIONAL_CONTROL_KEEP_SEPARATE
+因為落雨，所以我唔去。	ClauseLink/ClauseRel with Environment and NegMotionVP children	Uses the same generic substrate as target examples.	Explicit cause-result marking must not be aliased solely because B follows from A.	CAUSAL_CONTROL_KEEP_SEPARATE
+反正落雨，我唔去喇。	ClauseLink with Environment and NegMotionVP children	No target analysis is present.	反正 signals premise irrelevance or settled outcome, not the checked 既然 stance.	FAAN2ZING3_CONTROL_KEEP_SEPARATE
+既然。	No construction rows	A bare marker receives no relation.	The core requires a licensed premise and response unless ellipsis is independently established.	INCOMPLETE_PREMISE_GUARD
+既然就。	No construction rows	Marker adjacency receives no relation.	Neither marker supplies member content.	EMPTY_MEMBER_GUARD
+ClauseLink and ClauseRel	Generic clause/relation substrate	Can wrap target, conditional, and causal surfaces alike.	They do not identify 既然, premise status, response role, speech act, or marker optionality.	POSSIBLE_PARENT_NOT_TARGET
+Suggest, Environment, MotionVP, ModalVP, NegStative, and NegMotionVP	Existing member-internal analyses	Can compose inside the premise or response.	A future higher relation must preserve these children.	RETAIN_AS_CHILDREN_ONLY
