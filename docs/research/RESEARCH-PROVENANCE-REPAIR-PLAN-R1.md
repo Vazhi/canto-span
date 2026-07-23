@@ -50,7 +50,7 @@ Implemented:
 
 - `tools/research-provenance-lib.js`;
 - `tools/verify-research-provenance.js`;
-- `tools/test-research-provenance.js` with eight focused fixtures;
+- `tools/test-research-provenance.js`;
 - `config/research-provenance-baseline.json` for explicitly enumerated existing
   debt only;
 - research-profile integration through `config/verification-profiles.json`;
@@ -58,62 +58,101 @@ Implemented:
 - machine-readable output at
   `validation/current/research-provenance.json`.
 
-The verifier now fails on:
+The verifier fails on:
 
 - duplicate UC-RQ or PRQ2 IDs;
 - an indexed package missing any member of its package;
 - a package absent from the canonical index;
 - filename, frontmatter, or heading ID mismatch;
 - a new missing main-note companion link;
-- an unrecognized or newly introduced noncanonical source-verification schema;
+- an unrecognized or newly introduced source-verification schema;
 - a source row with an empty or placeholder citation/locator;
 - a runtime observation presented as linguistic evidence;
-- a new PRQ2 `PROMOTE_*`, `DEDICATED_*_CORE`, or equivalent disposition
-  unsupported by at least one qualifying direct-evidence row.
+- a new PRQ2 promotion-style disposition unsupported by qualifying direct
+  evidence.
 
 The verifier recognizes source and collision filenames explicitly cited by a main
-note rather than assuming every companion repeats the entire main-note slug. It
-also normalizes seven known historical ledger schemas for audit while reporting
-them as baseline warnings; new schema drift still fails.
-
-Verified result at commit `117b9fc847df293e61594076b497960d1595d297`:
-
-- indexed packages: **58**;
-- verifier errors: **0**;
-- explicit baseline warnings: **18**;
-  - weak-core source debt: **5**;
-  - legacy ledger schemas: **7**;
-  - missing companion links: **6**;
-- `verify:research`: **8 / 8 commands passed**;
-- GitHub Actions job: **PASS**.
-
-The baseline is not an exemption from final repair. It prevents new debt while
-Steps 3 and 4 remove the enumerated historical debt package by package.
+note rather than assuming every companion repeats the entire main-note slug.
+Historical schemas remain explicit baseline warnings; new schema drift fails.
 
 ## Step 3 — formalize evidence grades
 
-Add a documented evidence-grade vocabulary to the source ledgers:
+Status: **implemented on `agent/research-evidence-grades` and passing in GitHub
+Actions.**
+
+Implemented:
+
+- machine-readable vocabulary in
+  `config/research-evidence-grades.json`;
+- documented standard in
+  `docs/research/RESEARCH-EVIDENCE-GRADE-STANDARD-R1.md`;
+- canonical graded ledger header:
+
+  ```text
+  source_id	evidence_grade	verification	citation_and_locator	what_it_supports	limit	disposition
+  ```
+
+- verifier enforcement for missing, unknown, or inconsistent grades;
+- 13 focused provenance fixtures;
+- explicit baseline for the remaining pre-grade ledgers;
+- first complete migration: PRQ2-006 continuative `落去`.
+
+The eight evidence grades are:
 
 1. `DIRECT_SCHOLARLY_CORE`
    - peer-reviewed paper or chapter;
-   - academic dissertation or proceedings paper;
-   - direct linguistic study of the construction.
+   - academic dissertation, thesis, or proceedings paper;
+   - direct linguistic study of the exact construction or contrast.
 2. `REFERENCE_GRAMMAR_CORE`
    - recognized Cantonese reference grammar explicitly analyzing the profile.
 3. `PRIMARY_CORPUS_ATTESTATION`
-   - reproducible corpus release or checked extraction with exact row/context.
+   - reproducible corpus release or checked extraction with exact row/context;
+   - occurrence evidence, not independent proof of productivity.
 4. `CONTROLLED_JUDGMENT_EVIDENCE`
-   - documented speaker panel or experimental judgment evidence.
+   - documented blinded panel or experimental judgment evidence.
 5. `ATTESTATION_ONLY`
    - dictionary, lesson, drama, manual, media text, or isolated example.
 6. `LEXICAL_OR_PRONUNCIATION_ONLY`
-   - word identity, reading, or gloss without construction analysis.
-7. `RUNTIME_OBSERVATION_ONLY`
+   - word identity, reading, orthography, gloss, or lexical category without
+     construction analysis.
+7. `DISCOVERY_LEAD_ONLY`
+   - bibliographic existence verified, substantive contents not yet inspected;
+   - zero claim weight until recovery and regrading.
+8. `RUNTIME_OBSERVATION_ONLY`
    - parser behavior; always zero linguistic-evidence weight.
 
-A research unit may remain active with only attestation evidence, but its core
-disposition must explicitly say `PENDING_DIRECT_RESEARCH` rather than imply that
-the construction has been established for implementation.
+Promotion-style dispositions require at least one row graded:
+
+- `DIRECT_SCHOLARLY_CORE`;
+- `REFERENCE_GRAMMAR_CORE`; or
+- `CONTROLLED_JUDGMENT_EVIDENCE`.
+
+`PRIMARY_CORPUS_ATTESTATION` may support occurrence and distribution but does not
+independently authorize productivity. The remaining grades never qualify a core
+promotion.
+
+Verified transition state at PR #7 head `69025e8006b5bca72b58ff7bc1f568b33a47282d`:
+
+- indexed packages: **58**;
+- fully graded packages: **1**;
+- explicitly baselined ungraded packages: **57**;
+- legacy-header warnings: **6**;
+- weak-core warnings: **5**;
+- missing companion-link warnings: **6**;
+- total verifier errors: **0**;
+- `verify:research`: **8 / 8 commands passed**;
+- GitHub Actions job: **PASS**.
+
+PRQ2-006 is the first model migration:
+
+- Yiu 2016: `DIRECT_SCHOLARLY_CORE`;
+- Matthews and Yip: `REFERENCE_GRAMMAR_CORE`;
+- Words.hk: `ATTESTATION_ONLY`;
+- runtime probes: `RUNTIME_OBSERVATION_ONLY`.
+
+The baseline is not an exemption. New ledgers must use the graded schema, and an ID
+must be removed from the ungraded baseline immediately after its complete ledger is
+reviewed and migrated.
 
 ## Step 4 — backfill or downgrade weak recent PRQ2 units
 
@@ -137,12 +176,20 @@ For each unit:
    semantic boundary;
 3. add reproducible primary-corpus evidence where available;
 4. keep dictionary, teaching, and drama evidence as corroboration only;
-5. narrow or downgrade every claim not supported by the stronger evidence;
-6. preserve unresolved speaker, regional, register, prosodic, and productivity
+5. narrow or downgrade every claim not supported by stronger evidence;
+6. grade every ledger row according to its actual evidential function;
+7. remove the package from the ungraded baseline;
+8. preserve unresolved speaker, regional, register, prosodic, and productivity
    boundaries for panel testing.
 
-PRQ2-012 `一係…一係…` is the initial positive control because its ledger already
-contains a primary scholarly source and adult corpus attestations.
+PRQ2-012 `一係…一係…` is **not** treated as a positive control for the paired
+construction merely because its ledger contains a scholarly source and corpus
+attestations. The scholarly row supports lexical category, while the adult corpus
+supports occurrence. Step 4 must regrade it by exact claim and either locate direct
+paired-construction analysis or narrow the disposition.
+
+PRQ2-006 is the current positive model because its direct scholarly and
+reference-grammar sources explicitly analyze continuative `落去`.
 
 ## Step 5 — audit implementation-to-research links
 
@@ -156,18 +203,18 @@ For each changed construction require:
 - positive and negative/boundary fixtures tied to the sourced claim;
 - no reliance on a research note that states implementation is unauthorized;
 - no promotion based solely on runtime coverage, generated probes, dictionaries,
-  or pedagogical examples.
+  pedagogical examples, or corpus occurrence alone.
 
 Unsupported implementation must be narrowed, quarantined, retired, or reverted;
 it must not be grandfathered merely because tests pass.
 
 ## Step 6 — integrate the gate into normal verification
 
-Mechanical integration is already complete through Step 2. Remaining work:
+Mechanical integration is complete through Step 3. Remaining work:
 
 - document the gate in `docs/current/TESTING.md` and the research README;
-- extend fixtures when Step 3 adds explicit evidence grades;
 - remove baseline entries as each historical package is normalized;
+- extend fixtures when new grade/disposition conflicts are discovered;
 - keep network availability out of the deterministic local gate;
 - run URL reachability as a separate scheduled or manual audit with cached
   results.
@@ -180,12 +227,15 @@ Produce a repository-wide table containing:
 - package completeness;
 - strongest evidence grade;
 - direct scholarly source count;
+- reference-grammar source count;
 - primary corpus source count;
+- controlled-judgment source count;
 - attestation-only source count;
 - implementation link status;
 - unresolved evidence gaps;
 - required disposition.
 
 Completion requires zero duplicate IDs, zero unindexed packages, zero malformed
-ledgers, zero missing companion links, and zero implementation claims whose
-evidence chain terminates only in attestation or runtime observations.
+ledgers, zero missing companion links, zero ungraded ledgers, and zero
+implementation claims whose evidence chain terminates only in attestation, corpus
+occurrence, discovery leads, or runtime observations.
