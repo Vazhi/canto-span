@@ -1,0 +1,18 @@
+audit_id	surface_or_target	profile	current_runtime_or_role	collision_or_gap	evidence_weight_or_decisive_difference	recommended_disposition
+UC018-T01	ANotAQuestion	construction family	Research-pending affirmative/negative reduplicative question	Related information-seeking alternative semantics, but no overt lexical connector.	A-not-A supplies positive/negative values through reduplication plus negation; `定(係)` joins independently overt alternatives.	RELATED_QUESTION_FAMILY_KEEP_SEPARATE
+UC018-T02	PolarQuestionFrame	construction family	Internal generic polar-question representation	Both are interrogative and may carry final particles.	Polar questions request proposition confirmation; core `定(係)` questions request selection among alternatives.	KEEP_SEPARATE
+UC018-T03	CopularIdentificationFrame	construction family	Internal `係` identification wrapper	Copular alternatives may surface as `係 A 定係 B`.	Initial `係` is the clause copula; conjunction-internal `係` belongs to `定係`.	COMPOSITIONAL_OVERLAP_NOT_MERGER
+UC018-T04	或者 disjunction	lexical/construction boundary	Standard disjunction	Can join alternatives inside questions and declaratives.	Broader declarative/modal/conditional distribution and different answer behavior from interrogative `定`.	SEPARATE_STANDARD_DISJUNCTION_PROFILE
+UC018-T05	DiscourseParticleFrame	particle scope	Generic sentence-final-particle wrapper	Alternative questions can carry particles or tails.	Particle force does not create or identify the overt alternative relation.	COMPOSITIONAL_CARRIER_ONLY
+UC018-C01	你要粥定係飯？	NP alternative direct question	SubjectModalPredicateClause > ModalVP	Broad full-span host does not represent alternatives, connector ownership, or answer selection.	0	PRESERVE_BOTH_ALTERNATIVES_AND_CONNECTOR
+UC018-C02	你要粥定飯？	reduced connector	SubjectModalPredicateClause > ModalVP	No construction distinguishes interrogative connector `定` from lexical/resultative/prospective `定`.	0	REQUIRE_PARALLEL_ALTERNATIVES_AND_LEXICAL_BOUNDARIES
+UC018-C03	你飲茶定係飲咖啡？	VP alternatives	Two VP nodes; subject and connector unwrapped	Parallel alternatives fragment into unrelated predicates.	0	COORDINATE_COMPLETE_VP_ALTERNATIVES_WITH_SINGLE_SUBJECT
+UC018-C04	喺前面定係後面？	locative alternatives	First locative phrase only	Shared locative domain or elliptical second coverb is not represented.	0	RESEARCH_SHARED_MATERIAL_WITHOUT_INVENTING_HIDDEN_TOKENS
+UC018-C05	究竟你飲奶茶定係咖啡？	diagnostic adverb	Partial VP only	No question relation and `究竟` scope is absent.	0	LEXICAL_AND_SPEAKER_VERIFICATION_REQUIRED
+UC018-C06	你要粥定係飯咩？	polar-particle boundary	PolarQuestionFrame	Runtime gives complete polar coverage despite the inspected source’s negative judgment.	0	NATIVE_REPLICATION_BEFORE_EXECUTABLE_NEGATIVE_RULE
+UC018-C07	你要粥定係飯先？	information-seeking tail	Broad modal host	Final `先` is flattened as sequence/focus material.	0	PRESERVE_SENTENCE_FINAL_TAIL_IDENTITY_AND_SCOPE
+UC018-C08	你要粥定係飯話？	information-seeking tail	Broad modal host	Final `話` is treated as a speech verb.	0	SEPARATE_QUESTION_TAIL_FROM_REPORTING_VERB
+UC018-C09	我問阿妹佢諗過定係睇過。	embedded alternative	Two experiential VPs	No embedded interrogative-complement or alternative relation.	0	RESEARCH_EMBEDDING_PREDICATE_INVENTORY
+UC018-C10	你係攞景定係贈興呀？	copular/focus host	No top construction	Initial `係`, alternatives, connector, and final particle remain flat.	0	SEPARATE_MATRIX_HAI6_FROM_CONNECTOR_DING6HAI6
+UC018-C11	企定啲。	lexical/result-state boundary	Delimited or lexical VP	Written `定` is not an alternative connector.	0	REQUIRE_PARALLEL_ALTERNATIVES
+UC018-C12	問定條路。	prospective boundary	ordinary VP/unknown	`定` contributes advance preparation, not disjunction.	0	MAINTAIN_LEXICAL_SENSE_SPLIT

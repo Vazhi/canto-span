@@ -1,0 +1,6 @@
+collision_target	current_role	observed_overlap	decisive_difference	current_disposition
+CopularANotAQuestion	Full `係唔係` before an overt complement; explicitly rejects terminal tags	Shares the full A-not-A string.	Tag follows an independently complete host and can detach; clause-internal form precedes its complement.	KEEP_SEPARATE_EXISTING_BOUNDARY_CONFIRMED
+PolarQuestionFrame	Internal route for clause-internal contracted `係咪` and particle questions	Shares interrogative force and possibly contracted surface material.	Does not encode an independent host-plus-tag relation; terminal `係咪` remains unverified.	KEEP_SEPARATE_CONTRACTED_TAG_QUARANTINED
+ANotAQuestion	General predicate/modal A-not-A family	Tag bases have A-not-A morphology.	A tag is appended after a complete host and can stand alone; ordinary A-not-A occupies a clause-internal predicate position.	RELATED_FORM_KEEP_SEPARATE
+DiscourseParticleFrame	Generic internal sentence-final-particle wrapper	Host and tag may each contain final particles.	A bound particle does not supply the detachable tag clause or its anaphoric relation to the host.	POSSIBLE_COMPOSITIONAL_CARRIER_NOT_MERGER
+aa4/he2 polar particles	Bound sentence-final polar markers	Can turn a clause into a question.	Fail standalone and post-question attachment diagnostics that `係唔係` passes.	REJECT_AS_SAME_TAG_CONSTRUCTION

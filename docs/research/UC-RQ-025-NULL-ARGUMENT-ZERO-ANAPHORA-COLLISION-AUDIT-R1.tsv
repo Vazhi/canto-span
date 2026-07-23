@@ -1,0 +1,18 @@
+audit_id	surface_or_target	profile	current_runtime_or_role	collision_or_gap	evidence_weight_or_decisive_difference	recommended_disposition
+UC025-T01	ComplementEllipsisFragment	typed omission family	OpinionStanceFrame-internal `有/冇` or `係/唔係` unresolved complement/domain omission	Requires discourse but does not cover ordinary transitive null NP objects.	KEEP_EXISTING_TYPED_PROFILE_SEPARATE
+UC025-T02	FragmentAnswer	fragment family	Context-dependent short answer	Can omit most of a proposition; null-object clauses retain overt clause structure and may occur outside answer turns.	KEEP_SEPARATE_ALLOW_COOCURRENCE
+UC025-T03	TopicComment	surface carrier	Overt topic-plus-comment heuristic	Antecedent may be outside the parsed span; overt topic structure does not independently license a gap.	OPTIONAL_CARRIER_NOT_MERGER
+UC025-T04	IntransitiveVP	valency collision	Broad one-predicate wrapper	Object absence cannot distinguish one-place valency, optional object, or discourse-recoverable null object.	REQUIRE_LEXEME_AND_USE_VALENCY_SPLIT
+UC025-T05	VP ellipsis	ellipsis family	Selectively licensed omission of verbal projection	Omits predicate-level material rather than one NP argument.	KEEP_SEPARATE
+UC025-T06	Topic-drop analysis	theoretical analysis	One account of discourse-linked omission	Competing null-topic, null-pronoun, argument-ellipsis, and NP-ellipsis analyses remain.	QUARANTINE_ANALYSIS
+UC025-C01	我鍾意呢件衫。	overt baseline	Full-span ClauseSpan; suspicious ModifierNP wrapper	Bad overt constituency can contaminate omission contrasts.	CONTROL_OVERT_VALENCY_FIRST
+UC025-C02	我鍾意。	specific or non-specific null object	NeedsContext; missing preference object/domain	One missing-slot label cannot distinguish specific, generic, existential, attributive, or conventional objectless use.	ADD_CONTEXT_LINKED_INTERPRETATION_ONLY_AFTER_BOUNDED_DESIGN
+UC025-C03	張三見到一隻熊喇，瑪麗都見到。	ambiguous object drop	ClauseRelationGraph; incomplete valency	Full coverage hides source-documented ambiguity and missing object relations.	REPRESENT_EACH_PREDICATE_VALENCY_INDEPENDENTLY
+UC025-C04	約翰鍾意熊，瑪麗都鍾意。	generic object/domain	Two PreferenceVP nodes	Generic understood object/domain is lost.	PRESERVE_REFERENCE_TYPE_AND_DOMAIN_SOURCE
+UC025-C05	約翰想要一架新車，瑪麗都想要。	attributive/intensional object	Two ModalVP nodes	Modal wrapper conceals a selected nominal complement.	SEPARATE_MODAL_COMPLEMENT_FROM_OBJECT_INTERPRETATION
+UC025-C06	呢本書，我睇完喇。	overt topic chain	TopicChain with linked null object	Narrow supported path must not generalize to all discourse omission.	RETAIN_AS_ONE_OVERT_TOPIC_SUBTYPE
+UC025-C07	佢買咗本書。睇完喇。	cross-sentence continuity	Separate roots; no cross-sentence link	Local token rules cannot resolve antecedence across sentence boundaries.	REQUIRE_DISCOURSE_STATE_AND_ANTECEDENT_TRACKING
+UC025-C08	食咗喇。	multiple omitted arguments	NeedsContext for subject and object/activity domain	Generic context flag collapses answer, directive, and narrative possibilities.	REQUIRE_SPEECH_ACT_AND_DIALOGUE_CONTEXT
+UC025-C09	佢話會嚟。之後真係嚟咗。	null-subject continuity	Separate ReportedSpeech and TemporalClause roots	Nearest-NP linking can select a wrong antecedent.	RESEARCH_TOPIC_CONTINUITY_AND_COMPETING_ANTECEDENTS
+UC025-C10	放喺呢度。	placement predicate	Object-selecting predicate without overt arguments	Could be imperative, null-subject/null-object clause, or context fragment.	REQUIRE_VALENCY_CONTEXT_AND_SPEECH_ACT
+UC025-C11	我要買。	object omission or incomplete use	Context-sensitive existing source map	Parser could fabricate an antecedent not present in input.	EXPOSE_UNRESOLVED_STATE_WITHOUT_INVENTED_ANTECEDENT

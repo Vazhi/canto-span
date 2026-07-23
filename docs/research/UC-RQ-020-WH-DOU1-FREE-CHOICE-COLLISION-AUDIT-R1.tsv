@@ -1,0 +1,7 @@
+collision_target	current_role	observed_overlap	decisive_difference	current_disposition
+UC-RQ-008 wh-indeterminate	Dedicated research family for noninterrogative readings of wh forms	Same Cantonese wh forms receive a licensed nonquestion reading.	`dou1` supplies a directly attested universal profile; modal freedom of choice remains unproven.	MERGE_UNIVERSAL_SUBPROFILE
+WhClassifierQuestion	Interrogative `bin1 + classifier (+ noun)` frame	May contain a wh nominal.	Question-denoting classifier phrase does not represent universal `wh + dou1` scope.	KEEP_AS_INTERROGATIVE_COLLISION
+ExistentialWhQuestion	Interrogative existential/quantity frame	May contain wh material under `jau5/mou5`.	Existential question force differs from universal preverbal wh quantification.	KEEP_SEPARATE
+FocusParticleFrame	Generic internal focus wrapper	Can encounter `dou1`-containing surfaces.	No external evidence or distinction among universal, scalar, additive, and free-choice uses.	NOT_A_LANGUAGE_MERGE
+UC-RQ-017 lin4-dou1 even focus	Scalar-focus research unit	Shares overt `dou1`.	Ranks an exceptional alternative rather than quantifying all values of a wh domain.	KEEP_SEPARATE
+AcceptabilityClause free-choice	Internal `dou1 dak1` wrapper with overt `sai6daan6/ceoi4bin6` examples	Directly attested freedom-of-choice persons, times, and places.	Contains overt free-choice licensors and permission/acceptability `dak1`; does not prove bare `wh + dou1` free choice.	KEEP_SEPARATE_PROFILE

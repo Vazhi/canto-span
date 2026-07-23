@@ -1,0 +1,8 @@
+collision_target	current_role	observed_overlap	decisive_difference	current_disposition
+ConditionalClause	Ordinary overt conditional antecedent	`就算` belongs to the broad conditional domain.	Scalar concession asserts that the main claim survives the antecedent; ordinary conditional makes the result conditional on it.	PROMOTE_DISTINCT_CONCESSIVE_CONDITIONAL_SUBTYPE
+ConditionResult	Typed condition-to-result relation	Both link an antecedent and a main clause.	The relation is despite/even-if rather than simple antecedent/consequent dependence, and markers differ.	KEEP_SEPARATE
+FocusParticleFrame	Broad `都`-bearing focus relation	Contains the same main-clause particle.	Paired `都` relates the main claim to a conceded alternative; generic focus does not preserve that clause relation.	NOT_A_MERGER_TARGET_KEEP_DOU1_OVERT
+UC-RQ-036 paired concession	`雖然…但係/不過…` counterexpectation relation	Both express concession/counterexpectation.	`就算` introduces a hypothetical or scalar case and pairs with main-clause `都`, not adversative `但係`.	KEEP_TYPED_CONCESSIVE_SUBFAMILIES_SEPARATE
+Universal/free-choice `wh…都…`	Quantifies over a domain of alternatives	Shares alternative-insensitive `都` behavior.	No overt `就算` antecedent is required and wh-domain licensing is independently structured.	KEEP_SEPARATE
+Standalone `就算`	Concessive marker without recovered main clause	Can introduce the first member of the pair.	The checked sources do not establish when the `都` clause may be omitted or discourse-recovered.	QUARANTINE_INCOMPLETE_PAIR
+Generic `都`	Additive/distributive/exhaustive particle	Shares surface and position possibilities.	Does not alone license an even-if relation or fabricate a conceded antecedent.	KEEP_SEPARATE
