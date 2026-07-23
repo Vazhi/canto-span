@@ -1,0 +1,23 @@
+name: Research provenance
+
+on:
+  push:
+    branches:
+      - agent/research-provenance-repair
+  pull_request:
+    paths:
+      - "docs/research/**"
+      - "tools/*research-provenance*"
+      - "config/research-provenance-baseline.json"
+      - "config/verification-profiles.json"
+      - ".github/workflows/research-provenance.yml"
+
+jobs:
+  verify-research:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm run verify:research
