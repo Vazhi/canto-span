@@ -6,7 +6,7 @@ status: "unsupported_generalization"
 confidence: "unsupported"
 claim_layer: "language"
 lane: "LANE-10"
-last_reviewed: "unknown"
+last_reviewed: "2026-07-23"
 last_status_migrated: "2026-07-21"
 source_count: 1
 verified_source_count: 1
@@ -144,3 +144,12 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Full pre-migration record: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
 - Status migration date: 2026-07-21.
 - The frozen JSON preserves the former wide schema; this note is the active authoring record.
+
+## Evidence and ontology closure guidance
+
+- Review date: 2026-07-23
+- Ontology class: Cantonese-language profile requiring narrow evidence-faithful scope
+- Research finding: `SRC-TANG-2024-CANTONESE-GRAMMAR-GUIDE` supports numeral + temporal unit + `左右` as an approximate duration phrase. Current native record rejects one fixture, not the entire phenomenon.
+- Recommended disposition: Rename or split toward `ApproximateMeasurePhrase`; distinguish duration, age, distance, count, and object-NP uses. Keep disputed fixtures quarantined.
+- Retirement safeguard: Do not retire based on one rejected surface. First inspect the exact rejected item, source scope, and newer Cantonese measure-phrase research.
+- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.

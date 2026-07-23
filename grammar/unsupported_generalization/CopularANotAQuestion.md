@@ -6,7 +6,7 @@ status: "unsupported_generalization"
 confidence: "unsupported_narrow_profile_reconciled"
 claim_layer: "language"
 lane: "LANE-07"
-last_reviewed: "2026-07-22"
+last_reviewed: "2026-07-23"
 last_status_migrated: "2026-07-21"
 source_count: 4
 verified_source_count: 4
@@ -168,3 +168,12 @@ internal `PolarQuestionFrame` path.
 - Full pre-migration record: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
 - Status migration date: 2026-07-21.
 - Reconciliation checkpoint: `docs/research/CP051-P1-COPULAR-ANOTA-RECONCILIATION-R1.md`.
+
+## Evidence and ontology closure guidance
+
+- Review date: 2026-07-23
+- Ontology class: Cantonese-language profile requiring narrow evidence-faithful scope
+- Research finding: Four mapped sources, including Ann Law's A-not-A analysis and source-linked full `係唔係` profiles. Current note already identifies unresolved full-form, tag, and contracted `係咪` ontology.
+- Recommended disposition: Retain the narrow full-form profile. Resolve whether `係咪` is a contracted subtype, a separate lexicalized question marker, or a `PolarQuestionFrame` subtype; preserve both analyses if evidence remains mixed.
+- Retirement safeguard: Strong retirement veto. No removal until full `係唔係`, contracted `係咪`, terminal tag uses, complement types, and response behavior have explicit migration tests.
+- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.

@@ -6,7 +6,7 @@ status: "unsupported_generalization"
 confidence: "unsupported"
 claim_layer: "language"
 lane: "LANE-08"
-last_reviewed: "unknown"
+last_reviewed: "2026-07-23"
 last_status_migrated: "2026-07-21"
 source_count: 2
 verified_source_count: 2
@@ -144,3 +144,12 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Full pre-migration record: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
 - Status migration date: 2026-07-21.
 - The frozen JSON preserves the former wide schema; this note is the active authoring record.
+
+## Evidence and ontology closure guidance
+
+- Review date: 2026-07-23
+- Ontology class: Cantonese-language profile requiring narrow evidence-faithful scope
+- Research finding: `SRC-LUI-2025-REPORTED-THOUGHT`; `SRC-YAP-WONG-CHOR-2014-STANCE`. Cantonese distinguishes complement-taking cognition predicates, reported thought, and grammaticalized/parenthetical stance uses.
+- Recommended disposition: Split lexical cognition-complement structure from stance-marker uses; preserve overt complement boundaries and ambiguity.
+- Retirement safeguard: Do not retire wholesale. First identify whether the runtime node adds a proposition boundary, a lexical selection claim, a discourse relation, or only a redundant outer wrapper.
+- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.

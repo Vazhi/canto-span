@@ -6,7 +6,7 @@ status: "unsupported_generalization"
 confidence: "unsupported_narrow_profile_reconciled"
 claim_layer: "language"
 lane: "LANE-07"
-last_reviewed: "2026-07-22"
+last_reviewed: "2026-07-23"
 last_status_migrated: "2026-07-21"
 source_count: 3
 verified_source_count: 3
@@ -156,3 +156,12 @@ speaker-judgment boundaries are incomplete.
 - Full pre-migration record: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
 - Status migration date: 2026-07-21.
 - Reconciliation checkpoint: `docs/research/CP049-P1-ANOTA-ACCEPTABILITY-RECONCILIATION-R1.md`.
+
+## Evidence and ontology closure guidance
+
+- Review date: 2026-07-23
+- Ontology class: Cantonese-language profile requiring narrow evidence-faithful scope
+- Research finding: `SRC-LI-2017-ANOTA`; `SRC-LUI-2023-PREVERBAL-DAK`; `SRC-SYBESMA-2013`. Current note already narrows the runtime to terminal adjacent `得唔得`, including checked postposed `先`, and excludes preverbal restrictive-focus `得`.
+- Recommended disposition: Retain the narrow profile; consider a clearer learner-facing name. Keep `unsupported_generalization` or `research_pending` until lexical, discourse, regional, and panel boundaries are complete.
+- Retirement safeguard: Do not retire unless the exact terminal profile can be represented transparently by another A-not-A node without loss of its `得`-specific boundary.
+- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.

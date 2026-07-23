@@ -6,7 +6,7 @@ status: "parser_heuristic"
 confidence: "low"
 claim_layer: "internal"
 lane: "LANE-10"
-last_reviewed: "unknown"
+last_reviewed: "2026-07-23"
 last_status_migrated: "2026-07-21"
 source_count: 0
 verified_source_count: 0
@@ -126,3 +126,12 @@ No pattern-specific external source is currently mapped.
 - Full pre-migration record: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
 - Status migration date: 2026-07-21.
 - The frozen JSON preserves the former wide schema; this note is the active authoring record.
+
+## Evidence and ontology closure guidance
+
+- Review date: 2026-07-23
+- Ontology class: internal parser representation, subsystem, diagnostic state, or compatibility role
+- Research finding: Internal wrapper with no mapped source; current note still begins with language-claim wording.
+- Recommended disposition: Retain only if it has stable serialized value beyond ordinary copular composition. Rewrite note as pure internal semantics and map underlying copular evidence separately.
+- Retirement safeguard: Do not retire until identification vs relation vs explanatory copular outputs and compatibility effects are compared.
+- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.

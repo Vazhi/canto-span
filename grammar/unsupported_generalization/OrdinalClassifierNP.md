@@ -157,3 +157,12 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - The node preserves overt `第二` and `隻`, records a headless subtype, and inserts no nominal head or referent.
 - The matcher is surface-bounded to `第二隻`; it does not license arbitrary ordinal-classifier ellipsis.
 - `問第二個` is an executable absence boundary for the nonordinal “another/other one” use.
+
+## Evidence and ontology closure guidance
+
+- Review date: 2026-07-23
+- Ontology class: Cantonese-language profile requiring narrow evidence-faithful scope
+- Research finding: `SRC-LAM-LAU-LEE-2024-SEGMENTATION`; coursebook evidence. Sources distinguish true ordinal `第 + numeral + classifier (+ noun)` from lexical/contextual `第二` meaning next/other and permit headless classifier-compatible forms.
+- Recommended disposition: Retain the ordinal NP profile in the NP subsystem; split headed, headless, and nonordinal lexical senses.
+- Retirement safeguard: Do not retire. Correct the current claim/fixture mismatch and preserve omitted-head uncertainty without inventing the noun.
+- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.

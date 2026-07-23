@@ -6,7 +6,7 @@ status: "parser_heuristic"
 confidence: "low"
 claim_layer: "internal"
 lane: "LANE-10"
-last_reviewed: "unknown"
+last_reviewed: "2026-07-23"
 last_status_migrated: "2026-07-21"
 source_count: 0
 verified_source_count: 0
@@ -125,3 +125,12 @@ No pattern-specific external source is currently mapped.
 - Full pre-migration record: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
 - Status migration date: 2026-07-21.
 - The frozen JSON preserves the former wide schema; this note is the active authoring record.
+
+## Evidence and ontology closure guidance
+
+- Review date: 2026-07-23
+- Ontology class: internal parser representation, subsystem, diagnostic state, or compatibility role
+- Research finding: Currently internal with no mapped source, but direct Cantonese topic/focus research exists (Fung 2007 and later left-periphery work).
+- Recommended disposition: Do not retire. First map Cantonese-specific topic/focus evidence, inspect the runtime example, and decide whether this is a language construction, a discourse-role representation, or both.
+- Retirement safeguard: Hard research gate: retirement is forbidden until direct Cantonese topic-comment literature and competing subject/dislocation analyses are reviewed.
+- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.

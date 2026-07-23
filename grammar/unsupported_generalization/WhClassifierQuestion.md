@@ -6,7 +6,7 @@ status: "unsupported_generalization"
 confidence: "unsupported"
 claim_layer: "language"
 lane: "LANE-06"
-last_reviewed: "unknown"
+last_reviewed: "2026-07-23"
 last_status_migrated: "2026-07-21"
 source_count: 3
 verified_source_count: 3
@@ -149,3 +149,12 @@ No same-family active construction was identified in the canonical consolidation
 - Full pre-migration record: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
 - Status migration date: 2026-07-21.
 - The frozen JSON preserves the former wide schema; this note is the active authoring record.
+
+## Evidence and ontology closure guidance
+
+- Review date: 2026-07-23
+- Ontology class: Cantonese-language profile requiring narrow evidence-faithful scope
+- Research finding: `SRC-WONG-2023-LANGUAGE-SAMPLE`; `SRC-XIA-2025-CLASSIFIERS`; coursebook evidence directly support `邊 + classifier + noun` with wh-in-situ.
+- Recommended disposition: Move the wh-classifier NP into the NP subsystem and compose it with question structure; preserve overt-head and headless distinctions.
+- Retirement safeguard: Strong retirement veto on the source-backed nominal profile; only a redundant question wrapper may disappear.
+- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.

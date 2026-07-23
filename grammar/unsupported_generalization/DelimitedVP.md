@@ -6,7 +6,7 @@ status: "unsupported_generalization"
 confidence: "unsupported"
 claim_layer: "language"
 lane: "LANE-05"
-last_reviewed: "unknown"
+last_reviewed: "2026-07-23"
 last_status_migrated: "2026-07-21"
 source_count: 3
 verified_source_count: 3
@@ -149,3 +149,12 @@ No same-family active construction was identified in the canonical consolidation
 - Full pre-migration record: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
 - Status migration date: 2026-07-21.
 - The frozen JSON preserves the former wide schema; this note is the active authoring record.
+
+## Evidence and ontology closure guidance
+
+- Review date: 2026-07-23
+- Ontology class: Cantonese-language profile requiring narrow evidence-faithful scope
+- Research finding: `SRC-SIO-BOND-2025` and other mapped sources support delimitative/inner-aspect behavior, including lexical and situation-type restrictions.
+- Recommended disposition: Retain a narrow `V-吓` delimitative profile or move it into a typed inner-aspect subsystem. Do not treat every `吓` as the same construction.
+- Retirement safeguard: Do not retire the phenomenon. A wrapper may be replaced only after aspect semantics, selection restrictions, and A1 outputs are preserved.
+- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.

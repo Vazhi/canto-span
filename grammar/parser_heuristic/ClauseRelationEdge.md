@@ -6,7 +6,7 @@ status: "parser_heuristic"
 confidence: "medium"
 claim_layer: "internal"
 lane: "LANE-02"
-last_reviewed: "unknown"
+last_reviewed: "2026-07-23"
 last_status_migrated: "2026-07-21"
 source_count: 0
 verified_source_count: 0
@@ -124,3 +124,12 @@ No same-family active construction was identified in the canonical consolidation
 - Full pre-migration record: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
 - Status migration date: 2026-07-21.
 - The frozen JSON preserves the former wide schema; this note is the active authoring record.
+
+## Evidence and ontology closure guidance
+
+- Review date: 2026-07-23
+- Ontology class: internal parser representation, subsystem, diagnostic state, or compatibility role
+- Research finding: Serialized internal relation between two independently parsed members; high fixture count.
+- Recommended disposition: Retain as infrastructure. Document relation-type enum, member references, directionality, scope, and invariants.
+- Retirement safeguard: Do not retire without a versioned A1 migration for every relation consumer.
+- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.

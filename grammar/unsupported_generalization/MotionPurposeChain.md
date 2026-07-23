@@ -6,7 +6,7 @@ status: "unsupported_generalization"
 confidence: "unsupported"
 claim_layer: "language"
 lane: "LANE-09"
-last_reviewed: "unknown"
+last_reviewed: "2026-07-23"
 last_status_migrated: "2026-07-21"
 source_count: 2
 verified_source_count: 2
@@ -145,3 +145,12 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Full pre-migration record: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
 - Status migration date: 2026-07-21.
 - The frozen JSON preserves the former wide schema; this note is the active authoring record.
+
+## Evidence and ontology closure guidance
+
+- Review date: 2026-07-23
+- Ontology class: Cantonese-language profile requiring narrow evidence-faithful scope
+- Research finding: `SRC-LEUNG-2026-MOTION`; `SRC-MATTHEWS-2006-SVC`. Purpose cannot be inferred from two verbs alone; immediate following position and semantic compatibility matter.
+- Recommended disposition: Retain a narrow typed purpose relation; require two independently parsed predicates and explicit semantic/structural guards.
+- Retirement safeguard: Do not retire before comparing it with `SerialVerbPurposeChain` and other clause-relation nodes; merge duplicates rather than erase the relation.
+- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.

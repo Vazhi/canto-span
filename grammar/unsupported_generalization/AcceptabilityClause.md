@@ -153,3 +153,12 @@ No same-family active construction was identified in the canonical consolidation
 - The matcher now requires an overt parsed action predicate. It no longer constructs `AcceptabilityClause` from bare `都得` or a nominal/wh item followed by `都得`.
 - Executable absence boundaries cover `邊度都得`, `是但邊個都得`, `是但幾時去都得`, and `隨便去邊度都得`.
 - The broader label stays `unsupported_generalization`; the patch establishes only a bounded source-linked subtype and does not claim unrestricted productivity.
+
+## Evidence and ontology closure guidance
+
+- Review date: 2026-07-23
+- Ontology class: Cantonese-language profile requiring narrow evidence-faithful scope
+- Research finding: `SRC-CHENG-SYBESMA-2004-POSTVERBAL-DAK`; `SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE`. Directly attested overt action + clause-final `都得`; free-choice `…都得` is a separate domain.
+- Recommended disposition: Retain or rename the bounded feasibility/permission profile; keep free-choice quantification outside it.
+- Retirement safeguard: Do not retire until the source-linked action profile is either preserved under a replacement label or proven to be ordinary composition with identical learner-visible information.
+- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.

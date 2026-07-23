@@ -6,7 +6,7 @@ status: "unsupported_generalization"
 confidence: "unsupported"
 claim_layer: "language"
 lane: "LANE-10"
-last_reviewed: "2026-07-22"
+last_reviewed: "2026-07-23"
 last_status_migrated: "2026-07-21"
 source_count: 2
 verified_source_count: 2
@@ -145,3 +145,12 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Implementation-only reachability: `FRWRAP-007` with `請你沿住馬路行。`
 - Protects the narrow path-command constructor only. It does not establish broad polite-imperative syntax or generalize beyond the reviewed shape.
 - Its linguistic evidence weight is **0**; reachability does not establish naturalness, productivity, construction identity, or promotion eligibility.
+
+## Evidence and ontology closure guidance
+
+- Review date: 2026-07-23
+- Ontology class: Cantonese-language profile requiring narrow evidence-faithful scope
+- Research finding: Two verified pedagogical sources distinguish `唔該`, `麻煩`, `請`, and other request strategies in lexical and pragmatic force.
+- Recommended disposition: Retain a narrow request/directive profile or represent conventional formulas plus imperative force separately. Avoid treating politeness as one interchangeable marker slot.
+- Retirement safeguard: Do not retire the source-linked request profile. A wrapper may be decomposed only after formula, directive, and manner material remain visible.
+- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
