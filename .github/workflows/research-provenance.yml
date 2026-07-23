@@ -3,12 +3,13 @@ name: Research provenance
 on:
   push:
     branches:
-      - agent/research-provenance-repair
+      - "agent/research-*"
   pull_request:
     paths:
       - "docs/research/**"
       - "tools/*research-provenance*"
       - "config/research-provenance-baseline.json"
+      - "config/research-evidence-grades.json"
       - "config/verification-profiles.json"
       - ".github/workflows/research-provenance.yml"
 
