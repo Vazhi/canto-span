@@ -4,10 +4,8 @@ research_id: PRQ2-003
 status: active_research_unit
 baseline_version: 0.5.213
 created: 2026-07-23
-queue_visibility: completed_task_only
 implementation_authorized: false
 status_change_authorized: false
-master_backlog_change_authorized: false
 ---
 
 # PRQ2-003 — `越 … 越 …` and `越嚟越 …` scalar progression

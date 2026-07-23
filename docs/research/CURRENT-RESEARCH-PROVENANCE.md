@@ -62,6 +62,11 @@ grammar status or authorize parser work. Current status remains owned by
 |---|---|
 | PRQ2-001 | [`yau5/mou5 dak1 availability`](PRQ2-001-YAU5-MOU5-DAK1-AVAILABILITY-RESEARCH-R1.md) |
 | PRQ2-002 | [`zou2zi1 hindsight regret`](PRQ2-002-ZOU2ZI1-HINDSIGHT-REGRET-RESEARCH-R1.md) |
+| PRQ2-003 | [`jyut6 scalar progression`](PRQ2-003-JYUT6-SCALAR-PROGRESSION-RESEARCH-R1.md) |
+| PRQ2-011 | [`m4 daan1 zi2 additive correlation`](PRQ2-011-M4DAAN1ZI2-ZUNG6-ADDITIVE-CORRELATIVE-RESEARCH-R1.md) |
+| PRQ2-033 | [`jau6-jau6 coexistence`](PRQ2-033-JAU6-JAU6-COEXISTENT-PREDICATE-RESEARCH-R1.md) |
+| PRQ2-012 | [`jat1 hai6 exclusive alternatives`](PRQ2-012-JAT1HAI6-EXCLUSIVE-ALTERNATIVE-RESEARCH-R1.md) |
+| PRQ2-010 | [`ceoi4 zo2 zi1 ngoi6 exclusion and addition`](PRQ2-010-CEOI4ZO2-ZI1NGOI6-EXCLUSION-ADDITION-RESEARCH-R1.md) |
 
 ## Shared evidence
 
