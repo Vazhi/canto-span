@@ -151,3 +151,9 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Implementation-only reachability: `FRWRAP-003` with `買就平啲。`
 - Protects the current action + 就 + stative-result route only. It does not establish a general conditional analysis or license every 就 sequence.
 - Its linguistic evidence weight is **0**; reachability does not establish naturalness, productivity, construction identity, or promotion eligibility.
+
+## Retirement disposition
+
+- Retired at `v0.5.213-r1-condition-result-reconciliation`.
+- The action + `就` + stative wrapper is replaced by typed conditional `ClauseRelationEdge` structure with independently parsed relation members.
+- The source and boundary record remains preserved for conditional-relation research.

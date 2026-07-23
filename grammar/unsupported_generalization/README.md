@@ -1,7 +1,7 @@
 # Unsupported generalization
 
 **Frontmatter status:** `unsupported_generalization`
-**Current construction notes:** 76
+**Current construction notes:** 75
 
 The current broad claim has no defensible supported scope.
 

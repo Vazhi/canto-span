@@ -10,6 +10,7 @@ const { Plugin, PluginSettingTab, Setting, Notice } = require("obsidian");
  */
 
 const CANTO_SPAN_RUNTIME_VERSION = "0.5.213";
+// v0.5.213-r1: retires ConditionResult after typed conditional ClauseRelationEdge coverage replaced its unsupported action + 就 + stative fallback.
 // v0.5.213: source-links narrow copula-less 唔 + property predication and records the contrasting 唔係 + nominal predicate boundary without broadening other negators.
 // v0.5.212: retires the conflated NegatedLexicalizedStative label while preserving lexical 難X, compositional 唔 + lexicalized property predicates, and prohibitive/ambiguous 唔好 profiles.
 // v0.5.211: reconciles source-linked preverbal 未/冇 experiential negation while preserving final-未 questions and excluding general 唔/咪 negation.
@@ -1289,7 +1290,6 @@ const CONSTRUCTION_LABEL_REGISTRY = new Set([
   "CompletionThenClause",
   "CompletionVP",
   "CompoundDirectionalMotionVP",
-  "ConditionResult",
   "CoordinatedNP",
   "CopularIdentificationFrame",
   "CopularANotAQuestion",
@@ -1541,6 +1541,7 @@ const RETIRED_CONSTRUCTION_LABEL_REGISTRY = new Map([
   ["ComparativeStative", "Retired at v0.5.202: the residual stative + 啲 fallback mislabeled degree adjustment as a generic comparative. Source-supported property + 啲 forms use DegreeMannerAdverbial; explicit surpass comparatives require separate structure."],
   ["ScalarRangeFragment", "Retired at v0.5.209: the 價位-triggered fallback added unsupported fragment status to ordinary nominal/scalar material and had no source-linked positive or accepted fixture."],
   ["NegatedLexicalizedStative", "Retired at v0.5.212: the label conflated lexical negative meaning in opaque 難X units with compositional 唔 negation and the distinct prohibitive 唔好 profile."],
+  ["ConditionResult", "Retired at v0.5.213-r1: the action + 就 + stative wrapper lacked an invariant sourced construction; typed conditional ClauseRelationEdge structure now preserves independently parsed antecedent and consequent members."],
 ]);
 
 
@@ -2453,12 +2454,6 @@ const CONSTRUCTION_TEMPLATES = [
     label: "Suggest",
     template: ["discourse_marker?", "suggestion_marker!", "vp!", "particle?"],
     note: "Suggestion construction headed by a suggestion marker."
-  },
-  {
-    type: "ConditionResult",
-    label: "Condition→Result",
-    template: ["subject?", "action_verb!", "result_marker!", "stative_predicate!", "particle?"],
-    note: "Condition/result frame: condition action plus 就 result marker and result predicate."
   },
   {
     type: "ProhibitiveImperative",
@@ -4641,7 +4636,6 @@ function constructionSlotsByType(type, children = []) {
     if (has("price_question") || has("price_noun") || has("scalar_value_noun")) slots.push("price_question");
   }
   if (["ScalarEvaluation"].includes(type)) slots.push("scalar_evaluation", "evaluation_clause", "predicate", "stative_predicate", "comment", "comment_predicate", "negator", "evaluation_marker");
-  if (["ConditionResult"].includes(type)) slots.push("condition_result", "condition_clause", "result_clause", "predicate");
   if (["ClauseRelationEdge"].includes(type)) slots.push("clause_relation", "left_relation_member", "right_relation_member", "antecedent_clause", "consequent_clause", "reason_clause", "result_clause", "concession_clause", "counterexpectation_clause", "earlier_event", "later_event", "temporal_subordinate", "matrix_clause", "linker_left", "linker_right", "predicate", "clause", "clause_like", "reported_content", "content_clause");
   if (["ClauseRelationMemberSpan"].includes(type)) slots.push("clause_relation_member", "left_relation_member", "right_relation_member", "predicate", "clause", "clause_like");
   if (["ConditionalClause"].includes(type)) slots.push("conditional_clause", "condition_clause", "conditional_antecedent", "conditional_marker", "predicate", "clause");
@@ -15880,15 +15874,6 @@ function wrapCore(core) {
       trace: traceInfo("construction_function", {
         construction_type: "SuggestionQuestion",
         reason: "Fallback only; generative SuggestionQuestion should normally catch this."
-      })
-    })];
-  }
-  if (hasSurface(core, "就") && (hasSurface(core, "平啲") || hasSurface(core, "話你知") || hasSurface(core, "平均分"))) {
-    return [construction("ConditionResult", "Condition→Result", core, {
-      note: "Condition/result fallback with 就.",
-      trace: traceInfo("construction_function", {
-        construction_type: "ConditionResult",
-        reason: "Fallback only; generative ConditionResult should normally catch this."
       })
     })];
   }

@@ -5,22 +5,30 @@
 | Measure | Current value |
 |---|---:|
 | Runtime | v0.5.213 |
-| Runtime labels | 163 |
-| Current construction notes | 163 |
+| Runtime labels | 162 |
+| Current construction notes | 162 |
 | Active working notes | 2 |
-| Workflow-archived notes | 161 |
-| Retired labels | 18 |
+| Workflow-archived notes | 160 |
+| Retired labels | 19 |
 | `supported_productive` | 0 |
 | `provisional_reaudit` | 0 |
 | `provisional` | 0 |
 | `research_pending` | 65 |
-| `unsupported_generalization` | 76 |
+| `unsupported_generalization` | 75 |
 | `lexicalized_only` | 3 |
 | `parser_heuristic` | 19 |
 
 The canonical registry is the union of
-`grammar/<linguistic-status>/*.md`. The 163 construction notes match the 163
+`grammar/<linguistic-status>/*.md`. The 162 construction notes match the 162
 runtime labels exactly.
+
+## v0.5.213-r1 ConditionResult retirement
+
+`ConditionResult` is retired because its action + `就` + stative wrapper
+collapsed a relation between clauses into one cross-category template. Sourced
+conditionals now use typed `ClauseRelationEdge` structure with independently
+parsed antecedent and consequent members; the bare `買就平啲。` fallback no
+longer receives an unsupported conditional analysis.
 
 ## v0.5.213 negated-stative-predicate reconciliation
 
@@ -144,8 +152,8 @@ thresholds.
 
 - 551 regression cases pass;
 - 43 NP-subsystem cases pass;
-- 1,247 construction assertions across 163 construction files pass;
-- coverage is 7 positive-and-boundary, 104 positive-only, 51
+- 1,278 construction assertions across 162 construction files pass;
+- coverage is 8 positive-and-boundary, 104 positive-only, 49
   implementation-only, and 1 compatibility-alias-only;
 - no active label is uncovered.
 
@@ -153,7 +161,7 @@ Implementation reachability carries zero linguistic evidence weight.
 
 ## Next substantive work
 
-Resume source/runtime reconciliation among the remaining 51
+Resume source/runtime reconciliation among the remaining 49
 implementation-only labels, ranked by learner impact, source availability, and
 whether the current node creates a misleading analysis. Treat the full
 `係唔係`/contracted `係咪` relationship as a separate ontology question rather
