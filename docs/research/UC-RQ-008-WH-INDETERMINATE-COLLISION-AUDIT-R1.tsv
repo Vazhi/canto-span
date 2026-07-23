@@ -1,0 +1,7 @@
+collision_target	current_role	observed_overlap	decisive_difference	current_disposition
+IdentityWhQuestion	Question-specific person/identity frame	Can contain 邊個 with an interrogative reading.	Does not represent indefinite, NPI, or free-choice readings of the same form.	INTERROGATIVE_SUBTYPE_ONLY
+LocativeWhQuestion	Question-specific location frame	Can contain 邊度 with an interrogative reading.	Does not represent contextually indefinite or free-choice location readings.	INTERROGATIVE_SUBTYPE_ONLY
+WhClassifierQuestion	Question-specific 邊 + classifier nominal frame	Contains a wh determiner inside an NP.	Question role and nominal composition do not establish noninterrogative indeterminate readings.	INTERROGATIVE_SUBTYPE_ONLY
+ExistentialWhQuestion	Question-specific existential frame	Contains wh material under 有/冇-like existential/question structure.	Existential surface overlap does not establish a general indefinite quantifier or the Hsu-Xu prosodic alternation.	INTERROGATIVE_SUBTYPE_ONLY
+fixed_wh_lexicon_roles	邊個/邊度/乜嘢 typed as wh_person/wh_place/wh_thing	Preserves overt wh form and likely interrogative category.	Fixed wh roles cannot choose interrogative versus indefinite interpretation from form alone.	FUTURE_CONTEXTUAL_POLYSEMY_REQUIRED
+AcceptabilityClause_free_choice	都得 wrapper with some overt free-choice licensors	Attested forms quantify persons, times, or places using wh material.	是但/隨便 and 都得 overtly license free choice; this does not prove bare-wh free choice or all wh-indeterminate readings.	RELATED_SEPARATE_PROFILE

@@ -1,0 +1,5 @@
+collision_target	current_role	observed_overlap	decisive_difference	current_disposition
+CopularIdentificationFrame	Internal `係`-based nominal identification wrapper	Shares the overt copula and post-copular material.	Ordinary identity has no required `ge3`-headed clausal complement or focus/presupposition bipartition.	KEEP_SEPARATE
+DefinitionExplanatoryFrame	Internal bounded `係 … 嚟㗎` definition/explanation wrapper	Shares `係`, a clausal-looking complement, and a final g-initial particle.	Requires explanatory `嚟` and serves definition/identity; cleft core has focused material plus presupposed clause headed by final `嘅`.	KEEP_SEPARATE
+DiscourseParticleFrame	Internal generic scope wrapper for a final particle	Can preserve final `嘅` or related visible particles.	Does not distinguish cleft-final `嘅` from assertion, nominalization, possession, relativity, or clusters and supplies no focus relation.	POSSIBLE_INTERNAL_CARRIER_NOT_LANGUAGE_MERGE
+FocusParticleFrame	Internal narrow restrictive `得 … 啫/咋` wrapper	Shares the broad notion of focus.	No copular cleft, `嘅`-headed complement, or focus/presupposition bipartition.	KEEP_SEPARATE
