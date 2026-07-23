@@ -593,6 +593,120 @@
       "source_role": "verified_empty_member_boundary_runtime_probe",
       "linguistic_evidence_weight": 0,
       "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "ONTO-C01-CLAUSE-SPAN",
+      "construction": "ClauseSpan",
+      "source": "一見到佢，我笑。",
+      "assertion": "trace_detail_equals",
+      "expected_surface": "我笑",
+      "expected_trace_detail": {
+        "clause_span_semantic_status": "neutral_overt_span_accounting_only",
+        "independent_grammar_licensing": false,
+        "subject_insertion_capability": false,
+        "argument_omission_licensing": false
+      },
+      "provenance": "docs/research/ACTIVE-LABEL-EVIDENCE-ONTOLOGY-CLOSURE-R1.md#contract-critical-infrastructure",
+      "source_role": "internal_contract_invariant_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "ONTO-C02-RELATION-MEMBER",
+      "construction": "ClauseRelationMemberSpan",
+      "source": "一見到佢，我笑。",
+      "assertion": "trace_detail_equals",
+      "expected_surface": "一見到佢",
+      "expected_trace_detail": {
+        "relation_member_role": "left",
+        "relation_subtype_provenance": "inherited_from_parent_clause_relation_edge",
+        "independent_grammar_licensing": false,
+        "context_resolution_capability": false
+      },
+      "provenance": "docs/research/ACTIVE-LABEL-EVIDENCE-ONTOLOGY-CLOSURE-R1.md#contract-critical-infrastructure",
+      "source_role": "internal_contract_invariant_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "ONTO-C03-RELATION-EDGE",
+      "construction": "ClauseRelationEdge",
+      "source": "一見到佢，我笑。",
+      "assertion": "trace_detail_equals",
+      "expected_surface": "一見到佢，我笑",
+      "expected_trace_detail": {
+        "relation_subtype": "temporal_subordinate",
+        "relation_subtype_registry_status": "validated_against_clause_relation_subtype_registry",
+        "linker_ownership_status": "all_overt_linkers_owned_once",
+        "independent_grammar_licensing": false
+      },
+      "provenance": "docs/research/ACTIVE-LABEL-EVIDENCE-ONTOLOGY-CLOSURE-R1.md#contract-critical-infrastructure",
+      "source_role": "internal_contract_invariant_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "ONTO-C04-NOMINAL-HEAD",
+      "construction": "NominalHeadSpan",
+      "source": "一見到佢，我笑。",
+      "assertion": "trace_detail_equals",
+      "expected_surface": "佢",
+      "expected_trace_detail": {
+        "np_license_status": "licensed_np",
+        "construction_licensing_allowed": true
+      },
+      "provenance": "docs/research/ACTIVE-LABEL-EVIDENCE-ONTOLOGY-CLOSURE-R1.md#contract-critical-infrastructure",
+      "source_role": "internal_contract_invariant_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "ONTO-C05-MEASURE",
+      "construction": "MeasureExpression",
+      "source": "佢十歲。",
+      "assertion": "trace_detail_equals",
+      "expected_surface": "十歲",
+      "expected_trace_detail": {
+        "internal_representation_scope": "overt_measure_child_span",
+        "independent_grammar_licensing": false,
+        "licensing_parent": "NominalPredicateClause",
+        "measure_domain": "age"
+      },
+      "provenance": "docs/research/ACTIVE-LABEL-EVIDENCE-ONTOLOGY-CLOSURE-R1.md#contract-critical-infrastructure",
+      "source_role": "internal_contract_invariant_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "ONTO-C06-NEEDS-CONTEXT",
+      "construction": "NeedsContext",
+      "source": "一日。",
+      "assertion": "trace_detail_equals",
+      "expected_surface": "一日",
+      "expected_trace_detail": {
+        "context_requirement_status": "context_required",
+        "antecedent_status": "not_observed",
+        "discourse_license_not_observed": true
+      },
+      "provenance": "docs/research/ACTIVE-LABEL-EVIDENCE-ONTOLOGY-CLOSURE-R1.md#contract-critical-infrastructure",
+      "source_role": "diagnostic_contract_invariant_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "ONTO-C07-MALFORMED",
+      "construction": "MalformedCandidate",
+      "source": "行去入。",
+      "assertion": "trace_detail_equals",
+      "expected_surface": "行去入",
+      "expected_trace_detail": {
+        "malformed_family": "aspect_result_potential_composition",
+        "malformed_subtype": "deictic_marker_not_outermost"
+      },
+      "provenance": "docs/research/ACTIVE-LABEL-EVIDENCE-ONTOLOGY-CLOSURE-R1.md#contract-critical-infrastructure",
+      "source_role": "diagnostic_contract_invariant_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
     }
   ]
 }

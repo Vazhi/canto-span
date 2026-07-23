@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "ac35fe9563f192f14a8842c2dd547f1466fab213"
+code_document_code_locations: ["main.js:15468-15585", "main.js:16340-16990"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: false
 promotion_gate_version: "v3"
@@ -153,4 +153,9 @@ No same-family active construction was identified in the canonical consolidation
 - Research finding: Serialized graph/wrapper over relation members and edges.
 - Recommended disposition: Retain as infrastructure. Specify graph completeness, disconnected/dangling rejection, and ambiguity behavior.
 - Retirement safeguard: Do not retire while clause-relation subtypes depend on it.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **retain narrow** as a neutral internal graph/container.
+- Runtime and complete-output reach: `main.js:15468-15585` requires at least two meaningful clause-like children and complete wrapper accounting; `main.js:16340-16990` wraps typed local edges and governed discourse sequences without flattening them.
+- Stable semantics and invariant: dangling, disconnected, empty-member, and unaccounted-token graphs are rejected; the graph cannot assign relation semantics independently. Existing PRQ2 probes and CP061 boundaries assert subtype provenance and incomplete-graph rejection.
+- A1/schema decision: preserve `ClauseRelationGraph` internally and `ClauseLinkingSequence` only as compatibility metadata.
+- Evidence and unresolved work: sources and panels apply to typed relations, not this container; unresolved relation ambiguity remains on child edges.
+- Release files: this note, existing construction probes, baseline, and release audit.

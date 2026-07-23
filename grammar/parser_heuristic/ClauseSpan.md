@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "ac35fe9563f192f14a8842c2dd547f1466fab213"
+code_document_code_locations: ["main.js:1405-1455", "main.js:5532-5573", "main.js:6785-17660"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: false
 promotion_gate_version: "v3"
@@ -49,8 +49,8 @@ standard_test_file: "tests/constructions/ClauseSpan.json"
 standard_test_coverage: "positive_and_boundary"
 standard_positive_test_count: 118
 standard_boundary_test_count: 2
-standard_implementation_probe_count: 0
-standard_executable_test_count: 120
+standard_implementation_probe_count: 1
+standard_executable_test_count: 121
 source_ids: []
 runtime_active: true
 workflow_state: "archived"
@@ -137,4 +137,9 @@ No same-family active construction was identified in the canonical consolidation
 - Research finding: High-reach generic clause boundary used throughout the parser.
 - Recommended disposition: Retain as core parser representation. Specify minimum licensing, subject/predicate visibility, fragment exclusions, and serialization.
 - Retirement safeguard: Strong contract veto: removal requires a major A1 redesign.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **retain narrow** as a neutral internal complete-clause span.
+- Runtime and complete-output reach: compatibility inputs normalize in `main.js:1405-1455`; serialization and nonlicensing fields are applied in `main.js:5532-5573`; clause builders occur across `main.js:6785-17660`. Complete A1 output exposes `ClauseSpan` internally and the versioned compatibility label separately.
+- Stable semantics and invariant: overt children remain visible; no subject, topic, argument, modal meaning, predicate subtype, or context is inserted or licensed. `ONTO-C01-CLAUSE-SPAN` asserts the serialized nonlicensing contract.
+- A1/schema decision: preserve the current schema and `SubjectPredicateClause` compatibility alias; any removal requires a versioned major-contract migration.
+- Evidence and unresolved work: this is parser infrastructure, so sentence naturalness does not validate the representation. Fragment exclusions and consumer-specific clause licensing remain separate.
+- Release files: this note, `test-data/implementation-reachability-probes-v1.json`, generated construction tests/index, the v0.5.215 status baseline, and the v0.5.216 release audit.

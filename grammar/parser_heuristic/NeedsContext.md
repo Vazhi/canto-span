@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "ac35fe9563f192f14a8842c2dd547f1466fab213"
+code_document_code_locations: ["main.js:8391-8399", "main.js:12648-13257", "main.js:14804-15035", "main.js:16445-16465", "main.js:18526-18550"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: false
 promotion_gate_version: "v3"
@@ -49,8 +49,8 @@ standard_test_file: "tests/constructions/NeedsContext.json"
 standard_test_coverage: "positive_and_boundary"
 standard_positive_test_count: 73
 standard_boundary_test_count: 2
-standard_implementation_probe_count: 0
-standard_executable_test_count: 75
+standard_implementation_probe_count: 1
+standard_executable_test_count: 76
 source_ids: []
 runtime_active: true
 workflow_state: "archived"
@@ -148,4 +148,9 @@ No pattern-specific external source is currently mapped.
 - Research finding: High-reach diagnostic state with 73 positives; not a grammar claim.
 - Recommended disposition: Retain as explicit diagnostic/status output. Define missing-context categories, competing analyses, and escape conditions.
 - Retirement safeguard: Strong contract veto: do not remove without replacing learner-visible uncertainty handling.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **internalize** as a learner-visible diagnostic state, not a grammar construction.
+- Runtime and complete-output reach: the bounded diagnostic builders at `main.js:8391-8399`, `main.js:12648-13257`, `main.js:14804-15035`, `main.js:16445-16465`, and `main.js:18526-18550` serialize the missing slot/context category, observed antecedent state, competing analyses, and overt embedded construction.
+- Stable semantics and invariant: `NeedsContext` requires unresolved context, never supplies an antecedent, and must escape only when compatible overt context is observed. `ONTO-C06-NEEDS-CONTEXT` asserts that contract.
+- A1/schema decision: preserve the serialized label and diagnostic fields because downstream learner uncertainty handling depends on them.
+- Evidence and unresolved work: sentence judgments do not validate this parser state. Additional missing-context categories require explicit escape and non-fabrication tests.
+- Release files: this note, shared reachability inventory, generated tests/index, baseline, and release audit.

@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "ac35fe9563f192f14a8842c2dd547f1466fab213"
+code_document_code_locations: ["main.js:14635-14673"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: false
 promotion_gate_version: "v3"
@@ -49,8 +49,8 @@ standard_test_file: "tests/constructions/MeasureExpression.json"
 standard_test_coverage: "positive_and_boundary"
 standard_positive_test_count: 12
 standard_boundary_test_count: 2
-standard_implementation_probe_count: 0
-standard_executable_test_count: 14
+standard_implementation_probe_count: 1
+standard_executable_test_count: 15
 source_ids: []
 runtime_active: true
 workflow_state: "archived"
@@ -133,4 +133,9 @@ No pattern-specific external source is currently mapped.
 - Research finding: Internal measure span; external Cantonese measure/classifier research exists, including recent spatial-measure work.
 - Recommended disposition: Retain as shared subsystem with typed sortal classifier vs measure-unit distinctions and overt-span invariants.
 - Retirement safeguard: Do not retire as unsourced; add rule-level grounding and keep it nonlicensing.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **retain narrow** as an overt, typed internal measure span.
+- Runtime and complete-output reach: `main.js:14635-14673` serializes quantity, overt unit/dimension, measure domain, licensing parent, and nonlicensing scope inside nominal predicates.
+- Stable semantics and invariant: the span cannot license a construction independently or convert classifier material into a measure unit. `ONTO-C05-MEASURE` asserts overt age-measure roles and parent licensing.
+- A1/schema decision: preserve the current internal object and its overt children; sortal classifier versus measure-unit distinctions remain explicit consumer metadata.
+- Evidence and unresolved work: recent measure/classifier research supports future rule-level narrowing, not a broad productive claim or hidden unit recovery.
+- Release files: this note, NP documentation, shared reachability inventory, generated tests/index, baseline, and release audit.
