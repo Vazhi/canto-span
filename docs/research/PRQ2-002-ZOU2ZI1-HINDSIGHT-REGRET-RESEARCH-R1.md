@@ -4,10 +4,8 @@ research_id: PRQ2-002
 status: active_research_unit
 baseline_version: 0.5.213
 created: 2026-07-23
-queue_visibility: completed_task_only
 implementation_authorized: false
 status_change_authorized: false
-master_backlog_change_authorized: false
 ---
 
 # PRQ2-002 — `早知(道) … 就／咪 …` hindsight-regret frame
