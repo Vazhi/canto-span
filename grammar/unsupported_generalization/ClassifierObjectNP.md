@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "583035c"
+code_document_code_locations: ["main.js:2600-2620", "main.js:10825-10855", "main.js:8343", "main.js:13754"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
@@ -66,7 +66,7 @@ tags: ["canto-span/grammar", "canto-span/status/unsupported_generalization", "ca
 
 ## Plain-language claim
 
-Cantonese may instantiate the structural family represented by ClassifierObjectNP; exact productivity and boundaries require pattern-specific independent evidence.
+The runtime groups overt classifier + noun material on bounded object-consumer paths. The sources support a role-neutral classifier–noun NP, not an object-only Cantonese construction.
 
 This is a linguistic claim only to the extent allowed by the status and evidence below. The runtime label is not assumed to be standard linguistic terminology.
 
@@ -169,4 +169,9 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Research finding: `SRC-BOND-SIO-2024-CLASSIFIERS`; `SRC-CHENG-SYBESMA-1999-CLASSIFIERS`; `SRC-SIMPSON-SOH-NOMOTO-2011`; `SRC-XIA-2025-CLASSIFIERS`. Research supports classifier–noun structure across grammatical roles, not an object-only construction.
 - Recommended disposition: Move/rename to the shared NP subsystem, likely `ClassifierNounNP` or a typed classifier-head rule. Remove object semantics from the label.
 - Retirement safeguard: Strong retirement veto: the phenomenon is well supported. Only the object-specific wrapper may disappear after all consumers migrate to the NP subsystem.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **quarantine** the object-specific wrapper and **decompose/replace** it through the shared classifier–head NP subsystem.
+- Runtime and complete-output reach: the legacy template is at `main.js:2600-2620`; the actual two-child builder is `main.js:10825-10855`; object consumers occur at `main.js:8343` and `main.js:13754`.
+- Checked scope and boundaries: Bond–Sio, Cheng–Sybesma, Simpson–Soh–Nomoto, and Xia support role-neutral CL–N constituency with interpretation restrictions. Two positives and two boundaries preserve the current overt span without claiming universal compatibility or definiteness.
+- Migration map: move classifier/head licensing to the existing NP compatibility classes, preserve both overt children, and let the parent clause assign object/topic/subject role.
+- A1/schema decision: preserve the label for v0.5.216 compatibility and keep `unsupported_generalization`; retire only the object wrapper after every consumer and snapshot migrates.
+- Unresolved work and release files: classifier compatibility breadth, bare-CL interpretation, corpus review, and clean panel evidence remain open; this note, NP documentation, baseline, and release audit record the decision.
