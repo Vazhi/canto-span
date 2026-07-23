@@ -28,3 +28,10 @@ other negators, and productive lexical scope remain separate.
 
 Read [`grammar/README.md`](grammar/README.md), then
 [`docs/current/00-START-HERE.md`](docs/current/00-START-HERE.md).
+
+## Research documentation
+
+Completed research records are indexed in
+[`docs/research/CURRENT-RESEARCH-PROVENANCE.md`](docs/research/CURRENT-RESEARCH-PROVENANCE.md).
+Those records preserve evidence and decisions; they do not change current
+grammar status or authorize parser work.

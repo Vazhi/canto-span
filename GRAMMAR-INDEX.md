@@ -17,10 +17,15 @@ Canonical construction notes are stored in the folder matching their linguistic 
 
 ## Current working set
 
-`workflow_state: active` marks the bounded research queue regardless of status folder.
+`workflow_state: active` marks the bounded current working set regardless of
+status folder.
 
 1. [[ResourceUseLaiFunctionRelation]] — `research_pending`; survey_ready_anchor_awaiting_user_prompt_for_pilot_v1_creation
 2. [[PostverbalZoPerfectiveVP]] — `research_pending`; secondary_construction_for_role_neutral_panel_wave_and_lexical_scope_recheck
+
+Completed research evidence is indexed separately in
+[`docs/research/CURRENT-RESEARCH-PROVENANCE.md`](docs/research/CURRENT-RESEARCH-PROVENANCE.md);
+it does not alter the statuses below.
 
 ## Status summary
 

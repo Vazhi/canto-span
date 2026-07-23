@@ -1,106 +1,72 @@
-# Current research and provenance
+# Current research overview
 
-## Governance counts
+This is the canonical index for completed UC-RQ research and the completed
+repository-visible PRQ2 units. Each ID has one package: the linked main record
+plus the same-ID `SOURCE-VERIFICATION-R1.tsv` and `COLLISION-AUDIT-R1.tsv`
+companions. A disposition record is canonical when the research resolved into
+an existing family rather than a standalone candidate.
 
-- active labels: **163**
-- `supported_productive`: **0**
-- `provisional_reaudit`: **0**
-- `provisional`: **0**
-- `research_pending`: **65**
-- `unsupported_generalization`: **76**
-- `lexicalized_only`: **3**
-- `parser_heuristic`: **19**
+These packages preserve evidence and decisions only. They do not change current
+grammar status or authorize parser work. Current status remains owned by
+[`../../GRAMMAR-INDEX.md`](../../GRAMMAR-INDEX.md) and
+[`../current/`](../current/).
 
-`PostverbalZoPerfectiveVP` and `ResourceUseLaiFunctionRelation` are the two
-workflow-active `research_pending` constructions. Historical acceptance files
-are not current status authority.
+## Canonical UC-RQ packages
 
-## Current evidence records
+| ID | Main record |
+|---|---|
+| UC-RQ-001 | [`General zoeng1 disposal`](UC-RQ-001-GENERAL-ZOENG1-DISPOSAL-RESEARCH-R1.md) |
+| UC-RQ-002 | [`Inverted double object`](UC-RQ-002-INVERTED-DOUBLE-OBJECT-RESEARCH-R1.md) |
+| UC-RQ-003 | [`Double-object order alternation`](UC-RQ-003-DOUBLE-OBJECT-ORDER-ALTERNATION-RESEARCH-R1.md) |
+| UC-RQ-004 | [`Cantonese equative`](UC-RQ-004-CANTONESE-EQUATIVE-CONSTRUCTION-RESEARCH-R1.md) |
+| UC-RQ-005 | [`gwo3 surpass comparative`](UC-RQ-005-GWO3-SURPASS-COMPARATIVE-RESEARCH-R1.md) |
+| UC-RQ-006 | [`Dislocation focus`](UC-RQ-006-DISLOCATION-FOCUS-CONSTRUCTION-RESEARCH-R1.md) |
+| UC-RQ-007 | [`Verb-copy focus`](UC-RQ-007-VERB-COPY-FOCUS-CONSTRUCTION-RESEARCH-R1.md) |
+| UC-RQ-008 | [`Wh indeterminates`](UC-RQ-008-WH-INDETERMINATE-CONSTRUCTION-RESEARCH-R1.md) |
+| UC-RQ-009 | [`Associative plural`](UC-RQ-009-ASSOCIATIVE-PLURAL-CONSTRUCTION-RESEARCH-R1.md) |
+| UC-RQ-010 | [`Coreferential N-CL-N`](UC-RQ-010-COREFERENTIAL-N-CL-N-CONSTRUCTION-RESEARCH-R1.md) |
+| UC-RQ-011 | [`gaa3 construction family`](UC-RQ-011-GAA3-CONSTRUCTION-FAMILY-RESEARCH-R1.md) |
+| UC-RQ-012 | [`Sentence-final focus particles`](UC-RQ-012-SENTENCE-FINAL-FOCUS-PARTICLE-FAMILY-RESEARCH-R1.md) |
+| UC-RQ-013 | [`Sentence-final particle clusters`](UC-RQ-013-SENTENCE-FINAL-PARTICLE-CLUSTER-RESEARCH-R1.md) |
+| UC-RQ-014 | [`Separable VO compounds`](UC-RQ-014-SEPARABLE-VO-COMPOUND-RESEARCH-R1.md) |
+| UC-RQ-015 | [`Separable non-VO compounds`](UC-RQ-015-SEPARABLE-NON-VO-COMPOUND-RESEARCH-R1.md) |
+| UC-RQ-016 | [`hai6-ge3 cleft focus`](UC-RQ-016-HAI6-GE3-CLEFT-FOCUS-RESEARCH-R1.md) |
+| UC-RQ-017 | [`lin4-dou1 even focus`](UC-RQ-017-LIN4-DOU1-EVEN-FOCUS-RESEARCH-R1.md) |
+| UC-RQ-018 | [`Alternative questions`](UC-RQ-018-ALTERNATIVE-QUESTION-RESEARCH-R1.md) |
+| UC-RQ-019 | [`Clause-final tag questions`](UC-RQ-019-CLAUSE-FINAL-TAG-QUESTION-RESEARCH-R1.md) |
+| UC-RQ-020 | [`wh-dou1 disposition`](UC-RQ-020-WH-DOU1-FREE-CHOICE-DISPOSITION-R1.md) |
+| UC-RQ-021 | [`Negative-polarity minimizers`](UC-RQ-021-NEGATIVE-POLARITY-MINIMIZER-RESEARCH-R1.md) |
+| UC-RQ-022 | [`dei6 personal-plural disposition`](UC-RQ-022-DEI6-PERSONAL-PLURAL-DISPOSITION-R1.md) |
+| UC-RQ-023 | [`ge3 nominalization`](UC-RQ-023-GE3-NOMINALIZATION-RESEARCH-R1.md) |
+| UC-RQ-024 | [`zi6gei2 reflexive binding`](UC-RQ-024-ZI6GEI2-REFLEXIVE-BINDING-RESEARCH-R1.md) |
+| UC-RQ-025 | [`Null arguments and zero anaphora`](UC-RQ-025-NULL-ARGUMENT-ZERO-ANAPHORA-RESEARCH-R1.md) |
+| UC-RQ-026 | [`di1 degree disposition`](UC-RQ-026-DI1-DEGREE-DISPOSITION-R1.md) |
+| UC-RQ-027 | [`zeoi3 superlatives`](UC-RQ-027-ZEOI3-SUPERLATIVE-RESEARCH-R1.md) |
+| UC-RQ-028 | [`Differential-comparative disposition`](UC-RQ-028-DIFFERENTIAL-COMPARATIVE-DISPOSITION-R1.md) |
+| UC-RQ-029 | [`zyu6 durative disposition`](UC-RQ-029-ZYU6-DURATIVE-DISPOSITION-R1.md) |
+| UC-RQ-030 | [`saai3 totality quantification`](UC-RQ-030-SAAI3-TOTALITY-QUANTIFICATION-RESEARCH-R1.md) |
+| UC-RQ-031 | [`maai4 verbal-particle family`](UC-RQ-031-MAAI4-VERBAL-PARTICLE-FAMILY-RESEARCH-R1.md) |
+| UC-RQ-032 | [`mei6 not-yet negation`](UC-RQ-032-MEI6-NOT-YET-NEGATION-RESEARCH-R1.md) |
+| UC-RQ-033 | [`dak1 postverbal contrasts`](UC-RQ-033-DAK1-POSTVERBAL-CONSTRUCTION-CONTRAST-RESEARCH-R1.md) |
+| UC-RQ-034 | [`Pivotal control complements`](UC-RQ-034-PIVOTAL-CONTROL-COMPLEMENT-FAMILY-RESEARCH-R1.md) |
+| UC-RQ-035 | [`jat1-zau6 immediate anteriority`](UC-RQ-035-JAT1-ZAU6-IMMEDIATE-ANTERIORITY-RESEARCH-R1.md) |
+| UC-RQ-036 | [`seoi1jin4-daan6hai6 concession`](UC-RQ-036-SEOI1JIN4-DAAN6HAI6-CONCESSIVE-RESEARCH-R1.md) |
+| UC-RQ-037 | [`zau6syun3-dou1 scalar concession`](UC-RQ-037-ZAU6SYUN3-DOU1-SCALAR-CONCESSIVE-RESEARCH-R1.md) |
+| UC-RQ-038 | [`ceoi4fei1 exception conditionals`](UC-RQ-038-CEOI4FEI1-EXCEPTION-CONDITIONAL-RESEARCH-R1.md) |
+| UC-RQ-039 | [`jat1bin1 simultaneous events`](UC-RQ-039-JAT1BIN1-SIMULTANEOUS-EVENT-CORRELATIVE-RESEARCH-R1.md) |
+| UC-RQ-040 | [`aa3-wo3-bo3 stance particles`](UC-RQ-040-AA3-WO3-BO3-STANCE-PARTICLE-CONTRAST-RESEARCH-R1.md) |
 
-- active construction records: [`../../GRAMMAR-INDEX.md`](../../GRAMMAR-INDEX.md) and the union of `grammar/<linguistic-status>/*.md`
-- [`SECOND-SPEAKER-REVIEW-QUEUE-v0.5.184-R1.tsv`](SECOND-SPEAKER-REVIEW-QUEUE-v0.5.184-R1.tsv)
-- [`SECOND-SPEAKER-WORK-FREEZE-2026-07-21.md`](SECOND-SPEAKER-WORK-FREEZE-2026-07-21.md)
-- [`RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv`](RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv)
-- frozen pre-migration registry: `../../archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
+## Completed PRQ2 packages
 
-Source registers, matrices, and detailed review files in this directory support the construction notes but do not independently own status.
+| ID | Main record |
+|---|---|
+| PRQ2-001 | [`yau5/mou5 dak1 availability`](PRQ2-001-YAU5-MOU5-DAK1-AVAILABILITY-RESEARCH-R1.md) |
+| PRQ2-002 | [`zou2zi1 hindsight regret`](PRQ2-002-ZOU2ZI1-HINDSIGHT-REGRET-RESEARCH-R1.md) |
 
-## Postverbal `咗` result
+## Shared evidence
 
-The re-audit verified four sources, manually reviewed five published exact
-examples, and removed evidence weight from the untraceable six-hit corpus
-count. The current runtime preserves the narrow overt action-predicate + `咗` +
-licensed-NP profile and its reviewed boundaries. The eleven historical response
-records came from mixed legacy instruments and contribute zero usable
-item-level judgments under the current role-neutral panel standard.
+These files intentionally span more than one ID and are not duplicate packages:
 
-The binding NP design remains
-[`../current/NOUN-PHRASE-SUBSYSTEM.md`](../current/NOUN-PHRASE-SUBSYSTEM.md):
-reusable licensed structure may feed the perfective consumer without broadening
-its aspectual claim. The next evidence action is inclusion in a clean,
-role-neutral mixed-construction survey wave.
-
-## Resource + `用嚟／用來` result
-
-The earlier three-natural-attestation claim was withdrawn. Five checked sources
-now delimit direct-resource, instrumental, purposive, actual-use, separate-user,
-and coordination profiles. The committed 23-response pilot is useful diagnostic
-evidence but contributes zero usable item-level judgments for promotion because
-the instrument was binary, fixed-order, context-free, and interpretation-blind.
-
-## Current implementation priority
-
-Continue source/runtime reconciliation among the 51 remaining
-implementation-only labels, ranked by learner impact, exact source match, and
-risk of misleading analysis. The retirement-review window opened at handoff
-sequence 36 and must close by sequence 41. Do not create another
-release-specific verifier or generated validation tree.
-
-## `EvaluationWithDouSyun` external-evidence result
-
-[`CP053-P1-EVALUATION-WITH-DOU-SYUN-EXTERNAL-EVIDENCE-R1.md`](CP053-P1-EVALUATION-WITH-DOU-SYUN-EXTERNAL-EVIDENCE-R1.md)
-records independent dictionary and natural-transcript evidence for ordinary
-lexical `都算` evaluation. It does not support the active price-noun-specific
-wrapper or its zero-weight probe. Keep the label quarantined while its general
-evaluation boundaries are researched; no parser change is authorized by this
-checkpoint.
-
-## `ScalarEvaluation` reconciliation result
-
-[`CP054-P1-SCALAR-EVALUATION-RECONCILIATION-R1.md`](CP054-P1-SCALAR-EVALUATION-RECONCILIATION-R1.md)
-source-links three negative-`算` evaluation profiles and one ordinary nominal
-boundary. The unrelated price-noun predication profile and semantic-domain
-aliases were removed. `ScalarEvaluation` is now `research_pending`; complement
-productivity and panel evidence remain unresolved.
-
-## `NegativeExperiential` reconciliation result
-
-[`CP055-P1-NEGATIVE-EXPERIENTIAL-RECONCILIATION-R1.md`](CP055-P1-NEGATIVE-EXPERIENTIAL-RECONCILIATION-R1.md)
-source-links three exact preverbal `未/冇 + V過` statements and five
-word-order/negator boundaries. `NegativeExperiential` is now
-`research_pending`; productive verb/object scope and panel evidence remain
-unresolved.
-
-## `NegatedLexicalizedStative` retirement result
-
-[`CP056-P1-NEGATED-LEXICALIZED-STATIVE-RETIREMENT-R1.md`](CP056-P1-NEGATED-LEXICALIZED-STATIVE-RETIREMENT-R1.md)
-retires the label that merged opaque lexical `難X`, compositional `唔`
-negation, and prohibitive `唔好`. Their separate existing analyses and the bare
-`唔好食` ambiguity remain; no replacement construction is promoted.
-
-## `NegatedStativePredicate` reconciliation result
-
-[`CP057-P1-NEGATED-STATIVE-PREDICATE-RECONCILIATION-R1.md`](CP057-P1-NEGATED-STATIVE-PREDICATE-RECONCILIATION-R1.md)
-source-links direct copula-less `唔 + property predicate` and the contrasting
-`唔係 + nominal predicate` boundary. The label is now `research_pending`;
-productive lexical scope, other negators, and panel evidence remain unresolved.
-
-## Frozen work
-
-- Fixed Speaker A/B work is historical. Current evidence uses one role-neutral
-  panel, the same instrument and criteria for every respondent, and usable
-  adjudicated judgments per critical item.
-- RUL/PFV instrument creation awaits the user prompt identified in the active
-  RUL construction note. Survey work for the parked construction backlog
-  remains frozen.
-- DEMO01 is abandoned. Its historical visible materials are archived; no held-out result was opened or used, and no render work remains active.
+- [`UC-RQ-002/003 double-object corpus census`](UC-RQ-002-003-DOUBLE-OBJECT-HKCANCOR-CENSUS-R1.md)
+- [`UC-RQ-004/005 comparison corpus attestation`](UC-RQ-004-005-COMPARISON-HKCANCOR-ATTESTATION-R1.md)
+- [`UC-RQ-014/015 separable-compound corpus attestation`](UC-RQ-014-015-SEPARABLE-COMPOUND-HKCANCOR-ATTESTATION-R1.md)
