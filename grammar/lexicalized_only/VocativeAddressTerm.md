@@ -6,7 +6,7 @@ status: "lexicalized_only"
 confidence: "low"
 claim_layer: "language"
 lane: "LANE-10"
-last_reviewed: "unknown"
+last_reviewed: "2026-07-23"
 last_status_migrated: "2026-07-21"
 source_count: 3
 verified_source_count: 3
@@ -26,9 +26,9 @@ native_negative_contrasts_reviewed: false
 panel_evidence_model_version: "v2"
 panel_review_state_file: "review-packets/native-panel/active-v2/panel-review-state.json"
 panel_policy_file: "review-packets/native-panel/active-v2/panel-policy.json"
-negative_cases_drafted: false
-negative_tests_executable: false
-negative_tests_passing: false
+negative_cases_drafted: true
+negative_tests_executable: true
+negative_tests_passing: true
 negative_boundary_inventory_complete: false
 corpus_evidence_used: false
 corpus_hits_reviewed: false
@@ -37,20 +37,20 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
 code_document_review_commit: null
 code_document_code_locations: []
-current_standard_reaudit_complete: false
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
 standard_test_file: "tests/constructions/VocativeAddressTerm.json"
-standard_test_coverage: "implementation_positive_only"
-standard_positive_test_count: 0
-standard_boundary_test_count: 0
-standard_implementation_probe_count: 1
-standard_executable_test_count: 1
+standard_test_coverage: "positive_and_boundary"
+standard_positive_test_count: 1
+standard_boundary_test_count: 2
+standard_implementation_probe_count: 0
+standard_executable_test_count: 3
 source_ids: ["SRC-CHEUNG-1990-ADDRESS", "SRC-CHOW-2007-CANTONESE-EVERYONE", "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"]
 runtime_active: true
 workflow_state: "archived"
@@ -58,7 +58,7 @@ workflow_priority: null
 workflow_since: "2026-07-21"
 workflow_reason: "not_selected_for_current_bounded_working_set"
 runtime_code_references: 7
-accepted_fixtures: 0
+accepted_fixtures: 1
 tags: ["canto-span/grammar", "canto-span/status/lexicalized_only", "canto-span/lane/lane-10", "canto-span/workflow/archived"]
 ---
 
@@ -76,7 +76,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Linguistic confidence: `low`
 - Current action: `retain_lexicalized_and_block_productive_generalization`
 - Productive acceptance eligible: **no**
-- Last linguistic review: not recorded
+- Last linguistic review: 2026-07-23
 
 ## Sources
 
@@ -114,8 +114,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 ## Negative and boundary cases
 
 - Standard executable test file: `tests/constructions/VocativeAddressTerm.json`
-- Implementation-only reachability: `REACH-015` emits this label for `阿妹，過嚟。`; linguistic evidence weight is **0**; provenance: `test-data/WECHAT-GX-TRAVEL-002-LEXICON-PATCH-TEST-MATRIX-R2.tsv#line-31`.
-- Evidence state: `none_recorded`
+- Evidence state: `positive_and_boundary`
 - Executable or review records containing this label:
   - `test-data/grammar-claim-provenance-CP021B.json`
   - `test-data/grammar-claim-provenance-CP021B.tsv`
@@ -124,12 +123,12 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 ## Implementation state
 
-- Lifecycle: `runtime_referenced_without_accepted_fixtures`
-- Visible/focused tests: `not_assessed_in_current_definition_of_done_review`
+- Lifecycle: `runtime_referenced_with_source_linked_fixture`
+- Visible/focused tests: `passing`
 - Render review: `not_assessed_in_current_definition_of_done_review`
 - Held-out evaluation: `NOT_ESTABLISHED`
 - Regression: `not_assessed_in_current_definition_of_done_review`
-- Code–documentation comparison: `pending_current_definition_of_done_line_by_line_review`
+- Code–documentation comparison: `reconciled_2026_07_23`
 
 ## Open questions and blockers
 

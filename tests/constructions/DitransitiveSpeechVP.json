@@ -4,30 +4,49 @@
   "runtime_active": true,
   "migration_phase": 5,
   "snapshot_cases": [],
-  "focused_cases": [],
-  "np_cases": [],
-  "implementation_probe_cases": [
+  "focused_cases": [
     {
-      "case_id": "STCWRAP-001B",
+      "case_id": "CP060-DSV-01",
       "source": "我唔話你知。",
+      "class": "source_linked_waa_recipient_zi_communication_effect_positive",
+      "expected_profile": "DitransitiveSpeechVP present over the lexical 話 + recipient + 知 sequence",
       "assertion": "construction_present",
-      "provenance": "docs/research/CP038-P1-SPEECH-TRANSFER-COMPLEMENT-WRAPPER-AUDIT-R1.md#STCWRAP-001B",
-      "source_role": "source_attested_surface_used_as_code_specific_probe",
-      "linguistic_evidence_weight": 0,
-      "purpose": "runtime_reachability_only"
+      "provenance": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#DSV-C03",
+      "source_ids": [
+        "SRC-YIP-MATTHEWS-2017-INTERMEDIATE"
+      ],
+      "source_locator": "Unit 11, printed pp. 68-69"
+    },
+    {
+      "case_id": "CP060-DSV-02",
+      "source": "我唔講你知。",
+      "class": "speech_verb_substitution_boundary",
+      "expected_profile": "DitransitiveSpeechVP absent outside the exact sourced 話 + recipient + 知 pairing",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#DSV-C06"
+    },
+    {
+      "case_id": "CP060-DSV-03",
+      "source": "我唔話你諗。",
+      "class": "cognition_predicate_substitution_boundary",
+      "expected_profile": "DitransitiveSpeechVP absent for an unsupported cognition-predicate substitution",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#DSV-C06"
     }
   ],
+  "np_cases": [],
+  "implementation_probe_cases": [],
   "coverage": {
-    "state": "implementation_positive_only",
+    "state": "positive_and_boundary",
     "exact_snapshot_positive_count": 0,
-    "focused_positive_count": 0,
-    "focused_boundary_count": 0,
+    "focused_positive_count": 1,
+    "focused_boundary_count": 2,
     "focused_review_only_count": 0,
     "np_case_count": 0,
-    "implementation_probe_count": 1,
+    "implementation_probe_count": 0,
     "compatibility_alias_probe_count": 0,
-    "positive_case_count": 0,
-    "boundary_case_count": 0,
-    "executable_case_count": 1
+    "positive_case_count": 1,
+    "boundary_case_count": 2,
+    "executable_case_count": 3
   }
 }

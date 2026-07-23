@@ -4,30 +4,49 @@
   "runtime_active": true,
   "migration_phase": 5,
   "snapshot_cases": [],
-  "focused_cases": [],
-  "np_cases": [],
-  "implementation_probe_cases": [
+  "focused_cases": [
     {
-      "case_id": "STCWRAP-002",
+      "case_id": "CP060-INT-01",
       "source": "我諗住返屋企。",
+      "class": "source_linked_lexicalized_intention_positive",
+      "expected_profile": "IntentionFrame present with overt subject, lexical 諗住, and visible motion VP",
       "assertion": "construction_present",
-      "provenance": "docs/research/CP038-P1-SPEECH-TRANSFER-COMPLEMENT-WRAPPER-AUDIT-R1.md#STCWRAP-002",
-      "source_role": "source_attested_surface_used_as_code_specific_probe",
-      "linguistic_evidence_weight": 0,
-      "purpose": "runtime_reachability_only"
+      "provenance": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#INT-C03",
+      "source_ids": [
+        "SRC-KEDZIOR-2023"
+      ],
+      "source_locator": "pp. 61-63, example (34)"
+    },
+    {
+      "case_id": "CP060-INT-02",
+      "source": "諗住返屋企。",
+      "class": "subject_omission_boundary",
+      "expected_profile": "IntentionFrame absent outside the exact overt-subject profile",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#INT-C06"
+    },
+    {
+      "case_id": "CP060-INT-03",
+      "source": "我諗住間屋。",
+      "class": "nominal_content_boundary",
+      "expected_profile": "IntentionFrame absent when 諗住 is not followed by a licensed VP complement",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#INT-C04"
     }
   ],
+  "np_cases": [],
+  "implementation_probe_cases": [],
   "coverage": {
-    "state": "implementation_positive_only",
+    "state": "positive_and_boundary",
     "exact_snapshot_positive_count": 0,
-    "focused_positive_count": 0,
-    "focused_boundary_count": 0,
+    "focused_positive_count": 1,
+    "focused_boundary_count": 2,
     "focused_review_only_count": 0,
     "np_case_count": 0,
-    "implementation_probe_count": 1,
+    "implementation_probe_count": 0,
     "compatibility_alias_probe_count": 0,
-    "positive_case_count": 0,
-    "boundary_case_count": 0,
-    "executable_case_count": 1
+    "positive_case_count": 1,
+    "boundary_case_count": 2,
+    "executable_case_count": 3
   }
 }

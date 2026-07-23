@@ -4,30 +4,42 @@
   "runtime_active": true,
   "migration_phase": 5,
   "snapshot_cases": [],
-  "focused_cases": [],
-  "np_cases": [],
-  "implementation_probe_cases": [
+  "focused_cases": [
     {
-      "case_id": "REACH-014",
+      "case_id": "CP060-TOP-01",
       "source": "呢隻杯我用嚟飲水。",
       "assertion": "construction_present",
-      "provenance": "review-packets/v0.5.182/IFR02-D1/focused-evaluation-packet.json#development_set.cases[19]",
-      "source_role": "historical_focused_probe",
-      "linguistic_evidence_weight": 0,
-      "purpose": "runtime_reachability_only"
+      "provenance": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#IFR-C04",
+      "source_ids": [
+        "SRC-WONG-2023-LANGUAGE-SAMPLE"
+      ]
+    },
+    {
+      "case_id": "CP060-TOP-02",
+      "source": "我用呢隻杯嚟飲水。",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#IFR-C04"
+    },
+    {
+      "case_id": "CP060-TOP-03",
+      "source": "呢隻杯我飲水。",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#IFR-C05"
     }
   ],
+  "np_cases": [],
+  "implementation_probe_cases": [],
   "coverage": {
-    "state": "implementation_positive_only",
+    "state": "positive_and_boundary",
     "exact_snapshot_positive_count": 0,
-    "focused_positive_count": 0,
-    "focused_boundary_count": 0,
+    "focused_positive_count": 1,
+    "focused_boundary_count": 2,
     "focused_review_only_count": 0,
     "np_case_count": 0,
-    "implementation_probe_count": 1,
+    "implementation_probe_count": 0,
     "compatibility_alias_probe_count": 0,
-    "positive_case_count": 0,
-    "boundary_case_count": 0,
-    "executable_case_count": 1
+    "positive_case_count": 1,
+    "boundary_case_count": 2,
+    "executable_case_count": 3
   }
 }

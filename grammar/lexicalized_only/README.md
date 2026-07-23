@@ -1,7 +1,7 @@
 # Lexicalized only
 
 **Frontmatter status:** `lexicalized_only`
-**Current construction notes:** 3
+**Current construction notes:** 2
 
 Only bounded lexicalized expressions are retained; productive grammar is not claimed.
 

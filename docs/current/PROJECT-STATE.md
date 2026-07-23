@@ -4,22 +4,22 @@
 
 | Measure | Current value |
 |---|---:|
-| Runtime | v0.5.213 |
-| Runtime labels | 160 |
-| Current construction notes | 160 |
+| Runtime | v0.5.214 |
+| Runtime labels | 133 |
+| Current construction notes | 133 |
 | Active working notes | 2 |
-| Workflow-archived notes | 158 |
-| Retired labels | 21 |
+| Workflow-archived notes | 131 |
+| Retired labels | 48 |
 | `supported_productive` | 0 |
 | `provisional_reaudit` | 0 |
 | `provisional` | 0 |
-| `research_pending` | 65 |
-| `unsupported_generalization` | 73 |
-| `lexicalized_only` | 3 |
-| `parser_heuristic` | 19 |
+| `research_pending` | 79 |
+| `unsupported_generalization` | 37 |
+| `lexicalized_only` | 2 |
+| `parser_heuristic` | 15 |
 
 The canonical registry is the union of
-`grammar/<linguistic-status>/*.md`. The 160 construction notes match the 160
+`grammar/<linguistic-status>/*.md`. The 133 construction notes match the 133
 runtime labels exactly.
 
 ## v0.5.213-r1 ConditionResult retirement

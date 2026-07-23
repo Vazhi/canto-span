@@ -100,6 +100,11 @@ for (const note of notes) {
 
 const runtimeLabels = new Set(runtime.labels);
 const noteLabels = new Set(byLabel.keys());
+const retiredIndexPath = path.join(root, "grammar", "retired", "README.md");
+const retiredIndexText = fs.existsSync(retiredIndexPath) ? fs.readFileSync(retiredIndexPath, "utf8") : "";
+const retiredLabels = new Set(
+  [...retiredIndexText.matchAll(/^\| `([^`]+)` \|/gm)].map((match) => match[1])
+);
 const activeNotes = notes.filter((note) => note.frontmatter.workflow_state === "active");
 const archivedNotes = notes.filter((note) => note.frontmatter.workflow_state === "archived");
 const standardTestFileCount = fs.readdirSync(path.join(root, "tests", "constructions")).filter((name) => name.endsWith(".json")).length;
@@ -113,7 +118,11 @@ check("all notes are runtime active", notes.every((note) => note.frontmatter.run
 
 for (const note of notes) {
   for (const target of [...note.text.matchAll(/\[\[([^\]|]+)\]\]/g)].map((m) => m[1])) {
-    check(`${note.frontmatter.construction} link target exists: ${target}`, noteLabels.has(target), target);
+    check(
+      `${note.frontmatter.construction} link target exists: ${target}`,
+      noteLabels.has(target) || retiredLabels.has(target),
+      target
+    );
   }
 }
 

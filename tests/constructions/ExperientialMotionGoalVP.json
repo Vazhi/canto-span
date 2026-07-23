@@ -4,30 +4,49 @@
   "runtime_active": true,
   "migration_phase": 5,
   "snapshot_cases": [],
-  "focused_cases": [],
-  "np_cases": [],
-  "implementation_probe_cases": [
+  "focused_cases": [
     {
-      "case_id": "EXPDEL-003",
+      "case_id": "CP060-EMG-01",
       "source": "我未去過美國。",
+      "class": "source_linked_go_experiential_overt_goal_positive",
+      "expected_profile": "ExperientialMotionGoalVP present over 去過美國 inside the negative statement",
       "assertion": "construction_present",
-      "provenance": "docs/research/CP035-P1-EXPERIENTIAL-DELIMITED-WRAPPER-AUDIT-R1.md#EXPDEL-003",
-      "source_role": "source_linked_surface_used_only_for_runtime_reachability",
-      "linguistic_evidence_weight": 0,
-      "purpose": "runtime_reachability_only"
+      "provenance": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#EMG-C01",
+      "source_ids": [
+        "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
+      ],
+      "source_locator": "printed p. 192"
+    },
+    {
+      "case_id": "CP060-EMG-02",
+      "source": "我去咗美國。",
+      "class": "perfective_motion_goal_boundary",
+      "expected_profile": "ExperientialMotionGoalVP absent with perfective 咗 instead of experiential 過",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#EMG-C02"
+    },
+    {
+      "case_id": "CP060-EMG-03",
+      "source": "我未見過美國。",
+      "class": "non_motion_experiential_boundary",
+      "expected_profile": "ExperientialMotionGoalVP absent without the source-linked motion predicate",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#EMG-C03"
     }
   ],
+  "np_cases": [],
+  "implementation_probe_cases": [],
   "coverage": {
-    "state": "implementation_positive_only",
+    "state": "positive_and_boundary",
     "exact_snapshot_positive_count": 0,
-    "focused_positive_count": 0,
-    "focused_boundary_count": 0,
+    "focused_positive_count": 1,
+    "focused_boundary_count": 2,
     "focused_review_only_count": 0,
     "np_case_count": 0,
-    "implementation_probe_count": 1,
+    "implementation_probe_count": 0,
     "compatibility_alias_probe_count": 0,
-    "positive_case_count": 0,
-    "boundary_case_count": 0,
-    "executable_case_count": 1
+    "positive_case_count": 1,
+    "boundary_case_count": 2,
+    "executable_case_count": 3
   }
 }

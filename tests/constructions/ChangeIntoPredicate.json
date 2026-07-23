@@ -4,30 +4,49 @@
   "runtime_active": true,
   "migration_phase": 5,
   "snapshot_cases": [],
-  "focused_cases": [],
-  "np_cases": [],
-  "implementation_probe_cases": [
+  "focused_cases": [
     {
-      "case_id": "RESCHG-002B",
-      "source": "佢會變成老師。",
+      "case_id": "CP060-CIP-01",
+      "source": "成個社會會變成點？",
+      "class": "source_linked_modal_change_into_wh_complement_positive",
+      "expected_profile": "ChangeIntoPredicate present over 變成點 while subject and modal remain independently visible",
       "assertion": "construction_present",
-      "provenance": "docs/research/CP036-P1-RESULT-CHANGE-STATE-WRAPPER-AUDIT-R1.md#RESCHG-002B",
-      "source_role": "code_specific_semantically_coherent_probe",
-      "linguistic_evidence_weight": 0,
-      "purpose": "runtime_reachability_only"
+      "provenance": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#CIP-C02",
+      "source_ids": [
+        "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
+      ],
+      "source_locator": "user PDF p. 323 / printed p. 301"
+    },
+    {
+      "case_id": "CP060-CIP-02",
+      "source": "佢變咗做老師。",
+      "class": "aspectual_bindo_transformation_boundary",
+      "expected_profile": "ChangeIntoPredicate absent outside lexical 變成",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#CIP-C04"
+    },
+    {
+      "case_id": "CP060-CIP-03",
+      "source": "佢整冧咗間屋。",
+      "class": "causative_resultative_boundary",
+      "expected_profile": "ChangeIntoPredicate absent for a distinct causative-resultative strategy",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#CIP-C04"
     }
   ],
+  "np_cases": [],
+  "implementation_probe_cases": [],
   "coverage": {
-    "state": "implementation_positive_only",
+    "state": "positive_and_boundary",
     "exact_snapshot_positive_count": 0,
-    "focused_positive_count": 0,
-    "focused_boundary_count": 0,
+    "focused_positive_count": 1,
+    "focused_boundary_count": 2,
     "focused_review_only_count": 0,
     "np_case_count": 0,
-    "implementation_probe_count": 1,
+    "implementation_probe_count": 0,
     "compatibility_alias_probe_count": 0,
-    "positive_case_count": 0,
-    "boundary_case_count": 0,
-    "executable_case_count": 1
+    "positive_case_count": 1,
+    "boundary_case_count": 2,
+    "executable_case_count": 3
   }
 }

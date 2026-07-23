@@ -3,10 +3,10 @@ title: "PostThemeParticipantRelation"
 type: "canto-span-construction"
 construction: "PostThemeParticipantRelation"
 status: "research_pending"
-confidence: "not_assigned_research_pending"
+confidence: "research_pending"
 claim_layer: "language"
 lane: "LANE-01"
-last_reviewed: "unknown"
+last_reviewed: "2026-07-23"
 last_status_migrated: "2026-07-21"
 source_count: 5
 verified_source_count: 5
@@ -27,8 +27,8 @@ panel_evidence_model_version: "v2"
 panel_review_state_file: "review-packets/native-panel/active-v2/panel-review-state.json"
 panel_policy_file: "review-packets/native-panel/active-v2/panel-policy.json"
 negative_cases_drafted: true
-negative_tests_executable: false
-negative_tests_passing: false
+negative_tests_executable: true
+negative_tests_passing: true
 negative_boundary_inventory_complete: false
 corpus_evidence_used: false
 corpus_hits_reviewed: false
@@ -37,20 +37,20 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
 code_document_review_commit: null
 code_document_code_locations: []
-current_standard_reaudit_complete: false
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
 standard_test_file: "tests/constructions/PostThemeParticipantRelation.json"
-standard_test_coverage: "implementation_positive_only"
-standard_positive_test_count: 0
-standard_boundary_test_count: 0
-standard_implementation_probe_count: 1
-standard_executable_test_count: 1
+standard_test_coverage: "positive_and_boundary"
+standard_positive_test_count: 1
+standard_boundary_test_count: 2
+standard_implementation_probe_count: 0
+standard_executable_test_count: 3
 source_ids: ["SRC-BODOMO-LAM-YU-2003", "SRC-CHIN-2011-BEI", "SRC-LI-LEE-2021-DATIVE", "SRC-WONG-2023-BEI", "SRC-XU-PEYRAUBE-1997-DOC"]
 runtime_active: true
 workflow_state: "archived"
@@ -58,7 +58,7 @@ workflow_priority: null
 workflow_since: "2026-07-21"
 workflow_reason: "not_selected_for_current_bounded_working_set"
 runtime_code_references: 5
-accepted_fixtures: 0
+accepted_fixtures: 1
 tags: ["canto-span/grammar", "canto-span/status/research_pending", "canto-span/lane/lane-01", "canto-span/workflow/archived"]
 ---
 
@@ -76,7 +76,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Linguistic confidence: `not_assigned_research_pending`
 - Current action: `retain_bounded_authority_origin_design_pending_heldout_and_native_analysis_validation`
 - Productive acceptance eligible: **no**
-- Last linguistic review: not recorded
+- Last linguistic review: 2026-07-23
 
 ## Sources
 
@@ -131,8 +131,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 ## Negative and boundary cases
 
 - Standard executable test file: `tests/constructions/PostThemeParticipantRelation.json`
-- Implementation-only reachability: `REACH-010` emits this label for `我買咗杯咖啡畀佢。`; linguistic evidence weight is **0**; provenance: `review-packets/cp021b-native-expert-design-v1/stage-b-expert/completed/ADJUDICATION-FORM-CP021B-AI-ADJ-01.tsv#CP021B-NR0-N01`.
-- Evidence state: `CP021B_FROZEN_24_ROW_DESIGN_BOUNDARIES`
+- Evidence state: `positive_and_boundary`
 - Executable or review records containing this label:
   - `test-data/grammar-authority-origin-CP021B.tsv`
   - `test-data/grammar-claim-provenance-CP021B.json`
@@ -142,12 +141,12 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 ## Implementation state
 
-- Lifecycle: `runtime_referenced_without_accepted_fixtures`
-- Visible/focused tests: `not_assessed_in_current_definition_of_done_review`
+- Lifecycle: `runtime_referenced_with_source_linked_fixture`
+- Visible/focused tests: `passing`
 - Render review: `not_assessed_in_current_definition_of_done_review`
 - Held-out evaluation: `NOT_ESTABLISHED`
 - Regression: `not_assessed_in_current_definition_of_done_review`
-- Code–documentation comparison: `pending_current_definition_of_done_line_by_line_review`
+- Code–documentation comparison: `reconciled_2026_07_23`
 
 ## Open questions and blockers
 

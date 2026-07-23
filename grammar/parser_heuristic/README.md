@@ -1,7 +1,7 @@
 # Parser heuristic
 
 **Frontmatter status:** `parser_heuristic`
-**Current construction notes:** 19
+**Current construction notes:** 15
 
 Internal software representation; it is not a productive Cantonese grammar claim.
 

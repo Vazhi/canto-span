@@ -4,30 +4,49 @@
   "runtime_active": true,
   "migration_phase": 5,
   "snapshot_cases": [],
-  "focused_cases": [],
-  "np_cases": [],
-  "implementation_probe_cases": [
+  "focused_cases": [
     {
-      "case_id": "EXPDEL-002",
+      "case_id": "CP060-EQ-01",
       "source": "你飲過茶未？",
+      "class": "source_linked_final_mei_experiential_question_positive",
+      "expected_profile": "ExperientialQuestion present with overt experiential material before final 未",
       "assertion": "construction_present",
-      "provenance": "docs/research/CP035-P1-EXPERIENTIAL-DELIMITED-WRAPPER-AUDIT-R1.md#EXPDEL-002",
-      "source_role": "source_linked_surface_used_only_for_runtime_reachability",
-      "linguistic_evidence_weight": 0,
-      "purpose": "runtime_reachability_only"
+      "provenance": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#EQ-C01",
+      "source_ids": [
+        "SRC-ZHANG-1970-PREDICATIVE-SUFFIXES"
+      ],
+      "source_locator": "pp. 467-468"
+    },
+    {
+      "case_id": "CP060-EQ-02",
+      "source": "我未去過美國。",
+      "class": "preverbal_mei_negative_statement_boundary",
+      "expected_profile": "ExperientialQuestion absent for preverbal 未 experiential negation",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#EQ-C03"
+    },
+    {
+      "case_id": "CP060-EQ-03",
+      "source": "你有冇去過澳門呀？",
+      "class": "have_or_not_experiential_question_boundary",
+      "expected_profile": "ExperientialQuestion absent for the separate 有冇 experiential strategy",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#EQ-C03"
     }
   ],
+  "np_cases": [],
+  "implementation_probe_cases": [],
   "coverage": {
-    "state": "implementation_positive_only",
+    "state": "positive_and_boundary",
     "exact_snapshot_positive_count": 0,
-    "focused_positive_count": 0,
-    "focused_boundary_count": 0,
+    "focused_positive_count": 1,
+    "focused_boundary_count": 2,
     "focused_review_only_count": 0,
     "np_case_count": 0,
-    "implementation_probe_count": 1,
+    "implementation_probe_count": 0,
     "compatibility_alias_probe_count": 0,
-    "positive_case_count": 0,
-    "boundary_case_count": 0,
-    "executable_case_count": 1
+    "positive_case_count": 1,
+    "boundary_case_count": 2,
+    "executable_case_count": 3
   }
 }

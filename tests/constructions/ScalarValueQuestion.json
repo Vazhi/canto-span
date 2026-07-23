@@ -4,30 +4,61 @@
   "runtime_active": true,
   "migration_phase": 5,
   "snapshot_cases": [],
-  "focused_cases": [],
-  "np_cases": [],
-  "implementation_probe_cases": [
+  "focused_cases": [
     {
-      "case_id": "ESQWRAP-005",
+      "case_id": "CP060-SVQ-01",
       "source": "幾錢呀？",
+      "class": "source_linked_lexical_price_question_positive",
+      "expected_profile": "ScalarValueQuestion present with lexical price subtype metadata",
       "assertion": "construction_present",
-      "provenance": "docs/research/CP039-P1-EVALUATION-SCALAR-QUESTION-WRAPPER-AUDIT-R1.md#ESQWRAP-005",
-      "source_role": "source_attested_surface_used_as_code_specific_probe",
-      "linguistic_evidence_weight": 0,
-      "purpose": "runtime_reachability_only"
+      "provenance": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#SVQ-C01",
+      "source_ids": [
+        "SRC-TAM-2021-DOZE"
+      ],
+      "source_locator": "p. 557, example (21)"
+    },
+    {
+      "case_id": "CP060-SVQ-02",
+      "source": "幾遠？",
+      "class": "source_linked_scalar_dimension_question_positive",
+      "expected_profile": "ScalarValueQuestion present for compositional 幾 plus a licensed scalar predicate",
+      "assertion": "construction_present",
+      "provenance": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#SVQ-C03",
+      "source_ids": [
+        "SRC-YIP-MATTHEWS-2000-BASIC"
+      ],
+      "source_locator": "Unit 24, printed p. 127"
+    },
+    {
+      "case_id": "CP060-SVQ-03",
+      "source": "一個人大概幾錢呀？",
+      "class": "unsupported_optional_slot_cross_product_boundary",
+      "expected_profile": "ScalarValueQuestion absent outside the exact lexical price profile",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#SVQ-C07"
+    },
+    {
+      "case_id": "CP060-SVQ-04",
+      "source": "好遠。",
+      "class": "non_question_degree_stative_boundary",
+      "expected_profile": "ScalarValueQuestion absent for a non-interrogative degree-stative statement",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#SVQ-C07"
     }
   ],
+  "np_cases": [],
+  "implementation_probe_cases": [],
   "coverage": {
-    "state": "implementation_positive_only",
+    "state": "positive_and_boundary",
     "exact_snapshot_positive_count": 0,
-    "focused_positive_count": 0,
-    "focused_boundary_count": 0,
+    "focused_positive_count": 2,
+    "focused_boundary_count": 2,
     "focused_review_only_count": 0,
     "np_case_count": 0,
-    "implementation_probe_count": 1,
+    "implementation_probe_count": 0,
     "compatibility_alias_probe_count": 0,
-    "positive_case_count": 0,
-    "boundary_case_count": 0,
-    "executable_case_count": 1
+    "positive_case_count": 2,
+    "boundary_case_count": 2,
+    "executable_case_count": 4
   }
 }

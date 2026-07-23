@@ -9,7 +9,8 @@ const { Plugin, PluginSettingTab, Setting, Notice } = require("obsidian");
  * never overwrite child learner roles.
  */
 
-const CANTO_SPAN_RUNTIME_VERSION = "0.5.213";
+const CANTO_SPAN_RUNTIME_VERSION = "0.5.214";
+// v0.5.214: reconciles every implementation-only label: source-linked profiles receive positive/boundary coverage, unsupported wrappers are retired, and the implementation-only count reaches zero.
 // v0.5.213-r5: retires SchedulingQuestion because the sourced 想 + 約 + object + 幾時 profile already composes as ClauseSpan + ModalVP, while the dedicated wrapper only covered an unsourced 覺得…好 cross-product.
 // v0.5.213-r4: narrows OpinionQuestion to the source-linked overt subject + 覺得 + evaluated referent + 點樣 profile and removes its token-cooccurrence fallback.
 // v0.5.213-r3: narrows AcceptabilityClause to overt action + 都得, source-links 轆咭都得 and 搵第二個都得, and excludes wh/free-choice tails from the action-feasibility node.
@@ -1088,7 +1089,7 @@ const FORMULAS = [
 // preserve likely name + address-suffix spans without letting ordinary kinship/title
 // words become generated unknown-name constructions.
 const PROTECTED_ADDRESS_TERMS = new Set([
-  "家姐", "小姐", "姐姐", "姐夫", "姐妹", "大姐", "阿姐", "先生", "學生",
+  "家姐", "小姐", "姐姐", "姐夫", "姐妹", "大姐", "阿姐", "阿太", "先生", "學生",
 ]);
 
 const ADDRESS_SUFFIXES = ["先生", "姐", "哥", "生"];
@@ -1279,8 +1280,6 @@ const CONSTRUCTION_LABEL_REGISTRY = new Set([
   "ApproximateQuantity",
   "PostThemeParticipantRelation",
   "VocativeAddressTerm",
-  "CausativeResultFrame",
-  "CausativeResultPredicate",
   "ChangeIntoPredicate",
   "ClassifierObjectNP",
   "ClauseRelationGraph",
@@ -1290,8 +1289,6 @@ const CONSTRUCTION_LABEL_REGISTRY = new Set([
   "ConditionalClause",
   "CoverbFrame",
   "CognitionContentFrame",
-  "CognitionDelimitedObjectVP",
-  "CognitionDelimitedVP",
   "CognitionStatementClause",
   "CompletionQuestion",
   "CompletionVP",
@@ -1300,10 +1297,8 @@ const CONSTRUCTION_LABEL_REGISTRY = new Set([
   "CopularIdentificationFrame",
   "CopularANotAQuestion",
   "CopularRelationFrame",
-  "DefinitionComplement",
   "DiscourseParticleFrame",
   "FocusParticleFrame",
-  "DefinitionExplanatoryFrame",
   "DegreeMannerAdverbial",
   "DegreeMannerModifiedVP",
   "DegreeModifiedLexicalStative",
@@ -1322,9 +1317,7 @@ const CONSTRUCTION_LABEL_REGISTRY = new Set([
   "NegativePotentialDirectionalVP",
   "RestorativeComplementVP",
   "RepetitiveComplementVP",
-  "DisposalChangeIntoResultFrame",
   "DitransitiveSpeechVP",
-  "EvaluationWithDouSyun",
   "ExistentialClause",
   "ExistentialQuestion",
   "ExistentialWhQuestion",
@@ -1336,25 +1329,20 @@ const CONSTRUCTION_LABEL_REGISTRY = new Set([
   "FormulaDiscourseUnit",
   "FragmentAnswer",
   "NominalHeadSpan",
-  "IdentificationFragment",
-  "IdentityWhQuestion",
   "IntentionFrame",
   "IntransitiveVP",
   "LocativeExistentialClause",
-  "LocativeFragment",
   "LocativePostureVP",
   "MannerAdverbialVP",
   "LocativePlacePhrase",
   "LocativeWhQuestion",
   "MalformedCandidate",
   "MeasureExpression",
-  "ModalChangeIntoResultFrame",
   "ModalVP",
   "ModifiedNP",
   "MotionGoalVP",
   "OrdinalClassifierNP",
   "ModifierNP",
-  "MotionDelimitedVP",
   "MotionPurposeChain",
   "NamingClause",
   "NeedsContext",
@@ -1369,7 +1357,6 @@ const CONSTRUCTION_LABEL_REGISTRY = new Set([
   "OpinionQuestion",
   "OpinionStanceFrame",
   "PathPhrase",
-  "PerfectiveObjectResultPredicate",
   "PerfectiveVP",
   "PostverbalZoPerfectiveVP",
   "ModalANotAQuestion",
@@ -1378,44 +1365,31 @@ const CONSTRUCTION_LABEL_REGISTRY = new Set([
   "PolarQuestionFrame",
   "PoliteImperativeClause",
   "PossessiveClassifierNP",
-  "PossessiveTransferClause",
-  "PostposedExistentialQuestion",
   "PreferenceVP",
   "ScalarEvaluation",
   "ScalarValueQuestion",
   "PriorityMarkerClause",
   "ProductiveVO",
-  "ProgressivePlaceQuestion",
-  "ProgressivePurposeClause",
-  "ProgressiveTransitivePredicate",
   "ProgressiveVP",
   "ProgressiveWhObjectQuestion",
   "ProhibitiveImperative",
-  "PurposePredicate",
   "QuantifiedClassifierNP",
   "QuantifiedTimeNP",
   "QuantityNP",
   "QuantifiedPersonNP",
   "ReduplicatedVP",
   "VerbComplementVP",
-  "VPComplementFrame",
   "ReportedSpeech",
   "ResultComplement",
-  "ResultStateClause",
-  "SeemingPerfectiveResultClause",
   "SerialVerbPurposeChain",
   "SourceMotionClause",
-  "SpeechTransferClause",
   "StativeNominalComplement",
   "StativePredicate",
   "SuggestionQuestion",
   "TemporalClause",
   "TimeNP",
-  "TimeToActionFrame",
   "Topic",
   "TopicComment",
-  "TransformationResultFrame",
-  "TransformationResultPredicate",
   "LexicalGiveRelation",
   "PassivePermissiveRelation",
   "TransitiveVP",
@@ -1458,7 +1432,6 @@ function clauseSpanProfileForCompatibilityType(type = "") {
 const INTERNAL_ONLY_CONSTRUCTION_SCOPES = Object.freeze({
   NominalHeadSpan: "neutral_nominal_head_span",
   MeasureExpression: "overt_measure_child_span",
-  DefinitionComplement: "bounded_definition_child_span",
   ClauseRelationGraph: "neutral_clause_relation_graph",
   ClauseRelationEdge: "typed_clause_relation_edge",
   ClauseRelationMemberSpan: "overt_clause_relation_member_span",
@@ -1502,13 +1475,13 @@ const RETIRED_CONSTRUCTION_LABEL_REGISTRY = new Map([
   ["NamingSelfIntroductionFrame", "Retired as discourse/speaker-specific; use NamingClause."],
   ["PolitePathImperative", "Retired as path-lexeme-specific; use PoliteImperativeClause."],
   ["InteriorExistentialFrame", "Retired as object/interior-specific; use LocativeExistentialClause."],
-  ["WeatherSeemingResultFrame", "Retired as domain/weather-specific; use SeemingPerfectiveResultClause."],
-  ["WeatherResultPredicate", "Retired as domain/weather-specific; use PerfectiveObjectResultPredicate."],
+  ["WeatherSeemingResultFrame", "Retired as domain/weather-specific. Its former SeemingPerfectiveResultClause target is also retired because it fused location, stance, time, perfective aspect, and a weather object into one exact-string wrapper."],
+  ["WeatherResultPredicate", "Retired as domain/weather-specific. Its former PerfectiveObjectResultPredicate target is also retired because ordinary perfective transitive composition preserves the visible predicate, aspect, and object."],
   ["FocusedActionSourceClause", "Retired; CP018 also removed the exact ActionSourceFocusClause bridge. Await a dedicated broad Cantonese cleft/focus audit."],
   ["CandidateNamedAddressTerm", "Retired because Candidate encoded review status rather than grammar category; use VocativeAddressTerm for Cantonese address/vocative terms."],
   ["FoodNP", "Retired as semantic-domain-specific rather than syntactic; use ModifiedNP or NominalHeadSpan according to noun-phrase structure."],
   ["PersonNP", "Retired as semantic-domain-specific rather than syntactic; use ModifiedNP or NominalHeadSpan according to noun-phrase structure."],
-  ["ProgressiveCookingPurposeClause", "Retired as object/activity-domain-specific; use ProgressivePurposeClause."],
+  ["ProgressiveCookingPurposeClause", "Retired as object/activity-domain-specific. Its former ProgressivePurposeClause target is also retired because unlinked predicate adjacency did not establish a purpose relation."],
   ["DropBenefactivePurposeFrame", "Retired; CP018 removed the exact modal-goal-benefactive-purpose bridge. Preserve components or review status pending separate relation audits."],
   ["DropGoalPredicate", "Retired; CP018 also removed GoalDirectedActionPredicate. Await lexical/path/caused-motion research."],
   ["UrgencyMarker", "Retired as too surface/pragmatic-specific; use DegreeMannerAdverbial for the productive degree/manner + 啲 pattern."],
@@ -1549,6 +1522,33 @@ const RETIRED_CONSTRUCTION_LABEL_REGISTRY = new Map([
   ["ConditionResult", "Retired at v0.5.213-r1: the action + 就 + stative wrapper lacked an invariant sourced construction; typed conditional ClauseRelationEdge structure now preserves independently parsed antecedent and consequent members."],
   ["CompletionThenClause", "Retired at v0.5.213-r2: completion + 就 sequences are represented as typed sequential ClauseRelationEdge structure with independently parsed earlier and later members."],
   ["SchedulingQuestion", "Retired at v0.5.213-r5: the source-attested 想 + 約 + object + 幾時 question already composes as ordinary modal, action, object, and wh-time structure; the dedicated wrapper only covered an unsourced 覺得…好 cross-product."],
+  ["CausativeResultFrame", "Retired at v0.5.214-r1: the outer subject-plus-predicate wrapper was transparent and inherited all of its analysis from an unsourced exact 整冧咗 predicate fallback."],
+  ["CausativeResultPredicate", "Retired at v0.5.214-r1: the exact 整 + 冧 + 咗 bundle did not establish a reusable causative-result predicate and ordinary predicate/aspect/object structure remains available."],
+  ["DisposalChangeIntoResultFrame", "Retired at v0.5.214-r1: the exact 會將…變成 wrapper fused independently visible modal, disposal, object, and lexical change-predicate material."],
+  ["ModalChangeIntoResultFrame", "Retired at v0.5.214-r1: modal change clauses compose from an ordinary clause/modal frame plus the retained source-linked ChangeIntoPredicate."],
+  ["PerfectiveObjectResultPredicate", "Retired at v0.5.214-r1: the weather-specific 停咗雨 bundle duplicated ordinary perfective transitive composition."],
+  ["ResultStateClause", "Retired at v0.5.214-r1: the exact optional 好多/都 + 熟咗 wrapper conflated scope, lexical state, perfective aspect, and sentence-final particles."],
+  ["SeemingPerfectiveResultClause", "Retired at v0.5.214-r1: the six-part location + 好似 + time + 停咗雨 wrapper was an unsourced cross-category template."],
+  ["TransformationResultFrame", "Retired at v0.5.214-r1: the outer topic wrapper added no independent structure beyond the unsupported 變咗做 predicate bundle."],
+  ["TransformationResultPredicate", "Retired at v0.5.214-r1: the exact 變咗做 bundle lacked direct source support and must not be conflated with sourced lexical 變成."],
+  ["CognitionDelimitedVP", "Retired at v0.5.214-r2: cognition + 吓 is represented by ordinary DelimitedVP composition; a cognition-specific parent added no overt structure."],
+  ["CognitionDelimitedObjectVP", "Retired at v0.5.214-r2: the wrapper treated arbitrary post-吓 material as an object despite source evidence for lexeme-sensitive nominal and clausal complements."],
+  ["MotionDelimitedVP", "Retired at v0.5.214-r2: the movement + action + 吓 cross-product conflated a purpose relation with delimitative aspect on the second predicate."],
+  ["ProgressivePlaceQuestion", "Retired at v0.5.214-r3: progressive aspect and an in-situ locative wh phrase compose independently; no special combined construction is established."],
+  ["ProgressivePurposeClause", "Retired at v0.5.214-r3: the exact 喺度 + V緊O + unlinked VO fallback inferred purpose from adjacency without an overt or independently licensed relation."],
+  ["ProgressiveTransitivePredicate", "Retired at v0.5.214-r3: the internal V緊O child duplicated the active ProgressiveVP analysis."],
+  ["PurposePredicate", "Retired at v0.5.214-r3: ordinary V+O form is not intrinsically purposive; purpose belongs to an evidenced inter-event relation."],
+  ["EvaluationWithDouSyun", "Retired at v0.5.214-r4: the exact 都算 + price-material wrapper was unsourced; sourced lexical 算 evaluation remains ScalarEvaluation."],
+  ["IdentityWhQuestion", "Retired at v0.5.214-r4: the exact 邊個嚟 fallback lacked direct support; sourced copular identity and explanatory 嚟 structures remain independently represented."],
+  ["PostposedExistentialQuestion", "Retired at v0.5.214-r4: no inspected source established the exact 有 + NP + 冇 template; adjacent 有冇 questions remain ExistentialQuestion."],
+  ["TimeToActionFrame", "Retired at v0.5.214-r4: component evidence for 係 and 時候 did not establish a dedicated 係時候 + action construction."],
+  ["SpeechTransferClause", "Retired at v0.5.214-r5: the outer subject/particle wrapper added no structure beyond ordinary clause composition around the retained lexical communication-effect predicate."],
+  ["PossessiveTransferClause", "Retired at v0.5.214-r5: the seven-part wrapper combined independently typed possession, classifier NP, modality, transfer, and recipient material without direct construction evidence."],
+  ["VPComplementFrame", "Retired at v0.5.214-r5: the source-free generic matcher allowed a complement-taking predicate category to combine with arbitrary VP material; complement licensing must be lexeme-specific."],
+  ["DefinitionComplement", "Retired at v0.5.214-r6: the non-licensing internal child duplicated ordinary wh/NP complement material and had no independent source."],
+  ["DefinitionExplanatoryFrame", "Retired at v0.5.214-r6: the exact 係…嚟㗎 wrapper was a source-free parser heuristic; visible copular, wh/NP, linker, and particle material remains compositional."],
+  ["IdentificationFragment", "Retired at v0.5.214-r6: the broad 就係 fallback inferred autonomous fragment status without a source-backed boundary."],
+  ["LocativeFragment", "Retired at v0.5.214-r6: a bare locative phrase does not independently establish fragment or ellipsis structure; LocativePlacePhrase preserves the overt material."],
 ]);
 
 
@@ -2174,12 +2174,6 @@ const SLOT_GENERATION_RULES = [
 
 const CONSTRUCTION_TEMPLATES = [
   {
-    type: "IdentificationFragment",
-    label: "Ident",
-    template: ["identification_marker!", "topic_or_object!", "particle?"],
-    note: "Generative focused identification: identification marker + noun phrase."
-  },
-  {
     type: "OpinionQuestion",
     label: "OpinionQ",
     template: ["subject!", "stance_predicate!", "topic_or_object!", "evaluation_question!", "particle?"],
@@ -2263,12 +2257,6 @@ const CONSTRUCTION_TEMPLATES = [
     note: "Existential/possessive yes-no question: optional subject + 有冇 + possessed/existing NP."
   },
   {
-    type: "PostposedExistentialQuestion",
-    label: "Have?",
-    template: ["subject?", "existential!", "topic_or_object!", "negated_existential!", "particle?"],
-    note: "Postposed existential/possessive question: optional subject + 有 + NP + 冇."
-  },
-  {
     type: "NegatedExistentialClause",
     label: "NoHave",
     template: ["subject?", "negated_existential!", "topic_or_object!", "particle?"],
@@ -2317,12 +2305,6 @@ const CONSTRUCTION_TEMPLATES = [
     note: "Reported speech/evaluation: speech-reporting verb plus reported content. A postverbal degree/manner complement such as 講大聲啲 is not reported content."
   },
   {
-    type: "SpeechTransferClause",
-    label: "TellClause",
-    template: ["subject?", "speech_transfer_vp!", "particle?"],
-    note: "Speech-transfer clause: optional subject plus tell/let-know VP."
-  },
-  {
     type: "ExperientialClause",
     label: "ExpClause",
     template: ["subject?", "experiential_vp!", "particle?"],
@@ -2331,8 +2313,9 @@ const CONSTRUCTION_TEMPLATES = [
   {
     type: "IntentionFrame",
     label: "Intention",
-    template: ["subject?", "intention_predicate!", "vp!", "particle?"],
-    note: "Intention/planning frame: optional subject + intention predicate + VP."
+    template: ["subject!", "intention_predicate!", "vp!", "particle?"],
+    constraints: { slot_surface_in: { intention_predicate: ["諗住"] } },
+    note: "Source-linked lexical intention profile: 諗住 followed by a visible VP complement."
   },
   {
     type: "OpinionStanceFrame",
@@ -2393,12 +2376,6 @@ const CONSTRUCTION_TEMPLATES = [
     note: "Broad modal A-not-A question: optional subject + modal A-not-A material + VP. Subtype metadata distinguishes desiderative 想唔想 from permission 可唔可以."
   },
   {
-    type: "ProgressivePlaceQuestion",
-    label: "ProgWhereQ",
-    template: ["subject?", "progressive_vp!", "location_question!", "particle?"],
-    note: "Progressive reference/place question: subject + progressive VP + location question."
-  },
-  {
     type: "LocativeWhQuestion",
     label: "WhereQ",
     template: ["subject?", "time?", "directional_motion_vp!", "perfective_aspect!", "location_question!", "particle?"],
@@ -2413,12 +2390,6 @@ const CONSTRUCTION_TEMPLATES = [
     note: "Locative wh-question."
   },
   {
-    type: "LocativeFragment",
-    label: "Location",
-    template: ["locative_marker!", "location!", "particle?"],
-    note: "Locative fragment: locative marker + place."
-  },
-  {
     type: "ScalarEvaluation",
     label: "ValueEval",
     template: ["negator!", "evaluation_marker!", "degree?", "stative_predicate!", "particle?"],
@@ -2427,25 +2398,10 @@ const CONSTRUCTION_TEMPLATES = [
     note: "Negative lexical 算 evaluation with an overt property predicate; subject/topic and focus material remain visible when present."
   },
   {
-    type: "EvaluationWithDouSyun",
-    label: "都算",
-    template: ["focus_adverb?", "evaluation_marker!", "modifier?", "price_noun!", "particle?"],
-    note: "Evaluation with 都/算 and a price noun."
-  },
-  {
     type: "ApproximateQuantity",
     label: "Approx",
     template: ["price_noun!", "approximation!", "particle?"],
     note: "Approximate price/quantity fragment: amount + approximation marker."
-  },
-  {
-    type: "ScalarValueQuestion",
-    label: "ValueQ",
-    template: ["quantity?", "person_np?", "approximation?", "scalar_value_question!", "particle?"],
-    output_slots: ["scalar_value_question", "question_fragment"],
-    retired_label_alias: "PriceQuestion",
-    scalar_domain: "price",
-    note: "Scalar value question with a domain-specific value question expression such as 幾錢."
   },
   {
     type: "AcceptabilityClause",
@@ -2473,22 +2429,6 @@ const CONSTRUCTION_TEMPLATES = [
     label: "Prohibitive",
     template: ["prohibitive_marker!", "vp!", "particle?"],
     note: "Prohibitive imperative: 唔好 + VP."
-  },
-  {
-    type: "VPComplementFrame",
-    label: "VPFrame",
-    template_family: "generative_template",
-    template: ["subject?", "modal?", "vp_complement_predicate!", "time?", "vp!", "particle?"],
-    output_slots: ["subject", "modal", "vp_complement_predicate", "time", "vp", "predicate", "clause"],
-    note: "Broad VP-complement frame: optional subject/modal + complement-taking predicate + optional time/manner + VP complement. Project label is grounded in VP complement grammar, not a special reminder/obligation label."
-  },
-  {
-    type: "VPComplementFrame",
-    label: "VPFrame",
-    template_family: "generative_template",
-    template: ["subject?", "vp_complement_predicate!", "modal?", "time?", "vp!", "particle?"],
-    output_slots: ["subject", "modal", "vp_complement_predicate", "time", "vp", "predicate", "clause"],
-    note: "Broad VP-complement frame: complement-taking predicate + optional modal/time + VP complement. This keeps the grammar label broad while the slots guard the actual parse."
   },
   {
     type: "PreferenceVP",
@@ -2599,7 +2539,8 @@ const CONSTRUCTION_TEMPLATES = [
     type: "NamingClause",
     label: "Called",
     template: ["subject!", "naming_verb!", "name!", "particle?"],
-    note: "Naming clause: subject + 叫做 + name."
+    constraints: { slot_surface_in: { naming_verb: ["叫"] } },
+    note: "Source-linked personal naming clause: subject + 叫 + visible personal name."
   },
   {
     type: "FormulaDiscourseUnit",
@@ -2618,12 +2559,6 @@ const CONSTRUCTION_TEMPLATES = [
     label: "YesNo?",
     template: ["subject!", "yes_no_question_marker!", "predicate!", "particle?"],
     note: "Broad polar-question frame. Productive paths include subject + 係咪 + predicate and a complete proposition-like host plus a sentence-final polar particle."
-  },
-  {
-    type: "TimeToActionFrame",
-    label: "TimeTo",
-    template: ["time_to_action_marker!", "time!", "predicate!", "particle?"],
-    note: "係時候 + predicate frame: time-to-action expression plus visible action predicate."
   },
   {
     type: "CopularIdentificationFrame",
@@ -2681,36 +2616,10 @@ const CONSTRUCTION_TEMPLATES = [
     note: "Classifier-headed object NP without an overt numeral/demonstrative, e.g. 樣驚喜."
   },
   {
-    type: "PossessiveTransferClause",
-    label: "PossessiveTransfer",
-    template: ["subject!", "possessive_marker!", "object!", "modal!", "transfer_predicate!", "particle?"],
-    note: "Bounded have-something-to-give frame: possessor + 有 + object + 要畀 + recipient."
-  },
-  {
     type: "CoordinatedSubjectModalPredicateClause",
     label: "CoordSubjModal",
     template: ["subject!", "modal_vp!", "particle?"],
     note: "Coordinated-subject modal clause preserving an existing ModalVP child."
-  },
-  {
-    type: "ProgressivePurposeClause",
-    label: "ProgressivePurpose",
-    template: ["subject!", "progressive_marker!", "progressive_predicate!", "purpose_predicate!", "particle?"],
-    note: "Bounded progressive purpose clause: subject + 喺度 + 整緊 object + 做 meal."
-  },
-  {
-    type: "ProgressiveTransitivePredicate",
-    label: "ProgTransVP",
-    template: ["action_verb!", "progressive_aspect!", "object!"],
-    constraints: { slot_must_not_be_bare_quantity_token: ["object"] },
-    note: "Progressive transitive predicate used inside bounded progressive-purpose clauses."
-  },
-  {
-    type: "PurposePredicate",
-    label: "PurposeVP",
-    template: ["action_verb!", "object!"],
-    constraints: { slot_must_not_be_bare_quantity_token: ["object"] },
-    note: "Purpose predicate used as a bounded child inside a larger frame."
   },
   {
     type: "ClauseRelationGraph",
@@ -2781,6 +2690,13 @@ const CATEGORY_SPAN_TEMPLATES = [
     type: "CompoundDirectionalMotionVP",
     label: "MotionVP",
     template: ["return_motion_verb!", "movement_direction!", "deictic_motion_marker!"],
+    constraints: {
+      slot_surface_in: {
+        return_motion_verb: ["返"],
+        movement_direction: ["上"],
+        deictic_motion_marker: ["嚟", "去"]
+      }
+    },
     role_overrides: {
       return_motion_verb: { label: "doing", syntax: "return_motion_component", note: "返 functions as the return-motion component inside a directional-motion VP." },
       movement_direction: { label: "doing", syntax: "movement_direction_up", note: "上 functions as the upward-direction component inside a compound directional-motion VP." },
@@ -2843,7 +2759,8 @@ const CATEGORY_SPAN_TEMPLATES = [
     type: "ExperientialMotionGoalVP",
     label: "ExpVP",
     template: ["movement_verb!", "experiential_aspect!", "goal!"],
-    note: "Category-based experiential motion VP: movement verb + 過 + goal/location."
+    constraints: { slot_surface_in: { movement_verb: ["去"] } },
+    note: "Source-linked experiential motion-goal VP: attested 去 + 過 + overt goal/location."
   },
   {
     type: "ExperientialVP",
@@ -2908,27 +2825,6 @@ const CATEGORY_SPAN_TEMPLATES = [
     note: "Category-based topic-comment: topic/content NP + safe comment predicate family."
   },
   {
-    type: "CognitionDelimitedVP",
-    label: "V吓",
-    template: ["cognition_predicate!", "delimitative_aspect!"],
-    role_overrides: {
-      delimitative_aspect: {
-        label: "func",
-        syntax: "delimitative_aspect",
-        slots: ["aspect_marker", "delimitative_aspect"],
-        note: "吓 marks a light/delimitative action here, not an interjection."
-      }
-    },
-    note: "Category-based delimitative VP for cognition verbs: cognition predicate + 吓."
-  },
-  {
-    type: "CognitionDelimitedObjectVP",
-    label: "VP",
-    template: ["cognition_delimited_vp!", "object!"],
-    constraints: { slot_must_not_be_bare_quantity_token: ["object"] },
-    note: "Category-based cognition delimitative VP with an object/content NP."
-  },
-  {
     type: "DelimitedVP",
     label: "V吓",
     template: ["action_verb!", "delimitative_aspect!"],
@@ -2948,20 +2844,6 @@ const CATEGORY_SPAN_TEMPLATES = [
     template: ["action_verb!", "action_verb!"],
     constraints: { same_surface: true },
     note: "Category-based verb reduplication: identical action verb repeated for a light/checking action."
-  },
-  {
-    type: "MotionDelimitedVP",
-    label: "VP",
-    template: ["movement_verb!", "action_verb!", "delimitative_aspect!"],
-    role_overrides: {
-      delimitative_aspect: {
-        label: "func",
-        syntax: "delimitative_aspect",
-        slots: ["aspect_marker", "delimitative_aspect"],
-        note: "吓 marks a light/delimitative action here, not an interjection."
-      }
-    },
-    note: "Category-based serial/motion VP: movement verb + delimitative action."
   },
   {
     type: "ImpersonalEnvironmentalClause",
@@ -3216,6 +3098,12 @@ const CATEGORY_SPAN_TEMPLATES = [
     type: "DitransitiveSpeechVP",
     label: "tell",
     template: ["speech_verb!", "recipient!", "cognition_predicate!"],
+    constraints: {
+      slot_surface_in: {
+        speech_verb: ["話"],
+        cognition_predicate: ["知"]
+      }
+    },
     role_overrides: {
       speech_verb: { label: "doing", syntax: "speech_transfer_verb", note: "In this speech-transfer VP, 話 is the action tell/let know." }
     },
@@ -4648,11 +4536,9 @@ function constructionSlotsByType(type, children = []) {
   if (["SourceMotionClause"].includes(type)) slots.push("source_motion_clause", "source", "source_marker", "location", "movement_verb", "directional_motion_vp", "vp", "predicate", "clause", "subject");
   if (["DirectedMannerMotionVP"].includes(type)) slots.push("directed_manner_motion_vp", "movement_verb", "manner_motion", "movement_direction", "path_component", "path_phrase", "deictic_motion_marker", "goal", "location", "predicate", "vp", "action_vp");
   if (["GoalAttainmentMotionVP"].includes(type)) slots.push("goal_attainment_motion_vp", "movement_verb", "goal_attainment_complement", "result_marker", "goal", "location", "predicate", "vp", "action_vp");
-  if (["SpeechTransferClause"].includes(type)) slots.push("speech_transfer_clause", "speech_transfer_vp", "predicate");
   if (["NegativeCognitionFragment"].includes(type)) slots.push("negative_cognition_fragment", "cognition_predicate", "negative_cognition_predicate", "predicate");
   if (["NegatedExistentialFragment"].includes(type)) slots.push("negated_existential_fragment", "negated_existential", "answer_fragment", "discourse_response", "predicate", "particle");
   if (["CognitionContentFrame"].includes(type)) slots.push("cognition_content_frame", "cognition_predicate", "reported_content", "content_clause", "predicate");
-  if (["VPComplementFrame"].includes(type)) slots.push("vp_complement_frame", "vp_complement_predicate", "vp", "predicate", "clause");
   if (["IntentionFrame"].includes(type)) slots.push("intention_frame", "vp", "predicate", "intention_predicate");
   if (["IntransitiveVP"].includes(type)) slots.push("intransitive_vp", "action_vp", "vp", "predicate", "action_verb");
   if (["DesiderativeVP"].includes(type)) slots.push("desiderative_vp", "vp", "predicate", "modal");
@@ -4689,16 +4575,14 @@ function constructionSlotsByType(type, children = []) {
   }
   if (["FocusParticleFrame"].includes(type)) slots.push("focus_particle_frame", "restriction_marker", "scalar_host", "restrictive_focus_particle", "focus_adverb", "particle", "quantity", "degree", "np", "topic", "object");
   if (["IdentificationFragment"].includes(type)) slots.push("identification_fragment", "topic_or_object", "np");
-  if (["IdentityWhQuestion"].includes(type)) slots.push("identity_wh_question", "identity_question", "question_fragment", "wh_person", "identity_lai_marker", "identity_predicate", "predicate", "clause");
   if (["DefinitionExplanatoryFrame"].includes(type)) slots.push("definition_explanatory_frame", "definition_frame", "identification_clause", "copular_clause", "explanatory_clause", "topic", "object", "np", "predicate", "clause");
   if (["DefinitionComplement"].includes(type)) slots.push("definition_complement", "object", "np", "topic_or_object");
   if (["IntendedFunctionRelation", "ResourceUseLaiFunctionRelation"].includes(type)) slots.push("intended_function_relation", "function_relation", "function_topic", "topic", "user_subject", "modal", "copula", "negator", "purpose_use_verb", "purpose_lai_marker", "purpose_predicate", "predicate", "vp", "action_vp", "clause");
-  if (["ProgressivePlaceQuestion"].includes(type)) slots.push("question_fragment", "location_question", "progressive_reference");
   if (["LocativeWhQuestion"].includes(type)) slots.push("question_fragment", "location_question", "location", "predicate", "vp", "clause");
   if (["ProgressiveWhObjectQuestion"].includes(type)) slots.push("progressive_wh_object_question", "question_fragment", "progressive_vp", "wh_object", "predicate");
   if (["ExistentialClause"].includes(type)) slots.push("existential_clause", "possessive_clause", "predicate", "existential", "object");
   if (["NegatedExistentialClause"].includes(type)) slots.push("negated_existential_clause", "possessive_clause", "predicate", "negated_existential", "object");
-  if (["ExistentialQuestion", "PostposedExistentialQuestion"].includes(type)) slots.push("existential_question", "question_fragment", "possessive_question", "predicate", "object");
+  if (["ExistentialQuestion"].includes(type)) slots.push("existential_question", "question_fragment", "possessive_question", "predicate", "object");
   if (["TopicComment"].includes(type)) slots.push("topic_comment", "evaluation_clause", "reported_content", "predicate", "content_topic", "opinion_topic", "comment", "comment_predicate", "stative_predicate");
   if (["PostThemeParticipantRelation"].includes(type)) slots.push("post_theme_participant_relation", "post_theme_link_marker", "post_theme_participant", "person_np", "np", "predicate", "vp", "action_vp");
   if (["BenefactivePurposeVP"].includes(type)) slots.push("benefactive_purpose_vp", "benefactive_action_chain", "purpose_chain", "vp", "action_vp", "predicate", "recipient");
@@ -4720,14 +4604,11 @@ function constructionSlotsByType(type, children = []) {
   if (["LexicalGiveRelation"].includes(type)) slots.push("lexical_give_relation", "give_relation", "vp", "action_vp", "predicate", "transfer_predicate");
   if (["PassivePermissiveRelation"].includes(type)) slots.push("passive_permissive_relation", "bei_relation", "clause", "predicate", "vp", "pre_marker_participant", "postmarker_participant", "retained_patient_candidate");
   if (["CoverbFrame"].includes(type)) slots.push("coverb_frame", "coverb_phrase", "coverb_marker", "coverb_object", "preverbal_modifier", "predicate", "vp", "clause");
-  if (["DelimitedVP", "CognitionDelimitedVP", "CognitionDelimitedObjectVP", "ReduplicatedVP", "CompletionVP", "DitransitiveSpeechVP", "TransitiveVP", "MotionDelimitedVP", "ActionStativeVP"].includes(type)) slots.push("vp", "action_vp", "predicate");
+  if (["DelimitedVP", "ReduplicatedVP", "CompletionVP", "DitransitiveSpeechVP", "TransitiveVP", "ActionStativeVP"].includes(type)) slots.push("vp", "action_vp", "predicate");
   if (["TransitiveVP"].includes(type)) slots.push("transitive_vp");
   if (["DirectionalMotionVP", "CompoundDirectionalMotionVP"].includes(type)) slots.push("vp", "action_vp", "predicate", "movement_verb", "motion_predicate", "directional_motion_vp");
   if (["NegatedDirectionalMotionVP"].includes(type)) slots.push("vp", "action_vp", "predicate", "movement_verb", "motion_predicate", "directional_motion_vp", "negated_directional_motion_vp", "negator");
   if (["NegatedVP"].includes(type)) slots.push("negated_vp", "vp", "action_vp", "predicate", "negator");
-  if (["CognitionDelimitedVP"].includes(type)) slots.push("cognition_delimited_vp", "cognition_predicate");
-  if (["CognitionDelimitedObjectVP"].includes(type)) slots.push("cognition_object_vp", "cognition_delimited_vp", "object", "topic_or_object");
-  if (["MotionDelimitedVP"].includes(type)) slots.push("serial_motion_vp", "motion_purpose_vp");
   if (["MotionPurposeChain"].includes(type)) slots.push("motion_purpose_chain", "motion_action_chain", "purpose_chain", "vp", "action_vp", "predicate");
   if (["CompletionVP"].includes(type)) slots.push("completion_vp");
   if (["DitransitiveSpeechVP"].includes(type)) slots.push("speech_transfer_vp", "reported_content");
@@ -4771,7 +4652,6 @@ function constructionSlotsByType(type, children = []) {
   if (["PathPhrase"].includes(type)) slots.push("path_phrase", "path_marker", "location", "goal");
   if (["PoliteImperativeClause"].includes(type)) slots.push("polite_imperative_clause", "imperative", "politeness_marker", "subject", "time", "path_phrase", "location", "predicate", "clause");
   if (["PolarQuestionFrame"].includes(type)) slots.push("polar_question_frame", "yes_no_question", "question_fragment", "yes_no_question_marker", "subject", "predicate", "particle", "clause");
-  if (["TimeToActionFrame"].includes(type)) slots.push("time_to_action_frame", "time_to_action_marker", "time", "predicate", "vp", "clause");
   if (["CopularIdentificationFrame"].includes(type)) slots.push("copular_identification_frame", "identification_clause", "copular_clause", "topic", "copula", "np", "object", "predicate", "clause");
   if (["CoordinatedNP"].includes(type)) slots.push("coordinated_np", "left_np", "right_np", "coordinator", "np", "topic", "object");
   if (["StativeNominalComplement"].includes(type)) slots.push("stative_nominal_complement", "copular_complement", "np", "predicate", "head_noun", "nominal_linker");
@@ -4780,29 +4660,16 @@ function constructionSlotsByType(type, children = []) {
   if (["LocativeExistentialClause"].includes(type)) slots.push("locative_existential_clause", "existential_clause", "location", "locative_domain", "introduced_theme", "existential", "negated_existential", "predicate", "clause");
   if (["OrdinalClassifierNP"].includes(type)) slots.push("ordinal_classifier_np", "classifier_np", "ordinal_modifier", "classifier", "head_noun", "np", "object", "topic");
   if (["PossessiveClassifierNP"].includes(type)) slots.push("possessive_classifier_np", "possessive_np", "possessor", "classifier", "head_noun", "np", "object", "topic");
-  if (["TransformationResultPredicate"].includes(type)) slots.push("transformation_result_predicate", "change_verb", "perfective_aspect", "result_linker", "result_complement", "predicate", "vp", "action_vp");
-  if (["TransformationResultFrame"].includes(type)) slots.push("transformation_result_frame", "change_result_frame", "changed_state", "topic", "result_predicate", "predicate", "vp", "clause");
   if (["ChangeIntoPredicate"].includes(type)) slots.push("change_into_predicate", "change_verb", "result_complement", "predicate", "vp", "action_vp");
-  if (["ModalChangeIntoResultFrame"].includes(type)) slots.push("modal_change_into_result_frame", "change_result_frame", "changed_state", "topic", "modal", "result_predicate", "predicate", "vp", "clause");
-  if (["DisposalChangeIntoResultFrame"].includes(type)) slots.push("disposal_change_into_result_frame", "disposal_frame", "change_result_frame", "agent", "modal", "disposal_marker", "object", "result_predicate", "predicate", "vp", "clause");
-  if (["CausativeResultPredicate"].includes(type)) slots.push("causative_result_predicate", "causative_verb", "result_verb", "perfective_aspect", "result_object", "predicate", "vp", "action_vp");
-  if (["CausativeResultFrame"].includes(type)) slots.push("causative_result_frame", "change_result_frame", "subject", "result_predicate", "predicate", "vp", "clause");
-  if (["PerfectiveObjectResultPredicate"].includes(type)) slots.push("perfective_object_result_predicate", "result_verb", "perfective_aspect", "object", "predicate", "vp", "action_vp");
-  if (["SeemingPerfectiveResultClause"].includes(type)) slots.push("seeming_perfective_result_clause", "perfective_result_frame", "seeming_marker", "location", "time", "result_predicate", "predicate", "vp", "clause");
 
   if (["ClassifierObjectNP"].includes(type)) slots.push("classifier_object_np", "np", "object", "topic", "classifier", "head_noun");
-  if (["PossessiveTransferClause"].includes(type)) slots.push("possessive_transfer_clause", "possessive_clause", "transfer_clause", "subject", "possessive_marker", "object", "modal", "transfer_predicate", "recipient", "predicate", "clause");
   if (["CoordinatedSubjectModalPredicateClause"].includes(type)) slots.push("coordinated_subject_modal_predicate_clause", "modal_predicate_clause", "subject", "coordinated_subject", "modal_vp", "modal", "predicate", "clause");
-  if (["ProgressivePurposeClause"].includes(type)) slots.push("progressive_purpose_clause", "progressive_clause", "purpose_clause", "subject", "progressive_marker", "progressive_predicate", "purpose_predicate", "predicate", "vp", "clause");
-  if (["ProgressiveTransitivePredicate"].includes(type)) slots.push("progressive_transitive_predicate", "progressive_predicate", "progressive_vp", "action_verb", "progressive_aspect", "object", "predicate", "vp", "action_vp");
-  if (["PurposePredicate"].includes(type)) slots.push("purpose_predicate", "predicate", "vp", "action_vp", "object");
 
 
   if (["ClauseSequence", "ClauseRelationGraph"].includes(type)) slots.push("clause_linking_sequence", "clause_sequence", "multi_clause_sequence", "utterance_sequence", "discourse_sequence", "clause", "clause_like", "separator");
   if (["VocativeAddressTerm"].includes(type)) slots.push("vocative_address_term", "named_address_term", "address_term", "vocative");
   if (["UrgencyMarker"].includes(type)) slots.push("urgency_marker", "imperative_adverb", "how");
   if (["PriorityMarkerClause"].includes(type)) slots.push("priority_marker_clause", "sequence_priority_marker", "priority_marker", "vp", "action_vp", "predicate");
-  if (["ResultStateClause"].includes(type)) slots.push("result_state_clause", "changed_state", "result_state", "state_predicate", "stative_predicate", "perfective_aspect", "predicate");
   if (["AcceptabilityClause"].includes(type)) slots.push("acceptability_clause", "acceptability", "focus_adverb", "acceptability_predicate", "predicate", "clause");
   if (["SerialVerbPurposeChain"].includes(type)) slots.push("serial_verb_purpose_chain", "serial_action_chain", "purpose_chain", "vp", "action_vp", "predicate");
   if (has("location")) slots.push("location", "goal");
@@ -5266,18 +5133,6 @@ function shouldDeferApproximateQuantityForUnlicensedGovernor(candidate, nodes, i
   return !nodeCanFillSlot(governor, "consumption_verb");
 }
 
-function shouldDeferCognitionObjectForAssociativeNP(candidate, nodes, index, length) {
-  if (!candidate || candidate.type !== "CognitionDelimitedObjectVP") return false;
-  const objectNode = candidate.children && candidate.children[1];
-  if (!objectNode) return false;
-  const linker = nodes[index + length];
-  const head = nodes[index + length + 1];
-  if (!linker || !head) return false;
-  if (!nodeCanFillSlot(linker, "nominal_linker")) return false;
-  if (!nodeCanFillSlot(head, "head_noun")) return false;
-  return nodeCanFillSlot(objectNode, "modifier") || nodeCanFillSlot(objectNode, "head_noun") || nodeCanFillSlot(objectNode, "np") || nodeCanFillSlot(objectNode, "object");
-}
-
 function shouldDeferTransitiveWhDeterminerObject(candidate, nodes, index, length) {
   if (!candidate || candidate.type !== "TransitiveVP") return false;
   const objectNode = candidate.children && candidate.children[1];
@@ -5320,7 +5175,6 @@ function wrapCategorySubspansOnce(nodes) {
       if (window.some((node) => node.kind === "text")) continue;
       const candidate = categorySubspanFor(window);
       if (candidate) {
-        if (shouldDeferCognitionObjectForAssociativeNP(candidate, nodes, i, length)) continue;
         if (shouldDeferPostverbalZoForFollowingComplement(candidate, nodes, i, length)) continue;
         if (shouldDeferTransitiveWhDeterminerObject(candidate, nodes, i, length)) continue;
         if (shouldDeferCompletionForPerfectiveComposition(candidate, nodes, i, length)) continue;
@@ -6290,6 +6144,13 @@ const DIRECTIONAL_MOTION_PATTERNS = [
     pattern: "return + upward_direction + deictic_come",
   },
   {
+    surfaces: ["返", "上", "去"],
+    type: "CompoundDirectionalMotionVP",
+    label: "MotionVP",
+    note: "Compound directional motion VP: 返 + 上 + 去 = go back up.",
+    pattern: "return + upward_direction + deictic_go",
+  },
+  {
     surfaces: ["落", "嚟"],
     type: "DirectionalMotionVP",
     label: "MotionVP",
@@ -6814,108 +6675,6 @@ function wrapPriorityMarkerSubspans(nodes) {
     const match = priorityMarkerPatternAt(nodes, i);
     if (match) {
       result.push(makePriorityMarkerClause(nodes[i], nodes[i + 1], match.particle));
-      i += match.length;
-      continue;
-    }
-    result.push(nodes[i]);
-    i += 1;
-  }
-  return result;
-}
-
-function resultStatePartClone(node, role = "like", overrides = {}) {
-  const surface = flattenSurface(node);
-  const syntaxBySurface = {
-    "熟": "result_state_property",
-    "咗": "perfective_aspect",
-    "好多": "quantity_scope",
-    "都": "focus_adverb",
-  };
-  const slotBySurface = {
-    "熟": "state_predicate",
-    "咗": "perfective_aspect",
-    "好多": "quantity",
-    "都": "focus_adverb",
-  };
-  return parserInactiveTokenClone(firstToken(node) || token(surface), {
-    label: overrides.label || role,
-    pos: overrides.pos || (role === "func" ? "function" : role === "how" ? "adverbial" : "stative"),
-    syntax: overrides.syntax || syntaxBySurface[surface] || "result_state_part",
-    slots: overrides.slots || [slotBySurface[surface] || "result_state_part"],
-    semantic: overrides.semantic || (surface === "熟" ? ["ripeness", "changed_state"] : []),
-    reason: overrides.reason || "Token is parser-inactive inside a result-state clause wrapper; the parent exposes changed-state/result-state affordances.",
-  });
-}
-
-function resultStateParticleClone(node) {
-  return parserInactiveTokenClone(node, {
-    label: "particle",
-    pos: "particle",
-    syntax: "sentence_final_particle",
-    slots: ["particle"],
-    reason: "Final particle stays parser-inactive inside a result-state clause wrapper.",
-  });
-}
-
-function makeResultStateClause(prefixNodes, stateNode, aspectNode, particleNode = null) {
-  const children = [];
-  for (const prefix of prefixNodes) {
-    if (isToken(prefix, "好多")) children.push(resultStatePartClone(prefix, "how", { pos: "adverbial", syntax: "quantity_scope", slots: ["quantity", "quantity_scope", "how"] }));
-    else if (isToken(prefix, "都")) children.push(resultStatePartClone(prefix, "how", { pos: "adverbial", syntax: "focus_adverb", slots: ["focus_adverb", "how"] }));
-    else children.push(prefix);
-  }
-  children.push(resultStatePartClone(stateNode, "like", {
-    pos: "stative",
-    syntax: "result_state_property",
-    slots: ["state_predicate", "result_state"],
-    semantic: ["ripeness", "changed_state"],
-    reason: "熟 is interpreted here as a result-state property inside 熟咗, so it stays parser-inactive while the parent exposes the changed-state/stative affordances.",
-  }));
-  children.push(resultStatePartClone(aspectNode, "func", { pos: "function", syntax: "perfective_aspect", slots: ["perfective_aspect", "aspect_marker"] }));
-  if (particleNode) children.push(resultStateParticleClone(particleNode));
-  return construction("ResultStateClause", "ResultState", children, {
-    slots: ["result_state_clause", "changed_state", "result_state", "state_predicate", "stative_predicate", "perfective_aspect", "predicate"],
-    note: "Result/state clause: optional quantity/focus scope + state predicate + 咗 + optional final particle, e.g. 好多都熟咗喇 = many/all of them have become ripe.",
-    trace: traceInfo("generative_template", {
-      construction_type: "ResultStateClause",
-      template_family: "generative_template",
-      template: particleNode ? ["quantity_scope?", "focus_adverb?", "state_predicate!", "perfective_aspect!", "particle?"] : ["quantity_scope?", "focus_adverb?", "state_predicate!", "perfective_aspect!"],
-      assigned_slots: [
-        ...prefixNodes.map((node) => isToken(node, "好多") ? "quantity_scope" : (isToken(node, "都") ? "focus_adverb" : "scope")),
-        "state_predicate",
-        "perfective_aspect",
-        ...(particleNode ? ["particle"] : []),
-      ],
-      pattern: particleNode ? "scope? + state_predicate + perfective_aspect + final_particle" : "scope? + state_predicate + perfective_aspect",
-      reason: "Native speech uses 熟咗 for a changed/result state; 好多 and 都 can scope the state without making child feature bundles parser-active.",
-      surfaces: children.map((node) => flattenSurface(node)),
-    }),
-  });
-}
-
-function resultStatePatternAt(nodes, index) {
-  let i = index;
-  const prefix = [];
-  if (isToken(nodes[i], "好多")) {
-    prefix.push(nodes[i]);
-    i += 1;
-  }
-  if (isToken(nodes[i], "都")) {
-    prefix.push(nodes[i]);
-    i += 1;
-  }
-  if (!isToken(nodes[i], "熟") || !isToken(nodes[i + 1], "咗")) return null;
-  const particle = isParticle(nodes[i + 2]) && ["喇", "啦", "呀", "啊"].includes(flattenSurface(nodes[i + 2])) ? nodes[i + 2] : null;
-  return { length: (i - index) + 2 + (particle ? 1 : 0), prefix, state: nodes[i], aspect: nodes[i + 1], particle };
-}
-
-function wrapResultStateSubspans(nodes) {
-  const result = [];
-  let i = 0;
-  while (i < nodes.length) {
-    const match = resultStatePatternAt(nodes, i);
-    if (match) {
-      result.push(makeResultStateClause(match.prefix, match.state, match.aspect, match.particle));
       i += match.length;
       continue;
     }
@@ -8415,36 +8174,25 @@ function quantifiedPersonNPFromFusedNode(node) {
   });
 }
 
-function scalarValueQuestionChildren(core) {
-  return core.map((node) => quantifiedPersonNPFromFusedNode(node) || node);
-}
-
-function scalarValueQuestionTemplateSlotForNode(node) {
-  const surface = flattenSurface(node);
-  if (node && node.kind === "construction" && node.type === "QuantifiedClassifierNP") return ["person_np?", "person_np"];
-  if (nodeCanFillSlot(node, "how") || surface === "大概") return ["approximation?", "approximation"];
-  if (surface === "幾錢" || nodeCanFillSlot(node, "scalar_value_question") || nodeCanFillSlot(node, "price_question")) return ["scalar_value_question!", "scalar_value_question"];
-  if (isParticle(node)) return ["particle?", "particle"];
-  return ["modifier?", "modifier"];
-}
-
 function scalarValueQuestionFallback(core) {
-  if (!hasSurface(core, "幾錢")) return null;
-  const children = scalarValueQuestionChildren(core);
-  const templateSlots = children.map((node) => scalarValueQuestionTemplateSlotForNode(node));
+  const { core: bareCore, particles } = withoutTrailingParticles(core);
+  const compact = withoutIgnorableSpaceText(bareCore);
+  if (compact.length !== 1 || !isToken(compact[0], "幾錢")) return null;
+  const children = [compact[0], ...particles];
   return construction("ScalarValueQuestion", "ValueQ", children, {
-    slots: ["scalar_value_question", "question_fragment", "price_question", "person_np", "approximation"],
-    note: "Scalar value question in the price domain with 幾錢 as a learner-visible price question; per-person NP material remains transparent when present.",
+    slots: ["scalar_value_question", "question_fragment", "price_question"],
+    note: "Source-linked lexical price question 幾錢 with an optional final particle.",
     trace: traceInfo("generative_template", {
       construction_type: "ScalarValueQuestion",
       retired_label_alias: "PriceQuestion",
       template_family: "generative_template",
-      template: templateSlots.map((pair) => pair[0]),
-      assigned_slots: templateSlots.map((pair) => pair[1]),
+      template: ["scalar_value_question!", "particle?"],
+      assigned_slots: ["scalar_value_question", ...particles.map(() => "particle")],
       scalar_domain: "price",
+      scalar_question_subtype: "lexical_price_question",
       semantic_domain: "price_property",
-      rule: "person/domain NP? + approximation? + scalar value wh expression 幾錢 + particle?",
-      reason: "Uses broad ScalarValueQuestion; 幾錢 carries learner role how with price-domain realization, and 一個人 stays transparent as QuantifiedClassifierNP.",
+      rule: "幾錢 + particle?",
+      reason: "Retains the exact attested lexical price-question profile without the former unsourced quantity/person/approximation cross-product.",
       surfaces: children.map((node) => flattenSurface(node)),
     })
   });
@@ -8512,56 +8260,6 @@ function definitionExplanatoryFrameFallback(core) {
       assigned_slots: ["topic", "definition_copula", "definition_complement", "definition_lai_marker", "explanatory_particle"],
       surfaces: children.map((node) => flattenSurface(node)),
       reason: "Native-title parser-hole patch: prevent DirectionalMotionVP overreach for 嚟 only inside bounded definition/identification frames.",
-    }),
-  });
-}
-
-
-function identityWhQuestionLaiToken(node) {
-  return parserInactiveTokenClone(node, {
-    label: "func",
-    pos: "function",
-    syntax: "identity_lai_marker copular_like_identity_marker",
-    slots: ["identity_lai_marker", "identity_predicate"],
-    reason: "嚟 is the identity/explanatory marker in 邊個嚟, not a directional-motion VP.",
-    role_resolution_note: "嚟 is func only in this identity/WH question context; motion contexts keep 嚟 as doing/deictic motion.",
-  });
-}
-
-function identityWhQuestionLaiFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const compact = withoutIgnorableSpaceText(bareCore);
-  if (compact.length !== 2) return null;
-  const whPerson = compact[0];
-  const lai = compact[1];
-  if (flattenSurface(whPerson) !== "邊個") return null;
-  if (!isToken(lai, "嚟")) return null;
-  const wh = token("邊個", {
-    label: "who",
-    syntax: "wh_person identity_question_subject",
-    slots: ["wh_person", "subject", "head_noun", "np", "topic"],
-    note: "邊個 asks for a person/identity in an identity WH question.",
-    jyutping: firstToken(whPerson) && firstToken(whPerson).jyutping,
-    trace: traceInfo("atomic_lexicon", {
-      surface: "邊個",
-      generated_slots: ["wh_person", "subject", "head_noun", "np", "topic"],
-      contextual_role_override: "IdentityWhQuestion",
-      reason: "邊個 is the WH person subject/topic of an identity question, not the subject of a motion clause.",
-    }),
-  });
-  const identityLai = identityWhQuestionLaiToken(lai);
-  const children = [wh, identityLai, ...particles];
-  return construction("IdentityWhQuestion", "IdentityQ", children, {
-    slots: templateDerivedSlots("IdentityWhQuestion", children),
-    note: "Identity WH question: 邊個 + identity/explanatory 嚟 = who is it / who is this, distinct from directional-motion 嚟.",
-    trace: traceInfo("generative_template", {
-      construction_type: "IdentityWhQuestion",
-      template_family: "generative_template",
-      template: ["wh_person!", "identity_lai_marker!", "particle?"],
-      assigned_slots: ["wh_person", "identity_lai_marker", ...particles.map(() => "particle")],
-      surfaces: children.map((node) => flattenSurface(node)),
-      reason: "v0.5.99 cleanup: 邊個嚟 is an identity/WH question, not a motion-like SubjectPredicateClause.",
-      not_claims: ["not_directional_motion_vp", "not_subject_predicate_motion_clause", "not_full_xbar_tree"],
     }),
   });
 }
@@ -8801,7 +8499,6 @@ function cognitionContentFrameFallback(core) {
       "ExistentialClause",
       "NegatedExistentialClause",
       "ExistentialQuestion",
-      "PostposedExistentialQuestion",
       "DesiderativeVP",
       "ModalVP",
       "CompletionQuestion"
@@ -9374,65 +9071,6 @@ function reportedSpeechFrameFallback(core) {
   });
 }
 
-function vpComplementFrameFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const compact = withoutIgnorableSpaceText(bareCore);
-  if (compact.length < 2) return null;
-
-  let index = 0;
-  const children = [];
-  const assignedSlots = [];
-
-  if (nodeCanFillSlot(compact[index], "subject")) {
-    children.push(compact[index]);
-    assignedSlots.push("subject");
-    index += 1;
-  }
-
-  if (nodeCanFillSlot(compact[index], "modal")) {
-    children.push(compact[index]);
-    assignedSlots.push("modal");
-    index += 1;
-  }
-
-  const predicate = compact[index];
-  if (!predicate || !nodeCanFillSlot(predicate, "vp_complement_predicate")) return null;
-  children.push(predicate);
-  assignedSlots.push("vp_complement_predicate");
-  index += 1;
-
-  if (nodeCanFillSlot(compact[index], "time")) {
-    children.push(compact[index]);
-    assignedSlots.push("time");
-    index += 1;
-  }
-
-  const complementCore = compact.slice(index);
-  if (!complementCore.length) return null;
-  const wrappedComplement = wrapCategorySubspans(complementCore);
-  if (wrappedComplement.length !== 1 || !nodeCanFillSlot(wrappedComplement[0], "vp")) return null;
-
-  children.push(...wrappedComplement, ...particles);
-  assignedSlots.push("vp", ...particles.map(() => "particle"));
-
-  const traceDetail = {
-    construction_type: "VPComplementFrame",
-    template_family: "generative_template",
-    template: ["subject?", "modal?", "vp_complement_predicate!", "time?", "vp!", "particle?"],
-    assigned_slots: assignedSlots,
-    surfaces: children.map((node) => flattenSurface(node)),
-    reason: "v0.5.81 promotes 記得 + reviewed VP complement before broad TransitiveVP wrapping, so 記得Book枱 is a VP-complement frame rather than 記得 taking Book枱 as an object.",
-  };
-  const wrapperCoverage = assignedSlotWrapperCoverage("VPComplementFrame", children, assignedSlots);
-  if (wrapperCoverage) traceDetail.wrapper_coverage = wrapperCoverage;
-
-  return construction("VPComplementFrame", "VPFrame", children, {
-    note: "Broad VP-complement frame headed by 記得 with a visible VP complement. This keeps Book枱 transparent as the complement VP instead of treating it as the object of 記得.",
-    slots: templateDerivedSlots("VPComplementFrame", children),
-    trace: traceInfo("generative_template", traceDetail)
-  });
-}
-
 function desiderativeANotAQuestionFallback(core) {
   const { core: bareCore, particles } = withoutTrailingParticles(core);
   const offset = optionalSubjectOffset(bareCore);
@@ -9826,9 +9464,9 @@ function namingVerbClone(node) {
   return parserInactiveTokenClone(node, {
     label: "doing",
     pos: "verb",
-    syntax: "naming_verb self_introduction_marker",
+    syntax: "naming_verb personal_name_predicate",
     slots: ["naming_verb", "main_verb", "predicate"],
-    reason: "叫做 is interpreted as the naming verb inside a bounded self-introduction frame.",
+    reason: "叫 is the source-linked personal naming predicate in this bounded clause.",
   });
 }
 
@@ -9848,18 +9486,134 @@ function namingSelfIntroductionFrameFallback(core) {
   if (compact.length !== 3) return null;
   const [subject, naming, name] = compact;
   if (!nodeCanFillSlot(subject, "subject")) return null;
-  if (!isToken(naming, "叫做")) return null;
+  if (!isToken(naming, "叫")) return null;
   if (!nodeCanFillSlot(name, "np") && !nodeCanFillSlot(name, "head_noun") && !nodeCanFillSlot(name, "subject")) return null;
   const children = [subject, namingVerbClone(naming), nameTokenClone(firstToken(name) || name), ...particles];
   return construction("NamingClause", "Called", children, {
-    note: "v0.5.32 bounded self-introduction frame: subject + 叫做 + name. Spaces around ASCII names are ignored structurally but the name remains a visible child.",
+    note: "Source-linked personal naming clause: subject + 叫 + visible personal name.",
     slots: templateDerivedSlots("NamingClause", children),
     trace: traceInfo("generative_template", {
       construction_type: "NamingClause",
       template: ["subject!", "naming_verb!", "name!", "particle?"],
       assigned_slots: ["subject", "naming_verb", "name", ...particles.map(() => "particle")],
       surfaces: children.map((node) => flattenSurface(node)),
-      reason: "Promotes only the transparent 叫做 self-introduction pattern, not broad copular identification.",
+      reason: "Retains the sourced personal 叫 + name relation while keeping 叫做 definition/category-label uses separate.",
+    }),
+  });
+}
+
+function sourceLinkedIntentionFrameFallback(core) {
+  const { core: bareCore, particles } = withoutTrailingParticles(core);
+  const compact = withoutIgnorableSpaceText(bareCore);
+  if (compact.length < 3) return null;
+  const [subject, intentionPredicate, ...predicateNodes] = compact;
+  if (!nodeCanFillSlot(subject, "subject") || !isToken(intentionPredicate, "諗住")) return null;
+  const predicate = categorySubspanFor(predicateNodes, [
+    "DirectionalMotionVP",
+    "CompoundDirectionalMotionVP",
+    "VerbComplementVP",
+    "TransitiveVP",
+    "ProductiveVO",
+  ]);
+  if (!predicate || !nodeCanFillSlot(predicate, "vp")) return null;
+  const children = [subject, intentionPredicate, predicate, ...particles];
+  return construction("IntentionFrame", "Intention", children, {
+    note: "Source-linked lexical intention profile: overt subject + 諗住 + visible VP.",
+    slots: templateDerivedSlots("IntentionFrame", children),
+    trace: traceInfo("generative_template", {
+      construction_type: "IntentionFrame",
+      template: ["subject!", "intention_predicate!", "vp!", "particle?"],
+      constraints: { slot_surface_in: { intention_predicate: ["諗住"] } },
+      assigned_slots: ["subject", "intention_predicate", "vp", ...particles.map(() => "particle")],
+      surfaces: children.map((node) => flattenSurface(node)),
+      reason: "Runs before broad VP-complement subspan wrapping so the overt subject and lexical intention predicate remain visible.",
+    }),
+  });
+}
+
+function sourceLinkedPreferenceVPFallback(core) {
+  const { core: bareCore, particles } = withoutTrailingParticles(core);
+  const compact = withoutIgnorableSpaceText(bareCore);
+  if (compact.length < 3 || !nodeCanFillSlot(compact[0], "subject") || !isToken(compact[1], "鍾意")) return null;
+  const complement = categorySubspanFor(compact.slice(2), [
+    "TransitiveVP",
+    "ProductiveVO",
+    "DirectionalMotionVP",
+    "CompoundDirectionalMotionVP",
+    "VerbComplementVP",
+  ]);
+  if (!complement || !nodeCanFillSlot(complement, "vp")) return null;
+  const children = [compact[0], compact[1], complement, ...particles];
+  return construction("PreferenceVP", "Preference", children, {
+    note: "Source-linked preference predicate with an overt subject and visible activity VP complement.",
+    slots: templateDerivedSlots("PreferenceVP", children),
+    trace: traceInfo("generative_template", {
+      construction_type: "PreferenceVP",
+      template: ["subject!", "preference_predicate!", "vp!", "particle?"],
+      constraints: { slot_surface_in: { preference_predicate: ["鍾意"] } },
+      assigned_slots: ["subject", "preference_predicate", "vp", ...particles.map(() => "particle")],
+      surfaces: children.map((node) => flattenSurface(node)),
+      reason: "Runs before broad nominal wrapping so the sourced 鍾意 + activity complement remains visible.",
+    }),
+  });
+}
+
+function sourceLinkedDegreeMannerModifiedVPFallback(core) {
+  const { core: bareCore, particles } = withoutTrailingParticles(core);
+  const compact = withoutIgnorableSpaceText(bareCore);
+  const fusedModifier = isToken(compact[0], "快啲");
+  const splitModifier = isToken(compact[0], "快") && isToken(compact[1], "啲");
+  if (!fusedModifier && !splitModifier) return null;
+  const modifierLength = fusedModifier ? 1 : 2;
+  if (compact.length <= modifierLength) return null;
+  const modifier = categorySubspanFor(compact.slice(0, modifierLength), ["DegreeMannerAdverbial"]);
+  let predicate = categorySubspanFor(compact.slice(modifierLength), [
+    "CompoundDirectionalMotionVP",
+    "DirectionalMotionVP",
+    "VerbComplementVP",
+  ]);
+  if (!predicate && compact.length === modifierLength + 3) {
+    const directional = categorySubspanFor(compact.slice(modifierLength + 1), ["DirectionalMotionVP"]);
+    predicate = directional
+      ? categorySubspanFor([compact[modifierLength], directional], ["VerbComplementVP"])
+      : null;
+  }
+  if (!modifier || !predicate || !nodeCanFillSlot(predicate, "vp")) return null;
+  const children = [modifier, predicate, ...particles];
+  return construction("DegreeMannerModifiedVP", "DegMannerVP", children, {
+    note: "Source-linked preposed 快啲 modifier over a visible directional VP.",
+    slots: templateDerivedSlots("DegreeMannerModifiedVP", children),
+    trace: traceInfo("generative_template", {
+      construction_type: "DegreeMannerModifiedVP",
+      template: ["degree_manner_adverbial!", "directional_motion_vp!", "particle?"],
+      constraints: { modifier_surface: "快啲", preserve_inner_directional_vp: true },
+      assigned_slots: ["degree_manner_adverbial", "directional_motion_vp", ...particles.map(() => "particle")],
+      surfaces: children.map((node) => flattenSurface(node)),
+      reason: "Preserves the exact sourced preposed order without conflating postverbal 行快啲 or punctuation-separated material.",
+    }),
+  });
+}
+
+function sourceLinkedPriorityMarkerClauseFallback(core) {
+  const { core: bareCore, particles } = withoutTrailingParticles(core);
+  const compact = withoutIgnorableSpaceText(bareCore);
+  if (compact.length < 3 || !nodeCanFillSlot(compact[0], "subject")) return null;
+  const markerIndex = compact.findIndex((node, index) => index > 1 && isToken(node, "先"));
+  if (markerIndex < 0 || markerIndex !== compact.length - 1) return null;
+  const action = categorySubspanFor(compact.slice(1, markerIndex), ["ProductiveVO", "TransitiveVP"]);
+  if (!action || flattenSurface(action) !== "打電話") return null;
+  if (particles.length !== 1 || !isToken(particles[0], "啦")) return null;
+  const children = [compact[0], action, priorityMarkerTokenClone(compact[markerIndex]), priorityParticleClone(particles[0])];
+  return construction("PriorityMarkerClause", "Priority先", children, {
+    note: "Source-linked postverbal 先 profile in 你打電話先啦.",
+    slots: cleanSlots(["priority_marker_clause", "sequence_priority_marker", "priority_marker", "subject", "vp", "action_vp", "predicate"]),
+    trace: traceInfo("generative_template", {
+      construction_type: "PriorityMarkerClause",
+      template: ["subject!", "action_vp!", "priority_marker!", "particle!"],
+      constraints: { surface_sequence: "你打電話先啦" },
+      assigned_slots: ["subject", "action_vp", "priority_marker", "particle"],
+      surfaces: children.map((node) => flattenSurface(node)),
+      reason: "Retains the exact attested action + postverbal 先 + 啦 profile while excluding preverbal and deferral uses.",
     }),
   });
 }
@@ -10796,59 +10550,6 @@ function copulaClone(node, syntax, extraSlots, reason) {
   });
 }
 
-function timeToActionPredicateFromNodes(nodes) {
-  if (!nodes || !nodes.length) return null;
-  if (nodes.length === 1 && directPredicateCapableNode(nodes[0])) return nodes[0];
-  const templated = templateConstructionFor(nodes, ["MotionGoalVP", "TransitiveVP", "ProductiveVO", "DirectionalMotionVP", "MotionPurposeChain", "SerialVerbPurposeChain"])
-    || categorySubspanFor(nodes, ["OrdinalClassifierNP", "ModifiedNP"]);
-  if (templated && directPredicateCapableNode(templated)) return templated;
-  if (nodes.length === 2 && directPredicateCapableNode(nodes[0]) && !isBareQuantityTokenObject(nodes[1]) && (nodeCanFillSlot(nodes[1], "object") || nodeCanFillSlot(nodes[1], "location") || nodeCanFillSlot(nodes[1], "goal") || nodeCanFillSlot(nodes[1], "head_noun"))) {
-    return construction("TransitiveVP", "VP", nodes, {
-      note: "Visible action predicate inside a bounded time-to-action frame.",
-      slots: templateDerivedSlots("TransitiveVP", nodes),
-      trace: traceInfo("generative_template", {
-        construction_type: "TransitiveVP",
-        template: ["action_verb!", "object!"],
-        assigned_slots: ["action_verb", "object"],
-        surfaces: nodes.map((node) => flattenSurface(node)),
-        subspan: true,
-      }),
-    });
-  }
-  return null;
-}
-
-function timeToActionFrameFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const compact = withoutIgnorableSpaceText(bareCore);
-  if (compact.length < 3) return null;
-  if (!isToken(compact[0], "係") || !isToken(compact[1], "時候")) return null;
-  const predicateNodes = compact.slice(2);
-  if (!predicateNodes.length) return null;
-  const predicate = timeToActionPredicateFromNodes(predicateNodes);
-  if (!predicate || !directPredicateCapableNode(predicate)) return null;
-  const marker = copulaClone(compact[0], "time_to_action_marker copular_time_marker", ["time_to_action_marker"], "係 is interpreted as the fixed marker in 係時候 + action, not as a broad copula clause.");
-  const time = parserInactiveTokenClone(compact[1], {
-    label: "when",
-    pos: "np",
-    syntax: "time_np time_to_action_head",
-    slots: ["time", "time_head"],
-    reason: "時候 is interpreted as the time head inside 係時候 + action.",
-  });
-  const children = [marker, time, predicate, ...particles];
-  return construction("TimeToActionFrame", "TimeTo", children, {
-    note: "v0.5.33 time-to-action frame: 係時候 + visible predicate. It keeps the action child visible instead of leaving 係/時候 as separate top-level tokens.",
-    slots: templateDerivedSlots("TimeToActionFrame", children),
-    trace: traceInfo("generative_template", {
-      construction_type: "TimeToActionFrame",
-      template: ["time_to_action_marker!", "time!", "predicate!", "particle?"],
-      assigned_slots: ["time_to_action_marker", "time", "predicate", ...particles.map(() => "particle")],
-      surfaces: children.map((node) => flattenSurface(node)),
-      reason: "Promotes only the bounded 係時候 + action pattern.",
-    }),
-  });
-}
-
 function deicticClassifierTopicFromParts(parts) {
   if (!parts || parts.length !== 2) return null;
   const [dem, classifier] = parts;
@@ -11031,17 +10732,14 @@ function resultComplementFromNodes(nodes) {
 
 function possessiveClassifierNPFromNodes(nodes) {
   const compact = withoutIgnorableSpaceText(nodes || []);
-  if (compact.length < 2) return null;
+  if (compact.length !== 3) return null;
   const possessor = compact[0];
   if (!nodeCanFillSlot(possessor, "subject") && !nodeCanFillSlot(possessor, "np")) return null;
+  if (!nodeCanFillSlot(compact[1], "classifier")) return null;
+  if (!nodeCanFillSlot(compact[2], "head_noun") && !nodeCanFillSlot(compact[2], "object")) return null;
 
-  let nounPhrase = null;
   const nounPhraseNodes = compact.slice(1);
-  if (nounPhraseNodes.length === 1) {
-    nounPhrase = nounPhraseNodes[0];
-  } else {
-    nounPhrase = categorySubspanFor(nounPhraseNodes, ["OvertHeadDemonstrativeClassifierNP", "QuantifiedClassifierNP", "QuantifiedPersonNP", "OrdinalClassifierNP", "ModifiedNP", "NominalHeadSpan"]);
-  }
+  const nounPhrase = categorySubspanFor(nounPhraseNodes, ["ModifiedNP", "NominalHeadSpan"]);
   if (!nounPhrase) return null;
   if (!nodeCanFillSlot(nounPhrase, "np") && !nodeCanFillSlot(nounPhrase, "head_noun")) return null;
 
@@ -11050,88 +10748,36 @@ function possessiveClassifierNPFromNodes(nodes) {
     pos: "np",
     syntax: `${possessor.syntax || "possessor_np"} possessive_np`,
     slots: ["possessor", "np", "subject", "topic"],
-    reason: "This NP is the possessor inside a bounded possessive classifier object such as 我間屋.",
+    reason: "This overt NP is the possessor in the sourced possessor + classifier + noun profile.",
   });
   return construction("PossessiveClassifierNP", "PossNP", [possessorChild, nounPhrase], {
-    note: "Possessive classifier NP inside a bounded result frame, e.g. 我間屋 = my house.",
+    note: "Source-linked possessive classifier NP: possessor + overt classifier + overt nominal head, e.g. 我架車 = my car.",
     slots: templateDerivedSlots("PossessiveClassifierNP", [possessorChild, nounPhrase]),
     trace: traceInfo("generative_template", {
       construction_type: "PossessiveClassifierNP",
-      template: ["possessor!", "np!"],
-      assigned_slots: ["possessor", "np"],
+      template: ["possessor!", "classifier_np!"],
+      assigned_slots: ["possessor", "classifier_np"],
       surfaces: [flattenSurface(possessor), flattenSurface(nounPhrase)],
       subspan: true,
-      reason: "v0.5.40 lets bounded causative-result frames use a possessor plus transparent classifier NP object, rather than failing before the result frame can promote.",
+      reason: "The retained node requires the overt classifier and nominal head documented for Cantonese POSS-CL-N phrases.",
     }),
   });
 }
 
-function resultObjectFromNodes(nodes) {
-  const possessive = possessiveClassifierNPFromNodes(nodes);
-  if (possessive) return possessive;
-  return resultComplementFromNodes(nodes);
-}
-
-function makeTransformationResultPredicate(changeNode, aspectNode, doNode, complement) {
-  const children = [
-    resultFramePartClone(changeNode, {
-      label: "doing",
-      pos: "verb",
-      syntax: "change_verb transformation_change_verb",
-      slots: ["change_verb", "action_verb", "main_verb", "predicate"],
-      reason: "變 is the change predicate head inside the bounded 變咗做 transformation-result frame.",
-    }),
-    resultFramePartClone(aspectNode, {
-      label: "func",
-      pos: "function",
-      syntax: "perfective_aspect transformation_aspect",
-      slots: ["perfective_aspect", "aspect_marker"],
-      reason: "咗 marks perfective/result state inside the bounded transformation-result frame.",
-    }),
-    resultFramePartClone(doNode, {
-      label: "func",
-      pos: "function",
-      syntax: "result_linker transformation_result_linker",
-      slots: ["result_linker"],
-      reason: "做 links the change predicate to the resulting role/entity inside 變咗做.",
-    }),
-    complement,
-  ];
-  return construction("TransformationResultPredicate", "變咗做", children, {
-    note: "Bounded transformation-result predicate: 變 + 咗 + 做 + nominal result.",
-    slots: templateDerivedSlots("TransformationResultPredicate", children),
-    trace: traceInfo("generative_template", {
-      construction_type: "TransformationResultPredicate",
-      template: ["change_verb!", "perfective_aspect!", "result_linker!", "result_complement!"],
-      assigned_slots: ["change_verb", "perfective_aspect", "result_linker", "result_complement"],
-      surfaces: children.map((node) => flattenSurface(node)),
-    }),
-  });
-}
-
-function transformationResultFrameFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const compact = withoutIgnorableSpaceText(bareCore);
-  const changeIndex = compact.findIndex((node) => isToken(node, "變"));
-  if (changeIndex <= 0 || changeIndex >= compact.length - 3) return null;
-  if (!isToken(compact[changeIndex + 1], "咗") || !isToken(compact[changeIndex + 2], "做")) return null;
-  const topic = resultTopicFromNodes(compact.slice(0, changeIndex));
-  if (!topic) return null;
-  const complement = resultComplementFromNodes(compact.slice(changeIndex + 3));
-  if (!complement) return null;
-  const predicate = makeTransformationResultPredicate(compact[changeIndex], compact[changeIndex + 1], compact[changeIndex + 2], complement);
-  const children = [topic, predicate, ...particles];
-  return construction("TransformationResultFrame", "Transform", children, {
-    note: "v0.5.34 bounded transformation-result frame: topic + 變咗做 + nominal result.",
-    slots: templateDerivedSlots("TransformationResultFrame", children),
-    trace: traceInfo("generative_template", {
-      construction_type: "TransformationResultFrame",
-      template: ["topic!", "transformation_result_predicate!", "particle?"],
-      assigned_slots: ["topic", "result_predicate", ...particles.map(() => "particle")],
-      surfaces: children.map((node) => flattenSurface(node)),
-      reason: "Promotes only the reviewed transformation result pattern X 變咗做 Y, avoiding broad perfective/transitive miswrapping.",
-    }),
-  });
+function wrapPossessiveClassifierNPSubspans(nodes) {
+  const result = [];
+  let i = 0;
+  while (i < nodes.length) {
+    const possessive = possessiveClassifierNPFromNodes(nodes.slice(i, i + 3));
+    if (possessive) {
+      result.push(possessive);
+      i += 3;
+      continue;
+    }
+    result.push(nodes[i]);
+    i += 1;
+  }
+  return result;
 }
 
 function makeChangeIntoPredicate(changeNode, complement) {
@@ -11158,201 +10804,19 @@ function makeChangeIntoPredicate(changeNode, complement) {
   });
 }
 
-function modalChangeIntoResultFrameFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const compact = withoutIgnorableSpaceText(bareCore);
-  if (compact.length < 4) return null;
-  const modalIndex = compact.findIndex(isModalToken);
-  if (modalIndex <= 0 || modalIndex >= compact.length - 2) return null;
-  const topicNodes = compact.slice(0, modalIndex);
-  const modalNode = compact[modalIndex];
-
-  // topic + 會 + 變成 + complement
-  if (isToken(compact[modalIndex + 1], "變成")) {
-    const topic = resultTopicFromNodes(topicNodes);
-    const complement = resultComplementFromNodes(compact.slice(modalIndex + 2));
-    if (!topic || !complement) return null;
-    const modal = resultFramePartClone(modalNode, {
-      label: "func",
-      pos: "function",
-      syntax: `${modalNode.syntax || "modal"} change_result_modal`,
-      slots: ["modal"],
-      reason: "The modal is preserved inside a bounded topic + 會 + 變成 change-result frame.",
-    });
-    const predicate = makeChangeIntoPredicate(compact[modalIndex + 1], complement);
-    const children = [topic, modal, predicate, ...particles];
-    return construction("ModalChangeIntoResultFrame", "WillBecome", children, {
-      note: "v0.5.34 bounded modal change-result frame: topic + 會 + 變成 + result complement.",
-      slots: templateDerivedSlots("ModalChangeIntoResultFrame", children),
-      trace: traceInfo("generative_template", {
-        construction_type: "ModalChangeIntoResultFrame",
-        template: ["topic!", "modal!", "change_into_predicate!", "particle?"],
-        assigned_slots: ["topic", "modal", "result_predicate", ...particles.map(() => "particle")],
-        surfaces: children.map((node) => flattenSurface(node)),
-      }),
-    });
+function wrapChangeIntoPredicateSubspans(nodes) {
+  const result = [];
+  let i = 0;
+  while (i < nodes.length) {
+    if (isToken(nodes[i], "變成") && isToken(nodes[i + 1], "點")) {
+      result.push(makeChangeIntoPredicate(nodes[i], nodes[i + 1]));
+      i += 2;
+      continue;
+    }
+    result.push(nodes[i]);
+    i += 1;
   }
-
-  // agent/topic + 會 + 將 + object + 變成 + complement
-  if (compact.length >= modalIndex + 5 && isToken(compact[modalIndex + 1], "將")) {
-    const changeIndex = compact.findIndex((node, index) => index > modalIndex + 1 && isToken(node, "變成"));
-    if (changeIndex <= modalIndex + 2 || changeIndex >= compact.length - 1) return null;
-    const agent = resultTopicFromNodes(topicNodes);
-    const object = resultObjectFromNodes(compact.slice(modalIndex + 2, changeIndex));
-    const complement = resultComplementFromNodes(compact.slice(changeIndex + 1));
-    if (!agent || !object || !complement) return null;
-    const modal = resultFramePartClone(modalNode, {
-      label: "func",
-      pos: "function",
-      syntax: `${modalNode.syntax || "modal"} disposal_change_modal`,
-      slots: ["modal"],
-      reason: "The modal is preserved inside a bounded 會將...變成 change-result frame.",
-    });
-    const disposal = resultFramePartClone(compact[modalIndex + 1], {
-      label: "func",
-      pos: "function",
-      syntax: "disposal_coverb change_result_disposal_marker",
-      slots: ["disposal_marker"],
-      reason: "將 is interpreted as the disposal marker inside a bounded 將 + object + 變成 result frame.",
-    });
-    const predicate = makeChangeIntoPredicate(compact[changeIndex], complement);
-    const children = [agent, modal, disposal, object, predicate, ...particles];
-    return construction("DisposalChangeIntoResultFrame", "ChangeInto", children, {
-      note: "v0.5.34 bounded disposal change-result frame: agent/topic + 會 + 將 + object + 變成 + result.",
-      slots: templateDerivedSlots("DisposalChangeIntoResultFrame", children),
-      trace: traceInfo("generative_template", {
-        construction_type: "DisposalChangeIntoResultFrame",
-        template: ["agent!", "modal!", "disposal_marker!", "object!", "change_into_predicate!", "particle?"],
-        assigned_slots: ["agent", "modal", "disposal_marker", "object", "result_predicate", ...particles.map(() => "particle")],
-        surfaces: children.map((node) => flattenSurface(node)),
-      }),
-    });
-  }
-
-  return null;
-}
-
-function makeCausativeResultPredicate(actionNode, resultNode, aspectNode, objectNode) {
-  const children = [
-    resultFramePartClone(actionNode, {
-      label: "doing",
-      pos: "verb",
-      syntax: "causative_action_verb make_result_verb",
-      slots: ["causative_verb", "action_verb", "main_verb", "predicate"],
-      reason: "整 is the causative action head inside the bounded 整冧咗 result frame.",
-    }),
-    resultFramePartClone(resultNode, {
-      label: "doing",
-      pos: "verb",
-      syntax: "result_verb collapse_result_verb",
-      slots: ["result_verb", "action_verb", "main_verb", "predicate"],
-      reason: "冧 is the result verb inside the bounded 整冧咗 frame.",
-    }),
-    resultFramePartClone(aspectNode, {
-      label: "func",
-      pos: "function",
-      syntax: "perfective_aspect causative_result_aspect",
-      slots: ["perfective_aspect", "aspect_marker"],
-      reason: "咗 marks completion/result inside the bounded causative-result frame.",
-    }),
-    objectNode,
-  ];
-  return construction("CausativeResultPredicate", "ResultVP", children, {
-    note: "Bounded causative-result predicate: 整 + result verb + 咗 + affected object.",
-    slots: templateDerivedSlots("CausativeResultPredicate", children),
-    trace: traceInfo("generative_template", {
-      construction_type: "CausativeResultPredicate",
-      template: ["causative_verb!", "result_verb!", "perfective_aspect!", "object!"],
-      assigned_slots: ["causative_verb", "result_verb", "perfective_aspect", "object"],
-      surfaces: children.map((node) => flattenSurface(node)),
-    }),
-  });
-}
-
-function causativeResultFrameFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const compact = withoutIgnorableSpaceText(bareCore);
-  if (compact.length < 5) return null;
-  if (!nodeCanFillSlot(compact[0], "subject")) return null;
-  if (!isToken(compact[1], "整") || !isToken(compact[2], "冧") || !isToken(compact[3], "咗")) return null;
-  const object = resultObjectFromNodes(compact.slice(4));
-  if (!object) return null;
-  const predicate = makeCausativeResultPredicate(compact[1], compact[2], compact[3], object);
-  const children = [compact[0], predicate, ...particles];
-  return construction("CausativeResultFrame", "CauseResult", children, {
-    note: "v0.5.34 bounded causative-result frame: subject + 整冧咗 + affected object.",
-    slots: templateDerivedSlots("CausativeResultFrame", children),
-    trace: traceInfo("generative_template", {
-      construction_type: "CausativeResultFrame",
-      template: ["subject!", "causative_result_predicate!", "particle?"],
-      assigned_slots: ["subject", "result_predicate", ...particles.map(() => "particle")],
-      surfaces: children.map((node) => flattenSurface(node)),
-      reason: "Promotes only the reviewed causative result pattern, avoiding broad result-complement grammar.",
-    }),
-  });
-}
-
-function makePerfectiveObjectResultPredicate(stopNode, aspectNode, weatherObjectNode) {
-  const children = [
-    resultFramePartClone(stopNode, {
-      label: "doing",
-      pos: "verb",
-      syntax: "weather_stop_verb result_result_verb",
-      slots: ["result_verb", "action_verb", "main_verb", "predicate"],
-      reason: "停 is the perfective object-result predicate head inside 停咗雨.",
-    }),
-    resultFramePartClone(aspectNode, {
-      label: "func",
-      pos: "function",
-      syntax: "perfective_aspect perfective_object_result_aspect",
-      slots: ["perfective_aspect", "aspect_marker"],
-      reason: "咗 marks completed perfective change/result inside 停咗雨.",
-    }),
-    weatherObjectNode,
-  ];
-  return construction("PerfectiveObjectResultPredicate", "ResultVP", children, {
-    note: "Bounded perfective object-result predicate: 停 + 咗 + object.",
-    slots: templateDerivedSlots("PerfectiveObjectResultPredicate", children),
-    trace: traceInfo("generative_template", {
-      construction_type: "PerfectiveObjectResultPredicate",
-      template: ["result_verb!", "perfective_aspect!", "object!"],
-      assigned_slots: ["result_verb", "perfective_aspect", "object"],
-      surfaces: children.map((node) => flattenSurface(node)),
-      subspan: true,
-    }),
-  });
-}
-
-function seemingPerfectiveResultClauseFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const compact = withoutIgnorableSpaceText(bareCore);
-  if (compact.length !== 6) return null;
-  const [location, seeming, time, stop, aspect, weatherObject] = compact;
-  if (!nodeCanFillSlot(location, "location")) return null;
-  if (!isToken(seeming, "好似")) return null;
-  if (!nodeCanFillSlot(time, "time")) return null;
-  if (!isToken(stop, "停") || !isToken(aspect, "咗")) return null;
-  if (!nodeCanFillSlot(weatherObject, "object") && !nodeCanFillSlot(weatherObject, "head_noun")) return null;
-  const seemingChild = resultFramePartClone(seeming, {
-    label: "func",
-    pos: "function",
-    syntax: "seeming_marker perfective_object_result_stance",
-    slots: ["seeming_marker"],
-    reason: "好似 marks seeming/stance inside the bounded seeming perfective-result clause.",
-  });
-  const predicate = makePerfectiveObjectResultPredicate(stop, aspect, weatherObject);
-  const children = [location, seemingChild, time, predicate, ...particles];
-  return construction("SeemingPerfectiveResultClause", "SeemingResult", children, {
-    note: "v0.5.34 bounded seeming perfective-result clause: location + 好似 + time + 停咗雨.",
-    slots: templateDerivedSlots("SeemingPerfectiveResultClause", children),
-    trace: traceInfo("generative_template", {
-      construction_type: "SeemingPerfectiveResultClause",
-      template: ["location!", "seeming_marker!", "time!", "perfective_object_result_predicate!", "particle?"],
-      assigned_slots: ["location", "seeming_marker", "time", "result_predicate", ...particles.map(() => "particle")],
-      surfaces: children.map((node) => flattenSurface(node)),
-      reason: "Promotes only the reviewed seeming + perfective-result clause pattern, not broad 好似 grammar.",
-    }),
-  });
+  return result;
 }
 
 
@@ -12664,13 +12128,9 @@ function subjectLocativePredicateClauseFallback(core) {
 function locativePostureVPFallback(core) {
   const { core: bareCore, particles } = withoutTrailingParticles(core);
   const compact = withoutIgnorableSpaceText(bareCore);
-  const subjectOffset = compact.length === 3 && nodeCanFillSlot(compact[0], "subject") ? 1 : 0;
-  if (compact.length - subjectOffset !== 2) return null;
-
-  const subject = subjectOffset ? compact[0] : null;
-  const posture = compact[subjectOffset];
-  const locative = compact[subjectOffset + 1];
-  if (!nodeCanFillSlot(posture, "posture_verb") || !isToken(locative, "喺度")) return null;
+  if (compact.length !== 4 || !nodeCanFillSlot(compact[0], "subject")) return null;
+  const [subject, posture, locative, followingEvent] = compact;
+  if (!isToken(posture, "坐") || !isToken(locative, "喺度") || !isToken(followingEvent, "等")) return null;
 
   const locativeChild = bridgeFramePartClone(locative, {
     label: "where",
@@ -12679,23 +12139,29 @@ function locativePostureVPFallback(core) {
     slots: ["locative_phrase", "location"],
     reason: "After a posture verb, 喺度 supplies the posture location rather than progressive aspect.",
   });
-  const vpChildren = [posture, locativeChild, ...(!subject ? particles : [])];
+  const followingEventChild = bridgeFramePartClone(followingEvent, {
+    label: "doing",
+    pos: "verb",
+    syntax: "following_event_predicate",
+    slots: ["following_event", "action_verb", "predicate", "vp"],
+    reason: "The overt following event remains visible and is not reclassified as an object of the posture predicate.",
+  });
+  const vpChildren = [posture, locativeChild, followingEventChild, ...particles];
   const vp = construction("LocativePostureVP", "PostureLoc", vpChildren, {
-    note: "Locative posture predicate: posture verb + 喺度.",
+    note: "Source-linked posture-location profile: 坐 + 喺度 with the overt following event preserved.",
     slots: cleanSlots(["locative_posture_vp", "posture_verb", "locative_phrase", "location", "vp", "action_vp", "predicate", ...templateDerivedSlots("LocativePostureVP", vpChildren)]),
     trace: traceInfo("generative_template", {
       construction_type: "LocativePostureVP",
       template_family: "generative_template",
-      template: ["posture_verb!", "locative_phrase!"],
-      assigned_slots: ["posture_verb", "locative_phrase"],
+      template: ["posture_verb!", "locative_phrase!", "following_event!"],
+      assigned_slots: ["posture_verb", "locative_phrase", "following_event", ...particles.map(() => "particle")],
       surfaces: vpChildren.map((node) => flattenSurface(node)),
-      reason: "The bounded posture-verb class combines productively with locative 喺度 while preserving both visible children.",
-      not_claims: ["not_progressive_aspect", "not_preverbal_coverb_frame"],
+      reason: "Retains the exact attested 坐喺度等 sequence without licensing a posture-verb cross-product.",
+      not_claims: ["not_progressive_aspect", "not_preverbal_coverb_frame", "not_general_posture_verb_class", "not_following_event_object"],
     }),
   });
-  if (!subject) return vp;
 
-  const children = [subject, vp, ...particles];
+  const children = [subject, vp];
   return construction("SubjectPredicateClause", "SubjPred", children, {
     note: "Subject-led locative posture clause preserving the LocativePostureVP predicate child.",
     slots: cleanSlots(["subject_predicate_clause", "subject", "predicate", "clause", "location", ...templateDerivedSlots("SubjectPredicateClause", children)]),
@@ -12703,8 +12169,8 @@ function locativePostureVPFallback(core) {
       construction_type: "SubjectPredicateClause",
       template_family: "generative_template",
       predicate_subtype: "locative_posture",
-      template: ["subject!", "locative_posture_vp!", "particle?"],
-      assigned_slots: ["subject", "locative_posture_vp", ...particles.map(() => "particle")],
+      template: ["subject!", "locative_posture_vp!"],
+      assigned_slots: ["subject", "locative_posture_vp"],
       surfaces: children.map((node) => flattenSurface(node)),
       reason: "Attach the subject without flattening the locative posture predicate.",
     }),
@@ -12941,44 +12407,6 @@ function coverbFrameFallback(core) {
   return null;
 }
 
-function possessiveTransferClauseFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const compact = withoutIgnorableSpaceText(bareCore);
-  if (compact.length !== 7) return null;
-  const [subject, possessive, classifier, objectHead, modal, give, recipient] = compact;
-  if (!nodeCanFillSlot(subject, "subject")) return null;
-  if (!isToken(possessive, "有") || !isToken(modal, "要") || !isToken(give, "畀")) return null;
-  const object = classifierObjectNPFromNodes([classifier, objectHead]);
-  const transfer = transferPredicateFromNodes([give, recipient]);
-  if (!object || !transfer) return null;
-  const have = bridgeFramePartClone(possessive, {
-    label: "func",
-    pos: "function",
-    syntax: "possessive_marker have_marker",
-    slots: ["possessive_marker", "existential"],
-    reason: "有 marks possession/existence inside the bounded have-something-to-give frame.",
-  });
-  const modalChild = bridgeFramePartClone(modal, {
-    label: "func",
-    pos: "function",
-    syntax: "giving_modal obligation_modal",
-    slots: ["modal"],
-    reason: "要 marks the intended/needed transfer inside the bounded giving frame.",
-  });
-  const children = [subject, have, object, modalChild, transfer, ...particles];
-  return construction("PossessiveTransferClause", "PossessiveTransfer", children, {
-    note: "v0.5.35 bounded possession/giving frame: possessor + 有 + object + 要畀 + recipient.",
-    slots: templateDerivedSlots("PossessiveTransferClause", children),
-    trace: traceInfo("generative_template", {
-      construction_type: "PossessiveTransferClause",
-      template: ["subject!", "possessive_marker!", "object!", "modal!", "transfer_predicate!", "particle?"],
-      assigned_slots: ["subject", "possessive_marker", "object", "modal", "transfer_predicate", ...particles.map(() => "particle")],
-      surfaces: children.map((node) => flattenSurface(node)),
-      reason: "Promotes only the reviewed possessive-transfer shape without tying the construction label to a person or item.",
-    }),
-  });
-}
-
 function coordinatedSubjectModalPredicateClauseFallback(core) {
   const { core: bareCore, particles } = withoutTrailingParticles(core);
   const compact = withoutIgnorableSpaceText(bareCore);
@@ -13019,76 +12447,6 @@ function coordinatedNPFragmentFallback(core) {
       surfaces: coord.children.map((node) => flattenSurface(node)),
       reason: "Direct diagnostic review rejected bare [] as a successful negative guardrail and rejected the intermediate subject+coordinator+subject template as clause-role leakage. 我同你 is a coordinated NP/fragment, not a parse absence and not automatically a coordinated subject.",
       not_claims: ["not_coverb_frame", "not_parse_absence", "not_clause_subject_assignment"],
-    }),
-  });
-}
-
-function progressiveTransitivePredicateFromNodes(nodes) {
-  const compact = withoutIgnorableSpaceText(nodes || []);
-  if (compact.length !== 3) return null;
-  const [verb, aspect, object] = compact;
-  if (!nodeCanFillSlot(verb, "action_verb") || !nodeCanFillSlot(aspect, "progressive_aspect")) return null;
-  if (!nodeCanFillSlot(object, "object") && !nodeCanFillSlot(object, "np")) return null;
-  const children = [verb, aspect, object];
-  return construction("ProgressiveTransitivePredicate", "ProgTransVP", children, {
-    note: "v0.5.35 progressive transitive predicate: action verb + 緊 + object.",
-    slots: templateDerivedSlots("ProgressiveTransitivePredicate", children),
-    trace: traceInfo("generative_template", {
-      construction_type: "ProgressiveTransitivePredicate",
-      template: ["action_verb!", "progressive_aspect!", "object!"],
-      assigned_slots: ["action_verb", "progressive_aspect", "object"],
-      surfaces: children.map((node) => flattenSurface(node)),
-      subspan: true,
-    }),
-  });
-}
-
-function purposePredicateFromNodes(nodes) {
-  const compact = withoutIgnorableSpaceText(nodes || []);
-  if (compact.length !== 2) return null;
-  const [verb, object] = compact;
-  if (!nodeCanFillSlot(verb, "action_verb")) return null;
-  if (!nodeCanFillSlot(object, "object") && !nodeCanFillSlot(object, "np")) return null;
-  return construction("PurposePredicate", "PurposeVP", [verb, object], {
-    note: "Bounded purpose predicate child inside a larger v0.5.35 frame.",
-    slots: templateDerivedSlots("PurposePredicate", [verb, object]),
-    trace: traceInfo("generative_template", {
-      construction_type: "PurposePredicate",
-      template: ["action_verb!", "object!"],
-      assigned_slots: ["action_verb", "object"],
-      surfaces: [flattenSurface(verb), flattenSurface(object)],
-      subspan: true,
-    }),
-  });
-}
-
-function progressivePurposeClauseFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const compact = withoutIgnorableSpaceText(bareCore);
-  if (compact.length !== 7) return null;
-  const [subject, progressiveMarker, action, aspect, object, purposeVerb, purposeObject] = compact;
-  if (!nodeCanFillSlot(subject, "subject")) return null;
-  if (!isToken(progressiveMarker, "喺度")) return null;
-  const progressivePredicate = progressiveTransitivePredicateFromNodes([action, aspect, object]);
-  const purpose = purposePredicateFromNodes([purposeVerb, purposeObject]);
-  if (!progressivePredicate || !purpose) return null;
-  const progressive = bridgeFramePartClone(progressiveMarker, {
-    label: "func",
-    pos: "function",
-    syntax: "progressive_marker progressive_coverb",
-    slots: ["progressive_marker", "progressive_aspect"],
-    reason: "喺度 marks progressive aspect/setting inside the bounded progressive-purpose clause.",
-  });
-  const children = [subject, progressive, progressivePredicate, purpose, ...particles];
-  return construction("ProgressivePurposeClause", "ProgressivePurpose", children, {
-    note: "v0.5.35 bounded progressive purpose clause: subject + progressive marker + progressive predicate + purpose predicate.",
-    slots: templateDerivedSlots("ProgressivePurposeClause", children),
-    trace: traceInfo("generative_template", {
-      construction_type: "ProgressivePurposeClause",
-      template: ["subject!", "progressive_marker!", "progressive_predicate!", "purpose_predicate!", "particle?"],
-      assigned_slots: ["subject", "progressive_marker", "progressive_predicate", "purpose_predicate", ...particles.map(() => "particle")],
-      surfaces: children.map((node) => flattenSurface(node)),
-      reason: "Promotes only the reviewed progressive-purpose shape without tying the construction label to a food or lexical noun.",
     }),
   });
 }
@@ -15550,6 +14908,15 @@ function wrapCore(core) {
   const transitionMotionSpan = transitionMotionPredicateFallback(core);
   if (transitionMotionSpan) return [transitionMotionSpan];
 
+  const sourceLinkedDegreeMannerSpan = sourceLinkedDegreeMannerModifiedVPFallback(core);
+  if (sourceLinkedDegreeMannerSpan) return [sourceLinkedDegreeMannerSpan];
+
+  const sourceLinkedPrioritySpan = sourceLinkedPriorityMarkerClauseFallback(core);
+  if (sourceLinkedPrioritySpan) return [sourceLinkedPrioritySpan];
+
+  const sourceLinkedPreferenceSpan = sourceLinkedPreferenceVPFallback(core);
+  if (sourceLinkedPreferenceSpan) return [sourceLinkedPreferenceSpan];
+
   // Preference needs a top-level pass before broad NP category wrapping.
   // Otherwise 鍾意 + VP can be mis-wrapped as ModifiedNP because the VP exports noun/object slots from its object child.
   const rawPreferenceSpan = templateConstructionFor(core, ["PreferenceVP"]);
@@ -15564,8 +14931,6 @@ function wrapCore(core) {
   const cognitionContentSpan = cognitionContentFrameFallback(core);
   if (cognitionContentSpan) return [cognitionContentSpan];
 
-  // Stance/reporting frames must get a chance before broad VP-complement wrapping.
-  // Otherwise 覺得 + visible content is hidden under the generic VPComplementFrame.
   const opinionStanceSpan = opinionStanceFrameFallback(core);
   if (opinionStanceSpan) return [opinionStanceSpan];
 
@@ -15578,11 +14943,8 @@ function wrapCore(core) {
   const intendedFunctionSpan = intendedFunctionRelationFallback(core);
   if (intendedFunctionSpan) return [intendedFunctionSpan];
 
-  const rawVPComplementFrame = vpComplementFrameFallback(core);
-  if (rawVPComplementFrame) return [rawVPComplementFrame];
-
-  const definitionExplanatorySpan = definitionExplanatoryFrameFallback(core);
-  if (definitionExplanatorySpan) return [definitionExplanatorySpan];
+  const sourceLinkedIntentionSpan = sourceLinkedIntentionFrameFallback(core);
+  if (sourceLinkedIntentionSpan) return [sourceLinkedIntentionSpan];
 
   const namingSelfIntroductionSpan = namingSelfIntroductionFrameFallback(core);
   if (namingSelfIntroductionSpan) return [namingSelfIntroductionSpan];
@@ -15602,32 +14964,11 @@ function wrapCore(core) {
   const polarQuestionSpan = polarQuestionFrameFallback(core);
   if (polarQuestionSpan) return [polarQuestionSpan];
 
-  const timeToActionSpan = timeToActionFrameFallback(core);
-  if (timeToActionSpan) return [timeToActionSpan];
-
   const interiorExistentialSpan = interiorExistentialFrameFallback(core);
   if (interiorExistentialSpan) return [interiorExistentialSpan];
 
   const copularIdentificationSpan = copularIdentificationFrameFallback(core);
   if (copularIdentificationSpan) return [copularIdentificationSpan];
-
-  const identityWhQuestionLaiSpan = identityWhQuestionLaiFallback(core);
-  if (identityWhQuestionLaiSpan) return [identityWhQuestionLaiSpan];
-
-  const transformationResultSpan = transformationResultFrameFallback(core);
-  if (transformationResultSpan) return [transformationResultSpan];
-
-  const modalChangeIntoResultSpan = modalChangeIntoResultFrameFallback(core);
-  if (modalChangeIntoResultSpan) return [modalChangeIntoResultSpan];
-
-  const causativeResultSpan = causativeResultFrameFallback(core);
-  if (causativeResultSpan) return [causativeResultSpan];
-
-  const weatherSeemingResultSpan = seemingPerfectiveResultClauseFallback(core);
-  if (weatherSeemingResultSpan) return [weatherSeemingResultSpan];
-
-  const possessiveTransferSpan = possessiveTransferClauseFallback(core);
-  if (possessiveTransferSpan) return [possessiveTransferSpan];
 
   const passivePermissiveSpan = passivePermissiveRelationFallback(core);
   if (passivePermissiveSpan) return [passivePermissiveSpan];
@@ -15659,9 +15000,6 @@ function wrapCore(core) {
   const coordinatedSubjectModalSpan = coordinatedSubjectModalPredicateClauseFallback(core);
   if (coordinatedSubjectModalSpan) return [coordinatedSubjectModalSpan];
 
-  const progressivePurposeSpan = progressivePurposeClauseFallback(core);
-  if (progressivePurposeSpan) return [progressivePurposeSpan];
-
   const rawCompositionalPostverbalZo = postverbalZoPerfectiveFromRawNodes(core);
   if (rawCompositionalPostverbalZo) return rawCompositionalPostverbalZo;
 
@@ -15670,7 +15008,8 @@ function wrapCore(core) {
   core = wrapSerialPurposeTemplateSubspans(core);
   core = wrapSerialVerbPurposeSubspans(core);
   core = wrapPriorityMarkerSubspans(core);
-  core = wrapResultStateSubspans(core);
+  core = wrapChangeIntoPredicateSubspans(core);
+  core = wrapPossessiveClassifierNPSubspans(core);
   core = wrapPermissionAcceptabilitySubspans(core);
   core = wrapCategorySubspans(core);
   core = wrapNegatedVPSubspans(core);
@@ -15709,9 +15048,6 @@ function wrapCore(core) {
 
   const protectedOpaqueFormulaSpan = protectedOpaqueFormulaPassthrough(core);
   if (protectedOpaqueFormulaSpan) return [protectedOpaqueFormulaSpan];
-
-  const wrappedLocativeFragment = locativeFragmentFromWrappedPlacePhrase(core);
-  if (wrappedLocativeFragment) return [wrappedLocativeFragment];
 
   // Preserve an already-resolved overt predicate-object construction before broad
   // category templates can rewrap it (for example, TransitiveVP as NominalHeadSpan).
@@ -15772,15 +15108,6 @@ function wrapCore(core) {
   if (isToken(core[0], "喺") && hasSurface(core, "邊度")) {
     return [construction("LocativeWhQuestion", "WhereQ", core, { note: "Locative wh-question: 喺邊度.", trace: traceInfo("legacy_surface_rule", { rule: "喺 + 邊度", reason: "Surface marker + wh-place fallback." }) })];
   }
-  if (isToken(core[0], "喺") && core.length >= 2 && isPlaceLike(core[1])) {
-    return [construction("LocativeFragment", "Location", core, { note: "Locative answer/fragment: 喺 + place.", trace: traceInfo("legacy_surface_rule", { rule: "喺 + place-like", reason: "Surface marker + generated place-like fallback." }) })];
-  }
-
-  // Focused identification fallback: normally handled by IdentificationFragment template.
-  if (hasSurface(core, "就係")) {
-    return [construction("IdentificationFragment", "Ident", core, { note: "Focused identification fallback: 就係 + noun phrase.", trace: traceInfo("legacy_surface_rule", { rule: "has 就係", reason: "Fallback only; generative IdentificationFragment should normally catch this." }) })];
-  }
-
   const completionThenRelation = completionThenClauseRelation(core);
   if (completionThenRelation) return [completionThenRelation];
 
@@ -15813,14 +15140,21 @@ function wrapCore(core) {
     })];
   }
   const finalMeiIndex = core.findIndex((node, index) => index > experientialIndex && flattenSurface(node) === "未");
-  if (experientialIndex >= 0 && finalMeiIndex >= 0) {
-    return [construction("ExperientialQuestion", "Exp未", core, { note: "Experiential question with final 未 after the experiential VP.", trace: traceInfo("legacy_surface_rule", { rule: "ExperientialVP before final 未", reason: "Order-sensitive construction + marker fallback." }) })];
+  const finalMeiTailIsOnlyParticles = finalMeiIndex >= 0 && core.slice(finalMeiIndex + 1).every((node) => node.kind === "text" || isParticle(node));
+  if (experientialIndex >= 0 && finalMeiIndex >= 0 && finalMeiTailIsOnlyParticles) {
+    return [construction("ExperientialQuestion", "Exp未", core, {
+      note: "Source-linked final-未 experiential question: overt experiential VP followed by final 未 and optional particle.",
+      trace: traceInfo("generative_template", {
+        construction_type: "ExperientialQuestion",
+        template_family: "generative_template",
+        template: ["subject?", "experiential_vp!", "topic_or_object?", "question_marker!", "particle?"],
+        constraints: { final_mei_after_experiential_material: true },
+        surfaces: core.map((node) => flattenSurface(node)),
+        reason: "The final 未 profile is distinct from preverbal 未 negative experiential statements and 有冇 experiential questions."
+      })
+    })];
   }
 
-  // Intention fallback: normally handled by IntentionFrame template.
-  if (hasSurface(core, "諗住")) {
-    return [construction("IntentionFrame", "Intention", core, { note: "Intention fallback: 諗住 + VP.", trace: traceInfo("legacy_surface_rule", { rule: "has 諗住", reason: "Fallback only; generative IntentionFrame should normally catch this." }) })];
-  }
   if (hasSurface(core, "想") && (hasSurface(core, "好") || hasSurface(core, "試吓"))) {
     return [construction("DesiderativeVP", "WantVP", core, { note: "Desire/wanting construction, often 好想 + VP.", trace: traceInfo("legacy_surface_rule", { rule: "has 想 plus degree/VP", reason: "Surface modal fallback." }) })];
   }
@@ -15843,9 +15177,6 @@ function wrapCore(core) {
         surfaces: core.map((node) => flattenSurface(node)),
       })
     })];
-  }
-  if (hasSurface(core, "都") && hasSurface(core, "算") && (hasSurface(core, "中等") || hasSurface(core, "價錢") || hasSurface(core, "價位"))) {
-    return [construction("EvaluationWithDouSyun", "都算", core, { note: "Evaluation with 都 + 算; child tokens keep their own roles.", trace: traceInfo("generative_or_heuristic_slot_rule", { rule: "focus_adverb + evaluation_marker + price candidates", reason: "Slot-based heuristic; not a full surface string." }) })];
   }
   // Scalar value question patterns. Price is domain metadata, not the construction label.
   if (hasSurface(core, "幾錢")) {
@@ -15893,17 +15224,6 @@ function wrapCore(core) {
         })
       })];
     }
-  }
-
-  // VP-complement fallback: normally handled by VPComplementFrame templates.
-  if (hasSurface(core, "記得") && hasSurface(core, "要")) {
-    return [construction("VPComplementFrame", "VPFrame", core, {
-      note: "Fallback for a broad VP-complement frame headed by 記得.",
-      trace: traceInfo("construction_function", {
-        construction_type: "VPComplementFrame",
-        reason: "Fallback only; generative VPComplementFrame should normally catch reviewed VP-complement frames."
-      })
-    })];
   }
 
   // Existential wh: 有咩 + NP.
@@ -16171,20 +15491,9 @@ function clauseLinkingWrapperCoverage(children = []) {
 }
 
 
-const ASSIGNED_SLOT_WRAPPER_COVERAGE_TYPES = new Set(["VPComplementFrame", "ModalANotAQuestion"]);
+const ASSIGNED_SLOT_WRAPPER_COVERAGE_TYPES = new Set(["ModalANotAQuestion"]);
 
 function wrapperSlotDisplayRole(type, slot) {
-  if (type === "VPComplementFrame") {
-    const roles = {
-      subject: "subject",
-      modal: "modal_or_need_marker",
-      vp_complement_predicate: "complement_taking_predicate",
-      time: "time_or_manner_modifier",
-      vp: "vp_complement",
-      particle: "final_particle",
-    };
-    return roles[slot] || slot || "";
-  }
   if (type === "ModalANotAQuestion") {
     const roles = {
       subject: "subject",
@@ -17699,7 +17008,7 @@ function shouldCollapseClauseSequenceForDisplay(node, options = {}) {
 function shouldCollapseGreedyWrapperForDisplay(node, options = {}) {
   if (!node || node.kind !== "construction") return false;
   if (options && options.showDiagnostics) return false;
-  return ["VPComplementFrame", "ModalANotAQuestion"].includes(node.type);
+  return node.type === "ModalANotAQuestion";
 }
 
 
@@ -17788,7 +17097,7 @@ const HAVE_OR_NOT_EVENT_VP_TYPES = new Set([
   "ActionStativeVP", "CompletionVP", "DelimitedVP", "DesiderativeVP", "DirectionalMotionVP",
   "ExperientialVP", "ModalVP", "MotionGoalVP", "NegativePotentialComplement", "NegatedVP",
   "PerfectiveVP", "ProductiveVO", "ProgressiveVP", "ReduplicatedVP", "ResultComplement",
-  "TransitiveVP", "VerbComplementVP", "VPComplementFrame",
+  "TransitiveVP", "VerbComplementVP",
 ]);
 
 function unwrapHaveOrNotEventVp(node) {
@@ -18036,10 +17345,8 @@ function isExplicitWhQuestionConstruction(node) {
   if ([
     "ProgressiveWhObjectQuestion",
     "ExistentialWhQuestion",
-    "IdentityWhQuestion",
     "ScalarValueQuestion",
     "PlaceQuestion",
-    "ProgressivePlaceQuestion",
   ].includes(node.type)) return true;
   return (node.children || []).some(isExplicitWhQuestionConstruction);
 }
@@ -19332,7 +18639,7 @@ function existentialQuestionDescriptorForContextTurn(turn) {
   const haveOrNotConstruction = constructions.find((row) => {
     const detail = row.trace || {};
     return detail.question_family === "have_or_not"
-      || ["ExistentialQuestion", "PostposedExistentialQuestion", "ExperientialYesNoQuestion", "ANotAQuestion"].includes(row.type);
+      || ["ExistentialQuestion", "ExperientialYesNoQuestion", "ANotAQuestion"].includes(row.type);
   });
   const questionMarked = /[？?]/u.test(String(turn.source || ""));
   if (!questionMarked || !haveOrNotConstruction) return null;
@@ -20573,7 +19880,7 @@ function wrapperCoverageAuditSummary(analysis) {
   const warningRows = rows.filter((row) => row.status === "WARN" || (row.unaccounted_wrapper_token_count || 0) > 0);
   return {
     status: warningRows.length ? "WARN" : "PASS",
-    policy: "Wrapper coverage audit: ClauseRelationGraph must expose child/linker/separator coverage, and greedy-looking VPComplementFrame / ModalANotAQuestion wrappers must expose direct assigned-slot coverage before they may be visually collapsed.",
+    policy: "Wrapper coverage audit: ClauseRelationGraph must expose child/linker/separator coverage, and ModalANotAQuestion must expose direct assigned-slot coverage before it may be visually collapsed.",
     wrapper_row_count: rows.length,
     unaccounted_wrapper_token_count: unaccountedWrapperTokenCount,
     warning_rows: warningRows,
@@ -20767,8 +20074,6 @@ const CP018_FRAGMENT_CONSTRUCTION_TYPES = new Set([
   "ComplementEllipsisFragment",
   "FragmentAnswer",
   "FragmentQuestion",
-  "IdentificationFragment",
-  "LocativeFragment",
   "NegativeCognitionFragment",
   "NegatedExistentialFragment",
 ]);
@@ -21519,7 +20824,6 @@ const LEARNER_CONSTRUCTION_GLOSSES = {
   LocativeFragment: ["location fragment", "States a place while the person or thing located there is understood from context."],
   NeedsContext: ["needs context", "Meaning depends on the situation around it."],
   VerbComplementVP: ["verb-complement phrase", "A main verb plus a complement, with an object when present."],
-  VPComplementFrame: ["VP complement", "A predicate followed by an action phrase."],
   ResultComplement: ["result phrase", "Says an action reaches or attains a result."],
   ResultComplementVP: ["result-complement phrase", "Shows an action and its visible resulting state."],
   NegativePotentialComplement: ["cannot-result phrase", "Says an action cannot reach or attain the result."],
@@ -21947,7 +21251,7 @@ function diagnosticLegend() {
     registry_audit: "Separate label-hygiene lane. WARN means a token learner role, construction label, parser-decision trace kind/template-family label, or slot name escaped the controlled registry.",
     learner_display_audit: "Separate UI-label lane. Parser/internal slots stay in diagnostics, while hover titles expose concise role/syntax metadata plus learner glosses.",
     learner_ui_hover_audit: "Diagnostic-only mirror of current default hover/title strings. PASS rows are silent; WARN rows show learner-facing raw-slot leaks, missing English learner glosses, or generic fallback glosses.",
-    wrapper_coverage_audit: "Diagnostic-only wrapper integrity lane. ClauseRelationGraph must expose child/linker/separator coverage; greedy-looking VPComplementFrame and ModalANotAQuestion wrappers must expose direct assigned-slot coverage before normal display may collapse them.",
+    wrapper_coverage_audit: "Diagnostic-only wrapper integrity lane. ClauseRelationGraph must expose child/linker/separator coverage; ModalANotAQuestion must expose direct assigned-slot coverage before normal display may collapse it.",
     label_transition_audit: "Diagnostic-only inventory of construction trace families. PASS rows are silent; WARN rows classify unknown trace kinds. Migration-candidate rows are review inventory, not automatic acceptance or failure.",
     runtime_construction_registry_audit: "Checks only that every emitted construction label is active in the shipped runtime registry. Linguistic status and evidence are authoring-time data outside the plugin.",
   };

@@ -9,11 +9,11 @@ This directory is the canonical authoring registry for every runtime constructio
 | [`supported_productive/`](./supported_productive/) | 0 | The exact narrow construction satisfies the full definition of done. |
 | [`provisional_reaudit/`](./provisional_reaudit/) | 0 | Former acceptance has been withdrawn pending review under the current standard. |
 | [`provisional/`](./provisional/) | 0 | A narrow claim meets the provisional checklist but not the productive checklist. |
-| [`research_pending/`](./research_pending/) | 65 | A concrete linguistic question exists, but provisional requirements are incomplete. |
-| [`unsupported_generalization/`](./unsupported_generalization/) | 73 | The current broad claim has no defensible supported scope. |
-| [`lexicalized_only/`](./lexicalized_only/) | 3 | Only bounded lexicalized expressions are retained; productive grammar is not claimed. |
-| [`parser_heuristic/`](./parser_heuristic/) | 19 | Internal software representation; it is not a productive Cantonese grammar claim. |
-| [`retired/`](./retired/) | 21 | Labels removed from the active runtime registry; this folder is a navigation index, not a second status owner. |
+| [`research_pending/`](./research_pending/) | 79 | A concrete linguistic question exists, but provisional requirements are incomplete. |
+| [`unsupported_generalization/`](./unsupported_generalization/) | 37 | The current broad claim has no defensible supported scope. |
+| [`lexicalized_only/`](./lexicalized_only/) | 2 | Only bounded lexicalized expressions are retained; productive grammar is not claimed. |
+| [`parser_heuristic/`](./parser_heuristic/) | 15 | Internal software representation; it is not a productive Cantonese grammar claim. |
+| [`retired/`](./retired/) | 48 | Labels removed from the active runtime registry; this folder is a navigation index, not a second status owner. |
 
 ## Current working set
 

@@ -4,30 +4,61 @@
   "runtime_active": true,
   "migration_phase": 5,
   "snapshot_cases": [],
-  "focused_cases": [],
-  "np_cases": [],
-  "implementation_probe_cases": [
+  "focused_cases": [
     {
-      "case_id": "FRWRAP-002",
+      "case_id": "CP060-CDM-01",
       "source": "返上嚟。",
+      "class": "source_linked_return_up_deictic_positive",
+      "expected_profile": "CompoundDirectionalMotionVP present over the full three-part directional string",
       "assertion": "construction_present",
-      "provenance": "docs/research/CP040-P1-FINAL-REACHABLE-WRAPPER-AUDIT-R1.md#FRWRAP-002",
-      "source_role": "source_attested_surface_used_as_code_specific_probe",
-      "linguistic_evidence_weight": 0,
-      "purpose": "runtime_reachability_only"
+      "provenance": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#CDM-C01",
+      "source_ids": [
+        "SRC-WONG-2023-LANGUAGE-SAMPLE"
+      ],
+      "source_locator": "book pp. 48-49"
+    },
+    {
+      "case_id": "CP060-CDM-02",
+      "source": "返上去。",
+      "class": "source_linked_return_up_away_deictic_positive",
+      "expected_profile": "CompoundDirectionalMotionVP present with attested return-direction-deictic ordering",
+      "assertion": "construction_present",
+      "provenance": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#CDM-C01",
+      "source_ids": [
+        "SRC-WONG-2023-LANGUAGE-SAMPLE"
+      ],
+      "source_locator": "book pp. 48-49"
+    },
+    {
+      "case_id": "CP060-CDM-03",
+      "source": "上嚟。",
+      "class": "two_part_directional_boundary",
+      "expected_profile": "CompoundDirectionalMotionVP absent without return-motion 返",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#CDM-C03"
+    },
+    {
+      "case_id": "CP060-CDM-04",
+      "source": "行返過嚟。",
+      "class": "manner_plus_compound_directional_boundary",
+      "expected_profile": "CompoundDirectionalMotionVP absent as the whole predicate when a manner verb precedes the directional string",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#CDM-C02"
     }
   ],
+  "np_cases": [],
+  "implementation_probe_cases": [],
   "coverage": {
-    "state": "implementation_positive_only",
+    "state": "positive_and_boundary",
     "exact_snapshot_positive_count": 0,
-    "focused_positive_count": 0,
-    "focused_boundary_count": 0,
+    "focused_positive_count": 2,
+    "focused_boundary_count": 2,
     "focused_review_only_count": 0,
     "np_case_count": 0,
-    "implementation_probe_count": 1,
+    "implementation_probe_count": 0,
     "compatibility_alias_probe_count": 0,
-    "positive_case_count": 0,
-    "boundary_case_count": 0,
-    "executable_case_count": 1
+    "positive_case_count": 2,
+    "boundary_case_count": 2,
+    "executable_case_count": 4
   }
 }

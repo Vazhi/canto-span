@@ -1,9 +1,9 @@
 {
   "id": "canto-span",
   "name": "Canto Span",
-  "version": "0.5.213",
+  "version": "0.5.214",
   "minAppVersion": "1.5.0",
-  "description": "v0.5.213 source-links narrow copula-less 唔 + property predication and preserves the 唔係 + nominal-predicate boundary.",
+  "description": "v0.5.214 reconciles all implementation-only labels through source-linked coverage or explicit retirement.",
   "author": "Chris Crawford / OpenAI ChatGPT",
   "authorUrl": "",
   "isDesktopOnly": false
