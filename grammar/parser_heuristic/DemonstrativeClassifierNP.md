@@ -6,7 +6,7 @@ status: "parser_heuristic"
 confidence: "high"
 claim_layer: "internal"
 lane: "LANE-06"
-last_reviewed: "unknown"
+last_reviewed: "2026-07-23"
 last_status_migrated: "2026-07-21"
 source_count: 0
 verified_source_count: 0
@@ -144,3 +144,12 @@ No pattern-specific external source is currently mapped.
 - Compatibility-only reachability: `NOMWRAP-003` with `呢本書。`
 - Complete output uses internal `OvertHeadDemonstrativeClassifierNP` and exposes `DemonstrativeClassifierNP` only as its public compatibility alias.
 - This probe has linguistic evidence weight **0** and does not create a separate linguistic construction claim.
+
+## Evidence and ontology closure guidance
+
+- Review date: 2026-07-23
+- Ontology class: internal parser representation, subsystem, diagnostic state, or compatibility role
+- Research finding: Explicit compatibility alias only; 30 accepted fixtures but no independent licensing.
+- Recommended disposition: Keep as deprecated compatibility alias or version it out. Canonical analysis should use overt-head/headless demonstrative-classifier NP subtypes in the NP subsystem.
+- Retirement safeguard: Do not delete until all A1 consumers and stored snapshots are migrated.
+- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.

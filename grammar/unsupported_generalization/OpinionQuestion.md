@@ -155,3 +155,12 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - The broader zero-weight `你覺得呢個點樣？` reachability probe has been removed rather than forcing the source-narrowed matcher to preserve it.
 - `覺得點樣？` and `你認為佢哋點樣？` are executable absence boundaries for this narrow node; they are not grammaticality rejections.
 - The broader label remains `unsupported_generalization` pending a composition-versus-wrapper decision across independently typed question complements.
+
+## Evidence and ontology closure guidance
+
+- Review date: 2026-07-23
+- Ontology class: Cantonese-language profile requiring narrow evidence-faithful scope
+- Research finding: Current note already retains exact source-linked `你覺得佢哋點樣？` with 2 executable boundaries. Other cognition-question types compose differently.
+- Recommended disposition: Retain the exact profile or decompose into cognition predicate + evaluated referent + wh predicate. Keep broader complement ontology unresolved.
+- Retirement safeguard: Do not retire the sourced profile merely because the outer label may be redundant.
+- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.

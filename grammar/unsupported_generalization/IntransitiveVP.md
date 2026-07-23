@@ -6,7 +6,7 @@ status: "unsupported_generalization"
 confidence: "unsupported"
 claim_layer: "language"
 lane: "LANE-10"
-last_reviewed: "unknown"
+last_reviewed: "2026-07-23"
 last_status_migrated: "2026-07-21"
 source_count: 3
 verified_source_count: 3
@@ -151,3 +151,12 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Full pre-migration record: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
 - Status migration date: 2026-07-21.
 - The frozen JSON preserves the former wide schema; this note is the active authoring record.
+
+## Evidence and ontology closure guidance
+
+- Review date: 2026-07-23
+- Ontology class: Cantonese-language profile requiring narrow evidence-faithful scope
+- Research finding: Mapped sources explicitly warn that Cantonese null objects can be discourse-recoverable. Francis & Matthews 2005 argues for a multidimensional verb-category analysis rather than a simple verb/adjective or valency binary.
+- Recommended disposition: Reclassify as internal valency/argument-realization analysis, or narrow to lexically established intransitive predicates. Preserve contextual null-object ambiguity.
+- Retirement safeguard: Do not retire merely because a broad intransitive class is hard to prove. First separate lexical valency, omitted arguments, and complete intransitive uses.
+- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.

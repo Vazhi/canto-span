@@ -6,7 +6,7 @@ status: "unsupported_generalization"
 confidence: "unsupported"
 claim_layer: "language"
 lane: "LANE-05"
-last_reviewed: "unknown"
+last_reviewed: "2026-07-23"
 last_status_migrated: "2026-07-21"
 source_count: 4
 verified_source_count: 4
@@ -160,3 +160,12 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Full pre-migration record: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
 - Status migration date: 2026-07-21.
 - The frozen JSON preserves the former wide schema; this note is the active authoring record.
+
+## Evidence and ontology closure guidance
+
+- Review date: 2026-07-23
+- Ontology class: Cantonese-language profile requiring narrow evidence-faithful scope
+- Research finding: `SRC-FAN-2024-JAU-VP-ASPECT`; `SRC-HARA-2023-POLAR`; `SRC-MATTHEWS-YIP-2011-ASPECT-MULTIMEDIA`; `SRC-YIP-MATTHEWS-2000-BASIC` directly support experiential questioning, including `有冇 + V過`.
+- Recommended disposition: Retain a narrow experiential polar-question subtype or compose `ExperientialVP` with a typed polar-question layer.
+- Retirement safeguard: Strong retirement veto until the source-linked question profile is preserved under a replacement ontology.
+- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.

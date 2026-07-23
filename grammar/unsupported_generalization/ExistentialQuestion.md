@@ -6,7 +6,7 @@ status: "unsupported_generalization"
 confidence: "unsupported"
 claim_layer: "language"
 lane: "LANE-07"
-last_reviewed: "unknown"
+last_reviewed: "2026-07-23"
 last_status_migrated: "2026-07-21"
 source_count: 3
 verified_source_count: 3
@@ -151,3 +151,12 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Full pre-migration record: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
 - Status migration date: 2026-07-21.
 - The frozen JSON preserves the former wide schema; this note is the active authoring record.
+
+## Evidence and ontology closure guidance
+
+- Review date: 2026-07-23
+- Ontology class: Cantonese-language profile requiring narrow evidence-faithful scope
+- Research finding: `SRC-HARA-2023-POLAR`; `SRC-LIANG-MAI-2026-GRAMMAR-CODING`; `SRC-YIP-MATTHEWS-2000-BASIC`. Sources distinguish `有冇 + NP` existence from `有冇 + VP` event/experiential questions.
+- Recommended disposition: Split existential-NP and event/experiential polar profiles, or retain an umbrella only as internal question infrastructure with explicit subtypes.
+- Retirement safeguard: Strong retirement veto. Do not collapse existence, possession, event occurrence, and experiential questions into one interpretation.
+- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.

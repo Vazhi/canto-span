@@ -6,7 +6,7 @@ status: "parser_heuristic"
 confidence: "low"
 claim_layer: "internal"
 lane: "LANE-10"
-last_reviewed: "unknown"
+last_reviewed: "2026-07-23"
 last_status_migrated: "2026-07-21"
 source_count: 0
 verified_source_count: 0
@@ -128,3 +128,12 @@ No pattern-specific external source is currently mapped.
 - Full pre-migration record: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
 - Status migration date: 2026-07-21.
 - The frozen JSON preserves the former wide schema; this note is the active authoring record.
+
+## Evidence and ontology closure guidance
+
+- Review date: 2026-07-23
+- Ontology class: internal parser representation, subsystem, diagnostic state, or compatibility role
+- Research finding: Internal copular relation wrapper, currently used for explanatory `嚟` correction.
+- Recommended disposition: Retain/internalize with explicit child roles and exclusions; map underlying copular/explanatory sources without promoting the frame name.
+- Retirement safeguard: Do not retire while it prevents explanatory `嚟` from being misparsed as motion.
+- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.

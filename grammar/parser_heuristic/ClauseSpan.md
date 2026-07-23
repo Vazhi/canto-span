@@ -6,7 +6,7 @@ status: "parser_heuristic"
 confidence: "medium"
 claim_layer: "internal"
 lane: "INTERNAL_ARCHITECTURE"
-last_reviewed: "unknown"
+last_reviewed: "2026-07-23"
 last_status_migrated: "2026-07-21"
 source_count: 0
 verified_source_count: 0
@@ -129,3 +129,12 @@ No same-family active construction was identified in the canonical consolidation
 - Full pre-migration record: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
 - Status migration date: 2026-07-21.
 - The frozen JSON preserves the former wide schema; this note is the active authoring record.
+
+## Evidence and ontology closure guidance
+
+- Review date: 2026-07-23
+- Ontology class: internal parser representation, subsystem, diagnostic state, or compatibility role
+- Research finding: High-reach generic clause boundary used throughout the parser.
+- Recommended disposition: Retain as core parser representation. Specify minimum licensing, subject/predicate visibility, fragment exclusions, and serialization.
+- Retirement safeguard: Strong contract veto: removal requires a major A1 redesign.
+- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.

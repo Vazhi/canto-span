@@ -6,7 +6,7 @@ status: "parser_heuristic"
 confidence: "medium"
 claim_layer: "internal"
 lane: "LANE-03"
-last_reviewed: "unknown"
+last_reviewed: "2026-07-23"
 last_status_migrated: "2026-07-21"
 source_count: 0
 verified_source_count: 0
@@ -128,3 +128,12 @@ No pattern-specific external source is currently mapped.
 - Full pre-migration record: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
 - Status migration date: 2026-07-21.
 - The frozen JSON preserves the former wide schema; this note is the active authoring record.
+
+## Evidence and ontology closure guidance
+
+- Review date: 2026-07-23
+- Ontology class: internal parser representation, subsystem, diagnostic state, or compatibility role
+- Research finding: Internal wrapper; external research directly analyzes `咋/啫`, `添`, and focus-particle positions and scope.
+- Recommended disposition: Retain as internal scope representation or split by particle family. Map particle-specific sources and ordered-cluster boundaries.
+- Retirement safeguard: Do not retire before preserving focus association, restrictive/additive meaning, and particle ordering.
+- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.

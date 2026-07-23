@@ -6,7 +6,7 @@ status: "unsupported_generalization"
 confidence: "unsupported"
 claim_layer: "language"
 lane: "LANE-07"
-last_reviewed: "unknown"
+last_reviewed: "2026-07-23"
 last_status_migrated: "2026-07-21"
 source_count: 4
 verified_source_count: 4
@@ -162,3 +162,12 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Full pre-migration record: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
 - Status migration date: 2026-07-21.
 - The frozen JSON preserves the former wide schema; this note is the active authoring record.
+
+## Evidence and ontology closure guidance
+
+- Review date: 2026-07-23
+- Ontology class: Cantonese-language profile requiring narrow evidence-faithful scope
+- Research finding: Four verified sources directly document in-situ place questions, overt `喺邊度`, destination `去邊度`, and contexts where omitted `喺` is analyzed differently.
+- Recommended disposition: Retain narrow wh-place profiles with explicit role (`location`, `goal`, `source`) and overt-token preservation.
+- Retirement safeguard: Do not retire or insert hidden `喺`. First resolve role-specific composition and bare/headless question behavior.
+- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
