@@ -707,6 +707,54 @@
       "source_role": "diagnostic_contract_invariant_probe",
       "linguistic_evidence_weight": 0,
       "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "ONTO-Q01-POLAR-FRAME",
+      "construction": "PolarQuestionFrame",
+      "source": "去咩？",
+      "assertion": "trace_detail_equals",
+      "expected_surface": "去咩",
+      "expected_trace_detail": {
+        "question_family": "polar",
+        "question_subtype": "biased_sentence_final_me1",
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable"
+      },
+      "provenance": "docs/research/ACTIVE-LABEL-EVIDENCE-ONTOLOGY-CLOSURE-R1.md#questions-and-copular-ontology",
+      "source_role": "internal_contract_invariant_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "ONTO-Q02-COPULAR-IDENTIFICATION",
+      "construction": "CopularIdentificationFrame",
+      "source": "佢係老師。",
+      "assertion": "trace_detail_equals",
+      "expected_surface": "佢係老師",
+      "expected_trace_detail": {
+        "kind": "generative_template",
+        "construction_type": "CopularIdentificationFrame"
+      },
+      "provenance": "docs/research/ACTIVE-LABEL-EVIDENCE-ONTOLOGY-CLOSURE-R1.md#questions-and-copular-ontology",
+      "source_role": "internal_contract_invariant_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "ONTO-Q03-COPULAR-RELATION",
+      "construction": "CopularRelationFrame",
+      "source": "我覺得係真嘅。",
+      "assertion": "trace_detail_equals",
+      "expected_surface": "係真嘅",
+      "expected_trace_detail": {
+        "subject_status": "null_licensed_by_opinion_content",
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable"
+      },
+      "provenance": "docs/research/ACTIVE-LABEL-EVIDENCE-ONTOLOGY-CLOSURE-R1.md#questions-and-copular-ontology",
+      "source_role": "internal_contract_invariant_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
     }
   ]
 }

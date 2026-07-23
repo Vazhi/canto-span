@@ -87,7 +87,24 @@
     }
   ],
   "np_cases": [],
-  "implementation_probe_cases": [],
+  "implementation_probe_cases": [
+    {
+      "case_id": "ONTO-Q01-POLAR-FRAME",
+      "source": "去咩？",
+      "assertion": "trace_detail_equals",
+      "expected_surface": "去咩",
+      "expected_trace_detail": {
+        "question_family": "polar",
+        "question_subtype": "biased_sentence_final_me1",
+        "context_requirement_status": "context_not_required",
+        "antecedent_status": "not_applicable"
+      },
+      "provenance": "docs/research/ACTIVE-LABEL-EVIDENCE-ONTOLOGY-CLOSURE-R1.md#questions-and-copular-ontology",
+      "source_role": "internal_contract_invariant_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    }
+  ],
   "coverage": {
     "state": "positive_and_boundary",
     "exact_snapshot_positive_count": 6,
@@ -95,10 +112,10 @@
     "focused_boundary_count": 2,
     "focused_review_only_count": 0,
     "np_case_count": 0,
-    "implementation_probe_count": 0,
+    "implementation_probe_count": 1,
     "compatibility_alias_probe_count": 0,
     "positive_case_count": 6,
     "boundary_case_count": 2,
-    "executable_case_count": 8
+    "executable_case_count": 9
   }
 }

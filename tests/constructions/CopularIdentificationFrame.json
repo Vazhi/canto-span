@@ -50,7 +50,22 @@
     }
   ],
   "np_cases": [],
-  "implementation_probe_cases": [],
+  "implementation_probe_cases": [
+    {
+      "case_id": "ONTO-Q02-COPULAR-IDENTIFICATION",
+      "source": "佢係老師。",
+      "assertion": "trace_detail_equals",
+      "expected_surface": "佢係老師",
+      "expected_trace_detail": {
+        "kind": "generative_template",
+        "construction_type": "CopularIdentificationFrame"
+      },
+      "provenance": "docs/research/ACTIVE-LABEL-EVIDENCE-ONTOLOGY-CLOSURE-R1.md#questions-and-copular-ontology",
+      "source_role": "internal_contract_invariant_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    }
+  ],
   "coverage": {
     "state": "positive_and_boundary",
     "exact_snapshot_positive_count": 2,
@@ -58,10 +73,10 @@
     "focused_boundary_count": 2,
     "focused_review_only_count": 0,
     "np_case_count": 0,
-    "implementation_probe_count": 0,
+    "implementation_probe_count": 1,
     "compatibility_alias_probe_count": 0,
     "positive_case_count": 2,
     "boundary_case_count": 2,
-    "executable_case_count": 4
+    "executable_case_count": 5
   }
 }

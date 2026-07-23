@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "5d0ee01"
+code_document_code_locations: ["main.js:2230-2250", "main.js:7585-7635", "main.js:17345-17365"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
@@ -145,4 +145,8 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Research finding: `SRC-ALDERETE-ETAL-2017-SYNOPSIS` supports `V緊 + NP`; wh-in-situ is independently documented elsewhere. The dedicated wrapper likely bundles two compositional facts.
 - Recommended disposition: Compose `ProgressiveVP` with a wh-classifier/object NP and question layer; retire only the redundant outer wrapper.
 - Retirement safeguard: Before retirement, prove identical object boundary, wh role, aspect scope, and A1 output under composition.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **quarantine and decompose/replace** the outer wrapper through progressive VP + wh-object NP + question composition.
+- Runtime and complete-output reach: template and builder paths are `main.js:2230-2250` and `main.js:7585-7635`; complete-output precedence is recorded at `main.js:17345-17365`.
+- Checked scope and boundaries: Alderete et al. support `V緊 + NP`; wh-in-situ is independent. One positive and two unrelated-question boundaries protect the current surface but do not establish the atomic wrapper.
+- A1/schema decision: preserve the compatibility label at `unsupported_generalization` until composition reproduces object boundary, wh role, aspect scope, and output exactly.
+- Unresolved work and release files: lexical compatibility, wh-NP licensing, question composition, and clean panel evidence remain open; this note, baseline, and release audit record the decision.

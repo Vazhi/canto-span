@@ -38,9 +38,9 @@ corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
 code_document_reconciled: true
-code_document_review_date: "2026-07-22"
-code_document_review_commit: "v0.5.208"
-code_document_code_locations: ["main.js:9621-9727", "main.js:19475", "main.js:21223"]
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "5d0ee01"
+code_document_code_locations: ["main.js:9290-9330", "main.js:19018"]
 current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
@@ -176,4 +176,8 @@ internal `PolarQuestionFrame` path.
 - Research finding: Four mapped sources, including Ann Law's A-not-A analysis and source-linked full `係唔係` profiles. Current note already identifies unresolved full-form, tag, and contracted `係咪` ontology.
 - Recommended disposition: Retain the narrow full-form profile. Resolve whether `係咪` is a contracted subtype, a separate lexicalized question marker, or a `PolarQuestionFrame` subtype; preserve both analyses if evidence remains mixed.
 - Retirement safeguard: Strong retirement veto. No removal until full `係唔係`, contracted `係咪`, terminal tag uses, complement types, and response behavior have explicit migration tests.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **retain narrow** for full overt clause-internal `係唔係`; keep contracted `係咪` and terminal tags separate.
+- Runtime and complete-output reach: `main.js:9290-9330` preserves both arms, optional overt subject, complement class, and particles; copular-question context handling is at `main.js:19018`.
+- Checked scope and boundaries: Law, Li, Wong, and Yip support the full form, competing analyses, tag distinction, contracted form distinction, and negation-family boundary. Two positives, one tag boundary, and one zero-weight possessive probe preserve the current split.
+- A1/schema decision: preserve `CopularANotAQuestion` at `unsupported_generalization`; `係咪` remains on `PolarQuestionFrame`, and no tag/complement migration is implicit.
+- Unresolved work and release files: nominal/possessive evidence, contracted ontology, response behavior, corpus review, and clean panel evidence remain open; this note, baseline, and release audit record the decision.

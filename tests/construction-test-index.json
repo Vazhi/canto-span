@@ -326,11 +326,11 @@
       "focused_boundary_count": 2,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "compatibility_alias_probe_count": 0,
       "positive_case_count": 2,
       "boundary_case_count": 2,
-      "executable_case_count": 4
+      "executable_case_count": 5
     },
     {
       "construction": "CopularRelationFrame",
@@ -341,11 +341,11 @@
       "focused_boundary_count": 2,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "compatibility_alias_probe_count": 0,
       "positive_case_count": 1,
       "boundary_case_count": 2,
-      "executable_case_count": 3
+      "executable_case_count": 4
     },
     {
       "construction": "CoverbFrame",
@@ -1391,11 +1391,11 @@
       "focused_boundary_count": 2,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "compatibility_alias_probe_count": 0,
       "positive_case_count": 6,
       "boundary_case_count": 2,
-      "executable_case_count": 8
+      "executable_case_count": 9
     },
     {
       "construction": "PoliteImperativeClause",

@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "5d0ee01"
+code_document_code_locations: ["main.js:2558-2575", "main.js:10620-10660"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: false
 promotion_gate_version: "v3"
@@ -49,8 +49,8 @@ standard_test_file: "tests/constructions/CopularIdentificationFrame.json"
 standard_test_coverage: "positive_and_boundary"
 standard_positive_test_count: 2
 standard_boundary_test_count: 2
-standard_implementation_probe_count: 0
-standard_executable_test_count: 4
+standard_implementation_probe_count: 1
+standard_executable_test_count: 5
 source_ids: []
 runtime_active: true
 workflow_state: "archived"
@@ -134,4 +134,8 @@ No pattern-specific external source is currently mapped.
 - Research finding: Internal wrapper with no mapped source; current note still begins with language-claim wording.
 - Recommended disposition: Retain only if it has stable serialized value beyond ordinary copular composition. Rewrite note as pure internal semantics and map underlying copular evidence separately.
 - Retirement safeguard: Do not retire until identification vs relation vs explanatory copular outputs and compatibility effects are compared.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **internalize** as the bounded topic + overt copula + nominal identification grouping.
+- Runtime and complete-output reach: the template is `main.js:2558-2575`; `main.js:10620-10660` selects identification only when the left child can fill topic and the complement is an overt NP, while excluding explanatory `嚟/用嚟`.
+- Stable semantics and invariant: child roles and overt token order are preserved; the frame name supplies no Cantonese-language evidence. `ONTO-Q02-COPULAR-IDENTIFICATION` asserts the stable serialized type.
+- A1/schema decision: preserve the current internal object until identification/relation/explanatory consumers have a versioned migration.
+- Unresolved work and release files: underlying copular source mapping and identification-versus-relation criteria remain open; this note, shared probe inventory, generated tests/index, baseline, and release audit record the decision.
