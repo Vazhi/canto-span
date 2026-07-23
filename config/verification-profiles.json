@@ -11,6 +11,8 @@
       { "id": "documentation", "command": ["node", "tools/verify-documentation-consistency.js", "--output", "validation/current/documentation-consistency.json"] }
     ],
     "research": [
+      { "id": "research-provenance-tests", "command": ["node", "tools/test-research-provenance.js"] },
+      { "id": "research-provenance", "command": ["node", "tools/verify-research-provenance.js"] },
       { "id": "active-review-workflow", "command": ["node", "tools/verify-active-review-workflow.js"] },
       { "id": "rul-survey-readiness", "command": ["node", "tools/verify-rul-survey-readiness.js"] },
       { "id": "native-conflict-burden", "command": ["node", "tools/audit-native-conflict-burden.js"] },
