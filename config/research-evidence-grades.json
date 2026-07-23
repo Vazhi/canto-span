@@ -1,0 +1,61 @@
+{
+  "schema": "canto-span-research-evidence-grades-v1",
+  "canonical_ledger_headers": [
+    "source_id",
+    "evidence_grade",
+    "verification",
+    "citation_and_locator",
+    "what_it_supports",
+    "limit",
+    "disposition"
+  ],
+  "grades": {
+    "DIRECT_SCHOLARLY_CORE": {
+      "core_promotion_qualifying": true,
+      "linguistic_weight": "direct_analysis",
+      "definition": "Peer-reviewed paper or chapter, academic dissertation, thesis, or proceedings paper directly analyzing the Cantonese construction or contrast."
+    },
+    "REFERENCE_GRAMMAR_CORE": {
+      "core_promotion_qualifying": true,
+      "linguistic_weight": "direct_analysis",
+      "definition": "Recognized Cantonese reference grammar explicitly analyzing the relevant construction, profile, or boundary."
+    },
+    "PRIMARY_CORPUS_ATTESTATION": {
+      "core_promotion_qualifying": false,
+      "linguistic_weight": "attestation",
+      "definition": "Reproducible primary corpus release or checked extraction with an exact row, utterance, context, and retrieval path."
+    },
+    "CONTROLLED_JUDGMENT_EVIDENCE": {
+      "core_promotion_qualifying": true,
+      "linguistic_weight": "direct_judgment",
+      "definition": "Documented blinded panel, controlled experiment, or adjudicated speaker-judgment evidence with instrument and inclusion provenance."
+    },
+    "ATTESTATION_ONLY": {
+      "core_promotion_qualifying": false,
+      "linguistic_weight": "attestation",
+      "definition": "Dictionary, lesson, drama, manual, media text, isolated example, or similar source that attests a form but does not directly establish construction-level syntax, semantics, productivity, or boundaries."
+    },
+    "LEXICAL_OR_PRONUNCIATION_ONLY": {
+      "core_promotion_qualifying": false,
+      "linguistic_weight": "lexical_only",
+      "definition": "Source supports word identity, reading, orthography, gloss, lexical category, or pronunciation without analyzing the construction."
+    },
+    "DISCOVERY_LEAD_ONLY": {
+      "core_promotion_qualifying": false,
+      "linguistic_weight": "zero_until_recovered",
+      "definition": "Bibliographic or search lead whose existence is verified but whose substantive content has not been inspected. No linguistic claim may be imported until the source is recovered and regraded."
+    },
+    "RUNTIME_OBSERVATION_ONLY": {
+      "core_promotion_qualifying": false,
+      "linguistic_weight": "zero",
+      "definition": "Parser behavior, generated probes, diagnostics, tests, or implementation observations. These may document collisions but have zero linguistic-evidence weight."
+    }
+  },
+  "rules": {
+    "promotion_style_dispositions_require_qualifying_grade": true,
+    "primary_corpus_alone_does_not_authorize_productivity": true,
+    "runtime_grade_cannot_use_promotion_disposition": true,
+    "discovery_lead_cannot_support_substantive_claim": true,
+    "one_row_one_grade": true
+  }
+}
