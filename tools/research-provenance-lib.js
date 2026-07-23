@@ -3,8 +3,18 @@
 const fs = require("fs");
 const path = require("path");
 
-const REQUIRED_LEDGER_HEADERS = [
+const LEDGER_HEADERS_V1 = [
   "source_id",
+  "verification",
+  "citation_and_locator",
+  "what_it_supports",
+  "limit",
+  "disposition",
+];
+
+const LEDGER_HEADERS_V2 = [
+  "source_id",
+  "evidence_grade",
   "verification",
   "citation_and_locator",
   "what_it_supports",
@@ -14,12 +24,13 @@ const REQUIRED_LEDGER_HEADERS = [
 
 const MAIN_FILE_RE = /^((?:UC-RQ|PRQ2)-\d{3})-(?!\d{3}-).+-(?:RESEARCH|DISPOSITION)-R1\.md$/;
 const INDEX_ROW_RE = /^\|\s*((?:UC-RQ|PRQ2)-\d{3})\s*\|\s*\[[^\]]+\]\(([^)]+)\)\s*\|\s*$/;
-const PROMOTION_RE = /(?:^|_)(?:PROMOTE|DEDICATED)(?:_|$)|(?:CORE|PRODUCTIVE)/i;
+const PROMOTION_RE = /(?:^|_)(?:PROMOTE|DEDICATED)(?:_|$)|SUPPORTED_PRODUCTIVE|(?:CORE|PRODUCTIVE)/i;
 const DIRECT_EVIDENCE_RE = /(FULL_TEXT|PEER_REVIEWED|SCHOLARLY|DISSERTATION|THESIS|PROCEEDINGS|REFERENCE_GRAMMAR|BOOK_COMPANION|PRIMARY_(?:CORPUS|AUTHOR)|CORPUS_(?:ATTESTATION|CONTEXT)|CONTROLLED_JUDGMENT|EXPERIMENTAL)/i;
 const RUNTIME_RE = /RUNTIME/i;
 
 const HEADER_ALIASES = {
   source_id: ["source_id"],
+  evidence_grade: ["evidence_grade"],
   verification: ["verification", "verification_status", "source_type"],
   citation_and_locator: ["citation_and_locator", "citation", "citation_or_title", "locator", "url_or_location"],
   what_it_supports: ["what_it_supports", "claim_supported", "claim_used"],
@@ -58,9 +69,19 @@ function normalizeLedger(parsed) {
     }
     return normalized;
   });
+  const headerLine = parsed.headers.join("\t");
+  const schemaVersion = headerLine === LEDGER_HEADERS_V2.join("\t")
+    ? "v2"
+    : headerLine === LEDGER_HEADERS_V1.join("\t")
+      ? "v1"
+      : hasRequiredGroups && unknownHeaders.length === 0
+        ? "legacy"
+        : "malformed";
   return {
-    canonical: parsed.headers.join("\t") === REQUIRED_LEDGER_HEADERS.join("\t"),
-    recognized: hasRequiredGroups && unknownHeaders.length === 0,
+    schemaVersion,
+    canonical: schemaVersion === "v2",
+    recognized: schemaVersion !== "malformed",
+    hasEvidenceGradeColumn: parsed.headers.includes("evidence_grade"),
     unknownHeaders,
     rows,
   };
@@ -114,6 +135,47 @@ function issueWithBaseline(errors, warnings, issue, baselineSet) {
   else errors.push(issue);
 }
 
+function loadEvidenceGradeConfig(root) {
+  const file = path.join(root, "config", "research-evidence-grades.json");
+  if (!fs.existsSync(file)) {
+    return {
+      error: { type: "missing_evidence_grade_config", file: path.relative(root, file) },
+      config: { grades: {}, canonical_ledger_headers: LEDGER_HEADERS_V2 },
+    };
+  }
+  try {
+    const config = JSON.parse(read(file));
+    return { config };
+  } catch (error) {
+    return {
+      error: { type: "malformed_evidence_grade_config", file: path.relative(root, file), message: error.message },
+      config: { grades: {}, canonical_ledger_headers: LEDGER_HEADERS_V2 },
+    };
+  }
+}
+
+function validateEvidenceGradeConfig(config) {
+  const errors = [];
+  if (!config || typeof config !== "object") return [{ type: "invalid_evidence_grade_config" }];
+  if (!Array.isArray(config.canonical_ledger_headers) || config.canonical_ledger_headers.join("\t") !== LEDGER_HEADERS_V2.join("\t")) {
+    errors.push({ type: "evidence_grade_header_config_mismatch", expected: LEDGER_HEADERS_V2, found: config.canonical_ledger_headers || null });
+  }
+  const requiredGrades = [
+    "DIRECT_SCHOLARLY_CORE",
+    "REFERENCE_GRAMMAR_CORE",
+    "PRIMARY_CORPUS_ATTESTATION",
+    "CONTROLLED_JUDGMENT_EVIDENCE",
+    "ATTESTATION_ONLY",
+    "LEXICAL_OR_PRONUNCIATION_ONLY",
+    "DISCOVERY_LEAD_ONLY",
+    "RUNTIME_OBSERVATION_ONLY",
+  ];
+  for (const grade of requiredGrades) {
+    if (!config.grades || !config.grades[grade]) errors.push({ type: "missing_required_evidence_grade", grade });
+  }
+  return errors;
+}
+
 function auditResearchProvenance(root, options = {}) {
   const researchDir = path.join(root, "docs", "research");
   const indexPath = path.join(researchDir, "CURRENT-RESEARCH-PROVENANCE.md");
@@ -124,19 +186,33 @@ function auditResearchProvenance(root, options = {}) {
   const knownWeak = new Set();
   const knownLegacyHeaders = new Set();
   const knownMissingCompanionLinks = new Set();
+  const knownUngradedLedgers = new Set();
+  const gradeStateById = new Map();
   let evidenceGatePrefixes = ["UC-RQ", "PRQ2"];
+
+  const gradeConfigResult = loadEvidenceGradeConfig(root);
+  if (gradeConfigResult.error) errors.push(gradeConfigResult.error);
+  const evidenceConfig = gradeConfigResult.config;
+  errors.push(...validateEvidenceGradeConfig(evidenceConfig));
+  const allowedGrades = new Set(Object.keys(evidenceConfig.grades || {}));
+  const coreQualifyingGrades = new Set(
+    Object.entries(evidenceConfig.grades || {})
+      .filter(([, value]) => value && value.core_promotion_qualifying)
+      .map(([grade]) => grade)
+  );
 
   if (fs.existsSync(baselinePath)) {
     const baseline = JSON.parse(read(baselinePath));
     for (const id of baseline.known_weak_core_ids || []) knownWeak.add(id);
     for (const id of baseline.known_legacy_ledger_ids || []) knownLegacyHeaders.add(id);
     for (const id of baseline.known_missing_companion_link_ids || []) knownMissingCompanionLinks.add(id);
+    for (const id of baseline.known_ungraded_ledger_ids || []) knownUngradedLedgers.add(id);
     if (Array.isArray(baseline.evidence_gate_prefixes)) evidenceGatePrefixes = baseline.evidence_gate_prefixes;
   }
 
   if (!fs.existsSync(indexPath)) {
     errors.push({ type: "missing_index", file: path.relative(root, indexPath) });
-    return { schema: "canto-span-research-provenance-v1", status: "FAIL", errors, warnings, packages };
+    return { schema: "canto-span-research-provenance-v2", status: "FAIL", errors, warnings, packages };
   }
 
   const indexEntries = parseIndex(read(indexPath));
@@ -164,7 +240,16 @@ function auditResearchProvenance(root, options = {}) {
 
   for (const entry of indexEntries) {
     const mainPath = path.join(researchDir, entry.main);
-    const item = { id: entry.id, main: entry.main, source: "", collision: "", strongest_evidence: "NONE", known_weak_core: false };
+    const item = {
+      id: entry.id,
+      main: entry.main,
+      source: "",
+      collision: "",
+      ledger_schema: "unknown",
+      evidence_grades: [],
+      strongest_evidence: "NONE",
+      known_weak_core: false,
+    };
     packages.push(item);
     if (!fs.existsSync(mainPath)) {
       errors.push({ type: "missing_main_record", id: entry.id, file: entry.main });
@@ -202,27 +287,88 @@ function auditResearchProvenance(root, options = {}) {
 
     const parsed = parseTsv(read(sourcePath));
     const ledger = normalizeLedger(parsed);
-    if (!ledger.canonical) {
-      const issue = { type: ledger.recognized ? "legacy_source_header" : "malformed_source_header", id: entry.id, file: item.source, found: parsed.headers };
-      if (ledger.recognized) issueWithBaseline(errors, warnings, issue, knownLegacyHeaders);
-      else errors.push(issue);
+    item.ledger_schema = ledger.schemaVersion;
+    if (ledger.schemaVersion === "legacy") {
+      issueWithBaseline(
+        errors,
+        warnings,
+        { type: "legacy_source_header", id: entry.id, file: item.source, found: parsed.headers },
+        knownLegacyHeaders
+      );
+    } else if (ledger.schemaVersion === "malformed") {
+      errors.push({ type: "malformed_source_header", id: entry.id, file: item.source, found: parsed.headers });
     }
     for (const line of parsed.malformedRows) errors.push({ type: "malformed_source_row", id: entry.id, file: item.source, line });
 
+    if (!ledger.hasEvidenceGradeColumn) {
+      gradeStateById.set(entry.id, "ungraded");
+      issueWithBaseline(
+        errors,
+        warnings,
+        { type: "missing_evidence_grade_column", id: entry.id, file: item.source },
+        knownUngradedLedgers
+      );
+    } else {
+      gradeStateById.set(entry.id, "graded");
+    }
+
     let qualifyingDirect = 0;
     let promotionClaim = false;
+    const gradesSeen = new Set();
     for (let rowIndex = 0; rowIndex < ledger.rows.length; rowIndex += 1) {
       const row = ledger.rows[rowIndex];
       const line = rowIndex + 2;
       if (!row.source_id) errors.push({ type: "missing_source_id", id: entry.id, file: item.source, line });
       if (!stableLocator(row.citation_and_locator)) errors.push({ type: "missing_stable_locator", id: entry.id, file: item.source, line, source_id: row.source_id || null });
-      const runtime = RUNTIME_RE.test(`${row.source_id} ${row.verification}`);
+      if (!String(row.limit || "").trim() || /^(?:none|n\/?a|unknown|tbd)$/i.test(String(row.limit).trim())) {
+        errors.push({ type: "missing_source_limitation", id: entry.id, file: item.source, line, source_id: row.source_id || null });
+      }
+
+      const runtimeByMetadata = RUNTIME_RE.test(`${row.source_id} ${row.verification}`);
       const promotes = PROMOTION_RE.test(row.disposition || "");
       if (promotes) promotionClaim = true;
-      if (runtime && promotes) errors.push({ type: "runtime_presented_as_linguistic_evidence", id: entry.id, file: item.source, line, source_id: row.source_id });
-      if (!runtime && DIRECT_EVIDENCE_RE.test(row.verification || "")) qualifyingDirect += 1;
+
+      if (ledger.hasEvidenceGradeColumn) {
+        const grade = String(row.evidence_grade || "").trim();
+        if (!grade) {
+          errors.push({ type: "missing_evidence_grade", id: entry.id, file: item.source, line, source_id: row.source_id || null });
+        } else if (!allowedGrades.has(grade)) {
+          errors.push({ type: "invalid_evidence_grade", id: entry.id, file: item.source, line, source_id: row.source_id || null, grade });
+        } else {
+          gradesSeen.add(grade);
+          if (coreQualifyingGrades.has(grade)) qualifyingDirect += 1;
+          if (runtimeByMetadata && grade !== "RUNTIME_OBSERVATION_ONLY") {
+            errors.push({ type: "runtime_evidence_grade_mismatch", id: entry.id, file: item.source, line, source_id: row.source_id, grade });
+          }
+          if (!runtimeByMetadata && grade === "RUNTIME_OBSERVATION_ONLY") {
+            warnings.push({ type: "runtime_grade_without_runtime_marker", id: entry.id, file: item.source, line, source_id: row.source_id });
+          }
+          if (grade === "RUNTIME_OBSERVATION_ONLY" && promotes) {
+            errors.push({ type: "runtime_presented_as_linguistic_evidence", id: entry.id, file: item.source, line, source_id: row.source_id });
+          }
+          if (grade === "DISCOVERY_LEAD_ONLY") {
+            if (promotes || !/(LEAD|RECOVER|DISCOVER|BIBLIOGRAPH)/i.test(row.disposition || "")) {
+              errors.push({ type: "discovery_lead_substantive_disposition", id: entry.id, file: item.source, line, source_id: row.source_id, disposition: row.disposition || "" });
+            }
+          }
+          if (["ATTESTATION_ONLY", "LEXICAL_OR_PRONUNCIATION_ONLY", "PRIMARY_CORPUS_ATTESTATION"].includes(grade) && promotes) {
+            warnings.push({ type: "nonqualifying_row_uses_promotion_disposition", id: entry.id, file: item.source, line, source_id: row.source_id, grade });
+          }
+        }
+      } else {
+        if (runtimeByMetadata && promotes) {
+          errors.push({ type: "runtime_presented_as_linguistic_evidence", id: entry.id, file: item.source, line, source_id: row.source_id });
+        }
+        if (!runtimeByMetadata && DIRECT_EVIDENCE_RE.test(row.verification || "")) qualifyingDirect += 1;
+      }
     }
-    item.strongest_evidence = qualifyingDirect > 0 ? "QUALIFYING_DIRECT" : "ATTESTATION_OR_RUNTIME_ONLY";
+
+    item.evidence_grades = [...gradesSeen].sort();
+    item.strongest_evidence = gradesSeen.size
+      ? [...gradesSeen].find((grade) => coreQualifyingGrades.has(grade)) || [...gradesSeen][0]
+      : qualifyingDirect > 0
+        ? "TRANSITIONAL_HEURISTIC_DIRECT"
+        : "ATTESTATION_OR_RUNTIME_ONLY";
     item.known_weak_core = promotionClaim && qualifyingDirect === 0 && knownWeak.has(entry.id);
     const evidenceGateEnabled = evidenceGatePrefixes.some((prefix) => entry.id.startsWith(`${prefix}-`));
     if (evidenceGateEnabled && promotionClaim && qualifyingDirect === 0) {
@@ -230,15 +376,28 @@ function auditResearchProvenance(root, options = {}) {
     }
   }
 
-  for (const [kind, ids] of [["weak_core", knownWeak], ["legacy_ledger", knownLegacyHeaders], ["missing_companion_link", knownMissingCompanionLinks]]) {
+  for (const [kind, ids] of [
+    ["weak_core", knownWeak],
+    ["legacy_ledger", knownLegacyHeaders],
+    ["missing_companion_link", knownMissingCompanionLinks],
+  ]) {
     for (const id of ids) {
       if (!indexedById.has(id)) errors.push({ type: `stale_${kind}_baseline`, id });
     }
   }
+  for (const id of knownUngradedLedgers) {
+    if (!indexedById.has(id)) {
+      errors.push({ type: "stale_ungraded_ledger_baseline", id });
+    } else if (gradeStateById.get(id) === "graded") {
+      errors.push({ type: "stale_ungraded_ledger_baseline", id });
+    }
+  }
 
   return {
-    schema: "canto-span-research-provenance-v1",
+    schema: "canto-span-research-provenance-v2",
     package_count: packages.length,
+    graded_package_count: packages.filter((item) => item.ledger_schema === "v2").length,
+    ungraded_package_count: warnings.filter((item) => item.type === "missing_evidence_grade_column").length,
     known_weak_core_count: warnings.filter((item) => item.type === "promotion_without_direct_evidence").length,
     known_legacy_header_count: warnings.filter((item) => item.type === "legacy_source_header").length,
     known_missing_companion_link_count: warnings.filter((item) => /companion_link$/.test(item.type)).length,
@@ -252,12 +411,15 @@ function auditResearchProvenance(root, options = {}) {
 }
 
 module.exports = {
-  REQUIRED_LEDGER_HEADERS,
+  LEDGER_HEADERS_V1,
+  LEDGER_HEADERS_V2,
   auditResearchProvenance,
   derivePackage,
   findCompanionReference,
+  loadEvidenceGradeConfig,
   normalizeLedger,
   parseIndex,
   parseResearchId,
   parseTsv,
+  validateEvidenceGradeConfig,
 };
