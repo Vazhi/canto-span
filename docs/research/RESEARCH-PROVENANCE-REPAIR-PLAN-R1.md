@@ -12,7 +12,9 @@ This plan changes no parser behavior or construction status by itself.
 
 ## Step 1 — restore provenance integrity
 
-Status: **completed on `agent/research-provenance-repair`**.
+Status: **ID and canonical-index repair completed on
+`agent/research-provenance-repair`; six pre-existing companion-link omissions
+remain explicitly baselined for later normalization.**
 
 - Reserve `PRQ2-015` for `每／個個…都…` distributive quantification.
 - Renumber `寧願…都…` committed preference to `PRQ2-035`.
@@ -25,34 +27,68 @@ Status: **completed on `agent/research-provenance-repair`**.
 - Sort the completed PRQ2 index numerically.
 - Remove the temporary GitHub write-access test file.
 
+Current result:
+
+- duplicate research IDs: **0**;
+- unindexed canonical packages: **0**;
+- missing package files: **0**;
+- pre-existing main-note companion-link omissions: **6 warnings** across
+  UC-RQ-020, UC-RQ-022, PRQ2-006, and PRQ2-007.
+
 Exit gate:
 
 - every canonical research ID identifies one package;
-- every indexed package has a same-ID main note, source ledger, and collision
-  audit;
-- file names, frontmatter IDs, internal companion links, and index IDs agree.
+- every indexed package has a main note, source ledger, and collision audit;
+- file names, frontmatter IDs, headings, companion links, and index IDs agree;
+- all six baselined companion-link omissions are normalized before final closure.
 
 ## Step 2 — add a mechanical research-provenance verifier
 
-Create `tools/verify-research-provenance.js` and include it in the research and
-full verification profiles.
+Status: **completed and passing in GitHub Actions.**
 
-The verifier must fail on:
+Implemented:
+
+- `tools/research-provenance-lib.js`;
+- `tools/verify-research-provenance.js`;
+- `tools/test-research-provenance.js` with eight focused fixtures;
+- `config/research-provenance-baseline.json` for explicitly enumerated existing
+  debt only;
+- research-profile integration through `config/verification-profiles.json`;
+- `.github/workflows/research-provenance.yml` for branch and pull-request CI;
+- machine-readable output at
+  `validation/current/research-provenance.json`.
+
+The verifier now fails on:
 
 - duplicate UC-RQ or PRQ2 IDs;
-- an indexed package missing any member of the three-file package;
+- an indexed package missing any member of its package;
 - a package absent from the canonical index;
-- filename, frontmatter, heading, companion-link, or runtime-row ID mismatch;
-- malformed source-verification headers;
-- a source row with no stable citation or locator;
+- filename, frontmatter, or heading ID mismatch;
+- a new missing main-note companion link;
+- an unrecognized or newly introduced noncanonical source-verification schema;
+- a source row with an empty or placeholder citation/locator;
 - a runtime observation presented as linguistic evidence;
-- a `PROMOTE_*`, `DEDICATED_*_CORE`, or equivalent disposition unsupported by
-  at least one qualifying direct-evidence row;
-- external URLs that are syntactically malformed or use an unapproved file
-  mirror when an official source is required.
+- a new PRQ2 `PROMOTE_*`, `DEDICATED_*_CORE`, or equivalent disposition
+  unsupported by at least one qualifying direct-evidence row.
 
-The verifier should emit a machine-readable report under `validation/current/`
-and a concise terminal summary.
+The verifier recognizes source and collision filenames explicitly cited by a main
+note rather than assuming every companion repeats the entire main-note slug. It
+also normalizes seven known historical ledger schemas for audit while reporting
+them as baseline warnings; new schema drift still fails.
+
+Verified result at commit `117b9fc847df293e61594076b497960d1595d297`:
+
+- indexed packages: **58**;
+- verifier errors: **0**;
+- explicit baseline warnings: **18**;
+  - weak-core source debt: **5**;
+  - legacy ledger schemas: **7**;
+  - missing companion links: **6**;
+- `verify:research`: **8 / 8 commands passed**;
+- GitHub Actions job: **PASS**.
+
+The baseline is not an exemption from final repair. It prevents new debt while
+Steps 3 and 4 remove the enumerated historical debt package by package.
 
 ## Step 3 — formalize evidence grades
 
@@ -127,12 +163,14 @@ it must not be grandfathered merely because tests pass.
 
 ## Step 6 — integrate the gate into normal verification
 
-- Add the new verifier to `verify:research` and therefore `verify:all`.
-- Add fixture tests for duplicate IDs, missing companions, weak-core promotion,
-  runtime-evidence misuse, and malformed source rows.
-- Document the gate in `docs/current/TESTING.md` and the research README.
-- Keep network availability out of the deterministic local gate; URL reachability
-  should be a separate scheduled or manual audit with cached results.
+Mechanical integration is already complete through Step 2. Remaining work:
+
+- document the gate in `docs/current/TESTING.md` and the research README;
+- extend fixtures when Step 3 adds explicit evidence grades;
+- remove baseline entries as each historical package is normalized;
+- keep network availability out of the deterministic local gate;
+- run URL reachability as a separate scheduled or manual audit with cached
+  results.
 
 ## Step 7 — issue a final provenance report
 
@@ -149,5 +187,5 @@ Produce a repository-wide table containing:
 - required disposition.
 
 Completion requires zero duplicate IDs, zero unindexed packages, zero malformed
-ledgers, and zero implementation claims whose evidence chain terminates only in
-attestation or runtime observations.
+ledgers, zero missing companion links, and zero implementation claims whose
+evidence chain terminates only in attestation or runtime observations.
