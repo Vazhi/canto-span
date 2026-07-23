@@ -4,6 +4,7 @@ research_id: UC-RQ-025
 status: active_research_unit
 baseline_version: 0.5.214
 created: 2026-07-23
+consolidated: 2026-07-23
 implementation_authorized: false
 status_change_authorized: false
 ---
@@ -159,6 +160,42 @@ Future research must distinguish:
 | Can current collision labels preserve the full null-NP core? | **No.** |
 | Is a dedicated research unit justified? | **Yes.** |
 | Is parser implementation authorized? | **No.** |
+
+## Consolidated evidence retained from parallel package
+
+The former parallel `NULL-ARGUMENT-TOPIC-DROP` package has been merged into this
+canonical null-argument/zero-anaphora unit. Its detailed claim and collision
+records reinforce these distinctions:
+
+- specific object drop requires a discourse or situational antecedent, but
+  non-specific object drop includes existential, generic, and attributive
+  readings and therefore cannot be reduced to definite coreference;
+- the same surface may remain ambiguous between specific and non-specific
+  interpretations, and predicate semantics can constrain the available reading;
+- omitted subjects remain a separate research matrix involving person,
+  clause type, coordination, polarity focus, speech act, register, and competing
+  antecedents;
+- overt topic chains are one supported route to an understood object, not a
+  universal derivation for implicit cross-sentence topic continuity;
+- object drop must be distinguished from lexical intransitivity, optional-object
+  uses, complement/domain omission, fragment answers, nominal ellipsis, and
+  selectively licensed VP ellipsis;
+- generated or runtime-produced full coverage has zero linguistic evidence
+  weight and can hide a missing valency or antecedent relation.
+
+The expanded audit preserves exact contrasts including `我鍾意` after an overt
+antecedent, generic `鍾意` continuations, attributive `想要` continuations, an overt
+`呢本書，我睇完喇` topic chain, cross-sentence `睇完喇`, multiply omitted
+arguments in `食咗喇`, subject continuity after reported speech, placement
+predicates such as `放喺呢度`, and the broad `IntransitiveVP` collision.
+
+### Consolidated representation requirements
+
+Any future analysis must record the omitted category, predicate sense and valency,
+antecedent location, reference type, interpretation ambiguity, discourse relation,
+clause type, speech act, and whether an overt topic is present. It may expose an
+unresolved or context-required slot, but it must not fabricate a silent token or
+select an antecedent absent from the supplied discourse.
 
 ## Exit conditions
 

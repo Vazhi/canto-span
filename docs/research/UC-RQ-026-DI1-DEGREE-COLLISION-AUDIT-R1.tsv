@@ -1,10 +1,26 @@
-collision_target	current_role	observed_overlap	decisive_difference	current_disposition
-DegreeMannerAdverbial	Two-token `degree_manner_head + degree_particle` surface family	Exactly covers scalar property or manner head followed by degree `啲`.	Existing source map already requires typed property-comparison, imperative-adjustment, action-manner, position, and scope boundaries; an overt standard belongs to a larger structure.	MERGE_CORE_RESEARCH_WITH_TYPED_SUBPROFILES
-ComparativeStative (retired)	Former residual stative-plus-`啲` fallback	Shared the same two-token surface and generic comparative gloss.	Fired only when slot metadata failed and added no independent marker or relation beyond DegreeMannerAdverbial.	KEEP_RETIRED_DO_NOT_REVIVE
-DegreeModifiedLexicalStative	Preposed degree word plus independently lexicalized stative	Both concern degree modification of a property.	Does not contain post-predicate `啲`; exact researched profile is `好 + 好食`, not `property + 啲`.	KEEP_SEPARATE
-ScalarEvaluation	Narrow lexical negative `唔算 + property` evaluation	Both concern scalar properties.	Contains an overt evaluation predicate and no `啲`; scalar domain does not establish shared construction.	KEEP_SEPARATE
-UC-RQ-005 `gwo3` surpass comparative	Property plus `過` plus overt comparison standard	Both express comparison on a property scale.	Lam contrasts required overt standard after `過` with optional standard before differential `(一)啲` in the bare profile.	KEEP_SEPARATE_COMPARATIVE_STRATEGY
-Nominal/determiner `啲`	Plural/mass/partitive-like element before or within an NP	Same surface form and Jyutping.	Nominal `啲` combines with nominal material and quantifies individuals/stuff; post-property degree `啲` measures scalar difference.	KEEP_SEPARATE_BY_POSITION_AND_CATEGORY
-Pre-property `有啲 + property`	Attenuative degree expression before a stative predicate	Can translate “a bit A.”	Different overt order and includes `有`; it is not evidence for post-predicate attachment or an optional standard.	KEEP_SEPARATE
-Reduplicated `A-A哋 dei2`	Reduplicated adjectival attenuative/“ish” profile	Can express approximation or attenuation.	Different tone, graph, reduplication, and constructional shape from post-predicate `啲 di1`.	KEEP_SEPARATE
-Imperative/request clause	Speech-act structure requesting an adjustment	Can host standalone property+`啲` or attach `X啲` to a VP.	Directive force comes from clause type, context, particles, and prosody; it is not a unique lexical meaning of `啲`.	COMPOSE_WITH_DEGREE_MANNER_SUBPROFILE
+audit_id	surface_or_target	profile	current_runtime_or_role	collision_or_gap	evidence_weight_or_decisive_difference	recommended_disposition
+UC026-T01	DegreeMannerAdverbial	merger target	Two-token degree/manner head plus `啲`	Covers core surface but requires typed property, directive, preposed, postverbal, and standard-bearing profiles.	MERGE_CORE_RESEARCH_WITH_TYPED_SUBPROFILES
+UC026-T02	ComparativeStative (retired)	retired duplicate	Former generic stative-plus-`啲` fallback	Added no independent marker or relation.	KEEP_RETIRED_DO_NOT_REVIVE
+UC026-T03	DegreeModifiedLexicalStative	neighboring degree family	Preposed degree word plus lexicalized stative	No post-predicate `啲`; not a merger target.	KEEP_SEPARATE
+UC026-T04	ScalarEvaluation	neighboring scalar family	Narrow `唔算 + property` evaluation	Scalar subject matter does not create shared structure.	KEEP_SEPARATE
+UC026-T05	UC-RQ-005 `過` comparative	comparison strategy	Property plus `過` plus overt standard	Different marker and standard position/requirement.	KEEP_SEPARATE
+UC026-T06	Nominal/determiner `啲`	homograph boundary	Nominal quantifier/partitive element	Different category, position, and semantic domain.	KEEP_SEPARATE_BY_POSITION_AND_CATEGORY
+UC026-T07	Pre-property `有啲 + property`	order boundary	Attenuative before stative predicate	Different overt order and includes `有`.	KEEP_SEPARATE
+UC026-T08	A-A哋 dei2	phonological/morphological boundary	Reduplicated attenuative profile	Different tone, graph, reduplication, and construction shape.	KEEP_SEPARATE
+UC026-C01	高啲。	bare scalar profile	DegreeMannerAdverbial; full coverage	Comparative standard and differential interpretation are not represented.	CONTEXTUAL_METADATA_ONLY_AFTER_BOUNDED_DESIGN
+UC026-C02	阿明高啲。	property clause	Only `高啲` wrapped	Subject remains outside a complete property predicate clause.	REQUIRE_SUBJECT_PLUS_SCALAR_PREDICATE_COMPOSITION
+UC026-C03	阿明高阿強啲。	overt standard	Standard is misgrouped as nominal material	Severe constituency error can license arbitrary material between property and `啲`.	EXACT_STANDARD_POSITION_AUDIT_REQUIRED
+UC026-C04	貴啲。	contextual ambiguity	DegreeMannerAdverbial; full coverage	Could be comparative, requested adjustment, or directive.	PRESERVE_CONTEXT_REQUIRED_READINGS
+UC026-C05	呢個貴啲。	scope collision	Degree node scopes over TopicComment	Clause and property boundaries are obscured.	PREVENT_COMPLEX_CLAUSE_AS_DEGREE_HEAD
+UC026-C06	客氣啲。	standalone adjustment	DegreeMannerAdverbial	Speech-act/request status is not represented.	COMPOSE_WITH_CLAUSE_TYPE_AND_CONTEXT
+UC026-C07	好啲喇。	improvement/change profile	No top construction	Common contextual improvement profile is missing.	RESEARCH_LEXICAL_AND_CHANGE_STATE_BOUNDARY
+UC026-C08	有啲貴。	preverbal attenuative	DegreeStativePredicate	Correctly distinct and must remain protected.	PRESERVE_ORDER_SENSITIVE_SPLIT
+UC026-C09	貴係貴啲。	larger concessive frame	Only final `貴啲` recognized	Partial child recognition hides unresolved larger construction.	KEEP_TRANSPARENT_UNDER_SEPARATE_CONCESSIVE_RESEARCH
+UC026-C10	快啲嚟。	preposed action adjustment	DegreeMannerModifiedVP	Useful composition but semantic subtype remains generic.	PRESERVE_PRE_VP_ORDER_AND_DIRECTIVE_CONTEXT
+UC026-C11	慢啲講。	preposed manner	DegreeMannerModifiedVP	Predicate-range productivity is unproven.	TEST_PREDICATE_CLASSES_AND_SPEECH_ACTS
+UC026-C12	講慢啲。	postverbal manner	VerbComplementVP with degree child	Same inner label as property comparison obscures domain.	KEEP_ACTION_MANNER_SUBTYPE_DISTINCT
+UC026-C13	行快啲。	postverbal manner	VerbComplementVP with degree child	Wrapper may overgeneralize generic complement syntax.	PRESERVE_SOURCE_LINKED_FORM_AND_AUDIT_VALENCY
+UC026-C14	遲啲見。	temporal ambiguity	DegreeMannerModifiedVP	`遲啲` may mean “later,” not manner adjustment.	ADD_TEMPORAL_SUBTYPE_OR_AMBIGUITY
+UC026-C15	多啲人嚟。	quantity NP boundary	SubjectPredicateClause with quantified NP	Generic `X+啲` refactor could steal nominal quantity material.	PROTECT_QUANTITY_NP
+UC026-C16	呢啲人嚟。	nominal homograph	DiMarkedNP plus motion VP	Same written token has unrelated nominal syntax.	REQUIRE_POSITION_AND_HEAD_NOUN_DIAGNOSTICS
+UC026-C17	唔該你客氣啲。	polite request	PoliteImperativeClause with scalar child	Does not imply every `A啲` is imperative.	KEEP_SPEECH_ACT_LICENSING_IN_PARENT

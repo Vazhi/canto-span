@@ -4,6 +4,7 @@ research_id: UC-RQ-018
 status: active_research_unit
 baseline_version: 0.5.213
 created: 2026-07-23
+consolidated: 2026-07-23
 implementation_authorized: false
 status_change_authorized: false
 ---
@@ -159,6 +160,48 @@ Future research must distinguish:
 | Is it an ordinary yes/no polar question? | **No; its core requests a choice.** |
 | Is a dedicated research unit justified? | **Yes.** |
 | Is parser implementation authorized? | **No.** |
+
+## Consolidated evidence retained from parallel package
+
+The former parallel `ALTERNATIVE-DISJUNCTIVE-QUESTION` package has been merged
+into this canonical unit. Its additional evidence and audit detail establish the
+following refinements without changing the research disposition:
+
+- `定 ding6` and `定係 ding6hai6` occur with NP, locative, temporal, manner,
+  VP, and clausal alternatives; a noun-only coordination rule would be
+  under-inclusive.
+- Direct and embedded alternatives must be distinguished. An attested embedded
+  profile under `問` shows that punctuation and sentence-final particles cannot
+  define the construction.
+- The 2025 analysis gives `話 waa6` and `先 sin1` as information-seeking tails
+  and rejects neutral alternative questions with polar `咩 me1`. These are
+  source judgments requiring independent speaker and discourse replication,
+  not executable categorical rules.
+- `究竟` versus `唔通` is a proposed information-seeking/confirmation-seeking
+  diagnostic. It is retained as a research contrast only.
+- `抑或` is independently identified as a disjunctive linker, but its register,
+  constituent range, and relation to `定(係)` remain unresolved.
+- Li et al. 2013 independently code `ding6`/`ding6 hai6` alternatives in a
+  corpus of 492 Cantonese-speaking children. This corroborates descriptive
+  status, not adult productivity or parser boundaries.
+- Zheng, Zhang, and Gao 2021 provide pedagogical examples spanning person,
+  destination, time, manner, and activity alternatives. These examples are
+  attestation leads rather than promotion evidence.
+
+The expanded collision audit retains exact surface controls for broad-wrapper
+false coverage, lexical/resultative `定`, prospective `定`, direct versus embedded
+questions, polar `咩`, final `話/先`, locative ellipsis, A-not-A, and declarative
+`或者`. The original backlog citation `Wu 1989` remains unresolved; no claim from
+that lead is imported until its exact bibliographic identity and text are verified.
+
+### Consolidated corpus and speaker requirements
+
+A future evidence packet must classify corpus hits for connector sense, direct or
+embedded status, constituent type, number of alternatives, shared material or
+ellipsis, final particle, register, and prosody. A blinded speaker instrument must
+separate naturalness from answer type, exhaustivity, echo/surprise readings, and
+context requirements across matched `定`, `定係`, `抑或`, `或者`, A-not-A, and
+particle-polar controls.
 
 ## Exit conditions
 

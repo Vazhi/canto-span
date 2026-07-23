@@ -4,6 +4,7 @@ research_id: UC-RQ-026
 status: resolved_mixed_disposition
 baseline_version: 0.5.214
 created: 2026-07-23
+consolidated: 2026-07-23
 implementation_authorized: false
 status_change_authorized: false
 ---
@@ -162,6 +163,42 @@ The existing degree/manner research family must still distinguish:
 | Where does the core belong? | **Merge into `DegreeMannerAdverbial` research.** |
 | Is the complete lexical/semantic matrix established? | **No; quarantined.** |
 | Is parser implementation authorized? | **No.** |
+
+## Consolidated evidence retained from parallel package
+
+The former parallel `DI1-SCALAR-COMPARATIVE-ADJUSTMENT` package has been merged
+into this canonical disposition. It adds morphological, lexical, and runtime
+controls while preserving the decision to merge the core into
+`DegreeMannerAdverbial` rather than create a new generic comparative node.
+
+The consolidated family must retain at least four surface-scope profiles:
+
+```text
+property + (standard) + (一)啲      bare/contextual scalar comparison
+property + 啲                       standalone requested adjustment
+property/manner + 啲 + VP           preposed action adjustment
+V + property/manner + 啲             postverbal action-manner adjustment
+```
+
+Lam, Lau, and Lee 2024 independently treat adjectival `啲` as a bound comparative
+suffix in Cantonese segmentation and show an adverbial `遲啲` “later” use. Their
+large-corpus annotation supports a morphological distinction but does not settle
+syntactic scope or productivity. Words.hk and the checked teaching sources add
+examples such as `好啲喇`, `講慢啲`, `行快啲`, and movement/quantity uses. These
+show that translation overlap cannot license one unrestricted token rule.
+
+The expanded boundary inventory includes temporal `遲啲`, quantity `多啲/少啲`,
+nominal `呢啲人`, preverbal `有啲貴`, concessive/reiterative `貴係貴啲`, and
+change-of-state or discourse-particle combinations. Lexical scale structure and
+speech act determine whether a surface is comparative, improvement, mitigation,
+or requested adjustment.
+
+The expanded runtime audit retains exact probes showing subject detachment in
+`阿明高啲`, standard misgrouping in `阿明高阿強啲`, clause-level overattachment
+in `呢個貴啲`, missing coverage for `好啲喇`, the temporal ambiguity of `遲啲見`,
+and the distinct preposed/postverbal structures in `快啲嚟`, `慢啲講`, `講慢啲`,
+and `行快啲`. These probes identify implementation risks only and carry zero
+linguistic evidence weight.
 
 ## Exit conditions
 
