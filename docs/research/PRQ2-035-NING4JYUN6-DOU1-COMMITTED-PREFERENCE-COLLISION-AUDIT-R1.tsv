@@ -5,7 +5,7 @@ probe_or_target	current_runtime_result	overlap_or_failure	decisive_evidence_diff
 我以後寧願坐火車都唔想坐飛機。	VP and ModalVP children only	The two transport alternatives are not ordered by preference.	The romanized lesson explicitly supplies the paired surface.	M4SOENG2_REJECTION_PROFILE_MISSING
 有啲人寧願退黨都要補上空缺。	ModalVP child only	The accepted cost and committed goal are not related.	The lexicographic example attests a positive 都要 continuation rather than rejected B.	COMMITTED_GOAL_PROFILE_MISSING
 寧願自己俾錢睇私家醫生。	VP child only	The lexical preference is not represented, but no paired relation should be inferred.	HKCanCor independently attests complete lone 寧願 preference.	LONE_PREFERENCE_CONTROL
-與其坐飛機，不如坐火車。	ClauseLink with Suggest and VP children	Another preference construction overlaps semantically but uses different markers and option roles.	PRQ2-009 documents the ordered-alternative family separately.	JYU5KEI4_CONTROL_KEEP_SEPARATE
+與其坐飛機，不如坐火車。	ClauseLink with Suggest and VP children	Another preference construction overlaps semantically but uses different markers and option roles.	PRQ2-013 documents the ordered-alternative family separately.	JYU5KEI4_CONTROL_KEEP_SEPARATE
 我情願留喺屋企。	Location child only	A lexical synonym does not license the target paired family automatically.	The checked target sources do not establish constructional equivalence.	CING4JYUN6_CONTROL_UNRESOLVED
 寧願。	No construction rows	A lone marker has no complement or relation.	A licensed preference member is required.	EMPTY_COMPLEMENT_GUARD
 寧願都唔。	No construction rows	Marker adjacency supplies neither a chosen nor rejected proposition.	Two semantically licensed members are required for the paired family.	EMPTY_MEMBER_GUARD

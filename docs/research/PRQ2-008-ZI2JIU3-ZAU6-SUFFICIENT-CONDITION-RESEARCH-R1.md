@@ -10,74 +10,152 @@ status_change_authorized: false
 
 # PRQ2-008 — `只要 … (就) …` sufficient condition
 
-## Research decision
+## Revised research decision
 
-Promote Cantonese `只要 A，(就) B` to a dedicated **research-only
-sufficient-condition family**:
+Retain a bounded, research-only Cantonese sufficient-condition profile:
 
 ```text
-只要 + SUFFICIENT-CONDITION，
-(SUBJECT / CONTEXT) + (就) + CONSEQUENCE
+只要 + CONDITION，
+(SUBJECT) + (就) + CONSEQUENCE
 ```
 
-The first member presents a condition sufficient for the consequence. Checked
-teaching material and natural HKCanCor evidence attest overt and omitted `就`,
-different subjects, modal and negative consequences, indeterminate-plus-`都`,
-and a discourse-spanning continuation.
+The strongest external support is Yip and Matthews' explicit treatment of
+Cantonese sufficient conditions. Their checked examples establish:
 
-This family is distinct from hypothetical `如果 A，就 B`, necessary-condition
-`只有 A，先至 B`, UC-RQ-038 `除非`, UC-RQ-020 free-choice `wh…都`, and lexical
-`只` plus modal `要`. A bare `只要 A` may be discourse-complete or incomplete;
-it must not automatically invent a missing consequence.
+- `只要` introducing a sufficient condition;
+- condition-before-consequence order;
+- a paired consequence with `就`;
+- a consequence without overt `就` in at least one conventional profile;
+- different subjects across the two clauses;
+- modal and negative consequences.
 
-The evidence does not settle whether every consequence marker is optional,
-inferences under negation, clause order, ellipsis, prosody, register, or all
-constituent and speech-act types.
+This supports a bounded construction-level research target. It does **not**
+establish unrestricted omission of `就`, every consequence marker, every clause
+or speech-act type, fragment completion, discourse-spanning ellipsis, prosody,
+frequency, or cross-regional uniformity.
 
-Implementation authorization granted on 2026-07-23 is limited to the overt
-comma-delimited `只要 A，就 B` core, internal sufficient-condition profile
-metadata, and empty-member guards. It does not authorize a
-construction-status change, lexical merger of `只要`, omitted `就`,
-discourse-spanning inference, or a broader automatic acceptance rule.
+The previously broader core claim is therefore narrowed. Teaching examples, a
+drama script, and three incidental HKCanCor contexts remain useful attestations
+and research prompts, but they do not carry independent core or productivity
+weight.
+
+This evidence repair authorizes no additional parser change,
+construction-status change, lexical installation, executable fixture, survey
+instrument, or broader automatic acceptance rule.
+
+## Supported bounded core
+
+The reference grammar gives these Cantonese profiles:
+
+```text
+只要有手有腳，唔使驚餓死嘅。
+只要佢肯講句對唔住，我就會原諒佢。
+```
+
+These support the following conservative description:
+
+1. `只要` marks the antecedent as a condition sufficient for the following
+   consequence.
+2. The condition precedes the consequence in the checked Cantonese pattern.
+3. `就` can mark the consequence, after its subject and before the predicate.
+4. At least one source-checked consequence occurs without overt `就`; this is an
+   attested profile, not a license to delete `就` freely in every environment.
+5. The condition and consequence may have different understood or overt
+   subjects.
+6. Consequences may include modal or negative material.
+
+## Existing implementation status
+
+The pre-existing authorization and runtime slice remain limited to the overt,
+comma-delimited `只要 A，就 B` core with adjacent `只`+`要`, overt `就`, internal
+`sufficient_condition` metadata, and empty-member guards. That implemented slice
+falls inside the bounded source-supported profile.
+
+No-`就`, discourse-spanning, fragmentary, and broader consequence-marker
+profiles remain deferred. This repair does not expand the implementation.
+
+## Attested extensions requiring stronger analysis
+
+The existing source package also contains examples of:
+
+- temporal or generic consequences;
+- wh-indeterminate material with `都`;
+- fragmentary `只要` turns;
+- a consequence supplied in a following discourse turn;
+- additional no-`就` surfaces.
+
+These profiles are retained as attested research questions only. The available
+teaching and corpus material does not determine whether they reflect ordinary
+marker optionality, discourse ellipsis, a fragment construction, prosodic
+licensing, another consequence marker, or a different relation recoverable from
+context.
+
+## Required contrasts
+
+Keep this bounded family separate from:
+
+```text
+如果 A，就 B          ordinary/hypothetical conditional
+只有 A，先至／先 B    necessary condition
+除非 A，否則／如果唔係 B  exception conditional
+就算 A，都 B          concessive conditional
+只 + constituent       restrictive focus
+要 + VP                modal or lexical requirement
+```
+
+The surface characters `只要` alone are insufficient for classification.
+Lexical or cross-layer `只 + 要` analyses must remain available where a
+condition–consequence relation is absent.
 
 ## Sources
 
 See
 `PRQ2-008-ZI2JIU3-ZAU6-SUFFICIENT-CONDITION-SOURCE-VERIFICATION-R1.tsv`.
 
-- Hong Kong Vision teaches the condition/consequence division, several
-  continuation profiles, and omission of `就`.
-- An Education Bureau-hosted Cantonese drama script uses the full paired form.
-- Local HKCanCor extraction supplies overt, omitted, fragmentary, and
-  discourse-spanning profiles.
-- YellowBridge independently records conjunction `只要` as `zi2 jiu3`.
+Evidence roles after review:
+
+- Yip and Matthews: `REFERENCE_GRAMMAR_CORE` for the bounded sufficient-condition
+  profile and the exact contrasts described above.
+- Hong Kong Vision and the Education Bureau drama: `ATTESTATION_ONLY`.
+- HKCanCor extraction: `PRIMARY_CORPUS_ATTESTATION`, supporting occurrence but
+  not productivity or full syntax.
+- YellowBridge: `LEXICAL_OR_PRONUNCIATION_ONLY`.
+- Runtime probes: `RUNTIME_OBSERVATION_ONLY` with zero linguistic-evidence
+  weight.
+
+No direct Cantonese paper dedicated to `只要…就…` was recovered in this pass.
+General or Mandarin research on `只要` may guide comparison, but it cannot
+establish Cantonese-specific syntax or marker distribution.
 
 ## Runtime collision result
 
 See
 `PRQ2-008-ZI2JIU3-ZAU6-SUFFICIENT-CONDITION-COLLISION-AUDIT-R1.tsv`.
 
-Runtime 0.5.213 has no dedicated sufficient-condition analysis. Some paired
-examples receive generic `ClauseRel`; omitted-`就` and corpus examples may be
-partially analyzed or unwrapped. The same generic relation covers an `如果`
-control, while necessary and exception controls are also untyped.
+The companion audit is a frozen pre-implementation observation: runtime
+0.5.213 originally lacked a dedicated sufficient-condition analysis and used
+generic `ClauseRel` coverage. The current narrow slice records
+`sufficient_condition` on overt paired cores while retaining the underlying
+`conditional` relation type.
 
-The companion collision audit is a frozen pre-implementation observation.
-The authorized first slice now records `sufficient_condition` on overt paired
-cores while retaining the underlying `conditional` relation type. It requires
-adjacent `只`+`要` in the left member and overt `就` in the right member;
-omitted-marker, discourse-spanning, and fragmentary profiles remain deferred.
+Runtime observations identify implementation state only. They add no linguistic
+support.
 
 ## Open boundaries
 
-- overt and omitted `就` and alternative consequence markers;
-- indeterminate-plus-`都` and free-choice interaction;
+- exact environments permitting no overt `就`;
+- alternative consequence markers;
+- wh-indeterminate-plus-`都` interaction;
 - subject placement, negation, modality, particles, and speech act;
 - discourse-spanning and fragmentary profiles;
-- contrast with `如果`, `只有…先至`, `除非`, and scalar `淨係`;
-- clause order, ellipsis, prosody, and register.
+- clause order, ellipsis, prosody, register, and regional variation;
+- whether any apparent bare `只要 A` is a complete discourse act or requires a
+  recoverable consequence.
 
 ## Disposition
 
-**Dedicated research unit; the narrow overt paired core is implemented, while
-status changes and broader profiles remain unauthorized.**
+**Bounded sufficient-condition research core supported by an explicit Cantonese
+reference-grammar analysis. The existing overt `只要 A，就 B` implementation is
+retained within that core. Broader extensions remain attestation-backed and
+pending direct analysis; no additional implementation or status change is
+authorized.**

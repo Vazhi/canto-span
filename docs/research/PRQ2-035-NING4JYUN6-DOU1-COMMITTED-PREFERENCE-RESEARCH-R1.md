@@ -1,6 +1,6 @@
 ---
-title: PRQ2-015 — ning4 jyun6 dou1 committed-preference research
-research_id: PRQ2-015
+title: PRQ2-035 — ning4 jyun6 dou1 committed-preference research
+research_id: PRQ2-035
 status: active_research_unit
 baseline_version: 0.5.213
 created: 2026-07-23
@@ -8,11 +8,11 @@ implementation_authorized: true
 status_change_authorized: false
 ---
 
-# PRQ2-015 — `寧願 … 都 …` committed preference
+# PRQ2-035 — `寧願 … 都 …` committed preference
 
 ## Research decision
 
-Promote Cantonese `寧願 A，都 B` to a dedicated **research-only committed
+Retain Cantonese `寧願 A，都 B` as a dedicated **research-only committed
 preference family** with two attested profiles:
 
 ```text
@@ -30,24 +30,28 @@ and an optional overt subject before `寧願`.
 
 This family is distinct from lone lexical preference `寧願 A`, ordered
 alternatives `與其 A，不如 B`, synonym `情願`, and ordinary `都` followed by
-negation. Runtime 0.5.213 recognizes a local `Preference` only in one longer
-probe and otherwise preserves at most member-internal analyses; it does not
-represent the paired preference relation.
+negation.
 
 The evidence does not settle marker omission, the full range of complements,
 equivalence among `寧願`, `情願`, and `寧可`, the analysis of positive
 continuations other than `都要`, or register and prosodic constraints.
 
-Implementation authorization granted on 2026-07-23 is limited to the overt
+## Existing implementation status
+
+Implementation authorization granted on 2026-07-23 is limited to the overt,
 comma-delimited rejection profile with `寧願 A` and
 `都唔想／都唔肯／都唔好 B`. It does not authorize the positive `都要`
 continuation, marker omission, lexical installation, a construction-status
 change, or a broader automatic acceptance rule.
 
+This package remains a Step 4 evidence-grade repair target. The current ledger
+is still pre-grade and the implementation must not be treated as proof of the
+linguistic analysis.
+
 ## Sources
 
 See
-`PRQ2-015-NING4JYUN6-DOU1-COMMITTED-PREFERENCE-SOURCE-VERIFICATION-R1.tsv`.
+`PRQ2-035-NING4JYUN6-DOU1-COMMITTED-PREFERENCE-SOURCE-VERIFICATION-R1.tsv`.
 
 - Jyut Dictionary supplies romanized Cantonese rejection examples with
   `都唔想` and `都唔肯`, a positive `都要` commitment example, and lone
@@ -57,15 +61,22 @@ See
 - CantoDict confirms pronunciation and the lexical “would rather” sense.
 - HKCanCor supplies an independent lone-preference boundary.
 
+These are currently attestation, lexical, and corpus sources rather than a
+completed graded direct-analysis package. Promotion-style claims remain subject
+to the evidence gate.
+
 ## Runtime collision result
 
 See
-`PRQ2-015-NING4JYUN6-DOU1-COMMITTED-PREFERENCE-COLLISION-AUDIT-R1.tsv`.
+`PRQ2-035-NING4JYUN6-DOU1-COMMITTED-PREFERENCE-COLLISION-AUDIT-R1.tsv`.
 
-Runtime 0.5.213 has no paired committed-preference analysis. One long surface
-receives generic `ClauseLink` and a truncated local `Preference`; the other
-paired probes reduce to member-internal VP or modal rows or no construction
-row. Empty-marker guards remain unrecognized, as desired.
+The companion audit is a frozen pre-implementation observation. Runtime
+0.5.213 originally had no paired committed-preference analysis: one long surface
+received generic `ClauseLink` and a truncated local `Preference`, while other
+paired probes reduced to member-internal rows. The current narrow rejection
+slice was added later.
+
+Runtime observations carry zero linguistic-evidence weight.
 
 ## Open boundaries
 
@@ -78,6 +89,7 @@ row. Empty-marker guards remain unrecognized, as desired.
 
 ## Disposition
 
-**Dedicated research unit; the narrow overt rejection profile is implemented,
-while the positive continuation, broader profiles, and status changes remain
-unauthorized.**
+**Dedicated research unit under corrected ID PRQ2-035. The narrow overt
+rejection profile is implemented, while the positive continuation, broader
+profiles, status changes, and any stronger evidence disposition remain
+unauthorized pending graded evidence repair.**
