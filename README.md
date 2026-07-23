@@ -19,7 +19,7 @@ Current validation targets:
 
 - aggregate regression: **551** cases
 - NP subsystem: **43** cases
-- per-construction assertions: **1,247**
+- per-construction assertions: **1,279**
 - construction test files: **163**
 
 v0.5.213 retains `NegatedStativePredicate` as `research_pending` for narrow

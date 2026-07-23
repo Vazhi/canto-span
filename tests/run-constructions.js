@@ -88,10 +88,36 @@ for (const file of files) {
       const labels = rows.map(internalConstruction).filter(Boolean);
       if (testCase.assertion === "construction_present") {
         assert(labels.includes(spec.construction), `${spec.construction} should be present in reachability probe`);
+      } else if (testCase.assertion === "construction_absent") {
+        assert(!labels.includes(spec.construction), `${spec.construction} should be absent in reachability probe`);
       } else if (testCase.assertion === "compatibility_alias_present") {
         assert(testCase.internal_construction, "compatibility alias probe requires internal_construction");
         assert(rows.some((row) => row.compatibility_alias === spec.construction && internalConstruction(row) === testCase.internal_construction),
           `${spec.construction} compatibility alias should be exposed by ${testCase.internal_construction}`);
+      } else if (testCase.assertion === "trace_detail_equals") {
+        const row = rows.find((candidate) =>
+          internalConstruction(candidate) === spec.construction &&
+          (!testCase.expected_surface || rowSurface(candidate) === testCase.expected_surface)
+        );
+        assert(row, `${spec.construction} trace probe should find the expected construction span`);
+        const expectedEntries = Object.entries(testCase.expected_trace_detail || {});
+        assert(expectedEntries.length > 0, `${spec.construction} positive trace probe requires expected_trace_detail`);
+        for (const [field, expected] of expectedEntries) {
+          assert.strictEqual(trace(row)[field], expected, `${spec.construction} trace field ${field}`);
+        }
+      } else if (testCase.assertion === "trace_detail_not_equals") {
+        const matchingRows = rows.filter((candidate) =>
+          internalConstruction(candidate) === spec.construction &&
+          (!testCase.expected_surface || rowSurface(candidate) === testCase.expected_surface)
+        );
+        const forbiddenEntries = Object.entries(testCase.forbidden_trace_detail || {});
+        assert(forbiddenEntries.length > 0, `${spec.construction} negative trace probe requires forbidden_trace_detail`);
+        for (const [field, forbidden] of forbiddenEntries) {
+          assert(
+            !matchingRows.some((row) => trace(row)[field] === forbidden),
+            `${spec.construction} trace field ${field} should not equal ${forbidden}`
+          );
+        }
       } else {
         throw new Error(`Unknown implementation probe assertion ${testCase.assertion}`);
       }

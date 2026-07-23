@@ -787,6 +787,7 @@ const TOKEN_LEXICON = {
   "同埋": { label: "func", jyutping: "tung4 maai4", syntax: "connector_additive", note: "and also" },
   "咁": { label: "func", jyutping: "gam2", syntax: "discourse_marker", note: "then / so / like that" },
   "噉": { label: "func", jyutping: "gam2", syntax: "discourse_marker demonstrative_manner", note: "orthographic variant of 咁: then / so / like that" },
+  "與其": { label: "func", jyutping: "jyu5 kei4", syntax: "ordered_preference_opener", note: "rather than; opens the disfavored member of 與其...不如..." },
   "不如": { label: "func", jyutping: "bat1 jyu4", syntax: "suggestion_marker", note: "how about / why don't we" },
   "應該": { label: "func", jyutping: "jing1 goi1", syntax: "stance_probability_or_should", note: "should / probably" },
   "大概": { label: "how", jyutping: "daai6 koi3", syntax: "approximation_adverb", note: "approximately" },
@@ -796,6 +797,7 @@ const TOKEN_LEXICON = {
   "多啲": { label: "how", jyutping: "do1 di1", syntax: "comparative_quantity", note: "more" },
   "多啲人": { label: "who", jyutping: "do1 di1 jan4", syntax: "quantity_person_np", note: "more people" },
   "同": { label: "func", jyutping: "tung4", syntax: "connector_or_coverb comitative_coverb interpersonal_coverb", note: "and / with / to; as a coverb it can mark a co-participant or addressee depending on the predicate" },
+  "同心協力": { label: "doing", jyutping: "tung4 sam1 hip3 lik6", syntax: "verb action_verb cooperative_action", note: "work together with one heart; predicate in the sourced PRQ2-014 necessary-condition example." },
   "喺": { label: "func", pos: "function", jyutping: "hai2", syntax: "locative_coverb", note: "locative coverb/marker: at / in / on; not a place noun" },
   "由": { label: "where", jyutping: "jau4", syntax: "source_coverb", note: "from" },
   "然後": { label: "func", jyutping: "jin4 hau6", syntax: "connector_sequence discourse_marker", note: "then / afterwards" },
@@ -15872,7 +15874,7 @@ function wrapCore(core) {
   }
 
   // Suggestion fallback: normally handled by SuggestionQuestion template.
-  if (hasSurface(core, "不如")) {
+  if (surfaceOf(core[0]) === "不如") {
     return [construction("SuggestionQuestion", "Suggest", core, {
       note: "Suggestion fallback with 不如.",
       trace: traceInfo("construction_function", {
@@ -16105,6 +16107,8 @@ function clauseLinkerRole(node, index, pivotIndex) {
   if (surface === "如果") return "condition_introducer";
   if (surface === "因為") return "reason_introducer";
   if (surface === "所以") return "result_linker";
+  if (surface === "與其") return "disfavored_option_introducer";
+  if (surface === "不如") return "preferred_option_introducer";
   if (surface === "但係" || surface === "不過") return "contrast_linker";
   if (slots.includes("topic_frame_linker")) return "topic_frame_linker";
   if (slots.includes("relational_coverb_linker")) return "relational_coverb_linker";
@@ -16392,6 +16396,9 @@ const CLAUSE_RELATION_SUBTYPE_REGISTRY = new Set([
   "conditional",
   "causal",
   "concessive",
+  "committed_preference",
+  "ordered_preference",
+  "premise_response",
   "sequential",
   "temporal_subordinate",
   "asyndetic_sequence",
@@ -16631,7 +16638,7 @@ function clauseRelationSubjectLinkage(leftMember, rightMember, relationSubtype) 
   const left = clauseRelationSubjectSurface(leftMember);
   const right = clauseRelationSubjectSurface(rightMember);
   if (left && right) return { status: "overt_subject_on_both_members", inherited_surface: "" };
-  if (left && !right && ["concessive", "sequential", "asyndetic_sequence"].includes(relationSubtype)) {
+  if (left && !right && ["concessive", "committed_preference", "ordered_preference", "premise_response", "sequential", "asyndetic_sequence"].includes(relationSubtype)) {
     return { status: "shared_overt_subject_inherited_by_right_member", inherited_surface: left };
   }
   if (left && !right) return { status: "left_subject_overt_right_subject_unresolved", inherited_surface: "" };
@@ -16665,6 +16672,18 @@ function clauseRelationSemanticTrace(subtype, sourceOrder, leftMember, rightMemb
   if (subtype === "concessive") return {
     concession_clause: leftSurface,
     counterexpectation_clause: rightSurface,
+  };
+  if (subtype === "committed_preference") return {
+    chosen_option: leftSurface,
+    rejected_option: rightSurface,
+  };
+  if (subtype === "ordered_preference") return {
+    disfavored_option: leftSurface,
+    preferred_option: rightSurface,
+  };
+  if (subtype === "premise_response") return {
+    established_premise: leftSurface,
+    response_clause: rightSurface,
   };
   if (["sequential", "asyndetic_sequence"].includes(subtype)) return {
     earlier_event: leftSurface,
@@ -16773,6 +16792,13 @@ function hierarchicalClauseRelationEdgeFromChildren(children = []) {
   const rightLinkers = [];
 
   const leftIf = clauseRelationSurfaceIndex(leftNodes, ["如果"]);
+  const leftZi = clauseRelationSurfaceIndex(leftNodes, ["只"]);
+  const leftJiu = clauseRelationSurfaceIndex(leftNodes, ["要"]);
+  const leftHave = clauseRelationSurfaceIndex(leftNodes, ["有"]);
+  const leftNing = clauseRelationSurfaceIndex(leftNodes, ["寧"]);
+  const leftJyun = clauseRelationSurfaceIndex(leftNodes, ["願"]);
+  const leftGei = clauseRelationSurfaceIndex(leftNodes, ["既"]);
+  const leftJin = clauseRelationSurfaceIndex(leftNodes, ["然"]);
   const leftBecause = clauseRelationSurfaceIndex(leftNodes, ["因為"]);
   const leftAlthough = clauseRelationSurfaceIndex(leftNodes, ["雖然"]);
   const rightBecause = clauseRelationSurfaceIndex(rightRaw, ["因為"]);
@@ -16781,13 +16807,136 @@ function hierarchicalClauseRelationEdgeFromChildren(children = []) {
   const rightThen = clauseRelationSurfaceIndex(rightRaw, ["然後", "再"]);
   const leftFirst = clauseRelationSurfaceIndex(leftNodes, ["先"]);
   const rightConditional = clauseRelationSurfaceIndex(rightRaw, ["就"]);
+  const rightNecessary = clauseRelationSurfaceIndex(rightRaw, ["先至", "先"]);
+  const rightDou = clauseRelationSurfaceIndex(rightRaw, ["都"]);
+  const rightM4 = clauseRelationSurfaceIndex(rightRaw, ["唔"]);
+  const rightM4Hou2 = clauseRelationSurfaceIndex(rightRaw, ["唔好"]);
+  const rightSoeng2 = clauseRelationSurfaceIndex(rightRaw, ["想"]);
+  const rightHang2 = clauseRelationSurfaceIndex(rightRaw, ["肯"]);
+  const rightGam2 = clauseRelationSurfaceIndex(rightRaw, ["噉", "咁"]);
+  const rightBat1Jyu4 = clauseRelationSurfaceIndex(rightRaw, ["不如"]);
+  const rightDang2 = clauseRelationSurfaceIndex(rightRaw, ["等"]);
+  const rightNgo5AfterDang2 = rightDang2 >= 0
+    ? clauseRelationSurfaceIndex(rightRaw, ["我"], rightDang2 + 1)
+    : -1;
+  const rejectionMarkerIndexes = rightM4Hou2 === rightDou + 1
+    ? [rightDou, rightM4Hou2]
+    : (
+      rightM4 === rightDou + 1 && (rightSoeng2 === rightM4 + 1 || rightHang2 === rightM4 + 1)
+        ? [rightDou, rightM4, rightSoeng2 === rightM4 + 1 ? rightSoeng2 : rightHang2]
+        : []
+    );
+  const committedPreferenceProfile =
+    leftNing >= 0 &&
+    leftJyun === leftNing + 1 &&
+    rejectionMarkerIndexes.length > 0 &&
+    leftNodes.some((node, index) => index !== leftNing && index !== leftJyun && flattenSurface(node)) &&
+    rightRaw.some((node, index) => !rejectionMarkerIndexes.includes(index) && flattenSurface(node));
+  let premiseResponseMarkerIndexes = [];
+  let premiseResponseMarkerProfile = "unmarked";
+  if (rightConditional === 0) {
+    premiseResponseMarkerIndexes = [rightConditional];
+    premiseResponseMarkerProfile = "zau6";
+  } else if (rightGam2 === 0) {
+    premiseResponseMarkerIndexes = [rightGam2];
+    premiseResponseMarkerProfile = "gam2";
+  } else if (rightBat1Jyu4 === 0) {
+    premiseResponseMarkerIndexes = [rightBat1Jyu4];
+    premiseResponseMarkerProfile = "bat1jyu4";
+  } else if (rightDang2 === 0 && rightNgo5AfterDang2 === 1) {
+    premiseResponseMarkerIndexes = [rightDang2, rightNgo5AfterDang2];
+    premiseResponseMarkerProfile = "dang2ngo5";
+  }
+  const premiseResponseProfile =
+    leftGei === 0 &&
+    leftJin === 1 &&
+    leftNodes.some((node, index) => index !== leftGei && index !== leftJin && flattenSurface(node)) &&
+    rightRaw.some((node, index) => !premiseResponseMarkerIndexes.includes(index) && flattenSurface(node));
+  const necessaryConditionLeftContent = leftNodes
+    .slice(leftHave + 1)
+    .flatMap((node) => clauseRelationLeafNodes(node));
+  const necessaryConditionHasPredicateOrFrame = necessaryConditionLeftContent.some((node) => {
+    if (!node || node.kind !== "token") return false;
+    const slots = nodeSlots(node);
+    return slots.some((slot) => [
+      "action_verb",
+      "comment_predicate",
+      "copula",
+      "coverb_marker",
+      "existential",
+      "locative_marker",
+      "main_verb",
+      "modal",
+      "negated_existential",
+      "predicate",
+      "stative_predicate",
+    ].includes(slot));
+  });
+  const sufficientConditionProfile =
+    leftZi === 0 &&
+    leftJiu === leftZi + 1 &&
+    rightConditional >= 0 &&
+    leftNodes.some((node, index) => index !== leftZi && index !== leftJiu && flattenSurface(node)) &&
+    rightRaw.some((node, index) => index !== rightConditional && flattenSurface(node));
+  const necessaryResultPrefix = rightNecessary > 0
+    ? parsedClauseNodes(rightRaw.slice(0, rightNecessary))
+    : [];
+  const necessaryResultPrefixNode = necessaryResultPrefix.length === 1
+    ? necessaryResultPrefix[0]
+    : null;
+  const necessaryResultMarkerPositionLicensed =
+    rightNecessary === 0 ||
+    (
+      necessaryResultPrefixNode &&
+      (
+        nodeCanFillSlot(necessaryResultPrefixNode, "subject") ||
+        nodeCanFillSlot(necessaryResultPrefixNode, "np") ||
+        nodeCanFillSlot(necessaryResultPrefixNode, "head_noun") ||
+        nodeCanFillSlot(necessaryResultPrefixNode, "topic")
+      )
+    );
+  const necessaryConditionProfile =
+    leftZi >= 0 &&
+    leftHave === leftZi + 1 &&
+    rightNecessary >= 0 &&
+    necessaryResultMarkerPositionLicensed &&
+    necessaryConditionHasPredicateOrFrame &&
+    leftNodes.some((node, index) => index !== leftZi && index !== leftHave && flattenSurface(node)) &&
+    rightRaw.some((node, index) => index !== rightNecessary && flattenSurface(node));
+  let relationProfile = "";
+  let relationResearchId = "";
+  let relationProfileScope = "";
   const leftImmediateOne = clauseRelationSurfaceIndex(leftNodes, ["一"]);
   const leftSurfaces = clauseRelationSurfaceList(leftNodes);
   const rightSurfaces = clauseRelationSurfaceList(rightRaw);
   const leftHasImmediatePredicate = leftSurfaces.includes("見到") || (leftSurfaces.includes("見") && leftSurfaces.includes("到"));
   const leftTemporalNominal = leftNodes.length === 1 && leftNodes[0].kind === "construction" && leftNodes[0].type === "RelativeClauseNP" && clauseRelationTimeHead(leftNodes[0]);
 
-  if (leftTemporalNominal) {
+  if (premiseResponseProfile) {
+    relationSubtype = "premise_response";
+    relationProfile = "established_premise_response";
+    relationResearchId = "PRQ2-009";
+    relationProfileScope = "left_initial_gei3jin4_with_overt_premise_and_response";
+    leftLinkers.push(
+      { index: leftGei, side: "left", semantic_role: "established_premise_marker_component" },
+      { index: leftJin, side: "left", semantic_role: "established_premise_marker_component" }
+    );
+    for (const index of premiseResponseMarkerIndexes) {
+      rightLinkers.push({ index, side: "right", semantic_role: "response_marker_component" });
+    }
+  } else if (committedPreferenceProfile) {
+    relationSubtype = "committed_preference";
+    relationProfile = "rejection";
+    relationResearchId = "PRQ2-015";
+    relationProfileScope = "overt_ning4jyun6_and_negative_dou1_continuation_only";
+    leftLinkers.push(
+      { index: leftNing, side: "left", semantic_role: "chosen_option_marker_component" },
+      { index: leftJyun, side: "left", semantic_role: "chosen_option_marker_component" }
+    );
+    for (const index of rejectionMarkerIndexes) {
+      rightLinkers.push({ index, side: "right", semantic_role: "rejected_option_marker_component" });
+    }
+  } else if (leftTemporalNominal) {
     relationSubtype = "temporal_subordinate";
   } else if (leftBecause >= 0 || rightBecause >= 0 || rightSo >= 0) {
     relationSubtype = "causal";
@@ -16801,6 +16950,26 @@ function hierarchicalClauseRelationEdgeFromChildren(children = []) {
     relationSubtype = "concessive";
     if (leftAlthough >= 0) leftLinkers.push({ index: leftAlthough, side: "left", semantic_role: "concession_introducer" });
     if (rightBut >= 0) rightLinkers.push({ index: rightBut, side: "right", semantic_role: "counterexpectation_linker" });
+  } else if (necessaryConditionProfile) {
+    relationSubtype = "conditional";
+    relationProfile = "necessary_condition";
+    relationResearchId = "PRQ2-014";
+    relationProfileScope = "overt_left_marker_with_predicate_or_frame_and_overt_right_linker_only";
+    leftLinkers.push(
+      { index: leftZi, side: "left", semantic_role: "necessary_condition_marker_component" },
+      { index: leftHave, side: "left", semantic_role: "necessary_condition_marker_component" }
+    );
+    rightLinkers.push({ index: rightNecessary, side: "right", semantic_role: "necessary_result_linker" });
+  } else if (sufficientConditionProfile) {
+    relationSubtype = "conditional";
+    relationProfile = "sufficient_condition";
+    relationResearchId = "PRQ2-008";
+    relationProfileScope = "left_initial_overt_marker_and_overt_right_linker_only";
+    leftLinkers.push(
+      { index: leftZi, side: "left", semantic_role: "sufficient_condition_marker_component" },
+      { index: leftJiu, side: "left", semantic_role: "sufficient_condition_marker_component" }
+    );
+    rightLinkers.push({ index: rightConditional, side: "right", semantic_role: "consequent_linker" });
   } else if (leftImmediateOne >= 0 && leftHasImmediatePredicate) {
     relationSubtype = "temporal_subordinate";
     immediateTemporalTrigger = true;
@@ -16852,6 +17021,17 @@ function hierarchicalClauseRelationEdgeFromChildren(children = []) {
     relation_subtype_provenance: "inherited_mapped_hierarchical_clause_relation_rule",
   });
   if (!relation) return null;
+  if (relationProfile) {
+    relation.trace = {
+      ...(relation.trace || {}),
+      relation_profile: relationProfile,
+      research_id: relationResearchId,
+      relation_profile_scope: relationProfileScope,
+      ...(relationSubtype === "premise_response" ? {
+        response_marker_profile: premiseResponseMarkerProfile,
+      } : {}),
+    };
+  }
 
   if (prefix.length) {
     const embedded = clauseRelationPrefixEmbedding(prefix, relation);
@@ -16872,14 +17052,24 @@ function hierarchicalClauseRelationEdgeFromChildren(children = []) {
     note: "Outer discourse wrapper containing one local typed clause relation. It preserves the established wrapper boundary without flattening relation semantics.",
     trace: traceInfo("governed_discourse_wrapper", {
       rule: "hierarchical typed clause relation under discourse wrapper",
-      reason: "The outer wrapper remains for discourse/root accounting, while ClauseRelationEdge represents the local conditional, causal, concessive, sequential, or temporal dependency.",
+      reason: "The outer wrapper remains for discourse/root accounting, while ClauseRelationEdge represents the typed local relation.",
       child_constructions: ["ClauseRelationEdge"],
       local_relation_construction: "ClauseRelationEdge",
       graph_container_semantic_status: "neutral_container_only",
       independent_grammar_licensing: false,
       relation_semantics_source: "typed_child_edge_with_inherited_subtype_provenance",
-      clause_linking_subtype: relationSubtype,
+      clause_linking_subtype: ["committed_preference", "premise_response"].includes(relationSubtype)
+        ? relationSubtype
+        : (relationProfile || relationSubtype),
       relation_subtype: relationSubtype,
+      ...(relationProfile ? {
+        relation_profile: relationProfile,
+        research_id: relationResearchId,
+        relation_profile_scope: relationProfileScope,
+        ...(relationSubtype === "premise_response" ? {
+          response_marker_profile: premiseResponseMarkerProfile,
+        } : {}),
+      } : {}),
       linkers: [...(relation.trace && relation.trace.linker_left || []), ...(relation.trace && relation.trace.linker_right || [])],
       separators: separator ? [flattenSurface(separator)] : [],
       wrapper_coverage: wrapperCoverage,
@@ -17328,6 +17518,89 @@ function wrapClauseSequenceByPunctuation(nodes) {
 
   const finalOnly = nodes.length > 0 && isClauseSequenceTerminal(nodes[nodes.length - 1]) ? nodes[nodes.length - 1] : null;
   const children = finalOnly ? nodes.slice(0, -1) : nodes.slice();
+
+  const separatorIndex = children.findIndex(isClauseSequenceSeparator);
+  const orderedPreferenceOpenerIndex = children.findIndex((node, index) =>
+    index < separatorIndex &&
+    node &&
+    node.kind === "token" &&
+    (node.surface || "") === "與其"
+  );
+  const rightLeaves = separatorIndex >= 0
+    ? clauseRelationSegmentNodes(children.slice(separatorIndex + 1))
+    : [];
+  if (orderedPreferenceOpenerIndex >= 0 && separatorIndex > orderedPreferenceOpenerIndex && rightLeaves.length > 1) {
+    if (surfaceOf(rightLeaves[0]) === "不如") {
+      const preferredMember = parsedClauseNodes(rightLeaves.slice(1));
+      const disfavoredMember = children.slice(orderedPreferenceOpenerIndex + 1, separatorIndex);
+      const prefix = children.slice(0, orderedPreferenceOpenerIndex);
+      if (
+        meaningfulClauseConstructionCount(disfavoredMember) >= 1 &&
+        meaningfulClauseConstructionCount(preferredMember) >= 1
+      ) {
+        const leftNodes = [
+          ...prefix,
+          children[orderedPreferenceOpenerIndex],
+          ...disfavoredMember,
+        ];
+        const rightNodes = [
+          rightLeaves[0],
+          ...preferredMember,
+        ];
+        const leftLinkerIndex = clauseRelationSegmentNodes(prefix).length;
+        const relation = buildClauseRelationEdge({
+          relation_subtype: "ordered_preference",
+          left_nodes: leftNodes,
+          right_nodes: rightNodes,
+          left_linkers: [{
+            index: leftLinkerIndex,
+            side: "left",
+            semantic_role: "disfavored_option_introducer",
+          }],
+          right_linkers: [{
+            index: 0,
+            side: "right",
+            semantic_role: "preferred_option_introducer",
+          }],
+          separator: children[separatorIndex],
+          source_order: "disfavored_then_preferred",
+          relation_subtype_provenance: "inherited_mapped_hierarchical_clause_relation_rule",
+          reason: "The overt 與其 and 不如 pair orders two nonempty alternatives; the typed edge retains both members, owns both markers, and records which option is disfavored and which is preferred.",
+        });
+        if (relation) {
+          const wrapperCoverage = {
+            status: "PASS",
+            policy: "A hierarchical ClauseRelationGraph accounts for its complete local ClauseRelationEdge child; the separator and overt linkers remain visible inside that typed relation.",
+            accounted_children: [{ surface: flattenSurface(relation), construction: "ClauseRelationEdge", role: "local_typed_relation" }],
+            accounted_linkers: [],
+            accounted_separators: [{ surface: flattenSurface(children[separatorIndex]), role: "nested_visible_separator" }],
+            unaccounted_tokens: [],
+            unaccounted_wrapper_token_count: 0,
+          };
+          const wrapper = construction("ClauseRelationGraph", "ClauseLink", [relation], {
+            note: "Outer discourse wrapper containing the overt paired ordered-preference relation.",
+            trace: traceInfo("governed_discourse_wrapper", {
+              rule: "與其...不如 ordered-preference clause-linking sequence",
+              reason: "The outer wrapper preserves discourse/root accounting while the typed child edge owns the paired markers and alternative-order semantics.",
+              child_constructions: ["ClauseRelationEdge"],
+              local_relation_construction: "ClauseRelationEdge",
+              graph_container_semantic_status: "neutral_container_only",
+              independent_grammar_licensing: false,
+              relation_semantics_source: "typed_child_edge_with_inherited_subtype_provenance",
+              relation_subtype: "ordered_preference",
+              linkers: [...(relation.trace && relation.trace.linker_left || []), ...(relation.trace && relation.trace.linker_right || [])],
+              separators: [flattenSurface(children[separatorIndex])],
+              wrapper_coverage: wrapperCoverage,
+              clause_linking_subtype: "ordered_preference",
+              marker_profile: "jyu5kei4_bat1jyu4",
+              research_id: "PRQ2-013",
+            }),
+          });
+          return [wrapper, ...(finalOnly ? [finalOnly] : [])];
+        }
+      }
+    }
+  }
 
   const hierarchicalRelation = hierarchicalClauseRelationEdgeFromChildren(children);
   if (hierarchicalRelation && hierarchicalRelation.node) {

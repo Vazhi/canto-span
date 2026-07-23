@@ -743,6 +743,422 @@
       "purpose": "runtime_reachability_only",
       "scope_note": "Protects the nested 煮飯 child assigned by the parent only; V plus object form alone does not identify a purpose predicate or license an inferred purpose relation.",
       "legacy_probe_batch": "final-reachable-wrapper"
+    },
+    {
+      "case_id": "PRQ2-013-I01",
+      "construction": "ClauseRelationGraph",
+      "source": "與其我去，不如你去。",
+      "assertion": "trace_detail_equals",
+      "expected_surface": "與其我去，不如你去",
+      "expected_trace_detail": {
+        "clause_linking_subtype": "ordered_preference",
+        "marker_profile": "jyu5kei4_bat1jyu4",
+        "research_id": "PRQ2-013"
+      },
+      "provenance": "docs/research/PRQ2-013-JYU5KEI4-BAT1JYU4-ORDERED-PREFERENCE-COLLISION-AUDIT-R1.tsv",
+      "source_role": "verified_research_surface_runtime_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "PRQ2-013-I02",
+      "construction": "ClauseRelationGraph",
+      "source": "我哋與其食飯，不如飲茶。",
+      "assertion": "trace_detail_equals",
+      "expected_surface": "我哋與其食飯，不如飲茶",
+      "expected_trace_detail": {
+        "clause_linking_subtype": "ordered_preference",
+        "marker_profile": "jyu5kei4_bat1jyu4",
+        "research_id": "PRQ2-013"
+      },
+      "provenance": "docs/research/PRQ2-013-JYU5KEI4-BAT1JYU4-ORDERED-PREFERENCE-SOURCE-VERIFICATION-R1.tsv",
+      "source_role": "verified_research_surface_runtime_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "PRQ2-013-N01",
+      "construction": "ClauseRelationGraph",
+      "source": "與其，不如你去。",
+      "assertion": "trace_detail_not_equals",
+      "forbidden_trace_detail": {
+        "clause_linking_subtype": "ordered_preference"
+      },
+      "provenance": "docs/research/PRQ2-013-JYU5KEI4-BAT1JYU4-ORDERED-PREFERENCE-COLLISION-AUDIT-R1.tsv",
+      "source_role": "constructed_empty_disfavored_member_boundary_runtime_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "PRQ2-013-N02",
+      "construction": "ClauseRelationGraph",
+      "source": "與其我去，不如。",
+      "assertion": "trace_detail_not_equals",
+      "forbidden_trace_detail": {
+        "clause_linking_subtype": "ordered_preference"
+      },
+      "provenance": "docs/research/PRQ2-013-JYU5KEI4-BAT1JYU4-ORDERED-PREFERENCE-COLLISION-AUDIT-R1.tsv",
+      "source_role": "constructed_empty_preferred_member_boundary_runtime_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "PRQ2-013-N03",
+      "construction": "ClauseRelationGraph",
+      "source": "與其埋怨自己生不逢時，倒不如增值自己。",
+      "assertion": "trace_detail_not_equals",
+      "forbidden_trace_detail": {
+        "clause_linking_subtype": "ordered_preference"
+      },
+      "provenance": "docs/research/PRQ2-013-JYU5KEI4-BAT1JYU4-ORDERED-PREFERENCE-COLLISION-AUDIT-R1.tsv",
+      "source_role": "verified_optional_dou2_deferred_profile_runtime_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "PRQ2-013-N04",
+      "construction": "ClauseRelationGraph",
+      "source": "我寧願留喺屋企，都唔想出去。",
+      "assertion": "trace_detail_not_equals",
+      "forbidden_trace_detail": {
+        "clause_linking_subtype": "ordered_preference"
+      },
+      "provenance": "docs/research/PRQ2-013-JYU5KEI4-BAT1JYU4-ORDERED-PREFERENCE-COLLISION-AUDIT-R1.tsv",
+      "source_role": "verified_different_marker_preference_runtime_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "PRQ2-008-I01",
+      "construction": "ClauseRelationGraph",
+      "source": "只要學呢啲嘢，就冇問題。",
+      "assertion": "trace_detail_equals",
+      "expected_surface": "只要學呢啲嘢，就冇問題",
+      "expected_trace_detail": {
+        "clause_linking_subtype": "sufficient_condition",
+        "relation_subtype": "conditional",
+        "relation_profile": "sufficient_condition",
+        "research_id": "PRQ2-008",
+        "relation_profile_scope": "left_initial_overt_marker_and_overt_right_linker_only"
+      },
+      "provenance": "docs/research/PRQ2-008-ZI2JIU3-ZAU6-SUFFICIENT-CONDITION-COLLISION-AUDIT-R1.tsv",
+      "source_role": "verified_research_surface_runtime_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "PRQ2-008-I02",
+      "construction": "ClauseRelationGraph",
+      "source": "只要份工高人工，我就做咩工都唔介意。",
+      "assertion": "trace_detail_equals",
+      "expected_surface": "只要份工高人工，我就做咩工都唔介意",
+      "expected_trace_detail": {
+        "clause_linking_subtype": "sufficient_condition",
+        "relation_subtype": "conditional",
+        "relation_profile": "sufficient_condition",
+        "research_id": "PRQ2-008",
+        "relation_profile_scope": "left_initial_overt_marker_and_overt_right_linker_only"
+      },
+      "provenance": "docs/research/PRQ2-008-ZI2JIU3-ZAU6-SUFFICIENT-CONDITION-SOURCE-VERIFICATION-R1.tsv",
+      "source_role": "verified_research_surface_runtime_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "PRQ2-008-N01",
+      "construction": "ClauseRelationGraph",
+      "source": "只要。",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/PRQ2-008-ZI2JIU3-ZAU6-SUFFICIENT-CONDITION-COLLISION-AUDIT-R1.tsv",
+      "source_role": "verified_research_boundary_runtime_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "PRQ2-008-N02",
+      "construction": "ClauseRelationGraph",
+      "source": "只要就。",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/PRQ2-008-ZI2JIU3-ZAU6-SUFFICIENT-CONDITION-COLLISION-AUDIT-R1.tsv",
+      "source_role": "verified_research_boundary_runtime_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "PRQ2-008-N03",
+      "construction": "ClauseRelationGraph",
+      "source": "只要有得去玩，佢返唔返學都冇所謂。",
+      "assertion": "trace_detail_not_equals",
+      "forbidden_trace_detail": {
+        "relation_profile": "sufficient_condition"
+      },
+      "provenance": "docs/research/PRQ2-008-ZI2JIU3-ZAU6-SUFFICIENT-CONDITION-COLLISION-AUDIT-R1.tsv",
+      "source_role": "verified_omitted_zau6_deferred_profile_runtime_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "PRQ2-008-N04",
+      "construction": "ClauseRelationGraph",
+      "source": "如果你肯俾錢，我就賣。",
+      "assertion": "trace_detail_not_equals",
+      "forbidden_trace_detail": {
+        "relation_profile": "sufficient_condition"
+      },
+      "provenance": "docs/research/PRQ2-008-ZI2JIU3-ZAU6-SUFFICIENT-CONDITION-COLLISION-AUDIT-R1.tsv",
+      "source_role": "verified_hypothetical_condition_control_runtime_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "PRQ2-008-N05",
+      "construction": "ClauseRelationGraph",
+      "source": "我只要茶，佢就要咖啡。",
+      "assertion": "trace_detail_not_equals",
+      "forbidden_trace_detail": {
+        "relation_profile": "sufficient_condition"
+      },
+      "provenance": "docs/research/PRQ2-008-ZI2JIU3-ZAU6-SUFFICIENT-CONDITION-RESEARCH-R1.md",
+      "source_role": "constructed_lexical_zi2_plus_modal_jiu3_collision_runtime_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "PRQ2-014-I01",
+      "construction": "ClauseRelationGraph",
+      "source": "只有同心協力，啲嘢先至做得好。",
+      "assertion": "trace_detail_equals",
+      "expected_surface": "只有同心協力，啲嘢先至做得好",
+      "expected_trace_detail": {
+        "clause_linking_subtype": "necessary_condition",
+        "relation_subtype": "conditional",
+        "relation_profile": "necessary_condition",
+        "research_id": "PRQ2-014",
+        "relation_profile_scope": "overt_left_marker_with_predicate_or_frame_and_overt_right_linker_only"
+      },
+      "provenance": "docs/research/PRQ2-014-ZI2JAU5-SIN1ZI3-NECESSARY-CONDITION-COLLISION-AUDIT-R1.tsv",
+      "source_role": "verified_research_surface_runtime_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "PRQ2-014-I02",
+      "construction": "ClauseRelationGraph",
+      "source": "金融業只有喺多元化及繁榮嘅商業環境下，先可以興旺發展。",
+      "assertion": "trace_detail_equals",
+      "expected_surface": "金融業只有喺多元化及繁榮嘅商業環境下，先可以興旺發展",
+      "expected_trace_detail": {
+        "clause_linking_subtype": "necessary_condition",
+        "relation_subtype": "conditional",
+        "relation_profile": "necessary_condition",
+        "research_id": "PRQ2-014",
+        "relation_profile_scope": "overt_left_marker_with_predicate_or_frame_and_overt_right_linker_only"
+      },
+      "provenance": "docs/research/PRQ2-014-ZI2JAU5-SIN1ZI3-NECESSARY-CONDITION-SOURCE-VERIFICATION-R1.tsv",
+      "source_role": "verified_research_surface_runtime_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "PRQ2-014-N01",
+      "construction": "ClauseRelationGraph",
+      "source": "食完飯先至計啦。",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/PRQ2-014-ZI2JAU5-SIN1ZI3-NECESSARY-CONDITION-COLLISION-AUDIT-R1.tsv",
+      "source_role": "verified_temporal_boundary_runtime_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "PRQ2-014-N02",
+      "construction": "ClauseRelationGraph",
+      "source": "只有，先至。",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/PRQ2-014-ZI2JAU5-SIN1ZI3-NECESSARY-CONDITION-COLLISION-AUDIT-R1.tsv",
+      "source_role": "constructed_empty_member_boundary_runtime_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "PRQ2-014-N03",
+      "construction": "ClauseRelationGraph",
+      "source": "只有佢先做得到。",
+      "assertion": "trace_detail_not_equals",
+      "forbidden_trace_detail": {
+        "relation_profile": "necessary_condition"
+      },
+      "provenance": "docs/research/PRQ2-014-ZI2JAU5-SIN1ZI3-NECESSARY-CONDITION-COLLISION-AUDIT-R1.tsv",
+      "source_role": "verified_unpunctuated_participant_restriction_deferred_profile_runtime_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "PRQ2-014-N04",
+      "construction": "ClauseRelationGraph",
+      "source": "只要你肯俾錢，我就賣。",
+      "assertion": "trace_detail_not_equals",
+      "forbidden_trace_detail": {
+        "relation_profile": "necessary_condition"
+      },
+      "provenance": "docs/research/PRQ2-014-ZI2JAU5-SIN1ZI3-NECESSARY-CONDITION-COLLISION-AUDIT-R1.tsv",
+      "source_role": "verified_sufficient_condition_control_runtime_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "PRQ2-014-N05",
+      "construction": "ClauseRelationGraph",
+      "source": "我只有一本書，佢先有兩本。",
+      "assertion": "trace_detail_not_equals",
+      "forbidden_trace_detail": {
+        "relation_profile": "necessary_condition"
+      },
+      "provenance": "docs/research/PRQ2-014-ZI2JAU5-SIN1ZI3-NECESSARY-CONDITION-RESEARCH-R1.md",
+      "source_role": "constructed_lexical_existential_zi2jau5_collision_runtime_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "PRQ2-015-I01",
+      "construction": "ClauseRelationGraph",
+      "source": "我寧願去啲唔鍾意嘅公司度做嘢，都唔想渾渾噩噩噉又過多年。",
+      "assertion": "trace_detail_equals",
+      "expected_surface": "我寧願去啲唔鍾意嘅公司度做嘢，都唔想渾渾噩噩噉又過多年",
+      "expected_trace_detail": {
+        "clause_linking_subtype": "committed_preference",
+        "relation_subtype": "committed_preference",
+        "relation_profile": "rejection",
+        "research_id": "PRQ2-015"
+      },
+      "provenance": "docs/research/PRQ2-015-NING4JYUN6-DOU1-COMMITTED-PREFERENCE-COLLISION-AUDIT-R1.tsv",
+      "source_role": "verified_research_surface_runtime_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "PRQ2-015-I02",
+      "construction": "ClauseRelationGraph",
+      "source": "阿Tom寧願行十公里路，都唔肯俾錢買飛搭巴士。",
+      "assertion": "trace_detail_equals",
+      "expected_surface": "阿Tom寧願行十公里路，都唔肯俾錢買飛搭巴士",
+      "expected_trace_detail": {
+        "clause_linking_subtype": "committed_preference",
+        "relation_subtype": "committed_preference",
+        "relation_profile": "rejection",
+        "research_id": "PRQ2-015"
+      },
+      "provenance": "docs/research/PRQ2-015-NING4JYUN6-DOU1-COMMITTED-PREFERENCE-COLLISION-AUDIT-R1.tsv",
+      "source_role": "verified_research_surface_runtime_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "PRQ2-015-N01",
+      "construction": "ClauseRelationGraph",
+      "source": "有啲人寧願退黨，都要補上空缺。",
+      "assertion": "trace_detail_not_equals",
+      "forbidden_trace_detail": {
+        "clause_linking_subtype": "committed_preference"
+      },
+      "provenance": "docs/research/PRQ2-015-NING4JYUN6-DOU1-COMMITTED-PREFERENCE-COLLISION-AUDIT-R1.tsv",
+      "source_role": "constructed_punctuated_positive_continuation_deferred_profile_runtime_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "PRQ2-009-I01",
+      "construction": "ClauseRelationGraph",
+      "source": "既然其他國家都可以成功限制每日工作小時同埋實施最低工資，我相信喺香港都一定得。",
+      "assertion": "trace_detail_equals",
+      "expected_surface": "既然其他國家都可以成功限制每日工作小時同埋實施最低工資，我相信喺香港都一定得",
+      "expected_trace_detail": {
+        "clause_linking_subtype": "premise_response",
+        "relation_subtype": "premise_response",
+        "relation_profile": "established_premise_response",
+        "response_marker_profile": "unmarked",
+        "research_id": "PRQ2-009"
+      },
+      "provenance": "docs/research/PRQ2-009-GEI3JIN4-PREMISE-RESPONSE-COLLISION-AUDIT-R1.tsv",
+      "source_role": "verified_unmarked_opinion_response_runtime_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "PRQ2-009-I02",
+      "construction": "ClauseRelationGraph",
+      "source": "既然你都去圖書館，不如順便幫我還書啦。",
+      "assertion": "trace_detail_equals",
+      "expected_surface": "既然你都去圖書館，不如順便幫我還書啦",
+      "expected_trace_detail": {
+        "clause_linking_subtype": "premise_response",
+        "relation_subtype": "premise_response",
+        "relation_profile": "established_premise_response",
+        "response_marker_profile": "bat1jyu4",
+        "research_id": "PRQ2-009"
+      },
+      "provenance": "docs/research/PRQ2-009-GEI3JIN4-PREMISE-RESPONSE-COLLISION-AUDIT-R1.tsv",
+      "source_role": "verified_suggestion_response_runtime_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "PRQ2-009-I03",
+      "construction": "ClauseRelationGraph",
+      "source": "既然佢唔得閒，噉我聽日再嚟過吖。",
+      "assertion": "trace_detail_equals",
+      "expected_surface": "既然佢唔得閒，噉我聽日再嚟過吖",
+      "expected_trace_detail": {
+        "clause_linking_subtype": "premise_response",
+        "relation_subtype": "premise_response",
+        "relation_profile": "established_premise_response",
+        "response_marker_profile": "gam2",
+        "research_id": "PRQ2-009"
+      },
+      "provenance": "docs/research/PRQ2-009-GEI3JIN4-PREMISE-RESPONSE-COLLISION-AUDIT-R1.tsv",
+      "source_role": "verified_gam2_response_runtime_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "PRQ2-009-I04",
+      "construction": "ClauseRelationGraph",
+      "source": "既然你嚟咗，就坐低啦。",
+      "assertion": "trace_detail_equals",
+      "expected_surface": "既然你嚟咗，就坐低啦",
+      "expected_trace_detail": {
+        "clause_linking_subtype": "premise_response",
+        "relation_subtype": "premise_response",
+        "relation_profile": "established_premise_response",
+        "response_marker_profile": "zau6",
+        "research_id": "PRQ2-009"
+      },
+      "provenance": "docs/research/PRQ2-009-GEI3JIN4-PREMISE-RESPONSE-COLLISION-AUDIT-R1.tsv",
+      "source_role": "verified_zau6_response_runtime_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "PRQ2-009-N01",
+      "construction": "ClauseRelationGraph",
+      "source": "我既然答應咗，就一定會做。",
+      "assertion": "trace_detail_not_equals",
+      "forbidden_trace_detail": {
+        "clause_linking_subtype": "premise_response"
+      },
+      "provenance": "docs/research/PRQ2-009-GEI3JIN4-PREMISE-RESPONSE-COLLISION-AUDIT-R1.tsv",
+      "source_role": "verified_preposed_subject_deferred_profile_runtime_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "PRQ2-009-N02",
+      "construction": "ClauseRelationGraph",
+      "source": "既然就。",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/PRQ2-009-GEI3JIN4-PREMISE-RESPONSE-COLLISION-AUDIT-R1.tsv",
+      "source_role": "verified_empty_member_boundary_runtime_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
     }
   ]
 }

@@ -4,7 +4,7 @@ research_id: PRQ2-013
 status: active_research_unit
 baseline_version: 0.5.213
 created: 2026-07-23
-implementation_authorized: false
+implementation_authorized: true
 status_change_authorized: false
 ---
 
@@ -33,8 +33,11 @@ The evidence does not settle omission of either marker, constituent symmetry,
 strength of rejection, subject placement, negation, particles, prosody,
 colloquial frequency, or equivalence with `倒不如` and other preference forms.
 
-This note authorizes no parser change, construction-status change, lexical
-installation, test promotion, or automatic acceptance rule.
+Implementation authorization granted on 2026-07-23 is limited to the overt
+comma-delimited `與其 A，不如 B` core, internal ordered-preference subtype
+metadata, and suggestion/comparison guards. It does not authorize a
+construction-status change, optional `倒`, marker omission, or broader
+automatic acceptance rule.
 
 ## Sources
 
@@ -60,6 +63,12 @@ generic `ClauseLink`; each `不如` continuation may be labeled `Suggest`, while
 the rejected option and preference ordering are lost. Lone suggestion and
 ordinary comparison require separate analyses.
 
+The companion collision audit is a frozen pre-implementation observation.
+The authorized first slice now records `ordered_preference` on overt paired
+cores, retains lone suggestion `不如 B`, and excludes ordinary comparison
+`A 不如 B` from `Suggest`. Optional `倒`, less parseable member types, and
+broader profiles remain deferred.
+
 ## Open boundaries
 
 - VP, NP, property, and full-clause alternatives;
@@ -71,5 +80,5 @@ ordinary comparison require separate analyses.
 
 ## Disposition
 
-**Dedicated research unit; implementation and status changes remain
-unauthorized.**
+**Dedicated research unit; the narrow overt paired core is implemented, while
+status changes and broader profiles remain unauthorized.**

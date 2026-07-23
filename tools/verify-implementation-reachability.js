@@ -3,7 +3,7 @@
 
 const fs = require("fs");
 const path = require("path");
-const { loadRuntimeApi, internalConstruction } = require("../tests/lib/runtime-api");
+const { loadRuntimeApi, internalConstruction, rowSurface } = require("../tests/lib/runtime-api");
 const { loadConstructionNotes } = require("./construction-notes-lib");
 const { currentValidationPath } = require("./validation-paths");
 
@@ -17,6 +17,14 @@ const indexByLabel = new Map(index.files.map((item) => [item.construction, item]
 const probesByLabel = new Map();
 const checks = [];
 const failures = [];
+const supportedAssertions = new Set([
+  "compatibility_alias_present",
+  "construction_absent",
+  "construction_present",
+  "trace_detail_equals",
+  "trace_detail_not_equals",
+]);
+function trace(row) { return row && row.trace_detail || {}; }
 
 function check(name, condition, detail = "") {
   const pass = Boolean(condition);
@@ -35,7 +43,7 @@ for (const probe of probes.cases || []) {
   caseIds.add(probe.case_id);
   check(`${probe.case_id} targets active label`, activeLabels.has(probe.construction), probe.construction);
   check(`${probe.case_id} has zero evidence weight`, probe.linguistic_evidence_weight === 0 && probe.purpose === "runtime_reachability_only", `${probe.linguistic_evidence_weight}/${probe.purpose}`);
-  check(`${probe.case_id} uses supported assertion`, ["construction_present", "compatibility_alias_present"].includes(probe.assertion), probe.assertion);
+  check(`${probe.case_id} uses supported assertion`, supportedAssertions.has(probe.assertion), probe.assertion);
   if (!probesByLabel.has(probe.construction)) probesByLabel.set(probe.construction, []);
   probesByLabel.get(probe.construction).push(probe);
 
@@ -49,9 +57,33 @@ for (const probe of probes.cases || []) {
   }
   if (probe.assertion === "construction_present") {
     check(`${probe.case_id} reaches target`, rows.map(internalConstruction).includes(probe.construction), probe.source);
-  } else {
+  } else if (probe.assertion === "construction_absent") {
+    check(`${probe.case_id} excludes target`, !rows.map(internalConstruction).includes(probe.construction), probe.source);
+  } else if (probe.assertion === "compatibility_alias_present") {
     check(`${probe.case_id} exposes compatibility alias`, Boolean(probe.internal_construction)
       && rows.some((row) => row.compatibility_alias === probe.construction && internalConstruction(row) === probe.internal_construction), probe.source);
+  } else if (probe.assertion === "trace_detail_equals") {
+    const row = rows.find((candidate) =>
+      internalConstruction(candidate) === probe.construction &&
+      (!probe.expected_surface || rowSurface(candidate) === probe.expected_surface)
+    );
+    check(`${probe.case_id} reaches trace target`, Boolean(row), probe.source);
+    const expectedEntries = Object.entries(probe.expected_trace_detail || {});
+    check(`${probe.case_id} declares expected trace detail`, expectedEntries.length > 0);
+    for (const [field, expected] of expectedEntries) {
+      check(`${probe.case_id} trace field ${field} equals expected`, Boolean(row) && trace(row)[field] === expected, expected);
+    }
+  } else if (probe.assertion === "trace_detail_not_equals") {
+    const matchingRows = rows.filter((candidate) =>
+      internalConstruction(candidate) === probe.construction &&
+      (!probe.expected_surface || rowSurface(candidate) === probe.expected_surface)
+    );
+    const forbiddenEntries = Object.entries(probe.forbidden_trace_detail || {});
+    check(`${probe.case_id} declares forbidden trace detail`, forbiddenEntries.length > 0);
+    for (const [field, forbidden] of forbiddenEntries) {
+      check(`${probe.case_id} trace field ${field} excludes forbidden value`,
+        !matchingRows.some((row) => trace(row)[field] === forbidden), forbidden);
+    }
   }
 }
 

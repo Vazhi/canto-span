@@ -4,7 +4,7 @@ research_id: PRQ2-014
 status: active_research_unit
 baseline_version: 0.5.213
 created: 2026-07-23
-implementation_authorized: false
+implementation_authorized: true
 status_change_authorized: false
 ---
 
@@ -36,8 +36,12 @@ The evidence does not settle marker omission, equivalence among `先`, `先至`,
 and `至`, focus prosody, negation, constituent scope, or when participant
 restriction should be represented separately from a clausal condition.
 
-This note authorizes no parser change, construction-status change, lexical
-installation, test promotion, or automatic acceptance rule.
+Implementation authorization granted on 2026-07-23 is limited to the overt
+comma-delimited `只有 A，先／先至／先可以 B` core, internal
+necessary-condition profile metadata, and temporal/empty-member guards. It
+does not authorize a construction-status change, lexical merger of `只有`,
+marker omission, bare condition-plus-`先至`, or a broader automatic
+acceptance rule.
 
 ## Sources
 
@@ -63,6 +67,13 @@ family. Most sourced examples are unwrapped or retain only local nominal/modal
 children. `只要`, `除非`, and temporal `先至` controls confirm that lexical
 overlap or generic clause linking cannot identify the target relation.
 
+The companion collision audit is a frozen pre-implementation observation.
+The authorized first slice now records `necessary_condition` on overt paired
+cores while retaining the underlying `conditional` relation type. It requires
+adjacent `只`+`有` in the left member, `先` or `先至` in the right member, and
+overt content on both sides; participant restrictions without punctuation,
+bare conditions, short `至`, and temporal profiles remain deferred.
+
 ## Open boundaries
 
 - participant/domain restriction versus propositional necessary condition;
@@ -74,5 +85,5 @@ overlap or generic clause linking cannot identify the target relation.
 
 ## Disposition
 
-**Dedicated research unit; implementation and status changes remain
-unauthorized.**
+**Dedicated research unit; the narrow overt paired core is implemented, while
+status changes and broader profiles remain unauthorized.**
