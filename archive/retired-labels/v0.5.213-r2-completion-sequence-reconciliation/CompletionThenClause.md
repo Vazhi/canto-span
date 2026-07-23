@@ -1,7 +1,7 @@
 ---
-title: "ConditionResult"
+title: "CompletionThenClause"
 type: "canto-span-construction"
-construction: "ConditionResult"
+construction: "CompletionThenClause"
 status: "unsupported_generalization"
 confidence: "unsupported"
 claim_layer: "language"
@@ -45,28 +45,28 @@ current_standard_reaudit_complete: false
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
-standard_test_file: "tests/constructions/ConditionResult.json"
+standard_test_file: "tests/constructions/CompletionThenClause.json"
 standard_test_coverage: "implementation_positive_only"
 standard_positive_test_count: 0
 standard_boundary_test_count: 0
 standard_implementation_probe_count: 1
 standard_executable_test_count: 1
-source_ids: ["SRC-CHENG-2023-TP-SFP-CONDITIONAL", "SRC-LIANG-MAI-2025-GRAMMAR-CODING", "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"]
+source_ids: ["SRC-FAN-CHAN-2022", "SRC-LIANG-MAI-2025-GRAMMAR-CODING", "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"]
 runtime_active: true
 workflow_state: "archived"
 workflow_priority: null
 workflow_since: "2026-07-21"
 workflow_reason: "not_selected_for_current_bounded_working_set"
-runtime_code_references: 4
+runtime_code_references: 3
 accepted_fixtures: 0
 tags: ["canto-span/grammar", "canto-span/status/unsupported_generalization", "canto-span/lane/lane-02", "canto-span/workflow/archived"]
 ---
 
-# ConditionResult
+# CompletionThenClause
 
 ## Plain-language claim
 
-Cantonese may instantiate the structural family represented by ConditionResult; exact productivity and boundaries require pattern-specific independent evidence.
+Cantonese may instantiate the structural family represented by CompletionThenClause; exact productivity and boundaries require pattern-specific independent evidence.
 
 This is a linguistic claim only to the extent allowed by the status and evidence below. The runtime label is not assumed to be standard linguistic terminology.
 
@@ -80,29 +80,29 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 ## Sources
 
-### SRC-CHENG-2023-TP-SFP-CONDITIONAL
+### SRC-FAN-CHAN-2022
 
-- Citation: [Cheng, Siu-Pong. 2023. Cantonese Sentence-final Particles Pertaining to the TP Domain. Current Research in Chinese Linguistics 102(1):81-100.](https://cuhk.edu.hk/ics/clrc/crcl_102_1/cheng.pdf)
-- Locator: pp. 90-91, example 12
-- Verification: `VERIFIED_FULL_TEXT_AND_OFFICIAL_JOURNAL_PDF`
-- What it supports: 我去嘅話我哋會見 has first-person singular in the antecedent and first-person plural in the consequent.
-- Limit: Do not infer obligatory subject switching; the example only blocks forced sharing.
+- Citation: [Fan, Xiaolei and Kin Wing Kevin Chan. 2022. 香港粵語「咗」的語法特點：與北京話「了1」的比較 [Grammatical properties of zo 咗 in Hong Kong Cantonese: A comparative study with le1 了1 in Beijing Mandarin]. Language and Linguistics 23(3): 371-410.](https://www.jbe-platform.com/content/journals/10.1075/lali.00110.fan?crawler=true)
+- Locator: p. 374, example 3c
+- Verification: `VERIFIED_PUBLISHER_TEXT_AND_METADATA`
+- What it supports: 琴日佢做完(咗)功課喇 supports visible completion/aspect composition.
+- Limit: Do not infer a following 就 clause, universal speaker preference, or the full CompletionThenClause from this example.
 
 ### SRC-LIANG-MAI-2025-GRAMMAR-CODING
 
 - Citation: [Liang, Yuqing and Mai, Ziyin. 2025. Supplementary materials for Grammatical development of the native L1 in Cantonese-English bilingual children: early costs and long-term gains. Bilingualism: Language and Cognition.](https://static.cambridge.org/content/id/urn%3Acambridge.org%3Aid%3Aarticle%3AS1366728925100412/resource/name/S1366728925100412sup001.pdf)
-- Locator: category 59, exact example
+- Locator: category 53, PDF p. 10
 - Verification: `VERIFIED_FULL_TEXT_SUPPLEMENT`
-- What it supports: The result in 如果病咗，就要去睇醫生 contains modal 要 and an action VP.
-- Limit: Do not infer unrestricted consequent syntax or modal obligatoriness from one example.
+- What it supports: The coding scheme lists 就 among temporal adverbs alongside 就嚟 and 就快.
+- Limit: Do not treat the list as a complete lexical-semantic analysis of 就.
 
 ### SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE
 
 - Citation: [鄭定歐、張勵妍、高石英. 2021. 粵語（香港話）教程（修訂版）（錄音掃碼即聽版）. 香港: 三聯書店.](https://www.jointpublishing.com/publishing/%E7%B2%B5%E8%AA%9E%EF%BC%88%E9%A6%99%E6%B8%AF%E8%A9%B1%EF%BC%89%E6%95%99%E7%A8%8B/)
-- Locator: printed p. 44
+- Locator: printed p. 96
 - Verification: `VERIFIED_USER_PROVIDED_FULL_TEXT_AND_OFFICIAL_PUBLISHER_METADATA`
-- What it supports: 聽日唔得，就後日先啦 is translated as if tomorrow does not work, then the day after tomorrow, with no overt 如果 or 嘅話.
-- Limit: Do not label every clause+就 sequence as conditional solely from English “if/then” translation.
+- What it supports: 佢講完 has subject 佢 while 我就話 has subject 我.
+- Limit: Do not infer obligatory subject switching or erase a recoverable shared subject in other examples.
 
 ## Native-speaker review
 
@@ -113,7 +113,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 ## Negative and boundary cases
 
-- Standard executable test file: `tests/constructions/ConditionResult.json`
+- Standard executable test file: `tests/constructions/CompletionThenClause.json`
 - Evidence state: `none_recorded`
 - Executable or review records containing this label:
   - `test-data/grammar-claim-provenance-CP021B.json`
@@ -134,11 +134,12 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 - no explicit external claim-source edge
 - Runtime metadata and current governance agree in v0.5.184.
-- Research question: Which externally documented Cantonese constructions, if any, justify the scope and boundaries currently represented by ConditionResult?
+- Research question: Which externally documented Cantonese constructions, if any, justify the scope and boundaries currently represented by CompletionThenClause?
 
 ## Related constructions
 
-- [[ConditionalClause]]
+- [[PriorityMarkerClause]]
+- [[TemporalClause]]
 
 ## Migration provenance
 
@@ -148,6 +149,12 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 ## CP040 final reachable-wrapper audit
 
-- Implementation-only reachability: `FRWRAP-003` with `買就平啲。`
-- Protects the current action + 就 + stative-result route only. It does not establish a general conditional analysis or license every 就 sequence.
+- Implementation-only reachability: `FRWRAP-001` with `我做完功課就瞓覺。`
+- Protects the current CompletionVP + 就 route only. Component evidence does not establish a dedicated wrapper, subject sharing, or unrestricted completion-then productivity.
 - Its linguistic evidence weight is **0**; reachability does not establish naturalness, productivity, construction identity, or promotion eligibility.
+
+## Retirement disposition
+
+- Retired at `v0.5.213-r2-completion-sequence-reconciliation`.
+- Completion + `就` sequences now use typed sequential `ClauseRelationEdge` structure with independently parsed earlier and later members.
+- The source and boundary record remains preserved for completion and sequence-relation research.

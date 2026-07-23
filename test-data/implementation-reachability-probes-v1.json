@@ -625,18 +625,6 @@
       "legacy_probe_batch": "evaluation-scalar-question"
     },
     {
-      "case_id": "FRWRAP-001",
-      "construction": "CompletionThenClause",
-      "source": "我做完功課就瞓覺。",
-      "provenance": "docs/research/CP040-P1-FINAL-REACHABLE-WRAPPER-AUDIT-R1.md#FRWRAP-001",
-      "source_role": "code_specific_semantically_coherent_probe",
-      "assertion": "construction_present",
-      "linguistic_evidence_weight": 0,
-      "purpose": "runtime_reachability_only",
-      "scope_note": "Protects the current CompletionVP plus 就 sequence only; component evidence does not establish the dedicated wrapper, subject-sharing policy, or unrestricted completion-then productivity.",
-      "legacy_probe_batch": "final-reachable-wrapper"
-    },
-    {
       "case_id": "FRWRAP-002",
       "construction": "CompoundDirectionalMotionVP",
       "source": "返上嚟。",
@@ -646,18 +634,6 @@
       "linguistic_evidence_weight": 0,
       "purpose": "runtime_reachability_only",
       "scope_note": "Protects the exact 返上嚟 route only; attestation of compound directionals does not validate arbitrary combinations, identical constituency, or the broad runtime label.",
-      "legacy_probe_batch": "final-reachable-wrapper"
-    },
-    {
-      "case_id": "FRWRAP-003",
-      "construction": "ConditionResult",
-      "source": "買就平啲。",
-      "provenance": "docs/research/CP040-P1-FINAL-REACHABLE-WRAPPER-AUDIT-R1.md#FRWRAP-003",
-      "source_role": "code_specific_semantically_coherent_probe",
-      "assertion": "construction_present",
-      "linguistic_evidence_weight": 0,
-      "purpose": "runtime_reachability_only",
-      "scope_note": "Protects the current action plus 就 plus stative-result route only; it does not establish a general conditional analysis or license every clause containing 就.",
       "legacy_probe_batch": "final-reachable-wrapper"
     },
     {

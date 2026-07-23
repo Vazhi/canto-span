@@ -6,9 +6,9 @@ and its evidence records.
 ## Current state
 
 - runtime: **v0.5.213**
-- active runtime labels / construction notes: **163 / 163**
-- construction workflow: **2 active / 161 workflow-archived**
-- retired labels: **18**
+- active runtime labels / construction notes: **161 / 161**
+- construction workflow: **2 active / 159 workflow-archived**
+- retired labels: **20**
 - `supported_productive`: **0**
 - `provisional`: **0**
 - `research_pending`: **65**
@@ -19,8 +19,8 @@ Current validation targets:
 
 - aggregate regression: **551** cases
 - NP subsystem: **43** cases
-- per-construction assertions: **1,279**
-- construction test files: **163**
+- per-construction assertions: **1,278**
+- construction test files: **161**
 
 v0.5.213 retains `NegatedStativePredicate` as `research_pending` for narrow
 copula-less `唔 + property predicate`. Negative nominal predicates with `唔係`,
