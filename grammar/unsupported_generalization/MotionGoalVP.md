@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "0bf3532"
+code_document_code_locations: ["main.js:2915-2975", "main.js:3155-3180", "main.js:13415-13440", "main.js:13930-13975"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
@@ -162,4 +162,8 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Research finding: `SRC-CHOR-2018-DIRECTIONALS`; `SRC-LEUNG-2026-MOTION`; `SRC-SZETO-2015-PERFECTIVE`. Direct research distinguishes arrival goals, locative objects, deixis, abstract uses, and purposive `去/嚟`.
 - Recommended disposition: Retain source-backed spatial-goal profiles; split physical goal, abstract goal, deictic direction, and purpose uses. Consider shared motion-relation infrastructure.
 - Retirement safeguard: Strong retirement veto: 40 current positives and three direct sources. Remove only overbroad paths, not the goal relation.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **retain narrow and decompose** physical goal, abstract goal, deictic direction, and purpose uses.
+- Runtime/reach: templates and builders at `main.js:2915-2975`, `main.js:3155-3180`, `main.js:13415-13440`, and `main.js:13930-13975` preserve movement predicate, aspect, and overt goal.
+- Evidence/boundaries: Chor, Leung, and Szeto support distinct arrival/goal/deictic/purpose profiles and exact perfective order. Forty positives and two nonmotion boundaries veto wholesale retirement.
+- A1/schema: preserve the label at `unsupported_generalization` while adding typed roles; do not turn every `去/到` into physical motion.
+- Open/release: subtype inventories, abstract uses, lexical scope, corpus/panel evidence remain open; this note, baseline, and release audit record the decision.

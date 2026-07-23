@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "0bf3532"
+code_document_code_locations: ["main.js:10415-10435", "main.js:13888-13905"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
@@ -152,4 +152,8 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Research finding: `SRC-LEUNG-2014-COVERBS`; `SRC-YIP-MATTHEWS-2000-BASIC`. Sources distinguish `向` toward, `經` via, source, and goal rather than one interchangeable path category.
 - Recommended disposition: Replace catch-all scope with typed orientation, route, source, and goal relations; likely shared spatial subsystem.
 - Retirement safeguard: Do not retire before mapping current surfaces to their exact spatial relation and position.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **quarantine and decompose/replace** the catch-all with typed orientation/route/source/goal relations.
+- Runtime/reach: `main.js:10415-10435` and `main.js:13888-13905` preserve overt path marker and ground in source order.
+- Evidence/boundaries: Leung and Yip–Matthews distinguish `向`, `經`, source, and goal; one positive and two nonpath boundaries cannot make them interchangeable.
+- A1/schema: retain compatibility at `unsupported_generalization`; future typed roles must preserve marker identity, ground, and position.
+- Open/release: marker-specific scope, coverb analysis, corpus/panel evidence remain open; this note, baseline, and release audit record the decision.

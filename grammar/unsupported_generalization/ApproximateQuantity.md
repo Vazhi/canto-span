@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "0bf3532"
+code_document_code_locations: ["main.js:2395-2410", "main.js:3300-3325", "main.js:5129-5181", "main.js:15180-15192"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
@@ -152,4 +152,8 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Research finding: `SRC-TANG-2024-CANTONESE-GRAMMAR-GUIDE` supports numeral + temporal unit + `左右` as an approximate duration phrase. Current native record rejects one fixture, not the entire phenomenon.
 - Recommended disposition: Rename or split toward `ApproximateMeasurePhrase`; distinguish duration, age, distance, count, and object-NP uses. Keep disputed fixtures quarantined.
 - Retirement safeguard: Do not retire based on one rejected surface. First inspect the exact rejected item, source scope, and newer Cantonese measure-phrase research.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **quarantine and rename/decompose** toward typed approximate measure phrases.
+- Runtime/reach: templates, governor guard, and fallback are `main.js:2395-2410`, `main.js:3300-3325`, `main.js:5129-5181`, and `main.js:15180-15192`.
+- Evidence/boundaries: Tang supports approximate duration, not every object NP; three positives and two ordinary-NP boundaries preserve overt quantity/unit/approximation while one rejected fixture cannot erase the phenomenon.
+- A1/schema: retain `unsupported_generalization` for compatibility; future subtypes must distinguish duration, age, distance, count, and object roles without hidden units.
+- Open/release: subtype research, disputed surface, corpus/panel evidence remain open; this note, baseline, and release audit record the decision.

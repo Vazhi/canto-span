@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "0bf3532"
+code_document_code_locations: ["main.js:2900-2920", "main.js:6387-6487", "main.js:13950-13968"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
@@ -153,4 +153,8 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Research finding: `SRC-LEUNG-2026-MOTION`; `SRC-MATTHEWS-2006-SVC`. Purpose cannot be inferred from two verbs alone; immediate following position and semantic compatibility matter.
 - Recommended disposition: Retain a narrow typed purpose relation; require two independently parsed predicates and explicit semantic/structural guards.
 - Retirement safeguard: Do not retire before comparing it with `SerialVerbPurposeChain` and other clause-relation nodes; merge duplicates rather than erase the relation.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **retain narrow** as a typed purpose relation and merge only redundant motion/serial wrappers.
+- Runtime/reach: template, typed chain helpers, and source-preserving builder are `main.js:2900-2920`, `main.js:6387-6487`, and `main.js:13950-13968`.
+- Evidence/boundaries: Leung’s annotation and Matthews’s competing SVC analyses require immediate following position plus semantic compatibility, not two verbs alone. One positive and two nonpurpose boundaries are executable.
+- A1/schema: preserve both independently parsed predicates and shared-subject provenance at `unsupported_generalization`; no hidden subject or purpose link.
+- Open/release: comparison with `SerialVerbPurposeChain`, semantic guards, corpus/panel evidence remain open; this note, baseline, and release audit record the decision.

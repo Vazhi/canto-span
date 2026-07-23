@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "0bf3532"
+code_document_code_locations: ["main.js:2740-2770", "main.js:12035-12120", "main.js:14115-14200", "main.js:17592-17605"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
@@ -159,4 +159,8 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Research finding: `SRC-KWAN-2010-LOCATIVE`; `SRC-YIP-MATTHEWS-2000-BASIC`. Research contrasts preverbal action location, postverbal resulting/goal location, locative predicates, and progressive/locative `喺度`.
 - Recommended disposition: Split by role and position: event location, predicate location, result/goal location, localizer phrase, and `喺度` ambiguity. Likely migrate to a shared spatial subsystem.
 - Retirement safeguard: Strong retirement veto. The current catch-all may retire only after each supported subtype and ambiguity is preserved.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **quarantine and decompose/replace** through typed spatial roles.
+- Runtime/reach: templates and builders at `main.js:2740-2770`, `main.js:12035-12120`, `main.js:14115-14200`, and clause guards at `main.js:17592-17605` preserve subjects and overt localizers.
+- Evidence/boundaries: Kwan distinguishes event from result location; Yip–Matthews preserves locative/progressive `喺度` ambiguity. Fifteen positives and two nonlocative boundaries protect the material, not a catch-all meaning.
+- A1/schema: keep compatibility at `unsupported_generalization`; future roles must preserve position, localizer, goal/result, and ambiguity with no hidden place.
+- Open/release: subtype mapping, localizer inventory, corpus/panel evidence remain open; this note, baseline, and release audit record the decision.
