@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "69f871e"
+code_document_code_locations: ["main.js:8716-8908", "main.js:15075-15082", "main.js:19034-19070"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
@@ -160,4 +160,8 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Research finding: `SRC-YAP-WONG-CHOR-2014-STANCE` and related corpus research distinguish complement-taking predicates from clause-medial and parenthetical stance markers.
 - Recommended disposition: Split lexical cognition/opinion complementation from grammaticalized stance uses; keep disputed stages noncategorical.
 - Retirement safeguard: Strong retirement veto. First inspect lexical item, position, scope, and discourse function for every runtime path.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **quarantine and decompose** lexical complement-taking predicates from grammaticalized/parenthetical stance.
+- Runtime/reach: content selection, builder, fallback, and context licensing are `main.js:8716-8908`, `main.js:15075-15082`, and `main.js:19034-19070`.
+- Evidence/boundaries: Alderete, Yap–Wong–Chor, and Yip–Matthews distinguish overt complement structure, stance continuum, and lexical meanings. Fifteen positives and two nonframe boundaries do not make disputed stages categorical.
+- A1/schema: preserve overt holder/predicate/content and context state at `unsupported_generalization`; never infer truth, factivity, or a hidden proposition.
+- Open/release: lexical item/position/scope mapping, grammaticalization stages, corpus/panel evidence remain open; this note, baseline, and release audit record the decision.

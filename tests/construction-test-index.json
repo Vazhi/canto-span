@@ -521,11 +521,11 @@
       "focused_boundary_count": 2,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "compatibility_alias_probe_count": 0,
       "positive_case_count": 19,
       "boundary_case_count": 2,
-      "executable_case_count": 21
+      "executable_case_count": 22
     },
     {
       "construction": "DitransitiveSpeechVP",
@@ -701,11 +701,11 @@
       "focused_boundary_count": 2,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "compatibility_alias_probe_count": 0,
       "positive_case_count": 8,
       "boundary_case_count": 2,
-      "executable_case_count": 10
+      "executable_case_count": 11
     },
     {
       "construction": "FormulaDiscourseUnit",
@@ -1931,11 +1931,11 @@
       "focused_boundary_count": 2,
       "focused_review_only_count": 0,
       "np_case_count": 0,
-      "implementation_probe_count": 0,
+      "implementation_probe_count": 1,
       "compatibility_alias_probe_count": 0,
       "positive_case_count": 1,
       "boundary_case_count": 2,
-      "executable_case_count": 3
+      "executable_case_count": 4
     },
     {
       "construction": "TransitiveVP",

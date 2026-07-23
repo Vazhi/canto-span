@@ -38,10 +38,10 @@ corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
 code_document_reconciled: true
-code_document_review_date: "2026-07-22"
-code_document_review_commit: "v0.5.201"
-code_document_code_locations: ["main.js:politeRequestAdjustmentFallback", "tests/fixtures/regression-snapshots.json:REG-0549"]
-current_standard_reaudit_complete: false
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "69f871e"
+code_document_code_locations: ["main.js:2545-2560", "main.js:10445-10505"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
@@ -153,4 +153,8 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Research finding: Two verified pedagogical sources distinguish `唔該`, `麻煩`, `請`, and other request strategies in lexical and pragmatic force.
 - Recommended disposition: Retain a narrow request/directive profile or represent conventional formulas plus imperative force separately. Avoid treating politeness as one interchangeable marker slot.
 - Retirement safeguard: Do not retire the source-linked request profile. A wrapper may be decomposed only after formula, directive, and manner material remain visible.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **retain narrow and decompose** formula, directive force, and manner material.
+- Runtime/reach: template and request builders are `main.js:2545-2560` and `main.js:10445-10505`; all overt markers/addressees/predicates remain visible.
+- Evidence/boundaries: Chow and the coursebook distinguish `唔該`, `麻煩`, `請`, and other strategies. One positive, two nondirective boundaries, and one zero-weight probe do not make markers interchangeable.
+- A1/schema: preserve `unsupported_generalization`; future decomposition must retain formula, addressee, directive, and manner roles.
+- Open/release: lexical/pragmatic force, register, broader strategies, corpus/panel evidence remain open; this note, baseline, and release audit record the decision.

@@ -197,7 +197,24 @@
     }
   ],
   "np_cases": [],
-  "implementation_probe_cases": [],
+  "implementation_probe_cases": [
+    {
+      "case_id": "ONTO-D01-DISCOURSE-PARTICLE",
+      "source": "你去啩？",
+      "assertion": "trace_detail_equals",
+      "expected_surface": "你去啩",
+      "expected_trace_detail": {
+        "discourse_particle_family": "epistemic_stance",
+        "particle_subtype": "uncertainty_probability_gwaa3",
+        "proposition_host_construction": "ClauseSpan",
+        "context_requirement_status": "context_not_required"
+      },
+      "provenance": "docs/research/ACTIVE-LABEL-EVIDENCE-ONTOLOGY-CLOSURE-R1.md#cognition-stance-discourse-and-particles",
+      "source_role": "internal_contract_invariant_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    }
+  ],
   "coverage": {
     "state": "positive_and_boundary",
     "exact_snapshot_positive_count": 19,
@@ -205,10 +222,10 @@
     "focused_boundary_count": 2,
     "focused_review_only_count": 0,
     "np_case_count": 0,
-    "implementation_probe_count": 0,
+    "implementation_probe_count": 1,
     "compatibility_alias_probe_count": 0,
     "positive_case_count": 19,
     "boundary_case_count": 2,
-    "executable_case_count": 21
+    "executable_case_count": 22
   }
 }

@@ -755,6 +755,57 @@
       "source_role": "internal_contract_invariant_probe",
       "linguistic_evidence_weight": 0,
       "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "ONTO-D01-DISCOURSE-PARTICLE",
+      "construction": "DiscourseParticleFrame",
+      "source": "你去啩？",
+      "assertion": "trace_detail_equals",
+      "expected_surface": "你去啩",
+      "expected_trace_detail": {
+        "discourse_particle_family": "epistemic_stance",
+        "particle_subtype": "uncertainty_probability_gwaa3",
+        "proposition_host_construction": "ClauseSpan",
+        "context_requirement_status": "context_not_required"
+      },
+      "provenance": "docs/research/ACTIVE-LABEL-EVIDENCE-ONTOLOGY-CLOSURE-R1.md#cognition-stance-discourse-and-particles",
+      "source_role": "internal_contract_invariant_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "ONTO-D02-FOCUS-PARTICLE",
+      "construction": "FocusParticleFrame",
+      "source": "得一個咋。",
+      "assertion": "trace_detail_equals",
+      "expected_surface": "得一個咋",
+      "expected_trace_detail": {
+        "focus_relation": "scalar_restriction",
+        "particle_subtype": "restrictive_exhaustive_limit_zaa3",
+        "context_requirement_status": "context_required",
+        "antecedent_status": "not_observed"
+      },
+      "provenance": "docs/research/ACTIVE-LABEL-EVIDENCE-ONTOLOGY-CLOSURE-R1.md#cognition-stance-discourse-and-particles",
+      "source_role": "internal_contract_invariant_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "ONTO-D03-TOPIC-COMMENT",
+      "construction": "TopicComment",
+      "source": "呢本書好貴。",
+      "assertion": "trace_detail_equals",
+      "expected_surface": "呢本書好貴",
+      "expected_trace_detail": {
+        "kind": "generative_template",
+        "construction_type": "TopicComment",
+        "template_family": "generative_template",
+        "subspan": true
+      },
+      "provenance": "docs/research/ACTIVE-LABEL-EVIDENCE-ONTOLOGY-CLOSURE-R1.md#cognition-stance-discourse-and-particles",
+      "source_role": "internal_contract_invariant_probe",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
     }
   ]
 }

@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "69f871e"
+code_document_code_locations: ["main.js:17845-17880", "main.js:12804", "main.js:20715-20717"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: false
 promotion_gate_version: "v3"
@@ -49,8 +49,8 @@ standard_test_file: "tests/constructions/FocusParticleFrame.json"
 standard_test_coverage: "positive_and_boundary"
 standard_positive_test_count: 8
 standard_boundary_test_count: 2
-standard_implementation_probe_count: 0
-standard_executable_test_count: 10
+standard_implementation_probe_count: 1
+standard_executable_test_count: 11
 source_ids: []
 runtime_active: true
 workflow_state: "archived"
@@ -136,4 +136,8 @@ No pattern-specific external source is currently mapped.
 - Research finding: Internal wrapper; external research directly analyzes `咋/啫`, `添`, and focus-particle positions and scope.
 - Recommended disposition: Retain as internal scope representation or split by particle family. Map particle-specific sources and ordered-cluster boundaries.
 - Retirement safeguard: Do not retire before preserving focus association, restrictive/additive meaning, and particle ordering.
-- Status effect: This note-only research sweep does not promote or retire the label. The current status remains unchanged until runtime, contract, and release records are reconciled in the implementation track.
+- Final disposition: **retain narrow** as internal focus-association/scope representation.
+- Runtime/reach: builder and unresolved-host guard are `main.js:17845-17880` and `main.js:12804`; particle rendering is `main.js:20715-20717`.
+- Stable semantics: preserve restriction marker, scalar host, particle subtype, missing-head/context state, and no fabricated quantity/head. `ONTO-D02-FOCUS-PARTICLE` asserts this contract.
+- A1/schema: preserve the frame; it cannot reinterpret acceptability `得`, resolve an absent nominal head, or claim exact pragmatics beyond restriction.
+- Open/release: additive/restrictive families, ordering, source mapping, and context resolution remain open; this note, shared probe inventory, generated tests/index, baseline, and release audit record the decision.
