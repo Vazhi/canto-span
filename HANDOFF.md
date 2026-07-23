@@ -28,9 +28,9 @@ Current release audits must reference a checked-in construction-status baseline 
 ## Binding state
 
 - runtime: **v0.5.213**
-- runtime labels / current construction notes: **162 / 162**
-- workflow: **2 active / 160 archived**
-- retired labels: **19**
+- runtime labels / current construction notes: **161 / 161**
+- workflow: **2 active / 159 archived**
+- retired labels: **20**
 - `supported_productive`: **0**
 - `provisional`: **0**
 - `research_pending`: **65**

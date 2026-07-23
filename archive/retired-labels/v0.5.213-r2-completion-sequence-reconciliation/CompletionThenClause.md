@@ -152,3 +152,9 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Implementation-only reachability: `FRWRAP-001` with `我做完功課就瞓覺。`
 - Protects the current CompletionVP + 就 route only. Component evidence does not establish a dedicated wrapper, subject sharing, or unrestricted completion-then productivity.
 - Its linguistic evidence weight is **0**; reachability does not establish naturalness, productivity, construction identity, or promotion eligibility.
+
+## Retirement disposition
+
+- Retired at `v0.5.213-r2-completion-sequence-reconciliation`.
+- Completion + `就` sequences now use typed sequential `ClauseRelationEdge` structure with independently parsed earlier and later members.
+- The source and boundary record remains preserved for completion and sequence-relation research.

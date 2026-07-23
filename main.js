@@ -10,6 +10,7 @@ const { Plugin, PluginSettingTab, Setting, Notice } = require("obsidian");
  */
 
 const CANTO_SPAN_RUNTIME_VERSION = "0.5.213";
+// v0.5.213-r2: realigns completion + 就 sequences to typed sequential ClauseRelationEdge structure and retires CompletionThenClause.
 // v0.5.213-r1: retires ConditionResult after typed conditional ClauseRelationEdge coverage replaced its unsupported action + 就 + stative fallback.
 // v0.5.213: source-links narrow copula-less 唔 + property predication and records the contrasting 唔係 + nominal predicate boundary without broadening other negators.
 // v0.5.212: retires the conflated NegatedLexicalizedStative label while preserving lexical 難X, compositional 唔 + lexicalized property predicates, and prohibitive/ambiguous 唔好 profiles.
@@ -1287,7 +1288,6 @@ const CONSTRUCTION_LABEL_REGISTRY = new Set([
   "CognitionDelimitedVP",
   "CognitionStatementClause",
   "CompletionQuestion",
-  "CompletionThenClause",
   "CompletionVP",
   "CompoundDirectionalMotionVP",
   "CoordinatedNP",
@@ -1542,6 +1542,7 @@ const RETIRED_CONSTRUCTION_LABEL_REGISTRY = new Map([
   ["ScalarRangeFragment", "Retired at v0.5.209: the 價位-triggered fallback added unsupported fragment status to ordinary nominal/scalar material and had no source-linked positive or accepted fixture."],
   ["NegatedLexicalizedStative", "Retired at v0.5.212: the label conflated lexical negative meaning in opaque 難X units with compositional 唔 negation and the distinct prohibitive 唔好 profile."],
   ["ConditionResult", "Retired at v0.5.213-r1: the action + 就 + stative wrapper lacked an invariant sourced construction; typed conditional ClauseRelationEdge structure now preserves independently parsed antecedent and consequent members."],
+  ["CompletionThenClause", "Retired at v0.5.213-r2: completion + 就 sequences are represented as typed sequential ClauseRelationEdge structure with independently parsed earlier and later members."],
 ]);
 
 
@@ -2209,12 +2210,6 @@ const CONSTRUCTION_TEMPLATES = [
     },
     output_slots: ["result_complement", "result_attainment_complement", "vp", "action_vp", "predicate", "object"],
     note: "Category-based positive result/attainment complement: action verb + 到 + optional object."
-  },
-  {
-    type: "CompletionThenClause",
-    label: "Completion→Then",
-    template: ["subject?", "completion_vp!", "result_marker!", "vp!", "particle?"],
-    note: "Completion-then sequence: optional subject + completed VP + 就 + follow-up VP/clause."
   },
   {
     type: "CompletionQuestion",
@@ -4641,7 +4636,6 @@ function constructionSlotsByType(type, children = []) {
   if (["ConditionalClause"].includes(type)) slots.push("conditional_clause", "condition_clause", "conditional_antecedent", "conditional_marker", "predicate", "clause");
   if (["SchedulingQuestion"].includes(type)) slots.push("scheduling_question", "time_question", "scheduling_quality", "question_fragment");
   if (["AcceptabilityANotA"].includes(type)) slots.push("acceptability_question", "question_fragment", "acceptability_predicate");
-  if (["CompletionThenClause"].includes(type)) slots.push("completion_then_clause", "completion_vp", "result_clause", "predicate");
   if (["CompletionQuestion"].includes(type)) slots.push("completion_question", "completion_vp", "question_fragment", "question_marker");
   if (["ProhibitiveImperative"].includes(type)) slots.push("prohibitive_marker", "imperative", "prohibitive_imperative", "predicate");
   if (["ReportedSpeech"].includes(type)) slots.push("reported_speech", "speech_verb", "reported_content");
@@ -15769,16 +15763,8 @@ function wrapCore(core) {
     return [construction("IdentificationFragment", "Ident", core, { note: "Focused identification fallback: 就係 + noun phrase.", trace: traceInfo("legacy_surface_rule", { rule: "has 就係", reason: "Fallback only; generative IdentificationFragment should normally catch this." }) })];
   }
 
-  // Completion then clause fallback: normally handled by CompletionThenClause template.
-  if (hasConstruction(core, "CompletionVP") && hasSurface(core, "就")) {
-    return [construction("CompletionThenClause", "Completion→Then", core, {
-      note: "Completion sequence fallback: V完 + object + 就 + following clause.",
-      trace: traceInfo("legacy_surface_rule", {
-        rule: "CompletionVP + 就",
-        reason: "Fallback only; generative CompletionThenClause should normally catch this."
-      })
-    })];
-  }
+  const completionThenRelation = completionThenClauseRelation(core);
+  if (completionThenRelation) return [completionThenRelation];
 
   // Reported speech: NP 話 predicate/clause.
   const waaIndex = indexOfSurface(core, "話");
@@ -16737,6 +16723,50 @@ function buildClauseRelationEdge(spec = {}) {
         "not_punctuation_only_relation",
       ],
     }),
+  });
+}
+
+function completionThenClauseRelation(nodes = []) {
+  const compact = withoutIgnorableSpaceText(nodes || []);
+  const markerIndex = compact.findIndex((node) =>
+    node &&
+    node.kind === "token" &&
+    flattenSurface(node) === "就"
+  );
+  if (markerIndex <= 0 || markerIndex >= compact.length - 1) return null;
+
+  let leftNodes = compact.slice(0, markerIndex);
+  let rightNodes = compact.slice(markerIndex);
+  let rightLinkerIndex = 0;
+  const preMarkerSubject = compact[markerIndex - 1];
+  const completionBeforePreMarkerSubject = hasConstruction(
+    compact.slice(0, markerIndex - 1),
+    "CompletionVP"
+  );
+  if (
+    preMarkerSubject &&
+    nodeCanFillSlot(preMarkerSubject, "subject") &&
+    completionBeforePreMarkerSubject
+  ) {
+    leftNodes = compact.slice(0, markerIndex - 1);
+    rightNodes = [preMarkerSubject, ...compact.slice(markerIndex)];
+    rightLinkerIndex = clauseRelationSegmentNodes([preMarkerSubject]).length;
+  }
+  if (!hasConstruction(leftNodes, "CompletionVP")) return null;
+  if (!rightNodes.slice(1).some((node) => flattenSurface(node))) return null;
+
+  return buildClauseRelationEdge({
+    relation_subtype: "sequential",
+    left_nodes: leftNodes,
+    right_nodes: rightNodes,
+    right_linkers: [{
+      index: rightLinkerIndex,
+      side: "right",
+      semantic_role: "later_event_linker",
+    }],
+    source_order: "earlier_completion_then_later_event",
+    relation_subtype_provenance: "source_linked_completion_sequence_rule",
+    reason: "An overt CompletionVP before 就 and a nonempty later member license a sequential relation; each member retains its own visible subject and predicate structure.",
   });
 }
 
@@ -21471,7 +21501,6 @@ const LEARNER_CONSTRUCTION_GLOSSES = {
   NegatedExistentialFragment: ["negative existence answer", "A short no / do not have / there is not response whose domain comes from context."],
   FormulaDiscourseUnit: ["set response or social phrase", "A conventional response or social expression used as one discourse unit."],
   MalformedCandidate: ["needs checking", "This line looks incomplete or unusual."],
-  CompletionThenClause: ["completion-then sequence", "Shows one action finishing before the following action or event."],
   ProhibitiveImperative: ["don't-do command", "Tells someone not to do the following action."],
   IdentificationFragment: ["identification phrase", "Points out or identifies the context-supplied item, such as this one."],
   ExperientialQuestion: ["experience question", "Asks whether the experience has happened."],

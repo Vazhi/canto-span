@@ -151,7 +151,6 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 ## Related constructions
 
-- [[CompletionThenClause]]
 - [[PriorityMarkerClause]]
 
 ## Migration provenance

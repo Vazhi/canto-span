@@ -1,6 +1,6 @@
 {
   "schema": "canto-span-construction-test-index-v1",
-  "active_construction_count": 162,
+  "active_construction_count": 161,
   "files": [
     {
       "construction": "ANotAQuestion",
@@ -157,15 +157,15 @@
       "file": "tests/constructions/ClauseRelationEdge.json",
       "state": "positive_only",
       "exact_snapshot_positive_count": 27,
-      "focused_positive_count": 0,
+      "focused_positive_count": 1,
       "focused_boundary_count": 0,
       "focused_review_only_count": 0,
       "np_case_count": 0,
       "implementation_probe_count": 0,
       "compatibility_alias_probe_count": 0,
-      "positive_case_count": 27,
+      "positive_case_count": 28,
       "boundary_case_count": 0,
-      "executable_case_count": 27
+      "executable_case_count": 28
     },
     {
       "construction": "ClauseRelationGraph",
@@ -301,21 +301,6 @@
       "positive_case_count": 8,
       "boundary_case_count": 0,
       "executable_case_count": 8
-    },
-    {
-      "construction": "CompletionThenClause",
-      "file": "tests/constructions/CompletionThenClause.json",
-      "state": "implementation_positive_only",
-      "exact_snapshot_positive_count": 0,
-      "focused_positive_count": 0,
-      "focused_boundary_count": 0,
-      "focused_review_only_count": 0,
-      "np_case_count": 0,
-      "implementation_probe_count": 1,
-      "compatibility_alias_probe_count": 0,
-      "positive_case_count": 0,
-      "boundary_case_count": 0,
-      "executable_case_count": 1
     },
     {
       "construction": "CompletionVP",
