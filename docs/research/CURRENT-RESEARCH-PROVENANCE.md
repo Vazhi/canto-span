@@ -71,6 +71,7 @@ grammar status or authorize parser work. Current status remains owned by
 | PRQ2-011 | [`m4 daan1 zi2 additive correlation`](PRQ2-011-M4DAAN1ZI2-ZUNG6-ADDITIVE-CORRELATIVE-RESEARCH-R1.md) |
 | PRQ2-033 | [`jau6-jau6 coexistence`](PRQ2-033-JAU6-JAU6-COEXISTENT-PREDICATE-RESEARCH-R1.md) |
 | PRQ2-012 | [`jat1 hai6 exclusive alternatives`](PRQ2-012-JAT1HAI6-EXCLUSIVE-ALTERNATIVE-RESEARCH-R1.md) |
+| PRQ2-015 | [`ning4 jyun6 dou1 committed preference`](PRQ2-015-NING4JYUN6-DOU1-COMMITTED-PREFERENCE-RESEARCH-R1.md) |
 | PRQ2-010 | [`ceoi4 zo2 zi1 ngoi6 exclusion and addition`](PRQ2-010-CEOI4ZO2-ZI1NGOI6-EXCLUSION-ADDITION-RESEARCH-R1.md) |
 
 ## Shared evidence
