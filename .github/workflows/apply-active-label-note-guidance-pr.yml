@@ -21,9 +21,10 @@ jobs:
       - name: Apply evidence and ontology guidance
         shell: bash
         run: |
-          awk '/note-guidance.py.gz.b64 <<'"'"'PAYLOAD'"'"'/{flag=1;next}/^[[:space:]]*PAYLOAD$/{flag=0}flag' .github/workflows/apply-active-label-note-guidance.yml > /tmp/note-guidance.py.gz.b64
-          tr -d '[:space:]' < /tmp/note-guidance.py.gz.b64 | base64 -d | gzip -d > /tmp/note-guidance.py
-          python /tmp/note-guidance.py
+          sed -n '/^[[:space:]]*H4sI/,/^[[:space:]]*PAYLOAD$/p' .github/workflows/apply-active-label-note-guidance.yml | sed '$d' > /tmp/note-guidance.py.gz.b64
+          mkdir -p tools
+          tr -d '[:space:]' < /tmp/note-guidance.py.gz.b64 | base64 -d | gzip -d > tools/apply-active-label-note-guidance.py
+          python tools/apply-active-label-note-guidance.py
           rm -f .github/workflows/apply-active-label-note-guidance-pr.yml
       - name: Verify notes and repository
         run: |
@@ -35,6 +36,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add grammar .github/workflows
+          git add grammar .github/workflows tools
           git commit -m "Document active-label evidence and ontology guidance"
           git push origin HEAD:agent/active-label-evidence-ontology-notes
