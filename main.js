@@ -10,6 +10,9 @@ const { Plugin, PluginSettingTab, Setting, Notice } = require("obsidian");
  */
 
 const CANTO_SPAN_RUNTIME_VERSION = "0.5.213";
+// v0.5.213-r5: retires SchedulingQuestion because the sourced 想 + 約 + object + 幾時 profile already composes as ClauseSpan + ModalVP, while the dedicated wrapper only covered an unsourced 覺得…好 cross-product.
+// v0.5.213-r4: narrows OpinionQuestion to the source-linked overt subject + 覺得 + evaluated referent + 點樣 profile and removes its token-cooccurrence fallback.
+// v0.5.213-r3: narrows AcceptabilityClause to overt action + 都得, source-links 轆咭都得 and 搵第二個都得, and excludes wh/free-choice tails from the action-feasibility node.
 // v0.5.213-r2: realigns completion + 就 sequences to typed sequential ClauseRelationEdge structure and retires CompletionThenClause.
 // v0.5.213-r1: retires ConditionResult after typed conditional ClauseRelationEdge coverage replaced its unsupported action + 就 + stative fallback.
 // v0.5.213: source-links narrow copula-less 唔 + property predication and records the contrasting 唔係 + nominal predicate boundary without broadening other negators.
@@ -576,6 +579,7 @@ const TOKEN_LEXICON = {
   // append-only Peppa expected-behavior note instead of being patched here.
   "故仔": { label: "what", jyutping: "gu3 zai2", syntax: "story_noun object_np", note: "colloquial story noun; prevents misleading 故/仔 unknown split in active corpus." },
   "花": { label: "what", jyutping: "faa1", syntax: "flower_noun object_np", note: "flower" },
+  "第二個": { label: "what", jyutping: "dai6 ji6 go3", syntax: "object_np headless_choice_np ordinal_or_alternative_np", note: "another / other one in the checked choice context; ordinal versus alternative reading otherwise depends on context." },
   "第二": { label: "func", jyutping: "dai6 ji6", syntax: "ordinal_modifier sequence_modifier", note: "second; ordinal/sequence modifier before a classifier, not a how-many question word." },
   "本": { label: "measure_word", jyutping: "bun2", syntax: "classifier_book", note: "measure word / classifier for books." },
   "本書": { label: "what", jyutping: "bun2 syu1", syntax: "classifier_object_np affected_theme_np", note: "Reference entry for the transparent classifier-object phrase 本 + 書; tokenizer must preserve the classifier and noun as separate learner-visible tokens." },
@@ -654,6 +658,8 @@ const TOKEN_LEXICON = {
   "蟲蟲": { label: "what", jyutping: "cung4 cung2", syntax: "animal_np object_np bug_noun", note: "bug/wormy creature; animals remain learner role what unless personification is later promoted." },
   "將": { label: "func", jyutping: "zoeng1", syntax: "disposal_coverb", note: "disposal/handling coverb 將 + object + predicate." },
   "搵": { label: "doing", jyutping: "wan2", syntax: "verb find_verb", note: "find / look for." },
+  "轆": { label: "doing", jyutping: "luk1", syntax: "verb swipe_card_verb", note: "swipe, as in 轆咭; source-linked bounded action use." },
+  "咭": { label: "what", jyutping: "kaat1", syntax: "object_np card_noun", note: "card; Hong Kong written variant in 轆咭." },
   "蘋果芯": { label: "what", jyutping: "ping4 gwo2 sam1", syntax: "object_np apple_core_noun", note: "apple core." },
   "掉落": { label: "doing", jyutping: "diu6 lok6", syntax: "verb drop_into_down", note: "drop / put down / fall down; contextually drop into a bin." },
   "堆肥箱": { label: "what", jyutping: "deoi1 fei4 soeng1", syntax: "container_np object_np compost_bin_noun", note: "compost bin." },
@@ -1396,7 +1402,6 @@ const CONSTRUCTION_LABEL_REGISTRY = new Set([
   "ReportedSpeech",
   "ResultComplement",
   "ResultStateClause",
-  "SchedulingQuestion",
   "SeemingPerfectiveResultClause",
   "SerialVerbPurposeChain",
   "SourceMotionClause",
@@ -1543,6 +1548,7 @@ const RETIRED_CONSTRUCTION_LABEL_REGISTRY = new Map([
   ["NegatedLexicalizedStative", "Retired at v0.5.212: the label conflated lexical negative meaning in opaque 難X units with compositional 唔 negation and the distinct prohibitive 唔好 profile."],
   ["ConditionResult", "Retired at v0.5.213-r1: the action + 就 + stative wrapper lacked an invariant sourced construction; typed conditional ClauseRelationEdge structure now preserves independently parsed antecedent and consequent members."],
   ["CompletionThenClause", "Retired at v0.5.213-r2: completion + 就 sequences are represented as typed sequential ClauseRelationEdge structure with independently parsed earlier and later members."],
+  ["SchedulingQuestion", "Retired at v0.5.213-r5: the source-attested 想 + 約 + object + 幾時 question already composes as ordinary modal, action, object, and wh-time structure; the dedicated wrapper only covered an unsourced 覺得…好 cross-product."],
 ]);
 
 
@@ -2030,7 +2036,17 @@ function selectionDecisionForSurface(surface, rest = surface) {
 }
 
 function selectLexiconTerm(rest) {
-  const candidates = LEXICON_TERMS.filter((surface) => rest.startsWith(surface));
+  const candidates = LEXICON_TERMS
+    .filter((surface) => rest.startsWith(surface))
+    .filter((surface) => {
+      if (surface !== "第二個") return true;
+      const after = rest.slice(surface.length);
+      const overtHead = Object.keys(TOKEN_LEXICON)
+        .filter((candidate) => after.startsWith(candidate))
+        .filter((candidate) => ["what", "who", "where"].includes((TOKEN_LEXICON[candidate] || {}).label || ""))
+        .sort((a, b) => b.length - a.length || a.localeCompare(b))[0];
+      return !overtHead;
+    });
   if (!candidates.length) return null;
 
   const excluded = ALL_LEXICON_TERMS
@@ -2166,8 +2182,16 @@ const CONSTRUCTION_TEMPLATES = [
   {
     type: "OpinionQuestion",
     label: "OpinionQ",
-    template: ["subject?", "stance_predicate!", "topic_or_object?", "evaluation_question!", "particle?"],
-    note: "Generative opinion/evaluation question: stance predicate + evaluative question expression."
+    template: ["subject!", "stance_predicate!", "topic_or_object!", "evaluation_question!", "particle?"],
+    constraints: {
+      slot_surface_in: {
+        stance_predicate: ["覺得"],
+        evaluation_question: ["點樣"]
+      }
+    },
+    predicate_subtype: "jyutgok_dimjoeng_evaluation_question",
+    not_claims: ["not_all_stance_predicates", "not_all_question_complements", "not_subjectless", "not_referentless"],
+    note: "Bounded source-linked evaluation question with an overt subject, 覺得, an overt evaluated referent, and 點樣. Other cognition-question complements remain independently structured."
   },
   {
     type: "NegativeCognitionFragment",
@@ -2424,19 +2448,13 @@ const CONSTRUCTION_TEMPLATES = [
     note: "Scalar value question with a domain-specific value question expression such as 幾錢."
   },
   {
-    type: "SchedulingQuestion",
-    label: "ScheduleQ",
-    template: ["subject?", "stance_predicate!", "action_verb!", "time_question!", "scheduling_quality!", "particle?"],
-    note: "Opinion/scheduling question: stance predicate + scheduling action + time question + quality/evaluation."
-  },
-  {
     type: "AcceptabilityClause",
     label: "Acceptability",
-    template: ["topic_or_subject?", "predicate?", "focus_adverb!", "acceptability_predicate!", "particle?"],
+    template: ["subject?", "predicate!", "focus_adverb!", "acceptability_predicate!", "particle?"],
     output_slots: ["acceptability_clause", "acceptability", "focus_adverb", "acceptability_predicate", "predicate", "clause"],
     retired_label_alias: "PermissionAcceptabilityClause",
-    acceptability_subtype: "permission",
-    note: "Declarative/postposed acceptability clause such as VP + 都得. Permission is subtype metadata, not the active construction label."
+    acceptability_subtype: "action_feasibility",
+    note: "Bounded declarative action-feasibility profile with an overt action predicate followed by 都得. Wh/free-choice 都得 requires separate analysis."
   },
   {
     type: "AcceptabilityANotA",
@@ -3512,6 +3530,29 @@ const CATEGORY_SPAN_TEMPLATES = [
     },
     output_slots: ["np", "subject", "topic", "object", "head_noun", "quantity"],
     note: "Category-based quantified person noun phrase: quantity + person head noun, e.g. 好多 + 人."
+  },
+  {
+    type: "OrdinalClassifierNP",
+    label: "OrdCL",
+    template: ["ordinal_modifier!", "classifier!"],
+    constraints: {
+      surface_sequence_in: ["第二隻"]
+    },
+    role_overrides: {
+      ordinal_modifier: {
+        label: "func",
+        syntax: "ordinal_modifier sequence_modifier",
+        slots: ["ordinal_modifier"],
+        note: "Overt ordinal modifier 第二 in the source-attested headless 第二隻 profile."
+      }
+    },
+    np_subtype: "headless_ordinal_classifier_np",
+    output_slots: ["ordinal_classifier_np", "classifier_np", "np", "object", "topic", "ordinal_modifier", "classifier"],
+    role_resolution_note: "Source-attested 第二隻 means the second one; the omitted referent remains context-supplied and no noun head is inserted.",
+    not_learner_role: "how",
+    not_question_role: "how_many",
+    not_claims: ["not_headed_np", "not_inserted_nominal_head", "not_general_headless_classifier_productivity"],
+    note: "Bounded headless ordinal + classifier NP for published 第二隻 'the second one'; preserves the overt classifier and inserts no hidden noun."
   },
   {
     type: "OrdinalClassifierNP",
@@ -4634,7 +4675,6 @@ function constructionSlotsByType(type, children = []) {
   if (["ClauseRelationEdge"].includes(type)) slots.push("clause_relation", "left_relation_member", "right_relation_member", "antecedent_clause", "consequent_clause", "reason_clause", "result_clause", "concession_clause", "counterexpectation_clause", "earlier_event", "later_event", "temporal_subordinate", "matrix_clause", "linker_left", "linker_right", "predicate", "clause", "clause_like", "reported_content", "content_clause");
   if (["ClauseRelationMemberSpan"].includes(type)) slots.push("clause_relation_member", "left_relation_member", "right_relation_member", "predicate", "clause", "clause_like");
   if (["ConditionalClause"].includes(type)) slots.push("conditional_clause", "condition_clause", "conditional_antecedent", "conditional_marker", "predicate", "clause");
-  if (["SchedulingQuestion"].includes(type)) slots.push("scheduling_question", "time_question", "scheduling_quality", "question_fragment");
   if (["AcceptabilityANotA"].includes(type)) slots.push("acceptability_question", "question_fragment", "acceptability_predicate");
   if (["CompletionQuestion"].includes(type)) slots.push("completion_question", "completion_vp", "question_fragment", "question_marker");
   if (["ProhibitiveImperative"].includes(type)) slots.push("prohibitive_marker", "imperative", "prohibitive_imperative", "predicate");
@@ -6889,12 +6929,6 @@ function isSubjectLike(node) {
   return nodeSlots(node).includes("subject");
 }
 
-function isAcceptabilityTopicCandidate(node) {
-  if (!node || node.kind === "text") return false;
-  const slots = nodeSlots(node);
-  return slots.includes("subject") || slots.includes("topic") || slots.includes("np") || slots.includes("object");
-}
-
 function isAcceptabilityActionCandidate(node) {
   if (!node || node.kind === "text") return false;
   const slots = nodeSlots(node);
@@ -6966,22 +7000,11 @@ function acceptabilityClausePatternAt(nodes, index) {
   let action = null;
   let tailIndex = index;
 
-  const standaloneTail = matchAcceptabilityTail(nodes, tailIndex);
-  if (standaloneTail) return { ...standaloneTail, length: standaloneTail.length, subject, action };
-
   if (isAcceptabilityActionCandidate(nodes[index])) {
     action = nodes[index];
     tailIndex = index + 1;
     const tail = matchAcceptabilityTail(nodes, tailIndex);
     if (tail) return { ...tail, length: 1 + tail.length, subject, action };
-  }
-
-  if (isAcceptabilityTopicCandidate(nodes[index])) {
-    subject = nodes[index];
-    tailIndex = index + 1;
-    const tail = matchAcceptabilityTail(nodes, tailIndex);
-    if (tail) return { ...tail, length: 1 + tail.length, subject, action };
-    subject = null;
   }
 
   if (isSubjectLike(nodes[index]) && isAcceptabilityActionCandidate(nodes[index + 1])) {
@@ -7051,16 +7074,16 @@ function makeAcceptabilityClause(match) {
   if (match.particle) children.push(acceptabilityParticleClone(match.particle));
   return construction("AcceptabilityClause", "Acceptability", children, {
     slots: ["acceptability_clause", "acceptability", "focus_adverb", "acceptability_predicate", "predicate", "clause"],
-    note: "Acceptability clause: optional subject/action + 都得 + optional final particle, e.g. 你哋返上嚟都得喇 = you all can come back up too / that is okay now. Permission is subtype metadata, not the active construction label. When a subject + transparent predicate is present, preserve it as a child clause for learner visibility.",
+    note: "Bounded action-feasibility clause: an overt action predicate followed by 都得 and an optional final particle. Wh/free-choice 都得 remains outside this node. When a subject + transparent predicate is present, preserve it as a child clause for learner visibility.",
     trace: traceInfo("generative_template", {
       construction_type: "AcceptabilityClause",
       retired_label_alias: "PermissionAcceptabilityClause",
-      acceptability_subtype: "permission",
-      template: ["topic_or_subject?", "predicate?", "focus_adverb!", "acceptability_predicate!", "particle?"],
-      assigned_slots: ["topic_or_subject", "predicate", "focus_adverb", "acceptability_predicate", "particle"],
-      rule: "subject? + predicate? + focus_adverb 都 + acceptability predicate 得 + optional final particle",
-      pattern: match.particle ? "subject? + predicate? + 都 + 得 + final_particle" : "subject? + predicate? + 都 + 得",
-      reason: "Native speech uses 都得 for acceptability/permission. The active label is the broader declarative acceptability clause while permission remains subtype metadata; 得 and particles stay parser-inactive.",
+      acceptability_subtype: "action_feasibility",
+      template: ["subject?", "predicate!", "focus_adverb!", "acceptability_predicate!", "particle?"],
+      assigned_slots: ["subject", "predicate", "focus_adverb", "acceptability_predicate", "particle"],
+      rule: "subject? + overt action predicate + focus adverb 都 + acceptability predicate 得 + optional final particle",
+      pattern: match.particle ? "subject? + predicate + 都 + 得 + final_particle" : "subject? + predicate + 都 + 得",
+      reason: "Checked source evidence directly supports action material followed by 都得 as feasible. The matcher requires that overt host and leaves wh/free-choice 都得 for separate analysis.",
       child_subject_predicate_construction: subjectPredicateChild ? subjectPredicateChild.type : "",
       surfaces: children.map((node) => flattenSurface(node)),
     }),
@@ -15716,11 +15739,6 @@ function wrapCore(core) {
     return [reviewedExistingConstruction || core[0]];
   }
 
-  // Lesson opinion question: 你覺得 X 點樣？
-  if (hasSurface(core, "覺得") && hasSurface(core, "點樣")) {
-    return [construction("OpinionQuestion", "OpinionQ", core, { note: "Opinion/evaluation question: 你覺得 X 點樣.", trace: traceInfo("legacy_surface_rule", { rule: "has 覺得 and 點樣", reason: "Fallback surface rule; generative template should normally catch this." }) })];
-  }
-
   // Opinion + seeming fallback: normally handled by OpinionStanceFrame template.
   if ((hasSurface(core, "覺得") || hasSurface(core, "我覺得")) && hasSurface(core, "好似")) {
     const opinionChildren = contextualOpinionPlaceholderChildren(core);
@@ -15833,15 +15851,6 @@ function wrapCore(core) {
   if (hasSurface(core, "幾錢")) {
     const scalar = scalarValueQuestionFallback(core);
     if (scalar) return [scalar];
-  }
-  if ((hasSurface(core, "覺得") || hasSurface(core, "我覺得")) && hasSurface(core, "幾時")) {
-    return [construction("SchedulingQuestion", "ScheduleQ", core, {
-      note: "Scheduling question fallback with 約幾時好.",
-      trace: traceInfo("construction_function", {
-        construction_type: "SchedulingQuestion",
-        reason: "Fallback only; generative SchedulingQuestion should normally catch this."
-      })
-    })];
   }
   if (hasSurface(core, "左右")) {
     return [construction("ApproximateQuantity", "Approx", core, {
@@ -21416,6 +21425,7 @@ const LEARNER_SURFACE_GLOSSES = {
   "一個": ["one", "One item with a measure word."],
   "一個故仔": ["one story", "Thing being talked about."],
   "一個蘋果": ["one apple", "Thing being acted on."],
+  "第二個": ["another / other one", "A context-supplied choice; the exact reading depends on context."],
   "第二個故仔": ["the second story", "Thing being talked about."],
   "你要記得準時還返啲書": ["you need to remember to return the books on time", "VP complement frame."],
   "記得準時還返啲書": ["remember to return the books on time", "VP complement frame."],

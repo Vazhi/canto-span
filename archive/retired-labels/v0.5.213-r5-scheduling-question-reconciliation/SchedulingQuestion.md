@@ -148,3 +148,10 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Implementation-only reachability: `ESQWRAP-008` with `你覺得約幾時好？`
 - Protects the current stance + scheduling + time-wh + quality route only. Checked scheduling evidence does not require those same elements.
 - Its linguistic evidence weight is **0**; reachability does not establish naturalness, productivity, construction identity, or promotion eligibility.
+
+## Retirement disposition
+
+- Retired at `v0.5.213-r5-scheduling-question-reconciliation`.
+- The source-attested `你想約佢幾時？` already parses compositionally as a `ClauseSpan` containing `ModalVP`, preserving overt subject, volitional modal, scheduling action, object, and wh-time material.
+- The dedicated wrapper and its zero-weight `你覺得約幾時好？` probe are removed because no checked source establishes that stance + action + time + quality cross-product.
+- Scheduling remains semantic-domain context over ordinary modal, predicate, argument, and wh-question structure rather than an active construction label.

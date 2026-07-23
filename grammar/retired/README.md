@@ -1,6 +1,6 @@
 # Retired construction labels
 
-**Current retired labels:** 20
+**Current retired labels:** 21
 
 These labels are absent from the active runtime registry. This file is a navigation view; the canonical retirement evidence remains in the retirement TSV, individual archived notes where available, and the corresponding research records.
 
@@ -26,6 +26,7 @@ These labels are absent from the active runtime registry. This file is a navigat
 | `NegatedLexicalizedStative` | `unsupported_generalization` | The label conflated opaque lexical 難X units, compositional 唔 negation of property predicates, and the distinct prohibitive 唔好 profile. | lexical stative entries, NegatedStativePredicate, and ProhibitiveImperative | `v0.5.212-negated-lexicalized-stative-retirement` |
 | `ConditionResult` | `unsupported_generalization` | The action + `就` + stative wrapper collapsed a relation between clauses into one cross-category template and survived only through a zero-weight lexical fallback. | typed conditional ClauseRelationEdge with independently parsed relation members | `v0.5.213-r1-condition-result-reconciliation` |
 | `CompletionThenClause` | `unsupported_generalization` | The optional-subject wrapper collapsed completion structure, `就`, and a later event into one span even when both relation members had overt subjects. | typed sequential ClauseRelationEdge with independently parsed earlier and later members | `v0.5.213-r2-completion-sequence-reconciliation` |
+| `SchedulingQuestion` | `unsupported_generalization` | The source-attested `想 + 約 + object + 幾時` profile already composes as ordinary modal/action/wh structure, while the dedicated wrapper only covered an unsourced `覺得 … 好` cross-product. | modal/VP composition plus independently typed wh-time question research | `v0.5.213-r5-scheduling-question-reconciliation` |
 
 ## Canonical records
 

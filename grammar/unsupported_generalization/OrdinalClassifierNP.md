@@ -3,10 +3,10 @@ title: "OrdinalClassifierNP"
 type: "canto-span-construction"
 construction: "OrdinalClassifierNP"
 status: "unsupported_generalization"
-confidence: "unsupported"
+confidence: "headed_runtime_profile_headless_and_lexical_sense_split_required"
 claim_layer: "language"
 lane: "LANE-06"
-last_reviewed: "unknown"
+last_reviewed: "2026-07-23"
 last_status_migrated: "2026-07-21"
 source_count: 2
 verified_source_count: 2
@@ -26,9 +26,9 @@ native_negative_contrasts_reviewed: false
 panel_evidence_model_version: "v2"
 panel_review_state_file: "review-packets/native-panel/active-v2/panel-review-state.json"
 panel_policy_file: "review-packets/native-panel/active-v2/panel-policy.json"
-negative_cases_drafted: false
-negative_tests_executable: false
-negative_tests_passing: false
+negative_cases_drafted: true
+negative_tests_executable: true
+negative_tests_passing: true
 negative_boundary_inventory_complete: false
 corpus_evidence_used: false
 corpus_hits_reviewed: false
@@ -37,20 +37,20 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "working-tree-v0.5.213-r3"
+code_document_code_locations: ["main.js:579-581", "main.js:2038-2050", "main.js:3520-3536"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
 standard_test_file: "tests/constructions/OrdinalClassifierNP.json"
-standard_test_coverage: "implementation_positive_only"
-standard_positive_test_count: 0
-standard_boundary_test_count: 0
+standard_test_coverage: "positive_and_boundary"
+standard_positive_test_count: 1
+standard_boundary_test_count: 1
 standard_implementation_probe_count: 1
-standard_executable_test_count: 1
+standard_executable_test_count: 3
 source_ids: ["SRC-LAM-LAU-LEE-2024-SEGMENTATION", "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"]
 runtime_active: true
 workflow_state: "archived"
@@ -66,17 +66,17 @@ tags: ["canto-span/grammar", "canto-span/status/unsupported_generalization", "ca
 
 ## Plain-language claim
 
-Cantonese may instantiate the structural family represented by OrdinalClassifierNP; exact productivity and boundaries require pattern-specific independent evidence.
+Checked evidence distinguishes true ordinal determination from lexicalized or contextual `第二` expressions meaning next, another, or other. The runtime retains its headed ordinal + classifier + noun path, while source-attested headless `第二個` choice uses do not enter `OrdinalClassifierNP`.
 
 This is a linguistic claim only to the extent allowed by the status and evidence below. The runtime label is not assumed to be standard linguistic terminology.
 
 ## Current status
 
 - Linguistic status: `unsupported_generalization`
-- Linguistic confidence: `unsupported`
-- Current action: `quarantine_unexercised_runtime_path`
+- Linguistic confidence: `headed_runtime_profile_headless_and_lexical_sense_split_required`
+- Current action: `retain_headed_runtime_path_and_keep_headless_ordinal_versus_alternative_split_explicit`
 - Productive acceptance eligible: **no**
-- Last linguistic review: not recorded
+- Last linguistic review: 2026-07-23
 
 ## Sources
 
@@ -106,7 +106,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 ## Negative and boundary cases
 
 - Standard executable test file: `tests/constructions/OrdinalClassifierNP.json`
-- Evidence state: `none_recorded`
+- Evidence state: `source_linked_headless_ordinal_positive_plus_nonordinal_second_go_boundary`
 - Executable or review records containing this label:
   - `test-data/grammar-claim-provenance-CP021B.json`
   - `test-data/grammar-claim-provenance-CP021B.tsv`
@@ -115,18 +115,18 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 ## Implementation state
 
-- Lifecycle: `runtime_referenced_without_accepted_fixtures`
-- Visible/focused tests: `not_assessed_in_current_definition_of_done_review`
+- Lifecycle: `v0.5.213_r3_headed_and_bounded_headless_profiles`
+- Visible/focused tests: `1_source_linked_headless_positive_and_1_nonordinal_boundary`
 - Render review: `not_assessed_in_current_definition_of_done_review`
 - Held-out evaluation: `NOT_ESTABLISHED`
 - Regression: `not_assessed_in_current_definition_of_done_review`
-- Code–documentation comparison: `pending_current_definition_of_done_line_by_line_review`
+- Code–documentation comparison: `PASS_FOR_HEADED_PATH_AND_NONORDINAL_SECOND_GO_BOUNDARY`
 
 ## Open questions and blockers
 
-- no explicit external claim-source edge
-- Runtime metadata and current governance agree in v0.5.184.
-- Research question: Which externally documented Cantonese constructions, if any, justify the scope and boundaries currently represented by OrdinalClassifierNP?
+- The current headed `第二 + classifier + noun` runtime path remains implementation-only.
+- Published `第二隻` now has a bounded headless ordinal-classifier implementation; broader classifier compatibility and context licensing remain unresolved.
+- Coursebook `問第二個` and `搵第二個都得` support a nonordinal “another/other one” profile and must not be admitted to `OrdinalClassifierNP` from token identity alone.
 
 ## Related constructions
 
@@ -143,3 +143,17 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Implementation-only reachability: `NOMWRAP-001` with `第二個故仔。`
 - The probe protects the exact current ordinal + classifier + overt-head wrapper.
 - Its linguistic evidence weight is **0**; it does not generalize lexicalized `第二` uses or establish productive ordinal semantics.
+
+## v0.5.213-r3 lexical-sense boundary
+
+- Headless `第二個` is tokenized as a contextual choice NP only when no overt nominal head follows.
+- `搵第二個都得` therefore feeds ordinary action-object composition and the bounded `AcceptabilityClause` matcher without asserting ordinal semantics.
+- Before an overt noun, as in `第二個故仔`, the parser still exposes `第二` + `個` + `故仔` and retains the existing `OrdinalClassifierNP` implementation path.
+- This lexical-sense boundary remains separate from the independently attested true headless ordinal `第二隻` implemented below.
+
+## v0.5.213-r3 bounded headless ordinal
+
+- Published `第二隻` is an executable positive for `OrdinalClassifierNP`.
+- The node preserves overt `第二` and `隻`, records a headless subtype, and inserts no nominal head or referent.
+- The matcher is surface-bounded to `第二隻`; it does not license arbitrary ordinal-classifier ellipsis.
+- `問第二個` is an executable absence boundary for the nonordinal “another/other one” use.

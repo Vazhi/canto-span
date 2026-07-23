@@ -565,18 +565,6 @@
       "legacy_probe_batch": "evaluation-scalar-question"
     },
     {
-      "case_id": "ESQWRAP-006",
-      "construction": "OpinionQuestion",
-      "source": "你覺得呢個點樣？",
-      "provenance": "docs/research/CP039-P1-EVALUATION-SCALAR-QUESTION-WRAPPER-AUDIT-R1.md#ESQWRAP-006",
-      "source_role": "code_specific_semantically_coherent_probe",
-      "assertion": "construction_present",
-      "linguistic_evidence_weight": 0,
-      "purpose": "runtime_reachability_only",
-      "scope_note": "Protects the current 覺得 + topic/object + 點樣 route only; checked sources favor ordinary cognition-plus-question composition rather than a special OpinionQuestion node.",
-      "legacy_probe_batch": "evaluation-scalar-question"
-    },
-    {
       "case_id": "ESQWRAP-007",
       "construction": "IdentityWhQuestion",
       "source": "邊個嚟㗎？",
@@ -586,18 +574,6 @@
       "linguistic_evidence_weight": 0,
       "purpose": "runtime_reachability_only",
       "scope_note": "Protects the current narrow 邊個 + 嚟 identity route only; independently attested identity questions with overt topics or copulas currently route differently.",
-      "legacy_probe_batch": "evaluation-scalar-question"
-    },
-    {
-      "case_id": "ESQWRAP-008",
-      "construction": "SchedulingQuestion",
-      "source": "你覺得約幾時好？",
-      "provenance": "docs/research/CP039-P1-EVALUATION-SCALAR-QUESTION-WRAPPER-AUDIT-R1.md#ESQWRAP-008",
-      "source_role": "code_specific_semantically_coherent_probe",
-      "assertion": "construction_present",
-      "linguistic_evidence_weight": 0,
-      "purpose": "runtime_reachability_only",
-      "scope_note": "Protects the current stance + scheduling action + time wh + 好 route only; checked scheduling evidence does not require 覺得 or a final quality predicate.",
       "legacy_probe_batch": "evaluation-scalar-question"
     },
     {

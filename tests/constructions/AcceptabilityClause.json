@@ -4,7 +4,80 @@
   "runtime_active": true,
   "migration_phase": 5,
   "snapshot_cases": [],
-  "focused_cases": [],
+  "focused_cases": [
+    {
+      "case_id": "CP058-ACC-01",
+      "source": "轆咭都得。",
+      "class": "source_linked_action_feasibility_positive",
+      "expected_profile": "AcceptabilityClause present over overt action predicate plus 都得",
+      "assertion": "construction_present",
+      "provenance": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#ACC-C03",
+      "source_ids": [
+        "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
+      ],
+      "source_locator": "user PDF pp. 90, 92, and 95"
+    },
+    {
+      "case_id": "CP058-ACC-06",
+      "source": "搵第二個都得。",
+      "class": "source_linked_action_feasibility_headless_choice_positive",
+      "expected_profile": "AcceptabilityClause present over overt action plus bounded nonordinal choice NP and 都得",
+      "assertion": "construction_present",
+      "provenance": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#ACC-C03",
+      "source_ids": [
+        "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
+      ],
+      "source_locator": "user PDF pp. 90, 92, and 95"
+    },
+    {
+      "case_id": "CP058-ACC-02",
+      "source": "邊度都得。",
+      "class": "wh_place_without_action_boundary",
+      "expected_profile": "AcceptabilityClause absent without an overt action predicate",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#ACC-C04",
+      "source_ids": [
+        "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
+      ],
+      "source_locator": "user PDF pp. 155 and 296"
+    },
+    {
+      "case_id": "CP058-ACC-03",
+      "source": "是但邊個都得。",
+      "class": "overt_free_choice_person_boundary",
+      "expected_profile": "AcceptabilityClause absent from overt free-choice person profile",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#ACC-C04",
+      "source_ids": [
+        "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
+      ],
+      "source_locator": "user PDF pp. 155 and 296"
+    },
+    {
+      "case_id": "CP058-ACC-04",
+      "source": "是但幾時去都得。",
+      "class": "overt_free_choice_time_boundary",
+      "expected_profile": "AcceptabilityClause absent from overt free-choice time profile",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#ACC-C04",
+      "source_ids": [
+        "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
+      ],
+      "source_locator": "user PDF pp. 155 and 296"
+    },
+    {
+      "case_id": "CP058-ACC-05",
+      "source": "隨便去邊度都得。",
+      "class": "overt_free_choice_place_boundary",
+      "expected_profile": "AcceptabilityClause absent from overt free-choice place profile",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#ACC-C04",
+      "source_ids": [
+        "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
+      ],
+      "source_locator": "user PDF pp. 155 and 296"
+    }
+  ],
   "np_cases": [],
   "implementation_probe_cases": [
     {
@@ -18,16 +91,16 @@
     }
   ],
   "coverage": {
-    "state": "implementation_positive_only",
+    "state": "positive_and_boundary",
     "exact_snapshot_positive_count": 0,
-    "focused_positive_count": 0,
-    "focused_boundary_count": 0,
+    "focused_positive_count": 2,
+    "focused_boundary_count": 4,
     "focused_review_only_count": 0,
     "np_case_count": 0,
     "implementation_probe_count": 1,
     "compatibility_alias_probe_count": 0,
-    "positive_case_count": 0,
-    "boundary_case_count": 0,
-    "executable_case_count": 1
+    "positive_case_count": 2,
+    "boundary_case_count": 4,
+    "executable_case_count": 7
   }
 }

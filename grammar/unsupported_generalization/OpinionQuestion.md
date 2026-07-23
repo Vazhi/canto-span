@@ -3,10 +3,10 @@ title: "OpinionQuestion"
 type: "canto-span-construction"
 construction: "OpinionQuestion"
 status: "unsupported_generalization"
-confidence: "unsupported"
+confidence: "source_linked_jyutgok_dimjoeng_profile_broader_complement_scope_unsupported"
 claim_layer: "language"
 lane: "LANE-07"
-last_reviewed: "unknown"
+last_reviewed: "2026-07-23"
 last_status_migrated: "2026-07-21"
 source_count: 2
 verified_source_count: 2
@@ -26,9 +26,9 @@ native_negative_contrasts_reviewed: false
 panel_evidence_model_version: "v2"
 panel_review_state_file: "review-packets/native-panel/active-v2/panel-review-state.json"
 panel_policy_file: "review-packets/native-panel/active-v2/panel-policy.json"
-negative_cases_drafted: false
-negative_tests_executable: false
-negative_tests_passing: false
+negative_cases_drafted: true
+negative_tests_executable: true
+negative_tests_passing: true
 negative_boundary_inventory_complete: false
 corpus_evidence_used: false
 corpus_hits_reviewed: false
@@ -37,20 +37,20 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-07-23"
+code_document_review_commit: "working-tree-v0.5.213-r4"
+code_document_code_locations: ["main.js:2180-2195"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
 standard_test_file: "tests/constructions/OpinionQuestion.json"
-standard_test_coverage: "implementation_positive_only"
-standard_positive_test_count: 0
-standard_boundary_test_count: 0
-standard_implementation_probe_count: 1
-standard_executable_test_count: 1
+standard_test_coverage: "positive_and_boundary"
+standard_positive_test_count: 1
+standard_boundary_test_count: 2
+standard_implementation_probe_count: 0
+standard_executable_test_count: 3
 source_ids: ["SRC-ALDERETE-ETAL-2017-SYNOPSIS", "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"]
 runtime_active: true
 workflow_state: "archived"
@@ -66,17 +66,17 @@ tags: ["canto-span/grammar", "canto-span/status/unsupported_generalization", "ca
 
 ## Plain-language claim
 
-Cantonese may instantiate the structural family represented by OpinionQuestion; exact productivity and boundaries require pattern-specific independent evidence.
+The checked source directly attests `你覺得佢哋點樣？`, with an overt experiencer, cognition predicate, evaluated referent, and evaluative wh predicate. The parser retains that exact structural profile while leaving other cognition-question complement types to independent composition.
 
 This is a linguistic claim only to the extent allowed by the status and evidence below. The runtime label is not assumed to be standard linguistic terminology.
 
 ## Current status
 
 - Linguistic status: `unsupported_generalization`
-- Linguistic confidence: `unsupported`
-- Current action: `quarantine_unexercised_runtime_path`
+- Linguistic confidence: `source_linked_jyutgok_dimjoeng_profile_broader_complement_scope_unsupported`
+- Current action: `retain_exact_profile_and_research_cognition_question_complement_ontology`
 - Productive acceptance eligible: **no**
-- Last linguistic review: not recorded
+- Last linguistic review: 2026-07-23
 
 ## Sources
 
@@ -106,7 +106,7 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 ## Negative and boundary cases
 
 - Standard executable test file: `tests/constructions/OpinionQuestion.json`
-- Evidence state: `none_recorded`
+- Evidence state: `source_linked_exact_positive_plus_subject_referent_and_lexeme_scope_boundaries`
 - Executable or review records containing this label:
   - `test-data/grammar-claim-provenance-CP021B.json`
   - `test-data/grammar-claim-provenance-CP021B.tsv`
@@ -115,18 +115,18 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 ## Implementation state
 
-- Lifecycle: `runtime_referenced_without_accepted_fixtures`
-- Visible/focused tests: `not_assessed_in_current_definition_of_done_review`
+- Lifecycle: `v0.5.213_r4_source_linked_exact_profile`
+- Visible/focused tests: `1_source_linked_positive_and_2_executable_boundaries`
 - Render review: `not_assessed_in_current_definition_of_done_review`
 - Held-out evaluation: `NOT_ESTABLISHED`
 - Regression: `not_assessed_in_current_definition_of_done_review`
-- Code–documentation comparison: `pending_current_definition_of_done_line_by_line_review`
+- Code–documentation comparison: `PASS_EXACT_OVERT_JYUTGOK_DIMJOENG_PROFILE`
 
 ## Open questions and blockers
 
-- no explicit external claim-source edge
-- Runtime metadata and current governance agree in v0.5.184.
-- Research question: Which externally documented Cantonese constructions, if any, justify the scope and boundaries currently represented by OpinionQuestion?
+- The exact `覺得 … 點樣` evaluation profile is source-linked, but this does not establish a universal opinion-question construction.
+- Other attested complements—locative wh, alternative, identificational wh, and final-`未` questions—must retain their own question structure.
+- Lexical extension beyond `覺得`, subject or referent omission, evaluation-versus-manner readings of `點樣`, corpus coverage, and role-neutral panel evidence remain unresolved.
 
 ## Related constructions
 
@@ -135,7 +135,6 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - [[ProgressivePlaceQuestion]]
 - [[ProgressiveWhObjectQuestion]]
 - [[ScalarValueQuestion]]
-- [[SchedulingQuestion]]
 
 ## Migration provenance
 
@@ -145,6 +144,14 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 
 ## CP039 evaluation/scalar/question wrapper audit
 
-- Implementation-only reachability: `ESQWRAP-006` with `你覺得呢個點樣？`
-- Protects the current 覺得 + object/topic + 點樣 route only. Ordinary cognition-plus-question composition remains a competing analysis.
-- Its linguistic evidence weight is **0**; reachability does not establish naturalness, productivity, construction identity, or promotion eligibility.
+- Historical implementation-only reachability used `ESQWRAP-006` with `你覺得呢個點樣？`.
+- v0.5.213-r4 retires that zero-weight probe because it protected broader referent scope than the exact source. The source-linked positive below now owns current executable coverage.
+
+## v0.5.213-r4 exact-profile reconciliation
+
+- Source-linked positive: `你覺得佢哋點樣？` (coursebook, user PDF p. 256).
+- The generative template now requires an overt subject, exact predicate `覺得`, an overt evaluated referent, and exact wh predicate `點樣`.
+- The former token-cooccurrence fallback has been removed.
+- The broader zero-weight `你覺得呢個點樣？` reachability probe has been removed rather than forcing the source-narrowed matcher to preserve it.
+- `覺得點樣？` and `你認為佢哋點樣？` are executable absence boundaries for this narrow node; they are not grammaticality rejections.
+- The broader label remains `unsupported_generalization` pending a composition-versus-wrapper decision across independently typed question complements.
