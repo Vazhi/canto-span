@@ -2,11 +2,9 @@ name: Batch 10 coherent branch update (temporary)
 
 on:
   push:
-    branches:
-      - agent/adjudication-batch-10
+    branches: [agent/adjudication-batch-10]
   pull_request:
-    branches:
-      - main
+    branches: [main]
 
 concurrency:
   group: batch-10-coherent-update-${{ github.event_name }}
@@ -32,14 +30,10 @@ jobs:
           npm run adjudication:apply
           python3 - <<'PY'
           from pathlib import Path
-
           def replace(path, old, new):
-              p = Path(path)
-              text = p.read_text()
-              if old not in text:
-                  raise SystemExit(f"missing expected text in {path}: {old!r}")
+              p = Path(path); text = p.read_text()
+              if old not in text: raise SystemExit(f"missing expected text in {path}: {old!r}")
               p.write_text(text.replace(old, new))
-
           replace("README.md", "expert-adjudicated identities: **44 / 181**", "expert-adjudicated identities: **49 / 181**")
           replace("README.md", "direct `source_supported` candidates: **68**", "direct `source_supported` candidates: **67**")
           replace("README.md", "excluded non-language/internal records: **26**", "excluded non-language/internal records: **27**")
@@ -62,17 +56,39 @@ jobs:
           PY
       - name: Verify coherent state
         run: |
-          npm run verify:adjudications
-          npm run verify:identities
-          npm run verify:discovery
-          npm run verify
-          npm run verify:research
-          git restore --staged --worktree validation/current || true
+          set +e
+          log="$RUNNER_TEMP/batch10-verify.log"
+          : > "$log"
+          status=0
+          run_check() {
+            echo "===== $* =====" | tee -a "$log"
+            "$@" >> "$log" 2>&1
+            code=$?
+            echo "exit=$code" | tee -a "$log"
+            if [ "$code" -ne 0 ] && [ "$status" -eq 0 ]; then status="$code"; fi
+          }
+          run_check npm run verify:adjudications
+          run_check npm run verify:identities
+          run_check npm run verify:discovery
+          run_check npm run verify
+          run_check npm run verify:research
+          git restore --staged --worktree validation/current >> "$log" 2>&1 || true
           rm .github/workflows/batch-10-regenerate-artifact-temporary.yml
-          git diff --check
-          test -z "$(git status --porcelain | grep -E '(^| )validation/current/' || true)"
+          run_check git diff --check
+          if git status --porcelain | grep -E '(^| )validation/current/' >> "$log"; then
+            echo "validation/current noise remains" | tee -a "$log"
+            status=1
+          fi
+          cat "$log"
+          exit "$status"
+      - uses: actions/upload-artifact@v6
+        if: always()
+        with:
+          name: batch-10-verification-log-${{ github.event_name }}
+          path: ${{ runner.temp }}/batch10-verify.log
+          if-no-files-found: error
       - name: Commit coherent Batch 10 state
-        if: github.event_name == 'push'
+        if: github.event_name == 'push' && success()
         run: |
           git config user.name "canto-span-batch-10"
           git config user.email "actions@users.noreply.github.com"
