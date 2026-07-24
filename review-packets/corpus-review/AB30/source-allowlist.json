@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "permanentCode": "AB30",
+  "canonicalIdentity": "ZoMarkedPerfectiveObjectVP",
+  "legacyRuntimeLabel": "PostverbalZoPerfectiveVP",
+  "policy": "This is an explicit mechanical-evidence allowlist. The extractor must not scan any undeclared repository path.",
+  "sources": [
+    {
+      "path": "data/natural-corpus/wechat-father-daughter-001.txt",
+      "format": "text-lines",
+      "sourceType": "sanitized_natural_conversation",
+      "inclusionReason": "Primary sanitized natural-conversation transcript; not a parser fixture, generated diagnostic, survey, grammar note, documentation example, adjudication record, or synthetic test."
+    },
+    {
+      "path": "test-data/natural-corpus-wechat-guangxi-travel-002-raw.txt",
+      "format": "text-lines",
+      "sourceType": "sanitized_natural_conversation_raw_transcript",
+      "inclusionReason": "Raw natural-conversation transcript is the primary record; derived turn/unit representations and adjudication copies are excluded below."
+    }
+  ],
+  "excludedSources": [
+    {
+      "path": "data/natural-corpus/wechat-father-daughter-001.metadata.json",
+      "reasonCode": "metadata_only",
+      "reason": "Source metadata contains no primary natural-language records."
+    },
+    {
+      "path": "test-data/natural-corpus-wechat-father-daughter-001-turns.tsv",
+      "reasonCode": "repeated_derived_copy",
+      "reason": "Derived turn-level copy of the included primary transcript."
+    },
+    {
+      "path": "test-data/natural-corpus-wechat-father-daughter-001-turns.json",
+      "reasonCode": "repeated_derived_copy",
+      "reason": "Derived JSON turn-level copy of the included primary transcript."
+    },
+    {
+      "path": "test-data/natural-corpus-wechat-father-daughter-001-units.tsv",
+      "reasonCode": "repeated_derived_copy",
+      "reason": "Derived unit-level copy of the included primary transcript."
+    },
+    {
+      "path": "test-data/natural-corpus-wechat-father-daughter-001-units.json",
+      "reasonCode": "repeated_derived_copy",
+      "reason": "Derived JSON unit-level copy of the included primary transcript."
+    },
+    {
+      "path": "test-data/natural-corpus-wechat-guangxi-travel-002-turns.tsv",
+      "reasonCode": "repeated_derived_copy",
+      "reason": "Derived turn-level copy of the included raw transcript."
+    },
+    {
+      "path": "test-data/natural-corpus-wechat-guangxi-travel-002-turns.json",
+      "reasonCode": "repeated_derived_copy",
+      "reason": "Derived JSON turn-level copy of the included raw transcript."
+    },
+    {
+      "path": "test-data/natural-corpus-wechat-guangxi-travel-002-units.tsv",
+      "reasonCode": "repeated_derived_copy",
+      "reason": "Derived unit-level copy of the included raw transcript."
+    },
+    {
+      "path": "test-data/natural-corpus-wechat-guangxi-travel-002-units.json",
+      "reasonCode": "repeated_derived_copy",
+      "reason": "Derived JSON unit-level copy of the included raw transcript."
+    },
+    {
+      "path": "test-data/WECHAT-GX-TRAVEL-002-ADJUDICATION-MATRIX.tsv",
+      "reasonCode": "adjudication_record",
+      "reason": "Human adjudication material is not primary corpus evidence."
+    },
+    {
+      "path": "test-data/WECHAT-GX-TRAVEL-002-ADJUDICATION-MATRIX.json",
+      "reasonCode": "adjudication_record",
+      "reason": "Human adjudication material is not primary corpus evidence."
+    },
+    {
+      "path": "docs/research/NATIVE-CORPUS-WECHAT-GUANGXI-TRAVEL-002.md",
+      "reasonCode": "documentation_example",
+      "reason": "Research documentation may quote or transform source examples and is not a primary record."
+    },
+    {
+      "path": "docs/research/WECHAT-GX-TRAVEL-002-ADJUDICATION-REPORT.md",
+      "reasonCode": "adjudication_record",
+      "reason": "Adjudication report is downstream analysis, not primary corpus evidence."
+    },
+    {
+      "path": "test-data/w17-functional-corpus.tsv",
+      "reasonCode": "synthetic_test",
+      "reason": "Functional test corpus is synthetic project-internal material."
+    },
+    {
+      "path": "test-data/w17-glossika-corpus.tsv",
+      "reasonCode": "documentation_or_curated_example",
+      "reason": "Curated learning examples are not natural-corpus records for this workbench."
+    },
+    {
+      "path": "test-data/pre-intermediate-gold-corpus.tsv",
+      "reasonCode": "synthetic_test",
+      "reason": "Gold test corpus is project-internal verification material."
+    },
+    {
+      "path": "test-data/rul-survey-readiness-probes-v1.json",
+      "reasonCode": "survey_question",
+      "reason": "Survey-readiness probes are elicitation/test material, not corpus evidence."
+    },
+    {
+      "path": "test-data/implementation-reachability-probes-v1.json",
+      "reasonCode": "synthetic_test",
+      "reason": "Implementation reachability probes are synthetic tests."
+    },
+    {
+      "path": "tests/fixtures/boundary-closure-v1.json",
+      "reasonCode": "parser_fixture",
+      "reason": "Parser fixture is synthetic project-internal material."
+    },
+    {
+      "path": "tests/fixtures/np-subsystem.json",
+      "reasonCode": "parser_fixture",
+      "reason": "Parser fixture is synthetic project-internal material."
+    },
+    {
+      "path": "tests/fixtures/regression-snapshots.json",
+      "reasonCode": "parser_fixture",
+      "reason": "Regression fixture is generated or synthetic project-internal material."
+    },
+    {
+      "path": "validation/cp022-p1-pfv01-r1/diagnostics-export.json",
+      "reasonCode": "generated_diagnostic",
+      "reason": "Generated diagnostics are not primary corpus evidence."
+    },
+    {
+      "path": "validation/v0.5.181/pre-intermediate-corpus.json",
+      "reasonCode": "generated_validation_copy",
+      "reason": "Validation output is a generated copy of project test material."
+    },
+    {
+      "path": "validation/v0.5.182/pre-intermediate-corpus.json",
+      "reasonCode": "generated_validation_copy",
+      "reason": "Validation output is a generated copy of project test material."
+    },
+    {
+      "path": "archive/release-history/CANTO-SPAN-v0.5.181-CORPUS-ADJUDICATION.md",
+      "reasonCode": "adjudication_record",
+      "reason": "Archived adjudication record is downstream project documentation."
+    },
+    {
+      "path": "archive/release-history/CANTO-SPAN-v0.5.181-CORPUS-ADDENDUM.md",
+      "reasonCode": "documentation_example",
+      "reason": "Archived corpus addendum is project documentation rather than a primary source record."
+    }
+  ]
+}

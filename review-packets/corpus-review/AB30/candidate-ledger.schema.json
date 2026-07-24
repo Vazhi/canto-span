@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://canto-span.local/schemas/ab30-corpus-candidate-ledger.schema.json",
+  "title": "AB30 corpus-candidate review ledger",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "construction",
+    "extractionToolVersion",
+    "sourceManifestHash",
+    "disclaimer",
+    "candidates",
+    "summary"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "construction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "permanentCode",
+        "canonicalIdentity",
+        "legacyRuntimeLabel"
+      ],
+      "properties": {
+        "permanentCode": {
+          "const": "AB30"
+        },
+        "canonicalIdentity": {
+          "const": "ZoMarkedPerfectiveObjectVP"
+        },
+        "legacyRuntimeLabel": {
+          "const": "PostverbalZoPerfectiveVP"
+        }
+      }
+    },
+    "extractionToolVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sourceManifestHash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "disclaimer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/candidate"
+      }
+    },
+    "summary": {
+      "type": "object"
+    }
+  },
+  "$defs": {
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidateId",
+        "sourcePath",
+        "recordId",
+        "text",
+        "matchedSurfaceSpan",
+        "matchStart",
+        "matchEnd",
+        "leftContext",
+        "rightContext",
+        "previousRecordText",
+        "nextRecordText",
+        "sourceType",
+        "contentHash",
+        "duplicateGroupId",
+        "extractionReason",
+        "extractionToolVersion",
+        "review"
+      ],
+      "properties": {
+        "candidateId": {
+          "type": "string",
+          "pattern": "^ab30-[0-9a-f]{20}$"
+        },
+        "sourcePath": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recordId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "matchedSurfaceSpan": {
+          "type": "string",
+          "minLength": 1
+        },
+        "matchStart": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "matchEnd": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "leftContext": {
+          "type": "string"
+        },
+        "rightContext": {
+          "type": "string"
+        },
+        "previousRecordText": {
+          "type": "string"
+        },
+        "nextRecordText": {
+          "type": "string"
+        },
+        "sourceType": {
+          "type": "string",
+          "minLength": 1
+        },
+        "contentHash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "duplicateGroupId": {
+          "type": "string",
+          "pattern": "^dup-[0-9a-f]{16}$"
+        },
+        "extractionReason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "extractionToolVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "review": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "classification",
+            "reviewerNote",
+            "exclusionReason"
+          ],
+          "properties": {
+            "classification": {
+              "enum": [
+                "unreviewed",
+                "genuine",
+                "false_positive",
+                "ambiguous",
+                "unusable"
+              ]
+            },
+            "reviewerNote": {
+              "type": "string"
+            },
+            "exclusionReason": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}
