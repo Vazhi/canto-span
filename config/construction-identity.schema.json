@@ -1,0 +1,190 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://canto-span.local/schema/construction-identity-v1.json",
+  "title": "Canto Span construction identity registry",
+  "type": "object",
+  "required": [
+    "schema",
+    "migration_namespace_uuid",
+    "record_count",
+    "records"
+  ],
+  "properties": {
+    "schema": {
+      "const": "canto-span-construction-identity-registry-v1"
+    },
+    "migration_namespace_uuid": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "record_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/record"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "nullableString": {
+      "type": ["string", "null"]
+    },
+    "record": {
+      "type": "object",
+      "required": [
+        "construction_uuid",
+        "construction_code",
+        "canonical_name",
+        "legacy_labels",
+        "claim_layer",
+        "linguistic_status",
+        "lifecycle_state",
+        "source_path",
+        "family_name",
+        "profile_name",
+        "profile_description",
+        "learner_label",
+        "source_terms",
+        "former_names",
+        "predecessor_uuids",
+        "successor_uuids",
+        "record_revision",
+        "label_review"
+      ],
+      "properties": {
+        "construction_uuid": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "construction_code": {
+          "type": ["string", "null"],
+          "pattern": "^[A-Z]{2}[0-9]{2}$"
+        },
+        "canonical_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "legacy_labels": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "claim_layer": {
+          "enum": [
+            "language_construction",
+            "parser_representation",
+            "compatibility_alias",
+            "diagnostic_state",
+            "unresolved"
+          ]
+        },
+        "linguistic_status": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lifecycle_state": {
+          "enum": [
+            "current",
+            "candidate",
+            "retired",
+            "superseded"
+          ]
+        },
+        "source_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "family_name": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "profile_name": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "profile_description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "learner_label": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "source_terms": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["term", "source_id", "scope_match"],
+            "properties": {
+              "term": {"type": "string", "minLength": 1},
+              "source_id": {"type": "string", "minLength": 1},
+              "scope_match": {
+                "enum": ["exact", "close", "partial", "conflicting", "unreviewed"]
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "former_names": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "predecessor_uuids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "format": "uuid"}
+        },
+        "successor_uuids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "format": "uuid"}
+        },
+        "record_revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "label_review": {
+          "type": "object",
+          "required": [
+            "review_state",
+            "behavior_research_alignment",
+            "terminology_alignment",
+            "recommended_action",
+            "automatic_risk_flags",
+            "review_notes"
+          ],
+          "properties": {
+            "review_state": {
+              "enum": ["pending", "in_progress", "complete"]
+            },
+            "behavior_research_alignment": {
+              "enum": ["not_reviewed", "aligned", "narrower_than_research", "broader_than_research", "different_structure", "implementation_only", "not_applicable"]
+            },
+            "terminology_alignment": {
+              "enum": ["not_reviewed", "source_aligned", "theory_neutral", "misleading", "overbroad", "underspecified", "implementation_named", "not_applicable"]
+            },
+            "recommended_action": {
+              "enum": ["not_reviewed", "retain", "rename", "narrow", "split", "merge", "internalize", "supersede", "quarantine", "keep_retired", "reopen_research"]
+            },
+            "automatic_risk_flags": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {"type": "string", "minLength": 1}
+            },
+            "review_notes": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
