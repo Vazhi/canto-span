@@ -1,7 +1,11 @@
 ---
-title: "PostverbalZoPerfectiveVP"
+title: "AB30 ZoMarkedPerfectiveObjectVP"
 type: "canto-span-construction"
 construction: "PostverbalZoPerfectiveVP"
+construction_uuid: "2169217f-a21d-5165-9513-eb0edee2c220"
+construction_code: "AB30"
+canonical_name: "ZoMarkedPerfectiveObjectVP"
+legacy_runtime_label: "PostverbalZoPerfectiveVP"
 status: "research_pending"
 confidence: "legacy_panel_support_clean_instrument_pending"
 claim_layer: "language"
@@ -26,6 +30,12 @@ native_negative_contrasts_reviewed: true
 panel_evidence_model_version: "v2"
 panel_review_state_file: "review-packets/native-panel/active-v2/panel-review-state.json"
 panel_policy_file: "review-packets/native-panel/active-v2/panel-policy.json"
+panel_lifecycle_metadata_file: "review-packets/native-panel/active-v2/followup-draft-v1-metadata.json"
+current_panel_instrument_id: "YUE-JUDGMENT-PILOT-01"
+current_panel_instrument_status: "collection_in_progress"
+followup_instrument_id: "YUE-JUDGMENT-FOLLOWUP-01-DRAFT"
+followup_instrument_status: "draft_followup"
+followup_deployment_allowed: false
 negative_cases_drafted: true
 negative_tests_executable: true
 negative_tests_passing: true
@@ -37,6 +47,15 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
+accepted_corpus_packet_reviewed_count: 5
+accepted_corpus_genuine_count: 2
+accepted_corpus_false_positive_count: 3
+accepted_corpus_ambiguous_count: 0
+accepted_corpus_unusable_count: 0
+corpus_decision_ledger_file: "review-packets/corpus-review/AB30/review-decisions-r1.json"
+corpus_source_ledger_file: "review-packets/corpus-review/AB30/candidate-ledger.json"
+corpus_readiness_effect: "partial_only"
+corpus_diverse_source_gate_satisfied: false
 code_document_reconciled: true
 code_document_review_date: "2026-07-21"
 code_document_review_commit: "d08367dcf0f13d57b39a406ddf72388ba079a9e6"
@@ -63,7 +82,14 @@ accepted_fixtures: 12
 tags: ["canto-span/grammar", "canto-span/status/research_pending", "canto-span/lane/lane-05", "canto-span/workflow/active"]
 ---
 
-# PostverbalZoPerfectiveVP
+# AB30 ZoMarkedPerfectiveObjectVP
+
+## Canonical identity
+
+- Construction UUID: `2169217f-a21d-5165-9513-eb0edee2c220`
+- Permanent code and canonical name: `AB30 ZoMarkedPerfectiveObjectVP`
+- Legacy runtime label: `PostverbalZoPerfectiveVP`, retained only for the current
+  note path, runtime `construction` field, and compatibility-linked tests.
 
 ## Plain-language claim
 
@@ -78,6 +104,10 @@ The existing eleven response records came from mixed legacy instruments and do n
 - Current action: `retain_structural_research_target_and_collect_clean_role_neutral_panel_evidence`
 - Productive acceptance eligible: **no**
 - Last linguistic review: 2026-07-21
+- Current collection: `YUE-JUDGMENT-PILOT-01` is
+  `collection_in_progress`.
+- Follow-up state: `YUE-JUDGMENT-FOLLOWUP-01-DRAFT` is a non-deployable
+  `draft_followup`.
 
 ## Sources
 
@@ -122,7 +152,25 @@ The existing eleven response records came from mixed legacy instruments and do n
 - The public legacy form omitted explicit native-language confirmation and anonymous-use consent, while the private record came from a differently administered instrument. Neither receives special weight or promotion credit.
 - Historical results remain informative: `我食咗飯` 8/10, `我食咗麵` 9/10, `佢睇咗三個醫生` 9/10, `佢寫咗一篇文` 9/10, `我答咗你嘅問題` 8/10; `我食咗香港` was accepted by 0/10.
 - Result record: `docs/research/CP029-P1-PFV01-PUBLIC-PANEL-R1-RESULT.md`.
-- Next collection must place PFV in a role-neutral mixed-construction wave with the same instrument and inclusion criteria for every respondent.
+- Current collection state and the non-deployable follow-up are recorded in
+  `review-packets/native-panel/active-v2/followup-draft-v1-metadata.json`.
+- The live pilot must close and receive an item audit before the follow-up draft
+  may be revised, locked, generated, or deployed.
+
+## Accepted corpus review
+
+- Decision ledger:
+  `review-packets/corpus-review/AB30/review-decisions-r1.json`.
+- Mechanical source ledger:
+  `review-packets/corpus-review/AB30/candidate-ledger.json`.
+- Current packet: **5 reviewed; 2 genuine; 3 false positives; 0 ambiguous; 0
+  unusable**.
+- Readiness effect: `partial_only`. The packet establishes narrow natural
+  attestation and extractor boundaries, but two small user-supplied sources do
+  **not** satisfy the diverse-corpus gate or establish productivity.
+- The legacy `corpus_*` readiness-gate fields remain false/zero; accepted packet
+  counts are recorded separately because `partial_only` evidence cannot enter the
+  diverse-corpus pass gate.
 
 ## Negative and boundary cases
 
@@ -150,7 +198,11 @@ The existing eleven response records came from mixed legacy instruments and do n
 - The split `呢隻牌子` question needs a better lexical and contextual instrument before it can extend the claim.
 - Mixed legacy instruments cannot satisfy the panel threshold, regardless of the total number of historical responses.
 - `provisional` requires at least 10 usable adjudicated judgments per critical positive and boundary item from one clean role-neutral instrument.
-- Next evidence action: include PFV as a secondary focal construction in a clean multi-construction survey wave; do not grant any respondent special status.
+- Next panel action: await closure and item-level audit of
+  `YUE-JUDGMENT-PILOT-01` before revising the non-deployable follow-up draft; do
+  not grant any respondent special status.
+- Next corpus action: expand independent source diversity. The accepted
+  `partial_only` packet does not complete corpus readiness.
 
 ## Related constructions
 

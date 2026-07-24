@@ -1,7 +1,7 @@
 {
   "schema": "canto-span-native-panel-review-state-v2",
   "protocol_version": "panel-v2",
-  "last_updated": "2026-07-21",
+  "last_updated": "2026-07-24",
   "policy_file": "review-packets/native-panel/active-v2/panel-policy.json",
   "supersedes": "review-packets/native-speaker/active-v1/active-review-state.json",
   "respondent_model": {
@@ -12,7 +12,11 @@
   },
   "constructions": [
     {
-      "construction": "PostverbalZoPerfectiveVP",
+      "construction_uuid": "2169217f-a21d-5165-9513-eb0edee2c220",
+      "construction_code": "AB30",
+      "canonical_name": "ZoMarkedPerfectiveObjectVP",
+      "legacy_runtime_label": "PostverbalZoPerfectiveVP",
+      "note_path": "grammar/research_pending/PostverbalZoPerfectiveVP.md",
       "source_verification_file": "docs/research/CP025-P1-PFV01-SOURCE-VERIFICATION-R1.tsv",
       "counted_source_ids": [
         "SRC-FAN-CHAN-2022",
@@ -40,10 +44,14 @@
         "review-packets/native-speaker/active-v1/completed/PFV01-SPEAKER-B-PUBLIC-R1/PFV01-PUBLIC-PANEL-SNAPSHOT-R1.json"
       ],
       "current_disposition": "research_pending",
-      "next_action": "serve_as_secondary_focal_construction_after_user_prompt_for_mixed_pilot_v1"
+      "next_action": "await_live_pilot_closure_and_item_audit_before_followup_revision"
     },
     {
-      "construction": "ResourceUseLaiFunctionRelation",
+      "construction_uuid": "06c9f3b1-f243-588d-8a6e-bddf9a94c871",
+      "construction_code": "AB53",
+      "canonical_name": "ResourceInitialJungLaiFunctionClause",
+      "legacy_runtime_label": "ResourceUseLaiFunctionRelation",
+      "note_path": "grammar/research_pending/ResourceUseLaiFunctionRelation.md",
       "source_verification_file": "docs/research/CP026-P1-RUL01-SOURCE-VERIFICATION-R1.tsv",
       "counted_source_ids": [
         "SRC-CCO-LAICHIWO-VILLAGE-HOUSE",
@@ -54,7 +62,12 @@
       ],
       "panel_response_count_total": 23,
       "eligible_panel_response_count": 23,
-      "reported_live_response_count_not_yet_snapshotted": 50,
+      "uncommitted_live_response_report": {
+        "reported_count": 50,
+        "accepted_as_evidence": false,
+        "reason": "not_exported_screened_or_adjudicated"
+      },
+      "committed_response_snapshot": "review-packets/native-speaker/active-v1/completed/RUL01-SPEAKER-B-PUBLIC-R1/RUL01-PUBLIC-PANEL-SNAPSHOT-R1.json",
       "minimum_usable_judgments_per_critical_item": 0,
       "critical_contrast_coverage": "partial",
       "survey_instrument_version": "RUL01-pilot-v0",
@@ -71,16 +84,22 @@
         "review-packets/native-speaker/active-v1/completed/RUL01-SPEAKER-B-PUBLIC-R1/RUL01-PUBLIC-PANEL-SNAPSHOT-R1.json"
       ],
       "current_disposition": "research_pending",
-      "next_action": "await_user_prompt_then_create_mixed_RUL_PFV_pilot_v1",
+      "next_action": "await_live_pilot_closure_and_item_audit_before_followup_revision",
       "survey_readiness_record": "docs/research/CP032-P1-RUL01-SURVEY-READINESS-R1.md",
       "contrast_requirements_file": "docs/research/CP032-P1-RUL01-CONTRAST-REQUIREMENTS-R1.tsv"
     }
   ],
-  "survey_creation_control": {
-    "user_prompt_required_before_instrument_creation": true,
-    "user_prompt_received": false,
-    "survey_instrument_created_in_current_checkpoint": false,
-    "readiness_record": "docs/research/CP032-P1-RUL01-SURVEY-READINESS-R1.md",
-    "contrast_requirements_file": "docs/research/CP032-P1-RUL01-CONTRAST-REQUIREMENTS-R1.tsv"
+  "instrument_lifecycle": {
+    "metadata_file": "review-packets/native-panel/active-v2/followup-draft-v1-metadata.json",
+    "current_live_instrument": {
+      "instrument_id": "YUE-JUDGMENT-PILOT-01",
+      "status": "collection_in_progress",
+      "closure_rule": "Do not deploy this follow-up until the live instrument closes and its item audit is incorporated."
+    },
+    "followup_instrument": {
+      "instrument_id": "YUE-JUDGMENT-FOLLOWUP-01-DRAFT",
+      "status": "draft_followup",
+      "deployment_allowed": false
+    }
   }
 }
