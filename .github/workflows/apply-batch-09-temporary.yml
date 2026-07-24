@@ -1,0 +1,54 @@
+name: Apply adjudication batch 09 temporary
+
+on:
+  push:
+    branches:
+      - agent/adjudication-batch-09
+    paths:
+      - .github/workflows/apply-batch-09-temporary.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: apply-adjudication-batch-09
+  cancel-in-progress: false
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/adjudication-batch-09
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Apply and regenerate Batch 09
+        run: npm run adjudication:apply
+      - name: Verify generated adjudication state
+        run: |
+          npm run verify:adjudications
+          npm run verify:identities
+          npm run verify:discovery
+      - name: Commit generated outputs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            data/construction-identities.json \
+            data/construction-label-sweep.json \
+            data/construction-candidate-readiness.json \
+            docs/research/FULL-REPO-LABEL-SWEEP-BASELINE-R1.md \
+            docs/research/SUPPORTED-PRODUCTIVE-CANDIDATES.md \
+            docs/research/ORPHANED-CONSTRUCTION-EVIDENCE.md \
+            docs/research/CONSTRUCTION-FAMILY-GAPS.md \
+            docs/research/FULL-REPO-SUPPORTED-PRODUCTIVE-SWEEP-R1.md
+          if git diff --cached --quiet; then
+            echo "Batch 09 outputs already current"
+          else
+            git commit -m "Apply construction adjudication batch 09"
+            git push origin HEAD:agent/adjudication-batch-09
+          fi
