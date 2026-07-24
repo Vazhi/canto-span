@@ -8,19 +8,19 @@
   "promotion_eligible_now_count": 0,
   "state_counts": {
     "boundary_ready": 1,
-    "excluded_nonlanguage": 25,
+    "excluded_nonlanguage": 26,
     "lexicalized_review": 2,
     "narrowing_candidate": 36,
     "retired_evidence_rehome_candidate": 42,
     "retired_research_gap": 6,
-    "source_supported": 69
+    "source_supported": 68
   },
   "nearest_missing_gate_counts": {
-    "language_claim_defined": 25,
+    "language_claim_defined": 26,
     "negative_boundaries_complete": 34,
     "reviewed_corpus_evidence": 3,
     "runtime_research_alignment": 17,
-    "source_scope_matches_claim": 54
+    "source_scope_matches_claim": 53
   },
   "records": [
     {
@@ -5236,6 +5236,189 @@
       "source_path": "grammar/research_pending/DesiderativeVP.md"
     },
     {
+      "construction_uuid": "4fe5879e-7098-596d-9312-8cbc845cfc1c",
+      "construction_code": "AA46",
+      "canonical_name": "DiMarkedNounNP",
+      "legacy_label": "DiMarkedNP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "family_id": null,
+      "family_name": "DiMarkedNominals",
+      "profile_name": "OptionalPossessorDiOvertNoun",
+      "learner_label": null,
+      "source_ids": [
+        "SRC-WINTERSTEIN-ETAL-2023-NOMINAL-EXPRESSIONS"
+      ],
+      "preserved_source_ids": [],
+      "future_research_preserved_as": "",
+      "standard_positive_test_count": 5,
+      "standard_boundary_test_count": 2,
+      "gates": {
+        "language_claim_defined": {
+          "status": "pass",
+          "evidence": "plain_language_claim_present"
+        },
+        "independent_source_support": {
+          "status": "pass",
+          "evidence": "all_cited_sources_verified_and_independent",
+          "detail": "1/1"
+        },
+        "source_scope_matches_claim": {
+          "status": "partial",
+          "evidence": "verified_sources_but_scope_reaudit_incomplete"
+        },
+        "runtime_research_alignment": {
+          "status": "unresolved",
+          "evidence": "runtime_research_alignment_not_reconciled"
+        },
+        "executable_positive_cases_present": {
+          "status": "pass",
+          "evidence": "executable_positive_cases_present_implementation_only",
+          "detail": "5"
+        },
+        "negative_boundaries_complete": {
+          "status": "partial",
+          "evidence": "negative_boundaries_incomplete"
+        },
+        "reviewed_corpus_evidence": {
+          "status": "not_started",
+          "evidence": "no_reviewed_corpus_evidence"
+        },
+        "role_neutral_panel_threshold": {
+          "status": "partial",
+          "evidence": "panel_evidence_incomplete",
+          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":false,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
+        },
+        "held_out_validation": {
+          "status": "not_started",
+          "evidence": "no_passing_held_out_record"
+        },
+        "ontology_conflicts_resolved": {
+          "status": "pass",
+          "evidence": "completed_identity_label_review"
+        }
+      },
+      "supported_gate_eligible": false,
+      "supported_gate_blockers": [
+        "requirement_failed:locked_clean_panel_instrument",
+        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
+        "requirement_failed:role_neutral_panel",
+        "requirement_failed:instrument_quality_resolved",
+        "requirement_failed:quality_screen_complete",
+        "requirement_failed:panel_adjudication_complete",
+        "requirement_failed:critical_contrast_coverage_complete",
+        "requirement_failed:positive_and_negative_contrasts_reviewed",
+        "requirement_failed:negative_boundary_inventory_complete",
+        "requirement_failed:code_document_reconciled",
+        "requirement_failed:current_code_review_metadata",
+        "requirement_failed:current_standard_reaudit_complete"
+      ],
+      "discovery_hard_blockers": [
+        "discovery_gate:reviewed_corpus_evidence",
+        "discovery_gate:held_out_validation"
+      ],
+      "readiness_score": 53,
+      "candidate_state": "source_supported",
+      "nearest_missing_gate": "source_scope_matches_claim",
+      "next_best_action": "complete source-scope reaudit and split any unsupported extensions",
+      "automatic_risk_flags": [],
+      "source_path": "grammar/research_pending/DiMarkedNP.md"
+    },
+    {
+      "construction_uuid": "3f35d7bf-140d-5032-99f1-73cf8cc0d10d",
+      "construction_code": "AA53",
+      "canonical_name": "ZyuMarkedContinuativeObjectVP",
+      "legacy_label": "DurativeVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "family_id": null,
+      "family_name": "ContinuativeAspect",
+      "profile_name": "VerbZyuOvertObject",
+      "learner_label": null,
+      "source_ids": [
+        "SRC-FAN-2024-JAU-VP-ASPECT",
+        "SRC-KATAOKA-2018-PROGRESSIVE-GAN",
+        "SRC-MATTHEWS-YIP-2011-ASPECT-MULTIMEDIA",
+        "SRC-SIO-BOND-2025"
+      ],
+      "preserved_source_ids": [],
+      "future_research_preserved_as": "",
+      "standard_positive_test_count": 1,
+      "standard_boundary_test_count": 2,
+      "gates": {
+        "language_claim_defined": {
+          "status": "pass",
+          "evidence": "plain_language_claim_present"
+        },
+        "independent_source_support": {
+          "status": "pass",
+          "evidence": "all_cited_sources_verified_and_independent",
+          "detail": "4/4"
+        },
+        "source_scope_matches_claim": {
+          "status": "partial",
+          "evidence": "verified_sources_but_scope_reaudit_incomplete"
+        },
+        "runtime_research_alignment": {
+          "status": "unresolved",
+          "evidence": "runtime_research_alignment_not_reconciled"
+        },
+        "executable_positive_cases_present": {
+          "status": "pass",
+          "evidence": "executable_positive_cases_present_implementation_only",
+          "detail": "1"
+        },
+        "negative_boundaries_complete": {
+          "status": "partial",
+          "evidence": "negative_boundaries_incomplete"
+        },
+        "reviewed_corpus_evidence": {
+          "status": "not_started",
+          "evidence": "no_reviewed_corpus_evidence"
+        },
+        "role_neutral_panel_threshold": {
+          "status": "partial",
+          "evidence": "panel_evidence_incomplete",
+          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":false,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
+        },
+        "held_out_validation": {
+          "status": "not_started",
+          "evidence": "no_passing_held_out_record"
+        },
+        "ontology_conflicts_resolved": {
+          "status": "pass",
+          "evidence": "completed_identity_label_review"
+        }
+      },
+      "supported_gate_eligible": false,
+      "supported_gate_blockers": [
+        "requirement_failed:locked_clean_panel_instrument",
+        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
+        "requirement_failed:role_neutral_panel",
+        "requirement_failed:instrument_quality_resolved",
+        "requirement_failed:quality_screen_complete",
+        "requirement_failed:panel_adjudication_complete",
+        "requirement_failed:critical_contrast_coverage_complete",
+        "requirement_failed:positive_and_negative_contrasts_reviewed",
+        "requirement_failed:negative_boundary_inventory_complete",
+        "requirement_failed:code_document_reconciled",
+        "requirement_failed:current_code_review_metadata",
+        "requirement_failed:current_standard_reaudit_complete"
+      ],
+      "discovery_hard_blockers": [
+        "discovery_gate:reviewed_corpus_evidence",
+        "discovery_gate:held_out_validation"
+      ],
+      "readiness_score": 53,
+      "candidate_state": "source_supported",
+      "nearest_missing_gate": "source_scope_matches_claim",
+      "next_best_action": "complete source-scope reaudit and split any unsupported extensions",
+      "automatic_risk_flags": [],
+      "source_path": "grammar/research_pending/DurativeVP.md"
+    },
+    {
       "construction_uuid": "4019aaa2-9a4e-53cd-a505-95c4af4e2c6d",
       "construction_code": "AA69",
       "canonical_name": "DemonstrativeClassifierNPWithoutOvertNoun",
@@ -5798,200 +5981,16 @@
       "source_path": "grammar/research_pending/DegreeStativePredicate.md"
     },
     {
-      "construction_uuid": "4fe5879e-7098-596d-9312-8cbc845cfc1c",
-      "construction_code": "AA46",
-      "canonical_name": "DiMarkedNP",
-      "legacy_label": "DiMarkedNP",
-      "lifecycle_state": "current",
-      "claim_layer": "language_construction",
-      "linguistic_status": "research_pending",
-      "family_id": "L21",
-      "family_name": "OrdinalNominals",
-      "profile_name": null,
-      "learner_label": null,
-      "source_ids": [
-        "SRC-WINTERSTEIN-ETAL-2023-NOMINAL-EXPRESSIONS"
-      ],
-      "preserved_source_ids": [],
-      "future_research_preserved_as": "",
-      "standard_positive_test_count": 5,
-      "standard_boundary_test_count": 2,
-      "gates": {
-        "language_claim_defined": {
-          "status": "pass",
-          "evidence": "plain_language_claim_present"
-        },
-        "independent_source_support": {
-          "status": "pass",
-          "evidence": "all_cited_sources_verified_and_independent",
-          "detail": "1/1"
-        },
-        "source_scope_matches_claim": {
-          "status": "partial",
-          "evidence": "verified_sources_but_scope_reaudit_incomplete"
-        },
-        "runtime_research_alignment": {
-          "status": "unresolved",
-          "evidence": "runtime_research_alignment_not_reconciled"
-        },
-        "executable_positive_cases_present": {
-          "status": "pass",
-          "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "5"
-        },
-        "negative_boundaries_complete": {
-          "status": "partial",
-          "evidence": "negative_boundaries_incomplete"
-        },
-        "reviewed_corpus_evidence": {
-          "status": "not_started",
-          "evidence": "no_reviewed_corpus_evidence"
-        },
-        "role_neutral_panel_threshold": {
-          "status": "partial",
-          "evidence": "panel_evidence_incomplete",
-          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":false,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
-        },
-        "held_out_validation": {
-          "status": "not_started",
-          "evidence": "no_passing_held_out_record"
-        },
-        "ontology_conflicts_resolved": {
-          "status": "unresolved",
-          "evidence": "identity_label_review_pending"
-        }
-      },
-      "supported_gate_eligible": false,
-      "supported_gate_blockers": [
-        "requirement_failed:locked_clean_panel_instrument",
-        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
-        "requirement_failed:role_neutral_panel",
-        "requirement_failed:instrument_quality_resolved",
-        "requirement_failed:quality_screen_complete",
-        "requirement_failed:panel_adjudication_complete",
-        "requirement_failed:critical_contrast_coverage_complete",
-        "requirement_failed:positive_and_negative_contrasts_reviewed",
-        "requirement_failed:negative_boundary_inventory_complete",
-        "requirement_failed:code_document_reconciled",
-        "requirement_failed:current_code_review_metadata",
-        "requirement_failed:current_standard_reaudit_complete"
-      ],
-      "discovery_hard_blockers": [
-        "discovery_gate:reviewed_corpus_evidence",
-        "discovery_gate:held_out_validation",
-        "discovery_gate:ontology_conflicts_resolved"
-      ],
-      "readiness_score": 48,
-      "candidate_state": "source_supported",
-      "nearest_missing_gate": "source_scope_matches_claim",
-      "next_best_action": "complete source-scope reaudit and split any unsupported extensions",
-      "automatic_risk_flags": [],
-      "source_path": "grammar/research_pending/DiMarkedNP.md"
-    },
-    {
-      "construction_uuid": "676460c0-934e-5b6f-a5d6-71e8d9ca55bf",
-      "construction_code": "AA47",
-      "canonical_name": "DirectedMannerMotionVP",
-      "legacy_label": "DirectedMannerMotionVP",
-      "lifecycle_state": "current",
-      "claim_layer": "language_construction",
-      "linguistic_status": "research_pending",
-      "family_id": "L33",
-      "family_name": "DirectionalMotion",
-      "profile_name": null,
-      "learner_label": null,
-      "source_ids": [
-        "SRC-LEUNG-2014-COVERBS",
-        "SRC-SHAN-JIN-2025-MOTION-TYPOLOGY",
-        "SRC-YIU-2016-DIRECTIONAL-ASPECT"
-      ],
-      "preserved_source_ids": [],
-      "future_research_preserved_as": "",
-      "standard_positive_test_count": 6,
-      "standard_boundary_test_count": 2,
-      "gates": {
-        "language_claim_defined": {
-          "status": "pass",
-          "evidence": "plain_language_claim_present"
-        },
-        "independent_source_support": {
-          "status": "pass",
-          "evidence": "all_cited_sources_verified_and_independent",
-          "detail": "3/3"
-        },
-        "source_scope_matches_claim": {
-          "status": "partial",
-          "evidence": "verified_sources_but_scope_reaudit_incomplete"
-        },
-        "runtime_research_alignment": {
-          "status": "unresolved",
-          "evidence": "runtime_research_alignment_not_reconciled"
-        },
-        "executable_positive_cases_present": {
-          "status": "pass",
-          "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "6"
-        },
-        "negative_boundaries_complete": {
-          "status": "partial",
-          "evidence": "negative_boundaries_incomplete"
-        },
-        "reviewed_corpus_evidence": {
-          "status": "not_started",
-          "evidence": "no_reviewed_corpus_evidence"
-        },
-        "role_neutral_panel_threshold": {
-          "status": "partial",
-          "evidence": "panel_evidence_incomplete",
-          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":false,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
-        },
-        "held_out_validation": {
-          "status": "not_started",
-          "evidence": "no_passing_held_out_record"
-        },
-        "ontology_conflicts_resolved": {
-          "status": "unresolved",
-          "evidence": "identity_label_review_pending"
-        }
-      },
-      "supported_gate_eligible": false,
-      "supported_gate_blockers": [
-        "requirement_failed:locked_clean_panel_instrument",
-        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
-        "requirement_failed:role_neutral_panel",
-        "requirement_failed:instrument_quality_resolved",
-        "requirement_failed:quality_screen_complete",
-        "requirement_failed:panel_adjudication_complete",
-        "requirement_failed:critical_contrast_coverage_complete",
-        "requirement_failed:positive_and_negative_contrasts_reviewed",
-        "requirement_failed:negative_boundary_inventory_complete",
-        "requirement_failed:code_document_reconciled",
-        "requirement_failed:current_code_review_metadata",
-        "requirement_failed:current_standard_reaudit_complete"
-      ],
-      "discovery_hard_blockers": [
-        "discovery_gate:reviewed_corpus_evidence",
-        "discovery_gate:held_out_validation",
-        "discovery_gate:ontology_conflicts_resolved"
-      ],
-      "readiness_score": 48,
-      "candidate_state": "source_supported",
-      "nearest_missing_gate": "source_scope_matches_claim",
-      "next_best_action": "complete source-scope reaudit and split any unsupported extensions",
-      "automatic_risk_flags": [],
-      "source_path": "grammar/research_pending/DirectedMannerMotionVP.md"
-    },
-    {
       "construction_uuid": "68615a56-e6c1-5199-8d62-75a58d8c1515",
       "construction_code": "AA49",
-      "canonical_name": "DirectionalMotionVP",
+      "canonical_name": "IndependentMotionPredicateVP",
       "legacy_label": "DirectionalMotionVP",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "research_pending",
-      "family_id": "L33",
-      "family_name": "DirectionalMotion",
-      "profile_name": null,
+      "family_id": null,
+      "family_name": "MotionPredication",
+      "profile_name": "LexicalMotionPredicateIndependentUse",
       "learner_label": null,
       "source_ids": [
         "SRC-SHAN-JIN-2025-MOTION-TYPOLOGY",
@@ -6042,8 +6041,9 @@
           "evidence": "no_passing_held_out_record"
         },
         "ontology_conflicts_resolved": {
-          "status": "unresolved",
-          "evidence": "identity_label_review_pending"
+          "status": "partial",
+          "evidence": "identity_label_review_in_progress",
+          "detail": "{\"review_state\":\"complete\",\"behavior_research_alignment\":\"runtime_broader\",\"terminology_alignment\":\"neutral_descriptive_preferred\",\"recommended_action\":\"rename_retain_narrow\",\"automatic_risk_flags\":[],\"review_notes\":\"Expert adjudication 2026-07-24. DirectionalMotionVP is too broad and conflates independent lexical motion predicates with directional complements and larger motion constructions. The source-supported independent-predicate core is nevertheless clear and widespread in the current suite, so the UUID is retained and narrowed rather than internalized. The new name exposes the decisive predicative boundary. Status recommendation: retain research_pending for independently predicative lexical motion verbs; remove postverbal directional-complement, caused-motion, multi-part directional, and mere containing-clause branches during compatibility migration\"}"
         }
       },
       "supported_gate_eligible": false,
@@ -6066,7 +6066,7 @@
         "discovery_gate:held_out_validation",
         "discovery_gate:ontology_conflicts_resolved"
       ],
-      "readiness_score": 48,
+      "readiness_score": 50,
       "candidate_state": "source_supported",
       "nearest_missing_gate": "source_scope_matches_claim",
       "next_best_action": "complete source-scope reaudit and split any unsupported extensions",
@@ -6074,110 +6074,16 @@
       "source_path": "grammar/research_pending/DirectionalMotionVP.md"
     },
     {
-      "construction_uuid": "3f35d7bf-140d-5032-99f1-73cf8cc0d10d",
-      "construction_code": "AA53",
-      "canonical_name": "DurativeVP",
-      "legacy_label": "DurativeVP",
-      "lifecycle_state": "current",
-      "claim_layer": "language_construction",
-      "linguistic_status": "research_pending",
-      "family_id": "L09",
-      "family_name": "DurativeContinuativeAspect",
-      "profile_name": null,
-      "learner_label": null,
-      "source_ids": [
-        "SRC-FAN-2024-JAU-VP-ASPECT",
-        "SRC-KATAOKA-2018-PROGRESSIVE-GAN",
-        "SRC-MATTHEWS-YIP-2011-ASPECT-MULTIMEDIA",
-        "SRC-SIO-BOND-2025"
-      ],
-      "preserved_source_ids": [],
-      "future_research_preserved_as": "",
-      "standard_positive_test_count": 1,
-      "standard_boundary_test_count": 2,
-      "gates": {
-        "language_claim_defined": {
-          "status": "pass",
-          "evidence": "plain_language_claim_present"
-        },
-        "independent_source_support": {
-          "status": "pass",
-          "evidence": "all_cited_sources_verified_and_independent",
-          "detail": "4/4"
-        },
-        "source_scope_matches_claim": {
-          "status": "partial",
-          "evidence": "verified_sources_but_scope_reaudit_incomplete"
-        },
-        "runtime_research_alignment": {
-          "status": "unresolved",
-          "evidence": "runtime_research_alignment_not_reconciled"
-        },
-        "executable_positive_cases_present": {
-          "status": "pass",
-          "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "1"
-        },
-        "negative_boundaries_complete": {
-          "status": "partial",
-          "evidence": "negative_boundaries_incomplete"
-        },
-        "reviewed_corpus_evidence": {
-          "status": "not_started",
-          "evidence": "no_reviewed_corpus_evidence"
-        },
-        "role_neutral_panel_threshold": {
-          "status": "partial",
-          "evidence": "panel_evidence_incomplete",
-          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":false,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
-        },
-        "held_out_validation": {
-          "status": "not_started",
-          "evidence": "no_passing_held_out_record"
-        },
-        "ontology_conflicts_resolved": {
-          "status": "unresolved",
-          "evidence": "identity_label_review_pending"
-        }
-      },
-      "supported_gate_eligible": false,
-      "supported_gate_blockers": [
-        "requirement_failed:locked_clean_panel_instrument",
-        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
-        "requirement_failed:role_neutral_panel",
-        "requirement_failed:instrument_quality_resolved",
-        "requirement_failed:quality_screen_complete",
-        "requirement_failed:panel_adjudication_complete",
-        "requirement_failed:critical_contrast_coverage_complete",
-        "requirement_failed:positive_and_negative_contrasts_reviewed",
-        "requirement_failed:negative_boundary_inventory_complete",
-        "requirement_failed:code_document_reconciled",
-        "requirement_failed:current_code_review_metadata",
-        "requirement_failed:current_standard_reaudit_complete"
-      ],
-      "discovery_hard_blockers": [
-        "discovery_gate:reviewed_corpus_evidence",
-        "discovery_gate:held_out_validation",
-        "discovery_gate:ontology_conflicts_resolved"
-      ],
-      "readiness_score": 48,
-      "candidate_state": "source_supported",
-      "nearest_missing_gate": "source_scope_matches_claim",
-      "next_best_action": "complete source-scope reaudit and split any unsupported extensions",
-      "automatic_risk_flags": [],
-      "source_path": "grammar/research_pending/DurativeVP.md"
-    },
-    {
       "construction_uuid": "a4894b15-66e9-5278-a424-6883a7cab565",
       "construction_code": "AA55",
-      "canonical_name": "ExistentialClause",
+      "canonical_name": "SubjectJauPossessiveClause",
       "legacy_label": "ExistentialClause",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "research_pending",
-      "family_id": "L39",
-      "family_name": "ExistentialAndPresentationalClauses",
-      "profile_name": null,
+      "family_id": null,
+      "family_name": "JauPossessionAndExistence",
+      "profile_name": "OvertSubjectJauNominalComplement",
       "learner_label": null,
       "source_ids": [
         "SRC-FAN-2026-JAU-VP",
@@ -6229,8 +6135,9 @@
           "evidence": "no_passing_held_out_record"
         },
         "ontology_conflicts_resolved": {
-          "status": "unresolved",
-          "evidence": "identity_label_review_pending"
+          "status": "partial",
+          "evidence": "identity_label_review_in_progress",
+          "detail": "{\"review_state\":\"complete\",\"behavior_research_alignment\":\"runtime_broader\",\"terminology_alignment\":\"misleading\",\"recommended_action\":\"rename_retain_narrow\",\"automatic_risk_flags\":[\"generic_head_requires_boundary_definition\"],\"review_notes\":\"Expert adjudication 2026-07-24. ExistentialClause is contradicted by its own executable positives and by the checked source distinction. The dominant implemented core is explicit-subject possessive or availability 有 + nominal complement, while true subjectless presentational existentials already have a separate project identity. The UUID is therefore retained and renamed to the source-aligned possessive profile; the age example is quarantined. Status recommendation: retain research_pending for overt-subject possessive 有 + nominal complement; remove age and nonpossessive branches during compatibility migration and leave presentational existential structures in their separate identity\"}"
         }
       },
       "supported_gate_eligible": false,
@@ -6253,7 +6160,7 @@
         "discovery_gate:held_out_validation",
         "discovery_gate:ontology_conflicts_resolved"
       ],
-      "readiness_score": 48,
+      "readiness_score": 50,
       "candidate_state": "source_supported",
       "nearest_missing_gate": "source_scope_matches_claim",
       "next_best_action": "complete source-scope reaudit and split any unsupported extensions",
@@ -14910,6 +14817,100 @@
         "internal_representation_name_review"
       ],
       "source_path": "grammar/parser_heuristic/DemonstrativeClassifierNP.md"
+    },
+    {
+      "construction_uuid": "676460c0-934e-5b6f-a5d6-71e8d9ca55bf",
+      "construction_code": "AA47",
+      "canonical_name": "MannerMotionDirectionalWrapper",
+      "legacy_label": "DirectedMannerMotionVP",
+      "lifecycle_state": "current",
+      "claim_layer": "parser_representation",
+      "linguistic_status": "research_pending",
+      "family_id": null,
+      "family_name": "MotionRepresentation",
+      "profile_name": "MannerMotionWithHeterogeneousDirectionalMaterial",
+      "learner_label": null,
+      "source_ids": [
+        "SRC-LEUNG-2014-COVERBS",
+        "SRC-SHAN-JIN-2025-MOTION-TYPOLOGY",
+        "SRC-YIU-2016-DIRECTIONAL-ASPECT"
+      ],
+      "preserved_source_ids": [],
+      "future_research_preserved_as": "",
+      "standard_positive_test_count": 6,
+      "standard_boundary_test_count": 2,
+      "gates": {
+        "language_claim_defined": {
+          "status": "not_applicable",
+          "evidence": "non_language_claim_layer"
+        },
+        "independent_source_support": {
+          "status": "pass",
+          "evidence": "all_cited_sources_verified_and_independent",
+          "detail": "3/3"
+        },
+        "source_scope_matches_claim": {
+          "status": "partial",
+          "evidence": "verified_sources_but_scope_reaudit_incomplete"
+        },
+        "runtime_research_alignment": {
+          "status": "unresolved",
+          "evidence": "runtime_research_alignment_not_reconciled"
+        },
+        "executable_positive_cases_present": {
+          "status": "pass",
+          "evidence": "executable_positive_cases_present_implementation_only",
+          "detail": "6"
+        },
+        "negative_boundaries_complete": {
+          "status": "partial",
+          "evidence": "negative_boundaries_incomplete"
+        },
+        "reviewed_corpus_evidence": {
+          "status": "not_started",
+          "evidence": "no_reviewed_corpus_evidence"
+        },
+        "role_neutral_panel_threshold": {
+          "status": "partial",
+          "evidence": "panel_evidence_incomplete",
+          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":false,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
+        },
+        "held_out_validation": {
+          "status": "not_started",
+          "evidence": "no_passing_held_out_record"
+        },
+        "ontology_conflicts_resolved": {
+          "status": "partial",
+          "evidence": "identity_label_review_in_progress",
+          "detail": "{\"review_state\":\"complete\",\"behavior_research_alignment\":\"overlapping\",\"terminology_alignment\":\"misleading\",\"recommended_action\":\"internalize_and_decompose\",\"automatic_risk_flags\":[],\"review_notes\":\"Expert adjudication 2026-07-24. The legacy label names a semantic event type but masks several independently organized constructions. Its positives differ in marker position, path complexity, goal realization, source realization, and motion-participant structure. The UUID should therefore preserve only compatibility aggregation; linguistic evidence must remain attached to the independently bounded component records. Status recommendation: migrate to parser_heuristic after compatibility migration; preserve manner motion, preverbal direction phrases, postverbal directional complexes, goals, and source phrases as independently typed structures\"}"
+        }
+      },
+      "supported_gate_eligible": false,
+      "supported_gate_blockers": [
+        "requirement_failed:locked_clean_panel_instrument",
+        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
+        "requirement_failed:role_neutral_panel",
+        "requirement_failed:instrument_quality_resolved",
+        "requirement_failed:quality_screen_complete",
+        "requirement_failed:panel_adjudication_complete",
+        "requirement_failed:critical_contrast_coverage_complete",
+        "requirement_failed:positive_and_negative_contrasts_reviewed",
+        "requirement_failed:negative_boundary_inventory_complete",
+        "requirement_failed:code_document_reconciled",
+        "requirement_failed:current_code_review_metadata",
+        "requirement_failed:current_standard_reaudit_complete"
+      ],
+      "discovery_hard_blockers": [
+        "discovery_gate:reviewed_corpus_evidence",
+        "discovery_gate:held_out_validation",
+        "discovery_gate:ontology_conflicts_resolved"
+      ],
+      "readiness_score": 0,
+      "candidate_state": "excluded_nonlanguage",
+      "nearest_missing_gate": "language_claim_defined",
+      "next_best_action": "define a narrow falsifiable language claim before adding evidence",
+      "automatic_risk_flags": [],
+      "source_path": "grammar/research_pending/DirectedMannerMotionVP.md"
     },
     {
       "construction_uuid": "9f00c890-a573-5803-900d-5a6aab7a6ff9",
