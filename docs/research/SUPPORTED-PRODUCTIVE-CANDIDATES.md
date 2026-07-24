@@ -17,12 +17,11 @@ This is a prioritization report, not a promotion decision. A score cannot overri
 | `AA27` | `ReturnUpDeicticDirectionalVP` | `source_supported` | 60 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
 | `AA60` | `HeoiGwoGoalVP` | `source_supported` | 60 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
 | `AA61` | `GwoFinalMeiExperientialQuestion` | `source_supported` | 60 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
+| `AA73` | `JungLaiUseFunctionConstruction` | `source_supported` | 60 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
+| `AA95` | `PersonalGiuNameClause` | `source_supported` | 60 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
+| `AB02` | `M4NegatedPropertyPredicate` | `source_supported` | 60 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
 | `AA52` | `WaaParticipantZiCommunicationVP` | `source_supported` | 58 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
-| `AA73` | `IntendedFunctionRelation` | `source_supported` | 55 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
-| `AA74` | `IntentionFrame` | `source_supported` | 55 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
-| `AA81` | `LocativePostureVP` | `source_supported` | 55 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
-| `AA95` | `NamingClause` | `source_supported` | 55 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
-| `AB02` | `NegatedStativePredicate` | `source_supported` | 55 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
+| `AA74` | `NamZyuVPComplementClause` | `source_supported` | 58 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
 | `AB05` | `NegativeExperiential` | `source_supported` | 55 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
 | `AB24` | `PossessiveClassifierNP` | `source_supported` | 55 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
 | `AB33` | `PreferenceVP` | `source_supported` | 55 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
@@ -49,6 +48,7 @@ This is a prioritization report, not a promotion decision. A score cannot overri
 | `AA53` | `DurativeVP` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA55` | `ExistentialClause` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA58` | `ExistentialWhQuestion` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
+| `AA62` | `ExperientialVP` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 
 ## Narrowing candidates
 

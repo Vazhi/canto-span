@@ -2,7 +2,7 @@
   "schema": "canto-span-full-repo-label-sweep-v1",
   "identity_registry_schema": "canto-span-construction-identity-registry-v1",
   "record_count": 181,
-  "pending_review_count": 167,
+  "pending_review_count": 162,
   "automatic_flag_counts": {
     "generic_head_requires_boundary_definition": 72,
     "internal_representation_name_review": 20,
@@ -1174,15 +1174,15 @@
     {
       "construction_uuid": "bcee8e4a-3559-5759-93a8-bf6b4c1bc0bd",
       "construction_code": "AA73",
-      "canonical_name": "IntendedFunctionRelation",
+      "canonical_name": "JungLaiUseFunctionConstruction",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/IntendedFunctionRelation.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "runtime_narrower_defensible",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": [
         "generic_head_requires_boundary_definition"
       ]
@@ -1190,15 +1190,15 @@
     {
       "construction_uuid": "85c40d6e-3eff-57bc-b9f9-a884f6008816",
       "construction_code": "AA74",
-      "canonical_name": "IntentionFrame",
+      "canonical_name": "NamZyuVPComplementClause",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/IntentionFrame.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "overlapping",
+      "terminology_alignment": "misleading",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": [
         "generic_head_requires_boundary_definition"
       ]
@@ -1304,15 +1304,15 @@
     {
       "construction_uuid": "fe8db66e-e163-5694-84ca-1948b778be28",
       "construction_code": "AA81",
-      "canonical_name": "LocativePostureVP",
+      "canonical_name": "PostureLocativeActionWrapper",
       "lifecycle_state": "current",
-      "claim_layer": "language_construction",
+      "claim_layer": "parser_representation",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/LocativePostureVP.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "overlapping",
+      "terminology_alignment": "misleading",
+      "recommended_action": "internalize_and_decompose",
       "automatic_risk_flags": []
     },
     {
@@ -1522,15 +1522,15 @@
     {
       "construction_uuid": "dd7c8a35-b829-55d9-ba91-d46a7f75fa41",
       "construction_code": "AA95",
-      "canonical_name": "NamingClause",
+      "canonical_name": "PersonalGiuNameClause",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/NamingClause.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "exact",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": [
         "generic_head_requires_boundary_definition",
         "semantic_domain_name_requires_structural_scope_check"
@@ -1621,15 +1621,15 @@
     {
       "construction_uuid": "9f138488-e914-560d-89bc-ba9c108d887d",
       "construction_code": "AB02",
-      "canonical_name": "NegatedStativePredicate",
+      "canonical_name": "M4NegatedPropertyPredicate",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/NegatedStativePredicate.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "runtime_narrower_defensible",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": [
         "generic_head_requires_boundary_definition"
       ]

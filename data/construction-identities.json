@@ -2407,7 +2407,7 @@
     {
       "construction_uuid": "bcee8e4a-3559-5759-93a8-bf6b4c1bc0bd",
       "construction_code": "AA73",
-      "canonical_name": "IntendedFunctionRelation",
+      "canonical_name": "JungLaiUseFunctionConstruction",
       "legacy_labels": [
         "IntendedFunctionRelation"
       ],
@@ -2415,30 +2415,48 @@
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/IntendedFunctionRelation.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese conventionally permits 用嚟/用來 to relate an overt object, resource, or artifact to a stated use or function; intention, affordance, actual-use-event, subject/topic status, omitted-topic licensing, and broader alternative-marker boundaries remain provisional.",
+      "family_name": "UsePurposeAndFunction",
+      "profile_name": "OvertResourceJungLaiPurposeVP",
+      "profile_description": "A source-linked profile in which an overt resource, object, or artifact is related through 用嚟 or 用來 to a following VP expressing its stated use or function, as in 呢隻杯我用嚟飲水. The profile excludes ordinary instrumental 用 without 嚟/來, malformed markerless strings, and unrestricted omitted-resource or alternative-marker analyses.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "purposive 嚟/去",
+          "source_id": "SRC-MATTHEWS-2006-SVC",
+          "scope_match": "partial"
+        },
+        {
+          "term": "instrument omission or movement",
+          "source_id": "SRC-WONG-2023-LANGUAGE-SAMPLE",
+          "scope_match": "close"
+        },
+        {
+          "term": "用嚟/用來 + use VP",
+          "source_id": "SRC-WONG-2023-LANGUAGE-SAMPLE",
+          "scope_match": "close"
+        }
+      ],
+      "former_names": [
+        "IntendedFunctionRelation"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "runtime_narrower_defensible",
+        "terminology_alignment": "neutral_descriptive_preferred",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [
           "generic_head_requires_boundary_definition"
         ],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-24. IntendedFunctionRelation is semantically plausible but opaque to discovery and reads like an internal graph edge. The runtime and test boundary are defined by overt 用嚟/用來, not by a general machine-inferred intention relation. JungLaiUseFunctionConstruction names the overt marker and the narrow conventional use/function contribution while remaining neutral about topic, subject, serial-verb, and affordance analyses. Status recommendation: retain research_pending; do not promote until resource/topic structure, omitted-resource licensing, alternative markers, corpus diversity, role-neutral panel evidence, and held-out boundaries are resolved"
       }
     },
     {
       "construction_uuid": "85c40d6e-3eff-57bc-b9f9-a884f6008816",
       "construction_code": "AA74",
-      "canonical_name": "IntentionFrame",
+      "canonical_name": "NamZyuVPComplementClause",
       "legacy_labels": [
         "IntentionFrame"
       ],
@@ -2446,24 +2464,42 @@
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/IntentionFrame.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese may instantiate the structural family represented by IntentionFrame; exact productivity and boundaries require pattern-specific independent evidence.",
+      "family_name": "IntentionAndCognition",
+      "profile_name": "OvertSubjectNamZyuVPComplement",
+      "profile_description": "An overt subject followed by lexical 諗住 and a visible VP complement. The record preserves the source-linked intention reading without treating that interpretation as the only meaning of 諗住, and excludes the current subjectless and nominal-content paths from this exact runtime subtype.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "intention meaning",
+          "source_id": "SRC-KEDZIOR-2023",
+          "scope_match": "partial"
+        },
+        {
+          "term": "諗住 + VP",
+          "source_id": "SRC-KEDZIOR-2023",
+          "scope_match": "exact"
+        },
+        {
+          "term": "thought or assumption-related senses",
+          "source_id": "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE",
+          "scope_match": "contrastive"
+        }
+      ],
+      "former_names": [
+        "IntentionFrame"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "overlapping",
+        "terminology_alignment": "misleading",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [
           "generic_head_requires_boundary_definition"
         ],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-24. The legacy label assigns one semantic reading to a polysemous lexeme and uses the vague head Frame. The executable profile is structural and lexeme-specific: overt subject + 諗住 + VP. NamZyuVPComplementClause makes that boundary searchable and preserves the intention reading as source-linked interpretation metadata rather than permanent identity. Status recommendation: retain research_pending under the neutral form-based name; preserve intention, thought, assumption, and planning readings as unresolved lexical-semantic alternatives rather than encoding intention categorically"
       }
     },
     {
@@ -2657,30 +2693,48 @@
     {
       "construction_uuid": "fe8db66e-e163-5694-84ca-1948b778be28",
       "construction_code": "AA81",
-      "canonical_name": "LocativePostureVP",
+      "canonical_name": "PostureLocativeActionWrapper",
       "legacy_labels": [
         "LocativePostureVP"
       ],
-      "claim_layer": "language_construction",
+      "claim_layer": "parser_representation",
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/LocativePostureVP.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese may instantiate the structural family represented by LocativePostureVP; exact productivity and boundaries require pattern-specific independent evidence.",
+      "family_name": "LocativeAndSerialRepresentation",
+      "profile_name": "PostureHaiDouFollowingActionAggregate",
+      "profile_description": "An implementation wrapper that aggregates an overt posture predicate, locative 喺度 material, and a following action VP. The wrapper is not itself established as one Cantonese construction: posture-location predication and the following action, purpose, or serial relation require independently typed analyses.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "subject-first verb + 喺 + localiser strategy",
+          "source_id": "SRC-LUI-2020-LOCATIVE-INVERSION",
+          "scope_match": "close"
+        },
+        {
+          "term": "企晒喺度避雨",
+          "source_id": "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE",
+          "scope_match": "exact"
+        },
+        {
+          "term": "contextually locative or progressive 喺度",
+          "source_id": "SRC-WONG-2023-LANGUAGE-SAMPLE",
+          "scope_match": "contrastive"
+        }
+      ],
+      "former_names": [
+        "LocativePostureVP"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "overlapping",
+        "terminology_alignment": "misleading",
+        "recommended_action": "internalize_and_decompose",
         "automatic_risk_flags": [],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-24. LocativePostureVP suggests that posture plus location is the node's complete boundary, but the executable positive requires another action and the bare posture-locative string is explicitly absent. The research supports the posture-locative strategy more directly than the aggregate. The current UUID should therefore describe the implementation wrapper and cease competing for linguistic promotion. Status recommendation: move to parser_heuristic after compatibility migration; preserve or create separate language-level identities for the source-supported posture-locative profile and any independently justified following-action relation"
       }
     },
     {
@@ -3103,7 +3157,7 @@
     {
       "construction_uuid": "dd7c8a35-b829-55d9-ba91-d46a7f75fa41",
       "construction_code": "AA95",
-      "canonical_name": "NamingClause",
+      "canonical_name": "PersonalGiuNameClause",
       "legacy_labels": [
         "NamingClause"
       ],
@@ -3111,25 +3165,43 @@
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/NamingClause.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese may instantiate the structural family represented by NamingClause; exact productivity and boundaries require pattern-specific independent evidence.",
+      "family_name": "NamingAndIdentification",
+      "profile_name": "OvertSubjectGiuPersonalName",
+      "profile_description": "An overt subject followed by personal naming predicate 叫 and a visible personal name, as in 我叫 Chris. The profile excludes category or alternative-designation 叫做 and the distinct surname predicate 姓, and does not claim broader naming syntax.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "personal pronoun + 叫 + name",
+          "source_id": "SRC-CHOW-2007-CANTONESE-EVERYONE",
+          "scope_match": "exact"
+        },
+        {
+          "term": "叫做 category or alternative designation",
+          "source_id": "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE",
+          "scope_match": "contrastive"
+        },
+        {
+          "term": "introducing with 係",
+          "source_id": "SRC-CHOW-2007-CANTONESE-EVERYONE",
+          "scope_match": "contrastive"
+        }
+      ],
+      "former_names": [
+        "NamingClause"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "exact",
+        "terminology_alignment": "neutral_descriptive_preferred",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [
           "generic_head_requires_boundary_definition",
           "semantic_domain_name_requires_structural_scope_check"
         ],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-24. NamingClause is structurally vague and could include 叫做, 姓, copular identification, category labeling, or naming events. The actual runtime profile is personal 叫 + name with an overt subject. PersonalGiuNameClause names the lexical predicate and semantic subtype while preserving separate identities for surname and designation constructions. Status recommendation: retain research_pending; expand personal-name forms, subject types, discourse contexts, and negative boundaries before any productivity review"
       }
     },
     {
@@ -3292,7 +3364,7 @@
     {
       "construction_uuid": "9f138488-e914-560d-89bc-ba9c108d887d",
       "construction_code": "AB02",
-      "canonical_name": "NegatedStativePredicate",
+      "canonical_name": "M4NegatedPropertyPredicate",
       "legacy_labels": [
         "NegatedStativePredicate"
       ],
@@ -3300,24 +3372,42 @@
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/NegatedStativePredicate.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese attests overt `唔` directly before an independently licensed property predicate, without an inserted copula. Nominal predicates instead require an overt copular negative profile; other negators and productive lexical scope remain separate research questions.",
+      "family_name": "NegationAndPropertyPredication",
+      "profile_name": "M4PlusPropertyPredicateWithoutCopula",
+      "profile_description": "Overt 唔 directly precedes an independently licensed property predicate without an inserted copula. The profile excludes negative nominal predicates requiring 唔係, other negators such as 冇, 未, and 咪, and unrestricted lexical extension beyond independently maintained property-predicate categories.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "adjectives or stative verbs",
+          "source_id": "SRC-YIP-1988-NEGATION",
+          "scope_match": "close"
+        },
+        {
+          "term": "predicative adjectives behave verb-like",
+          "source_id": "SRC-ALDERETE-ETAL-2017-SYNOPSIS",
+          "scope_match": "close"
+        },
+        {
+          "term": "唔 directly negating a property predicate",
+          "source_id": "SRC-YIP-1988-NEGATION",
+          "scope_match": "exact"
+        }
+      ],
+      "former_names": [
+        "NegatedStativePredicate"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "runtime_narrower_defensible",
+        "terminology_alignment": "neutral_descriptive_preferred",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [
           "generic_head_requires_boundary_definition"
         ],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-24. NegatedStativePredicate is broadly reasonable, but it hides the overt negator and permits confusion with other negative strategies or lexicalized negative statives. M4NegatedPropertyPredicate states the exact marker and the independently licensed property-predicate boundary while preserving the crucial no-copula contrast with nominal predication. Status recommendation: retain research_pending; complete lexical-scope, corpus, role-neutral panel, and held-out validation before productive support"
       }
     },
     {
