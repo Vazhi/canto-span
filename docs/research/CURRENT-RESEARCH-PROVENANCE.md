@@ -1,17 +1,40 @@
 # Current research overview
 
-This is the canonical index for completed UC-RQ research and the completed
-repository-visible PRQ2 units. Each ID has one package: the linked main record
-plus the same-ID `SOURCE-VERIFICATION-R1.tsv` and `COLLISION-AUDIT-R1.tsv`
-companions. A disposition record is canonical when the research resolved into
-an existing family rather than a standalone candidate.
+This is the canonical index for completed source-research packages. These records
+preserve what a source, corpus review, or research unit established at the time;
+they do not independently change runtime behavior, linguistic status, permanent
+identity, or promotion readiness.
 
-These packages preserve evidence and decisions only. They do not change current
-grammar status or authorize parser work. Current status remains owned by
-[`../../GRAMMAR-INDEX.md`](../../GRAMMAR-INDEX.md) and
-[`../current/`](../current/).
+Use the current authority order in [`../current/00-START-HERE.md`](../current/00-START-HERE.md):
+
+- permanent identity and current ontology: `data/construction-identities.json`
+  plus accepted adjudications;
+- current linguistic status: the active note under `grammar/<status>/`;
+- runtime behavior: code and executable tests;
+- readiness: `data/construction-candidate-readiness.json` and generated reports;
+- this directory: source and decision provenance.
+
+A completed research package may justify a later adjudication, split, migration,
+or implementation change, but it does not authorize one by itself.
+
+## Identity, adjudication, and discovery indexes
+
+- full UUID registry: [`../../data/construction-identities.json`](../../data/construction-identities.json)
+- accepted adjudications: [`../../data/construction-adjudications.json`](../../data/construction-adjudications.json)
+- append-only adjudication batches: [`../../data/construction-adjudication-batches/`](../../data/construction-adjudication-batches/)
+- current ranked candidates: [`SUPPORTED-PRODUCTIVE-CANDIDATES.md`](SUPPORTED-PRODUCTIVE-CANDIDATES.md)
+- orphaned evidence: [`ORPHANED-CONSTRUCTION-EVIDENCE.md`](ORPHANED-CONSTRUCTION-EVIDENCE.md)
+- family gaps: [`CONSTRUCTION-FAMILY-GAPS.md`](CONSTRUCTION-FAMILY-GAPS.md)
+- complete readiness sweep: [`FULL-REPO-SUPPORTED-PRODUCTIVE-SWEEP-R1.md`](FULL-REPO-SUPPORTED-PRODUCTIVE-SWEEP-R1.md)
+
+Dated adjudication-batch reports and generated baselines are historical snapshots.
+Use the current registry and readiness outputs for present names and counts.
 
 ## Canonical UC-RQ packages
+
+Each UC-RQ ID has one main record plus same-ID source-verification and collision-
+audit companions. A disposition record is canonical when research resolved into
+an existing family rather than a standalone candidate.
 
 | ID | Main record |
 |---|---|
@@ -81,47 +104,19 @@ grammar status or authorize parser work. Current status remains owned by
 
 ## Clause-relation implementation priority
 
-This is a planning order derived from completed source and collision records. It
-does not change grammar status or authorize a broader heuristic. Evidence grades
-control what the records can support, even where a runtime slice already exists.
+This is a historical planning order derived from completed source and collision
+records. It does not override current UUID adjudication, candidate ranking, or
+status. Re-evaluate it before implementation.
 
-| Tier | Units | Narrow implementation objective |
+| Tier | Units | Preserved research direction |
 |---|---|---|
-| 1 | PRQ2-013, PRQ2-008, PRQ2-014 | Add overt paired cores with explicit member roles while preserving child analyses and hard comparison, suggestion, conditional, temporal, and empty-member guards. |
-| 2 | PRQ2-035, PRQ2-009 | Retain only directly supported cores; audit any implemented extensions whose evidence is attestation-only. |
-| 3 | PRQ2-034, PRQ2-012 | Require explicit domain or option structure before addressing free-choice, suggestion, list, and contextual readings. |
-| 4 | PRQ2-010, PRQ2-011 | Defer until profile splitting, marker omission, lexical substring, and context-dependent boundaries have dedicated implementation designs. |
+| 1 | PRQ2-013, PRQ2-008, PRQ2-014 | Overt paired cores with explicit member roles and hard comparison, suggestion, conditional, temporal, and empty-member guards. |
+| 2 | PRQ2-035, PRQ2-009 | Directly supported cores only; audit implemented extensions backed by attestation alone. |
+| 3 | PRQ2-034, PRQ2-012 | Require explicit domain or option structure before free-choice, suggestion, list, and contextual readings. |
+| 4 | PRQ2-010, PRQ2-011 | Defer pending profile splitting, marker-omission boundaries, lexical-substring guards, and context-sensitive designs. |
 
-The first slice implements PRQ2-013's overt `與其 A，不如 B` core as an
-internal `ordered_preference` relation subtype. It retains lone suggestion
-`不如 B` and excludes ordinary comparison `A 不如 B` from `Suggest`.
-Optional `倒`, marker omission, and member types that do not yet yield two
-independent child analyses remain deferred.
-
-The second slice implements PRQ2-008's overt `只要 A，就 B` core as a
-`sufficient_condition` profile of the existing conditional relation. The graded
-repair supports this bounded paired core. It does not merge lexical `只`+`要`
-globally, and omitted `就`, fragments, and discourse-spanning continuations
-remain deferred.
-
-The third slice implements PRQ2-014's overt
-`只有 A，先／先至／先可以 B` core as a `necessary_condition` profile of the
-existing conditional relation. It does not merge lexical `只`+`有` globally;
-unpunctuated participant restrictions, bare condition-plus-`先至`, short
-`至`, and temporal uses remain deferred.
-
-The fourth slice implements PRQ2-035's overt rejection profile
-`寧願 A，都唔想／唔肯／唔好 B` as a `committed_preference` relation.
-Positive `都要` continuations, marker omission, and related lexical preference
-markers remain deferred. PRQ2-035 remains a weak-core Step 4 audit target until
-its ledger is graded against direct evidence.
-
-The fifth slice implements PRQ2-009's clause-initial, comma-delimited
-`既然 A，B` runtime profile. After evidence regrading, qualifying direct support
-is limited to causal `既然 A，不如 B` advisory/proposal responses. Unmarked,
-`就`, `噉／咁`, and `等我` responses remain attestation-backed only and require
-Step 5 implementation-to-evidence audit. Preposed-subject and discourse-spanning
-profiles remain deferred.
+Existing implementation slices remain runtime provenance, not an evergreen work
+queue. Current work order belongs in `docs/current/PROJECT-STATE.md`.
 
 ## Shared evidence
 
