@@ -9,19 +9,29 @@ state dimensions.
 
 - runtime: **v0.5.216**
 - active runtime labels / construction notes: **133 / 133**
-- retired runtime labels: **48**
+- construction workflow: **2 active / 131 workflow-archived**
+- retired labels: **48**
 - permanent construction identities: **181**
 - expert-adjudicated identities: **34 / 181**
 - `supported_productive`: **0**
+- `provisional`: **0**
+- `research_pending`: **79**
 - direct `boundary_ready` candidates: **1** (`AB30`)
 - direct `source_supported` candidates: **69**
 - current narrowing candidates: **36**
 - excluded non-language/internal records: **25**
 
-The linguistic-status folders still contain 79 `research_pending`, 37
+The remaining linguistic-status folders contain 37
 `unsupported_generalization`, 2 `lexicalized_only`, and 15 `parser_heuristic`
-notes. Expert adjudication has not silently changed those status paths or runtime
+notes. Expert adjudication has not silently changed status paths or runtime
 matchers.
+
+## Current validation targets
+
+- aggregate regression: **551** cases
+- NP subsystem: **43** cases
+- per-construction assertions: **1,518**
+- construction test files: **133**
 
 ## Where to start
 
