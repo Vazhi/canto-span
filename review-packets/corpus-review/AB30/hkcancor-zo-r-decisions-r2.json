@@ -1,0 +1,418 @@
+{
+  "schema": "canto-span-corpus-claim-cross-reference-decisions-v1",
+  "construction": {
+    "constructionUuid": "2169217f-a21d-5165-9513-eb0edee2c220",
+    "permanentCode": "AB30",
+    "canonicalIdentity": "ZoMarkedPerfectiveObjectVP",
+    "legacyRuntimeLabel": "PostverbalZoPerfectiveVP"
+  },
+  "queryId": "AB30-HKCANCOR-V-ZO-R-R2",
+  "sourceInventory": "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+  "sourceAllowlist": "external-evidence/cp021b/hkcancor-cp021b-source-manifest.sha256",
+  "adjudicatedOn": "2026-07-24",
+  "adjudicationAuthority": "project expert context review",
+  "packetStatus": "complete",
+  "readinessEffect": "none_research_checkpoint_only",
+  "readinessNote": "This exhausts the complete high-recall HKCanCor preceding-v/v1/xv + 咗 + following-r comparison track. It supplies classified attestation and boundary evidence but cannot establish productivity, complete lexical scope, corpus readiness, status, or promotion.",
+  "claimCrosswalk": [
+    {
+      "claimKey": "AB30.core.v-zo-overt-np",
+      "canonicalOwner": "data/construction-adjudications.json",
+      "sourceOwners": [
+        "docs/research/CP025-P1-PFV01-SOURCE-VERIFICATION-R1.tsv#SRC-YIP-MATTHEWS-2000-BASIC",
+        "docs/research/CP025-P1-PFV01-SOURCE-VERIFICATION-R1.tsv#SRC-SIO-BOND-2025"
+      ],
+      "corpusQuestion": "Does HKCanCor naturally attest lexical V + perfective 咗 + an overt pronoun, demonstrative, or other r-tagged NP onset in this bounded query?"
+    },
+    {
+      "claimKey": "AB30.limit.token-adjacency-is-insufficient",
+      "canonicalOwner": "grammar/research_pending/PostverbalZoPerfectiveVP.md",
+      "sourceOwners": [
+        "docs/research/CP025-P1-PFV01-SOURCE-VERIFICATION-R1.tsv"
+      ],
+      "corpusQuestion": "Does every token tagged v, v1, or xv + 咗 + an r-tagged token instantiate the narrow overt-object profile?"
+    },
+    {
+      "claimKey": "AB30.limit.productivity-and-semantics-not-corpus-decidable",
+      "canonicalOwner": "grammar/research_pending/PostverbalZoPerfectiveVP.md",
+      "sourceOwners": [
+        "docs/research/CP025-P1-PFV01-SOURCE-VERIFICATION-R1.tsv"
+      ],
+      "corpusQuestion": "Can this complete high-recall POS slice settle unrestricted predicate-object productivity or all temporal, completion, boundedness, and current-relevance analyses?"
+    }
+  ],
+  "counts": {
+    "ambiguous": 4,
+    "false_positive": 48,
+    "genuine": 69,
+    "unusable": 0
+  },
+  "decisions": [
+    {
+      "candidateId": "ab30-3ca6c1ff3d9c206f3004",
+      "matchedSurfaceSpan": "變咗佢",
+      "classification": "false_positive",
+      "claimRelations": [
+        "restricts:AB30.limit.token-adjacency-is-insufficient"
+      ],
+      "reviewerNote": "變咗 functions as a discourse/result transition; 佢 begins the following clause or topic phrase rather than serving as an overt object of 變.",
+      "exclusionReason": "Following pronoun is not the object licensed by the narrow AB30 profile."
+    },
+    {
+      "candidateId": "ab30-ba3c5054a4fea3a60f5b",
+      "matchedSurfaceSpan": "俾咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "The surrounding money-and-goods exchange makes 佢 the overt recipient argument after 俾咗.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-f782d1905d03a9b1e58e",
+      "matchedSurfaceSpan": "要咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "佢 refers to the goods under discussion and is the overt object of 要咗.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-5c9a55f0c91cab5d84c6",
+      "matchedSurfaceSpan": "封咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "佢 refers to the exchanged item and is the overt object of 封咗; 收埋佢 confirms the same referent.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-bfc6dc2618ab348bf07a",
+      "matchedSurfaceSpan": "摺咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "The imperative contains a transparent 摺 + 咗 + overt pronominal object.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-c5c9339e9bb253c223b8",
+      "matchedSurfaceSpan": "賣咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "The banknote under discussion is resumed by 佢 as the overt object of 賣咗.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-8d44c433e03e02df7a15",
+      "matchedSurfaceSpan": "飲咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "The preceding dead-turtle discussion supplies the referent, and 佢 is the overt object of 飲咗.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-97ddda203f0e90cefa12",
+      "matchedSurfaceSpan": "㗳咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "The complete post-marker object is the overt possessive NP 佢個頭, not merely the adjacent pronoun.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-271b1ad1b00bccba4520",
+      "matchedSurfaceSpan": "推咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "The prior translation-job offer supplies the referent rejected by 推咗佢.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-7f6ddbd06e520011ba81",
+      "matchedSurfaceSpan": "推咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "The same job-offer discourse makes 佢 the overt object of 推咗.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-4d78095313b242e3b320",
+      "matchedSurfaceSpan": "掉咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "佢 resumes 成個缸 and is the overt object of 掉咗.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-e736f15304bdda22a9f5",
+      "matchedSurfaceSpan": "答咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "The preceding stranger asking questions identifies 佢 as the overt addressee object of 答咗.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-d519ecc8bae536403763",
+      "matchedSurfaceSpan": "pit3咗佢",
+      "classification": "ambiguous",
+      "claimRelations": [
+        "unresolved:AB30.core.v-zo-overt-np",
+        "supports:AB30.limit.token-adjacency-is-insufficient"
+      ],
+      "reviewerNote": "The camera discussion suggests a transitive action with 佢 as its object, but the romanized predicate pit3 is not recoverable precisely enough from the transcript to assign a secure construction analysis.",
+      "exclusionReason": "Opaque romanized predicate prevents a secure lexical and syntactic classification."
+    },
+    {
+      "candidateId": "ab30-40adea58e75d5ada476f",
+      "matchedSurfaceSpan": "叫咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "佢 is the overt person object of 叫咗 and precedes the directional continuation 出門口嗰度.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-5f92f0f8ae4733d6a939",
+      "matchedSurfaceSpan": "預咗佢",
+      "classification": "false_positive",
+      "claimRelations": [
+        "restricts:AB30.limit.token-adjacency-is-insufficient"
+      ],
+      "reviewerNote": "The relevant complement is the proposition 佢壞 ('it breaks'); 佢 is the subject of the following predicate, not an overt NP object selected by 預咗.",
+      "exclusionReason": "Following pronoun begins a clausal complement rather than the narrow AB30 object."
+    },
+    {
+      "candidateId": "ab30-3c0141065d88af7f6d8c",
+      "matchedSurfaceSpan": "賺咗佢",
+      "classification": "ambiguous",
+      "claimRelations": [
+        "unresolved:AB30.core.v-zo-overt-np",
+        "supports:AB30.limit.token-adjacency-is-insufficient"
+      ],
+      "reviewerNote": "In 賺咗佢一二千蚊, 佢 may be a referential object or a colloquial dummy before the amount expression; the available turn does not resolve that role.",
+      "exclusionReason": "The pronominal role cannot be distinguished confidently from a dummy-plus-amount profile."
+    },
+    {
+      "candidateId": "ab30-8019c9df3787067ebaee",
+      "matchedSurfaceSpan": "錄咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "佢 is the overt object recorded before the recording is shown to others.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-91489c3715fe761ee0a2",
+      "matchedSurfaceSpan": "拉咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "The legal-enforcement context makes 佢 the overt person object of 拉咗 ('arrested him/her').",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-5a9975ad949749aa2d1b",
+      "matchedSurfaceSpan": "賺咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "The complete overt object is the headless relative NP 佢應該要賺嘅嘢 ('what he should earn'), which begins immediately after 咗.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-420be8354172e77f759f",
+      "matchedSurfaceSpan": "幫咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "The suicidal person is resumed by 佢 as the overt object of 幫咗.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-9642966142be7303ca7d",
+      "matchedSurfaceSpan": "封咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "The complete overt object is the possessive NP 佢舖 ('his shop'), following 封咗.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-f790d74172160cfbe811",
+      "matchedSurfaceSpan": "決定咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "The complete overt object is the possessive NP 佢嘅行為 ('his behavior'), following 決定咗.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-282ba3d146d8a2daa0f8",
+      "matchedSurfaceSpan": "結束咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "The previous turn identifies 哩個話題, which 佢 resumes as the overt object of 結束咗.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-bc3ab3d5f13446091bbd",
+      "matchedSurfaceSpan": "講咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "佢自己本身 is an overt reflexive-emphatic NP object of 講咗; the following 作為 phrase elaborates that referent.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-3675515c5c8ed3a3b4fb",
+      "matchedSurfaceSpan": "閹咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "The quoted threat contains a transparent 閹 + 咗 + overt person object.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-100d38a6e66a8b2f387b",
+      "matchedSurfaceSpan": "閹咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "The second quoted threat independently contains a transparent 閹 + 咗 + overt person object.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-cba472c536c9cefe8a2c",
+      "matchedSurfaceSpan": "分擔咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "The complete overt object is the possessive NP 佢嘅工作 ('his/her work'), following 分擔咗.",
+      "exclusionReason": ""
+    },
+    {"candidateId":"ab30-2798115370ed38ad1d7f","matchedSurfaceSpan":"變咗你","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"你 begins the consequence clause 你可以睇嘢 after discourse-result 變咗; it is not an object of 變.","exclusionReason":"Following pronoun is the subject of a new clause."},
+    {"candidateId":"ab30-e72bac870a15a58fc47a","matchedSurfaceSpan":"變咗你","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"你 is the subject of the following clause 你唔使坐咁耐機 after discourse-result 變咗.","exclusionReason":"Following pronoun is the subject of a new clause."},
+    {"candidateId":"ab30-fad81b6a8aa49e72e14d","matchedSurfaceSpan":"變咗你","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"變咗 introduces a result/discourse transition and 你 starts the following repaired phrase, rather than serving as an object.","exclusionReason":"Following pronoun is not an overt object of 變."},
+    {"candidateId":"ab30-b925c5437d825f7c5eca","matchedSurfaceSpan":"變咗我","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"我 is the subject of 我而家有啲郵票 after resultative discourse 變咗.","exclusionReason":"Following pronoun is the subject of a new clause."},
+    {"candidateId":"ab30-c9d20ec05f8fb46eb0b0","matchedSurfaceSpan":"買咗嗰","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"The full demonstrative object 嗰張 is the stamp bought and taken home.","exclusionReason":""},
+    {"candidateId":"ab30-031535c6be444f33c44b","matchedSurfaceSpan":"變咗你","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"你 is the subject of 你真係永遠就自己揸住來睇 after discourse-result 變咗.","exclusionReason":"Following pronoun is the subject of a new clause."},
+    {"candidateId":"ab30-c70b7d31e0527a2659fd","matchedSurfaceSpan":"過咗我","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"In the running context, 我 is the overt object of 過咗 in the sense of overtaking the speaker.","exclusionReason":""},
+    {"candidateId":"ab30-fca0af6c9f5b946ecb9a","matchedSurfaceSpan":"走咗第二","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"第二啲路 is a path complement of the motion predicate 走咗, not the licensed overt object targeted by AB30.","exclusionReason":"Motion-path complement falls outside the narrow overt-object profile."},
+    {"candidateId":"ab30-3e9b231559d6f9e8b256","matchedSurfaceSpan":"飛咗你","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"你個鼻嗰度 supplies the goal/location reached by dog hair flying, not an object of 飛咗.","exclusionReason":"Motion-goal complement falls outside the narrow overt-object profile."},
+    {"candidateId":"ab30-16c4891e21958c8283d4","matchedSurfaceSpan":"用咗你","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"The full possessive NP 你嘅腰力 is the overt object of 用咗.","exclusionReason":""},
+    {"candidateId":"ab30-c3d90a76e09a80fce6e2","matchedSurfaceSpan":"玩咗幾多","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"幾多日 measures the duration of playing and is not an overt theme object.","exclusionReason":"Duration complement falls outside the narrow overt-object profile."},
+    {"candidateId":"ab30-875360fc3ef51e3acd9c","matchedSurfaceSpan":"搭咗哩","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"哩隻船 is the overt vehicle object of 搭咗.","exclusionReason":""},
+    {"candidateId":"ab30-ffaa88d405aa6ae7f067","matchedSurfaceSpan":"請咗我","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"我 is the overt person object of 請咗 in the job-offer discussion.","exclusionReason":""},
+    {"candidateId":"ab30-35db6f12fad46e4ae5ad","matchedSurfaceSpan":"變咗我","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"我 is the subject of 我覺得 after the discourse-result connective 變咗.","exclusionReason":"Following pronoun is the subject of a new clause."},
+    {"candidateId":"ab30-42081403f11920e3d2c4","matchedSurfaceSpan":"變咗我","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"The second token in the same repaired turn again begins 我又/我自己 rather than an object NP.","exclusionReason":"Following pronoun is the subject of a new clause."},
+    {"candidateId":"ab30-7b22d0a810199c4a2e91","matchedSurfaceSpan":"俾咗噉","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"噉嘅 impression is the overt object transferred to 佢 by 俾咗.","exclusionReason":""},
+    {"candidateId":"ab30-9e24ff57dacfb5685f39","matchedSurfaceSpan":"唔記得咗幾多","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"幾多年 is the overt interrogative NP complement of 唔記得咗.","exclusionReason":""},
+    {"candidateId":"ab30-5a9ff5a045459cc0a729","matchedSurfaceSpan":"唔記得咗幾多","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"幾多年 is the overt interrogative NP complement of 唔記得咗 in the elliptical follow-up.","exclusionReason":""},
+    {"candidateId":"ab30-a725b29cfa51b24f4cf6","matchedSurfaceSpan":"變咗你","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"你 begins 你會聽佢哋講下嘢 after discourse-result 變咗.","exclusionReason":"Following pronoun is the subject of a new clause."},
+    {"candidateId":"ab30-cb08c9d345b75c2f7703","matchedSurfaceSpan":"去咗幾","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"幾日 is a duration complement of 去咗, not an overt object.","exclusionReason":"Duration complement falls outside the narrow overt-object profile."},
+    {"candidateId":"ab30-c4f0f943398d2b4fc64f","matchedSurfaceSpan":"變咗我","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"我 is the subject of 我自己要留喺嗰度 after discourse-result 變咗.","exclusionReason":"Following pronoun is the subject of a new clause."},
+    {"candidateId":"ab30-b2bc6343383601fa637c","matchedSurfaceSpan":"去咗邊度","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"邊度 is an interrogative destination/location complement of 去咗.","exclusionReason":"Motion-goal complement falls outside the narrow overt-object profile."},
+    {"candidateId":"ab30-7164081573fa09135ea7","matchedSurfaceSpan":"問咗我","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"我 is the overt addressee object of 問咗 before the question content.","exclusionReason":""},
+    {"candidateId":"ab30-7983040c026786c0d3d8","matchedSurfaceSpan":"去咗嗰度","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"嗰度 is the destination/location complement of 去咗.","exclusionReason":"Motion-goal complement falls outside the narrow overt-object profile."},
+    {"candidateId":"ab30-930a76c89ee14ef6e82c","matchedSurfaceSpan":"講咗哩","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"哩句 is the overt quotation-bearing object of 講咗.","exclusionReason":""},
+    {"candidateId":"ab30-1f2e0c3137eb7c7f81b1","matchedSurfaceSpan":"講咗哩啲","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"哩啲 is the overt pronominal object of 講咗.","exclusionReason":""},
+    {"candidateId":"ab30-0e7e54af922c84e9cfc1","matchedSurfaceSpan":"載咗我","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"The repaired turn still supplies 我 as the overt person object of 載咗 before the speaker says they do not know.","exclusionReason":""},
+    {"candidateId":"ab30-2243504e8c6addbdff14","matchedSurfaceSpan":"做咗幾多","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"幾多年 measures time spent working in 出來做咗幾多年嘢; it is not a theme object.","exclusionReason":"Duration complement falls outside the narrow overt-object profile."},
+    {"candidateId":"ab30-6d10b1708ea31d0f813d","matchedSurfaceSpan":"借咗幾多","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"幾多錢 is the overt interrogative amount object of 借咗.","exclusionReason":""},
+    {"candidateId":"ab30-d5d9aeca0b54586e04e4","matchedSurfaceSpan":"攞咗嗰啲","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"嗰啲嘢 is the overt object removed from the can by 攞咗.","exclusionReason":""},
+    {"candidateId":"ab30-f3130b4e16c960c89153","matchedSurfaceSpan":"加插咗哩個","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"哩個希臘 is the overt trip-stop object added by 加插咗.","exclusionReason":""},
+    {"candidateId":"ab30-6beb1709d1aa4e6ad704","matchedSurfaceSpan":"唔記得咗乜鬼","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"乜鬼賭場 is the overt interrogative NP complement of 唔記得咗.","exclusionReason":""},
+    {"candidateId":"ab30-f72ff56da0cf5153077e","matchedSurfaceSpan":"上咗哩個","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"The unrecalled place name after 哩個 is the destination of 上咗, not a theme object.","exclusionReason":"Motion-goal complement falls outside the narrow overt-object profile."},
+    {"candidateId":"ab30-0e81e2f806097869a4a5","matchedSurfaceSpan":"泄露咗哩啲","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"哩啲考試題目同埋啲答案 is the overt information object of 泄露咗.","exclusionReason":""},
+    {"candidateId":"ab30-5f0ee7bb0095a6a6b828","matchedSurfaceSpan":"換咗我","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"我個腦 is the overt possessive NP object of 換咗.","exclusionReason":""},
+    {"candidateId":"ab30-05716e072861936eee05","matchedSurfaceSpan":"去咗邊度","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"邊度 is the unknown destination/location of 去咗.","exclusionReason":"Motion-goal complement falls outside the narrow overt-object profile."},
+    {"candidateId":"ab30-be43fd6708c378262c15","matchedSurfaceSpan":"準備咗哩個","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"哩個手信 is the overt object prepared for the recipient.","exclusionReason":""},
+    {"candidateId":"ab30-e5b24b304b9d9f2062cf","matchedSurfaceSpan":"去咗邊","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"邊 is the interrogative destination complement of 去咗.","exclusionReason":"Motion-goal complement falls outside the narrow overt-object profile."},
+    {"candidateId":"ab30-1ebe37e86be93d0b1040","matchedSurfaceSpan":"唔見咗你哋","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"你哋抱住隻蚚蜴嗰張 denotes the photo that is missing and is the postverbal subject of 唔見咗, not an object.","exclusionReason":"Following NP belongs to an unaccusative missing-item profile."},
+    {"candidateId":"ab30-f275c733082d38fb639f","matchedSurfaceSpan":"話咗你","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"你個名 is the overt content object of 話咗, with the recipient supplied later.","exclusionReason":""},
+    {"candidateId":"ab30-9415253ccabbf8a3d52b","matchedSurfaceSpan":"介紹咗幾","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"幾多分鐘 measures the duration of the introduction and is not its theme object.","exclusionReason":"Duration complement falls outside the narrow overt-object profile."},
+    {"candidateId":"ab30-d592332eae348024c301","matchedSurfaceSpan":"飲咗有啲","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"有啲反胃 is the following nausea predicate after an objectless 飲咗, not an object NP.","exclusionReason":"Following r-tagged token begins a new predicate."},
+    {"candidateId":"ab30-7e391abf47d71d2bcd26","matchedSurfaceSpan":"供咗其他","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"其他同學啲名 is the overt possessive NP object disclosed by 供咗.","exclusionReason":""},
+    {"candidateId":"ab30-07a11381b0b2e281aa29","matchedSurfaceSpan":"忘記咗哩","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"哩件事 is the overt NP complement of 忘記咗.","exclusionReason":""},
+    {"candidateId":"ab30-0fb6d820c8ab1599898b","matchedSurfaceSpan":"鬧咗佢哋","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"佢哋 is the overt person object of 鬧咗.","exclusionReason":""},
+    {"candidateId":"ab30-33e794b7f44c3852b5c5","matchedSurfaceSpan":"服咗你","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"The idiomatic evaluative utterance still contains 你 as the overt complement of aspect-marked 服咗.","exclusionReason":""},
+    {"candidateId":"ab30-25bc27035e87fbd5944d","matchedSurfaceSpan":"沈迷咗哩個","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"沈迷咗 expresses an addicted state toward 哩個遊戲機 rather than the narrow action-predicate object profile.","exclusionReason":"Stative relational complement is outside the current narrow claim."},
+    {"candidateId":"ab30-4990d0bb852e77512f4e","matchedSurfaceSpan":"pre-judge咗嗰啲","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"嗰啲嘢 is the overt object of code-switched pre-judge咗.","exclusionReason":""},
+    {"candidateId":"ab30-ca4f38ee59ac9b0df6f8","matchedSurfaceSpan":"醃咗嗰啲","classification":"ambiguous","claimRelations":["unresolved:AB30.core.v-zo-overt-np","supports:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"The repeated 嗰啲 around 醃咗 and 泡菜 can reflect a repaired object or an attributive already-pickled reading; the transcript does not resolve the structure.","exclusionReason":"Disfluent demonstrative repetition prevents a secure object analysis."},
+    {"candidateId":"ab30-10666b25b893963deba1","matchedSurfaceSpan":"講咗自己","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"自己經驗 is the overt object of 講咗 in the enumerated list.","exclusionReason":""},
+    {"candidateId":"ab30-9fbd25a211ff8ca4d99f","matchedSurfaceSpan":"解釋咗我哋","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"我哋個信心 is the overt possessive NP object of 解釋咗.","exclusionReason":""},
+    {"candidateId":"ab30-409be78c5eb6995c3b5e","matchedSurfaceSpan":"上咗嗰個","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"嗰個天台度 is the destination/location of 上咗, not a theme object.","exclusionReason":"Motion-goal complement falls outside the narrow overt-object profile."},
+    {"candidateId":"ab30-659f623f57b7c24bc509","matchedSurfaceSpan":"變咗嗰個","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"嗰個就業嘅機會 begins the following topic/subject phrase after discourse-result 變咗.","exclusionReason":"Following demonstrative NP is the subject/topic of a new clause."},
+    {"candidateId":"ab30-abdc5116003031f942ff","matchedSurfaceSpan":"去咗邊","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"邊 is the interrogative destination complement of 去咗.","exclusionReason":"Motion-goal complement falls outside the narrow overt-object profile."},
+    {"candidateId":"ab30-1444aa9cdc930ee28f5c","matchedSurfaceSpan":"食咗幾多","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"幾多嘢 is the overt interrogative object of 食咗.","exclusionReason":""},
+    {"candidateId":"ab30-9def3e322333796151ab","matchedSurfaceSpan":"去咗邊","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"邊 is the interrogative destination complement of 去咗.","exclusionReason":"Motion-goal complement falls outside the narrow overt-object profile."},
+    {"candidateId":"ab30-4ad86ad07c23f50c3e4d","matchedSurfaceSpan":"買咗乜嘢","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"乜嘢色 is the overt interrogative object of 買咗.","exclusionReason":""},
+    {"candidateId":"ab30-824951a735e3f9d46110","matchedSurfaceSpan":"呃咗你","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"你 is the overt person object of 呃咗 in the tuition complaint.","exclusionReason":""},
+    {"candidateId":"ab30-4f76de1a870b5d8fa81c","matchedSurfaceSpan":"做咗幾耐","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"幾耐 measures the duration of the work and is not a theme object.","exclusionReason":"Duration complement falls outside the narrow overt-object profile."},
+    {"candidateId":"ab30-2d48d5c6782f13f67699","matchedSurfaceSpan":"約咗我哋","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"我哋成班姊妹 is the overt group object invited by 約咗.","exclusionReason":""},
+    {"candidateId":"ab30-e23d296867327a241f9a","matchedSurfaceSpan":"識咗你","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"你 is the overt person object of aspect-marked 識咗.","exclusionReason":""},
+    {"candidateId":"ab30-f6d19c46a0fe269e8635","matchedSurfaceSpan":"出咗幾多","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"幾多隻 is the overt quantified object of 出咗 in the release-count discussion.","exclusionReason":""},
+    {"candidateId":"ab30-6d698a7dc3b2838c326f","matchedSurfaceSpan":"除咗你","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"除咗你 is the lexicalized exceptive phrase 'apart from you', not perfective V–咗–object syntax.","exclusionReason":"Lexicalized exceptive is outside the aspect-marked object profile."},
+    {"candidateId":"ab30-5f0f4382d35164460a24","matchedSurfaceSpan":"預咗你哋","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"你哋 is the subject of the following proposition 你哋自己識睇書, not an object of 預咗.","exclusionReason":"Following pronoun begins a clausal complement."},
+    {"candidateId":"ab30-067a4f586fbe8a2c264d","matchedSurfaceSpan":"禁咗哩樣","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"哩樣嘢 is the overt object of 禁咗 in the piracy-policy hypothetical.","exclusionReason":""},
+    {"candidateId":"ab30-6b3033d39371ab88cb8c","matchedSurfaceSpan":"傷害咗佢哋","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"佢哋 is the overt person-group object of 傷害咗.","exclusionReason":""},
+    {"candidateId":"ab30-15a20dc6c6644b6a2d34","matchedSurfaceSpan":"講咗哩","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"哩套戲 is the subject inside the reported question 哩套戲講乜嘢, rather than an NP object of the first 講咗.","exclusionReason":"Following demonstrative NP begins a clausal complement."},
+    {"candidateId":"ab30-5341ad91368f62b83160","matchedSurfaceSpan":"受咗嗰個","classification":"ambiguous","claimRelations":["unresolved:AB30.core.v-zo-overt-np","supports:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"The repaired coordination between 受咗嗰個美式嘅幽默 and 美式嘅文化接受得比較多 does not securely identify the first NP as an object of 受.","exclusionReason":"Repair and predicate repetition prevent a secure object analysis."},
+    {"candidateId":"ab30-3d0eac5e187c2fce26c9","matchedSurfaceSpan":"冇咗點樣","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"點樣 begins the following question 點樣收錢 after objectless 冇咗.","exclusionReason":"Following r-tagged token begins a new clause."},
+    {"candidateId":"ab30-d539a8b61dc4fd0228ff","matchedSurfaceSpan":"過咗哩","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"哩一浸 is the overt period/event object of 過咗, clarified in the following turn as 哩一浸淡風.","exclusionReason":""},
+    {"candidateId":"ab30-0642f2ee5a29c6fc5c3e","matchedSurfaceSpan":"變咗大家","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"大家 is the subject of 大家可以共存 after discourse-result 變咗.","exclusionReason":"Following pronoun is the subject of a new clause."},
+    {"candidateId":"ab30-d9602ca05d51d9144f11","matchedSurfaceSpan":"開咗嗰啲","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"嗰啲 closes the nominal topic 'those that opened' after intransitive 開咗; it is not an object.","exclusionReason":"Following demonstrative belongs to a relative/topic structure."},
+    {"candidateId":"ab30-e74a9734ebbcacfb926d","matchedSurfaceSpan":"揀咗哩","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"哩一個薯蓉 is the overt food-choice object of 揀咗.","exclusionReason":""},
+    {"candidateId":"ab30-e777e974efd71c052c23","matchedSurfaceSpan":"變咗你","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"你 begins 你唔需要追求嗰個肉質 after discourse-result 變咗.","exclusionReason":"Following pronoun is the subject of a new clause."},
+    {"candidateId":"ab30-f2aeb2cf4d4f864f9fa9","matchedSurfaceSpan":"call咗我","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"我 is the overt person object of the code-switched predicate call咗.","exclusionReason":""},
+    {"candidateId":"ab30-eac9e53c74c20e906cca","matchedSurfaceSpan":"放棄咗哩個","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"哩個權 is the overt object of 放棄咗.","exclusionReason":""},
+    {"candidateId":"ab30-c1e47112e46a992597d0","matchedSurfaceSpan":"放棄咗哩個","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"哩個權 is again the overt object of 放棄咗 in the wireless-phone comparison.","exclusionReason":""},
+    {"candidateId":"ab30-d30e10dfa73d7ca40dff","matchedSurfaceSpan":"有咗哩","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"有咗哩種嘢 is an inchoative existential/possession profile rather than the narrow action-predicate object profile.","exclusionReason":"Existential/possessive 有咗 is outside the current narrow claim."},
+    {"candidateId":"ab30-ab8f9f606a520906d637","matchedSurfaceSpan":"推出咗哩","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"哩一個流動電話定位資料服務 is the overt service object of 推出咗.","exclusionReason":""},
+    {"candidateId":"ab30-0cfe5c5fd396861e8e67","matchedSurfaceSpan":"做咗幾多","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"幾多單生意 is the overt quantified object of 做咗.","exclusionReason":""},
+    {"candidateId":"ab30-958e439eab5653beec6f","matchedSurfaceSpan":"結束咗哩個","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"哩個話題 is the overt object of 結束咗.","exclusionReason":""},
+    {"candidateId":"ab30-4f3dcceefaaae658fdb2","matchedSurfaceSpan":"變咗我","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"我 is the subject of 我覺得 after discourse-result 變咗.","exclusionReason":"Following pronoun is the subject of a new clause."},
+    {"candidateId":"ab30-6cce2f5abd6fb3ce6fe4","matchedSurfaceSpan":"變咗你哋","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"你哋 begins the following subject phrase 你哋噉嘅生存 after discourse-result 變咗.","exclusionReason":"Following pronoun is the subject of a new clause."},
+    {"candidateId":"ab30-ae10bf0abd62d35b7975","matchedSurfaceSpan":"變咗我哋","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"我哋 is the subject of 我哋覺得 after discourse-result 變咗.","exclusionReason":"Following pronoun is the subject of a new clause."},
+    {"candidateId":"ab30-9b4e5f0a6f4b7190c4b5","matchedSurfaceSpan":"去咗邊","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"邊 is the unknown destination/location complement of 去咗.","exclusionReason":"Motion-goal complement falls outside the narrow overt-object profile."},
+    {"candidateId":"ab30-b63032122799b3ad713b","matchedSurfaceSpan":"變咗你","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"你 begins the following subject phrase 你喺求職方面 after discourse-result 變咗.","exclusionReason":"Following pronoun is the subject of a new clause."},
+    {"candidateId":"ab30-03941f572cdc25bdfd75","matchedSurfaceSpan":"奉獻咗你","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"你十多廿年嘅青春 is the overt possessive NP object of 奉獻咗.","exclusionReason":""},
+    {"candidateId":"ab30-484c75524a431aa78a33","matchedSurfaceSpan":"冇咗你","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"冇咗你 expresses loss/absence in the company hypothetical, not the current action-predicate object profile.","exclusionReason":"Loss/absence 冇咗 is outside the current narrow claim."},
+    {"candidateId":"ab30-42c811f1c597a9a2083f","matchedSurfaceSpan":"抄咗你","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"你 is the overt employee object of 抄咗 in the sense of firing.","exclusionReason":""},
+    {"candidateId":"ab30-0a296ee7462180b42346","matchedSurfaceSpan":"冇咗你","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"The repeated 冇咗你 expresses absence/loss rather than the current action-predicate object profile.","exclusionReason":"Loss/absence 冇咗 is outside the current narrow claim."},
+    {"candidateId":"ab30-0815852c7e0add6942f7","matchedSurfaceSpan":"接咗你","classification":"genuine","claimRelations":["supports:AB30.core.v-zo-overt-np"],"reviewerNote":"The full possessive NP 你哩一個 job is the overt object accepted by 接咗.","exclusionReason":""},
+    {"candidateId":"ab30-732f03e49451715a56b6","matchedSurfaceSpan":"冇咗哩樣","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"冇咗哩樣嘢 expresses loss/absence of a benefit, not the current action-predicate object profile.","exclusionReason":"Loss/absence 冇咗 is outside the current narrow claim."},
+    {"candidateId":"ab30-e434f5701f02c19c7516","matchedSurfaceSpan":"離開咗哩度","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"哩度 is the source/location complement of the motion predicate 離開咗.","exclusionReason":"Motion-location complement falls outside the narrow overt-object profile."},
+    {"candidateId":"ab30-acf9998e54561182d74d","matchedSurfaceSpan":"變咗嗰度","classification":"false_positive","claimRelations":["restricts:AB30.limit.token-adjacency-is-insufficient"],"reviewerNote":"嗰度 begins the following locative topic/subject 嗰度就好多嘢玩 after discourse-result 變咗.","exclusionReason":"Following demonstrative begins a new clause."}
+  ]
+}

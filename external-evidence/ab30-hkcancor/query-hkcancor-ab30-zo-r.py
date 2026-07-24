@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Cross-reference AB30 claims against the complete HKCanCor V-咗-佢 slice.
+"""Cross-reference AB30 claims against the complete HKCanCor V-咗-r slice.
 
 This is a token/POS retrieval and review-accounting tool.  It does not treat
 HKCanCor annotations, token adjacency, or frequency as a gold syntactic
@@ -26,12 +26,14 @@ CONSTRUCTION = {
     "canonicalIdentity": "ZoMarkedPerfectiveObjectVP",
     "legacyRuntimeLabel": "PostverbalZoPerfectiveVP",
 }
-QUERY_ID = "AB30-HKCANCOR-V-ZO-KEOI-R1"
+QUERY_ID = "AB30-HKCANCOR-V-ZO-R-R2"
+LEGACY_KEOI_QUERY_ID = "AB30-HKCANCOR-V-ZO-KEOI-R1"
 PY_CANTONESE_VERSION = "5.0.0"
 CLASSIFICATIONS = {"genuine", "false_positive", "ambiguous", "unusable"}
-INVENTORY_JSON = "hkcancor-ab30-zo-keoi-candidate-inventory.json"
-INVENTORY_TSV = "hkcancor-ab30-zo-keoi-candidate-inventory.tsv"
-SUMMARY_JSON = "hkcancor-ab30-zo-keoi-query-summary.json"
+PRECEDING_VERBAL_POS = {"v", "v1", "xv"}
+INVENTORY_JSON = "hkcancor-ab30-zo-r-candidate-inventory.json"
+INVENTORY_TSV = "hkcancor-ab30-zo-r-candidate-inventory.tsv"
+SUMMARY_JSON = "hkcancor-ab30-zo-r-query-summary.json"
 
 
 def sha256_bytes(value: bytes) -> str:
@@ -122,6 +124,7 @@ def verify_distribution(corpus, allowlist: dict[str, str]) -> dict[str, str]:
 
 
 def candidate_id(
+    id_namespace: str,
     source_file: str,
     source_hash: str,
     turn_index: int,
@@ -130,7 +133,7 @@ def candidate_id(
 ) -> str:
     identity = "\0".join(
         [
-            QUERY_ID,
+            id_namespace,
             source_file,
             source_hash,
             str(turn_index),
@@ -159,16 +162,22 @@ def extract_rows(
                     token.word == "咗"
                     and token_index > 0
                     and token_index + 1 < len(tokens)
-                    and tokens[token_index - 1].pos == "v"
-                    and tokens[token_index + 1].word == "佢"
+                    and tokens[token_index - 1].pos in PRECEDING_VERBAL_POS
+                    and tokens[token_index + 1].pos == "r"
                 ):
                     continue
+                id_namespace = (
+                    LEGACY_KEOI_QUERY_ID
+                    if tokens[token_index + 1].word == "佢"
+                    else QUERY_ID
+                )
                 matched_surface = "".join(
                     item.word for item in tokens[token_index - 1 : token_index + 2]
                 )
                 rows.append(
                     {
                         "candidateId": candidate_id(
+                            id_namespace,
                             source_file,
                             source_hashes[source_file],
                             turn_index,
@@ -176,6 +185,7 @@ def extract_rows(
                             matched_surface,
                         ),
                         "queryId": QUERY_ID,
+                        "candidateIdNamespace": id_namespace,
                         "sourceFile": source_file,
                         "sourceFileSha256": source_hashes[source_file],
                         "fileIndexZeroBased": file_index,
@@ -212,13 +222,18 @@ def build_summary(
         row["matchedTokens"][0]["word"]  # type: ignore[index]
         for row in rows
     )
+    following_counts = Counter(
+        row["matchedTokens"][2]["word"]  # type: ignore[index]
+        for row in rows
+    )
     return {
         "checkpoint": QUERY_ID,
         "status": "COMPLETE_MECHANICAL_INVENTORY_REVIEW_REQUIRED",
         "construction": CONSTRUCTION,
         "endpoint": (
-            "Every exact HKCanCor token matching verbal POS v + 咗 + 佢 is "
-            "inventoried and must be accounted for in the R1 decision ledger."
+            "Every exact HKCanCor token matching preceding POS v, v1, or xv + "
+            "咗 + following POS r is inventoried and must be accounted for in "
+            "the R2 decision ledger."
         ),
         "generatedWithPycantonese": pycantonese.__version__,
         "corpusName": "HKCanCor",
@@ -232,8 +247,8 @@ def build_summary(
         },
         "query": {
             "exactMarkerToken": "咗",
-            "precedingTokenPos": "v",
-            "exactFollowingToken": "佢",
+            "precedingTokenPosAllowlist": sorted(PRECEDING_VERBAL_POS),
+            "followingTokenPos": "r",
             "selectionUnit": "token adjacency within one HKCanCor utterance",
             "parserOutputConsulted": False,
             "semanticSelectionPerformed": False,
@@ -250,9 +265,18 @@ def build_summary(
                 {row["sourceFile"] for row in rows}
             ),
             "precedingVerbForms": dict(sorted(verb_counts.items())),
+            "followingForms": dict(sorted(following_counts.items())),
+        },
+        "stableIdPolicy": {
+            "currentNamespace": QUERY_ID,
+            "preservedNamespaceForExactFollowing佢": LEGACY_KEOI_QUERY_ID,
+            "reason": (
+                "The 27 exact-佢 candidates were reviewed in R1. Their existing "
+                "candidate IDs remain unchanged inside this superseding R2 ledger."
+            ),
         },
         "interpretationWarning": (
-            "The POS tag and V-咗-佢 adjacency define a high-recall comparison "
+            "The POS tags and V-咗-r adjacency define a high-recall comparison "
             "slice only. Expert context review must distinguish an overt object "
             "from a following clause subject, possessive-NP onset, repair, or "
             "other analysis. Counts do not establish productivity or readiness."
