@@ -15,8 +15,8 @@ policy or ontology.
 | Workflow-archived notes | 131 |
 | Retired labels | 48 |
 | Permanent UUID records | 181 |
-| Expert-adjudicated UUIDs | 34 |
-| Pending UUID adjudications | 147 |
+| Expert-adjudicated UUIDs | 39 |
+| Pending UUID adjudications | 142 |
 
 ## Linguistic-status inventory
 
@@ -40,7 +40,7 @@ The permanent registry covers all 133 current and 48 retired records. UUID and
 short code are immutable; canonical name, family, profile, claim layer, and
 learner label may be revised through accepted UUID-keyed adjudication.
 
-Seven accepted batches have adjudicated 34 records. Important consequences
+Eight accepted batches have adjudicated 39 records. Important consequences
 include:
 
 - `AB30 ZoMarkedPerfectiveObjectVP` is the nearest direct candidate;
@@ -50,6 +50,11 @@ include:
   `AB16 BeiPassivePermissiveAmbiguityWrapper`, `AB23 PoliteRequestWrapper`,
   `AA04 ActionQuantityDurationWrapper`, and `AA23 CognitionShortComplementWrapper`
   no longer compete as direct language-construction candidates;
+- Batch 08 narrows the legacy labels `CompletionVP`, `CoverbFrame`,
+  `DegreeMannerAdverbial`, `DegreeStativePredicate`, and `DesiderativeVP` to
+  `AA26 WanMarkedCompletionVP`, `AA34 PreverbalCoverbNPClause`,
+  `AA37 PostverbalDiMannerAdjustmentVP`, `AA40 HouMarkedPropertyPredicate`, and
+  `AA45 SoengVPComplementClause`;
 - true splits require new UUIDs. Evidence is never transferred automatically from
   an umbrella, retired record, or parser representation.
 
@@ -95,9 +100,9 @@ evidence weight.
 
 1. Keep documentation, identity metadata, status notes, runtime behavior, and
    generated readiness reports mutually consistent.
-2. Continue expert adjudication from Batch 08 with `AA26 CompletionVP`,
-   `AA34 CoverbFrame`, `AA37 DegreeMannerAdverbial`,
-   `AA40 DegreeStativePredicate`, and `AA45 DesiderativeVP`.
+2. Continue expert adjudication with Batch 09: `AA46 DiMarkedNP`,
+   `AA47 DirectedMannerMotionVP`, `AA49 DirectionalMotionVP`,
+   `AA53 DurativeVP`, and `AA55 ExistentialClause`.
 3. Implement a status-path or runtime-label migration only in an explicit scoped
    change after its adjudication decision is accepted.
 4. Advance `AB30` by reviewing and classifying diverse corpus candidates before
