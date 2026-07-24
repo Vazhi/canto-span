@@ -105,3 +105,5 @@ Batch 12 should review the next five pending registry records after deterministi
 3. `AA83 MalformedCandidate`;
 4. `AA85 MeasureExpression`;
 5. `AA86 ModalANotAQuestion`.
+
+<!-- refresh current-main merge calculation -->
