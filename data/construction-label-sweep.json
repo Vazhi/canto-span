@@ -2,7 +2,7 @@
   "schema": "canto-span-full-repo-label-sweep-v1",
   "identity_registry_schema": "canto-span-construction-identity-registry-v1",
   "record_count": 181,
-  "pending_review_count": 162,
+  "pending_review_count": 157,
   "automatic_flag_counts": {
     "generic_head_requires_boundary_definition": 72,
     "internal_representation_name_review": 20,
@@ -1670,15 +1670,15 @@
     {
       "construction_uuid": "40485cda-af65-55dc-835f-a5e35c0f50b5",
       "construction_code": "AB05",
-      "canonical_name": "NegativeExperiential",
+      "canonical_name": "PreverbalNegativeExperientialWrapper",
       "lifecycle_state": "current",
-      "claim_layer": "language_construction",
+      "claim_layer": "parser_representation",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/NegativeExperiential.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "overlapping",
+      "terminology_alignment": "misleading",
+      "recommended_action": "internalize_and_decompose",
       "automatic_risk_flags": []
     },
     {
@@ -1981,15 +1981,15 @@
     {
       "construction_uuid": "722ebecd-b61c-5496-924f-9e3d1be92d22",
       "construction_code": "AB24",
-      "canonical_name": "PossessiveClassifierNP",
+      "canonical_name": "PronounPossessorClassifierNounNP",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/PossessiveClassifierNP.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "runtime_narrower_defensible",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": []
     },
     {
@@ -2123,15 +2123,15 @@
     {
       "construction_uuid": "baa94b61-09ad-56da-8021-9ea7ec4883eb",
       "construction_code": "AB33",
-      "canonical_name": "PreferenceVP",
+      "canonical_name": "ZungJiVPComplementClause",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/PreferenceVP.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "runtime_narrower_defensible",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": [
         "semantic_domain_name_requires_structural_scope_check"
       ]
@@ -2139,15 +2139,15 @@
     {
       "construction_uuid": "cf4a630c-c532-5f04-87fc-0edb2ce725b0",
       "construction_code": "AB34",
-      "canonical_name": "PriorityMarkerClause",
+      "canonical_name": "PostverbalSinPriorityClause",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/PriorityMarkerClause.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "runtime_narrower_defensible",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": [
         "generic_head_requires_boundary_definition"
       ]
@@ -2516,15 +2516,15 @@
     {
       "construction_uuid": "c5288f36-6870-5af3-ad52-bb44e39e9af8",
       "construction_code": "AB58",
-      "canonical_name": "ScalarEvaluation",
+      "canonical_name": "M4SyunPropertyEvaluation",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/ScalarEvaluation.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "runtime_broader",
+      "terminology_alignment": "misleading",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": [
         "semantic_domain_name_requires_structural_scope_check"
       ]

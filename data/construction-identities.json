@@ -3476,30 +3476,53 @@
     {
       "construction_uuid": "40485cda-af65-55dc-835f-a5e35c0f50b5",
       "construction_code": "AB05",
-      "canonical_name": "NegativeExperiential",
+      "canonical_name": "PreverbalNegativeExperientialWrapper",
       "legacy_labels": [
         "NegativeExperiential"
       ],
-      "claim_layer": "language_construction",
+      "claim_layer": "parser_representation",
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/NegativeExperiential.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese attests preverbal `未` and `冇` before an experiential `V過` predicate. Final `未` questions, `有冇` questions, non-experiential `未V`, and general `唔`/prohibitive `咪` negation remain separate.",
+      "family_name": "NegationAndExperientialRepresentation",
+      "profile_name": "PreverbalNegatorExperientialAggregate",
+      "profile_description": "An implementation wrapper grouping two overt but independently motivated negative experiential profiles: preverbal 未 followed by a V過 predicate and aspectual-negative 冇 followed by a V過 predicate. The wrapper excludes clause-final 未 experiential questions, 有冇 experiential questions, non-experiential 未V, general 唔 negation, and prohibitive 咪.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "preverbal 未 + V過",
+          "source_id": "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE",
+          "scope_match": "exact"
+        },
+        {
+          "term": "preverbal 冇 + V過",
+          "source_id": "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE",
+          "scope_match": "exact"
+        },
+        {
+          "term": "aspectual-negative 冇",
+          "source_id": "SRC-LAM-2018-NEGATION-ASPECT",
+          "scope_match": "close"
+        },
+        {
+          "term": "final 未 experiential question",
+          "source_id": "SRC-MATTHEWS-YIP-2011-ASPECT-MULTIMEDIA",
+          "scope_match": "contrastive"
+        }
+      ],
+      "former_names": [
+        "NegativeExperiential"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "overlapping",
+        "terminology_alignment": "misleading",
+        "recommended_action": "internalize_and_decompose",
         "automatic_risk_flags": [],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-24. NegativeExperiential looks like one language construction, but the runtime label combines two different preverbal negators. The research explicitly distinguishes aspectual-negative 冇 from 未 and from other negative and interrogative strategies. The existing UUID should therefore describe the implementation umbrella and cease competing for linguistic promotion. Marker-specific language records should be created separately after collision review and exact boundary specification. Status recommendation: move the umbrella UUID to parser_heuristic after compatibility migration; create separate permanent language-construction UUIDs for the 未 + V過 and 冇 + V過 profiles only after their distinct semantic and distributional boundaries are recorded"
       }
     },
     {
@@ -4108,7 +4131,7 @@
     {
       "construction_uuid": "722ebecd-b61c-5496-924f-9e3d1be92d22",
       "construction_code": "AB24",
-      "canonical_name": "PossessiveClassifierNP",
+      "canonical_name": "PronounPossessorClassifierNounNP",
       "legacy_labels": [
         "PossessiveClassifierNP"
       ],
@@ -4116,22 +4139,40 @@
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/PossessiveClassifierNP.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese may instantiate the structural family represented by PossessiveClassifierNP; exact productivity and boundaries require pattern-specific independent evidence.",
+      "family_name": "ClassifierAndQuantityNP",
+      "profile_name": "PronounPossessorClassifierOvertNoun",
+      "profile_description": "An overt pronominal possessor followed directly by an overt classifier and overt noun, as in 我架車 and 佢本書. The current subtype excludes possessor + 嘅 + noun, classifier-less possessor–noun adjacency, headless forms, numeral-bearing forms, and full nominal possessors until those receive separate runtime and boundary review.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "POSS-CL-N",
+          "source_id": "SRC-XIA-2025-CLASSIFIERS",
+          "scope_match": "close"
+        },
+        {
+          "term": "pronoun + classifier + noun",
+          "source_id": "SRC-LAM-LAU-LEE-2024-SEGMENTATION",
+          "scope_match": "exact"
+        },
+        {
+          "term": "possessor + classifier + noun",
+          "source_id": "SRC-YU-2006-NOMINAL-MODIFIERS",
+          "scope_match": "close"
+        }
+      ],
+      "former_names": [
+        "PossessiveClassifierNP"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "runtime_narrower_defensible",
+        "terminology_alignment": "neutral_descriptive_preferred",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-24. PossessiveClassifierNP is not false, but it hides the overt noun and overstates the runtime's possessor coverage. PronounPossessorClassifierNounNP states the implemented sequence and leaves the broader full-NP possessor family available for later independent construction records. It also distinguishes this subtype from 嘅-marked possession and headless classifier phrases. Status recommendation: retain research_pending under the pronominal possessor subtype; do not generalize to full nominal possessors, demonstrative-bearing forms, headless readings, or unrestricted classifier productivity without separate evidence and tests"
       }
     },
     {
@@ -4426,7 +4467,7 @@
     {
       "construction_uuid": "baa94b61-09ad-56da-8021-9ea7ec4883eb",
       "construction_code": "AB33",
-      "canonical_name": "PreferenceVP",
+      "canonical_name": "ZungJiVPComplementClause",
       "legacy_labels": [
         "PreferenceVP"
       ],
@@ -4434,30 +4475,48 @@
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/PreferenceVP.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese may instantiate the structural family represented by PreferenceVP; exact productivity and boundaries require pattern-specific independent evidence.",
+      "family_name": "PreferenceAndDesiderativeComplementation",
+      "profile_name": "OvertSubjectZungJiVPComplement",
+      "profile_description": "An overt subject followed by lexical 鍾意 and a visible VP complement, as in 我鍾意聽音樂. The current subtype excludes a bare activity VP without 鍾意 and complementless or independently negated 鍾意, and does not generalize to other preference predicates or nominal complements.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "鍾意聽音樂",
+          "source_id": "SRC-YIP-MATTHEWS-2000-BASIC",
+          "scope_match": "exact"
+        },
+        {
+          "term": "main-verb 鍾意",
+          "source_id": "SRC-LUKE-NANCARROW-1998-AUXILIARIES",
+          "scope_match": "close"
+        },
+        {
+          "term": "complement-clause configuration",
+          "source_id": "SRC-LUKE-NANCARROW-1998-AUXILIARIES",
+          "scope_match": "close"
+        }
+      ],
+      "former_names": [
+        "PreferenceVP"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "runtime_narrower_defensible",
+        "terminology_alignment": "neutral_descriptive_preferred",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [
           "semantic_domain_name_requires_structural_scope_check"
         ],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-24. PreferenceVP is semantically broad and could include nominal preference, comparative preference, lexical alternatives, or discourse-level stance. The executable path is lexeme-specific and complement-sensitive. ZungJiVPComplementClause exposes the overt predicate and the required VP complement while keeping unresolved aspect and complementation analyses outside the permanent name. Status recommendation: retain research_pending under the lexical 鍾意 + VP complement profile; investigate complement classes, aspect placement, negation, omitted subjects, and other preference predicates independently"
       }
     },
     {
       "construction_uuid": "cf4a630c-c532-5f04-87fc-0edb2ce725b0",
       "construction_code": "AB34",
-      "canonical_name": "PriorityMarkerClause",
+      "canonical_name": "PostverbalSinPriorityClause",
       "legacy_labels": [
         "PriorityMarkerClause"
       ],
@@ -4465,24 +4524,42 @@
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/PriorityMarkerClause.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese may instantiate the structural family represented by PriorityMarkerClause; exact productivity and boundaries require pattern-specific independent evidence.",
+      "family_name": "TemporalAndDiscourseParticles",
+      "profile_name": "ActionVPPostverbalSinOptionalFinalParticle",
+      "profile_description": "A clause containing an overt action VP followed by postverbal 先 with a priority or do-this-first interpretation, optionally followed by a final particle, as in 你打電話先啦. The subtype excludes preverbal 先 and formulaic or elliptical strings such as 第二時先啦, and does not collapse all postverbal 先 meanings into one construction.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "postverbal 先 priority meaning",
+          "source_id": "SRC-ZHOU-2018-POSTVERBAL-SIN1",
+          "scope_match": "exact"
+        },
+        {
+          "term": "postverbal 先",
+          "source_id": "SRC-SYBESMA-2013",
+          "scope_match": "close"
+        },
+        {
+          "term": "particleized and preparatory 先 patterns",
+          "source_id": "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE",
+          "scope_match": "contrastive"
+        }
+      ],
+      "former_names": [
+        "PriorityMarkerClause"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "runtime_narrower_defensible",
+        "terminology_alignment": "neutral_descriptive_preferred",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [
           "generic_head_requires_boundary_definition"
         ],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-24. PriorityMarkerClause names an interpretation but not the overt distribution that defines the runtime. PostverbalSinPriorityClause makes the marker position and priority subtype discoverable while avoiding the false claim that all 先 uses share one syntax or meaning. Preverbal, formulaic, preparatory, and other postverbal profiles remain separate. Status recommendation: retain research_pending for the action-VP + postverbal 先 priority subtype; keep other postverbal, preverbal, preparatory, and particleized 先 profiles separate until their distributions and interpretations are independently specified"
       }
     },
     {
@@ -5194,7 +5271,7 @@
     {
       "construction_uuid": "c5288f36-6870-5af3-ad52-bb44e39e9af8",
       "construction_code": "AB58",
-      "canonical_name": "ScalarEvaluation",
+      "canonical_name": "M4SyunPropertyEvaluation",
       "legacy_labels": [
         "ScalarEvaluation"
       ],
@@ -5202,24 +5279,47 @@
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/ScalarEvaluation.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese attests negative lexical `算` evaluation with an overt property predicate, including `唔算貴`, `都唔算貴`, and degree-modified examples. The productive predicate inventory, discourse scope, and full boundaries remain unresolved.",
+      "family_name": "EvaluationAndDegree",
+      "profile_name": "OptionalTopicOptionalDouM4SyunPropertyPredicate",
+      "profile_description": "An overt negative evaluator 唔算 followed by a property predicate, optionally preceded by an overt topic and/or focus adverb 都, as in 對皮鞋唔算貴, 價錢唔算貴, and 都唔算貴. The profile excludes nominal price-range expressions and unrelated scalar-value or price-noun predication, and does not license unrestricted property-predicate substitution.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "唔算貴",
+          "source_id": "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE",
+          "scope_match": "exact"
+        },
+        {
+          "term": "都唔算貴",
+          "source_id": "SRC-CUHK-CANTONESE-ONLINE-B6",
+          "scope_match": "exact"
+        },
+        {
+          "term": "都唔算好差",
+          "source_id": "SRC-LEGCO-1995-D90-SYUN3-HOU2-CAA1",
+          "scope_match": "close"
+        },
+        {
+          "term": "scalar semantics",
+          "source_id": "SRC-LAM-2014-SURPASS-COMPARATIVE",
+          "scope_match": "contrastive"
+        }
+      ],
+      "former_names": [
+        "ScalarEvaluation"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "runtime_broader",
+        "terminology_alignment": "misleading",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [
           "semantic_domain_name_requires_structural_scope_check"
         ],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-24. ScalarEvaluation is substantially broader than the evidenced construction and risks reviving the retired price-domain ontology. The supported path is overt 唔算 with a property predicate, optionally in a topic or 都-marked context. M4SyunPropertyEvaluation makes that lexical marker explicit and preserves scalarity as interpretation metadata rather than a license for unrelated scalar structures. Status recommendation: retain research_pending for the source-linked 唔算 + property predicate profile; audit and quarantine category-compatible predicate extensions that lack direct evidence before any promotion review"
       }
     },
     {
