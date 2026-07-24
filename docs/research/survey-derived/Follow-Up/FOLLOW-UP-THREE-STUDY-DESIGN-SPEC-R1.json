@@ -1,0 +1,176 @@
+{
+  "schema": "canto-span-three-study-follow-up-design-r1",
+  "status": "research_only",
+  "created": "2026-07-24",
+  "implementation_authority": "none",
+  "shared_safeguards": {
+    "separate_instruments": true,
+    "traditional_and_simplified_versions": true,
+    "preserve_cantonese_specific_characters": ["嘅", "咗", "嚟", "喺", "唔", "㗎", "喇"],
+    "infer_variety_from_script": false,
+    "one_condition_per_lexical_set_per_respondent": true,
+    "retain_instrument_version_list_script_and_order": true,
+    "expose_expected_rankings": false,
+    "instrument_freeze_and_hash_required": true
+  },
+  "studies": [
+    {
+      "study_id": "YUE-FOLLOWUP-USE-PERFECTIVE-01",
+      "research_id": "SV-RQ-005",
+      "target": "用嚟 V咗O",
+      "forms": [
+        "NP 用嚟 VO",
+        "NP 用嚟 V咗O",
+        "NP 用咗嚟 VO",
+        "NP 用咗嚟 V咗O"
+      ],
+      "contexts": [
+        "generic_function",
+        "completed_actual_use",
+        "intended_versus_actual",
+        "no_context"
+      ],
+      "resource_classes": [
+        "money_or_budget",
+        "bounded_time",
+        "room_or_bounded_location",
+        "physical_instrument",
+        "document_form_or_digital_tool",
+        "material_or_container"
+      ],
+      "responses": [
+        "five_point_naturalness",
+        "forced_interpretation",
+        "optional_reason",
+        "optional_correction"
+      ],
+      "recommended_design": {
+        "lexical_sets": 8,
+        "lists": 4,
+        "targets_per_respondent": 8,
+        "fillers_min": 8,
+        "fillers_max": 12,
+        "target_minutes_min": 6,
+        "target_minutes_max": 9
+      },
+      "primary_predictors": [
+        "form",
+        "context",
+        "resource_class"
+      ]
+    },
+    {
+      "study_id": "YUE-FOLLOWUP-BARE-JUNG-LAI-01",
+      "research_id": "SV-RQ-007",
+      "target": "bare 用嚟 VP",
+      "written_contexts": [
+        "explicit_function_question",
+        "previous_sentence_resource",
+        "visible_or_jointly_attended_referent",
+        "contrastive_correction",
+        "no_antecedent"
+      ],
+      "audio_realizations": [
+        "answer_fragment",
+        "independent_statement",
+        "overt_resource_control"
+      ],
+      "responses": [
+        "five_point_naturalness",
+        "antecedent_identification",
+        "antecedent_confidence",
+        "utterance_status_choice",
+        "optional_correction"
+      ],
+      "recommended_written_design": {
+        "lexical_frames": 6,
+        "targets_per_respondent": 6,
+        "fillers_min": 6,
+        "fillers_max": 10,
+        "target_minutes_min": 5,
+        "target_minutes_max": 7
+      },
+      "recommended_audio_design": {
+        "lexical_frames": 6,
+        "realizations": 3,
+        "targets_per_respondent": 6,
+        "target_minutes_min": 5,
+        "target_minutes_max": 7,
+        "multiple_native_speakers_or_counterbalanced_voice": true
+      },
+      "analysis_separates": [
+        "naturalness",
+        "antecedent_recovery",
+        "written_context_effect",
+        "prosody_effect"
+      ]
+    },
+    {
+      "study_id": "YUE-FOLLOWUP-WAN-ZO-REGIONAL-01",
+      "research_id": "SV-RQ-008",
+      "target": "V完咗O",
+      "forms": [
+        "V完O",
+        "V完O喇",
+        "V咗O",
+        "V完咗O"
+      ],
+      "contexts": [
+        "current_result_question",
+        "elapsed_time_retrospective"
+      ],
+      "lexical_classes": [
+        "information_consumption",
+        "creation",
+        "consumption",
+        "caused_motion_or_transfer",
+        "conventional_task_completion",
+        "preparation_repair_or_assembly"
+      ],
+      "regions": [
+        "Hong_Kong",
+        "Guangzhou",
+        "Macau",
+        "other_Yue_descriptive"
+      ],
+      "planning_targets": {
+        "minimum_complete_per_primary_region": 40,
+        "preferred_complete_per_primary_region": 80,
+        "lists": 4,
+        "formal_power_analysis_required_after_pilot": true
+      },
+      "responses": [
+        "five_point_naturalness",
+        "forced_interpretation",
+        "preferred_alternative",
+        "optional_correction",
+        "optional_regional_note"
+      ],
+      "primary_predictors": [
+        "form",
+        "lexical_class",
+        "context",
+        "object_type",
+        "childhood_variety",
+        "current_use_variety"
+      ]
+    }
+  ],
+  "deployment_order": [
+    "YUE-FOLLOWUP-USE-PERFECTIVE-01",
+    "YUE-FOLLOWUP-BARE-JUNG-LAI-01_written",
+    "YUE-FOLLOWUP-WAN-ZO-REGIONAL-01",
+    "YUE-FOLLOWUP-BARE-JUNG-LAI-01_audio"
+  ],
+  "instrument_generation_gate": {
+    "participant_facing_instrument_authorized": false,
+    "requires_separate_blinded_generation_prompt": true,
+    "forbid_inputs": [
+      "expected_judgments",
+      "parser_behavior",
+      "prior_response_rankings",
+      "implementation_goals"
+    ]
+  },
+  "evidence_boundary": "The studies may resolve distributional and interpretive boundaries but do not independently authorize parser identities, status changes, or rejection rules."
+}
