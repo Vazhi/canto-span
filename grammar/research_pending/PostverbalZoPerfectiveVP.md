@@ -172,7 +172,7 @@ The existing eleven response records came from mixed legacy instruments and do n
   counts are recorded separately because `partial_only` evidence cannot enter the
   diverse-corpus pass gate.
 
-### HKCanCor claim cross-reference checkpoint
+### HKCanCor claim cross-reference checkpoints
 
 - Completed research checkpoint:
   `docs/research/AB30-ZO-R-HKCANCOR-CLAIM-CROSS-REFERENCE-R2.md`.
@@ -187,6 +187,17 @@ The existing eleven response records came from mixed legacy instruments and do n
 - This POS-defined track is a research cross-reference only. It does not replace
   the accepted readiness packet, exhaust all `咗` or overt-NP candidates, satisfy
   the diverse-corpus gate, establish productivity, or change status/readiness.
+- A second completed, disjoint checkpoint is
+  `docs/research/AB30-ZO-M-HKCANCOR-CLAIM-CROSS-REFERENCE-R1.md`.
+- PyCantonese 5.0.0 exhaustively retrieves all 106 exact HKCanCor
+  `v|v1|xv + 咗 + m` tokens across 104 utterances and 44 source files; `m` is
+  the largest remaining immediate-post-marker POS bucket.
+- Context review accounts for every candidate: **52 genuine, 52 false positive,
+  2 ambiguous, 0 unusable**.
+- Quantified-object attestations and duration, frequency, degree, threshold,
+  predicative, and postverbal-subject boundaries occur in equal numbers. This
+  checkpoint remains separate from the accepted readiness packet and does not
+  change status or readiness.
 
 ## Negative and boundary cases
 

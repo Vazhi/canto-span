@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Cross-reference AB30 claims against the complete HKCanCor V-咗-r slice.
+"""Cross-reference AB30 claims against bounded HKCanCor V-咗-POS slices.
 
 This is a token/POS retrieval and review-accounting tool.  It does not treat
 HKCanCor annotations, token adjacency, or frequency as a gold syntactic
@@ -26,14 +26,26 @@ CONSTRUCTION = {
     "canonicalIdentity": "ZoMarkedPerfectiveObjectVP",
     "legacyRuntimeLabel": "PostverbalZoPerfectiveVP",
 }
-QUERY_ID = "AB30-HKCANCOR-V-ZO-R-R2"
+R_QUERY_ID = "AB30-HKCANCOR-V-ZO-R-R2"
+M_QUERY_ID = "AB30-HKCANCOR-V-ZO-M-R1"
 LEGACY_KEOI_QUERY_ID = "AB30-HKCANCOR-V-ZO-KEOI-R1"
 PY_CANTONESE_VERSION = "5.0.0"
 CLASSIFICATIONS = {"genuine", "false_positive", "ambiguous", "unusable"}
 PRECEDING_VERBAL_POS = {"v", "v1", "xv"}
-INVENTORY_JSON = "hkcancor-ab30-zo-r-candidate-inventory.json"
-INVENTORY_TSV = "hkcancor-ab30-zo-r-candidate-inventory.tsv"
-SUMMARY_JSON = "hkcancor-ab30-zo-r-query-summary.json"
+QUERY_PROFILES = {
+    "r": {
+        "query_id": R_QUERY_ID,
+        "inventory_json": "hkcancor-ab30-zo-r-candidate-inventory.json",
+        "inventory_tsv": "hkcancor-ab30-zo-r-candidate-inventory.tsv",
+        "summary_json": "hkcancor-ab30-zo-r-query-summary.json",
+    },
+    "m": {
+        "query_id": M_QUERY_ID,
+        "inventory_json": "hkcancor-ab30-zo-m-candidate-inventory.json",
+        "inventory_tsv": "hkcancor-ab30-zo-m-candidate-inventory.tsv",
+        "summary_json": "hkcancor-ab30-zo-m-query-summary.json",
+    },
+}
 
 
 def sha256_bytes(value: bytes) -> str:
@@ -145,7 +157,7 @@ def candidate_id(
 
 
 def extract_rows(
-    corpus, source_hashes: dict[str, str]
+    corpus, source_hashes: dict[str, str], following_pos: str, query_id: str
 ) -> list[dict[str, object]]:
     rows: list[dict[str, object]] = []
     utterances_by_file = corpus.utterances(by_file=True)
@@ -163,13 +175,13 @@ def extract_rows(
                     and token_index > 0
                     and token_index + 1 < len(tokens)
                     and tokens[token_index - 1].pos in PRECEDING_VERBAL_POS
-                    and tokens[token_index + 1].pos == "r"
+                    and tokens[token_index + 1].pos == following_pos
                 ):
                     continue
                 id_namespace = (
                     LEGACY_KEOI_QUERY_ID
-                    if tokens[token_index + 1].word == "佢"
-                    else QUERY_ID
+                    if following_pos == "r" and tokens[token_index + 1].word == "佢"
+                    else query_id
                 )
                 matched_surface = "".join(
                     item.word for item in tokens[token_index - 1 : token_index + 2]
@@ -184,7 +196,7 @@ def extract_rows(
                             token_index,
                             matched_surface,
                         ),
-                        "queryId": QUERY_ID,
+                        "queryId": query_id,
                         "candidateIdNamespace": id_namespace,
                         "sourceFile": source_file,
                         "sourceFileSha256": source_hashes[source_file],
@@ -217,6 +229,8 @@ def build_summary(
     rows: list[dict[str, object]],
     source_manifest_path: Path,
     source_manifest_sha256: str,
+    following_pos: str,
+    query_id: str,
 ) -> dict[str, object]:
     verb_counts = Counter(
         row["matchedTokens"][0]["word"]  # type: ignore[index]
@@ -227,13 +241,21 @@ def build_summary(
         for row in rows
     )
     return {
-        "checkpoint": QUERY_ID,
+        "checkpoint": query_id,
         "status": "COMPLETE_MECHANICAL_INVENTORY_REVIEW_REQUIRED",
         "construction": CONSTRUCTION,
         "endpoint": (
-            "Every exact HKCanCor token matching preceding POS v, v1, or xv + "
-            "咗 + following POS r is inventoried and must be accounted for in "
-            "the R2 decision ledger."
+            (
+                "Every exact HKCanCor token matching preceding POS v, v1, or xv + "
+                "咗 + following POS r is inventoried and must be accounted for in "
+                "the R2 decision ledger."
+            )
+            if following_pos == "r"
+            else (
+                "Every exact HKCanCor token matching preceding POS v, v1, or xv + "
+                "咗 + following POS m is inventoried and must be accounted for in "
+                "the M-R1 decision ledger."
+            )
         ),
         "generatedWithPycantonese": pycantonese.__version__,
         "corpusName": "HKCanCor",
@@ -248,7 +270,7 @@ def build_summary(
         "query": {
             "exactMarkerToken": "咗",
             "precedingTokenPosAllowlist": sorted(PRECEDING_VERBAL_POS),
-            "followingTokenPos": "r",
+            "followingTokenPos": following_pos,
             "selectionUnit": "token adjacency within one HKCanCor utterance",
             "parserOutputConsulted": False,
             "semanticSelectionPerformed": False,
@@ -268,15 +290,28 @@ def build_summary(
             "followingForms": dict(sorted(following_counts.items())),
         },
         "stableIdPolicy": {
-            "currentNamespace": QUERY_ID,
-            "preservedNamespaceForExactFollowing佢": LEGACY_KEOI_QUERY_ID,
-            "reason": (
-                "The 27 exact-佢 candidates were reviewed in R1. Their existing "
-                "candidate IDs remain unchanged inside this superseding R2 ledger."
-            ),
+            **(
+                {
+                    "currentNamespace": query_id,
+                    "preservedNamespaceForExactFollowing佢": LEGACY_KEOI_QUERY_ID,
+                    "reason": (
+                        "The 27 exact-佢 candidates were reviewed in R1. Their "
+                        "existing candidate IDs remain unchanged inside this "
+                        "superseding R2 ledger."
+                    ),
+                }
+                if following_pos == "r"
+                else {
+                    "currentNamespace": query_id,
+                    "reason": (
+                        "The disjoint following-m profile uses its own query "
+                        "namespace and does not alter R1 or R2 candidate IDs."
+                    ),
+                }
+            )
         },
         "interpretationWarning": (
-            "The POS tags and V-咗-r adjacency define a high-recall comparison "
+            f"The POS tags and V-咗-{following_pos} adjacency define a high-recall comparison "
             "slice only. Expert context review must distinguish an overt object "
             "from a following clause subject, possessive-NP onset, repair, or "
             "other analysis. Counts do not establish productivity or readiness."
@@ -330,27 +365,31 @@ def render_tsv(rows: list[dict[str, object]]) -> str:
 
 
 def rendered_outputs(
-    summary: dict[str, object], rows: list[dict[str, object]]
+    summary: dict[str, object],
+    rows: list[dict[str, object]],
+    profile: dict[str, str],
 ) -> dict[str, str]:
     return {
-        INVENTORY_JSON: json.dumps(
+        profile["inventory_json"]: json.dumps(
             {"summary": summary, "candidates": rows},
             ensure_ascii=False,
             indent=2,
         )
         + "\n",
-        INVENTORY_TSV: render_tsv(rows),
-        SUMMARY_JSON: json.dumps(summary, ensure_ascii=False, indent=2) + "\n",
+        profile["inventory_tsv"]: render_tsv(rows),
+        profile["summary_json"]: json.dumps(summary, ensure_ascii=False, indent=2) + "\n",
     }
 
 
-def validate_decisions(path: Path, rows: list[dict[str, object]]) -> None:
+def validate_decisions(
+    path: Path, rows: list[dict[str, object]], query_id: str
+) -> None:
     ledger = json.loads(path.read_text(encoding="utf-8"))
     if ledger.get("schema") != "canto-span-corpus-claim-cross-reference-decisions-v1":
         raise RuntimeError("Decision ledger has an unsupported schema")
     if ledger.get("construction") != CONSTRUCTION:
         raise RuntimeError("Decision ledger construction identity does not match AB30")
-    if ledger.get("queryId") != QUERY_ID:
+    if ledger.get("queryId") != query_id:
         raise RuntimeError("Decision ledger queryId does not match this query")
 
     expected = {row["candidateId"]: row for row in rows}
@@ -400,23 +439,34 @@ def main() -> None:
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--source-manifest", type=Path, required=True)
     parser.add_argument("--decisions", type=Path)
+    parser.add_argument(
+        "--following-pos", choices=sorted(QUERY_PROFILES), default="r"
+    )
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args()
 
+    profile = QUERY_PROFILES[args.following_pos]
+    query_id = profile["query_id"]
+
     if pycantonese.__version__ != PY_CANTONESE_VERSION:
         raise RuntimeError(
-            f"{QUERY_ID} is frozen to PyCantonese {PY_CANTONESE_VERSION}; "
+            f"{query_id} is frozen to PyCantonese {PY_CANTONESE_VERSION}; "
             f"got {pycantonese.__version__}"
         )
 
     allowlist, source_manifest_sha256 = read_source_allowlist(args.source_manifest)
     corpus = pycantonese.hkcancor()
     source_hashes = verify_distribution(corpus, allowlist)
-    rows = extract_rows(corpus, source_hashes)
+    rows = extract_rows(corpus, source_hashes, args.following_pos, query_id)
     summary = build_summary(
-        corpus, rows, args.source_manifest, source_manifest_sha256
+        corpus,
+        rows,
+        args.source_manifest,
+        source_manifest_sha256,
+        args.following_pos,
+        query_id,
     )
-    outputs = rendered_outputs(summary, rows)
+    outputs = rendered_outputs(summary, rows, profile)
 
     if args.check:
         for filename, expected in outputs.items():
@@ -429,10 +479,10 @@ def main() -> None:
             (args.output_dir / filename).write_text(value, encoding="utf-8")
 
     if args.decisions:
-        validate_decisions(args.decisions, rows)
+        validate_decisions(args.decisions, rows, query_id)
 
     print(
-        f"{QUERY_ID}: {len(rows)} candidates; "
+        f"{query_id}: {len(rows)} candidates; "
         f"{'checked' if args.check else 'generated'} deterministic outputs."
     )
     if args.decisions:

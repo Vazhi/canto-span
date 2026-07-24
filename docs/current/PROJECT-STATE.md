@@ -107,6 +107,15 @@ the limits of token/POS adjacency, but it does not replace the accepted
 five-candidate packet, exhaust all `咗` or overt-NP profiles, or change the
 `partial_only` readiness effect.
 
+A second completed, disjoint HKCanCor cross-reference exhausts the largest
+remaining immediate-post-`咗` POS bucket: all 106 exact
+`v|v1|xv + 咗 + m` tokens across 104 utterances and 44 source files. Context
+review classifies 52 as genuine, 52 as false positives, 2 as ambiguous, and 0 as
+unusable. The result separates quantified-object attestations from duration,
+frequency, degree, threshold, predicative, and postverbal-subject boundaries. It
+is another research checkpoint only and does not change accepted packet or
+readiness state.
+
 ## Native-panel and survey state
 
 `YUE-JUDGMENT-PILOT-01` remains the active SoSci collection instrument. The
