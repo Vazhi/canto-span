@@ -73,6 +73,7 @@ jobs:
           run_check npm run verify
           run_check npm run verify:research
           git restore --staged --worktree validation/current >> "$log" 2>&1 || true
+          git clean -fd validation/current >> "$log" 2>&1 || true
           rm .github/workflows/batch-10-regenerate-artifact-temporary.yml
           run_check git diff --check
           if git status --porcelain | grep -E '(^| )validation/current/' >> "$log"; then
