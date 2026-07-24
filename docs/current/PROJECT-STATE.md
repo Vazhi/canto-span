@@ -98,6 +98,15 @@ corpus gate or establish productivity. The deterministic discovery registry
 therefore remains conservative until canonical readiness inputs support a stronger
 transition.
 
+A separate completed HKCanCor claim cross-reference uses PyCantonese 5.0.0 to
+exhaust the largest single following-pronoun slice: all 27 exact
+`v + 咗 + 佢` tokens across 19 source files. Context review classifies 23 as
+genuine, 2 as false positives, 2 as ambiguous, and 0 as unusable. This is a
+bounded research checkpoint only: it demonstrates natural overt-object
+attestation and the limits of token/POS adjacency, but it does not replace the
+accepted five-candidate packet, exhaust the broader overt-NP inventory, or change
+the `partial_only` readiness effect.
+
 ## Native-panel and survey state
 
 `YUE-JUDGMENT-PILOT-01` remains the active SoSci collection instrument. The

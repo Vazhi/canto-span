@@ -172,6 +172,21 @@ The existing eleven response records came from mixed legacy instruments and do n
   counts are recorded separately because `partial_only` evidence cannot enter the
   diverse-corpus pass gate.
 
+### HKCanCor claim cross-reference checkpoint
+
+- Completed research checkpoint:
+  `docs/research/AB30-ZO-KEOI-HKCANCOR-CLAIM-CROSS-REFERENCE-R1.md`.
+- PyCantonese 5.0.0 exhaustively retrieves the largest single following-pronoun
+  slice: all 27 exact HKCanCor `v + 咗 + 佢` tokens across 19 source files.
+- Context review accounts for every candidate: **23 genuine, 2 false positive,
+  2 ambiguous, 0 unusable**.
+- The genuine rows support natural surface attestation for the narrow overt-object
+  profile. The false-positive and ambiguous rows confirm that token adjacency and
+  the corpus POS tag cannot determine construction membership automatically.
+- This one-pronoun slice is a research cross-reference only. It does not replace
+  the accepted readiness packet, exhaust all `咗` or overt-NP candidates, satisfy
+  the diverse-corpus gate, establish productivity, or change status/readiness.
+
 ## Negative and boundary cases
 
 - Standard executable test file: `tests/constructions/PostverbalZoPerfectiveVP.json`

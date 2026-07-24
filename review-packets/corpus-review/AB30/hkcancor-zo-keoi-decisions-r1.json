@@ -1,0 +1,324 @@
+{
+  "schema": "canto-span-corpus-claim-cross-reference-decisions-v1",
+  "construction": {
+    "constructionUuid": "2169217f-a21d-5165-9513-eb0edee2c220",
+    "permanentCode": "AB30",
+    "canonicalIdentity": "ZoMarkedPerfectiveObjectVP",
+    "legacyRuntimeLabel": "PostverbalZoPerfectiveVP"
+  },
+  "queryId": "AB30-HKCANCOR-V-ZO-KEOI-R1",
+  "sourceInventory": "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-keoi-candidate-inventory.json",
+  "sourceAllowlist": "external-evidence/cp021b/hkcancor-cp021b-source-manifest.sha256",
+  "adjudicatedOn": "2026-07-24",
+  "adjudicationAuthority": "project expert context review",
+  "packetStatus": "complete",
+  "readinessEffect": "none_research_checkpoint_only",
+  "readinessNote": "This exhausts the largest single following-pronoun comparison slice, not all HKCanCor 咗 tokens or all overt-NP profiles. It supplies classified attestation and boundary evidence but cannot establish productivity, complete lexical scope, corpus readiness, status, or promotion.",
+  "claimCrosswalk": [
+    {
+      "claimKey": "AB30.core.v-zo-overt-np",
+      "canonicalOwner": "data/construction-adjudications.json",
+      "sourceOwners": [
+        "docs/research/CP025-P1-PFV01-SOURCE-VERIFICATION-R1.tsv#SRC-YIP-MATTHEWS-2000-BASIC",
+        "docs/research/CP025-P1-PFV01-SOURCE-VERIFICATION-R1.tsv#SRC-SIO-BOND-2025"
+      ],
+      "corpusQuestion": "Does HKCanCor naturally attest lexical V + perfective 咗 + an overt pronoun or pronoun-initial NP in this bounded query slice?"
+    },
+    {
+      "claimKey": "AB30.limit.token-adjacency-is-insufficient",
+      "canonicalOwner": "grammar/research_pending/PostverbalZoPerfectiveVP.md",
+      "sourceOwners": [
+        "docs/research/CP025-P1-PFV01-SOURCE-VERIFICATION-R1.tsv"
+      ],
+      "corpusQuestion": "Does every token tagged v + 咗 + 佢 instantiate the narrow overt-object profile?"
+    },
+    {
+      "claimKey": "AB30.limit.productivity-and-semantics-not-corpus-decidable",
+      "canonicalOwner": "grammar/research_pending/PostverbalZoPerfectiveVP.md",
+      "sourceOwners": [
+        "docs/research/CP025-P1-PFV01-SOURCE-VERIFICATION-R1.tsv"
+      ],
+      "corpusQuestion": "Can this bounded corpus slice settle unrestricted predicate-object productivity or all temporal, completion, boundedness, and current-relevance analyses?"
+    }
+  ],
+  "counts": {
+    "ambiguous": 2,
+    "false_positive": 2,
+    "genuine": 23,
+    "unusable": 0
+  },
+  "decisions": [
+    {
+      "candidateId": "ab30-3ca6c1ff3d9c206f3004",
+      "matchedSurfaceSpan": "變咗佢",
+      "classification": "false_positive",
+      "claimRelations": [
+        "restricts:AB30.limit.token-adjacency-is-insufficient"
+      ],
+      "reviewerNote": "變咗 functions as a discourse/result transition; 佢 begins the following clause or topic phrase rather than serving as an overt object of 變.",
+      "exclusionReason": "Following pronoun is not the object licensed by the narrow AB30 profile."
+    },
+    {
+      "candidateId": "ab30-ba3c5054a4fea3a60f5b",
+      "matchedSurfaceSpan": "俾咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "The surrounding money-and-goods exchange makes 佢 the overt recipient argument after 俾咗.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-f782d1905d03a9b1e58e",
+      "matchedSurfaceSpan": "要咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "佢 refers to the goods under discussion and is the overt object of 要咗.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-5c9a55f0c91cab5d84c6",
+      "matchedSurfaceSpan": "封咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "佢 refers to the exchanged item and is the overt object of 封咗; 收埋佢 confirms the same referent.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-bfc6dc2618ab348bf07a",
+      "matchedSurfaceSpan": "摺咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "The imperative contains a transparent 摺 + 咗 + overt pronominal object.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-c5c9339e9bb253c223b8",
+      "matchedSurfaceSpan": "賣咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "The banknote under discussion is resumed by 佢 as the overt object of 賣咗.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-8d44c433e03e02df7a15",
+      "matchedSurfaceSpan": "飲咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "The preceding dead-turtle discussion supplies the referent, and 佢 is the overt object of 飲咗.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-97ddda203f0e90cefa12",
+      "matchedSurfaceSpan": "㗳咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "The complete post-marker object is the overt possessive NP 佢個頭, not merely the adjacent pronoun.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-271b1ad1b00bccba4520",
+      "matchedSurfaceSpan": "推咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "The prior translation-job offer supplies the referent rejected by 推咗佢.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-7f6ddbd06e520011ba81",
+      "matchedSurfaceSpan": "推咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "The same job-offer discourse makes 佢 the overt object of 推咗.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-4d78095313b242e3b320",
+      "matchedSurfaceSpan": "掉咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "佢 resumes 成個缸 and is the overt object of 掉咗.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-e736f15304bdda22a9f5",
+      "matchedSurfaceSpan": "答咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "The preceding stranger asking questions identifies 佢 as the overt addressee object of 答咗.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-d519ecc8bae536403763",
+      "matchedSurfaceSpan": "pit3咗佢",
+      "classification": "ambiguous",
+      "claimRelations": [
+        "unresolved:AB30.core.v-zo-overt-np",
+        "supports:AB30.limit.token-adjacency-is-insufficient"
+      ],
+      "reviewerNote": "The camera discussion suggests a transitive action with 佢 as its object, but the romanized predicate pit3 is not recoverable precisely enough from the transcript to assign a secure construction analysis.",
+      "exclusionReason": "Opaque romanized predicate prevents a secure lexical and syntactic classification."
+    },
+    {
+      "candidateId": "ab30-40adea58e75d5ada476f",
+      "matchedSurfaceSpan": "叫咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "佢 is the overt person object of 叫咗 and precedes the directional continuation 出門口嗰度.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-5f92f0f8ae4733d6a939",
+      "matchedSurfaceSpan": "預咗佢",
+      "classification": "false_positive",
+      "claimRelations": [
+        "restricts:AB30.limit.token-adjacency-is-insufficient"
+      ],
+      "reviewerNote": "The relevant complement is the proposition 佢壞 ('it breaks'); 佢 is the subject of the following predicate, not an overt NP object selected by 預咗.",
+      "exclusionReason": "Following pronoun begins a clausal complement rather than the narrow AB30 object."
+    },
+    {
+      "candidateId": "ab30-3c0141065d88af7f6d8c",
+      "matchedSurfaceSpan": "賺咗佢",
+      "classification": "ambiguous",
+      "claimRelations": [
+        "unresolved:AB30.core.v-zo-overt-np",
+        "supports:AB30.limit.token-adjacency-is-insufficient"
+      ],
+      "reviewerNote": "In 賺咗佢一二千蚊, 佢 may be a referential object or a colloquial dummy before the amount expression; the available turn does not resolve that role.",
+      "exclusionReason": "The pronominal role cannot be distinguished confidently from a dummy-plus-amount profile."
+    },
+    {
+      "candidateId": "ab30-8019c9df3787067ebaee",
+      "matchedSurfaceSpan": "錄咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "佢 is the overt object recorded before the recording is shown to others.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-91489c3715fe761ee0a2",
+      "matchedSurfaceSpan": "拉咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "The legal-enforcement context makes 佢 the overt person object of 拉咗 ('arrested him/her').",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-5a9975ad949749aa2d1b",
+      "matchedSurfaceSpan": "賺咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "The complete overt object is the headless relative NP 佢應該要賺嘅嘢 ('what he should earn'), which begins immediately after 咗.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-420be8354172e77f759f",
+      "matchedSurfaceSpan": "幫咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "The suicidal person is resumed by 佢 as the overt object of 幫咗.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-9642966142be7303ca7d",
+      "matchedSurfaceSpan": "封咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "The complete overt object is the possessive NP 佢舖 ('his shop'), following 封咗.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-f790d74172160cfbe811",
+      "matchedSurfaceSpan": "決定咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "The complete overt object is the possessive NP 佢嘅行為 ('his behavior'), following 決定咗.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-282ba3d146d8a2daa0f8",
+      "matchedSurfaceSpan": "結束咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "The previous turn identifies 哩個話題, which 佢 resumes as the overt object of 結束咗.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-bc3ab3d5f13446091bbd",
+      "matchedSurfaceSpan": "講咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "佢自己本身 is an overt reflexive-emphatic NP object of 講咗; the following 作為 phrase elaborates that referent.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-3675515c5c8ed3a3b4fb",
+      "matchedSurfaceSpan": "閹咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "The quoted threat contains a transparent 閹 + 咗 + overt person object.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-100d38a6e66a8b2f387b",
+      "matchedSurfaceSpan": "閹咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "The second quoted threat independently contains a transparent 閹 + 咗 + overt person object.",
+      "exclusionReason": ""
+    },
+    {
+      "candidateId": "ab30-cba472c536c9cefe8a2c",
+      "matchedSurfaceSpan": "分擔咗佢",
+      "classification": "genuine",
+      "claimRelations": [
+        "supports:AB30.core.v-zo-overt-np"
+      ],
+      "reviewerNote": "The complete overt object is the possessive NP 佢嘅工作 ('his/her work'), following 分擔咗.",
+      "exclusionReason": ""
+    }
+  ]
+}
