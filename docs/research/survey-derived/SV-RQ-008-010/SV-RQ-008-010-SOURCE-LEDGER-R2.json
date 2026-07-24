@@ -1,0 +1,205 @@
+{
+  "schema": "canto-span-survey-derived-source-ledger-v1",
+  "research_ids": [
+    "SV-RQ-008",
+    "SV-RQ-009",
+    "SV-RQ-010"
+  ],
+  "created": "2026-07-24",
+  "scope": "research_only",
+  "implementation_authority": "none",
+  "sources": [
+    {
+      "source_id": "SVSRC-YIP-2025-INNER-ASPECT",
+      "citation": "Yip, Ka-Fai. 2025. Inner Aspect in Cantonese. FLaP FIRST 1:15–36.",
+      "url": "https://flapfirstjournal.wordpress.com/issues/",
+      "evidence_grade": "DIRECT_SCHOLARLY_CORE",
+      "language_scope": "Hong Kong Cantonese",
+      "supports": [
+        "完 as inner aspect",
+        "inner aspect before outer perfective 咗",
+        "direct 食完咗 overt-object example"
+      ],
+      "does_not_support": [
+        "uniform lexical productivity",
+        "regional uniformity",
+        "special V完咗O construction identity"
+      ]
+    },
+    {
+      "source_id": "SVSRC-SIO-BOND-2025-ASPECT",
+      "citation": "Sio, Joanna Ut-Seong, and Francis Bond. 2025. Inner and outer aspect in Cantonese. Proceedings of HPSG 32.",
+      "url": "https://www.hpsg-proceedings.org/index.php/hpsg/article/view/491",
+      "evidence_grade": "DIRECT_SCHOLARLY_CORE",
+      "language_scope": "Cantonese",
+      "supports": [
+        "separate inner and outer aspect components",
+        "inner aspect compatibility with perfective or experiential outer aspect",
+        "compositional analysis"
+      ],
+      "does_not_support": [
+        "frequency of V完咗O",
+        "speaker variation",
+        "regional distribution"
+      ]
+    },
+    {
+      "source_id": "SVSRC-KWOK-CHIN-TSOU-2016-YUE",
+      "citation": "Kwok, Bit Chee, Chi On Chin, and Ka Yin Benjamin Tsou. 2016. Grammatical diversity across the Yue dialects. Journal of Chinese Linguistics 44(1):109–152.",
+      "url": "https://repository.eduhk.hk/en/publications/grammatical-diversity-across-the-yue-dialects-7/",
+      "evidence_grade": "DIRECT_SCHOLARLY_CORE",
+      "language_scope": "nine Yue dialects",
+      "supports": [
+        "regional variation in perfective markers",
+        "regional variation in VP position of perfective markers"
+      ],
+      "does_not_support": [
+        "specific V完咗O distribution in each surveyed variety",
+        "equating script choice with dialect"
+      ]
+    },
+    {
+      "source_id": "SVSRC-KWAN-2010-LOCATIVE",
+      "citation": "Kwan, Stella Wing-Man. 2010. The placement of locative prepositional phrases in Cantonese: Processing and iconicity. Taiwan Journal of Linguistics 8(2):163–198.",
+      "url": "https://www.researchgate.net/publication/291908489",
+      "evidence_grade": "DIRECT_SCHOLARLY_CORE",
+      "language_scope": "Hong Kong Cantonese",
+      "supports": [
+        "preverbal event-location versus postverbal result-location contrast",
+        "V object 喺-PP template",
+        "corpus and judgment evidence"
+      ],
+      "does_not_support": [
+        "all postobject paths",
+        "all directional complements",
+        "unrestricted verb licensing"
+      ]
+    },
+    {
+      "source_id": "SVSRC-KATAOKA-2018-LOCATIVE",
+      "citation": "Kataoka, Shin. 2018. Preverbal and postverbal locative constructions in early Cantonese.",
+      "url": "https://repository.eduhk.hk/en/publications/preverbal-and-postverbal-locative-constructions-in-early-cantones/",
+      "evidence_grade": "DIRECT_SCHOLARLY_CORE",
+      "language_scope": "early and modern Cantonese comparison",
+      "supports": [
+        "verb-class restrictions on postverbal locatives",
+        "result location of object or subject"
+      ],
+      "does_not_support": [
+        "modern unrestricted productivity",
+        "all survey directionals"
+      ]
+    },
+    {
+      "source_id": "SVSRC-SYBESMA-2022-LOCATIVE-RESULT",
+      "citation": "Sybesma, Rint. 2022. Four different structures for locative resultatives. Journal of Chinese Linguistics 50(1):277–289.",
+      "url": "https://www.universiteitleiden.nl/medewerkers/rint-sybesma/publicaties",
+      "evidence_grade": "DIRECT_SCHOLARLY_CORE",
+      "language_scope": "Cantonese and Mandarin",
+      "supports": [
+        "multiple structures for locative resultatives",
+        "definiteness-sensitive object analysis",
+        "Cantonese 喺 as preposition"
+      ],
+      "does_not_support": [
+        "one generic postobject location construction",
+        "all directional paths"
+      ]
+    },
+    {
+      "source_id": "SVSRC-YIU-2005-DIRECTIONALS",
+      "citation": "Yiu, Carine Yuk Man. 2005. Spatial extension: Directional verbs in Cantonese. Doctoral thesis, HKUST.",
+      "url": "https://researchportal.hkust.edu.hk/en/studentTheses/spatial-extension-directional-verbs-in-cantonese/",
+      "evidence_grade": "DIRECT_SCHOLARLY_CORE",
+      "language_scope": "Hong Kong Cantonese",
+      "supports": [
+        "directional verb and complement distinctions",
+        "source-path-goal mapping",
+        "aspectual extensions of directionals"
+      ],
+      "does_not_support": [
+        "equating directionals with locative PPs",
+        "one uniform attachment structure"
+      ]
+    },
+    {
+      "source_id": "SVSRC-FAN-CHAN-2022-ZO",
+      "citation": "Fan, Xiaolei, and Kin Wing Kevin Chan. 2022. Grammatical properties of zo 咗 in Hong Kong Cantonese.",
+      "url": "https://benjamins.com/catalog/lali.00110.fan",
+      "evidence_grade": "DIRECT_SCHOLARLY_CORE",
+      "language_scope": "Hong Kong Cantonese",
+      "supports": [
+        "verbal perfective status of 咗",
+        "placement in complex VP"
+      ],
+      "does_not_support": [
+        "semantics of final 喇 by itself",
+        "object-ellipsis analysis"
+      ]
+    },
+    {
+      "source_id": "SVSRC-YIU-2001-LAA",
+      "citation": "Yiu, Carine Yuk-man. 2001. Cantonese final particles LEI, ZYU and LAA: an aspectual study. MPhil thesis, HKUST.",
+      "url": "https://researchportal.hkust.edu.hk/en/studentTheses/cantonese-final-particles-lei-zyu-and-laa-an-aspectual-study/",
+      "evidence_grade": "DIRECT_SCHOLARLY_CORE",
+      "language_scope": "Hong Kong Cantonese",
+      "supports": [
+        "final 喇 as inchoative/change-of-state marker",
+        "distinction from verbal aspect suffixes"
+      ],
+      "does_not_support": [
+        "object omission as defining property",
+        "all discourse continuations"
+      ]
+    },
+    {
+      "source_id": "SVSRC-YIP-MATTHEWS-BILINGUAL-ZO-LAA",
+      "citation": "Yip, Virginia, and Stephen Matthews et al. Research on the emergence of perfective aspect in Cantonese-English bilingual children.",
+      "url": "https://www.researchgate.net/publication/316681855",
+      "evidence_grade": "DIRECT_SCHOLARLY_CORE",
+      "language_scope": "Hong Kong Cantonese bilingual acquisition",
+      "supports": [
+        "explicit 咗...喇 co-occurrence",
+        "completed event plus current relevance/change of state",
+        "我返咗屋企喇 example"
+      ],
+      "does_not_support": [
+        "adult frequency",
+        "all monolingual varieties",
+        "parser identity"
+      ]
+    },
+    {
+      "source_id": "SVSRC-HKCANCOR-PYCANTONESE",
+      "citation": "Luke, Kang-Kwong, and May L. Y. Wong. Hong Kong Cantonese Corpus; PyCantonese distribution.",
+      "url": "https://docs.pycantonese.org/stable/data.html",
+      "evidence_grade": "PRIMARY_CORPUS_ATTESTATION",
+      "language_scope": "Hong Kong Cantonese, 1997–1998 conversations and radio",
+      "supports": [
+        "future machine-readable occurrence search",
+        "context-preserving natural-speech evidence"
+      ],
+      "does_not_support": [
+        "productivity from raw counts",
+        "Guangzhou or Macau distribution",
+        "negative evidence from zero hits"
+      ]
+    },
+    {
+      "source_id": "SVSRC-PUBLIC-VJYUNZO",
+      "citation": "Public Hong Kong forum example containing 睇完咗好耐.",
+      "url": "https://www.baby-kingdom.com/forum.php?mod=viewthread&tid=23186421",
+      "evidence_grade": "ATTESTATION_ONLY",
+      "language_scope": "public Hong Kong written Cantonese",
+      "supports": [
+        "independent surface attestation",
+        "elapsed-time context hypothesis"
+      ],
+      "does_not_support": [
+        "edited grammatical standard",
+        "speaker demographics",
+        "productivity"
+      ]
+    }
+  ]
+}
