@@ -65,3 +65,7 @@ After Batch 04:
 - status and runtime migrations remain explicit future commits;
 - earlier adjudication batches remain unchanged;
 - no candidate was promoted.
+
+## Application state
+
+The five decisions are applied to the permanent identity registry and regenerated discovery outputs. Permanent read-only verification remains authoritative; the temporary write workflow was removed after application.
