@@ -868,7 +868,7 @@
     {
       "construction_uuid": "5ad779df-fcfd-5a8b-8c3e-e1206837214a",
       "construction_code": "AA27",
-      "canonical_name": "CompoundDirectionalMotionVP",
+      "canonical_name": "ReturnUpDeicticDirectionalVP",
       "legacy_labels": [
         "CompoundDirectionalMotionVP"
       ],
@@ -876,22 +876,40 @@
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/CompoundDirectionalMotionVP.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese may instantiate the structural family represented by CompoundDirectionalMotionVP; exact productivity and boundaries require pattern-specific independent evidence.",
+      "family_name": "DirectionalComplexes",
+      "profile_name": "ReturnUpComeGoDirectional",
+      "profile_description": "The independently attested three-part directional strings 返上嚟 and 返上去, analyzed as return plus upward direction plus deictic 嚟 or 去. The profile excludes two-part 上嚟, manner-verb-plus-directional predicates such as 行返過嚟, arbitrary 返-initial combinations, and unreviewed object-placement patterns.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "tri-syllabic directional",
+          "source_id": "SRC-WONG-2023-LANGUAGE-SAMPLE",
+          "scope_match": "exact"
+        },
+        {
+          "term": "postverbal directional string",
+          "source_id": "SRC-CHOR-2018-DIRECTIONALS",
+          "scope_match": "close"
+        },
+        {
+          "term": "compound directional",
+          "source_id": "SRC-YIU-2016-DIRECTIONAL-ASPECT",
+          "scope_match": "close"
+        }
+      ],
+      "former_names": [
+        "CompoundDirectionalMotionVP"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "runtime_narrower_defensible",
+        "terminology_alignment": "neutral_descriptive_preferred",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-24. CompoundDirectionalMotionVP is compatible with the literature but still sounds broader than the implemented profile and does not expose the defining 返 + 上 + 嚟/去 sequence. ReturnUpDeicticDirectionalVP identifies the exact source-linked subtype while avoiding a claim that all compound directionals share its constituency, object order, or productivity. Status recommendation: retain research_pending until additional tri-syllabic directional contrasts, object-placement boundaries, corpus review, role-neutral panel evidence, and held-out validation are complete"
       }
     },
     {
@@ -1228,30 +1246,48 @@
     {
       "construction_uuid": "a3d9e4b2-1ef9-530a-9dfb-01711e42bb2a",
       "construction_code": "AA38",
-      "canonical_name": "DegreeMannerModifiedVP",
+      "canonical_name": "PreposedDiMannerVPWrapper",
       "legacy_labels": [
         "DegreeMannerModifiedVP"
       ],
-      "claim_layer": "language_construction",
+      "claim_layer": "parser_representation",
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/DegreeMannerModifiedVP.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese may instantiate the structural family represented by DegreeMannerModifiedVP; exact productivity and boundaries require pattern-specific independent evidence.",
+      "family_name": "MannerRepresentation",
+      "profile_name": "PreposedDiMannerAdverbialPlusVP",
+      "profile_description": "An implementation wrapper combining a preposed 啲-marked manner expression such as 快啲 with an independently analyzed following VP. It excludes postverbal 行快啲 and discourse-separated 靜啲，佢喺度畫畫, and it does not itself establish a separate language construction beyond the manner expression and VP components.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "快啲行上去",
+          "source_id": "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE",
+          "scope_match": "exact"
+        },
+        {
+          "term": "postverbal 行快啲",
+          "source_id": "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE",
+          "scope_match": "contrastive"
+        },
+        {
+          "term": "discourse-separated 靜啲",
+          "source_id": "SRC-WONG-2023-LANGUAGE-SAMPLE",
+          "scope_match": "contrastive"
+        }
+      ],
+      "former_names": [
+        "DegreeMannerModifiedVP"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "overlapping",
+        "terminology_alignment": "neutral_descriptive_preferred",
+        "recommended_action": "internalize_and_decompose",
         "automatic_risk_flags": [],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-24. The evidence supports a preposed 啲-marked manner expression and separately supports its ordering contrasts; it does not require a second language-level node spanning the modifier and the entire VP. The current label therefore duplicates compositional structure and should survive, if needed, only as an internal aggregate wrapper. Status recommendation: move to parser_heuristic after compatibility migration; attach linguistic evidence to the independently typed 啲-marked manner adverbial and the following VP rather than to the aggregate wrapper"
       }
     },
     {
@@ -1676,7 +1712,7 @@
     {
       "construction_uuid": "10fa3d98-da35-541c-828e-516c17d04144",
       "construction_code": "AA52",
-      "canonical_name": "DitransitiveSpeechVP",
+      "canonical_name": "WaaParticipantZiCommunicationVP",
       "legacy_labels": [
         "DitransitiveSpeechVP"
       ],
@@ -1684,24 +1720,42 @@
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/DitransitiveSpeechVP.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese may instantiate the structural family represented by DitransitiveSpeechVP; exact productivity and boundaries require pattern-specific independent evidence.",
+      "family_name": "CommunicationPredication",
+      "profile_name": "WaaParticipantZiLexicalSequence",
+      "profile_description": "The exact lexical sequence 話 + overt participant + 知, as in 我唔話你知. The profile excludes substitution of 講 for 話, substitution of another cognition predicate for 知, and any inference that the sequence is an unrestricted ditransitive or serial-verb construction.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "communication verbs",
+          "source_id": "SRC-YIP-MATTHEWS-2017-INTERMEDIATE",
+          "scope_match": "close"
+        },
+        {
+          "term": "serial verb construction",
+          "source_id": "SRC-MATTHEWS-2006-SVC",
+          "scope_match": "contrastive"
+        },
+        {
+          "term": "話 + participant + 知",
+          "source_id": "SRC-YIP-MATTHEWS-2017-INTERMEDIATE",
+          "scope_match": "exact"
+        }
+      ],
+      "former_names": [
+        "DitransitiveSpeechVP"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "runtime_narrower_defensible",
+        "terminology_alignment": "misleading",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [
           "semantic_domain_name_requires_structural_scope_check"
         ],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-24. DitransitiveSpeechVP makes two claims the evidence does not settle: that the sequence is syntactically ditransitive and that it forms a productive speech-verb class. The current matcher is an exact lexical 話…知 profile. WaaParticipantZiCommunicationVP names the overt sequence and domain without resolving the competing complement or serial analyses. Status recommendation: migrate to lexicalized_only unless independent evidence establishes a broader productive 話/講 + participant + cognition-predicate class; retain the exact sequence and its boundaries"
       }
     },
     {
@@ -1924,7 +1978,7 @@
     {
       "construction_uuid": "130b5d85-be1b-5d00-9ff1-a1670100676a",
       "construction_code": "AA60",
-      "canonical_name": "ExperientialMotionGoalVP",
+      "canonical_name": "HeoiGwoGoalVP",
       "legacy_labels": [
         "ExperientialMotionGoalVP"
       ],
@@ -1932,28 +1986,46 @@
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/ExperientialMotionGoalVP.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese may instantiate the structural family represented by ExperientialMotionGoalVP; exact productivity and boundaries require pattern-specific independent evidence.",
+      "family_name": "ExperientialAspectAndMotion",
+      "profile_name": "HeoiGwoOvertGoal",
+      "profile_description": "The source-linked sequence 去 + experiential 過 + overt destination or goal NP, as in 去過美國. The profile excludes perfective 去咗, non-motion experiential predicates such as 見過, other motion verbs, and unreviewed destination types.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "experiential 過",
+          "source_id": "SRC-YIP-MATTHEWS-2000-BASIC",
+          "scope_match": "exact"
+        },
+        {
+          "term": "去過 + place",
+          "source_id": "SRC-YIP-MATTHEWS-2000-BASIC",
+          "scope_match": "exact"
+        },
+        {
+          "term": "去過美國",
+          "source_id": "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE",
+          "scope_match": "exact"
+        }
+      ],
+      "former_names": [
+        "ExperientialMotionGoalVP"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "runtime_narrower_defensible",
+        "terminology_alignment": "neutral_descriptive_preferred",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-24. ExperientialMotionGoalVP implies a productive combination of experiential aspect with a motion-goal class. The implementation and direct evidence establish only 去過 with an overt goal. HeoiGwoGoalVP makes that lexical and aspectual boundary explicit while preserving a separate path for future broader motion research. Status recommendation: retain research_pending; do not generalize beyond 去過 + overt goal until other motion predicates, destination classes, corpus examples, panel judgments, and held-out cases are reviewed"
       }
     },
     {
       "construction_uuid": "a0389a45-6002-5fb9-a02a-ea423ac463b1",
       "construction_code": "AA61",
-      "canonical_name": "ExperientialQuestion",
+      "canonical_name": "GwoFinalMeiExperientialQuestion",
       "legacy_labels": [
         "ExperientialQuestion"
       ],
@@ -1961,22 +2033,40 @@
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/ExperientialQuestion.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese may instantiate the structural family represented by ExperientialQuestion; exact productivity and boundaries require pattern-specific independent evidence.",
+      "family_name": "ExperientialQuestions",
+      "profile_name": "OvertExperientialFinalMei",
+      "profile_description": "A question containing overt experiential 過 before clause-final 未, optionally followed by a final particle, as in 你飲過茶未 or 你食過醉雞未呀. The profile excludes preverbal 未 + V過 negative statements and 有冇 + V過 questions.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "你食過醉雞未呀",
+          "source_id": "SRC-MATTHEWS-YIP-2011-ASPECT-MULTIMEDIA",
+          "scope_match": "exact"
+        },
+        {
+          "term": "V過 ... 未 question",
+          "source_id": "SRC-YIP-MATTHEWS-2000-BASIC",
+          "scope_match": "exact"
+        },
+        {
+          "term": "你飲過茶未",
+          "source_id": "SRC-ZHANG-1970-PREDICATIVE-SUFFIXES",
+          "scope_match": "exact"
+        }
+      ],
+      "former_names": [
+        "ExperientialQuestion"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "exact",
+        "terminology_alignment": "neutral_descriptive_preferred",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-24. ExperientialQuestion is too broad because the repository contains separate 有冇 and other experiential-question strategies. The runtime identity is specifically the overt 過 plus final 未 pattern. GwoFinalMeiExperientialQuestion exposes both defining markers and prevents evidence from transferring to other question types. Status recommendation: retain research_pending until predicate and object diversity, final-particle variants, negative boundaries, corpus evidence, a role-neutral panel wave, and held-out validation are complete"
       }
     },
     {

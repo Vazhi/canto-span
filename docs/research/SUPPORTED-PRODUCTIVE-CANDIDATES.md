@@ -14,11 +14,10 @@ This is a prioritization report, not a promotion decision. A score cannot overri
 | `AA84` | `GamMarkedReduplicatedMannerVP` | `source_supported` | 65 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
 | `AB28` | `BeiMarkedPostThemeParticipantConstruction` | `source_supported` | 65 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
 | `AA11` | `BinSingDimWhComplementVP` | `source_supported` | 60 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
-| `AA27` | `CompoundDirectionalMotionVP` | `source_supported` | 55 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
-| `AA38` | `DegreeMannerModifiedVP` | `source_supported` | 55 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
-| `AA52` | `DitransitiveSpeechVP` | `source_supported` | 55 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
-| `AA60` | `ExperientialMotionGoalVP` | `source_supported` | 55 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
-| `AA61` | `ExperientialQuestion` | `source_supported` | 55 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
+| `AA27` | `ReturnUpDeicticDirectionalVP` | `source_supported` | 60 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
+| `AA60` | `HeoiGwoGoalVP` | `source_supported` | 60 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
+| `AA61` | `GwoFinalMeiExperientialQuestion` | `source_supported` | 60 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
+| `AA52` | `WaaParticipantZiCommunicationVP` | `source_supported` | 58 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
 | `AA73` | `IntendedFunctionRelation` | `source_supported` | 55 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
 | `AA74` | `IntentionFrame` | `source_supported` | 55 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
 | `AA81` | `LocativePostureVP` | `source_supported` | 55 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
@@ -49,6 +48,7 @@ This is a prioritization report, not a promotion decision. A score cannot overri
 | `AA49` | `DirectionalMotionVP` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA53` | `DurativeVP` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA55` | `ExistentialClause` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
+| `AA58` | `ExistentialWhQuestion` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 
 ## Narrowing candidates
 
