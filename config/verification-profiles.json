@@ -11,6 +11,7 @@
       { "id": "source-accounting", "command": ["node", "tools/audit-source-accounting.js"] },
       { "id": "active-working-set", "command": ["node", "tools/verify-active-working-set.js"] },
       { "id": "implementation-reachability", "command": ["node", "tools/verify-implementation-reachability.js"] },
+      { "id": "agent-coordination", "command": ["node", "tools/verify-agent-coordination.js"] },
       { "id": "documentation", "command": ["node", "tools/verify-documentation-consistency.js", "--output", "validation/current/documentation-consistency.json"] }
     ],
     "research": [
