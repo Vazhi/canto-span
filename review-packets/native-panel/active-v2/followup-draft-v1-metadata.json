@@ -1,0 +1,129 @@
+{
+  "schema": "canto-span-native-panel-followup-draft-v1",
+  "instrument_id": "YUE-JUDGMENT-FOLLOWUP-01-DRAFT",
+  "instrument_status": "draft_followup",
+  "deployment_allowed": false,
+  "created_date": "2026-07-24",
+  "current_live_instrument": {
+    "instrument_id": "YUE-JUDGMENT-PILOT-01",
+    "status": "collection_in_progress",
+    "canonical_item_scheme": "G01A01–G05D04, F001–F010, C001–C002",
+    "closure_rule": "Do not deploy this follow-up until the live instrument closes and its item audit is incorporated."
+  },
+  "primary_focal_constructions": [
+    {
+      "code": "AB53",
+      "canonical_name": "ResourceInitialJungLaiFunctionClause",
+      "legacy_runtime_label": "ResourceUseLaiFunctionRelation"
+    },
+    {
+      "code": "AB30",
+      "canonical_name": "ZoMarkedPerfectiveObjectVP",
+      "legacy_runtime_label": "PostverbalZoPerfectiveVP"
+    }
+  ],
+  "boundary_related_constructions": [
+    {
+      "code": "AA73",
+      "canonical_name": "JungLaiUseFunctionConstruction"
+    },
+    {
+      "code": "AA26",
+      "canonical_name": "WanMarkedCompletionVP"
+    },
+    {
+      "code": "AB21",
+      "canonical_name": "PerfectiveVP"
+    }
+  ],
+  "participant_requirements": {
+    "adult_18_or_older_required": true,
+    "native_or_childhood_cantonese_required": true,
+    "childhood_cutoff_age": 12,
+    "current_cantonese_comprehension_required": true,
+    "independent_submission_required": true,
+    "anonymous_use_consent_required": true,
+    "duplicate_screen_required": true,
+    "same_instrument_and_inclusion_criteria_for_all": true,
+    "privileged_reviewer_roles": false
+  },
+  "allocation": {
+    "variants": [
+      "A",
+      "B"
+    ],
+    "method": "quota_balanced_alternation_or_platform_random_assignment",
+    "assignment_log_required": true,
+    "reverse_order_only": false
+  },
+  "quality_screen": {
+    "minimum_completion_fraction": 0.9,
+    "duplicate_resolution_required": true,
+    "attention_rule": "Natural and degraded fillers are audited as a group; no single filler automatically excludes a respondent.",
+    "minimum_expected_filler_classifications": 6,
+    "manual_comment_audit_required": true
+  },
+  "item_file": "review-packets/native-panel/active-v2/followup-draft-v1-items.tsv",
+  "crosswalk_file": "review-packets/native-panel/active-v2/followup-draft-v1-item-crosswalk.tsv",
+  "response_template_file": "review-packets/native-panel/active-v2/followup-draft-v1-response-template.tsv",
+  "variants": [
+    {
+      "variant_id": "A",
+      "item_order": [
+        "F011",
+        "G06A01",
+        "G08C01",
+        "G07A01",
+        "F015",
+        "G09D01",
+        "G06D01",
+        "G08A01",
+        "F012",
+        "G07B01",
+        "G09A01",
+        "G06B01",
+        "F016",
+        "G08D01",
+        "G07D01",
+        "G09C01",
+        "F013",
+        "G06C01",
+        "G08B01",
+        "G07C01",
+        "F017",
+        "G09B01",
+        "F014",
+        "F018"
+      ]
+    },
+    {
+      "variant_id": "B",
+      "item_order": [
+        "G09C01",
+        "F015",
+        "G06B01",
+        "G08B01",
+        "F011",
+        "G07D01",
+        "G09A01",
+        "G06C01",
+        "F016",
+        "G08D01",
+        "G07A01",
+        "F012",
+        "G09B01",
+        "G06D01",
+        "G08C01",
+        "F017",
+        "G07C01",
+        "G09D01",
+        "F013",
+        "G06A01",
+        "G08A01",
+        "G07B01",
+        "F018",
+        "F014"
+      ]
+    }
+  ]
+}
