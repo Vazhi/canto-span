@@ -1,0 +1,36 @@
+name: Construction identity bootstrap
+
+on:
+  push:
+    branches:
+      - agent/permanent-construction-identity-sweep
+    paths:
+      - tools/generate-construction-identities.js
+      - tools/construction-notes-lib.js
+      - grammar/**
+      - docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv
+      - .github/workflows/construction-identity-bootstrap.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Generate permanent identity baseline
+        run: node tools/generate-construction-identities.js --write
+      - name: Upload generated baseline
+        uses: actions/upload-artifact@v4
+        with:
+          name: construction-identity-baseline
+          path: |
+            data/construction-identities.json
+            data/construction-label-sweep.json
+            docs/research/FULL-REPO-LABEL-SWEEP-BASELINE-R1.md
+          if-no-files-found: error
