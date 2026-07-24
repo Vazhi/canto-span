@@ -1,0 +1,49 @@
+variant_id	display_number	canonical_item_id	legacy_item_ids	item_role	primary_target_code	relation_to_target	sentence	participant_code	adult_eligibility	cantonese_eligibility	consent	duplicate_status	naturalness_response	interpretation_response	reason_response	comment	quality_pass
+A	1	F011	FIL-V1-N01	filler			佢好高。										
+A	2	G06A01	RUL-V1-01	focal	AB53	positive	呢把刀用嚟切肉。										
+A	3	G08C01	PFV-V1-01	focal	AB30	positive	我食咗飯。										
+A	4	G07A01	RUL-V1-05	focal	AB53	cross_construction_contrast	呢把刀可以用嚟切肉。										
+A	5	F015	FIL-V1-D01	filler			佢高好。										
+A	6	G09D01		focal	AB30	excluded_inner_aspect_boundary	我睇完咗嗰本書。										
+A	7	G06D01	RUL-V1-02,RUL-V1-04	focal	AB53	negative_boundary	阿明用嚟切肉。										
+A	8	G08A01		focal	AB30	cross_construction_control	我食完飯。										
+A	9	F012	FIL-V1-N02	filler			我聽日返工。										
+A	10	G07B01		focal	AB53	excluded_actual_use_candidate	呢把刀用咗嚟切肉。										
+A	11	G09A01		focal	AB30	cross_construction_control	我睇完嗰本書。										
+A	12	G06B01	RUL-V1-03	focal	AB53	boundary_candidate	呢個方法用嚟解決問題。										
+A	13	F016	FIL-V1-D02	filler			我聽日咗返工。										
+A	14	G08D01	PFV-V1-05	focal	AB30	excluded_inner_aspect_boundary	我食完咗飯。										
+A	15	G07D01	RUL-V1-10	focal	AB53	question_extension	呢把刀用嚟做咩㗎？										
+A	16	G09C01	PFV-V1-03	focal	AB30	positive	我睇咗嗰本書。										
+A	17	F013	FIL-V1-N03	filler			呢本書係我嘅。										
+A	18	G06C01	RUL-V1-06	focal	AB53	cross_construction_contrast	呢把刀我用嚟切肉。										
+A	19	G08B01		focal	AB30	cross_construction_control	我食完飯喇。										
+A	20	G07C01	RUL-V1-06	focal	AB53	purpose_vp_aspect_boundary	呢把刀用嚟切咗啲肉。										
+A	21	F017	FIL-V1-D03	filler			呢本書我嘅係。										
+A	22	G09B01		focal	AB30	cross_construction_control	我睇完嗰本書喇。										
+A	23	F014	FIL-V1-N04	filler			你食唔食飯？										
+A	24	F018		filler			我今日超市去買餸。										
+B	1	G09C01	PFV-V1-03	focal	AB30	positive	我睇咗嗰本書。										
+B	2	F015	FIL-V1-D01	filler			佢高好。										
+B	3	G06B01	RUL-V1-03	focal	AB53	boundary_candidate	呢個方法用嚟解決問題。										
+B	4	G08B01		focal	AB30	cross_construction_control	我食完飯喇。										
+B	5	F011	FIL-V1-N01	filler			佢好高。										
+B	6	G07D01	RUL-V1-10	focal	AB53	question_extension	呢把刀用嚟做咩㗎？										
+B	7	G09A01		focal	AB30	cross_construction_control	我睇完嗰本書。										
+B	8	G06C01	RUL-V1-06	focal	AB53	cross_construction_contrast	呢把刀我用嚟切肉。										
+B	9	F016	FIL-V1-D02	filler			我聽日咗返工。										
+B	10	G08D01	PFV-V1-05	focal	AB30	excluded_inner_aspect_boundary	我食完咗飯。										
+B	11	G07A01	RUL-V1-05	focal	AB53	cross_construction_contrast	呢把刀可以用嚟切肉。										
+B	12	F012	FIL-V1-N02	filler			我聽日返工。										
+B	13	G09B01		focal	AB30	cross_construction_control	我睇完嗰本書喇。										
+B	14	G06D01	RUL-V1-02,RUL-V1-04	focal	AB53	negative_boundary	阿明用嚟切肉。										
+B	15	G08C01	PFV-V1-01	focal	AB30	positive	我食咗飯。										
+B	16	F017	FIL-V1-D03	filler			呢本書我嘅係。										
+B	17	G07C01	RUL-V1-06	focal	AB53	purpose_vp_aspect_boundary	呢把刀用嚟切咗啲肉。										
+B	18	G09D01		focal	AB30	excluded_inner_aspect_boundary	我睇完咗嗰本書。										
+B	19	F013	FIL-V1-N03	filler			呢本書係我嘅。										
+B	20	G06A01	RUL-V1-01	focal	AB53	positive	呢把刀用嚟切肉。										
+B	21	G08A01		focal	AB30	cross_construction_control	我食完飯。										
+B	22	G07B01		focal	AB53	excluded_actual_use_candidate	呢把刀用咗嚟切肉。										
+B	23	F018		filler			我今日超市去買餸。										
+B	24	F014	FIL-V1-N04	filler			你食唔食飯？										
