@@ -12,11 +12,13 @@ The sweep evaluates every permanent identity. It separates construction identity
 
 | State | Records |
 |---|---|
-| `behavior_aligned` | 34 |
-| `boundary_ready` | 4 |
+| `boundary_ready` | 1 |
 | `excluded_nonlanguage` | 15 |
-| `retired_evidence_rehome_candidate` | 48 |
-| `source_supported` | 80 |
+| `lexicalized_review` | 2 |
+| `narrowing_candidate` | 37 |
+| `retired_evidence_rehome_candidate` | 42 |
+| `retired_research_gap` | 6 |
+| `source_supported` | 78 |
 
 ## Nearest missing gate
 
@@ -34,55 +36,52 @@ These rows may contain a supportable narrow construction even though the present
 
 | Code | Current/retired label | State | Family | Sources | Preserved direction |
 |---|---|---|---|---|---|
-| `AA07` | `AssociativeNP` | `boundary_ready` | AssociativeAndCoordinatedNP | SRC-SIO-2011-GE3, SRC-YU-2006-NOMINAL-MODIFIERS | source-bounded subtype review |
-| `AA30` | `CoordinatedNP` | `boundary_ready` | AssociativeAndCoordinatedNP | SRC-WONG-2023-LANGUAGE-SAMPLE, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
-| `AB23` | `PoliteImperativeClause` | `boundary_ready` | DirectivesRequestsAndSuggestions | SRC-CHOW-2007-CANTONESE-EVERYONE, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
-| `AA06` | `ApproximateQuantity` | `behavior_aligned` | ClassifierAndQuantityNP | SRC-TANG-2024-CANTONESE-GRAMMAR-GUIDE | source-bounded subtype review |
-| `AA12` | `ClassifierObjectNP` | `behavior_aligned` | ClassifierAndQuantityNP | SRC-BOND-SIO-2024-CLASSIFIERS, SRC-CHENG-SYBESMA-1999-NP, SRC-SIMPSON-SOH-NOMOTO-2011-BARE-CL, SRC-XIA-2025-CLASSIFIERS | source-bounded subtype review |
-| `AA20` | `CognitionStatementClause` | `behavior_aligned` | CognitionAndStance | SRC-LUI-2025-REPORTED-THOUGHT, SRC-YAP-WONG-CHOR-2014-STANCE | source-bounded subtype review |
-| `AA29` | `ConditionalClause` | `behavior_aligned` | ConditionalRelations | SRC-CHENG-2023-TP-SFP-CONDITIONAL, SRC-IIDA-2009-CONDITIONAL-GE3, SRC-LIANG-MAI-2025-GRAMMAR-CODING, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
-| `AA41` | `DelimitedVP` | `behavior_aligned` | DelimitativeAspect | SRC-CUHK-CANTONESE-EXPRESS-DAILY09, SRC-SIO-BOND-2025, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
-| `AA57` | `ExistentialQuestion` | `behavior_aligned` | ExistentialQuestions | SRC-HARA-2023-POLAR, SRC-LIANG-MAI-2026-GRAMMAR-CODING, SRC-YIP-MATTHEWS-2000-BASIC | source-bounded subtype review |
-| `AA59` | `ExperientialClause` | `behavior_aligned` | ExperientialAspect | SRC-FAN-2024-JAU-VP-ASPECT, SRC-SIO-BOND-2025, SRC-ZHANG-1970-PREDICATIVE-SUFFIXES, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
-| `AA63` | `ExperientialYesNoQuestion` | `behavior_aligned` | ExperientialAspect | SRC-FAN-2024-JAU-VP-ASPECT, SRC-HARA-2023-POLAR, SRC-MATTHEWS-YIP-2011-ASPECT-MULTIMEDIA, SRC-YIP-MATTHEWS-2000-BASIC | source-bounded subtype review |
-| `AA75` | `IntransitiveVP` | `behavior_aligned` | ValencyAndArgumentStructure | SRC-ALDERETE-ETAL-2017-SYNOPSIS, SRC-YIP-MATTHEWS-2000-SYNTACTIC-TRANSFER, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
-| `AA80` | `LocativePlacePhrase` | `behavior_aligned` | LocativeAndPosturalPredication | SRC-KWAN-2010-LOCATIVE, SRC-YIP-MATTHEWS-2000-BASIC | source-bounded subtype review |
-| `AA82` | `LocativeWhQuestion` | `behavior_aligned` | TypedWhAndStanceQuestions | SRC-CHOW-2007-CANTONESE-EVERYONE, SRC-WONG-2023-LANGUAGE-SAMPLE, SRC-YIP-MATTHEWS-2000-BASIC, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
-| `AA93` | `MotionGoalVP` | `behavior_aligned` | GoalSourceAndPath | SRC-CHOR-2018-DIRECTIONALS, SRC-LEUNG-2026-MOTION, SRC-SZETO-2015-PERFECTIVE | source-bounded subtype review |
-| `AA94` | `MotionPurposeChain` | `behavior_aligned` | PurposeSerialRelations | SRC-LEUNG-2026-MOTION, SRC-MATTHEWS-2006-SVC | source-bounded subtype review |
-| `AA98` | `NegatedExistentialClause` | `behavior_aligned` | Negation | SRC-LAM-2018-NEGATION-ASPECT, SRC-YIP-1988-NEGATION, SRC-YIP-MATTHEWS-2000-BASIC | source-bounded subtype review |
-| `AB03` | `NegatedVP` | `behavior_aligned` | Negation | SRC-LAM-2018-NEGATION-ASPECT, SRC-YIP-1988-NEGATION, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
-| `AB07` | `NegativePotentialComplement` | `behavior_aligned` | ResultAndPotentialComplements | SRC-CHENG-SYBESMA-2004-POSTVERBAL-DAK | source-bounded subtype review |
-| `AB08` | `NegativePotentialDirectionalVP` | `behavior_aligned` | ResultAndPotentialComplements | SRC-CHENG-SYBESMA-2004-POSTVERBAL-DAK | source-bounded subtype review |
-| `AB13` | `OpinionStanceFrame` | `behavior_aligned` | CognitionAndStance | SRC-ALDERETE-ETAL-2017-SYNOPSIS, SRC-YAP-WONG-CHOR-2014-STANCE, SRC-YIP-MATTHEWS-2000-BASIC | source-bounded subtype review |
-| `AB17` | `PathPhrase` | `behavior_aligned` | GoalSourceAndPath | SRC-LEUNG-2014-COVERBS, SRC-YIP-MATTHEWS-2000-BASIC | source-bounded subtype review |
-| `AB18` | `PerfectiveDirectionalVP` | `behavior_aligned` | AspectDirectionalComposition | SRC-SHAN-JIN-2025-MOTION-TYPOLOGY, SRC-SIO-BOND-2025, SRC-YIU-2016-DIRECTIONAL-ASPECT, SRC-ZHANG-1970-PREDICATIVE-SUFFIXES | source-bounded subtype review |
-| `AB36` | `ProgressiveDirectionalVP` | `behavior_aligned` | AspectDirectionalComposition | SRC-KATAOKA-2018-PROGRESSIVE-GAN, SRC-SHAN-JIN-2025-MOTION-TYPOLOGY, SRC-YIU-2016-DIRECTIONAL-ASPECT | source-bounded subtype review |
-| `AB41` | `ProgressiveWhObjectQuestion` | `behavior_aligned` | TypedWhAndStanceQuestions | SRC-ALDERETE-ETAL-2017-SYNOPSIS | source-bounded subtype review |
-| `AB46` | `QuantifiedPersonNP` | `behavior_aligned` | ClassifierAndQuantityNP | SRC-BOND-SIO-2024-CLASSIFIERS, SRC-WINTERSTEIN-ETAL-2023-NOMINAL-EXPRESSIONS, SRC-XIA-2025-CLASSIFIERS, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
-| `AB51` | `RepetitiveComplementVP` | `behavior_aligned` | Faan1ComplementProfiles | SRC-CHOR-2013-FAAN1, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
-| `AB54` | `RestorativeComplementVP` | `behavior_aligned` | Faan1ComplementProfiles | SRC-CHOR-2013-FAAN1, SRC-CUHK-CANTONESE-EXPRESS-DAILY09 | source-bounded subtype review |
-| `AB64` | `SourceMotionClause` | `behavior_aligned` | GoalSourceAndPath | SRC-LEUNG-2014-COVERBS, SRC-LEUNG-2026-MOTION, SRC-YIP-MATTHEWS-2000-BASIC | source-bounded subtype review |
-| `AB67` | `StativePredicate` | `behavior_aligned` | StativePredication | SRC-ALDERETE-ETAL-2017-SYNOPSIS, SRC-FRANCIS-MATTHEWS-2005-VERB-CATEGORY, SRC-YIP-1988-NEGATION | source-bounded subtype review |
-| `AB82` | `WhClassifierQuestion` | `behavior_aligned` | WhNominals | SRC-WONG-2023-LANGUAGE-SAMPLE, SRC-XIA-2025-CLASSIFIERS, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
-| `AA02` | `AcceptabilityANotA` | `behavior_aligned` | ANotAQuestions | SRC-LI-2017-ANOTA, SRC-LUI-2023-PREVERBAL-DAK, SRC-SYBESMA-2013 | source-bounded subtype review |
-| `AA03` | `AcceptabilityClause` | `behavior_aligned` | AcceptabilityAndFreeChoice | SRC-CHENG-SYBESMA-2004-POSTVERBAL-DAK, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
-| `AA31` | `CopularANotAQuestion` | `behavior_aligned` | ANotAQuestions | SRC-LAW-2001-ANOTA, SRC-LI-2017-ANOTA, SRC-WONG-2023-LANGUAGE-SAMPLE, SRC-YIP-1988-NEGATION | source-bounded subtype review |
-| `AB12` | `OpinionQuestion` | `behavior_aligned` | TypedWhAndStanceQuestions | SRC-ALDERETE-ETAL-2017-SYNOPSIS, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
-| `AB14` | `OrdinalClassifierNP` | `behavior_aligned` | OrdinalNominals | SRC-LAM-LAU-LEE-2024-SEGMENTATION, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
-| `AB68` | `SuggestionQuestion` | `behavior_aligned` | DirectivesRequestsAndSuggestions | SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
+| `AA07` | `AssociativeNP` | `narrowing_candidate` | AssociativeAndCoordinatedNP | SRC-SIO-2011-GE3, SRC-YU-2006-NOMINAL-MODIFIERS | source-bounded subtype review |
+| `AA30` | `CoordinatedNP` | `narrowing_candidate` | AssociativeAndCoordinatedNP | SRC-WONG-2023-LANGUAGE-SAMPLE, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
+| `AB23` | `PoliteImperativeClause` | `narrowing_candidate` | DirectivesRequestsAndSuggestions | SRC-CHOW-2007-CANTONESE-EVERYONE, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
+| `AA06` | `ApproximateQuantity` | `narrowing_candidate` | ClassifierAndQuantityNP | SRC-TANG-2024-CANTONESE-GRAMMAR-GUIDE | source-bounded subtype review |
+| `AA12` | `ClassifierObjectNP` | `narrowing_candidate` | ClassifierAndQuantityNP | SRC-BOND-SIO-2024-CLASSIFIERS, SRC-CHENG-SYBESMA-1999-NP, SRC-SIMPSON-SOH-NOMOTO-2011-BARE-CL, SRC-XIA-2025-CLASSIFIERS | source-bounded subtype review |
+| `AA20` | `CognitionStatementClause` | `narrowing_candidate` | CognitionAndStance | SRC-LUI-2025-REPORTED-THOUGHT, SRC-YAP-WONG-CHOR-2014-STANCE | source-bounded subtype review |
+| `AA29` | `ConditionalClause` | `narrowing_candidate` | ConditionalRelations | SRC-CHENG-2023-TP-SFP-CONDITIONAL, SRC-IIDA-2009-CONDITIONAL-GE3, SRC-LIANG-MAI-2025-GRAMMAR-CODING, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
+| `AA41` | `DelimitedVP` | `narrowing_candidate` | DelimitativeAspect | SRC-CUHK-CANTONESE-EXPRESS-DAILY09, SRC-SIO-BOND-2025, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
+| `AA57` | `ExistentialQuestion` | `narrowing_candidate` | ExistentialQuestions | SRC-HARA-2023-POLAR, SRC-LIANG-MAI-2026-GRAMMAR-CODING, SRC-YIP-MATTHEWS-2000-BASIC | source-bounded subtype review |
+| `AA59` | `ExperientialClause` | `narrowing_candidate` | ExperientialAspect | SRC-FAN-2024-JAU-VP-ASPECT, SRC-SIO-BOND-2025, SRC-ZHANG-1970-PREDICATIVE-SUFFIXES, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
+| `AA63` | `ExperientialYesNoQuestion` | `narrowing_candidate` | ExperientialAspect | SRC-FAN-2024-JAU-VP-ASPECT, SRC-HARA-2023-POLAR, SRC-MATTHEWS-YIP-2011-ASPECT-MULTIMEDIA, SRC-YIP-MATTHEWS-2000-BASIC | source-bounded subtype review |
+| `AA75` | `IntransitiveVP` | `narrowing_candidate` | ValencyAndArgumentStructure | SRC-ALDERETE-ETAL-2017-SYNOPSIS, SRC-YIP-MATTHEWS-2000-SYNTACTIC-TRANSFER, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
+| `AA80` | `LocativePlacePhrase` | `narrowing_candidate` | LocativeAndPosturalPredication | SRC-KWAN-2010-LOCATIVE, SRC-YIP-MATTHEWS-2000-BASIC | source-bounded subtype review |
+| `AA82` | `LocativeWhQuestion` | `narrowing_candidate` | TypedWhAndStanceQuestions | SRC-CHOW-2007-CANTONESE-EVERYONE, SRC-WONG-2023-LANGUAGE-SAMPLE, SRC-YIP-MATTHEWS-2000-BASIC, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
+| `AA93` | `MotionGoalVP` | `narrowing_candidate` | GoalSourceAndPath | SRC-CHOR-2018-DIRECTIONALS, SRC-LEUNG-2026-MOTION, SRC-SZETO-2015-PERFECTIVE | source-bounded subtype review |
+| `AA94` | `MotionPurposeChain` | `narrowing_candidate` | PurposeSerialRelations | SRC-LEUNG-2026-MOTION, SRC-MATTHEWS-2006-SVC | source-bounded subtype review |
+| `AA98` | `NegatedExistentialClause` | `narrowing_candidate` | Negation | SRC-LAM-2018-NEGATION-ASPECT, SRC-YIP-1988-NEGATION, SRC-YIP-MATTHEWS-2000-BASIC | source-bounded subtype review |
+| `AB03` | `NegatedVP` | `narrowing_candidate` | Negation | SRC-LAM-2018-NEGATION-ASPECT, SRC-YIP-1988-NEGATION, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
+| `AB07` | `NegativePotentialComplement` | `narrowing_candidate` | ResultAndPotentialComplements | SRC-CHENG-SYBESMA-2004-POSTVERBAL-DAK | source-bounded subtype review |
+| `AB08` | `NegativePotentialDirectionalVP` | `narrowing_candidate` | ResultAndPotentialComplements | SRC-CHENG-SYBESMA-2004-POSTVERBAL-DAK | source-bounded subtype review |
+| `AB13` | `OpinionStanceFrame` | `narrowing_candidate` | CognitionAndStance | SRC-ALDERETE-ETAL-2017-SYNOPSIS, SRC-YAP-WONG-CHOR-2014-STANCE, SRC-YIP-MATTHEWS-2000-BASIC | source-bounded subtype review |
+| `AB17` | `PathPhrase` | `narrowing_candidate` | GoalSourceAndPath | SRC-LEUNG-2014-COVERBS, SRC-YIP-MATTHEWS-2000-BASIC | source-bounded subtype review |
+| `AB18` | `PerfectiveDirectionalVP` | `narrowing_candidate` | AspectDirectionalComposition | SRC-SHAN-JIN-2025-MOTION-TYPOLOGY, SRC-SIO-BOND-2025, SRC-YIU-2016-DIRECTIONAL-ASPECT, SRC-ZHANG-1970-PREDICATIVE-SUFFIXES | source-bounded subtype review |
+| `AB36` | `ProgressiveDirectionalVP` | `narrowing_candidate` | AspectDirectionalComposition | SRC-KATAOKA-2018-PROGRESSIVE-GAN, SRC-SHAN-JIN-2025-MOTION-TYPOLOGY, SRC-YIU-2016-DIRECTIONAL-ASPECT | source-bounded subtype review |
+| `AB41` | `ProgressiveWhObjectQuestion` | `narrowing_candidate` | TypedWhAndStanceQuestions | SRC-ALDERETE-ETAL-2017-SYNOPSIS | source-bounded subtype review |
+| `AB46` | `QuantifiedPersonNP` | `narrowing_candidate` | ClassifierAndQuantityNP | SRC-BOND-SIO-2024-CLASSIFIERS, SRC-WINTERSTEIN-ETAL-2023-NOMINAL-EXPRESSIONS, SRC-XIA-2025-CLASSIFIERS, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
+| `AB51` | `RepetitiveComplementVP` | `narrowing_candidate` | Faan1ComplementProfiles | SRC-CHOR-2013-FAAN1, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
+| `AB54` | `RestorativeComplementVP` | `narrowing_candidate` | Faan1ComplementProfiles | SRC-CHOR-2013-FAAN1, SRC-CUHK-CANTONESE-EXPRESS-DAILY09 | source-bounded subtype review |
+| `AB64` | `SourceMotionClause` | `narrowing_candidate` | GoalSourceAndPath | SRC-LEUNG-2014-COVERBS, SRC-LEUNG-2026-MOTION, SRC-YIP-MATTHEWS-2000-BASIC | source-bounded subtype review |
+| `AB67` | `StativePredicate` | `narrowing_candidate` | StativePredication | SRC-ALDERETE-ETAL-2017-SYNOPSIS, SRC-FRANCIS-MATTHEWS-2005-VERB-CATEGORY, SRC-YIP-1988-NEGATION | source-bounded subtype review |
+| `AB82` | `WhClassifierQuestion` | `narrowing_candidate` | WhNominals | SRC-WONG-2023-LANGUAGE-SAMPLE, SRC-XIA-2025-CLASSIFIERS, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
+| `AA02` | `AcceptabilityANotA` | `narrowing_candidate` | ANotAQuestions | SRC-LI-2017-ANOTA, SRC-LUI-2023-PREVERBAL-DAK, SRC-SYBESMA-2013 | source-bounded subtype review |
+| `AA03` | `AcceptabilityClause` | `narrowing_candidate` | AcceptabilityAndFreeChoice | SRC-CHENG-SYBESMA-2004-POSTVERBAL-DAK, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
+| `AA31` | `CopularANotAQuestion` | `narrowing_candidate` | ANotAQuestions | SRC-LAW-2001-ANOTA, SRC-LI-2017-ANOTA, SRC-WONG-2023-LANGUAGE-SAMPLE, SRC-YIP-1988-NEGATION | source-bounded subtype review |
+| `AB12` | `OpinionQuestion` | `narrowing_candidate` | TypedWhAndStanceQuestions | SRC-ALDERETE-ETAL-2017-SYNOPSIS, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
+| `AB14` | `OrdinalClassifierNP` | `narrowing_candidate` | OrdinalNominals | SRC-LAM-LAU-LEE-2024-SEGMENTATION, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
+| `AB68` | `SuggestionQuestion` | `narrowing_candidate` | DirectivesRequestsAndSuggestions | SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
 | `AA05` | `AdjectivalPredicateClause` | `retired_evidence_rehome_candidate` | StativePredication | SRC-ALDERETE-ETAL-2017-SYNOPSIS, SRC-FRANCIS-MATTHEWS-2005-VERB-CATEGORY | SubjectPredicateClause / stative-predicate research |
 | `AA08` | `BareClassifierNP` | `retired_evidence_rehome_candidate` | ClassifierAndQuantityNP | SRC-BOND-SIO-2024-CLASSIFIERS, SRC-CHENG-SYBESMA-1999-NP, SRC-SIMPSON-SOH-NOMOTO-2011-BARE-CL | ClassifierAndQuantityNP C-N subtype research |
 | `AA09` | `CausativeResultFrame` | `retired_evidence_rehome_candidate` | ResultativeAndChangePredication | SRC-LAI-PANG-2023, SRC-MATTHEWS-YIP-2011-ASPECT-MULTIMEDIA | independently typed causative/resultative structure |
 | `AA10` | `CausativeResultPredicate` | `retired_evidence_rehome_candidate` | ResultativeAndChangePredication | SRC-KEDZIOR-2023, SRC-LAI-PANG-2023 | causative-resultative family with lexical and argument boundaries |
 | `AA18` | `CognitionDelimitedObjectVP` | `retired_evidence_rehome_candidate` | CognitionAndStance | SRC-ALDERETE-ETAL-2017-SYNOPSIS, SRC-SIO-BOND-2025, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | DelimitedVP plus lexeme-licensed typed complements |
 | `AA19` | `CognitionDelimitedVP` | `retired_evidence_rehome_candidate` | CognitionAndStance | SRC-SIO-BOND-2025, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | DelimitedVP with lexeme-sensitive cognition-complement research |
-| `AA21` | `Comment` | `retired_evidence_rehome_candidate` | DiscourseRoleStructure | — | TopicComment plus independently evidenced discourse-role research |
 | `AA22` | `ComparativeStative` | `retired_evidence_rehome_candidate` | ScalarAndComparativePredication | SRC-LAM-2014-SURPASS-COMPARATIVE, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | DegreeMannerAdverbial for property plus 啲; separate explicit surpass-comparative research |
 | `AA25` | `CompletionThenClause` | `retired_evidence_rehome_candidate` | ConditionalRelations | SRC-FAN-CHAN-2022, SRC-LIANG-MAI-2025-GRAMMAR-CODING, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | typed sequential ClauseRelationEdge with independently parsed earlier and later members |
 | `AA28` | `ConditionResult` | `retired_evidence_rehome_candidate` | ConditionalRelations | SRC-CHENG-2023-TP-SFP-CONDITIONAL, SRC-LIANG-MAI-2025-GRAMMAR-CODING, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | typed conditional ClauseRelationEdge with independently parsed relation members |
-| `AA35` | `DefinitionComplement` | `retired_evidence_rehome_candidate` | DefinitionAndIdentification | NONE | ordinary wh/NP complement structure |
-| `AA36` | `DefinitionExplanatoryFrame` | `retired_evidence_rehome_candidate` | DefinitionAndIdentification | NONE | compositional copular, wh/NP, linker, and particle structure |
 | `AA43` | `DemonstrativeHeadNP` | `retired_evidence_rehome_candidate` | ClassifierAndQuantityNP | SRC-BOND-SIO-2024-CLASSIFIERS, SRC-LAM-LAU-LEE-2024-SEGMENTATION | OvertHeadDemonstrativeClassifierNP / HeadlessDemonstrativeClassifierNP research |
 | `AA44` | `DemonstrativeQuantifiedClassifierNP` | `retired_evidence_rehome_candidate` | ClassifierAndQuantityNP | SRC-BOND-SIO-2024-CLASSIFIERS, SRC-LAM-LAU-LEE-2024-SEGMENTATION, SRC-XIA-2025-CLASSIFIERS | ClassifierAndQuantityNP overt D+Num+CL+N research |
 | `AA48` | `DirectionalCausedMotionVP` | `retired_evidence_rehome_candidate` | DirectionalMotion | SRC-LAI-PANG-2023, SRC-YIU-2005-DIRECTIONAL-VERBS | typed caused-motion/result plus directional relations |
@@ -109,13 +108,10 @@ These rows may contain a supportable narrow construction even though the present
 | `AB42` | `ProhibitiveFragment` | `retired_evidence_rehome_candidate` | FragmentsAndEllipsis | SRC-CHIN-2018-PROHIBITIVES, SRC-YIP-MATTHEWS-2000-BASIC | ProhibitiveImperative plus lexical-formula protection |
 | `AB44` | `PurposePredicate` | `retired_evidence_rehome_candidate` | PurposeSerialRelations | SRC-CHOR-2018-DIRECTIONALS, SRC-MATTHEWS-2006-SVC | ordinary VP plus an evidenced inter-event purpose relation |
 | `AB57` | `ResultStateClause` | `retired_evidence_rehome_candidate` | ResultativeAndChangePredication | SRC-FRANCIS-MATTHEWS-2005-VERB-CATEGORY, SRC-KEDZIOR-2023 | compositional state predicate, aspect, and discourse scope |
-| `AB59` | `ScalarRangeFragment` | `retired_evidence_rehome_candidate` | MeasureScalarAndQuantity | — | ordinary nominal/scalar structure; future discourse-fragment research if independently evidenced |
 | `AB61` | `SchedulingQuestion` | `retired_evidence_rehome_candidate` | QuestionAndCognitionStructure | SRC-ALDERETE-ETAL-2017-SYNOPSIS, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | modal and VP composition plus independently typed wh-time question research |
 | `AB62` | `SeemingPerfectiveResultClause` | `retired_evidence_rehome_candidate` | ResultativeAndChangePredication | SRC-KEDZIOR-2023, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | ordinary clause composition and independently evidenced stance relations |
 | `AB65` | `SpeechTransferClause` | `retired_evidence_rehome_candidate` | SpeechTransferComplement | SRC-YIP-MATTHEWS-2017-INTERMEDIATE | ordinary clause composition plus DitransitiveSpeechVP |
 | `AB69` | `TemporalAdverbialClause` | `retired_evidence_rehome_candidate` | TemporalExpressions | SRC-YIP-2024-TEMPORAL-ADVERBIAL-CLAUSES | explicit temporal-subordination subtype research |
 | `AB72` | `TimeToActionFrame` | `retired_evidence_rehome_candidate` | TemporalAndMeasurePredication | SRC-YIP-2024-TEMPORAL-ADVERBIAL-CLAUSES, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | ordinary copular/temporal/predicate composition |
-| `AB75` | `TopicCommentClause` | `retired_evidence_rehome_candidate` | DiscourseRoleStructure | — | TopicComment plus independently evidenced discourse-role research |
 | `AB76` | `TransformationResultFrame` | `retired_evidence_rehome_candidate` | ResultativeAndChangePredication | SRC-KEDZIOR-2023, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | ordinary topic/clause composition |
 | `AB77` | `TransformationResultPredicate` | `retired_evidence_rehome_candidate` | ResultativeAndChangePredication | SRC-KEDZIOR-2023, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | independently sourced transformation predicates |
-| `AB79` | `VPComplementFrame` | `retired_evidence_rehome_candidate` | SpeechTransferComplement | NONE | lexeme-specific complement profiles with direct evidence |

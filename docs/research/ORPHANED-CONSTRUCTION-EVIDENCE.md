@@ -2,7 +2,7 @@
 
 Evidence is "orphaned" here only in the governance sense: it is attached to a retired or non-language record and may need a narrow language-construction home. It is not automatically transferable.
 
-## Retired records with preserved research or sources
+## Retired records with preserved source links
 
 | Code | Retired label | Family | Preserved sources | Preserved research direction |
 |---|---|---|---|---|
@@ -12,12 +12,9 @@ Evidence is "orphaned" here only in the governance sense: it is attached to a re
 | `AA10` | `CausativeResultPredicate` | ResultativeAndChangePredication | SRC-KEDZIOR-2023, SRC-LAI-PANG-2023 | causative-resultative family with lexical and argument boundaries |
 | `AA18` | `CognitionDelimitedObjectVP` | CognitionAndStance | SRC-ALDERETE-ETAL-2017-SYNOPSIS, SRC-SIO-BOND-2025, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | DelimitedVP plus lexeme-licensed typed complements |
 | `AA19` | `CognitionDelimitedVP` | CognitionAndStance | SRC-SIO-BOND-2025, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | DelimitedVP with lexeme-sensitive cognition-complement research |
-| `AA21` | `Comment` | DiscourseRoleStructure | — | TopicComment plus independently evidenced discourse-role research |
 | `AA22` | `ComparativeStative` | ScalarAndComparativePredication | SRC-LAM-2014-SURPASS-COMPARATIVE, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | DegreeMannerAdverbial for property plus 啲; separate explicit surpass-comparative research |
 | `AA25` | `CompletionThenClause` | ConditionalRelations | SRC-FAN-CHAN-2022, SRC-LIANG-MAI-2025-GRAMMAR-CODING, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | typed sequential ClauseRelationEdge with independently parsed earlier and later members |
 | `AA28` | `ConditionResult` | ConditionalRelations | SRC-CHENG-2023-TP-SFP-CONDITIONAL, SRC-LIANG-MAI-2025-GRAMMAR-CODING, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | typed conditional ClauseRelationEdge with independently parsed relation members |
-| `AA35` | `DefinitionComplement` | DefinitionAndIdentification | NONE | ordinary wh/NP complement structure |
-| `AA36` | `DefinitionExplanatoryFrame` | DefinitionAndIdentification | NONE | compositional copular, wh/NP, linker, and particle structure |
 | `AA43` | `DemonstrativeHeadNP` | ClassifierAndQuantityNP | SRC-BOND-SIO-2024-CLASSIFIERS, SRC-LAM-LAU-LEE-2024-SEGMENTATION | OvertHeadDemonstrativeClassifierNP / HeadlessDemonstrativeClassifierNP research |
 | `AA44` | `DemonstrativeQuantifiedClassifierNP` | ClassifierAndQuantityNP | SRC-BOND-SIO-2024-CLASSIFIERS, SRC-LAM-LAU-LEE-2024-SEGMENTATION, SRC-XIA-2025-CLASSIFIERS | ClassifierAndQuantityNP overt D+Num+CL+N research |
 | `AA48` | `DirectionalCausedMotionVP` | DirectionalMotion | SRC-LAI-PANG-2023, SRC-YIU-2005-DIRECTIONAL-VERBS | typed caused-motion/result plus directional relations |
@@ -44,16 +41,24 @@ Evidence is "orphaned" here only in the governance sense: it is attached to a re
 | `AB42` | `ProhibitiveFragment` | FragmentsAndEllipsis | SRC-CHIN-2018-PROHIBITIVES, SRC-YIP-MATTHEWS-2000-BASIC | ProhibitiveImperative plus lexical-formula protection |
 | `AB44` | `PurposePredicate` | PurposeSerialRelations | SRC-CHOR-2018-DIRECTIONALS, SRC-MATTHEWS-2006-SVC | ordinary VP plus an evidenced inter-event purpose relation |
 | `AB57` | `ResultStateClause` | ResultativeAndChangePredication | SRC-FRANCIS-MATTHEWS-2005-VERB-CATEGORY, SRC-KEDZIOR-2023 | compositional state predicate, aspect, and discourse scope |
-| `AB59` | `ScalarRangeFragment` | MeasureScalarAndQuantity | — | ordinary nominal/scalar structure; future discourse-fragment research if independently evidenced |
 | `AB61` | `SchedulingQuestion` | QuestionAndCognitionStructure | SRC-ALDERETE-ETAL-2017-SYNOPSIS, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | modal and VP composition plus independently typed wh-time question research |
 | `AB62` | `SeemingPerfectiveResultClause` | ResultativeAndChangePredication | SRC-KEDZIOR-2023, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | ordinary clause composition and independently evidenced stance relations |
 | `AB65` | `SpeechTransferClause` | SpeechTransferComplement | SRC-YIP-MATTHEWS-2017-INTERMEDIATE | ordinary clause composition plus DitransitiveSpeechVP |
 | `AB69` | `TemporalAdverbialClause` | TemporalExpressions | SRC-YIP-2024-TEMPORAL-ADVERBIAL-CLAUSES | explicit temporal-subordination subtype research |
 | `AB72` | `TimeToActionFrame` | TemporalAndMeasurePredication | SRC-YIP-2024-TEMPORAL-ADVERBIAL-CLAUSES, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | ordinary copular/temporal/predicate composition |
-| `AB75` | `TopicCommentClause` | DiscourseRoleStructure | — | TopicComment plus independently evidenced discourse-role research |
 | `AB76` | `TransformationResultFrame` | ResultativeAndChangePredication | SRC-KEDZIOR-2023, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | ordinary topic/clause composition |
 | `AB77` | `TransformationResultPredicate` | ResultativeAndChangePredication | SRC-KEDZIOR-2023, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | independently sourced transformation predicates |
-| `AB79` | `VPComplementFrame` | SpeechTransferComplement | NONE | lexeme-specific complement profiles with direct evidence |
+
+## Retired research directions without preserved source links
+
+| Code | Retired label | Family | Preserved sources | Preserved research direction |
+|---|---|---|---|---|
+| `AA21` | `Comment` | DiscourseRoleStructure | — | TopicComment plus independently evidenced discourse-role research |
+| `AA35` | `DefinitionComplement` | DefinitionAndIdentification | — | ordinary wh/NP complement structure |
+| `AA36` | `DefinitionExplanatoryFrame` | DefinitionAndIdentification | — | compositional copular, wh/NP, linker, and particle structure |
+| `AB59` | `ScalarRangeFragment` | MeasureScalarAndQuantity | — | ordinary nominal/scalar structure; future discourse-fragment research if independently evidenced |
+| `AB75` | `TopicCommentClause` | DiscourseRoleStructure | — | TopicComment plus independently evidenced discourse-role research |
+| `AB79` | `VPComplementFrame` | SpeechTransferComplement | — | lexeme-specific complement profiles with direct evidence |
 
 ## Internal/non-language records carrying source links
 
