@@ -9,6 +9,8 @@ on:
       - data/construction-identities.json
       - data/construction-candidate-readiness.json
       - grammar/**
+      - config/verification-profiles.json
+      - package.json
       - docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv
       - archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json
       - docs/research/SUPPORTED-PRODUCTIVE-CANDIDATES.md
@@ -24,6 +26,8 @@ on:
       - data/construction-identities.json
       - data/construction-candidate-readiness.json
       - grammar/**
+      - config/verification-profiles.json
+      - package.json
       - docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv
       - archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json
       - docs/research/SUPPORTED-PRODUCTIVE-CANDIDATES.md
@@ -44,5 +48,5 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Verify full-repository discovery sweep
-        run: node tools/generate-supported-productive-discovery.js
+      - name: Run core verification including discovery sweep
+        run: npm run verify
