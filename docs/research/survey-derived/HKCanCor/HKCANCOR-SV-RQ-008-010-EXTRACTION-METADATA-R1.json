@@ -1,0 +1,42 @@
+{
+  "schema": "canto-span-hkcancor-extraction-metadata-v1",
+  "status": "complete",
+  "run_environment": {
+    "python": "3.14.4",
+    "platform": "Linux-7.0.0-28-generic-x86_64-with-glibc2.43",
+    "pycantonese": "5.0.0"
+  },
+  "corpus": {
+    "files": 58,
+    "utterances": 16162,
+    "words": 153656
+  },
+  "raw_candidate_total": 323,
+  "raw_counts": {
+    "SV-RQ-008": 0,
+    "SV-RQ-009": 110,
+    "SV-RQ-010": 213
+  },
+  "triage_counts": {
+    "SV-RQ-009": {
+      "false_positive": 86,
+      "related_non_target_profile": 16,
+      "confirmed_target_attestation": 7,
+      "plausible_pause_separated_target": 1
+    },
+    "SV-RQ-010": {
+      "complex_same_clause_candidate": 35,
+      "wrong_particle_or_lexical_laa_match": 37,
+      "punctuation_separated_candidate": 28,
+      "duplicate_earlier_zo_anchor": 11,
+      "tight_surface_candidate": 102
+    }
+  },
+  "input_hashes": {
+    "uploaded_archive_sha256": "b8db200ea0505807c0b890e814e4ed185b2ac0c36ebf36f23d718b88ed8780e2",
+    "extractor_sha256": "2a896e54012ec4dde2d6cb99e3a4eb37d53b8759781fb89cac9bbca90e759a64",
+    "raw_candidates_json_sha256": "5ee5e4b6b5f19e31e133ac79569ec615b7d8549eefa5891a2684f7a60bcdad96",
+    "raw_summary_json_sha256": "c45fde45e505c0ac8388fb02a87ac66b165b2ce885791e9062b33ec44c2bf4c7"
+  },
+  "reproduction": "Run the checked-in extractor with PyCantonese 5.0.0. The raw candidate archive is not required in the repository because all records are reproducible from the public bundled corpus."
+}
