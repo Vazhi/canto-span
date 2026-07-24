@@ -12,7 +12,7 @@ state dimensions.
 - construction workflow: **2 active / 131 workflow-archived**
 - retired labels: **48**
 - permanent construction identities: **181**
-- expert-adjudicated identities: **34 / 181**
+- expert-adjudicated identities: **39 / 181**
 - `supported_productive`: **0**
 - `provisional`: **0**
 - `research_pending`: **79**
