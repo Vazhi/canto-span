@@ -4,6 +4,7 @@
     "core": [
       { "id": "standard-tests", "command": ["npm", "test"] },
       { "id": "construction-notes", "command": ["node", "tools/verify-construction-notes.js"] },
+      { "id": "construction-adjudications", "command": ["node", "tools/apply-construction-adjudications.js"] },
       { "id": "construction-identities", "command": ["node", "tools/verify-construction-identities.js"] },
       { "id": "supported-productivity-discovery", "command": ["node", "tools/generate-supported-productive-discovery.js"] },
       { "id": "runtime-registry", "command": ["node", "tools/run-construction-registry-audit.js"] },
