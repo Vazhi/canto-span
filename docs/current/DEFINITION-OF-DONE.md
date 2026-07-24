@@ -22,7 +22,7 @@ A construction is eligible only when all of the following are true:
       critical positive and negative item has at least 30 usable independently
       submitted adjudicated judgments from eligible respondents using the same
       locked clean instrument and inclusion criteria. No respondent receives
-      special designation or weight.
+      special status or weight.
 - [ ] **Negative and boundary cases are executable.** Every case the construction
       must not match is present in a passing parser test.
 - [ ] **Implementation matches documentation exactly.** The runtime path has been
@@ -37,7 +37,8 @@ A construction is eligible only when all of the following are true:
       sources and instrument version, the usable judgment count for each critical
       item, the corpus classifications, and what remains uncertain.
 
-If any item is unchecked, the construction remains `provisional` or lower.
+If any item is unchecked, the construction remains `provisional` or lower,
+regardless of internal render, regression, or held-out success.
 
 ## `provisional`
 
@@ -112,7 +113,7 @@ None of the following makes a construction or release done by itself:
 
 - parser, render, regression, or held-out success;
 - one respondent's judgment;
-- a large submission count without usable item-level coverage;
+- a large submission count without usable per-item coverage;
 - a limited or defective instrument;
 - an unclassified corpus hit count;
 - an accepted name without matched source and runtime scope;
