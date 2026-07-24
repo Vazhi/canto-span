@@ -28,10 +28,18 @@ function requireText(file, text, label) {
   }
 }
 
+function requireAll(file, values, labelPrefix) {
+  for (const value of values) {
+    requireText(file, value, `${labelPrefix} ${value}`);
+  }
+}
+
 const agentsPath = "AGENTS.md";
 const startPath = "docs/current/00-START-HERE.md";
 const statePath = "docs/current/PROJECT-STATE.md";
 const readmePath = "README.md";
+const coreWorkflowPath = ".github/workflows/supported-productive-discovery.yml";
+const researchWorkflowPath = ".github/workflows/research-provenance.yml";
 
 requireText(agentsPath, "docs/current/00-START-HERE.md", "mandatory Start Here pointer");
 requireText(agentsPath, "inspect current `main` and open pull requests", "multi-agent overlap check");
@@ -100,13 +108,66 @@ requireText(statePath, "`review-packets/native-panel/active-v2/followup-draft-v1
 requireText(readmePath, "AGENTS.md", "root agent bootstrap pointer");
 requireText(readmePath, "docs/current/00-START-HERE.md", "root Start Here pointer");
 
+requireText(coreWorkflowPath, "permissions: contents: read", "core workflow read-only permissions");
+requireText(researchWorkflowPath, "permissions: contents: read", "research workflow read-only permissions");
+
+const requiredCoreWorkflowInputs = [
+  "AGENTS.md",
+  "README.md",
+  "HANDOFF.md",
+  "main.js",
+  "manifest.json",
+  "package.json",
+  "data/**",
+  "grammar/**",
+  "tests/**",
+  "tools/**",
+  "config/**",
+  "docs/current/**",
+];
+requireAll(coreWorkflowPath, requiredCoreWorkflowInputs, "core workflow trigger");
+
+const requiredResearchWorkflowInputs = [
+  "data/construction-identities.json",
+  "data/construction-adjudications.json",
+  "data/construction-adjudication-batches/**",
+  "data/construction-candidate-readiness.json",
+  "docs/current/**",
+  "docs/research/**",
+  "external-evidence/**",
+  "grammar/**",
+  "main.js",
+  "review-packets/**",
+  "tests/constructions/**",
+  "tests/tooling/corpus-review/**",
+  "tests/tooling/native-panel/**",
+  "tools/corpus-review/**",
+  "tools/verify-active-panel-snapshot-links.js",
+  "tools/verify-active-review-workflow.js",
+  "tools/verify-native-followup-draft.js",
+  "tools/verify-native-panel-snapshot.js",
+  "tools/verify-pfv-panel-snapshot.js",
+  "tools/verify-rul-survey-readiness.js",
+  "config/verification-profiles.json",
+];
+requireAll(researchWorkflowPath, requiredResearchWorkflowInputs, "research workflow trigger");
+
 const result = {
-  schema: "canto-span-agent-coordination-contract-v1",
+  schema: "canto-span-agent-coordination-contract-v2",
   status: errors.length === 0 ? "PASS" : "FAIL",
-  checked_files: [agentsPath, startPath, statePath, readmePath],
+  checked_files: [
+    agentsPath,
+    startPath,
+    statePath,
+    readmePath,
+    coreWorkflowPath,
+    researchWorkflowPath,
+  ],
   required_headings: requiredHeadings.length,
   required_pointers: requiredPointers.length,
   required_rules: requiredRules.length,
+  required_core_workflow_inputs: requiredCoreWorkflowInputs.length,
+  required_research_workflow_inputs: requiredResearchWorkflowInputs.length,
   errors,
 };
 
