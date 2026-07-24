@@ -5,7 +5,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const { TextDecoder } = require("node:util");
 
-const EXTRACTION_TOOL_VERSION = "ab30-corpus-review/1.0.0";
+const EXTRACTION_TOOL_VERSION = "ab30-corpus-review/1.0.1";
 const ALLOWED_CLASSIFICATIONS = Object.freeze([
   "unreviewed",
   "genuine",
@@ -18,6 +18,8 @@ const CONSTRUCTION = Object.freeze({
   canonicalIdentity: "ZoMarkedPerfectiveObjectVP",
   legacyRuntimeLabel: "PostverbalZoPerfectiveVP",
 });
+const DISCLAIMER =
+  "Extraction is mechanical candidate preparation, not linguistic validation, construction membership, acceptability, readiness, status, identity, promotion, runtime, or release evidence.";
 const EXTRACTION_REASON =
   "High-recall surface heuristic: a punctuation-bounded span has overt 咗, non-punctuation material before it, and letter/number material after it; reviewer validation required.";
 const PROHIBITED_SOURCE_PATTERNS = Object.freeze([
@@ -36,6 +38,23 @@ function sha256(value) {
   return crypto.createHash("sha256").update(value, "utf8").digest("hex");
 }
 
+function stableJson(value) {
+  if (Array.isArray(value)) {
+    return `[${value.map(stableJson).join(",")}]`;
+  }
+  if (value && typeof value === "object") {
+    return `{${Object.keys(value)
+      .sort()
+      .map((key) => `${JSON.stringify(key)}:${stableJson(value[key])}`)
+      .join(",")}}`;
+  }
+  return JSON.stringify(value);
+}
+
+function manifestHash(manifest) {
+  return sha256(stableJson(manifest));
+}
+
 function stableCandidateId(candidate) {
   const identity = [
     CONSTRUCTION.permanentCode,
@@ -47,8 +66,8 @@ function stableCandidateId(candidate) {
   return `ab30-${sha256(identity).slice(0, 20)}`;
 }
 
-function duplicateGroupId(text) {
-  return `dup-${sha256(text).slice(0, 16)}`;
+function duplicateGroupId(matchedSurfaceSpan) {
+  return `dup-${sha256(matchedSurfaceSpan).slice(0, 16)}`;
 }
 
 function readJson(filePath, label = "JSON") {
@@ -106,9 +125,7 @@ function resolveRepoPath(repoRoot, repoPath) {
 
 function prohibitedReason(sourcePath) {
   for (const [pattern, reason] of PROHIBITED_SOURCE_PATTERNS) {
-    if (pattern.test(sourcePath)) {
-      return reason;
-    }
+    if (pattern.test(sourcePath)) return reason;
   }
   return null;
 }
@@ -118,8 +135,10 @@ function validateManifest(manifest, repoRoot, options = {}) {
   if (manifest.schemaVersion !== 1) {
     throw new Error("Source allowlist schemaVersion must be 1");
   }
-  if (manifest.permanentCode !== CONSTRUCTION.permanentCode) {
-    throw new Error(`Source allowlist permanentCode must be ${CONSTRUCTION.permanentCode}`);
+  for (const [field, expected] of Object.entries(CONSTRUCTION)) {
+    if (manifest[field] !== expected) {
+      throw new Error(`Source allowlist ${field} must be ${expected}`);
+    }
   }
   if (!Array.isArray(manifest.sources) || !Array.isArray(manifest.excludedSources)) {
     throw new Error("Source allowlist must contain sources and excludedSources arrays");
@@ -187,16 +206,10 @@ function readUtf8File(filePath, sourcePath) {
 }
 
 function readTextLineRecords(repoRoot, source) {
-  const absolutePath = resolveRepoPath(repoRoot, source.path);
-  const raw = readUtf8File(absolutePath, source.path);
+  const raw = readUtf8File(resolveRepoPath(repoRoot, source.path), source.path);
   const lines = raw.split(/\r\n|\n|\r/u);
-  if (lines.at(-1) === "") {
-    lines.pop();
-  }
-  return lines.map((text, index) => ({
-    recordId: `line:${index + 1}`,
-    text,
-  }));
+  if (lines.at(-1) === "") lines.pop();
+  return lines.map((text, index) => ({ recordId: `line:${index + 1}`, text }));
 }
 
 function hasSurfaceMaterial(value) {
@@ -209,23 +222,13 @@ function extractSurfaceMatches(text) {
   let searchFrom = 0;
   while (true) {
     const markerIndex = text.indexOf("咗", searchFrom);
-    if (markerIndex === -1) {
-      break;
-    }
+    if (markerIndex === -1) break;
     let start = markerIndex;
-    while (start > 0 && !delimiters.test(text[start - 1])) {
-      start -= 1;
-    }
+    while (start > 0 && !delimiters.test(text[start - 1])) start -= 1;
     let end = markerIndex + 1;
-    while (end < text.length && !delimiters.test(text[end])) {
-      end += 1;
-    }
-    while (start < markerIndex && /\s/u.test(text[start])) {
-      start += 1;
-    }
-    while (end > markerIndex + 1 && /\s/u.test(text[end - 1])) {
-      end -= 1;
-    }
+    while (end < text.length && !delimiters.test(text[end])) end += 1;
+    while (start < markerIndex && /\s/u.test(text[start])) start += 1;
+    while (end > markerIndex + 1 && /\s/u.test(text[end - 1])) end -= 1;
     const before = text.slice(start, markerIndex);
     const after = text.slice(markerIndex + 1, end);
     if (hasSurfaceMaterial(before) && hasSurfaceMaterial(after)) {
@@ -257,14 +260,10 @@ function buildCandidate(source, records, recordIndex, match) {
     nextRecordText: recordIndex + 1 < records.length ? records[recordIndex + 1].text : "",
     sourceType: source.sourceType,
     contentHash,
-    duplicateGroupId: duplicateGroupId(record.text),
+    duplicateGroupId: duplicateGroupId(match.matchedSurfaceSpan),
     extractionReason: EXTRACTION_REASON,
     extractionToolVersion: EXTRACTION_TOOL_VERSION,
-    review: {
-      classification: "unreviewed",
-      reviewerNote: "",
-      exclusionReason: "",
-    },
+    review: { classification: "unreviewed", reviewerNote: "", exclusionReason: "" },
   };
   candidate.candidateId = stableCandidateId(candidate);
   return candidate;
@@ -272,32 +271,27 @@ function buildCandidate(source, records, recordIndex, match) {
 
 function sourceInventory(manifest, repoRoot) {
   validateManifest(manifest, repoRoot);
-  const includedSources = manifest.sources.map((source) => {
-    const absolutePath = resolveRepoPath(repoRoot, source.path);
-    return {
+  return {
+    schemaVersion: 1,
+    permanentCode: CONSTRUCTION.permanentCode,
+    inventoryPolicy:
+      "Only paths explicitly declared in source-allowlist.json are inventoried; no repository-wide evidence scan is performed.",
+    includedSources: manifest.sources.map((source) => ({
       path: source.path,
       status: "included",
       sourceType: source.sourceType,
       format: source.format,
       inclusionReason: source.inclusionReason,
       exists: true,
-      contentHash: sha256(readUtf8File(absolutePath, source.path)),
-    };
-  });
-  const excludedSources = manifest.excludedSources.map((source) => ({
-    path: source.path,
-    status: "excluded",
-    reasonCode: source.reasonCode,
-    reason: source.reason,
-    exists: fs.existsSync(resolveRepoPath(repoRoot, source.path)),
-  }));
-  return {
-    schemaVersion: 1,
-    permanentCode: CONSTRUCTION.permanentCode,
-    inventoryPolicy:
-      "Only paths explicitly declared in source-allowlist.json are inventoried; no repository-wide evidence scan is performed.",
-    includedSources,
-    excludedSources,
+      contentHash: sha256(readUtf8File(resolveRepoPath(repoRoot, source.path), source.path)),
+    })),
+    excludedSources: manifest.excludedSources.map((source) => ({
+      path: source.path,
+      status: "excluded",
+      reasonCode: source.reasonCode,
+      reason: source.reason,
+      exists: fs.existsSync(resolveRepoPath(repoRoot, source.path)),
+    })),
   };
 }
 
@@ -317,18 +311,19 @@ function buildSummary(candidates, manifest) {
       (groupCounts.get(candidate.duplicateGroupId) || 0) + 1,
     );
   }
-  const sortedSourceCounts = Object.fromEntries(
-    Object.entries(countsBySource).sort(([left], [right]) => left.localeCompare(right)),
-  );
   const excludedByReason = {};
   for (const excluded of manifest.excludedSources) {
     excludedByReason[excluded.reasonCode] = (excludedByReason[excluded.reasonCode] || 0) + 1;
   }
   return {
     totalExtracted: candidates.length,
-    uniqueCandidateTexts: new Set(candidates.map((candidate) => candidate.text)).size,
+    uniqueCandidateTexts: new Set(
+      candidates.map((candidate) => candidate.matchedSurfaceSpan),
+    ).size,
     duplicateGroups: [...groupCounts.values()].filter((count) => count > 1).length,
-    countsBySource: sortedSourceCounts,
+    countsBySource: Object.fromEntries(
+      Object.entries(countsBySource).sort(([left], [right]) => left.localeCompare(right)),
+    ),
     countsByReviewClassification,
     excludedSourceInventory: {
       total: manifest.excludedSources.length,
@@ -344,7 +339,7 @@ function buildSummary(candidates, manifest) {
   };
 }
 
-function extractLedger(manifest, repoRoot, manifestRaw = JSON.stringify(manifest)) {
+function extractLedger(manifest, repoRoot, _manifestRaw = JSON.stringify(manifest)) {
   validateManifest(manifest, repoRoot);
   const candidates = [];
   for (const source of manifest.sources) {
@@ -360,9 +355,8 @@ function extractLedger(manifest, repoRoot, manifestRaw = JSON.stringify(manifest
     schemaVersion: 1,
     construction: { ...CONSTRUCTION },
     extractionToolVersion: EXTRACTION_TOOL_VERSION,
-    sourceManifestHash: sha256(manifestRaw),
-    disclaimer:
-      "Extraction is mechanical candidate preparation, not linguistic validation, construction membership, acceptability, readiness, status, identity, promotion, runtime, or release evidence.",
+    sourceManifestHash: manifestHash(manifest),
+    disclaimer: DISCLAIMER,
     candidates,
     summary: {},
   };
@@ -373,15 +367,21 @@ function extractLedger(manifest, repoRoot, manifestRaw = JSON.stringify(manifest
 function validateReview(review, candidateId) {
   assertPlainObject(review, `Review for ${candidateId}`);
   if (!ALLOWED_CLASSIFICATIONS.includes(review.classification)) {
-    throw new Error(
-      `Invalid classification for ${candidateId}: ${String(review.classification)}`,
-    );
+    throw new Error(`Invalid classification for ${candidateId}: ${String(review.classification)}`);
   }
   for (const field of ["reviewerNote", "exclusionReason"]) {
     if (typeof review[field] !== "string") {
       throw new Error(`${field} for ${candidateId} must be a string`);
     }
   }
+}
+
+function hasHumanReview(review) {
+  return (
+    review.classification !== "unreviewed" ||
+    review.reviewerNote.length > 0 ||
+    review.exclusionReason.length > 0
+  );
 }
 
 function mergeHumanReviews(freshLedger, existingLedger) {
@@ -397,11 +397,9 @@ function mergeHumanReviews(freshLedger, existingLedger) {
     validateReview(candidate.review, candidate.candidateId);
     existingById.set(candidate.candidateId, candidate);
   }
-
   const freshIds = new Set(freshLedger.candidates.map((candidate) => candidate.candidateId));
   const removedReviewed = existingLedger.candidates.filter(
-    (candidate) =>
-      candidate.review.classification !== "unreviewed" && !freshIds.has(candidate.candidateId),
+    (candidate) => hasHumanReview(candidate.review) && !freshIds.has(candidate.candidateId),
   );
   if (removedReviewed.length > 0) {
     throw new Error(
@@ -410,23 +408,16 @@ function mergeHumanReviews(freshLedger, existingLedger) {
         .join(", ")}`,
     );
   }
-
   for (const candidate of freshLedger.candidates) {
     const existing = existingById.get(candidate.candidateId);
-    if (existing) {
-      candidate.review = {
-        classification: existing.review.classification,
-        reviewerNote: existing.review.reviewerNote,
-        exclusionReason: existing.review.exclusionReason,
-      };
-    }
+    if (existing) candidate.review = { ...existing.review };
   }
   return freshLedger;
 }
 
 function validateCandidate(candidate, manifestPaths) {
   assertPlainObject(candidate, "Candidate");
-  const requiredStrings = [
+  for (const field of [
     "candidateId",
     "sourcePath",
     "recordId",
@@ -437,8 +428,7 @@ function validateCandidate(candidate, manifestPaths) {
     "duplicateGroupId",
     "extractionReason",
     "extractionToolVersion",
-  ];
-  for (const field of requiredStrings) {
+  ]) {
     if (typeof candidate[field] !== "string" || candidate[field].length === 0) {
       throw new Error(`Candidate ${candidate.candidateId || "(unknown)"} requires ${field}`);
     }
@@ -459,7 +449,7 @@ function validateCandidate(candidate, manifestPaths) {
   if (candidate.contentHash !== sha256(candidate.text)) {
     throw new Error(`Candidate ${candidate.candidateId} has an invalid content hash`);
   }
-  if (candidate.duplicateGroupId !== duplicateGroupId(candidate.text)) {
+  if (candidate.duplicateGroupId !== duplicateGroupId(candidate.matchedSurfaceSpan)) {
     throw new Error(`Candidate ${candidate.candidateId} has an invalid duplicate-group ID`);
   }
   if (candidate.candidateId !== stableCandidateId(candidate)) {
@@ -468,12 +458,7 @@ function validateCandidate(candidate, manifestPaths) {
   if (candidate.extractionToolVersion !== EXTRACTION_TOOL_VERSION) {
     throw new Error(`Candidate ${candidate.candidateId} has an unsupported tool version`);
   }
-  for (const field of [
-    "leftContext",
-    "rightContext",
-    "previousRecordText",
-    "nextRecordText",
-  ]) {
+  for (const field of ["leftContext", "rightContext", "previousRecordText", "nextRecordText"]) {
     if (typeof candidate[field] !== "string") {
       throw new Error(`Candidate ${candidate.candidateId} requires string ${field}`);
     }
@@ -490,20 +475,24 @@ function validateSummary(ledger, manifest) {
 
 function validateLedger(ledger, manifest, options = {}) {
   assertPlainObject(ledger, "Ledger");
-  if (ledger.schemaVersion !== 1) {
-    throw new Error("Ledger schemaVersion must be 1");
-  }
+  validateManifest(manifest, options.repoRoot || process.cwd(), { checkFiles: false });
+  if (ledger.schemaVersion !== 1) throw new Error("Ledger schemaVersion must be 1");
   if (
     !ledger.construction ||
-    ledger.construction.permanentCode !== CONSTRUCTION.permanentCode ||
-    ledger.construction.canonicalIdentity !== CONSTRUCTION.canonicalIdentity ||
-    ledger.construction.legacyRuntimeLabel !== CONSTRUCTION.legacyRuntimeLabel
+    Object.entries(CONSTRUCTION).some(([field, value]) => ledger.construction[field] !== value)
   ) {
     throw new Error("Ledger construction identity metadata does not match AB30");
   }
-  if (!Array.isArray(ledger.candidates)) {
-    throw new Error("Ledger candidates must be an array");
+  if (ledger.extractionToolVersion !== EXTRACTION_TOOL_VERSION) {
+    throw new Error("Ledger extractionToolVersion does not match the current workbench");
   }
+  if (ledger.sourceManifestHash !== manifestHash(manifest)) {
+    throw new Error("Ledger sourceManifestHash does not match the current allowlist");
+  }
+  if (ledger.disclaimer !== DISCLAIMER) {
+    throw new Error("Ledger disclaimer does not match the required evidence boundary");
+  }
+  if (!Array.isArray(ledger.candidates)) throw new Error("Ledger candidates must be an array");
   const manifestPaths = new Set(manifest.sources.map((source) => source.path));
   const seenIds = new Set();
   for (const candidate of ledger.candidates) {
@@ -513,13 +502,12 @@ function validateLedger(ledger, manifest, options = {}) {
     seenIds.add(candidate.candidateId);
     validateCandidate(candidate, manifestPaths);
   }
-  if (options.skipSummary !== true) {
-    validateSummary(ledger, manifest);
-  }
+  if (options.skipSummary !== true) validateSummary(ledger, manifest);
   return true;
 }
 
 function validateReproducible(ledger, manifest, repoRoot, manifestRaw) {
+  validateLedger(ledger, manifest, { repoRoot });
   const fresh = extractLedger(manifest, repoRoot, manifestRaw);
   const actualIds = ledger.candidates.map((candidate) => candidate.candidateId).sort();
   const freshIds = fresh.candidates.map((candidate) => candidate.candidateId).sort();
@@ -558,9 +546,7 @@ function validateReproducible(ledger, manifest, repoRoot, manifestRaw) {
 
 function tsvEscape(value) {
   const rendered = String(value);
-  if (rendered.length === 0) {
-    return "\"\"";
-  }
+  if (rendered.length === 0) return '""';
   return rendered
     .replaceAll("\\", "\\\\")
     .replaceAll("\t", "\\t")
@@ -593,9 +579,7 @@ const TSV_COLUMNS = Object.freeze([
 function renderTsv(ledger) {
   const rows = [TSV_COLUMNS.map(([name]) => name).join("\t")];
   for (const candidate of ledger.candidates) {
-    rows.push(
-      TSV_COLUMNS.map(([, getter]) => tsvEscape(getter(candidate))).join("\t"),
-    );
+    rows.push(TSV_COLUMNS.map(([, getter]) => tsvEscape(getter(candidate))).join("\t"));
   }
   return `${rows.join("\n")}\n`;
 }
@@ -603,12 +587,14 @@ function renderTsv(ledger) {
 module.exports = {
   ALLOWED_CLASSIFICATIONS,
   CONSTRUCTION,
+  DISCLAIMER,
   EXTRACTION_REASON,
   EXTRACTION_TOOL_VERSION,
   buildSummary,
   duplicateGroupId,
   extractLedger,
   extractSurfaceMatches,
+  manifestHash,
   mergeHumanReviews,
   readJson,
   renderTsv,
