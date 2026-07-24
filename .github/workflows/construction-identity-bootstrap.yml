@@ -6,6 +6,9 @@ on:
       - agent/permanent-construction-identity-sweep
     paths:
       - tools/generate-construction-identities.js
+      - tools/build-construction-identity-lock.js
+      - tools/verify-construction-identities.js
+      - tools/allocate-construction-identity.js
       - tools/construction-notes-lib.js
       - grammar/**
       - docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv
@@ -13,6 +16,9 @@ on:
   pull_request:
     paths:
       - tools/generate-construction-identities.js
+      - tools/build-construction-identity-lock.js
+      - tools/verify-construction-identities.js
+      - tools/allocate-construction-identity.js
       - tools/construction-notes-lib.js
       - grammar/**
       - docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv
@@ -31,17 +37,21 @@ jobs:
         with:
           node-version: 22
       - name: Generate permanent identity baseline
-        run: node tools/generate-construction-identities.js --write
+        run: |
+          node tools/generate-construction-identities.js --write
+          node tools/build-construction-identity-lock.js --write
       - name: Commit generated baseline
         if: github.event_name == 'push'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/construction-identities.json data/construction-label-sweep.json docs/research/FULL-REPO-LABEL-SWEEP-BASELINE-R1.md
+          git add data/construction-identities.json data/construction-label-sweep.json data/construction-identity-lock.json docs/research/FULL-REPO-LABEL-SWEEP-BASELINE-R1.md
           if ! git diff --cached --quiet; then
-            git commit -m "Generate permanent construction identity baseline"
+            git commit -m "Lock permanent construction identities"
             git push
           fi
+      - name: Verify identity baseline
+        run: node tools/verify-construction-identities.js
       - name: Upload generated baseline
         uses: actions/upload-artifact@v4
         with:
@@ -49,5 +59,6 @@ jobs:
           path: |
             data/construction-identities.json
             data/construction-label-sweep.json
+            data/construction-identity-lock.json
             docs/research/FULL-REPO-LABEL-SWEEP-BASELINE-R1.md
           if-no-files-found: error
