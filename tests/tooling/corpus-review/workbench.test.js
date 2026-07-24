@@ -9,6 +9,7 @@ const {
   ALLOWED_CLASSIFICATIONS,
   buildSummary,
   extractLedger,
+  manifestHash,
   mergeHumanReviews,
   readJson,
   renderTsv,
@@ -58,7 +59,6 @@ test("stable candidate IDs are deterministic for unchanged inputs", (t) => {
   const raw = JSON.stringify(manifest);
   const first = extractLedger(manifest, root, raw);
   const second = extractLedger(manifest, root, raw);
-
   assert.equal(first.candidates.length, 1);
   assert.deepEqual(
     first.candidates.map((candidate) => candidate.candidateId),
@@ -67,46 +67,39 @@ test("stable candidate IDs are deterministic for unchanged inputs", (t) => {
   assert.equal(validateReproducible(first, manifest, root, raw), true);
 });
 
-test("duplicates share a group while every provenance location is preserved", (t) => {
+test("duplicates use the extracted span while preserving distinct provenance", (t) => {
   const root = makeRoot(t);
-  const duplicate = "佢買咗兩本書。";
-  put(root, "corpus/a.txt", `${duplicate}\n`);
-  put(root, "corpus/b.txt", `${duplicate}\n`);
+  put(root, "corpus/a.txt", "A：今日落雨。佢買咗兩本書。跟住返屋企。\n");
+  put(root, "corpus/b.txt", "B：尋日好熱。佢買咗兩本書。之後去食飯。\n");
   const manifest = manifestFor(["corpus/a.txt", "corpus/b.txt"]);
   const ledger = extractLedger(manifest, root);
-
   assert.equal(ledger.candidates.length, 2);
   assert.equal(ledger.summary.uniqueCandidateTexts, 1);
   assert.equal(ledger.summary.duplicateGroups, 1);
-  assert.equal(
-    new Set(ledger.candidates.map((candidate) => candidate.duplicateGroupId)).size,
-    1,
-  );
+  assert.equal(new Set(ledger.candidates.map((item) => item.duplicateGroupId)).size, 1);
+  assert.equal(new Set(ledger.candidates.map((item) => item.text)).size, 2);
   assert.deepEqual(
     new Set(ledger.candidates.map((candidate) => candidate.sourcePath)),
     new Set(["corpus/a.txt", "corpus/b.txt"]),
   );
-  assert.ok(ledger.candidates.every((candidate) => candidate.recordId === "line:1"));
 });
 
 test("classification vocabulary is closed and optional review strings are validated", (t) => {
   const root = makeRoot(t);
   put(root, "corpus/a.txt", "佢寫咗封信。\n");
   const manifest = manifestFor(["corpus/a.txt"]);
-
   for (const classification of ALLOWED_CLASSIFICATIONS) {
     const ledger = extractLedger(manifest, root);
     ledger.candidates[0].review.classification = classification;
     ledger.summary = buildSummary(ledger.candidates, manifest);
     assert.equal(validateLedger(ledger, manifest), true);
   }
-
   const invalid = extractLedger(manifest, root);
   invalid.candidates[0].review.classification = "accepted";
   assert.throws(() => validateLedger(invalid, manifest), /Invalid classification/);
 });
 
-test("reruns preserve reviewed decisions and refuse to remove reviewed candidates", (t) => {
+test("reruns preserve reviews and refuse removal of classification-only reviews", (t) => {
   const root = makeRoot(t);
   put(root, "corpus/a.txt", "佢睇咗套戲。\n");
   const manifest = manifestFor(["corpus/a.txt"]);
@@ -116,25 +109,67 @@ test("reruns preserve reviewed decisions and refuse to remove reviewed candidate
     reviewerNote: "Human-entered note",
     exclusionReason: "",
   };
-
   const rerun = mergeHumanReviews(extractLedger(manifest, root), existing);
   assert.deepEqual(rerun.candidates[0].review, existing.candidates[0].review);
-
-  const noCandidates = extractLedger(manifestFor([]), root);
   assert.throws(
-    () => mergeHumanReviews(noCandidates, existing),
+    () => mergeHumanReviews(extractLedger(manifestFor([]), root), existing),
     /Refusing to remove reviewed candidate/,
   );
+});
+
+test("note-only and exclusion-only reviews also block candidate removal", (t) => {
+  const root = makeRoot(t);
+  put(root, "corpus/a.txt", "佢睇咗套戲。\n");
+  const manifest = manifestFor(["corpus/a.txt"]);
+  for (const review of [
+    { classification: "unreviewed", reviewerNote: "Needs dialect check", exclusionReason: "" },
+    { classification: "unreviewed", reviewerNote: "", exclusionReason: "Audio unclear" },
+  ]) {
+    const existing = extractLedger(manifest, root);
+    existing.candidates[0].review = review;
+    assert.throws(
+      () => mergeHumanReviews(extractLedger(manifestFor([]), root), existing),
+      /Refusing to remove reviewed candidate/,
+    );
+  }
+});
+
+test("manifest construction identity metadata is fully validated", (t) => {
+  const root = makeRoot(t);
+  const manifest = manifestFor([]);
+  manifest.canonicalIdentity = "WrongIdentity";
+  assert.throws(
+    () => validateManifest(manifest, root, { checkFiles: false }),
+    /canonicalIdentity/,
+  );
+});
+
+test("ledger metadata tampering is rejected", (t) => {
+  const root = makeRoot(t);
+  put(root, "corpus/a.txt", "佢食咗飯。\n");
+  const manifest = manifestFor(["corpus/a.txt"]);
+  const cases = [
+    ["extractionToolVersion", "old-tool", /extractionToolVersion/],
+    ["sourceManifestHash", "0".repeat(64), /sourceManifestHash/],
+    ["disclaimer", "This is evidence.", /disclaimer/],
+  ];
+  for (const [field, value, pattern] of cases) {
+    const ledger = extractLedger(manifest, root);
+    ledger[field] = value;
+    assert.throws(() => validateLedger(ledger, manifest), pattern);
+  }
+  assert.equal(extractLedger(manifest, root).sourceManifestHash, manifestHash(manifest));
 });
 
 test("malformed JSON and malformed UTF-8 inputs fail explicitly", (t) => {
   const root = makeRoot(t);
   put(root, "bad.json", "{not-json");
   assert.throws(() => readJson(path.join(root, "bad.json"), "manifest"), /Malformed manifest/);
-
   put(root, "corpus/bad.txt", Buffer.from([0xc3, 0x28]));
-  const manifest = manifestFor(["corpus/bad.txt"]);
-  assert.throws(() => extractLedger(manifest, root), /Malformed UTF-8 source/);
+  assert.throws(
+    () => extractLedger(manifestFor(["corpus/bad.txt"]), root),
+    /Malformed UTF-8 source/,
+  );
 });
 
 test("an empty allowlisted corpus produces a valid zero-total ledger", (t) => {
@@ -142,7 +177,6 @@ test("an empty allowlisted corpus produces a valid zero-total ledger", (t) => {
   put(root, "corpus/empty.txt", "");
   const manifest = manifestFor(["corpus/empty.txt"]);
   const ledger = extractLedger(manifest, root);
-
   assert.equal(ledger.candidates.length, 0);
   assert.equal(ledger.summary.totalExtracted, 0);
   assert.equal(ledger.summary.uniqueCandidateTexts, 0);
@@ -165,9 +199,7 @@ test("JSON and TSV renderings account for the same candidate total", (t) => {
   const jsonPath = path.join(root, "rendered.json");
   writeJson(jsonPath, ledger);
   const renderedJson = readJson(jsonPath, "rendered ledger");
-  const tsv = renderTsv(ledger);
-  const tsvDataRows = tsv.trimEnd().split("\n").length - 1;
-
+  const tsvDataRows = renderTsv(ledger).trimEnd().split("\n").length - 1;
   assert.equal(renderedJson.candidates.length, ledger.summary.totalExtracted);
   assert.equal(tsvDataRows, ledger.summary.totalExtracted);
 });
@@ -181,13 +213,11 @@ test("known synthetic and project-internal sources cannot enter the allowlist", 
     "grammar/example.md",
     "docs/research/example.md",
   ]) {
-    const manifest = manifestFor([prohibitedPath]);
     assert.throws(
-      () => validateManifest(manifest, root, { checkFiles: false }),
+      () => validateManifest(manifestFor([prohibitedPath]), root, { checkFiles: false }),
       /is prohibited/,
     );
   }
-
   const excluded = [
     {
       path: "tests/fixtures/parser.json",
@@ -195,8 +225,7 @@ test("known synthetic and project-internal sources cannot enter the allowlist", 
       reason: "Synthetic parser fixture.",
     },
   ];
-  const inventoryManifest = manifestFor([], excluded);
-  const inventory = sourceInventory(inventoryManifest, root);
+  const inventory = sourceInventory(manifestFor([], excluded), root);
   assert.equal(inventory.includedSources.length, 0);
   assert.deepEqual(inventory.excludedSources[0], {
     path: "tests/fixtures/parser.json",
