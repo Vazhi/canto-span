@@ -13,9 +13,9 @@ The sweep evaluates every permanent identity. It separates construction identity
 | State | Records |
 |---|---|
 | `boundary_ready` | 1 |
-| `excluded_nonlanguage` | 15 |
+| `excluded_nonlanguage` | 16 |
 | `lexicalized_review` | 2 |
-| `narrowing_candidate` | 37 |
+| `narrowing_candidate` | 36 |
 | `retired_evidence_rehome_candidate` | 42 |
 | `retired_research_gap` | 6 |
 | `source_supported` | 78 |
@@ -24,9 +24,9 @@ The sweep evaluates every permanent identity. It separates construction identity
 
 | Gate | Records |
 |---|---|
-| `language_claim_defined` | 15 |
+| `language_claim_defined` | 16 |
 | `negative_boundaries_complete` | 34 |
-| `reviewed_corpus_evidence` | 4 |
+| `reviewed_corpus_evidence` | 3 |
 | `runtime_research_alignment` | 22 |
 | `source_scope_matches_claim` | 58 |
 
@@ -36,9 +36,8 @@ These rows may contain a supportable narrow construction even though the present
 
 | Code | Current/retired label | State | Family | Sources | Preserved direction |
 |---|---|---|---|---|---|
-| `AA07` | `AssociativeNP` | `narrowing_candidate` | AssociativeAndCoordinatedNP | SRC-SIO-2011-GE3, SRC-YU-2006-NOMINAL-MODIFIERS | source-bounded subtype review |
-| `AA30` | `CoordinatedNP` | `narrowing_candidate` | AssociativeAndCoordinatedNP | SRC-WONG-2023-LANGUAGE-SAMPLE, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
-| `AB23` | `PoliteImperativeClause` | `narrowing_candidate` | DirectivesRequestsAndSuggestions | SRC-CHOW-2007-CANTONESE-EVERYONE, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
+| `AA07` | `GeMarkedNominalModifierNP` | `narrowing_candidate` | NominalModificationAndRelatives | SRC-SIO-2011-GE3, SRC-YU-2006-NOMINAL-MODIFIERS | source-bounded subtype review |
+| `AA30` | `CoordinatedNP` | `narrowing_candidate` | Coordination | SRC-WONG-2023-LANGUAGE-SAMPLE, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
 | `AA06` | `ApproximateQuantity` | `narrowing_candidate` | ClassifierAndQuantityNP | SRC-TANG-2024-CANTONESE-GRAMMAR-GUIDE | source-bounded subtype review |
 | `AA12` | `ClassifierObjectNP` | `narrowing_candidate` | ClassifierAndQuantityNP | SRC-BOND-SIO-2024-CLASSIFIERS, SRC-CHENG-SYBESMA-1999-NP, SRC-SIMPSON-SOH-NOMOTO-2011-BARE-CL, SRC-XIA-2025-CLASSIFIERS | source-bounded subtype review |
 | `AA20` | `CognitionStatementClause` | `narrowing_candidate` | CognitionAndStance | SRC-LUI-2025-REPORTED-THOUGHT, SRC-YAP-WONG-CHOR-2014-STANCE | source-bounded subtype review |
@@ -115,3 +114,4 @@ These rows may contain a supportable narrow construction even though the present
 | `AB72` | `TimeToActionFrame` | `retired_evidence_rehome_candidate` | TemporalAndMeasurePredication | SRC-YIP-2024-TEMPORAL-ADVERBIAL-CLAUSES, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | ordinary copular/temporal/predicate composition |
 | `AB76` | `TransformationResultFrame` | `retired_evidence_rehome_candidate` | ResultativeAndChangePredication | SRC-KEDZIOR-2023, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | ordinary topic/clause composition |
 | `AB77` | `TransformationResultPredicate` | `retired_evidence_rehome_candidate` | ResultativeAndChangePredication | SRC-KEDZIOR-2023, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | independently sourced transformation predicates |
+| `AB23` | `PoliteRequestWrapper` | `excluded_nonlanguage` | RequestAndDirectiveRepresentation | SRC-CHOW-2007-CANTONESE-EVERYONE, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |

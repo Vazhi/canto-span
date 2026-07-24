@@ -24,20 +24,20 @@ Family assignments in this report are inherited from existing consolidation reco
 | L09 / DurativeContinuativeAspect | 2 | 1 | 1 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AA53, AA78 |
 | L20 / PossessiveNominals | 2 | 1 | 1 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB24, AB25 |
 | L43 / ScalarComparisonAndEvaluation | 2 | 1 | 1 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB58, AA54 |
-| UNASSIGNED / unassigned | 9 | 9 | 0 | 4 | `family_unassigned` | assign family only after behavior and source scope are reconciled | AB30, AB15, AB53, AA69, AA13, AA14, AA15, AA16, AB09 |
+| UNASSIGNED / unassigned | 8 | 8 | 0 | 3 | `family_unassigned` | assign family only after behavior and source scope are reconciled | AB15, AB53, AA69, AA13, AA14, AA15, AA16, AB09 |
 | L12 / ResultAndPotentialComplements | 7 | 7 | 0 | 5 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB07, AB08, AB31, AB32, AB55, AB56, AB80 |
 | L01 / CoverbAndParticipantRelations | 5 | 5 | 0 | 5 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB28, AA73, AB16, AA34, AA76 |
 | L34 / GoalSourceAndPath | 5 | 5 | 0 | 2 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AA93, AB17, AB64, AA60, AA68 |
 | I05 / DiscourseRoleStructure | 4 | 2 | 0 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB73, AA21, AB75, AB74 |
 | L23 / ANotAQuestions | 4 | 4 | 0 | 2 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AA02, AA31, AA01, AA86 |
 | L37 / MannerAndReduplication | 4 | 4 | 0 | 4 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AA84, AA38, AA37, AB49 |
-| L28 / DirectivesRequestsAndSuggestions | 3 | 3 | 0 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB23, AB68, AB43 |
 | L30 / DesirePreferenceAndIntention | 3 | 3 | 0 | 3 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AA74, AB33, AA45 |
 | L39 / ExistentialAndPresentationalClauses | 3 | 3 | 0 | 3 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AA55, AA56, AA77 |
 | L45 / ValencyAndArgumentStructure | 3 | 3 | 0 | 2 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AA75, AB35, AB78 |
 | L03 / TemporalAndSequentialRelations | 2 | 2 | 0 | 2 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB34, AB70 |
 | L11 / Completion | 2 | 2 | 0 | 2 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AA24, AA26 |
 | L21 / OrdinalNominals | 2 | 2 | 0 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB14, AA46 |
+| L28 / DirectivesRequestsAndSuggestions | 2 | 2 | 0 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB68, AB43 |
 | L32 / SpeechReportingAndCommunicationEffect | 2 | 2 | 0 | 2 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AA52, AB52 |
 | L36 / LocativeAndPosturalPredication | 2 | 2 | 0 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AA80, AA81 |
 | L38 / NamingAndAddress | 2 | 2 | 0 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AA95, AB81 |

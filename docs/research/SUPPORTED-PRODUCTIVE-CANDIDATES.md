@@ -9,7 +9,7 @@ This is a prioritization report, not a promotion decision. A score cannot overri
 
 | Code | Canonical name | State | Score | Nearest missing gate | Next action |
 |---|---|---|---|---|---|
-| `AB30` | `PostverbalZoPerfectiveVP` | `boundary_ready` | 75 | `reviewed_corpus_evidence` | review and classify diverse corpus candidates, including false positives and ambiguous hits |
+| `AB30` | `ZoMarkedPerfectiveObjectVP` | `boundary_ready` | 80 | `reviewed_corpus_evidence` | review and classify diverse corpus candidates, including false positives and ambiguous hits |
 | `AB15` | `OvertHeadDemonstrativeClassifierNP` | `source_supported` | 65 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA84` | `MannerAdverbialVP` | `source_supported` | 63 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
 | `AB28` | `PostThemeParticipantRelation` | `source_supported` | 60 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
@@ -56,9 +56,8 @@ These broad current labels are not direct promotion candidates. Their source-bac
 
 | Code | Canonical name | State | Score | Nearest missing gate | Next action |
 |---|---|---|---|---|---|
-| `AA07` | `AssociativeNP` | `narrowing_candidate` | 70 | `reviewed_corpus_evidence` | review and classify diverse corpus candidates, including false positives and ambiguous hits |
-| `AA30` | `CoordinatedNP` | `narrowing_candidate` | 70 | `reviewed_corpus_evidence` | review and classify diverse corpus candidates, including false positives and ambiguous hits |
-| `AB23` | `PoliteImperativeClause` | `narrowing_candidate` | 70 | `reviewed_corpus_evidence` | review and classify diverse corpus candidates, including false positives and ambiguous hits |
+| `AA07` | `GeMarkedNominalModifierNP` | `narrowing_candidate` | 75 | `reviewed_corpus_evidence` | review and classify diverse corpus candidates, including false positives and ambiguous hits |
+| `AA30` | `CoordinatedNP` | `narrowing_candidate` | 75 | `reviewed_corpus_evidence` | review and classify diverse corpus candidates, including false positives and ambiguous hits |
 | `AA06` | `ApproximateQuantity` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA12` | `ClassifierObjectNP` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA20` | `CognitionStatementClause` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
