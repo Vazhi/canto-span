@@ -1,0 +1,302 @@
+{
+  "schema": "canto-span-construction-adjudications-v1",
+  "adjudicated_on": "2026-07-24",
+  "adjudication_authority": "project expert systematic review",
+  "records": [
+    {
+      "construction_uuid": "4f6df953-62d1-5036-80b3-40bc8f02937e",
+      "construction_code": "AB15",
+      "legacy_label": "OvertHeadDemonstrativeClassifierNP",
+      "approved_canonical_name": "DemonstrativeClassifierNounNP",
+      "claim_layer": "language_construction",
+      "family_name": "ClassifierAndQuantityNP",
+      "profile_name": "DemonstrativeClassifierOvertNoun",
+      "profile_description": "An overt demonstrative followed by an overt classifier and overt noun, with no numeral in the construction span. The profile excludes headless demonstrative-classifier NPs, numeral-classifier-noun phrases, bare classifier-noun phrases, and classifier-noun combinations outside the independently maintained compatibility inventory.",
+      "learner_label": null,
+      "behavior_research_alignment": "runtime_narrower_defensible",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
+      "status_recommendation": "retain research_pending; reopen a promotion track only after the negative-boundary inventory, current code-location audit, role-neutral panel evidence, and held-out validation are complete",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-BOND-SIO-2024-CLASSIFIERS",
+          "SRC-LAM-LAU-LEE-2024-SEGMENTATION",
+          "SRC-XIA-2025-CLASSIFIERS",
+          "SRC-YU-2006-NOMINAL-MODIFIERS",
+          "SRC-HKCANCOR-PYCANTONESE-CP024-DEMO01"
+        ],
+        "runtime_locations": [],
+        "test_file": "tests/constructions/OvertHeadDemonstrativeClassifierNP.json",
+        "additional_research": [
+          "The reviewed sources converge on overt Dem–CL–N or D–C–N structure while separately identifying headless and numeral-bearing classifier phrases. The existing name encodes the same scope but obscures the surface order and treats overt headedness as an implementation afterthought."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "D-(X)-C-N",
+          "source_id": "SRC-BOND-SIO-2024-CLASSIFIERS",
+          "scope_match": "close"
+        },
+        {
+          "term": "Dem-CL-N",
+          "source_id": "SRC-XIA-2025-CLASSIFIERS",
+          "scope_match": "exact"
+        },
+        {
+          "term": "demonstrative-classifier phrase",
+          "source_id": "SRC-YU-2006-NOMINAL-MODIFIERS",
+          "scope_match": "close"
+        }
+      ],
+      "former_names": [
+        "OvertHeadDemonstrativeClassifierNP"
+      ],
+      "successor_profiles": [],
+      "rationale": "The construction is a genuine, source-supported demonstrative-classifier-noun subtype. The legacy name is not false, but it is awkward and less discoverable because the noun is represented only indirectly as an overt head. DemonstrativeClassifierNounNP states the actual sequence, aligns with the strongest distributional descriptions, and remains neutral among competing NP structures.",
+      "unresolved_blockers": [
+        "complete the negative-boundary inventory beyond headless Dem–CL and Num–CL–N contrasts",
+        "record current exact runtime code locations",
+        "confirm classifier-head compatibility coverage does not overgeneralize from the corpus inventory",
+        "collect a clean role-neutral panel wave and held-out cases"
+      ]
+    },
+    {
+      "construction_uuid": "28bbdab0-a637-5842-b93a-a129c8a55d7b",
+      "construction_code": "AA84",
+      "legacy_label": "MannerAdverbialVP",
+      "approved_canonical_name": "GamMarkedReduplicatedMannerVP",
+      "claim_layer": "language_construction",
+      "family_name": "MannerAndReduplication",
+      "profile_name": "ReduplicatedPropertyGamActionVP",
+      "profile_description": "A reduplicated property expression followed by overt adverbializer 咁 or 噉 and a following action VP. The construction identity excludes the currently reachable bare reduplicated-property fallback unless that separate route receives independent evidence and boundaries.",
+      "learner_label": null,
+      "behavior_research_alignment": "runtime_broader",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
+      "status_recommendation": "retain research_pending for the overt 咁／噉 profile; remove, quarantine, or separately internalize the bare reduplicated fallback before any promotion review",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-LEUNG-2014-COVERBS",
+          "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
+        ],
+        "runtime_locations": [
+          "main.js:mannerAdverbialVPFallback"
+        ],
+        "test_file": "tests/constructions/MannerAdverbialVP.json",
+        "additional_research": [
+          "Both checked positive sources contain reduplicated 慢慢 plus overt 噉 before a following predicate. The only bare 慢慢行 case is explicitly recorded as a zero-weight implementation probe."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "manner adverbial",
+          "source_id": "SRC-LEUNG-2014-COVERBS",
+          "scope_match": "close"
+        },
+        {
+          "term": "慢慢噉 + predicate",
+          "source_id": "SRC-LEUNG-2014-COVERBS",
+          "scope_match": "exact"
+        },
+        {
+          "term": "慢慢噉 + aspect-marked predicate",
+          "source_id": "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE",
+          "scope_match": "exact"
+        }
+      ],
+      "former_names": [
+        "MannerAdverbialVP"
+      ],
+      "successor_profiles": [],
+      "rationale": "MannerAdverbialVP is broader than the evidence and hides the overt adverbializer and reduplication that define the supported path. The same UUID can be retained for the source-linked overt profile, but the bare fallback must not inherit this identity or its source weight. GamMarkedReduplicatedMannerVP makes the marker and reduplicated form explicit without importing the source's theory-specific syntactic-height analysis.",
+      "unresolved_blockers": [
+        "separate the bare 慢慢行 runtime fallback from the source-linked UUID",
+        "test additional reduplicated properties and predicates without assuming unrestricted productivity",
+        "add marker-omission, nonreduplicated, and stative-predicate boundaries",
+        "collect corpus, role-neutral panel, and held-out evidence"
+      ]
+    },
+    {
+      "construction_uuid": "400e946e-2e6b-5434-9558-8116edf3c3f8",
+      "construction_code": "AB28",
+      "legacy_label": "PostThemeParticipantRelation",
+      "approved_canonical_name": "BeiMarkedPostThemeParticipantConstruction",
+      "claim_layer": "language_construction",
+      "family_name": "DativeAndTransferConstructions",
+      "profile_name": "PredicateThemeBeiParticipant",
+      "profile_description": "An overt predicate and theme followed by 畀 or 俾 and an overt participant NP, as in 買咗杯咖啡畀佢. The record preserves the surface sequence without forcing a single recipient, beneficiary, goal, agent, source, preposition, or serial-verb analysis.",
+      "learner_label": null,
+      "behavior_research_alignment": "runtime_narrower_defensible",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
+      "status_recommendation": "retain research_pending until the exact surface family is expanded beyond one positive fixture, its competing analyses are documented at profile level, and panel plus held-out boundaries are complete",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-BODOMO-LAM-YU-2003",
+          "SRC-CHIN-2011-BEI",
+          "SRC-LI-LEE-2021-DATIVE",
+          "SRC-WONG-2023-BEI",
+          "SRC-XU-PEYRAUBE-1997-DOC"
+        ],
+        "runtime_locations": [],
+        "test_file": "tests/constructions/PostThemeParticipantRelation.json",
+        "additional_research": [
+          "The source set establishes a recurring overt 畀/俾 surface while disagreeing about double-object, oblique, prepositional, serial-verb, and constructional analyses. A neutral form-based canonical label is therefore preferable."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "oblique construction",
+          "source_id": "SRC-XU-PEYRAUBE-1997-DOC",
+          "scope_match": "partial"
+        },
+        {
+          "term": "double object and serial verb constructions",
+          "source_id": "SRC-BODOMO-LAM-YU-2003",
+          "scope_match": "contrastive"
+        },
+        {
+          "term": "bei constructions",
+          "source_id": "SRC-WONG-2023-BEI",
+          "scope_match": "close"
+        },
+        {
+          "term": "dative construction meanings",
+          "source_id": "SRC-LI-LEE-2021-DATIVE",
+          "scope_match": "partial"
+        }
+      ],
+      "former_names": [
+        "PostThemeParticipantRelation"
+      ],
+      "successor_profiles": [],
+      "rationale": "The legacy name is appropriately cautious about semantic role but reads like an internal graph edge rather than a language construction and omits the overt 畀/俾 marker that makes the profile discoverable. BeiMarkedPostThemeParticipantConstruction preserves the neutral stance required by the competing analyses while naming the actual surface boundary.",
+      "unresolved_blockers": [
+        "record exact runtime code locations",
+        "add independently sourced positive variants across predicate classes",
+        "separate final-verb bei constructions, double-object constructions, and passive or permissive uses",
+        "collect role-neutral panel judgments and held-out structural contrasts"
+      ]
+    },
+    {
+      "construction_uuid": "88904fe5-a1f4-55bf-bf0a-a4983d77eef2",
+      "construction_code": "AA39",
+      "legacy_label": "DegreeModifiedLexicalStative",
+      "approved_canonical_name": "LexicalStativeDegreeWrapper",
+      "claim_layer": "parser_representation",
+      "family_name": "StativeRepresentation",
+      "profile_name": "DegreeModifierLexicalStativeAggregate",
+      "profile_description": "An implementation wrapper combining an independently recognized degree modifier with a dictionary-backed lexicalized stative. The exact attested surface 好好食 belongs linguistically to ordinary degree modification plus the lexical stative 好食; the wrapper is not an independently supported productive construction.",
+      "learner_label": null,
+      "behavior_research_alignment": "overlapping",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "internalize_and_decompose",
+      "status_recommendation": "move to parser_heuristic after compatibility migration; preserve the exact 好好食 evidence under the general degree-stative construction and the 好食 lexical entry",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-LAM-LAU-LEE-2024-SEGMENTATION",
+          "SRC-CUHK-CANTONESE-EXPRESS-DAILY05",
+          "SRC-WORDSHK-HOUSIK"
+        ],
+        "runtime_locations": [
+          "main.js:DegreeModifiedLexicalStative category template",
+          "tests/fixtures/regression-snapshots.json:REG-0551"
+        ],
+        "test_file": "tests/constructions/DegreeModifiedLexicalStative.json",
+        "additional_research": [
+          "The sources independently support degree modification and the lexical stative 好食, and two sources attest the exact 好好食 surface. They do not establish a distinct construction between ordinary degree modification and lexical-stative recognition."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "degree modifier",
+          "source_id": "SRC-LAM-LAU-LEE-2024-SEGMENTATION",
+          "scope_match": "exact"
+        },
+        {
+          "term": "adjective 好食",
+          "source_id": "SRC-WORDSHK-HOUSIK",
+          "scope_match": "close"
+        },
+        {
+          "term": "好好食",
+          "source_id": "SRC-CUHK-CANTONESE-EXPRESS-DAILY05",
+          "scope_match": "exact"
+        }
+      ],
+      "former_names": [
+        "DegreeModifiedLexicalStative"
+      ],
+      "successor_profiles": [
+        "DegreeStativePredicate",
+        "lexical entry 好食"
+      ],
+      "rationale": "The exact example is well attested, but the evidence supports composition rather than a separate construction: a degree modifier combines with the independently lexicalized stative 好食. Retaining a language-level DegreeModifiedLexicalStative node would duplicate the general degree-stative construction and make one lexical example look like a productive class. The runtime wrapper may remain for implementation convenience only.",
+      "unresolved_blockers": [
+        "map the wrapper output to the general degree-stative UUID and lexical entry without losing spans",
+        "check whether any other wrapper outputs depend on special behavior not available compositionally",
+        "complete compatibility migration before changing the public runtime label",
+        "keep exact lexical attestations separate from productive-class evidence"
+      ]
+    },
+    {
+      "construction_uuid": "0a188c89-30cd-53e9-8401-37a805eaf35b",
+      "construction_code": "AA11",
+      "legacy_label": "ChangeIntoPredicate",
+      "approved_canonical_name": "BinSingDimWhComplementVP",
+      "claim_layer": "language_construction",
+      "family_name": "ChangeStatePredication",
+      "profile_name": "BinSingPlusDimWhComplement",
+      "profile_description": "The lexical change-of-state predicate 變成 followed by wh complement 點. The currently supported node is limited to this overt predicate-complement span and excludes aspectual 變咗做, two-verb causative-resultatives, nominal-result complements, disposal wrappers, and other wh complements.",
+      "learner_label": null,
+      "behavior_research_alignment": "runtime_narrower_defensible",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
+      "status_recommendation": "retain research_pending as a lexeme-specific complement profile; do not treat it as a productive general change-into construction until nominal and additional wh complements have direct evidence and executable boundaries",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-LAI-PANG-2023",
+          "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
+        ],
+        "runtime_locations": [],
+        "test_file": "tests/constructions/ChangeIntoPredicate.json",
+        "additional_research": [
+          "The runtime and test suite now recognize only the exact 變成點 span inside 成個社會會變成點？, while the causative-resultative source explicitly distinguishes lexical change predicates from other resultative strategies."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "lexical predicate",
+          "source_id": "SRC-LAI-PANG-2023",
+          "scope_match": "close"
+        },
+        {
+          "term": "causative-resultative strategy",
+          "source_id": "SRC-LAI-PANG-2023",
+          "scope_match": "contrastive"
+        },
+        {
+          "term": "變成 + 點",
+          "source_id": "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE",
+          "scope_match": "exact"
+        }
+      ],
+      "former_names": [
+        "ChangeIntoPredicate"
+      ],
+      "successor_profiles": [],
+      "rationale": "ChangeIntoPredicate implies a broad result-complement construction that the runtime no longer implements. The only source-linked positive is the lexeme-specific 變成點 wh-complement profile, and the checked sources explicitly distinguish it from 變咗做 and two-verb resultatives. BinSingDimWhComplementVP therefore names the actual supported span without claiming nominal-result or productive complement selection.",
+      "unresolved_blockers": [
+        "record exact runtime code locations",
+        "verify additional natural 變成點 contexts beyond the single source sentence",
+        "decide whether the profile should remain a dedicated lexical-valency construction or be represented compositionally",
+        "collect role-neutral panel and held-out evidence before any productivity claim"
+      ]
+    }
+  ]
+}
