@@ -42,8 +42,14 @@ The only permitted classifications are `unreviewed`, `genuine`,
 optional strings. Reviewers may edit only the three fields under `review`.
 
 Duplicate grouping never collapses records: every source occurrence remains a
-candidate with its own stable ID and provenance, while exact repeated record
-texts share a `duplicateGroupId`.
+candidate with its own stable ID and full-record provenance. Exact repeated
+`matchedSurfaceSpan` values share a `duplicateGroupId`, even when their speaker
+labels or surrounding source records differ.
+
+The ledger also binds itself to the complete AB30 identity tuple, current
+extraction-tool version, required evidence-boundary disclaimer, and a stable
+semantic hash of the current allowlist. Validation rejects stale or altered
+ledger-level provenance.
 
 TSV uses a header row. Tabs, newlines, carriage returns, and backslashes inside
 values are rendered as `\t`, `\n`, `\r`, and `\\`; empty values render as
@@ -63,8 +69,9 @@ node --test tests/tooling/corpus-review/*.test.js
 
 `inventory` refreshes `excluded-sources.json`. `extract` refreshes the canonical
 ledger while preserving all existing review fields. It refuses to proceed if a
-rerun would remove a reviewed candidate. `validate` checks unique IDs,
-provenance, classifications, content and duplicate hashes, reproducibility, and
+rerun would remove any candidate with a nonblank classification, reviewer note,
+or exclusion reason. `validate` checks unique IDs, provenance, classifications,
+content and span-based duplicate hashes, ledger metadata, reproducibility, and
 summary accounting. `render` writes `candidates.json`, `candidates.tsv`, and
 `summary.json` from the same validated canonical ledger.
 
