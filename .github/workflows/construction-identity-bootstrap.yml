@@ -18,6 +18,7 @@ on:
       - tools/construction-notes-lib.js
       - grammar/**
       - docs/current/CONSTRUCTION-IDENTITY.md
+      - docs/current/CONSTRUCTION-ADJUDICATION.md
       - docs/research/FULL-REPO-LABEL-SWEEP-BASELINE-R1.md
       - docs/research/CONSTRUCTION-ADJUDICATION-BATCH-01.md
       - docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv
@@ -39,6 +40,7 @@ on:
       - tools/construction-notes-lib.js
       - grammar/**
       - docs/current/CONSTRUCTION-IDENTITY.md
+      - docs/current/CONSTRUCTION-ADJUDICATION.md
       - docs/research/FULL-REPO-LABEL-SWEEP-BASELINE-R1.md
       - docs/research/CONSTRUCTION-ADJUDICATION-BATCH-01.md
       - docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv
