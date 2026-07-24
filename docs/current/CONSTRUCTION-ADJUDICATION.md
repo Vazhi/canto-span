@@ -27,11 +27,11 @@ superseding decision with explicit rationale and relationships.
 ## Current progress
 
 - permanent records: **181**;
-- accepted adjudications: **39**;
-- pending adjudications: **142**;
-- accepted batches: **8**;
+- accepted adjudications: **44**;
+- pending adjudications: **137**;
+- accepted batches: **9**;
 - latest batch report:
-  `docs/research/CONSTRUCTION-ADJUDICATION-BATCH-08.md`.
+  `docs/research/CONSTRUCTION-ADJUDICATION-BATCH-09.md`.
 
 This count records completed identity and ontology judgments only. It does not
 imply runtime migration, status migration, corpus closure, panel completion,
@@ -39,11 +39,11 @@ held-out validation, or promotion.
 
 The next planned batch is:
 
-1. `AA46 DiMarkedNP`;
-2. `AA47 DirectedMannerMotionVP`;
-3. `AA49 DirectionalMotionVP`;
-4. `AA53 DurativeVP`;
-5. `AA55 ExistentialClause`.
+1. `AA58 ExistentialWhQuestion`;
+2. `AA62 ExperientialVP`;
+3. `AA66 FragmentAnswer`;
+4. `AA67 FragmentQuestion`;
+5. `AA68 GoalAttainmentMotionVP`.
 
 ## Required decision fields
 
