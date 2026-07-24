@@ -18,6 +18,16 @@ data/construction-adjudication-batches/*.json
 
 Each decision is keyed by immutable `construction_uuid` and verified against the permanent short code and legacy runtime label. Batch files are applied in filename order, and duplicate UUIDs or short codes across batches are rejected.
 
+## Current progress
+
+As of Batch 05, 24 of 181 permanent records have completed expert adjudication across the original decision document and four append-only batch files. The latest accepted batch is documented in:
+
+```text
+docs/research/CONSTRUCTION-ADJUDICATION-BATCH-05.md
+```
+
+The count records completed ontology judgments only. It does not imply runtime migration, linguistic promotion, corpus closure, panel completion, or held-out validation.
+
 ## Required decision fields
 
 Every completed adjudication records:
