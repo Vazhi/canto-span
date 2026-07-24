@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 1,
+  "permanentCode": "AB30",
+  "inventoryPolicy": "Only paths explicitly declared in source-allowlist.json are inventoried; no repository-wide evidence scan is performed.",
+  "includedSources": [
+    {
+      "path": "data/natural-corpus/wechat-father-daughter-001.txt",
+      "status": "included",
+      "sourceType": "sanitized_natural_conversation",
+      "format": "text-lines",
+      "inclusionReason": "Primary sanitized natural-conversation transcript; not a parser fixture, generated diagnostic, survey, grammar note, documentation example, adjudication record, or synthetic test.",
+      "exists": true,
+      "contentHash": "d749c2e738ef407fd535352f9cd08dd427436b7f9ab0d77e0835b5159dbeb771"
+    },
+    {
+      "path": "test-data/natural-corpus-wechat-guangxi-travel-002-raw.txt",
+      "status": "included",
+      "sourceType": "sanitized_natural_conversation_raw_transcript",
+      "format": "text-lines",
+      "inclusionReason": "Raw natural-conversation transcript is the primary record; derived turn/unit representations and adjudication copies are excluded below.",
+      "exists": true,
+      "contentHash": "2697dda3706160ea5f9796cfa3c36be28a190cfdc93bbba4b8a310304e71ff3d"
+    }
+  ],
+  "excludedSources": [
+    {
+      "path": "data/natural-corpus/wechat-father-daughter-001.metadata.json",
+      "status": "excluded",
+      "reasonCode": "metadata_only",
+      "reason": "Source metadata contains no primary natural-language records.",
+      "exists": true
+    },
+    {
+      "path": "test-data/natural-corpus-wechat-father-daughter-001-turns.tsv",
+      "status": "excluded",
+      "reasonCode": "repeated_derived_copy",
+      "reason": "Derived turn-level copy of the included primary transcript.",
+      "exists": true
+    },
+    {
+      "path": "test-data/natural-corpus-wechat-father-daughter-001-turns.json",
+      "status": "excluded",
+      "reasonCode": "repeated_derived_copy",
+      "reason": "Derived JSON turn-level copy of the included primary transcript.",
+      "exists": true
+    },
+    {
+      "path": "test-data/natural-corpus-wechat-father-daughter-001-units.tsv",
+      "status": "excluded",
+      "reasonCode": "repeated_derived_copy",
+      "reason": "Derived unit-level copy of the included primary transcript.",
+      "exists": true
+    },
+    {
+      "path": "test-data/natural-corpus-wechat-father-daughter-001-units.json",
+      "status": "excluded",
+      "reasonCode": "repeated_derived_copy",
+      "reason": "Derived JSON unit-level copy of the included primary transcript.",
+      "exists": true
+    },
+    {
+      "path": "test-data/natural-corpus-wechat-guangxi-travel-002-turns.tsv",
+      "status": "excluded",
+      "reasonCode": "repeated_derived_copy",
+      "reason": "Derived turn-level copy of the included raw transcript.",
+      "exists": true
+    },
+    {
+      "path": "test-data/natural-corpus-wechat-guangxi-travel-002-turns.json",
+      "status": "excluded",
+      "reasonCode": "repeated_derived_copy",
+      "reason": "Derived JSON turn-level copy of the included raw transcript.",
+      "exists": true
+    },
+    {
+      "path": "test-data/natural-corpus-wechat-guangxi-travel-002-units.tsv",
+      "status": "excluded",
+      "reasonCode": "repeated_derived_copy",
+      "reason": "Derived unit-level copy of the included raw transcript.",
+      "exists": true
+    },
+    {
+      "path": "test-data/natural-corpus-wechat-guangxi-travel-002-units.json",
+      "status": "excluded",
+      "reasonCode": "repeated_derived_copy",
+      "reason": "Derived JSON unit-level copy of the included raw transcript.",
+      "exists": true
+    },
+    {
+      "path": "test-data/WECHAT-GX-TRAVEL-002-ADJUDICATION-MATRIX.tsv",
+      "status": "excluded",
+      "reasonCode": "adjudication_record",
+      "reason": "Human adjudication material is not primary corpus evidence.",
+      "exists": true
+    },
+    {
+      "path": "test-data/WECHAT-GX-TRAVEL-002-ADJUDICATION-MATRIX.json",
+      "status": "excluded",
+      "reasonCode": "adjudication_record",
+      "reason": "Human adjudication material is not primary corpus evidence.",
+      "exists": true
+    },
+    {
+      "path": "docs/research/NATIVE-CORPUS-WECHAT-GUANGXI-TRAVEL-002.md",
+      "status": "excluded",
+      "reasonCode": "documentation_example",
+      "reason": "Research documentation may quote or transform source examples and is not a primary record.",
+      "exists": true
+    },
+    {
+      "path": "docs/research/WECHAT-GX-TRAVEL-002-ADJUDICATION-REPORT.md",
+      "status": "excluded",
+      "reasonCode": "adjudication_record",
+      "reason": "Adjudication report is downstream analysis, not primary corpus evidence.",
+      "exists": true
+    },
+    {
+      "path": "test-data/w17-functional-corpus.tsv",
+      "status": "excluded",
+      "reasonCode": "synthetic_test",
+      "reason": "Functional test corpus is synthetic project-internal material.",
+      "exists": true
+    },
+    {
+      "path": "test-data/w17-glossika-corpus.tsv",
+      "status": "excluded",
+      "reasonCode": "documentation_or_curated_example",
+      "reason": "Curated learning examples are not natural-corpus records for this workbench.",
+      "exists": true
+    },
+    {
+      "path": "test-data/pre-intermediate-gold-corpus.tsv",
+      "status": "excluded",
+      "reasonCode": "synthetic_test",
+      "reason": "Gold test corpus is project-internal verification material.",
+      "exists": true
+    },
+    {
+      "path": "test-data/rul-survey-readiness-probes-v1.json",
+      "status": "excluded",
+      "reasonCode": "survey_question",
+      "reason": "Survey-readiness probes are elicitation/test material, not corpus evidence.",
+      "exists": true
+    },
+    {
+      "path": "test-data/implementation-reachability-probes-v1.json",
+      "status": "excluded",
+      "reasonCode": "synthetic_test",
+      "reason": "Implementation reachability probes are synthetic tests.",
+      "exists": true
+    },
+    {
+      "path": "tests/fixtures/boundary-closure-v1.json",
+      "status": "excluded",
+      "reasonCode": "parser_fixture",
+      "reason": "Parser fixture is synthetic project-internal material.",
+      "exists": true
+    },
+    {
+      "path": "tests/fixtures/np-subsystem.json",
+      "status": "excluded",
+      "reasonCode": "parser_fixture",
+      "reason": "Parser fixture is synthetic project-internal material.",
+      "exists": true
+    },
+    {
+      "path": "tests/fixtures/regression-snapshots.json",
+      "status": "excluded",
+      "reasonCode": "parser_fixture",
+      "reason": "Regression fixture is generated or synthetic project-internal material.",
+      "exists": true
+    },
+    {
+      "path": "validation/cp022-p1-pfv01-r1/diagnostics-export.json",
+      "status": "excluded",
+      "reasonCode": "generated_diagnostic",
+      "reason": "Generated diagnostics are not primary corpus evidence.",
+      "exists": true
+    },
+    {
+      "path": "validation/v0.5.181/pre-intermediate-corpus.json",
+      "status": "excluded",
+      "reasonCode": "generated_validation_copy",
+      "reason": "Validation output is a generated copy of project test material.",
+      "exists": true
+    },
+    {
+      "path": "validation/v0.5.182/pre-intermediate-corpus.json",
+      "status": "excluded",
+      "reasonCode": "generated_validation_copy",
+      "reason": "Validation output is a generated copy of project test material.",
+      "exists": true
+    },
+    {
+      "path": "archive/release-history/CANTO-SPAN-v0.5.181-CORPUS-ADJUDICATION.md",
+      "status": "excluded",
+      "reasonCode": "adjudication_record",
+      "reason": "Archived adjudication record is downstream project documentation.",
+      "exists": true
+    },
+    {
+      "path": "archive/release-history/CANTO-SPAN-v0.5.181-CORPUS-ADDENDUM.md",
+      "status": "excluded",
+      "reasonCode": "documentation_example",
+      "reason": "Archived corpus addendum is project documentation rather than a primary source record.",
+      "exists": true
+    }
+  ]
+}

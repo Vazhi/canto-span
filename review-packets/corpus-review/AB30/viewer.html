@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AB30 corpus-candidate review viewer</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      font-family: system-ui, sans-serif;
+      line-height: 1.45;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 1100px;
+      padding: 1.25rem;
+    }
+    .warning {
+      border: 2px solid #b36b00;
+      border-radius: 0.5rem;
+      padding: 0.8rem;
+      background: color-mix(in srgb, #ffb347 18%, Canvas);
+    }
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.75rem;
+      margin: 1rem 0;
+      align-items: end;
+    }
+    label {
+      display: grid;
+      gap: 0.25rem;
+    }
+    input, select, button {
+      font: inherit;
+      padding: 0.45rem;
+    }
+    .nav {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      margin: 1rem 0;
+    }
+    .card {
+      border: 1px solid GrayText;
+      border-radius: 0.5rem;
+      padding: 1rem;
+    }
+    .span {
+      font-size: 1.35rem;
+      font-weight: 650;
+      padding: 0.75rem;
+      background: color-mix(in srgb, Highlight 12%, Canvas);
+    }
+    dl {
+      display: grid;
+      grid-template-columns: minmax(10rem, 14rem) 1fr;
+      gap: 0.35rem 0.8rem;
+    }
+    dt { font-weight: 650; }
+    dd { margin: 0; overflow-wrap: anywhere; }
+    .context {
+      white-space: pre-wrap;
+      border-inline-start: 0.25rem solid GrayText;
+      padding-inline-start: 0.75rem;
+    }
+    .muted { color: GrayText; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <h1>AB30 corpus-candidate review viewer</h1>
+  <p class="warning">
+    Extraction is mechanical candidate preparation, not linguistic validation.
+    This viewer cannot classify candidates, write project data, change AB30
+    status, or establish construction membership.
+  </p>
+
+  <div class="controls">
+    <label>
+      Open canonical ledger JSON
+      <input id="file" type="file" accept="application/json,.json">
+    </label>
+    <label>
+      Classification
+      <select id="classification">
+        <option value="">all</option>
+        <option>unreviewed</option>
+        <option>genuine</option>
+        <option>false_positive</option>
+        <option>ambiguous</option>
+        <option>unusable</option>
+      </select>
+    </label>
+    <label>
+      Source or text contains
+      <input id="query" type="search" placeholder="filter">
+    </label>
+    <label>
+      <span>Duplicate groups only</span>
+      <input id="duplicates" type="checkbox">
+    </label>
+  </div>
+
+  <p id="status" class="muted">Choose candidate-ledger.json to begin.</p>
+  <div class="nav">
+    <button id="previous" type="button" disabled>Previous</button>
+    <button id="next" type="button" disabled>Next</button>
+    <span id="position"></span>
+  </div>
+
+  <article id="card" class="card" hidden>
+    <div id="span" class="span"></div>
+    <dl>
+      <dt>Candidate ID</dt><dd id="candidateId"></dd>
+      <dt>Classification</dt><dd id="review"></dd>
+      <dt>Source</dt><dd id="source"></dd>
+      <dt>Record</dt><dd id="record"></dd>
+      <dt>Source type</dt><dd id="sourceType"></dd>
+      <dt>Duplicate group</dt><dd id="duplicateGroup"></dd>
+      <dt>Content hash</dt><dd id="contentHash"></dd>
+      <dt>Extraction reason</dt><dd id="reason"></dd>
+      <dt>Reviewer note</dt><dd id="note"></dd>
+      <dt>Exclusion reason</dt><dd id="exclusion"></dd>
+    </dl>
+    <h2>Exact source record</h2>
+    <p id="text" class="context"></p>
+    <h2>Left context</h2>
+    <p id="left" class="context"></p>
+    <h2>Right context</h2>
+    <p id="right" class="context"></p>
+    <h2>Previous record</h2>
+    <p id="previousRecord" class="context"></p>
+    <h2>Next record</h2>
+    <p id="nextRecord" class="context"></p>
+  </article>
+
+  <script>
+    "use strict";
+    let allCandidates = [];
+    let visibleCandidates = [];
+    let index = 0;
+
+    const byId = (id) => document.getElementById(id);
+    const duplicateCounts = () => {
+      const counts = new Map();
+      for (const candidate of allCandidates) {
+        counts.set(
+          candidate.duplicateGroupId,
+          (counts.get(candidate.duplicateGroupId) || 0) + 1,
+        );
+      }
+      return counts;
+    };
+    const setText = (id, value) => {
+      byId(id).textContent = value || "—";
+    };
+
+    function render() {
+      const hasCandidate = visibleCandidates.length > 0;
+      byId("card").hidden = !hasCandidate;
+      byId("previous").disabled = !hasCandidate || index === 0;
+      byId("next").disabled = !hasCandidate || index >= visibleCandidates.length - 1;
+      byId("position").textContent = hasCandidate
+        ? `${index + 1} of ${visibleCandidates.length}`
+        : "0 candidates";
+      if (!hasCandidate) return;
+
+      const candidate = visibleCandidates[index];
+      setText("span", candidate.matchedSurfaceSpan);
+      setText("candidateId", candidate.candidateId);
+      setText("review", candidate.review.classification);
+      setText("source", candidate.sourcePath);
+      setText("record", candidate.recordId);
+      setText("sourceType", candidate.sourceType);
+      setText("duplicateGroup", candidate.duplicateGroupId);
+      setText("contentHash", candidate.contentHash);
+      setText("reason", candidate.extractionReason);
+      setText("note", candidate.review.reviewerNote);
+      setText("exclusion", candidate.review.exclusionReason);
+      setText("text", candidate.text);
+      setText("left", candidate.leftContext);
+      setText("right", candidate.rightContext);
+      setText("previousRecord", candidate.previousRecordText);
+      setText("nextRecord", candidate.nextRecordText);
+    }
+
+    function filter() {
+      const classification = byId("classification").value;
+      const query = byId("query").value.trim().toLocaleLowerCase();
+      const groups = duplicateCounts();
+      visibleCandidates = allCandidates.filter((candidate) => {
+        if (classification && candidate.review.classification !== classification) return false;
+        if (byId("duplicates").checked && groups.get(candidate.duplicateGroupId) < 2) return false;
+        const searchable = `${candidate.sourcePath}\n${candidate.recordId}\n${candidate.text}\n${candidate.matchedSurfaceSpan}`.toLocaleLowerCase();
+        return !query || searchable.includes(query);
+      });
+      index = 0;
+      byId("status").textContent =
+        `${visibleCandidates.length} of ${allCandidates.length} candidates shown. Read-only local view.`;
+      render();
+    }
+
+    byId("file").addEventListener("change", async (event) => {
+      const [file] = event.target.files;
+      if (!file) return;
+      try {
+        const ledger = JSON.parse(await file.text());
+        if (!Array.isArray(ledger.candidates)) {
+          throw new Error("ledger.candidates must be an array");
+        }
+        allCandidates = ledger.candidates;
+        filter();
+      } catch (error) {
+        allCandidates = [];
+        visibleCandidates = [];
+        byId("status").textContent = `Cannot load ledger: ${error.message}`;
+        render();
+      }
+    });
+    for (const id of ["classification", "query", "duplicates"]) {
+      byId(id).addEventListener("input", filter);
+    }
+    byId("previous").addEventListener("click", () => {
+      if (index > 0) index -= 1;
+      render();
+    });
+    byId("next").addEventListener("click", () => {
+      if (index + 1 < visibleCandidates.length) index += 1;
+      render();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") byId("previous").click();
+      if (event.key === "ArrowRight") byId("next").click();
+    });
+  </script>
+</body>
+</html>
