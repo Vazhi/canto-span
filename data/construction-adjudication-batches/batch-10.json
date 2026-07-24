@@ -1,0 +1,291 @@
+{
+  "schema": "canto-span-construction-adjudications-v1",
+  "adjudicated_on": "2026-07-24",
+  "adjudication_authority": "project expert systematic review",
+  "records": [
+    {
+      "construction_uuid": "fd7373c1-9f61-5c5e-bc86-d078ee69f965",
+      "construction_code": "AA58",
+      "legacy_label": "ExistentialWhQuestion",
+      "approved_canonical_name": "JauMeNounWhQuestion",
+      "claim_layer": "language_construction",
+      "family_name": "JauWhQuestions",
+      "profile_name": "JauMeOvertNoun",
+      "profile_description": "An overt 有 is followed by wh determiner 咩 and an overt noun, as in 有咩書, with any following clause-final particle represented outside the narrow question core. The profile does not assert one uniform existential, possessive, or availability analysis, does not cover other wh expressions such as 幾多 or 做乜, and does not license an omitted noun after 咩.",
+      "learner_label": null,
+      "behavior_research_alignment": "runtime_narrower_defensible",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
+      "status_recommendation": "retain research_pending for the overt 有 + 咩 + noun profile until exact source support, interpretation boundaries, corpus review, role-neutral panel evidence, and held-out validation are complete",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-LIANG-MAI-2026-GRAMMAR-CODING"
+        ],
+        "runtime_locations": [],
+        "test_file": "tests/constructions/ExistentialWhQuestion.json",
+        "additional_research": [
+          "All five executable positives contain the same visible core 有咩書, differing only in following particles. The checked coding scheme establishes in-situ wh material with 有 through 做乜有一個橙嘅 and 有幾多架車呀, but it does not directly license every 咩-nominal pattern or settle whether the relevant reading is existential, possessive, or availability-based."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "in-situ wh forms with 有",
+          "source_id": "SRC-LIANG-MAI-2026-GRAMMAR-CODING",
+          "scope_match": "close"
+        },
+        {
+          "term": "有幾多架車呀",
+          "source_id": "SRC-LIANG-MAI-2026-GRAMMAR-CODING",
+          "scope_match": "contrastive"
+        }
+      ],
+      "former_names": [
+        "ExistentialWhQuestion"
+      ],
+      "successor_profiles": [],
+      "rationale": "ExistentialWhQuestion is too broad in both analysis and wh inventory. The runtime positives establish only an overt 有 + 咩 + noun surface profile, while the source confirms the broader availability of in-situ wh material with 有 without proving the runtime's exact template or one existential interpretation. JauMeNounWhQuestion preserves the observable core and leaves interpretation unresolved.",
+      "unresolved_blockers": [
+        "verify an exact independent source for 有 + 咩 + overt noun",
+        "separate existential, possessive, and availability readings through controlled contexts",
+        "test other nouns, subjects, locative phrases, and clause-final particles without generalizing from one lexical frame",
+        "complete corpus, role-neutral panel, and held-out validation"
+      ]
+    },
+    {
+      "construction_uuid": "9f107fee-95d3-5f2f-9316-ebb14d63b8e7",
+      "construction_code": "AA62",
+      "legacy_label": "ExperientialVP",
+      "approved_canonical_name": "GwoMarkedExperientialObjectVP",
+      "claim_layer": "language_construction",
+      "family_name": "ExperientialAspect",
+      "profile_name": "VerbGwoOvertObject",
+      "profile_description": "An overt lexical predicate is followed by experiential 過 and an overt object, as in 食過飯, 做過呢件事, or 講過電話. Preverbal 有冇, subjects, final particles, and larger question structure are outside the narrow VP profile. The profile excludes perfective 咗, unmarked predicates, objectless 過 uses, lexical motion 去過 + goal handled by its separate identity, and final-未 experiential questions handled by their separate identity.",
+      "learner_label": null,
+      "behavior_research_alignment": "runtime_narrower_defensible",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
+      "status_recommendation": "retain research_pending for overt V + 過 + object experiential predicates until predicate and object scope, aspect-combination boundaries, corpus review, role-neutral panel evidence, and held-out validation are complete",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-FAN-2024-JAU-VP-ASPECT",
+          "SRC-MATTHEWS-YIP-2011-ASPECT-MULTIMEDIA",
+          "SRC-SIO-BOND-2025",
+          "SRC-YIP-MATTHEWS-2000-BASIC"
+        ],
+        "runtime_locations": [],
+        "test_file": "tests/constructions/ExperientialVP.json",
+        "additional_research": [
+          "The executable positives are 食過飯 and V過-object constituents embedded inside 有冇 questions. The sources independently distinguish experiential 過 from perfective 咗 and show that experiential marking is not freely compatible with every inner-aspect configuration."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "V過 experiential event type",
+          "source_id": "SRC-FAN-2024-JAU-VP-ASPECT",
+          "scope_match": "exact"
+        },
+        {
+          "term": "experiential 過",
+          "source_id": "SRC-YIP-MATTHEWS-2000-BASIC",
+          "scope_match": "exact"
+        },
+        {
+          "term": "食過醉雞",
+          "source_id": "SRC-MATTHEWS-YIP-2011-ASPECT-MULTIMEDIA",
+          "scope_match": "exact"
+        },
+        {
+          "term": "inner and outer aspect compatibility restrictions",
+          "source_id": "SRC-SIO-BOND-2025",
+          "scope_match": "restrictive"
+        }
+      ],
+      "former_names": [
+        "ExperientialVP"
+      ],
+      "successor_profiles": [],
+      "rationale": "ExperientialVP is linguistically plausible but too unspecific for a repository that already separates 去過-goal and V過...未 question profiles. Every current positive contains overt 過 after a lexical predicate and an overt following object. GwoMarkedExperientialObjectVP exposes that exact core and prevents outer 有冇 question structure or sibling experiential constructions from inheriting its evidence.",
+      "unresolved_blockers": [
+        "add exact source-linked focused positives beyond the current snapshot cases",
+        "audit predicate classes, object types, object omission, and aspect co-occurrence",
+        "keep 去過-goal and final-未 question evidence attached to their separate UUIDs",
+        "complete corpus, role-neutral panel, and held-out validation"
+      ]
+    },
+    {
+      "construction_uuid": "41b0f6be-680c-5bfd-9c70-c5c1cfd6e467",
+      "construction_code": "AA66",
+      "legacy_label": "FragmentAnswer",
+      "approved_canonical_name": "ContextLinkedAnswerUtteranceWrapper",
+      "claim_layer": "parser_representation",
+      "family_name": "DiscourseRepresentation",
+      "profile_name": "HeterogeneousContextDependentAnswerSpan",
+      "profile_description": "An implementation aggregate that marks an utterance as an answer relative to supplied discourse context. Current positives include affirmative and negative modal or evaluative predicates such as 可以, 唔可以, 要, 唔使, 得, and 唔得, as well as the complete cognition clause 我覺得啱. These forms do not share one demonstrated fragment syntax, ellipsis operation, complement type, or hidden proposition.",
+      "learner_label": null,
+      "behavior_research_alignment": "disjoint",
+      "terminology_alignment": "misleading",
+      "recommended_action": "internalize_and_decompose",
+      "status_recommendation": "migrate to parser_heuristic after compatibility migration; preserve answer-relation metadata separately from the independently typed modal, negation, cognition, aspectual-ellipsis, and nominal structures that realize particular responses",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-HUANG-HER-KONG-2025-INTERROGATIVES",
+          "SRC-LEE-PAN-2024-VP-ELLIPSIS",
+          "SRC-LUKE-NANCARROW-1998-AUXILIARIES",
+          "SRC-SIO-2011-GE3",
+          "SRC-YIP-MATTHEWS-2000-BASIC"
+        ],
+        "runtime_locations": [],
+        "test_file": "tests/constructions/FragmentAnswer.json",
+        "additional_research": [
+          "The eight executable positives range from one-word modal or evaluative predicates to negated forms and a syntactically complete cognition clause. The sources document several different response strategies, auxiliary/main-verb contrasts, VP ellipsis restrictions, aspectual answers, and headless nominals rather than one general FragmentAnswer construction."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "polar-question response semantics",
+          "source_id": "SRC-HUANG-HER-KONG-2025-INTERROGATIVES",
+          "scope_match": "partial"
+        },
+        {
+          "term": "Cantonese VP ellipsis contrasts",
+          "source_id": "SRC-LEE-PAN-2024-VP-ELLIPSIS",
+          "scope_match": "partial"
+        },
+        {
+          "term": "auxiliary and main-verb contrasts",
+          "source_id": "SRC-LUKE-NANCARROW-1998-AUXILIARIES",
+          "scope_match": "contrastive"
+        },
+        {
+          "term": "aspect-bearing answer patterns",
+          "source_id": "SRC-YIP-MATTHEWS-2000-BASIC",
+          "scope_match": "partial"
+        }
+      ],
+      "former_names": [
+        "FragmentAnswer"
+      ],
+      "successor_profiles": [
+        "ModalPredicateAnswer",
+        "NegatedModalPredicateAnswer",
+        "CognitionClauseAnswer",
+        "AspectualEllipsisResponse",
+        "NominalResponse"
+      ],
+      "rationale": "FragmentAnswer conflates a discourse relation with several unrelated surface structures and even labels one complete clause as a fragment. The sources do not justify a single shared syntax, and the runtime positives are structurally heterogeneous. The UUID should therefore preserve only compatibility-level answer metadata while linguistic evidence remains attached to the independently bounded constructions that realize each response.",
+      "unresolved_blockers": [
+        "map each current positive to its independent modal, negation, cognition, aspectual, or nominal construction",
+        "separate discourse answer status from syntactic constituency",
+        "avoid reconstructing hidden propositions or complements",
+        "complete compatibility migration before changing emitted legacy labels"
+      ]
+    },
+    {
+      "construction_uuid": "65a55897-4c5b-5764-8a33-56c920c34862",
+      "construction_code": "AA67",
+      "legacy_label": "FragmentQuestion",
+      "approved_canonical_name": "NeMarkedThematicContinuationQuestion",
+      "claim_layer": "language_construction",
+      "family_name": "DiscourseQuestions",
+      "profile_name": "OptionalOvertTopicFinalNe",
+      "profile_description": "A context-dependent thematic continuation question is formed by an overt topic expression followed by final 呢, as in 你呢, or by bare 呢 when the relevant discourse alternative is recoverable. The profile records only the overt topic-plus-呢 or bare-呢 question surface and does not reconstruct an omitted clause, assert a null topic, or cover complete wh, polar, or A-not-A questions.",
+      "learner_label": null,
+      "behavior_research_alignment": "runtime_narrower_defensible",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
+      "status_recommendation": "retain research_pending for context-dependent thematic continuation questions marked by final 呢 until exact bare-呢 evidence, discourse boundaries, corpus review, role-neutral panel evidence, and held-out validation are complete",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-LI-2006-FINAL-PARTICLES"
+        ],
+        "runtime_locations": [],
+        "test_file": "tests/constructions/FragmentQuestion.json",
+        "additional_research": [
+          "The executable positives are 你呢 and bare 呢. The checked dissertation specifically discusses a topic-marker function of 呢 in thematic questions, but it does not require Canto Span to adopt the proposed cartographic derivation or to posit silent material in the bare form."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "topic-marker function in thematic questions",
+          "source_id": "SRC-LI-2006-FINAL-PARTICLES",
+          "scope_match": "exact"
+        },
+        {
+          "term": "evaluative final particle 呢",
+          "source_id": "SRC-LI-2006-FINAL-PARTICLES",
+          "scope_match": "close"
+        }
+      ],
+      "former_names": [
+        "FragmentQuestion"
+      ],
+      "successor_profiles": [],
+      "rationale": "FragmentQuestion is too broad because the runtime contains only 呢-marked thematic continuation questions. NeMarkedThematicContinuationQuestion names the visible marker and discourse function without treating every incomplete-looking question as one construction or reconstructing omitted material. The same UUID is retained because both current positives share the overt 呢 core.",
+      "unresolved_blockers": [
+        "verify exact independent examples of bare 呢 and overt topic + 呢",
+        "define the discourse contexts that license the continuation reading",
+        "separate thematic continuation from evaluative and other final-particle uses",
+        "complete corpus, role-neutral panel, and held-out validation"
+      ]
+    },
+    {
+      "construction_uuid": "6133be72-aea3-5c31-a794-8ebabe3bcb79",
+      "construction_code": "AA68",
+      "legacy_label": "GoalAttainmentMotionVP",
+      "approved_canonical_name": "MotionVerbDouGoalVP",
+      "claim_layer": "language_construction",
+      "family_name": "MotionAndResultativeGoal",
+      "profile_name": "MotionPredicateDouOvertGoal",
+      "profile_description": "An overt motion predicate is followed by 到 and an overt goal expression, as in 行到學校 and 返到屋企. The profile preserves the visible motion-到-goal sequence while leaving resultative, attainment, potential, and context-sensitive interpretation to separately recorded evidence. It excludes bare motion predicates, independent motion predicates with goals but no 到, postverbal directional complexes without this sequence, caused-motion structures, and non-motion uses of 到.",
+      "learner_label": null,
+      "behavior_research_alignment": "runtime_narrower_defensible",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
+      "status_recommendation": "retain research_pending for motion predicate + 到 + overt goal until interpretation, aspect placement, motion-verb and goal scope, corpus review, role-neutral panel evidence, and held-out validation are complete",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-SHAN-JIN-2025-MOTION-TYPOLOGY",
+          "SRC-WONG-2023-LANGUAGE-SAMPLE"
+        ],
+        "runtime_locations": [],
+        "test_file": "tests/constructions/GoalAttainmentMotionVP.json",
+        "additional_research": [
+          "The two executable positives are 行到學校 and 返到屋企. The sources independently attest motion-到-goal sequences and discuss 到 in resultative or arrival-related analysis, while also warning against generalizing one theory or one lexical example to every motion predicate."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "motion verb plus 到 goal",
+          "source_id": "SRC-SHAN-JIN-2025-MOTION-TYPOLOGY",
+          "scope_match": "exact"
+        },
+        {
+          "term": "返到學校",
+          "source_id": "SRC-WONG-2023-LANGUAGE-SAMPLE",
+          "scope_match": "exact"
+        },
+        {
+          "term": "到 in resultative inventory",
+          "source_id": "SRC-WONG-2023-LANGUAGE-SAMPLE",
+          "scope_match": "close"
+        }
+      ],
+      "former_names": [
+        "GoalAttainmentMotionVP"
+      ],
+      "successor_profiles": [],
+      "rationale": "GoalAttainmentMotionVP presupposes a single attainment analysis where the visible runtime core is simply motion predicate + 到 + overt goal. The sources support that sequence but leave theoretical and contextual distinctions open. MotionVerbDouGoalVP therefore retains the UUID, exposes the form-based boundary, and prevents evidence from spreading to bare motion, caused motion, or unrelated 到 uses.",
+      "unresolved_blockers": [
+        "separate resultative, attainment, potential, and arrival readings with controlled contexts",
+        "audit motion-predicate and goal-expression classes",
+        "test aspect placement before, between, and after the motion and 到 elements",
+        "complete corpus, role-neutral panel, and held-out validation"
+      ]
+    }
+  ]
+}
