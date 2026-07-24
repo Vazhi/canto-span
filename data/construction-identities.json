@@ -2282,7 +2282,7 @@
     {
       "construction_uuid": "4019aaa2-9a4e-53cd-a505-95c4af4e2c6d",
       "construction_code": "AA69",
-      "canonical_name": "HeadlessDemonstrativeClassifierNP",
+      "canonical_name": "DemonstrativeClassifierNPWithoutOvertNoun",
       "legacy_labels": [
         "HeadlessDemonstrativeClassifierNP"
       ],
@@ -2290,22 +2290,35 @@
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/HeadlessDemonstrativeClassifierNP.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese independently permits headless demonstrative-classifier phrases in discourse-sensitive environments, but this runtime subtype does not assert unrestricted productivity or reconstruct an omitted noun.",
+      "family_name": "ClassifierAndQuantityNP",
+      "profile_name": "DemonstrativeClassifierNoOvertNoun",
+      "profile_description": "An overt demonstrative followed by an overt classifier forms an NP without an overt noun in the construction span, as in 呢本 and the NP 呢個 in 呢個係問題. The profile is kept distinct from demonstrative-classifier-noun phrases and numeral-classifier-noun phrases and does not reconstruct a hidden noun or claim unrestricted discourse licensing.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "headless demonstrative+classifier NP",
+          "source_id": "SRC-YU-2006-NOMINAL-MODIFIERS",
+          "scope_match": "exact"
+        },
+        {
+          "term": "demonstrative-classifier phrase",
+          "source_id": "SRC-YU-2006-NOMINAL-MODIFIERS",
+          "scope_match": "close"
+        }
+      ],
+      "former_names": [
+        "HeadlessDemonstrativeClassifierNP"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "runtime_narrower_defensible",
+        "terminology_alignment": "theory_loaded",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-24. The construction is a genuine surface subtype, but headless can imply a specific ellipsis or null-noun analysis that Canto Span explicitly does not assert. DemonstrativeClassifierNPWithoutOvertNoun names the observable sequence and cleanly contrasts it with AB15 DemonstrativeClassifierNounNP without reconstructing omitted material. Status recommendation: retain research_pending and quarantine from promotion until at least one stronger independent source, exact source-linked positives, discourse-sensitive negative boundaries, corpus review, and role-neutral panel evidence are available"
       }
     },
     {
@@ -3861,32 +3874,60 @@
     {
       "construction_uuid": "b68b136d-f596-5529-8b79-8b4009168f8b",
       "construction_code": "AB16",
-      "canonical_name": "PassivePermissiveRelation",
+      "canonical_name": "BeiPassivePermissiveAmbiguityWrapper",
       "legacy_labels": [
         "PassivePermissiveRelation"
       ],
-      "claim_layer": "language_construction",
+      "claim_layer": "parser_representation",
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/PassivePermissiveRelation.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese 畀/俾 sequences can realize canonical passive, retained-object indirect passive, or permissive let/allow readings; some NP1 畀 NP2 VP strings remain contextually ambiguous.",
+      "family_name": "BeiVoiceAndCausativeRepresentation",
+      "profile_name": "NP1BeiNP2VPAmbiguityAggregate",
+      "profile_description": "An implementation wrapper over an NP1 + 畀 or 俾 + NP2 + VP surface that preserves candidate passive, indirect-passive, permissive, and causative readings when the isolated string and current lexical information do not determine one analysis. The wrapper is not itself one Cantonese construction and must preserve the independently analyzed VP and all overt participants.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "permissive 畀",
+          "source_id": "SRC-CHIN-2011-BEI",
+          "scope_match": "exact"
+        },
+        {
+          "term": "passive 畀",
+          "source_id": "SRC-CHIN-2011-BEI",
+          "scope_match": "exact"
+        },
+        {
+          "term": "indirect passive",
+          "source_id": "SRC-CHOW-2018-INDIRECT-PASSIVE",
+          "scope_match": "contrastive"
+        },
+        {
+          "term": "passive and permissive constructions",
+          "source_id": "SRC-CHOW-2019-PASSIVE-PERMISSIVE",
+          "scope_match": "close"
+        },
+        {
+          "term": "bei-NP-VP causative and passive corpus classes",
+          "source_id": "SRC-WONG-2023-BEI",
+          "scope_match": "close"
+        }
+      ],
+      "former_names": [
+        "PassivePermissiveRelation"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "overlapping",
+        "terminology_alignment": "misleading",
+        "recommended_action": "internalize_and_decompose",
         "automatic_risk_flags": [
           "generic_head_requires_boundary_definition"
         ],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-24. PassivePermissiveRelation treats distinct constructions and context-dependent interpretations as one language-level relation. The sources instead make their distinctions central, and the two source-linked fixtures deliberately represent different readings. The UUID should preserve ambiguity as an internal wrapper while future language records receive separate permanent identities and exact boundaries. Status recommendation: migrate the umbrella to parser_heuristic after compatibility migration; allocate separate language-construction UUIDs for source-bounded permissive, canonical passive, indirect passive, and any independently justified causative profiles"
       }
     },
     {
@@ -5117,7 +5158,7 @@
     {
       "construction_uuid": "06c9f3b1-f243-588d-8a6e-bddf9a94c871",
       "construction_code": "AB53",
-      "canonical_name": "ResourceUseLaiFunctionRelation",
+      "canonical_name": "ResourceInitialJungLaiFunctionClause",
       "legacy_labels": [
         "ResourceUseLaiFunctionRelation"
       ],
@@ -5125,25 +5166,53 @@
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/ResourceUseLaiFunctionRelation.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Checked sources and the 23-response predominantly Hong Kong pilot show that several ordinary `NP + 用嚟 + VP` strings are acceptable. They also show that modal, copular, overt-user, actual-use, and ellipsis-compatible strings can be acceptable for reasons outside the current narrow parser label. Because the pilot cannot identify the intended parse and the runtime's resource classes, predicate scope, coordination behavior, and broader `用...嚟` relations remain unresolved, no defensible construction claim is ready for `provisional`. The label returns to `research_pending`.",
+      "family_name": "UsePurposeAndFunction",
+      "profile_name": "ResourceInitialNoSeparateUserJungLaiVP",
+      "profile_description": "An overt resource-like NP appears initially and is followed directly by 用嚟 or 用來 plus a visible use or function VP, without a separate overt user between the resource and 用嚟, as in 呢隻杯用嚟飲水 and 呢張紙用來寫字. The profile excludes ordinary instrumental 用, general purposive 嚟, separate-user forms, modal or copular frames, negation, A-not-A, and aspect-interrupted actual-use forms from this exact subtype.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "用來/用嚟 disyllabic expression",
+          "source_id": "SRC-CHEUNG-2018-LAI",
+          "scope_match": "close"
+        },
+        {
+          "term": "Instrumental SVC",
+          "source_id": "SRC-WONG-2023-LSA",
+          "scope_match": "close"
+        },
+        {
+          "term": "resource + 用嚟 + use predicate",
+          "source_id": "SRC-CCO-LAICHIWO-VILLAGE-HOUSE",
+          "scope_match": "exact"
+        },
+        {
+          "term": "resource + 用來 + storage predicate",
+          "source_id": "SRC-HKMEMORY-SHAPU-ORAL-HISTORY",
+          "scope_match": "exact"
+        },
+        {
+          "term": "purposive 用嚟 with separate user and actual-use event",
+          "source_id": "SRC-CHOR-2018-DIRECTIONAL-PARTICLES",
+          "scope_match": "contrastive"
+        }
+      ],
+      "former_names": [
+        "ResourceUseLaiFunctionRelation"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "runtime_narrower_defensible",
+        "terminology_alignment": "neutral_descriptive_preferred",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [
           "generic_head_requires_boundary_definition",
           "semantic_domain_name_requires_structural_scope_check"
         ],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-24. The legacy name is semantically understandable but reads like an internal graph edge and omits the word-order distinction that separates this runtime subtype from AA73. ResourceInitialJungLaiFunctionClause makes the overt resource, marker, and no-separate-user clause profile discoverable while remaining neutral among instrumental-SVC, purposive, and conventionalized-expression analyses. Status recommendation: retain research_pending; keep separate from AA73's separate-user profile while recording both as siblings in the UsePurposeAndFunction family; do not promote until runtime scope, coordinated predicates, interpretation-sensitive panel evidence, corpus diversity, and held-out boundaries are resolved"
       }
     },
     {
@@ -5358,30 +5427,48 @@
     {
       "construction_uuid": "c579fa12-518f-57cc-b02a-5b61e0ec5f5d",
       "construction_code": "AB60",
-      "canonical_name": "ScalarValueQuestion",
+      "canonical_name": "ScalarQuestionProfileWrapper",
       "legacy_labels": [
         "ScalarValueQuestion"
       ],
-      "claim_layer": "language_construction",
+      "claim_layer": "parser_representation",
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/ScalarValueQuestion.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese may instantiate the structural family represented by ScalarValueQuestion; exact productivity and boundaries require pattern-specific independent evidence.",
+      "family_name": "ScalarAndQuantityQuestions",
+      "profile_name": "LexicalPriceOrScalarPredicateAggregate",
+      "profile_description": "An implementation aggregate covering two independently supported question profiles: lexical price questions built around 幾錢 or 幾多錢, and compositional questions in which 幾 modifies a licensed scalar-dimension predicate such as 遠 or 長. The wrapper does not establish a single Cantonese construction shared by price and scalar-predicate questions.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "幾錢 price question",
+          "source_id": "SRC-TAM-2021-DOZE",
+          "scope_match": "exact"
+        },
+        {
+          "term": "幾多錢 quantity-and-currency question",
+          "source_id": "SRC-YIP-MATTHEWS-2000-BASIC",
+          "scope_match": "close"
+        },
+        {
+          "term": "幾 + scalar predicate",
+          "source_id": "SRC-YIP-MATTHEWS-2000-BASIC",
+          "scope_match": "exact"
+        }
+      ],
+      "former_names": [
+        "ScalarValueQuestion"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "overlapping",
+        "terminology_alignment": "misleading",
+        "recommended_action": "internalize_and_decompose",
         "automatic_risk_flags": [],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-24. ScalarValueQuestion groups a lexical price expression and ordinary scalar-predicate composition under a semantic English-language umbrella. The sources and tests preserve the distinction rather than motivating one productive construction. The permanent UUID should therefore represent only the compatibility wrapper and cease competing for linguistic promotion. Status recommendation: migrate the umbrella to parser_heuristic after compatibility migration; allocate separate language-construction UUIDs for lexical price questions and compositional 幾 plus scalar-predicate questions after exact boundaries are specified"
       }
     },
     {
@@ -5767,30 +5854,43 @@
     {
       "construction_uuid": "faf0933c-e9fb-55e4-aed5-89863a40747f",
       "construction_code": "AB73",
-      "canonical_name": "Topic",
+      "canonical_name": "UseFunctionPreposedResourceRole",
       "legacy_labels": [
         "Topic"
       ],
-      "claim_layer": "language_construction",
+      "claim_layer": "parser_representation",
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/Topic.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Canto Span uses Topic as a provisional representation for an overt preposed resource in the narrow source-linked `呢隻杯我用嚟飲水` profile.",
+      "family_name": "UsePurposeAndFunction",
+      "profile_name": "PreposedResourceInJungLaiProfile",
+      "profile_description": "A parser role assigned to the overt resource appearing before a separate user in the narrow 用嚟 use-function profile, as in 呢隻杯我用嚟飲水. The role records surface placement without claiming that initial position alone diagnoses a Cantonese topic construction or settles whether the resource is a topic, subject, moved instrument, or another participant.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "instrument moved to subject position",
+          "source_id": "SRC-WONG-2023-LANGUAGE-SAMPLE",
+          "scope_match": "close"
+        },
+        {
+          "term": "preposed resource",
+          "source_id": "SRC-WONG-2023-LANGUAGE-SAMPLE",
+          "scope_match": "partial"
+        }
+      ],
+      "former_names": [
+        "Topic"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "overlapping",
+        "terminology_alignment": "misleading",
+        "recommended_action": "internalize_and_decompose",
         "automatic_risk_flags": [],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-24. Topic is a broad syntactic-pragmatic analysis assigned from one construction-specific position. The source does not diagnose topic status, and the executable boundaries are really 用嚟-profile boundaries. Renaming the UUID as an internal preposed-resource role preserves the useful span while preventing one initial NP from licensing a general topic ontology. Status recommendation: migrate to parser_heuristic and attach the role to the relevant 用嚟 construction profile; do not retain Topic as an independent language-construction candidate"
       }
     },
     {

@@ -25,12 +25,9 @@ This is a prioritization report, not a promotion decision. A score cannot overri
 | `AB34` | `PostverbalSinPriorityClause` | `source_supported` | 60 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
 | `AA52` | `WaaParticipantZiCommunicationVP` | `source_supported` | 58 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
 | `AA74` | `NamZyuVPComplementClause` | `source_supported` | 58 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
+| `AB53` | `ResourceInitialJungLaiFunctionClause` | `source_supported` | 58 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
 | `AB58` | `M4SyunPropertyEvaluation` | `source_supported` | 58 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
-| `AB60` | `ScalarValueQuestion` | `source_supported` | 55 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
-| `AB73` | `Topic` | `source_supported` | 55 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
-| `AB53` | `ResourceUseLaiFunctionRelation` | `source_supported` | 53 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
-| `AA69` | `HeadlessDemonstrativeClassifierNP` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
-| `AB16` | `PassivePermissiveRelation` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
+| `AA69` | `DemonstrativeClassifierNPWithoutOvertNoun` | `source_supported` | 53 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA01` | `ANotAQuestion` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA04` | `ActionStativeVP` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA17` | `CognitionContentFrame` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
@@ -49,6 +46,9 @@ This is a prioritization report, not a promotion decision. A score cannot overri
 | `AA58` | `ExistentialWhQuestion` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA62` | `ExperientialVP` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA66` | `FragmentAnswer` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
+| `AA67` | `FragmentQuestion` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
+| `AA68` | `GoalAttainmentMotionVP` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
+| `AA76` | `LexicalGiveRelation` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 
 ## Narrowing candidates
 

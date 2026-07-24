@@ -2,7 +2,7 @@
   "schema": "canto-span-full-repo-label-sweep-v1",
   "identity_registry_schema": "canto-span-construction-identity-registry-v1",
   "record_count": 181,
-  "pending_review_count": 157,
+  "pending_review_count": 152,
   "automatic_flag_counts": {
     "generic_head_requires_boundary_definition": 72,
     "internal_representation_name_review": 20,
@@ -1109,15 +1109,15 @@
     {
       "construction_uuid": "4019aaa2-9a4e-53cd-a505-95c4af4e2c6d",
       "construction_code": "AA69",
-      "canonical_name": "HeadlessDemonstrativeClassifierNP",
+      "canonical_name": "DemonstrativeClassifierNPWithoutOvertNoun",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/HeadlessDemonstrativeClassifierNP.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "runtime_narrower_defensible",
+      "terminology_alignment": "theory_loaded",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": []
     },
     {
@@ -1849,15 +1849,15 @@
     {
       "construction_uuid": "b68b136d-f596-5529-8b79-8b4009168f8b",
       "construction_code": "AB16",
-      "canonical_name": "PassivePermissiveRelation",
+      "canonical_name": "BeiPassivePermissiveAmbiguityWrapper",
       "lifecycle_state": "current",
-      "claim_layer": "language_construction",
+      "claim_layer": "parser_representation",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/PassivePermissiveRelation.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "overlapping",
+      "terminology_alignment": "misleading",
+      "recommended_action": "internalize_and_decompose",
       "automatic_risk_flags": [
         "generic_head_requires_boundary_definition"
       ]
@@ -2437,15 +2437,15 @@
     {
       "construction_uuid": "06c9f3b1-f243-588d-8a6e-bddf9a94c871",
       "construction_code": "AB53",
-      "canonical_name": "ResourceUseLaiFunctionRelation",
+      "canonical_name": "ResourceInitialJungLaiFunctionClause",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/ResourceUseLaiFunctionRelation.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "runtime_narrower_defensible",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": [
         "generic_head_requires_boundary_definition",
         "semantic_domain_name_requires_structural_scope_check"
@@ -2550,15 +2550,15 @@
     {
       "construction_uuid": "c579fa12-518f-57cc-b02a-5b61e0ec5f5d",
       "construction_code": "AB60",
-      "canonical_name": "ScalarValueQuestion",
+      "canonical_name": "ScalarQuestionProfileWrapper",
       "lifecycle_state": "current",
-      "claim_layer": "language_construction",
+      "claim_layer": "parser_representation",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/ScalarValueQuestion.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "overlapping",
+      "terminology_alignment": "misleading",
+      "recommended_action": "internalize_and_decompose",
       "automatic_risk_flags": []
     },
     {
@@ -2764,15 +2764,15 @@
     {
       "construction_uuid": "faf0933c-e9fb-55e4-aed5-89863a40747f",
       "construction_code": "AB73",
-      "canonical_name": "Topic",
+      "canonical_name": "UseFunctionPreposedResourceRole",
       "lifecycle_state": "current",
-      "claim_layer": "language_construction",
+      "claim_layer": "parser_representation",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/Topic.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "overlapping",
+      "terminology_alignment": "misleading",
+      "recommended_action": "internalize_and_decompose",
       "automatic_risk_flags": []
     },
     {

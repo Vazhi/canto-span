@@ -8,19 +8,19 @@
   "promotion_eligible_now_count": 0,
   "state_counts": {
     "boundary_ready": 1,
-    "excluded_nonlanguage": 20,
+    "excluded_nonlanguage": 23,
     "lexicalized_review": 2,
     "narrowing_candidate": 36,
     "retired_evidence_rehome_candidate": 42,
     "retired_research_gap": 6,
-    "source_supported": 74
+    "source_supported": 71
   },
   "nearest_missing_gate_counts": {
-    "language_claim_defined": 20,
+    "language_claim_defined": 23,
     "negative_boundaries_complete": 34,
     "reviewed_corpus_evidence": 3,
-    "runtime_research_alignment": 19,
-    "source_scope_matches_claim": 57
+    "runtime_research_alignment": 17,
+    "source_scope_matches_claim": 56
   },
   "records": [
     {
@@ -4766,6 +4766,99 @@
       "source_path": "grammar/research_pending/IntentionFrame.md"
     },
     {
+      "construction_uuid": "06c9f3b1-f243-588d-8a6e-bddf9a94c871",
+      "construction_code": "AB53",
+      "canonical_name": "ResourceInitialJungLaiFunctionClause",
+      "legacy_label": "ResourceUseLaiFunctionRelation",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "family_id": null,
+      "family_name": "UsePurposeAndFunction",
+      "profile_name": "ResourceInitialNoSeparateUserJungLaiVP",
+      "learner_label": null,
+      "source_ids": [
+        "SRC-CCO-LAICHIWO-VILLAGE-HOUSE",
+        "SRC-CHEUNG-2018-LAI",
+        "SRC-CHOR-2018-DIRECTIONAL-PARTICLES",
+        "SRC-HKMEMORY-SHAPU-ORAL-HISTORY",
+        "SRC-WONG-2023-LSA"
+      ],
+      "preserved_source_ids": [],
+      "future_research_preserved_as": "",
+      "standard_positive_test_count": 7,
+      "standard_boundary_test_count": 14,
+      "gates": {
+        "language_claim_defined": {
+          "status": "pass",
+          "evidence": "plain_language_claim_present"
+        },
+        "independent_source_support": {
+          "status": "pass",
+          "evidence": "all_cited_sources_verified_and_independent",
+          "detail": "5/5"
+        },
+        "source_scope_matches_claim": {
+          "status": "pass",
+          "evidence": "current_standard_reaudit_complete_with_verified_sources"
+        },
+        "runtime_research_alignment": {
+          "status": "unresolved",
+          "evidence": "runtime_research_alignment_not_reconciled"
+        },
+        "executable_positive_cases_present": {
+          "status": "pass",
+          "evidence": "executable_positive_cases_present_implementation_only",
+          "detail": "7"
+        },
+        "negative_boundaries_complete": {
+          "status": "partial",
+          "evidence": "negative_boundaries_incomplete"
+        },
+        "reviewed_corpus_evidence": {
+          "status": "not_started",
+          "evidence": "no_reviewed_corpus_evidence"
+        },
+        "role_neutral_panel_threshold": {
+          "status": "partial",
+          "evidence": "panel_evidence_incomplete",
+          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":true,\"instrument_quality_resolved\":false,\"quality_screen_complete\":true,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
+        },
+        "held_out_validation": {
+          "status": "not_started",
+          "evidence": "no_passing_held_out_record"
+        },
+        "ontology_conflicts_resolved": {
+          "status": "pass",
+          "evidence": "completed_identity_label_review"
+        }
+      },
+      "supported_gate_eligible": false,
+      "supported_gate_blockers": [
+        "requirement_failed:locked_clean_panel_instrument",
+        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
+        "requirement_failed:instrument_quality_resolved",
+        "requirement_failed:panel_adjudication_complete",
+        "requirement_failed:critical_contrast_coverage_complete",
+        "requirement_failed:positive_and_negative_contrasts_reviewed",
+        "requirement_failed:negative_boundary_inventory_complete",
+        "requirement_failed:code_document_reconciled"
+      ],
+      "discovery_hard_blockers": [
+        "discovery_gate:reviewed_corpus_evidence",
+        "discovery_gate:held_out_validation"
+      ],
+      "readiness_score": 58,
+      "candidate_state": "source_supported",
+      "nearest_missing_gate": "runtime_research_alignment",
+      "next_best_action": "compare exact runtime paths with the source-supported construction and reconcile code plus documentation",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "semantic_domain_name_requires_structural_scope_check"
+      ],
+      "source_path": "grammar/research_pending/ResourceUseLaiFunctionRelation.md"
+    },
+    {
       "construction_uuid": "c5288f36-6870-5af3-ad52-bb44e39e9af8",
       "construction_code": "AB58",
       "canonical_name": "M4SyunPropertyEvaluation",
@@ -4861,287 +4954,16 @@
       "source_path": "grammar/research_pending/ScalarEvaluation.md"
     },
     {
-      "construction_uuid": "c579fa12-518f-57cc-b02a-5b61e0ec5f5d",
-      "construction_code": "AB60",
-      "canonical_name": "ScalarValueQuestion",
-      "legacy_label": "ScalarValueQuestion",
-      "lifecycle_state": "current",
-      "claim_layer": "language_construction",
-      "linguistic_status": "research_pending",
-      "family_id": "L25",
-      "family_name": "TypedWhAndStanceQuestions",
-      "profile_name": null,
-      "learner_label": null,
-      "source_ids": [
-        "SRC-YIP-MATTHEWS-2000-BASIC",
-        "SRC-TAM-2021-DOZE"
-      ],
-      "preserved_source_ids": [],
-      "future_research_preserved_as": "",
-      "standard_positive_test_count": 2,
-      "standard_boundary_test_count": 2,
-      "gates": {
-        "language_claim_defined": {
-          "status": "pass",
-          "evidence": "plain_language_claim_present"
-        },
-        "independent_source_support": {
-          "status": "pass",
-          "evidence": "all_cited_sources_verified_and_independent",
-          "detail": "2/2"
-        },
-        "source_scope_matches_claim": {
-          "status": "pass",
-          "evidence": "current_standard_reaudit_complete_with_verified_sources"
-        },
-        "runtime_research_alignment": {
-          "status": "partial",
-          "evidence": "code_document_reconciled_without_complete_current_metadata"
-        },
-        "executable_positive_cases_present": {
-          "status": "pass",
-          "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "2"
-        },
-        "negative_boundaries_complete": {
-          "status": "partial",
-          "evidence": "negative_boundaries_incomplete"
-        },
-        "reviewed_corpus_evidence": {
-          "status": "not_started",
-          "evidence": "no_reviewed_corpus_evidence"
-        },
-        "role_neutral_panel_threshold": {
-          "status": "not_started",
-          "evidence": "no_eligible_panel_evidence",
-          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":true,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
-        },
-        "held_out_validation": {
-          "status": "not_started",
-          "evidence": "no_passing_held_out_record"
-        },
-        "ontology_conflicts_resolved": {
-          "status": "unresolved",
-          "evidence": "identity_label_review_pending"
-        }
-      },
-      "supported_gate_eligible": false,
-      "supported_gate_blockers": [
-        "requirement_failed:locked_clean_panel_instrument",
-        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
-        "requirement_failed:instrument_quality_resolved",
-        "requirement_failed:quality_screen_complete",
-        "requirement_failed:panel_adjudication_complete",
-        "requirement_failed:critical_contrast_coverage_complete",
-        "requirement_failed:positive_and_negative_contrasts_reviewed",
-        "requirement_failed:negative_boundary_inventory_complete",
-        "requirement_failed:current_code_review_metadata"
-      ],
-      "discovery_hard_blockers": [
-        "discovery_gate:reviewed_corpus_evidence",
-        "discovery_gate:held_out_validation",
-        "discovery_gate:ontology_conflicts_resolved"
-      ],
-      "readiness_score": 55,
-      "candidate_state": "source_supported",
-      "nearest_missing_gate": "runtime_research_alignment",
-      "next_best_action": "compare exact runtime paths with the source-supported construction and reconcile code plus documentation",
-      "automatic_risk_flags": [],
-      "source_path": "grammar/research_pending/ScalarValueQuestion.md"
-    },
-    {
-      "construction_uuid": "faf0933c-e9fb-55e4-aed5-89863a40747f",
-      "construction_code": "AB73",
-      "canonical_name": "Topic",
-      "legacy_label": "Topic",
-      "lifecycle_state": "current",
-      "claim_layer": "language_construction",
-      "linguistic_status": "research_pending",
-      "family_id": "I05",
-      "family_name": "DiscourseRoleStructure",
-      "profile_name": null,
-      "learner_label": null,
-      "source_ids": [
-        "SRC-WONG-2023-LANGUAGE-SAMPLE"
-      ],
-      "preserved_source_ids": [],
-      "future_research_preserved_as": "",
-      "standard_positive_test_count": 1,
-      "standard_boundary_test_count": 2,
-      "gates": {
-        "language_claim_defined": {
-          "status": "pass",
-          "evidence": "plain_language_claim_present"
-        },
-        "independent_source_support": {
-          "status": "pass",
-          "evidence": "all_cited_sources_verified_and_independent",
-          "detail": "1/1"
-        },
-        "source_scope_matches_claim": {
-          "status": "pass",
-          "evidence": "current_standard_reaudit_complete_with_verified_sources"
-        },
-        "runtime_research_alignment": {
-          "status": "partial",
-          "evidence": "code_document_reconciled_without_complete_current_metadata"
-        },
-        "executable_positive_cases_present": {
-          "status": "pass",
-          "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "1"
-        },
-        "negative_boundaries_complete": {
-          "status": "partial",
-          "evidence": "negative_boundaries_incomplete"
-        },
-        "reviewed_corpus_evidence": {
-          "status": "not_started",
-          "evidence": "no_reviewed_corpus_evidence"
-        },
-        "role_neutral_panel_threshold": {
-          "status": "not_started",
-          "evidence": "no_eligible_panel_evidence",
-          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":true,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
-        },
-        "held_out_validation": {
-          "status": "not_started",
-          "evidence": "no_passing_held_out_record"
-        },
-        "ontology_conflicts_resolved": {
-          "status": "unresolved",
-          "evidence": "identity_label_review_pending"
-        }
-      },
-      "supported_gate_eligible": false,
-      "supported_gate_blockers": [
-        "requirement_failed:locked_clean_panel_instrument",
-        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
-        "requirement_failed:instrument_quality_resolved",
-        "requirement_failed:quality_screen_complete",
-        "requirement_failed:panel_adjudication_complete",
-        "requirement_failed:critical_contrast_coverage_complete",
-        "requirement_failed:positive_and_negative_contrasts_reviewed",
-        "requirement_failed:negative_boundary_inventory_complete",
-        "requirement_failed:current_code_review_metadata"
-      ],
-      "discovery_hard_blockers": [
-        "discovery_gate:reviewed_corpus_evidence",
-        "discovery_gate:held_out_validation",
-        "discovery_gate:ontology_conflicts_resolved"
-      ],
-      "readiness_score": 55,
-      "candidate_state": "source_supported",
-      "nearest_missing_gate": "runtime_research_alignment",
-      "next_best_action": "compare exact runtime paths with the source-supported construction and reconcile code plus documentation",
-      "automatic_risk_flags": [],
-      "source_path": "grammar/research_pending/Topic.md"
-    },
-    {
-      "construction_uuid": "06c9f3b1-f243-588d-8a6e-bddf9a94c871",
-      "construction_code": "AB53",
-      "canonical_name": "ResourceUseLaiFunctionRelation",
-      "legacy_label": "ResourceUseLaiFunctionRelation",
-      "lifecycle_state": "current",
-      "claim_layer": "language_construction",
-      "linguistic_status": "research_pending",
-      "family_id": null,
-      "family_name": null,
-      "profile_name": null,
-      "learner_label": null,
-      "source_ids": [
-        "SRC-CCO-LAICHIWO-VILLAGE-HOUSE",
-        "SRC-CHEUNG-2018-LAI",
-        "SRC-CHOR-2018-DIRECTIONAL-PARTICLES",
-        "SRC-HKMEMORY-SHAPU-ORAL-HISTORY",
-        "SRC-WONG-2023-LSA"
-      ],
-      "preserved_source_ids": [],
-      "future_research_preserved_as": "",
-      "standard_positive_test_count": 7,
-      "standard_boundary_test_count": 14,
-      "gates": {
-        "language_claim_defined": {
-          "status": "pass",
-          "evidence": "plain_language_claim_present"
-        },
-        "independent_source_support": {
-          "status": "pass",
-          "evidence": "all_cited_sources_verified_and_independent",
-          "detail": "5/5"
-        },
-        "source_scope_matches_claim": {
-          "status": "pass",
-          "evidence": "current_standard_reaudit_complete_with_verified_sources"
-        },
-        "runtime_research_alignment": {
-          "status": "unresolved",
-          "evidence": "runtime_research_alignment_not_reconciled"
-        },
-        "executable_positive_cases_present": {
-          "status": "pass",
-          "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "7"
-        },
-        "negative_boundaries_complete": {
-          "status": "partial",
-          "evidence": "negative_boundaries_incomplete"
-        },
-        "reviewed_corpus_evidence": {
-          "status": "not_started",
-          "evidence": "no_reviewed_corpus_evidence"
-        },
-        "role_neutral_panel_threshold": {
-          "status": "partial",
-          "evidence": "panel_evidence_incomplete",
-          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":true,\"instrument_quality_resolved\":false,\"quality_screen_complete\":true,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
-        },
-        "held_out_validation": {
-          "status": "not_started",
-          "evidence": "no_passing_held_out_record"
-        },
-        "ontology_conflicts_resolved": {
-          "status": "unresolved",
-          "evidence": "identity_label_review_pending"
-        }
-      },
-      "supported_gate_eligible": false,
-      "supported_gate_blockers": [
-        "requirement_failed:locked_clean_panel_instrument",
-        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
-        "requirement_failed:instrument_quality_resolved",
-        "requirement_failed:panel_adjudication_complete",
-        "requirement_failed:critical_contrast_coverage_complete",
-        "requirement_failed:positive_and_negative_contrasts_reviewed",
-        "requirement_failed:negative_boundary_inventory_complete",
-        "requirement_failed:code_document_reconciled"
-      ],
-      "discovery_hard_blockers": [
-        "discovery_gate:reviewed_corpus_evidence",
-        "discovery_gate:held_out_validation",
-        "discovery_gate:ontology_conflicts_resolved"
-      ],
-      "readiness_score": 53,
-      "candidate_state": "source_supported",
-      "nearest_missing_gate": "runtime_research_alignment",
-      "next_best_action": "compare exact runtime paths with the source-supported construction and reconcile code plus documentation",
-      "automatic_risk_flags": [
-        "generic_head_requires_boundary_definition",
-        "semantic_domain_name_requires_structural_scope_check"
-      ],
-      "source_path": "grammar/research_pending/ResourceUseLaiFunctionRelation.md"
-    },
-    {
       "construction_uuid": "4019aaa2-9a4e-53cd-a505-95c4af4e2c6d",
       "construction_code": "AA69",
-      "canonical_name": "HeadlessDemonstrativeClassifierNP",
+      "canonical_name": "DemonstrativeClassifierNPWithoutOvertNoun",
       "legacy_label": "HeadlessDemonstrativeClassifierNP",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "research_pending",
       "family_id": null,
-      "family_name": null,
-      "profile_name": null,
+      "family_name": "ClassifierAndQuantityNP",
+      "profile_name": "DemonstrativeClassifierNoOvertNoun",
       "learner_label": null,
       "source_ids": [
         "SRC-YU-2006-NOMINAL-MODIFIERS"
@@ -5191,8 +5013,9 @@
           "evidence": "no_passing_held_out_record"
         },
         "ontology_conflicts_resolved": {
-          "status": "unresolved",
-          "evidence": "identity_label_review_pending"
+          "status": "partial",
+          "evidence": "identity_label_review_in_progress",
+          "detail": "{\"review_state\":\"complete\",\"behavior_research_alignment\":\"runtime_narrower_defensible\",\"terminology_alignment\":\"theory_loaded\",\"recommended_action\":\"rename_retain_narrow\",\"automatic_risk_flags\":[],\"review_notes\":\"Expert adjudication 2026-07-24. The construction is a genuine surface subtype, but headless can imply a specific ellipsis or null-noun analysis that Canto Span explicitly does not assert. DemonstrativeClassifierNPWithoutOvertNoun names the observable sequence and cleanly contrasts it with AB15 DemonstrativeClassifierNounNP without reconstructing omitted material. Status recommendation: retain research_pending and quarantine from promotion until at least one stronger independent source, exact source-linked positives, discourse-sensitive negative boundaries, corpus review, and role-neutral panel evidence are available\"}"
         }
       },
       "supported_gate_eligible": false,
@@ -5213,108 +5036,12 @@
         "discovery_gate:held_out_validation",
         "discovery_gate:ontology_conflicts_resolved"
       ],
-      "readiness_score": 50,
+      "readiness_score": 53,
       "candidate_state": "source_supported",
       "nearest_missing_gate": "source_scope_matches_claim",
       "next_best_action": "complete source-scope reaudit and split any unsupported extensions",
       "automatic_risk_flags": [],
       "source_path": "grammar/research_pending/HeadlessDemonstrativeClassifierNP.md"
-    },
-    {
-      "construction_uuid": "b68b136d-f596-5529-8b79-8b4009168f8b",
-      "construction_code": "AB16",
-      "canonical_name": "PassivePermissiveRelation",
-      "legacy_label": "PassivePermissiveRelation",
-      "lifecycle_state": "current",
-      "claim_layer": "language_construction",
-      "linguistic_status": "research_pending",
-      "family_id": "L01",
-      "family_name": "CoverbAndParticipantRelations",
-      "profile_name": null,
-      "learner_label": null,
-      "source_ids": [
-        "SRC-BODOMO-LAM-YU-2003",
-        "SRC-CHAN-2021-BEI",
-        "SRC-CHIN-2011-BEI",
-        "SRC-CHOW-2018-INDIRECT-PASSIVE",
-        "SRC-CHOW-2019-PASSIVE-PERMISSIVE",
-        "SRC-WONG-2023-BEI"
-      ],
-      "preserved_source_ids": [],
-      "future_research_preserved_as": "",
-      "standard_positive_test_count": 2,
-      "standard_boundary_test_count": 2,
-      "gates": {
-        "language_claim_defined": {
-          "status": "pass",
-          "evidence": "plain_language_claim_present"
-        },
-        "independent_source_support": {
-          "status": "pass",
-          "evidence": "all_cited_sources_verified_and_independent",
-          "detail": "6/6"
-        },
-        "source_scope_matches_claim": {
-          "status": "partial",
-          "evidence": "verified_sources_but_scope_reaudit_incomplete"
-        },
-        "runtime_research_alignment": {
-          "status": "partial",
-          "evidence": "code_document_reconciled_without_complete_current_metadata"
-        },
-        "executable_positive_cases_present": {
-          "status": "pass",
-          "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "2"
-        },
-        "negative_boundaries_complete": {
-          "status": "partial",
-          "evidence": "negative_boundaries_incomplete"
-        },
-        "reviewed_corpus_evidence": {
-          "status": "not_started",
-          "evidence": "no_reviewed_corpus_evidence"
-        },
-        "role_neutral_panel_threshold": {
-          "status": "not_started",
-          "evidence": "no_eligible_panel_evidence",
-          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":true,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
-        },
-        "held_out_validation": {
-          "status": "not_started",
-          "evidence": "no_passing_held_out_record"
-        },
-        "ontology_conflicts_resolved": {
-          "status": "unresolved",
-          "evidence": "identity_label_review_pending"
-        }
-      },
-      "supported_gate_eligible": false,
-      "supported_gate_blockers": [
-        "requirement_failed:locked_clean_panel_instrument",
-        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
-        "requirement_failed:instrument_quality_resolved",
-        "requirement_failed:quality_screen_complete",
-        "requirement_failed:panel_adjudication_complete",
-        "requirement_failed:critical_contrast_coverage_complete",
-        "requirement_failed:positive_and_negative_contrasts_reviewed",
-        "requirement_failed:negative_boundary_inventory_complete",
-        "requirement_failed:current_code_review_metadata",
-        "requirement_failed:current_standard_reaudit_complete"
-      ],
-      "discovery_hard_blockers": [
-        "discovery_gate:reviewed_corpus_evidence",
-        "discovery_gate:held_out_validation",
-        "discovery_gate:ontology_conflicts_resolved"
-      ],
-      "readiness_score": 50,
-      "candidate_state": "source_supported",
-      "nearest_missing_gate": "source_scope_matches_claim",
-      "next_best_action": "complete source-scope reaudit and split any unsupported extensions",
-      "automatic_risk_flags": [
-        "generic_head_requires_boundary_definition"
-      ],
-      "source_path": "grammar/research_pending/PassivePermissiveRelation.md"
     },
     {
       "construction_uuid": "5e10dfc5-15a5-5f5a-b203-37c81a653330",
@@ -15905,6 +15632,103 @@
       "source_path": "grammar/parser_heuristic/NominalHeadSpan.md"
     },
     {
+      "construction_uuid": "b68b136d-f596-5529-8b79-8b4009168f8b",
+      "construction_code": "AB16",
+      "canonical_name": "BeiPassivePermissiveAmbiguityWrapper",
+      "legacy_label": "PassivePermissiveRelation",
+      "lifecycle_state": "current",
+      "claim_layer": "parser_representation",
+      "linguistic_status": "research_pending",
+      "family_id": null,
+      "family_name": "BeiVoiceAndCausativeRepresentation",
+      "profile_name": "NP1BeiNP2VPAmbiguityAggregate",
+      "learner_label": null,
+      "source_ids": [
+        "SRC-BODOMO-LAM-YU-2003",
+        "SRC-CHAN-2021-BEI",
+        "SRC-CHIN-2011-BEI",
+        "SRC-CHOW-2018-INDIRECT-PASSIVE",
+        "SRC-CHOW-2019-PASSIVE-PERMISSIVE",
+        "SRC-WONG-2023-BEI"
+      ],
+      "preserved_source_ids": [],
+      "future_research_preserved_as": "",
+      "standard_positive_test_count": 2,
+      "standard_boundary_test_count": 2,
+      "gates": {
+        "language_claim_defined": {
+          "status": "not_applicable",
+          "evidence": "non_language_claim_layer"
+        },
+        "independent_source_support": {
+          "status": "pass",
+          "evidence": "all_cited_sources_verified_and_independent",
+          "detail": "6/6"
+        },
+        "source_scope_matches_claim": {
+          "status": "partial",
+          "evidence": "verified_sources_but_scope_reaudit_incomplete"
+        },
+        "runtime_research_alignment": {
+          "status": "partial",
+          "evidence": "code_document_reconciled_without_complete_current_metadata"
+        },
+        "executable_positive_cases_present": {
+          "status": "pass",
+          "evidence": "executable_positive_cases_present_implementation_only",
+          "detail": "2"
+        },
+        "negative_boundaries_complete": {
+          "status": "partial",
+          "evidence": "negative_boundaries_incomplete"
+        },
+        "reviewed_corpus_evidence": {
+          "status": "not_started",
+          "evidence": "no_reviewed_corpus_evidence"
+        },
+        "role_neutral_panel_threshold": {
+          "status": "not_started",
+          "evidence": "no_eligible_panel_evidence",
+          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":true,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
+        },
+        "held_out_validation": {
+          "status": "not_started",
+          "evidence": "no_passing_held_out_record"
+        },
+        "ontology_conflicts_resolved": {
+          "status": "partial",
+          "evidence": "identity_label_review_in_progress",
+          "detail": "{\"review_state\":\"complete\",\"behavior_research_alignment\":\"overlapping\",\"terminology_alignment\":\"misleading\",\"recommended_action\":\"internalize_and_decompose\",\"automatic_risk_flags\":[\"generic_head_requires_boundary_definition\"],\"review_notes\":\"Expert adjudication 2026-07-24. PassivePermissiveRelation treats distinct constructions and context-dependent interpretations as one language-level relation. The sources instead make their distinctions central, and the two source-linked fixtures deliberately represent different readings. The UUID should preserve ambiguity as an internal wrapper while future language records receive separate permanent identities and exact boundaries. Status recommendation: migrate the umbrella to parser_heuristic after compatibility migration; allocate separate language-construction UUIDs for source-bounded permissive, canonical passive, indirect passive, and any independently justified causative profiles\"}"
+        }
+      },
+      "supported_gate_eligible": false,
+      "supported_gate_blockers": [
+        "requirement_failed:locked_clean_panel_instrument",
+        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
+        "requirement_failed:instrument_quality_resolved",
+        "requirement_failed:quality_screen_complete",
+        "requirement_failed:panel_adjudication_complete",
+        "requirement_failed:critical_contrast_coverage_complete",
+        "requirement_failed:positive_and_negative_contrasts_reviewed",
+        "requirement_failed:negative_boundary_inventory_complete",
+        "requirement_failed:current_code_review_metadata",
+        "requirement_failed:current_standard_reaudit_complete"
+      ],
+      "discovery_hard_blockers": [
+        "discovery_gate:reviewed_corpus_evidence",
+        "discovery_gate:held_out_validation",
+        "discovery_gate:ontology_conflicts_resolved"
+      ],
+      "readiness_score": 0,
+      "candidate_state": "excluded_nonlanguage",
+      "nearest_missing_gate": "language_claim_defined",
+      "next_best_action": "define a narrow falsifiable language claim before adding evidence",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition"
+      ],
+      "source_path": "grammar/research_pending/PassivePermissiveRelation.md"
+    },
+    {
       "construction_uuid": "5187ba31-988b-538d-bd4a-705dc31dab4a",
       "construction_code": "AB22",
       "canonical_name": "PolarQuestionFrame",
@@ -16085,6 +15909,185 @@
         "unsupported_generalization_requires_source_runtime_reconciliation"
       ],
       "source_path": "grammar/unsupported_generalization/PoliteImperativeClause.md"
+    },
+    {
+      "construction_uuid": "c579fa12-518f-57cc-b02a-5b61e0ec5f5d",
+      "construction_code": "AB60",
+      "canonical_name": "ScalarQuestionProfileWrapper",
+      "legacy_label": "ScalarValueQuestion",
+      "lifecycle_state": "current",
+      "claim_layer": "parser_representation",
+      "linguistic_status": "research_pending",
+      "family_id": null,
+      "family_name": "ScalarAndQuantityQuestions",
+      "profile_name": "LexicalPriceOrScalarPredicateAggregate",
+      "learner_label": null,
+      "source_ids": [
+        "SRC-YIP-MATTHEWS-2000-BASIC",
+        "SRC-TAM-2021-DOZE"
+      ],
+      "preserved_source_ids": [],
+      "future_research_preserved_as": "",
+      "standard_positive_test_count": 2,
+      "standard_boundary_test_count": 2,
+      "gates": {
+        "language_claim_defined": {
+          "status": "not_applicable",
+          "evidence": "non_language_claim_layer"
+        },
+        "independent_source_support": {
+          "status": "pass",
+          "evidence": "all_cited_sources_verified_and_independent",
+          "detail": "2/2"
+        },
+        "source_scope_matches_claim": {
+          "status": "pass",
+          "evidence": "current_standard_reaudit_complete_with_verified_sources"
+        },
+        "runtime_research_alignment": {
+          "status": "partial",
+          "evidence": "code_document_reconciled_without_complete_current_metadata"
+        },
+        "executable_positive_cases_present": {
+          "status": "pass",
+          "evidence": "executable_positive_cases_present_implementation_only",
+          "detail": "2"
+        },
+        "negative_boundaries_complete": {
+          "status": "partial",
+          "evidence": "negative_boundaries_incomplete"
+        },
+        "reviewed_corpus_evidence": {
+          "status": "not_started",
+          "evidence": "no_reviewed_corpus_evidence"
+        },
+        "role_neutral_panel_threshold": {
+          "status": "not_started",
+          "evidence": "no_eligible_panel_evidence",
+          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":true,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
+        },
+        "held_out_validation": {
+          "status": "not_started",
+          "evidence": "no_passing_held_out_record"
+        },
+        "ontology_conflicts_resolved": {
+          "status": "partial",
+          "evidence": "identity_label_review_in_progress",
+          "detail": "{\"review_state\":\"complete\",\"behavior_research_alignment\":\"overlapping\",\"terminology_alignment\":\"misleading\",\"recommended_action\":\"internalize_and_decompose\",\"automatic_risk_flags\":[],\"review_notes\":\"Expert adjudication 2026-07-24. ScalarValueQuestion groups a lexical price expression and ordinary scalar-predicate composition under a semantic English-language umbrella. The sources and tests preserve the distinction rather than motivating one productive construction. The permanent UUID should therefore represent only the compatibility wrapper and cease competing for linguistic promotion. Status recommendation: migrate the umbrella to parser_heuristic after compatibility migration; allocate separate language-construction UUIDs for lexical price questions and compositional 幾 plus scalar-predicate questions after exact boundaries are specified\"}"
+        }
+      },
+      "supported_gate_eligible": false,
+      "supported_gate_blockers": [
+        "requirement_failed:locked_clean_panel_instrument",
+        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
+        "requirement_failed:instrument_quality_resolved",
+        "requirement_failed:quality_screen_complete",
+        "requirement_failed:panel_adjudication_complete",
+        "requirement_failed:critical_contrast_coverage_complete",
+        "requirement_failed:positive_and_negative_contrasts_reviewed",
+        "requirement_failed:negative_boundary_inventory_complete",
+        "requirement_failed:current_code_review_metadata"
+      ],
+      "discovery_hard_blockers": [
+        "discovery_gate:reviewed_corpus_evidence",
+        "discovery_gate:held_out_validation",
+        "discovery_gate:ontology_conflicts_resolved"
+      ],
+      "readiness_score": 0,
+      "candidate_state": "excluded_nonlanguage",
+      "nearest_missing_gate": "language_claim_defined",
+      "next_best_action": "define a narrow falsifiable language claim before adding evidence",
+      "automatic_risk_flags": [],
+      "source_path": "grammar/research_pending/ScalarValueQuestion.md"
+    },
+    {
+      "construction_uuid": "faf0933c-e9fb-55e4-aed5-89863a40747f",
+      "construction_code": "AB73",
+      "canonical_name": "UseFunctionPreposedResourceRole",
+      "legacy_label": "Topic",
+      "lifecycle_state": "current",
+      "claim_layer": "parser_representation",
+      "linguistic_status": "research_pending",
+      "family_id": null,
+      "family_name": "UsePurposeAndFunction",
+      "profile_name": "PreposedResourceInJungLaiProfile",
+      "learner_label": null,
+      "source_ids": [
+        "SRC-WONG-2023-LANGUAGE-SAMPLE"
+      ],
+      "preserved_source_ids": [],
+      "future_research_preserved_as": "",
+      "standard_positive_test_count": 1,
+      "standard_boundary_test_count": 2,
+      "gates": {
+        "language_claim_defined": {
+          "status": "not_applicable",
+          "evidence": "non_language_claim_layer"
+        },
+        "independent_source_support": {
+          "status": "pass",
+          "evidence": "all_cited_sources_verified_and_independent",
+          "detail": "1/1"
+        },
+        "source_scope_matches_claim": {
+          "status": "pass",
+          "evidence": "current_standard_reaudit_complete_with_verified_sources"
+        },
+        "runtime_research_alignment": {
+          "status": "partial",
+          "evidence": "code_document_reconciled_without_complete_current_metadata"
+        },
+        "executable_positive_cases_present": {
+          "status": "pass",
+          "evidence": "executable_positive_cases_present_implementation_only",
+          "detail": "1"
+        },
+        "negative_boundaries_complete": {
+          "status": "partial",
+          "evidence": "negative_boundaries_incomplete"
+        },
+        "reviewed_corpus_evidence": {
+          "status": "not_started",
+          "evidence": "no_reviewed_corpus_evidence"
+        },
+        "role_neutral_panel_threshold": {
+          "status": "not_started",
+          "evidence": "no_eligible_panel_evidence",
+          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":true,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
+        },
+        "held_out_validation": {
+          "status": "not_started",
+          "evidence": "no_passing_held_out_record"
+        },
+        "ontology_conflicts_resolved": {
+          "status": "partial",
+          "evidence": "identity_label_review_in_progress",
+          "detail": "{\"review_state\":\"complete\",\"behavior_research_alignment\":\"overlapping\",\"terminology_alignment\":\"misleading\",\"recommended_action\":\"internalize_and_decompose\",\"automatic_risk_flags\":[],\"review_notes\":\"Expert adjudication 2026-07-24. Topic is a broad syntactic-pragmatic analysis assigned from one construction-specific position. The source does not diagnose topic status, and the executable boundaries are really 用嚟-profile boundaries. Renaming the UUID as an internal preposed-resource role preserves the useful span while preventing one initial NP from licensing a general topic ontology. Status recommendation: migrate to parser_heuristic and attach the role to the relevant 用嚟 construction profile; do not retain Topic as an independent language-construction candidate\"}"
+        }
+      },
+      "supported_gate_eligible": false,
+      "supported_gate_blockers": [
+        "requirement_failed:locked_clean_panel_instrument",
+        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
+        "requirement_failed:instrument_quality_resolved",
+        "requirement_failed:quality_screen_complete",
+        "requirement_failed:panel_adjudication_complete",
+        "requirement_failed:critical_contrast_coverage_complete",
+        "requirement_failed:positive_and_negative_contrasts_reviewed",
+        "requirement_failed:negative_boundary_inventory_complete",
+        "requirement_failed:current_code_review_metadata"
+      ],
+      "discovery_hard_blockers": [
+        "discovery_gate:reviewed_corpus_evidence",
+        "discovery_gate:held_out_validation",
+        "discovery_gate:ontology_conflicts_resolved"
+      ],
+      "readiness_score": 0,
+      "candidate_state": "excluded_nonlanguage",
+      "nearest_missing_gate": "language_claim_defined",
+      "next_best_action": "define a narrow falsifiable language claim before adding evidence",
+      "automatic_risk_flags": [],
+      "source_path": "grammar/research_pending/Topic.md"
     },
     {
       "construction_uuid": "6fea6ab3-1f41-5bcb-9d80-8dc65fa93d06",
