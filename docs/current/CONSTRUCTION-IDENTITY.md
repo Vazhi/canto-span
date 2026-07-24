@@ -82,6 +82,45 @@ Assigning a UUID does not validate a label. Every current and retired record rec
 
 The first machine-generated pass may flag naming risks, but automatic flags are not linguistic conclusions.
 
+## Supported-productivity discovery
+
+`data/construction-candidate-readiness.json` evaluates every permanent UUID against separate discovery gates:
+
+- a defined language claim;
+- independently verified source support;
+- source scope matching the claim;
+- runtime–research reconciliation;
+- executable positive cases;
+- complete executable negative boundaries;
+- reviewed corpus evidence;
+- a locked role-neutral panel meeting the supported threshold;
+- held-out validation;
+- completed ontology and terminology review.
+
+Candidate scores rank research efficiency only. They cannot authorize promotion or compensate for a failed hard gate.
+
+Current candidate states are:
+
+- `source_supported` — a direct current language record with verified independent evidence, but later gates remain incomplete;
+- `behavior_aligned` — source scope and current runtime behavior have been reconciled;
+- `boundary_ready` — positive implementation cases and a complete passing negative-boundary inventory exist;
+- `evidence_ready` — reviewed corpus and panel gates pass;
+- `heldout_ready` — an independent held-out evaluation also passes;
+- `promotion_review` — all discovery and existing supported-productivity gates pass;
+- `narrowing_candidate` — an unsupported broad current label contains source-backed overlap that may justify narrower successor UUIDs;
+- `retired_evidence_rehome_candidate` — a retired record preserves source links that may need a narrow current home;
+- `retired_research_gap` — a retired record preserves a research direction but no mapped source link;
+- `excluded_nonlanguage` — an implementation or other non-language record is not directly eligible for linguistic promotion.
+
+Evidence attached to a broad, retired, or implementation record is never transferred automatically. A successor must receive a new UUID when the underlying construction identity changes, and only scope-matched evidence may be linked to it.
+
+The canonical reports are:
+
+- `docs/research/SUPPORTED-PRODUCTIVE-CANDIDATES.md`;
+- `docs/research/ORPHANED-CONSTRUCTION-EVIDENCE.md`;
+- `docs/research/CONSTRUCTION-FAMILY-GAPS.md`;
+- `docs/research/FULL-REPO-SUPPORTED-PRODUCTIVE-SWEEP-R1.md`.
+
 ## Allocation safeguards
 
 - The registry is append-preserving: existing UUID/code pairs may not change.
