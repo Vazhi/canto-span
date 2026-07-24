@@ -18,11 +18,7 @@ A construction is eligible only when all of the following are true:
 - [ ] **Corpus hits are reviewed, not counted.** Every candidate used as evidence
       is classified as genuine, false positive, ambiguous, or unusable, and the
       totals account for the full candidate inventory.
-- [ ] **A locked role-neutral native panel covers every critical contrast.** Every
-      critical positive and negative item has at least 30 usable independently
-      submitted adjudicated judgments from eligible respondents using the same
-      locked clean instrument and inclusion criteria. No respondent receives
-      special status or weight.
+- [ ] **A locked role-neutral native panel covers every critical contrast.** Every critical positive and negative item has at least 30 usable independently submitted adjudicated judgments from eligible respondents using the same locked clean instrument and inclusion criteria. No respondent receives special status or weight.
 - [ ] **Negative and boundary cases are executable.** Every case the construction
       must not match is present in a passing parser test.
 - [ ] **Implementation matches documentation exactly.** The runtime path has been
@@ -37,8 +33,7 @@ A construction is eligible only when all of the following are true:
       sources and instrument version, the usable judgment count for each critical
       item, the corpus classifications, and what remains uncertain.
 
-If any item is unchecked, the construction remains `provisional` or lower,
-regardless of internal render, regression, or held-out success.
+If any item is unchecked, the construction remains `provisional` or lower, regardless of internal render, regression, or held-out success.
 
 ## `provisional`
 
