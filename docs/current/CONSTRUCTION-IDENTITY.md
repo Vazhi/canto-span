@@ -2,59 +2,82 @@
 
 ## Purpose
 
-Canto Span separates permanent machine identity from changing linguistic terminology and learner-facing presentation.
+Canto Span separates permanent machine identity from mutable terminology,
+runtime aliases, linguistic status, and learner-facing presentation.
 
-A construction record has four distinct identifiers:
+Every record has four distinct identifiers:
 
-1. `construction_uuid` — immutable global machine identity.
-2. `construction_code` — immutable short human reference in SoSci-style `AA01` form.
-3. `canonical_name` — current technical name; may change after research.
-4. `learner_label` — presentation label; may be shared by many records.
+1. `construction_uuid` — immutable global machine identity;
+2. `construction_code` — immutable short reference such as `AA01`;
+3. `canonical_name` — current expert-approved technical name;
+4. `learner_label` — optional presentation label that may be shared.
 
-Names and learner labels are metadata. Runtime, evidence, tests, surveys, migrations, and cross-record links must ultimately use `construction_uuid`.
+Runtime labels, note filenames, evidence links, tests, surveys, migrations, and
+cross-record relationships must resolve to UUID. A legacy runtime label remains a
+compatibility alias, not the durable key.
 
-## Accepted design
+## Current registry
 
-### UUID
+- permanent records: **181**;
+- current runtime-linked records: **133**;
+- retired records: **48**;
+- expert-adjudicated records: **34**;
+- allocated codes: `AA01` through `AB82`.
 
-- Existing records receive deterministic UUIDv5 values during the one-time migration.
-- The migration namespace is fixed in the registry and must never change.
-- The legacy label is only the bootstrap seed; later renaming does not recalculate the UUID.
-- Future candidate records receive UUIDv4 values when created.
+The canonical registry is `data/construction-identities.json`. The immutable lock
+is `data/construction-identity-lock.json`. Accepted naming and ontology decisions
+come from the adjudication records described in
+[`CONSTRUCTION-ADJUDICATION.md`](CONSTRUCTION-ADJUDICATION.md).
+
+## UUID rules
+
+- Existing records received deterministic UUIDv5 values during the one-time
+  migration.
+- The fixed migration namespace never changes.
+- The bootstrap legacy label never recalculates the UUID after a rename.
+- Future candidates receive UUIDv4 values.
 - UUIDs are never reused, deleted, or reassigned.
 
-### Short code
+## Short-code rules
 
-- Canonical records receive a permanent two-letter, two-digit code: `AA01` through `ZZ99`.
-- Codes are opaque. Letters do not encode lane, phrase type, claim layer, or status.
+- Canonical records receive an opaque two-letter, two-digit code from `AA01` to
+  `ZZ99`.
+- Letters and digits encode no lane, phrase type, status, or claim layer.
 - Codes are never reused after retirement or supersession.
-- Candidate records created on ordinary branches may have `construction_code: null`.
-- A canonical code is assigned only through the allocation tool after collision review.
+- Ordinary branch candidates may temporarily have `construction_code: null`.
+- Canonical code allocation is serialized through the allocation tool after
+  collision review.
 
-### Canonical name
+## Canonical-name rules
 
-- The canonical name describes the current narrow analysis.
-- It may be revised without changing UUID or short code.
-- Strong research terminology should be stored under `source_terms`, even when a theory-neutral canonical name is chosen.
-- Code must not use the canonical name as the durable database key.
+- The canonical name describes the current narrow profile.
+- It may change without changing UUID or code.
+- Prefer observable, form-based, theory-neutral wording when research does not
+  settle one analysis.
+- Preserve source terminology separately under `source_terms` with its source ID
+  and scope relationship.
+- Code must not use canonical name as a durable database key.
 
-### Learner label
+## Learner-label rules
 
-- Multiple UUIDs may share the same learner-facing label.
-- Learner labels are presentation-only and may change independently.
-- A learner label must never be used to infer grammatical identity.
+- Multiple UUIDs may share a learner label.
+- Learner labels may change independently of technical analysis.
+- A learner label never establishes grammatical identity, evidence transfer,
+  status, or promotion eligibility.
 
-## Identity versus revision
+## Revision, split, and retirement
 
-A clarification, new source, learner-text revision, or tighter boundary normally keeps the same UUID and increments `record_revision`.
+A clarification, source update, learner-text revision, or tighter boundary
+normally retains the UUID and increments `record_revision`.
 
-A split into genuinely different constructions creates new UUIDs and codes. The original record becomes `superseded` and links to the successors.
+A true split creates new UUIDs and codes. The original record remains permanently
+resolvable and links to its successors. Evidence transfers only when its exact
+scope matches a successor; shared vocabulary or surface tokens are insufficient.
 
-A mistaken or obsolete record remains resolvable permanently with state `retired` or `superseded`. Its UUID and code remain reserved.
+A mistaken, obsolete, retired, or superseded record remains in the permanent
+registry. Its UUID and code remain reserved.
 
-## Required baseline fields
-
-Every canonical identity record must contain at least:
+## Required record fields
 
 ```yaml
 construction_uuid: "UUID"
@@ -66,69 +89,53 @@ lifecycle_state: "current"
 record_revision: 1
 ```
 
-Family, profile, learner label, source terminology, relationships, and research reconciliation fields may initially be unresolved, but the sweep must record that they are unresolved rather than omit them silently.
+Family, profile, learner label, source terminology, relationships, and alignment
+fields may be unresolved during migration, but unresolved state must be explicit.
 
-## Label-quality sweep
+## Label-quality adjudication
 
-Assigning a UUID does not validate a label. Every current and retired record receives an independent review covering:
+Assigning an identity does not approve a label. Review covers:
 
 - actual runtime behavior;
-- source-supported construction scope;
+- source-supported scope;
 - behavior–research alignment;
-- terminology used by the strongest sources;
-- overlap and collisions with other records;
-- learner-facing grouping;
-- recommended disposition: retain, rename, narrow, split, merge, internalize, supersede, quarantine, or keep retired.
+- strongest source terminology;
+- overlap and collisions;
+- claim layer and family/profile placement;
+- learner grouping;
+- disposition: retain, rename, narrow, split, merge, internalize, supersede,
+  quarantine, reopen, or keep retired.
 
-The first machine-generated pass may flag naming risks, but automatic flags are not linguistic conclusions.
+Machine-generated risk flags are triage signals, not linguistic conclusions.
 
 ## Supported-productivity discovery
 
-`data/construction-candidate-readiness.json` evaluates every permanent UUID against separate discovery gates:
+`data/construction-candidate-readiness.json` evaluates each UUID against separate
+hard gates: defined language claim, verified sources, scope match, runtime
+alignment, positive implementation cases, complete negative boundaries, reviewed
+corpus, clean role-neutral panel, held-out validation, and ontology closure.
 
-- a defined language claim;
-- independently verified source support;
-- source scope matching the claim;
-- runtime–research reconciliation;
-- executable positive cases;
-- complete executable negative boundaries;
-- reviewed corpus evidence;
-- a locked role-neutral panel meeting the supported threshold;
-- held-out validation;
-- completed ontology and terminology review.
+Candidate states include `source_supported`, `behavior_aligned`,
+`boundary_ready`, `evidence_ready`, `heldout_ready`, `promotion_review`,
+`narrowing_candidate`, `retired_evidence_rehome_candidate`,
+`retired_research_gap`, `lexicalized_review`, and `excluded_nonlanguage`.
 
-Candidate scores rank research efficiency only. They cannot authorize promotion or compensate for a failed hard gate.
+Scores rank research effort only. They cannot compensate for a failed hard gate
+or authorize promotion.
 
-Current candidate states are:
-
-- `source_supported` — a direct current language record with verified independent evidence, but later gates remain incomplete;
-- `behavior_aligned` — source scope and current runtime behavior have been reconciled;
-- `boundary_ready` — positive implementation cases and a complete passing negative-boundary inventory exist;
-- `evidence_ready` — reviewed corpus and panel gates pass;
-- `heldout_ready` — an independent held-out evaluation also passes;
-- `promotion_review` — all discovery and existing supported-productivity gates pass;
-- `narrowing_candidate` — an unsupported broad current label contains source-backed overlap that may justify narrower successor UUIDs;
-- `retired_evidence_rehome_candidate` — a retired record preserves source links that may need a narrow current home;
-- `retired_research_gap` — a retired record preserves a research direction but no mapped source link;
-- `excluded_nonlanguage` — an implementation or other non-language record is not directly eligible for linguistic promotion.
-
-Evidence attached to a broad, retired, or implementation record is never transferred automatically. A successor must receive a new UUID when the underlying construction identity changes, and only scope-matched evidence may be linked to it.
-
-The canonical reports are:
+Canonical generated reports:
 
 - `docs/research/SUPPORTED-PRODUCTIVE-CANDIDATES.md`;
 - `docs/research/ORPHANED-CONSTRUCTION-EVIDENCE.md`;
 - `docs/research/CONSTRUCTION-FAMILY-GAPS.md`;
 - `docs/research/FULL-REPO-SUPPORTED-PRODUCTIVE-SWEEP-R1.md`.
 
-## Allocation safeguards
+## Safeguards
 
-- The registry is append-preserving: existing UUID/code pairs may not change.
-- Verification rejects duplicate UUIDs, duplicate non-null codes, reused retired codes, missing discovered labels, and orphaned records.
-- New canonical code assignment must be serialized through the allocation tool.
-- Candidate UUIDs can be created independently because UUIDv4 avoids branch collisions.
-- Merged records preserve aliases and explicit predecessor/successor links.
+Verification rejects duplicate UUIDs, duplicate codes, reused retired codes,
+missing current or retired identities, orphaned records, code changes, and stale
+deterministic outputs. New allocation must use the identity tools.
 
-## Migration principle
-
-The initial identity migration covers every canonical current construction note and every label in the retired construction ledger. It changes identity metadata only. It does not promote a linguistic claim, restore a retired runtime matcher, or approve an existing label name.
+The identity migration and later adjudications do not by themselves promote a
+claim, change a matcher, move a status note, restore a retired label, or approve a
+learner-facing explanation.
