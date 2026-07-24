@@ -15,8 +15,8 @@ policy or ontology.
 | Workflow-archived notes | 131 |
 | Retired labels | 48 |
 | Permanent UUID records | 181 |
-| Expert-adjudicated UUIDs | 44 |
-| Pending UUID adjudications | 137 |
+| Expert-adjudicated UUIDs | 49 |
+| Pending UUID adjudications | 132 |
 
 ## Linguistic-status inventory
 
@@ -40,7 +40,7 @@ The permanent registry covers all 133 current and 48 retired records. UUID and
 short code are immutable; canonical name, family, profile, claim layer, and
 learner label may be revised through accepted UUID-keyed adjudication.
 
-Nine accepted batches have adjudicated 44 records. Important consequences
+Ten accepted batches have adjudicated 49 records. Important consequences
 include:
 
 - `AB30 ZoMarkedPerfectiveObjectVP` is the nearest direct candidate;
@@ -59,6 +59,10 @@ include:
   representation and narrows `AA46`, `AA49`, `AA53`, and `AA55` to
   `DiMarkedNounNP`, `IndependentMotionPredicateVP`,
   `ZyuMarkedContinuativeObjectVP`, and `SubjectJauPossessiveClause`;
+- Batch 10 reclassifies `AA66 ContextLinkedAnswerUtteranceWrapper` as an internal
+  discourse representation and narrows `AA58`, `AA62`, `AA67`, and `AA68` to
+  `JauMeNounWhQuestion`, `GwoMarkedExperientialObjectVP`,
+  `NeMarkedThematicContinuationQuestion`, and `MotionVerbDouGoalVP`;
 - true splits require new UUIDs. Evidence is never transferred automatically from
   an umbrella, retired record, or parser representation.
 
@@ -76,9 +80,9 @@ Workflow activity is independent of linguistic status and adjudication priority.
 | Candidate state | Records |
 |---|---:|
 | `boundary_ready` | 1 |
-| `source_supported` | 68 |
+| `source_supported` | 67 |
 | `narrowing_candidate` | 36 |
-| `excluded_nonlanguage` | 26 |
+| `excluded_nonlanguage` | 27 |
 | `lexicalized_review` | 2 |
 | `retired_evidence_rehome_candidate` | 42 |
 | `retired_research_gap` | 6 |
@@ -127,9 +131,9 @@ evidence weight.
 1. Keep documentation, identity metadata, status notes, runtime behavior, survey
    metadata, corpus decisions, and generated readiness reports mutually
    consistent.
-2. Continue expert adjudication with Batch 10: `AA58 ExistentialWhQuestion`,
-   `AA62 ExperientialVP`, `AA66 FragmentAnswer`, `AA67 FragmentQuestion`, and
-   `AA68 GoalAttainmentMotionVP`.
+2. Continue expert adjudication with Batch 11: `AA72 ImpersonalEnvironmentalClause`,
+   `AA75 IntransitiveVP`, `AA76 LexicalGiveRelation`,
+   `AA77 LocativeExistentialClause`, and `AA79 LocativeFrameClause`.
 3. Keep `YUE-JUDGMENT-PILOT-01` in collection until its stopping rule is met, then
    perform an item-level instrument and response audit before revising any follow-
    up instrument.

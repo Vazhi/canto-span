@@ -32,6 +32,10 @@ This is a prioritization report, not a promotion decision. A score cannot overri
 | `AA45` | `SoengVPComplementClause` | `source_supported` | 53 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA46` | `DiMarkedNounNP` | `source_supported` | 53 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA53` | `ZyuMarkedContinuativeObjectVP` | `source_supported` | 53 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
+| `AA58` | `JauMeNounWhQuestion` | `source_supported` | 53 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
+| `AA62` | `GwoMarkedExperientialObjectVP` | `source_supported` | 53 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
+| `AA67` | `NeMarkedThematicContinuationQuestion` | `source_supported` | 53 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
+| `AA68` | `MotionVerbDouGoalVP` | `source_supported` | 53 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA69` | `DemonstrativeClassifierNPWithoutOvertNoun` | `source_supported` | 53 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA01` | `M4MarkedANotAInterrogative` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA24` | `AspectMarkedMeiCompletionQuestion` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
@@ -40,15 +44,11 @@ This is a prioritization report, not a promotion decision. A score cannot overri
 | `AA40` | `HouMarkedPropertyPredicate` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA49` | `IndependentMotionPredicateVP` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA55` | `SubjectJauPossessiveClause` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
-| `AA58` | `ExistentialWhQuestion` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
-| `AA62` | `ExperientialVP` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
-| `AA66` | `FragmentAnswer` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
-| `AA67` | `FragmentQuestion` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
-| `AA68` | `GoalAttainmentMotionVP` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA76` | `LexicalGiveRelation` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA86` | `ModalANotAQuestion` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA89` | `ModalVP` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA90` | `ModifiedNP` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
+| `AA91` | `ModifierNP` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 
 ## Narrowing candidates
 
