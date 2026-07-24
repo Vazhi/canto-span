@@ -71,7 +71,7 @@ The active runtime-note working set remains:
 
 Workflow activity is independent of linguistic status and adjudication priority.
 
-## Discovery state
+## Discovery and corpus state
 
 | Candidate state | Records |
 |---|---:|
@@ -83,9 +83,31 @@ Workflow activity is independent of linguistic status and adjudication priority.
 | `retired_evidence_rehome_candidate` | 42 |
 | `retired_research_gap` | 6 |
 
-Promotion-ready remains **0**. `AB30` is `boundary_ready` but still lacks reviewed
-corpus evidence, clean role-neutral panel closure, held-out validation, and final
-promotion review. Discovery scores rank research effort only.
+Promotion-ready remains **0**.
+
+The current AB30 extraction packet contains five completely reviewed candidates:
+two genuine and three false positives. The expert decision ledger records
+`readiness_effect: partial_only` because the two genuine tokens come from only two
+small user-supplied conversation sources. The packet establishes natural
+attestation and extractor boundaries, but it does not satisfy the broader diverse-
+corpus gate or establish productivity. The deterministic discovery registry
+therefore remains conservative until canonical readiness inputs support a stronger
+transition.
+
+## Native-panel and survey state
+
+`YUE-JUDGMENT-PILOT-01` remains the active SoSci collection instrument. The
+repository follow-up specification under
+`review-packets/native-panel/active-v2/followup-draft-v1-*` is a non-deployable
+draft only.
+
+The current pilot must close and receive an item-level audit before the follow-up
+draft may be revised, locked, generated as a form, or deployed. The follow-up uses
+canonical `G06–G09` and `F011–F018` IDs and retains a complete crosswalk from the
+superseded Codex-local aliases.
+
+No panel evidence, corpus packet, pilot count, or readiness score independently
+authorizes status promotion.
 
 ## Verification baseline
 
@@ -102,22 +124,28 @@ evidence weight.
 
 ## Current work order
 
-1. Keep documentation, identity metadata, status notes, runtime behavior, and
-   generated readiness reports mutually consistent.
+1. Keep documentation, identity metadata, status notes, runtime behavior, survey
+   metadata, corpus decisions, and generated readiness reports mutually
+   consistent.
 2. Continue expert adjudication with Batch 10: `AA58 ExistentialWhQuestion`,
    `AA62 ExperientialVP`, `AA66 FragmentAnswer`, `AA67 FragmentQuestion`, and
    `AA68 GoalAttainmentMotionVP`.
-3. Implement a status-path or runtime-label migration only in an explicit scoped
+3. Keep `YUE-JUDGMENT-PILOT-01` in collection until its stopping rule is met, then
+   perform an item-level instrument and response audit before revising any follow-
+   up instrument.
+4. Expand AB30 corpus diversity through additional independent natural sources
+   while preserving mechanical extraction and expert classification as separate
+   stages.
+5. Revise `followup-draft-v1` only after the current survey closes and its results
+   determine which contrasts remain unresolved.
+6. Implement a status-path or runtime-label migration only in an explicit scoped
    change after its adjudication decision is accepted.
-4. Advance `AB30` by reviewing and classifying diverse corpus candidates before
-   designing a new role-neutral panel instrument.
-5. Do not create release-specific verifier families, duplicate current-state
-   ledgers, or automatic writer workflows that commit intermediate generated
-   states.
+7. Do not create release-specific verifier families, duplicate current-state
+   ledgers, unlinked naming schemes, or automatic writer workflows.
 
 ## Historical-material rule
 
-A dated release note, adjudication-batch report, retired ledger, or generated
-baseline is provenance for what was known at that time. It may be cited, but it
-must not be used as the current name, claim layer, status, runtime description,
-or work order when a newer canonical record exists.
+A dated release note, adjudication-batch report, retired ledger, old task prompt,
+or generated baseline is provenance for what was known at that time. It may be
+cited, but it must not be used as the current name, claim layer, status, runtime
+description, survey state, or work order when a newer canonical record exists.

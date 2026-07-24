@@ -64,12 +64,18 @@ npm run verify:all
 
 - `verify` runs stable core checks, including parser tests, status-note alignment,
   adjudications, permanent identities, discovery freshness, source accounting,
-  active working-set consistency, implementation reachability, and current-
-  documentation consistency.
+  active working-set consistency, implementation reachability, the mandatory
+  multi-agent coordination contract, and current-documentation consistency.
 - `verify:research` runs panel, survey-readiness, conflict-burden, research-
   provenance, and native-review-library checks.
 - `verify:release` runs core verification plus promotion and release-handoff gates.
 - `verify:all` runs every profile.
+
+The `agent-coordination` core check verifies that `AGENTS.md` points to the full
+contract in `docs/current/00-START-HERE.md`, that the required authority,
+standards, task-routing, workflow, verification, prohibition, and prompt sections
+remain present, and that the current AB30 and survey handoff states are not
+silently reverted.
 
 `./tools/verify-repository.sh` additionally validates Git objects before running
 the stable core profile.
@@ -99,16 +105,17 @@ adjudication, grammar, and evidence inputs. Their freshness is verified.
 
 ## Updating tests and records
 
-1. Edit the canonical source, identity, adjudication, grammar, runtime, or fixture
+1. Read `AGENTS.md` and `docs/current/00-START-HERE.md`.
+2. Edit the canonical source, identity, adjudication, grammar, runtime, or fixture
    input.
-2. Regenerate identity/discovery outputs when those inputs changed.
-3. Run `npm test`.
-4. Run `node tools/sync-construction-test-metadata.js` when construction-test
+3. Regenerate identity/discovery outputs when those inputs changed.
+4. Run `npm test`.
+5. Run `node tools/sync-construction-test-metadata.js` when construction-test
    counts change.
-5. Run `npm run verify`.
-6. Run `npm run verify:research` when research or panel records changed.
-7. Run `npm run verify:release` only for release or status-transition work.
-8. Commit one coherent passing state.
+6. Run `npm run verify`.
+7. Run `npm run verify:research` when research or panel records changed.
+8. Run `npm run verify:release` only for release or status-transition work.
+9. Commit one coherent passing state.
 
 ## GitHub Actions
 

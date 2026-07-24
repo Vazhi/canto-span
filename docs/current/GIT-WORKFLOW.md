@@ -4,6 +4,27 @@ GitHub `main` is the durable shared project record. A user-controlled local clon
 is the preferred working copy; a full `.git` export is an offline recovery and
 ChatGPT-transfer artifact, not a parallel source of truth.
 
+The mandatory project-wide agent contract is
+[`00-START-HERE.md`](00-START-HERE.md). The root `AGENTS.md` exists to ensure
+automated agents read it before work begins.
+
+## Multi-agent branch coordination
+
+Before creating a branch:
+
+1. fetch current `main` and record the base commit;
+2. inspect open pull requests for overlapping files, construction codes, survey
+   IDs, generated outputs, or state dimensions;
+3. use a new `agent/<description>` branch from current `main`;
+4. define authorized scope, protected scope, canonical inputs, deterministic
+   outputs, and required verification;
+5. rebase or rebuild stale work before adding changes.
+
+Do not push work onto another agent's branch unless an explicit stacked-PR or
+handoff relationship is documented. Do not preserve obsolete branch history merely
+to keep an old PR open. If work overlaps an open PR, either wait, stack explicitly,
+or rebuild after that PR merges.
+
 ## Branch and commit rule
 
 - Begin scoped work from current `main` on an `agent/<description>` branch.
@@ -12,12 +33,30 @@ ChatGPT-transfer artifact, not a parallel source of truth.
 - Regenerate deterministic outputs and run applicable checks before publishing.
 - Never intentionally publish an incomplete state that is expected to fail and
   rely on a later bot or repair commit.
-- Use pull requests for changes to `main`; squash merge when the branch history is
-  mechanical and the final PR represents one coherent change.
+- Use pull requests for changes to `main`; open them as drafts unless the user
+  explicitly requests otherwise.
+- Squash merge when the branch history is mechanical and the final PR represents
+  one coherent change.
 
 Meaningful commits include parser behavior, executable tests, verified evidence,
 an accepted UUID-keyed adjudication, status migration, identity allocation,
 retirement, or binding architecture/documentation changes.
+
+## Pull-request handoff
+
+Every agent PR must identify:
+
+- the intended outcome and exact scope;
+- the base commit;
+- canonical inputs and generated outputs;
+- every changed file;
+- explicitly protected or unchanged areas;
+- decisions and evidence basis;
+- exact validation commands and results;
+- unresolved blockers and the next logical action.
+
+A task agent must not merge its own draft PR unless the user explicitly requests
+that separate action.
 
 ## Documentation and generated records
 
@@ -42,6 +81,10 @@ Commit the accepted batch, regenerated registries, generated reports, and any
 current-document updates together. GitHub Actions verifies; it does not write
 project state.
 
+`validation/current/` contains verifier byproducts, not ordinary patch inputs.
+Restore those files after verification when a clean tree is needed. Do not create
+a new release-specific validation tree for routine work.
+
 ## GitHub Actions policy
 
 - Workflows are read-only unless a separately reviewed release operation truly
@@ -50,6 +93,7 @@ project state.
 - Do not hardcode temporary branch names in permanent workflows.
 - Do not add automatic commit-and-push workflows for adjudication or generated
   documentation.
+- Do not add temporary writer workflows merely to avoid a coherent direct edit.
 - Path filters should run only the checks relevant to the changed canonical
   inputs.
 
@@ -86,7 +130,8 @@ The Obsidian plugin ZIP remains minimal:
 - `canto-span/styles.css`
 
 It is an installation artifact, not a project backup, research archive, or source
-of current status.
+of current status. Recovery, research, provenance, validation, and handoff files
+belong in a separate development or recovery artifact.
 
 ## Remote repository
 
