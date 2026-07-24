@@ -2,7 +2,7 @@
   "schema": "canto-span-full-repo-label-sweep-v1",
   "identity_registry_schema": "canto-span-construction-identity-registry-v1",
   "record_count": 181,
-  "pending_review_count": 152,
+  "pending_review_count": 147,
   "automatic_flag_counts": {
     "generic_head_requires_boundary_definition": 72,
     "internal_representation_name_review": 20,
@@ -16,15 +16,15 @@
     {
       "construction_uuid": "5e10dfc5-15a5-5f5a-b203-37c81a653330",
       "construction_code": "AA01",
-      "canonical_name": "ANotAQuestion",
+      "canonical_name": "M4MarkedANotAInterrogative",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/ANotAQuestion.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "runtime_broader",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": []
     },
     {
@@ -63,15 +63,15 @@
     {
       "construction_uuid": "1ff5e216-be8f-5990-9be5-c23e5e27df29",
       "construction_code": "AA04",
-      "canonical_name": "ActionStativeVP",
+      "canonical_name": "ActionQuantityDurationWrapper",
       "lifecycle_state": "current",
-      "claim_layer": "language_construction",
+      "claim_layer": "parser_representation",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/ActionStativeVP.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "disjoint",
+      "terminology_alignment": "misleading",
+      "recommended_action": "internalize_and_decompose",
       "automatic_risk_flags": []
     },
     {
@@ -281,15 +281,15 @@
     {
       "construction_uuid": "df737a78-9cf2-5ff5-83e4-59813d96056b",
       "construction_code": "AA17",
-      "canonical_name": "CognitionContentFrame",
+      "canonical_name": "ZiClausalComplementClause",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/CognitionContentFrame.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "runtime_narrower_defensible",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": [
         "generic_head_requires_boundary_definition",
         "semantic_domain_name_requires_structural_scope_check"
@@ -386,15 +386,15 @@
     {
       "construction_uuid": "65bd36c8-3d7e-5076-a824-0296bf421545",
       "construction_code": "AA23",
-      "canonical_name": "ComplementEllipsisFragment",
+      "canonical_name": "CognitionShortComplementWrapper",
       "lifecycle_state": "current",
-      "claim_layer": "language_construction",
+      "claim_layer": "parser_representation",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/ComplementEllipsisFragment.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "overlapping",
+      "terminology_alignment": "misleading",
+      "recommended_action": "internalize_and_decompose",
       "automatic_risk_flags": [
         "generic_head_requires_boundary_definition"
       ]
@@ -402,15 +402,15 @@
     {
       "construction_uuid": "725042ee-94e9-5ac0-bc64-d066ed290999",
       "construction_code": "AA24",
-      "canonical_name": "CompletionQuestion",
+      "canonical_name": "AspectMarkedMeiCompletionQuestion",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/CompletionQuestion.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "runtime_broader",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": []
     },
     {

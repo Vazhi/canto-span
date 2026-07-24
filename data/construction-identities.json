@@ -9,7 +9,7 @@
     {
       "construction_uuid": "5e10dfc5-15a5-5f5a-b203-37c81a653330",
       "construction_code": "AA01",
-      "canonical_name": "ANotAQuestion",
+      "canonical_name": "M4MarkedANotAInterrogative",
       "legacy_labels": [
         "ANotAQuestion"
       ],
@@ -17,22 +17,45 @@
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/ANotAQuestion.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese may instantiate the structural family represented by ANotAQuestion; exact productivity and boundaries require pattern-specific independent evidence.",
+      "family_name": "ANotAInterrogatives",
+      "profile_name": "VerbM4VerbMatrixOrEmbedded",
+      "profile_description": "An overt lexical predicate is repeated around negator 唔 to form an A-not-A interrogative constituent, either as a matrix question or as an embedded interrogative complement, as in 食唔食 and 嚟唔嚟. The profile excludes suppletive 有冇, lexical 得唔得 and 可唔可以 profiles, final-未 completion questions, and arbitrary truncation of disyllabic predicates.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "A-not-A questions",
+          "source_id": "SRC-LAW-2001-ANOTA",
+          "scope_match": "exact"
+        },
+        {
+          "term": "A-not-A in neutral contexts",
+          "source_id": "SRC-HARA-2023-POLAR",
+          "scope_match": "close"
+        },
+        {
+          "term": "a-not-A and a-not-AB patterns",
+          "source_id": "SRC-LI-2017-ANOTA",
+          "scope_match": "close"
+        },
+        {
+          "term": "suppletive negative of 有",
+          "source_id": "SRC-YIP-1988-NEGATION",
+          "scope_match": "contrastive"
+        }
+      ],
+      "former_names": [
+        "ANotAQuestion"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "runtime_broader",
+        "terminology_alignment": "neutral_descriptive_preferred",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-24. ANotAQuestion is a legitimate linguistic family name, but the current UUID combines canonical V-唔-V forms, embedded interrogatives, and suppletive 有冇 sequences. M4MarkedANotAInterrogative preserves the strongest shared overt structure and makes the negator boundary searchable. Suppletive and lexeme-specific profiles must not inherit its evidence automatically. Status recommendation: retain research_pending for the overt V-唔-V profile; remove suppletive 有冇 from this UUID during compatibility migration and allocate or reuse a separate source-bounded 有冇 interrogative identity"
       }
     },
     {
@@ -101,30 +124,48 @@
     {
       "construction_uuid": "1ff5e216-be8f-5990-9be5-c23e5e27df29",
       "construction_code": "AA04",
-      "canonical_name": "ActionStativeVP",
+      "canonical_name": "ActionQuantityDurationWrapper",
       "legacy_labels": [
         "ActionStativeVP"
       ],
-      "claim_layer": "language_construction",
+      "claim_layer": "parser_representation",
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/ActionStativeVP.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese may instantiate the structural family represented by ActionStativeVP; exact productivity and boundaries require pattern-specific independent evidence.",
+      "family_name": "ArgumentAndMeasureRepresentation",
+      "profile_name": "ActionWithNominalOrDurationContinuationAggregate",
+      "profile_description": "An implementation aggregate over an action predicate followed either by quantified nominal material, as in 寫三個字, or by a duration-question expression, as in 等幾耐. The wrapper does not establish a stative predicate or one Cantonese construction shared by object quantity and duration questions.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "numeral-classifier-noun composition",
+          "source_id": "SRC-BOND-SIO-2024-CLASSIFIERS",
+          "scope_match": "contrastive"
+        },
+        {
+          "term": "nominal continuation in 寫三個字",
+          "source_id": "SRC-XIA-2025-CLASSIFIERS",
+          "scope_match": "exact"
+        },
+        {
+          "term": "幾耐 duration-question material",
+          "source_id": "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE",
+          "scope_match": "exact"
+        }
+      ],
+      "former_names": [
+        "ActionStativeVP"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "disjoint",
+        "terminology_alignment": "misleading",
+        "recommended_action": "internalize_and_decompose",
         "automatic_risk_flags": [],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-24. The legacy label assigns a stative analysis where the executable positives contain either a quantified object or a wh-duration expression. The runtime grouping is useful only as historical compatibility metadata. It should cease competing for linguistic promotion and decompose into independently supported object, quantity, predicate, and duration structures. Status recommendation: migrate to parser_heuristic after compatibility migration; represent quantified objects through ordinary argument and classifier-NP structure and duration questions through independently typed temporal or measure structure"
       }
     },
     {
@@ -550,7 +591,7 @@
     {
       "construction_uuid": "df737a78-9cf2-5ff5-83e4-59813d96056b",
       "construction_code": "AA17",
-      "canonical_name": "CognitionContentFrame",
+      "canonical_name": "ZiClausalComplementClause",
       "legacy_labels": [
         "CognitionContentFrame"
       ],
@@ -558,25 +599,43 @@
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/CognitionContentFrame.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese may instantiate the structural family represented by CognitionContentFrame; exact productivity and boundaries require pattern-specific independent evidence.",
+      "family_name": "CognitionAndClausalComplements",
+      "profile_name": "SubjectOptionalM4ZiOvertClauseContent",
+      "profile_description": "An overt subject followed by lexical 知, optionally preceded by 唔, and a visible clausal or interrogative complement, as in 我知佢唔嚟, 我知如果佢去我就去, and 我唔知佢嚟唔嚟. The profile does not generalize to every cognition verb, nominal content, reported thought, or stance-marking construction.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "cognition verbs with clausal complements",
+          "source_id": "SRC-ALDERETE-ETAL-2017-SYNOPSIS",
+          "scope_match": "close"
+        },
+        {
+          "term": "reported-thought construction",
+          "source_id": "SRC-LUI-2025-REPORTED-THOUGHT",
+          "scope_match": "contrastive"
+        },
+        {
+          "term": "stance marking",
+          "source_id": "SRC-YAP-WONG-CHOR-2014-STANCE",
+          "scope_match": "contrastive"
+        }
+      ],
+      "former_names": [
+        "CognitionContentFrame"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "runtime_narrower_defensible",
+        "terminology_alignment": "neutral_descriptive_preferred",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [
           "generic_head_requires_boundary_definition",
           "semantic_domain_name_requires_structural_scope_check"
         ],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-24. CognitionContentFrame is too broad and uses the vague head Frame. The executable profile is consistently lexical 知 or 唔知 plus visible clausal content. ZiClausalComplementClause names the actual predicate and complement type while preventing unsupported transfer to 覺得, 諗住, reported thought, stance particles, or nominal objects. Status recommendation: retain research_pending under a lexeme-specific name; obtain exact external support for 知 complement classes and reconcile the runtime before any promotion track"
       }
     },
     {
@@ -745,38 +804,56 @@
     {
       "construction_uuid": "65bd36c8-3d7e-5076-a824-0296bf421545",
       "construction_code": "AA23",
-      "canonical_name": "ComplementEllipsisFragment",
+      "canonical_name": "CognitionShortComplementWrapper",
       "legacy_labels": [
         "ComplementEllipsisFragment"
       ],
-      "claim_layer": "language_construction",
+      "claim_layer": "parser_representation",
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/ComplementEllipsisFragment.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese may instantiate the structural family represented by ComplementEllipsisFragment; exact productivity and boundaries require pattern-specific independent evidence.",
+      "family_name": "CognitionAndEllipsisRepresentation",
+      "profile_name": "GokDakShortExistentialCopularOrResponseAggregate",
+      "profile_description": "An implementation wrapper over short material following 覺得, including 有, 係, 唔係, and subject-plus-係 strings. These surfaces may involve aspectual VP ellipsis, contextual object omission, existential or possessive predication, copular structure, or response-particle material and are not established as one Cantonese complement-ellipsis fragment construction.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "VP movement and ellipsis with 有/冇",
+          "source_id": "SRC-LEE-PAN-2024-VP-ELLIPSIS",
+          "scope_match": "partial"
+        },
+        {
+          "term": "係 response particle",
+          "source_id": "SRC-CHENG-2022-HAI6-RESPONSE",
+          "scope_match": "partial"
+        },
+        {
+          "term": "contextual object omission",
+          "source_id": "SRC-YIP-MATTHEWS-2000-SYNTACTIC-TRANSFER",
+          "scope_match": "contrastive"
+        }
+      ],
+      "former_names": [
+        "ComplementEllipsisFragment"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "overlapping",
+        "terminology_alignment": "misleading",
+        "recommended_action": "internalize_and_decompose",
         "automatic_risk_flags": [
           "generic_head_requires_boundary_definition"
         ],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-24. The current record conflates several short complements whose analyses differ fundamentally. Some contain an overt subject, some may be complete response-particle expressions, and the 有 example is not licensed by the same evidence as 係 or 唔係. The UUID should therefore preserve only the compatibility wrapper and leave linguistic promotion to independently bounded successors. Status recommendation: migrate to parser_heuristic after compatibility migration; allocate or reuse separate language identities only for independently sourced VP ellipsis, object omission, and response-particle or copular profiles"
       }
     },
     {
       "construction_uuid": "725042ee-94e9-5ac0-bc64-d066ed290999",
       "construction_code": "AA24",
-      "canonical_name": "CompletionQuestion",
+      "canonical_name": "AspectMarkedMeiCompletionQuestion",
       "legacy_labels": [
         "CompletionQuestion"
       ],
@@ -784,22 +861,40 @@
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/CompletionQuestion.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese may instantiate the structural family represented by CompletionQuestion; exact productivity and boundaries require pattern-specific independent evidence.",
+      "family_name": "CompletionAndPerfectiveQuestions",
+      "profile_name": "OvertCompletionOrAspectMarkerFinalMei",
+      "profile_description": "A predicate contains an overt completion, result, or aspect marker such as 完 or 咗 and is followed by final 未, optionally with an overt object and final particle, as in 食完飯未, 食咗飯未, and 食咗未. The profile excludes the current bare-VP + 未 branch, A-not-A questions, scalar questions, and any inference that structural recognition validates predicate-object compatibility.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "completion question with visible completion/result particle or aspect marker",
+          "source_id": "SRC-YIP-MATTHEWS-2000-BASIC",
+          "scope_match": "exact"
+        },
+        {
+          "term": "V-完 ... 未",
+          "source_id": "SRC-YIP-MATTHEWS-2000-BASIC",
+          "scope_match": "exact"
+        },
+        {
+          "term": "V-咗 ... 未",
+          "source_id": "SRC-YIP-MATTHEWS-2000-BASIC",
+          "scope_match": "exact"
+        }
+      ],
+      "former_names": [
+        "CompletionQuestion"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "runtime_broader",
+        "terminology_alignment": "neutral_descriptive_preferred",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-24. CompletionQuestion is defensible as a semantic description but hides the overt markers that provide its actual source authorization. AspectMarkedMeiCompletionQuestion makes the formal boundary explicit and prevents the unsupported bare-VP route from inheriting the evidence. Predicate-object compatibility remains a separate semantic-selection concern. Status recommendation: retain research_pending for the visibly completion- or aspect-marked profile; quarantine bare VP + 未 until independently sourced and keep semantic selection review separate from construction recognition"
       }
     },
     {
