@@ -20,10 +20,10 @@ Each decision is keyed by immutable `construction_uuid` and verified against the
 
 ## Current progress
 
-As of Batch 05, 24 of 181 permanent records have completed expert adjudication across the original decision document and four append-only batch files. The latest accepted batch is documented in:
+As of Batch 06, 29 of 181 permanent records have completed expert adjudication across the original decision document and five append-only batch files. The latest accepted batch is documented in:
 
 ```text
-docs/research/CONSTRUCTION-ADJUDICATION-BATCH-05.md
+docs/research/CONSTRUCTION-ADJUDICATION-BATCH-06.md
 ```
 
 The count records completed ontology judgments only. It does not imply runtime migration, linguistic promotion, corpus closure, panel completion, or held-out validation.
