@@ -232,6 +232,16 @@ test("AB30 corpus validation rejects count drift and partial_only readiness over
   );
 });
 
+test("AB30 corpus validation rejects one duplicated decision ID and one omitted candidate ID", () => {
+  const { frontmatter, decisions, ledger, text } = corpusFixtures();
+  const duplicatedAndOmitted = clone(decisions);
+  duplicatedAndOmitted.decisions[1].candidate_id = duplicatedAndOmitted.decisions[0].candidate_id;
+
+  const failures = ab30CorpusFailures(frontmatter, text, duplicatedAndOmitted, ledger).join("\n");
+  assert.match(failures, /candidate_id values are not unique/);
+  assert.match(failures, /candidate-ID and decision-ID sets do not exactly match/);
+});
+
 test("uncommitted live responses cannot replace the accepted snapshot", () => {
   const entry = {
     panel_response_count_total: 23,
