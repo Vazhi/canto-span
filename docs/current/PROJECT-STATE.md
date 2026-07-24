@@ -98,6 +98,15 @@ corpus gate or establish productivity. The deterministic discovery registry
 therefore remains conservative until canonical readiness inputs support a stronger
 transition.
 
+A separate completed HKCanCor claim cross-reference uses PyCantonese 5.0.0 to
+exhaust the bounded high-recall `v|v1|xv + 咗 + r` track: all 121 exact tokens
+across 118 utterances and 46 source files. Context review classifies 69 as
+genuine, 48 as false positives, 4 as ambiguous, and 0 as unusable. This is a
+research checkpoint only: it demonstrates natural overt-object attestation and
+the limits of token/POS adjacency, but it does not replace the accepted
+five-candidate packet, exhaust all `咗` or overt-NP profiles, or change the
+`partial_only` readiness effect.
+
 ## Native-panel and survey state
 
 `YUE-JUDGMENT-PILOT-01` remains the active SoSci collection instrument. The

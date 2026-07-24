@@ -172,6 +172,22 @@ The existing eleven response records came from mixed legacy instruments and do n
   counts are recorded separately because `partial_only` evidence cannot enter the
   diverse-corpus pass gate.
 
+### HKCanCor claim cross-reference checkpoint
+
+- Completed research checkpoint:
+  `docs/research/AB30-ZO-R-HKCANCOR-CLAIM-CROSS-REFERENCE-R2.md`.
+- PyCantonese 5.0.0 exhaustively retrieves the bounded high-recall
+  `v|v1|xv + 咗 + r` track: all 121 exact HKCanCor tokens across 118
+  utterances and 46 source files.
+- Context review accounts for every candidate: **69 genuine, 48 false positive,
+  4 ambiguous, 0 unusable**.
+- The genuine rows support natural surface attestation for the narrow overt-object
+  profile. The false-positive and ambiguous rows confirm that token adjacency and
+  the corpus POS tag cannot determine construction membership automatically.
+- This POS-defined track is a research cross-reference only. It does not replace
+  the accepted readiness packet, exhaust all `咗` or overt-NP candidates, satisfy
+  the diverse-corpus gate, establish productivity, or change status/readiness.
+
 ## Negative and boundary cases
 
 - Standard executable test file: `tests/constructions/PostverbalZoPerfectiveVP.json`

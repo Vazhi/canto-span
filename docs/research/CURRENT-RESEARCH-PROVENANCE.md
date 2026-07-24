@@ -122,6 +122,7 @@ queue. Current work order belongs in `docs/current/PROJECT-STATE.md`.
 
 These files intentionally span more than one ID and are not duplicate packages:
 
+- [`AB30 HKCanCor V–咗–r claim cross-reference`](AB30-ZO-R-HKCANCOR-CLAIM-CROSS-REFERENCE-R2.md)
 - [`UC-RQ-002/003 double-object corpus census`](UC-RQ-002-003-DOUBLE-OBJECT-HKCANCOR-CENSUS-R1.md)
 - [`UC-RQ-004/005 comparison corpus attestation`](UC-RQ-004-005-COMPARISON-HKCANCOR-ATTESTATION-R1.md)
 - [`UC-RQ-014/015 separable-compound corpus attestation`](UC-RQ-014-015-SEPARABLE-COMPOUND-HKCANCOR-ATTESTATION-R1.md)
