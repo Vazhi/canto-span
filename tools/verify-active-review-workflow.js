@@ -207,10 +207,21 @@ function ab30CorpusFailures(frontmatter, noteText, decisions, ledger) {
   if (decisions.source_ledger !== AB30_LEDGER) failures.push("accepted decision ledger points to wrong source ledger");
   if (decisions.source_ledger_tool_version !== ledger.extractionToolVersion) failures.push("source-ledger tool version mismatch");
   if (decisions.source_manifest_hash !== ledger.sourceManifestHash) failures.push("source-ledger manifest hash mismatch");
-  if ((decisions.decisions || []).length !== (ledger.candidates || []).length) failures.push("reviewed packet count disagrees with source ledger");
-  const sourceIds = new Set((ledger.candidates || []).map((item) => item.candidateId));
-  if ((decisions.decisions || []).some((item) => !sourceIds.has(item.candidate_id))) {
-    failures.push("accepted decision is not linked to a source-ledger candidate");
+  const sourceCandidates = ledger.candidates || [];
+  const decisionRows = decisions.decisions || [];
+  if (decisionRows.length !== sourceCandidates.length) failures.push("reviewed packet count disagrees with source ledger");
+  const sourceIdList = sourceCandidates.map((item) => item.candidateId);
+  const decisionIdList = decisionRows.map((item) => item.candidate_id);
+  const sourceIds = new Set(sourceIdList);
+  const decisionIds = new Set(decisionIdList);
+  if (sourceIds.size !== sourceIdList.length) failures.push("source-ledger candidate IDs are not unique");
+  if (decisionIds.size !== decisionIdList.length) failures.push("accepted decision candidate_id values are not unique");
+  if (
+    sourceIds.size !== decisionIds.size ||
+    [...sourceIds].some((candidateId) => !decisionIds.has(candidateId)) ||
+    [...decisionIds].some((candidateId) => !sourceIds.has(candidateId))
+  ) {
+    failures.push("candidate-ID and decision-ID sets do not exactly match");
   }
   for (const [classification, count] of Object.entries(derivedCounts)) {
     if (Number(decisions.counts?.[classification]) !== count) {
