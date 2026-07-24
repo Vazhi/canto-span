@@ -1,111 +1,127 @@
 # Canto Span — Definition of Done
 
-This defines when a construction, and when a release, can be called done. It
-applies to every construction and every version handed off for review.
+This defines when a construction and a release may be called done. It applies to
+every UUID-keyed language claim and every version handed off for review.
 
-## Definition of Done: `supported_productive`
+## `supported_productive`
 
-A construction is eligible for `supported_productive` only when all of the
-following are true:
+A construction is eligible only when all of the following are true:
 
-- [ ] **Sources are real and checked.** Every cited external source has been
-      verified to exist and to support the specific claim rather than only the
-      general topic.
-- [ ] **Corpus hits are reviewed, not counted.** Every corpus hit used as
-      evidence has been individually classified as genuine, false positive,
-      ambiguous, or unusable.
-- [ ] **A locked role-neutral native panel covers every critical contrast.**
-      Every critical positive and negative item has at least 30 usable,
-      independently submitted, adjudicated judgments from eligible native
-      Cantonese respondents using the same locked clean instrument and the same
-      inclusion criteria. No respondent receives special status or weight.
-- [ ] **Negative and boundary cases are executable.** Every case the
-      construction must not match is present in a parser test and passes.
-- [ ] **Implementation matches documentation exactly.** The runtime heuristic
-      has been re-read against its claim line by line and every mismatch has
-      been resolved.
-- [ ] **Implementation validation and linguistic confidence are separate.**
-      Release notes report parser/render/held-out results separately from
-      source counts, minimum usable item-level panel size, corpus review, and
-      unresolved linguistic questions.
-- [ ] **The description is plain.** The public record says what was checked,
-      with which sources and survey version, how many usable judgments each
-      critical item received, and what remains uncertain.
+- [ ] **Identity and ontology are closed.** The UUID, short code, canonical name,
+      claim layer, family, exact profile, predecessor/successor relationships,
+      and accepted adjudication agree.
+- [ ] **Sources are real and checked.** Every cited external source exists and
+      supports the specific narrow claim rather than only the general topic.
+- [ ] **Source scope matches the claim.** Attestation, restrictions, competing
+      analyses, and unresolved variation are recorded without transferring
+      evidence from an umbrella, predecessor, retired record, or internal node.
+- [ ] **Corpus hits are reviewed, not counted.** Every candidate used as evidence
+      is classified as genuine, false positive, ambiguous, or unusable, and the
+      totals account for the full candidate inventory.
+- [ ] **A locked role-neutral native panel covers every critical contrast.** Every
+      critical positive and negative item has at least 30 usable independently
+      submitted adjudicated judgments from eligible respondents using the same
+      locked clean instrument and inclusion criteria. No respondent receives
+      special designation or weight.
+- [ ] **Negative and boundary cases are executable.** Every case the construction
+      must not match is present in a passing parser test.
+- [ ] **Implementation matches documentation exactly.** The runtime path has been
+      compared line by line with the accepted canonical profile and status note.
+- [ ] **Implementation and linguistic evidence are reported separately.** Parser,
+      render, regression, and held-out results are not presented as source,
+      corpus, or panel confidence.
+- [ ] **Held-out validation passes.** A sealed prospective set was opened only
+      after applicable source, boundary, ontology, code-document, and render
+      blockers were closed.
+- [ ] **The public description is plain.** It states what was checked, with which
+      sources and instrument version, the usable judgment count for each critical
+      item, the corpus classifications, and what remains uncertain.
 
-If any item is unchecked, the construction stays at `provisional` or lower,
-regardless of internal render, regression, or held-out success.
+If any item is unchecked, the construction remains `provisional` or lower.
 
-## Definition of Done: `provisional`
+## `provisional`
 
-A construction may move from `unsupported_generalization` or
-`research_pending` to `provisional` only when:
+A construction may move to `provisional` only when:
 
-- [ ] At least one checked external source supports a narrow defensible claim.
-- [ ] Every critical positive and negative item has at least 10 usable,
-      independently submitted, adjudicated judgments from eligible native
-      Cantonese respondents using one role-neutral clean instrument.
-- [ ] The instrument has no unresolved defect capable of contaminating the
-      relevant contrast.
-- [ ] Negative and boundary cases are drafted, even if not all are executable.
-- [ ] The claim is not resting solely on generated probes, fixtures, render
-      examples, or held-out cases.
+- [ ] one checked external source supports the exact narrow claim;
+- [ ] identity and claim layer are adjudicated sufficiently to exclude internal
+      wrappers, aliases, and unrelated sibling profiles;
+- [ ] every critical positive and negative item has at least 10 usable
+      independently submitted adjudicated judgments from eligible respondents on
+      one clean role-neutral instrument;
+- [ ] the instrument has no unresolved defect capable of contaminating the
+      relevant contrast;
+- [ ] negative and boundary cases are drafted;
+- [ ] the claim does not rest solely on generated probes, fixtures, render
+      examples, corpus counts, or held-out cases.
 
-Otherwise it remains `research_pending`, `unsupported_generalization`, or is
-retired.
+Otherwise it remains `research_pending`, `unsupported_generalization`,
+`lexicalized_only`, `parser_heuristic`, or is superseded or retired.
 
 ## Native-panel evidence rules
 
 - Total submissions do not substitute for per-item coverage.
-- Report the numerator and denominator for every critical item and the minimum
-  usable item-level sample size.
-- The user's wife uses the same instrument and criteria as every other
-  respondent and receives no special designation or weight.
-- A limited or contaminated pilot remains useful diagnostic evidence but
-  cannot satisfy either promotion threshold.
-- A live locked instrument must not be edited in place. Material changes create
-  a new survey version whose responses are adjudicated separately.
+- Report numerator and denominator for every critical item and the minimum usable
+  item-level sample size.
+- Every eligible respondent uses the same instrument, inclusion criteria, quality
+  rules, and evidentiary weight.
+- A limited or contaminated pilot is diagnostic only.
+- A locked live instrument is never edited in place; material changes create a
+  new version whose responses are adjudicated separately.
 
-## Definition of Done: retiring a dead label
+## Splitting, superseding, and retiring
 
-Every 10–20 versions, review constructions with zero fixtures, zero runtime
-references, and no forward research progress. For each:
+A true construction split is done only when:
 
-- [ ] Confirm that it serves no clear current or planned purpose.
-- [ ] Preserve its name, prior status, and retirement reason in an archive.
-- [ ] Remove it from the active grammar table.
+- [ ] every successor has a new collision-checked UUID and, when canonicalized, a
+      new permanent short code;
+- [ ] predecessor/successor links are recorded;
+- [ ] evidence is reassigned only where its exact scope matches the successor;
+- [ ] the predecessor remains permanently resolvable;
+- [ ] runtime aliases and status-note migrations are explicit rather than silent.
 
-A dormant label cannot remain indefinitely without retirement or explicit
-re-justification.
+A dead label may retire only when:
 
-## Definition of Done: release handoff
+- [ ] it serves no clear current or planned runtime, compatibility, diagnostic,
+      research, or recovery purpose;
+- [ ] its permanent identity, prior status, aliases, and reason are preserved;
+- [ ] it is removed from the active runtime registry and current-note inventory;
+- [ ] its UUID and code remain reserved forever.
+
+## Release handoff
 
 A version is ready for external audit only when:
 
-- [ ] Every status change is justified against the relevant checklist.
-- [ ] Any `supported_productive` construction not re-audited under the current
-      standard is marked pending rather than grandfathered.
-- [ ] Each changed construction's audit slice includes its plain-language
-      claim, exact code locations, verifiable sources, survey instrument
-      version, total and eligible panel responses, minimum usable judgments per
-      critical item, quality/adjudication state, and unresolved questions.
-- [ ] No release document describes a cleaner or stronger analysis than the
-      runtime implements.
+- [ ] every identity, status, runtime, and generated-readiness change is included
+      in one coherent passing repository state;
+- [ ] every status change is justified against the relevant checklist;
+- [ ] no earlier acceptance is grandfathered;
+- [ ] each changed construction audit identifies UUID, code, canonical name,
+      legacy runtime alias, exact code locations, verified sources, panel state,
+      corpus review, tests, and unresolved questions;
+- [ ] no release document describes a cleaner, broader, or stronger analysis than
+      the runtime and accepted adjudication implement;
+- [ ] current documentation contains no stale branch name, superseded work order,
+      or historical claim presented as current policy;
+- [ ] all required verification profiles pass without expected-failure commits or
+      repair-bot follow-ups.
 
 ## Explicit non-criteria
 
-These do not make a construction or release done by themselves:
+None of the following makes a construction or release done by itself:
 
-- parser, render, held-out, or regression success;
-- one named respondent's judgment;
-- a large submission count without usable per-item coverage;
-- judgments from a limited or defective instrument;
+- parser, render, regression, or held-out success;
+- one respondent's judgment;
+- a large submission count without usable item-level coverage;
+- a limited or defective instrument;
 - an unclassified corpus hit count;
+- an accepted name without matched source and runtime scope;
+- a discovery score or candidate rank;
 - a version increment;
-- confidence wording without its underlying source, panel, corpus, and
-  implementation record.
+- confidence wording without the underlying records.
 
 ## Guiding principle
 
-A small grammar with genuinely evidenced constructions is the target. A low
-`supported_productive` count is expected and must not be raised by weakening
-these requirements.
+The target is a small, honest, evidence-bearing grammar rather than a high
+promotion count. Internal wrappers, aliases, diagnostics, and unsupported broad
+labels must not compete as productive Cantonese constructions.
