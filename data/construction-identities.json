@@ -934,7 +934,7 @@
     {
       "construction_uuid": "4b12b550-75e8-5741-b255-a77e2731a62e",
       "construction_code": "AA26",
-      "canonical_name": "CompletionVP",
+      "canonical_name": "WanMarkedCompletionVP",
       "legacy_labels": [
         "CompletionVP"
       ],
@@ -942,22 +942,45 @@
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/CompletionVP.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Published Cantonese analyses and independently sourced examples attest V + 完 + 咗 + object ordering, with 完 inside the perfective scope; exact lexical, discourse, and speaker-variation boundaries remain research-pending.",
+      "family_name": "CompletionPredication",
+      "profile_name": "VerbWanCompletionPredicate",
+      "profile_description": "A lexical predicate followed by overt 完 as a completion or phase marker, optionally with an overt object. The resulting VP may occur inside independently represented negation, outer-perfective, clause-linking, or final-未 question structure. The profile excludes 晒 and other completion or result markers, and it does not treat outer 咗 or final 未 as part of this UUID or assume that V完咗O is uniformly natural across speakers and contexts.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "verbal particle 完",
+          "source_id": "SRC-YIP-MATTHEWS-2000-BASIC",
+          "scope_match": "exact"
+        },
+        {
+          "term": "inner aspect",
+          "source_id": "SRC-SIO-BOND-2025",
+          "scope_match": "close"
+        },
+        {
+          "term": "V完咗O ordering",
+          "source_id": "SRC-FAN-CHAN-2022",
+          "scope_match": "partial"
+        },
+        {
+          "term": "V完咗O ordering",
+          "source_id": "SRC-SYBESMA-2013",
+          "scope_match": "partial"
+        }
+      ],
+      "former_names": [
+        "CompletionVP"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "runtime_broader",
+        "terminology_alignment": "neutral_descriptive_preferred",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-24. CompletionVP is too broad because its current positives combine the source-supported V + 完 predicate with 晒, outer 咗, final-未 questions, negation, and larger clause-linking contexts. The outer structures may contain the same V + 完 constituent without belonging to its permanent identity. WanMarkedCompletionVP retains the dominant source-supported core while preventing 晒 and unrelated completion markers from inheriting its evidence. Status recommendation: retain research_pending for the V + 完 completion profile; remove 晒 and other marker-specific branches from this UUID during compatibility migration and keep the native-conflicted V完咗O composition under the project's higher-burden evidence rule"
       }
     },
     {
@@ -1216,7 +1239,7 @@
     {
       "construction_uuid": "bf2bf2f9-0a38-5eb6-b078-5bd5e1be47b2",
       "construction_code": "AA34",
-      "canonical_name": "CoverbFrame",
+      "canonical_name": "PreverbalCoverbNPClause",
       "legacy_labels": [
         "CoverbFrame"
       ],
@@ -1224,24 +1247,52 @@
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/CoverbFrame.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese may instantiate the structural family represented by CoverbFrame; exact productivity and boundaries require pattern-specific independent evidence.",
+      "family_name": "CoverbAndPreverbalObliqueConstructions",
+      "profile_name": "OvertCoverbNPBeforeVP",
+      "profile_description": "A clause contains an overt coverb followed by its NP complement before an independently analyzed VP, currently exemplified by locative 喺 + NP and participant-marking 同 + NP. The profile records the shared preverbal structure without assigning one semantic relation to all coverbs. It excludes conjunction 同, postverbal result-location phrases, bare locative phrases without a following VP, and unrestricted licensing of every coverb lexeme or ordering.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "coverb construction",
+          "source_id": "SRC-FRANCIS-MATTHEWS-2006-COVERBS",
+          "scope_match": "close"
+        },
+        {
+          "term": "preverbal event-location phrase",
+          "source_id": "SRC-KWAN-2010-LOCATIVE",
+          "scope_match": "exact"
+        },
+        {
+          "term": "coverb phrase ordering",
+          "source_id": "SRC-LEUNG-2014-COVERBS",
+          "scope_match": "close"
+        },
+        {
+          "term": "同 as with or together with",
+          "source_id": "SRC-WONG-2023-LANGUAGE-SAMPLE",
+          "scope_match": "partial"
+        },
+        {
+          "term": "同 as 跟 or 替",
+          "source_id": "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE",
+          "scope_match": "partial"
+        }
+      ],
+      "former_names": [
+        "CoverbFrame"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "runtime_narrower_defensible",
+        "terminology_alignment": "neutral_descriptive_preferred",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [
           "generic_head_requires_boundary_definition"
         ],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-24. CoverbFrame names a documented structural family, but Frame is vague and the runtime supports only a bounded preverbal coverb + NP + VP profile. PreverbalCoverbNPClause exposes the observable order and keeps the common structure separate from marker-specific semantic roles. The same UUID can be retained because the locative 喺 and participant-marking 同 examples share the source-recognized coverb configuration; their lexical meanings remain independently constrained. Status recommendation: retain research_pending as a bounded preverbal coverb-NP structural profile; require marker-specific semantic and lexical evidence before any productive promotion"
       }
     },
     {
@@ -1312,7 +1363,7 @@
     {
       "construction_uuid": "17958e93-eaeb-55de-9f15-82d4381f6b02",
       "construction_code": "AA37",
-      "canonical_name": "DegreeMannerAdverbial",
+      "canonical_name": "PostverbalDiMannerAdjustmentVP",
       "legacy_labels": [
         "DegreeMannerAdverbial"
       ],
@@ -1320,22 +1371,40 @@
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/DegreeMannerAdverbial.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese may instantiate the structural family represented by DegreeMannerAdverbial; exact productivity and boundaries require pattern-specific independent evidence.",
+      "family_name": "DegreeAndMannerModification",
+      "profile_name": "VerbPropertyDi",
+      "profile_description": "An overt action predicate is followed by a property or manner expression and 啲, as in 行快啲, 講慢啲, and 講大聲啲. The profile excludes preposed 啲-marked manner expressions, standalone or elliptical property + 啲 directives such as 客氣啲 and 快啲, and discourse-separated material whose attachment to a following VP is not established.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "講慢啲",
+          "source_id": "SRC-CHOW-2007-CANTONESE-EVERYONE",
+          "scope_match": "exact"
+        },
+        {
+          "term": "行快啲",
+          "source_id": "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE",
+          "scope_match": "exact"
+        },
+        {
+          "term": "discourse-separated 靜啲",
+          "source_id": "SRC-WONG-2023-LANGUAGE-SAMPLE",
+          "scope_match": "contrastive"
+        }
+      ],
+      "former_names": [
+        "DegreeMannerAdverbial"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "runtime_broader",
+        "terminology_alignment": "neutral_descriptive_preferred",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-24. The legacy name does not distinguish postverbal manner adjustment from standalone scalar directives. Three executable positives instantiate a coherent and directly attested V + property + 啲 profile, while the remaining positives lack an overt modified verb. PostverbalDiMannerAdjustmentVP retains the source-supported core and prevents directive or discourse-unit evidence from being transferred into the adverbial construction. Status recommendation: retain research_pending for the postverbal V + property + 啲 profile; move standalone or elliptical property + 啲 outputs to independently adjudicated profiles during compatibility migration"
       }
     },
     {
@@ -1435,7 +1504,7 @@
     {
       "construction_uuid": "ecc86476-37a0-5bde-b8da-899602e890d9",
       "construction_code": "AA40",
-      "canonical_name": "DegreeStativePredicate",
+      "canonical_name": "HouMarkedPropertyPredicate",
       "legacy_labels": [
         "DegreeStativePredicate"
       ],
@@ -1443,24 +1512,42 @@
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/DegreeStativePredicate.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese may instantiate the structural family represented by DegreeStativePredicate; exact productivity and boundaries require pattern-specific independent evidence.",
+      "family_name": "PropertyPredication",
+      "profile_name": "HouPropertyPredicate",
+      "profile_description": "Overt 好 directly modifies an independently licensed property or stative predicate in copula-less predication, optionally with an overt subject, topic, or embedding clause, as in 今日好凍, 佢好高, and 我覺得佢好開心. The profile excludes 幾耐 and 幾多 quantity or duration expressions, 好 modifying material inside a nominal phrase such as 好大壓力, and any claim that every degree marker or lexicalized 好-X expression belongs to this UUID.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "predicative adjectives are verb-like and degree-modified",
+          "source_id": "SRC-ALDERETE-ETAL-2017-SYNOPSIS",
+          "scope_match": "close"
+        },
+        {
+          "term": "好 悶 segmentation",
+          "source_id": "SRC-LAM-LAU-LEE-2024-SEGMENTATION",
+          "scope_match": "exact"
+        },
+        {
+          "term": "非常 好 segmentation",
+          "source_id": "SRC-LAM-LAU-LEE-2024-SEGMENTATION",
+          "scope_match": "contrastive"
+        }
+      ],
+      "former_names": [
+        "DegreeStativePredicate"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "runtime_broader",
+        "terminology_alignment": "neutral_descriptive_preferred",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [
           "generic_head_requires_boundary_definition"
         ],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-24. DegreeStativePredicate contains a strong and repeatedly tested 好 + property-predicate core, but its runtime positives also include wh-duration, wh-quantity, and nominal-modifier material. HouMarkedPropertyPredicate identifies the dominant source-supported construction without claiming that all degree expressions are stative predicates. The same UUID is retained for the 好-marked predicative core; unrelated branches require independent homes. Status recommendation: retain research_pending for overt 好 + property predication; remove wh-quantity, duration, nominal-modifier, and other unrelated degree branches during compatibility migration"
       }
     },
     {
@@ -1593,7 +1680,7 @@
     {
       "construction_uuid": "cdee31e6-35ad-580e-8bfe-c37740d0c6a0",
       "construction_code": "AA45",
-      "canonical_name": "DesiderativeVP",
+      "canonical_name": "SoengVPComplementClause",
       "legacy_labels": [
         "DesiderativeVP"
       ],
@@ -1601,22 +1688,40 @@
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/DesiderativeVP.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese may instantiate the structural family represented by DesiderativeVP; exact productivity and boundaries require pattern-specific independent evidence.",
+      "family_name": "DesiderativeAndModalComplements",
+      "profile_name": "SubjectSoengOvertVP",
+      "profile_description": "An overt subject is followed by lexical 想 and a visible VP complement, as in 我想去 and 我想講吓. The profile excludes 要 + VP obligation or desire readings, 想 + NP, 諗住 + VP, and any topic or coverb material outside the 想-complement core.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "modal auxiliary 想",
+          "source_id": "SRC-LUKE-NANCARROW-1998-AUXILIARIES",
+          "scope_match": "exact"
+        },
+        {
+          "term": "modal auxiliary 要",
+          "source_id": "SRC-LUKE-NANCARROW-1998-AUXILIARIES",
+          "scope_match": "contrastive"
+        },
+        {
+          "term": "唔要 versus 唔使",
+          "source_id": "SRC-YIP-MATTHEWS-2000-BASIC",
+          "scope_match": "contrastive"
+        }
+      ],
+      "former_names": [
+        "DesiderativeVP"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "runtime_narrower_defensible",
+        "terminology_alignment": "neutral_descriptive_preferred",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-24. DesiderativeVP is semantically plausible but too broad because the evidence distinguishes 想, 要, and other desire or obligation expressions rather than licensing one interchangeable desiderative marker. The runtime positives consistently instantiate overt subject + 想 + VP, so the permanent identity is narrowed and renamed to that lexical complement profile without changing its UUID. Status recommendation: retain research_pending under the lexeme-specific 想 + VP identity; keep 要 and other desire, obligation, intention, or preference predicates in separate profiles"
       }
     },
     {
