@@ -117,9 +117,9 @@ function runRender(options) {
   const { manifest } = loadManifest(manifestPath);
   const ledger = readJson(ledgerPath, "candidate ledger");
   validateLedger(ledger, manifest);
-  writeJson(jsonPath, ledger);
+  writeTextAtomic(jsonPath, `${JSON.stringify(ledger)}\n`);
   writeTextAtomic(tsvPath, renderTsv(ledger));
-  writeJson(summaryPath, ledger.summary);
+  writeTextAtomic(summaryPath, `${JSON.stringify(ledger.summary)}\n`);
   process.stdout.write(
     `Rendered ${ledger.candidates.length} candidates to JSON and TSV from the canonical ledger.\n`,
   );
