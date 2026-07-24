@@ -1,1 +1,291 @@
-{"schemaVersion":1,"construction":{"permanentCode":"AB30","canonicalIdentity":"ZoMarkedPerfectiveObjectVP","legacyRuntimeLabel":"PostverbalZoPerfectiveVP"},"extractionToolVersion":"ab30-corpus-review/1.0.1","sourceManifestHash":"1be8e59917a2f8a12da1f02f4e4e1e7d15fd9e778a9563e5630ac7bc1b5d23a3","disclaimer":"Extraction is mechanical candidate preparation, not linguistic validation, construction membership, acceptability, readiness, status, identity, promotion, runtime, or release evidence.","candidates":[{"candidateId":"ab30-ad133e2eafed9b2bf5df","sourcePath":"test-data/natural-corpus-wechat-guangxi-travel-002-raw.txt","recordId":"line:5","text":"B: 喂方子系咪开佢自己嗰个车嘅啫，方子嗰个车系咪同阿拉嗰个一样嘅啫，方子嗰部。你饮咗酒你千祈唔好开车啊，我话俾你听吓。","matchedSurfaceSpan":"你饮咗酒你千祈唔好开车啊","matchStart":40,"matchEnd":52,"leftContext":"B: 喂方子系咪开佢自己嗰个车嘅啫，方子嗰个车系咪同阿拉嗰个一样嘅啫，方子嗰部。","rightContext":"，我话俾你听吓。","previousRecordText":"C: 系啊系啊，开十开九部宝马，开8部宝马上嚟啊，啱啱去到琴日琴日上嚟噶啦，琴日上嚟。","nextRecordText":"C: 唔系啊，系咪第三台车同阿拉嗰部一样。","sourceType":"sanitized_natural_conversation_raw_transcript","contentHash":"ade28f0ea8e920af9c4d5c86176f056390e48274df6cf4b4da9a3985eb8b1c1a","duplicateGroupId":"dup-027656bb5b69ffc1","extractionReason":"High-recall surface heuristic: a punctuation-bounded span has overt 咗, non-punctuation material before it, and letter/number material after it; reviewer validation required.","extractionToolVersion":"ab30-corpus-review/1.0.1","review":{"classification":"unreviewed","reviewerNote":"","exclusionReason":""}},{"candidateId":"ab30-d8d2be10fb2c873a5a81","sourcePath":"data/natural-corpus/wechat-father-daughter-001.txt","recordId":"line:10","text":"K：我頭先問佢嗰個主任，個主任話唔計收入㗎嘛，佢話冇房就得㗎嘛。我攞咗兩份申請表啦，一陣間影畀你睇下啦，你睇下點計啦。","matchedSurfaceSpan":"我攞咗兩份申請表啦","matchStart":32,"matchEnd":41,"leftContext":"K：我頭先問佢嗰個主任，個主任話唔計收入㗎嘛，佢話冇房就得㗎嘛。","rightContext":"，一陣間影畀你睇下啦，你睇下點計啦。","previousRecordText":"J：人哋阿歐陽一年收入都廿幾萬啦，十五萬……","nextRecordText":"J：嗯。","sourceType":"sanitized_natural_conversation","contentHash":"72d40d2e766ce72c5fc8c7d9924b11c93a9f2ee1ae0be266f521377c0c3addc1","duplicateGroupId":"dup-9d6fef5f7055e74b","extractionReason":"High-recall surface heuristic: a punctuation-bounded span has overt 咗, non-punctuation material before it, and letter/number material after it; reviewer validation required.","extractionToolVersion":"ab30-corpus-review/1.0.1","review":{"classification":"unreviewed","reviewerNote":"","exclusionReason":""}},{"candidateId":"ab30-e4f5d5a33b1342293387","sourcePath":"data/natural-corpus/wechat-father-daughter-001.txt","recordId":"line:2","text":"K：居留證啊。佢話唔關收入嘅問題啊，佢話冇房就得喇，冇房住就得喇，超過兩萬蚊都唔怕㗎。我同佢講咗啦，我話佢有時有嘢做，有時冇嘢做。收入超過一兩萬蚊一個月，佢話冇所謂嘅，佢話冇房就得喇。","matchedSurfaceSpan":"我同佢講咗啦","matchStart":43,"matchEnd":49,"leftContext":"K：居留證啊。佢話唔關收入嘅問題啊，佢話冇房就得喇，冇房住就得喇，超過兩萬蚊都唔怕㗎。","rightContext":"，我話佢有時有嘢做，有時冇嘢做。收入超過一兩萬蚊一個月，佢話冇所謂嘅，佢話冇房就得喇。","previousRecordText":"J：居委要佢嘅中國簽證，定係咩啊？定係居留嗰個證啊？居住證、簽證啊？","nextRecordText":"J：你係同居委講歐陽有時有嘢做，定係我有時有嘢做、有時冇嘢做啊？你問清楚，同人哋老老實實講啲，唔好到時人哋一查，哦，原來講大話嘅，搞到份人工又冇咗，或者趕鳩佢走添啊。外國人申請呢啲嘢比較謹慎㗎。","sourceType":"sanitized_natural_conversation","contentHash":"d21d6b1bfc344659dba34f2e7bf9bf8c296c067b9abe2cb227cd7db159c5f906","duplicateGroupId":"dup-59d0c235979b6685","extractionReason":"High-recall surface heuristic: a punctuation-bounded span has overt 咗, non-punctuation material before it, and letter/number material after it; reviewer validation required.","extractionToolVersion":"ab30-corpus-review/1.0.1","review":{"classification":"unreviewed","reviewerNote":"","exclusionReason":""}},{"candidateId":"ab30-eb85cb77226738b81d9c","sourcePath":"test-data/natural-corpus-wechat-guangxi-travel-002-raw.txt","recordId":"line:8","text":"B: 早知你坐佢嘅车咪仲好，唔使自己开咁辛苦。傻閪开下饮下水，开下饮下水嘛。酒就唔唔饮啫，开饮水咋，傻閪。寻日上嚟寻晚黑就到到广西噶啦，到广西嗰个河河桥嗰度，咁大概开咗5个钟头车到啦，加加埋埋。咁最开最开三四个钟头到游览区到桂林嗰度，咁而家揾房住咯，食完听日就正式旅游啦。又去阳朔，去阳朔去桂林都系嗰度附附近近噶啦，兜晒嗰啲点啊，就十几日噶要。广州上嚟800几公里啊。","matchedSurfaceSpan":"咁大概开咗5个钟头车到啦","matchStart":79,"matchEnd":91,"leftContext":"B: 早知你坐佢嘅车咪仲好，唔使自己开咁辛苦。傻閪开下饮下水，开下饮下水嘛。酒就唔唔饮啫，开饮水咋，傻閪。寻日上嚟寻晚黑就到到广西噶啦，到广西嗰个河河桥嗰度，","rightContext":"，加加埋埋。咁最开最开三四个钟头到游览区到桂林嗰度，咁而家揾房住咯，食完听日就正式旅游啦。又去阳朔，去阳朔去桂林都系嗰度附附近近噶啦，兜晒嗰啲点啊，就十几日噶要。广州上嚟800几公里啊。","previousRecordText":"C: 酒冇饮，水冇饮一啖啊。","nextRecordText":"D: 阳朔好靓噶，阳朔慢慢慢慢玩猪八。其实阳朔嘅话你去揸住部嗰啲，你哋部车周围兜去嗰啲唔使钱嗰啲景点周围兜就得噶啦，冇必要使钱去景点噶，一样噶咋，差唔多啲风景。","sourceType":"sanitized_natural_conversation_raw_transcript","contentHash":"22a15689b993af5987d67e3dea747b4986445496fc97398fd0c74c7da068b0b9","duplicateGroupId":"dup-6a5930ed28cb44dc","extractionReason":"High-recall surface heuristic: a punctuation-bounded span has overt 咗, non-punctuation material before it, and letter/number material after it; reviewer validation required.","extractionToolVersion":"ab30-corpus-review/1.0.1","review":{"classification":"unreviewed","reviewerNote":"","exclusionReason":""}},{"candidateId":"ab30-f5bf6e0c83743a9b7eaa","sourcePath":"data/natural-corpus/wechat-father-daughter-001.txt","recordId":"line:12","text":"K：唔得啦，申請唔到啊。我頭先又去街道諮詢過，佢話五個人都要列收入，五個人嘅收入加埋超咗。收入超咗就唔得，我哋收入超咗。","matchedSurfaceSpan":"收入超咗就唔得","matchStart":45,"matchEnd":52,"leftContext":"K：唔得啦，申請唔到啊。我頭先又去街道諮詢過，佢話五個人都要列收入，五個人嘅收入加埋超咗。","rightContext":"，我哋收入超咗。","previousRecordText":"J：嗯。","nextRecordText":"J：肯定啦，佢一個人都超晒啦。","sourceType":"sanitized_natural_conversation","contentHash":"66b190d64c7a0cc7a7fe30e3fe10e6321d59e1d19c9509e00dade5285c6f0962","duplicateGroupId":"dup-168bf4c62d246a11","extractionReason":"High-recall surface heuristic: a punctuation-bounded span has overt 咗, non-punctuation material before it, and letter/number material after it; reviewer validation required.","extractionToolVersion":"ab30-corpus-review/1.0.1","review":{"classification":"unreviewed","reviewerNote":"","exclusionReason":""}}],"summary":{"totalExtracted":5,"uniqueCandidateTexts":5,"duplicateGroups":0,"countsBySource":{"data/natural-corpus/wechat-father-daughter-001.txt":3,"test-data/natural-corpus-wechat-guangxi-travel-002-raw.txt":2},"countsByReviewClassification":{"unreviewed":5,"genuine":0,"false_positive":0,"ambiguous":0,"unusable":0},"excludedSourceInventory":{"total":26,"countsByReason":{"adjudication_record":4,"documentation_example":2,"documentation_or_curated_example":1,"generated_diagnostic":1,"generated_validation_copy":2,"metadata_only":1,"parser_fixture":3,"repeated_derived_copy":8,"survey_question":1,"synthetic_test":3},"sources":[{"path":"data/natural-corpus/wechat-father-daughter-001.metadata.json","reasonCode":"metadata_only","reason":"Source metadata contains no primary natural-language records."},{"path":"test-data/natural-corpus-wechat-father-daughter-001-turns.tsv","reasonCode":"repeated_derived_copy","reason":"Derived turn-level copy of the included primary transcript."},{"path":"test-data/natural-corpus-wechat-father-daughter-001-turns.json","reasonCode":"repeated_derived_copy","reason":"Derived JSON turn-level copy of the included primary transcript."},{"path":"test-data/natural-corpus-wechat-father-daughter-001-units.tsv","reasonCode":"repeated_derived_copy","reason":"Derived unit-level copy of the included primary transcript."},{"path":"test-data/natural-corpus-wechat-father-daughter-001-units.json","reasonCode":"repeated_derived_copy","reason":"Derived JSON unit-level copy of the included primary transcript."},{"path":"test-data/natural-corpus-wechat-guangxi-travel-002-turns.tsv","reasonCode":"repeated_derived_copy","reason":"Derived turn-level copy of the included raw transcript."},{"path":"test-data/natural-corpus-wechat-guangxi-travel-002-turns.json","reasonCode":"repeated_derived_copy","reason":"Derived JSON turn-level copy of the included raw transcript."},{"path":"test-data/natural-corpus-wechat-guangxi-travel-002-units.tsv","reasonCode":"repeated_derived_copy","reason":"Derived unit-level copy of the included raw transcript."},{"path":"test-data/natural-corpus-wechat-guangxi-travel-002-units.json","reasonCode":"repeated_derived_copy","reason":"Derived JSON unit-level copy of the included raw transcript."},{"path":"test-data/WECHAT-GX-TRAVEL-002-ADJUDICATION-MATRIX.tsv","reasonCode":"adjudication_record","reason":"Human adjudication material is not primary corpus evidence."},{"path":"test-data/WECHAT-GX-TRAVEL-002-ADJUDICATION-MATRIX.json","reasonCode":"adjudication_record","reason":"Human adjudication material is not primary corpus evidence."},{"path":"docs/research/NATIVE-CORPUS-WECHAT-GUANGXI-TRAVEL-002.md","reasonCode":"documentation_example","reason":"Research documentation may quote or transform source examples and is not a primary record."},{"path":"docs/research/WECHAT-GX-TRAVEL-002-ADJUDICATION-REPORT.md","reasonCode":"adjudication_record","reason":"Adjudication report is downstream analysis, not primary corpus evidence."},{"path":"test-data/w17-functional-corpus.tsv","reasonCode":"synthetic_test","reason":"Functional test corpus is synthetic project-internal material."},{"path":"test-data/w17-glossika-corpus.tsv","reasonCode":"documentation_or_curated_example","reason":"Curated learning examples are not natural-corpus records for this workbench."},{"path":"test-data/pre-intermediate-gold-corpus.tsv","reasonCode":"synthetic_test","reason":"Gold test corpus is project-internal verification material."},{"path":"test-data/rul-survey-readiness-probes-v1.json","reasonCode":"survey_question","reason":"Survey-readiness probes are elicitation/test material, not corpus evidence."},{"path":"test-data/implementation-reachability-probes-v1.json","reasonCode":"synthetic_test","reason":"Implementation reachability probes are synthetic tests."},{"path":"tests/fixtures/boundary-closure-v1.json","reasonCode":"parser_fixture","reason":"Parser fixture is synthetic project-internal material."},{"path":"tests/fixtures/np-subsystem.json","reasonCode":"parser_fixture","reason":"Parser fixture is synthetic project-internal material."},{"path":"tests/fixtures/regression-snapshots.json","reasonCode":"parser_fixture","reason":"Regression fixture is generated or synthetic project-internal material."},{"path":"validation/cp022-p1-pfv01-r1/diagnostics-export.json","reasonCode":"generated_diagnostic","reason":"Generated diagnostics are not primary corpus evidence."},{"path":"validation/v0.5.181/pre-intermediate-corpus.json","reasonCode":"generated_validation_copy","reason":"Validation output is a generated copy of project test material."},{"path":"validation/v0.5.182/pre-intermediate-corpus.json","reasonCode":"generated_validation_copy","reason":"Validation output is a generated copy of project test material."},{"path":"archive/release-history/CANTO-SPAN-v0.5.181-CORPUS-ADJUDICATION.md","reasonCode":"adjudication_record","reason":"Archived adjudication record is downstream project documentation."},{"path":"archive/release-history/CANTO-SPAN-v0.5.181-CORPUS-ADDENDUM.md","reasonCode":"documentation_example","reason":"Archived corpus addendum is project documentation rather than a primary source record."}]}}}
+{
+  "schemaVersion": 1,
+  "construction": {
+    "permanentCode": "AB30",
+    "canonicalIdentity": "ZoMarkedPerfectiveObjectVP",
+    "legacyRuntimeLabel": "PostverbalZoPerfectiveVP"
+  },
+  "extractionToolVersion": "ab30-corpus-review/1.0.1",
+  "sourceManifestHash": "1be8e59917a2f8a12da1f02f4e4e1e7d15fd9e778a9563e5630ac7bc1b5d23a3",
+  "disclaimer": "Extraction is mechanical candidate preparation, not linguistic validation, construction membership, acceptability, readiness, status, identity, promotion, runtime, or release evidence.",
+  "candidates": [
+    {
+      "candidateId": "ab30-ad133e2eafed9b2bf5df",
+      "sourcePath": "test-data/natural-corpus-wechat-guangxi-travel-002-raw.txt",
+      "recordId": "line:5",
+      "text": "B: 喂方子系咪开佢自己嗰个车嘅啫，方子嗰个车系咪同阿拉嗰个一样嘅啫，方子嗰部。你饮咗酒你千祈唔好开车啊，我话俾你听吓。",
+      "matchedSurfaceSpan": "你饮咗酒你千祈唔好开车啊",
+      "matchStart": 40,
+      "matchEnd": 52,
+      "leftContext": "B: 喂方子系咪开佢自己嗰个车嘅啫，方子嗰个车系咪同阿拉嗰个一样嘅啫，方子嗰部。",
+      "rightContext": "，我话俾你听吓。",
+      "previousRecordText": "C: 系啊系啊，开十开九部宝马，开8部宝马上嚟啊，啱啱去到琴日琴日上嚟噶啦，琴日上嚟。",
+      "nextRecordText": "C: 唔系啊，系咪第三台车同阿拉嗰部一样。",
+      "sourceType": "sanitized_natural_conversation_raw_transcript",
+      "contentHash": "ade28f0ea8e920af9c4d5c86176f056390e48274df6cf4b4da9a3985eb8b1c1a",
+      "duplicateGroupId": "dup-027656bb5b69ffc1",
+      "extractionReason": "High-recall surface heuristic: a punctuation-bounded span has overt 咗, non-punctuation material before it, and letter/number material after it; reviewer validation required.",
+      "extractionToolVersion": "ab30-corpus-review/1.0.1",
+      "review": {
+        "classification": "unreviewed",
+        "reviewerNote": "",
+        "exclusionReason": ""
+      }
+    },
+    {
+      "candidateId": "ab30-d8d2be10fb2c873a5a81",
+      "sourcePath": "data/natural-corpus/wechat-father-daughter-001.txt",
+      "recordId": "line:10",
+      "text": "K：我頭先問佢嗰個主任，個主任話唔計收入㗎嘛，佢話冇房就得㗎嘛。我攞咗兩份申請表啦，一陣間影畀你睇下啦，你睇下點計啦。",
+      "matchedSurfaceSpan": "我攞咗兩份申請表啦",
+      "matchStart": 32,
+      "matchEnd": 41,
+      "leftContext": "K：我頭先問佢嗰個主任，個主任話唔計收入㗎嘛，佢話冇房就得㗎嘛。",
+      "rightContext": "，一陣間影畀你睇下啦，你睇下點計啦。",
+      "previousRecordText": "J：人哋阿歐陽一年收入都廿幾萬啦，十五萬……",
+      "nextRecordText": "J：嗯。",
+      "sourceType": "sanitized_natural_conversation",
+      "contentHash": "72d40d2e766ce72c5fc8c7d9924b11c93a9f2ee1ae0be266f521377c0c3addc1",
+      "duplicateGroupId": "dup-9d6fef5f7055e74b",
+      "extractionReason": "High-recall surface heuristic: a punctuation-bounded span has overt 咗, non-punctuation material before it, and letter/number material after it; reviewer validation required.",
+      "extractionToolVersion": "ab30-corpus-review/1.0.1",
+      "review": {
+        "classification": "unreviewed",
+        "reviewerNote": "",
+        "exclusionReason": ""
+      }
+    },
+    {
+      "candidateId": "ab30-e4f5d5a33b1342293387",
+      "sourcePath": "data/natural-corpus/wechat-father-daughter-001.txt",
+      "recordId": "line:2",
+      "text": "K：居留證啊。佢話唔關收入嘅問題啊，佢話冇房就得喇，冇房住就得喇，超過兩萬蚊都唔怕㗎。我同佢講咗啦，我話佢有時有嘢做，有時冇嘢做。收入超過一兩萬蚊一個月，佢話冇所謂嘅，佢話冇房就得喇。",
+      "matchedSurfaceSpan": "我同佢講咗啦",
+      "matchStart": 43,
+      "matchEnd": 49,
+      "leftContext": "K：居留證啊。佢話唔關收入嘅問題啊，佢話冇房就得喇，冇房住就得喇，超過兩萬蚊都唔怕㗎。",
+      "rightContext": "，我話佢有時有嘢做，有時冇嘢做。收入超過一兩萬蚊一個月，佢話冇所謂嘅，佢話冇房就得喇。",
+      "previousRecordText": "J：居委要佢嘅中國簽證，定係咩啊？定係居留嗰個證啊？居住證、簽證啊？",
+      "nextRecordText": "J：你係同居委講歐陽有時有嘢做，定係我有時有嘢做、有時冇嘢做啊？你問清楚，同人哋老老實實講啲，唔好到時人哋一查，哦，原來講大話嘅，搞到份人工又冇咗，或者趕鳩佢走添啊。外國人申請呢啲嘢比較謹慎㗎。",
+      "sourceType": "sanitized_natural_conversation",
+      "contentHash": "d21d6b1bfc344659dba34f2e7bf9bf8c296c067b9abe2cb227cd7db159c5f906",
+      "duplicateGroupId": "dup-59d0c235979b6685",
+      "extractionReason": "High-recall surface heuristic: a punctuation-bounded span has overt 咗, non-punctuation material before it, and letter/number material after it; reviewer validation required.",
+      "extractionToolVersion": "ab30-corpus-review/1.0.1",
+      "review": {
+        "classification": "unreviewed",
+        "reviewerNote": "",
+        "exclusionReason": ""
+      }
+    },
+    {
+      "candidateId": "ab30-eb85cb77226738b81d9c",
+      "sourcePath": "test-data/natural-corpus-wechat-guangxi-travel-002-raw.txt",
+      "recordId": "line:8",
+      "text": "B: 早知你坐佢嘅车咪仲好，唔使自己开咁辛苦。傻閪开下饮下水，开下饮下水嘛。酒就唔唔饮啫，开饮水咋，傻閪。寻日上嚟寻晚黑就到到广西噶啦，到广西嗰个河河桥嗰度，咁大概开咗5个钟头车到啦，加加埋埋。咁最开最开三四个钟头到游览区到桂林嗰度，咁而家揾房住咯，食完听日就正式旅游啦。又去阳朔，去阳朔去桂林都系嗰度附附近近噶啦，兜晒嗰啲点啊，就十几日噶要。广州上嚟800几公里啊。",
+      "matchedSurfaceSpan": "咁大概开咗5个钟头车到啦",
+      "matchStart": 79,
+      "matchEnd": 91,
+      "leftContext": "B: 早知你坐佢嘅车咪仲好，唔使自己开咁辛苦。傻閪开下饮下水，开下饮下水嘛。酒就唔唔饮啫，开饮水咋，傻閪。寻日上嚟寻晚黑就到到广西噶啦，到广西嗰个河河桥嗰度，",
+      "rightContext": "，加加埋埋。咁最开最开三四个钟头到游览区到桂林嗰度，咁而家揾房住咯，食完听日就正式旅游啦。又去阳朔，去阳朔去桂林都系嗰度附附近近噶啦，兜晒嗰啲点啊，就十几日噶要。广州上嚟800几公里啊。",
+      "previousRecordText": "C: 酒冇饮，水冇饮一啖啊。",
+      "nextRecordText": "D: 阳朔好靓噶，阳朔慢慢慢慢玩猪八。其实阳朔嘅话你去揸住部嗰啲，你哋部车周围兜去嗰啲唔使钱嗰啲景点周围兜就得噶啦，冇必要使钱去景点噶，一样噶咋，差唔多啲风景。",
+      "sourceType": "sanitized_natural_conversation_raw_transcript",
+      "contentHash": "22a15689b993af5987d67e3dea747b4986445496fc97398fd0c74c7da068b0b9",
+      "duplicateGroupId": "dup-6a5930ed28cb44dc",
+      "extractionReason": "High-recall surface heuristic: a punctuation-bounded span has overt 咗, non-punctuation material before it, and letter/number material after it; reviewer validation required.",
+      "extractionToolVersion": "ab30-corpus-review/1.0.1",
+      "review": {
+        "classification": "unreviewed",
+        "reviewerNote": "",
+        "exclusionReason": ""
+      }
+    },
+    {
+      "candidateId": "ab30-f5bf6e0c83743a9b7eaa",
+      "sourcePath": "data/natural-corpus/wechat-father-daughter-001.txt",
+      "recordId": "line:12",
+      "text": "K：唔得啦，申請唔到啊。我頭先又去街道諮詢過，佢話五個人都要列收入，五個人嘅收入加埋超咗。收入超咗就唔得，我哋收入超咗。",
+      "matchedSurfaceSpan": "收入超咗就唔得",
+      "matchStart": 45,
+      "matchEnd": 52,
+      "leftContext": "K：唔得啦，申請唔到啊。我頭先又去街道諮詢過，佢話五個人都要列收入，五個人嘅收入加埋超咗。",
+      "rightContext": "，我哋收入超咗。",
+      "previousRecordText": "J：嗯。",
+      "nextRecordText": "J：肯定啦，佢一個人都超晒啦。",
+      "sourceType": "sanitized_natural_conversation",
+      "contentHash": "66b190d64c7a0cc7a7fe30e3fe10e6321d59e1d19c9509e00dade5285c6f0962",
+      "duplicateGroupId": "dup-168bf4c62d246a11",
+      "extractionReason": "High-recall surface heuristic: a punctuation-bounded span has overt 咗, non-punctuation material before it, and letter/number material after it; reviewer validation required.",
+      "extractionToolVersion": "ab30-corpus-review/1.0.1",
+      "review": {
+        "classification": "unreviewed",
+        "reviewerNote": "",
+        "exclusionReason": ""
+      }
+    }
+  ],
+  "summary": {
+    "totalExtracted": 5,
+    "uniqueCandidateTexts": 5,
+    "duplicateGroups": 0,
+    "countsBySource": {
+      "data/natural-corpus/wechat-father-daughter-001.txt": 3,
+      "test-data/natural-corpus-wechat-guangxi-travel-002-raw.txt": 2
+    },
+    "countsByReviewClassification": {
+      "unreviewed": 5,
+      "genuine": 0,
+      "false_positive": 0,
+      "ambiguous": 0,
+      "unusable": 0
+    },
+    "excludedSourceInventory": {
+      "total": 26,
+      "countsByReason": {
+        "adjudication_record": 4,
+        "documentation_example": 2,
+        "documentation_or_curated_example": 1,
+        "generated_diagnostic": 1,
+        "generated_validation_copy": 2,
+        "metadata_only": 1,
+        "parser_fixture": 3,
+        "repeated_derived_copy": 8,
+        "survey_question": 1,
+        "synthetic_test": 3
+      },
+      "sources": [
+        {
+          "path": "data/natural-corpus/wechat-father-daughter-001.metadata.json",
+          "reasonCode": "metadata_only",
+          "reason": "Source metadata contains no primary natural-language records."
+        },
+        {
+          "path": "test-data/natural-corpus-wechat-father-daughter-001-turns.tsv",
+          "reasonCode": "repeated_derived_copy",
+          "reason": "Derived turn-level copy of the included primary transcript."
+        },
+        {
+          "path": "test-data/natural-corpus-wechat-father-daughter-001-turns.json",
+          "reasonCode": "repeated_derived_copy",
+          "reason": "Derived JSON turn-level copy of the included primary transcript."
+        },
+        {
+          "path": "test-data/natural-corpus-wechat-father-daughter-001-units.tsv",
+          "reasonCode": "repeated_derived_copy",
+          "reason": "Derived unit-level copy of the included primary transcript."
+        },
+        {
+          "path": "test-data/natural-corpus-wechat-father-daughter-001-units.json",
+          "reasonCode": "repeated_derived_copy",
+          "reason": "Derived JSON unit-level copy of the included primary transcript."
+        },
+        {
+          "path": "test-data/natural-corpus-wechat-guangxi-travel-002-turns.tsv",
+          "reasonCode": "repeated_derived_copy",
+          "reason": "Derived turn-level copy of the included raw transcript."
+        },
+        {
+          "path": "test-data/natural-corpus-wechat-guangxi-travel-002-turns.json",
+          "reasonCode": "repeated_derived_copy",
+          "reason": "Derived JSON turn-level copy of the included raw transcript."
+        },
+        {
+          "path": "test-data/natural-corpus-wechat-guangxi-travel-002-units.tsv",
+          "reasonCode": "repeated_derived_copy",
+          "reason": "Derived unit-level copy of the included raw transcript."
+        },
+        {
+          "path": "test-data/natural-corpus-wechat-guangxi-travel-002-units.json",
+          "reasonCode": "repeated_derived_copy",
+          "reason": "Derived JSON unit-level copy of the included raw transcript."
+        },
+        {
+          "path": "test-data/WECHAT-GX-TRAVEL-002-ADJUDICATION-MATRIX.tsv",
+          "reasonCode": "adjudication_record",
+          "reason": "Human adjudication material is not primary corpus evidence."
+        },
+        {
+          "path": "test-data/WECHAT-GX-TRAVEL-002-ADJUDICATION-MATRIX.json",
+          "reasonCode": "adjudication_record",
+          "reason": "Human adjudication material is not primary corpus evidence."
+        },
+        {
+          "path": "docs/research/NATIVE-CORPUS-WECHAT-GUANGXI-TRAVEL-002.md",
+          "reasonCode": "documentation_example",
+          "reason": "Research documentation may quote or transform source examples and is not a primary record."
+        },
+        {
+          "path": "docs/research/WECHAT-GX-TRAVEL-002-ADJUDICATION-REPORT.md",
+          "reasonCode": "adjudication_record",
+          "reason": "Adjudication report is downstream analysis, not primary corpus evidence."
+        },
+        {
+          "path": "test-data/w17-functional-corpus.tsv",
+          "reasonCode": "synthetic_test",
+          "reason": "Functional test corpus is synthetic project-internal material."
+        },
+        {
+          "path": "test-data/w17-glossika-corpus.tsv",
+          "reasonCode": "documentation_or_curated_example",
+          "reason": "Curated learning examples are not natural-corpus records for this workbench."
+        },
+        {
+          "path": "test-data/pre-intermediate-gold-corpus.tsv",
+          "reasonCode": "synthetic_test",
+          "reason": "Gold test corpus is project-internal verification material."
+        },
+        {
+          "path": "test-data/rul-survey-readiness-probes-v1.json",
+          "reasonCode": "survey_question",
+          "reason": "Survey-readiness probes are elicitation/test material, not corpus evidence."
+        },
+        {
+          "path": "test-data/implementation-reachability-probes-v1.json",
+          "reasonCode": "synthetic_test",
+          "reason": "Implementation reachability probes are synthetic tests."
+        },
+        {
+          "path": "tests/fixtures/boundary-closure-v1.json",
+          "reasonCode": "parser_fixture",
+          "reason": "Parser fixture is synthetic project-internal material."
+        },
+        {
+          "path": "tests/fixtures/np-subsystem.json",
+          "reasonCode": "parser_fixture",
+          "reason": "Parser fixture is synthetic project-internal material."
+        },
+        {
+          "path": "tests/fixtures/regression-snapshots.json",
+          "reasonCode": "parser_fixture",
+          "reason": "Regression fixture is generated or synthetic project-internal material."
+        },
+        {
+          "path": "validation/cp022-p1-pfv01-r1/diagnostics-export.json",
+          "reasonCode": "generated_diagnostic",
+          "reason": "Generated diagnostics are not primary corpus evidence."
+        },
+        {
+          "path": "validation/v0.5.181/pre-intermediate-corpus.json",
+          "reasonCode": "generated_validation_copy",
+          "reason": "Validation output is a generated copy of project test material."
+        },
+        {
+          "path": "validation/v0.5.182/pre-intermediate-corpus.json",
+          "reasonCode": "generated_validation_copy",
+          "reason": "Validation output is a generated copy of project test material."
+        },
+        {
+          "path": "archive/release-history/CANTO-SPAN-v0.5.181-CORPUS-ADJUDICATION.md",
+          "reasonCode": "adjudication_record",
+          "reason": "Archived adjudication record is downstream project documentation."
+        },
+        {
+          "path": "archive/release-history/CANTO-SPAN-v0.5.181-CORPUS-ADDENDUM.md",
+          "reasonCode": "documentation_example",
+          "reason": "Archived corpus addendum is project documentation rather than a primary source record."
+        }
+      ]
+    }
+  }
+}
