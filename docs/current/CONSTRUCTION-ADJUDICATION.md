@@ -77,3 +77,5 @@ npm run verify:discovery
 - A completed ontology review does not satisfy corpus, panel, held-out, or promotion gates.
 - Runtime and status-path migrations remain explicit follow-up work; they are not silently performed by registry adjudication.
 - Earlier batch documents remain unchanged after acceptance; corrections require a later superseding adjudication rather than rewriting history.
+
+<!-- verification checkpoint: batch 07 -->
