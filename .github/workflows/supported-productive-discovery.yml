@@ -1,0 +1,48 @@
+name: Supported productive discovery
+
+on:
+  push:
+    branches:
+      - agent/permanent-construction-identity-sweep
+    paths:
+      - tools/generate-supported-productive-discovery.js
+      - tools/promotion-gate-lib.js
+      - tools/construction-notes-lib.js
+      - data/construction-identities.json
+      - grammar/**
+      - docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv
+      - archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json
+      - .github/workflows/supported-productive-discovery.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/permanent-construction-identity-sweep
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Generate full-repository discovery sweep
+        run: node tools/generate-supported-productive-discovery.js --write
+      - name: Commit generated discovery records
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            data/construction-candidate-readiness.json \
+            docs/research/SUPPORTED-PRODUCTIVE-CANDIDATES.md \
+            docs/research/ORPHANED-CONSTRUCTION-EVIDENCE.md \
+            docs/research/CONSTRUCTION-FAMILY-GAPS.md \
+            docs/research/FULL-REPO-SUPPORTED-PRODUCTIVE-SWEEP-R1.md
+          if git diff --cached --quiet; then
+            echo "Discovery outputs already current"
+          else
+            git commit -m "Generate full supported-productivity sweep"
+            git push origin HEAD:agent/permanent-construction-identity-sweep
+          fi
