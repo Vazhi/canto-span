@@ -4,13 +4,19 @@
 
 Canto Span records expert label and ontology decisions separately from generated discovery scores and separately from mutable runtime labels.
 
-The authoritative adjudication file is:
+The original adjudication document is:
 
 ```text
 data/construction-adjudications.json
 ```
 
-Each decision is keyed by immutable `construction_uuid` and verified against the permanent short code and legacy runtime label.
+Later append-only batches are stored under:
+
+```text
+data/construction-adjudication-batches/*.json
+```
+
+Each decision is keyed by immutable `construction_uuid` and verified against the permanent short code and legacy runtime label. Batch files are applied in filename order, and duplicate UUIDs or short codes across batches are rejected.
 
 ## Required decision fields
 
@@ -36,7 +42,12 @@ Run:
 npm run adjudication:apply
 ```
 
-This applies committed decisions to the permanent identity registry, regenerates the label sweep, and regenerates supported-productivity discovery reports.
+This applies all committed decisions to the permanent identity registry. Then regenerate the identity sweep and supported-productivity reports:
+
+```bash
+node tools/generate-construction-identities.js --write
+npm run discovery:generate
+```
 
 Verification uses:
 
@@ -55,3 +66,4 @@ npm run verify:discovery
 - A wrapper that lacks independent language-construction status may be reclassified as `parser_representation` without deleting its history.
 - A completed ontology review does not satisfy corpus, panel, held-out, or promotion gates.
 - Runtime and status-path migrations remain explicit follow-up work; they are not silently performed by registry adjudication.
+- Earlier batch documents remain unchanged after acceptance; corrections require a later superseding adjudication rather than rewriting history.
