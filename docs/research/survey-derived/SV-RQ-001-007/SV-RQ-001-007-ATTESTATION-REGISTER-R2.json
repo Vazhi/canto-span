@@ -1,0 +1,134 @@
+{
+  "schema": "canto-span-survey-derived-attestation-register-v1",
+  "research_ids": [
+    "SV-RQ-001",
+    "SV-RQ-002",
+    "SV-RQ-003",
+    "SV-RQ-004",
+    "SV-RQ-005",
+    "SV-RQ-006",
+    "SV-RQ-007"
+  ],
+  "created": "2026-07-24",
+  "scope": "research_only",
+  "implementation_authority": "none",
+  "search_limitations": [
+    "web indexing is incomplete",
+    "written Cantonese orthography varies",
+    "attestation does not establish productivity",
+    "absence from targeted search is not negative evidence"
+  ],
+  "records": [
+    {
+      "id": "SVATT-R2-001",
+      "research_ids": ["SV-RQ-001"],
+      "surface": "啲錢用嚟交租㗎",
+      "resource_class": "funds",
+      "source": "粵典 / Words.hk, 用嚟",
+      "url": "https://words.hk/zidin/%E7%94%A8%E5%9A%9F",
+      "grade": "LEXICAL_OR_PRONUNCIATION_ONLY",
+      "supports": "funds as allocated resource in generic/assigned function clause",
+      "does_not_support": "unrestricted abstract-NP productivity"
+    },
+    {
+      "id": "SVATT-R2-002",
+      "research_ids": ["SV-RQ-001", "SV-RQ-004"],
+      "surface": "咁啱落大雨，變咗有少少時間用咗嚟等",
+      "resource_class": "bounded_time",
+      "source": "HK01 quotation in entertainment report",
+      "url": "https://www.hk01.com/%E5%8D%B3%E6%99%82%E5%A8%9B%E6%A8%82/1004251/",
+      "grade": "PRIMARY_CORPUS_ATTESTATION",
+      "supports": "exact time-resource initial 用咗嚟 VP actual-use profile",
+      "does_not_support": "frequency or regional uniformity"
+    },
+    {
+      "id": "SVATT-R2-003",
+      "research_ids": ["SV-RQ-001"],
+      "surface": "因為喺香港大家好多時間用嚟做嘢",
+      "resource_class": "bounded_time",
+      "source": "Hong Kong Economic Times quoted interview",
+      "url": "https://topick.hket.com/article/3373463/",
+      "grade": "PRIMARY_CORPUS_ATTESTATION",
+      "supports": "time allocation in bare 用嚟 function/activity profile",
+      "does_not_support": "constructional subject analysis"
+    },
+    {
+      "id": "SVATT-R2-004",
+      "research_ids": ["SV-RQ-001", "SV-RQ-002"],
+      "surface": "呢把我用嚟分線",
+      "resource_class": "instrument",
+      "source": "Post76 public forum",
+      "url": "https://post76.hk/thread-92386-1-1.html",
+      "grade": "PRIMARY_CORPUS_ATTESTATION",
+      "supports": "exact Resource NP + Agent + 用嚟 + VP surface order",
+      "does_not_support": "movement versus hanging-topic derivation"
+    },
+    {
+      "id": "SVATT-R2-005",
+      "research_ids": ["SV-RQ-003"],
+      "surface": "間房係專門用嚟開會嘅",
+      "resource_class": "room_location",
+      "source": "CantoDict",
+      "url": "https://www.cantonese.sheik.co.uk/dictionary/characters/601/?all=true&full=true",
+      "grade": "LEXICAL_OR_PRONUNCIATION_ONLY",
+      "supports": "attested copular dedicated-function profile with final 嘅",
+      "does_not_support": "mandatory final 嘅 in all 係用嚟 clauses"
+    },
+    {
+      "id": "SVATT-R2-006",
+      "research_ids": ["SV-RQ-001"],
+      "surface": "呢啲方法用嚟寫記敍文",
+      "resource_class": "method",
+      "source": "Education Kingdom public forum archive",
+      "url": "https://www.edu-kingdom.com/forum.php?archiver=1&mod=viewthread&page=1&tid=3032998",
+      "grade": "PRIMARY_CORPUS_ATTESTATION",
+      "supports": "method NP as functional resource",
+      "does_not_support": "all abstract methods or formal-register neutrality"
+    },
+    {
+      "id": "SVATT-R2-007",
+      "research_ids": ["SV-RQ-004"],
+      "surface": "用咗嚟寫 di1",
+      "resource_class": "discourse_recovered_object",
+      "source": "Words.hk editorial FAQ",
+      "url": "https://words.hk/faiman/view/202/%E7%B2%B5%E5%85%B8%2B%E7%B2%B5%E8%AA%9E%2BFAQ",
+      "grade": "ATTESTATION_ONLY",
+      "supports": "exact 用咗嚟 VP sequence with recovered object",
+      "does_not_support": "resource-initial syntax or unrestricted productivity"
+    },
+    {
+      "id": "SVATT-R2-008",
+      "research_ids": ["SV-RQ-004", "SV-RQ-006"],
+      "surface": "細妹用咗呢個袋仔嚟俾公仔放嘢",
+      "resource_class": "instrument_container",
+      "source": "Hambaanglaang pedagogical story via LingQ",
+      "url": "https://www.lingq.com/en/learn-cantonese-online/courses/1299861/mai-ye-20784449/",
+      "grade": "ATTESTATION_ONLY",
+      "supports": "Agent + 用咗 + NP + purposive 嚟 VP surface pattern",
+      "does_not_support": "natural corpus frequency"
+    },
+    {
+      "id": "SVATT-R2-009",
+      "research_ids": ["SV-RQ-006"],
+      "surface": "我買咗啲雞蛋嚟整蛋撻",
+      "resource_class": "acquired_material",
+      "source": "Wiktionary Cantonese example",
+      "url": "https://zh.wiktionary.org/wiki/%E5%9A%9F",
+      "grade": "ATTESTATION_ONLY",
+      "supports": "perfective acquisition plus purposive 嚟",
+      "does_not_support": "closed lexical-class rule"
+    },
+    {
+      "id": "SVATT-R2-010",
+      "research_ids": ["SV-RQ-005"],
+      "surface": null,
+      "resource_class": "perfective_inside_purpose",
+      "source": "targeted exact-string web search",
+      "url": null,
+      "grade": "SEARCH_OBSERVATION_ONLY",
+      "supports": "need for controlled corpus and context work",
+      "does_not_support": "ungrammaticality or nonexistence",
+      "queries": ["用嚟買咗", "用嚟做咗", "用嚟寫咗", "用嚟切咗"]
+    }
+  ]
+}
