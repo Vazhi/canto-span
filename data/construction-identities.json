@@ -1727,7 +1727,7 @@
     {
       "construction_uuid": "4fe5879e-7098-596d-9312-8cbc845cfc1c",
       "construction_code": "AA46",
-      "canonical_name": "DiMarkedNP",
+      "canonical_name": "DiMarkedNounNP",
       "legacy_labels": [
         "DiMarkedNP"
       ],
@@ -1735,51 +1735,77 @@
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/DiMarkedNP.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese may instantiate the structural family represented by DiMarkedNP; exact productivity and boundaries require pattern-specific independent evidence.",
+      "family_name": "DiMarkedNominals",
+      "profile_name": "OptionalPossessorDiOvertNoun",
+      "profile_description": "An overt 啲 is followed by an overt noun, optionally with an overt possessor before 啲, as in 啲書, 啲糖, and 你啲錢. The profile describes the nominal expression itself and does not infer object role, exact quantity, definiteness, partitivity, or a hidden classifier from surface 啲 + noun.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "di1-N nominal-expression type",
+          "source_id": "SRC-WINTERSTEIN-ETAL-2023-NOMINAL-EXPRESSIONS",
+          "scope_match": "exact"
+        }
+      ],
+      "former_names": [
+        "DiMarkedNP"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "runtime_narrower_defensible",
+        "terminology_alignment": "neutral_descriptive_preferred",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-24. DiMarkedNP is defensible but underspecified. DiMarkedNounNP makes the required overt noun visible and prevents examples occurring as objects from turning the nominal identity into an object construction. The same UUID is retained because the source-supported di1-N core is present in every current positive. Status recommendation: retain research_pending for overt 啲 + noun nominal expressions until exact source-linked positives, semantic boundaries, corpus review, role-neutral panel evidence, and held-out validation are complete"
       }
     },
     {
       "construction_uuid": "676460c0-934e-5b6f-a5d6-71e8d9ca55bf",
       "construction_code": "AA47",
-      "canonical_name": "DirectedMannerMotionVP",
+      "canonical_name": "MannerMotionDirectionalWrapper",
       "legacy_labels": [
         "DirectedMannerMotionVP"
       ],
-      "claim_layer": "language_construction",
+      "claim_layer": "parser_representation",
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/DirectedMannerMotionVP.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese may instantiate the structural family represented by DirectedMannerMotionVP; exact productivity and boundaries require pattern-specific independent evidence.",
+      "family_name": "MotionRepresentation",
+      "profile_name": "MannerMotionWithHeterogeneousDirectionalMaterial",
+      "profile_description": "An implementation aggregate over a manner-motion predicate and heterogeneous directional material, including postverbal path/deictic complexes, lexical 去 plus a goal, preverbal 向 direction phrases, and larger source-to-goal clauses. These components have different orders, relations, and constituency and are not established as one Cantonese construction.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "directional 向 coverb phrase",
+          "source_id": "SRC-LEUNG-2014-COVERBS",
+          "scope_match": "partial"
+        },
+        {
+          "term": "manner verb plus complex path expression",
+          "source_id": "SRC-SHAN-JIN-2025-MOTION-TYPOLOGY",
+          "scope_match": "partial"
+        },
+        {
+          "term": "self-motion versus caused-motion contrast",
+          "source_id": "SRC-YIU-2016-DIRECTIONAL-ASPECT",
+          "scope_match": "contrastive"
+        }
+      ],
+      "former_names": [
+        "DirectedMannerMotionVP"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "overlapping",
+        "terminology_alignment": "misleading",
+        "recommended_action": "internalize_and_decompose",
         "automatic_risk_flags": [],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-24. The legacy label names a semantic event type but masks several independently organized constructions. Its positives differ in marker position, path complexity, goal realization, source realization, and motion-participant structure. The UUID should therefore preserve only compatibility aggregation; linguistic evidence must remain attached to the independently bounded component records. Status recommendation: migrate to parser_heuristic after compatibility migration; preserve manner motion, preverbal direction phrases, postverbal directional complexes, goals, and source phrases as independently typed structures"
       }
     },
     {
@@ -1817,7 +1843,7 @@
     {
       "construction_uuid": "68615a56-e6c1-5199-8d62-75a58d8c1515",
       "construction_code": "AA49",
-      "canonical_name": "DirectionalMotionVP",
+      "canonical_name": "IndependentMotionPredicateVP",
       "legacy_labels": [
         "DirectionalMotionVP"
       ],
@@ -1825,22 +1851,40 @@
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/DirectionalMotionVP.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese may instantiate the structural family represented by DirectionalMotionVP; exact productivity and boundaries require pattern-specific independent evidence.",
+      "family_name": "MotionPredication",
+      "profile_name": "LexicalMotionPredicateIndependentUse",
+      "profile_description": "A lexical motion predicate such as 去, 嚟, 走, or locational-directional 落 functions as the clause's independent predicate, optionally with an overt goal. Aspect, negation, modality, particles, and clause embedding are independently represented outer structures. The profile excludes postverbal directional uses after manner or caused-motion predicates, multi-part directional complexes, and compatibility matches triggered merely by a motion word anywhere in a larger clause.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "single-verb motion encoding",
+          "source_id": "SRC-SHAN-JIN-2025-MOTION-TYPOLOGY",
+          "scope_match": "exact"
+        },
+        {
+          "term": "independent motion predicates 落, 去, and 嚟",
+          "source_id": "SRC-YIU-2016-DIRECTIONAL-ASPECT",
+          "scope_match": "exact"
+        },
+        {
+          "term": "postverbal directional use",
+          "source_id": "SRC-YIU-2016-DIRECTIONAL-ASPECT",
+          "scope_match": "contrastive"
+        }
+      ],
+      "former_names": [
+        "DirectionalMotionVP"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "runtime_broader",
+        "terminology_alignment": "neutral_descriptive_preferred",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-24. DirectionalMotionVP is too broad and conflates independent lexical motion predicates with directional complements and larger motion constructions. The source-supported independent-predicate core is nevertheless clear and widespread in the current suite, so the UUID is retained and narrowed rather than internalized. The new name exposes the decisive predicative boundary. Status recommendation: retain research_pending for independently predicative lexical motion verbs; remove postverbal directional-complement, caused-motion, multi-part directional, and mere containing-clause branches during compatibility migration"
       }
     },
     {
@@ -1961,7 +2005,7 @@
     {
       "construction_uuid": "3f35d7bf-140d-5032-99f1-73cf8cc0d10d",
       "construction_code": "AA53",
-      "canonical_name": "DurativeVP",
+      "canonical_name": "ZyuMarkedContinuativeObjectVP",
       "legacy_labels": [
         "DurativeVP"
       ],
@@ -1969,22 +2013,40 @@
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/DurativeVP.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese may instantiate the structural family represented by DurativeVP; exact productivity and boundaries require pattern-specific independent evidence.",
+      "family_name": "ContinuativeAspect",
+      "profile_name": "VerbZyuOvertObject",
+      "profile_description": "A lexical predicate is followed by continuative 住 and an overt object, as in 戴住眼鏡 and the source-linked 陪住你. The profile represents continuation or maintenance of an activity or state without treating 住 as generic progressive aspect. It excludes 緊, bare duration expressions, perfective 咗, and unsupported free extension to every verb-object combination.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "住 as continuous activity or state without change",
+          "source_id": "SRC-SIO-BOND-2025",
+          "scope_match": "exact"
+        },
+        {
+          "term": "陪住你",
+          "source_id": "SRC-MATTHEWS-YIP-2011-ASPECT-MULTIMEDIA",
+          "scope_match": "exact"
+        },
+        {
+          "term": "緊 progressive versus 住 maintained state",
+          "source_id": "SRC-KATAOKA-2018-PROGRESSIVE-GAN",
+          "scope_match": "contrastive"
+        }
+      ],
+      "former_names": [
+        "DurativeVP"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "runtime_narrower_defensible",
+        "terminology_alignment": "neutral_descriptive_preferred",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-24. DurativeVP hides the overt marker and can be misread as any temporally extended predicate. The actual runtime and strongest evidence support a much narrower V + 住 + overt-object profile with continuative or maintained-state meaning. The UUID is retained because the single executable positive fits that core directly. Status recommendation: retain research_pending under the overt V + 住 + object profile until lexical compatibility, negative boundaries, corpus review, role-neutral panel evidence, and held-out validation are complete"
       }
     },
     {
@@ -2024,7 +2086,7 @@
     {
       "construction_uuid": "a4894b15-66e9-5278-a424-6883a7cab565",
       "construction_code": "AA55",
-      "canonical_name": "ExistentialClause",
+      "canonical_name": "SubjectJauPossessiveClause",
       "legacy_labels": [
         "ExistentialClause"
       ],
@@ -2032,24 +2094,47 @@
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/ExistentialClause.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese may instantiate the structural family represented by ExistentialClause; exact productivity and boundaries require pattern-specific independent evidence.",
+      "family_name": "JauPossessionAndExistence",
+      "profile_name": "OvertSubjectJauNominalComplement",
+      "profile_description": "An overt subject is followed by lexical 有 and an overt nominal complement expressing possession or availability, as in 佢有時間 and 我有書. The profile excludes subjectless presentational or existential 有 + NP, locative existential clauses, auxiliary or modal 有 + VP, age expressions such as 有三歲, and negative 冇 profiles unless separately established.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "有 as a verb for possession with an explicit subject",
+          "source_id": "SRC-LAM-LAU-LEE-2024-SEGMENTATION",
+          "scope_match": "exact"
+        },
+        {
+          "term": "existential 有 without an overt subject",
+          "source_id": "SRC-LAM-LAU-LEE-2024-SEGMENTATION",
+          "scope_match": "contrastive"
+        },
+        {
+          "term": "presentational 有 + NP",
+          "source_id": "SRC-YIP-MATTHEWS-2000-BASIC",
+          "scope_match": "contrastive"
+        },
+        {
+          "term": "auxiliary or modal 有 + VP",
+          "source_id": "SRC-FAN-2026-JAU-VP",
+          "scope_match": "contrastive"
+        }
+      ],
+      "former_names": [
+        "ExistentialClause"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "runtime_broader",
+        "terminology_alignment": "misleading",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [
           "generic_head_requires_boundary_definition"
         ],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-24. ExistentialClause is contradicted by its own executable positives and by the checked source distinction. The dominant implemented core is explicit-subject possessive or availability 有 + nominal complement, while true subjectless presentational existentials already have a separate project identity. The UUID is therefore retained and renamed to the source-aligned possessive profile; the age example is quarantined. Status recommendation: retain research_pending for overt-subject possessive 有 + nominal complement; remove age and nonpossessive branches during compatibility migration and leave presentational existential structures in their separate identity"
       }
     },
     {

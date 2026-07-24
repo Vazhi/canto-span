@@ -15,8 +15,8 @@ policy or ontology.
 | Workflow-archived notes | 131 |
 | Retired labels | 48 |
 | Permanent UUID records | 181 |
-| Expert-adjudicated UUIDs | 39 |
-| Pending UUID adjudications | 142 |
+| Expert-adjudicated UUIDs | 44 |
+| Pending UUID adjudications | 137 |
 
 ## Linguistic-status inventory
 
@@ -40,7 +40,7 @@ The permanent registry covers all 133 current and 48 retired records. UUID and
 short code are immutable; canonical name, family, profile, claim layer, and
 learner label may be revised through accepted UUID-keyed adjudication.
 
-Eight accepted batches have adjudicated 39 records. Important consequences
+Nine accepted batches have adjudicated 44 records. Important consequences
 include:
 
 - `AB30 ZoMarkedPerfectiveObjectVP` is the nearest direct candidate;
@@ -55,6 +55,10 @@ include:
   `AA26 WanMarkedCompletionVP`, `AA34 PreverbalCoverbNPClause`,
   `AA37 PostverbalDiMannerAdjustmentVP`, `AA40 HouMarkedPropertyPredicate`, and
   `AA45 SoengVPComplementClause`;
+- Batch 09 reclassifies `AA47 MannerMotionDirectionalWrapper` as an internal
+  representation and narrows `AA46`, `AA49`, `AA53`, and `AA55` to
+  `DiMarkedNounNP`, `IndependentMotionPredicateVP`,
+  `ZyuMarkedContinuativeObjectVP`, and `SubjectJauPossessiveClause`;
 - true splits require new UUIDs. Evidence is never transferred automatically from
   an umbrella, retired record, or parser representation.
 
@@ -72,9 +76,9 @@ Workflow activity is independent of linguistic status and adjudication priority.
 | Candidate state | Records |
 |---|---:|
 | `boundary_ready` | 1 |
-| `source_supported` | 69 |
+| `source_supported` | 68 |
 | `narrowing_candidate` | 36 |
-| `excluded_nonlanguage` | 25 |
+| `excluded_nonlanguage` | 26 |
 | `lexicalized_review` | 2 |
 | `retired_evidence_rehome_candidate` | 42 |
 | `retired_research_gap` | 6 |
@@ -100,9 +104,9 @@ evidence weight.
 
 1. Keep documentation, identity metadata, status notes, runtime behavior, and
    generated readiness reports mutually consistent.
-2. Continue expert adjudication with Batch 09: `AA46 DiMarkedNP`,
-   `AA47 DirectedMannerMotionVP`, `AA49 DirectionalMotionVP`,
-   `AA53 DurativeVP`, and `AA55 ExistentialClause`.
+2. Continue expert adjudication with Batch 10: `AA58 ExistentialWhQuestion`,
+   `AA62 ExperientialVP`, `AA66 FragmentAnswer`, `AA67 FragmentQuestion`, and
+   `AA68 GoalAttainmentMotionVP`.
 3. Implement a status-path or runtime-label migration only in an explicit scoped
    change after its adjudication decision is accepted.
 4. Advance `AB30` by reviewing and classifying diverse corpus candidates before

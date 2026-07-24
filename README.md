@@ -12,14 +12,14 @@ state dimensions.
 - construction workflow: **2 active / 131 workflow-archived**
 - retired labels: **48**
 - permanent construction identities: **181**
-- expert-adjudicated identities: **39 / 181**
+- expert-adjudicated identities: **44 / 181**
 - `supported_productive`: **0**
 - `provisional`: **0**
 - `research_pending`: **79**
 - direct `boundary_ready` candidates: **1** (`AB30`)
-- direct `source_supported` candidates: **69**
+- direct `source_supported` candidates: **68**
 - current narrowing candidates: **36**
-- excluded non-language/internal records: **25**
+- excluded non-language/internal records: **26**
 
 The remaining linguistic-status folders contain 37
 `unsupported_generalization`, 2 `lexicalized_only`, and 15 `parser_heuristic`
