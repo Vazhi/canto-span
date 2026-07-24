@@ -1,0 +1,29 @@
+legacy_item_id	disposition	canonical_item_ids	live_survey_condition_refs	rationale
+RUL-V1-01	carried_forward	G06A01	G01A;G02A;G03A;G04A	Concrete resource-initial positive.
+RUL-V1-02	not_carried_forward		G01D	Original problem-as-cutting-resource item confounded construction and lexical semantics; replaced by the cleaner human-role boundary G06D01.
+RUL-V1-03	carried_forward	G06B01	G01C	Abstract-resource boundary candidate.
+RUL-V1-04	not_carried_forward			Original knife-location context and pointing-to-self response were internally incoherent.
+RUL-V1-05	carried_forward	G07A01	G02B	Modal extension.
+RUL-V1-06	decomposed	G06C01;G07C01	G02D;G03C	Original item combined a separate user with completed purpose-VP material; repaired as two independent contrasts.
+RUL-V1-07	not_carried_forward		G04B	Coordination was already near ceiling in the live pilot and is lower priority for the follow-up.
+RUL-V1-08	not_carried_forward			Predicate ellipsis is not part of the narrow AB53 profile and requires a separate fragment study.
+RUL-V1-09	not_carried_forward		G03D	General purposive 嚟 chain is a cross-construction question, not AB53.
+RUL-V1-10	carried_forward	G07D01	G04D	Purpose-question extension.
+RUL-V1-11	not_carried_forward			Modifier-scope question is not a current critical boundary.
+RUL-V1-12	not_carried_forward			Habitual-modifier scope is not a current critical boundary.
+PFV-V1-01	condition_link	G08C01	G05A	Replaced with the controlled 食/飯 paradigm.
+PFV-V1-02	corpus_only			Retained as reviewed corpus provenance rather than reused as a survey item.
+PFV-V1-03	condition_link	G09C01	G05A	Replaced with the controlled 睇/書 paradigm.
+PFV-V1-04	not_carried_forward			Objectless V–咗 is already an executable boundary and is not needed in this focused follow-up.
+PFV-V1-05	carried_forward	G08D01	G05B	V完咗O boundary retained inside a four-way controlled paradigm.
+PFV-V1-06	not_carried_forward			Motion-goal perfective belongs to a different construction profile.
+PFV-V1-07	not_carried_forward			Predicate–object anomaly is not an AB30 structural boundary.
+PFV-V1-08	not_carried_forward			Classifier-selection anomaly is not an AB30 structural boundary.
+FIL-V1-N01	renamed	F011		Canonical filler continuation.
+FIL-V1-N02	renamed	F012		Canonical filler continuation.
+FIL-V1-N03	renamed	F013		Canonical filler continuation.
+FIL-V1-N04	renamed	F014		Canonical filler continuation.
+FIL-V1-D01	renamed	F015		Canonical filler continuation.
+FIL-V1-D02	renamed	F016		Canonical filler continuation.
+FIL-V1-D03	renamed	F017		Canonical filler continuation.
+FIL-V1-D04	replaced	F018	C002	食飯唔食 may receive marked or echo readings; replaced by a clearer degraded control.

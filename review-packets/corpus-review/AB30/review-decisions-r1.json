@@ -1,0 +1,60 @@
+{
+  "schema": "canto-span-corpus-review-decisions-v1",
+  "construction": {
+    "permanentCode": "AB30",
+    "canonicalIdentity": "ZoMarkedPerfectiveObjectVP",
+    "legacyRuntimeLabel": "PostverbalZoPerfectiveVP"
+  },
+  "source_ledger": "review-packets/corpus-review/AB30/candidate-ledger.json",
+  "source_ledger_tool_version": "ab30-corpus-review/1.0.1",
+  "source_manifest_hash": "1be8e59917a2f8a12da1f02f4e4e1e7d15fd9e778a9563e5630ac7bc1b5d23a3",
+  "adjudicated_on": "2026-07-24",
+  "adjudication_authority": "project expert review",
+  "packet_status": "current_candidate_packet_complete",
+  "readiness_effect": "partial_only",
+  "readiness_note": "All five candidates in the current two-source packet are classified. Two genuine tokens establish natural attestation, but two small user-supplied sources do not satisfy the broader diverse-corpus gate or establish productivity.",
+  "counts": {
+    "unreviewed": 0,
+    "genuine": 2,
+    "false_positive": 3,
+    "ambiguous": 0,
+    "unusable": 0
+  },
+  "decisions": [
+    {
+      "candidate_id": "ab30-ad133e2eafed9b2bf5df",
+      "matched_surface_span": "你饮咗酒你千祈唔好开车啊",
+      "classification": "genuine",
+      "reviewerNote": "The conditional antecedent contains the narrow AB30 profile 飲 + 咗 + overt object 酒. The larger conditional structure does not remove the local V–咗–object constituent.",
+      "exclusionReason": ""
+    },
+    {
+      "candidate_id": "ab30-d8d2be10fb2c873a5a81",
+      "matched_surface_span": "我攞咗兩份申請表啦",
+      "classification": "genuine",
+      "reviewerNote": "Clear overt AB30 token: 攞 + 咗 + quantified classifier NP 兩份申請表. The final particle 啦 is outside the narrow VP constituent.",
+      "exclusionReason": ""
+    },
+    {
+      "candidate_id": "ab30-e4f5d5a33b1342293387",
+      "matched_surface_span": "我同佢講咗啦",
+      "classification": "false_positive",
+      "reviewerNote": "講 is followed by 咗 and a final particle, with the reported content omitted and supplied by the following clause. 同佢 is preverbal and is not an overt post-咗 object.",
+      "exclusionReason": "Objectless V–咗 clause with discourse-recoverable content; AB30 requires an overt licensed NP after 咗."
+    },
+    {
+      "candidate_id": "ab30-eb85cb77226738b81d9c",
+      "matched_surface_span": "咁大概开咗5个钟头车到啦",
+      "classification": "false_positive",
+      "reviewerNote": "The post-咗 material is the duration expression 五個鐘頭. 車 belongs to the driving-duration expression rather than functioning as the overt object NP required by AB30.",
+      "exclusionReason": "Duration constituent follows V–咗; the token is outside the narrow simple V–咗–object profile."
+    },
+    {
+      "candidate_id": "ab30-f5bf6e0c83743a9b7eaa",
+      "matched_surface_span": "收入超咗就唔得",
+      "classification": "false_positive",
+      "reviewerNote": "超咗 has an omitted comparison threshold; 就唔得 begins the consequence clause and is not an overt object NP.",
+      "exclusionReason": "Objectless perfective or change-of-state predicate inside a conditional-consequence sequence; AB30 requires an overt licensed NP after 咗."
+    }
+  ]
+}

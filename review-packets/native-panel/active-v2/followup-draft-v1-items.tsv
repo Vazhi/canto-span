@@ -1,0 +1,25 @@
+canonical_item_id	item_role	primary_target_code	primary_target_name	relation_to_target	related_construction_codes	live_survey_condition_refs	legacy_item_aliases	context	sentence	interpretation_prompt	interpretation_options	calibration_class
+G06A01	focal	AB53	ResourceInitialJungLaiFunctionClause	positive		G01A;G02A;G03A;G04A			呢把刀用嚟切肉。			
+G06B01	focal	AB53	ResourceInitialJungLaiFunctionClause	boundary_candidate		G01C			呢個方法用嚟解決問題。	句首嘅「呢個方法」可唔可以自然噉當成用嚟完成動作嘅資源？	可以|唔可以|只可以喺特定語境|唔肯定	
+G06C01	focal	AB53	ResourceInitialJungLaiFunctionClause	cross_construction_contrast	AA73	G02D			呢把刀我用嚟切肉。	句中嘅「我」係咪自然噉表達使用者，而「呢把刀」仍然係資源？	係|唔係|兩種分析都可能|唔肯定	
+G06D01	focal	AB53	ResourceInitialJungLaiFunctionClause	negative_boundary		G01D			阿明用嚟切肉。	如果你覺得句子有問題，係咪因為句首嘅人名唔似被使用嘅資源？	係|唔係|要更多語境|唔肯定	
+G07A01	focal	AB53	ResourceInitialJungLaiFunctionClause	cross_construction_contrast		G02B			呢把刀可以用嚟切肉。			
+G07B01	focal	AB53	ResourceInitialJungLaiFunctionClause	excluded_actual_use_candidate	AA73	G03B			呢把刀用咗嚟切肉。	呢句主要講件物件通常嘅用途，定係一次實際發生咗嘅使用？	通常／預定用途|一次實際使用|兩種都可以|唔肯定	
+G07C01	focal	AB53	ResourceInitialJungLaiFunctionClause	purpose_vp_aspect_boundary	AB30	G03C			呢把刀用嚟切咗啲肉。	「咗」最自然係屬於後面切肉件事，定係令成句變成一次實際用途？	後面切肉件事|成句實際用途|兩種都可能|唔肯定	
+G07D01	focal	AB53	ResourceInitialJungLaiFunctionClause	question_extension		G04D			呢把刀用嚟做咩㗎？			
+G08A01	focal	AB30	ZoMarkedPerfectiveObjectVP	cross_construction_control	AA26				我食完飯。			
+G08B01	focal	AB30	ZoMarkedPerfectiveObjectVP	cross_construction_control	AA26				我食完飯喇。			
+G08C01	focal	AB30	ZoMarkedPerfectiveObjectVP	positive		G05A			我食咗飯。	單靠呢句，可唔可以判斷飯食晒？	可以|唔可以，只知食飯件事發生咗|兩種理解都得|唔肯定	
+G08D01	focal	AB30	ZoMarkedPerfectiveObjectVP	excluded_inner_aspect_boundary	AA26;AB21	G05B			我食完咗飯。	如果你覺得唔自然，你最自然會改成邊一類？	食完飯|食完飯喇|食咗飯|其他／唔肯定	
+G09A01	focal	AB30	ZoMarkedPerfectiveObjectVP	cross_construction_control	AA26				我睇完嗰本書。			
+G09B01	focal	AB30	ZoMarkedPerfectiveObjectVP	cross_construction_control	AA26				我睇完嗰本書喇。			
+G09C01	focal	AB30	ZoMarkedPerfectiveObjectVP	positive		G05A01			我睇咗嗰本書。	單靠呢句，可唔可以判斷本書睇晒？	可以|唔可以，只知睇書件事發生咗|兩種理解都得|唔肯定	
+G09D01	focal	AB30	ZoMarkedPerfectiveObjectVP	excluded_inner_aspect_boundary	AA26;AB21	G05B01			我睇完咗嗰本書。	如果你覺得唔自然，你最自然會改成邊一類？	睇完嗰本書|睇完嗰本書喇|睇咗嗰本書|其他／唔肯定	
+F011	filler								佢好高。			natural_candidate
+F012	filler								我聽日返工。			natural_candidate
+F013	filler								呢本書係我嘅。			natural_candidate
+F014	filler								你食唔食飯？			natural_candidate
+F015	filler								佢高好。			degraded_candidate
+F016	filler								我聽日咗返工。			degraded_candidate
+F017	filler								呢本書我嘅係。			degraded_candidate
+F018	filler					C002			我今日超市去買餸。			degraded_candidate
