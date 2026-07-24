@@ -25,9 +25,12 @@ const STATE_RANK = {
   boundary_ready: 6,
   behavior_aligned: 5,
   source_supported: 4,
+  narrowing_candidate: 4,
   research_candidate: 3,
+  lexicalized_review: 2,
   identity_only: 2,
   retired_evidence_rehome_candidate: 2,
+  retired_research_gap: 1,
   retired_review: 1,
   excluded_nonlanguage: 0,
 };
@@ -70,7 +73,7 @@ function parseTsv(file) {
 }
 
 function splitSourceIds(value) {
-  return String(value || "").split(/[;,]/).map((item) => item.trim()).filter(Boolean);
+  return String(value || "").split(/[;,]/).map((item) => item.trim()).filter((item) => item && item !== "NONE");
 }
 
 function gate(status, evidence, detail = "") {
@@ -228,11 +231,17 @@ function nextActionFor(gateName, lifecycleState, linguisticStatus) {
 function candidateState(record) {
   const { lifecycle_state: lifecycle, claim_layer: layer, linguistic_status: status, gates } = record;
   if (lifecycle === "retired") {
-    return record.preserved_source_ids.length > 0 || record.future_research_preserved_as
-      ? "retired_evidence_rehome_candidate" : "retired_review";
+    if (record.preserved_source_ids.length > 0) return "retired_evidence_rehome_candidate";
+    if (record.future_research_preserved_as) return "retired_research_gap";
+    return "retired_review";
   }
   if (layer !== "language_construction" || status === "parser_heuristic") return "excluded_nonlanguage";
+  if (status === "lexicalized_only") return "lexicalized_review";
   if (gates.language_claim_defined.status !== "pass") return "identity_only";
+  if (status === "unsupported_generalization") {
+    return ["pass", "partial"].includes(gates.independent_source_support.status)
+      ? "narrowing_candidate" : "research_candidate";
+  }
   let state = "research_candidate";
   if (gates.independent_source_support.status === "pass") state = "source_supported";
   if (state === "source_supported" && gates.source_scope_matches_claim.status === "pass" && gates.runtime_research_alignment.status === "pass") state = "behavior_aligned";
@@ -390,30 +399,41 @@ function markdownTable(rows, headers) {
 }
 
 function buildCandidateReport(readiness) {
-  const candidates = readiness.records.filter((record) => record.lifecycle_state === "current" && record.claim_layer === "language_construction").slice(0, 40);
+  const direct = readiness.records.filter((record) => record.lifecycle_state === "current" &&
+    record.claim_layer === "language_construction" &&
+    !["unsupported_generalization", "lexicalized_only"].includes(record.linguistic_status)).slice(0, 40);
+  const narrowing = readiness.records.filter((record) => record.candidate_state === "narrowing_candidate").slice(0, 40);
+  const headers = [
+    { label: "Code", value: (r) => `\`${r.construction_code}\`` },
+    { label: "Canonical name", value: (r) => `\`${r.canonical_name}\`` },
+    { label: "State", value: (r) => `\`${r.candidate_state}\`` },
+    { label: "Score", value: (r) => r.readiness_score },
+    { label: "Nearest missing gate", value: (r) => r.nearest_missing_gate ? `\`${r.nearest_missing_gate}\`` : "—" },
+    { label: "Next action", value: (r) => r.next_best_action },
+  ];
   return `# Supported-productive candidate discovery\n\nThis is a prioritization report, not a promotion decision. A score cannot override any hard gate.\n\n` +
     `**Records reviewed:** ${readiness.record_count}  \n**Promotion-ready now:** ${readiness.promotion_eligible_now_count}\n\n` +
-    markdownTable(candidates, [
-      { label: "Code", value: (r) => `\`${r.construction_code}\`` },
-      { label: "Canonical name", value: (r) => `\`${r.canonical_name}\`` },
-      { label: "State", value: (r) => `\`${r.candidate_state}\`` },
-      { label: "Score", value: (r) => r.readiness_score },
-      { label: "Nearest missing gate", value: (r) => r.nearest_missing_gate ? `\`${r.nearest_missing_gate}\`` : "—" },
-      { label: "Next action", value: (r) => r.next_best_action },
-    ]) + `\n\nScores rank research efficiency only. Promotion requires every existing supported-productivity requirement plus reviewed corpus evidence, held-out validation, and completed ontology review.\n`;
+    `## Direct candidates\n\n` + markdownTable(direct, headers) +
+    `\n\n## Narrowing candidates\n\nThese broad current labels are not direct promotion candidates. Their source-backed overlap may justify one or more new narrow successor UUIDs after exact scope review.\n\n` +
+    markdownTable(narrowing, headers) +
+    `\n\nScores rank research efficiency only. Promotion requires every existing supported-productivity requirement plus reviewed corpus evidence, held-out validation, and completed ontology review.\n`;
 }
 
 function buildOrphanReport(readiness) {
-  const retired = readiness.records.filter((record) => record.lifecycle_state === "retired" && (record.preserved_source_ids.length > 0 || record.future_research_preserved_as));
+  const retiredEvidence = readiness.records.filter((record) => record.candidate_state === "retired_evidence_rehome_candidate");
+  const retiredResearch = readiness.records.filter((record) => record.candidate_state === "retired_research_gap");
   const internalWithSources = readiness.records.filter((record) => record.lifecycle_state === "current" && record.claim_layer !== "language_construction" && record.source_ids.length > 0);
-  return `# Orphaned construction evidence\n\nEvidence is "orphaned" here only in the governance sense: it is attached to a retired or non-language record and may need a narrow language-construction home. It is not automatically transferable.\n\n## Retired records with preserved research or sources\n\n` +
-    markdownTable(retired, [
-      { label: "Code", value: (r) => `\`${r.construction_code}\`` },
-      { label: "Retired label", value: (r) => `\`${r.canonical_name}\`` },
-      { label: "Family", value: (r) => r.family_name || "unassigned" },
-      { label: "Preserved sources", value: (r) => r.preserved_source_ids.join(", ") || "—" },
-      { label: "Preserved research direction", value: (r) => r.future_research_preserved_as || "—" },
-    ]) + `\n\n## Internal/non-language records carrying source links\n\n` +
+  const retiredHeaders = [
+    { label: "Code", value: (r) => `\`${r.construction_code}\`` },
+    { label: "Retired label", value: (r) => `\`${r.canonical_name}\`` },
+    { label: "Family", value: (r) => r.family_name || "unassigned" },
+    { label: "Preserved sources", value: (r) => r.preserved_source_ids.join(", ") || "—" },
+    { label: "Preserved research direction", value: (r) => r.future_research_preserved_as || "—" },
+  ];
+  return `# Orphaned construction evidence\n\nEvidence is "orphaned" here only in the governance sense: it is attached to a retired or non-language record and may need a narrow language-construction home. It is not automatically transferable.\n\n` +
+    `## Retired records with preserved source links\n\n` + markdownTable(retiredEvidence, retiredHeaders) +
+    `\n\n## Retired research directions without preserved source links\n\n` + markdownTable(retiredResearch, retiredHeaders) +
+    `\n\n## Internal/non-language records carrying source links\n\n` +
     markdownTable(internalWithSources, [
       { label: "Code", value: (r) => `\`${r.construction_code}\`` },
       { label: "Record", value: (r) => `\`${r.canonical_name}\`` },
