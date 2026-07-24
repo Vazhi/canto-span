@@ -1,0 +1,132 @@
+{
+  "schema": "canto-span-survey-derived-source-ledger-v1",
+  "research_ids": [
+    "SV-RQ-009",
+    "SV-RQ-010",
+    "SV-RQ-011",
+    "SV-RQ-012"
+  ],
+  "created": "2026-07-24",
+  "scope": "research_only",
+  "implementation_authority": "none",
+  "sources": [
+    {
+      "source_id": "SVSRC-KWAN-2010-LOCATIVE-PP",
+      "citation": "Kwan, Stella Wing-Man. 2010. The placement of locative prepositional phrases in Cantonese: Processing and iconicity.",
+      "url": "https://www.researchgate.net/publication/291908489",
+      "evidence_grade": "DIRECT_SCHOLARLY_CORE",
+      "language_scope": "Cantonese",
+      "supports": [
+        "preverbal event location",
+        "postverbal result location",
+        "V NP PP template",
+        "擺咗件衫喺衣櫃"
+      ],
+      "does_not_support": [
+        "all directional structures",
+        "unrestricted postobject PP licensing"
+      ]
+    },
+    {
+      "source_id": "SVSRC-KATAOKA-2018-LOCATIVE",
+      "citation": "Kataoka, Shin. 2018. Preverbal and postverbal locative constructions in early Cantonese.",
+      "url": "https://repository.eduhk.hk/en/publications/preverbal-and-postverbal-locative-constructions-in-early-cantones/",
+      "evidence_grade": "DIRECT_SCHOLARLY_CORE",
+      "language_scope": "Early and modern Cantonese comparison",
+      "supports": [
+        "verb-class restrictions for postverbal result locations"
+      ],
+      "does_not_support": [
+        "modern productivity for every lexical verb"
+      ]
+    },
+    {
+      "source_id": "SVSRC-YIU-DIRECTIONALS",
+      "citation": "Yiu, Carine Yuk-man. Directional Verbs in Cantonese: A Typological and Historical Study.",
+      "url": "https://paperzz.com/doc/9306079/directional-verbs-in-cantonese--a-typological-and-histori...",
+      "evidence_grade": "DIRECT_SCHOLARLY_CORE",
+      "language_scope": "Cantonese",
+      "supports": [
+        "directional complements",
+        "path/location objects",
+        "aspect-order observations"
+      ],
+      "does_not_support": [
+        "locative PP identity",
+        "all survey extension types"
+      ]
+    },
+    {
+      "source_id": "SVSRC-FAN-CHAN-2022-ZO",
+      "citation": "Fan, Xiaolei, and Kin Wing Kevin Chan. 2022. Grammatical properties of zo 咗 in Hong Kong Cantonese.",
+      "url": "https://doi.org/10.1075/lali.00110.fan",
+      "evidence_grade": "DIRECT_SCHOLARLY_CORE",
+      "language_scope": "Hong Kong Cantonese",
+      "supports": [
+        "verbal perfective zo2",
+        "complex-VP placement"
+      ],
+      "does_not_support": [
+        "final laa semantics by itself"
+      ]
+    },
+    {
+      "source_id": "SVSRC-YIU-2001-LAA",
+      "citation": "Yiu, Carine Yuk-man. 2001. Cantonese final particles LEI, ZYU and LAA: an aspectual study.",
+      "url": "https://researchportal.hkust.edu.hk/en/studentTheses/cantonese-final-particles-lei-zyu-and-laa-an-aspectual-study/",
+      "evidence_grade": "DIRECT_SCHOLARLY_CORE",
+      "language_scope": "Hong Kong Cantonese",
+      "supports": [
+        "laa change-of-state and inchoative contribution",
+        "distinction from verbal aspect"
+      ],
+      "does_not_support": [
+        "object omission analysis"
+      ]
+    },
+    {
+      "source_id": "SVSRC-YU-HU-2025-GAA3",
+      "citation": "Yu, Zhiyin, and Xiaoshi Hu. 2025. The Syntax of Sentence-final Particle Gaa3 in Cantonese.",
+      "url": "https://doi.org/10.29499/CrCL.202507_104(2).0022",
+      "evidence_grade": "DIRECT_SCHOLARLY_CORE",
+      "language_scope": "Cantonese",
+      "supports": [
+        "interrogative, declarative, and exclamative gaa3 constructions",
+        "contextual differentiation"
+      ],
+      "does_not_support": [
+        "specific 用嚟做咩 item interpretation"
+      ]
+    },
+    {
+      "source_id": "SVSRC-KWOK-2007-SFP",
+      "citation": "Kwok, Bit-Chee. 2007. The dissection and structural mapping of Cantonese sentence final particles.",
+      "url": "https://doi.org/10.1016/j.lingua.2006.10.003",
+      "evidence_grade": "DIRECT_SCHOLARLY_CORE",
+      "language_scope": "Cantonese",
+      "supports": [
+        "semantic contrasts in gaa/ge particle family",
+        "question/reminder distinctions"
+      ],
+      "does_not_support": [
+        "use-function construction structure"
+      ]
+    },
+    {
+      "source_id": "SVSRC-MATTHEWS-YIP-2011-WEB",
+      "citation": "Matthews, Stephen, and Virginia Yip. 2011. Cantonese: A Comprehensive Grammar, 2nd ed., supporting website.",
+      "url": "https://www.cuhk.edu.hk/lin/cbrc/CantoneseGrammar/home.htm",
+      "evidence_grade": "REFERENCE_GRAMMAR_CORE",
+      "language_scope": "Hong Kong Cantonese",
+      "supports": [
+        "aspect",
+        "serial verbs",
+        "sentence-final particles",
+        "conjunction"
+      ],
+      "does_not_support": [
+        "special 用嚟 coordination identity"
+      ]
+    }
+  ]
+}
