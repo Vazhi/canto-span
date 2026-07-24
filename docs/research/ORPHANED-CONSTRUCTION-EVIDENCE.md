@@ -64,5 +64,6 @@ Evidence is "orphaned" here only in the governance sense: it is attached to a re
 
 | Code | Record | Claim layer | Source IDs | Required review |
 |---|---|---|---|---|
+| `AA39` | `LexicalStativeDegreeWrapper` | `parser_representation` | SRC-LAM-LAU-LEE-2024-SEGMENTATION, SRC-CUHK-CANTONESE-EXPRESS-DAILY05, SRC-WORDSHK-HOUSIK | separate implementation provenance from any language claim |
 | `AB23` | `PoliteRequestWrapper` | `parser_representation` | SRC-CHOW-2007-CANTONESE-EVERYONE, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | separate implementation provenance from any language claim |
 | `AB74` | `TopicComment` | `parser_representation` | SRC-FUNG-2007-TOPIC-FOCUS | separate implementation provenance from any language claim |

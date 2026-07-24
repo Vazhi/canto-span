@@ -10,11 +10,10 @@ This is a prioritization report, not a promotion decision. A score cannot overri
 | Code | Canonical name | State | Score | Nearest missing gate | Next action |
 |---|---|---|---|---|---|
 | `AB30` | `ZoMarkedPerfectiveObjectVP` | `boundary_ready` | 80 | `reviewed_corpus_evidence` | review and classify diverse corpus candidates, including false positives and ambiguous hits |
-| `AB15` | `OvertHeadDemonstrativeClassifierNP` | `source_supported` | 65 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
-| `AA84` | `MannerAdverbialVP` | `source_supported` | 63 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
-| `AB28` | `PostThemeParticipantRelation` | `source_supported` | 60 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
-| `AA39` | `DegreeModifiedLexicalStative` | `source_supported` | 58 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
-| `AA11` | `ChangeIntoPredicate` | `source_supported` | 55 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
+| `AB15` | `DemonstrativeClassifierNounNP` | `source_supported` | 70 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
+| `AA84` | `GamMarkedReduplicatedMannerVP` | `source_supported` | 65 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
+| `AB28` | `BeiMarkedPostThemeParticipantConstruction` | `source_supported` | 65 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
+| `AA11` | `BinSingDimWhComplementVP` | `source_supported` | 60 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
 | `AA27` | `CompoundDirectionalMotionVP` | `source_supported` | 55 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
 | `AA38` | `DegreeMannerModifiedVP` | `source_supported` | 55 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
 | `AA52` | `DitransitiveSpeechVP` | `source_supported` | 55 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
@@ -49,6 +48,7 @@ This is a prioritization report, not a promotion decision. A score cannot overri
 | `AA47` | `DirectedMannerMotionVP` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA49` | `DirectionalMotionVP` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA53` | `DurativeVP` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
+| `AA55` | `ExistentialClause` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 
 ## Narrowing candidates
 

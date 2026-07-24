@@ -2,7 +2,7 @@
   "schema": "canto-span-full-repo-label-sweep-v1",
   "identity_registry_schema": "canto-span-construction-identity-registry-v1",
   "record_count": 181,
-  "pending_review_count": 177,
+  "pending_review_count": 172,
   "automatic_flag_counts": {
     "generic_head_requires_boundary_definition": 72,
     "internal_representation_name_review": 20,
@@ -180,15 +180,15 @@
     {
       "construction_uuid": "0a188c89-30cd-53e9-8401-37a805eaf35b",
       "construction_code": "AA11",
-      "canonical_name": "ChangeIntoPredicate",
+      "canonical_name": "BinSingDimWhComplementVP",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/ChangeIntoPredicate.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "runtime_narrower_defensible",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": [
         "generic_head_requires_boundary_definition",
         "possible_bundled_or_cross_layer_name"
@@ -642,15 +642,15 @@
     {
       "construction_uuid": "88904fe5-a1f4-55bf-bf0a-a4983d77eef2",
       "construction_code": "AA39",
-      "canonical_name": "DegreeModifiedLexicalStative",
+      "canonical_name": "LexicalStativeDegreeWrapper",
       "lifecycle_state": "current",
-      "claim_layer": "language_construction",
+      "claim_layer": "parser_representation",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/DegreeModifiedLexicalStative.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "overlapping",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "internalize_and_decompose",
       "automatic_risk_flags": []
     },
     {
@@ -1350,15 +1350,15 @@
     {
       "construction_uuid": "28bbdab0-a637-5842-b93a-a129c8a55d7b",
       "construction_code": "AA84",
-      "canonical_name": "MannerAdverbialVP",
+      "canonical_name": "GamMarkedReduplicatedMannerVP",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/MannerAdverbialVP.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "runtime_broader",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": []
     },
     {
@@ -1835,15 +1835,15 @@
     {
       "construction_uuid": "4f6df953-62d1-5036-80b3-40bc8f02937e",
       "construction_code": "AB15",
-      "canonical_name": "OvertHeadDemonstrativeClassifierNP",
+      "canonical_name": "DemonstrativeClassifierNounNP",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/OvertHeadDemonstrativeClassifierNP.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "runtime_narrower_defensible",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": []
     },
     {
@@ -2048,15 +2048,15 @@
     {
       "construction_uuid": "400e946e-2e6b-5434-9558-8116edf3c3f8",
       "construction_code": "AB28",
-      "canonical_name": "PostThemeParticipantRelation",
+      "canonical_name": "BeiMarkedPostThemeParticipantConstruction",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/PostThemeParticipantRelation.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "runtime_narrower_defensible",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": [
         "generic_head_requires_boundary_definition"
       ]
