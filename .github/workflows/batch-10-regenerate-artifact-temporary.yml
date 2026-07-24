@@ -1,0 +1,40 @@
+name: Batch 10 regeneration artifact (temporary)
+
+on:
+  push:
+    branches:
+      - agent/adjudication-batch-10
+
+permissions:
+  contents: read
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Apply adjudication and regenerate deterministic outputs
+        run: |
+          npm run adjudication:apply
+          npm run verify:adjudications
+          npm run verify:identities
+          npm run verify:discovery
+          git diff --check
+      - name: Package generated changes
+        run: |
+          git diff --binary > batch-10-generated.patch
+          mkdir -p batch-10-generated
+          while IFS= read -r file; do
+            mkdir -p "batch-10-generated/$(dirname "$file")"
+            cp "$file" "batch-10-generated/$file"
+          done < <(git diff --name-only)
+          cp batch-10-generated.patch batch-10-generated/
+      - uses: actions/upload-artifact@v6
+        with:
+          name: batch-10-generated
+          path: batch-10-generated
+          if-no-files-found: error
