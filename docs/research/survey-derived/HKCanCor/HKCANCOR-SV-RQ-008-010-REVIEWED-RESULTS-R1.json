@@ -1,0 +1,213 @@
+{
+  "schema": "canto-span-hkcancor-svrq-008-010-reviewed-results-v1",
+  "status": "research_only",
+  "corpus": {
+    "name": "HKCanCor",
+    "files": 58,
+    "utterances": 16162,
+    "words": 153656,
+    "pycantonese_version": "5.0.0"
+  },
+  "evidence_boundary": "Occurrence and structural candidate counts do not establish unrestricted productivity, acceptability, regional scope, parser identity, or promotion readiness.",
+  "SV-RQ-008": {
+    "raw_candidates": 0,
+    "result": "not_attested_in_this_corpus_search"
+  },
+  "SV-RQ-009": {
+    "raw_candidates": 110,
+    "triage_counts": {
+      "confirmed_target_attestation": 7,
+      "plausible_pause_separated_target": 1,
+      "related_non_target_profile": 16,
+      "false_positive": 86
+    },
+    "retained_target_records": [
+      {
+        "candidate_id": "HKC-SV-RQ-009-7b5ddb49fab8c9f7",
+        "profile": "ZO_OBJECT_POSTVERBAL_HAI_LOCATIVE",
+        "subtype": "zo_then_material_then_hai2",
+        "file_name": "FC-018_v.cha",
+        "utterance_index_in_file": 217,
+        "participant": "XXM",
+        "matched_segmented": "跌 咗 條 鎖匙 喺 地下 度 , 俾",
+        "triage_classification": "confirmed_target_attestation"
+      },
+      {
+        "candidate_id": "HKC-SV-RQ-009-f9007887cbc7da7d",
+        "profile": "ZO_OBJECT_POSTVERBAL_DIRECTIONAL",
+        "subtype": "directional_去",
+        "file_name": "FC-028_v2.cha",
+        "utterance_index_in_file": 276,
+        "participant": "XXA",
+        "matched_segmented": "send 咗 好多 份 信 去 嚹",
+        "triage_classification": "confirmed_target_attestation"
+      },
+      {
+        "candidate_id": "HKC-SV-RQ-009-2da104546a892f99",
+        "profile": "ZO_OBJECT_POSTVERBAL_DIRECTIONAL",
+        "subtype": "directional_去",
+        "file_name": "FC-028_v2.cha",
+        "utterance_index_in_file": 277,
+        "participant": "XXA",
+        "matched_segmented": "send 咗 成 一百 封 信 去 都 有 啊 ,",
+        "triage_classification": "confirmed_target_attestation"
+      },
+      {
+        "candidate_id": "HKC-SV-RQ-009-2ee8d7749abc572d",
+        "profile": "ZO_OBJECT_POSTVERBAL_DIRECTIONAL",
+        "subtype": "directional_去",
+        "file_name": "FC-035_v2.cha",
+        "utterance_index_in_file": 140,
+        "participant": "XXX",
+        "matched_segmented": "帶 咗 太 多 無謂 嘅 餅乾 去 , 同埋 太 多",
+        "triage_classification": "confirmed_target_attestation"
+      },
+      {
+        "candidate_id": "HKC-SV-RQ-009-9bf34b32da32afda",
+        "profile": "ZO_OBJECT_POSTVERBAL_DIRECTIONAL",
+        "subtype": "directional_入",
+        "file_name": "FC-045_v2.cha",
+        "utterance_index_in_file": 189,
+        "participant": "XXM",
+        "matched_segmented": "吸 咗 好多 琉磺 入 肚",
+        "triage_classification": "confirmed_target_attestation"
+      },
+      {
+        "candidate_id": "HKC-SV-RQ-009-c63cb5fd76ab8c1b",
+        "profile": "ZO_OBJECT_POSTVERBAL_DIRECTIONAL",
+        "subtype": "directional_去",
+        "file_name": "FC-048_v2.cha",
+        "utterance_index_in_file": 288,
+        "participant": "XXB",
+        "matched_segmented": "帶 咗 三 部 機 去 啊",
+        "triage_classification": "confirmed_target_attestation"
+      },
+      {
+        "candidate_id": "HKC-SV-RQ-009-e3e90fa80ac2a90e",
+        "profile": "ZO_OBJECT_POSTVERBAL_HAI_LOCATIVE",
+        "subtype": "zo_then_material_then_hai2",
+        "file_name": "FC-048_v2.cha",
+        "utterance_index_in_file": 317,
+        "participant": "XXB",
+        "matched_segmented": "接 咗 A B C 三 個 字 喺 裏邊",
+        "triage_classification": "confirmed_target_attestation"
+      },
+      {
+        "candidate_id": "HKC-SV-RQ-009-d99a27b273afe080",
+        "profile": "ZO_OBJECT_POSTVERBAL_HAI_LOCATIVE",
+        "subtype": "zo_then_material_then_hai2",
+        "file_name": "FC-101_v2.cha",
+        "utterance_index_in_file": 130,
+        "participant": "XXB",
+        "matched_segmented": "買 咗 個 辛辣麵 啊 , 喺 背囊 啊",
+        "triage_classification": "plausible_pause_separated_target"
+      }
+    ],
+    "related_findings": [
+      "擺咗喺度…",
+      "柄咗喺個櫃底…",
+      "接咗你呢一個job嚟做",
+      "賺咗啲錢嚟…",
+      "放咗工嚟做…",
+      "叫咗佢出門口…"
+    ]
+  },
+  "SV-RQ-010": {
+    "raw_candidates": 213,
+    "genuine_laa_family_before_deduplication": 176,
+    "unique_closest_zo_endpoints": 165,
+    "triage_counts": {
+      "tight_surface_candidate": 102,
+      "complex_same_clause_candidate": 35,
+      "punctuation_separated_candidate": 28,
+      "duplicate_earlier_zo_anchor": 11,
+      "wrong_particle_or_lexical_laa_match": 37
+    },
+    "tight_candidate_nominal_material": {
+      "with_nominal_looking_material": 52,
+      "without_nominal_looking_material": 50
+    },
+    "representative_records": [
+      {
+        "candidate_id": "HKC-SV-RQ-010-bdc7b974eb8ec00d",
+        "file_name": "FC-005b_v2.cha",
+        "utterance_index_in_file": 156,
+        "participant": "XXB",
+        "matched_segmented": "賣 咗 佢 嘞",
+        "particle_word": "嘞",
+        "particle_jyutping": "laak3",
+        "triage_classification": "tight_surface_candidate"
+      },
+      {
+        "candidate_id": "HKC-SV-RQ-010-5d23cf4a34d4a5a4",
+        "file_name": "FC-018_v.cha",
+        "utterance_index_in_file": 176,
+        "participant": "XXM",
+        "matched_segmented": "食 咗 好多 包 嚹",
+        "particle_word": "嚹",
+        "particle_jyutping": "laa3",
+        "triage_classification": "tight_surface_candidate"
+      },
+      {
+        "candidate_id": "HKC-SV-RQ-010-90e4a5fe1b0f57f5",
+        "file_name": "FC-022a_v.cha",
+        "utterance_index_in_file": 40,
+        "participant": "XXA",
+        "matched_segmented": "買 咗 九五年 新 版 喇",
+        "particle_word": "喇",
+        "particle_jyutping": "laa1",
+        "triage_classification": "tight_surface_candidate"
+      },
+      {
+        "candidate_id": "HKC-SV-RQ-010-e1a5816ad5991a86",
+        "file_name": "FC-026_v2.cha",
+        "utterance_index_in_file": 174,
+        "participant": "XXJ",
+        "matched_segmented": "去 咗 東京 喇",
+        "particle_word": "喇",
+        "particle_jyutping": "laa1",
+        "triage_classification": "tight_surface_candidate"
+      },
+      {
+        "candidate_id": "HKC-SV-RQ-010-f4d3835f2379dbb1",
+        "file_name": "FC-053_v2.cha",
+        "utterance_index_in_file": 92,
+        "participant": "XXA",
+        "matched_segmented": "整 咗 一 張 大 嘅 人名 表 喇",
+        "particle_word": "喇",
+        "particle_jyutping": "laa1",
+        "triage_classification": "tight_surface_candidate"
+      },
+      {
+        "candidate_id": "HKC-SV-RQ-010-de2618b55c5961a0",
+        "file_name": "FC-109a_v2.cha",
+        "utterance_index_in_file": 186,
+        "participant": "XXA",
+        "matched_segmented": "減 咗 價 喇",
+        "particle_word": "喇",
+        "particle_jyutping": "laa1",
+        "triage_classification": "tight_surface_candidate"
+      },
+      {
+        "candidate_id": "HKC-SV-RQ-010-7ccfa24d45db3cc9",
+        "file_name": "FC-R005_v2.cha",
+        "utterance_index_in_file": 47,
+        "participant": "XXA",
+        "matched_segmented": "睇 咗 醫生 嚹",
+        "particle_word": "嚹",
+        "particle_jyutping": "laa3",
+        "triage_classification": "tight_surface_candidate"
+      },
+      {
+        "candidate_id": "HKC-SV-RQ-010-0202da0184d2ee00",
+        "file_name": "FC-028_v2.cha",
+        "utterance_index_in_file": 276,
+        "participant": "XXA",
+        "matched_segmented": "send 咗 好多 份 信 去 嚹",
+        "particle_word": "嚹",
+        "particle_jyutping": "laa3",
+        "triage_classification": "complex_same_clause_candidate"
+      }
+    ]
+  }
+}

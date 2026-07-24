@@ -1,0 +1,138 @@
+{
+  "schema": "canto-span-survey-derived-source-ledger-v1",
+  "research_ids": [
+    "SV-RQ-001",
+    "SV-RQ-002",
+    "SV-RQ-003",
+    "SV-RQ-004",
+    "SV-RQ-005",
+    "SV-RQ-006",
+    "SV-RQ-007"
+  ],
+  "created": "2026-07-24",
+  "scope": "research_only",
+  "implementation_authority": "none",
+  "sources": [
+    {
+      "source_id": "SVSRC-MATTHEWS-YIP-2011-WEB",
+      "citation": "Matthews, Stephen, and Virginia Yip. 2011. Cantonese: A Comprehensive Grammar, 2nd ed., supporting website.",
+      "url": "https://www.cuhk.edu.hk/lin/cbrc/CantoneseGrammar/home.htm",
+      "evidence_grade": "REFERENCE_GRAMMAR_CORE",
+      "language_scope": "Hong Kong Cantonese",
+      "supports": [
+        "topic prominence",
+        "hanging topics and double subjects",
+        "omitted pronouns",
+        "serial verbs",
+        "copular hai6",
+        "aspect"
+      ],
+      "does_not_support": [
+        "exact constituency of every 用嚟 pattern",
+        "unrestricted productivity",
+        "parser identity"
+      ]
+    },
+    {
+      "source_id": "SVSRC-SZE-2011-PURPOSIVE-LAI",
+      "citation": "Sze, Wing Man. 2011. Asymmetry in Grammaticalization – The Case of Directional Particles in Cantonese.",
+      "url": "https://scholars.hkbu.edu.hk/en/publications/asymmetry-in-grammaticalization-the-case-of-directional-particles/",
+      "evidence_grade": "DIRECT_SCHOLARLY_CORE",
+      "language_scope": "Cantonese",
+      "supports": [
+        "purposive grammaticalization of lai4 and heoi3",
+        "lai4 less restricted than heoi3"
+      ],
+      "does_not_support": [
+        "exact 用嚟 argument structure",
+        "perfective placement in survey strings"
+      ]
+    },
+    {
+      "source_id": "SVSRC-WONG-ETAL-2022-PURPOSE-SVC",
+      "citation": "Wong, A. M.-Y., Cheung, C. C.-H., Lo, J. M.-W., and Wan, E. K.-H. 2022. Grammatical Analysis of Cantonese Samples.",
+      "url": "https://www.researchgate.net/publication/365978692",
+      "evidence_grade": "REFERENCE_GRAMMAR_CORE",
+      "language_scope": "Cantonese",
+      "supports": [
+        "purpose serial verb construction",
+        "買本書 (嚟) 睇吓",
+        "perfective marking of first action in sequential SVC"
+      ],
+      "does_not_support": [
+        "closed VP1 lexical classes",
+        "all 用嚟 alternations"
+      ]
+    },
+    {
+      "source_id": "SVSRC-FAN-CHAN-2022-ZO",
+      "citation": "Fan, Xiaolei, and Kin Wing Kevin Chan. 2022. Grammatical properties of zo 咗 in Hong Kong Cantonese.",
+      "url": "https://doi.org/10.1075/lali.00110.fan",
+      "evidence_grade": "DIRECT_SCHOLARLY_CORE",
+      "language_scope": "Hong Kong Cantonese",
+      "supports": [
+        "zo2 placement in complex VP",
+        "perfective behavior"
+      ],
+      "does_not_support": [
+        "exact 用咗嚟 or 用嚟V咗O distribution"
+      ]
+    },
+    {
+      "source_id": "SVSRC-WORDSHK-JUNGLAI",
+      "citation": "粵典 / Words.hk. 用嚟.",
+      "url": "https://words.hk/zidin/%E7%94%A8%E5%9A%9F",
+      "evidence_grade": "LEXICAL_OR_PRONUNCIATION_ONLY",
+      "language_scope": "Hong Kong Cantonese",
+      "supports": [
+        "lexical function meaning",
+        "money-as-resource attestation"
+      ],
+      "does_not_support": [
+        "syntactic derivation",
+        "productivity across semantic classes"
+      ]
+    },
+    {
+      "source_id": "SVSRC-HOU-2017-VP-LAI-VP",
+      "citation": "Hou, Tai-Chun. 2017. Syntactic and Semantic Analysis of VP-lai-VP Construction.",
+      "url": "https://researchoutput.ncku.edu.tw/zh/studentTheses/syntactic-and-semantic-analysis-of-vp-lai-vp-construction",
+      "evidence_grade": "ATTESTATION_ONLY",
+      "language_scope": "Mandarin comparative",
+      "supports": [
+        "comparative diagnostics for argument sharing and purpose relation"
+      ],
+      "does_not_support": [
+        "Cantonese constituency",
+        "Cantonese acceptability"
+      ]
+    },
+    {
+      "source_id": "SVSRC-WEI-2016-FRAGMENTS",
+      "citation": "Wei, Ting-Chi. 2016. Fragment answers in Mandarin Chinese.",
+      "url": "https://doi.org/10.1075/ijchl.3.1.04wei",
+      "evidence_grade": "ATTESTATION_ONLY",
+      "language_scope": "Mandarin comparative",
+      "supports": [
+        "possible fragment diagnostics"
+      ],
+      "does_not_support": [
+        "Cantonese fragment derivation"
+      ]
+    },
+    {
+      "source_id": "SVSRC-KE-2025-NULL-OBJECTS",
+      "citation": "Ke, Alan Hezao. 2025. Mandarin null objects: Topic-binding over argument ellipsis.",
+      "url": "https://doi.org/10.1007/s11049-025-09670-8",
+      "evidence_grade": "ATTESTATION_ONLY",
+      "language_scope": "Mandarin comparative",
+      "supports": [
+        "topic-binding diagnostics",
+        "null-object hypothesis space"
+      ],
+      "does_not_support": [
+        "Cantonese null-object analysis"
+      ]
+    }
+  ]
+}
