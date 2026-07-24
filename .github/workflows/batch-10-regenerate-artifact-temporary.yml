@@ -4,9 +4,12 @@ on:
   push:
     branches:
       - agent/adjudication-batch-10
+  pull_request:
+    branches:
+      - main
 
 concurrency:
-  group: batch-10-coherent-update
+  group: batch-10-coherent-update-${{ github.event_name }}
   cancel-in-progress: true
 
 permissions:
@@ -40,38 +43,22 @@ jobs:
           replace("README.md", "expert-adjudicated identities: **44 / 181**", "expert-adjudicated identities: **49 / 181**")
           replace("README.md", "direct `source_supported` candidates: **68**", "direct `source_supported` candidates: **67**")
           replace("README.md", "excluded non-language/internal records: **26**", "excluded non-language/internal records: **27**")
-
           replace("docs/current/00-START-HERE.md", "completed expert adjudications: **44**", "completed expert adjudications: **49**")
           replace("docs/current/00-START-HERE.md", "pending expert adjudications: **137**", "pending expert adjudications: **132**")
-
           replace("docs/current/CONSTRUCTION-IDENTITY.md", "expert-adjudicated records: **44**", "expert-adjudicated records: **49**")
           replace("docs/current/CONSTRUCTION-IDENTITY.md", "accepted adjudication batches: **9**", "accepted adjudication batches: **10**")
-
           replace("docs/current/CONSTRUCTION-ADJUDICATION.md", "accepted adjudications: **44**", "accepted adjudications: **49**")
           replace("docs/current/CONSTRUCTION-ADJUDICATION.md", "pending adjudications: **137**", "pending adjudications: **132**")
           replace("docs/current/CONSTRUCTION-ADJUDICATION.md", "accepted batches: **9**", "accepted batches: **10**")
           replace("docs/current/CONSTRUCTION-ADJUDICATION.md", "`docs/research/CONSTRUCTION-ADJUDICATION-BATCH-09.md`", "`docs/research/CONSTRUCTION-ADJUDICATION-BATCH-10.md`")
-          replace(
-              "docs/current/CONSTRUCTION-ADJUDICATION.md",
-              "The next planned batch is:\n\n1. `AA58 ExistentialWhQuestion`;\n2. `AA62 ExperientialVP`;\n3. `AA66 FragmentAnswer`;\n4. `AA67 FragmentQuestion`;\n5. `AA68 GoalAttainmentMotionVP`.",
-              "The next planned batch is Batch 11:\n\n1. `AA72 ImpersonalEnvironmentalClause`;\n2. `AA75 IntransitiveVP`;\n3. `AA76 LexicalGiveRelation`;\n4. `AA77 LocativeExistentialClause`;\n5. `AA79 LocativeFrameClause`."
-          )
-
+          replace("docs/current/CONSTRUCTION-ADJUDICATION.md", "The next planned batch is:\n\n1. `AA58 ExistentialWhQuestion`;\n2. `AA62 ExperientialVP`;\n3. `AA66 FragmentAnswer`;\n4. `AA67 FragmentQuestion`;\n5. `AA68 GoalAttainmentMotionVP`.", "The next planned batch is Batch 11:\n\n1. `AA72 ImpersonalEnvironmentalClause`;\n2. `AA75 IntransitiveVP`;\n3. `AA76 LexicalGiveRelation`;\n4. `AA77 LocativeExistentialClause`;\n5. `AA79 LocativeFrameClause`.")
           replace("docs/current/PROJECT-STATE.md", "| Expert-adjudicated UUIDs | 44 |", "| Expert-adjudicated UUIDs | 49 |")
           replace("docs/current/PROJECT-STATE.md", "| Pending UUID adjudications | 137 |", "| Pending UUID adjudications | 132 |")
           replace("docs/current/PROJECT-STATE.md", "Nine accepted batches have adjudicated 44 records.", "Ten accepted batches have adjudicated 49 records.")
           replace("docs/current/PROJECT-STATE.md", "| `source_supported` | 68 |", "| `source_supported` | 67 |")
           replace("docs/current/PROJECT-STATE.md", "| `excluded_nonlanguage` | 26 |", "| `excluded_nonlanguage` | 27 |")
-          replace(
-              "docs/current/PROJECT-STATE.md",
-              "- Batch 09 reclassifies `AA47 MannerMotionDirectionalWrapper` as an internal\n  representation and narrows `AA46`, `AA49`, `AA53`, and `AA55` to\n  `DiMarkedNounNP`, `IndependentMotionPredicateVP`,\n  `ZyuMarkedContinuativeObjectVP`, and `SubjectJauPossessiveClause`;",
-              "- Batch 09 reclassifies `AA47 MannerMotionDirectionalWrapper` as an internal\n  representation and narrows `AA46`, `AA49`, `AA53`, and `AA55` to\n  `DiMarkedNounNP`, `IndependentMotionPredicateVP`,\n  `ZyuMarkedContinuativeObjectVP`, and `SubjectJauPossessiveClause`;\n- Batch 10 reclassifies `AA66 ContextLinkedAnswerUtteranceWrapper` as an internal\n  discourse representation and narrows `AA58`, `AA62`, `AA67`, and `AA68` to\n  `JauMeNounWhQuestion`, `GwoMarkedExperientialObjectVP`,\n  `NeMarkedThematicContinuationQuestion`, and `MotionVerbDouGoalVP`;"
-          )
-          replace(
-              "docs/current/PROJECT-STATE.md",
-              "2. Continue expert adjudication with Batch 10: `AA58 ExistentialWhQuestion`,\n   `AA62 ExperientialVP`, `AA66 FragmentAnswer`, `AA67 FragmentQuestion`, and\n   `AA68 GoalAttainmentMotionVP`.",
-              "2. Continue expert adjudication with Batch 11: `AA72 ImpersonalEnvironmentalClause`,\n   `AA75 IntransitiveVP`, `AA76 LexicalGiveRelation`,\n   `AA77 LocativeExistentialClause`, and `AA79 LocativeFrameClause`."
-          )
+          replace("docs/current/PROJECT-STATE.md", "- Batch 09 reclassifies `AA47 MannerMotionDirectionalWrapper` as an internal\n  representation and narrows `AA46`, `AA49`, `AA53`, and `AA55` to\n  `DiMarkedNounNP`, `IndependentMotionPredicateVP`,\n  `ZyuMarkedContinuativeObjectVP`, and `SubjectJauPossessiveClause`;", "- Batch 09 reclassifies `AA47 MannerMotionDirectionalWrapper` as an internal\n  representation and narrows `AA46`, `AA49`, `AA53`, and `AA55` to\n  `DiMarkedNounNP`, `IndependentMotionPredicateVP`,\n  `ZyuMarkedContinuativeObjectVP`, and `SubjectJauPossessiveClause`;\n- Batch 10 reclassifies `AA66 ContextLinkedAnswerUtteranceWrapper` as an internal\n  discourse representation and narrows `AA58`, `AA62`, `AA67`, and `AA68` to\n  `JauMeNounWhQuestion`, `GwoMarkedExperientialObjectVP`,\n  `NeMarkedThematicContinuationQuestion`, and `MotionVerbDouGoalVP`;")
+          replace("docs/current/PROJECT-STATE.md", "2. Continue expert adjudication with Batch 10: `AA58 ExistentialWhQuestion`,\n   `AA62 ExperientialVP`, `AA66 FragmentAnswer`, `AA67 FragmentQuestion`, and\n   `AA68 GoalAttainmentMotionVP`.", "2. Continue expert adjudication with Batch 11: `AA72 ImpersonalEnvironmentalClause`,\n   `AA75 IntransitiveVP`, `AA76 LexicalGiveRelation`,\n   `AA77 LocativeExistentialClause`, and `AA79 LocativeFrameClause`.")
           PY
       - name: Verify coherent state
         run: |
@@ -85,6 +72,7 @@ jobs:
           git diff --check
           test -z "$(git status --porcelain | grep -E '(^| )validation/current/' || true)"
       - name: Commit coherent Batch 10 state
+        if: github.event_name == 'push'
         run: |
           git config user.name "canto-span-batch-10"
           git config user.email "actions@users.noreply.github.com"
