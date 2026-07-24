@@ -1,64 +1,52 @@
-name: Construction identity bootstrap
+name: Construction identity
 
 on:
   push:
-    branches:
-      - agent/permanent-construction-identity-sweep
     paths:
+      - data/construction-identities.json
+      - data/construction-identity-candidates.json
+      - data/construction-identity-lock.json
+      - data/construction-label-sweep.json
+      - config/construction-identity.schema.json
       - tools/generate-construction-identities.js
       - tools/build-construction-identity-lock.js
       - tools/verify-construction-identities.js
       - tools/allocate-construction-identity.js
       - tools/construction-notes-lib.js
       - grammar/**
+      - docs/current/CONSTRUCTION-IDENTITY.md
+      - docs/research/FULL-REPO-LABEL-SWEEP-BASELINE-R1.md
       - docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv
       - .github/workflows/construction-identity-bootstrap.yml
   pull_request:
     paths:
+      - data/construction-identities.json
+      - data/construction-identity-candidates.json
+      - data/construction-identity-lock.json
+      - data/construction-label-sweep.json
+      - config/construction-identity.schema.json
       - tools/generate-construction-identities.js
       - tools/build-construction-identity-lock.js
       - tools/verify-construction-identities.js
       - tools/allocate-construction-identity.js
       - tools/construction-notes-lib.js
       - grammar/**
+      - docs/current/CONSTRUCTION-IDENTITY.md
+      - docs/research/FULL-REPO-LABEL-SWEEP-BASELINE-R1.md
       - docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv
       - .github/workflows/construction-identity-bootstrap.yml
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  generate:
+  verify:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Generate permanent identity baseline
-        run: |
-          node tools/generate-construction-identities.js --write
-          node tools/build-construction-identity-lock.js --write
-      - name: Commit generated baseline
-        if: github.event_name == 'push'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/construction-identities.json data/construction-label-sweep.json data/construction-identity-lock.json docs/research/FULL-REPO-LABEL-SWEEP-BASELINE-R1.md
-          if ! git diff --cached --quiet; then
-            git commit -m "Lock permanent construction identities"
-            git push
-          fi
-      - name: Verify identity baseline
+      - name: Verify permanent construction identities
         run: node tools/verify-construction-identities.js
-      - name: Upload generated baseline
-        uses: actions/upload-artifact@v4
-        with:
-          name: construction-identity-baseline
-          path: |
-            data/construction-identities.json
-            data/construction-label-sweep.json
-            data/construction-identity-lock.json
-            docs/research/FULL-REPO-LABEL-SWEEP-BASELINE-R1.md
-          if-no-files-found: error
