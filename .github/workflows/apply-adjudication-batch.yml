@@ -1,0 +1,50 @@
+name: Apply adjudication batch
+
+on:
+  push:
+    branches:
+      - agent/permanent-construction-identity-sweep
+    paths:
+      - data/construction-adjudications.json
+      - data/construction-adjudication-batches/**
+      - tools/apply-construction-adjudications.js
+      - .github/workflows/apply-adjudication-batch.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/permanent-construction-identity-sweep
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Apply expert adjudications
+        run: |
+          npm run adjudication:apply
+          node tools/generate-construction-identities.js --write
+          npm run discovery:generate
+      - name: Commit generated records
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            data/construction-identities.json \
+            data/construction-label-sweep.json \
+            data/construction-candidate-readiness.json \
+            docs/research/FULL-REPO-LABEL-SWEEP-BASELINE-R1.md \
+            docs/research/SUPPORTED-PRODUCTIVE-CANDIDATES.md \
+            docs/research/ORPHANED-CONSTRUCTION-EVIDENCE.md \
+            docs/research/CONSTRUCTION-FAMILY-GAPS.md \
+            docs/research/FULL-REPO-SUPPORTED-PRODUCTIVE-SWEEP-R1.md
+          if git diff --cached --quiet; then
+            echo "Adjudication outputs already current"
+          else
+            git commit -m "Apply expert adjudication batch"
+            git push origin HEAD:agent/permanent-construction-identity-sweep
+          fi
