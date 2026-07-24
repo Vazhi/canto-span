@@ -1,9 +1,13 @@
 ---
-title: "ResourceUseLaiFunctionRelation"
+title: "AB53 ResourceInitialJungLaiFunctionClause"
 type: "canto-span-construction"
 construction: "ResourceUseLaiFunctionRelation"
+construction_uuid: "06c9f3b1-f243-588d-8a6e-bddf9a94c871"
+construction_code: "AB53"
+canonical_name: "ResourceInitialJungLaiFunctionClause"
+legacy_runtime_label: "ResourceUseLaiFunctionRelation"
 status: "research_pending"
-confidence: "source_runtime_map_complete_survey_prompt_pending"
+confidence: "source_runtime_map_complete_live_pilot_collection_pending"
 claim_layer: "language"
 lane: "LANE-01"
 last_reviewed: "2026-07-21"
@@ -26,6 +30,12 @@ native_negative_contrasts_reviewed: false
 panel_evidence_model_version: "v2"
 panel_review_state_file: "review-packets/native-panel/active-v2/panel-review-state.json"
 panel_policy_file: "review-packets/native-panel/active-v2/panel-policy.json"
+panel_lifecycle_metadata_file: "review-packets/native-panel/active-v2/followup-draft-v1-metadata.json"
+current_panel_instrument_id: "YUE-JUDGMENT-PILOT-01"
+current_panel_instrument_status: "collection_in_progress"
+followup_instrument_id: "YUE-JUDGMENT-FOLLOWUP-01-DRAFT"
+followup_instrument_status: "draft_followup"
+followup_deployment_allowed: false
 negative_cases_drafted: true
 negative_tests_executable: true
 negative_tests_passing: true
@@ -57,13 +67,22 @@ runtime_active: true
 workflow_state: "active"
 workflow_priority: 1
 workflow_since: "2026-07-21"
-workflow_reason: "survey_ready_anchor_awaiting_user_prompt_for_pilot_v1_creation"
+workflow_reason: "active_focal_construction_awaiting_live_pilot_closure_and_item_audit"
 runtime_code_references: 5
 accepted_fixtures: 29
 tags: ["canto-span/grammar", "canto-span/status/research_pending", "canto-span/lane/lane-01", "canto-span/workflow/active"]
 ---
 
-# ResourceUseLaiFunctionRelation
+# AB53 ResourceInitialJungLaiFunctionClause
+
+## Canonical identity
+
+- Construction UUID: `06c9f3b1-f243-588d-8a6e-bddf9a94c871`
+- Permanent code and canonical name:
+  `AB53 ResourceInitialJungLaiFunctionClause`
+- Legacy runtime label: `ResourceUseLaiFunctionRelation`, retained only for the
+  current note path, runtime `construction` field, and compatibility-linked
+  tests.
 
 ## Plain-language claim
 
@@ -76,8 +95,9 @@ A checked published source classifies the exact surface `呢個用嚟切嘢` as 
 ## Current status
 
 - Linguistic status: `research_pending`
-- Linguistic confidence: `source_runtime_map_complete_survey_prompt_pending`
-- Current action: `await_user_prompt_then_create_role_neutral_interpretation_sensitive_pilot_v1`
+- Linguistic confidence: `source_runtime_map_complete_live_pilot_collection_pending`
+- Current action:
+  `await_live_pilot_closure_and_item_audit_before_followup_revision`
 - Productive acceptance eligible: **no**
 - Current-standard re-audit disposition: **complete; downgraded rather than promoted**
 - Last linguistic review: 2026-07-21
@@ -128,11 +148,18 @@ A checked published source classifies the exact surface `呢個用嚟切嘢` as 
 
 - Committed panel snapshot: **23** eligible responses from the same public pilot instrument.
 - The user reports **50** live responses, but only the committed 23-response snapshot is canonical until a new export is screened and adjudicated.
+- The uncommitted report is not accepted evidence and does not change any panel
+  count or item-level coverage field.
 - Minimum usable judgments per critical item for promotion: **0**, because the instrument is `pilot_limited` rather than clean.
 - Instrument limitations: binary scale, fixed order, no unrelated fillers, context-free ambiguous items, and one late global comment field.
 - Surface judgments total 483 across the committed snapshot, but naturalness alone did not identify the parser relation.
 - No respondent, including the user's wife, receives a private instrument, named role, special status, or additional weight.
 - Result record: `docs/research/CP026-P1-RUL01-PUBLIC-PANEL-R1-RESULT.md`.
+- Current collection state:
+  `review-packets/native-panel/active-v2/followup-draft-v1-metadata.json`
+  records `YUE-JUDGMENT-PILOT-01` as `collection_in_progress`.
+- Follow-up state: `YUE-JUDGMENT-FOLLOWUP-01-DRAFT` remains a non-deployable
+  `draft_followup`.
 
 ## Negative and boundary cases
 
@@ -164,16 +191,26 @@ A checked published source classifies the exact surface `呢個用嚟切嘢` as 
 - Resource semantics, coordinated predicates, modal and copular frames, actual-use `用咗嚟`, negation, A-not-A, and contextual ellipsis require separate analyses.
 - The runtime and public claim are not reconciled closely enough for `provisional`.
 - A large response count does not repair the pilot's design defects or create usable promotion-grade item coverage.
-- Survey-readiness research is complete in `docs/research/CP032-P1-RUL01-SURVEY-READINESS-R1.md` and `CP032-P1-RUL01-CONTRAST-REQUIREMENTS-R1.tsv`. The next step is blocked on the user prompt that will guide creation of a mixed RUL/PFV `pilot-v1`; no instrument has been created in this checkpoint.
+- Survey-readiness research remains recorded in
+  `docs/research/CP032-P1-RUL01-SURVEY-READINESS-R1.md` and
+  `CP032-P1-RUL01-CONTRAST-REQUIREMENTS-R1.tsv`, but it no longer controls
+  survey creation. The current live pilot must close and receive an item audit
+  before the follow-up draft may be revised, locked, generated, or deployed.
 
-## Survey-readiness checkpoint
+## Current survey lifecycle
 
 - Research record: `docs/research/CP032-P1-RUL01-SURVEY-READINESS-R1.md`.
 - Contrast requirements: `docs/research/CP032-P1-RUL01-CONTRAST-REQUIREMENTS-R1.tsv`.
 - Implementation-only probe set: `test-data/rul-survey-readiness-probes-v1.json`.
 - The 30 probes freeze current parser profiles and have zero linguistic evidence weight.
-- No survey instrument, item list, or locked manifest has been created.
-- Blocking next input: the user prompt that will guide creation of the mixed RUL/PFV pilot.
+- Current live instrument: `YUE-JUDGMENT-PILOT-01`;
+  `collection_in_progress`.
+- Follow-up metadata:
+  `review-packets/native-panel/active-v2/followup-draft-v1-metadata.json`.
+- Follow-up instrument: `YUE-JUDGMENT-FOLLOWUP-01-DRAFT`; `draft_followup`;
+  `deployment_allowed: false`.
+- Blocking transition: close the live pilot and complete its item audit before
+  any follow-up revision, locking, form generation, or deployment.
 
 ## Related constructions
 
