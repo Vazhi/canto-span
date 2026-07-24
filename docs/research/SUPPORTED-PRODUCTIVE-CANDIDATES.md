@@ -44,7 +44,7 @@ This is a prioritization report, not a promotion decision. A score cannot overri
 | `AA40` | `HouMarkedPropertyPredicate` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA49` | `IndependentMotionPredicateVP` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA55` | `SubjectJauPossessiveClause` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
-| `AA76` | `LexicalGiveRelation` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
+| `AA76` | `BeiThemeRecipientGiveVP` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA86` | `ModalANotAQuestion` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA89` | `ModalVP` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA90` | `ModifiedNP` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
@@ -66,7 +66,6 @@ These broad current labels are not direct promotion candidates. Their source-bac
 | `AA57` | `ExistentialQuestion` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA59` | `ExperientialClause` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA63` | `ExperientialYesNoQuestion` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
-| `AA75` | `IntransitiveVP` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA80` | `LocativePlacePhrase` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA82` | `LocativeWhQuestion` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA93` | `MotionGoalVP` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |

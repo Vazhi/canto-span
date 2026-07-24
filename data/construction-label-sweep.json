@@ -2,7 +2,7 @@
   "schema": "canto-span-full-repo-label-sweep-v1",
   "identity_registry_schema": "canto-span-construction-identity-registry-v1",
   "record_count": 181,
-  "pending_review_count": 132,
+  "pending_review_count": 127,
   "automatic_flag_counts": {
     "generic_head_requires_boundary_definition": 72,
     "internal_representation_name_review": 20,
@@ -1158,15 +1158,15 @@
     {
       "construction_uuid": "207c70dd-359d-531e-bc19-2806b257a7d2",
       "construction_code": "AA72",
-      "canonical_name": "ImpersonalEnvironmentalClause",
+      "canonical_name": "EnvironmentalPredicateClauseWrapper",
       "lifecycle_state": "current",
-      "claim_layer": "language_construction",
+      "claim_layer": "parser_representation",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/ImpersonalEnvironmentalClause.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "disjoint",
+      "terminology_alignment": "misleading",
+      "recommended_action": "internalize_and_decompose",
       "automatic_risk_flags": [
         "generic_head_requires_boundary_definition"
       ]
@@ -1206,15 +1206,15 @@
     {
       "construction_uuid": "835d7e4f-ba3b-5483-846b-4a562212ec24",
       "construction_code": "AA75",
-      "canonical_name": "IntransitiveVP",
+      "canonical_name": "BareActionPredicateRelationMember",
       "lifecycle_state": "current",
-      "claim_layer": "language_construction",
+      "claim_layer": "parser_representation",
       "linguistic_status": "unsupported_generalization",
       "source_path": "grammar/unsupported_generalization/IntransitiveVP.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "disjoint",
+      "terminology_alignment": "misleading",
+      "recommended_action": "internalize_and_decompose",
       "automatic_risk_flags": [
         "unsupported_generalization_requires_source_runtime_reconciliation"
       ]
@@ -1222,15 +1222,15 @@
     {
       "construction_uuid": "5a77623d-eced-5f83-b0ad-ff1aea8d4b2d",
       "construction_code": "AA76",
-      "canonical_name": "LexicalGiveRelation",
+      "canonical_name": "BeiThemeRecipientGiveVP",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/LexicalGiveRelation.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "runtime_broader",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": [
         "generic_head_requires_boundary_definition"
       ]
@@ -1238,15 +1238,15 @@
     {
       "construction_uuid": "c130b11d-3828-53d9-ae28-7344fb742201",
       "construction_code": "AA77",
-      "canonical_name": "LocativeExistentialClause",
+      "canonical_name": "PlaceInitialJauMouExistentialClause",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/LocativeExistentialClause.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "runtime_broader",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": [
         "generic_head_requires_boundary_definition"
       ]
@@ -1272,15 +1272,15 @@
     {
       "construction_uuid": "c9bbbbda-2cbf-584b-838f-133cb8f99fad",
       "construction_code": "AA79",
-      "canonical_name": "LocativeFrameClause",
+      "canonical_name": "PlaceInitialPredicateClauseWrapper",
       "lifecycle_state": "current",
-      "claim_layer": "language_construction",
+      "claim_layer": "parser_representation",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/LocativeFrameClause.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "disjoint",
+      "terminology_alignment": "misleading",
+      "recommended_action": "internalize_and_decompose",
       "automatic_risk_flags": [
         "generic_head_requires_boundary_definition"
       ]
