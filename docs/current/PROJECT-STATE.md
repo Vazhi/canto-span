@@ -9,14 +9,14 @@ policy or ontology.
 | Measure | Current value |
 |---|---:|
 | Runtime | v0.5.216 |
-| Active runtime labels | 133 |
-| Current status notes | 133 |
-| Retired runtime labels | 48 |
+| Runtime labels | 133 |
+| Current construction notes | 133 |
+| Active working notes | 2 |
+| Workflow-archived notes | 131 |
+| Retired labels | 48 |
 | Permanent UUID records | 181 |
 | Expert-adjudicated UUIDs | 34 |
 | Pending UUID adjudications | 147 |
-| Active workflow notes | 2 |
-| Workflow-archived current notes | 131 |
 
 ## Linguistic-status inventory
 
