@@ -16,16 +16,14 @@ Cantonese construction, settle ontology, or authorize promotion.
 npm test
 ```
 
-Current baseline:
-
 - 551 exact regression cases;
 - 43 NP-subsystem cases;
-- 1,518 per-construction assertions across 133 construction files;
-- 132 positive-and-boundary files;
-- 1 compatibility-alias-only file;
-- no active runtime label without a construction test file.
+- 1,518 per-construction assertions across 133 construction files.
 
-Implementation probes have linguistic evidence weight zero.
+Current coverage is 132 positive-and-boundary, 0 positive-only, 0 implementation-only, and 1 compatibility-alias-only.
+
+No active runtime label lacks a construction test file. Implementation probes
+have linguistic evidence weight zero.
 
 ## Identity, adjudication, and discovery
 
@@ -66,7 +64,8 @@ npm run verify:all
 
 - `verify` runs stable core checks, including parser tests, status-note alignment,
   adjudications, permanent identities, discovery freshness, source accounting,
-  active working-set consistency, and implementation reachability.
+  active working-set consistency, implementation reachability, and current-
+  documentation consistency.
 - `verify:research` runs panel, survey-readiness, conflict-burden, research-
   provenance, and native-review-library checks.
 - `verify:release` runs core verification plus promotion and release-handoff gates.
