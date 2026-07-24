@@ -12,14 +12,14 @@ state dimensions.
 - construction workflow: **2 active / 131 workflow-archived**
 - retired labels: **48**
 - permanent construction identities: **181**
-- expert-adjudicated identities: **49 / 181**
+- expert-adjudicated identities: **54 / 181**
 - `supported_productive`: **0**
 - `provisional`: **0**
 - `research_pending`: **79**
 - direct `boundary_ready` candidates: **1** (`AB30`)
-- direct `source_supported` candidates: **67**
-- current narrowing candidates: **36**
-- excluded non-language/internal records: **27**
+- direct `source_supported` candidates: **65**
+- current narrowing candidates: **35**
+- excluded non-language/internal records: **30**
 - current AB30 corpus packet: **5 reviewed; 2 genuine; 3 false positives;
   `partial_only` readiness effect**
 - active survey: **`YUE-JUDGMENT-PILOT-01` remains in collection**

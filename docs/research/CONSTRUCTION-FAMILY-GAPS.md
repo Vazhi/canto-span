@@ -27,14 +27,11 @@ Family assignments in this report are inherited from existing consolidation reco
 | L12 / ResultAndPotentialComplements | 7 | 7 | 0 | 5 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB07, AB08, AB31, AB32, AB55, AB56, AB80 |
 | UNASSIGNED / unassigned | 5 | 5 | 0 | 0 | `family_unassigned` | assign family only after behavior and source scope are reconciled | AA13, AA14, AA15, AA16, AB09 |
 | L23 / ANotAQuestions | 3 | 3 | 0 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AA02, AA31, AA86 |
-| L45 / ValencyAndArgumentStructure | 3 | 3 | 0 | 2 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AA75, AB35, AB78 |
 | L28 / DirectivesRequestsAndSuggestions | 2 | 2 | 0 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB68, AB43 |
-| L39 / ExistentialAndPresentationalClauses | 2 | 2 | 0 | 2 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AA56, AA77 |
-| L01 / CoverbAndParticipantRelations | 1 | 1 | 0 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AA76 |
+| L45 / ValencyAndArgumentStructure | 2 | 2 | 0 | 2 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB35, AB78 |
 | L03 / TemporalAndSequentialRelations | 1 | 1 | 0 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB70 |
 | L06 / PerfectiveAspect | 1 | 1 | 0 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB21 |
 | L29 / Modality | 1 | 1 | 0 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AA89 |
 | L32 / SpeechReportingAndCommunicationEffect | 1 | 1 | 0 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB52 |
 | L37 / MannerAndReduplication | 1 | 1 | 0 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB49 |
-| L40 / LocativeClauseFrames | 1 | 1 | 0 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AA79 |
-| L41 / EnvironmentalClauses | 1 | 1 | 0 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AA72 |
+| L39 / ExistentialAndPresentationalClauses | 1 | 1 | 0 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AA56 |

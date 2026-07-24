@@ -21,8 +21,8 @@ compatibility alias, not the durable key.
 - permanent records: **181**;
 - current runtime-linked records: **133**;
 - retired records: **48**;
-- expert-adjudicated records: **49**;
-- accepted adjudication batches: **10**;
+- expert-adjudicated records: **54**;
+- accepted adjudication batches: **11**;
 - allocated codes: `AA01` through `AB82`.
 
 The canonical registry is `data/construction-identities.json`. The immutable lock
