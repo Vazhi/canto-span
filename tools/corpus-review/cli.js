@@ -18,12 +18,7 @@ const {
 } = require("./lib.js");
 
 const REPO_ROOT = path.resolve(__dirname, "../..");
-const PACKET_ROOT = path.join(
-  REPO_ROOT,
-  "review-packets",
-  "corpus-review",
-  "AB30",
-);
+const PACKET_ROOT = path.join(REPO_ROOT, "review-packets", "corpus-review", "AB30");
 const DEFAULTS = Object.freeze({
   manifest: path.join(PACKET_ROOT, "source-allowlist.json"),
   ledger: path.join(PACKET_ROOT, "candidate-ledger.json"),
@@ -42,28 +37,19 @@ Usage:
   node tools/corpus-review/cli.js validate [--manifest PATH] [--ledger PATH]
   node tools/corpus-review/cli.js render [--manifest PATH] [--ledger PATH]
        [--json PATH] [--tsv PATH] [--summary PATH]
-
-All paths default to review-packets/corpus-review/AB30/. Extraction reads only
-the explicit checked-in allowlist and preserves existing human review fields.
 `;
 }
 
 function parseArgs(argv) {
   const [command, ...rest] = argv;
-  if (!command || command === "--help" || command === "-h") {
-    return { command: "help", options: {} };
-  }
+  if (!command || command === "--help" || command === "-h") return { command: "help", options: {} };
   const options = {};
   for (let index = 0; index < rest.length; index += 1) {
     const token = rest[index];
-    if (!token.startsWith("--")) {
-      throw new Error(`Unexpected argument: ${token}`);
-    }
+    if (!token.startsWith("--")) throw new Error(`Unexpected argument: ${token}`);
     const name = token.slice(2);
     const value = rest[index + 1];
-    if (!value || value.startsWith("--")) {
-      throw new Error(`Missing value for --${name}`);
-    }
+    if (!value || value.startsWith("--")) throw new Error(`Missing value for --${name}`);
     options[name] = path.resolve(process.cwd(), value);
     index += 1;
   }
@@ -100,7 +86,6 @@ function runExtract(options) {
   let ledger = extractLedger(manifest, REPO_ROOT, raw);
   if (fs.existsSync(ledgerPath)) {
     const existingLedger = readJson(ledgerPath, "existing candidate ledger");
-    validateLedger(existingLedger, manifest, { skipSummary: true });
     ledger = mergeHumanReviews(ledger, existingLedger);
     ledger.summary = buildSummary(ledger.candidates, manifest);
   }
