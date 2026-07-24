@@ -1,0 +1,2925 @@
+{
+  "schema": "canto-span-full-repo-label-sweep-v1",
+  "identity_registry_schema": "canto-span-construction-identity-registry-v1",
+  "record_count": 181,
+  "pending_review_count": 181,
+  "automatic_flag_counts": {
+    "generic_head_requires_boundary_definition": 72,
+    "internal_representation_name_review": 20,
+    "possible_bundled_or_cross_layer_name": 5,
+    "possible_multi_layer_construction_bundle": 3,
+    "retired_label_research_home_check": 48,
+    "semantic_domain_name_requires_structural_scope_check": 18,
+    "unsupported_generalization_requires_source_runtime_reconciliation": 79
+  },
+  "records": [
+    {
+      "construction_uuid": "5e10dfc5-15a5-5f5a-b203-37c81a653330",
+      "construction_code": "AA01",
+      "canonical_name": "ANotAQuestion",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/ANotAQuestion.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "5d5d7832-6df3-5d3f-8447-f2e274459ab3",
+      "construction_code": "AA02",
+      "canonical_name": "AcceptabilityANotA",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/AcceptabilityANotA.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "c09bdb69-0dd6-533e-a15e-8a31e0ef79b2",
+      "construction_code": "AA03",
+      "canonical_name": "AcceptabilityClause",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/AcceptabilityClause.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "1ff5e216-be8f-5990-9be5-c23e5e27df29",
+      "construction_code": "AA04",
+      "canonical_name": "ActionStativeVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/ActionStativeVP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "f96b8ec0-c82d-53b3-8ea1-a6f1c2eb97db",
+      "construction_code": "AA05",
+      "canonical_name": "AdjectivalPredicateClause",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "retired_label_research_home_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "eb6cd99e-4b14-513a-ac30-2a69d62af72b",
+      "construction_code": "AA06",
+      "canonical_name": "ApproximateQuantity",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/ApproximateQuantity.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "1087ebec-c012-5107-9c1f-6383bf40091c",
+      "construction_code": "AA07",
+      "canonical_name": "AssociativeNP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/AssociativeNP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "055438f3-b0db-5c08-9f57-ddaf26c0e6d2",
+      "construction_code": "AA08",
+      "canonical_name": "BareClassifierNP",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "retired_label_research_home_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "e2ba27fe-64ca-5d6d-bf94-1950fc219629",
+      "construction_code": "AA09",
+      "canonical_name": "CausativeResultFrame",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "retired_label_research_home_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "925411ea-fd57-56ca-a294-80b9dc32e8e8",
+      "construction_code": "AA10",
+      "canonical_name": "CausativeResultPredicate",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "retired_label_research_home_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "0a188c89-30cd-53e9-8401-37a805eaf35b",
+      "construction_code": "AA11",
+      "canonical_name": "ChangeIntoPredicate",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/ChangeIntoPredicate.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "possible_bundled_or_cross_layer_name"
+      ]
+    },
+    {
+      "construction_uuid": "b29b08a8-54d7-5385-9066-ff3e4922fc8a",
+      "construction_code": "AA12",
+      "canonical_name": "ClassifierObjectNP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/ClassifierObjectNP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "8d5f01be-4446-5f4f-ae7b-1cfec367e73a",
+      "construction_code": "AA13",
+      "canonical_name": "ClauseRelationEdge",
+      "lifecycle_state": "current",
+      "claim_layer": "parser_representation",
+      "linguistic_status": "parser_heuristic",
+      "source_path": "grammar/parser_heuristic/ClauseRelationEdge.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "internal_representation_name_review"
+      ]
+    },
+    {
+      "construction_uuid": "1e45ca08-8f94-5601-a239-5bd89909c29f",
+      "construction_code": "AA14",
+      "canonical_name": "ClauseRelationGraph",
+      "lifecycle_state": "current",
+      "claim_layer": "parser_representation",
+      "linguistic_status": "parser_heuristic",
+      "source_path": "grammar/parser_heuristic/ClauseRelationGraph.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "internal_representation_name_review"
+      ]
+    },
+    {
+      "construction_uuid": "cc04fc93-8258-5446-a63c-495110e40b0d",
+      "construction_code": "AA15",
+      "canonical_name": "ClauseRelationMemberSpan",
+      "lifecycle_state": "current",
+      "claim_layer": "parser_representation",
+      "linguistic_status": "parser_heuristic",
+      "source_path": "grammar/parser_heuristic/ClauseRelationMemberSpan.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "internal_representation_name_review"
+      ]
+    },
+    {
+      "construction_uuid": "88aae31d-62f5-564b-b4a1-16f1f1966b3e",
+      "construction_code": "AA16",
+      "canonical_name": "ClauseSpan",
+      "lifecycle_state": "current",
+      "claim_layer": "parser_representation",
+      "linguistic_status": "parser_heuristic",
+      "source_path": "grammar/parser_heuristic/ClauseSpan.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "internal_representation_name_review"
+      ]
+    },
+    {
+      "construction_uuid": "df737a78-9cf2-5ff5-83e4-59813d96056b",
+      "construction_code": "AA17",
+      "canonical_name": "CognitionContentFrame",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/CognitionContentFrame.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "semantic_domain_name_requires_structural_scope_check"
+      ]
+    },
+    {
+      "construction_uuid": "e17c660f-c2fe-5697-b857-fb62003e9e61",
+      "construction_code": "AA18",
+      "canonical_name": "CognitionDelimitedObjectVP",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "retired_label_research_home_check",
+        "semantic_domain_name_requires_structural_scope_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "494231f7-0adc-5099-a1ce-44c1e1a7f1df",
+      "construction_code": "AA19",
+      "canonical_name": "CognitionDelimitedVP",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "retired_label_research_home_check",
+        "semantic_domain_name_requires_structural_scope_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "777a3f03-4a16-5877-bd46-594bfe69369e",
+      "construction_code": "AA20",
+      "canonical_name": "CognitionStatementClause",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/CognitionStatementClause.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "semantic_domain_name_requires_structural_scope_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "9cb7f2c7-6ff6-5845-9fe3-6768a17aa646",
+      "construction_code": "AA21",
+      "canonical_name": "Comment",
+      "lifecycle_state": "retired",
+      "claim_layer": "parser_representation",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "internal_representation_name_review",
+        "retired_label_research_home_check"
+      ]
+    },
+    {
+      "construction_uuid": "67cda2b2-75ed-52e6-af88-d5935f8f360e",
+      "construction_code": "AA22",
+      "canonical_name": "ComparativeStative",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "retired_label_research_home_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "65bd36c8-3d7e-5076-a824-0296bf421545",
+      "construction_code": "AA23",
+      "canonical_name": "ComplementEllipsisFragment",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/ComplementEllipsisFragment.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition"
+      ]
+    },
+    {
+      "construction_uuid": "725042ee-94e9-5ac0-bc64-d066ed290999",
+      "construction_code": "AA24",
+      "canonical_name": "CompletionQuestion",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/CompletionQuestion.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "513ca13e-8d51-5fa0-bdb6-788e9ec6af7d",
+      "construction_code": "AA25",
+      "canonical_name": "CompletionThenClause",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "possible_bundled_or_cross_layer_name",
+        "retired_label_research_home_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "4b12b550-75e8-5741-b255-a77e2731a62e",
+      "construction_code": "AA26",
+      "canonical_name": "CompletionVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/CompletionVP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "5ad779df-fcfd-5a8b-8c3e-e1206837214a",
+      "construction_code": "AA27",
+      "canonical_name": "CompoundDirectionalMotionVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/CompoundDirectionalMotionVP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "3ffc4136-42a1-5289-9330-a2ab7d461d94",
+      "construction_code": "AA28",
+      "canonical_name": "ConditionResult",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "retired_label_research_home_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "c958b3fc-5071-5081-891c-9e5ae6c223a6",
+      "construction_code": "AA29",
+      "canonical_name": "ConditionalClause",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/ConditionalClause.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "4f2855b1-7545-5e42-a0fb-aef8cf24f0fb",
+      "construction_code": "AA30",
+      "canonical_name": "CoordinatedNP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/CoordinatedNP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "2a15bf86-17e4-5f66-b3ab-4eaeabda7408",
+      "construction_code": "AA31",
+      "canonical_name": "CopularANotAQuestion",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/CopularANotAQuestion.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "ccaca229-7181-5e5a-98d8-0f6c9ba6d52d",
+      "construction_code": "AA32",
+      "canonical_name": "CopularIdentificationFrame",
+      "lifecycle_state": "current",
+      "claim_layer": "parser_representation",
+      "linguistic_status": "parser_heuristic",
+      "source_path": "grammar/parser_heuristic/CopularIdentificationFrame.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "internal_representation_name_review"
+      ]
+    },
+    {
+      "construction_uuid": "ba1e611e-da02-5b83-ab68-baeae31af0b8",
+      "construction_code": "AA33",
+      "canonical_name": "CopularRelationFrame",
+      "lifecycle_state": "current",
+      "claim_layer": "parser_representation",
+      "linguistic_status": "parser_heuristic",
+      "source_path": "grammar/parser_heuristic/CopularRelationFrame.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "internal_representation_name_review"
+      ]
+    },
+    {
+      "construction_uuid": "bf2bf2f9-0a38-5eb6-b078-5bd5e1be47b2",
+      "construction_code": "AA34",
+      "canonical_name": "CoverbFrame",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/CoverbFrame.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition"
+      ]
+    },
+    {
+      "construction_uuid": "e815e595-634c-5238-817c-a9d7ae86740d",
+      "construction_code": "AA35",
+      "canonical_name": "DefinitionComplement",
+      "lifecycle_state": "retired",
+      "claim_layer": "parser_representation",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "internal_representation_name_review",
+        "retired_label_research_home_check"
+      ]
+    },
+    {
+      "construction_uuid": "ea2fc45f-5da6-5413-aeb1-8bf3e920c8ed",
+      "construction_code": "AA36",
+      "canonical_name": "DefinitionExplanatoryFrame",
+      "lifecycle_state": "retired",
+      "claim_layer": "parser_representation",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "internal_representation_name_review",
+        "retired_label_research_home_check"
+      ]
+    },
+    {
+      "construction_uuid": "17958e93-eaeb-55de-9f15-82d4381f6b02",
+      "construction_code": "AA37",
+      "canonical_name": "DegreeMannerAdverbial",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/DegreeMannerAdverbial.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "a3d9e4b2-1ef9-530a-9dfb-01711e42bb2a",
+      "construction_code": "AA38",
+      "canonical_name": "DegreeMannerModifiedVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/DegreeMannerModifiedVP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "88904fe5-a1f4-55bf-bf0a-a4983d77eef2",
+      "construction_code": "AA39",
+      "canonical_name": "DegreeModifiedLexicalStative",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/DegreeModifiedLexicalStative.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "ecc86476-37a0-5bde-b8da-899602e890d9",
+      "construction_code": "AA40",
+      "canonical_name": "DegreeStativePredicate",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/DegreeStativePredicate.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition"
+      ]
+    },
+    {
+      "construction_uuid": "96bc1904-e65b-5a21-b910-1831dc477eaa",
+      "construction_code": "AA41",
+      "canonical_name": "DelimitedVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/DelimitedVP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "9e62d51a-bcb5-561b-af9f-d868615410f1",
+      "construction_code": "AA42",
+      "canonical_name": "DemonstrativeClassifierNP",
+      "lifecycle_state": "current",
+      "claim_layer": "parser_representation",
+      "linguistic_status": "parser_heuristic",
+      "source_path": "grammar/parser_heuristic/DemonstrativeClassifierNP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "internal_representation_name_review"
+      ]
+    },
+    {
+      "construction_uuid": "8f560eb6-a5d9-556d-994b-7fcce46952d8",
+      "construction_code": "AA43",
+      "canonical_name": "DemonstrativeHeadNP",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "retired_label_research_home_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "067a9d60-2731-58b3-b544-e9cc92ae0a21",
+      "construction_code": "AA44",
+      "canonical_name": "DemonstrativeQuantifiedClassifierNP",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "possible_multi_layer_construction_bundle",
+        "retired_label_research_home_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "cdee31e6-35ad-580e-8bfe-c37740d0c6a0",
+      "construction_code": "AA45",
+      "canonical_name": "DesiderativeVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/DesiderativeVP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "4fe5879e-7098-596d-9312-8cbc845cfc1c",
+      "construction_code": "AA46",
+      "canonical_name": "DiMarkedNP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/DiMarkedNP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "676460c0-934e-5b6f-a5d6-71e8d9ca55bf",
+      "construction_code": "AA47",
+      "canonical_name": "DirectedMannerMotionVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/DirectedMannerMotionVP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "d83ffe0a-21d8-54fa-ba0b-c79c6ea4d8e7",
+      "construction_code": "AA48",
+      "canonical_name": "DirectionalCausedMotionVP",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "retired_label_research_home_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "68615a56-e6c1-5199-8d62-75a58d8c1515",
+      "construction_code": "AA49",
+      "canonical_name": "DirectionalMotionVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/DirectionalMotionVP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "9f00c890-a573-5803-900d-5a6aab7a6ff9",
+      "construction_code": "AA50",
+      "canonical_name": "DiscourseParticleFrame",
+      "lifecycle_state": "current",
+      "claim_layer": "parser_representation",
+      "linguistic_status": "parser_heuristic",
+      "source_path": "grammar/parser_heuristic/DiscourseParticleFrame.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "internal_representation_name_review"
+      ]
+    },
+    {
+      "construction_uuid": "7224d093-0ac7-5b18-919c-693b770a5743",
+      "construction_code": "AA51",
+      "canonical_name": "DisposalChangeIntoResultFrame",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "possible_bundled_or_cross_layer_name",
+        "retired_label_research_home_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "10fa3d98-da35-541c-828e-516c17d04144",
+      "construction_code": "AA52",
+      "canonical_name": "DitransitiveSpeechVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/DitransitiveSpeechVP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "semantic_domain_name_requires_structural_scope_check"
+      ]
+    },
+    {
+      "construction_uuid": "3f35d7bf-140d-5032-99f1-73cf8cc0d10d",
+      "construction_code": "AA53",
+      "canonical_name": "DurativeVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/DurativeVP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "65da1a4f-fbb2-5372-9e8e-b45014b52388",
+      "construction_code": "AA54",
+      "canonical_name": "EvaluationWithDouSyun",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "possible_bundled_or_cross_layer_name",
+        "retired_label_research_home_check",
+        "semantic_domain_name_requires_structural_scope_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "a4894b15-66e9-5278-a424-6883a7cab565",
+      "construction_code": "AA55",
+      "canonical_name": "ExistentialClause",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/ExistentialClause.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition"
+      ]
+    },
+    {
+      "construction_uuid": "258c1d00-8a77-543c-a26f-2e66d3a37849",
+      "construction_code": "AA56",
+      "canonical_name": "ExistentialPresentationalClause",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/ExistentialPresentationalClause.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition"
+      ]
+    },
+    {
+      "construction_uuid": "25097409-9e23-527b-9a63-72de3aaf5e76",
+      "construction_code": "AA57",
+      "canonical_name": "ExistentialQuestion",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/ExistentialQuestion.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "fd7373c1-9f61-5c5e-bc86-d078ee69f965",
+      "construction_code": "AA58",
+      "canonical_name": "ExistentialWhQuestion",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/ExistentialWhQuestion.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "4f50f741-ffa5-5e2c-8771-bf86fd002b6e",
+      "construction_code": "AA59",
+      "canonical_name": "ExperientialClause",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/ExperientialClause.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "130b5d85-be1b-5d00-9ff1-a1670100676a",
+      "construction_code": "AA60",
+      "canonical_name": "ExperientialMotionGoalVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/ExperientialMotionGoalVP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "a0389a45-6002-5fb9-a02a-ea423ac463b1",
+      "construction_code": "AA61",
+      "canonical_name": "ExperientialQuestion",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/ExperientialQuestion.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "9f107fee-95d3-5f2f-9316-ebb14d63b8e7",
+      "construction_code": "AA62",
+      "canonical_name": "ExperientialVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/ExperientialVP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "e164b2ab-7abb-5f96-a548-2517fbe99955",
+      "construction_code": "AA63",
+      "canonical_name": "ExperientialYesNoQuestion",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/ExperientialYesNoQuestion.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "cf74ad4d-eb59-51f1-bf25-a4bbee11bbd0",
+      "construction_code": "AA64",
+      "canonical_name": "FocusParticleFrame",
+      "lifecycle_state": "current",
+      "claim_layer": "parser_representation",
+      "linguistic_status": "parser_heuristic",
+      "source_path": "grammar/parser_heuristic/FocusParticleFrame.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "internal_representation_name_review"
+      ]
+    },
+    {
+      "construction_uuid": "df15f0b5-6bf6-5946-ab9a-35491b1daed6",
+      "construction_code": "AA65",
+      "canonical_name": "FormulaDiscourseUnit",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "lexicalized_only",
+      "source_path": "grammar/lexicalized_only/FormulaDiscourseUnit.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition"
+      ]
+    },
+    {
+      "construction_uuid": "41b0f6be-680c-5bfd-9c70-c5c1cfd6e467",
+      "construction_code": "AA66",
+      "canonical_name": "FragmentAnswer",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/FragmentAnswer.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "65a55897-4c5b-5764-8a33-56c920c34862",
+      "construction_code": "AA67",
+      "canonical_name": "FragmentQuestion",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/FragmentQuestion.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "6133be72-aea3-5c31-a794-8ebabe3bcb79",
+      "construction_code": "AA68",
+      "canonical_name": "GoalAttainmentMotionVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/GoalAttainmentMotionVP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "4019aaa2-9a4e-53cd-a505-95c4af4e2c6d",
+      "construction_code": "AA69",
+      "canonical_name": "HeadlessDemonstrativeClassifierNP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/HeadlessDemonstrativeClassifierNP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "3dd7c223-e12c-5164-917f-36ade1349ded",
+      "construction_code": "AA70",
+      "canonical_name": "IdentificationFragment",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "retired_label_research_home_check"
+      ]
+    },
+    {
+      "construction_uuid": "ffb06b4b-b2e3-5748-a6d4-e6070d575fed",
+      "construction_code": "AA71",
+      "canonical_name": "IdentityWhQuestion",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "retired_label_research_home_check",
+        "semantic_domain_name_requires_structural_scope_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "207c70dd-359d-531e-bc19-2806b257a7d2",
+      "construction_code": "AA72",
+      "canonical_name": "ImpersonalEnvironmentalClause",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/ImpersonalEnvironmentalClause.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition"
+      ]
+    },
+    {
+      "construction_uuid": "bcee8e4a-3559-5759-93a8-bf6b4c1bc0bd",
+      "construction_code": "AA73",
+      "canonical_name": "IntendedFunctionRelation",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/IntendedFunctionRelation.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition"
+      ]
+    },
+    {
+      "construction_uuid": "85c40d6e-3eff-57bc-b9f9-a884f6008816",
+      "construction_code": "AA74",
+      "canonical_name": "IntentionFrame",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/IntentionFrame.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition"
+      ]
+    },
+    {
+      "construction_uuid": "835d7e4f-ba3b-5483-846b-4a562212ec24",
+      "construction_code": "AA75",
+      "canonical_name": "IntransitiveVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/IntransitiveVP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "5a77623d-eced-5f83-b0ad-ff1aea8d4b2d",
+      "construction_code": "AA76",
+      "canonical_name": "LexicalGiveRelation",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/LexicalGiveRelation.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition"
+      ]
+    },
+    {
+      "construction_uuid": "c130b11d-3828-53d9-ae28-7344fb742201",
+      "construction_code": "AA77",
+      "canonical_name": "LocativeExistentialClause",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/LocativeExistentialClause.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition"
+      ]
+    },
+    {
+      "construction_uuid": "33d83956-5774-5289-91f1-b61084dc2369",
+      "construction_code": "AA78",
+      "canonical_name": "LocativeFragment",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "retired_label_research_home_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "c9bbbbda-2cbf-584b-838f-133cb8f99fad",
+      "construction_code": "AA79",
+      "canonical_name": "LocativeFrameClause",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/LocativeFrameClause.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition"
+      ]
+    },
+    {
+      "construction_uuid": "d3c2e159-8bd7-5f57-a8f8-8deb4a12ad86",
+      "construction_code": "AA80",
+      "canonical_name": "LocativePlacePhrase",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/LocativePlacePhrase.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "fe8db66e-e163-5694-84ca-1948b778be28",
+      "construction_code": "AA81",
+      "canonical_name": "LocativePostureVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/LocativePostureVP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "4593e90d-b923-54af-a9ac-533409c38355",
+      "construction_code": "AA82",
+      "canonical_name": "LocativeWhQuestion",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/LocativeWhQuestion.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "1d8b01f9-0139-5fb1-af4b-07f842b87c72",
+      "construction_code": "AA83",
+      "canonical_name": "MalformedCandidate",
+      "lifecycle_state": "current",
+      "claim_layer": "parser_representation",
+      "linguistic_status": "parser_heuristic",
+      "source_path": "grammar/parser_heuristic/MalformedCandidate.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "internal_representation_name_review"
+      ]
+    },
+    {
+      "construction_uuid": "28bbdab0-a637-5842-b93a-a129c8a55d7b",
+      "construction_code": "AA84",
+      "canonical_name": "MannerAdverbialVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/MannerAdverbialVP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "c7a597a8-1684-5aaf-aafc-278dc6e0d897",
+      "construction_code": "AA85",
+      "canonical_name": "MeasureExpression",
+      "lifecycle_state": "current",
+      "claim_layer": "parser_representation",
+      "linguistic_status": "parser_heuristic",
+      "source_path": "grammar/parser_heuristic/MeasureExpression.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "internal_representation_name_review"
+      ]
+    },
+    {
+      "construction_uuid": "93a1df83-8655-5da7-bd9f-4ff7e2cf1b9b",
+      "construction_code": "AA86",
+      "canonical_name": "ModalANotAQuestion",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/ModalANotAQuestion.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "24e74115-19b7-5df0-8716-d82d5797743c",
+      "construction_code": "AA87",
+      "canonical_name": "ModalChangeIntoResultFrame",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "possible_bundled_or_cross_layer_name",
+        "retired_label_research_home_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "24ca75ca-eb10-584d-93c4-0838137971cd",
+      "construction_code": "AA88",
+      "canonical_name": "ModalResponseFragment",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "retired_label_research_home_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "e3ad991e-f109-57ab-a363-cfc2e6d4e170",
+      "construction_code": "AA89",
+      "canonical_name": "ModalVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/ModalVP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "14579a47-c762-5ace-ade4-5b0744ea8c85",
+      "construction_code": "AA90",
+      "canonical_name": "ModifiedNP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/ModifiedNP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "6cb39abf-cd97-5701-8b7d-d2575645c127",
+      "construction_code": "AA91",
+      "canonical_name": "ModifierNP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/ModifierNP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "15d06614-d21c-5f48-a72c-4ea66273cc6f",
+      "construction_code": "AA92",
+      "canonical_name": "MotionDelimitedVP",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "retired_label_research_home_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "09d2535f-66fa-569c-bee6-f538f39c891c",
+      "construction_code": "AA93",
+      "canonical_name": "MotionGoalVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/MotionGoalVP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "cd8cdacb-c150-5565-b186-4c5e69b088f7",
+      "construction_code": "AA94",
+      "canonical_name": "MotionPurposeChain",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/MotionPurposeChain.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "dd7c8a35-b829-55d9-ba91-d46a7f75fa41",
+      "construction_code": "AA95",
+      "canonical_name": "NamingClause",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/NamingClause.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "semantic_domain_name_requires_structural_scope_check"
+      ]
+    },
+    {
+      "construction_uuid": "73972a79-f52f-5458-95ce-2b2c8c6bc73b",
+      "construction_code": "AA96",
+      "canonical_name": "NeedsContext",
+      "lifecycle_state": "current",
+      "claim_layer": "parser_representation",
+      "linguistic_status": "parser_heuristic",
+      "source_path": "grammar/parser_heuristic/NeedsContext.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "internal_representation_name_review"
+      ]
+    },
+    {
+      "construction_uuid": "af7743b9-4a3d-50f2-8955-b30f48358f60",
+      "construction_code": "AA97",
+      "canonical_name": "NegatedDirectionalMotionVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/NegatedDirectionalMotionVP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "possible_multi_layer_construction_bundle"
+      ]
+    },
+    {
+      "construction_uuid": "ac726450-9058-50a9-afc4-245f275a739a",
+      "construction_code": "AA98",
+      "canonical_name": "NegatedExistentialClause",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/NegatedExistentialClause.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "91631984-b603-5f26-9cca-fa66ef43b44f",
+      "construction_code": "AA99",
+      "canonical_name": "NegatedExistentialFragment",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/NegatedExistentialFragment.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition"
+      ]
+    },
+    {
+      "construction_uuid": "4f727771-b271-5037-a264-fd52bbd35d71",
+      "construction_code": "AB01",
+      "canonical_name": "NegatedLexicalizedStative",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "retired_label_research_home_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "9f138488-e914-560d-89bc-ba9c108d887d",
+      "construction_code": "AB02",
+      "canonical_name": "NegatedStativePredicate",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/NegatedStativePredicate.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition"
+      ]
+    },
+    {
+      "construction_uuid": "83a4a474-5fdf-5d25-a021-49966d1be6fd",
+      "construction_code": "AB03",
+      "canonical_name": "NegatedVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/NegatedVP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "574b740d-b288-59ef-a1ec-2f90a8950d5c",
+      "construction_code": "AB04",
+      "canonical_name": "NegativeCognitionFragment",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/NegativeCognitionFragment.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "semantic_domain_name_requires_structural_scope_check"
+      ]
+    },
+    {
+      "construction_uuid": "40485cda-af65-55dc-835f-a5e35c0f50b5",
+      "construction_code": "AB05",
+      "canonical_name": "NegativeExperiential",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/NegativeExperiential.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "a113b35a-3b49-5120-b1bb-c3fb8f081bda",
+      "construction_code": "AB06",
+      "canonical_name": "NegativeHaveClause",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "retired_label_research_home_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "23a889d8-991c-5348-8da3-ccf865f5e509",
+      "construction_code": "AB07",
+      "canonical_name": "NegativePotentialComplement",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/NegativePotentialComplement.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "98fe5056-ec42-5505-b8d1-7514375fcfc9",
+      "construction_code": "AB08",
+      "canonical_name": "NegativePotentialDirectionalVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/NegativePotentialDirectionalVP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "e56bf2b7-7a16-50cb-a14e-9cd0c245594b",
+      "construction_code": "AB09",
+      "canonical_name": "NominalHeadSpan",
+      "lifecycle_state": "current",
+      "claim_layer": "parser_representation",
+      "linguistic_status": "parser_heuristic",
+      "source_path": "grammar/parser_heuristic/NominalHeadSpan.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "internal_representation_name_review"
+      ]
+    },
+    {
+      "construction_uuid": "9d121ce5-a2c6-54bb-b8e6-24ae22f93e13",
+      "construction_code": "AB10",
+      "canonical_name": "NominalModifierNP",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "retired_label_research_home_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "d269f68c-b8dd-5b64-8dcc-ac1f2e82baab",
+      "construction_code": "AB11",
+      "canonical_name": "NominalPredicateClause",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/NominalPredicateClause.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition"
+      ]
+    },
+    {
+      "construction_uuid": "9e9f0ef7-6526-5481-9161-3cb65b3509ab",
+      "construction_code": "AB12",
+      "canonical_name": "OpinionQuestion",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/OpinionQuestion.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "semantic_domain_name_requires_structural_scope_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "8536ccf8-2f9b-509a-af69-242bc26cc362",
+      "construction_code": "AB13",
+      "canonical_name": "OpinionStanceFrame",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/OpinionStanceFrame.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "semantic_domain_name_requires_structural_scope_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "26870b6d-1ea8-5015-8d4c-0ac867849535",
+      "construction_code": "AB14",
+      "canonical_name": "OrdinalClassifierNP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/OrdinalClassifierNP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "4f6df953-62d1-5036-80b3-40bc8f02937e",
+      "construction_code": "AB15",
+      "canonical_name": "OvertHeadDemonstrativeClassifierNP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/OvertHeadDemonstrativeClassifierNP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "b68b136d-f596-5529-8b79-8b4009168f8b",
+      "construction_code": "AB16",
+      "canonical_name": "PassivePermissiveRelation",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/PassivePermissiveRelation.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition"
+      ]
+    },
+    {
+      "construction_uuid": "2ea00575-67ed-5663-8fd1-869fad24d687",
+      "construction_code": "AB17",
+      "canonical_name": "PathPhrase",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/PathPhrase.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "c0ce4694-44c9-58ff-ac8a-fb7043e7b064",
+      "construction_code": "AB18",
+      "canonical_name": "PerfectiveDirectionalVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/PerfectiveDirectionalVP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "883784c2-da51-5353-a201-13f166a3527f",
+      "construction_code": "AB19",
+      "canonical_name": "PerfectiveObjectResultPredicate",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "retired_label_research_home_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "fa3f2789-8037-50de-9cd7-cac3d13a5d80",
+      "construction_code": "AB20",
+      "canonical_name": "PerfectiveResultPredicate",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "retired_label_research_home_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "352e92ab-f193-53d2-a2ec-851f4c435458",
+      "construction_code": "AB21",
+      "canonical_name": "PerfectiveVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/PerfectiveVP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "5187ba31-988b-538d-bd4a-705dc31dab4a",
+      "construction_code": "AB22",
+      "canonical_name": "PolarQuestionFrame",
+      "lifecycle_state": "current",
+      "claim_layer": "parser_representation",
+      "linguistic_status": "parser_heuristic",
+      "source_path": "grammar/parser_heuristic/PolarQuestionFrame.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "internal_representation_name_review"
+      ]
+    },
+    {
+      "construction_uuid": "05b62740-b275-5908-b9c7-0c2ce248de82",
+      "construction_code": "AB23",
+      "canonical_name": "PoliteImperativeClause",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/PoliteImperativeClause.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "722ebecd-b61c-5496-924f-9e3d1be92d22",
+      "construction_code": "AB24",
+      "canonical_name": "PossessiveClassifierNP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/PossessiveClassifierNP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "bb2b1bee-91f7-55b6-a766-45e20852c076",
+      "construction_code": "AB25",
+      "canonical_name": "PossessiveNP",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "retired_label_research_home_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "c1c284c1-a094-58cb-befd-f9e075462e2c",
+      "construction_code": "AB26",
+      "canonical_name": "PossessiveNominalFragment",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "retired_label_research_home_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "2a295394-6430-59fa-9cb0-8a6e186eab68",
+      "construction_code": "AB27",
+      "canonical_name": "PossessiveTransferClause",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "retired_label_research_home_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "400e946e-2e6b-5434-9558-8116edf3c3f8",
+      "construction_code": "AB28",
+      "canonical_name": "PostThemeParticipantRelation",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/PostThemeParticipantRelation.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition"
+      ]
+    },
+    {
+      "construction_uuid": "81b28c4f-7059-5347-8b3b-a0fda672ad5e",
+      "construction_code": "AB29",
+      "canonical_name": "PostposedExistentialQuestion",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "retired_label_research_home_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "2169217f-a21d-5165-9513-eb0edee2c220",
+      "construction_code": "AB30",
+      "canonical_name": "PostverbalZoPerfectiveVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/PostverbalZoPerfectiveVP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "2c2fe5b5-a6c3-5df7-bddb-61a99f3239b6",
+      "construction_code": "AB31",
+      "canonical_name": "PotentialDirectionalVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/PotentialDirectionalVP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "7e0e9932-6565-5fa0-9bc4-edc0af32e93e",
+      "construction_code": "AB32",
+      "canonical_name": "PotentialResultVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/PotentialResultVP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "baa94b61-09ad-56da-8021-9ea7ec4883eb",
+      "construction_code": "AB33",
+      "canonical_name": "PreferenceVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/PreferenceVP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "semantic_domain_name_requires_structural_scope_check"
+      ]
+    },
+    {
+      "construction_uuid": "cf4a630c-c532-5f04-87fc-0edb2ce725b0",
+      "construction_code": "AB34",
+      "canonical_name": "PriorityMarkerClause",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/PriorityMarkerClause.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition"
+      ]
+    },
+    {
+      "construction_uuid": "1dcefdcf-a978-5cf5-8045-26db1d6f5c1a",
+      "construction_code": "AB35",
+      "canonical_name": "ProductiveVO",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/ProductiveVO.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "f43518de-dd92-5aac-991e-cb5eeee03702",
+      "construction_code": "AB36",
+      "canonical_name": "ProgressiveDirectionalVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/ProgressiveDirectionalVP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "51b59462-2d54-5f85-b4cf-9ff64c8db002",
+      "construction_code": "AB37",
+      "canonical_name": "ProgressivePlaceQuestion",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "possible_multi_layer_construction_bundle",
+        "retired_label_research_home_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "5e902ecc-ceb2-5b0e-812f-60a1ba325f7a",
+      "construction_code": "AB38",
+      "canonical_name": "ProgressivePurposeClause",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "retired_label_research_home_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "1ac619dc-24c5-5172-8d56-9fa9535f80a3",
+      "construction_code": "AB39",
+      "canonical_name": "ProgressiveTransitivePredicate",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "retired_label_research_home_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "97676a6a-0ab8-53df-8c61-b0e88d4739e0",
+      "construction_code": "AB40",
+      "canonical_name": "ProgressiveVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/ProgressiveVP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "e54dc42e-a967-53fe-99e3-1d4e901459e5",
+      "construction_code": "AB41",
+      "canonical_name": "ProgressiveWhObjectQuestion",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/ProgressiveWhObjectQuestion.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "38fc80e4-7b08-5ca6-adf2-8f78f5c3bf83",
+      "construction_code": "AB42",
+      "canonical_name": "ProhibitiveFragment",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "retired_label_research_home_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "597f17d4-ed15-555c-aae6-4947a79a075d",
+      "construction_code": "AB43",
+      "canonical_name": "ProhibitiveImperative",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/ProhibitiveImperative.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "ea705454-c920-5a42-a3a8-cdc7654e7f9f",
+      "construction_code": "AB44",
+      "canonical_name": "PurposePredicate",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "retired_label_research_home_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "547bb36b-1d49-5c38-aac0-c4fec88bbd2f",
+      "construction_code": "AB45",
+      "canonical_name": "QuantifiedClassifierNP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/QuantifiedClassifierNP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "d1dccd79-2530-5caf-87d8-01a4f57b16ca",
+      "construction_code": "AB46",
+      "canonical_name": "QuantifiedPersonNP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/QuantifiedPersonNP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "4cd03a55-2ef3-5805-9109-ee63da152c23",
+      "construction_code": "AB47",
+      "canonical_name": "QuantifiedTimeNP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/QuantifiedTimeNP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "790c77af-9093-57bc-99e6-205fa75fca6d",
+      "construction_code": "AB48",
+      "canonical_name": "QuantityNP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/QuantityNP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "3eb44d12-2cde-5692-bbeb-04b7d126effd",
+      "construction_code": "AB49",
+      "canonical_name": "ReduplicatedVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/ReduplicatedVP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "04f60811-e5c2-54b5-bc5d-ac026e41e438",
+      "construction_code": "AB50",
+      "canonical_name": "RelativeClauseNP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/RelativeClauseNP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "02df41e9-b90b-505d-8faf-e24a96feaaae",
+      "construction_code": "AB51",
+      "canonical_name": "RepetitiveComplementVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/RepetitiveComplementVP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "582fb1f3-13da-54b8-b7d2-bbb58fb452e1",
+      "construction_code": "AB52",
+      "canonical_name": "ReportedSpeech",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/ReportedSpeech.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "semantic_domain_name_requires_structural_scope_check"
+      ]
+    },
+    {
+      "construction_uuid": "06c9f3b1-f243-588d-8a6e-bddf9a94c871",
+      "construction_code": "AB53",
+      "canonical_name": "ResourceUseLaiFunctionRelation",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/ResourceUseLaiFunctionRelation.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "semantic_domain_name_requires_structural_scope_check"
+      ]
+    },
+    {
+      "construction_uuid": "eb06a824-3045-51d7-b0f4-354a2e261227",
+      "construction_code": "AB54",
+      "canonical_name": "RestorativeComplementVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/RestorativeComplementVP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "b7efa134-2171-57d2-925e-54023101f1db",
+      "construction_code": "AB55",
+      "canonical_name": "ResultComplement",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/ResultComplement.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "e2b945ea-6f38-51a4-b988-272badae74b4",
+      "construction_code": "AB56",
+      "canonical_name": "ResultComplementVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/ResultComplementVP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "c4137370-6ee6-51a4-bf08-38c433553919",
+      "construction_code": "AB57",
+      "canonical_name": "ResultStateClause",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "retired_label_research_home_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "c5288f36-6870-5af3-ad52-bb44e39e9af8",
+      "construction_code": "AB58",
+      "canonical_name": "ScalarEvaluation",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/ScalarEvaluation.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "semantic_domain_name_requires_structural_scope_check"
+      ]
+    },
+    {
+      "construction_uuid": "9f2769df-a907-5639-97e2-bad75c2da1e6",
+      "construction_code": "AB59",
+      "canonical_name": "ScalarRangeFragment",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "retired_label_research_home_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "c579fa12-518f-57cc-b02a-5b61e0ec5f5d",
+      "construction_code": "AB60",
+      "canonical_name": "ScalarValueQuestion",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/ScalarValueQuestion.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "85641747-4c35-5a86-bcb6-d3a20bc6d1c2",
+      "construction_code": "AB61",
+      "canonical_name": "SchedulingQuestion",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "retired_label_research_home_check",
+        "semantic_domain_name_requires_structural_scope_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "e69469a7-13fc-5185-b325-0e29dda17e82",
+      "construction_code": "AB62",
+      "canonical_name": "SeemingPerfectiveResultClause",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "retired_label_research_home_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "488d8152-b8d6-592e-b1c4-b1fb6e5cac8a",
+      "construction_code": "AB63",
+      "canonical_name": "SerialVerbPurposeChain",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/SerialVerbPurposeChain.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "3ef34a64-39f3-5cb3-9ead-65519138da37",
+      "construction_code": "AB64",
+      "canonical_name": "SourceMotionClause",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/SourceMotionClause.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "c1379c61-e4b4-585b-bf99-acd86b1125b2",
+      "construction_code": "AB65",
+      "canonical_name": "SpeechTransferClause",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "retired_label_research_home_check",
+        "semantic_domain_name_requires_structural_scope_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "28e52716-cf4b-55dc-8929-63070d382bfa",
+      "construction_code": "AB66",
+      "canonical_name": "StativeNominalComplement",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/StativeNominalComplement.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "9047567d-b109-5ea2-840e-55cc624cd1bb",
+      "construction_code": "AB67",
+      "canonical_name": "StativePredicate",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/StativePredicate.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "fa36bd93-6f14-54c7-9956-7347e4baac28",
+      "construction_code": "AB68",
+      "canonical_name": "SuggestionQuestion",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/SuggestionQuestion.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "5e5a2a1a-3208-5513-8703-712b1f7752cb",
+      "construction_code": "AB69",
+      "canonical_name": "TemporalAdverbialClause",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "retired_label_research_home_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "56230c5c-0639-5c2a-8da9-4520ab1fdccc",
+      "construction_code": "AB70",
+      "canonical_name": "TemporalClause",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/TemporalClause.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition"
+      ]
+    },
+    {
+      "construction_uuid": "813a78d9-7752-523c-9ad0-6bc8d2b8a5b2",
+      "construction_code": "AB71",
+      "canonical_name": "TimeNP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/TimeNP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "506c702b-9528-5cce-aae6-5fe53f6d199d",
+      "construction_code": "AB72",
+      "canonical_name": "TimeToActionFrame",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "retired_label_research_home_check",
+        "semantic_domain_name_requires_structural_scope_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "faf0933c-e9fb-55e4-aed5-89863a40747f",
+      "construction_code": "AB73",
+      "canonical_name": "Topic",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/Topic.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "6fea6ab3-1f41-5bcb-9d80-8dc65fa93d06",
+      "construction_code": "AB74",
+      "canonical_name": "TopicComment",
+      "lifecycle_state": "current",
+      "claim_layer": "parser_representation",
+      "linguistic_status": "parser_heuristic",
+      "source_path": "grammar/parser_heuristic/TopicComment.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "internal_representation_name_review"
+      ]
+    },
+    {
+      "construction_uuid": "25744b08-454d-52b6-a0e5-221c825973b4",
+      "construction_code": "AB75",
+      "canonical_name": "TopicCommentClause",
+      "lifecycle_state": "retired",
+      "claim_layer": "parser_representation",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "internal_representation_name_review",
+        "retired_label_research_home_check"
+      ]
+    },
+    {
+      "construction_uuid": "59157c16-bf49-5a03-aa13-850b1aa0af86",
+      "construction_code": "AB76",
+      "canonical_name": "TransformationResultFrame",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "retired_label_research_home_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "828bc3b8-59e2-5aa8-b412-3dc5d09a519a",
+      "construction_code": "AB77",
+      "canonical_name": "TransformationResultPredicate",
+      "lifecycle_state": "retired",
+      "claim_layer": "unresolved",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "retired_label_research_home_check",
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "aede0f2c-920e-544f-9c41-e591bcb57fc7",
+      "construction_code": "AB78",
+      "canonical_name": "TransitiveVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/TransitiveVP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "7e3d95d0-d910-5238-9074-c0640a6bbe18",
+      "construction_code": "AB79",
+      "canonical_name": "VPComplementFrame",
+      "lifecycle_state": "retired",
+      "claim_layer": "parser_representation",
+      "linguistic_status": "retired",
+      "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition",
+        "internal_representation_name_review",
+        "retired_label_research_home_check"
+      ]
+    },
+    {
+      "construction_uuid": "eaf07194-ff97-5198-9e22-556e382394a6",
+      "construction_code": "AB80",
+      "canonical_name": "VerbComplementVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/VerbComplementVP.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "7934dcdc-ca48-5235-b18a-b9b2eb56c31b",
+      "construction_code": "AB81",
+      "canonical_name": "VocativeAddressTerm",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "lexicalized_only",
+      "source_path": "grammar/lexicalized_only/VocativeAddressTerm.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": []
+    },
+    {
+      "construction_uuid": "2be6ae04-b8d6-513e-a5d5-2ded61690e7f",
+      "construction_code": "AB82",
+      "canonical_name": "WhClassifierQuestion",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "source_path": "grammar/unsupported_generalization/WhClassifierQuestion.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    }
+  ]
+}
