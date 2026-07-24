@@ -2,7 +2,7 @@
   "schema": "canto-span-full-repo-label-sweep-v1",
   "identity_registry_schema": "canto-span-construction-identity-registry-v1",
   "record_count": 181,
-  "pending_review_count": 147,
+  "pending_review_count": 142,
   "automatic_flag_counts": {
     "generic_head_requires_boundary_definition": 72,
     "internal_representation_name_review": 20,
@@ -435,15 +435,15 @@
     {
       "construction_uuid": "4b12b550-75e8-5741-b255-a77e2731a62e",
       "construction_code": "AA26",
-      "canonical_name": "CompletionVP",
+      "canonical_name": "WanMarkedCompletionVP",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/CompletionVP.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "runtime_broader",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": []
     },
     {
@@ -563,15 +563,15 @@
     {
       "construction_uuid": "bf2bf2f9-0a38-5eb6-b078-5bd5e1be47b2",
       "construction_code": "AA34",
-      "canonical_name": "CoverbFrame",
+      "canonical_name": "PreverbalCoverbNPClause",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/CoverbFrame.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "runtime_narrower_defensible",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": [
         "generic_head_requires_boundary_definition"
       ]
@@ -614,15 +614,15 @@
     {
       "construction_uuid": "17958e93-eaeb-55de-9f15-82d4381f6b02",
       "construction_code": "AA37",
-      "canonical_name": "DegreeMannerAdverbial",
+      "canonical_name": "PostverbalDiMannerAdjustmentVP",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/DegreeMannerAdverbial.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "runtime_broader",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": []
     },
     {
@@ -656,15 +656,15 @@
     {
       "construction_uuid": "ecc86476-37a0-5bde-b8da-899602e890d9",
       "construction_code": "AA40",
-      "canonical_name": "DegreeStativePredicate",
+      "canonical_name": "HouMarkedPropertyPredicate",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/DegreeStativePredicate.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "runtime_broader",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": [
         "generic_head_requires_boundary_definition"
       ]
@@ -739,15 +739,15 @@
     {
       "construction_uuid": "cdee31e6-35ad-580e-8bfe-c37740d0c6a0",
       "construction_code": "AA45",
-      "canonical_name": "DesiderativeVP",
+      "canonical_name": "SoengVPComplementClause",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/DesiderativeVP.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "runtime_narrower_defensible",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": []
     },
     {

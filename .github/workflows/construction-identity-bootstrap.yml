@@ -22,7 +22,6 @@ on:
       - docs/research/FULL-REPO-LABEL-SWEEP-BASELINE-R1.md
       - docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv
       - .github/workflows/construction-identity-bootstrap.yml
-      - .github/workflows/apply-construction-adjudications.yml
   pull_request:
     paths:
       - data/construction-identities.json
@@ -44,7 +43,6 @@ on:
       - docs/research/FULL-REPO-LABEL-SWEEP-BASELINE-R1.md
       - docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv
       - .github/workflows/construction-identity-bootstrap.yml
-      - .github/workflows/apply-construction-adjudications.yml
   workflow_dispatch:
 
 permissions:

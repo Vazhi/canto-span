@@ -7,27 +7,53 @@ related: "[[DEFINITION-OF-DONE]]"
 
 # Testing and verification
 
-## Parser tests
+Testing proves implementation behavior. It does not independently establish a
+Cantonese construction, settle ontology, or authorize promotion.
 
-Run the canonical parser suite with:
+## Parser suite
 
 ```bash
 npm test
 ```
 
-It runs:
-
 - 551 exact regression cases;
 - 43 NP-subsystem cases;
 - 1,518 per-construction assertions across 133 construction files.
 
-Current coverage is 132 positive-and-boundary, 0 positive-only, 0 implementation-only, and 1 compatibility-alias-only. No active label is uncovered.
+Current coverage is 132 positive-and-boundary, 0 positive-only, 0 implementation-only, and 1 compatibility-alias-only.
 
-Implementation probes have linguistic evidence weight **0**. They prove only that a runtime path is observable.
+No active runtime label lacks a construction test file. Implementation probes
+have linguistic evidence weight zero.
+
+## Identity, adjudication, and discovery
+
+```bash
+npm run verify:adjudications
+npm run verify:identities
+npm run verify:discovery
+```
+
+- `verify:adjudications` checks UUID/code/legacy-label consistency, accepted batch
+  ordering, required evidence fields, and duplicate decisions.
+- `verify:identities` checks permanent UUID/code locks, current and retired
+  coverage, aliases, source paths, and regenerated identity outputs.
+- `verify:discovery` checks the 181-record readiness registry and generated
+  candidate, orphaned-evidence, family-gap, and full-sweep reports.
+
+Write-mode commands are explicit:
+
+```bash
+npm run adjudication:apply
+npm run identity:generate
+npm run discovery:generate
+```
+
+Run all write-mode commands before committing. Do not publish an adjudication
+batch first and rely on a later bot commit to repair stale generated files.
 
 ## Verification profiles
 
-The permanent verifier is manifest-driven. Profiles are configured in `config/verification-profiles.json`.
+Profiles are configured in `config/verification-profiles.json`.
 
 ```bash
 npm run verify
@@ -36,49 +62,57 @@ npm run verify:release
 npm run verify:all
 ```
 
-- `verify` runs stable structural checks: parser tests, construction notes, registry alignment, source accounting, active working set, implementation reachability, and current-document consistency.
-- `verify:research` runs panel, survey-readiness, conflict-burden, and native-review-library checks.
-- `verify:release` runs the core profile plus promotion and release-handoff gates.
-- `verify:all` runs all profiles.
+- `verify` runs stable core checks, including parser tests, status-note alignment,
+  adjudications, permanent identities, discovery freshness, source accounting,
+  active working-set consistency, implementation reachability, and current-
+  documentation consistency.
+- `verify:research` runs panel, survey-readiness, conflict-burden, research-
+  provenance, and native-review-library checks.
+- `verify:release` runs core verification plus promotion and release-handoff gates.
+- `verify:all` runs every profile.
 
-`./tools/verify-repository.sh` performs Git object validation and then runs only the stable core profile.
+`./tools/verify-repository.sh` additionally validates Git objects before running
+the stable core profile.
 
 ## Generated outputs
 
-All current generated results are written to:
+Current verifier byproducts are written to:
 
 ```text
 validation/current/
 ```
 
-These files are verifier byproducts, not patch inputs. Release patches must not include changes under `validation/current/`; otherwise a contributor who has just run verification can receive false patch conflicts.
-
-Release status baselines are different: files under `data/release-baselines/` are canonical, reviewed inputs. They contain only construction/status pairs and are SHA-256-pinned by the current release audit. Before applying a handoff patch, discard only these generated changes:
+They are not patch inputs. After verification, restore only those generated
+byproducts when a clean tree is required:
 
 ```bash
 git restore --staged --worktree validation/current
 ```
 
-After verification, the same command returns the repository to a clean state without discarding canonical evidence or source changes.
+Do not create a new `validation/vX.Y.Z/` directory for each release. Permanent
+evidence belongs in source records, status notes, adjudication records, research
+documents, release audits, fixtures, panel snapshots, or Git history.
 
-Do not create a new `validation/vX.Y.Z/` directory for each release. Historical generated results remain available in Git history; permanent evidence belongs in source records, research documents, release audits, fixtures, or panel snapshots rather than duplicated generated output trees.
+Generated discovery outputs under `data/` and `docs/research/` are different:
+they are checked-in deterministic products of the canonical identity,
+adjudication, grammar, and evidence inputs. Their freshness is verified.
 
-## Reachability probes
+## Updating tests and records
 
-All zero-weight implementation probes are stored in:
+1. Edit the canonical source, identity, adjudication, grammar, runtime, or fixture
+   input.
+2. Regenerate identity/discovery outputs when those inputs changed.
+3. Run `npm test`.
+4. Run `node tools/sync-construction-test-metadata.js` when construction-test
+   counts change.
+5. Run `npm run verify`.
+6. Run `npm run verify:research` when research or panel records changed.
+7. Run `npm run verify:release` only for release or status-transition work.
+8. Commit one coherent passing state.
 
-```text
-test-data/implementation-reachability-probes-v1.json
-```
+## GitHub Actions
 
-The former release-specific probe files were consolidated. `tools/verify-implementation-reachability.js` checks the inventory generically without hardcoded release counts or wrapper-family scripts.
-
-## Updating tests
-
-1. Edit the canonical fixture or construction case.
-2. Run `npm test`.
-3. Run `node tools/sync-construction-test-metadata.js` when construction-file counts change.
-4. Run `npm run verify`.
-5. Run `npm run verify:release` only for a release or status transition.
-
-Executable tests validate implementation. They cannot independently promote a linguistic construction.
+Repository workflows are read-only verification. JavaScript actions use Node
+24-compatible releases (`actions/checkout@v6`, `actions/setup-node@v6`, and
+`actions/upload-artifact@v6` where needed). Do not add Node 20-based action
+releases or branch-specific writer workflows.

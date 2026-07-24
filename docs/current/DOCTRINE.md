@@ -2,102 +2,159 @@
 
 ## Goal
 
-Build a broad, accurate, maintainable learner-facing parser for Cantonese as independently documented and naturally used. Linguistic accuracy and learner safety outrank parser neatness, label count, release velocity, fixture stability, implementation convenience, and source prestige.
+Build a broad, accurate, maintainable learner-facing Cantonese parser grounded in
+independently verified sources and natural usage. Linguistic accuracy and learner
+safety outrank parser neatness, label count, release speed, fixture stability,
+implementation convenience, and source prestige.
+
+## Separate state dimensions
+
+Never collapse these into one registry or one confidence score:
+
+1. **Permanent identity** — immutable UUID and short code.
+2. **Current ontology** — canonical name, family, profile, and claim layer.
+3. **Linguistic status** — current evidence class owned by the status note.
+4. **Runtime behavior** — what code and executable tests actually recognize.
+5. **Workflow state** — active or parked work.
+6. **Discovery readiness** — which hard promotion gates are complete.
+7. **Learner presentation** — simplified labels and explanations.
+
+The authority order is defined in [`00-START-HERE.md`](00-START-HERE.md).
 
 ## Claim classes
 
-Every consequential parser statement must be one of:
+Every consequential parser statement must be classified as one of:
 
-1. **Cantonese language claim** — form, meaning, distribution, ambiguity, restriction, or productivity.
-2. **Lexicalized-language claim** — a bounded conventional expression without a productivity claim.
-3. **Shared parser subsystem rule** — reusable structural assembly such as NP composition.
-4. **Parser representation** — an internal grouping or node name.
-5. **Parser heuristic** — a defeasible operational rule.
-6. **Evidence gap, quarantine, or retirement record**.
+- Cantonese language construction;
+- bounded lexicalized-language claim;
+- shared parser subsystem rule;
+- parser representation;
+- compatibility alias or diagnostic state;
+- parser heuristic;
+- evidence gap, quarantine, supersession, or retirement record.
 
-Language and lexicalized-language claims require external evidence. Shared subsystem rules require rule-level grounding in reference grammar, explicit structural scope, unseen-combination tests, and safeguards against converting fallback analyses into language claims. Internal representations and heuristics are not linguistic evidence.
+Language and lexicalized-language claims require external evidence. Shared
+subsystem rules require pattern-level grounding, explicit scope, unseen-
+combination tests, and safeguards against converting fallbacks into language
+claims. Internal representations, aliases, diagnostics, and heuristics are not
+linguistic evidence and cannot enter direct promotion discovery.
 
 ## Source-origin rule
 
-A new or promoted language claim must begin with independently checkable external propositions, not parser behavior. Record the exact source, locator, supported proposition, limitations, and relationship to the parser claim.
+A new or promoted language claim must begin with independently checkable external
+propositions, not parser behavior. Record the source, exact locator, supported
+proposition, limitations, and scope relationship.
 
-A source citation is not accepted merely because it appeared in an earlier project record. Every provisional and previously accepted construction must undergo retroactive source re-verification.
+Code, parser output, fixtures, generated probes, regression success, learner
+usefulness, corpus search results, and historical project confidence cannot
+create a language claim. They may test an externally grounded design or identify
+a research question.
 
-Code, parser output, fixtures, generated probes, regression success, learner usefulness, and raw corpus searches cannot create a language claim. They may test a source-originated design or identify a research question.
+Publication attestation does not by itself prove productivity, dialect-wide
+naturalness, unrestricted distribution, or the parser's preferred analysis.
+Publication attestation alone is not sufficient for promotion.
 
 ## Evidence-scope rule
 
-- Attestation proves occurrence in the documented context; it does not by itself prove productivity, frequency, dialect-wide naturalness, or the parser's preferred structure.
-- A narrow supported subtype does not promote a broad compatibility label.
-- Source quantity cannot compensate for dependence, weak locators, copied examples, or mismatched scope.
-- Pedagogical sources may support explicit teaching analyses and examples, but should not alone establish unrestricted productivity.
-- Project corpora may expose natural usage and parser failures, but cannot independently establish productivity.
-- Raw corpus hit counts have no evidence weight. Each counted example must be manually reviewed and classified.
+- Attestation proves occurrence in the documented context, not unrestricted
+  productivity, frequency, dialect-wide naturalness, or one preferred analysis.
+- A narrow supported subtype does not promote a broad runtime alias or umbrella.
+- Evidence attached to a wrapper, retired record, or predecessor is never
+  transferred automatically to a successor UUID.
+- Source quantity cannot compensate for dependence, weak locators, copied
+  examples, or mismatched scope.
+- Raw corpus counts have no evidence weight. Every used hit must be classified.
+- Parser tests and implementation probes have linguistic evidence weight zero.
+
+## Identity and adjudication
+
+UUID and short code never change or return to the allocation pool. A clarified
+or renamed profile normally keeps its UUID. A true split creates new UUIDs and
+predecessor/successor links. An accepted adjudication can supersede an older name
+or claim-layer description without silently changing runtime code or status-note
+placement.
+
+Canonical names should describe observable narrow structure and remain neutral
+when the research does not settle a theoretical analysis. Source terminology is
+preserved separately. Learner labels are presentation-only and may be many-to-one.
+
+See [`CONSTRUCTION-IDENTITY.md`](CONSTRUCTION-IDENTITY.md) and
+[`CONSTRUCTION-ADJUDICATION.md`](CONSTRUCTION-ADJUDICATION.md).
 
 ## Structural generalization versus construction claims
 
-General phrase assembly and evidence-gated construction semantics are separate layers.
+Reusable phrase assembly and evidence-gated construction semantics are separate
+layers. A grounded NP subsystem may generalize over valid structures without a
+citation for every noun or sentence, but it must preserve lexical restrictions,
+ambiguity, unknown material, and incomplete spans.
 
-A reusable NP subsystem may generalize over valid structural patterns without requiring a separate citation for every noun or every sentence. Its rules must be grounded at the pattern level and tested on unseen lexical items and unseen combinations. The lexicon supplies irreducibly lexical facts such as tokenization, Jyutping, broad category, classifier identity, and independently justified lexical restrictions; it must not act as a whitelist of complete object strings.
-
-A construction such as `VERB + 咗 + OBJECT_NP` may consume a licensed NP span without inheriting broader claims about verb productivity, aspectual meaning, completion, experiential readings, motion uses, object omission, or verb–object compatibility. Better NP assembly is parser correctness, not stronger linguistic evidence for the consuming construction.
-
-Unknown or low-confidence nominal recovery may be represented as `provisional_np_candidate`, but it must not license an evidence-gated construction. See [`NOUN-PHRASE-SUBSYSTEM.md`](NOUN-PHRASE-SUBSYSTEM.md).
+A construction may consume a licensed NP without inheriting broader claims about
+verb productivity, aspectual meaning, object omission, selection, or the NP's
+internal analysis. Better assembly is parser correctness, not stronger linguistic
+evidence for the consumer.
 
 ## Native-panel requirement
 
-Native-speaker evidence is a role-neutral panel, not a fixed two-person system.
-All eligible respondents use the same instrument and criteria, and no named
-respondent receives special weight. `provisional` requires at least 10 usable
-adjudicated judgments per critical positive and negative item from a clean
-instrument. `supported_productive` requires at least 30 per critical item from
-a locked clean instrument. Total submissions without per-item coverage do not
-satisfy either threshold.
+Native-speaker evidence is one role-neutral panel. Every eligible respondent uses
+the same instrument and criteria; no named respondent receives special weight.
+`provisional` requires at least 10 usable adjudicated judgments per critical
+positive and negative item from a clean instrument. `supported_productive`
+requires at least 30 per critical item from a locked clean instrument. Total
+submissions cannot replace item-level coverage.
 
-## Native-conflict escalation
-
-When published analysis conflicts with recorded native-speaker naturalness, publication attestation proves only that the form was printed, elicited, or analyzed. The disputed family freezes until the conflict is investigated through independent sources, controlled contrasts, clean role-neutral item-level panel evidence, relevant regional or contextual factors, negative boundaries, and competing analyses.
-
-Do not invent dialect, register, or contextual explanations. A speaker judgment evaluates the presented sentence in its elicitation context; it does not by itself prove the parser's internal structure.
+When published analysis conflicts with recorded naturalness, freeze the disputed
+scope until independent sources, controlled contrasts, role-neutral evidence,
+variation factors, negative boundaries, and competing analyses are reviewed. Do
+not invent dialect, register, or contextual explanations.
 
 ## Productive promotion
 
-A `supported_productive` construction must be narrow and satisfy every item in [`DEFINITION-OF-DONE.md`](DEFINITION-OF-DONE.md). Internal render, regression, or held-out success can establish implementation consistency only. They cannot raise linguistic confidence without independent source and speaker evidence.
+A construction is `supported_productive` only when every item in
+[`DEFINITION-OF-DONE.md`](DEFINITION-OF-DONE.md) passes. Discovery scores rank
+research effort only. Runtime, render, regression, or held-out success establishes
+implementation consistency, not linguistic confidence.
 
-No prior acceptance is grandfathered. A formerly accepted construction remains `provisional_reaudit` until it passes the current standard again.
-
-## Productive-program endpoint
-
-The target is complete and honest resolution, not promotion of every runtime label. Every surviving productive public-language construction should eventually be either a narrow `supported_productive` claim or an explicitly bounded nonproductive claim. Internal wrappers, heuristics, aliases, duplicates, dead labels, and misanalyses must remain non-licensing, merge, decompose, or retire.
-
-A smaller registry can represent progress when broad or unsupported labels are removed.
+The endpoint is honest resolution, not promotion of every runtime label. A record
+may remain narrowly nonproductive, become lexicalized-only, decompose into
+internal parts, split, merge, supersede, quarantine, or retire.
 
 ## Parser integrity
 
-- Never insert hidden subjects, objects, nouns, resources, propositions, results, activities, or connectives.
+- Never insert hidden subjects, objects, nouns, resources, propositions, results,
+  activities, or connectives.
 - Preserve ambiguity when evidence does not determine a unique analysis.
-- Internal wrappers and provisional fallback spans cannot independently license evidence-gated constructions.
-- Compatibility aliases cannot broaden an accepted subtype.
+- Internal wrappers and provisional fallback spans cannot license evidence-gated
+  constructions.
+- Compatibility aliases cannot broaden a supported subtype.
 - Learner-facing simplification must remain materially true.
-- Regression results are change signals, not linguistic authority.
-- Vocabulary and Jyutping additions do not count as grammar evidence.
-- Negative and boundary cases must remain executable tests.
-- Structural subsystems must be tested on unseen lexical items and combinations, not only motivating examples.
+- Negative and boundary cases must remain executable.
+- Structural subsystems must be tested on unseen lexical items and combinations.
 
 ## Code and documentation
 
-Runtime heuristics are the ground truth for what the parser currently checks. Documentation must describe those checks accurately. When code and documentation disagree, fix one and revalidate.
+Runtime code and executable tests own current parser behavior. Status notes own
+current linguistic status. Identity and accepted adjudications own durable
+identity and current ontology. Generated discovery records own readiness
+summaries. A mismatch outside an explicitly documented migration boundary blocks
+release.
 
-Status metadata is separate from parse behavior. From v0.5.185, linguistic status exists only in the union of `grammar/<linguistic-status>/*.md`; `main.js` stores active labels, not a duplicate status registry. Retired labels are absent from the active runtime registry. A label/note mismatch blocks release.
+Historical reports preserve provenance only. They must not be copied into current
+policy or used to resurrect superseded names, claim layers, work orders, or
+confidence statements.
 
 ## Work-product discipline
 
-Work is measured by changed parser behavior, executable tests, verified evidence, a defensible status change, an actual retirement, or a binding design decision that directly enables implementation. Avoid parallel ledgers and repetitive validation summaries that merely restate unchanged information.
+Prefer one canonical record and one verifier per responsibility. Do not create
+parallel ledgers, release-specific verifier families, repeated generated snapshot
+trees, or automatic workflows that commit intermediate failing states.
 
-Record meaningful work as a Git commit and export the full repository including `.git/` outside the sandbox. Plugin ZIPs are installation artifacts, not project-state records.
+Meaningful work includes changed parser behavior, executable tests, verified
+evidence, an accepted UUID-keyed decision, a defensible status transition, an
+actual retirement, or a binding architecture decision that enables implementation.
 
 ## Autonomous governance
 
-The assistant may autonomously research, specify, implement, validate, revise, quarantine, retire, commit, and export changes under this doctrine. Separate user approval is not required for each family.
-
-User participation is required when evidence cannot be created internally without compromising independence, especially independent panel recruitment and user-visible Obsidian rendering. Frozen work must remain visibly deferred rather than silently waived.
+The assistant may autonomously research, adjudicate, specify, implement, validate,
+revise, quarantine, retire, and publish changes under this doctrine. User
+participation remains necessary where independence cannot be created internally,
+especially native-panel recruitment and user-visible rendering confirmation.
