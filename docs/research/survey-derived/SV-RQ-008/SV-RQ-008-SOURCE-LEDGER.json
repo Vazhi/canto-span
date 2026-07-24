@@ -1,0 +1,97 @@
+{
+  "schema": "canto-span-private-survey-research-ledger-v1",
+  "research_id": "SV-RQ-008",
+  "created": "2026-07-24",
+  "status": "source_linked_provisional",
+  "runtime_change_authorized": false,
+  "sources": [
+    {
+      "source_id": "SV008-S01",
+      "citation": "Yip, Ka-Fai. 2025. Inner Aspect in Cantonese. FLaP FIRST 1:15–36.",
+      "url": "https://www.researchgate.net/publication/393680401_Inner_Aspect_in_Cantonese",
+      "evidence_grade": "DIRECT_SCHOLARLY_CORE",
+      "scope_match": "direct",
+      "directly_establishes": [
+        "完 is analyzed as completive inner aspect",
+        "inner aspect may be followed by perfective 咗",
+        "the structural order places inner aspect below outer aspect",
+        "an overt-object 食完咗飯 example is provided"
+      ],
+      "does_not_establish": [
+        "unrestricted lexical productivity",
+        "uniform regional acceptance",
+        "the source of survey item-level variation"
+      ],
+      "examples": [
+        "食完咗飯好耐嘍"
+      ]
+    },
+    {
+      "source_id": "SV008-S02",
+      "citation": "Sybesma, Rint. 2013. Cantonese sin 先 and the Question of Microvariation and Macrovariation. In Breaking Down the Barriers, 971–994.",
+      "url": "https://www.researchgate.net/publication/305411096_Cantonese_sin_xian_and_the_question_of_microvariation_and_macrovariation",
+      "evidence_grade": "DIRECT_SCHOLARLY_CORE",
+      "scope_match": "partial_direct",
+      "directly_establishes": [
+        "完 may precede perfective 咗 in the verbal complex",
+        "an overt-object 食完咗啲飯 example is provided"
+      ],
+      "does_not_establish": [
+        "a complete analysis of completive 完",
+        "distribution across verb classes or varieties"
+      ],
+      "examples": [
+        "佢食完咗啲飯"
+      ]
+    },
+    {
+      "source_id": "SV008-S03",
+      "citation": "Fan, Xiaolei and Kin Wing Kevin Chan. 2022. 香港粵語「咗」的語法特點：與北京話「了1」的比較. Language and Linguistics 23(3):371–410.",
+      "doi": "10.1075/lali.00110.fan",
+      "url": "https://benjamins.com/catalog/lali.00110.fan",
+      "evidence_grade": "DIRECT_SCHOLARLY_CORE",
+      "scope_match": "supporting",
+      "directly_establishes": [
+        "Hong Kong Cantonese 咗 is an outer perfective marker with complex-VP placement restrictions",
+        "咗, verbal-object order, and sentence-final 喇 require separate analysis"
+      ],
+      "does_not_establish": [
+        "specific lexical conditions on V完咗O",
+        "regional variation outside Hong Kong Cantonese"
+      ],
+      "examples": []
+    },
+    {
+      "source_id": "SV008-S04",
+      "citation": "Cheung, Hung-nin Samuel. 2007. 香港粵語語法的研究（增訂版）. Chinese University Press.",
+      "url": "https://cup.cuhk.edu.hk/index.php?product_id=551&route=product/product",
+      "evidence_grade": "REFERENCE_GRAMMAR_CORE",
+      "scope_match": "pending_direct_inspection",
+      "directly_establishes": [],
+      "reported_through_secondary_source": [
+        "Yip 2025 attributes 食完咗飯好耐嘍 to Cheung 2007:149"
+      ],
+      "required_next_action": "inspect the cited page directly before treating this source as independently verified"
+    }
+  ],
+  "private_evidence": {
+    "source": "YUE-JUDGMENT-PILOT-01 export 2026-07-24 07:22",
+    "type": "PRIVATE_SURVEY_AGGREGATE",
+    "qualified_complete_n": 24,
+    "natural": 13,
+    "uncertain": 0,
+    "unnatural": 11,
+    "limitations": [
+      "small and unequal item-level samples",
+      "Hong Kong–weighted panel",
+      "free-text repairs are hypothesis-generating",
+      "no regional inference authorized"
+    ]
+  },
+  "decision": {
+    "categorical_rejection": "rejected",
+    "unrestricted_productivity": "not_supported",
+    "best_current_description": "structurally supported and directly attested; lexical, discourse, and regional distribution unresolved",
+    "parser_change": "none"
+  }
+}
