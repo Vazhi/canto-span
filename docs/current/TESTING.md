@@ -123,3 +123,10 @@ Repository workflows are read-only verification. JavaScript actions use Node
 24-compatible releases (`actions/checkout@v6`, `actions/setup-node@v6`, and
 `actions/upload-artifact@v6` where needed). Do not add Node 20-based action
 releases or branch-specific writer workflows.
+
+Workflow trigger coverage is part of the verified contract. Core CI must run when
+runtime, canonical data, grammar notes, tests, tools, verification configuration,
+or current documentation changes. Research CI must run when research documents,
+external evidence, corpus or panel records, relevant runtime and construction
+tests, or research-verifier inputs change. `tools/verify-agent-coordination.js`
+enforces both trigger sets and explicit read-only permissions.
