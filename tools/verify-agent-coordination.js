@@ -90,7 +90,7 @@ requireText(startPath, "`followup-draft-v1` is non-deployable", "follow-up deplo
 
 requireText(statePath, "`readiness_effect: partial_only`", "project-state corpus effect");
 requireText(statePath, "`YUE-JUDGMENT-PILOT-01` remains the active SoSci collection instrument", "project-state live survey");
-requireText(statePath, "`followup-draft-v1-*` is a non-deployable", "project-state follow-up state");
+requireText(statePath, "`review-packets/native-panel/active-v2/followup-draft-v1-*` is a non-deployable", "project-state follow-up state");
 
 requireText(readmePath, "AGENTS.md", "root agent bootstrap pointer");
 requireText(readmePath, "docs/current/00-START-HERE.md", "root Start Here pointer");
