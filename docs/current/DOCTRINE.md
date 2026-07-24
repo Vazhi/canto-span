@@ -50,6 +50,10 @@ usefulness, corpus search results, and historical project confidence cannot
 create a language claim. They may test an externally grounded design or identify
 a research question.
 
+Publication attestation does not by itself prove productivity, dialect-wide
+naturalness, unrestricted distribution, or the parser's preferred analysis.
+Publication attestation alone is not sufficient for promotion.
+
 ## Evidence-scope rule
 
 - Attestation proves occurrence in the documented context, not unrestricted
