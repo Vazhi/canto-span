@@ -8,6 +8,7 @@ on:
       - data/construction-identity-lock.json
       - data/construction-label-sweep.json
       - data/construction-adjudications.json
+      - data/construction-adjudication-batches/**
       - config/construction-identity.schema.json
       - config/construction-adjudication.schema.json
       - tools/generate-construction-identities.js
@@ -20,7 +21,7 @@ on:
       - docs/current/CONSTRUCTION-IDENTITY.md
       - docs/current/CONSTRUCTION-ADJUDICATION.md
       - docs/research/FULL-REPO-LABEL-SWEEP-BASELINE-R1.md
-      - docs/research/CONSTRUCTION-ADJUDICATION-BATCH-01.md
+      - docs/research/CONSTRUCTION-ADJUDICATION-BATCH-*.md
       - docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv
       - .github/workflows/construction-identity-bootstrap.yml
   pull_request:
@@ -30,6 +31,7 @@ on:
       - data/construction-identity-lock.json
       - data/construction-label-sweep.json
       - data/construction-adjudications.json
+      - data/construction-adjudication-batches/**
       - config/construction-identity.schema.json
       - config/construction-adjudication.schema.json
       - tools/generate-construction-identities.js
@@ -42,7 +44,7 @@ on:
       - docs/current/CONSTRUCTION-IDENTITY.md
       - docs/current/CONSTRUCTION-ADJUDICATION.md
       - docs/research/FULL-REPO-LABEL-SWEEP-BASELINE-R1.md
-      - docs/research/CONSTRUCTION-ADJUDICATION-BATCH-01.md
+      - docs/research/CONSTRUCTION-ADJUDICATION-BATCH-*.md
       - docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv
       - .github/workflows/construction-identity-bootstrap.yml
   workflow_dispatch:
