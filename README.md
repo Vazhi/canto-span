@@ -20,6 +20,10 @@ state dimensions.
 - direct `source_supported` candidates: **68**
 - current narrowing candidates: **36**
 - excluded non-language/internal records: **26**
+- current AB30 corpus packet: **5 reviewed; 2 genuine; 3 false positives;
+  `partial_only` readiness effect**
+- active survey: **`YUE-JUDGMENT-PILOT-01` remains in collection**
+- follow-up survey: **`followup-draft-v1` remains non-deployable**
 
 The remaining linguistic-status folders contain 37
 `unsupported_generalization`, 2 `lexicalized_only`, and 15 `parser_heuristic`
@@ -35,9 +39,14 @@ matchers.
 
 ## Where to start
 
-Read [`docs/current/00-START-HERE.md`](docs/current/00-START-HERE.md). It defines
-the authority order and links the current policy, identity, adjudication,
-testing, and grammar records.
+Automated agents must first read [`AGENTS.md`](AGENTS.md), which directs them to
+read the complete mandatory contract in
+[`docs/current/00-START-HERE.md`](docs/current/00-START-HERE.md).
+
+`00-START-HERE.md` defines the authority order, non-negotiable standards,
+task-routing table, multi-agent workflow, verification matrix, forbidden patterns,
+and the reusable Codex/agent task prompt. A task prompt may narrow scope but does
+not replace that contract.
 
 The concise current baseline is
 [`docs/current/PROJECT-STATE.md`](docs/current/PROJECT-STATE.md). Historical
