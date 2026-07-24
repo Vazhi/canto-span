@@ -8,9 +8,11 @@ provenance but do not override the authority order below.
 
 - runtime: **v0.5.216**
 - current runtime labels / status notes: **133 / 133**
+- construction workflow: **2 active / 131 workflow-archived**
 - retired labels: **48**
 - permanent UUID records: **181**
 - completed expert adjudications: **34**
+- `research_pending`: **79**
 - promotion-ready constructions: **0**
 - direct `boundary_ready` candidates: **1**
 
