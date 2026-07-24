@@ -8,7 +8,6 @@ on:
       - data/construction-identity-lock.json
       - data/construction-label-sweep.json
       - data/construction-adjudications.json
-      - data/construction-adjudication-batches/**
       - config/construction-identity.schema.json
       - config/construction-adjudication.schema.json
       - tools/generate-construction-identities.js
@@ -21,9 +20,9 @@ on:
       - docs/current/CONSTRUCTION-IDENTITY.md
       - docs/current/CONSTRUCTION-ADJUDICATION.md
       - docs/research/FULL-REPO-LABEL-SWEEP-BASELINE-R1.md
-      - docs/research/CONSTRUCTION-ADJUDICATION-BATCH-*.md
       - docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv
       - .github/workflows/construction-identity-bootstrap.yml
+      - .github/workflows/apply-construction-adjudications.yml
   pull_request:
     paths:
       - data/construction-identities.json
@@ -31,7 +30,6 @@ on:
       - data/construction-identity-lock.json
       - data/construction-label-sweep.json
       - data/construction-adjudications.json
-      - data/construction-adjudication-batches/**
       - config/construction-identity.schema.json
       - config/construction-adjudication.schema.json
       - tools/generate-construction-identities.js
@@ -44,9 +42,9 @@ on:
       - docs/current/CONSTRUCTION-IDENTITY.md
       - docs/current/CONSTRUCTION-ADJUDICATION.md
       - docs/research/FULL-REPO-LABEL-SWEEP-BASELINE-R1.md
-      - docs/research/CONSTRUCTION-ADJUDICATION-BATCH-*.md
       - docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv
       - .github/workflows/construction-identity-bootstrap.yml
+      - .github/workflows/apply-construction-adjudications.yml
   workflow_dispatch:
 
 permissions:
@@ -56,10 +54,11 @@ jobs:
   verify:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version: 24
+          package-manager-cache: false
       - name: Verify expert construction adjudications
         run: node tools/apply-construction-adjudications.js
       - name: Verify permanent construction identities
