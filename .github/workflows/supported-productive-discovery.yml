@@ -28,7 +28,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Generate full-repository discovery sweep
+      - name: Generate refined full-repository discovery sweep
         run: node tools/generate-supported-productive-discovery.js --write
       - name: Commit generated discovery records
         run: |
@@ -43,6 +43,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "Discovery outputs already current"
           else
-            git commit -m "Generate full supported-productivity sweep"
+            git commit -m "Generate refined supported-productivity sweep"
             git push origin HEAD:agent/permanent-construction-identity-sweep
           fi
