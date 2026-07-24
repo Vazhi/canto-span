@@ -16,9 +16,14 @@ function read(relativePath) {
   return fs.readFileSync(absolute, "utf8");
 }
 
+function normalize(value) {
+  return String(value).replace(/\s+/g, " ").trim();
+}
+
 function requireText(file, text, label) {
-  const content = read(file);
-  if (!content.includes(text)) {
+  const content = normalize(read(file));
+  const expected = normalize(text);
+  if (!content.includes(expected)) {
     errors.push({ type: "missing_contract_text", file, label, expected: text });
   }
 }
