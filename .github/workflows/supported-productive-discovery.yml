@@ -1,0 +1,53 @@
+name: Supported productive discovery
+
+on:
+  push:
+    paths:
+      - tools/generate-supported-productive-discovery.js
+      - tools/promotion-gate-lib.js
+      - tools/construction-notes-lib.js
+      - data/construction-identities.json
+      - data/construction-candidate-readiness.json
+      - grammar/**
+      - config/verification-profiles.json
+      - package.json
+      - docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv
+      - archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json
+      - docs/research/SUPPORTED-PRODUCTIVE-CANDIDATES.md
+      - docs/research/ORPHANED-CONSTRUCTION-EVIDENCE.md
+      - docs/research/CONSTRUCTION-FAMILY-GAPS.md
+      - docs/research/FULL-REPO-SUPPORTED-PRODUCTIVE-SWEEP-R1.md
+      - .github/workflows/supported-productive-discovery.yml
+  pull_request:
+    paths:
+      - tools/generate-supported-productive-discovery.js
+      - tools/promotion-gate-lib.js
+      - tools/construction-notes-lib.js
+      - data/construction-identities.json
+      - data/construction-candidate-readiness.json
+      - grammar/**
+      - config/verification-profiles.json
+      - package.json
+      - docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv
+      - archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json
+      - docs/research/SUPPORTED-PRODUCTIVE-CANDIDATES.md
+      - docs/research/ORPHANED-CONSTRUCTION-EVIDENCE.md
+      - docs/research/CONSTRUCTION-FAMILY-GAPS.md
+      - docs/research/FULL-REPO-SUPPORTED-PRODUCTIVE-SWEEP-R1.md
+      - .github/workflows/supported-productive-discovery.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Run core verification including discovery sweep
+        run: npm run verify

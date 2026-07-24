@@ -1,0 +1,151 @@
+{
+  "schema": "canto-span-construction-adjudications-v1",
+  "adjudicated_on": "2026-07-24",
+  "adjudication_authority": "project expert systematic review",
+  "records": [
+    {
+      "construction_uuid": "2169217f-a21d-5165-9513-eb0edee2c220",
+      "construction_code": "AB30",
+      "legacy_label": "PostverbalZoPerfectiveVP",
+      "approved_canonical_name": "ZoMarkedPerfectiveObjectVP",
+      "claim_layer": "language_construction",
+      "family_name": "PerfectiveAspect",
+      "profile_name": "VerbZoOvertObject",
+      "profile_description": "A lexical verb followed by perfective 咗 and an overt NP object. The profile excludes objectless V–咗, inner-aspect or result material before 咗, motion-goal perfectives, experiential 過, and progressive 緊. Predicate–object compatibility is adjudicated separately from recognition of the overt perfective structure.",
+      "learner_label": null,
+      "behavior_research_alignment": "runtime_narrower_defensible",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
+      "status_recommendation": "retain research_pending until reviewed corpus evidence, a locked role-neutral panel wave, and held-out validation are complete",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": ["SRC-FAN-CHAN-2022", "SRC-SIO-BOND-2025", "SRC-SYBESMA-2013", "SRC-YIP-MATTHEWS-2000-BASIC"],
+        "runtime_locations": ["main.js:3083-3103", "main.js:13644-13735", "main.js:15348-15426", "main.js:21168"],
+        "test_file": "tests/constructions/PostverbalZoPerfectiveVP.json",
+        "additional_research": ["Sio and Bond 2025 explicitly analyze 咗 as an outer perfective aspect marker and illustrate V–OAP–object order."]
+      },
+      "source_terms": [
+        { "term": "outer aspect", "source_id": "SRC-SIO-BOND-2025", "scope_match": "close" },
+        { "term": "perfective marker 咗", "source_id": "SRC-SIO-BOND-2025", "scope_match": "exact" },
+        { "term": "V–咗–object order", "source_id": "SRC-YIP-MATTHEWS-2000-BASIC", "scope_match": "exact" }
+      ],
+      "former_names": ["PostverbalZoPerfectiveVP"],
+      "successor_profiles": [],
+      "rationale": "The legacy name identifies the marker as postverbal but omits the overt object that defines this runtime subtype. Research supports a broader outer-perfective system, including 咗 after inner aspectual material; the runtime intentionally implements only the simple verb–咗–object profile. ZoMarkedPerfectiveObjectVP is therefore a more exact, theory-light canonical name while outer-aspect terminology remains source-linked metadata.",
+      "unresolved_blockers": [
+        "review and classify diverse corpus candidates",
+        "collect a clean role-neutral panel wave",
+        "run held-out validation",
+        "confirm that the action-verb and licensed-object inventories do not create unsupported lexical extensions"
+      ]
+    },
+    {
+      "construction_uuid": "1087ebec-c012-5107-9c1f-6383bf40091c",
+      "construction_code": "AA07",
+      "legacy_label": "AssociativeNP",
+      "approved_canonical_name": "GeMarkedNominalModifierNP",
+      "claim_layer": "language_construction",
+      "family_name": "NominalModificationAndRelatives",
+      "profile_name": "ModifierGeOvertHeadNoun",
+      "profile_description": "An overt nominal modifier followed by 嘅 and an overt nominal head. The profile preserves possessive and attributive modification without assigning one uniform semantic role to 嘅 and does not cover the distinct associative-plural X + (佢)哋 construction.",
+      "learner_label": null,
+      "behavior_research_alignment": "runtime_narrower_defensible",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
+      "status_recommendation": "keep unsupported_generalization only until the versioned runtime alias migration; then move the narrowed record to research_pending",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": ["SRC-SIO-2011-GE3", "SRC-YU-2006-NOMINAL-MODIFIERS"],
+        "runtime_locations": ["main.js:3520-3555", "main.js:5491-5500", "main.js:16587"],
+        "test_file": "tests/constructions/AssociativeNP.json",
+        "additional_research": ["The established associative-plural use of the term refers to a different X + (佢)哋 construction, so the legacy name is actively misleading for modifier + 嘅 + noun behavior."]
+      },
+      "source_terms": [
+        { "term": "the Cantonese ge3", "source_id": "SRC-SIO-2011-GE3", "scope_match": "close" },
+        { "term": "nominal modifier", "source_id": "SRC-YU-2006-NOMINAL-MODIFIERS", "scope_match": "exact" },
+        { "term": "possessive nominal structure", "source_id": "SRC-YU-2006-NOMINAL-MODIFIERS", "scope_match": "partial" }
+      ],
+      "former_names": ["AssociativeNP"],
+      "successor_profiles": [],
+      "rationale": "The runtime behavior is a real 嘅-marked nominal-modification profile, but AssociativeNP names a different construction in the relevant literature and invites a false plural analysis. The same UUID should be retained because the implemented structural profile does not need to split; only the canonical name and documentation need correction.",
+      "unresolved_blockers": [
+        "complete the versioned runtime-label compatibility migration",
+        "review recursive and stacked nominal modification",
+        "review corpus diversity and attachment ambiguity",
+        "collect role-neutral panel evidence for critical boundaries"
+      ]
+    },
+    {
+      "construction_uuid": "4f2855b1-7545-5e42-a0fb-aef8cf24f0fb",
+      "construction_code": "AA30",
+      "legacy_label": "CoordinatedNP",
+      "approved_canonical_name": "CoordinatedNP",
+      "claim_layer": "language_construction",
+      "family_name": "Coordination",
+      "profile_name": "BinaryOvertNPConjunction",
+      "profile_description": "Two independently analyzed NPs joined by overt conjunction 同 or 同埋. The profile preserves both conjuncts, excludes comitative or coverb uses of 同, and does not claim nested, non-NP, or unbounded coordination.",
+      "learner_label": null,
+      "behavior_research_alignment": "runtime_narrower_defensible",
+      "terminology_alignment": "aligned",
+      "recommended_action": "retain_narrow",
+      "status_recommendation": "move from unsupported_generalization to research_pending after the note and status path are migrated to the adjudicated binary-NP scope",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": ["SRC-WONG-2023-LANGUAGE-SAMPLE", "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"],
+        "runtime_locations": ["main.js:2555-2580", "main.js:10590-10620", "main.js:12420-12450"],
+        "test_file": "tests/constructions/CoordinatedNP.json",
+        "additional_research": ["The checked sources distinguish conjunction 同 from comitative or prepositional 同, which matches the runtime's explicit boundary requirement."]
+      },
+      "source_terms": [
+        { "term": "conjunction 同", "source_id": "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE", "scope_match": "exact" },
+        { "term": "conjunction 同埋", "source_id": "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE", "scope_match": "close" },
+        { "term": "NP coordination", "source_id": "SRC-WONG-2023-LANGUAGE-SAMPLE", "scope_match": "close" }
+      ],
+      "former_names": [],
+      "successor_profiles": [],
+      "rationale": "The canonical name is standard and the current runtime behavior already implements a defensible narrow subtype: overt binary NP coordination. The earlier unsupported-generalization status reflects incomplete evidence and scope closure, not a bad label. The family should be Coordination rather than the legacy combined AssociativeAndCoordinatedNP family.",
+      "unresolved_blockers": [
+        "migrate the status note to research_pending",
+        "review nested and more-than-binary coordination separately",
+        "review corpus examples for 同 versus comitative ambiguity",
+        "collect role-neutral panel evidence and held-out cases"
+      ]
+    },
+    {
+      "construction_uuid": "05b62740-b275-5908-b9c7-0c2ce248de82",
+      "construction_code": "AB23",
+      "legacy_label": "PoliteImperativeClause",
+      "approved_canonical_name": "PoliteRequestWrapper",
+      "claim_layer": "parser_representation",
+      "family_name": "RequestAndDirectiveRepresentation",
+      "profile_name": "FormulaDirectiveMannerAggregate",
+      "profile_description": "An implementation wrapper that groups an overt request or politeness formula, an optional addressee, directive material, and optional manner material. It is not itself a single Cantonese clause construction and must not make 請, 唔該, and 麻煩 interchangeable.",
+      "learner_label": null,
+      "behavior_research_alignment": "overlapping",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "internalize_and_decompose",
+      "status_recommendation": "move to parser_heuristic after compatibility migration; preserve formula, directive, addressee, and manner structures as independently typed components",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": ["SRC-CHOW-2007-CANTONESE-EVERYONE", "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"],
+        "runtime_locations": ["main.js:2545-2560", "main.js:10445-10505"],
+        "test_file": "tests/constructions/PoliteImperativeClause.json",
+        "additional_research": ["Cynthia Lee 2005, A cross-linguistic study on the linguistic expressions of Cantonese and English requests, Pragmatics 15(4):395–422, treats Cantonese requests as speech acts assembled from direct or indirect strategies and lexical or syntactic mitigation devices rather than one polite-imperative construction."]
+      },
+      "source_terms": [
+        { "term": "conventional interaction formula", "source_id": "SRC-CHOW-2007-CANTONESE-EVERYONE", "scope_match": "partial" },
+        { "term": "request strategy", "source_id": "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE", "scope_match": "close" },
+        { "term": "politeness marker", "source_id": "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE", "scope_match": "partial" }
+      ],
+      "former_names": ["PoliteImperativeClause"],
+      "successor_profiles": ["FormulaDiscourseUnit", "directive or imperative force representation", "DegreeMannerAdverbial", "overt addressee role"],
+      "rationale": "The sources support multiple request strategies and pragmatically distinct lexical markers, not one productive PoliteImperativeClause. The runtime wrapper is useful only as an aggregate representation. It should therefore be internalized and decomposed while preserving every overt component and the existing compatibility alias during migration.",
+      "unresolved_blockers": [
+        "map every current wrapper output to independently typed component records",
+        "define whether directive force needs a dedicated language-construction UUID",
+        "complete compatibility migration before retiring the public wrapper name",
+        "keep lexical and register differences among 請, 唔該, and 麻煩 explicit"
+      ]
+    }
+  ]
+}

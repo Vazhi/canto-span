@@ -1,0 +1,288 @@
+{
+  "schema": "canto-span-construction-adjudications-v1",
+  "adjudicated_on": "2026-07-24",
+  "adjudication_authority": "project expert systematic review",
+  "records": [
+    {
+      "construction_uuid": "5ad779df-fcfd-5a8b-8c3e-e1206837214a",
+      "construction_code": "AA27",
+      "legacy_label": "CompoundDirectionalMotionVP",
+      "approved_canonical_name": "ReturnUpDeicticDirectionalVP",
+      "claim_layer": "language_construction",
+      "family_name": "DirectionalComplexes",
+      "profile_name": "ReturnUpComeGoDirectional",
+      "profile_description": "The independently attested three-part directional strings 返上嚟 and 返上去, analyzed as return plus upward direction plus deictic 嚟 or 去. The profile excludes two-part 上嚟, manner-verb-plus-directional predicates such as 行返過嚟, arbitrary 返-initial combinations, and unreviewed object-placement patterns.",
+      "learner_label": null,
+      "behavior_research_alignment": "runtime_narrower_defensible",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
+      "status_recommendation": "retain research_pending until additional tri-syllabic directional contrasts, object-placement boundaries, corpus review, role-neutral panel evidence, and held-out validation are complete",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-CHOR-2018-DIRECTIONALS",
+          "SRC-WONG-2023-LANGUAGE-SAMPLE",
+          "SRC-YIU-2016-DIRECTIONAL-ASPECT"
+        ],
+        "runtime_locations": [],
+        "test_file": "tests/constructions/CompoundDirectionalMotionVP.json",
+        "additional_research": [
+          "The checked sources use compound or tri-syllabic directional terminology and independently attest 返 before a disyllabic directional, including 返上嚟 and 返上去. The runtime is narrower than the broader directional systems described in those sources."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "tri-syllabic directional",
+          "source_id": "SRC-WONG-2023-LANGUAGE-SAMPLE",
+          "scope_match": "exact"
+        },
+        {
+          "term": "postverbal directional string",
+          "source_id": "SRC-CHOR-2018-DIRECTIONALS",
+          "scope_match": "close"
+        },
+        {
+          "term": "compound directional",
+          "source_id": "SRC-YIU-2016-DIRECTIONAL-ASPECT",
+          "scope_match": "close"
+        }
+      ],
+      "former_names": [
+        "CompoundDirectionalMotionVP"
+      ],
+      "successor_profiles": [],
+      "rationale": "CompoundDirectionalMotionVP is compatible with the literature but still sounds broader than the implemented profile and does not expose the defining 返 + 上 + 嚟/去 sequence. ReturnUpDeicticDirectionalVP identifies the exact source-linked subtype while avoiding a claim that all compound directionals share its constituency, object order, or productivity.",
+      "unresolved_blockers": [
+        "record exact runtime code locations",
+        "test other independently attested tri-syllabic directionals without generalizing from 返上嚟 and 返上去",
+        "review manner-verb attachment and object-placement contrasts",
+        "collect corpus, role-neutral panel, and held-out evidence"
+      ]
+    },
+    {
+      "construction_uuid": "a3d9e4b2-1ef9-530a-9dfb-01711e42bb2a",
+      "construction_code": "AA38",
+      "legacy_label": "DegreeMannerModifiedVP",
+      "approved_canonical_name": "PreposedDiMannerVPWrapper",
+      "claim_layer": "parser_representation",
+      "family_name": "MannerRepresentation",
+      "profile_name": "PreposedDiMannerAdverbialPlusVP",
+      "profile_description": "An implementation wrapper combining a preposed 啲-marked manner expression such as 快啲 with an independently analyzed following VP. It excludes postverbal 行快啲 and discourse-separated 靜啲，佢喺度畫畫, and it does not itself establish a separate language construction beyond the manner expression and VP components.",
+      "learner_label": null,
+      "behavior_research_alignment": "overlapping",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "internalize_and_decompose",
+      "status_recommendation": "move to parser_heuristic after compatibility migration; attach linguistic evidence to the independently typed 啲-marked manner adverbial and the following VP rather than to the aggregate wrapper",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-WONG-2023-LANGUAGE-SAMPLE",
+          "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
+        ],
+        "runtime_locations": [],
+        "test_file": "tests/constructions/DegreeMannerModifiedVP.json",
+        "additional_research": [
+          "The source record distinguishes preposed 快啲 from postverbal 行快啲 and from discourse-separated 靜啲. The test positive preserves a compositional 快啲 + VP span, but the repository does not establish the aggregate VP wrapper as an independently named construction.",
+          "The positive test attributes 快啲行上去啦 to SRC-WONG-2023-LANGUAGE-SAMPLE while the construction note associates the preposed example with the coursebook; that provenance edge requires correction before linguistic promotion work."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "快啲行上去",
+          "source_id": "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE",
+          "scope_match": "exact"
+        },
+        {
+          "term": "postverbal 行快啲",
+          "source_id": "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE",
+          "scope_match": "contrastive"
+        },
+        {
+          "term": "discourse-separated 靜啲",
+          "source_id": "SRC-WONG-2023-LANGUAGE-SAMPLE",
+          "scope_match": "contrastive"
+        }
+      ],
+      "former_names": [
+        "DegreeMannerModifiedVP"
+      ],
+      "successor_profiles": [
+        "DegreeMannerAdverbial",
+        "independently analyzed following VP"
+      ],
+      "rationale": "The evidence supports a preposed 啲-marked manner expression and separately supports its ordering contrasts; it does not require a second language-level node spanning the modifier and the entire VP. The current label therefore duplicates compositional structure and should survive, if needed, only as an internal aggregate wrapper.",
+      "unresolved_blockers": [
+        "correct the positive test source attribution",
+        "map wrapper output to the language-level manner-adverbial identity without losing spans",
+        "confirm no runtime behavior depends on treating the aggregate as independently licensing",
+        "complete compatibility migration before changing the public runtime label"
+      ]
+    },
+    {
+      "construction_uuid": "10fa3d98-da35-541c-828e-516c17d04144",
+      "construction_code": "AA52",
+      "legacy_label": "DitransitiveSpeechVP",
+      "approved_canonical_name": "WaaParticipantZiCommunicationVP",
+      "claim_layer": "language_construction",
+      "family_name": "CommunicationPredication",
+      "profile_name": "WaaParticipantZiLexicalSequence",
+      "profile_description": "The exact lexical sequence 話 + overt participant + 知, as in 我唔話你知. The profile excludes substitution of 講 for 話, substitution of another cognition predicate for 知, and any inference that the sequence is an unrestricted ditransitive or serial-verb construction.",
+      "learner_label": null,
+      "behavior_research_alignment": "runtime_narrower_defensible",
+      "terminology_alignment": "misleading",
+      "recommended_action": "rename_retain_narrow",
+      "status_recommendation": "migrate to lexicalized_only unless independent evidence establishes a broader productive 話/講 + participant + cognition-predicate class; retain the exact sequence and its boundaries",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-MATTHEWS-2006-SVC",
+          "SRC-YIP-MATTHEWS-2017-INTERMEDIATE"
+        ],
+        "runtime_locations": [],
+        "test_file": "tests/constructions/DitransitiveSpeechVP.json",
+        "additional_research": [
+          "The grammar source gives a bounded communication-verb generalization, while Matthews explicitly warns that multiverb sequences require diagnostics and may receive complement or other analyses. The runtime recognizes only 話 + participant + 知."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "communication verbs",
+          "source_id": "SRC-YIP-MATTHEWS-2017-INTERMEDIATE",
+          "scope_match": "close"
+        },
+        {
+          "term": "serial verb construction",
+          "source_id": "SRC-MATTHEWS-2006-SVC",
+          "scope_match": "contrastive"
+        },
+        {
+          "term": "話 + participant + 知",
+          "source_id": "SRC-YIP-MATTHEWS-2017-INTERMEDIATE",
+          "scope_match": "exact"
+        }
+      ],
+      "former_names": [
+        "DitransitiveSpeechVP"
+      ],
+      "successor_profiles": [],
+      "rationale": "DitransitiveSpeechVP makes two claims the evidence does not settle: that the sequence is syntactically ditransitive and that it forms a productive speech-verb class. The current matcher is an exact lexical 話…知 profile. WaaParticipantZiCommunicationVP names the overt sequence and domain without resolving the competing complement or serial analyses.",
+      "unresolved_blockers": [
+        "record exact runtime code locations",
+        "decide whether the exact sequence is best maintained as lexicalized_only or as a member of a broader independently evidenced communication family",
+        "review additional sourced 講/話 and 聽/知 combinations individually",
+        "collect corpus and role-neutral panel evidence before any productivity claim"
+      ]
+    },
+    {
+      "construction_uuid": "130b5d85-be1b-5d00-9ff1-a1670100676a",
+      "construction_code": "AA60",
+      "legacy_label": "ExperientialMotionGoalVP",
+      "approved_canonical_name": "HeoiGwoGoalVP",
+      "claim_layer": "language_construction",
+      "family_name": "ExperientialAspectAndMotion",
+      "profile_name": "HeoiGwoOvertGoal",
+      "profile_description": "The source-linked sequence 去 + experiential 過 + overt destination or goal NP, as in 去過美國. The profile excludes perfective 去咗, non-motion experiential predicates such as 見過, other motion verbs, and unreviewed destination types.",
+      "learner_label": null,
+      "behavior_research_alignment": "runtime_narrower_defensible",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
+      "status_recommendation": "retain research_pending; do not generalize beyond 去過 + overt goal until other motion predicates, destination classes, corpus examples, panel judgments, and held-out cases are reviewed",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-YIP-MATTHEWS-2000-BASIC",
+          "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
+        ],
+        "runtime_locations": [],
+        "test_file": "tests/constructions/ExperientialMotionGoalVP.json",
+        "additional_research": [
+          "The reference grammar contrasts 去過 with perfective 去咗, while the source-linked test preserves 去過美國 and excludes non-motion 見過. The runtime is consequently lexeme-specific rather than a general experiential motion-goal class."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "experiential 過",
+          "source_id": "SRC-YIP-MATTHEWS-2000-BASIC",
+          "scope_match": "exact"
+        },
+        {
+          "term": "去過 + place",
+          "source_id": "SRC-YIP-MATTHEWS-2000-BASIC",
+          "scope_match": "exact"
+        },
+        {
+          "term": "去過美國",
+          "source_id": "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE",
+          "scope_match": "exact"
+        }
+      ],
+      "former_names": [
+        "ExperientialMotionGoalVP"
+      ],
+      "successor_profiles": [],
+      "rationale": "ExperientialMotionGoalVP implies a productive combination of experiential aspect with a motion-goal class. The implementation and direct evidence establish only 去過 with an overt goal. HeoiGwoGoalVP makes that lexical and aspectual boundary explicit while preserving a separate path for future broader motion research.",
+      "unresolved_blockers": [
+        "record exact runtime code locations",
+        "review whether other motion verbs independently license the same experiential-goal order",
+        "classify destination and non-destination complements",
+        "collect corpus, role-neutral panel, and held-out evidence"
+      ]
+    },
+    {
+      "construction_uuid": "a0389a45-6002-5fb9-a02a-ea423ac463b1",
+      "construction_code": "AA61",
+      "legacy_label": "ExperientialQuestion",
+      "approved_canonical_name": "GwoFinalMeiExperientialQuestion",
+      "claim_layer": "language_construction",
+      "family_name": "ExperientialQuestions",
+      "profile_name": "OvertExperientialFinalMei",
+      "profile_description": "A question containing overt experiential 過 before clause-final 未, optionally followed by a final particle, as in 你飲過茶未 or 你食過醉雞未呀. The profile excludes preverbal 未 + V過 negative statements and 有冇 + V過 questions.",
+      "learner_label": null,
+      "behavior_research_alignment": "exact",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
+      "status_recommendation": "retain research_pending until predicate and object diversity, final-particle variants, negative boundaries, corpus evidence, a role-neutral panel wave, and held-out validation are complete",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-MATTHEWS-YIP-2011-ASPECT-MULTIMEDIA",
+          "SRC-YIP-MATTHEWS-2000-BASIC",
+          "SRC-ZHANG-1970-PREDICATIVE-SUFFIXES"
+        ],
+        "runtime_locations": [],
+        "test_file": "tests/constructions/ExperientialQuestion.json",
+        "additional_research": [
+          "The reference sources directly attest V過…未 questions and distinguish their response pattern from preverbal 未 negation. The executable test also separates the 有冇 experiential strategy."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "你食過醉雞未呀",
+          "source_id": "SRC-MATTHEWS-YIP-2011-ASPECT-MULTIMEDIA",
+          "scope_match": "exact"
+        },
+        {
+          "term": "V過 ... 未 question",
+          "source_id": "SRC-YIP-MATTHEWS-2000-BASIC",
+          "scope_match": "exact"
+        },
+        {
+          "term": "你飲過茶未",
+          "source_id": "SRC-ZHANG-1970-PREDICATIVE-SUFFIXES",
+          "scope_match": "exact"
+        }
+      ],
+      "former_names": [
+        "ExperientialQuestion"
+      ],
+      "successor_profiles": [],
+      "rationale": "ExperientialQuestion is too broad because the repository contains separate 有冇 and other experiential-question strategies. The runtime identity is specifically the overt 過 plus final 未 pattern. GwoFinalMeiExperientialQuestion exposes both defining markers and prevents evidence from transferring to other question types.",
+      "unresolved_blockers": [
+        "record exact runtime code locations",
+        "expand predicate, object, and final-particle coverage without assuming unrestricted productivity",
+        "confirm boundaries against other final 未 question families",
+        "collect corpus, role-neutral panel, and held-out evidence"
+      ]
+    }
+  ]
+}
