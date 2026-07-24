@@ -1,0 +1,77 @@
+{
+  "schema": "canto-span-survey-derived-aggregate-summary-r2-v1",
+  "status": "research_only",
+  "source": {
+    "export_datetime": "2026-07-24 15:38:47",
+    "sha256": "0d768940c73ede98777a7665224e892b42678290c2c1295522d9cbf51873e5db",
+    "raw_export_committed": false,
+    "api_credential_committed": false
+  },
+  "inclusion": {
+    "exported_records": 78,
+    "eligibility_status_1_quality_status_0": 56,
+    "explicit_test_records_excluded": 1,
+    "eligible_non_test_with_at_least_one_experimental_rating": 47,
+    "eligible_non_test_finished": 26,
+    "item_level_partial_responses_retained": true,
+    "complete_case_definition": "IV01_05=1, IV01_06=0, FINISHED=1, explicit test excluded",
+    "item_level_definition": "IV01_05=1, IV01_06=0, at least one G-item rating, explicit test excluded"
+  },
+  "sample": {
+    "complete": {
+      "total": 26,
+      "variety": {
+        "Hong Kong": 19,
+        "Guangzhou": 5,
+        "Macau": 1,
+        "other_or_uncertain": 1
+      },
+      "lists": {
+        "A": 9,
+        "B": 5,
+        "C": 6,
+        "D": 6
+      }
+    },
+    "item_level": {
+      "total": 47,
+      "variety": {
+        "Hong Kong": 35,
+        "Guangzhou": 9,
+        "Macau": 2,
+        "other_or_uncertain": 1
+      }
+    }
+  },
+  "partial_complete_spearman_rho": 0.9932,
+  "conditions": {
+    "G01A": {"research_id":"SV-RQ-001","description":"physical resource/instrument","complete_n":26,"complete_natural_pct":80.8,"complete_uncertain_pct":7.7,"complete_unnatural_pct":11.5,"item_level_n":31,"item_level_natural_pct":80.6},
+    "G01B": {"research_id":"SV-RQ-001","description":"location as resource","complete_n":26,"complete_natural_pct":88.5,"complete_uncertain_pct":3.8,"complete_unnatural_pct":7.7,"item_level_n":32,"item_level_natural_pct":87.5},
+    "G01C": {"research_id":"SV-RQ-001","description":"mixed nonphysical/noncanonical resource","complete_n":26,"complete_natural_pct":69.2,"complete_uncertain_pct":7.7,"complete_unnatural_pct":23.1,"item_level_n":30,"item_level_natural_pct":70.0},
+    "G01D": {"research_id":"SV-RQ-001","description":"human-initial missing-resource string","complete_n":26,"complete_natural_pct":26.9,"complete_uncertain_pct":26.9,"complete_unnatural_pct":46.2,"item_level_n":31,"item_level_natural_pct":29.0},
+    "G02A": {"research_id":"control","description":"bare NP 用嚟 VP","complete_n":26,"complete_natural_pct":92.3,"complete_uncertain_pct":7.7,"complete_unnatural_pct":0.0,"item_level_n":35,"item_level_natural_pct":88.6},
+    "G02B": {"research_id":"control","description":"NP 可以用嚟 VP","complete_n":26,"complete_natural_pct":100.0,"complete_uncertain_pct":0.0,"complete_unnatural_pct":0.0,"item_level_n":28,"item_level_natural_pct":100.0},
+    "G02C": {"research_id":"SV-RQ-003","description":"NP 係用嚟 VP","complete_n":26,"complete_natural_pct":92.3,"complete_uncertain_pct":0.0,"complete_unnatural_pct":7.7,"item_level_n":40,"item_level_natural_pct":92.5},
+    "G02D": {"research_id":"SV-RQ-002","description":"Resource NP + Agent + 用嚟 VP","complete_n":26,"complete_natural_pct":96.2,"complete_uncertain_pct":0.0,"complete_unnatural_pct":3.8,"item_level_n":29,"item_level_natural_pct":96.6},
+    "G03A": {"research_id":"control","description":"generic/intended NP 用嚟 VP","complete_n":26,"complete_natural_pct":84.6,"complete_uncertain_pct":3.8,"complete_unnatural_pct":11.5,"item_level_n":32,"item_level_natural_pct":81.2},
+    "G03B": {"research_id":"SV-RQ-004","description":"actual-use NP 用咗嚟 VP","complete_n":26,"complete_natural_pct":76.9,"complete_uncertain_pct":11.5,"complete_unnatural_pct":11.5,"item_level_n":28,"item_level_natural_pct":78.6},
+    "G03C": {"research_id":"SV-RQ-005","description":"perfective inside complement NP 用嚟 V咗O","complete_n":26,"complete_natural_pct":65.4,"complete_uncertain_pct":3.8,"complete_unnatural_pct":30.8,"item_level_n":34,"item_level_natural_pct":67.6},
+    "G03D": {"research_id":"SV-RQ-006","description":"Agent V咗 NP 嚟 VP","complete_n":26,"complete_natural_pct":88.5,"complete_uncertain_pct":0.0,"complete_unnatural_pct":11.5,"item_level_n":28,"item_level_natural_pct":85.7},
+    "G04A": {"research_id":"control","description":"plain use-function statement","complete_n":26,"complete_natural_pct":92.3,"complete_uncertain_pct":3.8,"complete_unnatural_pct":3.8,"item_level_n":31,"item_level_natural_pct":90.3},
+    "G04B": {"research_id":"SV-RQ-012","description":"coordinated purpose VPs","complete_n":26,"complete_natural_pct":96.2,"complete_uncertain_pct":3.8,"complete_unnatural_pct":0.0,"item_level_n":29,"item_level_natural_pct":96.6},
+    "G04C": {"research_id":"SV-RQ-007","description":"context-recovered 用嚟 VP fragment","complete_n":26,"complete_natural_pct":76.9,"complete_uncertain_pct":19.2,"complete_unnatural_pct":3.8,"item_level_n":38,"item_level_natural_pct":78.9},
+    "G04D": {"research_id":"SV-RQ-011","description":"use-function wh-question with 㗎","complete_n":26,"complete_natural_pct":96.2,"complete_uncertain_pct":3.8,"complete_unnatural_pct":0.0,"item_level_n":37,"item_level_natural_pct":94.6},
+    "G05A": {"research_id":"control","description":"ordinary V咗O","complete_n":26,"complete_natural_pct":100.0,"complete_uncertain_pct":0.0,"complete_unnatural_pct":0.0,"item_level_n":28,"item_level_natural_pct":100.0},
+    "G05B": {"research_id":"SV-RQ-008","description":"V完咗O","complete_n":26,"complete_natural_pct":53.8,"complete_uncertain_pct":0.0,"complete_unnatural_pct":46.2,"item_level_n":31,"item_level_natural_pct":54.8},
+    "G05C": {"research_id":"SV-RQ-009","description":"V咗O plus goal/result-location material","complete_n":26,"complete_natural_pct":100.0,"complete_uncertain_pct":0.0,"complete_unnatural_pct":0.0,"item_level_n":33,"item_level_natural_pct":97.0},
+    "G05D": {"research_id":"SV-RQ-010","description":"V咗喇","complete_n":26,"complete_natural_pct":96.2,"complete_uncertain_pct":3.8,"complete_unnatural_pct":0.0,"item_level_n":38,"item_level_natural_pct":94.7}
+  },
+  "SV-RQ-008_items": {
+    "G05B01": {"item":"我睇完咗嗰本書。","n":5,"natural_pct":80.0,"unnatural_pct":20.0},
+    "G05B02": {"item":"佢食完咗個三文治。","n":9,"natural_pct":33.3,"unnatural_pct":66.7},
+    "G05B03": {"item":"阿欣寫完咗份報告。","n":6,"natural_pct":83.3,"unnatural_pct":16.7},
+    "G05B04": {"item":"我哋搬完咗三個箱。","n":6,"natural_pct":33.3,"unnatural_pct":66.7}
+  },
+  "privacy_note": "No respondent identifiers, case IDs, raw free text, or API credential are included.",
+  "evidence_boundary": "Survey aggregates are hypothesis-generating and do not authorize parser or status changes."
+}
