@@ -8,6 +8,8 @@ const { loadConstructionNotes } = require("./construction-notes-lib");
 
 const root = path.resolve(__dirname, "..");
 const registryPath = path.join(root, "data", "construction-identities.json");
+const candidatesPath = path.join(root, "data", "construction-identity-candidates.json");
+const lockPath = path.join(root, "data", "construction-identity-lock.json");
 const sweepPath = path.join(root, "data", "construction-label-sweep.json");
 const retiredPath = path.join(root, "docs", "research", "RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv");
 const reportPath = path.join(root, "docs", "research", "FULL-REPO-LABEL-SWEEP-BASELINE-R1.md");
@@ -33,7 +35,7 @@ function check(name, condition, detail = "") {
   if (!pass) failures.push({ name, detail });
 }
 
-for (const file of [registryPath, sweepPath, retiredPath, reportPath]) {
+for (const file of [registryPath, candidatesPath, lockPath, sweepPath, retiredPath, reportPath]) {
   check(`required file exists: ${path.relative(root, file)}`, fs.existsSync(file));
 }
 if (failures.length) {
@@ -42,6 +44,8 @@ if (failures.length) {
 }
 
 const registry = JSON.parse(fs.readFileSync(registryPath, "utf8"));
+const candidates = JSON.parse(fs.readFileSync(candidatesPath, "utf8"));
+const lock = JSON.parse(fs.readFileSync(lockPath, "utf8"));
 const sweep = JSON.parse(fs.readFileSync(sweepPath, "utf8"));
 const currentNotes = loadConstructionNotes(root);
 const retiredRows = parseTsv(retiredPath);
@@ -50,6 +54,10 @@ check("registry schema", registry.schema === "canto-span-construction-identity-r
 check("registry count", registry.record_count === registry.records.length, `${registry.record_count} != ${registry.records.length}`);
 check("current count", registry.current_record_count === registry.records.filter((r) => r.lifecycle_state === "current").length);
 check("retired count", registry.retired_record_count === registry.records.filter((r) => r.lifecycle_state === "retired").length);
+check("candidate schema", candidates.schema === "canto-span-construction-identity-candidates-v1", String(candidates.schema));
+check("candidate count", candidates.record_count === candidates.records.length, `${candidates.record_count} != ${candidates.records.length}`);
+check("lock schema", lock.schema === "canto-span-construction-identity-lock-v1", String(lock.schema));
+check("lock count", lock.entry_count === lock.entries.length, `${lock.entry_count} != ${lock.entries.length}`);
 check("sweep schema", sweep.schema === "canto-span-full-repo-label-sweep-v1", String(sweep.schema));
 check("sweep count", sweep.record_count === sweep.records.length && sweep.records.length === registry.records.length);
 
@@ -73,6 +81,27 @@ for (const record of registry.records) {
   for (const label of record.legacy_labels || []) {
     check(`unique legacy label: ${label}`, !byLegacy.has(label), record.canonical_name);
     byLegacy.set(label, record);
+  }
+}
+
+const candidateUuids = new Set();
+const candidateNames = new Set();
+for (const candidate of candidates.records) {
+  check(`valid candidate UUID: ${candidate.canonical_name_at_creation}`, UUID_RE.test(candidate.construction_uuid), candidate.construction_uuid);
+  check(`unique candidate UUID: ${candidate.construction_uuid}`, !candidateUuids.has(candidate.construction_uuid), candidate.canonical_name_at_creation);
+  candidateUuids.add(candidate.construction_uuid);
+  check(`unique candidate creation name: ${candidate.canonical_name_at_creation}`, !candidateNames.has(candidate.canonical_name_at_creation));
+  candidateNames.add(candidate.canonical_name_at_creation);
+  check(`candidate state controlled: ${candidate.canonical_name_at_creation}`, ["candidate", "canonicalized", "abandoned"].includes(candidate.state), candidate.state);
+  const canonical = byUuid.get(candidate.construction_uuid);
+  if (candidate.state === "canonicalized") {
+    check(`canonicalized candidate in registry: ${candidate.canonical_name_at_creation}`, Boolean(canonical));
+    if (canonical) {
+      check(`canonicalized candidate code aligned: ${candidate.canonical_name_at_creation}`, candidate.construction_code === canonical.construction_code);
+    }
+  } else {
+    check(`unfinalized candidate absent from registry: ${candidate.canonical_name_at_creation}`, !canonical);
+    check(`unfinalized candidate has no code: ${candidate.canonical_name_at_creation}`, candidate.construction_code === null);
   }
 }
 
@@ -109,6 +138,19 @@ for (const record of registry.records) {
 check("discovered count covered", discoveredLabels.size === currentNotes.length + retiredRows.length, String(discoveredLabels.size));
 check("baseline has 181 discovered labels", discoveredLabels.size === 181, String(discoveredLabels.size));
 
+const lockByUuid = new Map();
+for (const entry of lock.entries) {
+  check(`valid locked UUID: ${entry.initial_canonical_name}`, UUID_RE.test(entry.construction_uuid), entry.construction_uuid);
+  check(`unique locked UUID: ${entry.construction_uuid}`, !lockByUuid.has(entry.construction_uuid));
+  lockByUuid.set(entry.construction_uuid, entry);
+  const record = byUuid.get(entry.construction_uuid);
+  check(`locked UUID remains in registry: ${entry.initial_canonical_name}`, Boolean(record));
+  if (record && entry.construction_code !== null) {
+    check(`locked code unchanged: ${entry.initial_canonical_name}`, record.construction_code === entry.construction_code, `${entry.construction_code} != ${record.construction_code}`);
+  }
+}
+check("every canonical identity locked", lock.entries.length === registry.records.length, `${lock.entries.length} != ${registry.records.length}`);
+
 const sweepByUuid = new Map(sweep.records.map((record) => [record.construction_uuid, record]));
 check("sweep UUID count", sweepByUuid.size === registry.records.length, String(sweepByUuid.size));
 for (const record of registry.records) {
@@ -135,6 +177,7 @@ check("generated identity files current", generatorRun.status === 0, `${generato
 const result = {
   schema: "canto-span-construction-identity-verification-v1",
   registry_records: registry.records.length,
+  candidate_records: candidates.records.length,
   current_records: currentNotes.length,
   retired_records: retiredRows.length,
   checks: checks.length,
