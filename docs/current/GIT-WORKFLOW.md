@@ -6,6 +6,8 @@ artifact, not a parallel source of truth.
 
 The mandatory project-wide contract is [`00-START-HERE.md`](00-START-HERE.md). The
 concurrency protocol is [`MULTI-AGENT-COORDINATION.md`](MULTI-AGENT-COORDINATION.md).
+Per-pull-request merge authorization is governed by
+[`USER-MERGE-REVIEW.md`](USER-MERGE-REVIEW.md).
 
 ## Multi-agent branch coordination
 
@@ -64,7 +66,10 @@ integration-owned files. The authorized integrator may:
 3. reconcile integration-owned files;
 4. mark a complete PR ready;
 5. verify checks, dependencies, mergeability, and exact head SHA;
-6. merge passing PRs in dependency order without a separate per-PR user request.
+6. notify the user with the PR, exact head, scope, validation, risks, and limitations,
+   then stop without merging;
+7. after explicit approval for that PR and unchanged head, re-check the gates and
+   merge in dependency order.
 
 Status promotion, survey deployment, and release publication still require their
 own explicitly authorized scope and gates.
@@ -107,8 +112,8 @@ Automation follows least privilege, not a blanket read-only or no-writer rule.
   preconditions before writing.
 - Writes are limited to the claimed non-`main` branch or issue/PR metadata.
 - Automation may not write directly to `main`, expand its own scope, adjudicate
-  linguistic evidence, promote status, deploy surveys, or publish releases without
-  separately authorized scope and gates.
+  linguistic evidence, promote status, deploy surveys, publish releases, merge, or
+  enable auto-merge without the separately required scope, gates, and user approval.
 - Branch automation must leave an auditable result and a coherent passing branch.
 - Generic repair bots, unscoped commit-and-push jobs, and unreviewed direct-to-main
   merges remain prohibited.
@@ -171,7 +176,7 @@ The following are not current project-state mechanisms:
 - active-note whitelists and global grammar freezes;
 - unscoped direct-to-main writer workflows;
 - repair bots that complete intentionally failing commits;
-- manual per-PR merge approval after an authorized integrator has verified a
-  coherent passing state.
+- autonomous merge based only on integrator role, passing checks, labels, or elapsed
+  time without explicit user approval for the specific PR and head.
 
 Their history remains available in Git and, where needed, under `archive/`.

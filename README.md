@@ -47,8 +47,12 @@ and verification gates.
 ## Where to start
 
 Automated agents must first read [`AGENTS.md`](AGENTS.md), which directs them to
-read the complete mandatory contract in
-[`docs/current/00-START-HERE.md`](docs/current/00-START-HERE.md).
+the complete mandatory contract in
+[`docs/current/00-START-HERE.md`](docs/current/00-START-HERE.md), the concurrency
+protocol in
+[`docs/current/MULTI-AGENT-COORDINATION.md`](docs/current/MULTI-AGENT-COORDINATION.md),
+and the mandatory per-PR review gate in
+[`docs/current/USER-MERGE-REVIEW.md`](docs/current/USER-MERGE-REVIEW.md).
 
 `00-START-HERE.md` defines the authority order, non-negotiable standards,
 task-routing table, multi-agent workflow, verification matrix, forbidden patterns,

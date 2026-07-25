@@ -28,12 +28,33 @@ function requireText(file, text, label) {
   }
 }
 
+function forbidText(file, text, label) {
+  const content = normalize(read(file));
+  const forbidden = normalize(text);
+  if (content.includes(forbidden)) {
+    errors.push({ type: "stale_contract_text", file, label, forbidden: text });
+  }
+}
+
+function forbidPattern(file, pattern, label) {
+  const content = read(file);
+  if (pattern.test(content)) {
+    errors.push({
+      type: "stale_contract_pattern",
+      file,
+      label,
+      forbidden_pattern: pattern.source,
+    });
+  }
+}
+
 function requireAll(file, values, labelPrefix) {
   for (const value of values) requireText(file, value, `${labelPrefix} ${value}`);
 }
 
 const agentsPath = "AGENTS.md";
 const startPath = "docs/current/00-START-HERE.md";
+const reviewPath = "docs/current/USER-MERGE-REVIEW.md";
 const statePath = "docs/current/PROJECT-STATE.md";
 const doctrinePath = "docs/current/DOCTRINE.md";
 const governancePath = "docs/current/GOVERNANCE.md";
@@ -46,15 +67,26 @@ const issueTemplatePath = ".github/ISSUE_TEMPLATE/work-claim.yml";
 const prTemplatePath = ".github/pull_request_template.md";
 const coordinationWorkflowPath = ".github/workflows/coordination-check.yml";
 const readmePath = "README.md";
+const handoffPath = "HANDOFF.md";
 const coreWorkflowPath = ".github/workflows/supported-productive-discovery.yml";
 const researchWorkflowPath = ".github/workflows/research-provenance.yml";
 
+const currentDocsDirectory = path.join(root, "docs/current");
+const allCurrentPolicyDocs = fs
+  .readdirSync(currentDocsDirectory, { withFileTypes: true })
+  .filter((entry) => entry.isFile() && entry.name.endsWith(".md"))
+  .map((entry) => `docs/current/${entry.name}`)
+  .sort();
+
 requireText(agentsPath, "docs/current/00-START-HERE.md", "mandatory Start Here pointer");
 requireText(agentsPath, "MULTI-AGENT-COORDINATION.md", "mandatory coordination pointer");
+requireText(agentsPath, "USER-MERGE-REVIEW.md", "mandatory user review pointer");
 requireText(agentsPath, "inspect current `main`, open pull requests, and open work-claim issues", "multi-agent overlap check");
 requireText(agentsPath, "create or update one work-claim issue", "work claim requirement");
 requireText(agentsPath, "There is no read-only research role", "research and implementation autonomy");
-requireText(agentsPath, "authorized integrator may", "integrator merge authority");
+requireText(agentsPath, "inform the user and stop before merge", "ready notification and stop");
+requireText(agentsPath, "merge only after the user explicitly approves", "per-PR user approval");
+requireText(agentsPath, "Any new commit after approval requires fresh review", "head-specific reapproval");
 requireText(agentsPath, "least privilege", "automation permission model");
 
 const requiredHeadings = [
@@ -81,6 +113,7 @@ const requiredPointers = [
   "TESTING.md",
   "GIT-WORKFLOW.md",
   "MULTI-AGENT-COORDINATION.md",
+  "USER-MERGE-REVIEW.md",
   "CURRENT-RESEARCH-PROVENANCE.md",
   "review-packets/native-panel/active-v2",
   "tools/corpus-review/README.md",
@@ -101,7 +134,6 @@ const requiredRules = [
   "`deployment_allowed: false`",
   "Do not create repeated `validation/vX.Y.Z/` trees",
   "There is no read-only research role",
-  "authorized integrator may merge",
   "least privilege",
   "no active-note whitelist",
   "no repository-wide grammar freeze",
@@ -112,6 +144,15 @@ const requiredRules = [
   "changes/pending/",
 ];
 for (const rule of requiredRules) requireText(startPath, rule, `mandatory rule ${rule}`);
+
+requireText(reviewPath, "canonical owner of per-pull-request merge authorization", "merge review canonical owner");
+requireText(reviewPath, "specific current user decision", "specific user decision priority");
+requireText(reviewPath, "inform the user that the pull request is ready for review", "ready review notice");
+requireText(reviewPath, "stop without merging", "mandatory merge stop");
+requireText(reviewPath, "explicitly approves that specific pull request", "specific PR approval");
+requireText(reviewPath, "Approval applies only to the reviewed head commit", "head-specific approval");
+requireText(reviewPath, "Standing authority to manage pull requests", "standing authority exclusion");
+requireText(reviewPath, "may not merge or enable auto-merge before explicit user approval", "automation merge boundary");
 
 requireText(startPath, "current AB30 candidate packet: **5 reviewed; 2 genuine; 3 false positives**", "AB30 reviewed packet");
 requireText(startPath, "AB30 corpus-readiness effect: **`partial_only`**", "AB30 partial-only readiness");
@@ -135,17 +176,59 @@ requireText(coordinationPath, "same physical file", "same-file concurrency rule"
 requireText(coordinationPath, "semantic target regions", "semantic claim rule");
 requireText(coordinationPath, "must not survive a ready-to-merge", "pending cleanup rule");
 requireText(coordinationPath, "There is no read-only research role", "coordination research autonomy");
-requireText(coordinationPath, "authorized integrator may merge", "coordination merge authority");
 requireText(coordinationPath, "Automation follows least privilege", "coordination automation policy");
 requireText(gitWorkflowPath, "There is no read-only research branch type", "git research autonomy");
-requireText(gitWorkflowPath, "The authorized integrator may", "git merge authority");
 requireText(testingPath, "There is no read-only research role", "testing research autonomy");
 requireText(testingPath, "Repository automation follows least privilege", "testing automation policy");
+
+const mergeReviewPointerDocs = [
+  agentsPath,
+  startPath,
+  reviewPath,
+  coordinationPath,
+  gitWorkflowPath,
+  governancePath,
+  testingPath,
+  readmePath,
+  handoffPath,
+];
+for (const file of mergeReviewPointerDocs) {
+  requireText(file, "USER-MERGE-REVIEW.md", "current merge-review pointer");
+}
+
+const mergeReviewScanFiles = [
+  ...new Set([
+    agentsPath,
+    readmePath,
+    handoffPath,
+    prTemplatePath,
+    ...allCurrentPolicyDocs,
+  ]),
+];
+const staleMergeRules = [
+  "without a separate per-PR user request",
+  "does not require a separate per-PR user request",
+  "then may merge the passing PR",
+  "manual per-PR merge approval after an authorized integrator",
+];
+const staleMergePatterns = [
+  /authorized integrator may[^\n.]{0,120}merge/i,
+  /integrator may[^\n.]{0,120}merge passing/i,
+  /merge passing (?:pull requests|work)[^\n.]{0,160}(?:without|no separate|does not require)/i,
+  /routine merge management[^\n.]{0,160}(?:without|does not require|no separate)/i,
+];
+for (const file of mergeReviewScanFiles) {
+  for (const stale of staleMergeRules) forbidText(file, stale, "obsolete autonomous merge rule");
+  for (const pattern of staleMergePatterns) forbidPattern(file, pattern, "obsolete autonomous merge pattern");
+}
 
 requireText(coordinationConfigPath, "\"integration_owned_files\"", "integration ownership config");
 requireText(issueTemplatePath, "coordination-claim", "work claim issue form");
 requireText(prTemplatePath, "coordination-claim: #ISSUE_NUMBER", "PR claim marker");
 requireText(prTemplatePath, "Closes #ISSUE_NUMBER", "automatic claim closure");
+requireText(prTemplatePath, "PENDING_USER_REVIEW", "pending user review state");
+requireText(prTemplatePath, "Explicit approval for this pull request and exact head", "specific approval field");
+requireText(prTemplatePath, "Do not merge or enable auto-merge", "template merge stop");
 requireText(readmePath, "AGENTS.md", "root agent bootstrap pointer");
 requireText(readmePath, "docs/current/00-START-HERE.md", "root Start Here pointer");
 
@@ -190,19 +273,22 @@ const requiredResearchWorkflowInputs = [
 requireAll(researchWorkflowPath, requiredResearchWorkflowInputs, "research workflow trigger");
 
 const result = {
-  schema: "canto-span-agent-coordination-contract-v5",
+  schema: "canto-span-agent-coordination-contract-v7",
   status: errors.length === 0 ? "PASS" : "FAIL",
   checked_files: [
-    agentsPath, startPath, statePath, doctrinePath, governancePath, coordinationPath,
-    gitWorkflowPath, testingPath, parkedPath, coordinationConfigPath,
-    issueTemplatePath, prTemplatePath, coordinationWorkflowPath, readmePath,
-    coreWorkflowPath, researchWorkflowPath,
+    agentsPath, startPath, reviewPath, statePath, doctrinePath, governancePath,
+    coordinationPath, gitWorkflowPath, testingPath, parkedPath,
+    coordinationConfigPath, issueTemplatePath, prTemplatePath,
+    coordinationWorkflowPath, readmePath, handoffPath, coreWorkflowPath,
+    researchWorkflowPath, ...allCurrentPolicyDocs,
   ],
+  current_policy_documents_scanned: allCurrentPolicyDocs.length,
   required_headings: requiredHeadings.length,
   required_pointers: requiredPointers.length,
   required_rules: requiredRules.length,
   required_core_workflow_inputs: requiredCoreWorkflowInputs.length,
   required_research_workflow_inputs: requiredResearchWorkflowInputs.length,
+  merge_policy: "explicit_user_approval_per_pr_and_head",
   errors,
 };
 

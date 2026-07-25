@@ -22,7 +22,8 @@ The system uses:
 5. worker and integrator roles;
 6. integration-owned aggregate and current-state files;
 7. least-privilege pull-request validation;
-8. an authorized integrator responsible for final reconciliation and merge order.
+8. an integrator responsible for final reconciliation and merge order after the
+   mandatory user-review stop and explicit approval.
 
 There is no read-only research role. Research, evidence recording, adjudication,
 implementation, testing, documentation, and integration may be combined in one
@@ -39,6 +40,7 @@ coherent claim when the affected state dimensions and substantive gates are clea
 - Online overlap validation: `tools/coordination/check-pr.js`
 - Changeset validation and application: `tools/coordination/change-set.js`
 - Current validation workflow: `.github/workflows/coordination-check.yml`
+- Per-PR merge authorization: `docs/current/USER-MERGE-REVIEW.md`
 
 GitHub issues own temporary work intent. They do not own linguistic status,
 construction identity, runtime behavior, evidence, survey state, or release state.
@@ -186,11 +188,13 @@ integrator:
 7. removes pending changesets;
 8. runs every applicable verifier;
 9. verifies exact head SHA and mergeability;
-10. marks a complete PR ready and merges only a coherent passing state.
+10. marks a complete PR ready, notifies the user with the exact head and validation,
+    and stops without merging;
+11. after explicit approval for that PR and unchanged head, re-checks every gate and
+    merges only a coherent passing state.
 
-The authorized integrator may merge passing pull requests without a separate
-per-PR user request. Integrator role does not bypass evidence, identity, status,
-survey, release, or parser gates.
+Integrator role does not authorize autonomous merge and does not bypass evidence,
+identity, status, survey, release, parser, or user-review gates.
 
 ## Integration-owned files
 
@@ -266,7 +270,9 @@ proposal, regenerated shared outputs, reconciled documentation, and removed the
 temporary file.
 
 The ready gate replaces post-merge repair. Temporary intent is cleaned on the branch
-before merge while the issue, PR, and Git history preserve the decision trail.
+before review while the issue, PR, and Git history preserve the decision trail. Once
+ready, the agent notifies the user and stops; ready state and passing checks do not
+authorize merge.
 
 ## Automation policy
 
@@ -287,11 +293,14 @@ Write-capable automation is permitted only when all of the following hold:
 5. the action cannot expand its own scope;
 6. every write is auditable and recoverable;
 7. the workflow cannot autonomously adjudicate evidence, promote linguistic status,
-   deploy a survey, publish a release, or write directly to `main`.
+   deploy a survey, publish a release, write directly to `main`, merge, enable
+   auto-merge, or infer user approval.
 
 Claim-aware automation may prepare commits, apply validated changesets, update claim
-metadata, or assist integration when those conditions are satisfied. A generic
-unscoped writer, repair bot, or direct-to-main merge remains prohibited.
+metadata, or assist integration when those conditions are satisfied. It may not
+merge or enable auto-merge before explicit user approval for the specific PR and
+head. A generic unscoped writer, repair bot, or direct-to-main merge remains
+prohibited.
 
 ## Stale and abandoned work
 
@@ -303,7 +312,8 @@ or mark the old claim stale before opening a new overlapping claim.
 
 ## Merge-order rules
 
-The integrator normally merges in this order:
+After explicit user approval for each specific PR and unchanged head, the integrator
+normally merges in this order:
 
 1. repository-wide schemas, policy, or workflow changes;
 2. canonical independent records;
@@ -323,4 +333,6 @@ Do not force a conflict-prone merge because checks once passed.
 - It does not create a permanent queue or active-note whitelist.
 - It does not make research read-only.
 - It does not grant automation unrestricted write access.
+- It does not let checks, labels, elapsed time, or integrator role substitute for user
+  approval of a specific PR and head.
 - It does not replace evidence, survey, status, release, or deployment gates.

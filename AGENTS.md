@@ -8,9 +8,13 @@ The detailed concurrency protocol is:
 
 [`docs/current/MULTI-AGENT-COORDINATION.md`](docs/current/MULTI-AGENT-COORDINATION.md)
 
+The mandatory per-pull-request merge gate is:
+
+[`docs/current/USER-MERGE-REVIEW.md`](docs/current/USER-MERGE-REVIEW.md)
+
 Before planning, editing, generating, reviewing, or merging repository work:
 
-1. read both files in full;
+1. read all three files in full;
 2. read `docs/current/PROJECT-STATE.md`;
 3. inspect current `main`, open pull requests, and open work-claim issues;
 4. create or update one work-claim issue before editing;
@@ -22,7 +26,10 @@ Before planning, editing, generating, reviewing, or merging repository work:
    label recorded separately;
 9. keep branch changes inside the claim and update the issue before expanding scope;
 10. publish one coherent passing state in a pull request that links and closes the
-    work claim.
+    work claim;
+11. when the pull request is ready, inform the user and stop before merge;
+12. merge only after the user explicitly approves that specific pull request and the
+    approved head commit remains unchanged.
 
 There is no read-only research role. A properly scoped agent may research, record
 evidence, adjudicate, implement, test, document, and integrate in one coherent task
@@ -37,16 +44,17 @@ removed before a pull request becomes ready to merge.
 
 Open a draft pull request only when work is incomplete, contains a pending
 changeset, has an unresolved dependency, or still requires integration. A complete
-coherent change may open ready for review. The authorized integrator may rebuild,
-ready, and merge passing pull requests in dependency order without a separate
-per-PR user request. Status promotion, survey deployment, and release publication
-still require their own explicit scope and gates.
+coherent change may open ready for review. Passing checks and integrator authority
+do not authorize merge. The agent must notify the user that the pull request is
+ready, provide its scope and validation, and wait for explicit approval before
+merging or enabling auto-merge. Any new commit after approval requires fresh review
+and approval.
 
 Automation is governed by least privilege, not a blanket read-only or no-writer
 rule. Validation-only workflows should remain read-only. Write-capable automation
 must be claim-scoped, preconditioned, auditable, branch-limited, and prohibited from
 directly writing to `main` or autonomously making linguistic, survey-deployment,
-status-promotion, or release decisions.
+status-promotion, release, or merge-approval decisions.
 
 A task prompt may narrow authorized scope. It does not override current policy,
 canonical state owners, evidence standards, identity rules, survey lifecycle,
@@ -58,5 +66,6 @@ generated readiness scores, parser tests, survey-local IDs, or an expired work
 claim as substitute authority. Do not create parallel ledgers, naming systems,
 verifiers, current-state documents, or unscoped automation.
 
-When instructions conflict, follow `docs/current/00-START-HERE.md` and document the
-conflict in the pull request.
+For per-pull-request merge authorization, `docs/current/USER-MERGE-REVIEW.md`
+controls over any broader or older merge language elsewhere. For other conflicts,
+follow `docs/current/00-START-HERE.md` and document the conflict in the pull request.
