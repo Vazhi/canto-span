@@ -37,6 +37,7 @@ This is a prioritization report, not a promotion decision. A score cannot overri
 | `AA67` | `NeMarkedThematicContinuationQuestion` | `source_supported` | 53 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA68` | `MotionVerbDouGoalVP` | `source_supported` | 53 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA69` | `DemonstrativeClassifierNPWithoutOvertNoun` | `source_supported` | 53 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
+| `AA91` | `DegreePropertyModifierNounNP` | `source_supported` | 53 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA01` | `M4MarkedANotAInterrogative` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA24` | `AspectMarkedMeiCompletionQuestion` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA26` | `WanMarkedCompletionVP` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
@@ -46,9 +47,8 @@ This is a prioritization report, not a promotion decision. A score cannot overri
 | `AA55` | `SubjectJauPossessiveClause` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA76` | `BeiThemeRecipientGiveVP` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA86` | `ModalM4ModalInterrogative` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
-| `AA89` | `ModalVP` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
-| `AA90` | `ModifiedNP` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
-| `AA91` | `ModifierNP` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
+| `AA89` | `ModalAuxiliaryComplementVP` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
+| `AA97` | `NegatedDirectionalMotionVP` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 
 ## Narrowing candidates
 

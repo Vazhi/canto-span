@@ -8,19 +8,19 @@
   "promotion_eligible_now_count": 0,
   "state_counts": {
     "boundary_ready": 1,
-    "excluded_nonlanguage": 31,
+    "excluded_nonlanguage": 32,
     "lexicalized_review": 2,
     "narrowing_candidate": 34,
     "retired_evidence_rehome_candidate": 42,
     "retired_research_gap": 6,
-    "source_supported": 65
+    "source_supported": 64
   },
   "nearest_missing_gate_counts": {
-    "language_claim_defined": 31,
+    "language_claim_defined": 32,
     "negative_boundaries_complete": 32,
     "reviewed_corpus_evidence": 3,
     "runtime_research_alignment": 17,
-    "source_scope_matches_claim": 50
+    "source_scope_matches_claim": 49
   },
   "records": [
     {
@@ -5691,6 +5691,97 @@
       "source_path": "grammar/research_pending/HeadlessDemonstrativeClassifierNP.md"
     },
     {
+      "construction_uuid": "6cb39abf-cd97-5701-8b7d-d2575645c127",
+      "construction_code": "AA91",
+      "canonical_name": "DegreePropertyModifierNounNP",
+      "legacy_label": "ModifierNP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "family_id": null,
+      "family_name": "NominalModificationAndRelatives",
+      "profile_name": "DegreePropertyBeforeOvertNounWithoutGe",
+      "learner_label": null,
+      "source_ids": [
+        "SRC-SIO-2011-GE3",
+        "SRC-YU-2006-NOMINAL-MODIFIERS"
+      ],
+      "preserved_source_ids": [],
+      "future_research_preserved_as": "",
+      "standard_positive_test_count": 2,
+      "standard_boundary_test_count": 2,
+      "gates": {
+        "language_claim_defined": {
+          "status": "pass",
+          "evidence": "plain_language_claim_present"
+        },
+        "independent_source_support": {
+          "status": "pass",
+          "evidence": "all_cited_sources_verified_and_independent",
+          "detail": "2/2"
+        },
+        "source_scope_matches_claim": {
+          "status": "partial",
+          "evidence": "verified_sources_but_scope_reaudit_incomplete"
+        },
+        "runtime_research_alignment": {
+          "status": "unresolved",
+          "evidence": "runtime_research_alignment_not_reconciled"
+        },
+        "executable_positive_cases_present": {
+          "status": "pass",
+          "evidence": "executable_positive_cases_present_implementation_only",
+          "detail": "2"
+        },
+        "negative_boundaries_complete": {
+          "status": "partial",
+          "evidence": "negative_boundaries_incomplete"
+        },
+        "reviewed_corpus_evidence": {
+          "status": "not_started",
+          "evidence": "no_reviewed_corpus_evidence"
+        },
+        "role_neutral_panel_threshold": {
+          "status": "partial",
+          "evidence": "panel_evidence_incomplete",
+          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":false,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
+        },
+        "held_out_validation": {
+          "status": "not_started",
+          "evidence": "no_passing_held_out_record"
+        },
+        "ontology_conflicts_resolved": {
+          "status": "pass",
+          "evidence": "completed_identity_label_review"
+        }
+      },
+      "supported_gate_eligible": false,
+      "supported_gate_blockers": [
+        "requirement_failed:locked_clean_panel_instrument",
+        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
+        "requirement_failed:role_neutral_panel",
+        "requirement_failed:instrument_quality_resolved",
+        "requirement_failed:quality_screen_complete",
+        "requirement_failed:panel_adjudication_complete",
+        "requirement_failed:critical_contrast_coverage_complete",
+        "requirement_failed:positive_and_negative_contrasts_reviewed",
+        "requirement_failed:negative_boundary_inventory_complete",
+        "requirement_failed:code_document_reconciled",
+        "requirement_failed:current_code_review_metadata",
+        "requirement_failed:current_standard_reaudit_complete"
+      ],
+      "discovery_hard_blockers": [
+        "discovery_gate:reviewed_corpus_evidence",
+        "discovery_gate:held_out_validation"
+      ],
+      "readiness_score": 53,
+      "candidate_state": "source_supported",
+      "nearest_missing_gate": "source_scope_matches_claim",
+      "next_best_action": "complete source-scope reaudit and split any unsupported extensions",
+      "automatic_risk_flags": [],
+      "source_path": "grammar/research_pending/ModifierNP.md"
+    },
+    {
       "construction_uuid": "5e10dfc5-15a5-5f5a-b203-37c81a653330",
       "construction_code": "AA01",
       "canonical_name": "M4MarkedANotAInterrogative",
@@ -6546,14 +6637,14 @@
     {
       "construction_uuid": "e3ad991e-f109-57ab-a363-cfc2e6d4e170",
       "construction_code": "AA89",
-      "canonical_name": "ModalVP",
+      "canonical_name": "ModalAuxiliaryComplementVP",
       "legacy_label": "ModalVP",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "research_pending",
-      "family_id": "L29",
-      "family_name": "Modality",
-      "profile_name": null,
+      "family_id": null,
+      "family_name": "ModalAuxiliaryPredication",
+      "profile_name": "OvertModalAuxiliaryWithFollowingPredicate",
       "learner_label": null,
       "source_ids": [
         "SRC-LUKE-NANCARROW-1998-AUXILIARIES",
@@ -6604,8 +6695,9 @@
           "evidence": "no_passing_held_out_record"
         },
         "ontology_conflicts_resolved": {
-          "status": "unresolved",
-          "evidence": "identity_label_review_pending"
+          "status": "partial",
+          "evidence": "identity_label_review_in_progress",
+          "detail": "{\"review_state\":\"complete\",\"behavior_research_alignment\":\"runtime_broader\",\"terminology_alignment\":\"neutral_descriptive_preferred\",\"recommended_action\":\"rename_retain_narrow\",\"automatic_risk_flags\":[],\"review_notes\":\"Expert adjudication 2026-07-25. ModalVP is a useful but overly broad category label. The source set supports an auxiliary inventory but explicitly warns against one gloss or one selection profile for every item, and the runtime also absorbs a standalone A-not-A question. ModalAuxiliaryComplementVP retains the UUID for the strongest shared overt structure while keeping modal readings, polarity, interrogation, and ellipsis independently bounded. Status recommendation: retain research_pending for overt modal or auxiliary plus visible predicate; separate standalone A-not-A, desiderative, ellipsis, lexeme-specific polarity, and modal-reading profiles before any productivity review\"}"
         }
       },
       "supported_gate_eligible": false,
@@ -6628,196 +6720,12 @@
         "discovery_gate:held_out_validation",
         "discovery_gate:ontology_conflicts_resolved"
       ],
-      "readiness_score": 48,
+      "readiness_score": 50,
       "candidate_state": "source_supported",
       "nearest_missing_gate": "source_scope_matches_claim",
       "next_best_action": "complete source-scope reaudit and split any unsupported extensions",
       "automatic_risk_flags": [],
       "source_path": "grammar/research_pending/ModalVP.md"
-    },
-    {
-      "construction_uuid": "14579a47-c762-5ace-ade4-5b0744ea8c85",
-      "construction_code": "AA90",
-      "canonical_name": "ModifiedNP",
-      "legacy_label": "ModifiedNP",
-      "lifecycle_state": "current",
-      "claim_layer": "language_construction",
-      "linguistic_status": "research_pending",
-      "family_id": "L19",
-      "family_name": "NominalModificationAndRelatives",
-      "profile_name": null,
-      "learner_label": null,
-      "source_ids": [
-        "SRC-SIO-2011-GE3",
-        "SRC-YU-2006-NOMINAL-MODIFIERS"
-      ],
-      "preserved_source_ids": [],
-      "future_research_preserved_as": "",
-      "standard_positive_test_count": 38,
-      "standard_boundary_test_count": 2,
-      "gates": {
-        "language_claim_defined": {
-          "status": "pass",
-          "evidence": "plain_language_claim_present"
-        },
-        "independent_source_support": {
-          "status": "pass",
-          "evidence": "all_cited_sources_verified_and_independent",
-          "detail": "2/2"
-        },
-        "source_scope_matches_claim": {
-          "status": "partial",
-          "evidence": "verified_sources_but_scope_reaudit_incomplete"
-        },
-        "runtime_research_alignment": {
-          "status": "unresolved",
-          "evidence": "runtime_research_alignment_not_reconciled"
-        },
-        "executable_positive_cases_present": {
-          "status": "pass",
-          "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "38"
-        },
-        "negative_boundaries_complete": {
-          "status": "partial",
-          "evidence": "negative_boundaries_incomplete"
-        },
-        "reviewed_corpus_evidence": {
-          "status": "not_started",
-          "evidence": "no_reviewed_corpus_evidence"
-        },
-        "role_neutral_panel_threshold": {
-          "status": "partial",
-          "evidence": "panel_evidence_incomplete",
-          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":false,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
-        },
-        "held_out_validation": {
-          "status": "not_started",
-          "evidence": "no_passing_held_out_record"
-        },
-        "ontology_conflicts_resolved": {
-          "status": "unresolved",
-          "evidence": "identity_label_review_pending"
-        }
-      },
-      "supported_gate_eligible": false,
-      "supported_gate_blockers": [
-        "requirement_failed:locked_clean_panel_instrument",
-        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
-        "requirement_failed:role_neutral_panel",
-        "requirement_failed:instrument_quality_resolved",
-        "requirement_failed:quality_screen_complete",
-        "requirement_failed:panel_adjudication_complete",
-        "requirement_failed:critical_contrast_coverage_complete",
-        "requirement_failed:positive_and_negative_contrasts_reviewed",
-        "requirement_failed:negative_boundary_inventory_complete",
-        "requirement_failed:code_document_reconciled",
-        "requirement_failed:current_code_review_metadata",
-        "requirement_failed:current_standard_reaudit_complete"
-      ],
-      "discovery_hard_blockers": [
-        "discovery_gate:reviewed_corpus_evidence",
-        "discovery_gate:held_out_validation",
-        "discovery_gate:ontology_conflicts_resolved"
-      ],
-      "readiness_score": 48,
-      "candidate_state": "source_supported",
-      "nearest_missing_gate": "source_scope_matches_claim",
-      "next_best_action": "complete source-scope reaudit and split any unsupported extensions",
-      "automatic_risk_flags": [],
-      "source_path": "grammar/research_pending/ModifiedNP.md"
-    },
-    {
-      "construction_uuid": "6cb39abf-cd97-5701-8b7d-d2575645c127",
-      "construction_code": "AA91",
-      "canonical_name": "ModifierNP",
-      "legacy_label": "ModifierNP",
-      "lifecycle_state": "current",
-      "claim_layer": "language_construction",
-      "linguistic_status": "research_pending",
-      "family_id": "L19",
-      "family_name": "NominalModificationAndRelatives",
-      "profile_name": null,
-      "learner_label": null,
-      "source_ids": [
-        "SRC-SIO-2011-GE3",
-        "SRC-YU-2006-NOMINAL-MODIFIERS"
-      ],
-      "preserved_source_ids": [],
-      "future_research_preserved_as": "",
-      "standard_positive_test_count": 2,
-      "standard_boundary_test_count": 2,
-      "gates": {
-        "language_claim_defined": {
-          "status": "pass",
-          "evidence": "plain_language_claim_present"
-        },
-        "independent_source_support": {
-          "status": "pass",
-          "evidence": "all_cited_sources_verified_and_independent",
-          "detail": "2/2"
-        },
-        "source_scope_matches_claim": {
-          "status": "partial",
-          "evidence": "verified_sources_but_scope_reaudit_incomplete"
-        },
-        "runtime_research_alignment": {
-          "status": "unresolved",
-          "evidence": "runtime_research_alignment_not_reconciled"
-        },
-        "executable_positive_cases_present": {
-          "status": "pass",
-          "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "2"
-        },
-        "negative_boundaries_complete": {
-          "status": "partial",
-          "evidence": "negative_boundaries_incomplete"
-        },
-        "reviewed_corpus_evidence": {
-          "status": "not_started",
-          "evidence": "no_reviewed_corpus_evidence"
-        },
-        "role_neutral_panel_threshold": {
-          "status": "partial",
-          "evidence": "panel_evidence_incomplete",
-          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":false,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
-        },
-        "held_out_validation": {
-          "status": "not_started",
-          "evidence": "no_passing_held_out_record"
-        },
-        "ontology_conflicts_resolved": {
-          "status": "unresolved",
-          "evidence": "identity_label_review_pending"
-        }
-      },
-      "supported_gate_eligible": false,
-      "supported_gate_blockers": [
-        "requirement_failed:locked_clean_panel_instrument",
-        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
-        "requirement_failed:role_neutral_panel",
-        "requirement_failed:instrument_quality_resolved",
-        "requirement_failed:quality_screen_complete",
-        "requirement_failed:panel_adjudication_complete",
-        "requirement_failed:critical_contrast_coverage_complete",
-        "requirement_failed:positive_and_negative_contrasts_reviewed",
-        "requirement_failed:negative_boundary_inventory_complete",
-        "requirement_failed:code_document_reconciled",
-        "requirement_failed:current_code_review_metadata",
-        "requirement_failed:current_standard_reaudit_complete"
-      ],
-      "discovery_hard_blockers": [
-        "discovery_gate:reviewed_corpus_evidence",
-        "discovery_gate:held_out_validation",
-        "discovery_gate:ontology_conflicts_resolved"
-      ],
-      "readiness_score": 48,
-      "candidate_state": "source_supported",
-      "nearest_missing_gate": "source_scope_matches_claim",
-      "next_best_action": "complete source-scope reaudit and split any unsupported extensions",
-      "automatic_risk_flags": [],
-      "source_path": "grammar/research_pending/ModifierNP.md"
     },
     {
       "construction_uuid": "af7743b9-4a3d-50f2-8955-b30f48358f60",
@@ -10827,14 +10735,14 @@
     {
       "construction_uuid": "24e74115-19b7-5df0-8716-d82d5797743c",
       "construction_code": "AA87",
-      "canonical_name": "ModalChangeIntoResultFrame",
+      "canonical_name": "ModalChangePredicateCompositeWrapper",
       "legacy_label": "ModalChangeIntoResultFrame",
       "lifecycle_state": "retired",
-      "claim_layer": "unresolved",
+      "claim_layer": "parser_representation",
       "linguistic_status": "retired",
-      "family_id": "L15",
-      "family_name": "ResultativeAndChangePredication",
-      "profile_name": null,
+      "family_id": null,
+      "family_name": "ResultAndChangeRepresentation",
+      "profile_name": "ModalPlusChangeIntoPredicateAggregate",
       "learner_label": null,
       "source_ids": [],
       "preserved_source_ids": [
@@ -10909,14 +10817,14 @@
     {
       "construction_uuid": "24ca75ca-eb10-584d-93c4-0838137971cd",
       "construction_code": "AA88",
-      "canonical_name": "ModalResponseFragment",
+      "canonical_name": "ModalEllipsisResponseCompositeWrapper",
       "legacy_label": "ModalResponseFragment",
       "lifecycle_state": "retired",
-      "claim_layer": "unresolved",
+      "claim_layer": "parser_representation",
       "linguistic_status": "retired",
-      "family_id": "L05",
-      "family_name": "FragmentsAndEllipsis",
-      "profile_name": null,
+      "family_id": null,
+      "family_name": "FragmentAndEllipsisRepresentation",
+      "profile_name": "ModalExpressionEllipsisAndResponseAggregate",
       "learner_label": null,
       "source_ids": [],
       "preserved_source_ids": [
@@ -15369,6 +15277,99 @@
         "internal_representation_name_review"
       ],
       "source_path": "grammar/parser_heuristic/MeasureExpression.md"
+    },
+    {
+      "construction_uuid": "14579a47-c762-5ace-ade4-5b0744ea8c85",
+      "construction_code": "AA90",
+      "canonical_name": "HeterogeneousNominalStructureWrapper",
+      "legacy_label": "ModifiedNP",
+      "lifecycle_state": "current",
+      "claim_layer": "parser_representation",
+      "linguistic_status": "research_pending",
+      "family_id": null,
+      "family_name": "NominalStructureRepresentation",
+      "profile_name": "DeterminerClassifierModifierMeasureAndArgumentAggregate",
+      "learner_label": null,
+      "source_ids": [
+        "SRC-SIO-2011-GE3",
+        "SRC-YU-2006-NOMINAL-MODIFIERS"
+      ],
+      "preserved_source_ids": [],
+      "future_research_preserved_as": "",
+      "standard_positive_test_count": 38,
+      "standard_boundary_test_count": 2,
+      "gates": {
+        "language_claim_defined": {
+          "status": "not_applicable",
+          "evidence": "non_language_claim_layer"
+        },
+        "independent_source_support": {
+          "status": "pass",
+          "evidence": "all_cited_sources_verified_and_independent",
+          "detail": "2/2"
+        },
+        "source_scope_matches_claim": {
+          "status": "partial",
+          "evidence": "verified_sources_but_scope_reaudit_incomplete"
+        },
+        "runtime_research_alignment": {
+          "status": "unresolved",
+          "evidence": "runtime_research_alignment_not_reconciled"
+        },
+        "executable_positive_cases_present": {
+          "status": "pass",
+          "evidence": "executable_positive_cases_present_implementation_only",
+          "detail": "38"
+        },
+        "negative_boundaries_complete": {
+          "status": "partial",
+          "evidence": "negative_boundaries_incomplete"
+        },
+        "reviewed_corpus_evidence": {
+          "status": "not_started",
+          "evidence": "no_reviewed_corpus_evidence"
+        },
+        "role_neutral_panel_threshold": {
+          "status": "partial",
+          "evidence": "panel_evidence_incomplete",
+          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":false,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
+        },
+        "held_out_validation": {
+          "status": "not_started",
+          "evidence": "no_passing_held_out_record"
+        },
+        "ontology_conflicts_resolved": {
+          "status": "partial",
+          "evidence": "identity_label_review_in_progress",
+          "detail": "{\"review_state\":\"complete\",\"behavior_research_alignment\":\"disjoint\",\"terminology_alignment\":\"misleading\",\"recommended_action\":\"internalize_and_decompose\",\"automatic_risk_flags\":[],\"review_notes\":\"Expert adjudication 2026-07-25. ModifiedNP implies one modification relation, but the runtime label covers nominal spans whose decisive structures are wh determination, classification, quantification, existence, measurement, argumenthood, or distinct modifier types. HeterogeneousNominalStructureWrapper preserves compatibility while removing the aggregate from direct linguistic promotion. Status recommendation: migrate to parser_heuristic only through a separate compatibility change; preserve wh-determiner, classifier, quantity, existential, measure, direct-modifier, ge-marked, relative, and nominal-complement structures under independently typed identities\"}"
+        }
+      },
+      "supported_gate_eligible": false,
+      "supported_gate_blockers": [
+        "requirement_failed:locked_clean_panel_instrument",
+        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
+        "requirement_failed:role_neutral_panel",
+        "requirement_failed:instrument_quality_resolved",
+        "requirement_failed:quality_screen_complete",
+        "requirement_failed:panel_adjudication_complete",
+        "requirement_failed:critical_contrast_coverage_complete",
+        "requirement_failed:positive_and_negative_contrasts_reviewed",
+        "requirement_failed:negative_boundary_inventory_complete",
+        "requirement_failed:code_document_reconciled",
+        "requirement_failed:current_code_review_metadata",
+        "requirement_failed:current_standard_reaudit_complete"
+      ],
+      "discovery_hard_blockers": [
+        "discovery_gate:reviewed_corpus_evidence",
+        "discovery_gate:held_out_validation",
+        "discovery_gate:ontology_conflicts_resolved"
+      ],
+      "readiness_score": 0,
+      "candidate_state": "excluded_nonlanguage",
+      "nearest_missing_gate": "language_claim_defined",
+      "next_best_action": "define a narrow falsifiable language claim before adding evidence",
+      "automatic_risk_flags": [],
+      "source_path": "grammar/research_pending/ModifiedNP.md"
     },
     {
       "construction_uuid": "73972a79-f52f-5458-95ce-2b2c8c6bc73b",
