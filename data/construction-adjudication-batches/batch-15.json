@@ -1,0 +1,280 @@
+{
+  "schema": "canto-span-construction-adjudications-v1",
+  "adjudicated_on": "2026-07-25",
+  "adjudication_authority": "project expert systematic review",
+  "records": [
+    {
+      "construction_uuid": "ac726450-9058-50a9-afc4-245f275a739a",
+      "construction_code": "AA98",
+      "legacy_label": "NegatedExistentialClause",
+      "approved_canonical_name": "Mou5NominalExistentialPossessiveClause",
+      "claim_layer": "language_construction",
+      "family_name": "ExistentialAndPossessiveNegation",
+      "profile_name": "OvertMou5WithNominalComplement",
+      "profile_description": "Overt 冇 directly licenses a visible nominal complement in an existential or possessive clause, optionally with an overt possessor or subject, as in 冇書 and 我冇書. The profile excludes bare or elliptical 冇 responses, event or perfective-predicate negation, hidden-有 insertion, and other negators.",
+      "learner_label": null,
+      "behavior_research_alignment": "overlapping",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
+      "status_recommendation": "retain unsupported_generalization until possession versus existence, nominal-complement breadth, corpus evidence, role-neutral panel evidence, and held-out boundaries are complete",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-LAM-2018-NEGATION-ASPECT",
+          "SRC-YIP-1988-NEGATION",
+          "SRC-YIP-MATTHEWS-2000-BASIC"
+        ],
+        "runtime_locations": [
+          "main.js:2250-2270",
+          "main.js:8494-8999"
+        ],
+        "test_file": "tests/constructions/NegatedExistentialClause.json",
+        "additional_research": [
+          "The executable positives are 冇書 and 我冇書. The mapped sources independently identify 冇 as the suppletive negative of 有 while distinguishing nominal existential or possessive complements from event and perfective-predicate negation."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "negative existential or possessive 冇 with DP complement",
+          "source_id": "SRC-LAM-2018-NEGATION-ASPECT",
+          "scope_match": "close"
+        },
+        {
+          "term": "suppletive negative of 有",
+          "source_id": "SRC-YIP-1988-NEGATION",
+          "scope_match": "close"
+        },
+        {
+          "term": "冇 as the negative of 有, contrasting with *唔有",
+          "source_id": "SRC-YIP-MATTHEWS-2000-BASIC",
+          "scope_match": "exact"
+        }
+      ],
+      "former_names": [
+        "NegatedExistentialClause"
+      ],
+      "successor_profiles": [
+        "Mou5ExistentialClause",
+        "Mou5PossessiveClause",
+        "Mou5EventNegationProfile"
+      ],
+      "rationale": "NegatedExistentialClause is too broad because 冇 also occurs in possession, event, aspect, and elliptical response profiles. Mou5NominalExistentialPossessiveClause retains the UUID only for the overt 冇 plus visible nominal-complement structure supported by the current fixtures and sources, without inserting a hidden 有 or treating all 冇 clauses alike.",
+      "unresolved_blockers": [
+        "separate possession from existence when discourse and argument structure permit",
+        "define the admissible nominal-complement and subject or possessor inventory",
+        "exclude event, perfective-predicate, and elliptical-response uses",
+        "complete corpus, role-neutral panel, negative-boundary, and held-out review"
+      ]
+    },
+    {
+      "construction_uuid": "91631984-b603-5f26-9cca-fa66ef43b44f",
+      "construction_code": "AA99",
+      "legacy_label": "NegatedExistentialFragment",
+      "approved_canonical_name": "Mou5EllipticalResponse",
+      "claim_layer": "language_construction",
+      "family_name": "FragmentAndEllipsisResponses",
+      "profile_name": "BareOrSubjectMarkedMou5WithRecoverableComplement",
+      "profile_description": "A context-dependent response contains bare 冇 or a subject- or 都-marked 冇 sequence, optionally with a sentence-final particle, while the omitted complement or proposition is recoverable from discourse, as in 冇呀, 我冇啊, and 我都冇. The profile excludes overt nominal complements and context-free existential or possessive claims.",
+      "learner_label": null,
+      "behavior_research_alignment": "overlapping",
+      "terminology_alignment": "misleading",
+      "recommended_action": "rename_retain_narrow",
+      "status_recommendation": "retain research_pending until antecedent recoverability, fragment versus elliptical clause analysis, particle scope, corpus evidence, role-neutral panel evidence, and held-out boundaries are complete",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-LAM-2018-NEGATION-ASPECT",
+          "SRC-YIP-MATTHEWS-2000-BASIC"
+        ],
+        "runtime_locations": [],
+        "test_file": "tests/constructions/NegatedExistentialFragment.json",
+        "additional_research": [
+          "The eleven executable positives include bare 冇, repeated 冇, final-particle variants, and subject- or 都-marked forms. Yip and Matthews directly show 有 or 冇 as dialogue answers with recoverable predicate material; Lam cautions that isolated 冇 does not by itself identify existential, possessive, or event scope."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "有 or 冇 response with optionally repeated predicate material",
+          "source_id": "SRC-YIP-MATTHEWS-2000-BASIC",
+          "scope_match": "close"
+        },
+        {
+          "term": "冇 across existential, possessive, and perfective-predicate environments",
+          "source_id": "SRC-LAM-2018-NEGATION-ASPECT",
+          "scope_match": "restrictive"
+        }
+      ],
+      "former_names": [
+        "NegatedExistentialFragment"
+      ],
+      "successor_profiles": [
+        "BareMou5Response",
+        "SubjectMarkedMou5EllipticalClause",
+        "Mou5NominalExistentialPossessiveClause"
+      ],
+      "rationale": "NegatedExistentialFragment incorrectly presupposes an existential analysis for every short 冇 response and calls subject-marked cases fragments. Mou5EllipticalResponse instead names the common overt form and the required discourse dependency while leaving the recovered complement and clause-versus-fragment analysis explicit.",
+      "unresolved_blockers": [
+        "record the recoverable antecedent or proposition for every positive",
+        "separate bare response fragments from subject-marked elliptical clauses",
+        "define the contribution and scope of final particles and 都",
+        "exclude overt nominal complements and context-free uses",
+        "complete corpus, role-neutral panel, and held-out review"
+      ]
+    },
+    {
+      "construction_uuid": "4f727771-b271-5037-a264-fd52bbd35d71",
+      "construction_code": "AB01",
+      "legacy_label": "NegatedLexicalizedStative",
+      "approved_canonical_name": "LexicalAndCompositionalNegativeStativeComposite",
+      "claim_layer": "parser_representation",
+      "family_name": "NegativePropertyRepresentation",
+      "profile_name": "LexicalNanXCompositionalM4PropertyAndM4HouAggregate",
+      "profile_description": "A retired historical aggregate that conflated opaque or lexicalized negative meaning in 難X units, compositional 唔 negation of property predicates, and the distinct prohibitive or ambiguous 唔好 profile. The aggregate has no independent Cantonese licensing boundary and must not be restored as a language construction.",
+      "learner_label": null,
+      "behavior_research_alignment": "disjoint",
+      "terminology_alignment": "misleading",
+      "recommended_action": "retain_retired_reclassify",
+      "status_recommendation": "remain retired; preserve lexical 難X, compositional M4NegatedPropertyPredicate, and prohibitive or ambiguous 唔好 under independently typed identities",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [],
+        "runtime_locations": [
+          "main.js:v0.5.212 release note"
+        ],
+        "test_file": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+        "additional_research": [
+          "The v0.5.212 runtime history records retirement of the conflated label while preserving lexical 難X, compositional 唔 plus property predicates, and prohibitive or ambiguous 唔好 profiles. The permanent identity description independently records the same three-way conflation."
+        ]
+      },
+      "source_terms": [],
+      "former_names": [
+        "NegatedLexicalizedStative"
+      ],
+      "successor_profiles": [
+        "LexicalNanXProperty",
+        "M4NegatedPropertyPredicate",
+        "M4HouProhibitiveOrEvaluationProfile"
+      ],
+      "rationale": "The legacy label joined lexical meaning, compositional negation, and a separate prohibitive or evaluative form. The retired UUID remains resolvable for provenance but is reclassified as a historical parser representation so evidence from any one subtype cannot be transferred to the obsolete composite.",
+      "unresolved_blockers": [
+        "preserve the retired UUID, code, alias, and retirement provenance",
+        "keep lexical 難X, compositional 唔 plus property predicates, and 唔好 independently typed",
+        "do not restore the retired wrapper without a new independently evidenced boundary",
+        "do not transfer evidence among successor profiles"
+      ]
+    },
+    {
+      "construction_uuid": "83a4a474-5fdf-5d25-a021-49966d1be6fd",
+      "construction_code": "AB03",
+      "legacy_label": "NegatedVP",
+      "approved_canonical_name": "OvertNegatorPredicateWrapper",
+      "claim_layer": "parser_representation",
+      "family_name": "NegationRepresentation",
+      "profile_name": "OvertNegatorPlusTypedPredicateAggregate",
+      "profile_description": "An implementation wrapper groups an overt negative marker with an independently typed predicate span, preserving the marker and predicate identities without claiming one uniform Cantonese negative-VP construction. The wrapper excludes lexicalized negatives, existential or possessive 冇, experiential profiles, prohibitives, and marker-specific aspect or potential constructions unless independently typed.",
+      "learner_label": null,
+      "behavior_research_alignment": "disjoint",
+      "terminology_alignment": "misleading",
+      "recommended_action": "internalize_and_decompose",
+      "status_recommendation": "migrate to parser_heuristic only through a separate compatibility change; preserve marker-specific negative constructions and predicate identities independently",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-LAM-2018-NEGATION-ASPECT",
+          "SRC-YIP-1988-NEGATION",
+          "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
+        ],
+        "runtime_locations": [
+          "main.js:6303-6335",
+          "main.js:15012"
+        ],
+        "test_file": "tests/constructions/NegatedVP.json",
+        "additional_research": [
+          "The executable inventory contains one positive, 唔做完. The mapped research distinguishes ordinary 唔, existential or possessive 冇, not-yet 未, and aspect-related negation. The current note already recommends replacing the umbrella with typed negative profiles or keeping it strictly internal."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "ordinary 唔 negation with category restrictions",
+          "source_id": "SRC-YIP-1988-NEGATION",
+          "scope_match": "restrictive"
+        },
+        {
+          "term": "distinct ordinary, existential or possessive, and aspect-related negative profiles",
+          "source_id": "SRC-LAM-2018-NEGATION-ASPECT",
+          "scope_match": "contrastive"
+        },
+        {
+          "term": "未 rather than generic 唔 in not-yet completion",
+          "source_id": "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE",
+          "scope_match": "contrastive"
+        }
+      ],
+      "former_names": [
+        "NegatedVP"
+      ],
+      "successor_profiles": [
+        "M4NegatedActionVP",
+        "Mou5EventNegationProfile",
+        "Mei6NotYetPredicate",
+        "Mai5Prohibitive",
+        "NegativePotentialConstruction"
+      ],
+      "rationale": "NegatedVP erases the overt marker and the independently licensed predicate subtype, encouraging incompatible 唔, 冇, 未, 咪, experiential, aspectual, and potential patterns to be treated as one slot. OvertNegatorPredicateWrapper preserves compatibility while removing the umbrella from direct linguistic promotion.",
+      "unresolved_blockers": [
+        "map each current or future positive to its exact negative marker and predicate subtype",
+        "exclude existential, experiential, not-yet, prohibitive, lexicalized, and potential profiles",
+        "preserve the overt marker and do not infer a hidden positive counterpart",
+        "complete compatibility migration before changing the emitted legacy label or status path"
+      ]
+    },
+    {
+      "construction_uuid": "574b740d-b288-59ef-a1ec-2f90a8950d5c",
+      "construction_code": "AB04",
+      "legacy_label": "NegativeCognitionFragment",
+      "approved_canonical_name": "SubjectlessM4Zi1ResponseFragment",
+      "claim_layer": "language_construction",
+      "family_name": "CognitionResponseFragments",
+      "profile_name": "SubjectlessM4Zi1WithOptionalFinalParticle",
+      "profile_description": "Subjectless 唔知 functions as a context-dependent response fragment, optionally followed by a sentence-final particle, as in 唔知呀. The profile excludes overt-subject cognition clauses such as 我唔知, complement-taking cognition predicates, and clause-medial or grammaticalized stance uses unless independently typed.",
+      "learner_label": null,
+      "behavior_research_alignment": "runtime_narrower_defensible",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
+      "status_recommendation": "retain research_pending until discourse function, lexical versus attitudinal readings, particle scope, corpus evidence, role-neutral panel evidence, and held-out boundaries are complete",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-YAP-WONG-CHOR-2014-STANCE"
+        ],
+        "runtime_locations": [],
+        "test_file": "tests/constructions/NegativeCognitionFragment.json",
+        "additional_research": [
+          "The only executable positive is subjectless 唔知呀; the focused boundary excludes subjectful 我唔知. Yap, Wong, and Chor place related 唔知 forms on a lexical-to-attitudinal continuum, so the retained identity must not force one stance meaning or absorb clause-medial uses."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "lexical-to-attitudinal continuum for related 唔知 forms",
+          "source_id": "SRC-YAP-WONG-CHOR-2014-STANCE",
+          "scope_match": "restrictive"
+        }
+      ],
+      "former_names": [
+        "NegativeCognitionFragment"
+      ],
+      "successor_profiles": [
+        "SubjectfulM4Zi1CognitionClause",
+        "ClauseMedialM4Zi1StanceMarker",
+        "M4Zi1ComplementTakingPredicate"
+      ],
+      "rationale": "NegativeCognitionFragment is semantically broad and leaves the crucial subjectless response boundary implicit. SubjectlessM4Zi1ResponseFragment names the exact executable form while keeping subjectful cognition, complement structure, and grammaticalized stance uses separate.",
+      "unresolved_blockers": [
+        "establish discourse contexts and recoverable content for the response fragment",
+        "separate lexical ignorance from attitudinal or stance readings",
+        "define allowable final particles and their scope",
+        "complete corpus, role-neutral panel, negative-boundary, and held-out review"
+      ]
+    }
+  ]
+}

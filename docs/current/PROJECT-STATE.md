@@ -15,8 +15,8 @@ policy or ontology.
 | Parked construction notes | 0 |
 | Retired labels | 48 |
 | Permanent UUID records | 181 |
-| Expert-adjudicated UUIDs | 69 |
-| Pending UUID adjudications | 112 |
+| Expert-adjudicated UUIDs | 74 |
+| Pending UUID adjudications | 107 |
 
 ## Linguistic-status inventory
 
@@ -40,7 +40,7 @@ The permanent registry covers all 133 current and 48 retired records. UUID and
 short code are immutable; canonical name, family, profile, claim layer, and
 learner label may be revised through accepted UUID-keyed adjudication.
 
-Fourteen accepted batches have adjudicated 69 records. Important consequences
+Fifteen accepted batches have adjudicated 74 records. Important consequences
 include:
 
 - `AB30 ZoMarkedPerfectiveObjectVP` is the nearest direct candidate;
@@ -82,6 +82,11 @@ include:
   `MotionClausePurposeRelation`, renames `AA96` to
   `UnresolvedContextDiagnostic`, and reclassifies
   `AA97 NegatedMotionPredicateWrapper` as a parser representation;
+- Batch 15 narrows `AA98` and `AA99` to
+  `Mou5NominalExistentialPossessiveClause` and `Mou5EllipticalResponse`, keeps
+  `AB01 LexicalAndCompositionalNegativeStativeComposite` retired, reclassifies
+  `AB03 OvertNegatorPredicateWrapper` as a parser representation, and narrows
+  `AB04` to `SubjectlessM4Zi1ResponseFragment`;
 - true splits require new UUIDs. Evidence is never transferred automatically from
   an umbrella, retired record, or parser representation.
 
@@ -117,8 +122,8 @@ verification requirements.
 |---|---:|
 | `boundary_ready` | 1 |
 | `source_supported` | 63 |
-| `narrowing_candidate` | 34 |
-| `excluded_nonlanguage` | 33 |
+| `narrowing_candidate` | 33 |
+| `excluded_nonlanguage` | 34 |
 | `lexicalized_review` | 2 |
 | `retired_evidence_rehome_candidate` | 42 |
 | `retired_research_gap` | 6 |
@@ -187,7 +192,7 @@ evidence weight.
    mutually consistent.
 2. Select the most beneficial bounded non-parked task after inspecting current
    `main`, open PRs, dependencies, evidence gaps, learner impact, and ontology risk.
-3. Continue expert identity adjudication from the 112 pending UUIDs when that work
+3. Continue expert identity adjudication from the 107 pending UUIDs when that work
    outranks other available tasks; no later batch is a mandatory queue.
 4. Keep `YUE-JUDGMENT-PILOT-01` in collection until its stopping rule is met, then
    perform an item-level instrument and response audit before revising any follow-

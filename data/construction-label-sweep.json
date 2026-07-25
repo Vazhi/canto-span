@@ -2,7 +2,7 @@
   "schema": "canto-span-full-repo-label-sweep-v1",
   "identity_registry_schema": "canto-span-construction-identity-registry-v1",
   "record_count": 181,
-  "pending_review_count": 112,
+  "pending_review_count": 107,
   "automatic_flag_counts": {
     "generic_head_requires_boundary_definition": 72,
     "internal_representation_name_review": 20,
@@ -1571,15 +1571,15 @@
     {
       "construction_uuid": "ac726450-9058-50a9-afc4-245f275a739a",
       "construction_code": "AA98",
-      "canonical_name": "NegatedExistentialClause",
+      "canonical_name": "Mou5NominalExistentialPossessiveClause",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "unsupported_generalization",
       "source_path": "grammar/unsupported_generalization/NegatedExistentialClause.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "overlapping",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": [
         "generic_head_requires_boundary_definition",
         "unsupported_generalization_requires_source_runtime_reconciliation"
@@ -1588,15 +1588,15 @@
     {
       "construction_uuid": "91631984-b603-5f26-9cca-fa66ef43b44f",
       "construction_code": "AA99",
-      "canonical_name": "NegatedExistentialFragment",
+      "canonical_name": "Mou5EllipticalResponse",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/NegatedExistentialFragment.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "overlapping",
+      "terminology_alignment": "misleading",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": [
         "generic_head_requires_boundary_definition"
       ]
@@ -1604,15 +1604,15 @@
     {
       "construction_uuid": "4f727771-b271-5037-a264-fd52bbd35d71",
       "construction_code": "AB01",
-      "canonical_name": "NegatedLexicalizedStative",
+      "canonical_name": "LexicalAndCompositionalNegativeStativeComposite",
       "lifecycle_state": "retired",
-      "claim_layer": "unresolved",
+      "claim_layer": "parser_representation",
       "linguistic_status": "retired",
       "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "disjoint",
+      "terminology_alignment": "misleading",
+      "recommended_action": "retain_retired_reclassify",
       "automatic_risk_flags": [
         "retired_label_research_home_check",
         "unsupported_generalization_requires_source_runtime_reconciliation"
@@ -1637,15 +1637,15 @@
     {
       "construction_uuid": "83a4a474-5fdf-5d25-a021-49966d1be6fd",
       "construction_code": "AB03",
-      "canonical_name": "NegatedVP",
+      "canonical_name": "OvertNegatorPredicateWrapper",
       "lifecycle_state": "current",
-      "claim_layer": "language_construction",
+      "claim_layer": "parser_representation",
       "linguistic_status": "unsupported_generalization",
       "source_path": "grammar/unsupported_generalization/NegatedVP.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "disjoint",
+      "terminology_alignment": "misleading",
+      "recommended_action": "internalize_and_decompose",
       "automatic_risk_flags": [
         "unsupported_generalization_requires_source_runtime_reconciliation"
       ]
@@ -1653,15 +1653,15 @@
     {
       "construction_uuid": "574b740d-b288-59ef-a1ec-2f90a8950d5c",
       "construction_code": "AB04",
-      "canonical_name": "NegativeCognitionFragment",
+      "canonical_name": "SubjectlessM4Zi1ResponseFragment",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/NegativeCognitionFragment.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "runtime_narrower_defensible",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": [
         "generic_head_requires_boundary_definition",
         "semantic_domain_name_requires_structural_scope_check"

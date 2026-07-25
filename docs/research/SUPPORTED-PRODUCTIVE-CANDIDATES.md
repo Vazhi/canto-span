@@ -38,6 +38,7 @@ This is a prioritization report, not a promotion decision. A score cannot overri
 | `AA68` | `MotionVerbDouGoalVP` | `source_supported` | 53 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA69` | `DemonstrativeClassifierNPWithoutOvertNoun` | `source_supported` | 53 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA91` | `DegreePropertyModifierNounNP` | `source_supported` | 53 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
+| `AB04` | `SubjectlessM4Zi1ResponseFragment` | `source_supported` | 53 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA01` | `M4MarkedANotAInterrogative` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA24` | `AspectMarkedMeiCompletionQuestion` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA26` | `WanMarkedCompletionVP` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
@@ -48,7 +49,6 @@ This is a prioritization report, not a promotion decision. A score cannot overri
 | `AA76` | `BeiThemeRecipientGiveVP` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA86` | `ModalM4ModalInterrogative` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA89` | `ModalAuxiliaryComplementVP` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
-| `AA99` | `NegatedExistentialFragment` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 
 ## Narrowing candidates
 
@@ -61,6 +61,7 @@ These broad current labels are not direct promotion candidates. Their source-bac
 | `AA82` | `BinDouWhPlaceQuestion` | `narrowing_candidate` | 70 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA93` | `OvertDestinationMotionVP` | `narrowing_candidate` | 70 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA94` | `MotionClausePurposeRelation` | `narrowing_candidate` | 70 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
+| `AA98` | `Mou5NominalExistentialPossessiveClause` | `narrowing_candidate` | 70 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA06` | `ApproximateQuantity` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA12` | `ClassifierObjectNP` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA20` | `CognitionStatementClause` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
@@ -69,8 +70,6 @@ These broad current labels are not direct promotion candidates. Their source-bac
 | `AA57` | `ExistentialQuestion` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA59` | `ExperientialClause` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA63` | `ExperientialYesNoQuestion` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
-| `AA98` | `NegatedExistentialClause` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
-| `AB03` | `NegatedVP` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AB07` | `NegativePotentialComplement` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AB08` | `NegativePotentialDirectionalVP` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AB13` | `OpinionStanceFrame` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |

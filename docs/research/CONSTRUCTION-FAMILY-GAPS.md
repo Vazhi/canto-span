@@ -9,22 +9,23 @@ Family assignments in this report are inherited from existing consolidation reco
 | L08 / ProgressiveAspect | 5 | 1 | 3 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB40, AB27, AB39, AB65, AB79 |
 | L02 / ConditionalRelations | 4 | 1 | 3 | 0 | `preserved_retired_evidence_needs_family_reconciliation` | confirm whether active family members already cover the preserved evidence | AA29, AA25, AA28, AB69 |
 | L10 / DelimitativeAspect | 6 | 1 | 2 | 0 | `preserved_retired_evidence_needs_family_reconciliation` | confirm whether active family members already cover the preserved evidence | AA41, AA22, AA70, AA35, AA36, AB59 |
-| L05 / FragmentsAndEllipsis | 4 | 2 | 2 | 2 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AA99, AB04, AB26, AB42 |
-| L07 / ExperientialAspect | 4 | 2 | 2 | 0 | `preserved_retired_evidence_needs_family_reconciliation` | confirm whether active family members already cover the preserved evidence | AA59, AA63, AB01, AB61 |
 | L25 / TypedWhAndStanceQuestions | 4 | 2 | 2 | 0 | `preserved_retired_evidence_needs_family_reconciliation` | confirm whether active family members already cover the preserved evidence | AB41, AB12, AA71, AB37 |
 | L31 / CognitionAndStance | 4 | 2 | 2 | 0 | `preserved_retired_evidence_needs_family_reconciliation` | confirm whether active family members already cover the preserved evidence | AA20, AB13, AA18, AA19 |
 | L35 / PurposeSerialRelations | 3 | 1 | 2 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB63, AB38, AB44 |
+| L05 / FragmentsAndEllipsis | 2 | 0 | 2 | 0 | `retired_evidence_without_current_home` | decide whether a narrow successor UUID is required | AB26, AB42 |
+| L07 / ExperientialAspect | 3 | 2 | 1 | 0 | `preserved_retired_evidence_needs_family_reconciliation` | confirm whether active family members already cover the preserved evidence | AA59, AA63, AB61 |
 | L13 / AspectDirectionalComposition | 3 | 2 | 1 | 0 | `preserved_retired_evidence_needs_family_reconciliation` | confirm whether active family members already cover the preserved evidence | AB18, AB36, AB20 |
 | L19 / NominalModificationAndRelatives | 3 | 2 | 1 | 2 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB50, AB66, AB10 |
-| L26 / Negation | 3 | 2 | 1 | 0 | `preserved_retired_evidence_needs_family_reconciliation` | confirm whether active family members already cover the preserved evidence | AA98, AB03, AB06 |
 | L44 / TemporalAndMeasurePredication | 3 | 2 | 1 | 2 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB71, AB11, AB72 |
 | L24 / ExistentialQuestions | 2 | 1 | 1 | 0 | `preserved_retired_evidence_needs_family_reconciliation` | confirm whether active family members already cover the preserved evidence | AA57, AB29 |
 | L42 / StativePredication | 2 | 1 | 1 | 0 | `preserved_retired_evidence_needs_family_reconciliation` | confirm whether active family members already cover the preserved evidence | AB67, AA05 |
 | FragmentAndEllipsisRepresentation / FragmentAndEllipsisRepresentation | 1 | 0 | 1 | 0 | `retired_evidence_without_current_home` | decide whether a narrow successor UUID is required | AA88 |
 | L09 / LocativeFrames | 1 | 0 | 1 | 0 | `retired_evidence_without_current_home` | decide whether a narrow successor UUID is required | AA78 |
 | L20 / PossessiveNominals | 1 | 0 | 1 | 0 | `retired_evidence_without_current_home` | decide whether a narrow successor UUID is required | AB25 |
+| L26 / Negation | 1 | 0 | 1 | 0 | `retired_evidence_without_current_home` | decide whether a narrow successor UUID is required | AB06 |
 | L33 / DirectionalMotion | 1 | 0 | 1 | 0 | `retired_evidence_without_current_home` | decide whether a narrow successor UUID is required | AA48 |
 | L43 / ScalarComparisonAndEvaluation | 1 | 0 | 1 | 0 | `retired_evidence_without_current_home` | decide whether a narrow successor UUID is required | AA54 |
+| NegativePropertyRepresentation / NegativePropertyRepresentation | 1 | 0 | 1 | 0 | `retired_evidence_without_current_home` | decide whether a narrow successor UUID is required | AB01 |
 | PurposeAndAspectRepresentation / PurposeAndAspectRepresentation | 1 | 0 | 1 | 0 | `retired_evidence_without_current_home` | decide whether a narrow successor UUID is required | AA92 |
 | ResultAndChangeRepresentation / ResultAndChangeRepresentation | 1 | 0 | 1 | 0 | `retired_evidence_without_current_home` | decide whether a narrow successor UUID is required | AA87 |
 | L12 / ResultAndPotentialComplements | 7 | 7 | 0 | 5 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB07, AB08, AB31, AB32, AB55, AB56, AB80 |
