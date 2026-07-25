@@ -37,6 +37,9 @@ function requireAll(file, values, labelPrefix) {
 const agentsPath = "AGENTS.md";
 const startPath = "docs/current/00-START-HERE.md";
 const statePath = "docs/current/PROJECT-STATE.md";
+const doctrinePath = "docs/current/DOCTRINE.md";
+const governancePath = "docs/current/GOVERNANCE.md";
+const parkedPath = "data/parked-constructions.json";
 const readmePath = "README.md";
 const coreWorkflowPath = ".github/workflows/supported-productive-discovery.yml";
 const researchWorkflowPath = ".github/workflows/research-provenance.yml";
@@ -76,6 +79,7 @@ const requiredPointers = [
   "tools/corpus-review/README.md",
   "data/construction-identities.json",
   "data/construction-candidate-readiness.json",
+  "data/parked-constructions.json",
 ];
 
 for (const pointer of requiredPointers) {
@@ -90,6 +94,9 @@ const requiredRules = [
   "Do not create repeated `validation/vX.Y.Z/` trees",
   "GitHub Actions is read-only verification",
   "Do not merge the PR",
+  "no active-note whitelist",
+  "no repository-wide grammar freeze",
+  "recommend unpark",
 ];
 
 for (const rule of requiredRules) {
@@ -100,10 +107,19 @@ requireText(startPath, "current AB30 candidate packet: **5 reviewed; 2 genuine; 
 requireText(startPath, "AB30 corpus-readiness effect: **`partial_only`**", "AB30 partial-only readiness");
 requireText(startPath, "`YUE-JUDGMENT-PILOT-01` remains in collection", "active survey state");
 requireText(startPath, "`followup-draft-v1` is non-deployable", "follow-up deployment state");
+requireText(startPath, "133 available / 0 parked", "default-available workflow count");
 
 requireText(statePath, "`readiness_effect: partial_only`", "project-state corpus effect");
 requireText(statePath, "`YUE-JUDGMENT-PILOT-01` remains the active SoSci collection instrument", "project-state live survey");
 requireText(statePath, "`review-packets/native-panel/active-v2/followup-draft-v1-*` is a non-deployable", "project-state follow-up state");
+requireText(statePath, "The repository has no active-note whitelist", "project-state blacklist policy");
+requireText(statePath, "There is no repository-wide grammar freeze", "project-state grammar policy");
+
+requireText(doctrinePath, "There is no repository-wide grammar freeze and no active-note whitelist", "doctrine grammar and workflow policy");
+requireText(doctrinePath, "recommend unpark", "doctrine unpark recommendation");
+requireText(governancePath, "Workflow availability is blacklist-based", "governance blacklist policy");
+requireText(governancePath, "The construction remains parked until a reviewed change removes its entry", "governance unpark boundary");
+requireText(parkedPath, '"default_state": "available"', "parked registry default state");
 
 requireText(readmePath, "AGENTS.md", "root agent bootstrap pointer");
 requireText(readmePath, "docs/current/00-START-HERE.md", "root Start Here pointer");
@@ -153,12 +169,15 @@ const requiredResearchWorkflowInputs = [
 requireAll(researchWorkflowPath, requiredResearchWorkflowInputs, "research workflow trigger");
 
 const result = {
-  schema: "canto-span-agent-coordination-contract-v2",
+  schema: "canto-span-agent-coordination-contract-v3",
   status: errors.length === 0 ? "PASS" : "FAIL",
   checked_files: [
     agentsPath,
     startPath,
     statePath,
+    doctrinePath,
+    governancePath,
+    parkedPath,
     readmePath,
     coreWorkflowPath,
     researchWorkflowPath,
