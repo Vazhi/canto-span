@@ -23,7 +23,7 @@ The union of those status directories is the canonical 133-note construction reg
 
 `grammar/retired/README.md` is a navigation index for labels removed from the runtime registry. It is not part of the current construction-note set and does not duplicate retired construction records.
 
-`GRAMMAR-INDEX.md` groups all current notes by linguistic status and marks the two active workflow items.
+`GRAMMAR-INDEX.md` groups all current notes by linguistic status. Work availability is owned separately by `data/parked-constructions.json`.
 
 ## Status path rule
 
@@ -41,19 +41,29 @@ status: "research_pending"
 
 A linguistic status change therefore moves the file and updates the status, confidence, evidence, boundaries, and current action in the same commit.
 
-## Workflow rule
+## Workflow availability rule
 
-Workflow state is independent of linguistic status and is stored only in frontmatter:
+Workflow availability is blacklist-based and independent of linguistic status.
+Every current construction note is available unless its permanent identity is
+listed in:
 
-- `workflow_state: "active"` — selected for current bounded work;
-- `workflow_state: "archived"` — parked, but still current and runtime-active.
+```text
+data/parked-constructions.json
+```
 
-At this checkpoint the active working set contains exactly:
+The registry currently contains **0 parked constructions**, leaving all **133
+current construction notes available**. Parking does not move a file, retire a
+label, erase evidence, change linguistic status, or alter runtime behavior.
 
-1. `ResourceUseLaiFunctionRelation`, priority 1;
-2. `PostverbalZoPerfectiveVP`, priority 2.
+A parked record must include its permanent identity tuple, parking date, reason,
+and review trigger. When a parked construction becomes the most beneficial next
+target, an agent must recommend unpark with the changed circumstances, expected
+benefit, and proposed bounded scope. Substantive work begins only after an
+explicit reviewed change removes the record from the blacklist.
 
-Changing workflow state does not move a file. Workflow archiving does **not** retire a label, erase evidence, or change linguistic status.
+Existing note-local `workflow_state`, `workflow_priority`, `workflow_since`,
+`workflow_reason`, and workflow tags are deprecated compatibility metadata. They
+are not canonical availability state and do not restrict agent work.
 
 ## Required frontmatter
 
@@ -73,8 +83,7 @@ Each construction note records:
 - promotion-gate schema version;
 - panel evidence model, canonical panel policy/state links, and source-verification file;
 - standard construction-test file, coverage state, and positive/boundary/executable counts;
-- runtime activity and fixture/reference counts;
-- `workflow_state`, `workflow_priority`, `workflow_since`, and `workflow_reason`.
+- runtime activity and fixture/reference counts.
 
 The note body records the plain-language claim, citations and locators, panel-review scope, negative and boundary references, implementation state, blockers, and related constructions.
 
@@ -102,9 +111,9 @@ npm run verify:release
 The checks confirm:
 
 - exactly 133 current construction notes;
-- exactly 2 workflow-active and 131 workflow-archived notes;
+- exactly 133 available and 0 parked constructions under the canonical blacklist;
 - exact equality with the runtime active-label set;
-- required frontmatter fields;
+- required linguistic, evidence, runtime, and test frontmatter fields;
 - exact status-folder/frontmatter agreement;
 - exact one-to-one construction-note / construction-test-file mapping;
 - standardized test-count and source-count consistency;
