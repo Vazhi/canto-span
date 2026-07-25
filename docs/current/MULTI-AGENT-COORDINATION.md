@@ -32,6 +32,9 @@ coherent claim when the affected state dimensions and substantive gates are clea
 ## Canonical owners
 
 - Work-claim format: `schemas/work-claim.schema.json`
+- Legacy work-claim format: `schemas/work-claim-v1.schema.json`
+- Current intake ownership format: `schemas/task-intake.schema.json`
+- Legacy unified intake format: `schemas/task-intake-v1.schema.json`
 - Declarative changeset format: `schemas/change-set.schema.json`
 - Exclusive and integration-owned paths: `config/coordination-targets.json`
 - Claim intake: `.github/ISSUE_TEMPLATE/work-claim.yml`
@@ -42,8 +45,59 @@ coherent claim when the affected state dimensions and substantive gates are clea
 - Current validation workflow: `.github/workflows/coordination-check.yml`
 - Per-PR merge authorization: `docs/current/USER-MERGE-REVIEW.md`
 
-GitHub issues own temporary work intent. They do not own linguistic status,
-construction identity, runtime behavior, evidence, survey state, or release state.
+The latest valid ownership block in the canonical intake issue body owns pickup
+authority. The linked work-claim issue owns semantic scope. They do not own
+linguistic status, construction identity, runtime behavior, evidence, survey state,
+or release state.
+
+## Pickup ownership and precedence
+
+Current intake records use `canto-span-task-intake-v2`. They contain a monotonic
+`ownership_revision`, `active_pickup_owner`, `pickup_allowed`, previous target,
+reason, timestamp, handoff status, active claim, branch, and PR. Current claims use
+`canto-span-work-claim-v2` and bind `intake_issue`, `active_worker`, and
+`ownership_revision`.
+
+Authority order is:
+
+1. the latest valid ownership block in the canonical intake issue body;
+2. the matching ownership-bound work claim;
+3. the matching branch and pull request.
+
+These records must agree. The intake record wins on pickup identity and revision;
+the claim does not preserve an earlier owner's authority. Comments, labels,
+assignments, mentions, reviews, and cached prompts cannot take over or reassign work.
+
+Every agent re-fetches the intake issue and linked claim:
+
+- after every resumed session;
+- before claim creation;
+- before branch creation;
+- before the first repository edit;
+- before every commit and push;
+- before readying or presenting a pull request;
+- before merge.
+
+On any owner, permission, revision, claim, branch, or PR mismatch, the agent reports
+`routing result: unavailable` and stops without repository writes.
+
+### Agent-neutral takeover and reassignment
+
+Codex, ChatGPT, and human pickup use the same transition rule. A takeover or
+reassignment replaces the single ownership block in the intake issue body, increases
+the revision by exactly one, identifies the previous target and authorized reason,
+records a later timestamp, and names an explicit handoff state.
+
+An ownership change cannot authorize parallel edits. Existing overlapping work must
+be absent, released, narrowed to disjoint scope, or confined to a disjoint
+decision-only region. The linked claim must then be created or updated with the new
+worker and revision before the new owner edits. The old owner stops as soon as it
+observes the new revision.
+
+Historical `canto-span-task-intake-v1`, `canto-span-codex-task-v1`, and
+`canto-span-work-claim-v1` records remain readable. They are not silently rewritten,
+but a legacy claim must migrate to v2 before participating in active pickup,
+takeover, or reassignment.
 
 ## Work-claim lifecycle
 
@@ -54,10 +108,13 @@ Before creating or modifying an agent branch:
 1. inspect current `main`;
 2. inspect open pull requests;
 3. inspect open work-claim issues;
-4. create a work claim from the issue template;
-5. choose the smallest adequate semantic targets;
-6. declare worker or integrator role;
-7. create the branch named in the claim.
+4. re-fetch the canonical intake ownership block;
+5. create a work claim from the issue template bound to its issue, active worker,
+   and ownership revision;
+6. choose the smallest adequate semantic targets;
+7. declare worker or integrator role;
+8. re-fetch ownership and create the branch named in the claim only if it still
+   matches.
 
 The claim contains a fenced `coordination-claim` JSON object. The branch and pull
 request use that claim until the work is merged, abandoned, or replaced.
@@ -65,8 +122,8 @@ request use that claim until the work is merged, abandoned, or replaced.
 ### 2. Keep the claim current
 
 Update the issue when scope, branch, dependencies, semantic regions, generated
-outputs, role, or expiry changes. Do not silently expand the branch beyond the
-issue.
+outputs, role, ownership revision, or expiry changes. Do not silently expand the
+branch beyond the issue. Re-fetch the intake before every commit and push.
 
 An active claim must have a future `expires_at`. Claims should normally expire
 within 72 hours; exclusive claims should normally expire within 48 hours. Renew a
@@ -260,7 +317,15 @@ another unresolved PR, or still requires integration. A draft must still:
 - cover every changed file;
 - avoid unresolved overlap;
 - use exclusive mode where required;
-- use integrator role for integration-owned files.
+- use integrator role for integration-owned files;
+- match the live intake owner, pickup permission, ownership revision, active claim,
+  branch, and exact PR number.
+
+Immediately after GitHub assigns the draft PR number, update `active_pr` in the
+canonical intake block and fill the PR body's active worker and ownership revision.
+The PR coordination check must remain unavailable until those live values match.
+Attaching the PR does not by itself transfer ownership or authorize more repository
+writes.
 
 ### Ready pull request
 
@@ -271,8 +336,8 @@ temporary file.
 
 The ready gate replaces post-merge repair. Temporary intent is cleaned on the branch
 before review while the issue, PR, and Git history preserve the decision trail. Once
-ready, the agent notifies the user and stops; ready state and passing checks do not
-authorize merge.
+ready, the agent re-fetches live ownership, notifies the user, and stops; ready state
+and passing checks do not authorize merge.
 
 ## Automation policy
 
@@ -307,8 +372,10 @@ prohibited.
 An expired claim does not remain a permanent lock. It is ignored for overlap after
 expiry, but its own PR fails validation until the claim is renewed or replaced.
 
-Before taking over apparently abandoned work, inspect branch and PR activity. Close
-or mark the old claim stale before opening a new overlapping claim.
+Before taking over apparently abandoned work, inspect the intake issue, branch, PR,
+and claim activity. Record a new ownership revision first. Close, release, narrow,
+or mark the old claim stale before opening or updating an overlapping claim. A
+claim's expiry alone does not reassign pickup ownership.
 
 ## Merge-order rules
 

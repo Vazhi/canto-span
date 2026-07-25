@@ -14,13 +14,16 @@ body:
       value: |
         ```coordination-claim
         {
-          "schema": "canto-span-work-claim-v1",
+          "schema": "canto-span-work-claim-v2",
           "work_id": "CS-WORK-0000",
           "status": "active",
           "claim_mode": "shared",
           "integration_role": "worker",
           "branch": "agent/replace-with-branch-name",
           "expires_at": "2026-07-28T00:00:00Z",
+          "intake_issue": 123,
+          "active_worker": "codex",
+          "ownership_revision": 1,
           "targets": [
             {
               "type": "construction",
@@ -47,6 +50,8 @@ body:
       label: Coordination confirmation
       options:
         - label: I inspected current `main`, open pull requests, and open work claims.
+          required: true
+        - label: I re-fetched the canonical intake issue and copied its live active owner and ownership revision.
           required: true
         - label: I used semantic regions where possible instead of claiming an entire shared file.
           required: true

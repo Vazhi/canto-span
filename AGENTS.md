@@ -19,11 +19,12 @@ The mandatory per-pull-request merge gate is:
 Before planning, editing, generating, reviewing, or merging repository work:
 
 1. read all four files in full;
-2. classify the work as `ChatGPT-first`, `Codex-ready`, or `hybrid` under the routing
-   contract before creating a claim, branch, or edit;
+2. classify the work as `ChatGPT-first`, `Codex-ready`, `human-required`, or
+   `hybrid` under the routing contract before creating a claim, branch, or edit;
 3. read `docs/current/PROJECT-STATE.md`;
 4. inspect current `main`, open pull requests, and open work-claim issues;
-5. inspect open Codex intake issues for duplicate, dependent, or overlapping work;
+5. inspect open intake issues for duplicate, dependent, overlapping, reassigned, or
+   taken-over work;
 6. create or update one work-claim issue before editing;
 7. claim the smallest adequate semantic targets and regions rather than locking a
    whole shared file unnecessarily;
@@ -37,6 +38,14 @@ Before planning, editing, generating, reviewing, or merging repository work:
 13. when the pull request is ready, inform the user and stop before merge;
 14. merge only after the user explicitly approves that specific pull request and the
     approved head commit remains unchanged.
+
+The canonical intake issue body owns current pickup authority. After every resumed
+session and immediately before claim creation, branch creation, first repository
+edit, commit, push, pull-request readiness, or merge, re-fetch that live issue and
+its linked claim. Proceed only when the active owner, pickup permission, ownership
+revision, claim, and branch all match. Cached prompts, comments, labels, assignment,
+mentions, and an earlier dispatch are not authority. Any mismatch requires
+`routing result: unavailable` and a stop without repository writes.
 
 ## ChatGPT delegation duty
 
@@ -56,6 +65,10 @@ requests before presenting them for user merge approval.
 Codex must read `CODEX-ISSUE-WORKFLOW.md` and independently verify that an intake
 issue is Codex-ready before creating a semantic work claim, branch, or edit. Labels,
 assignment, mentions, or dispatch are not sufficient authority.
+
+Codex must also verify from the current issue body that `active_pickup_owner` is
+`codex`, `pickup_allowed` is true, and the live `ownership_revision` matches the
+claim. A takeover or reassignment supersedes every cached Codex task state.
 
 If a task is ChatGPT-first, lacks an accepted specification for its Codex portion, or
 requires an unresolved expert or user decision, Codex must report `needs-chatgpt` and

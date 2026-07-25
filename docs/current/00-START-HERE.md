@@ -35,9 +35,9 @@ Volatile counts and work order belong there; durable standards belong here.
 Before making a change, every agent must:
 
 1. confirm the repository is `Vazhi/canto-span`;
-2. update from current `main` and inspect open pull requests and open work-claim
-   issues for overlapping semantic regions, state dimensions, generated outputs,
-   parked identities, or dependencies;
+2. update from current `main` and inspect open pull requests, intake issues, and
+   open work-claim issues for ownership changes, overlapping semantic regions,
+   state dimensions, generated outputs, parked identities, or dependencies;
 3. create or update one semantic work-claim issue using
    [`.github/ISSUE_TEMPLATE/work-claim.yml`](../../.github/ISSUE_TEMPLATE/work-claim.yml);
 4. read [`MULTI-AGENT-COORDINATION.md`](MULTI-AGENT-COORDINATION.md) and
@@ -57,14 +57,25 @@ Before making a change, every agent must:
 11. open a pull request using
     [`.github/pull_request_template.md`](../../.github/pull_request_template.md),
     link the work claim, and include `Closes #<claim>`;
-12. use draft state only while work, dependencies, pending changesets, or integration
+12. after GitHub assigns the PR number, bind `active_pr` in the live intake block
+    and fill the PR body's active worker and ownership revision before expecting the
+    coordination check to pass;
+13. use draft state only while work, dependencies, pending changesets, or integration
     remain unresolved;
-13. when the pull request is ready, notify the user with the PR number, exact head,
+14. when the pull request is ready, notify the user with the PR number, exact head,
     scope, validation, risks, and limitations, then stop without merging;
-14. merge only after the user explicitly approves that specific pull request and the
+15. merge only after the user explicitly approves that specific pull request and the
     approved head commit remains unchanged;
-15. keep status promotion, survey deployment, and release publication inside their
+16. keep status promotion, survey deployment, and release publication inside their
     own explicitly claimed scope and applicable gates.
+
+The current machine-readable ownership block in the canonical intake issue body has
+pickup precedence. Every agent re-fetches it and the linked claim after a resumed
+session and immediately before claim creation, branch creation, first edit, commit,
+push, pull-request readiness, or merge. The active owner, pickup permission,
+monotonic ownership revision, claim, and branch must agree. A mismatch or later
+takeover invalidates cached authority and requires `routing result: unavailable`
+with no repository write.
 
 There is no read-only research role. An agent may research, record evidence,
 adjudicate, implement runtime behavior, update tests, document, and integrate in one
@@ -87,7 +98,8 @@ dimension.
 | Current linguistic status and note-local evidence | Exactly one current note under [`grammar/<status>/`](../../grammar/) for each active runtime label | A recommendation or passing test does not move status. |
 | Actual parser behavior | [`main.js`](../../main.js) and executable [`tests/`](../../tests/) | Tests prove implementation behavior only. |
 | Workflow availability | [`data/parked-constructions.json`](../../data/parked-constructions.json) | Every unlisted current construction is available; this is a blacklist, not a queue. |
-| Concurrent work intent | Open GitHub claims conforming to [`schemas/work-claim.schema.json`](../../schemas/work-claim.schema.json) | Claims coordinate temporary semantic scope only. |
+| Current pickup authority | Latest valid ownership block in the canonical intake issue body, conforming to [`schemas/task-intake.schema.json`](../../schemas/task-intake.schema.json) | The active owner and monotonic revision supersede cached prompts, comments, labels, assignments, mentions, and earlier dispatch. |
+| Concurrent semantic scope | Open GitHub claims conforming to [`schemas/work-claim.schema.json`](../../schemas/work-claim.schema.json) | A current claim binds to the intake issue, active worker, and ownership revision; mismatch stops work. |
 | Coordination path policy | [`config/coordination-targets.json`](../../config/coordination-targets.json) | Exclusive and integration-owned paths require the configured mode and role. |
 | Per-pull-request merge authorization | [`USER-MERGE-REVIEW.md`](USER-MERGE-REVIEW.md) | Passing checks and integrator role never replace explicit user approval for the specific PR and head. |
 | Discovery readiness | [`data/construction-candidate-readiness.json`](../../data/construction-candidate-readiness.json) and deterministic reports | Scores rank work; they never promote or prohibit work. |
@@ -309,11 +321,13 @@ If a task spans multiple rows, satisfy every applicable row.
    dimensions.
 4. Create or update one work claim using shared mode for disjoint regions and
    exclusive mode for configured or indivisible scope.
-5. Declare `integration_role: integrator` when reconciling integration-owned files
+5. Bind the claim to the live intake issue, active worker, and ownership revision.
+6. Declare `integration_role: integrator` when reconciling integration-owned files
    or managing merge order.
-6. Create the exact branch named in the claim.
-7. Rebuild stale work before adding changes.
-8. Define scope, protected state, inputs, outputs, reserved decisions, dependencies,
+7. Re-fetch the intake immediately before creating the exact branch named in the
+   claim; stop if ownership changed.
+8. Rebuild stale work before adding changes.
+9. Define scope, protected state, inputs, outputs, reserved decisions, dependencies,
    and validation.
 
 ### During work
@@ -322,10 +336,13 @@ If a task spans multiple rows, satisfy every applicable row.
 2. Keep mechanical preparation separate from expert linguistic decisions.
 3. Use existing schemas, IDs, ledgers, verifiers, and semantic-region conventions.
 4. Update the claim before expanding scope.
-5. Change canonical owners first; integrate deterministic consequences once.
-6. Use a preconditioned changeset when direct editing is unsafe.
-7. Preserve user data, review decisions, exclusions, and provenance.
-8. Research may proceed directly into evidence-faithful implementation when the
+5. Re-fetch live ownership before the first edit, every commit and push, and after
+   every resumed session; stop on owner, permission, revision, claim, or branch
+   mismatch.
+6. Change canonical owners first; integrate deterministic consequences once.
+7. Use a preconditioned changeset when direct editing is unsafe.
+8. Preserve user data, review decisions, exclusions, and provenance.
+9. Research may proceed directly into evidence-faithful implementation when the
    claim and required gates cover both; no artificial read-only research handoff is
    required.
 
@@ -341,7 +358,9 @@ If a task spans multiple rows, satisfy every applicable row.
 7. Before ready state, apply or reject pending changesets and remove their JSON.
 8. The integrator verifies exact head, dependencies, mergeability, checks, and scope,
    notifies the user that the PR is ready, and stops without merging.
-9. After explicit user approval for that PR and unchanged head, the integrator
+9. Re-fetch intake ownership and require the PR claim's worker and revision to match
+   before readying or presenting the PR.
+10. After explicit user approval for that PR and unchanged head, the integrator
    re-checks the gates and may merge.
 
 ## Verification matrix
@@ -415,6 +434,10 @@ npm run verify:all
 An agent must not:
 
 - edit before creating or renewing its claim;
+- act from a cached intake after its active owner, pickup permission, ownership
+  revision, claim, or branch changes;
+- treat a comment, label, assignment, mention, dispatch, or PR review as a takeover
+  or reassignment;
 - work from a stale branch after overlapping state changes;
 - reuse another branch without an integration handoff;
 - claim a whole shared file when a stable region can be named;
@@ -458,11 +481,14 @@ MANDATORY BOOTSTRAP
    docs/current/MULTI-AGENT-COORDINATION.md, and
    docs/current/USER-MERGE-REVIEW.md in full.
 2. Sync current main and inspect open PRs plus open work claims.
-3. Create or update one claim before editing. Declare work ID, mode, integration
-   role, exact branch, expiry, semantic regions, generated outputs, protected state,
+3. Re-fetch the canonical intake issue. Proceed only if its live active owner,
+   pickup permission, and ownership revision authorize this agent.
+4. Create or update one claim before editing. Bind its intake issue, active worker,
+   and ownership revision, then declare work ID, mode, integration role, exact
+   branch, expiry, semantic regions, generated outputs, protected state,
    dependencies, and one bounded outcome.
-4. Create the exact agent/<description> branch named in the claim.
-5. Read data/parked-constructions.json. All unlisted constructions are available;
+5. Create the exact agent/<description> branch named in the claim.
+6. Read data/parked-constructions.json. All unlisted constructions are available;
    recommend and review unpark before working on a listed item.
 6. Follow current canonical records over historical reports, prompts, aliases,
    workflow fields, claims, or generated summaries.
@@ -477,6 +503,9 @@ EXECUTION RULES
 - Workers do not finalize integration-owned files; integrators may reconcile them.
 - Use preconditioned changesets for unsafe high-contention edits.
 - Update the claim before expanding scope.
+- Re-fetch live intake ownership after every resumed session and immediately before
+  branch creation, first edit, commit, push, PR readiness, or merge. On mismatch,
+  report `routing result: unavailable` and stop without writes.
 - Use permanent construction codes and canonical names.
 - Preserve review decisions, exclusions, provenance, and user data.
 - Use least privilege for automation; validation-only jobs remain read-only.
