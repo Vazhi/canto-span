@@ -4460,7 +4460,7 @@
     {
       "construction_uuid": "d269f68c-b8dd-5b64-8dcc-ac1f2e82baab",
       "construction_code": "AB11",
-      "canonical_name": "NominalPredicateClause",
+      "canonical_name": "BareMeasurePredicateClause",
       "legacy_labels": [
         "NominalPredicateClause"
       ],
@@ -4468,30 +4468,43 @@
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/NominalPredicateClause.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese may instantiate the structural family represented by NominalPredicateClause; exact productivity and boundaries require pattern-specific independent evidence.",
+      "family_name": "MeasureAndNominalPredication",
+      "profile_name": "SubjectNPPlusBareAgePriceOrDimensionMeasure",
+      "profile_description": "An overt subject NP is followed directly, without overt 係, by an overt age, price, area, length, or comparable measure expression, as in 佢十歲, 本書三十蚊, 間房三百呎, and 張枱三尺長. The profile excludes adjectival stative predication, overt copular identification, unrestricted nominal predicates, and scalar questions.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "age, price, and length expressions",
+          "source_id": "SRC-YIP-MATTHEWS-2000-BASIC",
+          "scope_match": "contrastive"
+        },
+        {
+          "term": "overt-係 price predication",
+          "source_id": "SRC-TAM-2021-DOZE",
+          "scope_match": "contrastive"
+        }
+      ],
+      "former_names": [
+        "NominalPredicateClause"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "runtime_broader",
+        "terminology_alignment": "misleading",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [
           "generic_head_requires_boundary_definition"
         ],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-25. NominalPredicateClause overstates the runtime scope because every positive predicate is a measure expression rather than an arbitrary nominal. BareMeasurePredicateClause names the implemented common boundary while preserving age, price, and dimensional subtype distinctions and the unresolved evidence gap for copula-less declaratives. Status recommendation: retain research_pending until direct source support for copula-less declarative measure predication, domain inventory, corpus evidence, role-neutral panel evidence, and held-out boundaries are complete"
       }
     },
     {
       "construction_uuid": "9e9f0ef7-6526-5481-9161-3cb65b3509ab",
       "construction_code": "AB12",
-      "canonical_name": "OpinionQuestion",
+      "canonical_name": "JyutGokReferentDimJoengQuestion",
       "legacy_labels": [
         "OpinionQuestion"
       ],
@@ -4499,64 +4512,95 @@
       "linguistic_status": "unsupported_generalization",
       "lifecycle_state": "current",
       "source_path": "grammar/unsupported_generalization/OpinionQuestion.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "The checked source directly attests `你覺得佢哋點樣？`, with an overt experiencer, cognition predicate, evaluated referent, and evaluative wh predicate. The parser retains that exact structural profile while leaving other cognition-question complement types to independent composition.",
+      "family_name": "CognitionAndEvaluationQuestions",
+      "profile_name": "OvertSubjectJyutGokReferentDimJoeng",
+      "profile_description": "An overt subject is followed by exact cognition predicate 覺得, an overt evaluated referent, and exact evaluative wh predicate 點樣, as in 你覺得佢哋點樣. The profile excludes omitted subjects or referents, other cognition predicates, other wh-complement types, and generic opinion questions.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "cognition predicate plus independently formed wh question",
+          "source_id": "SRC-ALDERETE-ETAL-2017-SYNOPSIS",
+          "scope_match": "compositional"
+        },
+        {
+          "term": "你覺得佢哋點樣",
+          "source_id": "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE",
+          "scope_match": "exact"
+        }
+      ],
+      "former_names": [
+        "OpinionQuestion"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "runtime_narrower_defensible",
+        "terminology_alignment": "misleading",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [
           "semantic_domain_name_requires_structural_scope_check",
           "unsupported_generalization_requires_source_runtime_reconciliation"
         ],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-25. OpinionQuestion suggests a broad semantic class unsupported by the implementation and sources. JyutGokReferentDimJoengQuestion preserves every overt source-linked component and leaves other cognition predicates and question complements to independent composition. Status recommendation: retain unsupported_generalization until evaluation-versus-manner interpretation, lexical extension, corpus evidence, role-neutral panel evidence, and held-out boundaries are complete"
       }
     },
     {
       "construction_uuid": "8536ccf8-2f9b-509a-af69-242bc26cc362",
       "construction_code": "AB13",
-      "canonical_name": "OpinionStanceFrame",
+      "canonical_name": "CognitionPredicateContentWrapper",
       "legacy_labels": [
         "OpinionStanceFrame"
       ],
-      "claim_layer": "language_construction",
+      "claim_layer": "parser_representation",
       "linguistic_status": "unsupported_generalization",
       "lifecycle_state": "current",
       "source_path": "grammar/unsupported_generalization/OpinionStanceFrame.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese may instantiate the structural family represented by OpinionStanceFrame; exact productivity and boundaries require pattern-specific independent evidence.",
+      "family_name": "CognitionAndStanceRepresentation",
+      "profile_name": "HolderPredicateAndContentAggregate",
+      "profile_description": "An implementation wrapper preserves an overt or context-licensed stance holder, a lexical cognition or attitude predicate such as 覺得, 以為, or 相信, and independently analyzed content. It contributes no single Cantonese construction boundary, does not equate the lexical predicates, and does not infer truth, factivity, speaker endorsement, or a hidden proposition.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "experiencer, cognition predicate, and embedded proposition",
+          "source_id": "SRC-ALDERETE-ETAL-2017-SYNOPSIS",
+          "scope_match": "compositional"
+        },
+        {
+          "term": "lexical-to-attitudinal stance continuum",
+          "source_id": "SRC-YAP-WONG-CHOR-2014-STANCE",
+          "scope_match": "contrastive"
+        },
+        {
+          "term": "以為 plus subject-predicate proposition",
+          "source_id": "SRC-YIP-MATTHEWS-2000-BASIC",
+          "scope_match": "lexeme_specific"
+        }
+      ],
+      "former_names": [
+        "OpinionStanceFrame"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "overlapping",
+        "terminology_alignment": "misleading",
+        "recommended_action": "internalize_and_decompose",
         "automatic_risk_flags": [
           "generic_head_requires_boundary_definition",
           "semantic_domain_name_requires_structural_scope_check",
           "unsupported_generalization_requires_source_runtime_reconciliation"
         ],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-25. OpinionStanceFrame combines lexical predicates with different meanings, multiple content structures, context-dependent short complements, and disputed stance uses. CognitionPredicateContentWrapper preserves the useful implementation aggregation while removing it from direct linguistic promotion and requiring independently typed child analyses. Status recommendation: migrate to parser_heuristic only through a separate compatibility change; preserve lexical cognition complementation and grammaticalized or parenthetical stance profiles independently"
       }
     },
     {
       "construction_uuid": "26870b6d-1ea8-5015-8d4c-0ac867849535",
       "construction_code": "AB14",
-      "canonical_name": "OrdinalClassifierNP",
+      "canonical_name": "TrueOrdinalClassifierNominal",
       "legacy_labels": [
         "OrdinalClassifierNP"
       ],
@@ -4564,24 +4608,37 @@
       "linguistic_status": "unsupported_generalization",
       "lifecycle_state": "current",
       "source_path": "grammar/unsupported_generalization/OrdinalClassifierNP.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Checked evidence distinguishes true ordinal determination from lexicalized or contextual `第二` expressions meaning next, another, or other. The runtime retains its headed ordinal + classifier + noun path, while source-attested headless `第二個` choice uses do not enter `OrdinalClassifierNP`.",
+      "family_name": "OrdinalAndClassifierNominals",
+      "profile_name": "HeadedOrdinalClassifierNounPlusBoundedHeadlessOrdinalClassifier",
+      "profile_description": "A true ordinal expression contains 第 plus an overt numeral and classifier, either before an overt noun or in a separately licensed headless classifier-compatible form. The current headless implementation is bounded to source-attested 第二隻, inserts no noun or referent, and excludes lexical or contextual 第二 meanings such as another, other, or next.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "第-二-隻, second one",
+          "source_id": "SRC-LAM-LAU-LEE-2024-SEGMENTATION",
+          "scope_match": "exact_headless"
+        },
+        {
+          "term": "nonordinal 第二 nominal expressions",
+          "source_id": "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE",
+          "scope_match": "contrastive"
+        }
+      ],
+      "former_names": [
+        "OrdinalClassifierNP"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "overlapping",
+        "terminology_alignment": "misleading",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [
           "unsupported_generalization_requires_source_runtime_reconciliation"
         ],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-25. OrdinalClassifierNP incorrectly implies that every licensed token is a headed NP and obscures the central true-ordinal versus lexical nonordinal contrast. TrueOrdinalClassifierNominal covers the retained headed and bounded-headless profiles without reconstructing an omitted noun or admitting all 第二 expressions. Status recommendation: retain unsupported_generalization until broader headed and headless ordinal inventories, classifier compatibility, lexical-sense boundaries, corpus evidence, role-neutral panel evidence, and held-out validation are complete"
       }
     },
     {
@@ -4693,7 +4750,7 @@
     {
       "construction_uuid": "2ea00575-67ed-5663-8fd1-869fad24d687",
       "construction_code": "AB17",
-      "canonical_name": "PathPhrase",
+      "canonical_name": "Hoeng3OrientationPhrase",
       "legacy_labels": [
         "PathPhrase"
       ],
@@ -4701,24 +4758,37 @@
       "linguistic_status": "unsupported_generalization",
       "lifecycle_state": "current",
       "source_path": "grammar/unsupported_generalization/PathPhrase.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese may instantiate the structural family represented by PathPhrase; exact productivity and boundaries require pattern-specific independent evidence.",
+      "family_name": "SpatialDirectionAndRoute",
+      "profile_name": "PreverbalHoeng3PlusDirectionalGround",
+      "profile_description": "A preverbal phrase headed by overt 向 marks orientation or direction toward an overt directional ground, as in 向前 in 我向前行. The profile excludes static location, route or via expressions headed by 經, source relations, goal relations, and a generic interchangeable path category.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "向 directional coverb",
+          "source_id": "SRC-LEUNG-2014-COVERBS",
+          "scope_match": "close"
+        },
+        {
+          "term": "向 toward contrasted with 經 via",
+          "source_id": "SRC-YIP-MATTHEWS-2000-BASIC",
+          "scope_match": "exact_marker_contrast"
+        }
+      ],
+      "former_names": [
+        "PathPhrase"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "runtime_narrower_defensible",
+        "terminology_alignment": "misleading",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [
           "unsupported_generalization_requires_source_runtime_reconciliation"
         ],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-25. PathPhrase treats orientation, route, source, and goal as one spatial category even though the only implemented positive is 向前 and the sources explicitly distinguish these relations. Hoeng3OrientationPhrase names the actual marker-specific boundary and leaves route, source, and goal to separate profiles. Status recommendation: retain unsupported_generalization until marker-specific ground inventory, orientation-versus-goal boundaries, corpus evidence, role-neutral panel evidence, and held-out validation are complete"
       }
     },
     {
