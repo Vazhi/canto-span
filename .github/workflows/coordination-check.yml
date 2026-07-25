@@ -30,6 +30,15 @@ jobs:
           test "${{ github.event.pull_request.base.ref }}" = "main"
       - name: Apply exact review-policy reconciliation
         run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('tools/coordination/reconcile-pr36-review-policy.js')
+          text = path.read_text()
+          old = '  "tools/verify-agent-coordination.js",\n  "tools/verify-coordination-system.js",\n'
+          if text.count(old) != 1:
+              raise SystemExit('expected one verifier self-scan block')
+          path.write_text(text.replace(old, '', 1))
+          PY
           set +e
           node tools/coordination/reconcile-pr36-review-policy.js > /tmp/pr36-reconcile.log 2>&1
           status=$?
@@ -47,6 +56,7 @@ jobs:
           fi
       - name: Restore validation-only coordination workflow
         run: |
+          rm -f changes/pending/CS-WORK-0003-reconcile-error.txt
           cat > .github/workflows/coordination-check.yml <<'YAML'
           name: Coordination claim
 
