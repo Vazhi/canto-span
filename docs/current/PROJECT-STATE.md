@@ -15,8 +15,8 @@ policy or ontology.
 | Parked construction notes | 0 |
 | Retired labels | 48 |
 | Permanent UUID records | 181 |
-| Expert-adjudicated UUIDs | 84 |
-| Pending UUID adjudications | 97 |
+| Expert-adjudicated UUIDs | 89 |
+| Pending UUID adjudications | 92 |
 
 ## Linguistic-status inventory
 
@@ -40,7 +40,7 @@ The permanent registry covers all 133 current and 48 retired records. UUID and
 short code are immutable; canonical name, family, profile, claim layer, and
 learner label may be revised through accepted UUID-keyed adjudication.
 
-Seventeen accepted batches have adjudicated 84 records. Important consequences
+Eighteen accepted batches have adjudicated 89 records. Important consequences
 include:
 
 - `AB30 ZoMarkedPerfectiveObjectVP` is the nearest direct candidate;
@@ -98,6 +98,13 @@ include:
   `AB13 CognitionPredicateContentWrapper` as a parser representation, narrows
   `AB14` to `TrueOrdinalClassifierNominal`, and replaces the generic `AB17`
   path profile with `Hoeng3OrientationPhrase`;
+- Batch 18 reclassifies `AB18 DirectionalZoDeicticCompositeWrapper` and
+  `AB21 ZoMarkedPerfectivePredicateWrapper` as internal representations, keeps
+  `AB19 WeatherPerfectiveObjectCompositeWrapper` and
+  `AB20 LexicalResultPerfectiveCompositeWrapper` retired, and narrows the
+  internal `AB22` question frame to `FinalMe1BiasedPolarQuestionFrame`;
+- `AB30 ZoMarkedPerfectiveObjectVP` remains a distinct narrower language
+  identity and does not inherit the broad `AB21` wrapper's evidence;
 - true splits require new UUIDs. Evidence is never transferred automatically from
   an umbrella, retired record, or parser representation.
 
@@ -132,9 +139,9 @@ verification requirements.
 | Candidate state | Records |
 |---|---:|
 | `boundary_ready` | 1 |
-| `source_supported` | 63 |
-| `narrowing_candidate` | 31 |
-| `excluded_nonlanguage` | 36 |
+| `source_supported` | 62 |
+| `narrowing_candidate` | 30 |
+| `excluded_nonlanguage` | 38 |
 | `lexicalized_review` | 2 |
 | `retired_evidence_rehome_candidate` | 42 |
 | `retired_research_gap` | 6 |
@@ -203,7 +210,7 @@ evidence weight.
    mutually consistent.
 2. Select the most beneficial bounded non-parked task after inspecting current
    `main`, open PRs, dependencies, evidence gaps, learner impact, and ontology risk.
-3. Continue expert identity adjudication from the 97 pending UUIDs when that work
+3. Continue expert identity adjudication from the 92 pending UUIDs when that work
    outranks other available tasks; no later batch is a mandatory queue.
 4. Keep `YUE-JUDGMENT-PILOT-01` in collection until its stopping rule is met, then
    perform an item-level instrument and response audit before revising any follow-

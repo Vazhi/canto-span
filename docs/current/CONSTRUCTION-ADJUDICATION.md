@@ -27,33 +27,35 @@ superseding decision with explicit rationale and relationships.
 ## Current progress
 
 - permanent records: **181**;
-- accepted adjudications: **84**;
-- pending adjudications: **97**;
-- accepted batches: **17**;
+- accepted adjudications: **89**;
+- pending adjudications: **92**;
+- accepted batches: **18**;
 - latest batch report:
-  `docs/research/CONSTRUCTION-ADJUDICATION-BATCH-17.md`.
+  `docs/research/CONSTRUCTION-ADJUDICATION-BATCH-18.md`.
 
 This count records completed identity and ontology judgments only. It does not
 imply runtime migration, status migration, corpus closure, panel completion,
 held-out validation, or promotion.
 
-Batch 17 accepted the following UUID-preserving decisions:
+Batch 18 accepted the following UUID-preserving decisions:
 
-1. `AB11 NominalPredicateClause` → `BareMeasurePredicateClause`, narrowed to
-   copula-less age, price, area, length, and comparable measure predication;
-2. `AB12 OpinionQuestion` → `JyutGokReferentDimJoengQuestion`, retained as the
-   exact overt `subject + 覺得 + referent + 點樣` profile;
-3. `AB13 OpinionStanceFrame` → `CognitionPredicateContentWrapper`, reclassified
-   as an internal parser representation requiring lexical and stance-profile
-   decomposition;
-4. `AB14 OrdinalClassifierNP` → `TrueOrdinalClassifierNominal`, retained for
-   true headed and bounded-headless ordinal-classifier profiles while excluding
-   nonordinal `第二`;
-5. `AB17 PathPhrase` → `Hoeng3OrientationPhrase`, narrowed to marker-specific
-   preverbal `向` orientation.
+1. `AB18 PerfectiveDirectionalVP` →
+   `DirectionalZoDeicticCompositeWrapper`, reclassified as an internal
+   perfective-plus-directional representation requiring independently typed
+   directional, aspect, and deictic children;
+2. `AB19 PerfectiveObjectResultPredicate` →
+   `WeatherPerfectiveObjectCompositeWrapper`, retained as a retired
+   weather-specific semantic-domain wrapper;
+3. `AB20 PerfectiveResultPredicate` →
+   `LexicalResultPerfectiveCompositeWrapper`, retained as a retired lexical
+   result-plus-perfective wrapper;
+4. `AB21 PerfectiveVP` → `ZoMarkedPerfectivePredicateWrapper`, reclassified as
+   an internal aggregate over distinct overt-`咗` predicate profiles;
+5. `AB22 PolarQuestionFrame` → `FinalMe1BiasedPolarQuestionFrame`, narrowed to
+   an internal overt-proposition plus sentence-final biased-`咩` frame.
 
 No later adjudication batch is fixed as a mandatory queue. The next records are
-selected from the 97 pending identities according to current project benefit,
+selected from the 92 pending identities according to current project benefit,
 evidence opportunity, ontology risk, dependencies, and open-work overlap.
 
 ## Required decision fields
