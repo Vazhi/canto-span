@@ -30,8 +30,20 @@ List state dimensions and files that were intentionally not changed.
 
 ## Validation
 
-List exact commands and results.
+List exact commands, results, and the exact validated head commit.
+
+## Human merge review
+
+- Review status: `PENDING_USER_REVIEW`
+- User notified that this exact head is ready: `no`
+- Explicit approval for this pull request and exact head: `not received`
+
+The agent must stop after notifying the user that the pull request is ready. Do not
+merge or enable auto-merge until the user explicitly approves this specific pull
+request after reviewing the ready-for-review notice. Any new commit invalidates the
+approval and requires a new notice and fresh approval.
 
 ## Remaining work
 
-A ready-to-merge PR must contain no files under `changes/pending/` other than its README.
+A ready-to-merge PR must contain no files under `changes/pending/` other than its
+README. Passing checks do not remove the mandatory user-review stop.
