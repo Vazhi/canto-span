@@ -1,10 +1,26 @@
-name: Create Codex intake issue
+name: Create task intake issue
 
 on:
   workflow_dispatch:
     inputs:
+      created_by:
+        description: Who prepared this intake
+        required: true
+        type: choice
+        options:
+          - chatgpt
+          - codex
+          - human
+      pickup_target:
+        description: One primary pickup target
+        required: true
+        type: choice
+        options:
+          - codex
+          - chatgpt
+          - human
       category:
-        description: Codex-ready category from the canonical routing contract
+        description: Task category or decision type
         required: true
         type: choice
         options:
@@ -18,6 +34,13 @@ on:
           - behavior-preserving-refactor
           - accepted-specification
           - repository-pr-audit
+          - research-synthesis
+          - linguistic-judgment
+          - design-decision
+          - policy-interpretation
+          - survey-interpretation
+          - independent-review
+          - human-action
       title:
         description: Concise issue title
         required: true
@@ -27,11 +50,15 @@ on:
         required: true
         type: string
       acceptance_criteria:
-        description: Required checks and observable acceptance criteria, one per line
+        description: Observable completion criteria, one per line
         required: true
         type: string
       relevant_context:
-        description: Canonical files, accepted specification, and dependencies
+        description: Evidence, canonical files, authorities, and dependencies
+        required: false
+        type: string
+      dependencies:
+        description: Blocking issues or conditions, one per line
         required: false
         type: string
       protected_state:
@@ -48,13 +75,60 @@ on:
           - medium
           - high
       execution_mode:
-        description: Whether Codex may implement changes or only report findings
+        description: Implementation or findings only
         required: true
         default: implementation
         type: choice
         options:
           - implementation
           - findings-only
+      unresolved_question:
+        description: Required for ChatGPT pickup; exact question, decision, or review
+        required: false
+        type: string
+      mechanical_remainder:
+        description: Required for ChatGPT pickup; bounded later mechanical work
+        required: false
+        type: string
+      human_input_required:
+        description: Whether ChatGPT pickup also requires human input
+        required: false
+        default: false
+        type: boolean
+      human_action:
+        description: Required for human pickup; one concrete human action
+        required: false
+        type: string
+      agent_limitation:
+        description: Required for human pickup; why an agent cannot perform it
+        required: false
+        type: string
+      required_artifact:
+        description: Required for human pickup; information or artifact needed
+        required: false
+        type: string
+      blocked_work:
+        description: Required for human pickup; work blocked by the action
+        required: false
+        type: string
+      next_step:
+        description: Required for human pickup; what happens after completion
+        required: false
+        type: string
+      completion_evidence:
+        description: Required for human pickup; safe evidence of completion
+        required: false
+        type: string
+      work_claim_required:
+        description: Whether non-Codex repository work requires a semantic claim
+        required: false
+        default: false
+        type: boolean
+      user_merge_approval_required:
+        description: Whether completion includes a pull request requiring user approval
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: read
@@ -68,14 +142,28 @@ jobs:
       - name: Validate input and create intake issue
         uses: actions/github-script@v8
         env:
+          INPUT_CREATED_BY: ${{ inputs.created_by }}
+          INPUT_PICKUP_TARGET: ${{ inputs.pickup_target }}
           INPUT_CATEGORY: ${{ inputs.category }}
           INPUT_TITLE: ${{ inputs.title }}
           INPUT_OUTCOME: ${{ inputs.outcome }}
           INPUT_ACCEPTANCE_CRITERIA: ${{ inputs.acceptance_criteria }}
           INPUT_RELEVANT_CONTEXT: ${{ inputs.relevant_context }}
+          INPUT_DEPENDENCIES: ${{ inputs.dependencies }}
           INPUT_PROTECTED_STATE: ${{ inputs.protected_state }}
           INPUT_RISK: ${{ inputs.risk }}
           INPUT_EXECUTION_MODE: ${{ inputs.execution_mode }}
+          INPUT_UNRESOLVED_QUESTION: ${{ inputs.unresolved_question }}
+          INPUT_MECHANICAL_REMAINDER: ${{ inputs.mechanical_remainder }}
+          INPUT_HUMAN_INPUT_REQUIRED: ${{ inputs.human_input_required }}
+          INPUT_HUMAN_ACTION: ${{ inputs.human_action }}
+          INPUT_AGENT_LIMITATION: ${{ inputs.agent_limitation }}
+          INPUT_REQUIRED_ARTIFACT: ${{ inputs.required_artifact }}
+          INPUT_BLOCKED_WORK: ${{ inputs.blocked_work }}
+          INPUT_NEXT_STEP: ${{ inputs.next_step }}
+          INPUT_COMPLETION_EVIDENCE: ${{ inputs.completion_evidence }}
+          INPUT_WORK_CLAIM_REQUIRED: ${{ inputs.work_claim_required }}
+          INPUT_USER_MERGE_APPROVAL_REQUIRED: ${{ inputs.user_merge_approval_required }}
         with:
           script: |
             const {
@@ -97,7 +185,7 @@ jobs:
             );
             const duplicate = findExactDuplicate(openIssues, intake);
             if (duplicate) {
-              throw new Error(`exact open Codex intake already exists: #${duplicate.number}`);
+              throw new Error(`exact open task intake already exists: #${duplicate.number}`);
             }
 
             await ensureRoutingLabels(github, context.repo, intake.labels);
@@ -108,4 +196,4 @@ jobs:
               body: intake.body,
               labels: intake.labels.map((label) => label.name),
             });
-            core.notice(`created Codex intake issue #${response.data.number}: ${response.data.html_url}`);
+            core.notice(`created task intake issue #${response.data.number}: ${response.data.html_url}`);

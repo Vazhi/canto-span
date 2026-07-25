@@ -1,22 +1,23 @@
 ---
-title: Canto Span — ChatGPT and Codex Task Routing
+title: Canto Span — Task Creator and Pickup Routing
 status: current
 implementation_status: routing-active; manual-issue-generator-implemented; automatic-dispatch-not-implemented
 tags: [canto-span/infrastructure, canto-span/agents, canto-span/github]
 related: "[[00-START-HERE]] [[MULTI-AGENT-COORDINATION]] [[USER-MERGE-REVIEW]]"
 ---
 
-# ChatGPT and Codex task routing
+# Task creator and pickup routing
 
-This document is the canonical owner of task routing between ChatGPT and Codex for
-Canto Span repository work.
+This document is the canonical owner of task routing among ChatGPT, Codex, and human
+pickup for Canto Span repository work.
 
 The routing duties in this document are active now. The manual GitHub issue-generator
-is implemented, while automatic Codex dispatch is not. ChatGPT may create eligible
-intake issues directly through available GitHub tools, and a user may invoke the
-manual workflow. Both paths report `manual-pickup-required`. Creating an issue alone
-does not prove that Codex has begun work; dispatch status remains explicit and
-truthful.
+is implemented for Codex, ChatGPT, and human pickup, while automatic dispatch is not.
+ChatGPT, Codex, or a human may create intake issues directly through available
+GitHub tools, and a user may invoke the manual workflow. Initial pickup status is
+`manual-pickup-required`, `chatgpt-pickup-required`, or
+`human-pickup-required`, according to the one primary pickup target. Creating an
+issue alone does not prove that the target has begun work.
 
 This document supplements, but does not replace:
 
@@ -36,7 +37,9 @@ requested work as exactly one of:
    user interaction, or review must occur before implementation can be specified.
 2. **Codex-ready** — one bounded, repository-centered, testable outcome can begin
    without an unresolved expert or user decision.
-3. **Hybrid** — ChatGPT performs the decision, research, design, or specification
+3. **Human-required** — one concrete action requires human authority, access, a
+   local device, participant contact, credentials, or a subjective user preference.
+4. **Hybrid** — ChatGPT performs the decision, research, design, or specification
    portion and delegates one or more bounded implementation portions to Codex.
 
 The user does not need to ask ChatGPT to perform this routing or remind it to create
@@ -104,7 +107,13 @@ For hybrid work, ChatGPT must:
 ChatGPT must not delegate an unresolved expert decision merely by describing it as
 implementation.
 
-### 2.4 Tool or dispatch limitations
+### 2.4 Human-required work
+
+When the next action requires a person, the creator makes a human-targeted intake
+with the concrete action, agent limitation, required artifact, blocked work, next
+step, and safe completion evidence. Agent work waits without simulating completion.
+
+### 2.5 Tool or dispatch limitations
 
 If ChatGPT cannot create the issue because GitHub access is unavailable, it must say
 so plainly and provide the complete ready-to-create issue body. It must not silently
@@ -262,73 +271,92 @@ An intake issue may be created as `codex-ready` only when every condition is met
 Failure routes the task to ChatGPT. It does not create a misleading Codex-ready
 issue.
 
-## 7. Intake issue format
+## 7. Unified intake issue format
 
-### 7.1 Minimal bootstrap prompt
+Every new intake distinguishes who prepared it from who must act next:
 
-Use this intent:
+- `created_by`: exactly `chatgpt`, `codex`, or `human`;
+- `pickup_target`: exactly one of `codex`, `chatgpt`, or `human`.
 
-```text
-Read AGENTS.md, docs/current/00-START-HERE.md, and
- docs/current/CODEX-ISSUE-WORKFLOW.md in full. Before creating a claim, branch, or
-edit, self-screen this task against the ChatGPT-first and Codex eligibility rules. If
-it is misrouted or requires an unresolved decision, report needs-chatgpt and stop
-without changing the repository. Otherwise inspect current main, open PRs, and work
-claims; create the required semantic work claim and exact branch; complete the
-bounded outcome; run every applicable check; open a coherent PR; notify the user when
-it is ready; and stop without merging.
-```
+Both ChatGPT and Codex may create any of the three target types. A creator is not the
+active pickup owner unless it is also the selected target. Reassignment requires an
+explicit record of the previous target, new target, active owner, and reason.
 
-The issue should not duplicate the full repository contract.
+### 7.1 Codex pickup
 
-### 7.2 Human-readable body
+A Codex-targeted issue includes the mandatory contract bootstrap and an explicit
+`BEGIN NOW` / `WAIT FOR CHATGPT` self-screen. Codex may begin only when the
+specification is accepted, no protected decision is unresolved, and live overlap
+checks pass. Before repository edits it creates the semantic work claim and exact
+branch. It opens one coherent pull request, notifies the user, and stops without
+merging.
 
-```markdown
-## Outcome
+Initial status is `manual-pickup-required`. A label or issue does not prove dispatch.
 
-<One concrete result>
+### 7.2 ChatGPT pickup
 
-## Acceptance criteria
+A ChatGPT-targeted issue must state:
 
-- <Observable requirement>
-- <Required test or verifier>
-- <Behavior that must remain unchanged>
+- the exact question, decision, research synthesis, or review outcome;
+- relevant evidence, repository context, and conflicting authorities;
+- the bounded mechanical remainder that may later become Codex-ready;
+- whether human input is also required;
+- observable completion criteria.
 
-## Relevant context
+Initial status is `chatgpt-pickup-required`. Until the decision is resolved, the
+issue must not direct Codex to create a claim, branch, or speculative implementation.
 
-<Files, issue, error, construction code, accepted specification, or source packet>
+### 7.3 Human pickup
 
-## Protected state
+A human-targeted issue must state:
 
-<State dimensions or files that must remain unchanged>
-```
+- one concrete human action;
+- why an agent cannot perform it;
+- the exact information or artifact required;
+- the blocked work;
+- what happens after completion;
+- safe completion evidence that exposes no secrets or participant data.
 
-### 7.3 Machine-readable metadata
+Initial status is `human-pickup-required`. Agents must not simulate completion of the
+human action.
 
-```codex-task
+### 7.4 Machine-readable metadata
+
+```task-intake
 {
-  "schema": "canto-span-codex-task-v1",
+  "schema": "canto-span-task-intake-v1",
+  "created_by": "chatgpt",
+  "pickup_target": "codex",
+  "pickup_status": "manual-pickup-required",
   "category": "verification-audit",
   "risk": "low",
   "execution_mode": "implementation",
   "dependencies": [],
   "protected_state": [],
-  "dispatch_status": "manual-pickup-required",
-  "chatgpt_routing_complete": true,
-  "codex_self_screen_required": true,
+  "active_pickup_owner": "codex",
   "work_claim_required": true,
-  "user_merge_approval_required": true
+  "user_merge_approval_required": true,
+  "codex_self_screen_required": true
 }
 ```
 
-The intake metadata is not a semantic work claim and must not fabricate claim targets.
+The checked-in
+[`task-intake.schema.json`](../../schemas/task-intake.schema.json) is the unified
+format. Existing `canto-span-codex-task-v1` blocks remain valid legacy records under
+[`codex-task.schema.json`](../../schemas/codex-task.schema.json); tools validate them
+without silently rewriting them. Intake metadata is not a semantic work claim.
+Codex pickup always requires a claim and user merge approval. For ChatGPT or human
+pickup, the two booleans truthfully record whether that scoped issue also includes
+claimed repository work or a pull request; they do not grant either action.
 
-### 7.4 Labels
+### 7.5 Labels
 
 Recommended labels:
 
-- `codex-ready`;
-- `codex:<category>`;
+- the target status: `codex-ready`, `chatgpt-pickup-required`, or
+  `human-pickup-required`;
+- `pickup:codex`, `pickup:chatgpt`, or `pickup:human`;
+- `task:<category>`;
 - `risk:low`, `risk:medium`, or `risk:high`;
 - `findings-only` where applicable;
 - `needs-chatgpt` when Codex refuses a misrouted issue.
@@ -337,11 +365,11 @@ Recommended labels:
 
 ### 8.1 Routing and intake
 
-1. ChatGPT receives a Canto Span request.
-2. ChatGPT consults this document and classifies the work.
-3. ChatGPT handles ChatGPT-first decisions and decomposes hybrid work.
-4. ChatGPT creates each eligible Codex intake issue without requiring a reminder.
-5. ChatGPT informs the user of every created issue and truthful dispatch status.
+1. The creator consults this document and classifies the work.
+2. ChatGPT handles ChatGPT-first decisions and decomposes hybrid work.
+3. The creator records `created_by` separately from one `pickup_target`.
+4. The generator validates the target-specific fields, owner, status, and labels.
+5. The creator informs the user of every created issue and truthful pickup status.
 
 A user may also manually start the implemented issue-generator workflow. Manual
 initiation is an additional entry point, not a prerequisite for ChatGPT delegation.
@@ -354,7 +382,23 @@ initiation is an additional entry point, not a prerequisite for ChatGPT delegati
 4. Misrouted work returns to ChatGPT with `needs-chatgpt` and no repository change.
 5. Eligible work proceeds to a separate semantic work claim and branch.
 
-### 8.3 Execution and review
+### 8.3 ChatGPT intervention in Codex-targeted work
+
+ChatGPT may intervene only when the user directs it or the issue blocks active work.
+Before intervening, inspect the issue, pull requests, active claims, and branches.
+
+For `resolve-blocker`, record the permitted reason, precise resolved decision,
+bounded remaining Codex work, and `pickup target after intervention: codex`. Codex
+resumes only after the decision is recorded and overlap checks pass.
+
+For `takeover`, record the permitted reason, previous Codex target, active ChatGPT
+owner, bounded scope, and handoff status. If Codex has an overlapping claim, branch,
+or pull request, ChatGPT must first record a handoff, have the claim released or
+narrowed, or remain in a disjoint decision/review region. A comment or review alone
+does not imply takeover. Once takeover is recorded, Codex treats the issue as
+unavailable until explicit reassignment.
+
+### 8.4 Execution and review
 
 1. Codex keeps work inside the claim and updates it before expanding scope.
 2. Codex follows all applicable evidence, identity, runtime, corpus, survey,
@@ -396,13 +440,16 @@ Neither an intake issue nor a Codex-ready label silently authorizes Codex to:
 
 Issue generation and Codex dispatch are separate responsibilities.
 
-A created issue must record one truthful dispatch state:
+A created issue must record one truthful pickup state. Codex pickup may later use:
 
 - `not-configured`;
 - `queued`;
 - `accepted`;
 - `failed`;
 - `manual-pickup-required`.
+
+ChatGPT and human pickup begin as `chatgpt-pickup-required` and
+`human-pickup-required`, respectively.
 
 Assignment, labels, mentions, or an `issues: opened` event must not be described as
 starting Codex unless a controlled end-to-end test has verified that behavior.
@@ -416,18 +463,26 @@ The manually triggered
 [`codex-intake-issue.yml`](../../.github/workflows/codex-intake-issue.yml)
 workflow:
 
-1. accepts structured category, title, outcome, acceptance-criteria, context,
-   protected-state, risk, and execution-mode inputs;
+1. accepts structured creator, one pickup target, category or decision type, title,
+   outcome, acceptance criteria, context, dependencies, protected state, risk,
+   execution mode, and target-specific inputs;
 2. validates them against
-   [`codex-task.schema.json`](../../schemas/codex-task.schema.json) and the
-   prohibited routing classes in this document;
-3. rejects missing required fields, unsupported categories, unsafe direct
-   authorizations, Markdown-fence injection, and an exact duplicate open intake;
-4. creates the canonical issue body with one metadata block and
-   `dispatch_status: manual-pickup-required`;
+   [`task-intake.schema.json`](../../schemas/task-intake.schema.json), while retaining
+   explicit validation compatibility for legacy
+   [`codex-task.schema.json`](../../schemas/codex-task.schema.json) records;
+3. rejects missing common or target-specific fields, multiple or unsupported pickup
+   targets, invalid status/owner combinations, unsafe direct authorizations,
+   Markdown-fence injection, and an exact duplicate open intake;
+4. creates one canonical issue body and metadata block with target-specific
+   instructions, status, owner, and labels;
 5. idempotently creates or reconciles the routing labels;
 6. uses environment variables rather than inserting untrusted input into executable
    workflow script text.
+
+The same coordination implementation validates ChatGPT `resolve-blocker` and
+`takeover` records plus explicit pickup reassignment. Takeover validation rejects
+parallel edits against an active overlapping Codex claim unless a release,
+narrowing, or disjoint handoff is recorded.
 
 For issue creation, expected least-privilege permissions are:
 
@@ -447,11 +502,15 @@ semantic overlap or hidden dependencies.
 
 The manual workflow remains complete only while:
 
-- every allowlisted category produces the documented issue format;
+- every creator and pickup-target combination produces the documented unified
+  format;
+- target-specific required fields, status, owner, and labels remain enforced;
+- legacy `canto-span-codex-task-v1` records remain valid without rewriting;
+- intervention and reassignment records enforce the overlap and handoff rules;
 - prohibited task classes are rejected or routed to ChatGPT;
 - ChatGPT can invoke issue creation without requiring the user to restate the task;
 - the user receives a notice for every created issue;
-- Codex self-screening is included in every generated prompt;
+- Codex self-screening is included in every Codex-targeted prompt;
 - metadata validates against a checked-in schema;
 - no intake issue is mistaken for a semantic work claim;
 - dispatch status is explicit and truthful;
