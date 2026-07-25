@@ -84,3 +84,63 @@ editor, then validated and rendered.
 Rerunning extraction does not determine whether any candidate is genuine, does
 not transfer evidence to a related construction, and does not complete the
 AB30 corpus gate.
+
+## Reusable HKCanCor query workbench
+
+`hkcancor_workbench.py` is the shared deterministic engine for bounded
+PyCantonese/HKCanCor query profiles. It is part of this corpus-review architecture;
+construction-specific scripts define profiles and import the engine instead of
+copying distribution verification, candidate provenance, output handling, or
+decision-ledger validation.
+
+Each `QueryProfile` defines:
+
+- one query ID and stable candidate-ID namespace/prefix;
+- a token predicate returning the exact matched span and ID anchor;
+- preceding/following token-context sizes;
+- JSON inventory, TSV inventory, and JSON summary filenames;
+- the permanent construction identity;
+- a summary builder for query-specific fields;
+- an optional TSV renderer when the standard provenance columns are insufficient.
+
+The engine loads PyCantonese lazily, requires the profile's frozen version
+(`5.0.0` by default), verifies every HKCanCor source file against the one checked-in
+SHA-256 allowlist, and rejects missing, extra, duplicate-named, or hash-drifted
+files. Candidate records retain their stable ID, query namespace, exact text and
+matched span, token/POS/Jyutping data, source file/hash, file/turn/token location,
+participant metadata, previous/next utterance context, optional token context and
+profile fields, and `REQUIRES_EXPERT_CONTEXT_REVIEW`.
+
+Profiles call `profile_cli(...)` to expose the common `--output-dir`,
+`--source-manifest`, optional `--decisions`, and `--check` interface. `--check`
+renders in memory and fails if any committed output is missing or stale. Optional
+decision validation requires complete one-to-one candidate accounting, a nonblank
+review note, an exclusion-reason string, at least one claim relation, canonical
+classification counts, and one of `genuine`, `false_positive`, `ambiguous`, or
+`unusable`.
+
+The existing AB30 `r` and `m` profiles use the shared engine without changing their
+commands or outputs:
+
+```bash
+python external-evidence/ab30-hkcancor/query-hkcancor-ab30-zo-r.py \
+  --following-pos r \
+  --output-dir external-evidence/ab30-hkcancor \
+  --source-manifest \
+    external-evidence/cp021b/hkcancor-cp021b-source-manifest.sha256 \
+  --check
+
+python external-evidence/ab30-hkcancor/query-hkcancor-ab30-zo-r.py \
+  --following-pos m \
+  --output-dir external-evidence/ab30-hkcancor \
+  --source-manifest \
+    external-evidence/cp021b/hkcancor-cp021b-source-manifest.sha256 \
+  --check
+
+python -m unittest \
+  tests/tooling/corpus-review/test_hkcancor_workbench.py
+```
+
+Query results remain mechanical candidate inventories. A profile, candidate count,
+POS mapping, or successful check does not classify construction membership or
+change evidence, readiness, status, identity, runtime, or release state.
