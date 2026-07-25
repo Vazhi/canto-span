@@ -36,6 +36,18 @@ function forbidText(file, text, label) {
   }
 }
 
+function forbidPattern(file, pattern, label) {
+  const content = read(file);
+  if (pattern.test(content)) {
+    errors.push({
+      type: "stale_contract_pattern",
+      file,
+      label,
+      forbidden_pattern: pattern.source,
+    });
+  }
+}
+
 function requireAll(file, values, labelPrefix) {
   for (const value of values) requireText(file, value, `${labelPrefix} ${value}`);
 }
@@ -55,8 +67,16 @@ const issueTemplatePath = ".github/ISSUE_TEMPLATE/work-claim.yml";
 const prTemplatePath = ".github/pull_request_template.md";
 const coordinationWorkflowPath = ".github/workflows/coordination-check.yml";
 const readmePath = "README.md";
+const handoffPath = "HANDOFF.md";
 const coreWorkflowPath = ".github/workflows/supported-productive-discovery.yml";
 const researchWorkflowPath = ".github/workflows/research-provenance.yml";
+
+const currentDocsDirectory = path.join(root, "docs/current");
+const allCurrentPolicyDocs = fs
+  .readdirSync(currentDocsDirectory, { withFileTypes: true })
+  .filter((entry) => entry.isFile() && entry.name.endsWith(".md"))
+  .map((entry) => `docs/current/${entry.name}`)
+  .sort();
 
 requireText(agentsPath, "docs/current/00-START-HERE.md", "mandatory Start Here pointer");
 requireText(agentsPath, "MULTI-AGENT-COORDINATION.md", "mandatory coordination pointer");
@@ -93,6 +113,7 @@ const requiredPointers = [
   "TESTING.md",
   "GIT-WORKFLOW.md",
   "MULTI-AGENT-COORDINATION.md",
+  "USER-MERGE-REVIEW.md",
   "CURRENT-RESEARCH-PROVENANCE.md",
   "review-packets/native-panel/active-v2",
   "tools/corpus-review/README.md",
@@ -160,7 +181,7 @@ requireText(gitWorkflowPath, "There is no read-only research branch type", "git 
 requireText(testingPath, "There is no read-only research role", "testing research autonomy");
 requireText(testingPath, "Repository automation follows least privilege", "testing automation policy");
 
-const mergeReviewCurrentDocs = [
+const mergeReviewPointerDocs = [
   agentsPath,
   startPath,
   reviewPath,
@@ -169,20 +190,36 @@ const mergeReviewCurrentDocs = [
   governancePath,
   testingPath,
   readmePath,
-  "HANDOFF.md",
+  handoffPath,
 ];
-for (const file of mergeReviewCurrentDocs) {
+for (const file of mergeReviewPointerDocs) {
   requireText(file, "USER-MERGE-REVIEW.md", "current merge-review pointer");
 }
 
+const mergeReviewScanFiles = [
+  ...new Set([
+    agentsPath,
+    readmePath,
+    handoffPath,
+    prTemplatePath,
+    ...allCurrentPolicyDocs,
+  ]),
+];
 const staleMergeRules = [
   "without a separate per-PR user request",
   "does not require a separate per-PR user request",
   "then may merge the passing PR",
   "manual per-PR merge approval after an authorized integrator",
 ];
-for (const file of mergeReviewCurrentDocs) {
+const staleMergePatterns = [
+  /authorized integrator may[^\n.]{0,120}merge/i,
+  /integrator may[^\n.]{0,120}merge passing/i,
+  /merge passing (?:pull requests|work)[^\n.]{0,160}(?:without|no separate|does not require)/i,
+  /routine merge management[^\n.]{0,160}(?:without|does not require|no separate)/i,
+];
+for (const file of mergeReviewScanFiles) {
   for (const stale of staleMergeRules) forbidText(file, stale, "obsolete autonomous merge rule");
+  for (const pattern of staleMergePatterns) forbidPattern(file, pattern, "obsolete autonomous merge pattern");
 }
 
 requireText(coordinationConfigPath, "\"integration_owned_files\"", "integration ownership config");
@@ -236,14 +273,16 @@ const requiredResearchWorkflowInputs = [
 requireAll(researchWorkflowPath, requiredResearchWorkflowInputs, "research workflow trigger");
 
 const result = {
-  schema: "canto-span-agent-coordination-contract-v6",
+  schema: "canto-span-agent-coordination-contract-v7",
   status: errors.length === 0 ? "PASS" : "FAIL",
   checked_files: [
     agentsPath, startPath, reviewPath, statePath, doctrinePath, governancePath,
     coordinationPath, gitWorkflowPath, testingPath, parkedPath,
     coordinationConfigPath, issueTemplatePath, prTemplatePath,
-    coordinationWorkflowPath, readmePath, coreWorkflowPath, researchWorkflowPath,
+    coordinationWorkflowPath, readmePath, handoffPath, coreWorkflowPath,
+    researchWorkflowPath, ...allCurrentPolicyDocs,
   ],
+  current_policy_documents_scanned: allCurrentPolicyDocs.length,
   required_headings: requiredHeadings.length,
   required_pointers: requiredPointers.length,
   required_rules: requiredRules.length,
