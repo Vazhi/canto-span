@@ -27,33 +27,33 @@ superseding decision with explicit rationale and relationships.
 ## Current progress
 
 - permanent records: **181**;
-- accepted adjudications: **74**;
-- pending adjudications: **107**;
-- accepted batches: **15**;
+- accepted adjudications: **79**;
+- pending adjudications: **102**;
+- accepted batches: **16**;
 - latest batch report:
-  `docs/research/CONSTRUCTION-ADJUDICATION-BATCH-15.md`.
+  `docs/research/CONSTRUCTION-ADJUDICATION-BATCH-16.md`.
 
 This count records completed identity and ontology judgments only. It does not
 imply runtime migration, status migration, corpus closure, panel completion,
 held-out validation, or promotion.
 
-Batch 15 accepted the following UUID-preserving decisions:
+Batch 16 accepted the following UUID-preserving decisions:
 
-1. `AA98 NegatedExistentialClause` →
-   `Mou5NominalExistentialPossessiveClause`, retained as a narrow overt `冇` plus
-   visible nominal-complement language profile;
-2. `AA99 NegatedExistentialFragment` → `Mou5EllipticalResponse`, retained as a
-   context-dependent elliptical `冇` response profile;
-3. `AB01 NegatedLexicalizedStative` →
-   `LexicalAndCompositionalNegativeStativeComposite`, retained as a retired parser
+1. `AB06 NegativeHaveClause` →
+   `Mou5ExistentialPossessiveEventComposite`, retained as a retired parser
    representation;
-4. `AB03 NegatedVP` → `OvertNegatorPredicateWrapper`, reclassified as an internal
-   parser representation requiring marker-specific decomposition;
-5. `AB04 NegativeCognitionFragment` → `SubjectlessM4Zi1ResponseFragment`, retained
-   as a narrow subjectless `唔知` response profile.
+2. `AB07 NegativePotentialComplement` → `VerbM4ResultPotentialVP`, retained as
+   a narrow overt `V + 唔 + result complement` language profile;
+3. `AB08 NegativePotentialDirectionalVP` →
+   `NegativePotentialDirectionalCompositeWrapper`, reclassified as a parser
+   representation requiring typed potential-plus-directional decomposition;
+4. `AB09 NominalHeadSpan` → `OvertAnalyzedNominalSpan`, retained as an internal
+   parser span subordinate to NP licensing state;
+5. `AB10 NominalModifierNP` → `NominalModificationCompositeWrapper`, retained
+   as a retired parser representation.
 
 No later adjudication batch is fixed as a mandatory queue. The next records are
-selected from the 107 pending identities according to current project benefit,
+selected from the 102 pending identities according to current project benefit,
 evidence opportunity, ontology risk, dependencies, and open-work overlap.
 
 ## Required decision fields
