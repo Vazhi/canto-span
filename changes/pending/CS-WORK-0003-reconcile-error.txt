@@ -1,16 +1,31 @@
-/home/runner/work/canto-span/canto-span/tools/coordination/reconcile-pr36-review-policy.js:23
-        throw new Error(`stale merge rule remains in ${file}: ${phrase}`);
-        ^
 
-Error: stale merge rule remains in tools/verify-agent-coordination.js: without a separate per-PR user request
-    at requireAbsent (/home/runner/work/canto-span/canto-span/tools/coordination/reconcile-pr36-review-policy.js:23:15)
-    at Object.<anonymous> (/home/runner/work/canto-span/canto-span/tools/coordination/reconcile-pr36-review-policy.js:545:1)
-    at Module._compile (node:internal/modules/cjs/loader:1871:14)
-    at Object..js (node:internal/modules/cjs/loader:2002:10)
-    at Module.load (node:internal/modules/cjs/loader:1594:32)
-    at Module._load (node:internal/modules/cjs/loader:1396:12)
-    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
-    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
-    at node:internal/main/run_main_module:33:47
+> canto-span@0.5.216 verify:coordination
+> node tools/verify-coordination-system.js && node --test tests/tooling/coordination/*.test.js
 
-Node.js v24.18.0
+{
+  "schema": "canto-span-coordination-system-validation-v3",
+  "status": "FAIL",
+  "required_files": 13,
+  "automation_policy": "least_privilege_claim_scoped",
+  "merge_policy": "explicit_user_approval_per_pr_and_head",
+  "errors": [
+    {
+      "type": "missing_contract_text",
+      "file": "docs/current/USER-MERGE-REVIEW.md",
+      "label": "merge review authority",
+      "expected": "canonical owner of per-pull-request merge authorization"
+    },
+    {
+      "type": "missing_contract_text",
+      "file": "docs/current/USER-MERGE-REVIEW.md",
+      "label": "current merge-review pointer",
+      "expected": "USER-MERGE-REVIEW.md"
+    },
+    {
+      "type": "missing_contract_text",
+      "file": "docs/current/GOVERNANCE.md",
+      "label": "current merge-review pointer",
+      "expected": "USER-MERGE-REVIEW.md"
+    }
+  ]
+}
