@@ -8,6 +8,13 @@ on:
       - ".github/workflows/batch12-generate-artifact.yml"
       - "data/construction-adjudication-batches/batch-12.json"
       - "docs/research/CONSTRUCTION-ADJUDICATION-BATCH-12.md"
+  pull_request:
+    branches:
+      - "main"
+    paths:
+      - ".github/workflows/batch12-generate-artifact.yml"
+      - "data/construction-adjudication-batches/batch-12.json"
+      - "docs/research/CONSTRUCTION-ADJUDICATION-BATCH-12.md"
   workflow_dispatch:
 
 permissions:
