@@ -25,6 +25,14 @@ function requireText(relativePath, expected, label) {
   }
 }
 
+function forbidText(relativePath, forbidden, label) {
+  const normalized = read(relativePath).replace(/\s+/g, " ");
+  const normalizedForbidden = forbidden.replace(/\s+/g, " ");
+  if (normalized.includes(normalizedForbidden)) {
+    errors.push({ type: "stale_contract_text", file: relativePath, label, forbidden });
+  }
+}
+
 const requiredFiles = [
   ".github/ISSUE_TEMPLATE/work-claim.yml",
   ".github/pull_request_template.md",
@@ -113,6 +121,31 @@ requireText("docs/current/MULTI-AGENT-COORDINATION.md", "same physical file", "s
 requireText("docs/current/MULTI-AGENT-COORDINATION.md", "must not survive a ready-to-merge pull request", "pending changeset cleanup rule");
 requireText("docs/current/MULTI-AGENT-COORDINATION.md", "There is no read-only research role", "coordination research autonomy");
 requireText("docs/current/MULTI-AGENT-COORDINATION.md", "Automation follows least privilege", "coordination automation policy");
+
+const mergeReviewCurrentDocs = [
+  "AGENTS.md",
+  "docs/current/00-START-HERE.md",
+  "docs/current/USER-MERGE-REVIEW.md",
+  "docs/current/MULTI-AGENT-COORDINATION.md",
+  "docs/current/GIT-WORKFLOW.md",
+  "docs/current/GOVERNANCE.md",
+  "docs/current/TESTING.md",
+  "README.md",
+  "HANDOFF.md",
+];
+for (const file of mergeReviewCurrentDocs) {
+  requireText(file, "USER-MERGE-REVIEW.md", "current merge-review pointer");
+}
+for (const file of mergeReviewCurrentDocs) {
+  for (const stale of [
+    "without a separate per-PR user request",
+    "does not require a separate per-PR user request",
+    "then may merge the passing PR",
+    "manual per-PR merge approval after an authorized integrator",
+  ]) {
+    forbidText(file, stale, "obsolete autonomous merge rule");
+  }
+}
 
 const pendingDirectory = path.join(root, "changes/pending");
 if (fs.existsSync(pendingDirectory) && config) {

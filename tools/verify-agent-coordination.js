@@ -28,6 +28,14 @@ function requireText(file, text, label) {
   }
 }
 
+function forbidText(file, text, label) {
+  const content = normalize(read(file));
+  const forbidden = normalize(text);
+  if (content.includes(forbidden)) {
+    errors.push({ type: "stale_contract_text", file, label, forbidden: text });
+  }
+}
+
 function requireAll(file, values, labelPrefix) {
   for (const value of values) requireText(file, value, `${labelPrefix} ${value}`);
 }
@@ -151,6 +159,31 @@ requireText(coordinationPath, "Automation follows least privilege", "coordinatio
 requireText(gitWorkflowPath, "There is no read-only research branch type", "git research autonomy");
 requireText(testingPath, "There is no read-only research role", "testing research autonomy");
 requireText(testingPath, "Repository automation follows least privilege", "testing automation policy");
+
+const mergeReviewCurrentDocs = [
+  agentsPath,
+  startPath,
+  reviewPath,
+  coordinationPath,
+  gitWorkflowPath,
+  governancePath,
+  testingPath,
+  readmePath,
+  "HANDOFF.md",
+];
+for (const file of mergeReviewCurrentDocs) {
+  requireText(file, "USER-MERGE-REVIEW.md", "current merge-review pointer");
+}
+
+const staleMergeRules = [
+  "without a separate per-PR user request",
+  "does not require a separate per-PR user request",
+  "then may merge the passing PR",
+  "manual per-PR merge approval after an authorized integrator",
+];
+for (const file of mergeReviewCurrentDocs) {
+  for (const stale of staleMergeRules) forbidText(file, stale, "obsolete autonomous merge rule");
+}
 
 requireText(coordinationConfigPath, "\"integration_owned_files\"", "integration ownership config");
 requireText(issueTemplatePath, "coordination-claim", "work claim issue form");

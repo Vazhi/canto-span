@@ -7,10 +7,13 @@ related: "[[00-START-HERE]]"
 
 # User merge review gate
 
-This file is the canonical owner of per-pull-request merge authorization. It is a
-specific current user decision and supersedes any older or more general text that
-allows an agent or integrator to merge a passing pull request without first pausing
-for user review.
+`USER-MERGE-REVIEW.md` is the canonical owner of per-pull-request merge authorization.
+
+This file is the canonical detailed owner of per-pull-request merge authorization.
+It is a specific current user decision. `AGENTS.md`, `00-START-HERE.md`, the
+coordination contract, Git workflow, governance, testing guidance, and PR template
+must agree with it. Contradictory current text is a verification failure rather than
+an acceptable lower-priority holdout.
 
 ## Required stop before merge
 

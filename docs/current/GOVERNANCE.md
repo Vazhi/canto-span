@@ -193,14 +193,16 @@ npm run release:baseline -- <current-version>
 
 ## 8. Documentation, coordination, and automation discipline
 
+Per-pull-request merge authorization is governed by [`USER-MERGE-REVIEW.md`](USER-MERGE-REVIEW.md).
+
 Current policy lives under `docs/current/` and links to generated or historical
 records instead of copying their conclusions. Dated batch reports and release notes
 are immutable provenance, not current instructions.
 
 Semantic claims govern concurrent work. Workers may research and implement ordinary
-claimed scope. Integrators reconcile integration-owned files, mark complete PRs
-ready, and merge passing work in dependency order. Routine merge management does
-not require a separate per-PR user request once delegated to the integrator.
+claimed scope. Integrators reconcile integration-owned files and mark complete PRs
+ready. They must then notify the user and stop; merge requires explicit approval for
+the specific PR and unchanged head before dependency-order integration continues.
 
 Automation follows least privilege rather than a blanket read-only rule:
 
@@ -212,8 +214,9 @@ Automation follows least privilege rather than a blanket read-only rule:
 - base, head, claim, target, and operation preconditions are checked;
 - every write is auditable;
 - automation cannot write directly to `main`, expand its own scope, adjudicate
-  linguistic evidence, promote status, deploy surveys, or publish releases without
-  separately authorized scope and gates.
+  linguistic evidence, promote status, deploy surveys, publish releases, merge,
+  enable auto-merge, or infer approval without the separately required scope, gates,
+  and explicit user approval.
 
 Do not use expected-failure commits or repair automation to complete an intentionally
 incoherent earlier state. Apply, regenerate, and verify one coherent result before

@@ -60,11 +60,13 @@ requirements.
 2. `docs/current/DOCTRINE.md`
 3. `docs/current/DEFINITION-OF-DONE.md`
 4. `docs/current/GOVERNANCE.md`
-5. `docs/current/TESTING.md`
-6. `grammar/README.md`
-7. `GRAMMAR-INDEX.md`
-8. `docs/research/CURRENT-RESEARCH-PROVENANCE.md`
-9. `docs/research/README.md`
+5. `docs/current/MULTI-AGENT-COORDINATION.md`
+6. `docs/current/USER-MERGE-REVIEW.md`
+7. `docs/current/TESTING.md`
+8. `grammar/README.md`
+9. `GRAMMAR-INDEX.md`
+10. `docs/research/CURRENT-RESEARCH-PROVENANCE.md`
+11. `docs/research/README.md`
 
 ## Next substantive work
 

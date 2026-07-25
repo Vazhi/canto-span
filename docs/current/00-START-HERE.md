@@ -40,9 +40,10 @@ Before making a change, every agent must:
    parked identities, or dependencies;
 3. create or update one semantic work-claim issue using
    [`.github/ISSUE_TEMPLATE/work-claim.yml`](../../.github/ISSUE_TEMPLATE/work-claim.yml);
-4. read [`MULTI-AGENT-COORDINATION.md`](MULTI-AGENT-COORDINATION.md), choose the
-   smallest adequate shared or exclusive targets, and declare integration-owned
-   or generated consequences;
+4. read [`MULTI-AGENT-COORDINATION.md`](MULTI-AGENT-COORDINATION.md) and
+   [`USER-MERGE-REVIEW.md`](USER-MERGE-REVIEW.md), choose the smallest adequate
+   shared or exclusive targets, and declare integration-owned or generated
+   consequences;
 5. create the exact new `agent/<description>` branch named in the claim;
 6. identify the task class using the routing table below;
 7. read the required canonical files and exact affected records;
@@ -58,9 +59,11 @@ Before making a change, every agent must:
     link the work claim, and include `Closes #<claim>`;
 12. use draft state only while work, dependencies, pending changesets, or integration
     remain unresolved;
-13. allow the authorized integrator to rebuild, ready, and merge passing pull
-    requests in dependency order;
-14. keep status promotion, survey deployment, and release publication inside their
+13. when the pull request is ready, notify the user with the PR number, exact head,
+    scope, validation, risks, and limitations, then stop without merging;
+14. merge only after the user explicitly approves that specific pull request and the
+    approved head commit remains unchanged;
+15. keep status promotion, survey deployment, and release publication inside their
     own explicitly claimed scope and applicable gates.
 
 There is no read-only research role. An agent may research, record evidence,
@@ -86,6 +89,7 @@ dimension.
 | Workflow availability | [`data/parked-constructions.json`](../../data/parked-constructions.json) | Every unlisted current construction is available; this is a blacklist, not a queue. |
 | Concurrent work intent | Open GitHub claims conforming to [`schemas/work-claim.schema.json`](../../schemas/work-claim.schema.json) | Claims coordinate temporary semantic scope only. |
 | Coordination path policy | [`config/coordination-targets.json`](../../config/coordination-targets.json) | Exclusive and integration-owned paths require the configured mode and role. |
+| Per-pull-request merge authorization | [`USER-MERGE-REVIEW.md`](USER-MERGE-REVIEW.md) | Passing checks and integrator role never replace explicit user approval for the specific PR and head. |
 | Discovery readiness | [`data/construction-candidate-readiness.json`](../../data/construction-candidate-readiness.json) and deterministic reports | Scores rank work; they never promote or prohibit work. |
 | Native-panel and survey evidence | [`review-packets/native-panel/active-v2/`](../../review-packets/native-panel/active-v2/) | Evidence is role-neutral and counted per critical item. |
 | Corpus candidate extraction and review | Construction-specific packet plus its workbench and decision ledger | Extraction is mechanical; expert classification is separate. |
@@ -260,8 +264,8 @@ the canonical extraction ledger, and the current decision record.
 - Keep unrelated changes outside the branch and claim.
 - Pull requests may open ready when complete and coherent. Use draft state when work,
   dependencies, pending changesets, or integration remain unresolved.
-- The authorized integrator may merge passing pull requests in dependency order
-  without a separate per-PR user request.
+- A passing pull request must be presented to the user for review. The integrator
+  stops before merge and proceeds only after explicit approval for that PR and head.
 - Automation follows **least privilege**, not a blanket read-only or no-writer rule.
   Validation-only workflows remain read-only because they need no writes.
 - Write-capable automation is permitted only when an exclusive claim covers the
@@ -269,14 +273,15 @@ the canonical extraction ledger, and the current decision record.
   claimed non-`main` branch or issue/PR metadata; base, head, claim, and operation
   preconditions are checked; and the action is auditable.
 - Automation must not commit directly to `main`, expand its own scope, adjudicate
-  linguistic evidence, promote status, deploy surveys, or publish releases without
-  separately authorized scope and gates.
+  linguistic evidence, promote status, deploy surveys, publish releases, merge, or
+  enable auto-merge without the separately required scope, gates, and user approval.
 - Runtime release ZIPs remain minimal: `main.js`, `manifest.json`, and `styles.css`.
 - Status changes and releases require every applicable Definition-of-Done and
   verification gate.
 
-Read [`GIT-WORKFLOW.md`](GIT-WORKFLOW.md), [`TESTING.md`](TESTING.md), and
-[`MULTI-AGENT-COORDINATION.md`](MULTI-AGENT-COORDINATION.md).
+Read [`GIT-WORKFLOW.md`](GIT-WORKFLOW.md), [`TESTING.md`](TESTING.md),
+[`MULTI-AGENT-COORDINATION.md`](MULTI-AGENT-COORDINATION.md), and
+[`USER-MERGE-REVIEW.md`](USER-MERGE-REVIEW.md).
 
 ## Task routing and required reading
 
@@ -335,7 +340,9 @@ If a task spans multiple rows, satisfy every applicable row.
 6. Open draft only if unresolved work remains; otherwise open ready.
 7. Before ready state, apply or reject pending changesets and remove their JSON.
 8. The integrator verifies exact head, dependencies, mergeability, checks, and scope,
-   then may merge the passing PR.
+   notifies the user that the PR is ready, and stops without merging.
+9. After explicit user approval for that PR and unchanged head, the integrator
+   re-checks the gates and may merge.
 
 ## Verification matrix
 
@@ -434,7 +441,10 @@ An agent must not:
 - use automation without a covering claim, explicit least-privilege permissions,
   preconditions, bounded targets, and an auditable result;
 - permit automation to write directly to `main` or autonomously decide evidence,
-  status promotion, survey deployment, or release publication;
+  status promotion, survey deployment, release publication, merge approval, or
+  auto-merge;
+- merge, enable auto-merge, or schedule a merge before explicit user approval for the
+  specific pull request and exact head;
 - mix unrelated state dimensions without coherent scope;
 - delete incomplete evidence solely to make a gate pass.
 
@@ -444,8 +454,9 @@ An agent must not:
 Work autonomously in the GitHub repository Vazhi/canto-span.
 
 MANDATORY BOOTSTRAP
-1. Read AGENTS.md, docs/current/00-START-HERE.md, and
-   docs/current/MULTI-AGENT-COORDINATION.md in full.
+1. Read AGENTS.md, docs/current/00-START-HERE.md,
+   docs/current/MULTI-AGENT-COORDINATION.md, and
+   docs/current/USER-MERGE-REVIEW.md in full.
 2. Sync current main and inspect open PRs plus open work claims.
 3. Create or update one claim before editing. Declare work ID, mode, integration
    role, exact branch, expiry, semantic regions, generated outputs, protected state,
@@ -479,8 +490,10 @@ HANDOFF AND MERGE
 - Link the claim and include Closes #<claim>.
 - List outcome, semantic regions, dependencies, files, protected state, outputs,
   validation, and blockers.
-- The authorized integrator may rebuild, ready, and merge passing PRs in dependency
-  order without a separate per-PR user request.
+- The integrator may rebuild stale work and mark a passing PR ready, but must notify
+  the user and stop before merge.
+- Merge only after explicit user approval for the specific PR and unchanged head;
+  any new commit requires a new notice and fresh approval.
 - Promotion, survey deployment, and release publication require separate authorized
   scope and gates.
 ```
@@ -491,14 +504,15 @@ HANDOFF AND MERGE
 2. [`DOCTRINE.md`](DOCTRINE.md)
 3. [`GOVERNANCE.md`](GOVERNANCE.md)
 4. [`MULTI-AGENT-COORDINATION.md`](MULTI-AGENT-COORDINATION.md)
-5. [`CONSTRUCTION-IDENTITY.md`](CONSTRUCTION-IDENTITY.md)
-6. [`CONSTRUCTION-ADJUDICATION.md`](CONSTRUCTION-ADJUDICATION.md)
-7. [`DEFINITION-OF-DONE.md`](DEFINITION-OF-DONE.md)
-8. [`TESTING.md`](TESTING.md)
-9. [`GIT-WORKFLOW.md`](GIT-WORKFLOW.md)
-10. [`../../grammar/README.md`](../../grammar/README.md)
-11. [`../../GRAMMAR-INDEX.md`](../../GRAMMAR-INDEX.md)
-12. [`../research/CURRENT-RESEARCH-PROVENANCE.md`](../research/CURRENT-RESEARCH-PROVENANCE.md)
+5. [`USER-MERGE-REVIEW.md`](USER-MERGE-REVIEW.md)
+6. [`CONSTRUCTION-IDENTITY.md`](CONSTRUCTION-IDENTITY.md)
+7. [`CONSTRUCTION-ADJUDICATION.md`](CONSTRUCTION-ADJUDICATION.md)
+8. [`DEFINITION-OF-DONE.md`](DEFINITION-OF-DONE.md)
+9. [`TESTING.md`](TESTING.md)
+10. [`GIT-WORKFLOW.md`](GIT-WORKFLOW.md)
+11. [`../../grammar/README.md`](../../grammar/README.md)
+12. [`../../GRAMMAR-INDEX.md`](../../GRAMMAR-INDEX.md)
+13. [`../research/CURRENT-RESEARCH-PROVENANCE.md`](../research/CURRENT-RESEARCH-PROVENANCE.md)
 
 This reading order provides context. The task-routing table determines which files
 must be inspected for a specific change.

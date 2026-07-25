@@ -150,13 +150,16 @@ one coherent branch. Verification follows the state dimensions actually changed:
 5. run `npm test` and `npm run verify` for runtime or executable-test changes;
 6. run release verification only for status transition or release work;
 7. reconcile integration-owned files as integrator;
-8. publish one coherent passing PR.
+8. publish one coherent passing PR;
+9. notify the user that the exact validated head is ready and stop without merging;
+10. merge only after explicit approval for that PR and unchanged head.
 
 Research findings do not bypass evidence, identity, status, survey, or release gates.
 
 ## Updating tests and records
 
-1. Read `AGENTS.md`, `00-START-HERE.md`, and the coordination contract.
+1. Read `AGENTS.md`, `00-START-HERE.md`, the coordination contract, and
+   `USER-MERGE-REVIEW.md`.
 2. Confirm the claim covers every affected state dimension and file region.
 3. Edit the canonical source, identity, adjudication, grammar, runtime, parked
    registry, evidence, coordination input, or fixture.
@@ -184,7 +187,8 @@ A write-capable workflow is permitted only when:
 - base SHA, head SHA, claim, target, and operation preconditions are checked;
 - the result is auditable and coherent;
 - the workflow cannot write directly to `main`, adjudicate evidence, promote status,
-  deploy surveys, or publish releases without separately authorized scope and gates.
+  deploy surveys, publish releases, merge, enable auto-merge, or infer approval
+  without the separately required scope, gates, and explicit user approval.
 
 JavaScript actions use Node 24-compatible releases. Workflow trigger coverage is
 part of the verified contract. Core CI runs when runtime, canonical data, grammar,
