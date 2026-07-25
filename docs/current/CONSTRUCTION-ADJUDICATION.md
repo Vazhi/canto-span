@@ -27,23 +27,32 @@ superseding decision with explicit rationale and relationships.
 ## Current progress
 
 - permanent records: **181**;
-- accepted adjudications: **54**;
-- pending adjudications: **127**;
-- accepted batches: **11**;
+- accepted adjudications: **59**;
+- pending adjudications: **122**;
+- accepted batches: **12**;
 - latest batch report:
-  `docs/research/CONSTRUCTION-ADJUDICATION-BATCH-11.md`.
+  `docs/research/CONSTRUCTION-ADJUDICATION-BATCH-12.md`.
 
 This count records completed identity and ontology judgments only. It does not
 imply runtime migration, status migration, corpus closure, panel completion,
 held-out validation, or promotion.
 
-The next planned batch is Batch 12:
+Batch 12 accepted the following UUID-preserving decisions:
 
-1. `AA80 LocativePlacePhrase`;
-2. `AA82 LocativeWhQuestion`;
-3. `AA83 MalformedCandidate`;
-4. `AA85 MeasureExpression`;
-5. `AA86 ModalANotAQuestion`.
+1. `AA80 LocativePlacePhrase` → `OvertPlaceExpressionWrapper`, reclassified as
+   `parser_representation` and marked for later compatibility decomposition;
+2. `AA82 LocativeWhQuestion` → `BinDouWhPlaceQuestion`, retained as a narrow
+   overt-`邊度` language-construction profile;
+3. `AA83 MalformedCandidate` → `MalformedStructureDiagnostic`, retained as a
+   nonlinguistic parser diagnostic;
+4. `AA85 MeasureExpression` → `OvertMeasureChildSpan`, retained as a nonlicensing
+   parser child span;
+5. `AA86 ModalANotAQuestion` → `ModalM4ModalInterrogative`, retained as a narrow
+   repeated-modal `唔` interrogative profile.
+
+No later adjudication batch is fixed as a mandatory queue. The next records are
+selected from the 122 pending identities according to current project benefit,
+evidence opportunity, ontology risk, dependencies, and open-work overlap.
 
 ## Required decision fields
 
@@ -91,8 +100,8 @@ The accepted batch, regenerated identities, label sweep, candidate-readiness
 registry, generated reports, and any affected current documentation belong in the
 same pull request state.
 
-GitHub Actions is read-only verification. The deleted branch-specific automatic
-writer is not part of the current workflow and must not be restored.
+GitHub Actions is read-only verification. Branch-specific automatic writers are
+not part of the current workflow and must not be restored.
 
 ## Relationship to runtime and status
 

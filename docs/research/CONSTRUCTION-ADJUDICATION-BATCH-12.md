@@ -4,17 +4,17 @@
 **Authority:** project expert systematic review  
 **Records:** `AA80`, `AA82`, `AA83`, `AA85`, `AA86`
 
-## Active ownership
+## Integration state
 
-**ChatGPT takeover active. Codex must not pick up this work.**
+The expert decisions are recorded in
+`data/construction-adjudication-batches/batch-12.json` and applied to the canonical
+identity, label-sweep, discovery, and generated research records in the same pull
+request state.
 
-The user directed ChatGPT to continue the complete Batch 12 integration until merge-ready. Active coordination is recorded in Issues #47 and #50, claim #48, branch `agent/adjudication-batch-12`, and draft PR #49. A later Codex reassignment is valid only if the canonical issue body explicitly changes the active pickup owner.
-
-## Merge readiness
-
-**NOT READY FOR MERGE — FURTHER WORK REQUIRED**
-
-This report completes the expert identity and ontology decisions. The branch still requires deterministic application, generated-registry refresh, complete verification, and independent final review. No runtime, status-path, fixture, survey, release, or merge decision is made here.
+This batch changes identity and ontology metadata only. It does not authorize or
+perform a runtime-label migration, status-path migration, matcher change, fixture
+change, new UUID allocation, retirement, survey change, release change, promotion,
+or merge.
 
 ## Decisions
 
@@ -35,11 +35,20 @@ No UUID or permanent code changes.
 - Profile: `OvertHaiLocalizerAndPlaceExpressionAggregate`
 - Alignment: `disjoint`; legacy terminology is misleading.
 - Status recommendation: migrate to `parser_heuristic` only through a separate compatibility change.
-- Expected discovery disposition: `excluded_nonlanguage`.
+- Discovery disposition after deterministic regeneration: `excluded_nonlanguage`.
 
-The current positives label spatial material in structurally different environments: static `喺` predication, preverbal event location, postverbal or existential locative codas, place-initial localizer expressions, overt `喺邊度`, and positioning clauses. Kwan distinguishes preverbal event location from postverbal resulting location, while Yip and Matthews preserve locative/progressive ambiguity for `喺度`. The UUID therefore preserves only an overt spatial-span wrapper.
+The current positives label spatial material in structurally different
+environments: static `喺` predication, preverbal event location, postverbal or
+existential locative codas, place-initial localizer expressions, overt `喺邊度`, and
+positioning clauses. Kwan distinguishes preverbal event location from postverbal
+resulting location, while Yip and Matthews preserve locative/progressive ambiguity
+for `喺度`. The UUID therefore preserves only an overt spatial-span wrapper.
 
-The wrapper must not decide that the place expression is a subject, topic, adjunct, predicate, goal, result, or coda without a typed parent analysis. Successor work must separately preserve static location predicates, event-location phrases, result/coda locations, localizer expressions, place-initial existential or positioning structures, and wh-place material.
+The wrapper must not decide that the place expression is a subject, topic, adjunct,
+predicate, goal, result, or coda without a typed parent analysis. Successor work must
+separately preserve static location predicates, event-location phrases, result/coda
+locations, localizer expressions, place-initial existential or positioning
+structures, and wh-place material.
 
 ## AA82 — BinDouWhPlaceQuestion
 
@@ -48,11 +57,18 @@ The wrapper must not decide that the place expression is a subject, topic, adjun
 - Profile: `OvertBinDouLocationGoalOrHeadlessQuestion`
 - Alignment: runtime broader than any one role; form-based terminology preferred.
 - Status recommendation: retain `unsupported_generalization` until role decomposition and runtime reconciliation are complete.
-- Expected discovery disposition: `narrowing_candidate`.
+- Discovery disposition after deterministic regeneration: `narrowing_candidate`.
 
-All positives contain overt `邊度`, but they divide into motion-goal `去咗邊度`, overt locative `喺邊度`, and headless `邊度呀` questions. Four verified sources directly support in-situ wh-place expressions, overt `喺邊度`, and destination `去邊度`, while warning against hidden-`喺` insertion and unrestricted role generalization.
+All positives contain overt `邊度`, but they divide into motion-goal `去咗邊度`,
+overt locative `喺邊度`, and headless `邊度呀` questions. Four verified sources
+directly support in-situ wh-place expressions, overt `喺邊度`, and destination
+`去邊度`, while warning against hidden-`喺` insertion and unrestricted role
+generalization.
 
-The UUID remains attached to overt `邊度` question material. Location, goal, source, and headless behavior must remain explicit composition or successor profiles. Evidence does not automatically transfer to `邊庶`, bare `邊`, or a hidden preposition.
+The UUID remains attached to overt `邊度` question material. Location, goal, source,
+and headless behavior must remain explicit composition or successor profiles.
+Evidence does not automatically transfer to alternative wh forms or a hidden
+preposition.
 
 ## AA83 — MalformedStructureDiagnostic
 
@@ -61,11 +77,17 @@ The UUID remains attached to overt `邊度` question material. Location, goal, s
 - Profile: `ExplicitMalformedOrderOrCompositionDisposition`
 - Alignment: no language-construction alignment; legacy name is opaque.
 - Status recommendation: retain `parser_heuristic`.
-- Expected discovery disposition: `excluded_nonlanguage`.
+- Discovery disposition after deterministic regeneration: `excluded_nonlanguage`.
 
-The record covers several deterministic diagnostic families rather than one linguistic pattern. The runtime contract serializes a `malformed_family`, `malformed_subtype`, overt problem span, and repair information with zero linguistic evidence weight.
+The record covers several deterministic diagnostic families rather than one
+linguistic pattern. The runtime contract serializes a `malformed_family`,
+`malformed_subtype`, overt problem span, and repair information with zero linguistic
+evidence weight.
 
-The diagnostic must not silently repair input, invent omitted material, or compete as a Cantonese construction. It remains distinct from `NeedsContext`, unknown input, and ordinary parse failure. Downstream migration must preserve explicit problem and repair metadata before the legacy label changes.
+The diagnostic must not silently repair input, invent omitted material, or compete
+as a Cantonese construction. It remains distinct from `NeedsContext`, unknown input,
+and ordinary parse failure. Downstream migration must preserve explicit problem and
+repair metadata before the legacy label changes.
 
 ## AA85 — OvertMeasureChildSpan
 
@@ -74,11 +96,16 @@ The diagnostic must not silently repair input, invent omitted material, or compe
 - Profile: `QuantityUnitOrDimensionChildOfNominalPredicate`
 - Alignment: runtime narrower and defensible; legacy name overstates autonomy.
 - Status recommendation: retain `parser_heuristic` as a nonlicensing child span.
-- Expected discovery disposition: `excluded_nonlanguage`.
+- Discovery disposition after deterministic regeneration: `excluded_nonlanguage`.
 
-The executable cases are nominal-predicate measures for age, price, area, and length. The contract probe identifies the node as an `overt_measure_child_span`, assigns `NominalPredicateClause` as its licensing parent, and sets independent grammar licensing to false.
+The executable cases are nominal-predicate measures for age, price, area, and
+length. The contract probe identifies the node as an `overt_measure_child_span`,
+assigns `NominalPredicateClause` as its licensing parent, and sets independent
+grammar licensing to false.
 
-The node may record overt quantity, unit or dimension, measure domain, and parent. It must not infer a hidden unit, become the whole predicate, or collapse sortal classifiers with mensural units.
+The node may record overt quantity, unit or dimension, measure domain, and parent.
+It must not infer a hidden unit, become the whole predicate, or collapse sortal
+classifiers with mensural units.
 
 ## AA86 — ModalM4ModalInterrogative
 
@@ -87,27 +114,42 @@ The node may record overt quantity, unit or dimension, measure domain, and paren
 - Profile: `RepeatedModalM4ModalWithFollowingPredicate`
 - Alignment: overlapping; narrower form-based terminology preferred.
 - Status recommendation: retain `research_pending`.
-- Expected discovery disposition: `source_supported`.
+- Discovery disposition after deterministic regeneration: `source_supported`.
 
-The executable positives are `使唔使去` and `會唔會落雨`. Law directly analyzes Cantonese A-not-A formation through repetition of verbs or modal auxiliaries around negation and provides modal examples including `會唔會`, `使唔使`, `要唔要`, and reduced disyllabic forms. Li distinguishes A-not-A, A-not-AB, a-not-AB, and a-not-A patterns.
+The executable positives are `使唔使去` and `會唔會落雨`. Law directly analyzes
+Cantonese A-not-A formation through repetition of verbs or modal auxiliaries around
+negation and provides modal examples including `會唔會`, `使唔使`, `要唔要`, and
+reduced disyllabic forms. Li distinguishes A-not-A, A-not-AB, a-not-AB, and a-not-A
+patterns.
 
-The retained profile covers overt repeated-modal `唔` questions. It excludes ordinary lexical V-not-V, suppletive `有冇`, copular `係唔係`, and reduced disyllabic patterns such as `可唔可以` unless a separate record explicitly covers them. Modal readings, quantifier interactions, embedding, and sentence-final-particle boundaries remain unresolved.
+The retained profile covers overt repeated-modal `唔` questions. It excludes
+ordinary lexical V-not-V, suppletive `有冇`, copular `係唔係`, and reduced
+disyllabic patterns such as `可唔可以` unless a separate record explicitly covers
+them. Modal readings, quantifier interactions, embedding, and sentence-final-particle
+boundaries remain unresolved.
 
 ## Evidence boundary
 
-The adjudication uses current immutable identity records, active grammar notes, current executable construction files, verified source records already mapped by the repository, and direct review of Law’s Cantonese A-not-A analysis.
+The adjudication uses current immutable identity records, active grammar notes,
+current executable construction files, verified source records already mapped by
+the repository, and direct review of Law’s Cantonese A-not-A analysis.
 
-Implementation reachability and test success carry zero independent linguistic evidence weight. Evidence does not transfer across a wrapper, spatial role, wh-place role, malformed repair, measure domain, modal reading, lexical subtype, or future successor.
+Implementation reachability and test success carry zero independent linguistic
+evidence weight. Evidence does not transfer across a wrapper, spatial role,
+wh-place role, malformed repair, measure domain, modal reading, lexical subtype, or
+future successor.
 
-## Remaining ChatGPT work
+## Resulting inventory
 
-1. Apply `data/construction-adjudication-batches/batch-12.json` to the canonical identity registry.
-2. Regenerate identity, label-sweep, discovery, and required report outputs.
-3. Refresh all current records required by `docs/current/CONSTRUCTION-ADJUDICATION.md`.
-4. Confirm generated candidate dispositions without hand-editing generator output.
-5. Run `npm run verify:adjudications`, `npm run verify:identities`, `npm run verify:discovery`, `npm run verify`, `npm run verify:research`, and every applicable coordination gate.
-6. Report exact count changes, changed files, and any generator disagreement with the expert decisions.
-7. Keep the PR draft and marked `NOT_READY_WORK_REMAINS` until all checks pass and independent review is complete.
+After deterministic application:
+
+- expert-adjudicated identities: **59 / 181**;
+- pending adjudications: **122**;
+- accepted batches: **12**;
+- `excluded_nonlanguage`: **31**;
+- `narrowing_candidate`: **34**;
+- `source_supported`: **65**;
+- promotion-ready: **0**.
 
 ## Explicitly unchanged
 
