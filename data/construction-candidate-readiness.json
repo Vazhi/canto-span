@@ -8,16 +8,16 @@
   "promotion_eligible_now_count": 0,
   "state_counts": {
     "boundary_ready": 1,
-    "excluded_nonlanguage": 30,
+    "excluded_nonlanguage": 31,
     "lexicalized_review": 2,
-    "narrowing_candidate": 35,
+    "narrowing_candidate": 34,
     "retired_evidence_rehome_candidate": 42,
     "retired_research_gap": 6,
     "source_supported": 65
   },
   "nearest_missing_gate_counts": {
-    "language_claim_defined": 30,
-    "negative_boundaries_complete": 33,
+    "language_claim_defined": 31,
+    "negative_boundaries_complete": 32,
     "reviewed_corpus_evidence": 3,
     "runtime_research_alignment": 17,
     "source_scope_matches_claim": 50
@@ -286,6 +286,100 @@
         "unsupported_generalization_requires_source_runtime_reconciliation"
       ],
       "source_path": "grammar/unsupported_generalization/CoordinatedNP.md"
+    },
+    {
+      "construction_uuid": "4593e90d-b923-54af-a9ac-533409c38355",
+      "construction_code": "AA82",
+      "canonical_name": "BinDouWhPlaceQuestion",
+      "legacy_label": "LocativeWhQuestion",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "family_id": null,
+      "family_name": "WhPlaceInterrogatives",
+      "profile_name": "OvertBinDouLocationGoalOrHeadlessQuestion",
+      "learner_label": null,
+      "source_ids": [
+        "SRC-CHOW-2007-CANTONESE-EVERYONE",
+        "SRC-WONG-2023-LANGUAGE-SAMPLE",
+        "SRC-YIP-MATTHEWS-2000-BASIC",
+        "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
+      ],
+      "preserved_source_ids": [],
+      "future_research_preserved_as": "",
+      "standard_positive_test_count": 6,
+      "standard_boundary_test_count": 2,
+      "gates": {
+        "language_claim_defined": {
+          "status": "pass",
+          "evidence": "plain_language_claim_present"
+        },
+        "independent_source_support": {
+          "status": "pass",
+          "evidence": "all_cited_sources_verified_and_independent",
+          "detail": "4/4"
+        },
+        "source_scope_matches_claim": {
+          "status": "pass",
+          "evidence": "current_standard_reaudit_complete_with_verified_sources"
+        },
+        "runtime_research_alignment": {
+          "status": "pass",
+          "evidence": "code_document_reconciled_with_current_metadata"
+        },
+        "executable_positive_cases_present": {
+          "status": "pass",
+          "evidence": "executable_positive_cases_present_implementation_only",
+          "detail": "6"
+        },
+        "negative_boundaries_complete": {
+          "status": "partial",
+          "evidence": "negative_boundaries_incomplete"
+        },
+        "reviewed_corpus_evidence": {
+          "status": "not_started",
+          "evidence": "no_reviewed_corpus_evidence"
+        },
+        "role_neutral_panel_threshold": {
+          "status": "partial",
+          "evidence": "panel_evidence_incomplete",
+          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":false,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
+        },
+        "held_out_validation": {
+          "status": "not_started",
+          "evidence": "no_passing_held_out_record"
+        },
+        "ontology_conflicts_resolved": {
+          "status": "partial",
+          "evidence": "identity_label_review_in_progress",
+          "detail": "{\"review_state\":\"complete\",\"behavior_research_alignment\":\"runtime_broader\",\"terminology_alignment\":\"neutral_descriptive_preferred\",\"recommended_action\":\"rename_retain_narrow\",\"automatic_risk_flags\":[\"unsupported_generalization_requires_source_runtime_reconciliation\"],\"review_notes\":\"Expert adjudication 2026-07-25. LocativeWhQuestion hides the overt lexical form and suggests one locative role for several compositions. BinDouWhPlaceQuestion retains the UUID for overt 邊度 question material while requiring parent structure to determine location, goal, source, or headless interpretation. Status recommendation: retain unsupported_generalization until location, goal, source, and headless profiles are explicitly composed or separated and runtime boundaries are reconciled; do not transfer evidence to hidden-preposition or alternative wh forms\"}"
+        }
+      },
+      "supported_gate_eligible": false,
+      "supported_gate_blockers": [
+        "requirement_failed:locked_clean_panel_instrument",
+        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
+        "requirement_failed:role_neutral_panel",
+        "requirement_failed:instrument_quality_resolved",
+        "requirement_failed:quality_screen_complete",
+        "requirement_failed:panel_adjudication_complete",
+        "requirement_failed:critical_contrast_coverage_complete",
+        "requirement_failed:positive_and_negative_contrasts_reviewed",
+        "requirement_failed:negative_boundary_inventory_complete"
+      ],
+      "discovery_hard_blockers": [
+        "discovery_gate:reviewed_corpus_evidence",
+        "discovery_gate:held_out_validation",
+        "discovery_gate:ontology_conflicts_resolved"
+      ],
+      "readiness_score": 70,
+      "candidate_state": "narrowing_candidate",
+      "nearest_missing_gate": "negative_boundaries_complete",
+      "next_best_action": "complete and execute the negative-boundary inventory",
+      "automatic_risk_flags": [
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ],
+      "source_path": "grammar/unsupported_generalization/LocativeWhQuestion.md"
     },
     {
       "construction_uuid": "4f6df953-62d1-5036-80b3-40bc8f02937e",
@@ -1120,190 +1214,6 @@
         "unsupported_generalization_requires_source_runtime_reconciliation"
       ],
       "source_path": "grammar/unsupported_generalization/ExperientialYesNoQuestion.md"
-    },
-    {
-      "construction_uuid": "d3c2e159-8bd7-5f57-a8f8-8deb4a12ad86",
-      "construction_code": "AA80",
-      "canonical_name": "LocativePlacePhrase",
-      "legacy_label": "LocativePlacePhrase",
-      "lifecycle_state": "current",
-      "claim_layer": "language_construction",
-      "linguistic_status": "unsupported_generalization",
-      "family_id": "L36",
-      "family_name": "LocativeAndPosturalPredication",
-      "profile_name": null,
-      "learner_label": null,
-      "source_ids": [
-        "SRC-KWAN-2010-LOCATIVE",
-        "SRC-YIP-MATTHEWS-2000-BASIC"
-      ],
-      "preserved_source_ids": [],
-      "future_research_preserved_as": "",
-      "standard_positive_test_count": 15,
-      "standard_boundary_test_count": 2,
-      "gates": {
-        "language_claim_defined": {
-          "status": "pass",
-          "evidence": "plain_language_claim_present"
-        },
-        "independent_source_support": {
-          "status": "pass",
-          "evidence": "all_cited_sources_verified_and_independent",
-          "detail": "2/2"
-        },
-        "source_scope_matches_claim": {
-          "status": "pass",
-          "evidence": "current_standard_reaudit_complete_with_verified_sources"
-        },
-        "runtime_research_alignment": {
-          "status": "pass",
-          "evidence": "code_document_reconciled_with_current_metadata"
-        },
-        "executable_positive_cases_present": {
-          "status": "pass",
-          "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "15"
-        },
-        "negative_boundaries_complete": {
-          "status": "partial",
-          "evidence": "negative_boundaries_incomplete"
-        },
-        "reviewed_corpus_evidence": {
-          "status": "not_started",
-          "evidence": "no_reviewed_corpus_evidence"
-        },
-        "role_neutral_panel_threshold": {
-          "status": "partial",
-          "evidence": "panel_evidence_incomplete",
-          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":false,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
-        },
-        "held_out_validation": {
-          "status": "not_started",
-          "evidence": "no_passing_held_out_record"
-        },
-        "ontology_conflicts_resolved": {
-          "status": "unresolved",
-          "evidence": "identity_label_review_pending"
-        }
-      },
-      "supported_gate_eligible": false,
-      "supported_gate_blockers": [
-        "requirement_failed:locked_clean_panel_instrument",
-        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
-        "requirement_failed:role_neutral_panel",
-        "requirement_failed:instrument_quality_resolved",
-        "requirement_failed:quality_screen_complete",
-        "requirement_failed:panel_adjudication_complete",
-        "requirement_failed:critical_contrast_coverage_complete",
-        "requirement_failed:positive_and_negative_contrasts_reviewed",
-        "requirement_failed:negative_boundary_inventory_complete"
-      ],
-      "discovery_hard_blockers": [
-        "discovery_gate:reviewed_corpus_evidence",
-        "discovery_gate:held_out_validation",
-        "discovery_gate:ontology_conflicts_resolved"
-      ],
-      "readiness_score": 68,
-      "candidate_state": "narrowing_candidate",
-      "nearest_missing_gate": "negative_boundaries_complete",
-      "next_best_action": "complete and execute the negative-boundary inventory",
-      "automatic_risk_flags": [
-        "unsupported_generalization_requires_source_runtime_reconciliation"
-      ],
-      "source_path": "grammar/unsupported_generalization/LocativePlacePhrase.md"
-    },
-    {
-      "construction_uuid": "4593e90d-b923-54af-a9ac-533409c38355",
-      "construction_code": "AA82",
-      "canonical_name": "LocativeWhQuestion",
-      "legacy_label": "LocativeWhQuestion",
-      "lifecycle_state": "current",
-      "claim_layer": "language_construction",
-      "linguistic_status": "unsupported_generalization",
-      "family_id": "L25",
-      "family_name": "TypedWhAndStanceQuestions",
-      "profile_name": null,
-      "learner_label": null,
-      "source_ids": [
-        "SRC-CHOW-2007-CANTONESE-EVERYONE",
-        "SRC-WONG-2023-LANGUAGE-SAMPLE",
-        "SRC-YIP-MATTHEWS-2000-BASIC",
-        "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
-      ],
-      "preserved_source_ids": [],
-      "future_research_preserved_as": "",
-      "standard_positive_test_count": 6,
-      "standard_boundary_test_count": 2,
-      "gates": {
-        "language_claim_defined": {
-          "status": "pass",
-          "evidence": "plain_language_claim_present"
-        },
-        "independent_source_support": {
-          "status": "pass",
-          "evidence": "all_cited_sources_verified_and_independent",
-          "detail": "4/4"
-        },
-        "source_scope_matches_claim": {
-          "status": "pass",
-          "evidence": "current_standard_reaudit_complete_with_verified_sources"
-        },
-        "runtime_research_alignment": {
-          "status": "pass",
-          "evidence": "code_document_reconciled_with_current_metadata"
-        },
-        "executable_positive_cases_present": {
-          "status": "pass",
-          "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "6"
-        },
-        "negative_boundaries_complete": {
-          "status": "partial",
-          "evidence": "negative_boundaries_incomplete"
-        },
-        "reviewed_corpus_evidence": {
-          "status": "not_started",
-          "evidence": "no_reviewed_corpus_evidence"
-        },
-        "role_neutral_panel_threshold": {
-          "status": "partial",
-          "evidence": "panel_evidence_incomplete",
-          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":false,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
-        },
-        "held_out_validation": {
-          "status": "not_started",
-          "evidence": "no_passing_held_out_record"
-        },
-        "ontology_conflicts_resolved": {
-          "status": "unresolved",
-          "evidence": "identity_label_review_pending"
-        }
-      },
-      "supported_gate_eligible": false,
-      "supported_gate_blockers": [
-        "requirement_failed:locked_clean_panel_instrument",
-        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
-        "requirement_failed:role_neutral_panel",
-        "requirement_failed:instrument_quality_resolved",
-        "requirement_failed:quality_screen_complete",
-        "requirement_failed:panel_adjudication_complete",
-        "requirement_failed:critical_contrast_coverage_complete",
-        "requirement_failed:positive_and_negative_contrasts_reviewed",
-        "requirement_failed:negative_boundary_inventory_complete"
-      ],
-      "discovery_hard_blockers": [
-        "discovery_gate:reviewed_corpus_evidence",
-        "discovery_gate:held_out_validation",
-        "discovery_gate:ontology_conflicts_resolved"
-      ],
-      "readiness_score": 68,
-      "candidate_state": "narrowing_candidate",
-      "nearest_missing_gate": "negative_boundaries_complete",
-      "next_best_action": "complete and execute the negative-boundary inventory",
-      "automatic_risk_flags": [
-        "unsupported_generalization_requires_source_runtime_reconciliation"
-      ],
-      "source_path": "grammar/unsupported_generalization/LocativeWhQuestion.md"
     },
     {
       "construction_uuid": "09d2535f-66fa-569c-bee6-f538f39c891c",
@@ -6543,14 +6453,14 @@
     {
       "construction_uuid": "93a1df83-8655-5da7-bd9f-4ff7e2cf1b9b",
       "construction_code": "AA86",
-      "canonical_name": "ModalANotAQuestion",
+      "canonical_name": "ModalM4ModalInterrogative",
       "legacy_label": "ModalANotAQuestion",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "research_pending",
-      "family_id": "L23",
-      "family_name": "ANotAQuestions",
-      "profile_name": null,
+      "family_id": null,
+      "family_name": "ANotAInterrogatives",
+      "profile_name": "RepeatedModalM4ModalWithFollowingPredicate",
       "learner_label": null,
       "source_ids": [
         "SRC-LAW-2001-ANOTA",
@@ -6601,8 +6511,9 @@
           "evidence": "no_passing_held_out_record"
         },
         "ontology_conflicts_resolved": {
-          "status": "unresolved",
-          "evidence": "identity_label_review_pending"
+          "status": "partial",
+          "evidence": "identity_label_review_in_progress",
+          "detail": "{\"review_state\":\"complete\",\"behavior_research_alignment\":\"overlapping\",\"terminology_alignment\":\"neutral_descriptive_preferred\",\"recommended_action\":\"rename_retain_narrow\",\"automatic_risk_flags\":[],\"review_notes\":\"Expert adjudication 2026-07-25. ModalANotAQuestion is broadly plausible but does not expose the overt repeated-modal form or distinguish it from suppletive, copular, lexical, and reduced disyllabic interrogatives. ModalM4ModalInterrogative retains the UUID for the exact surface profile and prevents sibling A-not-A patterns from inheriting its evidence. Status recommendation: retain research_pending for overt repeated-modal 唔 questions; keep modal readings, modal inventory, quantifier interactions, reduced disyllabic forms, embedding, final particles, corpus evidence, panel evidence, and held-out boundaries unresolved\"}"
         }
       },
       "supported_gate_eligible": false,
@@ -6625,7 +6536,7 @@
         "discovery_gate:held_out_validation",
         "discovery_gate:ontology_conflicts_resolved"
       ],
-      "readiness_score": 48,
+      "readiness_score": 50,
       "candidate_state": "source_supported",
       "nearest_missing_gate": "source_scope_matches_claim",
       "next_best_action": "complete source-scope reaudit and split any unsupported extensions",
@@ -15097,6 +15008,98 @@
       "source_path": "grammar/research_pending/LocativeFrameClause.md"
     },
     {
+      "construction_uuid": "d3c2e159-8bd7-5f57-a8f8-8deb4a12ad86",
+      "construction_code": "AA80",
+      "canonical_name": "OvertPlaceExpressionWrapper",
+      "legacy_label": "LocativePlacePhrase",
+      "lifecycle_state": "current",
+      "claim_layer": "parser_representation",
+      "linguistic_status": "unsupported_generalization",
+      "family_id": null,
+      "family_name": "SpatialExpressionRepresentation",
+      "profile_name": "OvertHaiLocalizerAndPlaceExpressionAggregate",
+      "learner_label": null,
+      "source_ids": [
+        "SRC-KWAN-2010-LOCATIVE",
+        "SRC-YIP-MATTHEWS-2000-BASIC"
+      ],
+      "preserved_source_ids": [],
+      "future_research_preserved_as": "",
+      "standard_positive_test_count": 15,
+      "standard_boundary_test_count": 2,
+      "gates": {
+        "language_claim_defined": {
+          "status": "not_applicable",
+          "evidence": "non_language_claim_layer"
+        },
+        "independent_source_support": {
+          "status": "pass",
+          "evidence": "all_cited_sources_verified_and_independent",
+          "detail": "2/2"
+        },
+        "source_scope_matches_claim": {
+          "status": "pass",
+          "evidence": "current_standard_reaudit_complete_with_verified_sources"
+        },
+        "runtime_research_alignment": {
+          "status": "pass",
+          "evidence": "code_document_reconciled_with_current_metadata"
+        },
+        "executable_positive_cases_present": {
+          "status": "pass",
+          "evidence": "executable_positive_cases_present_implementation_only",
+          "detail": "15"
+        },
+        "negative_boundaries_complete": {
+          "status": "partial",
+          "evidence": "negative_boundaries_incomplete"
+        },
+        "reviewed_corpus_evidence": {
+          "status": "not_started",
+          "evidence": "no_reviewed_corpus_evidence"
+        },
+        "role_neutral_panel_threshold": {
+          "status": "partial",
+          "evidence": "panel_evidence_incomplete",
+          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":false,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
+        },
+        "held_out_validation": {
+          "status": "not_started",
+          "evidence": "no_passing_held_out_record"
+        },
+        "ontology_conflicts_resolved": {
+          "status": "partial",
+          "evidence": "identity_label_review_in_progress",
+          "detail": "{\"review_state\":\"complete\",\"behavior_research_alignment\":\"disjoint\",\"terminology_alignment\":\"misleading\",\"recommended_action\":\"internalize_and_decompose\",\"automatic_risk_flags\":[\"unsupported_generalization_requires_source_runtime_reconciliation\"],\"review_notes\":\"Expert adjudication 2026-07-25. LocativePlacePhrase assigns one language-construction identity to overt spatial spans that occupy different positions and receive different interpretations from their parent structures. OvertPlaceExpressionWrapper preserves the compatibility span while preventing one role, order, or 喺度 interpretation from licensing the others. Status recommendation: migrate to parser_heuristic only through a separate compatibility change; preserve static location predicates, event-location phrases, result or coda locations, localizer expressions, place-initial existential or positioning structures, and wh-place material as independently typed profiles\"}"
+        }
+      },
+      "supported_gate_eligible": false,
+      "supported_gate_blockers": [
+        "requirement_failed:locked_clean_panel_instrument",
+        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
+        "requirement_failed:role_neutral_panel",
+        "requirement_failed:instrument_quality_resolved",
+        "requirement_failed:quality_screen_complete",
+        "requirement_failed:panel_adjudication_complete",
+        "requirement_failed:critical_contrast_coverage_complete",
+        "requirement_failed:positive_and_negative_contrasts_reviewed",
+        "requirement_failed:negative_boundary_inventory_complete"
+      ],
+      "discovery_hard_blockers": [
+        "discovery_gate:reviewed_corpus_evidence",
+        "discovery_gate:held_out_validation",
+        "discovery_gate:ontology_conflicts_resolved"
+      ],
+      "readiness_score": 0,
+      "candidate_state": "excluded_nonlanguage",
+      "nearest_missing_gate": "language_claim_defined",
+      "next_best_action": "define a narrow falsifiable language claim before adding evidence",
+      "automatic_risk_flags": [
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ],
+      "source_path": "grammar/unsupported_generalization/LocativePlacePhrase.md"
+    },
+    {
       "construction_uuid": "fe8db66e-e163-5694-84ca-1948b778be28",
       "construction_code": "AA81",
       "canonical_name": "PostureLocativeActionWrapper",
@@ -15190,14 +15193,14 @@
     {
       "construction_uuid": "1d8b01f9-0139-5fb1-af4b-07f842b87c72",
       "construction_code": "AA83",
-      "canonical_name": "MalformedCandidate",
+      "canonical_name": "MalformedStructureDiagnostic",
       "legacy_label": "MalformedCandidate",
       "lifecycle_state": "current",
       "claim_layer": "parser_representation",
       "linguistic_status": "parser_heuristic",
-      "family_id": "I08",
-      "family_name": "ParserDiagnosticDisposition",
-      "profile_name": null,
+      "family_id": null,
+      "family_name": "DiagnosticRepresentation",
+      "profile_name": "ExplicitMalformedOrderOrCompositionDisposition",
       "learner_label": null,
       "source_ids": [],
       "preserved_source_ids": [],
@@ -15245,8 +15248,9 @@
           "evidence": "no_passing_held_out_record"
         },
         "ontology_conflicts_resolved": {
-          "status": "unresolved",
-          "evidence": "identity_label_review_pending"
+          "status": "partial",
+          "evidence": "identity_label_review_in_progress",
+          "detail": "{\"review_state\":\"complete\",\"behavior_research_alignment\":\"disjoint\",\"terminology_alignment\":\"misleading\",\"recommended_action\":\"rename_retain_narrow\",\"automatic_risk_flags\":[\"internal_representation_name_review\"],\"review_notes\":\"Expert adjudication 2026-07-25. MalformedCandidate is an opaque name for an explicit parser disposition and can be mistaken for a weak construction hypothesis. MalformedStructureDiagnostic states the actual layer and preserves the invariant that malformed input is reported rather than repaired or promoted. Status recommendation: retain parser_heuristic as a nonlinguistic diagnostic disposition; keep it distinct from NeedsContext, unknown input, and ordinary parse failure, and preserve serialized compatibility until downstream rendering is explicitly migrated\"}"
         }
       },
       "supported_gate_eligible": false,
@@ -15279,14 +15283,14 @@
     {
       "construction_uuid": "c7a597a8-1684-5aaf-aafc-278dc6e0d897",
       "construction_code": "AA85",
-      "canonical_name": "MeasureExpression",
+      "canonical_name": "OvertMeasureChildSpan",
       "legacy_label": "MeasureExpression",
       "lifecycle_state": "current",
       "claim_layer": "parser_representation",
       "linguistic_status": "parser_heuristic",
-      "family_id": "I04",
-      "family_name": "NominalAndMeasureSpan",
-      "profile_name": null,
+      "family_id": null,
+      "family_name": "NominalPredicateRepresentation",
+      "profile_name": "QuantityUnitOrDimensionChildOfNominalPredicate",
       "learner_label": null,
       "source_ids": [],
       "preserved_source_ids": [],
@@ -15334,8 +15338,9 @@
           "evidence": "no_passing_held_out_record"
         },
         "ontology_conflicts_resolved": {
-          "status": "unresolved",
-          "evidence": "identity_label_review_pending"
+          "status": "partial",
+          "evidence": "identity_label_review_in_progress",
+          "detail": "{\"review_state\":\"complete\",\"behavior_research_alignment\":\"runtime_narrower_defensible\",\"terminology_alignment\":\"misleading\",\"recommended_action\":\"rename_retain_narrow\",\"automatic_risk_flags\":[\"internal_representation_name_review\"],\"review_notes\":\"Expert adjudication 2026-07-25. MeasureExpression overstates the autonomy of a node that the runtime explicitly treats as an overt child span licensed by NominalPredicateClause. OvertMeasureChildSpan preserves the useful structural representation without turning it into a free-standing Cantonese construction or inferring hidden units. Status recommendation: retain parser_heuristic as a nonlicensing child span; preserve overt quantity, unit or dimension, measure domain, and licensing parent while keeping sortal classifier and mensural-unit distinctions explicit\"}"
         }
       },
       "supported_gate_eligible": false,

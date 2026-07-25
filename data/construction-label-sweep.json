@@ -2,7 +2,7 @@
   "schema": "canto-span-full-repo-label-sweep-v1",
   "identity_registry_schema": "canto-span-construction-identity-registry-v1",
   "record_count": 181,
-  "pending_review_count": 127,
+  "pending_review_count": 122,
   "automatic_flag_counts": {
     "generic_head_requires_boundary_definition": 72,
     "internal_representation_name_review": 20,
@@ -1288,15 +1288,15 @@
     {
       "construction_uuid": "d3c2e159-8bd7-5f57-a8f8-8deb4a12ad86",
       "construction_code": "AA80",
-      "canonical_name": "LocativePlacePhrase",
+      "canonical_name": "OvertPlaceExpressionWrapper",
       "lifecycle_state": "current",
-      "claim_layer": "language_construction",
+      "claim_layer": "parser_representation",
       "linguistic_status": "unsupported_generalization",
       "source_path": "grammar/unsupported_generalization/LocativePlacePhrase.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "disjoint",
+      "terminology_alignment": "misleading",
+      "recommended_action": "internalize_and_decompose",
       "automatic_risk_flags": [
         "unsupported_generalization_requires_source_runtime_reconciliation"
       ]
@@ -1318,15 +1318,15 @@
     {
       "construction_uuid": "4593e90d-b923-54af-a9ac-533409c38355",
       "construction_code": "AA82",
-      "canonical_name": "LocativeWhQuestion",
+      "canonical_name": "BinDouWhPlaceQuestion",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "unsupported_generalization",
       "source_path": "grammar/unsupported_generalization/LocativeWhQuestion.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "runtime_broader",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": [
         "unsupported_generalization_requires_source_runtime_reconciliation"
       ]
@@ -1334,15 +1334,15 @@
     {
       "construction_uuid": "1d8b01f9-0139-5fb1-af4b-07f842b87c72",
       "construction_code": "AA83",
-      "canonical_name": "MalformedCandidate",
+      "canonical_name": "MalformedStructureDiagnostic",
       "lifecycle_state": "current",
       "claim_layer": "parser_representation",
       "linguistic_status": "parser_heuristic",
       "source_path": "grammar/parser_heuristic/MalformedCandidate.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "disjoint",
+      "terminology_alignment": "misleading",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": [
         "internal_representation_name_review"
       ]
@@ -1364,15 +1364,15 @@
     {
       "construction_uuid": "c7a597a8-1684-5aaf-aafc-278dc6e0d897",
       "construction_code": "AA85",
-      "canonical_name": "MeasureExpression",
+      "canonical_name": "OvertMeasureChildSpan",
       "lifecycle_state": "current",
       "claim_layer": "parser_representation",
       "linguistic_status": "parser_heuristic",
       "source_path": "grammar/parser_heuristic/MeasureExpression.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "runtime_narrower_defensible",
+      "terminology_alignment": "misleading",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": [
         "internal_representation_name_review"
       ]
@@ -1380,15 +1380,15 @@
     {
       "construction_uuid": "93a1df83-8655-5da7-bd9f-4ff7e2cf1b9b",
       "construction_code": "AA86",
-      "canonical_name": "ModalANotAQuestion",
+      "canonical_name": "ModalM4ModalInterrogative",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/ModalANotAQuestion.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "overlapping",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": []
     },
     {
