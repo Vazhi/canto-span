@@ -39,13 +39,20 @@ const startPath = "docs/current/00-START-HERE.md";
 const statePath = "docs/current/PROJECT-STATE.md";
 const doctrinePath = "docs/current/DOCTRINE.md";
 const governancePath = "docs/current/GOVERNANCE.md";
+const coordinationPath = "docs/current/MULTI-AGENT-COORDINATION.md";
 const parkedPath = "data/parked-constructions.json";
+const coordinationConfigPath = "config/coordination-targets.json";
+const issueTemplatePath = ".github/ISSUE_TEMPLATE/work-claim.yml";
+const prTemplatePath = ".github/pull_request_template.md";
+const coordinationWorkflowPath = ".github/workflows/coordination-check.yml";
 const readmePath = "README.md";
 const coreWorkflowPath = ".github/workflows/supported-productive-discovery.yml";
 const researchWorkflowPath = ".github/workflows/research-provenance.yml";
 
 requireText(agentsPath, "docs/current/00-START-HERE.md", "mandatory Start Here pointer");
-requireText(agentsPath, "inspect current `main` and open pull requests", "multi-agent overlap check");
+requireText(agentsPath, "MULTI-AGENT-COORDINATION.md", "mandatory coordination pointer");
+requireText(agentsPath, "inspect current `main`, open pull requests, and open work-claim issues", "multi-agent overlap check");
+requireText(agentsPath, "create or update one work-claim issue", "work claim requirement");
 requireText(agentsPath, "draft pull request", "draft PR handoff");
 
 const requiredHeadings = [
@@ -74,12 +81,17 @@ const requiredPointers = [
   "DEFINITION-OF-DONE.md",
   "TESTING.md",
   "GIT-WORKFLOW.md",
+  "MULTI-AGENT-COORDINATION.md",
   "CURRENT-RESEARCH-PROVENANCE.md",
   "review-packets/native-panel/active-v2",
   "tools/corpus-review/README.md",
   "data/construction-identities.json",
   "data/construction-candidate-readiness.json",
   "data/parked-constructions.json",
+  "config/coordination-targets.json",
+  "schemas/work-claim.schema.json",
+  "schemas/change-set.schema.json",
+  "changes/pending/",
 ];
 
 for (const pointer of requiredPointers) {
@@ -97,6 +109,10 @@ const requiredRules = [
   "no active-note whitelist",
   "no repository-wide grammar freeze",
   "recommend unpark",
+  "Semantic work claims",
+  "semantic regions",
+  "integration-owned",
+  "changes/pending/",
 ];
 
 for (const rule of requiredRules) {
@@ -119,13 +135,25 @@ requireText(doctrinePath, "There is no repository-wide grammar freeze and no act
 requireText(doctrinePath, "recommend unpark", "doctrine unpark recommendation");
 requireText(governancePath, "Workflow availability is blacklist-based", "governance blacklist policy");
 requireText(governancePath, "The construction remains parked until a reviewed change removes its entry", "governance unpark boundary");
-requireText(parkedPath, '"default_state": "available"', "parked registry default state");
+requireText(parkedPath, "\"default_state\": \"available\"", "parked registry default state");
+
+requireText(coordinationPath, "same physical file", "same-file concurrency rule");
+requireText(coordinationPath, "semantic target regions", "semantic claim rule");
+requireText(coordinationPath, "must not survive a ready-to-merge pull request", "pending cleanup rule");
+requireText(coordinationConfigPath, "\"integration_owned_files\"", "integration ownership config");
+requireText(issueTemplatePath, "coordination-claim", "work claim issue form");
+requireText(prTemplatePath, "coordination-claim: #ISSUE_NUMBER", "PR claim marker");
+requireText(prTemplatePath, "Closes #ISSUE_NUMBER", "automatic claim closure");
 
 requireText(readmePath, "AGENTS.md", "root agent bootstrap pointer");
 requireText(readmePath, "docs/current/00-START-HERE.md", "root Start Here pointer");
 
 requireText(coreWorkflowPath, "permissions: contents: read", "core workflow read-only permissions");
 requireText(researchWorkflowPath, "permissions: contents: read", "research workflow read-only permissions");
+requireText(coordinationWorkflowPath, "contents: read", "coordination workflow read-only contents");
+requireText(coordinationWorkflowPath, "issues: read", "coordination workflow read-only issues");
+requireText(coordinationWorkflowPath, "pull-requests: read", "coordination workflow read-only PRs");
+requireText(coordinationWorkflowPath, "node tools/coordination/check-pr.js", "coordination workflow checker");
 
 const requiredCoreWorkflowInputs = [
   "AGENTS.md",
@@ -139,7 +167,10 @@ const requiredCoreWorkflowInputs = [
   "tests/**",
   "tools/**",
   "config/**",
+  "schemas/**",
+  "changes/**",
   "docs/current/**",
+  ".github/**",
 ];
 requireAll(coreWorkflowPath, requiredCoreWorkflowInputs, "core workflow trigger");
 
@@ -169,7 +200,7 @@ const requiredResearchWorkflowInputs = [
 requireAll(researchWorkflowPath, requiredResearchWorkflowInputs, "research workflow trigger");
 
 const result = {
-  schema: "canto-span-agent-coordination-contract-v3",
+  schema: "canto-span-agent-coordination-contract-v4",
   status: errors.length === 0 ? "PASS" : "FAIL",
   checked_files: [
     agentsPath,
@@ -177,7 +208,12 @@ const result = {
     statePath,
     doctrinePath,
     governancePath,
+    coordinationPath,
     parkedPath,
+    coordinationConfigPath,
+    issueTemplatePath,
+    prTemplatePath,
+    coordinationWorkflowPath,
     readmePath,
     coreWorkflowPath,
     researchWorkflowPath,
