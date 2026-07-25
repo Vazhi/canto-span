@@ -3150,32 +3150,45 @@
     {
       "construction_uuid": "d3c2e159-8bd7-5f57-a8f8-8deb4a12ad86",
       "construction_code": "AA80",
-      "canonical_name": "LocativePlacePhrase",
+      "canonical_name": "OvertPlaceExpressionWrapper",
       "legacy_labels": [
         "LocativePlacePhrase"
       ],
-      "claim_layer": "language_construction",
+      "claim_layer": "parser_representation",
       "linguistic_status": "unsupported_generalization",
       "lifecycle_state": "current",
       "source_path": "grammar/unsupported_generalization/LocativePlacePhrase.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese may instantiate the structural family represented by LocativePlacePhrase; exact productivity and boundaries require pattern-specific independent evidence.",
+      "family_name": "SpatialExpressionRepresentation",
+      "profile_name": "OvertHaiLocalizerAndPlaceExpressionAggregate",
+      "profile_description": "An implementation wrapper over overt spatial material occurring in several independently structured environments: static 喺 predication, preverbal event location, postverbal or existential locative codas, place-initial localizer expressions, overt 喺邊度 questions, and positioning clauses. The wrapper preserves visible place material but does not determine whether it is a subject, topic, adjunct, predicate, goal, result, or coda.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "preverbal action location versus postverbal resulting location",
+          "source_id": "SRC-KWAN-2010-LOCATIVE",
+          "scope_match": "contrastive"
+        },
+        {
+          "term": "locative and progressive functions of 喺度",
+          "source_id": "SRC-YIP-MATTHEWS-2000-BASIC",
+          "scope_match": "contrastive"
+        }
+      ],
+      "former_names": [
+        "LocativePlacePhrase"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "disjoint",
+        "terminology_alignment": "misleading",
+        "recommended_action": "internalize_and_decompose",
         "automatic_risk_flags": [
           "unsupported_generalization_requires_source_runtime_reconciliation"
         ],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-25. LocativePlacePhrase assigns one language-construction identity to overt spatial spans that occupy different positions and receive different interpretations from their parent structures. OvertPlaceExpressionWrapper preserves the compatibility span while preventing one role, order, or 喺度 interpretation from licensing the others. Status recommendation: migrate to parser_heuristic only through a separate compatibility change; preserve static location predicates, event-location phrases, result or coda locations, localizer expressions, place-initial existential or positioning structures, and wh-place material as independently typed profiles"
       }
     },
     {
@@ -3228,7 +3241,7 @@
     {
       "construction_uuid": "4593e90d-b923-54af-a9ac-533409c38355",
       "construction_code": "AA82",
-      "canonical_name": "LocativeWhQuestion",
+      "canonical_name": "BinDouWhPlaceQuestion",
       "legacy_labels": [
         "LocativeWhQuestion"
       ],
@@ -3236,30 +3249,53 @@
       "linguistic_status": "unsupported_generalization",
       "lifecycle_state": "current",
       "source_path": "grammar/unsupported_generalization/LocativeWhQuestion.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese may instantiate the structural family represented by LocativeWhQuestion; exact productivity and boundaries require pattern-specific independent evidence.",
+      "family_name": "WhPlaceInterrogatives",
+      "profile_name": "OvertBinDouLocationGoalOrHeadlessQuestion",
+      "profile_description": "A question containing overt 邊度 as wh-place material, including motion-goal uses such as 去咗邊度, overt locative uses such as 喺邊度, and context-dependent headless uses such as 邊度呀. The profile preserves the overt form but does not collapse location, goal, source, or headless behavior into one semantic role and does not insert a hidden 喺.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "去邊度 place question and destination response",
+          "source_id": "SRC-CHOW-2007-CANTONESE-EVERYONE",
+          "scope_match": "exact"
+        },
+        {
+          "term": "擺喺邊度 and omitted 喺 contrast",
+          "source_id": "SRC-WONG-2023-LANGUAGE-SAMPLE",
+          "scope_match": "restrictive"
+        },
+        {
+          "term": "in-situ wh-place expressions",
+          "source_id": "SRC-YIP-MATTHEWS-2000-BASIC",
+          "scope_match": "exact"
+        },
+        {
+          "term": "佢去咗邊度呀",
+          "source_id": "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE",
+          "scope_match": "exact"
+        }
+      ],
+      "former_names": [
+        "LocativeWhQuestion"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "runtime_broader",
+        "terminology_alignment": "neutral_descriptive_preferred",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [
           "unsupported_generalization_requires_source_runtime_reconciliation"
         ],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-25. LocativeWhQuestion hides the overt lexical form and suggests one locative role for several compositions. BinDouWhPlaceQuestion retains the UUID for overt 邊度 question material while requiring parent structure to determine location, goal, source, or headless interpretation. Status recommendation: retain unsupported_generalization until location, goal, source, and headless profiles are explicitly composed or separated and runtime boundaries are reconciled; do not transfer evidence to hidden-preposition or alternative wh forms"
       }
     },
     {
       "construction_uuid": "1d8b01f9-0139-5fb1-af4b-07f842b87c72",
       "construction_code": "AA83",
-      "canonical_name": "MalformedCandidate",
+      "canonical_name": "MalformedStructureDiagnostic",
       "legacy_labels": [
         "MalformedCandidate"
       ],
@@ -3267,24 +3303,26 @@
       "linguistic_status": "parser_heuristic",
       "lifecycle_state": "current",
       "source_path": "grammar/parser_heuristic/MalformedCandidate.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "No direct Cantonese grammar claim; this is a parser disposition for unresolved or malformed input.",
+      "family_name": "DiagnosticRepresentation",
+      "profile_name": "ExplicitMalformedOrderOrCompositionDisposition",
+      "profile_description": "A deterministic parser diagnostic over overt malformed order or composition. The runtime records a malformed family and subtype, the overt problem span, and repair information without treating the input as a clean Cantonese construction or silently inventing omitted material.",
       "learner_label": null,
       "source_terms": [],
-      "former_names": [],
+      "former_names": [
+        "MalformedCandidate"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "disjoint",
+        "terminology_alignment": "misleading",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [
           "internal_representation_name_review"
         ],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-25. MalformedCandidate is an opaque name for an explicit parser disposition and can be mistaken for a weak construction hypothesis. MalformedStructureDiagnostic states the actual layer and preserves the invariant that malformed input is reported rather than repaired or promoted. Status recommendation: retain parser_heuristic as a nonlinguistic diagnostic disposition; keep it distinct from NeedsContext, unknown input, and ordinary parse failure, and preserve serialized compatibility until downstream rendering is explicitly migrated"
       }
     },
     {
@@ -3337,7 +3375,7 @@
     {
       "construction_uuid": "c7a597a8-1684-5aaf-aafc-278dc6e0d897",
       "construction_code": "AA85",
-      "canonical_name": "MeasureExpression",
+      "canonical_name": "OvertMeasureChildSpan",
       "legacy_labels": [
         "MeasureExpression"
       ],
@@ -3345,30 +3383,32 @@
       "linguistic_status": "parser_heuristic",
       "lifecycle_state": "current",
       "source_path": "grammar/parser_heuristic/MeasureExpression.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Canto Span does not claim that MeasureExpression is a canonical Cantonese construction name; it is an internal structural representation.",
+      "family_name": "NominalPredicateRepresentation",
+      "profile_name": "QuantityUnitOrDimensionChildOfNominalPredicate",
+      "profile_description": "An internal child span containing overt quantity plus unit or dimension material inside a nominal predicate for age, price, area, length, or another explicitly typed measure domain. The span records its licensing parent and has no independent grammar-licensing authority.",
       "learner_label": null,
       "source_terms": [],
-      "former_names": [],
+      "former_names": [
+        "MeasureExpression"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "runtime_narrower_defensible",
+        "terminology_alignment": "misleading",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [
           "internal_representation_name_review"
         ],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-25. MeasureExpression overstates the autonomy of a node that the runtime explicitly treats as an overt child span licensed by NominalPredicateClause. OvertMeasureChildSpan preserves the useful structural representation without turning it into a free-standing Cantonese construction or inferring hidden units. Status recommendation: retain parser_heuristic as a nonlicensing child span; preserve overt quantity, unit or dimension, measure domain, and licensing parent while keeping sortal classifier and mensural-unit distinctions explicit"
       }
     },
     {
       "construction_uuid": "93a1df83-8655-5da7-bd9f-4ff7e2cf1b9b",
       "construction_code": "AA86",
-      "canonical_name": "ModalANotAQuestion",
+      "canonical_name": "ModalM4ModalInterrogative",
       "legacy_labels": [
         "ModalANotAQuestion"
       ],
@@ -3376,22 +3416,40 @@
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/ModalANotAQuestion.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese may instantiate the structural family represented by ModalANotAQuestion; exact productivity and boundaries require pattern-specific independent evidence.",
+      "family_name": "ANotAInterrogatives",
+      "profile_name": "RepeatedModalM4ModalWithFollowingPredicate",
+      "profile_description": "An overt modal or modal-like predicate is repeated around 唔 and followed by its visible predicate or complement, as in 使唔使去 and 會唔會落雨. The profile excludes ordinary lexical V-not-V, suppletive 有冇, copular 係唔係, and reduced disyllabic patterns such as 可唔可以 unless separately represented.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "modal auxiliary repetition around negation",
+          "source_id": "SRC-LAW-2001-ANOTA",
+          "scope_match": "exact"
+        },
+        {
+          "term": "會唔會, 使唔使, and related modal contrasts",
+          "source_id": "SRC-LAW-2001-ANOTA",
+          "scope_match": "exact"
+        },
+        {
+          "term": "A-not-A, A-not-AB, a-not-AB, and a-not-A patterns",
+          "source_id": "SRC-LI-2017-ANOTA",
+          "scope_match": "restrictive"
+        }
+      ],
+      "former_names": [
+        "ModalANotAQuestion"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "overlapping",
+        "terminology_alignment": "neutral_descriptive_preferred",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-25. ModalANotAQuestion is broadly plausible but does not expose the overt repeated-modal form or distinguish it from suppletive, copular, lexical, and reduced disyllabic interrogatives. ModalM4ModalInterrogative retains the UUID for the exact surface profile and prevents sibling A-not-A patterns from inheriting its evidence. Status recommendation: retain research_pending for overt repeated-modal 唔 questions; keep modal readings, modal inventory, quantifier interactions, reduced disyllabic forms, embedding, final particles, corpus evidence, panel evidence, and held-out boundaries unresolved"
       }
     },
     {
