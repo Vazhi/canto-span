@@ -8,16 +8,16 @@
   "promotion_eligible_now_count": 0,
   "state_counts": {
     "boundary_ready": 1,
-    "excluded_nonlanguage": 34,
+    "excluded_nonlanguage": 35,
     "lexicalized_review": 2,
-    "narrowing_candidate": 33,
+    "narrowing_candidate": 32,
     "retired_evidence_rehome_candidate": 42,
     "retired_research_gap": 6,
     "source_supported": 63
   },
   "nearest_missing_gate_counts": {
-    "language_claim_defined": 34,
-    "negative_boundaries_complete": 31,
+    "language_claim_defined": 35,
+    "negative_boundaries_complete": 30,
     "reviewed_corpus_evidence": 3,
     "runtime_research_alignment": 17,
     "source_scope_matches_claim": 48
@@ -659,6 +659,97 @@
         "unsupported_generalization_requires_source_runtime_reconciliation"
       ],
       "source_path": "grammar/unsupported_generalization/NegatedExistentialClause.md"
+    },
+    {
+      "construction_uuid": "23a889d8-991c-5348-8da3-ccf865f5e509",
+      "construction_code": "AB07",
+      "canonical_name": "VerbM4ResultPotentialVP",
+      "legacy_label": "NegativePotentialComplement",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "unsupported_generalization",
+      "family_id": null,
+      "family_name": "PotentialComplementation",
+      "profile_name": "VerbM4ResultComplement",
+      "learner_label": null,
+      "source_ids": [
+        "SRC-CHENG-SYBESMA-2004-POSTVERBAL-DAK"
+      ],
+      "preserved_source_ids": [],
+      "future_research_preserved_as": "",
+      "standard_positive_test_count": 5,
+      "standard_boundary_test_count": 2,
+      "gates": {
+        "language_claim_defined": {
+          "status": "pass",
+          "evidence": "plain_language_claim_present"
+        },
+        "independent_source_support": {
+          "status": "pass",
+          "evidence": "all_cited_sources_verified_and_independent",
+          "detail": "1/1"
+        },
+        "source_scope_matches_claim": {
+          "status": "pass",
+          "evidence": "current_standard_reaudit_complete_with_verified_sources"
+        },
+        "runtime_research_alignment": {
+          "status": "pass",
+          "evidence": "code_document_reconciled_with_current_metadata"
+        },
+        "executable_positive_cases_present": {
+          "status": "pass",
+          "evidence": "executable_positive_cases_present_implementation_only",
+          "detail": "5"
+        },
+        "negative_boundaries_complete": {
+          "status": "partial",
+          "evidence": "negative_boundaries_incomplete"
+        },
+        "reviewed_corpus_evidence": {
+          "status": "not_started",
+          "evidence": "no_reviewed_corpus_evidence"
+        },
+        "role_neutral_panel_threshold": {
+          "status": "partial",
+          "evidence": "panel_evidence_incomplete",
+          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":false,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
+        },
+        "held_out_validation": {
+          "status": "not_started",
+          "evidence": "no_passing_held_out_record"
+        },
+        "ontology_conflicts_resolved": {
+          "status": "partial",
+          "evidence": "identity_label_review_in_progress",
+          "detail": "{\"review_state\":\"complete\",\"behavior_research_alignment\":\"overlapping\",\"terminology_alignment\":\"neutral_descriptive_preferred\",\"recommended_action\":\"rename_retain_narrow\",\"automatic_risk_flags\":[\"unsupported_generalization_requires_source_runtime_reconciliation\"],\"review_notes\":\"Expert adjudication 2026-07-25. NegativePotentialComplement is directionally correct but under-specified. VerbM4ResultPotentialVP names the overt marker order and result-complement boundary supported by the current fixtures while excluding directional chains and unrelated 得 profiles. Status recommendation: retain unsupported_generalization until result-complement inventory, short versus long potential contrasts, dialect scope, corpus evidence, role-neutral panel evidence, and held-out boundaries are complete\"}"
+        }
+      },
+      "supported_gate_eligible": false,
+      "supported_gate_blockers": [
+        "requirement_failed:locked_clean_panel_instrument",
+        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
+        "requirement_failed:role_neutral_panel",
+        "requirement_failed:instrument_quality_resolved",
+        "requirement_failed:quality_screen_complete",
+        "requirement_failed:panel_adjudication_complete",
+        "requirement_failed:critical_contrast_coverage_complete",
+        "requirement_failed:positive_and_negative_contrasts_reviewed",
+        "requirement_failed:negative_boundary_inventory_complete"
+      ],
+      "discovery_hard_blockers": [
+        "discovery_gate:reviewed_corpus_evidence",
+        "discovery_gate:held_out_validation",
+        "discovery_gate:ontology_conflicts_resolved"
+      ],
+      "readiness_score": 70,
+      "candidate_state": "narrowing_candidate",
+      "nearest_missing_gate": "negative_boundaries_complete",
+      "next_best_action": "complete and execute the negative-boundary inventory",
+      "automatic_risk_flags": [
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ],
+      "source_path": "grammar/unsupported_generalization/NegativePotentialComplement.md"
     },
     {
       "construction_uuid": "4f6df953-62d1-5036-80b3-40bc8f02937e",
@@ -1493,186 +1584,6 @@
         "unsupported_generalization_requires_source_runtime_reconciliation"
       ],
       "source_path": "grammar/unsupported_generalization/ExperientialYesNoQuestion.md"
-    },
-    {
-      "construction_uuid": "23a889d8-991c-5348-8da3-ccf865f5e509",
-      "construction_code": "AB07",
-      "canonical_name": "NegativePotentialComplement",
-      "legacy_label": "NegativePotentialComplement",
-      "lifecycle_state": "current",
-      "claim_layer": "language_construction",
-      "linguistic_status": "unsupported_generalization",
-      "family_id": "L12",
-      "family_name": "ResultAndPotentialComplements",
-      "profile_name": null,
-      "learner_label": null,
-      "source_ids": [
-        "SRC-CHENG-SYBESMA-2004-POSTVERBAL-DAK"
-      ],
-      "preserved_source_ids": [],
-      "future_research_preserved_as": "",
-      "standard_positive_test_count": 5,
-      "standard_boundary_test_count": 2,
-      "gates": {
-        "language_claim_defined": {
-          "status": "pass",
-          "evidence": "plain_language_claim_present"
-        },
-        "independent_source_support": {
-          "status": "pass",
-          "evidence": "all_cited_sources_verified_and_independent",
-          "detail": "1/1"
-        },
-        "source_scope_matches_claim": {
-          "status": "pass",
-          "evidence": "current_standard_reaudit_complete_with_verified_sources"
-        },
-        "runtime_research_alignment": {
-          "status": "pass",
-          "evidence": "code_document_reconciled_with_current_metadata"
-        },
-        "executable_positive_cases_present": {
-          "status": "pass",
-          "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "5"
-        },
-        "negative_boundaries_complete": {
-          "status": "partial",
-          "evidence": "negative_boundaries_incomplete"
-        },
-        "reviewed_corpus_evidence": {
-          "status": "not_started",
-          "evidence": "no_reviewed_corpus_evidence"
-        },
-        "role_neutral_panel_threshold": {
-          "status": "partial",
-          "evidence": "panel_evidence_incomplete",
-          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":false,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
-        },
-        "held_out_validation": {
-          "status": "not_started",
-          "evidence": "no_passing_held_out_record"
-        },
-        "ontology_conflicts_resolved": {
-          "status": "unresolved",
-          "evidence": "identity_label_review_pending"
-        }
-      },
-      "supported_gate_eligible": false,
-      "supported_gate_blockers": [
-        "requirement_failed:locked_clean_panel_instrument",
-        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
-        "requirement_failed:role_neutral_panel",
-        "requirement_failed:instrument_quality_resolved",
-        "requirement_failed:quality_screen_complete",
-        "requirement_failed:panel_adjudication_complete",
-        "requirement_failed:critical_contrast_coverage_complete",
-        "requirement_failed:positive_and_negative_contrasts_reviewed",
-        "requirement_failed:negative_boundary_inventory_complete"
-      ],
-      "discovery_hard_blockers": [
-        "discovery_gate:reviewed_corpus_evidence",
-        "discovery_gate:held_out_validation",
-        "discovery_gate:ontology_conflicts_resolved"
-      ],
-      "readiness_score": 68,
-      "candidate_state": "narrowing_candidate",
-      "nearest_missing_gate": "negative_boundaries_complete",
-      "next_best_action": "complete and execute the negative-boundary inventory",
-      "automatic_risk_flags": [
-        "unsupported_generalization_requires_source_runtime_reconciliation"
-      ],
-      "source_path": "grammar/unsupported_generalization/NegativePotentialComplement.md"
-    },
-    {
-      "construction_uuid": "98fe5056-ec42-5505-b8d1-7514375fcfc9",
-      "construction_code": "AB08",
-      "canonical_name": "NegativePotentialDirectionalVP",
-      "legacy_label": "NegativePotentialDirectionalVP",
-      "lifecycle_state": "current",
-      "claim_layer": "language_construction",
-      "linguistic_status": "unsupported_generalization",
-      "family_id": "L12",
-      "family_name": "ResultAndPotentialComplements",
-      "profile_name": null,
-      "learner_label": null,
-      "source_ids": [
-        "SRC-CHENG-SYBESMA-2004-POSTVERBAL-DAK"
-      ],
-      "preserved_source_ids": [],
-      "future_research_preserved_as": "",
-      "standard_positive_test_count": 2,
-      "standard_boundary_test_count": 2,
-      "gates": {
-        "language_claim_defined": {
-          "status": "pass",
-          "evidence": "plain_language_claim_present"
-        },
-        "independent_source_support": {
-          "status": "pass",
-          "evidence": "all_cited_sources_verified_and_independent",
-          "detail": "1/1"
-        },
-        "source_scope_matches_claim": {
-          "status": "pass",
-          "evidence": "current_standard_reaudit_complete_with_verified_sources"
-        },
-        "runtime_research_alignment": {
-          "status": "pass",
-          "evidence": "code_document_reconciled_with_current_metadata"
-        },
-        "executable_positive_cases_present": {
-          "status": "pass",
-          "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "2"
-        },
-        "negative_boundaries_complete": {
-          "status": "partial",
-          "evidence": "negative_boundaries_incomplete"
-        },
-        "reviewed_corpus_evidence": {
-          "status": "not_started",
-          "evidence": "no_reviewed_corpus_evidence"
-        },
-        "role_neutral_panel_threshold": {
-          "status": "partial",
-          "evidence": "panel_evidence_incomplete",
-          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":false,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
-        },
-        "held_out_validation": {
-          "status": "not_started",
-          "evidence": "no_passing_held_out_record"
-        },
-        "ontology_conflicts_resolved": {
-          "status": "unresolved",
-          "evidence": "identity_label_review_pending"
-        }
-      },
-      "supported_gate_eligible": false,
-      "supported_gate_blockers": [
-        "requirement_failed:locked_clean_panel_instrument",
-        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
-        "requirement_failed:role_neutral_panel",
-        "requirement_failed:instrument_quality_resolved",
-        "requirement_failed:quality_screen_complete",
-        "requirement_failed:panel_adjudication_complete",
-        "requirement_failed:critical_contrast_coverage_complete",
-        "requirement_failed:positive_and_negative_contrasts_reviewed",
-        "requirement_failed:negative_boundary_inventory_complete"
-      ],
-      "discovery_hard_blockers": [
-        "discovery_gate:reviewed_corpus_evidence",
-        "discovery_gate:held_out_validation",
-        "discovery_gate:ontology_conflicts_resolved"
-      ],
-      "readiness_score": 68,
-      "candidate_state": "narrowing_candidate",
-      "nearest_missing_gate": "negative_boundaries_complete",
-      "next_best_action": "complete and execute the negative-boundary inventory",
-      "automatic_risk_flags": [
-        "unsupported_generalization_requires_source_runtime_reconciliation"
-      ],
-      "source_path": "grammar/unsupported_generalization/NegativePotentialDirectionalVP.md"
     },
     {
       "construction_uuid": "8536ccf8-2f9b-509a-af69-242bc26cc362",
@@ -10878,14 +10789,14 @@
     {
       "construction_uuid": "a113b35a-3b49-5120-b1bb-c3fb8f081bda",
       "construction_code": "AB06",
-      "canonical_name": "NegativeHaveClause",
+      "canonical_name": "Mou5ExistentialPossessiveEventComposite",
       "legacy_label": "NegativeHaveClause",
       "lifecycle_state": "retired",
-      "claim_layer": "unresolved",
+      "claim_layer": "parser_representation",
       "linguistic_status": "retired",
-      "family_id": "L26",
-      "family_name": "Negation",
-      "profile_name": null,
+      "family_id": null,
+      "family_name": "NegationRepresentation",
+      "profile_name": "Mou5PossessionExistenceAndEventAggregate",
       "learner_label": null,
       "source_ids": [],
       "preserved_source_ids": [
@@ -10960,14 +10871,14 @@
     {
       "construction_uuid": "9d121ce5-a2c6-54bb-b8e6-24ae22f93e13",
       "construction_code": "AB10",
-      "canonical_name": "NominalModifierNP",
+      "canonical_name": "NominalModificationCompositeWrapper",
       "legacy_label": "NominalModifierNP",
       "lifecycle_state": "retired",
-      "claim_layer": "unresolved",
+      "claim_layer": "parser_representation",
       "linguistic_status": "retired",
-      "family_id": "L19",
+      "family_id": null,
       "family_name": "NominalModificationAndRelatives",
-      "profile_name": null,
+      "profile_name": "BareGeClassifierRelativeAndComplementAggregate",
       "learner_label": null,
       "source_ids": [],
       "preserved_source_ids": [
@@ -15560,16 +15471,107 @@
       "source_path": "grammar/research_pending/NegativeExperiential.md"
     },
     {
+      "construction_uuid": "98fe5056-ec42-5505-b8d1-7514375fcfc9",
+      "construction_code": "AB08",
+      "canonical_name": "NegativePotentialDirectionalCompositeWrapper",
+      "legacy_label": "NegativePotentialDirectionalVP",
+      "lifecycle_state": "current",
+      "claim_layer": "parser_representation",
+      "linguistic_status": "unsupported_generalization",
+      "family_id": null,
+      "family_name": "PotentialAndDirectionalRepresentation",
+      "profile_name": "VerbM4DirectionalChainAggregate",
+      "learner_label": null,
+      "source_ids": [
+        "SRC-CHENG-SYBESMA-2004-POSTVERBAL-DAK"
+      ],
+      "preserved_source_ids": [],
+      "future_research_preserved_as": "",
+      "standard_positive_test_count": 2,
+      "standard_boundary_test_count": 2,
+      "gates": {
+        "language_claim_defined": {
+          "status": "not_applicable",
+          "evidence": "non_language_claim_layer"
+        },
+        "independent_source_support": {
+          "status": "pass",
+          "evidence": "all_cited_sources_verified_and_independent",
+          "detail": "1/1"
+        },
+        "source_scope_matches_claim": {
+          "status": "pass",
+          "evidence": "current_standard_reaudit_complete_with_verified_sources"
+        },
+        "runtime_research_alignment": {
+          "status": "pass",
+          "evidence": "code_document_reconciled_with_current_metadata"
+        },
+        "executable_positive_cases_present": {
+          "status": "pass",
+          "evidence": "executable_positive_cases_present_implementation_only",
+          "detail": "2"
+        },
+        "negative_boundaries_complete": {
+          "status": "partial",
+          "evidence": "negative_boundaries_incomplete"
+        },
+        "reviewed_corpus_evidence": {
+          "status": "not_started",
+          "evidence": "no_reviewed_corpus_evidence"
+        },
+        "role_neutral_panel_threshold": {
+          "status": "partial",
+          "evidence": "panel_evidence_incomplete",
+          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":false,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
+        },
+        "held_out_validation": {
+          "status": "not_started",
+          "evidence": "no_passing_held_out_record"
+        },
+        "ontology_conflicts_resolved": {
+          "status": "partial",
+          "evidence": "identity_label_review_in_progress",
+          "detail": "{\"review_state\":\"complete\",\"behavior_research_alignment\":\"overlapping\",\"terminology_alignment\":\"misleading\",\"recommended_action\":\"internalize_and_decompose\",\"automatic_risk_flags\":[\"unsupported_generalization_requires_source_runtime_reconciliation\"],\"review_notes\":\"Expert adjudication 2026-07-25. The legacy name treats a transparent combination of negative potential and directional structure as one direct construction. NegativePotentialDirectionalCompositeWrapper preserves the runtime aggregation while removing it from direct linguistic promotion and keeping both child analyses explicit. Status recommendation: migrate to parser_heuristic only through a separate compatibility change; preserve negative-potential and directional identities independently\"}"
+        }
+      },
+      "supported_gate_eligible": false,
+      "supported_gate_blockers": [
+        "requirement_failed:locked_clean_panel_instrument",
+        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
+        "requirement_failed:role_neutral_panel",
+        "requirement_failed:instrument_quality_resolved",
+        "requirement_failed:quality_screen_complete",
+        "requirement_failed:panel_adjudication_complete",
+        "requirement_failed:critical_contrast_coverage_complete",
+        "requirement_failed:positive_and_negative_contrasts_reviewed",
+        "requirement_failed:negative_boundary_inventory_complete"
+      ],
+      "discovery_hard_blockers": [
+        "discovery_gate:reviewed_corpus_evidence",
+        "discovery_gate:held_out_validation",
+        "discovery_gate:ontology_conflicts_resolved"
+      ],
+      "readiness_score": 0,
+      "candidate_state": "excluded_nonlanguage",
+      "nearest_missing_gate": "language_claim_defined",
+      "next_best_action": "define a narrow falsifiable language claim before adding evidence",
+      "automatic_risk_flags": [
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ],
+      "source_path": "grammar/unsupported_generalization/NegativePotentialDirectionalVP.md"
+    },
+    {
       "construction_uuid": "e56bf2b7-7a16-50cb-a14e-9cd0c245594b",
       "construction_code": "AB09",
-      "canonical_name": "NominalHeadSpan",
+      "canonical_name": "OvertAnalyzedNominalSpan",
       "legacy_label": "NominalHeadSpan",
       "lifecycle_state": "current",
       "claim_layer": "parser_representation",
       "linguistic_status": "parser_heuristic",
       "family_id": null,
-      "family_name": null,
-      "profile_name": null,
+      "family_name": "NominalStructureRepresentation",
+      "profile_name": "OvertNominalMaterialSubordinateToNPLicensing",
       "learner_label": null,
       "source_ids": [],
       "preserved_source_ids": [],
@@ -15617,8 +15619,8 @@
           "evidence": "no_passing_held_out_record"
         },
         "ontology_conflicts_resolved": {
-          "status": "unresolved",
-          "evidence": "identity_label_review_pending"
+          "status": "pass",
+          "evidence": "completed_identity_label_review"
         }
       },
       "supported_gate_eligible": false,
@@ -15637,8 +15639,7 @@
       ],
       "discovery_hard_blockers": [
         "discovery_gate:reviewed_corpus_evidence",
-        "discovery_gate:held_out_validation",
-        "discovery_gate:ontology_conflicts_resolved"
+        "discovery_gate:held_out_validation"
       ],
       "readiness_score": 0,
       "candidate_state": "excluded_nonlanguage",

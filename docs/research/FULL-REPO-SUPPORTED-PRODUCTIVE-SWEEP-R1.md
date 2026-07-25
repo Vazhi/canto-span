@@ -13,9 +13,9 @@ The sweep evaluates every permanent identity. It separates construction identity
 | State | Records |
 |---|---|
 | `boundary_ready` | 1 |
-| `excluded_nonlanguage` | 34 |
+| `excluded_nonlanguage` | 35 |
 | `lexicalized_review` | 2 |
-| `narrowing_candidate` | 33 |
+| `narrowing_candidate` | 32 |
 | `retired_evidence_rehome_candidate` | 42 |
 | `retired_research_gap` | 6 |
 | `source_supported` | 63 |
@@ -24,8 +24,8 @@ The sweep evaluates every permanent identity. It separates construction identity
 
 | Gate | Records |
 |---|---|
-| `language_claim_defined` | 34 |
-| `negative_boundaries_complete` | 31 |
+| `language_claim_defined` | 35 |
+| `negative_boundaries_complete` | 30 |
 | `reviewed_corpus_evidence` | 3 |
 | `runtime_research_alignment` | 17 |
 | `source_scope_matches_claim` | 48 |
@@ -42,6 +42,7 @@ These rows may contain a supportable narrow construction even though the present
 | `AA93` | `OvertDestinationMotionVP` | `narrowing_candidate` | DirectionalMotionAndGoals | SRC-CHOR-2018-DIRECTIONALS, SRC-LEUNG-2026-MOTION, SRC-SZETO-2015-PERFECTIVE | source-bounded subtype review |
 | `AA94` | `MotionClausePurposeRelation` | `narrowing_candidate` | PurposeSerialRelations | SRC-LEUNG-2026-MOTION, SRC-MATTHEWS-2006-SVC | source-bounded subtype review |
 | `AA98` | `Mou5NominalExistentialPossessiveClause` | `narrowing_candidate` | ExistentialAndPossessiveNegation | SRC-LAM-2018-NEGATION-ASPECT, SRC-YIP-1988-NEGATION, SRC-YIP-MATTHEWS-2000-BASIC | source-bounded subtype review |
+| `AB07` | `VerbM4ResultPotentialVP` | `narrowing_candidate` | PotentialComplementation | SRC-CHENG-SYBESMA-2004-POSTVERBAL-DAK | source-bounded subtype review |
 | `AA06` | `ApproximateQuantity` | `narrowing_candidate` | ClassifierAndQuantityNP | SRC-TANG-2024-CANTONESE-GRAMMAR-GUIDE | source-bounded subtype review |
 | `AA12` | `ClassifierObjectNP` | `narrowing_candidate` | ClassifierAndQuantityNP | SRC-BOND-SIO-2024-CLASSIFIERS, SRC-CHENG-SYBESMA-1999-NP, SRC-SIMPSON-SOH-NOMOTO-2011-BARE-CL, SRC-XIA-2025-CLASSIFIERS | source-bounded subtype review |
 | `AA20` | `CognitionStatementClause` | `narrowing_candidate` | CognitionAndStance | SRC-LUI-2025-REPORTED-THOUGHT, SRC-YAP-WONG-CHOR-2014-STANCE | source-bounded subtype review |
@@ -50,8 +51,6 @@ These rows may contain a supportable narrow construction even though the present
 | `AA57` | `ExistentialQuestion` | `narrowing_candidate` | ExistentialQuestions | SRC-HARA-2023-POLAR, SRC-LIANG-MAI-2026-GRAMMAR-CODING, SRC-YIP-MATTHEWS-2000-BASIC | source-bounded subtype review |
 | `AA59` | `ExperientialClause` | `narrowing_candidate` | ExperientialAspect | SRC-FAN-2024-JAU-VP-ASPECT, SRC-SIO-BOND-2025, SRC-ZHANG-1970-PREDICATIVE-SUFFIXES, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
 | `AA63` | `ExperientialYesNoQuestion` | `narrowing_candidate` | ExperientialAspect | SRC-FAN-2024-JAU-VP-ASPECT, SRC-HARA-2023-POLAR, SRC-MATTHEWS-YIP-2011-ASPECT-MULTIMEDIA, SRC-YIP-MATTHEWS-2000-BASIC | source-bounded subtype review |
-| `AB07` | `NegativePotentialComplement` | `narrowing_candidate` | ResultAndPotentialComplements | SRC-CHENG-SYBESMA-2004-POSTVERBAL-DAK | source-bounded subtype review |
-| `AB08` | `NegativePotentialDirectionalVP` | `narrowing_candidate` | ResultAndPotentialComplements | SRC-CHENG-SYBESMA-2004-POSTVERBAL-DAK | source-bounded subtype review |
 | `AB13` | `OpinionStanceFrame` | `narrowing_candidate` | CognitionAndStance | SRC-ALDERETE-ETAL-2017-SYNOPSIS, SRC-YAP-WONG-CHOR-2014-STANCE, SRC-YIP-MATTHEWS-2000-BASIC | source-bounded subtype review |
 | `AB17` | `PathPhrase` | `narrowing_candidate` | GoalSourceAndPath | SRC-LEUNG-2014-COVERBS, SRC-YIP-MATTHEWS-2000-BASIC | source-bounded subtype review |
 | `AB18` | `PerfectiveDirectionalVP` | `narrowing_candidate` | AspectDirectionalComposition | SRC-SHAN-JIN-2025-MOTION-TYPOLOGY, SRC-SIO-BOND-2025, SRC-YIU-2016-DIRECTIONAL-ASPECT, SRC-ZHANG-1970-PREDICATIVE-SUFFIXES | source-bounded subtype review |
@@ -90,8 +89,8 @@ These rows may contain a supportable narrow construction even though the present
 | `AA88` | `ModalEllipsisResponseCompositeWrapper` | `retired_evidence_rehome_candidate` | FragmentAndEllipsisRepresentation | SRC-LEE-PAN-2024-VP-ELLIPSIS, SRC-LUKE-NANCARROW-1998-AUXILIARIES | ModalVP/Auxiliary + licensed ellipsis + response relation |
 | `AA92` | `MotionPurposeDelimitedCompositeWrapper` | `retired_evidence_rehome_candidate` | PurposeAndAspectRepresentation | SRC-MATTHEWS-2006-SVC, SRC-WONG-2023-LANGUAGE-SAMPLE | typed purpose relation plus DelimitedVP |
 | `AB01` | `LexicalAndCompositionalNegativeStativeComposite` | `retired_evidence_rehome_candidate` | NegativePropertyRepresentation | SRC-CHIN-2018-PROHIBITIVES, SRC-LAM-LAU-LEE-2024-SEGMENTATION, SRC-YIP-1988-NEGATION | lexical stative entries plus NegatedStativePredicate and ProhibitiveImperative |
-| `AB06` | `NegativeHaveClause` | `retired_evidence_rehome_candidate` | Negation | SRC-LAM-2018-NEGATION-ASPECT, SRC-YIP-1988-NEGATION | typed negative possession/existence/event research |
-| `AB10` | `NominalModifierNP` | `retired_evidence_rehome_candidate` | NominalModificationAndRelatives | SRC-SIO-2011-GE3, SRC-YU-2006-NOMINAL-MODIFIERS | NominalModificationAndRelatives subtype research |
+| `AB06` | `Mou5ExistentialPossessiveEventComposite` | `retired_evidence_rehome_candidate` | NegationRepresentation | SRC-LAM-2018-NEGATION-ASPECT, SRC-YIP-1988-NEGATION | typed negative possession/existence/event research |
+| `AB10` | `NominalModificationCompositeWrapper` | `retired_evidence_rehome_candidate` | NominalModificationAndRelatives | SRC-SIO-2011-GE3, SRC-YU-2006-NOMINAL-MODIFIERS | NominalModificationAndRelatives subtype research |
 | `AB19` | `PerfectiveObjectResultPredicate` | `retired_evidence_rehome_candidate` | ResultativeAndChangePredication | SRC-KEDZIOR-2023, SRC-MATTHEWS-YIP-2011-ASPECT-MULTIMEDIA | PerfectiveVP and transitive-predicate research |
 | `AB20` | `PerfectiveResultPredicate` | `retired_evidence_rehome_candidate` | ResultAndChangeState | SRC-FAN-CHAN-2022, SRC-KEDZIOR-2023 | PerfectiveVP plus result-complement and lexical-result research |
 | `AB25` | `PossessiveNP` | `retired_evidence_rehome_candidate` | PossessiveNominals | SRC-LAM-LAU-LEE-2024-SEGMENTATION, SRC-SIO-2011-GE3, SRC-XIA-2025-CLASSIFIERS | PossessiveNominals subtype research |
@@ -114,4 +113,5 @@ These rows may contain a supportable narrow construction even though the present
 | `AA75` | `BareActionPredicateRelationMember` | `excluded_nonlanguage` | ClauseRelationRepresentation | SRC-ALDERETE-ETAL-2017-SYNOPSIS, SRC-YIP-MATTHEWS-2000-SYNTACTIC-TRANSFER, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
 | `AA80` | `OvertPlaceExpressionWrapper` | `excluded_nonlanguage` | SpatialExpressionRepresentation | SRC-KWAN-2010-LOCATIVE, SRC-YIP-MATTHEWS-2000-BASIC | source-bounded subtype review |
 | `AB03` | `OvertNegatorPredicateWrapper` | `excluded_nonlanguage` | NegationRepresentation | SRC-LAM-2018-NEGATION-ASPECT, SRC-YIP-1988-NEGATION, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
+| `AB08` | `NegativePotentialDirectionalCompositeWrapper` | `excluded_nonlanguage` | PotentialAndDirectionalRepresentation | SRC-CHENG-SYBESMA-2004-POSTVERBAL-DAK | source-bounded subtype review |
 | `AB23` | `PoliteRequestWrapper` | `excluded_nonlanguage` | RequestAndDirectiveRepresentation | SRC-CHOW-2007-CANTONESE-EVERYONE, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
