@@ -12,7 +12,7 @@ on:
           - codex
           - human
       pickup_target:
-        description: One primary pickup target
+        description: One primary pickup target; Codex is rejected when disabled by config
         required: true
         type: choice
         options:
@@ -167,6 +167,10 @@ jobs:
         with:
           script: |
             const {
+              assertPickupTargetEnabled,
+              loadSettings,
+            } = require("./tools/coordination/agent-workflow-settings");
+            const {
               buildIntakeIssue,
               ensureRoutingLabels,
               findExactDuplicate,
@@ -175,6 +179,7 @@ jobs:
 
             const input = inputFromEnvironment(process.env);
             input.ownershipUpdatedAt = new Date().toISOString();
+            assertPickupTargetEnabled(input.pickupTarget, loadSettings());
             const intake = buildIntakeIssue(input);
             const openIssues = await github.paginate(
               github.rest.issues.listForRepo,
