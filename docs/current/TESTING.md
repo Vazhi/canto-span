@@ -22,8 +22,8 @@ npm test
 
 Current coverage is 132 positive-and-boundary, 0 positive-only, 0 implementation-only, and 1 compatibility-alias-only.
 
-No active runtime label lacks a construction test file. Implementation probes
-have linguistic evidence weight zero.
+No active runtime label lacks a construction test file. Implementation probes have
+linguistic evidence weight zero.
 
 ## Identity, adjudication, and discovery
 
@@ -48,8 +48,8 @@ npm run identity:generate
 npm run discovery:generate
 ```
 
-Run all write-mode commands before committing. Do not publish an adjudication
-batch first and rely on a later bot commit to repair stale generated files.
+Run write-mode commands before ready state. Do not publish an adjudication batch
+first and rely on repair automation to create a coherent state later.
 
 ## Multi-agent coordination
 
@@ -58,26 +58,18 @@ npm run test:coordination
 npm run verify:coordination
 ```
 
-The coordination tests cover:
+The coordination tests cover claim parsing, disjoint same-file regions, conflict
+detection, glob matching, exclusive and integration-owned paths, pending changeset
+rules, and preconditioned updates.
 
-- parsing and validating machine-readable work claims;
-- shared same-file claims with disjoint semantic regions;
-- conflict detection for identical or exclusive regions;
-- repository glob matching;
-- exclusive and integration-owned path enforcement;
-- draft-only pending changesets;
-- preconditioned declarative JSON record updates.
+`verify:coordination` verifies the issue and PR templates, schemas, configuration,
+coordination policy, changeset lifecycle, CLI tools, and tests. It validates any
+JSON files under `changes/pending/` but does not apply them.
 
-`verify:coordination` verifies the issue and pull-request templates, coordination
-schemas and config, read-only workflow, detailed coordination policy, changeset
-lifecycle, CLI tools, and tests. It validates any JSON files currently under
-`changes/pending/` but does not apply them.
-
-The `Coordination claim` GitHub workflow performs the live checks that cannot run
-offline. It reads the linked work-claim issue, verifies branch and expiry, compares
-active semantic regions, checks every changed file against the claim, enforces
-exclusive and integration-owned paths, and rejects a ready pull request that still
-contains a pending changeset. It has only read permissions.
+The online `Coordination claim` workflow checks the linked issue, branch, expiry,
+active semantic overlaps, changed-file coverage, exclusive paths, integration role,
+and draft/ready pending-file rules. Its current job is validation-only and therefore
+uses read permissions.
 
 Changeset commands are:
 
@@ -103,28 +95,25 @@ npm run verify:all
 
 - `verify` runs stable core checks, including parser tests, status-note alignment,
   adjudications, permanent identities, discovery freshness, source accounting,
-  parked-construction blacklist consistency, implementation reachability, the
-  semantic coordination system, the mandatory agent contract, and current-
-  documentation consistency.
+  parked-construction consistency, implementation reachability, semantic
+  coordination, the mandatory agent contract, and documentation consistency.
 - `verify:research` runs panel, survey-readiness, conflict-burden, research-
   provenance, and native-review-library checks.
 - `verify:release` runs core verification plus promotion and release-handoff gates.
 - `verify:all` runs every profile.
 
-`tools/verify-parked-constructions.js` verifies that unlisted current
-constructions are available by default and that every blacklist entry resolves to
-one current permanent identity with a unique code, current note, parking date,
-reason, and review trigger. The registry is currently empty, so the expected
-result is 133 available and 0 parked.
+`tools/verify-parked-constructions.js` verifies that unlisted constructions are
+available by default and every blacklist entry resolves to one current identity.
+The expected result is 133 available and 0 parked.
 
 The `agent-coordination` core check verifies that `AGENTS.md` points to the full
-contract and detailed coordination policy, that required authority, standards,
-task-routing, workflow, verification, prohibition, prompt, templates, schemas,
-read-only permissions, and workflow triggers remain present, and that blacklist,
-no-freeze, AB30, and survey state are not silently reverted.
+contract and coordination policy, semantic claims and integration ownership remain
+binding, there is no read-only research lane, authorized integrator merge authority
+remains explicit, automation uses least privilege, and current AB30 and survey state
+are not silently reverted.
 
-`./tools/verify-repository.sh` additionally validates Git objects before running
-the stable core profile.
+`./tools/verify-repository.sh` additionally validates Git objects before running the
+stable core profile.
 
 ## Generated outputs
 
@@ -134,8 +123,7 @@ Current verifier byproducts are written to:
 validation/current/
 ```
 
-They are not patch inputs. After verification, restore only those generated
-byproducts when a clean tree is required:
+They are not patch inputs. Restore generated byproducts when a clean tree is needed:
 
 ```bash
 git restore --staged --worktree validation/current
@@ -145,42 +133,62 @@ Do not create a new `validation/vX.Y.Z/` directory for each release. Permanent
 evidence belongs in source records, status notes, adjudication records, research
 documents, release audits, fixtures, panel snapshots, or Git history.
 
-Generated discovery outputs under `data/` and `docs/research/` are different:
-they are checked-in deterministic products of canonical identity, adjudication,
-grammar, and evidence inputs. Their freshness is verified. Workers should declare
-these integration-owned outputs rather than independently finalize them when
-concurrent canonical work is active.
+Generated discovery outputs under `data/` and `docs/research/` are checked-in
+deterministic products. Workers declare integration-owned outputs rather than
+independently finalizing them when concurrent canonical work is active.
+
+## Research and implementation workflow
+
+There is no read-only research role. A semantic claim may include source review,
+evidence updates, adjudication, runtime implementation, tests, and documentation in
+one coherent branch. Verification follows the state dimensions actually changed:
+
+1. create or update the work claim;
+2. edit canonical sources and records;
+3. regenerate deterministic outputs when required;
+4. run `npm run verify:research` for evidence, corpus, panel, or survey changes;
+5. run `npm test` and `npm run verify` for runtime or executable-test changes;
+6. run release verification only for status transition or release work;
+7. reconcile integration-owned files as integrator;
+8. publish one coherent passing PR.
+
+Research findings do not bypass evidence, identity, status, survey, or release gates.
 
 ## Updating tests and records
 
-1. Read `AGENTS.md`, `docs/current/00-START-HERE.md`, and
-   `docs/current/MULTI-AGENT-COORDINATION.md`.
-2. Create or update the semantic work claim before editing.
-3. Edit the canonical source, identity, adjudication, grammar, runtime, parked-
-   construction registry, coordination input, or fixture.
+1. Read `AGENTS.md`, `00-START-HERE.md`, and the coordination contract.
+2. Confirm the claim covers every affected state dimension and file region.
+3. Edit the canonical source, identity, adjudication, grammar, runtime, parked
+   registry, evidence, coordination input, or fixture.
 4. Regenerate identity/discovery outputs when those inputs changed.
 5. Run `npm test`.
-6. Run `npm run verify:coordination` for coordination policy, schemas, templates,
-   workflows, claims, or changeset tooling.
-7. Run `node tools/sync-construction-test-metadata.js` when construction-test counts
-   change.
+6. Run `npm run verify:coordination` for coordination changes.
+7. Run `node tools/sync-construction-test-metadata.js` when counts change.
 8. Run `npm run verify`.
 9. Run `npm run verify:research` when research or panel records changed.
 10. Run `npm run verify:release` only for release or status-transition work.
-11. Commit one coherent passing state and remove pending changesets before readying
-    the pull request.
+11. Commit one coherent passing state and remove pending changesets before ready
+    state.
 
-## GitHub Actions
+## GitHub Actions and automation
 
-Repository workflows are read-only verification. JavaScript actions use Node
-24-compatible releases (`actions/checkout@v6`, `actions/setup-node@v6`, and
-`actions/upload-artifact@v6` where needed). Do not add Node 20-based action
-releases or branch-specific writer workflows.
+Repository automation follows least privilege, not a blanket read-only policy.
+Validation-only workflows currently use read permissions because they need no
+writes.
 
-Workflow trigger coverage is part of the verified contract. Core CI must run when
-runtime, canonical data, grammar notes, tests, tools, schemas, changesets,
-verification configuration, current documentation, templates, or workflows
-change. Research CI must run when research documents, external evidence, corpus or
-panel records, relevant runtime and construction tests, or research-verifier inputs
-change. `tools/verify-agent-coordination.js` enforces trigger sets and explicit
-read-only permissions.
+A write-capable workflow is permitted only when:
+
+- an exclusive active claim covers the workflow and every write target;
+- permissions are explicit and minimal;
+- writes are restricted to the claimed non-`main` branch or issue/PR metadata;
+- base SHA, head SHA, claim, target, and operation preconditions are checked;
+- the result is auditable and coherent;
+- the workflow cannot write directly to `main`, adjudicate evidence, promote status,
+  deploy surveys, or publish releases without separately authorized scope and gates.
+
+JavaScript actions use Node 24-compatible releases. Workflow trigger coverage is
+part of the verified contract. Core CI runs when runtime, canonical data, grammar,
+tests, tools, schemas, coordination, verification configuration, current
+documentation, templates, or workflows change. Research CI runs when research
+documents, external evidence, corpus or panel records, relevant runtime and
+construction tests, or research-verifier inputs change.
