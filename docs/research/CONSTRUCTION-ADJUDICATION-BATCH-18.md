@@ -7,10 +7,9 @@
 ## Integration state
 
 The expert decisions are recorded in
-`data/construction-adjudication-batches/batch-18.json`. Deterministic application
-to the identity registry, label sweep, discovery registry, generated research
-reports, and current documentation must occur in the same pull request before
-merge readiness.
+`data/construction-adjudication-batches/batch-18.json` and applied to the canonical
+identity registry, label sweep, discovery registry, generated research reports,
+and current documentation in the same pull request state.
 
 This batch changes identity and ontology metadata only. It does not authorize or
 perform a runtime-label migration, status-path migration, matcher change, fixture
@@ -118,15 +117,21 @@ directional and deictic relations, lexical result meaning, weather semantics,
 object realization, inner aspect, embedding, final particles, A-not-A, `有冇`,
 `係咪`, final-`未`, or wh-question profiles.
 
-## Expected inventory after deterministic application
+## Resulting inventory
+
+After deterministic application:
 
 - expert-adjudicated identities: **89 / 181**;
 - pending adjudications: **92**;
 - accepted batches: **18**;
-- promotion-ready remains **0** unless a separately authorized evidence decision changes it.
-
-Exact discovery-state counts must be reported from the deterministic generator
-rather than predicted in this expert decision record.
+- `boundary_ready`: **1**;
+- `source_supported`: **62**;
+- `narrowing_candidate`: **30**;
+- `excluded_nonlanguage`: **38**;
+- `lexicalized_review`: **2**;
+- `retired_evidence_rehome_candidate`: **42**;
+- `retired_research_gap`: **6**;
+- promotion-ready: **0**.
 
 ## Explicitly unchanged
 
