@@ -27,33 +27,33 @@ superseding decision with explicit rationale and relationships.
 ## Current progress
 
 - permanent records: **181**;
-- accepted adjudications: **79**;
-- pending adjudications: **102**;
-- accepted batches: **16**;
+- accepted adjudications: **84**;
+- pending adjudications: **97**;
+- accepted batches: **17**;
 - latest batch report:
-  `docs/research/CONSTRUCTION-ADJUDICATION-BATCH-16.md`.
+  `docs/research/CONSTRUCTION-ADJUDICATION-BATCH-17.md`.
 
 This count records completed identity and ontology judgments only. It does not
 imply runtime migration, status migration, corpus closure, panel completion,
 held-out validation, or promotion.
 
-Batch 16 accepted the following UUID-preserving decisions:
+Batch 17 accepted the following UUID-preserving decisions:
 
-1. `AB06 NegativeHaveClause` →
-   `Mou5ExistentialPossessiveEventComposite`, retained as a retired parser
-   representation;
-2. `AB07 NegativePotentialComplement` → `VerbM4ResultPotentialVP`, retained as
-   a narrow overt `V + 唔 + result complement` language profile;
-3. `AB08 NegativePotentialDirectionalVP` →
-   `NegativePotentialDirectionalCompositeWrapper`, reclassified as a parser
-   representation requiring typed potential-plus-directional decomposition;
-4. `AB09 NominalHeadSpan` → `OvertAnalyzedNominalSpan`, retained as an internal
-   parser span subordinate to NP licensing state;
-5. `AB10 NominalModifierNP` → `NominalModificationCompositeWrapper`, retained
-   as a retired parser representation.
+1. `AB11 NominalPredicateClause` → `BareMeasurePredicateClause`, narrowed to
+   copula-less age, price, area, length, and comparable measure predication;
+2. `AB12 OpinionQuestion` → `JyutGokReferentDimJoengQuestion`, retained as the
+   exact overt `subject + 覺得 + referent + 點樣` profile;
+3. `AB13 OpinionStanceFrame` → `CognitionPredicateContentWrapper`, reclassified
+   as an internal parser representation requiring lexical and stance-profile
+   decomposition;
+4. `AB14 OrdinalClassifierNP` → `TrueOrdinalClassifierNominal`, retained for
+   true headed and bounded-headless ordinal-classifier profiles while excluding
+   nonordinal `第二`;
+5. `AB17 PathPhrase` → `Hoeng3OrientationPhrase`, narrowed to marker-specific
+   preverbal `向` orientation.
 
 No later adjudication batch is fixed as a mandatory queue. The next records are
-selected from the 102 pending identities according to current project benefit,
+selected from the 97 pending identities according to current project benefit,
 evidence opportunity, ontology risk, dependencies, and open-work overlap.
 
 ## Required decision fields
