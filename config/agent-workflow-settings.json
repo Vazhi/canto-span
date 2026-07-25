@@ -1,0 +1,14 @@
+{
+  "schema": "canto-span-agent-workflow-settings-v1",
+  "codex": {
+    "enabled": false,
+    "disabled_pickup_fallback": "chatgpt",
+    "blocked_assignee_logins": [
+      "codex",
+      "codex[bot]",
+      "openai-codex",
+      "openai-codex[bot]",
+      "copilot-swe-agent[bot]"
+    ]
+  }
+}
