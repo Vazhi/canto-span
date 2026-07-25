@@ -29,7 +29,22 @@ jobs:
           test "${{ github.event.pull_request.head.ref }}" = "agent/require-user-review-before-merge"
           test "${{ github.event.pull_request.base.ref }}" = "main"
       - name: Apply exact review-policy reconciliation
-        run: node tools/coordination/reconcile-pr36-review-policy.js
+        run: |
+          set +e
+          node tools/coordination/reconcile-pr36-review-policy.js > /tmp/pr36-reconcile.log 2>&1
+          status=$?
+          set -e
+          if [ "$status" -ne 0 ]; then
+            git reset --hard HEAD
+            mkdir -p changes/pending
+            cp /tmp/pr36-reconcile.log changes/pending/CS-WORK-0003-reconcile-error.txt
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add changes/pending/CS-WORK-0003-reconcile-error.txt
+            git commit -m "Record PR 36 reconciliation mismatch"
+            git push origin HEAD:agent/require-user-review-before-merge
+            exit "$status"
+          fi
       - name: Restore validation-only coordination workflow
         run: |
           cat > .github/workflows/coordination-check.yml <<'YAML'
