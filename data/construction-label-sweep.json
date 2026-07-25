@@ -2,7 +2,7 @@
   "schema": "canto-span-full-repo-label-sweep-v1",
   "identity_registry_schema": "canto-span-construction-identity-registry-v1",
   "record_count": 181,
-  "pending_review_count": 102,
+  "pending_review_count": 97,
   "automatic_flag_counts": {
     "generic_head_requires_boundary_definition": 72,
     "internal_representation_name_review": 20,
@@ -1768,15 +1768,15 @@
     {
       "construction_uuid": "d269f68c-b8dd-5b64-8dcc-ac1f2e82baab",
       "construction_code": "AB11",
-      "canonical_name": "NominalPredicateClause",
+      "canonical_name": "BareMeasurePredicateClause",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/NominalPredicateClause.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "runtime_broader",
+      "terminology_alignment": "misleading",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": [
         "generic_head_requires_boundary_definition"
       ]
@@ -1784,15 +1784,15 @@
     {
       "construction_uuid": "9e9f0ef7-6526-5481-9161-3cb65b3509ab",
       "construction_code": "AB12",
-      "canonical_name": "OpinionQuestion",
+      "canonical_name": "JyutGokReferentDimJoengQuestion",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "unsupported_generalization",
       "source_path": "grammar/unsupported_generalization/OpinionQuestion.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "runtime_narrower_defensible",
+      "terminology_alignment": "misleading",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": [
         "semantic_domain_name_requires_structural_scope_check",
         "unsupported_generalization_requires_source_runtime_reconciliation"
@@ -1801,15 +1801,15 @@
     {
       "construction_uuid": "8536ccf8-2f9b-509a-af69-242bc26cc362",
       "construction_code": "AB13",
-      "canonical_name": "OpinionStanceFrame",
+      "canonical_name": "CognitionPredicateContentWrapper",
       "lifecycle_state": "current",
-      "claim_layer": "language_construction",
+      "claim_layer": "parser_representation",
       "linguistic_status": "unsupported_generalization",
       "source_path": "grammar/unsupported_generalization/OpinionStanceFrame.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "overlapping",
+      "terminology_alignment": "misleading",
+      "recommended_action": "internalize_and_decompose",
       "automatic_risk_flags": [
         "generic_head_requires_boundary_definition",
         "semantic_domain_name_requires_structural_scope_check",
@@ -1819,15 +1819,15 @@
     {
       "construction_uuid": "26870b6d-1ea8-5015-8d4c-0ac867849535",
       "construction_code": "AB14",
-      "canonical_name": "OrdinalClassifierNP",
+      "canonical_name": "TrueOrdinalClassifierNominal",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "unsupported_generalization",
       "source_path": "grammar/unsupported_generalization/OrdinalClassifierNP.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "overlapping",
+      "terminology_alignment": "misleading",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": [
         "unsupported_generalization_requires_source_runtime_reconciliation"
       ]
@@ -1865,15 +1865,15 @@
     {
       "construction_uuid": "2ea00575-67ed-5663-8fd1-869fad24d687",
       "construction_code": "AB17",
-      "canonical_name": "PathPhrase",
+      "canonical_name": "Hoeng3OrientationPhrase",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "unsupported_generalization",
       "source_path": "grammar/unsupported_generalization/PathPhrase.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "runtime_narrower_defensible",
+      "terminology_alignment": "misleading",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": [
         "unsupported_generalization_requires_source_runtime_reconciliation"
       ]

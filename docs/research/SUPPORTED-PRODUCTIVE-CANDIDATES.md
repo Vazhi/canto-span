@@ -63,6 +63,7 @@ These broad current labels are not direct promotion candidates. Their source-bac
 | `AA94` | `MotionClausePurposeRelation` | `narrowing_candidate` | 70 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA98` | `Mou5NominalExistentialPossessiveClause` | `narrowing_candidate` | 70 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AB07` | `VerbM4ResultPotentialVP` | `narrowing_candidate` | 70 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
+| `AB17` | `Hoeng3OrientationPhrase` | `narrowing_candidate` | 70 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA06` | `ApproximateQuantity` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA12` | `ClassifierObjectNP` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA20` | `CognitionStatementClause` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
@@ -71,8 +72,6 @@ These broad current labels are not direct promotion candidates. Their source-bac
 | `AA57` | `ExistentialQuestion` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA59` | `ExperientialClause` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA63` | `ExperientialYesNoQuestion` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
-| `AB13` | `OpinionStanceFrame` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
-| `AB17` | `PathPhrase` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AB18` | `PerfectiveDirectionalVP` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AB36` | `ProgressiveDirectionalVP` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AB41` | `ProgressiveWhObjectQuestion` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
@@ -82,11 +81,11 @@ These broad current labels are not direct promotion candidates. Their source-bac
 | `AB64` | `SourceMotionClause` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AB67` | `StativePredicate` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AB82` | `WhClassifierQuestion` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
+| `AB12` | `JyutGokReferentDimJoengQuestion` | `narrowing_candidate` | 65 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
+| `AB14` | `TrueOrdinalClassifierNominal` | `narrowing_candidate` | 65 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA02` | `AcceptabilityANotA` | `narrowing_candidate` | 63 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA03` | `AcceptabilityClause` | `narrowing_candidate` | 63 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA31` | `CopularANotAQuestion` | `narrowing_candidate` | 63 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
-| `AB12` | `OpinionQuestion` | `narrowing_candidate` | 63 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
-| `AB14` | `OrdinalClassifierNP` | `narrowing_candidate` | 63 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AB68` | `SuggestionQuestion` | `narrowing_candidate` | 63 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 
 Scores rank research efficiency only. Promotion requires every existing supported-productivity requirement plus reviewed corpus evidence, held-out validation, and completed ontology review.

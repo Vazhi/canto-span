@@ -13,9 +13,9 @@ The sweep evaluates every permanent identity. It separates construction identity
 | State | Records |
 |---|---|
 | `boundary_ready` | 1 |
-| `excluded_nonlanguage` | 35 |
+| `excluded_nonlanguage` | 36 |
 | `lexicalized_review` | 2 |
-| `narrowing_candidate` | 32 |
+| `narrowing_candidate` | 31 |
 | `retired_evidence_rehome_candidate` | 42 |
 | `retired_research_gap` | 6 |
 | `source_supported` | 63 |
@@ -24,8 +24,8 @@ The sweep evaluates every permanent identity. It separates construction identity
 
 | Gate | Records |
 |---|---|
-| `language_claim_defined` | 35 |
-| `negative_boundaries_complete` | 30 |
+| `language_claim_defined` | 36 |
+| `negative_boundaries_complete` | 29 |
 | `reviewed_corpus_evidence` | 3 |
 | `runtime_research_alignment` | 17 |
 | `source_scope_matches_claim` | 48 |
@@ -43,6 +43,7 @@ These rows may contain a supportable narrow construction even though the present
 | `AA94` | `MotionClausePurposeRelation` | `narrowing_candidate` | PurposeSerialRelations | SRC-LEUNG-2026-MOTION, SRC-MATTHEWS-2006-SVC | source-bounded subtype review |
 | `AA98` | `Mou5NominalExistentialPossessiveClause` | `narrowing_candidate` | ExistentialAndPossessiveNegation | SRC-LAM-2018-NEGATION-ASPECT, SRC-YIP-1988-NEGATION, SRC-YIP-MATTHEWS-2000-BASIC | source-bounded subtype review |
 | `AB07` | `VerbM4ResultPotentialVP` | `narrowing_candidate` | PotentialComplementation | SRC-CHENG-SYBESMA-2004-POSTVERBAL-DAK | source-bounded subtype review |
+| `AB17` | `Hoeng3OrientationPhrase` | `narrowing_candidate` | SpatialDirectionAndRoute | SRC-LEUNG-2014-COVERBS, SRC-YIP-MATTHEWS-2000-BASIC | source-bounded subtype review |
 | `AA06` | `ApproximateQuantity` | `narrowing_candidate` | ClassifierAndQuantityNP | SRC-TANG-2024-CANTONESE-GRAMMAR-GUIDE | source-bounded subtype review |
 | `AA12` | `ClassifierObjectNP` | `narrowing_candidate` | ClassifierAndQuantityNP | SRC-BOND-SIO-2024-CLASSIFIERS, SRC-CHENG-SYBESMA-1999-NP, SRC-SIMPSON-SOH-NOMOTO-2011-BARE-CL, SRC-XIA-2025-CLASSIFIERS | source-bounded subtype review |
 | `AA20` | `CognitionStatementClause` | `narrowing_candidate` | CognitionAndStance | SRC-LUI-2025-REPORTED-THOUGHT, SRC-YAP-WONG-CHOR-2014-STANCE | source-bounded subtype review |
@@ -51,8 +52,6 @@ These rows may contain a supportable narrow construction even though the present
 | `AA57` | `ExistentialQuestion` | `narrowing_candidate` | ExistentialQuestions | SRC-HARA-2023-POLAR, SRC-LIANG-MAI-2026-GRAMMAR-CODING, SRC-YIP-MATTHEWS-2000-BASIC | source-bounded subtype review |
 | `AA59` | `ExperientialClause` | `narrowing_candidate` | ExperientialAspect | SRC-FAN-2024-JAU-VP-ASPECT, SRC-SIO-BOND-2025, SRC-ZHANG-1970-PREDICATIVE-SUFFIXES, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
 | `AA63` | `ExperientialYesNoQuestion` | `narrowing_candidate` | ExperientialAspect | SRC-FAN-2024-JAU-VP-ASPECT, SRC-HARA-2023-POLAR, SRC-MATTHEWS-YIP-2011-ASPECT-MULTIMEDIA, SRC-YIP-MATTHEWS-2000-BASIC | source-bounded subtype review |
-| `AB13` | `OpinionStanceFrame` | `narrowing_candidate` | CognitionAndStance | SRC-ALDERETE-ETAL-2017-SYNOPSIS, SRC-YAP-WONG-CHOR-2014-STANCE, SRC-YIP-MATTHEWS-2000-BASIC | source-bounded subtype review |
-| `AB17` | `PathPhrase` | `narrowing_candidate` | GoalSourceAndPath | SRC-LEUNG-2014-COVERBS, SRC-YIP-MATTHEWS-2000-BASIC | source-bounded subtype review |
 | `AB18` | `PerfectiveDirectionalVP` | `narrowing_candidate` | AspectDirectionalComposition | SRC-SHAN-JIN-2025-MOTION-TYPOLOGY, SRC-SIO-BOND-2025, SRC-YIU-2016-DIRECTIONAL-ASPECT, SRC-ZHANG-1970-PREDICATIVE-SUFFIXES | source-bounded subtype review |
 | `AB36` | `ProgressiveDirectionalVP` | `narrowing_candidate` | AspectDirectionalComposition | SRC-KATAOKA-2018-PROGRESSIVE-GAN, SRC-SHAN-JIN-2025-MOTION-TYPOLOGY, SRC-YIU-2016-DIRECTIONAL-ASPECT | source-bounded subtype review |
 | `AB41` | `ProgressiveWhObjectQuestion` | `narrowing_candidate` | TypedWhAndStanceQuestions | SRC-ALDERETE-ETAL-2017-SYNOPSIS | source-bounded subtype review |
@@ -62,11 +61,11 @@ These rows may contain a supportable narrow construction even though the present
 | `AB64` | `SourceMotionClause` | `narrowing_candidate` | GoalSourceAndPath | SRC-LEUNG-2014-COVERBS, SRC-LEUNG-2026-MOTION, SRC-YIP-MATTHEWS-2000-BASIC | source-bounded subtype review |
 | `AB67` | `StativePredicate` | `narrowing_candidate` | StativePredication | SRC-ALDERETE-ETAL-2017-SYNOPSIS, SRC-FRANCIS-MATTHEWS-2005-VERB-CATEGORY, SRC-YIP-1988-NEGATION | source-bounded subtype review |
 | `AB82` | `WhClassifierQuestion` | `narrowing_candidate` | WhNominals | SRC-WONG-2023-LANGUAGE-SAMPLE, SRC-XIA-2025-CLASSIFIERS, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
+| `AB12` | `JyutGokReferentDimJoengQuestion` | `narrowing_candidate` | CognitionAndEvaluationQuestions | SRC-ALDERETE-ETAL-2017-SYNOPSIS, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
+| `AB14` | `TrueOrdinalClassifierNominal` | `narrowing_candidate` | OrdinalAndClassifierNominals | SRC-LAM-LAU-LEE-2024-SEGMENTATION, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
 | `AA02` | `AcceptabilityANotA` | `narrowing_candidate` | ANotAQuestions | SRC-LI-2017-ANOTA, SRC-LUI-2023-PREVERBAL-DAK, SRC-SYBESMA-2013 | source-bounded subtype review |
 | `AA03` | `AcceptabilityClause` | `narrowing_candidate` | AcceptabilityAndFreeChoice | SRC-CHENG-SYBESMA-2004-POSTVERBAL-DAK, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
 | `AA31` | `CopularANotAQuestion` | `narrowing_candidate` | ANotAQuestions | SRC-LAW-2001-ANOTA, SRC-LI-2017-ANOTA, SRC-WONG-2023-LANGUAGE-SAMPLE, SRC-YIP-1988-NEGATION | source-bounded subtype review |
-| `AB12` | `OpinionQuestion` | `narrowing_candidate` | TypedWhAndStanceQuestions | SRC-ALDERETE-ETAL-2017-SYNOPSIS, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
-| `AB14` | `OrdinalClassifierNP` | `narrowing_candidate` | OrdinalNominals | SRC-LAM-LAU-LEE-2024-SEGMENTATION, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
 | `AB68` | `SuggestionQuestion` | `narrowing_candidate` | DirectivesRequestsAndSuggestions | SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
 | `AA05` | `AdjectivalPredicateClause` | `retired_evidence_rehome_candidate` | StativePredication | SRC-ALDERETE-ETAL-2017-SYNOPSIS, SRC-FRANCIS-MATTHEWS-2005-VERB-CATEGORY | SubjectPredicateClause / stative-predicate research |
 | `AA08` | `BareClassifierNP` | `retired_evidence_rehome_candidate` | ClassifierAndQuantityNP | SRC-BOND-SIO-2024-CLASSIFIERS, SRC-CHENG-SYBESMA-1999-NP, SRC-SIMPSON-SOH-NOMOTO-2011-BARE-CL | ClassifierAndQuantityNP C-N subtype research |
@@ -114,4 +113,5 @@ These rows may contain a supportable narrow construction even though the present
 | `AA80` | `OvertPlaceExpressionWrapper` | `excluded_nonlanguage` | SpatialExpressionRepresentation | SRC-KWAN-2010-LOCATIVE, SRC-YIP-MATTHEWS-2000-BASIC | source-bounded subtype review |
 | `AB03` | `OvertNegatorPredicateWrapper` | `excluded_nonlanguage` | NegationRepresentation | SRC-LAM-2018-NEGATION-ASPECT, SRC-YIP-1988-NEGATION, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
 | `AB08` | `NegativePotentialDirectionalCompositeWrapper` | `excluded_nonlanguage` | PotentialAndDirectionalRepresentation | SRC-CHENG-SYBESMA-2004-POSTVERBAL-DAK | source-bounded subtype review |
+| `AB13` | `CognitionPredicateContentWrapper` | `excluded_nonlanguage` | CognitionAndStanceRepresentation | SRC-ALDERETE-ETAL-2017-SYNOPSIS, SRC-YAP-WONG-CHOR-2014-STANCE, SRC-YIP-MATTHEWS-2000-BASIC | source-bounded subtype review |
 | `AB23` | `PoliteRequestWrapper` | `excluded_nonlanguage` | RequestAndDirectiveRepresentation | SRC-CHOW-2007-CANTONESE-EVERYONE, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
