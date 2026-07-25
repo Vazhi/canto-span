@@ -27,32 +27,33 @@ superseding decision with explicit rationale and relationships.
 ## Current progress
 
 - permanent records: **181**;
-- accepted adjudications: **69**;
-- pending adjudications: **112**;
-- accepted batches: **14**;
+- accepted adjudications: **74**;
+- pending adjudications: **107**;
+- accepted batches: **15**;
 - latest batch report:
-  `docs/research/CONSTRUCTION-ADJUDICATION-BATCH-14.md`.
+  `docs/research/CONSTRUCTION-ADJUDICATION-BATCH-15.md`.
 
 This count records completed identity and ontology judgments only. It does not
 imply runtime migration, status migration, corpus closure, panel completion,
 held-out validation, or promotion.
 
-Batch 14 accepted the following UUID-preserving decisions:
+Batch 15 accepted the following UUID-preserving decisions:
 
-1. `AA92 MotionDelimitedVP` → `MotionPurposeDelimitedCompositeWrapper`,
-   retained as a retired parser representation;
-2. `AA93 MotionGoalVP` → `OvertDestinationMotionVP`, retained as a narrow
-   overt-destination motion profile;
-3. `AA94 MotionPurposeChain` → `MotionClausePurposeRelation`, retained as a
-   narrow typed relation between independently parsed predicates;
-4. `AA96 NeedsContext` → `UnresolvedContextDiagnostic`, retained as a
-   learner-visible parser diagnostic;
-5. `AA97 NegatedDirectionalMotionVP` → `NegatedMotionPredicateWrapper`,
-   reclassified as a parser representation requiring later compatibility
-   decomposition.
+1. `AA98 NegatedExistentialClause` →
+   `Mou5NominalExistentialPossessiveClause`, retained as a narrow overt `冇` plus
+   visible nominal-complement language profile;
+2. `AA99 NegatedExistentialFragment` → `Mou5EllipticalResponse`, retained as a
+   context-dependent elliptical `冇` response profile;
+3. `AB01 NegatedLexicalizedStative` →
+   `LexicalAndCompositionalNegativeStativeComposite`, retained as a retired parser
+   representation;
+4. `AB03 NegatedVP` → `OvertNegatorPredicateWrapper`, reclassified as an internal
+   parser representation requiring marker-specific decomposition;
+5. `AB04 NegativeCognitionFragment` → `SubjectlessM4Zi1ResponseFragment`, retained
+   as a narrow subjectless `唔知` response profile.
 
 No later adjudication batch is fixed as a mandatory queue. The next records are
-selected from the 112 pending identities according to current project benefit,
+selected from the 107 pending identities according to current project benefit,
 evidence opportunity, ontology risk, dependencies, and open-work overlap.
 
 ## Required decision fields
