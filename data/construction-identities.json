@@ -4794,133 +4794,195 @@
     {
       "construction_uuid": "c0ce4694-44c9-58ff-ac8a-fb7043e7b064",
       "construction_code": "AB18",
-      "canonical_name": "PerfectiveDirectionalVP",
+      "canonical_name": "DirectionalZoDeicticCompositeWrapper",
       "legacy_labels": [
         "PerfectiveDirectionalVP"
       ],
-      "claim_layer": "language_construction",
+      "claim_layer": "parser_representation",
       "linguistic_status": "unsupported_generalization",
       "lifecycle_state": "current",
       "source_path": "grammar/unsupported_generalization/PerfectiveDirectionalVP.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese may instantiate the structural family represented by PerfectiveDirectionalVP; exact productivity and boundaries require pattern-specific independent evidence.",
+      "family_name": "DirectionalAndAspectRepresentation",
+      "profile_name": "DirectionalHeadZoDeicticAggregate",
+      "profile_description": "An implementation wrapper preserves an overt directional head, overt perfective 咗, and a final deictic directional element in exact order, as in 入咗嚟 and 落咗去. It contributes no independent Cantonese construction boundary, does not collapse the directional head and deictic into one lexical item, and does not make 嚟 and 去 interchangeable.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "aspect attached to a verbal predicate",
+          "source_id": "SRC-SIO-BOND-2025",
+          "scope_match": "compositional"
+        },
+        {
+          "term": "directional ordering and deictic contrast",
+          "source_id": "SRC-YIU-2016-DIRECTIONAL-ASPECT",
+          "scope_match": "compositional"
+        },
+        {
+          "term": "motion predicate bearing 咗",
+          "source_id": "SRC-ZHANG-1970-PREDICATIVE-SUFFIXES",
+          "scope_match": "contrastive"
+        }
+      ],
+      "former_names": [
+        "PerfectiveDirectionalVP"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "overlapping",
+        "terminology_alignment": "misleading",
+        "recommended_action": "internalize_and_decompose",
         "automatic_risk_flags": [
           "unsupported_generalization_requires_source_runtime_reconciliation"
         ],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-25. PerfectiveDirectionalVP presents a transparent aspect-plus-directional composition as one atomic VP category. DirectionalZoDeicticCompositeWrapper preserves the useful exact-order runtime aggregate while removing it from direct linguistic promotion and requiring independently typed aspect and directional children. Status recommendation: migrate to parser_heuristic only through a separate compatibility change; preserve perfective aspect, directional head, and deictic direction as independently typed children"
       }
     },
     {
       "construction_uuid": "883784c2-da51-5353-a201-13f166a3527f",
       "construction_code": "AB19",
-      "canonical_name": "PerfectiveObjectResultPredicate",
+      "canonical_name": "WeatherPerfectiveObjectCompositeWrapper",
       "legacy_labels": [
         "PerfectiveObjectResultPredicate"
       ],
-      "claim_layer": "unresolved",
+      "claim_layer": "parser_representation",
       "linguistic_status": "retired",
       "lifecycle_state": "retired",
       "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "The weather-specific 停咗雨 bundle duplicated ordinary perfective transitive structure.",
+      "family_name": "ResultAndChangeStateRepresentation",
+      "profile_name": "TingZoRainWeatherAggregate",
+      "profile_description": "A retired historical wrapper for the weather-specific 停咗雨 bundle. The wrapper duplicated ordinary perfective transitive structure, contributed no independent result-predicate boundary, and must not be restored or used to transfer evidence to broader perfective, weather, or resultative profiles.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "ordinary perfective transitive structure",
+          "source_id": "SRC-MATTHEWS-YIP-2011-ASPECT-MULTIMEDIA",
+          "scope_match": "compositional"
+        },
+        {
+          "term": "resultative and change-state distinctions",
+          "source_id": "SRC-KEDZIOR-2023",
+          "scope_match": "contrastive"
+        }
+      ],
+      "former_names": [
+        "PerfectiveObjectResultPredicate"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "disjoint",
+        "terminology_alignment": "misleading",
+        "recommended_action": "retain_retired_reclassify",
         "automatic_risk_flags": [
           "generic_head_requires_boundary_definition",
           "retired_label_research_home_check",
           "unsupported_generalization_requires_source_runtime_reconciliation"
         ],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-25. PerfectiveObjectResultPredicate encoded one weather-specific lexical bundle as a reusable result-predicate category. The retired UUID remains resolvable as WeatherPerfectiveObjectCompositeWrapper so its provenance is preserved without licensing an independent construction or transferring evidence across weather, transitivity, perfectivity, and result state. Status recommendation: remain retired; preserve the UUID, code, alias, and retirement provenance only, with weather semantics and ordinary perfective transitive structure independently typed"
       }
     },
     {
       "construction_uuid": "fa3f2789-8037-50de-9cd7-cac3d13a5d80",
       "construction_code": "AB20",
-      "canonical_name": "PerfectiveResultPredicate",
+      "canonical_name": "LexicalResultPerfectiveCompositeWrapper",
       "legacy_labels": [
         "PerfectiveResultPredicate"
       ],
-      "claim_layer": "unresolved",
+      "claim_layer": "parser_representation",
       "linguistic_status": "retired",
       "lifecycle_state": "retired",
       "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "The dedicated 解決咗 constructor was consumed by ordinary PerfectiveVP composition before complete output and contributed no independently sourced boundary beyond lexical predicate plus perfective aspect.",
+      "family_name": "ResultAndChangeStateRepresentation",
+      "profile_name": "LexicalResultVerbPlusZoAggregate",
+      "profile_description": "A retired historical wrapper for an exact lexical result verb plus perfective 咗 path, represented by 解決咗. The wrapper was shadowed by ordinary perfective composition, contributed no independently sourced result boundary, and must not be restored or generalized to other result predicates.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "perfective 咗",
+          "source_id": "SRC-FAN-CHAN-2022",
+          "scope_match": "compositional"
+        },
+        {
+          "term": "lexical result and resultative distinctions",
+          "source_id": "SRC-KEDZIOR-2023",
+          "scope_match": "contrastive"
+        }
+      ],
+      "former_names": [
+        "PerfectiveResultPredicate"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "disjoint",
+        "terminology_alignment": "misleading",
+        "recommended_action": "retain_retired_reclassify",
         "automatic_risk_flags": [
           "generic_head_requires_boundary_definition",
           "retired_label_research_home_check",
           "unsupported_generalization_requires_source_runtime_reconciliation"
         ],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-25. PerfectiveResultPredicate elevated an exact lexical item plus 咗 into a reusable construction despite being fully shadowed by ordinary perfective composition. LexicalResultPerfectiveCompositeWrapper preserves the retired provenance while preventing evidence transfer from one lexical predicate to the broader resultative or perfective systems. Status recommendation: remain retired; preserve the UUID and historical alias only, and keep lexical result meaning, result complementation, and perfective aspect independently typed"
       }
     },
     {
       "construction_uuid": "352e92ab-f193-53d2-a2ec-851f4c435458",
       "construction_code": "AB21",
-      "canonical_name": "PerfectiveVP",
+      "canonical_name": "ZoMarkedPerfectivePredicateWrapper",
       "legacy_labels": [
         "PerfectiveVP"
       ],
-      "claim_layer": "language_construction",
+      "claim_layer": "parser_representation",
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/PerfectiveVP.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese perfective 咗 may follow an inner aspect/result element such as 完 before an overt object; broader PerfectiveVP productivity remains only provisional.",
+      "family_name": "PerfectiveAspectRepresentation",
+      "profile_name": "OvertZoPredicateAggregate",
+      "profile_description": "An implementation wrapper groups independently typed predicates bearing overt perfective 咗 across null-object, overt-object, inner-aspect or result-plus-咗, motion, embedded-clause, and particle-bearing profiles. It preserves overt 咗 and child structure but contributes no single Cantonese construction boundary, inserts no hidden object, and does not equate completion, result, motion, or discourse interpretations.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "V完(咗)O",
+          "source_id": "SRC-FAN-CHAN-2022",
+          "scope_match": "subtype"
+        },
+        {
+          "term": "inner-aspect plus outer-aspect ordering",
+          "source_id": "SRC-SIO-BOND-2025",
+          "scope_match": "subtype"
+        },
+        {
+          "term": "verb plus 咗 in questions and answers",
+          "source_id": "SRC-YIP-MATTHEWS-2000-BASIC",
+          "scope_match": "subtype"
+        }
+      ],
+      "former_names": [
+        "PerfectiveVP"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "overlapping",
+        "terminology_alignment": "misleading",
+        "recommended_action": "internalize_and_decompose",
         "automatic_risk_flags": [],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-25. PerfectiveVP is too broad to function as one direct construction identity because the runtime label aggregates several independently structured perfective profiles. ZoMarkedPerfectivePredicateWrapper preserves the common overt-咗 implementation layer while removing the umbrella from direct linguistic promotion and protecting the narrower AB30 overt-object identity. Status recommendation: migrate to parser_heuristic only through a separate compatibility change; preserve overt-object, null-object, inner-aspect, result, motion, embedded, and particle-bearing perfective profiles independently"
       }
     },
     {
       "construction_uuid": "5187ba31-988b-538d-bd4a-705dc31dab4a",
       "construction_code": "AB22",
-      "canonical_name": "PolarQuestionFrame",
+      "canonical_name": "FinalMe1BiasedPolarQuestionFrame",
       "legacy_labels": [
         "PolarQuestionFrame"
       ],
@@ -4928,25 +4990,27 @@
       "linguistic_status": "parser_heuristic",
       "lifecycle_state": "current",
       "source_path": "grammar/parser_heuristic/PolarQuestionFrame.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese may instantiate the structural family represented by PolarQuestionFrame; exact productivity and boundaries require pattern-specific independent evidence.",
+      "family_name": "QuestionRepresentation",
+      "profile_name": "OvertPropositionPlusFinalMe1",
+      "profile_description": "An internal question frame preserves an overt proposition host followed by sentence-final biased polar particle 咩, optionally within an independently typed final-particle cluster, as in 去咩, 你食飯咩, and 你去㗎咩. It excludes A-not-A, 有冇, 係咪, final-未, wh, scalar, and other particle-question strategies and cannot fabricate a proposition.",
       "learner_label": null,
       "source_terms": [],
-      "former_names": [],
+      "former_names": [
+        "PolarQuestionFrame"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "runtime_narrower_defensible",
+        "terminology_alignment": "misleading",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [
           "generic_head_requires_boundary_definition",
           "internal_representation_name_review"
         ],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-25. PolarQuestionFrame overstates a broad question family while the actual accepted runtime profile is sentence-final biased 咩. FinalMe1BiasedPolarQuestionFrame names the internal subtype, preserves the overt proposition host and particle cluster, and keeps all other polar strategies separate. Status recommendation: retain parser_heuristic; preserve explicit question subtype metadata and keep other polar-question strategies independently typed"
       }
     },
     {

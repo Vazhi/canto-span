@@ -4,7 +4,7 @@ Family assignments in this report are inherited from existing consolidation reco
 
 | Family | Members | Current | Retired evidence | Source-supported current | Gap | Action | Codes |
 |---|---|---|---|---|---|---|---|
-| L15 / ResultativeAndChangePredication | 8 | 0 | 8 | 0 | `retired_evidence_without_current_home` | decide whether a narrow successor UUID is required | AA09, AA10, AA51, AB19, AB57, AB62, AB76, AB77 |
+| L15 / ResultativeAndChangePredication | 7 | 0 | 7 | 0 | `retired_evidence_without_current_home` | decide whether a narrow successor UUID is required | AA09, AA10, AA51, AB57, AB62, AB76, AB77 |
 | L16 / ClassifierAndQuantityNP | 9 | 6 | 3 | 3 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AA06, AA12, AB46, AB45, AB47, AB48, AA08, AA43, AA44 |
 | L08 / ProgressiveAspect | 5 | 1 | 3 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB40, AB27, AB39, AB65, AB79 |
 | L02 / ConditionalRelations | 4 | 1 | 3 | 0 | `preserved_retired_evidence_needs_family_reconciliation` | confirm whether active family members already cover the preserved evidence | AA29, AA25, AA28, AB69 |
@@ -13,8 +13,8 @@ Family assignments in this report are inherited from existing consolidation reco
 | L31 / CognitionAndStance | 3 | 1 | 2 | 0 | `preserved_retired_evidence_needs_family_reconciliation` | confirm whether active family members already cover the preserved evidence | AA20, AA18, AA19 |
 | L35 / PurposeSerialRelations | 3 | 1 | 2 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB63, AB38, AB44 |
 | L05 / FragmentsAndEllipsis | 2 | 0 | 2 | 0 | `retired_evidence_without_current_home` | decide whether a narrow successor UUID is required | AB26, AB42 |
+| ResultAndChangeStateRepresentation / ResultAndChangeStateRepresentation | 2 | 0 | 2 | 0 | `retired_evidence_without_current_home` | decide whether a narrow successor UUID is required | AB19, AB20 |
 | L07 / ExperientialAspect | 3 | 2 | 1 | 0 | `preserved_retired_evidence_needs_family_reconciliation` | confirm whether active family members already cover the preserved evidence | AA59, AA63, AB61 |
-| L13 / AspectDirectionalComposition | 3 | 2 | 1 | 0 | `preserved_retired_evidence_needs_family_reconciliation` | confirm whether active family members already cover the preserved evidence | AB18, AB36, AB20 |
 | NominalModificationAndRelatives / NominalModificationAndRelatives | 3 | 2 | 1 | 1 | `preserved_retired_evidence_needs_family_reconciliation` | confirm whether active family members already cover the preserved evidence | AA07, AA91, AB10 |
 | L24 / ExistentialQuestions | 2 | 1 | 1 | 0 | `preserved_retired_evidence_needs_family_reconciliation` | confirm whether active family members already cover the preserved evidence | AA57, AB29 |
 | L42 / StativePredication | 2 | 1 | 1 | 0 | `preserved_retired_evidence_needs_family_reconciliation` | confirm whether active family members already cover the preserved evidence | AB67, AA05 |
@@ -34,7 +34,6 @@ Family assignments in this report are inherited from existing consolidation reco
 | L28 / DirectivesRequestsAndSuggestions | 2 | 2 | 0 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB68, AB43 |
 | L45 / ValencyAndArgumentStructure | 2 | 2 | 0 | 2 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB35, AB78 |
 | L03 / TemporalAndSequentialRelations | 1 | 1 | 0 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB70 |
-| L06 / PerfectiveAspect | 1 | 1 | 0 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB21 |
 | L32 / SpeechReportingAndCommunicationEffect | 1 | 1 | 0 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB52 |
 | L37 / MannerAndReduplication | 1 | 1 | 0 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB49 |
 | L39 / ExistentialAndPresentationalClauses | 1 | 1 | 0 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AA56 |

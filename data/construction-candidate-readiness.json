@@ -8,19 +8,19 @@
   "promotion_eligible_now_count": 0,
   "state_counts": {
     "boundary_ready": 1,
-    "excluded_nonlanguage": 36,
+    "excluded_nonlanguage": 38,
     "lexicalized_review": 2,
-    "narrowing_candidate": 31,
+    "narrowing_candidate": 30,
     "retired_evidence_rehome_candidate": 42,
     "retired_research_gap": 6,
-    "source_supported": 63
+    "source_supported": 62
   },
   "nearest_missing_gate_counts": {
-    "language_claim_defined": 36,
-    "negative_boundaries_complete": 29,
+    "language_claim_defined": 38,
+    "negative_boundaries_complete": 28,
     "reviewed_corpus_evidence": 3,
     "runtime_research_alignment": 17,
-    "source_scope_matches_claim": 48
+    "source_scope_matches_claim": 47
   },
   "records": [
     {
@@ -1676,99 +1676,6 @@
         "unsupported_generalization_requires_source_runtime_reconciliation"
       ],
       "source_path": "grammar/unsupported_generalization/ExperientialYesNoQuestion.md"
-    },
-    {
-      "construction_uuid": "c0ce4694-44c9-58ff-ac8a-fb7043e7b064",
-      "construction_code": "AB18",
-      "canonical_name": "PerfectiveDirectionalVP",
-      "legacy_label": "PerfectiveDirectionalVP",
-      "lifecycle_state": "current",
-      "claim_layer": "language_construction",
-      "linguistic_status": "unsupported_generalization",
-      "family_id": "L13",
-      "family_name": "AspectDirectionalComposition",
-      "profile_name": null,
-      "learner_label": null,
-      "source_ids": [
-        "SRC-SHAN-JIN-2025-MOTION-TYPOLOGY",
-        "SRC-SIO-BOND-2025",
-        "SRC-YIU-2016-DIRECTIONAL-ASPECT",
-        "SRC-ZHANG-1970-PREDICATIVE-SUFFIXES"
-      ],
-      "preserved_source_ids": [],
-      "future_research_preserved_as": "",
-      "standard_positive_test_count": 2,
-      "standard_boundary_test_count": 2,
-      "gates": {
-        "language_claim_defined": {
-          "status": "pass",
-          "evidence": "plain_language_claim_present"
-        },
-        "independent_source_support": {
-          "status": "pass",
-          "evidence": "all_cited_sources_verified_and_independent",
-          "detail": "4/4"
-        },
-        "source_scope_matches_claim": {
-          "status": "pass",
-          "evidence": "current_standard_reaudit_complete_with_verified_sources"
-        },
-        "runtime_research_alignment": {
-          "status": "pass",
-          "evidence": "code_document_reconciled_with_current_metadata"
-        },
-        "executable_positive_cases_present": {
-          "status": "pass",
-          "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "2"
-        },
-        "negative_boundaries_complete": {
-          "status": "partial",
-          "evidence": "negative_boundaries_incomplete"
-        },
-        "reviewed_corpus_evidence": {
-          "status": "not_started",
-          "evidence": "no_reviewed_corpus_evidence"
-        },
-        "role_neutral_panel_threshold": {
-          "status": "partial",
-          "evidence": "panel_evidence_incomplete",
-          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":false,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
-        },
-        "held_out_validation": {
-          "status": "not_started",
-          "evidence": "no_passing_held_out_record"
-        },
-        "ontology_conflicts_resolved": {
-          "status": "unresolved",
-          "evidence": "identity_label_review_pending"
-        }
-      },
-      "supported_gate_eligible": false,
-      "supported_gate_blockers": [
-        "requirement_failed:locked_clean_panel_instrument",
-        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
-        "requirement_failed:role_neutral_panel",
-        "requirement_failed:instrument_quality_resolved",
-        "requirement_failed:quality_screen_complete",
-        "requirement_failed:panel_adjudication_complete",
-        "requirement_failed:critical_contrast_coverage_complete",
-        "requirement_failed:positive_and_negative_contrasts_reviewed",
-        "requirement_failed:negative_boundary_inventory_complete"
-      ],
-      "discovery_hard_blockers": [
-        "discovery_gate:reviewed_corpus_evidence",
-        "discovery_gate:held_out_validation",
-        "discovery_gate:ontology_conflicts_resolved"
-      ],
-      "readiness_score": 68,
-      "candidate_state": "narrowing_candidate",
-      "nearest_missing_gate": "negative_boundaries_complete",
-      "next_best_action": "complete and execute the negative-boundary inventory",
-      "automatic_risk_flags": [
-        "unsupported_generalization_requires_source_runtime_reconciliation"
-      ],
-      "source_path": "grammar/unsupported_generalization/PerfectiveDirectionalVP.md"
     },
     {
       "construction_uuid": "f43518de-dd92-5aac-991e-cb5eeee03702",
@@ -6647,100 +6554,6 @@
       "source_path": "grammar/research_pending/NegatedExistentialFragment.md"
     },
     {
-      "construction_uuid": "352e92ab-f193-53d2-a2ec-851f4c435458",
-      "construction_code": "AB21",
-      "canonical_name": "PerfectiveVP",
-      "legacy_label": "PerfectiveVP",
-      "lifecycle_state": "current",
-      "claim_layer": "language_construction",
-      "linguistic_status": "research_pending",
-      "family_id": "L06",
-      "family_name": "PerfectiveAspect",
-      "profile_name": null,
-      "learner_label": null,
-      "source_ids": [
-        "SRC-FAN-CHAN-2022",
-        "SRC-SIO-BOND-2025",
-        "SRC-SYBESMA-2013",
-        "SRC-YIP-MATTHEWS-2000-BASIC"
-      ],
-      "preserved_source_ids": [],
-      "future_research_preserved_as": "",
-      "standard_positive_test_count": 21,
-      "standard_boundary_test_count": 2,
-      "gates": {
-        "language_claim_defined": {
-          "status": "pass",
-          "evidence": "plain_language_claim_present"
-        },
-        "independent_source_support": {
-          "status": "pass",
-          "evidence": "all_cited_sources_verified_and_independent",
-          "detail": "4/4"
-        },
-        "source_scope_matches_claim": {
-          "status": "partial",
-          "evidence": "verified_sources_but_scope_reaudit_incomplete"
-        },
-        "runtime_research_alignment": {
-          "status": "unresolved",
-          "evidence": "runtime_research_alignment_not_reconciled"
-        },
-        "executable_positive_cases_present": {
-          "status": "pass",
-          "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "21"
-        },
-        "negative_boundaries_complete": {
-          "status": "partial",
-          "evidence": "negative_boundaries_incomplete"
-        },
-        "reviewed_corpus_evidence": {
-          "status": "not_started",
-          "evidence": "no_reviewed_corpus_evidence"
-        },
-        "role_neutral_panel_threshold": {
-          "status": "partial",
-          "evidence": "panel_evidence_incomplete",
-          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":false,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
-        },
-        "held_out_validation": {
-          "status": "not_started",
-          "evidence": "no_passing_held_out_record"
-        },
-        "ontology_conflicts_resolved": {
-          "status": "unresolved",
-          "evidence": "identity_label_review_pending"
-        }
-      },
-      "supported_gate_eligible": false,
-      "supported_gate_blockers": [
-        "requirement_failed:locked_clean_panel_instrument",
-        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
-        "requirement_failed:role_neutral_panel",
-        "requirement_failed:instrument_quality_resolved",
-        "requirement_failed:quality_screen_complete",
-        "requirement_failed:panel_adjudication_complete",
-        "requirement_failed:critical_contrast_coverage_complete",
-        "requirement_failed:positive_and_negative_contrasts_reviewed",
-        "requirement_failed:negative_boundary_inventory_complete",
-        "requirement_failed:code_document_reconciled",
-        "requirement_failed:current_code_review_metadata",
-        "requirement_failed:current_standard_reaudit_complete"
-      ],
-      "discovery_hard_blockers": [
-        "discovery_gate:reviewed_corpus_evidence",
-        "discovery_gate:held_out_validation",
-        "discovery_gate:ontology_conflicts_resolved"
-      ],
-      "readiness_score": 48,
-      "candidate_state": "source_supported",
-      "nearest_missing_gate": "source_scope_matches_claim",
-      "next_best_action": "complete source-scope reaudit and split any unsupported extensions",
-      "automatic_risk_flags": [],
-      "source_path": "grammar/research_pending/PerfectiveVP.md"
-    },
-    {
       "construction_uuid": "2c2fe5b5-a6c3-5df7-bddb-61a99f3239b6",
       "construction_code": "AB31",
       "canonical_name": "PotentialDirectionalVP",
@@ -10862,14 +10675,14 @@
     {
       "construction_uuid": "883784c2-da51-5353-a201-13f166a3527f",
       "construction_code": "AB19",
-      "canonical_name": "PerfectiveObjectResultPredicate",
+      "canonical_name": "WeatherPerfectiveObjectCompositeWrapper",
       "legacy_label": "PerfectiveObjectResultPredicate",
       "lifecycle_state": "retired",
-      "claim_layer": "unresolved",
+      "claim_layer": "parser_representation",
       "linguistic_status": "retired",
-      "family_id": "L15",
-      "family_name": "ResultativeAndChangePredication",
-      "profile_name": null,
+      "family_id": null,
+      "family_name": "ResultAndChangeStateRepresentation",
+      "profile_name": "TingZoRainWeatherAggregate",
       "learner_label": null,
       "source_ids": [],
       "preserved_source_ids": [
@@ -10944,14 +10757,14 @@
     {
       "construction_uuid": "fa3f2789-8037-50de-9cd7-cac3d13a5d80",
       "construction_code": "AB20",
-      "canonical_name": "PerfectiveResultPredicate",
+      "canonical_name": "LexicalResultPerfectiveCompositeWrapper",
       "legacy_label": "PerfectiveResultPredicate",
       "lifecycle_state": "retired",
-      "claim_layer": "unresolved",
+      "claim_layer": "parser_representation",
       "linguistic_status": "retired",
-      "family_id": "L13",
-      "family_name": "ResultAndChangeState",
-      "profile_name": null,
+      "family_id": null,
+      "family_name": "ResultAndChangeStateRepresentation",
+      "profile_name": "LexicalResultVerbPlusZoAggregate",
       "learner_label": null,
       "source_ids": [],
       "preserved_source_ids": [
@@ -15754,16 +15567,205 @@
       "source_path": "grammar/research_pending/PassivePermissiveRelation.md"
     },
     {
+      "construction_uuid": "c0ce4694-44c9-58ff-ac8a-fb7043e7b064",
+      "construction_code": "AB18",
+      "canonical_name": "DirectionalZoDeicticCompositeWrapper",
+      "legacy_label": "PerfectiveDirectionalVP",
+      "lifecycle_state": "current",
+      "claim_layer": "parser_representation",
+      "linguistic_status": "unsupported_generalization",
+      "family_id": null,
+      "family_name": "DirectionalAndAspectRepresentation",
+      "profile_name": "DirectionalHeadZoDeicticAggregate",
+      "learner_label": null,
+      "source_ids": [
+        "SRC-SHAN-JIN-2025-MOTION-TYPOLOGY",
+        "SRC-SIO-BOND-2025",
+        "SRC-YIU-2016-DIRECTIONAL-ASPECT",
+        "SRC-ZHANG-1970-PREDICATIVE-SUFFIXES"
+      ],
+      "preserved_source_ids": [],
+      "future_research_preserved_as": "",
+      "standard_positive_test_count": 2,
+      "standard_boundary_test_count": 2,
+      "gates": {
+        "language_claim_defined": {
+          "status": "not_applicable",
+          "evidence": "non_language_claim_layer"
+        },
+        "independent_source_support": {
+          "status": "pass",
+          "evidence": "all_cited_sources_verified_and_independent",
+          "detail": "4/4"
+        },
+        "source_scope_matches_claim": {
+          "status": "pass",
+          "evidence": "current_standard_reaudit_complete_with_verified_sources"
+        },
+        "runtime_research_alignment": {
+          "status": "pass",
+          "evidence": "code_document_reconciled_with_current_metadata"
+        },
+        "executable_positive_cases_present": {
+          "status": "pass",
+          "evidence": "executable_positive_cases_present_implementation_only",
+          "detail": "2"
+        },
+        "negative_boundaries_complete": {
+          "status": "partial",
+          "evidence": "negative_boundaries_incomplete"
+        },
+        "reviewed_corpus_evidence": {
+          "status": "not_started",
+          "evidence": "no_reviewed_corpus_evidence"
+        },
+        "role_neutral_panel_threshold": {
+          "status": "partial",
+          "evidence": "panel_evidence_incomplete",
+          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":false,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
+        },
+        "held_out_validation": {
+          "status": "not_started",
+          "evidence": "no_passing_held_out_record"
+        },
+        "ontology_conflicts_resolved": {
+          "status": "partial",
+          "evidence": "identity_label_review_in_progress",
+          "detail": "{\"review_state\":\"complete\",\"behavior_research_alignment\":\"overlapping\",\"terminology_alignment\":\"misleading\",\"recommended_action\":\"internalize_and_decompose\",\"automatic_risk_flags\":[\"unsupported_generalization_requires_source_runtime_reconciliation\"],\"review_notes\":\"Expert adjudication 2026-07-25. PerfectiveDirectionalVP presents a transparent aspect-plus-directional composition as one atomic VP category. DirectionalZoDeicticCompositeWrapper preserves the useful exact-order runtime aggregate while removing it from direct linguistic promotion and requiring independently typed aspect and directional children. Status recommendation: migrate to parser_heuristic only through a separate compatibility change; preserve perfective aspect, directional head, and deictic direction as independently typed children\"}"
+        }
+      },
+      "supported_gate_eligible": false,
+      "supported_gate_blockers": [
+        "requirement_failed:locked_clean_panel_instrument",
+        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
+        "requirement_failed:role_neutral_panel",
+        "requirement_failed:instrument_quality_resolved",
+        "requirement_failed:quality_screen_complete",
+        "requirement_failed:panel_adjudication_complete",
+        "requirement_failed:critical_contrast_coverage_complete",
+        "requirement_failed:positive_and_negative_contrasts_reviewed",
+        "requirement_failed:negative_boundary_inventory_complete"
+      ],
+      "discovery_hard_blockers": [
+        "discovery_gate:reviewed_corpus_evidence",
+        "discovery_gate:held_out_validation",
+        "discovery_gate:ontology_conflicts_resolved"
+      ],
+      "readiness_score": 0,
+      "candidate_state": "excluded_nonlanguage",
+      "nearest_missing_gate": "language_claim_defined",
+      "next_best_action": "define a narrow falsifiable language claim before adding evidence",
+      "automatic_risk_flags": [
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ],
+      "source_path": "grammar/unsupported_generalization/PerfectiveDirectionalVP.md"
+    },
+    {
+      "construction_uuid": "352e92ab-f193-53d2-a2ec-851f4c435458",
+      "construction_code": "AB21",
+      "canonical_name": "ZoMarkedPerfectivePredicateWrapper",
+      "legacy_label": "PerfectiveVP",
+      "lifecycle_state": "current",
+      "claim_layer": "parser_representation",
+      "linguistic_status": "research_pending",
+      "family_id": null,
+      "family_name": "PerfectiveAspectRepresentation",
+      "profile_name": "OvertZoPredicateAggregate",
+      "learner_label": null,
+      "source_ids": [
+        "SRC-FAN-CHAN-2022",
+        "SRC-SIO-BOND-2025",
+        "SRC-SYBESMA-2013",
+        "SRC-YIP-MATTHEWS-2000-BASIC"
+      ],
+      "preserved_source_ids": [],
+      "future_research_preserved_as": "",
+      "standard_positive_test_count": 21,
+      "standard_boundary_test_count": 2,
+      "gates": {
+        "language_claim_defined": {
+          "status": "not_applicable",
+          "evidence": "non_language_claim_layer"
+        },
+        "independent_source_support": {
+          "status": "pass",
+          "evidence": "all_cited_sources_verified_and_independent",
+          "detail": "4/4"
+        },
+        "source_scope_matches_claim": {
+          "status": "partial",
+          "evidence": "verified_sources_but_scope_reaudit_incomplete"
+        },
+        "runtime_research_alignment": {
+          "status": "unresolved",
+          "evidence": "runtime_research_alignment_not_reconciled"
+        },
+        "executable_positive_cases_present": {
+          "status": "pass",
+          "evidence": "executable_positive_cases_present_implementation_only",
+          "detail": "21"
+        },
+        "negative_boundaries_complete": {
+          "status": "partial",
+          "evidence": "negative_boundaries_incomplete"
+        },
+        "reviewed_corpus_evidence": {
+          "status": "not_started",
+          "evidence": "no_reviewed_corpus_evidence"
+        },
+        "role_neutral_panel_threshold": {
+          "status": "partial",
+          "evidence": "panel_evidence_incomplete",
+          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":false,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
+        },
+        "held_out_validation": {
+          "status": "not_started",
+          "evidence": "no_passing_held_out_record"
+        },
+        "ontology_conflicts_resolved": {
+          "status": "partial",
+          "evidence": "identity_label_review_in_progress",
+          "detail": "{\"review_state\":\"complete\",\"behavior_research_alignment\":\"overlapping\",\"terminology_alignment\":\"misleading\",\"recommended_action\":\"internalize_and_decompose\",\"automatic_risk_flags\":[],\"review_notes\":\"Expert adjudication 2026-07-25. PerfectiveVP is too broad to function as one direct construction identity because the runtime label aggregates several independently structured perfective profiles. ZoMarkedPerfectivePredicateWrapper preserves the common overt-咗 implementation layer while removing the umbrella from direct linguistic promotion and protecting the narrower AB30 overt-object identity. Status recommendation: migrate to parser_heuristic only through a separate compatibility change; preserve overt-object, null-object, inner-aspect, result, motion, embedded, and particle-bearing perfective profiles independently\"}"
+        }
+      },
+      "supported_gate_eligible": false,
+      "supported_gate_blockers": [
+        "requirement_failed:locked_clean_panel_instrument",
+        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
+        "requirement_failed:role_neutral_panel",
+        "requirement_failed:instrument_quality_resolved",
+        "requirement_failed:quality_screen_complete",
+        "requirement_failed:panel_adjudication_complete",
+        "requirement_failed:critical_contrast_coverage_complete",
+        "requirement_failed:positive_and_negative_contrasts_reviewed",
+        "requirement_failed:negative_boundary_inventory_complete",
+        "requirement_failed:code_document_reconciled",
+        "requirement_failed:current_code_review_metadata",
+        "requirement_failed:current_standard_reaudit_complete"
+      ],
+      "discovery_hard_blockers": [
+        "discovery_gate:reviewed_corpus_evidence",
+        "discovery_gate:held_out_validation",
+        "discovery_gate:ontology_conflicts_resolved"
+      ],
+      "readiness_score": 0,
+      "candidate_state": "excluded_nonlanguage",
+      "nearest_missing_gate": "language_claim_defined",
+      "next_best_action": "define a narrow falsifiable language claim before adding evidence",
+      "automatic_risk_flags": [],
+      "source_path": "grammar/research_pending/PerfectiveVP.md"
+    },
+    {
       "construction_uuid": "5187ba31-988b-538d-bd4a-705dc31dab4a",
       "construction_code": "AB22",
-      "canonical_name": "PolarQuestionFrame",
+      "canonical_name": "FinalMe1BiasedPolarQuestionFrame",
       "legacy_label": "PolarQuestionFrame",
       "lifecycle_state": "current",
       "claim_layer": "parser_representation",
       "linguistic_status": "parser_heuristic",
-      "family_id": "I03",
-      "family_name": "ParticleScope",
-      "profile_name": null,
+      "family_id": null,
+      "family_name": "QuestionRepresentation",
+      "profile_name": "OvertPropositionPlusFinalMe1",
       "learner_label": null,
       "source_ids": [],
       "preserved_source_ids": [],
@@ -15811,8 +15813,9 @@
           "evidence": "no_passing_held_out_record"
         },
         "ontology_conflicts_resolved": {
-          "status": "unresolved",
-          "evidence": "identity_label_review_pending"
+          "status": "partial",
+          "evidence": "identity_label_review_in_progress",
+          "detail": "{\"review_state\":\"complete\",\"behavior_research_alignment\":\"runtime_narrower_defensible\",\"terminology_alignment\":\"misleading\",\"recommended_action\":\"rename_retain_narrow\",\"automatic_risk_flags\":[\"generic_head_requires_boundary_definition\",\"internal_representation_name_review\"],\"review_notes\":\"Expert adjudication 2026-07-25. PolarQuestionFrame overstates a broad question family while the actual accepted runtime profile is sentence-final biased 咩. FinalMe1BiasedPolarQuestionFrame names the internal subtype, preserves the overt proposition host and particle cluster, and keeps all other polar strategies separate. Status recommendation: retain parser_heuristic; preserve explicit question subtype metadata and keep other polar-question strategies independently typed\"}"
         }
       },
       "supported_gate_eligible": false,

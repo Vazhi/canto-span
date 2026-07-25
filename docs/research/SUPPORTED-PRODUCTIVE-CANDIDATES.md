@@ -72,7 +72,6 @@ These broad current labels are not direct promotion candidates. Their source-bac
 | `AA57` | `ExistentialQuestion` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA59` | `ExperientialClause` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA63` | `ExperientialYesNoQuestion` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
-| `AB18` | `PerfectiveDirectionalVP` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AB36` | `ProgressiveDirectionalVP` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AB41` | `ProgressiveWhObjectQuestion` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AB46` | `QuantifiedPersonNP` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |

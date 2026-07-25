@@ -29,8 +29,8 @@ Evidence is "orphaned" here only in the governance sense: it is attached to a re
 | `AB01` | `LexicalAndCompositionalNegativeStativeComposite` | NegativePropertyRepresentation | SRC-CHIN-2018-PROHIBITIVES, SRC-LAM-LAU-LEE-2024-SEGMENTATION, SRC-YIP-1988-NEGATION | lexical stative entries plus NegatedStativePredicate and ProhibitiveImperative |
 | `AB06` | `Mou5ExistentialPossessiveEventComposite` | NegationRepresentation | SRC-LAM-2018-NEGATION-ASPECT, SRC-YIP-1988-NEGATION | typed negative possession/existence/event research |
 | `AB10` | `NominalModificationCompositeWrapper` | NominalModificationAndRelatives | SRC-SIO-2011-GE3, SRC-YU-2006-NOMINAL-MODIFIERS | NominalModificationAndRelatives subtype research |
-| `AB19` | `PerfectiveObjectResultPredicate` | ResultativeAndChangePredication | SRC-KEDZIOR-2023, SRC-MATTHEWS-YIP-2011-ASPECT-MULTIMEDIA | PerfectiveVP and transitive-predicate research |
-| `AB20` | `PerfectiveResultPredicate` | ResultAndChangeState | SRC-FAN-CHAN-2022, SRC-KEDZIOR-2023 | PerfectiveVP plus result-complement and lexical-result research |
+| `AB19` | `WeatherPerfectiveObjectCompositeWrapper` | ResultAndChangeStateRepresentation | SRC-KEDZIOR-2023, SRC-MATTHEWS-YIP-2011-ASPECT-MULTIMEDIA | PerfectiveVP and transitive-predicate research |
+| `AB20` | `LexicalResultPerfectiveCompositeWrapper` | ResultAndChangeStateRepresentation | SRC-FAN-CHAN-2022, SRC-KEDZIOR-2023 | PerfectiveVP plus result-complement and lexical-result research |
 | `AB25` | `PossessiveNP` | PossessiveNominals | SRC-LAM-LAU-LEE-2024-SEGMENTATION, SRC-SIO-2011-GE3, SRC-XIA-2025-CLASSIFIERS | PossessiveNominals subtype research |
 | `AB26` | `PossessiveNominalFragment` | FragmentsAndEllipsis | SRC-SIO-2011-GE3, SRC-YIP-MATTHEWS-2000-BASIC | headless possessive nominal + fragment/discourse analysis |
 | `AB27` | `PossessiveTransferClause` | SpeechTransferComplement | SRC-YIP-MATTHEWS-2000-BASIC | possession and transfer constructions represented independently |
@@ -82,6 +82,8 @@ Evidence is "orphaned" here only in the governance sense: it is attached to a re
 | `AB08` | `NegativePotentialDirectionalCompositeWrapper` | `parser_representation` | SRC-CHENG-SYBESMA-2004-POSTVERBAL-DAK | separate implementation provenance from any language claim |
 | `AB13` | `CognitionPredicateContentWrapper` | `parser_representation` | SRC-ALDERETE-ETAL-2017-SYNOPSIS, SRC-YAP-WONG-CHOR-2014-STANCE, SRC-YIP-MATTHEWS-2000-BASIC | separate implementation provenance from any language claim |
 | `AB16` | `BeiPassivePermissiveAmbiguityWrapper` | `parser_representation` | SRC-BODOMO-LAM-YU-2003, SRC-CHAN-2021-BEI, SRC-CHIN-2011-BEI, SRC-CHOW-2018-INDIRECT-PASSIVE, SRC-CHOW-2019-PASSIVE-PERMISSIVE, SRC-WONG-2023-BEI | separate implementation provenance from any language claim |
+| `AB18` | `DirectionalZoDeicticCompositeWrapper` | `parser_representation` | SRC-SHAN-JIN-2025-MOTION-TYPOLOGY, SRC-SIO-BOND-2025, SRC-YIU-2016-DIRECTIONAL-ASPECT, SRC-ZHANG-1970-PREDICATIVE-SUFFIXES | separate implementation provenance from any language claim |
+| `AB21` | `ZoMarkedPerfectivePredicateWrapper` | `parser_representation` | SRC-FAN-CHAN-2022, SRC-SIO-BOND-2025, SRC-SYBESMA-2013, SRC-YIP-MATTHEWS-2000-BASIC | separate implementation provenance from any language claim |
 | `AB23` | `PoliteRequestWrapper` | `parser_representation` | SRC-CHOW-2007-CANTONESE-EVERYONE, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | separate implementation provenance from any language claim |
 | `AB60` | `ScalarQuestionProfileWrapper` | `parser_representation` | SRC-YIP-MATTHEWS-2000-BASIC, SRC-TAM-2021-DOZE | separate implementation provenance from any language claim |
 | `AB73` | `UseFunctionPreposedResourceRole` | `parser_representation` | SRC-WONG-2023-LANGUAGE-SAMPLE | separate implementation provenance from any language claim |
