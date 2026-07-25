@@ -13,22 +13,22 @@ The sweep evaluates every permanent identity. It separates construction identity
 | State | Records |
 |---|---|
 | `boundary_ready` | 1 |
-| `excluded_nonlanguage` | 27 |
+| `excluded_nonlanguage` | 30 |
 | `lexicalized_review` | 2 |
-| `narrowing_candidate` | 36 |
+| `narrowing_candidate` | 35 |
 | `retired_evidence_rehome_candidate` | 42 |
 | `retired_research_gap` | 6 |
-| `source_supported` | 67 |
+| `source_supported` | 65 |
 
 ## Nearest missing gate
 
 | Gate | Records |
 |---|---|
-| `language_claim_defined` | 27 |
-| `negative_boundaries_complete` | 34 |
+| `language_claim_defined` | 30 |
+| `negative_boundaries_complete` | 33 |
 | `reviewed_corpus_evidence` | 3 |
 | `runtime_research_alignment` | 17 |
-| `source_scope_matches_claim` | 52 |
+| `source_scope_matches_claim` | 50 |
 
 ## Narrow-construction discovery signals
 
@@ -46,7 +46,6 @@ These rows may contain a supportable narrow construction even though the present
 | `AA57` | `ExistentialQuestion` | `narrowing_candidate` | ExistentialQuestions | SRC-HARA-2023-POLAR, SRC-LIANG-MAI-2026-GRAMMAR-CODING, SRC-YIP-MATTHEWS-2000-BASIC | source-bounded subtype review |
 | `AA59` | `ExperientialClause` | `narrowing_candidate` | ExperientialAspect | SRC-FAN-2024-JAU-VP-ASPECT, SRC-SIO-BOND-2025, SRC-ZHANG-1970-PREDICATIVE-SUFFIXES, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
 | `AA63` | `ExperientialYesNoQuestion` | `narrowing_candidate` | ExperientialAspect | SRC-FAN-2024-JAU-VP-ASPECT, SRC-HARA-2023-POLAR, SRC-MATTHEWS-YIP-2011-ASPECT-MULTIMEDIA, SRC-YIP-MATTHEWS-2000-BASIC | source-bounded subtype review |
-| `AA75` | `IntransitiveVP` | `narrowing_candidate` | ValencyAndArgumentStructure | SRC-ALDERETE-ETAL-2017-SYNOPSIS, SRC-YIP-MATTHEWS-2000-SYNTACTIC-TRANSFER, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
 | `AA80` | `LocativePlacePhrase` | `narrowing_candidate` | LocativeAndPosturalPredication | SRC-KWAN-2010-LOCATIVE, SRC-YIP-MATTHEWS-2000-BASIC | source-bounded subtype review |
 | `AA82` | `LocativeWhQuestion` | `narrowing_candidate` | TypedWhAndStanceQuestions | SRC-CHOW-2007-CANTONESE-EVERYONE, SRC-WONG-2023-LANGUAGE-SAMPLE, SRC-YIP-MATTHEWS-2000-BASIC, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
 | `AA93` | `MotionGoalVP` | `narrowing_candidate` | GoalSourceAndPath | SRC-CHOR-2018-DIRECTIONALS, SRC-LEUNG-2026-MOTION, SRC-SZETO-2015-PERFECTIVE | source-bounded subtype review |
@@ -114,4 +113,5 @@ These rows may contain a supportable narrow construction even though the present
 | `AB72` | `TimeToActionFrame` | `retired_evidence_rehome_candidate` | TemporalAndMeasurePredication | SRC-YIP-2024-TEMPORAL-ADVERBIAL-CLAUSES, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | ordinary copular/temporal/predicate composition |
 | `AB76` | `TransformationResultFrame` | `retired_evidence_rehome_candidate` | ResultativeAndChangePredication | SRC-KEDZIOR-2023, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | ordinary topic/clause composition |
 | `AB77` | `TransformationResultPredicate` | `retired_evidence_rehome_candidate` | ResultativeAndChangePredication | SRC-KEDZIOR-2023, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | independently sourced transformation predicates |
+| `AA75` | `BareActionPredicateRelationMember` | `excluded_nonlanguage` | ClauseRelationRepresentation | SRC-ALDERETE-ETAL-2017-SYNOPSIS, SRC-YIP-MATTHEWS-2000-SYNTACTIC-TRANSFER, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
 | `AB23` | `PoliteRequestWrapper` | `excluded_nonlanguage` | RequestAndDirectiveRepresentation | SRC-CHOW-2007-CANTONESE-EVERYONE, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | source-bounded subtype review |
