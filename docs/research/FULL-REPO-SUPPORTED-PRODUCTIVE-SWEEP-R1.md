@@ -13,22 +13,22 @@ The sweep evaluates every permanent identity. It separates construction identity
 | State | Records |
 |---|---|
 | `boundary_ready` | 1 |
-| `excluded_nonlanguage` | 31 |
+| `excluded_nonlanguage` | 32 |
 | `lexicalized_review` | 2 |
 | `narrowing_candidate` | 34 |
 | `retired_evidence_rehome_candidate` | 42 |
 | `retired_research_gap` | 6 |
-| `source_supported` | 65 |
+| `source_supported` | 64 |
 
 ## Nearest missing gate
 
 | Gate | Records |
 |---|---|
-| `language_claim_defined` | 31 |
+| `language_claim_defined` | 32 |
 | `negative_boundaries_complete` | 32 |
 | `reviewed_corpus_evidence` | 3 |
 | `runtime_research_alignment` | 17 |
-| `source_scope_matches_claim` | 50 |
+| `source_scope_matches_claim` | 49 |
 
 ## Narrow-construction discovery signals
 
@@ -87,8 +87,8 @@ These rows may contain a supportable narrow construction even though the present
 | `AA70` | `IdentificationFragment` | `retired_evidence_rehome_candidate` | DefinitionAndIdentification | SRC-KWONG-2018-DEMONSTRATIVES, SRC-YIP-MATTHEWS-2000-BASIC | copular identification plus independently licensed discourse fragments |
 | `AA71` | `IdentityWhQuestion` | `retired_evidence_rehome_candidate` | TypedWhAndStanceQuestions | SRC-WONG-2023-LANGUAGE-SAMPLE, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | copular identity and DefinitionExplanatoryFrame research |
 | `AA78` | `LocativeFragment` | `retired_evidence_rehome_candidate` | LocativeFrames | SRC-KWAN-2010-LOCATIVE, SRC-LEE-PAN-2024-VP-ELLIPSIS, SRC-YIP-MATTHEWS-2000-BASIC | LocativePlacePhrase plus separately evidenced ellipsis |
-| `AA87` | `ModalChangeIntoResultFrame` | `retired_evidence_rehome_candidate` | ResultativeAndChangePredication | SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | ClauseSpan/ModalVP plus ChangeIntoPredicate |
-| `AA88` | `ModalResponseFragment` | `retired_evidence_rehome_candidate` | FragmentsAndEllipsis | SRC-LEE-PAN-2024-VP-ELLIPSIS, SRC-LUKE-NANCARROW-1998-AUXILIARIES | ModalVP/Auxiliary + licensed ellipsis + response relation |
+| `AA87` | `ModalChangePredicateCompositeWrapper` | `retired_evidence_rehome_candidate` | ResultAndChangeRepresentation | SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | ClauseSpan/ModalVP plus ChangeIntoPredicate |
+| `AA88` | `ModalEllipsisResponseCompositeWrapper` | `retired_evidence_rehome_candidate` | FragmentAndEllipsisRepresentation | SRC-LEE-PAN-2024-VP-ELLIPSIS, SRC-LUKE-NANCARROW-1998-AUXILIARIES | ModalVP/Auxiliary + licensed ellipsis + response relation |
 | `AA92` | `MotionDelimitedVP` | `retired_evidence_rehome_candidate` | PurposeSerialRelations | SRC-MATTHEWS-2006-SVC, SRC-WONG-2023-LANGUAGE-SAMPLE | typed purpose relation plus DelimitedVP |
 | `AB01` | `NegatedLexicalizedStative` | `retired_evidence_rehome_candidate` | StativePredication | SRC-CHIN-2018-PROHIBITIVES, SRC-LAM-LAU-LEE-2024-SEGMENTATION, SRC-YIP-1988-NEGATION | lexical stative entries plus NegatedStativePredicate and ProhibitiveImperative |
 | `AB06` | `NegativeHaveClause` | `retired_evidence_rehome_candidate` | Negation | SRC-LAM-2018-NEGATION-ASPECT, SRC-YIP-1988-NEGATION | typed negative possession/existence/event research |

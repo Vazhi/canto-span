@@ -23,8 +23,8 @@ Evidence is "orphaned" here only in the governance sense: it is attached to a re
 | `AA70` | `IdentificationFragment` | DefinitionAndIdentification | SRC-KWONG-2018-DEMONSTRATIVES, SRC-YIP-MATTHEWS-2000-BASIC | copular identification plus independently licensed discourse fragments |
 | `AA71` | `IdentityWhQuestion` | TypedWhAndStanceQuestions | SRC-WONG-2023-LANGUAGE-SAMPLE, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | copular identity and DefinitionExplanatoryFrame research |
 | `AA78` | `LocativeFragment` | LocativeFrames | SRC-KWAN-2010-LOCATIVE, SRC-LEE-PAN-2024-VP-ELLIPSIS, SRC-YIP-MATTHEWS-2000-BASIC | LocativePlacePhrase plus separately evidenced ellipsis |
-| `AA87` | `ModalChangeIntoResultFrame` | ResultativeAndChangePredication | SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | ClauseSpan/ModalVP plus ChangeIntoPredicate |
-| `AA88` | `ModalResponseFragment` | FragmentsAndEllipsis | SRC-LEE-PAN-2024-VP-ELLIPSIS, SRC-LUKE-NANCARROW-1998-AUXILIARIES | ModalVP/Auxiliary + licensed ellipsis + response relation |
+| `AA87` | `ModalChangePredicateCompositeWrapper` | ResultAndChangeRepresentation | SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | ClauseSpan/ModalVP plus ChangeIntoPredicate |
+| `AA88` | `ModalEllipsisResponseCompositeWrapper` | FragmentAndEllipsisRepresentation | SRC-LEE-PAN-2024-VP-ELLIPSIS, SRC-LUKE-NANCARROW-1998-AUXILIARIES | ModalVP/Auxiliary + licensed ellipsis + response relation |
 | `AA92` | `MotionDelimitedVP` | PurposeSerialRelations | SRC-MATTHEWS-2006-SVC, SRC-WONG-2023-LANGUAGE-SAMPLE | typed purpose relation plus DelimitedVP |
 | `AB01` | `NegatedLexicalizedStative` | StativePredication | SRC-CHIN-2018-PROHIBITIVES, SRC-LAM-LAU-LEE-2024-SEGMENTATION, SRC-YIP-1988-NEGATION | lexical stative entries plus NegatedStativePredicate and ProhibitiveImperative |
 | `AB06` | `NegativeHaveClause` | Negation | SRC-LAM-2018-NEGATION-ASPECT, SRC-YIP-1988-NEGATION | typed negative possession/existence/event research |
@@ -75,6 +75,7 @@ Evidence is "orphaned" here only in the governance sense: it is attached to a re
 | `AA79` | `PlaceInitialPredicateClauseWrapper` | `parser_representation` | SRC-ALDERETE-ETAL-2017-SYNOPSIS, SRC-LUI-2020-LOCATIVE-INVERSION, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | separate implementation provenance from any language claim |
 | `AA80` | `OvertPlaceExpressionWrapper` | `parser_representation` | SRC-KWAN-2010-LOCATIVE, SRC-YIP-MATTHEWS-2000-BASIC | separate implementation provenance from any language claim |
 | `AA81` | `PostureLocativeActionWrapper` | `parser_representation` | SRC-LUI-2020-LOCATIVE-INVERSION, SRC-WONG-2023-LANGUAGE-SAMPLE, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | separate implementation provenance from any language claim |
+| `AA90` | `HeterogeneousNominalStructureWrapper` | `parser_representation` | SRC-SIO-2011-GE3, SRC-YU-2006-NOMINAL-MODIFIERS | separate implementation provenance from any language claim |
 | `AB05` | `PreverbalNegativeExperientialWrapper` | `parser_representation` | SRC-LAM-2018-NEGATION-ASPECT, SRC-MATTHEWS-YIP-2011-ASPECT-MULTIMEDIA, SRC-ZHANG-1970-PREDICATIVE-SUFFIXES, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | separate implementation provenance from any language claim |
 | `AB16` | `BeiPassivePermissiveAmbiguityWrapper` | `parser_representation` | SRC-BODOMO-LAM-YU-2003, SRC-CHAN-2021-BEI, SRC-CHIN-2011-BEI, SRC-CHOW-2018-INDIRECT-PASSIVE, SRC-CHOW-2019-PASSIVE-PERMISSIVE, SRC-WONG-2023-BEI | separate implementation provenance from any language claim |
 | `AB23` | `PoliteRequestWrapper` | `parser_representation` | SRC-CHOW-2007-CANTONESE-EVERYONE, SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE | separate implementation provenance from any language claim |
