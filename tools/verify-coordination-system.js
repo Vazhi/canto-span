@@ -70,7 +70,7 @@ requireText("docs/current/00-START-HERE.md", "Semantic work claims", "Start Here
 requireText("docs/current/00-START-HERE.md", "integration-owned", "Start Here integration ownership");
 requireText("docs/current/00-START-HERE.md", "changes/pending/", "Start Here pending changeset rule");
 requireText("docs/current/MULTI-AGENT-COORDINATION.md", "same physical file", "same-file concurrency rule");
-requireText("docs/current/MULTI-AGENT-COORDINATION.md", "must not survive a ready-to-merge PR", "pending changeset cleanup rule");
+requireText("docs/current/MULTI-AGENT-COORDINATION.md", "must not survive a ready-to-merge\npull request", "pending changeset cleanup rule");
 
 const pendingDirectory = path.join(root, "changes/pending");
 if (fs.existsSync(pendingDirectory) && config) {
