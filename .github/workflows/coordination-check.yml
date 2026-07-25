@@ -6,145 +6,24 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   issues: read
   pull-requests: read
 
 jobs:
-  reconcile-pr36:
-    if: github.event_name == 'pull_request' && github.event.pull_request.number == 36 && github.actor != 'github-actions[bot]'
+  verify:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-        with:
-          ref: agent/require-user-review-before-merge
-          fetch-depth: 0
       - uses: actions/setup-node@v6
         with:
           node-version: 24
           package-manager-cache: false
-      - name: Verify exact claimed target
-        run: |
-          test "${GITHUB_REPOSITORY}" = "Vazhi/canto-span"
-          test "${{ github.event.pull_request.head.ref }}" = "agent/require-user-review-before-merge"
-          test "${{ github.event.pull_request.base.ref }}" = "main"
-      - name: Apply exact review-policy reconciliation
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          path = Path('tools/coordination/reconcile-pr36-review-policy.js')
-          text = path.read_text()
-          old = '  "tools/verify-agent-coordination.js",\n  "tools/verify-coordination-system.js",\n'
-          if text.count(old) != 1:
-              raise SystemExit('expected one verifier self-scan block')
-          path.write_text(text.replace(old, '', 1))
-          PY
-          set +e
-          node tools/coordination/reconcile-pr36-review-policy.js > /tmp/pr36-reconcile.log 2>&1
-          status=$?
-          set -e
-          if [ "$status" -ne 0 ]; then
-            git reset --hard HEAD
-            mkdir -p changes/pending
-            cp /tmp/pr36-reconcile.log changes/pending/CS-WORK-0003-reconcile-error.txt
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add changes/pending/CS-WORK-0003-reconcile-error.txt
-            git commit -m "Record PR 36 reconciliation mismatch"
-            git push origin HEAD:agent/require-user-review-before-merge
-            exit "$status"
-          fi
-      - name: Complete canonical authority pointers
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-
-          review = Path('docs/current/USER-MERGE-REVIEW.md')
-          text = review.read_text()
-          marker = '# User merge review gate\n\n'
-          addition = ('# User merge review gate\n\n'
-                      '`USER-MERGE-REVIEW.md` is the canonical owner of per-pull-request '
-                      'merge authorization.\n\n')
-          if text.count(marker) != 1:
-              raise SystemExit('expected one user-review heading')
-          review.write_text(text.replace(marker, addition, 1))
-
-          governance = Path('docs/current/GOVERNANCE.md')
-          text = governance.read_text()
-          marker = '## 8. Documentation, coordination, and automation discipline\n\n'
-          addition = (marker +
-                      'Per-pull-request merge authorization is governed by '
-                      '[`USER-MERGE-REVIEW.md`](USER-MERGE-REVIEW.md).\n\n')
-          if text.count(marker) != 1:
-              raise SystemExit('expected one Governance section heading')
-          governance.write_text(text.replace(marker, addition, 1))
-          PY
-      - name: Restore validation-only coordination workflow in workspace
-        run: |
-          rm -f changes/pending/CS-WORK-0003-reconcile-error.txt
-          cat > .github/workflows/coordination-check.yml <<'YAML'
-          name: Coordination claim
-
-          on:
-            pull_request:
-              types: [opened, synchronize, reopened, edited, ready_for_review, converted_to_draft]
-            workflow_dispatch:
-
-          permissions:
-            contents: read
-            issues: read
-            pull-requests: read
-
-          jobs:
-            verify:
-              runs-on: ubuntu-latest
-              steps:
-                - uses: actions/checkout@v6
-                - uses: actions/setup-node@v6
-                  with:
-                    node-version: 24
-                    package-manager-cache: false
-                - name: Verify coordination system
-                  run: npm run verify:coordination
-                - name: Check pull request claim and overlap
-                  if: github.event_name == 'pull_request'
-                  env:
-                    GITHUB_TOKEN: ${{ github.token }}
-                    GITHUB_REPOSITORY: ${{ github.repository }}
-                  run: node tools/coordination/check-pr.js
-          YAML
-      - name: Verify reconciled coordination policy
-        run: |
-          set +e
-          npm run verify:coordination > /tmp/pr36-verify.log 2>&1
-          status=$?
-          set -e
-          if [ "$status" -ne 0 ]; then
-            git reset --hard HEAD
-            mkdir -p changes/pending
-            cp /tmp/pr36-verify.log changes/pending/CS-WORK-0003-reconcile-error.txt
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add changes/pending/CS-WORK-0003-reconcile-error.txt
-            git commit -m "Record PR 36 verifier mismatch"
-            git push origin HEAD:agent/require-user-review-before-merge
-            exit "$status"
-          fi
-      - name: Commit canonical policy and verifier changes only
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add \
-            docs/current/00-START-HERE.md \
-            docs/current/USER-MERGE-REVIEW.md \
-            docs/current/MULTI-AGENT-COORDINATION.md \
-            docs/current/GIT-WORKFLOW.md \
-            docs/current/GOVERNANCE.md \
-            docs/current/TESTING.md \
-            README.md \
-            HANDOFF.md \
-            tools/verify-agent-coordination.js \
-            tools/verify-coordination-system.js
-          git diff --cached --check
-          git commit -m "Remove autonomous merge holdouts"
-          git push origin HEAD:agent/require-user-review-before-merge
+      - name: Verify coordination system
+        run: npm run verify:coordination
+      - name: Check pull request claim and overlap
+        if: github.event_name == 'pull_request'
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: node tools/coordination/check-pr.js
