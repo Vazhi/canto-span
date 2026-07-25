@@ -4,11 +4,17 @@
 **Authority:** project expert systematic review  
 **Records:** `AA80`, `AA82`, `AA83`, `AA85`, `AA86`
 
+## Active ownership
+
+**ChatGPT takeover active. Codex must not pick up this work.**
+
+The user directed ChatGPT to continue the complete Batch 12 integration until merge-ready. Active coordination is recorded in Issues #47 and #50, claim #48, branch `agent/adjudication-batch-12`, and draft PR #49. A later Codex reassignment is valid only if the canonical issue body explicitly changes the active pickup owner.
+
 ## Merge readiness
 
 **NOT READY FOR MERGE — FURTHER WORK REQUIRED**
 
-This report completes the ChatGPT-owned identity and ontology decisions. The branch still requires the immutable batch JSON, deterministic application, generated-registry refresh, complete verification, and independent review. No runtime, status-path, fixture, survey, release, or merge decision is made here.
+This report completes the expert identity and ontology decisions. The branch still requires deterministic application, generated-registry refresh, complete verification, and independent final review. No runtime, status-path, fixture, survey, release, or merge decision is made here.
 
 ## Decisions
 
@@ -93,11 +99,11 @@ The adjudication uses current immutable identity records, active grammar notes, 
 
 Implementation reachability and test success carry zero independent linguistic evidence weight. Evidence does not transfer across a wrapper, spatial role, wh-place role, malformed repair, measure domain, modal reading, lexical subtype, or future successor.
 
-## Required Codex remainder
+## Remaining ChatGPT work
 
-1. Create `data/construction-adjudication-batches/batch-12.json` with every required field from this report and the canonical source/runtime/test basis.
-2. Run `npm run adjudication:apply`, `npm run identity:generate`, and `npm run discovery:generate`.
-3. Refresh all generated registries and current reports required by `docs/current/CONSTRUCTION-ADJUDICATION.md`.
+1. Apply `data/construction-adjudication-batches/batch-12.json` to the canonical identity registry.
+2. Regenerate identity, label-sweep, discovery, and required report outputs.
+3. Refresh all current records required by `docs/current/CONSTRUCTION-ADJUDICATION.md`.
 4. Confirm generated candidate dispositions without hand-editing generator output.
 5. Run `npm run verify:adjudications`, `npm run verify:identities`, `npm run verify:discovery`, `npm run verify`, `npm run verify:research`, and every applicable coordination gate.
 6. Report exact count changes, changed files, and any generator disagreement with the expert decisions.
