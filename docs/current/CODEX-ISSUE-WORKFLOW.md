@@ -1,7 +1,7 @@
 ---
 title: Canto Span — ChatGPT and Codex Task Routing
 status: current
-implementation_status: routing-active; automated-issue-generator-not-implemented
+implementation_status: routing-active; manual-issue-generator-implemented; automatic-dispatch-not-implemented
 tags: [canto-span/infrastructure, canto-span/agents, canto-span/github]
 related: "[[00-START-HERE]] [[MULTI-AGENT-COORDINATION]] [[USER-MERGE-REVIEW]]"
 ---
@@ -11,11 +11,12 @@ related: "[[00-START-HERE]] [[MULTI-AGENT-COORDINATION]] [[USER-MERGE-REVIEW]]"
 This document is the canonical owner of task routing between ChatGPT and Codex for
 Canto Span repository work.
 
-The routing duties in this document are active now. The planned GitHub issue-generator
-and automatic Codex dispatch adapter are not yet implemented. Until they exist,
-ChatGPT creates eligible intake issues directly through available GitHub tools and
-reports them to the user. Creating an issue alone does not prove that Codex has begun
-work; dispatch status must remain explicit and truthful.
+The routing duties in this document are active now. The manual GitHub issue-generator
+is implemented, while automatic Codex dispatch is not. ChatGPT may create eligible
+intake issues directly through available GitHub tools, and a user may invoke the
+manual workflow. Both paths report `manual-pickup-required`. Creating an issue alone
+does not prove that Codex has begun work; dispatch status remains explicit and
+truthful.
 
 This document supplements, but does not replace:
 
@@ -342,7 +343,7 @@ Recommended labels:
 4. ChatGPT creates each eligible Codex intake issue without requiring a reminder.
 5. ChatGPT informs the user of every created issue and truthful dispatch status.
 
-A user may also manually start the future issue-generator workflow, but manual
+A user may also manually start the implemented issue-generator workflow. Manual
 initiation is an additional entry point, not a prerequisite for ChatGPT delegation.
 
 ### 8.2 Pickup and self-screen
@@ -409,19 +410,24 @@ starting Codex unless a controlled end-to-end test has verified that behavior.
 A dispatch failure must leave the intake issue intact and must be reported to the
 user.
 
-## 12. Future issue-generator workflow
+## 12. Manual issue-generator workflow
 
-The later implementation should add:
+The manually triggered
+[`codex-intake-issue.yml`](../../.github/workflows/codex-intake-issue.yml)
+workflow:
 
-1. a manual and ChatGPT-callable GitHub workflow;
-2. a checked-in schema for `canto-span-codex-task-v1`;
-3. an issue generator and validator;
-4. tests for every category and rejection rule;
-5. label validation or setup;
-6. bounded duplicate and overlap checks;
-7. an isolated optional dispatch adapter;
-8. verification of the canonical bootstrap and user-review stop;
-9. an end-to-end low-risk test issue.
+1. accepts structured category, title, outcome, acceptance-criteria, context,
+   protected-state, risk, and execution-mode inputs;
+2. validates them against
+   [`codex-task.schema.json`](../../schemas/codex-task.schema.json) and the
+   prohibited routing classes in this document;
+3. rejects missing required fields, unsupported categories, unsafe direct
+   authorizations, Markdown-fence injection, and an exact duplicate open intake;
+4. creates the canonical issue body with one metadata block and
+   `dispatch_status: manual-pickup-required`;
+5. idempotently creates or reconciles the routing labels;
+6. uses environment variables rather than inserting untrusted input into executable
+   workflow script text.
 
 For issue creation, expected least-privilege permissions are:
 
@@ -429,15 +435,17 @@ For issue creation, expected least-privilege permissions are:
 permissions:
   contents: read
   issues: write
-  pull-requests: read
 ```
 
-The intake workflow should not need `contents: write`, should not create branches,
-and should never merge.
+The implemented workflow does not need pull-request access or `contents: write`. It
+does not dispatch Codex, create branches, create work claims, open pull requests,
+merge, enable auto-merge, or make linguistic, survey, status, release, or governance
+decisions. Exact duplicate detection does not replace Codex self-screening for
+semantic overlap or hidden dependencies.
 
-## 13. Definition of done for the future workflow
+## 13. Definition of done for the manual workflow
 
-The automated workflow is complete only when:
+The manual workflow remains complete only while:
 
 - every allowlisted category produces the documented issue format;
 - prohibited task classes are rejected or routed to ChatGPT;
@@ -448,6 +456,11 @@ The automated workflow is complete only when:
 - no intake issue is mistaken for a semantic work claim;
 - dispatch status is explicit and truthful;
 - failure does not cause partial repository writes;
+- untrusted input remains data rather than executable workflow text;
+- duplicate detection remains bounded to exact open intake matches;
 - Codex pull requests still stop for independent review and explicit user merge
   approval;
 - documentation and implementation describe the same behavior.
+
+An automatic Codex dispatch adapter remains a separate future design and review
+task. It must not be inferred from the presence of this manual generator.

@@ -36,16 +36,20 @@ function forbidText(relativePath, forbidden, label) {
 const requiredFiles = [
   ".github/ISSUE_TEMPLATE/work-claim.yml",
   ".github/pull_request_template.md",
+  ".github/workflows/codex-intake-issue.yml",
   ".github/workflows/coordination-check.yml",
   "changes/pending/README.md",
   "config/coordination-targets.json",
   "docs/current/MULTI-AGENT-COORDINATION.md",
   "docs/current/USER-MERGE-REVIEW.md",
   "schemas/change-set.schema.json",
+  "schemas/codex-task.schema.json",
   "schemas/work-claim.schema.json",
+  "tools/coordination/codex-intake.js",
   "tools/coordination/change-set.js",
   "tools/coordination/check-pr.js",
   "tools/coordination/lib.js",
+  "tests/tooling/coordination/codex-intake.test.js",
   "tests/tooling/coordination/coordination.test.js",
 ];
 for (const file of requiredFiles) read(file);
@@ -53,6 +57,7 @@ for (const file of requiredFiles) read(file);
 for (const file of [
   "config/coordination-targets.json",
   "schemas/change-set.schema.json",
+  "schemas/codex-task.schema.json",
   "schemas/work-claim.schema.json",
 ]) {
   try {
@@ -94,6 +99,57 @@ requireText(".github/workflows/coordination-check.yml", "issues: read", "least-p
 requireText(".github/workflows/coordination-check.yml", "pull-requests: read", "least-privilege PR access");
 requireText(".github/workflows/coordination-check.yml", "contents: read", "least-privilege contents access");
 requireText(".github/workflows/coordination-check.yml", "node tools/coordination/check-pr.js", "online coordination check");
+
+requireText(".github/workflows/codex-intake-issue.yml", "workflow_dispatch:", "manual intake trigger");
+requireText(".github/workflows/codex-intake-issue.yml", "contents: read", "intake least-privilege contents access");
+requireText(".github/workflows/codex-intake-issue.yml", "issues: write", "intake issue write access");
+requireText(".github/workflows/codex-intake-issue.yml", "actions/github-script@v8", "Node 24-compatible issue action");
+requireText(".github/workflows/codex-intake-issue.yml", "inputFromEnvironment(process.env)", "untrusted input environment boundary");
+requireText(".github/workflows/codex-intake-issue.yml", "findExactDuplicate", "bounded exact duplicate check");
+requireText(".github/workflows/codex-intake-issue.yml", "ensureRoutingLabels", "idempotent routing labels");
+forbidText(".github/workflows/codex-intake-issue.yml", "contents: write", "intake content write permission");
+forbidText(".github/workflows/codex-intake-issue.yml", "pull-requests: write", "intake PR write permission");
+forbidText(".github/workflows/codex-intake-issue.yml", "run:", "intake shell execution");
+
+requireText("docs/current/CODEX-ISSUE-WORKFLOW.md", "manual-issue-generator-implemented", "manual generator status");
+requireText("docs/current/CODEX-ISSUE-WORKFLOW.md", "manual-pickup-required", "truthful manual dispatch");
+requireText("docs/current/CODEX-ISSUE-WORKFLOW.md", ".github/workflows/codex-intake-issue.yml", "manual generator path");
+requireText("tools/coordination/codex-intake.js", "schemas/codex-task.schema.json", "checked-in intake schema");
+requireText("tools/coordination/codex-intake.js", "CANONICAL_BOOTSTRAP", "canonical intake bootstrap");
+
+try {
+  const codexTaskSchema = JSON.parse(read("schemas/codex-task.schema.json"));
+  const categories = codexTaskSchema?.properties?.category?.enum;
+  if (codexTaskSchema?.properties?.schema?.const !== "canto-span-codex-task-v1") {
+    errors.push({ type: "invalid_schema", file: "schemas/codex-task.schema.json", detail: "wrong task schema identifier" });
+  }
+  if (!Array.isArray(categories) || categories.length !== 10 || new Set(categories).size !== 10) {
+    errors.push({ type: "invalid_schema", file: "schemas/codex-task.schema.json", detail: "expected ten unique Codex-ready categories" });
+  }
+  const workflow = read(".github/workflows/codex-intake-issue.yml");
+  const categoryBlock = workflow.match(/      category:\n[\s\S]*?        options:\n([\s\S]*?)      title:/);
+  const workflowCategories = categoryBlock
+    ? [...categoryBlock[1].matchAll(/^\s*-\s+([a-z][a-z-]+)\s*$/gm)].map((match) => match[1])
+    : [];
+  if (JSON.stringify(workflowCategories) !== JSON.stringify(categories)) {
+    errors.push({ type: "invalid_workflow", file: ".github/workflows/codex-intake-issue.yml", detail: "category choices must exactly match the checked-in task schema" });
+  }
+  if (codexTaskSchema?.properties?.dispatch_status?.const !== "manual-pickup-required") {
+    errors.push({ type: "invalid_schema", file: "schemas/codex-task.schema.json", detail: "dispatch status must remain manual-pickup-required" });
+  }
+  for (const field of [
+    "chatgpt_routing_complete",
+    "codex_self_screen_required",
+    "work_claim_required",
+    "user_merge_approval_required",
+  ]) {
+    if (codexTaskSchema?.properties?.[field]?.const !== true) {
+      errors.push({ type: "invalid_schema", file: "schemas/codex-task.schema.json", detail: `${field} must remain true` });
+    }
+  }
+} catch (error) {
+  errors.push({ type: "invalid_schema", file: "schemas/codex-task.schema.json", detail: error.message });
+}
 
 requireText("AGENTS.md", "work-claim issue", "agent work claim bootstrap");
 requireText("AGENTS.md", "MULTI-AGENT-COORDINATION.md", "agent coordination pointer");

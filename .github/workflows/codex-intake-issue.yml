@@ -1,0 +1,111 @@
+name: Create Codex intake issue
+
+on:
+  workflow_dispatch:
+    inputs:
+      category:
+        description: Codex-ready category from the canonical routing contract
+        required: true
+        type: choice
+        options:
+          - runtime-bug
+          - tests-fixtures
+          - verification-audit
+          - data-schema
+          - documentation-consistency
+          - corpus-tooling
+          - ci-repository-tooling
+          - behavior-preserving-refactor
+          - accepted-specification
+          - repository-pr-audit
+      title:
+        description: Concise issue title
+        required: true
+        type: string
+      outcome:
+        description: One bounded observable outcome
+        required: true
+        type: string
+      acceptance_criteria:
+        description: Required checks and observable acceptance criteria, one per line
+        required: true
+        type: string
+      relevant_context:
+        description: Canonical files, accepted specification, and dependencies
+        required: false
+        type: string
+      protected_state:
+        description: Protected state or files, one per line
+        required: false
+        type: string
+      risk:
+        description: Task risk
+        required: true
+        default: medium
+        type: choice
+        options:
+          - low
+          - medium
+          - high
+      execution_mode:
+        description: Whether Codex may implement changes or only report findings
+        required: true
+        default: implementation
+        type: choice
+        options:
+          - implementation
+          - findings-only
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  create:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Validate input and create intake issue
+        uses: actions/github-script@v8
+        env:
+          INPUT_CATEGORY: ${{ inputs.category }}
+          INPUT_TITLE: ${{ inputs.title }}
+          INPUT_OUTCOME: ${{ inputs.outcome }}
+          INPUT_ACCEPTANCE_CRITERIA: ${{ inputs.acceptance_criteria }}
+          INPUT_RELEVANT_CONTEXT: ${{ inputs.relevant_context }}
+          INPUT_PROTECTED_STATE: ${{ inputs.protected_state }}
+          INPUT_RISK: ${{ inputs.risk }}
+          INPUT_EXECUTION_MODE: ${{ inputs.execution_mode }}
+        with:
+          script: |
+            const {
+              buildIntakeIssue,
+              ensureRoutingLabels,
+              findExactDuplicate,
+              inputFromEnvironment,
+            } = require("./tools/coordination/codex-intake");
+
+            const intake = buildIntakeIssue(inputFromEnvironment(process.env));
+            const openIssues = await github.paginate(
+              github.rest.issues.listForRepo,
+              {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                state: "open",
+                per_page: 100,
+              },
+            );
+            const duplicate = findExactDuplicate(openIssues, intake);
+            if (duplicate) {
+              throw new Error(`exact open Codex intake already exists: #${duplicate.number}`);
+            }
+
+            await ensureRoutingLabels(github, context.repo, intake.labels);
+            const response = await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: intake.title,
+              body: intake.body,
+              labels: intake.labels.map((label) => label.name),
+            });
+            core.notice(`created Codex intake issue #${response.data.number}: ${response.data.html_url}`);
