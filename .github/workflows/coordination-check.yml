@@ -79,7 +79,7 @@ jobs:
               raise SystemExit('expected one Governance section heading')
           governance.write_text(text.replace(marker, addition, 1))
           PY
-      - name: Restore validation-only coordination workflow
+      - name: Restore validation-only coordination workflow in workspace
         run: |
           rm -f changes/pending/CS-WORK-0003-reconcile-error.txt
           cat > .github/workflows/coordination-check.yml <<'YAML'
@@ -130,11 +130,21 @@ jobs:
             git push origin HEAD:agent/require-user-review-before-merge
             exit "$status"
           fi
-      - name: Commit the coherent branch state
+      - name: Commit canonical policy and verifier changes only
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
+          git add \
+            docs/current/00-START-HERE.md \
+            docs/current/USER-MERGE-REVIEW.md \
+            docs/current/MULTI-AGENT-COORDINATION.md \
+            docs/current/GIT-WORKFLOW.md \
+            docs/current/GOVERNANCE.md \
+            docs/current/TESTING.md \
+            README.md \
+            HANDOFF.md \
+            tools/verify-agent-coordination.js \
+            tools/verify-coordination-system.js
           git diff --cached --check
           git commit -m "Remove autonomous merge holdouts"
           git push origin HEAD:agent/require-user-review-before-merge
