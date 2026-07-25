@@ -1,0 +1,327 @@
+{
+  "schema": "canto-span-construction-adjudications-v1",
+  "adjudicated_on": "2026-07-24",
+  "adjudication_authority": "project expert systematic review",
+  "records": [
+    {
+      "construction_uuid": "207c70dd-359d-531e-bc19-2806b257a7d2",
+      "construction_code": "AA72",
+      "legacy_label": "ImpersonalEnvironmentalClause",
+      "approved_canonical_name": "EnvironmentalPredicateClauseWrapper",
+      "claim_layer": "parser_representation",
+      "family_name": "EnvironmentalRepresentation",
+      "profile_name": "WeatherEventTransitionAndAmbientPropertyAggregate",
+      "profile_description": "An implementation aggregate over several subjectless or environmentally framed predicate types: conventional weather-event predicates such as 落雨 and 打風, the daylight-transition predicate 天光, and ambient degree-property predicates such as 好凍 or 好熱 when licensed by overt temporal or spatial framing. These branches do not establish one shared Cantonese argument structure, valency class, subject analysis, or environmental construction.",
+      "learner_label": null,
+      "behavior_research_alignment": "disjoint",
+      "terminology_alignment": "misleading",
+      "recommended_action": "internalize_and_decompose",
+      "status_recommendation": "migrate to parser_heuristic after compatibility migration; preserve conventional weather events, daylight transitions, ambient property predication, and temporal or spatial framing as independently typed structures",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-ALDERETE-ETAL-2017-SYNOPSIS",
+          "SRC-TSUNO-2021-VOICE-TRANSITIVITY",
+          "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
+        ],
+        "runtime_locations": [
+          "main.js:4985-5024",
+          "main.js:14053-14105",
+          "main.js:14373-14479"
+        ],
+        "test_file": "tests/constructions/ImpersonalEnvironmentalClause.json",
+        "additional_research": [
+          "The fifteen executable positives mix conventional weather events, a daylight transition, time-framed ambient properties, location-framed ambient properties, modal questions, and embedded clauses. The checked coursebook explicitly warns that these visible predicate types should not be assigned one argument structure, while the other sources support only narrower property-predicate and weather-event observations."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "copula-less property predication",
+          "source_id": "SRC-ALDERETE-ETAL-2017-SYNOPSIS",
+          "scope_match": "contrastive"
+        },
+        {
+          "term": "落雨喇 without an overt nominal",
+          "source_id": "SRC-TSUNO-2021-VOICE-TRANSITIVITY",
+          "scope_match": "exact"
+        },
+        {
+          "term": "distinct ambient-quality and weather-event predicate structures",
+          "source_id": "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE",
+          "scope_match": "exact"
+        }
+      ],
+      "former_names": [
+        "ImpersonalEnvironmentalClause"
+      ],
+      "successor_profiles": [
+        "ConventionalWeatherEventPredicateClause",
+        "DaylightTransitionClause",
+        "TimeFramedAmbientPropertyClause",
+        "LocationFramedAmbientPropertyClause"
+      ],
+      "rationale": "ImpersonalEnvironmentalClause assigns one clause identity to branches whose overt structures and source support are different. The matcher itself distinguishes conventional weather events, 天光 transition, and ambient degree-property predication, then places some of them inside temporal or locative wrappers. EnvironmentalPredicateClauseWrapper preserves the compatibility aggregate without allowing those branches to transfer evidence to one another or compete as one language construction.",
+      "unresolved_blockers": [
+        "map every current positive to a conventional weather-event, daylight-transition, ambient-property, temporal-frame, or locative-frame record",
+        "define whether conventional 落雨 and 打風 require one shared language identity or separate lexical profiles",
+        "keep subjectlessness observations separate from null-expletive, pro-drop, and valency claims",
+        "complete compatibility migration before changing emitted legacy labels"
+      ]
+    },
+    {
+      "construction_uuid": "835d7e4f-ba3b-5483-846b-4a562212ec24",
+      "construction_code": "AA75",
+      "legacy_label": "IntransitiveVP",
+      "approved_canonical_name": "BareActionPredicateRelationMember",
+      "claim_layer": "parser_representation",
+      "family_name": "ClauseRelationRepresentation",
+      "profile_name": "SingleActionVerbWithoutOvertObject",
+      "profile_description": "An implementation span used when a clause-relation segment consists of one visible action predicate and no overt following object, as in 笑 or context-linked 同意. Surface object absence does not establish lexical intransitivity, exclude a discourse-recoverable null object, identify an omitted complement, or prove that all matched lexemes share one valency class.",
+      "learner_label": null,
+      "behavior_research_alignment": "disjoint",
+      "terminology_alignment": "misleading",
+      "recommended_action": "internalize_and_decompose",
+      "status_recommendation": "migrate to parser_heuristic after compatibility migration; represent independently established lexical intransitivity separately from discourse-conditioned object or complement omission and from clause-relation segmentation",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-ALDERETE-ETAL-2017-SYNOPSIS",
+          "SRC-YIP-MATTHEWS-2000-SYNTACTIC-TRANSFER",
+          "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
+        ],
+        "runtime_locations": [
+          "main.js:15729-15749"
+        ],
+        "test_file": "tests/constructions/IntransitiveVP.json",
+        "additional_research": [
+          "The runtime creates the label only for a one-node action predicate inside a clause-relation member and explicitly says that no object is inserted. Its positives contain only 笑 and context-bound 同意. The sources instead distinguish auxiliary ellipsis, discourse-recoverable null objects, and agreement responses, so object absence alone cannot license an IntransitiveVP analysis."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "main-verb omission with auxiliary support",
+          "source_id": "SRC-ALDERETE-ETAL-2017-SYNOPSIS",
+          "scope_match": "contrastive"
+        },
+        {
+          "term": "contextually recoverable null objects",
+          "source_id": "SRC-YIP-MATTHEWS-2000-SYNTACTIC-TRANSFER",
+          "scope_match": "contrastive"
+        },
+        {
+          "term": "同意 agreement response in a supplied discourse frame",
+          "source_id": "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE",
+          "scope_match": "partial"
+        }
+      ],
+      "former_names": [
+        "IntransitiveVP"
+      ],
+      "successor_profiles": [
+        "LexicallyIntransitivePredicate",
+        "ContextRecoverableObjectOmission",
+        "ContextLinkedAgreementPredicate"
+      ],
+      "rationale": "The legacy name converts a parser observation—one visible action predicate with no overt object—into a lexical valency judgment. The implementation is explicitly a relation-member fallback, and the source record warns that Cantonese permits context-sensitive object omission. BareActionPredicateRelationMember therefore preserves the exact parser function while removing unsupported intransitivity and hidden-argument conclusions.",
+      "unresolved_blockers": [
+        "identify which matched lexemes are independently established as lexically intransitive",
+        "separate null-object and omitted-complement licensing from complete objectless uses",
+        "map clause-relation membership independently from lexical valency",
+        "complete compatibility migration before changing emitted legacy labels"
+      ]
+    },
+    {
+      "construction_uuid": "5a77623d-eced-5f83-b0ad-ff1aea8d4b2d",
+      "construction_code": "AA76",
+      "legacy_label": "LexicalGiveRelation",
+      "approved_canonical_name": "BeiThemeRecipientGiveVP",
+      "claim_layer": "language_construction",
+      "family_name": "LexicalGiveAndDative",
+      "profile_name": "OptionalSubjectBeiThemeRecipient",
+      "profile_description": "Lexical 畀 or 俾, optionally preceded by an overt person-denoting subject, is followed by an overt theme or thing-denoting nominal and then an overt recipient-candidate person nominal, as in 我畀錢你 and 畀本書佢. An immediately postverbal 咗 is represented as independent aspect. The profile excludes person-before-thing order, simplified 给 without separate Cantonese orthographic evidence, passive or permissive 畀, post-theme linker uses, omitted arguments, and any claim of free order alternation.",
+      "learner_label": null,
+      "behavior_research_alignment": "runtime_broader",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
+      "status_recommendation": "retain research_pending for lexical 畀/俾 with overt theme-before-recipient order; quarantine person-before-thing and 给 branches from this UUID until each has independent form-specific evidence, role analysis, corpus review, role-neutral panel evidence, and held-out validation",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-BODOMO-LAM-YU-2003",
+          "SRC-CHIN-2011-BEI",
+          "SRC-LI-LEE-2021-DATIVE",
+          "SRC-NGAI-2023-BEI",
+          "SRC-WONG-2023-BEI",
+          "SRC-XU-PEYRAUBE-1997-DOC"
+        ],
+        "runtime_locations": [
+          "main.js:11069-11184"
+        ],
+        "test_file": "tests/constructions/LexicalGiveRelation.json",
+        "additional_research": [
+          "The matcher already distinguishes a reviewed theme-before-recipient baseline from a person-before-thing branch whose roles remain unresolved. The direct sources support lexical 畀/俾 with theme before recipient and warn that order, lexical choice, role, and weight interact. The executable set also contains 给你水, which is outside the directly verified 畀/俾 orthographic profile."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "lexical 畀 with theme before beneficiary or recipient",
+          "source_id": "SRC-BODOMO-LAM-YU-2003",
+          "scope_match": "exact"
+        },
+        {
+          "term": "lexical GIVE theme-recipient order",
+          "source_id": "SRC-CHIN-2011-BEI",
+          "scope_match": "exact"
+        },
+        {
+          "term": "distinct dative construction types and meanings",
+          "source_id": "SRC-LI-LEE-2021-DATIVE",
+          "scope_match": "restrictive"
+        },
+        {
+          "term": "sparse and mixed evidence for alternative order and weight",
+          "source_id": "SRC-WONG-2023-BEI",
+          "scope_match": "contrastive"
+        },
+        {
+          "term": "interaction of order, lexical choice, thematic role, and weight",
+          "source_id": "SRC-XU-PEYRAUBE-1997-DOC",
+          "scope_match": "restrictive"
+        }
+      ],
+      "former_names": [
+        "LexicalGiveRelation"
+      ],
+      "successor_profiles": [],
+      "rationale": "LexicalGiveRelation is too abstract and currently covers two orders that the matcher itself treats differently. The strongest common source-backed profile is lexical 畀/俾 followed by theme and recipient candidate. BeiThemeRecipientGiveVP exposes the overt predicate and order, retains the UUID for the defensible baseline, and prevents unresolved person-before-thing or unverified orthographic branches from inheriting its evidence.",
+      "unresolved_blockers": [
+        "remove or separately quarantine person-before-thing matches from this UUID during compatibility migration",
+        "verify whether 给 is an authorized Cantonese written variant for this profile before retaining that test branch",
+        "audit optional subject, aspect placement, nominal complexity, pronouns, and recipient interpretation",
+        "complete diverse corpus, role-neutral panel, and held-out validation"
+      ]
+    },
+    {
+      "construction_uuid": "c130b11d-3828-53d9-ae28-7344fb742201",
+      "construction_code": "AA77",
+      "legacy_label": "LocativeExistentialClause",
+      "approved_canonical_name": "PlaceInitialJauMouExistentialClause",
+      "claim_layer": "language_construction",
+      "family_name": "JauMouExistence",
+      "profile_name": "OvertLocationJauOrMouIntroducedNP",
+      "profile_description": "An overt place or spatial-domain expression is followed by existential 有 or negative existential 冇 and an overt introduced nominal, as in 屋企有本書, 枱上面有支筆, or 屋企冇人. The place expression is not forced to be a grammatical subject or topic, and no expletive is inserted. The profile excludes explicit-subject possession, static 喺 clauses, existential-presentational clauses with a following locative coda, and the older topic + 入面/入邊 + wh/focus + 有 compatibility formula.",
+      "learner_label": null,
+      "behavior_research_alignment": "runtime_broader",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
+      "status_recommendation": "retain research_pending for overt place + 有/冇 + introduced NP; remove the interior wh/focus compatibility formula from this UUID unless independent evidence establishes it as the same construction, then complete polarity, location, NP, corpus, panel, and held-out boundaries",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-LAM-2018-NEGATION-ASPECT",
+          "SRC-LAM-LAU-LEE-2024-SEGMENTATION",
+          "SRC-YIP-MATTHEWS-2000-BASIC"
+        ],
+        "runtime_locations": [
+          "main.js:10684-10694",
+          "main.js:14236-14279"
+        ],
+        "test_file": "tests/constructions/LocativeExistentialClause.json",
+        "additional_research": [
+          "All six executable positives use overt place-first 有/冇 followed by an introduced NP. The sources directly support a place-first negative existential, distinguish explicit-subject possession from subjectless existential introduction, and state that the sentence begins with the place expression without a preposition. A separate older fallback also emits this label for topic + 入面/入邊 + wh/focus + 有, which is not part of the narrow shared core."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "place expression + 冇 + nominal negative existential",
+          "source_id": "SRC-LAM-2018-NEGATION-ASPECT",
+          "scope_match": "exact"
+        },
+        {
+          "term": "existential introduction without an overt subject",
+          "source_id": "SRC-LAM-LAU-LEE-2024-SEGMENTATION",
+          "scope_match": "close"
+        },
+        {
+          "term": "place-first existential sentence without a preposition",
+          "source_id": "SRC-YIP-MATTHEWS-2000-BASIC",
+          "scope_match": "exact"
+        }
+      ],
+      "former_names": [
+        "LocativeExistentialClause"
+      ],
+      "successor_profiles": [],
+      "rationale": "LocativeExistentialClause is broadly recognizable, but it leaves the decisive surface order and polarity markers implicit and currently absorbs an unrelated interior wh/focus formula. PlaceInitialJauMouExistentialClause retains the UUID for the directly supported place + 有/冇 + NP core while keeping possessive, presentational, static-locative, and legacy interior-formula evidence separate.",
+      "unresolved_blockers": [
+        "separate the older interior wh/focus fallback from the place-first existential profile",
+        "audit positive and negative polarity without assuming identical discourse conditions",
+        "test location-domain types, introduced nominal types, particles, and embedding",
+        "complete corpus, role-neutral panel, and held-out validation"
+      ]
+    },
+    {
+      "construction_uuid": "c9bbbbda-2cbf-584b-838f-133cb8f99fad",
+      "construction_code": "AA79",
+      "legacy_label": "LocativeFrameClause",
+      "approved_canonical_name": "PlaceInitialPredicateClauseWrapper",
+      "claim_layer": "parser_representation",
+      "family_name": "LocativeRepresentation",
+      "profile_name": "LocationWithPropertyPositioningOrAmbientPredicateAggregate",
+      "profile_description": "An implementation aggregate whose first child is an overt place or spatial-domain expression, followed by one of several independently structured predicates: a property predicate such as 好靜, a positioning predicate with aspect and an overt postverbal theme such as 擺咗部電話, or an ambient environmental property wrapper such as 好熱. The aggregate does not establish one locative construction or determine whether the place is subject, topic, frame, or oblique.",
+      "learner_label": null,
+      "behavior_research_alignment": "disjoint",
+      "terminology_alignment": "misleading",
+      "recommended_action": "internalize_and_decompose",
+      "status_recommendation": "migrate to parser_heuristic after compatibility migration; preserve place-initial property predication, place-initial positioning or locative-inversion candidates, and location-framed ambient properties as separate language-level research profiles",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-ALDERETE-ETAL-2017-SYNOPSIS",
+          "SRC-LUI-2020-LOCATIVE-INVERSION",
+          "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
+        ],
+        "runtime_locations": [
+          "main.js:14321-14368",
+          "main.js:14420-14465"
+        ],
+        "test_file": "tests/constructions/LocativeFrameClause.json",
+        "additional_research": [
+          "The executable positives divide evenly between place-initial property clauses and place-initial positioning clauses with perfective aspect and a postverbal theme. The runtime also uses the same label for location-framed ambient temperature. The sources treat property predication, locative-inversion analysis, place expressions, and environmental descriptions separately and do not authorize one shared LocativeFrameClause identity."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "copula-less property predication",
+          "source_id": "SRC-ALDERETE-ETAL-2017-SYNOPSIS",
+          "scope_match": "contrastive"
+        },
+        {
+          "term": "locative inversion analysis under theoretical debate",
+          "source_id": "SRC-LUI-2020-LOCATIVE-INVERSION",
+          "scope_match": "partial"
+        },
+        {
+          "term": "separate place expressions, ambient descriptions, and weather events",
+          "source_id": "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE",
+          "scope_match": "contrastive"
+        }
+      ],
+      "former_names": [
+        "LocativeFrameClause"
+      ],
+      "successor_profiles": [
+        "PlaceInitialPropertyPredicateClause",
+        "PlaceInitialPositioningPredicateClause",
+        "LocationFramedAmbientPropertyClause"
+      ],
+      "rationale": "LocativeFrameClause is a compatibility wrapper over branches with different predicate structures and different research questions. The matcher distinguishes property, positioning, and ambient subtypes and deliberately leaves the place expression's grammatical relation unresolved. PlaceInitialPredicateClauseWrapper preserves that implementation function while preventing one branch's evidence from promoting the others.",
+      "unresolved_blockers": [
+        "map each current positive to property, positioning, or ambient language-level research records",
+        "keep locative-inversion theory separate from observable place-first order",
+        "define independent boundaries for place status, aspect, postverbal theme, and ambient interpretation",
+        "complete compatibility migration before changing emitted legacy labels"
+      ]
+    }
+  ]
+}

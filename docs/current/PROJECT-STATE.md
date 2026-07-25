@@ -15,8 +15,8 @@ policy or ontology.
 | Parked construction notes | 0 |
 | Retired labels | 48 |
 | Permanent UUID records | 181 |
-| Expert-adjudicated UUIDs | 49 |
-| Pending UUID adjudications | 132 |
+| Expert-adjudicated UUIDs | 54 |
+| Pending UUID adjudications | 127 |
 
 ## Linguistic-status inventory
 
@@ -40,7 +40,7 @@ The permanent registry covers all 133 current and 48 retired records. UUID and
 short code are immutable; canonical name, family, profile, claim layer, and
 learner label may be revised through accepted UUID-keyed adjudication.
 
-Ten accepted batches have adjudicated 49 records. Important consequences
+Eleven accepted batches have adjudicated 54 records. Important consequences
 include:
 
 - `AB30 ZoMarkedPerfectiveObjectVP` is the nearest direct candidate;
@@ -63,6 +63,11 @@ include:
   discourse representation and narrows `AA58`, `AA62`, `AA67`, and `AA68` to
   `JauMeNounWhQuestion`, `GwoMarkedExperientialObjectVP`,
   `NeMarkedThematicContinuationQuestion`, and `MotionVerbDouGoalVP`;
+- Batch 11 reclassifies `AA72 EnvironmentalPredicateClauseWrapper`,
+  `AA75 BareActionPredicateRelationMember`, and
+  `AA79 PlaceInitialPredicateClauseWrapper` as internal representations and narrows
+  `AA76` and `AA77` to `BeiThemeRecipientGiveVP` and
+  `PlaceInitialJauMouExistentialClause`;
 - true splits require new UUIDs. Evidence is never transferred automatically from
   an umbrella, retired record, or parser representation.
 
@@ -97,9 +102,9 @@ verification requirements.
 | Candidate state | Records |
 |---|---:|
 | `boundary_ready` | 1 |
-| `source_supported` | 67 |
-| `narrowing_candidate` | 36 |
-| `excluded_nonlanguage` | 27 |
+| `source_supported` | 65 |
+| `narrowing_candidate` | 35 |
+| `excluded_nonlanguage` | 30 |
 | `lexicalized_review` | 2 |
 | `retired_evidence_rehome_candidate` | 42 |
 | `retired_research_gap` | 6 |
@@ -168,10 +173,10 @@ evidence weight.
    mutually consistent.
 2. Select the most beneficial bounded non-parked task after inspecting current
    main, open PRs, dependencies, evidence gaps, learner impact, and ontology risk.
-3. Continue expert adjudication with Batch 11 when it remains the best available
-   ontology task: `AA72 ImpersonalEnvironmentalClause`, `AA75 IntransitiveVP`,
-   `AA76 LexicalGiveRelation`, `AA77 LocativeExistentialClause`, and
-   `AA79 LocativeFrameClause`.
+3. Continue expert adjudication with Batch 12 when it remains the best available
+   ontology task: `AA80 LocativePlacePhrase`, `AA82 LocativeWhQuestion`,
+   `AA83 MalformedCandidate`, `AA85 MeasureExpression`, and
+   `AA86 ModalANotAQuestion`.
 4. Keep `YUE-JUDGMENT-PILOT-01` in collection until its stopping rule is met, then
    perform an item-level instrument and response audit before revising any follow-
    up instrument.

@@ -27,23 +27,23 @@ superseding decision with explicit rationale and relationships.
 ## Current progress
 
 - permanent records: **181**;
-- accepted adjudications: **49**;
-- pending adjudications: **132**;
-- accepted batches: **10**;
+- accepted adjudications: **54**;
+- pending adjudications: **127**;
+- accepted batches: **11**;
 - latest batch report:
-  `docs/research/CONSTRUCTION-ADJUDICATION-BATCH-10.md`.
+  `docs/research/CONSTRUCTION-ADJUDICATION-BATCH-11.md`.
 
 This count records completed identity and ontology judgments only. It does not
 imply runtime migration, status migration, corpus closure, panel completion,
 held-out validation, or promotion.
 
-The next planned batch is Batch 11:
+The next planned batch is Batch 12:
 
-1. `AA72 ImpersonalEnvironmentalClause`;
-2. `AA75 IntransitiveVP`;
-3. `AA76 LexicalGiveRelation`;
-4. `AA77 LocativeExistentialClause`;
-5. `AA79 LocativeFrameClause`.
+1. `AA80 LocativePlacePhrase`;
+2. `AA82 LocativeWhQuestion`;
+3. `AA83 MalformedCandidate`;
+4. `AA85 MeasureExpression`;
+5. `AA86 ModalANotAQuestion`.
 
 ## Required decision fields
 

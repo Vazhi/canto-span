@@ -17,8 +17,8 @@ do not become current instructions merely because they are detailed.
 - construction workflow: **133 available / 0 parked**
 - retired labels: **48**
 - permanent UUID records: **181**
-- completed expert adjudications: **49**
-- pending expert adjudications: **132**
+- completed expert adjudications: **54**
+- pending expert adjudications: **127**
 - `research_pending`: **79**
 - promotion-ready constructions: **0**
 - direct `boundary_ready` candidates: **1** (`AB30`)

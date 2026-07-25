@@ -8,19 +8,19 @@
   "promotion_eligible_now_count": 0,
   "state_counts": {
     "boundary_ready": 1,
-    "excluded_nonlanguage": 27,
+    "excluded_nonlanguage": 30,
     "lexicalized_review": 2,
-    "narrowing_candidate": 36,
+    "narrowing_candidate": 35,
     "retired_evidence_rehome_candidate": 42,
     "retired_research_gap": 6,
-    "source_supported": 67
+    "source_supported": 65
   },
   "nearest_missing_gate_counts": {
-    "language_claim_defined": 27,
-    "negative_boundaries_complete": 34,
+    "language_claim_defined": 30,
+    "negative_boundaries_complete": 33,
     "reviewed_corpus_evidence": 3,
     "runtime_research_alignment": 17,
-    "source_scope_matches_claim": 52
+    "source_scope_matches_claim": 50
   },
   "records": [
     {
@@ -1120,98 +1120,6 @@
         "unsupported_generalization_requires_source_runtime_reconciliation"
       ],
       "source_path": "grammar/unsupported_generalization/ExperientialYesNoQuestion.md"
-    },
-    {
-      "construction_uuid": "835d7e4f-ba3b-5483-846b-4a562212ec24",
-      "construction_code": "AA75",
-      "canonical_name": "IntransitiveVP",
-      "legacy_label": "IntransitiveVP",
-      "lifecycle_state": "current",
-      "claim_layer": "language_construction",
-      "linguistic_status": "unsupported_generalization",
-      "family_id": "L45",
-      "family_name": "ValencyAndArgumentStructure",
-      "profile_name": null,
-      "learner_label": null,
-      "source_ids": [
-        "SRC-ALDERETE-ETAL-2017-SYNOPSIS",
-        "SRC-YIP-MATTHEWS-2000-SYNTACTIC-TRANSFER",
-        "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
-      ],
-      "preserved_source_ids": [],
-      "future_research_preserved_as": "",
-      "standard_positive_test_count": 4,
-      "standard_boundary_test_count": 2,
-      "gates": {
-        "language_claim_defined": {
-          "status": "pass",
-          "evidence": "plain_language_claim_present"
-        },
-        "independent_source_support": {
-          "status": "pass",
-          "evidence": "all_cited_sources_verified_and_independent",
-          "detail": "3/3"
-        },
-        "source_scope_matches_claim": {
-          "status": "pass",
-          "evidence": "current_standard_reaudit_complete_with_verified_sources"
-        },
-        "runtime_research_alignment": {
-          "status": "pass",
-          "evidence": "code_document_reconciled_with_current_metadata"
-        },
-        "executable_positive_cases_present": {
-          "status": "pass",
-          "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "4"
-        },
-        "negative_boundaries_complete": {
-          "status": "partial",
-          "evidence": "negative_boundaries_incomplete"
-        },
-        "reviewed_corpus_evidence": {
-          "status": "not_started",
-          "evidence": "no_reviewed_corpus_evidence"
-        },
-        "role_neutral_panel_threshold": {
-          "status": "partial",
-          "evidence": "panel_evidence_incomplete",
-          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":false,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
-        },
-        "held_out_validation": {
-          "status": "not_started",
-          "evidence": "no_passing_held_out_record"
-        },
-        "ontology_conflicts_resolved": {
-          "status": "unresolved",
-          "evidence": "identity_label_review_pending"
-        }
-      },
-      "supported_gate_eligible": false,
-      "supported_gate_blockers": [
-        "requirement_failed:locked_clean_panel_instrument",
-        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
-        "requirement_failed:role_neutral_panel",
-        "requirement_failed:instrument_quality_resolved",
-        "requirement_failed:quality_screen_complete",
-        "requirement_failed:panel_adjudication_complete",
-        "requirement_failed:critical_contrast_coverage_complete",
-        "requirement_failed:positive_and_negative_contrasts_reviewed",
-        "requirement_failed:negative_boundary_inventory_complete"
-      ],
-      "discovery_hard_blockers": [
-        "discovery_gate:reviewed_corpus_evidence",
-        "discovery_gate:held_out_validation",
-        "discovery_gate:ontology_conflicts_resolved"
-      ],
-      "readiness_score": 68,
-      "candidate_state": "narrowing_candidate",
-      "nearest_missing_gate": "negative_boundaries_complete",
-      "next_best_action": "complete and execute the negative-boundary inventory",
-      "automatic_risk_flags": [
-        "unsupported_generalization_requires_source_runtime_reconciliation"
-      ],
-      "source_path": "grammar/unsupported_generalization/IntransitiveVP.md"
     },
     {
       "construction_uuid": "d3c2e159-8bd7-5f57-a8f8-8deb4a12ad86",
@@ -6536,14 +6444,14 @@
     {
       "construction_uuid": "5a77623d-eced-5f83-b0ad-ff1aea8d4b2d",
       "construction_code": "AA76",
-      "canonical_name": "LexicalGiveRelation",
+      "canonical_name": "BeiThemeRecipientGiveVP",
       "legacy_label": "LexicalGiveRelation",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "research_pending",
-      "family_id": "L01",
-      "family_name": "CoverbAndParticipantRelations",
-      "profile_name": null,
+      "family_id": null,
+      "family_name": "LexicalGiveAndDative",
+      "profile_name": "OptionalSubjectBeiThemeRecipient",
       "learner_label": null,
       "source_ids": [
         "SRC-BODOMO-LAM-YU-2003",
@@ -6598,8 +6506,9 @@
           "evidence": "no_passing_held_out_record"
         },
         "ontology_conflicts_resolved": {
-          "status": "unresolved",
-          "evidence": "identity_label_review_pending"
+          "status": "partial",
+          "evidence": "identity_label_review_in_progress",
+          "detail": "{\"review_state\":\"complete\",\"behavior_research_alignment\":\"runtime_broader\",\"terminology_alignment\":\"neutral_descriptive_preferred\",\"recommended_action\":\"rename_retain_narrow\",\"automatic_risk_flags\":[\"generic_head_requires_boundary_definition\"],\"review_notes\":\"Expert adjudication 2026-07-24. LexicalGiveRelation is too abstract and currently covers two orders that the matcher itself treats differently. The strongest common source-backed profile is lexical 畀/俾 followed by theme and recipient candidate. BeiThemeRecipientGiveVP exposes the overt predicate and order, retains the UUID for the defensible baseline, and prevents unresolved person-before-thing or unverified orthographic branches from inheriting its evidence. Status recommendation: retain research_pending for lexical 畀/俾 with overt theme-before-recipient order; quarantine person-before-thing and 给 branches from this UUID until each has independent form-specific evidence, role analysis, corpus review, role-neutral panel evidence, and held-out validation\"}"
         }
       },
       "supported_gate_eligible": false,
@@ -6622,7 +6531,7 @@
         "discovery_gate:held_out_validation",
         "discovery_gate:ontology_conflicts_resolved"
       ],
-      "readiness_score": 48,
+      "readiness_score": 50,
       "candidate_state": "source_supported",
       "nearest_missing_gate": "source_scope_matches_claim",
       "next_best_action": "complete source-scope reaudit and split any unsupported extensions",
@@ -9048,6 +8957,101 @@
       "source_path": "grammar/research_pending/VerbComplementVP.md"
     },
     {
+      "construction_uuid": "c130b11d-3828-53d9-ae28-7344fb742201",
+      "construction_code": "AA77",
+      "canonical_name": "PlaceInitialJauMouExistentialClause",
+      "legacy_label": "LocativeExistentialClause",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "family_id": null,
+      "family_name": "JauMouExistence",
+      "profile_name": "OvertLocationJauOrMouIntroducedNP",
+      "learner_label": null,
+      "source_ids": [
+        "SRC-LAM-2018-NEGATION-ASPECT",
+        "SRC-LAM-LAU-LEE-2024-SEGMENTATION",
+        "SRC-YIP-MATTHEWS-2000-BASIC"
+      ],
+      "preserved_source_ids": [],
+      "future_research_preserved_as": "",
+      "standard_positive_test_count": 6,
+      "standard_boundary_test_count": 2,
+      "gates": {
+        "language_claim_defined": {
+          "status": "pass",
+          "evidence": "plain_language_claim_present"
+        },
+        "independent_source_support": {
+          "status": "pass",
+          "evidence": "all_cited_sources_verified_and_independent",
+          "detail": "3/3"
+        },
+        "source_scope_matches_claim": {
+          "status": "partial",
+          "evidence": "verified_sources_but_scope_reaudit_incomplete"
+        },
+        "runtime_research_alignment": {
+          "status": "unresolved",
+          "evidence": "runtime_research_alignment_not_reconciled"
+        },
+        "executable_positive_cases_present": {
+          "status": "pass",
+          "evidence": "executable_positive_cases_present_implementation_only",
+          "detail": "6"
+        },
+        "negative_boundaries_complete": {
+          "status": "partial",
+          "evidence": "negative_boundaries_incomplete"
+        },
+        "reviewed_corpus_evidence": {
+          "status": "not_started",
+          "evidence": "no_reviewed_corpus_evidence"
+        },
+        "role_neutral_panel_threshold": {
+          "status": "not_started",
+          "evidence": "no_eligible_panel_evidence",
+          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":true,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
+        },
+        "held_out_validation": {
+          "status": "not_started",
+          "evidence": "no_passing_held_out_record"
+        },
+        "ontology_conflicts_resolved": {
+          "status": "partial",
+          "evidence": "identity_label_review_in_progress",
+          "detail": "{\"review_state\":\"complete\",\"behavior_research_alignment\":\"runtime_broader\",\"terminology_alignment\":\"neutral_descriptive_preferred\",\"recommended_action\":\"rename_retain_narrow\",\"automatic_risk_flags\":[\"generic_head_requires_boundary_definition\"],\"review_notes\":\"Expert adjudication 2026-07-24. LocativeExistentialClause is broadly recognizable, but it leaves the decisive surface order and polarity markers implicit and currently absorbs an unrelated interior wh/focus formula. PlaceInitialJauMouExistentialClause retains the UUID for the directly supported place + 有/冇 + NP core while keeping possessive, presentational, static-locative, and legacy interior-formula evidence separate. Status recommendation: retain research_pending for overt place + 有/冇 + introduced NP; remove the interior wh/focus compatibility formula from this UUID unless independent evidence establishes it as the same construction, then complete polarity, location, NP, corpus, panel, and held-out boundaries\"}"
+        }
+      },
+      "supported_gate_eligible": false,
+      "supported_gate_blockers": [
+        "requirement_failed:locked_clean_panel_instrument",
+        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
+        "requirement_failed:instrument_quality_resolved",
+        "requirement_failed:quality_screen_complete",
+        "requirement_failed:panel_adjudication_complete",
+        "requirement_failed:critical_contrast_coverage_complete",
+        "requirement_failed:positive_and_negative_contrasts_reviewed",
+        "requirement_failed:negative_boundary_inventory_complete",
+        "requirement_failed:code_document_reconciled",
+        "requirement_failed:current_code_review_metadata",
+        "requirement_failed:current_standard_reaudit_complete"
+      ],
+      "discovery_hard_blockers": [
+        "discovery_gate:reviewed_corpus_evidence",
+        "discovery_gate:held_out_validation",
+        "discovery_gate:ontology_conflicts_resolved"
+      ],
+      "readiness_score": 45,
+      "candidate_state": "source_supported",
+      "nearest_missing_gate": "source_scope_matches_claim",
+      "next_best_action": "complete source-scope reaudit and split any unsupported extensions",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition"
+      ],
+      "source_path": "grammar/research_pending/LocativeExistentialClause.md"
+    },
+    {
       "construction_uuid": "258c1d00-8a77-543c-a26f-2e66d3a37849",
       "construction_code": "AA56",
       "canonical_name": "ExistentialPresentationalClause",
@@ -9139,288 +9143,6 @@
         "generic_head_requires_boundary_definition"
       ],
       "source_path": "grammar/research_pending/ExistentialPresentationalClause.md"
-    },
-    {
-      "construction_uuid": "207c70dd-359d-531e-bc19-2806b257a7d2",
-      "construction_code": "AA72",
-      "canonical_name": "ImpersonalEnvironmentalClause",
-      "legacy_label": "ImpersonalEnvironmentalClause",
-      "lifecycle_state": "current",
-      "claim_layer": "language_construction",
-      "linguistic_status": "research_pending",
-      "family_id": "L41",
-      "family_name": "EnvironmentalClauses",
-      "profile_name": null,
-      "learner_label": null,
-      "source_ids": [
-        "SRC-ALDERETE-ETAL-2017-SYNOPSIS",
-        "SRC-TSUNO-2021-VOICE-TRANSITIVITY",
-        "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
-      ],
-      "preserved_source_ids": [],
-      "future_research_preserved_as": "",
-      "standard_positive_test_count": 15,
-      "standard_boundary_test_count": 2,
-      "gates": {
-        "language_claim_defined": {
-          "status": "pass",
-          "evidence": "plain_language_claim_present"
-        },
-        "independent_source_support": {
-          "status": "pass",
-          "evidence": "all_cited_sources_verified_and_independent",
-          "detail": "3/3"
-        },
-        "source_scope_matches_claim": {
-          "status": "partial",
-          "evidence": "verified_sources_but_scope_reaudit_incomplete"
-        },
-        "runtime_research_alignment": {
-          "status": "unresolved",
-          "evidence": "runtime_research_alignment_not_reconciled"
-        },
-        "executable_positive_cases_present": {
-          "status": "pass",
-          "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "15"
-        },
-        "negative_boundaries_complete": {
-          "status": "partial",
-          "evidence": "negative_boundaries_incomplete"
-        },
-        "reviewed_corpus_evidence": {
-          "status": "not_started",
-          "evidence": "no_reviewed_corpus_evidence"
-        },
-        "role_neutral_panel_threshold": {
-          "status": "not_started",
-          "evidence": "no_eligible_panel_evidence",
-          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":true,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
-        },
-        "held_out_validation": {
-          "status": "not_started",
-          "evidence": "no_passing_held_out_record"
-        },
-        "ontology_conflicts_resolved": {
-          "status": "unresolved",
-          "evidence": "identity_label_review_pending"
-        }
-      },
-      "supported_gate_eligible": false,
-      "supported_gate_blockers": [
-        "requirement_failed:locked_clean_panel_instrument",
-        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
-        "requirement_failed:instrument_quality_resolved",
-        "requirement_failed:quality_screen_complete",
-        "requirement_failed:panel_adjudication_complete",
-        "requirement_failed:critical_contrast_coverage_complete",
-        "requirement_failed:positive_and_negative_contrasts_reviewed",
-        "requirement_failed:negative_boundary_inventory_complete",
-        "requirement_failed:code_document_reconciled",
-        "requirement_failed:current_code_review_metadata",
-        "requirement_failed:current_standard_reaudit_complete"
-      ],
-      "discovery_hard_blockers": [
-        "discovery_gate:reviewed_corpus_evidence",
-        "discovery_gate:held_out_validation",
-        "discovery_gate:ontology_conflicts_resolved"
-      ],
-      "readiness_score": 43,
-      "candidate_state": "source_supported",
-      "nearest_missing_gate": "source_scope_matches_claim",
-      "next_best_action": "complete source-scope reaudit and split any unsupported extensions",
-      "automatic_risk_flags": [
-        "generic_head_requires_boundary_definition"
-      ],
-      "source_path": "grammar/research_pending/ImpersonalEnvironmentalClause.md"
-    },
-    {
-      "construction_uuid": "c130b11d-3828-53d9-ae28-7344fb742201",
-      "construction_code": "AA77",
-      "canonical_name": "LocativeExistentialClause",
-      "legacy_label": "LocativeExistentialClause",
-      "lifecycle_state": "current",
-      "claim_layer": "language_construction",
-      "linguistic_status": "research_pending",
-      "family_id": "L39",
-      "family_name": "ExistentialAndPresentationalClauses",
-      "profile_name": null,
-      "learner_label": null,
-      "source_ids": [
-        "SRC-LAM-2018-NEGATION-ASPECT",
-        "SRC-LAM-LAU-LEE-2024-SEGMENTATION",
-        "SRC-YIP-MATTHEWS-2000-BASIC"
-      ],
-      "preserved_source_ids": [],
-      "future_research_preserved_as": "",
-      "standard_positive_test_count": 6,
-      "standard_boundary_test_count": 2,
-      "gates": {
-        "language_claim_defined": {
-          "status": "pass",
-          "evidence": "plain_language_claim_present"
-        },
-        "independent_source_support": {
-          "status": "pass",
-          "evidence": "all_cited_sources_verified_and_independent",
-          "detail": "3/3"
-        },
-        "source_scope_matches_claim": {
-          "status": "partial",
-          "evidence": "verified_sources_but_scope_reaudit_incomplete"
-        },
-        "runtime_research_alignment": {
-          "status": "unresolved",
-          "evidence": "runtime_research_alignment_not_reconciled"
-        },
-        "executable_positive_cases_present": {
-          "status": "pass",
-          "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "6"
-        },
-        "negative_boundaries_complete": {
-          "status": "partial",
-          "evidence": "negative_boundaries_incomplete"
-        },
-        "reviewed_corpus_evidence": {
-          "status": "not_started",
-          "evidence": "no_reviewed_corpus_evidence"
-        },
-        "role_neutral_panel_threshold": {
-          "status": "not_started",
-          "evidence": "no_eligible_panel_evidence",
-          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":true,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
-        },
-        "held_out_validation": {
-          "status": "not_started",
-          "evidence": "no_passing_held_out_record"
-        },
-        "ontology_conflicts_resolved": {
-          "status": "unresolved",
-          "evidence": "identity_label_review_pending"
-        }
-      },
-      "supported_gate_eligible": false,
-      "supported_gate_blockers": [
-        "requirement_failed:locked_clean_panel_instrument",
-        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
-        "requirement_failed:instrument_quality_resolved",
-        "requirement_failed:quality_screen_complete",
-        "requirement_failed:panel_adjudication_complete",
-        "requirement_failed:critical_contrast_coverage_complete",
-        "requirement_failed:positive_and_negative_contrasts_reviewed",
-        "requirement_failed:negative_boundary_inventory_complete",
-        "requirement_failed:code_document_reconciled",
-        "requirement_failed:current_code_review_metadata",
-        "requirement_failed:current_standard_reaudit_complete"
-      ],
-      "discovery_hard_blockers": [
-        "discovery_gate:reviewed_corpus_evidence",
-        "discovery_gate:held_out_validation",
-        "discovery_gate:ontology_conflicts_resolved"
-      ],
-      "readiness_score": 43,
-      "candidate_state": "source_supported",
-      "nearest_missing_gate": "source_scope_matches_claim",
-      "next_best_action": "complete source-scope reaudit and split any unsupported extensions",
-      "automatic_risk_flags": [
-        "generic_head_requires_boundary_definition"
-      ],
-      "source_path": "grammar/research_pending/LocativeExistentialClause.md"
-    },
-    {
-      "construction_uuid": "c9bbbbda-2cbf-584b-838f-133cb8f99fad",
-      "construction_code": "AA79",
-      "canonical_name": "LocativeFrameClause",
-      "legacy_label": "LocativeFrameClause",
-      "lifecycle_state": "current",
-      "claim_layer": "language_construction",
-      "linguistic_status": "research_pending",
-      "family_id": "L40",
-      "family_name": "LocativeClauseFrames",
-      "profile_name": null,
-      "learner_label": null,
-      "source_ids": [
-        "SRC-ALDERETE-ETAL-2017-SYNOPSIS",
-        "SRC-LUI-2020-LOCATIVE-INVERSION",
-        "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
-      ],
-      "preserved_source_ids": [],
-      "future_research_preserved_as": "",
-      "standard_positive_test_count": 4,
-      "standard_boundary_test_count": 2,
-      "gates": {
-        "language_claim_defined": {
-          "status": "pass",
-          "evidence": "plain_language_claim_present"
-        },
-        "independent_source_support": {
-          "status": "pass",
-          "evidence": "all_cited_sources_verified_and_independent",
-          "detail": "3/3"
-        },
-        "source_scope_matches_claim": {
-          "status": "partial",
-          "evidence": "verified_sources_but_scope_reaudit_incomplete"
-        },
-        "runtime_research_alignment": {
-          "status": "unresolved",
-          "evidence": "runtime_research_alignment_not_reconciled"
-        },
-        "executable_positive_cases_present": {
-          "status": "pass",
-          "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "4"
-        },
-        "negative_boundaries_complete": {
-          "status": "partial",
-          "evidence": "negative_boundaries_incomplete"
-        },
-        "reviewed_corpus_evidence": {
-          "status": "not_started",
-          "evidence": "no_reviewed_corpus_evidence"
-        },
-        "role_neutral_panel_threshold": {
-          "status": "not_started",
-          "evidence": "no_eligible_panel_evidence",
-          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":true,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
-        },
-        "held_out_validation": {
-          "status": "not_started",
-          "evidence": "no_passing_held_out_record"
-        },
-        "ontology_conflicts_resolved": {
-          "status": "unresolved",
-          "evidence": "identity_label_review_pending"
-        }
-      },
-      "supported_gate_eligible": false,
-      "supported_gate_blockers": [
-        "requirement_failed:locked_clean_panel_instrument",
-        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
-        "requirement_failed:instrument_quality_resolved",
-        "requirement_failed:quality_screen_complete",
-        "requirement_failed:panel_adjudication_complete",
-        "requirement_failed:critical_contrast_coverage_complete",
-        "requirement_failed:positive_and_negative_contrasts_reviewed",
-        "requirement_failed:negative_boundary_inventory_complete",
-        "requirement_failed:code_document_reconciled",
-        "requirement_failed:current_code_review_metadata",
-        "requirement_failed:current_standard_reaudit_complete"
-      ],
-      "discovery_hard_blockers": [
-        "discovery_gate:reviewed_corpus_evidence",
-        "discovery_gate:held_out_validation",
-        "discovery_gate:ontology_conflicts_resolved"
-      ],
-      "readiness_score": 43,
-      "candidate_state": "source_supported",
-      "nearest_missing_gate": "source_scope_matches_claim",
-      "next_best_action": "complete source-scope reaudit and split any unsupported extensions",
-      "automatic_risk_flags": [
-        "generic_head_requires_boundary_definition"
-      ],
-      "source_path": "grammar/research_pending/LocativeFrameClause.md"
     },
     {
       "construction_uuid": "d269f68c-b8dd-5b64-8dcc-ac1f2e82baab",
@@ -15090,6 +14812,289 @@
       "next_best_action": "define a narrow falsifiable language claim before adding evidence",
       "automatic_risk_flags": [],
       "source_path": "grammar/research_pending/FragmentAnswer.md"
+    },
+    {
+      "construction_uuid": "207c70dd-359d-531e-bc19-2806b257a7d2",
+      "construction_code": "AA72",
+      "canonical_name": "EnvironmentalPredicateClauseWrapper",
+      "legacy_label": "ImpersonalEnvironmentalClause",
+      "lifecycle_state": "current",
+      "claim_layer": "parser_representation",
+      "linguistic_status": "research_pending",
+      "family_id": null,
+      "family_name": "EnvironmentalRepresentation",
+      "profile_name": "WeatherEventTransitionAndAmbientPropertyAggregate",
+      "learner_label": null,
+      "source_ids": [
+        "SRC-ALDERETE-ETAL-2017-SYNOPSIS",
+        "SRC-TSUNO-2021-VOICE-TRANSITIVITY",
+        "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
+      ],
+      "preserved_source_ids": [],
+      "future_research_preserved_as": "",
+      "standard_positive_test_count": 15,
+      "standard_boundary_test_count": 2,
+      "gates": {
+        "language_claim_defined": {
+          "status": "not_applicable",
+          "evidence": "non_language_claim_layer"
+        },
+        "independent_source_support": {
+          "status": "pass",
+          "evidence": "all_cited_sources_verified_and_independent",
+          "detail": "3/3"
+        },
+        "source_scope_matches_claim": {
+          "status": "partial",
+          "evidence": "verified_sources_but_scope_reaudit_incomplete"
+        },
+        "runtime_research_alignment": {
+          "status": "unresolved",
+          "evidence": "runtime_research_alignment_not_reconciled"
+        },
+        "executable_positive_cases_present": {
+          "status": "pass",
+          "evidence": "executable_positive_cases_present_implementation_only",
+          "detail": "15"
+        },
+        "negative_boundaries_complete": {
+          "status": "partial",
+          "evidence": "negative_boundaries_incomplete"
+        },
+        "reviewed_corpus_evidence": {
+          "status": "not_started",
+          "evidence": "no_reviewed_corpus_evidence"
+        },
+        "role_neutral_panel_threshold": {
+          "status": "not_started",
+          "evidence": "no_eligible_panel_evidence",
+          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":true,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
+        },
+        "held_out_validation": {
+          "status": "not_started",
+          "evidence": "no_passing_held_out_record"
+        },
+        "ontology_conflicts_resolved": {
+          "status": "partial",
+          "evidence": "identity_label_review_in_progress",
+          "detail": "{\"review_state\":\"complete\",\"behavior_research_alignment\":\"disjoint\",\"terminology_alignment\":\"misleading\",\"recommended_action\":\"internalize_and_decompose\",\"automatic_risk_flags\":[\"generic_head_requires_boundary_definition\"],\"review_notes\":\"Expert adjudication 2026-07-24. ImpersonalEnvironmentalClause assigns one clause identity to branches whose overt structures and source support are different. The matcher itself distinguishes conventional weather events, 天光 transition, and ambient degree-property predication, then places some of them inside temporal or locative wrappers. EnvironmentalPredicateClauseWrapper preserves the compatibility aggregate without allowing those branches to transfer evidence to one another or compete as one language construction. Status recommendation: migrate to parser_heuristic after compatibility migration; preserve conventional weather events, daylight transitions, ambient property predication, and temporal or spatial framing as independently typed structures\"}"
+        }
+      },
+      "supported_gate_eligible": false,
+      "supported_gate_blockers": [
+        "requirement_failed:locked_clean_panel_instrument",
+        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
+        "requirement_failed:instrument_quality_resolved",
+        "requirement_failed:quality_screen_complete",
+        "requirement_failed:panel_adjudication_complete",
+        "requirement_failed:critical_contrast_coverage_complete",
+        "requirement_failed:positive_and_negative_contrasts_reviewed",
+        "requirement_failed:negative_boundary_inventory_complete",
+        "requirement_failed:code_document_reconciled",
+        "requirement_failed:current_code_review_metadata",
+        "requirement_failed:current_standard_reaudit_complete"
+      ],
+      "discovery_hard_blockers": [
+        "discovery_gate:reviewed_corpus_evidence",
+        "discovery_gate:held_out_validation",
+        "discovery_gate:ontology_conflicts_resolved"
+      ],
+      "readiness_score": 0,
+      "candidate_state": "excluded_nonlanguage",
+      "nearest_missing_gate": "language_claim_defined",
+      "next_best_action": "define a narrow falsifiable language claim before adding evidence",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition"
+      ],
+      "source_path": "grammar/research_pending/ImpersonalEnvironmentalClause.md"
+    },
+    {
+      "construction_uuid": "835d7e4f-ba3b-5483-846b-4a562212ec24",
+      "construction_code": "AA75",
+      "canonical_name": "BareActionPredicateRelationMember",
+      "legacy_label": "IntransitiveVP",
+      "lifecycle_state": "current",
+      "claim_layer": "parser_representation",
+      "linguistic_status": "unsupported_generalization",
+      "family_id": null,
+      "family_name": "ClauseRelationRepresentation",
+      "profile_name": "SingleActionVerbWithoutOvertObject",
+      "learner_label": null,
+      "source_ids": [
+        "SRC-ALDERETE-ETAL-2017-SYNOPSIS",
+        "SRC-YIP-MATTHEWS-2000-SYNTACTIC-TRANSFER",
+        "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
+      ],
+      "preserved_source_ids": [],
+      "future_research_preserved_as": "",
+      "standard_positive_test_count": 4,
+      "standard_boundary_test_count": 2,
+      "gates": {
+        "language_claim_defined": {
+          "status": "not_applicable",
+          "evidence": "non_language_claim_layer"
+        },
+        "independent_source_support": {
+          "status": "pass",
+          "evidence": "all_cited_sources_verified_and_independent",
+          "detail": "3/3"
+        },
+        "source_scope_matches_claim": {
+          "status": "pass",
+          "evidence": "current_standard_reaudit_complete_with_verified_sources"
+        },
+        "runtime_research_alignment": {
+          "status": "pass",
+          "evidence": "code_document_reconciled_with_current_metadata"
+        },
+        "executable_positive_cases_present": {
+          "status": "pass",
+          "evidence": "executable_positive_cases_present_implementation_only",
+          "detail": "4"
+        },
+        "negative_boundaries_complete": {
+          "status": "partial",
+          "evidence": "negative_boundaries_incomplete"
+        },
+        "reviewed_corpus_evidence": {
+          "status": "not_started",
+          "evidence": "no_reviewed_corpus_evidence"
+        },
+        "role_neutral_panel_threshold": {
+          "status": "partial",
+          "evidence": "panel_evidence_incomplete",
+          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":false,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
+        },
+        "held_out_validation": {
+          "status": "not_started",
+          "evidence": "no_passing_held_out_record"
+        },
+        "ontology_conflicts_resolved": {
+          "status": "partial",
+          "evidence": "identity_label_review_in_progress",
+          "detail": "{\"review_state\":\"complete\",\"behavior_research_alignment\":\"disjoint\",\"terminology_alignment\":\"misleading\",\"recommended_action\":\"internalize_and_decompose\",\"automatic_risk_flags\":[\"unsupported_generalization_requires_source_runtime_reconciliation\"],\"review_notes\":\"Expert adjudication 2026-07-24. The legacy name converts a parser observation—one visible action predicate with no overt object—into a lexical valency judgment. The implementation is explicitly a relation-member fallback, and the source record warns that Cantonese permits context-sensitive object omission. BareActionPredicateRelationMember therefore preserves the exact parser function while removing unsupported intransitivity and hidden-argument conclusions. Status recommendation: migrate to parser_heuristic after compatibility migration; represent independently established lexical intransitivity separately from discourse-conditioned object or complement omission and from clause-relation segmentation\"}"
+        }
+      },
+      "supported_gate_eligible": false,
+      "supported_gate_blockers": [
+        "requirement_failed:locked_clean_panel_instrument",
+        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
+        "requirement_failed:role_neutral_panel",
+        "requirement_failed:instrument_quality_resolved",
+        "requirement_failed:quality_screen_complete",
+        "requirement_failed:panel_adjudication_complete",
+        "requirement_failed:critical_contrast_coverage_complete",
+        "requirement_failed:positive_and_negative_contrasts_reviewed",
+        "requirement_failed:negative_boundary_inventory_complete"
+      ],
+      "discovery_hard_blockers": [
+        "discovery_gate:reviewed_corpus_evidence",
+        "discovery_gate:held_out_validation",
+        "discovery_gate:ontology_conflicts_resolved"
+      ],
+      "readiness_score": 0,
+      "candidate_state": "excluded_nonlanguage",
+      "nearest_missing_gate": "language_claim_defined",
+      "next_best_action": "define a narrow falsifiable language claim before adding evidence",
+      "automatic_risk_flags": [
+        "unsupported_generalization_requires_source_runtime_reconciliation"
+      ],
+      "source_path": "grammar/unsupported_generalization/IntransitiveVP.md"
+    },
+    {
+      "construction_uuid": "c9bbbbda-2cbf-584b-838f-133cb8f99fad",
+      "construction_code": "AA79",
+      "canonical_name": "PlaceInitialPredicateClauseWrapper",
+      "legacy_label": "LocativeFrameClause",
+      "lifecycle_state": "current",
+      "claim_layer": "parser_representation",
+      "linguistic_status": "research_pending",
+      "family_id": null,
+      "family_name": "LocativeRepresentation",
+      "profile_name": "LocationWithPropertyPositioningOrAmbientPredicateAggregate",
+      "learner_label": null,
+      "source_ids": [
+        "SRC-ALDERETE-ETAL-2017-SYNOPSIS",
+        "SRC-LUI-2020-LOCATIVE-INVERSION",
+        "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
+      ],
+      "preserved_source_ids": [],
+      "future_research_preserved_as": "",
+      "standard_positive_test_count": 4,
+      "standard_boundary_test_count": 2,
+      "gates": {
+        "language_claim_defined": {
+          "status": "not_applicable",
+          "evidence": "non_language_claim_layer"
+        },
+        "independent_source_support": {
+          "status": "pass",
+          "evidence": "all_cited_sources_verified_and_independent",
+          "detail": "3/3"
+        },
+        "source_scope_matches_claim": {
+          "status": "partial",
+          "evidence": "verified_sources_but_scope_reaudit_incomplete"
+        },
+        "runtime_research_alignment": {
+          "status": "unresolved",
+          "evidence": "runtime_research_alignment_not_reconciled"
+        },
+        "executable_positive_cases_present": {
+          "status": "pass",
+          "evidence": "executable_positive_cases_present_implementation_only",
+          "detail": "4"
+        },
+        "negative_boundaries_complete": {
+          "status": "partial",
+          "evidence": "negative_boundaries_incomplete"
+        },
+        "reviewed_corpus_evidence": {
+          "status": "not_started",
+          "evidence": "no_reviewed_corpus_evidence"
+        },
+        "role_neutral_panel_threshold": {
+          "status": "not_started",
+          "evidence": "no_eligible_panel_evidence",
+          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":true,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
+        },
+        "held_out_validation": {
+          "status": "not_started",
+          "evidence": "no_passing_held_out_record"
+        },
+        "ontology_conflicts_resolved": {
+          "status": "partial",
+          "evidence": "identity_label_review_in_progress",
+          "detail": "{\"review_state\":\"complete\",\"behavior_research_alignment\":\"disjoint\",\"terminology_alignment\":\"misleading\",\"recommended_action\":\"internalize_and_decompose\",\"automatic_risk_flags\":[\"generic_head_requires_boundary_definition\"],\"review_notes\":\"Expert adjudication 2026-07-24. LocativeFrameClause is a compatibility wrapper over branches with different predicate structures and different research questions. The matcher distinguishes property, positioning, and ambient subtypes and deliberately leaves the place expression's grammatical relation unresolved. PlaceInitialPredicateClauseWrapper preserves that implementation function while preventing one branch's evidence from promoting the others. Status recommendation: migrate to parser_heuristic after compatibility migration; preserve place-initial property predication, place-initial positioning or locative-inversion candidates, and location-framed ambient properties as separate language-level research profiles\"}"
+        }
+      },
+      "supported_gate_eligible": false,
+      "supported_gate_blockers": [
+        "requirement_failed:locked_clean_panel_instrument",
+        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
+        "requirement_failed:instrument_quality_resolved",
+        "requirement_failed:quality_screen_complete",
+        "requirement_failed:panel_adjudication_complete",
+        "requirement_failed:critical_contrast_coverage_complete",
+        "requirement_failed:positive_and_negative_contrasts_reviewed",
+        "requirement_failed:negative_boundary_inventory_complete",
+        "requirement_failed:code_document_reconciled",
+        "requirement_failed:current_code_review_metadata",
+        "requirement_failed:current_standard_reaudit_complete"
+      ],
+      "discovery_hard_blockers": [
+        "discovery_gate:reviewed_corpus_evidence",
+        "discovery_gate:held_out_validation",
+        "discovery_gate:ontology_conflicts_resolved"
+      ],
+      "readiness_score": 0,
+      "candidate_state": "excluded_nonlanguage",
+      "nearest_missing_gate": "language_claim_defined",
+      "next_best_action": "define a narrow falsifiable language claim before adding evidence",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition"
+      ],
+      "source_path": "grammar/research_pending/LocativeFrameClause.md"
     },
     {
       "construction_uuid": "fe8db66e-e163-5694-84ca-1948b778be28",
