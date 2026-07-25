@@ -34,11 +34,19 @@ identity tuple: `construction_uuid`, `construction_code`, `canonical_name`, and
 grammar-note path and runtime `construction` field; new analysis uses the
 permanent code and canonical name.
 
-The lifecycle block in `panel-review-state.json` is checked against
-`followup-draft-v1-metadata.json`. It records `YUE-JUDGMENT-PILOT-01` as
-`collection_in_progress` and `YUE-JUDGMENT-FOLLOWUP-01-DRAFT` as a
-non-deployable `draft_followup`. Reported live responses that have not been
-exported, screened, and adjudicated are not accepted panel evidence.
+The lifecycle block in `panel-review-state.json` is the canonical owner of pilot
+collection (`active` or `closed`) and item-level audit (`not_started`,
+`in_progress`, or `accepted`) state. `followup-draft-v1-metadata.json` owns the
+follow-up identity, lifecycle (`draft`, `locked`, `generated`, or `deployed`),
+and tracked artifacts. Compatibility-status fields preserve existing note links
+but do not control the deployment gate.
+
+The deterministic lock permits `locked`, `generated`, or `deployed` only when
+pilot collection is `closed` and the item-level audit is `accepted`. It also
+rejects generated or deployable artifacts while the follow-up lifecycle remains
+`draft`. The current state is `active` / `not_started` / `draft`, and all tracked
+artifacts are non-deployable draft sources. Reported live responses that have not
+been exported, screened, and adjudicated are not accepted panel evidence.
 
 The AB30 active note links the accepted decision ledger and its mechanical source
 ledger. Its five reviewed candidates (two genuine and three false positives)

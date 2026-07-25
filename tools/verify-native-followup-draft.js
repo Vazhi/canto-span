@@ -2,6 +2,7 @@
 "use strict";
 const fs = require("node:fs");
 const path = require("node:path");
+const { lifecycleFailures } = require("./verify-active-review-workflow");
 const root = path.resolve(__dirname, "..");
 const panel = path.join(root, "review-packets/native-panel/active-v2");
 const corpus = path.join(root, "review-packets/corpus-review/AB30");
@@ -13,13 +14,14 @@ function tsv(file) {
   return lines.filter(Boolean).map(line => Object.fromEntries(headers.map((h,i)=>[h,line.split("\t")[i]||""])));
 }
 const meta = json(path.join(panel, "followup-draft-v1-metadata.json"));
+const state = json(path.join(panel, "panel-review-state.json"));
 const items = tsv(path.join(panel, "followup-draft-v1-items.tsv"));
 const crosswalk = tsv(path.join(panel, "followup-draft-v1-item-crosswalk.tsv"));
 const responses = tsv(path.join(panel, "followup-draft-v1-response-template.tsv"));
 const decisions = json(path.join(corpus, "review-decisions-r1.json"));
 const ledger = json(path.join(corpus, "candidate-ledger.json"));
-check(meta.instrument_status === "draft_followup" && meta.deployment_allowed === false, "follow-up must remain non-deployable draft");
-check(meta.current_live_instrument.status === "collection_in_progress", "live pilot must remain in progress");
+const lifecycleErrors = lifecycleFailures(state, meta);
+check(lifecycleErrors.length === 0, `follow-up lifecycle lock failed: ${JSON.stringify(lifecycleErrors)}`);
 check(meta.primary_focal_constructions.map(x=>x.code).join(",") === "AB53,AB30", "primary codes must be AB53,AB30");
 check(meta.primary_focal_constructions[0].canonical_name === "ResourceInitialJungLaiFunctionClause", "AB53 canonical name mismatch");
 check(meta.primary_focal_constructions[1].canonical_name === "ZoMarkedPerfectiveObjectVP", "AB30 canonical name mismatch");

@@ -44,6 +44,7 @@ const requiredFiles = [
   "docs/current/USER-MERGE-REVIEW.md",
   "schemas/change-set.schema.json",
   "schemas/codex-task.schema.json",
+  "schemas/task-intake.schema.json",
   "schemas/work-claim.schema.json",
   "tools/coordination/codex-intake.js",
   "tools/coordination/change-set.js",
@@ -58,6 +59,7 @@ for (const file of [
   "config/coordination-targets.json",
   "schemas/change-set.schema.json",
   "schemas/codex-task.schema.json",
+  "schemas/task-intake.schema.json",
   "schemas/work-claim.schema.json",
 ]) {
   try {
@@ -107,6 +109,8 @@ requireText(".github/workflows/codex-intake-issue.yml", "actions/github-script@v
 requireText(".github/workflows/codex-intake-issue.yml", "inputFromEnvironment(process.env)", "untrusted input environment boundary");
 requireText(".github/workflows/codex-intake-issue.yml", "findExactDuplicate", "bounded exact duplicate check");
 requireText(".github/workflows/codex-intake-issue.yml", "ensureRoutingLabels", "idempotent routing labels");
+requireText(".github/workflows/codex-intake-issue.yml", "created_by:", "separate intake creator");
+requireText(".github/workflows/codex-intake-issue.yml", "pickup_target:", "one primary pickup target");
 forbidText(".github/workflows/codex-intake-issue.yml", "contents: write", "intake content write permission");
 forbidText(".github/workflows/codex-intake-issue.yml", "pull-requests: write", "intake PR write permission");
 forbidText(".github/workflows/codex-intake-issue.yml", "run:", "intake shell execution");
@@ -114,17 +118,36 @@ forbidText(".github/workflows/codex-intake-issue.yml", "run:", "intake shell exe
 requireText("docs/current/CODEX-ISSUE-WORKFLOW.md", "manual-issue-generator-implemented", "manual generator status");
 requireText("docs/current/CODEX-ISSUE-WORKFLOW.md", "manual-pickup-required", "truthful manual dispatch");
 requireText("docs/current/CODEX-ISSUE-WORKFLOW.md", ".github/workflows/codex-intake-issue.yml", "manual generator path");
-requireText("tools/coordination/codex-intake.js", "schemas/codex-task.schema.json", "checked-in intake schema");
+requireText("docs/current/CODEX-ISSUE-WORKFLOW.md", "chatgpt-pickup-required", "ChatGPT pickup status");
+requireText("docs/current/CODEX-ISSUE-WORKFLOW.md", "human-pickup-required", "human pickup status");
+requireText("tools/coordination/codex-intake.js", "schemas/task-intake.schema.json", "checked-in unified intake schema");
+requireText("tools/coordination/codex-intake.js", "schemas/codex-task.schema.json", "legacy intake compatibility");
+requireText("tools/coordination/codex-intake.js", "validateInterventionRecord", "ChatGPT intervention validation");
 requireText("tools/coordination/codex-intake.js", "CANONICAL_BOOTSTRAP", "canonical intake bootstrap");
 
 try {
   const codexTaskSchema = JSON.parse(read("schemas/codex-task.schema.json"));
-  const categories = codexTaskSchema?.properties?.category?.enum;
   if (codexTaskSchema?.properties?.schema?.const !== "canto-span-codex-task-v1") {
     errors.push({ type: "invalid_schema", file: "schemas/codex-task.schema.json", detail: "wrong task schema identifier" });
   }
-  if (!Array.isArray(categories) || categories.length !== 10 || new Set(categories).size !== 10) {
+  const legacyCategories = codexTaskSchema?.properties?.category?.enum;
+  if (!Array.isArray(legacyCategories) || legacyCategories.length !== 10 || new Set(legacyCategories).size !== 10) {
     errors.push({ type: "invalid_schema", file: "schemas/codex-task.schema.json", detail: "expected ten unique Codex-ready categories" });
+  }
+  const taskIntakeSchema = JSON.parse(read("schemas/task-intake.schema.json"));
+  const categories = taskIntakeSchema?.properties?.category?.enum;
+  const creators = taskIntakeSchema?.properties?.created_by?.enum;
+  const pickupTargets = taskIntakeSchema?.properties?.pickup_target?.enum;
+  if (taskIntakeSchema?.properties?.schema?.const !== "canto-span-task-intake-v1") {
+    errors.push({ type: "invalid_schema", file: "schemas/task-intake.schema.json", detail: "wrong unified intake schema identifier" });
+  }
+  for (const [field, values, expected] of [
+    ["created_by", creators, ["chatgpt", "codex", "human"]],
+    ["pickup_target", pickupTargets, ["codex", "chatgpt", "human"]],
+  ]) {
+    if (JSON.stringify(values) !== JSON.stringify(expected)) {
+      errors.push({ type: "invalid_schema", file: "schemas/task-intake.schema.json", detail: `${field} must contain exactly chatgpt, codex, and human` });
+    }
   }
   const workflow = read(".github/workflows/codex-intake-issue.yml");
   const categoryBlock = workflow.match(/      category:\n[\s\S]*?        options:\n([\s\S]*?)      title:/);
@@ -132,7 +155,17 @@ try {
     ? [...categoryBlock[1].matchAll(/^\s*-\s+([a-z][a-z-]+)\s*$/gm)].map((match) => match[1])
     : [];
   if (JSON.stringify(workflowCategories) !== JSON.stringify(categories)) {
-    errors.push({ type: "invalid_workflow", file: ".github/workflows/codex-intake-issue.yml", detail: "category choices must exactly match the checked-in task schema" });
+    errors.push({ type: "invalid_workflow", file: ".github/workflows/codex-intake-issue.yml", detail: "category choices must exactly match the unified task schema" });
+  }
+  for (const [input, expected] of [["created_by", creators], ["pickup_target", pickupTargets]]) {
+    const nextInput = input === "created_by" ? "pickup_target" : "category";
+    const block = workflow.match(new RegExp(`      ${input}:\\n[\\s\\S]*?        options:\\n([\\s\\S]*?)      ${nextInput}:`));
+    const actual = block
+      ? [...block[1].matchAll(/^\s*-\s+([a-z]+)\s*$/gm)].map((match) => match[1])
+      : [];
+    if (JSON.stringify(actual) !== JSON.stringify(expected)) {
+      errors.push({ type: "invalid_workflow", file: ".github/workflows/codex-intake-issue.yml", detail: `${input} choices must exactly match the unified task schema` });
+    }
   }
   if (codexTaskSchema?.properties?.dispatch_status?.const !== "manual-pickup-required") {
     errors.push({ type: "invalid_schema", file: "schemas/codex-task.schema.json", detail: "dispatch status must remain manual-pickup-required" });

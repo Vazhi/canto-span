@@ -90,10 +90,20 @@ function lifecycleFixtures() {
   const metadata = {
     instrument_id: "YUE-JUDGMENT-FOLLOWUP-01-DRAFT",
     instrument_status: "draft_followup",
+    lifecycle_state: "draft",
     deployment_allowed: false,
+    item_file: "items.tsv",
+    crosswalk_file: "crosswalk.tsv",
+    response_template_file: "responses.tsv",
+    tracked_artifacts: [
+      { path: "items.tsv", artifact_state: "draft_source", deployable: false },
+      { path: "crosswalk.tsv", artifact_state: "draft_source", deployable: false },
+      { path: "responses.tsv", artifact_state: "draft_source", deployable: false },
+    ],
     current_live_instrument: {
       instrument_id: "YUE-JUDGMENT-PILOT-01",
       status: "collection_in_progress",
+      collection_state: "active",
       closure_rule: "Do not deploy this follow-up until the live instrument closes and its item audit is incorporated.",
     },
   };
@@ -106,10 +116,20 @@ function lifecycleFixtures() {
     ],
     instrument_lifecycle: {
       metadata_file: FOLLOWUP_METADATA,
-      current_live_instrument: { ...metadata.current_live_instrument },
+      pilot_collections: [{
+        instrument_id: metadata.current_live_instrument.instrument_id,
+        collection_state: metadata.current_live_instrument.collection_state,
+        compatibility_status: metadata.current_live_instrument.status,
+        closure_rule: metadata.current_live_instrument.closure_rule,
+      }],
+      item_level_audit: {
+        pilot_instrument_id: metadata.current_live_instrument.instrument_id,
+        state: "not_started",
+      },
       followup_instrument: {
         instrument_id: metadata.instrument_id,
-        status: metadata.instrument_status,
+        lifecycle_state: metadata.lifecycle_state,
+        compatibility_status: metadata.instrument_status,
         deployment_allowed: metadata.deployment_allowed,
       },
     },
@@ -117,20 +137,110 @@ function lifecycleFixtures() {
   return { metadata, state };
 }
 
-test("lifecycle validation rejects stale current-instrument and follow-up state", () => {
+function setLifecycle(fixture, pilotState, auditState, followupState) {
+  const pilotStatuses = { active: "collection_in_progress", closed: "collection_closed" };
+  const followupStatuses = {
+    draft: "draft_followup",
+    locked: "instrument_locked",
+    generated: "form_generated",
+    deployed: "deployed",
+  };
+  const { metadata, state } = fixture;
+  metadata.current_live_instrument.collection_state = pilotState;
+  metadata.current_live_instrument.status = pilotStatuses[pilotState];
+  metadata.lifecycle_state = followupState;
+  metadata.instrument_status = followupStatuses[followupState];
+  metadata.deployment_allowed = followupState === "deployed";
+  metadata.tracked_artifacts = metadata.tracked_artifacts.map((artifact) => ({
+    ...artifact,
+    artifact_state: "draft_source",
+    deployable: false,
+  }));
+  if (["generated", "deployed"].includes(followupState)) {
+    metadata.tracked_artifacts[0].artifact_state = followupState;
+    metadata.tracked_artifacts[0].deployable = true;
+  }
+  state.instrument_lifecycle.pilot_collections[0].collection_state = pilotState;
+  state.instrument_lifecycle.pilot_collections[0].compatibility_status = pilotStatuses[pilotState];
+  state.instrument_lifecycle.item_level_audit.state = auditState;
+  state.instrument_lifecycle.followup_instrument.lifecycle_state = followupState;
+  state.instrument_lifecycle.followup_instrument.compatibility_status = followupStatuses[followupState];
+  state.instrument_lifecycle.followup_instrument.deployment_allowed = metadata.deployment_allowed;
+}
+
+test("deployment lock covers every pilot, audit, and follow-up state combination", () => {
+  for (const pilotState of ["active", "closed"]) {
+    for (const auditState of ["not_started", "in_progress", "accepted"]) {
+      for (const followupState of ["draft", "locked", "generated", "deployed"]) {
+        const fixture = lifecycleFixtures();
+        setLifecycle(fixture, pilotState, auditState, followupState);
+        const failures = lifecycleFailures(fixture.state, fixture.metadata);
+        const allowed = followupState === "draft" ||
+          (pilotState === "closed" && auditState === "accepted");
+        assert.equal(
+          failures.length === 0,
+          allowed,
+          `${pilotState}/${auditState}/${followupState}: ${JSON.stringify(failures)}`
+        );
+      }
+    }
+  }
+});
+
+test("current active-pilot, pending-audit, draft-follow-up state passes", () => {
   const { metadata, state } = lifecycleFixtures();
   assert.deepEqual(lifecycleFailures(state, metadata), []);
+});
+
+test("missing, duplicate, and contradictory lifecycle declarations fail precisely", () => {
+  for (const field of ["pilot_collections", "item_level_audit", "followup_instrument"]) {
+    const { metadata, state } = lifecycleFixtures();
+    delete state.instrument_lifecycle[field];
+    assert.notDeepEqual(lifecycleFailures(state, metadata), [], `${field} should be required`);
+  }
+  const duplicate = lifecycleFixtures();
+  duplicate.state.instrument_lifecycle.pilot_collections.push(
+    clone(duplicate.state.instrument_lifecycle.pilot_collections[0])
+  );
+  assert.ok(lifecycleFailures(duplicate.state, duplicate.metadata).some(
+    (failure) => failure.invariant === "exactly_one_pilot_declaration"
+  ));
+
+  const contradictory = lifecycleFixtures();
+  contradictory.metadata.tracked_artifacts[0].artifact_state = "generated";
+  contradictory.metadata.tracked_artifacts[0].deployable = true;
+  assert.ok(lifecycleFailures(contradictory.state, contradictory.metadata).some(
+    (failure) => failure.invariant === "draft_has_no_generated_or_deployable_artifact" &&
+      failure.pilot_state === "active" &&
+      failure.audit_state === "not_started" &&
+      failure.followup_state === "draft" &&
+      failure.artifact.path === "items.tsv"
+  ));
+});
+
+test("duplicate artifact declarations and unrelated prose are handled safely", () => {
+  const duplicate = lifecycleFixtures();
+  duplicate.metadata.tracked_artifacts.push(clone(duplicate.metadata.tracked_artifacts[0]));
+  assert.ok(lifecycleFailures(duplicate.state, duplicate.metadata).some(
+    (failure) => failure.invariant === "unique_tracked_artifact_declaration"
+  ));
+
+  const unrelated = lifecycleFixtures();
+  unrelated.state.expert_prose = "Response quality and survey readiness remain human decisions.";
+  unrelated.metadata.notes = "This prose is not a lifecycle declaration.";
+  assert.deepEqual(lifecycleFailures(unrelated.state, unrelated.metadata), []);
+});
+
+test("legacy lifecycle mirrors and stale survey controls cannot contradict canonical state", () => {
   for (const mutate of [
-    (value) => { value.instrument_lifecycle.current_live_instrument.instrument_id = "OLD-PILOT"; },
-    (value) => { value.instrument_lifecycle.current_live_instrument.status = "closed"; },
-    (value) => { value.instrument_lifecycle.followup_instrument.status = "pilot_ready"; },
-    (value) => { value.instrument_lifecycle.followup_instrument.deployment_allowed = true; },
-    (value) => { value.constructions[0].next_action = "await_user_prompt_then_create"; },
-    (value) => { value.survey_creation_control = { user_prompt_required: true }; },
+    (value) => { value.metadata.current_live_instrument.instrument_id = "OLD-PILOT"; },
+    (value) => { value.state.instrument_lifecycle.followup_instrument.compatibility_status = "pilot_ready"; },
+    (value) => { value.state.constructions[0].next_action = "await_user_prompt_then_create"; },
+    (value) => { value.state.survey_creation_control = { user_prompt_required: true }; },
   ]) {
-    const changed = clone(state);
+    const changed = lifecycleFixtures();
     mutate(changed);
-    assert.notDeepEqual(lifecycleFailures(changed, metadata), []);
+    assert.notDeepEqual(lifecycleFailures(changed.state, changed.metadata), []);
   }
 });
 
