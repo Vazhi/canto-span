@@ -12,7 +12,7 @@ and [`CONSTRUCTION-ADJUDICATION.md`](CONSTRUCTION-ADJUDICATION.md).
 | UUID, code, canonical name, family, profile, claim layer | `data/construction-identities.json` plus accepted adjudications |
 | Current linguistic status and note-local evidence | one note per active runtime label under `grammar/<status>/` |
 | Runtime recognition | `main.js` and executable tests |
-| Workflow activity | note frontmatter |
+| Workflow availability | `data/parked-constructions.json`; every unlisted current construction is available |
 | Discovery readiness | `data/construction-candidate-readiness.json` |
 | Historical provenance | research records, batch reports, retired ledgers, and Git history |
 
@@ -32,9 +32,15 @@ score is not a promotion decision.
 | `lexicalized_only` | Bounded lexical inventory retained without productivity claim. |
 | `parser_heuristic` | Internal software representation, not a productive Cantonese claim. |
 
-Workflow state is only `active` or `archived`; archived means parked, not retired.
-Retired runtime labels remain permanent identity records and never release their
-UUID or short code.
+Workflow availability is blacklist-based. A current construction is available
+unless its permanent identity appears in `data/parked-constructions.json`.
+Parking does not retire a construction, change linguistic status, alter runtime
+behavior, or erase evidence. Retired runtime labels remain permanent identity
+records and never release their UUID or short code.
+
+Legacy `workflow_state`, `workflow_priority`, `workflow_since`, and
+`workflow_reason` note fields are non-authoritative compatibility metadata. They
+do not restrict agent work selection.
 
 ## 3. Evidence rules
 
@@ -103,7 +109,26 @@ Project thresholds:
 
 Legacy or defective instruments remain diagnostic evidence only.
 
-## 5. Construction workflow
+## 5. Work selection and construction workflow
+
+There is no active-note whitelist and no repository-wide grammar freeze. Agents
+may select any non-parked current construction when it is the most beneficial
+bounded next task. Selection should consider learner value, evidence gaps,
+ontology risk, implementation leverage, dependencies, open-PR overlap, and the
+cost of leaving the issue unresolved.
+
+When a parked construction appears to be the best next target, the agent must
+recommend unpark and state:
+
+1. why the existing parking reason no longer controls;
+2. the expected project benefit;
+3. the evidence, dependency, or implementation change that justifies review;
+4. the proposed bounded scope and safeguards.
+
+The construction remains parked until a reviewed change removes its entry from
+`data/parked-constructions.json`.
+
+For substantive construction work:
 
 1. Select a bounded UUID-keyed linguistic question.
 2. Verify sources and classify every corpus example used as evidence.
@@ -120,7 +145,9 @@ Legacy or defective instruments remain diagnostic evidence only.
 11. Accept, revise, quarantine, split, merge, supersede, or retire.
 
 A true split requires new collision-checked UUIDs. A compatibility alias or
-umbrella cannot donate evidence automatically to its successors.
+umbrella cannot donate evidence automatically to its successors. New grammar,
+broadenings, splits, and runtime changes remain subject to all applicable identity,
+evidence, boundary, status, documentation, and verification gates.
 
 ## 6. Validation and dispositions
 
