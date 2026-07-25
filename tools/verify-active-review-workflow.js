@@ -13,6 +13,21 @@ const FOLLOWUP_METADATA = "review-packets/native-panel/active-v2/followup-draft-
 const AB30_DECISIONS = "review-packets/corpus-review/AB30/review-decisions-r1.json";
 const AB30_LEDGER = "review-packets/corpus-review/AB30/candidate-ledger.json";
 const CURRENT_NEXT_ACTION = "await_live_pilot_closure_and_item_audit_before_followup_revision";
+const PILOT_COLLECTION_STATES = new Set(["active", "closed"]);
+const ITEM_AUDIT_STATES = new Set(["not_started", "in_progress", "accepted"]);
+const FOLLOWUP_LIFECYCLE_STATES = new Set(["draft", "locked", "generated", "deployed"]);
+const RESTRICTED_FOLLOWUP_STATES = new Set(["locked", "generated", "deployed"]);
+const ARTIFACT_STATES = new Set(["draft_source", "generated", "deployed"]);
+const PILOT_COMPATIBILITY_STATUS = {
+  active: "collection_in_progress",
+  closed: "collection_closed",
+};
+const FOLLOWUP_COMPATIBILITY_STATUS = {
+  draft: "draft_followup",
+  locked: "instrument_locked",
+  generated: "form_generated",
+  deployed: "deployed",
+};
 
 function readJson(root, relativePath) {
   return JSON.parse(fs.readFileSync(path.join(root, relativePath), "utf8"));
@@ -81,35 +96,151 @@ function permanentIdentityFailures(entry, identity, adjudication) {
 function lifecycleFailures(state, metadata) {
   const failures = [];
   const lifecycle = state.instrument_lifecycle;
+  const canonicalFiles = {
+    pilot_and_audit: PANEL_STATE,
+    followup_and_artifacts: FOLLOWUP_METADATA,
+  };
+  function fail(invariant, detail, values = {}, artifact = null) {
+    failures.push({
+      invariant,
+      pilot_state: values.pilot_state ?? null,
+      audit_state: values.audit_state ?? null,
+      followup_state: values.followup_state ?? null,
+      ...(artifact ? { artifact } : {}),
+      canonical_files: canonicalFiles,
+      detail,
+    });
+  }
   if (Object.prototype.hasOwnProperty.call(state, "survey_creation_control")) {
-    failures.push("stale survey_creation_control is forbidden");
+    fail("no_stale_survey_creation_control", "stale survey_creation_control is forbidden");
   }
-  if (!lifecycle) return [...failures, "instrument_lifecycle is missing"];
-  if (lifecycle.metadata_file !== FOLLOWUP_METADATA) failures.push("follow-up metadata path mismatch");
-  const current = lifecycle.current_live_instrument || {};
-  const expectedCurrent = metadata.current_live_instrument || {};
-  for (const field of ["instrument_id", "status", "closure_rule"]) {
-    if (current[field] !== expectedCurrent[field]) failures.push(`current live instrument ${field} mismatch`);
+  if (!lifecycle) {
+    fail("required_lifecycle_fields", "instrument_lifecycle is missing");
+    return failures;
   }
+  if (lifecycle.metadata_file !== FOLLOWUP_METADATA) {
+    fail("canonical_followup_metadata_link", "follow-up metadata path mismatch");
+  }
+
+  const pilots = lifecycle.pilot_collections;
+  if (!Array.isArray(pilots) || pilots.length === 0) {
+    fail("exactly_one_pilot_declaration", "pilot_collections must contain exactly one declaration");
+  } else if (pilots.length !== 1) {
+    fail("exactly_one_pilot_declaration", `found ${pilots.length} pilot declarations`);
+  }
+  const pilot = Array.isArray(pilots) && pilots.length === 1 ? pilots[0] : {};
+  const audit = lifecycle.item_level_audit || {};
   const followup = lifecycle.followup_instrument || {};
+  const values = {
+    pilot_state: pilot.collection_state,
+    audit_state: audit.state,
+    followup_state: followup.lifecycle_state,
+  };
+
+  if (!PILOT_COLLECTION_STATES.has(values.pilot_state)) {
+    fail("controlled_pilot_collection_state", `unsupported pilot state ${JSON.stringify(values.pilot_state)}`, values);
+  }
+  if (!ITEM_AUDIT_STATES.has(values.audit_state)) {
+    fail("controlled_item_audit_state", `unsupported audit state ${JSON.stringify(values.audit_state)}`, values);
+  }
+  if (!FOLLOWUP_LIFECYCLE_STATES.has(values.followup_state)) {
+    fail("controlled_followup_lifecycle_state", `unsupported follow-up state ${JSON.stringify(values.followup_state)}`, values);
+  }
+
+  const expectedCurrent = metadata.current_live_instrument || {};
+  for (const [field, metadataField] of [
+    ["instrument_id", "instrument_id"],
+    ["collection_state", "collection_state"],
+    ["closure_rule", "closure_rule"],
+  ]) {
+    if (pilot[field] !== expectedCurrent[metadataField]) {
+      fail("single_pilot_declaration_consistency", `pilot ${field} mismatches follow-up metadata`, values);
+    }
+  }
+  if (pilot.compatibility_status !== PILOT_COMPATIBILITY_STATUS[values.pilot_state] ||
+      expectedCurrent.status !== pilot.compatibility_status) {
+    fail("pilot_compatibility_status_consistency", "pilot compatibility status does not match collection state", values);
+  }
+  if (!lifecycle.item_level_audit ||
+      audit.pilot_instrument_id !== pilot.instrument_id) {
+    fail("item_audit_targets_current_pilot", "item-level audit is missing or targets a different pilot", values);
+  }
+
   const expectedFollowup = {
     instrument_id: metadata.instrument_id,
-    status: metadata.instrument_status,
+    lifecycle_state: metadata.lifecycle_state,
+    compatibility_status: metadata.instrument_status,
     deployment_allowed: metadata.deployment_allowed,
   };
-  for (const field of ["instrument_id", "status", "deployment_allowed"]) {
-    if (followup[field] !== expectedFollowup[field]) failures.push(`follow-up instrument ${field} mismatch`);
+  for (const field of ["instrument_id", "lifecycle_state", "compatibility_status", "deployment_allowed"]) {
+    if (followup[field] !== expectedFollowup[field]) {
+      fail("followup_declaration_consistency", `follow-up instrument ${field} mismatch`, values);
+    }
   }
-  if (followup.deployment_allowed !== false) failures.push("follow-up must remain non-deployable");
-  if (expectedCurrent.status !== "collection_in_progress") failures.push("current pilot is not in collection");
-  if (metadata.instrument_status !== "draft_followup") failures.push("follow-up metadata is not draft_followup");
+  if (followup.compatibility_status !== FOLLOWUP_COMPATIBILITY_STATUS[values.followup_state]) {
+    fail("followup_compatibility_status_consistency", "follow-up compatibility status does not match lifecycle state", values);
+  }
+
+  if (RESTRICTED_FOLLOWUP_STATES.has(values.followup_state) &&
+      (values.pilot_state !== "closed" || values.audit_state !== "accepted")) {
+    fail(
+      "followup_deployment_lock",
+      "locked, generated, or deployed follow-up requires pilot=closed and audit=accepted",
+      values
+    );
+  }
+  if (values.followup_state === "draft" && followup.deployment_allowed !== false) {
+    fail("draft_is_non_deployable", "draft follow-up must set deployment_allowed=false", values);
+  }
+  if (followup.deployment_allowed === true &&
+      (values.pilot_state !== "closed" || values.audit_state !== "accepted")) {
+    fail("deployment_permission_prerequisites", "deployment_allowed requires pilot=closed and audit=accepted", values);
+  }
+
+  const artifacts = metadata.tracked_artifacts;
+  if (!Array.isArray(artifacts)) {
+    fail("tracked_artifacts_required", "tracked_artifacts must be an array", values);
+  } else {
+    const paths = new Map();
+    for (const artifact of artifacts) {
+      const prior = paths.get(artifact.path) || [];
+      prior.push(artifact);
+      paths.set(artifact.path, prior);
+      if (!artifact.path || !ARTIFACT_STATES.has(artifact.artifact_state) ||
+          typeof artifact.deployable !== "boolean") {
+        fail("valid_tracked_artifact", "artifact requires path, controlled state, and deployable boolean", values, artifact);
+      }
+      if (values.followup_state === "draft" &&
+          (artifact.deployable || ["generated", "deployed"].includes(artifact.artifact_state))) {
+        fail("draft_has_no_generated_or_deployable_artifact", "draft lifecycle contradicts tracked artifact", values, artifact);
+      }
+    }
+    for (const [artifactPath, declarations] of paths) {
+      if (declarations.length !== 1) {
+        fail("unique_tracked_artifact_declaration", `artifact path has ${declarations.length} declarations`, values, { path: artifactPath });
+      }
+    }
+    for (const artifactPath of [metadata.item_file, metadata.crosswalk_file, metadata.response_template_file]) {
+      if (!artifactPath || (paths.get(artifactPath) || []).length !== 1) {
+        fail("all_followup_sources_are_tracked", "follow-up source is missing one artifact declaration", values, { path: artifactPath || null });
+      }
+    }
+    if (["generated", "deployed"].includes(values.followup_state) &&
+        !artifacts.some((artifact) => ["generated", "deployed"].includes(artifact.artifact_state))) {
+      fail("generated_state_has_generated_artifact", "generated or deployed lifecycle has no generated artifact", values);
+    }
+  }
+
   const staleState = JSON.stringify(state);
   if (/user_prompt_required|user_prompt_received|survey_instrument_created_in_current_checkpoint|await_user_prompt_then_create|after_user_prompt_for_mixed_pilot/.test(staleState)) {
-    failures.push("stale survey-creation lifecycle field remains");
+    fail("no_stale_survey_creation_control", "stale survey-creation lifecycle field remains", values);
   }
-  for (const entry of state.constructions || []) {
-    if (entry.next_action !== CURRENT_NEXT_ACTION) {
-      failures.push(`${entry.legacy_runtime_label || "unknown construction"} has stale next_action`);
+  if (values.pilot_state === "active" && values.audit_state === "not_started" &&
+      values.followup_state === "draft") {
+    for (const entry of state.constructions || []) {
+      if (entry.next_action !== CURRENT_NEXT_ACTION) {
+        fail("current_next_action_matches_lifecycle", `${entry.legacy_runtime_label || "unknown construction"} has stale next_action`, values);
+      }
     }
   }
   return failures;
@@ -321,6 +452,9 @@ function runAudit(root = DEFAULT_ROOT, { writeReport = true } = {}) {
   check("public waves batch two to three focal constructions", policy.batching.focal_constructions_per_public_wave_min === 2 && policy.batching.focal_constructions_per_public_wave_max === 3);
   check("historical v1 workflow remains traceable", fs.existsSync(path.join(root, state.supersedes)));
   checkFailures("instrument lifecycle matches current metadata", lifecycleFailures(state, metadata));
+  for (const artifact of metadata.tracked_artifacts || []) {
+    check(`tracked follow-up artifact exists: ${artifact.path}`, fs.existsSync(path.join(root, artifact.path)));
+  }
 
   const stateConstructions = new Set(state.constructions.map((entry) => entry.legacy_runtime_label));
   const activeConstructions = new Set(notes.map((note) => note.frontmatter.construction));
@@ -401,7 +535,7 @@ function runAudit(root = DEFAULT_ROOT, { writeReport = true } = {}) {
   check("consolidated governance exists", fs.existsSync(path.join(root, "docs/current/GOVERNANCE.md")));
 
   const report = {
-    schema: "canto-span-native-panel-workflow-audit-v2",
+    schema: "canto-span-native-panel-workflow-audit-v3",
     protocol_version: state.protocol_version,
     active_constructions: notes.length,
     check_count: checks.length,

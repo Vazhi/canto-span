@@ -1,7 +1,7 @@
 {
   "schema": "canto-span-native-panel-review-state-v2",
   "protocol_version": "panel-v2",
-  "last_updated": "2026-07-24",
+  "last_updated": "2026-07-25",
   "policy_file": "review-packets/native-panel/active-v2/panel-policy.json",
   "supersedes": "review-packets/native-speaker/active-v1/active-review-state.json",
   "respondent_model": {
@@ -91,14 +91,22 @@
   ],
   "instrument_lifecycle": {
     "metadata_file": "review-packets/native-panel/active-v2/followup-draft-v1-metadata.json",
-    "current_live_instrument": {
-      "instrument_id": "YUE-JUDGMENT-PILOT-01",
-      "status": "collection_in_progress",
-      "closure_rule": "Do not deploy this follow-up until the live instrument closes and its item audit is incorporated."
+    "pilot_collections": [
+      {
+        "instrument_id": "YUE-JUDGMENT-PILOT-01",
+        "collection_state": "active",
+        "compatibility_status": "collection_in_progress",
+        "closure_rule": "Do not deploy this follow-up until the live instrument closes and its item audit is incorporated."
+      }
+    ],
+    "item_level_audit": {
+      "pilot_instrument_id": "YUE-JUDGMENT-PILOT-01",
+      "state": "not_started"
     },
     "followup_instrument": {
       "instrument_id": "YUE-JUDGMENT-FOLLOWUP-01-DRAFT",
-      "status": "draft_followup",
+      "lifecycle_state": "draft",
+      "compatibility_status": "draft_followup",
       "deployment_allowed": false
     }
   }
