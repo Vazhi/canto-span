@@ -1,0 +1,265 @@
+{
+  "schema": "canto-span-construction-adjudications-v1",
+  "adjudicated_on": "2026-07-25",
+  "adjudication_authority": "project expert systematic review",
+  "records": [
+    {
+      "construction_uuid": "a113b35a-3b49-5120-b1bb-c3fb8f081bda",
+      "construction_code": "AB06",
+      "legacy_label": "NegativeHaveClause",
+      "approved_canonical_name": "Mou5ExistentialPossessiveEventComposite",
+      "claim_layer": "parser_representation",
+      "family_name": "NegationRepresentation",
+      "profile_name": "Mou5PossessionExistenceAndEventAggregate",
+      "profile_description": "A retired historical aggregate that treated 冇 clauses across possession, existence, and event or aspect-related negation as one negative-have construction. The aggregate has no independent Cantonese licensing boundary and must not be restored; overt nominal-complement, elliptical-response, and event-negation profiles remain independently typed.",
+      "learner_label": null,
+      "behavior_research_alignment": "disjoint",
+      "terminology_alignment": "misleading",
+      "recommended_action": "retain_retired_reclassify",
+      "status_recommendation": "remain retired; preserve the UUID and historical alias only, and keep possession, existence, elliptical response, and event or aspect negation under independently typed profiles",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-LAM-2018-NEGATION-ASPECT",
+          "SRC-YIP-1988-NEGATION"
+        ],
+        "runtime_locations": [],
+        "test_file": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+        "additional_research": [
+          "The retirement archive records zero fixtures, zero runtime references, and zero parser outputs. It explicitly identifies possession, existence, and event-negation as distinct future research homes rather than one NegativeHaveClause."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "distinct existential, possessive, and event or aspect-related 冇 profiles",
+          "source_id": "SRC-LAM-2018-NEGATION-ASPECT",
+          "scope_match": "contrastive"
+        },
+        {
+          "term": "冇 as the negative counterpart of 有 rather than generic 唔 + 有",
+          "source_id": "SRC-YIP-1988-NEGATION",
+          "scope_match": "close"
+        }
+      ],
+      "former_names": [
+        "NegativeHaveClause"
+      ],
+      "successor_profiles": [
+        "Mou5NominalExistentialPossessiveClause",
+        "Mou5EllipticalResponse",
+        "Mou5EventNegationProfile"
+      ],
+      "rationale": "NegativeHaveClause collapses several semantically and structurally distinct uses of 冇 and has no surviving implementation. The retired UUID remains resolvable for provenance but is reclassified as a parser representation so evidence cannot transfer across possession, existence, ellipsis, and event negation.",
+      "unresolved_blockers": [
+        "preserve the retired UUID, code, alias, and retirement provenance",
+        "keep possession, existence, elliptical response, and event or aspect negation independently typed",
+        "do not restore the wrapper without a new independently evidenced boundary",
+        "do not transfer evidence among successor profiles"
+      ]
+    },
+    {
+      "construction_uuid": "23a889d8-991c-5348-8da3-ccf865f5e509",
+      "construction_code": "AB07",
+      "legacy_label": "NegativePotentialComplement",
+      "approved_canonical_name": "VerbM4ResultPotentialVP",
+      "claim_layer": "language_construction",
+      "family_name": "PotentialComplementation",
+      "profile_name": "VerbM4ResultComplement",
+      "profile_description": "An overt verb is followed by 唔 and an overt result or attainability complement, optionally with an object, as in 食唔到飯, 做唔完, 做唔完份功課, and 聽唔到聲. The profile contains no overt or hidden 得 and excludes deictic or path-directional chains, ordinary preverbal negation, permission or ability uses of 得, and positive potential forms.",
+      "learner_label": null,
+      "behavior_research_alignment": "overlapping",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
+      "status_recommendation": "retain unsupported_generalization until result-complement inventory, short versus long potential contrasts, dialect scope, corpus evidence, role-neutral panel evidence, and held-out boundaries are complete",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-CHENG-SYBESMA-2004-POSTVERBAL-DAK"
+        ],
+        "runtime_locations": [
+          "main.js:2195-2215",
+          "main.js:3045-3085",
+          "main.js:13940-13965",
+          "main.js:15285-15295"
+        ],
+        "test_file": "tests/constructions/NegativePotentialComplement.json",
+        "additional_research": [
+          "The five executable positives consistently instantiate V + 唔 + an overt result or attainability complement. Cheng and Sybesma distinguish potential from permission or ability uses and do not license a default hidden or overt 得 in the negative pattern."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "negative potential counterpart without default overt or hidden 得",
+          "source_id": "SRC-CHENG-SYBESMA-2004-POSTVERBAL-DAK",
+          "scope_match": "close"
+        }
+      ],
+      "former_names": [
+        "NegativePotentialComplement"
+      ],
+      "successor_profiles": [
+        "NegativePotentialDirectionalCompositeWrapper",
+        "PositivePotentialResultVP",
+        "PermissionOrAbilityDakProfile"
+      ],
+      "rationale": "NegativePotentialComplement is directionally correct but under-specified. VerbM4ResultPotentialVP names the overt marker order and result-complement boundary supported by the current fixtures while excluding directional chains and unrelated 得 profiles.",
+      "unresolved_blockers": [
+        "define the licensed result and attainability complement inventory",
+        "separate result complements from deictic and path-directional chains",
+        "record positive-potential and short-versus-long contrasts without generating hidden 得",
+        "complete corpus, role-neutral panel, negative-boundary, and held-out review"
+      ]
+    },
+    {
+      "construction_uuid": "98fe5056-ec42-5505-b8d1-7514375fcfc9",
+      "construction_code": "AB08",
+      "legacy_label": "NegativePotentialDirectionalVP",
+      "approved_canonical_name": "NegativePotentialDirectionalCompositeWrapper",
+      "claim_layer": "parser_representation",
+      "family_name": "PotentialAndDirectionalRepresentation",
+      "profile_name": "VerbM4DirectionalChainAggregate",
+      "profile_description": "An implementation wrapper combines an overt V + 唔 negative-potential relation with an independently typed directional chain, as in 行唔入去 and 攞唔返嚟. The wrapper preserves overt marker order and directional children but contributes no independent Cantonese construction boundary, generates no hidden 得, and excludes ordinary motion or nonpotential directional predicates.",
+      "learner_label": null,
+      "behavior_research_alignment": "overlapping",
+      "terminology_alignment": "misleading",
+      "recommended_action": "internalize_and_decompose",
+      "status_recommendation": "migrate to parser_heuristic only through a separate compatibility change; preserve negative-potential and directional identities independently",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-CHENG-SYBESMA-2004-POSTVERBAL-DAK"
+        ],
+        "runtime_locations": [
+          "main.js:13660-13695"
+        ],
+        "test_file": "tests/constructions/NegativePotentialDirectionalVP.json",
+        "additional_research": [
+          "The two executable positives combine negative potential marker order with overt directional material. The current note recommends decomposition through typed negative-potential plus directional composition while retaining the wrapper only for compatibility."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "negative potential pattern without default V-唔-得-R",
+          "source_id": "SRC-CHENG-SYBESMA-2004-POSTVERBAL-DAK",
+          "scope_match": "restrictive"
+        }
+      ],
+      "former_names": [
+        "NegativePotentialDirectionalVP"
+      ],
+      "successor_profiles": [
+        "VerbM4ResultPotentialVP",
+        "PotentialDirectionalVP",
+        "DirectionalChain"
+      ],
+      "rationale": "The legacy name treats a transparent combination of negative potential and directional structure as one direct construction. NegativePotentialDirectionalCompositeWrapper preserves the runtime aggregation while removing it from direct linguistic promotion and keeping both child analyses explicit.",
+      "unresolved_blockers": [
+        "map every positive to an independently typed directional child and negative-potential relation",
+        "preserve exact overt negator and directional order without generating hidden 得",
+        "separate path, deictic, result, and lexicalized directional profiles",
+        "complete compatibility migration before changing the emitted label or status path"
+      ]
+    },
+    {
+      "construction_uuid": "e56bf2b7-7a16-50cb-a14e-9cd0c245594b",
+      "construction_code": "AB09",
+      "legacy_label": "NominalHeadSpan",
+      "approved_canonical_name": "OvertAnalyzedNominalSpan",
+      "claim_layer": "parser_representation",
+      "family_name": "NominalStructureRepresentation",
+      "profile_name": "OvertNominalMaterialSubordinateToNPLicensing",
+      "profile_description": "An internal parser span covers overt material already analyzed as nominal while remaining subordinate to the authoritative NP licensing state. It may preserve nouns, pronouns, or other overt nominal material used by larger structures, but it does not independently license an NP, infer a missing head, assign an argument role, or establish fragment status.",
+      "learner_label": null,
+      "behavior_research_alignment": "runtime_narrower_defensible",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
+      "status_recommendation": "retain parser_heuristic; preserve the serialized legacy label until all internal consumers and compatibility metadata are explicitly migrated",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [],
+        "runtime_locations": [
+          "main.js:5478-5504",
+          "main.js:5915-5933",
+          "main.js:7747-14510"
+        ],
+        "test_file": "tests/constructions/NominalHeadSpan.json",
+        "additional_research": [
+          "The current note identifies the label as a zero-evidence-weight internal span, and the tests cover twenty-eight positive reachability cases plus NP licensing and internal-contract probes. The span must remain subordinate to licensed, ambiguous, provisional, and invalid NP states."
+        ]
+      },
+      "source_terms": [],
+      "former_names": [
+        "NominalHeadSpan"
+      ],
+      "successor_profiles": [
+        "LicensedNP",
+        "AmbiguousNP",
+        "ProvisionalNP",
+        "InvalidNP"
+      ],
+      "rationale": "NominalHeadSpan is already internal, but head suggests a stronger structural claim than the runtime contract warrants. OvertAnalyzedNominalSpan states that the node preserves overt analyzed material only and cannot independently establish noun-head, ellipsis, argument-role, or fragment analyses.",
+      "unresolved_blockers": [
+        "classify every consumer by the authoritative NP licensing state it relies on",
+        "preserve headless and attachment-ambiguous material as separate typed states",
+        "do not infer a noun, omitted head, argument role, or fragment status",
+        "migrate internal consumers and legacy serialization before changing the emitted label"
+      ]
+    },
+    {
+      "construction_uuid": "9d121ce5-a2c6-54bb-b8e6-24ae22f93e13",
+      "construction_code": "AB10",
+      "legacy_label": "NominalModifierNP",
+      "approved_canonical_name": "NominalModificationCompositeWrapper",
+      "claim_layer": "parser_representation",
+      "family_name": "NominalModificationAndRelatives",
+      "profile_name": "BareGeClassifierRelativeAndComplementAggregate",
+      "profile_description": "A retired historical umbrella that grouped bare property modification, 嘅-marked modification, classifier-linked nominal structures, relative clauses, and nominal complements without one shared Cantonese licensing boundary. The wrapper has no active implementation and must not be restored as a direct construction.",
+      "learner_label": null,
+      "behavior_research_alignment": "disjoint",
+      "terminology_alignment": "misleading",
+      "recommended_action": "retain_retired_reclassify",
+      "status_recommendation": "remain retired; preserve subtype research and evidence under independently typed nominal-modification, relative-clause, classifier, and complement profiles",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-SIO-2011-GE3",
+          "SRC-YU-2006-NOMINAL-MODIFIERS"
+        ],
+        "runtime_locations": [],
+        "test_file": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+        "additional_research": [
+          "The retirement archive records zero fixtures, zero runtime references, and zero parser outputs and classifies the label as a duplicate umbrella. It preserves bare, 嘅-marked, classifier-linked, relative, and nominal-complement research as separate subtype work."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "嘅-marked and direct nominal modification contrasts",
+          "source_id": "SRC-SIO-2011-GE3",
+          "scope_match": "contrastive"
+        },
+        {
+          "term": "nominal modifier ordering and subtype distinctions",
+          "source_id": "SRC-YU-2006-NOMINAL-MODIFIERS",
+          "scope_match": "contrastive"
+        }
+      ],
+      "former_names": [
+        "NominalModifierNP"
+      ],
+      "successor_profiles": [
+        "DegreePropertyModifierNounNP",
+        "GeMarkedNominalModifierNP",
+        "ClassifierLinkedNominalStructure",
+        "RelativeClauseNP",
+        "NominalComplementStructure"
+      ],
+      "rationale": "NominalModifierNP hides several independently constrained nominal structures and adds no surviving implementation boundary. The retired UUID remains resolvable as a historical parser representation only; subtype evidence cannot be transferred through the umbrella.",
+      "unresolved_blockers": [
+        "preserve the retired UUID, code, alias, and retirement provenance",
+        "keep direct, 嘅-marked, classifier-linked, relative, and complement profiles independently typed",
+        "do not restore the wrapper without a new independently evidenced boundary",
+        "do not transfer evidence among successor profiles"
+      ]
+    }
+  ]
+}
