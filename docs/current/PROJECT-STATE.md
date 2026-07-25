@@ -11,8 +11,8 @@ policy or ontology.
 | Runtime | v0.5.216 |
 | Runtime labels | 133 |
 | Current construction notes | 133 |
-| Active working notes | 2 |
-| Workflow-archived notes | 131 |
+| Available construction notes | 133 |
+| Parked construction notes | 0 |
 | Retired labels | 48 |
 | Permanent UUID records | 181 |
 | Expert-adjudicated UUIDs | 49 |
@@ -66,14 +66,31 @@ include:
 - true splits require new UUIDs. Evidence is never transferred automatically from
   an umbrella, retired record, or parser representation.
 
-The active runtime-note working set remains:
+## Workflow availability
 
-1. `AB53 ResourceInitialJungLaiFunctionClause` — legacy runtime label
-   `ResourceUseLaiFunctionRelation`;
-2. `AB30 ZoMarkedPerfectiveObjectVP` — legacy runtime label
-   `PostverbalZoPerfectiveVP`.
+The repository has no active-note whitelist. The canonical blacklist is
+[`data/parked-constructions.json`](../../data/parked-constructions.json), and it is
+currently empty. All 133 current construction notes are therefore available for
+bounded work.
 
-Workflow activity is independent of linguistic status and adjudication priority.
+Agents may choose whichever available construction or infrastructure task offers
+the greatest expected project benefit after checking evidence gaps, learner
+impact, ontology risk, dependencies, implementation leverage, and open-PR overlap.
+Discovery rankings inform that decision but do not impose a queue.
+
+If a parked construction becomes the best next target, the agent must recommend
+unpark with the changed circumstances, expected benefit, and proposed scope. The
+construction remains parked until an explicit reviewed change removes it from the
+blacklist.
+
+Legacy grammar-note `workflow_state` and priority fields do not control work
+selection. PFV and RUL remain the current native-panel focal constructions, which
+is a survey-scope fact rather than a repository-wide work whitelist.
+
+There is no repository-wide grammar freeze. New constructions, splits,
+broadenings, status changes, and runtime changes are permitted when their exact
+scope satisfies the applicable identity, evidence, boundary, documentation, and
+verification requirements.
 
 ## Discovery and corpus state
 
@@ -147,22 +164,25 @@ evidence weight.
 ## Current work order
 
 1. Keep documentation, identity metadata, status notes, runtime behavior, survey
-   metadata, corpus decisions, and generated readiness reports mutually
-   consistent.
-2. Continue expert adjudication with Batch 11: `AA72 ImpersonalEnvironmentalClause`,
-   `AA75 IntransitiveVP`, `AA76 LexicalGiveRelation`,
-   `AA77 LocativeExistentialClause`, and `AA79 LocativeFrameClause`.
-3. Keep `YUE-JUDGMENT-PILOT-01` in collection until its stopping rule is met, then
+   metadata, corpus decisions, parked-work state, and generated readiness reports
+   mutually consistent.
+2. Select the most beneficial bounded non-parked task after inspecting current
+   main, open PRs, dependencies, evidence gaps, learner impact, and ontology risk.
+3. Continue expert adjudication with Batch 11 when it remains the best available
+   ontology task: `AA72 ImpersonalEnvironmentalClause`, `AA75 IntransitiveVP`,
+   `AA76 LexicalGiveRelation`, `AA77 LocativeExistentialClause`, and
+   `AA79 LocativeFrameClause`.
+4. Keep `YUE-JUDGMENT-PILOT-01` in collection until its stopping rule is met, then
    perform an item-level instrument and response audit before revising any follow-
    up instrument.
-4. Expand AB30 corpus diversity through additional independent natural sources
-   while preserving mechanical extraction and expert classification as separate
-   stages.
-5. Revise `followup-draft-v1` only after the current survey closes and its results
-   determine which contrasts remain unresolved.
-6. Implement a status-path or runtime-label migration only in an explicit scoped
+5. Expand AB30 corpus diversity through additional independent natural sources
+   when that work outranks other available tasks, while preserving mechanical
+   extraction and expert classification as separate stages.
+6. Recommend unpark when a blacklisted item becomes the highest-benefit target;
+   do not work on it silently.
+7. Implement a status-path or runtime-label migration only in an explicit scoped
    change after its adjudication decision is accepted.
-7. Do not create release-specific verifier families, duplicate current-state
+8. Do not create release-specific verifier families, duplicate current-state
    ledgers, unlinked naming schemes, or automatic writer workflows.
 
 ## Historical-material rule
