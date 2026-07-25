@@ -1,0 +1,50 @@
+name: Batch 12 generated outputs
+
+on:
+  push:
+    branches:
+      - "agent/adjudication-batch-12"
+    paths:
+      - ".github/workflows/batch12-generate-artifact.yml"
+      - "data/construction-adjudication-batches/batch-12.json"
+      - "docs/research/CONSTRUCTION-ADJUDICATION-BATCH-12.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Generate deterministic Batch 12 outputs
+        run: |
+          npm run adjudication:apply
+          npm run identity:generate
+          npm run discovery:generate
+      - name: Package generated working-tree changes
+        shell: bash
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/batch12-generated"
+          mkdir -p "$out/files"
+          git diff --name-only --diff-filter=ACMRT | while IFS= read -r file; do
+            [ -f "$file" ] || continue
+            mkdir -p "$out/files/$(dirname "$file")"
+            cp "$file" "$out/files/$file"
+          done
+          git diff --binary > "$out/batch12-generated.patch"
+          git diff --stat > "$out/diff-stat.txt"
+          git status --short > "$out/status.txt"
+          printf '%s\n' "$GITHUB_SHA" > "$out/source-commit.txt"
+      - name: Upload generated outputs
+        uses: actions/upload-artifact@v6
+        with:
+          name: batch12-generated-${{ github.sha }}
+          path: ${{ runner.temp }}/batch12-generated
+          if-no-files-found: error
