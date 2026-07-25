@@ -1,0 +1,113 @@
+name: Enforce agent workflow settings
+
+on:
+  issues:
+    types: [opened, edited, assigned, reopened]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  enforce:
+    if: github.event_name == 'workflow_dispatch' || github.event.issue.pull_request == null
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Enforce pickup and assignee availability
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const {
+              blockedCodexAssignees,
+              codexWorkflowsEnabled,
+              loadSettings,
+              reassignDisabledCodexIntake,
+            } = require("./tools/coordination/agent-workflow-settings");
+
+            const settings = loadSettings();
+            if (codexWorkflowsEnabled(settings)) {
+              core.notice("Codex workflows are enabled; no disabled-state enforcement is required.");
+              return;
+            }
+
+            const issues = context.eventName === "workflow_dispatch"
+              ? await github.paginate(github.rest.issues.listForRepo, {
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  state: "open",
+                  per_page: 100,
+                })
+              : [context.payload.issue];
+
+            async function ensureLabel(name, color, description) {
+              try {
+                await github.rest.issues.getLabel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  name,
+                });
+              } catch (error) {
+                if (error.status !== 404) throw error;
+                await github.rest.issues.createLabel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  name,
+                  color,
+                  description,
+                });
+              }
+            }
+
+            await ensureLabel(
+              "chatgpt-pickup-required",
+              "A371F7",
+              "Task requires ChatGPT judgment, implementation, or review",
+            );
+            await ensureLabel(
+              "pickup:chatgpt",
+              "0052CC",
+              "Primary intake pickup target is ChatGPT",
+            );
+
+            for (const issue of issues) {
+              if (issue.pull_request) continue;
+
+              const blocked = blockedCodexAssignees(issue.assignees, settings);
+              if (blocked.length) {
+                await github.rest.issues.removeAssignees({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issue.number,
+                  assignees: blocked,
+                });
+                core.notice(`removed disabled Codex assignee(s) from #${issue.number}: ${blocked.join(", ")}`);
+              }
+
+              const result = reassignDisabledCodexIntake(issue.body || "", {
+                settings,
+                timestamp: new Date().toISOString(),
+              });
+              if (!result.changed) continue;
+
+              const labels = (issue.labels || [])
+                .map((label) => typeof label === "string" ? label : label.name)
+                .filter(Boolean)
+                .filter((label) => !["codex-ready", "pickup:codex"].includes(label));
+              for (const label of ["chatgpt-pickup-required", "pickup:chatgpt"]) {
+                if (!labels.includes(label)) labels.push(label);
+              }
+
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: result.body,
+                labels,
+              });
+              core.notice(
+                `reassigned disabled Codex intake #${issue.number} to ${result.metadata.pickup_target} `
+                + `at ownership revision ${result.metadata.ownership_revision}`,
+              );
+            }
