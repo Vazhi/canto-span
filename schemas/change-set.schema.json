@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Vazhi/canto-span/schemas/change-set.schema.json",
+  "title": "Canto Span declarative changeset",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "work_id", "claim_issue", "base_commit", "operations", "regenerate"],
+  "properties": {
+    "schema": { "const": "canto-span-change-set-v1" },
+    "work_id": { "type": "string", "pattern": "^CS-WORK-[0-9]{4,}$" },
+    "claim_issue": { "type": "integer", "minimum": 1 },
+    "base_commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+    "operations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["type", "file"],
+        "properties": {
+          "type": {
+            "enum": ["json_record_merge", "json_pointer_set", "text_replace", "markdown_section_replace"]
+          },
+          "file": { "type": "string", "minLength": 1 },
+          "array_pointer": { "type": "string" },
+          "key_field": { "type": "string" },
+          "key_value": {},
+          "expected": {},
+          "changes": { "type": "object" },
+          "pointer": { "type": "string" },
+          "value": {},
+          "replacement": { "type": "string" },
+          "heading": { "type": "string" },
+          "content": { "type": "string" },
+          "expected_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+        }
+      }
+    },
+    "regenerate": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    }
+  }
+}

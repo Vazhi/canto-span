@@ -1,0 +1,48 @@
+{
+  "schema": "canto-span-coordination-targets-v1",
+  "default_claim_expiry_hours": 72,
+  "exclusive_claim_expiry_hours": 48,
+  "exclusive_files": [
+    { "path": "AGENTS.md", "reason": "repository-wide agent bootstrap" },
+    { "path": "package.json", "reason": "shared command surface" },
+    { "path": "config/verification-profiles.json", "reason": "shared verification orchestration" },
+    { "path": "config/coordination-targets.json", "reason": "coordination policy owner" },
+    { "path": "schemas/**", "reason": "shared coordination and data contracts" },
+    { "path": ".github/workflows/**", "reason": "repository-wide automation" },
+    { "path": ".github/ISSUE_TEMPLATE/**", "reason": "repository-wide intake protocol" },
+    { "path": ".github/pull_request_template.md", "reason": "repository-wide PR protocol" },
+    { "path": "docs/current/00-START-HERE.md", "reason": "mandatory operating contract" },
+    { "path": "docs/current/MULTI-AGENT-COORDINATION.md", "reason": "coordination policy owner" },
+    { "path": "tools/verify-agent-coordination.js", "reason": "coordination contract verifier" },
+    { "path": "tools/verify-coordination-system.js", "reason": "coordination system verifier" },
+    { "path": "tools/coordination/**", "reason": "coordination engine" }
+  ],
+  "integration_owned_files": [
+    { "path": "README.md", "reason": "shared current-state summary" },
+    { "path": "HANDOFF.md", "reason": "shared integration handoff" },
+    { "path": "GRAMMAR-INDEX.md", "reason": "generated or aggregate navigation" },
+    { "path": "docs/current/PROJECT-STATE.md", "reason": "single current-state owner" },
+    { "path": "data/construction-candidate-readiness.json", "reason": "deterministic aggregate output" },
+    { "path": "data/construction-label-sweep.json", "reason": "deterministic aggregate output" },
+    { "path": "docs/research/SUPPORTED-PRODUCTIVE-CANDIDATES.md", "reason": "deterministic discovery output" },
+    { "path": "docs/research/ORPHANED-CONSTRUCTION-EVIDENCE.md", "reason": "deterministic discovery output" },
+    { "path": "docs/research/CONSTRUCTION-FAMILY-GAPS.md", "reason": "deterministic discovery output" },
+    { "path": "docs/research/FULL-REPO-SUPPORTED-PRODUCTIVE-SWEEP-R1.md", "reason": "deterministic discovery output" }
+  ],
+  "canonical_record_files": [
+    { "path": "data/construction-identities.json", "array_pointer": "/records", "key_field": "construction_code" },
+    { "path": "data/construction-adjudications.json", "array_pointer": "/records", "key_field": "construction_code" },
+    { "path": "data/parked-constructions.json", "array_pointer": "/records", "key_field": "construction_code" }
+  ],
+  "regeneration_targets": {
+    "identity": [
+      "npm run identity:generate"
+    ],
+    "discovery": [
+      "npm run discovery:generate"
+    ],
+    "construction-tests": [
+      "node tools/sync-construction-test-metadata.js"
+    ]
+  }
+}

@@ -1,0 +1,54 @@
+name: Semantic work claim
+description: Reserve semantic targets before creating or editing an agent branch.
+title: "Work claim: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Create this issue before editing. Claims coordinate semantic regions rather than locking whole files. Use `shared` only for disjoint regions and `exclusive` for repository-wide policy, schemas, workflows, or whole-file ownership.
+  - type: textarea
+    id: claim
+    attributes:
+      label: Machine-readable coordination claim
+      description: Replace every placeholder. The fenced JSON is parsed by the coordination workflow.
+      value: |
+        ```coordination-claim
+        {
+          "schema": "canto-span-work-claim-v1",
+          "work_id": "CS-WORK-0000",
+          "status": "active",
+          "claim_mode": "shared",
+          "integration_role": "worker",
+          "branch": "agent/replace-with-branch-name",
+          "expires_at": "2026-07-28T00:00:00Z",
+          "targets": [
+            {
+              "type": "construction",
+              "id": "AA00",
+              "region": "identity"
+            },
+            {
+              "type": "file",
+              "path": "data/example.json",
+              "region": "/records/AA00"
+            }
+          ],
+          "generated_outputs": [],
+          "protected_state": [],
+          "dependencies": [],
+          "summary": "Replace with one bounded outcome."
+        }
+        ```
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Coordination confirmation
+      options:
+        - label: I inspected current `main`, open pull requests, and open work claims.
+          required: true
+        - label: I used semantic regions where possible instead of claiming an entire shared file.
+          required: true
+        - label: I will renew, mark stale, or close this claim when its state changes.
+          required: true

@@ -11,6 +11,7 @@
       { "id": "source-accounting", "command": ["node", "tools/audit-source-accounting.js"] },
       { "id": "parked-constructions", "command": ["node", "tools/verify-parked-constructions.js"] },
       { "id": "implementation-reachability", "command": ["node", "tools/verify-implementation-reachability.js"] },
+      { "id": "coordination-system", "command": ["npm", "run", "verify:coordination"] },
       { "id": "agent-coordination", "command": ["node", "tools/verify-agent-coordination.js"] },
       { "id": "documentation", "command": ["node", "tools/verify-documentation-consistency.js", "--output", "validation/current/documentation-consistency.json"] }
     ],
