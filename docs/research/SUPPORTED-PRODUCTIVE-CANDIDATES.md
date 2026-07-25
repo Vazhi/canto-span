@@ -48,7 +48,7 @@ This is a prioritization report, not a promotion decision. A score cannot overri
 | `AA76` | `BeiThemeRecipientGiveVP` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA86` | `ModalM4ModalInterrogative` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA89` | `ModalAuxiliaryComplementVP` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
-| `AA97` | `NegatedDirectionalMotionVP` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
+| `AA99` | `NegatedExistentialFragment` | `source_supported` | 48 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 
 ## Narrowing candidates
 
@@ -59,6 +59,8 @@ These broad current labels are not direct promotion candidates. Their source-bac
 | `AA07` | `GeMarkedNominalModifierNP` | `narrowing_candidate` | 75 | `reviewed_corpus_evidence` | review and classify diverse corpus candidates, including false positives and ambiguous hits |
 | `AA30` | `CoordinatedNP` | `narrowing_candidate` | 75 | `reviewed_corpus_evidence` | review and classify diverse corpus candidates, including false positives and ambiguous hits |
 | `AA82` | `BinDouWhPlaceQuestion` | `narrowing_candidate` | 70 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
+| `AA93` | `OvertDestinationMotionVP` | `narrowing_candidate` | 70 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
+| `AA94` | `MotionClausePurposeRelation` | `narrowing_candidate` | 70 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA06` | `ApproximateQuantity` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA12` | `ClassifierObjectNP` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA20` | `CognitionStatementClause` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
@@ -67,8 +69,6 @@ These broad current labels are not direct promotion candidates. Their source-bac
 | `AA57` | `ExistentialQuestion` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA59` | `ExperientialClause` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA63` | `ExperientialYesNoQuestion` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
-| `AA93` | `MotionGoalVP` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
-| `AA94` | `MotionPurposeChain` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA98` | `NegatedExistentialClause` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AB03` | `NegatedVP` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AB07` | `NegativePotentialComplement` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |

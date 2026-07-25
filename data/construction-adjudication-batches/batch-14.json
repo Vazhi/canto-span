@@ -1,0 +1,291 @@
+{
+  "schema": "canto-span-construction-adjudications-v1",
+  "adjudicated_on": "2026-07-25",
+  "adjudication_authority": "project expert systematic review",
+  "records": [
+    {
+      "construction_uuid": "15d06614-d21c-5f48-a72c-4ea66273cc6f",
+      "construction_code": "AA92",
+      "legacy_label": "MotionDelimitedVP",
+      "approved_canonical_name": "MotionPurposeDelimitedCompositeWrapper",
+      "claim_layer": "parser_representation",
+      "family_name": "PurposeAndAspectRepresentation",
+      "profile_name": "MotionPurposePlusDelimitedActionAggregate",
+      "profile_description": "A retired implementation wrapper that combined a motion-to-purpose relation with a following delimitative 吓-marked action. The outer wrapper contributed no independent Cantonese licensing boundary beyond the separately typed purpose relation and delimitative VP and must not be restored as a language construction.",
+      "learner_label": null,
+      "behavior_research_alignment": "disjoint",
+      "terminology_alignment": "misleading",
+      "recommended_action": "retain_retired_reclassify",
+      "status_recommendation": "remain retired; preserve the UUID and historical alias only, and keep future purpose-relation and delimitative-aspect research under independently typed structures",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-MATTHEWS-2006-SVC",
+          "SRC-WONG-2023-LANGUAGE-SAMPLE"
+        ],
+        "runtime_locations": [],
+        "test_file": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+        "additional_research": [
+          "The retirement audit records zero accepted fixtures and no surviving parser output for this label. Its former movement + action + 吓 cross-product conflated an inter-event purpose relation with delimitative aspect; the archive explicitly preserves those components separately as typed purpose relation plus DelimitedVP."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "serial verb constructions narrower than an arbitrary two-verb sequence",
+          "source_id": "SRC-MATTHEWS-2006-SVC",
+          "scope_match": "contrastive"
+        },
+        {
+          "term": "delimitative 吓-marked verbal material",
+          "source_id": "SRC-WONG-2023-LANGUAGE-SAMPLE",
+          "scope_match": "contrastive"
+        }
+      ],
+      "former_names": [
+        "MotionDelimitedVP"
+      ],
+      "successor_profiles": [
+        "MotionClausePurposeRelation",
+        "DelimitedVP"
+      ],
+      "rationale": "MotionDelimitedVP treated transparent composition of motion-purpose structure and delimitative aspect as one dedicated construction. The retired UUID remains resolvable for provenance but is reclassified as a parser representation so neither purpose evidence nor delimitative evidence can be promoted through the obsolete outer wrapper.",
+      "unresolved_blockers": [
+        "preserve the retired UUID, code, alias, and retirement provenance",
+        "keep motion, purpose relation, action predicate, and delimitative aspect independently typed",
+        "do not restore a runtime wrapper unless a new independently evidenced boundary is assigned a new or explicitly reviewed identity",
+        "do not transfer evidence from MotionClausePurposeRelation or DelimitedVP to the retired composite"
+      ]
+    },
+    {
+      "construction_uuid": "09d2535f-66fa-569c-bee6-f538f39c891c",
+      "construction_code": "AA93",
+      "legacy_label": "MotionGoalVP",
+      "approved_canonical_name": "OvertDestinationMotionVP",
+      "claim_layer": "language_construction",
+      "family_name": "DirectionalMotionAndGoals",
+      "profile_name": "MotionPredicateWithOvertDestinationExpression",
+      "profile_description": "An overt motion predicate combines with a visible destination expression, optionally with perfective 咗 or overt wh-place material, as in 去香港, 返屋企, 入房, 出門口, 到屋企, and 去邊度. The retained profile excludes source-initial travel clauses, purpose chains, bare deictic motion without an overt destination, and abstract or result uses unless independently typed.",
+      "learner_label": null,
+      "behavior_research_alignment": "runtime_broader",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
+      "status_recommendation": "retain unsupported_generalization until physical destination, arrival, deictic, abstract-goal, source, and purpose profiles are explicitly decomposed and runtime boundaries are reconciled",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-CHOR-2018-DIRECTIONALS",
+          "SRC-LEUNG-2026-MOTION",
+          "SRC-SZETO-2015-PERFECTIVE"
+        ],
+        "runtime_locations": [
+          "main.js:2915-2975",
+          "main.js:3155-3180",
+          "main.js:13415-13440",
+          "main.js:13930-13975"
+        ],
+        "test_file": "tests/constructions/MotionGoalVP.json",
+        "additional_research": [
+          "The forty executable positives include overt destinations, arrival predicates, wh-place goals, source-linked travel clauses, and clauses that also contain following purpose predicates. Chor separates locative arrival goals from other 到 uses, Leung separates spatial displacement from purposive 去/嚟, and Szeto supports motion predicate + 咗 + destination order. The UUID is therefore retained only for overt destination motion."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "arrival at a locative goal",
+          "source_id": "SRC-CHOR-2018-DIRECTIONALS",
+          "scope_match": "close"
+        },
+        {
+          "term": "spatial-displacement expression distinct from marked purposive 去/嚟",
+          "source_id": "SRC-LEUNG-2026-MOTION",
+          "scope_match": "restrictive"
+        },
+        {
+          "term": "motion predicate + 咗 + destination expression",
+          "source_id": "SRC-SZETO-2015-PERFECTIVE",
+          "scope_match": "exact"
+        }
+      ],
+      "former_names": [
+        "MotionGoalVP"
+      ],
+      "successor_profiles": [
+        "SourceMotionClause",
+        "MotionClausePurposeRelation",
+        "DeicticMotionPredicate",
+        "AbstractGoalMotionProfile",
+        "ArrivalGoalPredicate"
+      ],
+      "rationale": "MotionGoalVP is too broad for the runtime inventory and obscures the overt destination material that unifies the strongest source-supported cases. OvertDestinationMotionVP retains the UUID for visible destination motion while requiring source, purpose, deictic, abstract, and result interpretations to be typed separately.",
+      "unresolved_blockers": [
+        "remove source-initial travel and purpose-chain paths from this UUID during compatibility migration",
+        "separate arrival 到 from directional/result and abstract-goal uses",
+        "define lexical scope for 去, 嚟, 返, 入, 出, 到, and other motion predicates",
+        "complete corpus, role-neutral panel, negative-boundary, code-document, and held-out review"
+      ]
+    },
+    {
+      "construction_uuid": "cd8cdacb-c150-5565-b186-4c5e69b088f7",
+      "construction_code": "AA94",
+      "legacy_label": "MotionPurposeChain",
+      "approved_canonical_name": "MotionClausePurposeRelation",
+      "claim_layer": "language_construction",
+      "family_name": "PurposeSerialRelations",
+      "profile_name": "MotionPredicateImmediatelyFollowedByCompatiblePurposeVP",
+      "profile_description": "A typed relation links an independently parsed motion predicate or clause to an immediately following, semantically compatible purpose VP, as in 我去餐廳食晏. Adjacency alone does not license the relation, and subject sharing, argument structure, purposive-marker uses of 去/嚟, and other serial-verb analyses remain independently represented.",
+      "learner_label": null,
+      "behavior_research_alignment": "overlapping",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
+      "status_recommendation": "retain unsupported_generalization until semantic compatibility, shared-subject provenance, comparison with SerialVerbPurposeChain, corpus evidence, panel evidence, and held-out boundaries are complete",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-LEUNG-2026-MOTION",
+          "SRC-MATTHEWS-2006-SVC"
+        ],
+        "runtime_locations": [
+          "main.js:2900-2920",
+          "main.js:6387-6487",
+          "main.js:13950-13968"
+        ],
+        "test_file": "tests/constructions/MotionPurposeChain.json",
+        "additional_research": [
+          "The executable inventory contains one positive, 我去餐廳食晏, and two nonpurpose boundaries. Leung requires an immediately following purpose phrase in its annotation while treating purposive-marker 去/嚟 separately; Matthews shows that two verbs and surface order alone do not establish one serial-purpose construction."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "immediately following purpose phrase",
+          "source_id": "SRC-LEUNG-2026-MOTION",
+          "scope_match": "close"
+        },
+        {
+          "term": "serial verb construction with independently constrained inter-event relation",
+          "source_id": "SRC-MATTHEWS-2006-SVC",
+          "scope_match": "restrictive"
+        }
+      ],
+      "former_names": [
+        "MotionPurposeChain"
+      ],
+      "successor_profiles": [
+        "SerialVerbPurposeRelation",
+        "PurposiveMarkerGoComeProfile"
+      ],
+      "rationale": "MotionPurposeChain suggests that a verb sequence is intrinsically purposive. MotionClausePurposeRelation instead names the narrow relation that can survive: two independently parsed predicates linked only when immediate position and semantic compatibility support a purpose interpretation.",
+      "unresolved_blockers": [
+        "compare this UUID with SerialVerbPurposeChain and merge only genuinely redundant relation nodes",
+        "define executable semantic-compatibility and shared-subject safeguards without fabricating an omitted subject",
+        "separate purposive-marker 去/嚟 from ordinary motion followed by a purpose VP",
+        "expand positive, negative, corpus, role-neutral panel, and held-out evidence"
+      ]
+    },
+    {
+      "construction_uuid": "73972a79-f52f-5458-95ce-2b2c8c6bc73b",
+      "construction_code": "AA96",
+      "legacy_label": "NeedsContext",
+      "approved_canonical_name": "UnresolvedContextDiagnostic",
+      "claim_layer": "parser_representation",
+      "family_name": "DiagnosticRepresentation",
+      "profile_name": "MissingContextAmbiguityOrIncompleteInterpretationDisposition",
+      "profile_description": "A learner-visible parser disposition emitted when overt input remains underdetermined because required context, an antecedent, a semantic slot, or a choice among competing analyses is unresolved. The diagnostic records the missing-context category and available analyses, never invents context, and remains distinct from malformed structure, unknown input, and ordinary parse failure.",
+      "learner_label": null,
+      "behavior_research_alignment": "runtime_broader",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
+      "status_recommendation": "retain parser_heuristic as a nonlinguistic diagnostic state; preserve the serialized legacy label until learner rendering and downstream consumers are explicitly migrated",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [],
+        "runtime_locations": [
+          "main.js:8391-8399",
+          "main.js:12648-13257",
+          "main.js:14804-15035",
+          "main.js:16445-16465",
+          "main.js:18526-18550"
+        ],
+        "test_file": "tests/constructions/NeedsContext.json",
+        "additional_research": [
+          "The current file contains seventy-three snapshot positives across bare quantities, fragmentary predicates, omitted arguments, ambiguous responses, and malformed or semantically incompatible strings, plus explicit escape and implementation probes. The diagnostic is valuable, but its technical identity must be limited to unresolved contextual interpretation and must not absorb MalformedStructureDiagnostic or unknown-input behavior."
+        ]
+      },
+      "source_terms": [],
+      "former_names": [
+        "NeedsContext"
+      ],
+      "successor_profiles": [
+        "MalformedStructureDiagnostic",
+        "UnknownInputDiagnostic",
+        "MissingAntecedentDiagnostic",
+        "AmbiguousInterpretationDiagnostic"
+      ],
+      "rationale": "NeedsContext is useful learner-facing wording but too broad as a permanent technical identity. UnresolvedContextDiagnostic preserves the high-reach uncertainty contract while stating that the node is a parser disposition, not a Cantonese construction, and while preventing malformed or unknown input from being silently treated as missing context.",
+      "unresolved_blockers": [
+        "classify every current positive by explicit missing-context or ambiguity subtype",
+        "separate malformed structure, unknown input, semantic incompatibility, and ordinary parse failure",
+        "preserve non-fabrication and escape-only-on-compatible-overt-context invariants",
+        "migrate learner rendering and serialized consumers before changing the emitted legacy label"
+      ]
+    },
+    {
+      "construction_uuid": "af7743b9-4a3d-50f2-8955-b30f48358f60",
+      "construction_code": "AA97",
+      "legacy_label": "NegatedDirectionalMotionVP",
+      "approved_canonical_name": "NegatedMotionPredicateWrapper",
+      "claim_layer": "parser_representation",
+      "family_name": "NegationAndMotionRepresentation",
+      "profile_name": "M4OrMou5BeforeBasicMotionPredicateAggregate",
+      "profile_description": "An implementation wrapper over overt negators such as 唔 or 冇 applied to basic motion predicates such as 嚟 or 去, as in 唔嚟 and 冇去. The wrapper does not establish one independent Cantonese construction, does not collapse negator meanings or aspectual effects, and excludes potential-directional patterns such as V得/唔Directional.",
+      "learner_label": null,
+      "behavior_research_alignment": "disjoint",
+      "terminology_alignment": "misleading",
+      "recommended_action": "internalize_and_decompose",
+      "status_recommendation": "migrate to parser_heuristic only through a separate compatibility change; preserve ordinary negation, motion-predicate, and potential-directional identities independently",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-LIANG-MAI-2025-GRAMMAR-CODING",
+          "SRC-WONG-2023-LANGUAGE-SAMPLE",
+          "SRC-YIU-2016-DIRECTIONAL-ASPECT"
+        ],
+        "runtime_locations": [],
+        "test_file": "tests/constructions/NegatedDirectionalMotionVP.json",
+        "additional_research": [
+          "The ten executable positives reduce to ordinary 唔嚟 and 冇去 patterns embedded in larger clauses. Wong treats negators as a closed set preceding adjective or verb phrases, while Yiu's V得/唔Directional potential forms are structurally distinct. The source set therefore supports the components and contrasts, not a dedicated negated-directional-motion construction."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "negation adverb preceding and negating a verb phrase",
+          "source_id": "SRC-WONG-2023-LANGUAGE-SAMPLE",
+          "scope_match": "close"
+        },
+        {
+          "term": "NegAdv-V and V-DirPart as separate coding categories",
+          "source_id": "SRC-LIANG-MAI-2025-GRAMMAR-CODING",
+          "scope_match": "contrastive"
+        },
+        {
+          "term": "V得/唔Directional potential construction",
+          "source_id": "SRC-YIU-2016-DIRECTIONAL-ASPECT",
+          "scope_match": "restrictive"
+        }
+      ],
+      "former_names": [
+        "NegatedDirectionalMotionVP"
+      ],
+      "successor_profiles": [
+        "M4NegatedMotionVP",
+        "Mou5NonoccurrenceMotionVP",
+        "DirectionalPotentialConstruction"
+      ],
+      "rationale": "NegatedDirectionalMotionVP presents ordinary negation of motion predicates as a dedicated construction and risks conflating 唔, 冇, and potential V唔Directional structure. NegatedMotionPredicateWrapper preserves compatibility while removing the aggregate from direct linguistic promotion and keeping negation, motion, and potential-directional analyses separate.",
+      "unresolved_blockers": [
+        "map each current positive to its exact negator, temporal or aspectual interpretation, and motion predicate",
+        "separate 唔嚟 from 冇去 and other negator-specific profiles",
+        "exclude V得/唔Directional potential constructions and aspectualized directional forms",
+        "complete compatibility migration before changing the emitted legacy label or status path"
+      ]
+    }
+  ]
+}

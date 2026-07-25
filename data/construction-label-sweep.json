@@ -2,7 +2,7 @@
   "schema": "canto-span-full-repo-label-sweep-v1",
   "identity_registry_schema": "canto-span-construction-identity-registry-v1",
   "record_count": 181,
-  "pending_review_count": 117,
+  "pending_review_count": 112,
   "automatic_flag_counts": {
     "generic_head_requires_boundary_definition": 72,
     "internal_representation_name_review": 20,
@@ -1473,15 +1473,15 @@
     {
       "construction_uuid": "15d06614-d21c-5f48-a72c-4ea66273cc6f",
       "construction_code": "AA92",
-      "canonical_name": "MotionDelimitedVP",
+      "canonical_name": "MotionPurposeDelimitedCompositeWrapper",
       "lifecycle_state": "retired",
-      "claim_layer": "unresolved",
+      "claim_layer": "parser_representation",
       "linguistic_status": "retired",
       "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "disjoint",
+      "terminology_alignment": "misleading",
+      "recommended_action": "retain_retired_reclassify",
       "automatic_risk_flags": [
         "retired_label_research_home_check",
         "unsupported_generalization_requires_source_runtime_reconciliation"
@@ -1490,15 +1490,15 @@
     {
       "construction_uuid": "09d2535f-66fa-569c-bee6-f538f39c891c",
       "construction_code": "AA93",
-      "canonical_name": "MotionGoalVP",
+      "canonical_name": "OvertDestinationMotionVP",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "unsupported_generalization",
       "source_path": "grammar/unsupported_generalization/MotionGoalVP.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "runtime_broader",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": [
         "unsupported_generalization_requires_source_runtime_reconciliation"
       ]
@@ -1506,15 +1506,15 @@
     {
       "construction_uuid": "cd8cdacb-c150-5565-b186-4c5e69b088f7",
       "construction_code": "AA94",
-      "canonical_name": "MotionPurposeChain",
+      "canonical_name": "MotionClausePurposeRelation",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "unsupported_generalization",
       "source_path": "grammar/unsupported_generalization/MotionPurposeChain.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "overlapping",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": [
         "unsupported_generalization_requires_source_runtime_reconciliation"
       ]
@@ -1539,15 +1539,15 @@
     {
       "construction_uuid": "73972a79-f52f-5458-95ce-2b2c8c6bc73b",
       "construction_code": "AA96",
-      "canonical_name": "NeedsContext",
+      "canonical_name": "UnresolvedContextDiagnostic",
       "lifecycle_state": "current",
       "claim_layer": "parser_representation",
       "linguistic_status": "parser_heuristic",
       "source_path": "grammar/parser_heuristic/NeedsContext.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "runtime_broader",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": [
         "internal_representation_name_review"
       ]
@@ -1555,15 +1555,15 @@
     {
       "construction_uuid": "af7743b9-4a3d-50f2-8955-b30f48358f60",
       "construction_code": "AA97",
-      "canonical_name": "NegatedDirectionalMotionVP",
+      "canonical_name": "NegatedMotionPredicateWrapper",
       "lifecycle_state": "current",
-      "claim_layer": "language_construction",
+      "claim_layer": "parser_representation",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/NegatedDirectionalMotionVP.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "disjoint",
+      "terminology_alignment": "misleading",
+      "recommended_action": "internalize_and_decompose",
       "automatic_risk_flags": [
         "possible_multi_layer_construction_bundle"
       ]
