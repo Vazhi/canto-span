@@ -1,385 +1,286 @@
 ---
-title: Canto Span — Codex Issue Intake Workflow
-status: current-design
-implementation_status: documented-not-implemented
+title: Canto Span — ChatGPT and Codex Task Routing
+status: current
+implementation_status: routing-active; automated-issue-generator-not-implemented
 tags: [canto-span/infrastructure, canto-span/agents, canto-span/github]
 related: "[[00-START-HERE]] [[MULTI-AGENT-COORDINATION]] [[USER-MERGE-REVIEW]]"
 ---
 
-# Codex issue intake workflow
+# ChatGPT and Codex task routing
 
-This document defines the planned GitHub workflow for creating bounded issues that
-Codex can begin from with minimal task-specific prompting.
+This document is the canonical owner of task routing between ChatGPT and Codex for
+Canto Span repository work.
 
-The workflow is **documented but not yet implemented**. Creating an ordinary GitHub
-issue does not, by itself, prove that a Codex task has started. Automatic pickup must
-be provided by a tested dispatch adapter supported by the connected Codex setup.
-Until that adapter exists and is verified, `codex-ready` means that the issue is
-properly scoped for Codex, not that Codex is currently working on it.
+The routing duties in this document are active now. The planned GitHub issue-generator
+and automatic Codex dispatch adapter are not yet implemented. Until they exist,
+ChatGPT creates eligible intake issues directly through available GitHub tools and
+reports them to the user. Creating an issue alone does not prove that Codex has begun
+work; dispatch status must remain explicit and truthful.
 
-This document does not replace:
+This document supplements, but does not replace:
 
 - [`AGENTS.md`](../../AGENTS.md);
 - [`00-START-HERE.md`](00-START-HERE.md);
 - [`MULTI-AGENT-COORDINATION.md`](MULTI-AGENT-COORDINATION.md);
 - [`USER-MERGE-REVIEW.md`](USER-MERGE-REVIEW.md).
 
-Every Codex task remains subject to those contracts.
+Every delegated task remains subject to those contracts.
 
-## 1. Purpose
+## 1. Mandatory routing rule
 
-The workflow should let the user create a useful Codex task quickly without copying
-the full repository contract into every issue. It should:
+Before beginning substantive Canto Span work, ChatGPT and Codex must classify the
+requested work as exactly one of:
 
-1. accept a small set of structured inputs;
-2. reject tasks that are too ambiguous or reserve decisions for ChatGPT or the user;
-3. create a consistent, immediately actionable GitHub issue;
-4. label the issue as Codex-ready only after validation;
-5. optionally hand the issue to a separately configured Codex dispatch adapter;
-6. require Codex to create its own semantic work claim after inspecting live
-   repository state;
-7. end in a coherent pull request presented to the user for review;
-8. never merge or enable auto-merge without the explicit approval required by
-   `USER-MERGE-REVIEW.md`.
+1. **ChatGPT-first** — judgment, research synthesis, policy, design, prioritization,
+   user interaction, or review must occur before implementation can be specified.
+2. **Codex-ready** — one bounded, repository-centered, testable outcome can begin
+   without an unresolved expert or user decision.
+3. **Hybrid** — ChatGPT performs the decision, research, design, or specification
+   portion and delegates one or more bounded implementation portions to Codex.
 
-The intake issue describes the requested outcome. It is not a semantic work claim,
-linguistic evidence record, implementation approval, release approval, deployment
-approval, or merge approval.
+The user does not need to ask ChatGPT to perform this routing or remind it to create
+Codex issues.
 
-## 2. Routing principle
+## 2. ChatGPT delegation duty
 
-A task is suitable for direct Codex intake when it is:
+For every Canto Span request involving repository work, ChatGPT must consult this
+document before deciding how the work will be executed.
 
-- bounded;
-- repository-centered;
-- testable or auditable;
-- capable of producing one coherent pull request;
-- independent of an unresolved user preference;
-- independent of an unmade expert linguistic, survey, governance, promotion,
-  deployment, release, or merge decision.
+### 2.1 Direct Codex-ready work
 
-Tasks requiring broad synthesis, external research judgment, policy selection,
-participant-facing language, or clarification should go through ChatGPT first.
-ChatGPT may then convert the result into one or more bounded Codex-ready issues.
+When a task satisfies the Codex eligibility gate in section 6, ChatGPT must:
 
-## 3. Codex-appropriate task categories
+1. inspect current repository context sufficiently to define a bounded outcome;
+2. check open pull requests, intake issues, and semantic work claims for obvious
+   overlap;
+3. create a Codex intake issue without waiting for a separate user reminder or
+   confirmation, unless material ambiguity prevents safe scoping;
+4. include the minimal bootstrap prompt, outcome, acceptance criteria, relevant
+   context, protected state, and truthful dispatch status;
+5. inform the user immediately after issue creation.
 
-The workflow permits only the following categories.
+The notification must identify:
 
-### 3.1 `runtime-bug`
+- each issue number or link;
+- task category;
+- bounded outcome;
+- important protected state;
+- whether Codex was actually dispatched, queued, or still requires manual pickup.
 
-Use for a reproducible parser, rendering, serialization, or span-boundary defect.
-The issue must provide a failing example, existing fixture, diagnostic, or other
-observable reproduction and must state the expected behavior.
+When several independent Codex issues are created in one turn, ChatGPT should report
+them together in one concise list rather than sending repetitive notices.
 
-Appropriate examples:
+### 2.2 ChatGPT-first work
+
+ChatGPT must retain work that requires:
+
+- broad external research or source evaluation;
+- linguistic analysis or construction-boundary judgment;
+- identity, ontology, status, promotion, parking, deployment, release, or governance
+  decisions;
+- survey design or interpretation of participant evidence;
+- user-facing writing or translation;
+- work prioritization;
+- clarification of an ambiguous objective;
+- independent review of a Codex pull request.
+
+After resolving the necessary decisions, ChatGPT must reassess the remaining work.
+Any newly bounded Codex-ready implementation should then be delegated without the
+user needing to request delegation again.
+
+### 2.3 Hybrid work
+
+For hybrid work, ChatGPT must:
+
+1. perform or obtain the required research, judgment, design, or accepted
+   specification;
+2. preserve any reserved decisions explicitly;
+3. split the implementation into the smallest coherent Codex issues;
+4. create those issues when they become executable;
+5. continue handling the ChatGPT-owned portion;
+6. report every created issue to the user.
+
+ChatGPT must not delegate an unresolved expert decision merely by describing it as
+implementation.
+
+### 2.4 Tool or dispatch limitations
+
+If ChatGPT cannot create the issue because GitHub access is unavailable, it must say
+so plainly and provide the complete ready-to-create issue body. It must not silently
+keep Codex-ready work in its own queue or imply that delegation occurred.
+
+If an issue is created but no tested dispatch adapter is available, ChatGPT must
+report `manual-pickup-required` rather than claiming that Codex is working.
+
+## 3. Codex self-screening duty
+
+Codex must read this document before creating a semantic work claim, creating a
+branch, or editing repository files.
+
+Codex must independently verify that the intake issue is Codex-ready. A `codex-ready`
+label, assignment, mention, or dispatch event is not sufficient authority by itself.
+
+### 3.1 Codex may proceed only when
+
+- the outcome is bounded;
+- acceptance criteria are observable;
+- relevant repository context is available or discoverable;
+- no unresolved user preference is needed;
+- no unmade ChatGPT-first decision is hidden inside the task;
+- the task can produce one coherent pull request or an explicit findings report;
+- the issue does not authorize direct writes to `main`, merge, or auto-merge;
+- current repository policy does not contradict the issue.
+
+After passing this self-screen, Codex creates the separate semantic work claim and
+exact branch required by `AGENTS.md` and the coordination contract.
+
+### 3.2 Codex must refuse and return work when
+
+- the task belongs to a ChatGPT-first category;
+- a hybrid task lacks the required accepted specification or decision;
+- the issue asks Codex to decide evidence sufficiency, grammaticality, identity,
+  status, promotion, survey design, deployment, release, parking, or governance;
+- the issue is too broad to have one coherent outcome;
+- required acceptance criteria are missing;
+- active work overlaps the same semantic region;
+- the target is parked without an accepted unpark decision;
+- the prompt conflicts with current policy.
+
+Codex must stop before creating a work claim, branch, or edit. It should report:
+
+- routing result: `needs-chatgpt`;
+- the exact unresolved decision or scope problem;
+- any mechanical subtask that could become Codex-ready later;
+- no claim or branch created;
+- no repository files changed.
+
+Codex must not weaken or reinterpret the routing rules merely to continue working.
+
+## 4. Codex-appropriate task categories
+
+Only the following categories are eligible for direct Codex intake.
+
+### 4.1 `runtime-bug`
+
+A reproducible parser, rendering, serialization, or span-boundary defect with stated
+expected behavior.
+
+Examples:
 
 - prevent a known false positive;
-- restore a previously accepted parse;
+- restore an accepted parse;
 - correct a span boundary;
-- fix a rendering or serialization regression.
+- repair a rendering regression.
 
-Do not use this category to invent a new grammar analysis or broaden a construction
-without the required evidence and decision basis.
+This category cannot be used to invent a new grammar analysis.
 
-### 3.2 `tests-fixtures`
+### 4.2 `tests-fixtures`
 
-Use for executable coverage of an already defined behavior or boundary.
+Executable coverage for already defined behavior or boundaries.
 
-Appropriate examples:
+Examples:
 
-- add a missing negative fixture;
+- add a negative fixture;
 - convert a confirmed bug into a regression test;
-- improve test metadata consistency;
 - add tooling tests for an existing verifier.
 
-A test request must identify the behavior it is proving. Passing tests do not create
-linguistic evidence or authorize a status change.
+Tests remain implementation evidence, not linguistic evidence.
 
-### 3.3 `verification-audit`
+### 4.3 `verification-audit`
 
-Use for deterministic checks, repository audits, stale-state detection, schema
-validation, and diagnostic improvements.
+Deterministic checks, repository audits, stale-state detection, schema validation,
+and diagnostic improvements.
 
-Appropriate examples:
+### 4.4 `data-schema`
 
-- detect stale documentation;
-- strengthen a schema verifier;
-- identify mismatches between canonical and generated files;
-- improve validation errors;
-- consolidate genuinely redundant verifier logic.
+Mechanical changes to canonical data or schemas when the desired state is already
+specified by an authoritative source.
 
-### 3.4 `data-schema`
+### 4.5 `documentation-consistency`
 
-Use for mechanical changes to canonical data or schemas when the desired state is
-already specified.
+Reconcile current documentation with an identified canonical source. Codex must not
+invent policy to resolve a contradiction.
 
-Appropriate examples:
+### 4.6 `corpus-tooling`
 
-- add a defined field across records;
-- migrate records to an accepted schema;
-- repair cross-references;
-- regenerate deterministic indexes;
-- apply consequences of an already accepted adjudication.
+Mechanical extraction, inventory, deduplication, provenance checks, rendering, and
+workbench maintenance. Extracted candidates are not automatically genuine evidence.
 
-Codex must not make the underlying identity, ontology, evidence, status, or policy
-decision unless that decision is already recorded in an authoritative source named
-by the issue.
+### 4.7 `ci-repository-tooling`
 
-### 3.5 `documentation-consistency`
+GitHub Actions, packaging, verification scripts, dependency maintenance, and other
+bounded repository infrastructure.
 
-Use to reconcile current documentation with an already accepted source of truth.
+### 4.8 `behavior-preserving-refactor`
 
-Appropriate examples:
+A bounded refactor with explicit invariants and adequate regression coverage.
 
-- remove stale instructions;
-- repair mandatory reading links;
-- synchronize counts with canonical data;
-- update README or HANDOFF after an accepted change.
+### 4.9 `accepted-specification`
 
-The issue must identify the canonical source. Codex must not invent a new policy to
-resolve a contradiction.
+Implementation of a reviewed design, schema, matcher, command, workflow, or recorded
+expert decision. Reserved choices must be named and preserved.
 
-### 3.6 `corpus-tooling`
+### 4.10 `repository-pr-audit`
 
-Use for mechanical corpus extraction, inventory, deduplication, provenance checks,
-rendering, and workbench maintenance.
+Bounded repository or pull-request inspection. The issue must say whether the output
+is findings-only or includes authorized repairs.
 
-Appropriate examples:
+## 5. Tasks that remain with ChatGPT first
 
-- run or repair an existing extractor;
-- validate source locations and hashes;
-- deduplicate candidates;
-- render an already reviewed packet;
-- improve workbench tests.
+The following are not direct Codex tasks until ChatGPT or the user has produced a
+bounded accepted specification:
 
-Codex must not classify a candidate as linguistically genuine merely because it was
-extracted. Expert classification remains separate unless the issue supplies the
-required decision basis and explicitly includes that adjudication scope.
-
-### 3.7 `ci-repository-tooling`
-
-Use for GitHub Actions, packaging tools, local verification scripts, dependency
-maintenance, and repository infrastructure.
-
-Appropriate examples:
-
-- diagnose a failing CI job;
-- repair workflow path filters;
-- update an action to a supported release;
-- fix export or packaging tooling;
-- remove an obsolete script after confirming its replacement.
-
-### 3.8 `behavior-preserving-refactor`
-
-Use for a bounded refactor whose required behavior is already defined and covered by
-verification.
-
-Appropriate examples:
-
-- split an oversized function;
-- consolidate duplicate utilities;
-- remove confirmed dead code;
-- simplify a deterministic generator.
-
-The issue must state the invariants that cannot change.
-
-### 3.9 `accepted-specification`
-
-Use to implement a design, schema, matcher, command, or workflow that has already
-been reviewed and accepted.
-
-The issue must link or name the accepted specification and identify any reserved
-choices that Codex must not reopen.
-
-### 3.10 `repository-pr-audit`
-
-Use for bounded inspection of repository state or a pull request.
-
-Appropriate examples:
-
-- search for legacy behavior;
-- compare implementation with a canonical specification;
-- identify missing tests;
-- verify claim coverage;
-- review a PR for regressions or stale assumptions.
-
-An audit issue may produce findings only or may authorize bounded repairs. The issue
-must say which outcome is expected.
-
-## 4. Tasks that go to ChatGPT first
-
-The intake workflow must not label the following task classes `codex-ready` unless
-ChatGPT or the user has first converted them into a bounded, decided specification.
-
-### 4.1 Work prioritization
-
-Examples:
-
-- choose the next construction;
-- compare research lanes;
-- decide whether to park or unpark work;
-- choose release milestones;
-- balance evidence risk against learner value.
-
-### 4.2 Broad external linguistic research
-
-Examples:
-
-- find and compare scholarly analyses;
-- assess evidence quality and source diversity;
-- determine what a publication directly establishes;
-- reconcile contradictory literature and speaker judgments.
-
-Codex may later record or implement the resulting decision.
-
-### 4.3 Difficult linguistic adjudication
-
-Examples:
-
-- decide whether two labels represent one construction;
-- decide whether a pattern is productive, lexicalized, or attested only;
-- define positive and negative boundaries;
-- decide whether a split requires a new UUID;
-- promote or downgrade a construction.
-
-### 4.4 Native-panel and survey design
-
-Examples:
-
-- choose constructions or contrasts;
-- write natural contexts;
-- design response scales;
-- interpret respondent feedback;
-- decide whether an instrument is ready to deploy.
-
-Codex may generate or validate XML and deployment artifacts after the instrument is
-specified.
-
-### 4.5 Governance and project-policy decisions
-
-Examples:
-
-- change evidence standards;
-- alter promotion thresholds;
-- define agent authority;
-- change automation permissions;
-- choose merge, deployment, or release policy.
-
-Codex may implement a policy after the decision is recorded.
-
-### 4.6 User-facing language and communication
-
-Examples:
-
-- Cantonese or Mandarin translation;
-- recruitment messages;
-- survey explanations;
-- learner-facing grammar explanations;
-- teaching materials;
-- sensitive personal or professional messages.
-
-### 4.7 Ambiguous improvement requests
-
-Examples:
-
-- improve the parser;
-- clean up the repository;
-- research Cantonese grammar;
-- make the survey better;
-- decide what to work on next.
-
-ChatGPT should decompose these into bounded tasks with explicit acceptance criteria.
-
-### 4.8 Final review and merge recommendation
-
-Codex may prepare and validate a PR. ChatGPT should independently review whether the
-PR solved the intended problem, stayed within scope, interpreted evidence correctly,
-and described limitations honestly. The user retains the explicit merge decision.
-
-## 5. Hybrid task pattern
-
-Some work should be divided rather than assigned entirely to one agent.
-
-| Task | ChatGPT or user responsibility | Codex responsibility |
-|---|---|---|
-| New parser construction | establish evidence, identity, and boundaries | implement accepted matcher, fixtures, and records |
-| Corpus investigation | define search and adjudication criteria | extract, deduplicate, validate, and render |
-| Survey creation | design instrument and wording | generate XML, validators, and technical files |
-| Evidence repair | interpret and grade sources | update ledgers and run verification |
-| Governance change | define policy | reconcile files and strengthen mechanical checks |
-| Release preparation | assess readiness and unresolved risks | generate artifacts and run release verification |
-| Large refactor | define invariants and acceptable risk | implement and regression-test the refactor |
+1. work prioritization and milestone selection;
+2. broad external linguistic research and source evaluation;
+3. difficult linguistic or construction-identity adjudication;
+4. status promotion, downgrade, parking, or unpark decisions;
+5. native-panel and survey design or response interpretation;
+6. governance and project-policy decisions;
+7. user-facing writing, translation, recruitment, or learner explanations;
+8. ambiguous requests such as “improve the parser” or “clean up the repository”;
+9. final independent review and merge recommendation.
 
 ## 6. Codex eligibility gate
 
-The issue-creation workflow may apply `codex-ready` only when every condition below
-is satisfied.
+An intake issue may be created as `codex-ready` only when every condition is met:
 
-1. The task has one bounded outcome.
-2. Relevant repository context is named or discoverable.
-3. At least one observable acceptance criterion is supplied.
-4. The task can end in one coherent pull request or one explicit findings report.
-5. No unresolved user preference is required to begin.
-6. No unmade expert linguistic, survey, governance, promotion, deployment, release,
-   parking, or merge decision is hidden inside the task.
-7. The task does not ask Codex to invent linguistic evidence.
-8. The task does not authorize direct writes to `main`.
-9. The task does not authorize merge or auto-merge.
-10. A parked construction is not silently included.
-11. The issue does not knowingly duplicate or overlap active work.
-12. The issue can be executed under `AGENTS.md` and `00-START-HERE.md` without a
-    contradictory instruction.
+1. one bounded outcome;
+2. identifiable repository context;
+3. one or more observable acceptance criteria;
+4. one coherent pull request or explicit findings report;
+5. no unresolved user preference;
+6. no hidden expert linguistic, survey, governance, promotion, deployment, release,
+   parking, or merge decision;
+7. no request to invent linguistic evidence;
+8. no direct write to `main`;
+9. no merge or auto-merge authorization;
+10. no silently parked construction;
+11. no known overlap with active work;
+12. compatibility with `AGENTS.md` and `00-START-HERE.md`.
 
-A failed gate creates no `codex-ready` issue. The workflow should either reject the
-request with a specific reason or create a non-dispatched `needs-chatgpt` issue when
-that behavior is explicitly requested.
+Failure routes the task to ChatGPT. It does not create a misleading Codex-ready
+issue.
 
-## 7. Workflow inputs
+## 7. Intake issue format
 
-The planned manual workflow should request only the information needed to produce a
-bounded issue.
+### 7.1 Minimal bootstrap prompt
 
-Required inputs:
-
-- **Category:** one allowlisted category from section 3.
-- **Title:** a concise action-oriented issue title.
-- **Outcome:** one concrete end state.
-- **Acceptance criteria:** one or more observable requirements.
-
-Optional inputs:
-
-- relevant files, functions, construction codes, diagnostics, or source packets;
-- behavior that must remain unchanged;
-- dependency issue or accepted specification;
-- risk level: `low`, `medium`, or `high`;
-- whether findings-only output is acceptable;
-- additional protected state;
-- requested labels.
-
-The workflow should not ask the user to predict the exact semantic work claim,
-branch name, current base SHA, or overlap state. Codex must determine those after
-inspecting live repository state.
-
-## 8. Generated issue structure
-
-The workflow should create an issue with four components.
-
-### 8.1 Minimal bootstrap prompt
-
-Use this exact intent, with only minor formatting changes if required:
+Use this intent:
 
 ```text
-Follow AGENTS.md and docs/current/00-START-HERE.md in full. Inspect current main,
-open PRs, and work claims; create the required semantic work claim and exact branch
-before editing. Complete the bounded outcome below, run every applicable check,
-open a coherent PR, notify the user when it is ready, and stop without merging.
+Read AGENTS.md, docs/current/00-START-HERE.md, and
+ docs/current/CODEX-ISSUE-WORKFLOW.md in full. Before creating a claim, branch, or
+edit, self-screen this task against the ChatGPT-first and Codex eligibility rules. If
+it is misrouted or requires an unresolved decision, report needs-chatgpt and stop
+without changing the repository. Otherwise inspect current main, open PRs, and work
+claims; create the required semantic work claim and exact branch; complete the
+bounded outcome; run every applicable check; open a coherent PR; notify the user when
+it is ready; and stop without merging.
 ```
 
-The issue should not copy the full agent contract. The repository files remain the
-canonical instructions.
+The issue should not duplicate the full repository contract.
 
-### 8.2 Human-readable task body
+### 7.2 Human-readable body
 
 ```markdown
 ## Outcome
@@ -394,10 +295,14 @@ canonical instructions.
 
 ## Relevant context
 
-<Files, issue, error, construction code, specification, or source packet>
+<Files, issue, error, construction code, accepted specification, or source packet>
+
+## Protected state
+
+<State dimensions or files that must remain unchanged>
 ```
 
-### 8.3 Machine-readable metadata
+### 7.3 Machine-readable metadata
 
 ```codex-task
 {
@@ -407,78 +312,75 @@ canonical instructions.
   "execution_mode": "implementation",
   "dependencies": [],
   "protected_state": [],
-  "dispatch_status": "ready",
+  "dispatch_status": "manual-pickup-required",
+  "chatgpt_routing_complete": true,
+  "codex_self_screen_required": true,
   "work_claim_required": true,
   "user_merge_approval_required": true
 }
 ```
 
-The metadata block describes intake routing only. It must not contain fabricated
-claim targets or imply that the issue is itself a work claim.
+The intake metadata is not a semantic work claim and must not fabricate claim targets.
 
-### 8.4 Labels
+### 7.4 Labels
 
 Recommended labels:
 
 - `codex-ready`;
 - `codex:<category>`;
 - `risk:low`, `risk:medium`, or `risk:high`;
-- optionally `findings-only`;
-- optionally `needs-chatgpt` for rejected or deferred requests.
+- `findings-only` where applicable;
+- `needs-chatgpt` when Codex refuses a misrouted issue.
 
-The implementation must verify that labels exist or create them through a separately
-claimed administrative step.
+## 8. Lifecycle
 
-## 9. Lifecycle
+### 8.1 Routing and intake
 
-### 9.1 Intake
+1. ChatGPT receives a Canto Span request.
+2. ChatGPT consults this document and classifies the work.
+3. ChatGPT handles ChatGPT-first decisions and decomposes hybrid work.
+4. ChatGPT creates each eligible Codex intake issue without requiring a reminder.
+5. ChatGPT informs the user of every created issue and truthful dispatch status.
 
-1. The user manually starts the issue-creation workflow.
-2. The workflow validates the category and required fields.
-3. It checks prohibited requests and obvious active-work overlap where possible.
-4. It creates the formatted issue and applies labels.
-5. It records whether a dispatch adapter was invoked successfully.
+A user may also manually start the future issue-generator workflow, but manual
+initiation is an additional entry point, not a prerequisite for ChatGPT delegation.
 
-### 9.2 Pickup
+### 8.2 Pickup and self-screen
 
-1. A tested dispatch adapter sends the issue to Codex, or a human manually starts a
-   Codex task from the issue.
-2. Codex reads `AGENTS.md`, `00-START-HERE.md`, the coordination contract, and the
-   merge-review contract.
-3. Codex inspects current `main`, open PRs, open work claims, parked constructions,
-   and exact affected records.
-4. Codex creates a separate semantic work-claim issue and the exact branch named by
-   that claim.
-5. If the task overlaps active work or requires a reserved decision, Codex stops and
-   reports the blocker instead of editing.
+1. A tested adapter dispatches the issue, or Codex is started manually.
+2. Codex reads the mandatory contracts and this routing document.
+3. Codex self-screens before claim, branch, or edit.
+4. Misrouted work returns to ChatGPT with `needs-chatgpt` and no repository change.
+5. Eligible work proceeds to a separate semantic work claim and branch.
 
-### 9.3 Execution
+### 8.3 Execution and review
 
-1. Codex keeps work inside the claim.
-2. Codex updates the claim before expanding scope.
-3. Codex follows all applicable evidence, identity, runtime, corpus, survey,
+1. Codex keeps work inside the claim and updates it before expanding scope.
+2. Codex follows all applicable evidence, identity, runtime, corpus, survey,
    generated-output, and verification gates.
-4. Codex creates one coherent PR and links both the intake issue and work claim.
-5. The PR closes the work claim on merge. The intake issue may close on PR merge or
-   through a separate accepted lifecycle rule chosen during implementation.
+3. Codex opens one coherent PR linking the intake issue and work claim.
+4. Codex verifies the exact head, informs the user, and stops without merging.
+5. ChatGPT independently reviews the result.
+6. The user retains the explicit merge decision for that PR and unchanged head.
 
-### 9.4 Review
+## 9. Hybrid responsibility examples
 
-1. Codex confirms the exact PR head and all applicable checks.
-2. Codex notifies the user that the PR is ready and provides scope, validation,
-   risks, and limitations.
-3. Codex stops without merging.
-4. ChatGPT or the user reviews the result.
-5. Merge occurs only after explicit user approval for the specific PR and unchanged
-   head.
+| Task | ChatGPT responsibility | Codex responsibility |
+|---|---|---|
+| New parser construction | establish evidence, identity, and boundaries | implement accepted matcher, tests, and records |
+| Corpus investigation | define search and adjudication criteria | extract, deduplicate, validate, and render |
+| Survey creation | design the blinded instrument and wording | generate technical XML, validators, and files |
+| Evidence repair | interpret and grade sources | apply recorded grades and run verification |
+| Governance change | define policy | reconcile documents and mechanical checks |
+| Release preparation | assess readiness and unresolved risks | generate artifacts and run release checks |
+| Large refactor | define invariants and acceptable risk | implement and regression-test |
 
 ## 10. Reserved decisions
 
-The intake workflow must never silently grant Codex authority to:
+Neither an intake issue nor a Codex-ready label silently authorizes Codex to:
 
-- allocate, merge, split, or retire a construction identity without an accepted
-  decision basis;
-- change linguistic status or promotion thresholds;
+- allocate, merge, split, or retire construction identities without an accepted basis;
+- decide linguistic status or promotion thresholds;
 - treat tests, parser output, extraction counts, or readiness scores as linguistic
   evidence;
 - design or deploy a survey;
@@ -489,35 +391,39 @@ The intake workflow must never silently grant Codex authority to:
 - merge or enable auto-merge;
 - infer user approval.
 
-An issue requesting one of these actions must either name the authoritative accepted
-decision that already permits implementation or be routed to ChatGPT or the user.
+## 11. Dispatch boundary
 
-## 11. Validation and rejection behavior
+Issue generation and Codex dispatch are separate responsibilities.
 
-The future implementation should reject or defer an intake request when:
+A created issue must record one truthful dispatch state:
 
-- the category is not allowlisted;
-- the outcome is blank, vague, or contains multiple unrelated outcomes;
-- no acceptance criterion is supplied;
-- the request asks for automatic merge, deployment, promotion, release, or unpark;
-- the request asks Codex to decide grammaticality or evidence sufficiency without a
-  defined evidence task and authority;
-- the task targets a parked construction without an accepted dependency;
-- the task contradicts current repository policy;
-- an active claim or PR already covers the same semantic target;
-- required context is unavailable;
-- the dispatch adapter is unavailable and the configured policy requires immediate
-  pickup rather than issue creation alone.
+- `not-configured`;
+- `queued`;
+- `accepted`;
+- `failed`;
+- `manual-pickup-required`.
 
-Rejection messages should identify the failing rule and state whether the task needs
-ChatGPT decomposition, user clarification, an accepted dependency, or ordinary
-manual Codex pickup.
+Assignment, labels, mentions, or an `issues: opened` event must not be described as
+starting Codex unless a controlled end-to-end test has verified that behavior.
 
-## 12. Permissions and security
+A dispatch failure must leave the intake issue intact and must be reported to the
+user.
 
-The issue-creation workflow should follow least privilege.
+## 12. Future issue-generator workflow
 
-For issue creation it normally needs:
+The later implementation should add:
+
+1. a manual and ChatGPT-callable GitHub workflow;
+2. a checked-in schema for `canto-span-codex-task-v1`;
+3. an issue generator and validator;
+4. tests for every category and rejection rule;
+5. label validation or setup;
+6. bounded duplicate and overlap checks;
+7. an isolated optional dispatch adapter;
+8. verification of the canonical bootstrap and user-review stop;
+9. an end-to-end low-risk test issue.
+
+For issue creation, expected least-privilege permissions are:
 
 ```yaml
 permissions:
@@ -526,67 +432,22 @@ permissions:
   pull-requests: read
 ```
 
-Additional permissions require a separate justification. The intake workflow should
-not receive `contents: write`, should not create branches, and should not modify
-`main`.
+The intake workflow should not need `contents: write`, should not create branches,
+and should never merge.
 
-Any Codex dispatch credential must be stored as a GitHub secret or use a supported
-short-lived identity mechanism. Logs must not expose tokens, private prompts, or
-participant data.
+## 13. Definition of done for the future workflow
 
-The dispatch step should be isolated from issue generation so the repository can
-retain a valid issue-intake workflow even when the connected Codex mechanism changes.
-
-## 13. Dispatch adapter boundary
-
-The design intentionally separates:
-
-1. **issue generation**, which can be implemented and tested entirely within GitHub;
-2. **Codex dispatch**, which depends on the actual supported Codex integration.
-
-The first implementation must not guess that assignment, a label, a mention, or the
-`issues: opened` event starts Codex. The adapter must be validated with one controlled
-end-to-end task and must record a machine-readable dispatch result such as:
-
-- `not-configured`;
-- `queued`;
-- `accepted`;
-- `failed`;
-- `manual-pickup-required`.
-
-A dispatch failure must not delete or corrupt the generated issue.
-
-## 14. Implementation plan
-
-A later implementation PR should add, at minimum:
-
-1. a manual workflow under `.github/workflows/`;
-2. a task schema for the `codex-task` metadata block;
-3. a generator and validator script;
-4. tests for every category and rejection rule;
-5. label validation or setup instructions;
-6. duplicate and overlap checks that do not fabricate semantic certainty;
-7. an optional isolated dispatch adapter;
-8. a verifier ensuring the workflow uses the canonical prompt and user-review stop;
-9. Start Here and Git workflow pointers after the workflow exists;
-10. an end-to-end dry run creating a low-risk test issue.
-
-The implementation must be reviewed as a separate PR. This document does not itself
-activate issue creation or Codex dispatch.
-
-## 15. Definition of done for the future workflow
-
-The workflow is complete only when:
+The automated workflow is complete only when:
 
 - every allowlisted category produces the documented issue format;
-- every prohibited task class is rejected or explicitly deferred;
-- the generated issue contains the minimal bootstrap prompt;
+- prohibited task classes are rejected or routed to ChatGPT;
+- ChatGPT can invoke issue creation without requiring the user to restate the task;
+- the user receives a notice for every created issue;
+- Codex self-screening is included in every generated prompt;
 - metadata validates against a checked-in schema;
-- no generated issue is mistaken for a work claim;
-- Codex can create its claim and branch from the issue without additional task
-  clarification for a valid low-risk case;
-- issue generation has automated tests;
+- no intake issue is mistaken for a semantic work claim;
 - dispatch status is explicit and truthful;
-- failure leaves an auditable issue or error without partial repository writes;
-- the eventual PR still stops for user review and explicit merge approval;
+- failure does not cause partial repository writes;
+- Codex pull requests still stop for independent review and explicit user merge
+  approval;
 - documentation and implementation describe the same behavior.
