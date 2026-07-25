@@ -29,9 +29,7 @@ function requireText(file, text, label) {
 }
 
 function requireAll(file, values, labelPrefix) {
-  for (const value of values) {
-    requireText(file, value, `${labelPrefix} ${value}`);
-  }
+  for (const value of values) requireText(file, value, `${labelPrefix} ${value}`);
 }
 
 const agentsPath = "AGENTS.md";
@@ -40,6 +38,8 @@ const statePath = "docs/current/PROJECT-STATE.md";
 const doctrinePath = "docs/current/DOCTRINE.md";
 const governancePath = "docs/current/GOVERNANCE.md";
 const coordinationPath = "docs/current/MULTI-AGENT-COORDINATION.md";
+const gitWorkflowPath = "docs/current/GIT-WORKFLOW.md";
+const testingPath = "docs/current/TESTING.md";
 const parkedPath = "data/parked-constructions.json";
 const coordinationConfigPath = "config/coordination-targets.json";
 const issueTemplatePath = ".github/ISSUE_TEMPLATE/work-claim.yml";
@@ -53,7 +53,9 @@ requireText(agentsPath, "docs/current/00-START-HERE.md", "mandatory Start Here p
 requireText(agentsPath, "MULTI-AGENT-COORDINATION.md", "mandatory coordination pointer");
 requireText(agentsPath, "inspect current `main`, open pull requests, and open work-claim issues", "multi-agent overlap check");
 requireText(agentsPath, "create or update one work-claim issue", "work claim requirement");
-requireText(agentsPath, "draft pull request", "draft PR handoff");
+requireText(agentsPath, "There is no read-only research role", "research and implementation autonomy");
+requireText(agentsPath, "authorized integrator may", "integrator merge authority");
+requireText(agentsPath, "least privilege", "automation permission model");
 
 const requiredHeadings = [
   "## Current baseline",
@@ -67,10 +69,7 @@ const requiredHeadings = [
   "## Reusable agent task prompt",
   "## Canonical reading order",
 ];
-
-for (const heading of requiredHeadings) {
-  requireText(startPath, heading, heading);
-}
+for (const heading of requiredHeadings) requireText(startPath, heading, heading);
 
 const requiredPointers = [
   "PROJECT-STATE.md",
@@ -93,10 +92,7 @@ const requiredPointers = [
   "schemas/change-set.schema.json",
   "changes/pending/",
 ];
-
-for (const pointer of requiredPointers) {
-  requireText(startPath, pointer, `canonical pointer ${pointer}`);
-}
+for (const pointer of requiredPointers) requireText(startPath, pointer, `canonical pointer ${pointer}`);
 
 const requiredRules = [
   "zero independent linguistic evidence weight",
@@ -104,8 +100,9 @@ const requiredRules = [
   "No spouse",
   "`deployment_allowed: false`",
   "Do not create repeated `validation/vX.Y.Z/` trees",
-  "GitHub Actions is read-only verification",
-  "Do not merge the PR",
+  "There is no read-only research role",
+  "authorized integrator may merge",
+  "least privilege",
   "no active-note whitelist",
   "no repository-wide grammar freeze",
   "recommend unpark",
@@ -114,10 +111,7 @@ const requiredRules = [
   "integration-owned",
   "changes/pending/",
 ];
-
-for (const rule of requiredRules) {
-  requireText(startPath, rule, `mandatory rule ${rule}`);
-}
+for (const rule of requiredRules) requireText(startPath, rule, `mandatory rule ${rule}`);
 
 requireText(startPath, "current AB30 candidate packet: **5 reviewed; 2 genuine; 3 false positives**", "AB30 reviewed packet");
 requireText(startPath, "AB30 corpus-readiness effect: **`partial_only`**", "AB30 partial-only readiness");
@@ -133,44 +127,40 @@ requireText(statePath, "There is no repository-wide grammar freeze", "project-st
 
 requireText(doctrinePath, "There is no repository-wide grammar freeze and no active-note whitelist", "doctrine grammar and workflow policy");
 requireText(doctrinePath, "recommend unpark", "doctrine unpark recommendation");
-requireText(governancePath, "Workflow availability is blacklist-based", "governance blacklist policy");
-requireText(governancePath, "The construction remains parked until a reviewed change removes its entry", "governance unpark boundary");
+requireText(governancePath, "There is no active-note whitelist, repository-wide grammar freeze, or read-only", "governance research autonomy");
+requireText(governancePath, "Automation follows least privilege", "governance automation policy");
 requireText(parkedPath, "\"default_state\": \"available\"", "parked registry default state");
 
 requireText(coordinationPath, "same physical file", "same-file concurrency rule");
 requireText(coordinationPath, "semantic target regions", "semantic claim rule");
-requireText(coordinationPath, "must not survive a ready-to-merge pull request", "pending cleanup rule");
+requireText(coordinationPath, "must not survive a ready-to-merge", "pending cleanup rule");
+requireText(coordinationPath, "There is no read-only research role", "coordination research autonomy");
+requireText(coordinationPath, "authorized integrator may merge", "coordination merge authority");
+requireText(coordinationPath, "Automation follows least privilege", "coordination automation policy");
+requireText(gitWorkflowPath, "There is no read-only research branch type", "git research autonomy");
+requireText(gitWorkflowPath, "The authorized integrator may", "git merge authority");
+requireText(testingPath, "There is no read-only research role", "testing research autonomy");
+requireText(testingPath, "Repository automation follows least privilege", "testing automation policy");
+
 requireText(coordinationConfigPath, "\"integration_owned_files\"", "integration ownership config");
 requireText(issueTemplatePath, "coordination-claim", "work claim issue form");
 requireText(prTemplatePath, "coordination-claim: #ISSUE_NUMBER", "PR claim marker");
 requireText(prTemplatePath, "Closes #ISSUE_NUMBER", "automatic claim closure");
-
 requireText(readmePath, "AGENTS.md", "root agent bootstrap pointer");
 requireText(readmePath, "docs/current/00-START-HERE.md", "root Start Here pointer");
 
-requireText(coreWorkflowPath, "permissions: contents: read", "core workflow read-only permissions");
-requireText(researchWorkflowPath, "permissions: contents: read", "research workflow read-only permissions");
-requireText(coordinationWorkflowPath, "contents: read", "coordination workflow read-only contents");
-requireText(coordinationWorkflowPath, "issues: read", "coordination workflow read-only issues");
-requireText(coordinationWorkflowPath, "pull-requests: read", "coordination workflow read-only PRs");
+// Current validation-only workflows should keep least-privilege read permissions.
+requireText(coreWorkflowPath, "permissions: contents: read", "core validation permissions");
+requireText(researchWorkflowPath, "permissions: contents: read", "research validation permissions");
+requireText(coordinationWorkflowPath, "contents: read", "coordination validation contents");
+requireText(coordinationWorkflowPath, "issues: read", "coordination validation issues");
+requireText(coordinationWorkflowPath, "pull-requests: read", "coordination validation PRs");
 requireText(coordinationWorkflowPath, "node tools/coordination/check-pr.js", "coordination workflow checker");
 
 const requiredCoreWorkflowInputs = [
-  "AGENTS.md",
-  "README.md",
-  "HANDOFF.md",
-  "main.js",
-  "manifest.json",
-  "package.json",
-  "data/**",
-  "grammar/**",
-  "tests/**",
-  "tools/**",
-  "config/**",
-  "schemas/**",
-  "changes/**",
-  "docs/current/**",
-  ".github/**",
+  "AGENTS.md", "README.md", "HANDOFF.md", "main.js", "manifest.json", "package.json",
+  "data/**", "grammar/**", "tests/**", "tools/**", "config/**", "schemas/**",
+  "changes/**", "docs/current/**", ".github/**",
 ];
 requireAll(coreWorkflowPath, requiredCoreWorkflowInputs, "core workflow trigger");
 
@@ -200,23 +190,13 @@ const requiredResearchWorkflowInputs = [
 requireAll(researchWorkflowPath, requiredResearchWorkflowInputs, "research workflow trigger");
 
 const result = {
-  schema: "canto-span-agent-coordination-contract-v4",
+  schema: "canto-span-agent-coordination-contract-v5",
   status: errors.length === 0 ? "PASS" : "FAIL",
   checked_files: [
-    agentsPath,
-    startPath,
-    statePath,
-    doctrinePath,
-    governancePath,
-    coordinationPath,
-    parkedPath,
-    coordinationConfigPath,
-    issueTemplatePath,
-    prTemplatePath,
-    coordinationWorkflowPath,
-    readmePath,
-    coreWorkflowPath,
-    researchWorkflowPath,
+    agentsPath, startPath, statePath, doctrinePath, governancePath, coordinationPath,
+    gitWorkflowPath, testingPath, parkedPath, coordinationConfigPath,
+    issueTemplatePath, prTemplatePath, coordinationWorkflowPath, readmePath,
+    coreWorkflowPath, researchWorkflowPath,
   ],
   required_headings: requiredHeadings.length,
   required_pointers: requiredPointers.length,
