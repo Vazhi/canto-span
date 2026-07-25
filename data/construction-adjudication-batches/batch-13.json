@@ -1,0 +1,272 @@
+{
+  "schema": "canto-span-construction-adjudications-v1",
+  "adjudicated_on": "2026-07-25",
+  "adjudication_authority": "project expert systematic review",
+  "records": [
+    {
+      "construction_uuid": "24e74115-19b7-5df0-8716-d82d5797743c",
+      "construction_code": "AA87",
+      "legacy_label": "ModalChangeIntoResultFrame",
+      "approved_canonical_name": "ModalChangePredicateCompositeWrapper",
+      "claim_layer": "parser_representation",
+      "family_name": "ResultAndChangeRepresentation",
+      "profile_name": "ModalPlusChangeIntoPredicateAggregate",
+      "profile_description": "A retired implementation wrapper that combined an independently represented modal or auxiliary expression with an independently represented change-into predicate. The wrapper contributed no unique Cantonese licensing boundary beyond its modal and change-predicate children and must not be restored as a language construction.",
+      "learner_label": null,
+      "behavior_research_alignment": "disjoint",
+      "terminology_alignment": "misleading",
+      "recommended_action": "retain_retired_reclassify",
+      "status_recommendation": "remain retired; preserve the UUID and historical alias only, and keep future modal-plus-change research under independently typed modal, argument, aspect, and change-predicate structures",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
+        ],
+        "runtime_locations": [],
+        "test_file": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+        "additional_research": [
+          "The retirement audit records zero accepted fixtures and no surviving parser output for this label. Its only implementation residue was an exact modal-plus-change fallback whose analysis was already supplied by modal composition and ChangeIntoPredicate."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "modal expression with independently represented change predication",
+          "source_id": "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE",
+          "scope_match": "contrastive"
+        }
+      ],
+      "former_names": [
+        "ModalChangeIntoResultFrame"
+      ],
+      "successor_profiles": [
+        "ModalAuxiliaryComplementVP",
+        "ChangeIntoPredicate"
+      ],
+      "rationale": "ModalChangeIntoResultFrame presents transparent composition as a dedicated result-frame construction. The retired UUID is retained for provenance but reclassified as a parser representation so neither modal evidence nor change-predicate evidence can be promoted through the obsolete outer wrapper.",
+      "unresolved_blockers": [
+        "preserve the retired UUID, code, alias, and retirement provenance",
+        "keep modal scope, aspect, arguments, and change-predicate structure independently typed",
+        "do not restore a runtime wrapper unless a new independently evidenced boundary is first assigned a new or explicitly reviewed identity",
+        "do not transfer source support from either child to the retired composite"
+      ]
+    },
+    {
+      "construction_uuid": "24ca75ca-eb10-584d-93c4-0838137971cd",
+      "construction_code": "AA88",
+      "legacy_label": "ModalResponseFragment",
+      "approved_canonical_name": "ModalEllipsisResponseCompositeWrapper",
+      "claim_layer": "parser_representation",
+      "family_name": "FragmentAndEllipsisRepresentation",
+      "profile_name": "ModalExpressionEllipsisAndResponseAggregate",
+      "profile_description": "A retired implementation umbrella over modal material, possible ellipsis, and discourse-response status. The label did not identify the overt ellipsis licensor, the omitted constituent, or the response relation and had no active runtime node or accepted fixture establishing one independent Cantonese construction.",
+      "learner_label": null,
+      "behavior_research_alignment": "disjoint",
+      "terminology_alignment": "misleading",
+      "recommended_action": "retain_retired_reclassify",
+      "status_recommendation": "remain retired; preserve future research separately as modal or auxiliary structure, independently licensed ellipsis, and context-linked response or fragment analysis",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-LEE-PAN-2024-VP-ELLIPSIS",
+          "SRC-LUKE-NANCARROW-1998-AUXILIARIES"
+        ],
+        "runtime_locations": [],
+        "test_file": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
+        "additional_research": [
+          "The retirement audit records zero fixtures, zero current runtime references, and zero parser outputs. The cited research treats Cantonese auxiliary structure and VP ellipsis as independently constrained phenomena; neither source establishes a generic modal-response-fragment node."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "VP movement and ellipsis",
+          "source_id": "SRC-LEE-PAN-2024-VP-ELLIPSIS",
+          "scope_match": "contrastive"
+        },
+        {
+          "term": "auxiliary verbs in Cantonese",
+          "source_id": "SRC-LUKE-NANCARROW-1998-AUXILIARIES",
+          "scope_match": "contrastive"
+        }
+      ],
+      "former_names": [
+        "ModalResponseFragment"
+      ],
+      "successor_profiles": [
+        "ModalAuxiliaryComplementVP",
+        "LicensedVPEllipsis",
+        "ContextLinkedResponseRelation"
+      ],
+      "rationale": "ModalResponseFragment collapses three questions—modal syntax, ellipsis licensing, and discourse response—without an overt structural invariant. The retired UUID is retained only as a historical composite wrapper; any future language claim must identify and evidence each component separately.",
+      "unresolved_blockers": [
+        "preserve the retired UUID, code, alias, and retirement provenance",
+        "identify an overt ellipsis licensor and recoverable constituent before assigning ellipsis",
+        "represent fragment or response status through discourse context rather than modal vocabulary alone",
+        "do not transfer auxiliary or ellipsis evidence to the retired composite"
+      ]
+    },
+    {
+      "construction_uuid": "e3ad991e-f109-57ab-a363-cfc2e6d4e170",
+      "construction_code": "AA89",
+      "legacy_label": "ModalVP",
+      "approved_canonical_name": "ModalAuxiliaryComplementVP",
+      "claim_layer": "language_construction",
+      "family_name": "ModalAuxiliaryPredication",
+      "profile_name": "OvertModalAuxiliaryWithFollowingPredicate",
+      "profile_description": "An overt Cantonese modal or auxiliary expression followed by a visible predicate or complement, optionally with ordinary preverbal negation, as in 要飲水, 會返嚟, 可以去, 唔可以去, and 唔使去. The profile does not assign one meaning or one selectional pattern to every modal lexeme and excludes standalone or repeated-modal A-not-A questions, desiderative 想, and ellipsis unless separately typed.",
+      "learner_label": null,
+      "behavior_research_alignment": "runtime_broader",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
+      "status_recommendation": "retain research_pending for overt modal or auxiliary plus visible predicate; separate standalone A-not-A, desiderative, ellipsis, lexeme-specific polarity, and modal-reading profiles before any productivity review",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-LUKE-NANCARROW-1998-AUXILIARIES",
+          "SRC-YIP-MATTHEWS-2000-BASIC"
+        ],
+        "runtime_locations": [],
+        "test_file": "tests/constructions/ModalVP.json",
+        "additional_research": [
+          "The fifteen executable positives include declarative and negated modal-plus-predicate strings with 要, 會, 可以, and 使, but also the standalone A-not-A question 你要唔要. Luke and Nancarrow inventory multiple Cantonese auxiliaries with distinct functions, while Yip and Matthews contrast 唔要 and 唔使. The UUID is therefore retained only for the visible modal-plus-complement profile."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "auxiliary verbs in Cantonese",
+          "source_id": "SRC-LUKE-NANCARROW-1998-AUXILIARIES",
+          "scope_match": "close"
+        },
+        {
+          "term": "唔要 versus 唔使",
+          "source_id": "SRC-YIP-MATTHEWS-2000-BASIC",
+          "scope_match": "restrictive"
+        }
+      ],
+      "former_names": [
+        "ModalVP"
+      ],
+      "successor_profiles": [
+        "StandaloneModalANotAInterrogative",
+        "DesiderativeComplementVP",
+        "LexemeSpecificModalPolarityProfile",
+        "LicensedModalEllipsis"
+      ],
+      "rationale": "ModalVP is a useful but overly broad category label. The source set supports an auxiliary inventory but explicitly warns against one gloss or one selection profile for every item, and the runtime also absorbs a standalone A-not-A question. ModalAuxiliaryComplementVP retains the UUID for the strongest shared overt structure while keeping modal readings, polarity, interrogation, and ellipsis independently bounded.",
+      "unresolved_blockers": [
+        "remove standalone 你要唔要 and other complementless A-not-A paths from this UUID during compatibility migration",
+        "map each admitted modal lexeme and polarity pattern to exact source support",
+        "distinguish modal auxiliaries from desiderative 想 and ordinary lexical predicates",
+        "complete corpus, role-neutral panel, negative-boundary, code-document, and held-out review"
+      ]
+    },
+    {
+      "construction_uuid": "14579a47-c762-5ace-ade4-5b0744ea8c85",
+      "construction_code": "AA90",
+      "legacy_label": "ModifiedNP",
+      "approved_canonical_name": "HeterogeneousNominalStructureWrapper",
+      "claim_layer": "parser_representation",
+      "family_name": "NominalStructureRepresentation",
+      "profile_name": "DeterminerClassifierModifierMeasureAndArgumentAggregate",
+      "profile_description": "An implementation wrapper over many overt nominal structures, including wh-determiner nouns, classifier and quantified NPs, existentially introduced nominals, locative or argument nominals, nominal-predicate measures, and other headed or headless strings. The wrapper preserves a broad nominal span but does not establish one modifier relation or one Cantonese construction shared by those branches.",
+      "learner_label": null,
+      "behavior_research_alignment": "disjoint",
+      "terminology_alignment": "misleading",
+      "recommended_action": "internalize_and_decompose",
+      "status_recommendation": "migrate to parser_heuristic only through a separate compatibility change; preserve wh-determiner, classifier, quantity, existential, measure, direct-modifier, ge-marked, relative, and nominal-complement structures under independently typed identities",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-SIO-2011-GE3",
+          "SRC-YU-2006-NOMINAL-MODIFIERS"
+        ],
+        "runtime_locations": [],
+        "test_file": "tests/constructions/ModifiedNP.json",
+        "additional_research": [
+          "The thirty-eight executable positives range from 咩書 and 邊本書 through existential 有個人, quantified 三個字, measure predicates, locative themes, and 本書故事. The cited sources analyze specific nominal-modification and ordering contrasts; they do not support this heterogeneous runtime aggregate as one language construction."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "modifier-ge3 constituent and modifier ordering",
+          "source_id": "SRC-SIO-2011-GE3",
+          "scope_match": "contrastive"
+        },
+        {
+          "term": "relative clauses and nominal modifiers",
+          "source_id": "SRC-YU-2006-NOMINAL-MODIFIERS",
+          "scope_match": "contrastive"
+        }
+      ],
+      "former_names": [
+        "ModifiedNP"
+      ],
+      "successor_profiles": [
+        "WhDeterminerNounNP",
+        "ClassifierAndQuantityNP",
+        "ExistentiallyIntroducedNP",
+        "NominalPredicateMeasureStructure",
+        "DegreePropertyModifierNounNP",
+        "GeMarkedNominalModifierNP",
+        "RelativeClauseNP",
+        "NominalComplementNP"
+      ],
+      "rationale": "ModifiedNP implies one modification relation, but the runtime label covers nominal spans whose decisive structures are wh determination, classification, quantification, existence, measurement, argumenthood, or distinct modifier types. HeterogeneousNominalStructureWrapper preserves compatibility while removing the aggregate from direct linguistic promotion.",
+      "unresolved_blockers": [
+        "map every current positive to an explicit nominal subtype and licensing parent",
+        "separate headed and headless nominals and preserve overt determiner, classifier, quantity, modifier, and measure material",
+        "prevent existential, locative, and predicate context from licensing a generic modified-NP claim",
+        "complete compatibility migration before changing the emitted legacy label or status path"
+      ]
+    },
+    {
+      "construction_uuid": "6cb39abf-cd97-5701-8b7d-d2575645c127",
+      "construction_code": "AA91",
+      "legacy_label": "ModifierNP",
+      "approved_canonical_name": "DegreePropertyModifierNounNP",
+      "claim_layer": "language_construction",
+      "family_name": "NominalModificationAndRelatives",
+      "profile_name": "DegreePropertyBeforeOvertNounWithoutGe",
+      "profile_description": "An overt degree-marked property expression directly precedes an overt noun without 嘅, as in 好大壓力. The profile does not cover bare nouns, quantified classifier NPs, 嘅-marked modifiers, relative clauses, nominal complements, or the heterogeneous structures formerly grouped under ModifiedNP.",
+      "learner_label": null,
+      "behavior_research_alignment": "runtime_narrower_defensible",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
+      "status_recommendation": "retain research_pending for the overt degree-property plus noun profile; expand lexical and contextual coverage and establish direct-versus-ge-marked, classifier, relative, and complement boundaries before any productivity review",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-SIO-2011-GE3",
+          "SRC-YU-2006-NOMINAL-MODIFIERS"
+        ],
+        "runtime_locations": [],
+        "test_file": "tests/constructions/ModifierNP.json",
+        "additional_research": [
+          "The only two executable positives are 我最近好大壓力 and its discourse-prefixed counterpart. Sio distinguishes direct property-noun modification from ge3-marked modification, and Yu independently illustrates adjective-noun order. The retained UUID is therefore limited to direct overt property modification rather than a generic modifier NP."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "bare property-noun form versus ge3-marked form",
+          "source_id": "SRC-SIO-2011-GE3",
+          "scope_match": "close"
+        },
+        {
+          "term": "direct adjective-noun modification",
+          "source_id": "SRC-YU-2006-NOMINAL-MODIFIERS",
+          "scope_match": "close"
+        }
+      ],
+      "former_names": [
+        "ModifierNP"
+      ],
+      "successor_profiles": [],
+      "rationale": "ModifierNP is structurally vague and could include every nominal modifier subtype. The executable behavior is much narrower: a degree-marked property phrase directly modifies an overt noun. DegreePropertyModifierNounNP names that visible boundary while keeping 嘅-marked, relative-clause, classifier-linked, and nominal-complement structures separate.",
+      "unresolved_blockers": [
+        "test additional property lexemes, degree forms, and noun heads without assuming unrestricted productivity",
+        "establish contextual and information-structural conditions for direct modification",
+        "add exact direct-versus-ge-marked, classifier, relative-clause, and nominal-complement boundaries",
+        "complete corpus, role-neutral panel, code-document, and held-out validation"
+      ]
+    }
+  ]
+}
