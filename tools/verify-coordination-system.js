@@ -32,6 +32,7 @@ const requiredFiles = [
   "changes/pending/README.md",
   "config/coordination-targets.json",
   "docs/current/MULTI-AGENT-COORDINATION.md",
+  "docs/current/USER-MERGE-REVIEW.md",
   "schemas/change-set.schema.json",
   "schemas/work-claim.schema.json",
   "tools/coordination/change-set.js",
@@ -74,6 +75,9 @@ try {
 requireText(".github/ISSUE_TEMPLATE/work-claim.yml", "coordination-claim", "issue template claim block");
 requireText(".github/pull_request_template.md", "coordination-claim: #ISSUE_NUMBER", "PR claim marker");
 requireText(".github/pull_request_template.md", "Closes #ISSUE_NUMBER", "automatic claim closure");
+requireText(".github/pull_request_template.md", "PENDING_USER_REVIEW", "human review pending state");
+requireText(".github/pull_request_template.md", "Do not merge or enable auto-merge", "PR merge stop");
+requireText(".github/pull_request_template.md", "Any new commit invalidates the approval", "head-specific approval");
 
 // The current coordination workflow performs validation only, so read permissions
 // are the least-privilege configuration. This does not prohibit separately claimed,
@@ -85,21 +89,29 @@ requireText(".github/workflows/coordination-check.yml", "node tools/coordination
 
 requireText("AGENTS.md", "work-claim issue", "agent work claim bootstrap");
 requireText("AGENTS.md", "MULTI-AGENT-COORDINATION.md", "agent coordination pointer");
+requireText("AGENTS.md", "USER-MERGE-REVIEW.md", "mandatory merge review pointer");
 requireText("AGENTS.md", "There is no read-only research role", "agent research autonomy");
-requireText("AGENTS.md", "authorized integrator may", "agent integrator merge authority");
+requireText("AGENTS.md", "inform the user and stop before merge", "agent user notification stop");
+requireText("AGENTS.md", "merge only after the user explicitly approves", "agent explicit approval rule");
+requireText("AGENTS.md", "Any new commit after approval requires fresh review", "agent head-change review rule");
 requireText("AGENTS.md", "least privilege", "agent automation policy");
+
+requireText("docs/current/USER-MERGE-REVIEW.md", "canonical owner of per-pull-request merge authorization", "merge review authority");
+requireText("docs/current/USER-MERGE-REVIEW.md", "inform the user that the pull request is ready for review", "ready notification");
+requireText("docs/current/USER-MERGE-REVIEW.md", "stop without merging", "mandatory merge stop");
+requireText("docs/current/USER-MERGE-REVIEW.md", "explicitly approves that specific pull request", "specific PR approval");
+requireText("docs/current/USER-MERGE-REVIEW.md", "Approval applies only to the reviewed head commit", "head-specific approval");
+requireText("docs/current/USER-MERGE-REVIEW.md", "may not merge or enable auto-merge before explicit user approval", "automation merge boundary");
 
 requireText("docs/current/00-START-HERE.md", "Semantic work claims", "Start Here claim policy");
 requireText("docs/current/00-START-HERE.md", "integration-owned", "Start Here integration ownership");
 requireText("docs/current/00-START-HERE.md", "changes/pending/", "Start Here pending changeset rule");
 requireText("docs/current/00-START-HERE.md", "There is no read-only research role", "Start Here research autonomy");
-requireText("docs/current/00-START-HERE.md", "authorized integrator may merge", "Start Here merge authority");
 requireText("docs/current/00-START-HERE.md", "least privilege", "Start Here automation policy");
 
 requireText("docs/current/MULTI-AGENT-COORDINATION.md", "same physical file", "same-file concurrency rule");
 requireText("docs/current/MULTI-AGENT-COORDINATION.md", "must not survive a ready-to-merge pull request", "pending changeset cleanup rule");
 requireText("docs/current/MULTI-AGENT-COORDINATION.md", "There is no read-only research role", "coordination research autonomy");
-requireText("docs/current/MULTI-AGENT-COORDINATION.md", "authorized integrator may merge", "coordination merge authority");
 requireText("docs/current/MULTI-AGENT-COORDINATION.md", "Automation follows least privilege", "coordination automation policy");
 
 const pendingDirectory = path.join(root, "changes/pending");
@@ -120,10 +132,11 @@ if (fs.existsSync(pendingDirectory) && config) {
 }
 
 const result = {
-  schema: "canto-span-coordination-system-validation-v2",
+  schema: "canto-span-coordination-system-validation-v3",
   status: errors.length ? "FAIL" : "PASS",
   required_files: requiredFiles.length,
   automation_policy: "least_privilege_claim_scoped",
+  merge_policy: "explicit_user_approval_per_pr_and_head",
   errors,
 };
 process.stdout.write(`${JSON.stringify(result, null, 2)}\n`);
