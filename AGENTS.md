@@ -22,20 +22,20 @@ Before planning, editing, generating, reviewing, or merging repository work:
 2. classify the work as `ChatGPT-first`, `Codex-ready`, or `hybrid` under the routing
    contract before creating a claim, branch, or edit;
 3. read `docs/current/PROJECT-STATE.md`;
-4. inspect current `main`, open pull requests, intake issues, and open work-claim
-   issues;
-5. create or update one work-claim issue before editing;
-6. claim the smallest adequate semantic targets and regions rather than locking a
+4. inspect current `main`, open pull requests, and open work-claim issues;
+5. inspect open Codex intake issues for duplicate, dependent, or overlapping work;
+6. create or update one work-claim issue before editing;
+7. claim the smallest adequate semantic targets and regions rather than locking a
    whole shared file unnecessarily;
-7. create the exact `agent/<description>` branch named in the claim;
-8. follow the task-routing and verification sections in the contract;
-9. use the permanent construction code and canonical name, with any legacy runtime
-   label recorded separately;
-10. keep branch changes inside the claim and update the issue before expanding scope;
-11. publish one coherent passing state in a pull request that links and closes the
+8. create the exact `agent/<description>` branch named in the claim;
+9. follow the task-routing and verification sections in the contract;
+10. use the permanent construction code and canonical name, with any legacy runtime
+    label recorded separately;
+11. keep branch changes inside the claim and update the issue before expanding scope;
+12. publish one coherent passing state in a pull request that links and closes the
     work claim;
-12. when the pull request is ready, inform the user and stop before merge;
-13. merge only after the user explicitly approves that specific pull request and the
+13. when the pull request is ready, inform the user and stop before merge;
+14. merge only after the user explicitly approves that specific pull request and the
     approved head commit remains unchanged.
 
 ## ChatGPT delegation duty
