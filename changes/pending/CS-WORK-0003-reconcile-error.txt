@@ -1,0 +1,16 @@
+/home/runner/work/canto-span/canto-span/tools/coordination/reconcile-pr36-review-policy.js:23
+        throw new Error(`stale merge rule remains in ${file}: ${phrase}`);
+        ^
+
+Error: stale merge rule remains in tools/verify-agent-coordination.js: without a separate per-PR user request
+    at requireAbsent (/home/runner/work/canto-span/canto-span/tools/coordination/reconcile-pr36-review-policy.js:23:15)
+    at Object.<anonymous> (/home/runner/work/canto-span/canto-span/tools/coordination/reconcile-pr36-review-policy.js:545:1)
+    at Module._compile (node:internal/modules/cjs/loader:1871:14)
+    at Object..js (node:internal/modules/cjs/loader:2002:10)
+    at Module.load (node:internal/modules/cjs/loader:1594:32)
+    at Module._load (node:internal/modules/cjs/loader:1396:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.18.0
