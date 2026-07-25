@@ -1,5 +1,6 @@
 name: PR 36 policy reconciliation
 
+# Temporary branch-local migration; the reconciliation script deletes this file.
 on:
   push:
     branches:
