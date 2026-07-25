@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/Vazhi/canto-span/schemas/work-claim.schema.json",
-  "title": "Canto Span ownership-bound semantic work claim",
+  "$id": "https://github.com/Vazhi/canto-span/schemas/work-claim-v1.schema.json",
+  "title": "Canto Span semantic work claim v1 (legacy)",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -12,9 +12,6 @@
     "integration_role",
     "branch",
     "expires_at",
-    "intake_issue",
-    "active_worker",
-    "ownership_revision",
     "targets",
     "generated_outputs",
     "protected_state",
@@ -22,16 +19,13 @@
     "summary"
   ],
   "properties": {
-    "schema": { "const": "canto-span-work-claim-v2" },
+    "schema": { "const": "canto-span-work-claim-v1" },
     "work_id": { "type": "string", "pattern": "^CS-WORK-[0-9]{4,}$" },
     "status": { "enum": ["active", "stale", "complete"] },
     "claim_mode": { "enum": ["shared", "exclusive"] },
     "integration_role": { "enum": ["worker", "integrator"] },
     "branch": { "type": "string", "pattern": "^agent/[a-z0-9][a-z0-9._/-]*$" },
     "expires_at": { "type": "string", "format": "date-time" },
-    "intake_issue": { "type": "integer", "minimum": 1 },
-    "active_worker": { "enum": ["codex", "chatgpt", "human"] },
-    "ownership_revision": { "type": "integer", "minimum": 1 },
     "targets": {
       "type": "array",
       "minItems": 1,

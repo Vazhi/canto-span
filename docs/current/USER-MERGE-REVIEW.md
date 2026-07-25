@@ -50,6 +50,8 @@ After explicit approval, the integrator must re-check that:
 
 - the approved head commit is unchanged;
 - required checks still pass;
+- the canonical intake issue still permits pickup by the claim's active worker;
+- the live ownership revision still matches the claim and pull request;
 - the claim remains valid;
 - no unresolved dependency or semantic overlap has appeared;
 - no pending changeset remains.

@@ -27,31 +27,31 @@ superseding decision with explicit rationale and relationships.
 ## Current progress
 
 - permanent records: **181**;
-- accepted adjudications: **59**;
-- pending adjudications: **122**;
-- accepted batches: **12**;
+- accepted adjudications: **64**;
+- pending adjudications: **117**;
+- accepted batches: **13**;
 - latest batch report:
-  `docs/research/CONSTRUCTION-ADJUDICATION-BATCH-12.md`.
+  `docs/research/CONSTRUCTION-ADJUDICATION-BATCH-13.md`.
 
 This count records completed identity and ontology judgments only. It does not
 imply runtime migration, status migration, corpus closure, panel completion,
 held-out validation, or promotion.
 
-Batch 12 accepted the following UUID-preserving decisions:
+Batch 13 accepted the following UUID-preserving decisions:
 
-1. `AA80 LocativePlacePhrase` → `OvertPlaceExpressionWrapper`, reclassified as
-   `parser_representation` and marked for later compatibility decomposition;
-2. `AA82 LocativeWhQuestion` → `BinDouWhPlaceQuestion`, retained as a narrow
-   overt-`邊度` language-construction profile;
-3. `AA83 MalformedCandidate` → `MalformedStructureDiagnostic`, retained as a
-   nonlinguistic parser diagnostic;
-4. `AA85 MeasureExpression` → `OvertMeasureChildSpan`, retained as a nonlicensing
-   parser child span;
-5. `AA86 ModalANotAQuestion` → `ModalM4ModalInterrogative`, retained as a narrow
-   repeated-modal `唔` interrogative profile.
+1. `AA87 ModalChangeIntoResultFrame` → `ModalChangePredicateCompositeWrapper`,
+   retained as a retired parser representation;
+2. `AA88 ModalResponseFragment` → `ModalEllipsisResponseCompositeWrapper`,
+   retained as a retired parser representation;
+3. `AA89 ModalVP` → `ModalAuxiliaryComplementVP`, retained as a narrow overt
+   modal-or-auxiliary plus visible-predicate language profile;
+4. `AA90 ModifiedNP` → `HeterogeneousNominalStructureWrapper`, reclassified as a
+   parser representation and marked for later compatibility decomposition;
+5. `AA91 ModifierNP` → `DegreePropertyModifierNounNP`, retained as a narrow direct
+   degree-property modifier plus overt-noun profile without `嘅`.
 
 No later adjudication batch is fixed as a mandatory queue. The next records are
-selected from the 122 pending identities according to current project benefit,
+selected from the 117 pending identities according to current project benefit,
 evidence opportunity, ontology risk, dependencies, and open-work overlap.
 
 ## Required decision fields

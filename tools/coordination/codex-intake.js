@@ -5,10 +5,13 @@ const fs = require("fs");
 const path = require("path");
 
 const LEGACY_SCHEMA_PATH = path.resolve(__dirname, "../../schemas/codex-task.schema.json");
+const LEGACY_TASK_SCHEMA_PATH = path.resolve(__dirname, "../../schemas/task-intake-v1.schema.json");
 const TASK_SCHEMA_PATH = path.resolve(__dirname, "../../schemas/task-intake.schema.json");
 const LEGACY_SCHEMA = JSON.parse(fs.readFileSync(LEGACY_SCHEMA_PATH, "utf8"));
+const LEGACY_TASK_SCHEMA = JSON.parse(fs.readFileSync(LEGACY_TASK_SCHEMA_PATH, "utf8"));
 const TASK_SCHEMA = JSON.parse(fs.readFileSync(TASK_SCHEMA_PATH, "utf8"));
 const LEGACY_PROPERTIES = LEGACY_SCHEMA.properties;
+const LEGACY_TASK_PROPERTIES = LEGACY_TASK_SCHEMA.properties;
 const TASK_PROPERTIES = TASK_SCHEMA.properties;
 const ALLOWED_CATEGORIES = new Set(TASK_PROPERTIES.category.enum);
 const ALLOWED_CREATORS = new Set(TASK_PROPERTIES.created_by.enum);
@@ -38,6 +41,11 @@ const CANONICAL_BOOTSTRAP = [
   "`docs/current/CODEX-ISSUE-WORKFLOW.md` in full. Before creating a claim, branch,",
   "or edit, self-screen this task against the ChatGPT-first and Codex eligibility",
   "rules. Inspect current `main`, open pull requests, intake issues, and work claims.",
+  "Re-fetch the canonical intake issue ownership block after every resumed session",
+  "and immediately before claim creation, branch creation, first edit, commit, push,",
+  "pull-request readiness, or merge. Proceed only when `active_pickup_owner` is",
+  "`codex`, `pickup_allowed` is true, and the live `ownership_revision` matches the",
+  "claim. Otherwise report `routing result: unavailable` and stop without writes.",
 ].join(" ");
 
 const PROHIBITED_DIRECTIVES = [
@@ -72,6 +80,16 @@ class IntakeValidationError extends Error {
 
 function text(value) {
   return String(value == null ? "" : value).trim();
+}
+
+function extractTaskIntake(body) {
+  const matches = [...String(body || "").matchAll(/```task-intake[^\n`]*\n([\s\S]*?)```/gi)];
+  if (matches.length !== 1) throw new Error("expected exactly one fenced task-intake JSON block");
+  try {
+    return JSON.parse(matches[0][1]);
+  } catch (error) {
+    throw new Error(`invalid task-intake JSON: ${error.message}`);
+  }
 }
 
 function booleanValue(value) {
@@ -150,6 +168,7 @@ function normalizeInput(input) {
     completionEvidence: text(input.completionEvidence),
     workClaimRequired: booleanValue(input.workClaimRequired),
     userMergeApprovalRequired: booleanValue(input.userMergeApprovalRequired),
+    ownershipUpdatedAt: text(input.ownershipUpdatedAt),
   };
   const errors = [
     ...validateTextField("title", normalized.title, { required: true, singleLine: true, maxLength: 256 }),
@@ -158,6 +177,11 @@ function normalizeInput(input) {
     ...validateTextField("relevant context", normalized.relevantContext),
     ...validateTextField("dependencies", normalized.dependenciesText, { maxLength: 8000 }),
     ...validateTextField("protected state", normalized.protectedStateText, { maxLength: 8000 }),
+    ...validateTextField("ownership updated at", normalized.ownershipUpdatedAt, {
+      required: true,
+      singleLine: true,
+      maxLength: 64,
+    }),
   ];
   if (typeof normalized.createdBy !== "string" || !ALLOWED_CREATORS.has(normalized.createdBy)) {
     errors.push(`created by must be one of: ${[...ALLOWED_CREATORS].join(", ")}`);
@@ -173,6 +197,9 @@ function normalizeInput(input) {
   }
   if (!ALLOWED_EXECUTION_MODES.has(normalized.executionMode)) {
     errors.push(`execution mode must be one of: ${[...ALLOWED_EXECUTION_MODES].join(", ")}`);
+  }
+  if (Number.isNaN(new Date(normalized.ownershipUpdatedAt).getTime())) {
+    errors.push("ownership updated at must be an ISO-8601 timestamp");
   }
   const targetFields = normalized.pickupTarget === "chatgpt"
     ? [["unresolved question", "unresolvedQuestion"], ["mechanical remainder", "mechanicalRemainder"]]
@@ -210,6 +237,15 @@ function buildMetadata(input) {
     dependencies: input.dependencies,
     protected_state: input.protectedState,
     active_pickup_owner: input.pickupTarget,
+    ownership_revision: 1,
+    previous_pickup_target: null,
+    ownership_reason: "initial-routing",
+    ownership_updated_at: input.ownershipUpdatedAt,
+    pickup_allowed: true,
+    handoff_status: "no-handoff",
+    active_claim_issue: null,
+    active_branch: null,
+    active_pr: null,
     work_claim_required: input.pickupTarget === "codex" ? true : input.workClaimRequired,
     user_merge_approval_required: input.pickupTarget === "codex" ? true : input.userMergeApprovalRequired,
     codex_self_screen_required: policy.codexSelfScreenRequired,
@@ -263,16 +299,19 @@ function validateTaskMetadata(metadata) {
   if (metadata?.schema === LEGACY_PROPERTIES.schema.const) {
     return validateAgainstProperties(metadata, LEGACY_PROPERTIES);
   }
+  if (metadata?.schema === LEGACY_TASK_PROPERTIES.schema.const) {
+    return validateAgainstProperties(metadata, LEGACY_TASK_PROPERTIES);
+  }
   const errors = validateAgainstProperties(metadata, TASK_PROPERTIES);
   if (!metadata || typeof metadata !== "object" || Array.isArray(metadata)) return errors;
   const target = metadata.pickup_target;
   const policy = PICKUP_POLICY[target];
   if (policy) {
     const expected = {
-      pickup_status: policy.status,
       active_pickup_owner: target,
       codex_self_screen_required: policy.codexSelfScreenRequired,
     };
+    if (metadata.ownership_revision === 1) expected.pickup_status = policy.status;
     if (target === "codex") {
       expected.work_claim_required = true;
       expected.user_merge_approval_required = true;
@@ -281,58 +320,110 @@ function validateTaskMetadata(metadata) {
       if (metadata[field] !== value) errors.push(`${field} conflicts with pickup_target ${target}`);
     }
   }
+  if (!Number.isInteger(metadata.ownership_revision) || metadata.ownership_revision < 1) {
+    errors.push("ownership_revision must be a positive integer");
+  }
+  if (Number.isNaN(new Date(metadata.ownership_updated_at).getTime())) {
+    errors.push("ownership_updated_at must be an ISO-8601 timestamp");
+  }
+  if (metadata.ownership_revision === 1) {
+    if (metadata.previous_pickup_target !== null) errors.push("initial ownership must not have a previous pickup target");
+    if (metadata.ownership_reason !== "initial-routing") errors.push("initial ownership reason must be initial-routing");
+    if (metadata.handoff_status !== "no-handoff") errors.push("initial ownership must use no-handoff");
+  }
+  for (const field of ["active_claim_issue", "active_pr"]) {
+    if (metadata[field] !== null && (!Number.isInteger(metadata[field]) || metadata[field] < 1)) {
+      errors.push(`${field} must be null or a positive integer`);
+    }
+  }
+  if (metadata.active_branch !== null
+      && !/^agent\/[a-z0-9][a-z0-9._/-]*$/.test(String(metadata.active_branch || ""))) {
+    errors.push("active_branch must be null or use agent/<description>");
+  }
+  return errors;
+}
+
+function validateOwnershipTransition(previous, next, options = {}) {
+  const errors = [];
+  const previousErrors = validateTaskMetadata(previous);
+  const nextErrors = validateTaskMetadata(next);
+  if (previous?.schema !== TASK_PROPERTIES.schema.const || next?.schema !== TASK_PROPERTIES.schema.const) {
+    errors.push("ownership transitions require current canto-span-task-intake-v2 records");
+  }
+  if (previousErrors.length) errors.push(...previousErrors.map((error) => `previous: ${error}`));
+  if (nextErrors.length) errors.push(...nextErrors.map((error) => `next: ${error}`));
+  if (errors.length) return errors;
+  if (next.ownership_revision !== previous.ownership_revision + 1) {
+    errors.push("ownership revision must increase by exactly one");
+  }
+  if (next.previous_pickup_target !== previous.pickup_target) {
+    errors.push("previous pickup target must match the prior live target");
+  }
+  if (new Date(next.ownership_updated_at) <= new Date(previous.ownership_updated_at)) {
+    errors.push("ownership updated timestamp must increase");
+  }
+  const ownerChanged = next.active_pickup_owner !== previous.active_pickup_owner;
+  if (ownerChanged) {
+    const allowedReasons = new Set([
+      "user-directed",
+      "blocking-active-work",
+      "reassignment",
+      "handoff",
+      "human-completed",
+    ]);
+    if (!allowedReasons.has(next.ownership_reason)) {
+      errors.push("owner change requires an authorized takeover or reassignment reason");
+    }
+    if (next.handoff_status === "no-handoff") {
+      errors.push("owner change requires an explicit handoff status");
+    }
+    const activeOverlaps = Array.isArray(options.activeOverlaps) ? options.activeOverlaps : [];
+    if (activeOverlaps.length) {
+      errors.push("ownership change must not authorize parallel edits against active overlapping work");
+    }
+  } else if (next.ownership_reason === "resolve-blocker" && next.pickup_target !== previous.pickup_target) {
+    errors.push("resolve-blocker must return work to the existing pickup target");
+  }
   return errors;
 }
 
 function validateInterventionRecord(record) {
-  const errors = [];
   if (!record || typeof record !== "object" || Array.isArray(record)) {
     return ["intervention record must be an object"];
   }
-  if (!["resolve-blocker", "takeover"].includes(record.mode)) {
-    errors.push("mode must be resolve-blocker or takeover");
-  }
-  if (!["user-directed", "blocking-active-work"].includes(record.reason)) {
-    errors.push("reason must be user-directed or blocking-active-work");
-  }
-  if (record.previous_pickup_target !== "codex") errors.push("previous pickup target must be codex");
+  const errors = validateOwnershipTransition(record.previous, record.next, {
+    activeOverlaps: record.active_overlaps,
+  });
   if (!Array.isArray(record.active_overlaps)) errors.push("active overlaps must be an array");
   if (record.mode === "resolve-blocker") {
-    if (!text(record.resolved_decision)) errors.push("resolved decision is required");
-    if (!text(record.remaining_codex_work)) errors.push("remaining codex work is required");
-    if (record.pickup_target_after_intervention !== "codex") errors.push("resolve-blocker must return pickup to codex");
-    if (record.active_pickup_owner !== "codex") errors.push("resolve-blocker active owner must be codex");
-  }
-  if (record.mode === "takeover") {
-    if (!text(record.scope_taken_over)) errors.push("scope taken over is required");
-    if (record.pickup_target_after_intervention !== "chatgpt") errors.push("takeover must assign pickup to chatgpt");
-    if (record.active_pickup_owner !== "chatgpt") errors.push("takeover active owner must be chatgpt");
-    const safeHandoffs = ["no-active-codex-work", "claim-released", "claim-narrowed", "disjoint-decision-only"];
-    if (!safeHandoffs.includes(record.handoff_status)) errors.push("takeover requires a valid handoff status");
-    if (Array.isArray(record.active_overlaps) && record.active_overlaps.length) {
-      errors.push("takeover must not authorize parallel edits against active overlapping Codex work");
+    if (record.next?.ownership_reason !== "resolve-blocker") errors.push("resolve-blocker must use the resolve-blocker reason");
+    if (record.next?.active_pickup_owner !== record.previous?.active_pickup_owner) {
+      errors.push("resolve-blocker must return pickup to the prior active owner");
     }
+  } else if (record.mode === "takeover") {
+    if (!["user-directed", "blocking-active-work"].includes(record.next?.ownership_reason)) {
+      errors.push("takeover reason must be user-directed or blocking-active-work");
+    }
+    if (record.next?.active_pickup_owner === record.previous?.active_pickup_owner) {
+      errors.push("takeover must change the active owner");
+    }
+  } else {
+    errors.push("mode must be resolve-blocker or takeover");
   }
   return errors;
 }
 
 function validateReassignmentRecord(record) {
-  const errors = [];
   if (!record || typeof record !== "object" || Array.isArray(record)) {
     return ["reassignment record must be an object"];
   }
-  for (const field of ["previous_pickup_target", "pickup_target", "active_pickup_owner"]) {
-    if (typeof record[field] !== "string" || !ALLOWED_PICKUP_TARGETS.has(record[field])) {
-      errors.push(`${field} must be one supported pickup target`);
-    }
+  const errors = validateOwnershipTransition(record.previous, record.next, {
+    activeOverlaps: record.active_overlaps,
+  });
+  if (record.next?.ownership_reason !== "reassignment") errors.push("reassignment must use the reassignment reason");
+  if (record.next?.active_pickup_owner === record.previous?.active_pickup_owner) {
+    errors.push("reassignment must change the active owner");
   }
-  if (record.previous_pickup_target === record.pickup_target) {
-    errors.push("reassignment must change the pickup target");
-  }
-  if (record.active_pickup_owner !== record.pickup_target) {
-    errors.push("active pickup owner must match the reassigned pickup target");
-  }
-  if (!text(record.reason)) errors.push("reassignment reason is required");
   return errors;
 }
 
@@ -459,6 +550,7 @@ function inputFromEnvironment(env) {
     completionEvidence: env.INPUT_COMPLETION_EVIDENCE,
     workClaimRequired: env.INPUT_WORK_CLAIM_REQUIRED,
     userMergeApprovalRequired: env.INPUT_USER_MERGE_APPROVAL_REQUIRED,
+    ownershipUpdatedAt: env.INPUT_OWNERSHIP_UPDATED_AT,
   };
 }
 
@@ -497,9 +589,11 @@ module.exports = {
   IntakeValidationError,
   buildIntakeIssue,
   ensureRoutingLabels,
+  extractTaskIntake,
   findExactDuplicate,
   inputFromEnvironment,
   validateInterventionRecord,
+  validateOwnershipTransition,
   validateReassignmentRecord,
   validateTaskMetadata,
 };

@@ -129,6 +129,9 @@ branch, or editing repository files.
 
 Codex must independently verify that the intake issue is Codex-ready. A `codex-ready`
 label, assignment, mention, or dispatch event is not sufficient authority by itself.
+After every resumed session and immediately before claim creation, branch creation,
+first edit, commit, push, PR readiness, or merge, Codex re-fetches the canonical
+intake issue body and linked claim.
 
 ### 3.1 Codex may proceed only when
 
@@ -139,7 +142,11 @@ label, assignment, mention, or dispatch event is not sufficient authority by its
 - no unmade ChatGPT-first decision is hidden inside the task;
 - the task can produce one coherent pull request or an explicit findings report;
 - the issue does not authorize direct writes to `main`, merge, or auto-merge;
-- current repository policy does not contradict the issue.
+- current repository policy does not contradict the issue;
+- the live `active_pickup_owner` is `codex`;
+- `pickup_allowed` is true;
+- the live `ownership_revision`, active claim, and branch match Codex's working
+  state.
 
 After passing this self-screen, Codex creates the separate semantic work claim and
 exact branch required by `AGENTS.md` and the coordination contract.
@@ -154,9 +161,12 @@ exact branch required by `AGENTS.md` and the coordination contract.
 - required acceptance criteria are missing;
 - active work overlaps the same semantic region;
 - the target is parked without an accepted unpark decision;
-- the prompt conflicts with current policy.
+- the prompt conflicts with current policy;
+- the live owner is not Codex, pickup is forbidden, or the ownership revision,
+  claim, branch, or PR no longer matches.
 
-Codex must stop before creating a work claim, branch, or edit. It should report:
+For a routing or specification failure, Codex stops before creating a work claim,
+branch, or edit and reports:
 
 - routing result: `needs-chatgpt`;
 - the exact unresolved decision or scope problem;
@@ -165,6 +175,16 @@ Codex must stop before creating a work claim, branch, or edit. It should report:
 - no repository files changed.
 
 Codex must not weaken or reinterpret the routing rules merely to continue working.
+
+An ownership mismatch is not `needs-chatgpt`; it is:
+
+```text
+routing result: unavailable
+reason: live pickup ownership changed or no longer matches the working state
+claim created: no
+branch created: no
+repository changes: none
+```
 
 ## 4. Codex-appropriate task categories
 
@@ -280,7 +300,13 @@ Every new intake distinguishes who prepared it from who must act next:
 
 Both ChatGPT and Codex may create any of the three target types. A creator is not the
 active pickup owner unless it is also the selected target. Reassignment requires an
-explicit record of the previous target, new target, active owner, and reason.
+explicit monotonic ownership revision containing the previous target, new target,
+active owner, reason, timestamp, pickup permission, and handoff state.
+
+The latest valid `task-intake` block in the canonical issue body is the sole pickup
+authority. Comments, labels, assignments, mentions, reviews, dispatch events, and
+cached copies cannot change ownership. The ownership block, work claim, branch, and
+PR must agree.
 
 ### 7.1 Codex pickup
 
@@ -324,7 +350,7 @@ human action.
 
 ```task-intake
 {
-  "schema": "canto-span-task-intake-v1",
+  "schema": "canto-span-task-intake-v2",
   "created_by": "chatgpt",
   "pickup_target": "codex",
   "pickup_status": "manual-pickup-required",
@@ -334,6 +360,15 @@ human action.
   "dependencies": [],
   "protected_state": [],
   "active_pickup_owner": "codex",
+  "ownership_revision": 1,
+  "previous_pickup_target": null,
+  "ownership_reason": "initial-routing",
+  "ownership_updated_at": "2026-07-25T00:00:00Z",
+  "pickup_allowed": true,
+  "handoff_status": "no-handoff",
+  "active_claim_issue": null,
+  "active_branch": null,
+  "active_pr": null,
   "work_claim_required": true,
   "user_merge_approval_required": true,
   "codex_self_screen_required": true
@@ -342,9 +377,13 @@ human action.
 
 The checked-in
 [`task-intake.schema.json`](../../schemas/task-intake.schema.json) is the unified
-format. Existing `canto-span-codex-task-v1` blocks remain valid legacy records under
+ownership-aware format. Existing `canto-span-task-intake-v1` and
+`canto-span-codex-task-v1` blocks remain valid legacy records under
+[`task-intake-v1.schema.json`](../../schemas/task-intake-v1.schema.json) and
 [`codex-task.schema.json`](../../schemas/codex-task.schema.json); tools validate them
-without silently rewriting them. Intake metadata is not a semantic work claim.
+without silently rewriting them. A legacy record must migrate before takeover,
+reassignment, or active ownership binding. Intake metadata is not a semantic work
+claim.
 Codex pickup always requires a claim and user merge approval. For ChatGPT or human
 pickup, the two booleans truthfully record whether that scoped issue also includes
 claimed repository work or a pull request; they do not grant either action.
@@ -378,35 +417,49 @@ initiation is an additional entry point, not a prerequisite for ChatGPT delegati
 
 1. A tested adapter dispatches the issue, or Codex is started manually.
 2. Codex reads the mandatory contracts and this routing document.
-3. Codex self-screens before claim, branch, or edit.
-4. Misrouted work returns to ChatGPT with `needs-chatgpt` and no repository change.
-5. Eligible work proceeds to a separate semantic work claim and branch.
+3. Codex re-fetches the issue body and verifies live owner, permission, and revision.
+4. Codex self-screens before claim, branch, or edit.
+5. Misrouted work returns to ChatGPT with `needs-chatgpt`; unavailable work stops
+   with `routing result: unavailable`.
+6. Eligible work updates the ownership record to bind a separate v2 work claim,
+   active worker, revision, and branch before editing.
 
-### 8.3 ChatGPT intervention in Codex-targeted work
+### 8.3 Agent-neutral intervention, takeover, and reassignment
 
-ChatGPT may intervene only when the user directs it or the issue blocks active work.
-Before intervening, inspect the issue, pull requests, active claims, and branches.
+Codex, ChatGPT, or a human may become the next pickup target when the user directs
+the change, blocking active work requires it, an explicit handoff occurs, or a
+resolved human action returns work. Before intervening, inspect the live intake
+issue, pull requests, active claims, and branches.
 
-For `resolve-blocker`, record the permitted reason, precise resolved decision,
-bounded remaining Codex work, and `pickup target after intervention: codex`. Codex
-resumes only after the decision is recorded and overlap checks pass.
+For `resolve-blocker`, keep the prior active owner, increment the revision, record
+the precise decision and bounded remainder in the issue body, and rebind the claim
+to that revision before work resumes.
 
-For `takeover`, record the permitted reason, previous Codex target, active ChatGPT
-owner, bounded scope, and handoff status. If Codex has an overlapping claim, branch,
-or pull request, ChatGPT must first record a handoff, have the claim released or
-narrowed, or remain in a disjoint decision/review region. A comment or review alone
-does not imply takeover. Once takeover is recorded, Codex treats the issue as
-unavailable until explicit reassignment.
+For takeover or reassignment, replace the single ownership block in the issue body,
+increment `ownership_revision` by exactly one, name the previous target, new target,
+new active owner, authorized reason, later timestamp, pickup permission, and
+handoff status. Existing overlapping work must first be absent, released, narrowed,
+or confined to a disjoint decision-only region. Then update or create the v2 claim
+with the same owner and revision. A comment or review alone does not imply takeover.
+Every former owner treats the issue as unavailable until a later revision explicitly
+reassigns it.
+
+The live intake block has precedence over a stale claim. A claim never preserves an
+earlier agent's authority after the intake revision changes.
 
 ### 8.4 Execution and review
 
-1. Codex keeps work inside the claim and updates it before expanding scope.
+1. Codex keeps work inside the claim, re-fetches ownership at every required
+   mutation boundary, and updates the claim before expanding scope.
 2. Codex follows all applicable evidence, identity, runtime, corpus, survey,
    generated-output, and verification gates.
-3. Codex opens one coherent PR linking the intake issue and work claim.
-4. Codex verifies the exact head, informs the user, and stops without merging.
-5. ChatGPT independently reviews the result.
-6. The user retains the explicit merge decision for that PR and unchanged head.
+3. Codex opens one coherent draft PR linking the intake issue and work claim.
+4. After GitHub assigns the PR number, Codex updates the live intake `active_pr`
+   field and the PR body's active worker and ownership revision before the
+   coordination check may pass.
+5. Codex verifies the exact head, informs the user, and stops without merging.
+6. ChatGPT independently reviews the result.
+7. The user retains the explicit merge decision for that PR and unchanged head.
 
 ## 9. Hybrid responsibility examples
 
@@ -469,20 +522,21 @@ workflow:
 2. validates them against
    [`task-intake.schema.json`](../../schemas/task-intake.schema.json), while retaining
    explicit validation compatibility for legacy
+   [`task-intake-v1.schema.json`](../../schemas/task-intake-v1.schema.json) and
    [`codex-task.schema.json`](../../schemas/codex-task.schema.json) records;
 3. rejects missing common or target-specific fields, multiple or unsupported pickup
    targets, invalid status/owner combinations, unsafe direct authorizations,
    Markdown-fence injection, and an exact duplicate open intake;
-4. creates one canonical issue body and metadata block with target-specific
-   instructions, status, owner, and labels;
+4. creates one canonical issue body and v2 metadata block with target-specific
+   instructions, initial ownership revision, status, owner, permission, and labels;
 5. idempotently creates or reconciles the routing labels;
 6. uses environment variables rather than inserting untrusted input into executable
    workflow script text.
 
-The same coordination implementation validates ChatGPT `resolve-blocker` and
-`takeover` records plus explicit pickup reassignment. Takeover validation rejects
-parallel edits against an active overlapping Codex claim unless a release,
-narrowing, or disjoint handoff is recorded.
+The same coordination implementation validates agent-neutral `resolve-blocker`,
+`takeover`, and reassignment transitions. It rejects stale or skipped revisions,
+wrong previous targets, non-increasing timestamps, owner/target disagreement, and
+parallel edits against active overlapping work.
 
 For issue creation, expected least-privilege permissions are:
 
@@ -506,7 +560,10 @@ The manual workflow remains complete only while:
   format;
 - target-specific required fields, status, owner, and labels remain enforced;
 - legacy `canto-span-codex-task-v1` records remain valid without rewriting;
+- legacy `canto-span-task-intake-v1` records remain valid without rewriting;
 - intervention and reassignment records enforce the overlap and handoff rules;
+- generated Codex prompts require live ownership re-fetch at every mutation boundary;
+- new claims and pull requests bind to the live intake owner and revision;
 - prohibited task classes are rejected or routed to ChatGPT;
 - ChatGPT can invoke issue creation without requiring the user to restate the task;
 - the user receives a notice for every created issue;

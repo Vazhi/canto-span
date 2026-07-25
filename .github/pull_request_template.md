@@ -1,6 +1,7 @@
 <!-- coordination-claim: #ISSUE_NUMBER -->
 
 Work claim: #ISSUE_NUMBER
+Intake issue: #ISSUE_NUMBER
 
 Closes #ISSUE_NUMBER
 
@@ -13,6 +14,9 @@ Describe the one bounded result and the semantic targets changed.
 - Work ID: `CS-WORK-0000`
 - Claim mode: `shared` or `exclusive`
 - Integration role: `worker` or `integrator`
+- Active worker: `codex`, `chatgpt`, or `human`
+- Ownership revision:
+- Live intake `active_pr`: update to this PR number immediately after opening
 - Semantic regions:
 - Dependencies:
 - Overlapping physical files with disjoint regions:
@@ -35,6 +39,7 @@ List exact commands, results, and the exact validated head commit.
 ## Human merge review
 
 - Review status: `PENDING_USER_REVIEW`
+- Live intake owner/revision rechecked: `no`
 - User notified that this exact head is ready: `no`
 - Explicit approval for this pull request and exact head: `not received`
 
