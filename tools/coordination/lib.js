@@ -5,7 +5,8 @@ const crypto = require("crypto");
 const fs = require("fs");
 const path = require("path");
 
-const CLAIM_SCHEMA = "canto-span-work-claim-v1";
+const CLAIM_SCHEMA = "canto-span-work-claim-v2";
+const LEGACY_CLAIM_SCHEMA = "canto-span-work-claim-v1";
 const CHANGE_SET_SCHEMA = "canto-span-change-set-v1";
 const TARGET_TYPES = new Set([
   "file",
@@ -21,6 +22,7 @@ const PATH_TARGET_TYPES = new Set(["file", "schema", "workflow", "generated_outp
 const CLAIM_MODES = new Set(["shared", "exclusive"]);
 const INTEGRATION_ROLES = new Set(["worker", "integrator"]);
 const CLAIM_STATUSES = new Set(["active", "stale", "complete"]);
+const ACTIVE_WORKERS = new Set(["codex", "chatgpt", "human"]);
 const OPERATION_TYPES = new Set([
   "json_record_merge",
   "json_pointer_set",
@@ -86,13 +88,30 @@ function validateClaim(claim, options = {}) {
   const errors = [];
   const now = options.now instanceof Date ? options.now : new Date(options.now || Date.now());
   if (!isObject(claim)) return ["claim must be an object"];
-  if (claim.schema !== CLAIM_SCHEMA) errors.push(`schema must be ${CLAIM_SCHEMA}`);
+  const legacy = claim.schema === LEGACY_CLAIM_SCHEMA;
+  if (claim.schema !== CLAIM_SCHEMA && !legacy) {
+    errors.push(`schema must be ${CLAIM_SCHEMA} or legacy ${LEGACY_CLAIM_SCHEMA}`);
+  }
+  if (options.requireOwnershipBinding && legacy) {
+    errors.push(`legacy ${LEGACY_CLAIM_SCHEMA} claim must migrate to ${CLAIM_SCHEMA}`);
+  }
   if (!/^CS-WORK-\d{4,}$/.test(String(claim.work_id || ""))) errors.push("work_id must match CS-WORK-####");
   if (!CLAIM_STATUSES.has(claim.status)) errors.push("status must be active, stale, or complete");
   if (!CLAIM_MODES.has(claim.claim_mode)) errors.push("claim_mode must be shared or exclusive");
   const role = claim.integration_role || "worker";
   if (!INTEGRATION_ROLES.has(role)) errors.push("integration_role must be worker or integrator");
   if (!/^agent\/[a-z0-9][a-z0-9._/-]*$/.test(String(claim.branch || ""))) errors.push("branch must use agent/<description>");
+  if (!legacy) {
+    if (!Number.isInteger(claim.intake_issue) || claim.intake_issue < 1) {
+      errors.push("intake_issue must be a positive integer");
+    }
+    if (!ACTIVE_WORKERS.has(claim.active_worker)) {
+      errors.push("active_worker must be codex, chatgpt, or human");
+    }
+    if (!Number.isInteger(claim.ownership_revision) || claim.ownership_revision < 1) {
+      errors.push("ownership_revision must be a positive integer");
+    }
+  }
   const expiry = new Date(claim.expires_at);
   if (!claim.expires_at || Number.isNaN(expiry.getTime())) {
     errors.push("expires_at must be an ISO-8601 timestamp");
@@ -393,6 +412,7 @@ function loadJson(filePath) {
 module.exports = {
   CHANGE_SET_SCHEMA,
   CLAIM_SCHEMA,
+  LEGACY_CLAIM_SCHEMA,
   applyChangeSet,
   claimCoversChangedFile,
   deepEqual,

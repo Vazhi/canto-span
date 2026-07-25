@@ -15,6 +15,7 @@ const {
   findExactDuplicate,
   inputFromEnvironment,
   validateInterventionRecord,
+  validateOwnershipTransition,
   validateReassignmentRecord,
   validateTaskMetadata,
 } = require("../../../tools/coordination/codex-intake");
@@ -43,6 +44,7 @@ function validInput(overrides = {}) {
     completionEvidence: "",
     workClaimRequired: false,
     userMergeApprovalRequired: false,
+    ownershipUpdatedAt: "2026-07-25T00:00:00Z",
     ...overrides,
   };
 }
@@ -80,6 +82,27 @@ function metadataFromBody(body) {
   return JSON.parse(matches[0][1]);
 }
 
+function transition(previous, pickupTarget, overrides = {}) {
+  return {
+    ...previous,
+    pickup_target: pickupTarget,
+    pickup_status: "active",
+    active_pickup_owner: pickupTarget,
+    ownership_revision: previous.ownership_revision + 1,
+    previous_pickup_target: previous.pickup_target,
+    ownership_reason: "reassignment",
+    ownership_updated_at: "2026-07-25T01:00:00Z",
+    handoff_status: "claim-released",
+    active_claim_issue: null,
+    active_branch: null,
+    active_pr: null,
+    codex_self_screen_required: pickupTarget === "codex",
+    work_claim_required: pickupTarget === "codex",
+    user_merge_approval_required: pickupTarget === "codex",
+    ...overrides,
+  };
+}
+
 test("supports every creator and pickup-target combination with one primary target", () => {
   assert.deepEqual([...ALLOWED_CREATORS], ["chatgpt", "codex", "human"]);
   assert.deepEqual([...ALLOWED_PICKUP_TARGETS], ["codex", "chatgpt", "human"]);
@@ -109,6 +132,9 @@ test("generates Codex start gate, manual status, and claim policy", () => {
   assert.equal(result.metadata.work_claim_required, true);
   assert.equal(result.metadata.user_merge_approval_required, true);
   assert.equal(result.metadata.codex_self_screen_required, true);
+  assert.equal(result.metadata.ownership_revision, 1);
+  assert.equal(result.metadata.pickup_allowed, true);
+  assert.equal(result.metadata.previous_pickup_target, null);
   assert.deepEqual(result.labels.map((label) => label.name), [
     "codex-ready",
     "pickup:codex",
@@ -184,61 +210,96 @@ test("rejects invalid enum inputs and target-inconsistent pickup status", () => 
 });
 
 test("validates resolve-blocker and clean takeover records", () => {
+  const codex = buildIntakeIssue(targetInput("codex")).metadata;
+  const resolved = transition(codex, "codex", {
+    ownership_reason: "resolve-blocker",
+    handoff_status: "no-handoff",
+  });
   assert.deepEqual(validateInterventionRecord({
     mode: "resolve-blocker",
-    reason: "blocking-active-work",
-    previous_pickup_target: "codex",
-    pickup_target_after_intervention: "codex",
-    active_pickup_owner: "codex",
-    resolved_decision: "Use the accepted schema.",
-    remaining_codex_work: "Implement and test the accepted schema.",
+    previous: codex,
+    next: resolved,
     active_overlaps: ["claim #54"],
   }), []);
+  const chatgpt = transition(codex, "chatgpt", {
+    ownership_reason: "user-directed",
+    work_claim_required: true,
+    user_merge_approval_required: true,
+  });
   assert.deepEqual(validateInterventionRecord({
     mode: "takeover",
-    reason: "user-directed",
-    previous_pickup_target: "codex",
-    pickup_target_after_intervention: "chatgpt",
-    active_pickup_owner: "chatgpt",
-    scope_taken_over: "The bounded issue implementation.",
-    handoff_status: "no-active-codex-work",
+    previous: codex,
+    next: chatgpt,
     active_overlaps: [],
   }), []);
 });
 
 test("rejects takeover with active overlap unless handoff removes or narrows it", () => {
+  const codex = buildIntakeIssue(targetInput("codex")).metadata;
+  const chatgpt = transition(codex, "chatgpt", {
+    ownership_reason: "blocking-active-work",
+    handoff_status: "claim-narrowed",
+  });
   const takeover = {
     mode: "takeover",
-    reason: "blocking-active-work",
-    previous_pickup_target: "codex",
-    pickup_target_after_intervention: "chatgpt",
-    active_pickup_owner: "chatgpt",
-    scope_taken_over: "The bounded issue implementation.",
-    handoff_status: "no-active-codex-work",
+    previous: codex,
+    next: chatgpt,
     active_overlaps: ["claim #54"],
   };
   assert.ok(validateInterventionRecord(takeover).some((error) => error.includes("parallel edits")));
   assert.deepEqual(validateInterventionRecord({
     ...takeover,
-    handoff_status: "claim-released",
     active_overlaps: [],
   }), []);
-  assert.ok(validateInterventionRecord({ ...takeover, reason: "convenient" }).length);
+  assert.ok(validateInterventionRecord({
+    ...takeover,
+    next: { ...chatgpt, ownership_reason: "convenient" },
+    active_overlaps: [],
+  }).length);
 });
 
 test("validates explicit pickup reassignment", () => {
+  const chatgpt = buildIntakeIssue(targetInput("chatgpt")).metadata;
+  const codex = transition(chatgpt, "codex");
   assert.deepEqual(validateReassignmentRecord({
-    previous_pickup_target: "chatgpt",
-    pickup_target: "codex",
-    active_pickup_owner: "codex",
-    reason: "The design decision is resolved.",
+    previous: chatgpt,
+    next: codex,
+    active_overlaps: [],
   }), []);
-  assert.ok(validateReassignmentRecord({
-    previous_pickup_target: "codex",
-    pickup_target: "codex",
-    active_pickup_owner: "chatgpt",
-    reason: "",
-  }).length >= 3);
+  assert.ok(validateReassignmentRecord({ previous: chatgpt, next: chatgpt }).length);
+});
+
+test("applies the same reassignment rules to every owner pair", () => {
+  for (const previousTarget of ALLOWED_PICKUP_TARGETS) {
+    for (const nextTarget of ALLOWED_PICKUP_TARGETS) {
+      if (previousTarget === nextTarget) continue;
+      const previous = buildIntakeIssue(targetInput(previousTarget)).metadata;
+      const next = transition(previous, nextTarget);
+      assert.deepEqual(
+        validateReassignmentRecord({ previous, next, active_overlaps: [] }),
+        [],
+        `${previousTarget} -> ${nextTarget}`,
+      );
+    }
+  }
+});
+
+test("rejects stale revisions, cached previous targets, and non-monotonic timestamps", () => {
+  const codex = buildIntakeIssue(targetInput("codex")).metadata;
+  const chatgpt = transition(codex, "chatgpt", { ownership_reason: "user-directed" });
+  assert.deepEqual(validateOwnershipTransition(codex, chatgpt, { activeOverlaps: [] }), []);
+  assert.ok(validateOwnershipTransition(codex, {
+    ...chatgpt,
+    ownership_revision: 1,
+  }).length);
+  assert.ok(validateOwnershipTransition(codex, {
+    ...chatgpt,
+    previous_pickup_target: "human",
+  }).some((error) => error.includes("prior live target")));
+  assert.ok(validateOwnershipTransition(codex, {
+    ...chatgpt,
+    ownership_updated_at: codex.ownership_updated_at,
+  }).some((error) => error.includes("timestamp must increase")));
 });
 
 test("keeps legacy canto-span-codex-task-v1 metadata valid", () => {
@@ -269,6 +330,32 @@ test("unified metadata matches checked-in schema constants and enums", () => {
   assert.ok(schema.properties.pickup_target.enum.includes(metadata.pickup_target));
   assert.ok(schema.properties.pickup_status.enum.includes(metadata.pickup_status));
   assert.equal(ALLOWED_CATEGORIES.size, schema.properties.category.enum.length);
+});
+
+test("keeps legacy canto-span-task-intake-v1 metadata valid", () => {
+  const legacy = JSON.parse(fs.readFileSync(
+    path.resolve(__dirname, "../../../schemas/task-intake-v1.schema.json"),
+    "utf8",
+  ));
+  const metadata = {};
+  for (const [name, property] of Object.entries(legacy.properties)) {
+    if (Object.hasOwn(property, "const")) metadata[name] = property.const;
+  }
+  Object.assign(metadata, {
+    created_by: "chatgpt",
+    pickup_target: "codex",
+    pickup_status: "manual-pickup-required",
+    category: "verification-audit",
+    risk: "low",
+    execution_mode: "implementation",
+    dependencies: [],
+    protected_state: [],
+    active_pickup_owner: "codex",
+    work_claim_required: true,
+    user_merge_approval_required: true,
+    codex_self_screen_required: true,
+  });
+  assert.deepEqual(validateTaskMetadata(metadata), []);
 });
 
 test("safely handles multiline and adversarial plain text", () => {
@@ -316,11 +403,13 @@ test("maps workflow environment values without evaluating them", () => {
     INPUT_PROTECTED_STATE: "main",
     INPUT_RISK: "medium",
     INPUT_EXECUTION_MODE: "implementation",
+    INPUT_OWNERSHIP_UPDATED_AT: "2026-07-25T00:00:00Z",
   });
   assert.equal(input.createdBy, "codex");
   assert.equal(input.pickupTarget, "codex");
   assert.equal(input.title, "literal $(command)");
   assert.equal(input.outcome, "literal ${value}");
+  assert.equal(input.ownershipUpdatedAt, "2026-07-25T00:00:00Z");
 });
 
 test("finds only exact duplicate open intake issues", () => {

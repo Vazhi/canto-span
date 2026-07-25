@@ -10,6 +10,10 @@ const {
   validateChangedFiles,
   validateClaim,
 } = require("./lib");
+const {
+  extractTaskIntake,
+  validateTaskMetadata,
+} = require("./codex-intake");
 
 const root = path.resolve(__dirname, "../..");
 const config = loadJson(path.join(root, "config/coordination-targets.json"));
@@ -43,6 +47,81 @@ function claimIssueNumber(prBody) {
 function closesIssue(prBody, issueNumber) {
   const pattern = new RegExp(`\\b(?:close[sd]?|fix(?:e[sd])?|resolve[sd]?)\\s+#${issueNumber}\\b`, "i");
   return pattern.test(String(prBody || ""));
+}
+
+function intakeIssueNumber(prBody) {
+  const match = String(prBody || "").match(/Intake issue:\s*#(\d+)/i);
+  return match ? Number(match[1]) : null;
+}
+
+function prOwnershipFields(prBody) {
+  const body = String(prBody || "");
+  const worker = body.match(/^[ \t]*(?:-\s*)?Active worker:\s*`?(codex|chatgpt|human)`?\s*$/im);
+  const revision = body.match(/^[ \t]*(?:-\s*)?Ownership revision:\s*`?(\d+)`?\s*$/im);
+  return {
+    activeWorker: worker ? worker[1].toLowerCase() : null,
+    ownershipRevision: revision ? Number(revision[1]) : null,
+  };
+}
+
+function legacyIntakeRequiresMigration(intake) {
+  return Boolean(
+    Number(intake?.ownership_revision) > 1
+    || intake?.original_pickup_target
+    || intake?.active_work_claim
+    || intake?.ownership_reason
+    || intake?.pickup_allowed === false
+    || /(?:active|takeover|reassign)/i.test(String(intake?.pickup_status || "")),
+  );
+}
+
+function validateOwnershipBinding(claim, claimIssue, intake, intakeIssue, pr) {
+  const errors = [];
+  const prOwnership = prOwnershipFields(pr.body);
+  if (claim.intake_issue != null && claim.intake_issue !== intakeIssue) {
+    errors.push(`claim intake_issue ${claim.intake_issue} does not match PR intake issue ${intakeIssue}`);
+  }
+  if (claim.schema === "canto-span-work-claim-v1") {
+    if (intake?.schema === "canto-span-task-intake-v2" || legacyIntakeRequiresMigration(intake)) {
+      errors.push("legacy work claim must migrate to v2 before takeover, reassignment, or active pickup");
+    }
+    return errors;
+  }
+  if (claim.schema !== "canto-span-work-claim-v2") {
+    errors.push("ownership binding requires a supported work-claim schema");
+    return errors;
+  }
+  const intakeErrors = validateTaskMetadata(intake);
+  if (intakeErrors.length) errors.push(...intakeErrors.map((error) => `intake: ${error}`));
+  if (intake?.schema !== "canto-span-task-intake-v2") {
+    errors.push("v2 work claim requires a v2 intake ownership record");
+    return errors;
+  }
+  if (intake.active_pickup_owner !== claim.active_worker) {
+    errors.push(`live intake owner ${intake.active_pickup_owner} does not match claim worker ${claim.active_worker}`);
+  }
+  if (intake.ownership_revision !== claim.ownership_revision) {
+    errors.push(`live ownership revision ${intake.ownership_revision} does not match claim revision ${claim.ownership_revision}`);
+  }
+  if (!intake.pickup_allowed) errors.push("live intake does not permit pickup");
+  if (intake.active_claim_issue !== claimIssue) {
+    errors.push(`live intake active claim ${intake.active_claim_issue} does not match work claim ${claimIssue}`);
+  }
+  if (intake.active_branch !== pr.head.ref) {
+    errors.push(`live intake branch ${intake.active_branch} does not match PR head ${pr.head.ref}`);
+  }
+  if (intake.active_pr !== pr.number) {
+    errors.push(`live intake PR ${intake.active_pr} does not match PR ${pr.number}`);
+  }
+  if (prOwnership.activeWorker !== intake.active_pickup_owner) {
+    errors.push(`PR worker ${prOwnership.activeWorker} does not match live intake owner ${intake.active_pickup_owner}`);
+  }
+  if (prOwnership.ownershipRevision !== intake.ownership_revision) {
+    errors.push(
+      `PR ownership revision ${prOwnership.ownershipRevision} does not match live revision ${intake.ownership_revision}`,
+    );
+  }
+  return errors;
 }
 
 async function allOpenIssues(repository, token) {
@@ -98,6 +177,20 @@ async function main() {
   if (claimErrors.length) fail(`work claim #${issueNumber} is invalid`, claimErrors);
   if (claim.branch !== pr.head.ref) fail(`claim branch ${claim.branch} does not match PR head ${pr.head.ref}`);
 
+  const intakeNumber = intakeIssueNumber(pr.body);
+  if (!intakeNumber) fail("PR body must contain Intake issue: #NUMBER");
+  const intakeIssue = await github(`/repos/${repository}/issues/${intakeNumber}`, token);
+  if (intakeIssue.pull_request) fail(`#${intakeNumber} is a pull request, not an intake issue`);
+  if (intakeIssue.state !== "open") fail(`intake issue #${intakeNumber} is not open`);
+  let intake;
+  try {
+    intake = extractTaskIntake(intakeIssue.body);
+  } catch (error) {
+    fail(`intake issue #${intakeNumber} cannot be parsed`, error.message);
+  }
+  const ownershipErrors = validateOwnershipBinding(claim, issueNumber, intake, intakeNumber, pr);
+  if (ownershipErrors.length) fail("live intake ownership does not authorize this pull request", ownershipErrors);
+
   const openIssues = await allOpenIssues(repository, token);
   const conflicts = [];
   for (const otherIssue of openIssues) {
@@ -128,7 +221,10 @@ async function main() {
     status: "PASS",
     pull_request: pr.number,
     work_claim_issue: issueNumber,
+    intake_issue: intakeNumber,
     work_id: claim.work_id,
+    active_worker: claim.active_worker || null,
+    ownership_revision: claim.ownership_revision || null,
     branch: claim.branch,
     claim_mode: claim.claim_mode,
     integration_role: claim.integration_role || "worker",
@@ -140,4 +236,13 @@ async function main() {
   process.stdout.write(`${JSON.stringify(result, null, 2)}\n`);
 }
 
-main().catch((error) => fail("coordination check crashed", error.stack || error.message));
+if (require.main === module) {
+  main().catch((error) => fail("coordination check crashed", error.stack || error.message));
+}
+
+module.exports = {
+  intakeIssueNumber,
+  legacyIntakeRequiresMigration,
+  prOwnershipFields,
+  validateOwnershipBinding,
+};

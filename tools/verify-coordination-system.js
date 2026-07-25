@@ -44,7 +44,9 @@ const requiredFiles = [
   "docs/current/USER-MERGE-REVIEW.md",
   "schemas/change-set.schema.json",
   "schemas/codex-task.schema.json",
+  "schemas/task-intake-v1.schema.json",
   "schemas/task-intake.schema.json",
+  "schemas/work-claim-v1.schema.json",
   "schemas/work-claim.schema.json",
   "tools/coordination/codex-intake.js",
   "tools/coordination/change-set.js",
@@ -59,7 +61,9 @@ for (const file of [
   "config/coordination-targets.json",
   "schemas/change-set.schema.json",
   "schemas/codex-task.schema.json",
+  "schemas/task-intake-v1.schema.json",
   "schemas/task-intake.schema.json",
+  "schemas/work-claim-v1.schema.json",
   "schemas/work-claim.schema.json",
 ]) {
   try {
@@ -88,7 +92,12 @@ try {
 }
 
 requireText(".github/ISSUE_TEMPLATE/work-claim.yml", "coordination-claim", "issue template claim block");
+requireText(".github/ISSUE_TEMPLATE/work-claim.yml", "canto-span-work-claim-v2", "current work claim version");
+requireText(".github/ISSUE_TEMPLATE/work-claim.yml", "ownership_revision", "claim ownership revision");
 requireText(".github/pull_request_template.md", "coordination-claim: #ISSUE_NUMBER", "PR claim marker");
+requireText(".github/pull_request_template.md", "Intake issue: #ISSUE_NUMBER", "PR intake marker");
+requireText(".github/pull_request_template.md", "Active worker:", "PR active worker");
+requireText(".github/pull_request_template.md", "Ownership revision:", "PR ownership revision");
 requireText(".github/pull_request_template.md", "Closes #ISSUE_NUMBER", "automatic claim closure");
 requireText(".github/pull_request_template.md", "PENDING_USER_REVIEW", "human review pending state");
 requireText(".github/pull_request_template.md", "Do not merge or enable auto-merge", "PR merge stop");
@@ -111,6 +120,7 @@ requireText(".github/workflows/codex-intake-issue.yml", "findExactDuplicate", "b
 requireText(".github/workflows/codex-intake-issue.yml", "ensureRoutingLabels", "idempotent routing labels");
 requireText(".github/workflows/codex-intake-issue.yml", "created_by:", "separate intake creator");
 requireText(".github/workflows/codex-intake-issue.yml", "pickup_target:", "one primary pickup target");
+requireText(".github/workflows/codex-intake-issue.yml", "new Date().toISOString()", "trusted initial ownership timestamp");
 forbidText(".github/workflows/codex-intake-issue.yml", "contents: write", "intake content write permission");
 forbidText(".github/workflows/codex-intake-issue.yml", "pull-requests: write", "intake PR write permission");
 forbidText(".github/workflows/codex-intake-issue.yml", "run:", "intake shell execution");
@@ -120,10 +130,22 @@ requireText("docs/current/CODEX-ISSUE-WORKFLOW.md", "manual-pickup-required", "t
 requireText("docs/current/CODEX-ISSUE-WORKFLOW.md", ".github/workflows/codex-intake-issue.yml", "manual generator path");
 requireText("docs/current/CODEX-ISSUE-WORKFLOW.md", "chatgpt-pickup-required", "ChatGPT pickup status");
 requireText("docs/current/CODEX-ISSUE-WORKFLOW.md", "human-pickup-required", "human pickup status");
+requireText("docs/current/CODEX-ISSUE-WORKFLOW.md", "ownership_revision", "routing ownership revision");
+requireText("docs/current/CODEX-ISSUE-WORKFLOW.md", "routing result: unavailable", "unavailable ownership stop");
+requireText("docs/current/MULTI-AGENT-COORDINATION.md", "Pickup ownership and precedence", "ownership precedence");
+requireText("docs/current/MULTI-AGENT-COORDINATION.md", "exact PR number", "live pull-request binding");
+requireText("docs/current/00-START-HERE.md", "ownership revision", "Start Here ownership recheck");
+requireText("docs/current/00-START-HERE.md", "bind `active_pr`", "Start Here pull-request binding");
+requireText("docs/current/USER-MERGE-REVIEW.md", "live ownership revision", "merge ownership recheck");
 requireText("tools/coordination/codex-intake.js", "schemas/task-intake.schema.json", "checked-in unified intake schema");
+requireText("tools/coordination/codex-intake.js", "schemas/task-intake-v1.schema.json", "legacy unified intake compatibility");
 requireText("tools/coordination/codex-intake.js", "schemas/codex-task.schema.json", "legacy intake compatibility");
-requireText("tools/coordination/codex-intake.js", "validateInterventionRecord", "ChatGPT intervention validation");
+requireText("tools/coordination/codex-intake.js", "validateInterventionRecord", "ownership intervention validation");
 requireText("tools/coordination/codex-intake.js", "CANONICAL_BOOTSTRAP", "canonical intake bootstrap");
+requireText("tools/coordination/codex-intake.js", "Re-fetch the canonical intake issue", "generated live ownership recheck");
+requireText("tools/coordination/check-pr.js", "validateOwnershipBinding", "online ownership binding");
+requireText("tools/coordination/check-pr.js", "live intake ownership does not authorize", "online ownership stop");
+requireText("tools/coordination/check-pr.js", "PR ownership revision", "pull-request ownership revision binding");
 
 try {
   const codexTaskSchema = JSON.parse(read("schemas/codex-task.schema.json"));
@@ -138,8 +160,40 @@ try {
   const categories = taskIntakeSchema?.properties?.category?.enum;
   const creators = taskIntakeSchema?.properties?.created_by?.enum;
   const pickupTargets = taskIntakeSchema?.properties?.pickup_target?.enum;
-  if (taskIntakeSchema?.properties?.schema?.const !== "canto-span-task-intake-v1") {
+  if (taskIntakeSchema?.properties?.schema?.const !== "canto-span-task-intake-v2") {
     errors.push({ type: "invalid_schema", file: "schemas/task-intake.schema.json", detail: "wrong unified intake schema identifier" });
+  }
+  const legacyTaskIntakeSchema = JSON.parse(read("schemas/task-intake-v1.schema.json"));
+  if (legacyTaskIntakeSchema?.properties?.schema?.const !== "canto-span-task-intake-v1") {
+    errors.push({ type: "invalid_schema", file: "schemas/task-intake-v1.schema.json", detail: "wrong legacy unified intake schema identifier" });
+  }
+  for (const field of [
+    "ownership_revision",
+    "previous_pickup_target",
+    "ownership_reason",
+    "ownership_updated_at",
+    "pickup_allowed",
+    "handoff_status",
+    "active_claim_issue",
+    "active_branch",
+    "active_pr",
+  ]) {
+    if (!taskIntakeSchema.required?.includes(field)) {
+      errors.push({ type: "invalid_schema", file: "schemas/task-intake.schema.json", detail: `missing required ownership field ${field}` });
+    }
+  }
+  const workClaimSchema = JSON.parse(read("schemas/work-claim.schema.json"));
+  const legacyWorkClaimSchema = JSON.parse(read("schemas/work-claim-v1.schema.json"));
+  if (workClaimSchema?.properties?.schema?.const !== "canto-span-work-claim-v2") {
+    errors.push({ type: "invalid_schema", file: "schemas/work-claim.schema.json", detail: "wrong current work claim schema identifier" });
+  }
+  if (legacyWorkClaimSchema?.properties?.schema?.const !== "canto-span-work-claim-v1") {
+    errors.push({ type: "invalid_schema", file: "schemas/work-claim-v1.schema.json", detail: "wrong legacy work claim schema identifier" });
+  }
+  for (const field of ["intake_issue", "active_worker", "ownership_revision"]) {
+    if (!workClaimSchema.required?.includes(field)) {
+      errors.push({ type: "invalid_schema", file: "schemas/work-claim.schema.json", detail: `missing required claim ownership field ${field}` });
+    }
   }
   for (const [field, values, expected] of [
     ["created_by", creators, ["chatgpt", "codex", "human"]],
@@ -185,6 +239,9 @@ try {
 }
 
 requireText("AGENTS.md", "work-claim issue", "agent work claim bootstrap");
+requireText("AGENTS.md", "human-required", "agent human routing class");
+requireText("AGENTS.md", "routing result: unavailable", "agent ownership stop");
+requireText("AGENTS.md", "ownership_revision", "agent ownership recheck");
 requireText("AGENTS.md", "MULTI-AGENT-COORDINATION.md", "agent coordination pointer");
 requireText("AGENTS.md", "USER-MERGE-REVIEW.md", "mandatory merge review pointer");
 requireText("AGENTS.md", "There is no read-only research role", "agent research autonomy");
