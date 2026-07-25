@@ -15,7 +15,8 @@ Never collapse these into one registry or one confidence score:
 2. **Current ontology** — canonical name, family, profile, and claim layer.
 3. **Linguistic status** — current evidence class owned by the status note.
 4. **Runtime behavior** — what code and executable tests actually recognize.
-5. **Workflow state** — active or parked work.
+5. **Workflow availability** — available by default or explicitly parked in the
+   canonical blacklist.
 6. **Discovery readiness** — which hard promotion gates are complete.
 7. **Learner presentation** — simplified labels and explanations.
 
@@ -102,10 +103,11 @@ positive and negative item from a clean instrument. `supported_productive`
 requires at least 30 per critical item from a locked clean instrument. Total
 submissions cannot replace item-level coverage.
 
-When published analysis conflicts with recorded naturalness, freeze the disputed
-scope until independent sources, controlled contrasts, role-neutral evidence,
-variation factors, negative boundaries, and competing analyses are reviewed. Do
-not invent dialect, register, or contextual explanations.
+When published analysis conflicts with recorded naturalness, keep the disputed
+scope out of promotion and implementation broadening until independent sources,
+controlled contrasts, role-neutral evidence, variation factors, negative
+boundaries, and competing analyses are reviewed. Do not invent dialect, register,
+or contextual explanations.
 
 ## Productive promotion
 
@@ -117,6 +119,28 @@ implementation consistency, not linguistic confidence.
 The endpoint is honest resolution, not promotion of every runtime label. A record
 may remain narrowly nonproductive, become lexicalized-only, decompose into
 internal parts, split, merge, supersede, quarantine, or retire.
+
+## Work selection and grammar changes
+
+There is no repository-wide grammar freeze and no active-note whitelist. Every
+current construction is available for research, adjudication, specification, or
+implementation unless its permanent identity is listed in
+[`data/parked-constructions.json`](../../data/parked-constructions.json).
+
+Agents should choose the bounded work with the greatest expected project benefit,
+considering evidence gaps, learner impact, ontology risk, implementation leverage,
+dependencies, and overlap with open work. Readiness scores may inform that choice
+but do not control it.
+
+A parked construction must not be worked on silently. When it appears to be the
+best next target, the agent must recommend unpark with the reason, expected
+benefit, changed assumptions or dependencies, and proposed scope. Removing an
+entry from the parked registry is an explicit reviewed governance change.
+
+Removing the blanket freeze does not remove evidence gates. New constructions,
+splits, broadenings, status changes, and runtime behavior still require permanent
+identity, externally grounded scope, applicable adjudication, executable
+boundaries, coherent documentation, and all relevant verification.
 
 ## Parser integrity
 

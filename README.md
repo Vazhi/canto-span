@@ -9,7 +9,7 @@ state dimensions.
 
 - runtime: **v0.5.216**
 - active runtime labels / construction notes: **133 / 133**
-- construction workflow: **2 active / 131 workflow-archived**
+- construction workflow: **133 available / 0 parked**
 - retired labels: **48**
 - permanent construction identities: **181**
 - expert-adjudicated identities: **49 / 181**
@@ -29,6 +29,13 @@ The remaining linguistic-status folders contain 37
 `unsupported_generalization`, 2 `lexicalized_only`, and 15 `parser_heuristic`
 notes. Expert adjudication has not silently changed status paths or runtime
 matchers.
+
+Work selection is blacklist-based. All current construction notes are available
+unless their permanent identities appear in
+[`data/parked-constructions.json`](data/parked-constructions.json). The registry is
+currently empty. There is no repository-wide grammar freeze; every substantive
+change remains subject to the applicable identity, evidence, boundary, status,
+and verification gates.
 
 ## Current validation targets
 

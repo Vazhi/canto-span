@@ -15,6 +15,7 @@ in `data/construction-identities.json` after expert adjudication.
 - Current linguistic status and note-local evidence: this directory.
 - Actual recognition behavior: `main.js` and executable tests.
 - Promotion readiness: `data/construction-candidate-readiness.json`.
+- Explicitly parked work: `data/parked-constructions.json`.
 
 A rename or internalization decision does not silently move a note, change a
 runtime label, or alter a matcher. Those migrations require explicit scoped work.
@@ -32,30 +33,40 @@ runtime label, or alter a matcher. Those migrations require explicit scoped work
 | [`parser_heuristic/`](./parser_heuristic/) | 15 | Internal software representation, not a productive Cantonese claim. |
 | [`retired/`](./retired/) | 48 | Navigation for labels absent from the active runtime registry. |
 
-## Active runtime-note working set
+## Work availability
 
-Workflow state is independent of linguistic status and expert adjudication.
-The two notes currently marked `workflow_state: active` are:
+The repository uses a blacklist, not an active-note whitelist. Every current note
+is available for bounded research, adjudication, specification, or implementation
+unless its permanent identity appears in
+[`data/parked-constructions.json`](../data/parked-constructions.json).
 
-1. `ResourceUseLaiFunctionRelation` — canonical identity
-   `AB53 ResourceInitialJungLaiFunctionClause`;
-2. `PostverbalZoPerfectiveVP` — canonical identity
-   `AB30 ZoMarkedPerfectiveObjectVP`.
+The parked registry is currently empty: **133 available / 0 parked**. An agent may
+choose whichever available item offers the greatest expected project benefit,
+subject to the evidence, identity, overlap, and verification rules in
+`docs/current/00-START-HERE.md`.
 
-All other current notes are workflow-archived, meaning parked rather than
-retired. Repository-wide adjudication priority is tracked separately.
+If a parked construction becomes the best next target, recommend unpark with the
+changed circumstances, expected benefit, and proposed bounded scope. Do not work
+on it silently; remove it from the parked registry through an explicit reviewed
+change first.
+
+Legacy `workflow_state`, `workflow_priority`, `workflow_since`, `workflow_reason`,
+and workflow tags remain in existing note frontmatter only as non-authoritative
+compatibility metadata for older tooling and panel records. They do not park a
+note or control agent work selection.
 
 ## Review order
 
-1. Resolve the next UUID-keyed adjudication batch from the generated candidate
-   ranking and ontology risks.
-2. Compare the accepted canonical profile with the exact runtime path and status
+1. Select the highest-benefit bounded non-parked question after checking current
+   main, open PRs, dependencies, evidence gaps, learner impact, and ontology risk.
+2. Resolve UUID-keyed adjudication when identity or ontology remains unsettled.
+3. Compare the accepted canonical profile with the exact runtime path and status
    note before changing code or status.
-3. Split composite wrappers using new UUIDs; never reuse an umbrella UUID for a
+4. Split composite wrappers using new UUIDs; never reuse an umbrella UUID for a
    different construction.
-4. Review `unsupported_generalization` records for supportable narrow successors,
+5. Review `unsupported_generalization` records for supportable narrow successors,
    not automatic promotion of the existing label.
-5. Keep internal representations, compatibility aliases, diagnostics, and
+6. Keep internal representations, compatibility aliases, diagnostics, and
    learner groupings out of direct linguistic promotion.
 
 ## Editing rules
@@ -63,7 +74,8 @@ retired. Repository-wide adjudication priority is tracked separately.
 - Do not duplicate a current note across status folders.
 - A status change must update frontmatter, evidence, boundaries, current action,
   and file location in the same change.
-- A workflow change edits frontmatter only.
+- Parking and unparking belong only in `data/parked-constructions.json`; they do
+  not move a grammar note or change its linguistic status.
 - A canonical-name change belongs in the identity/adjudication records; preserve
   the legacy runtime label until an explicit compatibility migration.
 - A true split creates new UUIDs and predecessor/successor links.
@@ -83,5 +95,5 @@ npm run verify:release
 ```
 
 Verification requires one status note per active runtime label and checks that
-identity, adjudication, discovery, and status records remain internally
-consistent.
+identity, adjudication, discovery, status, parked-work, and runtime records remain
+internally consistent.

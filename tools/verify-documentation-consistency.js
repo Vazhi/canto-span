@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+"use strict";
 
 const fs = require("fs");
 const path = require("path");
@@ -91,14 +92,16 @@ const statusCounts = Object.fromEntries(statusDirectories.map((status) => {
   return [status, count];
 }));
 const noteCount = Object.values(statusCounts).reduce((sum, count) => sum + count, 0);
-const noteFiles = statusDirectories.flatMap((status) => {
-  const directory = path.join(root, "grammar", status);
-  return fs.readdirSync(directory)
-    .filter((name) => name.endsWith(".md") && name !== "README.md")
-    .map((name) => path.join(directory, name));
-});
-const activeWorkflowCount = noteFiles.filter((file) => /\nworkflow_state:\s*["']?active["']?\s*\n/.test(fs.readFileSync(file, "utf8"))).length;
-const archivedWorkflowCount = noteCount - activeWorkflowCount;
+const parkedRegistry = readJson("data/parked-constructions.json");
+const parkedCount = Array.isArray(parkedRegistry.records) ? parkedRegistry.records.length : 0;
+const availableCount = noteCount - parkedCount;
+if (parkedRegistry.default_state !== "available") {
+  fail("workflow_default_mismatch", "data/parked-constructions.json", String(parkedRegistry.default_state));
+}
+if (parkedCount > noteCount) {
+  fail("workflow_count_mismatch", "data/parked-constructions.json", `${parkedCount} > ${noteCount}`);
+}
+
 const retiredMatch = read("grammar/retired/README.md").match(/\*\*Current retired labels:\*\*\s*(\d+)/);
 const retiredCount = retiredMatch ? Number(retiredMatch[1]) : null;
 if (retiredCount === null) fail("missing_documented_value", "grammar/retired/README.md", "Current retired labels");
@@ -119,20 +122,19 @@ if (testIndex.active_construction_count !== noteCount || testIndex.files.length 
 for (const relativePath of ["README.md", "HANDOFF.md", "docs/current/00-START-HERE.md"]) {
   requireText(relativePath, `v${runtimeVersion}`, "runtime version");
   requireText(relativePath, `${noteCount} / ${noteCount}`, "runtime/note count");
-  requireText(relativePath, `${activeWorkflowCount} active / ${archivedWorkflowCount}`, "workflow count");
+  requireText(relativePath, `${availableCount} available / ${parkedCount} parked`, "workflow availability count");
   requireText(relativePath, `retired labels: **${retiredCount}**`, "retired-label count");
   requireText(relativePath, "`research_pending`: **" + statusCounts.research_pending + "**", "research-pending count");
 }
 
-
 requireText("docs/current/CONSTRUCTION-NOTES.md", `canonical ${noteCount}-note construction registry`, "construction-note canonical count");
 requireText("docs/current/CONSTRUCTION-NOTES.md", `exactly ${noteCount} current construction notes;`, "construction-note mechanical count");
-requireText("docs/current/CONSTRUCTION-NOTES.md", `exactly ${activeWorkflowCount} workflow-active and ${archivedWorkflowCount} workflow-archived notes;`, "construction-note workflow count");
+requireText("docs/current/CONSTRUCTION-NOTES.md", `exactly ${availableCount} available and ${parkedCount} parked constructions`, "construction-note workflow count");
 
 requireText("docs/current/PROJECT-STATE.md", `| Runtime labels | ${noteCount} |`, "runtime labels");
 requireText("docs/current/PROJECT-STATE.md", `| Current construction notes | ${noteCount} |`, "construction notes");
-requireText("docs/current/PROJECT-STATE.md", `| Active working notes | ${activeWorkflowCount} |`, "active workflow notes");
-requireText("docs/current/PROJECT-STATE.md", `| Workflow-archived notes | ${archivedWorkflowCount} |`, "archived workflow notes");
+requireText("docs/current/PROJECT-STATE.md", `| Available construction notes | ${availableCount} |`, "available workflow notes");
+requireText("docs/current/PROJECT-STATE.md", `| Parked construction notes | ${parkedCount} |`, "parked workflow notes");
 requireText("docs/current/PROJECT-STATE.md", `| Retired labels | ${retiredCount} |`, "retired labels");
 for (const status of statusDirectories) {
   requireText("docs/current/PROJECT-STATE.md", `| \`${status}\` | ${statusCounts[status]} |`, `${status} project-state count`);
@@ -154,7 +156,7 @@ requireText(
 );
 
 const result = {
-  schema: "canto-span-documentation-consistency-v2",
+  schema: "canto-span-documentation-consistency-v3",
   checkpoint: `v${runtimeVersion}-current`,
   status: errors.length === 0 ? "PASS" : "FAIL",
   json_files: jsonFiles.length,
@@ -163,8 +165,8 @@ const result = {
   canonical_counts: {
     runtime_version: runtimeVersion,
     construction_notes: noteCount,
-    workflow_active: activeWorkflowCount,
-    workflow_archived: archivedWorkflowCount,
+    workflow_available: availableCount,
+    workflow_parked: parkedCount,
     retired_labels: retiredCount,
     statuses: statusCounts,
     regression_cases: regression.cases.length,

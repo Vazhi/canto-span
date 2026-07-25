@@ -14,7 +14,8 @@ permanent identity registry or expert adjudication records.
 - retired runtime labels: **48**
 - permanent UUID records: **181**
 - adjudicated UUID records: **34**
-- active workflow notes: **2**
+- available workflow notes: **133**
+- parked workflow notes: **0**
 - folder guide: [`grammar/README.md`](grammar/README.md)
 - current baseline: [`docs/current/PROJECT-STATE.md`](docs/current/PROJECT-STATE.md)
 
@@ -26,16 +27,20 @@ alias. Use `construction_code` and `canonical_name` from
 supersedes older naming or ontology statements without silently changing the
 runtime matcher or note status.
 
-## Active runtime-note working set
+## Work availability
 
-1. `AB53 ResourceInitialJungLaiFunctionClause` — runtime/status-note alias
-   [[ResourceUseLaiFunctionRelation]].
-2. `AB30 ZoMarkedPerfectiveObjectVP` — runtime/status-note alias
-   [[PostverbalZoPerfectiveVP]].
+Work selection is blacklist-based. Every current construction note is available
+unless its permanent identity appears in
+[`data/parked-constructions.json`](data/parked-constructions.json). The registry is
+currently empty, so no construction is parked.
 
-These two active note flags do not define the repository-wide adjudication queue.
-All other current notes are parked through `workflow_state: archived`, not
-retired.
+Agents may choose the most beneficial bounded available task rather than selecting
+from a fixed active-note list. When a parked item would be the best next target,
+the agent must recommend unpark and justify the changed circumstances, expected
+benefit, and proposed safeguards before substantive work begins.
+
+Legacy note-local `workflow_state` and priority fields are compatibility metadata
+only. They do not define current availability.
 
 ## Status navigation
 
@@ -56,6 +61,7 @@ retired.
 - accepted adjudications: [`data/construction-adjudications.json`](data/construction-adjudications.json)
 - append-only batches: [`data/construction-adjudication-batches/`](data/construction-adjudication-batches/)
 - readiness registry: [`data/construction-candidate-readiness.json`](data/construction-candidate-readiness.json)
+- parked blacklist: [`data/parked-constructions.json`](data/parked-constructions.json)
 - ranked candidates: [`docs/research/SUPPORTED-PRODUCTIVE-CANDIDATES.md`](docs/research/SUPPORTED-PRODUCTIVE-CANDIDATES.md)
 - family gaps: [`docs/research/CONSTRUCTION-FAMILY-GAPS.md`](docs/research/CONSTRUCTION-FAMILY-GAPS.md)
 - orphaned evidence: [`docs/research/ORPHANED-CONSTRUCTION-EVIDENCE.md`](docs/research/ORPHANED-CONSTRUCTION-EVIDENCE.md)

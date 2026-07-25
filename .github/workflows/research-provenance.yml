@@ -2,16 +2,73 @@ name: Research provenance
 
 on:
   push:
-    branches:
-      - "agent/research-*"
-  pull_request:
     paths:
+      - "data/construction-identities.json"
+      - "data/construction-identity-lock.json"
+      - "data/construction-adjudications.json"
+      - "data/construction-adjudication-batches/**"
+      - "data/construction-candidate-readiness.json"
+      - "docs/current/**"
       - "docs/research/**"
+      - "external-evidence/**"
+      - "grammar/**"
+      - "main.js"
+      - "package.json"
+      - "review-packets/**"
+      - "tests/constructions/**"
+      - "tests/tooling/corpus-review/**"
+      - "tests/tooling/native-panel/**"
+      - "tools/audit-native-conflict-burden.js"
+      - "tools/corpus-review/**"
+      - "tools/native-review-lib.js"
+      - "tools/test-native-review-lib.js"
       - "tools/*research-provenance*"
+      - "tools/verify-active-panel-snapshot-links.js"
+      - "tools/verify-active-review-workflow.js"
+      - "tools/verify-native-followup-draft.js"
+      - "tools/verify-native-panel-snapshot.js"
+      - "tools/verify-pfv-panel-snapshot.js"
+      - "tools/verify-rul-survey-readiness.js"
       - "config/research-provenance-baseline.json"
       - "config/research-evidence-grades.json"
       - "config/verification-profiles.json"
       - ".github/workflows/research-provenance.yml"
+  pull_request:
+    paths:
+      - "data/construction-identities.json"
+      - "data/construction-identity-lock.json"
+      - "data/construction-adjudications.json"
+      - "data/construction-adjudication-batches/**"
+      - "data/construction-candidate-readiness.json"
+      - "docs/current/**"
+      - "docs/research/**"
+      - "external-evidence/**"
+      - "grammar/**"
+      - "main.js"
+      - "package.json"
+      - "review-packets/**"
+      - "tests/constructions/**"
+      - "tests/tooling/corpus-review/**"
+      - "tests/tooling/native-panel/**"
+      - "tools/audit-native-conflict-burden.js"
+      - "tools/corpus-review/**"
+      - "tools/native-review-lib.js"
+      - "tools/test-native-review-lib.js"
+      - "tools/*research-provenance*"
+      - "tools/verify-active-panel-snapshot-links.js"
+      - "tools/verify-active-review-workflow.js"
+      - "tools/verify-native-followup-draft.js"
+      - "tools/verify-native-panel-snapshot.js"
+      - "tools/verify-pfv-panel-snapshot.js"
+      - "tools/verify-rul-survey-readiness.js"
+      - "config/research-provenance-baseline.json"
+      - "config/research-evidence-grades.json"
+      - "config/verification-profiles.json"
+      - ".github/workflows/research-provenance.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   verify-research:

@@ -14,7 +14,7 @@ do not become current instructions merely because they are detailed.
 
 - runtime: **v0.5.216**
 - current runtime labels / status notes: **133 / 133**
-- construction workflow: **2 active / 131 workflow-archived**
+- construction workflow: **133 available / 0 parked**
 - retired labels: **48**
 - permanent UUID records: **181**
 - completed expert adjudications: **49**
@@ -44,7 +44,7 @@ Before making a change, every agent must:
 6. state the authorized scope, protected files, canonical inputs, generated
    outputs, and required checks before broadening the task;
 7. preserve the separation among identity, ontology, linguistic status, runtime
-   behavior, workflow state, discovery readiness, and learner presentation;
+   behavior, workflow availability, discovery readiness, and learner presentation;
 8. implement one coherent passing state rather than an intentionally incomplete
    state that another commit, bot, or agent must repair;
 9. open a draft pull request with scope, decisions, changed files, explicit
@@ -66,10 +66,10 @@ dimension.
 |---|---|---|
 | Permanent UUID and short code | [`data/construction-identities.json`](../../data/construction-identities.json) and [`data/construction-identity-lock.json`](../../data/construction-identity-lock.json) | UUIDs and assigned codes never change or return to the pool. |
 | Current ontology | Accepted UUID-keyed records in [`data/construction-adjudications.json`](../../data/construction-adjudications.json) and [`data/construction-adjudication-batches/`](../../data/construction-adjudication-batches/) | Canonical name, family, profile, and claim layer may change without silently changing runtime or status. |
-| Current linguistic status and note-local evidence | Exactly one active note under [`grammar/<status>/`](../../grammar/) | A recommendation or passing test does not move status. |
+| Current linguistic status and note-local evidence | Exactly one current note under [`grammar/<status>/`](../../grammar/) for each active runtime label | A recommendation or passing test does not move status. |
 | Actual parser behavior | [`main.js`](../../main.js) and executable [`tests/`](../../tests/) | Tests prove implementation behavior only. |
-| Workflow activity | Grammar-note frontmatter | `archived` means parked, not retired. |
-| Discovery readiness | [`data/construction-candidate-readiness.json`](../../data/construction-candidate-readiness.json) and deterministic generated reports | Scores rank work; they never promote. |
+| Workflow availability | [`data/parked-constructions.json`](../../data/parked-constructions.json) | Every unlisted current construction is available; the file is a blacklist, not a queue. |
+| Discovery readiness | [`data/construction-candidate-readiness.json`](../../data/construction-candidate-readiness.json) and deterministic generated reports | Scores rank work; they never promote or prohibit work. |
 | Native-panel and survey evidence | [`review-packets/native-panel/active-v2/`](../../review-packets/native-panel/active-v2/) | Evidence is role-neutral and counted per critical item. |
 | Corpus candidate extraction and review | Construction-specific packet plus its workbench and decision ledger | Extraction is mechanical; expert classification is separate. |
 | Learner presentation | Learner-facing labels and explanations | Presentation labels are not durable identities or evidence. |
@@ -81,7 +81,50 @@ unchanged. Such boundaries must be explicit. Runtime-label migration,
 status-path migration, matcher changes, fixture changes, new UUID allocation,
 retirement, promotion, and release are separate scoped actions.
 
+Legacy grammar-note fields named `workflow_state`, `workflow_priority`,
+`workflow_since`, and `workflow_reason` are non-authoritative compatibility
+metadata. They do not park a note or control agent work selection.
+
 ## Non-negotiable standards
+
+### Work selection and grammar changes
+
+There is **no active-note whitelist** and **no repository-wide grammar freeze**.
+Every current construction is available for bounded research, adjudication,
+specification, or implementation unless its permanent identity appears in
+`data/parked-constructions.json`.
+
+Agents must select the work with the greatest expected project benefit after
+considering:
+
+- learner impact and parser harm;
+- evidence gaps and source accessibility;
+- ontology or identity risk;
+- implementation leverage and dependencies;
+- survey or corpus opportunities;
+- current `main` and open-PR overlap;
+- the cost of leaving the issue unresolved.
+
+Generated readiness ranks may inform this choice, but they are neither a whitelist
+nor a mandatory queue.
+
+A parked construction must not be worked on silently. When it appears to be the
+best next target, **recommend unpark** and state:
+
+1. the existing parking reason and why it no longer controls;
+2. the expected project benefit;
+3. the evidence, dependency, survey, corpus, or implementation change supporting
+   reconsideration;
+4. the proposed bounded scope and safeguards.
+
+The item remains parked until an explicit reviewed change removes its entry from
+the blacklist. Parking does not change linguistic status, runtime behavior,
+identity, evidence, or retirement state.
+
+Removing the blanket freeze does not remove substantive gates. A new
+construction, split, broadening, status transition, or runtime change still
+requires the applicable permanent identity, externally grounded scope,
+adjudication, boundaries, tests, documentation, promotion rules, and verification.
 
 ### Evidence and linguistic claims
 
@@ -97,9 +140,9 @@ retirement, promotion, and release are separate scoped actions.
 - A narrow subtype, wrapper, predecessor, retired record, runtime alias, or shared
   vocabulary never donates evidence automatically to another UUID.
 - Publication attestation alone cannot overcome contradictory naturalness data.
-  Freeze disputed scope until independent sources, controlled contrasts,
-  variation factors, negative boundaries, competing analyses, and role-neutral
-  evidence are reviewed.
+  Keep disputed scope out of promotion and implementation broadening until
+  independent sources, controlled contrasts, variation factors, negative
+  boundaries, competing analyses, and role-neutral evidence are reviewed.
 - Do not invent dialect, register, pragmatic, or contextual explanations to
   reconcile conflict.
 
@@ -162,7 +205,7 @@ the canonical extraction ledger, and
 
 ### Native panel and surveys
 
-- All eligible respondents belong to one anonymized role-neutral panel. No spouse,
+- All eligible respondents belong to one anonymized role-neutral panel. **No spouse**,
   named reviewer, private respondent, expert, or recruitment channel receives
   special weight.
 - The evidence unit is one usable adjudicated judgment on one critical item.
@@ -177,10 +220,11 @@ the canonical extraction ledger, and
 - Semantic absurdity is not a grammatical boundary.
 - Record eligibility, consent, assigned list, quality flags, duplicates,
   exclusions, reasons, per-item usable counts, and version state.
-- Do not generate, deploy, or mark a follow-up instrument ready while its metadata
-  says `deployment_allowed: false`.
+- Do not deploy or mark a follow-up instrument ready while its metadata says
+  `deployment_allowed: false`.
 - The current `YUE-JUDGMENT-PILOT-01` must close and receive an item audit before
-  `followup-draft-v1` can be revised, locked, generated, or deployed.
+  `followup-draft-v1` can be locked, deployed, or treated as final evidence.
+  Preparatory drafting and technical testing must not alter the live instrument.
 
 Read [`review-packets/native-panel/active-v2/README.md`](../../review-packets/native-panel/active-v2/README.md),
 `panel-policy.json`, `panel-review-state.json`, and the relevant instrument
@@ -230,7 +274,8 @@ Read [`GIT-WORKFLOW.md`](GIT-WORKFLOW.md) and [`TESTING.md`](TESTING.md).
 
 | Task type | Required reading and canonical inputs | Minimum validation |
 |---|---|---|
-| Any repository task | This entire file; [`PROJECT-STATE.md`](PROJECT-STATE.md); open PRs; affected files | `git diff --check` plus task-specific checks |
+| Any repository task | This entire file; [`PROJECT-STATE.md`](PROJECT-STATE.md); open PRs; affected files; parked registry | `git diff --check` plus task-specific checks |
+| Work selection, parking, or unparking | Doctrine, Governance, parked registry, permanent identity, readiness records, open work | `node tools/verify-parked-constructions.js`; `npm run verify` |
 | Linguistic research or status recommendation | Doctrine, Governance, Definition of Done, affected grammar note, source records, current provenance | `npm run verify:research`; `npm run verify` when current records change |
 | Identity or ontology adjudication | Construction Identity, Construction Adjudication, affected registry record, runtime paths, tests, sources | Apply/regenerate workflow; adjudication, identity, discovery, core, and research checks |
 | Runtime or parser behavior | Doctrine, canonical identity, affected status note, exact `main.js` path, tests | `npm test`; metadata sync when counts change; `npm run verify` |
@@ -250,11 +295,10 @@ cheapest row.
 
 1. Fetch current `main`, record its commit, and inspect open PRs.
 2. Detect overlapping files, construction codes, survey IDs, generated outputs,
-   and state dimensions.
+   parked identities, and state dimensions.
 3. Rebase or rebuild stale work before adding new changes. Do not preserve obsolete
    history merely to keep an old PR open.
 4. Define:
-   - intended outcome;
    - authorized files or directories;
    - explicitly protected files;
    - canonical inputs;
@@ -267,7 +311,7 @@ cheapest row.
 ### During work
 
 1. Read the exact affected grammar note, identity record, adjudication, runtime
-   path, tests, source records, survey metadata, or corpus ledger.
+   path, tests, source records, survey metadata, corpus ledger, or parked record.
 2. Keep mechanical preparation separate from expert linguistic decisions.
 3. Use existing schemas, names, IDs, ledgers, verifiers, and workflows.
 4. When a local alias is unavoidable, add a checked crosswalk to the canonical
@@ -277,6 +321,7 @@ cheapest row.
 7. Report implementation findings separately from linguistic conclusions.
 8. Preserve user data, review notes, exclusions, and provenance during
    regeneration or migration.
+9. Do not treat legacy note workflow fields as availability authority.
 
 ### Before opening the PR
 
@@ -310,6 +355,16 @@ npm run verify
 
 Add `npm run verify:research` when research, corpus, panel, survey, or evidence
 workflow documentation changes.
+
+### Parking or unparking
+
+```bash
+node tools/verify-parked-constructions.js
+npm run verify
+```
+
+Parking or unparking changes workflow availability only. It must not silently
+change status, runtime, identity, evidence, readiness, or retirement.
 
 ### Adjudication
 
@@ -382,6 +437,10 @@ An agent must not:
 
 - work from an unrefreshed branch when `main` or overlapping PRs have changed;
 - reuse another agent's branch without explicit stacking or handoff;
+- treat grammar-note `workflow_state` fields as a work whitelist or blacklist;
+- work silently on a construction listed in `data/parked-constructions.json`;
+- recreate a blanket grammar freeze, active-note whitelist, or mandatory readiness
+  queue;
 - create new canonical names, survey IDs, corpus IDs, or local aliases without
   resolving them to existing permanent identities and schemes;
 - use a legacy runtime label as the canonical construction name;
@@ -419,7 +478,9 @@ MANDATORY BOOTSTRAP
 2. Read every file required by the task-routing row for this task.
 3. Sync from current main, record the base commit, and inspect open PRs for overlap.
 4. Follow current canonical records over historical reports, old prompts, branch
-   descriptions, runtime aliases, or generated summaries.
+   descriptions, runtime aliases, legacy workflow fields, or generated summaries.
+5. Read data/parked-constructions.json. All unlisted current constructions are
+   available; do not work on a listed item without recommending and reviewing unpark.
 
 TASK
 Outcome: [one bounded result]
@@ -432,6 +493,9 @@ Reserved expert decisions: [linguistic/status/identity decisions the agent must 
 Required validation: [commands from the verification matrix]
 
 EXECUTION RULES
+- Choose the highest-benefit bounded available task when the task does not name one.
+- There is no active-note whitelist and no repository-wide grammar freeze.
+- If a parked item is the best target, recommend unpark with justification before work.
 - Use permanent construction codes and canonical names; record legacy aliases separately.
 - Reuse existing schemas, IDs, crosswalks, ledgers, and verifiers.
 - Do not create a parallel naming scheme, current-state record, verifier family, or workflow.

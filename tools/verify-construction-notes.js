@@ -47,17 +47,12 @@ for (const note of notes) {
   byLabel.set(label, note);
   const filename = path.basename(note.file, ".md");
   check(`filename matches construction: ${filename}`, filename === label, `${filename} != ${label}`);
-  for (const field of [...new Set(["title", "type", "construction", "status", "confidence", "claim_layer", "lane", "last_reviewed", ...REQUIRED_FIELDS, "standard_test_file", "standard_test_coverage", "standard_positive_test_count", "standard_boundary_test_count", "standard_implementation_probe_count", "standard_executable_test_count", "source_ids", "runtime_active", "workflow_state", "workflow_priority", "workflow_since", "workflow_reason"])]) {
+  for (const field of [...new Set(["title", "type", "construction", "status", "confidence", "claim_layer", "lane", "last_reviewed", ...REQUIRED_FIELDS, "standard_test_file", "standard_test_coverage", "standard_positive_test_count", "standard_boundary_test_count", "standard_implementation_probe_count", "standard_executable_test_count", "source_ids", "runtime_active"])]) {
     check(`${label} has ${field}`, Object.prototype.hasOwnProperty.call(fm, field));
   }
   check(`${label} type is construction`, fm.type === "canto-span-construction", String(fm.type));
   check(`${label} status controlled`, LINGUISTIC_STATUSES.includes(fm.status), String(fm.status));
   check(`${label} status path matches frontmatter`, path.dirname(note.file) === path.join(root, "grammar", String(fm.status)), note.file);
-  check(`${label} workflow state controlled`, ["active", "archived"].includes(fm.workflow_state), String(fm.workflow_state));
-  check(`${label} active priority present`, fm.workflow_state !== "active" || (Number.isInteger(fm.workflow_priority) && fm.workflow_priority > 0), String(fm.workflow_priority));
-  check(`${label} archived priority absent`, fm.workflow_state !== "archived" || fm.workflow_priority === null, String(fm.workflow_priority));
-  check(`${label} workflow date valid`, /^\d{4}-\d{2}-\d{2}$/.test(String(fm.workflow_since)), String(fm.workflow_since));
-  check(`${label} workflow reason present`, typeof fm.workflow_reason === "string" && fm.workflow_reason.length > 0, String(fm.workflow_reason));
   check(`${label} source count matches IDs`, Number(fm.source_count) === (Array.isArray(fm.source_ids) ? fm.source_ids.length : -1));
   const sourceRecordCount = countSourceRecords(note);
   const verificationCount = countVerifiedSourceRecords(note);
@@ -105,12 +100,8 @@ const retiredIndexText = fs.existsSync(retiredIndexPath) ? fs.readFileSync(retir
 const retiredLabels = new Set(
   [...retiredIndexText.matchAll(/^\| `([^`]+)` \|/gm)].map((match) => match[1])
 );
-const activeNotes = notes.filter((note) => note.frontmatter.workflow_state === "active");
-const archivedNotes = notes.filter((note) => note.frontmatter.workflow_state === "archived");
 const standardTestFileCount = fs.readdirSync(path.join(root, "tests", "constructions")).filter((name) => name.endsWith(".json")).length;
 check("construction notes exist", notes.length > 0, String(notes.length));
-check("exactly two active working notes", activeNotes.length === 2, String(activeNotes.length));
-check("all non-active notes are archived", archivedNotes.length === notes.length - activeNotes.length, `${archivedNotes.length} != ${notes.length - activeNotes.length}`);
 check("standard construction test file count matches notes", standardTestFileCount === notes.length, `${standardTestFileCount} != ${notes.length}`);
 check("runtime label count matches notes", runtimeLabels.size === notes.length, `${runtimeLabels.size} != ${notes.length}`);
 check("notes exactly match runtime labels", noteLabels.size === runtimeLabels.size && [...runtimeLabels].every((label) => noteLabels.has(label)));
@@ -148,7 +139,7 @@ check("all current notes use controlled linguistic statuses", Object.keys(counts
 check("status counts cover every current construction note", Object.values(counts).reduce((sum, count) => sum + count, 0) === notes.length, JSON.stringify(counts));
 
 const result = {
-  schema: "canto-span-construction-notes-validation-v2",
+  schema: "canto-span-construction-notes-validation-v3",
   runtime_version: runtime.runtimeVersion,
   construction_notes: notes.length,
   status_counts: counts,

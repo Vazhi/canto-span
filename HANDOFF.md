@@ -29,12 +29,22 @@ Current release audits must reference a checked-in construction-status baseline 
 
 - runtime: **v0.5.216**
 - runtime labels / current construction notes: **133 / 133**
-- workflow: **2 active / 131 archived**
+- workflow: **133 available / 0 parked**
 - retired labels: **48**
 - `supported_productive`: **0**
 - `provisional`: **0**
 - `research_pending`: **79**
-- active constructions: PFV and RUL, both `research_pending`
+- current panel focal constructions: PFV and RUL, both `research_pending`
+
+Workflow availability is owned by `data/parked-constructions.json`, not by an
+active-note whitelist. The blacklist is currently empty. Legacy workflow fields
+inside grammar-note frontmatter are compatibility metadata only.
+
+There is no repository-wide grammar freeze. Agents may select the highest-benefit
+bounded non-parked task, but new grammar, broadenings, splits, status transitions,
+and runtime changes still require their applicable evidence and verification
+gates. When a parked item becomes the best target, recommend unpark before doing
+substantive work.
 
 ## Evidence model
 
@@ -64,5 +74,6 @@ completion does not change grammar status or authorize runtime work.
 
 The v0.5.216 full review closed all 52 original unsupported/internal ontology
 dispositions without status promotion or retirement. Subsequent work should
-follow the note-local migration and unresolved-work fields rather than reopen
-the completed review as a batch.
+select the most beneficial bounded available item, consult readiness and unresolved
+work as evidence rather than as a queue, and avoid reopening completed reviews
+without a concrete reason.

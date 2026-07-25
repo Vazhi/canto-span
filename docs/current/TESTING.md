@@ -64,18 +64,26 @@ npm run verify:all
 
 - `verify` runs stable core checks, including parser tests, status-note alignment,
   adjudications, permanent identities, discovery freshness, source accounting,
-  active working-set consistency, implementation reachability, the mandatory
-  multi-agent coordination contract, and current-documentation consistency.
+  parked-construction blacklist consistency, implementation reachability, the
+  mandatory multi-agent coordination contract, and current-documentation
+  consistency.
 - `verify:research` runs panel, survey-readiness, conflict-burden, research-
   provenance, and native-review-library checks.
 - `verify:release` runs core verification plus promotion and release-handoff gates.
 - `verify:all` runs every profile.
 
+`tools/verify-parked-constructions.js` verifies that unlisted current
+constructions are available by default and that every blacklist entry resolves to
+one current permanent identity with a unique code, current note, parking date,
+reason, and review trigger. The registry is currently empty, so the expected
+result is 133 available and 0 parked.
+
 The `agent-coordination` core check verifies that `AGENTS.md` points to the full
 contract in `docs/current/00-START-HERE.md`, that the required authority,
 standards, task-routing, workflow, verification, prohibition, and prompt sections
-remain present, and that the current AB30 and survey handoff states are not
-silently reverted.
+remain present, that the default-available blacklist policy and absence of a
+global grammar freeze remain explicit, and that the current AB30 and survey
+handoff states are not silently reverted.
 
 `./tools/verify-repository.sh` additionally validates Git objects before running
 the stable core profile.
@@ -106,8 +114,8 @@ adjudication, grammar, and evidence inputs. Their freshness is verified.
 ## Updating tests and records
 
 1. Read `AGENTS.md` and `docs/current/00-START-HERE.md`.
-2. Edit the canonical source, identity, adjudication, grammar, runtime, or fixture
-   input.
+2. Edit the canonical source, identity, adjudication, grammar, runtime, parked-
+   construction registry, or fixture input.
 3. Regenerate identity/discovery outputs when those inputs changed.
 4. Run `npm test`.
 5. Run `node tools/sync-construction-test-metadata.js` when construction-test
@@ -123,3 +131,10 @@ Repository workflows are read-only verification. JavaScript actions use Node
 24-compatible releases (`actions/checkout@v6`, `actions/setup-node@v6`, and
 `actions/upload-artifact@v6` where needed). Do not add Node 20-based action
 releases or branch-specific writer workflows.
+
+Workflow trigger coverage is part of the verified contract. Core CI must run when
+runtime, canonical data, grammar notes, tests, tools, verification configuration,
+or current documentation changes. Research CI must run when research documents,
+external evidence, corpus or panel records, relevant runtime and construction
+tests, or research-verifier inputs change. `tools/verify-agent-coordination.js`
+enforces both trigger sets and explicit read-only permissions.

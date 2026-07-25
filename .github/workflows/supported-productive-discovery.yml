@@ -3,37 +3,45 @@ name: Supported productive discovery
 on:
   push:
     paths:
-      - tools/generate-supported-productive-discovery.js
-      - tools/promotion-gate-lib.js
-      - tools/construction-notes-lib.js
-      - data/construction-identities.json
-      - data/construction-candidate-readiness.json
-      - grammar/**
-      - config/verification-profiles.json
+      - AGENTS.md
+      - README.md
+      - HANDOFF.md
+      - main.js
+      - manifest.json
       - package.json
+      - data/**
+      - grammar/**
+      - tests/**
+      - tools/**
+      - config/**
+      - docs/current/**
       - docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv
-      - archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json
       - docs/research/SUPPORTED-PRODUCTIVE-CANDIDATES.md
       - docs/research/ORPHANED-CONSTRUCTION-EVIDENCE.md
       - docs/research/CONSTRUCTION-FAMILY-GAPS.md
       - docs/research/FULL-REPO-SUPPORTED-PRODUCTIVE-SWEEP-R1.md
+      - archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json
       - .github/workflows/supported-productive-discovery.yml
   pull_request:
     paths:
-      - tools/generate-supported-productive-discovery.js
-      - tools/promotion-gate-lib.js
-      - tools/construction-notes-lib.js
-      - data/construction-identities.json
-      - data/construction-candidate-readiness.json
-      - grammar/**
-      - config/verification-profiles.json
+      - AGENTS.md
+      - README.md
+      - HANDOFF.md
+      - main.js
+      - manifest.json
       - package.json
+      - data/**
+      - grammar/**
+      - tests/**
+      - tools/**
+      - config/**
+      - docs/current/**
       - docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv
-      - archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json
       - docs/research/SUPPORTED-PRODUCTIVE-CANDIDATES.md
       - docs/research/ORPHANED-CONSTRUCTION-EVIDENCE.md
       - docs/research/CONSTRUCTION-FAMILY-GAPS.md
       - docs/research/FULL-REPO-SUPPORTED-PRODUCTIVE-SWEEP-R1.md
+      - archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json
       - .github/workflows/supported-productive-discovery.yml
   workflow_dispatch:
 
