@@ -27,31 +27,32 @@ superseding decision with explicit rationale and relationships.
 ## Current progress
 
 - permanent records: **181**;
-- accepted adjudications: **64**;
-- pending adjudications: **117**;
-- accepted batches: **13**;
+- accepted adjudications: **69**;
+- pending adjudications: **112**;
+- accepted batches: **14**;
 - latest batch report:
-  `docs/research/CONSTRUCTION-ADJUDICATION-BATCH-13.md`.
+  `docs/research/CONSTRUCTION-ADJUDICATION-BATCH-14.md`.
 
 This count records completed identity and ontology judgments only. It does not
 imply runtime migration, status migration, corpus closure, panel completion,
 held-out validation, or promotion.
 
-Batch 13 accepted the following UUID-preserving decisions:
+Batch 14 accepted the following UUID-preserving decisions:
 
-1. `AA87 ModalChangeIntoResultFrame` → `ModalChangePredicateCompositeWrapper`,
+1. `AA92 MotionDelimitedVP` → `MotionPurposeDelimitedCompositeWrapper`,
    retained as a retired parser representation;
-2. `AA88 ModalResponseFragment` → `ModalEllipsisResponseCompositeWrapper`,
-   retained as a retired parser representation;
-3. `AA89 ModalVP` → `ModalAuxiliaryComplementVP`, retained as a narrow overt
-   modal-or-auxiliary plus visible-predicate language profile;
-4. `AA90 ModifiedNP` → `HeterogeneousNominalStructureWrapper`, reclassified as a
-   parser representation and marked for later compatibility decomposition;
-5. `AA91 ModifierNP` → `DegreePropertyModifierNounNP`, retained as a narrow direct
-   degree-property modifier plus overt-noun profile without `嘅`.
+2. `AA93 MotionGoalVP` → `OvertDestinationMotionVP`, retained as a narrow
+   overt-destination motion profile;
+3. `AA94 MotionPurposeChain` → `MotionClausePurposeRelation`, retained as a
+   narrow typed relation between independently parsed predicates;
+4. `AA96 NeedsContext` → `UnresolvedContextDiagnostic`, retained as a
+   learner-visible parser diagnostic;
+5. `AA97 NegatedDirectionalMotionVP` → `NegatedMotionPredicateWrapper`,
+   reclassified as a parser representation requiring later compatibility
+   decomposition.
 
 No later adjudication batch is fixed as a mandatory queue. The next records are
-selected from the 117 pending identities according to current project benefit,
+selected from the 112 pending identities according to current project benefit,
 evidence opportunity, ontology risk, dependencies, and open-work overlap.
 
 ## Required decision fields
