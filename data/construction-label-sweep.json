@@ -2,7 +2,7 @@
   "schema": "canto-span-full-repo-label-sweep-v1",
   "identity_registry_schema": "canto-span-construction-identity-registry-v1",
   "record_count": 181,
-  "pending_review_count": 107,
+  "pending_review_count": 102,
   "automatic_flag_counts": {
     "generic_head_requires_boundary_definition": 72,
     "internal_representation_name_review": 20,
@@ -1684,15 +1684,15 @@
     {
       "construction_uuid": "a113b35a-3b49-5120-b1bb-c3fb8f081bda",
       "construction_code": "AB06",
-      "canonical_name": "NegativeHaveClause",
+      "canonical_name": "Mou5ExistentialPossessiveEventComposite",
       "lifecycle_state": "retired",
-      "claim_layer": "unresolved",
+      "claim_layer": "parser_representation",
       "linguistic_status": "retired",
       "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "disjoint",
+      "terminology_alignment": "misleading",
+      "recommended_action": "retain_retired_reclassify",
       "automatic_risk_flags": [
         "generic_head_requires_boundary_definition",
         "retired_label_research_home_check",
@@ -1702,15 +1702,15 @@
     {
       "construction_uuid": "23a889d8-991c-5348-8da3-ccf865f5e509",
       "construction_code": "AB07",
-      "canonical_name": "NegativePotentialComplement",
+      "canonical_name": "VerbM4ResultPotentialVP",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "unsupported_generalization",
       "source_path": "grammar/unsupported_generalization/NegativePotentialComplement.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "overlapping",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": [
         "unsupported_generalization_requires_source_runtime_reconciliation"
       ]
@@ -1718,15 +1718,15 @@
     {
       "construction_uuid": "98fe5056-ec42-5505-b8d1-7514375fcfc9",
       "construction_code": "AB08",
-      "canonical_name": "NegativePotentialDirectionalVP",
+      "canonical_name": "NegativePotentialDirectionalCompositeWrapper",
       "lifecycle_state": "current",
-      "claim_layer": "language_construction",
+      "claim_layer": "parser_representation",
       "linguistic_status": "unsupported_generalization",
       "source_path": "grammar/unsupported_generalization/NegativePotentialDirectionalVP.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "overlapping",
+      "terminology_alignment": "misleading",
+      "recommended_action": "internalize_and_decompose",
       "automatic_risk_flags": [
         "unsupported_generalization_requires_source_runtime_reconciliation"
       ]
@@ -1734,15 +1734,15 @@
     {
       "construction_uuid": "e56bf2b7-7a16-50cb-a14e-9cd0c245594b",
       "construction_code": "AB09",
-      "canonical_name": "NominalHeadSpan",
+      "canonical_name": "OvertAnalyzedNominalSpan",
       "lifecycle_state": "current",
       "claim_layer": "parser_representation",
       "linguistic_status": "parser_heuristic",
       "source_path": "grammar/parser_heuristic/NominalHeadSpan.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "runtime_narrower_defensible",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": [
         "generic_head_requires_boundary_definition",
         "internal_representation_name_review"
@@ -1751,15 +1751,15 @@
     {
       "construction_uuid": "9d121ce5-a2c6-54bb-b8e6-24ae22f93e13",
       "construction_code": "AB10",
-      "canonical_name": "NominalModifierNP",
+      "canonical_name": "NominalModificationCompositeWrapper",
       "lifecycle_state": "retired",
-      "claim_layer": "unresolved",
+      "claim_layer": "parser_representation",
       "linguistic_status": "retired",
       "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "disjoint",
+      "terminology_alignment": "misleading",
+      "recommended_action": "retain_retired_reclassify",
       "automatic_risk_flags": [
         "retired_label_research_home_check",
         "unsupported_generalization_requires_source_runtime_reconciliation"

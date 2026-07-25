@@ -62,6 +62,7 @@ These broad current labels are not direct promotion candidates. Their source-bac
 | `AA93` | `OvertDestinationMotionVP` | `narrowing_candidate` | 70 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA94` | `MotionClausePurposeRelation` | `narrowing_candidate` | 70 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA98` | `Mou5NominalExistentialPossessiveClause` | `narrowing_candidate` | 70 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
+| `AB07` | `VerbM4ResultPotentialVP` | `narrowing_candidate` | 70 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA06` | `ApproximateQuantity` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA12` | `ClassifierObjectNP` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA20` | `CognitionStatementClause` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
@@ -70,8 +71,6 @@ These broad current labels are not direct promotion candidates. Their source-bac
 | `AA57` | `ExistentialQuestion` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA59` | `ExperientialClause` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA63` | `ExperientialYesNoQuestion` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
-| `AB07` | `NegativePotentialComplement` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
-| `AB08` | `NegativePotentialDirectionalVP` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AB13` | `OpinionStanceFrame` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AB17` | `PathPhrase` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AB18` | `PerfectiveDirectionalVP` | `narrowing_candidate` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
