@@ -54,6 +54,31 @@ jobs:
             git push origin HEAD:agent/require-user-review-before-merge
             exit "$status"
           fi
+      - name: Complete canonical authority pointers
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          review = Path('docs/current/USER-MERGE-REVIEW.md')
+          text = review.read_text()
+          marker = '# User merge review gate\n\n'
+          addition = ('# User merge review gate\n\n'
+                      '`USER-MERGE-REVIEW.md` is the canonical owner of per-pull-request '
+                      'merge authorization.\n\n')
+          if text.count(marker) != 1:
+              raise SystemExit('expected one user-review heading')
+          review.write_text(text.replace(marker, addition, 1))
+
+          governance = Path('docs/current/GOVERNANCE.md')
+          text = governance.read_text()
+          marker = '## 8. Documentation, coordination, and automation discipline\n\n'
+          addition = (marker +
+                      'Per-pull-request merge authorization is governed by '
+                      '[`USER-MERGE-REVIEW.md`](USER-MERGE-REVIEW.md).\n\n')
+          if text.count(marker) != 1:
+              raise SystemExit('expected one Governance section heading')
+          governance.write_text(text.replace(marker, addition, 1))
+          PY
       - name: Restore validation-only coordination workflow
         run: |
           rm -f changes/pending/CS-WORK-0003-reconcile-error.txt
