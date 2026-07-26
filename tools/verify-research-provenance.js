@@ -1,14 +1,26 @@
 #!/usr/bin/env node
 "use strict";
 
-const fs = require("fs");
-const path = require("path");
+const fs = require("node:fs");
+const path = require("node:path");
 const { auditResearchProvenance } = require("./research-provenance-lib");
-const { currentValidationPath } = require("./validation-paths");
 
 const root = path.resolve(__dirname, "..");
+const outputIndex = process.argv.indexOf("--output");
+const outputPath = outputIndex >= 0
+  ? path.resolve(process.cwd(), process.argv[outputIndex + 1] || "")
+  : null;
+if (outputIndex >= 0 && !process.argv[outputIndex + 1]) {
+  console.error("--output requires a file path");
+  process.exit(2);
+}
+
 const report = auditResearchProvenance(root);
-fs.writeFileSync(currentValidationPath(root, "research-provenance.json"), JSON.stringify(report, null, 2) + "\n");
+if (outputPath) {
+  fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+  fs.writeFileSync(outputPath, `${JSON.stringify(report, null, 2)}\n`);
+}
+
 const terminal = {
   schema: report.schema,
   package_count: report.package_count,
