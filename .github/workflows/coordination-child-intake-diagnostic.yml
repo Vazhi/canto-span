@@ -1,0 +1,33 @@
+name: Temporary coordination child-intake diagnostic
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+    paths:
+      - .github/workflows/coordination-child-intake-diagnostic.yml
+      - tools/coordination/**
+      - tests/tooling/coordination/**
+      - schemas/task-intake.schema.json
+
+permissions:
+  contents: read
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Capture focused coordination sources and tests
+        run: |
+          mkdir -p coordination-child-intake-diagnostic
+          cp tools/coordination/codex-intake.js coordination-child-intake-diagnostic/
+          cp tools/coordination/check-pr.js coordination-child-intake-diagnostic/
+          cp schemas/task-intake.schema.json coordination-child-intake-diagnostic/
+          cp -R tests/tooling/coordination coordination-child-intake-diagnostic/tests
+          node --test tests/tooling/coordination/*.test.js > coordination-child-intake-diagnostic/current-test-output.txt 2>&1 || true
+      - uses: actions/upload-artifact@v4
+        with:
+          name: coordination-child-intake-diagnostic
+          path: coordination-child-intake-diagnostic
+          if-no-files-found: error
