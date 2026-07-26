@@ -12,6 +12,7 @@ const commands = [
   ["regression", path.join(root, "tests", "run-regression.js")],
   ["np_subsystem", path.join(root, "tests", "run-np-subsystem.js")],
   ["construction_files", path.join(root, "tests", "run-constructions.js")],
+  ["glossika_week16_lexicon", path.join(root, "tests", "tooling", "lexicon", "glossika-week16-runtime-lexicon.test.js")],
 ];
 const commandResults = [];
 let failed = false;
