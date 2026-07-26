@@ -102,7 +102,7 @@ jobs:
           }
           '''
           pattern = r'function validateTaskMetadata\(metadata\) \{[\s\S]*?\n\}\n\nfunction validateOwnershipTransition'
-          updated, count = re.subn(pattern, replacement + '\nfunction validateOwnershipTransition', source, count=1)
+          updated, count = re.subn(pattern, lambda _: replacement + '\nfunction validateOwnershipTransition', source, count=1)
           if count != 1:
             raise SystemExit('could not replace validateTaskMetadata')
           intake_path.write_text(updated)
