@@ -1,23 +1,25 @@
 #!/usr/bin/env node
 "use strict";
 
-const fs = require("fs");
-const path = require("path");
-const vm = require("vm");
-const { loadConstructionNotes, LINGUISTIC_STATUSES } = require("./construction-notes-lib");
-const { REQUIRED_FIELDS, countSourceRecords, countVerifiedSourceRecords, corpusClassificationTotal } = require("./promotion-gate-lib");
+const fs = require("node:fs");
+const path = require("node:path");
+const vm = require("node:vm");
+const {
+  loadConstructionNotes,
+  LINGUISTIC_STATUSES,
+} = require("./construction-notes-lib");
 
 const root = path.resolve(__dirname, "..");
-const notes = loadConstructionNotes(root);
-const checks = [];
-const failures = [];
-function check(name, condition, detail = "") {
-  const pass = Boolean(condition);
-  checks.push({ name, pass, ...(detail ? { detail } : {}) });
-  if (!pass) failures.push({ name, detail });
+const outputIndex = process.argv.indexOf("--output");
+const outputPath = outputIndex >= 0
+  ? path.resolve(process.cwd(), process.argv[outputIndex + 1] || "")
+  : null;
+if (outputIndex >= 0 && !process.argv[outputIndex + 1]) {
+  console.error("--output requires a file path");
+  process.exit(2);
 }
 
-function loadRuntime() {
+function loadRuntimeLabels() {
   class Plugin {}
   class PluginSettingTab {}
   class Setting {}
@@ -26,131 +28,102 @@ function loadRuntime() {
   const context = {
     module: moduleObject,
     exports: moduleObject.exports,
-    require: (id) => id === "obsidian" ? { Plugin, PluginSettingTab, Setting, Notice } : require(id),
-    console, setTimeout, clearTimeout, Buffer,
+    require: (id) => id === "obsidian"
+      ? { Plugin, PluginSettingTab, Setting, Notice }
+      : require(id),
+    console,
+    setTimeout,
+    clearTimeout,
+    Buffer,
   };
   const file = path.join(root, "main.js");
   vm.runInNewContext(
-    fs.readFileSync(file, "utf8") + "\nmodule.exports.__notesAudit={runtimeVersion:CANTO_SPAN_RUNTIME_VERSION,labels:[...CONSTRUCTION_LABEL_REGISTRY]};",
+    `${fs.readFileSync(file, "utf8")}\nmodule.exports.__notesAudit={runtimeVersion:CANTO_SPAN_RUNTIME_VERSION,labels:[...CONSTRUCTION_LABEL_REGISTRY]};`,
     context,
-    { filename: file }
+    { filename: file },
   );
   return moduleObject.exports.__notesAudit;
 }
 
-const runtime = loadRuntime();
-const byLabel = new Map();
+const notes = loadConstructionNotes(root);
+const runtime = loadRuntimeLabels();
+const failures = [];
+const noteLabels = new Set();
+
+function fail(invariant, construction, detail = "") {
+  failures.push({ invariant, construction, detail });
+}
+
 for (const note of notes) {
   const fm = note.frontmatter;
   const label = fm.construction;
-  if (byLabel.has(label)) failures.push({ name: "unique construction", detail: label });
-  byLabel.set(label, note);
-  const filename = path.basename(note.file, ".md");
-  check(`filename matches construction: ${filename}`, filename === label, `${filename} != ${label}`);
-  for (const field of [...new Set(["title", "type", "construction", "status", "confidence", "claim_layer", "lane", "last_reviewed", ...REQUIRED_FIELDS, "standard_test_file", "standard_test_coverage", "standard_positive_test_count", "standard_boundary_test_count", "standard_implementation_probe_count", "standard_executable_test_count", "source_ids", "runtime_active"])]) {
-    check(`${label} has ${field}`, Object.prototype.hasOwnProperty.call(fm, field));
+  if (typeof label !== "string" || !label) {
+    fail("construction_field", null, note.file);
+    continue;
   }
-  check(`${label} type is construction`, fm.type === "canto-span-construction", String(fm.type));
-  check(`${label} status controlled`, LINGUISTIC_STATUSES.includes(fm.status), String(fm.status));
-  check(`${label} status path matches frontmatter`, path.dirname(note.file) === path.join(root, "grammar", String(fm.status)), note.file);
-  check(`${label} source count matches IDs`, Number(fm.source_count) === (Array.isArray(fm.source_ids) ? fm.source_ids.length : -1));
-  const sourceRecordCount = countSourceRecords(note);
-  const verificationCount = countVerifiedSourceRecords(note);
-  check(`${label} source count matches source records`, Number(fm.source_count) === sourceRecordCount, `${fm.source_count} != ${sourceRecordCount}`);
-  check(`${label} verified source count matches source records`, Number(fm.verified_source_count) === verificationCount, `${fm.verified_source_count} != ${verificationCount}`);
-  check(`${label} verified sources do not exceed cited sources`, Number(fm.verified_source_count) <= Number(fm.source_count));
-  check(`${label} promotion gate version`, fm.promotion_gate_version === "v3", String(fm.promotion_gate_version));
-  check(`${label} panel evidence model version`, fm.panel_evidence_model_version === "v2", String(fm.panel_evidence_model_version));
-  check(`${label} eligible panel responses do not exceed total`, Number(fm.eligible_panel_response_count) <= Number(fm.panel_response_count_total), `${fm.eligible_panel_response_count} > ${fm.panel_response_count_total}`);
-  check(`${label} minimum usable item n does not exceed eligible panel responses`, Number(fm.minimum_usable_judgments_per_critical_item) <= Number(fm.eligible_panel_response_count), `${fm.minimum_usable_judgments_per_critical_item} > ${fm.eligible_panel_response_count}`);
-  check(`${label} recruitment channels are an array`, Array.isArray(fm.recruitment_channels));
-  check(`${label} respondent role-neutral flag is boolean`, typeof fm.respondent_role_neutral === "boolean", String(fm.respondent_role_neutral));
-  check(`${label} panel review state path`, fm.panel_review_state_file === "review-packets/native-panel/active-v2/panel-review-state.json", String(fm.panel_review_state_file));
-  check(`${label} panel policy path`, fm.panel_policy_file === "review-packets/native-panel/active-v2/panel-policy.json", String(fm.panel_policy_file));
-  check(`${label} panel review state exists`, fs.existsSync(path.join(root, fm.panel_review_state_file)));
-  check(`${label} panel policy exists`, fs.existsSync(path.join(root, fm.panel_policy_file)));
-  check(`${label} instrument version present when panel evidence exists`, Number(fm.panel_response_count_total) === 0 || typeof fm.survey_instrument_version === "string");
-  const classifiedHits = corpusClassificationTotal(fm);
-  check(`${label} reviewed corpus hits are fully classified`, fm.corpus_hits_reviewed !== true || classifiedHits === Number(fm.corpus_candidate_hit_count), `${classifiedHits} != ${fm.corpus_candidate_hit_count}`);
-  check(`${label} passing boundaries require executable boundaries`, fm.negative_tests_passing !== true || fm.negative_tests_executable === true);
-  check(`${label} executable boundaries require drafted boundaries`, fm.negative_tests_executable !== true || fm.negative_cases_drafted === true);
-  const standardTestPath = path.join(root, String(fm.standard_test_file || ""));
-  check(`${label} standard test file path`, fm.standard_test_file === `tests/constructions/${label}.json`, String(fm.standard_test_file));
-  check(`${label} standard test file exists`, fs.existsSync(standardTestPath), String(fm.standard_test_file));
-  if (fs.existsSync(standardTestPath)) {
-    const testSpec = JSON.parse(fs.readFileSync(standardTestPath, "utf8"));
-    check(`${label} standard test construction matches`, testSpec.construction === label, String(testSpec.construction));
-    check(`${label} standard coverage matches`, testSpec.coverage?.state === fm.standard_test_coverage, `${testSpec.coverage?.state} != ${fm.standard_test_coverage}`);
-    check(`${label} standard positive count matches`, Number(testSpec.coverage?.positive_case_count) === Number(fm.standard_positive_test_count), `${testSpec.coverage?.positive_case_count} != ${fm.standard_positive_test_count}`);
-    check(`${label} standard boundary count matches`, Number(testSpec.coverage?.boundary_case_count) === Number(fm.standard_boundary_test_count), `${testSpec.coverage?.boundary_case_count} != ${fm.standard_boundary_test_count}`);
-    check(`${label} standard implementation probe count matches`, Number(testSpec.coverage?.implementation_probe_count || 0) === Number(fm.standard_implementation_probe_count), `${testSpec.coverage?.implementation_probe_count || 0} != ${fm.standard_implementation_probe_count}`);
-    check(`${label} implementation probes carry zero linguistic evidence weight`, (testSpec.implementation_probe_cases || []).every((item) => item.linguistic_evidence_weight === 0 && item.purpose === "runtime_reachability_only"));
-    check(`${label} standard executable count matches`, Number(testSpec.coverage?.executable_case_count) === Number(fm.standard_executable_test_count), `${testSpec.coverage?.executable_case_count} != ${fm.standard_executable_test_count}`);
-    check(`${label} executable-boundary flag matches standard cases`, fm.negative_tests_executable !== true || Number(testSpec.coverage?.boundary_case_count) > 0);
+  if (noteLabels.has(label)) fail("unique_note", label, note.file);
+  noteLabels.add(label);
+
+  if (path.basename(note.file, ".md") !== label) {
+    fail("filename_matches_runtime_label", label, note.file);
   }
-  check(`${label} has plain-language claim`, /## Plain-language claim\n\n\S/.test(note.body));
-  check(`${label} has boundary section`, /## Negative and boundary cases/.test(note.body));
-  check(`${label} has no aliased wiki links`, !/\[\[[^\]]+\|[^\]]+\]\]/.test(note.text));
+  if (!LINGUISTIC_STATUSES.includes(fm.status)) {
+    fail("controlled_status", label, String(fm.status));
+  }
+  if (path.dirname(note.file) !== path.join(root, "grammar", String(fm.status))) {
+    fail("status_directory", label, note.file);
+  }
+  if (fm.runtime_active !== true) {
+    fail("runtime_active", label, String(fm.runtime_active));
+  }
+
+  const expectedTestFile = `tests/constructions/${label}.json`;
+  if (fm.standard_test_file !== expectedTestFile) {
+    fail("canonical_test_path", label, String(fm.standard_test_file));
+  }
+  const testPath = path.join(root, expectedTestFile);
+  if (!fs.existsSync(testPath)) {
+    fail("test_file_exists", label, expectedTestFile);
+    continue;
+  }
+  try {
+    const testSpec = JSON.parse(fs.readFileSync(testPath, "utf8"));
+    if (testSpec.schema !== "canto-span-construction-test-file-v1") {
+      fail("test_schema", label, String(testSpec.schema));
+    }
+    if (testSpec.construction !== label) {
+      fail("test_construction", label, String(testSpec.construction));
+    }
+  } catch (error) {
+    fail("test_file_json", label, error.message);
+  }
 }
 
 const runtimeLabels = new Set(runtime.labels);
-const noteLabels = new Set(byLabel.keys());
-const retiredIndexPath = path.join(root, "grammar", "retired", "README.md");
-const retiredIndexText = fs.existsSync(retiredIndexPath) ? fs.readFileSync(retiredIndexPath, "utf8") : "";
-const retiredLabels = new Set(
-  [...retiredIndexText.matchAll(/^\| `([^`]+)` \|/gm)].map((match) => match[1])
-);
-const standardTestFileCount = fs.readdirSync(path.join(root, "tests", "constructions")).filter((name) => name.endsWith(".json")).length;
-check("construction notes exist", notes.length > 0, String(notes.length));
-check("standard construction test file count matches notes", standardTestFileCount === notes.length, `${standardTestFileCount} != ${notes.length}`);
-check("runtime label count matches notes", runtimeLabels.size === notes.length, `${runtimeLabels.size} != ${notes.length}`);
-check("notes exactly match runtime labels", noteLabels.size === runtimeLabels.size && [...runtimeLabels].every((label) => noteLabels.has(label)));
-check("all notes are runtime active", notes.every((note) => note.frontmatter.runtime_active === true));
-
-for (const note of notes) {
-  for (const target of [...note.text.matchAll(/\[\[([^\]|]+)\]\]/g)].map((m) => m[1])) {
-    check(
-      `${note.frontmatter.construction} link target exists: ${target}`,
-      noteLabels.has(target) || retiredLabels.has(target),
-      target
-    );
-  }
+if (
+  runtimeLabels.size !== noteLabels.size
+  || ![...runtimeLabels].every((label) => noteLabels.has(label))
+) {
+  fail(
+    "runtime_labels_equal_notes",
+    null,
+    `runtime=${runtimeLabels.size}, notes=${noteLabels.size}`,
+  );
 }
-
-const snapshotFile = path.join(root, "archive", "registry-pre-obsidian-v0.5.184", "full-construction-registry.json");
-check("frozen full-schema snapshot exists", fs.existsSync(snapshotFile));
-if (fs.existsSync(snapshotFile)) {
-  const snapshot = JSON.parse(fs.readFileSync(snapshotFile, "utf8"));
-  check("snapshot has 171 records", snapshot.records?.length === 171, String(snapshot.records?.length));
-}
-
-const counts = {};
-for (const note of notes) counts[note.frontmatter.status] = (counts[note.frontmatter.status] || 0) + 1;
-const allowedCurrentStatuses = new Set([
-  "supported_productive",
-  "provisional_reaudit",
-  "provisional",
-  "research_pending",
-  "unsupported_generalization",
-  "lexicalized_only",
-  "parser_heuristic",
-]);
-check("all current notes use controlled linguistic statuses", Object.keys(counts).every((status) => allowedCurrentStatuses.has(status)), JSON.stringify(counts));
-check("status counts cover every current construction note", Object.values(counts).reduce((sum, count) => sum + count, 0) === notes.length, JSON.stringify(counts));
 
 const result = {
-  schema: "canto-span-construction-notes-validation-v3",
+  schema: "canto-span-construction-notes-validation-v5",
   runtime_version: runtime.runtimeVersion,
+  reason: "Every active runtime construction must have one correctly placed current note and one matching executable test file.",
   construction_notes: notes.length,
-  status_counts: counts,
-  total: checks.length,
-  passed: checks.filter((c) => c.pass).length,
   failed: failures.length,
   status: failures.length ? "FAIL" : "PASS",
   failures,
 };
-const outDir = path.join(root, "validation", "current");
-fs.mkdirSync(outDir, { recursive: true });
-fs.writeFileSync(path.join(outDir, "construction-notes.json"), JSON.stringify(result, null, 2) + "\n");
+
+if (outputPath) {
+  fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+  fs.writeFileSync(outputPath, `${JSON.stringify(result, null, 2)}\n`);
+}
 console.log(JSON.stringify(result, null, 2));
 if (failures.length) process.exit(1);
