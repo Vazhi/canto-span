@@ -1,0 +1,96 @@
+{
+  "classification": {
+    "evidentiaryUse": "pedagogical_attestation_only",
+    "frequencyEvidenceEligible": false,
+    "ingressClass": "pedagogical_reference",
+    "nativeNaturalnessEvidenceEligible": false,
+    "primaryCorpusEligible": false,
+    "productivityEvidenceEligible": false,
+    "requiresIndependentVerification": true,
+    "sourceType": "commercial_pedagogical_email"
+  },
+  "counts": {
+    "addressExpressions": 4,
+    "indexedRecords": 59,
+    "languageUseRecords": 18,
+    "lexicalEntries": 35,
+    "pedagogicalUtterances": 14,
+    "phonicsPairs": 6
+  },
+  "packageId": "GLOSSIKA-CANTONESE-HK-A1-W16-2026-07-05",
+  "repositoryInclusion": {
+    "contentPolicy": "Full source text and derived verbatim records remain outside Git. Their hashes and content-free record identifiers are retained for integrity and later authorized review.",
+    "includedFiles": [
+      "README.md",
+      "source-manifest.json",
+      "record-index.jsonl",
+      "ingress-validation.json"
+    ],
+    "mode": "public_metadata_only",
+    "reason": "The repository is public and redistribution permission for the full commercial lesson content has not been established.",
+    "restrictedFiles": [
+      "corpus-records.jsonl",
+      "lexical-records.jsonl",
+      "phonics-records.jsonl",
+      "raw-source-excerpt.md",
+      "glossika-cantonese-hk-a1-week16-corpus-ingress-private.zip"
+    ]
+  },
+  "restrictedArtifacts": [
+    {
+      "bytes": 2092,
+      "filename": "README.md",
+      "sha256": "06cfc45361436b5232c2bbadf3b34180b8953a8740741504b03a82b6c8ee201a"
+    },
+    {
+      "bytes": 21667,
+      "filename": "corpus-records.jsonl",
+      "sha256": "54a69a1f293e39964c233c97283cd29b137ca7a023b55317b0ae7b199329290c"
+    },
+    {
+      "bytes": 36537,
+      "filename": "lexical-records.jsonl",
+      "sha256": "e334dc9e2ccb8e2bc83928183b7c423eb2a9d8cdd7612cad6a718caebc8f8ecd"
+    },
+    {
+      "bytes": 6563,
+      "filename": "phonics-records.jsonl",
+      "sha256": "232213764d0b92ae5b5ddeccd476299be75964d1b26da8bf5210468be7e06ff4"
+    },
+    {
+      "bytes": 4813,
+      "filename": "raw-source-excerpt.md",
+      "sha256": "8a4019a3cdd9b59ec407b9cbf6e800908450678aac53af963a02bc23cb0b1f7f"
+    },
+    {
+      "bytes": 742,
+      "filename": "ingress-validation.json",
+      "sha256": "80254f24eab8ee94ca73cab5e0bb93fbfea2dbe9ba4f3df31a5a53e50e8b2ac0"
+    },
+    {
+      "bytes": 2470,
+      "filename": "source-manifest.json",
+      "sha256": "a06b15537a16126cf0713e9f834fcff33788c36351e695aa1fad76e594c9c43b"
+    },
+    {
+      "bytes": 14611,
+      "filename": "glossika-cantonese-hk-a1-week16-corpus-ingress-private.zip",
+      "sha256": "92a8b54ec1c39f1af3c0e787ab1f8752c6bcd9cbf74008851fff539e310f8e6f"
+    }
+  ],
+  "schema": "canto-span-restricted-source-ingress-v1",
+  "source": {
+    "accessBasis": "user-supplied email content",
+    "course": "Cantonese (HK) A1",
+    "languageVariety": "Cantonese (HK)",
+    "level": "A1",
+    "medium": "subscription lesson email",
+    "orthography": "Traditional Chinese",
+    "provider": "Glossika Pte. Ltd.",
+    "publicRedistributionCleared": false,
+    "receivedDate": "2026-07-05",
+    "topic": "Hobbies & Free Time",
+    "week": "16 of 25"
+  },
+  "title": "Cantonese – Hobbies & Free Time"
+}
