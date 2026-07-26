@@ -1,10 +1,11 @@
 # Runtime modularization and wired-resource architecture
 
-Status: **Stage 2 source/build skeleton implemented; pending merge**
+Status: **Stage 3 lexical/Jyutping extraction implemented; pending merge**
 Parent program: #161
-Stage 2 intake: #163
-Work claim: #176
-Draft pull request: #177
+Stage 3 intake: #164
+Work claim: #178
+Draft pull request: #179
+Stage 2 build pipeline: #163 / PR #177
 Stage 1 architecture: #162 / PR #172
 
 ## Purpose
@@ -129,6 +130,19 @@ npm test
 
 The build command is permanent infrastructure, not a migration-only verifier. Temporary comparison workflows and artifacts used to establish this baseline are removed before PR readiness.
 
+## Stage 3 lexical and pronunciation ownership
+
+Existing runtime data is now maintained in file-local modules under:
+
+- `src/runtime-resources/lexicon/token-lexicon/` for ordered token-entry fragments;
+- `src/runtime-resources/lexicon/productive-vo.js` for reviewed productive verb-object entries;
+- `src/runtime-resources/lexicon/formulas.js`, `address-terms.js`, and `compositional-lexical-phrases.js` for bounded lexical lookup controls;
+- `src/runtime-resources/pronunciation/` for reviewed readings and pronunciation-only unknown-CJK fallback data.
+
+The token fragments export ordered `[surface, value]` pairs. `src/plugin-entry.js` reconstructs the same objects and sets at build time, preserving insertion order and lookup precedence. `tools/build-runtime.js` validates duplicate surfaces, pair shape, required fields, and unique list values before every build. This is durable edit protection for the canonical resources, not a migration-only verifier.
+
+`PREDICATE_OMISSION_PROFILES`, environmental predicate profiles, parser-derived term sorting, tokenization, and grammar inventories remain outside Stage 3.
+
 ## Runtime-resource format rule
 
 Use JSON only for plain serializable data whose order and values can be preserved without behavior. Use JavaScript modules when the resource contains:
@@ -222,6 +236,6 @@ The modularization succeeds only when routine changes become file-local:
 
 Generated `main.js` may still be large. The improvement is that the GitHub connector edits small canonical inputs and reviews a deterministic output rather than reconstructing the bundle as the source of truth.
 
-## Stage 2 behavior boundary
+## Stage 3 behavior boundary
 
-Stage 2 changes runtime ownership and generated formatting, not parser behavior. Runtime version `0.5.216`, manifest version `0.5.216`, parser results, rendered output, test expectations, construction identity, linguistic status, evidence, corpus classification, survey state, release state, and merge authorization remain unchanged.
+Stage 3 moves existing lexical and pronunciation data into canonical resource modules without changing parser behavior. Runtime version `0.5.216`, manifest version `0.5.216`, parser results, rendered output, test expectations, construction identity, linguistic status, evidence, corpus classification, survey state, release state, and merge authorization remain unchanged.
