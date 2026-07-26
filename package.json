@@ -4,6 +4,8 @@
   "version": "0.5.216",
   "description": "Cantonese parser and evidence-governance project",
   "scripts": {
+    "build:runtime": "node tools/build-runtime.js",
+    "verify:runtime-build": "node tools/build-runtime.js --check",
     "test": "node tests/run-all.js",
     "test:constructions": "node tests/run-constructions.js",
     "test:regression": "node tests/run-regression.js",
@@ -25,5 +27,8 @@
     "verify:all": "node tools/verify-current-state.js --profile all",
     "build:legacy-forms": "node tools/build-native-review-form-script.js",
     "release:baseline": "node tools/write-release-status-baseline.js"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.1"
   }
 }

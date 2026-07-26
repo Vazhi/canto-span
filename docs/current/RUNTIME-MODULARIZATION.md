@@ -1,10 +1,11 @@
 # Runtime modularization and wired-resource architecture
 
-Status: **Stage 1 architecture accepted for implementation sequencing**
+Status: **Stage 2 source/build skeleton implemented; pending merge**
 Parent program: #161
-Stage 1 intake: #162
-Work claim: #171
-Draft pull request: #172
+Stage 2 intake: #163
+Work claim: #176
+Draft pull request: #177
+Stage 1 architecture: #162 / PR #172
 
 ## Purpose
 
@@ -24,18 +25,16 @@ This architecture does not move resources to another repository and does not mak
 
 ## Authority transition
 
-Until Stage 2 (#163) is merged, `main.js` and executable tests continue to own runtime behavior. This document does not make the current bundle generated retroactively.
+Stage 2 (#163) establishes source-first ownership without changing runtime behavior:
 
-After Stage 2 is accepted and merged:
-
-- canonical executable source is under `src/**`;
-- canonical wired data is under `src/runtime-resources/**`;
-- `main.js` is the generated deployment artifact;
+- `src/plugin-entry.js` is the canonical executable source while later stages split it into smaller modules;
+- `main.js` is the generated deployment artifact and must not be edited directly;
+- `package-lock.json` pins the build dependency surface;
 - `manifest.json` remains deployment metadata;
 - `styles.css` remains the style artifact;
-- executable tests protect behavior and must exercise the canonical source entrypoint or its generated bundle as appropriate.
+- executable tests continue to run against the generated bundle under the existing Obsidian stub.
 
-A generated file must never become a second canonical owner. Changes are made to source/resource files and then bundled.
+After Stage 2 is accepted and merged, changes are made to source/resource files and then bundled. A generated file must never become a second canonical owner.
 
 ## Accepted source layout
 
@@ -89,7 +88,7 @@ A lower layer may not import a higher layer. Shared helpers receive one canonica
 
 ## Bundle contract
 
-Stage 2 will use **esbuild** because it supports a small deterministic CommonJS bundle, JavaScript and JSON imports, and an explicit external Obsidian API without requiring a custom concatenation system.
+Stage 2 uses **esbuild 0.28.1** because it supports a small deterministic CommonJS bundle, JavaScript and JSON imports, and an explicit external Obsidian API without requiring a custom concatenation system.
 
 Required contract:
 
@@ -112,6 +111,23 @@ Rejected alternatives:
 - **Rollup:** viable, but no material advantage over the smaller accepted esbuild setup for this project.
 
 The exact esbuild target/platform flags may be selected in #163 only to preserve the existing Obsidian desktop-and-mobile contract; they may not reopen the bundler, module-format, external-API, or generated-output decisions.
+
+## Stage 2 build workflow
+
+Stage 2 deliberately begins with the complete accepted runtime in `src/plugin-entry.js`. This creates a real canonical source and generated-output boundary before any lexical, grammar, parser, rendering, or plugin family is extracted.
+
+From a fresh checkout:
+
+```bash
+npm ci
+npm run build:runtime
+npm run verify:runtime-build
+npm test
+```
+
+`build:runtime` bundles `src/plugin-entry.js` as unminified CommonJS for the Node-compatible Obsidian host, targets ES2020, leaves `obsidian` external, writes no source map, and emits `main.js`. `verify:runtime-build` performs two in-memory builds, requires byte-identical output, and requires the committed `main.js` to match that output.
+
+The build command is permanent infrastructure, not a migration-only verifier. Temporary comparison workflows and artifacts used to establish this baseline are removed before PR readiness.
 
 ## Runtime-resource format rule
 
@@ -206,6 +222,6 @@ The modularization succeeds only when routine changes become file-local:
 
 Generated `main.js` may still be large. The improvement is that the GitHub connector edits small canonical inputs and reviews a deterministic output rather than reconstructing the bundle as the source of truth.
 
-## Stage 1 non-changes
+## Stage 2 behavior boundary
 
-This architecture record changes no runtime source, generated bundle, test expectation, version, construction identity, linguistic status, evidence, corpus classification, survey state, release state, or merge authorization.
+Stage 2 changes runtime ownership and generated formatting, not parser behavior. Runtime version `0.5.216`, manifest version `0.5.216`, parser results, rendered output, test expectations, construction identity, linguistic status, evidence, corpus classification, survey state, release state, and merge authorization remain unchanged.
