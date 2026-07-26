@@ -1,0 +1,948 @@
+{
+  "schema": "canto-span-pedagogical-corpus-source-v1",
+  "source": {
+    "sourceId": "GLOSSIKA-YUEHK-A1-W14-20260621",
+    "provider": "Glossika",
+    "course": "Cantonese (HK) A1",
+    "week": 14,
+    "weekCount": 25,
+    "lessonTitle": "Making Plans & Appointments",
+    "emailSubject": "Cantonese – Making Plans & Appointments",
+    "sourceDate": "2026-06-21",
+    "gmailMessageId": "19ee8bb6217dc444",
+    "sourceType": "authorized_pedagogical_email",
+    "language": "yue-Hant-HK",
+    "authorization": {
+      "basis": "User states Glossika granted permission to use all lesson data in this non-commercial private-use Canto Span project.",
+      "scope": "Source-preserving corpus ingress for this lesson.",
+      "redistributionClaim": "none"
+    }
+  },
+  "ingress": {
+    "issue": 131,
+    "workClaimIssue": 158,
+    "branch": "agent/glossika-week14-corpus-ingress",
+    "recordCount": 61,
+    "itemTypeCounts": {
+      "dialog_turn": 4,
+      "lexical_entry": 35,
+      "phonics_pair": 8,
+      "sentence": 14
+    },
+    "sectionCounts": {
+      "functional_language": 8,
+      "grammar_patterns": 2,
+      "phonics_drill": 8,
+      "vocabulary_and_situations": 43
+    },
+    "sourcePayloadHash": "sha256:8b539f409e0cd61bea4832edfa6ec1c607e8d18cd9f429ddbab954b36920102f",
+    "reviewState": "REQUIRES_EXPERT_CONTEXT_REVIEW",
+    "policy": "Source values are immutable. Normalization, correction, duplicate classification, naturalness review, and evidence use are recorded separately."
+  },
+  "items": [
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I001",
+      "ordinal": 1,
+      "section": "functional_language",
+      "subsection": "apologies",
+      "itemType": "sentence",
+      "register": "casual",
+      "source": {
+        "traditional": "唔好意思。",
+        "jyutping": "M4 hou2 ji3 si1.",
+        "morphemeGloss": "not good meaning",
+        "english": "Sorry. / Excuse me."
+      },
+      "sourceHash": "sha256:736ef622b8ec4eb73920ea43ccbbb1c36b2bf57fa9f078e890e21daadbb48790"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I002",
+      "ordinal": 2,
+      "section": "functional_language",
+      "subsection": "apologies",
+      "itemType": "sentence",
+      "register": "casual",
+      "source": {
+        "traditional": "對唔住呀。",
+        "jyutping": "Deoi3 m4 zyu6 aa3.",
+        "morphemeGloss": "sorry (PART)",
+        "english": "I'm sorry."
+      },
+      "sourceHash": "sha256:66f4aa19f7ed4d71c15aec3e8d4dc8a1171b9fc0ab9dbf3ce8d4df44ad2967c8"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I003",
+      "ordinal": 3,
+      "section": "functional_language",
+      "subsection": "apologies",
+      "itemType": "sentence",
+      "register": "polite",
+      "source": {
+        "traditional": "對唔住，我遲咗。",
+        "jyutping": "Deoi3 m4 zyu6, ngo5 ci4 zo2.",
+        "morphemeGloss": "sorry I late (PERF)",
+        "english": "Sorry, I'm late."
+      },
+      "sourceHash": "sha256:dd84be403ff72057c94bf8c160f269241ea369f16619b197b3cf80077b20b4c2"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I004",
+      "ordinal": 4,
+      "section": "functional_language",
+      "subsection": "apologies",
+      "itemType": "sentence",
+      "register": "polite",
+      "source": {
+        "traditional": "好對唔住，係我唔啱。",
+        "jyutping": "Hou2 deoi3 m4 zyu6, hai6 ngo5 m4 ngaam1.",
+        "morphemeGloss": "very sorry is I not right",
+        "english": "I'm very sorry, it was my fault."
+      },
+      "sourceHash": "sha256:38735c3a5d3fffa8b7a52f50e29ed1a8562019ca9051f6da95de6945b9f152f3"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I005",
+      "ordinal": 5,
+      "section": "functional_language",
+      "subsection": "express_thanks",
+      "itemType": "sentence",
+      "register": "casual",
+      "source": {
+        "traditional": "多謝。",
+        "jyutping": "Do1 ze6.",
+        "morphemeGloss": "many thanks",
+        "english": "Thanks."
+      },
+      "sourceHash": "sha256:67b3ac5dbade5b89e8b45c1b2b4fe61735e040242a5899350a40f351bdaef627"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I006",
+      "ordinal": 6,
+      "section": "functional_language",
+      "subsection": "express_thanks",
+      "itemType": "sentence",
+      "register": "casual",
+      "source": {
+        "traditional": "唔該晒。",
+        "jyutping": "M4 goi1 saai3.",
+        "morphemeGloss": "excuse-me all",
+        "english": "Thank you so much."
+      },
+      "sourceHash": "sha256:a4e6e1c10527f4716df8f61bb71a14c4b15496b850b983040c32a6dcd8c5dc52"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I007",
+      "ordinal": 7,
+      "section": "functional_language",
+      "subsection": "express_thanks",
+      "itemType": "sentence",
+      "register": "polite",
+      "source": {
+        "traditional": "多謝你嘅幫忙。",
+        "jyutping": "Do1 ze6 nei5 ge3 bong1 mong4.",
+        "morphemeGloss": "thank you 's help",
+        "english": "Thank you for your help."
+      },
+      "sourceHash": "sha256:8690f121c80b67c1265b061e142d7c60175d22e9cc51c0e0a75a788d7b0539bc"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I008",
+      "ordinal": 8,
+      "section": "functional_language",
+      "subsection": "express_thanks",
+      "itemType": "sentence",
+      "register": "polite",
+      "source": {
+        "traditional": "真係好多謝你。",
+        "jyutping": "Zan1 hai6 hou2 do1 ze6 nei5.",
+        "morphemeGloss": "really very thank you",
+        "english": "I really appreciate it."
+      },
+      "sourceHash": "sha256:d4df9dffdfc162c899fa6e5261a05d3916054f17609ed281d37cef7c913d8b49"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I009",
+      "ordinal": 9,
+      "section": "vocabulary_and_situations",
+      "subsection": "work_and_office",
+      "itemType": "lexical_entry",
+      "register": null,
+      "source": {
+        "traditional": "返工",
+        "jyutping": "faan1 gung1",
+        "english": "to go to work"
+      },
+      "sourceHash": "sha256:297ee25808233f10e66ad8954ce376c116696fafe75dcae479dc92f59c4bd6d2"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I010",
+      "ordinal": 10,
+      "section": "vocabulary_and_situations",
+      "subsection": "work_and_office",
+      "itemType": "lexical_entry",
+      "register": null,
+      "source": {
+        "traditional": "放工",
+        "jyutping": "fong3 gung1",
+        "english": "to get off work"
+      },
+      "sourceHash": "sha256:d1b2447f00d7276dea3d9a1339ad7b328986461e6b01eea3546f4aff9e3d6358"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I011",
+      "ordinal": 11,
+      "section": "vocabulary_and_situations",
+      "subsection": "work_and_office",
+      "itemType": "lexical_entry",
+      "register": null,
+      "source": {
+        "traditional": "公司",
+        "jyutping": "gung1 si1",
+        "english": "company"
+      },
+      "sourceHash": "sha256:4cffb39f9ba1db8fc45ae3679b18c7ceff332ec931e899c61fa9235182453d0e"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I012",
+      "ordinal": 12,
+      "section": "vocabulary_and_situations",
+      "subsection": "work_and_office",
+      "itemType": "lexical_entry",
+      "register": null,
+      "source": {
+        "traditional": "辦公室",
+        "jyutping": "baan6 gung1 sat1",
+        "english": "office"
+      },
+      "sourceHash": "sha256:f76e961c5b662ca63aa1eb97d0e7ee0fa35fde3574835f824408cd40962ecc82"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I013",
+      "ordinal": 13,
+      "section": "vocabulary_and_situations",
+      "subsection": "work_and_office",
+      "itemType": "lexical_entry",
+      "register": null,
+      "source": {
+        "traditional": "老闆",
+        "jyutping": "lou5 baan2",
+        "english": "boss"
+      },
+      "sourceHash": "sha256:a2e423bcc2258f62c53e4d83ff9a43b915e97cc66b3c003388eeb28577e62310"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I014",
+      "ordinal": 14,
+      "section": "vocabulary_and_situations",
+      "subsection": "work_and_office",
+      "itemType": "lexical_entry",
+      "register": null,
+      "source": {
+        "traditional": "開會",
+        "jyutping": "hoi1 wui2",
+        "english": "to have a meeting"
+      },
+      "sourceHash": "sha256:8cd21bd6d69d03fadee7d3ee02400dd470dbd5deda1eddd5c70fdec4050e49e3"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I015",
+      "ordinal": 15,
+      "section": "vocabulary_and_situations",
+      "subsection": "work_and_office",
+      "itemType": "lexical_entry",
+      "register": null,
+      "source": {
+        "traditional": "出糧",
+        "jyutping": "ceot1 loeng4",
+        "english": "to get paid"
+      },
+      "sourceHash": "sha256:f71a29861767504b74aa6bd951b9bb2ca2831a481b47396297730d319ca63caf"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I016",
+      "ordinal": 16,
+      "section": "vocabulary_and_situations",
+      "subsection": "work_and_office",
+      "itemType": "lexical_entry",
+      "register": null,
+      "source": {
+        "traditional": "放假",
+        "jyutping": "fong3 gaa3",
+        "english": "to have a holiday"
+      },
+      "sourceHash": "sha256:bd0a01c33586fe473af369b50b6a8d12a2853112d809b9374dff5f03d60d54f2"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I017",
+      "ordinal": 17,
+      "section": "vocabulary_and_situations",
+      "subsection": "work_and_office",
+      "itemType": "lexical_entry",
+      "register": null,
+      "source": {
+        "traditional": "打工",
+        "jyutping": "daa2 gung1",
+        "english": "to work (part-time)"
+      },
+      "sourceHash": "sha256:1c7aca90b205aa6d561d1a33baedb8cac85b66f65e753be9a586867869ac141b"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I018",
+      "ordinal": 18,
+      "section": "vocabulary_and_situations",
+      "subsection": "work_and_office",
+      "itemType": "lexical_entry",
+      "register": null,
+      "source": {
+        "traditional": "人工",
+        "jyutping": "jan4 gung1",
+        "english": "salary"
+      },
+      "sourceHash": "sha256:4c616b2f11e5420db607ff59ce2211218fb87171a2d67564e5cadac8156fb3c9"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I019",
+      "ordinal": 19,
+      "section": "vocabulary_and_situations",
+      "subsection": "work_and_office",
+      "itemType": "lexical_entry",
+      "register": null,
+      "source": {
+        "traditional": "加班",
+        "jyutping": "gaa1 baan1",
+        "english": "to work overtime"
+      },
+      "sourceHash": "sha256:d34138ce53f76170b824e4726e213e5fca5495482fac390937413da11bca723a"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I020",
+      "ordinal": 20,
+      "section": "vocabulary_and_situations",
+      "subsection": "work_and_office",
+      "itemType": "lexical_entry",
+      "register": null,
+      "source": {
+        "traditional": "辭職",
+        "jyutping": "ci4 zik1",
+        "english": "to resign"
+      },
+      "sourceHash": "sha256:ba843dd303c3cd7bf48d9c0caa756e217c64a4b76598fd2b8ab8945df79615a2"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I021",
+      "ordinal": 21,
+      "section": "vocabulary_and_situations",
+      "subsection": "work_and_office",
+      "itemType": "lexical_entry",
+      "register": null,
+      "source": {
+        "traditional": "見工",
+        "jyutping": "gin3 gung1",
+        "english": "job interview"
+      },
+      "sourceHash": "sha256:c5a8528b539fe2ae5f356bd8478342d20dc8a7dba26e2989fe1c30787d65bb0a"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I022",
+      "ordinal": 22,
+      "section": "vocabulary_and_situations",
+      "subsection": "work_and_office",
+      "itemType": "lexical_entry",
+      "register": null,
+      "source": {
+        "traditional": "履歷",
+        "jyutping": "lei5 lik6",
+        "english": "resume/CV"
+      },
+      "sourceHash": "sha256:dba07cf19ef200f00c50d74d9da8b93d5de43432631c76c85d46e3a0d6fc8794"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I023",
+      "ordinal": 23,
+      "section": "vocabulary_and_situations",
+      "subsection": "work_and_office",
+      "itemType": "lexical_entry",
+      "register": null,
+      "source": {
+        "traditional": "職位",
+        "jyutping": "zik1 wai2",
+        "english": "position/job title"
+      },
+      "sourceHash": "sha256:f05a6927031d701c7e1ae8d3736d1ad6303d2a78196d56232bbc5fa2abe407f3"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I024",
+      "ordinal": 24,
+      "section": "vocabulary_and_situations",
+      "subsection": "work_and_office",
+      "itemType": "lexical_entry",
+      "register": null,
+      "source": {
+        "traditional": "合約",
+        "jyutping": "hap6 joek3",
+        "english": "contract"
+      },
+      "sourceHash": "sha256:4b1043c05bf296fa9bcd44855f3ad170e18dbfa264b3fb3a593ca96a673fe256"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I025",
+      "ordinal": 25,
+      "section": "vocabulary_and_situations",
+      "subsection": "work_and_office",
+      "itemType": "lexical_entry",
+      "register": null,
+      "source": {
+        "traditional": "遲到",
+        "jyutping": "ci4 dou3",
+        "english": "to be late"
+      },
+      "sourceHash": "sha256:5e6dc4e530c494f653fb271efd281c233622d6f51c6538faa9b54977ca82caa3"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I026",
+      "ordinal": 26,
+      "section": "vocabulary_and_situations",
+      "subsection": "work_and_office",
+      "itemType": "lexical_entry",
+      "register": null,
+      "source": {
+        "traditional": "準時",
+        "jyutping": "zeon2 si4",
+        "english": "on time"
+      },
+      "sourceHash": "sha256:59cc97bf4af5403a187dba6b097e2d0bdf9d52ce26c664466310674c94e1083c"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I027",
+      "ordinal": 27,
+      "section": "vocabulary_and_situations",
+      "subsection": "work_and_office",
+      "itemType": "lexical_entry",
+      "register": null,
+      "source": {
+        "traditional": "電腦",
+        "jyutping": "din6 nou5",
+        "english": "computer"
+      },
+      "sourceHash": "sha256:d06ab9a5a66d8c49b70cf802da5234a97704907d0f587bb46386f6f6df4e4173"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I028",
+      "ordinal": 28,
+      "section": "vocabulary_and_situations",
+      "subsection": "work_and_office",
+      "itemType": "lexical_entry",
+      "register": null,
+      "source": {
+        "traditional": "電郵",
+        "jyutping": "din6 jau4",
+        "english": "email"
+      },
+      "sourceHash": "sha256:90740090379faea82a4c62eeff9b3435a0928605e8588405db3765dce302253f"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I029",
+      "ordinal": 29,
+      "section": "vocabulary_and_situations",
+      "subsection": "work_and_office",
+      "itemType": "lexical_entry",
+      "register": null,
+      "source": {
+        "traditional": "傳真",
+        "jyutping": "cyun4 zan1",
+        "english": "fax"
+      },
+      "sourceHash": "sha256:d8c2b210120d91bff3f573abd8b7aefd7a4bfbe8c0ab61ed566d75dd2304fe18"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I030",
+      "ordinal": 30,
+      "section": "vocabulary_and_situations",
+      "subsection": "work_and_office",
+      "itemType": "lexical_entry",
+      "register": null,
+      "source": {
+        "traditional": "影印",
+        "jyutping": "jing2 jan3",
+        "english": "to photocopy"
+      },
+      "sourceHash": "sha256:3f7b476bf76b32d019d681198322cade2a8dc8bebcb06b1d7eadc69263799688"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I031",
+      "ordinal": 31,
+      "section": "vocabulary_and_situations",
+      "subsection": "work_and_office",
+      "itemType": "lexical_entry",
+      "register": null,
+      "source": {
+        "traditional": "文件",
+        "jyutping": "man4 gin2",
+        "english": "document"
+      },
+      "sourceHash": "sha256:4a80c5d1285ec7bc849eec794cfd40390efddc68da0f3fc21e6e9349d394ac56"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I032",
+      "ordinal": 32,
+      "section": "vocabulary_and_situations",
+      "subsection": "work_and_office",
+      "itemType": "lexical_entry",
+      "register": null,
+      "source": {
+        "traditional": "客戶",
+        "jyutping": "haak3 wu6",
+        "english": "client"
+      },
+      "sourceHash": "sha256:79dbea065692b6302b69e83b0ab98c08ac0e8939056544f7f54518c2c9b12fea"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I033",
+      "ordinal": 33,
+      "section": "vocabulary_and_situations",
+      "subsection": "work_and_office",
+      "itemType": "lexical_entry",
+      "register": null,
+      "source": {
+        "traditional": "實習生",
+        "jyutping": "sat6 zaap6 saang1",
+        "english": "intern"
+      },
+      "sourceHash": "sha256:f3352a73f57647640c534709994cdc043e03dc4acff94d13a03124bb76def389"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I034",
+      "ordinal": 34,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "itemType": "lexical_entry",
+      "register": null,
+      "source": {
+        "traditional": "一萬",
+        "jyutping": "jat1 maan6",
+        "english": "10,000"
+      },
+      "sourceHash": "sha256:ccc92b52a7dfcaf45215fdecacf8d5a704780e9ee5985ab7e156d31dc9e22b65"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I035",
+      "ordinal": 35,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "itemType": "lexical_entry",
+      "register": null,
+      "source": {
+        "traditional": "二萬",
+        "jyutping": "ji6 maan6",
+        "english": "20,000"
+      },
+      "sourceHash": "sha256:4fc8d4019f083da0d78c1b6508184008f4e8a8094df9424402f5d645b5df4d9f"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I036",
+      "ordinal": 36,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "itemType": "lexical_entry",
+      "register": null,
+      "source": {
+        "traditional": "三萬",
+        "jyutping": "saam1 maan6",
+        "english": "30,000"
+      },
+      "sourceHash": "sha256:3a4a0650853ee5d5073d1c8d995945e6b10d3742ec9496461feacfd955f9ea26"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I037",
+      "ordinal": 37,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "itemType": "lexical_entry",
+      "register": null,
+      "source": {
+        "traditional": "四萬",
+        "jyutping": "sei3 maan6",
+        "english": "40,000"
+      },
+      "sourceHash": "sha256:70517f1c62bec15e4b363407fb80b905868dd9c03b9a7602b06dc7b0a5d47848"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I038",
+      "ordinal": 38,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "itemType": "lexical_entry",
+      "register": null,
+      "source": {
+        "traditional": "五萬",
+        "jyutping": "ng5 maan6",
+        "english": "50,000"
+      },
+      "sourceHash": "sha256:8fd4c08246f6cde8dff90df6e420c9787340c6ba4524d392dc3c299d5a81ebeb"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I039",
+      "ordinal": 39,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "itemType": "lexical_entry",
+      "register": null,
+      "source": {
+        "traditional": "六萬",
+        "jyutping": "luk6 maan6",
+        "english": "60,000"
+      },
+      "sourceHash": "sha256:65a092c50e12a31d6a15c4cc3e9c3e9c5b645377292db2ad6293224d6b6e087a"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I040",
+      "ordinal": 40,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "itemType": "lexical_entry",
+      "register": null,
+      "source": {
+        "traditional": "七萬",
+        "jyutping": "cat1 maan6",
+        "english": "70,000"
+      },
+      "sourceHash": "sha256:7b7d3ddc446e1aa8be0829c3d8ba5d1adc2d553b1b855664a690e04a9216671c"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I041",
+      "ordinal": 41,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "itemType": "lexical_entry",
+      "register": null,
+      "source": {
+        "traditional": "八萬",
+        "jyutping": "baat3 maan6",
+        "english": "80,000"
+      },
+      "sourceHash": "sha256:fce34cc4e941d1e5b81bd68fef0351bba41a377bfc95aeaa2db2e6b04bc2124e"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I042",
+      "ordinal": 42,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "itemType": "lexical_entry",
+      "register": null,
+      "source": {
+        "traditional": "九萬",
+        "jyutping": "gau2 maan6",
+        "english": "90,000"
+      },
+      "sourceHash": "sha256:542223e91f584c23cb6c079d2129fa6e45af82ba716afedf74ceebb221c6e281"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I043",
+      "ordinal": 43,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "itemType": "lexical_entry",
+      "register": null,
+      "source": {
+        "traditional": "十萬",
+        "jyutping": "sap6 maan6",
+        "english": "100,000"
+      },
+      "sourceHash": "sha256:05dd5e51ff1df5764a695b998e121fb51b291624dcb673e7e2f23a69faae9cb7"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I044",
+      "ordinal": 44,
+      "section": "vocabulary_and_situations",
+      "subsection": "situation_patterns",
+      "itemType": "sentence",
+      "register": "standard",
+      "source": {
+        "traditional": "你做咩工？",
+        "jyutping": "nei5 zou6 me1 gung1?",
+        "morphemeGloss": "you do what work",
+        "english": "What do you do for work?"
+      },
+      "sourceHash": "sha256:85f0bc2ea215e827c5290e09af7fe0292d71ad71691d9d28e1a465f26b98b1da"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I045",
+      "ordinal": 45,
+      "section": "vocabulary_and_situations",
+      "subsection": "situation_patterns",
+      "itemType": "sentence",
+      "register": "casual",
+      "source": {
+        "traditional": "我喺銀行返工。",
+        "jyutping": "ngo5 hai2 ngan4 hong4 faan1 gung1.",
+        "morphemeGloss": "I at bank work",
+        "english": "I work at a bank."
+      },
+      "sourceHash": "sha256:297a751233bab1c59d6609f985b4bc30fb29603a1768d5f4d9a1e70eacec1262"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I046",
+      "ordinal": 46,
+      "section": "vocabulary_and_situations",
+      "subsection": "situation_patterns",
+      "itemType": "sentence",
+      "register": "standard",
+      "source": {
+        "traditional": "幾點放工？",
+        "jyutping": "gei2 dim2 fong3 gung1?",
+        "morphemeGloss": "what.time finish work",
+        "english": "What time do you finish work?"
+      },
+      "sourceHash": "sha256:4be27e299b54070c4e0f078b733c9a83faf1077f3180194cf37c66a34c887c4d"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I047",
+      "ordinal": 47,
+      "section": "vocabulary_and_situations",
+      "subsection": "situation_patterns",
+      "itemType": "sentence",
+      "register": "casual",
+      "source": {
+        "traditional": "今日要加班。",
+        "jyutping": "gam1 jat6 jiu3 gaa1 baan1.",
+        "morphemeGloss": "today must overtime",
+        "english": "I have to work overtime today."
+      },
+      "sourceHash": "sha256:fc702361fb95b7590f6a71656c2e86867632e0e31eb44c2cede901f1e46c1a1b"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I048",
+      "ordinal": 48,
+      "section": "vocabulary_and_situations",
+      "subsection": "mini_dialog",
+      "itemType": "dialog_turn",
+      "register": "casual",
+      "source": {
+        "traditional": "你做咩工㗎？",
+        "jyutping": "nei5 zou6 me1 gung1 gaa3?",
+        "morphemeGloss": "you do what work SFP",
+        "english": "What do you do?"
+      },
+      "sourceHash": "sha256:4414b5bb4f4dd00cd56ad77de54cc3331d840d6252182e1b1a89f925ae5b2677"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I049",
+      "ordinal": 49,
+      "section": "vocabulary_and_situations",
+      "subsection": "mini_dialog",
+      "itemType": "dialog_turn",
+      "register": "casual",
+      "source": {
+        "traditional": "我做會計嘅。你呢？",
+        "jyutping": "ngo5 zou6 wui6 gai3 ge3. nei5 ne1?",
+        "morphemeGloss": "I do accounting ATTR you SFP",
+        "english": "I'm an accountant. And you?"
+      },
+      "sourceHash": "sha256:1b547d15d28d4c26cd8b77ec573290bd11d58321767ade34c2ae818cca38e361"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I050",
+      "ordinal": 50,
+      "section": "vocabulary_and_situations",
+      "subsection": "mini_dialog",
+      "itemType": "dialog_turn",
+      "register": "casual",
+      "source": {
+        "traditional": "我喺酒店返工。幾辛苦㗎。",
+        "jyutping": "ngo5 hai2 zau2 dim3 faan1 gung1. gei2 san1 fu2 gaa3.",
+        "morphemeGloss": "I at hotel work quite tiring SFP",
+        "english": "I work at a hotel. It's quite tiring."
+      },
+      "sourceHash": "sha256:fb04a4fb105a8c89ddfc81bf1e6162db579863d082da76d770a728faab6dc749"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I051",
+      "ordinal": 51,
+      "section": "vocabulary_and_situations",
+      "subsection": "mini_dialog",
+      "itemType": "dialog_turn",
+      "register": "casual",
+      "source": {
+        "traditional": "係呀，不過人工OK嘅。",
+        "jyutping": "hai6 aa3, bat1 gwo3 jan4 gung1 OK ge3.",
+        "morphemeGloss": "yes SFP but salary OK ATTR",
+        "english": "Yeah, but the pay is OK."
+      },
+      "sourceHash": "sha256:d58e4eef126270f604c24a175dab740b19edebab7bf5edbcf9d175bb42ca037a"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I052",
+      "ordinal": 52,
+      "section": "grammar_patterns",
+      "subsection": "basic_word_order",
+      "itemType": "sentence",
+      "register": "standard",
+      "source": {
+        "traditional": "我食飯。",
+        "jyutping": "ngo5 sik6 faan6",
+        "morphemeGloss": "I eat rice",
+        "english": "I eat rice."
+      },
+      "sourceHash": "sha256:7a10a13b942a8e12cd5bac57194a1b4886a38a49ab3b15dabcff85ee4cedd7c6"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I053",
+      "ordinal": 53,
+      "section": "grammar_patterns",
+      "subsection": "basic_word_order",
+      "itemType": "sentence",
+      "register": "standard",
+      "source": {
+        "traditional": "佢睇書。",
+        "jyutping": "keoi5 tai2 syu1",
+        "morphemeGloss": "he/she read book",
+        "english": "He/She reads a book."
+      },
+      "sourceHash": "sha256:50a3f9d585fd7b6014351ae5e3934947720a0a2c3adea4253af10612c5235e33"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I054",
+      "ordinal": 54,
+      "section": "phonics_drill",
+      "subsection": "long_aa_vs_short_a",
+      "itemType": "phonics_pair",
+      "register": null,
+      "source": {
+        "ipa": "/saːm˥/ vs /sɐm˥/",
+        "traditionalA": "三",
+        "traditionalB": "心",
+        "jyutpingA": "saam1",
+        "jyutpingB": "sam1",
+        "englishA": "three",
+        "englishB": "heart"
+      },
+      "sourceHash": "sha256:21fdcded02f546e3f169b7da312b8bcf68603d1dfa63fe9934a99a37b9b2a0e0"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I055",
+      "ordinal": 55,
+      "section": "phonics_drill",
+      "subsection": "long_aa_vs_short_a",
+      "itemType": "phonics_pair",
+      "register": null,
+      "source": {
+        "ipa": "/kaːn˥/ vs /kɐn˥/",
+        "traditionalA": "間",
+        "traditionalB": "根",
+        "jyutpingA": "gaan1",
+        "jyutpingB": "gan1",
+        "englishA": "room; between",
+        "englishB": "root"
+      },
+      "sourceHash": "sha256:e02d66b503e1014ac92afd13e8b124326d3d05aef2cca505e576fb0fa7947bb6"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I056",
+      "ordinal": 56,
+      "section": "phonics_drill",
+      "subsection": "long_aa_vs_short_a",
+      "itemType": "phonics_pair",
+      "register": null,
+      "source": {
+        "ipa": "/taːm˥/ vs /tɐm˥/",
+        "traditionalA": "擔",
+        "traditionalB": "耽",
+        "jyutpingA": "daam1",
+        "jyutpingB": "dam1",
+        "englishA": "to carry",
+        "englishB": "to delay"
+      },
+      "sourceHash": "sha256:8b59b5b0e1c774538e364b480eccc8228b2548fe18c186e4e6bca0d6e6b065d3"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I057",
+      "ordinal": 57,
+      "section": "phonics_drill",
+      "subsection": "long_aa_vs_short_a",
+      "itemType": "phonics_pair",
+      "register": null,
+      "source": {
+        "ipa": "/saːŋ˥/ vs /sɐŋ˥/",
+        "traditionalA": "生",
+        "traditionalB": "聲",
+        "jyutpingA": "saang1",
+        "jyutpingB": "seng1",
+        "englishA": "to be born; raw",
+        "englishB": "voice; sound"
+      },
+      "sourceHash": "sha256:19ff2156e2e75e77f561b530c5a5582509fd4fbe6cf1a7eae2437d834ad8e3f8"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I058",
+      "ordinal": 58,
+      "section": "phonics_drill",
+      "subsection": "long_aa_vs_short_a",
+      "itemType": "phonics_pair",
+      "register": null,
+      "source": {
+        "ipa": "/saːt̚˧/ vs /sɐt̚˥/",
+        "traditionalA": "殺",
+        "traditionalB": "失",
+        "jyutpingA": "saat3",
+        "jyutpingB": "sat1",
+        "englishA": "to kill",
+        "englishB": "to lose"
+      },
+      "sourceHash": "sha256:3a8ac17fb2dc0498fb61cdc809e0626d072473abe9e42a13c36827e9714258b7"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I059",
+      "ordinal": 59,
+      "section": "phonics_drill",
+      "subsection": "long_aa_vs_short_a",
+      "itemType": "phonics_pair",
+      "register": null,
+      "source": {
+        "ipa": "/kaːp̚˧/ vs /kɐp̚˥/",
+        "traditionalA": "夾",
+        "traditionalB": "急",
+        "jyutpingA": "gaap3",
+        "jyutpingB": "gap1",
+        "englishA": "to clamp",
+        "englishB": "urgent"
+      },
+      "sourceHash": "sha256:fd471a10da932ef06b20be77c16484e73af10503e75ecfca81698f5aeb7d00c8"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I060",
+      "ordinal": 60,
+      "section": "phonics_drill",
+      "subsection": "long_aa_vs_short_a",
+      "itemType": "phonics_pair",
+      "register": null,
+      "source": {
+        "ipa": "/faːn˥/ vs /fɐn˥/",
+        "traditionalA": "翻",
+        "traditionalB": "分",
+        "jyutpingA": "faan1",
+        "jyutpingB": "fan1",
+        "englishA": "to return",
+        "englishB": "to divide"
+      },
+      "sourceHash": "sha256:c6f71830a1ace7ca9b307bfb9c0b535f4abf25f56b91c547c513d0838a4fd548"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I061",
+      "ordinal": 61,
+      "section": "phonics_drill",
+      "subsection": "long_aa_vs_short_a",
+      "itemType": "phonics_pair",
+      "register": null,
+      "source": {
+        "ipa": "/laːm˨˩/ vs /lɐm˨˩/",
+        "traditionalA": "藍",
+        "traditionalB": "林",
+        "jyutpingA": "laam4",
+        "jyutpingB": "lam4",
+        "englishA": "blue",
+        "englishB": "forest"
+      },
+      "sourceHash": "sha256:7cd218361db385712463aa6f70d6dc0cc8f0b271f39257a6d3b55b16dbe97403"
+    }
+  ]
+}
