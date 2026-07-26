@@ -1,4 +1,8 @@
-# Handoff
+# Handoff and recovery
+
+This file owns recovery procedure only. Current project facts and work order live in
+[`docs/current/PROJECT-STATE.md`](docs/current/PROJECT-STATE.md); operating policy
+lives in [`docs/current/00-START-HERE.md`](docs/current/00-START-HERE.md).
 
 ## Restore first
 
@@ -9,73 +13,66 @@ git status
 git log --oneline --decorate -5
 ```
 
-The recovery ZIP must include `.git/`.
+A full recovery archive must include `.git/`. A minimal runtime package must not.
+
+## Clean generated verification output
+
+Verification may create or refresh files under `validation/current/`. Those files are
+verifier byproducts unless an explicit reviewed task claims them. Before applying a
+patch or evaluating branch cleanliness:
+
+```bash
+git restore --staged --worktree validation/current 2>/dev/null || true
+git clean -f validation/current
+git status --short
+```
+
+Review the `git clean` preview first when unrelated local files may be present:
+
+```bash
+git clean -nd validation/current
+```
 
 ## Applying a handoff patch
 
-Generated verification snapshots may be dirty after `npm run verify:all`. They are not canonical patch inputs. Use this sequence before applying the next patch:
-
 ```bash
 git am --abort 2>/dev/null || true
-git restore --staged --worktree validation/current
-git am /path/to/canto-span-version.patch
+git restore --staged --worktree validation/current 2>/dev/null || true
+git am /path/to/canto-span.patch
 npm run verify:all
-git restore --staged --worktree validation/current
+git restore --staged --worktree validation/current 2>/dev/null || true
+git status --short
 ```
 
-Current release audits must reference a checked-in construction-status baseline under `data/release-baselines/` and pin it by SHA-256. Do not store commit or tree object IDs from any clone. Generate the next baseline from the clean released state with `npm run release:baseline -- <version>`.
+Do not apply a patch over unrelated local changes. Do not restore or delete files
+outside the explicitly reviewed generated-output scope.
 
-## Binding state
+## Release baselines
 
-- runtime: **v0.5.216**
-- runtime labels / current construction notes: **133 / 133**
-- workflow: **133 available / 0 parked**
-- retired labels: **48**
-- `supported_productive`: **0**
-- `provisional`: **0**
-- `research_pending`: **79**
-- current panel focal constructions: PFV and RUL, both `research_pending`
+Release audits use a checked-in construction-status baseline under
+`data/release-baselines/`, pinned by SHA-256. Do not use clone-specific commit or
+tree object IDs as a portable release baseline.
 
-Workflow availability is owned by `data/parked-constructions.json`, not by an
-active-note whitelist. The blacklist is currently empty. Legacy workflow fields
-inside grammar-note frontmatter are compatibility metadata only.
+Generate a future baseline from a clean released state:
 
-There is no repository-wide grammar freeze. Agents may select the highest-benefit
-bounded non-parked task, but new grammar, broadenings, splits, status transitions,
-and runtime changes still require their applicable evidence and verification
-gates. When a parked item becomes the best target, recommend unpark before doing
-substantive work.
+```bash
+npm run release:baseline -- <version>
+```
 
-## Evidence model
+## Resume repository work
 
-Every qualified respondent uses the same locked instrument and inclusion
-criteria. Promotion depends on usable adjudicated judgments per critical item:
-10 for `provisional` and 30 for `supported_productive` from a locked clean
-instrument. Historical PFV and RUL instruments do not currently satisfy those
-requirements.
+Read in this order:
 
-## Read next
+1. [`AGENTS.md`](AGENTS.md)
+2. [`docs/current/00-START-HERE.md`](docs/current/00-START-HERE.md)
+3. [`docs/current/PROJECT-STATE.md`](docs/current/PROJECT-STATE.md)
+4. [`docs/current/AGENT-WORKFLOW-SETTINGS.md`](docs/current/AGENT-WORKFLOW-SETTINGS.md)
+5. [`docs/current/CODEX-ISSUE-WORKFLOW.md`](docs/current/CODEX-ISSUE-WORKFLOW.md)
+6. [`docs/current/MULTI-AGENT-COORDINATION.md`](docs/current/MULTI-AGENT-COORDINATION.md)
+7. [`docs/current/USER-MERGE-REVIEW.md`](docs/current/USER-MERGE-REVIEW.md)
 
-1. `docs/current/PROJECT-STATE.md`
-2. `docs/current/DOCTRINE.md`
-3. `docs/current/DEFINITION-OF-DONE.md`
-4. `docs/current/GOVERNANCE.md`
-5. `docs/current/MULTI-AGENT-COORDINATION.md`
-6. `docs/current/USER-MERGE-REVIEW.md`
-7. `docs/current/TESTING.md`
-8. `grammar/README.md`
-9. `GRAMMAR-INDEX.md`
-10. `docs/research/CURRENT-RESEARCH-PROVENANCE.md`
-11. `docs/research/README.md`
+Then inspect live GitHub intake and work-claim issues. A handoff note, old branch,
+local patch, or earlier prompt does not preserve pickup or merge authority.
 
-## Next substantive work
-
-Follow the priorities and authorization boundaries in `docs/current/`. Research
-records under `docs/research/` are evidence and decision history only; their
-completion does not change grammar status or authorize runtime work.
-
-The v0.5.216 full review closed all 52 original unsupported/internal ontology
-dispositions without status promotion or retirement. Subsequent work should
-select the most beneficial bounded available item, consult readiness and unresolved
-work as evidence rather than as a queue, and avoid reopening completed reviews
-without a concrete reason.
+Historical research and adjudication reports may explain how the project reached its
+current state. They do not replace the current contracts or present-tense snapshot.

@@ -3,27 +3,35 @@
 
 const fs = require("fs");
 const path = require("path");
+const { verifyProjectState } = require("./verify-project-state");
 
 const root = path.resolve(__dirname, "..");
 const outputIndex = process.argv.indexOf("--output");
-const requestedOutputPath = outputIndex !== -1 ? path.resolve(process.cwd(), process.argv[outputIndex + 1]) : null;
+const requestedOutputPath = outputIndex !== -1
+  ? path.resolve(process.cwd(), process.argv[outputIndex + 1])
+  : null;
 const ignoredDirectories = new Set([".git", "node_modules", "archive"]);
-const statusDirectories = [
-  "supported_productive",
-  "provisional_reaudit",
-  "provisional",
-  "research_pending",
-  "unsupported_generalization",
-  "lexicalized_only",
-  "parser_heuristic",
+const currentAuthorityFiles = [
+  "README.md",
+  "AGENTS.md",
+  "HANDOFF.md",
+  "docs/current/00-START-HERE.md",
+  "docs/current/PROJECT-STATE.md",
+  "docs/current/GOVERNANCE.md",
+  "docs/current/DEFINITION-OF-DONE.md",
+  "docs/current/CODEX-ISSUE-WORKFLOW.md",
+  "docs/current/AGENT-WORKFLOW-SETTINGS.md",
+  "docs/current/MULTI-AGENT-COORDINATION.md",
+  "docs/current/USER-MERGE-REVIEW.md",
+  "tools/corpus-review/README.md",
 ];
-
-function readJson(relativePath) {
-  return JSON.parse(fs.readFileSync(path.join(root, relativePath), "utf8"));
-}
 
 function read(relativePath) {
   return fs.readFileSync(path.join(root, relativePath), "utf8");
+}
+
+function readJson(relativePath) {
+  return JSON.parse(read(relativePath));
 }
 
 function walk(directory) {
@@ -34,7 +42,20 @@ function walk(directory) {
   });
 }
 
-const files = walk(root).filter((file) => !requestedOutputPath || path.resolve(file) !== requestedOutputPath);
+function acceptedBatchNumbers() {
+  const initial = readJson("data/construction-adjudications.json");
+  const numbers = Array.isArray(initial.records) && initial.records.length > 0 ? [1] : [];
+  const later = fs.readdirSync(path.join(root, "data", "construction-adjudication-batches"))
+    .map((name) => name.match(/^batch-(\d+)\.json$/))
+    .filter(Boolean)
+    .map((match) => Number(match[1]))
+    .filter((number) => number > 0);
+  return numbers.concat(later).sort((left, right) => left - right);
+}
+
+const files = walk(root).filter(
+  (file) => !requestedOutputPath || path.resolve(file) !== requestedOutputPath,
+);
 const markdownFiles = files.filter((file) => file.endsWith(".md"));
 const jsonFiles = files.filter((file) => file.endsWith(".json"));
 const errors = [];
@@ -43,9 +64,42 @@ function fail(type, file, detail) {
   errors.push({ type, file, detail });
 }
 
-function requireText(relativePath, expected, label) {
+function requirePattern(relativePath, pattern, label) {
   const text = read(relativePath);
-  if (!text.includes(expected)) fail("stale_documented_value", relativePath, `${label}: expected ${JSON.stringify(expected)}`);
+  if (!pattern.test(text)) {
+    fail("missing_current_contract", relativePath, label);
+  }
+}
+
+function forbidPattern(relativePath, pattern, label) {
+  const text = read(relativePath);
+  const match = text.match(pattern);
+  if (match) {
+    fail(
+      "contradictory_current_text",
+      relativePath,
+      `${label}: found ${JSON.stringify(match[0])}`,
+    );
+  }
+}
+
+function requireSingleOwner(pattern, ownerPath, label) {
+  const occurrences = currentAuthorityFiles.flatMap((relativePath) => {
+    const text = read(relativePath);
+    return [...text.matchAll(pattern)].map((match) => ({
+      file: relativePath,
+      value: match[0],
+    }));
+  });
+  const outsideOwner = occurrences.filter((item) => item.file !== ownerPath);
+  const ownerOccurrences = occurrences.filter((item) => item.file === ownerPath);
+  if (ownerOccurrences.length !== 1 || outsideOwner.length) {
+    fail(
+      "duplicate_current_authority",
+      ownerPath,
+      `${label}: owner occurrences=${ownerOccurrences.length}; outside owner=${outsideOwner.map((item) => item.file).join(", ") || "none"}`,
+    );
+  }
 }
 
 for (const file of jsonFiles) {
@@ -61,119 +115,190 @@ for (const file of markdownFiles) {
   const text = fs.readFileSync(file, "utf8");
   for (const match of text.matchAll(linkPattern)) {
     let target = match[1].trim();
-    if (!target || target.startsWith("#") || /^(https?:|mailto:|sandbox:)/i.test(target)) continue;
-    if (target.startsWith("<") && target.endsWith(">")) target = target.slice(1, -1);
+    if (
+      !target
+      || target.startsWith("#")
+      || /^(https?:|mailto:|sandbox:)/i.test(target)
+    ) continue;
+    if (target.startsWith("<") && target.endsWith(">")) {
+      target = target.slice(1, -1);
+    }
     target = target.split("#")[0];
     if (!target) continue;
     const absolute = target.startsWith("/")
       ? path.join(root, target.replace(/^\/+/, ""))
       : path.resolve(path.dirname(file), target);
     if (!fs.existsSync(absolute)) {
-      errors.push({ type: "broken_local_link", file: path.relative(root, file), target });
+      fail("broken_local_link", path.relative(root, file), target);
     }
   }
 }
 
-const packageJson = readJson("package.json");
-const manifest = readJson("manifest.json");
-const runtimeVersion = packageJson.version;
-const mainText = read("main.js");
-
-if (manifest.version !== runtimeVersion) {
-  fail("version_mismatch", "manifest.json", `manifest ${manifest.version} != package ${runtimeVersion}`);
-}
-if (!mainText.includes(`const CANTO_SPAN_RUNTIME_VERSION = "${runtimeVersion}";`)) {
-  fail("version_mismatch", "main.js", `missing runtime constant ${runtimeVersion}`);
+const projectStateResult = verifyProjectState(root);
+if (projectStateResult.status !== "PASS") {
+  fail(
+    "project_state_contract_failed",
+    "docs/current/PROJECT-STATE.md",
+    projectStateResult.failures,
+  );
 }
 
-const statusCounts = Object.fromEntries(statusDirectories.map((status) => {
-  const directory = path.join(root, "grammar", status);
-  const count = fs.readdirSync(directory).filter((name) => name.endsWith(".md") && name !== "README.md").length;
-  return [status, count];
-}));
-const noteCount = Object.values(statusCounts).reduce((sum, count) => sum + count, 0);
-const parkedRegistry = readJson("data/parked-constructions.json");
-const parkedCount = Array.isArray(parkedRegistry.records) ? parkedRegistry.records.length : 0;
-const availableCount = noteCount - parkedCount;
-if (parkedRegistry.default_state !== "available") {
-  fail("workflow_default_mismatch", "data/parked-constructions.json", String(parkedRegistry.default_state));
+const batches = acceptedBatchNumbers();
+const acceptedBatchCount = batches.at(-1) || 0;
+const expectedBatchSequence = Array.from(
+  { length: acceptedBatchCount },
+  (_unused, index) => index + 1,
+);
+if (JSON.stringify(batches) !== JSON.stringify(expectedBatchSequence)) {
+  fail(
+    "noncontiguous_adjudication_batches",
+    "data/construction-adjudications.json and data/construction-adjudication-batches",
+    { declared_sequence: batches, expected_sequence: expectedBatchSequence },
+  );
 }
-if (parkedCount > noteCount) {
-  fail("workflow_count_mismatch", "data/parked-constructions.json", `${parkedCount} > ${noteCount}`);
+requirePattern(
+  "docs/current/PROJECT-STATE.md",
+  new RegExp(`\\| Accepted adjudication batches \\|\\s*${acceptedBatchCount}\\s*\\|`),
+  `accepted adjudication batch count must be ${acceptedBatchCount}`,
+);
+
+const agentSettings = readJson("config/agent-workflow-settings.json");
+const codexEnabled = agentSettings?.codex?.enabled === true;
+const codexState = codexEnabled ? "Available" : "Disabled";
+requirePattern(
+  "docs/current/PROJECT-STATE.md",
+  new RegExp(`\\| Codex \\|\\s*${codexState}\\s*\\|`),
+  `Codex workflow state must be ${codexState}`,
+);
+requirePattern(
+  "docs/current/AGENT-WORKFLOW-SETTINGS.md",
+  new RegExp(`codex\\.enabled:\\s*${codexEnabled}`),
+  `documented codex.enabled must be ${codexEnabled}`,
+);
+
+forbidPattern("README.md", /^## Current state$/m, "README must not own a state ledger");
+forbidPattern("HANDOFF.md", /^## Binding state$/m, "HANDOFF must not own a state ledger");
+forbidPattern("docs/current/00-START-HERE.md", /^## Current baseline$/m, "durable contract must not own volatile counts");
+forbidPattern("README.md", /expert-adjudicated identities:\s*\*\*\d+/i, "README adjudication count");
+forbidPattern("HANDOFF.md", /research_pending`:\s*\*\*\d+/i, "HANDOFF status count");
+forbidPattern("docs/current/00-START-HERE.md", /completed expert adjudications:\s*\*\*\d+/i, "START-HERE adjudication count");
+
+requireSingleOwner(
+  /\| Expert-adjudicated UUIDs \| \d+ \|/g,
+  "docs/current/PROJECT-STATE.md",
+  "adjudicated identity count",
+);
+requireSingleOwner(
+  /\| Pending UUID adjudications \| \d+ \|/g,
+  "docs/current/PROJECT-STATE.md",
+  "pending identity count",
+);
+requireSingleOwner(
+  /\| Accepted adjudication batches \| \d+ \|/g,
+  "docs/current/PROJECT-STATE.md",
+  "accepted batch count",
+);
+
+for (const [relativePath, pattern, label] of [
+  ["README.md", /docs\/current\/PROJECT-STATE\.md/, "README project-state link"],
+  ["README.md", /docs\/current\/00-START-HERE\.md/, "README contract link"],
+  ["AGENTS.md", /config\/agent-workflow-settings\.json/, "agent settings link"],
+  ["HANDOFF.md", /docs\/current\/PROJECT-STATE\.md/, "handoff project-state link"],
+  ["docs/current/00-START-HERE.md", /PROJECT-STATE\.md/, "contract project-state link"],
+  ["docs/current/00-START-HERE.md", /AGENT-WORKFLOW-SETTINGS\.md/, "contract agent-settings link"],
+  ["docs/current/00-START-HERE.md", /USER-MERGE-REVIEW\.md/, "contract merge-gate link"],
+  ["docs/current/CODEX-ISSUE-WORKFLOW.md", /config\/agent-workflow-settings\.json/, "routing availability link"],
+]) {
+  requirePattern(relativePath, pattern, label);
 }
 
-const retiredMatch = read("grammar/retired/README.md").match(/\*\*Current retired labels:\*\*\s*(\d+)/);
-const retiredCount = retiredMatch ? Number(retiredMatch[1]) : null;
-if (retiredCount === null) fail("missing_documented_value", "grammar/retired/README.md", "Current retired labels");
-
-const testIndex = readJson("tests/construction-test-index.json");
-const regression = readJson("tests/fixtures/regression-snapshots.json");
-const npCases = readJson("tests/fixtures/np-subsystem.json");
-const coverage = testIndex.files.reduce((counts, entry) => {
-  counts[entry.state] = (counts[entry.state] || 0) + 1;
-  return counts;
-}, {});
-const assertionCount = testIndex.files.reduce((sum, entry) => sum + Number(entry.executable_case_count || 0), 0);
-
-if (testIndex.active_construction_count !== noteCount || testIndex.files.length !== noteCount) {
-  fail("construction_count_mismatch", "tests/construction-test-index.json", `${testIndex.active_construction_count}/${testIndex.files.length} != ${noteCount}`);
+if (!codexEnabled) {
+  requirePattern(
+    "AGENTS.md",
+    /may not be targeted, assigned, reassigned, claimed, or resumed by Codex/,
+    "disabled Codex assignment rule",
+  );
+  requirePattern(
+    "docs/current/CODEX-ISSUE-WORKFLOW.md",
+    /While Codex workflows are disabled/,
+    "disabled routing section",
+  );
+  requirePattern(
+    "docs/current/CODEX-ISSUE-WORKFLOW.md",
+    /may target only ChatGPT or human action/,
+    "allowed disabled targets",
+  );
+  requirePattern(
+    "docs/current/PROJECT-STATE.md",
+    /may target only ChatGPT or human action/,
+    "project-state disabled targets",
+  );
 }
 
-for (const relativePath of ["README.md", "HANDOFF.md", "docs/current/00-START-HERE.md"]) {
-  requireText(relativePath, `v${runtimeVersion}`, "runtime version");
-  requireText(relativePath, `${noteCount} / ${noteCount}`, "runtime/note count");
-  requireText(relativePath, `${availableCount} available / ${parkedCount} parked`, "workflow availability count");
-  requireText(relativePath, `retired labels: **${retiredCount}**`, "retired-label count");
-  requireText(relativePath, "`research_pending`: **" + statusCounts.research_pending + "**", "research-pending count");
+requirePattern(
+  "docs/current/GOVERNANCE.md",
+  /one anonymized native-Cantonese panel/,
+  "role-neutral panel",
+);
+requirePattern(
+  "docs/current/DEFINITION-OF-DONE.md",
+  /No respondent receives special status or weight/,
+  "equal respondent weight",
+);
+requirePattern(
+  "docs/current/00-START-HERE.md",
+  /No named person, relationship, private reviewer, expert title, or recruitment channel receives special status/,
+  "no special reviewer role",
+);
+
+const staleCurrentPatterns = [
+  { pattern: /\bSpeaker A\b/i, label: "fixed Speaker A role" },
+  { pattern: /\bSpeaker B\b/i, label: "fixed Speaker B role" },
+  { pattern: /two[- ]speaker system/i, label: "fixed two-speaker system" },
+  { pattern: /named reviewer receives special/i, label: "named reviewer special status" },
+  { pattern: /spouse reviewer/i, label: "spouse reviewer role" },
+];
+for (const relativePath of currentAuthorityFiles) {
+  for (const { pattern, label } of staleCurrentPatterns) {
+    forbidPattern(relativePath, pattern, label);
+  }
 }
 
-requireText("docs/current/CONSTRUCTION-NOTES.md", `canonical ${noteCount}-note construction registry`, "construction-note canonical count");
-requireText("docs/current/CONSTRUCTION-NOTES.md", `exactly ${noteCount} current construction notes;`, "construction-note mechanical count");
-requireText("docs/current/CONSTRUCTION-NOTES.md", `exactly ${availableCount} available and ${parkedCount} parked constructions`, "construction-note workflow count");
-
-requireText("docs/current/PROJECT-STATE.md", `| Runtime labels | ${noteCount} |`, "runtime labels");
-requireText("docs/current/PROJECT-STATE.md", `| Current construction notes | ${noteCount} |`, "construction notes");
-requireText("docs/current/PROJECT-STATE.md", `| Available construction notes | ${availableCount} |`, "available workflow notes");
-requireText("docs/current/PROJECT-STATE.md", `| Parked construction notes | ${parkedCount} |`, "parked workflow notes");
-requireText("docs/current/PROJECT-STATE.md", `| Retired labels | ${retiredCount} |`, "retired labels");
-for (const status of statusDirectories) {
-  requireText("docs/current/PROJECT-STATE.md", `| \`${status}\` | ${statusCounts[status]} |`, `${status} project-state count`);
-  requireText("grammar/README.md", `| [\`${status}/\`](./${status}/) | ${statusCounts[status]} |`, `${status} grammar table count`);
-  requireText(`grammar/${status}/README.md`, `**Current construction notes:** ${statusCounts[status]}`, `${status} folder count`);
-}
-
-requireText("README.md", `aggregate regression: **${regression.cases.length}** cases`, "README regression count");
-requireText("README.md", `NP subsystem: **${npCases.cases.length}** cases`, "README NP count");
-requireText("README.md", `per-construction assertions: **${assertionCount.toLocaleString("en-US")}**`, "README assertion count");
-requireText("README.md", `construction test files: **${testIndex.files.length}**`, "README test-file count");
-requireText("docs/current/TESTING.md", `- ${regression.cases.length} exact regression cases;`, "testing regression count");
-requireText("docs/current/TESTING.md", `- ${npCases.cases.length} NP-subsystem cases;`, "testing NP count");
-requireText("docs/current/TESTING.md", `- ${assertionCount.toLocaleString("en-US")} per-construction assertions across ${testIndex.files.length} construction files.`, "testing assertion count");
-requireText(
-  "docs/current/TESTING.md",
-  `Current coverage is ${coverage.positive_and_boundary || 0} positive-and-boundary, ${coverage.positive_only || 0} positive-only, ${coverage.implementation_positive_only || 0} implementation-only, and ${coverage.compatibility_alias_only || 0} compatibility-alias-only.`,
-  "testing coverage counts"
+requirePattern(
+  "docs/current/CODEX-ISSUE-WORKFLOW.md",
+  /parent repository intake remains ChatGPT-owned/,
+  "local corpus execution preserves parent ownership",
+);
+requirePattern(
+  "tools/corpus-review/README.md",
+  /Keep the parent repository intake owned by ChatGPT/,
+  "corpus guide preserves parent ownership",
+);
+requirePattern(
+  "tools/corpus-review/README.md",
+  /without transferring the parent issue, expert\s+classification, PR readiness, or merge authority/,
+  "human corpus step does not transfer authority",
 );
 
 const result = {
-  schema: "canto-span-documentation-consistency-v3",
-  checkpoint: `v${runtimeVersion}-current`,
+  schema: "canto-span-documentation-consistency-v4",
+  checkpoint: `v${readJson("package.json").version}-current`,
   status: errors.length === 0 ? "PASS" : "FAIL",
   json_files: jsonFiles.length,
   markdown_files: markdownFiles.length,
   broken_local_links: errors.filter((error) => error.type === "broken_local_link").length,
+  canonical_owners: {
+    volatile_project_state: "docs/current/PROJECT-STATE.md",
+    agent_availability: "config/agent-workflow-settings.json",
+    task_routing: "docs/current/CODEX-ISSUE-WORKFLOW.md",
+    merge_authorization: "docs/current/USER-MERGE-REVIEW.md",
+  },
   canonical_counts: {
-    runtime_version: runtimeVersion,
-    construction_notes: noteCount,
-    workflow_available: availableCount,
-    workflow_parked: parkedCount,
-    retired_labels: retiredCount,
-    statuses: statusCounts,
-    regression_cases: regression.cases.length,
-    np_cases: npCases.cases.length,
-    construction_files: testIndex.files.length,
-    construction_assertions: assertionCount,
-    coverage,
+    accepted_adjudication_batches: acceptedBatchCount,
+    codex_enabled: codexEnabled,
+  },
+  delegated_checks: {
+    project_state: projectStateResult.status,
   },
   errors,
 };

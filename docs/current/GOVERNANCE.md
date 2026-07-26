@@ -1,81 +1,131 @@
 # Governance, evidence, surveys, and release workflow
 
-This is the current operational policy. Promotion thresholds are in
-[`DEFINITION-OF-DONE.md`](DEFINITION-OF-DONE.md); permanent identity and
-adjudication rules are in [`CONSTRUCTION-IDENTITY.md`](CONSTRUCTION-IDENTITY.md)
-and [`CONSTRUCTION-ADJUDICATION.md`](CONSTRUCTION-ADJUDICATION.md).
+This document owns evidence, linguistic status, native-panel and survey policy,
+construction dispositions, and release discipline. Promotion thresholds are in
+[`DEFINITION-OF-DONE.md`](DEFINITION-OF-DONE.md); identity and adjudication rules
+are in [`CONSTRUCTION-IDENTITY.md`](CONSTRUCTION-IDENTITY.md) and
+[`CONSTRUCTION-ADJUDICATION.md`](CONSTRUCTION-ADJUDICATION.md).
+
+Volatile counts and current work order belong only in
+[`PROJECT-STATE.md`](PROJECT-STATE.md).
 
 ## 1. State ownership
 
 | State dimension | Canonical owner |
 |---|---|
-| UUID, code, canonical name, family, profile, claim layer | `data/construction-identities.json` plus accepted adjudications |
+| UUID and permanent code | `data/construction-identities.json` and the identity lock |
+| Canonical name, family, profile, and claim layer | accepted UUID-keyed adjudications |
 | Current linguistic status and note-local evidence | one note per active runtime label under `grammar/<status>/` |
 | Runtime recognition | `main.js` and executable tests |
-| Workflow availability | `data/parked-constructions.json`; every unlisted current construction is available |
-| Discovery readiness | `data/construction-candidate-readiness.json` |
-| Concurrent work intent | open semantic work-claim issues |
-| Historical provenance | research records, batch reports, retired ledgers, and Git history |
+| Construction work availability | `data/parked-constructions.json`; unlisted current constructions are available |
+| Agent workflow availability | `config/agent-workflow-settings.json` |
+| Discovery readiness | `data/construction-candidate-readiness.json` and deterministic reports |
+| Current pickup authority | latest valid ownership block in the canonical intake issue |
+| Concurrent semantic scope | matching open work claim |
+| Native-panel and survey evidence | active versioned review-packet records |
+| Corpus candidates and decisions | construction-specific packet, workbench, and decision ledger |
+| Per-PR merge authorization | `USER-MERGE-REVIEW.md` |
+| Historical provenance | research records, immutable batch reports, retired records, archive, and Git history |
+
+Construction availability and agent availability are independent. Parking a
+construction does not disable an agent; disabling an agent does not park, retire,
+reclassify, or change a construction.
 
 An adjudication recommendation is not a status migration. A status move is not a
 runtime change. A passing test is not linguistic evidence. A generated readiness
-score is not a promotion decision. A work claim is not project state.
+score is not a promotion decision. An intake or work claim is not project state.
 
 ## 2. Linguistic statuses
 
 | Status | Meaning |
 |---|---|
-| `supported_productive` | Exact narrow claim satisfies every Definition-of-Done gate. |
-| `provisional_reaudit` | Earlier acceptance withdrawn pending current-standard review. |
-| `provisional` | Narrow claim satisfies provisional requirements only. |
-| `research_pending` | Concrete linguistic question exists; provisional requirements incomplete. |
-| `unsupported_generalization` | Existing broad claim lacks a defensible supported scope. |
-| `lexicalized_only` | Bounded lexical inventory retained without productivity claim. |
-| `parser_heuristic` | Internal software representation, not a productive Cantonese claim. |
+| `supported_productive` | The exact narrow claim satisfies every Definition-of-Done gate. |
+| `provisional_reaudit` | Earlier acceptance has been withdrawn pending current-standard review. |
+| `provisional` | The narrow claim satisfies provisional requirements only. |
+| `research_pending` | A concrete linguistic question exists; provisional requirements remain incomplete. |
+| `unsupported_generalization` | An existing broad claim lacks a defensible supported scope. |
+| `lexicalized_only` | A bounded lexical inventory is retained without a productivity claim. |
+| `parser_heuristic` | An internal software representation, not a productive Cantonese claim. |
 
-Workflow availability is blacklist-based. A current construction is available
-unless its permanent identity appears in `data/parked-constructions.json`.
-Parking does not retire a construction, change linguistic status, alter runtime
-behavior, or erase evidence. Retired labels never release their UUID or short code.
+A current construction is available for bounded work unless its permanent identity
+appears in `data/parked-constructions.json`. Parking does not change linguistic
+status, runtime behavior, evidence, or permanent identity. Retired records never
+release their UUID or code.
 
-Legacy `workflow_state`, `workflow_priority`, `workflow_since`, and
-`workflow_reason` note fields are non-authoritative compatibility metadata.
+Legacy grammar-note workflow fields are non-authoritative compatibility metadata.
 
 ## 3. Evidence rules
 
-Every language claim needs proposition-level source records with exact locators.
-Classify each relationship as support, restriction, contradiction, competing
-analysis, surface attestation, or background. Only verified scope-matched support
-contributes to promotion.
+Every language claim requires proposition-level external source records with exact
+locators, supported scope, restrictions, limitations, contradictions, and competing
+analyses. Only verified scope-matched support contributes to promotion.
 
-Every corpus candidate used as evidence must be reviewed as genuine, false
-positive, ambiguous, or unusable. Totals account for the complete candidate
-inventory. Reprints, mirrors, copied examples, and shared datasets are not
-independent sources.
+Attestation proves occurrence in its documented context. It does not establish
+unrestricted productivity, frequency, dialect-wide naturalness, or the parser's
+preferred analysis. Reprints, mirrors, copied examples, and one shared dataset are
+not independent sources.
 
-Lexical entries may establish token identity, pronunciation, broad category, and
-lexical restrictions. Parser output, fixtures, probes, render checks, regressions,
-and held-out tests measure implementation only.
+Lexical resources may establish token identity, pronunciation, broad category, and
+lexical restrictions. Parser output, fixtures, generated probes, render checks,
+regressions, discovery ranks, and held-out tests measure implementation or workflow
+state only.
 
-Current evidence locations:
+Publication attestation alone cannot overcome contradictory naturalness evidence.
+Do not invent dialect, register, pragmatic, lexical, or contextual explanations to
+resolve conflict. Require stronger source diversity, controlled contrasts, explicit
+variation treatment, negative boundaries, competing analyses, role-neutral panel
+evidence, and held-out validation before retaining disputed breadth.
 
-- status notes: `grammar/`;
-- permanent identity and adjudication: `data/construction-identities.json` and
-  `data/construction-adjudication-batches/`;
-- research: `docs/research/`;
-- active panel policy: `review-packets/native-panel/active-v2/`;
-- retired and superseded materials: retired ledgers, `archive/`, and Git history.
+Current evidence locations include:
 
-## 4. Native-panel and survey policy
+- status notes under `grammar/`;
+- identity and adjudication data under `data/`;
+- source-linked research under `docs/research/`;
+- native-panel records under `review-packets/native-panel/active-v2/`;
+- corpus packets under `review-packets/corpus-review/` and `external-evidence/`;
+- retired and superseded materials in immutable reports, archive, and Git history.
+
+## 4. Corpus policy
+
+Mechanical extraction and expert evidence review are separate stages.
+
+Every extraction task must:
+
+1. use an explicit checked-in source allowlist or frozen distribution manifest;
+2. define one deterministic query and stable candidate-ID namespace;
+3. preserve exact text and span, source location and hash, context, duplicate group,
+   query provenance, and available token/POS/Jyutping and participant metadata;
+4. retain high-recall competing analyses rather than silently filtering them by the
+   desired construction;
+5. render deterministic inventories and summaries;
+6. mark candidates as requiring expert review;
+7. change no evidence, readiness, status, identity, runtime, survey, or release state.
+
+Every candidate used as evidence must later be classified as `genuine`,
+`false_positive`, `ambiguous`, or `unusable`, with totals accounting for the complete
+inventory. Candidate counts and POS mappings do not establish membership.
+
+When generation requires local corpus access, the parent repository issue remains
+with its existing agent owner. One bounded human-action issue may supply exact local
+commands and expected outputs. Completing that step does not transfer repository
+ownership, linguistic judgment, PR readiness, or merge authority.
+
+## 5. Native-panel and survey policy
 
 All eligible respondents form one anonymized native-Cantonese panel. They use the
-same instrument, instructions, eligibility screen, quality rules, and adjudication
-criteria. No respondent receives a private evidentiary role or special weight.
+same instrument, instructions, eligibility screen, quality rules, adjudication
+criteria, and evidentiary weight. No named person, relationship, private reviewer,
+expert title, or recruitment channel receives special status.
 
-The evidence unit is one usable adjudicated judgment on one critical item. Record
-total and eligible submissions, usable judgments per critical item, minimum item-
-level coverage, instrument version and lock state, recruitment channel, assigned
-counterbalanced list, quality-screen state, exclusions, and reasons.
+The evidence unit is one usable adjudicated judgment on one critical item. Record:
+
+- total and eligible submissions;
+- usable judgments per critical item and minimum item-level coverage;
+- instrument version, lock state, and counterbalanced list;
+- recruitment channel and eligibility screen;
+- quality flags, probable duplicates, exclusions, and reasons;
+- manual adjudication decisions;
+- version mismatch and identifying free-text handling.
 
 ### Instrument lifecycle
 
@@ -83,90 +133,76 @@ counterbalanced list, quality-screen state, exclusions, and reasons.
 `instrument_audit` → `instrument_locked` → `collection` →
 `mid_collection_audit` → `adjudicated` → `construction_disposition` → `closed`
 
-Do not edit a live locked instrument. A material change to wording, context, scale,
-fillers, branching, or randomization creates a new version.
+A pilot diagnoses instrument quality only. Do not edit a live locked instrument.
+Material changes to wording, context, scale, fillers, branching, or randomization
+create a new version whose responses are adjudicated separately.
 
-A clean wave normally uses two or three compatible focal questions, 24–36 rated
-items, 8–15 unrelated fillers or calibration items, fully labelled graded
-responses, a genuine uncertainty option, counterbalancing, contexts for ellipsis,
-interpretation questions for ambiguity, and optional correction/context fields.
-Semantic absurdity is not a grammatical boundary.
+A clean wave normally uses compatible focal questions, fully labelled graded
+responses, a genuine uncertainty option, unrelated fillers or calibration items,
+counterbalancing, contexts for ellipsis, interpretation questions for ambiguity,
+and optional correction or context fields. Semantic absurdity is not a grammatical
+boundary.
 
-Flag incomplete responses, failed eligibility, probable duplicates, implausibly
-short completions, calibration anomalies, straight-lining, contradictory responses,
-missing interpretation answers, identifying free text, version mismatch, and list
-imbalance. A recorded manual adjudication decides inclusion.
+Promotion thresholds and every additional requirement are defined only in
+`DEFINITION-OF-DONE.md`. Do not replace that checklist with a submission total or a
+shortened rule elsewhere.
 
-Project thresholds:
-
-- pilot: 5–10 usable judgments per item for instrument diagnosis only;
-- `provisional`: at least 10 usable adjudicated judgments per critical positive and
-  boundary item from one clean role-neutral instrument;
-- `supported_productive`: at least 30 usable adjudicated judgments per critical
-  item from a locked clean instrument, plus all non-panel requirements.
-
-Legacy or defective instruments remain diagnostic evidence only.
-
-## 5. Work selection, research, and implementation
+## 6. Work selection and substantive change
 
 There is no active-note whitelist, repository-wide grammar freeze, or read-only
 research lane. Agents may select any non-parked current construction when it is the
-most beneficial bounded task. Selection considers learner value, evidence gaps,
-ontology risk, implementation leverage, dependencies, open semantic claims, and the
-cost of leaving the issue unresolved.
+highest-benefit bounded task after considering learner value, evidence gaps,
+ontology risk, implementation leverage, dependencies, active semantic claims, and
+the cost of leaving the issue unresolved.
 
-Research is not required to stop at a handoff boundary. One coherent claim may
-include source review, evidence recording, adjudication, runtime implementation,
-tests, and documentation when all affected state dimensions are declared and every
-applicable gate is met. Research findings alone still do not authorize promotion or
-runtime broadening.
+When a parked construction appears to be the best target, recommend unpark and state:
 
-When a parked construction appears to be the best target, the agent must recommend
-unpark and state:
-
-1. why the existing parking reason no longer controls;
+1. why the existing reason no longer controls;
 2. the expected project benefit;
-3. the evidence, dependency, or implementation change that justifies review;
-4. the proposed bounded scope and safeguards.
+3. the changed evidence or dependency;
+4. the bounded scope and safeguards.
 
-The construction remains parked until a reviewed change removes its entry from
-`data/parked-constructions.json`.
+The item remains parked until a reviewed change removes its blacklist entry.
+
+One coherent claim may include source review, evidence recording, adjudication,
+implementation, tests, and documentation when every affected state dimension and
+gate is declared. Research findings alone still do not authorize promotion or
+runtime broadening.
 
 For substantive construction work:
 
-1. Select a bounded UUID-keyed linguistic question.
-2. Verify sources and classify every corpus example used as evidence.
-3. State the exact profile, competing analyses, positive cases, and boundaries.
-4. Record or supersede expert adjudication when identity or ontology changes.
-5. Create a role-neutral instrument only after the claim and contrasts are source-
-   narrowed and instrument-ready.
-6. Compare the accepted profile with the actual runtime path line by line.
-7. Implement only the narrow evidence-faithful change.
-8. Update tests, status note, identity relationships, and generated discovery state
-   in one coherent branch or integration step.
-9. Run the relevant verification profiles.
-10. Report implementation results separately from linguistic confidence.
-11. Accept, revise, quarantine, split, merge, supersede, or retire.
+1. select one bounded UUID-keyed question;
+2. verify external sources and classify every corpus example used as evidence;
+3. state the exact profile, competing analyses, positives, and boundaries;
+4. record or supersede expert adjudication when identity or ontology changes;
+5. create a role-neutral instrument only after the claim is source-narrowed and
+   instrument-ready;
+6. compare the accepted profile with runtime behavior line by line;
+7. implement only the evidence-faithful scope;
+8. update tests, status note, identity relationships, and generated state coherently;
+9. run applicable verification profiles;
+10. report implementation results separately from linguistic confidence;
+11. disposition the work explicitly.
 
-A true split requires new collision-checked UUIDs. A compatibility alias or umbrella
-cannot donate evidence automatically to successors. New grammar, broadenings,
-splits, and runtime changes remain subject to all identity, evidence, boundary,
-status, documentation, and verification gates.
+A true split requires new collision-checked UUIDs. A compatibility alias, umbrella,
+retired record, or parser representation cannot donate evidence automatically.
 
-## 6. Validation and dispositions
+## 7. Validation and dispositions
 
 Evaluate separately:
 
 1. linguistic support;
 2. implementation correctness;
 3. shared-subsystem correctness;
-4. identity and ontology consistency.
+4. identity and ontology consistency;
+5. panel and corpus evidence quality;
+6. release and documentation consistency.
 
-Possible dispositions are ACCEPT, IMPLEMENTED INFRASTRUCTURE, REVISE, QUARANTINE,
-SPLIT, MERGE, SUPERSEDE, and RETIRE. Success in one dimension cannot substitute for
-another.
+Possible dispositions include ACCEPT, IMPLEMENTED INFRASTRUCTURE, REVISE,
+QUARANTINE, SPLIT, MERGE, SUPERSEDE, and RETIRE. Success in one dimension cannot
+substitute for another.
 
-## 7. Mechanical gates
+Mechanical gates include:
 
 ```bash
 npm test
@@ -179,45 +215,25 @@ npm run verify:release
 npm run verify:all
 ```
 
-The promotion gate rejects incomplete `provisional` or `supported_productive`
-records; it never promotes them. The release gate derives status changes from a
-reviewed SHA-256-pinned baseline under `data/release-baselines/` and requires an
-audit for every status change.
+Verification may reject an incomplete state but never promotes it automatically.
 
-Create a future release baseline from the clean current release before changing
-status:
+## 8. Documentation, coordination, automation, and releases
 
-```bash
-npm run release:baseline -- <current-version>
-```
+Current policy lives under `docs/current/`; `PROJECT-STATE.md` alone owns volatile
+present-tense facts. Historical reports are immutable provenance. Entry documents
+link to specialized owners instead of copying their conclusions.
 
-## 8. Documentation, coordination, and automation discipline
+Semantic claims govern concurrent work. Integrators reconcile integration-owned
+files, regenerate deterministic outputs, make complete PRs ready, notify the user,
+and stop. Merge requires explicit approval for the specific PR and unchanged head.
 
-Per-pull-request merge authorization is governed by [`USER-MERGE-REVIEW.md`](USER-MERGE-REVIEW.md).
+Automation follows least privilege. A write-capable workflow requires an exclusive
+claim covering the workflow and target, minimal permissions, checked preconditions,
+branch-limited auditable writes, and no ability to write directly to `main`, expand
+its own scope, adjudicate evidence, promote status, deploy surveys, publish releases,
+merge, enable auto-merge, or infer user approval.
 
-Current policy lives under `docs/current/` and links to generated or historical
-records instead of copying their conclusions. Dated batch reports and release notes
-are immutable provenance, not current instructions.
-
-Semantic claims govern concurrent work. Workers may research and implement ordinary
-claimed scope. Integrators reconcile integration-owned files and mark complete PRs
-ready. They must then notify the user and stop; merge requires explicit approval for
-the specific PR and unchanged head before dependency-order integration continues.
-
-Automation follows least privilege rather than a blanket read-only rule:
-
-- validation-only workflows remain read-only because they need no writes;
-- write-capable automation requires an exclusive active claim covering the workflow
-  and every target;
-- permissions are explicit and minimal;
-- writes are limited to the claimed non-`main` branch or issue/PR metadata;
-- base, head, claim, target, and operation preconditions are checked;
-- every write is auditable;
-- automation cannot write directly to `main`, expand its own scope, adjudicate
-  linguistic evidence, promote status, deploy surveys, publish releases, merge,
-  enable auto-merge, or infer approval without the separately required scope, gates,
-  and explicit user approval.
-
-Do not use expected-failure commits or repair automation to complete an intentionally
-incoherent earlier state. Apply, regenerate, and verify one coherent result before
-ready state.
+Release audits use reviewed SHA-256-pinned baselines under
+`data/release-baselines/`. Runtime release packages remain minimal. Do not publish a
+release whose documentation describes a cleaner, broader, stronger, or newer state
+than canonical data and runtime implement.

@@ -1,68 +1,41 @@
 # Canto Span
 
 Canto Span is a Cantonese parser and evidence-governance project. GitHub `main`
-is the durable shared project record; runtime behavior, linguistic status,
-permanent identity, and research readiness are intentionally tracked as separate
-state dimensions.
+is the durable shared record. Runtime behavior, permanent construction identity,
+linguistic status, corpus and panel evidence, discovery readiness, and temporary
+work ownership are intentionally separate state dimensions.
 
-## Current state
+## Current project state
 
-- runtime: **v0.5.216**
-- active runtime labels / construction notes: **133 / 133**
-- construction workflow: **133 available / 0 parked**
-- retired labels: **48**
-- permanent construction identities: **181**
-- expert-adjudicated identities: **89 / 181**
-- `supported_productive`: **0**
-- `provisional`: **0**
-- `research_pending`: **79**
-- direct `boundary_ready` candidates: **1** (`AB30`)
-- direct `source_supported` candidates: **62**
-- current narrowing candidates: **30**
-- excluded non-language/internal records: **38**
-- current AB30 corpus packet: **5 reviewed; 2 genuine; 3 false positives;
-  `partial_only` readiness effect**
-- active survey: **`YUE-JUDGMENT-PILOT-01` remains in collection**
-- follow-up survey: **`followup-draft-v1` remains non-deployable**
+The sole present-tense snapshot is
+[`docs/current/PROJECT-STATE.md`](docs/current/PROJECT-STATE.md). It owns volatile
+counts, current milestones, survey and corpus state, agent availability, and work
+order. Do not copy those values into additional current-state summaries.
 
-The remaining linguistic-status folders contain 37
-`unsupported_generalization`, 2 `lexicalized_only`, and 15 `parser_heuristic`
-notes. Expert adjudication has not silently changed status paths or runtime
-matchers.
+## Authority map
 
-Work selection is blacklist-based. All current construction notes are available
-unless their permanent identities appear in
-[`data/parked-constructions.json`](data/parked-constructions.json). The registry is
-currently empty. There is no repository-wide grammar freeze; every substantive
-change remains subject to the applicable identity, evidence, boundary, status,
-and verification gates.
+- Mandatory cross-cutting contract:
+  [`docs/current/00-START-HERE.md`](docs/current/00-START-HERE.md)
+- Agent bootstrap:
+  [`AGENTS.md`](AGENTS.md)
+- Current project snapshot:
+  [`docs/current/PROJECT-STATE.md`](docs/current/PROJECT-STATE.md)
+- Evidence, survey, status, and release governance:
+  [`docs/current/GOVERNANCE.md`](docs/current/GOVERNANCE.md)
+- Task routing:
+  [`docs/current/CODEX-ISSUE-WORKFLOW.md`](docs/current/CODEX-ISSUE-WORKFLOW.md)
+- Agent availability:
+  [`docs/current/AGENT-WORKFLOW-SETTINGS.md`](docs/current/AGENT-WORKFLOW-SETTINGS.md)
+- Concurrent work claims:
+  [`docs/current/MULTI-AGENT-COORDINATION.md`](docs/current/MULTI-AGENT-COORDINATION.md)
+- Per-pull-request merge approval:
+  [`docs/current/USER-MERGE-REVIEW.md`](docs/current/USER-MERGE-REVIEW.md)
+- Construction completion thresholds:
+  [`docs/current/DEFINITION-OF-DONE.md`](docs/current/DEFINITION-OF-DONE.md)
 
-## Current validation targets
-
-- aggregate regression: **551** cases
-- NP subsystem: **43** cases
-- per-construction assertions: **1,518**
-- construction test files: **133**
-
-## Where to start
-
-Automated agents must first read [`AGENTS.md`](AGENTS.md), which directs them to
-the complete mandatory contract in
-[`docs/current/00-START-HERE.md`](docs/current/00-START-HERE.md), the concurrency
-protocol in
-[`docs/current/MULTI-AGENT-COORDINATION.md`](docs/current/MULTI-AGENT-COORDINATION.md),
-and the mandatory per-PR review gate in
-[`docs/current/USER-MERGE-REVIEW.md`](docs/current/USER-MERGE-REVIEW.md).
-
-`00-START-HERE.md` defines the authority order, non-negotiable standards,
-task-routing table, multi-agent workflow, verification matrix, forbidden patterns,
-and the reusable Codex/agent task prompt. A task prompt may narrow scope but does
-not replace that contract.
-
-The concise current baseline is
-[`docs/current/PROJECT-STATE.md`](docs/current/PROJECT-STATE.md). Historical
-release descriptions remain available through Git history and research records;
-they are not repeated as current policy.
+When two documents appear to disagree, use the narrowest canonical owner named in
+`00-START-HERE.md`. Historical research, release notes, adjudication reports, old
+issues, and Git history preserve provenance but do not override current policy.
 
 ## Verification
 
@@ -82,9 +55,16 @@ npm run verify:identities
 npm run verify:discovery
 ```
 
-## Research records
+Generated files under `validation/current/` are verifier byproducts. They are not
+canonical patch inputs and should not be committed unless a specific reviewed task
+explicitly claims them.
+
+## Research and corpus records
 
 Completed research is indexed in
 [`docs/research/CURRENT-RESEARCH-PROVENANCE.md`](docs/research/CURRENT-RESEARCH-PROVENANCE.md).
-Generated readiness reports rank work and expose evidence gaps; they never
-promote a construction automatically.
+Corpus extraction and review tooling is documented in
+[`tools/corpus-review/README.md`](tools/corpus-review/README.md).
+
+A generated readiness score, parser match, test result, corpus count, or survey
+submission total never promotes a construction automatically.

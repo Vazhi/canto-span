@@ -1,151 +1,100 @@
 # Canto Span agent instructions
 
-This repository has one mandatory operating contract:
+Every human or automated agent must follow the mandatory project contract:
 
 [`docs/current/00-START-HERE.md`](docs/current/00-START-HERE.md)
 
-The detailed concurrency protocol is:
+Before planning or changing repository work, read these current owners:
 
-[`docs/current/MULTI-AGENT-COORDINATION.md`](docs/current/MULTI-AGENT-COORDINATION.md)
+1. [`docs/current/PROJECT-STATE.md`](docs/current/PROJECT-STATE.md) — volatile present-tense state and work order;
+2. [`docs/current/CODEX-ISSUE-WORKFLOW.md`](docs/current/CODEX-ISSUE-WORKFLOW.md) — task classification and pickup routing;
+3. [`docs/current/AGENT-WORKFLOW-SETTINGS.md`](docs/current/AGENT-WORKFLOW-SETTINGS.md) and [`config/agent-workflow-settings.json`](config/agent-workflow-settings.json) — available optional agent workflows;
+4. [`docs/current/MULTI-AGENT-COORDINATION.md`](docs/current/MULTI-AGENT-COORDINATION.md) — semantic claims, branches, overlap, and integration roles;
+5. [`docs/current/USER-MERGE-REVIEW.md`](docs/current/USER-MERGE-REVIEW.md) — the mandatory stop before merge.
 
-The mandatory ChatGPT/Codex routing contract is:
+## Mandatory sequence
 
-[`docs/current/CODEX-ISSUE-WORKFLOW.md`](docs/current/CODEX-ISSUE-WORKFLOW.md)
+Before the first repository edit:
 
-The canonical agent-workflow availability contract is:
+1. confirm the repository is `Vazhi/canto-span`;
+2. inspect current `main`, open pull requests, open intake issues, and open work-claim issue records;
+3. classify the task as ChatGPT-first, Codex-eligible, human-required, or hybrid;
+4. apply the current workflow-availability setting before choosing a pickup target;
+5. re-fetch the canonical intake issue and verify active owner, permission, `ownership_revision`, claim, branch, and PR bindings;
+6. create or update one work claim covering the smallest adequate semantic scope;
+7. create the exact `agent/<description>` branch named in the claim;
+8. declare canonical inputs, generated outputs, protected state, dependencies, reserved decisions, and required checks;
+9. implement one coherent passing state within the claim;
+10. open or update one pull request linked to the claim;
+11. bind the assigned pull-request number in the live intake metadata;
+12. when ready, inform the user and stop before merge after reporting the PR number, exact head, scope, validation, risks, and limitations;
+13. merge only after the user explicitly approves that specific PR and unchanged head. Any new commit after approval requires fresh review and approval.
 
-[`docs/current/AGENT-WORKFLOW-SETTINGS.md`](docs/current/AGENT-WORKFLOW-SETTINGS.md)
+Cached prompts, comments, labels, assignments, mentions, previous dispatch, old claims,
+and branch existence are not pickup authority. A live mismatch or disabled workflow
+requires:
 
-The mandatory per-pull-request merge gate is:
+```text
+routing result: unavailable
+repository changes: none
+```
 
-[`docs/current/USER-MERGE-REVIEW.md`](docs/current/USER-MERGE-REVIEW.md)
+## Agent availability and assignment
 
-Before planning, editing, generating, reviewing, assigning, or merging repository work:
+Task eligibility and workflow availability are separate. A task may be mechanically
+Codex-eligible while Codex workflows are disabled.
 
-1. read all five files in full;
-2. read `config/agent-workflow-settings.json` and apply its current enabled/disabled
-   state before creating or assigning an intake issue;
-3. classify the work as `ChatGPT-first`, `Codex-ready`, `human-required`, or
-   `hybrid` under the routing contract before creating a claim, branch, or edit;
-4. treat a disabled agent workflow as unavailable even when the task would otherwise
-   satisfy that agent's eligibility gate;
-5. read `docs/current/PROJECT-STATE.md`;
-6. inspect current `main`, open pull requests, and open work-claim issues;
-7. inspect open intake issues for duplicate, dependent, overlapping, reassigned, or
-   taken-over work;
-8. create or update one work-claim issue before editing;
-9. claim the smallest adequate semantic targets and regions rather than locking a
-   whole shared file unnecessarily;
-10. create the exact `agent/<description>` branch named in the claim;
-11. follow the task-routing and verification sections in the contract;
-12. use the permanent construction code and canonical name, with any legacy runtime
-    label recorded separately;
-13. keep branch changes inside the claim and update the issue before expanding scope;
-14. publish one coherent passing state in a pull request that links and closes the
-    work claim;
-15. when the pull request is ready, inform the user and stop before merge;
-16. merge only after the user explicitly approves that specific pull request and the
-    approved head commit remains unchanged.
+In that state it must remain with ChatGPT or be split into a concrete human action; it may not be targeted, assigned, reassigned, claimed, or resumed by Codex.
 
-The canonical intake issue body owns current pickup authority. After every resumed
-session and immediately before claim creation, branch creation, first repository
-edit, commit, push, pull-request readiness, or merge, re-fetch that live issue and
-its linked claim. Proceed only when the active owner, pickup permission, ownership
-revision, claim, and branch all match and the selected agent workflow remains enabled.
-Cached prompts, comments, labels, assignment, mentions, and an earlier dispatch are
-not authority. Any mismatch or disabled workflow requires `routing result:
-unavailable` and a stop without repository writes.
+Issue assignment has two layers: the machine-readable `pickup_target` /
+`active_pickup_owner` fields and the actual GitHub assignee list. Both must comply
+with `config/agent-workflow-settings.json`.
 
-Issue assignment has two independently enforced layers: the machine-readable
-`pickup_target` / `active_pickup_owner` fields and the actual GitHub issue assignee
-list. Both must comply with `config/agent-workflow-settings.json`. A disabled Codex
-workflow may not remain the pickup target, active owner, or GitHub assignee.
+Re-enabling an agent workflow permits future routing only. It does not automatically
+transfer existing issues, claims, branches, or pull requests.
 
-## ChatGPT delegation duty
+## State and evidence boundaries
 
-ChatGPT must consult `CODEX-ISSUE-WORKFLOW.md` and the agent-workflow settings for
-every Canto Span request involving repository work. When a bounded task is
-Codex-ready **and Codex workflows are enabled**, ChatGPT creates the Codex intake
-issue without waiting for the user to request delegation again, unless material
-ambiguity prevents safe scoping. ChatGPT must inform the user of every issue created,
-its bounded outcome, and its truthful dispatch status.
+There is no read-only research role. Research, evidence recording, adjudication,
+implementation, tests, documentation, and integration may be combined when one
+coherent claim declares every affected state dimension and substantive gate.
 
-When Codex workflows are disabled, ChatGPT must not create, assign, take over, or
-reassign an issue to Codex. New and reassigned pickup targets are limited to
-`chatgpt` or `human`. ChatGPT retains an executable task itself or creates a concrete
-human-targeted intake as appropriate. Re-enabling Codex later does not automatically
-transfer any existing work.
+Use `construction_code + canonical_name` for durable construction references and
+record legacy runtime labels separately. Do not use filenames, runtime aliases,
+survey-local IDs, work IDs, learner labels, or historical titles as permanent
+identity.
 
-For hybrid work, ChatGPT retains the research, judgment, policy, design, prioritization,
-or user-facing portion and delegates each bounded implementation portion only when the
-selected implementation workflow is enabled and the task becomes eligible. ChatGPT
-remains responsible for independent review of agent pull requests before presenting
-them for user merge approval.
+Parser output, fixtures, generated probes, regression success, rendering, corpus
+counts, discovery ranks, and held-out tests are implementation or workflow evidence,
+not independent linguistic evidence. Corpus extraction is mechanical; expert
+classification is separate. All eligible native respondents belong to one
+role-neutral panel with the same instrument, inclusion criteria, quality rules, and
+evidentiary weight.
 
-## Codex self-screening duty
+Do not silently change or infer construction identity, linguistic status, runtime
+behavior, survey deployment, evidence sufficiency, release state, or merge
+authorization from another state dimension.
 
-Codex must read `CODEX-ISSUE-WORKFLOW.md`, `AGENT-WORKFLOW-SETTINGS.md`, and
-`config/agent-workflow-settings.json` before creating a semantic work claim, branch,
-or edit. Labels, assignment, mentions, or dispatch are not sufficient authority.
+## Claims, automation, and generated files
 
-Codex must first verify that `codex.enabled` is true. When it is false, Codex reports
-`routing result: unavailable` and stops with no claim, no branch, and no repository
-changes. It must not continue from an earlier assignment, active claim, branch, pull
-request, cached prompt, or token-restoration assumption.
+Shared claims may touch one physical file only in disjoint semantic regions.
+Repository-wide policy, schemas, workflows, verification orchestration, and
+configured exclusive paths require an exclusive claim. Integration-owned aggregate
+and current-state files require an integrator.
 
-When enabled, Codex must also verify from the current issue body that
-`active_pickup_owner` is `codex`, `pickup_allowed` is true, and the live
-`ownership_revision` matches the claim. A takeover, reassignment, or workflow-toggle
-change supersedes every cached Codex task state.
+Automation follows least privilege. It must be claim-scoped, preconditioned,
+auditable, branch-limited, and unable to write directly to `main`, broaden its own
+scope, adjudicate evidence, promote status, deploy surveys, publish releases, merge,
+enable auto-merge, or infer user approval.
 
-If a task is ChatGPT-first, lacks an accepted specification for its Codex portion, or
-requires an unresolved expert or user decision, Codex must report `needs-chatgpt` and
-stop with no claim, no branch, and no repository changes. Codex must not reclassify a
-reserved decision as implementation merely to continue.
+Edit canonical inputs first and regenerate deterministic outputs in the same branch.
+`validation/current/` contains verifier byproducts, not patch inputs. A ready pull
+request may not contain a pending changeset.
 
-There is no read-only research role. A properly scoped enabled agent may research,
-record evidence, adjudicate, implement, test, document, and integrate in one coherent
-task when its claim covers those state dimensions and every substantive gate is met.
-This does not override routing or workflow-availability duties.
+## Conflict rule
 
-Shared claims may touch the same physical file only in disjoint semantic regions.
-Repository-wide policy, schemas, workflows, and configured exclusive paths require
-an exclusive claim. Workers must not finalize integration-owned aggregate files.
-Use a branch-local declarative changeset under `changes/pending/` when direct edits
-to a high-contention file would be unsafe; pending changesets must be applied or
-removed before a pull request becomes ready to merge.
-
-Open a draft pull request only when work is incomplete, contains a pending
-changeset, has an unresolved dependency, or still requires integration. A complete
-coherent change may open ready for review. Passing checks and integrator authority
-do not authorize merge. The agent must notify the user that the pull request is
-ready, provide its scope and validation, and wait for explicit approval before
-merging or enabling auto-merge. Any new commit after approval requires fresh review
-and approval.
-
-Automation is governed by least privilege, not a blanket read-only or no-writer
-rule. Validation-only workflows should remain read-only. Write-capable automation
-must be claim-scoped, preconditioned, auditable, branch-limited, and prohibited from
-directly writing to `main` or autonomously making linguistic, survey-deployment,
-status-promotion, release, routing-override, or merge-approval decisions. A
-user-selected workflow toggle may be enforced deterministically, but enforcement
-must not invent a different fallback target from the checked-in setting.
-
-A task prompt may narrow authorized scope. It does not override current policy,
-canonical state owners, evidence standards, identity rules, survey lifecycle,
-generated-output discipline, coordination claims, routing duties, workflow
-availability, or Git workflow unless the task explicitly updates those standards in
-the same reviewed change.
-
-Do not use historical prompts, release notes, branch descriptions, runtime aliases,
-generated readiness scores, parser tests, survey-local IDs, an intake label, an
-expired work claim, or a stale assignment as substitute authority. Do not create
-parallel ledgers, naming systems, verifiers, current-state documents, routing
-systems, workflow-setting registries, or unscoped automation.
-
-For workflow availability, `config/agent-workflow-settings.json` and
-`docs/current/AGENT-WORKFLOW-SETTINGS.md` control. For task routing,
-`docs/current/CODEX-ISSUE-WORKFLOW.md` controls subject to that availability setting.
-For per-pull-request merge authorization, `docs/current/USER-MERGE-REVIEW.md` controls
-over any broader or older merge language elsewhere. For other conflicts, follow
-`docs/current/00-START-HERE.md` and document the conflict in the pull request.
+Use the narrowest canonical owner listed in `00-START-HERE.md`. Agent availability
+is owned by the checked-in workflow setting; routing by the routing contract;
+concurrent scope by the live claim; merge permission by the per-PR review gate; and
+volatile project facts by `PROJECT-STATE.md`. Historical material never overrides a
+newer current owner.

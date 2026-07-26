@@ -1,8 +1,6 @@
 # Project state
 
-This file is the concise present-tense project snapshot. Historical release
-narratives remain in Git history and research records and do not define current
-policy or ontology.
+This file is the sole present-tense project snapshot. Live GitHub intake and work-claim issues own current execution and overlap. Historical reports and Git history explain earlier states but do not define current policy, ownership, or work order.
 
 ## Baseline
 
@@ -17,6 +15,20 @@ policy or ontology.
 | Permanent UUID records | 181 |
 | Expert-adjudicated UUIDs | 89 |
 | Pending UUID adjudications | 92 |
+| Accepted adjudication batches | 18 |
+| Promotion-ready constructions | 0 |
+
+## Agent workflow availability
+
+| Agent workflow | Current state |
+|---|---|
+| ChatGPT | Available |
+| Human action | Available |
+| Codex | Disabled |
+
+The canonical setting is [`../../config/agent-workflow-settings.json`](../../config/agent-workflow-settings.json). While Codex is disabled, new and reassigned intake issues may target only ChatGPT or human action. Codex may not remain the active pickup owner or an actual GitHub issue assignee. Re-enabling it later permits future routing only and does not transfer existing work.
+
+Agent availability is independent of construction availability, which is owned by `data/parked-constructions.json`.
 
 ## Linguistic-status inventory
 
@@ -30,111 +42,31 @@ policy or ontology.
 | `lexicalized_only` | 2 |
 | `parser_heuristic` | 15 |
 
-These counts describe status-note placement. Expert adjudication may recommend a
-rename, narrowing, split, internalization, or future status migration without
-silently moving a note or changing parser behavior.
+These counts describe current status-note placement. An accepted identity adjudication may recommend a rename, narrowing, split, internalization, or future status migration without silently moving a note or changing parser behavior.
 
 ## Identity and adjudication
 
-The permanent registry covers all 133 current and 48 retired records. UUID and
-short code are immutable; canonical name, family, profile, claim layer, and
-learner label may be revised through accepted UUID-keyed adjudication.
+The permanent registry contains 133 current and 48 retired records. UUID and short code are immutable. Canonical name, family, profile, claim layer, and learner label change only through accepted UUID-keyed adjudication.
 
-Eighteen accepted batches have adjudicated 89 records. Important consequences
-include:
+Eighteen accepted batches have adjudicated 89 records; 92 remain pending. Canonical decisions live in `data/construction-adjudications.json` and immutable batch files under `data/construction-adjudication-batches/`.
 
-- `AB30 ZoMarkedPerfectiveObjectVP` is the nearest direct candidate;
-- `AB53 ResourceInitialJungLaiFunctionClause` is the canonical identity for the
-  legacy runtime note `ResourceUseLaiFunctionRelation`;
-- broad or composite labels such as `AB05 PreverbalNegativeExperientialWrapper`,
-  `AB16 BeiPassivePermissiveAmbiguityWrapper`, `AB23 PoliteRequestWrapper`,
-  `AA04 ActionQuantityDurationWrapper`, and `AA23 CognitionShortComplementWrapper`
-  no longer compete as direct language-construction candidates;
-- Batch 08 narrows the legacy labels `CompletionVP`, `CoverbFrame`,
-  `DegreeMannerAdverbial`, `DegreeStativePredicate`, and `DesiderativeVP` to
-  `AA26 WanMarkedCompletionVP`, `AA34 PreverbalCoverbNPClause`,
-  `AA37 PostverbalDiMannerAdjustmentVP`, `AA40 HouMarkedPropertyPredicate`, and
-  `AA45 SoengVPComplementClause`;
-- Batch 09 reclassifies `AA47 MannerMotionDirectionalWrapper` as an internal
-  representation and narrows `AA46`, `AA49`, `AA53`, and `AA55` to
-  `DiMarkedNounNP`, `IndependentMotionPredicateVP`,
-  `ZyuMarkedContinuativeObjectVP`, and `SubjectJauPossessiveClause`;
-- Batch 10 reclassifies `AA66 ContextLinkedAnswerUtteranceWrapper` as an internal
-  discourse representation and narrows `AA58`, `AA62`, `AA67`, and `AA68` to
-  `JauMeNounWhQuestion`, `GwoMarkedExperientialObjectVP`,
-  `NeMarkedThematicContinuationQuestion`, and `MotionVerbDouGoalVP`;
-- Batch 11 reclassifies `AA72 EnvironmentalPredicateClauseWrapper`,
-  `AA75 BareActionPredicateRelationMember`, and
-  `AA79 PlaceInitialPredicateClauseWrapper` as internal representations and narrows
-  `AA76` and `AA77` to `BeiThemeRecipientGiveVP` and
-  `PlaceInitialJauMouExistentialClause`;
-- Batch 12 reclassifies `AA80 OvertPlaceExpressionWrapper`,
-  `AA83 MalformedStructureDiagnostic`, and `AA85 OvertMeasureChildSpan` as parser
-  representations and narrows `AA82` and `AA86` to `BinDouWhPlaceQuestion` and
-  `ModalM4ModalInterrogative`;
-- Batch 13 keeps `AA87 ModalChangePredicateCompositeWrapper` and
-  `AA88 ModalEllipsisResponseCompositeWrapper` retired, reclassifies
-  `AA90 HeterogeneousNominalStructureWrapper` as a parser representation, and
-  narrows `AA89` and `AA91` to `ModalAuxiliaryComplementVP` and
-  `DegreePropertyModifierNounNP`;
-- Batch 14 keeps `AA92 MotionPurposeDelimitedCompositeWrapper` retired,
-  narrows `AA93` and `AA94` to `OvertDestinationMotionVP` and
-  `MotionClausePurposeRelation`, renames `AA96` to
-  `UnresolvedContextDiagnostic`, and reclassifies
-  `AA97 NegatedMotionPredicateWrapper` as a parser representation;
-- Batch 15 narrows `AA98` and `AA99` to
-  `Mou5NominalExistentialPossessiveClause` and `Mou5EllipticalResponse`, keeps
-  `AB01 LexicalAndCompositionalNegativeStativeComposite` retired, reclassifies
-  `AB03 OvertNegatorPredicateWrapper` as a parser representation, and narrows
-  `AB04` to `SubjectlessM4Zi1ResponseFragment`;
-- Batch 16 keeps `AB06 Mou5ExistentialPossessiveEventComposite` and
-  `AB10 NominalModificationCompositeWrapper` retired, narrows `AB07` to
-  `VerbM4ResultPotentialVP`, reclassifies
-  `AB08 NegativePotentialDirectionalCompositeWrapper` as a parser
-  representation, and renames the internal `AB09` span to
-  `OvertAnalyzedNominalSpan`;
-- Batch 17 narrows `AB11` to `BareMeasurePredicateClause`, retains the exact
-  `AB12 JyutGokReferentDimJoengQuestion`, reclassifies
-  `AB13 CognitionPredicateContentWrapper` as a parser representation, narrows
-  `AB14` to `TrueOrdinalClassifierNominal`, and replaces the generic `AB17`
-  path profile with `Hoeng3OrientationPhrase`;
-- Batch 18 reclassifies `AB18 DirectionalZoDeicticCompositeWrapper` and
-  `AB21 ZoMarkedPerfectivePredicateWrapper` as internal representations, keeps
-  `AB19 WeatherPerfectiveObjectCompositeWrapper` and
-  `AB20 LexicalResultPerfectiveCompositeWrapper` retired, and narrows the
-  internal `AB22` question frame to `FinalMe1BiasedPolarQuestionFrame`;
-- `AB30 ZoMarkedPerfectiveObjectVP` remains a distinct narrower language
-  identity and does not inherit the broad `AB21` wrapper's evidence;
-- true splits require new UUIDs. Evidence is never transferred automatically from
-  an umbrella, retired record, or parser representation.
+Current consequences include:
 
-## Workflow availability
+- `AB30 ZoMarkedPerfectiveObjectVP` remains the nearest direct language-construction candidate and is distinct from broad internal perfective wrappers;
+- `AB53 ResourceInitialJungLaiFunctionClause` is canonical for the legacy runtime note `ResourceUseLaiFunctionRelation`;
+- Batch 18 internalized AB18 and AB21, retained AB19 and AB20 as retired, and narrowed AB22 to `FinalMe1BiasedPolarQuestionFrame`;
+- parser representations, umbrellas, and retired records do not compete for linguistic promotion or donate evidence automatically;
+- true splits require new UUIDs and explicit predecessor/successor links.
 
-The repository has no active-note whitelist. The canonical blacklist is
-[`data/parked-constructions.json`](../../data/parked-constructions.json), and it is
-currently empty. All 133 current construction notes are therefore available for
-bounded work.
+Earlier accepted batch reports remain immutable. Corrections require later superseding adjudication.
 
-Agents may choose whichever available construction or infrastructure task offers
-the greatest expected project benefit after checking evidence gaps, learner
-impact, ontology risk, dependencies, implementation leverage, and open-PR overlap.
-Discovery rankings inform that decision but do not impose a queue.
+## Construction work availability
 
-If a parked construction becomes the best next target, the agent must recommend
-unpark with the changed circumstances, expected benefit, and proposed scope. The
-construction remains parked until an explicit reviewed change removes it from the
-blacklist.
+The canonical construction blacklist is [`../../data/parked-constructions.json`](../../data/parked-constructions.json), and it is empty. All 133 current notes are available for bounded work. There is no active-note whitelist or repository-wide grammar freeze.
 
-Legacy grammar-note `workflow_state` and priority fields do not control work
-selection. PFV and RUL remain the current native-panel focal constructions, which
-is a survey-scope fact rather than a repository-wide work whitelist.
+New constructions, splits, broadenings, status changes, and runtime changes still require all applicable identity, evidence, boundary, documentation, testing, and review gates. Legacy note workflow fields are compatibility metadata only.
 
-There is no repository-wide grammar freeze. New constructions, splits,
-broadenings, status changes, and runtime changes are permitted when their exact
-scope satisfies the applicable identity, evidence, boundary, documentation, and
-verification requirements.
-
-## Discovery and corpus state
+## Discovery state
 
 | Candidate state | Records |
 |---|---:|
@@ -148,86 +80,53 @@ verification requirements.
 
 Promotion-ready remains **0**.
 
-The current AB30 extraction packet contains five completely reviewed candidates:
-two genuine and three false positives. The expert decision ledger records
-`readiness_effect: partial_only` because the two genuine tokens come from only two
-small user-supplied conversation sources. The packet establishes natural
-attestation and extractor boundaries, but it does not satisfy the broader diverse-
-corpus gate or establish productivity. The deterministic discovery registry
-therefore remains conservative until canonical readiness inputs support a stronger
-transition.
+Discovery ranks expose gaps; they never promote, park, assign, or authorize work.
 
-A separate completed HKCanCor claim cross-reference uses PyCantonese 5.0.0 to
-exhaust the bounded high-recall `v|v1|xv + 咗 + r` track: all 121 exact tokens
-across 118 utterances and 46 source files. Context review classifies 69 as
-genuine, 48 as false positives, 4 as ambiguous, and 0 as unusable. This is a
-research checkpoint only: it demonstrates natural overt-object attestation and
-the limits of token/POS adjacency, but it does not replace the accepted
-five-candidate packet, exhaust all `咗` or overt-NP profiles, or change the
-`partial_only` readiness effect.
+## Corpus state
 
-A second completed, disjoint HKCanCor cross-reference exhausts the largest
-remaining immediate-post-`咗` POS bucket: all 106 exact
-`v|v1|xv + 咗 + m` tokens across 104 utterances and 44 source files. Context
-review classifies 52 as genuine, 52 as false positives, 2 as ambiguous, and 0 as
-unusable. The result separates quantified-object attestations from duration,
-frequency, degree, threshold, predicative, and postverbal-subject boundaries. It
-is another research checkpoint only and does not change accepted packet or
-readiness state.
+The canonical AB30 packet has five fully reviewed candidates: two genuine and three false positives. Its readiness effect is `partial_only` because both genuine examples come from two small user-supplied conversation sources. It establishes attestation and extractor boundaries, not broad diversity or productivity.
+
+The reusable PyCantonese 5.0.0 HKCanCor workbench verifies the frozen 58-file distribution against a checked-in SHA-256 manifest. Mechanical inventories exist for AA07, AA30, AA58, AA62, AA76, AA77, AA82, AB30, and AB53.
+
+AA77 contains 1,730 high-recall noninitial `有` or `冇` candidates with following lexical material across all 58 files. The inventory deliberately retains existential, possessive, topic, subject, discourse, repair, fragment, wh/focus, and other analyses. It changes no evidence, readiness, status, identity, runtime, or release state.
+
+Corpus extraction is separate from expert classification. A bounded human local-generation step may supply corpus access and artifacts while the parent repository issue remains ChatGPT-owned; it transfers neither judgment nor merge authority.
 
 ## Native-panel and survey state
 
-`YUE-JUDGMENT-PILOT-01` remains the active SoSci collection instrument. The
-repository follow-up specification under
-`review-packets/native-panel/active-v2/followup-draft-v1-*` is a non-deployable
-draft only.
+`YUE-JUDGMENT-PILOT-01` remains the active SoSci collection instrument. The `review-packets/native-panel/active-v2/followup-draft-v1-*` specification remains non-deployable.
 
-The current pilot must close and receive an item-level audit before the follow-up
-draft may be revised, locked, generated as a form, or deployed. The follow-up uses
-canonical `G06–G09` and `F011–F018` IDs and retains a complete crosswalk from the
-superseded Codex-local aliases.
-
-No panel evidence, corpus packet, pilot count, or readiness score independently
-authorizes status promotion.
+All eligible respondents form one anonymized role-neutral panel. No named person, relationship, private reviewer, expert title, or recruitment channel receives special weight. The pilot must close and receive item-level audit before a follow-up is revised, locked, generated, deployed, or treated as final evidence.
 
 ## Verification baseline
 
 - aggregate regression cases: **551**;
 - NP-subsystem cases: **43**;
 - per-construction assertions: **1,518** across **133** files;
-- current test coverage: 132 positive-and-boundary and 1
-  compatibility-alias-only construction file;
-- stable verification: `npm run verify`;
-- full verification: `npm run verify:all`.
+- current test coverage: 132 positive-and-boundary and 1 compatibility-alias-only construction file;
 
-Implementation reachability and test success have zero independent linguistic
-evidence weight.
+Canonical documentation-verifier values:
+
+| Target | Current value |
+|---|---:|
+| Aggregate regression cases | 551 |
+| NP-subsystem cases | 43 |
+| Per-construction assertions | 1,518 |
+| Construction test files | 133 |
+
+Stable verification is `npm run verify`; full verification is `npm run verify:all`. Passing tests and implementation reachability have zero independent linguistic evidence weight.
 
 ## Current work order
 
-1. Keep documentation, identity metadata, status notes, runtime behavior, survey
-   metadata, corpus decisions, parked-work state, and generated readiness reports
-   mutually consistent.
-2. Select the most beneficial bounded non-parked task after inspecting current
-   `main`, open PRs, dependencies, evidence gaps, learner impact, and ontology risk.
-3. Continue expert identity adjudication from the 92 pending UUIDs when that work
-   outranks other available tasks; no later batch is a mandatory queue.
-4. Keep `YUE-JUDGMENT-PILOT-01` in collection until its stopping rule is met, then
-   perform an item-level instrument and response audit before revising any follow-
-   up instrument.
-5. Expand AB30 corpus diversity through additional independent natural sources
-   when that work outranks other available tasks, while preserving mechanical
-   extraction and expert classification as separate stages.
-6. Recommend unpark when a blacklisted item becomes the highest-benefit target;
-   do not work on it silently.
-7. Implement a status-path or runtime-label migration only in an explicit scoped
-   change after its adjudication decision is accepted.
-8. Do not create release-specific verifier families, duplicate current-state
-   ledgers, unlinked naming schemes, or automatic writer workflows.
+1. Keep documentation, canonical data, status notes, runtime, survey metadata, corpus records, agent settings, claims, and generated reports consistent.
+2. Select the highest-benefit non-parked task after checking live work, evidence gaps, learner impact, ontology risk, dependencies, and implementation leverage.
+3. Continue identity adjudication from the 92 pending UUIDs when it outranks other work; batches are opportunities, not a mandatory queue.
+4. Complete pending HKCanCor inventories through deterministic extraction and separate expert review, using human local execution only when access requires it.
+5. Keep `YUE-JUDGMENT-PILOT-01` in collection until its stopping rule is met, then audit items and responses before revising a follow-up.
+6. Expand AB30 corpus diversity when that work outranks other available tasks.
+7. Implement status-path or runtime-label migrations only in explicitly scoped reviewed changes.
+8. Do not create duplicate current-state ledgers, verifier families, naming systems, or unscoped automatic writers.
 
 ## Historical-material rule
 
-A dated release note, adjudication-batch report, retired ledger, old task prompt,
-or generated baseline is provenance for what was known at that time. It may be
-cited, but it must not be used as the current name, claim layer, status, runtime
-description, survey state, or work order when a newer canonical record exists.
+Dated reports, retired ledgers, old prompts, closed issues, generated baselines, and Git commits may be cited for provenance. They must not replace current name, claim layer, status, runtime description, survey state, agent availability, work order, pickup ownership, or merge authority.
