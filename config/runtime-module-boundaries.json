@@ -1,0 +1,504 @@
+{
+  "schema": "canto-span-runtime-module-boundaries-v1",
+  "status": "accepted_stage_1_architecture",
+  "issues": {
+    "program": 161,
+    "stage_1": 162,
+    "claim": 171,
+    "draft_pr": 172
+  },
+  "baseline": {
+    "git_commit": "6a673164f6534319f683c12bef77c632e58495b4",
+    "runtime_version": "0.5.216",
+    "source_file": "main.js",
+    "source_blob_sha": "d2863c809cc85cbc76f574e463b1ff884c11c24a",
+    "source_lines": 23645,
+    "source_bytes": 1312205,
+    "top_level_declarations": 758,
+    "locator_policy": "Baseline line ranges and anchors are migration planning locators, not permanent invariants and must not receive an exact-line verifier."
+  },
+  "ownership": {
+    "current_until_stage_2_merges": [
+      "main.js",
+      "executable tests"
+    ],
+    "target_after_stage_2_merges": {
+      "canonical": [
+        "src/**",
+        "src/runtime-resources/**"
+      ],
+      "generated": [
+        "main.js"
+      ],
+      "deployment": [
+        "manifest.json",
+        "styles.css"
+      ]
+    }
+  },
+  "bundle": {
+    "tool": "esbuild",
+    "entry": "src/plugin-entry.js",
+    "output": "main.js",
+    "format": "cjs",
+    "external": [
+      "obsidian"
+    ],
+    "minify": false,
+    "runtime_file_reads": false,
+    "deterministic_double_build_required": true
+  },
+  "layers": [
+    {
+      "id": "runtime-resources",
+      "may_depend_on": []
+    },
+    {
+      "id": "parser-primitives",
+      "may_depend_on": [
+        "runtime-resources"
+      ]
+    },
+    {
+      "id": "detector-families",
+      "may_depend_on": [
+        "runtime-resources",
+        "parser-primitives"
+      ]
+    },
+    {
+      "id": "parser-orchestration",
+      "may_depend_on": [
+        "runtime-resources",
+        "parser-primitives",
+        "detector-families"
+      ]
+    },
+    {
+      "id": "diagnostics",
+      "may_depend_on": [
+        "runtime-resources",
+        "parser-primitives",
+        "parser-orchestration"
+      ]
+    },
+    {
+      "id": "rendering",
+      "may_depend_on": [
+        "runtime-resources",
+        "parser-orchestration",
+        "diagnostics"
+      ]
+    },
+    {
+      "id": "plugin-integration",
+      "may_depend_on": [
+        "runtime-resources",
+        "parser-orchestration",
+        "diagnostics",
+        "rendering"
+      ]
+    }
+  ],
+  "rules": {
+    "json_resources": "plain serializable data only",
+    "javascript_resources": "RegExp, callbacks, Set/Map, derived or order-sensitive definitions",
+    "prohibited_duplicate_authority": [
+      "identity",
+      "evidence",
+      "linguistic_status",
+      "governance",
+      "panel",
+      "corpus"
+    ],
+    "parity": [
+      "npm test without expectation changes",
+      "build twice with identical SHA-256",
+      "load bundle through tests/lib/runtime-api.js",
+      "remove temporary migration tooling before readiness"
+    ],
+    "main_js_integration_owned": true
+  },
+  "sequence": [
+    163,
+    164,
+    165,
+    166,
+    167,
+    168,
+    169,
+    170
+  ],
+  "regions": [
+    {
+      "id": "bootstrap-settings",
+      "lines": [
+        1,
+        94
+      ],
+      "count": 94,
+      "class": "plugin_integration_and_declarative_resource",
+      "paths": [
+        "src/runtime-version.js",
+        "src/runtime-resources/presentation/role-colors.json",
+        "src/plugin/settings.js"
+      ],
+      "deps": [],
+      "issue": 163,
+      "role": "implementation"
+    },
+    {
+      "id": "lexical-pronunciation-resources",
+      "lines": [
+        95,
+        1336
+      ],
+      "count": 1242,
+      "class": "declarative_runtime_resource_and_lexical_selection",
+      "paths": [
+        "src/runtime-resources/lexicon/token-lexicon.json",
+        "src/runtime-resources/lexicon/jyutping-review-expectations.json",
+        "src/runtime-resources/lexicon/formulas.json",
+        "src/runtime-resources/lexicon/address-terms.json",
+        "src/runtime-resources/lexicon/compositional-phrases.json",
+        "src/runtime-resources/grammar/predicate-omission-profiles.json"
+      ],
+      "deps": [],
+      "issue": 164,
+      "role": "implementation"
+    },
+    {
+      "id": "construction-registries-audits",
+      "lines": [
+        1337,
+        2145
+      ],
+      "count": 809,
+      "class": "declarative_runtime_resource_and_diagnostic_code",
+      "paths": [
+        "src/runtime-resources/constructions/active-labels.json",
+        "src/runtime-resources/constructions/retired-labels.json",
+        "src/runtime-resources/constructions/compatibility-aliases.json",
+        "src/runtime-resources/constructions/label-policy.json",
+        "src/runtime-resources/presentation/learner-slots.json",
+        "src/diagnostics/registry-audits.js",
+        "src/parser/lexical-selection.js"
+      ],
+      "deps": [
+        "lexical-pronunciation-resources"
+      ],
+      "issue": 165,
+      "role": "implementation"
+    },
+    {
+      "id": "declarative-templates",
+      "lines": [
+        2146,
+        3650
+      ],
+      "count": 1505,
+      "class": "declarative_runtime_resource",
+      "paths": [
+        "src/runtime-resources/grammar/slot-generation-rules.js",
+        "src/runtime-resources/grammar/construction-templates.js",
+        "src/runtime-resources/grammar/category-span-templates.js"
+      ],
+      "deps": [
+        "construction-registries-audits",
+        "lexical-pronunciation-resources"
+      ],
+      "issue": 165,
+      "role": "implementation"
+    },
+    {
+      "id": "normalization",
+      "lines": [
+        3651,
+        4029
+      ],
+      "count": 379,
+      "class": "executable_parser_code_and_small_resources",
+      "paths": [
+        "src/runtime-resources/normalization/simplified-to-traditional.json",
+        "src/runtime-resources/normalization/folded-pinyin-repairs.json",
+        "src/parser/normalization/normalize-input.js",
+        "src/diagnostics/normalization-review.js"
+      ],
+      "deps": [
+        "lexical-pronunciation-resources"
+      ],
+      "issue": 166,
+      "role": "implementation"
+    },
+    {
+      "id": "feature-slot-template-engine",
+      "lines": [
+        4030,
+        5292
+      ],
+      "count": 1263,
+      "class": "executable_parser_infrastructure",
+      "paths": [
+        "src/parser/features/infer-token-features.js",
+        "src/parser/features/feature-bundle.js",
+        "src/parser/slots/generate-token-slots.js",
+        "src/parser/templates/match-template.js",
+        "src/parser/templates/apply-template.js",
+        "src/parser/wrapping/category-subspans.js"
+      ],
+      "deps": [
+        "declarative-templates",
+        "construction-registries-audits",
+        "normalization"
+      ],
+      "issue": 166,
+      "role": "implementation"
+    },
+    {
+      "id": "node-np-factories",
+      "lines": [
+        5293,
+        6223
+      ],
+      "count": 931,
+      "class": "executable_parser_infrastructure_and_small_resources",
+      "paths": [
+        "src/runtime-resources/lexicon/unknown-cjk-jyutping.json",
+        "src/parser/nodes/token.js",
+        "src/parser/nodes/construction.js",
+        "src/parser/np/classifier-compatibility.js",
+        "src/parser/np/licensing.js",
+        "src/parser/nodes/learner-clones.js",
+        "src/parser/wrapping/transparent-phrase.js"
+      ],
+      "deps": [
+        "feature-slot-template-engine",
+        "lexical-pronunciation-resources",
+        "construction-registries-audits"
+      ],
+      "issue": 166,
+      "role": "implementation"
+    },
+    {
+      "id": "local-composition-wrappers",
+      "lines": [
+        6224,
+        7488
+      ],
+      "count": 1265,
+      "class": "mixed_detector_families_and_declarative_resources",
+      "paths": [
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/serial-purpose.js",
+        "src/parser/detectors/discourse/agreement.js",
+        "src/parser/detectors/discourse/priority.js",
+        "src/parser/detectors/acceptability.js",
+        "src/parser/detectors/np/transparent-classifier.js",
+        "src/parser/detectors/address/vocative.js",
+        "src/parser/tokenization/contextual-overrides.js"
+      ],
+      "deps": [
+        "node-np-factories",
+        "feature-slot-template-engine",
+        "lexical-pronunciation-resources"
+      ],
+      "issue": 167,
+      "role": "implementation"
+    },
+    {
+      "id": "tokenizer",
+      "lines": [
+        7489,
+        7599
+      ],
+      "count": 111,
+      "class": "executable_parser_infrastructure",
+      "paths": [
+        "src/parser/tokenization/tokenize-line.js"
+      ],
+      "deps": [
+        "normalization",
+        "lexical-pronunciation-resources",
+        "node-np-factories",
+        "local-composition-wrappers"
+      ],
+      "issue": 166,
+      "role": "implementation"
+    },
+    {
+      "id": "construction-detector-families",
+      "lines": [
+        7600,
+        14880
+      ],
+      "count": 7281,
+      "class": "mixed_construction_detector_families",
+      "paths": [
+        "src/parser/detectors/questions/",
+        "src/parser/detectors/definition/",
+        "src/parser/detectors/cognition/",
+        "src/parser/detectors/reported-speech/",
+        "src/parser/detectors/modality/",
+        "src/parser/detectors/discourse/",
+        "src/parser/detectors/transfer/",
+        "src/parser/detectors/coverbs/",
+        "src/parser/detectors/boundaries/",
+        "src/parser/detectors/motion/",
+        "src/parser/detectors/aspect/",
+        "src/parser/detectors/existential/",
+        "src/parser/detectors/nominal-predication/"
+      ],
+      "deps": [
+        "tokenizer",
+        "local-composition-wrappers",
+        "node-np-factories",
+        "feature-slot-template-engine",
+        "declarative-templates"
+      ],
+      "issue": 167,
+      "role": "pilot_then_family_queue"
+    },
+    {
+      "id": "core-wrap-orchestration",
+      "lines": [
+        14881,
+        15440
+      ],
+      "count": 560,
+      "class": "executable_parser_orchestration",
+      "paths": [
+        "src/parser/orchestration/wrap-core.js",
+        "src/parser/orchestration/wrap-predicate.js"
+      ],
+      "deps": [
+        "construction-detector-families",
+        "local-composition-wrappers",
+        "feature-slot-template-engine",
+        "node-np-factories"
+      ],
+      "issue": 169,
+      "role": "scoping_queue"
+    },
+    {
+      "id": "clause-relations-terminal-structure",
+      "lines": [
+        15441,
+        18338
+      ],
+      "count": 2898,
+      "class": "mixed_parser_infrastructure_and_detector_families",
+      "paths": [
+        "src/parser/clause-relations/",
+        "src/parser/detectors/relative-clauses/",
+        "src/parser/topic-chain/",
+        "src/parser/terminal/questions/",
+        "src/parser/terminal/particles/",
+        "src/parser/orchestration/apply-terminal-patterns.js"
+      ],
+      "deps": [
+        "core-wrap-orchestration",
+        "construction-detector-families",
+        "node-np-factories",
+        "construction-registries-audits"
+      ],
+      "issue": 169,
+      "role": "scoping_queue"
+    },
+    {
+      "id": "context-contract-analysis-entry",
+      "lines": [
+        18339,
+        19769
+      ],
+      "count": 1431,
+      "class": "executable_context_resolution_and_public_parser_entry",
+      "paths": [
+        "src/parser/context/turns.js",
+        "src/parser/context/descriptors.js",
+        "src/parser/context/licensed-fragments.js",
+        "src/parser/context/apply-context-contract.js",
+        "src/parser/analyze-line.js"
+      ],
+      "deps": [
+        "clause-relations-terminal-structure",
+        "core-wrap-orchestration",
+        "tokenizer"
+      ],
+      "issue": 169,
+      "role": "scoping_queue"
+    },
+    {
+      "id": "diagnostics-audits-glosses",
+      "lines": [
+        19770,
+        22787
+      ],
+      "count": 3018,
+      "class": "diagnostics_presentation_resources_and_note_tooling",
+      "paths": [
+        "src/diagnostics/audits/",
+        "src/diagnostics/semantic-guard.js",
+        "src/diagnostics/summary.js",
+        "src/runtime-resources/presentation/learner-glosses.json",
+        "src/diagnostics/learner-hover.js",
+        "src/diagnostics/rows.js",
+        "src/diagnostics/note-coverage.js",
+        "src/diagnostics/exports.js"
+      ],
+      "deps": [
+        "context-contract-analysis-entry",
+        "construction-registries-audits",
+        "lexical-pronunciation-resources"
+      ],
+      "issue": 168,
+      "role": "implementation"
+    },
+    {
+      "id": "block-parsing-rendering",
+      "lines": [
+        22788,
+        23141
+      ],
+      "count": 354,
+      "class": "rendering_and_block_integration",
+      "paths": [
+        "src/render/controls.js",
+        "src/render/block-options.js",
+        "src/render/jyutping.js",
+        "src/render/token.js",
+        "src/render/construction.js",
+        "src/render/node.js",
+        "src/render/role-colors.js"
+      ],
+      "deps": [
+        "diagnostics-audits-glosses",
+        "context-contract-analysis-entry",
+        "bootstrap-settings"
+      ],
+      "issue": 168,
+      "role": "implementation"
+    },
+    {
+      "id": "obsidian-plugin-integration",
+      "lines": [
+        23142,
+        23645
+      ],
+      "count": 504,
+      "class": "plugin_integration",
+      "paths": [
+        "src/plugin/CantoSpanPlugin.js",
+        "src/plugin/CantoSpanSettingTab.js",
+        "src/plugin-entry.js"
+      ],
+      "deps": [
+        "block-parsing-rendering",
+        "context-contract-analysis-entry",
+        "diagnostics-audits-glosses",
+        "bootstrap-settings"
+      ],
+      "issue": 168,
+      "role": "implementation"
+    }
+  ]
+}

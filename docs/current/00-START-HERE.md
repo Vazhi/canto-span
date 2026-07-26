@@ -30,6 +30,7 @@ Use the narrowest relevant owner and link to it instead of copying it.
 | Concurrent scope and integration roles | [`MULTI-AGENT-COORDINATION.md`](MULTI-AGENT-COORDINATION.md) |
 | Per-PR merge authorization | [`USER-MERGE-REVIEW.md`](USER-MERGE-REVIEW.md) |
 | Parser and verification policy | [`TESTING.md`](TESTING.md) and executable tests |
+| Runtime source, wired resources, and generated-bundle architecture | [`RUNTIME-MODULARIZATION.md`](RUNTIME-MODULARIZATION.md) |
 | Corpus extraction and review | [`../../tools/corpus-review/README.md`](../../tools/corpus-review/README.md) |
 | Recovery procedure | [`../../HANDOFF.md`](../../HANDOFF.md) |
 
