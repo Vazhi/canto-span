@@ -29,7 +29,7 @@ Use the narrowest relevant owner and link to it instead of copying it.
 | Optional agent availability | [`AGENT-WORKFLOW-SETTINGS.md`](AGENT-WORKFLOW-SETTINGS.md) and [`../../config/agent-workflow-settings.json`](../../config/agent-workflow-settings.json) |
 | Concurrent scope and integration roles | [`MULTI-AGENT-COORDINATION.md`](MULTI-AGENT-COORDINATION.md) |
 | Per-PR merge authorization | [`USER-MERGE-REVIEW.md`](USER-MERGE-REVIEW.md) |
-| Parser and fixture verification | [`TESTING.md`](TESTING.md) and executable tests |
+| Parser and verification policy | [`TESTING.md`](TESTING.md) and executable tests |
 | Corpus extraction and review | [`../../tools/corpus-review/README.md`](../../tools/corpus-review/README.md) |
 | Recovery procedure | [`../../HANDOFF.md`](../../HANDOFF.md) |
 
@@ -74,7 +74,7 @@ Before the first edit:
 7. create or update the smallest adequate semantic work claim;
 8. create the exact `agent/<description>` branch named in the claim;
 9. declare canonical inputs, generated outputs, protected state, dependencies,
-   reserved decisions, and checks;
+   reserved decisions, and task-specific checks;
 10. implement one coherent passing result;
 11. open or update one linked PR, then bind `active_pr` to the assigned GitHub PR
     number in the live intake;
@@ -165,7 +165,8 @@ workflows, verification orchestration, and configured exclusive paths require an
 exclusive claim. Files marked integration-owned require an integrator.
 
 Temporary records under `changes/pending/` must not survive a ready-to-merge PR.
-`validation/current/` contains verifier byproducts, not patch inputs.
+`validation/current/` contains optional verifier reports, not patch inputs. Routine
+verification must not modify tracked validation reports.
 
 Automation follows least privilege. Write-capable automation must be claim-scoped,
 preconditioned, auditable, branch-limited, and unable to write directly to `main`,
@@ -175,22 +176,38 @@ merge, enable auto-merge, or infer approval.
 Passing checks, lack of conflict, elapsed time, assignment, repository ownership, or
 integrator role does not authorize merge.
 
+### Permanent verification admission
+
+A permanent test, audit, verifier, CI gate, snapshot, or profile entry is allowed only
+when it protects a recurring high-impact invariant, is not already covered, is
+deterministic and maintainable, and has a one-sentence reason for existence.
+
+One-time repair checks, migration guards, exact historical counts, exact packet or
+survey contents, current response totals, construction-specific readiness scripts,
+and temporary probes belong only to the work that needs them. Remove them before the
+PR is ready unless they independently satisfy the permanent standard. Do not add a
+new permanent check merely to preserve exact wording or prove that an old check was
+removed. Verifier unit tests are run when that verifier changes, not on every PR.
+
 ## Verification
 
+Run only the profiles relevant to the changed state:
+
 ```bash
-npm test
-npm run verify:adjudications
-npm run verify:identities
-npm run verify:discovery
-npm run verify
-npm run verify:research
-npm run verify:release
-npm run verify:all
+npm test                    # runtime or executable tests
+npm run verify              # canonical core state
+npm run verify:research     # research provenance
+npm run verify:coordination # coordination system changes
+npm run verify:release      # release or promotion work only
 ```
 
-Verification may reject stale documentation, outputs, claims, status changes, release
-baselines, or incomplete evidence. A passing verifier never promotes a construction
-or grants merge approval.
+`npm run verify:all` is an explicit diagnostic sweep, not a routine acceptance
+requirement. Individual adjudication, identity, or discovery commands may be run when
+their own inputs change. Every permanent profile command records its reason and
+`run_when` scope in `config/verification-profiles.json`.
+
+A passing verifier never promotes a construction, grants merge approval, or justifies
+retaining an unnecessary check.
 
 ## Historical-material rule
 

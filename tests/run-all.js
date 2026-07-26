@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 "use strict";
 
-const fs = require("fs");
-const path = require("path");
-const { spawnSync } = require("child_process");
+const fs = require("node:fs");
+const path = require("node:path");
+const { spawnSync } = require("node:child_process");
 const { loadRuntimeApi } = require("./lib/runtime-api");
 
 const root = path.resolve(__dirname, "..");
@@ -14,40 +14,56 @@ const commands = [
   ["construction_files", path.join(root, "tests", "run-constructions.js")],
   ["glossika_week16_lexicon", path.join(root, "tests", "tooling", "lexicon", "glossika-week16-runtime-lexicon.test.js")],
 ];
-const commandResults = [];
+const generatedPaths = [
+  "validation/current/regression-suite.json",
+  "validation/current/np-subsystem-results.json",
+  "validation/current/construction-tests.json",
+];
+const originalGeneratedFiles = new Map(
+  generatedPaths.map((relativePath) => {
+    const absolutePath = path.join(root, relativePath);
+    return [
+      absolutePath,
+      fs.existsSync(absolutePath) ? fs.readFileSync(absolutePath) : null,
+    ];
+  }),
+);
+const results = [];
 let failed = false;
-for (const [name, script] of commands) {
-  const run = spawnSync(process.execPath, [script], { cwd: root, encoding: "utf8" });
-  commandResults.push({ name, exit_code: run.status, signal: run.signal || "" });
-  if (run.status !== 0) {
-    failed = true;
-    process.stderr.write(`\n[${name}] failed\n`);
-    if (run.stdout) process.stderr.write(run.stdout);
-    if (run.stderr) process.stderr.write(run.stderr);
+
+try {
+  for (const [name, script] of commands) {
+    const run = spawnSync(process.execPath, [script], { cwd: root, encoding: "utf8" });
+    const result = {
+      name,
+      exit_code: run.status,
+      signal: run.signal || "",
+      status: run.status === 0 ? "PASS" : "FAIL",
+    };
+    if (run.status !== 0) {
+      failed = true;
+      result.stdout = run.stdout || "";
+      result.stderr = run.stderr || "";
+      process.stderr.write(`\n[${name}] failed\n${result.stdout}${result.stderr}`);
+    }
+    results.push(result);
+  }
+} finally {
+  for (const [absolutePath, original] of originalGeneratedFiles) {
+    if (original === null) {
+      fs.rmSync(absolutePath, { force: true });
+    } else {
+      fs.mkdirSync(path.dirname(absolutePath), { recursive: true });
+      fs.writeFileSync(absolutePath, original);
+    }
   }
 }
 
-function readJson(rel) { return JSON.parse(fs.readFileSync(path.join(root, rel), "utf8")); }
-const regression = readJson("validation/current/regression-suite.json");
-const np = readJson("validation/current/np-subsystem-results.json");
-const construction = readJson("validation/current/construction-tests.json");
-const output = {
-  schema: "canto-span-standard-test-suite-summary-v1",
+console.log(JSON.stringify({
+  schema: "canto-span-standard-test-suite-summary-v2",
   runtime_version: api.runtimeVersion,
   status: failed ? "FAIL" : "PASS",
-  commands: commandResults,
-  regression: { total: regression.total, passed: regression.passed, failed: regression.failed },
-  np_subsystem: { total: np.total, passed: np.passed, failed: np.failed },
-  construction_files: {
-    files: construction.construction_file_count,
-    executable_references: construction.executable_reference_count,
-    passed: construction.passed,
-    failed: construction.failed,
-    coverage: construction.coverage,
-    uncovered_constructions: construction.uncovered_construction_count,
-  },
-};
-const outputPath = path.join(root, "validation", "current", "standard-test-suite-summary.json");
-fs.writeFileSync(outputPath, JSON.stringify(output, null, 2) + "\n");
-console.log(JSON.stringify(output, null, 2));
+  commands: results,
+  generated_outputs_restored: generatedPaths,
+}, null, 2));
 if (failed) process.exit(1);

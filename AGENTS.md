@@ -88,8 +88,31 @@ scope, adjudicate evidence, promote status, deploy surveys, publish releases, me
 enable auto-merge, or infer user approval.
 
 Edit canonical inputs first and regenerate deterministic outputs in the same branch.
-`validation/current/` contains verifier byproducts, not patch inputs. A ready pull
-request may not contain a pending changeset.
+`validation/current/` contains optional verifier reports, not patch inputs. Routine
+verification must not modify tracked reports. A ready pull request may not contain a
+pending changeset or generated validation byproduct.
+
+## Verification anti-bloat rule
+
+Validation is task-scoped. Do not run `verify:all` as a routine requirement and do
+not require unrelated profiles merely because they exist.
+
+A new permanent test, audit, verifier, workflow gate, snapshot, or profile entry is
+allowed only when all five conditions are met:
+
+1. it protects a recurring repository invariant;
+2. failure would have meaningful project or user impact;
+3. no existing check already covers the same failure;
+4. the check is deterministic and reasonably maintainable;
+5. its purpose can be stated in one clear sentence.
+
+The permanent profile entry must record that sentence and when the check should run.
+Migration checks, one-time repair assertions, exact historical counts, exact packet
+contents, individual construction surveys, temporary probes, and PR-specific audits
+must remain local to the implementing work and be removed before the PR is ready.
+Do not add a permanent check merely to prove that another check was removed or to
+preserve exact prose. Verifier unit tests run when their verifier changes; they are
+not automatically part of every repository change.
 
 ## Conflict rule
 
