@@ -7,25 +7,126 @@ related: "[[DEFINITION-OF-DONE]]"
 
 # Testing and verification
 
-Testing proves implementation behavior. It does not independently establish a
-Cantonese construction, settle ontology, or authorize promotion.
+Testing establishes implementation and repository consistency. It does not by itself
+establish a Cantonese construction, settle ontology, promote status, authorize a
+survey, publish a release, or grant merge approval.
 
-## Parser suite
+## Default principle
+
+Run the smallest check set that covers the state changed by the task. Broad sweeps are
+for diagnosis or release work, not a routine tax on every pull request.
+
+```bash
+npm test                    # runtime behavior or executable tests
+npm run verify              # canonical core state
+npm run verify:research     # research provenance
+npm run verify:coordination # claims, schemas, workflows, or coordination tools
+npm run verify:release      # promotion or release work only
+```
+
+`npm run verify:all` is an explicit diagnostic sweep. It is not a default acceptance
+requirement and must not be added automatically to task instructions.
+
+## Permanent-check admission standard
+
+A permanent test, audit, verifier, workflow gate, snapshot, or profile entry may be
+added only when all five conditions are satisfied:
+
+1. **Recurring invariant:** the condition remains relevant across future work.
+2. **Meaningful failure:** violating it could materially harm runtime behavior,
+   identity, evidence integrity, coordination safety, current documentation, or a
+   release.
+3. **No duplicate coverage:** another existing check does not already catch the same
+   failure.
+4. **Maintainable determinism:** the result is reproducible and does not depend on
+   current prose, transient counts, or an individual work packet.
+5. **Clear purpose:** the reason for existence fits in one sentence.
+
+Every entry in `config/verification-profiles.json` records both `reason` and
+`run_when`. A check that cannot meet this standard must not be permanent.
+
+Do not add permanent checks for:
+
+- a completed migration or repair;
+- one PR, construction, survey draft, corpus packet, or response snapshot;
+- exact historical counts or file contents;
+- temporary implementation probes;
+- preserving exact documentation wording;
+- proving that an obsolete check remains deleted;
+- a hypothetical failure already covered elsewhere.
+
+Temporary validation may be created inside bounded work when it is useful. Remove it
+before the PR is ready unless it independently qualifies as permanent.
+
+## Retained permanent profiles
+
+### Core
+
+| Check | Reason for existence | Run when |
+|---|---|---|
+| `standard-tests` | Protect accepted parser behavior from executable regressions. | Runtime code, fixtures, or construction tests change. |
+| `construction-notes` | Keep current construction notes structurally aligned with runtime labels and test files. | Runtime labels, note paths/statuses, or construction-test metadata change. |
+| `construction-adjudications` | Prevent accepted UUID-keyed adjudications from drifting from canonical records. | Identity or adjudication records change. |
+| `construction-identities` | Protect permanent UUIDs, short codes, aliases, and lifecycle coverage. | Identity, adjudication, runtime-label, or source-path data change. |
+| `discovery-freshness` | Detect stale deterministic readiness outputs after canonical inputs change. | Identity, evidence, status, corpus, panel, test, or readiness inputs change. |
+| `parked-constructions` | Ensure parked entries resolve and unlisted constructions remain available. | Parking or identity data change. |
+| `project-state` | Keep the sole current snapshot synchronized with canonical counts. | Canonical state or `PROJECT-STATE.md` changes. |
+| `documentation` | Prevent broken current-document links and competing current authority. | Current documentation, authority settings, or canonical state change. |
+
+### Research
+
+| Check | Reason for existence | Run when |
+|---|---|---|
+| `research-provenance` | Prevent missing, duplicate, malformed, or overclaimed research provenance records. | Research packages, source ledgers, evidence grades, or provenance configuration change. |
+
+Panel, survey, corpus-review, and construction-specific validation is performed by
+the workflow that creates or updates those materials. It is not permanently rerun
+after that phase closes.
+
+### Release
+
+| Check | Reason for existence | Run when |
+|---|---|---|
+| `promotion-rules` | Block linguistic status promotion unless permanent evidence gates are satisfied. | A promotion or status transition is proposed. |
+| `release-handoff` | Block release publication when version, package, or handoff invariants are incomplete. | Preparing or changing a release. |
+
+Release checks are not part of ordinary core or research work.
+
+## Verifier unit tests
+
+Unit tests for a verifier or coordination library may remain when they exercise
+reusable logic. Run them when that implementation changes. They are not listed in the
+routine profiles merely to test the test on every unrelated PR.
+
+Examples:
+
+```bash
+node --test tests/tooling/project-state/project-state.test.js
+node tools/test-research-provenance.js
+node tools/test-promotion-gate.js
+node tools/test-release-handoff.js
+npm run test:coordination
+```
+
+These commands are task-specific. Their existence does not make them mandatory for
+unrelated runtime, documentation, research, or corpus work.
+
+## Parser tests
 
 ```bash
 npm test
 ```
 
-- 551 exact regression cases;
-- 43 NP-subsystem cases;
-- 1,518 per-construction assertions across 133 construction files.
+The aggregate suite runs regression, NP-subsystem, per-construction executable cases,
+and accepted lexicon regression checks. Those tests protect runtime behavior.
+Implementation probes carry no independent linguistic evidence weight.
 
-Current coverage is 132 positive-and-boundary, 0 positive-only, 0 implementation-only, and 1 compatibility-alias-only.
+`npm test` preserves the pre-run contents of its legacy report files and restores them
+before exiting, so a normal passing run does not dirty the working tree.
 
-No active runtime label lacks a construction test file. Implementation probes have
-linguistic evidence weight zero.
+## Identity and deterministic outputs
 
-## Identity, adjudication, and discovery
+Run individual commands when their inputs change:
 
 ```bash
 npm run verify:adjudications
@@ -33,14 +134,7 @@ npm run verify:identities
 npm run verify:discovery
 ```
 
-- `verify:adjudications` checks UUID/code/legacy-label consistency, accepted batch
-  ordering, required evidence fields, and duplicate decisions.
-- `verify:identities` checks permanent UUID/code locks, current and retired
-  coverage, aliases, source paths, and regenerated identity outputs.
-- `verify:discovery` checks the 181-record readiness registry and generated
-  candidate, orphaned-evidence, family-gap, and full-sweep reports.
-
-Write-mode commands are explicit:
+Write mode remains explicit:
 
 ```bash
 npm run adjudication:apply
@@ -48,151 +142,56 @@ npm run identity:generate
 npm run discovery:generate
 ```
 
-Run write-mode commands before ready state. Do not publish an adjudication batch
-first and rely on repair automation to create a coherent state later.
+Apply and regenerate before publishing a coherent PR. Do not commit an intentionally
+failing intermediate state.
 
-## Multi-agent coordination
+## Coordination
 
 ```bash
-npm run test:coordination
 npm run verify:coordination
 ```
 
-The coordination tests cover claim parsing, disjoint same-file regions, conflict
-detection, glob matching, exclusive and integration-owned paths, pending changeset
-rules, and preconditioned updates.
+The permanent coordination verifier protects only durable safety invariants: current
+schemas, claim and PR binding, least-privilege workflows, valid pending changesets,
+and the explicit per-head merge gate. Functional coordination tests run through the
+same command when coordination code changes.
 
-`verify:coordination` verifies the issue and PR templates, schemas, configuration,
-coordination policy, changeset lifecycle, CLI tools, and tests. It validates any
-JSON files under `changes/pending/` but does not apply them.
+The online `Coordination claim` workflow validates the live issue, claim, branch, PR,
+expiry, semantic overlap, and changed-file coverage. It remains separate from core
+verification because live GitHub state cannot be validated by a repository-only
+profile.
 
-The online `Coordination claim` workflow checks the linked issue, branch, expiry,
-active semantic overlaps, changed-file coverage, exclusive paths, integration role,
-and draft/ready pending-file rules. Its current job is validation-only and therefore
-uses read permissions.
+## Reports and generated output
 
-Changeset commands are:
-
-```bash
-npm run changes:validate -- changes/pending/CS-WORK-0000.json
-node tools/coordination/change-set.js apply changes/pending/CS-WORK-0000.json
-npm run changes:apply -- changes/pending/CS-WORK-0000.json
-```
-
-The plain `apply` form is a dry run. Write mode stops unless every declared
-precondition still matches current files.
-
-## Verification profiles
-
-Profiles are configured in `config/verification-profiles.json`.
+Routine verification prints results and does not write a profile summary. Tools that
+support reports accept an explicit output path, for example:
 
 ```bash
-npm run verify
-npm run verify:research
-npm run verify:release
-npm run verify:all
+node tools/verify-current-state.js --profile core --output /tmp/core-verification.json
+node tools/verify-research-provenance.js --output /tmp/research-provenance.json
 ```
 
-- `verify` runs stable core checks, including parser tests, status-note alignment,
-  adjudications, permanent identities, discovery freshness, source accounting,
-  parked-construction consistency, implementation reachability, semantic
-  coordination, the mandatory agent contract, and documentation consistency.
-- `verify:research` runs panel, survey-readiness, conflict-burden, research-
-  provenance, and native-review-library checks.
-- `verify:release` runs core verification plus promotion and release-handoff gates.
-- `verify:all` runs every profile.
+`validation/current/` is not a patch input or mandatory report archive. A ready PR
+must not include regenerated verification byproducts unless the user explicitly asks
+for a retained report and the file has a continuing purpose outside the test run.
 
-`tools/verify-parked-constructions.js` verifies that unlisted constructions are
-available by default and every blacklist entry resolves to one current identity.
-The expected result is 133 available and 0 parked.
+Permanent evidence belongs in canonical notes, ledgers, adjudications, fixtures,
+research records, review decisions, or release records—not in a fresh validation
+snapshot created each time a command runs.
 
-The `agent-coordination` core check verifies that `AGENTS.md` points to the full
-contract and coordination policy, semantic claims and integration ownership remain
-binding, there is no read-only research lane, authorized integrator merge authority
-remains explicit, automation uses least privilege, and current AB30 and survey state
-are not silently reverted.
+## Updating verification
 
-`./tools/verify-repository.sh` additionally validates Git objects before running the
-stable core profile.
+When adding or changing a check:
 
-## Generated outputs
+1. State the recurring invariant and meaningful failure in one sentence.
+2. Search for existing coverage before creating anything new.
+3. Prefer extending one canonical verifier over adding a parallel audit.
+4. Keep exact work-package validation temporary.
+5. Run the affected verifier's own unit tests.
+6. Run only the profile that consumes the verifier.
+7. Remove temporary scripts, probes, reports, and migration assertions before ready
+   state.
+8. Do not add a meta-test whose only purpose is preventing future pruning.
 
-Current verifier byproducts are written to:
-
-```text
-validation/current/
-```
-
-They are not patch inputs. Restore generated byproducts when a clean tree is needed:
-
-```bash
-git restore --staged --worktree validation/current
-```
-
-Do not create a new `validation/vX.Y.Z/` directory for each release. Permanent
-evidence belongs in source records, status notes, adjudication records, research
-documents, release audits, fixtures, panel snapshots, or Git history.
-
-Generated discovery outputs under `data/` and `docs/research/` are checked-in
-deterministic products. Workers declare integration-owned outputs rather than
-independently finalizing them when concurrent canonical work is active.
-
-## Research and implementation workflow
-
-There is no read-only research role. A semantic claim may include source review,
-evidence updates, adjudication, runtime implementation, tests, and documentation in
-one coherent branch. Verification follows the state dimensions actually changed:
-
-1. create or update the work claim;
-2. edit canonical sources and records;
-3. regenerate deterministic outputs when required;
-4. run `npm run verify:research` for evidence, corpus, panel, or survey changes;
-5. run `npm test` and `npm run verify` for runtime or executable-test changes;
-6. run release verification only for status transition or release work;
-7. reconcile integration-owned files as integrator;
-8. publish one coherent passing PR;
-9. notify the user that the exact validated head is ready and stop without merging;
-10. merge only after explicit approval for that PR and unchanged head.
-
-Research findings do not bypass evidence, identity, status, survey, or release gates.
-
-## Updating tests and records
-
-1. Read `AGENTS.md`, `00-START-HERE.md`, the coordination contract, and
-   `USER-MERGE-REVIEW.md`.
-2. Confirm the claim covers every affected state dimension and file region.
-3. Edit the canonical source, identity, adjudication, grammar, runtime, parked
-   registry, evidence, coordination input, or fixture.
-4. Regenerate identity/discovery outputs when those inputs changed.
-5. Run `npm test`.
-6. Run `npm run verify:coordination` for coordination changes.
-7. Run `node tools/sync-construction-test-metadata.js` when counts change.
-8. Run `npm run verify`.
-9. Run `npm run verify:research` when research or panel records changed.
-10. Run `npm run verify:release` only for release or status-transition work.
-11. Commit one coherent passing state and remove pending changesets before ready
-    state.
-
-## GitHub Actions and automation
-
-Repository automation follows least privilege, not a blanket read-only policy.
-Validation-only workflows currently use read permissions because they need no
-writes.
-
-A write-capable workflow is permitted only when:
-
-- an exclusive active claim covers the workflow and every write target;
-- permissions are explicit and minimal;
-- writes are restricted to the claimed non-`main` branch or issue/PR metadata;
-- base SHA, head SHA, claim, target, and operation preconditions are checked;
-- the result is auditable and coherent;
-- the workflow cannot write directly to `main`, adjudicate evidence, promote status,
-  deploy surveys, publish releases, merge, enable auto-merge, or infer approval
-  without the separately required scope, gates, and explicit user approval.
-
-JavaScript actions use Node 24-compatible releases. Workflow trigger coverage is
-part of the verified contract. Core CI runs when runtime, canonical data, grammar,
-tests, tools, schemas, coordination, verification configuration, current
-documentation, templates, or workflows change. Research CI runs when research
-documents, external evidence, corpus or panel records, relevant runtime and
-construction tests, or research-verifier inputs change.
+Passing checks never replace expert evidence review or explicit approval for the
+unchanged PR head under [`USER-MERGE-REVIEW.md`](USER-MERGE-REVIEW.md).
