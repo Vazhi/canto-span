@@ -1,0 +1,24 @@
+{
+  "checks": {
+    "indexedRecordCount": 59,
+    "publicMetadataOnly": true,
+    "recordHashesPresent": true,
+    "recordIdsPresentAndUnique": true,
+    "restrictedSourceTextAbsent": true,
+    "sourceIdsConsistent": true
+  },
+  "fileHashes": {
+    "README.md": "d0a0fa2ec2ffbe8122e6048da991e70839c2f3645c15fe9ed9ba217124005f31",
+    "record-index.jsonl": "f8676f5abfa2bedcfb327eb07e305d3ab8a3e4968e1416b5fbee9bbc42e442fb",
+    "source-manifest.json": "521a0b201945f8f2f454f8793d6f9529cc332d6a03a40f9c9c4bac293becb640"
+  },
+  "issues": [],
+  "limitations": [
+    "No linguistic naturalness, Jyutping, IPA, gloss, translation, or construction-membership review was performed.",
+    "The source text is absent by design because public redistribution permission has not been established.",
+    "This package records pedagogical attestation metadata only."
+  ],
+  "packageId": "GLOSSIKA-CANTONESE-HK-A1-W16-2026-07-05",
+  "schema": "canto-span-restricted-source-ingress-validation-v1",
+  "status": "pass"
+}
