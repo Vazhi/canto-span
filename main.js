@@ -158,6 +158,28 @@ const JYUTPING_REVIEW_EXPECTATIONS = {
   "故事": ["gu3 si6"],
   "笑": ["siu3"],
   "好笑": ["hou2 siu3"],
+  // Authorized Glossika Week 16 hobbies/free-time lexical audit.
+  "游": ["jau4"],
+  "跑": ["paau2"],
+  "步": ["bou6"],
+  "影": ["jing2"],
+  "相": ["soeng2"],
+  "嘢食": ["je5 sik6"],
+  "唱": ["coeng3"],
+  "街": ["gaai1"],
+  "沙灘": ["saa1 taan1"],
+  "踢": ["tek3"],
+  "波": ["bo1"],
+  "彈": ["taan4"],
+  "琴": ["kam4"],
+  "釣": ["diu3"],
+  "旅行": ["leoi5 hang4"],
+  "瑜伽": ["jyu4 gaa1"],
+  "露營": ["lou6 jing4"],
+  "棋": ["kei2"],
+  "公園": ["gung1 jyun2", "gung1 jyun4"],
+  "畫": ["waak6", "waa2", "waa6"],
+  "畫畫": ["waak6 waa2"],
   "解決": ["gaai2 kyut3"],
 };
 
@@ -174,6 +196,22 @@ const PRODUCTIVE_VO = {
   "寫名": { verb: "寫", object: "名", label: "VP", type: "ProductiveVO" },
   "睇書": { verb: "睇", object: "書", label: "VP", type: "ProductiveVO" },
   "聽歌": { verb: "聽", object: "歌", label: "VP", type: "ProductiveVO" },
+  // Authorized Glossika Week 16 activity phrases. PRODUCTIVE_VO preserves visible verb/object children.
+  "睇戲": { verb: "睇", object: "戲", label: "VP", type: "ProductiveVO" },
+  "游水": { verb: "游", object: "水", label: "VP", type: "ProductiveVO" },
+  "跑步": { verb: "跑", object: "步", label: "VP", type: "ProductiveVO" },
+  "影相": { verb: "影", object: "相", label: "VP", type: "ProductiveVO" },
+  "打機": { verb: "打", object: "機", label: "VP", type: "ProductiveVO" },
+  "煮嘢食": { verb: "煮", object: "嘢食", label: "VP", type: "ProductiveVO" },
+  "唱K": { verb: "唱", object: "K", label: "VP", type: "ProductiveVO" },
+  "做運動": { verb: "做", object: "運動", label: "VP", type: "ProductiveVO" },
+  "踢波": { verb: "踢", object: "波", label: "VP", type: "ProductiveVO" },
+  "打波": { verb: "打", object: "波", label: "VP", type: "ProductiveVO" },
+  "彈琴": { verb: "彈", object: "琴", label: "VP", type: "ProductiveVO" },
+  "釣魚": { verb: "釣", object: "魚", label: "VP", type: "ProductiveVO" },
+  "唱歌": { verb: "唱", object: "歌", label: "VP", type: "ProductiveVO" },
+  "睇波": { verb: "睇", object: "波", label: "VP", type: "ProductiveVO" },
+  "下棋": { verb: "下", object: "棋", label: "VP", type: "ProductiveVO" },
   "講嘢": { verb: "講", object: "嘢", label: "VP", type: "ProductiveVO" },
   "打電話": { verb: "打", object: "電話", label: "VP", type: "ProductiveVO" },
   "打籃球": { verb: "打", object: "籃球", label: "VP", type: "ProductiveVO" },
@@ -330,6 +368,40 @@ const TOKEN_LEXICON = {
   "好奇": { label: "like", jyutping: "hou2 kei4", syntax: "stative_predicate emotion_state_stative", note: "curious; W17 source reading retained for review." },
   "樂觀": { label: "like", jyutping: "lok6 gun1", syntax: "stative_predicate emotion_state_stative", note: "optimistic; W17 lexicon expansion." },
 
+  // Authorized Glossika Week 16 hobbies/free-time lexical slice. These entries add lexical
+  // and pronunciation coverage only; they license no new construction or productivity claim.
+  "游": { label: "doing", jyutping: "jau4", syntax: "verb swimming_verb action_verb", note: "swim; component of 游水." },
+  "跑": { label: "doing", jyutping: "paau2", syntax: "verb running_verb action_verb", note: "run; component of 跑步." },
+  "步": { label: "what", jyutping: "bou6", syntax: "step_noun activity_object", note: "step / running activity element in 跑步." },
+  "影": { label: "doing", jyutping: "jing2", syntax: "verb photographing_verb transitive_affordance", note: "photograph / take a photo." },
+  "相": { label: "what", jyutping: "soeng2", syntax: "photograph_noun object_np", note: "photograph / photo." },
+  "唱": { label: "doing", jyutping: "coeng3", syntax: "verb singing_verb transitive_affordance", note: "sing." },
+  "K": { label: "what", jyutping: "kei1", syntax: "code_switched_karaoke_object latin_abbreviation", note: "pronounced letter name in 唱K / karaoke." },
+  "街": { label: "where", jyutping: "gaai1", syntax: "place_np street_noun", note: "street; part of the conventional activity 行街." },
+  "行街": { label: "doing", jyutping: "haang4 gaai1", syntax: "verb activity_predicate shopping_browsing_activity", note: "go shopping / browse shops." },
+  "沙灘": { label: "where", jyutping: "saa1 taan1", syntax: "place_np destination_np beach_place", note: "beach; preserves 去 + 沙灘 as transparent motion plus destination." },
+  "踢": { label: "doing", jyutping: "tek3", syntax: "verb kicking_verb transitive_affordance", note: "kick / play a kicking sport." },
+  "波": { label: "what", jyutping: "bo1", syntax: "ball_or_sport_noun object_np", note: "ball / ball game depending on context." },
+  "彈": { label: "doing", jyutping: "taan4", syntax: "verb instrument_playing_verb transitive_affordance", note: "play a musical instrument." },
+  "琴": { label: "what", jyutping: "kam4", syntax: "musical_instrument_noun object_np", note: "piano or stringed keyboard instrument depending on context." },
+  "釣": { label: "doing", jyutping: "diu3", syntax: "verb fishing_verb transitive_affordance", note: "fish / angle for." },
+  "旅行": { label: "doing", jyutping: "leoi5 hang4", syntax: "verb activity_predicate travel_activity", note: "travel / take a trip." },
+  "瑜伽": { label: "what", jyutping: "jyu4 gaa1", syntax: "activity_noun exercise_activity", note: "yoga; nominal activity entry, not silently converted into a verb." },
+  "露營": { label: "doing", jyutping: "lou6 jing4", syntax: "verb activity_predicate camping_activity", note: "camp / go camping." },
+  "棋": { label: "what", jyutping: "kei2", syntax: "board_game_noun object_np", note: "chess / board-game piece or game depending on context." },
+  "行公園": { label: "doing", jyutping: "haang4 gung1 jyun2", syntax: "verb activity_predicate park_walking_activity", note: "walk in the park; kept as the source-listed conventional activity rather than a literal object relation." },
+
+  // Glossika Week 16 million expressions are registered but remain compositionally visible.
+  "一百萬": { label: "how", jyutping: "jat1 baak3 maan6", syntax: "quantity count_value large_numeral compositional_lexicon_entry", note: "1 million; authorized Glossika Week 16 number lexicon." },
+  "二百萬": { label: "how", jyutping: "ji6 baak3 maan6", syntax: "quantity count_value large_numeral compositional_lexicon_entry", note: "2 million; authorized Glossika Week 16 number lexicon." },
+  "三百萬": { label: "how", jyutping: "saam1 baak3 maan6", syntax: "quantity count_value large_numeral compositional_lexicon_entry", note: "3 million; authorized Glossika Week 16 number lexicon." },
+  "四百萬": { label: "how", jyutping: "sei3 baak3 maan6", syntax: "quantity count_value large_numeral compositional_lexicon_entry", note: "4 million; authorized Glossika Week 16 number lexicon." },
+  "五百萬": { label: "how", jyutping: "ng5 baak3 maan6", syntax: "quantity count_value large_numeral compositional_lexicon_entry", note: "5 million; authorized Glossika Week 16 number lexicon." },
+  "六百萬": { label: "how", jyutping: "luk6 baak3 maan6", syntax: "quantity count_value large_numeral compositional_lexicon_entry", note: "6 million; authorized Glossika Week 16 number lexicon." },
+  "七百萬": { label: "how", jyutping: "cat1 baak3 maan6", syntax: "quantity count_value large_numeral compositional_lexicon_entry", note: "7 million; authorized Glossika Week 16 number lexicon." },
+  "八百萬": { label: "how", jyutping: "baat3 baak3 maan6", syntax: "quantity count_value large_numeral compositional_lexicon_entry", note: "8 million; authorized Glossika Week 16 number lexicon." },
+  "九百萬": { label: "how", jyutping: "gau2 baak3 maan6", syntax: "quantity count_value large_numeral compositional_lexicon_entry", note: "9 million; authorized Glossika Week 16 number lexicon." },
+
   // W17 large-number entries are registered as lexical data but forced to remain compositionally visible.
   "一千萬": { label: "how", jyutping: "jat1 cin1 maan6", syntax: "quantity count_value large_numeral compositional_lexicon_entry", note: "10 million; W17 number lexicon." },
   "二千萬": { label: "how", jyutping: "ji6 cin1 maan6", syntax: "quantity count_value large_numeral compositional_lexicon_entry", note: "20 million; W17 number lexicon." },
@@ -443,7 +515,7 @@ const TOKEN_LEXICON = {
   "學校": { label: "where", jyutping: "hok6 haau6", syntax: "place_or_goal", note: "school" },
   "屋企": { label: "where", jyutping: "uk1 kei2", syntax: "place_or_goal", note: "home" },
   "出面": { label: "where", jyutping: "ceot1 min6", syntax: "place_or_goal spatial_localizer ambient_location_frame", note: "outside / the area outside; can frame an ambient environmental property without acting as an expletive subject" },
-  "公園": { label: "where", jyutping: "gung1 jyun4", syntax: "place_or_goal", note: "park" },
+  "公園": { label: "where", jyutping: "gung1 jyun2", syntax: "place_or_goal", note: "park; common changed-tone reading, with jyun4 retained as an accepted variant in the review expectations." },
   "商場": { label: "where", jyutping: "soeng1 coeng4", syntax: "place_or_goal", note: "mall" },
   "餐廳": { label: "what", jyutping: "caan1 teng1", syntax: "restaurant_np", classifier_classes: ["building_shop"], note: "restaurant; place entity, but learner-visible role defaults to what/topic unless used as a location." },
   "廁所": { label: "where", jyutping: "ci3 so2", syntax: "place_or_goal", note: "bathroom" },
@@ -508,8 +580,8 @@ const TOKEN_LEXICON = {
   // Verbs
   "食": { label: "doing", jyutping: "sik6", syntax: "verb transitive_affordance chain_select_edible", note: "eat" },
   "切": { label: "doing", jyutping: "cit3", syntax: "verb action_verb transitive_affordance", note: "cut; added for the sourced 用嚟 function example and ordinary lexical coverage." },
-  "畫": { label: "doing", jyutping: "waa2", syntax: "verb action_verb transitive_affordance", note: "draw / paint." },
-  "畫畫": { label: "doing", jyutping: "waa2 waa2", syntax: "verb action_verb", note: "draw / do drawing." },
+  "畫": { label: "doing", jyutping: "waak6", syntax: "verb action_verb transitive_affordance", note: "draw / paint; verb reading corrected during the authorized Glossika Week 16 lexical audit." },
+  "畫畫": { label: "doing", jyutping: "waak6 waa2", syntax: "verb action_verb", note: "draw pictures / do drawing; verb + picture reading." },
   "飲": { label: "doing", jyutping: "jam2", syntax: "verb transitive_affordance chain_select_drinkable", note: "drink" },
   "睇": { label: "doing", jyutping: "tai2", syntax: "verb transitive_affordance chain_select_perception", note: "look/read/watch" },
   "聽": { label: "doing", jyutping: "teng1", syntax: "verb", note: "listen/hear" },
@@ -1106,6 +1178,7 @@ const PRODUCTIVE_VO_GENERATIVE_SURFACES = new Set(Object.keys(PRODUCTIVE_VO));
 // Do not let longest-match lexical lookup collapse them into one token.
 const COMPOSITIONAL_LEXICAL_PHRASES = new Set([
   "唔開心", "唔鍾意",
+  "一百萬", "二百萬", "三百萬", "四百萬", "五百萬", "六百萬", "七百萬", "八百萬", "九百萬",
   "一千萬", "二千萬", "三千萬", "四千萬", "五千萬", "六千萬", "七千萬", "八千萬", "九千萬", "一億",
   "我覺得", "我知", "我唔知", "唔知",
   "唔可以", "唔要", "唔使", "唔想", "唔得",
@@ -5900,6 +5973,18 @@ function phase4PermissionActiveTokenClone(node, overrides = {}) {
 function productiveVoComponentTokens(surface) {
   const rule = PRODUCTIVE_VO[surface];
   if (!rule) return null;
+  if (surface === "煮嘢食") {
+    return [
+      token("煮", { label: "doing", syntax: "verb" }),
+      token("嘢食", { label: "what", jyutping: "je5 sik6", syntax: "food_noun object", note: "food / things to eat; phrase-local object token avoids changing general 嘢 + 食 analysis." }),
+    ];
+  }
+  if (surface === "下棋") {
+    return [
+      token("下", { label: "doing", jyutping: "haa5", syntax: "verb", note: "play / make a move in a board game; phrase-specific reading in 下棋." }),
+      token("棋", { label: "what", syntax: "object" }),
+    ];
+  }
   return [
     token(rule.verb, { label: "doing", syntax: "verb" }),
     token(rule.object, { label: "what", syntax: "object" }),
@@ -20724,6 +20809,32 @@ const LEARNER_CONTEXTUAL_GLOSSES = {
 };
 
 const LEARNER_SURFACE_GLOSSES = {
+  // Authorized Glossika Week 16 hobbies/free-time surfaces.
+  "睇戲": ["watch a movie", "Activity phrase."],
+  "行山": ["go hiking", "Activity phrase."],
+  "游水": ["swim", "Activity phrase."],
+  "跑步": ["run", "Activity phrase."],
+  "影相": ["take photos", "Activity phrase."],
+  "聽歌": ["listen to music", "Activity phrase."],
+  "睇書": ["read", "Activity phrase."],
+  "打機": ["play video games", "Activity phrase."],
+  "煮嘢食": ["cook", "Activity phrase; literally cook food."],
+  "唱K": ["do karaoke", "Code-switched activity phrase."],
+  "行街": ["go shopping / browse shops", "Conventional activity phrase."],
+  "去沙灘": ["go to the beach", "Movement plus destination."],
+  "做運動": ["exercise", "Activity phrase."],
+  "畫畫": ["draw / paint", "Activity phrase."],
+  "踢波": ["play football / soccer", "Activity phrase; exact sport depends on context."],
+  "打波": ["play ball", "Activity phrase; exact ball game depends on context."],
+  "彈琴": ["play piano / a stringed keyboard instrument", "Activity phrase."],
+  "釣魚": ["fish", "Activity phrase."],
+  "旅行": ["travel", "Activity phrase."],
+  "唱歌": ["sing", "Activity phrase."],
+  "睇波": ["watch a game", "Activity phrase; normally a ball game."],
+  "瑜伽": ["yoga", "Activity noun."],
+  "露營": ["go camping", "Activity phrase."],
+  "下棋": ["play chess / a board game", "Activity phrase; exact game depends on context."],
+  "行公園": ["walk in the park", "Conventional activity phrase in the supplied lesson."],
   "上個禮拜": ["last week", "Time phrase."],
   "上次": ["last time", "Time phrase."],
   "下次": ["next time", "Time phrase."],
