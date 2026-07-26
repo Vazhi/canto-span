@@ -1,10 +1,11 @@
 # Runtime modularization and wired-resource architecture
 
-Status: **Stage 3 lexical/Jyutping extraction implemented; pending merge**
+Status: **Stage 4 declarative resource extraction implemented; pending merge**
 Parent program: #161
-Stage 3 intake: #164
-Work claim: #178
-Draft pull request: #179
+Stage 4 intake: #165
+Work claim: #180
+Draft pull request: #181
+Stage 3 lexical/Jyutping resources: #164 / PR #179
 Stage 2 build pipeline: #163 / PR #177
 Stage 1 architecture: #162 / PR #172
 
@@ -143,6 +144,19 @@ The token fragments export ordered `[surface, value]` pairs. `src/plugin-entry.j
 
 `PREDICATE_OMISSION_PROFILES`, environmental predicate profiles, parser-derived term sorting, tokenization, and grammar inventories remain outside Stage 3.
 
+## Stage 4 declarative grammar and presentation ownership
+
+Shared passive runtime data is now maintained under:
+
+- `src/runtime-resources/grammar/` for predicate profiles, slot rules, construction/category templates, slot aliases, classifier-head rules, and ordered-particle metadata;
+- `src/runtime-resources/presentation/` for role colors, learner-role/slot display metadata, learner glosses, and diagnostic review reminders;
+- `src/runtime-resources/constructions/` for runtime-only active/retired label collections, compatibility aliases/scopes, and label policy;
+- `src/runtime-resources/diagnostics/` for passive trace labels, descriptions, template-family metadata, and transition policy.
+
+These modules are build-time inputs only. They do not own construction UUIDs, canonical names, linguistic status, evidence, promotion readiness, corpus classifications, or survey state. `src/plugin-entry.js` reconstructs the same Sets, Maps, frozen objects, arrays, and object tables before bundling. The normal runtime build validates resource shape and undeclared duplicate registry keys without rejecting valid repeated slot or template families.
+
+Normalization maps, parser primitives, tokenization, detector-family tables, rendering algorithms, and plugin lifecycle/settings code remain outside Stage 4.
+
 ## Runtime-resource format rule
 
 Use JSON only for plain serializable data whose order and values can be preserved without behavior. Use JavaScript modules when the resource contains:
@@ -236,6 +250,6 @@ The modularization succeeds only when routine changes become file-local:
 
 Generated `main.js` may still be large. The improvement is that the GitHub connector edits small canonical inputs and reviews a deterministic output rather than reconstructing the bundle as the source of truth.
 
-## Stage 3 behavior boundary
+## Stage 4 behavior boundary
 
-Stage 3 moves existing lexical and pronunciation data into canonical resource modules without changing parser behavior. Runtime version `0.5.216`, manifest version `0.5.216`, parser results, rendered output, test expectations, construction identity, linguistic status, evidence, corpus classification, survey state, release state, and merge authorization remain unchanged.
+Stage 4 moves shared passive grammar, presentation, runtime-compatibility, and diagnostic data into canonical resource modules without changing parser or rendering behavior. Runtime version `0.5.216`, manifest version `0.5.216`, parser results, rendered output, test expectations, construction identity, linguistic status, evidence, corpus classification, survey state, release state, and merge authorization remain unchanged.
