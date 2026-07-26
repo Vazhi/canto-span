@@ -311,13 +311,17 @@ function validateTaskMetadata(metadata) {
       active_pickup_owner: target,
       codex_self_screen_required: policy.codexSelfScreenRequired,
     };
-    if (metadata.ownership_revision === 1) expected.pickup_status = policy.status;
     if (target === "codex") {
       expected.work_claim_required = true;
       expected.user_merge_approval_required = true;
     }
     for (const [field, value] of Object.entries(expected)) {
       if (metadata[field] !== value) errors.push(`${field} conflicts with pickup_target ${target}`);
+    }
+
+    const pickupRequiredStatuses = new Set(Object.values(PICKUP_POLICY).map((entry) => entry.status));
+    if (pickupRequiredStatuses.has(metadata.pickup_status) && metadata.pickup_status !== policy.status) {
+      errors.push(`pickup_status conflicts with pickup_target ${target}`);
     }
   }
   if (!Number.isInteger(metadata.ownership_revision) || metadata.ownership_revision < 1) {
@@ -339,6 +343,23 @@ function validateTaskMetadata(metadata) {
   if (metadata.active_branch !== null
       && !/^agent\/[a-z0-9][a-z0-9._/-]*$/.test(String(metadata.active_branch || ""))) {
     errors.push("active_branch must be null or use agent/<description>");
+  }
+
+  const bindingFields = ["active_claim_issue", "active_branch", "active_pr"];
+  const boundFieldCount = bindingFields.filter((field) => metadata[field] !== null).length;
+  const hasNoBinding = boundFieldCount === 0;
+  const hasCompleteBinding = boundFieldCount === bindingFields.length;
+  if (!hasNoBinding && !hasCompleteBinding) {
+    errors.push("active claim binding must set active_claim_issue, active_branch, and active_pr together");
+  }
+  if (hasCompleteBinding && metadata.pickup_status !== "active") {
+    errors.push("a complete active claim binding requires pickup_status active");
+  }
+  if (["blocked", "completed"].includes(metadata.pickup_status) && !hasNoBinding) {
+    errors.push(`${metadata.pickup_status} intake must not retain an active claim binding`);
+  }
+  if (metadata.pickup_status === "active" && !metadata.pickup_allowed) {
+    errors.push("active intake must permit pickup");
   }
   return errors;
 }

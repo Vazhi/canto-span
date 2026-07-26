@@ -103,6 +103,9 @@ function validateOwnershipBinding(claim, claimIssue, intake, intakeIssue, pr) {
   if (intake.ownership_revision !== claim.ownership_revision) {
     errors.push(`live ownership revision ${intake.ownership_revision} does not match claim revision ${claim.ownership_revision}`);
   }
+  if (intake.pickup_status !== "active") {
+    errors.push(`live intake status ${intake.pickup_status} does not authorize an active pull request`);
+  }
   if (!intake.pickup_allowed) errors.push("live intake does not permit pickup");
   if (intake.active_claim_issue !== claimIssue) {
     errors.push(`live intake active claim ${intake.active_claim_issue} does not match work claim ${claimIssue}`);
