@@ -5,6 +5,7 @@ const crypto = require("crypto");
 const fs = require("fs");
 const path = require("path");
 const esbuild = require("esbuild");
+const { validateRuntimeLexicalResources } = require("../src/runtime-resources/lexicon/validate");
 
 const root = path.resolve(__dirname, "..");
 const entry = "src/plugin-entry.js";
@@ -42,6 +43,7 @@ async function buildBytes() {
 
 async function main() {
   const check = process.argv.includes("--check");
+  const lexicalResources = validateRuntimeLexicalResources();
   const first = await buildBytes();
 
   if (check) {
@@ -65,6 +67,7 @@ async function main() {
       bytes: first.length,
       sha256: sha256(first),
       deterministic_builds: 2,
+      lexical_resources: lexicalResources,
     }, null, 2)}\n`);
     return;
   }
@@ -76,6 +79,7 @@ async function main() {
     output: "main.js",
     bytes: first.length,
     sha256: sha256(first),
+    lexical_resources: lexicalResources,
   }, null, 2)}\n`);
 }
 

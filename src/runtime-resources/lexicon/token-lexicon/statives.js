@@ -1,0 +1,67 @@
+"use strict";
+
+module.exports = [  // Statives / property predicates
+  ["開心", { label: "like", jyutping: "hoi1 sam1", syntax: "stative_predicate", note: "happy" }],
+  ["熟", { label: "like", jyutping: "suk6", syntax: "stative_predicate result_state_property", note: "ripe / cooked / familiar; in native mango-picking speech 熟咗 means became ripe / is ripe now." }],
+  ["甜", { label: "like", jyutping: "tim4", syntax: "stative_predicate", note: "sweet; lexicon/Jyutping cleanup for UI example diagnostics." }],
+  ["笑", { label: "doing", jyutping: "siu3", syntax: "verb", note: "laugh / smile; kept as a plain verb unless lexicalized in 好笑." }],
+
+  // Lexicalized sensory/evaluation stative predicates.
+  // These are treated as whole stative predicates when they occur by themselves.
+  // Intensified forms such as 好好食 remain compositional: 好 + 好食.
+  ["好食", { label: "like", jyutping: "hou2 sik6", syntax: "lexicalized_stative_predicate sensory_evaluation food_evaluation degreeable", note: "lexicalized stative — tasty / delicious / good to eat; antonym 難食" }],
+  ["好飲", { label: "like", jyutping: "hou2 jam2", syntax: "lexicalized_stative_predicate sensory_evaluation drink_evaluation degreeable", note: "lexicalized stative — tasty / good to drink; antonym 難飲" }],
+  ["好睇", { label: "like", jyutping: "hou2 tai2", syntax: "lexicalized_stative_predicate sensory_evaluation visual_evaluation degreeable", note: "lexicalized stative — good-looking / enjoyable to watch; antonym 難睇" }],
+  ["好聽", { label: "like", jyutping: "hou2 teng1", syntax: "lexicalized_stative_predicate sensory_evaluation sound_evaluation degreeable", note: "lexicalized stative — pleasant-sounding / pleasant to hear; antonym 難聽" }],
+  ["好味", { label: "like", jyutping: "hou2 mei6", syntax: "lexicalized_stative_predicate sensory_evaluation taste_evaluation degreeable", note: "lexicalized stative — delicious / tasty" }],
+  ["好笑", { label: "like", jyutping: "hou2 siu3", syntax: "lexicalized_stative_predicate evaluation amusing_evaluation degreeable", note: "lexicalized stative — funny / amusing; added for UI example diagnostics." }],
+
+  // Negative lexicalized sensory/evaluation stative predicates.
+  // These are conventional bad-quality counterparts, not prohibitives.
+  ["難食", { label: "like", jyutping: "naan4 sik6", syntax: "negative_lexicalized_stative_predicate lexicalized_stative_predicate stative_predicate sensory_evaluation food_evaluation degreeable", note: "negative lexicalized stative — bad-tasting / unpalatable; antonym 好食" }],
+  ["難飲", { label: "like", jyutping: "naan4 jam2", syntax: "negative_lexicalized_stative_predicate lexicalized_stative_predicate stative_predicate sensory_evaluation drink_evaluation degreeable", note: "negative lexicalized stative — bad to drink / unpleasant-tasting; antonym 好飲" }],
+  ["難睇", { label: "like", jyutping: "naan4 tai2", syntax: "negative_lexicalized_stative_predicate lexicalized_stative_predicate stative_predicate sensory_evaluation visual_evaluation degreeable", note: "negative lexicalized stative — ugly / unpleasant to watch; antonym 好睇" }],
+  ["難聽", { label: "like", jyutping: "naan4 teng1", syntax: "negative_lexicalized_stative_predicate lexicalized_stative_predicate stative_predicate sensory_evaluation sound_evaluation degreeable", note: "negative lexicalized stative — unpleasant-sounding / harsh; antonym 好聽" }],
+
+  ["好好食", { label: "like", jyutping: "hou2 hou2 sik6", syntax: "degree_stative_predicate", note: "very tasty; kept compositional as 好 + 好食" }],
+  ["好貴", { label: "like", jyutping: "hou2 gwai3", syntax: "degree_stative_predicate", note: "expensive" }],
+  ["好甜", { label: "like", jyutping: "hou2 tim4", syntax: "degree_stative_predicate", note: "sweet; lexicon/Jyutping cleanup for UI example diagnostics." }],
+  ["好靚", { label: "like", jyutping: "hou2 leng3", syntax: "degree_stative_predicate", note: "nice / pretty" }],
+  ["好正", { label: "like", jyutping: "hou2 zeng3", syntax: "degree_stative_predicate", note: "great / excellent" }],
+  ["抵食", { label: "like", jyutping: "dai2 sik6", syntax: "stative_predicate", note: "good value to eat / worth the price" }],
+  ["出名", { label: "like", jyutping: "ceot1 meng2", syntax: "stative_predicate", note: "famous" }],
+  ["好出名", { label: "like", jyutping: "hou2 ceot1 meng2", syntax: "degree_stative_predicate", note: "very famous" }],
+  ["適合", { label: "like", jyutping: "sik1 hap6", syntax: "stative_predicate", note: "suitable" }],
+  ["好適合", { label: "like", jyutping: "hou2 sik1 hap6", syntax: "degree_stative_predicate", note: "very suitable" }],
+  ["靚", { label: "like", jyutping: "leng3", syntax: "stative_predicate", note: "pretty" }],
+  ["大", { label: "like", jyutping: "daai6", syntax: "stative_predicate", note: "big" }],
+  ["細", { label: "like", jyutping: "sai3", syntax: "stative_predicate", note: "small" }],
+  ["多", { label: "like", jyutping: "do1", syntax: "stative_or_quantity", note: "many/much" }],
+  ["少", { label: "like", jyutping: "siu2", syntax: "stative_or_quantity", note: "few/little" }],
+  ["貴", { label: "like", jyutping: "gwai3", syntax: "stative_predicate", note: "expensive" }],
+  ["平", { label: "like", jyutping: "peng4", syntax: "stative_predicate", note: "cheap" }],
+  ["快", { label: "like", jyutping: "faai3", syntax: "stative_predicate", note: "fast" }],
+  ["慢", { label: "like", jyutping: "maan6", syntax: "stative_predicate", note: "slow" }],
+  ["大聲", { label: "how", jyutping: "daai6 seng1", syntax: "manner_degree_word degree_manner_head", note: "loudly / loud-voice manner word; degreeable before 啲." }],
+  ["細聲", { label: "how", jyutping: "sai3 seng1", syntax: "manner_degree_word degree_manner_head", note: "quietly / soft-voice manner word; degreeable before 啲." }],
+  ["小心", { label: "how", jyutping: "siu2 sam1", syntax: "manner_degree_word degree_manner_head", note: "carefully / be careful; degreeable before 啲." }],
+  ["忙", { label: "like", jyutping: "mong4", syntax: "stative_predicate", note: "busy" }],
+  ["遠", { label: "like", jyutping: "jyun5", syntax: "stative_predicate distance_stative scalar_dimension_predicate", note: "far" }],
+  ["近", { label: "like", jyutping: "kan5", syntax: "stative_predicate distance_stative scalar_dimension_predicate", note: "near / close" }],
+  ["高", { label: "like", jyutping: "gou1", syntax: "stative_predicate height_stative scalar_dimension_predicate", note: "high / tall" }],
+  ["低", { label: "like", jyutping: "dai1", syntax: "stative_predicate directional_result_complement", note: "low / lower; result complement in 放低" }],
+  ["耐", { label: "like", jyutping: "noi6", syntax: "stative_predicate duration_stative scalar_dimension_predicate", note: "long in time / duration" }],
+  ["熱", { label: "like", jyutping: "jit6", syntax: "stative_predicate ambient_property_predicate temperature_property", note: "hot; may describe a participant or an ambient environment depending on overt framing and context" }],
+  ["凍", { label: "like", jyutping: "dung3", syntax: "stative_predicate ambient_property_predicate temperature_property", note: "cold; may describe a participant or an ambient environment depending on overt framing and context" }],
+  ["難", { label: "like", jyutping: "naan4", syntax: "stative_predicate", note: "hard" }],
+  ["易", { label: "like", jyutping: "ji6", syntax: "stative_predicate", note: "easy" }],
+  ["正", { label: "like", jyutping: "zeng3", syntax: "stative_predicate", note: "great / excellent" }],
+  ["抵", { label: "like", jyutping: "dai2", syntax: "stative_predicate", note: "worth it" }],
+  ["新", { label: "like", jyutping: "san1", syntax: "stative_or_modifier", note: "new" }],
+  ["開", { label: "doing", jyutping: "hoi1", syntax: "verb_or_modifier_head", note: "open" }],
+  ["新開", { label: "like", jyutping: "san1 hoi1", syntax: "noun_modifier", note: "newly opened; long modified NPs render transparently when possible." }],
+  ["特別", { label: "like", jyutping: "dak6 bit6", syntax: "modifier_or_stative", note: "special" }],
+  ["啱", { label: "like", jyutping: "ngaam1", syntax: "stative_predicate", note: "right / suitable" }],
+  ["算", { label: "func", jyutping: "syun3", syntax: "evaluation_verb_or_marker", note: "count as / be considered" }],
+  ["唔算", { label: "func", jyutping: "m4 syun3", syntax: "negative_evaluation_marker", note: "doesn't count as / not considered; tokenizer keeps 唔 + 算 visible in transparent price evaluations." }],
+];
