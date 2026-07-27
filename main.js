@@ -2036,6 +2036,33 @@ var require_trace_metadata = __commonJS({
   }
 });
 
+// src/parser/slots/clean-slots.js
+var require_clean_slots = __commonJS({
+  "src/parser/slots/clean-slots.js"(exports2, module2) {
+    "use strict";
+    var {
+      slotNameDisallowedPrefixes: SLOT_NAME_DISALLOWED_PREFIXES2
+    } = require_learner_display();
+    function slotNameRegistryIssue2(slot) {
+      if (typeof slot !== "string") return "slot_not_string";
+      if (!/^[a-z][a-z0-9_]*$/.test(slot)) return "slot_not_snake_case";
+      if (SLOT_NAME_DISALLOWED_PREFIXES2.some((pattern) => pattern.test(slot))) return "implementation_phase_marker_in_slot";
+      return "";
+    }
+    function isCleanSlotName2(slot) {
+      return !slotNameRegistryIssue2(slot);
+    }
+    function cleanSlots2(slots = []) {
+      return [...new Set((slots || []).filter(isCleanSlotName2))].sort();
+    }
+    module2.exports = {
+      slotNameRegistryIssue: slotNameRegistryIssue2,
+      isCleanSlotName: isCleanSlotName2,
+      cleanSlots: cleanSlots2
+    };
+  }
+});
+
 // src/runtime-resources/grammar/templates/slot-generation-rules.js
 var require_slot_generation_rules = __commonJS({
   "src/runtime-resources/grammar/templates/slot-generation-rules.js"(exports2, module2) {
@@ -3606,6 +3633,1558 @@ var require_slot_aliases = __commonJS({
   }
 });
 
+// src/parser/tokenization/punctuation.js
+var require_punctuation = __commonJS({
+  "src/parser/tokenization/punctuation.js"(exports2, module2) {
+    "use strict";
+    var PUNCT_RE2 = /^[\s\u3000，。！？、；：,.!?;:]+/u;
+    module2.exports = PUNCT_RE2;
+  }
+});
+
+// src/runtime-resources/normalization/simplified-to-traditional.js
+var require_simplified_to_traditional = __commonJS({
+  "src/runtime-resources/normalization/simplified-to-traditional.js"(exports2, module2) {
+    "use strict";
+    var HIGH_CONFIDENCE_SIMPLIFIED_TO_TRADITIONAL = {
+      "书": "書",
+      "饮": "飲",
+      "饭": "飯",
+      "听": "聽",
+      "说": "說",
+      "买": "買",
+      "写": "寫",
+      "还": "還",
+      "个": "個",
+      "过": "過",
+      "门": "門",
+      "车": "車",
+      "风": "風",
+      "后": "後",
+      "开": "開",
+      "来": "來",
+      "边": "邊",
+      "间": "間",
+      "东": "東",
+      "话": "話",
+      "语": "語",
+      "学": "學",
+      "习": "習",
+      "妈": "媽",
+      "爷": "爺",
+      "奶": "奶",
+      // v0.5.104 reviewed high-confidence map hardening.
+      // These are one-to-one character-form normalizations used by existing
+      // accepted grammar paths. Do not add Cantonese lexical repairs here.
+      "讲": "講",
+      "紧": "緊",
+      "笔": "筆",
+      "环": "環",
+      "厅": "廳",
+      "们": "們",
+      "对": "對",
+      "点": "點",
+      "见": "見",
+      "长": "長",
+      "气": "氣",
+      "声": "聲"
+    };
+    module2.exports = HIGH_CONFIDENCE_SIMPLIFIED_TO_TRADITIONAL;
+  }
+});
+
+// src/runtime-resources/normalization/folded-pinyin-repairs.js
+var require_folded_pinyin_repairs = __commonJS({
+  "src/runtime-resources/normalization/folded-pinyin-repairs.js"(exports2, module2) {
+    "use strict";
+    var FOLDED_PINYIN_FALLOUT_CANTONESE_LEXICAL_REPAIRS = {
+      "给": {
+        normalized: "畀",
+        confidence: "high",
+        source: "pinyin_simplified_typing_fallout",
+        note: "Pinyin Simplified 给 is a common input fallback for Cantonese 畀; parser shadow may use 畀 while raw display stays 给."
+      },
+      "没": {
+        normalized: "冇",
+        confidence: "high",
+        source: "pinyin_simplified_typing_fallout",
+        note: "Pinyin Simplified 没 is a common input fallback for Cantonese 冇; parser shadow may use 冇 while raw display stays 没."
+      }
+    };
+    module2.exports = FOLDED_PINYIN_FALLOUT_CANTONESE_LEXICAL_REPAIRS;
+  }
+});
+
+// src/parser/normalization/normalize-input.js
+var require_normalize_input = __commonJS({
+  "src/parser/normalization/normalize-input.js"(exports2, module2) {
+    "use strict";
+    var HIGH_CONFIDENCE_SIMPLIFIED_TO_TRADITIONAL = require_simplified_to_traditional();
+    var FOLDED_PINYIN_FALLOUT_CANTONESE_LEXICAL_REPAIRS = require_folded_pinyin_repairs();
+    function normalizeSurface2(text) {
+      return String(text || "").replace(/[\s\u3000，。！？、；：,.!?;:]/gu, "");
+    }
+    function foldedPinyinFalloutRepair2(rawChars, index) {
+      const raw = rawChars[index];
+      const repair = FOLDED_PINYIN_FALLOUT_CANTONESE_LEXICAL_REPAIRS[raw] || null;
+      if (!repair) return null;
+      if (raw === "没" && rawChars[index + 1] === "有") return null;
+      return repair;
+    }
+    function normalizeInputForParser2(rawSource) {
+      const rawText = String(rawSource || "");
+      const rawChars = Array.from(rawText);
+      const shadowChars = [];
+      const normalizationTrace = [];
+      const reviewSuggestions = [];
+      rawChars.forEach((raw, index) => {
+        const foldedRepair = foldedPinyinFalloutRepair2(rawChars, index);
+        const traditional = HIGH_CONFIDENCE_SIMPLIFIED_TO_TRADITIONAL[raw];
+        const normalized = foldedRepair ? foldedRepair.normalized : traditional || raw;
+        shadowChars.push(normalized);
+        if (normalized !== raw) {
+          const isFoldedRepair = Boolean(foldedRepair);
+          normalizationTrace.push({
+            index,
+            raw,
+            normalized,
+            type: isFoldedRepair ? "pinyin_fallout_cantonese_lexical_repair" : "simplified_to_traditional",
+            confidence: isFoldedRepair ? foldedRepair.confidence : "high",
+            source: isFoldedRepair ? foldedRepair.source : "character_form_map",
+            status: isFoldedRepair ? "folded_parser_shadow_only" : "applied_parser_shadow_only",
+            applied_to_parser_shadow: true,
+            learner_display_replaced: false,
+            one_to_one_character_mapping: true,
+            note: isFoldedRepair ? foldedRepair.note : "High-confidence Simplified-to-Traditional parser-shadow character-form normalization."
+          });
+        }
+      });
+      const parserShadowSource = shadowChars.join("");
+      return {
+        raw_source: rawText,
+        parser_shadow_source: parserShadowSource,
+        normalization_trace: normalizationTrace,
+        review_suggestions: reviewSuggestions,
+        raw_first_display: true
+      };
+    }
+    function nodeParserSurface2(node) {
+      if (!node) return "";
+      if (node.kind === "token") return node.surface || "";
+      if (node.kind === "text") return node.text || "";
+      if (node.kind === "construction") return (node.children || []).map(nodeParserSurface2).join("");
+      return "";
+    }
+    function nodeDisplaySurface2(node) {
+      if (!node) return "";
+      if (node.kind === "token") return node.display_surface || node.surface || "";
+      if (node.kind === "text") return node.display_text || node.text || "";
+      if (node.kind === "construction") return (node.children || []).map(nodeDisplaySurface2).join("");
+      return "";
+    }
+    function annotateRawDisplaySurfaces2(nodes, rawSource, parserShadowSource) {
+      const rawChars = Array.from(String(rawSource || ""));
+      const shadowChars = Array.from(String(parserShadowSource || ""));
+      let cursor = 0;
+      const annotate = (node) => {
+        if (!node) return;
+        if (node.kind === "construction") {
+          for (const child of node.children || []) annotate(child);
+          const displaySurface = nodeDisplaySurface2(node);
+          const parserSurface2 = nodeParserSurface2(node);
+          if (displaySurface && displaySurface !== parserSurface2) node.display_surface = displaySurface;
+          return;
+        }
+        const parserSurface = nodeParserSurface2(node);
+        const length = Array.from(parserSurface).length;
+        const rawSlice = rawChars.slice(cursor, cursor + length).join("");
+        const shadowSlice = shadowChars.slice(cursor, cursor + length).join("");
+        if (length) cursor += length;
+        if (node.kind === "token") {
+          if (rawSlice && rawSlice !== node.surface) {
+            node.display_surface = rawSlice;
+            node.parser_surface = node.surface;
+          }
+          if (shadowSlice && shadowSlice !== parserSurface) node.shadow_alignment_warning = shadowSlice;
+        } else if (node.kind === "text") {
+          if (rawSlice && rawSlice !== node.text) node.display_text = rawSlice;
+          if (shadowSlice && shadowSlice !== parserSurface) node.shadow_alignment_warning = shadowSlice;
+        }
+      };
+      for (const node of nodes || []) annotate(node);
+      return nodes;
+    }
+    function inputNormalizationHasFindings2(inputNormalization) {
+      return !!(inputNormalization && ((inputNormalization.normalization_trace || []).length || (inputNormalization.review_suggestions || []).length || inputNormalization.raw_source !== inputNormalization.parser_shadow_source));
+    }
+    module2.exports = {
+      normalizeSurface: normalizeSurface2,
+      foldedPinyinFalloutRepair: foldedPinyinFalloutRepair2,
+      normalizeInputForParser: normalizeInputForParser2,
+      nodeParserSurface: nodeParserSurface2,
+      nodeDisplaySurface: nodeDisplaySurface2,
+      annotateRawDisplaySurfaces: annotateRawDisplaySurfaces2,
+      inputNormalizationHasFindings: inputNormalizationHasFindings2,
+      HIGH_CONFIDENCE_SIMPLIFIED_TO_TRADITIONAL,
+      FOLDED_PINYIN_FALLOUT_CANTONESE_LEXICAL_REPAIRS
+    };
+  }
+});
+
+// src/parser/features/token-features.js
+var require_token_features = __commonJS({
+  "src/parser/features/token-features.js"(exports2, module2) {
+    "use strict";
+    var SLOT_GENERATION_RULES2 = require_slot_generation_rules();
+    module2.exports = function createTokenFeaturePrimitives(dependencies = {}) {
+      const {
+        normalizeLearnerLabel: normalizeLearnerLabel2,
+        cleanSlots: cleanSlots2
+      } = dependencies;
+      function hasAny2(value, wanted) {
+        const values = Array.isArray(value) ? value : [value];
+        return values.some((item) => wanted.includes(item));
+      }
+      function stringIncludesAny2(value, needles) {
+        const text = String(value || "");
+        return needles.some((needle) => needle && text.includes(needle));
+      }
+      function contextualRoleAffordances2(row = {}) {
+        const slots = new Set(row.slots || []);
+        const syntax = String(row.syntax || "");
+        const role = row.role || row.label || "";
+        const out = [];
+        const add = (candidate) => {
+          if (!candidate || !candidate.role) return;
+          const key = `${candidate.role}||${candidate.slot || ""}||${candidate.source || ""}`;
+          if (out.some((item) => `${item.role}||${item.slot || ""}||${item.source || ""}` === key)) return;
+          out.push(candidate);
+        };
+        if (role && role !== "neutral") {
+          add({
+            role,
+            source: "lexical_default",
+            active_before_construction_wrapping: true,
+            note: "Default learner role from the lexical entry before any construction-level contextual override."
+          });
+        }
+        if (slots.has("time") || slots.has("time_head") || slots.has("temporal_modifier") || syntax.includes("temporal")) {
+          add({
+            role: "when",
+            slot: slots.has("temporal_modifier") ? "temporal_modifier" : slots.has("time_head") ? "time_head" : "time",
+            source: "time_affordance",
+            active_before_construction_wrapping: role === "when",
+            note: "Time/temporal affordance retained for phrases such as 上個禮拜 / 上次."
+          });
+        }
+        if (slots.has("movement_direction") || slots.has("return_motion_verb") || slots.has("deictic_motion_marker") || slots.has("movement_verb") || syntax.includes("movement_direction")) {
+          add({
+            role: "doing",
+            slot: slots.has("movement_direction") ? "movement_direction" : slots.has("return_motion_verb") ? "return_motion_verb" : slots.has("deictic_motion_marker") ? "deictic_motion_marker" : "movement_verb",
+            source: "motion_affordance",
+            active_before_construction_wrapping: role === "doing",
+            note: "Motion affordance retained for directional-motion contexts such as 上嚟 / 返上嚟."
+          });
+        }
+        if (slots.has("degree_manner_head") || syntax.includes("degree_manner_head")) {
+          add({
+            role: "how",
+            slot: "degree_manner_head",
+            source: "degree_manner_affordance",
+            active_before_construction_wrapping: role === "how",
+            note: "Degree/manner affordance retained for stative/adjective or manner + 啲 contexts."
+          });
+        }
+        if (slots.has("object") || slots.has("head_noun") || slots.has("np")) {
+          add({
+            role: "what",
+            slot: slots.has("object") ? "object" : slots.has("head_noun") ? "head_noun" : "np",
+            source: "nominal_affordance",
+            active_before_construction_wrapping: role === "what",
+            note: "Nominal/object affordance retained for NP or object contexts."
+          });
+        }
+        return out;
+      }
+      function inferTokenFeatures2(surface, entry = {}, overrides = {}) {
+        const rawLabel = overrides.label || entry.label || "neutral";
+        const syntax = overrides.syntax || entry.syntax || "lexical_candidate";
+        const label = normalizeLearnerLabel2(rawLabel, surface, syntax);
+        const syntaxParts = new Set(String(syntax).split(/[\s_]+/).filter(Boolean));
+        const hasSyntaxPart = (part) => syntaxParts.has(part);
+        const features = {
+          surface,
+          label,
+          syntax,
+          pos: entry.pos || overrides.pos || "",
+          semantic: Array.isArray(entry.semantic) ? entry.semantic : [],
+          verb_class: Array.isArray(entry.verb_class) ? entry.verb_class : [],
+          particle_class: entry.particle_class || ""
+        };
+        if (!features.pos) {
+          if (label === "who" || syntax.includes("person") || syntax.includes("pronoun")) features.pos = "np";
+          else if (label === "where" || syntax.includes("place")) features.pos = "np";
+          else if (label === "what" || syntax.includes("noun") || syntax.includes("np")) features.pos = "noun";
+          else if (label === "doing") features.pos = "verb";
+          else if (label === "stance" || syntax.includes("cognition")) features.pos = "verb";
+          else if (label === "like" || syntax.includes("stative")) features.pos = "stative";
+          else if (label === "measure_word") features.pos = "classifier";
+          else if (label === "particle") features.pos = "particle";
+          else if (label === "func") features.pos = "function";
+          else if (label === "when") features.pos = "time";
+          else if (label === "how" || label === "why") features.pos = "adverbial";
+        }
+        if (label === "where" || syntax.includes("place")) features.semantic.push("place");
+        const foodNounSurfaces = ["飯", "薄餅", "意粉", "食物", "菜式"];
+        const drinkLiquidSurfaces = ["水", "茶", "咖啡", "奶", "湯"];
+        if (syntax.includes("food") || foodNounSurfaces.includes(surface)) features.semantic.push("food");
+        if (syntax.includes("drink") || syntax.includes("liquid") || drinkLiquidSurfaces.includes(surface)) features.semantic.push("drink", "liquid");
+        if (surface === "水" || syntax.includes("water")) features.semantic.push("water");
+        if (syntax.includes("beverage") || ["茶", "咖啡", "奶"].includes(surface)) features.semantic.push("beverage");
+        if (syntax.includes("price") || ["價", "價錢", "價位", "錢", "蚊"].includes(surface)) features.semantic.push("price");
+        if (syntax.includes("abstract") || ["興趣", "問題", "消息", "主意"].includes(surface)) features.semantic.push("abstract");
+        if (syntax.includes("cognition") || ["覺得", "諗", "知", "記得", "唔知"].includes(surface)) features.verb_class.push("cognition");
+        if (label === "stance" || hasSyntaxPart("opinion") || hasSyntaxPart("stance") || ["覺得", "諗住", "記得", "唔知"].includes(surface)) features.verb_class.push("stance");
+        if (["去", "返", "嚟", "落", "上"].includes(surface) || syntax.includes("movement_direction")) features.verb_class.push("movement");
+        if (["講", "話"].includes(surface)) features.verb_class.push("speech");
+        if (["鍾意"].includes(surface)) features.verb_class.push("preference");
+        if (["好似"].includes(surface)) features.verb_class.push("seeming");
+        features.semantic = [...new Set(features.semantic)];
+        features.verb_class = [...new Set(features.verb_class)];
+        return features;
+      }
+      function compactFeatureSummary2(features = {}) {
+        return {
+          pos: features.pos || "",
+          label: features.label || "",
+          semantic: features.semantic || [],
+          verb_class: features.verb_class || [],
+          particle_class: features.particle_class || ""
+        };
+      }
+      function featureList2(...items) {
+        return [...new Set(items.flat().filter(Boolean))].sort();
+      }
+      function syntaxHas2(syntax, value) {
+        return String(syntax || "").includes(value);
+      }
+      function featureBundleFor2(surface, entry = {}, features = {}, slots = []) {
+        const syntax = entry.syntax || features.syntax || "";
+        const label = entry.label || features.label || "";
+        const slotSet = new Set(slots || []);
+        const semantic = new Set(features.semantic || []);
+        const verbClass = new Set(features.verb_class || []);
+        const isLexicalizedStative3 = syntaxHas2(syntax, "lexicalized_stative") && !syntaxHas2(syntax, "negative_lexicalized_stative");
+        const isNegativeLexicalizedStative3 = syntaxHas2(syntax, "negative_lexicalized_stative");
+        const syntaxSuggestsOrdinaryStative = label === "like" && syntaxHas2(syntax, "stative") && !isLexicalizedStative3 && !isNegativeLexicalizedStative3 && !syntaxHas2(syntax, "sensory_stative_head") && !syntaxHas2(syntax, "degree_stative_predicate");
+        const isOrdinaryStative3 = slotSet.has("ordinary_stative_predicate") || syntaxSuggestsOrdinaryStative;
+        const isStative = slotSet.has("stative_predicate") || isLexicalizedStative3 || isNegativeLexicalizedStative3 || isOrdinaryStative3;
+        const isAction = slotSet.has("action_verb") || slotSet.has("main_verb");
+        const isSpeech = slotSet.has("speech_verb") || verbClass.has("speech") || ["話", "講"].includes(surface);
+        const isReportative = slotSet.has("reportative_source") || ["話", "聽講"].includes(surface);
+        const isStance = (slotSet.has("stance_predicate") || verbClass.has("stance")) && !["話", "聽講"].includes(surface);
+        const isCognition = slotSet.has("cognition_predicate") || verbClass.has("cognition");
+        const isPhase4CognitionPromotion = syntaxHas2(syntax, "phase4_cognition_promotion");
+        const isPhase4NegativeCognitionFragment = isPhase4CognitionPromotion && slotSet.has("negative_cognition_fragment");
+        const isPhase4CognitionContentPredicate = isPhase4CognitionPromotion && slotSet.has("non_stance_cognition_predicate");
+        const isPhase4CognitionStatement = isPhase4CognitionPromotion && slotSet.has("cognition_statement_clause");
+        const isPhase4DesiderativePromotion = syntaxHas2(syntax, "phase4_desiderative_promotion");
+        const isPhase4DesiderativeANotAQuestion = isPhase4DesiderativePromotion && slotSet.has("desiderative_a_not_a_question");
+        const isPhase4OpinionStancePromotion = syntaxHas2(syntax, "phase4_opinion_stance_promotion");
+        const isPhase4OpinionStanceFrame = isPhase4OpinionStancePromotion && slotSet.has("opinion_stance_frame");
+        const isPhase4ReportedSpeechPromotion = syntaxHas2(syntax, "phase4_reported_speech_promotion");
+        const isPhase4ReportedSpeechFrame = isPhase4ReportedSpeechPromotion && slotSet.has("reported_speech");
+        const isPhase4PermissionPromotion = syntaxHas2(syntax, "phase4_permission_promotion");
+        const isPhase4PermissionANotAQuestion = isPhase4PermissionPromotion && slotSet.has("permission_a_not_a_question");
+        const isDegree = slotSet.has("degree");
+        const isParticle2 = label === "particle" || features.pos === "particle";
+        const isFunction = label === "func" || label === "measure_word" || features.pos === "function" || features.pos === "quantifier";
+        const isNominal = ["who", "what", "where"].includes(label) || ["noun", "np"].includes(features.pos);
+        const domains = [];
+        if (syntaxHas2(syntax, "sensory_evaluation")) domains.push("sensory_evaluation");
+        if (syntaxHas2(syntax, "food_evaluation")) domains.push("food_evaluation");
+        else if ((syntaxHas2(syntax, "food") || semantic.has("food")) && isNominal) domains.push("food_item", "edible_item");
+        else if (syntaxHas2(syntax, "food")) domains.push("food_evaluation");
+        if (syntaxHas2(syntax, "drink") || syntaxHas2(syntax, "drink_evaluation")) domains.push("drink_evaluation");
+        if (syntaxHas2(syntax, "sound") || syntaxHas2(syntax, "sound_evaluation")) domains.push("sound_evaluation");
+        if (syntaxHas2(syntax, "visual") || syntaxHas2(syntax, "visual_evaluation")) domains.push("visual_evaluation");
+        if (syntaxHas2(syntax, "taste") || syntaxHas2(syntax, "taste_evaluation")) domains.push("taste_evaluation");
+        if (syntaxHas2(syntax, "distance") || ["遠", "近"].includes(surface)) domains.push("distance_property");
+        if (syntaxHas2(syntax, "price") || ["貴", "平", "價", "價錢", "價位", "錢", "蚊"].includes(surface)) domains.push("price_property");
+        if (syntaxHas2(syntax, "emotion") || ["開心", "難過"].includes(surface)) domains.push("emotion");
+        if (isCognition || ["覺得", "諗", "知", "記得", "唔知"].includes(surface)) domains.push("cognition");
+        if (isSpeech) domains.push("speech");
+        if (verbClass.has("movement") || ["去", "返", "嚟", "落", "上"].includes(surface)) domains.push("motion");
+        if (["食", "飲"].includes(surface)) domains.push("consumption");
+        if (syntaxHas2(syntax, "story_np") || syntaxHas2(syntax, "information_content") || semantic.has("information_content")) domains.push("information_content", "readable_content");
+        if (syntaxHas2(syntax, "liquid") || semantic.has("liquid") || semantic.has("water") || semantic.has("beverage") || semantic.has("drink")) domains.push("liquid", "drinkable_item");
+        if (label === "where" || syntaxHas2(syntax, "place") || semantic.has("place")) domains.push("place");
+        let lexicalizationType = "none";
+        if (isNegativeLexicalizedStative3) lexicalizationType = "negative_lexicalized_stative";
+        else if (isLexicalizedStative3) lexicalizationType = "lexicalized_stative";
+        else if (entry.review === "protected_formula" || syntaxHas2(syntax, "formula")) lexicalizationType = "protected_formula";
+        else if (syntaxHas2(syntax, "productive_vo")) lexicalizationType = "productive_vo";
+        const predicateSubtypes = [];
+        if (isAction && !isStative) predicateSubtypes.push("action_verb");
+        if (isOrdinaryStative3) predicateSubtypes.push("ordinary_stative");
+        if (isLexicalizedStative3) predicateSubtypes.push("lexicalized_stative");
+        if (isNegativeLexicalizedStative3) predicateSubtypes.push("negative_lexicalized_stative");
+        if (isSpeech) predicateSubtypes.push("speech_predicate");
+        if (isReportative) predicateSubtypes.push("reportative_source");
+        if (isStance) predicateSubtypes.push("stance_predicate");
+        if (isCognition) predicateSubtypes.push("cognition_predicate");
+        if (verbClass.has("movement")) predicateSubtypes.push("motion_predicate");
+        if (slotSet.has("desiderative_modal") || syntaxHas2(syntax, "modal_desiderative")) predicateSubtypes.push("desiderative_modal");
+        if (slotSet.has("permission_modal") || slotSet.has("permission_a_not_a_modal") || syntaxHas2(syntax, "modal_permission")) predicateSubtypes.push("permission_modal");
+        if (slotSet.has("prohibitive_marker") || syntaxHas2(syntax, "prohibitive_marker")) predicateSubtypes.push("prohibitive_marker");
+        let syntacticCategory = "UNKNOWN";
+        if (isParticle2) syntacticCategory = "PARTICLE";
+        else if (isFunction || isDegree) syntacticCategory = "FUNCTION";
+        else if (isNominal && !isStative) syntacticCategory = "N";
+        else if (label === "doing" || label === "stance" || label === "like" || isStative || isSpeech || isCognition) syntacticCategory = "V";
+        let morphologicalCategory = "unknown";
+        if (syntacticCategory === "V") morphologicalCategory = "verb_like";
+        else if (syntacticCategory === "N") morphologicalCategory = "nominal_like";
+        else if (syntacticCategory === "PARTICLE") morphologicalCategory = "particle_like";
+        else if (syntacticCategory === "FUNCTION") morphologicalCategory = "function_like";
+        let gradability = "unknown";
+        if (syntaxHas2(syntax, "degreeable") || isStative || isOrdinaryStative3) gradability = "gradable";
+        else if (isAction || isSpeech || isCognition || isDegree || isFunction || isParticle2) gradability = "non_gradable";
+        let dynamicity = "unknown";
+        if (surface === "覺得") dynamicity = "mixed";
+        else if (isStative || isNegativeLexicalizedStative3 || isLexicalizedStative3 || isOrdinaryStative3) dynamicity = "non_dynamic";
+        else if (isAction || isSpeech || surface === "諗") dynamicity = "dynamic";
+        else if (isCognition) dynamicity = "contextual";
+        let temporalStability = "unknown";
+        if (["遠", "近", "高", "矮", "大", "細"].includes(surface)) temporalStability = "permanent";
+        else if (isAction || isSpeech || surface === "諗") temporalStability = "transient";
+        else if (isStative || isCognition || surface === "覺得") temporalStability = "contextual";
+        let polarityProfile = "neutral";
+        if (isNegativeLexicalizedStative3 || syntaxHas2(syntax, "negative")) polarityProfile = "negative";
+        else if (isLexicalizedStative3 || syntaxHas2(syntax, "positive")) polarityProfile = "positive";
+        else if (["貴", "遠"].includes(surface)) polarityProfile = "contextual";
+        const canHeadComment3 = slotSet.has("comment_predicate") || isStative || isOrdinaryStative3;
+        const canTakeDegreeModifier = syntaxHas2(syntax, "degreeable") || isStative || isOrdinaryStative3;
+        const canHeadProductiveVO = slotSet.has("action_verb") && syntaxHas2(syntax, "transitive_affordance");
+        const canBeM4Negated = canHeadComment3 || label === "doing" ? label === "doing" && !canHeadComment3 ? "contextual" : true : "unknown";
+        let confidence = "low";
+        const sources = ["runtime_inference"];
+        if (["好食", "難食", "遠", "食", "覺得", "諗", "知"].includes(surface)) {
+          confidence = ["遠"].includes(surface) ? "medium" : "high";
+          sources.unshift("manual_gold");
+        }
+        if (["好食", "好飲", "好睇", "好聽", "好味", "難食", "難飲", "難睇", "難聽"].includes(surface)) {
+          if (!sources.includes("words_hk")) sources.push("words_hk");
+          if (!sources.includes("jyutdictionary")) sources.push("jyutdictionary");
+          confidence = "high";
+        }
+        if (["話", "聽講"].includes(surface)) {
+          confidence = "medium";
+          sources.unshift("manual_gold");
+          sources.push("research_generalization");
+        }
+        const shorthandParts = [];
+        if (gradability === "gradable") shorthandParts.push("+gradable");
+        if (gradability === "non_gradable") shorthandParts.push("-gradable");
+        if (dynamicity === "dynamic") shorthandParts.push("+dynamic");
+        if (dynamicity === "non_dynamic") shorthandParts.push("-dynamic");
+        if (isLexicalizedStative3) shorthandParts.push("+lexicalized_stative");
+        if (isNegativeLexicalizedStative3) shorthandParts.push("+negative_lexicalized_stative");
+        if (isOrdinaryStative3) shorthandParts.push("+ordinary_stative");
+        for (const subtype of predicateSubtypes) shorthandParts.push(`+${subtype}`);
+        for (const domain of domains) shorthandParts.push(`+${domain}`);
+        const parserActiveUses = [];
+        if (lexicalizationType === "lexicalized_stative") parserActiveUses.push("lexicalization_type:lexicalized_stative");
+        if (lexicalizationType === "negative_lexicalized_stative") parserActiveUses.push("lexicalization_type:negative_lexicalized_stative");
+        if (predicateSubtypes.includes("ordinary_stative")) parserActiveUses.push("predicate_subtype:ordinary_stative");
+        if (isStative && gradability === "gradable") parserActiveUses.push("core_dimensions:gradability");
+        if (isStative && canHeadComment3) parserActiveUses.push("construction_affordances:can_head_comment");
+        if (isPhase4CognitionPromotion && isCognition) parserActiveUses.push("predicate_subtype:cognition_predicate");
+        if (isPhase4CognitionContentPredicate && isCognition) parserActiveUses.push("construction_affordances:can_take_content_clause");
+        if (isPhase4NegativeCognitionFragment && isCognition) parserActiveUses.push("construction_affordances:can_stand_as_negative_cognition_fragment");
+        if (isPhase4CognitionStatement && isCognition) parserActiveUses.push("construction_affordances:can_stand_as_cognition_statement");
+        if (isPhase4DesiderativePromotion && predicateSubtypes.includes("desiderative_modal")) parserActiveUses.push("predicate_subtype:desiderative_modal");
+        if (isPhase4DesiderativeANotAQuestion && predicateSubtypes.includes("desiderative_modal")) parserActiveUses.push("construction_affordances:can_form_desiderative_a_not_a_question");
+        if (isPhase4OpinionStancePromotion && predicateSubtypes.includes("stance_predicate")) parserActiveUses.push("predicate_subtype:stance_predicate");
+        if (isPhase4OpinionStanceFrame && predicateSubtypes.includes("stance_predicate")) parserActiveUses.push("construction_affordances:can_head_opinion_frame");
+        if (isPhase4ReportedSpeechPromotion && predicateSubtypes.includes("speech_predicate")) parserActiveUses.push("predicate_subtype:speech_predicate");
+        if (isPhase4ReportedSpeechFrame && predicateSubtypes.includes("speech_predicate")) parserActiveUses.push("construction_affordances:can_introduce_reported_content");
+        if (isPhase4PermissionPromotion && predicateSubtypes.includes("permission_modal")) parserActiveUses.push("predicate_subtype:permission_modal");
+        if (isPhase4PermissionANotAQuestion && predicateSubtypes.includes("permission_modal")) parserActiveUses.push("construction_affordances:can_form_permission_a_not_a_question");
+        if (canHeadProductiveVO) parserActiveUses.push("construction_affordances:can_head_productive_vo");
+        const topicChainParserActive = parserActiveUses.includes("construction_affordances:can_head_productive_vo");
+        const phase4CognitionParserActive = parserActiveUses.some((use) => use.includes("cognition_predicate") || use.includes("can_take_content_clause"));
+        const phase4DesiderativeParserActive = parserActiveUses.some((use) => use.includes("desiderative_modal") || use.includes("desiderative_a_not_a"));
+        const phase4OpinionStanceParserActive = parserActiveUses.some((use) => use.includes("stance_predicate") || use.includes("can_head_opinion_frame"));
+        const phase4ReportedSpeechParserActive = parserActiveUses.some((use) => use.includes("speech_predicate") || use.includes("can_introduce_reported_content"));
+        const phase4PermissionParserActive = parserActiveUses.some((use) => use.includes("permission_modal") || use.includes("can_form_permission_a_not_a_question"));
+        const parserBehavior = phase4CognitionParserActive ? "phase4_controlled_cognition_logic_uses_feature_predicates" : phase4DesiderativeParserActive ? "phase4_controlled_desiderative_a_not_a_logic_uses_feature_predicates" : phase4OpinionStanceParserActive ? "phase4_controlled_opinion_stance_logic_uses_feature_predicates" : phase4ReportedSpeechParserActive ? "phase4_controlled_reported_speech_logic_uses_feature_predicates" : phase4PermissionParserActive ? "phase4_controlled_permission_a_not_a_logic_uses_feature_predicates" : topicChainParserActive ? "a1_topic_chain_null_object_logic_uses_object_selecting_affordance" : parserActiveUses.length ? "stative_logic_uses_feature_predicates" : "unchanged";
+        const bundleStatus = phase4CognitionParserActive ? "derived_runtime_helper_phase_4_controlled_cognition_parser_active" : phase4DesiderativeParserActive ? "derived_runtime_helper_phase_4_controlled_desiderative_parser_active" : phase4OpinionStanceParserActive ? "derived_runtime_helper_phase_4_controlled_opinion_stance_parser_active" : phase4ReportedSpeechParserActive ? "derived_runtime_helper_phase_4_controlled_reported_speech_parser_active" : phase4PermissionParserActive ? "derived_runtime_helper_phase_4_controlled_permission_parser_active" : topicChainParserActive ? "derived_runtime_helper_a1_topic_chain_parser_active" : parserActiveUses.length ? "derived_runtime_helper_phase_3_stative_parser_active" : "derived_runtime_helper_phase_3_parser_inactive";
+        return {
+          status: bundleStatus,
+          parser_behavior: parserBehavior,
+          core_dimensions: {
+            syntactic_category: syntacticCategory,
+            morphological_category: morphologicalCategory,
+            gradability,
+            dynamicity,
+            temporal_stability: temporalStability
+          },
+          parser_features: {
+            lexicalization_type: lexicalizationType,
+            semantic_domain: featureList2(domains),
+            polarity_profile: polarityProfile,
+            predicate_subtype: featureList2(predicateSubtypes)
+          },
+          construction_affordances: {
+            can_head_comment: canHeadComment3,
+            can_take_degree_modifier: canTakeDegreeModifier,
+            can_be_m4_negated: canBeM4Negated,
+            can_head_productive_vo: canHeadProductiveVO,
+            can_license_following_vp: slotSet.has("prohibitive_marker") || surface === "唔好",
+            can_introduce_reported_content: slotSet.has("reportative_source") || ["話", "聽講"].includes(surface),
+            can_take_content_clause: isPhase4CognitionContentPredicate && isCognition,
+            can_stand_as_negative_cognition_fragment: isPhase4NegativeCognitionFragment && isCognition,
+            can_stand_as_cognition_statement: isPhase4CognitionStatement && isCognition,
+            can_form_desiderative_a_not_a_question: isPhase4DesiderativeANotAQuestion && predicateSubtypes.includes("desiderative_modal"),
+            can_form_permission_a_not_a_question: isPhase4PermissionANotAQuestion && predicateSubtypes.includes("permission_modal"),
+            can_take_recipient: ["話", "畀"].includes(surface),
+            can_head_opinion_frame: isPhase4OpinionStanceFrame || slotSet.has("stance_predicate") || ["覺得", "認為", "以為", "相信", "懷疑"].includes(surface)
+          },
+          evidence_controls: {
+            feature_confidence: confidence,
+            feature_source: featureList2(sources),
+            parser_active: Boolean(parserActiveUses.length),
+            parser_active_scope: featureList2(parserActiveUses)
+          },
+          diagnostic_shorthand: featureList2(shorthandParts).join(" ")
+        };
+      }
+      function getFeatureBundle2(nodeOrBundle) {
+        if (!nodeOrBundle) return null;
+        if (nodeOrBundle.core_dimensions && nodeOrBundle.parser_features) return nodeOrBundle;
+        return nodeOrBundle.feature_bundle || nodeOrBundle.trace && nodeOrBundle.trace.feature_bundle || null;
+      }
+      function getParserFeatures2(nodeOrBundle) {
+        const bundle = getFeatureBundle2(nodeOrBundle);
+        return bundle && bundle.parser_features || {};
+      }
+      function getConstructionAffordances2(nodeOrBundle) {
+        const bundle = getFeatureBundle2(nodeOrBundle);
+        return bundle && bundle.construction_affordances || {};
+      }
+      function getCoreDimensions2(nodeOrBundle) {
+        const bundle = getFeatureBundle2(nodeOrBundle);
+        return bundle && bundle.core_dimensions || {};
+      }
+      function getLexicalizationType2(nodeOrBundle) {
+        return getParserFeatures2(nodeOrBundle).lexicalization_type || "none";
+      }
+      function hasPredicateSubtype2(nodeOrBundle, subtype) {
+        const subtypes = getParserFeatures2(nodeOrBundle).predicate_subtype || [];
+        return Array.isArray(subtypes) && subtypes.includes(subtype);
+      }
+      function isLexicalizedStative2(nodeOrBundle) {
+        return getLexicalizationType2(nodeOrBundle) === "lexicalized_stative";
+      }
+      function isNegativeLexicalizedStative2(nodeOrBundle) {
+        return getLexicalizationType2(nodeOrBundle) === "negative_lexicalized_stative";
+      }
+      function isOrdinaryStative2(nodeOrBundle) {
+        return hasPredicateSubtype2(nodeOrBundle, "ordinary_stative");
+      }
+      function isStativePredicateByBundle2(nodeOrBundle) {
+        if (isLexicalizedStative2(nodeOrBundle) || isNegativeLexicalizedStative2(nodeOrBundle) || isOrdinaryStative2(nodeOrBundle)) return true;
+        const core = getCoreDimensions2(nodeOrBundle);
+        const affordances = getConstructionAffordances2(nodeOrBundle);
+        return core.syntactic_category === "V" && affordances.can_head_comment === true;
+      }
+      function isGradablePredicate2(nodeOrBundle) {
+        return isStativePredicateByBundle2(nodeOrBundle) && getCoreDimensions2(nodeOrBundle).gradability === "gradable";
+      }
+      function canHeadComment2(nodeOrBundle) {
+        const affordances = getConstructionAffordances2(nodeOrBundle);
+        return isStativePredicateByBundle2(nodeOrBundle) && affordances.can_head_comment === true;
+      }
+      function bundleCanFillStativeSlot2(node, slot) {
+        if (!node || node.kind !== "token") return null;
+        const bundle = getFeatureBundle2(node);
+        if (!bundle) return null;
+        switch (slot) {
+          case "lexicalized_stative_predicate":
+            return isLexicalizedStative2(bundle) || isNegativeLexicalizedStative2(bundle);
+          case "negative_lexicalized_stative_predicate":
+            return isNegativeLexicalizedStative2(bundle);
+          case "negative_lexicalized_stative":
+            return isNegativeLexicalizedStative2(bundle);
+          case "ordinary_stative_predicate":
+          case "ordinary_degree_stative_predicate":
+            return isOrdinaryStative2(bundle);
+          case "stative_predicate":
+            return isStativePredicateByBundle2(bundle);
+          case "comment_predicate":
+          case "comment":
+            return canHeadComment2(bundle);
+          case "modifier":
+            return isGradablePredicate2(bundle);
+          default:
+            return null;
+        }
+      }
+      function parserActiveStativeSlotsForBundle2(bundle) {
+        const slots = [];
+        if (!bundle) return slots;
+        if (isNegativeLexicalizedStative2(bundle)) {
+          slots.push("negative_lexicalized_stative_predicate", "negative_lexicalized_stative");
+        }
+        if (isLexicalizedStative2(bundle) || isNegativeLexicalizedStative2(bundle)) {
+          slots.push("lexicalized_stative_predicate");
+        }
+        if (isOrdinaryStative2(bundle)) {
+          slots.push("ordinary_stative_predicate");
+        }
+        if (isStativePredicateByBundle2(bundle)) {
+          slots.push("stative_predicate");
+        }
+        if (isGradablePredicate2(bundle)) {
+          slots.push("modifier");
+        }
+        if (canHeadComment2(bundle)) {
+          slots.push("comment_predicate");
+        }
+        return featureList2(slots);
+      }
+      function conditionMatches2(features, condition = {}) {
+        if (condition.surfaces && condition.surfaces.includes(features.surface)) return true;
+        if (condition.labels && condition.labels.includes(features.label)) return true;
+        if (condition.pos && condition.pos.includes(features.pos)) return true;
+        if (condition.syntaxIncludes && stringIncludesAny2(features.syntax, condition.syntaxIncludes)) return true;
+        if (condition.semantic && hasAny2(features.semantic, condition.semantic)) return true;
+        if (condition.verbClass && hasAny2(features.verb_class, condition.verbClass)) return true;
+        return false;
+      }
+      function generateTokenSlots2(features) {
+        const slots = /* @__PURE__ */ new Set();
+        for (const rule of SLOT_GENERATION_RULES2) {
+          if (conditionMatches2(features, rule.when)) slots.add(rule.slot);
+        }
+        if (features.pos === "noun" || features.pos === "np") slots.add("np");
+        if (features.pos === "verb") slots.add("predicate");
+        if (features.label === "how") slots.add("how");
+        if (features.label === "why") slots.add("why");
+        if (features.label === "when") slots.add("time");
+        if (features.syntax.includes("demonstrative_determiner")) slots.add("demonstrative");
+        if (["呢個", "嗰個", "呢啲", "嗰啲"].includes(features.surface)) slots.add("demonstrative_pronoun");
+        if (features.syntax.includes("wh_determiner")) slots.add("wh_determiner");
+        if (features.syntax.includes("quantity") || features.syntax.includes("numeral")) slots.add("quantity");
+        if (features.syntax.includes("di_determiner")) slots.add("di_determiner");
+        if (features.syntax.includes("modifier") || features.syntax.includes("noun_modifier")) slots.add("modifier");
+        if (features.syntax.includes("weekday") || features.syntax.includes("time_np")) slots.add("time_head");
+        if (features.surface === "嘅") slots.add("nominal_linker");
+        if (features.surface === "下" || features.surface === "上") slots.add("temporal_modifier");
+        if (features.surface === "開" || features.syntax.includes("verb_in_modifier")) slots.add("verb_modifier");
+        if (features.surface === "就係" || features.syntax.includes("focus_copula")) slots.add("identification_marker");
+        if (features.surface === "未") {
+          slots.add("question_marker");
+          slots.add("negator");
+        }
+        if (features.surface === "得" || features.syntax.includes("acceptability_predicate")) {
+          slots.add("acceptability_predicate");
+        }
+        if (features.surface === "唔好" || features.syntax.includes("prohibitive_marker")) {
+          slots.add("prohibitive_marker");
+        }
+        if (features.surface === "過") slots.add("experiential_aspect");
+        if (features.surface === "緊") slots.add("progressive_aspect");
+        if (features.surface === "咗") slots.add("perfective_aspect");
+        if (features.surface === "吓") slots.add("delimitative_aspect");
+        const stativeBundle = featureBundleFor2(features.surface, { label: features.label, syntax: features.syntax }, features, [...slots]);
+        for (const slot of parserActiveStativeSlotsForBundle2(stativeBundle)) slots.add(slot);
+        if (features.surface === "好似") slots.add("seeming_marker");
+        if (features.surface === "諗住") slots.add("intention_predicate");
+        if (features.surface === "一齊") slots.add("manner");
+        if (features.surface === "左右" || features.surface === "大概") slots.add("approximation");
+        if (features.surface === "度") slots.add("post_classifier_approximation");
+        if (["咁", "噉"].includes(features.surface)) slots.add("discourse_marker");
+        if (features.surface === "都") slots.add("focus_adverb");
+        if (features.surface === "啲") slots.add("quantity_modifier");
+        if (features.surface === "鍾意") slots.add("preference_predicate");
+        if (features.surface === "有冇") slots.add("existential_question");
+        if (features.surface === "食") slots.add("purpose_verb");
+        if (features.syntax.includes("verb_complement")) slots.add("verb_complement");
+        if (features.syntax.includes("result_complement")) slots.add("result_complement");
+        if (features.syntax.includes("directional_result_complement")) slots.add("directional_result_complement");
+        return cleanSlots2([...slots]);
+      }
+      return {
+        hasAny: hasAny2,
+        stringIncludesAny: stringIncludesAny2,
+        contextualRoleAffordances: contextualRoleAffordances2,
+        inferTokenFeatures: inferTokenFeatures2,
+        compactFeatureSummary: compactFeatureSummary2,
+        featureList: featureList2,
+        syntaxHas: syntaxHas2,
+        featureBundleFor: featureBundleFor2,
+        getFeatureBundle: getFeatureBundle2,
+        getParserFeatures: getParserFeatures2,
+        getConstructionAffordances: getConstructionAffordances2,
+        getCoreDimensions: getCoreDimensions2,
+        getLexicalizationType: getLexicalizationType2,
+        hasPredicateSubtype: hasPredicateSubtype2,
+        isLexicalizedStative: isLexicalizedStative2,
+        isNegativeLexicalizedStative: isNegativeLexicalizedStative2,
+        isOrdinaryStative: isOrdinaryStative2,
+        isStativePredicateByBundle: isStativePredicateByBundle2,
+        isGradablePredicate: isGradablePredicate2,
+        canHeadComment: canHeadComment2,
+        bundleCanFillStativeSlot: bundleCanFillStativeSlot2,
+        parserActiveStativeSlotsForBundle: parserActiveStativeSlotsForBundle2,
+        conditionMatches: conditionMatches2,
+        generateTokenSlots: generateTokenSlots2
+      };
+    };
+  }
+});
+
+// src/parser/nodes/node-shape.js
+var require_node_shape = __commonJS({
+  "src/parser/nodes/node-shape.js"(exports2, module2) {
+    "use strict";
+    module2.exports = function createNodeShapePrimitives(dependencies = {}) {
+      const { bundleCanFillStativeSlot: bundleCanFillStativeSlot2 } = dependencies;
+      function traceInfo2(kind, detail = {}) {
+        return { kind, ...detail };
+      }
+      function traceKind2(node) {
+        return node && node.trace && node.trace.kind ? node.trace.kind : "unspecified";
+      }
+      function isSurfaceSpecificTrace2(node) {
+        const kind = traceKind2(node);
+        return [
+          "surface_rule",
+          "surface_specific_phrase_rule",
+          "protected_formula_table",
+          "legacy_surface_rule",
+          "special_ambiguity_rule"
+        ].includes(kind);
+      }
+      function sameNodeSequence2(a, b) {
+        return a.length === b.length && a.every((node, index) => node === b[index]);
+      }
+      function phraseMatch2(length, node) {
+        return { length, node };
+      }
+      function flattenSurface2(node) {
+        if (!node) return "";
+        if (node.kind === "token") return node.surface;
+        if (node.kind === "text") return node.text;
+        if (node.kind === "construction") return node.children.map(flattenSurface2).join("");
+        return "";
+      }
+      function flattenDisplaySurface2(node) {
+        if (!node) return "";
+        if (node.kind === "token") return node.display_surface || node.surface;
+        if (node.kind === "text") return node.display_text || node.text;
+        if (node.kind === "construction") return node.children.map(flattenDisplaySurface2).join("");
+        return "";
+      }
+      function firstToken2(node) {
+        if (!node) return null;
+        if (node.kind === "token") return node;
+        if (node.kind === "construction") {
+          for (const child of node.children) {
+            const found = firstToken2(child);
+            if (found) return found;
+          }
+        }
+        return null;
+      }
+      function lastToken2(node) {
+        if (!node) return null;
+        if (node.kind === "token") return node;
+        if (node.kind === "construction") {
+          for (let i = node.children.length - 1; i >= 0; i--) {
+            const found = lastToken2(node.children[i]);
+            if (found) return found;
+          }
+        }
+        return null;
+      }
+      function isToken2(node, surface) {
+        return node && node.kind === "token" && node.surface === surface;
+      }
+      function isVerbLike2(node) {
+        const t = firstToken2(node);
+        return Boolean(t && (t.label === "doing" || t.syntax.includes("verb")));
+      }
+      function isObjectLike2(node) {
+        const t = firstToken2(node);
+        return Boolean(t && ["what", "where", "who"].includes(t.label));
+      }
+      function isProductiveVo2(node) {
+        return node && node.kind === "construction" && node.type === "ProductiveVO";
+      }
+      function isModalToken2(node) {
+        return node && node.kind === "token" && ["想", "要", "可以", "會", "識", "使", "唔使", "可唔可以"].includes(node.surface);
+      }
+      function isParticle2(node) {
+        return node && node.kind === "token" && node.label === "particle";
+      }
+      function isStativeToken2(node) {
+        if (!node || node.kind !== "token") return false;
+        const bundleDecision = bundleCanFillStativeSlot2(node, "stative_predicate");
+        if (bundleDecision !== null) return bundleDecision;
+        return node.label === "like" || node.syntax.includes("stative");
+      }
+      function isTopicCandidate2(node) {
+        return node && node.kind === "token" && ["呢個", "嗰個", "呢啲", "嗰啲", "呢間", "嗰間", "呢間餐廳", "嗰間餐廳"].includes(node.surface);
+      }
+      function surfaceOf2(node) {
+        const t = firstToken2(node);
+        return t ? t.surface : flattenSurface2(node);
+      }
+      function hasSurface2(nodes, surface) {
+        return nodes.some((node) => surfaceOf2(node) === surface || flattenSurface2(node) === surface);
+      }
+      function indexOfSurface2(nodes, surface) {
+        return nodes.findIndex((node) => surfaceOf2(node) === surface || flattenSurface2(node) === surface);
+      }
+      function hasConstruction2(nodes, type) {
+        return nodes.some((node) => node && node.kind === "construction" && node.type === type);
+      }
+      return {
+        traceInfo: traceInfo2,
+        traceKind: traceKind2,
+        isSurfaceSpecificTrace: isSurfaceSpecificTrace2,
+        sameNodeSequence: sameNodeSequence2,
+        phraseMatch: phraseMatch2,
+        flattenSurface: flattenSurface2,
+        flattenDisplaySurface: flattenDisplaySurface2,
+        firstToken: firstToken2,
+        lastToken: lastToken2,
+        isToken: isToken2,
+        isVerbLike: isVerbLike2,
+        isObjectLike: isObjectLike2,
+        isProductiveVo: isProductiveVo2,
+        isModalToken: isModalToken2,
+        isParticle: isParticle2,
+        isStativeToken: isStativeToken2,
+        isTopicCandidate: isTopicCandidate2,
+        surfaceOf: surfaceOf2,
+        hasSurface: hasSurface2,
+        indexOfSurface: indexOfSurface2,
+        hasConstruction: hasConstruction2
+      };
+    };
+  }
+});
+
+// src/parser/slots/slot-primitives.js
+var require_slot_primitives = __commonJS({
+  "src/parser/slots/slot-primitives.js"(exports2, module2) {
+    "use strict";
+    var SLOT_ALIASES2 = require_slot_aliases();
+    module2.exports = function createSlotPrimitives(dependencies = {}) {
+      const {
+        cleanSlots: cleanSlots2,
+        bundleCanFillStativeSlot: bundleCanFillStativeSlot2
+      } = dependencies;
+      function mergeUnique2(...lists) {
+        return [...new Set(lists.flat().filter(Boolean))].sort();
+      }
+      function constructionSlotsByType2(type, children = []) {
+        const childSlots = children.flatMap(nodeSlots2);
+        const has = (slot) => childSlots.includes(slot);
+        const slots = [];
+        if (["ExperientialQuestion"].includes(type)) slots.push("experiential_question", "question_fragment", "experiential_vp");
+        if (["ExperientialClause"].includes(type)) slots.push("experiential_clause", "experiential_vp", "predicate");
+        if (["NegativeExperiential"].includes(type)) slots.push("negative_experiential", "experiential_vp", "predicate");
+        if (["SourceMotionClause"].includes(type)) slots.push("source_motion_clause", "source", "source_marker", "location", "movement_verb", "directional_motion_vp", "vp", "predicate", "clause", "subject");
+        if (["DirectedMannerMotionVP"].includes(type)) slots.push("directed_manner_motion_vp", "movement_verb", "manner_motion", "movement_direction", "path_component", "path_phrase", "deictic_motion_marker", "goal", "location", "predicate", "vp", "action_vp");
+        if (["GoalAttainmentMotionVP"].includes(type)) slots.push("goal_attainment_motion_vp", "movement_verb", "goal_attainment_complement", "result_marker", "goal", "location", "predicate", "vp", "action_vp");
+        if (["NegativeCognitionFragment"].includes(type)) slots.push("negative_cognition_fragment", "cognition_predicate", "negative_cognition_predicate", "predicate");
+        if (["NegatedExistentialFragment"].includes(type)) slots.push("negated_existential_fragment", "negated_existential", "answer_fragment", "discourse_response", "predicate", "particle");
+        if (["CognitionContentFrame"].includes(type)) slots.push("cognition_content_frame", "cognition_predicate", "reported_content", "content_clause", "predicate");
+        if (["IntentionFrame"].includes(type)) slots.push("intention_frame", "vp", "predicate", "intention_predicate");
+        if (["IntransitiveVP"].includes(type)) slots.push("intransitive_vp", "action_vp", "vp", "predicate", "action_verb");
+        if (["DesiderativeVP"].includes(type)) slots.push("desiderative_vp", "vp", "predicate", "modal");
+        if (["MalformedCandidate"].includes(type)) slots.push("malformed_candidate", "needs_review", "predicate", "problem_span", "action_verb", "quantity");
+        if (["FragmentAnswer"].includes(type)) slots.push("fragment_answer", "possessive_fragment", "answer_fragment", "np", "subject");
+        if (["ComplementEllipsisFragment"].includes(type)) slots.push("complement_ellipsis_fragment", "fragment_answer", "reported_content", "content_clause", "predicate", "clause");
+        if (["DegreeMannerModifiedVP"].includes(type)) slots.push("degree_manner_modified_vp", "degree_manner_adverbial", "modifier", "degree", "vp", "action_vp", "predicate");
+        if (["ANotAQuestion"].includes(type)) slots.push("question_fragment", "predicate", "vp", "action_vp", "negator");
+        if (["ModalANotAQuestion"].includes(type)) {
+          slots.push("modal_a_not_a_question", "question_fragment", "modal", "predicate", "vp");
+          if (has("desiderative_a_not_a_question") || has("desiderative_modal")) slots.push("desiderative_modal");
+          if (has("permission_a_not_a_question") || has("permission_a_not_a_modal") || has("permission_modal")) slots.push("permission_modal");
+        }
+        if (["ApproximateQuantity"].includes(type)) slots.push("approximate_quantity", "quantified_object", "quantity", "classifier", "approximation", "object", "np", "topic", "price_noun", "scalar_value_noun");
+        if (["ScalarValueQuestion"].includes(type)) {
+          slots.push("scalar_value_question", "scalar_dimension_question", "question_fragment", "scalar_wh_degree", "scalar_dimension_predicate", "predicate");
+          if (has("price_question") || has("price_noun") || has("scalar_value_noun")) slots.push("price_question");
+        }
+        if (["ScalarEvaluation"].includes(type)) slots.push("scalar_evaluation", "evaluation_clause", "predicate", "stative_predicate", "comment", "comment_predicate", "negator", "evaluation_marker");
+        if (["ClauseRelationEdge"].includes(type)) slots.push("clause_relation", "left_relation_member", "right_relation_member", "antecedent_clause", "consequent_clause", "reason_clause", "result_clause", "concession_clause", "counterexpectation_clause", "earlier_event", "later_event", "temporal_subordinate", "matrix_clause", "linker_left", "linker_right", "predicate", "clause", "clause_like", "reported_content", "content_clause");
+        if (["ClauseRelationMemberSpan"].includes(type)) slots.push("clause_relation_member", "left_relation_member", "right_relation_member", "predicate", "clause", "clause_like");
+        if (["ConditionalClause"].includes(type)) slots.push("conditional_clause", "condition_clause", "conditional_antecedent", "conditional_marker", "predicate", "clause");
+        if (["AcceptabilityANotA"].includes(type)) slots.push("acceptability_question", "question_fragment", "acceptability_predicate");
+        if (["CompletionQuestion"].includes(type)) slots.push("completion_question", "completion_vp", "question_fragment", "question_marker");
+        if (["ProhibitiveImperative"].includes(type)) slots.push("prohibitive_marker", "imperative", "prohibitive_imperative", "predicate");
+        if (["ReportedSpeech"].includes(type)) slots.push("reported_speech", "speech_verb", "reported_content");
+        if (["OpinionStanceFrame"].includes(type)) slots.push("opinion_stance_frame", "stance_predicate", "reported_content", "predicate", "content_clause");
+        if (["DiscourseParticleFrame"].includes(type)) {
+          slots.push("discourse_particle_frame", "scope_host", "discourse_scope_particle", "particle", "predicate", "clause");
+          if (has("epistemic_scope_particle")) slots.push("epistemic_stance", "epistemic_scope_particle");
+          if (has("evidential_scope_particle")) slots.push("evidential_stance", "evidential_scope_particle");
+          if (has("directive_scope_particle")) slots.push("directive_stance", "directive_scope_particle");
+          if (has("change_state_scope_particle")) slots.push("change_state_stance", "change_state_scope_particle");
+        }
+        if (["FocusParticleFrame"].includes(type)) slots.push("focus_particle_frame", "restriction_marker", "scalar_host", "restrictive_focus_particle", "focus_adverb", "particle", "quantity", "degree", "np", "topic", "object");
+        if (["IdentificationFragment"].includes(type)) slots.push("identification_fragment", "topic_or_object", "np");
+        if (["DefinitionExplanatoryFrame"].includes(type)) slots.push("definition_explanatory_frame", "definition_frame", "identification_clause", "copular_clause", "explanatory_clause", "topic", "object", "np", "predicate", "clause");
+        if (["DefinitionComplement"].includes(type)) slots.push("definition_complement", "object", "np", "topic_or_object");
+        if (["IntendedFunctionRelation", "ResourceUseLaiFunctionRelation"].includes(type)) slots.push("intended_function_relation", "function_relation", "function_topic", "topic", "user_subject", "modal", "copula", "negator", "purpose_use_verb", "purpose_lai_marker", "purpose_predicate", "predicate", "vp", "action_vp", "clause");
+        if (["LocativeWhQuestion"].includes(type)) slots.push("question_fragment", "location_question", "location", "predicate", "vp", "clause");
+        if (["ProgressiveWhObjectQuestion"].includes(type)) slots.push("progressive_wh_object_question", "question_fragment", "progressive_vp", "wh_object", "predicate");
+        if (["ExistentialClause"].includes(type)) slots.push("existential_clause", "possessive_clause", "predicate", "existential", "object");
+        if (["NegatedExistentialClause"].includes(type)) slots.push("negated_existential_clause", "possessive_clause", "predicate", "negated_existential", "object");
+        if (["ExistentialQuestion"].includes(type)) slots.push("existential_question", "question_fragment", "possessive_question", "predicate", "object");
+        if (["TopicComment"].includes(type)) slots.push("topic_comment", "evaluation_clause", "reported_content", "predicate", "content_topic", "opinion_topic", "comment", "comment_predicate", "stative_predicate");
+        if (["PostThemeParticipantRelation"].includes(type)) slots.push("post_theme_participant_relation", "post_theme_link_marker", "post_theme_participant", "person_np", "np", "predicate", "vp", "action_vp");
+        if (["BenefactivePurposeVP"].includes(type)) slots.push("benefactive_purpose_vp", "benefactive_action_chain", "purpose_chain", "vp", "action_vp", "predicate", "recipient");
+        if (["LocativePlacePhrase"].includes(type)) slots.push("locative_phrase", "location", "goal");
+        if (["LocativePostureVP"].includes(type)) slots.push("locative_posture_vp", "posture_verb", "locative_phrase", "location", "vp", "action_vp", "predicate");
+        if (["MannerAdverbialVP"].includes(type)) slots.push("manner_adverbial_vp", "manner", "modifier", "vp", "action_vp", "predicate", "subject");
+        if (["ProductiveVO"].includes(type)) slots.push("vp", "productive_vo", "action_vp", "predicate", "object");
+        if (["ResultComplement", "ResultComplementVP", "NegativePotentialComplement", "PotentialResultVP"].includes(type)) slots.push("vp", "action_vp", "predicate", "result_complement", "result_potential_complement");
+        if (["ResultComplementVP"].includes(type)) slots.push("result_complement_vp");
+        if (["PotentialResultVP"].includes(type)) slots.push("potential_result_vp", "potential_marker");
+        if (["NegativePotentialComplement"].includes(type)) slots.push("negative_potential_complement", "negator");
+        if (["ResultComplement"].includes(type)) slots.push("result_attainment_complement");
+        if (["ExperientialVP", "ExperientialMotionGoalVP"].includes(type)) slots.push("vp", "experiential_vp", "action_vp", "predicate");
+        if (["ExperientialMotionGoalVP"].includes(type)) slots.push("motion_goal_vp", "movement_verb", "goal", "location");
+        if (["MotionGoalVP"].includes(type)) slots.push("motion_goal_vp", "movement_verb", "goal", "location", "predicate", "vp", "action_vp");
+        if (["ProgressiveVP"].includes(type)) slots.push("vp", "progressive_vp", "action_vp", "predicate");
+        if (["PerfectiveVP", "PostverbalZoPerfectiveVP"].includes(type)) slots.push("vp", "perfective_vp", "completion_vp", "action_vp", "predicate");
+        if (["VerbComplementVP"].includes(type)) slots.push("verb_complement_vp", "verb_complement", "vp", "action_vp", "predicate", "main_verb", "object");
+        if (["LexicalGiveRelation"].includes(type)) slots.push("lexical_give_relation", "give_relation", "vp", "action_vp", "predicate", "transfer_predicate");
+        if (["PassivePermissiveRelation"].includes(type)) slots.push("passive_permissive_relation", "bei_relation", "clause", "predicate", "vp", "pre_marker_participant", "postmarker_participant", "retained_patient_candidate");
+        if (["CoverbFrame"].includes(type)) slots.push("coverb_frame", "coverb_phrase", "coverb_marker", "coverb_object", "preverbal_modifier", "predicate", "vp", "clause");
+        if (["DelimitedVP", "ReduplicatedVP", "CompletionVP", "DitransitiveSpeechVP", "TransitiveVP", "ActionStativeVP"].includes(type)) slots.push("vp", "action_vp", "predicate");
+        if (["TransitiveVP"].includes(type)) slots.push("transitive_vp");
+        if (["DirectionalMotionVP", "CompoundDirectionalMotionVP"].includes(type)) slots.push("vp", "action_vp", "predicate", "movement_verb", "motion_predicate", "directional_motion_vp");
+        if (["NegatedDirectionalMotionVP"].includes(type)) slots.push("vp", "action_vp", "predicate", "movement_verb", "motion_predicate", "directional_motion_vp", "negated_directional_motion_vp", "negator");
+        if (["NegatedVP"].includes(type)) slots.push("negated_vp", "vp", "action_vp", "predicate", "negator");
+        if (["MotionPurposeChain"].includes(type)) slots.push("motion_purpose_chain", "motion_action_chain", "purpose_chain", "vp", "action_vp", "predicate");
+        if (["CompletionVP"].includes(type)) slots.push("completion_vp");
+        if (["DitransitiveSpeechVP"].includes(type)) slots.push("speech_transfer_vp", "reported_content");
+        if (["OvertHeadDemonstrativeClassifierNP", "DemonstrativeClassifierNP", "QuantifiedClassifierNP", "QuantifiedPersonNP", "QuantifiedTimeNP", "QuantityNP", "DiMarkedNP", "OrdinalClassifierNP", "AssociativeNP", "ModifiedNP", "ModifierNP", "NominalHeadSpan"].includes(type)) slots.push("np", "topic", "object", "head_noun");
+        if (["HeadlessDemonstrativeClassifierNP"].includes(type)) slots.push("np", "topic", "object", "demonstrative", "classifier");
+        if (["QuantifiedTimeNP"].includes(type)) slots.push("quantified_time_np", "time", "time_head", "quantity", "distributive_quantifier");
+        if (["QuantityNP"].includes(type)) slots.push("quantity_np", "quantity");
+        if (["MeasureExpression"].includes(type)) slots.push("measure_expression", "nominal_predicate", "predicate", "quantity", "nominal_measure_unit", "age_unit", "currency_unit", "area_measure_unit", "length_measure_unit", "dimension_predicate");
+        if (["NominalPredicateClause"].includes(type)) slots.push("nominal_predicate_clause", "subject", "predicate", "nominal_predicate", "measure_expression", "clause");
+        if (["QuantifiedPersonNP"].includes(type)) slots.push("subject", "quantity");
+        if (["AssociativeNP"].includes(type)) slots.push("associative_np", "modified_np", "nominal_linker", "modifier");
+        if (["DiMarkedNP"].includes(type)) slots.push("di_marked_np", "di_determiner", "quantity");
+        if (type === "WhClassifierQuestion") slots.push("wh_fragment", "question_fragment", "topic_or_object");
+        if (type === "TimeNP") slots.push("time");
+        if (["Topic"].includes(type)) slots.push("topic", "np", "definition_topic", "purpose_topic", "function_topic");
+        if (["StativePredicate", "DegreeStativePredicate", "DegreeModifiedLexicalStative", "NegatedStativePredicate"].includes(type)) slots.push("stative_predicate", "predicate", "comment", "comment_predicate");
+        if (["LexicalizedStativePredicate", "DegreeModifiedLexicalStative"].includes(type)) slots.push("lexicalized_stative_predicate", "stative_predicate", "predicate", "comment", "comment_predicate");
+        if (["NegatedStativePredicate"].includes(type)) slots.push("negated_stative_predicate", "ordinary_stative_predicate", "negator");
+        if (["DegreeStativePredicate"].includes(type)) slots.push("degree_stative_predicate", "ordinary_degree_stative_predicate", "ordinary_stative_predicate", "degree");
+        if (["DegreeStativePredicate"].includes(type) && has("ambient_property_predicate")) slots.push("ambient_environmental_predicate");
+        if (["ImpersonalEnvironmentalClause"].includes(type)) slots.push("impersonal_environmental_clause", "subjectless_clause", "environmental_predicate", "predicate", "clause", "weather_phenomenon");
+        if (["LocativeFrameClause"].includes(type)) slots.push("locative_frame_clause", "ambient_frame_clause", "location", "environmental_predicate", "predicate", "clause");
+        if (["ExistentialPresentationalClause"].includes(type)) slots.push("existential_presentational_clause", "existential_clause", "predicate", "existential", "negated_existential", "introduced_participant", "presentational_coda", "location", "clause");
+        if (["DegreeModifiedLexicalStative"].includes(type)) slots.push("degree_modified_lexical_stative", "degree");
+        if (["FormulaDiscourseUnit"].includes(type)) slots.push("formula_discourse_unit", "formula", "formula_expression", "discourse_response", "agreement_response", "confirmation_response", "particle", "clause");
+        if (["FragmentQuestion"].includes(type)) slots.push("fragment_question", "question_fragment", "discourse_fragment", "clause");
+        if (["TemporalClause"].includes(type)) slots.push("temporal_clause", "time_clause", "time", "predicate");
+        if (["RelativeClauseNP"].includes(type)) slots.push("relative_clause_np", "relative_clause", "nominal_linker", "head_noun", "np", "subject", "topic", "object");
+        if (["SubjectPredicateClause"].includes(type)) {
+          slots.push("subject_predicate_clause", "subject", "predicate", "clause");
+          if (has("time")) slots.push("temporal_clause", "time_clause", "time");
+          if (has("location") || has("locative_phrase")) slots.push("location");
+          if (has("stative_predicate")) slots.push("stative_predicate", "comment", "comment_predicate");
+          if (has("negated_directional_motion_vp") || has("negator")) slots.push("negative_clause", "negated_predicate", "negator");
+        }
+        if (["ModalVP"].includes(type)) slots.push("modal_vp", "modal_predicate", "modal", "predicate", "vp");
+        if (["LocativeModalPredicateClause"].includes(type)) slots.push("locative_modal_predicate_clause", "modal_predicate_clause", "location", "modal_vp", "modal", "predicate", "clause");
+        if (["SubjectModalPredicateClause"].includes(type)) slots.push("subject_modal_predicate_clause", "modal_predicate_clause", "subject", "modal_vp", "modal", "predicate", "clause");
+        if (["TopicModalPredicateClause"].includes(type)) slots.push("topic_modal_predicate_clause", "modal_predicate_clause", "topic", "modal_vp", "modal", "predicate", "clause");
+        if (["NamingClause"].includes(type)) slots.push("naming_clause", "naming_frame", "naming_frame", "subject", "naming_verb", "name", "np", "predicate", "clause");
+        if (["PathPhrase"].includes(type)) slots.push("path_phrase", "path_marker", "location", "goal");
+        if (["PoliteImperativeClause"].includes(type)) slots.push("polite_imperative_clause", "imperative", "politeness_marker", "subject", "time", "path_phrase", "location", "predicate", "clause");
+        if (["PolarQuestionFrame"].includes(type)) slots.push("polar_question_frame", "yes_no_question", "question_fragment", "yes_no_question_marker", "subject", "predicate", "particle", "clause");
+        if (["CopularIdentificationFrame"].includes(type)) slots.push("copular_identification_frame", "identification_clause", "copular_clause", "topic", "copula", "np", "object", "predicate", "clause");
+        if (["CoordinatedNP"].includes(type)) slots.push("coordinated_np", "left_np", "right_np", "coordinator", "np", "topic", "object");
+        if (["StativeNominalComplement"].includes(type)) slots.push("stative_nominal_complement", "copular_complement", "np", "predicate", "head_noun", "nominal_linker");
+        if (["CopularRelationFrame"].includes(type)) slots.push("copular_relation_frame", "copular_clause", "subject", "copula", "copular_complement", "predicate", "clause");
+        if (["CopularANotAQuestion"].includes(type)) slots.push("copular_a_not_a_question", "question_fragment", "subject", "copula", "negator", "copular_complement", "predicate", "clause");
+        if (["LocativeExistentialClause"].includes(type)) slots.push("locative_existential_clause", "existential_clause", "location", "locative_domain", "introduced_theme", "existential", "negated_existential", "predicate", "clause");
+        if (["OrdinalClassifierNP"].includes(type)) slots.push("ordinal_classifier_np", "classifier_np", "ordinal_modifier", "classifier", "head_noun", "np", "object", "topic");
+        if (["PossessiveClassifierNP"].includes(type)) slots.push("possessive_classifier_np", "possessive_np", "possessor", "classifier", "head_noun", "np", "object", "topic");
+        if (["ChangeIntoPredicate"].includes(type)) slots.push("change_into_predicate", "change_verb", "result_complement", "predicate", "vp", "action_vp");
+        if (["ClassifierObjectNP"].includes(type)) slots.push("classifier_object_np", "np", "object", "topic", "classifier", "head_noun");
+        if (["CoordinatedSubjectModalPredicateClause"].includes(type)) slots.push("coordinated_subject_modal_predicate_clause", "modal_predicate_clause", "subject", "coordinated_subject", "modal_vp", "modal", "predicate", "clause");
+        if (["ClauseSequence", "ClauseRelationGraph"].includes(type)) slots.push("clause_linking_sequence", "clause_sequence", "multi_clause_sequence", "utterance_sequence", "discourse_sequence", "clause", "clause_like", "separator");
+        if (["VocativeAddressTerm"].includes(type)) slots.push("vocative_address_term", "named_address_term", "address_term", "vocative");
+        if (["UrgencyMarker"].includes(type)) slots.push("urgency_marker", "imperative_adverb", "how");
+        if (["PriorityMarkerClause"].includes(type)) slots.push("priority_marker_clause", "sequence_priority_marker", "priority_marker", "vp", "action_vp", "predicate");
+        if (["AcceptabilityClause"].includes(type)) slots.push("acceptability_clause", "acceptability", "focus_adverb", "acceptability_predicate", "predicate", "clause");
+        if (["SerialVerbPurposeChain"].includes(type)) slots.push("serial_verb_purpose_chain", "serial_action_chain", "purpose_chain", "vp", "action_vp", "predicate");
+        if (has("location")) slots.push("location", "goal");
+        if (has("subject")) slots.push("subject");
+        return cleanSlots2(mergeUnique2(childSlots, slots));
+      }
+      function nodeSlots2(node) {
+        if (!node) return [];
+        if (node.kind === "token") return node.slots || [];
+        if (node.kind === "construction") return node.slots || constructionSlotsByType2(node.type, node.children || []);
+        return [];
+      }
+      function slotAlternatives2(slot) {
+        return [slot, ...SLOT_ALIASES2[slot] || []];
+      }
+      function nodeCanFillSlot2(node, slot) {
+        if (slot === "particle" && node && node.kind === "construction") return false;
+        const alternatives = slotAlternatives2(slot);
+        for (const candidate of alternatives) {
+          const bundleDecision = bundleCanFillStativeSlot2(node, candidate);
+          if (bundleDecision !== null) return bundleDecision;
+        }
+        const slots = nodeSlots2(node);
+        return alternatives.some((candidate) => slots.includes(candidate));
+      }
+      function isBareQuantityTokenObject2(node) {
+        if (!node || node.kind !== "token") return false;
+        const slots = nodeSlots2(node);
+        const syntax = String(node.syntax || "");
+        return slots.includes("quantity") && slots.includes("object") && !slots.includes("classifier") && /(?:^|\s)numeral_quantity(?:\s|$)/.test(syntax);
+      }
+      function templateDerivedSlots2(type, children) {
+        return cleanSlots2(mergeUnique2(["construction_span"], constructionSlotsByType2(type, children)));
+      }
+      return {
+        mergeUnique: mergeUnique2,
+        constructionSlotsByType: constructionSlotsByType2,
+        nodeSlots: nodeSlots2,
+        slotAlternatives: slotAlternatives2,
+        nodeCanFillSlot: nodeCanFillSlot2,
+        isBareQuantityTokenObject: isBareQuantityTokenObject2,
+        templateDerivedSlots: templateDerivedSlots2
+      };
+    };
+  }
+});
+
+// src/parser/templates/template-matcher.js
+var require_template_matcher = __commonJS({
+  "src/parser/templates/template-matcher.js"(exports2, module2) {
+    "use strict";
+    module2.exports = function createTemplateMatcher(dependencies = {}) {
+      const {
+        firstToken: firstToken2,
+        flattenSurface: flattenSurface2,
+        isBareQuantityTokenObject: isBareQuantityTokenObject2,
+        nodeCanFillSlot: nodeCanFillSlot2,
+        nodeCanLicenseEvidenceGatedObject: nodeCanLicenseEvidenceGatedObject2,
+        nodeSlots: nodeSlots2
+      } = dependencies;
+      function parseTemplateSlot2(spec) {
+        const required = spec.endsWith("!");
+        const optional = spec.endsWith("?");
+        const slot = required || optional ? spec.slice(0, -1) : spec;
+        return { slot, required: required || !optional, optional };
+      }
+      function templateConstraintsPass2(assignments, templateDef = {}) {
+        const constraints = templateDef.constraints || {};
+        if (constraints.same_surface) {
+          const surfaces = assignments.map((item) => flattenSurface2(item.node));
+          if (!surfaces.length) return false;
+          if (new Set(surfaces).size !== 1) return false;
+        }
+        if (constraints.copied_first_token_surface_slots) {
+          const copiedSlots = constraints.copied_first_token_surface_slots || [];
+          for (const slot of copiedSlots) {
+            const matchingAssignments = assignments.filter((item) => item.slot === slot);
+            if (matchingAssignments.length < 2) return false;
+            const firstSurfaces = matchingAssignments.map((item) => {
+              const tok = firstToken2(item.node);
+              return tok ? tok.surface : flattenSurface2(item.node);
+            });
+            if (!firstSurfaces[0] || firstSurfaces.some((surface) => surface !== firstSurfaces[0])) return false;
+          }
+        }
+        if (constraints.disallow_child_slots) {
+          const disallowed = constraints.disallow_child_slots || [];
+          for (const item of assignments) {
+            const slots = nodeSlots2(item.node);
+            if (disallowed.some((slot) => slots.includes(slot))) return false;
+          }
+        }
+        if (constraints.first_node_must_not_have_slots) {
+          const first = assignments[0] && assignments[0].node;
+          const firstSlots = nodeSlots2(first);
+          const disallowed = constraints.first_node_must_not_have_slots || [];
+          if (disallowed.some((slot) => firstSlots.includes(slot))) return false;
+        }
+        if (constraints.first_node_must_have_surface) {
+          const first = assignments[0] && assignments[0].node;
+          if (flattenSurface2(first) !== constraints.first_node_must_have_surface) return false;
+        }
+        if (constraints.predicate_must_have_any_slots) {
+          const allowed = constraints.predicate_must_have_any_slots || [];
+          const predicateAssignments = assignments.filter((item) => item.slot === "predicate");
+          if (!predicateAssignments.length) return false;
+          if (!predicateAssignments.some((item) => {
+            const slots = nodeSlots2(item.node);
+            return allowed.some((slot) => slots.includes(slot));
+          })) return false;
+        }
+        if (constraints.require_any_assigned_slots) {
+          const requiredSlots = constraints.require_any_assigned_slots || [];
+          if (!assignments.some((item) => requiredSlots.includes(item.slot))) return false;
+        }
+        if (constraints.surface_sequence_in) {
+          const surfaceSequence = assignments.map((item) => flattenSurface2(item.node)).join("");
+          const allowedSequences = constraints.surface_sequence_in || [];
+          if (!allowedSequences.includes(surfaceSequence)) return false;
+        }
+        if (constraints.slot_surface_in) {
+          for (const [slot, allowedSurfaces] of Object.entries(constraints.slot_surface_in || {})) {
+            const allowed = allowedSurfaces || [];
+            const matchingAssignments = assignments.filter((item) => item.slot === slot);
+            if (!matchingAssignments.length) continue;
+            if (!matchingAssignments.every((item) => allowed.includes(flattenSurface2(item.node)))) return false;
+          }
+        }
+        if (constraints.slot_surface_not_in) {
+          for (const [slot, disallowedSurfaces] of Object.entries(constraints.slot_surface_not_in || {})) {
+            const disallowed = disallowedSurfaces || [];
+            const matchingAssignments = assignments.filter((item) => item.slot === slot);
+            if (matchingAssignments.some((item) => disallowed.includes(flattenSurface2(item.node)))) return false;
+          }
+        }
+        if (constraints.slot_must_not_be_bare_quantity_token) {
+          const guardedSlots = constraints.slot_must_not_be_bare_quantity_token || [];
+          for (const slot of guardedSlots) {
+            const matchingAssignments = assignments.filter((item) => item.slot === slot);
+            if (matchingAssignments.some((item) => isBareQuantityTokenObject2(item.node))) return false;
+          }
+        }
+        if (constraints.slot_must_be_licensed_np) {
+          const guardedSlots = constraints.slot_must_be_licensed_np || [];
+          for (const slot of guardedSlots) {
+            const matchingAssignments = assignments.filter((item) => item.slot === slot);
+            if (!matchingAssignments.length || matchingAssignments.some((item) => !nodeCanLicenseEvidenceGatedObject2(item.node))) return false;
+          }
+        }
+        if (constraints.slot_must_not_have_slots) {
+          for (const [slot, disallowedSlots] of Object.entries(constraints.slot_must_not_have_slots || {})) {
+            const disallowed = disallowedSlots || [];
+            const matchingAssignments = assignments.filter((item) => item.slot === slot);
+            if (matchingAssignments.some((item) => {
+              const slots = nodeSlots2(item.node);
+              return disallowed.some((disallowedSlot) => slots.includes(disallowedSlot));
+            })) return false;
+          }
+        }
+        return true;
+      }
+      function matchTemplate2(nodes, template) {
+        const specs = template.map(parseTemplateSlot2);
+        const memo = /* @__PURE__ */ new Map();
+        function step(i, j, assignments) {
+          const key = `${i}:${j}`;
+          if (memo.has(key)) return null;
+          if (j === specs.length) return i === nodes.length ? assignments : null;
+          const spec = specs[j];
+          if (spec.optional && i < nodes.length && nodeCanFillSlot2(nodes[i], spec.slot)) {
+            const matched = step(i + 1, j + 1, [...assignments, { slot: spec.slot, node: nodes[i] }]);
+            if (matched) return matched;
+          }
+          if (spec.optional) {
+            const skipped = step(i, j + 1, assignments);
+            if (skipped) return skipped;
+          }
+          if (i < nodes.length && nodeCanFillSlot2(nodes[i], spec.slot)) {
+            const matched = step(i + 1, j + 1, [...assignments, { slot: spec.slot, node: nodes[i] }]);
+            if (matched) return matched;
+          }
+          memo.set(key, true);
+          return null;
+        }
+        return step(0, 0, []);
+      }
+      return {
+        parseTemplateSlot: parseTemplateSlot2,
+        templateConstraintsPass: templateConstraintsPass2,
+        matchTemplate: matchTemplate2
+      };
+    };
+  }
+});
+
+// src/parser/nodes/node-factories.js
+var require_node_factories = __commonJS({
+  "src/parser/nodes/node-factories.js"(exports2, module2) {
+    "use strict";
+    module2.exports = function createNodeFactories(dependencies = {}) {
+      const {
+        TOKEN_LEXICON: TOKEN_LEXICON2,
+        UNKNOWN_CJK_JYUTPING_FALLBACK: UNKNOWN_CJK_JYUTPING_FALLBACK2,
+        normalizeLearnerLabel: normalizeLearnerLabel2,
+        cleanSlots: cleanSlots2,
+        contextualRoleAffordances: contextualRoleAffordances2,
+        inferTokenFeatures: inferTokenFeatures2,
+        compactFeatureSummary: compactFeatureSummary2,
+        featureBundleFor: featureBundleFor2,
+        generateTokenSlots: generateTokenSlots2,
+        traceInfo: traceInfo2,
+        traceKind: traceKind2,
+        constructionSlotsByType: constructionSlotsByType2,
+        nodeParserSurface: nodeParserSurface2,
+        nodeDisplaySurface: nodeDisplaySurface2,
+        INTERNAL_CONSTRUCTION_COMPATIBILITY_ALIASES: INTERNAL_CONSTRUCTION_COMPATIBILITY_ALIASES2,
+        INTERNAL_ONLY_CONSTRUCTION_SCOPES: INTERNAL_ONLY_CONSTRUCTION_SCOPES2,
+        internalConstructionTypeFor: internalConstructionTypeFor2,
+        clauseSpanProfileForCompatibilityType: clauseSpanProfileForCompatibilityType2,
+        npLicenseMetadata: npLicenseMetadata2
+      } = dependencies;
+      function pronunciationOnlyJyutpingForUnknown2(surface) {
+        return UNKNOWN_CJK_JYUTPING_FALLBACK2[String(surface || "")] || "";
+      }
+      function token2(surface, overrides = {}) {
+        const entry = TOKEN_LEXICON2[surface] || {};
+        const rawLabel = overrides.label || entry.label || "neutral";
+        const syntax = overrides.syntax || entry.syntax || "lexical_candidate";
+        const label = normalizeLearnerLabel2(rawLabel, surface, syntax);
+        const features = inferTokenFeatures2(surface, { ...entry, label, syntax }, overrides);
+        const slots = overrides.slots ? cleanSlots2(overrides.slots) : generateTokenSlots2(features);
+        const featureBundle = featureBundleFor2(surface, { ...entry, label, syntax }, features, slots);
+        const traceDetail = {
+          surface,
+          generated_slots: slots,
+          feature_summary: compactFeatureSummary2(features),
+          feature_bundle: featureBundle
+        };
+        if (!Object.keys(entry).length && pronunciationOnlyJyutpingForUnknown2(surface)) {
+          traceDetail.learner_gloss_lines = [
+            "meaning not yet confirmed",
+            "Pronunciation is shown without assigning this word a grammatical analysis."
+          ];
+        }
+        const roleAffordances = contextualRoleAffordances2({ surface, role: label, label, syntax, slots, features });
+        if (roleAffordances.length > 1) traceDetail.contextual_role_affordances = roleAffordances;
+        if (overrides.selection_decision) traceDetail.selection_decision = overrides.selection_decision;
+        return {
+          kind: "token",
+          surface,
+          display_surface: overrides.display_surface || void 0,
+          parser_surface: overrides.parser_surface || surface,
+          label,
+          jyutping: overrides.jyutping || entry.jyutping || pronunciationOnlyJyutpingForUnknown2(surface) || "",
+          syntax,
+          note: overrides.note || entry.note || (pronunciationOnlyJyutpingForUnknown2(surface) ? "meaning not yet confirmed" : "Neutral lexical item; no reviewed learner role yet."),
+          review: overrides.review || entry.review || "reviewed_or_seeded_runtime",
+          features,
+          feature_bundle: featureBundle,
+          slots,
+          trace: overrides.trace || traceInfo2(entry && Object.keys(entry).length ? "atomic_lexicon" : "unknown_atomic", traceDetail)
+        };
+      }
+      function textNode2(text) {
+        return { kind: "text", text, trace: traceInfo2("punctuation_or_plain_text", { surface: text }) };
+      }
+      function construction2(type, label, children, options = {}) {
+        const requestedType = type;
+        const internalType = internalConstructionTypeFor2(requestedType);
+        const baseSlots = options.slots || constructionSlotsByType2(requestedType, children);
+        const compatibilityAlias = options.compatibility_alias || (internalType !== requestedType ? requestedType : INTERNAL_CONSTRUCTION_COMPATIBILITY_ALIASES2[internalType] || "");
+        const internalRepresentationScope = INTERNAL_ONLY_CONSTRUCTION_SCOPES2[internalType] || "";
+        const rawTrace = options.trace || traceInfo2("construction_function", { construction_type: requestedType });
+        const normalizedTrace = internalType === "ClauseSpan" ? {
+          ...rawTrace,
+          construction_type: "ClauseSpan",
+          compatibility_construction_type: compatibilityAlias || requestedType,
+          clause_span_profile: clauseSpanProfileForCompatibilityType2(compatibilityAlias || requestedType),
+          clause_span_semantic_status: "neutral_overt_span_accounting_only",
+          typed_predicate_child_preserved: true,
+          independent_grammar_licensing: false,
+          subject_insertion_capability: false,
+          topic_insertion_capability: false,
+          argument_omission_licensing: false,
+          context_resolution_capability: false,
+          predicate_subtype_licensing: false,
+          modal_licensing: false
+        } : rawTrace;
+        const npMetadata = npLicenseMetadata2(internalType, children, normalizedTrace);
+        const finalTrace = npMetadata ? { ...normalizedTrace, ...npMetadata } : normalizedTrace;
+        return {
+          kind: "construction",
+          type: internalType,
+          compatibility_alias: compatibilityAlias,
+          internal_representation_scope: internalRepresentationScope,
+          internal_only: Boolean(internalRepresentationScope),
+          label,
+          children,
+          display_surface: options.display_surface || nodeDisplaySurface2({ kind: "construction", children }),
+          parser_surface: options.parser_surface || nodeParserSurface2({ kind: "construction", children }),
+          primary: options.primary || "",
+          note: options.note || "Parent construction span. Child tokens keep their own learner roles.",
+          slots: cleanSlots2(baseSlots),
+          trace: finalTrace
+        };
+      }
+      function parserInactiveTokenClone2(node, overrides = {}) {
+        if (!node || node.kind !== "token") return node;
+        const surface = node.surface;
+        const syntax = overrides.syntax || node.syntax || "";
+        const label = normalizeLearnerLabel2(overrides.label || node.label || "neutral", surface, syntax);
+        const slots = cleanSlots2(overrides.slots || []);
+        const jyutping = Object.prototype.hasOwnProperty.call(overrides, "jyutping") ? overrides.jyutping : node.jyutping;
+        const note = Object.prototype.hasOwnProperty.call(overrides, "note") ? overrides.note : node.note;
+        const features = {
+          ...node.features || {},
+          pos: overrides.pos || node.features && node.features.pos || "",
+          label,
+          syntax,
+          semantic: overrides.semantic || [],
+          verb_class: overrides.verb_class || [],
+          particle_class: overrides.particle_class || ""
+        };
+        const featureBundle = featureBundleFor2(surface, { label, syntax }, features, slots);
+        const inheritedAffordanceCandidates = node.trace && node.trace.contextual_role_affordance_resolution && Array.isArray(node.trace.contextual_role_affordance_resolution.candidate_affordances) ? node.trace.contextual_role_affordance_resolution.candidate_affordances.map((item) => ({ ...item })) : [];
+        const contextualRoleAffordanceResolution = {
+          lexical_default_role: node.label || "",
+          active_role: label,
+          candidate_affordances: overrides.preserve_existing_affordances && inheritedAffordanceCandidates.length ? inheritedAffordanceCandidates : contextualRoleAffordances2({ surface, role: node.label || label, label: node.label || label, syntax: node.syntax || syntax, slots: node.slots || [], features: node.features || {} }),
+          active_affordance_source: overrides.reason || "Token is parser-inactive inside a parent construction wrapper.",
+          active_affordance_match: overrides.active_affordance_match || void 0,
+          note: "Construction context selects the active learner role without deleting other lexical affordances."
+        };
+        return {
+          ...node,
+          label,
+          role: label,
+          syntax,
+          jyutping,
+          note,
+          slots,
+          features,
+          feature_bundle: featureBundle,
+          trace: traceInfo2("construction_internal_parser_inactive_clone", {
+            surface,
+            original_trace: traceKind2(node),
+            reason: overrides.reason || "Token is parser-inactive inside a parent construction wrapper.",
+            contextual_role_affordance_resolution: contextualRoleAffordanceResolution,
+            role_resolution_note: overrides.role_resolution_note || void 0,
+            feature_bundle: featureBundle,
+            ...overrides.trace_detail || {}
+          })
+        };
+      }
+      function learnerDisplayOnlyTokenClone2(node, overrides = {}) {
+        if (!node || node.kind !== "token") return node;
+        const note = Object.prototype.hasOwnProperty.call(overrides, "note") ? overrides.note : node.note;
+        const learnerGlossLines = overrides.learner_gloss_lines || (note ? [note] : []);
+        return {
+          ...node,
+          note,
+          display_surface: overrides.display_surface || node.display_surface,
+          trace: {
+            ...node.trace || {},
+            ...learnerGlossLines.length ? { learner_gloss_lines: learnerGlossLines } : {}
+          }
+        };
+      }
+      function contextualLearnerRoleOnlyTokenClone2(node, overrides = {}) {
+        if (!node || node.kind !== "token") return node;
+        const surface = node.surface;
+        const syntax = overrides.syntax || node.syntax || "";
+        const label = normalizeLearnerLabel2(overrides.label || node.label || "neutral", surface, syntax);
+        const note = Object.prototype.hasOwnProperty.call(overrides, "note") ? overrides.note : node.note;
+        const learnerGlossLines = overrides.learner_gloss_lines || overrides.trace_detail && overrides.trace_detail.learner_gloss_lines || (note ? [note] : []);
+        return {
+          ...node,
+          label,
+          role: label,
+          syntax,
+          note,
+          features: { ...node.features || {}, label, syntax, pos: overrides.pos || node.features && node.features.pos || "" },
+          trace: {
+            ...node.trace || {},
+            ...learnerGlossLines.length ? { learner_gloss_lines: learnerGlossLines } : {},
+            contextual_learner_role_override: {
+              lexical_default_role: node.label || "",
+              active_role: label,
+              reason: overrides.reason || "Learner display role is adjusted contextually without changing parser or semantic provenance."
+            }
+          }
+        };
+      }
+      return {
+        pronunciationOnlyJyutpingForUnknown: pronunciationOnlyJyutpingForUnknown2,
+        token: token2,
+        textNode: textNode2,
+        construction: construction2,
+        parserInactiveTokenClone: parserInactiveTokenClone2,
+        learnerDisplayOnlyTokenClone: learnerDisplayOnlyTokenClone2,
+        contextualLearnerRoleOnlyTokenClone: contextualLearnerRoleOnlyTokenClone2
+      };
+    };
+  }
+});
+
+// src/parser/tokenization/lexical-selection.js
+var require_lexical_selection = __commonJS({
+  "src/parser/tokenization/lexical-selection.js"(exports2, module2) {
+    "use strict";
+    module2.exports = function createLexicalSelection(dependencies = {}) {
+      const {
+        TOKEN_LEXICON: TOKEN_LEXICON2,
+        PRODUCTIVE_VO: PRODUCTIVE_VO2,
+        COMPOSITIONAL_LEXICAL_PHRASES: COMPOSITIONAL_LEXICAL_PHRASES2,
+        inferTokenFeatures: inferTokenFeatures2,
+        featureBundleFor: featureBundleFor2,
+        getLexicalizationType: getLexicalizationType2
+      } = dependencies;
+      function lexicalizedStativeRegistryKind2(surface) {
+        const entry = TOKEN_LEXICON2[surface] || {};
+        const label = entry.label || "neutral";
+        const syntax = entry.syntax || "";
+        const features = inferTokenFeatures2(surface, { ...entry, label, syntax }, { label, syntax });
+        const bundle = featureBundleFor2(surface, { ...entry, label, syntax }, features, []);
+        const lexicalizationType = getLexicalizationType2(bundle);
+        if (lexicalizationType === "negative_lexicalized_stative") return "negative_lexicalized_stative_registry";
+        if (lexicalizationType === "lexicalized_stative") return "lexicalized_stative_registry";
+        return "";
+      }
+      function transparentClassifierObjectParts2(surface) {
+        const phrase = String(surface || "");
+        const entry = TOKEN_LEXICON2[phrase] || {};
+        const syntax = String(entry.syntax || "");
+        if (!syntax.split(/\s+/u).includes("classifier_object_np")) return null;
+        const classifier = Object.keys(TOKEN_LEXICON2).filter((candidate) => candidate.length < phrase.length && phrase.startsWith(candidate)).filter((candidate) => (TOKEN_LEXICON2[candidate] || {}).label === "measure_word").sort((a, b) => b.length - a.length || a.localeCompare(b))[0];
+        if (!classifier) return null;
+        const head = phrase.slice(classifier.length);
+        const headEntry = TOKEN_LEXICON2[head] || {};
+        if (!head || !["what", "who", "where"].includes(headEntry.label || "")) return null;
+        return { classifier, head };
+      }
+      function shouldForceCompositional2(surface) {
+        if (lexicalizedStativeRegistryKind2(surface)) return false;
+        if (transparentClassifierObjectParts2(surface)) return true;
+        return COMPOSITIONAL_LEXICAL_PHRASES2.has(surface);
+      }
+      const ALL_LEXICON_TERMS2 = Object.keys(TOKEN_LEXICON2).filter((surface) => !PRODUCTIVE_VO2[surface]).sort((a, b) => b.length - a.length || a.localeCompare(b));
+      const LEXICON_TERMS2 = ALL_LEXICON_TERMS2.filter((surface) => !shouldForceCompositional2(surface)).sort((a, b) => b.length - a.length || a.localeCompare(b));
+      const LEXICALIZED_STATIVE_SELECTION_WEIGHT2 = 1e4;
+      function lexicalCandidateScore2(surface) {
+        const registryKind = lexicalizedStativeRegistryKind2(surface);
+        const registryScore = registryKind ? LEXICALIZED_STATIVE_SELECTION_WEIGHT2 : 0;
+        return registryScore + surface.length;
+      }
+      function followingLexicalizedStativeAfterChoice2(choice, rest) {
+        const afterChoice = String(rest || "").slice(String(choice || "").length);
+        if (!afterChoice) return null;
+        const following = ALL_LEXICON_TERMS2.filter((surface) => afterChoice.startsWith(surface) && lexicalizedStativeRegistryKind2(surface)).sort((a, b) => b.length - a.length || a.localeCompare(b))[0];
+        if (!following) return null;
+        return { surface: following, registry_kind: lexicalizedStativeRegistryKind2(following) };
+      }
+      function lexicalSelectionReason2(choice, candidates, excluded, rest = "") {
+        const registryKind = lexicalizedStativeRegistryKind2(choice);
+        const competingRegistry = candidates.filter((surface) => surface !== choice && lexicalizedStativeRegistryKind2(surface)).map((surface) => lexicalizedStativeRegistryKind2(surface));
+        const hasLongerExcluded = excluded.some((item) => item.length > choice.length);
+        const followingRegistry = followingLexicalizedStativeAfterChoice2(choice, rest);
+        if (registryKind) {
+          return `${registryKind} candidate wins over compositional or shorter candidates by lexicalized-stative selection scoring.`;
+        }
+        if (hasLongerExcluded) {
+          return "Chosen after longer forced-compositional phrase was excluded so learner-visible internal structure can remain available.";
+        }
+        if (followingRegistry && choice === "好") {
+          return `Chosen as degree modifier before following ${followingRegistry.registry_kind} candidate ${followingRegistry.surface}; learner-visible composition remains available.`;
+        }
+        if (competingRegistry.length) {
+          return "Chosen by score/length after comparing with registry-backed candidates.";
+        }
+        return "Chosen by ordinary lexical lookup; no registry-backed lexicalized stative candidate applies at this cursor.";
+      }
+      function lexicalSelectionDecision2(rest, candidates, excluded, choice) {
+        return {
+          rule: "prefer_lexicalized_stative_over_compositional_when_registry_evidence_exists",
+          chosen: choice,
+          chosen_registry_kind: lexicalizedStativeRegistryKind2(choice),
+          chosen_score: lexicalCandidateScore2(choice),
+          reason: lexicalSelectionReason2(choice, candidates, excluded, rest),
+          candidates: candidates.map((surface) => ({
+            surface,
+            registry_kind: lexicalizedStativeRegistryKind2(surface),
+            score: lexicalCandidateScore2(surface),
+            forced_compositional: false
+          })),
+          excluded_compositional_candidates: excluded.map((surface) => ({
+            surface,
+            registry_kind: lexicalizedStativeRegistryKind2(surface),
+            forced_compositional: true,
+            reason: transparentClassifierObjectParts2(surface) ? "Explicit classifier_object_np reference entry split into an independently evidenced classifier plus noun head." : "Listed in COMPOSITIONAL_LEXICAL_PHRASES and not protected by lexicalized-stative registry evidence."
+          })),
+          rest_preview: rest.slice(0, 12)
+        };
+      }
+      function selectionDecisionForSurface2(surface, rest = surface) {
+        const candidates = LEXICON_TERMS2.filter((candidate) => rest.startsWith(candidate));
+        const excluded = ALL_LEXICON_TERMS2.filter((candidate) => rest.startsWith(candidate) && shouldForceCompositional2(candidate));
+        const fallbackCandidates = candidates.includes(surface) ? candidates : [surface, ...candidates];
+        return lexicalSelectionDecision2(rest, fallbackCandidates, excluded, surface);
+      }
+      function selectLexiconTerm2(rest) {
+        const candidates = LEXICON_TERMS2.filter((surface2) => rest.startsWith(surface2)).filter((surface2) => {
+          if (surface2 !== "第二個") return true;
+          const after = rest.slice(surface2.length);
+          const overtHead = Object.keys(TOKEN_LEXICON2).filter((candidate) => after.startsWith(candidate)).filter((candidate) => ["what", "who", "where"].includes((TOKEN_LEXICON2[candidate] || {}).label || "")).sort((a, b) => b.length - a.length || a.localeCompare(b))[0];
+          return !overtHead;
+        });
+        if (!candidates.length) return null;
+        const excluded = ALL_LEXICON_TERMS2.filter((surface2) => rest.startsWith(surface2) && shouldForceCompositional2(surface2));
+        candidates.sort((a, b) => {
+          const scoreDiff = lexicalCandidateScore2(b) - lexicalCandidateScore2(a);
+          if (scoreDiff) return scoreDiff;
+          const lengthDiff = b.length - a.length;
+          if (lengthDiff) return lengthDiff;
+          return a.localeCompare(b);
+        });
+        const surface = candidates[0];
+        return {
+          surface,
+          registry_kind: lexicalizedStativeRegistryKind2(surface),
+          score: lexicalCandidateScore2(surface),
+          candidate_count: candidates.length,
+          selection_decision: lexicalSelectionDecision2(rest, candidates, excluded, surface)
+        };
+      }
+      return {
+        lexicalizedStativeRegistryKind: lexicalizedStativeRegistryKind2,
+        transparentClassifierObjectParts: transparentClassifierObjectParts2,
+        shouldForceCompositional: shouldForceCompositional2,
+        ALL_LEXICON_TERMS: ALL_LEXICON_TERMS2,
+        LEXICON_TERMS: LEXICON_TERMS2,
+        LEXICALIZED_STATIVE_SELECTION_WEIGHT: LEXICALIZED_STATIVE_SELECTION_WEIGHT2,
+        lexicalCandidateScore: lexicalCandidateScore2,
+        followingLexicalizedStativeAfterChoice: followingLexicalizedStativeAfterChoice2,
+        lexicalSelectionReason: lexicalSelectionReason2,
+        lexicalSelectionDecision: lexicalSelectionDecision2,
+        selectionDecisionForSurface: selectionDecisionForSurface2,
+        selectLexiconTerm: selectLexiconTerm2
+      };
+    };
+  }
+});
+
 // src/runtime-resources/grammar/classifier-head-rules.js
 var require_classifier_head_rules = __commonJS({
   "src/runtime-resources/grammar/classifier-head-rules.js"(exports2, module2) {
@@ -3624,6 +5203,132 @@ var require_classifier_head_rules = __commonJS({
       "部": ["vehicle", "machine_device"],
       "碗": ["food_bowl"]
     });
+  }
+});
+
+// src/parser/tokenization/tokenize-line.js
+var require_tokenize_line = __commonJS({
+  "src/parser/tokenization/tokenize-line.js"(exports2, module2) {
+    "use strict";
+    var PUNCT_RE2 = require_punctuation();
+    module2.exports = function createTokenizer(dependencies = {}) {
+      const {
+        FORMULAS: FORMULAS2,
+        NEGATED_LEXICALIZED_STATIVE_SPLITS: NEGATED_LEXICALIZED_STATIVE_SPLITS2,
+        PRODUCTIVE_TERMS: PRODUCTIVE_TERMS2,
+        candidateNamedAddressFormFromRest: candidateNamedAddressFormFromRest2,
+        construction: construction2,
+        contextualLexiconOverrides: contextualLexiconOverrides2,
+        productiveVoComponentTokens: productiveVoComponentTokens2,
+        protectedConditionalMarkerToken: protectedConditionalMarkerToken2,
+        pushNegatedLexicalizedStativeSplit: pushNegatedLexicalizedStativeSplit2,
+        pushSpecialNotGoodEat: pushSpecialNotGoodEat2,
+        selectLexiconTerm: selectLexiconTerm2,
+        textNode: textNode2,
+        token: token2,
+        traceInfo: traceInfo2,
+        transparentCupNounDemonstrativeNpFromRest: transparentCupNounDemonstrativeNpFromRest2,
+        transparentDemonstrativeClassifierSplitFromRest: transparentDemonstrativeClassifierSplitFromRest2,
+        transparentEllipticalDemonstrativeClassifierFromRest: transparentEllipticalDemonstrativeClassifierFromRest2,
+        transparentNominalDiDeterminerFromRest: transparentNominalDiDeterminerFromRest2,
+        transparentOneCountClassifierSplitFromRest: transparentOneCountClassifierSplitFromRest2,
+        transparentQuantifiedPersonNpFromRest: transparentQuantifiedPersonNpFromRest2
+      } = dependencies;
+      function tokenizeLine2(source) {
+        const text = String(source || "");
+        const nodes = [];
+        let cursor = 0;
+        while (cursor < text.length) {
+          const rest = text.slice(cursor);
+          const punctuation = rest.match(PUNCT_RE2);
+          if (punctuation) {
+            nodes.push(textNode2(punctuation[0]));
+            cursor += punctuation[0].length;
+            continue;
+          }
+          if (rest.startsWith("唔好食")) {
+            cursor += pushSpecialNotGoodEat2(nodes, text, cursor);
+            continue;
+          }
+          const negatedLexicalizedStative = NEGATED_LEXICALIZED_STATIVE_SPLITS2.find((spec) => spec.surface !== "唔好食" && rest.startsWith(spec.surface));
+          if (negatedLexicalizedStative) {
+            cursor += pushNegatedLexicalizedStativeSplit2(nodes, text, cursor, negatedLexicalizedStative);
+            continue;
+          }
+          const formula = FORMULAS2.find((surface) => rest.startsWith(surface));
+          if (formula) {
+            nodes.push(construction2("FormulaDiscourseUnit", "Formula", [token2(formula)], {
+              note: "Protected formula stays grouped.",
+              trace: traceInfo2("protected_formula_table", { surface: formula, reason: "Protected formula is intentionally opaque." })
+            }));
+            cursor += formula.length;
+            continue;
+          }
+          const addressForm = candidateNamedAddressFormFromRest2(rest);
+          if (addressForm) {
+            nodes.push(addressForm.node);
+            cursor += addressForm.length;
+            continue;
+          }
+          const vo = PRODUCTIVE_TERMS2.find((surface) => rest.startsWith(surface));
+          if (vo) {
+            nodes.push(...productiveVoComponentTokens2(vo));
+            cursor += vo.length;
+            continue;
+          }
+          const cupNounDemonstrativeNp = transparentCupNounDemonstrativeNpFromRest2(rest);
+          if (cupNounDemonstrativeNp) {
+            nodes.push(cupNounDemonstrativeNp.node);
+            cursor += cupNounDemonstrativeNp.length;
+            continue;
+          }
+          const demonstrativeClassifierSplit = transparentDemonstrativeClassifierSplitFromRest2(rest);
+          if (demonstrativeClassifierSplit) {
+            nodes.push(...demonstrativeClassifierSplit.node);
+            cursor += demonstrativeClassifierSplit.length;
+            continue;
+          }
+          const ellipticalDemonstrativeClassifier = transparentEllipticalDemonstrativeClassifierFromRest2(rest);
+          if (ellipticalDemonstrativeClassifier) {
+            nodes.push(ellipticalDemonstrativeClassifier.node);
+            cursor += ellipticalDemonstrativeClassifier.length;
+            continue;
+          }
+          const oneCountClassifierSplit = transparentOneCountClassifierSplitFromRest2(rest);
+          if (oneCountClassifierSplit) {
+            nodes.push(...oneCountClassifierSplit.node);
+            cursor += oneCountClassifierSplit.length;
+            continue;
+          }
+          const quantifiedPersonNp = transparentQuantifiedPersonNpFromRest2(rest);
+          if (quantifiedPersonNp) {
+            nodes.push(quantifiedPersonNp.node);
+            cursor += quantifiedPersonNp.length;
+            continue;
+          }
+          const nominalDiDeterminer = transparentNominalDiDeterminerFromRest2(rest);
+          if (nominalDiDeterminer) {
+            nodes.push(nominalDiDeterminer.node);
+            cursor += nominalDiDeterminer.length;
+            continue;
+          }
+          const termChoice = selectLexiconTerm2(rest);
+          if (termChoice) {
+            nodes.push(termChoice.surface === "嘅話" ? protectedConditionalMarkerToken2() : token2(termChoice.surface, {
+              selection_decision: termChoice.selection_decision,
+              ...contextualLexiconOverrides2(termChoice.surface, rest)
+            }));
+            cursor += termChoice.surface.length;
+            continue;
+          }
+          const char = Array.from(rest)[0] || "";
+          nodes.push(token2(char, { label: "neutral", syntax: "unknown_cjk_or_text", note: "Unknown item; shown neutrally." }));
+          cursor += char.length;
+        }
+        return nodes;
+      }
+      return { tokenizeLine: tokenizeLine2 };
+    };
   }
 });
 
@@ -4099,18 +5804,11 @@ function normalizeLearnerLabel(label, surface = "", syntax = "") {
   }
   return "neutral";
 }
-function slotNameRegistryIssue(slot) {
-  if (typeof slot !== "string") return "slot_not_string";
-  if (!/^[a-z][a-z0-9_]*$/.test(slot)) return "slot_not_snake_case";
-  if (SLOT_NAME_DISALLOWED_PREFIXES.some((pattern) => pattern.test(slot))) return "implementation_phase_marker_in_slot";
-  return "";
-}
-function isCleanSlotName(slot) {
-  return !slotNameRegistryIssue(slot);
-}
-function cleanSlots(slots = []) {
-  return [...new Set((slots || []).filter(isCleanSlotName))].sort();
-}
+var {
+  slotNameRegistryIssue,
+  isCleanSlotName,
+  cleanSlots
+} = require_clean_slots();
 function learnerRoleRegistryRows(analysis) {
   return flattenNodes(analysis.nodes).filter((row) => row.kind === "token").filter((row) => !LEARNER_ROLE_LABELS.has(row.role || "")).map((row) => ({
     surface: row.surface,
@@ -4246,285 +5944,26 @@ function learnerDisplayAuditSummary(analysis) {
     sample_hidden_internal_slot_rows: rows.slice(0, 12)
   };
 }
-function lexicalizedStativeRegistryKind(surface) {
-  const entry = TOKEN_LEXICON[surface] || {};
-  const label = entry.label || "neutral";
-  const syntax = entry.syntax || "";
-  const features = inferTokenFeatures(surface, { ...entry, label, syntax }, { label, syntax });
-  const bundle = featureBundleFor(surface, { ...entry, label, syntax }, features, []);
-  const lexicalizationType = getLexicalizationType(bundle);
-  if (lexicalizationType === "negative_lexicalized_stative") return "negative_lexicalized_stative_registry";
-  if (lexicalizationType === "lexicalized_stative") return "lexicalized_stative_registry";
-  return "";
-}
-function transparentClassifierObjectParts(surface) {
-  const phrase = String(surface || "");
-  const entry = TOKEN_LEXICON[phrase] || {};
-  const syntax = String(entry.syntax || "");
-  if (!syntax.split(/\s+/u).includes("classifier_object_np")) return null;
-  const classifier = Object.keys(TOKEN_LEXICON).filter((candidate) => candidate.length < phrase.length && phrase.startsWith(candidate)).filter((candidate) => (TOKEN_LEXICON[candidate] || {}).label === "measure_word").sort((a, b) => b.length - a.length || a.localeCompare(b))[0];
-  if (!classifier) return null;
-  const head = phrase.slice(classifier.length);
-  const headEntry = TOKEN_LEXICON[head] || {};
-  if (!head || !["what", "who", "where"].includes(headEntry.label || "")) return null;
-  return { classifier, head };
-}
-function shouldForceCompositional(surface) {
-  if (lexicalizedStativeRegistryKind(surface)) return false;
-  if (transparentClassifierObjectParts(surface)) return true;
-  return COMPOSITIONAL_LEXICAL_PHRASES.has(surface);
-}
-var ALL_LEXICON_TERMS = Object.keys(TOKEN_LEXICON).filter((surface) => !PRODUCTIVE_VO[surface]).sort((a, b) => b.length - a.length || a.localeCompare(b));
-var LEXICON_TERMS = ALL_LEXICON_TERMS.filter((surface) => !shouldForceCompositional(surface)).sort((a, b) => b.length - a.length || a.localeCompare(b));
-var LEXICALIZED_STATIVE_SELECTION_WEIGHT = 1e4;
-function lexicalCandidateScore(surface) {
-  const registryKind = lexicalizedStativeRegistryKind(surface);
-  const registryScore = registryKind ? LEXICALIZED_STATIVE_SELECTION_WEIGHT : 0;
-  return registryScore + surface.length;
-}
-function followingLexicalizedStativeAfterChoice(choice, rest) {
-  const afterChoice = String(rest || "").slice(String(choice || "").length);
-  if (!afterChoice) return null;
-  const following = ALL_LEXICON_TERMS.filter((surface) => afterChoice.startsWith(surface) && lexicalizedStativeRegistryKind(surface)).sort((a, b) => b.length - a.length || a.localeCompare(b))[0];
-  if (!following) return null;
-  return { surface: following, registry_kind: lexicalizedStativeRegistryKind(following) };
-}
-function lexicalSelectionReason(choice, candidates, excluded, rest = "") {
-  const registryKind = lexicalizedStativeRegistryKind(choice);
-  const competingRegistry = candidates.filter((surface) => surface !== choice && lexicalizedStativeRegistryKind(surface)).map((surface) => lexicalizedStativeRegistryKind(surface));
-  const hasLongerExcluded = excluded.some((item) => item.length > choice.length);
-  const followingRegistry = followingLexicalizedStativeAfterChoice(choice, rest);
-  if (registryKind) {
-    return `${registryKind} candidate wins over compositional or shorter candidates by lexicalized-stative selection scoring.`;
-  }
-  if (hasLongerExcluded) {
-    return "Chosen after longer forced-compositional phrase was excluded so learner-visible internal structure can remain available.";
-  }
-  if (followingRegistry && choice === "好") {
-    return `Chosen as degree modifier before following ${followingRegistry.registry_kind} candidate ${followingRegistry.surface}; learner-visible composition remains available.`;
-  }
-  if (competingRegistry.length) {
-    return "Chosen by score/length after comparing with registry-backed candidates.";
-  }
-  return "Chosen by ordinary lexical lookup; no registry-backed lexicalized stative candidate applies at this cursor.";
-}
-function lexicalSelectionDecision(rest, candidates, excluded, choice) {
-  return {
-    rule: "prefer_lexicalized_stative_over_compositional_when_registry_evidence_exists",
-    chosen: choice,
-    chosen_registry_kind: lexicalizedStativeRegistryKind(choice),
-    chosen_score: lexicalCandidateScore(choice),
-    reason: lexicalSelectionReason(choice, candidates, excluded, rest),
-    candidates: candidates.map((surface) => ({
-      surface,
-      registry_kind: lexicalizedStativeRegistryKind(surface),
-      score: lexicalCandidateScore(surface),
-      forced_compositional: false
-    })),
-    excluded_compositional_candidates: excluded.map((surface) => ({
-      surface,
-      registry_kind: lexicalizedStativeRegistryKind(surface),
-      forced_compositional: true,
-      reason: transparentClassifierObjectParts(surface) ? "Explicit classifier_object_np reference entry split into an independently evidenced classifier plus noun head." : "Listed in COMPOSITIONAL_LEXICAL_PHRASES and not protected by lexicalized-stative registry evidence."
-    })),
-    rest_preview: rest.slice(0, 12)
-  };
-}
-function selectionDecisionForSurface(surface, rest = surface) {
-  const candidates = LEXICON_TERMS.filter((candidate) => rest.startsWith(candidate));
-  const excluded = ALL_LEXICON_TERMS.filter((candidate) => rest.startsWith(candidate) && shouldForceCompositional(candidate));
-  const fallbackCandidates = candidates.includes(surface) ? candidates : [surface, ...candidates];
-  return lexicalSelectionDecision(rest, fallbackCandidates, excluded, surface);
-}
-function selectLexiconTerm(rest) {
-  const candidates = LEXICON_TERMS.filter((surface2) => rest.startsWith(surface2)).filter((surface2) => {
-    if (surface2 !== "第二個") return true;
-    const after = rest.slice(surface2.length);
-    const overtHead = Object.keys(TOKEN_LEXICON).filter((candidate) => after.startsWith(candidate)).filter((candidate) => ["what", "who", "where"].includes((TOKEN_LEXICON[candidate] || {}).label || "")).sort((a, b) => b.length - a.length || a.localeCompare(b))[0];
-    return !overtHead;
-  });
-  if (!candidates.length) return null;
-  const excluded = ALL_LEXICON_TERMS.filter((surface2) => rest.startsWith(surface2) && shouldForceCompositional(surface2));
-  candidates.sort((a, b) => {
-    const scoreDiff = lexicalCandidateScore(b) - lexicalCandidateScore(a);
-    if (scoreDiff) return scoreDiff;
-    const lengthDiff = b.length - a.length;
-    if (lengthDiff) return lengthDiff;
-    return a.localeCompare(b);
-  });
-  const surface = candidates[0];
-  return {
-    surface,
-    registry_kind: lexicalizedStativeRegistryKind(surface),
-    score: lexicalCandidateScore(surface),
-    candidate_count: candidates.length,
-    selection_decision: lexicalSelectionDecision(rest, candidates, excluded, surface)
-  };
-}
 var SLOT_GENERATION_RULES = require_slot_generation_rules();
 var CONSTRUCTION_TEMPLATES = require_construction_templates();
 var CATEGORY_SPAN_TEMPLATES = require_category_span_templates();
 var SLOT_ALIASES = require_slot_aliases();
-var PUNCT_RE = /^[\s\u3000，。！？、；：,.!?;:]+/u;
+var PUNCT_RE = require_punctuation();
 function createEl(tag, className, text) {
   const element = document.createElement(tag);
   if (className) element.className = className;
   if (text !== void 0 && text !== null) element.textContent = String(text);
   return element;
 }
-function normalizeSurface(text) {
-  return String(text || "").replace(/[\s\u3000，。！？、；：,.!?;:]/gu, "");
-}
-var HIGH_CONFIDENCE_SIMPLIFIED_TO_TRADITIONAL = {
-  "书": "書",
-  "饮": "飲",
-  "饭": "飯",
-  "听": "聽",
-  "说": "說",
-  "买": "買",
-  "写": "寫",
-  "还": "還",
-  "个": "個",
-  "过": "過",
-  "门": "門",
-  "车": "車",
-  "风": "風",
-  "后": "後",
-  "开": "開",
-  "来": "來",
-  "边": "邊",
-  "间": "間",
-  "东": "東",
-  "话": "話",
-  "语": "語",
-  "学": "學",
-  "习": "習",
-  "妈": "媽",
-  "爷": "爺",
-  "奶": "奶",
-  // v0.5.104 reviewed high-confidence map hardening.
-  // These are one-to-one character-form normalizations used by existing
-  // accepted grammar paths. Do not add Cantonese lexical repairs here.
-  "讲": "講",
-  "紧": "緊",
-  "笔": "筆",
-  "环": "環",
-  "厅": "廳",
-  "们": "們",
-  "对": "對",
-  "点": "點",
-  "见": "見",
-  "长": "長",
-  "气": "氣",
-  "声": "聲"
-};
-var FOLDED_PINYIN_FALLOUT_CANTONESE_LEXICAL_REPAIRS = {
-  "给": {
-    normalized: "畀",
-    confidence: "high",
-    source: "pinyin_simplified_typing_fallout",
-    note: "Pinyin Simplified 给 is a common input fallback for Cantonese 畀; parser shadow may use 畀 while raw display stays 给."
-  },
-  "没": {
-    normalized: "冇",
-    confidence: "high",
-    source: "pinyin_simplified_typing_fallout",
-    note: "Pinyin Simplified 没 is a common input fallback for Cantonese 冇; parser shadow may use 冇 while raw display stays 没."
-  }
-};
-function foldedPinyinFalloutRepair(rawChars, index) {
-  const raw = rawChars[index];
-  const repair = FOLDED_PINYIN_FALLOUT_CANTONESE_LEXICAL_REPAIRS[raw] || null;
-  if (!repair) return null;
-  if (raw === "没" && rawChars[index + 1] === "有") return null;
-  return repair;
-}
-function normalizeInputForParser(rawSource) {
-  const rawText = String(rawSource || "");
-  const rawChars = Array.from(rawText);
-  const shadowChars = [];
-  const normalizationTrace = [];
-  const reviewSuggestions = [];
-  rawChars.forEach((raw, index) => {
-    const foldedRepair = foldedPinyinFalloutRepair(rawChars, index);
-    const traditional = HIGH_CONFIDENCE_SIMPLIFIED_TO_TRADITIONAL[raw];
-    const normalized = foldedRepair ? foldedRepair.normalized : traditional || raw;
-    shadowChars.push(normalized);
-    if (normalized !== raw) {
-      const isFoldedRepair = Boolean(foldedRepair);
-      normalizationTrace.push({
-        index,
-        raw,
-        normalized,
-        type: isFoldedRepair ? "pinyin_fallout_cantonese_lexical_repair" : "simplified_to_traditional",
-        confidence: isFoldedRepair ? foldedRepair.confidence : "high",
-        source: isFoldedRepair ? foldedRepair.source : "character_form_map",
-        status: isFoldedRepair ? "folded_parser_shadow_only" : "applied_parser_shadow_only",
-        applied_to_parser_shadow: true,
-        learner_display_replaced: false,
-        one_to_one_character_mapping: true,
-        note: isFoldedRepair ? foldedRepair.note : "High-confidence Simplified-to-Traditional parser-shadow character-form normalization."
-      });
-    }
-  });
-  const parserShadowSource = shadowChars.join("");
-  return {
-    raw_source: rawText,
-    parser_shadow_source: parserShadowSource,
-    normalization_trace: normalizationTrace,
-    review_suggestions: reviewSuggestions,
-    raw_first_display: true
-  };
-}
-function nodeParserSurface(node) {
-  if (!node) return "";
-  if (node.kind === "token") return node.surface || "";
-  if (node.kind === "text") return node.text || "";
-  if (node.kind === "construction") return (node.children || []).map(nodeParserSurface).join("");
-  return "";
-}
-function nodeDisplaySurface(node) {
-  if (!node) return "";
-  if (node.kind === "token") return node.display_surface || node.surface || "";
-  if (node.kind === "text") return node.display_text || node.text || "";
-  if (node.kind === "construction") return (node.children || []).map(nodeDisplaySurface).join("");
-  return "";
-}
-function annotateRawDisplaySurfaces(nodes, rawSource, parserShadowSource) {
-  const rawChars = Array.from(String(rawSource || ""));
-  const shadowChars = Array.from(String(parserShadowSource || ""));
-  let cursor = 0;
-  const annotate = (node) => {
-    if (!node) return;
-    if (node.kind === "construction") {
-      for (const child of node.children || []) annotate(child);
-      const displaySurface = nodeDisplaySurface(node);
-      const parserSurface2 = nodeParserSurface(node);
-      if (displaySurface && displaySurface !== parserSurface2) node.display_surface = displaySurface;
-      return;
-    }
-    const parserSurface = nodeParserSurface(node);
-    const length = Array.from(parserSurface).length;
-    const rawSlice = rawChars.slice(cursor, cursor + length).join("");
-    const shadowSlice = shadowChars.slice(cursor, cursor + length).join("");
-    if (length) cursor += length;
-    if (node.kind === "token") {
-      if (rawSlice && rawSlice !== node.surface) {
-        node.display_surface = rawSlice;
-        node.parser_surface = node.surface;
-      }
-      if (shadowSlice && shadowSlice !== parserSurface) node.shadow_alignment_warning = shadowSlice;
-    } else if (node.kind === "text") {
-      if (rawSlice && rawSlice !== node.text) node.display_text = rawSlice;
-      if (shadowSlice && shadowSlice !== parserSurface) node.shadow_alignment_warning = shadowSlice;
-    }
-  };
-  for (const node of nodes || []) annotate(node);
-  return nodes;
-}
-function inputNormalizationHasFindings(inputNormalization) {
-  return !!(inputNormalization && ((inputNormalization.normalization_trace || []).length || (inputNormalization.review_suggestions || []).length || inputNormalization.raw_source !== inputNormalization.parser_shadow_source));
-}
+var {
+  normalizeSurface,
+  foldedPinyinFalloutRepair,
+  normalizeInputForParser,
+  nodeParserSurface,
+  nodeDisplaySurface,
+  annotateRawDisplaySurfaces,
+  inputNormalizationHasFindings
+} = require_normalize_input();
 function normalizationReviewSuggestionsForAnalysis(analysis) {
   if (!analysis) return [];
   if (analysis.input_normalization && Array.isArray(analysis.input_normalization.review_suggestions)) {
@@ -4651,791 +6090,84 @@ function renderParserShadowRepairs(analysis, container) {
 function safeClass(value) {
   return String(value || "neutral").replace(/[^a-z0-9_-]/gi, "-").toLowerCase();
 }
-function hasAny(value, wanted) {
-  const values = Array.isArray(value) ? value : [value];
-  return values.some((item) => wanted.includes(item));
-}
-function stringIncludesAny(value, needles) {
-  const text = String(value || "");
-  return needles.some((needle) => needle && text.includes(needle));
-}
-function contextualRoleAffordances(row = {}) {
-  const slots = new Set(row.slots || []);
-  const syntax = String(row.syntax || "");
-  const role = row.role || row.label || "";
-  const out = [];
-  const add = (candidate) => {
-    if (!candidate || !candidate.role) return;
-    const key = `${candidate.role}||${candidate.slot || ""}||${candidate.source || ""}`;
-    if (out.some((item) => `${item.role}||${item.slot || ""}||${item.source || ""}` === key)) return;
-    out.push(candidate);
-  };
-  if (role && role !== "neutral") {
-    add({
-      role,
-      source: "lexical_default",
-      active_before_construction_wrapping: true,
-      note: "Default learner role from the lexical entry before any construction-level contextual override."
-    });
-  }
-  if (slots.has("time") || slots.has("time_head") || slots.has("temporal_modifier") || syntax.includes("temporal")) {
-    add({
-      role: "when",
-      slot: slots.has("temporal_modifier") ? "temporal_modifier" : slots.has("time_head") ? "time_head" : "time",
-      source: "time_affordance",
-      active_before_construction_wrapping: role === "when",
-      note: "Time/temporal affordance retained for phrases such as 上個禮拜 / 上次."
-    });
-  }
-  if (slots.has("movement_direction") || slots.has("return_motion_verb") || slots.has("deictic_motion_marker") || slots.has("movement_verb") || syntax.includes("movement_direction")) {
-    add({
-      role: "doing",
-      slot: slots.has("movement_direction") ? "movement_direction" : slots.has("return_motion_verb") ? "return_motion_verb" : slots.has("deictic_motion_marker") ? "deictic_motion_marker" : "movement_verb",
-      source: "motion_affordance",
-      active_before_construction_wrapping: role === "doing",
-      note: "Motion affordance retained for directional-motion contexts such as 上嚟 / 返上嚟."
-    });
-  }
-  if (slots.has("degree_manner_head") || syntax.includes("degree_manner_head")) {
-    add({
-      role: "how",
-      slot: "degree_manner_head",
-      source: "degree_manner_affordance",
-      active_before_construction_wrapping: role === "how",
-      note: "Degree/manner affordance retained for stative/adjective or manner + 啲 contexts."
-    });
-  }
-  if (slots.has("object") || slots.has("head_noun") || slots.has("np")) {
-    add({
-      role: "what",
-      slot: slots.has("object") ? "object" : slots.has("head_noun") ? "head_noun" : "np",
-      source: "nominal_affordance",
-      active_before_construction_wrapping: role === "what",
-      note: "Nominal/object affordance retained for NP or object contexts."
-    });
-  }
-  return out;
-}
-function inferTokenFeatures(surface, entry = {}, overrides = {}) {
-  const rawLabel = overrides.label || entry.label || "neutral";
-  const syntax = overrides.syntax || entry.syntax || "lexical_candidate";
-  const label = normalizeLearnerLabel(rawLabel, surface, syntax);
-  const syntaxParts = new Set(String(syntax).split(/[\s_]+/).filter(Boolean));
-  const hasSyntaxPart = (part) => syntaxParts.has(part);
-  const features = {
-    surface,
-    label,
-    syntax,
-    pos: entry.pos || overrides.pos || "",
-    semantic: Array.isArray(entry.semantic) ? entry.semantic : [],
-    verb_class: Array.isArray(entry.verb_class) ? entry.verb_class : [],
-    particle_class: entry.particle_class || ""
-  };
-  if (!features.pos) {
-    if (label === "who" || syntax.includes("person") || syntax.includes("pronoun")) features.pos = "np";
-    else if (label === "where" || syntax.includes("place")) features.pos = "np";
-    else if (label === "what" || syntax.includes("noun") || syntax.includes("np")) features.pos = "noun";
-    else if (label === "doing") features.pos = "verb";
-    else if (label === "stance" || syntax.includes("cognition")) features.pos = "verb";
-    else if (label === "like" || syntax.includes("stative")) features.pos = "stative";
-    else if (label === "measure_word") features.pos = "classifier";
-    else if (label === "particle") features.pos = "particle";
-    else if (label === "func") features.pos = "function";
-    else if (label === "when") features.pos = "time";
-    else if (label === "how" || label === "why") features.pos = "adverbial";
-  }
-  if (label === "where" || syntax.includes("place")) features.semantic.push("place");
-  const foodNounSurfaces = ["飯", "薄餅", "意粉", "食物", "菜式"];
-  const drinkLiquidSurfaces = ["水", "茶", "咖啡", "奶", "湯"];
-  if (syntax.includes("food") || foodNounSurfaces.includes(surface)) features.semantic.push("food");
-  if (syntax.includes("drink") || syntax.includes("liquid") || drinkLiquidSurfaces.includes(surface)) features.semantic.push("drink", "liquid");
-  if (surface === "水" || syntax.includes("water")) features.semantic.push("water");
-  if (syntax.includes("beverage") || ["茶", "咖啡", "奶"].includes(surface)) features.semantic.push("beverage");
-  if (syntax.includes("price") || ["價", "價錢", "價位", "錢", "蚊"].includes(surface)) features.semantic.push("price");
-  if (syntax.includes("abstract") || ["興趣", "問題", "消息", "主意"].includes(surface)) features.semantic.push("abstract");
-  if (syntax.includes("cognition") || ["覺得", "諗", "知", "記得", "唔知"].includes(surface)) features.verb_class.push("cognition");
-  if (label === "stance" || hasSyntaxPart("opinion") || hasSyntaxPart("stance") || ["覺得", "諗住", "記得", "唔知"].includes(surface)) features.verb_class.push("stance");
-  if (["去", "返", "嚟", "落", "上"].includes(surface) || syntax.includes("movement_direction")) features.verb_class.push("movement");
-  if (["講", "話"].includes(surface)) features.verb_class.push("speech");
-  if (["鍾意"].includes(surface)) features.verb_class.push("preference");
-  if (["好似"].includes(surface)) features.verb_class.push("seeming");
-  features.semantic = [...new Set(features.semantic)];
-  features.verb_class = [...new Set(features.verb_class)];
-  return features;
-}
-function compactFeatureSummary(features = {}) {
-  return {
-    pos: features.pos || "",
-    label: features.label || "",
-    semantic: features.semantic || [],
-    verb_class: features.verb_class || [],
-    particle_class: features.particle_class || ""
-  };
-}
-function featureList(...items) {
-  return [...new Set(items.flat().filter(Boolean))].sort();
-}
-function syntaxHas(syntax, value) {
-  return String(syntax || "").includes(value);
-}
-function featureBundleFor(surface, entry = {}, features = {}, slots = []) {
-  const syntax = entry.syntax || features.syntax || "";
-  const label = entry.label || features.label || "";
-  const slotSet = new Set(slots || []);
-  const semantic = new Set(features.semantic || []);
-  const verbClass = new Set(features.verb_class || []);
-  const isLexicalizedStative2 = syntaxHas(syntax, "lexicalized_stative") && !syntaxHas(syntax, "negative_lexicalized_stative");
-  const isNegativeLexicalizedStative2 = syntaxHas(syntax, "negative_lexicalized_stative");
-  const syntaxSuggestsOrdinaryStative = label === "like" && syntaxHas(syntax, "stative") && !isLexicalizedStative2 && !isNegativeLexicalizedStative2 && !syntaxHas(syntax, "sensory_stative_head") && !syntaxHas(syntax, "degree_stative_predicate");
-  const isOrdinaryStative2 = slotSet.has("ordinary_stative_predicate") || syntaxSuggestsOrdinaryStative;
-  const isStative = slotSet.has("stative_predicate") || isLexicalizedStative2 || isNegativeLexicalizedStative2 || isOrdinaryStative2;
-  const isAction = slotSet.has("action_verb") || slotSet.has("main_verb");
-  const isSpeech = slotSet.has("speech_verb") || verbClass.has("speech") || ["話", "講"].includes(surface);
-  const isReportative = slotSet.has("reportative_source") || ["話", "聽講"].includes(surface);
-  const isStance = (slotSet.has("stance_predicate") || verbClass.has("stance")) && !["話", "聽講"].includes(surface);
-  const isCognition = slotSet.has("cognition_predicate") || verbClass.has("cognition");
-  const isPhase4CognitionPromotion = syntaxHas(syntax, "phase4_cognition_promotion");
-  const isPhase4NegativeCognitionFragment = isPhase4CognitionPromotion && slotSet.has("negative_cognition_fragment");
-  const isPhase4CognitionContentPredicate = isPhase4CognitionPromotion && slotSet.has("non_stance_cognition_predicate");
-  const isPhase4CognitionStatement = isPhase4CognitionPromotion && slotSet.has("cognition_statement_clause");
-  const isPhase4DesiderativePromotion = syntaxHas(syntax, "phase4_desiderative_promotion");
-  const isPhase4DesiderativeANotAQuestion = isPhase4DesiderativePromotion && slotSet.has("desiderative_a_not_a_question");
-  const isPhase4OpinionStancePromotion = syntaxHas(syntax, "phase4_opinion_stance_promotion");
-  const isPhase4OpinionStanceFrame = isPhase4OpinionStancePromotion && slotSet.has("opinion_stance_frame");
-  const isPhase4ReportedSpeechPromotion = syntaxHas(syntax, "phase4_reported_speech_promotion");
-  const isPhase4ReportedSpeechFrame = isPhase4ReportedSpeechPromotion && slotSet.has("reported_speech");
-  const isPhase4PermissionPromotion = syntaxHas(syntax, "phase4_permission_promotion");
-  const isPhase4PermissionANotAQuestion = isPhase4PermissionPromotion && slotSet.has("permission_a_not_a_question");
-  const isDegree = slotSet.has("degree");
-  const isParticle2 = label === "particle" || features.pos === "particle";
-  const isFunction = label === "func" || label === "measure_word" || features.pos === "function" || features.pos === "quantifier";
-  const isNominal = ["who", "what", "where"].includes(label) || ["noun", "np"].includes(features.pos);
-  const domains = [];
-  if (syntaxHas(syntax, "sensory_evaluation")) domains.push("sensory_evaluation");
-  if (syntaxHas(syntax, "food_evaluation")) domains.push("food_evaluation");
-  else if ((syntaxHas(syntax, "food") || semantic.has("food")) && isNominal) domains.push("food_item", "edible_item");
-  else if (syntaxHas(syntax, "food")) domains.push("food_evaluation");
-  if (syntaxHas(syntax, "drink") || syntaxHas(syntax, "drink_evaluation")) domains.push("drink_evaluation");
-  if (syntaxHas(syntax, "sound") || syntaxHas(syntax, "sound_evaluation")) domains.push("sound_evaluation");
-  if (syntaxHas(syntax, "visual") || syntaxHas(syntax, "visual_evaluation")) domains.push("visual_evaluation");
-  if (syntaxHas(syntax, "taste") || syntaxHas(syntax, "taste_evaluation")) domains.push("taste_evaluation");
-  if (syntaxHas(syntax, "distance") || ["遠", "近"].includes(surface)) domains.push("distance_property");
-  if (syntaxHas(syntax, "price") || ["貴", "平", "價", "價錢", "價位", "錢", "蚊"].includes(surface)) domains.push("price_property");
-  if (syntaxHas(syntax, "emotion") || ["開心", "難過"].includes(surface)) domains.push("emotion");
-  if (isCognition || ["覺得", "諗", "知", "記得", "唔知"].includes(surface)) domains.push("cognition");
-  if (isSpeech) domains.push("speech");
-  if (verbClass.has("movement") || ["去", "返", "嚟", "落", "上"].includes(surface)) domains.push("motion");
-  if (["食", "飲"].includes(surface)) domains.push("consumption");
-  if (syntaxHas(syntax, "story_np") || syntaxHas(syntax, "information_content") || semantic.has("information_content")) domains.push("information_content", "readable_content");
-  if (syntaxHas(syntax, "liquid") || semantic.has("liquid") || semantic.has("water") || semantic.has("beverage") || semantic.has("drink")) domains.push("liquid", "drinkable_item");
-  if (label === "where" || syntaxHas(syntax, "place") || semantic.has("place")) domains.push("place");
-  let lexicalizationType = "none";
-  if (isNegativeLexicalizedStative2) lexicalizationType = "negative_lexicalized_stative";
-  else if (isLexicalizedStative2) lexicalizationType = "lexicalized_stative";
-  else if (entry.review === "protected_formula" || syntaxHas(syntax, "formula")) lexicalizationType = "protected_formula";
-  else if (syntaxHas(syntax, "productive_vo")) lexicalizationType = "productive_vo";
-  const predicateSubtypes = [];
-  if (isAction && !isStative) predicateSubtypes.push("action_verb");
-  if (isOrdinaryStative2) predicateSubtypes.push("ordinary_stative");
-  if (isLexicalizedStative2) predicateSubtypes.push("lexicalized_stative");
-  if (isNegativeLexicalizedStative2) predicateSubtypes.push("negative_lexicalized_stative");
-  if (isSpeech) predicateSubtypes.push("speech_predicate");
-  if (isReportative) predicateSubtypes.push("reportative_source");
-  if (isStance) predicateSubtypes.push("stance_predicate");
-  if (isCognition) predicateSubtypes.push("cognition_predicate");
-  if (verbClass.has("movement")) predicateSubtypes.push("motion_predicate");
-  if (slotSet.has("desiderative_modal") || syntaxHas(syntax, "modal_desiderative")) predicateSubtypes.push("desiderative_modal");
-  if (slotSet.has("permission_modal") || slotSet.has("permission_a_not_a_modal") || syntaxHas(syntax, "modal_permission")) predicateSubtypes.push("permission_modal");
-  if (slotSet.has("prohibitive_marker") || syntaxHas(syntax, "prohibitive_marker")) predicateSubtypes.push("prohibitive_marker");
-  let syntacticCategory = "UNKNOWN";
-  if (isParticle2) syntacticCategory = "PARTICLE";
-  else if (isFunction || isDegree) syntacticCategory = "FUNCTION";
-  else if (isNominal && !isStative) syntacticCategory = "N";
-  else if (label === "doing" || label === "stance" || label === "like" || isStative || isSpeech || isCognition) syntacticCategory = "V";
-  let morphologicalCategory = "unknown";
-  if (syntacticCategory === "V") morphologicalCategory = "verb_like";
-  else if (syntacticCategory === "N") morphologicalCategory = "nominal_like";
-  else if (syntacticCategory === "PARTICLE") morphologicalCategory = "particle_like";
-  else if (syntacticCategory === "FUNCTION") morphologicalCategory = "function_like";
-  let gradability = "unknown";
-  if (syntaxHas(syntax, "degreeable") || isStative || isOrdinaryStative2) gradability = "gradable";
-  else if (isAction || isSpeech || isCognition || isDegree || isFunction || isParticle2) gradability = "non_gradable";
-  let dynamicity = "unknown";
-  if (surface === "覺得") dynamicity = "mixed";
-  else if (isStative || isNegativeLexicalizedStative2 || isLexicalizedStative2 || isOrdinaryStative2) dynamicity = "non_dynamic";
-  else if (isAction || isSpeech || surface === "諗") dynamicity = "dynamic";
-  else if (isCognition) dynamicity = "contextual";
-  let temporalStability = "unknown";
-  if (["遠", "近", "高", "矮", "大", "細"].includes(surface)) temporalStability = "permanent";
-  else if (isAction || isSpeech || surface === "諗") temporalStability = "transient";
-  else if (isStative || isCognition || surface === "覺得") temporalStability = "contextual";
-  let polarityProfile = "neutral";
-  if (isNegativeLexicalizedStative2 || syntaxHas(syntax, "negative")) polarityProfile = "negative";
-  else if (isLexicalizedStative2 || syntaxHas(syntax, "positive")) polarityProfile = "positive";
-  else if (["貴", "遠"].includes(surface)) polarityProfile = "contextual";
-  const canHeadComment2 = slotSet.has("comment_predicate") || isStative || isOrdinaryStative2;
-  const canTakeDegreeModifier = syntaxHas(syntax, "degreeable") || isStative || isOrdinaryStative2;
-  const canHeadProductiveVO = slotSet.has("action_verb") && syntaxHas(syntax, "transitive_affordance");
-  const canBeM4Negated = canHeadComment2 || label === "doing" ? label === "doing" && !canHeadComment2 ? "contextual" : true : "unknown";
-  let confidence = "low";
-  const sources = ["runtime_inference"];
-  if (["好食", "難食", "遠", "食", "覺得", "諗", "知"].includes(surface)) {
-    confidence = ["遠"].includes(surface) ? "medium" : "high";
-    sources.unshift("manual_gold");
-  }
-  if (["好食", "好飲", "好睇", "好聽", "好味", "難食", "難飲", "難睇", "難聽"].includes(surface)) {
-    if (!sources.includes("words_hk")) sources.push("words_hk");
-    if (!sources.includes("jyutdictionary")) sources.push("jyutdictionary");
-    confidence = "high";
-  }
-  if (["話", "聽講"].includes(surface)) {
-    confidence = "medium";
-    sources.unshift("manual_gold");
-    sources.push("research_generalization");
-  }
-  const shorthandParts = [];
-  if (gradability === "gradable") shorthandParts.push("+gradable");
-  if (gradability === "non_gradable") shorthandParts.push("-gradable");
-  if (dynamicity === "dynamic") shorthandParts.push("+dynamic");
-  if (dynamicity === "non_dynamic") shorthandParts.push("-dynamic");
-  if (isLexicalizedStative2) shorthandParts.push("+lexicalized_stative");
-  if (isNegativeLexicalizedStative2) shorthandParts.push("+negative_lexicalized_stative");
-  if (isOrdinaryStative2) shorthandParts.push("+ordinary_stative");
-  for (const subtype of predicateSubtypes) shorthandParts.push(`+${subtype}`);
-  for (const domain of domains) shorthandParts.push(`+${domain}`);
-  const parserActiveUses = [];
-  if (lexicalizationType === "lexicalized_stative") parserActiveUses.push("lexicalization_type:lexicalized_stative");
-  if (lexicalizationType === "negative_lexicalized_stative") parserActiveUses.push("lexicalization_type:negative_lexicalized_stative");
-  if (predicateSubtypes.includes("ordinary_stative")) parserActiveUses.push("predicate_subtype:ordinary_stative");
-  if (isStative && gradability === "gradable") parserActiveUses.push("core_dimensions:gradability");
-  if (isStative && canHeadComment2) parserActiveUses.push("construction_affordances:can_head_comment");
-  if (isPhase4CognitionPromotion && isCognition) parserActiveUses.push("predicate_subtype:cognition_predicate");
-  if (isPhase4CognitionContentPredicate && isCognition) parserActiveUses.push("construction_affordances:can_take_content_clause");
-  if (isPhase4NegativeCognitionFragment && isCognition) parserActiveUses.push("construction_affordances:can_stand_as_negative_cognition_fragment");
-  if (isPhase4CognitionStatement && isCognition) parserActiveUses.push("construction_affordances:can_stand_as_cognition_statement");
-  if (isPhase4DesiderativePromotion && predicateSubtypes.includes("desiderative_modal")) parserActiveUses.push("predicate_subtype:desiderative_modal");
-  if (isPhase4DesiderativeANotAQuestion && predicateSubtypes.includes("desiderative_modal")) parserActiveUses.push("construction_affordances:can_form_desiderative_a_not_a_question");
-  if (isPhase4OpinionStancePromotion && predicateSubtypes.includes("stance_predicate")) parserActiveUses.push("predicate_subtype:stance_predicate");
-  if (isPhase4OpinionStanceFrame && predicateSubtypes.includes("stance_predicate")) parserActiveUses.push("construction_affordances:can_head_opinion_frame");
-  if (isPhase4ReportedSpeechPromotion && predicateSubtypes.includes("speech_predicate")) parserActiveUses.push("predicate_subtype:speech_predicate");
-  if (isPhase4ReportedSpeechFrame && predicateSubtypes.includes("speech_predicate")) parserActiveUses.push("construction_affordances:can_introduce_reported_content");
-  if (isPhase4PermissionPromotion && predicateSubtypes.includes("permission_modal")) parserActiveUses.push("predicate_subtype:permission_modal");
-  if (isPhase4PermissionANotAQuestion && predicateSubtypes.includes("permission_modal")) parserActiveUses.push("construction_affordances:can_form_permission_a_not_a_question");
-  if (canHeadProductiveVO) parserActiveUses.push("construction_affordances:can_head_productive_vo");
-  const topicChainParserActive = parserActiveUses.includes("construction_affordances:can_head_productive_vo");
-  const phase4CognitionParserActive = parserActiveUses.some((use) => use.includes("cognition_predicate") || use.includes("can_take_content_clause"));
-  const phase4DesiderativeParserActive = parserActiveUses.some((use) => use.includes("desiderative_modal") || use.includes("desiderative_a_not_a"));
-  const phase4OpinionStanceParserActive = parserActiveUses.some((use) => use.includes("stance_predicate") || use.includes("can_head_opinion_frame"));
-  const phase4ReportedSpeechParserActive = parserActiveUses.some((use) => use.includes("speech_predicate") || use.includes("can_introduce_reported_content"));
-  const phase4PermissionParserActive = parserActiveUses.some((use) => use.includes("permission_modal") || use.includes("can_form_permission_a_not_a_question"));
-  const parserBehavior = phase4CognitionParserActive ? "phase4_controlled_cognition_logic_uses_feature_predicates" : phase4DesiderativeParserActive ? "phase4_controlled_desiderative_a_not_a_logic_uses_feature_predicates" : phase4OpinionStanceParserActive ? "phase4_controlled_opinion_stance_logic_uses_feature_predicates" : phase4ReportedSpeechParserActive ? "phase4_controlled_reported_speech_logic_uses_feature_predicates" : phase4PermissionParserActive ? "phase4_controlled_permission_a_not_a_logic_uses_feature_predicates" : topicChainParserActive ? "a1_topic_chain_null_object_logic_uses_object_selecting_affordance" : parserActiveUses.length ? "stative_logic_uses_feature_predicates" : "unchanged";
-  const bundleStatus = phase4CognitionParserActive ? "derived_runtime_helper_phase_4_controlled_cognition_parser_active" : phase4DesiderativeParserActive ? "derived_runtime_helper_phase_4_controlled_desiderative_parser_active" : phase4OpinionStanceParserActive ? "derived_runtime_helper_phase_4_controlled_opinion_stance_parser_active" : phase4ReportedSpeechParserActive ? "derived_runtime_helper_phase_4_controlled_reported_speech_parser_active" : phase4PermissionParserActive ? "derived_runtime_helper_phase_4_controlled_permission_parser_active" : topicChainParserActive ? "derived_runtime_helper_a1_topic_chain_parser_active" : parserActiveUses.length ? "derived_runtime_helper_phase_3_stative_parser_active" : "derived_runtime_helper_phase_3_parser_inactive";
-  return {
-    status: bundleStatus,
-    parser_behavior: parserBehavior,
-    core_dimensions: {
-      syntactic_category: syntacticCategory,
-      morphological_category: morphologicalCategory,
-      gradability,
-      dynamicity,
-      temporal_stability: temporalStability
-    },
-    parser_features: {
-      lexicalization_type: lexicalizationType,
-      semantic_domain: featureList(domains),
-      polarity_profile: polarityProfile,
-      predicate_subtype: featureList(predicateSubtypes)
-    },
-    construction_affordances: {
-      can_head_comment: canHeadComment2,
-      can_take_degree_modifier: canTakeDegreeModifier,
-      can_be_m4_negated: canBeM4Negated,
-      can_head_productive_vo: canHeadProductiveVO,
-      can_license_following_vp: slotSet.has("prohibitive_marker") || surface === "唔好",
-      can_introduce_reported_content: slotSet.has("reportative_source") || ["話", "聽講"].includes(surface),
-      can_take_content_clause: isPhase4CognitionContentPredicate && isCognition,
-      can_stand_as_negative_cognition_fragment: isPhase4NegativeCognitionFragment && isCognition,
-      can_stand_as_cognition_statement: isPhase4CognitionStatement && isCognition,
-      can_form_desiderative_a_not_a_question: isPhase4DesiderativeANotAQuestion && predicateSubtypes.includes("desiderative_modal"),
-      can_form_permission_a_not_a_question: isPhase4PermissionANotAQuestion && predicateSubtypes.includes("permission_modal"),
-      can_take_recipient: ["話", "畀"].includes(surface),
-      can_head_opinion_frame: isPhase4OpinionStanceFrame || slotSet.has("stance_predicate") || ["覺得", "認為", "以為", "相信", "懷疑"].includes(surface)
-    },
-    evidence_controls: {
-      feature_confidence: confidence,
-      feature_source: featureList(sources),
-      parser_active: Boolean(parserActiveUses.length),
-      parser_active_scope: featureList(parserActiveUses)
-    },
-    diagnostic_shorthand: featureList(shorthandParts).join(" ")
-  };
-}
-function getFeatureBundle(nodeOrBundle) {
-  if (!nodeOrBundle) return null;
-  if (nodeOrBundle.core_dimensions && nodeOrBundle.parser_features) return nodeOrBundle;
-  return nodeOrBundle.feature_bundle || nodeOrBundle.trace && nodeOrBundle.trace.feature_bundle || null;
-}
-function getParserFeatures(nodeOrBundle) {
-  const bundle = getFeatureBundle(nodeOrBundle);
-  return bundle && bundle.parser_features || {};
-}
-function getConstructionAffordances(nodeOrBundle) {
-  const bundle = getFeatureBundle(nodeOrBundle);
-  return bundle && bundle.construction_affordances || {};
-}
-function getCoreDimensions(nodeOrBundle) {
-  const bundle = getFeatureBundle(nodeOrBundle);
-  return bundle && bundle.core_dimensions || {};
-}
-function getLexicalizationType(nodeOrBundle) {
-  return getParserFeatures(nodeOrBundle).lexicalization_type || "none";
-}
-function hasPredicateSubtype(nodeOrBundle, subtype) {
-  const subtypes = getParserFeatures(nodeOrBundle).predicate_subtype || [];
-  return Array.isArray(subtypes) && subtypes.includes(subtype);
-}
-function isLexicalizedStative(nodeOrBundle) {
-  return getLexicalizationType(nodeOrBundle) === "lexicalized_stative";
-}
-function isNegativeLexicalizedStative(nodeOrBundle) {
-  return getLexicalizationType(nodeOrBundle) === "negative_lexicalized_stative";
-}
-function isOrdinaryStative(nodeOrBundle) {
-  return hasPredicateSubtype(nodeOrBundle, "ordinary_stative");
-}
-function isStativePredicateByBundle(nodeOrBundle) {
-  if (isLexicalizedStative(nodeOrBundle) || isNegativeLexicalizedStative(nodeOrBundle) || isOrdinaryStative(nodeOrBundle)) return true;
-  const core = getCoreDimensions(nodeOrBundle);
-  const affordances = getConstructionAffordances(nodeOrBundle);
-  return core.syntactic_category === "V" && affordances.can_head_comment === true;
-}
-function isGradablePredicate(nodeOrBundle) {
-  return isStativePredicateByBundle(nodeOrBundle) && getCoreDimensions(nodeOrBundle).gradability === "gradable";
-}
-function canHeadComment(nodeOrBundle) {
-  const affordances = getConstructionAffordances(nodeOrBundle);
-  return isStativePredicateByBundle(nodeOrBundle) && affordances.can_head_comment === true;
-}
-function bundleCanFillStativeSlot(node, slot) {
-  if (!node || node.kind !== "token") return null;
-  const bundle = getFeatureBundle(node);
-  if (!bundle) return null;
-  switch (slot) {
-    case "lexicalized_stative_predicate":
-      return isLexicalizedStative(bundle) || isNegativeLexicalizedStative(bundle);
-    case "negative_lexicalized_stative_predicate":
-      return isNegativeLexicalizedStative(bundle);
-    case "negative_lexicalized_stative":
-      return isNegativeLexicalizedStative(bundle);
-    case "ordinary_stative_predicate":
-    case "ordinary_degree_stative_predicate":
-      return isOrdinaryStative(bundle);
-    case "stative_predicate":
-      return isStativePredicateByBundle(bundle);
-    case "comment_predicate":
-    case "comment":
-      return canHeadComment(bundle);
-    case "modifier":
-      return isGradablePredicate(bundle);
-    default:
-      return null;
-  }
-}
-function parserActiveStativeSlotsForBundle(bundle) {
-  const slots = [];
-  if (!bundle) return slots;
-  if (isNegativeLexicalizedStative(bundle)) {
-    slots.push("negative_lexicalized_stative_predicate", "negative_lexicalized_stative");
-  }
-  if (isLexicalizedStative(bundle) || isNegativeLexicalizedStative(bundle)) {
-    slots.push("lexicalized_stative_predicate");
-  }
-  if (isOrdinaryStative(bundle)) {
-    slots.push("ordinary_stative_predicate");
-  }
-  if (isStativePredicateByBundle(bundle)) {
-    slots.push("stative_predicate");
-  }
-  if (isGradablePredicate(bundle)) {
-    slots.push("modifier");
-  }
-  if (canHeadComment(bundle)) {
-    slots.push("comment_predicate");
-  }
-  return featureList(slots);
-}
-function conditionMatches(features, condition = {}) {
-  if (condition.surfaces && condition.surfaces.includes(features.surface)) return true;
-  if (condition.labels && condition.labels.includes(features.label)) return true;
-  if (condition.pos && condition.pos.includes(features.pos)) return true;
-  if (condition.syntaxIncludes && stringIncludesAny(features.syntax, condition.syntaxIncludes)) return true;
-  if (condition.semantic && hasAny(features.semantic, condition.semantic)) return true;
-  if (condition.verbClass && hasAny(features.verb_class, condition.verbClass)) return true;
-  return false;
-}
-function generateTokenSlots(features) {
-  const slots = /* @__PURE__ */ new Set();
-  for (const rule of SLOT_GENERATION_RULES) {
-    if (conditionMatches(features, rule.when)) slots.add(rule.slot);
-  }
-  if (features.pos === "noun" || features.pos === "np") slots.add("np");
-  if (features.pos === "verb") slots.add("predicate");
-  if (features.label === "how") slots.add("how");
-  if (features.label === "why") slots.add("why");
-  if (features.label === "when") slots.add("time");
-  if (features.syntax.includes("demonstrative_determiner")) slots.add("demonstrative");
-  if (["呢個", "嗰個", "呢啲", "嗰啲"].includes(features.surface)) slots.add("demonstrative_pronoun");
-  if (features.syntax.includes("wh_determiner")) slots.add("wh_determiner");
-  if (features.syntax.includes("quantity") || features.syntax.includes("numeral")) slots.add("quantity");
-  if (features.syntax.includes("di_determiner")) slots.add("di_determiner");
-  if (features.syntax.includes("modifier") || features.syntax.includes("noun_modifier")) slots.add("modifier");
-  if (features.syntax.includes("weekday") || features.syntax.includes("time_np")) slots.add("time_head");
-  if (features.surface === "嘅") slots.add("nominal_linker");
-  if (features.surface === "下" || features.surface === "上") slots.add("temporal_modifier");
-  if (features.surface === "開" || features.syntax.includes("verb_in_modifier")) slots.add("verb_modifier");
-  if (features.surface === "就係" || features.syntax.includes("focus_copula")) slots.add("identification_marker");
-  if (features.surface === "未") {
-    slots.add("question_marker");
-    slots.add("negator");
-  }
-  if (features.surface === "得" || features.syntax.includes("acceptability_predicate")) {
-    slots.add("acceptability_predicate");
-  }
-  if (features.surface === "唔好" || features.syntax.includes("prohibitive_marker")) {
-    slots.add("prohibitive_marker");
-  }
-  if (features.surface === "過") slots.add("experiential_aspect");
-  if (features.surface === "緊") slots.add("progressive_aspect");
-  if (features.surface === "咗") slots.add("perfective_aspect");
-  if (features.surface === "吓") slots.add("delimitative_aspect");
-  const stativeBundle = featureBundleFor(features.surface, { label: features.label, syntax: features.syntax }, features, [...slots]);
-  for (const slot of parserActiveStativeSlotsForBundle(stativeBundle)) slots.add(slot);
-  if (features.surface === "好似") slots.add("seeming_marker");
-  if (features.surface === "諗住") slots.add("intention_predicate");
-  if (features.surface === "一齊") slots.add("manner");
-  if (features.surface === "左右" || features.surface === "大概") slots.add("approximation");
-  if (features.surface === "度") slots.add("post_classifier_approximation");
-  if (["咁", "噉"].includes(features.surface)) slots.add("discourse_marker");
-  if (features.surface === "都") slots.add("focus_adverb");
-  if (features.surface === "啲") slots.add("quantity_modifier");
-  if (features.surface === "鍾意") slots.add("preference_predicate");
-  if (features.surface === "有冇") slots.add("existential_question");
-  if (features.surface === "食") slots.add("purpose_verb");
-  if (features.syntax.includes("verb_complement")) slots.add("verb_complement");
-  if (features.syntax.includes("result_complement")) slots.add("result_complement");
-  if (features.syntax.includes("directional_result_complement")) slots.add("directional_result_complement");
-  return cleanSlots([...slots]);
-}
-function mergeUnique(...lists) {
-  return [...new Set(lists.flat().filter(Boolean))].sort();
-}
-function traceInfo(kind, detail = {}) {
-  return { kind, ...detail };
-}
-function traceKind(node) {
-  return node && node.trace && node.trace.kind ? node.trace.kind : "unspecified";
-}
-function constructionSlotsByType(type, children = []) {
-  const childSlots = children.flatMap(nodeSlots);
-  const has = (slot) => childSlots.includes(slot);
-  const slots = [];
-  if (["ExperientialQuestion"].includes(type)) slots.push("experiential_question", "question_fragment", "experiential_vp");
-  if (["ExperientialClause"].includes(type)) slots.push("experiential_clause", "experiential_vp", "predicate");
-  if (["NegativeExperiential"].includes(type)) slots.push("negative_experiential", "experiential_vp", "predicate");
-  if (["SourceMotionClause"].includes(type)) slots.push("source_motion_clause", "source", "source_marker", "location", "movement_verb", "directional_motion_vp", "vp", "predicate", "clause", "subject");
-  if (["DirectedMannerMotionVP"].includes(type)) slots.push("directed_manner_motion_vp", "movement_verb", "manner_motion", "movement_direction", "path_component", "path_phrase", "deictic_motion_marker", "goal", "location", "predicate", "vp", "action_vp");
-  if (["GoalAttainmentMotionVP"].includes(type)) slots.push("goal_attainment_motion_vp", "movement_verb", "goal_attainment_complement", "result_marker", "goal", "location", "predicate", "vp", "action_vp");
-  if (["NegativeCognitionFragment"].includes(type)) slots.push("negative_cognition_fragment", "cognition_predicate", "negative_cognition_predicate", "predicate");
-  if (["NegatedExistentialFragment"].includes(type)) slots.push("negated_existential_fragment", "negated_existential", "answer_fragment", "discourse_response", "predicate", "particle");
-  if (["CognitionContentFrame"].includes(type)) slots.push("cognition_content_frame", "cognition_predicate", "reported_content", "content_clause", "predicate");
-  if (["IntentionFrame"].includes(type)) slots.push("intention_frame", "vp", "predicate", "intention_predicate");
-  if (["IntransitiveVP"].includes(type)) slots.push("intransitive_vp", "action_vp", "vp", "predicate", "action_verb");
-  if (["DesiderativeVP"].includes(type)) slots.push("desiderative_vp", "vp", "predicate", "modal");
-  if (["MalformedCandidate"].includes(type)) slots.push("malformed_candidate", "needs_review", "predicate", "problem_span", "action_verb", "quantity");
-  if (["FragmentAnswer"].includes(type)) slots.push("fragment_answer", "possessive_fragment", "answer_fragment", "np", "subject");
-  if (["ComplementEllipsisFragment"].includes(type)) slots.push("complement_ellipsis_fragment", "fragment_answer", "reported_content", "content_clause", "predicate", "clause");
-  if (["DegreeMannerModifiedVP"].includes(type)) slots.push("degree_manner_modified_vp", "degree_manner_adverbial", "modifier", "degree", "vp", "action_vp", "predicate");
-  if (["ANotAQuestion"].includes(type)) slots.push("question_fragment", "predicate", "vp", "action_vp", "negator");
-  if (["ModalANotAQuestion"].includes(type)) {
-    slots.push("modal_a_not_a_question", "question_fragment", "modal", "predicate", "vp");
-    if (has("desiderative_a_not_a_question") || has("desiderative_modal")) slots.push("desiderative_modal");
-    if (has("permission_a_not_a_question") || has("permission_a_not_a_modal") || has("permission_modal")) slots.push("permission_modal");
-  }
-  if (["ApproximateQuantity"].includes(type)) slots.push("approximate_quantity", "quantified_object", "quantity", "classifier", "approximation", "object", "np", "topic", "price_noun", "scalar_value_noun");
-  if (["ScalarValueQuestion"].includes(type)) {
-    slots.push("scalar_value_question", "scalar_dimension_question", "question_fragment", "scalar_wh_degree", "scalar_dimension_predicate", "predicate");
-    if (has("price_question") || has("price_noun") || has("scalar_value_noun")) slots.push("price_question");
-  }
-  if (["ScalarEvaluation"].includes(type)) slots.push("scalar_evaluation", "evaluation_clause", "predicate", "stative_predicate", "comment", "comment_predicate", "negator", "evaluation_marker");
-  if (["ClauseRelationEdge"].includes(type)) slots.push("clause_relation", "left_relation_member", "right_relation_member", "antecedent_clause", "consequent_clause", "reason_clause", "result_clause", "concession_clause", "counterexpectation_clause", "earlier_event", "later_event", "temporal_subordinate", "matrix_clause", "linker_left", "linker_right", "predicate", "clause", "clause_like", "reported_content", "content_clause");
-  if (["ClauseRelationMemberSpan"].includes(type)) slots.push("clause_relation_member", "left_relation_member", "right_relation_member", "predicate", "clause", "clause_like");
-  if (["ConditionalClause"].includes(type)) slots.push("conditional_clause", "condition_clause", "conditional_antecedent", "conditional_marker", "predicate", "clause");
-  if (["AcceptabilityANotA"].includes(type)) slots.push("acceptability_question", "question_fragment", "acceptability_predicate");
-  if (["CompletionQuestion"].includes(type)) slots.push("completion_question", "completion_vp", "question_fragment", "question_marker");
-  if (["ProhibitiveImperative"].includes(type)) slots.push("prohibitive_marker", "imperative", "prohibitive_imperative", "predicate");
-  if (["ReportedSpeech"].includes(type)) slots.push("reported_speech", "speech_verb", "reported_content");
-  if (["OpinionStanceFrame"].includes(type)) slots.push("opinion_stance_frame", "stance_predicate", "reported_content", "predicate", "content_clause");
-  if (["DiscourseParticleFrame"].includes(type)) {
-    slots.push("discourse_particle_frame", "scope_host", "discourse_scope_particle", "particle", "predicate", "clause");
-    if (has("epistemic_scope_particle")) slots.push("epistemic_stance", "epistemic_scope_particle");
-    if (has("evidential_scope_particle")) slots.push("evidential_stance", "evidential_scope_particle");
-    if (has("directive_scope_particle")) slots.push("directive_stance", "directive_scope_particle");
-    if (has("change_state_scope_particle")) slots.push("change_state_stance", "change_state_scope_particle");
-  }
-  if (["FocusParticleFrame"].includes(type)) slots.push("focus_particle_frame", "restriction_marker", "scalar_host", "restrictive_focus_particle", "focus_adverb", "particle", "quantity", "degree", "np", "topic", "object");
-  if (["IdentificationFragment"].includes(type)) slots.push("identification_fragment", "topic_or_object", "np");
-  if (["DefinitionExplanatoryFrame"].includes(type)) slots.push("definition_explanatory_frame", "definition_frame", "identification_clause", "copular_clause", "explanatory_clause", "topic", "object", "np", "predicate", "clause");
-  if (["DefinitionComplement"].includes(type)) slots.push("definition_complement", "object", "np", "topic_or_object");
-  if (["IntendedFunctionRelation", "ResourceUseLaiFunctionRelation"].includes(type)) slots.push("intended_function_relation", "function_relation", "function_topic", "topic", "user_subject", "modal", "copula", "negator", "purpose_use_verb", "purpose_lai_marker", "purpose_predicate", "predicate", "vp", "action_vp", "clause");
-  if (["LocativeWhQuestion"].includes(type)) slots.push("question_fragment", "location_question", "location", "predicate", "vp", "clause");
-  if (["ProgressiveWhObjectQuestion"].includes(type)) slots.push("progressive_wh_object_question", "question_fragment", "progressive_vp", "wh_object", "predicate");
-  if (["ExistentialClause"].includes(type)) slots.push("existential_clause", "possessive_clause", "predicate", "existential", "object");
-  if (["NegatedExistentialClause"].includes(type)) slots.push("negated_existential_clause", "possessive_clause", "predicate", "negated_existential", "object");
-  if (["ExistentialQuestion"].includes(type)) slots.push("existential_question", "question_fragment", "possessive_question", "predicate", "object");
-  if (["TopicComment"].includes(type)) slots.push("topic_comment", "evaluation_clause", "reported_content", "predicate", "content_topic", "opinion_topic", "comment", "comment_predicate", "stative_predicate");
-  if (["PostThemeParticipantRelation"].includes(type)) slots.push("post_theme_participant_relation", "post_theme_link_marker", "post_theme_participant", "person_np", "np", "predicate", "vp", "action_vp");
-  if (["BenefactivePurposeVP"].includes(type)) slots.push("benefactive_purpose_vp", "benefactive_action_chain", "purpose_chain", "vp", "action_vp", "predicate", "recipient");
-  if (["LocativePlacePhrase"].includes(type)) slots.push("locative_phrase", "location", "goal");
-  if (["LocativePostureVP"].includes(type)) slots.push("locative_posture_vp", "posture_verb", "locative_phrase", "location", "vp", "action_vp", "predicate");
-  if (["MannerAdverbialVP"].includes(type)) slots.push("manner_adverbial_vp", "manner", "modifier", "vp", "action_vp", "predicate", "subject");
-  if (["ProductiveVO"].includes(type)) slots.push("vp", "productive_vo", "action_vp", "predicate", "object");
-  if (["ResultComplement", "ResultComplementVP", "NegativePotentialComplement", "PotentialResultVP"].includes(type)) slots.push("vp", "action_vp", "predicate", "result_complement", "result_potential_complement");
-  if (["ResultComplementVP"].includes(type)) slots.push("result_complement_vp");
-  if (["PotentialResultVP"].includes(type)) slots.push("potential_result_vp", "potential_marker");
-  if (["NegativePotentialComplement"].includes(type)) slots.push("negative_potential_complement", "negator");
-  if (["ResultComplement"].includes(type)) slots.push("result_attainment_complement");
-  if (["ExperientialVP", "ExperientialMotionGoalVP"].includes(type)) slots.push("vp", "experiential_vp", "action_vp", "predicate");
-  if (["ExperientialMotionGoalVP"].includes(type)) slots.push("motion_goal_vp", "movement_verb", "goal", "location");
-  if (["MotionGoalVP"].includes(type)) slots.push("motion_goal_vp", "movement_verb", "goal", "location", "predicate", "vp", "action_vp");
-  if (["ProgressiveVP"].includes(type)) slots.push("vp", "progressive_vp", "action_vp", "predicate");
-  if (["PerfectiveVP", "PostverbalZoPerfectiveVP"].includes(type)) slots.push("vp", "perfective_vp", "completion_vp", "action_vp", "predicate");
-  if (["VerbComplementVP"].includes(type)) slots.push("verb_complement_vp", "verb_complement", "vp", "action_vp", "predicate", "main_verb", "object");
-  if (["LexicalGiveRelation"].includes(type)) slots.push("lexical_give_relation", "give_relation", "vp", "action_vp", "predicate", "transfer_predicate");
-  if (["PassivePermissiveRelation"].includes(type)) slots.push("passive_permissive_relation", "bei_relation", "clause", "predicate", "vp", "pre_marker_participant", "postmarker_participant", "retained_patient_candidate");
-  if (["CoverbFrame"].includes(type)) slots.push("coverb_frame", "coverb_phrase", "coverb_marker", "coverb_object", "preverbal_modifier", "predicate", "vp", "clause");
-  if (["DelimitedVP", "ReduplicatedVP", "CompletionVP", "DitransitiveSpeechVP", "TransitiveVP", "ActionStativeVP"].includes(type)) slots.push("vp", "action_vp", "predicate");
-  if (["TransitiveVP"].includes(type)) slots.push("transitive_vp");
-  if (["DirectionalMotionVP", "CompoundDirectionalMotionVP"].includes(type)) slots.push("vp", "action_vp", "predicate", "movement_verb", "motion_predicate", "directional_motion_vp");
-  if (["NegatedDirectionalMotionVP"].includes(type)) slots.push("vp", "action_vp", "predicate", "movement_verb", "motion_predicate", "directional_motion_vp", "negated_directional_motion_vp", "negator");
-  if (["NegatedVP"].includes(type)) slots.push("negated_vp", "vp", "action_vp", "predicate", "negator");
-  if (["MotionPurposeChain"].includes(type)) slots.push("motion_purpose_chain", "motion_action_chain", "purpose_chain", "vp", "action_vp", "predicate");
-  if (["CompletionVP"].includes(type)) slots.push("completion_vp");
-  if (["DitransitiveSpeechVP"].includes(type)) slots.push("speech_transfer_vp", "reported_content");
-  if (["OvertHeadDemonstrativeClassifierNP", "DemonstrativeClassifierNP", "QuantifiedClassifierNP", "QuantifiedPersonNP", "QuantifiedTimeNP", "QuantityNP", "DiMarkedNP", "OrdinalClassifierNP", "AssociativeNP", "ModifiedNP", "ModifierNP", "NominalHeadSpan"].includes(type)) slots.push("np", "topic", "object", "head_noun");
-  if (["HeadlessDemonstrativeClassifierNP"].includes(type)) slots.push("np", "topic", "object", "demonstrative", "classifier");
-  if (["QuantifiedTimeNP"].includes(type)) slots.push("quantified_time_np", "time", "time_head", "quantity", "distributive_quantifier");
-  if (["QuantityNP"].includes(type)) slots.push("quantity_np", "quantity");
-  if (["MeasureExpression"].includes(type)) slots.push("measure_expression", "nominal_predicate", "predicate", "quantity", "nominal_measure_unit", "age_unit", "currency_unit", "area_measure_unit", "length_measure_unit", "dimension_predicate");
-  if (["NominalPredicateClause"].includes(type)) slots.push("nominal_predicate_clause", "subject", "predicate", "nominal_predicate", "measure_expression", "clause");
-  if (["QuantifiedPersonNP"].includes(type)) slots.push("subject", "quantity");
-  if (["AssociativeNP"].includes(type)) slots.push("associative_np", "modified_np", "nominal_linker", "modifier");
-  if (["DiMarkedNP"].includes(type)) slots.push("di_marked_np", "di_determiner", "quantity");
-  if (type === "WhClassifierQuestion") slots.push("wh_fragment", "question_fragment", "topic_or_object");
-  if (type === "TimeNP") slots.push("time");
-  if (["Topic"].includes(type)) slots.push("topic", "np", "definition_topic", "purpose_topic", "function_topic");
-  if (["StativePredicate", "DegreeStativePredicate", "DegreeModifiedLexicalStative", "NegatedStativePredicate"].includes(type)) slots.push("stative_predicate", "predicate", "comment", "comment_predicate");
-  if (["LexicalizedStativePredicate", "DegreeModifiedLexicalStative"].includes(type)) slots.push("lexicalized_stative_predicate", "stative_predicate", "predicate", "comment", "comment_predicate");
-  if (["NegatedStativePredicate"].includes(type)) slots.push("negated_stative_predicate", "ordinary_stative_predicate", "negator");
-  if (["DegreeStativePredicate"].includes(type)) slots.push("degree_stative_predicate", "ordinary_degree_stative_predicate", "ordinary_stative_predicate", "degree");
-  if (["DegreeStativePredicate"].includes(type) && has("ambient_property_predicate")) slots.push("ambient_environmental_predicate");
-  if (["ImpersonalEnvironmentalClause"].includes(type)) slots.push("impersonal_environmental_clause", "subjectless_clause", "environmental_predicate", "predicate", "clause", "weather_phenomenon");
-  if (["LocativeFrameClause"].includes(type)) slots.push("locative_frame_clause", "ambient_frame_clause", "location", "environmental_predicate", "predicate", "clause");
-  if (["ExistentialPresentationalClause"].includes(type)) slots.push("existential_presentational_clause", "existential_clause", "predicate", "existential", "negated_existential", "introduced_participant", "presentational_coda", "location", "clause");
-  if (["DegreeModifiedLexicalStative"].includes(type)) slots.push("degree_modified_lexical_stative", "degree");
-  if (["FormulaDiscourseUnit"].includes(type)) slots.push("formula_discourse_unit", "formula", "formula_expression", "discourse_response", "agreement_response", "confirmation_response", "particle", "clause");
-  if (["FragmentQuestion"].includes(type)) slots.push("fragment_question", "question_fragment", "discourse_fragment", "clause");
-  if (["TemporalClause"].includes(type)) slots.push("temporal_clause", "time_clause", "time", "predicate");
-  if (["RelativeClauseNP"].includes(type)) slots.push("relative_clause_np", "relative_clause", "nominal_linker", "head_noun", "np", "subject", "topic", "object");
-  if (["SubjectPredicateClause"].includes(type)) {
-    slots.push("subject_predicate_clause", "subject", "predicate", "clause");
-    if (has("time")) slots.push("temporal_clause", "time_clause", "time");
-    if (has("location") || has("locative_phrase")) slots.push("location");
-    if (has("stative_predicate")) slots.push("stative_predicate", "comment", "comment_predicate");
-    if (has("negated_directional_motion_vp") || has("negator")) slots.push("negative_clause", "negated_predicate", "negator");
-  }
-  if (["ModalVP"].includes(type)) slots.push("modal_vp", "modal_predicate", "modal", "predicate", "vp");
-  if (["LocativeModalPredicateClause"].includes(type)) slots.push("locative_modal_predicate_clause", "modal_predicate_clause", "location", "modal_vp", "modal", "predicate", "clause");
-  if (["SubjectModalPredicateClause"].includes(type)) slots.push("subject_modal_predicate_clause", "modal_predicate_clause", "subject", "modal_vp", "modal", "predicate", "clause");
-  if (["TopicModalPredicateClause"].includes(type)) slots.push("topic_modal_predicate_clause", "modal_predicate_clause", "topic", "modal_vp", "modal", "predicate", "clause");
-  if (["NamingClause"].includes(type)) slots.push("naming_clause", "naming_frame", "naming_frame", "subject", "naming_verb", "name", "np", "predicate", "clause");
-  if (["PathPhrase"].includes(type)) slots.push("path_phrase", "path_marker", "location", "goal");
-  if (["PoliteImperativeClause"].includes(type)) slots.push("polite_imperative_clause", "imperative", "politeness_marker", "subject", "time", "path_phrase", "location", "predicate", "clause");
-  if (["PolarQuestionFrame"].includes(type)) slots.push("polar_question_frame", "yes_no_question", "question_fragment", "yes_no_question_marker", "subject", "predicate", "particle", "clause");
-  if (["CopularIdentificationFrame"].includes(type)) slots.push("copular_identification_frame", "identification_clause", "copular_clause", "topic", "copula", "np", "object", "predicate", "clause");
-  if (["CoordinatedNP"].includes(type)) slots.push("coordinated_np", "left_np", "right_np", "coordinator", "np", "topic", "object");
-  if (["StativeNominalComplement"].includes(type)) slots.push("stative_nominal_complement", "copular_complement", "np", "predicate", "head_noun", "nominal_linker");
-  if (["CopularRelationFrame"].includes(type)) slots.push("copular_relation_frame", "copular_clause", "subject", "copula", "copular_complement", "predicate", "clause");
-  if (["CopularANotAQuestion"].includes(type)) slots.push("copular_a_not_a_question", "question_fragment", "subject", "copula", "negator", "copular_complement", "predicate", "clause");
-  if (["LocativeExistentialClause"].includes(type)) slots.push("locative_existential_clause", "existential_clause", "location", "locative_domain", "introduced_theme", "existential", "negated_existential", "predicate", "clause");
-  if (["OrdinalClassifierNP"].includes(type)) slots.push("ordinal_classifier_np", "classifier_np", "ordinal_modifier", "classifier", "head_noun", "np", "object", "topic");
-  if (["PossessiveClassifierNP"].includes(type)) slots.push("possessive_classifier_np", "possessive_np", "possessor", "classifier", "head_noun", "np", "object", "topic");
-  if (["ChangeIntoPredicate"].includes(type)) slots.push("change_into_predicate", "change_verb", "result_complement", "predicate", "vp", "action_vp");
-  if (["ClassifierObjectNP"].includes(type)) slots.push("classifier_object_np", "np", "object", "topic", "classifier", "head_noun");
-  if (["CoordinatedSubjectModalPredicateClause"].includes(type)) slots.push("coordinated_subject_modal_predicate_clause", "modal_predicate_clause", "subject", "coordinated_subject", "modal_vp", "modal", "predicate", "clause");
-  if (["ClauseSequence", "ClauseRelationGraph"].includes(type)) slots.push("clause_linking_sequence", "clause_sequence", "multi_clause_sequence", "utterance_sequence", "discourse_sequence", "clause", "clause_like", "separator");
-  if (["VocativeAddressTerm"].includes(type)) slots.push("vocative_address_term", "named_address_term", "address_term", "vocative");
-  if (["UrgencyMarker"].includes(type)) slots.push("urgency_marker", "imperative_adverb", "how");
-  if (["PriorityMarkerClause"].includes(type)) slots.push("priority_marker_clause", "sequence_priority_marker", "priority_marker", "vp", "action_vp", "predicate");
-  if (["AcceptabilityClause"].includes(type)) slots.push("acceptability_clause", "acceptability", "focus_adverb", "acceptability_predicate", "predicate", "clause");
-  if (["SerialVerbPurposeChain"].includes(type)) slots.push("serial_verb_purpose_chain", "serial_action_chain", "purpose_chain", "vp", "action_vp", "predicate");
-  if (has("location")) slots.push("location", "goal");
-  if (has("subject")) slots.push("subject");
-  return cleanSlots(mergeUnique(childSlots, slots));
-}
-function nodeSlots(node) {
-  if (!node) return [];
-  if (node.kind === "token") return node.slots || [];
-  if (node.kind === "construction") return node.slots || constructionSlotsByType(node.type, node.children || []);
-  return [];
-}
-function slotAlternatives(slot) {
-  return [slot, ...SLOT_ALIASES[slot] || []];
-}
-function nodeCanFillSlot(node, slot) {
-  if (slot === "particle" && node && node.kind === "construction") return false;
-  const alternatives = slotAlternatives(slot);
-  for (const candidate of alternatives) {
-    const bundleDecision = bundleCanFillStativeSlot(node, candidate);
-    if (bundleDecision !== null) return bundleDecision;
-  }
-  const slots = nodeSlots(node);
-  return alternatives.some((candidate) => slots.includes(candidate));
-}
-function isBareQuantityTokenObject(node) {
-  if (!node || node.kind !== "token") return false;
-  const slots = nodeSlots(node);
-  const syntax = String(node.syntax || "");
-  return slots.includes("quantity") && slots.includes("object") && !slots.includes("classifier") && /(?:^|\s)numeral_quantity(?:\s|$)/.test(syntax);
-}
-function templateDerivedSlots(type, children) {
-  return cleanSlots(mergeUnique(["construction_span"], constructionSlotsByType(type, children)));
-}
-function parseTemplateSlot(spec) {
-  const required = spec.endsWith("!");
-  const optional = spec.endsWith("?");
-  const slot = required || optional ? spec.slice(0, -1) : spec;
-  return { slot, required: required || !optional, optional };
-}
-function templateConstraintsPass(assignments, templateDef = {}) {
-  const constraints = templateDef.constraints || {};
-  if (constraints.same_surface) {
-    const surfaces = assignments.map((item) => flattenSurface(item.node));
-    if (!surfaces.length) return false;
-    if (new Set(surfaces).size !== 1) return false;
-  }
-  if (constraints.copied_first_token_surface_slots) {
-    const copiedSlots = constraints.copied_first_token_surface_slots || [];
-    for (const slot of copiedSlots) {
-      const matchingAssignments = assignments.filter((item) => item.slot === slot);
-      if (matchingAssignments.length < 2) return false;
-      const firstSurfaces = matchingAssignments.map((item) => {
-        const tok = firstToken(item.node);
-        return tok ? tok.surface : flattenSurface(item.node);
-      });
-      if (!firstSurfaces[0] || firstSurfaces.some((surface) => surface !== firstSurfaces[0])) return false;
-    }
-  }
-  if (constraints.disallow_child_slots) {
-    const disallowed = constraints.disallow_child_slots || [];
-    for (const item of assignments) {
-      const slots = nodeSlots(item.node);
-      if (disallowed.some((slot) => slots.includes(slot))) return false;
-    }
-  }
-  if (constraints.first_node_must_not_have_slots) {
-    const first = assignments[0] && assignments[0].node;
-    const firstSlots = nodeSlots(first);
-    const disallowed = constraints.first_node_must_not_have_slots || [];
-    if (disallowed.some((slot) => firstSlots.includes(slot))) return false;
-  }
-  if (constraints.first_node_must_have_surface) {
-    const first = assignments[0] && assignments[0].node;
-    if (flattenSurface(first) !== constraints.first_node_must_have_surface) return false;
-  }
-  if (constraints.predicate_must_have_any_slots) {
-    const allowed = constraints.predicate_must_have_any_slots || [];
-    const predicateAssignments = assignments.filter((item) => item.slot === "predicate");
-    if (!predicateAssignments.length) return false;
-    if (!predicateAssignments.some((item) => {
-      const slots = nodeSlots(item.node);
-      return allowed.some((slot) => slots.includes(slot));
-    })) return false;
-  }
-  if (constraints.require_any_assigned_slots) {
-    const requiredSlots = constraints.require_any_assigned_slots || [];
-    if (!assignments.some((item) => requiredSlots.includes(item.slot))) return false;
-  }
-  if (constraints.surface_sequence_in) {
-    const surfaceSequence = assignments.map((item) => flattenSurface(item.node)).join("");
-    const allowedSequences = constraints.surface_sequence_in || [];
-    if (!allowedSequences.includes(surfaceSequence)) return false;
-  }
-  if (constraints.slot_surface_in) {
-    for (const [slot, allowedSurfaces] of Object.entries(constraints.slot_surface_in || {})) {
-      const allowed = allowedSurfaces || [];
-      const matchingAssignments = assignments.filter((item) => item.slot === slot);
-      if (!matchingAssignments.length) continue;
-      if (!matchingAssignments.every((item) => allowed.includes(flattenSurface(item.node)))) return false;
-    }
-  }
-  if (constraints.slot_surface_not_in) {
-    for (const [slot, disallowedSurfaces] of Object.entries(constraints.slot_surface_not_in || {})) {
-      const disallowed = disallowedSurfaces || [];
-      const matchingAssignments = assignments.filter((item) => item.slot === slot);
-      if (matchingAssignments.some((item) => disallowed.includes(flattenSurface(item.node)))) return false;
-    }
-  }
-  if (constraints.slot_must_not_be_bare_quantity_token) {
-    const guardedSlots = constraints.slot_must_not_be_bare_quantity_token || [];
-    for (const slot of guardedSlots) {
-      const matchingAssignments = assignments.filter((item) => item.slot === slot);
-      if (matchingAssignments.some((item) => isBareQuantityTokenObject(item.node))) return false;
-    }
-  }
-  if (constraints.slot_must_be_licensed_np) {
-    const guardedSlots = constraints.slot_must_be_licensed_np || [];
-    for (const slot of guardedSlots) {
-      const matchingAssignments = assignments.filter((item) => item.slot === slot);
-      if (!matchingAssignments.length || matchingAssignments.some((item) => !nodeCanLicenseEvidenceGatedObject(item.node))) return false;
-    }
-  }
-  if (constraints.slot_must_not_have_slots) {
-    for (const [slot, disallowedSlots] of Object.entries(constraints.slot_must_not_have_slots || {})) {
-      const disallowed = disallowedSlots || [];
-      const matchingAssignments = assignments.filter((item) => item.slot === slot);
-      if (matchingAssignments.some((item) => {
-        const slots = nodeSlots(item.node);
-        return disallowed.some((disallowedSlot) => slots.includes(disallowedSlot));
-      })) return false;
-    }
-  }
-  return true;
-}
-function matchTemplate(nodes, template) {
-  const specs = template.map(parseTemplateSlot);
-  const memo = /* @__PURE__ */ new Map();
-  function step(i, j, assignments) {
-    const key = `${i}:${j}`;
-    if (memo.has(key)) return null;
-    if (j === specs.length) return i === nodes.length ? assignments : null;
-    const spec = specs[j];
-    if (spec.optional && i < nodes.length && nodeCanFillSlot(nodes[i], spec.slot)) {
-      const matched = step(i + 1, j + 1, [...assignments, { slot: spec.slot, node: nodes[i] }]);
-      if (matched) return matched;
-    }
-    if (spec.optional) {
-      const skipped = step(i, j + 1, assignments);
-      if (skipped) return skipped;
-    }
-    if (i < nodes.length && nodeCanFillSlot(nodes[i], spec.slot)) {
-      const matched = step(i + 1, j + 1, [...assignments, { slot: spec.slot, node: nodes[i] }]);
-      if (matched) return matched;
-    }
-    memo.set(key, true);
-    return null;
-  }
-  return step(0, 0, []);
-}
+var {
+  hasAny,
+  stringIncludesAny,
+  contextualRoleAffordances,
+  inferTokenFeatures,
+  compactFeatureSummary,
+  featureList,
+  syntaxHas,
+  featureBundleFor,
+  getFeatureBundle,
+  getParserFeatures,
+  getConstructionAffordances,
+  getCoreDimensions,
+  getLexicalizationType,
+  hasPredicateSubtype,
+  isLexicalizedStative,
+  isNegativeLexicalizedStative,
+  isOrdinaryStative,
+  isStativePredicateByBundle,
+  isGradablePredicate,
+  canHeadComment,
+  bundleCanFillStativeSlot,
+  parserActiveStativeSlotsForBundle,
+  conditionMatches,
+  generateTokenSlots
+} = require_token_features()({
+  normalizeLearnerLabel,
+  cleanSlots
+});
+var {
+  traceInfo,
+  traceKind,
+  isSurfaceSpecificTrace,
+  sameNodeSequence,
+  phraseMatch,
+  flattenSurface,
+  flattenDisplaySurface,
+  firstToken,
+  lastToken,
+  isToken,
+  isVerbLike,
+  isObjectLike,
+  isProductiveVo,
+  isModalToken,
+  isParticle,
+  isStativeToken,
+  isTopicCandidate,
+  surfaceOf,
+  hasSurface,
+  indexOfSurface,
+  hasConstruction
+} = require_node_shape()({
+  bundleCanFillStativeSlot
+});
+var {
+  mergeUnique,
+  constructionSlotsByType,
+  nodeSlots,
+  slotAlternatives,
+  nodeCanFillSlot,
+  isBareQuantityTokenObject,
+  templateDerivedSlots
+} = require_slot_primitives()({
+  cleanSlots,
+  bundleCanFillStativeSlot
+});
+var {
+  parseTemplateSlot,
+  templateConstraintsPass,
+  matchTemplate
+} = require_template_matcher()({
+  firstToken,
+  flattenSurface,
+  isBareQuantityTokenObject,
+  nodeCanFillSlot,
+  nodeCanLicenseEvidenceGatedObject,
+  nodeSlots
+});
 function attachSharedSubjectProvenanceToPurposePredicate(templateType, assignments, children) {
   if (templateType !== "SubjectPredicateClause") return children;
   const subjectIndex = assignments.findIndex((item) => item.slot === "subject");
@@ -5719,9 +6451,6 @@ function wrapCategorySubspansOnce(nodes) {
   }
   return result;
 }
-function sameNodeSequence(a, b) {
-  return a.length === b.length && a.every((node, index) => node === b[index]);
-}
 function wrapCategorySubspans(nodes) {
   let current = nodes;
   for (let pass = 0; pass < 4; pass++) {
@@ -5731,51 +6460,56 @@ function wrapCategorySubspans(nodes) {
   }
   return current;
 }
-function pronunciationOnlyJyutpingForUnknown(surface) {
-  return UNKNOWN_CJK_JYUTPING_FALLBACK[String(surface || "")] || "";
-}
-function token(surface, overrides = {}) {
-  const entry = TOKEN_LEXICON[surface] || {};
-  const rawLabel = overrides.label || entry.label || "neutral";
-  const syntax = overrides.syntax || entry.syntax || "lexical_candidate";
-  const label = normalizeLearnerLabel(rawLabel, surface, syntax);
-  const features = inferTokenFeatures(surface, { ...entry, label, syntax }, overrides);
-  const slots = overrides.slots ? cleanSlots(overrides.slots) : generateTokenSlots(features);
-  const featureBundle = featureBundleFor(surface, { ...entry, label, syntax }, features, slots);
-  const traceDetail = {
-    surface,
-    generated_slots: slots,
-    feature_summary: compactFeatureSummary(features),
-    feature_bundle: featureBundle
-  };
-  if (!Object.keys(entry).length && pronunciationOnlyJyutpingForUnknown(surface)) {
-    traceDetail.learner_gloss_lines = [
-      "meaning not yet confirmed",
-      "Pronunciation is shown without assigning this word a grammatical analysis."
-    ];
-  }
-  const roleAffordances = contextualRoleAffordances({ surface, role: label, label, syntax, slots, features });
-  if (roleAffordances.length > 1) traceDetail.contextual_role_affordances = roleAffordances;
-  if (overrides.selection_decision) traceDetail.selection_decision = overrides.selection_decision;
-  return {
-    kind: "token",
-    surface,
-    display_surface: overrides.display_surface || void 0,
-    parser_surface: overrides.parser_surface || surface,
-    label,
-    jyutping: overrides.jyutping || entry.jyutping || pronunciationOnlyJyutpingForUnknown(surface) || "",
-    syntax,
-    note: overrides.note || entry.note || (pronunciationOnlyJyutpingForUnknown(surface) ? "meaning not yet confirmed" : "Neutral lexical item; no reviewed learner role yet."),
-    review: overrides.review || entry.review || "reviewed_or_seeded_runtime",
-    features,
-    feature_bundle: featureBundle,
-    slots,
-    trace: overrides.trace || traceInfo(entry && Object.keys(entry).length ? "atomic_lexicon" : "unknown_atomic", traceDetail)
-  };
-}
-function textNode(text) {
-  return { kind: "text", text, trace: traceInfo("punctuation_or_plain_text", { surface: text }) };
-}
+var {
+  pronunciationOnlyJyutpingForUnknown,
+  token,
+  textNode,
+  construction,
+  parserInactiveTokenClone,
+  learnerDisplayOnlyTokenClone,
+  contextualLearnerRoleOnlyTokenClone
+} = require_node_factories()({
+  TOKEN_LEXICON,
+  UNKNOWN_CJK_JYUTPING_FALLBACK,
+  normalizeLearnerLabel,
+  cleanSlots,
+  contextualRoleAffordances,
+  inferTokenFeatures,
+  compactFeatureSummary,
+  featureBundleFor,
+  generateTokenSlots,
+  traceInfo,
+  traceKind,
+  constructionSlotsByType,
+  nodeParserSurface,
+  nodeDisplaySurface,
+  INTERNAL_CONSTRUCTION_COMPATIBILITY_ALIASES,
+  INTERNAL_ONLY_CONSTRUCTION_SCOPES,
+  internalConstructionTypeFor,
+  clauseSpanProfileForCompatibilityType,
+  npLicenseMetadata
+});
+var {
+  lexicalizedStativeRegistryKind,
+  transparentClassifierObjectParts,
+  shouldForceCompositional,
+  ALL_LEXICON_TERMS,
+  LEXICON_TERMS,
+  LEXICALIZED_STATIVE_SELECTION_WEIGHT,
+  lexicalCandidateScore,
+  followingLexicalizedStativeAfterChoice,
+  lexicalSelectionReason,
+  lexicalSelectionDecision,
+  selectionDecisionForSurface,
+  selectLexiconTerm
+} = require_lexical_selection()({
+  TOKEN_LEXICON,
+  PRODUCTIVE_VO,
+  COMPOSITIONAL_LEXICAL_PHRASES,
+  inferTokenFeatures,
+  featureBundleFor,
+  getLexicalizationType
+});
 var COMPOSITIONAL_NP_TYPES = /* @__PURE__ */ new Set([
   "NominalHeadSpan",
   "QuantifiedClassifierNP",
@@ -5916,133 +6650,6 @@ function nodeNpLicenseStatus(node) {
 function nodeCanLicenseEvidenceGatedObject(node) {
   const status = nodeNpLicenseStatus(node);
   return status === "licensed_np" || status === "ambiguous_licensed_np";
-}
-function construction(type, label, children, options = {}) {
-  const requestedType = type;
-  const internalType = internalConstructionTypeFor(requestedType);
-  const baseSlots = options.slots || constructionSlotsByType(requestedType, children);
-  const compatibilityAlias = options.compatibility_alias || (internalType !== requestedType ? requestedType : INTERNAL_CONSTRUCTION_COMPATIBILITY_ALIASES[internalType] || "");
-  const internalRepresentationScope = INTERNAL_ONLY_CONSTRUCTION_SCOPES[internalType] || "";
-  const rawTrace = options.trace || traceInfo("construction_function", { construction_type: requestedType });
-  const normalizedTrace = internalType === "ClauseSpan" ? {
-    ...rawTrace,
-    construction_type: "ClauseSpan",
-    compatibility_construction_type: compatibilityAlias || requestedType,
-    clause_span_profile: clauseSpanProfileForCompatibilityType(compatibilityAlias || requestedType),
-    clause_span_semantic_status: "neutral_overt_span_accounting_only",
-    typed_predicate_child_preserved: true,
-    independent_grammar_licensing: false,
-    subject_insertion_capability: false,
-    topic_insertion_capability: false,
-    argument_omission_licensing: false,
-    context_resolution_capability: false,
-    predicate_subtype_licensing: false,
-    modal_licensing: false
-  } : rawTrace;
-  const npMetadata = npLicenseMetadata(internalType, children, normalizedTrace);
-  const finalTrace = npMetadata ? { ...normalizedTrace, ...npMetadata } : normalizedTrace;
-  return {
-    kind: "construction",
-    type: internalType,
-    compatibility_alias: compatibilityAlias,
-    internal_representation_scope: internalRepresentationScope,
-    internal_only: Boolean(internalRepresentationScope),
-    label,
-    children,
-    display_surface: options.display_surface || nodeDisplaySurface({ kind: "construction", children }),
-    parser_surface: options.parser_surface || nodeParserSurface({ kind: "construction", children }),
-    primary: options.primary || "",
-    note: options.note || "Parent construction span. Child tokens keep their own learner roles.",
-    slots: cleanSlots(baseSlots),
-    trace: finalTrace
-  };
-}
-function parserInactiveTokenClone(node, overrides = {}) {
-  if (!node || node.kind !== "token") return node;
-  const surface = node.surface;
-  const syntax = overrides.syntax || node.syntax || "";
-  const label = normalizeLearnerLabel(overrides.label || node.label || "neutral", surface, syntax);
-  const slots = cleanSlots(overrides.slots || []);
-  const jyutping = Object.prototype.hasOwnProperty.call(overrides, "jyutping") ? overrides.jyutping : node.jyutping;
-  const note = Object.prototype.hasOwnProperty.call(overrides, "note") ? overrides.note : node.note;
-  const features = {
-    ...node.features || {},
-    pos: overrides.pos || node.features && node.features.pos || "",
-    label,
-    syntax,
-    semantic: overrides.semantic || [],
-    verb_class: overrides.verb_class || [],
-    particle_class: overrides.particle_class || ""
-  };
-  const featureBundle = featureBundleFor(surface, { label, syntax }, features, slots);
-  const inheritedAffordanceCandidates = node.trace && node.trace.contextual_role_affordance_resolution && Array.isArray(node.trace.contextual_role_affordance_resolution.candidate_affordances) ? node.trace.contextual_role_affordance_resolution.candidate_affordances.map((item) => ({ ...item })) : [];
-  const contextualRoleAffordanceResolution = {
-    lexical_default_role: node.label || "",
-    active_role: label,
-    candidate_affordances: overrides.preserve_existing_affordances && inheritedAffordanceCandidates.length ? inheritedAffordanceCandidates : contextualRoleAffordances({ surface, role: node.label || label, label: node.label || label, syntax: node.syntax || syntax, slots: node.slots || [], features: node.features || {} }),
-    active_affordance_source: overrides.reason || "Token is parser-inactive inside a parent construction wrapper.",
-    active_affordance_match: overrides.active_affordance_match || void 0,
-    note: "Construction context selects the active learner role without deleting other lexical affordances."
-  };
-  return {
-    ...node,
-    label,
-    role: label,
-    syntax,
-    jyutping,
-    note,
-    slots,
-    features,
-    feature_bundle: featureBundle,
-    trace: traceInfo("construction_internal_parser_inactive_clone", {
-      surface,
-      original_trace: traceKind(node),
-      reason: overrides.reason || "Token is parser-inactive inside a parent construction wrapper.",
-      contextual_role_affordance_resolution: contextualRoleAffordanceResolution,
-      role_resolution_note: overrides.role_resolution_note || void 0,
-      feature_bundle: featureBundle,
-      ...overrides.trace_detail || {}
-    })
-  };
-}
-function learnerDisplayOnlyTokenClone(node, overrides = {}) {
-  if (!node || node.kind !== "token") return node;
-  const note = Object.prototype.hasOwnProperty.call(overrides, "note") ? overrides.note : node.note;
-  const learnerGlossLines = overrides.learner_gloss_lines || (note ? [note] : []);
-  return {
-    ...node,
-    note,
-    display_surface: overrides.display_surface || node.display_surface,
-    trace: {
-      ...node.trace || {},
-      ...learnerGlossLines.length ? { learner_gloss_lines: learnerGlossLines } : {}
-    }
-  };
-}
-function contextualLearnerRoleOnlyTokenClone(node, overrides = {}) {
-  if (!node || node.kind !== "token") return node;
-  const surface = node.surface;
-  const syntax = overrides.syntax || node.syntax || "";
-  const label = normalizeLearnerLabel(overrides.label || node.label || "neutral", surface, syntax);
-  const note = Object.prototype.hasOwnProperty.call(overrides, "note") ? overrides.note : node.note;
-  const learnerGlossLines = overrides.learner_gloss_lines || overrides.trace_detail && overrides.trace_detail.learner_gloss_lines || (note ? [note] : []);
-  return {
-    ...node,
-    label,
-    role: label,
-    syntax,
-    note,
-    features: { ...node.features || {}, label, syntax, pos: overrides.pos || node.features && node.features.pos || "" },
-    trace: {
-      ...node.trace || {},
-      ...learnerGlossLines.length ? { learner_gloss_lines: learnerGlossLines } : {},
-      contextual_learner_role_override: {
-        lexical_default_role: node.label || "",
-        active_role: label,
-        reason: overrides.reason || "Learner display role is adjusted contextually without changing parser or semantic provenance."
-      }
-    }
-  };
 }
 function contextualReportedSpeechLearnerChildren(nodes) {
   const children = (nodes || []).map((node) => node);
@@ -6263,23 +6870,6 @@ function productiveVoComponentTokens(surface) {
     token(rule.object, { label: "what", syntax: "object" })
   ];
 }
-function phraseMatch(length, node) {
-  return { length, node };
-}
-function flattenSurface(node) {
-  if (!node) return "";
-  if (node.kind === "token") return node.surface;
-  if (node.kind === "text") return node.text;
-  if (node.kind === "construction") return node.children.map(flattenSurface).join("");
-  return "";
-}
-function flattenDisplaySurface(node) {
-  if (!node) return "";
-  if (node.kind === "token") return node.display_surface || node.surface;
-  if (node.kind === "text") return node.display_text || node.text;
-  if (node.kind === "construction") return node.children.map(flattenDisplaySurface).join("");
-  return "";
-}
 function phase4OpinionStanceActiveTokenClone(node, overrides = {}) {
   if (!node || node.kind !== "token") return node;
   const surface = node.surface;
@@ -6345,55 +6935,6 @@ function phase4ReportedSpeechActiveTokenClone(node, overrides = {}) {
       feature_bundle: featureBundle
     })
   };
-}
-function firstToken(node) {
-  if (!node) return null;
-  if (node.kind === "token") return node;
-  if (node.kind === "construction") {
-    for (const child of node.children) {
-      const found = firstToken(child);
-      if (found) return found;
-    }
-  }
-  return null;
-}
-function isToken(node, surface) {
-  return node && node.kind === "token" && node.surface === surface;
-}
-function isVerbLike(node) {
-  const t = firstToken(node);
-  return Boolean(t && (t.label === "doing" || t.syntax.includes("verb")));
-}
-function isProductiveVo(node) {
-  return node && node.kind === "construction" && node.type === "ProductiveVO";
-}
-function isModalToken(node) {
-  return node && node.kind === "token" && ["想", "要", "可以", "會", "識", "使", "唔使", "可唔可以"].includes(node.surface);
-}
-function isParticle(node) {
-  return node && node.kind === "token" && node.label === "particle";
-}
-function isStativeToken(node) {
-  if (!node || node.kind !== "token") return false;
-  const bundleDecision = bundleCanFillStativeSlot(node, "stative_predicate");
-  if (bundleDecision !== null) return bundleDecision;
-  return node.label === "like" || node.syntax.includes("stative");
-}
-function isTopicCandidate(node) {
-  return node && node.kind === "token" && ["呢個", "嗰個", "呢啲", "嗰啲", "呢間", "嗰間", "呢間餐廳", "嗰間餐廳"].includes(node.surface);
-}
-function surfaceOf(node) {
-  const t = firstToken(node);
-  return t ? t.surface : flattenSurface(node);
-}
-function hasSurface(nodes, surface) {
-  return nodes.some((node) => surfaceOf(node) === surface || flattenSurface(node) === surface);
-}
-function indexOfSurface(nodes, surface) {
-  return nodes.findIndex((node) => surfaceOf(node) === surface || flattenSurface(node) === surface);
-}
-function hasConstruction(nodes, type) {
-  return nodes.some((node) => node && node.kind === "construction" && node.type === type);
 }
 var DIRECTIONAL_MOTION_PATTERNS = [
   {
@@ -7540,99 +8081,28 @@ function contextualLexiconOverrides(surface, rest) {
     review: "contextual_lexical_disambiguation"
   };
 }
-function tokenizeLine(source) {
-  const text = String(source || "");
-  const nodes = [];
-  let cursor = 0;
-  while (cursor < text.length) {
-    const rest = text.slice(cursor);
-    const punctuation = rest.match(PUNCT_RE);
-    if (punctuation) {
-      nodes.push(textNode(punctuation[0]));
-      cursor += punctuation[0].length;
-      continue;
-    }
-    if (rest.startsWith("唔好食")) {
-      cursor += pushSpecialNotGoodEat(nodes, text, cursor);
-      continue;
-    }
-    const negatedLexicalizedStative = NEGATED_LEXICALIZED_STATIVE_SPLITS.find((spec) => spec.surface !== "唔好食" && rest.startsWith(spec.surface));
-    if (negatedLexicalizedStative) {
-      cursor += pushNegatedLexicalizedStativeSplit(nodes, text, cursor, negatedLexicalizedStative);
-      continue;
-    }
-    const formula = FORMULAS.find((surface) => rest.startsWith(surface));
-    if (formula) {
-      nodes.push(construction("FormulaDiscourseUnit", "Formula", [token(formula)], {
-        note: "Protected formula stays grouped.",
-        trace: traceInfo("protected_formula_table", { surface: formula, reason: "Protected formula is intentionally opaque." })
-      }));
-      cursor += formula.length;
-      continue;
-    }
-    const addressForm = candidateNamedAddressFormFromRest(rest);
-    if (addressForm) {
-      nodes.push(addressForm.node);
-      cursor += addressForm.length;
-      continue;
-    }
-    const vo = PRODUCTIVE_TERMS.find((surface) => rest.startsWith(surface));
-    if (vo) {
-      nodes.push(...productiveVoComponentTokens(vo));
-      cursor += vo.length;
-      continue;
-    }
-    const cupNounDemonstrativeNp = transparentCupNounDemonstrativeNpFromRest(rest);
-    if (cupNounDemonstrativeNp) {
-      nodes.push(cupNounDemonstrativeNp.node);
-      cursor += cupNounDemonstrativeNp.length;
-      continue;
-    }
-    const demonstrativeClassifierSplit = transparentDemonstrativeClassifierSplitFromRest(rest);
-    if (demonstrativeClassifierSplit) {
-      nodes.push(...demonstrativeClassifierSplit.node);
-      cursor += demonstrativeClassifierSplit.length;
-      continue;
-    }
-    const ellipticalDemonstrativeClassifier = transparentEllipticalDemonstrativeClassifierFromRest(rest);
-    if (ellipticalDemonstrativeClassifier) {
-      nodes.push(ellipticalDemonstrativeClassifier.node);
-      cursor += ellipticalDemonstrativeClassifier.length;
-      continue;
-    }
-    const oneCountClassifierSplit = transparentOneCountClassifierSplitFromRest(rest);
-    if (oneCountClassifierSplit) {
-      nodes.push(...oneCountClassifierSplit.node);
-      cursor += oneCountClassifierSplit.length;
-      continue;
-    }
-    const quantifiedPersonNp = transparentQuantifiedPersonNpFromRest(rest);
-    if (quantifiedPersonNp) {
-      nodes.push(quantifiedPersonNp.node);
-      cursor += quantifiedPersonNp.length;
-      continue;
-    }
-    const nominalDiDeterminer = transparentNominalDiDeterminerFromRest(rest);
-    if (nominalDiDeterminer) {
-      nodes.push(nominalDiDeterminer.node);
-      cursor += nominalDiDeterminer.length;
-      continue;
-    }
-    const termChoice = selectLexiconTerm(rest);
-    if (termChoice) {
-      nodes.push(termChoice.surface === "嘅話" ? protectedConditionalMarkerToken() : token(termChoice.surface, {
-        selection_decision: termChoice.selection_decision,
-        ...contextualLexiconOverrides(termChoice.surface, rest)
-      }));
-      cursor += termChoice.surface.length;
-      continue;
-    }
-    const char = Array.from(rest)[0] || "";
-    nodes.push(token(char, { label: "neutral", syntax: "unknown_cjk_or_text", note: "Unknown item; shown neutrally." }));
-    cursor += char.length;
-  }
-  return nodes;
-}
+var { tokenizeLine } = require_tokenize_line()({
+  FORMULAS,
+  NEGATED_LEXICALIZED_STATIVE_SPLITS,
+  PRODUCTIVE_TERMS,
+  candidateNamedAddressFormFromRest,
+  construction,
+  contextualLexiconOverrides,
+  productiveVoComponentTokens,
+  protectedConditionalMarkerToken,
+  pushNegatedLexicalizedStativeSplit,
+  pushSpecialNotGoodEat,
+  selectLexiconTerm,
+  textNode,
+  token,
+  traceInfo,
+  transparentCupNounDemonstrativeNpFromRest,
+  transparentDemonstrativeClassifierSplitFromRest,
+  transparentEllipticalDemonstrativeClassifierFromRest,
+  transparentNominalDiDeterminerFromRest,
+  transparentOneCountClassifierSplitFromRest,
+  transparentQuantifiedPersonNpFromRest
+});
 function withoutTrailingParticles(nodes) {
   let end = nodes.length;
   while (end > 0 && isParticle(nodes[end - 1])) end--;
