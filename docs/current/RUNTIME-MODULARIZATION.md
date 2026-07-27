@@ -1,10 +1,11 @@
 # Runtime modularization and wired-resource architecture
 
-Status: **Stage 7 rendering and plugin integration extraction implemented; pending merge**
+Status: **Wave 1 contextual split and vocative extraction implemented; pending merge**
 Parent program: #161
-Stage 7 intake: #168
-Work claim: #186
-Draft pull request: #187
+Wave 1 intake: #188
+Work claim: #206
+Draft pull request: #207
+Stage 7 rendering/plugin extraction: #168 / PR #187
 Stage 6 detector pilot: #167 / PR #185
 Stage 5 parser primitives: #166 / PR #183
 Stage 4 declarative resources: #165 / PR #181
@@ -191,6 +192,15 @@ Learner-facing and Obsidian-facing code is now maintained under:
 - `src/plugin/canto-span-plugin.js` for settings UI, persistence, markdown code-block registration, block refresh, diagnostic export actions, and plugin lifecycle.
 
 Parser recognition and diagnostic computation remain in their existing canonical owners and are passed into rendering/plugin factories explicitly. Only `src/plugin/canto-span-plugin.js` imports the Obsidian API. Render modules do not import detector families or plugin state.
+
+## Wave 1 contextual tokenization and vocative ownership
+
+The first post-pilot detector migration is maintained under:
+
+- `src/parser/tokenization/contextual-overrides.js` for existing context-sensitive lexical split decisions and bounded homograph overrides;
+- `src/parser/detectors/address/vocative.js` for protected-address boundaries and generated `VocativeAddressTerm` candidates.
+
+NP constructors and licensing remain in their current owner pending #189. The tokenizer receives the same contextual and address callbacks in the same order. No split rule, address inventory, parser result, learner output, or runtime version changes.
 
 ## Runtime-resource format rule
 
