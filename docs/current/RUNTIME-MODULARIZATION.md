@@ -1,10 +1,11 @@
 # Runtime modularization and wired-resource architecture
 
-Status: **Stage 5 parser primitive extraction implemented; pending merge**
+Status: **Stage 6 formula-response detector extraction implemented; pending merge**
 Parent program: #161
-Stage 5 intake: #166
-Work claim: #182
-Draft pull request: #183
+Stage 6 intake: #167
+Work claim: #184
+Draft pull request: #185
+Stage 5 parser primitives: #166 / PR #183
 Stage 4 declarative resources: #165 / PR #181
 Stage 3 lexical/Jyutping resources: #164 / PR #179
 Stage 2 build pipeline: #163 / PR #177
@@ -171,6 +172,14 @@ Dependency-leaf parser infrastructure is now maintained under:
 
 Construction-specific token split rules, detector families, category-template policy, NP licensing policy, rendering algorithms, diagnostics, and plugin lifecycle code remain outside these modules. Where the tokenizer or node factory needs such policy, `src/plugin-entry.js` injects the existing canonical helper rather than duplicating or relocating it.
 
+## Stage 6 pilot detector-family ownership
+
+The first construction-family pilot is the **discourse acknowledgement and negative-existential response family** under `src/parser/detectors/discourse/formula-responses.js`.
+
+The module owns the selected fallback/detector block for `FormulaDiscourseUnit` and `NegatedExistentialFragment`: protected formula passthrough, transparent discourse formulas, bounded acknowledgement repetition, discourse-marked agreement, negative-existential response fragments, repeated negative responses, and leave-taking fallback. Cross-family helpers remain in their existing canonical modules and are supplied through one explicit dependency object.
+
+The pilot does not own protected formula-table creation, `FragmentAnswer`, `FragmentQuestion`, polite/path imperative detection, clause relations, cognition, existential clauses, questions, motion, aspect, NP licensing, rendering, diagnostics, or plugin lifecycle code. Existing call order in `src/plugin-entry.js` is unchanged.
+
 ## Runtime-resource format rule
 
 Use JSON only for plain serializable data whose order and values can be preserved without behavior. Use JavaScript modules when the resource contains:
@@ -264,6 +273,6 @@ The modularization succeeds only when routine changes become file-local:
 
 Generated `main.js` may still be large. The improvement is that the GitHub connector edits small canonical inputs and reviews a deterministic output rather than reconstructing the bundle as the source of truth.
 
-## Stage 5 behavior boundary
+## Stage 6 behavior boundary
 
-Stage 5 moves dependency-leaf parser infrastructure into canonical source modules without changing tokenization, normalization, parser, or rendering behavior. Runtime version `0.5.216`, manifest version `0.5.216`, parser results, rendered output, test expectations, construction identity, linguistic status, evidence, corpus classification, survey state, release state, and merge authorization remain unchanged.
+Stage 6 moves one bounded detector family into a canonical source module without changing detector order, precedence, spans, diagnostics, parser behavior, or rendering behavior. Runtime version `0.5.216`, manifest version `0.5.216`, parser results, rendered output, test expectations, construction identity, linguistic status, evidence, corpus classification, survey state, release state, and merge authorization remain unchanged.
