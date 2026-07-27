@@ -1717,46 +1717,7 @@ function wrapDirectionalMotionSubspans(nodes) {
   return result;
 }
 
-function wrapNegatedVPSubspans(nodes) {
-  const result = [];
-  let index = 0;
-  while (index < nodes.length) {
-    const negator = nodes[index];
-    const vp = nodes[index + 1];
-    if (isToken(negator, "唔")
-        && vp
-        && vp.kind === "construction"
-        && nodeCanFillSlot(vp, "vp")
-        && !nodeCanFillSlot(vp, "negated_directional_motion_vp")
-        && vp.type !== "NegatedVP") {
-      const negatorChild = parserInactiveTokenClone(negator, {
-        label: "func",
-        pos: "function",
-        syntax: "negator m4_negator",
-        slots: ["negator", "m4_negator"],
-        reason: "唔 is the visible negator of the following VP.",
-      });
-      const children = [negatorChild, vp];
-      result.push(construction("NegatedVP", "NegVP", children, {
-        note: "Productive Cantonese negated VP: 唔 + VP, preserving the positive VP as a visible child.",
-        slots: templateDerivedSlots("NegatedVP", children),
-        trace: traceInfo("generative_template", {
-          construction_type: "NegatedVP",
-          template_family: "generative_template",
-          template: ["m4_negator!", "vp!"],
-          assigned_slots: ["m4_negator", "vp"],
-          surfaces: children.map((node) => flattenSurface(node)),
-          reason: "Negation wraps an already formed VP so the negator cannot detach and the VP's internal object/complement structure remains visible.",
-        }),
-      }));
-      index += 2;
-      continue;
-    }
-    result.push(nodes[index]);
-    index += 1;
-  }
-  return result;
-}
+
 
 
 const SERIAL_PURPOSE_ACTION_VO_SURFACES = new Set(["摘芒果", "買嘢", "食飯"]);
@@ -2033,186 +1994,67 @@ const {
   withoutIgnorableSpaceText, withoutTrailingParticles,
 });
 
-function isSubjectLike(node) {
-  return nodeSlots(node).includes("subject");
-}
 
-function isAcceptabilityActionCandidate(node) {
-  if (!node || node.kind === "text") return false;
-  const slots = nodeSlots(node);
-  return slots.includes("directional_motion_vp") || slots.includes("negated_directional_motion_vp") || slots.includes("vp") || slots.includes("action_vp") || slots.includes("predicate");
-}
 
-function isDakFormulaNode(node) {
-  return node && node.kind === "construction" && flattenSurface(node) === "得喇";
-}
 
-function acceptabilityPartClone(node, role = "func", overrides = {}) {
-  const surface = overrides.surface || flattenSurface(node);
-  return parserInactiveTokenClone(token(surface), {
-    label: overrides.label || role,
-    pos: overrides.pos || (role === "how" ? "adverbial" : role === "particle" ? "particle" : "function"),
-    syntax: overrides.syntax || "acceptability_part",
-    slots: overrides.slots || ["acceptability_part"],
-    reason: overrides.reason || "Token is parser-inactive inside an acceptability clause wrapper; the parent exposes the acceptability affordance.",
-  });
-}
 
-function acceptabilityFocusClone(node) {
-  return parserInactiveTokenClone(firstToken(node) || token(flattenSurface(node)), {
-    label: "how",
-    pos: "adverbial",
-    syntax: "focus_adverb",
-    slots: ["focus_adverb", "how"],
-    reason: "都 scopes the acceptability predicate inside 都得, so it stays parser-inactive inside the parent wrapper.",
-  });
-}
 
-function acceptabilityDakClone(node) {
-  return acceptabilityPartClone(node, "func", {
-    surface: "得",
-    label: "func",
-    pos: "function",
-    syntax: "acceptability_predicate",
-    slots: ["acceptability_predicate"],
-    reason: "得 is interpreted here as the acceptability predicate in 都得, so it stays parser-inactive while the parent exposes acceptability.",
-  });
-}
 
-function acceptabilityParticleClone(node) {
-  return acceptabilityPartClone(node, "particle", {
-    surface: flattenSurface(node),
-    label: "particle",
-    pos: "particle",
-    syntax: "sentence_final_particle",
-    slots: ["particle"],
-    reason: "Final particle stays parser-inactive inside an acceptability clause wrapper.",
-  });
-}
 
-function matchAcceptabilityTail(nodes, index) {
-  if (!isToken(nodes[index], "都")) return null;
-  const dak = nodes[index + 1];
-  if (isToken(dak, "得")) {
-    const particle = isParticle(nodes[index + 2]) && ["喇", "啦", "呀", "啊"].includes(flattenSurface(nodes[index + 2])) ? nodes[index + 2] : null;
-    return { length: 2 + (particle ? 1 : 0), focus: nodes[index], dak, particle };
-  }
-  if (isDakFormulaNode(dak)) {
-    return { length: 2, focus: nodes[index], dak, particle: token("喇", { label: "particle", syntax: "sentence_final_particle", note: "Final particle split from protected 得喇 formula inside 都得 acceptability." }) };
-  }
-  return null;
-}
 
-function acceptabilityClausePatternAt(nodes, index) {
-  let subject = null;
-  let action = null;
-  let tailIndex = index;
 
-  if (isAcceptabilityActionCandidate(nodes[index])) {
-    action = nodes[index];
-    tailIndex = index + 1;
-    const tail = matchAcceptabilityTail(nodes, tailIndex);
-    if (tail) return { ...tail, length: 1 + tail.length, subject, action };
-  }
 
-  if (isSubjectLike(nodes[index]) && isAcceptabilityActionCandidate(nodes[index + 1])) {
-    subject = nodes[index];
-    action = nodes[index + 1];
-    tailIndex = index + 2;
-    const tail = matchAcceptabilityTail(nodes, tailIndex);
-    if (tail) return { ...tail, length: 2 + tail.length, subject, action };
-  }
 
-  return null;
-}
 
-function acceptabilitySubjectPredicateChild(subject, action) {
-  if (!subject || !action) return null;
-  const slots = nodeSlots(action);
-  if (slots.includes("negated_directional_motion_vp")) {
-    const children = [subject, action];
-    return construction("SubjectPredicateClause", "SubjPred", children, {
-      slots: cleanSlots(["subject_predicate_clause", "subject", "predicate", "clause", "negative_clause", "negated_predicate", "negator"]),
-      note: "Transparent subject + negated predicate child preserved inside a larger acceptability clause.",
-      trace: traceInfo("generative_template", {
-        construction_type: "SubjectPredicateClause",
-        retired_label_alias: "SubjectNegatedPredicateClause",
-    template_family: "generative_template",
-        polarity: "negative",
-        template: ["subject!", "predicate!"],
-        constraints: { predicate_must_have_any_slots: ["negated_directional_motion_vp"] },
-        assigned_slots: ["subject", "predicate"],
-        reason: "Expose the broad subject/predicate relation inside AcceptabilityClause without changing the top-level acceptability meaning.",
-        surfaces: children.map((node) => flattenSurface(node)),
-      }),
-    });
-  }
-  if (slots.includes("productive_vo") || slots.includes("directional_motion_vp")) {
-    const children = [subject, action];
-    return construction("SubjectPredicateClause", "SubjPred", children, {
-      slots: templateDerivedSlots("SubjectPredicateClause", children),
-      note: "Transparent subject + predicate child preserved inside a larger acceptability clause.",
-      trace: traceInfo("generative_template", {
-        construction_type: "SubjectPredicateClause",
-        template: ["subject!", "predicate!"],
-        constraints: {
-          predicate_must_have_any_slots: ["productive_vo", "directional_motion_vp", "motion_purpose_chain", "serial_verb_purpose_chain"],
-          disallow_child_slots: ["negated_directional_motion_vp"],
-        },
-        assigned_slots: ["subject", "predicate"],
-        reason: "Expose the subject/predicate relation inside AcceptabilityClause without changing the top-level acceptability meaning.",
-        surfaces: children.map((node) => flattenSurface(node)),
-      }),
-    });
-  }
-  return null;
-}
 
-function makeAcceptabilityClause(match) {
-  const children = [];
-  const subjectPredicateChild = acceptabilitySubjectPredicateChild(match.subject, match.action);
-  if (subjectPredicateChild) {
-    children.push(subjectPredicateChild);
-  } else {
-    if (match.subject) children.push(match.subject);
-    if (match.action) children.push(match.action);
-  }
-  children.push(acceptabilityFocusClone(match.focus));
-  children.push(acceptabilityDakClone(match.dak));
-  if (match.particle) children.push(acceptabilityParticleClone(match.particle));
-  return construction("AcceptabilityClause", "Acceptability", children, {
-    slots: ["acceptability_clause", "acceptability", "focus_adverb", "acceptability_predicate", "predicate", "clause"],
-    note: "Bounded action-feasibility clause: an overt action predicate followed by 都得 and an optional final particle. Wh/free-choice 都得 remains outside this node. When a subject + transparent predicate is present, preserve it as a child clause for learner visibility.",
-    trace: traceInfo("generative_template", {
-      construction_type: "AcceptabilityClause",
-      retired_label_alias: "PermissionAcceptabilityClause",
-      acceptability_subtype: "action_feasibility",
-      template: ["subject?", "predicate!", "focus_adverb!", "acceptability_predicate!", "particle?"],
-      assigned_slots: ["subject", "predicate", "focus_adverb", "acceptability_predicate", "particle"],
-      rule: "subject? + overt action predicate + focus adverb 都 + acceptability predicate 得 + optional final particle",
-      pattern: match.particle ? "subject? + predicate + 都 + 得 + final_particle" : "subject? + predicate + 都 + 得",
-      reason: "Checked source evidence directly supports action material followed by 都得 as feasible. The matcher requires that overt host and leaves wh/free-choice 都得 for separate analysis.",
-      child_subject_predicate_construction: subjectPredicateChild ? subjectPredicateChild.type : "",
-      surfaces: children.map((node) => flattenSurface(node)),
-    }),
-  });
-}
 
-function wrapPermissionAcceptabilitySubspans(nodes) {
-  const result = [];
-  let i = 0;
-  while (i < nodes.length) {
-    const match = acceptabilityClausePatternAt(nodes, i);
-    if (match) {
-      result.push(makeAcceptabilityClause(match));
-      i += match.length;
-      continue;
-    }
-    result.push(nodes[i]);
-    i += 1;
-  }
-  return result;
-}
+
+
+
+
+
+
+
+
+
+
+const createBasicPredicateDetectors = require("./parser/detectors/predicates/basic");
+const {
+  scalarEvaluationFallback,
+  wrapNegatedVPSubspans,
+  wrapPredicate,
+} = createBasicPredicateDetectors({
+  categorySubspanFor, construction, flattenSurface, hasSurface, isStativeToken, isToken,
+  nodeCanFillSlot, parserInactiveTokenClone, templateDerivedSlots, traceInfo,
+});
+
+const createAcceptabilityDetectors = require("./parser/detectors/acceptability/clauses");
+const { wrapPermissionAcceptabilitySubspans } = createAcceptabilityDetectors({
+  cleanSlots, construction, firstToken, flattenSurface, isParticle, isToken, nodeSlots,
+  parserInactiveTokenClone, templateDerivedSlots, token, traceInfo,
+});
+
+const createMannerAdjustmentDetectors = require("./parser/detectors/manner/adjustment");
+const {
+  mannerAdverbialVPFallback,
+  sourceLinkedDegreeMannerModifiedVPFallback,
+} = createMannerAdjustmentDetectors({
+  applyConstructionPatterns, categorySubspanFor, cleanSlots, construction, flattenSurface,
+  isToken, nodeCanFillSlot, nodeSurfaceMatches, parserInactiveTokenClone,
+  templateDerivedSlots, traceInfo, withoutIgnorableSpaceText, withoutTrailingParticles,
+});
+
+const createImperativeDetectors = require("./parser/detectors/imperatives/clauses");
+const {
+  politePathImperativeFallback,
+  politeRequestAdjustmentFallback,
+  prohibitiveImperativeFallback,
+} = createImperativeDetectors({
+  categorySubspanFor, construction, directPredicateCapableNode, flattenSurface, isToken,
+  mergeUnique, nodeCanFillSlot, parserInactiveTokenClone, pathPhraseFromParts,
+  templateDerivedSlots, traceInfo, transparentDiscourseFormulaFallback,
+  withoutIgnorableSpaceText, withoutTrailingParticles,
+});
 
 function isPlaceLike(node) {
   const t = firstToken(node);
@@ -2744,41 +2586,7 @@ function nameTokenClone(node) {
 
 
 
-function sourceLinkedDegreeMannerModifiedVPFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const compact = withoutIgnorableSpaceText(bareCore);
-  const fusedModifier = isToken(compact[0], "快啲");
-  const splitModifier = isToken(compact[0], "快") && isToken(compact[1], "啲");
-  if (!fusedModifier && !splitModifier) return null;
-  const modifierLength = fusedModifier ? 1 : 2;
-  if (compact.length <= modifierLength) return null;
-  const modifier = categorySubspanFor(compact.slice(0, modifierLength), ["DegreeMannerAdverbial"]);
-  let predicate = categorySubspanFor(compact.slice(modifierLength), [
-    "CompoundDirectionalMotionVP",
-    "DirectionalMotionVP",
-    "VerbComplementVP",
-  ]);
-  if (!predicate && compact.length === modifierLength + 3) {
-    const directional = categorySubspanFor(compact.slice(modifierLength + 1), ["DirectionalMotionVP"]);
-    predicate = directional
-      ? categorySubspanFor([compact[modifierLength], directional], ["VerbComplementVP"])
-      : null;
-  }
-  if (!modifier || !predicate || !nodeCanFillSlot(predicate, "vp")) return null;
-  const children = [modifier, predicate, ...particles];
-  return construction("DegreeMannerModifiedVP", "DegMannerVP", children, {
-    note: "Source-linked preposed 快啲 modifier over a visible directional VP.",
-    slots: templateDerivedSlots("DegreeMannerModifiedVP", children),
-    trace: traceInfo("generative_template", {
-      construction_type: "DegreeMannerModifiedVP",
-      template: ["degree_manner_adverbial!", "directional_motion_vp!", "particle?"],
-      constraints: { modifier_surface: "快啲", preserve_inner_directional_vp: true },
-      assigned_slots: ["degree_manner_adverbial", "directional_motion_vp", ...particles.map(() => "particle")],
-      surfaces: children.map((node) => flattenSurface(node)),
-      reason: "Preserves the exact sourced preposed order without conflating postverbal 行快啲 or punctuation-separated material.",
-    }),
-  });
-}
+
 
 
 const {
@@ -2832,74 +2640,9 @@ function pathPhraseFromParts(marker, path) {
   });
 }
 
-function politeRequestAdjustmentFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const compact = withoutIgnorableSpaceText(bareCore);
-  if (compact.length < 3) return null;
-  const formulaSurface = flattenSurface(compact[0]);
-  if (formulaSurface !== "唔該") return null;
-  const addressee = compact[1];
-  if (!nodeCanFillSlot(addressee, "subject")) return null;
-  const adjustmentNodes = compact.slice(2);
-  const adjustment = adjustmentNodes.length === 1 && adjustmentNodes[0].kind === "construction" && adjustmentNodes[0].type === "DegreeMannerAdverbial"
-    ? adjustmentNodes[0]
-    : categorySubspanFor(adjustmentNodes, ["DegreeMannerAdverbial"]);
-  if (!adjustment || flattenSurface(adjustment) !== adjustmentNodes.map((node) => flattenSurface(node)).join("")) return null;
-  const formula = compact[0].kind === "construction" && compact[0].type === "FormulaDiscourseUnit"
-    ? compact[0]
-    : transparentDiscourseFormulaFallback([compact[0]]);
-  if (!formula || formula.type !== "FormulaDiscourseUnit") return null;
-  const children = [formula, addressee, adjustment, ...particles];
-  return construction("PoliteImperativeClause", "PoliteImperative", children, {
-    note: "Source-linked polite adjustment request: 唔該 + addressee + scalar adjustment.",
-    slots: mergeUnique(templateDerivedSlots("PoliteImperativeClause", children), ["polite_imperative_clause", "imperative", "politeness_marker", "subject", "modifier", "predicate", "clause"]),
-    trace: traceInfo("generative_template", {
-      construction_type: "PoliteImperativeClause",
-      template: ["politeness_formula!", "addressee!", "scalar_adjustment!", "particle?"],
-      assigned_slots: ["politeness_marker", "subject", "modifier", ...particles.map(() => "particle")],
-      surfaces: children.map((node) => flattenSurface(node)),
-      reason: "A conventional 唔該 request formula addresses a person and scopes over a following scalar adjustment while all overt material remains visible.",
-      not_claims: ["not_every_m4_goi1_is_an_imperative", "not_equivalent_to_cing2_in_all_registers", "not_unrestricted_productivity"],
-    }),
-  });
-}
 
-function politePathImperativeFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const compact = withoutIgnorableSpaceText(bareCore);
-  if (compact.length < 5) return null;
-  if (!isToken(compact[0], "請")) return null;
-  if (!nodeCanFillSlot(compact[1], "subject")) return null;
-  let index = 2;
-  const time = nodeCanFillSlot(compact[index], "time") ? compact[index++] : null;
-  const marker = compact[index++];
-  const path = compact[index++];
-  const predicate = compact[index++];
-  if (index !== compact.length) return null;
-  if (!isToken(marker, "沿住")) return null;
-  if (!nodeCanFillSlot(path, "location") && !nodeCanFillSlot(path, "goal")) return null;
-  if (!directPredicateCapableNode(predicate)) return null;
-  const polite = parserInactiveTokenClone(compact[0], {
-    label: "func",
-    pos: "function",
-    syntax: "politeness_imperative_marker",
-    slots: ["politeness_marker", "imperative_marker"],
-    reason: "請 is interpreted as the politeness marker inside a bounded path imperative.",
-  });
-  const pathPhrase = pathPhraseFromParts(marker, path);
-  const children = [polite, compact[1], ...(time ? [time] : []), pathPhrase, predicate, ...particles];
-  return construction("PoliteImperativeClause", "PoliteImperative", children, {
-    note: "v0.5.32 polite path imperative: 請 + addressee + optional time + 沿住 + path + motion/action predicate.",
-    slots: templateDerivedSlots("PoliteImperativeClause", children),
-    trace: traceInfo("generative_template", {
-      construction_type: "PoliteImperativeClause",
-      template: ["politeness_marker!", "subject!", ...(time ? ["time?"] : []), "path_phrase!", "predicate!", "particle?"],
-      assigned_slots: ["politeness_marker", "subject", ...(time ? ["time"] : []), "path_phrase", "predicate", ...particles.map(() => "particle")],
-      surfaces: children.map((node) => flattenSurface(node)),
-      reason: "Promotes the reviewed path-command shape without creating broad imperative grammar.",
-    }),
-  });
-}
+
+
 
 function yesNoQuestionMarkerClone(node) {
   return parserInactiveTokenClone(node, {
@@ -4094,70 +3837,7 @@ function fragmentQuestionFallback(core) {
   });
 }
 
-function mannerAdverbialVPFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const offset = bareCore.length >= 4 && nodeCanFillSlot(bareCore[0], "subject") ? 1 : 0;
-  const remainder = bareCore.slice(offset);
-  if (remainder.length < 3) return null;
 
-  const first = remainder[0];
-  const second = remainder[1];
-  if (flattenSurface(first) !== flattenSurface(second)) return null;
-  if (!nodeCanFillSlot(first, "stative_predicate") || !nodeCanFillSlot(second, "stative_predicate")) return null;
-
-  const overtAdverbializer = remainder.length >= 4 && nodeSurfaceMatches(remainder[2], ["咁", "噉"])
-    ? remainder[2]
-    : null;
-  if (!overtAdverbializer && remainder.length !== 3) return null;
-  const predicateCore = remainder.slice(overtAdverbializer ? 3 : 2);
-  if (!predicateCore.length) return null;
-
-  const wrappedPredicate = overtAdverbializer ? applyConstructionPatterns(predicateCore) : predicateCore;
-  if (wrappedPredicate.length !== 1) return null;
-  const predicate = wrappedPredicate[0];
-  if (!nodeCanFillSlot(predicate, "action_verb")
-      && !nodeCanFillSlot(predicate, "movement_verb")
-      && !nodeCanFillSlot(predicate, "vp")) return null;
-
-  const mannerChildren = [first, second].map((node) => parserInactiveTokenClone(node, {
-    label: "how", pos: "adverb", syntax: "reduplicated_manner_adverb",
-    slots: ["manner", "modifier", "how"],
-    reason: "Reduplicated property word functions adverbially as manner before the action predicate.",
-  }));
-  const adverbializerChildren = overtAdverbializer ? [parserInactiveTokenClone(overtAdverbializer, {
-    label: "how", pos: "adverbializer", syntax: "manner_adverbializer",
-    slots: ["manner", "modifier", "how"],
-    reason: "咁/噉 overtly links the preceding manner expression to the following predicate in this construction.",
-  })] : [];
-  const predicateChildren = predicate.kind === "construction" ? [predicate] : [parserInactiveTokenClone(predicate, {
-    label: predicate.label || "doing", pos: "verb", syntax: `${predicate.syntax || "verb"} manner_modified_predicate`,
-    slots: ["action_verb", "main_verb", "predicate", "vp"],
-    reason: "Action predicate modified by the preceding reduplicated manner expression.",
-  })];
-  const children = [...bareCore.slice(0, offset), ...mannerChildren, ...adverbializerChildren, ...predicateChildren, ...particles];
-  return construction("MannerAdverbialVP", "MannerVP", children, {
-    note: overtAdverbializer
-      ? "Manner-modified predicate with a reduplicated manner expression and overt 咁/噉, e.g. 慢慢噉食飯."
-      : "Manner-modified predicate with a reduplicated manner expression, e.g. 慢慢行.",
-    slots: cleanSlots(["manner_adverbial_vp", "manner", "modifier", "vp", "action_vp", "predicate", offset ? "subject" : "", ...templateDerivedSlots("MannerAdverbialVP", children)]),
-    trace: traceInfo("generative_template", {
-      construction_type: "MannerAdverbialVP", template_family: "generative_template",
-      template: ["subject?", "reduplicated_manner!", "manner_adverbializer?", "predicate!", "particle?"],
-      assigned_slots: [
-        ...bareCore.slice(0, offset).map(() => "subject"),
-        "manner", "manner",
-        ...adverbializerChildren.map(() => "manner_adverbializer"),
-        "predicate",
-        ...particles.map(() => "particle"),
-      ],
-      surfaces: children.map((node) => flattenSurface(node)),
-      reason: overtAdverbializer
-        ? "A repeated stative/property form followed by overt 咁/噉 modifies the following action predicate while every surface piece remains visible."
-        : "A repeated stative/property form before an action is interpreted as a manner adverbial while every surface piece remains visible.",
-      not_claims: ["not_every_reduplicated_stative_is_manner", "not_every_gam_is_manner_adverbializer"],
-    }),
-  });
-}
 
 function sourceMotionClauseFallback(core) {
   const { core: bareCore, particles } = withoutTrailingParticles(core);
@@ -5940,25 +5620,8 @@ function wrapCore(core) {
   const desiderativeSpan = desiderativeVPWrapCoreFallback(core);
   if (desiderativeSpan) return [desiderativeSpan];
 
-  // Source-linked negative 算 evaluation. Keep the overt predicate and any subject/topic material visible.
-  if (hasSurface(core, "唔") && hasSurface(core, "算") && hasSurface(core, "貴")) {
-    return [construction("ScalarEvaluation", "ValueEval", core, {
-      slots: ["scalar_evaluation", "evaluation_clause", "predicate", "stative_predicate", "negator", "evaluation_marker"],
-      note: "Negative lexical 算 evaluation with an overt property predicate; visible subject/topic material remains outside the lexical predicate relation.",
-      trace: traceInfo("generative_template", {
-        construction_type: "ScalarEvaluation",
-        template_family: "generative_template",
-        template: ["negator!", "evaluation_marker!", "degree?", "stative_predicate!", "particle?"],
-        assigned_slots: ["negator", "evaluation_marker", "stative_predicate"],
-        polarity_profile: "negative",
-        scalar_domain: "price",
-        semantic_domain: "price_property",
-        rule: "negator + evaluation marker + stative/scalar predicate",
-        reason: "Uses the source-linked negative 算 evaluation profile; price is contextual metadata and negative polarity remains trace metadata.",
-        surfaces: core.map((node) => flattenSurface(node)),
-      })
-    })];
-  }
+  const scalarEvaluationSpan = scalarEvaluationFallback(core);
+  if (scalarEvaluationSpan) return [scalarEvaluationSpan];
   // Scalar value question patterns. Price is domain metadata, not the construction label.
   if (hasSurface(core, "幾錢")) {
     const scalar = scalarValueQuestionFallback(core);
@@ -6004,10 +5667,8 @@ function wrapCore(core) {
     })];
   }
 
-  // Prohibitive: 唔好 + V/VP + object.
-  if (isToken(core[0], "唔好") && core.length >= 2) {
-    return [construction("ProhibitiveImperative", "Prohibitive", core, { note: "Negative imperative / command.", trace: traceInfo("legacy_surface_rule", { rule: "唔好 + predicate", reason: "Surface prohibitive marker fallback." }) })];
-  }
+  const prohibitiveImperativeSpan = prohibitiveImperativeFallback(core);
+  if (prohibitiveImperativeSpan) return [prohibitiveImperativeSpan];
 
   const inlineANotAQuestion = inlineANotAQuestionFallback(core);
   if (inlineANotAQuestion) return [inlineANotAQuestion];
@@ -6033,46 +5694,7 @@ function wrapCore(core) {
   return wrapPredicate(core);
 }
 
-function wrapPredicate(nodes) {
-  if (!nodes.length) return nodes;
 
-  // Productive degree/manner + 啲 phrase, e.g. 快啲 / 慢啲 / 貴啲 / 大聲啲 / 小心啲.
-  // Keep this as one unified generative-template path before comparative/stative
-  // fallbacks can split the same surface into unrelated learner roles.
-  const degreeMannerIndex = nodes.findIndex((node, index) => nodeCanFillSlot(node, "degree_manner_head") && nodeCanFillSlot(nodes[index + 1], "degree_particle"));
-  if (degreeMannerIndex >= 0) {
-    const degreeManner = categorySubspanFor(nodes.slice(degreeMannerIndex, degreeMannerIndex + 2), ["DegreeMannerAdverbial"]);
-    if (degreeManner) {
-      return [
-        ...nodes.slice(0, degreeMannerIndex),
-        degreeManner,
-        ...wrapPredicate(nodes.slice(degreeMannerIndex + 2)),
-      ];
-    }
-  }
-
-  // Existing one-token degree/stative phrases such as 好好食, 好貴, 抵食.
-  if (nodes.length === 1 && isStativeToken(nodes[0])) {
-    return [construction("StativePredicate", "Stative", nodes, { note: "Stative/property predicate fragment.", trace: traceInfo("generative_template", { construction_type: "StativePredicate", template_family: "generative_template", template: ["stative_predicate!"], assigned_slots: ["stative_predicate"], rule: "single stative token", reason: "Generated label/syntax indicates stative." }) })];
-  }
-
-  // Degree/stative: 好 開心, 太 貴, 有啲 貴
-  if (nodes.length >= 2 && ["好", "太", "幾", "有啲"].some((s) => isToken(nodes[0], s)) && isStativeToken(nodes[1])) {
-    return [construction("StativePredicate", "Stative", nodes, { note: "Degree + stative/property predicate.", trace: traceInfo("generative_template", { construction_type: "StativePredicate", template_family: "generative_template", template: ["degree!", "stative_predicate!"], assigned_slots: ["degree", "stative_predicate"], rule: "degree + stative", reason: "Structural stative predicate template." }) })];
-  }
-
-  // Negated stative: 唔 開心 / 唔 好食
-  if (nodes.length >= 2 && isToken(nodes[0], "唔") && isStativeToken(nodes[1])) {
-    return [construction("StativePredicate", "NegStative", nodes, { note: "Negated stative/property predicate.", trace: traceInfo("generative_template", { construction_type: "StativePredicate", template_family: "generative_template", template: ["negator!", "stative_predicate!"], assigned_slots: ["negator", "stative_predicate"], rule: "唔 + stative", reason: "Structural negated stative predicate template." }) })];
-  }
-
-  // Standalone stative.
-  if (nodes.length === 1 && isStativeToken(nodes[0])) {
-    return [construction("StativePredicate", "Stative", nodes, { note: "Stative/property predicate fragment.", trace: traceInfo("generative_template", { construction_type: "StativePredicate", template_family: "generative_template", template: ["stative_predicate!"], assigned_slots: ["stative_predicate"], rule: "single stative token", reason: "Generated label/syntax indicates stative." }) })];
-  }
-
-  return nodes;
-}
 
 function hasSentencePunctuation(text) {
   return /[，。！？、；：,.!?;:]/u.test(String(text || ""));
