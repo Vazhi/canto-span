@@ -2487,85 +2487,38 @@ const {
   yesNoQuestionMarkerClone,
 });
 
+const createWhScalarQuestionDetectors = require("./parser/detectors/questions/wh-scalar");
+const {
+  existentialWhQuestionFallback,
+  locativeWhQuestionFallback,
+  progressiveWhObjectQuestionFallback,
+  scalarDimensionQuestionFallbackForPunctuation,
+  scalarValueQuestionFallback,
+  suggestionQuestionFallback,
+} = createWhScalarQuestionDetectors({
+  applyConstructionPatterns, construction, firstToken, flattenSurface, hasSurface,
+  isToken, nodeCanFillSlot, surfaceOf, templateDerivedSlots, token, traceInfo,
+  withoutIgnorableSpaceText, withoutTrailingParticles,
+});
 
-function whObjectTokenClone(node) {
-  const surface = flattenSurface(node);
-  if (!['咩', '乜嘢'].includes(surface)) return node;
-  return token(surface, {
-    label: 'what',
-    syntax: 'wh_object',
-    slots: ['wh_object', 'object'],
-    note: `${surface} functions as the object wh-word here, not as a sentence-final surprise particle.`,
-    jyutping: firstToken(node) && firstToken(node).jyutping,
-    trace: traceInfo('atomic_lexicon', {
-      surface,
-      generated_slots: ['wh_object', 'object'],
-      contextual_role_override: 'ProgressiveWhObjectQuestion',
-      reason: 'v0.5.82 resolves 咩 as wh_object when it is the object of a progressive/transitive predicate.',
-    }),
-  });
-}
+const createCompletionExperientialQuestionDetectors = require("./parser/detectors/questions/completion-experiential");
+const {
+  completionQuestionFallback,
+  completionQuestionWithPerfectiveMarkerFallback,
+  experientialQuestionBoundaryFallback,
+  experientialYesNoQuestionFallback,
+  interestDomainExistentialQuestionFallback,
+} = createCompletionExperientialQuestionDetectors({
+  construction, flattenSurface, hasConstruction, hasSurface, isParticle,
+  isProductiveVo, isToken, nodeCanFillSlot, optionalSubjectOffset, traceInfo,
+});
 
-function progressiveWhObjectQuestionFallback(core) {
-  if (!core || !core.length) return null;
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const subject = nodeCanFillSlot(bareCore[0], 'subject') ? bareCore[0] : null;
-  const predicate = subject ? bareCore[1] : bareCore[0];
-  if (!predicate || predicate.kind !== 'construction') return null;
-
-  let progressive = null;
-  let wh = null;
-  if (predicate.type === 'TransitiveVP' && predicate.children && predicate.children.length === 2) {
-    const [first, second] = predicate.children;
-    if (nodeCanFillSlot(first, 'progressive_vp') && nodeCanFillSlot(second, 'wh_object')) {
-      progressive = first;
-      wh = whObjectTokenClone(second);
-    }
-  } else if (nodeCanFillSlot(predicate, 'progressive_vp')) {
-    const candidateWh = subject ? bareCore[2] : bareCore[1];
-    if (candidateWh && nodeCanFillSlot(candidateWh, 'wh_object')) {
-      progressive = predicate;
-      wh = whObjectTokenClone(candidateWh);
-    }
-  }
-
-  if (!progressive || !wh) return null;
-  const children = [...(subject ? [subject] : []), progressive, wh, ...particles];
-  return construction('ProgressiveWhObjectQuestion', 'ProgWhQ', children, {
-    slots: templateDerivedSlots('ProgressiveWhObjectQuestion', children),
-    note: 'Progressive what-object question: subject + progressive VP + wh object.',
-    trace: traceInfo('generative_template', {
-      construction_type: 'ProgressiveWhObjectQuestion',
-      template_family: 'generative_template',
-      template: ['subject?', 'progressive_vp!', 'wh_object!', 'particle?'],
-      assigned_slots: [...(subject ? ['subject'] : []), 'progressive_vp', 'wh_object', ...particles.map(() => 'particle')],
-      surfaces: children.map((node) => flattenSurface(node)),
-      reason: 'v0.5.82 promotes progressive + wh-object questions before broad SubjectPredicateClause/TransitiveVP display can leave 咩 with generic wh_or_particle syntax.',
-    }),
-  });
-}
-
-function completionQuestionFallback(core) {
-  const offset = optionalSubjectOffset(core);
-  if (core.length - offset < 2) return null;
-  const meiIndex = core.findIndex((node, index) => index >= offset && isToken(node, "未"));
-  if (meiIndex <= offset) return null;
-  const predicateNodes = core.slice(offset, meiIndex);
-  if (!predicateNodes.length) return null;
-  const hasCompletionLike = predicateNodes.some((node) => {
-    if (!node) return false;
-    if (node.kind === "construction" && (node.slots || []).some((slot) => ["completion_vp", "perfective_vp", "productive_vo", "vp"].includes(slot))) return true;
-    return isToken(node, "完") || isToken(node, "咗") || isProductiveVo(node);
-  });
-  if (!hasCompletionLike) return null;
-  return construction("CompletionQuestion", "CompletionQ", core, {
-    note: "Completion/not-yet question with 完, 咗, or a bare reviewed VO followed by 未.",
-    trace: traceInfo("generative_or_heuristic_slot_rule", {
-      rule: "subject? + completed/perfective/productive VP + 未 + particle?",
-      reason: "A1 completion-question heuristic covering 咗 and bare VO variants."
-    })
-  });
-}
+const createQuestionFallbacks = require("./parser/terminal/questions/question-fallbacks");
+const { haveOrNotQuestionFallbackForPunctuation } = createQuestionFallbacks({
+  applyConstructionPatterns, cleanSlots, construction, flattenNodes, flattenSurface,
+  hasConstruction, isParticle, isToken, nodeCanFillSlot, parserInactiveTokenClone,
+  templateDerivedSlots, traceInfo,
+});
 
 function negativeCognitionFragmentFallback(core) {
   const { core: bareCore, particles } = withoutTrailingParticles(core);
@@ -2613,30 +2566,6 @@ function transparentTopicContentFromNodes(nodes) {
   if (!compact.length) return null;
   if (compact.length === 1) return compact[0];
   return categorySubspanFor(compact, ["OvertHeadDemonstrativeClassifierNP", "QuantifiedClassifierNP", "QuantifiedPersonNP", "OrdinalClassifierNP", "DiMarkedNP", "ModifiedNP", "NominalHeadSpan", "CoordinatedNP"]);
-}
-
-function scalarValueQuestionFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const compact = withoutIgnorableSpaceText(bareCore);
-  if (compact.length !== 1 || !isToken(compact[0], "幾錢")) return null;
-  const children = [compact[0], ...particles];
-  return construction("ScalarValueQuestion", "ValueQ", children, {
-    slots: ["scalar_value_question", "question_fragment", "price_question"],
-    note: "Source-linked lexical price question 幾錢 with an optional final particle.",
-    trace: traceInfo("generative_template", {
-      construction_type: "ScalarValueQuestion",
-      retired_label_alias: "PriceQuestion",
-      template_family: "generative_template",
-      template: ["scalar_value_question!", "particle?"],
-      assigned_slots: ["scalar_value_question", ...particles.map(() => "particle")],
-      scalar_domain: "price",
-      scalar_question_subtype: "lexical_price_question",
-      semantic_domain: "price_property",
-      rule: "幾錢 + particle?",
-      reason: "Retains the exact attested lexical price-question profile without the former unsourced quantity/person/approximation cross-product.",
-      surfaces: children.map((node) => flattenSurface(node)),
-    })
-  });
 }
 
 function transitionMotionPredicateFallback(core) {
@@ -8262,33 +8191,14 @@ function wrapCore(core) {
     return [construction("OpinionStanceFrame", "Opinion/Stance", opinionChildren, { note: "Opinion/seeming fallback: 覺得 + 好似 + predicate.", trace: traceInfo("legacy_surface_rule", { rule: "has 覺得/我覺得 and 好似", reason: "Fallback only; generative OpinionStanceFrame should normally catch this." }) })];
   }
 
-  // Experiential yes/no: 有冇 + V過 + object.
-  if (hasSurface(core, "有冇") && hasConstruction(core, "ExperientialVP")) {
-    return [construction("ExperientialYesNoQuestion", "Exp?", core, { note: "Have-or-not experiential question, e.g. 有冇聽過.", trace: traceInfo("legacy_surface_rule", { rule: "has 有冇 and ExperientialVP", reason: "Fallback construction/surface rule." }) })];
-  }
+  const experientialYesNoQuestion = experientialYesNoQuestionFallback(core);
+  if (experientialYesNoQuestion) return [experientialYesNoQuestion];
 
-  // Interest-domain existential question fallback: normally handled by ExistentialQuestion templates.
-  if ((hasSurface(core, "有冇興趣")) || (hasSurface(core, "有冇") && hasSurface(core, "興趣"))) {
-    return [construction("ExistentialQuestion", "Have?", core, {
-      note: "Existential question over the abstract object/domain 興趣. Interest is metadata, not the active construction label.",
-      slots: ["existential_question", "question_fragment", "possessive_question", "predicate", "object", "abstract_object"],
-      trace: traceInfo("generative_template", {
-        construction_type: "ExistentialQuestion",
-        retired_label_alias: "InterestQuestion",
-        existential_subtype: "abstract_object",
-        abstract_object_domain: "interest",
-        template: ["subject?", "existential_question_or_interest_frame!", "abstract_object?", "vp?", "particle?"],
-        assigned_slots: core.map((node) => flattenSurface(node) === "有冇興趣" ? "interest_question_frame" : nodeCanFillSlot(node, "subject") ? "subject" : nodeCanFillSlot(node, "abstract_object") ? "abstract_object" : nodeCanFillSlot(node, "vp") ? "vp" : nodeCanFillSlot(node, "particle") ? "particle" : "existential_question"),
-        surfaces: core.map((node) => flattenSurface(node)),
-        reason: "Compatibility fallback for lexicalized 有冇興趣; active construction remains broad ExistentialQuestion."
-      })
-    })];
-  }
+  const interestDomainExistentialQuestion = interestDomainExistentialQuestionFallback(core);
+  if (interestDomainExistentialQuestion) return [interestDomainExistentialQuestion];
 
-  // Locative question/answer: 喺邊度 / 喺 + place.
-  if (isToken(core[0], "喺") && hasSurface(core, "邊度")) {
-    return [construction("LocativeWhQuestion", "WhereQ", core, { note: "Locative wh-question: 喺邊度.", trace: traceInfo("legacy_surface_rule", { rule: "喺 + 邊度", reason: "Surface marker + wh-place fallback." }) })];
-  }
+  const locativeWhQuestion = locativeWhQuestionFallback(core);
+  if (locativeWhQuestion) return [locativeWhQuestion];
   const completionThenRelation = completionThenClauseRelation(core);
   if (completionThenRelation) return [completionThenRelation];
 
@@ -8299,42 +8209,8 @@ function wrapCore(core) {
     return [construction("ReportedSpeech", "Reported", reportedChildren, { note: "Reported speech/thought: NP 話 + clause.", trace: traceInfo("legacy_surface_rule", { rule: "NP before 話 and material after", reason: "Surface speech verb fallback." }) })];
   }
 
-  // Experiential negation and final-未 questions are order-sensitive.
-  const experientialIndex = core.findIndex((node) => nodeCanFillSlot(node, "experiential_vp"));
-  const negativeExperientialIndex = core.findIndex((node, index) =>
-    index < experientialIndex && ["未", "冇"].includes(flattenSurface(node))
-  );
-  if (experientialIndex >= 0 && negativeExperientialIndex >= 0) {
-    const negatorSurface = flattenSurface(core[negativeExperientialIndex]);
-    return [construction("NegativeExperiential", "NegExp", core, {
-      note: "Source-linked preverbal experiential negation: 未/冇 precedes a VP containing experiential 過.",
-      trace: traceInfo("generative_template", {
-        construction_type: "NegativeExperiential",
-        template_family: "generative_template",
-        template: ["subject?", "focus_adverb?", "negator!", "experiential_vp!", "topic_or_object?", "particle?"],
-        constraints: { slot_surface_in: { negator: ["未", "冇"] }, marker_precedes_experiential_vp: true },
-        assigned_slots: core.map((node, index) => index === negativeExperientialIndex ? "negator" : index === experientialIndex ? "experiential_vp" : nodeCanFillSlot(node, "subject") ? "subject" : nodeCanFillSlot(node, "topic_or_object") ? "topic_or_object" : "retained_material"),
-        polarity_profile: negatorSurface === "未" ? "not_yet" : "aspectual_negative",
-        surfaces: core.map((node) => flattenSurface(node)),
-        reason: "Order-sensitive fallback preserves source-attested preverbal negation when an overt object is not fully grouped."
-      })
-    })];
-  }
-  const finalMeiIndex = core.findIndex((node, index) => index > experientialIndex && flattenSurface(node) === "未");
-  const finalMeiTailIsOnlyParticles = finalMeiIndex >= 0 && core.slice(finalMeiIndex + 1).every((node) => node.kind === "text" || isParticle(node));
-  if (experientialIndex >= 0 && finalMeiIndex >= 0 && finalMeiTailIsOnlyParticles) {
-    return [construction("ExperientialQuestion", "Exp未", core, {
-      note: "Source-linked final-未 experiential question: overt experiential VP followed by final 未 and optional particle.",
-      trace: traceInfo("generative_template", {
-        construction_type: "ExperientialQuestion",
-        template_family: "generative_template",
-        template: ["subject?", "experiential_vp!", "topic_or_object?", "question_marker!", "particle?"],
-        constraints: { final_mei_after_experiential_material: true },
-        surfaces: core.map((node) => flattenSurface(node)),
-        reason: "The final 未 profile is distinct from preverbal 未 negative experiential statements and 有冇 experiential questions."
-      })
-    })];
-  }
+  const experientialQuestionBoundary = experientialQuestionBoundaryFallback(core);
+  if (experientialQuestionBoundary) return [experientialQuestionBoundary];
 
   if (hasSurface(core, "想") && (hasSurface(core, "好") || hasSurface(core, "試吓"))) {
     return [construction("DesiderativeVP", "WantVP", core, { note: "Desire/wanting construction, often 好想 + VP.", trace: traceInfo("legacy_surface_rule", { rule: "has 想 plus degree/VP", reason: "Surface modal fallback." }) })];
@@ -8367,23 +8243,13 @@ function wrapCore(core) {
   const approximateQuantitySpan = approximateQuantityFallback(core);
   if (approximateQuantitySpan) return [approximateQuantitySpan];
 
-  // Suggestion fallback: normally handled by SuggestionQuestion template.
-  if (surfaceOf(core[0]) === "不如") {
-    return [construction("SuggestionQuestion", "Suggest", core, {
-      note: "Suggestion fallback with 不如.",
-      trace: traceInfo("construction_function", {
-        construction_type: "SuggestionQuestion",
-        reason: "Fallback only; generative SuggestionQuestion should normally catch this."
-      })
-    })];
-  }
+  const suggestionQuestion = suggestionQuestionFallback(core);
+  if (suggestionQuestion) return [suggestionQuestion];
   const acceptabilityANotAQuestion = acceptabilityANotAQuestionFallback(core);
   if (acceptabilityANotAQuestion) return [acceptabilityANotAQuestion];
 
-  // Existential wh: 有咩 + NP.
-  if (hasSurface(core, "有") && hasSurface(core, "咩")) {
-    return [construction("ExistentialWhQuestion", "有咩", core, { note: "Existential wh-question: 有咩 + noun phrase." })];
-  }
+  const existentialWhQuestion = existentialWhQuestionFallback(core);
+  if (existentialWhQuestion) return [existentialWhQuestion];
 
   // Preference fallback: normally handled by the PreferenceVP template before broad NP category wrapping.
   if (hasSurface(core, "鍾意")) {
@@ -8429,11 +8295,8 @@ function wrapCore(core) {
   const inlineANotAQuestion = inlineANotAQuestionFallback(core);
   if (inlineANotAQuestion) return [inlineANotAQuestion];
 
-  // Completion question: V 完 Obj? 未
-  const meiIndex = core.findIndex((node) => isToken(node, "未"));
-  if (meiIndex > 0 && core.some((node) => isToken(node, "完"))) {
-    return [construction("CompletionQuestion", "CompletionQ", core, { note: "Completion / not-yet question.", trace: traceInfo("generative_or_heuristic_slot_rule", { rule: "verb + 完 + object? + 未", reason: "Structural completion-question heuristic." }) })];
-  }
+  const completionQuestionWithPerfectiveMarker = completionQuestionWithPerfectiveMarkerFallback(core);
+  if (completionQuestionWithPerfectiveMarker) return [completionQuestionWithPerfectiveMarker];
 
   // Negative potential: V 唔 到 Obj?
   if (core.length >= 3 && isVerbLike(core[0]) && isToken(core[1], "唔") && isToken(core[2], "到")) {
@@ -10157,326 +10020,6 @@ function shouldCollapseGreedyWrapperForDisplay(node, options = {}) {
   return node.type === "ModalANotAQuestion";
 }
 
-
-function scalarWhDegreeTokenClone(node) {
-  if (!node || flattenSurface(node) !== "幾") return node;
-  return token("幾", {
-    label: "how",
-    syntax: "wh_scalar_degree scalar_value_question",
-    slots: ["scalar_wh_degree", "scalar_value_question", "how"],
-    jyutping: firstToken(node) && firstToken(node).jyutping,
-    note: "how much / to what degree",
-    trace: traceInfo("atomic_lexicon", {
-      surface: "幾",
-      generated_slots: ["scalar_wh_degree", "scalar_value_question", "how"],
-      contextual_role_override: "ScalarValueQuestion",
-      reason: "v0.5.86-r2 resolves question-use 幾 as learner-role how in scalar-dimension questions such as 幾遠 / 幾貴 / 幾高 / 幾耐.",
-    }),
-  });
-}
-
-function scalarDimensionDomainFor(node) {
-  const surface = flattenSurface(node);
-  const syntax = String((firstToken(node) || node || {}).syntax || "");
-  if (syntax.includes("distance") || ["遠", "近"].includes(surface)) return "distance";
-  if (syntax.includes("height") || ["高", "矮"].includes(surface)) return "height";
-  if (syntax.includes("duration") || ["耐"].includes(surface)) return "duration";
-  if (syntax.includes("price") || ["貴", "平"].includes(surface)) return "price";
-  return "scalar";
-}
-
-function scalarDimensionQuestionFallbackForPunctuation(segment, terminalText = "") {
-  if (!/[？?]/u.test(String(terminalText || ""))) return null;
-  if (!segment || !segment.length) return null;
-  const { core: bareCore, particles } = withoutTrailingParticles(segment);
-  if (bareCore.length < 2) return null;
-  const whIndex = bareCore.findIndex((node) => flattenSurface(node) === "幾");
-  if (whIndex < 0 || whIndex >= bareCore.length - 1) return null;
-  const dimension = bareCore[whIndex + 1];
-  if (!nodeCanFillSlot(dimension, "scalar_dimension_predicate")) return null;
-  if (bareCore.length > whIndex + 2) return null;
-
-  const topicNodes = bareCore.slice(0, whIndex);
-  const topicChildren = topicNodes.length ? applyConstructionPatterns(topicNodes) : [];
-  if (topicChildren.length > 1) return null;
-  const topic = topicChildren[0] || null;
-  if (topic && !(nodeCanFillSlot(topic, "topic") || nodeCanFillSlot(topic, "topic_or_object") || nodeCanFillSlot(topic, "location") || nodeCanFillSlot(topic, "time"))) return null;
-
-  const wh = scalarWhDegreeTokenClone(bareCore[whIndex]);
-  const children = [...(topic ? [topic] : []), wh, dimension, ...particles];
-  const assignedSlots = [...(topic ? ["topic_or_object"] : []), "scalar_wh_degree", "scalar_dimension_predicate", ...particles.map(() => "particle")];
-  const scalarDomain = scalarDimensionDomainFor(dimension);
-  return construction("ScalarValueQuestion", "ValueQ", children, {
-    slots: templateDerivedSlots("ScalarValueQuestion", children),
-    note: "Scalar value question: optional topic plus question-use 幾 and a scalar dimension predicate.",
-    trace: traceInfo("generative_template", {
-      construction_type: "ScalarValueQuestion",
-      template_family: "generative_template",
-      template: ["topic_or_object?", "scalar_wh_degree!", "scalar_dimension_predicate!", "particle?"],
-      assigned_slots: assignedSlots,
-      scalar_domain: scalarDomain,
-      semantic_domain: `${scalarDomain}_property`,
-      role_resolution_note: "Question punctuation activates scalar-question 幾; non-question degree-stative statements keep ordinary degree-stative/topic-comment parsing.",
-      surfaces: children.map((node) => flattenSurface(node)),
-      reason: "v0.5.86 promotes 幾 + scalar predicate questions such as 幾遠 / 幾貴 / 幾高 / 幾耐 without globally lexicalizing those strings or stealing degree-stative statements.",
-    }),
-  });
-}
-
-function haveOrNotQuestionParticleClone(node) {
-  const surface = flattenSurface(node);
-  if (surface === "呢") {
-    return parserInactiveTokenClone(node, {
-      label: "particle",
-      pos: "particle",
-      syntax: "sentence_final_question_particle",
-      jyutping: "ne1",
-      slots: ["particle", "question_marker"],
-      note: "question particle / asks for an answer",
-      reason: "Question punctuation and final position resolve 呢 as a sentence-final question particle, not a demonstrative determiner or standalone fragment question.",
-    });
-  }
-  return node;
-}
-
-const HAVE_OR_NOT_EVENT_VP_TYPES = new Set([
-  "ActionStativeVP", "CompletionVP", "DelimitedVP", "DesiderativeVP", "DirectionalMotionVP",
-  "ExperientialVP", "ModalVP", "MotionGoalVP", "NegativePotentialComplement", "NegatedVP",
-  "PerfectiveVP", "ProductiveVO", "ProgressiveVP", "ReduplicatedVP", "ResultComplement",
-  "TransitiveVP", "VerbComplementVP",
-]);
-
-function unwrapHaveOrNotEventVp(node) {
-  if (!node || node.kind !== "construction") return null;
-  if (HAVE_OR_NOT_EVENT_VP_TYPES.has(node.type)) return node;
-  for (const child of node.children || []) {
-    const candidate = unwrapHaveOrNotEventVp(child);
-    if (candidate) return candidate;
-  }
-  return nodeCanFillSlot(node, "vp") && !nodeCanFillSlot(node, "np") ? node : null;
-}
-
-function parsedSingleQuestionComplement(nodes) {
-  if (!nodes || !nodes.length) return null;
-  const parsed = applyConstructionPatterns(nodes);
-  if (parsed.length !== 1) return null;
-  const only = parsed[0];
-  if (!only) return null;
-  if (only.kind === "construction") {
-    const vp = unwrapHaveOrNotEventVp(only);
-    if (vp) return vp;
-  }
-  if (nodeCanFillSlot(only, "vp") || nodeCanFillSlot(only, "predicate")) return only;
-  return null;
-}
-
-function haveOrNotEventMarkerClone(node, subtype) {
-  const experiential = subtype === "experiential";
-  return parserInactiveTokenClone(node, {
-    label: "func",
-    pos: "function",
-    syntax: experiential
-      ? "have_or_not_experiential_question_marker"
-      : "have_or_not_event_question_marker",
-    slots: ["existential_question", "question_marker"],
-    note: experiential ? "ever ... or not?" : "did ... or not?",
-    reason: experiential
-      ? "有冇 scopes over an experiential VP; it asks whether the experience occurred rather than whether an NP exists."
-      : "有冇 scopes over a dynamic VP; it asks whether the event occurred rather than whether an NP exists.",
-  });
-}
-
-function haveOrNotQuestionFallbackForPunctuation(segment, terminalText = "") {
-  if (!/[？?]/u.test(String(terminalText || ""))) return null;
-  if (!segment || !segment.length) return null;
-
-  const markerIndexes = segment
-    .map((node, index) => isToken(node, "有冇") ? index : -1)
-    .filter((index) => index >= 0);
-  if (markerIndexes.length !== 1) return null;
-  const markerIndex = markerIndexes[0];
-  const prefix = segment.slice(0, markerIndex);
-  if (prefix.length > 2) return null;
-  if (prefix.some((node) => !nodeCanFillSlot(node, "subject")
-      && !nodeCanFillSlot(node, "topic")
-      && !nodeCanFillSlot(node, "location")
-      && !nodeCanFillSlot(node, "time"))) return null;
-
-  const marker = segment[markerIndex];
-  const after = segment.slice(markerIndex + 1);
-  const particles = [];
-  while (after.length) {
-    const last = after[after.length - 1];
-    if (isParticle(last) || flattenSurface(last) === "呢") {
-      particles.unshift(haveOrNotQuestionParticleClone(after.pop()));
-      continue;
-    }
-    break;
-  }
-
-  const prefixSubject = prefix.find((node) => nodeCanFillSlot(node, "subject")) || null;
-  const prefixAssigned = prefix.map((node) => node === prefixSubject
-    ? "subject"
-    : nodeCanFillSlot(node, "time")
-      ? "time"
-      : nodeCanFillSlot(node, "location")
-        ? "location"
-        : "topic");
-
-  if (!after.length) {
-    const children = [...prefix, marker, ...particles];
-    return construction("ExistentialQuestion", "Have?", children, {
-      slots: cleanSlots(["existential_question", "question_fragment", "possessive_question", "predicate", ...templateDerivedSlots("ExistentialQuestion", children)]),
-      note: "Elliptical 有冇 question whose possession/existence domain must be supplied by the immediately preceding discourse.",
-      trace: traceInfo("generative_template", {
-        construction_type: "ExistentialQuestion",
-        template_family: "generative_template",
-        template: [...prefixAssigned.map((slot) => `${slot}?`), "existential_question!", "particle?"],
-        assigned_slots: [...prefixAssigned, "existential_question", ...particles.map(() => "particle")],
-        surfaces: children.map((node) => flattenSurface(node)),
-        question_family: "have_or_not",
-        existential_subtype: "elliptical_domain",
-        complement_type: "context_supplied_np_or_domain",
-        context_requirement_status: "context_required",
-        missing_argument_slots: ["existential_domain"],
-        missing_slot_details: [{ slot: "existential_domain", license_status: "unresolved" }],
-        antecedent_status: "not_observed",
-        discourse_license_not_observed: true,
-        not_claims: ["not_fabricated_object", "not_event_occurrence_question", "not_clean_context_free_question"],
-        reason: "Question punctuation licenses the 有冇 question frame, but no overt possession/existence domain follows the marker.",
-      }),
-    });
-  }
-
-  let postMarkerSubject = null;
-  let eventNodes = after;
-  if (after.length >= 2 && nodeCanFillSlot(after[0], "subject")) {
-    const candidate = parsedSingleQuestionComplement(after.slice(1));
-    if (candidate) {
-      postMarkerSubject = after[0];
-      eventNodes = after.slice(1);
-    }
-  }
-
-  const event = parsedSingleQuestionComplement(eventNodes);
-  if (event) {
-    const experiential = nodeCanFillSlot(event, "experiential_vp") || hasConstruction([event], "ExperientialVP");
-    const markerChild = haveOrNotEventMarkerClone(marker, experiential ? "experiential" : "event");
-    const children = [...prefix, markerChild, ...(postMarkerSubject ? [postMarkerSubject] : []), event, ...particles];
-    const assignedSlots = [
-      ...prefixAssigned,
-      "existential_question",
-      ...(postMarkerSubject ? ["event_subject"] : []),
-      experiential ? "experiential_vp" : "vp",
-      ...particles.map(() => "particle"),
-    ];
-    const type = experiential ? "ExperientialYesNoQuestion" : "ANotAQuestion";
-    const firstPersonSubject = prefixSubject && flattenSurface(prefixSubject) === "我";
-    const eventRows = flattenNodes([event]);
-    const eventTokens = eventRows.filter((row) => row.kind === "token");
-    const eventHead = eventTokens.find((row) => (row.slots || []).includes("action_verb")) || null;
-    const eventHeadIndex = eventHead ? eventTokens.indexOf(eventHead) : -1;
-    const eventHasOvertDomain = eventHeadIndex >= 0 && eventTokens.slice(eventHeadIndex + 1).some((row) => {
-      const rowSlots = row.slots || [];
-      return !rowSlots.includes("completion_marker")
-        && !rowSlots.includes("particle")
-        && rowSlots.some((slot) => ["object", "theme", "head_noun", "np"].includes(slot));
-    });
-    const objectlessTotalityCompletion = !experiential
-      && event.type === "CompletionVP"
-      && eventTokens.some((row) => row.surface === "晒" && (row.slots || []).includes("completion_marker"))
-      && !eventHasOvertDomain;
-    const eventMissingSlots = objectlessTotalityCompletion ? ["object_or_activity_domain"] : [];
-    return construction(type, experiential ? "Exp?" : "A-not-A", children, {
-      slots: templateDerivedSlots(type, children),
-      note: experiential
-        ? "有冇 scopes over a transparent experiential VP and asks whether the experience occurred."
-        : "有冇 scopes over a transparent dynamic VP and asks whether the event occurred.",
-      trace: traceInfo("generative_template", {
-        construction_type: type,
-        template_family: "generative_template",
-        template: [
-          ...prefixAssigned.map((slot) => `${slot}?`),
-          "existential_question!",
-          ...(postMarkerSubject ? ["event_subject!"] : []),
-          experiential ? "experiential_vp!" : "vp!",
-          "particle?",
-        ],
-        assigned_slots: assignedSlots,
-        surfaces: children.map((node) => flattenSurface(node)),
-        question_family: "have_or_not",
-        question_subtype: experiential ? "experiential_occurrence" : "event_occurrence",
-        complement_type: experiential ? "experiential_vp" : "dynamic_vp",
-        event_subject_position: postMarkerSubject ? "postmarker" : prefixSubject ? "premarker" : "omitted_or_generic",
-        negation_type: "event_nonoccurrence_alternative",
-        first_person_pragmatics: firstPersonSubject ? "review_bearing_but_grammatical" : "not_applicable",
-        event_head_surface: eventHead ? eventHead.surface : "",
-        event_surface: flattenSurface(event),
-        event_domain_status: objectlessTotalityCompletion ? "discourse_recoverable_totality_domain" : eventHasOvertDomain ? "overt" : "unspecified_activity_reading",
-        context_requirement_status: objectlessTotalityCompletion ? "context_required" : "context_not_required",
-        missing_argument_slots: eventMissingSlots,
-        missing_slot_details: eventMissingSlots.map((slot) => ({ slot, license_status: "unresolved" })),
-        antecedent_status: objectlessTotalityCompletion ? "not_observed" : "not_applicable",
-        discourse_license_not_observed: objectlessTotalityCompletion,
-        not_claims: ["not_existential_np_question", "not_malformed_candidate", "not_fabricated_event_argument", ...(objectlessTotalityCompletion ? ["not_context_free_totality_domain"] : [])],
-        reason: experiential
-          ? "Question punctuation plus embedded experiential structure outranks the old malformed 有冇 + VP guard."
-          : "Question punctuation distinguishes grammatical event-occurrence 有冇 + VP from the punctuation-free learner-error guardrail.",
-      }),
-    });
-  }
-
-  // Availability nominal: non-person NP + following action/purpose verb, e.g. 嘢食 / 書睇.
-  if (after.length === 2
-      && nodeCanFillSlot(after[0], "object")
-      && !nodeCanFillSlot(after[0], "subject")
-      && (nodeCanFillSlot(after[1], "action_verb") || nodeCanFillSlot(after[1], "purpose_verb"))) {
-    const children = [...prefix, marker, ...after, ...particles];
-    return construction("ExistentialQuestion", "Have?", children, {
-      slots: templateDerivedSlots("ExistentialQuestion", children),
-      note: "Existential/availability 有冇 question with a transparent nominal domain such as 嘢食 or 書睇.",
-      trace: traceInfo("generative_template", {
-        construction_type: "ExistentialQuestion",
-        template_family: "generative_template",
-        template: [...prefixAssigned.map((slot) => `${slot}?`), "existential_question!", "availability_head!", "availability_predicate!", "particle?"],
-        assigned_slots: [...prefixAssigned, "existential_question", "availability_head", "availability_predicate", ...particles.map(() => "particle")],
-        surfaces: children.map((node) => flattenSurface(node)),
-        question_family: "have_or_not",
-        existential_subtype: "availability",
-        complement_type: "availability_np",
-        availability_domain_surface: after.map((node) => flattenSurface(node)).join(""),
-        context_requirement_status: "context_not_required",
-        missing_argument_slots: [],
-        not_claims: ["not_event_occurrence_question", "not_experiential_question", "not_opaque_whole_phrase_lexicalization"],
-        reason: "A non-person nominal head followed by an action/purpose verb forms the available-item domain; 有冇 asks whether such an item is available.",
-      }),
-    });
-  }
-
-  if (after.length === 1 && (nodeCanFillSlot(after[0], "topic_or_object") || nodeCanFillSlot(after[0], "np") || nodeCanFillSlot(after[0], "subject"))) {
-    const children = [...prefix, marker, after[0], ...particles];
-    return construction("ExistentialQuestion", "Have?", children, {
-      slots: templateDerivedSlots("ExistentialQuestion", children),
-      note: "Existential/possessive 有冇 question with an overt NP domain.",
-      trace: traceInfo("generative_template", {
-        construction_type: "ExistentialQuestion",
-        template_family: "generative_template",
-        template: [...prefixAssigned.map((slot) => `${slot}?`), "existential_question!", "topic_or_object!", "particle?"],
-        assigned_slots: [...prefixAssigned, "existential_question", "topic_or_object", ...particles.map(() => "particle")],
-        surfaces: children.map((node) => flattenSurface(node)),
-        question_family: "have_or_not",
-        existential_subtype: prefix.some((node) => nodeCanFillSlot(node, "location")) ? "locative_existence" : "possession_or_existence",
-        complement_type: "np",
-        context_requirement_status: "context_not_required",
-        missing_argument_slots: [],
-        not_claims: ["not_event_occurrence_question", "not_malformed_candidate"],
-        reason: "The complement after 有冇 is an overt NP rather than a VP.",
-      }),
-    });
-  }
-
-  return null;
-}
 
 function fullSpanSingleConstruction(nodes, sourceNodes) {
   if (!Array.isArray(nodes) || nodes.length !== 1) return null;
