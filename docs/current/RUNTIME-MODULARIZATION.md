@@ -1,10 +1,11 @@
 # Runtime modularization and wired-resource architecture
 
-Status: **Stage 4 declarative resource extraction implemented; pending merge**
+Status: **Stage 5 parser primitive extraction implemented; pending merge**
 Parent program: #161
-Stage 4 intake: #165
-Work claim: #180
-Draft pull request: #181
+Stage 5 intake: #166
+Work claim: #182
+Draft pull request: #183
+Stage 4 declarative resources: #165 / PR #181
 Stage 3 lexical/Jyutping resources: #164 / PR #179
 Stage 2 build pipeline: #163 / PR #177
 Stage 1 architecture: #162 / PR #172
@@ -157,6 +158,19 @@ These modules are build-time inputs only. They do not own construction UUIDs, ca
 
 Normalization maps, parser primitives, tokenization, detector-family tables, rendering algorithms, and plugin lifecycle/settings code remain outside Stage 4.
 
+## Stage 5 parser primitive ownership
+
+Dependency-leaf parser infrastructure is now maintained under:
+
+- `src/parser/normalization/` and `src/runtime-resources/normalization/` for parser-shadow normalization and its passive character/repair maps;
+- `src/parser/features/` for token-feature inference and feature-bundle predicates;
+- `src/parser/slots/` for controlled slot cleanup, construction-slot lookup, and slot compatibility primitives;
+- `src/parser/templates/` for generic template-slot parsing, constraint checks, and ordered matching;
+- `src/parser/nodes/` for node-shape helpers and token/construction factory primitives;
+- `src/parser/tokenization/` for punctuation, lexical selection, and the dependency-injected tokenizer loop.
+
+Construction-specific token split rules, detector families, category-template policy, NP licensing policy, rendering algorithms, diagnostics, and plugin lifecycle code remain outside these modules. Where the tokenizer or node factory needs such policy, `src/plugin-entry.js` injects the existing canonical helper rather than duplicating or relocating it.
+
 ## Runtime-resource format rule
 
 Use JSON only for plain serializable data whose order and values can be preserved without behavior. Use JavaScript modules when the resource contains:
@@ -250,6 +264,6 @@ The modularization succeeds only when routine changes become file-local:
 
 Generated `main.js` may still be large. The improvement is that the GitHub connector edits small canonical inputs and reviews a deterministic output rather than reconstructing the bundle as the source of truth.
 
-## Stage 4 behavior boundary
+## Stage 5 behavior boundary
 
-Stage 4 moves shared passive grammar, presentation, runtime-compatibility, and diagnostic data into canonical resource modules without changing parser or rendering behavior. Runtime version `0.5.216`, manifest version `0.5.216`, parser results, rendered output, test expectations, construction identity, linguistic status, evidence, corpus classification, survey state, release state, and merge authorization remain unchanged.
+Stage 5 moves dependency-leaf parser infrastructure into canonical source modules without changing tokenization, normalization, parser, or rendering behavior. Runtime version `0.5.216`, manifest version `0.5.216`, parser results, rendered output, test expectations, construction identity, linguistic status, evidence, corpus classification, survey state, release state, and merge authorization remain unchanged.
