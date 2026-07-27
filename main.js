@@ -6787,6 +6787,422 @@ var require_tokenize_line = __commonJS({
   }
 });
 
+// src/parser/detectors/questions/a-not-a.js
+var require_a_not_a = __commonJS({
+  "src/parser/detectors/questions/a-not-a.js"(exports2, module2) {
+    "use strict";
+    module2.exports = function createANotAQuestionDetectors2(dependencies = {}) {
+      const {
+        assignedSlotWrapperCoverage: assignedSlotWrapperCoverage2,
+        applyConstructionPatterns: applyConstructionPatterns2,
+        cleanSlots: cleanSlots2,
+        construction: construction2,
+        directPredicateCapableNode: directPredicateCapableNode2,
+        firstToken: firstToken2,
+        flattenSurface: flattenSurface2,
+        fullSpanSingleConstruction: fullSpanSingleConstruction2,
+        isExplicitWhQuestionConstruction: isExplicitWhQuestionConstruction2,
+        isParticle: isParticle2,
+        isProtectedMeReactionFormula: isProtectedMeReactionFormula2,
+        isToken: isToken2,
+        isVerbLike: isVerbLike2,
+        nodeCanFillSlot: nodeCanFillSlot2,
+        optionalSubjectOffset: optionalSubjectOffset2,
+        parserInactiveTokenClone: parserInactiveTokenClone2,
+        phase4DesiderativeActiveTokenClone: phase4DesiderativeActiveTokenClone2,
+        phase4PermissionActiveTokenClone: phase4PermissionActiveTokenClone2,
+        possessiveFragmentAnswerCandidate: possessiveFragmentAnswerCandidate2,
+        propositionLikeHostForFinalMe: propositionLikeHostForFinalMe2,
+        surfaceOf: surfaceOf2,
+        templateDerivedSlots: templateDerivedSlots2,
+        token: token2,
+        traceInfo: traceInfo2,
+        withoutIgnorableSpaceText: withoutIgnorableSpaceText2,
+        withoutTrailingParticles: withoutTrailingParticles2,
+        wrapCategorySubspans: wrapCategorySubspans2,
+        yesNoQuestionMarkerClone: yesNoQuestionMarkerClone2
+      } = dependencies;
+      function aNotAQuestionFallback2(core) {
+        const offset = optionalSubjectOffset2(core);
+        if (core.length - offset < 3) return null;
+        const first = core[offset];
+        const negator = core[offset + 1];
+        const second = core[offset + 2];
+        const firstTok = firstToken2(first);
+        const secondTok = firstToken2(second);
+        if (!firstTok || !secondTok) return null;
+        if (!isVerbLike2(first) || !isToken2(negator, "唔")) return null;
+        if (firstTok.surface !== secondTok.surface) return null;
+        return construction2("ANotAQuestion", "A-not-A", core, {
+          note: "A-not-A polar question construction with optional subject and following object/goal.",
+          trace: traceInfo2("generative_or_heuristic_slot_rule", {
+            rule: "subject? + verb + 唔 + copied verb + complement?",
+            reason: "Structural A-not-A heuristic runs before VP subspan wrapping so the copied verb remains visible."
+          })
+        });
+      }
+      function desiderativeANotAQuestionFallback2(core) {
+        const { core: bareCore, particles } = withoutTrailingParticles2(core);
+        const offset = optionalSubjectOffset2(bareCore);
+        if (bareCore.length - offset < 4) return null;
+        const firstModal = bareCore[offset];
+        const negator = bareCore[offset + 1];
+        const secondModal = bareCore[offset + 2];
+        const firstTok = firstToken2(firstModal);
+        const secondTok = firstToken2(secondModal);
+        if (!firstTok || !secondTok) return null;
+        if (!nodeCanFillSlot2(firstModal, "desiderative_modal")) return null;
+        if (!nodeCanFillSlot2(secondModal, "desiderative_modal")) return null;
+        if (firstTok.surface !== "想" || secondTok.surface !== "想") return null;
+        if (!isToken2(negator, "唔")) return null;
+        const complementCore = bareCore.slice(offset + 3);
+        if (!complementCore.length) return null;
+        const wrappedComplement = wrapCategorySubspans2(complementCore);
+        if (wrappedComplement.length !== 1 || !nodeCanFillSlot2(wrappedComplement[0], "vp")) return null;
+        const promotedFirst = phase4DesiderativeActiveTokenClone2(firstModal, {
+          syntax: `${firstTok.syntax || "modal_desiderative"} desiderative_a_not_a_question`,
+          slots: ["desiderative_a_not_a_question"],
+          reason: "Phase 4 controlled grammar promotion: first 想 is parser-active only as the positive arm of an approved 想唔想 + VP question."
+        });
+        const promotedSecond = phase4DesiderativeActiveTokenClone2(secondModal, {
+          syntax: `${secondTok.syntax || "modal_desiderative"} desiderative_a_not_a_question`,
+          slots: ["desiderative_a_not_a_question"],
+          reason: "Phase 4 controlled grammar promotion: second 想 is parser-active only as the copied negative arm of an approved 想唔想 + VP question."
+        });
+        const children = [
+          ...bareCore.slice(0, offset),
+          promotedFirst,
+          negator,
+          promotedSecond,
+          ...wrappedComplement,
+          ...particles
+        ];
+        const assignedSlots = [
+          ...bareCore.slice(0, offset).map(() => "subject"),
+          "modal_positive_arm",
+          "negator",
+          "modal_negative_arm",
+          "vp",
+          ...particles.map(() => "particle")
+        ];
+        const traceDetail = {
+          construction_type: "ModalANotAQuestion",
+          retired_label_alias: "DesiderativeANotAQuestion",
+          modal_subtype: "desiderative",
+          template_family: "generative_template",
+          template: ["subject?", "modal_positive_arm!", "negator!", "modal_negative_arm!", "vp!", "particle?"],
+          assigned_slots: assignedSlots,
+          rule: "subject? + 想 + 唔 + 想 + vp + particle?",
+          reason: "Promote reviewed desiderative A-not-A questions under the broad ModalANotAQuestion category while preserving desiderative subtype metadata and the visible VP complement requirement.",
+          surfaces: children.map((node) => flattenSurface2(node))
+        };
+        const wrapperCoverage = assignedSlotWrapperCoverage2("ModalANotAQuestion", children, assignedSlots);
+        if (wrapperCoverage) traceDetail.wrapper_coverage = wrapperCoverage;
+        return construction2("ModalANotAQuestion", "ModalQ", children, {
+          note: "Broad modal A-not-A question with desiderative subtype: optional subject + 想唔想 + reviewed VP.",
+          slots: templateDerivedSlots2("ModalANotAQuestion", children),
+          trace: traceInfo2("generative_template", traceDetail)
+        });
+      }
+      function permissionANotAQuestionFallback2(core) {
+        const { core: bareCore, particles } = withoutTrailingParticles2(core);
+        const offset = optionalSubjectOffset2(bareCore);
+        if (bareCore.length - offset < 2) return null;
+        const modal = bareCore[offset];
+        const modalToken = firstToken2(modal);
+        if (!modalToken || modalToken.surface !== "可唔可以") return null;
+        if (!nodeCanFillSlot2(modal, "modal")) return null;
+        const complementCore = bareCore.slice(offset + 1);
+        if (!complementCore.length) return null;
+        let wrappedComplement = wrapCategorySubspans2(complementCore);
+        if (wrappedComplement.length !== 1 && complementCore.length === 2 && nodeCanFillSlot2(complementCore[0], "action_verb") && (nodeCanFillSlot2(complementCore[1], "recipient") || nodeCanFillSlot2(complementCore[1], "subject"))) {
+          const personObject = parserInactiveTokenClone2(complementCore[1], {
+            label: complementCore[1].label || "who",
+            pos: "np",
+            syntax: `${complementCore[1].syntax || "person_np"} person_object recipient`,
+            slots: ["object", "recipient", "np"],
+            reason: "The person after the action verb is its visible person-object/recipient inside the permission question VP."
+          });
+          const vpChildren = [complementCore[0], personObject];
+          wrappedComplement = [construction2("TransitiveVP", "VP", vpChildren, {
+            note: "Transitive VP with a person object, preserved inside a permission A-not-A question.",
+            slots: templateDerivedSlots2("TransitiveVP", vpChildren),
+            trace: traceInfo2("generative_template", {
+              construction_type: "TransitiveVP",
+              template_family: "generative_template",
+              template: ["action_verb!", "person_object!"],
+              assigned_slots: ["action_verb", "person_object"],
+              surfaces: vpChildren.map((node) => flattenSurface2(node)),
+              reason: "Cantonese transitive verbs such as 幫 can take a person pronoun as their object; the person keeps the learner role who."
+            })
+          })];
+        }
+        if (wrappedComplement.length !== 1 || !nodeCanFillSlot2(wrappedComplement[0], "vp")) return null;
+        const promotedModal = phase4PermissionActiveTokenClone2(modal, {
+          syntax: `${modalToken.syntax || "modal_permission_or_ability"} modal_a_not_a_question permission_a_not_a_question`,
+          slots: ["modal_a_not_a_question", "permission_a_not_a_question", "permission_a_not_a_modal"],
+          reason: "Phase 4 controlled grammar promotion: 可唔可以 is parser-active only as an approved permission A-not-A modal with a visible VP complement."
+        });
+        const children = [
+          ...bareCore.slice(0, offset),
+          promotedModal,
+          ...wrappedComplement,
+          ...particles
+        ];
+        const assignedSlots = [
+          ...bareCore.slice(0, offset).map(() => "subject"),
+          "modal_a_not_a",
+          "vp",
+          ...particles.map(() => "particle")
+        ];
+        const traceDetail = {
+          construction_type: "ModalANotAQuestion",
+          retired_label_alias: "PermissionANotAQuestion",
+          modal_subtype: "permission",
+          template_family: "generative_template",
+          template: ["subject?", "modal_a_not_a!", "vp!", "particle?"],
+          assigned_slots: assignedSlots,
+          surfaces: children.map((node) => flattenSurface2(node)),
+          reason: "Promotes reviewed permission A-not-A questions under the broad ModalANotAQuestion category while keeping the 可唔可以 modal token parser-active only in this approved scope."
+        };
+        const wrapperCoverage = assignedSlotWrapperCoverage2("ModalANotAQuestion", children, assignedSlots);
+        if (wrapperCoverage) traceDetail.wrapper_coverage = wrapperCoverage;
+        return construction2("ModalANotAQuestion", "ModalQ", children, {
+          note: "Broad modal A-not-A question with permission subtype: optional subject + 可唔可以 + reviewed VP.",
+          slots: templateDerivedSlots2("ModalANotAQuestion", children),
+          trace: traceInfo2("generative_template", traceDetail)
+        });
+      }
+      function copularANotAComplementCandidate(complementCore) {
+        const possessive = possessiveFragmentAnswerCandidate2(complementCore);
+        if (possessive) return { node: possessive, profile: "possessive_fragment" };
+        const wrapped = applyConstructionPatterns2(complementCore);
+        if (wrapped.length === 1 && wrapped[0] && wrapped[0].kind === "construction") {
+          const candidate = wrapped[0];
+          const nominalTypes = /* @__PURE__ */ new Set([
+            "NominalHeadSpan",
+            "OvertHeadDemonstrativeClassifierNP",
+            "HeadlessDemonstrativeClassifierNP",
+            "QuantifiedClassifierNP",
+            "QuantifiedPersonNP",
+            "DiMarkedNP",
+            "OrdinalClassifierNP",
+            "ClassifierObjectNP",
+            "CoordinatedNP",
+            "FragmentAnswer"
+          ]);
+          const blockedPredicateTypes = /* @__PURE__ */ new Set([
+            "ModifierNP",
+            "ModifiedNP",
+            "NominalHeadSpan",
+            "OvertHeadDemonstrativeClassifierNP",
+            "HeadlessDemonstrativeClassifierNP",
+            "QuantifiedClassifierNP",
+            "QuantifiedPersonNP",
+            "DiMarkedNP",
+            "OrdinalClassifierNP",
+            "ClassifierObjectNP",
+            "CoordinatedNP",
+            "FragmentAnswer",
+            "NeedsContext"
+          ]);
+          const predicateLike = !blockedPredicateTypes.has(candidate.type) && (nodeCanFillSlot2(candidate, "predicate") || directPredicateCapableNode2(candidate));
+          if (predicateLike) return { node: candidate, profile: "clausal_or_predicate" };
+          if (nominalTypes.has(candidate.type)) return { node: candidate, profile: "nominal" };
+        }
+        if (complementCore.length === 1 && (nodeCanFillSlot2(complementCore[0], "np") || nodeCanFillSlot2(complementCore[0], "subject"))) {
+          return { node: complementCore[0], profile: "nominal" };
+        }
+        return null;
+      }
+      function copularANotAQuestionFallback2(core) {
+        let particleStart = core.length;
+        while (particleStart > 0 && isParticle2(core[particleStart - 1]) && !isToken2(core[particleStart - 1], "嘅")) {
+          particleStart -= 1;
+        }
+        const bareCore = core.slice(0, particleStart);
+        const particles = core.slice(particleStart);
+        const offset = bareCore.length >= 4 && nodeCanFillSlot2(bareCore[0], "subject") && !isToken2(bareCore[0], "係") ? 1 : 0;
+        if (bareCore.length - offset < 3) return null;
+        if (!isToken2(bareCore[offset], "係")) return null;
+        const fusedNegativeArm = isToken2(bareCore[offset + 1], "唔係");
+        const splitNegativeArm = isToken2(bareCore[offset + 1], "唔") && isToken2(bareCore[offset + 2], "係");
+        if (!fusedNegativeArm && !splitNegativeArm) return null;
+        const complementStart = offset + (fusedNegativeArm ? 2 : 3);
+        const complementCore = bareCore.slice(complementStart);
+        if (!complementCore.length) return null;
+        const complementCandidate = copularANotAComplementCandidate(complementCore);
+        if (!complementCandidate) return null;
+        const complement = complementCandidate.node;
+        const complementSlot = complementCandidate.profile === "clausal_or_predicate" ? "copular_predicate_complement" : "copular_nominal_complement";
+        const positiveCopula = parserInactiveTokenClone2(bareCore[offset], {
+          label: "func",
+          pos: "function",
+          syntax: "copula copular_a_not_a_positive",
+          slots: ["copula", "copular_positive_arm"],
+          reason: "係 is the positive arm of a copular A-not-A question."
+        });
+        const negator = fusedNegativeArm ? token2("唔", {
+          label: "func",
+          pos: "function",
+          syntax: "negator copular_a_not_a_negator",
+          slots: ["negator", "m4_negator"],
+          jyutping: "m4",
+          note: "Visible negator split transparently from the lexical token 唔係 inside the copular A-not-A pattern."
+        }) : parserInactiveTokenClone2(bareCore[offset + 1], {
+          label: "func",
+          pos: "function",
+          syntax: "negator copular_a_not_a_negator",
+          slots: ["negator", "m4_negator"],
+          reason: "唔 separates the positive and negative copular arms."
+        });
+        const negativeCopula = fusedNegativeArm ? token2("係", {
+          label: "func",
+          pos: "function",
+          syntax: "copula copular_a_not_a_negative",
+          slots: ["copula", "copular_negative_arm"],
+          jyutping: "hai6",
+          note: "Visible negative copular arm split transparently from the lexical token 唔係."
+        }) : parserInactiveTokenClone2(bareCore[offset + 2], {
+          label: "func",
+          pos: "function",
+          syntax: "copula copular_a_not_a_negative",
+          slots: ["copula", "copular_negative_arm"],
+          reason: "係 is the copied negative arm of the copular A-not-A question."
+        });
+        const children = [...bareCore.slice(0, offset), positiveCopula, negator, negativeCopula, complement, ...particles];
+        const assignedSlots = [
+          ...bareCore.slice(0, offset).map(() => "subject"),
+          "copula_positive_arm",
+          "negator",
+          "copula_negative_arm",
+          complementSlot,
+          ...particles.map(() => "particle")
+        ];
+        return construction2("CopularANotAQuestion", "CopularQ", children, {
+          note: complementCandidate.profile === "clausal_or_predicate" ? "Copular A-not-A question: optional subject/topic + 係唔係 + overt predicate or clause complement." : "Copular A-not-A question: optional subject + 係唔係 + bounded nominal or possessive complement.",
+          slots: cleanSlots2(["copular_a_not_a_question", "question_fragment", "copula", "negator", "copular_complement", complementSlot, "predicate", "clause", offset ? "subject" : "", ...templateDerivedSlots2("CopularANotAQuestion", children)]),
+          trace: traceInfo2("generative_template", {
+            construction_type: "CopularANotAQuestion",
+            template_family: "generative_template",
+            template: ["subject_or_topic?", "copula_positive_arm!", "negator!", "copula_negative_arm!", `${complementSlot}!`, "particle?"],
+            assigned_slots: assignedSlots,
+            surfaces: children.map((node) => flattenSurface2(node)),
+            tokenization_path: fusedNegativeArm ? "positive_copula_plus_fused_negative_copula" : "three_token_copular_a_not_a",
+            complement_profile: complementCandidate.profile,
+            tag_profile: "terminal_hai6_m4_hai6_excluded",
+            contracted_marker_profile: "hai6_mai6_remains_separate_polar_question_path",
+            reason: "Preserve both copular arms and classify the overt following material as a typed predicate/clause or a bounded nominal/possessive complement; terminal 係唔係 tags are outside this node."
+          })
+        });
+      }
+      function polarQuestionFrameFallback2(core) {
+        const { core: bareCore, particles } = withoutTrailingParticles2(core);
+        const compact = withoutIgnorableSpaceText2(bareCore);
+        if (compact.length !== 3) return null;
+        const [subject, marker, predicate] = compact;
+        if (!nodeCanFillSlot2(subject, "subject")) return null;
+        if (!isToken2(marker, "係咪")) return null;
+        if (!directPredicateCapableNode2(predicate)) return null;
+        const children = [subject, yesNoQuestionMarkerClone2(marker), predicate, ...particles];
+        return construction2("PolarQuestionFrame", "YesNo?", children, {
+          note: "v0.5.32 bounded 係咪 polar question: subject + 係咪 + predicate + optional particle.",
+          slots: templateDerivedSlots2("PolarQuestionFrame", children),
+          trace: traceInfo2("generative_template", {
+            construction_type: "PolarQuestionFrame",
+            template: ["subject!", "yes_no_question_marker!", "predicate!", "particle?"],
+            assigned_slots: ["subject", "yes_no_question_marker", "predicate", ...particles.map(() => "particle")],
+            surfaces: children.map((node) => flattenSurface2(node)),
+            reason: "Promotes only the reviewed 係咪 + predicate yes/no question shape."
+          })
+        });
+      }
+      function acceptabilityANotAQuestionFallback2(core) {
+        const acceptabilityANotAIndex = core.findIndex(
+          (node, index) => surfaceOf2(node) === "得" && surfaceOf2(core[index + 1]) === "唔" && surfaceOf2(core[index + 2]) === "得"
+        );
+        if (acceptabilityANotAIndex < 0) return null;
+        const tail = core.slice(acceptabilityANotAIndex + 3).map(surfaceOf2);
+        if (tail.length !== 0 && !(tail.length === 1 && tail[0] === "先")) return null;
+        return construction2("AcceptabilityANotA", "得唔得", core, {
+          note: "Terminal A-not-A acceptability predicate: 得唔得, optionally followed by 先.",
+          trace: traceInfo2("legacy_surface_rule", {
+            rule: "terminal adjacent 得唔得 (先)",
+            reason: "Narrow fallback for an overt terminal acceptability A-not-A sequence."
+          })
+        });
+      }
+      function inlineANotAQuestionFallback2(core) {
+        if (core.length < 3 || !isVerbLike2(core[0]) || !isToken2(core[1], "唔")) return null;
+        const first = firstToken2(core[0]);
+        const third = firstToken2(core[2]);
+        if (!first || !third || first.surface !== third.surface) return null;
+        return construction2("ANotAQuestion", "A-not-A", core, {
+          note: "A-not-A polar question construction.",
+          trace: traceInfo2("generative_or_heuristic_slot_rule", {
+            rule: "verb + 唔 + copied verb",
+            reason: "Structural A-not-A heuristic."
+          })
+        });
+      }
+      function finalMeQuestionParticleClone(node) {
+        return parserInactiveTokenClone2(node, {
+          label: "particle",
+          pos: "particle",
+          syntax: "sentence_final_polar_question_particle biased_question_particle",
+          slots: ["particle", "yes_no_question_marker", "question_marker"],
+          jyutping: "me1",
+          note: "sentence-final polar question particle; often conveys surprise or negative expectation",
+          reason: "Final 咩 scopes over a complete proposition-like host as a biased polar-question particle, not as a wh object."
+        });
+      }
+      function finalMePolarQuestionFallbackForPunctuation2(segment, terminalText = "", ordinaryWrapped = null) {
+        if (!/[？?]/u.test(String(terminalText || ""))) return null;
+        const compact = withoutIgnorableSpaceText2(segment || []);
+        if (compact.length < 2 || !isToken2(compact[compact.length - 1], "咩")) return null;
+        const ordinaryTop = fullSpanSingleConstruction2(ordinaryWrapped, compact);
+        if (ordinaryTop && (isExplicitWhQuestionConstruction2(ordinaryTop) || isProtectedMeReactionFormula2(ordinaryTop))) return null;
+        const hostNodes = compact.slice(0, -1);
+        const host = propositionLikeHostForFinalMe2(hostNodes);
+        if (!host) return null;
+        const particle = finalMeQuestionParticleClone(compact[compact.length - 1]);
+        const children = [host, particle];
+        return construction2("PolarQuestionFrame", "YesNo?", children, {
+          note: "Biased polar question formed by a complete proposition-like host plus sentence-final 咩.",
+          slots: templateDerivedSlots2("PolarQuestionFrame", children),
+          trace: traceInfo2("generative_template", {
+            construction_type: "PolarQuestionFrame",
+            template_family: "generative_template",
+            template: ["proposition_host!", "polar_question_particle!"],
+            assigned_slots: ["proposition_host", "polar_question_particle"],
+            surfaces: children.map((node) => flattenSurface2(node)),
+            question_family: "polar",
+            question_subtype: "biased_sentence_final_me1",
+            bias: "negative_expectation_or_surprise",
+            proposition_host_construction: host.type,
+            proposition_host_surface: flattenSurface2(host),
+            context_requirement_status: "context_not_required",
+            missing_argument_slots: [],
+            antecedent_status: "not_applicable",
+            not_claims: ["not_wh_object", "not_wh_determiner", "not_a_not_a_question", "not_fabricated_proposition"],
+            reason: "A complete proposition-like host licenses sentence-final 咩 as a biased polar particle. Existing explicit wh-question constructions and protected 係咩 reaction formulae retain precedence."
+          })
+        });
+      }
+      return {
+        aNotAQuestionFallback: aNotAQuestionFallback2,
+        acceptabilityANotAQuestionFallback: acceptabilityANotAQuestionFallback2,
+        copularANotAQuestionFallback: copularANotAQuestionFallback2,
+        desiderativeANotAQuestionFallback: desiderativeANotAQuestionFallback2,
+        finalMePolarQuestionFallbackForPunctuation: finalMePolarQuestionFallbackForPunctuation2,
+        inlineANotAQuestionFallback: inlineANotAQuestionFallback2,
+        permissionANotAQuestionFallback: permissionANotAQuestionFallback2,
+        polarQuestionFrameFallback: polarQuestionFrameFallback2
+      };
+    };
+  }
+});
+
 // src/parser/detectors/discourse/formula-responses.js
 var require_formula_responses = __commonJS({
   "src/parser/detectors/discourse/formula-responses.js"(exports2, module2) {
@@ -9926,25 +10342,46 @@ function optionalSubjectOffset(core) {
   const slots = nodeSlots(core[0]);
   return slots.includes("subject") ? 1 : 0;
 }
-function aNotAQuestionFallback(core) {
-  const offset = optionalSubjectOffset(core);
-  if (core.length - offset < 3) return null;
-  const first = core[offset];
-  const negator = core[offset + 1];
-  const second = core[offset + 2];
-  const firstTok = firstToken(first);
-  const secondTok = firstToken(second);
-  if (!firstTok || !secondTok) return null;
-  if (!isVerbLike(first) || !isToken(negator, "唔")) return null;
-  if (firstTok.surface !== secondTok.surface) return null;
-  return construction("ANotAQuestion", "A-not-A", core, {
-    note: "A-not-A polar question construction with optional subject and following object/goal.",
-    trace: traceInfo("generative_or_heuristic_slot_rule", {
-      rule: "subject? + verb + 唔 + copied verb + complement?",
-      reason: "Structural A-not-A heuristic runs before VP subspan wrapping so the copied verb remains visible."
-    })
-  });
-}
+var createANotAQuestionDetectors = require_a_not_a();
+var {
+  aNotAQuestionFallback,
+  acceptabilityANotAQuestionFallback,
+  copularANotAQuestionFallback,
+  desiderativeANotAQuestionFallback,
+  finalMePolarQuestionFallbackForPunctuation,
+  inlineANotAQuestionFallback,
+  permissionANotAQuestionFallback,
+  polarQuestionFrameFallback
+} = createANotAQuestionDetectors({
+  assignedSlotWrapperCoverage,
+  applyConstructionPatterns,
+  cleanSlots,
+  construction,
+  directPredicateCapableNode,
+  firstToken,
+  flattenSurface,
+  fullSpanSingleConstruction,
+  isExplicitWhQuestionConstruction,
+  isParticle,
+  isProtectedMeReactionFormula,
+  isToken,
+  isVerbLike,
+  nodeCanFillSlot,
+  optionalSubjectOffset,
+  parserInactiveTokenClone,
+  phase4DesiderativeActiveTokenClone,
+  phase4PermissionActiveTokenClone,
+  possessiveFragmentAnswerCandidate,
+  propositionLikeHostForFinalMe,
+  surfaceOf,
+  templateDerivedSlots,
+  token,
+  traceInfo,
+  withoutIgnorableSpaceText,
+  withoutTrailingParticles,
+  wrapCategorySubspans,
+  yesNoQuestionMarkerClone
+});
 function whObjectTokenClone(node) {
   const surface = flattenSurface(node);
   if (!["咩", "乜嘢"].includes(surface)) return node;
@@ -11193,261 +11630,6 @@ function reportedSpeechFrameFallback(core) {
     })
   });
 }
-function desiderativeANotAQuestionFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const offset = optionalSubjectOffset(bareCore);
-  if (bareCore.length - offset < 4) return null;
-  const firstModal = bareCore[offset];
-  const negator = bareCore[offset + 1];
-  const secondModal = bareCore[offset + 2];
-  const firstTok = firstToken(firstModal);
-  const secondTok = firstToken(secondModal);
-  if (!firstTok || !secondTok) return null;
-  if (!nodeCanFillSlot(firstModal, "desiderative_modal")) return null;
-  if (!nodeCanFillSlot(secondModal, "desiderative_modal")) return null;
-  if (firstTok.surface !== "想" || secondTok.surface !== "想") return null;
-  if (!isToken(negator, "唔")) return null;
-  const complementCore = bareCore.slice(offset + 3);
-  if (!complementCore.length) return null;
-  const wrappedComplement = wrapCategorySubspans(complementCore);
-  if (wrappedComplement.length !== 1 || !nodeCanFillSlot(wrappedComplement[0], "vp")) return null;
-  const promotedFirst = phase4DesiderativeActiveTokenClone(firstModal, {
-    syntax: `${firstTok.syntax || "modal_desiderative"} desiderative_a_not_a_question`,
-    slots: ["desiderative_a_not_a_question"],
-    reason: "Phase 4 controlled grammar promotion: first 想 is parser-active only as the positive arm of an approved 想唔想 + VP question."
-  });
-  const promotedSecond = phase4DesiderativeActiveTokenClone(secondModal, {
-    syntax: `${secondTok.syntax || "modal_desiderative"} desiderative_a_not_a_question`,
-    slots: ["desiderative_a_not_a_question"],
-    reason: "Phase 4 controlled grammar promotion: second 想 is parser-active only as the copied negative arm of an approved 想唔想 + VP question."
-  });
-  const children = [
-    ...bareCore.slice(0, offset),
-    promotedFirst,
-    negator,
-    promotedSecond,
-    ...wrappedComplement,
-    ...particles
-  ];
-  const assignedSlots = [
-    ...bareCore.slice(0, offset).map(() => "subject"),
-    "modal_positive_arm",
-    "negator",
-    "modal_negative_arm",
-    "vp",
-    ...particles.map(() => "particle")
-  ];
-  const traceDetail = {
-    construction_type: "ModalANotAQuestion",
-    retired_label_alias: "DesiderativeANotAQuestion",
-    modal_subtype: "desiderative",
-    template_family: "generative_template",
-    template: ["subject?", "modal_positive_arm!", "negator!", "modal_negative_arm!", "vp!", "particle?"],
-    assigned_slots: assignedSlots,
-    rule: "subject? + 想 + 唔 + 想 + vp + particle?",
-    reason: "Promote reviewed desiderative A-not-A questions under the broad ModalANotAQuestion category while preserving desiderative subtype metadata and the visible VP complement requirement.",
-    surfaces: children.map((node) => flattenSurface(node))
-  };
-  const wrapperCoverage = assignedSlotWrapperCoverage("ModalANotAQuestion", children, assignedSlots);
-  if (wrapperCoverage) traceDetail.wrapper_coverage = wrapperCoverage;
-  return construction("ModalANotAQuestion", "ModalQ", children, {
-    note: "Broad modal A-not-A question with desiderative subtype: optional subject + 想唔想 + reviewed VP.",
-    slots: templateDerivedSlots("ModalANotAQuestion", children),
-    trace: traceInfo("generative_template", traceDetail)
-  });
-}
-function permissionANotAQuestionFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const offset = optionalSubjectOffset(bareCore);
-  if (bareCore.length - offset < 2) return null;
-  const modal = bareCore[offset];
-  const modalToken = firstToken(modal);
-  if (!modalToken || modalToken.surface !== "可唔可以") return null;
-  if (!nodeCanFillSlot(modal, "modal")) return null;
-  const complementCore = bareCore.slice(offset + 1);
-  if (!complementCore.length) return null;
-  let wrappedComplement = wrapCategorySubspans(complementCore);
-  if (wrappedComplement.length !== 1 && complementCore.length === 2 && nodeCanFillSlot(complementCore[0], "action_verb") && (nodeCanFillSlot(complementCore[1], "recipient") || nodeCanFillSlot(complementCore[1], "subject"))) {
-    const personObject = parserInactiveTokenClone(complementCore[1], {
-      label: complementCore[1].label || "who",
-      pos: "np",
-      syntax: `${complementCore[1].syntax || "person_np"} person_object recipient`,
-      slots: ["object", "recipient", "np"],
-      reason: "The person after the action verb is its visible person-object/recipient inside the permission question VP."
-    });
-    const vpChildren = [complementCore[0], personObject];
-    wrappedComplement = [construction("TransitiveVP", "VP", vpChildren, {
-      note: "Transitive VP with a person object, preserved inside a permission A-not-A question.",
-      slots: templateDerivedSlots("TransitiveVP", vpChildren),
-      trace: traceInfo("generative_template", {
-        construction_type: "TransitiveVP",
-        template_family: "generative_template",
-        template: ["action_verb!", "person_object!"],
-        assigned_slots: ["action_verb", "person_object"],
-        surfaces: vpChildren.map((node) => flattenSurface(node)),
-        reason: "Cantonese transitive verbs such as 幫 can take a person pronoun as their object; the person keeps the learner role who."
-      })
-    })];
-  }
-  if (wrappedComplement.length !== 1 || !nodeCanFillSlot(wrappedComplement[0], "vp")) return null;
-  const promotedModal = phase4PermissionActiveTokenClone(modal, {
-    syntax: `${modalToken.syntax || "modal_permission_or_ability"} modal_a_not_a_question permission_a_not_a_question`,
-    slots: ["modal_a_not_a_question", "permission_a_not_a_question", "permission_a_not_a_modal"],
-    reason: "Phase 4 controlled grammar promotion: 可唔可以 is parser-active only as an approved permission A-not-A modal with a visible VP complement."
-  });
-  const children = [
-    ...bareCore.slice(0, offset),
-    promotedModal,
-    ...wrappedComplement,
-    ...particles
-  ];
-  const assignedSlots = [
-    ...bareCore.slice(0, offset).map(() => "subject"),
-    "modal_a_not_a",
-    "vp",
-    ...particles.map(() => "particle")
-  ];
-  const traceDetail = {
-    construction_type: "ModalANotAQuestion",
-    retired_label_alias: "PermissionANotAQuestion",
-    modal_subtype: "permission",
-    template_family: "generative_template",
-    template: ["subject?", "modal_a_not_a!", "vp!", "particle?"],
-    assigned_slots: assignedSlots,
-    surfaces: children.map((node) => flattenSurface(node)),
-    reason: "Promotes reviewed permission A-not-A questions under the broad ModalANotAQuestion category while keeping the 可唔可以 modal token parser-active only in this approved scope."
-  };
-  const wrapperCoverage = assignedSlotWrapperCoverage("ModalANotAQuestion", children, assignedSlots);
-  if (wrapperCoverage) traceDetail.wrapper_coverage = wrapperCoverage;
-  return construction("ModalANotAQuestion", "ModalQ", children, {
-    note: "Broad modal A-not-A question with permission subtype: optional subject + 可唔可以 + reviewed VP.",
-    slots: templateDerivedSlots("ModalANotAQuestion", children),
-    trace: traceInfo("generative_template", traceDetail)
-  });
-}
-function copularANotAComplementCandidate(complementCore) {
-  const possessive = possessiveFragmentAnswerCandidate(complementCore);
-  if (possessive) return { node: possessive, profile: "possessive_fragment" };
-  const wrapped = applyConstructionPatterns(complementCore);
-  if (wrapped.length === 1 && wrapped[0] && wrapped[0].kind === "construction") {
-    const candidate = wrapped[0];
-    const nominalTypes = /* @__PURE__ */ new Set([
-      "NominalHeadSpan",
-      "OvertHeadDemonstrativeClassifierNP",
-      "HeadlessDemonstrativeClassifierNP",
-      "QuantifiedClassifierNP",
-      "QuantifiedPersonNP",
-      "DiMarkedNP",
-      "OrdinalClassifierNP",
-      "ClassifierObjectNP",
-      "CoordinatedNP",
-      "FragmentAnswer"
-    ]);
-    const blockedPredicateTypes = /* @__PURE__ */ new Set([
-      "ModifierNP",
-      "ModifiedNP",
-      "NominalHeadSpan",
-      "OvertHeadDemonstrativeClassifierNP",
-      "HeadlessDemonstrativeClassifierNP",
-      "QuantifiedClassifierNP",
-      "QuantifiedPersonNP",
-      "DiMarkedNP",
-      "OrdinalClassifierNP",
-      "ClassifierObjectNP",
-      "CoordinatedNP",
-      "FragmentAnswer",
-      "NeedsContext"
-    ]);
-    const predicateLike = !blockedPredicateTypes.has(candidate.type) && (nodeCanFillSlot(candidate, "predicate") || directPredicateCapableNode(candidate));
-    if (predicateLike) return { node: candidate, profile: "clausal_or_predicate" };
-    if (nominalTypes.has(candidate.type)) return { node: candidate, profile: "nominal" };
-  }
-  if (complementCore.length === 1 && (nodeCanFillSlot(complementCore[0], "np") || nodeCanFillSlot(complementCore[0], "subject"))) {
-    return { node: complementCore[0], profile: "nominal" };
-  }
-  return null;
-}
-function copularANotAQuestionFallback(core) {
-  let particleStart = core.length;
-  while (particleStart > 0 && isParticle(core[particleStart - 1]) && !isToken(core[particleStart - 1], "嘅")) {
-    particleStart -= 1;
-  }
-  const bareCore = core.slice(0, particleStart);
-  const particles = core.slice(particleStart);
-  const offset = bareCore.length >= 4 && nodeCanFillSlot(bareCore[0], "subject") && !isToken(bareCore[0], "係") ? 1 : 0;
-  if (bareCore.length - offset < 3) return null;
-  if (!isToken(bareCore[offset], "係")) return null;
-  const fusedNegativeArm = isToken(bareCore[offset + 1], "唔係");
-  const splitNegativeArm = isToken(bareCore[offset + 1], "唔") && isToken(bareCore[offset + 2], "係");
-  if (!fusedNegativeArm && !splitNegativeArm) return null;
-  const complementStart = offset + (fusedNegativeArm ? 2 : 3);
-  const complementCore = bareCore.slice(complementStart);
-  if (!complementCore.length) return null;
-  const complementCandidate = copularANotAComplementCandidate(complementCore);
-  if (!complementCandidate) return null;
-  const complement = complementCandidate.node;
-  const complementSlot = complementCandidate.profile === "clausal_or_predicate" ? "copular_predicate_complement" : "copular_nominal_complement";
-  const positiveCopula = parserInactiveTokenClone(bareCore[offset], {
-    label: "func",
-    pos: "function",
-    syntax: "copula copular_a_not_a_positive",
-    slots: ["copula", "copular_positive_arm"],
-    reason: "係 is the positive arm of a copular A-not-A question."
-  });
-  const negator = fusedNegativeArm ? token("唔", {
-    label: "func",
-    pos: "function",
-    syntax: "negator copular_a_not_a_negator",
-    slots: ["negator", "m4_negator"],
-    jyutping: "m4",
-    note: "Visible negator split transparently from the lexical token 唔係 inside the copular A-not-A pattern."
-  }) : parserInactiveTokenClone(bareCore[offset + 1], {
-    label: "func",
-    pos: "function",
-    syntax: "negator copular_a_not_a_negator",
-    slots: ["negator", "m4_negator"],
-    reason: "唔 separates the positive and negative copular arms."
-  });
-  const negativeCopula = fusedNegativeArm ? token("係", {
-    label: "func",
-    pos: "function",
-    syntax: "copula copular_a_not_a_negative",
-    slots: ["copula", "copular_negative_arm"],
-    jyutping: "hai6",
-    note: "Visible negative copular arm split transparently from the lexical token 唔係."
-  }) : parserInactiveTokenClone(bareCore[offset + 2], {
-    label: "func",
-    pos: "function",
-    syntax: "copula copular_a_not_a_negative",
-    slots: ["copula", "copular_negative_arm"],
-    reason: "係 is the copied negative arm of the copular A-not-A question."
-  });
-  const children = [...bareCore.slice(0, offset), positiveCopula, negator, negativeCopula, complement, ...particles];
-  const assignedSlots = [
-    ...bareCore.slice(0, offset).map(() => "subject"),
-    "copula_positive_arm",
-    "negator",
-    "copula_negative_arm",
-    complementSlot,
-    ...particles.map(() => "particle")
-  ];
-  return construction("CopularANotAQuestion", "CopularQ", children, {
-    note: complementCandidate.profile === "clausal_or_predicate" ? "Copular A-not-A question: optional subject/topic + 係唔係 + overt predicate or clause complement." : "Copular A-not-A question: optional subject + 係唔係 + bounded nominal or possessive complement.",
-    slots: cleanSlots(["copular_a_not_a_question", "question_fragment", "copula", "negator", "copular_complement", complementSlot, "predicate", "clause", offset ? "subject" : "", ...templateDerivedSlots("CopularANotAQuestion", children)]),
-    trace: traceInfo("generative_template", {
-      construction_type: "CopularANotAQuestion",
-      template_family: "generative_template",
-      template: ["subject_or_topic?", "copula_positive_arm!", "negator!", "copula_negative_arm!", `${complementSlot}!`, "particle?"],
-      assigned_slots: assignedSlots,
-      surfaces: children.map((node) => flattenSurface(node)),
-      tokenization_path: fusedNegativeArm ? "positive_copula_plus_fused_negative_copula" : "three_token_copular_a_not_a",
-      complement_profile: complementCandidate.profile,
-      tag_profile: "terminal_hai6_m4_hai6_excluded",
-      contracted_marker_profile: "hai6_mai6_remains_separate_polar_question_path",
-      reason: "Preserve both copular arms and classify the overt following material as a typed predicate/clause or a bounded nominal/possessive complement; terminal 係唔係 tags are outside this node."
-    })
-  });
-}
 function subjectStativePredicateClauseFallback(nodes) {
   const { core: bareCore, particles } = withoutTrailingParticles(nodes);
   if (bareCore.length !== 2) return null;
@@ -11834,27 +12016,6 @@ function yesNoQuestionMarkerClone(node) {
     syntax: "yes_no_question_marker polar_question_marker",
     slots: ["yes_no_question_marker", "question_marker"],
     reason: "係咪 is interpreted as the yes/no question marker inside a bounded polar-question frame."
-  });
-}
-function polarQuestionFrameFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const compact = withoutIgnorableSpaceText(bareCore);
-  if (compact.length !== 3) return null;
-  const [subject, marker, predicate] = compact;
-  if (!nodeCanFillSlot(subject, "subject")) return null;
-  if (!isToken(marker, "係咪")) return null;
-  if (!directPredicateCapableNode(predicate)) return null;
-  const children = [subject, yesNoQuestionMarkerClone(marker), predicate, ...particles];
-  return construction("PolarQuestionFrame", "YesNo?", children, {
-    note: "v0.5.32 bounded 係咪 polar question: subject + 係咪 + predicate + optional particle.",
-    slots: templateDerivedSlots("PolarQuestionFrame", children),
-    trace: traceInfo("generative_template", {
-      construction_type: "PolarQuestionFrame",
-      template: ["subject!", "yes_no_question_marker!", "predicate!", "particle?"],
-      assigned_slots: ["subject", "yes_no_question_marker", "predicate", ...particles.map(() => "particle")],
-      surfaces: children.map((node) => flattenSurface(node)),
-      reason: "Promotes only the reviewed 係咪 + predicate yes/no question shape."
-    })
   });
 }
 function copulaClone(node, syntax, extraSlots, reason) {
@@ -15832,21 +15993,8 @@ function wrapCore(core) {
       })
     })];
   }
-  const acceptabilityANotAIndex = core.findIndex(
-    (node, index) => surfaceOf(node) === "得" && surfaceOf(core[index + 1]) === "唔" && surfaceOf(core[index + 2]) === "得"
-  );
-  if (acceptabilityANotAIndex >= 0) {
-    const tail = core.slice(acceptabilityANotAIndex + 3).map(surfaceOf);
-    if (tail.length === 0 || tail.length === 1 && tail[0] === "先") {
-      return [construction("AcceptabilityANotA", "得唔得", core, {
-        note: "Terminal A-not-A acceptability predicate: 得唔得, optionally followed by 先.",
-        trace: traceInfo("legacy_surface_rule", {
-          rule: "terminal adjacent 得唔得 (先)",
-          reason: "Narrow fallback for an overt terminal acceptability A-not-A sequence."
-        })
-      })];
-    }
-  }
+  const acceptabilityANotAQuestion = acceptabilityANotAQuestionFallback(core);
+  if (acceptabilityANotAQuestion) return [acceptabilityANotAQuestion];
   if (hasSurface(core, "有") && hasSurface(core, "咩")) {
     return [construction("ExistentialWhQuestion", "有咩", core, { note: "Existential wh-question: 有咩 + noun phrase." })];
   }
@@ -15883,13 +16031,8 @@ function wrapCore(core) {
   if (isToken(core[0], "唔好") && core.length >= 2) {
     return [construction("ProhibitiveImperative", "Prohibitive", core, { note: "Negative imperative / command.", trace: traceInfo("legacy_surface_rule", { rule: "唔好 + predicate", reason: "Surface prohibitive marker fallback." }) })];
   }
-  if (core.length >= 3 && isVerbLike(core[0]) && isToken(core[1], "唔")) {
-    const first = firstToken(core[0]);
-    const third = firstToken(core[2]);
-    if (first && third && first.surface === third.surface) {
-      return [construction("ANotAQuestion", "A-not-A", core, { note: "A-not-A polar question construction.", trace: traceInfo("generative_or_heuristic_slot_rule", { rule: "verb + 唔 + copied verb", reason: "Structural A-not-A heuristic." }) })];
-    }
-  }
+  const inlineANotAQuestion = inlineANotAQuestionFallback(core);
+  if (inlineANotAQuestion) return [inlineANotAQuestion];
   const meiIndex = core.findIndex((node) => isToken(node, "未"));
   if (meiIndex > 0 && core.some((node) => isToken(node, "完"))) {
     return [construction("CompletionQuestion", "CompletionQ", core, { note: "Completion / not-yet question.", trace: traceInfo("generative_or_heuristic_slot_rule", { rule: "verb + 完 + object? + 未", reason: "Structural completion-question heuristic." }) })];
@@ -18242,50 +18385,6 @@ function orderedParticleClusterFallback(segment, terminalText = "", clusterInfo 
         "not_repeated_generic_stance_layers"
       ],
       reason: `This exact visible particle sequence has current evidence-backed support and follows the broad layer order. One learner-visible frame keeps the proposition host and every particle transparent, while ordered trace metadata records inside-to-outside scope without repeating a generic construction layer for each particle.`
-    })
-  });
-}
-function finalMeQuestionParticleClone(node) {
-  return parserInactiveTokenClone(node, {
-    label: "particle",
-    pos: "particle",
-    syntax: "sentence_final_polar_question_particle biased_question_particle",
-    slots: ["particle", "yes_no_question_marker", "question_marker"],
-    jyutping: "me1",
-    note: "sentence-final polar question particle; often conveys surprise or negative expectation",
-    reason: "Final 咩 scopes over a complete proposition-like host as a biased polar-question particle, not as a wh object."
-  });
-}
-function finalMePolarQuestionFallbackForPunctuation(segment, terminalText = "", ordinaryWrapped = null) {
-  if (!/[？?]/u.test(String(terminalText || ""))) return null;
-  const compact = withoutIgnorableSpaceText(segment || []);
-  if (compact.length < 2 || !isToken(compact[compact.length - 1], "咩")) return null;
-  const ordinaryTop = fullSpanSingleConstruction(ordinaryWrapped, compact);
-  if (ordinaryTop && (isExplicitWhQuestionConstruction(ordinaryTop) || isProtectedMeReactionFormula(ordinaryTop))) return null;
-  const hostNodes = compact.slice(0, -1);
-  const host = propositionLikeHostForFinalMe(hostNodes);
-  if (!host) return null;
-  const particle = finalMeQuestionParticleClone(compact[compact.length - 1]);
-  const children = [host, particle];
-  return construction("PolarQuestionFrame", "YesNo?", children, {
-    note: "Biased polar question formed by a complete proposition-like host plus sentence-final 咩.",
-    slots: templateDerivedSlots("PolarQuestionFrame", children),
-    trace: traceInfo("generative_template", {
-      construction_type: "PolarQuestionFrame",
-      template_family: "generative_template",
-      template: ["proposition_host!", "polar_question_particle!"],
-      assigned_slots: ["proposition_host", "polar_question_particle"],
-      surfaces: children.map((node) => flattenSurface(node)),
-      question_family: "polar",
-      question_subtype: "biased_sentence_final_me1",
-      bias: "negative_expectation_or_surprise",
-      proposition_host_construction: host.type,
-      proposition_host_surface: flattenSurface(host),
-      context_requirement_status: "context_not_required",
-      missing_argument_slots: [],
-      antecedent_status: "not_applicable",
-      not_claims: ["not_wh_object", "not_wh_determiner", "not_a_not_a_question", "not_fabricated_proposition"],
-      reason: "A complete proposition-like host licenses sentence-final 咩 as a biased polar particle. Existing explicit wh-question constructions and protected 係咩 reaction formulae retain precedence."
     })
   });
 }
