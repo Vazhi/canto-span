@@ -9766,6 +9766,1121 @@ var require_formula_responses = __commonJS({
   }
 });
 
+// src/parser/detectors/transfer/legacy-recipient.js
+var require_legacy_recipient = __commonJS({
+  "src/parser/detectors/transfer/legacy-recipient.js"(exports2, module2) {
+    "use strict";
+    module2.exports = function createLegacyRecipientDetectors2(dependencies = {}) {
+      const {
+        bridgeFramePartClone: bridgeFramePartClone2,
+        bridgeNPFromNodes: bridgeNPFromNodes2,
+        categorySubspanFor: categorySubspanFor2,
+        cleanSlots: cleanSlots2,
+        construction: construction2,
+        firstToken: firstToken2,
+        flattenSurface: flattenSurface2,
+        isToken: isToken2,
+        nodeCanFillSlot: nodeCanFillSlot2,
+        nodeSlots: nodeSlots2,
+        rawNodeHasSlot: rawNodeHasSlot2,
+        templateDerivedSlots: templateDerivedSlots2,
+        traceInfo: traceInfo2,
+        withoutIgnorableSpaceText: withoutIgnorableSpaceText2,
+        withoutTrailingParticles: withoutTrailingParticles2
+      } = dependencies;
+      function transferPredicateFromNodes2(nodes) {
+        const compact = withoutIgnorableSpaceText2(nodes || []);
+        if (compact.length < 2) return null;
+        const give = compact[0];
+        const recipient = compact.length === 2 ? compact[1] : bridgeNPFromNodes2(compact.slice(1));
+        if (!recipient) return null;
+        if (!isToken2(give, "畀")) return null;
+        if (!nodeCanFillSlot2(recipient, "recipient") && !nodeCanFillSlot2(recipient, "subject") && !nodeCanFillSlot2(recipient, "np") && !nodeCanFillSlot2(recipient, "object")) return null;
+        const marker = bridgeFramePartClone2(give, {
+          label: "doing",
+          pos: "verb",
+          syntax: "transfer_predicate benefactive_transfer_verb",
+          slots: ["transfer_predicate", "benefactive_marker", "action_verb", "main_verb", "predicate"],
+          reason: "畀 is the transfer/give predicate inside a bounded giving frame."
+        });
+        const recipientChild = bridgeFramePartClone2(recipient, {
+          label: (firstToken2(recipient) || recipient).label || "who",
+          pos: "np",
+          syntax: `${recipient.syntax || "recipient_np"} transfer_recipient`,
+          slots: ["recipient", "beneficiary", "np", "subject"],
+          reason: "Recipient is visible inside the bounded giving/benefactive frame."
+        });
+        return construction2("RecipientFrame", "Recipient", [marker, recipientChild], {
+          note: "Recipient frame inside a bounded giving/benefactive clause; benefactive/transfer meaning stays in slots and trace metadata.",
+          slots: templateDerivedSlots2("RecipientFrame", [marker, recipientChild]),
+          trace: traceInfo2("generative_template", {
+            construction_type: "RecipientFrame",
+            retired_label_alias: "BenefactiveRecipientFrame",
+            template_family: "generative_template",
+            template: ["benefactive_marker!", "recipient!"],
+            assigned_slots: ["benefactive_marker", "recipient"],
+            recipient_relation_subtype: "transfer_or_benefactive",
+            surfaces: [flattenSurface2(marker), flattenSurface2(recipientChild)],
+            subspan: true
+          })
+        });
+      }
+      function recipientFrameFallback2(core) {
+        const { core: bareCore, particles } = withoutTrailingParticles2(core);
+        if (particles.length) return null;
+        const compact = withoutIgnorableSpaceText2(bareCore);
+        return transferPredicateFromNodes2(compact);
+      }
+      function actionVPFromNodesForRecipient(nodes) {
+        const compact = withoutIgnorableSpaceText2(nodes || []);
+        if (!compact.length) return null;
+        if (compact.length === 1 && compact[0] && compact[0].kind === "construction" && (rawNodeHasSlot2(compact[0], "vp") || rawNodeHasSlot2(compact[0], "predicate"))) return compact[0];
+        return categorySubspanFor2(compact, ["TransitiveVP", "ProductiveVO", "CompletionVP", "VerbComplementVP"]);
+      }
+      function benefactiveRecipientVPFallback2(core) {
+        const { core: bareCore, particles } = withoutTrailingParticles2(core);
+        const compact = withoutIgnorableSpaceText2(bareCore);
+        const giveIndex = compact.findIndex((node, index) => index > 0 && isToken2(node, "畀"));
+        if (giveIndex <= 0 || giveIndex >= compact.length - 1) return null;
+        const actionVp = actionVPFromNodesForRecipient(compact.slice(0, giveIndex));
+        if (!actionVp) return null;
+        const recipientFrame = transferPredicateFromNodes2(compact.slice(giveIndex));
+        if (!recipientFrame) return null;
+        const children = [actionVp, recipientFrame, ...particles];
+        return construction2("RecipientFrame", "Recipient", children, {
+          note: "Postverbal recipient/benefactive frame: action VP + 畀 + recipient. This is separate from true transfer ditransitives and from passive/affectedness 畀 frames.",
+          slots: cleanSlots2(["recipient_frame", "benefactive_recipient_frame", "vp", "action_vp", "predicate", "recipient", "beneficiary", ...templateDerivedSlots2("RecipientFrame", children)]),
+          trace: traceInfo2("generative_template", {
+            construction_type: "RecipientFrame",
+            template_family: "generative_template",
+            template: ["action_vp!", "benefactive_marker!", "recipient!", "particle?"],
+            assigned_slots: ["action_vp", "recipient_frame", ...particles.map(() => "particle")],
+            recipient_relation_subtype: "postverbal_benefactive_recipient",
+            boundary_guardrail: "not_comitative_action_motion_vp",
+            surfaces: children.map((node) => flattenSurface2(node)),
+            reason: "畀 + recipient after an action VP marks a recipient/benefactive relation, not a comitative action/motion participant. Keeps the action VP and recipient frame transparent."
+          })
+        });
+      }
+      function transferDitransitiveVPFallback2(core) {
+        const { core: bareCore, particles } = withoutTrailingParticles2(core);
+        const compact = withoutIgnorableSpaceText2(bareCore);
+        if (compact.length < 3 || compact.length > 5) return null;
+        let subject = null;
+        let giveIndex = -1;
+        if (isToken2(compact[0], "畀")) {
+          giveIndex = 0;
+        } else if (compact.length >= 4 && nodeCanFillSlot2(compact[0], "subject") && isToken2(compact[1], "畀")) {
+          subject = compact[0];
+          giveIndex = 1;
+        } else {
+          return null;
+        }
+        const give = compact[giveIndex];
+        const argumentsAfterGive = compact.slice(giveIndex + 1);
+        if (argumentsAfterGive.length < 2) return null;
+        const looksExplicitlyPersonLike = (node) => {
+          const tok = firstToken2(node) || node;
+          const slots = nodeSlots2(node);
+          return tok && tok.label === "who" || slots.includes("recipient") || slots.includes("co_participant") || slots.includes("stance_holder") || slots.includes("person_np");
+        };
+        const looksThemeLike = (node) => {
+          const tok = firstToken2(node) || node;
+          const slots = nodeSlots2(node);
+          return tok && tok.label === "what" || slots.includes("object") || slots.includes("head_noun") || slots.includes("np");
+        };
+        const cloneTransferArgument = (node, roleKind) => {
+          const roleSlots = roleKind === "recipient" ? ["recipient", "goal", "np"] : ["theme", "object", "np"];
+          const roleSyntax = roleKind === "recipient" ? "transfer_recipient goal_recipient" : "transfer_theme transferred_object";
+          const reason = roleKind === "recipient" ? "This NP is the recipient/goal in the selected Cantonese transfer order." : "This NP is the transferred theme/object in the selected Cantonese transfer order.";
+          if (node.kind === "construction") {
+            return {
+              ...node,
+              slots: cleanSlots2([...nodeSlots2(node), ...roleSlots]),
+              parent_role_assignment: {
+                construction_type: "TransferDitransitiveVP",
+                assigned_role: roleKind,
+                reason
+              }
+            };
+          }
+          const base = firstToken2(node) || node;
+          return bridgeFramePartClone2(base, {
+            label: base.label || (roleKind === "recipient" ? "who" : "what"),
+            pos: roleKind === "recipient" ? "np" : base.features && base.features.pos ? base.features.pos : "noun",
+            syntax: `${base.syntax || (roleKind === "recipient" ? "recipient_np" : "object_np")} ${roleSyntax}`,
+            slots: roleSlots,
+            reason
+          });
+        };
+        const firstArgument = argumentsAfterGive[0];
+        const lastArgument = argumentsAfterGive[argumentsAfterGive.length - 1];
+        const recipientFirstTheme = bridgeNPFromNodes2(argumentsAfterGive.slice(1));
+        const themeFirstTheme = bridgeNPFromNodes2(argumentsAfterGive.slice(0, -1));
+        const recipientFirst = looksExplicitlyPersonLike(firstArgument) && recipientFirstTheme && looksThemeLike(recipientFirstTheme) && !looksExplicitlyPersonLike(recipientFirstTheme);
+        let theme = null;
+        let recipient = null;
+        let order = "";
+        if (recipientFirst) {
+          recipient = firstArgument;
+          theme = recipientFirstTheme;
+          order = "recipient_theme";
+        } else {
+          theme = themeFirstTheme;
+          recipient = lastArgument;
+          order = "theme_recipient";
+        }
+        if (!theme || !recipient) return null;
+        if (!looksThemeLike(theme)) return null;
+        if (!looksExplicitlyPersonLike(recipient) && !nodeCanFillSlot2(recipient, "recipient") && !nodeCanFillSlot2(recipient, "subject") && !nodeCanFillSlot2(recipient, "np")) return null;
+        const transferVerb = bridgeFramePartClone2(give, {
+          label: "doing",
+          pos: "verb",
+          syntax: "transfer_predicate ditransitive_transfer_verb",
+          slots: ["transfer_predicate", "action_verb", "main_verb", "predicate"],
+          reason: "畀 is the transfer/give predicate in a true transfer ditransitive frame, not a postverbal benefactive-purpose marker."
+        });
+        const themeChild = cloneTransferArgument(theme, "theme");
+        const recipientChild = cloneTransferArgument(recipient, "recipient");
+        const orderedArguments = order === "recipient_theme" ? [recipientChild, themeChild] : [themeChild, recipientChild];
+        const orderedSlots = order === "recipient_theme" ? ["recipient", "theme"] : ["theme", "recipient"];
+        const children = [
+          ...subject ? [subject] : [],
+          transferVerb,
+          ...orderedArguments,
+          ...particles
+        ];
+        const assignedSlots = [
+          ...subject ? ["subject"] : [],
+          "transfer_predicate",
+          ...orderedSlots,
+          ...particles.map(() => "particle")
+        ];
+        const template = [
+          ...subject ? ["subject?"] : [],
+          "transfer_predicate!",
+          ...order === "recipient_theme" ? ["recipient!", "theme!"] : ["theme!", "recipient!"],
+          "particle?"
+        ];
+        return construction2("TransferDitransitiveVP", "TransferVP", children, {
+          note: "True Cantonese transfer ditransitive with evidence-controlled Theme/Recipient assignment. Both Verb + Theme + Recipient and Verb + Recipient + Theme orders remain available when the visible NP roles support them.",
+          slots: templateDerivedSlots2("TransferDitransitiveVP", children),
+          trace: traceInfo2("generative_template", {
+            construction_type: "TransferDitransitiveVP",
+            template_family: "generative_template",
+            template,
+            assigned_slots: assignedSlots,
+            ditransitive_subtype: order === "recipient_theme" ? "true_transfer_recipient_theme" : "true_transfer_theme_recipient",
+            argument_order: order,
+            boundary_guardrail: "not_serial_verb_purpose_chain",
+            surfaces: children.map((node) => flattenSurface2(node)),
+            reason: order === "recipient_theme" ? "The first postverbal NP is explicitly person/recipient-like and the following NP is theme-like, so this row uses Verb + Recipient + Theme order." : "The pre-final postverbal material forms the transferred theme and the final person/recipient-like NP is the goal, so this row uses Verb + Theme + Recipient order."
+          })
+        });
+      }
+      return {
+        benefactiveRecipientVPFallback: benefactiveRecipientVPFallback2,
+        recipientFrameFallback: recipientFrameFallback2,
+        transferDitransitiveVPFallback: transferDitransitiveVPFallback2,
+        transferPredicateFromNodes: transferPredicateFromNodes2
+      };
+    };
+  }
+});
+
+// src/parser/detectors/transfer/lexical-give.js
+var require_lexical_give = __commonJS({
+  "src/parser/detectors/transfer/lexical-give.js"(exports2, module2) {
+    "use strict";
+    module2.exports = function createLexicalGiveDetectors2(dependencies = {}) {
+      const {
+        bridgeFramePartClone: bridgeFramePartClone2,
+        categorySubspanFor: categorySubspanFor2,
+        classifierObjectNPFromNodes: classifierObjectNPFromNodes2,
+        cleanSlots: cleanSlots2,
+        construction: construction2,
+        firstToken: firstToken2,
+        flattenSurface: flattenSurface2,
+        isToken: isToken2,
+        nodeCanFillSlot: nodeCanFillSlot2,
+        nodeSlots: nodeSlots2,
+        traceInfo: traceInfo2,
+        withoutIgnorableSpaceText: withoutIgnorableSpaceText2,
+        withoutTrailingParticles: withoutTrailingParticles2
+      } = dependencies;
+      function cp021bIsBei2Marker2(node) {
+        return isToken2(node, "畀") || isToken2(node, "俾");
+      }
+      const CP021B_REVIEWED_PERSON_SURFACES = /* @__PURE__ */ new Set([
+        "我",
+        "你",
+        "佢",
+        "我哋",
+        "你哋",
+        "佢哋",
+        "阿媽",
+        "媽媽",
+        "阿明",
+        "張三",
+        "細佬",
+        "老師",
+        "學生",
+        "老闆"
+      ]);
+      function cp021bNodeIsPersonEvidence2(node) {
+        const tok = firstToken2(node) || node;
+        const slots = nodeSlots2(node);
+        const surface = flattenSurface2(node);
+        return CP021B_REVIEWED_PERSON_SURFACES.has(surface) || Boolean(tok && tok.label === "who") || slots.includes("person_np") || slots.includes("proper_name") || slots.includes("named_address_term") || slots.includes("vocative_address_term");
+      }
+      function cp021bSpanIsPersonNP2(nodes) {
+        const compact = withoutIgnorableSpaceText2(nodes || []);
+        if (!compact.length || compact.some(cp021bIsBei2Marker2)) return false;
+        const surface = compact.map(flattenSurface2).join("");
+        if (CP021B_REVIEWED_PERSON_SURFACES.has(surface)) return true;
+        return compact.every(cp021bNodeIsPersonEvidence2);
+      }
+      function cp021bNodeIsThingEvidence(node) {
+        const tok = firstToken2(node) || node;
+        const slots = nodeSlots2(node);
+        const syntax = String(tok && tok.syntax || node.syntax || "");
+        return Boolean(tok && (tok.label === "what" || tok.label === "measure_word")) || slots.includes("object") || slots.includes("head_noun") || slots.includes("classifier") || slots.includes("currency_unit") || /object_np|currency_unit|classifier/u.test(syntax);
+      }
+      function cp021bSpanIsThingNP2(nodes) {
+        const compact = withoutIgnorableSpaceText2(nodes || []);
+        if (!compact.length || compact.some(cp021bIsBei2Marker2) || cp021bSpanIsPersonNP2(compact)) return false;
+        const last = compact[compact.length - 1];
+        const hasThingEvidence = compact.some(cp021bNodeIsThingEvidence);
+        const hasNominalHead = cp021bNodeIsThingEvidence(last) || nodeCanFillSlot2(last, "np") || nodeCanFillSlot2(last, "head_noun");
+        return hasThingEvidence && hasNominalHead;
+      }
+      function cp021bArgumentSpan2(nodes, options = {}) {
+        const compact = withoutIgnorableSpaceText2(nodes || []);
+        if (!compact.length) return null;
+        const slots = cleanSlots2(options.slots || ["np"]);
+        const role = options.role || "participant";
+        const reason = options.reason || "The overt nominal span is preserved without inserting a hidden participant.";
+        if (compact.length === 1 && compact[0].kind === "token") {
+          const base = compact[0];
+          return bridgeFramePartClone2(base, {
+            label: base.label || options.label || "neutral",
+            pos: options.label === "who" ? "np" : "noun",
+            syntax: `${base.syntax || "nominal"} cp021b_${role}`,
+            slots,
+            reason
+          });
+        }
+        if (compact.length === 1 && compact[0].kind === "construction") {
+          return {
+            ...compact[0],
+            slots,
+            parent_role_assignment: {
+              construction_type: options.parent_type || "CP021BRelation",
+              assigned_role: role,
+              reason
+            }
+          };
+        }
+        const typed = categorySubspanFor2(compact, [
+          "QuantityNP",
+          "QuantifiedClassifierNP",
+          "ClassifierObjectNP",
+          "RelativeClauseNP",
+          "ModifiedNP",
+          "NominalHeadSpan"
+        ]) || classifierObjectNPFromNodes2(compact);
+        if (typed && flattenSurface2(typed) === compact.map(flattenSurface2).join("")) {
+          return {
+            ...typed,
+            slots,
+            parent_role_assignment: {
+              construction_type: options.parent_type || "CP021BRelation",
+              assigned_role: role,
+              reason
+            }
+          };
+        }
+        const type = options.label === "who" ? "NominalHeadSpan" : "ModifiedNP";
+        return construction2(type, options.label === "who" ? "NP" : "ModNP", compact, {
+          note: reason,
+          slots,
+          trace: traceInfo2("generative_template", {
+            construction_type: type,
+            template_family: "construction_template",
+            cp021b_design_family: "overt_nominal_span",
+            assigned_slots: compact.map(() => "nominal_material"),
+            surfaces: compact.map(flattenSurface2),
+            subspan: true,
+            reason
+          })
+        });
+      }
+      function cp021bLexicalGiveSplit(argumentNodes) {
+        const compact = withoutIgnorableSpaceText2(argumentNodes || []);
+        const candidates = [];
+        for (let index = 1; index < compact.length; index += 1) {
+          const first = compact.slice(0, index);
+          const second = compact.slice(index);
+          const firstPerson = cp021bSpanIsPersonNP2(first);
+          const secondPerson = cp021bSpanIsPersonNP2(second);
+          const firstThing = cp021bSpanIsThingNP2(first);
+          const secondThing = cp021bSpanIsThingNP2(second);
+          if (firstThing && !firstPerson && secondPerson) {
+            candidates.push({ profile: "theme_recipient_baseline", first, second });
+          }
+          if (firstPerson && secondThing && !secondPerson) {
+            candidates.push({ profile: "nonbaseline_participant_order_unresolved", first, second });
+          }
+        }
+        return candidates.length === 1 ? candidates[0] : null;
+      }
+      function lexicalGiveRelationFallback2(core) {
+        const { core: bareCore, particles } = withoutTrailingParticles2(core);
+        if (particles.length) return null;
+        const compact = withoutIgnorableSpaceText2(bareCore);
+        const markerIndexes = compact.map((node, index) => cp021bIsBei2Marker2(node) ? index : -1).filter((index) => index >= 0);
+        if (markerIndexes.length !== 1) return null;
+        const markerIndex = markerIndexes[0];
+        const subjectNodes = compact.slice(0, markerIndex);
+        if (subjectNodes.length && !cp021bSpanIsPersonNP2(subjectNodes)) return null;
+        const marker = compact[markerIndex];
+        let argumentStart = markerIndex + 1;
+        let aspect = null;
+        if (compact[argumentStart] && isToken2(compact[argumentStart], "咗")) {
+          aspect = compact[argumentStart];
+          argumentStart += 1;
+        }
+        const argumentNodes = compact.slice(argumentStart);
+        if (argumentNodes.length < 2 || argumentNodes.some(cp021bIsBei2Marker2)) return null;
+        const split = cp021bLexicalGiveSplit(argumentNodes);
+        if (!split) return null;
+        const baseline = split.profile === "theme_recipient_baseline";
+        const subject = subjectNodes.length ? cp021bArgumentSpan2(subjectNodes, {
+          parent_type: "LexicalGiveRelation",
+          label: "who",
+          role: "subject",
+          slots: ["subject", "person_np", "np"],
+          reason: "This independently person-denoting span is the overt material before lexical GIVE; no subject is inserted when it is absent."
+        }) : null;
+        const give = bridgeFramePartClone2(marker, {
+          label: "doing",
+          pos: "verb",
+          syntax: "lexical_give_predicate",
+          slots: ["transfer_predicate", "action_verb", "main_verb", "predicate"],
+          reason: "畀/俾 is the lexical giving predicate in this bounded CP021B profile, not a post-theme linker or passive/permissive marker."
+        });
+        const aspectChild = aspect ? bridgeFramePartClone2(aspect, {
+          label: "func",
+          pos: "aspect",
+          syntax: "perfective_aspect",
+          slots: ["perfective_aspect", "aspect_marker"],
+          reason: "咗 is the overt perfective marker immediately after lexical GIVE."
+        }) : null;
+        const firstArgument = cp021bArgumentSpan2(split.first, baseline ? {
+          parent_type: "LexicalGiveRelation",
+          label: "what",
+          role: "theme",
+          slots: ["theme", "object", "np"],
+          reason: "The uniquely split first nominal span has independent thing evidence and receives Theme/Object only in the reviewed theme-before-recipient profile."
+        } : {
+          parent_type: "LexicalGiveRelation",
+          label: "who",
+          role: "post_give_participant_1",
+          slots: ["post_give_participant_1", "person_np", "np"],
+          reason: "The first visible participant is person-like, but its semantic role is unresolved in the nonbaseline order."
+        });
+        const secondArgument = cp021bArgumentSpan2(split.second, baseline ? {
+          parent_type: "LexicalGiveRelation",
+          label: "who",
+          role: "recipient_candidate",
+          slots: ["recipient_candidate", "goal_candidate", "person_np", "np"],
+          reason: "Recipient-candidate status follows from the reviewed lexical-GIVE profile plus independent person evidence, not final position alone."
+        } : {
+          parent_type: "LexicalGiveRelation",
+          label: "what",
+          role: "post_give_participant_2",
+          slots: ["post_give_participant_2", "np"],
+          reason: "The second visible participant is thing-like, but no Theme/Object role is exported in the nonbaseline order."
+        });
+        const children = [subject, give, aspectChild, firstArgument, secondArgument].filter(Boolean);
+        const semanticCode = baseline ? "cp021b_provisional_lexical_give_relation" : "lexical_give_argument_order_unresolved";
+        const explanation = baseline ? "The thing given is followed by the person who receives it in this reviewed pattern." : "A giving meaning is visible, but this order needs context; the parser does not decide who receives what.";
+        return construction2("LexicalGiveRelation", "Give", children, {
+          note: explanation,
+          slots: cleanSlots2([
+            "lexical_give_relation",
+            "give_relation",
+            "vp",
+            "action_vp",
+            "predicate",
+            "transfer_predicate",
+            ...subject ? ["subject"] : [],
+            ...baseline ? ["theme", "object", "recipient_candidate", "goal_candidate"] : ["post_give_participant_1", "post_give_participant_2"]
+          ]),
+          trace: traceInfo2("generative_template", {
+            construction_type: "LexicalGiveRelation",
+            template_family: "construction_template",
+            cp021b_design_family: "frozen_lexical_give",
+            template: ["subject?", "lexical_give_predicate!", "perfective_aspect?", "postverbal_nominal_1!", "postverbal_nominal_2!"],
+            assigned_slots: [
+              ...subject ? ["subject"] : [],
+              "transfer_predicate",
+              ...aspect ? ["perfective_aspect"] : [],
+              ...baseline ? ["theme", "recipient_candidate"] : ["post_give_participant_1", "post_give_participant_2"]
+            ],
+            relation_profile: split.profile,
+            marker_surface: flattenSurface2(marker),
+            aspect_surface: aspect ? flattenSurface2(aspect) : "",
+            overt_subject_surface: subjectNodes.map(flattenSurface2).join(""),
+            postverbal_argument_surfaces: [split.first.map(flattenSurface2).join(""), split.second.map(flattenSurface2).join("")],
+            visible_order: baseline ? "thing_before_person" : "person_before_thing",
+            semantic_role_assignment: baseline ? "theme_and_recipient_candidate_from_reviewed_profile" : "unresolved",
+            orthographic_parity: "畀=俾",
+            hidden_participants_inserted: false,
+            weight_rule_used: false,
+            semantic_review_flags: [semanticCode],
+            learner_gloss_lines: ["give", explanation],
+            not_claims: ["not_free_order_alternation", "not_benefactive_linker", "not_passive_or_permissive", "not_supported_productive"],
+            surfaces: children.map(flattenSurface2),
+            reason: explanation
+          })
+        });
+      }
+      return {
+        cp021bArgumentSpan: cp021bArgumentSpan2,
+        cp021bIsBei2Marker: cp021bIsBei2Marker2,
+        cp021bNodeIsPersonEvidence: cp021bNodeIsPersonEvidence2,
+        cp021bSpanIsPersonNP: cp021bSpanIsPersonNP2,
+        cp021bSpanIsThingNP: cp021bSpanIsThingNP2,
+        lexicalGiveRelationFallback: lexicalGiveRelationFallback2
+      };
+    };
+  }
+});
+
+// src/parser/detectors/transfer/post-theme.js
+var require_post_theme = __commonJS({
+  "src/parser/detectors/transfer/post-theme.js"(exports2, module2) {
+    "use strict";
+    module2.exports = function createPostThemeDetectors2(dependencies = {}) {
+      const {
+        bridgeFramePartClone: bridgeFramePartClone2,
+        cleanSlots: cleanSlots2,
+        construction: construction2,
+        cp020NodeIsPredicateEvidence: cp020NodeIsPredicateEvidence2,
+        cp021bArgumentSpan: cp021bArgumentSpan2,
+        cp021bIsBei2Marker: cp021bIsBei2Marker2,
+        cp021bSpanIsPersonNP: cp021bSpanIsPersonNP2,
+        cp021bSpanIsThingNP: cp021bSpanIsThingNP2,
+        firstToken: firstToken2,
+        flattenSurface: flattenSurface2,
+        isToken: isToken2,
+        traceInfo: traceInfo2,
+        withoutIgnorableSpaceText: withoutIgnorableSpaceText2,
+        withoutTrailingParticles: withoutTrailingParticles2
+      } = dependencies;
+      const CP021B_POST_THEME_PREDICATE_PROFILES2 = Object.freeze({
+        "借": {
+          profile: "predicate_profile_borrow_lend",
+          candidates: ["goal_or_lend_to_candidate"],
+          final_predicate_required: false
+        },
+        "交": {
+          profile: "predicate_profile_transfer",
+          candidates: ["goal_or_recipient_candidate"],
+          final_predicate_required: false
+        },
+        "織": {
+          profile: "predicate_profile_creation",
+          candidates: ["beneficiary_or_intended_user_candidate"],
+          final_predicate_required: false
+        },
+        "買": {
+          profile: "predicate_profile_acquisition",
+          candidates: ["beneficiary_or_intended_recipient_candidate"],
+          final_predicate_required: false
+        },
+        "攞": {
+          profile: "predicate_profile_final_predicate",
+          candidates: ["final_predicate_participant_or_beneficiary_candidate"],
+          final_predicate_required: true
+        }
+      });
+      function cp021bMakePostThemeRelation2(fields) {
+        const marker = bridgeFramePartClone2(fields.marker, {
+          label: "func",
+          pos: "function",
+          syntax: "post_theme_link_marker",
+          slots: ["post_theme_link_marker"],
+          reason: "畀/俾 links an overt upstream predicate-theme VP to a following person; no fixed marker category or participant role is selected."
+        });
+        const participant = cp021bArgumentSpan2(fields.participantNodes, {
+          parent_type: "PostThemeParticipantRelation",
+          label: "who",
+          role: "post_theme_participant",
+          slots: ["post_theme_participant", "person_np", "np"],
+          reason: "The overt post-theme person remains structurally visible; recipient, goal, beneficiary, agent, and source are candidate readings only, never asserted slots."
+        });
+        const following = fields.followingPredicate ? bridgeFramePartClone2(fields.followingPredicate, {
+          label: "doing",
+          pos: "verb",
+          syntax: `${(firstToken2(fields.followingPredicate) || fields.followingPredicate).syntax || "verb"} following_predicate`,
+          slots: ["following_predicate", "action_verb", "predicate"],
+          reason: "The overt final predicate remains visible; no hidden shared participant is inserted."
+        }) : null;
+        const children = [fields.upstreamVP, marker, participant, following].filter(Boolean);
+        return construction2("PostThemeParticipantRelation", "For / to", children, {
+          note: "Links the preceding action and thing to a following person. The exact link depends on the verb and context.",
+          slots: cleanSlots2([
+            "post_theme_participant_relation",
+            "post_theme_link_marker",
+            "post_theme_participant",
+            "person_np",
+            "np",
+            "predicate",
+            "vp",
+            "action_vp",
+            ...following ? ["following_predicate"] : []
+          ]),
+          trace: traceInfo2("generative_template", {
+            construction_type: "PostThemeParticipantRelation",
+            template_family: "construction_template",
+            cp021b_design_family: "frozen_post_theme_participant",
+            template: ["upstream_predicate_theme_vp!", "post_theme_link_marker!", "post_theme_participant!", "following_predicate?"],
+            assigned_slots: ["upstream_vp", "post_theme_link_marker", "post_theme_participant", ...following ? ["following_predicate"] : []],
+            relation_profile: "theory_neutral_post_theme_participant",
+            upstream_predicate_surface: fields.upstreamPredicateSurface,
+            upstream_theme_surface: fields.upstreamThemeSurface,
+            marker_surface: flattenSurface2(fields.marker),
+            postmarker_participant_surface: fields.participantNodes.map(flattenSurface2).join(""),
+            following_predicate_surface: following ? flattenSurface2(fields.followingPredicate) : "",
+            participant_role_candidates: fields.profile.candidates,
+            participant_role_status: "unresolved_or_context_dependent",
+            marker_category_status: "not_selected",
+            upstream_predicate_profile: fields.profile.profile,
+            orthographic_parity: "畀=俾",
+            hidden_participants_inserted: false,
+            semantic_review_flags: ["post_theme_participant_role_context_dependent"],
+            learner_gloss_lines: ["for / to", "Links the preceding action and thing to a following person. The exact link depends on the verb and context."],
+            not_claims: ["not_lexical_give", "not_passive_or_permissive", "not_unified_recipient_or_beneficiary", "not_fixed_marker_category", "not_supported_productive"],
+            surfaces: children.map(flattenSurface2),
+            reason: "This bounded CP021B relation preserves the overt predicate, theme, marker, person, and optional final predicate while leaving the exact participant role and marker category unresolved."
+          })
+        });
+      }
+      function postThemeParticipantRelationFallback2(core) {
+        const { core: bareCore, particles } = withoutTrailingParticles2(core);
+        if (particles.length) return null;
+        const compact = withoutIgnorableSpaceText2(bareCore);
+        const markerIndexes = compact.map((node, index) => cp021bIsBei2Marker2(node) ? index : -1).filter((index) => index >= 0);
+        if (markerIndexes.length !== 1) return null;
+        const markerIndex = markerIndexes[0];
+        if (markerIndex < 2 || markerIndex >= compact.length - 1) return null;
+        const profileCandidates = [];
+        for (let predicateIndex = 0; predicateIndex < markerIndex; predicateIndex += 1) {
+          const predicateSurface = flattenSurface2(compact[predicateIndex]);
+          const profile = CP021B_POST_THEME_PREDICATE_PROFILES2[predicateSurface];
+          if (!profile) continue;
+          const subjectNodes = compact.slice(0, predicateIndex);
+          if (subjectNodes.length && !cp021bSpanIsPersonNP2(subjectNodes)) continue;
+          let themeStart = predicateIndex + 1;
+          let aspect = null;
+          if (isToken2(compact[themeStart], "咗")) {
+            aspect = compact[themeStart];
+            themeStart += 1;
+          }
+          const themeNodes = compact.slice(themeStart, markerIndex);
+          if (!cp021bSpanIsThingNP2(themeNodes)) continue;
+          profileCandidates.push({ predicateIndex, predicateSurface, profile, subjectNodes, aspect, themeNodes });
+        }
+        if (profileCandidates.length !== 1) return null;
+        const candidate = profileCandidates[0];
+        const afterMarker = compact.slice(markerIndex + 1);
+        let participantNodes = afterMarker;
+        let followingPredicate = null;
+        if (candidate.profile.final_predicate_required) {
+          if (afterMarker.length < 2) return null;
+          followingPredicate = afterMarker[afterMarker.length - 1];
+          participantNodes = afterMarker.slice(0, -1);
+          if (!cp020NodeIsPredicateEvidence2(followingPredicate)) return null;
+        } else if (afterMarker.some(cp020NodeIsPredicateEvidence2)) {
+          return null;
+        }
+        if (!cp021bSpanIsPersonNP2(participantNodes)) return null;
+        const predicateNode = compact[candidate.predicateIndex];
+        const predicateChild = bridgeFramePartClone2(predicateNode, {
+          label: "doing",
+          pos: "verb",
+          syntax: `${(firstToken2(predicateNode) || predicateNode).syntax || "verb"} cp021b_upstream_predicate`,
+          slots: ["action_verb", "main_verb", "predicate"],
+          reason: "The reviewed upstream lexical predicate supplies the valency profile; the later marker alone does not determine the relation."
+        });
+        const aspectChild = candidate.aspect ? bridgeFramePartClone2(candidate.aspect, {
+          label: "func",
+          pos: "aspect",
+          syntax: "perfective_aspect",
+          slots: ["perfective_aspect", "aspect_marker"],
+          reason: "The overt aspect remains inside the upstream predicate-theme VP."
+        }) : null;
+        const theme = cp021bArgumentSpan2(candidate.themeNodes, {
+          parent_type: candidate.aspect ? "PerfectiveVP" : "TransitiveVP",
+          label: "what",
+          role: "theme",
+          slots: ["theme", "object", "np"],
+          reason: "The overt theme remains inside the upstream VP; its presence is required before post-theme linking can be considered."
+        });
+        const upstreamChildren = [predicateChild, aspectChild, theme].filter(Boolean);
+        const upstreamType = candidate.aspect ? "PerfectiveVP" : "TransitiveVP";
+        const upstreamVP = construction2(upstreamType, candidate.aspect ? "PerfectiveVP" : "VP", upstreamChildren, {
+          note: "Overt upstream predicate and theme retained as one VP before the post-theme link marker.",
+          slots: cleanSlots2(["vp", "action_vp", "predicate", "theme", "object", ...candidate.aspect ? ["perfective_aspect"] : []]),
+          trace: traceInfo2("generative_template", {
+            construction_type: upstreamType,
+            template_family: "construction_template",
+            cp021b_design_family: "upstream_predicate_theme_vp",
+            template: ["action_verb!", "perfective_aspect?", "theme!"],
+            assigned_slots: ["action_verb", ...candidate.aspect ? ["perfective_aspect"] : [], "theme"],
+            surfaces: upstreamChildren.map(flattenSurface2),
+            subspan: true,
+            reason: "C02 requires an overt non-GIVE predicate and overt local theme before the marker."
+          })
+        });
+        const relation = cp021bMakePostThemeRelation2({
+          upstreamVP,
+          upstreamPredicateSurface: candidate.predicateSurface,
+          upstreamThemeSurface: candidate.themeNodes.map(flattenSurface2).join(""),
+          marker: compact[markerIndex],
+          participantNodes,
+          followingPredicate,
+          profile: candidate.profile
+        });
+        if (!candidate.subjectNodes.length) return relation;
+        const subject = cp021bArgumentSpan2(candidate.subjectNodes, {
+          parent_type: "SubjectPredicateClause",
+          label: "who",
+          role: "subject",
+          slots: ["subject", "person_np", "np"],
+          reason: "The overt subject is kept outside PostThemeParticipantRelation, as required by the frozen predicate-level design."
+        });
+        return construction2("SubjectPredicateClause", "Clause", [subject, relation], {
+          note: "Subject plus the bounded post-theme participant predicate relation.",
+          slots: cleanSlots2(["subject_predicate_clause", "subject", "predicate", "clause"]),
+          trace: traceInfo2("generative_template", {
+            construction_type: "SubjectPredicateClause",
+            template_family: "construction_template",
+            cp021b_design_family: "subject_wrapper",
+            template: ["subject!", "post_theme_participant_relation!"],
+            assigned_slots: ["subject", "predicate"],
+            surfaces: [flattenSurface2(subject), flattenSurface2(relation)],
+            reason: "The optional overt subject is outside the new predicate-level relation."
+          })
+        });
+      }
+      function cp021bBoundaryReviewFallback2(core) {
+        const { core: bareCore, particles } = withoutTrailingParticles2(core);
+        if (particles.length) return null;
+        const compact = withoutIgnorableSpaceText2(bareCore);
+        const markerIndexes = compact.map((node, index) => cp021bIsBei2Marker2(node) ? index : -1).filter((index) => index >= 0);
+        if (!markerIndexes.length) return null;
+        const boundaryClause = (subjectNodes, profile, code) => {
+          if (!subjectNodes.length || !cp021bSpanIsPersonNP2(subjectNodes)) return null;
+          const subject = cp021bArgumentSpan2(subjectNodes, {
+            parent_type: "SubjectPredicateClause",
+            label: "who",
+            role: "subject",
+            slots: ["subject", "person_np", "np"],
+            reason: "The overt subject remains visible in a boundary-only wrapper; no participant relation is inferred."
+          });
+          const remainder = compact.slice(subjectNodes.length);
+          const children = [subject, ...remainder];
+          return construction2("SubjectPredicateClause", "Clause", children, {
+            note: "Overt clause material preserved for review outside the two frozen CP021B relation designs.",
+            slots: cleanSlots2(["subject_predicate_clause", "subject", "predicate", "clause"]),
+            trace: traceInfo2("generative_template", {
+              construction_type: "SubjectPredicateClause",
+              template_family: "construction_template",
+              cp021b_design_family: "nonemitting_boundary_wrapper",
+              template: ["subject!", "boundary_predicate_material!"],
+              assigned_slots: ["subject", "predicate_material"],
+              boundary_profile: profile,
+              semantic_review_flags: [code],
+              hidden_participants_inserted: false,
+              semantic_role_assignment: "none",
+              surfaces: children.map(flattenSurface2),
+              reason: "The wrapper preserves every overt token and full root coverage while refusing a new lexical-GIVE or post-theme participant relation."
+            })
+          });
+        };
+        if (markerIndexes.length >= 2) {
+          return boundaryClause(compact.slice(0, markerIndexes[0]), "double_marker_heavy_theme", "lexical_give_double_marker_heavy_theme_unfrozen");
+        }
+        if (compact.some((node) => isToken2(node, "將"))) {
+          const zoengIndex = compact.findIndex((node) => isToken2(node, "將"));
+          return boundaryClause(compact.slice(0, zoengIndex), "zoeng_restructure", "lexical_give_zoeng_restructure_outside_design");
+        }
+        const markerIndex = markerIndexes[0];
+        const beforeMarker = compact.slice(0, markerIndex);
+        const afterMarker = compact.slice(markerIndex + 1).filter((node) => !isToken2(node, "咗"));
+        if (!cp021bSpanIsPersonNP2(afterMarker)) return null;
+        for (let splitIndex = 1; splitIndex < beforeMarker.length; splitIndex += 1) {
+          const frontedNodes = beforeMarker.slice(0, splitIndex);
+          const subjectNodes = beforeMarker.slice(splitIndex);
+          if (!cp021bSpanIsThingNP2(frontedNodes) || !cp021bSpanIsPersonNP2(subjectNodes)) continue;
+          const topic = cp021bArgumentSpan2(frontedNodes, {
+            parent_type: "TopicComment",
+            label: "what",
+            role: "fronted_theme_candidate",
+            slots: ["fronted_theme_candidate", "topic", "np"],
+            reason: "The overt fronted thing is preserved as topic material; it is not copied into the local GIVE predicate or assigned by a hidden gap."
+          });
+          const subject = cp021bArgumentSpan2(subjectNodes, {
+            parent_type: "SubjectPredicateClause",
+            label: "who",
+            role: "subject",
+            slots: ["subject", "person_np", "np"],
+            reason: "The overt subject remains inside the comment clause after the fronted topic."
+          });
+          const marker = bridgeFramePartClone2(compact[markerIndex], {
+            label: "doing",
+            pos: "verb",
+            syntax: "lexical_give_predicate_fronted_theme_boundary",
+            slots: ["transfer_predicate", "action_verb", "predicate"],
+            reason: "Lexical GIVE is visible, but the local relation is deliberately not emitted because its theme is fronted outside the candidate span."
+          });
+          const aspectNode = compact[markerIndex + 1] && isToken2(compact[markerIndex + 1], "咗") ? bridgeFramePartClone2(compact[markerIndex + 1], {
+            label: "func",
+            pos: "aspect",
+            syntax: "perfective_aspect",
+            slots: ["perfective_aspect", "aspect_marker"],
+            reason: "Overt perfective aspect retained in the local predicate material."
+          }) : null;
+          const participant = cp021bArgumentSpan2(afterMarker, {
+            parent_type: "SubjectPredicateClause",
+            label: "who",
+            role: "post_give_participant",
+            slots: ["post_give_participant", "person_np", "np"],
+            reason: "The overt post-GIVE person remains visible without an asserted recipient, goal, or beneficiary role."
+          });
+          const commentChildren = [subject, marker, aspectNode, participant].filter(Boolean);
+          const comment = construction2("SubjectPredicateClause", "Clause", commentChildren, {
+            note: "Overt local comment material under a fronted-topic boundary.",
+            slots: cleanSlots2(["subject_predicate_clause", "subject", "predicate", "clause"]),
+            trace: traceInfo2("generative_template", {
+              construction_type: "SubjectPredicateClause",
+              template_family: "construction_template",
+              cp021b_design_family: "fronted_theme_comment",
+              assigned_slots: ["subject", "predicate_material"],
+              hidden_participants_inserted: false,
+              surfaces: commentChildren.map(flattenSurface2)
+            })
+          });
+          return construction2("TopicComment", "TopicComment", [topic, comment], {
+            note: "Fronted topic plus overt comment, preserved without a new local lexical-GIVE relation.",
+            slots: cleanSlots2(["topic_comment", "topic", "comment", "predicate"]),
+            trace: traceInfo2("generative_template", {
+              construction_type: "TopicComment",
+              template_family: "construction_template",
+              cp021b_design_family: "nonemitting_boundary_wrapper",
+              template: ["fronted_topic!", "comment!"],
+              assigned_slots: ["topic", "comment"],
+              boundary_profile: "fronted_theme",
+              semantic_review_flags: ["lexical_give_fronted_theme_outside_design"],
+              hidden_participants_inserted: false,
+              semantic_role_assignment: "none",
+              surfaces: [flattenSurface2(topic), flattenSurface2(comment)],
+              reason: "The fronted theme and discourse link remain overt, but no copied theme or full local relation is introduced."
+            })
+          });
+        }
+        return null;
+      }
+      return {
+        CP021B_POST_THEME_PREDICATE_PROFILES: CP021B_POST_THEME_PREDICATE_PROFILES2,
+        cp021bBoundaryReviewFallback: cp021bBoundaryReviewFallback2,
+        cp021bMakePostThemeRelation: cp021bMakePostThemeRelation2,
+        postThemeParticipantRelationFallback: postThemeParticipantRelationFallback2
+      };
+    };
+  }
+});
+
+// src/parser/detectors/transfer/passive-permissive.js
+var require_passive_permissive = __commonJS({
+  "src/parser/detectors/transfer/passive-permissive.js"(exports2, module2) {
+    "use strict";
+    module2.exports = function createPassivePermissiveDetectors2(dependencies = {}) {
+      const {
+        bridgeFramePartClone: bridgeFramePartClone2,
+        categorySubspanFor: categorySubspanFor2,
+        cleanSlots: cleanSlots2,
+        construction: construction2,
+        cp021bNodeIsPersonEvidence: cp021bNodeIsPersonEvidence2,
+        firstToken: firstToken2,
+        flattenSurface: flattenSurface2,
+        isToken: isToken2,
+        nodeCanFillSlot: nodeCanFillSlot2,
+        nodeSlots: nodeSlots2,
+        templateDerivedSlots: templateDerivedSlots2,
+        traceInfo: traceInfo2,
+        withoutIgnorableSpaceText: withoutIgnorableSpaceText2,
+        withoutTrailingParticles: withoutTrailingParticles2
+      } = dependencies;
+      function cp020NodeIsPersonEvidence2(node) {
+        const tok = firstToken2(node) || node;
+        const slots = nodeSlots2(node);
+        const localAnimateAgent = flattenSurface2(node) === "蚊";
+        return localAnimateAgent || Boolean(tok && tok.label === "who") || slots.includes("person_np") || slots.includes("co_participant") || slots.includes("recipient") || slots.includes("stance_holder") || slots.includes("subject");
+      }
+      function cp020NodeIsObjectEvidence(node) {
+        const tok = firstToken2(node) || node;
+        const slots = nodeSlots2(node);
+        return Boolean(tok && (tok.label === "what" || tok.label === "where" || tok.label === "measure_word")) || slots.includes("object") || slots.includes("head_noun") || slots.includes("classifier") || slots.includes("np");
+      }
+      function cp020NodeIsPredicateEvidence2(node) {
+        const slots = nodeSlots2(node);
+        return slots.includes("predicate") || slots.includes("action_verb") || slots.includes("main_verb") || slots.includes("movement_verb") || slots.includes("stative_predicate") || slots.includes("vp");
+      }
+      function cp020NodeIsBlockingPreMarkerMaterial(node) {
+        const slots = nodeSlots2(node);
+        return slots.includes("action_verb") || slots.includes("main_verb") || slots.includes("predicate") || slots.includes("perfective_aspect") || slots.includes("progressive_aspect") || slots.includes("negator");
+      }
+      const CP020_PERMISSIVE_FAVORING_PREDICATE_SURFACES = /* @__PURE__ */ new Set([
+        "打籃球",
+        "食蛋糕",
+        "跌低"
+      ]);
+      function cp020PredicateFavorsPermissive(nodes) {
+        const compact = withoutIgnorableSpaceText2(nodes || []);
+        const surface = compact.map(flattenSurface2).join("");
+        if (CP020_PERMISSIVE_FAVORING_PREDICATE_SURFACES.has(surface)) return true;
+        return compact.some((node) => {
+          const slots = nodeSlots2(node);
+          const nodeSurface = flattenSurface2(node);
+          return slots.includes("movement_verb") || slots.includes("motion_predicate") || slots.includes("motion_goal_vp") || nodeSurface === "去" || nodeSurface.startsWith("去旅行");
+        });
+      }
+      function cp020TrailingObjectCandidateSpan(nodes) {
+        const compact = withoutIgnorableSpaceText2(nodes || []);
+        for (let i = 1; i < compact.length; i += 1) {
+          const node = compact[i];
+          const slots = nodeSlots2(node);
+          const tok = firstToken2(node) || node;
+          const syntax = String(tok && tok.syntax || node.syntax || "");
+          if (node.kind === "construction" && (slots.includes("np") || slots.includes("object"))) {
+            return { start: i, end: i + 1 };
+          }
+          if (slots.includes("classifier")) {
+            let end = i + 1;
+            while (end < compact.length) {
+              const next = compact[end];
+              const nextTok = firstToken2(next) || next;
+              const nextSlots = nodeSlots2(next);
+              const nextSyntax = String(nextTok && nextTok.syntax || next.syntax || "");
+              if (next.kind === "text" || nodeCanFillSlot2(next, "particle") || nodeCanFillSlot2(next, "aspect_marker") || cp020NodeIsPredicateEvidence2(next) || nextSlots.includes("location") || nextSlots.includes("time") || /location|direction|temporal/u.test(nextSyntax) || Boolean(nextTok && ["doing", "where", "when", "particle", "func"].includes(nextTok.label))) break;
+              end += 1;
+            }
+            return { start: i, end: Math.max(i + 1, end) };
+          }
+          if (i === compact.length - 1 && tok && (tok.label === "what" || slots.includes("object")) && !slots.includes("location") && !/location/u.test(syntax)) {
+            const previous = compact[i - 1];
+            const previousSlots = previous ? nodeSlots2(previous) : [];
+            const previousSurface = previous ? flattenSurface2(previous) : "";
+            const start = previous && (previousSlots.includes("quantity") || previousSlots.includes("degree") || ["好多", "幾多", "少少"].includes(previousSurface)) ? i - 1 : i;
+            return { start, end: i + 1 };
+          }
+        }
+        return null;
+      }
+      function cp020ContextualPredicateLearnerChildren(nodes) {
+        const children = (nodes || []).map((node) => node);
+        const surfaceAt = (index) => index >= 0 && index < children.length ? flattenSurface2(children[index]) : "";
+        for (let i = 0; i < children.length - 1; i += 1) {
+          if (surfaceAt(i) !== "上" || surfaceAt(i + 1) !== "牆") continue;
+          children[i] = bridgeFramePartClone2(children[i], {
+            label: "func",
+            pos: "directional_linker",
+            syntax: "spatial_goal_linker movement_direction_up path_component",
+            slots: ["movement_direction", "path_component"],
+            note: "onto / up onto",
+            reason: "In 貼上牆, 上 links the placement event to its spatial goal; it is not the temporal word 'previous'.",
+            trace_detail: {
+              learner_gloss_lines: ["onto / up onto", "Spatial direction toward the following goal, not time."]
+            }
+          });
+          children[i + 1] = bridgeFramePartClone2(children[i + 1], {
+            label: "where",
+            pos: "location",
+            syntax: "spatial_goal location_np wall_location",
+            slots: ["goal", "location", "np"],
+            note: "wall / onto the wall",
+            reason: "After spatial 上 in 貼上牆, 牆 is the placement goal rather than an ordinary object.",
+            trace_detail: {
+              learner_gloss_lines: ["wall / onto the wall", "The spatial goal of the placement event."]
+            }
+          });
+          i += 1;
+        }
+        return children;
+      }
+      function passivePermissiveRelationFallback2(core) {
+        const { core: bareCore, particles } = withoutTrailingParticles2(core);
+        const compact = withoutIgnorableSpaceText2(bareCore);
+        if (compact.some((node) => node.kind === "text" && /[，,；;：:。！？?!]/u.test(String(node.text || node.surface || "")))) return null;
+        const beiIndex = compact.findIndex((node, index) => index > 0 && (isToken2(node, "畀") || isToken2(node, "俾")));
+        if (beiIndex <= 0 || beiIndex >= compact.length - 2) return null;
+        let participantNodes = compact.slice(0, beiIndex);
+        let modal = null;
+        if (participantNodes.length >= 2 && nodeCanFillSlot2(participantNodes[participantNodes.length - 1], "modal")) {
+          modal = participantNodes[participantNodes.length - 1];
+          participantNodes = participantNodes.slice(0, -1);
+        }
+        if (!participantNodes.length || participantNodes.length > 5) return null;
+        if (participantNodes.some(cp020NodeIsBlockingPreMarkerMaterial)) return null;
+        if (participantNodes.some((node) => {
+          const tok = firstToken2(node) || node;
+          return Boolean(tok && ["doing", "like", "how", "when", "particle"].includes(tok.label));
+        })) return null;
+        if (!participantNodes.some((node) => cp020NodeIsPersonEvidence2(node) || cp020NodeIsObjectEvidence(node))) return null;
+        const post = compact.slice(beiIndex + 1);
+        if (nodeCanFillSlot2(post[0], "perfective_aspect") || nodeCanFillSlot2(post[0], "progressive_aspect") || nodeCanFillSlot2(post[0], "aspect_marker")) return null;
+        let agentNodes = [];
+        let predicateNodes = [];
+        if (cp020NodeIsPersonEvidence2(post[0])) {
+          if (flattenSurface2(post[0]) === "阿" && post.length >= 3) {
+            agentNodes = post.slice(0, 2);
+            predicateNodes = post.slice(2);
+          } else {
+            agentNodes = [post[0]];
+            predicateNodes = post.slice(1);
+          }
+        } else {
+          const predicateStart = post.findIndex((node, index) => index > 0 && cp020NodeIsPredicateEvidence2(node));
+          if (predicateStart <= 0) return null;
+          agentNodes = post.slice(0, predicateStart);
+          predicateNodes = post.slice(predicateStart);
+        }
+        if (!agentNodes.length || !predicateNodes.length) return null;
+        if (predicateNodes.every(cp021bNodeIsPersonEvidence2)) return null;
+        const agentIsClassifierPersonNP = agentNodes.length === 2 && nodeCanFillSlot2(agentNodes[0], "classifier") && cp020NodeIsPersonEvidence2(agentNodes[1]);
+        if (agentNodes.some((node, index) => {
+          if (cp020NodeIsPersonEvidence2(node)) return false;
+          if (agentIsClassifierPersonNP && index === 0) return false;
+          const tok = firstToken2(node) || node;
+          return nodeCanFillSlot2(node, "classifier") || Boolean(tok && (tok.label === "what" || tok.label === "measure_word"));
+        })) return null;
+        if (agentNodes.some(cp020NodeIsPredicateEvidence2)) return null;
+        if (predicateNodes.every((node) => node.kind === "text" || nodeCanFillSlot2(node, "particle"))) return null;
+        const internalParticleIndex = predicateNodes.findIndex((node, index) => index < predicateNodes.length - 1 && nodeCanFillSlot2(node, "particle"));
+        if (internalParticleIndex >= 0) return null;
+        {
+          const firstPred = predicateNodes[0];
+          const tok = firstToken2(firstPred) || firstPred;
+          const syntax = String(tok && tok.syntax || firstPred.syntax || "");
+          if (!cp020NodeIsPredicateEvidence2(firstPred) && (nodeCanFillSlot2(firstPred, "classifier") || nodeCanFillSlot2(firstPred, "object") || nodeCanFillSlot2(firstPred, "demonstrative") || /determiner/u.test(syntax) || Boolean(tok && (tok.label === "what" || tok.label === "measure_word")))) return null;
+        }
+        const marker = bridgeFramePartClone2(compact[beiIndex], {
+          label: "func",
+          pos: "function",
+          syntax: "bei_passive_permissive_marker",
+          slots: ["passive_marker", "bei_marker"],
+          reason: "畀/俾 links the preceding participant with a following participant and predicate; the isolated surface may express passive voice or permissive 'let'."
+        });
+        const participantHasPerson = participantNodes.some(cp020NodeIsPersonEvidence2);
+        const participantHasObjectShape = participantNodes.some((node) => {
+          const tok = firstToken2(node) || node;
+          const slots = nodeSlots2(node);
+          return Boolean(tok && (tok.label === "what" || tok.label === "measure_word")) || slots.includes("classifier") || slots.includes("object");
+        });
+        const participantIsPersonOnly = participantHasPerson && !participantHasObjectShape;
+        const groupedPredicate = categorySubspanFor2(predicateNodes, ["ProductiveVO", "TransitiveVP"]);
+        const predicateAnalysisNodes = groupedPredicate ? [groupedPredicate] : predicateNodes;
+        const retainedSpan = cp020TrailingObjectCandidateSpan(predicateAnalysisNodes);
+        const retainedSurface = retainedSpan ? predicateAnalysisNodes.slice(retainedSpan.start, retainedSpan.end).map(flattenSurface2).join("") : "";
+        const agentSurface = agentNodes.map(flattenSurface2).join("");
+        const participantSurface = participantNodes.map(flattenSurface2).join("");
+        const semanticReviewFlags = [];
+        const readingCandidates = [];
+        const permissiveFavored = participantIsPersonOnly && !retainedSurface && cp020PredicateFavorsPermissive(predicateAnalysisNodes);
+        let passiveSubtype = "canonical_passive_candidate";
+        let learnerLabel = "Passive";
+        if (retainedSurface) {
+          semanticReviewFlags.push("passive_permissive_surface_ambiguity", "retained_patient_role_requires_review");
+          readingCandidates.push("indirect_passive_candidate", "permissive_let_allow");
+          if (!participantIsPersonOnly) readingCandidates.push("canonical_passive_role_boundary");
+          learnerLabel = "Passive / let";
+          passiveSubtype = "retained_object_passive_permissive_ambiguity";
+        } else if (permissiveFavored) {
+          readingCandidates.push("permissive_let_allow");
+          learnerLabel = "Let / allow";
+          passiveSubtype = "permissive_candidate";
+        } else if (participantIsPersonOnly) {
+          semanticReviewFlags.push("passive_permissive_surface_ambiguity");
+          readingCandidates.push("canonical_or_indirect_passive", "permissive_let_allow");
+          learnerLabel = "Passive / let";
+          passiveSubtype = "canonical_passive_permissive_ambiguity";
+        } else {
+          readingCandidates.push("canonical_passive");
+        }
+        const learnerGlossLines = learnerLabel === "Passive" ? ["passive relation", "The first participant is presented as undergoing the following event."] : learnerLabel === "Let / allow" ? ["let / allow relation", "The first participant allows the following participant to carry out the action."] : ["passive or let / allow relation", "The surface may describe something happening to the first participant or someone being allowed to act; context may decide."];
+        const agentSpanIsKnownPersonExpression = agentNodes.map(flattenSurface2).join("") === "阿媽";
+        const agentChildren = agentNodes.map((node) => {
+          const surface = flattenSurface2(node);
+          if (agentSpanIsKnownPersonExpression && surface === "阿") {
+            return bridgeFramePartClone2(node, {
+              label: "func",
+              pos: "prefix",
+              syntax: "familiar_kinship_prefix bei_postmarker_participant_part",
+              slots: ["postmarker_participant"],
+              note: "familiar kinship/name prefix; part of 阿媽",
+              trace_detail: { learner_gloss_lines: ["familiar kinship/name prefix", "Part of 阿媽; not the person referent by itself."] },
+              reason: "Inside the overt post-畀/俾 participant 阿媽, 阿 is a familiar kinship/name prefix; 媽 carries the person reference."
+            });
+          }
+          if (cp020NodeIsPersonEvidence2(node) || agentSpanIsKnownPersonExpression) {
+            return bridgeFramePartClone2(node, {
+              label: "who",
+              pos: "np",
+              syntax: `${node.syntax || "agent_np"} bei_postmarker_participant`,
+              slots: ["postmarker_participant", "person_np", "np", "subject"],
+              note: agentSpanIsKnownPersonExpression ? "mum / mother" : node.note,
+              trace_detail: agentSpanIsKnownPersonExpression ? { learner_gloss_lines: ["mum / mother", "The person-denoting head of 阿媽."] } : void 0,
+              reason: "Overt post-畀/俾 participant in the passive/permissive relation; this participant may be a passive agent or the actor who is permitted to act."
+            });
+          }
+          return node;
+        });
+        const predicateChildren = groupedPredicate ? [groupedPredicate] : cp020ContextualPredicateLearnerChildren(predicateNodes);
+        const children = [...participantNodes, ...modal ? [modal] : [], marker, ...agentChildren, ...predicateChildren, ...particles];
+        return construction2("PassivePermissiveRelation", learnerLabel, children, {
+          note: "Transparent 畀/俾 passive–permissive relation. The relation preserves canonical-passive, retained-object/indirect-passive, and permissive alternatives instead of presenting generic affectedness as Cantonese grammar.",
+          slots: cleanSlots2(["passive_permissive_relation", "bei_relation", "clause", "predicate", "vp", "pre_marker_participant", "postmarker_participant", ...retainedSurface ? ["retained_patient_candidate", "object"] : [], ...templateDerivedSlots2("PassivePermissiveRelation", children)]),
+          trace: traceInfo2("generative_template", {
+            construction_type: "PassivePermissiveRelation",
+            template_family: "generative_template",
+            template: ["participant!", "modal?", "bei_marker!", "postmarker_participant!", "predicate_material!", "particle?"],
+            assigned_slots: ["pre_marker_participant", ...modal ? ["modal"] : [], "bei_marker", "postmarker_participant", "predicate", ...retainedSurface ? ["retained_patient_candidate"] : [], ...particles.map(() => "particle")],
+            passive_subtype: passiveSubtype,
+            reading_candidates: readingCandidates,
+            participant_surface: participantSurface,
+            postmarker_participant_surface: agentSurface,
+            retained_patient_candidate_surface: retainedSurface,
+            semantic_review_flags: semanticReviewFlags,
+            learner_gloss_lines: learnerGlossLines,
+            not_claims: ["not_generic_affectedness_construction", "not_deterministic_passive_classifier", "not_generic_force_causative"],
+            surfaces: children.map((node) => flattenSurface2(node)),
+            reason: "CP020 replaces the debunked AffectednessFrame with one transparent passive/permissive relation. Inanimate/full-patient shapes may support canonical passive; independently supported motion and bounded actor-oriented predicates may favor permissive let/allow; genuinely ambiguous animate and retained-object strings preserve competing readings."
+          })
+        });
+      }
+      return {
+        cp020NodeIsPersonEvidence: cp020NodeIsPersonEvidence2,
+        cp020NodeIsPredicateEvidence: cp020NodeIsPredicateEvidence2,
+        passivePermissiveRelationFallback: passivePermissiveRelationFallback2
+      };
+    };
+  }
+});
+
 // src/parser/detectors/definition/copular-relations.js
 var require_copular_relations = __commonJS({
   "src/parser/detectors/definition/copular-relations.js"(exports2, module2) {
@@ -13311,806 +14426,95 @@ function bridgeNPFromNodes(nodes) {
   if (classifierObject) return classifierObject;
   return resultComplementFromNodes(compact) || resultTopicFromNodes(compact) || nominalComplementFromNodes(compact);
 }
-function cp021bIsBei2Marker(node) {
-  return isToken(node, "畀") || isToken(node, "俾");
-}
-var CP021B_REVIEWED_PERSON_SURFACES = /* @__PURE__ */ new Set([
-  "我",
-  "你",
-  "佢",
-  "我哋",
-  "你哋",
-  "佢哋",
-  "阿媽",
-  "媽媽",
-  "阿明",
-  "張三",
-  "細佬",
-  "老師",
-  "學生",
-  "老闆"
-]);
-function cp021bNodeIsPersonEvidence(node) {
-  const tok = firstToken(node) || node;
-  const slots = nodeSlots(node);
-  const surface = flattenSurface(node);
-  return CP021B_REVIEWED_PERSON_SURFACES.has(surface) || Boolean(tok && tok.label === "who") || slots.includes("person_np") || slots.includes("proper_name") || slots.includes("named_address_term") || slots.includes("vocative_address_term");
-}
-function cp021bSpanIsPersonNP(nodes) {
-  const compact = withoutIgnorableSpaceText(nodes || []);
-  if (!compact.length || compact.some(cp021bIsBei2Marker)) return false;
-  const surface = compact.map(flattenSurface).join("");
-  if (CP021B_REVIEWED_PERSON_SURFACES.has(surface)) return true;
-  return compact.every(cp021bNodeIsPersonEvidence);
-}
-function cp021bNodeIsThingEvidence(node) {
-  const tok = firstToken(node) || node;
-  const slots = nodeSlots(node);
-  const syntax = String(tok && tok.syntax || node.syntax || "");
-  return Boolean(tok && (tok.label === "what" || tok.label === "measure_word")) || slots.includes("object") || slots.includes("head_noun") || slots.includes("classifier") || slots.includes("currency_unit") || /object_np|currency_unit|classifier/u.test(syntax);
-}
-function cp021bSpanIsThingNP(nodes) {
-  const compact = withoutIgnorableSpaceText(nodes || []);
-  if (!compact.length || compact.some(cp021bIsBei2Marker) || cp021bSpanIsPersonNP(compact)) return false;
-  const last = compact[compact.length - 1];
-  const hasThingEvidence = compact.some(cp021bNodeIsThingEvidence);
-  const hasNominalHead = cp021bNodeIsThingEvidence(last) || nodeCanFillSlot(last, "np") || nodeCanFillSlot(last, "head_noun");
-  return hasThingEvidence && hasNominalHead;
-}
-function cp021bArgumentSpan(nodes, options = {}) {
-  const compact = withoutIgnorableSpaceText(nodes || []);
-  if (!compact.length) return null;
-  const slots = cleanSlots(options.slots || ["np"]);
-  const role = options.role || "participant";
-  const reason = options.reason || "The overt nominal span is preserved without inserting a hidden participant.";
-  if (compact.length === 1 && compact[0].kind === "token") {
-    const base = compact[0];
-    return bridgeFramePartClone(base, {
-      label: base.label || options.label || "neutral",
-      pos: options.label === "who" ? "np" : "noun",
-      syntax: `${base.syntax || "nominal"} cp021b_${role}`,
-      slots,
-      reason
-    });
-  }
-  if (compact.length === 1 && compact[0].kind === "construction") {
-    return {
-      ...compact[0],
-      slots,
-      parent_role_assignment: {
-        construction_type: options.parent_type || "CP021BRelation",
-        assigned_role: role,
-        reason
-      }
-    };
-  }
-  const typed = categorySubspanFor(compact, [
-    "QuantityNP",
-    "QuantifiedClassifierNP",
-    "ClassifierObjectNP",
-    "RelativeClauseNP",
-    "ModifiedNP",
-    "NominalHeadSpan"
-  ]) || classifierObjectNPFromNodes(compact);
-  if (typed && flattenSurface(typed) === compact.map(flattenSurface).join("")) {
-    return {
-      ...typed,
-      slots,
-      parent_role_assignment: {
-        construction_type: options.parent_type || "CP021BRelation",
-        assigned_role: role,
-        reason
-      }
-    };
-  }
-  const type = options.label === "who" ? "NominalHeadSpan" : "ModifiedNP";
-  return construction(type, options.label === "who" ? "NP" : "ModNP", compact, {
-    note: reason,
-    slots,
-    trace: traceInfo("generative_template", {
-      construction_type: type,
-      template_family: "construction_template",
-      cp021b_design_family: "overt_nominal_span",
-      assigned_slots: compact.map(() => "nominal_material"),
-      surfaces: compact.map(flattenSurface),
-      subspan: true,
-      reason
-    })
-  });
-}
-function cp021bLexicalGiveSplit(argumentNodes) {
-  const compact = withoutIgnorableSpaceText(argumentNodes || []);
-  const candidates = [];
-  for (let index = 1; index < compact.length; index += 1) {
-    const first = compact.slice(0, index);
-    const second = compact.slice(index);
-    const firstPerson = cp021bSpanIsPersonNP(first);
-    const secondPerson = cp021bSpanIsPersonNP(second);
-    const firstThing = cp021bSpanIsThingNP(first);
-    const secondThing = cp021bSpanIsThingNP(second);
-    if (firstThing && !firstPerson && secondPerson) {
-      candidates.push({ profile: "theme_recipient_baseline", first, second });
-    }
-    if (firstPerson && secondThing && !secondPerson) {
-      candidates.push({ profile: "nonbaseline_participant_order_unresolved", first, second });
-    }
-  }
-  return candidates.length === 1 ? candidates[0] : null;
-}
-function lexicalGiveRelationFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  if (particles.length) return null;
-  const compact = withoutIgnorableSpaceText(bareCore);
-  const markerIndexes = compact.map((node, index) => cp021bIsBei2Marker(node) ? index : -1).filter((index) => index >= 0);
-  if (markerIndexes.length !== 1) return null;
-  const markerIndex = markerIndexes[0];
-  const subjectNodes = compact.slice(0, markerIndex);
-  if (subjectNodes.length && !cp021bSpanIsPersonNP(subjectNodes)) return null;
-  const marker = compact[markerIndex];
-  let argumentStart = markerIndex + 1;
-  let aspect = null;
-  if (compact[argumentStart] && isToken(compact[argumentStart], "咗")) {
-    aspect = compact[argumentStart];
-    argumentStart += 1;
-  }
-  const argumentNodes = compact.slice(argumentStart);
-  if (argumentNodes.length < 2 || argumentNodes.some(cp021bIsBei2Marker)) return null;
-  const split = cp021bLexicalGiveSplit(argumentNodes);
-  if (!split) return null;
-  const baseline = split.profile === "theme_recipient_baseline";
-  const subject = subjectNodes.length ? cp021bArgumentSpan(subjectNodes, {
-    parent_type: "LexicalGiveRelation",
-    label: "who",
-    role: "subject",
-    slots: ["subject", "person_np", "np"],
-    reason: "This independently person-denoting span is the overt material before lexical GIVE; no subject is inserted when it is absent."
-  }) : null;
-  const give = bridgeFramePartClone(marker, {
-    label: "doing",
-    pos: "verb",
-    syntax: "lexical_give_predicate",
-    slots: ["transfer_predicate", "action_verb", "main_verb", "predicate"],
-    reason: "畀/俾 is the lexical giving predicate in this bounded CP021B profile, not a post-theme linker or passive/permissive marker."
-  });
-  const aspectChild = aspect ? bridgeFramePartClone(aspect, {
-    label: "func",
-    pos: "aspect",
-    syntax: "perfective_aspect",
-    slots: ["perfective_aspect", "aspect_marker"],
-    reason: "咗 is the overt perfective marker immediately after lexical GIVE."
-  }) : null;
-  const firstArgument = cp021bArgumentSpan(split.first, baseline ? {
-    parent_type: "LexicalGiveRelation",
-    label: "what",
-    role: "theme",
-    slots: ["theme", "object", "np"],
-    reason: "The uniquely split first nominal span has independent thing evidence and receives Theme/Object only in the reviewed theme-before-recipient profile."
-  } : {
-    parent_type: "LexicalGiveRelation",
-    label: "who",
-    role: "post_give_participant_1",
-    slots: ["post_give_participant_1", "person_np", "np"],
-    reason: "The first visible participant is person-like, but its semantic role is unresolved in the nonbaseline order."
-  });
-  const secondArgument = cp021bArgumentSpan(split.second, baseline ? {
-    parent_type: "LexicalGiveRelation",
-    label: "who",
-    role: "recipient_candidate",
-    slots: ["recipient_candidate", "goal_candidate", "person_np", "np"],
-    reason: "Recipient-candidate status follows from the reviewed lexical-GIVE profile plus independent person evidence, not final position alone."
-  } : {
-    parent_type: "LexicalGiveRelation",
-    label: "what",
-    role: "post_give_participant_2",
-    slots: ["post_give_participant_2", "np"],
-    reason: "The second visible participant is thing-like, but no Theme/Object role is exported in the nonbaseline order."
-  });
-  const children = [subject, give, aspectChild, firstArgument, secondArgument].filter(Boolean);
-  const semanticCode = baseline ? "cp021b_provisional_lexical_give_relation" : "lexical_give_argument_order_unresolved";
-  const explanation = baseline ? "The thing given is followed by the person who receives it in this reviewed pattern." : "A giving meaning is visible, but this order needs context; the parser does not decide who receives what.";
-  return construction("LexicalGiveRelation", "Give", children, {
-    note: explanation,
-    slots: cleanSlots([
-      "lexical_give_relation",
-      "give_relation",
-      "vp",
-      "action_vp",
-      "predicate",
-      "transfer_predicate",
-      ...subject ? ["subject"] : [],
-      ...baseline ? ["theme", "object", "recipient_candidate", "goal_candidate"] : ["post_give_participant_1", "post_give_participant_2"]
-    ]),
-    trace: traceInfo("generative_template", {
-      construction_type: "LexicalGiveRelation",
-      template_family: "construction_template",
-      cp021b_design_family: "frozen_lexical_give",
-      template: ["subject?", "lexical_give_predicate!", "perfective_aspect?", "postverbal_nominal_1!", "postverbal_nominal_2!"],
-      assigned_slots: [
-        ...subject ? ["subject"] : [],
-        "transfer_predicate",
-        ...aspect ? ["perfective_aspect"] : [],
-        ...baseline ? ["theme", "recipient_candidate"] : ["post_give_participant_1", "post_give_participant_2"]
-      ],
-      relation_profile: split.profile,
-      marker_surface: flattenSurface(marker),
-      aspect_surface: aspect ? flattenSurface(aspect) : "",
-      overt_subject_surface: subjectNodes.map(flattenSurface).join(""),
-      postverbal_argument_surfaces: [split.first.map(flattenSurface).join(""), split.second.map(flattenSurface).join("")],
-      visible_order: baseline ? "thing_before_person" : "person_before_thing",
-      semantic_role_assignment: baseline ? "theme_and_recipient_candidate_from_reviewed_profile" : "unresolved",
-      orthographic_parity: "畀=俾",
-      hidden_participants_inserted: false,
-      weight_rule_used: false,
-      semantic_review_flags: [semanticCode],
-      learner_gloss_lines: ["give", explanation],
-      not_claims: ["not_free_order_alternation", "not_benefactive_linker", "not_passive_or_permissive", "not_supported_productive"],
-      surfaces: children.map(flattenSurface),
-      reason: explanation
-    })
-  });
-}
-var CP021B_POST_THEME_PREDICATE_PROFILES = Object.freeze({
-  "借": {
-    profile: "predicate_profile_borrow_lend",
-    candidates: ["goal_or_lend_to_candidate"],
-    final_predicate_required: false
-  },
-  "交": {
-    profile: "predicate_profile_transfer",
-    candidates: ["goal_or_recipient_candidate"],
-    final_predicate_required: false
-  },
-  "織": {
-    profile: "predicate_profile_creation",
-    candidates: ["beneficiary_or_intended_user_candidate"],
-    final_predicate_required: false
-  },
-  "買": {
-    profile: "predicate_profile_acquisition",
-    candidates: ["beneficiary_or_intended_recipient_candidate"],
-    final_predicate_required: false
-  },
-  "攞": {
-    profile: "predicate_profile_final_predicate",
-    candidates: ["final_predicate_participant_or_beneficiary_candidate"],
-    final_predicate_required: true
-  }
+var createLegacyRecipientDetectors = require_legacy_recipient();
+var {
+  benefactiveRecipientVPFallback,
+  recipientFrameFallback,
+  transferDitransitiveVPFallback,
+  transferPredicateFromNodes
+} = createLegacyRecipientDetectors({
+  bridgeFramePartClone,
+  bridgeNPFromNodes,
+  categorySubspanFor,
+  cleanSlots,
+  construction,
+  firstToken,
+  flattenSurface,
+  isToken,
+  nodeCanFillSlot,
+  nodeSlots,
+  rawNodeHasSlot,
+  templateDerivedSlots,
+  traceInfo,
+  withoutIgnorableSpaceText,
+  withoutTrailingParticles
 });
-function cp021bMakePostThemeRelation(fields) {
-  const marker = bridgeFramePartClone(fields.marker, {
-    label: "func",
-    pos: "function",
-    syntax: "post_theme_link_marker",
-    slots: ["post_theme_link_marker"],
-    reason: "畀/俾 links an overt upstream predicate-theme VP to a following person; no fixed marker category or participant role is selected."
-  });
-  const participant = cp021bArgumentSpan(fields.participantNodes, {
-    parent_type: "PostThemeParticipantRelation",
-    label: "who",
-    role: "post_theme_participant",
-    slots: ["post_theme_participant", "person_np", "np"],
-    reason: "The overt post-theme person remains structurally visible; recipient, goal, beneficiary, agent, and source are candidate readings only, never asserted slots."
-  });
-  const following = fields.followingPredicate ? bridgeFramePartClone(fields.followingPredicate, {
-    label: "doing",
-    pos: "verb",
-    syntax: `${(firstToken(fields.followingPredicate) || fields.followingPredicate).syntax || "verb"} following_predicate`,
-    slots: ["following_predicate", "action_verb", "predicate"],
-    reason: "The overt final predicate remains visible; no hidden shared participant is inserted."
-  }) : null;
-  const children = [fields.upstreamVP, marker, participant, following].filter(Boolean);
-  return construction("PostThemeParticipantRelation", "For / to", children, {
-    note: "Links the preceding action and thing to a following person. The exact link depends on the verb and context.",
-    slots: cleanSlots([
-      "post_theme_participant_relation",
-      "post_theme_link_marker",
-      "post_theme_participant",
-      "person_np",
-      "np",
-      "predicate",
-      "vp",
-      "action_vp",
-      ...following ? ["following_predicate"] : []
-    ]),
-    trace: traceInfo("generative_template", {
-      construction_type: "PostThemeParticipantRelation",
-      template_family: "construction_template",
-      cp021b_design_family: "frozen_post_theme_participant",
-      template: ["upstream_predicate_theme_vp!", "post_theme_link_marker!", "post_theme_participant!", "following_predicate?"],
-      assigned_slots: ["upstream_vp", "post_theme_link_marker", "post_theme_participant", ...following ? ["following_predicate"] : []],
-      relation_profile: "theory_neutral_post_theme_participant",
-      upstream_predicate_surface: fields.upstreamPredicateSurface,
-      upstream_theme_surface: fields.upstreamThemeSurface,
-      marker_surface: flattenSurface(fields.marker),
-      postmarker_participant_surface: fields.participantNodes.map(flattenSurface).join(""),
-      following_predicate_surface: following ? flattenSurface(fields.followingPredicate) : "",
-      participant_role_candidates: fields.profile.candidates,
-      participant_role_status: "unresolved_or_context_dependent",
-      marker_category_status: "not_selected",
-      upstream_predicate_profile: fields.profile.profile,
-      orthographic_parity: "畀=俾",
-      hidden_participants_inserted: false,
-      semantic_review_flags: ["post_theme_participant_role_context_dependent"],
-      learner_gloss_lines: ["for / to", "Links the preceding action and thing to a following person. The exact link depends on the verb and context."],
-      not_claims: ["not_lexical_give", "not_passive_or_permissive", "not_unified_recipient_or_beneficiary", "not_fixed_marker_category", "not_supported_productive"],
-      surfaces: children.map(flattenSurface),
-      reason: "This bounded CP021B relation preserves the overt predicate, theme, marker, person, and optional final predicate while leaving the exact participant role and marker category unresolved."
-    })
-  });
-}
-function postThemeParticipantRelationFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  if (particles.length) return null;
-  const compact = withoutIgnorableSpaceText(bareCore);
-  const markerIndexes = compact.map((node, index) => cp021bIsBei2Marker(node) ? index : -1).filter((index) => index >= 0);
-  if (markerIndexes.length !== 1) return null;
-  const markerIndex = markerIndexes[0];
-  if (markerIndex < 2 || markerIndex >= compact.length - 1) return null;
-  const profileCandidates = [];
-  for (let predicateIndex = 0; predicateIndex < markerIndex; predicateIndex += 1) {
-    const predicateSurface = flattenSurface(compact[predicateIndex]);
-    const profile = CP021B_POST_THEME_PREDICATE_PROFILES[predicateSurface];
-    if (!profile) continue;
-    const subjectNodes = compact.slice(0, predicateIndex);
-    if (subjectNodes.length && !cp021bSpanIsPersonNP(subjectNodes)) continue;
-    let themeStart = predicateIndex + 1;
-    let aspect = null;
-    if (isToken(compact[themeStart], "咗")) {
-      aspect = compact[themeStart];
-      themeStart += 1;
-    }
-    const themeNodes = compact.slice(themeStart, markerIndex);
-    if (!cp021bSpanIsThingNP(themeNodes)) continue;
-    profileCandidates.push({ predicateIndex, predicateSurface, profile, subjectNodes, aspect, themeNodes });
-  }
-  if (profileCandidates.length !== 1) return null;
-  const candidate = profileCandidates[0];
-  const afterMarker = compact.slice(markerIndex + 1);
-  let participantNodes = afterMarker;
-  let followingPredicate = null;
-  if (candidate.profile.final_predicate_required) {
-    if (afterMarker.length < 2) return null;
-    followingPredicate = afterMarker[afterMarker.length - 1];
-    participantNodes = afterMarker.slice(0, -1);
-    if (!cp020NodeIsPredicateEvidence(followingPredicate)) return null;
-  } else if (afterMarker.some(cp020NodeIsPredicateEvidence)) {
-    return null;
-  }
-  if (!cp021bSpanIsPersonNP(participantNodes)) return null;
-  const predicateNode = compact[candidate.predicateIndex];
-  const predicateChild = bridgeFramePartClone(predicateNode, {
-    label: "doing",
-    pos: "verb",
-    syntax: `${(firstToken(predicateNode) || predicateNode).syntax || "verb"} cp021b_upstream_predicate`,
-    slots: ["action_verb", "main_verb", "predicate"],
-    reason: "The reviewed upstream lexical predicate supplies the valency profile; the later marker alone does not determine the relation."
-  });
-  const aspectChild = candidate.aspect ? bridgeFramePartClone(candidate.aspect, {
-    label: "func",
-    pos: "aspect",
-    syntax: "perfective_aspect",
-    slots: ["perfective_aspect", "aspect_marker"],
-    reason: "The overt aspect remains inside the upstream predicate-theme VP."
-  }) : null;
-  const theme = cp021bArgumentSpan(candidate.themeNodes, {
-    parent_type: candidate.aspect ? "PerfectiveVP" : "TransitiveVP",
-    label: "what",
-    role: "theme",
-    slots: ["theme", "object", "np"],
-    reason: "The overt theme remains inside the upstream VP; its presence is required before post-theme linking can be considered."
-  });
-  const upstreamChildren = [predicateChild, aspectChild, theme].filter(Boolean);
-  const upstreamType = candidate.aspect ? "PerfectiveVP" : "TransitiveVP";
-  const upstreamVP = construction(upstreamType, candidate.aspect ? "PerfectiveVP" : "VP", upstreamChildren, {
-    note: "Overt upstream predicate and theme retained as one VP before the post-theme link marker.",
-    slots: cleanSlots(["vp", "action_vp", "predicate", "theme", "object", ...candidate.aspect ? ["perfective_aspect"] : []]),
-    trace: traceInfo("generative_template", {
-      construction_type: upstreamType,
-      template_family: "construction_template",
-      cp021b_design_family: "upstream_predicate_theme_vp",
-      template: ["action_verb!", "perfective_aspect?", "theme!"],
-      assigned_slots: ["action_verb", ...candidate.aspect ? ["perfective_aspect"] : [], "theme"],
-      surfaces: upstreamChildren.map(flattenSurface),
-      subspan: true,
-      reason: "C02 requires an overt non-GIVE predicate and overt local theme before the marker."
-    })
-  });
-  const relation = cp021bMakePostThemeRelation({
-    upstreamVP,
-    upstreamPredicateSurface: candidate.predicateSurface,
-    upstreamThemeSurface: candidate.themeNodes.map(flattenSurface).join(""),
-    marker: compact[markerIndex],
-    participantNodes,
-    followingPredicate,
-    profile: candidate.profile
-  });
-  if (!candidate.subjectNodes.length) return relation;
-  const subject = cp021bArgumentSpan(candidate.subjectNodes, {
-    parent_type: "SubjectPredicateClause",
-    label: "who",
-    role: "subject",
-    slots: ["subject", "person_np", "np"],
-    reason: "The overt subject is kept outside PostThemeParticipantRelation, as required by the frozen predicate-level design."
-  });
-  return construction("SubjectPredicateClause", "Clause", [subject, relation], {
-    note: "Subject plus the bounded post-theme participant predicate relation.",
-    slots: cleanSlots(["subject_predicate_clause", "subject", "predicate", "clause"]),
-    trace: traceInfo("generative_template", {
-      construction_type: "SubjectPredicateClause",
-      template_family: "construction_template",
-      cp021b_design_family: "subject_wrapper",
-      template: ["subject!", "post_theme_participant_relation!"],
-      assigned_slots: ["subject", "predicate"],
-      surfaces: [flattenSurface(subject), flattenSurface(relation)],
-      reason: "The optional overt subject is outside the new predicate-level relation."
-    })
-  });
-}
-function cp021bBoundaryReviewFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  if (particles.length) return null;
-  const compact = withoutIgnorableSpaceText(bareCore);
-  const markerIndexes = compact.map((node, index) => cp021bIsBei2Marker(node) ? index : -1).filter((index) => index >= 0);
-  if (!markerIndexes.length) return null;
-  const boundaryClause = (subjectNodes, profile, code) => {
-    if (!subjectNodes.length || !cp021bSpanIsPersonNP(subjectNodes)) return null;
-    const subject = cp021bArgumentSpan(subjectNodes, {
-      parent_type: "SubjectPredicateClause",
-      label: "who",
-      role: "subject",
-      slots: ["subject", "person_np", "np"],
-      reason: "The overt subject remains visible in a boundary-only wrapper; no participant relation is inferred."
-    });
-    const remainder = compact.slice(subjectNodes.length);
-    const children = [subject, ...remainder];
-    return construction("SubjectPredicateClause", "Clause", children, {
-      note: "Overt clause material preserved for review outside the two frozen CP021B relation designs.",
-      slots: cleanSlots(["subject_predicate_clause", "subject", "predicate", "clause"]),
-      trace: traceInfo("generative_template", {
-        construction_type: "SubjectPredicateClause",
-        template_family: "construction_template",
-        cp021b_design_family: "nonemitting_boundary_wrapper",
-        template: ["subject!", "boundary_predicate_material!"],
-        assigned_slots: ["subject", "predicate_material"],
-        boundary_profile: profile,
-        semantic_review_flags: [code],
-        hidden_participants_inserted: false,
-        semantic_role_assignment: "none",
-        surfaces: children.map(flattenSurface),
-        reason: "The wrapper preserves every overt token and full root coverage while refusing a new lexical-GIVE or post-theme participant relation."
-      })
-    });
-  };
-  if (markerIndexes.length >= 2) {
-    return boundaryClause(compact.slice(0, markerIndexes[0]), "double_marker_heavy_theme", "lexical_give_double_marker_heavy_theme_unfrozen");
-  }
-  if (compact.some((node) => isToken(node, "將"))) {
-    const zoengIndex = compact.findIndex((node) => isToken(node, "將"));
-    return boundaryClause(compact.slice(0, zoengIndex), "zoeng_restructure", "lexical_give_zoeng_restructure_outside_design");
-  }
-  const markerIndex = markerIndexes[0];
-  const beforeMarker = compact.slice(0, markerIndex);
-  const afterMarker = compact.slice(markerIndex + 1).filter((node) => !isToken(node, "咗"));
-  if (!cp021bSpanIsPersonNP(afterMarker)) return null;
-  for (let splitIndex = 1; splitIndex < beforeMarker.length; splitIndex += 1) {
-    const frontedNodes = beforeMarker.slice(0, splitIndex);
-    const subjectNodes = beforeMarker.slice(splitIndex);
-    if (!cp021bSpanIsThingNP(frontedNodes) || !cp021bSpanIsPersonNP(subjectNodes)) continue;
-    const topic = cp021bArgumentSpan(frontedNodes, {
-      parent_type: "TopicComment",
-      label: "what",
-      role: "fronted_theme_candidate",
-      slots: ["fronted_theme_candidate", "topic", "np"],
-      reason: "The overt fronted thing is preserved as topic material; it is not copied into the local GIVE predicate or assigned by a hidden gap."
-    });
-    const subject = cp021bArgumentSpan(subjectNodes, {
-      parent_type: "SubjectPredicateClause",
-      label: "who",
-      role: "subject",
-      slots: ["subject", "person_np", "np"],
-      reason: "The overt subject remains inside the comment clause after the fronted topic."
-    });
-    const marker = bridgeFramePartClone(compact[markerIndex], {
-      label: "doing",
-      pos: "verb",
-      syntax: "lexical_give_predicate_fronted_theme_boundary",
-      slots: ["transfer_predicate", "action_verb", "predicate"],
-      reason: "Lexical GIVE is visible, but the local relation is deliberately not emitted because its theme is fronted outside the candidate span."
-    });
-    const aspectNode = compact[markerIndex + 1] && isToken(compact[markerIndex + 1], "咗") ? bridgeFramePartClone(compact[markerIndex + 1], {
-      label: "func",
-      pos: "aspect",
-      syntax: "perfective_aspect",
-      slots: ["perfective_aspect", "aspect_marker"],
-      reason: "Overt perfective aspect retained in the local predicate material."
-    }) : null;
-    const participant = cp021bArgumentSpan(afterMarker, {
-      parent_type: "SubjectPredicateClause",
-      label: "who",
-      role: "post_give_participant",
-      slots: ["post_give_participant", "person_np", "np"],
-      reason: "The overt post-GIVE person remains visible without an asserted recipient, goal, or beneficiary role."
-    });
-    const commentChildren = [subject, marker, aspectNode, participant].filter(Boolean);
-    const comment = construction("SubjectPredicateClause", "Clause", commentChildren, {
-      note: "Overt local comment material under a fronted-topic boundary.",
-      slots: cleanSlots(["subject_predicate_clause", "subject", "predicate", "clause"]),
-      trace: traceInfo("generative_template", {
-        construction_type: "SubjectPredicateClause",
-        template_family: "construction_template",
-        cp021b_design_family: "fronted_theme_comment",
-        assigned_slots: ["subject", "predicate_material"],
-        hidden_participants_inserted: false,
-        surfaces: commentChildren.map(flattenSurface)
-      })
-    });
-    return construction("TopicComment", "TopicComment", [topic, comment], {
-      note: "Fronted topic plus overt comment, preserved without a new local lexical-GIVE relation.",
-      slots: cleanSlots(["topic_comment", "topic", "comment", "predicate"]),
-      trace: traceInfo("generative_template", {
-        construction_type: "TopicComment",
-        template_family: "construction_template",
-        cp021b_design_family: "nonemitting_boundary_wrapper",
-        template: ["fronted_topic!", "comment!"],
-        assigned_slots: ["topic", "comment"],
-        boundary_profile: "fronted_theme",
-        semantic_review_flags: ["lexical_give_fronted_theme_outside_design"],
-        hidden_participants_inserted: false,
-        semantic_role_assignment: "none",
-        surfaces: [flattenSurface(topic), flattenSurface(comment)],
-        reason: "The fronted theme and discourse link remain overt, but no copied theme or full local relation is introduced."
-      })
-    });
-  }
-  return null;
-}
-function cp020NodeIsPersonEvidence(node) {
-  const tok = firstToken(node) || node;
-  const slots = nodeSlots(node);
-  const localAnimateAgent = flattenSurface(node) === "蚊";
-  return localAnimateAgent || Boolean(tok && tok.label === "who") || slots.includes("person_np") || slots.includes("co_participant") || slots.includes("recipient") || slots.includes("stance_holder") || slots.includes("subject");
-}
-function cp020NodeIsObjectEvidence(node) {
-  const tok = firstToken(node) || node;
-  const slots = nodeSlots(node);
-  return Boolean(tok && (tok.label === "what" || tok.label === "where" || tok.label === "measure_word")) || slots.includes("object") || slots.includes("head_noun") || slots.includes("classifier") || slots.includes("np");
-}
-function cp020NodeIsPredicateEvidence(node) {
-  const slots = nodeSlots(node);
-  return slots.includes("predicate") || slots.includes("action_verb") || slots.includes("main_verb") || slots.includes("movement_verb") || slots.includes("stative_predicate") || slots.includes("vp");
-}
-function cp020NodeIsBlockingPreMarkerMaterial(node) {
-  const slots = nodeSlots(node);
-  return slots.includes("action_verb") || slots.includes("main_verb") || slots.includes("predicate") || slots.includes("perfective_aspect") || slots.includes("progressive_aspect") || slots.includes("negator");
-}
-var CP020_PERMISSIVE_FAVORING_PREDICATE_SURFACES = /* @__PURE__ */ new Set([
-  "打籃球",
-  "食蛋糕",
-  "跌低"
-]);
-function cp020PredicateFavorsPermissive(nodes) {
-  const compact = withoutIgnorableSpaceText(nodes || []);
-  const surface = compact.map(flattenSurface).join("");
-  if (CP020_PERMISSIVE_FAVORING_PREDICATE_SURFACES.has(surface)) return true;
-  return compact.some((node) => {
-    const slots = nodeSlots(node);
-    const nodeSurface = flattenSurface(node);
-    return slots.includes("movement_verb") || slots.includes("motion_predicate") || slots.includes("motion_goal_vp") || nodeSurface === "去" || nodeSurface.startsWith("去旅行");
-  });
-}
-function cp020TrailingObjectCandidateSpan(nodes) {
-  const compact = withoutIgnorableSpaceText(nodes || []);
-  for (let i = 1; i < compact.length; i += 1) {
-    const node = compact[i];
-    const slots = nodeSlots(node);
-    const tok = firstToken(node) || node;
-    const syntax = String(tok && tok.syntax || node.syntax || "");
-    if (node.kind === "construction" && (slots.includes("np") || slots.includes("object"))) {
-      return { start: i, end: i + 1 };
-    }
-    if (slots.includes("classifier")) {
-      let end = i + 1;
-      while (end < compact.length) {
-        const next = compact[end];
-        const nextTok = firstToken(next) || next;
-        const nextSlots = nodeSlots(next);
-        const nextSyntax = String(nextTok && nextTok.syntax || next.syntax || "");
-        if (next.kind === "text" || nodeCanFillSlot(next, "particle") || nodeCanFillSlot(next, "aspect_marker") || cp020NodeIsPredicateEvidence(next) || nextSlots.includes("location") || nextSlots.includes("time") || /location|direction|temporal/u.test(nextSyntax) || Boolean(nextTok && ["doing", "where", "when", "particle", "func"].includes(nextTok.label))) break;
-        end += 1;
-      }
-      return { start: i, end: Math.max(i + 1, end) };
-    }
-    if (i === compact.length - 1 && tok && (tok.label === "what" || slots.includes("object")) && !slots.includes("location") && !/location/u.test(syntax)) {
-      const previous = compact[i - 1];
-      const previousSlots = previous ? nodeSlots(previous) : [];
-      const previousSurface = previous ? flattenSurface(previous) : "";
-      const start = previous && (previousSlots.includes("quantity") || previousSlots.includes("degree") || ["好多", "幾多", "少少"].includes(previousSurface)) ? i - 1 : i;
-      return { start, end: i + 1 };
-    }
-  }
-  return null;
-}
-function cp020ContextualPredicateLearnerChildren(nodes) {
-  const children = (nodes || []).map((node) => node);
-  const surfaceAt = (index) => index >= 0 && index < children.length ? flattenSurface(children[index]) : "";
-  for (let i = 0; i < children.length - 1; i += 1) {
-    if (surfaceAt(i) !== "上" || surfaceAt(i + 1) !== "牆") continue;
-    children[i] = bridgeFramePartClone(children[i], {
-      label: "func",
-      pos: "directional_linker",
-      syntax: "spatial_goal_linker movement_direction_up path_component",
-      slots: ["movement_direction", "path_component"],
-      note: "onto / up onto",
-      reason: "In 貼上牆, 上 links the placement event to its spatial goal; it is not the temporal word 'previous'.",
-      trace_detail: {
-        learner_gloss_lines: ["onto / up onto", "Spatial direction toward the following goal, not time."]
-      }
-    });
-    children[i + 1] = bridgeFramePartClone(children[i + 1], {
-      label: "where",
-      pos: "location",
-      syntax: "spatial_goal location_np wall_location",
-      slots: ["goal", "location", "np"],
-      note: "wall / onto the wall",
-      reason: "After spatial 上 in 貼上牆, 牆 is the placement goal rather than an ordinary object.",
-      trace_detail: {
-        learner_gloss_lines: ["wall / onto the wall", "The spatial goal of the placement event."]
-      }
-    });
-    i += 1;
-  }
-  return children;
-}
-function passivePermissiveRelationFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const compact = withoutIgnorableSpaceText(bareCore);
-  if (compact.some((node) => node.kind === "text" && /[，,；;：:。！？?!]/u.test(String(node.text || node.surface || "")))) return null;
-  const beiIndex = compact.findIndex((node, index) => index > 0 && (isToken(node, "畀") || isToken(node, "俾")));
-  if (beiIndex <= 0 || beiIndex >= compact.length - 2) return null;
-  let participantNodes = compact.slice(0, beiIndex);
-  let modal = null;
-  if (participantNodes.length >= 2 && nodeCanFillSlot(participantNodes[participantNodes.length - 1], "modal")) {
-    modal = participantNodes[participantNodes.length - 1];
-    participantNodes = participantNodes.slice(0, -1);
-  }
-  if (!participantNodes.length || participantNodes.length > 5) return null;
-  if (participantNodes.some(cp020NodeIsBlockingPreMarkerMaterial)) return null;
-  if (participantNodes.some((node) => {
-    const tok = firstToken(node) || node;
-    return Boolean(tok && ["doing", "like", "how", "when", "particle"].includes(tok.label));
-  })) return null;
-  if (!participantNodes.some((node) => cp020NodeIsPersonEvidence(node) || cp020NodeIsObjectEvidence(node))) return null;
-  const post = compact.slice(beiIndex + 1);
-  if (nodeCanFillSlot(post[0], "perfective_aspect") || nodeCanFillSlot(post[0], "progressive_aspect") || nodeCanFillSlot(post[0], "aspect_marker")) return null;
-  let agentNodes = [];
-  let predicateNodes = [];
-  if (cp020NodeIsPersonEvidence(post[0])) {
-    if (flattenSurface(post[0]) === "阿" && post.length >= 3) {
-      agentNodes = post.slice(0, 2);
-      predicateNodes = post.slice(2);
-    } else {
-      agentNodes = [post[0]];
-      predicateNodes = post.slice(1);
-    }
-  } else {
-    const predicateStart = post.findIndex((node, index) => index > 0 && cp020NodeIsPredicateEvidence(node));
-    if (predicateStart <= 0) return null;
-    agentNodes = post.slice(0, predicateStart);
-    predicateNodes = post.slice(predicateStart);
-  }
-  if (!agentNodes.length || !predicateNodes.length) return null;
-  if (predicateNodes.every(cp021bNodeIsPersonEvidence)) return null;
-  const agentIsClassifierPersonNP = agentNodes.length === 2 && nodeCanFillSlot(agentNodes[0], "classifier") && cp020NodeIsPersonEvidence(agentNodes[1]);
-  if (agentNodes.some((node, index) => {
-    if (cp020NodeIsPersonEvidence(node)) return false;
-    if (agentIsClassifierPersonNP && index === 0) return false;
-    const tok = firstToken(node) || node;
-    return nodeCanFillSlot(node, "classifier") || Boolean(tok && (tok.label === "what" || tok.label === "measure_word"));
-  })) return null;
-  if (agentNodes.some(cp020NodeIsPredicateEvidence)) return null;
-  if (predicateNodes.every((node) => node.kind === "text" || nodeCanFillSlot(node, "particle"))) return null;
-  const internalParticleIndex = predicateNodes.findIndex((node, index) => index < predicateNodes.length - 1 && nodeCanFillSlot(node, "particle"));
-  if (internalParticleIndex >= 0) return null;
-  {
-    const firstPred = predicateNodes[0];
-    const tok = firstToken(firstPred) || firstPred;
-    const syntax = String(tok && tok.syntax || firstPred.syntax || "");
-    if (!cp020NodeIsPredicateEvidence(firstPred) && (nodeCanFillSlot(firstPred, "classifier") || nodeCanFillSlot(firstPred, "object") || nodeCanFillSlot(firstPred, "demonstrative") || /determiner/u.test(syntax) || Boolean(tok && (tok.label === "what" || tok.label === "measure_word")))) return null;
-  }
-  const marker = bridgeFramePartClone(compact[beiIndex], {
-    label: "func",
-    pos: "function",
-    syntax: "bei_passive_permissive_marker",
-    slots: ["passive_marker", "bei_marker"],
-    reason: "畀/俾 links the preceding participant with a following participant and predicate; the isolated surface may express passive voice or permissive 'let'."
-  });
-  const participantHasPerson = participantNodes.some(cp020NodeIsPersonEvidence);
-  const participantHasObjectShape = participantNodes.some((node) => {
-    const tok = firstToken(node) || node;
-    const slots = nodeSlots(node);
-    return Boolean(tok && (tok.label === "what" || tok.label === "measure_word")) || slots.includes("classifier") || slots.includes("object");
-  });
-  const participantIsPersonOnly = participantHasPerson && !participantHasObjectShape;
-  const groupedPredicate = categorySubspanFor(predicateNodes, ["ProductiveVO", "TransitiveVP"]);
-  const predicateAnalysisNodes = groupedPredicate ? [groupedPredicate] : predicateNodes;
-  const retainedSpan = cp020TrailingObjectCandidateSpan(predicateAnalysisNodes);
-  const retainedSurface = retainedSpan ? predicateAnalysisNodes.slice(retainedSpan.start, retainedSpan.end).map(flattenSurface).join("") : "";
-  const agentSurface = agentNodes.map(flattenSurface).join("");
-  const participantSurface = participantNodes.map(flattenSurface).join("");
-  const semanticReviewFlags = [];
-  const readingCandidates = [];
-  const permissiveFavored = participantIsPersonOnly && !retainedSurface && cp020PredicateFavorsPermissive(predicateAnalysisNodes);
-  let passiveSubtype = "canonical_passive_candidate";
-  let learnerLabel = "Passive";
-  if (retainedSurface) {
-    semanticReviewFlags.push("passive_permissive_surface_ambiguity", "retained_patient_role_requires_review");
-    readingCandidates.push("indirect_passive_candidate", "permissive_let_allow");
-    if (!participantIsPersonOnly) readingCandidates.push("canonical_passive_role_boundary");
-    learnerLabel = "Passive / let";
-    passiveSubtype = "retained_object_passive_permissive_ambiguity";
-  } else if (permissiveFavored) {
-    readingCandidates.push("permissive_let_allow");
-    learnerLabel = "Let / allow";
-    passiveSubtype = "permissive_candidate";
-  } else if (participantIsPersonOnly) {
-    semanticReviewFlags.push("passive_permissive_surface_ambiguity");
-    readingCandidates.push("canonical_or_indirect_passive", "permissive_let_allow");
-    learnerLabel = "Passive / let";
-    passiveSubtype = "canonical_passive_permissive_ambiguity";
-  } else {
-    readingCandidates.push("canonical_passive");
-  }
-  const learnerGlossLines = learnerLabel === "Passive" ? ["passive relation", "The first participant is presented as undergoing the following event."] : learnerLabel === "Let / allow" ? ["let / allow relation", "The first participant allows the following participant to carry out the action."] : ["passive or let / allow relation", "The surface may describe something happening to the first participant or someone being allowed to act; context may decide."];
-  const agentSpanIsKnownPersonExpression = agentNodes.map(flattenSurface).join("") === "阿媽";
-  const agentChildren = agentNodes.map((node) => {
-    const surface = flattenSurface(node);
-    if (agentSpanIsKnownPersonExpression && surface === "阿") {
-      return bridgeFramePartClone(node, {
-        label: "func",
-        pos: "prefix",
-        syntax: "familiar_kinship_prefix bei_postmarker_participant_part",
-        slots: ["postmarker_participant"],
-        note: "familiar kinship/name prefix; part of 阿媽",
-        trace_detail: { learner_gloss_lines: ["familiar kinship/name prefix", "Part of 阿媽; not the person referent by itself."] },
-        reason: "Inside the overt post-畀/俾 participant 阿媽, 阿 is a familiar kinship/name prefix; 媽 carries the person reference."
-      });
-    }
-    if (cp020NodeIsPersonEvidence(node) || agentSpanIsKnownPersonExpression) {
-      return bridgeFramePartClone(node, {
-        label: "who",
-        pos: "np",
-        syntax: `${node.syntax || "agent_np"} bei_postmarker_participant`,
-        slots: ["postmarker_participant", "person_np", "np", "subject"],
-        note: agentSpanIsKnownPersonExpression ? "mum / mother" : node.note,
-        trace_detail: agentSpanIsKnownPersonExpression ? { learner_gloss_lines: ["mum / mother", "The person-denoting head of 阿媽."] } : void 0,
-        reason: "Overt post-畀/俾 participant in the passive/permissive relation; this participant may be a passive agent or the actor who is permitted to act."
-      });
-    }
-    return node;
-  });
-  const predicateChildren = groupedPredicate ? [groupedPredicate] : cp020ContextualPredicateLearnerChildren(predicateNodes);
-  const children = [...participantNodes, ...modal ? [modal] : [], marker, ...agentChildren, ...predicateChildren, ...particles];
-  return construction("PassivePermissiveRelation", learnerLabel, children, {
-    note: "Transparent 畀/俾 passive–permissive relation. The relation preserves canonical-passive, retained-object/indirect-passive, and permissive alternatives instead of presenting generic affectedness as Cantonese grammar.",
-    slots: cleanSlots(["passive_permissive_relation", "bei_relation", "clause", "predicate", "vp", "pre_marker_participant", "postmarker_participant", ...retainedSurface ? ["retained_patient_candidate", "object"] : [], ...templateDerivedSlots("PassivePermissiveRelation", children)]),
-    trace: traceInfo("generative_template", {
-      construction_type: "PassivePermissiveRelation",
-      template_family: "generative_template",
-      template: ["participant!", "modal?", "bei_marker!", "postmarker_participant!", "predicate_material!", "particle?"],
-      assigned_slots: ["pre_marker_participant", ...modal ? ["modal"] : [], "bei_marker", "postmarker_participant", "predicate", ...retainedSurface ? ["retained_patient_candidate"] : [], ...particles.map(() => "particle")],
-      passive_subtype: passiveSubtype,
-      reading_candidates: readingCandidates,
-      participant_surface: participantSurface,
-      postmarker_participant_surface: agentSurface,
-      retained_patient_candidate_surface: retainedSurface,
-      semantic_review_flags: semanticReviewFlags,
-      learner_gloss_lines: learnerGlossLines,
-      not_claims: ["not_generic_affectedness_construction", "not_deterministic_passive_classifier", "not_generic_force_causative"],
-      surfaces: children.map((node) => flattenSurface(node)),
-      reason: "CP020 replaces the debunked AffectednessFrame with one transparent passive/permissive relation. Inanimate/full-patient shapes may support canonical passive; independently supported motion and bounded actor-oriented predicates may favor permissive let/allow; genuinely ambiguous animate and retained-object strings preserve competing readings."
-    })
-  });
-}
+var createLexicalGiveDetectors = require_lexical_give();
+var {
+  cp021bArgumentSpan,
+  cp021bIsBei2Marker,
+  cp021bNodeIsPersonEvidence,
+  cp021bSpanIsPersonNP,
+  cp021bSpanIsThingNP,
+  lexicalGiveRelationFallback
+} = createLexicalGiveDetectors({
+  bridgeFramePartClone,
+  categorySubspanFor,
+  classifierObjectNPFromNodes,
+  cleanSlots,
+  construction,
+  firstToken,
+  flattenSurface,
+  isToken,
+  nodeCanFillSlot,
+  nodeSlots,
+  traceInfo,
+  withoutIgnorableSpaceText,
+  withoutTrailingParticles
+});
+var createPostThemeDetectors = require_post_theme();
+var {
+  CP021B_POST_THEME_PREDICATE_PROFILES,
+  cp021bBoundaryReviewFallback,
+  cp021bMakePostThemeRelation,
+  postThemeParticipantRelationFallback
+} = createPostThemeDetectors({
+  bridgeFramePartClone,
+  cleanSlots,
+  construction,
+  cp020NodeIsPredicateEvidence: (...args) => cp020NodeIsPredicateEvidence(...args),
+  cp021bArgumentSpan,
+  cp021bIsBei2Marker,
+  cp021bSpanIsPersonNP,
+  cp021bSpanIsThingNP,
+  firstToken,
+  flattenSurface,
+  isToken,
+  traceInfo,
+  withoutIgnorableSpaceText,
+  withoutTrailingParticles
+});
+var createPassivePermissiveDetectors = require_passive_permissive();
+var {
+  cp020NodeIsPersonEvidence,
+  cp020NodeIsPredicateEvidence,
+  passivePermissiveRelationFallback
+} = createPassivePermissiveDetectors({
+  bridgeFramePartClone,
+  categorySubspanFor,
+  cleanSlots,
+  construction,
+  cp021bNodeIsPersonEvidence,
+  firstToken,
+  flattenSurface,
+  isToken,
+  nodeCanFillSlot,
+  nodeSlots,
+  templateDerivedSlots,
+  traceInfo,
+  withoutIgnorableSpaceText,
+  withoutTrailingParticles
+});
 function rawNodeHasSlot(node, slot) {
   return nodeSlots(node).includes(slot);
 }
