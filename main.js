@@ -12270,6 +12270,850 @@ var require_frames = __commonJS({
   }
 });
 
+// src/parser/detectors/motion/directional.js
+var require_directional = __commonJS({
+  "src/parser/detectors/motion/directional.js"(exports2, module2) {
+    "use strict";
+    module2.exports = function createDirectionalMotionDetectors2(dependencies = {}) {
+      const {
+        categorySubspanFor: categorySubspanFor2,
+        compositionPartClone: compositionPartClone2,
+        construction: construction2,
+        constructionSlotsByType: constructionSlotsByType2,
+        firstToken: firstToken2,
+        flattenSurface: flattenSurface2,
+        isToken: isToken2,
+        nodeCanFillSlot: nodeCanFillSlot2,
+        parserInactiveTokenClone: parserInactiveTokenClone2,
+        templateDerivedSlots: templateDerivedSlots2,
+        token: token2,
+        traceInfo: traceInfo2,
+        withoutIgnorableSpaceText: withoutIgnorableSpaceText2,
+        withoutTrailingParticles: withoutTrailingParticles2
+      } = dependencies;
+      const DIRECTIONAL_MOTION_PATTERNS = [
+        {
+          surfaces: ["返", "上", "嚟"],
+          type: "CompoundDirectionalMotionVP",
+          label: "MotionVP",
+          note: "Compound directional motion VP: 返 + 上 + 嚟 = come back up.",
+          pattern: "return + upward_direction + deictic_come"
+        },
+        {
+          surfaces: ["返", "上", "去"],
+          type: "CompoundDirectionalMotionVP",
+          label: "MotionVP",
+          note: "Compound directional motion VP: 返 + 上 + 去 = go back up.",
+          pattern: "return + upward_direction + deictic_go"
+        },
+        {
+          surfaces: ["落", "嚟"],
+          type: "DirectionalMotionVP",
+          label: "MotionVP",
+          note: "Directional motion VP: 落 + 嚟 = come down.",
+          pattern: "down_direction + deictic_come"
+        },
+        {
+          surfaces: ["返", "嚟"],
+          type: "DirectionalMotionVP",
+          label: "MotionVP",
+          note: "Directional motion VP: 返 + 嚟 = come back.",
+          pattern: "return + deictic_come"
+        },
+        {
+          surfaces: ["返", "去"],
+          type: "DirectionalMotionVP",
+          label: "MotionVP",
+          note: "Directional motion VP: 返 + 去 = go back / return there.",
+          pattern: "return + deictic_go"
+        },
+        {
+          surfaces: ["上", "嚟"],
+          type: "DirectionalMotionVP",
+          label: "MotionVP",
+          note: "Directional motion VP: 上 + 嚟 = come up.",
+          pattern: "upward_direction + deictic_come"
+        },
+        {
+          surfaces: ["嚟"],
+          type: "DirectionalMotionVP",
+          label: "MotionVP",
+          note: "Motion VP fragment: 嚟 = come.",
+          pattern: "deictic_come"
+        },
+        {
+          surfaces: ["去"],
+          type: "DirectionalMotionVP",
+          label: "MotionVP",
+          note: "Motion VP fragment: 去 = go.",
+          pattern: "deictic_go"
+        }
+      ];
+      function directionalMotionPartClone(node, role) {
+        const surface = flattenSurface2(node);
+        const syntaxBySurface = {
+          "返": "return_motion_component",
+          "落": "movement_direction_down",
+          "上": "movement_direction_up",
+          "嚟": "deictic_motion_marker",
+          "去": "deictic_motion_marker"
+        };
+        const slotBySurface = {
+          "返": "movement_verb",
+          "落": "movement_direction",
+          "上": "movement_direction",
+          "嚟": "deictic_motion_marker",
+          "去": "deictic_motion_marker"
+        };
+        return parserInactiveTokenClone2(firstToken2(node) || token2(surface), {
+          label: role || "doing",
+          pos: role === "func" ? "function" : "verb",
+          syntax: syntaxBySurface[surface] || "directional_motion_part",
+          slots: [slotBySurface[surface] || "directional_motion_part"],
+          reason: "Token is parser-inactive inside a directional-motion VP candidate; the parent exposes the VP affordance."
+        });
+      }
+      function makeDirectionalMotionVP(nodes, pattern) {
+        const children = nodes.map((node) => directionalMotionPartClone(node, "doing"));
+        return construction2(pattern.type, pattern.label, children, {
+          slots: ["directional_motion_vp", "vp", "action_vp", "predicate", "movement_verb", "motion_predicate"],
+          note: pattern.note,
+          trace: traceInfo2("generative_or_heuristic_slot_rule", {
+            rule: "Cantonese directional motion compound",
+            pattern: pattern.pattern,
+            surfaces: pattern.surfaces,
+            reason: "Native directional motion forms such as 落嚟 / 返嚟 / 上嚟 / 返上嚟 should surface as transparent VP candidates without making child feature bundles parser-active."
+          })
+        });
+      }
+      function directionalMotionTemplateFor(nodes, pattern) {
+        const templated = categorySubspanFor2(nodes, [pattern.type]);
+        if (templated) return templated;
+        return makeDirectionalMotionVP(nodes, pattern);
+      }
+      function negatedDirectionalMotionTemplateFor(negatorNode, vp) {
+        const templated = categorySubspanFor2([negatorNode, vp], ["NegatedDirectionalMotionVP"]);
+        if (templated) return templated;
+        return null;
+      }
+      function directionalPatternAt(nodes, index) {
+        for (const pattern of DIRECTIONAL_MOTION_PATTERNS) {
+          if (index + pattern.surfaces.length > nodes.length) continue;
+          const window2 = nodes.slice(index, index + pattern.surfaces.length);
+          if (window2.some((node) => node && node.kind === "text")) continue;
+          const surfaces = window2.map((node) => flattenSurface2(node));
+          if (surfaces.every((surface, i) => surface === pattern.surfaces[i])) {
+            return { pattern, length: pattern.surfaces.length };
+          }
+        }
+        return null;
+      }
+      function wrapDirectionalMotionSubspans2(nodes) {
+        const result = [];
+        let i = 0;
+        while (i < nodes.length) {
+          if (isToken2(nodes[i], "唔")) {
+            const negated = directionalPatternAt(nodes, i + 1);
+            if (negated) {
+              const vp = directionalMotionTemplateFor(nodes.slice(i + 1, i + 1 + negated.length), negated.pattern);
+              const templatedNegatedVp = negatedDirectionalMotionTemplateFor(nodes[i], vp);
+              result.push(templatedNegatedVp || construction2("NegatedDirectionalMotionVP", "NegMotionVP", [parserInactiveTokenClone2(nodes[i], {
+                label: "func",
+                pos: "function",
+                syntax: "negator",
+                slots: ["negator"],
+                reason: "Negator is parser-inactive inside a negated directional-motion VP wrapper."
+              }), vp], {
+                slots: ["negated_directional_motion_vp", "directional_motion_vp", "vp", "action_vp", "predicate", "movement_verb", "motion_predicate", "negator"],
+                note: "Negated directional motion VP: 唔 + directional motion, e.g. 唔落嚟.",
+                trace: traceInfo2("generative_or_heuristic_slot_rule", {
+                  rule: "negator + Cantonese directional motion compound",
+                  pattern: negated.pattern.pattern,
+                  reason: "Native refusal/negative motion forms such as 唔落嚟 should expose one negated motion VP while child tokens stay parser-inactive."
+                })
+              }));
+              i += 1 + negated.length;
+              continue;
+            }
+          }
+          const match = directionalPatternAt(nodes, i);
+          if (match) {
+            result.push(directionalMotionTemplateFor(nodes.slice(i, i + match.length), match.pattern));
+            i += match.length;
+            continue;
+          }
+          result.push(nodes[i]);
+          i += 1;
+        }
+        return result;
+      }
+      function transitionMotionPredicateFallback2(core) {
+        const { core: bareCore, particles } = withoutTrailingParticles2(core);
+        if (particles.length) return null;
+        if (!bareCore.length) return null;
+        let cursor = 0;
+        const subject = nodeCanFillSlot2(bareCore[cursor], "subject") ? bareCore[cursor++] : null;
+        if (!isToken2(bareCore[cursor], "走")) return null;
+        const movementSource = bareCore[cursor++];
+        const aspect = cursor < bareCore.length && ["咗", "過", "緊"].includes(flattenSurface2(bareCore[cursor])) ? bareCore[cursor++] : null;
+        if (cursor !== bareCore.length || !aspect) return null;
+        const movement = parserInactiveTokenClone2(movementSource, {
+          label: "doing",
+          pos: "verb",
+          syntax: "intransitive_motion_verb transition_motion_predicate",
+          slots: ["action_verb", "main_verb", "movement_verb", "predicate"],
+          jyutping: "zau2",
+          note: "leave / go away",
+          reason: "At predicate onset, standalone 走 is an independent transition-motion verb rather than a postverbal directional result complement."
+        });
+        const motion = aspect ? construction2("PerfectiveVP", "PerfectiveVP", [movement, aspect], {
+          slots: templateDerivedSlots2("PerfectiveVP", [movement, aspect]),
+          note: "Perfective transition-motion predicate.",
+          trace: traceInfo2("generative_template", {
+            construction_type: "PerfectiveVP",
+            template_family: "generative_template",
+            template: ["transition_motion_verb!", "perfective_aspect!"],
+            assigned_slots: ["transition_motion_verb", "perfective_aspect"],
+            surfaces: ["走", flattenSurface2(aspect)],
+            contextual_role_resolution: "standalone_motion_predicate_not_result_complement",
+            subspan: Boolean(subject)
+          })
+        }) : construction2("DirectionalMotionVP", "MotionVP", [movement], {
+          slots: templateDerivedSlots2("DirectionalMotionVP", [movement]),
+          note: "One-word transition motion predicate headed by standalone 走.",
+          trace: traceInfo2("generative_template", {
+            construction_type: "DirectionalMotionVP",
+            template_family: "generative_template",
+            template: ["transition_motion_verb!"],
+            assigned_slots: ["transition_motion_verb"],
+            surfaces: ["走"],
+            contextual_role_resolution: "standalone_motion_predicate_not_result_complement",
+            subspan: Boolean(subject)
+          })
+        });
+        if (!subject) return motion;
+        const children = [subject, motion, ...particles];
+        return construction2("SubjectPredicateClause", "SubjPred", children, {
+          slots: templateDerivedSlots2("SubjectPredicateClause", children),
+          note: "Subject plus an independent transition-motion predicate.",
+          trace: traceInfo2("generative_template", {
+            construction_type: "SubjectPredicateClause",
+            template_family: "generative_template",
+            template: ["subject!", "predicate!", "particle?"],
+            assigned_slots: ["subject", "predicate", ...particles.map(() => "particle")],
+            surfaces: children.map((node) => flattenSurface2(node)),
+            predicate_subtype: "transition_motion"
+          })
+        });
+      }
+      function directionalComplexPart(node, semanticSlot) {
+        const surface = flattenSurface2(node);
+        const syntax = {
+          "行": "main_motion_verb",
+          "攞": "caused_motion_action",
+          "入": "movement_direction_in",
+          "出": "movement_direction_out",
+          "返": "return_directional_complement",
+          "過": "path_across_component",
+          "嚟": "deictic_motion_marker_toward",
+          "去": "deictic_motion_marker_away",
+          "緊": "progressive_aspect",
+          "咗": "perfective_aspect",
+          "得": "potential_marker",
+          "唔": "potential_negator"
+        }[surface] || "directional_composition_part";
+        const label = ["緊", "咗", "得", "唔"].includes(surface) ? "func" : "doing";
+        return compositionPartClone2(node, { label, syntax, slots: [semanticSlot], reason: `${surface} is overt and owned by the directional complex in source order.` });
+      }
+      function directionalCompositionFallback2(core) {
+        const { core: bareCore, particles } = withoutTrailingParticles2(core);
+        const compact = withoutIgnorableSpaceText2(bareCore);
+        const surfaces = compact.map(flattenSurface2);
+        const finish = (type, label, nodes, detail = {}) => construction2(type, label, [...nodes, ...particles], {
+          slots: constructionSlotsByType2(type, nodes),
+          note: "Transparent Cantonese directional composition with path, potential/aspect, and final deixis represented in one predicate.",
+          trace: traceInfo2("generative_template", {
+            construction_type: type,
+            template_family: "generative_template",
+            template: detail.template || [],
+            assigned_slots: detail.assigned_slots || [],
+            surfaces: nodes.map(flattenSurface2),
+            directional_subtype: detail.directional_subtype || "",
+            deictic_position_status: "outermost_visible_deictic",
+            not_claims: ["not_hidden_path", "not_hidden_subject", "not_reordered_surface"]
+          })
+        });
+        if (surfaces.length === 3 && surfaces[0] === "行" && ["入", "出"].includes(surfaces[1]) && ["嚟", "去"].includes(surfaces[2])) {
+          return finish("DirectionalMotionVP", "MotionVP", [directionalComplexPart(compact[0], "movement_verb"), directionalComplexPart(compact[1], "movement_direction"), directionalComplexPart(compact[2], "deictic_motion_marker")], { template: ["movement_verb!", "movement_direction!", "deictic_motion_marker!"], assigned_slots: ["movement_verb", "movement_direction", "deictic_motion_marker"], directional_subtype: "self_motion_path_deictic" });
+        }
+        if (surfaces.join("") === "行返過嚟") {
+          return finish("DirectionalMotionVP", "MotionVP", compact.map((n, i) => directionalComplexPart(n, ["movement_verb", "return_motion_verb", "path_component", "deictic_motion_marker"][i])), { template: ["movement_verb!", "return_motion_verb!", "path_component!", "deictic_motion_marker!"], assigned_slots: ["movement_verb", "return_motion_verb", "path_component", "deictic_motion_marker"], directional_subtype: "return_path_deictic" });
+        }
+        if (surfaces.length === 3 && ["入", "落", "上", "出"].includes(surfaces[0]) && surfaces[1] === "咗" && ["嚟", "去"].includes(surfaces[2])) {
+          return finish("PerfectiveDirectionalVP", "PerfMotion", [directionalComplexPart(compact[0], "movement_direction"), directionalComplexPart(compact[1], "perfective_aspect"), directionalComplexPart(compact[2], "deictic_motion_marker")], { template: ["directional_head!", "perfective_aspect!", "deictic_motion_marker!"], assigned_slots: ["movement_direction", "perfective_aspect", "deictic_motion_marker"], directional_subtype: "perfective_directional" });
+        }
+        if (surfaces.length === 4 && surfaces[0] === "行" && surfaces[1] === "緊" && ["入", "出"].includes(surfaces[2]) && ["嚟", "去"].includes(surfaces[3])) {
+          return finish("ProgressiveDirectionalVP", "ProgMotion", [directionalComplexPart(compact[0], "movement_verb"), directionalComplexPart(compact[1], "progressive_aspect"), directionalComplexPart(compact[2], "movement_direction"), directionalComplexPart(compact[3], "deictic_motion_marker")], { template: ["movement_verb!", "progressive_aspect!", "movement_direction!", "deictic_motion_marker!"], assigned_slots: ["movement_verb", "progressive_aspect", "movement_direction", "deictic_motion_marker"], directional_subtype: "progressive_path_deictic" });
+        }
+        if (surfaces.length === 4 && nodeCanFillSlot2(compact[0], "action_verb") && ["得", "唔"].includes(surfaces[1]) && ["入", "出", "返"].includes(surfaces[2]) && ["嚟", "去"].includes(surfaces[3])) {
+          const positive = surfaces[1] === "得";
+          const type = positive ? "PotentialDirectionalVP" : "NegativePotentialDirectionalVP";
+          return finish(type, positive ? "PotentialMotion" : "NegPotentialMotion", [directionalComplexPart(compact[0], surfaces[0] === "行" ? "movement_verb" : "action_verb"), directionalComplexPart(compact[1], positive ? "potential_marker" : "negator"), directionalComplexPart(compact[2], surfaces[2] === "返" ? "return_motion_verb" : "movement_direction"), directionalComplexPart(compact[3], "deictic_motion_marker")], { template: ["action_or_motion_verb!", positive ? "potential_marker!" : "potential_negator!", "directional_complement!", "deictic_motion_marker!"], assigned_slots: [surfaces[0] === "行" ? "movement_verb" : "action_verb", positive ? "potential_marker" : "negator", surfaces[2] === "返" ? "return_motion_verb" : "movement_direction", "deictic_motion_marker"], directional_subtype: positive ? "positive_potential_directional" : "negative_potential_directional" });
+        }
+        return null;
+      }
+      return {
+        directionalCompositionFallback: directionalCompositionFallback2,
+        transitionMotionPredicateFallback: transitionMotionPredicateFallback2,
+        wrapDirectionalMotionSubspans: wrapDirectionalMotionSubspans2
+      };
+    };
+  }
+});
+
+// src/parser/detectors/motion/purpose-chains.js
+var require_purpose_chains = __commonJS({
+  "src/parser/detectors/motion/purpose-chains.js"(exports2, module2) {
+    "use strict";
+    module2.exports = function createMotionPurposeDetectors2(dependencies = {}) {
+      const {
+        categorySubspanFor: categorySubspanFor2,
+        compositionPartClone: compositionPartClone2,
+        construction: construction2,
+        constructionSlotsByType: constructionSlotsByType2,
+        firstToken: firstToken2,
+        flattenSurface: flattenSurface2,
+        isParticle: isParticle2,
+        isToken: isToken2,
+        nodeCanFillSlot: nodeCanFillSlot2,
+        nodeSlots: nodeSlots2,
+        parserInactiveTokenClone: parserInactiveTokenClone2,
+        token: token2,
+        traceInfo: traceInfo2,
+        withoutIgnorableSpaceText: withoutIgnorableSpaceText2,
+        withoutTrailingParticles: withoutTrailingParticles2
+      } = dependencies;
+      const SERIAL_PURPOSE_ACTION_VO_SURFACES = /* @__PURE__ */ new Set(["摘芒果", "買嘢", "食飯"]);
+      const SERIAL_PURPOSE_ACTIONS_THAT_TAKE_EATING_PURPOSE = /* @__PURE__ */ new Set(["摘芒果", "買嘢"]);
+      function isSerialPurposeActionVo(node) {
+        return node && node.kind === "construction" && node.type === "ProductiveVO" && SERIAL_PURPOSE_ACTION_VO_SURFACES.has(flattenSurface2(node));
+      }
+      function actionVoCanTakeEatingPurpose(node) {
+        return node && SERIAL_PURPOSE_ACTIONS_THAT_TAKE_EATING_PURPOSE.has(flattenSurface2(node));
+      }
+      function isEatingPurposeVerb(node) {
+        return isToken2(node, "食");
+      }
+      function isMotionPurposeCandidate(node) {
+        if (!node || node.kind === "text") return false;
+        const slots = nodeSlots2(node);
+        return slots.includes("directional_motion_vp") || slots.includes("negated_directional_motion_vp") || slots.includes("motion_predicate");
+      }
+      function serialPurposeVerbClone(node) {
+        return parserInactiveTokenClone2(firstToken2(node) || token2(flattenSurface2(node)), {
+          label: "doing",
+          pos: "verb",
+          syntax: "purpose_verb",
+          slots: ["purpose_verb", "action_verb", "predicate"],
+          reason: "食 is interpreted here as a purpose verb after a reviewed action/object VP, so it stays parser-inactive while the parent exposes the serial-purpose chain."
+        });
+      }
+      function serialPurposeParticleClone(node) {
+        return parserInactiveTokenClone2(firstToken2(node) || token2(flattenSurface2(node)), {
+          label: "particle",
+          pos: "particle",
+          syntax: "sentence_final_particle",
+          slots: ["particle"],
+          reason: "Final particle stays parser-inactive inside a motion/serial purpose-chain wrapper."
+        });
+      }
+      function serialChainKindForMatch(match) {
+        return match && match.motion && !match.purpose ? "MotionPurposeChain" : "SerialVerbPurposeChain";
+      }
+      function serialChainLabelForKind(kind) {
+        return kind === "MotionPurposeChain" ? "MotionPurpose" : "PurposeChain";
+      }
+      function serialChainSlotsForKind(kind) {
+        return kind === "MotionPurposeChain" ? ["motion_purpose_chain", "motion_action_chain", "purpose_chain", "vp", "action_vp", "predicate"] : ["serial_verb_purpose_chain", "serial_action_chain", "purpose_chain", "vp", "action_vp", "predicate"];
+      }
+      function makeSerialVerbPurposeChain(match) {
+        const children = [];
+        if (match.motion) children.push(match.motion);
+        children.push(match.action);
+        if (match.purpose) children.push(serialPurposeVerbClone(match.purpose));
+        if (match.particle) children.push(serialPurposeParticleClone(match.particle));
+        const kind = serialChainKindForMatch(match);
+        const isMotionOnly = kind === "MotionPurposeChain";
+        return construction2(kind, serialChainLabelForKind(kind), children, {
+          slots: serialChainSlotsForKind(kind),
+          note: isMotionOnly ? "Motion-purpose chain: directional motion plus a reviewed action VP, such as 返嚟食飯 or 落嚟摘芒果." : "Serial verb / purpose chain: reviewed action sequence with an explicit purpose 食, such as 摘芒果食, 落嚟摘芒果食, or 買嘢食.",
+          trace: traceInfo2("generative_template", {
+            template_family: "generative_template",
+            construction_type: kind,
+            template: match.motion ? match.purpose ? ["directional_motion_vp!", "productive_vo!", "purpose_verb!", "particle?"] : ["directional_motion_vp!", "productive_vo!", "particle?"] : ["productive_vo!", "purpose_verb!", "particle?"],
+            assigned_slots: [
+              ...match.motion ? ["directional_motion_vp"] : [],
+              "productive_vo",
+              ...match.purpose ? ["purpose_verb"] : [],
+              ...match.particle ? ["particle"] : []
+            ],
+            rule: isMotionOnly ? "directional_motion_vp + productive_vo + optional final particle" : "directional_motion? + productive_vo + purpose_verb + optional final particle",
+            pattern: match.motion ? match.purpose ? "directional_motion_vp + productive_vo + purpose_verb" : "directional_motion_vp + productive_vo" : "productive_vo + purpose_verb",
+            reason: isMotionOnly ? "Native speech can use motion plus an action VP as a purpose/action chain. This now uses the generative template transition lane while keeping the learner display precise." : "Native speech often chains an action/object VP with an explicit purpose verb. Keep the ProductiveVO transparent and keep the purpose verb parser-inactive inside the parent purpose-chain wrapper.",
+            surfaces: children.map((node) => flattenSurface2(node))
+          })
+        });
+      }
+      function serialVerbPurposeChainWithTrailingParticle2(node, particleNode) {
+        if (!node || node.kind !== "construction" || !["SerialVerbPurposeChain", "MotionPurposeChain"].includes(node.type) || !particleNode) return node;
+        if ((node.children || []).some((child) => isParticle2(child))) return node;
+        return {
+          ...node,
+          children: [...node.children || [], serialPurposeParticleClone(particleNode)],
+          trace: {
+            ...node.trace || {},
+            attached_trailing_particle: flattenSurface2(particleNode)
+          }
+        };
+      }
+      function serialPurposeParticleAt(nodes, index) {
+        return isParticle2(nodes[index]) && ["呀", "啊", "啦", "喇"].includes(flattenSurface2(nodes[index])) ? nodes[index] : null;
+      }
+      function serialVerbPurposePatternAt(nodes, index) {
+        let motion = null;
+        let i = index;
+        if (isMotionPurposeCandidate(nodes[i]) && isSerialPurposeActionVo(nodes[i + 1])) {
+          motion = nodes[i];
+          i += 1;
+        }
+        if (!isSerialPurposeActionVo(nodes[i])) return null;
+        let purpose = null;
+        let particleIndex = i + 1;
+        if (actionVoCanTakeEatingPurpose(nodes[i]) && isEatingPurposeVerb(nodes[i + 1])) {
+          purpose = nodes[i + 1];
+          particleIndex = i + 2;
+        }
+        if (!motion && !purpose) return null;
+        const particle = serialPurposeParticleAt(nodes, particleIndex);
+        return {
+          length: (motion ? 1 : 0) + 1 + (purpose ? 1 : 0) + (particle ? 1 : 0),
+          motion,
+          action: nodes[i],
+          purpose,
+          particle
+        };
+      }
+      function serialPurposeTemplateSubspanAt(nodes, index) {
+        const allowedTypes = ["SerialVerbPurposeChain", "MotionPurposeChain"];
+        const remaining = nodes.length - index;
+        for (let length = Math.min(4, remaining); length >= 2; length -= 1) {
+          const window2 = nodes.slice(index, index + length);
+          if (window2.some((node) => node.kind === "text")) continue;
+          const candidate = categorySubspanFor2(window2, allowedTypes);
+          if (candidate) return { node: candidate, length };
+        }
+        return null;
+      }
+      function wrapSerialPurposeTemplateSubspans2(nodes) {
+        const result = [];
+        let i = 0;
+        while (i < nodes.length) {
+          const match = serialPurposeTemplateSubspanAt(nodes, i);
+          if (match) {
+            result.push(match.node);
+            i += match.length;
+            continue;
+          }
+          result.push(nodes[i]);
+          i += 1;
+        }
+        return result;
+      }
+      function wrapSerialVerbPurposeSubspans2(nodes) {
+        const result = [];
+        let i = 0;
+        while (i < nodes.length) {
+          const match = serialVerbPurposePatternAt(nodes, i);
+          if (match) {
+            result.push(makeSerialVerbPurposeChain(match));
+            i += match.length;
+            continue;
+          }
+          result.push(nodes[i]);
+          i += 1;
+        }
+        return result;
+      }
+      function purposeLinkingMotionFallback2(core) {
+        const { core: bareCore, particles } = withoutTrailingParticles2(core);
+        const compact = withoutIgnorableSpaceText2(bareCore);
+        if (compact.length !== 5 || !nodeCanFillSlot2(compact[0], "action_verb") || !["嚟", "去"].includes(flattenSurface2(compact[3])) || !nodeCanFillSlot2(compact[4], "action_verb")) return null;
+        const object = categorySubspanFor2(compact.slice(1, 3), ["DiMarkedNP", "ClassifierObjectNP", "ModifiedNP", "NominalHeadSpan"]);
+        if (!object) return null;
+        const action = categorySubspanFor2([compact[0], object], ["ProductiveVO", "TransitiveVP"]) || construction2("ProductiveVO", "VO", [compact[0], object], { slots: ["productive_vo", "vp", "action_vp", "predicate", "object"], trace: traceInfo2("generative_template", { construction_type: "ProductiveVO", template_family: "generative_template", template: ["action_verb!", "object!"], assigned_slots: ["action_verb", "object"], surfaces: [flattenSurface2(compact[0]), flattenSurface2(object)] }) });
+        const linker = compositionPartClone2(compact[3], { label: "func", syntax: "purpose_linking_motion_element", slots: ["purpose_linker"], reason: `${flattenSurface2(compact[3])} links the overt acquisition/action event to the following purpose predicate.` });
+        const purpose = compositionPartClone2(compact[4], { label: "doing", syntax: "purpose_verb", slots: ["purpose_verb", "action_verb", "predicate"] });
+        const children = [action, linker, purpose, ...particles];
+        return construction2("SerialVerbPurposeChain", "PurposeChain", children, {
+          slots: constructionSlotsByType2("SerialVerbPurposeChain", children),
+          trace: traceInfo2("generative_template", { construction_type: "SerialVerbPurposeChain", template_family: "generative_template", template: ["action_object_vp!", "purpose_linking_motion_element!", "purpose_verb!", "particle?"], assigned_slots: ["productive_vo", "purpose_linker", "purpose_verb", ...particles.map(() => "particle")], surfaces: children.map(flattenSurface2), purpose_linker_surface: flattenSurface2(compact[3]), not_claims: ["not_deictic_motion_vp", "not_hidden_object", "not_hidden_purpose"] })
+        });
+      }
+      return {
+        purposeLinkingMotionFallback: purposeLinkingMotionFallback2,
+        serialVerbPurposeChainWithTrailingParticle: serialVerbPurposeChainWithTrailingParticle2,
+        wrapSerialPurposeTemplateSubspans: wrapSerialPurposeTemplateSubspans2,
+        wrapSerialVerbPurposeSubspans: wrapSerialVerbPurposeSubspans2
+      };
+    };
+  }
+});
+
+// src/parser/detectors/motion/ordering-review.js
+var require_ordering_review = __commonJS({
+  "src/parser/detectors/motion/ordering-review.js"(exports2, module2) {
+    "use strict";
+    module2.exports = function createMotionOrderingReviewDetectors2(dependencies = {}) {
+      const { cleanSlots: cleanSlots2, construction: construction2, flattenSurface: flattenSurface2, traceInfo: traceInfo2 } = dependencies;
+      function motionOrderingReviewCandidate2(children, subtype, problem, expectedRepairs = [], options = {}) {
+        const family = options.family || "motion_event_ordering_or_attachment";
+        const reviewFlag = options.review_flag || "motion_event_order_or_attachment_review";
+        const missingSlot = options.missing_slot || "licensed_motion_event_order_or_attachment";
+        const note = options.note || "Review-bearing motion-event ordering or attachment candidate. Visible learner text is preserved and no repair is inserted.";
+        const notClaims = options.not_claims || ["not_hard_asterisk_judgment", "not_silent_reordering", "not_hidden_motion_component"];
+        return construction2("MalformedCandidate", "Malformed", children, {
+          slots: cleanSlots2(["malformed_candidate", "needs_review", "predicate", "problem_span"]),
+          note,
+          trace: traceInfo2("special_ambiguity_rule", {
+            construction_type: "MalformedCandidate",
+            malformed_family: family,
+            malformed_subtype: subtype,
+            surfaces: children.map(flattenSurface2),
+            problem,
+            expected_repairs: expectedRepairs,
+            semantic_review_flags: ["malformed_candidate_parse", reviewFlag],
+            context_requirement_status: "context_required",
+            missing_argument_slots: [missingSlot],
+            not_claims: notClaims
+          })
+        });
+      }
+      return { motionOrderingReviewCandidate: motionOrderingReviewCandidate2 };
+    };
+  }
+});
+
+// src/parser/detectors/motion/path-goal-source.js
+var require_path_goal_source = __commonJS({
+  "src/parser/detectors/motion/path-goal-source.js"(exports2, module2) {
+    "use strict";
+    module2.exports = function createMotionPathGoalSourceDetectors2(dependencies = {}) {
+      const {
+        applyConstructionPatterns: applyConstructionPatterns2,
+        categorySubspanFor: categorySubspanFor2,
+        cleanSlots: cleanSlots2,
+        construction: construction2,
+        constructionSlotsByType: constructionSlotsByType2,
+        CP021B_POST_THEME_PREDICATE_PROFILES: CP021B_POST_THEME_PREDICATE_PROFILES2,
+        cp021bMakePostThemeRelation: cp021bMakePostThemeRelation2,
+        firstToken: firstToken2,
+        flattenSurface: flattenSurface2,
+        motionOrderingReviewCandidate: motionOrderingReviewCandidate2,
+        nodeCanFillSlot: nodeCanFillSlot2,
+        nodeSurfaceMatches: nodeSurfaceMatches2,
+        parserInactiveTokenClone: parserInactiveTokenClone2,
+        templateDerivedSlots: templateDerivedSlots2,
+        token: token2,
+        traceInfo: traceInfo2,
+        withoutIgnorableSpaceText: withoutIgnorableSpaceText2,
+        withoutTrailingParticles: withoutTrailingParticles2
+      } = dependencies;
+      function pathMarkerClone(node) {
+        return parserInactiveTokenClone2(node, {
+          label: "func",
+          pos: "function",
+          syntax: "path_coverb path_marker",
+          slots: ["path_marker"],
+          reason: "沿住 is interpreted as the path marker inside a bounded polite path imperative."
+        });
+      }
+      function pathPhraseFromParts2(marker, path) {
+        const children = [pathMarkerClone(marker), path];
+        return construction2("PathPhrase", "Path", children, {
+          note: "Path phrase: 沿住 + path/location.",
+          slots: templateDerivedSlots2("PathPhrase", children),
+          trace: traceInfo2("generative_template", {
+            construction_type: "PathPhrase",
+            template: ["path_marker!", "location!"],
+            assigned_slots: ["path_marker", "location"],
+            surfaces: children.map((node) => flattenSurface2(node)),
+            subspan: true
+          })
+        });
+      }
+      function sourceMotionClauseFallback2(core) {
+        const { core: bareCore, particles } = withoutTrailingParticles2(core);
+        const offset = bareCore.length >= 4 && nodeCanFillSlot2(bareCore[0], "subject") ? 1 : 0;
+        if (bareCore.length - offset < 3) return null;
+        const sourceMarker = bareCore[offset];
+        const sourceLocation = bareCore[offset + 1];
+        const motionCore = bareCore.slice(offset + 2);
+        if (!nodeSurfaceMatches2(sourceMarker, ["由"]) || !nodeCanFillSlot2(sourceLocation, "location")) return null;
+        const treeCanFillSlot = (node, slot) => {
+          if (!node) return false;
+          if (nodeCanFillSlot2(node, slot)) return true;
+          return node.kind === "construction" && (node.children || []).some((child) => treeCanFillSlot(child, slot));
+        };
+        const wrappedMotion = applyConstructionPatterns2(motionCore);
+        if (wrappedMotion.length !== 1) return null;
+        let motionNode = wrappedMotion[0];
+        if (motionNode.kind === "construction" && motionNode.type === "ProductiveVO" && flattenSurface2(motionNode) === "返學" && (motionNode.children || []).length === 2) {
+          const [movement, destination] = motionNode.children;
+          const motionChildren = [
+            motionEventPartClone(movement, {
+              label: "doing",
+              syntax: "conventional_motion_goal_verb",
+              slots: ["movement_verb"],
+              reason: "返 is the overt motion predicate in the conventional destination expression 返學."
+            }),
+            motionEventPartClone(destination, {
+              label: "where",
+              syntax: "conventional_institutional_destination schooling_destination",
+              slots: ["goal", "location", "np", "head_noun"],
+              reason: "學 denotes the overt conventional schooling destination/domain after motion 返 in this source-motion frame; no hidden 學校 token is inserted."
+            })
+          ];
+          motionNode = construction2("MotionGoalVP", "MotionGoal", motionChildren, {
+            slots: constructionSlotsByType2("MotionGoalVP", motionChildren),
+            trace: traceInfo2("generative_template", {
+              construction_type: "MotionGoalVP",
+              template_family: "generative_template",
+              template: ["movement_verb!", "conventional_institutional_destination!"],
+              assigned_slots: ["movement_verb", "goal"],
+              surfaces: motionChildren.map(flattenSurface2),
+              motion_goal_subtype: "conventional_institutional_destination",
+              not_claims: ["not_productive_transitive_object", "not_hidden_school_location", "not_lexicalized_whole_clause"]
+            })
+          });
+        }
+        if (!treeCanFillSlot(motionNode, "directional_motion_vp") && !treeCanFillSlot(motionNode, "movement_verb")) return null;
+        const sourceChild = parserInactiveTokenClone2(sourceMarker, {
+          label: "func",
+          pos: "function",
+          syntax: "source_coverb source_marker",
+          slots: ["source_marker", "coverb_marker"],
+          reason: "由 introduces the source location of the motion event."
+        });
+        const locationChild = parserInactiveTokenClone2(sourceLocation, {
+          label: "where",
+          pos: "location",
+          syntax: `${sourceLocation.syntax || "place_np"} source_location`,
+          slots: ["source", "location", "np"],
+          reason: "Place NP interpreted as the source of motion after 由."
+        });
+        const children = [...bareCore.slice(0, offset), sourceChild, locationChild, motionNode, ...particles];
+        return construction2("SourceMotionClause", "SourceMotion", children, {
+          note: "Source-motion clause: optional subject + 由 + source location + motion predicate.",
+          slots: cleanSlots2(["source_motion_clause", "source", "source_marker", "location", "movement_verb", "directional_motion_vp", "vp", "predicate", "clause", offset ? "subject" : "", ...templateDerivedSlots2("SourceMotionClause", children)]),
+          trace: traceInfo2("generative_template", {
+            construction_type: "SourceMotionClause",
+            template_family: "generative_template",
+            template: ["subject?", "source_marker!", "source_location!", "motion_predicate!", "particle?"],
+            assigned_slots: [...bareCore.slice(0, offset).map(() => "subject"), "source_marker", "source_location", "motion_predicate", ...particles.map(() => "particle")],
+            surfaces: children.map((node) => flattenSurface2(node)),
+            reason: "The source coverb phrase is attached to the motion predicate so the full clause span remains visible and the location keeps its where role."
+          })
+        });
+      }
+      function motionEventPartClone(node, { label = "doing", syntax = "motion_event_part", slots = [], reason = "Visible motion-event material is assigned by its position and event-semantic role." } = {}) {
+        const surface = flattenSurface2(node);
+        const base = firstToken2(node) || token2(surface, { jyutping: "" });
+        return parserInactiveTokenClone2(base, {
+          label,
+          pos: label === "where" ? "location" : label === "when" ? "time" : label === "func" ? "function" : "verb",
+          syntax,
+          slots,
+          reason
+        });
+      }
+      function motionSubjectPredicateClause(subject, predicate, particles = [], detail = {}) {
+        if (!subject) return predicate;
+        const children = [subject, predicate, ...particles];
+        return construction2("SubjectPredicateClause", "SubjPred", children, {
+          slots: templateDerivedSlots2("SubjectPredicateClause", children),
+          trace: traceInfo2("generative_template", {
+            construction_type: "SubjectPredicateClause",
+            template_family: "generative_template",
+            template: ["subject!", "predicate!", "particle?"],
+            assigned_slots: ["subject", "predicate", ...particles.map(() => "particle")],
+            surfaces: children.map(flattenSurface2),
+            ...detail
+          })
+        });
+      }
+      function motionGoalNode(node, reason = "The postverbal place is the overt goal of the motion event, not an ordinary object.") {
+        return motionEventPartClone(node, {
+          label: "where",
+          syntax: `${(firstToken2(node) || {}).syntax || "place_or_goal"} motion_goal_location`,
+          slots: ["goal", "location", "np", "head_noun"],
+          reason
+        });
+      }
+      function motionEventSpatialFallback2(core) {
+        const { core: bareCore, particles } = withoutTrailingParticles2(core);
+        const compact = withoutIgnorableSpaceText2(bareCore);
+        if (compact.length < 3) return null;
+        const surfaces = compact.map(flattenSurface2);
+        let cursor = 0;
+        const subject = compact[cursor] && nodeCanFillSlot2(compact[cursor], "subject") ? compact[cursor++] : null;
+        const rest = compact.slice(cursor);
+        const rs = rest.map(flattenSurface2);
+        if (subject && rs.length >= 4 && rs[0] === "喺" && nodeCanFillSlot2(rest[1], "location") && nodeCanFillSlot2(rest[2], "time")) {
+          return motionOrderingReviewCandidate2(
+            [...compact, ...particles],
+            "post_locative_time_order",
+            "The temporal adjunct follows the low preverbal locative phrase before the main event.",
+            ["subject_time_locative_predicate", "separate_discourse_or_native_review"],
+            {
+              family: "clause_adjunct_ordering_or_attachment",
+              review_flag: "clause_adjunct_order_or_attachment_review",
+              missing_slot: "licensed_clause_adjunct_order_or_attachment",
+              note: "Review-bearing clause-adjunct ordering or attachment candidate. Visible learner text is preserved and no repair is inserted.",
+              not_claims: ["not_hard_asterisk_judgment", "not_silent_reordering", "not_hidden_time_or_location"]
+            }
+          );
+        }
+        if (subject && rs.length === 3 && rs[0] === "行" && nodeCanFillSlot2(rest[1], "location") && rs[2] === "去") {
+          return motionOrderingReviewCandidate2([...compact, ...particles], "goal_before_final_deictic", "The goal NP intervenes between the manner-motion verb and final 去 instead of following the directional predicate.", ["行去_goal", "separate_serial_event"]);
+        }
+        if (subject && rs.length === 3 && ["返", "行"].includes(rs[0]) && nodeCanFillSlot2(rest[1], "location") && rs[2] === "到") {
+          return motionOrderingReviewCandidate2([...compact, ...particles], "goal_before_attainment_complement", "到 follows an already expressed goal NP instead of forming the motion-goal-attainment predicate before the goal.", ["motion_verb_到_goal"]);
+        }
+        if (subject && rs.length === 3 && rs[0] === "到" && rs[1] === "返" && nodeCanFillSlot2(rest[2], "location")) {
+          return motionOrderingReviewCandidate2([...compact, ...particles], "arrival_return_order_conflict", "Main arrival 到 precedes return-motion 返 without a licensed compositional relation.", ["到咗_goal", "返到_goal", "返_goal"]);
+        }
+        if (subject && rs.length === 5 && ["上", "落", "入", "出"].includes(rs[0]) && nodeCanFillSlot2(rest[1], "action_verb") && ["嚟", "去"].includes(rs[3]) && nodeCanFillSlot2(rest[4], "action_verb")) {
+          return motionOrderingReviewCandidate2([...compact, ...particles], "unlicensed_motion_action_deictic_order", "A bare directional head is separated from its deictic element by an action-object event.", ["directional_complex_then_action_purpose", "separate_clause_or_native_review"]);
+        }
+        if (subject && rs.length === 6 && nodeCanFillSlot2(rest[0], "time") && rs[1] === "由" && nodeCanFillSlot2(rest[2], "location") && rs[3] === "行" && rs[4] === "去" && nodeCanFillSlot2(rest[5], "location")) {
+          const directedChildren = [
+            motionEventPartClone(rest[3], { label: "doing", syntax: "manner_motion_verb", slots: ["movement_verb", "manner_motion"], reason: "行 supplies the manner of self-motion." }),
+            motionEventPartClone(rest[4], { label: "doing", syntax: "directional_path_element", slots: ["movement_direction", "path_component"], reason: "去 forms the postverbal directional component before the overt goal." }),
+            motionGoalNode(rest[5])
+          ];
+          const directed = construction2("DirectedMannerMotionVP", "DirectedMotion", directedChildren, {
+            slots: constructionSlotsByType2("DirectedMannerMotionVP", directedChildren),
+            trace: traceInfo2("generative_template", { construction_type: "DirectedMannerMotionVP", template_family: "generative_template", template: ["manner_motion_verb!", "directional_element!", "goal!"], assigned_slots: ["movement_verb", "movement_direction", "goal"], surfaces: directedChildren.map(flattenSurface2), not_claims: ["not_purpose_chain", "not_transitive_object"] })
+          });
+          const sourceMarker = motionEventPartClone(rest[1], { label: "func", syntax: "source_coverb source_marker", slots: ["source_marker", "coverb_marker"], reason: "由 introduces the overt source of the motion event." });
+          const source = motionEventPartClone(rest[2], { label: "where", syntax: "source_location", slots: ["source", "location", "np"], reason: "The place after 由 is the source, not the goal." });
+          const children = [subject, rest[0], sourceMarker, source, directed, ...particles];
+          return construction2("SourceMotionClause", "SourceMotion", children, {
+            slots: constructionSlotsByType2("SourceMotionClause", children),
+            trace: traceInfo2("generative_template", { construction_type: "SourceMotionClause", template_family: "generative_template", template: ["subject!", "time?", "source_marker!", "source_location!", "directed_motion_vp!", "particle?"], assigned_slots: ["subject", "time", "source_marker", "source_location", "motion_predicate", ...particles.map(() => "particle")], surfaces: children.map(flattenSurface2), spatial_order_status: "time_before_source_before_motion_goal" })
+          });
+        }
+        if (subject && rs.length === 3 && rs[0] === "向" && rs[2] === "行") {
+          const orientationSurface = rs[1];
+          const orientation = orientationSurface === "前" ? token2("前", { label: "where", pos: "location", jyutping: "cin4", syntax: "orientation_ground path_direction", slots: ["path", "orientation", "location"], note: "forward / front", trace: traceInfo2("construction_internal_parser_inactive_clone", { reason: "前 receives a context-local orientation/path reading after 向; no global nominal lexicon entry is introduced." }) }) : motionEventPartClone(rest[1], { label: "where", syntax: "orientation_ground path_goal", slots: ["path", "orientation", "location"], reason: "The NP after 向 is the orientation/path ground." });
+          const pathChildren = [motionEventPartClone(rest[0], { label: "func", syntax: "orientation_coverb path_marker", slots: ["path_marker", "coverb_marker"], reason: "向 introduces a preverbal orientation/path phrase." }), orientation];
+          const path = construction2("PathPhrase", "Path", pathChildren, { slots: constructionSlotsByType2("PathPhrase", pathChildren), trace: traceInfo2("generative_template", { construction_type: "PathPhrase", template_family: "generative_template", template: ["path_marker!", "orientation_ground!"], assigned_slots: ["path_marker", "location"], surfaces: pathChildren.map(flattenSurface2), subspan: true }) });
+          const motion = motionEventPartClone(rest[2], { label: "doing", syntax: "manner_motion_verb", slots: ["movement_verb", "manner_motion", "predicate"], reason: "行 supplies the manner of motion under the preceding orientation phrase." });
+          const predicate = construction2("DirectedMannerMotionVP", "DirectedMotion", [path, motion], { slots: constructionSlotsByType2("DirectedMannerMotionVP", [path, motion]), trace: traceInfo2("generative_template", { construction_type: "DirectedMannerMotionVP", template_family: "generative_template", template: ["path_phrase!", "manner_motion_verb!"], assigned_slots: ["path_phrase", "movement_verb"], surfaces: [flattenSurface2(path), flattenSurface2(motion)], not_claims: ["not_postverbal_goal", "not_purpose_chain"] }) });
+          return motionSubjectPredicateClause(subject, predicate, particles);
+        }
+        if (subject && rs.length === 3 && rs[0] === "行" && rs[1] === "去" && nodeCanFillSlot2(rest[2], "location")) {
+          const children = [
+            motionEventPartClone(rest[0], { label: "doing", syntax: "manner_motion_verb", slots: ["movement_verb", "manner_motion"], reason: "行 supplies manner of motion." }),
+            motionEventPartClone(rest[1], { label: "doing", syntax: "directional_path_element", slots: ["movement_direction", "path_component"], reason: "去 is the postverbal directional element; it is not the purpose verb in this frame." }),
+            motionGoalNode(rest[2])
+          ];
+          const predicate = construction2("DirectedMannerMotionVP", "DirectedMotion", children, { slots: constructionSlotsByType2("DirectedMannerMotionVP", children), trace: traceInfo2("generative_template", { construction_type: "DirectedMannerMotionVP", template_family: "generative_template", template: ["manner_motion_verb!", "directional_element!", "goal!"], assigned_slots: ["movement_verb", "movement_direction", "goal"], surfaces: children.map(flattenSurface2), not_claims: ["not_purpose_chain", "not_transitive_object"] }) });
+          return motionSubjectPredicateClause(subject, predicate, particles);
+        }
+        if (subject && rs.length === 3 && rs[0] === "行" && ["入", "出", "上", "落"].includes(rs[1]) && ["嚟", "去"].includes(rs[2])) {
+          const children = [
+            motionEventPartClone(rest[0], { label: "doing", syntax: "manner_motion_verb", slots: ["movement_verb", "manner_motion"] }),
+            motionEventPartClone(rest[1], { label: "doing", syntax: "movement_direction", slots: ["movement_direction", "path_component"] }),
+            motionEventPartClone(rest[2], { label: "doing", syntax: "deictic_motion_marker", slots: ["deictic_motion_marker"] })
+          ];
+          const predicate = construction2("DirectedMannerMotionVP", "DirectedMotion", children, { slots: constructionSlotsByType2("DirectedMannerMotionVP", children), trace: traceInfo2("generative_template", { construction_type: "DirectedMannerMotionVP", template_family: "generative_template", template: ["manner_motion_verb!", "movement_direction!", "deictic_motion_marker!"], assigned_slots: ["movement_verb", "movement_direction", "deictic_motion_marker"], surfaces: children.map(flattenSurface2), deictic_position_status: "outermost_visible_deictic" }) });
+          return motionSubjectPredicateClause(subject, predicate, particles);
+        }
+        if (subject && rs.length === 2 && ["上", "落", "入", "出", "返"].includes(rs[0]) && ["嚟", "去"].includes(rs[1])) {
+          const children = [motionEventPartClone(rest[0], { label: "doing", syntax: "main_directional_verb", slots: ["movement_verb", "movement_direction"] }), motionEventPartClone(rest[1], { label: "doing", syntax: "deictic_motion_marker", slots: ["deictic_motion_marker"] })];
+          const predicate = construction2("DirectionalMotionVP", "MotionVP", children, { slots: constructionSlotsByType2("DirectionalMotionVP", children), trace: traceInfo2("generative_template", { construction_type: "DirectionalMotionVP", template_family: "generative_template", template: ["directional_head!", "deictic_motion_marker!"], assigned_slots: ["movement_direction", "deictic_motion_marker"], surfaces: children.map(flattenSurface2), deictic_position_status: "outermost_visible_deictic" }) });
+          return motionSubjectPredicateClause(subject, predicate, particles);
+        }
+        if (subject && rs.length === 3 && ["返", "行"].includes(rs[0]) && rs[1] === "到" && nodeCanFillSlot2(rest[2], "location")) {
+          const children = [motionEventPartClone(rest[0], { label: "doing", syntax: "movement_verb", slots: ["movement_verb", "main_verb"] }), motionEventPartClone(rest[1], { label: "func", syntax: "goal_attainment_complement", slots: ["goal_attainment_complement", "result_marker"], reason: "到 marks successful arrival/attainment before the overt goal." }), motionGoalNode(rest[2])];
+          const predicate = construction2("GoalAttainmentMotionVP", "GoalAttainment", children, { slots: constructionSlotsByType2("GoalAttainmentMotionVP", children), trace: traceInfo2("generative_template", { construction_type: "GoalAttainmentMotionVP", template_family: "generative_template", template: ["movement_verb!", "goal_attainment_complement!", "goal!"], assigned_slots: ["movement_verb", "result_marker", "goal"], surfaces: children.map(flattenSurface2), attainment_domain: "spatial_goal" }) });
+          return motionSubjectPredicateClause(subject, predicate, particles);
+        }
+        if (subject && rs.length === 3 && rs[0] === "到" && rs[1] === "咗" && nodeCanFillSlot2(rest[2], "location")) {
+          const children = [motionEventPartClone(rest[0], { label: "doing", syntax: "arrival_motion_verb", slots: ["movement_verb", "main_verb", "predicate"], reason: "到 is the main arrival verb here, not a postverbal result marker." }), motionEventPartClone(rest[1], { label: "func", syntax: "perfective_aspect", slots: ["perfective_aspect", "aspect_marker"] }), motionGoalNode(rest[2])];
+          const predicate = construction2("MotionGoalVP", "MotionGoal", children, { slots: constructionSlotsByType2("MotionGoalVP", children), trace: traceInfo2("generative_template", { construction_type: "MotionGoalVP", template_family: "generative_template", template: ["arrival_motion_verb!", "perfective_aspect!", "goal!"], assigned_slots: ["movement_verb", "perfective_aspect", "goal"], surfaces: children.map(flattenSurface2), arrival_verb_status: "main_verb_not_complement" }) });
+          return motionSubjectPredicateClause(subject, predicate, particles);
+        }
+        if (subject && rs.length === 3 && nodeCanFillSlot2(rest[0], "action_verb") && rs[1] === "到" && nodeCanFillSlot2(rest[2], "object") && !nodeCanFillSlot2(rest[2], "location")) {
+          const children = [rest[0], motionEventPartClone(rest[1], { label: "func", syntax: "nonspatial_attainment_result_complement", slots: ["result_complement", "result_marker"], reason: "到 is a nonspatial attainment/result complement licensed by the action and object." }), rest[2]];
+          const predicate = construction2("ResultComplementVP", "ResultVP", children, { slots: constructionSlotsByType2("ResultComplementVP", children), trace: traceInfo2("generative_template", { construction_type: "ResultComplementVP", template_family: "generative_template", template: ["action_verb!", "attainment_result_complement!", "object!"], assigned_slots: ["action_verb", "result_complement", "object"], surfaces: children.map(flattenSurface2), attainment_domain: "nonspatial", not_claims: ["not_motion_goal", "not_coverb"] }) });
+          return motionSubjectPredicateClause(subject, predicate, particles);
+        }
+        if (subject && rs.length === 4 && nodeCanFillSlot2(rest[0], "action_verb") && rs[1] === "唔" && rs[2] === "到" && nodeCanFillSlot2(rest[3], "object") && !nodeCanFillSlot2(rest[3], "location")) {
+          const children = [rest[0], motionEventPartClone(rest[1], { label: "func", syntax: "potential_negator", slots: ["negator"] }), motionEventPartClone(rest[2], { label: "func", syntax: "nonspatial_attainment_result_complement", slots: ["result_complement", "result_marker"] }), rest[3]];
+          const predicate = construction2("NegativePotentialComplement", "NegPotential", children, { slots: constructionSlotsByType2("NegativePotentialComplement", children), trace: traceInfo2("generative_template", { construction_type: "NegativePotentialComplement", template_family: "generative_template", template: ["action_verb!", "potential_negator!", "attainment_result_complement!", "object!"], assigned_slots: ["action_verb", "negator", "result_complement", "object"], surfaces: children.map(flattenSurface2), attainment_domain: "nonspatial", not_claims: ["not_motion_goal", "not_hidden_result"] }) });
+          return motionSubjectPredicateClause(subject, predicate, particles);
+        }
+        if (subject && rs.length === 4 && rs[0] === "去" && (nodeCanFillSlot2(rest[1], "location") || /restaurant_np|place_or_goal/.test((firstToken2(rest[1]) || {}).syntax || "")) && nodeCanFillSlot2(rest[2], "action_verb") && nodeCanFillSlot2(rest[3], "object")) {
+          const motionChildren = [motionEventPartClone(rest[0], { label: "doing", syntax: "movement_verb", slots: ["movement_verb"] }), motionGoalNode(rest[1])];
+          const motion = construction2("MotionGoalVP", "MotionGoal", motionChildren, { slots: constructionSlotsByType2("MotionGoalVP", motionChildren), trace: traceInfo2("generative_template", { construction_type: "MotionGoalVP", template_family: "generative_template", template: ["movement_verb!", "goal!"], assigned_slots: ["movement_verb", "goal"], surfaces: motionChildren.map(flattenSurface2), subspan: true }) });
+          const purposeChildren = [rest[2], rest[3]];
+          const purpose = construction2("TransitiveVP", "VP", purposeChildren, { slots: constructionSlotsByType2("TransitiveVP", purposeChildren), trace: traceInfo2("generative_template", { construction_type: "TransitiveVP", template_family: "generative_template", template: ["action_verb!", "object!"], assigned_slots: ["action_verb", "object"], surfaces: purposeChildren.map(flattenSurface2), subspan: true }) });
+          const chainChildren = [motion, purpose];
+          const chain = construction2("MotionPurposeChain", "MotionPurpose", chainChildren, { slots: constructionSlotsByType2("MotionPurposeChain", chainChildren), trace: traceInfo2("generative_template", { construction_type: "MotionPurposeChain", template_family: "generative_template", template: ["motion_goal_vp!", "purpose_vp!"], assigned_slots: ["motion_goal_vp", "purpose_verb"], surfaces: chainChildren.map(flattenSurface2), shared_subject_provenance: { overt_subject_surface: flattenSurface2(subject), licensed_members: [flattenSurface2(motion), flattenSurface2(purpose)], hidden_subject_inserted: false } }) });
+          return motionSubjectPredicateClause(subject, chain, particles);
+        }
+        if (subject && rs.length === 6 && rs[0] === "去" && nodeCanFillSlot2(rest[1], "location") && nodeCanFillSlot2(rest[2], "action_verb") && nodeCanFillSlot2(rest[3], "object") && nodeCanFillSlot2(rest[4], "action_verb") && nodeCanFillSlot2(rest[5], "object")) {
+          const motionChildren = [motionEventPartClone(rest[0], { label: "doing", syntax: "movement_verb", slots: ["movement_verb"] }), motionGoalNode(rest[1])];
+          const motion = construction2("MotionGoalVP", "MotionGoal", motionChildren, { slots: constructionSlotsByType2("MotionGoalVP", motionChildren), trace: traceInfo2("generative_template", { construction_type: "MotionGoalVP", template_family: "generative_template", template: ["movement_verb!", "goal!"], assigned_slots: ["movement_verb", "goal"], surfaces: motionChildren.map(flattenSurface2), subspan: true }) });
+          const action1 = construction2("TransitiveVP", "VP", [rest[2], rest[3]], { slots: constructionSlotsByType2("TransitiveVP", [rest[2], rest[3]]), trace: traceInfo2("generative_template", { construction_type: "TransitiveVP", template_family: "generative_template", template: ["action_verb!", "object!"], assigned_slots: ["action_verb", "object"], surfaces: [rs[2], rs[3]], subspan: true }) });
+          const action2 = construction2("TransitiveVP", "VP", [rest[4], rest[5]], { slots: constructionSlotsByType2("TransitiveVP", [rest[4], rest[5]]), trace: traceInfo2("generative_template", { construction_type: "TransitiveVP", template_family: "generative_template", template: ["action_verb!", "object!"], assigned_slots: ["action_verb", "object"], surfaces: [rs[4], rs[5]], subspan: true }) });
+          const chainChildren = [motion, action1, action2];
+          const chain = construction2("SerialVerbPurposeChain", "PurposeChain", chainChildren, { slots: constructionSlotsByType2("SerialVerbPurposeChain", chainChildren), trace: traceInfo2("generative_template", { construction_type: "SerialVerbPurposeChain", template_family: "generative_template", template: ["motion_goal_vp!", "action_object_vp!", "purpose_vp!"], assigned_slots: ["motion_goal_vp", "action_vp", "purpose_verb"], surfaces: chainChildren.map(flattenSurface2), shared_subject_provenance: { overt_subject_surface: flattenSurface2(subject), licensed_members: chainChildren.map(flattenSurface2), hidden_subject_inserted: false } }) });
+          return motionSubjectPredicateClause(subject, chain, particles);
+        }
+        if (subject && rs.length === 7 && rs[0] === "攞" && nodeCanFillSlot2(rest[1], "object") && rs[2] === "返" && rs[3] === "嚟" && rs[4] === "畀" && nodeCanFillSlot2(rest[5], "subject") && nodeCanFillSlot2(rest[6], "action_verb")) {
+          const action = construction2("TransitiveVP", "VP", [rest[0], rest[1]], {
+            slots: constructionSlotsByType2("TransitiveVP", [rest[0], rest[1]]),
+            trace: traceInfo2("generative_template", { construction_type: "TransitiveVP", template_family: "generative_template", template: ["action_verb!", "object!"], assigned_slots: ["action_verb", "object"], surfaces: [rs[0], rs[1]], subspan: true })
+          });
+          const returnMotionChildren = [motionEventPartClone(rest[2], { label: "doing", syntax: "return_directional_complement", slots: ["return_motion_verb", "movement_direction"] }), motionEventPartClone(rest[3], { label: "doing", syntax: "deictic_motion_marker", slots: ["deictic_motion_marker"] })];
+          const returnMotion = construction2("DirectionalMotionVP", "MotionVP", returnMotionChildren, { slots: constructionSlotsByType2("DirectionalMotionVP", returnMotionChildren), trace: traceInfo2("generative_template", { construction_type: "DirectionalMotionVP", template_family: "generative_template", template: ["return_directional_complement!", "deictic_motion_marker!"], assigned_slots: ["return_motion_verb", "deictic_motion_marker"], surfaces: returnMotionChildren.map(flattenSurface2), subspan: true }) });
+          const causedMotionChildren = [action, returnMotion];
+          const causedMotion = construction2("VerbComplementVP", "VerbCompVP", causedMotionChildren, { slots: templateDerivedSlots2("VerbComplementVP", causedMotionChildren), trace: traceInfo2("generative_template", { construction_type: "VerbComplementVP", template_family: "generative_template", template: ["action_object_vp!", "directional_motion_vp!"], assigned_slots: ["action_vp", "directional_motion_vp"], surfaces: causedMotionChildren.map(flattenSurface2), caused_motion_status: "overt_theme_plus_return_direction" }) });
+          const relation = cp021bMakePostThemeRelation2({
+            upstreamVP: causedMotion,
+            upstreamPredicateSurface: "攞",
+            upstreamThemeSurface: flattenSurface2(rest[1]),
+            marker: rest[4],
+            participantNodes: [rest[5]],
+            followingPredicate: rest[6],
+            profile: CP021B_POST_THEME_PREDICATE_PROFILES2["攞"]
+          });
+          return motionSubjectPredicateClause(subject, relation, particles);
+        }
+        return null;
+      }
+      return {
+        motionEventSpatialFallback: motionEventSpatialFallback2,
+        pathPhraseFromParts: pathPhraseFromParts2,
+        sourceMotionClauseFallback: sourceMotionClauseFallback2
+      };
+    };
+  }
+});
+
 // src/parser/detectors/definition/copular-relations.js
 var require_copular_relations = __commonJS({
   "src/parser/detectors/definition/copular-relations.js"(exports2, module2) {
@@ -14205,313 +15049,6 @@ function phase4ReportedSpeechActiveTokenClone(node, overrides = {}) {
     })
   };
 }
-var DIRECTIONAL_MOTION_PATTERNS = [
-  {
-    surfaces: ["返", "上", "嚟"],
-    type: "CompoundDirectionalMotionVP",
-    label: "MotionVP",
-    note: "Compound directional motion VP: 返 + 上 + 嚟 = come back up.",
-    pattern: "return + upward_direction + deictic_come"
-  },
-  {
-    surfaces: ["返", "上", "去"],
-    type: "CompoundDirectionalMotionVP",
-    label: "MotionVP",
-    note: "Compound directional motion VP: 返 + 上 + 去 = go back up.",
-    pattern: "return + upward_direction + deictic_go"
-  },
-  {
-    surfaces: ["落", "嚟"],
-    type: "DirectionalMotionVP",
-    label: "MotionVP",
-    note: "Directional motion VP: 落 + 嚟 = come down.",
-    pattern: "down_direction + deictic_come"
-  },
-  {
-    surfaces: ["返", "嚟"],
-    type: "DirectionalMotionVP",
-    label: "MotionVP",
-    note: "Directional motion VP: 返 + 嚟 = come back.",
-    pattern: "return + deictic_come"
-  },
-  {
-    surfaces: ["返", "去"],
-    type: "DirectionalMotionVP",
-    label: "MotionVP",
-    note: "Directional motion VP: 返 + 去 = go back / return there.",
-    pattern: "return + deictic_go"
-  },
-  {
-    surfaces: ["上", "嚟"],
-    type: "DirectionalMotionVP",
-    label: "MotionVP",
-    note: "Directional motion VP: 上 + 嚟 = come up.",
-    pattern: "upward_direction + deictic_come"
-  },
-  {
-    surfaces: ["嚟"],
-    type: "DirectionalMotionVP",
-    label: "MotionVP",
-    note: "Motion VP fragment: 嚟 = come.",
-    pattern: "deictic_come"
-  },
-  {
-    surfaces: ["去"],
-    type: "DirectionalMotionVP",
-    label: "MotionVP",
-    note: "Motion VP fragment: 去 = go.",
-    pattern: "deictic_go"
-  }
-];
-function directionalMotionPartClone(node, role) {
-  const surface = flattenSurface(node);
-  const syntaxBySurface = {
-    "返": "return_motion_component",
-    "落": "movement_direction_down",
-    "上": "movement_direction_up",
-    "嚟": "deictic_motion_marker",
-    "去": "deictic_motion_marker"
-  };
-  const slotBySurface = {
-    "返": "movement_verb",
-    "落": "movement_direction",
-    "上": "movement_direction",
-    "嚟": "deictic_motion_marker",
-    "去": "deictic_motion_marker"
-  };
-  return parserInactiveTokenClone(firstToken(node) || token(surface), {
-    label: role || "doing",
-    pos: role === "func" ? "function" : "verb",
-    syntax: syntaxBySurface[surface] || "directional_motion_part",
-    slots: [slotBySurface[surface] || "directional_motion_part"],
-    reason: "Token is parser-inactive inside a directional-motion VP candidate; the parent exposes the VP affordance."
-  });
-}
-function makeDirectionalMotionVP(nodes, pattern) {
-  const children = nodes.map((node) => directionalMotionPartClone(node, "doing"));
-  return construction(pattern.type, pattern.label, children, {
-    slots: ["directional_motion_vp", "vp", "action_vp", "predicate", "movement_verb", "motion_predicate"],
-    note: pattern.note,
-    trace: traceInfo("generative_or_heuristic_slot_rule", {
-      rule: "Cantonese directional motion compound",
-      pattern: pattern.pattern,
-      surfaces: pattern.surfaces,
-      reason: "Native directional motion forms such as 落嚟 / 返嚟 / 上嚟 / 返上嚟 should surface as transparent VP candidates without making child feature bundles parser-active."
-    })
-  });
-}
-function directionalMotionTemplateFor(nodes, pattern) {
-  const templated = categorySubspanFor(nodes, [pattern.type]);
-  if (templated) return templated;
-  return makeDirectionalMotionVP(nodes, pattern);
-}
-function negatedDirectionalMotionTemplateFor(negatorNode, vp) {
-  const templated = categorySubspanFor([negatorNode, vp], ["NegatedDirectionalMotionVP"]);
-  if (templated) return templated;
-  return null;
-}
-function directionalPatternAt(nodes, index) {
-  for (const pattern of DIRECTIONAL_MOTION_PATTERNS) {
-    if (index + pattern.surfaces.length > nodes.length) continue;
-    const window2 = nodes.slice(index, index + pattern.surfaces.length);
-    if (window2.some((node) => node && node.kind === "text")) continue;
-    const surfaces = window2.map((node) => flattenSurface(node));
-    if (surfaces.every((surface, i) => surface === pattern.surfaces[i])) {
-      return { pattern, length: pattern.surfaces.length };
-    }
-  }
-  return null;
-}
-function wrapDirectionalMotionSubspans(nodes) {
-  const result = [];
-  let i = 0;
-  while (i < nodes.length) {
-    if (isToken(nodes[i], "唔")) {
-      const negated = directionalPatternAt(nodes, i + 1);
-      if (negated) {
-        const vp = directionalMotionTemplateFor(nodes.slice(i + 1, i + 1 + negated.length), negated.pattern);
-        const templatedNegatedVp = negatedDirectionalMotionTemplateFor(nodes[i], vp);
-        result.push(templatedNegatedVp || construction("NegatedDirectionalMotionVP", "NegMotionVP", [parserInactiveTokenClone(nodes[i], {
-          label: "func",
-          pos: "function",
-          syntax: "negator",
-          slots: ["negator"],
-          reason: "Negator is parser-inactive inside a negated directional-motion VP wrapper."
-        }), vp], {
-          slots: ["negated_directional_motion_vp", "directional_motion_vp", "vp", "action_vp", "predicate", "movement_verb", "motion_predicate", "negator"],
-          note: "Negated directional motion VP: 唔 + directional motion, e.g. 唔落嚟.",
-          trace: traceInfo("generative_or_heuristic_slot_rule", {
-            rule: "negator + Cantonese directional motion compound",
-            pattern: negated.pattern.pattern,
-            reason: "Native refusal/negative motion forms such as 唔落嚟 should expose one negated motion VP while child tokens stay parser-inactive."
-          })
-        }));
-        i += 1 + negated.length;
-        continue;
-      }
-    }
-    const match = directionalPatternAt(nodes, i);
-    if (match) {
-      result.push(directionalMotionTemplateFor(nodes.slice(i, i + match.length), match.pattern));
-      i += match.length;
-      continue;
-    }
-    result.push(nodes[i]);
-    i += 1;
-  }
-  return result;
-}
-var SERIAL_PURPOSE_ACTION_VO_SURFACES = /* @__PURE__ */ new Set(["摘芒果", "買嘢", "食飯"]);
-var SERIAL_PURPOSE_ACTIONS_THAT_TAKE_EATING_PURPOSE = /* @__PURE__ */ new Set(["摘芒果", "買嘢"]);
-function isSerialPurposeActionVo(node) {
-  return node && node.kind === "construction" && node.type === "ProductiveVO" && SERIAL_PURPOSE_ACTION_VO_SURFACES.has(flattenSurface(node));
-}
-function actionVoCanTakeEatingPurpose(node) {
-  return node && SERIAL_PURPOSE_ACTIONS_THAT_TAKE_EATING_PURPOSE.has(flattenSurface(node));
-}
-function isEatingPurposeVerb(node) {
-  return isToken(node, "食");
-}
-function isMotionPurposeCandidate(node) {
-  if (!node || node.kind === "text") return false;
-  const slots = nodeSlots(node);
-  return slots.includes("directional_motion_vp") || slots.includes("negated_directional_motion_vp") || slots.includes("motion_predicate");
-}
-function serialPurposeVerbClone(node) {
-  return parserInactiveTokenClone(firstToken(node) || token(flattenSurface(node)), {
-    label: "doing",
-    pos: "verb",
-    syntax: "purpose_verb",
-    slots: ["purpose_verb", "action_verb", "predicate"],
-    reason: "食 is interpreted here as a purpose verb after a reviewed action/object VP, so it stays parser-inactive while the parent exposes the serial-purpose chain."
-  });
-}
-function serialPurposeParticleClone(node) {
-  return parserInactiveTokenClone(firstToken(node) || token(flattenSurface(node)), {
-    label: "particle",
-    pos: "particle",
-    syntax: "sentence_final_particle",
-    slots: ["particle"],
-    reason: "Final particle stays parser-inactive inside a motion/serial purpose-chain wrapper."
-  });
-}
-function serialChainKindForMatch(match) {
-  return match && match.motion && !match.purpose ? "MotionPurposeChain" : "SerialVerbPurposeChain";
-}
-function serialChainLabelForKind(kind) {
-  return kind === "MotionPurposeChain" ? "MotionPurpose" : "PurposeChain";
-}
-function serialChainSlotsForKind(kind) {
-  return kind === "MotionPurposeChain" ? ["motion_purpose_chain", "motion_action_chain", "purpose_chain", "vp", "action_vp", "predicate"] : ["serial_verb_purpose_chain", "serial_action_chain", "purpose_chain", "vp", "action_vp", "predicate"];
-}
-function makeSerialVerbPurposeChain(match) {
-  const children = [];
-  if (match.motion) children.push(match.motion);
-  children.push(match.action);
-  if (match.purpose) children.push(serialPurposeVerbClone(match.purpose));
-  if (match.particle) children.push(serialPurposeParticleClone(match.particle));
-  const kind = serialChainKindForMatch(match);
-  const isMotionOnly = kind === "MotionPurposeChain";
-  return construction(kind, serialChainLabelForKind(kind), children, {
-    slots: serialChainSlotsForKind(kind),
-    note: isMotionOnly ? "Motion-purpose chain: directional motion plus a reviewed action VP, such as 返嚟食飯 or 落嚟摘芒果." : "Serial verb / purpose chain: reviewed action sequence with an explicit purpose 食, such as 摘芒果食, 落嚟摘芒果食, or 買嘢食.",
-    trace: traceInfo("generative_template", {
-      template_family: "generative_template",
-      construction_type: kind,
-      template: match.motion ? match.purpose ? ["directional_motion_vp!", "productive_vo!", "purpose_verb!", "particle?"] : ["directional_motion_vp!", "productive_vo!", "particle?"] : ["productive_vo!", "purpose_verb!", "particle?"],
-      assigned_slots: [
-        ...match.motion ? ["directional_motion_vp"] : [],
-        "productive_vo",
-        ...match.purpose ? ["purpose_verb"] : [],
-        ...match.particle ? ["particle"] : []
-      ],
-      rule: isMotionOnly ? "directional_motion_vp + productive_vo + optional final particle" : "directional_motion? + productive_vo + purpose_verb + optional final particle",
-      pattern: match.motion ? match.purpose ? "directional_motion_vp + productive_vo + purpose_verb" : "directional_motion_vp + productive_vo" : "productive_vo + purpose_verb",
-      reason: isMotionOnly ? "Native speech can use motion plus an action VP as a purpose/action chain. This now uses the generative template transition lane while keeping the learner display precise." : "Native speech often chains an action/object VP with an explicit purpose verb. Keep the ProductiveVO transparent and keep the purpose verb parser-inactive inside the parent purpose-chain wrapper.",
-      surfaces: children.map((node) => flattenSurface(node))
-    })
-  });
-}
-function serialVerbPurposeChainWithTrailingParticle(node, particleNode) {
-  if (!node || node.kind !== "construction" || !["SerialVerbPurposeChain", "MotionPurposeChain"].includes(node.type) || !particleNode) return node;
-  if ((node.children || []).some((child) => isParticle(child))) return node;
-  return {
-    ...node,
-    children: [...node.children || [], serialPurposeParticleClone(particleNode)],
-    trace: {
-      ...node.trace || {},
-      attached_trailing_particle: flattenSurface(particleNode)
-    }
-  };
-}
-function serialPurposeParticleAt(nodes, index) {
-  return isParticle(nodes[index]) && ["呀", "啊", "啦", "喇"].includes(flattenSurface(nodes[index])) ? nodes[index] : null;
-}
-function serialVerbPurposePatternAt(nodes, index) {
-  let motion = null;
-  let i = index;
-  if (isMotionPurposeCandidate(nodes[i]) && isSerialPurposeActionVo(nodes[i + 1])) {
-    motion = nodes[i];
-    i += 1;
-  }
-  if (!isSerialPurposeActionVo(nodes[i])) return null;
-  let purpose = null;
-  let particleIndex = i + 1;
-  if (actionVoCanTakeEatingPurpose(nodes[i]) && isEatingPurposeVerb(nodes[i + 1])) {
-    purpose = nodes[i + 1];
-    particleIndex = i + 2;
-  }
-  if (!motion && !purpose) return null;
-  const particle = serialPurposeParticleAt(nodes, particleIndex);
-  return {
-    length: (motion ? 1 : 0) + 1 + (purpose ? 1 : 0) + (particle ? 1 : 0),
-    motion,
-    action: nodes[i],
-    purpose,
-    particle
-  };
-}
-function serialPurposeTemplateSubspanAt(nodes, index) {
-  const allowedTypes = ["SerialVerbPurposeChain", "MotionPurposeChain"];
-  const remaining = nodes.length - index;
-  for (let length = Math.min(4, remaining); length >= 2; length -= 1) {
-    const window2 = nodes.slice(index, index + length);
-    if (window2.some((node) => node.kind === "text")) continue;
-    const candidate = categorySubspanFor(window2, allowedTypes);
-    if (candidate) return { node: candidate, length };
-  }
-  return null;
-}
-function wrapSerialPurposeTemplateSubspans(nodes) {
-  const result = [];
-  let i = 0;
-  while (i < nodes.length) {
-    const match = serialPurposeTemplateSubspanAt(nodes, i);
-    if (match) {
-      result.push(match.node);
-      i += match.length;
-      continue;
-    }
-    result.push(nodes[i]);
-    i += 1;
-  }
-  return result;
-}
-function wrapSerialVerbPurposeSubspans(nodes) {
-  const result = [];
-  let i = 0;
-  while (i < nodes.length) {
-    const match = serialVerbPurposePatternAt(nodes, i);
-    if (match) {
-      result.push(makeSerialVerbPurposeChain(match));
-      i += match.length;
-      continue;
-    }
-    result.push(nodes[i]);
-    i += 1;
-  }
-  return result;
-}
 function agreementResponsePartClone(node, overrides = {}) {
   return parserInactiveTokenClone(node, {
     label: overrides.label || (isParticle(node) ? "particle" : "func"),
@@ -15030,65 +15567,6 @@ function transparentTopicContentFromNodes(nodes) {
   if (compact.length === 1) return compact[0];
   return categorySubspanFor(compact, ["OvertHeadDemonstrativeClassifierNP", "QuantifiedClassifierNP", "QuantifiedPersonNP", "OrdinalClassifierNP", "DiMarkedNP", "ModifiedNP", "NominalHeadSpan", "CoordinatedNP"]);
 }
-function transitionMotionPredicateFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  if (particles.length) return null;
-  if (!bareCore.length) return null;
-  let cursor = 0;
-  const subject = nodeCanFillSlot(bareCore[cursor], "subject") ? bareCore[cursor++] : null;
-  if (!isToken(bareCore[cursor], "走")) return null;
-  const movementSource = bareCore[cursor++];
-  const aspect = cursor < bareCore.length && ["咗", "過", "緊"].includes(flattenSurface(bareCore[cursor])) ? bareCore[cursor++] : null;
-  if (cursor !== bareCore.length || !aspect) return null;
-  const movement = parserInactiveTokenClone(movementSource, {
-    label: "doing",
-    pos: "verb",
-    syntax: "intransitive_motion_verb transition_motion_predicate",
-    slots: ["action_verb", "main_verb", "movement_verb", "predicate"],
-    jyutping: "zau2",
-    note: "leave / go away",
-    reason: "At predicate onset, standalone 走 is an independent transition-motion verb rather than a postverbal directional result complement."
-  });
-  const motion = aspect ? construction("PerfectiveVP", "PerfectiveVP", [movement, aspect], {
-    slots: templateDerivedSlots("PerfectiveVP", [movement, aspect]),
-    note: "Perfective transition-motion predicate.",
-    trace: traceInfo("generative_template", {
-      construction_type: "PerfectiveVP",
-      template_family: "generative_template",
-      template: ["transition_motion_verb!", "perfective_aspect!"],
-      assigned_slots: ["transition_motion_verb", "perfective_aspect"],
-      surfaces: ["走", flattenSurface(aspect)],
-      contextual_role_resolution: "standalone_motion_predicate_not_result_complement",
-      subspan: Boolean(subject)
-    })
-  }) : construction("DirectionalMotionVP", "MotionVP", [movement], {
-    slots: templateDerivedSlots("DirectionalMotionVP", [movement]),
-    note: "One-word transition motion predicate headed by standalone 走.",
-    trace: traceInfo("generative_template", {
-      construction_type: "DirectionalMotionVP",
-      template_family: "generative_template",
-      template: ["transition_motion_verb!"],
-      assigned_slots: ["transition_motion_verb"],
-      surfaces: ["走"],
-      contextual_role_resolution: "standalone_motion_predicate_not_result_complement",
-      subspan: Boolean(subject)
-    })
-  });
-  if (!subject) return motion;
-  const children = [subject, motion, ...particles];
-  return construction("SubjectPredicateClause", "SubjPred", children, {
-    slots: templateDerivedSlots("SubjectPredicateClause", children),
-    note: "Subject plus an independent transition-motion predicate.",
-    trace: traceInfo("generative_template", {
-      construction_type: "SubjectPredicateClause",
-      template_family: "generative_template",
-      template: ["subject!", "predicate!", "particle?"],
-      assigned_slots: ["subject", "predicate", ...particles.map(() => "particle")],
-      surfaces: children.map((node) => flattenSurface(node)),
-      predicate_subtype: "transition_motion"
-    })
-  });
-}
 function potentialResultVPFallback(core) {
   const { core: bareCore, particles } = withoutTrailingParticles(core);
   if (!bareCore.length) return null;
@@ -15249,28 +15727,9 @@ var {
   withoutIgnorableSpaceText,
   withoutTrailingParticles
 });
-function pathMarkerClone(node) {
-  return parserInactiveTokenClone(node, {
-    label: "func",
-    pos: "function",
-    syntax: "path_coverb path_marker",
-    slots: ["path_marker"],
-    reason: "沿住 is interpreted as the path marker inside a bounded polite path imperative."
-  });
-}
+var motionPathGoalSourceDetectors = null;
 function pathPhraseFromParts(marker, path) {
-  const children = [pathMarkerClone(marker), path];
-  return construction("PathPhrase", "Path", children, {
-    note: "Path phrase: 沿住 + path/location.",
-    slots: templateDerivedSlots("PathPhrase", children),
-    trace: traceInfo("generative_template", {
-      construction_type: "PathPhrase",
-      template: ["path_marker!", "location!"],
-      assigned_slots: ["path_marker", "location"],
-      surfaces: children.map((node) => flattenSurface(node)),
-      subspan: true
-    })
-  });
+  return motionPathGoalSourceDetectors.pathPhraseFromParts(marker, path);
 }
 function yesNoQuestionMarkerClone(node) {
   return parserInactiveTokenClone(node, {
@@ -15555,6 +16014,79 @@ var {
   withoutIgnorableSpaceText,
   withoutTrailingParticles
 });
+var createDirectionalMotionDetectors = require_directional();
+var {
+  directionalCompositionFallback,
+  transitionMotionPredicateFallback,
+  wrapDirectionalMotionSubspans
+} = createDirectionalMotionDetectors({
+  categorySubspanFor,
+  compositionPartClone,
+  construction,
+  constructionSlotsByType,
+  firstToken,
+  flattenSurface,
+  isToken,
+  nodeCanFillSlot,
+  parserInactiveTokenClone,
+  templateDerivedSlots,
+  token,
+  traceInfo,
+  withoutIgnorableSpaceText,
+  withoutTrailingParticles
+});
+var createMotionPurposeDetectors = require_purpose_chains();
+var {
+  purposeLinkingMotionFallback,
+  serialVerbPurposeChainWithTrailingParticle,
+  wrapSerialPurposeTemplateSubspans,
+  wrapSerialVerbPurposeSubspans
+} = createMotionPurposeDetectors({
+  categorySubspanFor,
+  compositionPartClone,
+  construction,
+  constructionSlotsByType,
+  firstToken,
+  flattenSurface,
+  isParticle,
+  isToken,
+  nodeCanFillSlot,
+  nodeSlots,
+  parserInactiveTokenClone,
+  token,
+  traceInfo,
+  withoutIgnorableSpaceText,
+  withoutTrailingParticles
+});
+var createMotionOrderingReviewDetectors = require_ordering_review();
+var { motionOrderingReviewCandidate } = createMotionOrderingReviewDetectors({
+  cleanSlots,
+  construction,
+  flattenSurface,
+  traceInfo
+});
+var createMotionPathGoalSourceDetectors = require_path_goal_source();
+motionPathGoalSourceDetectors = createMotionPathGoalSourceDetectors({
+  applyConstructionPatterns,
+  categorySubspanFor,
+  cleanSlots,
+  construction,
+  constructionSlotsByType,
+  CP021B_POST_THEME_PREDICATE_PROFILES,
+  cp021bMakePostThemeRelation,
+  firstToken,
+  flattenSurface,
+  motionOrderingReviewCandidate,
+  nodeCanFillSlot,
+  nodeSurfaceMatches,
+  parserInactiveTokenClone,
+  templateDerivedSlots,
+  token,
+  traceInfo,
+  withoutIgnorableSpaceText,
+  withoutTrailingParticles
+});
+var { motionEventSpatialFallback, sourceMotionClauseFallback } = motionPathGoalSourceDetectors;
 function isBareQuantityNumeralNode(node) {
   const t = firstToken(node);
   if (!t) return false;
@@ -16348,80 +16880,6 @@ function fragmentQuestionFallback(core) {
     })
   });
 }
-function sourceMotionClauseFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const offset = bareCore.length >= 4 && nodeCanFillSlot(bareCore[0], "subject") ? 1 : 0;
-  if (bareCore.length - offset < 3) return null;
-  const sourceMarker = bareCore[offset];
-  const sourceLocation = bareCore[offset + 1];
-  const motionCore = bareCore.slice(offset + 2);
-  if (!nodeSurfaceMatches(sourceMarker, ["由"]) || !nodeCanFillSlot(sourceLocation, "location")) return null;
-  const treeCanFillSlot = (node, slot) => {
-    if (!node) return false;
-    if (nodeCanFillSlot(node, slot)) return true;
-    return node.kind === "construction" && (node.children || []).some((child) => treeCanFillSlot(child, slot));
-  };
-  const wrappedMotion = applyConstructionPatterns(motionCore);
-  if (wrappedMotion.length !== 1) return null;
-  let motionNode = wrappedMotion[0];
-  if (motionNode.kind === "construction" && motionNode.type === "ProductiveVO" && flattenSurface(motionNode) === "返學" && (motionNode.children || []).length === 2) {
-    const [movement, destination] = motionNode.children;
-    const motionChildren = [
-      motionEventPartClone(movement, {
-        label: "doing",
-        syntax: "conventional_motion_goal_verb",
-        slots: ["movement_verb"],
-        reason: "返 is the overt motion predicate in the conventional destination expression 返學."
-      }),
-      motionEventPartClone(destination, {
-        label: "where",
-        syntax: "conventional_institutional_destination schooling_destination",
-        slots: ["goal", "location", "np", "head_noun"],
-        reason: "學 denotes the overt conventional schooling destination/domain after motion 返 in this source-motion frame; no hidden 學校 token is inserted."
-      })
-    ];
-    motionNode = construction("MotionGoalVP", "MotionGoal", motionChildren, {
-      slots: constructionSlotsByType("MotionGoalVP", motionChildren),
-      trace: traceInfo("generative_template", {
-        construction_type: "MotionGoalVP",
-        template_family: "generative_template",
-        template: ["movement_verb!", "conventional_institutional_destination!"],
-        assigned_slots: ["movement_verb", "goal"],
-        surfaces: motionChildren.map(flattenSurface),
-        motion_goal_subtype: "conventional_institutional_destination",
-        not_claims: ["not_productive_transitive_object", "not_hidden_school_location", "not_lexicalized_whole_clause"]
-      })
-    });
-  }
-  if (!treeCanFillSlot(motionNode, "directional_motion_vp") && !treeCanFillSlot(motionNode, "movement_verb")) return null;
-  const sourceChild = parserInactiveTokenClone(sourceMarker, {
-    label: "func",
-    pos: "function",
-    syntax: "source_coverb source_marker",
-    slots: ["source_marker", "coverb_marker"],
-    reason: "由 introduces the source location of the motion event."
-  });
-  const locationChild = parserInactiveTokenClone(sourceLocation, {
-    label: "where",
-    pos: "location",
-    syntax: `${sourceLocation.syntax || "place_np"} source_location`,
-    slots: ["source", "location", "np"],
-    reason: "Place NP interpreted as the source of motion after 由."
-  });
-  const children = [...bareCore.slice(0, offset), sourceChild, locationChild, motionNode, ...particles];
-  return construction("SourceMotionClause", "SourceMotion", children, {
-    note: "Source-motion clause: optional subject + 由 + source location + motion predicate.",
-    slots: cleanSlots(["source_motion_clause", "source", "source_marker", "location", "movement_verb", "directional_motion_vp", "vp", "predicate", "clause", offset ? "subject" : "", ...templateDerivedSlots("SourceMotionClause", children)]),
-    trace: traceInfo("generative_template", {
-      construction_type: "SourceMotionClause",
-      template_family: "generative_template",
-      template: ["subject?", "source_marker!", "source_location!", "motion_predicate!", "particle?"],
-      assigned_slots: [...bareCore.slice(0, offset).map(() => "subject"), "source_marker", "source_location", "motion_predicate", ...particles.map(() => "particle")],
-      surfaces: children.map((node) => flattenSurface(node)),
-      reason: "The source coverb phrase is attached to the motion predicate so the full clause span remains visible and the location keeps its where role."
-    })
-  });
-}
 function protectedConditionalMarkerToken() {
   return token("嘅話", {
     label: "func",
@@ -16587,62 +17045,6 @@ function perfectiveResultCompositionFallback(core) {
     trace: traceInfo("generative_template", { construction_type: "SubjectPredicateClause", template_family: "generative_template", template: ["subject!", "predicate!"], assigned_slots: ["subject", "predicate"], surfaces: children.map(flattenSurface) })
   });
 }
-function directionalComplexPart(node, semanticSlot) {
-  const surface = flattenSurface(node);
-  const syntax = {
-    "行": "main_motion_verb",
-    "攞": "caused_motion_action",
-    "入": "movement_direction_in",
-    "出": "movement_direction_out",
-    "返": "return_directional_complement",
-    "過": "path_across_component",
-    "嚟": "deictic_motion_marker_toward",
-    "去": "deictic_motion_marker_away",
-    "緊": "progressive_aspect",
-    "咗": "perfective_aspect",
-    "得": "potential_marker",
-    "唔": "potential_negator"
-  }[surface] || "directional_composition_part";
-  const label = ["緊", "咗", "得", "唔"].includes(surface) ? "func" : "doing";
-  return compositionPartClone(node, { label, syntax, slots: [semanticSlot], reason: `${surface} is overt and owned by the directional complex in source order.` });
-}
-function directionalCompositionFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const compact = withoutIgnorableSpaceText(bareCore);
-  const surfaces = compact.map(flattenSurface);
-  const finish = (type, label, nodes, detail = {}) => construction(type, label, [...nodes, ...particles], {
-    slots: constructionSlotsByType(type, nodes),
-    note: "Transparent Cantonese directional composition with path, potential/aspect, and final deixis represented in one predicate.",
-    trace: traceInfo("generative_template", {
-      construction_type: type,
-      template_family: "generative_template",
-      template: detail.template || [],
-      assigned_slots: detail.assigned_slots || [],
-      surfaces: nodes.map(flattenSurface),
-      directional_subtype: detail.directional_subtype || "",
-      deictic_position_status: "outermost_visible_deictic",
-      not_claims: ["not_hidden_path", "not_hidden_subject", "not_reordered_surface"]
-    })
-  });
-  if (surfaces.length === 3 && surfaces[0] === "行" && ["入", "出"].includes(surfaces[1]) && ["嚟", "去"].includes(surfaces[2])) {
-    return finish("DirectionalMotionVP", "MotionVP", [directionalComplexPart(compact[0], "movement_verb"), directionalComplexPart(compact[1], "movement_direction"), directionalComplexPart(compact[2], "deictic_motion_marker")], { template: ["movement_verb!", "movement_direction!", "deictic_motion_marker!"], assigned_slots: ["movement_verb", "movement_direction", "deictic_motion_marker"], directional_subtype: "self_motion_path_deictic" });
-  }
-  if (surfaces.join("") === "行返過嚟") {
-    return finish("DirectionalMotionVP", "MotionVP", compact.map((n, i) => directionalComplexPart(n, ["movement_verb", "return_motion_verb", "path_component", "deictic_motion_marker"][i])), { template: ["movement_verb!", "return_motion_verb!", "path_component!", "deictic_motion_marker!"], assigned_slots: ["movement_verb", "return_motion_verb", "path_component", "deictic_motion_marker"], directional_subtype: "return_path_deictic" });
-  }
-  if (surfaces.length === 3 && ["入", "落", "上", "出"].includes(surfaces[0]) && surfaces[1] === "咗" && ["嚟", "去"].includes(surfaces[2])) {
-    return finish("PerfectiveDirectionalVP", "PerfMotion", [directionalComplexPart(compact[0], "movement_direction"), directionalComplexPart(compact[1], "perfective_aspect"), directionalComplexPart(compact[2], "deictic_motion_marker")], { template: ["directional_head!", "perfective_aspect!", "deictic_motion_marker!"], assigned_slots: ["movement_direction", "perfective_aspect", "deictic_motion_marker"], directional_subtype: "perfective_directional" });
-  }
-  if (surfaces.length === 4 && surfaces[0] === "行" && surfaces[1] === "緊" && ["入", "出"].includes(surfaces[2]) && ["嚟", "去"].includes(surfaces[3])) {
-    return finish("ProgressiveDirectionalVP", "ProgMotion", [directionalComplexPart(compact[0], "movement_verb"), directionalComplexPart(compact[1], "progressive_aspect"), directionalComplexPart(compact[2], "movement_direction"), directionalComplexPart(compact[3], "deictic_motion_marker")], { template: ["movement_verb!", "progressive_aspect!", "movement_direction!", "deictic_motion_marker!"], assigned_slots: ["movement_verb", "progressive_aspect", "movement_direction", "deictic_motion_marker"], directional_subtype: "progressive_path_deictic" });
-  }
-  if (surfaces.length === 4 && nodeCanFillSlot(compact[0], "action_verb") && ["得", "唔"].includes(surfaces[1]) && ["入", "出", "返"].includes(surfaces[2]) && ["嚟", "去"].includes(surfaces[3])) {
-    const positive = surfaces[1] === "得";
-    const type = positive ? "PotentialDirectionalVP" : "NegativePotentialDirectionalVP";
-    return finish(type, positive ? "PotentialMotion" : "NegPotentialMotion", [directionalComplexPart(compact[0], surfaces[0] === "行" ? "movement_verb" : "action_verb"), directionalComplexPart(compact[1], positive ? "potential_marker" : "negator"), directionalComplexPart(compact[2], surfaces[2] === "返" ? "return_motion_verb" : "movement_direction"), directionalComplexPart(compact[3], "deictic_motion_marker")], { template: ["action_or_motion_verb!", positive ? "potential_marker!" : "potential_negator!", "directional_complement!", "deictic_motion_marker!"], assigned_slots: [surfaces[0] === "行" ? "movement_verb" : "action_verb", positive ? "potential_marker" : "negator", surfaces[2] === "返" ? "return_motion_verb" : "movement_direction", "deictic_motion_marker"], directional_subtype: positive ? "positive_potential_directional" : "negative_potential_directional" });
-  }
-  return null;
-}
 function restorativeRepetitiveComplementFallback(core) {
   const { core: bareCore, particles } = withoutTrailingParticles(core);
   const compact = withoutIgnorableSpaceText(bareCore);
@@ -16692,224 +17094,6 @@ function restorativeRepetitiveComplementFallback(core) {
         })
       });
     }
-  }
-  return null;
-}
-function purposeLinkingMotionFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const compact = withoutIgnorableSpaceText(bareCore);
-  if (compact.length !== 5 || !nodeCanFillSlot(compact[0], "action_verb") || !["嚟", "去"].includes(flattenSurface(compact[3])) || !nodeCanFillSlot(compact[4], "action_verb")) return null;
-  const object = categorySubspanFor(compact.slice(1, 3), ["DiMarkedNP", "ClassifierObjectNP", "ModifiedNP", "NominalHeadSpan"]);
-  if (!object) return null;
-  const action = categorySubspanFor([compact[0], object], ["ProductiveVO", "TransitiveVP"]) || construction("ProductiveVO", "VO", [compact[0], object], { slots: ["productive_vo", "vp", "action_vp", "predicate", "object"], trace: traceInfo("generative_template", { construction_type: "ProductiveVO", template_family: "generative_template", template: ["action_verb!", "object!"], assigned_slots: ["action_verb", "object"], surfaces: [flattenSurface(compact[0]), flattenSurface(object)] }) });
-  const linker = compositionPartClone(compact[3], { label: "func", syntax: "purpose_linking_motion_element", slots: ["purpose_linker"], reason: `${flattenSurface(compact[3])} links the overt acquisition/action event to the following purpose predicate.` });
-  const purpose = compositionPartClone(compact[4], { label: "doing", syntax: "purpose_verb", slots: ["purpose_verb", "action_verb", "predicate"] });
-  const children = [action, linker, purpose, ...particles];
-  return construction("SerialVerbPurposeChain", "PurposeChain", children, {
-    slots: constructionSlotsByType("SerialVerbPurposeChain", children),
-    trace: traceInfo("generative_template", { construction_type: "SerialVerbPurposeChain", template_family: "generative_template", template: ["action_object_vp!", "purpose_linking_motion_element!", "purpose_verb!", "particle?"], assigned_slots: ["productive_vo", "purpose_linker", "purpose_verb", ...particles.map(() => "particle")], surfaces: children.map(flattenSurface), purpose_linker_surface: flattenSurface(compact[3]), not_claims: ["not_deictic_motion_vp", "not_hidden_object", "not_hidden_purpose"] })
-  });
-}
-function motionEventPartClone(node, { label = "doing", syntax = "motion_event_part", slots = [], reason = "Visible motion-event material is assigned by its position and event-semantic role." } = {}) {
-  const surface = flattenSurface(node);
-  const base = firstToken(node) || token(surface, { jyutping: "" });
-  return parserInactiveTokenClone(base, {
-    label,
-    pos: label === "where" ? "location" : label === "when" ? "time" : label === "func" ? "function" : "verb",
-    syntax,
-    slots,
-    reason
-  });
-}
-function motionSubjectPredicateClause(subject, predicate, particles = [], detail = {}) {
-  if (!subject) return predicate;
-  const children = [subject, predicate, ...particles];
-  return construction("SubjectPredicateClause", "SubjPred", children, {
-    slots: templateDerivedSlots("SubjectPredicateClause", children),
-    trace: traceInfo("generative_template", {
-      construction_type: "SubjectPredicateClause",
-      template_family: "generative_template",
-      template: ["subject!", "predicate!", "particle?"],
-      assigned_slots: ["subject", "predicate", ...particles.map(() => "particle")],
-      surfaces: children.map(flattenSurface),
-      ...detail
-    })
-  });
-}
-function motionGoalNode(node, reason = "The postverbal place is the overt goal of the motion event, not an ordinary object.") {
-  return motionEventPartClone(node, {
-    label: "where",
-    syntax: `${(firstToken(node) || {}).syntax || "place_or_goal"} motion_goal_location`,
-    slots: ["goal", "location", "np", "head_noun"],
-    reason
-  });
-}
-function motionOrderingReviewCandidate(children, subtype, problem, expectedRepairs = [], options = {}) {
-  const family = options.family || "motion_event_ordering_or_attachment";
-  const reviewFlag = options.review_flag || "motion_event_order_or_attachment_review";
-  const missingSlot = options.missing_slot || "licensed_motion_event_order_or_attachment";
-  const note = options.note || "Review-bearing motion-event ordering or attachment candidate. Visible learner text is preserved and no repair is inserted.";
-  const notClaims = options.not_claims || ["not_hard_asterisk_judgment", "not_silent_reordering", "not_hidden_motion_component"];
-  return construction("MalformedCandidate", "Malformed", children, {
-    slots: cleanSlots(["malformed_candidate", "needs_review", "predicate", "problem_span"]),
-    note,
-    trace: traceInfo("special_ambiguity_rule", {
-      construction_type: "MalformedCandidate",
-      malformed_family: family,
-      malformed_subtype: subtype,
-      surfaces: children.map(flattenSurface),
-      problem,
-      expected_repairs: expectedRepairs,
-      semantic_review_flags: ["malformed_candidate_parse", reviewFlag],
-      context_requirement_status: "context_required",
-      missing_argument_slots: [missingSlot],
-      not_claims: notClaims
-    })
-  });
-}
-function motionEventSpatialFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const compact = withoutIgnorableSpaceText(bareCore);
-  if (compact.length < 3) return null;
-  const surfaces = compact.map(flattenSurface);
-  let cursor = 0;
-  const subject = compact[cursor] && nodeCanFillSlot(compact[cursor], "subject") ? compact[cursor++] : null;
-  const rest = compact.slice(cursor);
-  const rs = rest.map(flattenSurface);
-  if (subject && rs.length >= 4 && rs[0] === "喺" && nodeCanFillSlot(rest[1], "location") && nodeCanFillSlot(rest[2], "time")) {
-    return motionOrderingReviewCandidate(
-      [...compact, ...particles],
-      "post_locative_time_order",
-      "The temporal adjunct follows the low preverbal locative phrase before the main event.",
-      ["subject_time_locative_predicate", "separate_discourse_or_native_review"],
-      {
-        family: "clause_adjunct_ordering_or_attachment",
-        review_flag: "clause_adjunct_order_or_attachment_review",
-        missing_slot: "licensed_clause_adjunct_order_or_attachment",
-        note: "Review-bearing clause-adjunct ordering or attachment candidate. Visible learner text is preserved and no repair is inserted.",
-        not_claims: ["not_hard_asterisk_judgment", "not_silent_reordering", "not_hidden_time_or_location"]
-      }
-    );
-  }
-  if (subject && rs.length === 3 && rs[0] === "行" && nodeCanFillSlot(rest[1], "location") && rs[2] === "去") {
-    return motionOrderingReviewCandidate([...compact, ...particles], "goal_before_final_deictic", "The goal NP intervenes between the manner-motion verb and final 去 instead of following the directional predicate.", ["行去_goal", "separate_serial_event"]);
-  }
-  if (subject && rs.length === 3 && ["返", "行"].includes(rs[0]) && nodeCanFillSlot(rest[1], "location") && rs[2] === "到") {
-    return motionOrderingReviewCandidate([...compact, ...particles], "goal_before_attainment_complement", "到 follows an already expressed goal NP instead of forming the motion-goal-attainment predicate before the goal.", ["motion_verb_到_goal"]);
-  }
-  if (subject && rs.length === 3 && rs[0] === "到" && rs[1] === "返" && nodeCanFillSlot(rest[2], "location")) {
-    return motionOrderingReviewCandidate([...compact, ...particles], "arrival_return_order_conflict", "Main arrival 到 precedes return-motion 返 without a licensed compositional relation.", ["到咗_goal", "返到_goal", "返_goal"]);
-  }
-  if (subject && rs.length === 5 && ["上", "落", "入", "出"].includes(rs[0]) && nodeCanFillSlot(rest[1], "action_verb") && ["嚟", "去"].includes(rs[3]) && nodeCanFillSlot(rest[4], "action_verb")) {
-    return motionOrderingReviewCandidate([...compact, ...particles], "unlicensed_motion_action_deictic_order", "A bare directional head is separated from its deictic element by an action-object event.", ["directional_complex_then_action_purpose", "separate_clause_or_native_review"]);
-  }
-  if (subject && rs.length === 6 && nodeCanFillSlot(rest[0], "time") && rs[1] === "由" && nodeCanFillSlot(rest[2], "location") && rs[3] === "行" && rs[4] === "去" && nodeCanFillSlot(rest[5], "location")) {
-    const directedChildren = [
-      motionEventPartClone(rest[3], { label: "doing", syntax: "manner_motion_verb", slots: ["movement_verb", "manner_motion"], reason: "行 supplies the manner of self-motion." }),
-      motionEventPartClone(rest[4], { label: "doing", syntax: "directional_path_element", slots: ["movement_direction", "path_component"], reason: "去 forms the postverbal directional component before the overt goal." }),
-      motionGoalNode(rest[5])
-    ];
-    const directed = construction("DirectedMannerMotionVP", "DirectedMotion", directedChildren, {
-      slots: constructionSlotsByType("DirectedMannerMotionVP", directedChildren),
-      trace: traceInfo("generative_template", { construction_type: "DirectedMannerMotionVP", template_family: "generative_template", template: ["manner_motion_verb!", "directional_element!", "goal!"], assigned_slots: ["movement_verb", "movement_direction", "goal"], surfaces: directedChildren.map(flattenSurface), not_claims: ["not_purpose_chain", "not_transitive_object"] })
-    });
-    const sourceMarker = motionEventPartClone(rest[1], { label: "func", syntax: "source_coverb source_marker", slots: ["source_marker", "coverb_marker"], reason: "由 introduces the overt source of the motion event." });
-    const source = motionEventPartClone(rest[2], { label: "where", syntax: "source_location", slots: ["source", "location", "np"], reason: "The place after 由 is the source, not the goal." });
-    const children = [subject, rest[0], sourceMarker, source, directed, ...particles];
-    return construction("SourceMotionClause", "SourceMotion", children, {
-      slots: constructionSlotsByType("SourceMotionClause", children),
-      trace: traceInfo("generative_template", { construction_type: "SourceMotionClause", template_family: "generative_template", template: ["subject!", "time?", "source_marker!", "source_location!", "directed_motion_vp!", "particle?"], assigned_slots: ["subject", "time", "source_marker", "source_location", "motion_predicate", ...particles.map(() => "particle")], surfaces: children.map(flattenSurface), spatial_order_status: "time_before_source_before_motion_goal" })
-    });
-  }
-  if (subject && rs.length === 3 && rs[0] === "向" && rs[2] === "行") {
-    const orientationSurface = rs[1];
-    const orientation = orientationSurface === "前" ? token("前", { label: "where", pos: "location", jyutping: "cin4", syntax: "orientation_ground path_direction", slots: ["path", "orientation", "location"], note: "forward / front", trace: traceInfo("construction_internal_parser_inactive_clone", { reason: "前 receives a context-local orientation/path reading after 向; no global nominal lexicon entry is introduced." }) }) : motionEventPartClone(rest[1], { label: "where", syntax: "orientation_ground path_goal", slots: ["path", "orientation", "location"], reason: "The NP after 向 is the orientation/path ground." });
-    const pathChildren = [motionEventPartClone(rest[0], { label: "func", syntax: "orientation_coverb path_marker", slots: ["path_marker", "coverb_marker"], reason: "向 introduces a preverbal orientation/path phrase." }), orientation];
-    const path = construction("PathPhrase", "Path", pathChildren, { slots: constructionSlotsByType("PathPhrase", pathChildren), trace: traceInfo("generative_template", { construction_type: "PathPhrase", template_family: "generative_template", template: ["path_marker!", "orientation_ground!"], assigned_slots: ["path_marker", "location"], surfaces: pathChildren.map(flattenSurface), subspan: true }) });
-    const motion = motionEventPartClone(rest[2], { label: "doing", syntax: "manner_motion_verb", slots: ["movement_verb", "manner_motion", "predicate"], reason: "行 supplies the manner of motion under the preceding orientation phrase." });
-    const predicate = construction("DirectedMannerMotionVP", "DirectedMotion", [path, motion], { slots: constructionSlotsByType("DirectedMannerMotionVP", [path, motion]), trace: traceInfo("generative_template", { construction_type: "DirectedMannerMotionVP", template_family: "generative_template", template: ["path_phrase!", "manner_motion_verb!"], assigned_slots: ["path_phrase", "movement_verb"], surfaces: [flattenSurface(path), flattenSurface(motion)], not_claims: ["not_postverbal_goal", "not_purpose_chain"] }) });
-    return motionSubjectPredicateClause(subject, predicate, particles);
-  }
-  if (subject && rs.length === 3 && rs[0] === "行" && rs[1] === "去" && nodeCanFillSlot(rest[2], "location")) {
-    const children = [
-      motionEventPartClone(rest[0], { label: "doing", syntax: "manner_motion_verb", slots: ["movement_verb", "manner_motion"], reason: "行 supplies manner of motion." }),
-      motionEventPartClone(rest[1], { label: "doing", syntax: "directional_path_element", slots: ["movement_direction", "path_component"], reason: "去 is the postverbal directional element; it is not the purpose verb in this frame." }),
-      motionGoalNode(rest[2])
-    ];
-    const predicate = construction("DirectedMannerMotionVP", "DirectedMotion", children, { slots: constructionSlotsByType("DirectedMannerMotionVP", children), trace: traceInfo("generative_template", { construction_type: "DirectedMannerMotionVP", template_family: "generative_template", template: ["manner_motion_verb!", "directional_element!", "goal!"], assigned_slots: ["movement_verb", "movement_direction", "goal"], surfaces: children.map(flattenSurface), not_claims: ["not_purpose_chain", "not_transitive_object"] }) });
-    return motionSubjectPredicateClause(subject, predicate, particles);
-  }
-  if (subject && rs.length === 3 && rs[0] === "行" && ["入", "出", "上", "落"].includes(rs[1]) && ["嚟", "去"].includes(rs[2])) {
-    const children = [
-      motionEventPartClone(rest[0], { label: "doing", syntax: "manner_motion_verb", slots: ["movement_verb", "manner_motion"] }),
-      motionEventPartClone(rest[1], { label: "doing", syntax: "movement_direction", slots: ["movement_direction", "path_component"] }),
-      motionEventPartClone(rest[2], { label: "doing", syntax: "deictic_motion_marker", slots: ["deictic_motion_marker"] })
-    ];
-    const predicate = construction("DirectedMannerMotionVP", "DirectedMotion", children, { slots: constructionSlotsByType("DirectedMannerMotionVP", children), trace: traceInfo("generative_template", { construction_type: "DirectedMannerMotionVP", template_family: "generative_template", template: ["manner_motion_verb!", "movement_direction!", "deictic_motion_marker!"], assigned_slots: ["movement_verb", "movement_direction", "deictic_motion_marker"], surfaces: children.map(flattenSurface), deictic_position_status: "outermost_visible_deictic" }) });
-    return motionSubjectPredicateClause(subject, predicate, particles);
-  }
-  if (subject && rs.length === 2 && ["上", "落", "入", "出", "返"].includes(rs[0]) && ["嚟", "去"].includes(rs[1])) {
-    const children = [motionEventPartClone(rest[0], { label: "doing", syntax: "main_directional_verb", slots: ["movement_verb", "movement_direction"] }), motionEventPartClone(rest[1], { label: "doing", syntax: "deictic_motion_marker", slots: ["deictic_motion_marker"] })];
-    const predicate = construction("DirectionalMotionVP", "MotionVP", children, { slots: constructionSlotsByType("DirectionalMotionVP", children), trace: traceInfo("generative_template", { construction_type: "DirectionalMotionVP", template_family: "generative_template", template: ["directional_head!", "deictic_motion_marker!"], assigned_slots: ["movement_direction", "deictic_motion_marker"], surfaces: children.map(flattenSurface), deictic_position_status: "outermost_visible_deictic" }) });
-    return motionSubjectPredicateClause(subject, predicate, particles);
-  }
-  if (subject && rs.length === 3 && ["返", "行"].includes(rs[0]) && rs[1] === "到" && nodeCanFillSlot(rest[2], "location")) {
-    const children = [motionEventPartClone(rest[0], { label: "doing", syntax: "movement_verb", slots: ["movement_verb", "main_verb"] }), motionEventPartClone(rest[1], { label: "func", syntax: "goal_attainment_complement", slots: ["goal_attainment_complement", "result_marker"], reason: "到 marks successful arrival/attainment before the overt goal." }), motionGoalNode(rest[2])];
-    const predicate = construction("GoalAttainmentMotionVP", "GoalAttainment", children, { slots: constructionSlotsByType("GoalAttainmentMotionVP", children), trace: traceInfo("generative_template", { construction_type: "GoalAttainmentMotionVP", template_family: "generative_template", template: ["movement_verb!", "goal_attainment_complement!", "goal!"], assigned_slots: ["movement_verb", "result_marker", "goal"], surfaces: children.map(flattenSurface), attainment_domain: "spatial_goal" }) });
-    return motionSubjectPredicateClause(subject, predicate, particles);
-  }
-  if (subject && rs.length === 3 && rs[0] === "到" && rs[1] === "咗" && nodeCanFillSlot(rest[2], "location")) {
-    const children = [motionEventPartClone(rest[0], { label: "doing", syntax: "arrival_motion_verb", slots: ["movement_verb", "main_verb", "predicate"], reason: "到 is the main arrival verb here, not a postverbal result marker." }), motionEventPartClone(rest[1], { label: "func", syntax: "perfective_aspect", slots: ["perfective_aspect", "aspect_marker"] }), motionGoalNode(rest[2])];
-    const predicate = construction("MotionGoalVP", "MotionGoal", children, { slots: constructionSlotsByType("MotionGoalVP", children), trace: traceInfo("generative_template", { construction_type: "MotionGoalVP", template_family: "generative_template", template: ["arrival_motion_verb!", "perfective_aspect!", "goal!"], assigned_slots: ["movement_verb", "perfective_aspect", "goal"], surfaces: children.map(flattenSurface), arrival_verb_status: "main_verb_not_complement" }) });
-    return motionSubjectPredicateClause(subject, predicate, particles);
-  }
-  if (subject && rs.length === 3 && nodeCanFillSlot(rest[0], "action_verb") && rs[1] === "到" && nodeCanFillSlot(rest[2], "object") && !nodeCanFillSlot(rest[2], "location")) {
-    const children = [rest[0], motionEventPartClone(rest[1], { label: "func", syntax: "nonspatial_attainment_result_complement", slots: ["result_complement", "result_marker"], reason: "到 is a nonspatial attainment/result complement licensed by the action and object." }), rest[2]];
-    const predicate = construction("ResultComplementVP", "ResultVP", children, { slots: constructionSlotsByType("ResultComplementVP", children), trace: traceInfo("generative_template", { construction_type: "ResultComplementVP", template_family: "generative_template", template: ["action_verb!", "attainment_result_complement!", "object!"], assigned_slots: ["action_verb", "result_complement", "object"], surfaces: children.map(flattenSurface), attainment_domain: "nonspatial", not_claims: ["not_motion_goal", "not_coverb"] }) });
-    return motionSubjectPredicateClause(subject, predicate, particles);
-  }
-  if (subject && rs.length === 4 && nodeCanFillSlot(rest[0], "action_verb") && rs[1] === "唔" && rs[2] === "到" && nodeCanFillSlot(rest[3], "object") && !nodeCanFillSlot(rest[3], "location")) {
-    const children = [rest[0], motionEventPartClone(rest[1], { label: "func", syntax: "potential_negator", slots: ["negator"] }), motionEventPartClone(rest[2], { label: "func", syntax: "nonspatial_attainment_result_complement", slots: ["result_complement", "result_marker"] }), rest[3]];
-    const predicate = construction("NegativePotentialComplement", "NegPotential", children, { slots: constructionSlotsByType("NegativePotentialComplement", children), trace: traceInfo("generative_template", { construction_type: "NegativePotentialComplement", template_family: "generative_template", template: ["action_verb!", "potential_negator!", "attainment_result_complement!", "object!"], assigned_slots: ["action_verb", "negator", "result_complement", "object"], surfaces: children.map(flattenSurface), attainment_domain: "nonspatial", not_claims: ["not_motion_goal", "not_hidden_result"] }) });
-    return motionSubjectPredicateClause(subject, predicate, particles);
-  }
-  if (subject && rs.length === 4 && rs[0] === "去" && (nodeCanFillSlot(rest[1], "location") || /restaurant_np|place_or_goal/.test((firstToken(rest[1]) || {}).syntax || "")) && nodeCanFillSlot(rest[2], "action_verb") && nodeCanFillSlot(rest[3], "object")) {
-    const motionChildren = [motionEventPartClone(rest[0], { label: "doing", syntax: "movement_verb", slots: ["movement_verb"] }), motionGoalNode(rest[1])];
-    const motion = construction("MotionGoalVP", "MotionGoal", motionChildren, { slots: constructionSlotsByType("MotionGoalVP", motionChildren), trace: traceInfo("generative_template", { construction_type: "MotionGoalVP", template_family: "generative_template", template: ["movement_verb!", "goal!"], assigned_slots: ["movement_verb", "goal"], surfaces: motionChildren.map(flattenSurface), subspan: true }) });
-    const purposeChildren = [rest[2], rest[3]];
-    const purpose = construction("TransitiveVP", "VP", purposeChildren, { slots: constructionSlotsByType("TransitiveVP", purposeChildren), trace: traceInfo("generative_template", { construction_type: "TransitiveVP", template_family: "generative_template", template: ["action_verb!", "object!"], assigned_slots: ["action_verb", "object"], surfaces: purposeChildren.map(flattenSurface), subspan: true }) });
-    const chainChildren = [motion, purpose];
-    const chain = construction("MotionPurposeChain", "MotionPurpose", chainChildren, { slots: constructionSlotsByType("MotionPurposeChain", chainChildren), trace: traceInfo("generative_template", { construction_type: "MotionPurposeChain", template_family: "generative_template", template: ["motion_goal_vp!", "purpose_vp!"], assigned_slots: ["motion_goal_vp", "purpose_verb"], surfaces: chainChildren.map(flattenSurface), shared_subject_provenance: { overt_subject_surface: flattenSurface(subject), licensed_members: [flattenSurface(motion), flattenSurface(purpose)], hidden_subject_inserted: false } }) });
-    return motionSubjectPredicateClause(subject, chain, particles);
-  }
-  if (subject && rs.length === 6 && rs[0] === "去" && nodeCanFillSlot(rest[1], "location") && nodeCanFillSlot(rest[2], "action_verb") && nodeCanFillSlot(rest[3], "object") && nodeCanFillSlot(rest[4], "action_verb") && nodeCanFillSlot(rest[5], "object")) {
-    const motionChildren = [motionEventPartClone(rest[0], { label: "doing", syntax: "movement_verb", slots: ["movement_verb"] }), motionGoalNode(rest[1])];
-    const motion = construction("MotionGoalVP", "MotionGoal", motionChildren, { slots: constructionSlotsByType("MotionGoalVP", motionChildren), trace: traceInfo("generative_template", { construction_type: "MotionGoalVP", template_family: "generative_template", template: ["movement_verb!", "goal!"], assigned_slots: ["movement_verb", "goal"], surfaces: motionChildren.map(flattenSurface), subspan: true }) });
-    const action1 = construction("TransitiveVP", "VP", [rest[2], rest[3]], { slots: constructionSlotsByType("TransitiveVP", [rest[2], rest[3]]), trace: traceInfo("generative_template", { construction_type: "TransitiveVP", template_family: "generative_template", template: ["action_verb!", "object!"], assigned_slots: ["action_verb", "object"], surfaces: [rs[2], rs[3]], subspan: true }) });
-    const action2 = construction("TransitiveVP", "VP", [rest[4], rest[5]], { slots: constructionSlotsByType("TransitiveVP", [rest[4], rest[5]]), trace: traceInfo("generative_template", { construction_type: "TransitiveVP", template_family: "generative_template", template: ["action_verb!", "object!"], assigned_slots: ["action_verb", "object"], surfaces: [rs[4], rs[5]], subspan: true }) });
-    const chainChildren = [motion, action1, action2];
-    const chain = construction("SerialVerbPurposeChain", "PurposeChain", chainChildren, { slots: constructionSlotsByType("SerialVerbPurposeChain", chainChildren), trace: traceInfo("generative_template", { construction_type: "SerialVerbPurposeChain", template_family: "generative_template", template: ["motion_goal_vp!", "action_object_vp!", "purpose_vp!"], assigned_slots: ["motion_goal_vp", "action_vp", "purpose_verb"], surfaces: chainChildren.map(flattenSurface), shared_subject_provenance: { overt_subject_surface: flattenSurface(subject), licensed_members: chainChildren.map(flattenSurface), hidden_subject_inserted: false } }) });
-    return motionSubjectPredicateClause(subject, chain, particles);
-  }
-  if (subject && rs.length === 7 && rs[0] === "攞" && nodeCanFillSlot(rest[1], "object") && rs[2] === "返" && rs[3] === "嚟" && rs[4] === "畀" && nodeCanFillSlot(rest[5], "subject") && nodeCanFillSlot(rest[6], "action_verb")) {
-    const action = construction("TransitiveVP", "VP", [rest[0], rest[1]], {
-      slots: constructionSlotsByType("TransitiveVP", [rest[0], rest[1]]),
-      trace: traceInfo("generative_template", { construction_type: "TransitiveVP", template_family: "generative_template", template: ["action_verb!", "object!"], assigned_slots: ["action_verb", "object"], surfaces: [rs[0], rs[1]], subspan: true })
-    });
-    const returnMotionChildren = [motionEventPartClone(rest[2], { label: "doing", syntax: "return_directional_complement", slots: ["return_motion_verb", "movement_direction"] }), motionEventPartClone(rest[3], { label: "doing", syntax: "deictic_motion_marker", slots: ["deictic_motion_marker"] })];
-    const returnMotion = construction("DirectionalMotionVP", "MotionVP", returnMotionChildren, { slots: constructionSlotsByType("DirectionalMotionVP", returnMotionChildren), trace: traceInfo("generative_template", { construction_type: "DirectionalMotionVP", template_family: "generative_template", template: ["return_directional_complement!", "deictic_motion_marker!"], assigned_slots: ["return_motion_verb", "deictic_motion_marker"], surfaces: returnMotionChildren.map(flattenSurface), subspan: true }) });
-    const causedMotionChildren = [action, returnMotion];
-    const causedMotion = construction("VerbComplementVP", "VerbCompVP", causedMotionChildren, { slots: templateDerivedSlots("VerbComplementVP", causedMotionChildren), trace: traceInfo("generative_template", { construction_type: "VerbComplementVP", template_family: "generative_template", template: ["action_object_vp!", "directional_motion_vp!"], assigned_slots: ["action_vp", "directional_motion_vp"], surfaces: causedMotionChildren.map(flattenSurface), caused_motion_status: "overt_theme_plus_return_direction" }) });
-    const relation = cp021bMakePostThemeRelation({
-      upstreamVP: causedMotion,
-      upstreamPredicateSurface: "攞",
-      upstreamThemeSurface: flattenSurface(rest[1]),
-      marker: rest[4],
-      participantNodes: [rest[5]],
-      followingPredicate: rest[6],
-      profile: CP021B_POST_THEME_PREDICATE_PROFILES["攞"]
-    });
-    return motionSubjectPredicateClause(subject, relation, particles);
   }
   return null;
 }
