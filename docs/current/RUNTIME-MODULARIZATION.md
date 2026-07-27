@@ -1,11 +1,12 @@
 # Runtime modularization and wired-resource architecture
 
-Status: **Wave 1 A-not-A and modal polar extraction implemented; stacked pending PR #207 merge**
+Status: **Wave 2 nominal and classifier extraction implemented; stacked pending PR #209 merge**
 Parent program: #161
-Current intake: #190
-Work claim: #208
-Draft pull request: #209
-Upstream Wave 1 extraction: #188 / PR #207
+Current intake: #189
+Work claim: #210
+Draft pull request: #211
+Upstream Wave 1 questions: #190 / PR #209
+Upstream Wave 1 contextual/vocative: #188 / PR #207
 Stage 7 rendering/plugin extraction: #168 / PR #187
 Stage 6 detector pilot: #167 / PR #185
 Stage 5 parser primitives: #166 / PR #183
@@ -213,6 +214,18 @@ A-not-A and tightly coupled polar-question recognition is maintained under:
 - `src/plugin-entry.js` for unchanged detector dispatch order and dependencies supplied to the question-family factory.
 
 The module owns only question-scoped complement selection and the question-owned `TransitiveVP` child used inside the permission pattern. General VP ownership, wh/completion/experiential/scalar questions, terminal particle scope, and construction interpretation remain outside this extraction. No parser result, rendered output, test expectation, or runtime version changes.
+
+
+## Wave 2 nominal and classifier ownership
+
+Executable NP-specific logic is maintained under:
+
+- `src/parser/detectors/np/token-splits.js` for transparent demonstrative/classifier, one-count, quantified-person, nominal-啲, and fused-topic/person splits;
+- `src/parser/detectors/np/core.js` for compositional NP subspans, classifier compatibility deferral, deictic topics, nominal complements, coordination, possessive classifier NPs, classifier-object NPs, and the narrow approximate-quantity fallback;
+- declarative NP templates and labels remain in the existing runtime-resource files rather than being duplicated in detector code;
+- `src/plugin-entry.js` preserves detector dispatch and injects shared parser primitives and cross-family helpers.
+
+Contextual resolution, vocatives, general topic/comment structure, copular/question ownership, transfer/result frames, and generic category-template matching remain outside these NP modules. No NP license, classifier compatibility decision, parser result, rendered output, test expectation, or runtime version changes.
 
 ## Runtime-resource format rule
 
