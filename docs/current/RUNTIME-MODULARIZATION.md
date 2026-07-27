@@ -1,10 +1,11 @@
 # Runtime modularization and wired-resource architecture
 
-Status: **Wave 1 contextual split and vocative extraction implemented; pending merge**
+Status: **Wave 1 A-not-A and modal polar extraction implemented; stacked pending PR #207 merge**
 Parent program: #161
-Wave 1 intake: #188
-Work claim: #206
-Draft pull request: #207
+Current intake: #190
+Work claim: #208
+Draft pull request: #209
+Upstream Wave 1 extraction: #188 / PR #207
 Stage 7 rendering/plugin extraction: #168 / PR #187
 Stage 6 detector pilot: #167 / PR #185
 Stage 5 parser primitives: #166 / PR #183
@@ -201,6 +202,17 @@ The first post-pilot detector migration is maintained under:
 - `src/parser/detectors/address/vocative.js` for protected-address boundaries and generated `VocativeAddressTerm` candidates.
 
 NP constructors and licensing remain in their current owner pending #189. The tokenizer receives the same contextual and address callbacks in the same order. No split rule, address inventory, parser result, learner output, or runtime version changes.
+
+
+## Wave 1 A-not-A and modal polar question ownership
+
+A-not-A and tightly coupled polar-question recognition is maintained under:
+
+- `src/parser/detectors/questions/a-not-a.js` for ordinary, desiderative, permission, copular, and acceptability A-not-A questions;
+- the same module for `PolarQuestionFrame` fallback and the existing sentence-final `咩` polar-routing seam;
+- `src/plugin-entry.js` for unchanged detector dispatch order and dependencies supplied to the question-family factory.
+
+The module owns only question-scoped complement selection and the question-owned `TransitiveVP` child used inside the permission pattern. General VP ownership, wh/completion/experiential/scalar questions, terminal particle scope, and construction interpretation remain outside this extraction. No parser result, rendered output, test expectation, or runtime version changes.
 
 ## Runtime-resource format rule
 
