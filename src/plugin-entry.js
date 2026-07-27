@@ -2608,407 +2608,12 @@ function negativeCognitionFragmentFallback(core) {
 
 
 
-function isIntendedFunctionUseNode(node) {
-  return isToken(node, "用") && (String(node.syntax || "").includes("use_verb") || nodeCanFillSlot(node, "action_verb"));
-}
-
-function isIntendedFunctionLaiNode(node) {
-  return node && node.kind === "token" && ["嚟", "來"].includes(flattenSurface(node));
-}
-
-function intendedFunctionUseToken(node) {
-  return parserInactiveTokenClone(node, {
-    label: "func",
-    syntax: "intended_function_use_marker",
-    slots: ["purpose_use_verb", "intended_function_marker"],
-    reason: "用 marks the intended-function relation in a bounded topic/object + 用嚟 + predicate sequence; it is not the ordinary lexical-use verb in this context.",
-  });
-}
-
-function intendedFunctionLaiToken(node) {
-  const writtenForm = flattenSurface(node);
-  return parserInactiveTokenClone(node, {
-    label: "func",
-    syntax: "intended_function_lai_linker purposive_linker",
-    slots: ["purpose_lai_marker", "purpose_linker"],
-    jyutping: writtenForm === "來" ? "loi4" : (node.jyutping || "lai4"),
-    note: "links the object or resource to its intended use / function",
-    reason: "嚟/來 is the intended-function linker inside this bounded relation, not a deictic motion predicate.",
-    role_resolution_note: "嚟/來 is func only in the intended-function relation; directional-motion contexts keep the motion role.",
-    trace_detail: { orthographic_form: writtenForm, relation_subtype: "intended_function" },
-  });
-}
-
-function intendedFunctionPersonLike(node) {
-  if (!node) return false;
-  const first = firstToken(node) || node;
-  return (first && first.label === "who")
-    || (nodeCanFillSlot(node, "subject") && !nodeCanFillSlot(node, "object") && !nodeCanFillSlot(node, "head_noun"));
-}
-
-function intendedFunctionNonPersonNominal(node) {
-  if (!node || intendedFunctionPersonLike(node)) return false;
-  const slots = nodeSlots(node);
-  return ["topic", "np", "head_noun", "object", "location", "instrument"].some((slot) => slots.includes(slot));
-}
-
 function transparentTopicContentFromNodes(nodes) {
   const compact = withoutIgnorableSpaceText(nodes || []);
   if (!compact.length) return null;
   if (compact.length === 1) return compact[0];
   return categorySubspanFor(compact, ["OvertHeadDemonstrativeClassifierNP", "QuantifiedClassifierNP", "QuantifiedPersonNP", "OrdinalClassifierNP", "DiMarkedNP", "ModifiedNP", "NominalHeadSpan", "CoordinatedNP"]);
 }
-
-function intendedFunctionWrappedLinkPlan(node) {
-  if (!node || node.kind !== "construction" || node.type !== "MotionPurposeChain") return null;
-  const children = withoutIgnorableSpaceText(node.children || []);
-  if (children.length < 2) return null;
-  const link = children[0];
-  if (!link || link.kind !== "construction" || link.type !== "VerbComplementVP") return null;
-  const linkChildren = withoutIgnorableSpaceText(link.children || []);
-  if (linkChildren.length !== 2 || !isIntendedFunctionUseNode(linkChildren[0])) return null;
-  const laiWrapper = linkChildren[1];
-  if (!laiWrapper || laiWrapper.kind !== "construction" || laiWrapper.type !== "DirectionalMotionVP") return null;
-  const laiChildren = withoutIgnorableSpaceText(laiWrapper.children || []);
-  if (laiChildren.length !== 1 || !isIntendedFunctionLaiNode(laiChildren[0])) return null;
-  return {
-    useNode: linkChildren[0],
-    laiNode: laiChildren[0],
-    predicateNodes: children.slice(1),
-    retiredWrapperTypes: ["MotionPurposeChain", "VerbComplementVP", "DirectionalMotionVP"],
-  };
-}
-
-function intendedFunctionTopicPlan(nodes) {
-  let compact = withoutIgnorableSpaceText(nodes || []);
-  if (!compact.length) return null;
-  let userSubject = null;
-
-  // Older broad NP wrapping may combine a topicalized resource and an overt user
-  // (for example 啲錢我). Recover the transparent children rather than treating
-  // the whole sequence as one noun phrase.
-  if (compact.length === 1 && compact[0].kind === "construction") {
-    const children = withoutIgnorableSpaceText(compact[0].children || []);
-    if (children.length >= 2 && intendedFunctionPersonLike(children[children.length - 1])
-        && children.slice(0, -1).some(intendedFunctionNonPersonNominal)) {
-      userSubject = children[children.length - 1];
-      compact = children.slice(0, -1);
-    }
-  }
-  if (!userSubject && compact.length >= 2 && intendedFunctionPersonLike(compact[compact.length - 1])) {
-    const resourcePrefix = compact.slice(0, -1);
-    const resourcePrefixSurface = resourcePrefix.map((node) => flattenSurface(node)).join("");
-    const resourcePrefixHasNominal = resourcePrefix.some(intendedFunctionNonPersonNominal);
-    const resourcePrefixHasDemonstrativeClassifierShape = /^[呢嗰].+/u.test(resourcePrefixSurface)
-      && resourcePrefix.some((node) => nodeCanFillSlot(node, "classifier") || nodeCanFillSlot(node, "measure_word"));
-    if (resourcePrefixHasNominal || resourcePrefixHasDemonstrativeClassifierShape) {
-      userSubject = compact[compact.length - 1];
-      compact = resourcePrefix;
-    }
-  }
-
-  // A lone person pronoun in 我用嚟... names the user, not the object whose
-  // function is being described. Keep the omitted resource visible as context debt.
-  if (!compact.length || compact.every(intendedFunctionPersonLike)) return null;
-
-  const transparent = transparentTopicContentFromNodes(compact);
-  const hasDemonstrativeLead = ["呢", "嗰"].includes(flattenSurface(compact[0]));
-  const firstSlots = nodeSlots(compact[0]);
-  const hasClassifierLead = compact.length >= 2 && (firstSlots.includes("classifier") || firstSlots.includes("measure_word"));
-  if (!transparent && !compact.some(intendedFunctionNonPersonNominal) && !hasDemonstrativeLead && !hasClassifierLead) return null;
-
-  const resourceNodes = transparent ? [transparent] : compact;
-  if (!userSubject) {
-    // A preverbal NP in a direct function statement can be analyzed as subject,
-    // topic, or a less theory-specific function-bearing resource. CP019-r2 does
-    // not force the learner-visible Topic label when the contrast is unresolved.
-    return {
-      resourceNodes,
-      userSubject: null,
-      resourceRelationStatus: "direct_function_resource_subject_topic_underdetermined",
-    };
-  }
-
-  // With a separate overt user after the resource (啲錢我用嚟...), the resource
-  // is transparently left-dislocated relative to that subject and can retain the
-  // existing Topic representation.
-  const topic = construction("Topic", "Topic", resourceNodes, {
-    slots: ["topic", "np", "function_topic"],
-    note: "Thing or resource placed before the user to state what it is used for.",
-    trace: traceInfo("generative_template", {
-      construction_type: "Topic",
-      template_family: "generative_template",
-      assigned_slots: ["topic"],
-      surfaces: resourceNodes.map((node) => flattenSurface(node)),
-      relation_subtype: "intended_function",
-      learner_gloss_lines: [
-        "thing or resource being discussed",
-        "Placed before the user to state what the resource is used for.",
-      ],
-      reason: "An overt user follows the resource, supporting a narrow left-dislocated topic representation without generalizing direct function subjects as topics.",
-    }),
-  });
-  return {
-    resourceNodes: [topic],
-    userSubject,
-    resourceRelationStatus: "overt_resource_topic_with_separate_user",
-  };
-}
-
-function intendedFunctionRelationFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const compact = withoutIgnorableSpaceText(bareCore);
-  if (!compact.length) return null;
-
-  let useNode = null;
-  let laiNode = null;
-  let beforeUse = [];
-  let predicateNodes = [];
-  let inheritedWrapperRetirement = [];
-
-  const useIndex = compact.findIndex(isIntendedFunctionUseNode);
-  if (useIndex > 0 && useIndex < compact.length - 2 && isIntendedFunctionLaiNode(compact[useIndex + 1])) {
-    useNode = compact[useIndex];
-    laiNode = compact[useIndex + 1];
-    beforeUse = compact.slice(0, useIndex);
-    predicateNodes = compact.slice(useIndex + 2);
-  } else {
-    const wrapperIndex = compact.findIndex((node) => intendedFunctionWrappedLinkPlan(node));
-    if (wrapperIndex <= 0 || wrapperIndex !== compact.length - 1) return null;
-    const wrapped = intendedFunctionWrappedLinkPlan(compact[wrapperIndex]);
-    useNode = wrapped.useNode;
-    laiNode = wrapped.laiNode;
-    beforeUse = compact.slice(0, wrapperIndex);
-    predicateNodes = wrapped.predicateNodes;
-    inheritedWrapperRetirement = wrapped.retiredWrapperTypes;
-  }
-  if (!predicateNodes.length) return null;
-  if (predicateNodes.some((node) => (node.kind === "text" && /[，,；;]/u.test(String(node.text || ""))) || ["同埋", "或者"].includes(flattenSurface(node)))) return null;
-
-  const controls = [];
-  const controlSlots = [];
-  const lastBefore = () => beforeUse[beforeUse.length - 1];
-  if (beforeUse.length && isToken(lastBefore(), "唔係")) {
-    const negatedCopula = beforeUse.pop();
-    controls.push(parserInactiveTokenClone(negatedCopula, {
-      label: "func", syntax: "intended_function_negated_copula", slots: ["negator", "copula"],
-      reason: "Fused 唔係 negates the copular intended-function relation and must not be absorbed into the function-bearing topic.",
-    }));
-    controlSlots.push("negator", "copula");
-  } else if (beforeUse.length && isModalToken(lastBefore())) {
-    const modal = beforeUse.pop();
-    if (beforeUse.length && isToken(lastBefore(), "唔")) {
-      const negator = beforeUse.pop();
-      controls.push(parserInactiveTokenClone(negator, {
-        label: "func", syntax: "intended_function_modal_negator", slots: ["negator"],
-        reason: "唔 scopes over the modal in the intended-function statement.",
-      }));
-      controlSlots.push("negator");
-    }
-    controls.push(parserInactiveTokenClone(modal, {
-      label: "func", syntax: `${modal.syntax || "modal"} intended_function_modal`, slots: ["modal"],
-      reason: "The modal scopes over the intended-function relation.",
-    }));
-    controlSlots.push("modal");
-  } else if (beforeUse.length && isDefinitionCopulaNode(lastBefore())) {
-    const copula = beforeUse.pop();
-    if (beforeUse.length && isToken(lastBefore(), "唔")) {
-      const negator = beforeUse.pop();
-      controls.push(parserInactiveTokenClone(negator, {
-        label: "func", syntax: "intended_function_copular_negator", slots: ["negator"],
-        reason: "唔 negates the copular intended-function statement.",
-      }));
-      controlSlots.push("negator");
-    }
-    controls.push(parserInactiveTokenClone(copula, {
-      label: "func", syntax: "intended_function_copula", slots: ["copula"],
-      reason: "Optional 係 introduces a copular intended-function statement but is not required by the relation.",
-    }));
-    controlSlots.push("copula");
-  } else if (beforeUse.length && isToken(lastBefore(), "唔")) {
-    // Contrastive/lexical 唔用嚟 is outside the narrow affirmative intended-function replacement.
-    return null;
-  }
-
-  const plan = intendedFunctionTopicPlan(beforeUse);
-  if (!plan) return null;
-  const actualUseEventAmbiguity = predicateNodes.some((node) => flattenSurface(node).includes("咗") || nodeCanFillSlot(node, "perfective_aspect"));
-  const modalAffordanceAmbiguity = controlSlots.includes("modal");
-  const overtActionPredicate = predicateNodes.some((node) => isVerbLike(node) || nodeCanFillSlot(node, "action_vp") || nodeCanFillSlot(node, "action_verb"));
-  const directResourceFunctionProfile = !plan.userSubject
-    && controlSlots.length === 0
-    && plan.resourceRelationStatus === "direct_function_resource_subject_topic_underdetermined"
-    && !actualUseEventAmbiguity
-    && !modalAffordanceAmbiguity
-    && overtActionPredicate;
-  const relationConstructionType = directResourceFunctionProfile
-    ? "ResourceUseLaiFunctionRelation"
-    : "IntendedFunctionRelation";
-  const children = [...plan.resourceNodes];
-  const assignedSlots = ["function_topic"];
-  if (plan.userSubject) {
-    children.push(plan.userSubject);
-    assignedSlots.push("user_subject");
-  }
-  children.push(...controls, intendedFunctionUseToken(useNode), intendedFunctionLaiToken(laiNode), ...predicateNodes, ...particles);
-  assignedSlots.push(...controlSlots, "purpose_use_verb", "purpose_lai_marker", "purpose_predicate");
-  if (particles.length) assignedSlots.push("particle");
-
-  return construction(relationConstructionType, "Use / function", children, {
-    slots: ["intended_function_relation", "function_relation", "function_topic", "purpose_use_verb", "purpose_lai_marker", "purpose_predicate", "predicate", "vp", "action_vp", "clause", ...controlSlots, ...(plan.userSubject ? ["topic", "user_subject", "subject"] : [])],
-    note: "Connects an overt object, resource, or artifact to a stated use or function. Direct resource NPs remain neutral between subject and topic unless a separate overt user supports topicalization.",
-    trace: traceInfo("generative_template", {
-      construction_type: relationConstructionType,
-      template_family: "generative_template",
-      template: ["function_topic!", "user_subject?", "negator?", "copula_or_modal?", "purpose_use_verb!", "purpose_lai_marker!", "purpose_predicate!", "particle?"],
-      assigned_slots: assignedSlots,
-      surfaces: children.map((node) => flattenSurface(node)),
-      relation_subtype: directResourceFunctionProfile ? "direct_resource_use_lai_function" : "intended_function",
-      typed_relation: "object_or_resource_to_intended_use",
-      evidence_status: directResourceFunctionProfile ? "research_pending_np_infrastructure" : "broad_provisional",
-      relation_reading_status: actualUseEventAmbiguity
-        ? "ambiguous_intended_function_vs_actual_use_event"
-        : (modalAffordanceAmbiguity ? "ambiguous_intended_function_vs_available_use_or_affordance" : "intended_function_candidate"),
-      semantic_review_flags: [
-        ...(actualUseEventAmbiguity ? ["intended_function_actual_use_event_ambiguity"] : []),
-        ...(modalAffordanceAmbiguity ? ["intended_function_vs_affordance_ambiguity"] : []),
-      ],
-      function_resource_relation_status: plan.resourceRelationStatus,
-      learner_gloss_lines: [
-        "use or function",
-        "Connects a thing or resource to what it is used for.",
-      ],
-      reason: "CP019-r2 retains one narrow evidence-grounded 用嚟 relation, avoids forcing direct function resources into a public Topic analysis, and keeps perfective-event and modal-affordance readings explicitly review-bearing.",
-      inherited_wrapper_retirement: inheritedWrapperRetirement,
-      direct_resource_profile: directResourceFunctionProfile,
-      overt_resource_required: directResourceFunctionProfile,
-      adjacent_use_lai_required: directResourceFunctionProfile,
-      overt_action_predicate_required: directResourceFunctionProfile,
-      separate_user_subject_allowed: directResourceFunctionProfile ? false : null,
-      modal_or_copular_controls_allowed: directResourceFunctionProfile ? false : null,
-      actual_use_event_licensing: directResourceFunctionProfile ? false : null,
-      affordance_licensing: directResourceFunctionProfile ? false : null,
-      hidden_argument_insertion: directResourceFunctionProfile ? false : null,
-      ordinary_lexical_use_licensing: directResourceFunctionProfile ? false : null,
-      general_purpose_lai_licensing: directResourceFunctionProfile ? false : null,
-      resource_subject_topic_status: directResourceFunctionProfile ? "underdetermined" : plan.resourceRelationStatus,
-      not_claims: ["not_directional_motion", "not_ordinary_instrumental_use", "not_lexical_transitive_use", "not_general_purpose_serialization", ...(directResourceFunctionProfile ? ["not_actual_use_event", "not_modal_affordance", "not_separate_user_frame", "not_hidden_resource"] : [])],
-    }),
-  });
-}
-
-
-function isDefinitionExplanatoryParticle(node) {
-  return isParticle(node) && ["㗎", "架", "嘅", "啊", "呀", "啦"].includes(flattenSurface(node));
-}
-
-function isDefinitionExplanatoryParticleSequence(nodes) {
-  if (!nodes.length) return false;
-  if (!nodes.every(isDefinitionExplanatoryParticle)) return false;
-  return nodes.some((node) => ["㗎", "架"].includes(flattenSurface(node)));
-}
-
-function isDefinitionCopulaNode(node) {
-  return isToken(node, "係");
-}
-
-function isDefinitionFormulaCopulaWhNode(node) {
-  return node && node.kind === "construction" && node.type === "FormulaDiscourseUnit" && flattenSurface(node) === "係咩";
-}
-
-function definitionExplanatoryComplementKind(nodes) {
-  if (!nodes.length) return "";
-  if (nodes.some((node) => ["咩", "乜嘢"].includes(flattenSurface(node)))) return "wh_definition_complement";
-  const hasNominalAffordance = nodes.some((node) => {
-    const slots = nodeSlots(node);
-    return ["np", "object", "topic", "head_noun", "classifier", "quantity", "location"].some((slot) => slots.includes(slot));
-  });
-  if (hasNominalAffordance) return "np_definition_complement";
-  const raw = nodes.map(flattenSurface).join("");
-  if (/^[\p{Script=Han}A-Za-z0-9]+$/u.test(raw)) return "lexicon_gap_np_definition_complement";
-  return "";
-}
-
-function containsPredicateLikeDefinitionComplement(nodes) {
-  return nodes.some((node) => {
-    const slots = nodeSlots(node);
-    return ["vp", "action_vp", "predicate", "directional_motion_vp", "motion_predicate", "urgency_marker", "imperative_adverb"].some((slot) => slots.includes(slot));
-  });
-}
-
-function definitionFrameCopulaToken(node) {
-  const source = isToken(node, "係") ? node : token("係");
-  return parserInactiveTokenClone(source, {
-    label: "func",
-    pos: "function",
-    syntax: "definition_copula",
-    slots: ["definition_copula", "copula"],
-    reason: "係 is the copula inside a bounded 係...嚟㗎 definition/explanatory frame; it should not become a separate formula or predicate island here.",
-  });
-}
-
-function definitionFrameWhToken(surface) {
-  return token(surface, {
-    label: "what",
-    syntax: "wh_thing definition_wh_complement",
-    note: `${surface} asks for the definition/identity inside a 係...嚟㗎 frame; learner role stays what, with wh/question syntax rather than a new wh-question role.`,
-    trace: traceInfo("generative_template", {
-      construction_type: "DefinitionExplanatoryFrame",
-      surface,
-      reason: "Contextual reanalysis of protected 係咩 only inside the bounded definition/explanatory frame.",
-      role_resolution_note: "咩 remains learner role what; wh-definition/question behavior is encoded in syntax/slots, not a new learner role.",
-    }),
-  });
-}
-
-function definitionFrameLaiMarker(node) {
-  return parserInactiveTokenClone(node, {
-    label: "func",
-    pos: "function",
-    syntax: "definition_explanatory_lai_marker",
-    slots: ["definition_lai_marker", "explanatory_linker"],
-    reason: "嚟 is inside a bounded 係...嚟㗎 definition/explanatory frame, so it is the explanatory linker here, not a directional-motion VP.",
-    role_resolution_note: "嚟 is func only in this bounded explanatory-linker context; motion contexts keep 嚟 as doing/deictic motion.",
-  });
-}
-
-
-
-
-function definitionTopicFromNodes(topicNodes) {
-  const compact = withoutIgnorableSpaceText(topicNodes || []);
-  if (!compact.length) return null;
-  if (compact.length === 1) {
-    const split = transparentDeicticClassifierTopicFromNode(compact[0], "DefinitionExplanatoryFrame");
-    if (split) return split;
-  }
-  const transparent = transparentTopicContentFromNodes(compact);
-  if (transparent && nodeCanFillSlot(transparent, "topic")) {
-    return construction("Topic", "Topic", [transparent], {
-      slots: ["definition_topic", "topic", "np"],
-      note: "Topic being defined or identified in a bounded 係...嚟㗎 frame, preserving transparent NP structure where available.",
-      trace: traceInfo("generative_template", {
-        construction_type: "Topic",
-        template_family: "generative_template",
-        template: ["topic!"],
-        assigned_slots: ["topic"],
-        surfaces: [flattenSurface(transparent)],
-        reason: "Definition frame topic preserves transparent child structure instead of flattening the topic span.",
-      }),
-    });
-  }
-  return construction("Topic", "Topic", compact, {
-    slots: ["definition_topic", "topic", "np"],
-    note: "Topic being defined or identified in a bounded 係...嚟㗎 frame.",
-    trace: traceInfo("generative_template", {
-      construction_type: "DefinitionExplanatoryFrame",
-      assigned_slot: "topic",
-      surfaces: compact.map((node) => flattenSurface(node)),
-    }),
-  });
-}
-
-
 
 function scalarValueQuestionFallback(core) {
   const { core: bareCore, particles } = withoutTrailingParticles(core);
@@ -3033,67 +2638,6 @@ function scalarValueQuestionFallback(core) {
     })
   });
 }
-
-function copularExplanatoryCompositionFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  if (!bareCore.length || !isDefinitionExplanatoryParticleSequence(particles)) return null;
-
-  const laiIndex = bareCore.findIndex((node) => isToken(node, "嚟"));
-  if (laiIndex <= 0 || laiIndex !== bareCore.length - 1) return null;
-
-  let copulaIndex = bareCore.findIndex(isDefinitionCopulaNode);
-  let formulaCopulaWh = false;
-  if (copulaIndex < 0) {
-    copulaIndex = bareCore.findIndex(isDefinitionFormulaCopulaWhNode);
-    formulaCopulaWh = copulaIndex >= 0;
-  }
-  if (copulaIndex <= 0 || copulaIndex >= laiIndex) return null;
-
-  const topicNodes = bareCore.slice(0, copulaIndex);
-  const copulaNode = bareCore[copulaIndex];
-  const complementNodes = formulaCopulaWh
-    ? [definitionFrameWhToken("咩")]
-    : bareCore.slice(copulaIndex + 1, laiIndex);
-  if (!topicNodes.length || !complementNodes.length) return null;
-  if (!formulaCopulaWh && containsPredicateLikeDefinitionComplement(complementNodes)) return null;
-
-  const complementKind = definitionExplanatoryComplementKind(complementNodes);
-  if (!complementKind) return null;
-
-  const topic = definitionTopicFromNodes(topicNodes);
-  if (!topic) return null;
-  const copula = definitionFrameCopulaToken(copulaNode);
-  const complement = complementNodes.map((node) => parserInactiveTokenClone(firstToken(node) || node, {
-    label: complementKind === "wh_definition_complement" ? "what" : ((firstToken(node) || node).label || "what"),
-    pos: "np",
-    syntax: `${(firstToken(node) || node).syntax || "nominal"} copular_complement`,
-    slots: ["copular_complement", "object", "np", "topic_or_object"],
-    reason: "The overt wh/NP material is the visible complement of 係; no dedicated definition-complement wrapper is introduced.",
-  }));
-  const lai = definitionFrameLaiMarker(bareCore[laiIndex]);
-  const children = [topic, copula, ...complement, lai, ...particles];
-
-  return construction("CopularRelationFrame", "Copular", children, {
-    slots: ["copular_relation_frame", "copular_clause", "explanatory_clause", "topic", "object", "np", "predicate", "clause"],
-    note: "Compositional copular/explanatory clause: topic + 係 + wh/NP complement + 嚟 + explanatory particle. The visible pieces remain transparent without reviving the retired dedicated wrapper.",
-    trace: traceInfo("generative_template", {
-      construction_type: "CopularRelationFrame",
-      template: ["topic!", "copula!", "copular_complement!", "explanatory_linker!", "explanatory_particle!"],
-      constraints: {
-        required_copula: "係",
-        required_lai_marker: "嚟",
-        required_explanatory_particle: "㗎/架",
-        complement_kind: complementKind,
-        formula_guard_reanalysis: formulaCopulaWh ? "係咩 split only inside 係...嚟㗎" : "not_needed",
-      },
-      assigned_slots: ["topic", "copula", ...complement.map(() => "copular_complement"), "explanatory_linker", "explanatory_particle"],
-      surfaces: children.map((node) => flattenSurface(node)),
-      reason: "Preserves the overt copular composition and prevents explanatory 嚟 from being mislabeled as literal DirectionalMotionVP.",
-      not_claims: ["not_dedicated_definition_frame", "not_directional_motion_lai"],
-    }),
-  });
-}
-
 
 function transitionMotionPredicateFallback(core) {
   const { core: bareCore, particles } = withoutTrailingParticles(core);
@@ -4042,16 +3586,6 @@ function directPredicateCapableNode(node) {
   return directNodeHasAnySlot(node, ["predicate", "main_verb", "action_verb", "vp", "action_vp", "productive_vo", "directional_motion_vp", "modal_vp"]);
 }
 
-function namingVerbClone(node) {
-  return parserInactiveTokenClone(node, {
-    label: "doing",
-    pos: "verb",
-    syntax: "naming_verb personal_name_predicate",
-    slots: ["naming_verb", "main_verb", "predicate"],
-    reason: "叫 is the source-linked personal naming predicate in this bounded clause.",
-  });
-}
-
 function nameTokenClone(node) {
   return parserInactiveTokenClone(node, {
     label: (firstToken(node) || node).label || "who",
@@ -4059,28 +3593,6 @@ function nameTokenClone(node) {
     syntax: "proper_name name_np",
     slots: ["name", "head_noun", "np", "object", "topic"],
     reason: "The final NP is interpreted as the visible name in a bounded self-introduction frame.",
-  });
-}
-
-function namingSelfIntroductionFrameFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const compact = withoutIgnorableSpaceText(bareCore);
-  if (compact.length !== 3) return null;
-  const [subject, naming, name] = compact;
-  if (!nodeCanFillSlot(subject, "subject")) return null;
-  if (!isToken(naming, "叫")) return null;
-  if (!nodeCanFillSlot(name, "np") && !nodeCanFillSlot(name, "head_noun") && !nodeCanFillSlot(name, "subject")) return null;
-  const children = [subject, namingVerbClone(naming), nameTokenClone(firstToken(name) || name), ...particles];
-  return construction("NamingClause", "Called", children, {
-    note: "Source-linked personal naming clause: subject + 叫 + visible personal name.",
-    slots: templateDerivedSlots("NamingClause", children),
-    trace: traceInfo("generative_template", {
-      construction_type: "NamingClause",
-      template: ["subject!", "naming_verb!", "name!", "particle?"],
-      assigned_slots: ["subject", "naming_verb", "name", ...particles.map(() => "particle")],
-      surfaces: children.map((node) => flattenSurface(node)),
-      reason: "Retains the sourced personal 叫 + name relation while keeping 叫做 definition/category-label uses separate.",
-    }),
   });
 }
 
@@ -4348,48 +3860,6 @@ function copulaClone(node, syntax, extraSlots, reason) {
 
 
 
-
-function copularIdentificationFrameFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const compact = withoutIgnorableSpaceText(bareCore);
-  const copulaIndex = compact.findIndex((node) => isToken(node, "係"));
-  if (copulaIndex <= 0 || copulaIndex >= compact.length - 1) return null;
-  const before = compact.slice(0, copulaIndex);
-  const after = compact.slice(copulaIndex + 1);
-  if (after.some((node) => isToken(node, "嚟") || isToken(node, "用嚟"))) return null;
-  let subjectOrTopic = null;
-  let frameType = "CopularIdentificationFrame";
-  let label = "Ident";
-  if (before.length === 2) subjectOrTopic = deicticClassifierTopicFromParts(before);
-  if (!subjectOrTopic && before.length === 3) {
-    subjectOrTopic = coordinatedNPFromParts(before);
-    if (subjectOrTopic) {
-      frameType = "CopularRelationFrame";
-      label = "Relation";
-    }
-  }
-  if (!subjectOrTopic && before.length === 1 && (nodeCanFillSlot(before[0], "topic") || nodeCanFillSlot(before[0], "subject"))) subjectOrTopic = before[0];
-  if (!subjectOrTopic) return null;
-  const complement = nominalComplementFromNodes(after);
-  if (!complement) return null;
-  if (frameType === "CopularIdentificationFrame" && !nodeCanFillSlot(subjectOrTopic, "topic")) return null;
-  if (frameType === "CopularRelationFrame" && !nodeCanFillSlot(subjectOrTopic, "subject")) return null;
-  const copula = copulaClone(compact[copulaIndex], "copula identification_copula", ["identification_copula"], "係 is interpreted as the copula inside a bounded identification/relation frame, not as a broad fallback.");
-  const children = [subjectOrTopic, copula, complement, ...particles];
-  return construction(frameType, label, children, {
-    note: frameType === "CopularRelationFrame"
-      ? "v0.5.33 bounded copular relation frame: coordinated subject + 係 + visible nominal complement."
-      : "v0.5.33 bounded copular identification frame: topic/deictic classifier + 係 + visible nominal complement.",
-    slots: templateDerivedSlots(frameType, children),
-    trace: traceInfo("generative_template", {
-      construction_type: frameType,
-      template: frameType === "CopularRelationFrame" ? ["subject!", "copula!", "copular_complement!", "particle?"] : ["topic!", "copula!", "np!", "particle?"],
-      assigned_slots: frameType === "CopularRelationFrame" ? ["subject", "copula", "copular_complement", ...particles.map(() => "particle")] : ["topic", "copula", "np", ...particles.map(() => "particle")],
-      surfaces: children.map((node) => flattenSurface(node)),
-      reason: "Promotes only bounded active corpus copular identification/relation shapes, leaving definition/explanatory 係...嚟㗎 to its existing frame.",
-    }),
-  });
-}
 
 function interiorExistentialFrameFallback(core) {
   const { core: bareCore, particles } = withoutTrailingParticles(core);
@@ -8445,6 +7915,66 @@ function postverbalZoPerfectiveFromWrappedNodes(nodes = []) {
   }
   return null;
 }
+
+const createDefinitionCopularDetectors = require("./parser/detectors/definition/copular-relations");
+const {
+  copularExplanatoryCompositionFallback,
+  copularIdentificationFrameFallback,
+  isDefinitionCopulaNode,
+} = createDefinitionCopularDetectors({
+  construction,
+  coordinatedNPFromParts,
+  copulaClone,
+  deicticClassifierTopicFromParts,
+  firstToken,
+  flattenSurface,
+  isParticle,
+  isToken,
+  nodeCanFillSlot,
+  nodeSlots,
+  nominalComplementFromNodes,
+  parserInactiveTokenClone,
+  templateDerivedSlots,
+  token,
+  traceInfo,
+  transparentDeicticClassifierTopicFromNode,
+  transparentTopicContentFromNodes,
+  withoutIgnorableSpaceText,
+  withoutTrailingParticles,
+});
+
+const createIntendedFunctionDetectors = require("./parser/detectors/definition/intended-function");
+const { intendedFunctionRelationFallback } = createIntendedFunctionDetectors({
+  construction,
+  firstToken,
+  flattenSurface,
+  isDefinitionCopulaNode,
+  isModalToken,
+  isToken,
+  isVerbLike,
+  nodeCanFillSlot,
+  nodeSlots,
+  parserInactiveTokenClone,
+  traceInfo,
+  transparentTopicContentFromNodes,
+  withoutIgnorableSpaceText,
+  withoutTrailingParticles,
+});
+
+const createNamingDetectors = require("./parser/detectors/naming/self-introduction");
+const { namingSelfIntroductionFrameFallback } = createNamingDetectors({
+  construction,
+  firstToken,
+  flattenSurface,
+  isToken,
+  nameTokenClone,
+  nodeCanFillSlot,
+  parserInactiveTokenClone,
+  templateDerivedSlots,
+  traceInfo,
+  withoutIgnorableSpaceText,
+  withoutTrailingParticles,
+});
 
 function wrapCore(core) {
   if (!core.length) return core;
