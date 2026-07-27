@@ -6040,7 +6040,7 @@ var require_node_factories = __commonJS({
       function pronunciationOnlyJyutpingForUnknown2(surface) {
         return UNKNOWN_CJK_JYUTPING_FALLBACK2[String(surface || "")] || "";
       }
-      function token2(surface, overrides = {}) {
+      function token3(surface, overrides = {}) {
         const entry = TOKEN_LEXICON2[surface] || {};
         const rawLabel = overrides.label || entry.label || "neutral";
         const syntax = overrides.syntax || entry.syntax || "lexical_candidate";
@@ -6211,7 +6211,7 @@ var require_node_factories = __commonJS({
       }
       return {
         pronunciationOnlyJyutpingForUnknown: pronunciationOnlyJyutpingForUnknown2,
-        token: token2,
+        token: token3,
         textNode: textNode2,
         construction: construction2,
         parserInactiveTokenClone: parserInactiveTokenClone2,
@@ -6219,6 +6219,102 @@ var require_node_factories = __commonJS({
         contextualLearnerRoleOnlyTokenClone: contextualLearnerRoleOnlyTokenClone2
       };
     };
+  }
+});
+
+// src/parser/detectors/complements/result.js
+var require_result = __commonJS({
+  "src/parser/detectors/complements/result.js"(exports2, module2) {
+    "use strict";
+    function createResultFramePartClone(dependencies = {}) {
+      const { firstToken: firstToken2, flattenSurface: flattenSurface2, parserInactiveTokenClone: parserInactiveTokenClone2, token: token3 } = dependencies;
+      function resultFramePartClone2(node, overrides = {}) {
+        const surface = overrides.surface || flattenSurface2(node);
+        const base = firstToken2(node) || token3(surface);
+        return parserInactiveTokenClone2(base, {
+          label: overrides.label || base.label || "func",
+          pos: overrides.pos || (overrides.label === "doing" ? "verb" : overrides.label === "particle" ? "particle" : overrides.label === "when" ? "adverbial" : "function"),
+          syntax: overrides.syntax || base.syntax || "result_frame_part",
+          slots: overrides.slots || [],
+          reason: overrides.reason || "Token is parser-inactive inside a bounded v0.5.34 change/result frame; the parent exposes the result relation while child tokens stay visible."
+        });
+      }
+      return resultFramePartClone2;
+    }
+    function createResultComplementDetectors(dependencies = {}) {
+      const {
+        categorySubspanFor: categorySubspanFor2,
+        construction: construction2,
+        flattenSurface: flattenSurface2,
+        isToken: isToken2,
+        nodeCanFillSlot: nodeCanFillSlot2,
+        nominalComplementFromNodes: nominalComplementFromNodes2,
+        resultFramePartClone: resultFramePartClone2,
+        templateDerivedSlots: templateDerivedSlots2,
+        traceInfo: traceInfo2,
+        withoutIgnorableSpaceText: withoutIgnorableSpaceText2
+      } = dependencies;
+      function resultTopicFromNodes2(nodes) {
+        const compact = withoutIgnorableSpaceText2(nodes || []);
+        if (!compact.length) return null;
+        if (compact.length === 1 && (nodeCanFillSlot2(compact[0], "topic") || nodeCanFillSlot2(compact[0], "subject") || nodeCanFillSlot2(compact[0], "location") || nodeCanFillSlot2(compact[0], "np") || nodeCanFillSlot2(compact[0], "head_noun"))) return compact[0];
+        const templated = categorySubspanFor2(compact, ["OvertHeadDemonstrativeClassifierNP", "QuantifiedClassifierNP", "DiMarkedNP", "OrdinalClassifierNP", "NominalHeadSpan", "CoordinatedNP"]);
+        if (templated && (nodeCanFillSlot2(templated, "topic") || nodeCanFillSlot2(templated, "subject") || nodeCanFillSlot2(templated, "np") || nodeCanFillSlot2(templated, "head_noun"))) return templated;
+        return null;
+      }
+      function resultComplementFromNodes2(nodes) {
+        const compact = withoutIgnorableSpaceText2(nodes || []);
+        if (!compact.length) return null;
+        const nominal = nominalComplementFromNodes2(compact);
+        if (nominal) return nominal;
+        if (compact.length === 1 && (nodeCanFillSlot2(compact[0], "object") || nodeCanFillSlot2(compact[0], "np") || nodeCanFillSlot2(compact[0], "head_noun") || nodeCanFillSlot2(compact[0], "location"))) return compact[0];
+        return null;
+      }
+      function makeChangeIntoPredicate2(changeNode, complement) {
+        const children = [
+          resultFramePartClone2(changeNode, {
+            label: "doing",
+            pos: "verb",
+            syntax: "change_into_verb result_change_verb",
+            slots: ["change_verb", "action_verb", "main_verb", "predicate"],
+            reason: "變成 is the change-into predicate head inside a bounded change-result frame."
+          }),
+          complement
+        ];
+        return construction2("ChangeIntoPredicate", "變成", children, {
+          note: "Bounded change-into predicate: 變成 + result complement.",
+          slots: templateDerivedSlots2("ChangeIntoPredicate", children),
+          trace: traceInfo2("generative_template", {
+            construction_type: "ChangeIntoPredicate",
+            template: ["change_verb!", "result_complement!"],
+            assigned_slots: ["change_verb", "result_complement"],
+            surfaces: children.map((node) => flattenSurface2(node)),
+            subspan: true
+          })
+        });
+      }
+      function wrapChangeIntoPredicateSubspans2(nodes) {
+        const result = [];
+        let i = 0;
+        while (i < nodes.length) {
+          if (isToken2(nodes[i], "變成") && isToken2(nodes[i + 1], "點")) {
+            result.push(makeChangeIntoPredicate2(nodes[i], nodes[i + 1]));
+            i += 2;
+            continue;
+          }
+          result.push(nodes[i]);
+          i += 1;
+        }
+        return result;
+      }
+      return {
+        resultTopicFromNodes: resultTopicFromNodes2,
+        resultComplementFromNodes: resultComplementFromNodes2,
+        makeChangeIntoPredicate: makeChangeIntoPredicate2,
+        wrapChangeIntoPredicateSubspans: wrapChangeIntoPredicateSubspans2
+      };
+    }
+    module2.exports = { createResultFramePartClone, createResultComplementDetectors };
   }
 });
 
@@ -6894,7 +6990,7 @@ var require_clauses = __commonJS({
         nodeSlots: nodeSlots2,
         parserInactiveTokenClone: parserInactiveTokenClone2,
         templateDerivedSlots: templateDerivedSlots2,
-        token: token2,
+        token: token3,
         traceInfo: traceInfo2
       } = dependencies;
       function isSubjectLike(node) {
@@ -6910,7 +7006,7 @@ var require_clauses = __commonJS({
       }
       function acceptabilityPartClone(node, role = "func", overrides = {}) {
         const surface = overrides.surface || flattenSurface2(node);
-        return parserInactiveTokenClone2(token2(surface), {
+        return parserInactiveTokenClone2(token3(surface), {
           label: overrides.label || role,
           pos: overrides.pos || (role === "how" ? "adverbial" : role === "particle" ? "particle" : "function"),
           syntax: overrides.syntax || "acceptability_part",
@@ -6919,7 +7015,7 @@ var require_clauses = __commonJS({
         });
       }
       function acceptabilityFocusClone(node) {
-        return parserInactiveTokenClone2(firstToken2(node) || token2(flattenSurface2(node)), {
+        return parserInactiveTokenClone2(firstToken2(node) || token3(flattenSurface2(node)), {
           label: "how",
           pos: "adverbial",
           syntax: "focus_adverb",
@@ -6955,7 +7051,7 @@ var require_clauses = __commonJS({
           return { length: 2 + (particle ? 1 : 0), focus: nodes[index], dak, particle };
         }
         if (isDakFormulaNode(dak)) {
-          return { length: 2, focus: nodes[index], dak, particle: token2("喇", { label: "particle", syntax: "sentence_final_particle", note: "Final particle split from protected 得喇 formula inside 都得 acceptability." }) };
+          return { length: 2, focus: nodes[index], dak, particle: token3("喇", { label: "particle", syntax: "sentence_final_particle", note: "Final particle split from protected 得喇 formula inside 都得 acceptability." }) };
         }
         return null;
       }
@@ -7318,7 +7414,7 @@ var require_token_splits = __commonJS({
         nodeCanFillSlot: nodeCanFillSlot2,
         phraseMatch: phraseMatch2,
         selectLexiconTerm: selectLexiconTerm2,
-        token: token2,
+        token: token3,
         traceInfo: traceInfo2
       } = dependencies;
       const TRANSPARENT_DEMONSTRATIVE_CLASSIFIER_SPLITS = [
@@ -7339,12 +7435,12 @@ var require_token_splits = __commonJS({
       ];
       function makeTransparentDemonstrativeClassifierEllipsis(spec) {
         const children = [
-          token2(spec.demonstrative, {
+          token3(spec.demonstrative, {
             label: "func",
             syntax: "demonstrative_determiner",
             note: `${spec.demonstrative} is the demonstrative determiner inside an elliptical demonstrative-classifier NP.`
           }),
-          token2(spec.classifier, {
+          token3(spec.classifier, {
             label: "measure_word",
             syntax: spec.classifierSyntax,
             note: `${spec.classifier} is the visible measure word/classifier inside an elliptical demonstrative-classifier NP.`
@@ -7373,7 +7469,7 @@ var require_token_splits = __commonJS({
         const after = rest.slice(match.surface.length);
         const nextTerm = after && !PUNCT_RE2.test(after) ? selectLexiconTerm2(after) : null;
         if (nextTerm) {
-          const nextNode = token2(nextTerm.surface);
+          const nextNode = token3(nextTerm.surface);
           if (nodeCanFillSlot2(nextNode, "head_noun")) return null;
         }
         return phraseMatch2(match.surface.length, makeTransparentDemonstrativeClassifierEllipsis(match));
@@ -7388,19 +7484,19 @@ var require_token_splits = __commonJS({
         const match = TRANSPARENT_CUP_NOUN_DEMONSTRATIVE_NPS.find((spec) => rest.startsWith(spec.surface));
         if (!match) return null;
         const children = [
-          token2(match.demonstrative, {
+          token3(match.demonstrative, {
             label: "func",
             syntax: "demonstrative_determiner",
             slots: ["demonstrative"],
             note: `${match.demonstrative} is the demonstrative determiner in a transparent demonstrative-classifier noun phrase.`
           }),
-          token2(match.classifier, {
+          token3(match.classifier, {
             label: "measure_word",
             syntax: match.classifierSyntax,
             slots: ["classifier"],
             note: `${match.classifier} is the visible classifier before the noun 杯.`
           }),
-          token2("杯", {
+          token3("杯", {
             label: "what",
             syntax: "head_noun object_np container_noun",
             slots: ["head_noun", "np", "object", "topic"],
@@ -7434,10 +7530,10 @@ var require_token_splits = __commonJS({
         if (!after || PUNCT_RE2.test(after)) return null;
         const nextTerm = selectLexiconTerm2(after);
         if (!nextTerm) return null;
-        const nextNode = token2(nextTerm.surface);
+        const nextNode = token3(nextTerm.surface);
         if (!nodeCanFillSlot2(nextNode, "head_noun")) return null;
         return phraseMatch2(prefix.length, [
-          token2(quantitySurface, {
+          token3(quantitySurface, {
             label: "how",
             syntax: "quantity count_value numeral_one",
             slots: ["quantity"],
@@ -7451,7 +7547,7 @@ var require_token_splits = __commonJS({
               reason: "v0.5.97 splits 一個 + head noun before fused lexical lookup so QuantifiedClassifierNP can carry the generated template trace."
             })
           }),
-          token2(classifierSurface, {
+          token3(classifierSurface, {
             label: "measure_word",
             syntax: "general_classifier classifier",
             slots: ["classifier"],
@@ -7469,13 +7565,13 @@ var require_token_splits = __commonJS({
       function transparentQuantifiedPersonNpFromRest2(rest) {
         if (!rest.startsWith("好多人")) return null;
         const children = [
-          token2("好多", {
+          token3("好多", {
             label: "how",
             syntax: "quantity_degree quantity",
             slots: ["quantity"],
             note: "好多 is the quantity component inside 好多人."
           }),
-          token2("人", {
+          token3("人", {
             label: "who",
             syntax: "person_head_noun head_noun",
             slots: ["head_noun", "np", "subject", "topic"],
@@ -7503,10 +7599,10 @@ var require_token_splits = __commonJS({
         if (!after || PUNCT_RE2.test(after)) return null;
         const nextTerm = selectLexiconTerm2(after);
         if (!nextTerm) return null;
-        const nextNode = token2(nextTerm.surface);
+        const nextNode = token3(nextTerm.surface);
         if (!nodeCanFillSlot2(nextNode, "head_noun")) return null;
         return phraseMatch2(match.surface.length, [
-          token2(match.demonstrative, {
+          token3(match.demonstrative, {
             label: "func",
             syntax: "demonstrative_determiner",
             note: `${match.demonstrative} is a transparent demonstrative determiner before a classifier.`,
@@ -7518,7 +7614,7 @@ var require_token_splits = __commonJS({
               reason: "Transparent split token inside a generated OvertHeadDemonstrativeClassifierNP; the compatibility display label remains DemonstrativeClassifierNP."
             })
           }),
-          token2(match.classifier, {
+          token3(match.classifier, {
             label: "measure_word",
             syntax: match.classifierSyntax,
             note: `${match.classifier} is a transparent measure word/classifier after a demonstrative determiner.`,
@@ -7538,9 +7634,9 @@ var require_token_splits = __commonJS({
         if (!after || PUNCT_RE2.test(after)) return null;
         const nextTerm = selectLexiconTerm2(after);
         if (!nextTerm) return null;
-        const nextNode = token2(nextTerm.surface);
+        const nextNode = token3(nextTerm.surface);
         if (!nodeCanFillSlot2(nextNode, "head_noun")) return null;
-        return phraseMatch2("啲".length, token2("啲", {
+        return phraseMatch2("啲".length, token3("啲", {
           label: "func",
           syntax: "di_determiner",
           note: "啲 is a nominal determiner/partitive marker before a visible head noun here, not an adverbial how token.",
@@ -7557,7 +7653,7 @@ var require_token_splits = __commonJS({
         const surface = flattenSurface2(node);
         const spec = TRANSPARENT_DEMONSTRATIVE_CLASSIFIER_SPLITS.find((item) => item.surface === surface);
         if (!spec) return null;
-        const dem = token2(spec.demonstrative, {
+        const dem = token3(spec.demonstrative, {
           label: "func",
           syntax: "demonstrative_determiner",
           note: `${spec.demonstrative} is a transparent demonstrative determiner inside ${contextType || "a bounded topic"}.`,
@@ -7569,7 +7665,7 @@ var require_token_splits = __commonJS({
             reason: "v0.5.74 semantic contract cleanup splits fused demonstrative-classifier topics such as 呢個 when they are the visible topic of a definition frame."
           })
         });
-        const classifier = token2(spec.classifier, {
+        const classifier = token3(spec.classifier, {
           label: "measure_word",
           syntax: spec.classifierSyntax,
           note: `${spec.classifier} is the transparent classifier inside ${contextType || "a bounded topic"}.`,
@@ -7598,20 +7694,20 @@ var require_token_splits = __commonJS({
       }
       function quantifiedPersonNPFromFusedNode2(node) {
         if (!node || flattenSurface2(node) !== "一個人") return null;
-        const quantity = token2("一", {
+        const quantity = token3("一", {
           label: "how",
           syntax: "quantity count_value numeral_one",
           slots: ["quantity"],
           note: "一 is the visible numeral/quantity descriptor in 一個人, not a stative/like predicate.",
           trace: traceInfo2("generative_template", { construction_type: "QuantifiedClassifierNP", assigned_slot: "quantity", learner_role: "how", parent_surface: "一個人" })
         });
-        const classifier = token2("個", {
+        const classifier = token3("個", {
           label: "measure_word",
           syntax: "general_classifier",
           note: "個 is the visible classifier in 一個人.",
           trace: traceInfo2("generative_template", { construction_type: "QuantifiedClassifierNP", assigned_slot: "classifier", parent_surface: "一個人" })
         });
-        const head = token2("人", {
+        const head = token3("人", {
           label: "who",
           syntax: "person_head_noun",
           note: "人 is the visible person head noun in 一個人.",
@@ -7659,7 +7755,7 @@ var require_contextual_overrides = __commonJS({
         normalizeSurface: normalizeSurface2,
         selectLexiconTerm: selectLexiconTerm2,
         selectionDecisionForSurface: selectionDecisionForSurface2,
-        token: token2,
+        token: token3,
         traceInfo: traceInfo2
       } = dependencies;
       function startsWithProhibitiveObject(text) {
@@ -7676,13 +7772,13 @@ var require_contextual_overrides = __commonJS({
       function pushNegatedLexicalizedStativeSplit2(nodes, text, cursor, spec) {
         if (shouldSplitNegatedLexicalizedStative(nodes, text, cursor, spec)) {
           const after = text.slice(cursor + spec.surface.length);
-          nodes.push(token2("唔"));
-          nodes.push(token2(spec.predicate, { selection_decision: selectionDecisionForSurface2(spec.predicate, spec.predicate + after) }));
+          nodes.push(token3("唔"));
+          nodes.push(token3(spec.predicate, { selection_decision: selectionDecisionForSurface2(spec.predicate, spec.predicate + after) }));
           return spec.surface.length;
         }
-        nodes.push(token2("唔好", { label: "func", syntax: "prohibitive_marker" }));
-        if (spec.verb !== "味") nodes.push(token2(spec.verb, { label: "doing", syntax: "verb" }));
-        else nodes.push(token2("味", { label: "neutral", syntax: "unknown_cjk_or_text", note: "Bare 唔好味 is treated as negated 好味; prohibitive 唔好 + 味 is not a normal command pattern." }));
+        nodes.push(token3("唔好", { label: "func", syntax: "prohibitive_marker" }));
+        if (spec.verb !== "味") nodes.push(token3(spec.verb, { label: "doing", syntax: "verb" }));
+        else nodes.push(token3("味", { label: "neutral", syntax: "unknown_cjk_or_text", note: "Bare 唔好味 is treated as negated 好味; prohibitive 唔好 + 味 is not a normal command pattern." }));
         return spec.surface.length;
       }
       function pushSpecialNotGoodEat2(nodes, text, cursor) {
@@ -7706,7 +7802,7 @@ var require_contextual_overrides = __commonJS({
               parser_active: false
             }
           ];
-          nodes.push(token2("唔好食", {
+          nodes.push(token3("唔好食", {
             label: "neutral",
             jyutping: "m4 hou2 sik6",
             syntax: "ambiguous_needs_context",
@@ -7717,12 +7813,12 @@ var require_contextual_overrides = __commonJS({
           return "唔好食".length;
         }
         if (beforeTopic || !followedByObject) {
-          nodes.push(token2("唔"));
-          nodes.push(token2("好食", { selection_decision: selectionDecisionForSurface2("好食", "好食" + after) }));
+          nodes.push(token3("唔"));
+          nodes.push(token3("好食", { selection_decision: selectionDecisionForSurface2("好食", "好食" + after) }));
           return "唔好食".length;
         }
-        nodes.push(token2("唔好", { label: "func", syntax: "prohibitive_marker" }));
-        nodes.push(token2("食", { label: "doing", syntax: "verb" }));
+        nodes.push(token3("唔好", { label: "func", syntax: "prohibitive_marker" }));
+        nodes.push(token3("食", { label: "doing", syntax: "verb" }));
         return "唔好食".length;
       }
       function contextualLexiconOverrides2(surface, rest) {
@@ -7822,7 +7918,7 @@ var require_vocative = __commonJS({
         construction: construction2,
         parserInactiveTokenClone: parserInactiveTokenClone2,
         phraseMatch: phraseMatch2,
-        token: token2,
+        token: token3,
         traceInfo: traceInfo2
       } = dependencies;
       function isLikelyCjkNameChar(ch) {
@@ -7837,7 +7933,7 @@ var require_vocative = __commonJS({
         return [...PROTECTED_ADDRESS_TERMS2].sort((a, b) => b.length - a.length || a.localeCompare(b)).find((surface) => rest.startsWith(surface) && addressBoundaryFollows(rest.slice(surface.length)));
       }
       function addressPartToken(surface, syntax, note) {
-        return parserInactiveTokenClone2(token2(surface, {
+        return parserInactiveTokenClone2(token3(surface, {
           label: "who",
           syntax,
           note
@@ -7936,7 +8032,7 @@ var require_tokenize_line = __commonJS({
         pushSpecialNotGoodEat: pushSpecialNotGoodEat2,
         selectLexiconTerm: selectLexiconTerm2,
         textNode: textNode2,
-        token: token2,
+        token: token3,
         traceInfo: traceInfo2,
         transparentCupNounDemonstrativeNpFromRest: transparentCupNounDemonstrativeNpFromRest2,
         transparentDemonstrativeClassifierSplitFromRest: transparentDemonstrativeClassifierSplitFromRest2,
@@ -7968,7 +8064,7 @@ var require_tokenize_line = __commonJS({
           }
           const formula = FORMULAS2.find((surface) => rest.startsWith(surface));
           if (formula) {
-            nodes.push(construction2("FormulaDiscourseUnit", "Formula", [token2(formula)], {
+            nodes.push(construction2("FormulaDiscourseUnit", "Formula", [token3(formula)], {
               note: "Protected formula stays grouped.",
               trace: traceInfo2("protected_formula_table", { surface: formula, reason: "Protected formula is intentionally opaque." })
             }));
@@ -8025,7 +8121,7 @@ var require_tokenize_line = __commonJS({
           }
           const termChoice = selectLexiconTerm2(rest);
           if (termChoice) {
-            nodes.push(termChoice.surface === "嘅話" ? protectedConditionalMarkerToken2() : token2(termChoice.surface, {
+            nodes.push(termChoice.surface === "嘅話" ? protectedConditionalMarkerToken2() : token3(termChoice.surface, {
               selection_decision: termChoice.selection_decision,
               ...contextualLexiconOverrides2(termChoice.surface, rest)
             }));
@@ -8033,7 +8129,7 @@ var require_tokenize_line = __commonJS({
             continue;
           }
           const char = Array.from(rest)[0] || "";
-          nodes.push(token2(char, { label: "neutral", syntax: "unknown_cjk_or_text", note: "Unknown item; shown neutrally." }));
+          nodes.push(token3(char, { label: "neutral", syntax: "unknown_cjk_or_text", note: "Unknown item; shown neutrally." }));
           cursor += char.length;
         }
         return nodes;
@@ -8071,7 +8167,7 @@ var require_a_not_a = __commonJS({
         propositionLikeHostForFinalMe: propositionLikeHostForFinalMe2,
         surfaceOf: surfaceOf2,
         templateDerivedSlots: templateDerivedSlots2,
-        token: token2,
+        token: token3,
         traceInfo: traceInfo2,
         withoutIgnorableSpaceText: withoutIgnorableSpaceText2,
         withoutTrailingParticles: withoutTrailingParticles2,
@@ -8298,7 +8394,7 @@ var require_a_not_a = __commonJS({
           slots: ["copula", "copular_positive_arm"],
           reason: "係 is the positive arm of a copular A-not-A question."
         });
-        const negator = fusedNegativeArm ? token2("唔", {
+        const negator = fusedNegativeArm ? token3("唔", {
           label: "func",
           pos: "function",
           syntax: "negator copular_a_not_a_negator",
@@ -8312,7 +8408,7 @@ var require_a_not_a = __commonJS({
           slots: ["negator", "m4_negator"],
           reason: "唔 separates the positive and negative copular arms."
         });
-        const negativeCopula = fusedNegativeArm ? token2("係", {
+        const negativeCopula = fusedNegativeArm ? token3("係", {
           label: "func",
           pos: "function",
           syntax: "copula copular_a_not_a_negative",
@@ -8474,7 +8570,7 @@ var require_wh_scalar = __commonJS({
         nodeCanFillSlot: nodeCanFillSlot2,
         surfaceOf: surfaceOf2,
         templateDerivedSlots: templateDerivedSlots2,
-        token: token2,
+        token: token3,
         traceInfo: traceInfo2,
         withoutIgnorableSpaceText: withoutIgnorableSpaceText2,
         withoutTrailingParticles: withoutTrailingParticles2
@@ -8482,7 +8578,7 @@ var require_wh_scalar = __commonJS({
       function whObjectTokenClone(node) {
         const surface = flattenSurface2(node);
         if (!["咩", "乜嘢"].includes(surface)) return node;
-        return token2(surface, {
+        return token3(surface, {
           label: "what",
           syntax: "wh_object",
           slots: ["wh_object", "object"],
@@ -8583,7 +8679,7 @@ var require_wh_scalar = __commonJS({
       }
       function scalarWhDegreeTokenClone(node) {
         if (!node || flattenSurface2(node) !== "幾") return node;
-        return token2("幾", {
+        return token3("幾", {
           label: "how",
           syntax: "wh_scalar_degree scalar_value_question",
           slots: ["scalar_wh_degree", "scalar_value_question", "how"],
@@ -9048,7 +9144,7 @@ var require_fragments_content = __commonJS({
         predicateOmissionProfileForHead: predicateOmissionProfileForHead2,
         templateConstructionFor: templateConstructionFor2,
         templateDerivedSlots: templateDerivedSlots2,
-        token: token2,
+        token: token3,
         traceInfo: traceInfo2,
         withoutTrailingParticles: withoutTrailingParticles2,
         wrapCategorySubspans: wrapCategorySubspans2
@@ -9061,8 +9157,8 @@ var require_fragments_content = __commonJS({
           negator = bareCore[0];
           predicate = bareCore[1];
         } else if (bareCore.length === 1 && flattenSurface2(bareCore[0]) === "唔知") {
-          negator = token2("唔");
-          predicate = token2("知");
+          negator = token3("唔");
+          predicate = token3("知");
         } else {
           return null;
         }
@@ -9934,6 +10030,118 @@ var require_composition = __commonJS({
   }
 });
 
+// src/parser/detectors/aspect/potential-result.js
+var require_potential_result = __commonJS({
+  "src/parser/detectors/aspect/potential-result.js"(exports2, module2) {
+    "use strict";
+    module2.exports = function createPotentialResultDetectors2(dependencies = {}) {
+      const {
+        categorySubspanFor: categorySubspanFor2,
+        classifierObjectNPFromNodes: classifierObjectNPFromNodes2,
+        cleanSlots: cleanSlots2,
+        construction: construction2,
+        flattenSurface: flattenSurface2,
+        isToken: isToken2,
+        isVerbLike: isVerbLike2,
+        nodeCanFillSlot: nodeCanFillSlot2,
+        parserInactiveTokenClone: parserInactiveTokenClone2,
+        templateDerivedSlots: templateDerivedSlots2,
+        traceInfo: traceInfo2,
+        withoutTrailingParticles: withoutTrailingParticles2
+      } = dependencies;
+      function potentialResultVPFallback2(core) {
+        const { core: bareCore, particles } = withoutTrailingParticles2(core);
+        if (!bareCore.length) return null;
+        let cursor = 0;
+        const subject = nodeCanFillSlot2(bareCore[cursor], "subject") ? bareCore[cursor++] : null;
+        const action = bareCore[cursor++];
+        if (!action || !isVerbLike2(action) || !isToken2(bareCore[cursor], "得")) return null;
+        const markerSource = bareCore[cursor++];
+        const resultNodes = bareCore.slice(cursor);
+        if (!resultNodes.length) return null;
+        if (!resultNodes.some((node) => nodeCanFillSlot2(node, "result_complement") || nodeCanFillSlot2(node, "completion_marker") || ["完", "到", "掂", "切"].includes(flattenSurface2(node)))) return null;
+        const resultHead = resultNodes[0];
+        const objectSource = resultNodes.slice(1);
+        let objectNode = null;
+        if (objectSource.length === 1 && (nodeCanFillSlot2(objectSource[0], "object") || nodeCanFillSlot2(objectSource[0], "np") || nodeCanFillSlot2(objectSource[0], "head_noun"))) {
+          objectNode = objectSource[0].kind === "construction" ? objectSource[0] : categorySubspanFor2(objectSource, ["NominalHeadSpan"]) || objectSource[0];
+        } else if (objectSource.length > 1) {
+          objectNode = classifierObjectNPFromNodes2(objectSource) || categorySubspanFor2(objectSource, ["OvertHeadDemonstrativeClassifierNP", "QuantifiedClassifierNP", "QuantifiedPersonNP", "OrdinalClassifierNP", "DiMarkedNP", "ModifiedNP", "NominalHeadSpan"]);
+        }
+        if (objectSource.length && !objectNode) return null;
+        const marker = parserInactiveTokenClone2(markerSource, {
+          label: "func",
+          pos: "function",
+          syntax: "potential_marker",
+          slots: ["potential_marker"],
+          reason: "Between an action predicate and an overt result complement, 得 is the productive positive potential linker, not a standalone acceptability response."
+        });
+        const children = [action, marker, resultHead, ...objectNode ? [objectNode] : []];
+        const potential = construction2("PotentialResultVP", "Potential", children, {
+          slots: cleanSlots2(["potential_result_vp", "potential_marker", "result_complement", "vp", "action_vp", "predicate"]),
+          note: "Productive positive potential construction: action + 得 + overt result complement.",
+          trace: traceInfo2("generative_template", {
+            construction_type: "PotentialResultVP",
+            template_family: "generative_template",
+            template: ["action_verb!", "potential_marker!", "result_complement!"],
+            assigned_slots: ["action_verb", "potential_marker", "result_complement", ...objectNode ? ["object"] : []],
+            surfaces: children.map((node) => flattenSurface2(node)),
+            potential_polarity: "positive",
+            not_claims: ["not_acceptability_response", "not_hidden_result_complement"]
+          })
+        });
+        if (!subject) return potential;
+        const clauseChildren = [subject, potential, ...particles];
+        return construction2("SubjectPredicateClause", "SubjPred", clauseChildren, {
+          slots: templateDerivedSlots2("SubjectPredicateClause", clauseChildren),
+          note: "Subject plus a productive positive potential predicate.",
+          trace: traceInfo2("generative_template", {
+            construction_type: "SubjectPredicateClause",
+            template_family: "generative_template",
+            template: ["subject!", "predicate!", "particle?"],
+            assigned_slots: ["subject", "predicate", ...particles.map(() => "particle")],
+            surfaces: clauseChildren.map((node) => flattenSurface2(node))
+          })
+        });
+      }
+      function incompletePotentialResultCandidate2(core) {
+        const { core: bareCore, particles } = withoutTrailingParticles2(core);
+        let cursor = 0;
+        const subject = nodeCanFillSlot2(bareCore[cursor], "subject") ? bareCore[cursor++] : null;
+        const action = bareCore[cursor++];
+        const marker = bareCore[cursor++];
+        if (cursor !== bareCore.length || !action || !isVerbLike2(action) || !isToken2(marker, "得")) return null;
+        const children = [...subject ? [subject] : [], action, marker, ...particles];
+        return construction2("NeedsContext", "needs context", children, {
+          slots: cleanSlots2(["needs_context", "review_candidate", "predicate", "problem_span", subject ? "subject" : ""]),
+          note: "Potential/acceptability boundary with no overt result complement.",
+          trace: traceInfo2("special_ambiguity_rule", {
+            construction_type: "NeedsContext",
+            predicate_omission_profile: "acceptability_possibility",
+            omission_status: "potential_result_or_contextual_ellipsis_ambiguous",
+            template: ["subject?", "action_verb!", "potential_marker_or_acceptability_predicate!", "particle?"],
+            assigned_slots: [...subject ? ["subject"] : [], "action_verb", "potential_marker_or_acceptability_predicate", ...particles.map(() => "particle")],
+            surfaces: children.map((node) => flattenSurface2(node)),
+            missing_argument_slots: ["result_or_activity_domain"],
+            missing_slot_details: [{ slot: "result_or_activity_domain", license_status: "unresolved" }],
+            complement_type: "result_complement_or_contextual_activity",
+            context_requirement_status: "context_required",
+            antecedent_status: "not_observed",
+            selected_alternative: "underdetermined",
+            subject_status: subject ? "explicit" : "omitted_unlicensed",
+            polarity: "positive",
+            conventionality_status: "context_sensitive",
+            speech_event_use: "not_applicable",
+            semantic_review_flags: ["needs_context_parse", "acceptability_potential_boundary"],
+            not_claims: ["not_clean_acceptability_response", "not_fabricated_result_complement", "not_sentence_specific_surface_rule"]
+          })
+        });
+      }
+      return { potentialResultVPFallback: potentialResultVPFallback2, incompletePotentialResultCandidate: incompletePotentialResultCandidate2 };
+    };
+  }
+});
+
 // src/parser/detectors/discourse/formula-responses.js
 var require_formula_responses = __commonJS({
   "src/parser/detectors/discourse/formula-responses.js"(exports2, module2) {
@@ -9952,7 +10160,7 @@ var require_formula_responses = __commonJS({
         nodeSlots: nodeSlots2,
         parserInactiveTokenClone: parserInactiveTokenClone2,
         templateDerivedSlots: templateDerivedSlots2,
-        token: token2,
+        token: token3,
         traceInfo: traceInfo2,
         traceKind: traceKind2,
         withoutIgnorableSpaceText: withoutIgnorableSpaceText2,
@@ -10279,7 +10487,7 @@ var require_formula_responses = __commonJS({
           const particleSurface = Array.from(ACKNOWLEDGEMENT_REPETITION_PARTICLES).sort((left, right) => right.length - left.length).find((candidate) => protectedSurface.endsWith(candidate) && protectedSurface.length > candidate.length);
           if (particleSurface) {
             const baseSurface = protectedSurface.slice(0, -particleSurface.length);
-            compact = [token2(baseSurface), token2(particleSurface)];
+            compact = [token3(baseSurface), token3(particleSurface)];
           }
         }
         const working = compact.slice();
@@ -12286,7 +12494,7 @@ var require_directional = __commonJS({
         nodeCanFillSlot: nodeCanFillSlot2,
         parserInactiveTokenClone: parserInactiveTokenClone2,
         templateDerivedSlots: templateDerivedSlots2,
-        token: token2,
+        token: token3,
         traceInfo: traceInfo2,
         withoutIgnorableSpaceText: withoutIgnorableSpaceText2,
         withoutTrailingParticles: withoutTrailingParticles2
@@ -12365,7 +12573,7 @@ var require_directional = __commonJS({
           "嚟": "deictic_motion_marker",
           "去": "deictic_motion_marker"
         };
-        return parserInactiveTokenClone2(firstToken2(node) || token2(surface), {
+        return parserInactiveTokenClone2(firstToken2(node) || token3(surface), {
           label: role || "doing",
           pos: role === "func" ? "function" : "verb",
           syntax: syntaxBySurface[surface] || "directional_motion_part",
@@ -12588,7 +12796,7 @@ var require_purpose_chains = __commonJS({
         nodeCanFillSlot: nodeCanFillSlot2,
         nodeSlots: nodeSlots2,
         parserInactiveTokenClone: parserInactiveTokenClone2,
-        token: token2,
+        token: token3,
         traceInfo: traceInfo2,
         withoutIgnorableSpaceText: withoutIgnorableSpaceText2,
         withoutTrailingParticles: withoutTrailingParticles2
@@ -12610,7 +12818,7 @@ var require_purpose_chains = __commonJS({
         return slots.includes("directional_motion_vp") || slots.includes("negated_directional_motion_vp") || slots.includes("motion_predicate");
       }
       function serialPurposeVerbClone(node) {
-        return parserInactiveTokenClone2(firstToken2(node) || token2(flattenSurface2(node)), {
+        return parserInactiveTokenClone2(firstToken2(node) || token3(flattenSurface2(node)), {
           label: "doing",
           pos: "verb",
           syntax: "purpose_verb",
@@ -12619,7 +12827,7 @@ var require_purpose_chains = __commonJS({
         });
       }
       function serialPurposeParticleClone(node) {
-        return parserInactiveTokenClone2(firstToken2(node) || token2(flattenSurface2(node)), {
+        return parserInactiveTokenClone2(firstToken2(node) || token3(flattenSurface2(node)), {
           label: "particle",
           pos: "particle",
           syntax: "sentence_final_particle",
@@ -12823,7 +13031,7 @@ var require_path_goal_source = __commonJS({
         nodeSurfaceMatches: nodeSurfaceMatches2,
         parserInactiveTokenClone: parserInactiveTokenClone2,
         templateDerivedSlots: templateDerivedSlots2,
-        token: token2,
+        token: token3,
         traceInfo: traceInfo2,
         withoutIgnorableSpaceText: withoutIgnorableSpaceText2,
         withoutTrailingParticles: withoutTrailingParticles2
@@ -12927,7 +13135,7 @@ var require_path_goal_source = __commonJS({
       }
       function motionEventPartClone(node, { label = "doing", syntax = "motion_event_part", slots = [], reason = "Visible motion-event material is assigned by its position and event-semantic role." } = {}) {
         const surface = flattenSurface2(node);
-        const base = firstToken2(node) || token2(surface, { jyutping: "" });
+        const base = firstToken2(node) || token3(surface, { jyutping: "" });
         return parserInactiveTokenClone2(base, {
           label,
           pos: label === "where" ? "location" : label === "when" ? "time" : label === "func" ? "function" : "verb",
@@ -13015,7 +13223,7 @@ var require_path_goal_source = __commonJS({
         }
         if (subject && rs.length === 3 && rs[0] === "向" && rs[2] === "行") {
           const orientationSurface = rs[1];
-          const orientation = orientationSurface === "前" ? token2("前", { label: "where", pos: "location", jyutping: "cin4", syntax: "orientation_ground path_direction", slots: ["path", "orientation", "location"], note: "forward / front", trace: traceInfo2("construction_internal_parser_inactive_clone", { reason: "前 receives a context-local orientation/path reading after 向; no global nominal lexicon entry is introduced." }) }) : motionEventPartClone(rest[1], { label: "where", syntax: "orientation_ground path_goal", slots: ["path", "orientation", "location"], reason: "The NP after 向 is the orientation/path ground." });
+          const orientation = orientationSurface === "前" ? token3("前", { label: "where", pos: "location", jyutping: "cin4", syntax: "orientation_ground path_direction", slots: ["path", "orientation", "location"], note: "forward / front", trace: traceInfo2("construction_internal_parser_inactive_clone", { reason: "前 receives a context-local orientation/path reading after 向; no global nominal lexicon entry is introduced." }) }) : motionEventPartClone(rest[1], { label: "where", syntax: "orientation_ground path_goal", slots: ["path", "orientation", "location"], reason: "The NP after 向 is the orientation/path ground." });
           const pathChildren = [motionEventPartClone(rest[0], { label: "func", syntax: "orientation_coverb path_marker", slots: ["path_marker", "coverb_marker"], reason: "向 introduces a preverbal orientation/path phrase." }), orientation];
           const path = construction2("PathPhrase", "Path", pathChildren, { slots: constructionSlotsByType2("PathPhrase", pathChildren), trace: traceInfo2("generative_template", { construction_type: "PathPhrase", template_family: "generative_template", template: ["path_marker!", "orientation_ground!"], assigned_slots: ["path_marker", "location"], surfaces: pathChildren.map(flattenSurface2), subspan: true }) });
           const motion = motionEventPartClone(rest[2], { label: "doing", syntax: "manner_motion_verb", slots: ["movement_verb", "manner_motion", "predicate"], reason: "行 supplies the manner of motion under the preceding orientation phrase." });
@@ -13114,6 +13322,320 @@ var require_path_goal_source = __commonJS({
   }
 });
 
+// src/parser/detectors/aspect/composition.js
+var require_composition2 = __commonJS({
+  "src/parser/detectors/aspect/composition.js"(exports2, module2) {
+    "use strict";
+    module2.exports = function createAspectCompositionDetectors2(dependencies = {}) {
+      const {
+        classifierObjectNPFromNodes: classifierObjectNPFromNodes2,
+        cleanSlots: cleanSlots2,
+        compositionPartClone: compositionPartClone2,
+        construction: construction2,
+        constructionSlotsByType: constructionSlotsByType2,
+        firstToken: firstToken2,
+        flattenSurface: flattenSurface2,
+        isToken: isToken2,
+        nodeCanFillSlot: nodeCanFillSlot2,
+        nodeSlots: nodeSlots2,
+        parserInactiveTokenClone: parserInactiveTokenClone2,
+        templateDerivedSlots: templateDerivedSlots2,
+        traceInfo: traceInfo2,
+        withoutIgnorableSpaceText: withoutIgnorableSpaceText2,
+        withoutTrailingParticles: withoutTrailingParticles2
+      } = dependencies;
+      function durativeAspectCompositionFallback2(core) {
+        const { core: bareCore, particles } = withoutTrailingParticles2(core);
+        const compact = withoutIgnorableSpaceText2(bareCore);
+        if (compact.length !== 3 || !nodeCanFillSlot2(compact[0], "action_verb") || flattenSurface2(compact[1]) !== "住") return null;
+        if (!nodeCanFillSlot2(compact[2], "object") && !nodeCanFillSlot2(compact[2], "head_noun") && !nodeCanFillSlot2(compact[2], "np")) return null;
+        const marker = parserInactiveTokenClone2(firstToken2(compact[1]) || token("住"), {
+          label: "func",
+          pos: "function",
+          syntax: "durative_aspect",
+          slots: ["durative_aspect", "aspect_marker"],
+          jyutping: "zyu6",
+          note: "住 marks the continuing wearing/resultant state, distinct from progressive 緊.",
+          reason: "住 is interpreted as durative aspect only inside the licensed action + 住 + object pattern."
+        });
+        const children = [compact[0], marker, compact[2], ...particles];
+        return construction2("DurativeVP", "DurativeVP", children, {
+          slots: constructionSlotsByType2("DurativeVP", children),
+          trace: traceInfo2("generative_template", {
+            construction_type: "DurativeVP",
+            template_family: "generative_template",
+            template: ["action_verb!", "durative_aspect!", "object!", "particle?"],
+            assigned_slots: ["action_verb", "durative_aspect", "object", ...particles.map(() => "particle")],
+            surfaces: children.map(flattenSurface2),
+            aspect_type: "durative_continuing_state",
+            not_claims: ["not_progressive_event", "not_global_住_lexicalization"]
+          })
+        });
+      }
+      function perfectiveResultCompositionFallback2(core) {
+        const { core: bareCore, particles } = withoutTrailingParticles2(core);
+        const compact = withoutIgnorableSpaceText2(bareCore);
+        let cursor = 0;
+        const subject = compact[cursor] && nodeCanFillSlot2(compact[cursor], "subject") ? compact[cursor++] : null;
+        if (compact.length - cursor !== 4) return null;
+        const [action, result, aspect, object] = compact.slice(cursor);
+        if (!nodeCanFillSlot2(action, "action_verb") || !nodeCanFillSlot2(aspect, "perfective_aspect")) return null;
+        if (!nodeCanFillSlot2(object, "object") && !nodeCanFillSlot2(object, "head_noun") && !nodeCanFillSlot2(object, "np")) return null;
+        const resultSurface = flattenSurface2(result);
+        if (!nodeCanFillSlot2(result, "completion_marker") && resultSurface !== "好") return null;
+        const innerType = resultSurface === "好" ? "ResultComplementVP" : "CompletionVP";
+        const inner = construction2(innerType, resultSurface === "好" ? "ResultVP" : "CompletionVP", [
+          action,
+          compositionPartClone2(result, {
+            label: resultSurface === "好" ? "how" : "func",
+            syntax: resultSurface === "好" ? "result_state_complement" : "completion_result_complement",
+            slots: resultSurface === "好" ? ["result_complement"] : ["completion_marker", "result_complement"],
+            reason: `${resultSurface} is the overt result/phase complement formed with the action before perfective 咗 scopes over the complex predicate.`
+          })
+        ], {
+          slots: cleanSlots2([innerType === "CompletionVP" ? "completion_vp" : "result_complement_vp", "result_complement", "vp", "action_vp", "predicate"]),
+          note: "Inner result/phase predicate formed before perfective aspect.",
+          trace: traceInfo2("generative_template", {
+            construction_type: innerType,
+            template_family: "generative_template",
+            template: ["action_verb!", "result_or_phase_complement!"],
+            assigned_slots: ["action_verb", "result_complement"],
+            surfaces: [flattenSurface2(action), resultSurface],
+            aspect_scope_status: "inside_perfective_scope"
+          })
+        });
+        const perfective = construction2("PerfectiveVP", "PerfectiveVP", [
+          inner,
+          compositionPartClone2(aspect, { label: "func", syntax: "perfective_aspect", slots: ["perfective_aspect", "aspect_marker"] }),
+          object,
+          ...particles
+        ], {
+          slots: cleanSlots2(["perfective_vp", "vp", "action_vp", "predicate", "perfective_aspect", "object"]),
+          note: "Perfective aspect scopes over an already formed result/phase predicate while surface order remains unchanged.",
+          trace: traceInfo2("generative_template", {
+            construction_type: "PerfectiveVP",
+            template_family: "generative_template",
+            template: ["result_or_phase_vp!", "perfective_aspect!", "object!", "particle?"],
+            assigned_slots: ["predicate", "perfective_aspect", "object", ...particles.map(() => "particle")],
+            surfaces: [flattenSurface2(inner), flattenSurface2(aspect), flattenSurface2(object), ...particles.map(flattenSurface2)],
+            aspect_scope_status: "perfective_over_result_complex",
+            not_claims: ["not_flat_aspect_stack", "not_hidden_object"]
+          })
+        });
+        if (!subject) return perfective;
+        const children = [subject, perfective];
+        return construction2("SubjectPredicateClause", "SubjPred", children, {
+          slots: templateDerivedSlots2("SubjectPredicateClause", children),
+          trace: traceInfo2("generative_template", { construction_type: "SubjectPredicateClause", template_family: "generative_template", template: ["subject!", "predicate!"], assigned_slots: ["subject", "predicate"], surfaces: children.map(flattenSurface2) })
+        });
+      }
+      function restorativeRepetitiveComplementFallback2(core) {
+        const { core: bareCore, particles } = withoutTrailingParticles2(core);
+        const compact = withoutIgnorableSpaceText2(bareCore);
+        if (compact.length < 3 || !nodeCanFillSlot2(compact[0], "action_verb") || !isToken2(compact[1], "返")) return null;
+        const action = compact[0];
+        const marker = (reading) => compositionPartClone2(compact[1], {
+          label: "func",
+          syntax: reading === "restorative" ? "restorative_complement_marker" : "repetitive_resumptive_complement_marker",
+          slots: reading === "restorative" ? ["verb_complement", "restorative_complement"] : ["verb_complement", "repetitive_complement"],
+          reason: reading === "restorative" ? "返 marks restoration of a prior or expected state here; it is not literal return motion." : "返 marks repetition or resumption of the overt action here; it is not literal return motion."
+        });
+        const thirdSurface = flattenSurface2(compact[2]);
+        if (thirdSurface === "好" && compact.length === 3) {
+          const children = [action, marker("restorative"), compositionPartClone2(compact[2], { label: "how", syntax: "restored_result_state", slots: ["result_complement"] }), ...particles];
+          return construction2("RestorativeComplementVP", "RestoreVP", children, { slots: constructionSlotsByType2("RestorativeComplementVP", children), trace: traceInfo2("generative_template", { construction_type: "RestorativeComplementVP", template_family: "generative_template", template: ["action_verb!", "restorative_complement!", "result_state!", "particle?"], assigned_slots: ["action_verb", "restorative_complement", "result_complement", ...particles.map(() => "particle")], surfaces: children.map(flattenSurface2), return_reading: "restorative", not_claims: ["not_literal_return_motion", "not_generic_aspect"] }) });
+        }
+        if (compact.length === 3 && (nodeCanFillSlot2(compact[2], "frequency_quantity") || /(^|\s)frequency_quantity(\s|$)/.test((firstToken2(compact[2]) || {}).syntax || ""))) {
+          const children = [action, marker("repetitive"), compact[2], ...particles];
+          return construction2("RepetitiveComplementVP", "RepeatVP", children, { slots: constructionSlotsByType2("RepetitiveComplementVP", children), trace: traceInfo2("generative_template", { construction_type: "RepetitiveComplementVP", template_family: "generative_template", template: ["action_verb!", "repetitive_complement!", "frequency_quantity!", "particle?"], assigned_slots: ["action_verb", "repetitive_complement", "frequency_quantity", ...particles.map(() => "particle")], surfaces: children.map(flattenSurface2), return_reading: "repetitive_or_resumptive", not_claims: ["not_literal_return_motion", "not_generic_aspect"] }) });
+        }
+        if (compact.length === 4) {
+          const object = classifierObjectNPFromNodes2(compact.slice(2));
+          if (object) {
+            const actionSlots = new Set(nodeSlots2(action));
+            const actionSyntax = String((firstToken2(action) || {}).syntax || "");
+            const licensesResumptiveObjectReading = actionSlots.has("consumption_verb") || actionSyntax.includes("chain_select_perception") || actionSyntax.includes("chain_select_discourse_content");
+            const reading = licensesResumptiveObjectReading ? "repetitive" : "underdetermined";
+            const returnPart = reading === "repetitive" ? marker("repetitive") : compositionPartClone2(compact[1], {
+              label: "func",
+              syntax: "return_or_resumptive_complement_marker",
+              slots: ["verb_complement"],
+              reason: "返 is a non-finite complement marker here. Available evidence does not force literal motion or a repetitive reading."
+            });
+            const children = [action, returnPart, object, ...particles];
+            const type = reading === "repetitive" ? "RepetitiveComplementVP" : "VerbComplementVP";
+            const label = reading === "repetitive" ? "RepeatVP" : "VerbCompVP";
+            return construction2(type, label, children, {
+              slots: constructionSlotsByType2(type, children),
+              trace: traceInfo2("generative_template", {
+                construction_type: type,
+                template_family: "generative_template",
+                template: ["action_verb!", reading === "repetitive" ? "repetitive_complement!" : "return_or_resumptive_complement!", "object!", "particle?"],
+                assigned_slots: ["action_verb", reading === "repetitive" ? "repetitive_complement" : "verb_complement", "object", ...particles.map(() => "particle")],
+                surfaces: children.map(flattenSurface2),
+                return_reading: reading === "repetitive" ? "repetitive_or_resumptive" : "context_underdetermined_return_or_resumptive",
+                not_claims: reading === "repetitive" ? ["not_literal_return_motion", "not_generic_aspect"] : ["not_forced_literal_return_motion", "not_forced_repetitive_reading", "not_generic_aspect"]
+              })
+            });
+          }
+        }
+        return null;
+      }
+      function incompatibleAspectCompositionMalformedCandidate2(core) {
+        if (!core || core.length < 3) return null;
+        const { core: bareCore, particles } = withoutTrailingParticles2(core);
+        let cursor = 0;
+        const subject = bareCore[cursor] && nodeCanFillSlot2(bareCore[cursor], "subject") ? bareCore[cursor++] : null;
+        const action = bareCore[cursor++];
+        if (!action || !nodeCanFillSlot2(action, "action_verb")) return null;
+        const firstMarker = bareCore[cursor++];
+        const secondMarker = bareCore[cursor++];
+        if (!firstMarker || !secondMarker) return null;
+        let malformedSubtype = "";
+        let problem = "";
+        let expected = [];
+        if (nodeCanFillSlot2(firstMarker, "perfective_aspect") && nodeCanFillSlot2(secondMarker, "progressive_aspect")) {
+          malformedSubtype = "incompatible_perfective_progressive_stack";
+          problem = "Perfective 咗 and progressive 緊 are stacked in an incompatible order on one predicate.";
+          expected = ["one_licensed_aspect_layer", "separate_clause_or_repair"];
+        } else if ((isToken2(firstMarker, "得") || isToken2(firstMarker, "唔")) && nodeCanFillSlot2(secondMarker, "perfective_aspect")) {
+          malformedSubtype = isToken2(firstMarker, "得") ? "potential_marker_followed_by_perfective" : "potential_negator_followed_by_perfective";
+          problem = "Potential 得/唔 is followed by perfective 咗 instead of an overt result complement.";
+          expected = ["overt_result_complement_after_potential_marker", "ordinary_perfective_vp_without_potential_marker"];
+        } else if (["嚟", "去"].includes(flattenSurface2(firstMarker)) && ["入", "出", "返", "上", "落"].includes(flattenSurface2(secondMarker))) {
+          malformedSubtype = "deictic_marker_not_outermost";
+          problem = "Final deictic 嚟/去 precedes a path or return component instead of occupying the outer edge of the directional complex.";
+          expected = ["path_or_return_before_final_deictic_marker", "separate_clause_or_repair"];
+        } else {
+          return null;
+        }
+        const children = [...subject ? [subject] : [], action, firstMarker, secondMarker, ...bareCore.slice(cursor), ...particles];
+        return construction2("MalformedCandidate", "Malformed", children, {
+          slots: cleanSlots2(["malformed_candidate", "needs_review", "predicate", "problem_span", "action_verb", subject ? "subject" : ""]),
+          note: "Review-bearing incompatible aspect/potential composition; all visible material is preserved without repairing the learner input.",
+          trace: traceInfo2("special_ambiguity_rule", {
+            construction_type: "MalformedCandidate",
+            malformed_family: "aspect_result_potential_composition",
+            malformed_subtype: malformedSubtype,
+            template: ["subject?", "action_verb!", "incompatible_marker_1!", "incompatible_marker_2!", "remainder?", "particle?"],
+            assigned_slots: [...subject ? ["subject"] : [], "action_verb", "incompatible_marker_1", "incompatible_marker_2", ...bareCore.slice(cursor).length ? ["remainder"] : [], ...particles.map(() => "particle")],
+            surfaces: children.map((node) => flattenSurface2(node)),
+            problem,
+            expected_repairs: expected,
+            semantic_review_flags: ["malformed_candidate_parse", "incompatible_aspect_or_potential_order"],
+            not_claims: ["not_clean_aspect_stack", "not_hidden_result_complement", "not_silent_input_repair"],
+            reason: "Aspect, potential, and result layers must compose in a licensed order; incompatible visible markers remain review-bearing."
+          })
+        });
+      }
+      return {
+        durativeAspectCompositionFallback: durativeAspectCompositionFallback2,
+        perfectiveResultCompositionFallback: perfectiveResultCompositionFallback2,
+        restorativeRepetitiveComplementFallback: restorativeRepetitiveComplementFallback2,
+        incompatibleAspectCompositionMalformedCandidate: incompatibleAspectCompositionMalformedCandidate2
+      };
+    };
+  }
+});
+
+// src/parser/detectors/aspect/postverbal-zo.js
+var require_postverbal_zo = __commonJS({
+  "src/parser/detectors/aspect/postverbal-zo.js"(exports2, module2) {
+    "use strict";
+    module2.exports = function createPostverbalZoDetectors2(dependencies = {}) {
+      const {
+        cleanSlots: cleanSlots2,
+        compositionalNpSubspanFor: compositionalNpSubspanFor2,
+        construction: construction2,
+        flattenSurface: flattenSurface2,
+        nodeCanFillSlot: nodeCanFillSlot2,
+        nodeCanLicenseEvidenceGatedObject: nodeCanLicenseEvidenceGatedObject2,
+        nodeNpLicenseStatus: nodeNpLicenseStatus2,
+        templateConstructionFor: templateConstructionFor2,
+        traceInfo: traceInfo2,
+        withoutIgnorableSpaceText: withoutIgnorableSpaceText2
+      } = dependencies;
+      function postverbalZoPerfectiveFromRawNodes2(nodes = []) {
+        const compact = withoutIgnorableSpaceText2(nodes || []);
+        if (compact.length < 3) return null;
+        const subjectOffset = nodeCanFillSlot2(compact[0], "subject") ? 1 : 0;
+        if (compact.length - subjectOffset < 3) return null;
+        const action = compact[subjectOffset];
+        const aspect = compact[subjectOffset + 1];
+        if (!nodeCanFillSlot2(action, "action_verb") || !nodeCanFillSlot2(aspect, "perfective_aspect")) return null;
+        const objectNodes = compact.slice(subjectOffset + 2);
+        if (objectNodes.length < 2) return null;
+        const objectNode = compositionalNpSubspanFor2(objectNodes) || (objectNodes.length === 1 && nodeCanLicenseEvidenceGatedObject2(objectNodes[0]) ? objectNodes[0] : null);
+        if (!objectNode || !nodeCanLicenseEvidenceGatedObject2(objectNode)) return null;
+        const children = [action, aspect, objectNode];
+        const perfective = construction2("PostverbalZoPerfectiveVP", "PerfectiveVP", children, {
+          slots: cleanSlots2(["perfective_vp", "vp", "action_vp", "predicate", "action_verb", "perfective_aspect", "object", "np"]),
+          note: "Compositional postverbal 咗 perfective with an overt licensed NP object. NP assembly is independent parser infrastructure and does not broaden the construction's linguistic status.",
+          trace: traceInfo2("generative_template", {
+            construction_type: "PostverbalZoPerfectiveVP",
+            template_family: "generative_template",
+            template: ["action_verb!", "perfective_aspect!", "licensed_np_object!"],
+            assigned_slots: ["action_verb", "perfective_aspect", "object"],
+            surfaces: children.map((node) => flattenSurface2(node)),
+            object_np_license_status: nodeNpLicenseStatus2(objectNode),
+            object_np_construction: objectNode.kind === "construction" ? objectNode.type : "bare_nominal_token",
+            hidden_object_inserted: false,
+            evidence_scope_unchanged: true,
+            reason: "v0.5.184 composes the complete postverbal object as a reusable NP before broad VP subspan wrapping can consume only its first token."
+          })
+        });
+        if (!subjectOffset) return [perfective];
+        const clause = templateConstructionFor2([compact[0], perfective], ["SubjectPredicateClause"]);
+        return clause ? [clause] : [compact[0], perfective];
+      }
+      function postverbalZoPerfectiveFromWrappedNodes2(nodes = []) {
+        const compact = withoutIgnorableSpaceText2(nodes || []);
+        if (compact.length < 2) return null;
+        for (let index = 0; index < compact.length - 1; index += 1) {
+          const first = compact[index];
+          const objectNode = compact[index + 1];
+          if (!nodeCanLicenseEvidenceGatedObject2(objectNode)) continue;
+          let action = null;
+          let aspect = null;
+          if (first && first.kind === "construction" && first.type === "PerfectiveVP") {
+            const children2 = withoutIgnorableSpaceText2(first.children || []);
+            if (children2.length === 2 && nodeCanFillSlot2(children2[0], "action_verb") && nodeCanFillSlot2(children2[1], "perfective_aspect")) {
+              [action, aspect] = children2;
+            }
+          } else if (index + 2 < compact.length && nodeCanFillSlot2(first, "action_verb") && nodeCanFillSlot2(compact[index + 1], "perfective_aspect") && nodeCanLicenseEvidenceGatedObject2(compact[index + 2])) {
+            action = first;
+            aspect = compact[index + 1];
+          }
+          if (!action || !aspect) continue;
+          const actualObject = first && first.kind === "construction" ? objectNode : compact[index + 2];
+          const consumed = first && first.kind === "construction" ? 2 : 3;
+          if (index + consumed !== compact.length) continue;
+          const children = [action, aspect, actualObject];
+          const perfective = construction2("PostverbalZoPerfectiveVP", "PerfectiveVP", children, {
+            slots: cleanSlots2(["perfective_vp", "vp", "action_vp", "predicate", "action_verb", "perfective_aspect", "object", "np"]),
+            note: "Compositional postverbal 咗 perfective with an overt licensed NP object. NP assembly is independent parser infrastructure and does not broaden the construction's linguistic status.",
+            trace: traceInfo2("generative_template", {
+              construction_type: "PostverbalZoPerfectiveVP",
+              template_family: "generative_template",
+              template: ["action_verb!", "perfective_aspect!", "licensed_np_object!"],
+              assigned_slots: ["action_verb", "perfective_aspect", "object"],
+              surfaces: children.map((node) => flattenSurface2(node)),
+              object_np_license_status: nodeNpLicenseStatus2(actualObject),
+              object_np_construction: actualObject.kind === "construction" ? actualObject.type : "bare_nominal_token",
+              hidden_object_inserted: false,
+              evidence_scope_unchanged: true,
+              reason: "v0.5.184 recomposes V+咗 with a reusable licensed NP after NP-internal parsing, instead of enumerating complete object strings."
+            })
+          });
+          return [...compact.slice(0, index), perfective, ...compact.slice(index + consumed)];
+        }
+        return null;
+      }
+      return { postverbalZoPerfectiveFromRawNodes: postverbalZoPerfectiveFromRawNodes2, postverbalZoPerfectiveFromWrappedNodes: postverbalZoPerfectiveFromWrappedNodes2 };
+    };
+  }
+});
+
 // src/parser/detectors/definition/copular-relations.js
 var require_copular_relations = __commonJS({
   "src/parser/detectors/definition/copular-relations.js"(exports2, module2) {
@@ -13133,7 +13655,7 @@ var require_copular_relations = __commonJS({
         nominalComplementFromNodes: nominalComplementFromNodes2,
         parserInactiveTokenClone: parserInactiveTokenClone2,
         templateDerivedSlots: templateDerivedSlots2,
-        token: token2,
+        token: token3,
         traceInfo: traceInfo2,
         transparentDeicticClassifierTopicFromNode: transparentDeicticClassifierTopicFromNode2,
         transparentTopicContentFromNodes: transparentTopicContentFromNodes2,
@@ -13173,7 +13695,7 @@ var require_copular_relations = __commonJS({
         });
       }
       function definitionFrameCopulaToken(node) {
-        const source = isToken2(node, "係") ? node : token2("係");
+        const source = isToken2(node, "係") ? node : token3("係");
         return parserInactiveTokenClone2(source, {
           label: "func",
           pos: "function",
@@ -13183,7 +13705,7 @@ var require_copular_relations = __commonJS({
         });
       }
       function definitionFrameWhToken(surface) {
-        return token2(surface, {
+        return token3(surface, {
           label: "what",
           syntax: "wh_thing definition_wh_complement",
           note: `${surface} asks for the definition/identity inside a 係...嚟㗎 frame; learner role stays what, with wh/question syntax rather than a new wh-question role.`,
@@ -14383,7 +14905,7 @@ function applyRoleOverrides(assignments, template = {}) {
         note: "Construction context selects the active pronunciation without deleting other lexical affordances."
       };
     }
-    return token(item.node.surface, {
+    return token2(item.node.surface, {
       label: overrideLabel,
       syntax: overrideSyntax,
       slots: overrideSlots,
@@ -14544,7 +15066,7 @@ function wrapCategorySubspans(nodes) {
 }
 var {
   pronunciationOnlyJyutpingForUnknown,
-  token,
+  token: token2,
   textNode,
   construction,
   parserInactiveTokenClone,
@@ -14570,6 +15092,13 @@ var {
   internalConstructionTypeFor,
   clauseSpanProfileForCompatibilityType,
   npLicenseMetadata
+});
+var resultComplementModule = require_result();
+var resultFramePartClone = resultComplementModule.createResultFramePartClone({
+  firstToken,
+  flattenSurface,
+  parserInactiveTokenClone,
+  token: token2
 });
 var createNpDetectors = require_core();
 var {
@@ -14968,19 +15497,19 @@ function productiveVoComponentTokens(surface) {
   if (!rule) return null;
   if (surface === "煮嘢食") {
     return [
-      token("煮", { label: "doing", syntax: "verb" }),
-      token("嘢食", { label: "what", jyutping: "je5 sik6", syntax: "food_noun object", note: "food / things to eat; phrase-local object token avoids changing general 嘢 + 食 analysis." })
+      token2("煮", { label: "doing", syntax: "verb" }),
+      token2("嘢食", { label: "what", jyutping: "je5 sik6", syntax: "food_noun object", note: "food / things to eat; phrase-local object token avoids changing general 嘢 + 食 analysis." })
     ];
   }
   if (surface === "下棋") {
     return [
-      token("下", { label: "doing", jyutping: "haa5", syntax: "verb", note: "play / make a move in a board game; phrase-specific reading in 下棋." }),
-      token("棋", { label: "what", syntax: "object" })
+      token2("下", { label: "doing", jyutping: "haa5", syntax: "verb", note: "play / make a move in a board game; phrase-specific reading in 下棋." }),
+      token2("棋", { label: "what", syntax: "object" })
     ];
   }
   return [
-    token(rule.verb, { label: "doing", syntax: "verb" }),
-    token(rule.object, { label: "what", syntax: "object" })
+    token2(rule.verb, { label: "doing", syntax: "verb" }),
+    token2(rule.object, { label: "what", syntax: "object" })
   ];
 }
 function phase4OpinionStanceActiveTokenClone(node, overrides = {}) {
@@ -15162,7 +15691,7 @@ var { wrapPermissionAcceptabilitySubspans } = createAcceptabilityDetectors({
   nodeSlots,
   parserInactiveTokenClone,
   templateDerivedSlots,
-  token,
+  token: token2,
   traceInfo
 });
 var createMannerAdjustmentDetectors = require_adjustment();
@@ -15264,7 +15793,7 @@ var {
   nodeCanFillSlot,
   phraseMatch,
   selectLexiconTerm,
-  token,
+  token: token2,
   traceInfo
 });
 var createContextualLexiconOverrides = require_contextual_overrides();
@@ -15282,7 +15811,7 @@ var {
   normalizeSurface,
   selectLexiconTerm,
   selectionDecisionForSurface,
-  token,
+  token: token2,
   traceInfo
 });
 var { candidateNamedAddressFormFromRest } = createVocativeAddressDetector({
@@ -15296,7 +15825,7 @@ var { candidateNamedAddressFormFromRest } = createVocativeAddressDetector({
   construction,
   parserInactiveTokenClone,
   phraseMatch,
-  token,
+  token: token2,
   traceInfo
 });
 var { tokenizeLine } = require_tokenize_line()({
@@ -15312,7 +15841,7 @@ var { tokenizeLine } = require_tokenize_line()({
   pushSpecialNotGoodEat,
   selectLexiconTerm,
   textNode,
-  token,
+  token: token2,
   traceInfo,
   transparentCupNounDemonstrativeNpFromRest,
   transparentDemonstrativeClassifierSplitFromRest,
@@ -15391,7 +15920,7 @@ var {
   propositionLikeHostForFinalMe,
   surfaceOf,
   templateDerivedSlots,
-  token,
+  token: token2,
   traceInfo,
   withoutIgnorableSpaceText,
   withoutTrailingParticles,
@@ -15416,7 +15945,7 @@ var {
   nodeCanFillSlot,
   surfaceOf,
   templateDerivedSlots,
-  token,
+  token: token2,
   traceInfo,
   withoutIgnorableSpaceText,
   withoutTrailingParticles
@@ -15476,7 +16005,7 @@ var {
   predicateOmissionProfileForHead,
   templateConstructionFor,
   templateDerivedSlots,
-  token,
+  token: token2,
   traceInfo,
   withoutTrailingParticles,
   wrapCategorySubspans
@@ -15567,94 +16096,21 @@ function transparentTopicContentFromNodes(nodes) {
   if (compact.length === 1) return compact[0];
   return categorySubspanFor(compact, ["OvertHeadDemonstrativeClassifierNP", "QuantifiedClassifierNP", "QuantifiedPersonNP", "OrdinalClassifierNP", "DiMarkedNP", "ModifiedNP", "NominalHeadSpan", "CoordinatedNP"]);
 }
-function potentialResultVPFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  if (!bareCore.length) return null;
-  let cursor = 0;
-  const subject = nodeCanFillSlot(bareCore[cursor], "subject") ? bareCore[cursor++] : null;
-  const action = bareCore[cursor++];
-  if (!action || !isVerbLike(action) || !isToken(bareCore[cursor], "得")) return null;
-  const markerSource = bareCore[cursor++];
-  const resultNodes = bareCore.slice(cursor);
-  if (!resultNodes.length) return null;
-  if (!resultNodes.some((node) => nodeCanFillSlot(node, "result_complement") || nodeCanFillSlot(node, "completion_marker") || ["完", "到", "掂", "切"].includes(flattenSurface(node)))) return null;
-  const resultHead = resultNodes[0];
-  const objectSource = resultNodes.slice(1);
-  let objectNode = null;
-  if (objectSource.length === 1 && (nodeCanFillSlot(objectSource[0], "object") || nodeCanFillSlot(objectSource[0], "np") || nodeCanFillSlot(objectSource[0], "head_noun"))) {
-    objectNode = objectSource[0].kind === "construction" ? objectSource[0] : categorySubspanFor(objectSource, ["NominalHeadSpan"]) || objectSource[0];
-  } else if (objectSource.length > 1) {
-    objectNode = classifierObjectNPFromNodes(objectSource) || categorySubspanFor(objectSource, ["OvertHeadDemonstrativeClassifierNP", "QuantifiedClassifierNP", "QuantifiedPersonNP", "OrdinalClassifierNP", "DiMarkedNP", "ModifiedNP", "NominalHeadSpan"]);
-  }
-  if (objectSource.length && !objectNode) return null;
-  const marker = parserInactiveTokenClone(markerSource, {
-    label: "func",
-    pos: "function",
-    syntax: "potential_marker",
-    slots: ["potential_marker"],
-    reason: "Between an action predicate and an overt result complement, 得 is the productive positive potential linker, not a standalone acceptability response."
-  });
-  const children = [action, marker, resultHead, ...objectNode ? [objectNode] : []];
-  const potential = construction("PotentialResultVP", "Potential", children, {
-    slots: cleanSlots(["potential_result_vp", "potential_marker", "result_complement", "vp", "action_vp", "predicate"]),
-    note: "Productive positive potential construction: action + 得 + overt result complement.",
-    trace: traceInfo("generative_template", {
-      construction_type: "PotentialResultVP",
-      template_family: "generative_template",
-      template: ["action_verb!", "potential_marker!", "result_complement!"],
-      assigned_slots: ["action_verb", "potential_marker", "result_complement", ...objectNode ? ["object"] : []],
-      surfaces: children.map((node) => flattenSurface(node)),
-      potential_polarity: "positive",
-      not_claims: ["not_acceptability_response", "not_hidden_result_complement"]
-    })
-  });
-  if (!subject) return potential;
-  const clauseChildren = [subject, potential, ...particles];
-  return construction("SubjectPredicateClause", "SubjPred", clauseChildren, {
-    slots: templateDerivedSlots("SubjectPredicateClause", clauseChildren),
-    note: "Subject plus a productive positive potential predicate.",
-    trace: traceInfo("generative_template", {
-      construction_type: "SubjectPredicateClause",
-      template_family: "generative_template",
-      template: ["subject!", "predicate!", "particle?"],
-      assigned_slots: ["subject", "predicate", ...particles.map(() => "particle")],
-      surfaces: clauseChildren.map((node) => flattenSurface(node))
-    })
-  });
-}
-function incompletePotentialResultCandidate(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  let cursor = 0;
-  const subject = nodeCanFillSlot(bareCore[cursor], "subject") ? bareCore[cursor++] : null;
-  const action = bareCore[cursor++];
-  const marker = bareCore[cursor++];
-  if (cursor !== bareCore.length || !action || !isVerbLike(action) || !isToken(marker, "得")) return null;
-  const children = [...subject ? [subject] : [], action, marker, ...particles];
-  return construction("NeedsContext", "needs context", children, {
-    slots: cleanSlots(["needs_context", "review_candidate", "predicate", "problem_span", subject ? "subject" : ""]),
-    note: "Potential/acceptability boundary with no overt result complement.",
-    trace: traceInfo("special_ambiguity_rule", {
-      construction_type: "NeedsContext",
-      predicate_omission_profile: "acceptability_possibility",
-      omission_status: "potential_result_or_contextual_ellipsis_ambiguous",
-      template: ["subject?", "action_verb!", "potential_marker_or_acceptability_predicate!", "particle?"],
-      assigned_slots: [...subject ? ["subject"] : [], "action_verb", "potential_marker_or_acceptability_predicate", ...particles.map(() => "particle")],
-      surfaces: children.map((node) => flattenSurface(node)),
-      missing_argument_slots: ["result_or_activity_domain"],
-      missing_slot_details: [{ slot: "result_or_activity_domain", license_status: "unresolved" }],
-      complement_type: "result_complement_or_contextual_activity",
-      context_requirement_status: "context_required",
-      antecedent_status: "not_observed",
-      selected_alternative: "underdetermined",
-      subject_status: subject ? "explicit" : "omitted_unlicensed",
-      polarity: "positive",
-      conventionality_status: "context_sensitive",
-      speech_event_use: "not_applicable",
-      semantic_review_flags: ["needs_context_parse", "acceptability_potential_boundary"],
-      not_claims: ["not_clean_acceptability_response", "not_fabricated_result_complement", "not_sentence_specific_surface_rule"]
-    })
-  });
-}
+var createPotentialResultDetectors = require_potential_result();
+var { potentialResultVPFallback, incompletePotentialResultCandidate } = createPotentialResultDetectors({
+  categorySubspanFor,
+  classifierObjectNPFromNodes,
+  cleanSlots,
+  construction,
+  flattenSurface,
+  isToken,
+  isVerbLike,
+  nodeCanFillSlot,
+  parserInactiveTokenClone,
+  templateDerivedSlots,
+  traceInfo,
+  withoutTrailingParticles
+});
 function subjectStativePredicateClauseFallback(nodes) {
   const { core: bareCore, particles } = withoutTrailingParticles(nodes);
   if (bareCore.length !== 2) return null;
@@ -15721,7 +16177,7 @@ var {
   nodeSlots,
   parserInactiveTokenClone,
   templateDerivedSlots,
-  token,
+  token: token2,
   traceInfo,
   traceKind,
   withoutIgnorableSpaceText,
@@ -15786,73 +16242,26 @@ function interiorExistentialFrameFallback(core) {
     })
   });
 }
-function resultFramePartClone(node, overrides = {}) {
-  const surface = overrides.surface || flattenSurface(node);
-  const base = firstToken(node) || token(surface);
-  return parserInactiveTokenClone(base, {
-    label: overrides.label || base.label || "func",
-    pos: overrides.pos || (overrides.label === "doing" ? "verb" : overrides.label === "particle" ? "particle" : overrides.label === "when" ? "adverbial" : "function"),
-    syntax: overrides.syntax || base.syntax || "result_frame_part",
-    slots: overrides.slots || [],
-    reason: overrides.reason || "Token is parser-inactive inside a bounded v0.5.34 change/result frame; the parent exposes the result relation while child tokens stay visible."
-  });
-}
-function resultTopicFromNodes(nodes) {
-  const compact = withoutIgnorableSpaceText(nodes || []);
-  if (!compact.length) return null;
-  if (compact.length === 1 && (nodeCanFillSlot(compact[0], "topic") || nodeCanFillSlot(compact[0], "subject") || nodeCanFillSlot(compact[0], "location") || nodeCanFillSlot(compact[0], "np") || nodeCanFillSlot(compact[0], "head_noun"))) return compact[0];
-  const templated = categorySubspanFor(compact, ["OvertHeadDemonstrativeClassifierNP", "QuantifiedClassifierNP", "DiMarkedNP", "OrdinalClassifierNP", "NominalHeadSpan", "CoordinatedNP"]);
-  if (templated && (nodeCanFillSlot(templated, "topic") || nodeCanFillSlot(templated, "subject") || nodeCanFillSlot(templated, "np") || nodeCanFillSlot(templated, "head_noun"))) return templated;
-  return null;
-}
-function resultComplementFromNodes(nodes) {
-  const compact = withoutIgnorableSpaceText(nodes || []);
-  if (!compact.length) return null;
-  const nominal = nominalComplementFromNodes(compact);
-  if (nominal) return nominal;
-  if (compact.length === 1 && (nodeCanFillSlot(compact[0], "object") || nodeCanFillSlot(compact[0], "np") || nodeCanFillSlot(compact[0], "head_noun") || nodeCanFillSlot(compact[0], "location"))) return compact[0];
-  return null;
-}
-function makeChangeIntoPredicate(changeNode, complement) {
-  const children = [
-    resultFramePartClone(changeNode, {
-      label: "doing",
-      pos: "verb",
-      syntax: "change_into_verb result_change_verb",
-      slots: ["change_verb", "action_verb", "main_verb", "predicate"],
-      reason: "變成 is the change-into predicate head inside a bounded change-result frame."
-    }),
-    complement
-  ];
-  return construction("ChangeIntoPredicate", "變成", children, {
-    note: "Bounded change-into predicate: 變成 + result complement.",
-    slots: templateDerivedSlots("ChangeIntoPredicate", children),
-    trace: traceInfo("generative_template", {
-      construction_type: "ChangeIntoPredicate",
-      template: ["change_verb!", "result_complement!"],
-      assigned_slots: ["change_verb", "result_complement"],
-      surfaces: children.map((node) => flattenSurface(node)),
-      subspan: true
-    })
-  });
-}
-function wrapChangeIntoPredicateSubspans(nodes) {
-  const result = [];
-  let i = 0;
-  while (i < nodes.length) {
-    if (isToken(nodes[i], "變成") && isToken(nodes[i + 1], "點")) {
-      result.push(makeChangeIntoPredicate(nodes[i], nodes[i + 1]));
-      i += 2;
-      continue;
-    }
-    result.push(nodes[i]);
-    i += 1;
-  }
-  return result;
-}
+var {
+  resultTopicFromNodes,
+  resultComplementFromNodes,
+  makeChangeIntoPredicate,
+  wrapChangeIntoPredicateSubspans
+} = resultComplementModule.createResultComplementDetectors({
+  categorySubspanFor,
+  construction,
+  flattenSurface,
+  isToken,
+  nodeCanFillSlot,
+  nominalComplementFromNodes,
+  resultFramePartClone,
+  templateDerivedSlots,
+  traceInfo,
+  withoutIgnorableSpaceText
+});
 function bridgeFramePartClone(node, overrides = {}) {
   const surface = overrides.surface || flattenSurface(node);
-  const base = firstToken(node) || token(surface);
+  const base = firstToken(node) || token2(surface);
   return parserInactiveTokenClone(base, {
     label: overrides.label || base.label || "func",
     pos: overrides.pos || (overrides.label === "doing" ? "verb" : overrides.label === "particle" ? "particle" : overrides.label === "who" ? "np" : overrides.label === "what" ? "noun" : "function"),
@@ -16030,7 +16439,7 @@ var {
   nodeCanFillSlot,
   parserInactiveTokenClone,
   templateDerivedSlots,
-  token,
+  token: token2,
   traceInfo,
   withoutIgnorableSpaceText,
   withoutTrailingParticles
@@ -16053,7 +16462,7 @@ var {
   nodeCanFillSlot,
   nodeSlots,
   parserInactiveTokenClone,
-  token,
+  token: token2,
   traceInfo,
   withoutIgnorableSpaceText,
   withoutTrailingParticles
@@ -16081,7 +16490,7 @@ motionPathGoalSourceDetectors = createMotionPathGoalSourceDetectors({
   nodeSurfaceMatches,
   parserInactiveTokenClone,
   templateDerivedSlots,
-  token,
+  token: token2,
   traceInfo,
   withoutIgnorableSpaceText,
   withoutTrailingParticles
@@ -16881,7 +17290,7 @@ function fragmentQuestionFallback(core) {
   });
 }
 function protectedConditionalMarkerToken() {
-  return token("嘅話", {
+  return token2("嘅話", {
     label: "func",
     pos: "function",
     jyutping: "ge3 waa6",
@@ -16951,7 +17360,7 @@ function conditionalGeWaaClauseFallback(core) {
 }
 function compositionPartClone(node, overrides = {}) {
   const surface = flattenSurface(node);
-  const base = firstToken(node) || token(surface);
+  const base = firstToken(node) || token2(surface);
   return parserInactiveTokenClone(base, {
     label: overrides.label || base.label || "func",
     pos: overrides.pos || (overrides.label === "doing" ? "verb" : overrides.label === "what" ? "noun" : overrides.label === "measure_word" ? "classifier" : "function"),
@@ -16960,190 +17369,29 @@ function compositionPartClone(node, overrides = {}) {
     reason: overrides.reason || "Visible token is owned by a transparent aspect/result/directional composition; no hidden material is inserted."
   });
 }
-function durativeAspectCompositionFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const compact = withoutIgnorableSpaceText(bareCore);
-  if (compact.length !== 3 || !nodeCanFillSlot(compact[0], "action_verb") || flattenSurface(compact[1]) !== "住") return null;
-  if (!nodeCanFillSlot(compact[2], "object") && !nodeCanFillSlot(compact[2], "head_noun") && !nodeCanFillSlot(compact[2], "np")) return null;
-  const marker = parserInactiveTokenClone(firstToken(compact[1]) || token("住"), {
-    label: "func",
-    pos: "function",
-    syntax: "durative_aspect",
-    slots: ["durative_aspect", "aspect_marker"],
-    jyutping: "zyu6",
-    note: "住 marks the continuing wearing/resultant state, distinct from progressive 緊.",
-    reason: "住 is interpreted as durative aspect only inside the licensed action + 住 + object pattern."
-  });
-  const children = [compact[0], marker, compact[2], ...particles];
-  return construction("DurativeVP", "DurativeVP", children, {
-    slots: constructionSlotsByType("DurativeVP", children),
-    trace: traceInfo("generative_template", {
-      construction_type: "DurativeVP",
-      template_family: "generative_template",
-      template: ["action_verb!", "durative_aspect!", "object!", "particle?"],
-      assigned_slots: ["action_verb", "durative_aspect", "object", ...particles.map(() => "particle")],
-      surfaces: children.map(flattenSurface),
-      aspect_type: "durative_continuing_state",
-      not_claims: ["not_progressive_event", "not_global_住_lexicalization"]
-    })
-  });
-}
-function perfectiveResultCompositionFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const compact = withoutIgnorableSpaceText(bareCore);
-  let cursor = 0;
-  const subject = compact[cursor] && nodeCanFillSlot(compact[cursor], "subject") ? compact[cursor++] : null;
-  if (compact.length - cursor !== 4) return null;
-  const [action, result, aspect, object] = compact.slice(cursor);
-  if (!nodeCanFillSlot(action, "action_verb") || !nodeCanFillSlot(aspect, "perfective_aspect")) return null;
-  if (!nodeCanFillSlot(object, "object") && !nodeCanFillSlot(object, "head_noun") && !nodeCanFillSlot(object, "np")) return null;
-  const resultSurface = flattenSurface(result);
-  if (!nodeCanFillSlot(result, "completion_marker") && resultSurface !== "好") return null;
-  const innerType = resultSurface === "好" ? "ResultComplementVP" : "CompletionVP";
-  const inner = construction(innerType, resultSurface === "好" ? "ResultVP" : "CompletionVP", [
-    action,
-    compositionPartClone(result, {
-      label: resultSurface === "好" ? "how" : "func",
-      syntax: resultSurface === "好" ? "result_state_complement" : "completion_result_complement",
-      slots: resultSurface === "好" ? ["result_complement"] : ["completion_marker", "result_complement"],
-      reason: `${resultSurface} is the overt result/phase complement formed with the action before perfective 咗 scopes over the complex predicate.`
-    })
-  ], {
-    slots: cleanSlots([innerType === "CompletionVP" ? "completion_vp" : "result_complement_vp", "result_complement", "vp", "action_vp", "predicate"]),
-    note: "Inner result/phase predicate formed before perfective aspect.",
-    trace: traceInfo("generative_template", {
-      construction_type: innerType,
-      template_family: "generative_template",
-      template: ["action_verb!", "result_or_phase_complement!"],
-      assigned_slots: ["action_verb", "result_complement"],
-      surfaces: [flattenSurface(action), resultSurface],
-      aspect_scope_status: "inside_perfective_scope"
-    })
-  });
-  const perfective = construction("PerfectiveVP", "PerfectiveVP", [
-    inner,
-    compositionPartClone(aspect, { label: "func", syntax: "perfective_aspect", slots: ["perfective_aspect", "aspect_marker"] }),
-    object,
-    ...particles
-  ], {
-    slots: cleanSlots(["perfective_vp", "vp", "action_vp", "predicate", "perfective_aspect", "object"]),
-    note: "Perfective aspect scopes over an already formed result/phase predicate while surface order remains unchanged.",
-    trace: traceInfo("generative_template", {
-      construction_type: "PerfectiveVP",
-      template_family: "generative_template",
-      template: ["result_or_phase_vp!", "perfective_aspect!", "object!", "particle?"],
-      assigned_slots: ["predicate", "perfective_aspect", "object", ...particles.map(() => "particle")],
-      surfaces: [flattenSurface(inner), flattenSurface(aspect), flattenSurface(object), ...particles.map(flattenSurface)],
-      aspect_scope_status: "perfective_over_result_complex",
-      not_claims: ["not_flat_aspect_stack", "not_hidden_object"]
-    })
-  });
-  if (!subject) return perfective;
-  const children = [subject, perfective];
-  return construction("SubjectPredicateClause", "SubjPred", children, {
-    slots: templateDerivedSlots("SubjectPredicateClause", children),
-    trace: traceInfo("generative_template", { construction_type: "SubjectPredicateClause", template_family: "generative_template", template: ["subject!", "predicate!"], assigned_slots: ["subject", "predicate"], surfaces: children.map(flattenSurface) })
-  });
-}
-function restorativeRepetitiveComplementFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const compact = withoutIgnorableSpaceText(bareCore);
-  if (compact.length < 3 || !nodeCanFillSlot(compact[0], "action_verb") || !isToken(compact[1], "返")) return null;
-  const action = compact[0];
-  const marker = (reading) => compositionPartClone(compact[1], {
-    label: "func",
-    syntax: reading === "restorative" ? "restorative_complement_marker" : "repetitive_resumptive_complement_marker",
-    slots: reading === "restorative" ? ["verb_complement", "restorative_complement"] : ["verb_complement", "repetitive_complement"],
-    reason: reading === "restorative" ? "返 marks restoration of a prior or expected state here; it is not literal return motion." : "返 marks repetition or resumption of the overt action here; it is not literal return motion."
-  });
-  const thirdSurface = flattenSurface(compact[2]);
-  if (thirdSurface === "好" && compact.length === 3) {
-    const children = [action, marker("restorative"), compositionPartClone(compact[2], { label: "how", syntax: "restored_result_state", slots: ["result_complement"] }), ...particles];
-    return construction("RestorativeComplementVP", "RestoreVP", children, { slots: constructionSlotsByType("RestorativeComplementVP", children), trace: traceInfo("generative_template", { construction_type: "RestorativeComplementVP", template_family: "generative_template", template: ["action_verb!", "restorative_complement!", "result_state!", "particle?"], assigned_slots: ["action_verb", "restorative_complement", "result_complement", ...particles.map(() => "particle")], surfaces: children.map(flattenSurface), return_reading: "restorative", not_claims: ["not_literal_return_motion", "not_generic_aspect"] }) });
-  }
-  if (compact.length === 3 && (nodeCanFillSlot(compact[2], "frequency_quantity") || /(^|\s)frequency_quantity(\s|$)/.test((firstToken(compact[2]) || {}).syntax || ""))) {
-    const children = [action, marker("repetitive"), compact[2], ...particles];
-    return construction("RepetitiveComplementVP", "RepeatVP", children, { slots: constructionSlotsByType("RepetitiveComplementVP", children), trace: traceInfo("generative_template", { construction_type: "RepetitiveComplementVP", template_family: "generative_template", template: ["action_verb!", "repetitive_complement!", "frequency_quantity!", "particle?"], assigned_slots: ["action_verb", "repetitive_complement", "frequency_quantity", ...particles.map(() => "particle")], surfaces: children.map(flattenSurface), return_reading: "repetitive_or_resumptive", not_claims: ["not_literal_return_motion", "not_generic_aspect"] }) });
-  }
-  if (compact.length === 4) {
-    const object = classifierObjectNPFromNodes(compact.slice(2));
-    if (object) {
-      const actionSlots = new Set(nodeSlots(action));
-      const actionSyntax = String((firstToken(action) || {}).syntax || "");
-      const licensesResumptiveObjectReading = actionSlots.has("consumption_verb") || actionSyntax.includes("chain_select_perception") || actionSyntax.includes("chain_select_discourse_content");
-      const reading = licensesResumptiveObjectReading ? "repetitive" : "underdetermined";
-      const returnPart = reading === "repetitive" ? marker("repetitive") : compositionPartClone(compact[1], {
-        label: "func",
-        syntax: "return_or_resumptive_complement_marker",
-        slots: ["verb_complement"],
-        reason: "返 is a non-finite complement marker here. Available evidence does not force literal motion or a repetitive reading."
-      });
-      const children = [action, returnPart, object, ...particles];
-      const type = reading === "repetitive" ? "RepetitiveComplementVP" : "VerbComplementVP";
-      const label = reading === "repetitive" ? "RepeatVP" : "VerbCompVP";
-      return construction(type, label, children, {
-        slots: constructionSlotsByType(type, children),
-        trace: traceInfo("generative_template", {
-          construction_type: type,
-          template_family: "generative_template",
-          template: ["action_verb!", reading === "repetitive" ? "repetitive_complement!" : "return_or_resumptive_complement!", "object!", "particle?"],
-          assigned_slots: ["action_verb", reading === "repetitive" ? "repetitive_complement" : "verb_complement", "object", ...particles.map(() => "particle")],
-          surfaces: children.map(flattenSurface),
-          return_reading: reading === "repetitive" ? "repetitive_or_resumptive" : "context_underdetermined_return_or_resumptive",
-          not_claims: reading === "repetitive" ? ["not_literal_return_motion", "not_generic_aspect"] : ["not_forced_literal_return_motion", "not_forced_repetitive_reading", "not_generic_aspect"]
-        })
-      });
-    }
-  }
-  return null;
-}
-function incompatibleAspectCompositionMalformedCandidate(core) {
-  if (!core || core.length < 3) return null;
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  let cursor = 0;
-  const subject = bareCore[cursor] && nodeCanFillSlot(bareCore[cursor], "subject") ? bareCore[cursor++] : null;
-  const action = bareCore[cursor++];
-  if (!action || !nodeCanFillSlot(action, "action_verb")) return null;
-  const firstMarker = bareCore[cursor++];
-  const secondMarker = bareCore[cursor++];
-  if (!firstMarker || !secondMarker) return null;
-  let malformedSubtype = "";
-  let problem = "";
-  let expected = [];
-  if (nodeCanFillSlot(firstMarker, "perfective_aspect") && nodeCanFillSlot(secondMarker, "progressive_aspect")) {
-    malformedSubtype = "incompatible_perfective_progressive_stack";
-    problem = "Perfective 咗 and progressive 緊 are stacked in an incompatible order on one predicate.";
-    expected = ["one_licensed_aspect_layer", "separate_clause_or_repair"];
-  } else if ((isToken(firstMarker, "得") || isToken(firstMarker, "唔")) && nodeCanFillSlot(secondMarker, "perfective_aspect")) {
-    malformedSubtype = isToken(firstMarker, "得") ? "potential_marker_followed_by_perfective" : "potential_negator_followed_by_perfective";
-    problem = "Potential 得/唔 is followed by perfective 咗 instead of an overt result complement.";
-    expected = ["overt_result_complement_after_potential_marker", "ordinary_perfective_vp_without_potential_marker"];
-  } else if (["嚟", "去"].includes(flattenSurface(firstMarker)) && ["入", "出", "返", "上", "落"].includes(flattenSurface(secondMarker))) {
-    malformedSubtype = "deictic_marker_not_outermost";
-    problem = "Final deictic 嚟/去 precedes a path or return component instead of occupying the outer edge of the directional complex.";
-    expected = ["path_or_return_before_final_deictic_marker", "separate_clause_or_repair"];
-  } else {
-    return null;
-  }
-  const children = [...subject ? [subject] : [], action, firstMarker, secondMarker, ...bareCore.slice(cursor), ...particles];
-  return construction("MalformedCandidate", "Malformed", children, {
-    slots: cleanSlots(["malformed_candidate", "needs_review", "predicate", "problem_span", "action_verb", subject ? "subject" : ""]),
-    note: "Review-bearing incompatible aspect/potential composition; all visible material is preserved without repairing the learner input.",
-    trace: traceInfo("special_ambiguity_rule", {
-      construction_type: "MalformedCandidate",
-      malformed_family: "aspect_result_potential_composition",
-      malformed_subtype: malformedSubtype,
-      template: ["subject?", "action_verb!", "incompatible_marker_1!", "incompatible_marker_2!", "remainder?", "particle?"],
-      assigned_slots: [...subject ? ["subject"] : [], "action_verb", "incompatible_marker_1", "incompatible_marker_2", ...bareCore.slice(cursor).length ? ["remainder"] : [], ...particles.map(() => "particle")],
-      surfaces: children.map((node) => flattenSurface(node)),
-      problem,
-      expected_repairs: expected,
-      semantic_review_flags: ["malformed_candidate_parse", "incompatible_aspect_or_potential_order"],
-      not_claims: ["not_clean_aspect_stack", "not_hidden_result_complement", "not_silent_input_repair"],
-      reason: "Aspect, potential, and result layers must compose in a licensed order; incompatible visible markers remain review-bearing."
-    })
-  });
-}
+var createAspectCompositionDetectors = require_composition2();
+var {
+  durativeAspectCompositionFallback,
+  perfectiveResultCompositionFallback,
+  restorativeRepetitiveComplementFallback,
+  incompatibleAspectCompositionMalformedCandidate
+} = createAspectCompositionDetectors({
+  classifierObjectNPFromNodes,
+  cleanSlots,
+  compositionPartClone,
+  construction,
+  constructionSlotsByType,
+  firstToken,
+  flattenSurface,
+  isToken,
+  nodeCanFillSlot,
+  nodeSlots,
+  parserInactiveTokenClone,
+  templateDerivedSlots,
+  traceInfo,
+  withoutIgnorableSpaceText,
+  withoutTrailingParticles
+});
 function environmentalPredicateParts(core = []) {
   const compact = withoutIgnorableSpaceText(core || []);
   if (!compact.length) return null;
@@ -17746,82 +17994,22 @@ function nominalMeasurePredicateFallback(core) {
     })
   });
 }
-function postverbalZoPerfectiveFromRawNodes(nodes = []) {
-  const compact = withoutIgnorableSpaceText(nodes || []);
-  if (compact.length < 3) return null;
-  const subjectOffset = nodeCanFillSlot(compact[0], "subject") ? 1 : 0;
-  if (compact.length - subjectOffset < 3) return null;
-  const action = compact[subjectOffset];
-  const aspect = compact[subjectOffset + 1];
-  if (!nodeCanFillSlot(action, "action_verb") || !nodeCanFillSlot(aspect, "perfective_aspect")) return null;
-  const objectNodes = compact.slice(subjectOffset + 2);
-  if (objectNodes.length < 2) return null;
-  const objectNode = compositionalNpSubspanFor(objectNodes) || (objectNodes.length === 1 && nodeCanLicenseEvidenceGatedObject(objectNodes[0]) ? objectNodes[0] : null);
-  if (!objectNode || !nodeCanLicenseEvidenceGatedObject(objectNode)) return null;
-  const children = [action, aspect, objectNode];
-  const perfective = construction("PostverbalZoPerfectiveVP", "PerfectiveVP", children, {
-    slots: cleanSlots(["perfective_vp", "vp", "action_vp", "predicate", "action_verb", "perfective_aspect", "object", "np"]),
-    note: "Compositional postverbal 咗 perfective with an overt licensed NP object. NP assembly is independent parser infrastructure and does not broaden the construction's linguistic status.",
-    trace: traceInfo("generative_template", {
-      construction_type: "PostverbalZoPerfectiveVP",
-      template_family: "generative_template",
-      template: ["action_verb!", "perfective_aspect!", "licensed_np_object!"],
-      assigned_slots: ["action_verb", "perfective_aspect", "object"],
-      surfaces: children.map((node) => flattenSurface(node)),
-      object_np_license_status: nodeNpLicenseStatus(objectNode),
-      object_np_construction: objectNode.kind === "construction" ? objectNode.type : "bare_nominal_token",
-      hidden_object_inserted: false,
-      evidence_scope_unchanged: true,
-      reason: "v0.5.184 composes the complete postverbal object as a reusable NP before broad VP subspan wrapping can consume only its first token."
-    })
-  });
-  if (!subjectOffset) return [perfective];
-  const clause = templateConstructionFor([compact[0], perfective], ["SubjectPredicateClause"]);
-  return clause ? [clause] : [compact[0], perfective];
-}
-function postverbalZoPerfectiveFromWrappedNodes(nodes = []) {
-  const compact = withoutIgnorableSpaceText(nodes || []);
-  if (compact.length < 2) return null;
-  for (let index = 0; index < compact.length - 1; index += 1) {
-    const first = compact[index];
-    const objectNode = compact[index + 1];
-    if (!nodeCanLicenseEvidenceGatedObject(objectNode)) continue;
-    let action = null;
-    let aspect = null;
-    if (first && first.kind === "construction" && first.type === "PerfectiveVP") {
-      const children2 = withoutIgnorableSpaceText(first.children || []);
-      if (children2.length === 2 && nodeCanFillSlot(children2[0], "action_verb") && nodeCanFillSlot(children2[1], "perfective_aspect")) {
-        [action, aspect] = children2;
-      }
-    } else if (index + 2 < compact.length && nodeCanFillSlot(first, "action_verb") && nodeCanFillSlot(compact[index + 1], "perfective_aspect") && nodeCanLicenseEvidenceGatedObject(compact[index + 2])) {
-      action = first;
-      aspect = compact[index + 1];
-    }
-    if (!action || !aspect) continue;
-    const actualObject = first && first.kind === "construction" ? objectNode : compact[index + 2];
-    const consumed = first && first.kind === "construction" ? 2 : 3;
-    if (index + consumed !== compact.length) continue;
-    const children = [action, aspect, actualObject];
-    const perfective = construction("PostverbalZoPerfectiveVP", "PerfectiveVP", children, {
-      slots: cleanSlots(["perfective_vp", "vp", "action_vp", "predicate", "action_verb", "perfective_aspect", "object", "np"]),
-      note: "Compositional postverbal 咗 perfective with an overt licensed NP object. NP assembly is independent parser infrastructure and does not broaden the construction's linguistic status.",
-      trace: traceInfo("generative_template", {
-        construction_type: "PostverbalZoPerfectiveVP",
-        template_family: "generative_template",
-        template: ["action_verb!", "perfective_aspect!", "licensed_np_object!"],
-        assigned_slots: ["action_verb", "perfective_aspect", "object"],
-        surfaces: children.map((node) => flattenSurface(node)),
-        object_np_license_status: nodeNpLicenseStatus(actualObject),
-        object_np_construction: actualObject.kind === "construction" ? actualObject.type : "bare_nominal_token",
-        hidden_object_inserted: false,
-        evidence_scope_unchanged: true,
-        reason: "v0.5.184 recomposes V+咗 with a reusable licensed NP after NP-internal parsing, instead of enumerating complete object strings."
-      })
-    });
-    return [...compact.slice(0, index), perfective, ...compact.slice(index + consumed)];
-  }
-  return null;
-}
+var createPostverbalZoDetectors = require_postverbal_zo();
+var {
+  postverbalZoPerfectiveFromRawNodes,
+  postverbalZoPerfectiveFromWrappedNodes
+} = createPostverbalZoDetectors({
+  cleanSlots,
+  compositionalNpSubspanFor,
+  construction,
+  flattenSurface,
+  nodeCanFillSlot,
+  nodeCanLicenseEvidenceGatedObject,
+  nodeNpLicenseStatus,
+  templateConstructionFor,
+  traceInfo,
+  withoutIgnorableSpaceText
+});
 var createDefinitionCopularDetectors = require_copular_relations();
 var {
   copularExplanatoryCompositionFallback,
@@ -17841,7 +18029,7 @@ var {
   nominalComplementFromNodes,
   parserInactiveTokenClone,
   templateDerivedSlots,
-  token,
+  token: token2,
   traceInfo,
   transparentDeicticClassifierTopicFromNode,
   transparentTopicContentFromNodes,
@@ -18554,7 +18742,7 @@ function clauseRelationMember(nodes = [], options = {}) {
     const spec = linkerByIndex.get(index);
     if (!spec) {
       if (node && node.kind === "token" && flattenSurface(node) === "仲" && !node.jyutping) {
-        chunk.push(token("仲", {
+        chunk.push(token2("仲", {
           label: "how",
           jyutping: "zung6",
           syntax: "focus_adverb continuative_adverb",
@@ -18961,7 +19149,7 @@ function hierarchicalClauseRelationEdgeFromChildren(children = []) {
   }
   if (!relationSubtype) return null;
   if (immediateTemporalTrigger) {
-    leftNodes = leftNodes.map((node) => node && node.kind === "token" ? token(flattenSurface(node)) : node);
+    leftNodes = leftNodes.map((node) => node && node.kind === "token" ? token2(flattenSurface(node)) : node);
   }
   const relation = buildClauseRelationEdge({
     relation_subtype: relationSubtype,
