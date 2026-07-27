@@ -7,6 +7,722 @@ var __commonJS = (cb, mod) => function __require() {
   }
 };
 
+// src/runtime-resources/presentation/learner-glosses.js
+var require_learner_glosses = __commonJS({
+  "src/runtime-resources/presentation/learner-glosses.js"(exports2, module2) {
+    "use strict";
+    module2.exports = {
+      contextual: {
+        "TimeNP|上": ["last / previous", "Used with a time word."],
+        "TimeNP|下": ["next / following", "Used with a time word."],
+        "TimeNP|個": ["measure word", "Used before this time word."],
+        "TimeNP|禮拜": ["week", "Time word."],
+        "TimeNP|星期五": ["Friday", "Time word."],
+        "TimeNP|次": ["time / occasion", "Used in last time / next time."],
+        "DirectionalMotionVP|上": ["up / upward", "Direction in a movement phrase."],
+        "CompoundDirectionalMotionVP|上": ["up / upward", "Direction in a movement phrase."],
+        "DirectionalMotionVP|落": ["down / downward", "Direction in a movement phrase."],
+        "CompoundDirectionalMotionVP|落": ["down / downward", "Direction in a movement phrase."],
+        "DirectionalMotionVP|嚟": ["come / toward the speaker", "Movement word."],
+        "CompoundDirectionalMotionVP|嚟": ["come / toward the speaker", "Movement word."],
+        "DirectionalMotionVP|返": ["return / go back", "Movement word."],
+        "CompoundDirectionalMotionVP|返": ["return / go back", "Movement word."],
+        "DegreeMannerAdverbial|快": ["quickly / fast", "Tells how the action happens."],
+        "DegreeMannerAdverbial|啲": ["a bit / more", "Makes the description stronger or softer."],
+        "DiMarkedNP|啲": ["some / these", "Used before a noun."],
+        "QuantifiedTimeNP|字": ["five-minute unit", "In this duration expression, each 字 means five minutes."],
+        "ApproximateQuantity|度": ["about / approximately", "Makes the preceding quantity approximate."],
+        "NeedsContext|唔好食": ["needs context", "Could mean do not eat or not good to eat."],
+        "PolarQuestionFrame|咩": ["really? / is that so?", "Sentence-final particle asking a biased yes-or-no question."],
+        "PolarQuestionFrame|㗎": ["assertive / currently relevant", "Inner particle in an ordered question cluster; kept as one visible token."],
+        "DiscourseParticleFrame|啩": ["probably / perhaps", "Sentence-final particle marking uncertainty about the preceding statement."],
+        "DiscourseParticleFrame|喎": ["reportedly / noteworthy", "Sentence-final particle marking broad reportative, noteworthy, reminder, or counterexpectation stance; exact subtype depends on tone and context."],
+        "DiscourseParticleFrame|啦": ["please / let's / then", "Sentence-final 啦 marking a directive, suggestion, invitation, or interpersonal closure."],
+        "DiscourseParticleFrame|喇": ["now / changed situation", "Sentence-final 喇 marking a new or currently relevant situation; it is separate from perfective 咗."],
+        "DiscourseParticleFrame|㗎": ["assertive / currently relevant", "Inner sentence-final particle in an ordered cluster; kept as one visible token."],
+        "DiscourseParticleFrame|啫": ["only / just", "Restrictive or minimizing particle inside an ordered cluster."],
+        "DiscourseParticleFrame|咋": ["only / that's all", "Restrictive or exhaustive-limit particle inside an ordered cluster."],
+        "FocusParticleFrame|得": ["only / just", "Limits the following amount or scalar expression."],
+        "FocusParticleFrame|啫": ["only / just", "Marks the visible amount as small or limited."],
+        "FocusParticleFrame|咋": ["only / that's all", "Marks the visible amount as the limit."],
+        "FragmentQuestion|咩": ["really? / what?", "Reaction question whose claim is understood from context."],
+        "ModifiedNP|咩": ["what / what kind of", "Directly modifies the following noun."],
+        "ProhibitiveImperative|唔好": ["don't", "Tells someone not to do the following action."],
+        "DesiderativeVP|好": ["really / very", "Strengthens the following want expression."],
+        "ExperientialQuestion|未": ["yet? / ever?", "Asks whether the experience has happened yet."]
+      },
+      surface: {
+        // Authorized Glossika Week 16 hobbies/free-time surfaces.
+        "睇戲": ["watch a movie", "Activity phrase."],
+        "行山": ["go hiking", "Activity phrase."],
+        "游水": ["swim", "Activity phrase."],
+        "跑步": ["run", "Activity phrase."],
+        "影相": ["take photos", "Activity phrase."],
+        "聽歌": ["listen to music", "Activity phrase."],
+        "睇書": ["read", "Activity phrase."],
+        "打機": ["play video games", "Activity phrase."],
+        "煮嘢食": ["cook", "Activity phrase; literally cook food."],
+        "唱K": ["do karaoke", "Code-switched activity phrase."],
+        "行街": ["go shopping / browse shops", "Conventional activity phrase."],
+        "去沙灘": ["go to the beach", "Movement plus destination."],
+        "做運動": ["exercise", "Activity phrase."],
+        "畫畫": ["draw / paint", "Activity phrase."],
+        "踢波": ["play football / soccer", "Activity phrase; exact sport depends on context."],
+        "打波": ["play ball", "Activity phrase; exact ball game depends on context."],
+        "彈琴": ["play piano / a stringed keyboard instrument", "Activity phrase."],
+        "釣魚": ["fish", "Activity phrase."],
+        "旅行": ["travel", "Activity phrase."],
+        "唱歌": ["sing", "Activity phrase."],
+        "睇波": ["watch a game", "Activity phrase; normally a ball game."],
+        "瑜伽": ["yoga", "Activity noun."],
+        "露營": ["go camping", "Activity phrase."],
+        "下棋": ["play chess / a board game", "Activity phrase; exact game depends on context."],
+        "行公園": ["walk in the park", "Conventional activity phrase in the supplied lesson."],
+        "上個禮拜": ["last week", "Time phrase."],
+        "上次": ["last time", "Time phrase."],
+        "下次": ["next time", "Time phrase."],
+        "下個星期五": ["next Friday", "Time phrase."],
+        "上嚟": ["come up", "Movement phrase."],
+        "落嚟": ["come down", "Movement phrase."],
+        "返嚟": ["come back", "Movement phrase."],
+        "返上嚟": ["come back up", "Movement phrase."],
+        "快啲": ["quickly / hurry up", "Tells how the action happens."],
+        "啲芒果": ["some mangoes", "Noun phrase."],
+        "可唔可以": ["can / may", "Asks whether something is allowed or possible."],
+        "一個": ["one", "One item with a measure word."],
+        "一個故仔": ["one story", "Thing being talked about."],
+        "一個蘋果": ["one apple", "Thing being acted on."],
+        "第二個": ["another / other one", "A context-supplied choice; the exact reading depends on context."],
+        "第二個故仔": ["the second story", "Thing being talked about."],
+        "你要記得準時還返啲書": ["you need to remember to return the books on time", "VP complement frame."],
+        "記得準時還返啲書": ["remember to return the books on time", "VP complement frame."],
+        "呢個": ["this one", "Demonstrative and classifier used as a context-supplied noun phrase."]
+      },
+      construction: {
+        TimeNP: ["time phrase", "Says when something happens."],
+        DirectionalMotionVP: ["movement phrase", "Shows movement and direction."],
+        DurativeVP: ["continuing-state phrase", "Shows that a state continues with 住."],
+        PerfectiveDirectionalVP: ["completed movement phrase", "Shows completed movement with a final toward/away direction."],
+        ProgressiveDirectionalVP: ["ongoing movement phrase", "Shows movement in progress along a visible path."],
+        PotentialDirectionalVP: ["can-move phrase", "Says the movement can follow or reach the visible direction."],
+        NegativePotentialDirectionalVP: ["cannot-move phrase", "Says the movement cannot follow or reach the visible direction."],
+        RestorativeComplementVP: ["restore-state phrase", "Shows an action restoring a prior or expected state."],
+        RepetitiveComplementVP: ["repeat-action phrase", "Shows an action being repeated or resumed."],
+        CompoundDirectionalMotionVP: ["movement phrase", "Shows return plus direction."],
+        NegatedDirectionalMotionVP: ["negative movement phrase", "Says not to move that way."],
+        NegatedVP: ["negative action phrase", "Says that an action does not happen."],
+        DegreeMannerAdverbial: ["how phrase", "Tells how the action happens."],
+        VocativeAddressTerm: ["address phrase", "Names the person being spoken to."],
+        ANotAQuestion: ["positive-or-negative question", "Asks which of two alternatives is true, such as eat or not eat."],
+        ModalANotAQuestion: ["modal question", "Asks about wanting, permission, ability, or possibility using A-not-A modal structure."],
+        CopularANotAQuestion: ["is-or-isn't question", "Asks whether something is or belongs as stated."],
+        ExperientialYesNoQuestion: ["experience question", "Asks whether someone has ever done or experienced something."],
+        PolarQuestionFrame: ["biased yes-or-no question", "Asks whether a complete statement is true, often with surprise or doubt."],
+        DiscourseParticleFrame: ["particle-marked statement", "Adds one or more visible sentence-final particles to a complete statement."],
+        FocusParticleFrame: ["restrictive focus phrase", "Limits a visible amount or scalar expression with only / just."],
+        ExistentialClause: ["have / exist clause", "Says that someone has something or that something exists."],
+        ExistentialPresentationalClause: ["existential presentation", "Introduces a participant and then states where that participant is."],
+        ExistentialQuestion: ["have / exist question", "Asks whether something is present, available, or possessed."],
+        ExistentialWhQuestion: ["what exists / what is available question", "Asks what thing or kind of thing is present, available, or possessed."],
+        CompletionVP: ["finished-action phrase", "Shows that an action is finished or completed."],
+        CompletionQuestion: ["finished-yet question", "Asks whether an action has been completed yet."],
+        PerfectiveVP: ["perfective action phrase", "Marks an action as a viewed whole with 咗; context supplies its time interpretation."],
+        PostverbalZoPerfectiveVP: ["perfective action phrase", "Marks a visible action + 咗 + overt object as perfective. Time, completion, and discourse interpretation are handled separately."],
+        ExperientialVP: ["past-experience phrase", "Shows that someone has done or experienced the action before."],
+        ReduplicatedVP: ["light-action phrase", "Repeating the verb makes the action sound brief, light, or casual."],
+        CoverbFrame: ["pre-action relation phrase", "Introduces a participant, place, source, or tool before the main action."],
+        PostThemeParticipantRelation: ["for / to", "Links the preceding action and thing to a following person. The exact link depends on the verb and context."],
+        ReportedSpeech: ["reported speech", "Says what someone said or reported."],
+        OpinionStanceFrame: ["opinion frame", "Introduces what someone thinks or feels."],
+        ModalVP: ["modal action phrase", "Shows possibility, permission, ability, desire, or obligation before an action."],
+        StativePredicate: ["state or quality", "Describes a state or quality."],
+        DegreeStativePredicate: ["degree and quality phrase", "Says how strongly a state or quality applies."],
+        ActionStativeVP: ["action plus quality phrase", "Links an action-like predicate to a following state or quality."],
+        StativeNominalComplement: ["descriptive nominal complement", "Turns a visible description into the complement of is / be."],
+        CopularRelationFrame: ["is / relation phrase", "Relates something to a description, identity, or category."],
+        ComplementEllipsisFragment: ["context-supplied complement", "Leaves a selected complement or domain understood from discourse."],
+        SubjectPredicateClause: ["subject-and-predicate clause", "Says what the subject does, is, or experiences."],
+        FragmentQuestion: ["fragment question", "Asks about a context-supplied topic, alternative, or missing item."],
+        MannerAdverbialVP: ["manner phrase", "Shows how an action is carried out."],
+        QuantityNP: ["quantity noun phrase", "A quantity expression with a visible noun head."],
+        MeasureExpression: ["measure expression", "A visible number and unit used to state age, price, area, or length."],
+        NominalPredicateClause: ["measure-predicate clause", "States an age, price, area, or length without inserting a hidden copula."],
+        QuantifiedClassifierNP: ["counted noun phrase", "A numeral, measure word, and visible noun head."],
+        DemonstrativeClassifierNP: ["demonstrative noun phrase", "A phrase such as this one or this story, with a demonstrative, measure word, and noun."],
+        OvertHeadDemonstrativeClassifierNP: ["demonstrative-classifier noun phrase", "A phrase with a visible demonstrative, visible measure word, and visible noun, such as 呢本書."],
+        HeadlessDemonstrativeClassifierNP: ["headless demonstrative-classifier phrase", "A phrase such as 呢個 or 嗰本 with no visible noun. No missing noun is inserted."],
+        QuantifiedTimeNP: ["quantified time phrase", "A time expression quantified by every/each or a numeral."],
+        ApproximateQuantity: ["approximate quantity phrase", "A numeral and measure word marked as about or approximately that amount."],
+        SourceMotionClause: ["source-motion clause", "Shows a movement beginning from a source place."],
+        DiMarkedNP: ["noun phrase", "Uses 啲 before a noun: some / the / these items."],
+        AssociativeNP: ["linked noun phrase", "A modifier or possessor joined to a visible noun by 嘅."],
+        CoordinatedNP: ["coordinated noun phrase", "Two noun phrases joined by and."],
+        ModifiedNP: ["modified noun phrase", "A determiner or modifier plus a visible noun head."],
+        NominalHeadSpan: ["noun phrase", "A noun used as a complete noun phrase."],
+        MotionGoalVP: ["motion goal", "Movement toward a place or destination."],
+        DirectedMannerMotionVP: ["directed movement", "Shows how someone moves along a path or toward a destination."],
+        GoalAttainmentMotionVP: ["reached-destination movement", "Shows movement successfully reaching a visible destination."],
+        MotionPurposeChain: ["movement for a purpose", "Shows movement followed by the action it is done for."],
+        SerialVerbPurposeChain: ["linked action-purpose chain", "Shows visible actions in order, with a later purpose action."],
+        PathPhrase: ["path or direction phrase", "Shows the route or direction of movement."],
+        LocativeWhQuestion: ["where question", "Asks where someone went or where something happened."],
+        LocativePostureVP: ["posture and place", "Says someone is sitting, standing, or lying in a place."],
+        LocativePlacePhrase: ["location phrase", "Introduces or states a place."],
+        TransitiveVP: ["action phrase", "An action with a thing after it."],
+        ProductiveVO: ["action phrase", "An action with a thing after it."],
+        ProgressiveVP: ["ongoing action", "Shows an action happening now."],
+        LexicalGiveRelation: ["give", "Shows lexical GIVE with two overt participants; only the reviewed baseline receives candidate roles."],
+        NegatedExistentialClause: ["no / not have", "Says something is not there or not available."],
+        FragmentAnswer: ["short answer", "A short answer whose full meaning comes from context."],
+        NegatedExistentialFragment: ["negative existence answer", "A short no / do not have / there is not response whose domain comes from context."],
+        FormulaDiscourseUnit: ["set response or social phrase", "A conventional response or social expression used as one discourse unit."],
+        MalformedCandidate: ["needs checking", "This line looks incomplete or unusual."],
+        ProhibitiveImperative: ["don't-do command", "Tells someone not to do the following action."],
+        IdentificationFragment: ["identification phrase", "Points out or identifies the context-supplied item, such as this one."],
+        ExperientialQuestion: ["experience question", "Asks whether the experience has happened."],
+        DesiderativeVP: ["wanting phrase", "Expresses wanting to do the following action."],
+        AcceptabilityANotA: ["okay-or-not question", "Asks whether something is okay, possible, or acceptable."],
+        LocativeFragment: ["location fragment", "States a place while the person or thing located there is understood from context."],
+        NeedsContext: ["needs context", "Meaning depends on the situation around it."],
+        VerbComplementVP: ["verb-complement phrase", "A main verb plus a complement, with an object when present."],
+        ResultComplement: ["result phrase", "Says an action reaches or attains a result."],
+        ResultComplementVP: ["result-complement phrase", "Shows an action and its visible resulting state."],
+        NegativePotentialComplement: ["cannot-result phrase", "Says an action cannot reach or attain the result."],
+        ClauseRelationGraph: ["linked clauses", "Two connected Cantonese phrases or clauses."],
+        ConditionalClause: ["if-clause", "States the condition for a following result."],
+        AcceptabilityClause: ["okay / acceptable", "Says that an action or situation is okay or allowed."],
+        IntendedFunctionRelation: ["use or function", "Connects a thing or resource to what it is used for."],
+        PassivePermissiveRelation: ["passive or let / allow relation", "Connects a participant, 畀/俾, another participant, and an event while preserving passive-versus-permission ambiguity."]
+      }
+    };
+  }
+});
+
+// src/render/learner-display.js
+var require_learner_display = __commonJS({
+  "src/render/learner-display.js"(exports2, module2) {
+    "use strict";
+    module2.exports = function createLearnerDisplay2(dependencies = {}) {
+      const { TOKEN_LEXICON: TOKEN_LEXICON2, LEARNER_CONTEXTUAL_GLOSSES: LEARNER_CONTEXTUAL_GLOSSES2, LEARNER_SURFACE_GLOSSES: LEARNER_SURFACE_GLOSSES2, LEARNER_CONSTRUCTION_GLOSSES: LEARNER_CONSTRUCTION_GLOSSES2, diagnosticCompatibilityConstructionType: diagnosticCompatibilityConstructionType2, nodeDisplaySurface: nodeDisplaySurface2 } = dependencies;
+      function cleanLearnerNote2(note) {
+        let text = String(note || "").trim();
+        if (!text) return "";
+        text = text.split(/[.;]/)[0].trim();
+        if (/\b(parser|diagnostic|template|construction|contextual|affordance|slot|syntax|role|internal|retained|transparent|protected|fallback|registry|tokeni[sz]ation|surface|native-speech|implementation)\b/i.test(text)) return "";
+        return text;
+      }
+      function learnerGlossFromLexicon2(surface) {
+        const entry = TOKEN_LEXICON2[String(surface || "")] || {};
+        return cleanLearnerNote2(entry.note);
+      }
+      function contextualLearnerGlossLinesForToken2(node) {
+        const surface = node && node.surface ? String(node.surface) : "";
+        const syntax = node && node.syntax ? String(node.syntax) : "";
+        if (surface === "吓" && /(^|\s)delimitative_aspect(\s|$)/.test(syntax)) {
+          return ["try briefly / do a little", "Marks a light action."];
+        }
+        if (surface === "幾" && /(^|\s)scalar_value_question(\s|$)/.test(syntax)) {
+          return ["how much / to what degree", "Asks about a value on this scale."];
+        }
+        if (surface === "呢" && /(^|\s)discourse_fragment_question(\s|$)/.test(syntax)) {
+          return ["what about…? / and…?", "Returns to a topic or asks about a context-supplied alternative."];
+        }
+        if (surface === "呢" && /(^|\s)sentence_final_question_particle(\s|$)/.test(syntax)) {
+          return ["question particle", "Softly asks for an answer or confirmation."];
+        }
+        if (/(^|\s)have_or_not_experiential_question_marker(\s|$)/.test(syntax)) {
+          return ["ever ... or not?", "Asks whether the experience happened."];
+        }
+        if (/(^|\s)have_or_not_event_question_marker(\s|$)/.test(syntax)) {
+          return ["did ... or not?", "Asks whether the event happened."];
+        }
+        if (surface === "嘅話" && /(^|\s)conditional_marker(\s|$)/.test(syntax)) {
+          return ["if / in the case that", "Introduces a condition for a result."];
+        }
+        if (surface === "用" && /(^|\s)intended_function_use_marker(\s|$)/.test(syntax)) {
+          return ["used for", "Part of 用嚟/用來, linking a thing to its stated use or function."];
+        }
+        if (["嚟", "來"].includes(surface) && /(^|\s)intended_function_lai_linker(\s|$)/.test(syntax)) {
+          return ["for / to", "Links the thing to its stated use or function; it is not a movement verb here."];
+        }
+        return null;
+      }
+      function learnerGlossLinesForToken2(node) {
+        const parent = node && node.parent ? node.parent : "";
+        const surface = node && node.surface ? node.surface : "";
+        const traceLearnerGloss = node && node.trace && Array.isArray(node.trace.learner_gloss_lines) ? node.trace.learner_gloss_lines.filter(Boolean) : [];
+        if (traceLearnerGloss.length) return traceLearnerGloss;
+        const syntaxContextual = contextualLearnerGlossLinesForToken2(node);
+        if (syntaxContextual) return syntaxContextual;
+        const contextual = LEARNER_CONTEXTUAL_GLOSSES2[`${parent}|${surface}`];
+        if (contextual) return contextual;
+        const surfaceGloss = LEARNER_SURFACE_GLOSSES2[surface];
+        if (surfaceGloss) return surfaceGloss;
+        const lexiconGloss = cleanLearnerNote2(node && node.note) || learnerGlossFromLexicon2(surface);
+        if (lexiconGloss) return [lexiconGloss];
+        if (node && node.jyutping) return ["Cantonese word."];
+        return ["Cantonese text."];
+      }
+      function learnerGlossLinesForConstruction2(node) {
+        if (!node || node.kind !== "construction") return ["Cantonese phrase."];
+        const surfaceGloss = LEARNER_SURFACE_GLOSSES2[node.surface || ""];
+        if (surfaceGloss) return surfaceGloss;
+        const trace = node.trace || {};
+        const traceLearnerGloss = Array.isArray(trace.learner_gloss_lines) ? trace.learner_gloss_lines.filter(Boolean) : [];
+        if (traceLearnerGloss.length) return traceLearnerGloss;
+        if (node.type === "ClauseRelationGraph" && trace.topic_chain_status === "licensed_overt_topic_chain") {
+          return ["topic chain", "An overt topic supplies the understood object of later actions in the linked sequence."];
+        }
+        if (node.type === "ClauseRelationGraph" && trace.topic_chain_status === "antecedent_predicate_compatibility_review") {
+          return ["possible topic chain — needs context", "A topic is present, but it does not clearly fit the omitted object of the later action."];
+        }
+        if (trace.particle_cluster_root) {
+          if (node.type === "PolarQuestionFrame") {
+            return ["biased yes-or-no question", "Asks whether the statement is true while preserving the visible inner particle sequence."];
+          }
+          return ["ordered particle phrase", "Shows several sentence-final particles in their visible inside-to-outside scope order."];
+        }
+        if (node.type === "DiscourseParticleFrame") {
+          const family = String(trace.discourse_particle_family || "");
+          if (family === "epistemic_stance") return ["uncertainty-marked statement", "Marks the statement as probable, possible, or uncertain."];
+          if (family === "evidential_noteworthiness") return ["report or notice-marked statement", "Presents the statement as reported, noteworthy, a reminder, or unexpected."];
+          if (family === "directive_interpersonal_closure") return ["prompt or closure phrase", "Uses a final particle for a directive, suggestion, invitation, or conversational closure."];
+          if (family === "change_state_current_relevance") return ["changed-situation statement", "Marks a new, changed, or currently relevant situation."];
+        }
+        const constructionGlossType = node.compatibility_alias || diagnosticCompatibilityConstructionType2(node.type || "");
+        const constructionGloss = LEARNER_CONSTRUCTION_GLOSSES2[constructionGlossType] || LEARNER_CONSTRUCTION_GLOSSES2[node.type || ""];
+        if (constructionGloss) return constructionGloss;
+        const noteGloss = cleanLearnerNote2(node.note || "");
+        if (noteGloss) return [noteGloss];
+        return ["Cantonese phrase."];
+      }
+      function compactLearnerHoverLines2(lines) {
+        return [...new Set((lines || []).map((line) => String(line || "").trim()).filter(Boolean))];
+      }
+      function learnerVisibleSyntax2(syntax = "") {
+        return String(syntax || "").split(/\s+/).filter(Boolean).filter((part) => !/^phase\d+_/i.test(part)).join(" ");
+      }
+      function learnerUiHoverTitleForToken2(node) {
+        if (!node || node.kind !== "token") return "";
+        const role = node.role || node.label || "";
+        const syntax = learnerVisibleSyntax2(node.syntax || "");
+        const displaySurface = node.display_surface || node.surface || "";
+        return compactLearnerHoverLines2([
+          displaySurface,
+          role ? `role: ${role}` : "",
+          syntax ? `syntax: ${syntax}` : "",
+          node.jyutping || "",
+          ...learnerGlossLinesForToken2(node)
+        ]).join("\n");
+      }
+      function learnerUiHoverTitleForConstruction2(node) {
+        if (!node || node.kind !== "construction") return "";
+        return compactLearnerHoverLines2([
+          node.display_surface || nodeDisplaySurface2(node) || node.surface || "",
+          ...learnerGlossLinesForConstruction2(node)
+        ]).join("\n");
+      }
+      function learnerUiHoverTitleForConstructionLayer2(node) {
+        if (!node || node.kind !== "construction") return "";
+        return learnerUiHoverTitleForConstruction2(node);
+      }
+      return {
+        cleanLearnerNote: cleanLearnerNote2,
+        learnerGlossFromLexicon: learnerGlossFromLexicon2,
+        contextualLearnerGlossLinesForToken: contextualLearnerGlossLinesForToken2,
+        learnerGlossLinesForToken: learnerGlossLinesForToken2,
+        learnerGlossLinesForConstruction: learnerGlossLinesForConstruction2,
+        compactLearnerHoverLines: compactLearnerHoverLines2,
+        learnerVisibleSyntax: learnerVisibleSyntax2,
+        learnerUiHoverTitleForToken: learnerUiHoverTitleForToken2,
+        learnerUiHoverTitleForConstruction: learnerUiHoverTitleForConstruction2,
+        learnerUiHoverTitleForConstructionLayer: learnerUiHoverTitleForConstructionLayer2
+      };
+    };
+  }
+});
+
+// src/render/block-renderer.js
+var require_block_renderer = __commonJS({
+  "src/render/block-renderer.js"(exports2, module2) {
+    "use strict";
+    module2.exports = function createBlockRenderer(dependencies = {}) {
+      const {
+        Notice,
+        diagnosticSummary: diagnosticSummary2,
+        jyutpingAuditSummary: jyutpingAuditSummary2,
+        formatDiagnosticMarkdown: formatDiagnosticMarkdown2,
+        foldedLexicalRepairDisplayRows: foldedLexicalRepairDisplayRows2,
+        normalizationReviewSuggestionDisplayRows: normalizationReviewSuggestionDisplayRows2,
+        learnerUiHoverAuditSummary: learnerUiHoverAuditSummary2,
+        learnerUiHoverAuditRows: learnerUiHoverAuditRows2,
+        diagnosticTokenRows: diagnosticTokenRows2,
+        diagnosticFinalRows: diagnosticFinalRows2,
+        diagnosticLegend: diagnosticLegend2,
+        normalizeSurface: normalizeSurface2,
+        safeClass: safeClass2,
+        nodeDisplaySurface: nodeDisplaySurface2,
+        learnerUiHoverTitleForToken: learnerUiHoverTitleForToken2,
+        learnerUiHoverTitleForConstruction: learnerUiHoverTitleForConstruction2,
+        learnerUiHoverTitleForConstructionLayer: learnerUiHoverTitleForConstructionLayer2,
+        shouldCollapseClauseSequenceForDisplay: shouldCollapseClauseSequenceForDisplay2,
+        shouldCollapseGreedyWrapperForDisplay: shouldCollapseGreedyWrapperForDisplay2,
+        parserShadowRepairDisplayRows: parserShadowRepairDisplayRows2,
+        parserShadowRepairKindLabel: parserShadowRepairKindLabel2,
+        splitJyutping: splitJyutping2
+      } = dependencies;
+      function createEl(tag, className, text) {
+        const element = document.createElement(tag);
+        if (className) element.className = className;
+        if (text !== void 0 && text !== null) element.textContent = String(text);
+        return element;
+      }
+      function renderParserShadowRepairs(analysis, container) {
+        const rows = parserShadowRepairDisplayRows2(analysis);
+        if (!rows.length) return;
+        const box = createEl("div", "canto-normalization-shadow-repairs canto-normalization-shadow-repairs-compact");
+        const label = rows.length > 1 ? `Shadow ×${rows.length}:` : "Shadow:";
+        box.appendChild(createEl("span", "canto-normalization-shadow-label", label));
+        box.setAttribute("title", rows.map((row) => {
+          const kindLabel = parserShadowRepairKindLabel2(row);
+          const note = row.note || "Parser-shadow repair applied to parser shadow only.";
+          return `${row.display} — ${kindLabel}. ${note} Raw learner-visible text is not replaced.`;
+        }).join("\n"));
+        rows.forEach((row) => {
+          const item = createEl("span", "canto-normalization-shadow-repair");
+          const kindLabel = parserShadowRepairKindLabel2(row);
+          const titleParts = [
+            `${row.display} — ${kindLabel}.`,
+            row.note || "Parser-shadow repair applied to parser shadow only.",
+            "Raw learner-visible text is not replaced."
+          ];
+          item.setAttribute("title", titleParts.join(" "));
+          item.appendChild(createEl("span", "canto-normalization-shadow-raw", row.raw));
+          item.appendChild(createEl("span", "canto-normalization-shadow-arrow", "→"));
+          item.appendChild(createEl("span", "canto-normalization-shadow-normalized", row.normalized));
+          box.appendChild(item);
+        });
+        container.appendChild(box);
+      }
+      async function copyTextToClipboard(text) {
+        if (typeof navigator !== "undefined" && navigator.clipboard && navigator.clipboard.writeText) {
+          await navigator.clipboard.writeText(text);
+          return;
+        }
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        textarea.setAttribute("readonly", "");
+        textarea.style.position = "fixed";
+        textarea.style.left = "-9999px";
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        textarea.remove();
+      }
+      function renderCopyButton(parent, textFactory, label, successMessage) {
+        const button = createEl("button", "canto-diagnostic-copy canto-diagnostic-ui-only", label);
+        button.type = "button";
+        button.addEventListener("click", async (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          try {
+            const text = await Promise.resolve(textFactory());
+            if (!String(text || "").trim()) {
+              new Notice("No Canto Span diagnostics found to copy.");
+              return;
+            }
+            await copyTextToClipboard(text);
+            new Notice(successMessage || "Copied Canto Span diagnostic.");
+          } catch (error) {
+            console.error("Canto Span diagnostic copy failed", error);
+            new Notice("Could not copy diagnostic text.");
+          }
+        });
+        parent.appendChild(button);
+        return button;
+      }
+      function renderActionButton(parent, action, label) {
+        const button = createEl("button", "canto-diagnostic-copy canto-diagnostic-ui-only", label);
+        button.type = "button";
+        button.addEventListener("click", async (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          try {
+            await action();
+          } catch (error) {
+            console.error("Canto Span diagnostic action failed", error);
+            new Notice("Could not run Canto Span diagnostic action.");
+          }
+        });
+        parent.appendChild(button);
+        return button;
+      }
+      function renderPre(parent, className, value) {
+        const pre = createEl("pre", className);
+        pre.textContent = typeof value === "string" ? value : JSON.stringify(value, null, 2);
+        parent.appendChild(pre);
+      }
+      function renderDiagnosticDetails(analysis, container, expanded = false) {
+        const details = createEl("details", "canto-diagnostic");
+        details.open = Boolean(expanded);
+        const summary = diagnosticSummary2(analysis);
+        const jyutping = jyutpingAuditSummary2(analysis);
+        const reviewNote = summary.review_count ? ` — ${summary.review_count} review trace(s)` : " — no review traces";
+        const jyutpingNote = jyutping.status === "WARN" ? ` — Jyutping WARN (${jyutping.items_needing_review.length})` : " — Jyutping PASS";
+        details.appendChild(createEl("summary", "canto-diagnostic-summary", `Parse diagnostic${reviewNote}${jyutpingNote}`));
+        const body = createEl("div", "canto-diagnostic-body");
+        const toolbar = createEl("div", "canto-diagnostic-toolbar");
+        renderCopyButton(toolbar, () => formatDiagnosticMarkdown2(analysis), "Copy diagnostic", "Copied this Canto Span diagnostic.");
+        body.appendChild(toolbar);
+        body.appendChild(createEl("div", "canto-diagnostic-caption", "Summary"));
+        renderPre(body, "canto-diagnostic-json", summary);
+        const foldedRepairRows = foldedLexicalRepairDisplayRows2(analysis);
+        if (foldedRepairRows.length) {
+          body.appendChild(createEl("div", "canto-diagnostic-caption", "Folded pinyin-fallout lexical repairs"));
+          renderPre(body, "canto-diagnostic-json", {
+            status: "PASS",
+            policy: "Repairs are applied to parser shadow only. Raw learner-visible text is preserved.",
+            repairs: foldedRepairRows
+          });
+        }
+        const reviewSuggestionRows = normalizationReviewSuggestionDisplayRows2(analysis);
+        if (reviewSuggestionRows.length) {
+          body.appendChild(createEl("div", "canto-diagnostic-caption", "Review-only normalization suggestions"));
+          renderPre(body, "canto-diagnostic-json", {
+            status: "PASS",
+            policy: "Compatibility lane only. Current v0.5.107 pinyin-fallout repairs should not depend on review-only suggestions.",
+            suggestions: reviewSuggestionRows
+          });
+        }
+        body.appendChild(createEl("div", "canto-diagnostic-caption", "Jyutping audit"));
+        renderPre(body, "canto-diagnostic-json", jyutpingAuditSummary2(analysis));
+        body.appendChild(createEl("div", "canto-diagnostic-caption", "Learner UI hover audit"));
+        renderPre(body, "canto-diagnostic-json", learnerUiHoverAuditSummary2(analysis));
+        body.appendChild(createEl("div", "canto-diagnostic-caption", "Learner UI hover rows"));
+        renderPre(body, "canto-diagnostic-json", learnerUiHoverAuditRows2(analysis));
+        body.appendChild(createEl("div", "canto-diagnostic-caption", "Tokenization before construction wrapping"));
+        renderPre(body, "canto-diagnostic-json", diagnosticTokenRows2(analysis));
+        body.appendChild(createEl("div", "canto-diagnostic-caption", "Final construction tree"));
+        renderPre(body, "canto-diagnostic-json", diagnosticFinalRows2(analysis));
+        body.appendChild(createEl("div", "canto-diagnostic-caption", "Legend"));
+        renderPre(body, "canto-diagnostic-json", diagnosticLegend2());
+        details.appendChild(body);
+        container.appendChild(details);
+      }
+      function parseContextDirectiveLine(line, sourceLineIndex) {
+        const raw = String(line || "");
+        const trimmed = raw.trim().replace(/^[\uFEFF\u200B-\u200D\u2060]+/u, "");
+        const prefix = trimmed.slice(0, 8);
+        if (prefix.normalize("NFKC").toLowerCase() !== "@context") return null;
+        let remainder = trimmed.slice(8).replace(/^[\s\u00A0\u3000]+/u, "");
+        const separator = remainder.charAt(0);
+        if (separator !== ":" && separator !== "：") return null;
+        remainder = remainder.slice(1);
+        const contextSource = remainder.trim();
+        return {
+          id: `block-context-${sourceLineIndex}`,
+          directive_kind: "explicit_context_next_source",
+          directive_line_index: sourceLineIndex,
+          raw_directive: raw,
+          separator_code_point: separator.codePointAt(0).toString(16).toUpperCase().padStart(4, "0"),
+          source: contextSource
+        };
+      }
+      function parseBlockOptions2(source) {
+        const lines = String(source || "").split(/\r?\n/);
+        const options = {
+          lines: [],
+          entries: [],
+          context_directives: [],
+          directive_warnings: []
+        };
+        let pendingContext = null;
+        for (let sourceLineIndex = 0; sourceLineIndex < lines.length; sourceLineIndex += 1) {
+          const line = lines[sourceLineIndex];
+          const oneBasedLineIndex = sourceLineIndex + 1;
+          const trimmed = line.trim();
+          if (trimmed === "@diagnostic" || trimmed === "@debug" || trimmed === "@trace") continue;
+          const contextDirective = parseContextDirectiveLine(line, oneBasedLineIndex);
+          if (contextDirective) {
+            if (!normalizeSurface2(contextDirective.source)) {
+              options.directive_warnings.push({
+                kind: "empty_context_directive",
+                directive_line_index: oneBasedLineIndex,
+                raw_directive: line
+              });
+              pendingContext = null;
+              continue;
+            }
+            if (pendingContext) {
+              options.directive_warnings.push({
+                kind: "unconsumed_context_directive_replaced",
+                directive_line_index: pendingContext.directive_line_index,
+                replacement_directive_line_index: oneBasedLineIndex,
+                raw_directive: pendingContext.raw_directive
+              });
+            }
+            pendingContext = contextDirective;
+            options.context_directives.push({ ...contextDirective });
+            continue;
+          }
+          options.lines.push(line);
+          const isSourceRow = Boolean(normalizeSurface2(line));
+          const appliedContext = pendingContext && isSourceRow ? {
+            ...pendingContext,
+            target_source_line_index: oneBasedLineIndex
+          } : null;
+          const entry = {
+            line,
+            source_line_index: oneBasedLineIndex,
+            context_directive: appliedContext,
+            context: appliedContext ? { turns: [{ ...appliedContext }] } : null
+          };
+          options.entries.push(entry);
+          if (isSourceRow) pendingContext = null;
+        }
+        if (pendingContext) {
+          options.directive_warnings.push({
+            kind: "dangling_context_directive",
+            directive_line_index: pendingContext.directive_line_index,
+            raw_directive: pendingContext.raw_directive,
+            source: pendingContext.source
+          });
+        }
+        return options;
+      }
+      function renderJyutping(container, jyutping) {
+        const wrapper = createEl("span", "canto-jyutping");
+        for (const syllable of splitJyutping2(jyutping)) {
+          const match = syllable.match(/^(.*?)([1-6])$/);
+          const syl = createEl("span", `vjp-syl ${match ? `vjp-tone-${match[2]}` : "vjp-no-tone"}`);
+          if (match) {
+            syl.appendChild(createEl("span", "vjp-base", match[1]));
+            syl.appendChild(createEl("span", "vjp-num", match[2]));
+          } else {
+            syl.appendChild(createEl("span", "vjp-base", syllable));
+          }
+          wrapper.appendChild(syl);
+        }
+        container.appendChild(wrapper);
+      }
+      function renderToken(node, container) {
+        const cls = [`canto-token`, `cs-${safeClass2(node.label)}`];
+        if (node.label === "neutral") cls.push("canto-token-neutral", "canto-lexical-unknown");
+        const displaySurface = node.display_surface || node.surface;
+        const span = createEl("span", cls.join(" "));
+        span.setAttribute("tabindex", "0");
+        span.setAttribute("data-canto-kind", "token");
+        span.setAttribute("data-canto-surface", displaySurface);
+        span.setAttribute("data-canto-parser-surface", node.surface);
+        span.setAttribute("data-canto-role", node.label);
+        span.setAttribute("data-canto-syntax", node.syntax);
+        span.setAttribute("data-canto-review", node.review);
+        span.setAttribute("title", learnerUiHoverTitleForToken2(node));
+        if (node.jyutping) renderJyutping(span, node.jyutping);
+        span.appendChild(createEl("span", "canto-hanzi", displaySurface));
+        container.appendChild(span);
+      }
+      function collectConstructionLayout(node) {
+        const leaves = [];
+        const spans = [];
+        function walk(current, depth) {
+          if (!current) return { start: leaves.length, end: leaves.length };
+          if (current.kind !== "construction") {
+            const start2 = leaves.length;
+            leaves.push(current);
+            return { start: start2, end: leaves.length };
+          }
+          const start = leaves.length;
+          for (const child of current.children || []) walk(child, depth + 1);
+          const end = leaves.length;
+          spans.push({ node: current, start, end, depth, width: end - start });
+          return { start, end };
+        }
+        walk(node, 0);
+        return { leaves, spans };
+      }
+      function renderConstructionLeaf(node, container) {
+        if (!node) return;
+        if (node.kind === "text") {
+          container.appendChild(document.createTextNode(node.display_text || node.text));
+          return;
+        }
+        if (node.kind === "token") {
+          renderToken(node, container);
+        }
+      }
+      function renderConstruction(node, container) {
+        const { leaves, spans } = collectConstructionLayout(node);
+        const cls = ["canto-pattern", "canto-pattern-layered", `canto-construction-${safeClass2(node.type)}`];
+        if (node.primary) cls.push("canto-primary-phrase", `canto-primary-${safeClass2(node.primary)}`);
+        const outer = createEl("span", cls.join(" "));
+        outer.setAttribute("data-canto-kind", "construction");
+        outer.setAttribute("data-canto-construction", node.type);
+        outer.setAttribute("title", learnerUiHoverTitleForConstruction2(node));
+        outer.style.gridTemplateColumns = leaves.length ? `repeat(${leaves.length}, max-content)` : "max-content";
+        leaves.forEach((leaf, index) => {
+          const cell = createEl("span", "canto-pattern-leaf");
+          cell.style.gridColumn = `${index + 1} / ${index + 2}`;
+          cell.style.gridRow = "1";
+          renderConstructionLeaf(leaf, cell);
+          outer.appendChild(cell);
+        });
+        spans.filter((span) => span.width > 0).sort((a, b) => {
+          if (b.width !== a.width) return b.width - a.width;
+          if (a.start !== b.start) return a.start - b.start;
+          return a.depth - b.depth;
+        }).forEach((span, layerIndex) => {
+          const layer = createEl("span", `canto-construction-layer canto-construction-depth-${Math.min(layerIndex, 7)}`);
+          layer.style.gridColumn = `${span.start + 1} / ${span.end + 1}`;
+          layer.style.gridRow = `${layerIndex + 2}`;
+          layer.setAttribute("data-canto-construction", span.node.type);
+          layer.setAttribute("title", learnerUiHoverTitleForConstructionLayer2(span.node));
+          layer.appendChild(createEl("span", "canto-construction-line"));
+          layer.appendChild(createEl("span", "canto-pattern-label", span.node.label));
+          outer.appendChild(layer);
+        });
+        container.appendChild(outer);
+      }
+      function renderNode(node, container, options = {}) {
+        if (!node) return;
+        if (node.kind === "text") {
+          container.appendChild(document.createTextNode(node.text));
+          return;
+        }
+        if (node.kind === "token") {
+          renderToken(node, container);
+          return;
+        }
+        if (node.kind === "construction") {
+          if (shouldCollapseClauseSequenceForDisplay2(node, options) || shouldCollapseGreedyWrapperForDisplay2(node, options)) {
+            for (const child of node.children || []) renderNode(child, container, options);
+            return;
+          }
+          renderConstruction(node, container);
+        }
+      }
+      return {
+        createEl,
+        copyTextToClipboard,
+        renderCopyButton,
+        renderActionButton,
+        renderPre,
+        renderDiagnosticDetails,
+        parseContextDirectiveLine,
+        parseBlockOptions: parseBlockOptions2,
+        splitJyutping: splitJyutping2,
+        renderJyutping,
+        renderToken,
+        collectConstructionLayout,
+        renderConstructionLeaf,
+        renderConstruction,
+        renderNode,
+        renderParserShadowRepairs
+      };
+    };
+  }
+});
+
 // src/runtime-resources/presentation/role-colors.js
 var require_role_colors = __commonJS({
   "src/runtime-resources/presentation/role-colors.js"(exports2, module2) {
@@ -24,6 +740,473 @@ var require_role_colors = __commonJS({
       { key: "particle", label: "particle", cssVars: ["particle"], defaultColor: "#BFD7EA" },
       { key: "func", label: "func", cssVars: ["func"], defaultColor: "#FFFFFF" }
     ];
+  }
+});
+
+// src/plugin/settings.js
+var require_settings = __commonJS({
+  "src/plugin/settings.js"(exports2, module2) {
+    "use strict";
+    var BLOCK_CLASS = "canto-study-block canto-span-block";
+    var GLOBAL_COLOR_ACCESSIBILITY_CLASS = "canto-global-color-accessibility-enabled";
+    var GLOBAL_DIAGNOSTICS_CLASS = "canto-global-diagnostics-enabled";
+    var GLOBAL_DIAGNOSTICS_EXPANDED_CLASS = "canto-global-diagnostics-expanded";
+    var ROLE_COLOR_SETTINGS = require_role_colors();
+    var DEFAULT_ROLE_COLORS = Object.fromEntries(
+      ROLE_COLOR_SETTINGS.map((role) => [role.key, role.defaultColor])
+    );
+    var DEFAULT_SETTINGS = {
+      showDiagnostics: true,
+      expandDiagnostics: false,
+      showColorAccessibilityMarkers: false,
+      roleColors: { ...DEFAULT_ROLE_COLORS }
+    };
+    function normalizeHexColor(value) {
+      const raw = String(value || "").trim();
+      const short = raw.match(/^#([0-9a-f]{3})$/i);
+      if (short) {
+        return `#${short[1].split("").map((ch) => ch + ch).join("")}`.toUpperCase();
+      }
+      const long = raw.match(/^#([0-9a-f]{6})$/i);
+      return long ? `#${long[1]}`.toUpperCase() : "";
+    }
+    function getMergedRoleColors(settings) {
+      const userColors = settings && settings.roleColors && typeof settings.roleColors === "object" ? settings.roleColors : {};
+      const merged = { ...DEFAULT_ROLE_COLORS };
+      for (const role of ROLE_COLOR_SETTINGS) {
+        let normalized = normalizeHexColor(userColors[role.key]);
+        merged[role.key] = normalized || role.defaultColor;
+      }
+      return merged;
+    }
+    module2.exports = {
+      BLOCK_CLASS,
+      GLOBAL_COLOR_ACCESSIBILITY_CLASS,
+      GLOBAL_DIAGNOSTICS_CLASS,
+      GLOBAL_DIAGNOSTICS_EXPANDED_CLASS,
+      ROLE_COLOR_SETTINGS,
+      DEFAULT_ROLE_COLORS,
+      DEFAULT_SETTINGS,
+      normalizeHexColor,
+      getMergedRoleColors
+    };
+  }
+});
+
+// src/plugin/canto-span-plugin.js
+var require_canto_span_plugin = __commonJS({
+  "src/plugin/canto-span-plugin.js"(exports2, module2) {
+    "use strict";
+    var { Plugin, PluginSettingTab, Setting, Notice } = require("obsidian");
+    var createBlockRenderer = require_block_renderer();
+    var {
+      BLOCK_CLASS,
+      GLOBAL_COLOR_ACCESSIBILITY_CLASS,
+      GLOBAL_DIAGNOSTICS_CLASS,
+      GLOBAL_DIAGNOSTICS_EXPANDED_CLASS,
+      ROLE_COLOR_SETTINGS,
+      DEFAULT_ROLE_COLORS,
+      DEFAULT_SETTINGS,
+      normalizeHexColor,
+      getMergedRoleColors
+    } = require_settings();
+    module2.exports = function createCantoSpanPlugin2(dependencies = {}) {
+      const {
+        CANTO_SPAN_RUNTIME_VERSION: CANTO_SPAN_RUNTIME_VERSION2,
+        analyzeLine: analyzeLine2,
+        normalizeSurface: normalizeSurface2,
+        formatDiagnosticMarkdownForNote: formatDiagnosticMarkdownForNote2,
+        diagnosticExportPayloadsForNote: diagnosticExportPayloadsForNote2,
+        formatNoteMarkdownWithDiagnostics: formatNoteMarkdownWithDiagnostics2,
+        formatDiagnosticMarkdown: formatDiagnosticMarkdown2,
+        diagnosticSummary: diagnosticSummary2,
+        jyutpingAuditSummary: jyutpingAuditSummary2,
+        foldedLexicalRepairDisplayRows: foldedLexicalRepairDisplayRows2,
+        normalizationReviewSuggestionDisplayRows: normalizationReviewSuggestionDisplayRows2,
+        learnerUiHoverAuditSummary: learnerUiHoverAuditSummary2,
+        learnerUiHoverAuditRows: learnerUiHoverAuditRows2,
+        diagnosticTokenRows: diagnosticTokenRows2,
+        diagnosticFinalRows: diagnosticFinalRows2,
+        diagnosticLegend: diagnosticLegend2,
+        safeClass: safeClass2,
+        nodeDisplaySurface: nodeDisplaySurface2,
+        learnerUiHoverTitleForToken: learnerUiHoverTitleForToken2,
+        learnerUiHoverTitleForConstruction: learnerUiHoverTitleForConstruction2,
+        learnerUiHoverTitleForConstructionLayer: learnerUiHoverTitleForConstructionLayer2,
+        shouldCollapseClauseSequenceForDisplay: shouldCollapseClauseSequenceForDisplay2,
+        shouldCollapseGreedyWrapperForDisplay: shouldCollapseGreedyWrapperForDisplay2,
+        parserShadowRepairDisplayRows: parserShadowRepairDisplayRows2,
+        parserShadowRepairKindLabel: parserShadowRepairKindLabel2,
+        splitJyutping: splitJyutping2
+      } = dependencies;
+      const {
+        createEl,
+        renderCopyButton,
+        renderActionButton,
+        renderDiagnosticDetails,
+        parseBlockOptions: parseBlockOptions2,
+        renderNode,
+        renderParserShadowRepairs
+      } = createBlockRenderer({
+        Notice,
+        diagnosticSummary: diagnosticSummary2,
+        jyutpingAuditSummary: jyutpingAuditSummary2,
+        formatDiagnosticMarkdown: formatDiagnosticMarkdown2,
+        foldedLexicalRepairDisplayRows: foldedLexicalRepairDisplayRows2,
+        normalizationReviewSuggestionDisplayRows: normalizationReviewSuggestionDisplayRows2,
+        learnerUiHoverAuditSummary: learnerUiHoverAuditSummary2,
+        learnerUiHoverAuditRows: learnerUiHoverAuditRows2,
+        diagnosticTokenRows: diagnosticTokenRows2,
+        diagnosticFinalRows: diagnosticFinalRows2,
+        diagnosticLegend: diagnosticLegend2,
+        normalizeSurface: normalizeSurface2,
+        safeClass: safeClass2,
+        nodeDisplaySurface: nodeDisplaySurface2,
+        learnerUiHoverTitleForToken: learnerUiHoverTitleForToken2,
+        learnerUiHoverTitleForConstruction: learnerUiHoverTitleForConstruction2,
+        learnerUiHoverTitleForConstructionLayer: learnerUiHoverTitleForConstructionLayer2,
+        shouldCollapseClauseSequenceForDisplay: shouldCollapseClauseSequenceForDisplay2,
+        shouldCollapseGreedyWrapperForDisplay: shouldCollapseGreedyWrapperForDisplay2,
+        parserShadowRepairDisplayRows: parserShadowRepairDisplayRows2,
+        parserShadowRepairKindLabel: parserShadowRepairKindLabel2,
+        splitJyutping: splitJyutping2
+      });
+      class CantoSpanPlugin extends Plugin {
+        async onload() {
+          await this.loadSettings();
+          this.renderedCantoBlocks = /* @__PURE__ */ new Map();
+          this.syncGlobalSettingClasses();
+          this.startDiagnosticDetailsObserver();
+          this.registerMarkdownCodeBlockProcessor("canto-span", (source, element) => {
+            this.renderedCantoBlocks.set(element, source);
+            this.renderBlock(source, element);
+          });
+          this.addSettingTab(new CantoSpanSettingTab(this.app, this));
+        }
+        onunload() {
+          if (this.diagnosticDetailsObserver) {
+            this.diagnosticDetailsObserver.disconnect();
+            this.diagnosticDetailsObserver = null;
+          }
+          if (typeof document !== "undefined" && document.body) {
+            document.body.classList.remove(GLOBAL_COLOR_ACCESSIBILITY_CLASS);
+            document.body.classList.remove(GLOBAL_DIAGNOSTICS_CLASS);
+            document.body.classList.remove(GLOBAL_DIAGNOSTICS_EXPANDED_CLASS);
+            this.clearRoleColorVariables();
+          }
+        }
+        async loadSettings() {
+          const loaded = await this.loadData();
+          this.settings = Object.assign({}, DEFAULT_SETTINGS, loaded || {});
+          this.settings.roleColors = getMergedRoleColors(this.settings);
+        }
+        async saveSettings() {
+          await this.saveData(this.settings);
+          this.syncGlobalSettingClasses();
+        }
+        syncGlobalSettingClasses() {
+          if (typeof document === "undefined" || !document.body) return;
+          this.pruneRenderedCantoBlocks();
+          document.body.classList.toggle(
+            GLOBAL_COLOR_ACCESSIBILITY_CLASS,
+            Boolean(this.settings && this.settings.showColorAccessibilityMarkers)
+          );
+          document.body.classList.toggle(
+            GLOBAL_DIAGNOSTICS_CLASS,
+            Boolean(this.settings && this.settings.showDiagnostics)
+          );
+          document.body.classList.toggle(
+            GLOBAL_DIAGNOSTICS_EXPANDED_CLASS,
+            Boolean(this.settings && this.settings.expandDiagnostics)
+          );
+          this.syncRoleColorVariables();
+          this.scheduleRenderedDiagnosticDetailsSync();
+        }
+        syncRoleColorVariables() {
+          if (typeof document === "undefined" || !document.body) return;
+          const colors = getMergedRoleColors(this.settings);
+          this.settings.roleColors = colors;
+          for (const role of ROLE_COLOR_SETTINGS) {
+            const color = colors[role.key];
+            for (const cssVar of role.cssVars) {
+              document.body.style.setProperty(`--canto-user-color-${cssVar}`, color);
+            }
+          }
+        }
+        clearRoleColorVariables() {
+          if (typeof document === "undefined" || !document.body) return;
+          for (const role of ROLE_COLOR_SETTINGS) {
+            for (const cssVar of role.cssVars) {
+              document.body.style.removeProperty(`--canto-user-color-${cssVar}`);
+            }
+          }
+        }
+        pruneRenderedCantoBlocks() {
+          if (!this.renderedCantoBlocks) return 0;
+          let pruned = 0;
+          for (const [element] of Array.from(this.renderedCantoBlocks.entries())) {
+            if (!element || !element.isConnected) {
+              this.renderedCantoBlocks.delete(element);
+              pruned += 1;
+            }
+          }
+          return pruned;
+        }
+        getRenderedDiagnosticDetails() {
+          this.pruneRenderedCantoBlocks();
+          const detailsSet = /* @__PURE__ */ new Set();
+          if (this.renderedCantoBlocks) {
+            for (const element of this.renderedCantoBlocks.keys()) {
+              if (!element || !element.isConnected || typeof element.querySelectorAll !== "function") continue;
+              for (const details of Array.from(element.querySelectorAll(".canto-study-block details.canto-diagnostic"))) {
+                detailsSet.add(details);
+              }
+            }
+          }
+          if (typeof document !== "undefined" && typeof document.querySelectorAll === "function") {
+            for (const details of Array.from(document.querySelectorAll(".canto-study-block details.canto-diagnostic"))) {
+              detailsSet.add(details);
+            }
+          }
+          return Array.from(detailsSet);
+        }
+        syncRenderedDiagnosticDetails() {
+          const shouldOpen = Boolean(this.settings && this.settings.expandDiagnostics);
+          for (const details of this.getRenderedDiagnosticDetails()) {
+            if (shouldOpen) {
+              details.open = true;
+              details.setAttribute("open", "");
+              details.setAttribute("data-canto-expanded-by-setting", "true");
+            } else {
+              details.open = false;
+              details.removeAttribute("open");
+              details.setAttribute("data-canto-expanded-by-setting", "false");
+            }
+          }
+        }
+        scheduleRenderedDiagnosticDetailsSync() {
+          this.syncRenderedDiagnosticDetails();
+          if (typeof requestAnimationFrame === "function") {
+            requestAnimationFrame(() => this.syncRenderedDiagnosticDetails());
+          }
+          if (typeof window !== "undefined" && typeof window.setTimeout === "function") {
+            window.setTimeout(() => this.syncRenderedDiagnosticDetails(), 0);
+          }
+        }
+        queueDiagnosticDetailsSync() {
+          if (this.diagnosticDetailsSyncQueued) return;
+          this.diagnosticDetailsSyncQueued = true;
+          const run = () => {
+            this.diagnosticDetailsSyncQueued = false;
+            this.syncRenderedDiagnosticDetails();
+          };
+          if (typeof requestAnimationFrame === "function") {
+            requestAnimationFrame(run);
+          } else if (typeof window !== "undefined" && typeof window.setTimeout === "function") {
+            window.setTimeout(run, 0);
+          } else {
+            run();
+          }
+        }
+        startDiagnosticDetailsObserver() {
+          if (typeof MutationObserver === "undefined" || typeof document === "undefined" || !document.body) return;
+          this.diagnosticDetailsObserver = new MutationObserver((mutations) => {
+            for (const mutation of mutations) {
+              for (const node of Array.from(mutation.addedNodes || [])) {
+                if (!node || node.nodeType !== 1) continue;
+                const element = node;
+                if (element.matches && element.matches("details.canto-diagnostic")) {
+                  this.queueDiagnosticDetailsSync();
+                  return;
+                }
+                if (element.querySelector && element.querySelector("details.canto-diagnostic")) {
+                  this.queueDiagnosticDetailsSync();
+                  return;
+                }
+              }
+            }
+          });
+          this.diagnosticDetailsObserver.observe(document.body, { childList: true, subtree: true });
+        }
+        refreshRenderedBlocks() {
+          if (!this.renderedCantoBlocks) return;
+          this.pruneRenderedCantoBlocks();
+          for (const [element, source] of Array.from(this.renderedCantoBlocks.entries())) {
+            if (!element || !element.isConnected) continue;
+            this.renderBlock(source, element);
+          }
+        }
+        async readActiveNoteMarkdown() {
+          const file = this.app.workspace && this.app.workspace.getActiveFile ? this.app.workspace.getActiveFile() : null;
+          if (!file) return { file: null, markdown: "" };
+          const markdown = await this.app.vault.read(file);
+          return { file, markdown };
+        }
+        async formatActiveNoteDiagnostics() {
+          const { markdown } = await this.readActiveNoteMarkdown();
+          return formatDiagnosticMarkdownForNote2(markdown);
+        }
+        async saveActiveNoteDiagnosticsJson() {
+          const { file, markdown } = await this.readActiveNoteMarkdown();
+          if (!file || !file.path) {
+            new Notice("No active note found for Canto Span diagnostics JSON.");
+            return { summaryPath: "", fullPath: "" };
+          }
+          const bundle = diagnosticExportPayloadsForNote2(markdown, file.path);
+          const { summaryPath, fullPath } = bundle.paths;
+          if (!summaryPath || !fullPath) {
+            new Notice("Could not determine Canto Span diagnostics JSON paths.");
+            return { summaryPath: "", fullPath: "" };
+          }
+          for (const outputPath of [summaryPath, fullPath]) {
+            const existing = this.app.vault.getAbstractFileByPath(outputPath);
+            if (existing && existing.children) {
+              new Notice(`Cannot write Canto Span diagnostics JSON: ${outputPath} is a folder.`);
+              return { summaryPath: "", fullPath: "" };
+            }
+          }
+          const writeJson = async (outputPath, payload) => {
+            const json = JSON.stringify(payload, null, 2);
+            const existing = this.app.vault.getAbstractFileByPath(outputPath);
+            if (existing) await this.app.vault.modify(existing, json);
+            else await this.app.vault.create(outputPath, json);
+          };
+          await writeJson(fullPath, bundle.full);
+          await writeJson(summaryPath, bundle.summary);
+          new Notice(`Saved Canto Span acceptance summary and full diagnostics JSON beside the note.`);
+          return { summaryPath, fullPath };
+        }
+        async formatActiveNoteWithDiagnostics() {
+          const { file, markdown } = await this.readActiveNoteMarkdown();
+          return formatNoteMarkdownWithDiagnostics2(markdown, file && file.path ? file.path : "");
+        }
+        renderBlock(source, element) {
+          element.empty();
+          const options = parseBlockOptions2(source);
+          const expandDiagnostics = Boolean(this.settings && this.settings.expandDiagnostics);
+          const block = createEl("div", BLOCK_CLASS);
+          block.setAttribute("data-canto-runtime-version", CANTO_SPAN_RUNTIME_VERSION2);
+          const titleRow = createEl("div", "canto-title-row");
+          const title = createEl("div", "canto-title");
+          title.appendChild(createEl("span", "canto-title-normal", "Canto Span"));
+          title.appendChild(createEl("span", "canto-title-diagnostic", `Canto Span — Diagnostic v${CANTO_SPAN_RUNTIME_VERSION2}`));
+          titleRow.appendChild(title);
+          const analyzedLines = options.entries.map((entry) => ({
+            line: entry.line,
+            source_line_index: entry.source_line_index,
+            context_directive: entry.context_directive || null,
+            analysis: analyzeLine2(entry.line, entry.context)
+          }));
+          const diagnosticLines = analyzedLines.filter((entry) => normalizeSurface2(entry.line));
+          if (diagnosticLines.length) {
+            renderCopyButton(
+              titleRow,
+              () => this.formatActiveNoteWithDiagnostics(),
+              "Copy note + diagnostics",
+              "Copied the active note with Canto Span diagnostics at the top."
+            );
+            renderCopyButton(
+              titleRow,
+              () => this.formatActiveNoteDiagnostics(),
+              "Copy diagnostics only",
+              "Copied all Canto Span diagnostics in this note."
+            );
+            renderActionButton(
+              titleRow,
+              () => this.saveActiveNoteDiagnosticsJson(),
+              "Save diagnostics JSON"
+            );
+            renderCopyButton(
+              titleRow,
+              () => diagnosticLines.map((entry) => formatDiagnosticMarkdown2(entry.analysis)).join("\n\n---\n\n"),
+              diagnosticLines.length === 1 ? "Copy block diagnostic" : "Copy block diagnostics",
+              diagnosticLines.length === 1 ? "Copied this Canto Span block diagnostic." : "Copied this Canto Span block's diagnostics."
+            );
+          }
+          const legend = createEl("div", "canto-context-review-boundaries");
+          legend.appendChild(createEl("span", "canto-legend-normal", "Parent construction spans wrap child learner-role tokens. Hover/tap tokens for Jyutping."));
+          legend.appendChild(createEl("span", "canto-legend-diagnostic", "Diagnostic mode is enabled in plugin settings: tokenization, Jyutping audit, generated slots, construction match source, and review traces are shown. Use Copy note + diagnostics to copy the whole active note with generated diagnostics at the top, Copy diagnostics only for the generated batch, Save diagnostics JSON to write both a compact acceptance summary and a companion full-diagnostics file beside the active note, or Copy block diagnostic for one block."));
+          const rendered = createEl("div", "canto-rendered");
+          for (const { line, analysis, context_directive: contextDirective } of analyzedLines) {
+            if (contextDirective) {
+              const contextMeta = createEl("div", "canto-context-directive-diagnostic canto-diagnostic-ui-only");
+              contextMeta.setAttribute("data-canto-context-turn-id", contextDirective.id);
+              contextMeta.setAttribute("data-canto-context-directive-line", String(contextDirective.directive_line_index));
+              contextMeta.setAttribute("data-canto-context-target-line", String(contextDirective.target_source_line_index));
+              contextMeta.textContent = `Explicit context → ${contextDirective.source}`;
+              rendered.appendChild(contextMeta);
+            }
+            for (const warning of analysis.warnings) {
+              const warningEl = createEl("div", "canto-context-review-warning", warning);
+              rendered.appendChild(warningEl);
+            }
+            renderParserShadowRepairs(analysis, rendered);
+            const lineNormal = createEl("div", "canto-line canto-line-normal");
+            for (const node of analysis.nodes) renderNode(node, lineNormal, { showDiagnostics: false });
+            rendered.appendChild(lineNormal);
+            const lineDiagnostic = createEl("div", "canto-line canto-line-diagnostic");
+            for (const node of analysis.nodes) renderNode(node, lineDiagnostic, { showDiagnostics: true });
+            rendered.appendChild(lineDiagnostic);
+            if (normalizeSurface2(line)) renderDiagnosticDetails(analysis, rendered, expandDiagnostics);
+          }
+          block.appendChild(titleRow);
+          block.appendChild(legend);
+          block.appendChild(rendered);
+          element.appendChild(block);
+          this.scheduleRenderedDiagnosticDetailsSync();
+        }
+      }
+      ;
+      class CantoSpanSettingTab extends PluginSettingTab {
+        constructor(app, plugin) {
+          super(app, plugin);
+          this.plugin = plugin;
+        }
+        display() {
+          const { containerEl } = this;
+          containerEl.empty();
+          containerEl.createEl("h2", { text: "Canto Span" });
+          new Setting(containerEl).setName("Show parse diagnostics").setDesc("Show tokenization, Jyutping audit, generated slot candidates, final construction tree, and trace source below each rendered line.").addToggle((toggle) => toggle.setValue(Boolean(this.plugin.settings.showDiagnostics)).onChange(async (value) => {
+            this.plugin.settings.showDiagnostics = value;
+            await this.plugin.saveSettings();
+            this.display();
+          }));
+          new Setting(containerEl).setName("Expand diagnostics by default").setDesc("Open diagnostic details automatically when parse diagnostics are shown. This can be set before enabling parse diagnostics.").addToggle((toggle) => toggle.setValue(Boolean(this.plugin.settings.expandDiagnostics)).onChange(async (value) => {
+            this.plugin.settings.expandDiagnostics = value;
+            await this.plugin.saveSettings();
+            this.display();
+          }));
+          new Setting(containerEl).setName("Show color accessibility markers").setDesc("Adds non-color learner-role markers for protanopia, deuteranopia, tritanopia, and grayscale support. When off, learner-role styling uses color only.").addToggle((toggle) => toggle.setValue(Boolean(this.plugin.settings.showColorAccessibilityMarkers)).onChange(async (value) => {
+            this.plugin.settings.showColorAccessibilityMarkers = value;
+            await this.plugin.saveSettings();
+            this.display();
+          }));
+          containerEl.createEl("h3", { text: "Role colors" });
+          const colorDesc = containerEl.createEl("p", { cls: "setting-item-description" });
+          colorDesc.textContent = "Choose learner-role colors. Changes apply to already-rendered canto-span blocks immediately. Reset restores the neon default for that role.";
+          this.plugin.settings.roleColors = getMergedRoleColors(this.plugin.settings);
+          for (const role of ROLE_COLOR_SETTINGS) {
+            new Setting(containerEl).setName(role.label).setDesc(`CSS variable${role.cssVars.length > 1 ? "s" : ""}: ${role.cssVars.map((cssVar) => `--canto-color-${cssVar}`).join(", ")}`).addColorPicker((picker) => picker.setValue(this.plugin.settings.roleColors[role.key] || role.defaultColor).onChange(async (value) => {
+              const normalized = normalizeHexColor(value) || role.defaultColor;
+              this.plugin.settings.roleColors[role.key] = normalized;
+              await this.plugin.saveSettings();
+            })).addButton((button) => button.setButtonText("Reset").setTooltip(`Reset ${role.label} to ${role.defaultColor}`).onClick(async () => {
+              this.plugin.settings.roleColors[role.key] = role.defaultColor;
+              await this.plugin.saveSettings();
+              this.display();
+            }));
+          }
+          new Setting(containerEl).setName("Reset all role colors").setDesc("Restore every learner-role color to the v0.5.4 neon defaults.").addButton((button) => button.setButtonText("Reset all").setWarning().onClick(async () => {
+            this.plugin.settings.roleColors = { ...DEFAULT_ROLE_COLORS };
+            await this.plugin.saveSettings();
+            this.display();
+          }));
+          const note = containerEl.createEl("p", { cls: "setting-item-description" });
+          note.textContent = "Review signal: prefer generative_template and slot-based traces. Treat legacy_surface_rule and surface_specific_phrase_rule as places to simplify later.";
+        }
+      }
+      return CantoSpanPlugin;
+    };
   }
 });
 
@@ -1849,7 +3032,7 @@ var require_predicate_profiles = __commonJS({
 });
 
 // src/runtime-resources/presentation/learner-display.js
-var require_learner_display = __commonJS({
+var require_learner_display2 = __commonJS({
   "src/runtime-resources/presentation/learner-display.js"(exports2, module2) {
     "use strict";
     module2.exports = {
@@ -2042,7 +3225,7 @@ var require_clean_slots = __commonJS({
     "use strict";
     var {
       slotNameDisallowedPrefixes: SLOT_NAME_DISALLOWED_PREFIXES2
-    } = require_learner_display();
+    } = require_learner_display2();
     function slotNameRegistryIssue2(slot) {
       if (typeof slot !== "string") return "slot_not_string";
       if (!/^[a-z][a-z0-9_]*$/.test(slot)) return "slot_not_snake_case";
@@ -6186,197 +7369,6 @@ var require_ordered_particle_clusters = __commonJS({
   }
 });
 
-// src/runtime-resources/presentation/learner-glosses.js
-var require_learner_glosses = __commonJS({
-  "src/runtime-resources/presentation/learner-glosses.js"(exports2, module2) {
-    "use strict";
-    module2.exports = {
-      contextual: {
-        "TimeNP|上": ["last / previous", "Used with a time word."],
-        "TimeNP|下": ["next / following", "Used with a time word."],
-        "TimeNP|個": ["measure word", "Used before this time word."],
-        "TimeNP|禮拜": ["week", "Time word."],
-        "TimeNP|星期五": ["Friday", "Time word."],
-        "TimeNP|次": ["time / occasion", "Used in last time / next time."],
-        "DirectionalMotionVP|上": ["up / upward", "Direction in a movement phrase."],
-        "CompoundDirectionalMotionVP|上": ["up / upward", "Direction in a movement phrase."],
-        "DirectionalMotionVP|落": ["down / downward", "Direction in a movement phrase."],
-        "CompoundDirectionalMotionVP|落": ["down / downward", "Direction in a movement phrase."],
-        "DirectionalMotionVP|嚟": ["come / toward the speaker", "Movement word."],
-        "CompoundDirectionalMotionVP|嚟": ["come / toward the speaker", "Movement word."],
-        "DirectionalMotionVP|返": ["return / go back", "Movement word."],
-        "CompoundDirectionalMotionVP|返": ["return / go back", "Movement word."],
-        "DegreeMannerAdverbial|快": ["quickly / fast", "Tells how the action happens."],
-        "DegreeMannerAdverbial|啲": ["a bit / more", "Makes the description stronger or softer."],
-        "DiMarkedNP|啲": ["some / these", "Used before a noun."],
-        "QuantifiedTimeNP|字": ["five-minute unit", "In this duration expression, each 字 means five minutes."],
-        "ApproximateQuantity|度": ["about / approximately", "Makes the preceding quantity approximate."],
-        "NeedsContext|唔好食": ["needs context", "Could mean do not eat or not good to eat."],
-        "PolarQuestionFrame|咩": ["really? / is that so?", "Sentence-final particle asking a biased yes-or-no question."],
-        "PolarQuestionFrame|㗎": ["assertive / currently relevant", "Inner particle in an ordered question cluster; kept as one visible token."],
-        "DiscourseParticleFrame|啩": ["probably / perhaps", "Sentence-final particle marking uncertainty about the preceding statement."],
-        "DiscourseParticleFrame|喎": ["reportedly / noteworthy", "Sentence-final particle marking broad reportative, noteworthy, reminder, or counterexpectation stance; exact subtype depends on tone and context."],
-        "DiscourseParticleFrame|啦": ["please / let's / then", "Sentence-final 啦 marking a directive, suggestion, invitation, or interpersonal closure."],
-        "DiscourseParticleFrame|喇": ["now / changed situation", "Sentence-final 喇 marking a new or currently relevant situation; it is separate from perfective 咗."],
-        "DiscourseParticleFrame|㗎": ["assertive / currently relevant", "Inner sentence-final particle in an ordered cluster; kept as one visible token."],
-        "DiscourseParticleFrame|啫": ["only / just", "Restrictive or minimizing particle inside an ordered cluster."],
-        "DiscourseParticleFrame|咋": ["only / that's all", "Restrictive or exhaustive-limit particle inside an ordered cluster."],
-        "FocusParticleFrame|得": ["only / just", "Limits the following amount or scalar expression."],
-        "FocusParticleFrame|啫": ["only / just", "Marks the visible amount as small or limited."],
-        "FocusParticleFrame|咋": ["only / that's all", "Marks the visible amount as the limit."],
-        "FragmentQuestion|咩": ["really? / what?", "Reaction question whose claim is understood from context."],
-        "ModifiedNP|咩": ["what / what kind of", "Directly modifies the following noun."],
-        "ProhibitiveImperative|唔好": ["don't", "Tells someone not to do the following action."],
-        "DesiderativeVP|好": ["really / very", "Strengthens the following want expression."],
-        "ExperientialQuestion|未": ["yet? / ever?", "Asks whether the experience has happened yet."]
-      },
-      surface: {
-        // Authorized Glossika Week 16 hobbies/free-time surfaces.
-        "睇戲": ["watch a movie", "Activity phrase."],
-        "行山": ["go hiking", "Activity phrase."],
-        "游水": ["swim", "Activity phrase."],
-        "跑步": ["run", "Activity phrase."],
-        "影相": ["take photos", "Activity phrase."],
-        "聽歌": ["listen to music", "Activity phrase."],
-        "睇書": ["read", "Activity phrase."],
-        "打機": ["play video games", "Activity phrase."],
-        "煮嘢食": ["cook", "Activity phrase; literally cook food."],
-        "唱K": ["do karaoke", "Code-switched activity phrase."],
-        "行街": ["go shopping / browse shops", "Conventional activity phrase."],
-        "去沙灘": ["go to the beach", "Movement plus destination."],
-        "做運動": ["exercise", "Activity phrase."],
-        "畫畫": ["draw / paint", "Activity phrase."],
-        "踢波": ["play football / soccer", "Activity phrase; exact sport depends on context."],
-        "打波": ["play ball", "Activity phrase; exact ball game depends on context."],
-        "彈琴": ["play piano / a stringed keyboard instrument", "Activity phrase."],
-        "釣魚": ["fish", "Activity phrase."],
-        "旅行": ["travel", "Activity phrase."],
-        "唱歌": ["sing", "Activity phrase."],
-        "睇波": ["watch a game", "Activity phrase; normally a ball game."],
-        "瑜伽": ["yoga", "Activity noun."],
-        "露營": ["go camping", "Activity phrase."],
-        "下棋": ["play chess / a board game", "Activity phrase; exact game depends on context."],
-        "行公園": ["walk in the park", "Conventional activity phrase in the supplied lesson."],
-        "上個禮拜": ["last week", "Time phrase."],
-        "上次": ["last time", "Time phrase."],
-        "下次": ["next time", "Time phrase."],
-        "下個星期五": ["next Friday", "Time phrase."],
-        "上嚟": ["come up", "Movement phrase."],
-        "落嚟": ["come down", "Movement phrase."],
-        "返嚟": ["come back", "Movement phrase."],
-        "返上嚟": ["come back up", "Movement phrase."],
-        "快啲": ["quickly / hurry up", "Tells how the action happens."],
-        "啲芒果": ["some mangoes", "Noun phrase."],
-        "可唔可以": ["can / may", "Asks whether something is allowed or possible."],
-        "一個": ["one", "One item with a measure word."],
-        "一個故仔": ["one story", "Thing being talked about."],
-        "一個蘋果": ["one apple", "Thing being acted on."],
-        "第二個": ["another / other one", "A context-supplied choice; the exact reading depends on context."],
-        "第二個故仔": ["the second story", "Thing being talked about."],
-        "你要記得準時還返啲書": ["you need to remember to return the books on time", "VP complement frame."],
-        "記得準時還返啲書": ["remember to return the books on time", "VP complement frame."],
-        "呢個": ["this one", "Demonstrative and classifier used as a context-supplied noun phrase."]
-      },
-      construction: {
-        TimeNP: ["time phrase", "Says when something happens."],
-        DirectionalMotionVP: ["movement phrase", "Shows movement and direction."],
-        DurativeVP: ["continuing-state phrase", "Shows that a state continues with 住."],
-        PerfectiveDirectionalVP: ["completed movement phrase", "Shows completed movement with a final toward/away direction."],
-        ProgressiveDirectionalVP: ["ongoing movement phrase", "Shows movement in progress along a visible path."],
-        PotentialDirectionalVP: ["can-move phrase", "Says the movement can follow or reach the visible direction."],
-        NegativePotentialDirectionalVP: ["cannot-move phrase", "Says the movement cannot follow or reach the visible direction."],
-        RestorativeComplementVP: ["restore-state phrase", "Shows an action restoring a prior or expected state."],
-        RepetitiveComplementVP: ["repeat-action phrase", "Shows an action being repeated or resumed."],
-        CompoundDirectionalMotionVP: ["movement phrase", "Shows return plus direction."],
-        NegatedDirectionalMotionVP: ["negative movement phrase", "Says not to move that way."],
-        NegatedVP: ["negative action phrase", "Says that an action does not happen."],
-        DegreeMannerAdverbial: ["how phrase", "Tells how the action happens."],
-        VocativeAddressTerm: ["address phrase", "Names the person being spoken to."],
-        ANotAQuestion: ["positive-or-negative question", "Asks which of two alternatives is true, such as eat or not eat."],
-        ModalANotAQuestion: ["modal question", "Asks about wanting, permission, ability, or possibility using A-not-A modal structure."],
-        CopularANotAQuestion: ["is-or-isn't question", "Asks whether something is or belongs as stated."],
-        ExperientialYesNoQuestion: ["experience question", "Asks whether someone has ever done or experienced something."],
-        PolarQuestionFrame: ["biased yes-or-no question", "Asks whether a complete statement is true, often with surprise or doubt."],
-        DiscourseParticleFrame: ["particle-marked statement", "Adds one or more visible sentence-final particles to a complete statement."],
-        FocusParticleFrame: ["restrictive focus phrase", "Limits a visible amount or scalar expression with only / just."],
-        ExistentialClause: ["have / exist clause", "Says that someone has something or that something exists."],
-        ExistentialPresentationalClause: ["existential presentation", "Introduces a participant and then states where that participant is."],
-        ExistentialQuestion: ["have / exist question", "Asks whether something is present, available, or possessed."],
-        ExistentialWhQuestion: ["what exists / what is available question", "Asks what thing or kind of thing is present, available, or possessed."],
-        CompletionVP: ["finished-action phrase", "Shows that an action is finished or completed."],
-        CompletionQuestion: ["finished-yet question", "Asks whether an action has been completed yet."],
-        PerfectiveVP: ["perfective action phrase", "Marks an action as a viewed whole with 咗; context supplies its time interpretation."],
-        PostverbalZoPerfectiveVP: ["perfective action phrase", "Marks a visible action + 咗 + overt object as perfective. Time, completion, and discourse interpretation are handled separately."],
-        ExperientialVP: ["past-experience phrase", "Shows that someone has done or experienced the action before."],
-        ReduplicatedVP: ["light-action phrase", "Repeating the verb makes the action sound brief, light, or casual."],
-        CoverbFrame: ["pre-action relation phrase", "Introduces a participant, place, source, or tool before the main action."],
-        PostThemeParticipantRelation: ["for / to", "Links the preceding action and thing to a following person. The exact link depends on the verb and context."],
-        ReportedSpeech: ["reported speech", "Says what someone said or reported."],
-        OpinionStanceFrame: ["opinion frame", "Introduces what someone thinks or feels."],
-        ModalVP: ["modal action phrase", "Shows possibility, permission, ability, desire, or obligation before an action."],
-        StativePredicate: ["state or quality", "Describes a state or quality."],
-        DegreeStativePredicate: ["degree and quality phrase", "Says how strongly a state or quality applies."],
-        ActionStativeVP: ["action plus quality phrase", "Links an action-like predicate to a following state or quality."],
-        StativeNominalComplement: ["descriptive nominal complement", "Turns a visible description into the complement of is / be."],
-        CopularRelationFrame: ["is / relation phrase", "Relates something to a description, identity, or category."],
-        ComplementEllipsisFragment: ["context-supplied complement", "Leaves a selected complement or domain understood from discourse."],
-        SubjectPredicateClause: ["subject-and-predicate clause", "Says what the subject does, is, or experiences."],
-        FragmentQuestion: ["fragment question", "Asks about a context-supplied topic, alternative, or missing item."],
-        MannerAdverbialVP: ["manner phrase", "Shows how an action is carried out."],
-        QuantityNP: ["quantity noun phrase", "A quantity expression with a visible noun head."],
-        MeasureExpression: ["measure expression", "A visible number and unit used to state age, price, area, or length."],
-        NominalPredicateClause: ["measure-predicate clause", "States an age, price, area, or length without inserting a hidden copula."],
-        QuantifiedClassifierNP: ["counted noun phrase", "A numeral, measure word, and visible noun head."],
-        DemonstrativeClassifierNP: ["demonstrative noun phrase", "A phrase such as this one or this story, with a demonstrative, measure word, and noun."],
-        OvertHeadDemonstrativeClassifierNP: ["demonstrative-classifier noun phrase", "A phrase with a visible demonstrative, visible measure word, and visible noun, such as 呢本書."],
-        HeadlessDemonstrativeClassifierNP: ["headless demonstrative-classifier phrase", "A phrase such as 呢個 or 嗰本 with no visible noun. No missing noun is inserted."],
-        QuantifiedTimeNP: ["quantified time phrase", "A time expression quantified by every/each or a numeral."],
-        ApproximateQuantity: ["approximate quantity phrase", "A numeral and measure word marked as about or approximately that amount."],
-        SourceMotionClause: ["source-motion clause", "Shows a movement beginning from a source place."],
-        DiMarkedNP: ["noun phrase", "Uses 啲 before a noun: some / the / these items."],
-        AssociativeNP: ["linked noun phrase", "A modifier or possessor joined to a visible noun by 嘅."],
-        CoordinatedNP: ["coordinated noun phrase", "Two noun phrases joined by and."],
-        ModifiedNP: ["modified noun phrase", "A determiner or modifier plus a visible noun head."],
-        NominalHeadSpan: ["noun phrase", "A noun used as a complete noun phrase."],
-        MotionGoalVP: ["motion goal", "Movement toward a place or destination."],
-        DirectedMannerMotionVP: ["directed movement", "Shows how someone moves along a path or toward a destination."],
-        GoalAttainmentMotionVP: ["reached-destination movement", "Shows movement successfully reaching a visible destination."],
-        MotionPurposeChain: ["movement for a purpose", "Shows movement followed by the action it is done for."],
-        SerialVerbPurposeChain: ["linked action-purpose chain", "Shows visible actions in order, with a later purpose action."],
-        PathPhrase: ["path or direction phrase", "Shows the route or direction of movement."],
-        LocativeWhQuestion: ["where question", "Asks where someone went or where something happened."],
-        LocativePostureVP: ["posture and place", "Says someone is sitting, standing, or lying in a place."],
-        LocativePlacePhrase: ["location phrase", "Introduces or states a place."],
-        TransitiveVP: ["action phrase", "An action with a thing after it."],
-        ProductiveVO: ["action phrase", "An action with a thing after it."],
-        ProgressiveVP: ["ongoing action", "Shows an action happening now."],
-        LexicalGiveRelation: ["give", "Shows lexical GIVE with two overt participants; only the reviewed baseline receives candidate roles."],
-        NegatedExistentialClause: ["no / not have", "Says something is not there or not available."],
-        FragmentAnswer: ["short answer", "A short answer whose full meaning comes from context."],
-        NegatedExistentialFragment: ["negative existence answer", "A short no / do not have / there is not response whose domain comes from context."],
-        FormulaDiscourseUnit: ["set response or social phrase", "A conventional response or social expression used as one discourse unit."],
-        MalformedCandidate: ["needs checking", "This line looks incomplete or unusual."],
-        ProhibitiveImperative: ["don't-do command", "Tells someone not to do the following action."],
-        IdentificationFragment: ["identification phrase", "Points out or identifies the context-supplied item, such as this one."],
-        ExperientialQuestion: ["experience question", "Asks whether the experience has happened."],
-        DesiderativeVP: ["wanting phrase", "Expresses wanting to do the following action."],
-        AcceptabilityANotA: ["okay-or-not question", "Asks whether something is okay, possible, or acceptable."],
-        LocativeFragment: ["location fragment", "States a place while the person or thing located there is understood from context."],
-        NeedsContext: ["needs context", "Meaning depends on the situation around it."],
-        VerbComplementVP: ["verb-complement phrase", "A main verb plus a complement, with an object when present."],
-        ResultComplement: ["result phrase", "Says an action reaches or attains a result."],
-        ResultComplementVP: ["result-complement phrase", "Shows an action and its visible resulting state."],
-        NegativePotentialComplement: ["cannot-result phrase", "Says an action cannot reach or attain the result."],
-        ClauseRelationGraph: ["linked clauses", "Two connected Cantonese phrases or clauses."],
-        ConditionalClause: ["if-clause", "States the condition for a following result."],
-        AcceptabilityClause: ["okay / acceptable", "Says that an action or situation is okay or allowed."],
-        IntendedFunctionRelation: ["use or function", "Connects a thing or resource to what it is used for."],
-        PassivePermissiveRelation: ["passive or let / allow relation", "Connects a participant, 畀/俾, another participant, and an event while preserving passive-versus-permission ambiguity."]
-      }
-    };
-  }
-});
-
 // src/runtime-resources/presentation/diagnostic-reminders.js
 var require_diagnostic_reminders = __commonJS({
   "src/runtime-resources/presentation/diagnostic-reminders.js"(exports2, module2) {
@@ -6397,22 +7389,14 @@ var require_diagnostic_reminders = __commonJS({
 });
 
 // src/plugin-entry.js
-var { Plugin, PluginSettingTab, Setting, Notice } = require("obsidian");
+var {
+  contextual: LEARNER_CONTEXTUAL_GLOSSES,
+  surface: LEARNER_SURFACE_GLOSSES,
+  construction: LEARNER_CONSTRUCTION_GLOSSES
+} = require_learner_glosses();
+var createLearnerDisplay = require_learner_display();
+var createCantoSpanPlugin = require_canto_span_plugin();
 var CANTO_SPAN_RUNTIME_VERSION = "0.5.216";
-var BLOCK_CLASS = "canto-study-block canto-span-block";
-var GLOBAL_COLOR_ACCESSIBILITY_CLASS = "canto-global-color-accessibility-enabled";
-var GLOBAL_DIAGNOSTICS_CLASS = "canto-global-diagnostics-enabled";
-var GLOBAL_DIAGNOSTICS_EXPANDED_CLASS = "canto-global-diagnostics-expanded";
-var ROLE_COLOR_SETTINGS = require_role_colors();
-var DEFAULT_ROLE_COLORS = Object.fromEntries(
-  ROLE_COLOR_SETTINGS.map((role) => [role.key, role.defaultColor])
-);
-var DEFAULT_SETTINGS = {
-  showDiagnostics: true,
-  expandDiagnostics: false,
-  showColorAccessibilityMarkers: false,
-  roleColors: { ...DEFAULT_ROLE_COLORS }
-};
 var {
   runtimeConstructionRegistryVersion: RUNTIME_CONSTRUCTION_REGISTRY_VERSION,
   constructionLabelRegistry,
@@ -6484,7 +7468,7 @@ var {
   slotNameDisallowedPrefixes: SLOT_NAME_DISALLOWED_PREFIXES,
   learnerDisplaySlotNames,
   learnerDisplaySlotLabels: LEARNER_DISPLAY_SLOT_LABELS
-} = require_learner_display();
+} = require_learner_display2();
 var LEARNER_ROLE_LABELS = new Set(learnerRoleLabels);
 var LEARNER_DISPLAY_SLOT_NAMES = new Set(learnerDisplaySlotNames);
 function internalConstructionTypeFor(type = "") {
@@ -6700,12 +7684,6 @@ var CONSTRUCTION_TEMPLATES = require_construction_templates();
 var CATEGORY_SPAN_TEMPLATES = require_category_span_templates();
 var SLOT_ALIASES = require_slot_aliases();
 var PUNCT_RE = require_punctuation();
-function createEl(tag, className, text) {
-  const element = document.createElement(tag);
-  if (className) element.className = className;
-  if (text !== void 0 && text !== null) element.textContent = String(text);
-  return element;
-}
 var {
   normalizeSurface,
   foldedPinyinFalloutRepair,
@@ -6810,33 +7788,6 @@ function parserShadowRepairKindLabel(row) {
   if (kind === "folded_lexical_repair") return "folded lexical";
   if (kind === "character_form_normalization") return "character form";
   return String(kind || "shadow repair").replace(/_/g, " ");
-}
-function renderParserShadowRepairs(analysis, container) {
-  const rows = parserShadowRepairDisplayRows(analysis);
-  if (!rows.length) return;
-  const box = createEl("div", "canto-normalization-shadow-repairs canto-normalization-shadow-repairs-compact");
-  const label = rows.length > 1 ? `Shadow ×${rows.length}:` : "Shadow:";
-  box.appendChild(createEl("span", "canto-normalization-shadow-label", label));
-  box.setAttribute("title", rows.map((row) => {
-    const kindLabel = parserShadowRepairKindLabel(row);
-    const note = row.note || "Parser-shadow repair applied to parser shadow only.";
-    return `${row.display} — ${kindLabel}. ${note} Raw learner-visible text is not replaced.`;
-  }).join("\n"));
-  rows.forEach((row) => {
-    const item = createEl("span", "canto-normalization-shadow-repair");
-    const kindLabel = parserShadowRepairKindLabel(row);
-    const titleParts = [
-      `${row.display} — ${kindLabel}.`,
-      row.note || "Parser-shadow repair applied to parser shadow only.",
-      "Raw learner-visible text is not replaced."
-    ];
-    item.setAttribute("title", titleParts.join(" "));
-    item.appendChild(createEl("span", "canto-normalization-shadow-raw", row.raw));
-    item.appendChild(createEl("span", "canto-normalization-shadow-arrow", "→"));
-    item.appendChild(createEl("span", "canto-normalization-shadow-normalized", row.normalized));
-    box.appendChild(item);
-  });
-  container.appendChild(box);
 }
 function safeClass(value) {
   return String(value || "neutral").replace(/[^a-z0-9_-]/gi, "-").toLowerCase();
@@ -19409,132 +20360,24 @@ function jyutpingAuditSummary(analysis) {
   };
 }
 var {
-  contextual: LEARNER_CONTEXTUAL_GLOSSES,
-  surface: LEARNER_SURFACE_GLOSSES,
-  construction: LEARNER_CONSTRUCTION_GLOSSES
-} = require_learner_glosses();
-function cleanLearnerNote(note) {
-  let text = String(note || "").trim();
-  if (!text) return "";
-  text = text.split(/[.;]/)[0].trim();
-  if (/\b(parser|diagnostic|template|construction|contextual|affordance|slot|syntax|role|internal|retained|transparent|protected|fallback|registry|tokeni[sz]ation|surface|native-speech|implementation)\b/i.test(text)) return "";
-  return text;
-}
-function learnerGlossFromLexicon(surface) {
-  const entry = TOKEN_LEXICON[String(surface || "")] || {};
-  return cleanLearnerNote(entry.note);
-}
-function contextualLearnerGlossLinesForToken(node) {
-  const surface = node && node.surface ? String(node.surface) : "";
-  const syntax = node && node.syntax ? String(node.syntax) : "";
-  if (surface === "吓" && /(^|\s)delimitative_aspect(\s|$)/.test(syntax)) {
-    return ["try briefly / do a little", "Marks a light action."];
-  }
-  if (surface === "幾" && /(^|\s)scalar_value_question(\s|$)/.test(syntax)) {
-    return ["how much / to what degree", "Asks about a value on this scale."];
-  }
-  if (surface === "呢" && /(^|\s)discourse_fragment_question(\s|$)/.test(syntax)) {
-    return ["what about…? / and…?", "Returns to a topic or asks about a context-supplied alternative."];
-  }
-  if (surface === "呢" && /(^|\s)sentence_final_question_particle(\s|$)/.test(syntax)) {
-    return ["question particle", "Softly asks for an answer or confirmation."];
-  }
-  if (/(^|\s)have_or_not_experiential_question_marker(\s|$)/.test(syntax)) {
-    return ["ever ... or not?", "Asks whether the experience happened."];
-  }
-  if (/(^|\s)have_or_not_event_question_marker(\s|$)/.test(syntax)) {
-    return ["did ... or not?", "Asks whether the event happened."];
-  }
-  if (surface === "嘅話" && /(^|\s)conditional_marker(\s|$)/.test(syntax)) {
-    return ["if / in the case that", "Introduces a condition for a result."];
-  }
-  if (surface === "用" && /(^|\s)intended_function_use_marker(\s|$)/.test(syntax)) {
-    return ["used for", "Part of 用嚟/用來, linking a thing to its stated use or function."];
-  }
-  if (["嚟", "來"].includes(surface) && /(^|\s)intended_function_lai_linker(\s|$)/.test(syntax)) {
-    return ["for / to", "Links the thing to its stated use or function; it is not a movement verb here."];
-  }
-  return null;
-}
-function learnerGlossLinesForToken(node) {
-  const parent = node && node.parent ? node.parent : "";
-  const surface = node && node.surface ? node.surface : "";
-  const traceLearnerGloss = node && node.trace && Array.isArray(node.trace.learner_gloss_lines) ? node.trace.learner_gloss_lines.filter(Boolean) : [];
-  if (traceLearnerGloss.length) return traceLearnerGloss;
-  const syntaxContextual = contextualLearnerGlossLinesForToken(node);
-  if (syntaxContextual) return syntaxContextual;
-  const contextual = LEARNER_CONTEXTUAL_GLOSSES[`${parent}|${surface}`];
-  if (contextual) return contextual;
-  const surfaceGloss = LEARNER_SURFACE_GLOSSES[surface];
-  if (surfaceGloss) return surfaceGloss;
-  const lexiconGloss = cleanLearnerNote(node && node.note) || learnerGlossFromLexicon(surface);
-  if (lexiconGloss) return [lexiconGloss];
-  if (node && node.jyutping) return ["Cantonese word."];
-  return ["Cantonese text."];
-}
-function learnerGlossLinesForConstruction(node) {
-  if (!node || node.kind !== "construction") return ["Cantonese phrase."];
-  const surfaceGloss = LEARNER_SURFACE_GLOSSES[node.surface || ""];
-  if (surfaceGloss) return surfaceGloss;
-  const trace = node.trace || {};
-  const traceLearnerGloss = Array.isArray(trace.learner_gloss_lines) ? trace.learner_gloss_lines.filter(Boolean) : [];
-  if (traceLearnerGloss.length) return traceLearnerGloss;
-  if (node.type === "ClauseRelationGraph" && trace.topic_chain_status === "licensed_overt_topic_chain") {
-    return ["topic chain", "An overt topic supplies the understood object of later actions in the linked sequence."];
-  }
-  if (node.type === "ClauseRelationGraph" && trace.topic_chain_status === "antecedent_predicate_compatibility_review") {
-    return ["possible topic chain — needs context", "A topic is present, but it does not clearly fit the omitted object of the later action."];
-  }
-  if (trace.particle_cluster_root) {
-    if (node.type === "PolarQuestionFrame") {
-      return ["biased yes-or-no question", "Asks whether the statement is true while preserving the visible inner particle sequence."];
-    }
-    return ["ordered particle phrase", "Shows several sentence-final particles in their visible inside-to-outside scope order."];
-  }
-  if (node.type === "DiscourseParticleFrame") {
-    const family = String(trace.discourse_particle_family || "");
-    if (family === "epistemic_stance") return ["uncertainty-marked statement", "Marks the statement as probable, possible, or uncertain."];
-    if (family === "evidential_noteworthiness") return ["report or notice-marked statement", "Presents the statement as reported, noteworthy, a reminder, or unexpected."];
-    if (family === "directive_interpersonal_closure") return ["prompt or closure phrase", "Uses a final particle for a directive, suggestion, invitation, or conversational closure."];
-    if (family === "change_state_current_relevance") return ["changed-situation statement", "Marks a new, changed, or currently relevant situation."];
-  }
-  const constructionGlossType = node.compatibility_alias || diagnosticCompatibilityConstructionType(node.type || "");
-  const constructionGloss = LEARNER_CONSTRUCTION_GLOSSES[constructionGlossType] || LEARNER_CONSTRUCTION_GLOSSES[node.type || ""];
-  if (constructionGloss) return constructionGloss;
-  const noteGloss = cleanLearnerNote(node.note || "");
-  if (noteGloss) return [noteGloss];
-  return ["Cantonese phrase."];
-}
-function compactLearnerHoverLines(lines) {
-  return [...new Set((lines || []).map((line) => String(line || "").trim()).filter(Boolean))];
-}
-function learnerVisibleSyntax(syntax = "") {
-  return String(syntax || "").split(/\s+/).filter(Boolean).filter((part) => !/^phase\d+_/i.test(part)).join(" ");
-}
-function learnerUiHoverTitleForToken(node) {
-  if (!node || node.kind !== "token") return "";
-  const role = node.role || node.label || "";
-  const syntax = learnerVisibleSyntax(node.syntax || "");
-  const displaySurface = node.display_surface || node.surface || "";
-  return compactLearnerHoverLines([
-    displaySurface,
-    role ? `role: ${role}` : "",
-    syntax ? `syntax: ${syntax}` : "",
-    node.jyutping || "",
-    ...learnerGlossLinesForToken(node)
-  ]).join("\n");
-}
-function learnerUiHoverTitleForConstruction(node) {
-  if (!node || node.kind !== "construction") return "";
-  return compactLearnerHoverLines([
-    node.display_surface || nodeDisplaySurface(node) || node.surface || "",
-    ...learnerGlossLinesForConstruction(node)
-  ]).join("\n");
-}
-function learnerUiHoverTitleForConstructionLayer(node) {
-  if (!node || node.kind !== "construction") return "";
-  return learnerUiHoverTitleForConstruction(node);
-}
+  cleanLearnerNote,
+  learnerGlossFromLexicon,
+  contextualLearnerGlossLinesForToken,
+  learnerGlossLinesForToken,
+  learnerGlossLinesForConstruction,
+  compactLearnerHoverLines,
+  learnerVisibleSyntax,
+  learnerUiHoverTitleForToken,
+  learnerUiHoverTitleForConstruction,
+  learnerUiHoverTitleForConstructionLayer
+} = createLearnerDisplay({
+  TOKEN_LEXICON,
+  LEARNER_CONTEXTUAL_GLOSSES,
+  LEARNER_SURFACE_GLOSSES,
+  LEARNER_CONSTRUCTION_GLOSSES,
+  diagnosticCompatibilityConstructionType,
+  nodeDisplaySurface
+});
 function learnerUiHoverLeakFlags(title) {
   const text = String(title || "");
   const checks = [
@@ -21057,654 +21900,34 @@ function formatNoteMarkdownWithDiagnostics(markdown, notePath = "") {
   ].filter((line, index) => line || index !== 1).join("\n");
   return `${header}${noteText}`;
 }
-async function copyTextToClipboard(text) {
-  if (typeof navigator !== "undefined" && navigator.clipboard && navigator.clipboard.writeText) {
-    await navigator.clipboard.writeText(text);
-    return;
-  }
-  const textarea = document.createElement("textarea");
-  textarea.value = text;
-  textarea.setAttribute("readonly", "");
-  textarea.style.position = "fixed";
-  textarea.style.left = "-9999px";
-  document.body.appendChild(textarea);
-  textarea.select();
-  document.execCommand("copy");
-  textarea.remove();
-}
-function renderCopyButton(parent, textFactory, label, successMessage) {
-  const button = createEl("button", "canto-diagnostic-copy canto-diagnostic-ui-only", label);
-  button.type = "button";
-  button.addEventListener("click", async (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    try {
-      const text = await Promise.resolve(textFactory());
-      if (!String(text || "").trim()) {
-        new Notice("No Canto Span diagnostics found to copy.");
-        return;
-      }
-      await copyTextToClipboard(text);
-      new Notice(successMessage || "Copied Canto Span diagnostic.");
-    } catch (error) {
-      console.error("Canto Span diagnostic copy failed", error);
-      new Notice("Could not copy diagnostic text.");
-    }
-  });
-  parent.appendChild(button);
-  return button;
-}
-function renderActionButton(parent, action, label) {
-  const button = createEl("button", "canto-diagnostic-copy canto-diagnostic-ui-only", label);
-  button.type = "button";
-  button.addEventListener("click", async (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    try {
-      await action();
-    } catch (error) {
-      console.error("Canto Span diagnostic action failed", error);
-      new Notice("Could not run Canto Span diagnostic action.");
-    }
-  });
-  parent.appendChild(button);
-  return button;
-}
-function renderPre(parent, className, value) {
-  const pre = createEl("pre", className);
-  pre.textContent = typeof value === "string" ? value : JSON.stringify(value, null, 2);
-  parent.appendChild(pre);
-}
-function renderDiagnosticDetails(analysis, container, expanded = false) {
-  const details = createEl("details", "canto-diagnostic");
-  details.open = Boolean(expanded);
-  const summary = diagnosticSummary(analysis);
-  const jyutping = jyutpingAuditSummary(analysis);
-  const reviewNote = summary.review_count ? ` — ${summary.review_count} review trace(s)` : " — no review traces";
-  const jyutpingNote = jyutping.status === "WARN" ? ` — Jyutping WARN (${jyutping.items_needing_review.length})` : " — Jyutping PASS";
-  details.appendChild(createEl("summary", "canto-diagnostic-summary", `Parse diagnostic${reviewNote}${jyutpingNote}`));
-  const body = createEl("div", "canto-diagnostic-body");
-  const toolbar = createEl("div", "canto-diagnostic-toolbar");
-  renderCopyButton(toolbar, () => formatDiagnosticMarkdown(analysis), "Copy diagnostic", "Copied this Canto Span diagnostic.");
-  body.appendChild(toolbar);
-  body.appendChild(createEl("div", "canto-diagnostic-caption", "Summary"));
-  renderPre(body, "canto-diagnostic-json", summary);
-  const foldedRepairRows = foldedLexicalRepairDisplayRows(analysis);
-  if (foldedRepairRows.length) {
-    body.appendChild(createEl("div", "canto-diagnostic-caption", "Folded pinyin-fallout lexical repairs"));
-    renderPre(body, "canto-diagnostic-json", {
-      status: "PASS",
-      policy: "Repairs are applied to parser shadow only. Raw learner-visible text is preserved.",
-      repairs: foldedRepairRows
-    });
-  }
-  const reviewSuggestionRows = normalizationReviewSuggestionDisplayRows(analysis);
-  if (reviewSuggestionRows.length) {
-    body.appendChild(createEl("div", "canto-diagnostic-caption", "Review-only normalization suggestions"));
-    renderPre(body, "canto-diagnostic-json", {
-      status: "PASS",
-      policy: "Compatibility lane only. Current v0.5.107 pinyin-fallout repairs should not depend on review-only suggestions.",
-      suggestions: reviewSuggestionRows
-    });
-  }
-  body.appendChild(createEl("div", "canto-diagnostic-caption", "Jyutping audit"));
-  renderPre(body, "canto-diagnostic-json", jyutpingAuditSummary(analysis));
-  body.appendChild(createEl("div", "canto-diagnostic-caption", "Learner UI hover audit"));
-  renderPre(body, "canto-diagnostic-json", learnerUiHoverAuditSummary(analysis));
-  body.appendChild(createEl("div", "canto-diagnostic-caption", "Learner UI hover rows"));
-  renderPre(body, "canto-diagnostic-json", learnerUiHoverAuditRows(analysis));
-  body.appendChild(createEl("div", "canto-diagnostic-caption", "Tokenization before construction wrapping"));
-  renderPre(body, "canto-diagnostic-json", diagnosticTokenRows(analysis));
-  body.appendChild(createEl("div", "canto-diagnostic-caption", "Final construction tree"));
-  renderPre(body, "canto-diagnostic-json", diagnosticFinalRows(analysis));
-  body.appendChild(createEl("div", "canto-diagnostic-caption", "Legend"));
-  renderPre(body, "canto-diagnostic-json", diagnosticLegend());
-  details.appendChild(body);
-  container.appendChild(details);
-}
-function parseContextDirectiveLine(line, sourceLineIndex) {
-  const raw = String(line || "");
-  const trimmed = raw.trim().replace(/^[\uFEFF\u200B-\u200D\u2060]+/u, "");
-  const prefix = trimmed.slice(0, 8);
-  if (prefix.normalize("NFKC").toLowerCase() !== "@context") return null;
-  let remainder = trimmed.slice(8).replace(/^[\s\u00A0\u3000]+/u, "");
-  const separator = remainder.charAt(0);
-  if (separator !== ":" && separator !== "：") return null;
-  remainder = remainder.slice(1);
-  const contextSource = remainder.trim();
-  return {
-    id: `block-context-${sourceLineIndex}`,
-    directive_kind: "explicit_context_next_source",
-    directive_line_index: sourceLineIndex,
-    raw_directive: raw,
-    separator_code_point: separator.codePointAt(0).toString(16).toUpperCase().padStart(4, "0"),
-    source: contextSource
-  };
-}
-function parseBlockOptions(source) {
-  const lines = String(source || "").split(/\r?\n/);
-  const options = {
-    lines: [],
-    entries: [],
-    context_directives: [],
-    directive_warnings: []
-  };
-  let pendingContext = null;
-  for (let sourceLineIndex = 0; sourceLineIndex < lines.length; sourceLineIndex += 1) {
-    const line = lines[sourceLineIndex];
-    const oneBasedLineIndex = sourceLineIndex + 1;
-    const trimmed = line.trim();
-    if (trimmed === "@diagnostic" || trimmed === "@debug" || trimmed === "@trace") continue;
-    const contextDirective = parseContextDirectiveLine(line, oneBasedLineIndex);
-    if (contextDirective) {
-      if (!normalizeSurface(contextDirective.source)) {
-        options.directive_warnings.push({
-          kind: "empty_context_directive",
-          directive_line_index: oneBasedLineIndex,
-          raw_directive: line
-        });
-        pendingContext = null;
-        continue;
-      }
-      if (pendingContext) {
-        options.directive_warnings.push({
-          kind: "unconsumed_context_directive_replaced",
-          directive_line_index: pendingContext.directive_line_index,
-          replacement_directive_line_index: oneBasedLineIndex,
-          raw_directive: pendingContext.raw_directive
-        });
-      }
-      pendingContext = contextDirective;
-      options.context_directives.push({ ...contextDirective });
-      continue;
-    }
-    options.lines.push(line);
-    const isSourceRow = Boolean(normalizeSurface(line));
-    const appliedContext = pendingContext && isSourceRow ? {
-      ...pendingContext,
-      target_source_line_index: oneBasedLineIndex
-    } : null;
-    const entry = {
-      line,
-      source_line_index: oneBasedLineIndex,
-      context_directive: appliedContext,
-      context: appliedContext ? { turns: [{ ...appliedContext }] } : null
-    };
-    options.entries.push(entry);
-    if (isSourceRow) pendingContext = null;
-  }
-  if (pendingContext) {
-    options.directive_warnings.push({
-      kind: "dangling_context_directive",
-      directive_line_index: pendingContext.directive_line_index,
-      raw_directive: pendingContext.raw_directive,
-      source: pendingContext.source
-    });
-  }
-  return options;
-}
 function splitJyutping(jyutping) {
   return String(jyutping || "").trim().split(/\s+/).filter(Boolean);
 }
-function renderJyutping(container, jyutping) {
-  const wrapper = createEl("span", "canto-jyutping");
-  for (const syllable of splitJyutping(jyutping)) {
-    const match = syllable.match(/^(.*?)([1-6])$/);
-    const syl = createEl("span", `vjp-syl ${match ? `vjp-tone-${match[2]}` : "vjp-no-tone"}`);
-    if (match) {
-      syl.appendChild(createEl("span", "vjp-base", match[1]));
-      syl.appendChild(createEl("span", "vjp-num", match[2]));
-    } else {
-      syl.appendChild(createEl("span", "vjp-base", syllable));
-    }
-    wrapper.appendChild(syl);
-  }
-  container.appendChild(wrapper);
-}
-function renderToken(node, container) {
-  const cls = [`canto-token`, `cs-${safeClass(node.label)}`];
-  if (node.label === "neutral") cls.push("canto-token-neutral", "canto-lexical-unknown");
-  const displaySurface = node.display_surface || node.surface;
-  const span = createEl("span", cls.join(" "));
-  span.setAttribute("tabindex", "0");
-  span.setAttribute("data-canto-kind", "token");
-  span.setAttribute("data-canto-surface", displaySurface);
-  span.setAttribute("data-canto-parser-surface", node.surface);
-  span.setAttribute("data-canto-role", node.label);
-  span.setAttribute("data-canto-syntax", node.syntax);
-  span.setAttribute("data-canto-review", node.review);
-  span.setAttribute("title", learnerUiHoverTitleForToken(node));
-  if (node.jyutping) renderJyutping(span, node.jyutping);
-  span.appendChild(createEl("span", "canto-hanzi", displaySurface));
-  container.appendChild(span);
-}
-function collectConstructionLayout(node) {
-  const leaves = [];
-  const spans = [];
-  function walk(current, depth) {
-    if (!current) return { start: leaves.length, end: leaves.length };
-    if (current.kind !== "construction") {
-      const start2 = leaves.length;
-      leaves.push(current);
-      return { start: start2, end: leaves.length };
-    }
-    const start = leaves.length;
-    for (const child of current.children || []) walk(child, depth + 1);
-    const end = leaves.length;
-    spans.push({ node: current, start, end, depth, width: end - start });
-    return { start, end };
-  }
-  walk(node, 0);
-  return { leaves, spans };
-}
-function renderConstructionLeaf(node, container) {
-  if (!node) return;
-  if (node.kind === "text") {
-    container.appendChild(document.createTextNode(node.display_text || node.text));
-    return;
-  }
-  if (node.kind === "token") {
-    renderToken(node, container);
-  }
-}
-function renderConstruction(node, container) {
-  const { leaves, spans } = collectConstructionLayout(node);
-  const cls = ["canto-pattern", "canto-pattern-layered", `canto-construction-${safeClass(node.type)}`];
-  if (node.primary) cls.push("canto-primary-phrase", `canto-primary-${safeClass(node.primary)}`);
-  const outer = createEl("span", cls.join(" "));
-  outer.setAttribute("data-canto-kind", "construction");
-  outer.setAttribute("data-canto-construction", node.type);
-  outer.setAttribute("title", learnerUiHoverTitleForConstruction(node));
-  outer.style.gridTemplateColumns = leaves.length ? `repeat(${leaves.length}, max-content)` : "max-content";
-  leaves.forEach((leaf, index) => {
-    const cell = createEl("span", "canto-pattern-leaf");
-    cell.style.gridColumn = `${index + 1} / ${index + 2}`;
-    cell.style.gridRow = "1";
-    renderConstructionLeaf(leaf, cell);
-    outer.appendChild(cell);
-  });
-  spans.filter((span) => span.width > 0).sort((a, b) => {
-    if (b.width !== a.width) return b.width - a.width;
-    if (a.start !== b.start) return a.start - b.start;
-    return a.depth - b.depth;
-  }).forEach((span, layerIndex) => {
-    const layer = createEl("span", `canto-construction-layer canto-construction-depth-${Math.min(layerIndex, 7)}`);
-    layer.style.gridColumn = `${span.start + 1} / ${span.end + 1}`;
-    layer.style.gridRow = `${layerIndex + 2}`;
-    layer.setAttribute("data-canto-construction", span.node.type);
-    layer.setAttribute("title", learnerUiHoverTitleForConstructionLayer(span.node));
-    layer.appendChild(createEl("span", "canto-construction-line"));
-    layer.appendChild(createEl("span", "canto-pattern-label", span.node.label));
-    outer.appendChild(layer);
-  });
-  container.appendChild(outer);
-}
-function renderNode(node, container, options = {}) {
-  if (!node) return;
-  if (node.kind === "text") {
-    container.appendChild(document.createTextNode(node.text));
-    return;
-  }
-  if (node.kind === "token") {
-    renderToken(node, container);
-    return;
-  }
-  if (node.kind === "construction") {
-    if (shouldCollapseClauseSequenceForDisplay(node, options) || shouldCollapseGreedyWrapperForDisplay(node, options)) {
-      for (const child of node.children || []) renderNode(child, container, options);
-      return;
-    }
-    renderConstruction(node, container);
-  }
-}
-function normalizeHexColor(value) {
-  const raw = String(value || "").trim();
-  const short = raw.match(/^#([0-9a-f]{3})$/i);
-  if (short) {
-    return `#${short[1].split("").map((ch) => ch + ch).join("")}`.toUpperCase();
-  }
-  const long = raw.match(/^#([0-9a-f]{6})$/i);
-  return long ? `#${long[1]}`.toUpperCase() : "";
-}
-function getMergedRoleColors(settings) {
-  const userColors = settings && settings.roleColors && typeof settings.roleColors === "object" ? settings.roleColors : {};
-  const merged = { ...DEFAULT_ROLE_COLORS };
-  for (const role of ROLE_COLOR_SETTINGS) {
-    let normalized = normalizeHexColor(userColors[role.key]);
-    merged[role.key] = normalized || role.defaultColor;
-  }
-  return merged;
-}
-module.exports = class CantoSpanPlugin extends Plugin {
-  async onload() {
-    await this.loadSettings();
-    this.renderedCantoBlocks = /* @__PURE__ */ new Map();
-    this.syncGlobalSettingClasses();
-    this.startDiagnosticDetailsObserver();
-    this.registerMarkdownCodeBlockProcessor("canto-span", (source, element) => {
-      this.renderedCantoBlocks.set(element, source);
-      this.renderBlock(source, element);
-    });
-    this.addSettingTab(new CantoSpanSettingTab(this.app, this));
-  }
-  onunload() {
-    if (this.diagnosticDetailsObserver) {
-      this.diagnosticDetailsObserver.disconnect();
-      this.diagnosticDetailsObserver = null;
-    }
-    if (typeof document !== "undefined" && document.body) {
-      document.body.classList.remove(GLOBAL_COLOR_ACCESSIBILITY_CLASS);
-      document.body.classList.remove(GLOBAL_DIAGNOSTICS_CLASS);
-      document.body.classList.remove(GLOBAL_DIAGNOSTICS_EXPANDED_CLASS);
-      this.clearRoleColorVariables();
-    }
-  }
-  async loadSettings() {
-    const loaded = await this.loadData();
-    this.settings = Object.assign({}, DEFAULT_SETTINGS, loaded || {});
-    this.settings.roleColors = getMergedRoleColors(this.settings);
-  }
-  async saveSettings() {
-    await this.saveData(this.settings);
-    this.syncGlobalSettingClasses();
-  }
-  syncGlobalSettingClasses() {
-    if (typeof document === "undefined" || !document.body) return;
-    this.pruneRenderedCantoBlocks();
-    document.body.classList.toggle(
-      GLOBAL_COLOR_ACCESSIBILITY_CLASS,
-      Boolean(this.settings && this.settings.showColorAccessibilityMarkers)
-    );
-    document.body.classList.toggle(
-      GLOBAL_DIAGNOSTICS_CLASS,
-      Boolean(this.settings && this.settings.showDiagnostics)
-    );
-    document.body.classList.toggle(
-      GLOBAL_DIAGNOSTICS_EXPANDED_CLASS,
-      Boolean(this.settings && this.settings.expandDiagnostics)
-    );
-    this.syncRoleColorVariables();
-    this.scheduleRenderedDiagnosticDetailsSync();
-  }
-  syncRoleColorVariables() {
-    if (typeof document === "undefined" || !document.body) return;
-    const colors = getMergedRoleColors(this.settings);
-    this.settings.roleColors = colors;
-    for (const role of ROLE_COLOR_SETTINGS) {
-      const color = colors[role.key];
-      for (const cssVar of role.cssVars) {
-        document.body.style.setProperty(`--canto-user-color-${cssVar}`, color);
-      }
-    }
-  }
-  clearRoleColorVariables() {
-    if (typeof document === "undefined" || !document.body) return;
-    for (const role of ROLE_COLOR_SETTINGS) {
-      for (const cssVar of role.cssVars) {
-        document.body.style.removeProperty(`--canto-user-color-${cssVar}`);
-      }
-    }
-  }
-  pruneRenderedCantoBlocks() {
-    if (!this.renderedCantoBlocks) return 0;
-    let pruned = 0;
-    for (const [element] of Array.from(this.renderedCantoBlocks.entries())) {
-      if (!element || !element.isConnected) {
-        this.renderedCantoBlocks.delete(element);
-        pruned += 1;
-      }
-    }
-    return pruned;
-  }
-  getRenderedDiagnosticDetails() {
-    this.pruneRenderedCantoBlocks();
-    const detailsSet = /* @__PURE__ */ new Set();
-    if (this.renderedCantoBlocks) {
-      for (const element of this.renderedCantoBlocks.keys()) {
-        if (!element || !element.isConnected || typeof element.querySelectorAll !== "function") continue;
-        for (const details of Array.from(element.querySelectorAll(".canto-study-block details.canto-diagnostic"))) {
-          detailsSet.add(details);
-        }
-      }
-    }
-    if (typeof document !== "undefined" && typeof document.querySelectorAll === "function") {
-      for (const details of Array.from(document.querySelectorAll(".canto-study-block details.canto-diagnostic"))) {
-        detailsSet.add(details);
-      }
-    }
-    return Array.from(detailsSet);
-  }
-  syncRenderedDiagnosticDetails() {
-    const shouldOpen = Boolean(this.settings && this.settings.expandDiagnostics);
-    for (const details of this.getRenderedDiagnosticDetails()) {
-      if (shouldOpen) {
-        details.open = true;
-        details.setAttribute("open", "");
-        details.setAttribute("data-canto-expanded-by-setting", "true");
-      } else {
-        details.open = false;
-        details.removeAttribute("open");
-        details.setAttribute("data-canto-expanded-by-setting", "false");
-      }
-    }
-  }
-  scheduleRenderedDiagnosticDetailsSync() {
-    this.syncRenderedDiagnosticDetails();
-    if (typeof requestAnimationFrame === "function") {
-      requestAnimationFrame(() => this.syncRenderedDiagnosticDetails());
-    }
-    if (typeof window !== "undefined" && typeof window.setTimeout === "function") {
-      window.setTimeout(() => this.syncRenderedDiagnosticDetails(), 0);
-    }
-  }
-  queueDiagnosticDetailsSync() {
-    if (this.diagnosticDetailsSyncQueued) return;
-    this.diagnosticDetailsSyncQueued = true;
-    const run = () => {
-      this.diagnosticDetailsSyncQueued = false;
-      this.syncRenderedDiagnosticDetails();
-    };
-    if (typeof requestAnimationFrame === "function") {
-      requestAnimationFrame(run);
-    } else if (typeof window !== "undefined" && typeof window.setTimeout === "function") {
-      window.setTimeout(run, 0);
-    } else {
-      run();
-    }
-  }
-  startDiagnosticDetailsObserver() {
-    if (typeof MutationObserver === "undefined" || typeof document === "undefined" || !document.body) return;
-    this.diagnosticDetailsObserver = new MutationObserver((mutations) => {
-      for (const mutation of mutations) {
-        for (const node of Array.from(mutation.addedNodes || [])) {
-          if (!node || node.nodeType !== 1) continue;
-          const element = node;
-          if (element.matches && element.matches("details.canto-diagnostic")) {
-            this.queueDiagnosticDetailsSync();
-            return;
-          }
-          if (element.querySelector && element.querySelector("details.canto-diagnostic")) {
-            this.queueDiagnosticDetailsSync();
-            return;
-          }
-        }
-      }
-    });
-    this.diagnosticDetailsObserver.observe(document.body, { childList: true, subtree: true });
-  }
-  refreshRenderedBlocks() {
-    if (!this.renderedCantoBlocks) return;
-    this.pruneRenderedCantoBlocks();
-    for (const [element, source] of Array.from(this.renderedCantoBlocks.entries())) {
-      if (!element || !element.isConnected) continue;
-      this.renderBlock(source, element);
-    }
-  }
-  async readActiveNoteMarkdown() {
-    const file = this.app.workspace && this.app.workspace.getActiveFile ? this.app.workspace.getActiveFile() : null;
-    if (!file) return { file: null, markdown: "" };
-    const markdown = await this.app.vault.read(file);
-    return { file, markdown };
-  }
-  async formatActiveNoteDiagnostics() {
-    const { markdown } = await this.readActiveNoteMarkdown();
-    return formatDiagnosticMarkdownForNote(markdown);
-  }
-  async saveActiveNoteDiagnosticsJson() {
-    const { file, markdown } = await this.readActiveNoteMarkdown();
-    if (!file || !file.path) {
-      new Notice("No active note found for Canto Span diagnostics JSON.");
-      return { summaryPath: "", fullPath: "" };
-    }
-    const bundle = diagnosticExportPayloadsForNote(markdown, file.path);
-    const { summaryPath, fullPath } = bundle.paths;
-    if (!summaryPath || !fullPath) {
-      new Notice("Could not determine Canto Span diagnostics JSON paths.");
-      return { summaryPath: "", fullPath: "" };
-    }
-    for (const outputPath of [summaryPath, fullPath]) {
-      const existing = this.app.vault.getAbstractFileByPath(outputPath);
-      if (existing && existing.children) {
-        new Notice(`Cannot write Canto Span diagnostics JSON: ${outputPath} is a folder.`);
-        return { summaryPath: "", fullPath: "" };
-      }
-    }
-    const writeJson = async (outputPath, payload) => {
-      const json = JSON.stringify(payload, null, 2);
-      const existing = this.app.vault.getAbstractFileByPath(outputPath);
-      if (existing) await this.app.vault.modify(existing, json);
-      else await this.app.vault.create(outputPath, json);
-    };
-    await writeJson(fullPath, bundle.full);
-    await writeJson(summaryPath, bundle.summary);
-    new Notice(`Saved Canto Span acceptance summary and full diagnostics JSON beside the note.`);
-    return { summaryPath, fullPath };
-  }
-  async formatActiveNoteWithDiagnostics() {
-    const { file, markdown } = await this.readActiveNoteMarkdown();
-    return formatNoteMarkdownWithDiagnostics(markdown, file && file.path ? file.path : "");
-  }
-  renderBlock(source, element) {
-    element.empty();
-    const options = parseBlockOptions(source);
-    const expandDiagnostics = Boolean(this.settings && this.settings.expandDiagnostics);
-    const block = createEl("div", BLOCK_CLASS);
-    block.setAttribute("data-canto-runtime-version", CANTO_SPAN_RUNTIME_VERSION);
-    const titleRow = createEl("div", "canto-title-row");
-    const title = createEl("div", "canto-title");
-    title.appendChild(createEl("span", "canto-title-normal", "Canto Span"));
-    title.appendChild(createEl("span", "canto-title-diagnostic", `Canto Span — Diagnostic v${CANTO_SPAN_RUNTIME_VERSION}`));
-    titleRow.appendChild(title);
-    const analyzedLines = options.entries.map((entry) => ({
-      line: entry.line,
-      source_line_index: entry.source_line_index,
-      context_directive: entry.context_directive || null,
-      analysis: analyzeLine(entry.line, entry.context)
-    }));
-    const diagnosticLines = analyzedLines.filter((entry) => normalizeSurface(entry.line));
-    if (diagnosticLines.length) {
-      renderCopyButton(
-        titleRow,
-        () => this.formatActiveNoteWithDiagnostics(),
-        "Copy note + diagnostics",
-        "Copied the active note with Canto Span diagnostics at the top."
-      );
-      renderCopyButton(
-        titleRow,
-        () => this.formatActiveNoteDiagnostics(),
-        "Copy diagnostics only",
-        "Copied all Canto Span diagnostics in this note."
-      );
-      renderActionButton(
-        titleRow,
-        () => this.saveActiveNoteDiagnosticsJson(),
-        "Save diagnostics JSON"
-      );
-      renderCopyButton(
-        titleRow,
-        () => diagnosticLines.map((entry) => formatDiagnosticMarkdown(entry.analysis)).join("\n\n---\n\n"),
-        diagnosticLines.length === 1 ? "Copy block diagnostic" : "Copy block diagnostics",
-        diagnosticLines.length === 1 ? "Copied this Canto Span block diagnostic." : "Copied this Canto Span block's diagnostics."
-      );
-    }
-    const legend = createEl("div", "canto-context-review-boundaries");
-    legend.appendChild(createEl("span", "canto-legend-normal", "Parent construction spans wrap child learner-role tokens. Hover/tap tokens for Jyutping."));
-    legend.appendChild(createEl("span", "canto-legend-diagnostic", "Diagnostic mode is enabled in plugin settings: tokenization, Jyutping audit, generated slots, construction match source, and review traces are shown. Use Copy note + diagnostics to copy the whole active note with generated diagnostics at the top, Copy diagnostics only for the generated batch, Save diagnostics JSON to write both a compact acceptance summary and a companion full-diagnostics file beside the active note, or Copy block diagnostic for one block."));
-    const rendered = createEl("div", "canto-rendered");
-    for (const { line, analysis, context_directive: contextDirective } of analyzedLines) {
-      if (contextDirective) {
-        const contextMeta = createEl("div", "canto-context-directive-diagnostic canto-diagnostic-ui-only");
-        contextMeta.setAttribute("data-canto-context-turn-id", contextDirective.id);
-        contextMeta.setAttribute("data-canto-context-directive-line", String(contextDirective.directive_line_index));
-        contextMeta.setAttribute("data-canto-context-target-line", String(contextDirective.target_source_line_index));
-        contextMeta.textContent = `Explicit context → ${contextDirective.source}`;
-        rendered.appendChild(contextMeta);
-      }
-      for (const warning of analysis.warnings) {
-        const warningEl = createEl("div", "canto-context-review-warning", warning);
-        rendered.appendChild(warningEl);
-      }
-      renderParserShadowRepairs(analysis, rendered);
-      const lineNormal = createEl("div", "canto-line canto-line-normal");
-      for (const node of analysis.nodes) renderNode(node, lineNormal, { showDiagnostics: false });
-      rendered.appendChild(lineNormal);
-      const lineDiagnostic = createEl("div", "canto-line canto-line-diagnostic");
-      for (const node of analysis.nodes) renderNode(node, lineDiagnostic, { showDiagnostics: true });
-      rendered.appendChild(lineDiagnostic);
-      if (normalizeSurface(line)) renderDiagnosticDetails(analysis, rendered, expandDiagnostics);
-    }
-    block.appendChild(titleRow);
-    block.appendChild(legend);
-    block.appendChild(rendered);
-    element.appendChild(block);
-    this.scheduleRenderedDiagnosticDetailsSync();
-  }
-};
-var CantoSpanSettingTab = class extends PluginSettingTab {
-  constructor(app, plugin) {
-    super(app, plugin);
-    this.plugin = plugin;
-  }
-  display() {
-    const { containerEl } = this;
-    containerEl.empty();
-    containerEl.createEl("h2", { text: "Canto Span" });
-    new Setting(containerEl).setName("Show parse diagnostics").setDesc("Show tokenization, Jyutping audit, generated slot candidates, final construction tree, and trace source below each rendered line.").addToggle((toggle) => toggle.setValue(Boolean(this.plugin.settings.showDiagnostics)).onChange(async (value) => {
-      this.plugin.settings.showDiagnostics = value;
-      await this.plugin.saveSettings();
-      this.display();
-    }));
-    new Setting(containerEl).setName("Expand diagnostics by default").setDesc("Open diagnostic details automatically when parse diagnostics are shown. This can be set before enabling parse diagnostics.").addToggle((toggle) => toggle.setValue(Boolean(this.plugin.settings.expandDiagnostics)).onChange(async (value) => {
-      this.plugin.settings.expandDiagnostics = value;
-      await this.plugin.saveSettings();
-      this.display();
-    }));
-    new Setting(containerEl).setName("Show color accessibility markers").setDesc("Adds non-color learner-role markers for protanopia, deuteranopia, tritanopia, and grayscale support. When off, learner-role styling uses color only.").addToggle((toggle) => toggle.setValue(Boolean(this.plugin.settings.showColorAccessibilityMarkers)).onChange(async (value) => {
-      this.plugin.settings.showColorAccessibilityMarkers = value;
-      await this.plugin.saveSettings();
-      this.display();
-    }));
-    containerEl.createEl("h3", { text: "Role colors" });
-    const colorDesc = containerEl.createEl("p", { cls: "setting-item-description" });
-    colorDesc.textContent = "Choose learner-role colors. Changes apply to already-rendered canto-span blocks immediately. Reset restores the neon default for that role.";
-    this.plugin.settings.roleColors = getMergedRoleColors(this.plugin.settings);
-    for (const role of ROLE_COLOR_SETTINGS) {
-      new Setting(containerEl).setName(role.label).setDesc(`CSS variable${role.cssVars.length > 1 ? "s" : ""}: ${role.cssVars.map((cssVar) => `--canto-color-${cssVar}`).join(", ")}`).addColorPicker((picker) => picker.setValue(this.plugin.settings.roleColors[role.key] || role.defaultColor).onChange(async (value) => {
-        const normalized = normalizeHexColor(value) || role.defaultColor;
-        this.plugin.settings.roleColors[role.key] = normalized;
-        await this.plugin.saveSettings();
-      })).addButton((button) => button.setButtonText("Reset").setTooltip(`Reset ${role.label} to ${role.defaultColor}`).onClick(async () => {
-        this.plugin.settings.roleColors[role.key] = role.defaultColor;
-        await this.plugin.saveSettings();
-        this.display();
-      }));
-    }
-    new Setting(containerEl).setName("Reset all role colors").setDesc("Restore every learner-role color to the v0.5.4 neon defaults.").addButton((button) => button.setButtonText("Reset all").setWarning().onClick(async () => {
-      this.plugin.settings.roleColors = { ...DEFAULT_ROLE_COLORS };
-      await this.plugin.saveSettings();
-      this.display();
-    }));
-    const note = containerEl.createEl("p", { cls: "setting-item-description" });
-    note.textContent = "Review signal: prefer generative_template and slot-based traces. Treat legacy_surface_rule and surface_specific_phrase_rule as places to simplify later.";
-  }
-};
+module.exports = createCantoSpanPlugin({
+  CANTO_SPAN_RUNTIME_VERSION,
+  analyzeLine,
+  normalizeSurface,
+  formatDiagnosticMarkdownForNote,
+  diagnosticExportPayloadsForNote,
+  formatNoteMarkdownWithDiagnostics,
+  formatDiagnosticMarkdown,
+  diagnosticSummary,
+  jyutpingAuditSummary,
+  foldedLexicalRepairDisplayRows,
+  normalizationReviewSuggestionDisplayRows,
+  learnerUiHoverAuditSummary,
+  learnerUiHoverAuditRows,
+  diagnosticTokenRows,
+  diagnosticFinalRows,
+  diagnosticLegend,
+  safeClass,
+  nodeDisplaySurface,
+  learnerUiHoverTitleForToken,
+  learnerUiHoverTitleForConstruction,
+  learnerUiHoverTitleForConstructionLayer,
+  shouldCollapseClauseSequenceForDisplay,
+  shouldCollapseGreedyWrapperForDisplay,
+  parserShadowRepairDisplayRows,
+  parserShadowRepairKindLabel,
+  splitJyutping
+});
