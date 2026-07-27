@@ -3367,425 +3367,62 @@ function rawNodeHasSlot(node, slot) {
   return nodeSlots(node).includes(slot);
 }
 
-function predicateLikeForCoverbFrame(nodes) {
-  const compact = withoutIgnorableSpaceText(nodes || []).filter((node) => node && node.kind !== "text");
-  if (!compact.length) return null;
-  const productiveVoPredicate = categorySubspanFor(compact, ["ProductiveVO"]);
-  if (productiveVoPredicate) return [productiveVoPredicate];
-  const reduplicatedPredicate = categorySubspanFor(compact, ["ReduplicatedVP"]);
-  if (reduplicatedPredicate) return [reduplicatedPredicate];
-  const last = compact[compact.length - 1];
-  const lastIsPredicate = rawNodeHasSlot(last, "predicate")
-    || rawNodeHasSlot(last, "vp")
-    || rawNodeHasSlot(last, "action_verb")
-    || rawNodeHasSlot(last, "main_verb")
-    || rawNodeHasSlot(last, "movement_verb")
-    || rawNodeHasSlot(last, "speech_verb");
-  if (!lastIsPredicate) return null;
-  if (compact.length === 1) return compact;
-  if (compact.length === 2 && rawNodeHasSlot(compact[0], "manner")) return compact;
-  return null;
-}
-
-function instrumentCoverbObjectFromNodes(nodes) {
-  const compact = withoutIgnorableSpaceText(nodes || []);
-  if (compact.length !== 1) return null;
-  const object = compact[0];
-  if (!nodeCanFillSlot(object, "object") && !nodeCanFillSlot(object, "head_noun") && !nodeCanFillSlot(object, "np")) return null;
-  if (object.kind === "token") {
-    return bridgeFramePartClone(object, {
-      label: object.label || "what",
-      pos: object.features && object.features.pos ? object.features.pos : "noun",
-      syntax: `${object.syntax || "object_np"} instrument_np coverb_object`,
-      slots: ["coverb_object", "instrument", "object", "np"],
-      reason: "The NP after 用 is the visible instrument object of a preverbal coverb phrase, not the main action object.",
-    });
-  }
-  return object;
-}
-
-function locativeCoverbPhraseFromNodes(nodes) {
-  const compact = withoutIgnorableSpaceText(nodes || []);
-  if (compact.length < 2 || compact.length > 3) return null;
-  const [marker, location, postposition] = compact;
-  if (!isToken(marker, "喺") && !nodeCanFillSlot(marker, "locative_marker")) return null;
-  if (!nodeCanFillSlot(location, "location") && !nodeCanFillSlot(location, "goal")) return null;
-  if (postposition && !isToken(postposition, "度")) return null;
-  const markerChild = bridgeFramePartClone(marker, {
-    label: "func",
-    pos: "function",
-    syntax: "locative_coverb coverb_marker",
-    slots: ["coverb_marker", "locative_marker"],
-    reason: "喺 introduces a preverbal locative coverb phrase before the main predicate.",
-  });
-  const children = [markerChild, location];
-  if (postposition) children.push(bridgeFramePartClone(postposition, {
-    label: "func",
-    pos: "function",
-    syntax: "locative_postposition coverb_phrase_postposition",
-    slots: ["locative_postposition"],
-    reason: "度 closes the locative phrase inside a preverbal coverb frame.",
-  }));
-  return construction("LocativePlacePhrase", "Location", children, {
-    note: "Locative coverb phrase: 喺 + location before a main predicate.",
-    slots: templateDerivedSlots("LocativePlacePhrase", children),
-    trace: traceInfo("generative_template", {
-      construction_type: "LocativePlacePhrase",
-      template_family: "generative_template",
-      template: ["coverb_marker!", "location!", ...(postposition ? ["locative_postposition?"] : [])],
-      assigned_slots: ["coverb_marker", "location", ...(postposition ? ["locative_postposition"] : [])],
-      surfaces: children.map((node) => flattenSurface(node)),
-      subspan: true,
-      coverb_subtype: "locative",
-    }),
-  });
-}
-
-function locativePredicatePhraseFromNodes(nodes) {
-  const compact = withoutIgnorableSpaceText(nodes || []);
-  if (compact.length < 2 || compact.length > 3) return null;
-  const [marker, location, postposition] = compact;
-  if (!isToken(marker, "喺") && !nodeCanFillSlot(marker, "locative_marker")) return null;
-  if (!nodeCanFillSlot(location, "location") && !nodeCanFillSlot(location, "goal")) return null;
-  if (postposition && !isToken(postposition, "度")) return null;
-  const markerChild = bridgeFramePartClone(marker, {
-    label: "func",
-    pos: "function",
-    syntax: "locative_predicate_marker locative_marker",
-    slots: ["locative_marker"],
-    reason: "喺 introduces a locative predicate in a subject-led location clause, not a preverbal coverb frame.",
-  });
-  const children = [markerChild, location];
-  if (postposition) children.push(bridgeFramePartClone(postposition, {
-    label: "func",
-    pos: "function",
-    syntax: "locative_postposition",
-    slots: ["locative_postposition"],
-    reason: "度 closes the locative predicate phrase.",
-  }));
-  return construction("LocativePlacePhrase", "Location", children, {
-    note: "Locative predicate phrase: 喺 + location as the predicate of a subject-led clause.",
-    slots: cleanSlots(["locative_phrase", "locative_predicate", "predicate", "location", "goal", ...templateDerivedSlots("LocativePlacePhrase", children)]),
-    trace: traceInfo("generative_template", {
-      construction_type: "LocativePlacePhrase",
-      template_family: "generative_template",
-      template: ["locative_marker!", "location!", ...(postposition ? ["locative_postposition?"] : [])],
-      assigned_slots: ["locative_marker", "location", ...(postposition ? ["locative_postposition"] : [])],
-      surfaces: children.map((node) => flattenSurface(node)),
-      subspan: true,
-      predicate_subtype: "locative",
-      not_claims: ["not_coverb_frame_without_following_predicate"],
-    }),
-  });
-}
-
-function subjectLocativePredicateClauseFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const compact = withoutIgnorableSpaceText(bareCore);
-  if (compact.length < 3 || compact.length > 4) return null;
-  const subject = compact[0];
-  if (!nodeCanFillSlot(subject, "subject")) return null;
-  const locPhrase = locativePredicatePhraseFromNodes(compact.slice(1));
-  if (!locPhrase) return null;
-  const children = [subject, locPhrase, ...particles];
-  return construction("SubjectPredicateClause", "SubjPred", children, {
-    note: "Subject-led locative predicate clause: subject + 喺 location. This is not a CoverbFrame because there is no following main predicate for the locative phrase to modify.",
-    slots: cleanSlots(["subject_predicate_clause", "subject", "predicate", "clause", "location", "locative_phrase", ...templateDerivedSlots("SubjectPredicateClause", children)]),
-    trace: traceInfo("generative_template", {
-      construction_type: "SubjectPredicateClause",
-      template_family: "generative_template",
-      predicate_subtype: "locative",
-      template: ["subject!", "locative_predicate!", "particle?"],
-      assigned_slots: ["subject", "locative_predicate", ...particles.map(() => "particle")],
-      surfaces: children.map((node) => flattenSurface(node)),
-      reason: "Direct diagnostic review rejected the previous false positive where 我喺屋企 rendered only as LocativePlacePhrase. The subject must be preserved at clause level, and the assigned slot must match the locative_predicate template.",
-      not_claims: ["not_coverb_frame", "not_bare_locative_phrase"],
-    }),
-  });
-}
-
-function locativePostureVPFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const compact = withoutIgnorableSpaceText(bareCore);
-  if (compact.length !== 4 || !nodeCanFillSlot(compact[0], "subject")) return null;
-  const [subject, posture, locative, followingEvent] = compact;
-  if (!isToken(posture, "坐") || !isToken(locative, "喺度") || !isToken(followingEvent, "等")) return null;
-
-  const locativeChild = bridgeFramePartClone(locative, {
-    label: "where",
-    pos: "location",
-    syntax: "locative_deictic locative_posture_complement",
-    slots: ["locative_phrase", "location"],
-    reason: "After a posture verb, 喺度 supplies the posture location rather than progressive aspect.",
-  });
-  const followingEventChild = bridgeFramePartClone(followingEvent, {
-    label: "doing",
-    pos: "verb",
-    syntax: "following_event_predicate",
-    slots: ["following_event", "action_verb", "predicate", "vp"],
-    reason: "The overt following event remains visible and is not reclassified as an object of the posture predicate.",
-  });
-  const vpChildren = [posture, locativeChild, followingEventChild, ...particles];
-  const vp = construction("LocativePostureVP", "PostureLoc", vpChildren, {
-    note: "Source-linked posture-location profile: 坐 + 喺度 with the overt following event preserved.",
-    slots: cleanSlots(["locative_posture_vp", "posture_verb", "locative_phrase", "location", "vp", "action_vp", "predicate", ...templateDerivedSlots("LocativePostureVP", vpChildren)]),
-    trace: traceInfo("generative_template", {
-      construction_type: "LocativePostureVP",
-      template_family: "generative_template",
-      template: ["posture_verb!", "locative_phrase!", "following_event!"],
-      assigned_slots: ["posture_verb", "locative_phrase", "following_event", ...particles.map(() => "particle")],
-      surfaces: vpChildren.map((node) => flattenSurface(node)),
-      reason: "Retains the exact attested 坐喺度等 sequence without licensing a posture-verb cross-product.",
-      not_claims: ["not_progressive_aspect", "not_preverbal_coverb_frame", "not_general_posture_verb_class", "not_following_event_object"],
-    }),
-  });
-
-  const children = [subject, vp];
-  return construction("SubjectPredicateClause", "SubjPred", children, {
-    note: "Subject-led locative posture clause preserving the LocativePostureVP predicate child.",
-    slots: cleanSlots(["subject_predicate_clause", "subject", "predicate", "clause", "location", ...templateDerivedSlots("SubjectPredicateClause", children)]),
-    trace: traceInfo("generative_template", {
-      construction_type: "SubjectPredicateClause",
-      template_family: "generative_template",
-      predicate_subtype: "locative_posture",
-      template: ["subject!", "locative_posture_vp!"],
-      assigned_slots: ["subject", "locative_posture_vp"],
-      surfaces: children.map((node) => flattenSurface(node)),
-      reason: "Attach the subject without flattening the locative posture predicate.",
-    }),
-  });
-}
-
-function comitativeCoverbObject(node) {
-  if (!node) return null;
-  if (!rawNodeHasSlot(node, "co_participant") && !rawNodeHasSlot(node, "np") && !rawNodeHasSlot(node, "subject")) return null;
-  if (node.kind === "token") {
-    return bridgeFramePartClone(node, {
-      label: node.label || "who",
-      pos: "np",
-      syntax: `${node.syntax || "participant_np"} coverb_object co_participant`,
-      slots: ["coverb_object", "co_participant", "np"],
-      reason: "The NP after 同 is the object of a preverbal coverb phrase. Depending on the following predicate it may be an addressee/interpersonal participant or a true co-participant, not the clause subject.",
-    });
-  }
-  return node;
-}
-
-function nominalModifierClone(node, reason) {
-  if (!node || node.kind !== "token") return node;
-  if (!isToken(node, "其他")) return node;
-  return parserInactiveTokenClone(node, {
-    label: "func",
-    pos: "determiner",
-    syntax: "nominal_modifier determiner_like_modifier modifier",
-    slots: ["modifier"],
-    reason: reason || "其他 is a determiner-like modifier inside a modified NP; the head noun carries the who/what role.",
-    role_resolution_note: "其他 modifies the following head noun and should not learner-display as a head/object what role in 其他同事.",
-  });
-}
-
-function comitativeCoverbObjectFromNodes(nodes) {
-  const compact = withoutIgnorableSpaceText(nodes || []);
-  if (compact.length === 1) return comitativeCoverbObject(compact[0]);
-  if (compact.length === 2 && rawNodeHasSlot(compact[0], "modifier") && (rawNodeHasSlot(compact[1], "co_participant") || rawNodeHasSlot(compact[1], "head_noun") || rawNodeHasSlot(compact[1], "subject"))) {
-    const phraseChildren = [
-      nominalModifierClone(compact[0], "其他 modifies 同事 inside the 同 coverb object NP; 同事 carries the participant/head role."),
-      compact[1],
-    ];
-    const phrase = construction("ModifiedNP", "NP", phraseChildren, {
-      primary: "co_participant",
-      note: "Modified NP inside an interpersonal/comitative 同 coverb phrase.",
-      slots: templateDerivedSlots("ModifiedNP", phraseChildren),
-      trace: traceInfo("generative_template", {
-        construction_type: "ModifiedNP",
-        template_family: "generative_template",
-        template: ["modifier!", "head_noun!"],
-        assigned_slots: ["modifier", "head_noun"],
-        surfaces: phraseChildren.map((node) => flattenSurface(node)),
-        subspan: true,
-        np_subtype: "modified_co_participant_np",
-        reason: "其他 is contextualized as a modifier/determiner-like child of 同事, not as a learner-visible what/object role.",
-      }),
-    });
-    return phrase;
-  }
-  return bridgeNPFromNodes(compact);
-}
-
-function tongCoverbSubtype(predicateNodes) {
-  const surfaces = (predicateNodes || []).map((node) => flattenSurface(node));
-  const hasTogetherMarker = surfaces.some((surface) => surface.includes("一齊"));
-  if (hasTogetherMarker) return "comitative";
-  const hasSpeechPredicate = (predicateNodes || []).some((node) => rawNodeHasSlot(node, "speech_verb") || ["講", "話"].includes(flattenSurface(node)));
-  if (hasSpeechPredicate) return "co_participant_or_addressee";
-  return "co_participant_or_interpersonal";
-}
-
-function tongCoverbDoctrineReason(subtype) {
-  if (subtype === "comitative") {
-    return "同 + co-participant modifies the following predicate; 一齊 supports a true comitative/together-with reading. CoverbFrame remains a learner structural frame and does not settle VP-adjunct versus PredP-adjunct X-bar attachment.";
-  }
-  if (subtype === "co_participant_or_addressee") {
-    return "同 + NP before a speech predicate marks an interpersonal addressee/co-participant relation, not necessarily literal together-with comitative. CoverbFrame remains a learner structural frame and does not settle VP-adjunct versus PredP-adjunct X-bar attachment.";
-  }
-  return "同 + NP introduces a preverbal interpersonal/co-participant coverb relation to the following predicate. CoverbFrame remains a learner structural frame and does not settle VP-adjunct versus PredP-adjunct X-bar attachment.";
-}
 
 
-function coverbFrameFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const compact = withoutIgnorableSpaceText(bareCore);
-  if (compact.length < 3 || compact.length > 7) return null;
+const createCoverbPlaceDetectors = require("./parser/detectors/locatives/coverb-place");
+const {
+  locativeCoverbPhraseFromNodes,
+  locativePredicatePhraseFromNodes,
+  subjectLocativePredicateClauseFallback,
+} = createCoverbPlaceDetectors({
+  bridgeFramePartClone,
+  cleanSlots,
+  construction,
+  flattenSurface,
+  isToken,
+  nodeCanFillSlot,
+  templateDerivedSlots,
+  traceInfo,
+  withoutIgnorableSpaceText,
+  withoutTrailingParticles,
+});
 
-  let subject = null;
-  let markerIndex = 0;
-  const preCoverbModifiers = [];
-  if (compact.length >= 4 && nodeCanFillSlot(compact[0], "subject")) {
-    subject = compact[0];
-    markerIndex = 1;
-  }
-  while (markerIndex < compact.length) {
-    const candidate = compact[markerIndex];
-    if (isToken(candidate, "喺") || isToken(candidate, "同") || isToken(candidate, "用")) break;
-    const candidateSurface = flattenSurface(candidate);
-    const candidateSlots = nodeSlots(candidate);
-    const modifierLike = ["再", "先", "又", "都"].includes(candidateSurface)
-      || candidateSlots.some((slot) => ["time", "time_head", "manner", "how", "focus_adverb"].includes(slot));
-    if (!modifierLike || preCoverbModifiers.length >= 2) break;
-    preCoverbModifiers.push(candidate);
-    markerIndex += 1;
-  }
+const createLocativePostureDetectors = require("./parser/detectors/locatives/posture");
+const {
+  locativePostureVPFallback,
+} = createLocativePostureDetectors({
+  bridgeFramePartClone,
+  cleanSlots,
+  construction,
+  flattenSurface,
+  isToken,
+  nodeCanFillSlot,
+  templateDerivedSlots,
+  traceInfo,
+  withoutIgnorableSpaceText,
+  withoutTrailingParticles,
+});
 
-  const marker = compact[markerIndex];
-  if (isToken(marker, "用")) {
-    if (compact.length <= markerIndex + 2) return null;
-    const instrument = instrumentCoverbObjectFromNodes(compact.slice(markerIndex + 1, markerIndex + 2));
-    if (!instrument) return null;
-    const predicateNodes = predicateLikeForCoverbFrame(compact.slice(markerIndex + 2));
-    if (!predicateNodes) return null;
-    const markerChild = bridgeFramePartClone(marker, {
-      label: "func",
-      pos: "function",
-      syntax: "instrument_coverb coverb_marker",
-      slots: ["coverb_marker", "instrument_marker"],
-      reason: "用 introduces a preverbal instrument coverb phrase before the main predicate.",
-    });
-    const children = [...(subject ? [subject] : []), ...preCoverbModifiers, markerChild, instrument, ...predicateNodes, ...particles];
-    return construction("CoverbFrame", "Coverb", children, {
-      note: "Preverbal instrument coverb frame: optional subject + 用 instrument NP + main predicate. It keeps the instrument object distinct from the main action object.",
-      slots: templateDerivedSlots("CoverbFrame", children),
-      trace: traceInfo("generative_template", {
-        construction_type: "CoverbFrame",
-        template_family: "generative_template",
-        template: [
-          ...(subject ? ["subject?"] : []),
-          ...preCoverbModifiers.map(() => "manner?"),
-          "coverb_marker!",
-          "coverb_object!",
-          ...predicateNodes.map((node, index) => index === predicateNodes.length - 1 ? "predicate!" : "manner?"),
-          "particle?"
-        ],
-        assigned_slots: [...(subject ? ["subject"] : []), ...preCoverbModifiers.map(() => "manner"), "coverb_marker", "coverb_object", ...predicateNodes.map((node, index) => index === predicateNodes.length - 1 ? "predicate" : "manner"), ...particles.map(() => "particle")],
-        coverb_subtype: "instrument",
-        boundary_guardrail: "instrument_object_not_main_action_object",
-        surfaces: children.map((node) => flattenSurface(node)),
-        reason: "用 + NP is a preverbal instrument coverb phrase modifying the main predicate; it should not collapse into NominalHeadSpan or treat the instrument NP as the action object.",
-        xbar_status: "surface_learner_frame_not_final_xbar_claim",
-        compatible_attachment_analyses: ["vp_adjunct", "predp_adjunct"],
-        not_claims: ["not_head_np", "not_transitive_vp_object_boundary", "not_full_xbar_tree"],
-      }),
-    });
-  }
-
-  if (isToken(marker, "喺")) {
-    const locPhrase = locativeCoverbPhraseFromNodes(compact.slice(markerIndex, markerIndex + 2));
-    if (!locPhrase) return null;
-    const predicateNodes = predicateLikeForCoverbFrame(compact.slice(markerIndex + 2));
-    if (!predicateNodes) return null;
-    const children = [...(subject ? [subject] : []), ...preCoverbModifiers, locPhrase, ...predicateNodes, ...particles];
-    return construction("CoverbFrame", "Coverb", children, {
-      note: "Preverbal locative coverb frame: optional subject + 喺 location + main predicate. This is a learner structural frame compatible with VP-adjunct or PredP-adjunct analyses, not a full X-bar commitment.",
-      slots: templateDerivedSlots("CoverbFrame", children),
-      trace: traceInfo("generative_template", {
-        construction_type: "CoverbFrame",
-        template_family: "generative_template",
-        template: [
-          ...(subject ? ["subject?"] : []),
-          ...preCoverbModifiers.map(() => "manner?"),
-          "coverb_phrase!",
-          ...predicateNodes.map((node, index) => index === predicateNodes.length - 1 ? "predicate!" : "manner?"),
-          "particle?"
-        ],
-        assigned_slots: [...(subject ? ["subject"] : []), ...preCoverbModifiers.map(() => "manner"), "coverb_phrase", ...predicateNodes.map((node, index) => index === predicateNodes.length - 1 ? "predicate" : "manner"), ...particles.map(() => "particle")],
-        coverb_subtype: "locative",
-        boundary_guardrail: "preverbal_coverb_not_postverbal_transfer_or_serial_purpose",
-        surfaces: children.map((node) => flattenSurface(node)),
-        reason: "喺 + location is a preverbal coverb phrase modifying the main predicate; it should not be collapsed into TransferDitransitiveVP, RecipientFrame, or SerialVerbPurposeChain. This parser frame does not claim to settle VP-adjunct versus PredP-adjunct X-bar attachment or coverb/control-verb edge cases.",
-        xbar_status: "surface_learner_frame_not_final_xbar_claim",
-        compatible_attachment_analyses: ["vp_adjunct", "predp_adjunct"],
-        not_claims: ["not_ordinary_preposition", "not_transfer_ditransitive", "not_serial_purpose_chain", "not_full_xbar_tree"],
-      }),
-    });
-  }
-
-  if (isToken(marker, "同")) {
-    if (compact.length <= markerIndex + 2) return null;
-    let object = null;
-    let predicateNodes = null;
-    for (const objectLength of [2, 1]) {
-      const objectStart = markerIndex + 1;
-      const objectEnd = objectStart + objectLength;
-      if (compact.length <= objectEnd) continue;
-      const candidateObject = comitativeCoverbObjectFromNodes(compact.slice(objectStart, objectEnd));
-      const candidatePredicate = predicateLikeForCoverbFrame(compact.slice(objectEnd));
-      if (candidateObject && candidatePredicate) {
-        object = candidateObject;
-        predicateNodes = candidatePredicate;
-        break;
-      }
-    }
-    if (!object || !predicateNodes) return null;
-    const coverbSubtype = tongCoverbSubtype(predicateNodes);
-    const coverbReason = tongCoverbDoctrineReason(coverbSubtype);
-    const markerChild = bridgeFramePartClone(marker, {
-      label: "func",
-      pos: "function",
-      syntax: coverbSubtype === "comitative" ? "comitative_coverb coverb_marker" : "interpersonal_coverb coverb_marker",
-      slots: ["coverb_marker", "comitative_marker"],
-      reason: coverbSubtype === "comitative"
-        ? "同 introduces a preverbal comitative coverb phrase before a together-with predicate."
-        : "同 introduces a preverbal interpersonal/addressee coverb phrase before the main predicate.",
-    });
-    const children = [...(subject ? [subject] : []), ...preCoverbModifiers, markerChild, object, ...predicateNodes, ...particles];
-    return construction("CoverbFrame", "Coverb", children, {
-      note: "Preverbal 同 coverb frame: optional subject + 同 coverb object + main predicate. It may be addressee/interpersonal or truly comitative depending on the predicate, and is distinct from transfer ditransitives and serial-purpose chains.",
-      slots: templateDerivedSlots("CoverbFrame", children),
-      trace: traceInfo("generative_template", {
-        construction_type: "CoverbFrame",
-        template_family: "generative_template",
-        template: [
-          ...(subject ? ["subject?"] : []),
-          ...preCoverbModifiers.map(() => "manner?"),
-          "coverb_marker!",
-          "coverb_object!",
-          ...predicateNodes.map((node, index) => index === predicateNodes.length - 1 ? "predicate!" : "manner?"),
-          "particle?"
-        ],
-        assigned_slots: [...(subject ? ["subject"] : []), ...preCoverbModifiers.map(() => "manner"), "coverb_marker", "coverb_object", ...predicateNodes.map((node, index) => index === predicateNodes.length - 1 ? "predicate" : "manner"), ...particles.map(() => "particle")],
-        coverb_subtype: coverbSubtype,
-        boundary_guardrail: "preverbal_coverb_not_postverbal_transfer_or_serial_purpose",
-        surfaces: children.map((node) => flattenSurface(node)),
-        reason: coverbReason,
-        xbar_status: "surface_learner_frame_not_final_xbar_claim",
-        compatible_attachment_analyses: ["vp_adjunct", "predp_adjunct"],
-        not_claims: ["not_ordinary_preposition", "not_transfer_ditransitive", "not_serial_purpose_chain", "not_full_xbar_tree"],
-      }),
-    });
-  }
-
-  return null;
-}
-
+const createCoverbDetectors = require("./parser/detectors/coverbs/frames");
+const {
+  coverbFrameFallback,
+} = createCoverbDetectors({
+  bridgeFramePartClone,
+  bridgeNPFromNodes,
+  categorySubspanFor,
+  construction,
+  flattenSurface,
+  isToken,
+  locativeCoverbPhraseFromNodes,
+  nodeCanFillSlot,
+  nodeSlots,
+  parserInactiveTokenClone,
+  rawNodeHasSlot,
+  templateDerivedSlots,
+  traceInfo,
+  withoutIgnorableSpaceText,
+  withoutTrailingParticles,
+});
 function coordinatedSubjectModalPredicateClauseFallback(core) {
   const { core: bareCore, particles } = withoutTrailingParticles(core);
   const compact = withoutIgnorableSpaceText(bareCore);
