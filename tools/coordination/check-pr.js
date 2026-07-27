@@ -5,7 +5,6 @@ const fs = require("fs");
 const path = require("path");
 const {
   extractClaim,
-  findClaimConflicts,
   loadJson,
   validateChangedFiles,
   validateClaim,
@@ -127,16 +126,6 @@ function validateOwnershipBinding(claim, claimIssue, intake, intakeIssue, pr) {
   return errors;
 }
 
-async function allOpenIssues(repository, token) {
-  const output = [];
-  for (let page = 1; ; page += 1) {
-    const batch = await github(`/repos/${repository}/issues?state=open&per_page=100&page=${page}`, token);
-    output.push(...batch);
-    if (batch.length < 100) break;
-  }
-  return output.filter((issue) => !issue.pull_request);
-}
-
 async function changedFiles(repository, prNumber, token) {
   const output = [];
   for (let page = 1; ; page += 1) {
@@ -194,27 +183,6 @@ async function main() {
   const ownershipErrors = validateOwnershipBinding(claim, issueNumber, intake, intakeNumber, pr);
   if (ownershipErrors.length) fail("live intake ownership does not authorize this pull request", ownershipErrors);
 
-  const openIssues = await allOpenIssues(repository, token);
-  const conflicts = [];
-  for (const otherIssue of openIssues) {
-    if (otherIssue.number === issueNumber) continue;
-    let otherClaim;
-    try {
-      otherClaim = extractClaim(otherIssue.body);
-    } catch {
-      continue;
-    }
-    const errors = validateClaim(otherClaim, { requireUnexpired: false });
-    if (errors.length || otherClaim.status !== "active") continue;
-    const expiry = new Date(otherClaim.expires_at);
-    if (!Number.isNaN(expiry.getTime()) && expiry <= new Date()) continue;
-    const targetConflicts = findClaimConflicts(claim, otherClaim);
-    if (targetConflicts.length) {
-      conflicts.push({ issue: otherIssue.number, work_id: otherClaim.work_id, conflicts: targetConflicts });
-    }
-  }
-  if (conflicts.length) fail("semantic work claim overlaps another active claim", conflicts);
-
   const files = await changedFiles(repository, pr.number, token);
   const coverage = validateChangedFiles(claim, files, config, { isDraft: Boolean(pr.draft) });
   if (coverage.errors.length) fail("changed-file coordination rules failed", coverage.errors);
@@ -233,7 +201,7 @@ async function main() {
     integration_role: claim.integration_role || "worker",
     draft: Boolean(pr.draft),
     changed_files: files.length,
-    active_claim_conflicts: 0,
+    semantic_overlap_check: "start-time responsibility",
     warnings: coverage.warnings,
   };
   process.stdout.write(`${JSON.stringify(result, null, 2)}\n`);
