@@ -6389,6 +6389,278 @@ var require_classifier_head_rules = __commonJS({
   }
 });
 
+// src/parser/tokenization/contextual-overrides.js
+var require_contextual_overrides = __commonJS({
+  "src/parser/tokenization/contextual-overrides.js"(exports2, module2) {
+    "use strict";
+    module2.exports = function createContextualLexiconOverrides2(dependencies = {}) {
+      const {
+        PROHIBITIVE_OBJECT_STARTERS: PROHIBITIVE_OBJECT_STARTERS2,
+        TOKEN_LEXICON: TOKEN_LEXICON2,
+        generateTokenSlots: generateTokenSlots2,
+        inferTokenFeatures: inferTokenFeatures2,
+        isTopicCandidate: isTopicCandidate2,
+        normalizeSurface: normalizeSurface2,
+        selectLexiconTerm: selectLexiconTerm2,
+        selectionDecisionForSurface: selectionDecisionForSurface2,
+        token: token2,
+        traceInfo: traceInfo2
+      } = dependencies;
+      function startsWithProhibitiveObject(text) {
+        const normalized = normalizeSurface2(text);
+        return PROHIBITIVE_OBJECT_STARTERS2.some((surface) => normalized.startsWith(surface));
+      }
+      function shouldSplitNegatedLexicalizedStative(nodes, text, cursor, spec) {
+        const after = text.slice(cursor + spec.surface.length);
+        const bare = !nodes.length && normalizeSurface2(text.slice(cursor)) === spec.surface;
+        if (bare) return spec.surface === "唔好味";
+        if (startsWithProhibitiveObject(after)) return false;
+        return nodes.length > 0;
+      }
+      function pushNegatedLexicalizedStativeSplit2(nodes, text, cursor, spec) {
+        if (shouldSplitNegatedLexicalizedStative(nodes, text, cursor, spec)) {
+          const after = text.slice(cursor + spec.surface.length);
+          nodes.push(token2("唔"));
+          nodes.push(token2(spec.predicate, { selection_decision: selectionDecisionForSurface2(spec.predicate, spec.predicate + after) }));
+          return spec.surface.length;
+        }
+        nodes.push(token2("唔好", { label: "func", syntax: "prohibitive_marker" }));
+        if (spec.verb !== "味") nodes.push(token2(spec.verb, { label: "doing", syntax: "verb" }));
+        else nodes.push(token2("味", { label: "neutral", syntax: "unknown_cjk_or_text", note: "Bare 唔好味 is treated as negated 好味; prohibitive 唔好 + 味 is not a normal command pattern." }));
+        return spec.surface.length;
+      }
+      function pushSpecialNotGoodEat2(nodes, text, cursor) {
+        const previous = nodes.length ? nodes[nodes.length - 1] : null;
+        const beforeTopic = previous && isTopicCandidate2(previous);
+        const after = text.slice(cursor + "唔好食".length);
+        const followedByObject = ["呢個", "嗰個", "呢啲", "嗰啲", "飯", "嘢", "水"].some((surface) => after.startsWith(surface));
+        const bare = !previous && normalizeSurface2(text.slice(cursor)) === "唔好食";
+        if (bare) {
+          const candidateAnalyses = [
+            {
+              construction: "NegatedStativePredicate",
+              split: ["唔", "好食"],
+              meaning_hint: "not tasty",
+              parser_active: false
+            },
+            {
+              construction: "ProhibitiveImperative",
+              split: ["唔好", "食"],
+              meaning_hint: "don't eat",
+              parser_active: false
+            }
+          ];
+          nodes.push(token2("唔好食", {
+            label: "neutral",
+            jyutping: "m4 hou2 sik6",
+            syntax: "ambiguous_needs_context",
+            note: "Ambiguous: 唔 + 好食 = not tasty; 唔好 + 食 = don't eat.",
+            review: "needs_context",
+            trace: traceInfo2("special_ambiguity_rule", { surface: "唔好食", reason: "Bare ambiguous string requires context.", candidate_analyses: candidateAnalyses })
+          }));
+          return "唔好食".length;
+        }
+        if (beforeTopic || !followedByObject) {
+          nodes.push(token2("唔"));
+          nodes.push(token2("好食", { selection_decision: selectionDecisionForSurface2("好食", "好食" + after) }));
+          return "唔好食".length;
+        }
+        nodes.push(token2("唔好", { label: "func", syntax: "prohibitive_marker" }));
+        nodes.push(token2("食", { label: "doing", syntax: "verb" }));
+        return "唔好食".length;
+      }
+      function contextualLexiconOverrides2(surface, rest) {
+        const after = String(rest || "").slice(surface.length);
+        if (surface === "住") {
+          if (/^喺/u.test(after)) {
+            return {
+              label: "doing",
+              jyutping: "zyu6",
+              syntax: "verb residence_verb",
+              note: "residence verb 住 before an overt locative phrase"
+            };
+          }
+          if (/^[。！？!?…]*$/u.test(after)) {
+            return {
+              label: "func",
+              jyutping: "zyu6",
+              syntax: "durative_or_continuing_state_marker",
+              slots: [],
+              note: "utterance-final durative/state 住 in the bounded audited context"
+            };
+          }
+          return {};
+        }
+        if (surface === "定") {
+          if (/^(?:咗|緊|過|住)/u.test(after)) {
+            return {
+              label: "doing",
+              jyutping: "ding6",
+              syntax: "verb decide_fix_schedule_verb",
+              note: "decide / settle / fix before overt aspect"
+            };
+          }
+          return {
+            label: "func",
+            jyutping: "ding6",
+            syntax: "alternative_question_connector",
+            slots: [],
+            note: "bare alternative connector 定 in the bounded audited context"
+          };
+        }
+        if (surface !== "咪") return {};
+        if (/^(?:又|就|係|過)/u.test(after)) {
+          return {
+            label: "func",
+            jyutping: "mai6",
+            syntax: "discourse_focus_marker",
+            slots: [],
+            note: "discourse/focus 咪 mai6 in this context"
+          };
+        }
+        const nextChoice = selectLexiconTerm2(after);
+        if (nextChoice) {
+          const nextEntry = TOKEN_LEXICON2[nextChoice.surface] || {};
+          const nextFeatures = inferTokenFeatures2(nextChoice.surface, nextEntry, {});
+          const nextSlots = generateTokenSlots2(nextFeatures);
+          if (nextFeatures.label === "doing" || nextFeatures.label === "like" || nextSlots.includes("predicate") || nextSlots.includes("action_verb")) {
+            return {
+              label: "func",
+              jyutping: "mai5",
+              syntax: "prohibitive_marker",
+              note: "prohibitive 咪 mai5 before a predicate"
+            };
+          }
+        }
+        return {
+          label: "func",
+          jyutping: "mai6",
+          syntax: "discourse_marker_review",
+          slots: [],
+          note: "context-sensitive 咪; defaulted to discourse mai6 because no following predicate was licensed",
+          review: "contextual_lexical_disambiguation"
+        };
+      }
+      return {
+        contextualLexiconOverrides: contextualLexiconOverrides2,
+        pushNegatedLexicalizedStativeSplit: pushNegatedLexicalizedStativeSplit2,
+        pushSpecialNotGoodEat: pushSpecialNotGoodEat2
+      };
+    };
+  }
+});
+
+// src/parser/detectors/address/vocative.js
+var require_vocative = __commonJS({
+  "src/parser/detectors/address/vocative.js"(exports2, module2) {
+    "use strict";
+    module2.exports = function createVocativeAddressDetector2(dependencies = {}) {
+      const {
+        ADDRESS_FOLLOWERS: ADDRESS_FOLLOWERS2,
+        ADDRESS_PREFIXES: ADDRESS_PREFIXES2,
+        ADDRESS_SUFFIXES: ADDRESS_SUFFIXES2,
+        COMMON_SURNAME_CHARS: COMMON_SURNAME_CHARS2,
+        PROTECTED_ADDRESS_TERMS: PROTECTED_ADDRESS_TERMS2,
+        PUNCT_RE: PUNCT_RE2,
+        categorySubspanFor: categorySubspanFor2,
+        construction: construction2,
+        parserInactiveTokenClone: parserInactiveTokenClone2,
+        phraseMatch: phraseMatch2,
+        token: token2,
+        traceInfo: traceInfo2
+      } = dependencies;
+      function isLikelyCjkNameChar(ch) {
+        return /^[\p{Script=Han}]$/u.test(ch || "");
+      }
+      function addressBoundaryFollows(text) {
+        if (!text) return true;
+        if (PUNCT_RE2.test(text)) return true;
+        return ADDRESS_FOLLOWERS2.some((surface) => text.startsWith(surface));
+      }
+      function protectedAddressTermAt(rest) {
+        return [...PROTECTED_ADDRESS_TERMS2].sort((a, b) => b.length - a.length || a.localeCompare(b)).find((surface) => rest.startsWith(surface) && addressBoundaryFollows(rest.slice(surface.length)));
+      }
+      function addressPartToken(surface, syntax, note) {
+        return parserInactiveTokenClone2(token2(surface, {
+          label: "who",
+          syntax,
+          note
+        }), {
+          label: "who",
+          pos: "noun",
+          syntax,
+          slots: [syntax],
+          reason: "Token is parser-inactive inside a category-based Cantonese address-form candidate; the parent exposes vocative/address affordances."
+        });
+      }
+      function makeVocativeAddressTerm(parts, detail) {
+        const surface = parts.map((part) => part.surface).join("");
+        const children = parts.map((part) => addressPartToken(part.surface, part.syntax, part.note));
+        const templated = categorySubspanFor2(children, ["VocativeAddressTerm"]);
+        if (templated) return templated;
+        return construction2("VocativeAddressTerm", "Address", children, {
+          slots: ["vocative_address_term", "named_address_term", "address_term", "vocative"],
+          note: "Guarded Cantonese named address/vocative candidate. It preserves a likely name + address-form span while protected kinship/title words stay ungenerated.",
+          trace: traceInfo2("generative_or_heuristic_slot_rule", {
+            rule: "candidate name/prefix + Cantonese address suffix",
+            surface,
+            pattern: detail.pattern,
+            confidence: detail.confidence || "medium",
+            guardrail: "Fallback only after protected address terms such as 家姐/小姐/姐姐/姐夫/阿姐 are refused and no category template matched."
+          })
+        });
+      }
+      function candidateNamedAddressFormFromRest2(rest) {
+        if (protectedAddressTermAt(rest)) return null;
+        const chars = Array.from(rest);
+        if (!chars.length) return null;
+        for (const prefix of ADDRESS_PREFIXES2) {
+          if (!rest.startsWith(prefix)) continue;
+          for (const suffix of ADDRESS_SUFFIXES2) {
+            const nameStart = prefix.length;
+            const name2 = rest.slice(nameStart, nameStart + 1);
+            const candidate2 = `${prefix}${name2}${suffix}`;
+            if (!isLikelyCjkNameChar(name2)) continue;
+            if (!rest.startsWith(candidate2)) continue;
+            if (!addressBoundaryFollows(rest.slice(candidate2.length))) continue;
+            if (PROTECTED_ADDRESS_TERMS2.has(candidate2)) continue;
+            return phraseMatch2(candidate2.length, makeVocativeAddressTerm([
+              { surface: prefix, syntax: "address_prefix", note: "Familiar Cantonese name/address prefix 阿." },
+              { surface: name2, syntax: "name_element", note: "Name element inside a fallback address-form candidate." },
+              { surface: suffix, syntax: "address_suffix", note: "Cantonese address suffix/title element." }
+            ], { pattern: "address_prefix + name_element + address_suffix" }));
+          }
+          const name = rest.slice(prefix.length, prefix.length + 1);
+          const candidate = `${prefix}${name}`;
+          if (isLikelyCjkNameChar(name) && rest.startsWith(candidate) && addressBoundaryFollows(rest.slice(candidate.length)) && !PROTECTED_ADDRESS_TERMS2.has(candidate)) {
+            return phraseMatch2(candidate.length, makeVocativeAddressTerm([
+              { surface: prefix, syntax: "address_prefix", note: "Familiar Cantonese name/address prefix 阿." },
+              { surface: name, syntax: "name_element", note: "Name element inside a fallback address-form candidate." }
+            ], { pattern: "address_prefix + name_element", confidence: "medium_low" }));
+          }
+        }
+        for (const suffix of ADDRESS_SUFFIXES2) {
+          const name = rest.slice(0, 1);
+          const candidate = `${name}${suffix}`;
+          if (!isLikelyCjkNameChar(name)) continue;
+          if (!rest.startsWith(candidate)) continue;
+          if (!addressBoundaryFollows(rest.slice(candidate.length))) continue;
+          if (PROTECTED_ADDRESS_TERMS2.has(candidate)) continue;
+          if ((suffix === "生" || suffix === "先生") && !COMMON_SURNAME_CHARS2.has(name)) continue;
+          return phraseMatch2(candidate.length, makeVocativeAddressTerm([
+            { surface: name, syntax: suffix === "生" || suffix === "先生" ? "surname_element" : "name_element", note: "Name/surname element inside a fallback address-form candidate." },
+            { surface: suffix, syntax: "address_suffix", note: "Cantonese address suffix/title element." }
+          ], { pattern: "name_or_surname_element + address_suffix" }));
+        }
+        return null;
+      }
+      return {
+        candidateNamedAddressFormFromRest: candidateNamedAddressFormFromRest2
+      };
+    };
+  }
+});
+
 // src/parser/tokenization/tokenize-line.js
 var require_tokenize_line = __commonJS({
   "src/parser/tokenization/tokenize-line.js"(exports2, module2) {
@@ -9563,226 +9835,38 @@ function transparentNominalDiDeterminerFromRest(rest) {
     })
   }));
 }
-function startsWithProhibitiveObject(text) {
-  const normalized = normalizeSurface(text);
-  return PROHIBITIVE_OBJECT_STARTERS.some((surface) => normalized.startsWith(surface));
-}
-function shouldSplitNegatedLexicalizedStative(nodes, text, cursor, spec) {
-  const after = text.slice(cursor + spec.surface.length);
-  const bare = !nodes.length && normalizeSurface(text.slice(cursor)) === spec.surface;
-  if (bare) return spec.surface === "唔好味";
-  if (startsWithProhibitiveObject(after)) return false;
-  return nodes.length > 0;
-}
-function pushNegatedLexicalizedStativeSplit(nodes, text, cursor, spec) {
-  if (shouldSplitNegatedLexicalizedStative(nodes, text, cursor, spec)) {
-    const after = text.slice(cursor + spec.surface.length);
-    nodes.push(token("唔"));
-    nodes.push(token(spec.predicate, { selection_decision: selectionDecisionForSurface(spec.predicate, spec.predicate + after) }));
-    return spec.surface.length;
-  }
-  nodes.push(token("唔好", { label: "func", syntax: "prohibitive_marker" }));
-  if (spec.verb !== "味") nodes.push(token(spec.verb, { label: "doing", syntax: "verb" }));
-  else nodes.push(token("味", { label: "neutral", syntax: "unknown_cjk_or_text", note: "Bare 唔好味 is treated as negated 好味; prohibitive 唔好 + 味 is not a normal command pattern." }));
-  return spec.surface.length;
-}
-function pushSpecialNotGoodEat(nodes, text, cursor) {
-  const previous = nodes.length ? nodes[nodes.length - 1] : null;
-  const beforeTopic = previous && isTopicCandidate(previous);
-  const after = text.slice(cursor + "唔好食".length);
-  const followedByObject = ["呢個", "嗰個", "呢啲", "嗰啲", "飯", "嘢", "水"].some((surface) => after.startsWith(surface));
-  const bare = !previous && normalizeSurface(text.slice(cursor)) === "唔好食";
-  if (bare) {
-    const candidateAnalyses = [
-      {
-        construction: "NegatedStativePredicate",
-        split: ["唔", "好食"],
-        meaning_hint: "not tasty",
-        parser_active: false
-      },
-      {
-        construction: "ProhibitiveImperative",
-        split: ["唔好", "食"],
-        meaning_hint: "don't eat",
-        parser_active: false
-      }
-    ];
-    nodes.push(token("唔好食", {
-      label: "neutral",
-      jyutping: "m4 hou2 sik6",
-      syntax: "ambiguous_needs_context",
-      note: "Ambiguous: 唔 + 好食 = not tasty; 唔好 + 食 = don't eat.",
-      review: "needs_context",
-      trace: traceInfo("special_ambiguity_rule", { surface: "唔好食", reason: "Bare ambiguous string requires context.", candidate_analyses: candidateAnalyses })
-    }));
-    return "唔好食".length;
-  }
-  if (beforeTopic || !followedByObject) {
-    nodes.push(token("唔"));
-    nodes.push(token("好食", { selection_decision: selectionDecisionForSurface("好食", "好食" + after) }));
-    return "唔好食".length;
-  }
-  nodes.push(token("唔好", { label: "func", syntax: "prohibitive_marker" }));
-  nodes.push(token("食", { label: "doing", syntax: "verb" }));
-  return "唔好食".length;
-}
-function isLikelyCjkNameChar(ch) {
-  return /^[\p{Script=Han}]$/u.test(ch || "");
-}
-function addressBoundaryFollows(text) {
-  if (!text) return true;
-  if (PUNCT_RE.test(text)) return true;
-  return ADDRESS_FOLLOWERS.some((surface) => text.startsWith(surface));
-}
-function protectedAddressTermAt(rest) {
-  return [...PROTECTED_ADDRESS_TERMS].sort((a, b) => b.length - a.length || a.localeCompare(b)).find((surface) => rest.startsWith(surface) && addressBoundaryFollows(rest.slice(surface.length)));
-}
-function addressPartToken(surface, syntax, note) {
-  return parserInactiveTokenClone(token(surface, {
-    label: "who",
-    syntax,
-    note
-  }), {
-    label: "who",
-    pos: "noun",
-    syntax,
-    slots: [syntax],
-    reason: "Token is parser-inactive inside a category-based Cantonese address-form candidate; the parent exposes vocative/address affordances."
-  });
-}
-function makeVocativeAddressTerm(parts, detail) {
-  const surface = parts.map((part) => part.surface).join("");
-  const children = parts.map((part) => addressPartToken(part.surface, part.syntax, part.note));
-  const templated = categorySubspanFor(children, ["VocativeAddressTerm"]);
-  if (templated) return templated;
-  return construction("VocativeAddressTerm", "Address", children, {
-    slots: ["vocative_address_term", "named_address_term", "address_term", "vocative"],
-    note: "Guarded Cantonese named address/vocative candidate. It preserves a likely name + address-form span while protected kinship/title words stay ungenerated.",
-    trace: traceInfo("generative_or_heuristic_slot_rule", {
-      rule: "candidate name/prefix + Cantonese address suffix",
-      surface,
-      pattern: detail.pattern,
-      confidence: detail.confidence || "medium",
-      guardrail: "Fallback only after protected address terms such as 家姐/小姐/姐姐/姐夫/阿姐 are refused and no category template matched."
-    })
-  });
-}
-function candidateNamedAddressFormFromRest(rest) {
-  if (protectedAddressTermAt(rest)) return null;
-  const chars = Array.from(rest);
-  if (!chars.length) return null;
-  for (const prefix of ADDRESS_PREFIXES) {
-    if (!rest.startsWith(prefix)) continue;
-    for (const suffix of ADDRESS_SUFFIXES) {
-      const nameStart = prefix.length;
-      const name2 = rest.slice(nameStart, nameStart + 1);
-      const candidate2 = `${prefix}${name2}${suffix}`;
-      if (!isLikelyCjkNameChar(name2)) continue;
-      if (!rest.startsWith(candidate2)) continue;
-      if (!addressBoundaryFollows(rest.slice(candidate2.length))) continue;
-      if (PROTECTED_ADDRESS_TERMS.has(candidate2)) continue;
-      return phraseMatch(candidate2.length, makeVocativeAddressTerm([
-        { surface: prefix, syntax: "address_prefix", note: "Familiar Cantonese name/address prefix 阿." },
-        { surface: name2, syntax: "name_element", note: "Name element inside a fallback address-form candidate." },
-        { surface: suffix, syntax: "address_suffix", note: "Cantonese address suffix/title element." }
-      ], { pattern: "address_prefix + name_element + address_suffix" }));
-    }
-    const name = rest.slice(prefix.length, prefix.length + 1);
-    const candidate = `${prefix}${name}`;
-    if (isLikelyCjkNameChar(name) && rest.startsWith(candidate) && addressBoundaryFollows(rest.slice(candidate.length)) && !PROTECTED_ADDRESS_TERMS.has(candidate)) {
-      return phraseMatch(candidate.length, makeVocativeAddressTerm([
-        { surface: prefix, syntax: "address_prefix", note: "Familiar Cantonese name/address prefix 阿." },
-        { surface: name, syntax: "name_element", note: "Name element inside a fallback address-form candidate." }
-      ], { pattern: "address_prefix + name_element", confidence: "medium_low" }));
-    }
-  }
-  for (const suffix of ADDRESS_SUFFIXES) {
-    const name = rest.slice(0, 1);
-    const candidate = `${name}${suffix}`;
-    if (!isLikelyCjkNameChar(name)) continue;
-    if (!rest.startsWith(candidate)) continue;
-    if (!addressBoundaryFollows(rest.slice(candidate.length))) continue;
-    if (PROTECTED_ADDRESS_TERMS.has(candidate)) continue;
-    if ((suffix === "生" || suffix === "先生") && !COMMON_SURNAME_CHARS.has(name)) continue;
-    return phraseMatch(candidate.length, makeVocativeAddressTerm([
-      { surface: name, syntax: suffix === "生" || suffix === "先生" ? "surname_element" : "name_element", note: "Name/surname element inside a fallback address-form candidate." },
-      { surface: suffix, syntax: "address_suffix", note: "Cantonese address suffix/title element." }
-    ], { pattern: "name_or_surname_element + address_suffix" }));
-  }
-  return null;
-}
-function contextualLexiconOverrides(surface, rest) {
-  const after = String(rest || "").slice(surface.length);
-  if (surface === "住") {
-    if (/^喺/u.test(after)) {
-      return {
-        label: "doing",
-        jyutping: "zyu6",
-        syntax: "verb residence_verb",
-        note: "residence verb 住 before an overt locative phrase"
-      };
-    }
-    if (/^[。！？!?…]*$/u.test(after)) {
-      return {
-        label: "func",
-        jyutping: "zyu6",
-        syntax: "durative_or_continuing_state_marker",
-        slots: [],
-        note: "utterance-final durative/state 住 in the bounded audited context"
-      };
-    }
-    return {};
-  }
-  if (surface === "定") {
-    if (/^(?:咗|緊|過|住)/u.test(after)) {
-      return {
-        label: "doing",
-        jyutping: "ding6",
-        syntax: "verb decide_fix_schedule_verb",
-        note: "decide / settle / fix before overt aspect"
-      };
-    }
-    return {
-      label: "func",
-      jyutping: "ding6",
-      syntax: "alternative_question_connector",
-      slots: [],
-      note: "bare alternative connector 定 in the bounded audited context"
-    };
-  }
-  if (surface !== "咪") return {};
-  if (/^(?:又|就|係|過)/u.test(after)) {
-    return {
-      label: "func",
-      jyutping: "mai6",
-      syntax: "discourse_focus_marker",
-      slots: [],
-      note: "discourse/focus 咪 mai6 in this context"
-    };
-  }
-  const nextChoice = selectLexiconTerm(after);
-  if (nextChoice) {
-    const nextEntry = TOKEN_LEXICON[nextChoice.surface] || {};
-    const nextFeatures = inferTokenFeatures(nextChoice.surface, nextEntry, {});
-    const nextSlots = generateTokenSlots(nextFeatures);
-    if (nextFeatures.label === "doing" || nextFeatures.label === "like" || nextSlots.includes("predicate") || nextSlots.includes("action_verb")) {
-      return {
-        label: "func",
-        jyutping: "mai5",
-        syntax: "prohibitive_marker",
-        note: "prohibitive 咪 mai5 before a predicate"
-      };
-    }
-  }
-  return {
-    label: "func",
-    jyutping: "mai6",
-    syntax: "discourse_marker_review",
-    slots: [],
-    note: "context-sensitive 咪; defaulted to discourse mai6 because no following predicate was licensed",
-    review: "contextual_lexical_disambiguation"
-  };
-}
+var createContextualLexiconOverrides = require_contextual_overrides();
+var createVocativeAddressDetector = require_vocative();
+var {
+  contextualLexiconOverrides,
+  pushNegatedLexicalizedStativeSplit,
+  pushSpecialNotGoodEat
+} = createContextualLexiconOverrides({
+  PROHIBITIVE_OBJECT_STARTERS,
+  TOKEN_LEXICON,
+  generateTokenSlots,
+  inferTokenFeatures,
+  isTopicCandidate,
+  normalizeSurface,
+  selectLexiconTerm,
+  selectionDecisionForSurface,
+  token,
+  traceInfo
+});
+var { candidateNamedAddressFormFromRest } = createVocativeAddressDetector({
+  ADDRESS_FOLLOWERS,
+  ADDRESS_PREFIXES,
+  ADDRESS_SUFFIXES,
+  COMMON_SURNAME_CHARS,
+  PROTECTED_ADDRESS_TERMS,
+  PUNCT_RE,
+  categorySubspanFor,
+  construction,
+  parserInactiveTokenClone,
+  phraseMatch,
+  token,
+  traceInfo
+});
 var { tokenizeLine } = require_tokenize_line()({
   FORMULAS,
   NEGATED_LEXICALIZED_STATIVE_SPLITS,
