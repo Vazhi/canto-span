@@ -21,7 +21,7 @@ jobs:
           package-manager-cache: false
       - name: Verify coordination system
         run: npm run verify:coordination
-      - name: Check pull request claim and overlap
+      - name: Check pull request claim binding and file coverage
         if: github.event_name == 'pull_request'
         env:
           GITHUB_TOKEN: ${{ github.token }}
