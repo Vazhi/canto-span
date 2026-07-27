@@ -834,54 +834,11 @@ function categorySubspanFor(nodes, allowedTypes = null) {
   return null;
 }
 
-const COMPOSITIONAL_NP_SUBSPAN_TYPES = [
-  "OvertHeadDemonstrativeClassifierNP",
-  "QuantifiedClassifierNP",
-  "AssociativeNP",
-  "OrdinalClassifierNP",
-  "ClassifierObjectNP",
-];
 
-function compositionalNpSubspanFor(nodes = []) {
-  const compact = withoutIgnorableSpaceText(nodes || []);
-  if (!compact.length || compact.some((node) => node.kind === "text")) return null;
-  if (compact.length === 3 && (isToken(compact[1], "同") || isToken(compact[1], "同埋"))) {
-    const coordinated = coordinatedNPFromParts(compact);
-    if (coordinated) return coordinated;
-  }
-  return categorySubspanFor(compact, COMPOSITIONAL_NP_SUBSPAN_TYPES);
-}
 
-function wrapCompositionalNpSubspans(nodes = []) {
-  const result = [];
-  let index = 0;
-  const maxWindow = 7;
-  while (index < nodes.length) {
-    let match = null;
-    for (let length = Math.min(maxWindow, nodes.length - index); length >= 2; length -= 1) {
-      const candidate = compositionalNpSubspanFor(nodes.slice(index, index + length));
-      if (!candidate) continue;
-      if (candidate.type === "QuantifiedClassifierNP") {
-        if (candidate.trace && candidate.trace.fragment_subtype === "quantified_classifier_head_ellipsis") continue;
-        const head = (candidate.children || [])[candidate.children.length - 1];
-        const headSlots = nodeSlots(head);
-        const next = nodes[index + length];
-        if (headSlots.includes("time") || headSlots.includes("time_head") || flattenSurface(head) === "字") continue;
-        if (next && nodeCanFillSlot(next, "post_classifier_approximation")) continue;
-      }
-      match = { candidate, length };
-      break;
-    }
-    if (match) {
-      result.push(match.candidate);
-      index += match.length;
-    } else {
-      result.push(nodes[index]);
-      index += 1;
-    }
-  }
-  return result;
-}
+
+
+
 
 function shouldDeferPostverbalZoForFollowingComplement(candidate, nodes, index, length) {
   if (!candidate || candidate.type !== "PostverbalZoPerfectiveVP") return false;
@@ -900,12 +857,7 @@ function shouldDeferActionStativeForDegreeMannerComplement(candidate, nodes, ind
   return nodeCanFillSlot(next, "degree_particle") || flattenSurface(next) === "啲";
 }
 
-function shouldDeferApproximateQuantityForUnlicensedGovernor(candidate, nodes, index) {
-  if (!candidate || candidate.type !== "ApproximateQuantity") return false;
-  if (index === 0) return false;
-  const governor = nodes[index - 1];
-  return !nodeCanFillSlot(governor, "consumption_verb");
-}
+
 
 function shouldDeferTransitiveWhDeterminerObject(candidate, nodes, index, length) {
   if (!candidate || candidate.type !== "TransitiveVP") return false;
@@ -1015,6 +967,38 @@ const {
   internalConstructionTypeFor,
   clauseSpanProfileForCompatibilityType,
   npLicenseMetadata,
+});
+
+const createNpDetectors = require("./parser/detectors/np/core");
+const {
+  approximateQuantityFallback,
+  classifierObjectNPFromNodes,
+  compositionalNpSubspanFor,
+  coordinatedNPFragmentFallback,
+  coordinatedNPFromParts,
+  deicticClassifierTopicFromParts,
+  nominalComplementFromNodes,
+  possessiveClassifierNPFromNodes,
+  shouldDeferApproximateQuantityForUnlicensedGovernor,
+  wrapCompositionalNpSubspans,
+  wrapPossessiveClassifierNPSubspans,
+} = createNpDetectors({
+  categorySubspanFor,
+  cleanSlots,
+  construction,
+  firstToken,
+  flattenSurface,
+  hasSurface,
+  isToken,
+  nodeCanFillSlot,
+  nodeSlots,
+  parserInactiveTokenClone,
+  resultFramePartClone,
+  templateConstructionFor,
+  templateDerivedSlots,
+  traceInfo,
+  withoutIgnorableSpaceText,
+  withoutTrailingParticles,
 });
 
 const {
@@ -2321,263 +2305,44 @@ const PROHIBITIVE_OBJECT_STARTERS = [
   "呢間", "嗰間", "一", "兩", "三", "杯", "套", "首", "件", "飯", "嘢", "水", "茶", "書", "歌", "戲", "湯", "意粉", "蘋果", "餐廳"
 ];
 
-const TRANSPARENT_DEMONSTRATIVE_CLASSIFIER_SPLITS = [
-  { surface: "呢個", demonstrative: "呢", classifier: "個", classifierSyntax: "general_classifier" },
-  { surface: "嗰個", demonstrative: "嗰", classifier: "個", classifierSyntax: "general_classifier" },
-  { surface: "呢本", demonstrative: "呢", classifier: "本", classifierSyntax: "classifier_book" },
-  { surface: "嗰本", demonstrative: "嗰", classifier: "本", classifierSyntax: "classifier_book" },
-  { surface: "呢間", demonstrative: "呢", classifier: "間", classifierSyntax: "classifier_building_shop" },
-  { surface: "嗰間", demonstrative: "嗰", classifier: "間", classifierSyntax: "classifier_building_shop" },
-  { surface: "呢杯", demonstrative: "呢", classifier: "杯", classifierSyntax: "classifier_container_cup" },
-  { surface: "嗰杯", demonstrative: "嗰", classifier: "杯", classifierSyntax: "classifier_container_cup" },
-  { surface: "呢套", demonstrative: "呢", classifier: "套", classifierSyntax: "classifier_set_media" },
-  { surface: "嗰套", demonstrative: "嗰", classifier: "套", classifierSyntax: "classifier_set_media" },
-  { surface: "呢首", demonstrative: "呢", classifier: "首", classifierSyntax: "classifier_song_poem" },
-  { surface: "嗰首", demonstrative: "嗰", classifier: "首", classifierSyntax: "classifier_song_poem" },
-  { surface: "呢件", demonstrative: "呢", classifier: "件", classifierSyntax: "classifier_clothing_item" },
-  { surface: "嗰件", demonstrative: "嗰", classifier: "件", classifierSyntax: "classifier_clothing_item" },
-];
+const createNpTokenSplits = require("./parser/detectors/np/token-splits");
+const {
+  quantifiedPersonNPFromFusedNode,
+  transparentCupNounDemonstrativeNpFromRest,
+  transparentDeicticClassifierTopicFromNode,
+  transparentDemonstrativeClassifierSplitFromRest,
+  transparentEllipticalDemonstrativeClassifierFromRest,
+  transparentNominalDiDeterminerFromRest,
+  transparentOneCountClassifierSplitFromRest,
+  transparentQuantifiedPersonNpFromRest,
+} = createNpTokenSplits({
+  PUNCT_RE,
+  cleanSlots,
+  construction,
+  flattenSurface,
+  nodeCanFillSlot,
+  phraseMatch,
+  selectLexiconTerm,
+  token,
+  traceInfo,
+});
 
 
-function makeTransparentDemonstrativeClassifierEllipsis(spec) {
-  const children = [
-    token(spec.demonstrative, {
-      label: "func",
-      syntax: "demonstrative_determiner",
-      note: `${spec.demonstrative} is the demonstrative determiner inside an elliptical demonstrative-classifier NP.`,
-    }),
-    token(spec.classifier, {
-      label: "measure_word",
-      syntax: spec.classifierSyntax,
-      note: `${spec.classifier} is the visible measure word/classifier inside an elliptical demonstrative-classifier NP.`,
-    }),
-  ];
-  return construction("HeadlessDemonstrativeClassifierNP", "NP", children, {
-    primary: "object",
-    slots: cleanSlots(["headless_demonstrative_classifier_np", "np", "topic", "object", "demonstrative", "classifier"]),
-    note: `${spec.surface} is rendered transparently as a headless demonstrative-classifier NP. No nominal head is inserted; discourse licensing remains a separate research question.`,
-    trace: traceInfo("construction_template", {
-      construction_type: "HeadlessDemonstrativeClassifierNP",
-      template_family: "construction_template",
-      template: ["demonstrative!", "classifier!"],
-      assigned_slots: ["demonstrative", "classifier"],
-      surfaces: children.map((node) => flattenSurface(node)),
-      np_subtype: "headless_demonstrative_classifier_np",
-      omitted_head_status: "overtly_absent_not_reconstructed",
-      independent_productivity_status: "research_pending",
-      reason: "The NP subsystem separates overt-head D-CL-N from headless D-CL and inserts no missing noun.",
-    }),
-  });
-}
 
-function transparentEllipticalDemonstrativeClassifierFromRest(rest) {
-  const match = TRANSPARENT_DEMONSTRATIVE_CLASSIFIER_SPLITS.find((spec) => rest.startsWith(spec.surface));
-  if (!match) return null;
 
-  const after = rest.slice(match.surface.length);
-  const nextTerm = after && !PUNCT_RE.test(after) ? selectLexiconTerm(after) : null;
-  if (nextTerm) {
-    const nextNode = token(nextTerm.surface);
-    if (nodeCanFillSlot(nextNode, "head_noun")) return null;
-  }
 
-  return phraseMatch(match.surface.length, makeTransparentDemonstrativeClassifierEllipsis(match));
-}
 
-const TRANSPARENT_CUP_NOUN_DEMONSTRATIVE_NPS = [
-  { surface: "呢個杯", demonstrative: "呢", classifier: "個", classifierSyntax: "general_classifier classifier" },
-  { surface: "嗰個杯", demonstrative: "嗰", classifier: "個", classifierSyntax: "general_classifier classifier" },
-  { surface: "呢隻杯", demonstrative: "呢", classifier: "隻", classifierSyntax: "classifier_animal_body_part_one_of_pair" },
-  { surface: "嗰隻杯", demonstrative: "嗰", classifier: "隻", classifierSyntax: "classifier_animal_body_part_one_of_pair" },
-];
 
-function transparentCupNounDemonstrativeNpFromRest(rest) {
-  const match = TRANSPARENT_CUP_NOUN_DEMONSTRATIVE_NPS.find((spec) => rest.startsWith(spec.surface));
-  if (!match) return null;
 
-  const children = [
-    token(match.demonstrative, {
-      label: "func",
-      syntax: "demonstrative_determiner",
-      slots: ["demonstrative"],
-      note: `${match.demonstrative} is the demonstrative determiner in a transparent demonstrative-classifier noun phrase.`,
-    }),
-    token(match.classifier, {
-      label: "measure_word",
-      syntax: match.classifierSyntax,
-      slots: ["classifier"],
-      note: `${match.classifier} is the visible classifier before the noun 杯.`,
-    }),
-    token("杯", {
-      label: "what",
-      syntax: "head_noun object_np container_noun",
-      slots: ["head_noun", "np", "object", "topic"],
-      note: "杯 bui1 is the noun ‘cup’ here, not the homophonous cupful classifier. This bounded lexical disambiguation is independently dictionary-attested.",
-    }),
-  ];
 
-  return phraseMatch(match.surface.length, construction("OvertHeadDemonstrativeClassifierNP", "NP", children, {
-    compatibility_alias: "DemonstrativeClassifierNP",
-    primary: "object",
-    slots: cleanSlots(["overt_head_demonstrative_classifier_np", "np", "topic", "object", "head_noun", "demonstrative", "classifier"]),
-    note: `${match.surface} is rendered transparently as the narrow overt-head demonstrative + classifier + noun subtype.`,
-    trace: traceInfo("generative_template", {
-      construction_type: "OvertHeadDemonstrativeClassifierNP",
-      compatibility_construction_type: "DemonstrativeClassifierNP",
-      template_family: "generative_template",
-      template: ["demonstrative!", "classifier!", "head_noun!"],
-      assigned_slots: ["demonstrative", "classifier", "head_noun"],
-      surfaces: children.map((node) => flattenSurface(node)),
-      np_subtype: "demonstrative_classifier_cup_noun",
-      lexical_disambiguation: "杯_noun_not_classifier",
-      reason: "The NP subsystem generalizes the rendered 杯 noun repair to the independently observed 個/隻 classifier profiles. The noun sense bui1 ‘cup’ is independently dictionary-attested; this repair changes lexical role only and adds no grammar license.",
-    }),
-  }));
-}
 
-function transparentOneCountClassifierSplitFromRest(rest) {
-  const quantitySurface = "一";
-  const classifierSurface = "個";
-  const prefix = quantitySurface + classifierSurface;
-  if (!rest.startsWith(prefix)) return null;
 
-  const after = rest.slice(prefix.length);
-  if (!after || PUNCT_RE.test(after)) return null;
 
-  const nextTerm = selectLexiconTerm(after);
-  if (!nextTerm) return null;
 
-  const nextNode = token(nextTerm.surface);
-  if (!nodeCanFillSlot(nextNode, "head_noun")) return null;
 
-  return phraseMatch(prefix.length, [
-    token(quantitySurface, {
-      label: "how",
-      syntax: "quantity count_value numeral_one",
-      slots: ["quantity"],
-      note: "一 is the visible numeral/quantity before 個; it is not a stative/like predicate in this NP.",
-      trace: traceInfo("atomic_lexicon", {
-        surface: quantitySurface,
-        generated_slots: ["quantity"],
-        transparent_token_split: "one_count_quantified_classifier_np",
-        following_classifier: classifierSurface,
-        following_head_noun: nextTerm.surface,
-        reason: "v0.5.97 splits 一個 + head noun before fused lexical lookup so QuantifiedClassifierNP can carry the generated template trace.",
-      }),
-    }),
-    token(classifierSurface, {
-      label: "measure_word",
-      syntax: "general_classifier classifier",
-      slots: ["classifier"],
-      note: "個 is the visible classifier/measure word after 一.",
-      trace: traceInfo("atomic_lexicon", {
-        surface: classifierSurface,
-        generated_slots: ["classifier"],
-        transparent_token_split: "one_count_quantified_classifier_np",
-        following_head_noun: nextTerm.surface,
-        reason: "v0.5.97 keeps 個 learner-visible as measure_word instead of letting it disappear inside a fused 一個人 token.",
-      }),
-    }),
-  ]);
-}
 
-function transparentQuantifiedPersonNpFromRest(rest) {
-  if (!rest.startsWith("好多人")) return null;
-  const children = [
-    token("好多", {
-      label: "how",
-      syntax: "quantity_degree quantity",
-      slots: ["quantity"],
-      note: "好多 is the quantity component inside 好多人.",
-    }),
-    token("人", {
-      label: "who",
-      syntax: "person_head_noun head_noun",
-      slots: ["head_noun", "np", "subject", "topic"],
-      note: "人 is the person head noun inside 好多人.",
-    }),
-  ];
-  return phraseMatch("好多人".length, construction("QuantifiedPersonNP", "NP", children, {
-    primary: "subject",
-    slots: cleanSlots(["np", "subject", "topic", "object", "head_noun", "quantity"]),
-    note: "好多人 is rendered transparently as quantity + person head noun while the whole phrase can still fill the subject/who role.",
-    trace: traceInfo("generative_template", {
-      construction_type: "QuantifiedPersonNP",
-      template_family: "generative_template",
-      template: ["quantity!", "head_noun!"],
-      assigned_slots: ["quantity", "head_noun"],
-      surfaces: children.map((node) => flattenSurface(node)),
-      reason: "v0.5.82 exposes 好多人 internally instead of flattening it into one who token.",
-    }),
-  }));
-}
 
-function transparentDemonstrativeClassifierSplitFromRest(rest) {
-  const match = TRANSPARENT_DEMONSTRATIVE_CLASSIFIER_SPLITS.find((spec) => rest.startsWith(spec.surface));
-  if (!match) return null;
 
-  const after = rest.slice(match.surface.length);
-  if (!after || PUNCT_RE.test(after)) return null;
-
-  const nextTerm = selectLexiconTerm(after);
-  if (!nextTerm) return null;
-
-  const nextNode = token(nextTerm.surface);
-  if (!nodeCanFillSlot(nextNode, "head_noun")) return null;
-
-  return phraseMatch(match.surface.length, [
-    token(match.demonstrative, {
-      label: "func",
-      syntax: "demonstrative_determiner",
-      note: `${match.demonstrative} is a transparent demonstrative determiner before a classifier.`,
-      trace: traceInfo("atomic_lexicon", {
-        surface: match.demonstrative,
-        generated_slots: ["demonstrative"],
-        transparent_token_split: "demonstrative_classifier_np",
-        parent_surface: match.surface,
-        reason: "Transparent split token inside a generated OvertHeadDemonstrativeClassifierNP; the compatibility display label remains DemonstrativeClassifierNP.",
-      }),
-    }),
-    token(match.classifier, {
-      label: "measure_word",
-      syntax: match.classifierSyntax,
-      note: `${match.classifier} is a transparent measure word/classifier after a demonstrative determiner.`,
-      trace: traceInfo("atomic_lexicon", {
-        surface: match.classifier,
-        generated_slots: ["classifier"],
-        transparent_token_split: "demonstrative_classifier_np",
-        parent_surface: match.surface,
-        reason: "Transparent split token inside a generated OvertHeadDemonstrativeClassifierNP; the compatibility display label remains DemonstrativeClassifierNP.",
-      }),
-    }),
-  ]);
-}
-
-function transparentNominalDiDeterminerFromRest(rest) {
-  if (!rest.startsWith("啲")) return null;
-
-  const after = rest.slice("啲".length);
-  if (!after || PUNCT_RE.test(after)) return null;
-
-  const nextTerm = selectLexiconTerm(after);
-  if (!nextTerm) return null;
-
-  const nextNode = token(nextTerm.surface);
-  if (!nodeCanFillSlot(nextNode, "head_noun")) return null;
-
-  return phraseMatch("啲".length, token("啲", {
-    label: "func",
-    syntax: "di_determiner",
-    note: "啲 is a nominal determiner/partitive marker before a visible head noun here, not an adverbial how token.",
-    trace: traceInfo("atomic_lexicon", {
-      surface: "啲",
-      generated_slots: ["di_determiner", "quantity"],
-      transparent_token_split: "di_marked_np",
-      following_head_noun: nextTerm.surface,
-      reason: "Transparent determiner token inside a generated DiMarkedNP; the NP construction carries the generative template trace.",
-    }),
-  }));
-}
 
 const createContextualLexiconOverrides = require("./parser/tokenization/contextual-overrides");
 const createVocativeAddressDetector = require("./parser/detectors/address/vocative");
@@ -3208,49 +2973,7 @@ function definitionFrameLaiMarker(node) {
 }
 
 
-function transparentDeicticClassifierTopicFromNode(node, contextType) {
-  const surface = flattenSurface(node);
-  const spec = TRANSPARENT_DEMONSTRATIVE_CLASSIFIER_SPLITS.find((item) => item.surface === surface);
-  if (!spec) return null;
-  const dem = token(spec.demonstrative, {
-    label: "func",
-    syntax: "demonstrative_determiner",
-    note: `${spec.demonstrative} is a transparent demonstrative determiner inside ${contextType || "a bounded topic"}.`,
-    trace: traceInfo("generative_template", {
-      construction_type: "Topic",
-      template: ["demonstrative!", "classifier!"],
-      assigned_slot: "demonstrative",
-      parent_surface: surface,
-      reason: "v0.5.74 semantic contract cleanup splits fused demonstrative-classifier topics such as 呢個 when they are the visible topic of a definition frame.",
-    }),
-  });
-  const classifier = token(spec.classifier, {
-    label: "measure_word",
-    syntax: spec.classifierSyntax,
-    note: `${spec.classifier} is the transparent classifier inside ${contextType || "a bounded topic"}.`,
-    trace: traceInfo("generative_template", {
-      construction_type: "Topic",
-      template: ["demonstrative!", "classifier!"],
-      assigned_slot: "classifier",
-      parent_surface: surface,
-      reason: "v0.5.74 semantic contract cleanup splits fused demonstrative-classifier topics such as 呢個 when they are the visible topic of a definition frame.",
-    }),
-  });
-  return construction("Topic", "Topic", [dem, classifier], {
-    slots: cleanSlots(["topic", "np", "demonstrative", "classifier", "deictic_classifier_topic"]),
-    note: `${surface} is preserved as transparent demonstrative + classifier topic material, not an opaque fused topic token.`,
-    trace: traceInfo("generative_template", {
-      construction_type: "Topic",
-      template_family: "generative_template",
-      template: ["demonstrative!", "classifier!"],
-      assigned_slots: ["demonstrative", "classifier"],
-      topic_subtype: "deictic_classifier_ellipsis",
-      surfaces: [spec.demonstrative, spec.classifier],
-      reason: "v0.5.74 semantic contract cleanup: Definition topics such as 呢個 keep transparent demonstrative/classifier internals.",
-      not_claims: ["not_opaque_deictic_classifier_topic"],
-    }),
-  });
-}
+
 
 function definitionTopicFromNodes(topicNodes) {
   const compact = withoutIgnorableSpaceText(topicNodes || []);
@@ -3285,41 +3008,7 @@ function definitionTopicFromNodes(topicNodes) {
   });
 }
 
-function quantifiedPersonNPFromFusedNode(node) {
-  if (!node || flattenSurface(node) !== "一個人") return null;
-  const quantity = token("一", {
-    label: "how",
-    syntax: "quantity count_value numeral_one",
-    slots: ["quantity"],
-    note: "一 is the visible numeral/quantity descriptor in 一個人, not a stative/like predicate.",
-    trace: traceInfo("generative_template", { construction_type: "QuantifiedClassifierNP", assigned_slot: "quantity", learner_role: "how", parent_surface: "一個人" }),
-  });
-  const classifier = token("個", {
-    label: "measure_word",
-    syntax: "general_classifier",
-    note: "個 is the visible classifier in 一個人.",
-    trace: traceInfo("generative_template", { construction_type: "QuantifiedClassifierNP", assigned_slot: "classifier", parent_surface: "一個人" }),
-  });
-  const head = token("人", {
-    label: "who",
-    syntax: "person_head_noun",
-    note: "人 is the visible person head noun in 一個人.",
-    trace: traceInfo("generative_template", { construction_type: "QuantifiedClassifierNP", assigned_slot: "head_noun", parent_surface: "一個人" }),
-  });
-  return construction("QuantifiedClassifierNP", "NP", [quantity, classifier, head], {
-    slots: cleanSlots(["quantified_classifier_np", "quantity", "classifier", "head_noun", "person_np", "np", "topic", "object", "subject"]),
-    note: "Transparent quantified classifier NP: 一 + 個 + 人, used here as the per-person scalar domain.",
-    trace: traceInfo("generative_template", {
-      construction_type: "QuantifiedClassifierNP",
-      template_family: "generative_template",
-      template: ["quantity!", "classifier!", "head_noun!"],
-      assigned_slots: ["quantity", "classifier", "head_noun"],
-      surfaces: ["一", "個", "人"],
-      reason: "v0.5.97 cleanup: 一個人 is transparent classifier/person NP material; 一 is quantity/numeral material, not a stative-like predicate.",
-      not_claims: ["not_opaque_quantity_person_np"],
-    }),
-  });
-}
+
 
 function scalarValueQuestionFallback(core) {
   const { core: bareCore, particles } = withoutTrailingParticles(core);
@@ -4654,74 +4343,11 @@ function copulaClone(node, syntax, extraSlots, reason) {
   });
 }
 
-function deicticClassifierTopicFromParts(parts) {
-  if (!parts || parts.length !== 2) return null;
-  const [dem, classifier] = parts;
-  if (!nodeCanFillSlot(dem, "demonstrative") || !nodeCanFillSlot(classifier, "classifier")) return null;
-  return construction("Topic", "Topic", parts, {
-    note: "Demonstrative-classifier topic: demonstrative + classifier, e.g. 呢部 = this one. The old fused DeicticClassifierTopic label is retired; Topic carries the clause/discourse role while deictic/classifier metadata preserves the NP-internal form.",
-    slots: cleanSlots(["topic", "np", "demonstrative", "classifier", "deictic_classifier_topic"]),
-    trace: traceInfo("generative_template", {
-      construction_type: "Topic",
-      retired_label_alias: "DeicticClassifierTopic",
-      template: ["demonstrative!", "classifier!"],
-      assigned_slots: ["demonstrative", "classifier"],
-      topic_subtype: "deictic_classifier_ellipsis",
-      np_subtype: "demonstrative_classifier_ellipsis",
-      surfaces: parts.map((node) => flattenSurface(node)),
-      subspan: true,
-      reason: "The phrase is a Topic in this frame; demonstrative/classifier details are metadata rather than a fused active construction label.",
-    }),
-  });
-}
 
-function nominalComplementFromNodes(nodes) {
-  if (!nodes || !nodes.length) return null;
-  if (nodes.length === 1 && (nodeCanFillSlot(nodes[0], "np") || nodeCanFillSlot(nodes[0], "head_noun"))) return nodes[0];
-  const templated = templateConstructionFor(nodes, ["QuantifiedClassifierNP"]) || categorySubspanFor(nodes, ["QuantifiedClassifierNP", "OvertHeadDemonstrativeClassifierNP", "OrdinalClassifierNP", "ModifiedNP", "ModifierNP", "NominalHeadSpan"]);
-  if (templated && (nodeCanFillSlot(templated, "np") || nodeCanFillSlot(templated, "head_noun"))) return templated;
-  const last = nodes[nodes.length - 1];
-  if (!nodeCanFillSlot(last, "head_noun") && !nodeCanFillSlot(last, "np")) return null;
-  const hasVisibleStativeOrLinker = nodes.some((node) => nodeCanFillSlot(node, "how") || nodeCanFillSlot(node, "nominal_linker"));
-  if (!hasVisibleStativeOrLinker) return null;
-  return construction("StativeNominalComplement", "AdjNP", nodes, {
-    note: "Stative/modified nominal complement inside a bounded copular relation frame; requires a visible stative modifier or nominal linker.",
-    slots: templateDerivedSlots("StativeNominalComplement", nodes),
-    trace: traceInfo("generative_template", {
-      construction_type: "StativeNominalComplement",
-      template: nodes.map((node) => nodeCanFillSlot(node, "how") ? "how?" : nodeCanFillSlot(node, "nominal_linker") ? "nominal_linker?" : nodeCanFillSlot(node, "head_noun") ? "head_noun!" : "modifier?"),
-      assigned_slots: nodes.map((node) => nodeCanFillSlot(node, "how") ? "how" : nodeCanFillSlot(node, "nominal_linker") ? "nominal_linker" : nodeCanFillSlot(node, "head_noun") ? "head_noun" : "modifier"),
-      surfaces: nodes.map((node) => flattenSurface(node)),
-      subspan: true,
-      reason: "v0.5.39 scope guard prevents bare/simple NPs from being mislabeled as stative nominal complements.",
-    }),
-  });
-}
 
-function coordinatedNPFromParts(parts) {
-  if (!parts || parts.length !== 3) return null;
-  const [left, coordinator, right] = parts;
-  if (!nodeCanFillSlot(left, "np") || !(isToken(coordinator, "同") || isToken(coordinator, "同埋")) || !nodeCanFillSlot(right, "np")) return null;
-  const coord = parserInactiveTokenClone(coordinator, {
-    label: "func",
-    pos: "function",
-    syntax: "coordinator",
-    slots: ["coordinator"],
-    reason: `${flattenSurface(coordinator)} is interpreted as the coordinator inside a bounded coordinated NP, not as a coverb/comitative marker.`,
-  });
-  const children = [left, coord, right];
-  return construction("CoordinatedNP", "CoordNP", children, {
-    note: "Coordinated NP: left NP + 同 + right NP. Subject use is assigned only by a larger clause.",
-    slots: cleanSlots(["coordinated_np", "left_np", "right_np", "coordinator", "np", "topic", "object"]),
-    trace: traceInfo("generative_template", {
-      construction_type: "CoordinatedNP",
-      template: ["left_np!", "coordinator!", "right_np!"],
-      assigned_slots: ["left_np", "coordinator", "right_np"],
-      surfaces: children.map((node) => flattenSurface(node)),
-      subspan: true,
-    }),
-  });
-}
+
+
+
 
 function copularIdentificationFrameFallback(core) {
   const { core: bareCore, particles } = withoutTrailingParticles(core);
@@ -4834,55 +4460,9 @@ function resultComplementFromNodes(nodes) {
   return null;
 }
 
-function possessiveClassifierNPFromNodes(nodes) {
-  const compact = withoutIgnorableSpaceText(nodes || []);
-  if (compact.length !== 3) return null;
-  const possessor = compact[0];
-  if (!nodeCanFillSlot(possessor, "subject") && !nodeCanFillSlot(possessor, "np")) return null;
-  if (!nodeCanFillSlot(compact[1], "classifier")) return null;
-  if (!nodeCanFillSlot(compact[2], "head_noun") && !nodeCanFillSlot(compact[2], "object")) return null;
 
-  const nounPhraseNodes = compact.slice(1);
-  const nounPhrase = categorySubspanFor(nounPhraseNodes, ["ModifiedNP", "NominalHeadSpan"]);
-  if (!nounPhrase) return null;
-  if (!nodeCanFillSlot(nounPhrase, "np") && !nodeCanFillSlot(nounPhrase, "head_noun")) return null;
 
-  const possessorChild = resultFramePartClone(possessor, {
-    label: (firstToken(possessor) || possessor).label || "who",
-    pos: "np",
-    syntax: `${possessor.syntax || "possessor_np"} possessive_np`,
-    slots: ["possessor", "np", "subject", "topic"],
-    reason: "This overt NP is the possessor in the sourced possessor + classifier + noun profile.",
-  });
-  return construction("PossessiveClassifierNP", "PossNP", [possessorChild, nounPhrase], {
-    note: "Source-linked possessive classifier NP: possessor + overt classifier + overt nominal head, e.g. 我架車 = my car.",
-    slots: templateDerivedSlots("PossessiveClassifierNP", [possessorChild, nounPhrase]),
-    trace: traceInfo("generative_template", {
-      construction_type: "PossessiveClassifierNP",
-      template: ["possessor!", "classifier_np!"],
-      assigned_slots: ["possessor", "classifier_np"],
-      surfaces: [flattenSurface(possessor), flattenSurface(nounPhrase)],
-      subspan: true,
-      reason: "The retained node requires the overt classifier and nominal head documented for Cantonese POSS-CL-N phrases.",
-    }),
-  });
-}
 
-function wrapPossessiveClassifierNPSubspans(nodes) {
-  const result = [];
-  let i = 0;
-  while (i < nodes.length) {
-    const possessive = possessiveClassifierNPFromNodes(nodes.slice(i, i + 3));
-    if (possessive) {
-      result.push(possessive);
-      i += 3;
-      continue;
-    }
-    result.push(nodes[i]);
-    i += 1;
-  }
-  return result;
-}
 
 function makeChangeIntoPredicate(changeNode, complement) {
   const children = [
@@ -4938,24 +4518,7 @@ function bridgeFramePartClone(node, overrides = {}) {
   });
 }
 
-function classifierObjectNPFromNodes(nodes) {
-  const compact = withoutIgnorableSpaceText(nodes || []);
-  if (compact.length !== 2) return null;
-  const [classifier, head] = compact;
-  if (!nodeCanFillSlot(classifier, "classifier")) return null;
-  if (!nodeCanFillSlot(head, "head_noun") && !nodeCanFillSlot(head, "object") && !nodeCanFillSlot(head, "np")) return null;
-  return construction("ClassifierObjectNP", "CL-NP", [classifier, head], {
-    note: "v0.5.35 classifier-headed object NP without overt numeral/demonstrative, e.g. 樣驚喜.",
-    slots: templateDerivedSlots("ClassifierObjectNP", [classifier, head]),
-    trace: traceInfo("generative_template", {
-      construction_type: "ClassifierObjectNP",
-      template: ["classifier!", "head_noun!"],
-      assigned_slots: ["classifier", "head_noun"],
-      surfaces: [flattenSurface(classifier), flattenSurface(head)],
-      subspan: true,
-    }),
-  });
-}
+
 
 function bridgeNPFromNodes(nodes) {
   const compact = withoutIgnorableSpaceText(nodes || []);
@@ -6534,26 +6097,7 @@ function coordinatedSubjectModalPredicateClauseFallback(core) {
   });
 }
 
-function coordinatedNPFragmentFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const compact = withoutIgnorableSpaceText(bareCore);
-  if (compact.length !== 3 || particles.length) return null;
-  const coord = coordinatedNPFromParts(compact);
-  if (!coord) return null;
-  return construction("CoordinatedNP", "CoordNP", coord.children, {
-    note: "Standalone coordinated NP fragment: left NP + 同 + right NP. This prevents the former false-positive guardrail where 我同你 merely had no top construction without leaking clause-subject slots into the NP.",
-    slots: cleanSlots(["coordinated_np", "left_np", "right_np", "coordinator", "np", "topic", "object"]),
-    trace: traceInfo("generative_template", {
-      construction_type: "CoordinatedNP",
-      template_family: "generative_template",
-      template: ["left_np!", "coordinator!", "right_np!"],
-      assigned_slots: ["left_np", "coordinator", "right_np"],
-      surfaces: coord.children.map((node) => flattenSurface(node)),
-      reason: "Direct diagnostic review rejected bare [] as a successful negative guardrail and rejected the intermediate subject+coordinator+subject template as clause-role leakage. 我同你 is a coordinated NP/fragment, not a parse absence and not automatically a coordinated subject.",
-      not_claims: ["not_coverb_frame", "not_parse_absence", "not_clause_subject_assignment"],
-    }),
-  });
-}
+
 
 function isBareQuantityNumeralNode(node) {
   const t = firstToken(node);
@@ -9290,15 +8834,8 @@ function wrapCore(core) {
     const scalar = scalarValueQuestionFallback(core);
     if (scalar) return [scalar];
   }
-  if (hasSurface(core, "左右")) {
-    return [construction("ApproximateQuantity", "Approx", core, {
-      note: "Approximate quantity/price fallback with 左右.",
-      trace: traceInfo("construction_function", {
-        construction_type: "ApproximateQuantity",
-        reason: "Fallback only; generative ApproximateQuantity should normally catch this."
-      })
-    })];
-  }
+  const approximateQuantitySpan = approximateQuantityFallback(core);
+  if (approximateQuantitySpan) return [approximateQuantitySpan];
 
   // Suggestion fallback: normally handled by SuggestionQuestion template.
   if (surfaceOf(core[0]) === "不如") {
