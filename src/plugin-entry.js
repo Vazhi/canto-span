@@ -2015,91 +2015,23 @@ function wrapAgreementResponseSubspans(nodes) {
   return result;
 }
 
-function isPriorityActionCandidate(node) {
-  if (!node || node.kind === "text") return false;
-  if (node.kind === "construction") {
-    const slots = nodeSlots(node);
-    return slots.includes("vp") || slots.includes("action_vp") || slots.includes("predicate") || slots.includes("directional_motion_vp") || slots.includes("productive_vo");
-  }
-  return isVerbLike(node);
-}
 
-function priorityMarkerTokenClone(node) {
-  return parserInactiveTokenClone(node, {
-    label: "how",
-    pos: "adverbial",
-    syntax: "priority_sequence_marker",
-    slots: ["priority_marker", "sequence_marker", "how"],
-    reason: "先 is being interpreted as a priority/sequence marker here, so it stays parser-inactive inside the parent clause wrapper.",
-  });
-}
 
-function priorityParticleClone(node) {
-  return parserInactiveTokenClone(node, {
-    label: "particle",
-    pos: "particle",
-    syntax: "sentence_final_particle",
-    slots: ["particle"],
-    reason: "Final particle stays parser-inactive inside a priority-marker clause wrapper.",
-  });
-}
 
-function makePriorityMarkerClause(actionNode, markerNode, particleNode = null) {
-  const children = [actionNode, priorityMarkerTokenClone(markerNode)];
-  if (particleNode) children.push(priorityParticleClone(particleNode));
-  return construction("PriorityMarkerClause", "Priority先", children, {
-    slots: ["priority_marker_clause", "sequence_priority_marker", "priority_marker", "vp", "action_vp", "predicate"],
-    note: "Priority/sequence marker clause: action + 先 + optional final particle, e.g. 你食先啦 = you eat first.",
-    trace: traceInfo("generative_template", {
-      construction_type: "PriorityMarkerClause",
-      template_family: "generative_template",
-      template: particleNode ? ["action_vp!", "priority_marker!", "particle?"] : ["action_vp!", "priority_marker!"],
-      assigned_slots: particleNode ? ["action_vp", "priority_marker", "particle"] : ["action_vp", "priority_marker"],
-      pattern: particleNode ? "predicate + priority_marker + final_particle" : "predicate + priority_marker",
-      reason: "Native speech uses 先 after an action predicate to mark priority/order ('do this first'); the action remains visible as the child predicate.",
-      surfaces: children.map((node) => flattenSurface(node)),
-    }),
-  });
-}
 
-function priorityMarkerClauseWithTrailingParticle(node, particleNode) {
-  if (!node || node.kind !== "construction" || node.type !== "PriorityMarkerClause" || !particleNode) return node;
-  if ((node.children || []).some((child) => isParticle(child))) return node;
-  return {
-    ...node,
-    children: [...(node.children || []), priorityParticleClone(particleNode)],
-    trace: {
-      ...(node.trace || {}),
-      pattern: "predicate + priority_marker + final_particle",
-      attached_trailing_particle: flattenSurface(particleNode),
-    },
-  };
-}
 
-function priorityMarkerPatternAt(nodes, index) {
-  if (!isPriorityActionCandidate(nodes[index])) return null;
-  if (!isToken(nodes[index + 1], "先")) return null;
-  if (isParticle(nodes[index + 2]) && ["啦", "喇", "呀", "啊"].includes(flattenSurface(nodes[index + 2]))) {
-    return { length: 3, particle: nodes[index + 2] };
-  }
-  return { length: 2, particle: null };
-}
 
-function wrapPriorityMarkerSubspans(nodes) {
-  const result = [];
-  let i = 0;
-  while (i < nodes.length) {
-    const match = priorityMarkerPatternAt(nodes, i);
-    if (match) {
-      result.push(makePriorityMarkerClause(nodes[i], nodes[i + 1], match.particle));
-      i += match.length;
-      continue;
-    }
-    result.push(nodes[i]);
-    i += 1;
-  }
-  return result;
-}
+
+const createPriorityDetectors = require("./parser/detectors/discourse/priority");
+const {
+  priorityMarkerClauseWithTrailingParticle,
+  sourceLinkedPriorityMarkerClauseFallback,
+  wrapPriorityMarkerSubspans,
+} = createPriorityDetectors({
+  categorySubspanFor, cleanSlots, construction, flattenSurface, isParticle, isToken,
+  isVerbLike, nodeCanFillSlot, nodeSlots, parserInactiveTokenClone, traceInfo,
+  withoutIgnorableSpaceText, withoutTrailingParticles,
+});
 
 function isSubjectLike(node) {
   return nodeSlots(node).includes("subject");
@@ -2534,6 +2466,30 @@ const {
   token, traceInfo, withoutTrailingParticles, wrapCategorySubspans,
 });
 
+const createModalPredicateDetectors = require("./parser/detectors/modality/modal-predicates");
+const {
+  coordinatedSubjectModalPredicateClauseFallback,
+  modalPredicateWrapCoreFallback,
+  modalVPFromNodes,
+} = createModalPredicateDetectors({
+  categorySubspanFor, construction, coordinatedNPFromParts, firstToken, flattenSurface,
+  isModalToken, nodeCanFillSlot, templateConstructionFor, templateDerivedSlots,
+  traceInfo, withoutIgnorableSpaceText, withoutTrailingParticles,
+});
+
+const createIntentionPreferenceDetectors = require("./parser/detectors/modality/intention-preference");
+const {
+  desiderativeVPWrapCoreFallback,
+  preferenceVPWrapCoreFallback,
+  rawPreferenceTemplateFallback,
+  sourceLinkedIntentionFrameFallback,
+  sourceLinkedPreferenceVPFallback,
+} = createIntentionPreferenceDetectors({
+  categorySubspanFor, construction, flattenSurface, hasSurface, isToken,
+  nodeCanFillSlot, templateConstructionFor, templateDerivedSlots, traceInfo,
+  withoutIgnorableSpaceText, withoutTrailingParticles,
+});
+
 const createOpinionDetectors = require("./parser/detectors/opinion/stance");
 const { opinionStanceFrameFallback } = createOpinionDetectors({
   applyConstructionPatterns, categorySubspanFor, cleanSlots, construction, copulaClone,
@@ -2751,95 +2707,13 @@ function subjectStativePredicateClauseFallback(nodes) {
   });
 }
 
-function isModalPredicateConstruction(node) {
-  return node && node.kind === "construction" && node.type === "ModalVP";
-}
 
-function isPremodalClauseModifier(node) {
-  if (!node) return false;
-  if (node.kind === "text") return false;
-  return nodeCanFillSlot(node, "time") || nodeCanFillSlot(node, "how") || nodeCanFillSlot(node, "manner");
-}
 
-function modalClauseTypeForLeadingNode(node) {
-  if (!node) return "";
-  if (nodeCanFillSlot(node, "location") || nodeCanFillSlot(node, "locative_phrase")) return "LocativeModalPredicateClause";
-  if (nodeCanFillSlot(node, "subject") && !nodeCanFillSlot(node, "object")) return "SubjectModalPredicateClause";
-  if (nodeCanFillSlot(node, "subject") && (firstToken(node) || {}).label === "who") return "SubjectModalPredicateClause";
-  if (nodeCanFillSlot(node, "topic") || nodeCanFillSlot(node, "np") || nodeCanFillSlot(node, "head_noun")) return "TopicModalPredicateClause";
-  return "";
-}
 
-function modalClauseLabelForType(type) {
-  if (type === "LocativeModalPredicateClause") return "LocModal";
-  if (type === "SubjectModalPredicateClause") return "SubjModal";
-  if (type === "TopicModalPredicateClause") return "TopicModal";
-  return "ModalClause";
-}
 
-function modalPredicateFromNodes(nodes) {
-  if (!nodes || !nodes.length) return null;
-  if (nodes.length === 1 && nodeCanFillSlot(nodes[0], "vp")) return nodes[0];
-  const templated = categorySubspanFor(nodes, ["VerbComplementVP", "DirectionalMotionVP", "CompoundDirectionalMotionVP", "NegatedDirectionalMotionVP", "DegreeMannerAdverbial"])
-    || templateConstructionFor(nodes, ["VerbComplementVP", "TransitiveVP", "ProductiveVO", "CompletionVP", "DirectionalMotionVP", "MotionPurposeChain", "SerialVerbPurposeChain"]);
-  if (templated && nodeCanFillSlot(templated, "vp")) return templated;
-  return null;
-}
 
-function modalVPFromNodes(nodes) {
-  if (!nodes || !nodes.length) return null;
-  const generated = templateConstructionFor(nodes, ["ModalVP"]);
-  if (generated) return generated;
-  const { core: bareCore, particles } = withoutTrailingParticles(nodes);
-  if (!bareCore.length || !nodeCanFillSlot(bareCore[0], "modal")) return null;
-  const modal = bareCore[0];
-  const predicateNodes = bareCore.slice(1);
-  if (!predicateNodes.length) return null;
-  const predicate = modalPredicateFromNodes(predicateNodes);
-  if (!predicate || !nodeCanFillSlot(predicate, "vp")) return null;
-  const children = [modal, predicate, ...particles];
-  return construction("ModalVP", "ModalVP", children, {
-    note: "Broad modal VP: modal auxiliary plus VP/predicate complement. Matched by governed generated slots rather than the old modal-token heuristic.",
-    slots: templateDerivedSlots("ModalVP", children),
-    trace: traceInfo("generative_template", {
-      construction_type: "ModalVP",
-      template_family: "generative_template",
-      template: ["modal!", "vp!", "particle?"],
-      assigned_slots: ["modal", "vp", ...particles.map(() => "particle")],
-      surfaces: children.map((node) => flattenSurface(node)),
-      reason: "Promotes modal + VP/predicate material into the governed generative-template lane while preserving the predicate child span.",
-    }),
-  });
-}
 
-function modalClauseTemplateForType(type, modifiers) {
-  const first = type === "LocativeModalPredicateClause" ? "location!" : type === "SubjectModalPredicateClause" ? "subject!" : "topic!";
-  const middle = modifiers.map((node) => nodeCanFillSlot(node, "time") ? "time?" : nodeCanFillSlot(node, "how") ? "how?" : "manner?");
-  return [first, ...middle, "modal_vp!"];
-}
 
-function modalPredicateClauseFromParts(beforeModal, modalSpan) {
-  if (!isModalPredicateConstruction(modalSpan)) return null;
-  if (!beforeModal.length) return null;
-  if (beforeModal.some((node) => node.kind === "text")) return null;
-  const leading = beforeModal[0];
-  const modifiers = beforeModal.slice(1);
-  if (modifiers.some((node) => !isPremodalClauseModifier(node))) return null;
-  const type = modalClauseTypeForLeadingNode(leading);
-  if (!type) return null;
-  const children = [...beforeModal, modalSpan];
-  return construction(type, modalClauseLabelForType(type), children, {
-    note: "v0.5.31 subject/topic/location-preserving modal clause. The existing ModalVP is kept as the visible predicate child instead of becoming a separate top-level span.",
-    slots: templateDerivedSlots(type, children),
-    trace: traceInfo("generative_template", {
-      construction_type: type,
-      template: modalClauseTemplateForType(type, modifiers),
-      assigned_slots: [type === "LocativeModalPredicateClause" ? "location" : type === "SubjectModalPredicateClause" ? "subject" : "topic", ...modifiers.map((node) => nodeCanFillSlot(node, "time") ? "time" : nodeCanFillSlot(node, "how") ? "how" : "manner"), "modal_vp"],
-      surfaces: children.map((node) => flattenSurface(node)),
-      reason: "Wraps a generated topic/subject/location prefix plus an existing ModalVP without changing the ModalVP internals.",
-    }),
-  });
-}
 
 function isIgnorableSpaceText(node) {
   return node && node.kind === "text" && !hasSentencePunctuation(node.text) && !normalizeSurface(node.text);
@@ -2868,61 +2742,7 @@ function nameTokenClone(node) {
   });
 }
 
-function sourceLinkedIntentionFrameFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const compact = withoutIgnorableSpaceText(bareCore);
-  if (compact.length < 3) return null;
-  const [subject, intentionPredicate, ...predicateNodes] = compact;
-  if (!nodeCanFillSlot(subject, "subject") || !isToken(intentionPredicate, "諗住")) return null;
-  const predicate = categorySubspanFor(predicateNodes, [
-    "DirectionalMotionVP",
-    "CompoundDirectionalMotionVP",
-    "VerbComplementVP",
-    "TransitiveVP",
-    "ProductiveVO",
-  ]);
-  if (!predicate || !nodeCanFillSlot(predicate, "vp")) return null;
-  const children = [subject, intentionPredicate, predicate, ...particles];
-  return construction("IntentionFrame", "Intention", children, {
-    note: "Source-linked lexical intention profile: overt subject + 諗住 + visible VP.",
-    slots: templateDerivedSlots("IntentionFrame", children),
-    trace: traceInfo("generative_template", {
-      construction_type: "IntentionFrame",
-      template: ["subject!", "intention_predicate!", "vp!", "particle?"],
-      constraints: { slot_surface_in: { intention_predicate: ["諗住"] } },
-      assigned_slots: ["subject", "intention_predicate", "vp", ...particles.map(() => "particle")],
-      surfaces: children.map((node) => flattenSurface(node)),
-      reason: "Runs before broad VP-complement subspan wrapping so the overt subject and lexical intention predicate remain visible.",
-    }),
-  });
-}
 
-function sourceLinkedPreferenceVPFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const compact = withoutIgnorableSpaceText(bareCore);
-  if (compact.length < 3 || !nodeCanFillSlot(compact[0], "subject") || !isToken(compact[1], "鍾意")) return null;
-  const complement = categorySubspanFor(compact.slice(2), [
-    "TransitiveVP",
-    "ProductiveVO",
-    "DirectionalMotionVP",
-    "CompoundDirectionalMotionVP",
-    "VerbComplementVP",
-  ]);
-  if (!complement || !nodeCanFillSlot(complement, "vp")) return null;
-  const children = [compact[0], compact[1], complement, ...particles];
-  return construction("PreferenceVP", "Preference", children, {
-    note: "Source-linked preference predicate with an overt subject and visible activity VP complement.",
-    slots: templateDerivedSlots("PreferenceVP", children),
-    trace: traceInfo("generative_template", {
-      construction_type: "PreferenceVP",
-      template: ["subject!", "preference_predicate!", "vp!", "particle?"],
-      constraints: { slot_surface_in: { preference_predicate: ["鍾意"] } },
-      assigned_slots: ["subject", "preference_predicate", "vp", ...particles.map(() => "particle")],
-      surfaces: children.map((node) => flattenSurface(node)),
-      reason: "Runs before broad nominal wrapping so the sourced 鍾意 + activity complement remains visible.",
-    }),
-  });
-}
 
 function sourceLinkedDegreeMannerModifiedVPFallback(core) {
   const { core: bareCore, particles } = withoutTrailingParticles(core);
@@ -2960,29 +2780,6 @@ function sourceLinkedDegreeMannerModifiedVPFallback(core) {
   });
 }
 
-function sourceLinkedPriorityMarkerClauseFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const compact = withoutIgnorableSpaceText(bareCore);
-  if (compact.length < 3 || !nodeCanFillSlot(compact[0], "subject")) return null;
-  const markerIndex = compact.findIndex((node, index) => index > 1 && isToken(node, "先"));
-  if (markerIndex < 0 || markerIndex !== compact.length - 1) return null;
-  const action = categorySubspanFor(compact.slice(1, markerIndex), ["ProductiveVO", "TransitiveVP"]);
-  if (!action || flattenSurface(action) !== "打電話") return null;
-  if (particles.length !== 1 || !isToken(particles[0], "啦")) return null;
-  const children = [compact[0], action, priorityMarkerTokenClone(compact[markerIndex]), priorityParticleClone(particles[0])];
-  return construction("PriorityMarkerClause", "Priority先", children, {
-    note: "Source-linked postverbal 先 profile in 你打電話先啦.",
-    slots: cleanSlots(["priority_marker_clause", "sequence_priority_marker", "priority_marker", "subject", "vp", "action_vp", "predicate"]),
-    trace: traceInfo("generative_template", {
-      construction_type: "PriorityMarkerClause",
-      template: ["subject!", "action_vp!", "priority_marker!", "particle!"],
-      constraints: { surface_sequence: "你打電話先啦" },
-      assigned_slots: ["subject", "action_vp", "priority_marker", "particle"],
-      surfaces: children.map((node) => flattenSurface(node)),
-      reason: "Retains the exact attested action + postverbal 先 + 啦 profile while excluding preverbal and deferral uses.",
-    }),
-  });
-}
 
 const {
   protectedOpaqueFormulaPassthrough,
@@ -3423,28 +3220,6 @@ const {
   withoutIgnorableSpaceText,
   withoutTrailingParticles,
 });
-function coordinatedSubjectModalPredicateClauseFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const compact = withoutIgnorableSpaceText(bareCore);
-  if (compact.length < 5) return null;
-  const coord = coordinatedNPFromParts(compact.slice(0, 3));
-  if (!coord) return null;
-  const rest = compact.slice(3);
-  const modalVP = modalVPFromNodes(rest);
-  if (!modalVP || !nodeCanFillSlot(modalVP, "modal_vp")) return null;
-  const children = [coord, modalVP, ...particles];
-  return construction("CoordinatedSubjectModalPredicateClause", "CoordSubjModal", children, {
-    note: "v0.5.35 coordinated-subject modal clause: coordinated subject + existing ModalVP child.",
-    slots: templateDerivedSlots("CoordinatedSubjectModalPredicateClause", children),
-    trace: traceInfo("generative_template", {
-      construction_type: "CoordinatedSubjectModalPredicateClause",
-      template: ["subject!", "modal_vp!", "particle?"],
-      assigned_slots: ["subject", "modal_vp", ...particles.map(() => "particle")],
-      surfaces: children.map((node) => flattenSurface(node)),
-      reason: "Adds a subject-preserving wrapper for the reviewed coordinated-subject modal pattern while keeping the ModalVP internals unchanged.",
-    }),
-  });
-}
 
 
 
@@ -5979,7 +5754,7 @@ function wrapCore(core) {
 
   // Preference needs a top-level pass before broad NP category wrapping.
   // Otherwise 鍾意 + VP can be mis-wrapped as ModifiedNP because the VP exports noun/object slots from its object child.
-  const rawPreferenceSpan = templateConstructionFor(core, ["PreferenceVP"]);
+  const rawPreferenceSpan = rawPreferenceTemplateFallback(core);
   if (rawPreferenceSpan) return [rawPreferenceSpan];
 
   const negativeCognitionSpan = negativeCognitionFragmentFallback(core);
@@ -6162,9 +5937,8 @@ function wrapCore(core) {
   const experientialQuestionBoundary = experientialQuestionBoundaryFallback(core);
   if (experientialQuestionBoundary) return [experientialQuestionBoundary];
 
-  if (hasSurface(core, "想") && (hasSurface(core, "好") || hasSurface(core, "試吓"))) {
-    return [construction("DesiderativeVP", "WantVP", core, { note: "Desire/wanting construction, often 好想 + VP.", trace: traceInfo("legacy_surface_rule", { rule: "has 想 plus degree/VP", reason: "Surface modal fallback." }) })];
-  }
+  const desiderativeSpan = desiderativeVPWrapCoreFallback(core);
+  if (desiderativeSpan) return [desiderativeSpan];
 
   // Source-linked negative 算 evaluation. Keep the overt predicate and any subject/topic material visible.
   if (hasSurface(core, "唔") && hasSurface(core, "算") && hasSurface(core, "貴")) {
@@ -6202,15 +5976,8 @@ function wrapCore(core) {
   if (existentialWhQuestion) return [existentialWhQuestion];
 
   // Preference fallback: normally handled by the PreferenceVP template before broad NP category wrapping.
-  if (hasSurface(core, "鍾意")) {
-    return [construction("PreferenceVP", "Preference", core, {
-      note: "Preference fallback: preference predicate taking a VP/object complement.",
-      trace: traceInfo("construction_function", {
-        construction_type: "PreferenceVP",
-        reason: "Fallback only; generative PreferenceVP should normally catch this before ModifiedNP wrapping."
-      })
-    })];
-  }
+  const preferenceFallbackSpan = preferenceVPWrapCoreFallback(core);
+  if (preferenceFallbackSpan) return [preferenceFallbackSpan];
 
   // Temporal clause fallback: normally handled by the TemporalClause template.
   if (core.length >= 2 && firstToken(core[0]) && firstToken(core[0]).label === "when") {
@@ -6260,17 +6027,8 @@ function wrapCore(core) {
 
   // Modal + VP/predicate: NP? Modal Predicate.
   // v0.5.56: prefer governed generative ModalVP; retain the old slot heuristic only as a final fallback.
-  const modalIndex = core.findIndex(isModalToken);
-  if (modalIndex >= 0 && modalIndex < core.length - 1) {
-    const before = core.slice(0, modalIndex);
-    let modalSpan = modalVPFromNodes(core.slice(modalIndex));
-    if (!modalSpan) {
-      modalSpan = construction("ModalVP", "ModalVP", core.slice(modalIndex), { note: "Modal/desiderative construction wrapping following predicate.", trace: traceInfo("generative_or_heuristic_slot_rule", { rule: "modal token followed by predicate material", reason: "Fallback only; governed ModalVP should normally catch modal + VP material." }) });
-    }
-    const modalClause = modalPredicateClauseFromParts(before, modalSpan);
-    if (modalClause) return [modalClause];
-    return [...before, modalSpan];
-  }
+  const modalPredicateWrapSpan = modalPredicateWrapCoreFallback(core);
+  if (modalPredicateWrapSpan) return modalPredicateWrapSpan;
 
   return wrapPredicate(core);
 }
