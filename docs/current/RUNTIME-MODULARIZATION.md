@@ -1,10 +1,11 @@
 # Runtime modularization and wired-resource architecture
 
-Status: **Stage 6 formula-response detector extraction implemented; pending merge**
+Status: **Stage 7 rendering and plugin integration extraction implemented; pending merge**
 Parent program: #161
-Stage 6 intake: #167
-Work claim: #184
-Draft pull request: #185
+Stage 7 intake: #168
+Work claim: #186
+Draft pull request: #187
+Stage 6 detector pilot: #167 / PR #185
 Stage 5 parser primitives: #166 / PR #183
 Stage 4 declarative resources: #165 / PR #181
 Stage 3 lexical/Jyutping resources: #164 / PR #179
@@ -180,6 +181,17 @@ The module owns the selected fallback/detector block for `FormulaDiscourseUnit` 
 
 The pilot does not own protected formula-table creation, `FragmentAnswer`, `FragmentQuestion`, polite/path imperative detection, clause relations, cognition, existential clauses, questions, motion, aspect, NP licensing, rendering, diagnostics, or plugin lifecycle code. Existing call order in `src/plugin-entry.js` is unchanged.
 
+## Stage 7 rendering and plugin ownership
+
+Learner-facing and Obsidian-facing code is now maintained under:
+
+- `src/render/learner-display.js` for learner-safe gloss and hover-title generation;
+- `src/render/block-renderer.js` for DOM construction, diagnostic presentation, block directives, token/construction rendering, and parser-shadow repair display;
+- `src/plugin/settings.js` for settings defaults, global class names, role-color metadata, and color normalization;
+- `src/plugin/canto-span-plugin.js` for settings UI, persistence, markdown code-block registration, block refresh, diagnostic export actions, and plugin lifecycle.
+
+Parser recognition and diagnostic computation remain in their existing canonical owners and are passed into rendering/plugin factories explicitly. Only `src/plugin/canto-span-plugin.js` imports the Obsidian API. Render modules do not import detector families or plugin state.
+
 ## Runtime-resource format rule
 
 Use JSON only for plain serializable data whose order and values can be preserved without behavior. Use JavaScript modules when the resource contains:
@@ -273,6 +285,6 @@ The modularization succeeds only when routine changes become file-local:
 
 Generated `main.js` may still be large. The improvement is that the GitHub connector edits small canonical inputs and reviews a deterministic output rather than reconstructing the bundle as the source of truth.
 
-## Stage 6 behavior boundary
+## Stage 7 behavior boundary
 
 Stage 6 moves one bounded detector family into a canonical source module without changing detector order, precedence, spans, diagnostics, parser behavior, or rendering behavior. Runtime version `0.5.216`, manifest version `0.5.216`, parser results, rendered output, test expectations, construction identity, linguistic status, evidence, corpus classification, survey state, release state, and merge authorization remain unchanged.
