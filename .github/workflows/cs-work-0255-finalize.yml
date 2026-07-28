@@ -1,12 +1,6 @@
 name: CS-WORK-0255 finalizer
 
 on:
-  push:
-    branches:
-      - agent/finalize-source-first-workflow
-    paths:
-      - "tools/temporary/CS-WORK-0255-final.b64.part-*"
-      - ".github/workflows/cs-work-0255-finalize.yml"
   pull_request:
     branches:
       - main
@@ -72,10 +66,11 @@ jobs:
           rm -f validation/current/parked-constructions.json
           grep -Fq '// GENERATED FILE — DO NOT EDIT DIRECTLY.' main.js
 
-      - name: Commit final source-first state
+      - name: Commit non-workflow final state
         run: |
           set -euo pipefail
-          rm -f .github/workflows/cs-work-0255-finalize.yml
+          git checkout HEAD -- .github/workflows/runtime-source-first.yml
+          git checkout HEAD -- .github/workflows/supported-productive-discovery.yml
           rm -rf tools/temporary
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
