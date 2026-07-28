@@ -94,7 +94,11 @@ Corpus extraction is separate from expert classification. A bounded human local-
 
 ## Native-panel and survey state
 
-`YUE-JUDGMENT-PILOT-01` remains the active SoSci collection instrument. The `review-packets/native-panel/active-v2/followup-draft-v1-*` specification remains non-deployable.
+`YUE-JUDGMENT-PILOT-01` remains the active SoSci collection instrument. The public questionnaire is available at [https://www.soscisurvey.de/canto-span/](https://www.soscisurvey.de/canto-span/). It is anonymous, takes approximately 10 minutes, and is intended for native or childhood Cantonese speakers.
+
+General questions, recruitment help, Cantonese wording feedback, and community discussion belong in [GitHub Discussions](https://github.com/Vazhi/canto-span/discussions). GitHub Issues remain reserved for reproducible bugs, bounded research tasks, and implementation work.
+
+The `review-packets/native-panel/active-v2/followup-draft-v1-*` specification remains non-deployable.
 
 All eligible respondents form one anonymized role-neutral panel. No named person, relationship, private reviewer, expert title, or recruitment channel receives special weight. The pilot must close and receive item-level audit before a follow-up is revised, locked, generated, deployed, or treated as final evidence.
 

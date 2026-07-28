@@ -12,6 +12,21 @@ The sole present-tense snapshot is
 counts, current milestones, survey and corpus state, agent availability, and work
 order. Do not copy those values into additional current-state summaries.
 
+## Community and participation
+
+Use [GitHub Discussions](https://github.com/Vazhi/canto-span/discussions) for
+general questions, ideas, Cantonese wording feedback, regional-usage discussion,
+and other community conversation.
+
+Native or childhood Cantonese speakers can find the active questionnaire and
+current recruitment status in the
+[Native-panel and survey state](docs/current/PROJECT-STATE.md#native-panel-and-survey-state)
+section of the canonical project snapshot.
+
+Reserve [GitHub Issues](https://github.com/Vazhi/canto-span/issues) for
+reproducible bugs, bounded research tasks, and implementation work with a clear
+repository outcome.
+
 ## Authority map
 
 - Mandatory cross-cutting contract:
