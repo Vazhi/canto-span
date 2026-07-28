@@ -37,5 +37,7 @@ jobs:
         run: npm ci
       - name: Verify deterministic generated runtime
         run: npm run verify:runtime-build
-      - name: Run standard runtime tests
+      - name: Run source-first runtime tests
         run: npm test
+      - name: Verify generated runtime loading
+        run: npm run test:generated-runtime
