@@ -87,7 +87,7 @@ auditable, branch-limited, and unable to write directly to `main`, broaden its o
 scope, adjudicate evidence, promote status, deploy surveys, publish releases, merge,
 enable auto-merge, or infer user approval.
 
-Edit canonical inputs first and regenerate deterministic outputs in the same branch.
+Edit canonical inputs first and regenerate deterministic outputs in the same branch. For runtime work, edit the smallest owner under `src/**` or `src/runtime-resources/**`; never hand-edit `main.js`. Regenerate it only with `npm run build:runtime`, and do not touch it for unrelated research, corpus, survey, governance, or documentation work.
 `validation/current/` contains optional verifier reports, not patch inputs. Routine
 verification must not modify tracked reports. A ready pull request may not contain a
 pending changeset or generated validation byproduct.

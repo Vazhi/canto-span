@@ -46,7 +46,7 @@ No registry owns every state dimension.
 | UUID and short code | identity registry and lock | Assigned identities never change or return to the pool. |
 | Canonical ontology | accepted UUID-keyed adjudications | Names and profiles may change without silently changing runtime or status. |
 | Linguistic status and note evidence | one current note under `grammar/<status>/` | A recommendation or passing test does not move status. |
-| Parser behavior | `main.js` and executable tests | Tests establish implementation behavior only. |
+| Parser behavior | canonical `src/**` runtime modules and executable tests | `main.js` is generated deployment output; tests establish implementation behavior only. |
 | Construction availability | `data/parked-constructions.json` | Unlisted current constructions are available. |
 | Agent availability | `config/agent-workflow-settings.json` | A disabled agent cannot be target, owner, or assignee. |
 | Pickup authority | latest valid intake ownership block | Cached prompts, comments, labels, and assignments are not authority. |

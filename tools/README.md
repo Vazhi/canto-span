@@ -2,7 +2,10 @@
 
 ## Current entry points
 
-- `../tests/run-all.js` / `npm test` — parser regression, NP subsystem, and per-construction assertions.
+- `build-runtime.js` / `npm run build:runtime` — sole canonical builder for generated `main.js`.
+- `npm run verify:runtime-build` — deterministic build and committed-bundle equality check.
+- `npm run test:generated-runtime` — generated-bundle load and self-containment smoke test.
+- `../tests/run-all.js` / `npm test` — source-first parser regression, NP subsystem, per-construction, and accepted lexicon assertions.
 - `verify-current-state.js` — manifest-driven verification runner.
 - `verify-repository.sh` — Git integrity plus the stable core verification profile.
 - `verify-implementation-reachability.js` — validates the single zero-weight implementation-probe inventory.

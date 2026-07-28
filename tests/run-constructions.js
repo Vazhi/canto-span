@@ -7,7 +7,7 @@ const path = require("path");
 const { loadRuntimeApi, internalConstruction, rowSurface } = require("./lib/runtime-api");
 
 const root = path.resolve(__dirname, "..");
-const api = loadRuntimeApi(path.join(root, "main.js"));
+const api = loadRuntimeApi();
 const fixture = JSON.parse(fs.readFileSync(path.join(root, "tests", "fixtures", "regression-snapshots.json"), "utf8"));
 const npMatrix = JSON.parse(fs.readFileSync(path.join(root, "tests", "fixtures", "np-subsystem.json"), "utf8"));
 const snapshotById = new Map(fixture.cases.map((item) => [item.case_id, item]));

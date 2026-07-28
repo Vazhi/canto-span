@@ -1,3 +1,6 @@
+// GENERATED FILE — DO NOT EDIT DIRECTLY.
+// Canonical source: src/** and src/runtime-resources/**
+// Regenerate with: npm run build:runtime
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __commonJS = (cb, mod) => function __require() {
   try {

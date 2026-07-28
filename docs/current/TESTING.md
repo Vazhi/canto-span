@@ -118,11 +118,24 @@ npm test
 ```
 
 The aggregate suite runs regression, NP-subsystem, per-construction executable cases,
-and accepted lexicon regression checks. Those tests protect runtime behavior.
-Implementation probes carry no independent linguistic evidence weight.
+and accepted lexicon regression checks. It builds `src/plugin-entry.js` in memory from
+the canonical source tree and executes that build under an Obsidian stub. It does not
+read committed `main.js`. Those tests protect runtime behavior; implementation probes
+carry no independent linguistic evidence weight.
 
 `npm test` preserves the pre-run contents of its legacy report files and restores them
 before exiting, so a normal passing run does not dirty the working tree.
+
+The generated deployment artifact has separate checks:
+
+```bash
+npm run build:runtime          # regenerate main.js from canonical source
+npm run verify:runtime-build   # deterministic build and committed-byte equality
+npm run test:generated-runtime # load/self-containment smoke test
+```
+
+`main.js` is generated output and must not be edited directly. Unrelated research,
+corpus, survey, governance, and documentation work must not regenerate it.
 
 ## Identity and deterministic outputs
 

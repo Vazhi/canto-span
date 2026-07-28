@@ -3,23 +3,10 @@
 const assert = require("assert");
 const fs = require("fs");
 const path = require("path");
-const vm = require("vm");
+const { loadRuntimeApi } = require("./lib/runtime-api");
 
 const root = path.resolve(__dirname, "..");
-class Plugin {} class PluginSettingTab {} class Setting {} class Notice {}
-const moduleRecord = { exports: {} };
-const context = {
-  module: moduleRecord, exports: moduleRecord.exports,
-  require: (id) => id === "obsidian" ? { Plugin, PluginSettingTab, Setting, Notice } : require(id),
-  console, setTimeout, clearTimeout, Buffer,
-};
-const mainPath = path.join(root, "main.js");
-vm.runInNewContext(fs.readFileSync(mainPath, "utf8") + `
-module.exports.__npApi = {
-  analyzeLine, diagnosticFinalRows, diagnosticSummary,
-  runtimeVersion: CANTO_SPAN_RUNTIME_VERSION,
-};`, context, { filename: mainPath });
-const api = moduleRecord.exports.__npApi;
+const api = loadRuntimeApi();
 const matrix = JSON.parse(fs.readFileSync(path.join(root, "tests", "fixtures", "np-subsystem.json"), "utf8"));
 const results = [];
 
