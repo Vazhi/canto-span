@@ -1859,7 +1859,6 @@ const {
   acceptabilityANotAQuestionFallback,
   copularANotAQuestionFallback,
   desiderativeANotAQuestionFallback,
-  finalMePolarQuestionFallbackForPunctuation,
   inlineANotAQuestionFallback,
   permissionANotAQuestionFallback,
   polarQuestionFrameFallback,
@@ -1871,10 +1870,7 @@ const {
   directPredicateCapableNode,
   firstToken,
   flattenSurface,
-  fullSpanSingleConstruction,
-  isExplicitWhQuestionConstruction,
   isParticle,
-  isProtectedMeReactionFormula,
   isToken,
   isVerbLike,
   nodeCanFillSlot,
@@ -1883,7 +1879,6 @@ const {
   phase4DesiderativeActiveTokenClone,
   phase4PermissionActiveTokenClone,
   possessiveFragmentAnswerCandidate,
-  propositionLikeHostForFinalMe,
   surfaceOf,
   templateDerivedSlots,
   token,
@@ -3907,716 +3902,78 @@ function fullSpanSingleConstruction(nodes, sourceNodes) {
   return flattenSurface(only) === expectedSurface ? only : null;
 }
 
-function isExplicitWhQuestionConstruction(node) {
-  if (!node || node.kind !== "construction") return false;
-  if ([
-    "ProgressiveWhObjectQuestion",
-    "ExistentialWhQuestion",
-    "ScalarValueQuestion",
-    "PlaceQuestion",
-  ].includes(node.type)) return true;
-  return (node.children || []).some(isExplicitWhQuestionConstruction);
-}
+const createFinalParticleQuestions = require("./parser/terminal/questions/final-particles");
+const { finalMePolarQuestionFallbackForPunctuation } = createFinalParticleQuestions({
+  applyConstructionPatterns,
+  construction,
+  flattenSurface,
+  fullSpanSingleConstruction,
+  isToken,
+  nodeCanFillSlot,
+  parserInactiveTokenClone,
+  templateDerivedSlots,
+  traceInfo,
+  withoutIgnorableSpaceText,
+});
 
-function isProtectedMeReactionFormula(node) {
-  return !!(node
-    && node.kind === "construction"
-    && node.type === "FormulaDiscourseUnit"
-    && node.trace
-    && node.trace.formula_type === "confirmation_surprise_question");
-}
+const createTerminalDiscourseParticles = require("./parser/terminal/particles/discourse");
+const {
+  completionThenStandaloneWalkResolution,
+  propositionLikeHostForScopedDiscourseParticle,
+  scopedChangeStateParticleFallback,
+  scopedDirectiveClosureParticleFallback,
+  scopedEpistemicDiscourseParticleFallback,
+  scopedEvidentialDiscourseParticleFallback,
+} = createTerminalDiscourseParticles({
+  applyConstructionPatterns,
+  cleanSlots,
+  construction,
+  flattenSurface,
+  fullSpanSingleConstruction,
+  hasSurface,
+  isToken,
+  nodeCanFillSlot,
+  parserInactiveTokenClone,
+  templateDerivedSlots,
+  traceInfo,
+  withoutIgnorableSpaceText,
+});
 
-function propositionLikeHostForFinalMe(nodes) {
-  if (!nodes || !nodes.length) return null;
-  const wrapped = applyConstructionPatterns(nodes);
-  const host = fullSpanSingleConstruction(wrapped, nodes);
-  if (!host) return null;
-  if (["NeedsContext", "MalformedCandidate", "FragmentQuestion", "FragmentAnswer", "NominalHeadSpan"].includes(host.type)) return null;
-  const trace = host.trace || {};
-  if (["context_required", "context_incompatible"].includes(trace.context_requirement_status)) return null;
-  if (!nodeCanFillSlot(host, "predicate")
-      && !nodeCanFillSlot(host, "clause")
-      && !nodeCanFillSlot(host, "vp")
-      && !nodeCanFillSlot(host, "modal_vp")) return null;
-  return host;
-}
+const createTerminalFocusParticles = require("./parser/terminal/particles/focus");
+const { restrictiveFocusParticleFallback } = createTerminalFocusParticles({
+  applyConstructionPatterns,
+  construction,
+  flattenSurface,
+  fullSpanSingleConstruction,
+  isToken,
+  nodeCanFillSlot,
+  parserInactiveTokenClone,
+  templateDerivedSlots,
+  traceInfo,
+  withoutIgnorableSpaceText,
+});
 
-function isQuestionLikeScopeHost(node) {
-  if (!node || node.kind !== "construction") return false;
-  if (/Question$/.test(String(node.type || ""))) return true;
-  return [
-    "question_fragment",
-    "question_marker",
-    "yes_no_question_marker",
-    "wh_object",
-    "wh_determiner",
-    "identity_question",
-    "location_question",
-    "time_question",
-  ].some((slot) => nodeCanFillSlot(node, slot));
-}
-
-function propositionLikeHostForScopedDiscourseParticle(nodes) {
-  if (!nodes || !nodes.length) return null;
-  const wrapped = applyConstructionPatterns(nodes);
-  const host = fullSpanSingleConstruction(wrapped, nodes);
-  if (!host) return null;
-  if ([
-    "NeedsContext",
-    "MalformedCandidate",
-    "FragmentQuestion",
-    "FragmentAnswer",
-    "ComplementEllipsisFragment",
-    "NominalHeadSpan",
-    "FormulaDiscourseUnit",
-    "ClauseSequence",
-    "ClauseRelationGraph",
-  ].includes(host.type)) return null;
-  if (isQuestionLikeScopeHost(host)) return null;
-  const trace = host.trace || {};
-  if (["context_required", "context_incompatible"].includes(trace.context_requirement_status)) return null;
-  if (!nodeCanFillSlot(host, "predicate")
-      && !nodeCanFillSlot(host, "clause")
-      && !nodeCanFillSlot(host, "vp")
-      && !nodeCanFillSlot(host, "modal_vp")) return null;
-  return host;
-}
-
-function epistemicScopeParticleClone(node) {
-  return parserInactiveTokenClone(node, {
-    label: "particle",
-    pos: "particle",
-    syntax: "sentence_final_particle epistemic_uncertainty_particle",
-    slots: ["particle", "epistemic_scope_particle", "discourse_scope_particle"],
-    jyutping: "gwaa3",
-    note: "probably / perhaps; marks uncertainty or probability over the preceding proposition",
-    reason: "Final 啩 scopes epistemic uncertainty over a complete proposition-like host and does not supply a missing proposition.",
-  });
-}
-
-function scopedEpistemicDiscourseParticleFallback(segment, terminalText = "") {
-  const compact = withoutIgnorableSpaceText(segment || []);
-  if (compact.length < 2) return null;
-  const finalNode = compact[compact.length - 1];
-  if (!nodeCanFillSlot(finalNode, "epistemic_scope_particle")) return null;
-  const host = propositionLikeHostForScopedDiscourseParticle(compact.slice(0, -1));
-  if (!host) return null;
-  const particle = epistemicScopeParticleClone(finalNode);
-  const children = [host, particle];
-  return construction("DiscourseParticleFrame", "Uncertain", children, {
-    note: "Proposition-like host plus a sentence-final discourse particle carrying epistemic uncertainty or probability.",
-    slots: templateDerivedSlots("DiscourseParticleFrame", children),
-    trace: traceInfo("generative_template", {
-      construction_type: "DiscourseParticleFrame",
-      template_family: "generative_template",
-      template: ["proposition_host!", "epistemic_scope_particle!"],
-      assigned_slots: ["proposition_host", "epistemic_scope_particle"],
-      surfaces: children.map((node) => flattenSurface(node)),
-      discourse_particle_family: "epistemic_stance",
-      particle_subtype: "uncertainty_probability_gwaa3",
-      epistemic_scope: "uncertainty_or_probability",
-      proposition_host_construction: host.type,
-      proposition_host_surface: flattenSurface(host),
-      punctuation_hint: /[？?]/u.test(String(terminalText || "")) ? "question_marked" : "declarative_or_unmarked",
-      context_requirement_status: "context_not_required",
-      missing_argument_slots: [],
-      antecedent_status: "not_applicable",
-      not_claims: [
-        "not_fragment_licensor",
-        "not_noun_host",
-        "not_question_host",
-        "not_fabricated_proposition",
-        "not_tone_specific_beyond_gwaa3",
-      ],
-      reason: "A complete non-question proposition-like host licenses final 啩 as an epistemic uncertainty/probability particle. Bare particles, noun hosts, unresolved hosts, and question hosts remain outside this wrapper.",
-    }),
-  });
-}
-
-function evidentialScopeParticleClone(node) {
-  return parserInactiveTokenClone(node, {
-    label: "particle",
-    pos: "particle",
-    syntax: "sentence_final_particle evidential_noteworthiness_particle",
-    slots: ["particle", "evidential_scope_particle", "discourse_scope_particle"],
-    jyutping: "wo3",
-    note: "reported / noteworthy / reminder stance; exact subtype depends on tone and context",
-    reason: "Final 喎 scopes broad evidential/noteworthiness stance over a complete proposition-like host. Written form alone does not select an exact tone-specific subtype.",
-  });
-}
-
-function scopedEvidentialDiscourseParticleFallback(segment, terminalText = "") {
-  const compact = withoutIgnorableSpaceText(segment || []);
-  if (compact.length < 2 || !isToken(compact[compact.length - 1], "喎")) return null;
-  const host = propositionLikeHostForScopedDiscourseParticle(compact.slice(0, -1));
-  if (!host) return null;
-  const particle = evidentialScopeParticleClone(compact[compact.length - 1]);
-  const children = [host, particle];
-  return construction("DiscourseParticleFrame", "Notice", children, {
-    note: "Proposition-like host plus a sentence-final discourse particle carrying broad evidential or noteworthiness stance.",
-    slots: templateDerivedSlots("DiscourseParticleFrame", children),
-    trace: traceInfo("generative_template", {
-      construction_type: "DiscourseParticleFrame",
-      template_family: "generative_template",
-      template: ["proposition_host!", "evidential_scope_particle!"],
-      assigned_slots: ["proposition_host", "evidential_scope_particle"],
-      surfaces: children.map((node) => flattenSurface(node)),
-      discourse_particle_family: "evidential_noteworthiness",
-      broad_particle_class: "EvidentialDiscourseParticle",
-      particle_subtype: "written_wo_family_underdetermined",
-      evidential_subtype: "not_selected_without_tone_or_context",
-      evidential_scope: "reportative_noteworthiness_reminder_or_counterexpectation",
-      tone_source: "canonical_written_form_reading_only",
-      tone_certainty: "underdetermined_from_character_alone",
-      proposition_host_construction: host.type,
-      proposition_host_surface: flattenSurface(host),
-      punctuation_hint: /[？?]/u.test(String(terminalText || "")) ? "question_marked_surface_without_tone_inference" : "declarative_or_unmarked",
-      context_requirement_status: "context_not_required",
-      missing_argument_slots: [],
-      antecedent_status: "not_applicable",
-      not_claims: [
-        "not_fragment_licensor",
-        "not_noun_host",
-        "not_question_host",
-        "not_fabricated_proposition",
-        "not_exact_tone_inference",
-        "not_exact_evidential_subtype",
-      ],
-      reason: "A complete non-question proposition-like host licenses final 喎 as a broad evidential/noteworthiness discourse particle. The written character and canonical wo3 display reading do not justify selecting a narrower tone-specific function.",
-    }),
-  });
-}
-
-function protectedFullSpanFormulaForParticleFallback(ordinaryWrapped, sourceNodes) {
-  const top = fullSpanSingleConstruction(ordinaryWrapped, sourceNodes);
-  return !!(top && top.type === "FormulaDiscourseUnit");
-}
-
-function directiveLikeHostForFinalLaa1(nodes) {
-  if (!nodes || !nodes.length) return null;
-  const wrapped = applyConstructionPatterns(nodes);
-  const host = fullSpanSingleConstruction(wrapped, nodes);
-  if (!host) return standaloneWalkHostForFinalLaaParticle(nodes);
-  if (![
-    "LexicalGiveRelation",
-    "PostThemeParticipantRelation",
-    "SubjectPredicateClause",
-    "DirectionalMotionVP",
-    "MotionGoalVP",
-    "ProhibitiveImperative",
-    "PriorityMarkerClause",
-    "SerialVerbPurposeChain",
-    "MotionPurposeChain",
-  ].includes(host.type)) return null;
-  if (isQuestionLikeScopeHost(host)) return null;
-  const trace = host.trace || {};
-  if (["context_required", "context_incompatible"].includes(trace.context_requirement_status)) return null;
-  return host;
-}
-
-
-function standaloneWalkMotionVp(node, reason = "") {
-  if (!isToken(node, "走")) return null;
-  const movement = parserInactiveTokenClone(node, {
-    label: "doing",
-    pos: "verb",
-    syntax: "intransitive_motion_verb transition_motion_predicate",
-    slots: ["action_verb", "main_verb", "movement_verb", "predicate"],
-    jyutping: "zau2",
-    note: "leave / go away",
-    reason: reason || "Standalone 走 is the independent movement predicate 'leave/go away', not a postverbal result complement.",
-    active_affordance_match: "standalone_motion_predicate",
-  });
-  return construction("DirectionalMotionVP", "MotionVP", [movement], {
-    slots: ["directional_motion_vp", "vp", "action_vp", "predicate", "movement_verb", "motion_predicate"],
-    note: "One-word transition motion predicate headed by standalone 走.",
-    trace: traceInfo("generative_template", {
-      construction_type: "DirectionalMotionVP",
-      template_family: "generative_template",
-      template: ["transition_motion_verb!"],
-      assigned_slots: ["transition_motion_verb"],
-      surfaces: ["走"],
-      contextual_role_resolution: "standalone_motion_predicate_not_result_complement",
-      subspan: true,
-      reason: reason || "Standalone 走 is an independent motion predicate announcing departure.",
-    }),
-  });
-}
-
-
-function locativeFragmentFromWrappedPlacePhrase(nodes) {
-  const compact = withoutIgnorableSpaceText(nodes || []);
-  if (compact.length !== 1) return null;
-  const only = compact[0];
-  let phrase = null;
-  if (only && only.kind === "construction" && only.type === "LocativePlacePhrase") {
-    phrase = only;
-  } else if (
-    only
-    && only.kind === "construction"
-    && only.type === "NominalHeadSpan"
-    && Array.isArray(only.children)
-    && only.children.length === 1
-    && only.children[0].kind === "construction"
-    && only.children[0].type === "LocativePlacePhrase"
-  ) {
-    phrase = only.children[0];
-  }
-  if (!phrase) return null;
-  if (hasSurface([phrase], "邊度") || nodeCanFillSlot(phrase, "location_question")) return null;
-  const phraseChildren = withoutIgnorableSpaceText(phrase.children || []);
-  if (!phraseChildren.length || !isToken(phraseChildren[0], "喺")) return null;
-  return construction("LocativeFragment", "Location", [phrase], {
-    slots: cleanSlots(["locative_fragment", "location", "clause"]),
-    note: "Locative fragment: 喺 + overt place, with the located figure understood from discourse.",
-    trace: traceInfo("generative_template", {
-      construction_type: "LocativeFragment",
-      template_family: "generative_template",
-      template: ["locative_place_phrase!"],
-      assigned_slots: ["locative_place_phrase"],
-      surfaces: [flattenSurface(phrase)],
-      fragment_subtype: "locative_answer_or_predicate_fragment",
-      omitted_element_description: "located figure or subject understood from discourse",
-      reason: "The location is overt; only the person or thing located there is understood from context.",
-      not_claims: ["not_missing_location", "not_full_subject_predicate_clause"],
-    }),
-  });
-}
-
-function completionThenStandaloneWalkResolution(nodes) {
-  const compact = withoutIgnorableSpaceText(nodes || []);
-  const completionIndex = compact.findIndex((node) => node && node.kind === "construction" && node.type === "CompletionVP");
-  if (completionIndex < 0 || completionIndex > 1) return nodes;
-  if (completionIndex === 1 && !nodeCanFillSlot(compact[0], "subject")) return nodes;
-  if (!isToken(compact[completionIndex + 1], "就") || !isToken(compact[completionIndex + 2], "走")) return nodes;
-  const trailing = compact.slice(completionIndex + 3);
-  if (trailing.length > 1 || (trailing.length === 1 && !nodeCanFillSlot(trailing[0], "particle"))) return nodes;
-  const target = compact[completionIndex + 2];
-  const motion = standaloneWalkMotionVp(
-    target,
-    "After a completed VP plus 就, standalone 走 is the follow-up movement predicate 'leave/go away'; it is not the result complement of the earlier verb."
-  );
-  if (!motion) return nodes;
-  return (nodes || []).map((node) => node === target ? motion : node);
-}
-
-function standaloneWalkHostForFinalLaaParticle(nodes) {
-  const compact = withoutIgnorableSpaceText(nodes || []);
-  if (compact.length !== 2 || !nodeCanFillSlot(compact[0], "subject") || !isToken(compact[1], "走")) return null;
-  const subject = compact[0];
-  const motion = standaloneWalkMotionVp(
-    compact[1],
-    "Standalone 走 after an overt subject is the movement predicate 'leave/go away'; the final discourse particle contributes scope separately and does not determine the verb's category."
-  );
-  const children = [subject, motion];
-  return construction("SubjectPredicateClause", "SubjPred", children, {
-    slots: templateDerivedSlots("SubjectPredicateClause", children),
-    note: "Subject plus an independent transition-motion predicate.",
-    trace: traceInfo("generative_template", {
-      construction_type: "SubjectPredicateClause",
-      template_family: "generative_template",
-      template: ["subject!", "predicate!"],
-      assigned_slots: ["subject", "predicate"],
-      surfaces: children.map((node) => flattenSurface(node)),
-      predicate_subtype: "transition_motion",
-      reason: "The subject and standalone movement predicate form a proposition host before final 啦 or 喇 adds its own discourse scope.",
-    }),
-  });
-}
-
-function changeStateHostForFinalLaa3(nodes) {
-  const ordinary = propositionLikeHostForScopedDiscourseParticle(nodes);
-  if (ordinary && ![
-    "LexicalGiveRelation",
-    "PostThemeParticipantRelation",
-    "CoverbFrame",
-    "FormulaDiscourseUnit",
-    "AcceptabilityClause",
-  ].includes(ordinary.type)) return ordinary;
-  return standaloneWalkHostForFinalLaaParticle(nodes);
-}
-
-function directiveScopeParticleClone(node) {
-  return parserInactiveTokenClone(node, {
-    label: "particle",
-    pos: "particle",
-    syntax: "sentence_final_particle directive_closure_particle",
-    slots: ["particle", "directive_scope_particle", "discourse_scope_particle"],
-    jyutping: "laa1",
-    note: "directive / suggestion / invitation / interpersonal closure",
-    reason: "Final 啦 laa1 scopes directive, suggestion, invitation, or interpersonal closure over a licensed host and does not repair incomplete argument structure.",
-  });
-}
-
-function scopedDirectiveClosureParticleFallback(segment, terminalText = "", ordinaryWrapped = null) {
-  const compact = withoutIgnorableSpaceText(segment || []);
-  if (compact.length < 2 || !isToken(compact[compact.length - 1], "啦")) return null;
-  if (fullSpanSingleConstruction(ordinaryWrapped, compact)) return null;
-  const host = directiveLikeHostForFinalLaa1(compact.slice(0, -1));
-  if (!host) return null;
-  const particle = directiveScopeParticleClone(compact[compact.length - 1]);
-  const children = [host, particle];
-  return construction("DiscourseParticleFrame", "Prompt", children, {
-    note: "Licensed directive-like host plus final 啦 laa1 carrying directive/interpersonal closure scope.",
-    slots: templateDerivedSlots("DiscourseParticleFrame", children),
-    trace: traceInfo("generative_template", {
-      construction_type: "DiscourseParticleFrame",
-      template_family: "generative_template",
-      template: ["directive_host!", "directive_scope_particle!"],
-      assigned_slots: ["directive_host", "directive_scope_particle"],
-      surfaces: children.map((node) => flattenSurface(node)),
-      discourse_particle_family: "directive_interpersonal_closure",
-      broad_particle_class: "DirectiveClosureParticle",
-      particle_subtype: "directive_suggestion_invitation_or_closure_laa1",
-      tone_source: "canonical_written_form_reading",
-      tone_certainty: "canonical_for_written_laa_character_but_real_spelling_varies",
-      orthographic_uncertainty: "啦_and_喇_may_be_spelled_inconsistently_in_ordinary_writing",
-      scope_host_construction: host.type,
-      scope_host_surface: flattenSurface(host),
-      punctuation_hint: /[？?]/u.test(String(terminalText || "")) ? "question_marked_surface" : "declarative_or_unmarked",
-      context_requirement_status: "context_not_required",
-      missing_argument_slots: [],
-      antecedent_status: "not_applicable",
-      not_claims: ["not_fragment_licensor", "not_noun_host", "not_unresolved_host", "not_change_state_laa3", "not_exact_illocution_beyond_broad_family"],
-      reason: "A licensed directive/clause host permits final 啦 as broad directive, suggestion, invitation, or interpersonal closure. Bare particles, nouns, and unresolved predicates remain outside the wrapper.",
-    }),
-  });
-}
-
-function changeStateScopeParticleClone(node) {
-  return parserInactiveTokenClone(node, {
-    label: "particle",
-    pos: "particle",
-    syntax: "sentence_final_particle change_state_current_relevance_particle",
-    slots: ["particle", "change_state_scope_particle", "discourse_scope_particle"],
-    jyutping: "laa3",
-    note: "changed situation / current relevance / transition",
-    reason: "Final 喇 laa3 scopes change of situation, current relevance, or transition over a proposition-like host and remains distinct from VP-internal perfective 咗.",
-  });
-}
-
-function scopedChangeStateParticleFallback(segment, terminalText = "", ordinaryWrapped = null) {
-  const compact = withoutIgnorableSpaceText(segment || []);
-  if (compact.length < 2 || !isToken(compact[compact.length - 1], "喇")) return null;
-  if (fullSpanSingleConstruction(ordinaryWrapped, compact)) return null;
-  const host = changeStateHostForFinalLaa3(compact.slice(0, -1));
-  if (!host) return null;
-  const particle = changeStateScopeParticleClone(compact[compact.length - 1]);
-  const children = [host, particle];
-  return construction("DiscourseParticleFrame", "Change", children, {
-    note: "Proposition-like host plus final 喇 laa3 carrying change-of-situation/current-relevance scope.",
-    slots: templateDerivedSlots("DiscourseParticleFrame", children),
-    trace: traceInfo("generative_template", {
-      construction_type: "DiscourseParticleFrame",
-      template_family: "generative_template",
-      template: ["proposition_host!", "change_state_scope_particle!"],
-      assigned_slots: ["proposition_host", "change_state_scope_particle"],
-      surfaces: children.map((node) => flattenSurface(node)),
-      discourse_particle_family: "change_state_current_relevance",
-      broad_particle_class: "ChangeStateDiscourseParticle",
-      particle_subtype: "change_of_situation_current_relevance_laa3",
-      aspect_relation: "sentence_final_particle_distinct_from_vp_internal_perfective_zo2",
-      tone_source: "canonical_written_form_reading",
-      tone_certainty: "canonical_for_written_laa_character_but_real_spelling_varies",
-      orthographic_uncertainty: "啦_and_喇_may_be_spelled_inconsistently_in_ordinary_writing",
-      proposition_host_construction: host.type,
-      proposition_host_surface: flattenSurface(host),
-      punctuation_hint: /[？?]/u.test(String(terminalText || "")) ? "question_marked_surface" : "declarative_or_unmarked",
-      context_requirement_status: "context_not_required",
-      missing_argument_slots: [],
-      antecedent_status: "not_applicable",
-      not_claims: ["not_fragment_licensor", "not_noun_host", "not_unresolved_host", "not_directive_laa1", "not_perfective_aspect_marker"],
-      reason: "A complete proposition-like host permits final 喇 as change-of-situation/current-relevance stance. It remains a separate discourse layer above any visible 咗 perfective event.",
-    }),
-  });
-}
-
-
-function restrictiveFocusHostHasUnresolvedClassifierHeadFusion(host) {
-  if (!host || host.kind !== "construction" || host.type !== "QuantifiedClassifierNP") return false;
-  const missingSlots = Array.isArray(host.trace && host.trace.missing_argument_slots)
-    ? host.trace.missing_argument_slots
-    : [];
-  if (!missingSlots.includes("nominal_head")) return false;
-  return (host.children || []).some((child) => {
-    if (!child || child.kind !== "token" || !String(child.syntax || "").includes("classifier")) return false;
-    const originalRole = String(child.trace && child.trace.original_role || "");
-    return originalRole && originalRole !== "measure_word";
-  });
-}
-
-function restrictiveScalarHostForFinalParticle(nodes) {
-  const compact = withoutIgnorableSpaceText(nodes || []);
-  if (!compact.length) return null;
-  const wrapped = applyConstructionPatterns(compact);
-  const host = fullSpanSingleConstruction(wrapped, compact);
-  if (host && [
-    "QuantifiedClassifierNP",
-    "QuantifiedPersonNP",
-    "QuantifiedTimeNP",
-    "QuantityNP",
-    "ApproximateQuantity",
-    "DiMarkedNP",
-  ].includes(host.type)) {
-    if (restrictiveFocusHostHasUnresolvedClassifierHeadFusion(host)) return null;
-    return host;
-  }
-  if (compact.length === 1) {
-    const only = compact[0];
-    const syntax = String(only && only.syntax || "");
-    if (nodeCanFillSlot(only, "quantity") || /quantity|scalar|amount|degree/.test(syntax)) return only;
-  }
-  return null;
-}
-
-function restrictiveFocusMarkerClone(node) {
-  return parserInactiveTokenClone(node, {
-    label: "how",
-    pos: "adverb",
-    syntax: "restrictive_focus_adverb scalar_limiter",
-    slots: ["focus_adverb", "restriction_marker", "scalar_limiter", "degree"],
-    jyutping: "dak1",
-    note: "only / just; limits the following amount or scalar host",
-    reason: "Before a visible quantity or scalar host and final 啫/咋, 得 is the restrictive focus marker 'only', not the acceptability predicate 'okay/can'.",
-  });
-}
-
-function restrictiveFocusParticleClone(node) {
-  const surface = flattenSurface(node);
-  const isZe = surface === "啫";
-  return parserInactiveTokenClone(node, {
-    label: "particle",
-    pos: "particle",
-    syntax: isZe
-      ? "sentence_final_particle restrictive_focus_particle minimizing_particle"
-      : "sentence_final_particle restrictive_focus_particle exhaustive_limit_particle",
-    slots: ["particle", "restrictive_focus_particle", "focus_scope_particle"],
-    jyutping: isZe ? "ze1" : "zaa3",
-    note: isZe ? "only / just; minimizes the visible amount" : "only / that's all; presents the visible amount as the limit",
-    reason: isZe
-      ? "Final 啫 marks restrictive/minimizing focus over the visible scalar host."
-      : "Final 咋 marks restrictive/exhaustive limitation over the visible scalar host.",
-  });
-}
-
-function restrictiveFocusParticleFallback(segment, terminalText = "", ordinaryWrapped = null) {
-  const compact = withoutIgnorableSpaceText(segment || []);
-  if (compact.length < 3 || !isToken(compact[0], "得")) return null;
-  const finalNode = compact[compact.length - 1];
-  if (!isToken(finalNode, "啫") && !isToken(finalNode, "咋")) return null;
-  if (fullSpanSingleConstruction(ordinaryWrapped, compact)) return null;
-  const host = restrictiveScalarHostForFinalParticle(compact.slice(1, -1));
-  if (!host) return null;
-  const marker = restrictiveFocusMarkerClone(compact[0]);
-  const particle = restrictiveFocusParticleClone(finalNode);
-  const children = [marker, host, particle];
-  const particleSurface = flattenSurface(particle);
-  const hostTrace = host && host.kind === "construction" ? (host.trace || {}) : {};
-  const inheritedMissingSlots = Array.isArray(hostTrace.missing_argument_slots)
-    ? hostTrace.missing_argument_slots.slice()
-    : [];
-  const inheritedContextRequired = hostTrace.context_requirement_status === "context_required"
-    || inheritedMissingSlots.length > 0;
-  const inheritedAntecedentStatus = inheritedContextRequired
-    ? (hostTrace.antecedent_status || "not_observed")
-    : "not_applicable";
-  return construction("FocusParticleFrame", "Focus", children, {
-    note: "Restrictive focus frame: 得 limits a visible quantity or scalar host, and final 啫/咋 marks minimization or an exhaustive limit.",
-    slots: templateDerivedSlots("FocusParticleFrame", children),
-    trace: traceInfo("generative_template", {
-      construction_type: "FocusParticleFrame",
-      template_family: "generative_template",
-      template: ["restriction_marker!", "scalar_host!", "restrictive_focus_particle!"],
-      assigned_slots: ["restriction_marker", "scalar_host", "restrictive_focus_particle"],
-      surfaces: children.map((node) => flattenSurface(node)),
-      focus_relation: "scalar_restriction",
-      broad_particle_class: "RestrictiveFocusParticle",
-      particle_subtype: particleSurface === "啫" ? "restrictive_minimizing_ze1" : "restrictive_exhaustive_limit_zaa3",
-      restriction_marker_surface: "得",
-      scalar_host_construction: host.kind === "construction" ? host.type : "scalar_token",
-      scalar_host_surface: flattenSurface(host),
-      punctuation_hint: /[？?]/u.test(String(terminalText || "")) ? "question_marked_surface" : "declarative_or_unmarked",
-      context_requirement_status: inheritedContextRequired ? "context_required" : "context_not_required",
-      missing_argument_slots: inheritedMissingSlots,
-      missing_slot_details: inheritedMissingSlots.map((slot) => ({ slot, license_status: "unresolved" })),
-      antecedent_status: inheritedAntecedentStatus,
-      discourse_license_not_observed: inheritedContextRequired && inheritedAntecedentStatus !== "linked",
-      not_claims: [
-        "not_acceptability_predicate_dak1",
-        "not_bare_particle",
-        "not_unrestricted_np",
-        "not_fabricated_quantity",
-        ...(inheritedMissingSlots.includes("nominal_head") ? ["not_fabricated_nominal_head"] : []),
-        "not_exact_pragmatic_force_beyond_restriction",
-      ],
-      reason: inheritedContextRequired
-        ? "The reusable 得 + scalar/quantity host + 啫/咋 pattern expresses restrictive focus, but the particle frame does not resolve discourse-dependent slots inherited from the scalar host."
-        : "The reusable 得 + scalar/quantity host + 啫/咋 pattern expresses restrictive focus. The construction reassigns 得 from acceptability to a scalar limiter only when both the host and final restrictive particle are overt.",
-    }),
-  });
-}
+const createOrderedParticleClusters = require("./parser/terminal/particles/ordered-cluster");
+const {
+  orderedParticleClusterFallback,
+  orderedParticleClusterInfo,
+  orderedParticleClusterTailInfo,
+} = createOrderedParticleClusters({
+  construction,
+  flattenSurface,
+  hasSentencePunctuation,
+  parserInactiveTokenClone,
+  propositionLikeHostForScopedDiscourseParticle,
+  templateDerivedSlots,
+  traceInfo,
+  withoutIgnorableSpaceText,
+});
 
 
 const {
   sequenceEvidence: ORDERED_PARTICLE_CLUSTER_SEQUENCE_EVIDENCE,
   descriptors: ORDERED_PARTICLE_CLUSTER_DESCRIPTORS,
 } = require("./runtime-resources/grammar/ordered-particle-clusters");
-
-function orderedParticleClusterDescriptor(node) {
-  const surface = flattenSurface(node);
-  const descriptor = ORDERED_PARTICLE_CLUSTER_DESCRIPTORS[surface];
-  return descriptor ? { surface, ...descriptor } : null;
-}
-
-function orderedParticleClusterMemberClone(node, descriptor) {
-  return parserInactiveTokenClone(node, {
-    label: "particle",
-    pos: "particle",
-    syntax: descriptor.syntax,
-    slots: descriptor.slots,
-    jyutping: descriptor.jyutping,
-    note: descriptor.note,
-    reason: `Within a visible sentence-final particle cluster, ${descriptor.surface} occupies the broad ${descriptor.layer} layer. The parser preserves the written token and does not infer a narrower tone-specific subtype.`,
-  });
-}
-
-function orderedParticleClusterTailInfo(segment, terminalText = "") {
-  const compact = withoutIgnorableSpaceText(segment || []).slice();
-  while (compact.length && compact[compact.length - 1].kind === "text" && hasSentencePunctuation(compact[compact.length - 1].text)) compact.pop();
-  if (compact.length < 2) return null;
-
-  let clusterStart = compact.length;
-  const reversedDescriptors = [];
-  while (clusterStart > 0) {
-    const descriptor = orderedParticleClusterDescriptor(compact[clusterStart - 1]);
-    if (!descriptor) break;
-    reversedDescriptors.push(descriptor);
-    clusterStart -= 1;
-  }
-  const descriptors = reversedDescriptors.reverse();
-  if (descriptors.length < 2) return null;
-
-  const visibleParticleSequence = descriptors.map((descriptor) => descriptor.surface);
-  const sequenceKey = visibleParticleSequence.join("");
-  const ranks = descriptors.map((descriptor) => descriptor.rank);
-  const strictlyIncreasing = ranks.every((rank, index) => index === 0 || ranks[index - 1] < rank);
-  const questionLayerIsOutermost = descriptors.every((descriptor, index) => descriptor.surface !== "咩" || index === descriptors.length - 1);
-  const questionPunctuationCompatible = !descriptors.some((descriptor) => descriptor.surface === "咩")
-    || /[？?]/u.test(String(terminalText || ""));
-  const layerOrderCompatible = strictlyIncreasing && questionLayerIsOutermost && questionPunctuationCompatible;
-  const sequenceEvidence = layerOrderCompatible
-    ? (ORDERED_PARTICLE_CLUSTER_SEQUENCE_EVIDENCE[sequenceKey] || null)
-    : null;
-  const supportedOrder = Boolean(sequenceEvidence);
-  const orderStatus = supportedOrder
-    ? sequenceEvidence.status
-    : (layerOrderCompatible
-      ? "layer_order_compatible_unvalidated_review"
-      : "unsupported_or_unvalidated_order_review");
-
-  return {
-    compact,
-    clusterStart,
-    descriptors,
-    sequenceKey,
-    sequenceEvidence,
-    supportedOrder,
-    layerOrderCompatible,
-    orderStatus,
-    visibleParticleSequence,
-    particleSequenceJyutping: descriptors.map((descriptor) => descriptor.jyutping),
-    particleScopeLayers: descriptors.map((descriptor) => descriptor.layer),
-    particleScopeFunctions: descriptors.map((descriptor) => descriptor.broad_function),
-    fusionStatus: descriptors.some((descriptor) => descriptor.fusion_status.startsWith("surface_fused"))
-      ? "surface_fused_particle_preserved_no_internal_split"
-      : "separate_visible_particles",
-  };
-}
-
-function orderedParticleClusterInfo(segment, terminalText = "") {
-  const tailInfo = orderedParticleClusterTailInfo(segment, terminalText);
-  if (!tailInfo || tailInfo.clusterStart < 1) return null;
-  const host = propositionLikeHostForScopedDiscourseParticle(tailInfo.compact.slice(0, tailInfo.clusterStart));
-  if (!host) return null;
-  return {
-    ...tailInfo,
-    host,
-  };
-}
-
-function orderedParticleClusterFallback(segment, terminalText = "", clusterInfo = null) {
-  const info = clusterInfo || orderedParticleClusterInfo(segment, terminalText);
-  if (!info || !info.supportedOrder) return null;
-  const {
-    compact,
-    clusterStart,
-    descriptors,
-    host,
-    visibleParticleSequence,
-    particleSequenceJyutping,
-    particleScopeLayers,
-    particleScopeFunctions,
-    fusionStatus,
-  } = info;
-
-  const particles = descriptors.map((descriptor, index) => (
-    orderedParticleClusterMemberClone(compact[clusterStart + index], descriptor)
-  ));
-  const outerDescriptor = descriptors[descriptors.length - 1];
-  const isQuestionCluster = outerDescriptor.surface === "咩";
-  const type = isQuestionCluster ? "PolarQuestionFrame" : "DiscourseParticleFrame";
-  const label = isQuestionCluster ? "YesNo?" : "Particles";
-  const children = [host, ...particles];
-  return construction(type, label, children, {
-    note: isQuestionCluster
-      ? "Biased polar question containing an ordered sentence-final particle cluster."
-      : "Statement with an ordered sentence-final particle cluster.",
-    slots: templateDerivedSlots(type, children),
-    trace: traceInfo("generative_template", {
-      construction_type: type,
-      template_family: "generative_template",
-      template: ["scope_host!", "cluster_particle+!"],
-      assigned_slots: ["scope_host", "particle"],
-      surfaces: children.map((node) => flattenSurface(node)),
-      particle_cluster: true,
-      particle_cluster_root: true,
-      particle_cluster_member_count: descriptors.length,
-      visible_particle_sequence: visibleParticleSequence,
-      particle_sequence_jyutping: particleSequenceJyutping,
-      particle_scope_layers: particleScopeLayers,
-      particle_scope_functions: particleScopeFunctions,
-      outer_particle_surface: outerDescriptor.surface,
-      outer_scope_layer: outerDescriptor.layer,
-      outer_scope_function: outerDescriptor.broad_function,
-      scope_direction: "inside_to_outside",
-      surface_order_preserved: true,
-      cluster_order_status: info.orderStatus,
-      cluster_evidence_grade: info.sequenceEvidence ? info.sequenceEvidence.evidence_grade : "",
-      cluster_evidence_note: info.sequenceEvidence ? info.sequenceEvidence.evidence_note : "",
-      fusion_status: fusionStatus,
-      tone_certainty: "broad_written_form_readings_only",
-      host_construction: host.type,
-      host_surface: flattenSurface(host),
-      learner_display_structure: "single_cluster_frame_with_direct_particle_children",
-      punctuation_hint: /[？?]/u.test(String(terminalText || "")) ? "question_marked" : "declarative_or_unmarked",
-      context_requirement_status: "context_not_required",
-      missing_argument_slots: [],
-      antecedent_status: "not_applicable",
-      not_claims: [
-        "not_unordered_particle_bag",
-        "not_hidden_particle_reordering",
-        "not_internal_split_of_fused_surface_particle",
-        "not_exact_tone_specific_interpretation",
-        "not_repeated_generic_stance_layers",
-      ],
-      reason: `This exact visible particle sequence has current evidence-backed support and follows the broad layer order. One learner-visible frame keeps the proposition host and every particle transparent, while ordered trace metadata records inside-to-outside scope without repeating a generic construction layer for each particle.`,
-    }),
-  });
-}
-
-
-
-
 
 function applyConstructionPatternsForTerminal(segment, terminalText = "") {
   const haveOrNotQuestion = haveOrNotQuestionFallbackForPunctuation(segment, terminalText);
