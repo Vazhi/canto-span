@@ -7,6 +7,28 @@ module.exports = function createPotentialResultDetectors(dependencies = {}) {
     traceInfo, withoutTrailingParticles,
   } = dependencies;
 
+function potentialResultComplementFallback(core) {
+  if (core.length >= 3 && isVerbLike(core[0]) && isToken(core[1], "唔") && isToken(core[2], "到")) {
+    return construction("NegativePotentialComplement", "NegPotential", core, {
+      note: "Negative potential/result complement.",
+      trace: traceInfo("generative_or_heuristic_slot_rule", {
+        rule: "verb + 唔 + 到",
+        reason: "Structural potential complement heuristic.",
+      }),
+    });
+  }
+  if (core.length >= 2 && isVerbLike(core[0]) && isToken(core[1], "到")) {
+    return construction("ResultComplement", "Result", core, {
+      note: "Positive result/attainment complement.",
+      trace: traceInfo("generative_or_heuristic_slot_rule", {
+        rule: "verb + 到",
+        reason: "Structural result complement heuristic.",
+      }),
+    });
+  }
+  return null;
+}
+
 function potentialResultVPFallback(core) {
   const { core: bareCore, particles } = withoutTrailingParticles(core);
   if (!bareCore.length) return null;
@@ -98,5 +120,5 @@ function incompletePotentialResultCandidate(core) {
   });
 }
 
-  return { potentialResultVPFallback, incompletePotentialResultCandidate };
+  return { potentialResultComplementFallback, potentialResultVPFallback, incompletePotentialResultCandidate };
 };

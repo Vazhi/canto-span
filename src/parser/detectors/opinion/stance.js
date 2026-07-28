@@ -6,9 +6,11 @@ module.exports = function createOpinionDetectors(dependencies = {}) {
     categorySubspanFor,
     cleanSlots,
     construction,
+    contextualOpinionPlaceholderChildren,
     copulaClone,
     firstToken,
     flattenSurface,
+    hasSurface,
     isToken,
     modalVPFromNodes,
     nodeCanFillSlot,
@@ -24,6 +26,18 @@ module.exports = function createOpinionDetectors(dependencies = {}) {
     withoutTrailingParticles,
     wrapCategorySubspans,
   } = dependencies;
+
+function opinionSeemingFallback(core) {
+  if (!(hasSurface(core, "覺得") || hasSurface(core, "我覺得")) || !hasSurface(core, "好似")) return null;
+  const opinionChildren = contextualOpinionPlaceholderChildren(core);
+  return construction("OpinionStanceFrame", "Opinion/Stance", opinionChildren, {
+    note: "Opinion/seeming fallback: 覺得 + 好似 + predicate.",
+    trace: traceInfo("legacy_surface_rule", {
+      rule: "has 覺得/我覺得 and 好似",
+      reason: "Fallback only; generative OpinionStanceFrame should normally catch this.",
+    }),
+  });
+}
 
 function splitOpinionTrailingParticles(core) {
   const split = withoutTrailingParticles(core);
@@ -422,5 +436,5 @@ function opinionStanceFrameFallback(core) {
 }
 
 
-  return { opinionStanceFrameFallback };
+  return { opinionSeemingFallback, opinionStanceFrameFallback };
 };

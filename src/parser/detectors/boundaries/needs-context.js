@@ -21,6 +21,24 @@ module.exports = function createNeedsContextBoundaryDetectors(dependencies = {})
     withoutTrailingParticles,
   } = dependencies;
 
+  function ambiguousNeedsContextCandidate(core) {
+    if (!core || core.length !== 1) return null;
+    const first = firstToken(core[0]);
+    if (!first || first.syntax !== "ambiguous_needs_context") return null;
+    const candidateAnalyses = (first.trace && first.trace.candidate_analyses) || [
+      { construction: "NegatedStativePredicate", split: ["唔", "好食"], meaning_hint: "not tasty", parser_active: false },
+      { construction: "ProhibitiveImperative", split: ["唔好", "食"], meaning_hint: "don't eat", parser_active: false },
+    ];
+    return construction("NeedsContext", "needs context", core, {
+      note: "Ambiguous split: 唔 + 好食 or 唔好 + 食.",
+      trace: traceInfo("special_ambiguity_rule", {
+        surface: "唔好食",
+        reason: "Needs context ambiguity.",
+        candidate_analyses: candidateAnalyses,
+      }),
+    });
+  }
+
   function mandarinNegatorNeedsContextCandidate(core) {
     if (!core || core.length < 2) return null;
     const first = firstToken(core[0]);
@@ -480,6 +498,7 @@ module.exports = function createNeedsContextBoundaryDetectors(dependencies = {})
   }
 
   return {
+    ambiguousNeedsContextCandidate,
     mandarinNegatorNeedsContextCandidate,
     incompleteProhibitiveNeedsContextCandidate,
     incompleteRestrictiveFocusBoundaryCandidate,

@@ -2,8 +2,19 @@
 
 module.exports = function createDetectors(dependencies = {}) {
   const {
-    ENVIRONMENTAL_EVENT_PREDICATES, categorySubspanFor, construction, constructionSlotsByType, flattenSurface, nodeCanFillSlot, parserInactiveTokenClone, templateDerivedSlots, traceInfo, withoutIgnorableSpaceText, withoutTrailingParticles
+    ENVIRONMENTAL_EVENT_PREDICATES, categorySubspanFor, construction, constructionSlotsByType, firstToken, flattenSurface, nodeCanFillSlot, parserInactiveTokenClone, templateDerivedSlots, traceInfo, withoutIgnorableSpaceText, withoutTrailingParticles
   } = dependencies;
+
+function temporalClauseFallback(core = []) {
+  if (core.length < 2 || !firstToken(core[0]) || firstToken(core[0]).label !== "when") return null;
+  return construction("TemporalClause", "Time", core, {
+    note: "Time expression fallback frames the following predicate.",
+    trace: traceInfo("construction_function", {
+      construction_type: "TemporalClause",
+      reason: "Fallback only; generative TemporalClause should normally catch this."
+    })
+  });
+}
 
 function conventionalEnvironmentalEventConstruction(nodes = []) {
   const compact = withoutIgnorableSpaceText(nodes || []);
@@ -223,6 +234,7 @@ function impersonalEnvironmentalClauseFallback(core = []) {
   return {
     conventionalEnvironmentalEventConstruction,
     environmentalPredicateParts,
-    impersonalEnvironmentalClauseFallback
+    impersonalEnvironmentalClauseFallback,
+    temporalClauseFallback
   };
 };
