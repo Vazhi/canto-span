@@ -6959,11 +6959,9 @@ var require_basic = __commonJS({
     "use strict";
     module2.exports = function createBasicPredicateDetectors2(dependencies = {}) {
       const {
-        categorySubspanFor: categorySubspanFor2,
         construction: construction2,
         flattenSurface: flattenSurface2,
         hasSurface: hasSurface2,
-        isStativeToken: isStativeToken2,
         isToken: isToken2,
         nodeCanFillSlot: nodeCanFillSlot2,
         parserInactiveTokenClone: parserInactiveTokenClone2,
@@ -7005,6 +7003,46 @@ var require_basic = __commonJS({
         }
         return result;
       }
+      function scalarEvaluationFallback2(core) {
+        if (!hasSurface2(core, "唔") || !hasSurface2(core, "算") || !hasSurface2(core, "貴")) return null;
+        return construction2("ScalarEvaluation", "ValueEval", core, {
+          slots: ["scalar_evaluation", "evaluation_clause", "predicate", "stative_predicate", "negator", "evaluation_marker"],
+          note: "Negative lexical 算 evaluation with an overt property predicate; visible subject/topic material remains outside the lexical predicate relation.",
+          trace: traceInfo2("generative_template", {
+            construction_type: "ScalarEvaluation",
+            template_family: "generative_template",
+            template: ["negator!", "evaluation_marker!", "degree?", "stative_predicate!", "particle?"],
+            assigned_slots: ["negator", "evaluation_marker", "stative_predicate"],
+            polarity_profile: "negative",
+            scalar_domain: "price",
+            semantic_domain: "price_property",
+            rule: "negator + evaluation marker + stative/scalar predicate",
+            reason: "Uses the source-linked negative 算 evaluation profile; price is contextual metadata and negative polarity remains trace metadata.",
+            surfaces: core.map((node) => flattenSurface2(node))
+          })
+        });
+      }
+      return {
+        wrapNegatedVPSubspans: wrapNegatedVPSubspans2,
+        scalarEvaluationFallback: scalarEvaluationFallback2
+      };
+    };
+  }
+});
+
+// src/parser/orchestration/wrap-predicate.js
+var require_wrap_predicate = __commonJS({
+  "src/parser/orchestration/wrap-predicate.js"(exports2, module2) {
+    "use strict";
+    module2.exports = function createWrapPredicate(dependencies = {}) {
+      const {
+        categorySubspanFor: categorySubspanFor2,
+        construction: construction2,
+        isStativeToken: isStativeToken2,
+        isToken: isToken2,
+        nodeCanFillSlot: nodeCanFillSlot2,
+        traceInfo: traceInfo2
+      } = dependencies;
       function wrapPredicate2(nodes) {
         if (!nodes.length) return nodes;
         const degreeMannerIndex = nodes.findIndex((node, index) => nodeCanFillSlot2(node, "degree_manner_head") && nodeCanFillSlot2(nodes[index + 1], "degree_particle"));
@@ -7032,29 +7070,8 @@ var require_basic = __commonJS({
         }
         return nodes;
       }
-      function scalarEvaluationFallback2(core) {
-        if (!hasSurface2(core, "唔") || !hasSurface2(core, "算") || !hasSurface2(core, "貴")) return null;
-        return construction2("ScalarEvaluation", "ValueEval", core, {
-          slots: ["scalar_evaluation", "evaluation_clause", "predicate", "stative_predicate", "negator", "evaluation_marker"],
-          note: "Negative lexical 算 evaluation with an overt property predicate; visible subject/topic material remains outside the lexical predicate relation.",
-          trace: traceInfo2("generative_template", {
-            construction_type: "ScalarEvaluation",
-            template_family: "generative_template",
-            template: ["negator!", "evaluation_marker!", "degree?", "stative_predicate!", "particle?"],
-            assigned_slots: ["negator", "evaluation_marker", "stative_predicate"],
-            polarity_profile: "negative",
-            scalar_domain: "price",
-            semantic_domain: "price_property",
-            rule: "negator + evaluation marker + stative/scalar predicate",
-            reason: "Uses the source-linked negative 算 evaluation profile; price is contextual metadata and negative polarity remains trace metadata.",
-            surfaces: core.map((node) => flattenSurface2(node))
-          })
-        });
-      }
       return {
-        wrapNegatedVPSubspans: wrapNegatedVPSubspans2,
-        wrapPredicate: wrapPredicate2,
-        scalarEvaluationFallback: scalarEvaluationFallback2
+        wrapPredicate: wrapPredicate2
       };
     };
   }
@@ -8497,6 +8514,64 @@ var require_tokenize_line = __commonJS({
         return nodes;
       }
       return { tokenizeLine: tokenizeLine2 };
+    };
+  }
+});
+
+// src/parser/orchestration/apply-construction-patterns.js
+var require_apply_construction_patterns = __commonJS({
+  "src/parser/orchestration/apply-construction-patterns.js"(exports2, module2) {
+    "use strict";
+    module2.exports = function createApplyConstructionPatterns(dependencies = {}) {
+      const {
+        isParticle: isParticle2,
+        nodeSlots: nodeSlots2,
+        priorityMarkerClauseWithTrailingParticle: priorityMarkerClauseWithTrailingParticle2,
+        serialVerbPurposeChainWithTrailingParticle: serialVerbPurposeChainWithTrailingParticle2,
+        wrapCore
+      } = dependencies;
+      function withoutTrailingParticles2(nodes) {
+        let end = nodes.length;
+        while (end > 0 && isParticle2(nodes[end - 1])) end--;
+        return { core: nodes.slice(0, end), particles: nodes.slice(end) };
+      }
+      function applyConstructionPatterns2(nodes) {
+        if (!nodes.length) return nodes;
+        const { core, particles } = withoutTrailingParticles2(nodes);
+        if (particles.length) {
+          const withParticles = wrapCore([...core, ...particles]);
+          if (withParticles.length === 1 && withParticles[0].kind === "construction") return withParticles;
+        }
+        const wrapped = wrapCore(core);
+        if (particles.length && wrapped.length) {
+          const last = wrapped[wrapped.length - 1];
+          if (last && last.kind === "construction" && last.type === "PriorityMarkerClause") {
+            return [
+              ...wrapped.slice(0, -1),
+              priorityMarkerClauseWithTrailingParticle2(last, particles[0]),
+              ...particles.slice(1)
+            ];
+          }
+          if (last && last.kind === "construction" && ["SerialVerbPurposeChain", "MotionPurposeChain"].includes(last.type)) {
+            return [
+              ...wrapped.slice(0, -1),
+              serialVerbPurposeChainWithTrailingParticle2(last, particles[0]),
+              ...particles.slice(1)
+            ];
+          }
+        }
+        return [...wrapped, ...particles];
+      }
+      function optionalSubjectOffset2(core) {
+        if (!core.length) return 0;
+        const slots = nodeSlots2(core[0]);
+        return slots.includes("subject") ? 1 : 0;
+      }
+      return {
+        applyConstructionPatterns: applyConstructionPatterns2,
+        optionalSubjectOffset: optionalSubjectOffset2,
+        withoutTrailingParticles: withoutTrailingParticles2
+      };
     };
   }
 });
@@ -9966,9 +10041,11 @@ var require_stance = __commonJS({
         categorySubspanFor: categorySubspanFor2,
         cleanSlots: cleanSlots2,
         construction: construction2,
+        contextualOpinionPlaceholderChildren: contextualOpinionPlaceholderChildren2,
         copulaClone: copulaClone2,
         firstToken: firstToken2,
         flattenSurface: flattenSurface2,
+        hasSurface: hasSurface2,
         isToken: isToken2,
         modalVPFromNodes: modalVPFromNodes2,
         nodeCanFillSlot: nodeCanFillSlot2,
@@ -9984,6 +10061,17 @@ var require_stance = __commonJS({
         withoutTrailingParticles: withoutTrailingParticles2,
         wrapCategorySubspans: wrapCategorySubspans2
       } = dependencies;
+      function opinionSeemingFallback2(core) {
+        if (!(hasSurface2(core, "覺得") || hasSurface2(core, "我覺得")) || !hasSurface2(core, "好似")) return null;
+        const opinionChildren = contextualOpinionPlaceholderChildren2(core);
+        return construction2("OpinionStanceFrame", "Opinion/Stance", opinionChildren, {
+          note: "Opinion/seeming fallback: 覺得 + 好似 + predicate.",
+          trace: traceInfo2("legacy_surface_rule", {
+            rule: "has 覺得/我覺得 and 好似",
+            reason: "Fallback only; generative OpinionStanceFrame should normally catch this."
+          })
+        });
+      }
       function splitOpinionTrailingParticles(core) {
         const split = withoutTrailingParticles2(core);
         const bareCore = split.core.slice();
@@ -10323,7 +10411,7 @@ var require_stance = __commonJS({
           })
         });
       }
-      return { opinionStanceFrameFallback: opinionStanceFrameFallback2 };
+      return { opinionSeemingFallback: opinionSeemingFallback2, opinionStanceFrameFallback: opinionStanceFrameFallback2 };
     };
   }
 });
@@ -10336,7 +10424,9 @@ var require_composition = __commonJS({
       const {
         applyConstructionPatterns: applyConstructionPatterns2,
         construction: construction2,
+        contextualReportedSpeechLearnerChildren: contextualReportedSpeechLearnerChildren2,
         firstToken: firstToken2,
+        indexOfSurface: indexOfSurface2,
         flattenSurface: flattenSurface2,
         nodeCanFillSlot: nodeCanFillSlot2,
         optionalSubjectOffset: optionalSubjectOffset2,
@@ -10349,6 +10439,18 @@ var require_composition = __commonJS({
         withoutTrailingParticles: withoutTrailingParticles2,
         wrapCategorySubspans: wrapCategorySubspans2
       } = dependencies;
+      function reportedSpeechSurfaceFallback2(core) {
+        const waaIndex = indexOfSurface2(core, "話");
+        if (waaIndex <= 0 || waaIndex >= core.length - 1) return null;
+        const reportedChildren = contextualReportedSpeechLearnerChildren2(core);
+        return construction2("ReportedSpeech", "Reported", reportedChildren, {
+          note: "Reported speech/thought: NP 話 + clause.",
+          trace: traceInfo2("legacy_surface_rule", {
+            rule: "NP before 話 and material after",
+            reason: "Surface speech verb fallback."
+          })
+        });
+      }
       function contentNodeForReportedSpeech(contentCore) {
         if (!contentCore.length) return null;
         if (contentCore.length === 1 && contentCore[0].kind === "construction" && contentCore[0].type === "ClauseRelationEdge") {
@@ -10442,7 +10544,7 @@ var require_composition = __commonJS({
           })
         });
       }
-      return { reportedSpeechFrameFallback: reportedSpeechFrameFallback2 };
+      return { reportedSpeechFrameFallback: reportedSpeechFrameFallback2, reportedSpeechSurfaceFallback: reportedSpeechSurfaceFallback2 };
     };
   }
 });
@@ -10466,6 +10568,27 @@ var require_potential_result = __commonJS({
         traceInfo: traceInfo2,
         withoutTrailingParticles: withoutTrailingParticles2
       } = dependencies;
+      function potentialResultComplementFallback2(core) {
+        if (core.length >= 3 && isVerbLike2(core[0]) && isToken2(core[1], "唔") && isToken2(core[2], "到")) {
+          return construction2("NegativePotentialComplement", "NegPotential", core, {
+            note: "Negative potential/result complement.",
+            trace: traceInfo2("generative_or_heuristic_slot_rule", {
+              rule: "verb + 唔 + 到",
+              reason: "Structural potential complement heuristic."
+            })
+          });
+        }
+        if (core.length >= 2 && isVerbLike2(core[0]) && isToken2(core[1], "到")) {
+          return construction2("ResultComplement", "Result", core, {
+            note: "Positive result/attainment complement.",
+            trace: traceInfo2("generative_or_heuristic_slot_rule", {
+              rule: "verb + 到",
+              reason: "Structural result complement heuristic."
+            })
+          });
+        }
+        return null;
+      }
       function potentialResultVPFallback2(core) {
         const { core: bareCore, particles } = withoutTrailingParticles2(core);
         if (!bareCore.length) return null;
@@ -10554,7 +10677,7 @@ var require_potential_result = __commonJS({
           })
         });
       }
-      return { potentialResultVPFallback: potentialResultVPFallback2, incompletePotentialResultCandidate: incompletePotentialResultCandidate2 };
+      return { potentialResultComplementFallback: potentialResultComplementFallback2, potentialResultVPFallback: potentialResultVPFallback2, incompletePotentialResultCandidate: incompletePotentialResultCandidate2 };
     };
   }
 });
@@ -14147,6 +14270,23 @@ var require_needs_context = __commonJS({
         traceInfo: traceInfo2,
         withoutTrailingParticles: withoutTrailingParticles2
       } = dependencies;
+      function ambiguousNeedsContextCandidate2(core) {
+        if (!core || core.length !== 1) return null;
+        const first = firstToken2(core[0]);
+        if (!first || first.syntax !== "ambiguous_needs_context") return null;
+        const candidateAnalyses = first.trace && first.trace.candidate_analyses || [
+          { construction: "NegatedStativePredicate", split: ["唔", "好食"], meaning_hint: "not tasty", parser_active: false },
+          { construction: "ProhibitiveImperative", split: ["唔好", "食"], meaning_hint: "don't eat", parser_active: false }
+        ];
+        return construction2("NeedsContext", "needs context", core, {
+          note: "Ambiguous split: 唔 + 好食 or 唔好 + 食.",
+          trace: traceInfo2("special_ambiguity_rule", {
+            surface: "唔好食",
+            reason: "Needs context ambiguity.",
+            candidate_analyses: candidateAnalyses
+          })
+        });
+      }
       function mandarinNegatorNeedsContextCandidate2(core) {
         if (!core || core.length < 2) return null;
         const first = firstToken2(core[0]);
@@ -14555,6 +14695,7 @@ var require_needs_context = __commonJS({
         });
       }
       return {
+        ambiguousNeedsContextCandidate: ambiguousNeedsContextCandidate2,
         mandarinNegatorNeedsContextCandidate: mandarinNegatorNeedsContextCandidate2,
         incompleteProhibitiveNeedsContextCandidate: incompleteProhibitiveNeedsContextCandidate2,
         incompleteRestrictiveFocusBoundaryCandidate: incompleteRestrictiveFocusBoundaryCandidate2,
@@ -15048,6 +15189,7 @@ var require_clauses4 = __commonJS({
         categorySubspanFor: categorySubspanFor2,
         construction: construction2,
         constructionSlotsByType: constructionSlotsByType2,
+        firstToken: firstToken2,
         flattenSurface: flattenSurface2,
         nodeCanFillSlot: nodeCanFillSlot2,
         parserInactiveTokenClone: parserInactiveTokenClone2,
@@ -15056,6 +15198,16 @@ var require_clauses4 = __commonJS({
         withoutIgnorableSpaceText: withoutIgnorableSpaceText2,
         withoutTrailingParticles: withoutTrailingParticles2
       } = dependencies;
+      function temporalClauseFallback2(core = []) {
+        if (core.length < 2 || !firstToken2(core[0]) || firstToken2(core[0]).label !== "when") return null;
+        return construction2("TemporalClause", "Time", core, {
+          note: "Time expression fallback frames the following predicate.",
+          trace: traceInfo2("construction_function", {
+            construction_type: "TemporalClause",
+            reason: "Fallback only; generative TemporalClause should normally catch this."
+          })
+        });
+      }
       function conventionalEnvironmentalEventConstruction2(nodes = []) {
         const compact = withoutIgnorableSpaceText2(nodes || []);
         if (compact.length !== 2 || compact.some((node) => node.kind === "construction" || node.kind === "text")) return null;
@@ -15256,7 +15408,8 @@ var require_clauses4 = __commonJS({
       return {
         conventionalEnvironmentalEventConstruction: conventionalEnvironmentalEventConstruction2,
         environmentalPredicateParts,
-        impersonalEnvironmentalClauseFallback: impersonalEnvironmentalClauseFallback2
+        impersonalEnvironmentalClauseFallback: impersonalEnvironmentalClauseFallback2,
+        temporalClauseFallback: temporalClauseFallback2
       };
     };
   }
@@ -17528,6 +17681,34 @@ var require_clauses6 = __commonJS({
   }
 });
 
+// src/parser/detectors/topic-comment.js
+var require_topic_comment = __commonJS({
+  "src/parser/detectors/topic-comment.js"(exports2, module2) {
+    "use strict";
+    module2.exports = function createTopicCommentDetectors(dependencies = {}) {
+      const { cleanSlots: cleanSlots2, construction: construction2, isTopicCandidate: isTopicCandidate2, templateDerivedSlots: templateDerivedSlots2, traceInfo: traceInfo2, wrapPredicate: wrapPredicate2 } = dependencies;
+      function topicCommentFallback2(core) {
+        if (!core.length || !isTopicCandidate2(core[0]) || core.length < 2) return null;
+        const topic = construction2("Topic", "topic", [core[0]], {
+          primary: "topic",
+          note: "Topic with secondary semantic role what."
+        });
+        const commentChildren = wrapPredicate2(core.slice(1));
+        const children = [topic, ...commentChildren];
+        return construction2("TopicComment", "TopicComment", children, {
+          note: "Topic-comment construction with comment represented as predicate-role metadata rather than a redundant child wrapper.",
+          slots: cleanSlots2(["topic_comment", "topic", "comment", "comment_predicate", "predicate", "clause", ...templateDerivedSlots2("TopicComment", children)]),
+          trace: traceInfo2("generative_or_heuristic_slot_rule", {
+            rule: "topic candidate followed by typed comment predicate",
+            reason: "Structural heuristic; the comment relation is carried by TopicComment slots rather than a standalone Comment construction."
+          })
+        });
+      }
+      return { topicCommentFallback: topicCommentFallback2 };
+    };
+  }
+});
+
 // src/parser/terminal/questions/final-particles.js
 var require_final_particles = __commonJS({
   "src/parser/terminal/questions/final-particles.js"(exports2, module2) {
@@ -18393,6 +18574,441 @@ var require_ordered_cluster = __commonJS({
         orderedParticleClusterFallback: orderedParticleClusterFallback2,
         orderedParticleClusterInfo: orderedParticleClusterInfo2,
         orderedParticleClusterTailInfo: orderedParticleClusterTailInfo2
+      };
+    };
+  }
+});
+
+// src/parser/orchestration/wrap-core.js
+var require_wrap_core = __commonJS({
+  "src/parser/orchestration/wrap-core.js"(exports2, module2) {
+    "use strict";
+    module2.exports = function createWrapCore(dependencies = {}) {
+      const {
+        aNotAQuestionFallback: aNotAQuestionFallback2,
+        acceptabilityANotAQuestionFallback: acceptabilityANotAQuestionFallback2,
+        ambiguousNeedsContextCandidate: ambiguousNeedsContextCandidate2,
+        approximateQuantityFallback: approximateQuantityFallback2,
+        bareNumeralObjectMalformedCandidate: bareNumeralObjectMalformedCandidate2,
+        completionQuestionFallback: completionQuestionFallback2,
+        completionQuestionWithPerfectiveMarkerFallback: completionQuestionWithPerfectiveMarkerFallback2,
+        completionThenClauseRelation: completionThenClauseRelation2,
+        completionThenStandaloneWalkResolution: completionThenStandaloneWalkResolution2,
+        conditionalGeWaaClauseFallback: conditionalGeWaaClauseFallback2,
+        coordinatedNPFragmentFallback: coordinatedNPFragmentFallback2,
+        coordinatedSubjectModalPredicateClauseFallback: coordinatedSubjectModalPredicateClauseFallback2,
+        copularANotAQuestionFallback: copularANotAQuestionFallback2,
+        copularExplanatoryCompositionFallback: copularExplanatoryCompositionFallback2,
+        copularIdentificationFrameFallback: copularIdentificationFrameFallback2,
+        cognitionContentFrameFallback: cognitionContentFrameFallback2,
+        cognitionStatementFallback: cognitionStatementFallback2,
+        coverbFrameFallback: coverbFrameFallback2,
+        cp021bBoundaryReviewFallback: cp021bBoundaryReviewFallback2,
+        desiderativeANotAQuestionFallback: desiderativeANotAQuestionFallback2,
+        desiderativeVPWrapCoreFallback: desiderativeVPWrapCoreFallback2,
+        directionalCompositionFallback: directionalCompositionFallback2,
+        durativeAspectCompositionFallback: durativeAspectCompositionFallback2,
+        existentialLocationPresentationalFallback: existentialLocationPresentationalFallback2,
+        existentialQuestionWithVpMalformedCandidate: existentialQuestionWithVpMalformedCandidate2,
+        existentialWhQuestionFallback: existentialWhQuestionFallback2,
+        experientialQuestionBoundaryFallback: experientialQuestionBoundaryFallback2,
+        experientialYesNoQuestionFallback: experientialYesNoQuestionFallback2,
+        fragmentQuestionFallback: fragmentQuestionFallback2,
+        hasSurface: hasSurface2,
+        impersonalEnvironmentalClauseFallback: impersonalEnvironmentalClauseFallback2,
+        inlineANotAQuestionFallback: inlineANotAQuestionFallback2,
+        incompatibleAspectCompositionMalformedCandidate: incompatibleAspectCompositionMalformedCandidate2,
+        incompleteContextualPredicateCandidate: incompleteContextualPredicateCandidate2,
+        incompleteLocativeNeedsContextCandidate: incompleteLocativeNeedsContextCandidate2,
+        incompleteModalNeedsContextCandidate: incompleteModalNeedsContextCandidate2,
+        incompletePotentialResultCandidate: incompletePotentialResultCandidate2,
+        incompleteProhibitiveNeedsContextCandidate: incompleteProhibitiveNeedsContextCandidate2,
+        incompleteRestrictiveFocusBoundaryCandidate: incompleteRestrictiveFocusBoundaryCandidate2,
+        intendedFunctionRelationFallback: intendedFunctionRelationFallback2,
+        interiorExistentialFrameFallback: interiorExistentialFrameFallback2,
+        interestDomainExistentialQuestionFallback: interestDomainExistentialQuestionFallback2,
+        leaveTakingFormulaFallback: leaveTakingFormulaFallback2,
+        lexicalGiveRelationFallback: lexicalGiveRelationFallback2,
+        locativePostureVPFallback: locativePostureVPFallback2,
+        locativeWhQuestionFallback: locativeWhQuestionFallback2,
+        mandarinNegatorNeedsContextCandidate: mandarinNegatorNeedsContextCandidate2,
+        mandarinReviewNeedsContextCandidate: mandarinReviewNeedsContextCandidate2,
+        mannerAdverbialVPFallback: mannerAdverbialVPFallback2,
+        modalPredicateWrapCoreFallback: modalPredicateWrapCoreFallback2,
+        motionEventSpatialFallback: motionEventSpatialFallback2,
+        namingSelfIntroductionFrameFallback: namingSelfIntroductionFrameFallback2,
+        negativeCognitionFragmentFallback: negativeCognitionFragmentFallback2,
+        nominalMeasurePredicateFallback: nominalMeasurePredicateFallback2,
+        opinionSeemingFallback: opinionSeemingFallback2,
+        opinionStanceFrameFallback: opinionStanceFrameFallback2,
+        overtObjectSelectionReviewCandidate: overtObjectSelectionReviewCandidate2,
+        passivePermissiveRelationFallback: passivePermissiveRelationFallback2,
+        perfectiveResultCompositionFallback: perfectiveResultCompositionFallback2,
+        permissionANotAQuestionFallback: permissionANotAQuestionFallback2,
+        politePathImperativeFallback: politePathImperativeFallback2,
+        politeRequestAdjustmentFallback: politeRequestAdjustmentFallback2,
+        polarQuestionFrameFallback: polarQuestionFrameFallback2,
+        possessiveFragmentAnswerCandidate: possessiveFragmentAnswerCandidate2,
+        postThemeParticipantRelationFallback: postThemeParticipantRelationFallback2,
+        postverbalZoPerfectiveFromRawNodes: postverbalZoPerfectiveFromRawNodes2,
+        postverbalZoPerfectiveFromWrappedNodes: postverbalZoPerfectiveFromWrappedNodes2,
+        potentialResultComplementFallback: potentialResultComplementFallback2,
+        potentialResultVPFallback: potentialResultVPFallback2,
+        predicateOmissionCandidate: predicateOmissionCandidate2,
+        preferenceVPWrapCoreFallback: preferenceVPWrapCoreFallback2,
+        progressiveWhObjectQuestionFallback: progressiveWhObjectQuestionFallback2,
+        prohibitiveImperativeFallback: prohibitiveImperativeFallback2,
+        protectedOpaqueFormulaPassthrough: protectedOpaqueFormulaPassthrough2,
+        purposeLinkingMotionFallback: purposeLinkingMotionFallback2,
+        rawPreferenceTemplateFallback: rawPreferenceTemplateFallback2,
+        reportedSpeechFrameFallback: reportedSpeechFrameFallback2,
+        reportedSpeechSurfaceFallback: reportedSpeechSurfaceFallback2,
+        restorativeRepetitiveComplementFallback: restorativeRepetitiveComplementFallback2,
+        scalarEvaluationFallback: scalarEvaluationFallback2,
+        scalarValueQuestionFallback: scalarValueQuestionFallback2,
+        sourceLinkedDegreeMannerModifiedVPFallback: sourceLinkedDegreeMannerModifiedVPFallback2,
+        sourceLinkedIntentionFrameFallback: sourceLinkedIntentionFrameFallback2,
+        sourceLinkedPreferenceVPFallback: sourceLinkedPreferenceVPFallback2,
+        sourceLinkedPriorityMarkerClauseFallback: sourceLinkedPriorityMarkerClauseFallback2,
+        sourceMotionClauseFallback: sourceMotionClauseFallback2,
+        subjectLocativePredicateClauseFallback: subjectLocativePredicateClauseFallback2,
+        subjectStativePredicateClauseFallback: subjectStativePredicateClauseFallback2,
+        suggestionQuestionFallback: suggestionQuestionFallback2,
+        templateConstructionFor: templateConstructionFor2,
+        temporalClauseFallback: temporalClauseFallback2,
+        topicCommentFallback: topicCommentFallback2,
+        transitionMotionPredicateFallback: transitionMotionPredicateFallback2,
+        transparentDiscourseFormulaFallback: transparentDiscourseFormulaFallback2,
+        wrapAgreementResponseSubspans: wrapAgreementResponseSubspans2,
+        wrapCategorySubspans: wrapCategorySubspans2,
+        wrapChangeIntoPredicateSubspans: wrapChangeIntoPredicateSubspans2,
+        wrapDirectionalMotionSubspans: wrapDirectionalMotionSubspans2,
+        wrapNegatedVPSubspans: wrapNegatedVPSubspans2,
+        wrapPermissionAcceptabilitySubspans: wrapPermissionAcceptabilitySubspans2,
+        wrapPossessiveClassifierNPSubspans: wrapPossessiveClassifierNPSubspans2,
+        wrapPredicate: wrapPredicate2,
+        wrapPriorityMarkerSubspans: wrapPriorityMarkerSubspans2,
+        wrapSerialPurposeTemplateSubspans: wrapSerialPurposeTemplateSubspans2,
+        wrapSerialVerbPurposeSubspans: wrapSerialVerbPurposeSubspans2
+      } = dependencies;
+      function wrapCore(core) {
+        if (!core.length) return core;
+        const ambiguousNeedsContext = ambiguousNeedsContextCandidate2(core);
+        if (ambiguousNeedsContext) return [ambiguousNeedsContext];
+        const fragmentQuestion = fragmentQuestionFallback2(core);
+        if (fragmentQuestion) return [fragmentQuestion];
+        const conditionalClause = conditionalGeWaaClauseFallback2(core);
+        if (conditionalClause) return [conditionalClause];
+        const earlyCp021bBoundaryReviewSpan = cp021bBoundaryReviewFallback2(core);
+        if (earlyCp021bBoundaryReviewSpan) return [earlyCp021bBoundaryReviewSpan];
+        const environmentalClause = impersonalEnvironmentalClauseFallback2(core);
+        if (environmentalClause) return [environmentalClause];
+        const existentialLocationPresentational = existentialLocationPresentationalFallback2(core);
+        if (existentialLocationPresentational) return [existentialLocationPresentational];
+        const nominalMeasurePredicate = nominalMeasurePredicateFallback2(core);
+        if (nominalMeasurePredicate) return [nominalMeasurePredicate];
+        const motionEventSpatial = motionEventSpatialFallback2(core);
+        if (motionEventSpatial) return [motionEventSpatial];
+        const incompatibleAspectComposition = incompatibleAspectCompositionMalformedCandidate2(core);
+        if (incompatibleAspectComposition) return [incompatibleAspectComposition];
+        const durativeAspectComposition = durativeAspectCompositionFallback2(core);
+        if (durativeAspectComposition) return [durativeAspectComposition];
+        const perfectiveResultComposition = perfectiveResultCompositionFallback2(core);
+        if (perfectiveResultComposition) return [perfectiveResultComposition];
+        const copularExplanatoryComposition = copularExplanatoryCompositionFallback2(core);
+        if (copularExplanatoryComposition) return [copularExplanatoryComposition];
+        const directionalComposition = directionalCompositionFallback2(core);
+        if (directionalComposition) return [directionalComposition];
+        const restorativeRepetitiveComposition = restorativeRepetitiveComplementFallback2(core);
+        if (restorativeRepetitiveComposition) return [restorativeRepetitiveComposition];
+        const purposeLinkingMotion = purposeLinkingMotionFallback2(core);
+        if (purposeLinkingMotion) return [purposeLinkingMotion];
+        const bareNumeralMalformed = bareNumeralObjectMalformedCandidate2(core);
+        if (bareNumeralMalformed) return [bareNumeralMalformed];
+        const existentialVpMalformed = existentialQuestionWithVpMalformedCandidate2(core);
+        if (existentialVpMalformed) return [existentialVpMalformed];
+        const mandarinNegatorNeedsContext = mandarinNegatorNeedsContextCandidate2(core);
+        if (mandarinNegatorNeedsContext) return [mandarinNegatorNeedsContext];
+        const incompleteProhibitiveNeedsContext = incompleteProhibitiveNeedsContextCandidate2(core);
+        if (incompleteProhibitiveNeedsContext) return [incompleteProhibitiveNeedsContext];
+        const incompleteRestrictiveFocusBoundary = incompleteRestrictiveFocusBoundaryCandidate2(core);
+        if (incompleteRestrictiveFocusBoundary) return [incompleteRestrictiveFocusBoundary];
+        const typedPredicateOmission = predicateOmissionCandidate2(core);
+        if (typedPredicateOmission) return [typedPredicateOmission];
+        const incompleteModalNeedsContext = incompleteModalNeedsContextCandidate2(core);
+        if (incompleteModalNeedsContext) return [incompleteModalNeedsContext];
+        const incompleteContextualPredicate = incompleteContextualPredicateCandidate2(core);
+        if (incompleteContextualPredicate) return [incompleteContextualPredicate];
+        const incompleteLocativeNeedsContext = incompleteLocativeNeedsContextCandidate2(core);
+        if (incompleteLocativeNeedsContext) return [incompleteLocativeNeedsContext];
+        const possessiveFragmentAnswer = possessiveFragmentAnswerCandidate2(core);
+        if (possessiveFragmentAnswer) return [possessiveFragmentAnswer];
+        const mandarinReviewNeedsContext = mandarinReviewNeedsContextCandidate2(core);
+        if (mandarinReviewNeedsContext) return [mandarinReviewNeedsContext];
+        const copularANotAQuestion = copularANotAQuestionFallback2(core);
+        if (copularANotAQuestion) return [copularANotAQuestion];
+        const rawDesiderativeANotAQuestion = desiderativeANotAQuestionFallback2(core);
+        if (rawDesiderativeANotAQuestion) return [rawDesiderativeANotAQuestion];
+        const rawPermissionANotAQuestion = permissionANotAQuestionFallback2(core);
+        if (rawPermissionANotAQuestion) return [rawPermissionANotAQuestion];
+        const templateANotAQuestion = templateConstructionFor2(core, ["ANotAQuestion"]);
+        if (templateANotAQuestion) return [templateANotAQuestion];
+        const rawANotAQuestion = aNotAQuestionFallback2(core);
+        if (rawANotAQuestion) return [rawANotAQuestion];
+        const potentialResultSpan = potentialResultVPFallback2(core);
+        if (potentialResultSpan) return [potentialResultSpan];
+        const incompletePotentialResult = incompletePotentialResultCandidate2(core);
+        if (incompletePotentialResult) return [incompletePotentialResult];
+        const transitionMotionSpan = transitionMotionPredicateFallback2(core);
+        if (transitionMotionSpan) return [transitionMotionSpan];
+        const sourceLinkedDegreeMannerSpan = sourceLinkedDegreeMannerModifiedVPFallback2(core);
+        if (sourceLinkedDegreeMannerSpan) return [sourceLinkedDegreeMannerSpan];
+        const sourceLinkedPrioritySpan = sourceLinkedPriorityMarkerClauseFallback2(core);
+        if (sourceLinkedPrioritySpan) return [sourceLinkedPrioritySpan];
+        const sourceLinkedPreferenceSpan = sourceLinkedPreferenceVPFallback2(core);
+        if (sourceLinkedPreferenceSpan) return [sourceLinkedPreferenceSpan];
+        const rawPreferenceSpan = rawPreferenceTemplateFallback2(core);
+        if (rawPreferenceSpan) return [rawPreferenceSpan];
+        const negativeCognitionSpan = negativeCognitionFragmentFallback2(core);
+        if (negativeCognitionSpan) return [negativeCognitionSpan];
+        const cognitionStatementSpan = cognitionStatementFallback2(core);
+        if (cognitionStatementSpan) return [cognitionStatementSpan];
+        const cognitionContentSpan = cognitionContentFrameFallback2(core);
+        if (cognitionContentSpan) return [cognitionContentSpan];
+        const opinionStanceSpan = opinionStanceFrameFallback2(core);
+        if (opinionStanceSpan) return [opinionStanceSpan];
+        const reportedSpeechSpan = reportedSpeechFrameFallback2(core);
+        if (reportedSpeechSpan) return [reportedSpeechSpan];
+        const intendedFunctionSpan = intendedFunctionRelationFallback2(core);
+        if (intendedFunctionSpan) return [intendedFunctionSpan];
+        const sourceLinkedIntentionSpan = sourceLinkedIntentionFrameFallback2(core);
+        if (sourceLinkedIntentionSpan) return [sourceLinkedIntentionSpan];
+        const namingSelfIntroductionSpan = namingSelfIntroductionFrameFallback2(core);
+        if (namingSelfIntroductionSpan) return [namingSelfIntroductionSpan];
+        const politeRequestAdjustmentSpan = politeRequestAdjustmentFallback2(core);
+        if (politeRequestAdjustmentSpan) return [politeRequestAdjustmentSpan];
+        const transparentDiscourseFormulaSpan = transparentDiscourseFormulaFallback2(core);
+        if (transparentDiscourseFormulaSpan) return [transparentDiscourseFormulaSpan];
+        const leaveTakingFormulaSpan = leaveTakingFormulaFallback2(core);
+        if (leaveTakingFormulaSpan) return [leaveTakingFormulaSpan];
+        const politePathImperativeSpan = politePathImperativeFallback2(core);
+        if (politePathImperativeSpan) return [politePathImperativeSpan];
+        const polarQuestionSpan = polarQuestionFrameFallback2(core);
+        if (polarQuestionSpan) return [polarQuestionSpan];
+        const interiorExistentialSpan = interiorExistentialFrameFallback2(core);
+        if (interiorExistentialSpan) return [interiorExistentialSpan];
+        const copularIdentificationSpan = copularIdentificationFrameFallback2(core);
+        if (copularIdentificationSpan) return [copularIdentificationSpan];
+        const passivePermissiveSpan = passivePermissiveRelationFallback2(core);
+        if (passivePermissiveSpan) return [passivePermissiveSpan];
+        const lexicalGiveSpan = lexicalGiveRelationFallback2(core);
+        if (lexicalGiveSpan) return [lexicalGiveSpan];
+        const postThemeParticipantSpan = postThemeParticipantRelationFallback2(core);
+        if (postThemeParticipantSpan) return [postThemeParticipantSpan];
+        const mannerAdverbialSpan = mannerAdverbialVPFallback2(core);
+        if (mannerAdverbialSpan) return [mannerAdverbialSpan];
+        const sourceMotionSpan = sourceMotionClauseFallback2(core);
+        if (sourceMotionSpan) return [sourceMotionSpan];
+        const locativePostureSpan = locativePostureVPFallback2(core);
+        if (locativePostureSpan) return [locativePostureSpan];
+        const subjectLocativePredicateSpan = subjectLocativePredicateClauseFallback2(core);
+        if (subjectLocativePredicateSpan) return [subjectLocativePredicateSpan];
+        const coordinatedNPFragmentSpan = coordinatedNPFragmentFallback2(core);
+        if (coordinatedNPFragmentSpan) return [coordinatedNPFragmentSpan];
+        const coverbFrameSpan = coverbFrameFallback2(core);
+        if (coverbFrameSpan) return [coverbFrameSpan];
+        const coordinatedSubjectModalSpan = coordinatedSubjectModalPredicateClauseFallback2(core);
+        if (coordinatedSubjectModalSpan) return [coordinatedSubjectModalSpan];
+        const rawCompositionalPostverbalZo = postverbalZoPerfectiveFromRawNodes2(core);
+        if (rawCompositionalPostverbalZo) return rawCompositionalPostverbalZo;
+        core = wrapAgreementResponseSubspans2(core);
+        core = wrapDirectionalMotionSubspans2(core);
+        core = wrapSerialPurposeTemplateSubspans2(core);
+        core = wrapSerialVerbPurposeSubspans2(core);
+        core = wrapPriorityMarkerSubspans2(core);
+        core = wrapChangeIntoPredicateSubspans2(core);
+        core = wrapPossessiveClassifierNPSubspans2(core);
+        core = wrapPermissionAcceptabilitySubspans2(core);
+        core = wrapCategorySubspans2(core);
+        core = wrapNegatedVPSubspans2(core);
+        core = wrapCategorySubspans2(core);
+        core = wrapCategorySubspans2(core);
+        const recomposedPostverbalZo = postverbalZoPerfectiveFromWrappedNodes2(core);
+        if (recomposedPostverbalZo) core = recomposedPostverbalZo;
+        const postSubspanPerfectiveResultComposition = perfectiveResultCompositionFallback2(core);
+        if (postSubspanPerfectiveResultComposition) return [postSubspanPerfectiveResultComposition];
+        const postSubspanExistentialVpMalformed = existentialQuestionWithVpMalformedCandidate2(core);
+        if (postSubspanExistentialVpMalformed) return [postSubspanExistentialVpMalformed];
+        const postSubspanMandarinNegatorNeedsContext = mandarinNegatorNeedsContextCandidate2(core);
+        if (postSubspanMandarinNegatorNeedsContext) return [postSubspanMandarinNegatorNeedsContext];
+        const postSubspanPossessiveFragmentAnswer = possessiveFragmentAnswerCandidate2(core);
+        if (postSubspanPossessiveFragmentAnswer) return [postSubspanPossessiveFragmentAnswer];
+        const postSubspanMandarinReviewNeedsContext = mandarinReviewNeedsContextCandidate2(core);
+        if (postSubspanMandarinReviewNeedsContext) return [postSubspanMandarinReviewNeedsContext];
+        const progressiveWhObjectSpan = progressiveWhObjectQuestionFallback2(core);
+        if (progressiveWhObjectSpan) return [progressiveWhObjectSpan];
+        const subjectStativeSpan = subjectStativePredicateClauseFallback2(core);
+        if (subjectStativeSpan) return [subjectStativeSpan];
+        const scalarValueQuestionSpan = scalarValueQuestionFallback2(core);
+        if (scalarValueQuestionSpan) return [scalarValueQuestionSpan];
+        const protectedOpaqueFormulaSpan = protectedOpaqueFormulaPassthrough2(core);
+        if (protectedOpaqueFormulaSpan) return [protectedOpaqueFormulaSpan];
+        if (core.length === 1 && core[0].kind === "construction") {
+          const reviewedResolvedConstruction = overtObjectSelectionReviewCandidate2(core);
+          if (reviewedResolvedConstruction) return [reviewedResolvedConstruction];
+        }
+        core = completionThenStandaloneWalkResolution2(core);
+        const generativeSpan = templateConstructionFor2(core);
+        if (generativeSpan) {
+          const reviewedGenerativeSpan = overtObjectSelectionReviewCandidate2([generativeSpan]);
+          return [reviewedGenerativeSpan || generativeSpan];
+        }
+        const completionQuestion = completionQuestionFallback2(core);
+        if (completionQuestion) {
+          const reviewedCompletionQuestion = overtObjectSelectionReviewCandidate2([completionQuestion]);
+          return [reviewedCompletionQuestion || completionQuestion];
+        }
+        if (core.length === 1 && core[0].kind === "construction") {
+          const reviewedExistingConstruction = overtObjectSelectionReviewCandidate2(core);
+          return [reviewedExistingConstruction || core[0]];
+        }
+        const opinionSeemingSpan = opinionSeemingFallback2(core);
+        if (opinionSeemingSpan) return [opinionSeemingSpan];
+        const experientialYesNoQuestion = experientialYesNoQuestionFallback2(core);
+        if (experientialYesNoQuestion) return [experientialYesNoQuestion];
+        const interestDomainExistentialQuestion = interestDomainExistentialQuestionFallback2(core);
+        if (interestDomainExistentialQuestion) return [interestDomainExistentialQuestion];
+        const locativeWhQuestion = locativeWhQuestionFallback2(core);
+        if (locativeWhQuestion) return [locativeWhQuestion];
+        const completionThenRelation = completionThenClauseRelation2(core);
+        if (completionThenRelation) return [completionThenRelation];
+        const reportedSpeechSurfaceSpan = reportedSpeechSurfaceFallback2(core);
+        if (reportedSpeechSurfaceSpan) return [reportedSpeechSurfaceSpan];
+        const experientialQuestionBoundary = experientialQuestionBoundaryFallback2(core);
+        if (experientialQuestionBoundary) return [experientialQuestionBoundary];
+        const desiderativeSpan = desiderativeVPWrapCoreFallback2(core);
+        if (desiderativeSpan) return [desiderativeSpan];
+        const scalarEvaluationSpan = scalarEvaluationFallback2(core);
+        if (scalarEvaluationSpan) return [scalarEvaluationSpan];
+        if (hasSurface2(core, "幾錢")) {
+          const scalar = scalarValueQuestionFallback2(core);
+          if (scalar) return [scalar];
+        }
+        const approximateQuantitySpan = approximateQuantityFallback2(core);
+        if (approximateQuantitySpan) return [approximateQuantitySpan];
+        const suggestionQuestion = suggestionQuestionFallback2(core);
+        if (suggestionQuestion) return [suggestionQuestion];
+        const acceptabilityANotAQuestion = acceptabilityANotAQuestionFallback2(core);
+        if (acceptabilityANotAQuestion) return [acceptabilityANotAQuestion];
+        const existentialWhQuestion = existentialWhQuestionFallback2(core);
+        if (existentialWhQuestion) return [existentialWhQuestion];
+        const preferenceFallbackSpan = preferenceVPWrapCoreFallback2(core);
+        if (preferenceFallbackSpan) return [preferenceFallbackSpan];
+        const temporalClauseSpan = temporalClauseFallback2(core);
+        if (temporalClauseSpan) return [temporalClauseSpan];
+        const topicCommentSpan = topicCommentFallback2(core);
+        if (topicCommentSpan) return [topicCommentSpan];
+        const prohibitiveImperativeSpan = prohibitiveImperativeFallback2(core);
+        if (prohibitiveImperativeSpan) return [prohibitiveImperativeSpan];
+        const inlineANotAQuestion = inlineANotAQuestionFallback2(core);
+        if (inlineANotAQuestion) return [inlineANotAQuestion];
+        const completionQuestionWithPerfectiveMarker = completionQuestionWithPerfectiveMarkerFallback2(core);
+        if (completionQuestionWithPerfectiveMarker) return [completionQuestionWithPerfectiveMarker];
+        const potentialResultComplementSpan = potentialResultComplementFallback2(core);
+        if (potentialResultComplementSpan) return [potentialResultComplementSpan];
+        const modalPredicateWrapSpan = modalPredicateWrapCoreFallback2(core);
+        if (modalPredicateWrapSpan) return modalPredicateWrapSpan;
+        return wrapPredicate2(core);
+      }
+      return {
+        wrapCore
+      };
+    };
+  }
+});
+
+// src/parser/orchestration/apply-terminal-patterns.js
+var require_apply_terminal_patterns = __commonJS({
+  "src/parser/orchestration/apply-terminal-patterns.js"(exports2, module2) {
+    "use strict";
+    module2.exports = function createApplyTerminalPatterns(dependencies = {}) {
+      const {
+        applyConstructionPatterns: applyConstructionPatterns2,
+        boundedAcknowledgementRepetitionForPunctuation: boundedAcknowledgementRepetitionForPunctuation2,
+        connectorAwareClauseLinkingForTerminal: connectorAwareClauseLinkingForTerminal2,
+        finalMePolarQuestionFallbackForPunctuation: finalMePolarQuestionFallbackForPunctuation2,
+        hasSentencePunctuation: hasSentencePunctuation2,
+        haveOrNotQuestionFallbackForPunctuation: haveOrNotQuestionFallbackForPunctuation2,
+        orderedParticleClusterFallback: orderedParticleClusterFallback2,
+        orderedParticleClusterInfo: orderedParticleClusterInfo2,
+        relativeClauseNPForTerminal: relativeClauseNPForTerminal2,
+        repeatedNegatedExistentialResponseForPunctuation: repeatedNegatedExistentialResponseForPunctuation2,
+        restrictiveFocusParticleFallback: restrictiveFocusParticleFallback2,
+        scalarDimensionQuestionFallbackForPunctuation: scalarDimensionQuestionFallbackForPunctuation2,
+        scopedChangeStateParticleFallback: scopedChangeStateParticleFallback2,
+        scopedDirectiveClosureParticleFallback: scopedDirectiveClosureParticleFallback2,
+        scopedEpistemicDiscourseParticleFallback: scopedEpistemicDiscourseParticleFallback2,
+        scopedEvidentialDiscourseParticleFallback: scopedEvidentialDiscourseParticleFallback2,
+        standaloneClauseRelationEdgeFragmentForTerminal: standaloneClauseRelationEdgeFragmentForTerminal2,
+        wrapClauseSequenceByPunctuation: wrapClauseSequenceByPunctuation2
+      } = dependencies;
+      function applyConstructionPatternsForTerminal2(segment, terminalText = "") {
+        const haveOrNotQuestion = haveOrNotQuestionFallbackForPunctuation2(segment, terminalText);
+        if (haveOrNotQuestion) return [haveOrNotQuestion];
+        const scalarQuestion = scalarDimensionQuestionFallbackForPunctuation2(segment, terminalText);
+        if (scalarQuestion) return [scalarQuestion];
+        const relationFragment = standaloneClauseRelationEdgeFragmentForTerminal2(segment, terminalText);
+        if (relationFragment) return [relationFragment];
+        const relativeClauseNP = relativeClauseNPForTerminal2(segment);
+        if (relativeClauseNP) return [relativeClauseNP];
+        const connectorLinked = connectorAwareClauseLinkingForTerminal2(segment);
+        if (connectorLinked) return connectorLinked;
+        const ordinaryWrapped = applyConstructionPatterns2(segment);
+        const particleClusterInfo = orderedParticleClusterInfo2(segment, terminalText);
+        if (particleClusterInfo && !particleClusterInfo.supportedOrder) return ordinaryWrapped;
+        const orderedParticleCluster = orderedParticleClusterFallback2(segment, terminalText, particleClusterInfo);
+        if (orderedParticleCluster) return [orderedParticleCluster];
+        const restrictiveFocusParticle = restrictiveFocusParticleFallback2(segment, terminalText, ordinaryWrapped);
+        if (restrictiveFocusParticle) return [restrictiveFocusParticle];
+        const scopedDirectiveParticle = scopedDirectiveClosureParticleFallback2(segment, terminalText, ordinaryWrapped);
+        if (scopedDirectiveParticle) return [scopedDirectiveParticle];
+        const scopedChangeStateParticle = scopedChangeStateParticleFallback2(segment, terminalText, ordinaryWrapped);
+        if (scopedChangeStateParticle) return [scopedChangeStateParticle];
+        const scopedEvidentialParticle = scopedEvidentialDiscourseParticleFallback2(segment, terminalText);
+        if (scopedEvidentialParticle) return [scopedEvidentialParticle];
+        const scopedEpistemicParticle = scopedEpistemicDiscourseParticleFallback2(segment, terminalText);
+        if (scopedEpistemicParticle) return [scopedEpistemicParticle];
+        const finalMePolarQuestion = finalMePolarQuestionFallbackForPunctuation2(segment, terminalText, ordinaryWrapped);
+        if (finalMePolarQuestion) return [finalMePolarQuestion];
+        return ordinaryWrapped;
+      }
+      function applyConstructionPatternsByPunctuation2(nodes) {
+        const boundedAcknowledgementRepetition = boundedAcknowledgementRepetitionForPunctuation2(nodes);
+        if (boundedAcknowledgementRepetition) return boundedAcknowledgementRepetition;
+        const repeatedNegatedExistentialResponse = repeatedNegatedExistentialResponseForPunctuation2(nodes);
+        if (repeatedNegatedExistentialResponse) return repeatedNegatedExistentialResponse;
+        const rendered = [];
+        let segment = [];
+        const flush = (terminalText = "") => {
+          if (segment.length) {
+            rendered.push(...applyConstructionPatternsForTerminal2(segment, terminalText));
+            segment = [];
+          }
+        };
+        for (const node of nodes) {
+          if (node.kind === "text" && hasSentencePunctuation2(node.text)) {
+            flush(node.text);
+            rendered.push(node);
+          } else {
+            segment.push(node);
+          }
+        }
+        flush();
+        return wrapClauseSequenceByPunctuation2(rendered);
+      }
+      return {
+        applyConstructionPatternsByPunctuation: applyConstructionPatternsByPunctuation2,
+        applyConstructionPatternsForTerminal: applyConstructionPatternsForTerminal2
       };
     };
   }
@@ -19784,6 +20400,54 @@ var require_apply_context_contract = __commonJS({
   }
 });
 
+// src/parser/analyze-line.js
+var require_analyze_line = __commonJS({
+  "src/parser/analyze-line.js"(exports2, module2) {
+    "use strict";
+    module2.exports = function createAnalyzeLine(dependencies = {}) {
+      const {
+        analyzedExplicitContext: analyzedExplicitContext2,
+        annotateRawDisplaySurfaces: annotateRawDisplaySurfaces2,
+        applyConstructionPatternsByPunctuation: applyConstructionPatternsByPunctuation2,
+        applyExplicitContextContract: applyExplicitContextContract2,
+        normalizeInputForParser: normalizeInputForParser2,
+        normalizeSurface: normalizeSurface2,
+        tokenizeLine: tokenizeLine2
+      } = dependencies;
+      function analyzeLine2(source, explicitContextInput = null) {
+        const warnings = [];
+        const explicitContext = analyzedExplicitContext2(explicitContextInput);
+        const input_normalization = normalizeInputForParser2(source);
+        const parserSource = input_normalization.parser_shadow_source;
+        const normalized = normalizeSurface2(parserSource);
+        if (normalized === "唔好食") {
+          warnings.push("Needs context: 唔好食 can mean 唔 + 好食 = not tasty, or 唔好 + 食 = don't eat.");
+        }
+        const tokens = annotateRawDisplaySurfaces2(tokenizeLine2(parserSource), source, parserSource);
+        const initialNodes = annotateRawDisplaySurfaces2(applyConstructionPatternsByPunctuation2(tokens), source, parserSource);
+        const contextApplied = applyExplicitContextContract2(initialNodes, explicitContext);
+        const nodes = annotateRawDisplaySurfaces2(contextApplied.nodes, source, parserSource);
+        return {
+          source,
+          parser_shadow_source: parserSource,
+          input_normalization,
+          normalization_trace: input_normalization.normalization_trace,
+          normalization_review_suggestions: input_normalization.review_suggestions,
+          warnings,
+          tokens,
+          nodes,
+          explicit_context: explicitContext.public,
+          context_resolution: contextApplied.resolution,
+          diagnostics: true
+        };
+      }
+      return {
+        analyzeLine: analyzeLine2
+      };
+    };
+  }
+});
+
 // src/runtime-resources/presentation/diagnostic-reminders.js
 var require_diagnostic_reminders = __commonJS({
   "src/runtime-resources/presentation/diagnostic-reminders.js"(exports2, module2) {
@@ -21065,18 +21729,23 @@ var {
 var createBasicPredicateDetectors = require_basic();
 var {
   scalarEvaluationFallback,
-  wrapNegatedVPSubspans,
-  wrapPredicate
+  wrapNegatedVPSubspans
 } = createBasicPredicateDetectors({
-  categorySubspanFor,
   construction,
   flattenSurface,
   hasSurface,
-  isStativeToken,
   isToken,
   nodeCanFillSlot,
   parserInactiveTokenClone,
   templateDerivedSlots,
+  traceInfo
+});
+var { wrapPredicate } = require_wrap_predicate()({
+  categorySubspanFor,
+  construction,
+  isStativeToken,
+  isToken,
+  nodeCanFillSlot,
   traceInfo
 });
 var createAcceptabilityDetectors = require_clauses();
@@ -21285,43 +21954,35 @@ var { tokenizeLine } = require_tokenize_line()({
   transparentOneCountClassifierSplitFromRest,
   transparentQuantifiedPersonNpFromRest
 });
-function withoutTrailingParticles(nodes) {
-  let end = nodes.length;
-  while (end > 0 && isParticle(nodes[end - 1])) end--;
-  return { core: nodes.slice(0, end), particles: nodes.slice(end) };
+var wrapCoreImplementation = null;
+var applyConstructionPatternsImplementation = null;
+var optionalSubjectOffsetImplementation = null;
+var withoutTrailingParticlesImplementation = null;
+function applyConstructionPatterns(...args) {
+  if (!applyConstructionPatternsImplementation) throw new Error("applyConstructionPatterns implementation is not initialized.");
+  return applyConstructionPatternsImplementation(...args);
 }
-function applyConstructionPatterns(nodes) {
-  if (!nodes.length) return nodes;
-  const { core, particles } = withoutTrailingParticles(nodes);
-  if (particles.length) {
-    const withParticles = wrapCore([...core, ...particles]);
-    if (withParticles.length === 1 && withParticles[0].kind === "construction") return withParticles;
+function optionalSubjectOffset(...args) {
+  if (!optionalSubjectOffsetImplementation) throw new Error("optionalSubjectOffset implementation is not initialized.");
+  return optionalSubjectOffsetImplementation(...args);
+}
+function withoutTrailingParticles(...args) {
+  if (!withoutTrailingParticlesImplementation) throw new Error("withoutTrailingParticles implementation is not initialized.");
+  return withoutTrailingParticlesImplementation(...args);
+}
+var constructionPatternOrchestration = require_apply_construction_patterns()({
+  isParticle,
+  nodeSlots,
+  priorityMarkerClauseWithTrailingParticle: (...args) => priorityMarkerClauseWithTrailingParticle(...args),
+  serialVerbPurposeChainWithTrailingParticle: (...args) => serialVerbPurposeChainWithTrailingParticle(...args),
+  wrapCore: (...args) => {
+    if (!wrapCoreImplementation) throw new Error("wrapCore implementation is not initialized.");
+    return wrapCoreImplementation(...args);
   }
-  const wrapped = wrapCore(core);
-  if (particles.length && wrapped.length) {
-    const last = wrapped[wrapped.length - 1];
-    if (last && last.kind === "construction" && last.type === "PriorityMarkerClause") {
-      return [
-        ...wrapped.slice(0, -1),
-        priorityMarkerClauseWithTrailingParticle(last, particles[0]),
-        ...particles.slice(1)
-      ];
-    }
-    if (last && last.kind === "construction" && ["SerialVerbPurposeChain", "MotionPurposeChain"].includes(last.type)) {
-      return [
-        ...wrapped.slice(0, -1),
-        serialVerbPurposeChainWithTrailingParticle(last, particles[0]),
-        ...particles.slice(1)
-      ];
-    }
-  }
-  return [...wrapped, ...particles];
-}
-function optionalSubjectOffset(core) {
-  if (!core.length) return 0;
-  const slots = nodeSlots(core[0]);
-  return slots.includes("subject") ? 1 : 0;
-}
+});
+applyConstructionPatternsImplementation = constructionPatternOrchestration.applyConstructionPatterns;
+optionalSubjectOffsetImplementation = constructionPatternOrchestration.optionalSubjectOffset;
+withoutTrailingParticlesImplementation = constructionPatternOrchestration.withoutTrailingParticles;
 var {
   possessiveFragmentAnswerCandidate,
   fragmentQuestionFallback
@@ -21496,14 +22157,16 @@ var {
   withoutTrailingParticles
 });
 var createOpinionDetectors = require_stance();
-var { opinionStanceFrameFallback } = createOpinionDetectors({
+var { opinionSeemingFallback, opinionStanceFrameFallback } = createOpinionDetectors({
   applyConstructionPatterns,
   categorySubspanFor,
   cleanSlots,
   construction,
+  contextualOpinionPlaceholderChildren,
   copulaClone,
   firstToken,
   flattenSurface,
+  hasSurface,
   isToken,
   modalVPFromNodes,
   nodeCanFillSlot,
@@ -21520,11 +22183,13 @@ var { opinionStanceFrameFallback } = createOpinionDetectors({
   wrapCategorySubspans
 });
 var createReportedSpeechDetectors = require_composition();
-var { reportedSpeechFrameFallback } = createReportedSpeechDetectors({
+var { reportedSpeechFrameFallback, reportedSpeechSurfaceFallback } = createReportedSpeechDetectors({
   applyConstructionPatterns,
   construction,
+  contextualReportedSpeechLearnerChildren,
   firstToken,
   flattenSurface,
+  indexOfSurface,
   nodeCanFillSlot,
   optionalSubjectOffset,
   parserInactiveTokenClone,
@@ -21543,7 +22208,7 @@ function transparentTopicContentFromNodes(nodes) {
   return categorySubspanFor(compact, ["OvertHeadDemonstrativeClassifierNP", "QuantifiedClassifierNP", "QuantifiedPersonNP", "OrdinalClassifierNP", "DiMarkedNP", "ModifiedNP", "NominalHeadSpan", "CoordinatedNP"]);
 }
 var createPotentialResultDetectors = require_potential_result();
-var { potentialResultVPFallback, incompletePotentialResultCandidate } = createPotentialResultDetectors({
+var { potentialResultComplementFallback, potentialResultVPFallback, incompletePotentialResultCandidate } = createPotentialResultDetectors({
   categorySubspanFor,
   classifierObjectNPFromNodes,
   cleanSlots,
@@ -21939,6 +22604,7 @@ var {
   withoutIgnorableSpaceText
 });
 var {
+  ambiguousNeedsContextCandidate,
   mandarinNegatorNeedsContextCandidate,
   incompleteProhibitiveNeedsContextCandidate,
   incompleteRestrictiveFocusBoundaryCandidate,
@@ -22038,6 +22704,7 @@ environmentalClauseDetectors = createEnvironmentalClauseDetectors({
   categorySubspanFor: (...args) => categorySubspanFor(...args),
   construction,
   constructionSlotsByType,
+  firstToken,
   flattenSurface,
   nodeCanFillSlot,
   parserInactiveTokenClone,
@@ -22046,7 +22713,7 @@ environmentalClauseDetectors = createEnvironmentalClauseDetectors({
   withoutIgnorableSpaceText,
   withoutTrailingParticles
 });
-var { impersonalEnvironmentalClauseFallback } = environmentalClauseDetectors;
+var { impersonalEnvironmentalClauseFallback, temporalClauseFallback } = environmentalClauseDetectors;
 var createExistentialSpatialDetectors = require_spatial();
 var { existentialLocationPresentationalFallback } = createExistentialSpatialDetectors({
   applyConstructionPatterns,
@@ -22150,266 +22817,6 @@ var { namingSelfIntroductionFrameFallback } = createNamingDetectors({
   withoutIgnorableSpaceText,
   withoutTrailingParticles
 });
-function wrapCore(core) {
-  if (!core.length) return core;
-  if (core.length === 1 && firstToken(core[0]) && firstToken(core[0]).syntax === "ambiguous_needs_context") {
-    const candidateAnalyses = firstToken(core[0]).trace && firstToken(core[0]).trace.candidate_analyses || [
-      { construction: "NegatedStativePredicate", split: ["唔", "好食"], meaning_hint: "not tasty", parser_active: false },
-      { construction: "ProhibitiveImperative", split: ["唔好", "食"], meaning_hint: "don't eat", parser_active: false }
-    ];
-    return [construction("NeedsContext", "needs context", core, { note: "Ambiguous split: 唔 + 好食 or 唔好 + 食.", trace: traceInfo("special_ambiguity_rule", { surface: "唔好食", reason: "Needs context ambiguity.", candidate_analyses: candidateAnalyses }) })];
-  }
-  const fragmentQuestion = fragmentQuestionFallback(core);
-  if (fragmentQuestion) return [fragmentQuestion];
-  const conditionalClause = conditionalGeWaaClauseFallback(core);
-  if (conditionalClause) return [conditionalClause];
-  const earlyCp021bBoundaryReviewSpan = cp021bBoundaryReviewFallback(core);
-  if (earlyCp021bBoundaryReviewSpan) return [earlyCp021bBoundaryReviewSpan];
-  const environmentalClause = impersonalEnvironmentalClauseFallback(core);
-  if (environmentalClause) return [environmentalClause];
-  const existentialLocationPresentational = existentialLocationPresentationalFallback(core);
-  if (existentialLocationPresentational) return [existentialLocationPresentational];
-  const nominalMeasurePredicate = nominalMeasurePredicateFallback(core);
-  if (nominalMeasurePredicate) return [nominalMeasurePredicate];
-  const motionEventSpatial = motionEventSpatialFallback(core);
-  if (motionEventSpatial) return [motionEventSpatial];
-  const incompatibleAspectComposition = incompatibleAspectCompositionMalformedCandidate(core);
-  if (incompatibleAspectComposition) return [incompatibleAspectComposition];
-  const durativeAspectComposition = durativeAspectCompositionFallback(core);
-  if (durativeAspectComposition) return [durativeAspectComposition];
-  const perfectiveResultComposition = perfectiveResultCompositionFallback(core);
-  if (perfectiveResultComposition) return [perfectiveResultComposition];
-  const copularExplanatoryComposition = copularExplanatoryCompositionFallback(core);
-  if (copularExplanatoryComposition) return [copularExplanatoryComposition];
-  const directionalComposition = directionalCompositionFallback(core);
-  if (directionalComposition) return [directionalComposition];
-  const restorativeRepetitiveComposition = restorativeRepetitiveComplementFallback(core);
-  if (restorativeRepetitiveComposition) return [restorativeRepetitiveComposition];
-  const purposeLinkingMotion = purposeLinkingMotionFallback(core);
-  if (purposeLinkingMotion) return [purposeLinkingMotion];
-  const bareNumeralMalformed = bareNumeralObjectMalformedCandidate(core);
-  if (bareNumeralMalformed) return [bareNumeralMalformed];
-  const existentialVpMalformed = existentialQuestionWithVpMalformedCandidate(core);
-  if (existentialVpMalformed) return [existentialVpMalformed];
-  const mandarinNegatorNeedsContext = mandarinNegatorNeedsContextCandidate(core);
-  if (mandarinNegatorNeedsContext) return [mandarinNegatorNeedsContext];
-  const incompleteProhibitiveNeedsContext = incompleteProhibitiveNeedsContextCandidate(core);
-  if (incompleteProhibitiveNeedsContext) return [incompleteProhibitiveNeedsContext];
-  const incompleteRestrictiveFocusBoundary = incompleteRestrictiveFocusBoundaryCandidate(core);
-  if (incompleteRestrictiveFocusBoundary) return [incompleteRestrictiveFocusBoundary];
-  const typedPredicateOmission = predicateOmissionCandidate(core);
-  if (typedPredicateOmission) return [typedPredicateOmission];
-  const incompleteModalNeedsContext = incompleteModalNeedsContextCandidate(core);
-  if (incompleteModalNeedsContext) return [incompleteModalNeedsContext];
-  const incompleteContextualPredicate = incompleteContextualPredicateCandidate(core);
-  if (incompleteContextualPredicate) return [incompleteContextualPredicate];
-  const incompleteLocativeNeedsContext = incompleteLocativeNeedsContextCandidate(core);
-  if (incompleteLocativeNeedsContext) return [incompleteLocativeNeedsContext];
-  const possessiveFragmentAnswer = possessiveFragmentAnswerCandidate(core);
-  if (possessiveFragmentAnswer) return [possessiveFragmentAnswer];
-  const mandarinReviewNeedsContext = mandarinReviewNeedsContextCandidate(core);
-  if (mandarinReviewNeedsContext) return [mandarinReviewNeedsContext];
-  const copularANotAQuestion = copularANotAQuestionFallback(core);
-  if (copularANotAQuestion) return [copularANotAQuestion];
-  const rawDesiderativeANotAQuestion = desiderativeANotAQuestionFallback(core);
-  if (rawDesiderativeANotAQuestion) return [rawDesiderativeANotAQuestion];
-  const rawPermissionANotAQuestion = permissionANotAQuestionFallback(core);
-  if (rawPermissionANotAQuestion) return [rawPermissionANotAQuestion];
-  const templateANotAQuestion = templateConstructionFor(core, ["ANotAQuestion"]);
-  if (templateANotAQuestion) return [templateANotAQuestion];
-  const rawANotAQuestion = aNotAQuestionFallback(core);
-  if (rawANotAQuestion) return [rawANotAQuestion];
-  const potentialResultSpan = potentialResultVPFallback(core);
-  if (potentialResultSpan) return [potentialResultSpan];
-  const incompletePotentialResult = incompletePotentialResultCandidate(core);
-  if (incompletePotentialResult) return [incompletePotentialResult];
-  const transitionMotionSpan = transitionMotionPredicateFallback(core);
-  if (transitionMotionSpan) return [transitionMotionSpan];
-  const sourceLinkedDegreeMannerSpan = sourceLinkedDegreeMannerModifiedVPFallback(core);
-  if (sourceLinkedDegreeMannerSpan) return [sourceLinkedDegreeMannerSpan];
-  const sourceLinkedPrioritySpan = sourceLinkedPriorityMarkerClauseFallback(core);
-  if (sourceLinkedPrioritySpan) return [sourceLinkedPrioritySpan];
-  const sourceLinkedPreferenceSpan = sourceLinkedPreferenceVPFallback(core);
-  if (sourceLinkedPreferenceSpan) return [sourceLinkedPreferenceSpan];
-  const rawPreferenceSpan = rawPreferenceTemplateFallback(core);
-  if (rawPreferenceSpan) return [rawPreferenceSpan];
-  const negativeCognitionSpan = negativeCognitionFragmentFallback(core);
-  if (negativeCognitionSpan) return [negativeCognitionSpan];
-  const cognitionStatementSpan = cognitionStatementFallback(core);
-  if (cognitionStatementSpan) return [cognitionStatementSpan];
-  const cognitionContentSpan = cognitionContentFrameFallback(core);
-  if (cognitionContentSpan) return [cognitionContentSpan];
-  const opinionStanceSpan = opinionStanceFrameFallback(core);
-  if (opinionStanceSpan) return [opinionStanceSpan];
-  const reportedSpeechSpan = reportedSpeechFrameFallback(core);
-  if (reportedSpeechSpan) return [reportedSpeechSpan];
-  const intendedFunctionSpan = intendedFunctionRelationFallback(core);
-  if (intendedFunctionSpan) return [intendedFunctionSpan];
-  const sourceLinkedIntentionSpan = sourceLinkedIntentionFrameFallback(core);
-  if (sourceLinkedIntentionSpan) return [sourceLinkedIntentionSpan];
-  const namingSelfIntroductionSpan = namingSelfIntroductionFrameFallback(core);
-  if (namingSelfIntroductionSpan) return [namingSelfIntroductionSpan];
-  const politeRequestAdjustmentSpan = politeRequestAdjustmentFallback(core);
-  if (politeRequestAdjustmentSpan) return [politeRequestAdjustmentSpan];
-  const transparentDiscourseFormulaSpan = transparentDiscourseFormulaFallback(core);
-  if (transparentDiscourseFormulaSpan) return [transparentDiscourseFormulaSpan];
-  const leaveTakingFormulaSpan = leaveTakingFormulaFallback(core);
-  if (leaveTakingFormulaSpan) return [leaveTakingFormulaSpan];
-  const politePathImperativeSpan = politePathImperativeFallback(core);
-  if (politePathImperativeSpan) return [politePathImperativeSpan];
-  const polarQuestionSpan = polarQuestionFrameFallback(core);
-  if (polarQuestionSpan) return [polarQuestionSpan];
-  const interiorExistentialSpan = interiorExistentialFrameFallback(core);
-  if (interiorExistentialSpan) return [interiorExistentialSpan];
-  const copularIdentificationSpan = copularIdentificationFrameFallback(core);
-  if (copularIdentificationSpan) return [copularIdentificationSpan];
-  const passivePermissiveSpan = passivePermissiveRelationFallback(core);
-  if (passivePermissiveSpan) return [passivePermissiveSpan];
-  const lexicalGiveSpan = lexicalGiveRelationFallback(core);
-  if (lexicalGiveSpan) return [lexicalGiveSpan];
-  const postThemeParticipantSpan = postThemeParticipantRelationFallback(core);
-  if (postThemeParticipantSpan) return [postThemeParticipantSpan];
-  const mannerAdverbialSpan = mannerAdverbialVPFallback(core);
-  if (mannerAdverbialSpan) return [mannerAdverbialSpan];
-  const sourceMotionSpan = sourceMotionClauseFallback(core);
-  if (sourceMotionSpan) return [sourceMotionSpan];
-  const locativePostureSpan = locativePostureVPFallback(core);
-  if (locativePostureSpan) return [locativePostureSpan];
-  const subjectLocativePredicateSpan = subjectLocativePredicateClauseFallback(core);
-  if (subjectLocativePredicateSpan) return [subjectLocativePredicateSpan];
-  const coordinatedNPFragmentSpan = coordinatedNPFragmentFallback(core);
-  if (coordinatedNPFragmentSpan) return [coordinatedNPFragmentSpan];
-  const coverbFrameSpan = coverbFrameFallback(core);
-  if (coverbFrameSpan) return [coverbFrameSpan];
-  const coordinatedSubjectModalSpan = coordinatedSubjectModalPredicateClauseFallback(core);
-  if (coordinatedSubjectModalSpan) return [coordinatedSubjectModalSpan];
-  const rawCompositionalPostverbalZo = postverbalZoPerfectiveFromRawNodes(core);
-  if (rawCompositionalPostverbalZo) return rawCompositionalPostverbalZo;
-  core = wrapAgreementResponseSubspans(core);
-  core = wrapDirectionalMotionSubspans(core);
-  core = wrapSerialPurposeTemplateSubspans(core);
-  core = wrapSerialVerbPurposeSubspans(core);
-  core = wrapPriorityMarkerSubspans(core);
-  core = wrapChangeIntoPredicateSubspans(core);
-  core = wrapPossessiveClassifierNPSubspans(core);
-  core = wrapPermissionAcceptabilitySubspans(core);
-  core = wrapCategorySubspans(core);
-  core = wrapNegatedVPSubspans(core);
-  core = wrapCategorySubspans(core);
-  core = wrapCategorySubspans(core);
-  const recomposedPostverbalZo = postverbalZoPerfectiveFromWrappedNodes(core);
-  if (recomposedPostverbalZo) core = recomposedPostverbalZo;
-  const postSubspanPerfectiveResultComposition = perfectiveResultCompositionFallback(core);
-  if (postSubspanPerfectiveResultComposition) return [postSubspanPerfectiveResultComposition];
-  const postSubspanExistentialVpMalformed = existentialQuestionWithVpMalformedCandidate(core);
-  if (postSubspanExistentialVpMalformed) return [postSubspanExistentialVpMalformed];
-  const postSubspanMandarinNegatorNeedsContext = mandarinNegatorNeedsContextCandidate(core);
-  if (postSubspanMandarinNegatorNeedsContext) return [postSubspanMandarinNegatorNeedsContext];
-  const postSubspanPossessiveFragmentAnswer = possessiveFragmentAnswerCandidate(core);
-  if (postSubspanPossessiveFragmentAnswer) return [postSubspanPossessiveFragmentAnswer];
-  const postSubspanMandarinReviewNeedsContext = mandarinReviewNeedsContextCandidate(core);
-  if (postSubspanMandarinReviewNeedsContext) return [postSubspanMandarinReviewNeedsContext];
-  const progressiveWhObjectSpan = progressiveWhObjectQuestionFallback(core);
-  if (progressiveWhObjectSpan) return [progressiveWhObjectSpan];
-  const subjectStativeSpan = subjectStativePredicateClauseFallback(core);
-  if (subjectStativeSpan) return [subjectStativeSpan];
-  const scalarValueQuestionSpan = scalarValueQuestionFallback(core);
-  if (scalarValueQuestionSpan) return [scalarValueQuestionSpan];
-  const protectedOpaqueFormulaSpan = protectedOpaqueFormulaPassthrough(core);
-  if (protectedOpaqueFormulaSpan) return [protectedOpaqueFormulaSpan];
-  if (core.length === 1 && core[0].kind === "construction") {
-    const reviewedResolvedConstruction = overtObjectSelectionReviewCandidate(core);
-    if (reviewedResolvedConstruction) return [reviewedResolvedConstruction];
-  }
-  core = completionThenStandaloneWalkResolution(core);
-  const generativeSpan = templateConstructionFor(core);
-  if (generativeSpan) {
-    const reviewedGenerativeSpan = overtObjectSelectionReviewCandidate([generativeSpan]);
-    return [reviewedGenerativeSpan || generativeSpan];
-  }
-  const completionQuestion = completionQuestionFallback(core);
-  if (completionQuestion) {
-    const reviewedCompletionQuestion = overtObjectSelectionReviewCandidate([completionQuestion]);
-    return [reviewedCompletionQuestion || completionQuestion];
-  }
-  if (core.length === 1 && core[0].kind === "construction") {
-    const reviewedExistingConstruction = overtObjectSelectionReviewCandidate(core);
-    return [reviewedExistingConstruction || core[0]];
-  }
-  if ((hasSurface(core, "覺得") || hasSurface(core, "我覺得")) && hasSurface(core, "好似")) {
-    const opinionChildren = contextualOpinionPlaceholderChildren(core);
-    return [construction("OpinionStanceFrame", "Opinion/Stance", opinionChildren, { note: "Opinion/seeming fallback: 覺得 + 好似 + predicate.", trace: traceInfo("legacy_surface_rule", { rule: "has 覺得/我覺得 and 好似", reason: "Fallback only; generative OpinionStanceFrame should normally catch this." }) })];
-  }
-  const experientialYesNoQuestion = experientialYesNoQuestionFallback(core);
-  if (experientialYesNoQuestion) return [experientialYesNoQuestion];
-  const interestDomainExistentialQuestion = interestDomainExistentialQuestionFallback(core);
-  if (interestDomainExistentialQuestion) return [interestDomainExistentialQuestion];
-  const locativeWhQuestion = locativeWhQuestionFallback(core);
-  if (locativeWhQuestion) return [locativeWhQuestion];
-  const completionThenRelation = completionThenClauseRelation(core);
-  if (completionThenRelation) return [completionThenRelation];
-  const waaIndex = indexOfSurface(core, "話");
-  if (waaIndex > 0 && waaIndex < core.length - 1) {
-    const reportedChildren = contextualReportedSpeechLearnerChildren(core);
-    return [construction("ReportedSpeech", "Reported", reportedChildren, { note: "Reported speech/thought: NP 話 + clause.", trace: traceInfo("legacy_surface_rule", { rule: "NP before 話 and material after", reason: "Surface speech verb fallback." }) })];
-  }
-  const experientialQuestionBoundary = experientialQuestionBoundaryFallback(core);
-  if (experientialQuestionBoundary) return [experientialQuestionBoundary];
-  const desiderativeSpan = desiderativeVPWrapCoreFallback(core);
-  if (desiderativeSpan) return [desiderativeSpan];
-  const scalarEvaluationSpan = scalarEvaluationFallback(core);
-  if (scalarEvaluationSpan) return [scalarEvaluationSpan];
-  if (hasSurface(core, "幾錢")) {
-    const scalar = scalarValueQuestionFallback(core);
-    if (scalar) return [scalar];
-  }
-  const approximateQuantitySpan = approximateQuantityFallback(core);
-  if (approximateQuantitySpan) return [approximateQuantitySpan];
-  const suggestionQuestion = suggestionQuestionFallback(core);
-  if (suggestionQuestion) return [suggestionQuestion];
-  const acceptabilityANotAQuestion = acceptabilityANotAQuestionFallback(core);
-  if (acceptabilityANotAQuestion) return [acceptabilityANotAQuestion];
-  const existentialWhQuestion = existentialWhQuestionFallback(core);
-  if (existentialWhQuestion) return [existentialWhQuestion];
-  const preferenceFallbackSpan = preferenceVPWrapCoreFallback(core);
-  if (preferenceFallbackSpan) return [preferenceFallbackSpan];
-  if (core.length >= 2 && firstToken(core[0]) && firstToken(core[0]).label === "when") {
-    return [construction("TemporalClause", "Time", core, {
-      note: "Time expression fallback frames the following predicate.",
-      trace: traceInfo("construction_function", {
-        construction_type: "TemporalClause",
-        reason: "Fallback only; generative TemporalClause should normally catch this."
-      })
-    })];
-  }
-  if (isTopicCandidate(core[0]) && core.length >= 2) {
-    const topic = construction("Topic", "topic", [core[0]], { primary: "topic", note: "Topic with secondary semantic role what." });
-    const commentChildren = wrapPredicate(core.slice(1));
-    return [construction("TopicComment", "TopicComment", [topic, ...commentChildren], {
-      note: "Topic-comment construction with comment represented as predicate-role metadata rather than a redundant child wrapper.",
-      slots: cleanSlots(["topic_comment", "topic", "comment", "comment_predicate", "predicate", "clause", ...templateDerivedSlots("TopicComment", [topic, ...commentChildren])]),
-      trace: traceInfo("generative_or_heuristic_slot_rule", {
-        rule: "topic candidate followed by typed comment predicate",
-        reason: "Structural heuristic; the comment relation is carried by TopicComment slots rather than a standalone Comment construction."
-      })
-    })];
-  }
-  const prohibitiveImperativeSpan = prohibitiveImperativeFallback(core);
-  if (prohibitiveImperativeSpan) return [prohibitiveImperativeSpan];
-  const inlineANotAQuestion = inlineANotAQuestionFallback(core);
-  if (inlineANotAQuestion) return [inlineANotAQuestion];
-  const completionQuestionWithPerfectiveMarker = completionQuestionWithPerfectiveMarkerFallback(core);
-  if (completionQuestionWithPerfectiveMarker) return [completionQuestionWithPerfectiveMarker];
-  if (core.length >= 3 && isVerbLike(core[0]) && isToken(core[1], "唔") && isToken(core[2], "到")) {
-    return [construction("NegativePotentialComplement", "NegPotential", core, { note: "Negative potential/result complement.", trace: traceInfo("generative_or_heuristic_slot_rule", { rule: "verb + 唔 + 到", reason: "Structural potential complement heuristic." }) })];
-  }
-  if (core.length >= 2 && isVerbLike(core[0]) && isToken(core[1], "到")) {
-    return [construction("ResultComplement", "Result", core, { note: "Positive result/attainment complement.", trace: traceInfo("generative_or_heuristic_slot_rule", { rule: "verb + 到", reason: "Structural result complement heuristic." }) })];
-  }
-  const modalPredicateWrapSpan = modalPredicateWrapCoreFallback(core);
-  if (modalPredicateWrapSpan) return modalPredicateWrapSpan;
-  return wrapPredicate(core);
-}
 var createClauseRelationGraph = require_graph();
 var {
   connectorAwareClauseLinkingForTerminal,
@@ -22462,6 +22869,14 @@ var { relativeClauseNPForTerminal } = createRelativeClauseDetectors({
   parserInactiveTokenClone,
   traceInfo,
   withoutIgnorableSpaceText
+});
+var { topicCommentFallback } = require_topic_comment()({
+  cleanSlots,
+  construction,
+  isTopicCandidate,
+  templateDerivedSlots,
+  traceInfo,
+  wrapPredicate
 });
 function fullSpanSingleConstruction(nodes, sourceNodes) {
   if (!Array.isArray(nodes) || nodes.length !== 1) return null;
@@ -22537,60 +22952,136 @@ var {
   sequenceEvidence: ORDERED_PARTICLE_CLUSTER_SEQUENCE_EVIDENCE,
   descriptors: ORDERED_PARTICLE_CLUSTER_DESCRIPTORS
 } = require_ordered_particle_clusters();
-function applyConstructionPatternsForTerminal(segment, terminalText = "") {
-  const haveOrNotQuestion = haveOrNotQuestionFallbackForPunctuation(segment, terminalText);
-  if (haveOrNotQuestion) return [haveOrNotQuestion];
-  const scalarQuestion = scalarDimensionQuestionFallbackForPunctuation(segment, terminalText);
-  if (scalarQuestion) return [scalarQuestion];
-  const relationFragment = standaloneClauseRelationEdgeFragmentForTerminal(segment, terminalText);
-  if (relationFragment) return [relationFragment];
-  const relativeClauseNP = relativeClauseNPForTerminal(segment);
-  if (relativeClauseNP) return [relativeClauseNP];
-  const connectorLinked = connectorAwareClauseLinkingForTerminal(segment);
-  if (connectorLinked) return connectorLinked;
-  const ordinaryWrapped = applyConstructionPatterns(segment);
-  const particleClusterInfo = orderedParticleClusterInfo(segment, terminalText);
-  if (particleClusterInfo && !particleClusterInfo.supportedOrder) return ordinaryWrapped;
-  const orderedParticleCluster = orderedParticleClusterFallback(segment, terminalText, particleClusterInfo);
-  if (orderedParticleCluster) return [orderedParticleCluster];
-  const restrictiveFocusParticle = restrictiveFocusParticleFallback(segment, terminalText, ordinaryWrapped);
-  if (restrictiveFocusParticle) return [restrictiveFocusParticle];
-  const scopedDirectiveParticle = scopedDirectiveClosureParticleFallback(segment, terminalText, ordinaryWrapped);
-  if (scopedDirectiveParticle) return [scopedDirectiveParticle];
-  const scopedChangeStateParticle = scopedChangeStateParticleFallback(segment, terminalText, ordinaryWrapped);
-  if (scopedChangeStateParticle) return [scopedChangeStateParticle];
-  const scopedEvidentialParticle = scopedEvidentialDiscourseParticleFallback(segment, terminalText);
-  if (scopedEvidentialParticle) return [scopedEvidentialParticle];
-  const scopedEpistemicParticle = scopedEpistemicDiscourseParticleFallback(segment, terminalText);
-  if (scopedEpistemicParticle) return [scopedEpistemicParticle];
-  const finalMePolarQuestion = finalMePolarQuestionFallbackForPunctuation(segment, terminalText, ordinaryWrapped);
-  if (finalMePolarQuestion) return [finalMePolarQuestion];
-  return ordinaryWrapped;
-}
-function applyConstructionPatternsByPunctuation(nodes) {
-  const boundedAcknowledgementRepetition = boundedAcknowledgementRepetitionForPunctuation(nodes);
-  if (boundedAcknowledgementRepetition) return boundedAcknowledgementRepetition;
-  const repeatedNegatedExistentialResponse = repeatedNegatedExistentialResponseForPunctuation(nodes);
-  if (repeatedNegatedExistentialResponse) return repeatedNegatedExistentialResponse;
-  const rendered = [];
-  let segment = [];
-  const flush = (terminalText = "") => {
-    if (segment.length) {
-      rendered.push(...applyConstructionPatternsForTerminal(segment, terminalText));
-      segment = [];
-    }
-  };
-  for (const node of nodes) {
-    if (node.kind === "text" && hasSentencePunctuation(node.text)) {
-      flush(node.text);
-      rendered.push(node);
-    } else {
-      segment.push(node);
-    }
-  }
-  flush();
-  return wrapClauseSequenceByPunctuation(rendered);
-}
+wrapCoreImplementation = require_wrap_core()({
+  aNotAQuestionFallback,
+  acceptabilityANotAQuestionFallback,
+  ambiguousNeedsContextCandidate,
+  approximateQuantityFallback,
+  bareNumeralObjectMalformedCandidate,
+  completionQuestionFallback,
+  completionQuestionWithPerfectiveMarkerFallback,
+  completionThenClauseRelation,
+  completionThenStandaloneWalkResolution,
+  conditionalGeWaaClauseFallback,
+  coordinatedNPFragmentFallback,
+  coordinatedSubjectModalPredicateClauseFallback,
+  copularANotAQuestionFallback,
+  copularExplanatoryCompositionFallback,
+  copularIdentificationFrameFallback,
+  cognitionContentFrameFallback,
+  cognitionStatementFallback,
+  coverbFrameFallback,
+  cp021bBoundaryReviewFallback,
+  desiderativeANotAQuestionFallback,
+  desiderativeVPWrapCoreFallback,
+  directionalCompositionFallback,
+  durativeAspectCompositionFallback,
+  existentialLocationPresentationalFallback,
+  existentialQuestionWithVpMalformedCandidate,
+  existentialWhQuestionFallback,
+  experientialQuestionBoundaryFallback,
+  experientialYesNoQuestionFallback,
+  fragmentQuestionFallback,
+  hasSurface,
+  impersonalEnvironmentalClauseFallback,
+  inlineANotAQuestionFallback,
+  incompatibleAspectCompositionMalformedCandidate,
+  incompleteContextualPredicateCandidate,
+  incompleteLocativeNeedsContextCandidate,
+  incompleteModalNeedsContextCandidate,
+  incompletePotentialResultCandidate,
+  incompleteProhibitiveNeedsContextCandidate,
+  incompleteRestrictiveFocusBoundaryCandidate,
+  intendedFunctionRelationFallback,
+  interiorExistentialFrameFallback,
+  interestDomainExistentialQuestionFallback,
+  leaveTakingFormulaFallback,
+  lexicalGiveRelationFallback,
+  locativePostureVPFallback,
+  locativeWhQuestionFallback,
+  mandarinNegatorNeedsContextCandidate,
+  mandarinReviewNeedsContextCandidate,
+  mannerAdverbialVPFallback,
+  modalPredicateWrapCoreFallback,
+  motionEventSpatialFallback,
+  namingSelfIntroductionFrameFallback,
+  negativeCognitionFragmentFallback,
+  nominalMeasurePredicateFallback,
+  opinionSeemingFallback,
+  opinionStanceFrameFallback,
+  overtObjectSelectionReviewCandidate,
+  passivePermissiveRelationFallback,
+  perfectiveResultCompositionFallback,
+  permissionANotAQuestionFallback,
+  politePathImperativeFallback,
+  politeRequestAdjustmentFallback,
+  polarQuestionFrameFallback,
+  possessiveFragmentAnswerCandidate,
+  postThemeParticipantRelationFallback,
+  postverbalZoPerfectiveFromRawNodes,
+  postverbalZoPerfectiveFromWrappedNodes,
+  potentialResultComplementFallback,
+  potentialResultVPFallback,
+  predicateOmissionCandidate,
+  preferenceVPWrapCoreFallback,
+  progressiveWhObjectQuestionFallback,
+  prohibitiveImperativeFallback,
+  protectedOpaqueFormulaPassthrough,
+  purposeLinkingMotionFallback,
+  rawPreferenceTemplateFallback,
+  reportedSpeechFrameFallback,
+  reportedSpeechSurfaceFallback,
+  restorativeRepetitiveComplementFallback,
+  scalarEvaluationFallback,
+  scalarValueQuestionFallback,
+  sourceLinkedDegreeMannerModifiedVPFallback,
+  sourceLinkedIntentionFrameFallback,
+  sourceLinkedPreferenceVPFallback,
+  sourceLinkedPriorityMarkerClauseFallback,
+  sourceMotionClauseFallback,
+  subjectLocativePredicateClauseFallback,
+  subjectStativePredicateClauseFallback,
+  suggestionQuestionFallback,
+  templateConstructionFor,
+  temporalClauseFallback,
+  topicCommentFallback,
+  transitionMotionPredicateFallback,
+  transparentDiscourseFormulaFallback,
+  wrapAgreementResponseSubspans,
+  wrapCategorySubspans,
+  wrapChangeIntoPredicateSubspans,
+  wrapDirectionalMotionSubspans,
+  wrapNegatedVPSubspans,
+  wrapPermissionAcceptabilitySubspans,
+  wrapPossessiveClassifierNPSubspans,
+  wrapPredicate,
+  wrapPriorityMarkerSubspans,
+  wrapSerialPurposeTemplateSubspans,
+  wrapSerialVerbPurposeSubspans
+}).wrapCore;
+var {
+  applyConstructionPatternsByPunctuation,
+  applyConstructionPatternsForTerminal
+} = require_apply_terminal_patterns()({
+  applyConstructionPatterns,
+  boundedAcknowledgementRepetitionForPunctuation,
+  connectorAwareClauseLinkingForTerminal,
+  finalMePolarQuestionFallbackForPunctuation,
+  hasSentencePunctuation,
+  haveOrNotQuestionFallbackForPunctuation,
+  orderedParticleClusterFallback,
+  orderedParticleClusterInfo,
+  relativeClauseNPForTerminal,
+  repeatedNegatedExistentialResponseForPunctuation,
+  restrictiveFocusParticleFallback,
+  scalarDimensionQuestionFallbackForPunctuation,
+  scopedChangeStateParticleFallback,
+  scopedDirectiveClosureParticleFallback,
+  scopedEpistemicDiscourseParticleFallback,
+  scopedEvidentialDiscourseParticleFallback,
+  standaloneClauseRelationEdgeFragmentForTerminal,
+  wrapClauseSequenceByPunctuation
+});
 var contextDescriptors = require_descriptors()({
   firstToken,
   flattenNodes,
@@ -22620,6 +23111,11 @@ var {
   conventionalZiContextDomain,
   contextSupportsQuantifiedTimeFragment
 } = contextDescriptors;
+var analyzeLineImplementation = null;
+function analyzeLine(...args) {
+  if (!analyzeLineImplementation) throw new Error("analyzeLine implementation is not initialized.");
+  return analyzeLineImplementation(...args);
+}
 var {
   explicitContextTurns,
   analyzedExplicitContext
@@ -22708,33 +23204,15 @@ var {
   typedContextDependentFragmentBoundary,
   withoutIgnorableSpaceText
 });
-function analyzeLine(source, explicitContextInput = null) {
-  const warnings = [];
-  const explicitContext = analyzedExplicitContext(explicitContextInput);
-  const input_normalization = normalizeInputForParser(source);
-  const parserSource = input_normalization.parser_shadow_source;
-  const normalized = normalizeSurface(parserSource);
-  if (normalized === "唔好食") {
-    warnings.push("Needs context: 唔好食 can mean 唔 + 好食 = not tasty, or 唔好 + 食 = don't eat.");
-  }
-  const tokens = annotateRawDisplaySurfaces(tokenizeLine(parserSource), source, parserSource);
-  const initialNodes = annotateRawDisplaySurfaces(applyConstructionPatternsByPunctuation(tokens), source, parserSource);
-  const contextApplied = applyExplicitContextContract(initialNodes, explicitContext);
-  const nodes = annotateRawDisplaySurfaces(contextApplied.nodes, source, parserSource);
-  return {
-    source,
-    parser_shadow_source: parserSource,
-    input_normalization,
-    normalization_trace: input_normalization.normalization_trace,
-    normalization_review_suggestions: input_normalization.review_suggestions,
-    warnings,
-    tokens,
-    nodes,
-    explicit_context: explicitContext.public,
-    context_resolution: contextApplied.resolution,
-    diagnostics: true
-  };
-}
+analyzeLineImplementation = require_analyze_line()({
+  analyzedExplicitContext,
+  annotateRawDisplaySurfaces,
+  applyConstructionPatternsByPunctuation,
+  applyExplicitContextContract,
+  normalizeInputForParser,
+  normalizeSurface,
+  tokenizeLine
+}).analyzeLine;
 function flattenNodes(nodes) {
   const out = [];
   const visit = (node, depth = 0, parent = "", parentCompatibilityAlias = "") => {

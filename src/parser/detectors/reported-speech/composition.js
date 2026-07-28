@@ -4,7 +4,9 @@ module.exports = function createReportedSpeechDetectors(dependencies = {}) {
   const {
     applyConstructionPatterns,
     construction,
+    contextualReportedSpeechLearnerChildren,
     firstToken,
+    indexOfSurface,
     flattenSurface,
     nodeCanFillSlot,
     optionalSubjectOffset,
@@ -17,6 +19,19 @@ module.exports = function createReportedSpeechDetectors(dependencies = {}) {
     withoutTrailingParticles,
     wrapCategorySubspans,
   } = dependencies;
+
+function reportedSpeechSurfaceFallback(core) {
+  const waaIndex = indexOfSurface(core, "話");
+  if (waaIndex <= 0 || waaIndex >= core.length - 1) return null;
+  const reportedChildren = contextualReportedSpeechLearnerChildren(core);
+  return construction("ReportedSpeech", "Reported", reportedChildren, {
+    note: "Reported speech/thought: NP 話 + clause.",
+    trace: traceInfo("legacy_surface_rule", {
+      rule: "NP before 話 and material after",
+      reason: "Surface speech verb fallback.",
+    }),
+  });
+}
 
 function contentNodeForReportedSpeech(contentCore) {
   if (!contentCore.length) return null;
@@ -158,5 +173,5 @@ function reportedSpeechFrameFallback(core) {
   });
 }
 
-  return { reportedSpeechFrameFallback };
+  return { reportedSpeechFrameFallback, reportedSpeechSurfaceFallback };
 };

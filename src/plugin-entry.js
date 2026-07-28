@@ -1570,10 +1570,12 @@ const createBasicPredicateDetectors = require("./parser/detectors/predicates/bas
 const {
   scalarEvaluationFallback,
   wrapNegatedVPSubspans,
-  wrapPredicate,
 } = createBasicPredicateDetectors({
-  categorySubspanFor, construction, flattenSurface, hasSurface, isStativeToken, isToken,
-  nodeCanFillSlot, parserInactiveTokenClone, templateDerivedSlots, traceInfo,
+  construction, flattenSurface, hasSurface, isToken, nodeCanFillSlot, parserInactiveTokenClone,
+  templateDerivedSlots, traceInfo,
+});
+const { wrapPredicate } = require("./parser/orchestration/wrap-predicate")({
+  categorySubspanFor, construction, isStativeToken, isToken, nodeCanFillSlot, traceInfo,
 });
 
 const createAcceptabilityDetectors = require("./parser/detectors/acceptability/clauses");
@@ -1743,49 +1745,39 @@ const { tokenizeLine } = require("./parser/tokenization/tokenize-line")({
   transparentQuantifiedPersonNpFromRest,
 });
 
-function withoutTrailingParticles(nodes) {
-  let end = nodes.length;
-  while (end > 0 && isParticle(nodes[end - 1])) end--;
-  return { core: nodes.slice(0, end), particles: nodes.slice(end) };
+let wrapCoreImplementation = null;
+let applyConstructionPatternsImplementation = null;
+let optionalSubjectOffsetImplementation = null;
+let withoutTrailingParticlesImplementation = null;
+
+function applyConstructionPatterns(...args) {
+  if (!applyConstructionPatternsImplementation) throw new Error("applyConstructionPatterns implementation is not initialized.");
+  return applyConstructionPatternsImplementation(...args);
 }
 
-function applyConstructionPatterns(nodes) {
-  if (!nodes.length) return nodes;
-  const { core, particles } = withoutTrailingParticles(nodes);
-
-  // Prefer a full generative match that includes sentence-final particles
-  // when the construction template licenses particle?.
-  if (particles.length) {
-    const withParticles = wrapCore([...core, ...particles]);
-    if (withParticles.length === 1 && withParticles[0].kind === "construction") return withParticles;
-  }
-
-  const wrapped = wrapCore(core);
-  if (particles.length && wrapped.length) {
-    const last = wrapped[wrapped.length - 1];
-    if (last && last.kind === "construction" && last.type === "PriorityMarkerClause") {
-      return [
-        ...wrapped.slice(0, -1),
-        priorityMarkerClauseWithTrailingParticle(last, particles[0]),
-        ...particles.slice(1),
-      ];
-    }
-    if (last && last.kind === "construction" && ["SerialVerbPurposeChain", "MotionPurposeChain"].includes(last.type)) {
-      return [
-        ...wrapped.slice(0, -1),
-        serialVerbPurposeChainWithTrailingParticle(last, particles[0]),
-        ...particles.slice(1),
-      ];
-    }
-  }
-  return [...wrapped, ...particles];
+function optionalSubjectOffset(...args) {
+  if (!optionalSubjectOffsetImplementation) throw new Error("optionalSubjectOffset implementation is not initialized.");
+  return optionalSubjectOffsetImplementation(...args);
 }
 
-function optionalSubjectOffset(core) {
-  if (!core.length) return 0;
-  const slots = nodeSlots(core[0]);
-  return slots.includes("subject") ? 1 : 0;
+function withoutTrailingParticles(...args) {
+  if (!withoutTrailingParticlesImplementation) throw new Error("withoutTrailingParticles implementation is not initialized.");
+  return withoutTrailingParticlesImplementation(...args);
 }
+
+const constructionPatternOrchestration = require("./parser/orchestration/apply-construction-patterns")({
+  isParticle,
+  nodeSlots,
+  priorityMarkerClauseWithTrailingParticle: (...args) => priorityMarkerClauseWithTrailingParticle(...args),
+  serialVerbPurposeChainWithTrailingParticle: (...args) => serialVerbPurposeChainWithTrailingParticle(...args),
+  wrapCore: (...args) => {
+    if (!wrapCoreImplementation) throw new Error("wrapCore implementation is not initialized.");
+    return wrapCoreImplementation(...args);
+  },
+});
+applyConstructionPatternsImplementation = constructionPatternOrchestration.applyConstructionPatterns;
+optionalSubjectOffsetImplementation = constructionPatternOrchestration.optionalSubjectOffset;
+withoutTrailingParticlesImplementation = constructionPatternOrchestration.withoutTrailingParticles;
 
 const {
   possessiveFragmentAnswerCandidate,
@@ -1904,9 +1896,9 @@ const {
 });
 
 const createOpinionDetectors = require("./parser/detectors/opinion/stance");
-const { opinionStanceFrameFallback } = createOpinionDetectors({
-  applyConstructionPatterns, categorySubspanFor, cleanSlots, construction, copulaClone,
-  firstToken, flattenSurface, isToken, modalVPFromNodes, nodeCanFillSlot, nodeSlots,
+const { opinionSeemingFallback, opinionStanceFrameFallback } = createOpinionDetectors({
+  applyConstructionPatterns, categorySubspanFor, cleanSlots, construction, contextualOpinionPlaceholderChildren, copulaClone,
+  firstToken, flattenSurface, hasSurface, isToken, modalVPFromNodes, nodeCanFillSlot, nodeSlots,
   nominalComplementFromNodes, parserInactiveTokenClone,
   phase4OpinionStanceActiveTokenClone, predicateOmissionProfileForHead,
   subjectStativePredicateClauseFallback, templateConstructionFor,
@@ -1914,8 +1906,8 @@ const { opinionStanceFrameFallback } = createOpinionDetectors({
 });
 
 const createReportedSpeechDetectors = require("./parser/detectors/reported-speech/composition");
-const { reportedSpeechFrameFallback } = createReportedSpeechDetectors({
-  applyConstructionPatterns, construction, firstToken, flattenSurface, nodeCanFillSlot,
+const { reportedSpeechFrameFallback, reportedSpeechSurfaceFallback } = createReportedSpeechDetectors({
+  applyConstructionPatterns, construction, contextualReportedSpeechLearnerChildren, firstToken, flattenSurface, indexOfSurface, nodeCanFillSlot,
   optionalSubjectOffset, parserInactiveTokenClone, phase4ReportedSpeechActiveTokenClone,
   subjectStativePredicateClauseFallback, templateConstructionFor,
   templateDerivedSlots, traceInfo, withoutTrailingParticles, wrapCategorySubspans,
@@ -1931,7 +1923,7 @@ function transparentTopicContentFromNodes(nodes) {
 }
 
 const createPotentialResultDetectors = require("./parser/detectors/aspect/potential-result");
-const { potentialResultVPFallback, incompletePotentialResultCandidate } = createPotentialResultDetectors({
+const { potentialResultComplementFallback, potentialResultVPFallback, incompletePotentialResultCandidate } = createPotentialResultDetectors({
   categorySubspanFor, classifierObjectNPFromNodes, cleanSlots, construction, flattenSurface,
   isToken, isVerbLike, nodeCanFillSlot, parserInactiveTokenClone, templateDerivedSlots,
   traceInfo, withoutTrailingParticles,
@@ -2334,6 +2326,7 @@ const {
 });
 
 const {
+  ambiguousNeedsContextCandidate,
   mandarinNegatorNeedsContextCandidate,
   incompleteProhibitiveNeedsContextCandidate,
   incompleteRestrictiveFocusBoundaryCandidate,
@@ -2416,11 +2409,11 @@ const createEnvironmentalClauseDetectors = require("./parser/detectors/environme
 environmentalClauseDetectors = createEnvironmentalClauseDetectors({
   ENVIRONMENTAL_EVENT_PREDICATES,
   categorySubspanFor: (...args) => categorySubspanFor(...args),
-  construction, constructionSlotsByType, flattenSurface, nodeCanFillSlot,
+  construction, constructionSlotsByType, firstToken, flattenSurface, nodeCanFillSlot,
   parserInactiveTokenClone, templateDerivedSlots, traceInfo,
   withoutIgnorableSpaceText, withoutTrailingParticles,
 });
-const { impersonalEnvironmentalClauseFallback } = environmentalClauseDetectors;
+const { impersonalEnvironmentalClauseFallback, temporalClauseFallback } = environmentalClauseDetectors;
 
 const createExistentialSpatialDetectors = require("./parser/detectors/existential/spatial");
 const { existentialLocationPresentationalFallback } = createExistentialSpatialDetectors({
@@ -2538,441 +2531,6 @@ const { namingSelfIntroductionFrameFallback } = createNamingDetectors({
   withoutTrailingParticles,
 });
 
-function wrapCore(core) {
-  if (!core.length) return core;
-
-  // Bare needs-context ambiguity: 唔好食.
-  if (core.length === 1 && firstToken(core[0]) && firstToken(core[0]).syntax === "ambiguous_needs_context") {
-    const candidateAnalyses = (firstToken(core[0]).trace && firstToken(core[0]).trace.candidate_analyses) || [
-      { construction: "NegatedStativePredicate", split: ["唔", "好食"], meaning_hint: "not tasty", parser_active: false },
-      { construction: "ProhibitiveImperative", split: ["唔好", "食"], meaning_hint: "don't eat", parser_active: false },
-    ];
-    return [construction("NeedsContext", "needs context", core, { note: "Ambiguous split: 唔 + 好食 or 唔好 + 食.", trace: traceInfo("special_ambiguity_rule", { surface: "唔好食", reason: "Needs context ambiguity.", candidate_analyses: candidateAnalyses }) })];
-  }
-
-  const fragmentQuestion = fragmentQuestionFallback(core);
-  if (fragmentQuestion) return [fragmentQuestion];
-
-  const conditionalClause = conditionalGeWaaClauseFallback(core);
-  if (conditionalClause) return [conditionalClause];
-
-  // Preserve frozen CP021B double-marker, 將, and fronting boundaries before
-  // broad VP/relative-NP composition can invent an unrelated inner analysis.
-  const earlyCp021bBoundaryReviewSpan = cp021bBoundaryReviewFallback(core);
-  if (earlyCp021bBoundaryReviewSpan) return [earlyCp021bBoundaryReviewSpan];
-
-  const environmentalClause = impersonalEnvironmentalClauseFallback(core);
-  if (environmentalClause) return [environmentalClause];
-
-  const existentialLocationPresentational = existentialLocationPresentationalFallback(core);
-  if (existentialLocationPresentational) return [existentialLocationPresentational];
-
-  const nominalMeasurePredicate = nominalMeasurePredicateFallback(core);
-  if (nominalMeasurePredicate) return [nominalMeasurePredicate];
-
-  const motionEventSpatial = motionEventSpatialFallback(core);
-  if (motionEventSpatial) return [motionEventSpatial];
-
-  const incompatibleAspectComposition = incompatibleAspectCompositionMalformedCandidate(core);
-  if (incompatibleAspectComposition) return [incompatibleAspectComposition];
-
-  const durativeAspectComposition = durativeAspectCompositionFallback(core);
-  if (durativeAspectComposition) return [durativeAspectComposition];
-
-  const perfectiveResultComposition = perfectiveResultCompositionFallback(core);
-  if (perfectiveResultComposition) return [perfectiveResultComposition];
-
-  const copularExplanatoryComposition = copularExplanatoryCompositionFallback(core);
-  if (copularExplanatoryComposition) return [copularExplanatoryComposition];
-
-  const directionalComposition = directionalCompositionFallback(core);
-  if (directionalComposition) return [directionalComposition];
-
-  const restorativeRepetitiveComposition = restorativeRepetitiveComplementFallback(core);
-  if (restorativeRepetitiveComposition) return [restorativeRepetitiveComposition];
-
-  const purposeLinkingMotion = purposeLinkingMotionFallback(core);
-  if (purposeLinkingMotion) return [purposeLinkingMotion];
-
-  const bareNumeralMalformed = bareNumeralObjectMalformedCandidate(core);
-  if (bareNumeralMalformed) return [bareNumeralMalformed];
-
-  const existentialVpMalformed = existentialQuestionWithVpMalformedCandidate(core);
-  if (existentialVpMalformed) return [existentialVpMalformed];
-
-  const mandarinNegatorNeedsContext = mandarinNegatorNeedsContextCandidate(core);
-  if (mandarinNegatorNeedsContext) return [mandarinNegatorNeedsContext];
-
-  const incompleteProhibitiveNeedsContext = incompleteProhibitiveNeedsContextCandidate(core);
-  if (incompleteProhibitiveNeedsContext) return [incompleteProhibitiveNeedsContext];
-
-  const incompleteRestrictiveFocusBoundary = incompleteRestrictiveFocusBoundaryCandidate(core);
-  if (incompleteRestrictiveFocusBoundary) return [incompleteRestrictiveFocusBoundary];
-
-  const typedPredicateOmission = predicateOmissionCandidate(core);
-  if (typedPredicateOmission) return [typedPredicateOmission];
-
-  const incompleteModalNeedsContext = incompleteModalNeedsContextCandidate(core);
-  if (incompleteModalNeedsContext) return [incompleteModalNeedsContext];
-
-  const incompleteContextualPredicate = incompleteContextualPredicateCandidate(core);
-  if (incompleteContextualPredicate) return [incompleteContextualPredicate];
-
-  const incompleteLocativeNeedsContext = incompleteLocativeNeedsContextCandidate(core);
-  if (incompleteLocativeNeedsContext) return [incompleteLocativeNeedsContext];
-
-  const possessiveFragmentAnswer = possessiveFragmentAnswerCandidate(core);
-  if (possessiveFragmentAnswer) return [possessiveFragmentAnswer];
-
-  const mandarinReviewNeedsContext = mandarinReviewNeedsContextCandidate(core);
-  if (mandarinReviewNeedsContext) return [mandarinReviewNeedsContext];
-
-  const copularANotAQuestion = copularANotAQuestionFallback(core);
-  if (copularANotAQuestion) return [copularANotAQuestion];
-
-  const rawDesiderativeANotAQuestion = desiderativeANotAQuestionFallback(core);
-  if (rawDesiderativeANotAQuestion) return [rawDesiderativeANotAQuestion];
-
-  const rawPermissionANotAQuestion = permissionANotAQuestionFallback(core);
-  if (rawPermissionANotAQuestion) return [rawPermissionANotAQuestion];
-
-  const templateANotAQuestion = templateConstructionFor(core, ["ANotAQuestion"]);
-  if (templateANotAQuestion) return [templateANotAQuestion];
-
-  const rawANotAQuestion = aNotAQuestionFallback(core);
-  if (rawANotAQuestion) return [rawANotAQuestion];
-
-  const potentialResultSpan = potentialResultVPFallback(core);
-  if (potentialResultSpan) return [potentialResultSpan];
-
-  const incompletePotentialResult = incompletePotentialResultCandidate(core);
-  if (incompletePotentialResult) return [incompletePotentialResult];
-
-  const transitionMotionSpan = transitionMotionPredicateFallback(core);
-  if (transitionMotionSpan) return [transitionMotionSpan];
-
-  const sourceLinkedDegreeMannerSpan = sourceLinkedDegreeMannerModifiedVPFallback(core);
-  if (sourceLinkedDegreeMannerSpan) return [sourceLinkedDegreeMannerSpan];
-
-  const sourceLinkedPrioritySpan = sourceLinkedPriorityMarkerClauseFallback(core);
-  if (sourceLinkedPrioritySpan) return [sourceLinkedPrioritySpan];
-
-  const sourceLinkedPreferenceSpan = sourceLinkedPreferenceVPFallback(core);
-  if (sourceLinkedPreferenceSpan) return [sourceLinkedPreferenceSpan];
-
-  // Preference needs a top-level pass before broad NP category wrapping.
-  // Otherwise 鍾意 + VP can be mis-wrapped as ModifiedNP because the VP exports noun/object slots from its object child.
-  const rawPreferenceSpan = rawPreferenceTemplateFallback(core);
-  if (rawPreferenceSpan) return [rawPreferenceSpan];
-
-  const negativeCognitionSpan = negativeCognitionFragmentFallback(core);
-  if (negativeCognitionSpan) return [negativeCognitionSpan];
-
-  const cognitionStatementSpan = cognitionStatementFallback(core);
-  if (cognitionStatementSpan) return [cognitionStatementSpan];
-
-  const cognitionContentSpan = cognitionContentFrameFallback(core);
-  if (cognitionContentSpan) return [cognitionContentSpan];
-
-  const opinionStanceSpan = opinionStanceFrameFallback(core);
-  if (opinionStanceSpan) return [opinionStanceSpan];
-
-  const reportedSpeechSpan = reportedSpeechFrameFallback(core);
-  if (reportedSpeechSpan) return [reportedSpeechSpan];
-
-  // The narrow intended-function relation must precede generic VP-complement
-  // routing; otherwise 用嚟 is prematurely reanalysed as lexical 用 plus
-  // directional 嚟, especially after classifier-led topics such as 部電腦.
-  const intendedFunctionSpan = intendedFunctionRelationFallback(core);
-  if (intendedFunctionSpan) return [intendedFunctionSpan];
-
-  const sourceLinkedIntentionSpan = sourceLinkedIntentionFrameFallback(core);
-  if (sourceLinkedIntentionSpan) return [sourceLinkedIntentionSpan];
-
-  const namingSelfIntroductionSpan = namingSelfIntroductionFrameFallback(core);
-  if (namingSelfIntroductionSpan) return [namingSelfIntroductionSpan];
-
-  const politeRequestAdjustmentSpan = politeRequestAdjustmentFallback(core);
-  if (politeRequestAdjustmentSpan) return [politeRequestAdjustmentSpan];
-
-  const transparentDiscourseFormulaSpan = transparentDiscourseFormulaFallback(core);
-  if (transparentDiscourseFormulaSpan) return [transparentDiscourseFormulaSpan];
-
-  const leaveTakingFormulaSpan = leaveTakingFormulaFallback(core);
-  if (leaveTakingFormulaSpan) return [leaveTakingFormulaSpan];
-
-  const politePathImperativeSpan = politePathImperativeFallback(core);
-  if (politePathImperativeSpan) return [politePathImperativeSpan];
-
-  const polarQuestionSpan = polarQuestionFrameFallback(core);
-  if (polarQuestionSpan) return [polarQuestionSpan];
-
-  const interiorExistentialSpan = interiorExistentialFrameFallback(core);
-  if (interiorExistentialSpan) return [interiorExistentialSpan];
-
-  const copularIdentificationSpan = copularIdentificationFrameFallback(core);
-  if (copularIdentificationSpan) return [copularIdentificationSpan];
-
-  const passivePermissiveSpan = passivePermissiveRelationFallback(core);
-  if (passivePermissiveSpan) return [passivePermissiveSpan];
-
-  const lexicalGiveSpan = lexicalGiveRelationFallback(core);
-  if (lexicalGiveSpan) return [lexicalGiveSpan];
-
-  const postThemeParticipantSpan = postThemeParticipantRelationFallback(core);
-  if (postThemeParticipantSpan) return [postThemeParticipantSpan];
-
-  const mannerAdverbialSpan = mannerAdverbialVPFallback(core);
-  if (mannerAdverbialSpan) return [mannerAdverbialSpan];
-
-  const sourceMotionSpan = sourceMotionClauseFallback(core);
-  if (sourceMotionSpan) return [sourceMotionSpan];
-
-  const locativePostureSpan = locativePostureVPFallback(core);
-  if (locativePostureSpan) return [locativePostureSpan];
-
-  const subjectLocativePredicateSpan = subjectLocativePredicateClauseFallback(core);
-  if (subjectLocativePredicateSpan) return [subjectLocativePredicateSpan];
-
-  const coordinatedNPFragmentSpan = coordinatedNPFragmentFallback(core);
-  if (coordinatedNPFragmentSpan) return [coordinatedNPFragmentSpan];
-
-  const coverbFrameSpan = coverbFrameFallback(core);
-  if (coverbFrameSpan) return [coverbFrameSpan];
-
-  const coordinatedSubjectModalSpan = coordinatedSubjectModalPredicateClauseFallback(core);
-  if (coordinatedSubjectModalSpan) return [coordinatedSubjectModalSpan];
-
-  const rawCompositionalPostverbalZo = postverbalZoPerfectiveFromRawNodes(core);
-  if (rawCompositionalPostverbalZo) return rawCompositionalPostverbalZo;
-
-  core = wrapAgreementResponseSubspans(core);
-  core = wrapDirectionalMotionSubspans(core);
-  core = wrapSerialPurposeTemplateSubspans(core);
-  core = wrapSerialVerbPurposeSubspans(core);
-  core = wrapPriorityMarkerSubspans(core);
-  core = wrapChangeIntoPredicateSubspans(core);
-  core = wrapPossessiveClassifierNPSubspans(core);
-  core = wrapPermissionAcceptabilitySubspans(core);
-  core = wrapCategorySubspans(core);
-  core = wrapNegatedVPSubspans(core);
-  core = wrapCategorySubspans(core);
-  core = wrapCategorySubspans(core);
-
-  const recomposedPostverbalZo = postverbalZoPerfectiveFromWrappedNodes(core);
-  if (recomposedPostverbalZo) core = recomposedPostverbalZo;
-
-  // Retry result/phase + perfective composition after NP subspans have formed.
-  // This is required for independently attested V + 完 + 咗 + multi-token NP
-  // objects such as 啲飯 and 本書, which cannot match the raw four-node fallback.
-  const postSubspanPerfectiveResultComposition = perfectiveResultCompositionFallback(core);
-  if (postSubspanPerfectiveResultComposition) return [postSubspanPerfectiveResultComposition];
-
-  const postSubspanExistentialVpMalformed = existentialQuestionWithVpMalformedCandidate(core);
-  if (postSubspanExistentialVpMalformed) return [postSubspanExistentialVpMalformed];
-
-  const postSubspanMandarinNegatorNeedsContext = mandarinNegatorNeedsContextCandidate(core);
-  if (postSubspanMandarinNegatorNeedsContext) return [postSubspanMandarinNegatorNeedsContext];
-
-  const postSubspanPossessiveFragmentAnswer = possessiveFragmentAnswerCandidate(core);
-  if (postSubspanPossessiveFragmentAnswer) return [postSubspanPossessiveFragmentAnswer];
-
-  const postSubspanMandarinReviewNeedsContext = mandarinReviewNeedsContextCandidate(core);
-  if (postSubspanMandarinReviewNeedsContext) return [postSubspanMandarinReviewNeedsContext];
-
-  const progressiveWhObjectSpan = progressiveWhObjectQuestionFallback(core);
-  if (progressiveWhObjectSpan) return [progressiveWhObjectSpan];
-
-  const subjectStativeSpan = subjectStativePredicateClauseFallback(core);
-  if (subjectStativeSpan) return [subjectStativeSpan];
-
-  const scalarValueQuestionSpan = scalarValueQuestionFallback(core);
-  if (scalarValueQuestionSpan) return [scalarValueQuestionSpan];
-
-  const protectedOpaqueFormulaSpan = protectedOpaqueFormulaPassthrough(core);
-  if (protectedOpaqueFormulaSpan) return [protectedOpaqueFormulaSpan];
-
-  // Preserve an already-resolved overt predicate-object construction before broad
-  // category templates can rewrap it (for example, TransitiveVP as NominalHeadSpan).
-  // Review decorates the resolved structure; it does not replace or flatten it.
-  if (core.length === 1 && core[0].kind === "construction") {
-    const reviewedResolvedConstruction = overtObjectSelectionReviewCandidate(core);
-    if (reviewedResolvedConstruction) return [reviewedResolvedConstruction];
-  }
-
-  core = completionThenStandaloneWalkResolution(core);
-  const generativeSpan = templateConstructionFor(core);
-  if (generativeSpan) {
-    const reviewedGenerativeSpan = overtObjectSelectionReviewCandidate([generativeSpan]);
-    return [reviewedGenerativeSpan || generativeSpan];
-  }
-
-  const completionQuestion = completionQuestionFallback(core);
-  if (completionQuestion) {
-    const reviewedCompletionQuestion = overtObjectSelectionReviewCandidate([completionQuestion]);
-    return [reviewedCompletionQuestion || completionQuestion];
-  }
-
-  if (core.length === 1 && core[0].kind === "construction") {
-    const reviewedExistingConstruction = overtObjectSelectionReviewCandidate(core);
-    return [reviewedExistingConstruction || core[0]];
-  }
-
-  // Opinion + seeming fallback: normally handled by OpinionStanceFrame template.
-  if ((hasSurface(core, "覺得") || hasSurface(core, "我覺得")) && hasSurface(core, "好似")) {
-    const opinionChildren = contextualOpinionPlaceholderChildren(core);
-    return [construction("OpinionStanceFrame", "Opinion/Stance", opinionChildren, { note: "Opinion/seeming fallback: 覺得 + 好似 + predicate.", trace: traceInfo("legacy_surface_rule", { rule: "has 覺得/我覺得 and 好似", reason: "Fallback only; generative OpinionStanceFrame should normally catch this." }) })];
-  }
-
-  const experientialYesNoQuestion = experientialYesNoQuestionFallback(core);
-  if (experientialYesNoQuestion) return [experientialYesNoQuestion];
-
-  const interestDomainExistentialQuestion = interestDomainExistentialQuestionFallback(core);
-  if (interestDomainExistentialQuestion) return [interestDomainExistentialQuestion];
-
-  const locativeWhQuestion = locativeWhQuestionFallback(core);
-  if (locativeWhQuestion) return [locativeWhQuestion];
-  const completionThenRelation = completionThenClauseRelation(core);
-  if (completionThenRelation) return [completionThenRelation];
-
-  // Reported speech: NP 話 predicate/clause.
-  const waaIndex = indexOfSurface(core, "話");
-  if (waaIndex > 0 && waaIndex < core.length - 1) {
-    const reportedChildren = contextualReportedSpeechLearnerChildren(core);
-    return [construction("ReportedSpeech", "Reported", reportedChildren, { note: "Reported speech/thought: NP 話 + clause.", trace: traceInfo("legacy_surface_rule", { rule: "NP before 話 and material after", reason: "Surface speech verb fallback." }) })];
-  }
-
-  const experientialQuestionBoundary = experientialQuestionBoundaryFallback(core);
-  if (experientialQuestionBoundary) return [experientialQuestionBoundary];
-
-  const desiderativeSpan = desiderativeVPWrapCoreFallback(core);
-  if (desiderativeSpan) return [desiderativeSpan];
-
-  const scalarEvaluationSpan = scalarEvaluationFallback(core);
-  if (scalarEvaluationSpan) return [scalarEvaluationSpan];
-  // Scalar value question patterns. Price is domain metadata, not the construction label.
-  if (hasSurface(core, "幾錢")) {
-    const scalar = scalarValueQuestionFallback(core);
-    if (scalar) return [scalar];
-  }
-  const approximateQuantitySpan = approximateQuantityFallback(core);
-  if (approximateQuantitySpan) return [approximateQuantitySpan];
-
-  const suggestionQuestion = suggestionQuestionFallback(core);
-  if (suggestionQuestion) return [suggestionQuestion];
-  const acceptabilityANotAQuestion = acceptabilityANotAQuestionFallback(core);
-  if (acceptabilityANotAQuestion) return [acceptabilityANotAQuestion];
-
-  const existentialWhQuestion = existentialWhQuestionFallback(core);
-  if (existentialWhQuestion) return [existentialWhQuestion];
-
-  // Preference fallback: normally handled by the PreferenceVP template before broad NP category wrapping.
-  const preferenceFallbackSpan = preferenceVPWrapCoreFallback(core);
-  if (preferenceFallbackSpan) return [preferenceFallbackSpan];
-
-  // Temporal clause fallback: normally handled by the TemporalClause template.
-  if (core.length >= 2 && firstToken(core[0]) && firstToken(core[0]).label === "when") {
-    return [construction("TemporalClause", "Time", core, {
-      note: "Time expression fallback frames the following predicate.",
-      trace: traceInfo("construction_function", {
-        construction_type: "TemporalClause",
-        reason: "Fallback only; generative TemporalClause should normally catch this."
-      })
-    })];
-  }
-
-  // Topic-comment: 呢個 唔 好食 / 呢個 好食 / 呢個 好 開心
-  if (isTopicCandidate(core[0]) && core.length >= 2) {
-    const topic = construction("Topic", "topic", [core[0]], { primary: "topic", note: "Topic with secondary semantic role what." });
-    const commentChildren = wrapPredicate(core.slice(1));
-    return [construction("TopicComment", "TopicComment", [topic, ...commentChildren], {
-      note: "Topic-comment construction with comment represented as predicate-role metadata rather than a redundant child wrapper.",
-      slots: cleanSlots(["topic_comment", "topic", "comment", "comment_predicate", "predicate", "clause", ...templateDerivedSlots("TopicComment", [topic, ...commentChildren])]),
-      trace: traceInfo("generative_or_heuristic_slot_rule", {
-        rule: "topic candidate followed by typed comment predicate",
-        reason: "Structural heuristic; the comment relation is carried by TopicComment slots rather than a standalone Comment construction.",
-      }),
-    })];
-  }
-
-  const prohibitiveImperativeSpan = prohibitiveImperativeFallback(core);
-  if (prohibitiveImperativeSpan) return [prohibitiveImperativeSpan];
-
-  const inlineANotAQuestion = inlineANotAQuestionFallback(core);
-  if (inlineANotAQuestion) return [inlineANotAQuestion];
-
-  const completionQuestionWithPerfectiveMarker = completionQuestionWithPerfectiveMarkerFallback(core);
-  if (completionQuestionWithPerfectiveMarker) return [completionQuestionWithPerfectiveMarker];
-
-  // Negative potential: V 唔 到 Obj?
-  if (core.length >= 3 && isVerbLike(core[0]) && isToken(core[1], "唔") && isToken(core[2], "到")) {
-    return [construction("NegativePotentialComplement", "NegPotential", core, { note: "Negative potential/result complement.", trace: traceInfo("generative_or_heuristic_slot_rule", { rule: "verb + 唔 + 到", reason: "Structural potential complement heuristic." }) })];
-  }
-
-  // Positive result/attainment: V 到 Obj?
-  if (core.length >= 2 && isVerbLike(core[0]) && isToken(core[1], "到")) {
-    return [construction("ResultComplement", "Result", core, { note: "Positive result/attainment complement.", trace: traceInfo("generative_or_heuristic_slot_rule", { rule: "verb + 到", reason: "Structural result complement heuristic." }) })];
-  }
-
-  // Modal + VP/predicate: NP? Modal Predicate.
-  // v0.5.56: prefer governed generative ModalVP; retain the old slot heuristic only as a final fallback.
-  const modalPredicateWrapSpan = modalPredicateWrapCoreFallback(core);
-  if (modalPredicateWrapSpan) return modalPredicateWrapSpan;
-
-  return wrapPredicate(core);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const createClauseRelationGraph = require("./parser/clause-relations/graph");
 const {
   connectorAwareClauseLinkingForTerminal,
@@ -3009,6 +2567,10 @@ const { relativeClauseNPForTerminal } = createRelativeClauseDetectors({
 
 
 
+
+const { topicCommentFallback } = require("./parser/detectors/topic-comment")({
+  cleanSlots, construction, isTopicCandidate, templateDerivedSlots, traceInfo, wrapPredicate,
+});
 
 function fullSpanSingleConstruction(nodes, sourceNodes) {
   if (!Array.isArray(nodes) || nodes.length !== 1) return null;
@@ -3091,62 +2653,137 @@ const {
   descriptors: ORDERED_PARTICLE_CLUSTER_DESCRIPTORS,
 } = require("./runtime-resources/grammar/ordered-particle-clusters");
 
-function applyConstructionPatternsForTerminal(segment, terminalText = "") {
-  const haveOrNotQuestion = haveOrNotQuestionFallbackForPunctuation(segment, terminalText);
-  if (haveOrNotQuestion) return [haveOrNotQuestion];
-  const scalarQuestion = scalarDimensionQuestionFallbackForPunctuation(segment, terminalText);
-  if (scalarQuestion) return [scalarQuestion];
-  const relationFragment = standaloneClauseRelationEdgeFragmentForTerminal(segment, terminalText);
-  if (relationFragment) return [relationFragment];
-  const relativeClauseNP = relativeClauseNPForTerminal(segment);
-  if (relativeClauseNP) return [relativeClauseNP];
-  const connectorLinked = connectorAwareClauseLinkingForTerminal(segment);
-  if (connectorLinked) return connectorLinked;
-  const ordinaryWrapped = applyConstructionPatterns(segment);
-  const particleClusterInfo = orderedParticleClusterInfo(segment, terminalText);
-  if (particleClusterInfo && !particleClusterInfo.supportedOrder) return ordinaryWrapped;
-  const orderedParticleCluster = orderedParticleClusterFallback(segment, terminalText, particleClusterInfo);
-  if (orderedParticleCluster) return [orderedParticleCluster];
-  const restrictiveFocusParticle = restrictiveFocusParticleFallback(segment, terminalText, ordinaryWrapped);
-  if (restrictiveFocusParticle) return [restrictiveFocusParticle];
-  const scopedDirectiveParticle = scopedDirectiveClosureParticleFallback(segment, terminalText, ordinaryWrapped);
-  if (scopedDirectiveParticle) return [scopedDirectiveParticle];
-  const scopedChangeStateParticle = scopedChangeStateParticleFallback(segment, terminalText, ordinaryWrapped);
-  if (scopedChangeStateParticle) return [scopedChangeStateParticle];
-  const scopedEvidentialParticle = scopedEvidentialDiscourseParticleFallback(segment, terminalText);
-  if (scopedEvidentialParticle) return [scopedEvidentialParticle];
-  const scopedEpistemicParticle = scopedEpistemicDiscourseParticleFallback(segment, terminalText);
-  if (scopedEpistemicParticle) return [scopedEpistemicParticle];
-  const finalMePolarQuestion = finalMePolarQuestionFallbackForPunctuation(segment, terminalText, ordinaryWrapped);
-  if (finalMePolarQuestion) return [finalMePolarQuestion];
-  return ordinaryWrapped;
-}
+wrapCoreImplementation = require("./parser/orchestration/wrap-core")({
+  aNotAQuestionFallback,
+  acceptabilityANotAQuestionFallback,
+  ambiguousNeedsContextCandidate,
+  approximateQuantityFallback,
+  bareNumeralObjectMalformedCandidate,
+  completionQuestionFallback,
+  completionQuestionWithPerfectiveMarkerFallback,
+  completionThenClauseRelation,
+  completionThenStandaloneWalkResolution,
+  conditionalGeWaaClauseFallback,
+  coordinatedNPFragmentFallback,
+  coordinatedSubjectModalPredicateClauseFallback,
+  copularANotAQuestionFallback,
+  copularExplanatoryCompositionFallback,
+  copularIdentificationFrameFallback,
+  cognitionContentFrameFallback,
+  cognitionStatementFallback,
+  coverbFrameFallback,
+  cp021bBoundaryReviewFallback,
+  desiderativeANotAQuestionFallback,
+  desiderativeVPWrapCoreFallback,
+  directionalCompositionFallback,
+  durativeAspectCompositionFallback,
+  existentialLocationPresentationalFallback,
+  existentialQuestionWithVpMalformedCandidate,
+  existentialWhQuestionFallback,
+  experientialQuestionBoundaryFallback,
+  experientialYesNoQuestionFallback,
+  fragmentQuestionFallback,
+  hasSurface,
+  impersonalEnvironmentalClauseFallback,
+  inlineANotAQuestionFallback,
+  incompatibleAspectCompositionMalformedCandidate,
+  incompleteContextualPredicateCandidate,
+  incompleteLocativeNeedsContextCandidate,
+  incompleteModalNeedsContextCandidate,
+  incompletePotentialResultCandidate,
+  incompleteProhibitiveNeedsContextCandidate,
+  incompleteRestrictiveFocusBoundaryCandidate,
+  intendedFunctionRelationFallback,
+  interiorExistentialFrameFallback,
+  interestDomainExistentialQuestionFallback,
+  leaveTakingFormulaFallback,
+  lexicalGiveRelationFallback,
+  locativePostureVPFallback,
+  locativeWhQuestionFallback,
+  mandarinNegatorNeedsContextCandidate,
+  mandarinReviewNeedsContextCandidate,
+  mannerAdverbialVPFallback,
+  modalPredicateWrapCoreFallback,
+  motionEventSpatialFallback,
+  namingSelfIntroductionFrameFallback,
+  negativeCognitionFragmentFallback,
+  nominalMeasurePredicateFallback,
+  opinionSeemingFallback,
+  opinionStanceFrameFallback,
+  overtObjectSelectionReviewCandidate,
+  passivePermissiveRelationFallback,
+  perfectiveResultCompositionFallback,
+  permissionANotAQuestionFallback,
+  politePathImperativeFallback,
+  politeRequestAdjustmentFallback,
+  polarQuestionFrameFallback,
+  possessiveFragmentAnswerCandidate,
+  postThemeParticipantRelationFallback,
+  postverbalZoPerfectiveFromRawNodes,
+  postverbalZoPerfectiveFromWrappedNodes,
+  potentialResultComplementFallback,
+  potentialResultVPFallback,
+  predicateOmissionCandidate,
+  preferenceVPWrapCoreFallback,
+  progressiveWhObjectQuestionFallback,
+  prohibitiveImperativeFallback,
+  protectedOpaqueFormulaPassthrough,
+  purposeLinkingMotionFallback,
+  rawPreferenceTemplateFallback,
+  reportedSpeechFrameFallback,
+  reportedSpeechSurfaceFallback,
+  restorativeRepetitiveComplementFallback,
+  scalarEvaluationFallback,
+  scalarValueQuestionFallback,
+  sourceLinkedDegreeMannerModifiedVPFallback,
+  sourceLinkedIntentionFrameFallback,
+  sourceLinkedPreferenceVPFallback,
+  sourceLinkedPriorityMarkerClauseFallback,
+  sourceMotionClauseFallback,
+  subjectLocativePredicateClauseFallback,
+  subjectStativePredicateClauseFallback,
+  suggestionQuestionFallback,
+  templateConstructionFor,
+  temporalClauseFallback,
+  topicCommentFallback,
+  transitionMotionPredicateFallback,
+  transparentDiscourseFormulaFallback,
+  wrapAgreementResponseSubspans,
+  wrapCategorySubspans,
+  wrapChangeIntoPredicateSubspans,
+  wrapDirectionalMotionSubspans,
+  wrapNegatedVPSubspans,
+  wrapPermissionAcceptabilitySubspans,
+  wrapPossessiveClassifierNPSubspans,
+  wrapPredicate,
+  wrapPriorityMarkerSubspans,
+  wrapSerialPurposeTemplateSubspans,
+  wrapSerialVerbPurposeSubspans,
+}).wrapCore;
 
-function applyConstructionPatternsByPunctuation(nodes) {
-  const boundedAcknowledgementRepetition = boundedAcknowledgementRepetitionForPunctuation(nodes);
-  if (boundedAcknowledgementRepetition) return boundedAcknowledgementRepetition;
-  const repeatedNegatedExistentialResponse = repeatedNegatedExistentialResponseForPunctuation(nodes);
-  if (repeatedNegatedExistentialResponse) return repeatedNegatedExistentialResponse;
-  const rendered = [];
-  let segment = [];
-  const flush = (terminalText = "") => {
-    if (segment.length) {
-      rendered.push(...applyConstructionPatternsForTerminal(segment, terminalText));
-      segment = [];
-    }
-  };
-
-  for (const node of nodes) {
-    if (node.kind === "text" && hasSentencePunctuation(node.text)) {
-      flush(node.text);
-      rendered.push(node);
-    } else {
-      segment.push(node);
-    }
-  }
-  flush();
-  return wrapClauseSequenceByPunctuation(rendered);
-}
+const {
+  applyConstructionPatternsByPunctuation,
+  applyConstructionPatternsForTerminal,
+} = require("./parser/orchestration/apply-terminal-patterns")({
+  applyConstructionPatterns,
+  boundedAcknowledgementRepetitionForPunctuation,
+  connectorAwareClauseLinkingForTerminal,
+  finalMePolarQuestionFallbackForPunctuation,
+  hasSentencePunctuation,
+  haveOrNotQuestionFallbackForPunctuation,
+  orderedParticleClusterFallback,
+  orderedParticleClusterInfo,
+  relativeClauseNPForTerminal,
+  repeatedNegatedExistentialResponseForPunctuation,
+  restrictiveFocusParticleFallback,
+  scalarDimensionQuestionFallbackForPunctuation,
+  scopedChangeStateParticleFallback,
+  scopedDirectiveClosureParticleFallback,
+  scopedEpistemicDiscourseParticleFallback,
+  scopedEvidentialDiscourseParticleFallback,
+  standaloneClauseRelationEdgeFragmentForTerminal,
+  wrapClauseSequenceByPunctuation,
+});
 
 const contextDescriptors = require("./parser/context/descriptors")({
   firstToken, flattenNodes, flattenSurface, getConstructionAffordances, nodeCanFillSlot, normalizeSurface,
@@ -3169,6 +2806,12 @@ const {
   conventionalZiContextDomain,
   contextSupportsQuantifiedTimeFragment,
 } = contextDescriptors;
+
+let analyzeLineImplementation = null;
+function analyzeLine(...args) {
+  if (!analyzeLineImplementation) throw new Error("analyzeLine implementation is not initialized.");
+  return analyzeLineImplementation(...args);
+}
 
 const {
   explicitContextTurns,
@@ -3231,33 +2874,15 @@ const {
   withoutIgnorableSpaceText,
 });
 
-function analyzeLine(source, explicitContextInput = null) {
-  const warnings = [];
-  const explicitContext = analyzedExplicitContext(explicitContextInput);
-  const input_normalization = normalizeInputForParser(source);
-  const parserSource = input_normalization.parser_shadow_source;
-  const normalized = normalizeSurface(parserSource);
-  if (normalized === "唔好食") {
-    warnings.push("Needs context: 唔好食 can mean 唔 + 好食 = not tasty, or 唔好 + 食 = don't eat.");
-  }
-  const tokens = annotateRawDisplaySurfaces(tokenizeLine(parserSource), source, parserSource);
-  const initialNodes = annotateRawDisplaySurfaces(applyConstructionPatternsByPunctuation(tokens), source, parserSource);
-  const contextApplied = applyExplicitContextContract(initialNodes, explicitContext);
-  const nodes = annotateRawDisplaySurfaces(contextApplied.nodes, source, parserSource);
-  return {
-    source,
-    parser_shadow_source: parserSource,
-    input_normalization,
-    normalization_trace: input_normalization.normalization_trace,
-    normalization_review_suggestions: input_normalization.review_suggestions,
-    warnings,
-    tokens,
-    nodes,
-    explicit_context: explicitContext.public,
-    context_resolution: contextApplied.resolution,
-    diagnostics: true,
-  };
-}
+analyzeLineImplementation = require("./parser/analyze-line")({
+  analyzedExplicitContext,
+  annotateRawDisplaySurfaces,
+  applyConstructionPatternsByPunctuation,
+  applyExplicitContextContract,
+  normalizeInputForParser,
+  normalizeSurface,
+  tokenizeLine,
+}).analyzeLine;
 
 function flattenNodes(nodes) {
   const out = [];
