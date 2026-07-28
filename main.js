@@ -10893,6 +10893,67 @@ var require_formula_responses = __commonJS({
   }
 });
 
+// src/parser/detectors/existential/clauses.js
+var require_clauses3 = __commonJS({
+  "src/parser/detectors/existential/clauses.js"(exports2, module2) {
+    "use strict";
+    module2.exports = function createDetectors(dependencies = {}) {
+      const {
+        categorySubspanFor: categorySubspanFor2,
+        construction: construction2,
+        flattenSurface: flattenSurface2,
+        isToken: isToken2,
+        nodeCanFillSlot: nodeCanFillSlot2,
+        parserInactiveTokenClone: parserInactiveTokenClone2,
+        templateDerivedSlots: templateDerivedSlots2,
+        traceInfo: traceInfo2,
+        withoutIgnorableSpaceText: withoutIgnorableSpaceText2,
+        withoutTrailingParticles: withoutTrailingParticles2
+      } = dependencies;
+      function interiorExistentialFrameFallback2(core) {
+        const { core: bareCore, particles } = withoutTrailingParticles2(core);
+        const compact = withoutIgnorableSpaceText2(bareCore);
+        if (compact.length < 6) return null;
+        const yauIndex = compact.findIndex((node) => isToken2(node, "有"));
+        if (yauIndex < 0) return null;
+        const locationIndex = compact.findIndex((node) => isToken2(node, "入面") || isToken2(node, "入邊"));
+        if (locationIndex <= 0 || locationIndex >= yauIndex) return null;
+        const topicNodes = compact.slice(0, locationIndex);
+        const between = compact.slice(locationIndex + 1, yauIndex);
+        if (between.length < 1 || between.length > 2) return null;
+        const topic = categorySubspanFor2(topicNodes, ["OvertHeadDemonstrativeClassifierNP", "OrdinalClassifierNP", "ModifiedNP", "NominalHeadSpan"]) || (topicNodes.length === 1 ? topicNodes[0] : null);
+        if (!topic || !nodeCanFillSlot2(topic, "topic")) return null;
+        const wh = between[0];
+        const focus = between.length === 2 ? between[1] : null;
+        if (!nodeCanFillSlot2(wh, "wh_object") && !nodeCanFillSlot2(wh, "head_noun") && !nodeCanFillSlot2(wh, "object")) return null;
+        if (focus && !nodeCanFillSlot2(focus, "focus_adverb") && !nodeCanFillSlot2(focus, "how")) return null;
+        const existential = parserInactiveTokenClone2(compact[yauIndex], {
+          label: "func",
+          pos: "function",
+          syntax: "existential interior_existential",
+          slots: ["existential", "predicate"],
+          reason: "有 is interpreted as the existential predicate inside a bounded interior-existential frame."
+        });
+        const children = [topic, compact[locationIndex], wh, ...focus ? [focus] : [], existential, ...particles];
+        return construction2("LocativeExistentialClause", "LocExist", children, {
+          note: "v0.5.33 interior existential frame: topic + 入面/入邊 + 乜嘢 + 都 + 有.",
+          slots: templateDerivedSlots2("LocativeExistentialClause", children),
+          trace: traceInfo2("generative_template", {
+            construction_type: "LocativeExistentialClause",
+            template: ["topic!", "location!", "wh_object!", ...focus ? ["focus_adverb?"] : [], "existential!", "particle?"],
+            assigned_slots: ["topic", "location", "wh_object", ...focus ? ["focus_adverb"] : [], "existential", ...particles.map(() => "particle")],
+            surfaces: children.map((node) => flattenSurface2(node)),
+            reason: "Promotes the bounded corpus pattern for 'has everything inside' without creating broad 有 existential grammar."
+          })
+        });
+      }
+      return {
+        interiorExistentialFrameFallback: interiorExistentialFrameFallback2
+      };
+    };
+  }
+});
+
 // src/parser/detectors/transfer/legacy-recipient.js
 var require_legacy_recipient = __commonJS({
   "src/parser/detectors/transfer/legacy-recipient.js"(exports2, module2) {
@@ -13538,6 +13599,737 @@ var require_composition2 = __commonJS({
   }
 });
 
+// src/parser/detectors/environmental/clauses.js
+var require_clauses4 = __commonJS({
+  "src/parser/detectors/environmental/clauses.js"(exports2, module2) {
+    "use strict";
+    module2.exports = function createDetectors(dependencies = {}) {
+      const {
+        ENVIRONMENTAL_EVENT_PREDICATES: ENVIRONMENTAL_EVENT_PREDICATES2,
+        categorySubspanFor: categorySubspanFor2,
+        construction: construction2,
+        constructionSlotsByType: constructionSlotsByType2,
+        flattenSurface: flattenSurface2,
+        nodeCanFillSlot: nodeCanFillSlot2,
+        parserInactiveTokenClone: parserInactiveTokenClone2,
+        templateDerivedSlots: templateDerivedSlots2,
+        traceInfo: traceInfo2,
+        withoutIgnorableSpaceText: withoutIgnorableSpaceText2,
+        withoutTrailingParticles: withoutTrailingParticles2
+      } = dependencies;
+      function conventionalEnvironmentalEventConstruction2(nodes = []) {
+        const compact = withoutIgnorableSpaceText2(nodes || []);
+        if (compact.length !== 2 || compact.some((node) => node.kind === "construction" || node.kind === "text")) return null;
+        const eventSurface = compact.map((node) => flattenSurface2(node)).join("");
+        const eventRule = ENVIRONMENTAL_EVENT_PREDICATES2[eventSurface];
+        if (!eventRule || flattenSurface2(compact[0]) !== eventRule.head || flattenSurface2(compact[1]) !== eventRule.phenomenon) return null;
+        const head = parserInactiveTokenClone2(compact[0], {
+          label: "doing",
+          syntax: "environmental_event_predicate",
+          slots: ["environmental_event_head", "environmental_predicate", "predicate"],
+          reason: `${eventRule.head} is licensed as an environmental event head only inside the conventional ${eventSurface} predicate.`,
+          active_affordance_match: { role: "doing", slot: "environmental_event_head", source: "construction_override" },
+          preserve_existing_affordances: true
+        });
+        const phenomenon = parserInactiveTokenClone2(compact[1], {
+          label: "what",
+          syntax: "weather_phenomenon environmental_phenomenon",
+          slots: ["weather_phenomenon", "environmental_phenomenon"],
+          reason: `${eventRule.phenomenon} is the visible weather-phenomenon component of ${eventSurface}, not an ordinary affected object.`,
+          active_affordance_match: { role: "what", slot: "weather_phenomenon", source: "construction_override" },
+          preserve_existing_affordances: true
+        });
+        return construction2("ImpersonalEnvironmentalClause", "Environment", [head, phenomenon], {
+          slots: constructionSlotsByType2("ImpersonalEnvironmentalClause", [head, phenomenon]),
+          note: "Lexically licensed conventional environmental event predicate with transparent visible components.",
+          trace: traceInfo2("generative_template", {
+            construction_type: "ImpersonalEnvironmentalClause",
+            template_family: "construction_template",
+            template: ["environmental_event_head!", "weather_phenomenon!"],
+            assigned_slots: ["environmental_event_head", "weather_phenomenon"],
+            surfaces: [eventRule.head, eventRule.phenomenon],
+            subject_status: "impersonal",
+            subjectless_type: "genuinely_subjectless_environmental",
+            hidden_subject_inserted: false,
+            environmental_subtype: eventRule.environmental_subtype,
+            not_claims: ["not_productive_vo_object_relation", "not_null_referential_subject", "not_hidden_expletive_subject"]
+          })
+        });
+      }
+      function environmentalPredicateParts(core = []) {
+        const compact = withoutIgnorableSpaceText2(core || []);
+        if (!compact.length) return null;
+        const conventionalEnvironmental = conventionalEnvironmentalEventConstruction2(compact);
+        if (conventionalEnvironmental) {
+          return {
+            predicate: conventionalEnvironmental,
+            environmental_subtype: (conventionalEnvironmental.trace || {}).environmental_subtype || "environmental_event"
+          };
+        }
+        const event = categorySubspanFor2(compact, ["ImpersonalEnvironmentalClause"]);
+        if (event) {
+          return {
+            predicate: event,
+            environmental_subtype: flattenSurface2(event) === "落雨" ? "precipitation_event" : "wind_event"
+          };
+        }
+        if (compact.length === 1 && nodeCanFillSlot2(compact[0], "environmental_transition_predicate")) {
+          const child = parserInactiveTokenClone2(compact[0], {
+            label: "doing",
+            syntax: "environmental_transition_predicate impersonal_predicate",
+            slots: ["environmental_transition_predicate", "environmental_predicate", "predicate"],
+            reason: "天光 is a visible environmental transition predicate; no null referential or expletive subject is inserted.",
+            active_affordance_match: { role: "doing", slot: "environmental_transition_predicate", source: "construction_override" },
+            preserve_existing_affordances: true
+          });
+          const predicate = construction2("ImpersonalEnvironmentalClause", "Environment", [child], {
+            slots: constructionSlotsByType2("ImpersonalEnvironmentalClause", [child]),
+            note: "Genuinely subjectless environmental transition clause.",
+            trace: traceInfo2("generative_template", {
+              construction_type: "ImpersonalEnvironmentalClause",
+              template_family: "generative_template",
+              template: ["environmental_transition_predicate!"],
+              assigned_slots: ["environmental_transition_predicate"],
+              surfaces: [flattenSurface2(child)],
+              subject_status: "impersonal",
+              subjectless_type: "genuinely_subjectless_environmental",
+              hidden_subject_inserted: false,
+              environmental_subtype: "daylight_transition",
+              not_claims: ["not_null_referential_subject", "not_hidden_expletive_subject", "not_nominal_subject天"]
+            })
+          });
+          return { predicate, environmental_subtype: "daylight_transition" };
+        }
+        const ambient = categorySubspanFor2(compact, ["DegreeStativePredicate"]);
+        if (ambient && nodeCanFillSlot2(ambient, "ambient_environmental_predicate")) {
+          return { predicate: ambient, environmental_subtype: "ambient_temperature_property" };
+        }
+        return null;
+      }
+      function impersonalEnvironmentalClauseFallback2(core = []) {
+        const { core: bareCore, particles } = withoutTrailingParticles2(core || []);
+        if (!bareCore.length) return null;
+        if (bareCore.length >= 2 && nodeCanFillSlot2(bareCore[0], "time")) {
+          const environmental2 = environmentalPredicateParts(bareCore.slice(1));
+          if (environmental2) {
+            const child = environmental2.predicate.type === "ImpersonalEnvironmentalClause" ? environmental2.predicate : construction2("ImpersonalEnvironmentalClause", "Environment", [environmental2.predicate], {
+              slots: constructionSlotsByType2("ImpersonalEnvironmentalClause", [environmental2.predicate]),
+              note: "Ambient environmental property licensed by an overt temporal frame.",
+              trace: traceInfo2("generative_template", {
+                construction_type: "ImpersonalEnvironmentalClause",
+                template_family: "generative_template",
+                template: ["ambient_environmental_predicate!"],
+                assigned_slots: ["ambient_environmental_predicate"],
+                surfaces: [flattenSurface2(environmental2.predicate)],
+                subject_status: "impersonal",
+                subjectless_type: "genuinely_subjectless_environmental",
+                hidden_subject_inserted: false,
+                environmental_subtype: environmental2.environmental_subtype,
+                not_claims: ["not_null_referential_subject", "not_hidden_expletive_subject"]
+              })
+            });
+            const children2 = [bareCore[0], child, ...particles];
+            return construction2("TemporalClause", "Time", children2, {
+              slots: templateDerivedSlots2("TemporalClause", children2),
+              note: "Time-framed environmental clause with no fabricated referential subject.",
+              trace: traceInfo2("generative_template", {
+                construction_type: "TemporalClause",
+                template_family: "generative_template",
+                template: ["time!", "impersonal_environmental_clause!", "particle?"],
+                assigned_slots: ["time", "impersonal_environmental_clause", ...particles.map(() => "particle")],
+                surfaces: children2.map(flattenSurface2),
+                clause_modifier_profile: "temporal_environmental_frame",
+                subject_status: "impersonal",
+                subjectless_type: "genuinely_subjectless_environmental",
+                hidden_subject_inserted: false,
+                not_claims: ["not_null_referential_subject", "not_hidden_expletive_subject"]
+              })
+            });
+          }
+        }
+        if (bareCore.length >= 2 && (nodeCanFillSlot2(bareCore[0], "ambient_location_frame") || nodeCanFillSlot2(bareCore[0], "location"))) {
+          const environmental2 = environmentalPredicateParts(bareCore.slice(1));
+          if (environmental2 && environmental2.environmental_subtype === "ambient_temperature_property") {
+            const ambientClause = construction2("ImpersonalEnvironmentalClause", "Environment", [environmental2.predicate], {
+              slots: constructionSlotsByType2("ImpersonalEnvironmentalClause", [environmental2.predicate]),
+              note: "Ambient temperature proposition licensed by an overt spatial frame.",
+              trace: traceInfo2("generative_template", {
+                construction_type: "ImpersonalEnvironmentalClause",
+                template_family: "generative_template",
+                template: ["ambient_environmental_predicate!"],
+                assigned_slots: ["ambient_environmental_predicate"],
+                surfaces: [flattenSurface2(environmental2.predicate)],
+                subject_status: "impersonal",
+                subjectless_type: "genuinely_subjectless_environmental",
+                hidden_subject_inserted: false,
+                environmental_subtype: environmental2.environmental_subtype,
+                not_claims: ["not_null_referential_subject", "not_hidden_expletive_subject"]
+              })
+            });
+            const location = parserInactiveTokenClone2(bareCore[0], {
+              label: "where",
+              syntax: "ambient_location_frame spatial_localizer",
+              slots: ["location", "ambient_location_frame"],
+              reason: "The overt place expression frames the ambient proposition; its grammatical subject/topic status is not forced.",
+              active_affordance_match: { role: "where", slot: "ambient_location_frame", source: "construction_override" },
+              preserve_existing_affordances: true
+            });
+            const children2 = [location, ambientClause, ...particles];
+            return construction2("LocativeFrameClause", "LocativeFrame", children2, {
+              slots: constructionSlotsByType2("LocativeFrameClause", children2),
+              note: "Location-framed ambient clause. Location semantics are represented independently from grammatical subjecthood.",
+              trace: traceInfo2("generative_template", {
+                construction_type: "LocativeFrameClause",
+                template_family: "generative_template",
+                template: ["ambient_location_frame!", "impersonal_environmental_clause!", "particle?"],
+                assigned_slots: ["ambient_location_frame", "impersonal_environmental_clause", ...particles.map(() => "particle")],
+                surfaces: children2.map(flattenSurface2),
+                location_relation: "ambient_frame_not_forced_subject_or_topic",
+                subject_status: "impersonal",
+                subjectless_type: "location_framed_ambient",
+                hidden_subject_inserted: false,
+                not_claims: ["not_location_as_forced_subject", "not_location_as_forced_topic", "not_hidden_expletive_subject"]
+              })
+            });
+          }
+        }
+        const environmental = environmentalPredicateParts(bareCore);
+        if (!environmental || environmental.environmental_subtype === "ambient_temperature_property") return null;
+        const predicate = environmental.predicate;
+        const children = [...predicate.children || [predicate], ...particles];
+        return construction2("ImpersonalEnvironmentalClause", "Environment", children, {
+          slots: constructionSlotsByType2("ImpersonalEnvironmentalClause", children),
+          note: "Genuinely subjectless environmental clause; all visible predicate material remains transparent.",
+          trace: traceInfo2("generative_template", {
+            construction_type: "ImpersonalEnvironmentalClause",
+            template_family: predicate.trace && predicate.trace.template_family ? predicate.trace.template_family : "generative_template",
+            template: predicate.trace && predicate.trace.template ? predicate.trace.template : ["environmental_predicate!", "particle?"],
+            assigned_slots: predicate.trace && predicate.trace.assigned_slots ? [...predicate.trace.assigned_slots, ...particles.map(() => "particle")] : ["environmental_predicate", ...particles.map(() => "particle")],
+            surfaces: children.map(flattenSurface2),
+            subject_status: "impersonal",
+            subjectless_type: "genuinely_subjectless_environmental",
+            hidden_subject_inserted: false,
+            environmental_subtype: environmental.environmental_subtype,
+            not_claims: ["not_productive_vo_object_relation", "not_null_referential_subject", "not_hidden_expletive_subject"]
+          })
+        });
+      }
+      return {
+        conventionalEnvironmentalEventConstruction: conventionalEnvironmentalEventConstruction2,
+        environmentalPredicateParts,
+        impersonalEnvironmentalClauseFallback: impersonalEnvironmentalClauseFallback2
+      };
+    };
+  }
+});
+
+// src/parser/detectors/existential/spatial.js
+var require_spatial = __commonJS({
+  "src/parser/detectors/existential/spatial.js"(exports2, module2) {
+    "use strict";
+    module2.exports = function createDetectors(dependencies = {}) {
+      const {
+        applyConstructionPatterns: applyConstructionPatterns2,
+        cleanSlots: cleanSlots2,
+        construction: construction2,
+        flattenSurface: flattenSurface2,
+        fullSpanSingleConstruction: fullSpanSingleConstruction2,
+        isToken: isToken2,
+        locativePredicatePhraseFromNodes: locativePredicatePhraseFromNodes2,
+        nodeCanFillSlot: nodeCanFillSlot2,
+        parserInactiveTokenClone: parserInactiveTokenClone2,
+        templateDerivedSlots: templateDerivedSlots2,
+        traceInfo: traceInfo2,
+        withoutIgnorableSpaceText: withoutIgnorableSpaceText2,
+        withoutTrailingParticles: withoutTrailingParticles2
+      } = dependencies;
+      function spatialLocalizerPhraseFromNodes(nodes = []) {
+        const compact = withoutIgnorableSpaceText2(nodes || []);
+        if (compact.length !== 2) return null;
+        const [base, localizer] = compact;
+        const baseLooksNominal = nodeCanFillSlot2(base, "np") || nodeCanFillSlot2(base, "head_noun") || nodeCanFillSlot2(base, "object") || nodeCanFillSlot2(base, "location");
+        const localizerSyntax = String(localizer && localizer.syntax || "");
+        if (!baseLooksNominal || !localizerSyntax.includes("spatial_localizer")) return null;
+        const localizerChild = parserInactiveTokenClone2(localizer, {
+          label: "where",
+          syntax: `${localizerSyntax} postnominal_spatial_localizer`,
+          slots: ["location", "spatial_localizer", "locative_domain"],
+          reason: "The postnominal localizer supplies the spatial relation for the visible nominal base.",
+          active_affordance_match: { role: "where", slot: "spatial_localizer", source: "construction_override" },
+          preserve_existing_affordances: true
+        });
+        const children = [base, localizerChild];
+        return construction2("LocativePlacePhrase", "Location", children, {
+          note: "Nominal location base plus postnominal spatial localizer.",
+          slots: cleanSlots2(["locative_phrase", "location", "goal", "locative_domain", "spatial_localizer", ...templateDerivedSlots2("LocativePlacePhrase", children)]),
+          trace: traceInfo2("generative_template", {
+            construction_type: "LocativePlacePhrase",
+            template_family: "generative_template",
+            template: ["location_base!", "spatial_localizer!"],
+            assigned_slots: ["location_base", "spatial_localizer"],
+            surfaces: children.map(flattenSurface2),
+            subspan: true,
+            location_relation: "nominal_base_plus_postnominal_localizer",
+            subject_status: "not_assigned",
+            not_claims: ["not_temporal_modifier", "not_directional_motion", "not_forced_subject"]
+          })
+        });
+      }
+      function existentialNPFromNodes(nodes = []) {
+        const compact = withoutIgnorableSpaceText2(nodes || []);
+        if (!compact.length) return null;
+        if (compact.length === 1 && (nodeCanFillSlot2(compact[0], "np") || nodeCanFillSlot2(compact[0], "head_noun") || nodeCanFillSlot2(compact[0], "object"))) return compact[0];
+        const wrapped = applyConstructionPatterns2(compact);
+        const full = fullSpanSingleConstruction2(wrapped, compact);
+        if (full && (nodeCanFillSlot2(full, "np") || nodeCanFillSlot2(full, "head_noun") || nodeCanFillSlot2(full, "object"))) return full;
+        return null;
+      }
+      function locativeDomainPrefix(nodes = []) {
+        const compact = withoutIgnorableSpaceText2(nodes || []);
+        if (!compact.length) return null;
+        if (compact.length >= 2) {
+          const phrase = spatialLocalizerPhraseFromNodes(compact.slice(0, 2));
+          if (phrase) return { node: phrase, consumed: 2 };
+        }
+        const first = compact[0];
+        if (nodeCanFillSlot2(first, "location") || nodeCanFillSlot2(first, "goal")) {
+          const location = first.kind === "token" ? parserInactiveTokenClone2(first, {
+            label: "where",
+            syntax: `${first.syntax || "place_or_goal"} locative_domain`,
+            slots: ["location", "locative_domain"],
+            reason: "The overt place expression establishes the spatial domain without being forced into grammatical subject or topic status.",
+            active_affordance_match: { role: "where", slot: "locative_domain", source: "construction_override" },
+            preserve_existing_affordances: true
+          }) : first;
+          return { node: location, consumed: 1 };
+        }
+        return null;
+      }
+      function presentationalLocativeCodaFromNodes(nodes = []) {
+        const compact = withoutIgnorableSpaceText2(nodes || []);
+        if (!compact.length) return null;
+        if (compact.length === 1 && isToken2(compact[0], "喺度")) {
+          const child = parserInactiveTokenClone2(compact[0], {
+            label: "where",
+            pos: "location",
+            syntax: "locative_deictic presentational_location_coda",
+            slots: ["locative_phrase", "location", "presentational_coda"],
+            reason: "After an introduced existential participant, 喺度 is a visible locative coda rather than progressive aspect.",
+            active_affordance_match: { role: "where", slot: "presentational_coda", source: "construction_override" },
+            preserve_existing_affordances: true
+          });
+          return construction2("LocativePlacePhrase", "Location", [child], {
+            note: "Deictic locative coda inside an existential-presentational clause.",
+            slots: cleanSlots2(["locative_phrase", "location", "presentational_coda"]),
+            trace: traceInfo2("generative_template", {
+              construction_type: "LocativePlacePhrase",
+              template_family: "generative_template",
+              template: ["presentational_location_coda!"],
+              assigned_slots: ["presentational_coda"],
+              surfaces: [flattenSurface2(child)],
+              subspan: true,
+              predicate_subtype: "presentational_locative_coda",
+              not_claims: ["not_progressive_aspect"]
+            })
+          });
+        }
+        return locativePredicatePhraseFromNodes2(compact);
+      }
+      function placementPerfectiveVPFromNodes(nodes = []) {
+        const compact = withoutIgnorableSpaceText2(nodes || []);
+        if (compact.length < 4) return null;
+        const [verb, aspect, ...themeNodes] = compact;
+        if (!String(verb && verb.syntax || "").includes("positioning_verb")) return null;
+        if (!nodeCanFillSlot2(aspect, "perfective_aspect") && !isToken2(aspect, "咗")) return null;
+        const theme = existentialNPFromNodes(themeNodes);
+        if (!theme) return null;
+        const predicate = parserInactiveTokenClone2(verb, {
+          label: "doing",
+          syntax: "positioning_action_predicate locative_inversion_predicate",
+          slots: ["action_verb", "main_verb", "predicate", "positioning_predicate"],
+          reason: "The visible positioning verb predicates the postverbal theme inside a locative-inversion frame."
+        });
+        const children = [predicate, aspect, theme];
+        return construction2("PerfectiveVP", "PerfVP", children, {
+          note: "Perfective positioning predicate with an overt postverbal theme.",
+          slots: cleanSlots2(["perfective_vp", "vp", "action_vp", "predicate", "perfective_aspect", "object", "theme", ...templateDerivedSlots2("PerfectiveVP", children)]),
+          trace: traceInfo2("generative_template", {
+            construction_type: "PerfectiveVP",
+            template_family: "generative_template",
+            template: ["positioning_predicate!", "perfective_aspect!", "theme!"],
+            assigned_slots: ["positioning_predicate", "perfective_aspect", "theme"],
+            surfaces: children.map(flattenSurface2),
+            subspan: true,
+            event_subtype: "perfective_positioning",
+            not_claims: ["not_objectless_perfective"]
+          })
+        });
+      }
+      function existentialLocationPresentationalFallback2(core = []) {
+        const { core: bareCore, particles } = withoutTrailingParticles2(core);
+        const compact = withoutIgnorableSpaceText2(bareCore);
+        if (!compact.length) return null;
+        const existentialIndex = compact.findIndex((node) => isToken2(node, "有") || isToken2(node, "冇"));
+        if (existentialIndex > 0 && existentialIndex < compact.length - 1) {
+          const locationPrefix2 = locativeDomainPrefix(compact.slice(0, existentialIndex));
+          if (locationPrefix2 && locationPrefix2.consumed === existentialIndex) {
+            const theme = existentialNPFromNodes(compact.slice(existentialIndex + 1));
+            if (theme) {
+              const marker = compact[existentialIndex];
+              const negative = isToken2(marker, "冇");
+              const predicate = parserInactiveTokenClone2(marker, {
+                label: "func",
+                syntax: negative ? "negated_locative_existential_predicate" : "locative_existential_predicate",
+                slots: [negative ? "negated_existential" : "existential", "locative_existential_predicate", "predicate"],
+                reason: `${flattenSurface2(marker)} predicates nonexistence/existence inside the overt spatial domain.`
+              });
+              const children = [locationPrefix2.node, predicate, theme, ...particles];
+              return construction2("LocativeExistentialClause", "LocExist", children, {
+                note: "Locative existential clause with overt spatial domain and introduced NP.",
+                slots: cleanSlots2(["locative_existential_clause", "existential_clause", "location", "locative_domain", "predicate", negative ? "negated_existential" : "existential", "introduced_theme", "clause", ...templateDerivedSlots2("LocativeExistentialClause", children)]),
+                trace: traceInfo2("generative_template", {
+                  construction_type: "LocativeExistentialClause",
+                  template_family: "generative_template",
+                  template: ["locative_domain!", negative ? "negated_existential!" : "existential!", "introduced_theme!", "particle?"],
+                  assigned_slots: ["locative_domain", negative ? "negated_existential" : "existential", "introduced_theme", ...particles.map(() => "particle")],
+                  surfaces: children.map(flattenSurface2),
+                  existential_subtype: "locative_existence",
+                  polarity: negative ? "negative" : "positive",
+                  have_relation: "existence",
+                  location_relation: "overt_spatial_domain_not_forced_subject_or_topic",
+                  subject_status: "impersonal",
+                  subjectless_type: "genuinely_subjectless_locative_existential",
+                  hidden_subject_inserted: false,
+                  introduced_theme_surface: flattenSurface2(theme),
+                  not_claims: ["not_possessor_subject", "not_location_as_forced_subject", "not_location_as_forced_topic", "not_hidden_expletive_subject"]
+                })
+              });
+            }
+          }
+        }
+        if (existentialIndex === 0 && compact.length >= 3) {
+          const codaIndex = compact.findIndex((node, index) => index > 0 && (isToken2(node, "喺") || isToken2(node, "喺度")));
+          if (codaIndex > 1) {
+            const participant = existentialNPFromNodes(compact.slice(1, codaIndex));
+            const coda = presentationalLocativeCodaFromNodes(compact.slice(codaIndex));
+            if (participant && coda) {
+              const marker = compact[0];
+              const negative = isToken2(marker, "冇");
+              const predicate = parserInactiveTokenClone2(marker, {
+                label: "func",
+                syntax: negative ? "negated_existential_presentational_predicate" : "existential_presentational_predicate",
+                slots: [negative ? "negated_existential" : "existential", "presentational_predicate", "predicate"],
+                reason: `${flattenSurface2(marker)} introduces the visible participant before its locative coda.`
+              });
+              const children = [predicate, participant, coda, ...particles];
+              return construction2("ExistentialPresentationalClause", "Presentational", children, {
+                note: "Existential-presentational clause: predicate + introduced participant + visible locative coda.",
+                slots: cleanSlots2(["existential_presentational_clause", "existential_clause", "predicate", negative ? "negated_existential" : "existential", "introduced_participant", "presentational_coda", "location", "clause", ...templateDerivedSlots2("ExistentialPresentationalClause", children)]),
+                trace: traceInfo2("generative_template", {
+                  construction_type: "ExistentialPresentationalClause",
+                  template_family: "generative_template",
+                  template: [negative ? "negated_existential!" : "existential!", "introduced_participant!", "presentational_coda!", "particle?"],
+                  assigned_slots: [negative ? "negated_existential" : "existential", "introduced_participant", "presentational_coda", ...particles.map(() => "particle")],
+                  surfaces: children.map(flattenSurface2),
+                  existential_subtype: "participant_presentation_with_locative_coda",
+                  polarity: negative ? "negative" : "positive",
+                  have_relation: "presentation",
+                  subject_status: "impersonal",
+                  subjectless_type: "genuinely_subjectless_existential_presentational",
+                  hidden_subject_inserted: false,
+                  introduced_participant_surface: flattenSurface2(participant),
+                  presentational_coda_surface: flattenSurface2(coda),
+                  not_claims: ["not_prenominal_relative_clause", "not_possessive_have", "not_hidden_subject", "not_progressive_aspect"]
+                })
+              });
+            }
+          }
+        }
+        const locationPrefix = locativeDomainPrefix(compact);
+        if (!locationPrefix || locationPrefix.consumed >= compact.length) return null;
+        const remainder = compact.slice(locationPrefix.consumed);
+        const positioning = placementPerfectiveVPFromNodes(remainder);
+        if (positioning) {
+          const children = [locationPrefix.node, positioning, ...particles];
+          return construction2("LocativeFrameClause", "LocativeFrame", children, {
+            note: "Narrow locative-inversion frame with overt location and postverbal theme; grammatical subjecthood of the location is not forced.",
+            slots: cleanSlots2(["locative_frame_clause", "location", "locative_domain", "predicate", "introduced_theme", "clause", ...templateDerivedSlots2("LocativeFrameClause", children)]),
+            trace: traceInfo2("generative_template", {
+              construction_type: "LocativeFrameClause",
+              template_family: "generative_template",
+              template: ["locative_domain!", "positioning_predicate!", "particle?"],
+              assigned_slots: ["locative_domain", "positioning_predicate", ...particles.map(() => "particle")],
+              surfaces: children.map(flattenSurface2),
+              locative_frame_subtype: "locative_inversion",
+              location_relation: "locative_frame_subjecthood_underdetermined",
+              subject_status: "underdetermined_location_relation",
+              hidden_subject_inserted: false,
+              not_claims: ["not_locative_existential_have", "not_location_as_automatically_subject", "not_location_as_automatically_topic", "not_hidden_subject"]
+            })
+          });
+        }
+        const wrappedProperty = applyConstructionPatterns2(remainder);
+        const property = fullSpanSingleConstruction2(wrappedProperty, remainder);
+        if (property && ["DegreeStativePredicate", "StativePredicate", "NegatedStativePredicate"].includes(property.type)) {
+          const children = [locationPrefix.node, property, ...particles];
+          return construction2("LocativeFrameClause", "LocativeFrame", children, {
+            note: "Location-framed property clause. The overt place establishes the domain; its subject/topic status is not forced.",
+            slots: cleanSlots2(["locative_frame_clause", "location", "locative_domain", "predicate", "clause", ...templateDerivedSlots2("LocativeFrameClause", children)]),
+            trace: traceInfo2("generative_template", {
+              construction_type: "LocativeFrameClause",
+              template_family: "generative_template",
+              template: ["locative_domain!", "property_predicate!", "particle?"],
+              assigned_slots: ["locative_domain", "property_predicate", ...particles.map(() => "particle")],
+              surfaces: children.map(flattenSurface2),
+              locative_frame_subtype: "location_property",
+              location_relation: "frame_or_topic_status_underdetermined",
+              subject_status: "underdetermined_location_relation",
+              hidden_subject_inserted: false,
+              not_claims: ["not_environmental_temperature_clause", "not_location_as_automatically_subject", "not_location_as_automatically_topic", "not_hidden_subject"]
+            })
+          });
+        }
+        return null;
+      }
+      return {
+        spatialLocalizerPhraseFromNodes,
+        existentialNPFromNodes,
+        locativeDomainPrefix,
+        presentationalLocativeCodaFromNodes,
+        placementPerfectiveVPFromNodes,
+        existentialLocationPresentationalFallback: existentialLocationPresentationalFallback2
+      };
+    };
+  }
+});
+
+// src/parser/detectors/nominal-predication/clauses.js
+var require_clauses5 = __commonJS({
+  "src/parser/detectors/nominal-predication/clauses.js"(exports2, module2) {
+    "use strict";
+    module2.exports = function createDetectors(dependencies = {}) {
+      const {
+        categorySubspanFor: categorySubspanFor2,
+        cleanSlots: cleanSlots2,
+        construction: construction2,
+        flattenSurface: flattenSurface2,
+        isToken: isToken2,
+        nodeCanFillSlot: nodeCanFillSlot2,
+        parserInactiveTokenClone: parserInactiveTokenClone2,
+        stringIncludesAny: stringIncludesAny2,
+        traceInfo: traceInfo2,
+        withoutIgnorableSpaceText: withoutIgnorableSpaceText2,
+        withoutTrailingParticles: withoutTrailingParticles2
+      } = dependencies;
+      function nominalPredicateSubjectFromNodes(nodes = []) {
+        const compact = withoutIgnorableSpaceText2(nodes || []);
+        if (!compact.length) return null;
+        if (compact.length === 1) {
+          const only = compact[0];
+          if (nodeCanFillSlot2(only, "subject") || nodeCanFillSlot2(only, "np") || nodeCanFillSlot2(only, "head_noun") || nodeCanFillSlot2(only, "location")) return only;
+          return null;
+        }
+        const templated = categorySubspanFor2(compact, [
+          "OvertHeadDemonstrativeClassifierNP",
+          "QuantifiedClassifierNP",
+          "QuantifiedPersonNP",
+          "DiMarkedNP",
+          "OrdinalClassifierNP",
+          "ClassifierObjectNP",
+          "ModifiedNP",
+          "NominalHeadSpan",
+          "CoordinatedNP"
+        ]);
+        if (!templated) return null;
+        if (!nodeCanFillSlot2(templated, "subject") && !nodeCanFillSlot2(templated, "np") && !nodeCanFillSlot2(templated, "head_noun") && !nodeCanFillSlot2(templated, "location")) return null;
+        return templated;
+      }
+      function nominalPredicateTokens(node) {
+        if (!node) return [];
+        if (node.kind === "token") return [node];
+        if (node.kind === "construction") return (node.children || []).flatMap(nominalPredicateTokens);
+        return [];
+      }
+      function nominalPredicateSubjectClass(node) {
+        const tokens = nominalPredicateTokens(node || {});
+        if (tokens.some((item) => item.label === "who")) return "person";
+        if (tokens.some((item) => item.label === "when")) return "time";
+        if (nodeCanFillSlot2(node, "location") || tokens.some((item) => item.label === "where")) return "location";
+        const areaCompatibleSyntax = ["house_noun", "interior_location", "building_shop", "room_noun", "property_noun"];
+        if (tokens.some((item) => stringIncludesAny2(String(item.syntax || ""), areaCompatibleSyntax))) return "area_measurable_nominal";
+        return "nominal";
+      }
+      function nominalPredicateQuantityClone(node, constructionType) {
+        return parserInactiveTokenClone2(node, {
+          label: "how",
+          pos: "numeral",
+          syntax: "quantity count_value nominal_predicate_quantity",
+          slots: ["quantity", "count_value"],
+          reason: `The visible numeral contributes the measured value inside ${constructionType}, rather than acting as a property predicate.`,
+          active_affordance_match: { role: "how", slot: "quantity", source: "construction_override" }
+        });
+      }
+      function nominalPredicateUnitClone(node, domain) {
+        const surface = flattenSurface2(node);
+        if (domain === "price") {
+          return parserInactiveTokenClone2(node, {
+            label: "what",
+            pos: "noun",
+            syntax: "currency_unit nominal_measure_unit price_measure_unit",
+            slots: ["currency_unit", "nominal_measure_unit", "measure_unit"],
+            reason: `${surface} is the overt currency unit in a restricted price nominal predicate.`,
+            active_affordance_match: { role: "what", slot: "currency_unit", source: "construction_override" }
+          });
+        }
+        return parserInactiveTokenClone2(node, {
+          label: "measure_word",
+          pos: "measure",
+          syntax: domain === "age" ? "age_unit nominal_measure_unit" : domain === "area" ? "measure_unit area_measure_unit nominal_measure_unit" : "measure_unit length_measure_unit nominal_measure_unit",
+          slots: domain === "age" ? ["age_unit", "nominal_measure_unit", "measure_unit"] : domain === "area" ? ["measure_unit", "area_measure_unit", "nominal_measure_unit"] : ["measure_unit", "length_measure_unit", "nominal_measure_unit"],
+          reason: `${surface} is the overt ${domain} unit inside a restricted copula-less nominal predicate.`,
+          active_affordance_match: {
+            role: "measure_word",
+            slot: domain === "age" ? "age_unit" : domain === "area" ? "area_measure_unit" : "length_measure_unit",
+            source: "construction_override"
+          }
+        });
+      }
+      function nominalPredicateDimensionClone(node) {
+        return parserInactiveTokenClone2(node, {
+          label: "like",
+          pos: "stative",
+          syntax: "stative_predicate scalar_dimension_predicate length_dimension_predicate",
+          slots: ["dimension_predicate", "stative_predicate", "predicate"],
+          reason: "The overt dimensional predicate identifies the measured dimension and remains distinct from the numeric value and unit.",
+          active_affordance_match: { role: "like", slot: "dimension_predicate", source: "construction_override" }
+        });
+      }
+      function nominalMeasurePredicateFallback2(core) {
+        const { core: bareCore, particles } = withoutTrailingParticles2(core);
+        const compact = withoutIgnorableSpaceText2(bareCore);
+        if (compact.length < 3) return null;
+        if (compact.some((node) => isToken2(node, "係") || isToken2(node, "喺"))) return null;
+        let unitIndex = -1;
+        let domain = "";
+        for (let index = 1; index < compact.length; index++) {
+          const node = compact[index];
+          if (nodeCanFillSlot2(node, "age_unit")) {
+            unitIndex = index;
+            domain = "age";
+            break;
+          }
+          if (isToken2(node, "蚊")) {
+            unitIndex = index;
+            domain = "price";
+            break;
+          }
+          if (nodeCanFillSlot2(node, "measure_unit")) {
+            unitIndex = index;
+            domain = nodeCanFillSlot2(node, "area_measure_unit") ? "area_or_length" : "length";
+            break;
+          }
+        }
+        if (unitIndex < 1) return null;
+        let quantityStart = unitIndex;
+        while (quantityStart > 0 && nodeCanFillSlot2(compact[quantityStart - 1], "quantity")) quantityStart--;
+        if (quantityStart === unitIndex || quantityStart === 0) return null;
+        const quantityNodes = compact.slice(quantityStart, unitIndex);
+        if (!quantityNodes.every((node) => nodeCanFillSlot2(node, "quantity"))) return null;
+        const subjectNodes = compact.slice(0, quantityStart);
+        const subject = nominalPredicateSubjectFromNodes(subjectNodes);
+        if (!subject || flattenSurface2(subject) !== subjectNodes.map(flattenSurface2).join("")) return null;
+        const subjectClass = nominalPredicateSubjectClass(subject);
+        const afterUnit = compact.slice(unitIndex + 1);
+        let dimension = null;
+        if (afterUnit.length) {
+          if (afterUnit.length !== 1 || !nodeCanFillSlot2(afterUnit[0], "dimension_predicate")) return null;
+          dimension = afterUnit[0];
+        }
+        if (domain === "age" && subjectClass !== "person") return null;
+        if (domain === "price" && ["person", "time", "location"].includes(subjectClass)) return null;
+        if (domain === "area_or_length") {
+          if (dimension) domain = "length";
+          else if (["location", "area_measurable_nominal"].includes(subjectClass)) domain = "area";
+          else return null;
+        }
+        if (domain === "length" && !dimension) return null;
+        if (domain === "area" && dimension) return null;
+        if (domain === "price" && dimension) return null;
+        if (domain === "age" && dimension) return null;
+        const quantityChildren = quantityNodes.map((node) => nominalPredicateQuantityClone(node, "MeasureExpression"));
+        const unit = nominalPredicateUnitClone(compact[unitIndex], domain);
+        const dimensionChild = dimension ? nominalPredicateDimensionClone(dimension) : null;
+        const measureChildren = [...quantityChildren, unit, ...dimensionChild ? [dimensionChild] : []];
+        const measure = construction2("MeasureExpression", "Measure", measureChildren, {
+          slots: cleanSlots2([
+            "measure_expression",
+            "nominal_predicate",
+            "predicate",
+            "quantity",
+            "nominal_measure_unit",
+            domain === "age" ? "age_unit" : "",
+            domain === "price" ? "currency_unit" : "",
+            domain === "area" ? "area_measure_unit" : "",
+            domain === "length" ? "length_measure_unit" : "",
+            dimensionChild ? "dimension_predicate" : ""
+          ]),
+          note: `Restricted ${domain} measure expression used as a copula-less nominal predicate.`,
+          trace: traceInfo2("generative_template", {
+            construction_type: "MeasureExpression",
+            internal_representation_scope: "overt_measure_child_span",
+            independent_grammar_licensing: false,
+            licensing_parent: "NominalPredicateClause",
+            template_family: "generative_template",
+            template: ["quantity+", `${domain}_unit!`, ...dimensionChild ? ["dimension_predicate!"] : []],
+            assigned_slots: [...quantityChildren.map(() => "quantity"), `${domain}_unit`, ...dimensionChild ? ["dimension_predicate"] : []],
+            surfaces: measureChildren.map(flattenSurface2),
+            measure_domain: domain,
+            quantity_surface: quantityChildren.map(flattenSurface2).join(""),
+            unit_surface: flattenSurface2(unit),
+            dimension_surface: dimensionChild ? flattenSurface2(dimensionChild) : "",
+            subspan: true
+          })
+        });
+        const children = [subject, measure, ...particles];
+        return construction2("NominalPredicateClause", "NomPred", children, {
+          slots: cleanSlots2(["nominal_predicate_clause", "subject", "predicate", "nominal_predicate", "measure_expression", "clause"]),
+          note: `Restricted copula-less ${domain} nominal-predicate clause with an overt subject and overt measure expression.`,
+          trace: traceInfo2("generative_template", {
+            construction_type: "NominalPredicateClause",
+            template_family: "generative_template",
+            template: ["subject!", "measure_expression!", "particle?"],
+            assigned_slots: ["subject", "measure_expression", ...particles.map(() => "particle")],
+            surfaces: children.map(flattenSurface2),
+            nominal_predicate_type: domain,
+            copula_status: "licensed_omission_in_restricted_measure_predication",
+            subject_status: "overt",
+            subject_surface: flattenSurface2(subject),
+            predicate_surface: flattenSurface2(measure),
+            hidden_subject_inserted: false,
+            context_requirement_status: "context_not_required",
+            missing_argument_slots: [],
+            not_claims: [
+              "not_general_np_np_copula_omission",
+              "not_topic_by_initial_position_alone",
+              "not_hidden_copula_token",
+              "not_hidden_subject"
+            ]
+          })
+        });
+      }
+      return {
+        nominalPredicateSubjectFromNodes,
+        nominalPredicateTokens,
+        nominalPredicateSubjectClass,
+        nominalPredicateQuantityClone,
+        nominalPredicateUnitClone,
+        nominalPredicateDimensionClone,
+        nominalMeasurePredicateFallback: nominalMeasurePredicateFallback2
+      };
+    };
+  }
+});
+
 // src/parser/detectors/aspect/postverbal-zo.js
 var require_postverbal_zo = __commonJS({
   "src/parser/detectors/aspect/postverbal-zo.js"(exports2, module2) {
@@ -14918,44 +15710,9 @@ function applyRoleOverrides(assignments, template = {}) {
     });
   });
 }
+var environmentalClauseDetectors = null;
 function conventionalEnvironmentalEventConstruction(nodes = []) {
-  const compact = withoutIgnorableSpaceText(nodes || []);
-  if (compact.length !== 2 || compact.some((node) => node.kind === "construction" || node.kind === "text")) return null;
-  const eventSurface = compact.map((node) => flattenSurface(node)).join("");
-  const eventRule = ENVIRONMENTAL_EVENT_PREDICATES[eventSurface];
-  if (!eventRule || flattenSurface(compact[0]) !== eventRule.head || flattenSurface(compact[1]) !== eventRule.phenomenon) return null;
-  const head = parserInactiveTokenClone(compact[0], {
-    label: "doing",
-    syntax: "environmental_event_predicate",
-    slots: ["environmental_event_head", "environmental_predicate", "predicate"],
-    reason: `${eventRule.head} is licensed as an environmental event head only inside the conventional ${eventSurface} predicate.`,
-    active_affordance_match: { role: "doing", slot: "environmental_event_head", source: "construction_override" },
-    preserve_existing_affordances: true
-  });
-  const phenomenon = parserInactiveTokenClone(compact[1], {
-    label: "what",
-    syntax: "weather_phenomenon environmental_phenomenon",
-    slots: ["weather_phenomenon", "environmental_phenomenon"],
-    reason: `${eventRule.phenomenon} is the visible weather-phenomenon component of ${eventSurface}, not an ordinary affected object.`,
-    active_affordance_match: { role: "what", slot: "weather_phenomenon", source: "construction_override" },
-    preserve_existing_affordances: true
-  });
-  return construction("ImpersonalEnvironmentalClause", "Environment", [head, phenomenon], {
-    slots: constructionSlotsByType("ImpersonalEnvironmentalClause", [head, phenomenon]),
-    note: "Lexically licensed conventional environmental event predicate with transparent visible components.",
-    trace: traceInfo("generative_template", {
-      construction_type: "ImpersonalEnvironmentalClause",
-      template_family: "construction_template",
-      template: ["environmental_event_head!", "weather_phenomenon!"],
-      assigned_slots: ["environmental_event_head", "weather_phenomenon"],
-      surfaces: [eventRule.head, eventRule.phenomenon],
-      subject_status: "impersonal",
-      subjectless_type: "genuinely_subjectless_environmental",
-      hidden_subject_inserted: false,
-      environmental_subtype: eventRule.environmental_subtype,
-      not_claims: ["not_productive_vo_object_relation", "not_null_referential_subject", "not_hidden_expletive_subject"]
-    })
-  });
+  return environmentalClauseDetectors.conventionalEnvironmentalEventConstruction(nodes);
 }
 function categorySubspanFor(nodes, allowedTypes = null) {
   const conventionalEnvironmental = conventionalEnvironmentalEventConstruction(nodes);
@@ -16205,43 +16962,19 @@ function copulaClone(node, syntax, extraSlots, reason) {
     reason
   });
 }
-function interiorExistentialFrameFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const compact = withoutIgnorableSpaceText(bareCore);
-  if (compact.length < 6) return null;
-  const yauIndex = compact.findIndex((node) => isToken(node, "有"));
-  if (yauIndex < 0) return null;
-  const locationIndex = compact.findIndex((node) => isToken(node, "入面") || isToken(node, "入邊"));
-  if (locationIndex <= 0 || locationIndex >= yauIndex) return null;
-  const topicNodes = compact.slice(0, locationIndex);
-  const between = compact.slice(locationIndex + 1, yauIndex);
-  if (between.length < 1 || between.length > 2) return null;
-  const topic = categorySubspanFor(topicNodes, ["OvertHeadDemonstrativeClassifierNP", "OrdinalClassifierNP", "ModifiedNP", "NominalHeadSpan"]) || (topicNodes.length === 1 ? topicNodes[0] : null);
-  if (!topic || !nodeCanFillSlot(topic, "topic")) return null;
-  const wh = between[0];
-  const focus = between.length === 2 ? between[1] : null;
-  if (!nodeCanFillSlot(wh, "wh_object") && !nodeCanFillSlot(wh, "head_noun") && !nodeCanFillSlot(wh, "object")) return null;
-  if (focus && !nodeCanFillSlot(focus, "focus_adverb") && !nodeCanFillSlot(focus, "how")) return null;
-  const existential = parserInactiveTokenClone(compact[yauIndex], {
-    label: "func",
-    pos: "function",
-    syntax: "existential interior_existential",
-    slots: ["existential", "predicate"],
-    reason: "有 is interpreted as the existential predicate inside a bounded interior-existential frame."
-  });
-  const children = [topic, compact[locationIndex], wh, ...focus ? [focus] : [], existential, ...particles];
-  return construction("LocativeExistentialClause", "LocExist", children, {
-    note: "v0.5.33 interior existential frame: topic + 入面/入邊 + 乜嘢 + 都 + 有.",
-    slots: templateDerivedSlots("LocativeExistentialClause", children),
-    trace: traceInfo("generative_template", {
-      construction_type: "LocativeExistentialClause",
-      template: ["topic!", "location!", "wh_object!", ...focus ? ["focus_adverb?"] : [], "existential!", "particle?"],
-      assigned_slots: ["topic", "location", "wh_object", ...focus ? ["focus_adverb"] : [], "existential", ...particles.map(() => "particle")],
-      surfaces: children.map((node) => flattenSurface(node)),
-      reason: "Promotes the bounded corpus pattern for 'has everything inside' without creating broad 有 existential grammar."
-    })
-  });
-}
+var createExistentialClauseDetectors = require_clauses3();
+var { interiorExistentialFrameFallback } = createExistentialClauseDetectors({
+  categorySubspanFor,
+  construction,
+  flattenSurface,
+  isToken,
+  nodeCanFillSlot,
+  parserInactiveTokenClone,
+  templateDerivedSlots,
+  traceInfo,
+  withoutIgnorableSpaceText,
+  withoutTrailingParticles
+});
 var {
   resultTopicFromNodes,
   resultComplementFromNodes,
@@ -17392,608 +18125,51 @@ var {
   withoutIgnorableSpaceText,
   withoutTrailingParticles
 });
-function environmentalPredicateParts(core = []) {
-  const compact = withoutIgnorableSpaceText(core || []);
-  if (!compact.length) return null;
-  const conventionalEnvironmental = conventionalEnvironmentalEventConstruction(compact);
-  if (conventionalEnvironmental) {
-    return {
-      predicate: conventionalEnvironmental,
-      environmental_subtype: (conventionalEnvironmental.trace || {}).environmental_subtype || "environmental_event"
-    };
-  }
-  const event = categorySubspanFor(compact, ["ImpersonalEnvironmentalClause"]);
-  if (event) {
-    return {
-      predicate: event,
-      environmental_subtype: flattenSurface(event) === "落雨" ? "precipitation_event" : "wind_event"
-    };
-  }
-  if (compact.length === 1 && nodeCanFillSlot(compact[0], "environmental_transition_predicate")) {
-    const child = parserInactiveTokenClone(compact[0], {
-      label: "doing",
-      syntax: "environmental_transition_predicate impersonal_predicate",
-      slots: ["environmental_transition_predicate", "environmental_predicate", "predicate"],
-      reason: "天光 is a visible environmental transition predicate; no null referential or expletive subject is inserted.",
-      active_affordance_match: { role: "doing", slot: "environmental_transition_predicate", source: "construction_override" },
-      preserve_existing_affordances: true
-    });
-    const predicate = construction("ImpersonalEnvironmentalClause", "Environment", [child], {
-      slots: constructionSlotsByType("ImpersonalEnvironmentalClause", [child]),
-      note: "Genuinely subjectless environmental transition clause.",
-      trace: traceInfo("generative_template", {
-        construction_type: "ImpersonalEnvironmentalClause",
-        template_family: "generative_template",
-        template: ["environmental_transition_predicate!"],
-        assigned_slots: ["environmental_transition_predicate"],
-        surfaces: [flattenSurface(child)],
-        subject_status: "impersonal",
-        subjectless_type: "genuinely_subjectless_environmental",
-        hidden_subject_inserted: false,
-        environmental_subtype: "daylight_transition",
-        not_claims: ["not_null_referential_subject", "not_hidden_expletive_subject", "not_nominal_subject天"]
-      })
-    });
-    return { predicate, environmental_subtype: "daylight_transition" };
-  }
-  const ambient = categorySubspanFor(compact, ["DegreeStativePredicate"]);
-  if (ambient && nodeCanFillSlot(ambient, "ambient_environmental_predicate")) {
-    return { predicate: ambient, environmental_subtype: "ambient_temperature_property" };
-  }
-  return null;
-}
-function spatialLocalizerPhraseFromNodes(nodes = []) {
-  const compact = withoutIgnorableSpaceText(nodes || []);
-  if (compact.length !== 2) return null;
-  const [base, localizer] = compact;
-  const baseLooksNominal = nodeCanFillSlot(base, "np") || nodeCanFillSlot(base, "head_noun") || nodeCanFillSlot(base, "object") || nodeCanFillSlot(base, "location");
-  const localizerSyntax = String(localizer && localizer.syntax || "");
-  if (!baseLooksNominal || !localizerSyntax.includes("spatial_localizer")) return null;
-  const localizerChild = parserInactiveTokenClone(localizer, {
-    label: "where",
-    syntax: `${localizerSyntax} postnominal_spatial_localizer`,
-    slots: ["location", "spatial_localizer", "locative_domain"],
-    reason: "The postnominal localizer supplies the spatial relation for the visible nominal base.",
-    active_affordance_match: { role: "where", slot: "spatial_localizer", source: "construction_override" },
-    preserve_existing_affordances: true
-  });
-  const children = [base, localizerChild];
-  return construction("LocativePlacePhrase", "Location", children, {
-    note: "Nominal location base plus postnominal spatial localizer.",
-    slots: cleanSlots(["locative_phrase", "location", "goal", "locative_domain", "spatial_localizer", ...templateDerivedSlots("LocativePlacePhrase", children)]),
-    trace: traceInfo("generative_template", {
-      construction_type: "LocativePlacePhrase",
-      template_family: "generative_template",
-      template: ["location_base!", "spatial_localizer!"],
-      assigned_slots: ["location_base", "spatial_localizer"],
-      surfaces: children.map(flattenSurface),
-      subspan: true,
-      location_relation: "nominal_base_plus_postnominal_localizer",
-      subject_status: "not_assigned",
-      not_claims: ["not_temporal_modifier", "not_directional_motion", "not_forced_subject"]
-    })
-  });
-}
-function existentialNPFromNodes(nodes = []) {
-  const compact = withoutIgnorableSpaceText(nodes || []);
-  if (!compact.length) return null;
-  if (compact.length === 1 && (nodeCanFillSlot(compact[0], "np") || nodeCanFillSlot(compact[0], "head_noun") || nodeCanFillSlot(compact[0], "object"))) return compact[0];
-  const wrapped = applyConstructionPatterns(compact);
-  const full = fullSpanSingleConstruction(wrapped, compact);
-  if (full && (nodeCanFillSlot(full, "np") || nodeCanFillSlot(full, "head_noun") || nodeCanFillSlot(full, "object"))) return full;
-  return null;
-}
-function locativeDomainPrefix(nodes = []) {
-  const compact = withoutIgnorableSpaceText(nodes || []);
-  if (!compact.length) return null;
-  if (compact.length >= 2) {
-    const phrase = spatialLocalizerPhraseFromNodes(compact.slice(0, 2));
-    if (phrase) return { node: phrase, consumed: 2 };
-  }
-  const first = compact[0];
-  if (nodeCanFillSlot(first, "location") || nodeCanFillSlot(first, "goal")) {
-    const location = first.kind === "token" ? parserInactiveTokenClone(first, {
-      label: "where",
-      syntax: `${first.syntax || "place_or_goal"} locative_domain`,
-      slots: ["location", "locative_domain"],
-      reason: "The overt place expression establishes the spatial domain without being forced into grammatical subject or topic status.",
-      active_affordance_match: { role: "where", slot: "locative_domain", source: "construction_override" },
-      preserve_existing_affordances: true
-    }) : first;
-    return { node: location, consumed: 1 };
-  }
-  return null;
-}
-function presentationalLocativeCodaFromNodes(nodes = []) {
-  const compact = withoutIgnorableSpaceText(nodes || []);
-  if (!compact.length) return null;
-  if (compact.length === 1 && isToken(compact[0], "喺度")) {
-    const child = parserInactiveTokenClone(compact[0], {
-      label: "where",
-      pos: "location",
-      syntax: "locative_deictic presentational_location_coda",
-      slots: ["locative_phrase", "location", "presentational_coda"],
-      reason: "After an introduced existential participant, 喺度 is a visible locative coda rather than progressive aspect.",
-      active_affordance_match: { role: "where", slot: "presentational_coda", source: "construction_override" },
-      preserve_existing_affordances: true
-    });
-    return construction("LocativePlacePhrase", "Location", [child], {
-      note: "Deictic locative coda inside an existential-presentational clause.",
-      slots: cleanSlots(["locative_phrase", "location", "presentational_coda"]),
-      trace: traceInfo("generative_template", {
-        construction_type: "LocativePlacePhrase",
-        template_family: "generative_template",
-        template: ["presentational_location_coda!"],
-        assigned_slots: ["presentational_coda"],
-        surfaces: [flattenSurface(child)],
-        subspan: true,
-        predicate_subtype: "presentational_locative_coda",
-        not_claims: ["not_progressive_aspect"]
-      })
-    });
-  }
-  return locativePredicatePhraseFromNodes(compact);
-}
-function placementPerfectiveVPFromNodes(nodes = []) {
-  const compact = withoutIgnorableSpaceText(nodes || []);
-  if (compact.length < 4) return null;
-  const [verb, aspect, ...themeNodes] = compact;
-  if (!String(verb && verb.syntax || "").includes("positioning_verb")) return null;
-  if (!nodeCanFillSlot(aspect, "perfective_aspect") && !isToken(aspect, "咗")) return null;
-  const theme = existentialNPFromNodes(themeNodes);
-  if (!theme) return null;
-  const predicate = parserInactiveTokenClone(verb, {
-    label: "doing",
-    syntax: "positioning_action_predicate locative_inversion_predicate",
-    slots: ["action_verb", "main_verb", "predicate", "positioning_predicate"],
-    reason: "The visible positioning verb predicates the postverbal theme inside a locative-inversion frame."
-  });
-  const children = [predicate, aspect, theme];
-  return construction("PerfectiveVP", "PerfVP", children, {
-    note: "Perfective positioning predicate with an overt postverbal theme.",
-    slots: cleanSlots(["perfective_vp", "vp", "action_vp", "predicate", "perfective_aspect", "object", "theme", ...templateDerivedSlots("PerfectiveVP", children)]),
-    trace: traceInfo("generative_template", {
-      construction_type: "PerfectiveVP",
-      template_family: "generative_template",
-      template: ["positioning_predicate!", "perfective_aspect!", "theme!"],
-      assigned_slots: ["positioning_predicate", "perfective_aspect", "theme"],
-      surfaces: children.map(flattenSurface),
-      subspan: true,
-      event_subtype: "perfective_positioning",
-      not_claims: ["not_objectless_perfective"]
-    })
-  });
-}
-function existentialLocationPresentationalFallback(core = []) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const compact = withoutIgnorableSpaceText(bareCore);
-  if (!compact.length) return null;
-  const existentialIndex = compact.findIndex((node) => isToken(node, "有") || isToken(node, "冇"));
-  if (existentialIndex > 0 && existentialIndex < compact.length - 1) {
-    const locationPrefix2 = locativeDomainPrefix(compact.slice(0, existentialIndex));
-    if (locationPrefix2 && locationPrefix2.consumed === existentialIndex) {
-      const theme = existentialNPFromNodes(compact.slice(existentialIndex + 1));
-      if (theme) {
-        const marker = compact[existentialIndex];
-        const negative = isToken(marker, "冇");
-        const predicate = parserInactiveTokenClone(marker, {
-          label: "func",
-          syntax: negative ? "negated_locative_existential_predicate" : "locative_existential_predicate",
-          slots: [negative ? "negated_existential" : "existential", "locative_existential_predicate", "predicate"],
-          reason: `${flattenSurface(marker)} predicates nonexistence/existence inside the overt spatial domain.`
-        });
-        const children = [locationPrefix2.node, predicate, theme, ...particles];
-        return construction("LocativeExistentialClause", "LocExist", children, {
-          note: "Locative existential clause with overt spatial domain and introduced NP.",
-          slots: cleanSlots(["locative_existential_clause", "existential_clause", "location", "locative_domain", "predicate", negative ? "negated_existential" : "existential", "introduced_theme", "clause", ...templateDerivedSlots("LocativeExistentialClause", children)]),
-          trace: traceInfo("generative_template", {
-            construction_type: "LocativeExistentialClause",
-            template_family: "generative_template",
-            template: ["locative_domain!", negative ? "negated_existential!" : "existential!", "introduced_theme!", "particle?"],
-            assigned_slots: ["locative_domain", negative ? "negated_existential" : "existential", "introduced_theme", ...particles.map(() => "particle")],
-            surfaces: children.map(flattenSurface),
-            existential_subtype: "locative_existence",
-            polarity: negative ? "negative" : "positive",
-            have_relation: "existence",
-            location_relation: "overt_spatial_domain_not_forced_subject_or_topic",
-            subject_status: "impersonal",
-            subjectless_type: "genuinely_subjectless_locative_existential",
-            hidden_subject_inserted: false,
-            introduced_theme_surface: flattenSurface(theme),
-            not_claims: ["not_possessor_subject", "not_location_as_forced_subject", "not_location_as_forced_topic", "not_hidden_expletive_subject"]
-          })
-        });
-      }
-    }
-  }
-  if (existentialIndex === 0 && compact.length >= 3) {
-    const codaIndex = compact.findIndex((node, index) => index > 0 && (isToken(node, "喺") || isToken(node, "喺度")));
-    if (codaIndex > 1) {
-      const participant = existentialNPFromNodes(compact.slice(1, codaIndex));
-      const coda = presentationalLocativeCodaFromNodes(compact.slice(codaIndex));
-      if (participant && coda) {
-        const marker = compact[0];
-        const negative = isToken(marker, "冇");
-        const predicate = parserInactiveTokenClone(marker, {
-          label: "func",
-          syntax: negative ? "negated_existential_presentational_predicate" : "existential_presentational_predicate",
-          slots: [negative ? "negated_existential" : "existential", "presentational_predicate", "predicate"],
-          reason: `${flattenSurface(marker)} introduces the visible participant before its locative coda.`
-        });
-        const children = [predicate, participant, coda, ...particles];
-        return construction("ExistentialPresentationalClause", "Presentational", children, {
-          note: "Existential-presentational clause: predicate + introduced participant + visible locative coda.",
-          slots: cleanSlots(["existential_presentational_clause", "existential_clause", "predicate", negative ? "negated_existential" : "existential", "introduced_participant", "presentational_coda", "location", "clause", ...templateDerivedSlots("ExistentialPresentationalClause", children)]),
-          trace: traceInfo("generative_template", {
-            construction_type: "ExistentialPresentationalClause",
-            template_family: "generative_template",
-            template: [negative ? "negated_existential!" : "existential!", "introduced_participant!", "presentational_coda!", "particle?"],
-            assigned_slots: [negative ? "negated_existential" : "existential", "introduced_participant", "presentational_coda", ...particles.map(() => "particle")],
-            surfaces: children.map(flattenSurface),
-            existential_subtype: "participant_presentation_with_locative_coda",
-            polarity: negative ? "negative" : "positive",
-            have_relation: "presentation",
-            subject_status: "impersonal",
-            subjectless_type: "genuinely_subjectless_existential_presentational",
-            hidden_subject_inserted: false,
-            introduced_participant_surface: flattenSurface(participant),
-            presentational_coda_surface: flattenSurface(coda),
-            not_claims: ["not_prenominal_relative_clause", "not_possessive_have", "not_hidden_subject", "not_progressive_aspect"]
-          })
-        });
-      }
-    }
-  }
-  const locationPrefix = locativeDomainPrefix(compact);
-  if (!locationPrefix || locationPrefix.consumed >= compact.length) return null;
-  const remainder = compact.slice(locationPrefix.consumed);
-  const positioning = placementPerfectiveVPFromNodes(remainder);
-  if (positioning) {
-    const children = [locationPrefix.node, positioning, ...particles];
-    return construction("LocativeFrameClause", "LocativeFrame", children, {
-      note: "Narrow locative-inversion frame with overt location and postverbal theme; grammatical subjecthood of the location is not forced.",
-      slots: cleanSlots(["locative_frame_clause", "location", "locative_domain", "predicate", "introduced_theme", "clause", ...templateDerivedSlots("LocativeFrameClause", children)]),
-      trace: traceInfo("generative_template", {
-        construction_type: "LocativeFrameClause",
-        template_family: "generative_template",
-        template: ["locative_domain!", "positioning_predicate!", "particle?"],
-        assigned_slots: ["locative_domain", "positioning_predicate", ...particles.map(() => "particle")],
-        surfaces: children.map(flattenSurface),
-        locative_frame_subtype: "locative_inversion",
-        location_relation: "locative_frame_subjecthood_underdetermined",
-        subject_status: "underdetermined_location_relation",
-        hidden_subject_inserted: false,
-        not_claims: ["not_locative_existential_have", "not_location_as_automatically_subject", "not_location_as_automatically_topic", "not_hidden_subject"]
-      })
-    });
-  }
-  const wrappedProperty = applyConstructionPatterns(remainder);
-  const property = fullSpanSingleConstruction(wrappedProperty, remainder);
-  if (property && ["DegreeStativePredicate", "StativePredicate", "NegatedStativePredicate"].includes(property.type)) {
-    const children = [locationPrefix.node, property, ...particles];
-    return construction("LocativeFrameClause", "LocativeFrame", children, {
-      note: "Location-framed property clause. The overt place establishes the domain; its subject/topic status is not forced.",
-      slots: cleanSlots(["locative_frame_clause", "location", "locative_domain", "predicate", "clause", ...templateDerivedSlots("LocativeFrameClause", children)]),
-      trace: traceInfo("generative_template", {
-        construction_type: "LocativeFrameClause",
-        template_family: "generative_template",
-        template: ["locative_domain!", "property_predicate!", "particle?"],
-        assigned_slots: ["locative_domain", "property_predicate", ...particles.map(() => "particle")],
-        surfaces: children.map(flattenSurface),
-        locative_frame_subtype: "location_property",
-        location_relation: "frame_or_topic_status_underdetermined",
-        subject_status: "underdetermined_location_relation",
-        hidden_subject_inserted: false,
-        not_claims: ["not_environmental_temperature_clause", "not_location_as_automatically_subject", "not_location_as_automatically_topic", "not_hidden_subject"]
-      })
-    });
-  }
-  return null;
-}
-function impersonalEnvironmentalClauseFallback(core = []) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core || []);
-  if (!bareCore.length) return null;
-  if (bareCore.length >= 2 && nodeCanFillSlot(bareCore[0], "time")) {
-    const environmental2 = environmentalPredicateParts(bareCore.slice(1));
-    if (environmental2) {
-      const child = environmental2.predicate.type === "ImpersonalEnvironmentalClause" ? environmental2.predicate : construction("ImpersonalEnvironmentalClause", "Environment", [environmental2.predicate], {
-        slots: constructionSlotsByType("ImpersonalEnvironmentalClause", [environmental2.predicate]),
-        note: "Ambient environmental property licensed by an overt temporal frame.",
-        trace: traceInfo("generative_template", {
-          construction_type: "ImpersonalEnvironmentalClause",
-          template_family: "generative_template",
-          template: ["ambient_environmental_predicate!"],
-          assigned_slots: ["ambient_environmental_predicate"],
-          surfaces: [flattenSurface(environmental2.predicate)],
-          subject_status: "impersonal",
-          subjectless_type: "genuinely_subjectless_environmental",
-          hidden_subject_inserted: false,
-          environmental_subtype: environmental2.environmental_subtype,
-          not_claims: ["not_null_referential_subject", "not_hidden_expletive_subject"]
-        })
-      });
-      const children2 = [bareCore[0], child, ...particles];
-      return construction("TemporalClause", "Time", children2, {
-        slots: templateDerivedSlots("TemporalClause", children2),
-        note: "Time-framed environmental clause with no fabricated referential subject.",
-        trace: traceInfo("generative_template", {
-          construction_type: "TemporalClause",
-          template_family: "generative_template",
-          template: ["time!", "impersonal_environmental_clause!", "particle?"],
-          assigned_slots: ["time", "impersonal_environmental_clause", ...particles.map(() => "particle")],
-          surfaces: children2.map(flattenSurface),
-          clause_modifier_profile: "temporal_environmental_frame",
-          subject_status: "impersonal",
-          subjectless_type: "genuinely_subjectless_environmental",
-          hidden_subject_inserted: false,
-          not_claims: ["not_null_referential_subject", "not_hidden_expletive_subject"]
-        })
-      });
-    }
-  }
-  if (bareCore.length >= 2 && (nodeCanFillSlot(bareCore[0], "ambient_location_frame") || nodeCanFillSlot(bareCore[0], "location"))) {
-    const environmental2 = environmentalPredicateParts(bareCore.slice(1));
-    if (environmental2 && environmental2.environmental_subtype === "ambient_temperature_property") {
-      const ambientClause = construction("ImpersonalEnvironmentalClause", "Environment", [environmental2.predicate], {
-        slots: constructionSlotsByType("ImpersonalEnvironmentalClause", [environmental2.predicate]),
-        note: "Ambient temperature proposition licensed by an overt spatial frame.",
-        trace: traceInfo("generative_template", {
-          construction_type: "ImpersonalEnvironmentalClause",
-          template_family: "generative_template",
-          template: ["ambient_environmental_predicate!"],
-          assigned_slots: ["ambient_environmental_predicate"],
-          surfaces: [flattenSurface(environmental2.predicate)],
-          subject_status: "impersonal",
-          subjectless_type: "genuinely_subjectless_environmental",
-          hidden_subject_inserted: false,
-          environmental_subtype: environmental2.environmental_subtype,
-          not_claims: ["not_null_referential_subject", "not_hidden_expletive_subject"]
-        })
-      });
-      const location = parserInactiveTokenClone(bareCore[0], {
-        label: "where",
-        syntax: "ambient_location_frame spatial_localizer",
-        slots: ["location", "ambient_location_frame"],
-        reason: "The overt place expression frames the ambient proposition; its grammatical subject/topic status is not forced.",
-        active_affordance_match: { role: "where", slot: "ambient_location_frame", source: "construction_override" },
-        preserve_existing_affordances: true
-      });
-      const children2 = [location, ambientClause, ...particles];
-      return construction("LocativeFrameClause", "LocativeFrame", children2, {
-        slots: constructionSlotsByType("LocativeFrameClause", children2),
-        note: "Location-framed ambient clause. Location semantics are represented independently from grammatical subjecthood.",
-        trace: traceInfo("generative_template", {
-          construction_type: "LocativeFrameClause",
-          template_family: "generative_template",
-          template: ["ambient_location_frame!", "impersonal_environmental_clause!", "particle?"],
-          assigned_slots: ["ambient_location_frame", "impersonal_environmental_clause", ...particles.map(() => "particle")],
-          surfaces: children2.map(flattenSurface),
-          location_relation: "ambient_frame_not_forced_subject_or_topic",
-          subject_status: "impersonal",
-          subjectless_type: "location_framed_ambient",
-          hidden_subject_inserted: false,
-          not_claims: ["not_location_as_forced_subject", "not_location_as_forced_topic", "not_hidden_expletive_subject"]
-        })
-      });
-    }
-  }
-  const environmental = environmentalPredicateParts(bareCore);
-  if (!environmental || environmental.environmental_subtype === "ambient_temperature_property") return null;
-  const predicate = environmental.predicate;
-  const children = [...predicate.children || [predicate], ...particles];
-  return construction("ImpersonalEnvironmentalClause", "Environment", children, {
-    slots: constructionSlotsByType("ImpersonalEnvironmentalClause", children),
-    note: "Genuinely subjectless environmental clause; all visible predicate material remains transparent.",
-    trace: traceInfo("generative_template", {
-      construction_type: "ImpersonalEnvironmentalClause",
-      template_family: predicate.trace && predicate.trace.template_family ? predicate.trace.template_family : "generative_template",
-      template: predicate.trace && predicate.trace.template ? predicate.trace.template : ["environmental_predicate!", "particle?"],
-      assigned_slots: predicate.trace && predicate.trace.assigned_slots ? [...predicate.trace.assigned_slots, ...particles.map(() => "particle")] : ["environmental_predicate", ...particles.map(() => "particle")],
-      surfaces: children.map(flattenSurface),
-      subject_status: "impersonal",
-      subjectless_type: "genuinely_subjectless_environmental",
-      hidden_subject_inserted: false,
-      environmental_subtype: environmental.environmental_subtype,
-      not_claims: ["not_productive_vo_object_relation", "not_null_referential_subject", "not_hidden_expletive_subject"]
-    })
-  });
-}
-function nominalPredicateSubjectFromNodes(nodes = []) {
-  const compact = withoutIgnorableSpaceText(nodes || []);
-  if (!compact.length) return null;
-  if (compact.length === 1) {
-    const only = compact[0];
-    if (nodeCanFillSlot(only, "subject") || nodeCanFillSlot(only, "np") || nodeCanFillSlot(only, "head_noun") || nodeCanFillSlot(only, "location")) return only;
-    return null;
-  }
-  const templated = categorySubspanFor(compact, [
-    "OvertHeadDemonstrativeClassifierNP",
-    "QuantifiedClassifierNP",
-    "QuantifiedPersonNP",
-    "DiMarkedNP",
-    "OrdinalClassifierNP",
-    "ClassifierObjectNP",
-    "ModifiedNP",
-    "NominalHeadSpan",
-    "CoordinatedNP"
-  ]);
-  if (!templated) return null;
-  if (!nodeCanFillSlot(templated, "subject") && !nodeCanFillSlot(templated, "np") && !nodeCanFillSlot(templated, "head_noun") && !nodeCanFillSlot(templated, "location")) return null;
-  return templated;
-}
-function nominalPredicateTokens(node) {
-  if (!node) return [];
-  if (node.kind === "token") return [node];
-  if (node.kind === "construction") return (node.children || []).flatMap(nominalPredicateTokens);
-  return [];
-}
-function nominalPredicateSubjectClass(node) {
-  const tokens = nominalPredicateTokens(node || {});
-  if (tokens.some((item) => item.label === "who")) return "person";
-  if (tokens.some((item) => item.label === "when")) return "time";
-  if (nodeCanFillSlot(node, "location") || tokens.some((item) => item.label === "where")) return "location";
-  const areaCompatibleSyntax = ["house_noun", "interior_location", "building_shop", "room_noun", "property_noun"];
-  if (tokens.some((item) => stringIncludesAny(String(item.syntax || ""), areaCompatibleSyntax))) return "area_measurable_nominal";
-  return "nominal";
-}
-function nominalPredicateQuantityClone(node, constructionType) {
-  return parserInactiveTokenClone(node, {
-    label: "how",
-    pos: "numeral",
-    syntax: "quantity count_value nominal_predicate_quantity",
-    slots: ["quantity", "count_value"],
-    reason: `The visible numeral contributes the measured value inside ${constructionType}, rather than acting as a property predicate.`,
-    active_affordance_match: { role: "how", slot: "quantity", source: "construction_override" }
-  });
-}
-function nominalPredicateUnitClone(node, domain) {
-  const surface = flattenSurface(node);
-  if (domain === "price") {
-    return parserInactiveTokenClone(node, {
-      label: "what",
-      pos: "noun",
-      syntax: "currency_unit nominal_measure_unit price_measure_unit",
-      slots: ["currency_unit", "nominal_measure_unit", "measure_unit"],
-      reason: `${surface} is the overt currency unit in a restricted price nominal predicate.`,
-      active_affordance_match: { role: "what", slot: "currency_unit", source: "construction_override" }
-    });
-  }
-  return parserInactiveTokenClone(node, {
-    label: "measure_word",
-    pos: "measure",
-    syntax: domain === "age" ? "age_unit nominal_measure_unit" : domain === "area" ? "measure_unit area_measure_unit nominal_measure_unit" : "measure_unit length_measure_unit nominal_measure_unit",
-    slots: domain === "age" ? ["age_unit", "nominal_measure_unit", "measure_unit"] : domain === "area" ? ["measure_unit", "area_measure_unit", "nominal_measure_unit"] : ["measure_unit", "length_measure_unit", "nominal_measure_unit"],
-    reason: `${surface} is the overt ${domain} unit inside a restricted copula-less nominal predicate.`,
-    active_affordance_match: {
-      role: "measure_word",
-      slot: domain === "age" ? "age_unit" : domain === "area" ? "area_measure_unit" : "length_measure_unit",
-      source: "construction_override"
-    }
-  });
-}
-function nominalPredicateDimensionClone(node) {
-  return parserInactiveTokenClone(node, {
-    label: "like",
-    pos: "stative",
-    syntax: "stative_predicate scalar_dimension_predicate length_dimension_predicate",
-    slots: ["dimension_predicate", "stative_predicate", "predicate"],
-    reason: "The overt dimensional predicate identifies the measured dimension and remains distinct from the numeric value and unit.",
-    active_affordance_match: { role: "like", slot: "dimension_predicate", source: "construction_override" }
-  });
-}
-function nominalMeasurePredicateFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  const compact = withoutIgnorableSpaceText(bareCore);
-  if (compact.length < 3) return null;
-  if (compact.some((node) => isToken(node, "係") || isToken(node, "喺"))) return null;
-  let unitIndex = -1;
-  let domain = "";
-  for (let index = 1; index < compact.length; index++) {
-    const node = compact[index];
-    if (nodeCanFillSlot(node, "age_unit")) {
-      unitIndex = index;
-      domain = "age";
-      break;
-    }
-    if (isToken(node, "蚊")) {
-      unitIndex = index;
-      domain = "price";
-      break;
-    }
-    if (nodeCanFillSlot(node, "measure_unit")) {
-      unitIndex = index;
-      domain = nodeCanFillSlot(node, "area_measure_unit") ? "area_or_length" : "length";
-      break;
-    }
-  }
-  if (unitIndex < 1) return null;
-  let quantityStart = unitIndex;
-  while (quantityStart > 0 && nodeCanFillSlot(compact[quantityStart - 1], "quantity")) quantityStart--;
-  if (quantityStart === unitIndex || quantityStart === 0) return null;
-  const quantityNodes = compact.slice(quantityStart, unitIndex);
-  if (!quantityNodes.every((node) => nodeCanFillSlot(node, "quantity"))) return null;
-  const subjectNodes = compact.slice(0, quantityStart);
-  const subject = nominalPredicateSubjectFromNodes(subjectNodes);
-  if (!subject || flattenSurface(subject) !== subjectNodes.map(flattenSurface).join("")) return null;
-  const subjectClass = nominalPredicateSubjectClass(subject);
-  const afterUnit = compact.slice(unitIndex + 1);
-  let dimension = null;
-  if (afterUnit.length) {
-    if (afterUnit.length !== 1 || !nodeCanFillSlot(afterUnit[0], "dimension_predicate")) return null;
-    dimension = afterUnit[0];
-  }
-  if (domain === "age" && subjectClass !== "person") return null;
-  if (domain === "price" && ["person", "time", "location"].includes(subjectClass)) return null;
-  if (domain === "area_or_length") {
-    if (dimension) domain = "length";
-    else if (["location", "area_measurable_nominal"].includes(subjectClass)) domain = "area";
-    else return null;
-  }
-  if (domain === "length" && !dimension) return null;
-  if (domain === "area" && dimension) return null;
-  if (domain === "price" && dimension) return null;
-  if (domain === "age" && dimension) return null;
-  const quantityChildren = quantityNodes.map((node) => nominalPredicateQuantityClone(node, "MeasureExpression"));
-  const unit = nominalPredicateUnitClone(compact[unitIndex], domain);
-  const dimensionChild = dimension ? nominalPredicateDimensionClone(dimension) : null;
-  const measureChildren = [...quantityChildren, unit, ...dimensionChild ? [dimensionChild] : []];
-  const measure = construction("MeasureExpression", "Measure", measureChildren, {
-    slots: cleanSlots([
-      "measure_expression",
-      "nominal_predicate",
-      "predicate",
-      "quantity",
-      "nominal_measure_unit",
-      domain === "age" ? "age_unit" : "",
-      domain === "price" ? "currency_unit" : "",
-      domain === "area" ? "area_measure_unit" : "",
-      domain === "length" ? "length_measure_unit" : "",
-      dimensionChild ? "dimension_predicate" : ""
-    ]),
-    note: `Restricted ${domain} measure expression used as a copula-less nominal predicate.`,
-    trace: traceInfo("generative_template", {
-      construction_type: "MeasureExpression",
-      internal_representation_scope: "overt_measure_child_span",
-      independent_grammar_licensing: false,
-      licensing_parent: "NominalPredicateClause",
-      template_family: "generative_template",
-      template: ["quantity+", `${domain}_unit!`, ...dimensionChild ? ["dimension_predicate!"] : []],
-      assigned_slots: [...quantityChildren.map(() => "quantity"), `${domain}_unit`, ...dimensionChild ? ["dimension_predicate"] : []],
-      surfaces: measureChildren.map(flattenSurface),
-      measure_domain: domain,
-      quantity_surface: quantityChildren.map(flattenSurface).join(""),
-      unit_surface: flattenSurface(unit),
-      dimension_surface: dimensionChild ? flattenSurface(dimensionChild) : "",
-      subspan: true
-    })
-  });
-  const children = [subject, measure, ...particles];
-  return construction("NominalPredicateClause", "NomPred", children, {
-    slots: cleanSlots(["nominal_predicate_clause", "subject", "predicate", "nominal_predicate", "measure_expression", "clause"]),
-    note: `Restricted copula-less ${domain} nominal-predicate clause with an overt subject and overt measure expression.`,
-    trace: traceInfo("generative_template", {
-      construction_type: "NominalPredicateClause",
-      template_family: "generative_template",
-      template: ["subject!", "measure_expression!", "particle?"],
-      assigned_slots: ["subject", "measure_expression", ...particles.map(() => "particle")],
-      surfaces: children.map(flattenSurface),
-      nominal_predicate_type: domain,
-      copula_status: "licensed_omission_in_restricted_measure_predication",
-      subject_status: "overt",
-      subject_surface: flattenSurface(subject),
-      predicate_surface: flattenSurface(measure),
-      hidden_subject_inserted: false,
-      context_requirement_status: "context_not_required",
-      missing_argument_slots: [],
-      not_claims: [
-        "not_general_np_np_copula_omission",
-        "not_topic_by_initial_position_alone",
-        "not_hidden_copula_token",
-        "not_hidden_subject"
-      ]
-    })
-  });
-}
+var createEnvironmentalClauseDetectors = require_clauses4();
+environmentalClauseDetectors = createEnvironmentalClauseDetectors({
+  ENVIRONMENTAL_EVENT_PREDICATES,
+  categorySubspanFor: (...args) => categorySubspanFor(...args),
+  construction,
+  constructionSlotsByType,
+  flattenSurface,
+  nodeCanFillSlot,
+  parserInactiveTokenClone,
+  templateDerivedSlots,
+  traceInfo,
+  withoutIgnorableSpaceText,
+  withoutTrailingParticles
+});
+var { impersonalEnvironmentalClauseFallback } = environmentalClauseDetectors;
+var createExistentialSpatialDetectors = require_spatial();
+var { existentialLocationPresentationalFallback } = createExistentialSpatialDetectors({
+  applyConstructionPatterns,
+  cleanSlots,
+  construction,
+  flattenSurface,
+  fullSpanSingleConstruction,
+  isToken,
+  locativePredicatePhraseFromNodes,
+  nodeCanFillSlot,
+  parserInactiveTokenClone,
+  templateDerivedSlots,
+  traceInfo,
+  withoutIgnorableSpaceText,
+  withoutTrailingParticles
+});
+var createNominalPredicationDetectors = require_clauses5();
+var { nominalMeasurePredicateFallback } = createNominalPredicationDetectors({
+  categorySubspanFor,
+  cleanSlots,
+  construction,
+  flattenSurface,
+  isToken,
+  nodeCanFillSlot,
+  parserInactiveTokenClone,
+  stringIncludesAny,
+  traceInfo,
+  withoutIgnorableSpaceText,
+  withoutTrailingParticles
+});
 var createPostverbalZoDetectors = require_postverbal_zo();
 var {
   postverbalZoPerfectiveFromRawNodes,
