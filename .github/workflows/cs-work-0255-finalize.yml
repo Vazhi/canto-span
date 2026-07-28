@@ -1,0 +1,80 @@
+name: CS-WORK-0255 finalizer
+
+on:
+  push:
+    branches:
+      - agent/finalize-source-first-workflow
+    paths:
+      - "tools/temporary/CS-WORK-0255-final.b64.part-*"
+      - ".github/workflows/cs-work-0255-finalize.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cs-work-0255-finalize
+  cancel-in-progress: false
+
+jobs:
+  finalize:
+    if: github.repository == 'Vazhi/canto-span'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/finalize-source-first-workflow
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+
+      - name: Reconstruct validated source-first files
+        run: |
+          set -euo pipefail
+          test "${GITHUB_REF_NAME}" = "agent/finalize-source-first-workflow"
+
+          cat > /tmp/CS-WORK-0255-parts.sha256 <<'EOF'
+          c808b870c829f590c082519439658f23f29b6e09a375b46491ef367ab0cb843a  tools/temporary/CS-WORK-0255-final.b64.part-00
+          baefe2d3f011d3c46ed3ae943dd4a62b7eeb2c4e1a855bc936d3776cbcecbd8f  tools/temporary/CS-WORK-0255-final.b64.part-01
+          ec49f7f790245326561909ecf60cee17aedf1d8594e68cc0676e6fe50a606f98  tools/temporary/CS-WORK-0255-final.b64.part-02
+          7fad192908803387489bc5a1a2885753b1c92b185a374f66cc6d6d4309a45c64  tools/temporary/CS-WORK-0255-final.b64.part-03
+          14a0e923f86c8f94919625cac0b434de4a4b6d4dfb10c083708b5b20fa2415a8  tools/temporary/CS-WORK-0255-final.b64.part-04
+          e6c14bcdcba0f9356adddefc74bca740e349269def6fefb3edf27087bdd4e56c  tools/temporary/CS-WORK-0255-final.b64.part-05
+          e7da181435231c5e701d9bbd07a6f7358142f7437a366b3f46b10f70348a5e63  tools/temporary/CS-WORK-0255-final.b64.part-06
+          f700723603ac7bc55d43e6e05ebeaec9565ea273b233065a08776144423a1469  tools/temporary/CS-WORK-0255-final.b64.part-07
+          EOF
+          sha256sum --check --strict /tmp/CS-WORK-0255-parts.sha256
+
+          cat tools/temporary/CS-WORK-0255-final.b64.part-{00..07} > /tmp/CS-WORK-0255-final.b64
+          base64 --decode /tmp/CS-WORK-0255-final.b64 > /tmp/CS-WORK-0255-final.tar.gz
+          echo '45c4b2d04f3b74532790efcb00f1514eb61bdbe906ad08df8cb019a7db6f19c5  /tmp/CS-WORK-0255-final.tar.gz' | sha256sum --check --strict
+          tar -xzf /tmp/CS-WORK-0255-final.tar.gz -C .
+          rm -f docs/current/DETECTOR-FAMILY-MIGRATION.md
+
+      - name: Validate final state
+        run: |
+          set -euo pipefail
+          npm ci
+          npm test
+          npm run build:runtime
+          npm run verify:runtime-build
+          npm run test:generated-runtime
+          npm run verify
+          rm -f validation/current/glossika-week16-runtime-lexicon.json
+          rm -f validation/current/parked-constructions.json
+          grep -Fq '// GENERATED FILE — DO NOT EDIT DIRECTLY.' main.js
+
+      - name: Commit final source-first state
+        run: |
+          set -euo pipefail
+          rm -f .github/workflows/cs-work-0255-finalize.yml
+          rm -rf tools/temporary
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git diff --cached --name-only | sort
+          test -n "$(git diff --cached --name-only)"
+          git commit -m 'Finalize source-first runtime workflow'
+          git push origin HEAD:agent/finalize-source-first-workflow
