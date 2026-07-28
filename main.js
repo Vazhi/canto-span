@@ -8013,6 +8013,283 @@ var require_vocative = __commonJS({
   }
 });
 
+// src/parser/clause-relations/punctuation.js
+var require_punctuation2 = __commonJS({
+  "src/parser/clause-relations/punctuation.js"(exports2, module2) {
+    "use strict";
+    function hasSentencePunctuation2(text) {
+      return /[，。！？、；：,.!?;:]/u.test(String(text || ""));
+    }
+    function isClauseSequenceSeparator2(node) {
+      return node && node.kind === "text" && /[，,；;]/u.test(String(node.text || ""));
+    }
+    function isClauseSequenceTerminal2(node) {
+      return node && node.kind === "text" && /[。！？.!?]/u.test(String(node.text || ""));
+    }
+    module2.exports = { hasSentencePunctuation: hasSentencePunctuation2, isClauseSequenceSeparator: isClauseSequenceSeparator2, isClauseSequenceTerminal: isClauseSequenceTerminal2 };
+  }
+});
+
+// src/parser/clause-relations/markers.js
+var require_markers = __commonJS({
+  "src/parser/clause-relations/markers.js"(exports2, module2) {
+    "use strict";
+    module2.exports = function createClauseRelationMarkers2(dependencies = {}) {
+      const { flattenSurface: flattenSurface2, isClauseSequenceSeparator: isClauseSequenceSeparator2, learnerDisplaySlots: learnerDisplaySlots2, nodeSlots: nodeSlots2 } = dependencies;
+      const CLAUSE_LINKER_SURFACES2 = /* @__PURE__ */ new Set(["之後", "之前", "然後", "跟住", "跟住就", "先", "再", "就", "咁", "噉", "所以", "因為", "雖然", "不過", "但係", "如果"]);
+      const ASSIGNED_SLOT_WRAPPER_COVERAGE_TYPES = /* @__PURE__ */ new Set(["ModalANotAQuestion"]);
+      function isTopicFrameLinker2(node) {
+        return !!(node && node.kind === "token" && nodeSlots2(node).includes("topic_frame_linker"));
+      }
+      function isRelationalCoverbLinker2(node) {
+        return !!(node && node.kind === "token" && nodeSlots2(node).includes("relational_coverb_linker"));
+      }
+      function directWrapperItemSurface2(node) {
+        if (!node) return "";
+        if (node.kind === "text") return node.text || "";
+        return flattenSurface2(node);
+      }
+      function clauseLinkingPivotIndex2(children = [], separatorIndex = -1) {
+        if (separatorIndex >= 0) return separatorIndex;
+        const pivotSurfaces = /* @__PURE__ */ new Set(["就", "所以", "但係", "不過", "之後", "之前", "然後", "跟住", "跟住就"]);
+        for (let index = 1; index < children.length; index++) {
+          const node = children[index];
+          if (node && node.kind === "token" && pivotSurfaces.has(node.surface || "")) return index;
+        }
+        return -1;
+      }
+      function clauseLinkerRole2(node, index, pivotIndex) {
+        if (!node || node.kind !== "token") return "";
+        const surface = node.surface || "";
+        const slots = nodeSlots2(node);
+        const side = pivotIndex >= 0 && index > pivotIndex ? "pre_child" : "post_child";
+        if (surface === "如果") return "condition_introducer";
+        if (surface === "因為") return "reason_introducer";
+        if (surface === "所以") return "result_linker";
+        if (surface === "與其") return "disfavored_option_introducer";
+        if (surface === "不如") return "preferred_option_introducer";
+        if (surface === "但係" || surface === "不過") return "contrast_linker";
+        if (slots.includes("topic_frame_linker")) return "topic_frame_linker";
+        if (slots.includes("relational_coverb_linker")) return "relational_coverb_linker";
+        if (surface === "之後" || surface === "之前" || slots.includes("time") || slots.includes("time_head")) return `${side}_temporal_linker`;
+        if (surface === "先" || surface === "再" || surface === "然後" || surface === "跟住" || surface === "跟住就") return `${side}_sequence_linker`;
+        if (slots.includes("subject")) return `${side}_clause_subject`;
+        if (slots.includes("focus_adverb")) return `${side}_focus_adverb`;
+        if (surface === "就" || slots.includes("result_marker")) return `${side}_sequence_linker`;
+        if (CLAUSE_LINKER_SURFACES2.has(surface) || slots.includes("discourse_marker")) return `${side}_discourse_linker`;
+        return "";
+      }
+      function clauseLinkerInventory2(children = []) {
+        const separatorIndex = children.findIndex(isClauseSequenceSeparator2);
+        const pivotIndex = clauseLinkingPivotIndex2(children, separatorIndex);
+        return children.map((node, index) => {
+          if (!node || node.kind !== "token") return null;
+          const role = clauseLinkerRole2(node, index, pivotIndex);
+          return role ? { surface: node.surface || "", role } : null;
+        }).filter(Boolean);
+      }
+      function clauseLinkingWrapperCoverage2(children = []) {
+        const separatorIndexes = children.map((node, index) => isClauseSequenceSeparator2(node) ? index : -1).filter((index) => index >= 0);
+        const separatorIndex = separatorIndexes.length ? separatorIndexes[0] : -1;
+        const pivotIndex = clauseLinkingPivotIndex2(children, separatorIndex);
+        const accountedChildren = [];
+        const accountedLinkers = [];
+        const accountedSeparators = [];
+        const unaccountedTokens = [];
+        children.forEach((node, index) => {
+          const surface = directWrapperItemSurface2(node);
+          if (!node) return;
+          if (node.kind === "construction") {
+            const precededByTopicFrameLinker = index > 0 && isTopicFrameLinker2(children[index - 1]);
+            const precededByRelationalCoverbLinker = index > 0 && isRelationalCoverbLinker2(children[index - 1]);
+            accountedChildren.push({
+              surface,
+              construction: node.type,
+              role: precededByTopicFrameLinker ? "topic_frame_domain" : precededByRelationalCoverbLinker ? "relational_coverb_domain" : index < pivotIndex || pivotIndex < 0 ? "left_clause_like" : "right_clause_like"
+            });
+            return;
+          }
+          if (isClauseSequenceSeparator2(node)) {
+            accountedSeparators.push({ surface, role: "visible_separator" });
+            return;
+          }
+          if (node.kind === "token") {
+            const role = clauseLinkerRole2(node, index, pivotIndex);
+            if (role) {
+              accountedLinkers.push({ surface, role, slots: learnerDisplaySlots2(nodeSlots2(node)) });
+            } else {
+              unaccountedTokens.push({ surface, kind: "token", index });
+            }
+            return;
+          }
+          if (node.kind === "text" && surface.trim()) {
+            unaccountedTokens.push({ surface, kind: "text", index });
+          }
+        });
+        return {
+          status: unaccountedTokens.length ? "WARN" : "PASS",
+          policy: "ClauseRelationGraph may group linked clause-like material, but it must not hide wrapper holes. Every direct item inside the wrapper must be accounted for as a child construction, linker material, or separator material.",
+          accounted_children: accountedChildren,
+          accounted_linkers: accountedLinkers,
+          accounted_separators: accountedSeparators,
+          unaccounted_tokens: unaccountedTokens,
+          unaccounted_wrapper_token_count: unaccountedTokens.length
+        };
+      }
+      function wrapperSlotDisplayRole2(type, slot) {
+        if (type === "ModalANotAQuestion") {
+          const roles = {
+            subject: "subject",
+            modal_a_not_a: "modal_a_not_a",
+            modal_positive_arm: "positive_modal_arm",
+            negator: "negator",
+            modal_negative_arm: "negative_modal_arm",
+            vp: "requested_action_vp",
+            particle: "final_particle"
+          };
+          return roles[slot] || slot || "";
+        }
+        return slot || "";
+      }
+      function assignedSlotWrapperCoverage2(type, children = [], assignedSlots = []) {
+        if (!ASSIGNED_SLOT_WRAPPER_COVERAGE_TYPES.has(type)) return null;
+        const accountedParts = [];
+        const unaccountedTokens = [];
+        children.forEach((node, index) => {
+          const surface = directWrapperItemSurface2(node);
+          const slot = assignedSlots[index] || "";
+          const role = wrapperSlotDisplayRole2(type, slot);
+          if (slot && role) {
+            const part = {
+              surface,
+              role,
+              assigned_slot: slot,
+              kind: node && node.kind ? node.kind : ""
+            };
+            if (node && node.kind === "construction") part.construction = node.type || "";
+            accountedParts.push(part);
+            return;
+          }
+          if (node && node.kind === "text" && !String(surface || "").trim()) return;
+          unaccountedTokens.push({ surface, kind: node && node.kind ? node.kind : "unknown", index });
+        });
+        return {
+          status: unaccountedTokens.length ? "WARN" : "PASS",
+          coverage_kind: "assigned_slot_wrapper",
+          policy: "Greedy-looking parent wrappers may be collapsed in normal learner display only when every direct child is explicitly accounted for by an assigned slot. Collapse must not hide wrapper holes.",
+          accounted_parts: accountedParts,
+          unaccounted_tokens: unaccountedTokens,
+          unaccounted_wrapper_token_count: unaccountedTokens.length
+        };
+      }
+      function wrapperCoverageForConstructionNode2(node) {
+        if (!node || node.kind !== "construction") return null;
+        if (node.type === "ClauseRelationGraph") {
+          return node.trace && node.trace.wrapper_coverage || clauseLinkingWrapperCoverage2(node.children || []);
+        }
+        if (ASSIGNED_SLOT_WRAPPER_COVERAGE_TYPES.has(node.type)) {
+          const trace = node.trace || {};
+          return trace.wrapper_coverage || assignedSlotWrapperCoverage2(node.type, node.children || [], trace.assigned_slots || []);
+        }
+        return null;
+      }
+      return {
+        CLAUSE_LINKER_SURFACES: CLAUSE_LINKER_SURFACES2,
+        isTopicFrameLinker: isTopicFrameLinker2,
+        isRelationalCoverbLinker: isRelationalCoverbLinker2,
+        directWrapperItemSurface: directWrapperItemSurface2,
+        clauseLinkingPivotIndex: clauseLinkingPivotIndex2,
+        clauseLinkerRole: clauseLinkerRole2,
+        clauseLinkerInventory: clauseLinkerInventory2,
+        clauseLinkingWrapperCoverage: clauseLinkingWrapperCoverage2,
+        wrapperSlotDisplayRole: wrapperSlotDisplayRole2,
+        assignedSlotWrapperCoverage: assignedSlotWrapperCoverage2,
+        wrapperCoverageForConstructionNode: wrapperCoverageForConstructionNode2
+      };
+    };
+  }
+});
+
+// src/parser/clause-relations/conditional.js
+var require_conditional = __commonJS({
+  "src/parser/clause-relations/conditional.js"(exports2, module2) {
+    "use strict";
+    module2.exports = function createConditionalClauseRelations2(dependencies = {}) {
+      const { cleanSlots: cleanSlots2, construction: construction2, flattenSurface: flattenSurface2, isToken: isToken2, nodeSlots: nodeSlots2, parserInactiveTokenClone: parserInactiveTokenClone2, token: token3, traceInfo: traceInfo2, withoutTrailingParticles: withoutTrailingParticles2 } = dependencies;
+      function protectedConditionalMarkerToken2() {
+        return token3("嘅話", {
+          label: "func",
+          pos: "function",
+          jyutping: "ge3 waa6",
+          syntax: "conditional_marker protected_formula",
+          slots: ["conditional_marker"],
+          note: "if / in the case that",
+          review: "protected_formula",
+          trace: traceInfo2("protected_formula_table", {
+            surface: "嘅話",
+            formula_type: "conditional_marker",
+            reason: "嘅話 is a conventional two-character conditional marker. It stays grouped for learner display while the preceding predicate and the full ConditionalClause remain productive and transparent.",
+            not_claims: ["not_formula_discourse_unit", "not_reported_speech", "not_whole_clause_lexicalization"]
+          })
+        });
+      }
+      function conditionalGeWaaClauseFallback2(core) {
+        const { core: bareCore, particles } = withoutTrailingParticles2(core);
+        if (bareCore.length < 2) return null;
+        let predicateNodes = [];
+        let markerChildren = [];
+        const finalNode = bareCore[bareCore.length - 1];
+        if (isToken2(finalNode, "嘅話")) {
+          predicateNodes = bareCore.slice(0, -1);
+          markerChildren = [protectedConditionalMarkerToken2()];
+        } else if (bareCore.length >= 3) {
+          const ge = bareCore[bareCore.length - 2];
+          const waa = bareCore[bareCore.length - 1];
+          if (!isToken2(ge, "嘅") || !isToken2(waa, "話")) return null;
+          predicateNodes = bareCore.slice(0, -2);
+          markerChildren = [protectedConditionalMarkerToken2()];
+        } else {
+          return null;
+        }
+        if (predicateNodes.length !== 1) return null;
+        const predicate = predicateNodes[0];
+        const predicateSurface = flattenSurface2(predicate);
+        const predicateSlots = nodeSlots2(predicate);
+        const licensedPredicate = ["有", "冇", "得"].includes(predicateSurface) || predicateSlots.some((slot) => ["predicate", "vp", "action_vp", "stative_predicate", "existential", "negated_existential", "acceptability_predicate"].includes(slot));
+        if (!licensedPredicate) return null;
+        const predicateChild = predicate.kind === "token" ? parserInactiveTokenClone2(predicate, {
+          label: predicate.label || "func",
+          pos: predicate.features && predicate.features.pos || "function",
+          syntax: `${predicate.syntax || "predicate"} conditional_antecedent_predicate`,
+          slots: cleanSlots2([...predicate.slots || [], "conditional_antecedent", "conditional_antecedent_predicate", "predicate"]),
+          reason: "The predicate is the overt antecedent inside a predicate + 嘅話 conditional clause."
+        }) : predicate;
+        const children = [predicateChild, ...markerChildren, ...particles];
+        return construction2("ConditionalClause", "IfClause", children, {
+          slots: cleanSlots2(["conditional_clause", "condition_clause", "conditional_antecedent", "conditional_marker", "predicate", "clause"]),
+          note: "Conditional antecedent clause formed by a productive predicate plus the protected marker 嘅話. A following result clause is required unless discourse supplies it.",
+          trace: traceInfo2("generative_template", {
+            construction_type: "ConditionalClause",
+            template_family: "generative_template",
+            template: ["conditional_antecedent_predicate!", "protected_conditional_marker!", "particle?"],
+            assigned_slots: ["conditional_antecedent_predicate", "conditional_marker", ...particles.map(() => "particle")],
+            surfaces: children.map((node) => flattenSurface2(node)),
+            conditional_marker_surface: "嘅話",
+            conditional_marker_trace: "protected_formula_table",
+            context_requirement_status: "context_required",
+            missing_argument_slots: ["result_clause"],
+            missing_slot_details: [{ slot: "result_clause", license_status: "unresolved" }],
+            antecedent_status: "not_applicable",
+            reason: "Predicate + 嘅話 is productive. The marker is protected as one learner-visible functional unit so its internal 話 cannot leak the unrelated speech-verb gloss.",
+            not_claims: ["not_reported_speech", "not_sentence_final_particle_use", "not_complete_condition_result_without_result", "not_whole_clause_protected_formula"]
+          })
+        });
+      }
+      return { protectedConditionalMarkerToken: protectedConditionalMarkerToken2, conditionalGeWaaClauseFallback: conditionalGeWaaClauseFallback2 };
+    };
+  }
+});
+
 // src/parser/tokenization/tokenize-line.js
 var require_tokenize_line = __commonJS({
   "src/parser/tokenization/tokenize-line.js"(exports2, module2) {
@@ -14982,6 +15259,996 @@ var require_self_introduction = __commonJS({
   }
 });
 
+// src/parser/clause-relations/graph.js
+var require_graph = __commonJS({
+  "src/parser/clause-relations/graph.js"(exports2, module2) {
+    "use strict";
+    module2.exports = function createClauseRelationGraph2(dependencies = {}) {
+      const {
+        CLAUSE_LINKER_SURFACES: CLAUSE_LINKER_SURFACES2,
+        CLAUSE_RELATION_SUBTYPE_REGISTRY: CLAUSE_RELATION_SUBTYPE_REGISTRY2,
+        applyConstructionPatterns: applyConstructionPatterns2,
+        applyTopicChainNullObjectLinkage: applyTopicChainNullObjectLinkage2,
+        clauseLinkerInventory: clauseLinkerInventory2,
+        clauseLinkingWrapperCoverage: clauseLinkingWrapperCoverage2,
+        wrapperCoverageForConstructionNode: wrapperCoverageForConstructionNode2,
+        cleanSlots: cleanSlots2,
+        cognitionContentFrameFallback: cognitionContentFrameFallback2,
+        construction: construction2,
+        firstToken: firstToken2,
+        flattenNodes: flattenNodes2,
+        flattenSurface: flattenSurface2,
+        hasConstruction: hasConstruction2,
+        isClauseSequenceSeparator: isClauseSequenceSeparator2,
+        isClauseSequenceTerminal: isClauseSequenceTerminal2,
+        learnerDisplaySlots: learnerDisplaySlots2,
+        nodeCanFillSlot: nodeCanFillSlot2,
+        nodeSlots: nodeSlots2,
+        opinionStanceFrameFallback: opinionStanceFrameFallback2,
+        parserInactiveTokenClone: parserInactiveTokenClone2,
+        reportedSpeechFrameFallback: reportedSpeechFrameFallback2,
+        surfaceOf: surfaceOf2,
+        token: token3,
+        traceInfo: traceInfo2,
+        withoutIgnorableSpaceText: withoutIgnorableSpaceText2
+      } = dependencies;
+      function isClauseSequenceMeaningfulNode(node) {
+        if (!node || node.kind !== "construction") return false;
+        if (node.type === "ClauseSequence" || node.type === "ClauseRelationGraph") return false;
+        return true;
+      }
+      function meaningfulClauseConstructionCount(nodes = []) {
+        return nodes.filter(isClauseSequenceMeaningfulNode).length;
+      }
+      function parsedClauseNodes(segment = []) {
+        const compact = withoutIgnorableSpaceText2(segment || []);
+        if (!compact.length) return [];
+        const parsed = applyConstructionPatterns2(compact);
+        if (parsed.length === 1 && parsed[0] && parsed[0].kind === "construction" && parsed[0].type === "NominalHeadSpan") {
+          const productiveChild = (parsed[0].children || []).find((child) => child && child.kind === "construction" && child.type === "ProductiveVO" && nodeCanFillSlot2(child, "vp"));
+          if (productiveChild && flattenSurface2(productiveChild) === flattenSurface2(parsed[0])) return [productiveChild];
+        }
+        return parsed;
+      }
+      function buildGovernedClauseRelationGraph(children = [], detail = {}) {
+        const compact = withoutIgnorableSpaceText2(children || []);
+        if (meaningfulClauseConstructionCount(compact) < 2) return null;
+        const wrapperCoverage = clauseLinkingWrapperCoverage2(compact);
+        if (wrapperCoverage.unaccounted_wrapper_token_count > 0) return null;
+        return construction2("ClauseRelationGraph", "ClauseLink", compact, {
+          note: detail.note || "Linked clauses. This governed discourse/coordination wrapper preserves all child constructions and explicitly accounts for linker/separator material; it does not replace or flatten the child clauses.",
+          trace: traceInfo2("governed_discourse_wrapper", {
+            rule: detail.rule || "connector-governed clause-linking sequence",
+            reason: detail.reason || "Connector-governed clause linking groups independently parsed clause-like children while keeping linkers and separators visible and accounted for.",
+            graph_container_semantic_status: "neutral_container_only",
+            independent_grammar_licensing: false,
+            relation_semantics_source: "preexisting_child_constructions_and_linker_rules_only",
+            child_constructions: compact.filter((node) => node && node.kind === "construction").map((node) => node.type),
+            linkers: clauseLinkerInventory2(compact),
+            separators: compact.filter(isClauseSequenceSeparator2).map((node) => node.text),
+            wrapper_coverage: wrapperCoverage,
+            ...detail.trace_detail || {}
+          })
+        });
+      }
+      function connectorLeadingClauseSegment(segment = []) {
+        const compact = withoutIgnorableSpaceText2(segment || []);
+        if (compact.length < 2) return null;
+        const first = compact[0];
+        if (!first || first.kind !== "token" || !CLAUSE_LINKER_SURFACES2.has(first.surface || "")) return null;
+        if (!["但係", "不過", "所以", "然後", "跟住", "跟住就", "就", "咁", "噉"].includes(first.surface || "")) return null;
+        const parsedRest = parsedClauseNodes(compact.slice(1));
+        if (!parsedRest.length || meaningfulClauseConstructionCount(parsedRest) < 1) return null;
+        return [first, ...parsedRest];
+      }
+      function connectorPairClauseLinkingSegment(segment = []) {
+        const compact = withoutIgnorableSpaceText2(segment || []);
+        if (compact.length < 4) return null;
+        const surfaceAt = (index) => compact[index] && compact[index].kind === "token" ? compact[index].surface || "" : "";
+        const firstSurface = surfaceAt(0);
+        const pairedPatterns = [
+          {
+            opener: "如果",
+            pivot: "就",
+            rule: "如果...就 condition-result clause-linking sequence",
+            reason: "如果 introduces the condition and 就 introduces the result; both sides are parsed independently under a broad ClauseRelationGraph wrapper.",
+            subtype: "condition_result"
+          },
+          {
+            opener: "因為",
+            pivot: "所以",
+            rule: "因為...所以 reason-result clause-linking sequence",
+            reason: "因為 introduces the reason and 所以 introduces the result; both sides are parsed independently under a broad ClauseRelationGraph wrapper.",
+            subtype: "reason_result"
+          }
+        ];
+        for (const pattern of pairedPatterns) {
+          if (firstSurface !== pattern.opener) continue;
+          const pivotIndex = compact.findIndex((node, index) => index > 1 && node && node.kind === "token" && (node.surface || "") === pattern.pivot);
+          if (pivotIndex < 0) continue;
+          const left = parsedClauseNodes(compact.slice(1, pivotIndex));
+          const right = parsedClauseNodes(compact.slice(pivotIndex + 1));
+          const wrapper = buildGovernedClauseRelationGraph([compact[0], ...left, compact[pivotIndex], ...right], {
+            rule: pattern.rule,
+            reason: pattern.reason,
+            trace_detail: { clause_linking_subtype: pattern.subtype }
+          });
+          if (wrapper) return wrapper;
+        }
+        const temporalIndex = compact.findIndex((node, index) => index > 0 && node && node.kind === "token" && ["之後", "之前"].includes(node.surface || ""));
+        if (temporalIndex > 0 && temporalIndex < compact.length - 1) {
+          const left = parsedClauseNodes(compact.slice(0, temporalIndex));
+          const right = parsedClauseNodes(compact.slice(temporalIndex + 1));
+          const linker = compact[temporalIndex];
+          const wrapper = buildGovernedClauseRelationGraph([...left, linker, ...right], {
+            rule: `${linker.surface} temporal clause-linking sequence`,
+            reason: `${linker.surface} links a preceding event/clause-like unit to a following event/clause-like unit; the wrapper keeps both children visible.`,
+            trace_detail: { clause_linking_subtype: "temporal_sequence" }
+          });
+          if (wrapper) return wrapper;
+        }
+        const contrastIndex = compact.findIndex((node, index) => index > 0 && node && node.kind === "token" && ["但係", "不過"].includes(node.surface || ""));
+        if (contrastIndex > 0 && contrastIndex < compact.length - 1) {
+          const left = parsedClauseNodes(compact.slice(0, contrastIndex));
+          const right = parsedClauseNodes(compact.slice(contrastIndex + 1));
+          const linker = compact[contrastIndex];
+          const wrapper = buildGovernedClauseRelationGraph([...left, linker, ...right], {
+            rule: `${linker.surface} contrast clause-linking sequence`,
+            reason: `${linker.surface} links two contrasting clause-like units; the wrapper keeps both child parses and the contrast marker visible.`,
+            trace_detail: { clause_linking_subtype: "contrast" }
+          });
+          if (wrapper) return wrapper;
+        }
+        return null;
+      }
+      function connectorAwareClauseLinkingForTerminal2(segment = []) {
+        const pairWrapper = connectorPairClauseLinkingSegment(segment);
+        if (pairWrapper) return [pairWrapper];
+        const leading = connectorLeadingClauseSegment(segment);
+        if (leading) return leading;
+        return null;
+      }
+      function clauseRelationLeafNodes(node) {
+        if (!node) return [];
+        if (node.kind === "token" || node.kind === "text") return [node];
+        if (node.kind === "construction") return (node.children || []).flatMap(clauseRelationLeafNodes);
+        return [];
+      }
+      function clauseRelationSegmentNodes(segment = []) {
+        const compact = withoutIgnorableSpaceText2(segment || []);
+        if (compact.length === 1 && compact[0] && compact[0].kind === "construction" && ["RelativeClauseNP"].includes(compact[0].type)) return compact.slice();
+        return compact.flatMap(clauseRelationLeafNodes).filter((node) => !(node.kind === "text" && !String(node.text || "").trim()));
+      }
+      function clauseRelationSurfaceList(nodes = []) {
+        return (nodes || []).map((node) => flattenSurface2(node));
+      }
+      function clauseRelationSurfaceIndex2(nodes = [], surfaces = [], start = 0) {
+        const wanted = new Set(surfaces || []);
+        for (let index = Math.max(0, start); index < nodes.length; index += 1) {
+          if (wanted.has(flattenSurface2(nodes[index]))) return index;
+        }
+        return -1;
+      }
+      function clauseRelationContainsSurface(nodes = [], surface = "") {
+        return clauseRelationSurfaceIndex2(nodes, [surface]) >= 0;
+      }
+      function clauseRelationActionVPFor(nodes = [], options = {}) {
+        const compact = withoutIgnorableSpaceText2(nodes || []);
+        if (!compact.length) return null;
+        const first = compact[0];
+        const firstTok = firstToken2(first);
+        if (!firstTok || !nodeCanFillSlot2(first, "action_verb")) return null;
+        if (compact.length === 1) {
+          return construction2("IntransitiveVP", "VP", compact, {
+            note: "Broad intransitive/action VP used as a visible clause-relation member.",
+            trace: traceInfo2("generative_template", {
+              construction_type: "IntransitiveVP",
+              template_family: "generative_template",
+              template: ["action_verb!"],
+              assigned_slots: ["action_verb"],
+              relation_member_scope: true,
+              reason: "A visible action predicate without an overt object is preserved as a VP member; no subject or object token is inserted.",
+              not_claims: ["not_fabricated_subject", "not_fabricated_object"]
+            })
+          });
+        }
+        const objectNodes = compact.slice(1);
+        const objectParsed = applyConstructionPatterns2(objectNodes);
+        const objectLike = objectParsed.length === 1 ? objectParsed[0] : objectNodes.length === 1 ? objectNodes[0] : null;
+        if (objectLike && (nodeCanFillSlot2(objectLike, "object") || nodeCanFillSlot2(objectLike, "np") || nodeCanFillSlot2(objectLike, "head_noun") || nodeCanFillSlot2(objectLike, "subject"))) {
+          const children = [first, objectLike];
+          return construction2("TransitiveVP", "V+O", children, {
+            note: "Transparent transitive VP used inside a clause relation.",
+            trace: traceInfo2("generative_template", {
+              construction_type: "TransitiveVP",
+              template_family: "generative_template",
+              template: ["action_verb!", "object!"],
+              assigned_slots: ["action_verb", "object"],
+              relation_member_scope: true,
+              reason: "The relation-member parser preserves an overt action verb and overt nominal object as one transparent VP."
+            })
+          });
+        }
+        return null;
+      }
+      function clauseRelationParsedChunk2(nodes = [], options = {}) {
+        const compact = withoutIgnorableSpaceText2(nodes || []);
+        if (!compact.length) return [];
+        if (compact.length === 1 && compact[0] && compact[0].kind === "construction") return compact.slice();
+        if (options.immediate_temporal_trigger && compact.some((node) => flattenSurface2(node) === "見到")) {
+          const immediatePredicate = clauseRelationActionVPFor(compact, options);
+          if (immediatePredicate) return [immediatePredicate];
+        }
+        const parsed = applyConstructionPatterns2(compact);
+        if (parsed.some((node) => node && node.kind === "construction")) return parsed;
+        if (nodeCanFillSlot2(compact[0], "subject") && compact.length >= 2) {
+          const subject = compact[0];
+          const predicateNodes = compact.slice(1);
+          let predicateChildren = applyConstructionPatterns2(predicateNodes);
+          if (!predicateChildren.some((node) => node && node.kind === "construction")) {
+            const vp2 = clauseRelationActionVPFor(predicateNodes, options);
+            if (vp2) predicateChildren = [vp2];
+          }
+          if (predicateChildren.some((node) => node && (node.kind === "construction" || nodeCanFillSlot2(node, "predicate") || nodeCanFillSlot2(node, "vp")))) {
+            const children = [subject, ...predicateChildren];
+            return [construction2("SubjectPredicateClause", "Clause", children, {
+              note: "Subject plus visible predicate material inside a typed clause relation.",
+              trace: traceInfo2("generative_template", {
+                construction_type: "SubjectPredicateClause",
+                template_family: "generative_template",
+                template: ["subject!", "predicate!"],
+                assigned_slots: ["subject", "predicate"],
+                relation_member_scope: true,
+                subject_status: "overt",
+                reason: "The relation architecture groups an overt subject with its visible predicate while preserving every token and without inserting omitted material."
+              })
+            })];
+          }
+        }
+        const vp = clauseRelationActionVPFor(compact, options);
+        if (vp) return [vp];
+        return parsed;
+      }
+      function clauseRelationLinkerClone(node, relationSubtype, side, semanticRole, relationId) {
+        if (!node || node.kind !== "token") return node;
+        const surface = flattenSurface2(node);
+        const label = surface === "一" ? "func" : node.label || "func";
+        return parserInactiveTokenClone2(node, {
+          label,
+          pos: "function",
+          syntax: `${node.syntax || "clause_relation_linker"} clause_relation_linker ${relationSubtype}_relation_linker`,
+          slots: cleanSlots2([...node.slots || [], "clause_relation_linker", side === "left" ? "linker_left" : "linker_right"]),
+          reason: `The overt linker ${surface} is owned by the local ${relationSubtype} clause relation on the ${side} side; no absent partner is inserted.`,
+          trace_detail: {
+            clause_relation_id: relationId,
+            relation_subtype: relationSubtype,
+            linker_side: side,
+            linker_semantic_role: semanticRole,
+            linker_ownership_status: "owned_by_local_clause_relation"
+          }
+        });
+      }
+      function clauseRelationMember(nodes = [], options = {}) {
+        const raw = clauseRelationSegmentNodes(nodes);
+        if (!raw.length) return null;
+        const linkerSpecs = Array.isArray(options.linkers) ? options.linkers.slice().sort((a, b) => a.index - b.index) : [];
+        const linkerByIndex = new Map(linkerSpecs.map((item) => [item.index, item]));
+        const children = [];
+        let chunk = [];
+        const flushChunk = () => {
+          if (!chunk.length) return;
+          children.push(...clauseRelationParsedChunk2(chunk, options));
+          chunk = [];
+        };
+        raw.forEach((node, index) => {
+          const spec = linkerByIndex.get(index);
+          if (!spec) {
+            if (node && node.kind === "token" && flattenSurface2(node) === "仲" && !node.jyutping) {
+              chunk.push(token3("仲", {
+                label: "how",
+                jyutping: "zung6",
+                syntax: "focus_adverb continuative_adverb",
+                note: "still / furthermore; resolved locally inside a typed clause relation"
+              }));
+            } else {
+              chunk.push(node);
+            }
+            return;
+          }
+          flushChunk();
+          children.push(clauseRelationLinkerClone(node, options.relation_subtype, spec.side, spec.semantic_role, options.relation_id));
+        });
+        flushChunk();
+        if (!children.length) return null;
+        const firstClauseChild = children.find((child) => {
+          if (!child) return false;
+          if (child.kind === "token") return !(child.slots || []).includes("clause_relation_linker");
+          return child.kind === "construction";
+        }) || null;
+        let overtSubject = null;
+        if (firstClauseChild && firstClauseChild.kind === "token" && (firstClauseChild.slots || []).includes("subject")) {
+          overtSubject = firstClauseChild;
+        } else if (firstClauseChild && firstClauseChild.kind === "construction") {
+          const subjectBearing = [
+            "ClauseSpan",
+            "NominalHeadSpan",
+            "RelativeClauseNP",
+            "OpinionStanceFrame",
+            "CognitionContentFrame",
+            "ReportedSpeech"
+          ].includes(firstClauseChild.type);
+          if (subjectBearing) {
+            overtSubject = flattenNodes2([firstClauseChild]).find((row) => row.kind === "token" && (row.slots || []).includes("subject")) || null;
+          }
+        }
+        const childConstructions = children.filter((node) => node && node.kind === "construction").map((node) => node.type);
+        return construction2("ClauseRelationMemberSpan", options.role === "left" ? "Relation-L" : "Relation-R", children, {
+          note: "Transparent source-order member of a typed clause relation. Linkers remain visible and carry explicit local ownership.",
+          trace: traceInfo2("generative_template", {
+            construction_type: "ClauseRelationMemberSpan",
+            template_family: "generative_template",
+            template: ["clause_material!", "relation_linker?"],
+            assigned_slots: [options.role === "left" ? "left_relation_member" : "right_relation_member"],
+            relation_member_role: options.role,
+            relation_subtype: options.relation_subtype,
+            relation_subtype_provenance: "inherited_from_parent_clause_relation_edge",
+            clause_relation_id: options.relation_id,
+            independent_grammar_licensing: false,
+            context_resolution_capability: false,
+            overt_subject_surface: overtSubject ? overtSubject.surface : "",
+            subject_status: overtSubject ? "overt" : "not_overt",
+            child_constructions: childConstructions,
+            source_surface: raw.map((node) => flattenSurface2(node)).join(""),
+            reason: "A relation member is grouped as one clause-like span while retaining source order, overt linkers, parsed predicate children, and visible subjects.",
+            not_claims: ["not_fabricated_subject", "not_fabricated_clause", "not_hidden_linker"]
+          })
+        });
+      }
+      function clauseRelationSubjectSurface(member) {
+        if (!member || member.kind !== "construction") return "";
+        const memberTrace = member.trace || {};
+        return String(memberTrace.overt_subject_surface || "");
+      }
+      function clauseRelationSubjectLinkage(leftMember, rightMember, relationSubtype) {
+        const left = clauseRelationSubjectSurface(leftMember);
+        const right = clauseRelationSubjectSurface(rightMember);
+        if (left && right) return { status: "overt_subject_on_both_members", inherited_surface: "" };
+        if (left && !right && ["concessive", "committed_preference", "ordered_preference", "premise_response", "sequential", "asyndetic_sequence"].includes(relationSubtype)) {
+          return { status: "shared_overt_subject_inherited_by_right_member", inherited_surface: left };
+        }
+        if (left && !right) return { status: "left_subject_overt_right_subject_unresolved", inherited_surface: "" };
+        if (!left && right) return { status: "right_subject_overt_left_subject_unresolved", inherited_surface: "" };
+        if (!left && !right) return { status: "no_overt_subject_unresolved", inherited_surface: "" };
+        return { status: "overt_subject_on_both_members", inherited_surface: "" };
+      }
+      function clauseRelationPairStatus(leftLinkers = [], rightLinkers = [], licensedAsyndetic = false) {
+        if (leftLinkers.length && rightLinkers.length) return "both_overt";
+        if (leftLinkers.length) return "left_overt_right_absent";
+        if (rightLinkers.length) return "left_absent_right_overt";
+        return licensedAsyndetic ? "both_absent_licensed_asyndetic" : "not_applicable";
+      }
+      function clauseRelationSemanticTrace(subtype, sourceOrder, leftMember, rightMember) {
+        const leftSurface = flattenSurface2(leftMember);
+        const rightSurface = flattenSurface2(rightMember);
+        if (subtype === "conditional") return {
+          antecedent_clause: leftSurface,
+          consequent_clause: rightSurface
+        };
+        if (subtype === "causal") {
+          const reasonOnLeft = sourceOrder !== "result_then_reason";
+          return {
+            reason_clause: reasonOnLeft ? leftSurface : rightSurface,
+            result_clause: reasonOnLeft ? rightSurface : leftSurface,
+            causal_source_order: sourceOrder
+          };
+        }
+        if (subtype === "concessive") return {
+          concession_clause: leftSurface,
+          counterexpectation_clause: rightSurface
+        };
+        if (subtype === "committed_preference") return {
+          chosen_option: leftSurface,
+          rejected_option: rightSurface
+        };
+        if (subtype === "ordered_preference") return {
+          disfavored_option: leftSurface,
+          preferred_option: rightSurface
+        };
+        if (subtype === "premise_response") return {
+          established_premise: leftSurface,
+          response_clause: rightSurface
+        };
+        if (["sequential", "asyndetic_sequence"].includes(subtype)) return {
+          earlier_event: leftSurface,
+          later_event: rightSurface
+        };
+        if (subtype === "temporal_subordinate") return {
+          temporal_subordinate: leftSurface,
+          matrix_clause: rightSurface
+        };
+        return {};
+      }
+      function buildClauseRelationEdge(spec = {}) {
+        if (!CLAUSE_RELATION_SUBTYPE_REGISTRY2.has(spec.relation_subtype)) return null;
+        const relationId = `clause-relation:${spec.relation_subtype}:${clauseRelationSurfaceList(spec.left_nodes).join("")}:${clauseRelationSurfaceList(spec.right_nodes).join("")}`;
+        const leftMember = clauseRelationMember(spec.left_nodes, {
+          role: "left",
+          relation_subtype: spec.relation_subtype,
+          relation_id: relationId,
+          linkers: spec.left_linkers || [],
+          immediate_temporal_trigger: Boolean(spec.immediate_temporal_trigger)
+        });
+        const rightMember = clauseRelationMember(spec.right_nodes, {
+          role: "right",
+          relation_subtype: spec.relation_subtype,
+          relation_id: relationId,
+          linkers: spec.right_linkers || []
+        });
+        if (!leftMember || !rightMember) return null;
+        const subjectLinkage = clauseRelationSubjectLinkage(leftMember, rightMember, spec.relation_subtype);
+        const pairStatus = clauseRelationPairStatus(spec.left_linkers || [], spec.right_linkers || [], Boolean(spec.licensed_asyndetic));
+        const children = [leftMember, spec.separator, rightMember].filter(Boolean);
+        const leftLinkerSurfaces = (spec.left_linkers || []).map((item) => flattenSurface2(clauseRelationSegmentNodes(spec.left_nodes)[item.index]));
+        const rightLinkerSurfaces = (spec.right_linkers || []).map((item) => flattenSurface2(clauseRelationSegmentNodes(spec.right_nodes)[item.index]));
+        return construction2("ClauseRelationEdge", "ClauseRel", children, {
+          note: "Typed local relation between two transparent clause-like members. The relation owns overt linkers and records optional-pair and shared-subject provenance without hidden tokens.",
+          trace: traceInfo2("generative_template", {
+            construction_type: "ClauseRelationEdge",
+            template_family: "generative_template",
+            template: ["left_relation_member!", "separator?", "right_relation_member!"],
+            assigned_slots: ["left_relation_member", ...spec.separator ? ["separator"] : [], "right_relation_member"],
+            clause_relation_id: relationId,
+            relation_subtype: spec.relation_subtype,
+            relation_subtype_provenance: spec.relation_subtype_provenance || "inherited_mapped_clause_relation_rule",
+            relation_subtype_registry_status: "validated_against_clause_relation_subtype_registry",
+            independent_grammar_licensing: false,
+            relation_context_status: "context_not_required",
+            source_order: spec.source_order || "left_then_right",
+            linker_left: leftLinkerSurfaces,
+            linker_right: rightLinkerSurfaces,
+            linker_pair_status: pairStatus,
+            linker_ownership_status: "all_overt_linkers_owned_once",
+            subject_linkage_status: subjectLinkage.status,
+            inherited_subject_surface: subjectLinkage.inherited_surface,
+            ...clauseRelationSemanticTrace(spec.relation_subtype, spec.source_order || "left_then_right", leftMember, rightMember),
+            immediate_temporal_trigger: Boolean(spec.immediate_temporal_trigger),
+            asyndetic_license: spec.licensed_asyndetic ? spec.asyndetic_license || "licensed_by_event_order_and_visible_separator" : "not_applicable",
+            surfaces: children.map((node) => flattenSurface2(node)),
+            reason: spec.reason || "Overt linker evidence or a constrained asyndetic event-order pattern licenses one local typed clause relation instead of a flat discourse wrapper.",
+            not_claims: [
+              "not_fabricated_linker",
+              "not_fabricated_subject",
+              "not_fabricated_clause",
+              "not_punctuation_only_relation"
+            ]
+          })
+        });
+      }
+      function completionThenClauseRelation2(nodes = []) {
+        const compact = withoutIgnorableSpaceText2(nodes || []);
+        const markerIndex = compact.findIndex(
+          (node) => node && node.kind === "token" && flattenSurface2(node) === "就"
+        );
+        if (markerIndex <= 0 || markerIndex >= compact.length - 1) return null;
+        let leftNodes = compact.slice(0, markerIndex);
+        let rightNodes = compact.slice(markerIndex);
+        let rightLinkerIndex = 0;
+        const preMarkerSubject = compact[markerIndex - 1];
+        const completionBeforePreMarkerSubject = hasConstruction2(
+          compact.slice(0, markerIndex - 1),
+          "CompletionVP"
+        );
+        if (preMarkerSubject && nodeCanFillSlot2(preMarkerSubject, "subject") && completionBeforePreMarkerSubject) {
+          leftNodes = compact.slice(0, markerIndex - 1);
+          rightNodes = [preMarkerSubject, ...compact.slice(markerIndex)];
+          rightLinkerIndex = clauseRelationSegmentNodes([preMarkerSubject]).length;
+        }
+        if (!hasConstruction2(leftNodes, "CompletionVP")) return null;
+        if (!rightNodes.slice(1).some((node) => flattenSurface2(node))) return null;
+        return buildClauseRelationEdge({
+          relation_subtype: "sequential",
+          left_nodes: leftNodes,
+          right_nodes: rightNodes,
+          right_linkers: [{
+            index: rightLinkerIndex,
+            side: "right",
+            semantic_role: "later_event_linker"
+          }],
+          source_order: "earlier_completion_then_later_event",
+          relation_subtype_provenance: "source_linked_completion_sequence_rule",
+          reason: "An overt CompletionVP before 就 and a nonempty later member license a sequential relation; each member retains its own visible subject and predicate structure."
+        });
+      }
+      function clauseRelationTimeHead(node) {
+        const rows = flattenNodes2([node]);
+        return rows.some((row) => row.kind === "token" && ["時候", "時間"].includes(row.surface || ""));
+      }
+      function clauseRelationMarkerSpec(nodes, surface, side, semanticRole, start = 0) {
+        const index = clauseRelationSurfaceIndex2(nodes, [surface], start);
+        return index >= 0 ? { index, side, semantic_role: semanticRole } : null;
+      }
+      function clauseRelationPrefixEmbedding(prefixNodes = [], relation = null) {
+        const prefix = withoutIgnorableSpaceText2(prefixNodes || []);
+        if (!prefix.length || !relation) return null;
+        return opinionStanceFrameFallback2([...prefix, relation]) || cognitionContentFrameFallback2([...prefix, relation]) || reportedSpeechFrameFallback2([...prefix, relation]);
+      }
+      function hierarchicalClauseRelationEdgeFromChildren(children = []) {
+        const segments = clauseSequenceSegments2(children);
+        if (segments.length !== 2) return null;
+        const separator = children.find(isClauseSequenceSeparator2) || null;
+        const leftRaw = clauseRelationSegmentNodes(segments[0]);
+        const rightRaw = clauseRelationSegmentNodes(segments[1]);
+        if (!leftRaw.length || !rightRaw.length) return null;
+        let prefix = [];
+        let leftNodes = leftRaw.slice();
+        let relationSubtype = "";
+        let sourceOrder = "left_then_right";
+        let licensedAsyndetic = false;
+        let asyndeticLicense = "";
+        let immediateTemporalTrigger = false;
+        const leftLinkers = [];
+        const rightLinkers = [];
+        const leftIf = clauseRelationSurfaceIndex2(leftNodes, ["如果"]);
+        const leftZi = clauseRelationSurfaceIndex2(leftNodes, ["只"]);
+        const leftJiu = clauseRelationSurfaceIndex2(leftNodes, ["要"]);
+        const leftHave = clauseRelationSurfaceIndex2(leftNodes, ["有"]);
+        const leftNing = clauseRelationSurfaceIndex2(leftNodes, ["寧"]);
+        const leftJyun = clauseRelationSurfaceIndex2(leftNodes, ["願"]);
+        const leftGei = clauseRelationSurfaceIndex2(leftNodes, ["既"]);
+        const leftJin = clauseRelationSurfaceIndex2(leftNodes, ["然"]);
+        const leftBecause = clauseRelationSurfaceIndex2(leftNodes, ["因為"]);
+        const leftAlthough = clauseRelationSurfaceIndex2(leftNodes, ["雖然"]);
+        const rightBecause = clauseRelationSurfaceIndex2(rightRaw, ["因為"]);
+        const rightSo = clauseRelationSurfaceIndex2(rightRaw, ["所以"]);
+        const rightBut = clauseRelationSurfaceIndex2(rightRaw, ["但係", "不過"]);
+        const rightThen = clauseRelationSurfaceIndex2(rightRaw, ["然後", "再"]);
+        const leftFirst = clauseRelationSurfaceIndex2(leftNodes, ["先"]);
+        const rightConditional = clauseRelationSurfaceIndex2(rightRaw, ["就"]);
+        const rightNecessary = clauseRelationSurfaceIndex2(rightRaw, ["先至", "先"]);
+        const rightDou = clauseRelationSurfaceIndex2(rightRaw, ["都"]);
+        const rightM4 = clauseRelationSurfaceIndex2(rightRaw, ["唔"]);
+        const rightM4Hou2 = clauseRelationSurfaceIndex2(rightRaw, ["唔好"]);
+        const rightSoeng2 = clauseRelationSurfaceIndex2(rightRaw, ["想"]);
+        const rightHang2 = clauseRelationSurfaceIndex2(rightRaw, ["肯"]);
+        const rightGam2 = clauseRelationSurfaceIndex2(rightRaw, ["噉", "咁"]);
+        const rightBat1Jyu4 = clauseRelationSurfaceIndex2(rightRaw, ["不如"]);
+        const rightDang2 = clauseRelationSurfaceIndex2(rightRaw, ["等"]);
+        const rightNgo5AfterDang2 = rightDang2 >= 0 ? clauseRelationSurfaceIndex2(rightRaw, ["我"], rightDang2 + 1) : -1;
+        const rejectionMarkerIndexes = rightM4Hou2 === rightDou + 1 ? [rightDou, rightM4Hou2] : rightM4 === rightDou + 1 && (rightSoeng2 === rightM4 + 1 || rightHang2 === rightM4 + 1) ? [rightDou, rightM4, rightSoeng2 === rightM4 + 1 ? rightSoeng2 : rightHang2] : [];
+        const committedPreferenceProfile = leftNing >= 0 && leftJyun === leftNing + 1 && rejectionMarkerIndexes.length > 0 && leftNodes.some((node, index) => index !== leftNing && index !== leftJyun && flattenSurface2(node)) && rightRaw.some((node, index) => !rejectionMarkerIndexes.includes(index) && flattenSurface2(node));
+        let premiseResponseMarkerIndexes = [];
+        let premiseResponseMarkerProfile = "unmarked";
+        if (rightConditional === 0) {
+          premiseResponseMarkerIndexes = [rightConditional];
+          premiseResponseMarkerProfile = "zau6";
+        } else if (rightGam2 === 0) {
+          premiseResponseMarkerIndexes = [rightGam2];
+          premiseResponseMarkerProfile = "gam2";
+        } else if (rightBat1Jyu4 === 0) {
+          premiseResponseMarkerIndexes = [rightBat1Jyu4];
+          premiseResponseMarkerProfile = "bat1jyu4";
+        } else if (rightDang2 === 0 && rightNgo5AfterDang2 === 1) {
+          premiseResponseMarkerIndexes = [rightDang2, rightNgo5AfterDang2];
+          premiseResponseMarkerProfile = "dang2ngo5";
+        }
+        const premiseResponseProfile = leftGei === 0 && leftJin === 1 && leftNodes.some((node, index) => index !== leftGei && index !== leftJin && flattenSurface2(node)) && rightRaw.some((node, index) => !premiseResponseMarkerIndexes.includes(index) && flattenSurface2(node));
+        const necessaryConditionLeftContent = leftNodes.slice(leftHave + 1).flatMap((node) => clauseRelationLeafNodes(node));
+        const necessaryConditionHasPredicateOrFrame = necessaryConditionLeftContent.some((node) => {
+          if (!node || node.kind !== "token") return false;
+          const slots = nodeSlots2(node);
+          return slots.some((slot) => [
+            "action_verb",
+            "comment_predicate",
+            "copula",
+            "coverb_marker",
+            "existential",
+            "locative_marker",
+            "main_verb",
+            "modal",
+            "negated_existential",
+            "predicate",
+            "stative_predicate"
+          ].includes(slot));
+        });
+        const sufficientConditionProfile = leftZi === 0 && leftJiu === leftZi + 1 && rightConditional >= 0 && leftNodes.some((node, index) => index !== leftZi && index !== leftJiu && flattenSurface2(node)) && rightRaw.some((node, index) => index !== rightConditional && flattenSurface2(node));
+        const necessaryResultPrefix = rightNecessary > 0 ? parsedClauseNodes(rightRaw.slice(0, rightNecessary)) : [];
+        const necessaryResultPrefixNode = necessaryResultPrefix.length === 1 ? necessaryResultPrefix[0] : null;
+        const necessaryResultMarkerPositionLicensed = rightNecessary === 0 || necessaryResultPrefixNode && (nodeCanFillSlot2(necessaryResultPrefixNode, "subject") || nodeCanFillSlot2(necessaryResultPrefixNode, "np") || nodeCanFillSlot2(necessaryResultPrefixNode, "head_noun") || nodeCanFillSlot2(necessaryResultPrefixNode, "topic"));
+        const necessaryConditionProfile = leftZi >= 0 && leftHave === leftZi + 1 && rightNecessary >= 0 && necessaryResultMarkerPositionLicensed && necessaryConditionHasPredicateOrFrame && leftNodes.some((node, index) => index !== leftZi && index !== leftHave && flattenSurface2(node)) && rightRaw.some((node, index) => index !== rightNecessary && flattenSurface2(node));
+        let relationProfile = "";
+        let relationResearchId = "";
+        let relationProfileScope = "";
+        const leftImmediateOne = clauseRelationSurfaceIndex2(leftNodes, ["一"]);
+        const leftSurfaces = clauseRelationSurfaceList(leftNodes);
+        const rightSurfaces = clauseRelationSurfaceList(rightRaw);
+        const leftHasImmediatePredicate = leftSurfaces.includes("見到") || leftSurfaces.includes("見") && leftSurfaces.includes("到");
+        const leftTemporalNominal = leftNodes.length === 1 && leftNodes[0].kind === "construction" && leftNodes[0].type === "RelativeClauseNP" && clauseRelationTimeHead(leftNodes[0]);
+        if (premiseResponseProfile) {
+          relationSubtype = "premise_response";
+          relationProfile = "established_premise_response";
+          relationResearchId = "PRQ2-009";
+          relationProfileScope = "left_initial_gei3jin4_with_overt_premise_and_response";
+          leftLinkers.push(
+            { index: leftGei, side: "left", semantic_role: "established_premise_marker_component" },
+            { index: leftJin, side: "left", semantic_role: "established_premise_marker_component" }
+          );
+          for (const index of premiseResponseMarkerIndexes) {
+            rightLinkers.push({ index, side: "right", semantic_role: "response_marker_component" });
+          }
+        } else if (committedPreferenceProfile) {
+          relationSubtype = "committed_preference";
+          relationProfile = "rejection";
+          relationResearchId = "PRQ2-015";
+          relationProfileScope = "overt_ning4jyun6_and_negative_dou1_continuation_only";
+          leftLinkers.push(
+            { index: leftNing, side: "left", semantic_role: "chosen_option_marker_component" },
+            { index: leftJyun, side: "left", semantic_role: "chosen_option_marker_component" }
+          );
+          for (const index of rejectionMarkerIndexes) {
+            rightLinkers.push({ index, side: "right", semantic_role: "rejected_option_marker_component" });
+          }
+        } else if (leftTemporalNominal) {
+          relationSubtype = "temporal_subordinate";
+        } else if (leftBecause >= 0 || rightBecause >= 0 || rightSo >= 0) {
+          relationSubtype = "causal";
+          if (leftBecause >= 0) leftLinkers.push({ index: leftBecause, side: "left", semantic_role: "reason_introducer" });
+          if (rightSo >= 0) rightLinkers.push({ index: rightSo, side: "right", semantic_role: "result_linker" });
+          if (rightBecause >= 0) {
+            rightLinkers.push({ index: rightBecause, side: "right", semantic_role: "reason_introducer" });
+            sourceOrder = "result_then_reason";
+          }
+        } else if (leftAlthough >= 0 || rightBut >= 0) {
+          relationSubtype = "concessive";
+          if (leftAlthough >= 0) leftLinkers.push({ index: leftAlthough, side: "left", semantic_role: "concession_introducer" });
+          if (rightBut >= 0) rightLinkers.push({ index: rightBut, side: "right", semantic_role: "counterexpectation_linker" });
+        } else if (necessaryConditionProfile) {
+          relationSubtype = "conditional";
+          relationProfile = "necessary_condition";
+          relationResearchId = "PRQ2-014";
+          relationProfileScope = "overt_left_marker_with_predicate_or_frame_and_overt_right_linker_only";
+          leftLinkers.push(
+            { index: leftZi, side: "left", semantic_role: "necessary_condition_marker_component" },
+            { index: leftHave, side: "left", semantic_role: "necessary_condition_marker_component" }
+          );
+          rightLinkers.push({ index: rightNecessary, side: "right", semantic_role: "necessary_result_linker" });
+        } else if (sufficientConditionProfile) {
+          relationSubtype = "conditional";
+          relationProfile = "sufficient_condition";
+          relationResearchId = "PRQ2-008";
+          relationProfileScope = "left_initial_overt_marker_and_overt_right_linker_only";
+          leftLinkers.push(
+            { index: leftZi, side: "left", semantic_role: "sufficient_condition_marker_component" },
+            { index: leftJiu, side: "left", semantic_role: "sufficient_condition_marker_component" }
+          );
+          rightLinkers.push({ index: rightConditional, side: "right", semantic_role: "consequent_linker" });
+        } else if (leftImmediateOne >= 0 && leftHasImmediatePredicate) {
+          relationSubtype = "temporal_subordinate";
+          immediateTemporalTrigger = true;
+          leftLinkers.push({ index: leftImmediateOne, side: "left", semantic_role: "immediate_temporal_trigger" });
+          if (rightConditional >= 0) rightLinkers.push({ index: rightConditional, side: "right", semantic_role: "result_linker" });
+        } else if (leftHasImmediatePredicate && rightConditional >= 0) {
+          relationSubtype = "temporal_subordinate";
+          immediateTemporalTrigger = true;
+          rightLinkers.push({ index: rightConditional, side: "right", semantic_role: "result_linker" });
+        } else if (leftIf >= 0 || rightConditional >= 0) {
+          relationSubtype = "conditional";
+          if (leftIf >= 0) {
+            if (leftIf > 0) {
+              prefix = leftNodes.slice(0, leftIf);
+              leftNodes = leftNodes.slice(leftIf);
+            }
+            leftLinkers.push({ index: 0, side: "left", semantic_role: "condition_introducer" });
+          }
+          const adjustedRightConditional = clauseRelationSurfaceIndex2(rightRaw, ["就"]);
+          if (adjustedRightConditional >= 0) rightLinkers.push({ index: adjustedRightConditional, side: "right", semantic_role: "consequent_linker" });
+        } else if (leftFirst >= 0 || rightThen >= 0 || leftSurfaces.includes("完")) {
+          relationSubtype = leftFirst < 0 && rightThen < 0 ? "asyndetic_sequence" : "sequential";
+          if (leftFirst >= 0) leftLinkers.push({ index: leftFirst, side: "left", semantic_role: "earlier_event_marker" });
+          if (rightThen >= 0) rightLinkers.push({ index: rightThen, side: "right", semantic_role: "later_event_marker" });
+          if (relationSubtype === "asyndetic_sequence") {
+            licensedAsyndetic = true;
+            asyndeticLicense = "left_completion_event_plus_following_event";
+          } else if (leftFirst >= 0 && rightThen < 0) {
+            licensedAsyndetic = true;
+            asyndeticLicense = "overt_left_sequence_marker_with_omitted_right_marker";
+          }
+        }
+        if (!relationSubtype) return null;
+        if (immediateTemporalTrigger) {
+          leftNodes = leftNodes.map((node) => node && node.kind === "token" ? token3(flattenSurface2(node)) : node);
+        }
+        const relation = buildClauseRelationEdge({
+          relation_subtype: relationSubtype,
+          left_nodes: leftNodes,
+          right_nodes: rightRaw,
+          left_linkers: leftLinkers,
+          right_linkers: rightLinkers,
+          separator,
+          source_order: sourceOrder,
+          licensed_asyndetic: licensedAsyndetic,
+          asyndetic_license: asyndeticLicense,
+          immediate_temporal_trigger: immediateTemporalTrigger,
+          relation_subtype_provenance: "inherited_mapped_hierarchical_clause_relation_rule"
+        });
+        if (!relation) return null;
+        if (relationProfile) {
+          relation.trace = {
+            ...relation.trace || {},
+            relation_profile: relationProfile,
+            research_id: relationResearchId,
+            relation_profile_scope: relationProfileScope,
+            ...relationSubtype === "premise_response" ? {
+              response_marker_profile: premiseResponseMarkerProfile
+            } : {}
+          };
+        }
+        if (prefix.length) {
+          const embedded = clauseRelationPrefixEmbedding(prefix, relation);
+          if (embedded) return { node: embedded, relation, embedded: true };
+          return null;
+        }
+        const wrapperCoverage = {
+          status: "PASS",
+          policy: "A hierarchical ClauseRelationGraph accounts for its complete local ClauseRelationEdge child; the separator and overt linkers remain visible inside that typed relation.",
+          accounted_children: [{ surface: flattenSurface2(relation), construction: "ClauseRelationEdge", role: "local_typed_relation" }],
+          accounted_linkers: [],
+          accounted_separators: separator ? [{ surface: flattenSurface2(separator), role: "nested_visible_separator" }] : [],
+          unaccounted_tokens: [],
+          unaccounted_wrapper_token_count: 0
+        };
+        const wrapper = construction2("ClauseRelationGraph", "ClauseLink", [relation], {
+          note: "Outer discourse wrapper containing one local typed clause relation. It preserves the established wrapper boundary without flattening relation semantics.",
+          trace: traceInfo2("governed_discourse_wrapper", {
+            rule: "hierarchical typed clause relation under discourse wrapper",
+            reason: "The outer wrapper remains for discourse/root accounting, while ClauseRelationEdge represents the typed local relation.",
+            child_constructions: ["ClauseRelationEdge"],
+            local_relation_construction: "ClauseRelationEdge",
+            graph_container_semantic_status: "neutral_container_only",
+            independent_grammar_licensing: false,
+            relation_semantics_source: "typed_child_edge_with_inherited_subtype_provenance",
+            clause_linking_subtype: ["committed_preference", "premise_response"].includes(relationSubtype) ? relationSubtype : relationProfile || relationSubtype,
+            relation_subtype: relationSubtype,
+            ...relationProfile ? {
+              relation_profile: relationProfile,
+              research_id: relationResearchId,
+              relation_profile_scope: relationProfileScope,
+              ...relationSubtype === "premise_response" ? {
+                response_marker_profile: premiseResponseMarkerProfile
+              } : {}
+            } : {},
+            linkers: [...relation.trace && relation.trace.linker_left || [], ...relation.trace && relation.trace.linker_right || []],
+            separators: separator ? [flattenSurface2(separator)] : [],
+            wrapper_coverage: wrapperCoverage
+          })
+        });
+        return { node: wrapper, relation, embedded: false };
+      }
+      function standaloneClauseRelationEdgeFragmentForTerminal2(segment = [], terminalText = "") {
+        if (!/[。！？.!?]/u.test(String(terminalText || ""))) return null;
+        const compact = withoutIgnorableSpaceText2(segment || []);
+        if (compact.length < 2 || compact[0].kind !== "token") return null;
+        const surface = flattenSurface2(compact[0]);
+        const subtypeBySurface = {
+          "然後": "sequential",
+          "再": "sequential",
+          "但係": "concessive",
+          "不過": "concessive",
+          "所以": "causal",
+          "因為": "causal",
+          "如果": "conditional",
+          "雖然": "concessive",
+          "就": "conditional"
+        };
+        const relationSubtype = subtypeBySurface[surface];
+        if (!relationSubtype) return null;
+        const relationId = `clause-relation-fragment:${relationSubtype}:${compact.map((node) => flattenSurface2(node)).join("")}`;
+        const missingSide = ["因為", "如果", "雖然"].includes(surface) ? "right_relation_member" : "left_relation_member";
+        const semanticRole = surface === "因為" ? "reason_introducer" : surface === "如果" ? "condition_introducer" : surface === "雖然" ? "concession_introducer" : surface === "所以" ? "result_linker" : ["但係", "不過"].includes(surface) ? "counterexpectation_linker" : ["然後", "再"].includes(surface) ? "later_event_marker" : "consequent_linker";
+        const member = clauseRelationMember(compact, {
+          role: missingSide === "left_relation_member" ? "right" : "left",
+          relation_subtype: relationSubtype,
+          relation_id: relationId,
+          linkers: [{ index: 0, side: missingSide === "left_relation_member" ? "right" : "left", semantic_role: semanticRole }]
+        });
+        if (!member) return null;
+        return construction2("NeedsContext", "needs context", [member], {
+          note: "Standalone relation fragment with an overt linker but no visible relation partner.",
+          trace: traceInfo2("special_ambiguity_rule", {
+            fragment_subtype: "standalone_clause_relation_fragment",
+            relation_subtype: relationSubtype,
+            clause_relation_id: relationId,
+            relation_context_status: "context_required",
+            context_requirement_status: "context_required",
+            antecedent_status: "not_observed",
+            missing_argument_slots: [missingSide],
+            missing_slot_details: [{ slot: missingSide, license_status: "unresolved" }],
+            overt_linker_surface: surface,
+            linker_ownership_status: "owned_by_incomplete_local_relation",
+            discourse_license_not_observed: true,
+            semantic_review_flags: ["standalone_relation_partner_missing", "context_required_unresolved"],
+            reason: "The overt linker requires a prior or following relation partner that is absent from the visible sentence. The following clause/VP remains transparent and no partner is fabricated.",
+            not_claims: ["not_ignored_linker", "not_fabricated_relation_partner", "not_clean_context_free_clause"]
+          })
+        });
+      }
+      function clauseSequenceSegments2(nodes = []) {
+        const segments = [];
+        let current = [];
+        for (const node of nodes || []) {
+          if (isClauseSequenceSeparator2(node)) {
+            if (withoutIgnorableSpaceText2(current).length) segments.push(withoutIgnorableSpaceText2(current));
+            current = [];
+          } else {
+            current.push(node);
+          }
+        }
+        if (withoutIgnorableSpaceText2(current).length) segments.push(withoutIgnorableSpaceText2(current));
+        return segments;
+      }
+      function wrapClauseSequenceByPunctuation2(nodes) {
+        const hasSeparator = nodes.some(isClauseSequenceSeparator2);
+        if (!hasSeparator) return nodes;
+        const finalOnly = nodes.length > 0 && isClauseSequenceTerminal2(nodes[nodes.length - 1]) ? nodes[nodes.length - 1] : null;
+        const children = finalOnly ? nodes.slice(0, -1) : nodes.slice();
+        const separatorIndex = children.findIndex(isClauseSequenceSeparator2);
+        if (separatorIndex >= 0) {
+          const linkerOnlySide = (side) => {
+            const meaningfulSide = side.filter((node) => node && node.kind !== "text");
+            return meaningfulSide.length === 1 && CLAUSE_LINKER_SURFACES2.has(flattenSurface2(meaningfulSide[0]));
+          };
+          if (linkerOnlySide(children.slice(0, separatorIndex)) || linkerOnlySide(children.slice(separatorIndex + 1))) {
+            return nodes;
+          }
+        }
+        const orderedPreferenceOpenerIndex = children.findIndex(
+          (node, index) => index < separatorIndex && node && node.kind === "token" && (node.surface || "") === "與其"
+        );
+        const rightLeaves = separatorIndex >= 0 ? clauseRelationSegmentNodes(children.slice(separatorIndex + 1)) : [];
+        if (orderedPreferenceOpenerIndex >= 0 && separatorIndex > orderedPreferenceOpenerIndex && rightLeaves.length > 1) {
+          if (surfaceOf2(rightLeaves[0]) === "不如") {
+            const preferredMember = parsedClauseNodes(rightLeaves.slice(1));
+            const disfavoredMember = children.slice(orderedPreferenceOpenerIndex + 1, separatorIndex);
+            const prefix = children.slice(0, orderedPreferenceOpenerIndex);
+            if (meaningfulClauseConstructionCount(disfavoredMember) >= 1 && meaningfulClauseConstructionCount(preferredMember) >= 1) {
+              const leftNodes = [
+                ...prefix,
+                children[orderedPreferenceOpenerIndex],
+                ...disfavoredMember
+              ];
+              const rightNodes = [
+                rightLeaves[0],
+                ...preferredMember
+              ];
+              const leftLinkerIndex = clauseRelationSegmentNodes(prefix).length;
+              const relation = buildClauseRelationEdge({
+                relation_subtype: "ordered_preference",
+                left_nodes: leftNodes,
+                right_nodes: rightNodes,
+                left_linkers: [{
+                  index: leftLinkerIndex,
+                  side: "left",
+                  semantic_role: "disfavored_option_introducer"
+                }],
+                right_linkers: [{
+                  index: 0,
+                  side: "right",
+                  semantic_role: "preferred_option_introducer"
+                }],
+                separator: children[separatorIndex],
+                source_order: "disfavored_then_preferred",
+                relation_subtype_provenance: "inherited_mapped_hierarchical_clause_relation_rule",
+                reason: "The overt 與其 and 不如 pair orders two nonempty alternatives; the typed edge retains both members, owns both markers, and records which option is disfavored and which is preferred."
+              });
+              if (relation) {
+                const wrapperCoverage2 = {
+                  status: "PASS",
+                  policy: "A hierarchical ClauseRelationGraph accounts for its complete local ClauseRelationEdge child; the separator and overt linkers remain visible inside that typed relation.",
+                  accounted_children: [{ surface: flattenSurface2(relation), construction: "ClauseRelationEdge", role: "local_typed_relation" }],
+                  accounted_linkers: [],
+                  accounted_separators: [{ surface: flattenSurface2(children[separatorIndex]), role: "nested_visible_separator" }],
+                  unaccounted_tokens: [],
+                  unaccounted_wrapper_token_count: 0
+                };
+                const wrapper = construction2("ClauseRelationGraph", "ClauseLink", [relation], {
+                  note: "Outer discourse wrapper containing the overt paired ordered-preference relation.",
+                  trace: traceInfo2("governed_discourse_wrapper", {
+                    rule: "與其...不如 ordered-preference clause-linking sequence",
+                    reason: "The outer wrapper preserves discourse/root accounting while the typed child edge owns the paired markers and alternative-order semantics.",
+                    child_constructions: ["ClauseRelationEdge"],
+                    local_relation_construction: "ClauseRelationEdge",
+                    graph_container_semantic_status: "neutral_container_only",
+                    independent_grammar_licensing: false,
+                    relation_semantics_source: "typed_child_edge_with_inherited_subtype_provenance",
+                    relation_subtype: "ordered_preference",
+                    linkers: [...relation.trace && relation.trace.linker_left || [], ...relation.trace && relation.trace.linker_right || []],
+                    separators: [flattenSurface2(children[separatorIndex])],
+                    wrapper_coverage: wrapperCoverage2,
+                    clause_linking_subtype: "ordered_preference",
+                    marker_profile: "jyu5kei4_bat1jyu4",
+                    research_id: "PRQ2-013"
+                  })
+                });
+                return [wrapper, ...finalOnly ? [finalOnly] : []];
+              }
+            }
+          }
+        }
+        const hierarchicalRelation = hierarchicalClauseRelationEdgeFromChildren(children);
+        if (hierarchicalRelation && hierarchicalRelation.node) {
+          return [hierarchicalRelation.node, ...finalOnly ? [finalOnly] : []];
+        }
+        const meaningful = children.filter(isClauseSequenceMeaningfulNode);
+        if (meaningful.length < 2) return nodes;
+        const conditionalChildIndex = children.findIndex((node) => node && node.kind === "construction" && node.type === "ConditionalClause");
+        if (conditionalChildIndex >= 0) {
+          const separatorAfterCondition = children.findIndex((node, index) => index > conditionalChildIndex && isClauseSequenceSeparator2(node));
+          const resultChild = children.find((node, index) => index > separatorAfterCondition && node && node.kind === "construction");
+          if (separatorAfterCondition >= 0 && resultChild) {
+            const conditional = children[conditionalChildIndex];
+            conditional.trace = {
+              ...conditional.trace || {},
+              context_requirement_status: "context_licensed",
+              missing_argument_slots: [],
+              missing_slot_details: [{ slot: "result_clause", license_status: "licensed", licensed_by: "following_result_clause" }],
+              result_clause_status: "overt_following_clause",
+              result_construction: resultChild.type,
+              not_claims: Array.from(/* @__PURE__ */ new Set([...conditional.trace && conditional.trace.not_claims || [], "not_standalone_incomplete_condition"]))
+            };
+          }
+        }
+        const wrapperCoverage = clauseLinkingWrapperCoverage2(children);
+        const topicChainTrace = applyTopicChainNullObjectLinkage2(children);
+        return [
+          construction2("ClauseRelationGraph", topicChainTrace && topicChainTrace.topic_chain_status === "licensed_overt_topic_chain" ? "TopicChain" : "ClauseLink", children, {
+            note: topicChainTrace && topicChainTrace.topic_chain_status === "licensed_overt_topic_chain" ? "Topic chain: one overt recoverable topic supplies the understood object/domain of later linked predicates without hidden tokens." : "Linked clauses. This governed discourse/coordination wrapper preserves all child constructions and explicitly accounts for linker/separator material; it does not replace or flatten the child clauses.",
+            trace: traceInfo2("governed_discourse_wrapper", {
+              rule: "comma-separated clause-linking sequence",
+              reason: "Native speech often links short clauses or discourse units with comma-like punctuation. Add a parent wrapper only when at least two meaningful clause-like constructions are separated by visible punctuation; do not model this as a phrase-internal generative template, and do not hide unaccounted wrapper holes.",
+              graph_container_semantic_status: "neutral_container_only",
+              independent_grammar_licensing: false,
+              relation_semantics_source: "none_or_preexisting_discourse_linkage_only",
+              child_constructions: children.filter((node) => node && node.kind === "construction").map((node) => node.type),
+              linkers: clauseLinkerInventory2(children),
+              separators: children.filter(isClauseSequenceSeparator2).map((node) => node.text),
+              ...conditionalChildIndex >= 0 ? { clause_linking_subtype: "condition_result", condition_construction: "ConditionalClause" } : {},
+              ...topicChainTrace ? { clause_linking_subtype: topicChainTrace.topic_chain_status === "licensed_overt_topic_chain" ? "topic_chain_null_object" : "topic_chain_compatibility_review", ...topicChainTrace } : {},
+              wrapper_coverage: wrapperCoverage
+            })
+          }),
+          ...finalOnly ? [finalOnly] : []
+        ];
+      }
+      function clauseSequenceHasVisiblePunctuation(node) {
+        if (!node || node.kind !== "construction" || node.type !== "ClauseSequence" && node.type !== "ClauseRelationGraph") return false;
+        const traceSeparators = node.trace && Array.isArray(node.trace.separators) ? node.trace.separators : [];
+        if (traceSeparators.length) return true;
+        return (node.children || []).some(isClauseSequenceSeparator2);
+      }
+      function shouldCollapseClauseSequenceForDisplay2(node, options = {}) {
+        if (!node || node.kind !== "construction" || node.type !== "ClauseSequence") return false;
+        if (options && options.showDiagnostics) return false;
+        return clauseSequenceHasVisiblePunctuation(node);
+      }
+      function shouldCollapseGreedyWrapperForDisplay2(node, options = {}) {
+        if (!node || node.kind !== "construction") return false;
+        if (options && options.showDiagnostics) return false;
+        return node.type === "ModalANotAQuestion";
+      }
+      return {
+        connectorAwareClauseLinkingForTerminal: connectorAwareClauseLinkingForTerminal2,
+        completionThenClauseRelation: completionThenClauseRelation2,
+        standaloneClauseRelationEdgeFragmentForTerminal: standaloneClauseRelationEdgeFragmentForTerminal2,
+        clauseRelationSurfaceIndex: clauseRelationSurfaceIndex2,
+        clauseRelationParsedChunk: clauseRelationParsedChunk2,
+        clauseSequenceSegments: clauseSequenceSegments2,
+        wrapClauseSequenceByPunctuation: wrapClauseSequenceByPunctuation2,
+        shouldCollapseClauseSequenceForDisplay: shouldCollapseClauseSequenceForDisplay2,
+        shouldCollapseGreedyWrapperForDisplay: shouldCollapseGreedyWrapperForDisplay2
+      };
+    };
+  }
+});
+
 // src/runtime-resources/grammar/ordered-particle-clusters.js
 var require_ordered_particle_clusters = __commonJS({
   "src/runtime-resources/grammar/ordered-particle-clusters.js"(exports2, module2) {
@@ -16585,6 +17852,42 @@ var { candidateNamedAddressFormFromRest } = createVocativeAddressDetector({
   token: token2,
   traceInfo
 });
+var {
+  hasSentencePunctuation,
+  isClauseSequenceSeparator,
+  isClauseSequenceTerminal
+} = require_punctuation2();
+var createClauseRelationMarkers = require_markers();
+var {
+  CLAUSE_LINKER_SURFACES,
+  isTopicFrameLinker,
+  isRelationalCoverbLinker,
+  directWrapperItemSurface,
+  clauseLinkingPivotIndex,
+  clauseLinkerRole,
+  clauseLinkerInventory,
+  clauseLinkingWrapperCoverage,
+  wrapperSlotDisplayRole,
+  assignedSlotWrapperCoverage,
+  wrapperCoverageForConstructionNode
+} = createClauseRelationMarkers({
+  flattenSurface,
+  isClauseSequenceSeparator,
+  learnerDisplaySlots,
+  nodeSlots
+});
+var createConditionalClauseRelations = require_conditional();
+var { protectedConditionalMarkerToken, conditionalGeWaaClauseFallback } = createConditionalClauseRelations({
+  cleanSlots,
+  construction,
+  flattenSurface,
+  isToken,
+  nodeSlots,
+  parserInactiveTokenClone,
+  token: token2,
+  traceInfo,
+  withoutTrailingParticles
+});
 var { tokenizeLine } = require_tokenize_line()({
   FORMULAS,
   NEGATED_LEXICALIZED_STATIVE_SPLITS,
@@ -18022,75 +19325,6 @@ function fragmentQuestionFallback(core) {
     })
   });
 }
-function protectedConditionalMarkerToken() {
-  return token2("嘅話", {
-    label: "func",
-    pos: "function",
-    jyutping: "ge3 waa6",
-    syntax: "conditional_marker protected_formula",
-    slots: ["conditional_marker"],
-    note: "if / in the case that",
-    review: "protected_formula",
-    trace: traceInfo("protected_formula_table", {
-      surface: "嘅話",
-      formula_type: "conditional_marker",
-      reason: "嘅話 is a conventional two-character conditional marker. It stays grouped for learner display while the preceding predicate and the full ConditionalClause remain productive and transparent.",
-      not_claims: ["not_formula_discourse_unit", "not_reported_speech", "not_whole_clause_lexicalization"]
-    })
-  });
-}
-function conditionalGeWaaClauseFallback(core) {
-  const { core: bareCore, particles } = withoutTrailingParticles(core);
-  if (bareCore.length < 2) return null;
-  let predicateNodes = [];
-  let markerChildren = [];
-  const finalNode = bareCore[bareCore.length - 1];
-  if (isToken(finalNode, "嘅話")) {
-    predicateNodes = bareCore.slice(0, -1);
-    markerChildren = [protectedConditionalMarkerToken()];
-  } else if (bareCore.length >= 3) {
-    const ge = bareCore[bareCore.length - 2];
-    const waa = bareCore[bareCore.length - 1];
-    if (!isToken(ge, "嘅") || !isToken(waa, "話")) return null;
-    predicateNodes = bareCore.slice(0, -2);
-    markerChildren = [protectedConditionalMarkerToken()];
-  } else {
-    return null;
-  }
-  if (predicateNodes.length !== 1) return null;
-  const predicate = predicateNodes[0];
-  const predicateSurface = flattenSurface(predicate);
-  const predicateSlots = nodeSlots(predicate);
-  const licensedPredicate = ["有", "冇", "得"].includes(predicateSurface) || predicateSlots.some((slot) => ["predicate", "vp", "action_vp", "stative_predicate", "existential", "negated_existential", "acceptability_predicate"].includes(slot));
-  if (!licensedPredicate) return null;
-  const predicateChild = predicate.kind === "token" ? parserInactiveTokenClone(predicate, {
-    label: predicate.label || "func",
-    pos: predicate.features && predicate.features.pos || "function",
-    syntax: `${predicate.syntax || "predicate"} conditional_antecedent_predicate`,
-    slots: cleanSlots([...predicate.slots || [], "conditional_antecedent", "conditional_antecedent_predicate", "predicate"]),
-    reason: "The predicate is the overt antecedent inside a predicate + 嘅話 conditional clause."
-  }) : predicate;
-  const children = [predicateChild, ...markerChildren, ...particles];
-  return construction("ConditionalClause", "IfClause", children, {
-    slots: cleanSlots(["conditional_clause", "condition_clause", "conditional_antecedent", "conditional_marker", "predicate", "clause"]),
-    note: "Conditional antecedent clause formed by a productive predicate plus the protected marker 嘅話. A following result clause is required unless discourse supplies it.",
-    trace: traceInfo("generative_template", {
-      construction_type: "ConditionalClause",
-      template_family: "generative_template",
-      template: ["conditional_antecedent_predicate!", "protected_conditional_marker!", "particle?"],
-      assigned_slots: ["conditional_antecedent_predicate", "conditional_marker", ...particles.map(() => "particle")],
-      surfaces: children.map((node) => flattenSurface(node)),
-      conditional_marker_surface: "嘅話",
-      conditional_marker_trace: "protected_formula_table",
-      context_requirement_status: "context_required",
-      missing_argument_slots: ["result_clause"],
-      missing_slot_details: [{ slot: "result_clause", license_status: "unresolved" }],
-      antecedent_status: "not_applicable",
-      reason: "Predicate + 嘅話 is productive. The marker is protected as one learner-visible functional unit so its internal 話 cannot leak the unrelated speech-verb gloss.",
-      not_claims: ["not_reported_speech", "not_sentence_final_particle_use", "not_complete_condition_result_without_result", "not_whole_clause_protected_formula"]
-    })
-  });
-}
 function compositionPartClone(node, overrides = {}) {
   const surface = flattenSurface(node);
   const base = firstToken(node) || token2(surface);
@@ -18503,944 +19737,6 @@ function wrapCore(core) {
   if (modalPredicateWrapSpan) return modalPredicateWrapSpan;
   return wrapPredicate(core);
 }
-function hasSentencePunctuation(text) {
-  return /[，。！？、；：,.!?;:]/u.test(String(text || ""));
-}
-function isClauseSequenceSeparator(node) {
-  return node && node.kind === "text" && /[，,；;]/u.test(String(node.text || ""));
-}
-function isClauseSequenceTerminal(node) {
-  return node && node.kind === "text" && /[。！？.!?]/u.test(String(node.text || ""));
-}
-function isClauseSequenceMeaningfulNode(node) {
-  if (!node || node.kind !== "construction") return false;
-  if (node.type === "ClauseSequence" || node.type === "ClauseRelationGraph") return false;
-  return true;
-}
-var CLAUSE_LINKER_SURFACES = /* @__PURE__ */ new Set(["之後", "之前", "然後", "跟住", "跟住就", "先", "再", "就", "咁", "噉", "所以", "因為", "雖然", "不過", "但係", "如果"]);
-function isTopicFrameLinker(node) {
-  return !!(node && node.kind === "token" && nodeSlots(node).includes("topic_frame_linker"));
-}
-function isRelationalCoverbLinker(node) {
-  return !!(node && node.kind === "token" && nodeSlots(node).includes("relational_coverb_linker"));
-}
-function directWrapperItemSurface(node) {
-  if (!node) return "";
-  if (node.kind === "text") return node.text || "";
-  return flattenSurface(node);
-}
-function clauseLinkingPivotIndex(children = [], separatorIndex = -1) {
-  if (separatorIndex >= 0) return separatorIndex;
-  const pivotSurfaces = /* @__PURE__ */ new Set(["就", "所以", "但係", "不過", "之後", "之前", "然後", "跟住", "跟住就"]);
-  for (let index = 1; index < children.length; index++) {
-    const node = children[index];
-    if (node && node.kind === "token" && pivotSurfaces.has(node.surface || "")) return index;
-  }
-  return -1;
-}
-function clauseLinkerRole(node, index, pivotIndex) {
-  if (!node || node.kind !== "token") return "";
-  const surface = node.surface || "";
-  const slots = nodeSlots(node);
-  const side = pivotIndex >= 0 && index > pivotIndex ? "pre_child" : "post_child";
-  if (surface === "如果") return "condition_introducer";
-  if (surface === "因為") return "reason_introducer";
-  if (surface === "所以") return "result_linker";
-  if (surface === "與其") return "disfavored_option_introducer";
-  if (surface === "不如") return "preferred_option_introducer";
-  if (surface === "但係" || surface === "不過") return "contrast_linker";
-  if (slots.includes("topic_frame_linker")) return "topic_frame_linker";
-  if (slots.includes("relational_coverb_linker")) return "relational_coverb_linker";
-  if (surface === "之後" || surface === "之前" || slots.includes("time") || slots.includes("time_head")) return `${side}_temporal_linker`;
-  if (surface === "先" || surface === "再" || surface === "然後" || surface === "跟住" || surface === "跟住就") return `${side}_sequence_linker`;
-  if (slots.includes("subject")) return `${side}_clause_subject`;
-  if (slots.includes("focus_adverb")) return `${side}_focus_adverb`;
-  if (surface === "就" || slots.includes("result_marker")) return `${side}_sequence_linker`;
-  if (CLAUSE_LINKER_SURFACES.has(surface) || slots.includes("discourse_marker")) return `${side}_discourse_linker`;
-  return "";
-}
-function clauseLinkerInventory(children = []) {
-  const separatorIndex = children.findIndex(isClauseSequenceSeparator);
-  const pivotIndex = clauseLinkingPivotIndex(children, separatorIndex);
-  return children.map((node, index) => {
-    if (!node || node.kind !== "token") return null;
-    const role = clauseLinkerRole(node, index, pivotIndex);
-    return role ? { surface: node.surface || "", role } : null;
-  }).filter(Boolean);
-}
-function clauseLinkingWrapperCoverage(children = []) {
-  const separatorIndexes = children.map((node, index) => isClauseSequenceSeparator(node) ? index : -1).filter((index) => index >= 0);
-  const separatorIndex = separatorIndexes.length ? separatorIndexes[0] : -1;
-  const pivotIndex = clauseLinkingPivotIndex(children, separatorIndex);
-  const accountedChildren = [];
-  const accountedLinkers = [];
-  const accountedSeparators = [];
-  const unaccountedTokens = [];
-  children.forEach((node, index) => {
-    const surface = directWrapperItemSurface(node);
-    if (!node) return;
-    if (node.kind === "construction") {
-      const precededByTopicFrameLinker = index > 0 && isTopicFrameLinker(children[index - 1]);
-      const precededByRelationalCoverbLinker = index > 0 && isRelationalCoverbLinker(children[index - 1]);
-      accountedChildren.push({
-        surface,
-        construction: node.type,
-        role: precededByTopicFrameLinker ? "topic_frame_domain" : precededByRelationalCoverbLinker ? "relational_coverb_domain" : index < pivotIndex || pivotIndex < 0 ? "left_clause_like" : "right_clause_like"
-      });
-      return;
-    }
-    if (isClauseSequenceSeparator(node)) {
-      accountedSeparators.push({ surface, role: "visible_separator" });
-      return;
-    }
-    if (node.kind === "token") {
-      const role = clauseLinkerRole(node, index, pivotIndex);
-      if (role) {
-        accountedLinkers.push({ surface, role, slots: learnerDisplaySlots(nodeSlots(node)) });
-      } else {
-        unaccountedTokens.push({ surface, kind: "token", index });
-      }
-      return;
-    }
-    if (node.kind === "text" && surface.trim()) {
-      unaccountedTokens.push({ surface, kind: "text", index });
-    }
-  });
-  return {
-    status: unaccountedTokens.length ? "WARN" : "PASS",
-    policy: "ClauseRelationGraph may group linked clause-like material, but it must not hide wrapper holes. Every direct item inside the wrapper must be accounted for as a child construction, linker material, or separator material.",
-    accounted_children: accountedChildren,
-    accounted_linkers: accountedLinkers,
-    accounted_separators: accountedSeparators,
-    unaccounted_tokens: unaccountedTokens,
-    unaccounted_wrapper_token_count: unaccountedTokens.length
-  };
-}
-var ASSIGNED_SLOT_WRAPPER_COVERAGE_TYPES = /* @__PURE__ */ new Set(["ModalANotAQuestion"]);
-function wrapperSlotDisplayRole(type, slot) {
-  if (type === "ModalANotAQuestion") {
-    const roles = {
-      subject: "subject",
-      modal_a_not_a: "modal_a_not_a",
-      modal_positive_arm: "positive_modal_arm",
-      negator: "negator",
-      modal_negative_arm: "negative_modal_arm",
-      vp: "requested_action_vp",
-      particle: "final_particle"
-    };
-    return roles[slot] || slot || "";
-  }
-  return slot || "";
-}
-function assignedSlotWrapperCoverage(type, children = [], assignedSlots = []) {
-  if (!ASSIGNED_SLOT_WRAPPER_COVERAGE_TYPES.has(type)) return null;
-  const accountedParts = [];
-  const unaccountedTokens = [];
-  children.forEach((node, index) => {
-    const surface = directWrapperItemSurface(node);
-    const slot = assignedSlots[index] || "";
-    const role = wrapperSlotDisplayRole(type, slot);
-    if (slot && role) {
-      const part = {
-        surface,
-        role,
-        assigned_slot: slot,
-        kind: node && node.kind ? node.kind : ""
-      };
-      if (node && node.kind === "construction") part.construction = node.type || "";
-      accountedParts.push(part);
-      return;
-    }
-    if (node && node.kind === "text" && !String(surface || "").trim()) return;
-    unaccountedTokens.push({ surface, kind: node && node.kind ? node.kind : "unknown", index });
-  });
-  return {
-    status: unaccountedTokens.length ? "WARN" : "PASS",
-    coverage_kind: "assigned_slot_wrapper",
-    policy: "Greedy-looking parent wrappers may be collapsed in normal learner display only when every direct child is explicitly accounted for by an assigned slot. Collapse must not hide wrapper holes.",
-    accounted_parts: accountedParts,
-    unaccounted_tokens: unaccountedTokens,
-    unaccounted_wrapper_token_count: unaccountedTokens.length
-  };
-}
-function wrapperCoverageForConstructionNode(node) {
-  if (!node || node.kind !== "construction") return null;
-  if (node.type === "ClauseRelationGraph") {
-    return node.trace && node.trace.wrapper_coverage || clauseLinkingWrapperCoverage(node.children || []);
-  }
-  if (ASSIGNED_SLOT_WRAPPER_COVERAGE_TYPES.has(node.type)) {
-    const trace = node.trace || {};
-    return trace.wrapper_coverage || assignedSlotWrapperCoverage(node.type, node.children || [], trace.assigned_slots || []);
-  }
-  return null;
-}
-function meaningfulClauseConstructionCount(nodes = []) {
-  return nodes.filter(isClauseSequenceMeaningfulNode).length;
-}
-function parsedClauseNodes(segment = []) {
-  const compact = withoutIgnorableSpaceText(segment || []);
-  if (!compact.length) return [];
-  const parsed = applyConstructionPatterns(compact);
-  if (parsed.length === 1 && parsed[0] && parsed[0].kind === "construction" && parsed[0].type === "NominalHeadSpan") {
-    const productiveChild = (parsed[0].children || []).find((child) => child && child.kind === "construction" && child.type === "ProductiveVO" && nodeCanFillSlot(child, "vp"));
-    if (productiveChild && flattenSurface(productiveChild) === flattenSurface(parsed[0])) return [productiveChild];
-  }
-  return parsed;
-}
-function buildGovernedClauseRelationGraph(children = [], detail = {}) {
-  const compact = withoutIgnorableSpaceText(children || []);
-  if (meaningfulClauseConstructionCount(compact) < 2) return null;
-  const wrapperCoverage = clauseLinkingWrapperCoverage(compact);
-  if (wrapperCoverage.unaccounted_wrapper_token_count > 0) return null;
-  return construction("ClauseRelationGraph", "ClauseLink", compact, {
-    note: detail.note || "Linked clauses. This governed discourse/coordination wrapper preserves all child constructions and explicitly accounts for linker/separator material; it does not replace or flatten the child clauses.",
-    trace: traceInfo("governed_discourse_wrapper", {
-      rule: detail.rule || "connector-governed clause-linking sequence",
-      reason: detail.reason || "Connector-governed clause linking groups independently parsed clause-like children while keeping linkers and separators visible and accounted for.",
-      graph_container_semantic_status: "neutral_container_only",
-      independent_grammar_licensing: false,
-      relation_semantics_source: "preexisting_child_constructions_and_linker_rules_only",
-      child_constructions: compact.filter((node) => node && node.kind === "construction").map((node) => node.type),
-      linkers: clauseLinkerInventory(compact),
-      separators: compact.filter(isClauseSequenceSeparator).map((node) => node.text),
-      wrapper_coverage: wrapperCoverage,
-      ...detail.trace_detail || {}
-    })
-  });
-}
-function connectorLeadingClauseSegment(segment = []) {
-  const compact = withoutIgnorableSpaceText(segment || []);
-  if (compact.length < 2) return null;
-  const first = compact[0];
-  if (!first || first.kind !== "token" || !CLAUSE_LINKER_SURFACES.has(first.surface || "")) return null;
-  if (!["但係", "不過", "所以", "然後", "跟住", "跟住就", "就", "咁", "噉"].includes(first.surface || "")) return null;
-  const parsedRest = parsedClauseNodes(compact.slice(1));
-  if (!parsedRest.length || meaningfulClauseConstructionCount(parsedRest) < 1) return null;
-  return [first, ...parsedRest];
-}
-function connectorPairClauseLinkingSegment(segment = []) {
-  const compact = withoutIgnorableSpaceText(segment || []);
-  if (compact.length < 4) return null;
-  const surfaceAt = (index) => compact[index] && compact[index].kind === "token" ? compact[index].surface || "" : "";
-  const firstSurface = surfaceAt(0);
-  const pairedPatterns = [
-    {
-      opener: "如果",
-      pivot: "就",
-      rule: "如果...就 condition-result clause-linking sequence",
-      reason: "如果 introduces the condition and 就 introduces the result; both sides are parsed independently under a broad ClauseRelationGraph wrapper.",
-      subtype: "condition_result"
-    },
-    {
-      opener: "因為",
-      pivot: "所以",
-      rule: "因為...所以 reason-result clause-linking sequence",
-      reason: "因為 introduces the reason and 所以 introduces the result; both sides are parsed independently under a broad ClauseRelationGraph wrapper.",
-      subtype: "reason_result"
-    }
-  ];
-  for (const pattern of pairedPatterns) {
-    if (firstSurface !== pattern.opener) continue;
-    const pivotIndex = compact.findIndex((node, index) => index > 1 && node && node.kind === "token" && (node.surface || "") === pattern.pivot);
-    if (pivotIndex < 0) continue;
-    const left = parsedClauseNodes(compact.slice(1, pivotIndex));
-    const right = parsedClauseNodes(compact.slice(pivotIndex + 1));
-    const wrapper = buildGovernedClauseRelationGraph([compact[0], ...left, compact[pivotIndex], ...right], {
-      rule: pattern.rule,
-      reason: pattern.reason,
-      trace_detail: { clause_linking_subtype: pattern.subtype }
-    });
-    if (wrapper) return wrapper;
-  }
-  const temporalIndex = compact.findIndex((node, index) => index > 0 && node && node.kind === "token" && ["之後", "之前"].includes(node.surface || ""));
-  if (temporalIndex > 0 && temporalIndex < compact.length - 1) {
-    const left = parsedClauseNodes(compact.slice(0, temporalIndex));
-    const right = parsedClauseNodes(compact.slice(temporalIndex + 1));
-    const linker = compact[temporalIndex];
-    const wrapper = buildGovernedClauseRelationGraph([...left, linker, ...right], {
-      rule: `${linker.surface} temporal clause-linking sequence`,
-      reason: `${linker.surface} links a preceding event/clause-like unit to a following event/clause-like unit; the wrapper keeps both children visible.`,
-      trace_detail: { clause_linking_subtype: "temporal_sequence" }
-    });
-    if (wrapper) return wrapper;
-  }
-  const contrastIndex = compact.findIndex((node, index) => index > 0 && node && node.kind === "token" && ["但係", "不過"].includes(node.surface || ""));
-  if (contrastIndex > 0 && contrastIndex < compact.length - 1) {
-    const left = parsedClauseNodes(compact.slice(0, contrastIndex));
-    const right = parsedClauseNodes(compact.slice(contrastIndex + 1));
-    const linker = compact[contrastIndex];
-    const wrapper = buildGovernedClauseRelationGraph([...left, linker, ...right], {
-      rule: `${linker.surface} contrast clause-linking sequence`,
-      reason: `${linker.surface} links two contrasting clause-like units; the wrapper keeps both child parses and the contrast marker visible.`,
-      trace_detail: { clause_linking_subtype: "contrast" }
-    });
-    if (wrapper) return wrapper;
-  }
-  return null;
-}
-function connectorAwareClauseLinkingForTerminal(segment = []) {
-  const pairWrapper = connectorPairClauseLinkingSegment(segment);
-  if (pairWrapper) return [pairWrapper];
-  const leading = connectorLeadingClauseSegment(segment);
-  if (leading) return leading;
-  return null;
-}
-function clauseRelationLeafNodes(node) {
-  if (!node) return [];
-  if (node.kind === "token" || node.kind === "text") return [node];
-  if (node.kind === "construction") return (node.children || []).flatMap(clauseRelationLeafNodes);
-  return [];
-}
-function clauseRelationSegmentNodes(segment = []) {
-  const compact = withoutIgnorableSpaceText(segment || []);
-  if (compact.length === 1 && compact[0] && compact[0].kind === "construction" && ["RelativeClauseNP"].includes(compact[0].type)) return compact.slice();
-  return compact.flatMap(clauseRelationLeafNodes).filter((node) => !(node.kind === "text" && !String(node.text || "").trim()));
-}
-function clauseRelationSurfaceList(nodes = []) {
-  return (nodes || []).map((node) => flattenSurface(node));
-}
-function clauseRelationSurfaceIndex(nodes = [], surfaces = [], start = 0) {
-  const wanted = new Set(surfaces || []);
-  for (let index = Math.max(0, start); index < nodes.length; index += 1) {
-    if (wanted.has(flattenSurface(nodes[index]))) return index;
-  }
-  return -1;
-}
-function clauseRelationActionVPFor(nodes = [], options = {}) {
-  const compact = withoutIgnorableSpaceText(nodes || []);
-  if (!compact.length) return null;
-  const first = compact[0];
-  const firstTok = firstToken(first);
-  if (!firstTok || !nodeCanFillSlot(first, "action_verb")) return null;
-  if (compact.length === 1) {
-    return construction("IntransitiveVP", "VP", compact, {
-      note: "Broad intransitive/action VP used as a visible clause-relation member.",
-      trace: traceInfo("generative_template", {
-        construction_type: "IntransitiveVP",
-        template_family: "generative_template",
-        template: ["action_verb!"],
-        assigned_slots: ["action_verb"],
-        relation_member_scope: true,
-        reason: "A visible action predicate without an overt object is preserved as a VP member; no subject or object token is inserted.",
-        not_claims: ["not_fabricated_subject", "not_fabricated_object"]
-      })
-    });
-  }
-  const objectNodes = compact.slice(1);
-  const objectParsed = applyConstructionPatterns(objectNodes);
-  const objectLike = objectParsed.length === 1 ? objectParsed[0] : objectNodes.length === 1 ? objectNodes[0] : null;
-  if (objectLike && (nodeCanFillSlot(objectLike, "object") || nodeCanFillSlot(objectLike, "np") || nodeCanFillSlot(objectLike, "head_noun") || nodeCanFillSlot(objectLike, "subject"))) {
-    const children = [first, objectLike];
-    return construction("TransitiveVP", "V+O", children, {
-      note: "Transparent transitive VP used inside a clause relation.",
-      trace: traceInfo("generative_template", {
-        construction_type: "TransitiveVP",
-        template_family: "generative_template",
-        template: ["action_verb!", "object!"],
-        assigned_slots: ["action_verb", "object"],
-        relation_member_scope: true,
-        reason: "The relation-member parser preserves an overt action verb and overt nominal object as one transparent VP."
-      })
-    });
-  }
-  return null;
-}
-function clauseRelationParsedChunk(nodes = [], options = {}) {
-  const compact = withoutIgnorableSpaceText(nodes || []);
-  if (!compact.length) return [];
-  if (compact.length === 1 && compact[0] && compact[0].kind === "construction") return compact.slice();
-  if (options.immediate_temporal_trigger && compact.some((node) => flattenSurface(node) === "見到")) {
-    const immediatePredicate = clauseRelationActionVPFor(compact, options);
-    if (immediatePredicate) return [immediatePredicate];
-  }
-  const parsed = applyConstructionPatterns(compact);
-  if (parsed.some((node) => node && node.kind === "construction")) return parsed;
-  if (nodeCanFillSlot(compact[0], "subject") && compact.length >= 2) {
-    const subject = compact[0];
-    const predicateNodes = compact.slice(1);
-    let predicateChildren = applyConstructionPatterns(predicateNodes);
-    if (!predicateChildren.some((node) => node && node.kind === "construction")) {
-      const vp2 = clauseRelationActionVPFor(predicateNodes, options);
-      if (vp2) predicateChildren = [vp2];
-    }
-    if (predicateChildren.some((node) => node && (node.kind === "construction" || nodeCanFillSlot(node, "predicate") || nodeCanFillSlot(node, "vp")))) {
-      const children = [subject, ...predicateChildren];
-      return [construction("SubjectPredicateClause", "Clause", children, {
-        note: "Subject plus visible predicate material inside a typed clause relation.",
-        trace: traceInfo("generative_template", {
-          construction_type: "SubjectPredicateClause",
-          template_family: "generative_template",
-          template: ["subject!", "predicate!"],
-          assigned_slots: ["subject", "predicate"],
-          relation_member_scope: true,
-          subject_status: "overt",
-          reason: "The relation architecture groups an overt subject with its visible predicate while preserving every token and without inserting omitted material."
-        })
-      })];
-    }
-  }
-  const vp = clauseRelationActionVPFor(compact, options);
-  if (vp) return [vp];
-  return parsed;
-}
-function clauseRelationLinkerClone(node, relationSubtype, side, semanticRole, relationId) {
-  if (!node || node.kind !== "token") return node;
-  const surface = flattenSurface(node);
-  const label = surface === "一" ? "func" : node.label || "func";
-  return parserInactiveTokenClone(node, {
-    label,
-    pos: "function",
-    syntax: `${node.syntax || "clause_relation_linker"} clause_relation_linker ${relationSubtype}_relation_linker`,
-    slots: cleanSlots([...node.slots || [], "clause_relation_linker", side === "left" ? "linker_left" : "linker_right"]),
-    reason: `The overt linker ${surface} is owned by the local ${relationSubtype} clause relation on the ${side} side; no absent partner is inserted.`,
-    trace_detail: {
-      clause_relation_id: relationId,
-      relation_subtype: relationSubtype,
-      linker_side: side,
-      linker_semantic_role: semanticRole,
-      linker_ownership_status: "owned_by_local_clause_relation"
-    }
-  });
-}
-function clauseRelationMember(nodes = [], options = {}) {
-  const raw = clauseRelationSegmentNodes(nodes);
-  if (!raw.length) return null;
-  const linkerSpecs = Array.isArray(options.linkers) ? options.linkers.slice().sort((a, b) => a.index - b.index) : [];
-  const linkerByIndex = new Map(linkerSpecs.map((item) => [item.index, item]));
-  const children = [];
-  let chunk = [];
-  const flushChunk = () => {
-    if (!chunk.length) return;
-    children.push(...clauseRelationParsedChunk(chunk, options));
-    chunk = [];
-  };
-  raw.forEach((node, index) => {
-    const spec = linkerByIndex.get(index);
-    if (!spec) {
-      if (node && node.kind === "token" && flattenSurface(node) === "仲" && !node.jyutping) {
-        chunk.push(token2("仲", {
-          label: "how",
-          jyutping: "zung6",
-          syntax: "focus_adverb continuative_adverb",
-          note: "still / furthermore; resolved locally inside a typed clause relation"
-        }));
-      } else {
-        chunk.push(node);
-      }
-      return;
-    }
-    flushChunk();
-    children.push(clauseRelationLinkerClone(node, options.relation_subtype, spec.side, spec.semantic_role, options.relation_id));
-  });
-  flushChunk();
-  if (!children.length) return null;
-  const firstClauseChild = children.find((child) => {
-    if (!child) return false;
-    if (child.kind === "token") return !(child.slots || []).includes("clause_relation_linker");
-    return child.kind === "construction";
-  }) || null;
-  let overtSubject = null;
-  if (firstClauseChild && firstClauseChild.kind === "token" && (firstClauseChild.slots || []).includes("subject")) {
-    overtSubject = firstClauseChild;
-  } else if (firstClauseChild && firstClauseChild.kind === "construction") {
-    const subjectBearing = [
-      "ClauseSpan",
-      "NominalHeadSpan",
-      "RelativeClauseNP",
-      "OpinionStanceFrame",
-      "CognitionContentFrame",
-      "ReportedSpeech"
-    ].includes(firstClauseChild.type);
-    if (subjectBearing) {
-      overtSubject = flattenNodes([firstClauseChild]).find((row) => row.kind === "token" && (row.slots || []).includes("subject")) || null;
-    }
-  }
-  const childConstructions = children.filter((node) => node && node.kind === "construction").map((node) => node.type);
-  return construction("ClauseRelationMemberSpan", options.role === "left" ? "Relation-L" : "Relation-R", children, {
-    note: "Transparent source-order member of a typed clause relation. Linkers remain visible and carry explicit local ownership.",
-    trace: traceInfo("generative_template", {
-      construction_type: "ClauseRelationMemberSpan",
-      template_family: "generative_template",
-      template: ["clause_material!", "relation_linker?"],
-      assigned_slots: [options.role === "left" ? "left_relation_member" : "right_relation_member"],
-      relation_member_role: options.role,
-      relation_subtype: options.relation_subtype,
-      relation_subtype_provenance: "inherited_from_parent_clause_relation_edge",
-      clause_relation_id: options.relation_id,
-      independent_grammar_licensing: false,
-      context_resolution_capability: false,
-      overt_subject_surface: overtSubject ? overtSubject.surface : "",
-      subject_status: overtSubject ? "overt" : "not_overt",
-      child_constructions: childConstructions,
-      source_surface: raw.map((node) => flattenSurface(node)).join(""),
-      reason: "A relation member is grouped as one clause-like span while retaining source order, overt linkers, parsed predicate children, and visible subjects.",
-      not_claims: ["not_fabricated_subject", "not_fabricated_clause", "not_hidden_linker"]
-    })
-  });
-}
-function clauseRelationSubjectSurface(member) {
-  if (!member || member.kind !== "construction") return "";
-  const memberTrace = member.trace || {};
-  return String(memberTrace.overt_subject_surface || "");
-}
-function clauseRelationSubjectLinkage(leftMember, rightMember, relationSubtype) {
-  const left = clauseRelationSubjectSurface(leftMember);
-  const right = clauseRelationSubjectSurface(rightMember);
-  if (left && right) return { status: "overt_subject_on_both_members", inherited_surface: "" };
-  if (left && !right && ["concessive", "committed_preference", "ordered_preference", "premise_response", "sequential", "asyndetic_sequence"].includes(relationSubtype)) {
-    return { status: "shared_overt_subject_inherited_by_right_member", inherited_surface: left };
-  }
-  if (left && !right) return { status: "left_subject_overt_right_subject_unresolved", inherited_surface: "" };
-  if (!left && right) return { status: "right_subject_overt_left_subject_unresolved", inherited_surface: "" };
-  if (!left && !right) return { status: "no_overt_subject_unresolved", inherited_surface: "" };
-  return { status: "overt_subject_on_both_members", inherited_surface: "" };
-}
-function clauseRelationPairStatus(leftLinkers = [], rightLinkers = [], licensedAsyndetic = false) {
-  if (leftLinkers.length && rightLinkers.length) return "both_overt";
-  if (leftLinkers.length) return "left_overt_right_absent";
-  if (rightLinkers.length) return "left_absent_right_overt";
-  return licensedAsyndetic ? "both_absent_licensed_asyndetic" : "not_applicable";
-}
-function clauseRelationSemanticTrace(subtype, sourceOrder, leftMember, rightMember) {
-  const leftSurface = flattenSurface(leftMember);
-  const rightSurface = flattenSurface(rightMember);
-  if (subtype === "conditional") return {
-    antecedent_clause: leftSurface,
-    consequent_clause: rightSurface
-  };
-  if (subtype === "causal") {
-    const reasonOnLeft = sourceOrder !== "result_then_reason";
-    return {
-      reason_clause: reasonOnLeft ? leftSurface : rightSurface,
-      result_clause: reasonOnLeft ? rightSurface : leftSurface,
-      causal_source_order: sourceOrder
-    };
-  }
-  if (subtype === "concessive") return {
-    concession_clause: leftSurface,
-    counterexpectation_clause: rightSurface
-  };
-  if (subtype === "committed_preference") return {
-    chosen_option: leftSurface,
-    rejected_option: rightSurface
-  };
-  if (subtype === "ordered_preference") return {
-    disfavored_option: leftSurface,
-    preferred_option: rightSurface
-  };
-  if (subtype === "premise_response") return {
-    established_premise: leftSurface,
-    response_clause: rightSurface
-  };
-  if (["sequential", "asyndetic_sequence"].includes(subtype)) return {
-    earlier_event: leftSurface,
-    later_event: rightSurface
-  };
-  if (subtype === "temporal_subordinate") return {
-    temporal_subordinate: leftSurface,
-    matrix_clause: rightSurface
-  };
-  return {};
-}
-function buildClauseRelationEdge(spec = {}) {
-  if (!CLAUSE_RELATION_SUBTYPE_REGISTRY.has(spec.relation_subtype)) return null;
-  const relationId = `clause-relation:${spec.relation_subtype}:${clauseRelationSurfaceList(spec.left_nodes).join("")}:${clauseRelationSurfaceList(spec.right_nodes).join("")}`;
-  const leftMember = clauseRelationMember(spec.left_nodes, {
-    role: "left",
-    relation_subtype: spec.relation_subtype,
-    relation_id: relationId,
-    linkers: spec.left_linkers || [],
-    immediate_temporal_trigger: Boolean(spec.immediate_temporal_trigger)
-  });
-  const rightMember = clauseRelationMember(spec.right_nodes, {
-    role: "right",
-    relation_subtype: spec.relation_subtype,
-    relation_id: relationId,
-    linkers: spec.right_linkers || []
-  });
-  if (!leftMember || !rightMember) return null;
-  const subjectLinkage = clauseRelationSubjectLinkage(leftMember, rightMember, spec.relation_subtype);
-  const pairStatus = clauseRelationPairStatus(spec.left_linkers || [], spec.right_linkers || [], Boolean(spec.licensed_asyndetic));
-  const children = [leftMember, spec.separator, rightMember].filter(Boolean);
-  const leftLinkerSurfaces = (spec.left_linkers || []).map((item) => flattenSurface(clauseRelationSegmentNodes(spec.left_nodes)[item.index]));
-  const rightLinkerSurfaces = (spec.right_linkers || []).map((item) => flattenSurface(clauseRelationSegmentNodes(spec.right_nodes)[item.index]));
-  return construction("ClauseRelationEdge", "ClauseRel", children, {
-    note: "Typed local relation between two transparent clause-like members. The relation owns overt linkers and records optional-pair and shared-subject provenance without hidden tokens.",
-    trace: traceInfo("generative_template", {
-      construction_type: "ClauseRelationEdge",
-      template_family: "generative_template",
-      template: ["left_relation_member!", "separator?", "right_relation_member!"],
-      assigned_slots: ["left_relation_member", ...spec.separator ? ["separator"] : [], "right_relation_member"],
-      clause_relation_id: relationId,
-      relation_subtype: spec.relation_subtype,
-      relation_subtype_provenance: spec.relation_subtype_provenance || "inherited_mapped_clause_relation_rule",
-      relation_subtype_registry_status: "validated_against_clause_relation_subtype_registry",
-      independent_grammar_licensing: false,
-      relation_context_status: "context_not_required",
-      source_order: spec.source_order || "left_then_right",
-      linker_left: leftLinkerSurfaces,
-      linker_right: rightLinkerSurfaces,
-      linker_pair_status: pairStatus,
-      linker_ownership_status: "all_overt_linkers_owned_once",
-      subject_linkage_status: subjectLinkage.status,
-      inherited_subject_surface: subjectLinkage.inherited_surface,
-      ...clauseRelationSemanticTrace(spec.relation_subtype, spec.source_order || "left_then_right", leftMember, rightMember),
-      immediate_temporal_trigger: Boolean(spec.immediate_temporal_trigger),
-      asyndetic_license: spec.licensed_asyndetic ? spec.asyndetic_license || "licensed_by_event_order_and_visible_separator" : "not_applicable",
-      surfaces: children.map((node) => flattenSurface(node)),
-      reason: spec.reason || "Overt linker evidence or a constrained asyndetic event-order pattern licenses one local typed clause relation instead of a flat discourse wrapper.",
-      not_claims: [
-        "not_fabricated_linker",
-        "not_fabricated_subject",
-        "not_fabricated_clause",
-        "not_punctuation_only_relation"
-      ]
-    })
-  });
-}
-function completionThenClauseRelation(nodes = []) {
-  const compact = withoutIgnorableSpaceText(nodes || []);
-  const markerIndex = compact.findIndex(
-    (node) => node && node.kind === "token" && flattenSurface(node) === "就"
-  );
-  if (markerIndex <= 0 || markerIndex >= compact.length - 1) return null;
-  let leftNodes = compact.slice(0, markerIndex);
-  let rightNodes = compact.slice(markerIndex);
-  let rightLinkerIndex = 0;
-  const preMarkerSubject = compact[markerIndex - 1];
-  const completionBeforePreMarkerSubject = hasConstruction(
-    compact.slice(0, markerIndex - 1),
-    "CompletionVP"
-  );
-  if (preMarkerSubject && nodeCanFillSlot(preMarkerSubject, "subject") && completionBeforePreMarkerSubject) {
-    leftNodes = compact.slice(0, markerIndex - 1);
-    rightNodes = [preMarkerSubject, ...compact.slice(markerIndex)];
-    rightLinkerIndex = clauseRelationSegmentNodes([preMarkerSubject]).length;
-  }
-  if (!hasConstruction(leftNodes, "CompletionVP")) return null;
-  if (!rightNodes.slice(1).some((node) => flattenSurface(node))) return null;
-  return buildClauseRelationEdge({
-    relation_subtype: "sequential",
-    left_nodes: leftNodes,
-    right_nodes: rightNodes,
-    right_linkers: [{
-      index: rightLinkerIndex,
-      side: "right",
-      semantic_role: "later_event_linker"
-    }],
-    source_order: "earlier_completion_then_later_event",
-    relation_subtype_provenance: "source_linked_completion_sequence_rule",
-    reason: "An overt CompletionVP before 就 and a nonempty later member license a sequential relation; each member retains its own visible subject and predicate structure."
-  });
-}
-function clauseRelationTimeHead(node) {
-  const rows = flattenNodes([node]);
-  return rows.some((row) => row.kind === "token" && ["時候", "時間"].includes(row.surface || ""));
-}
-function clauseRelationPrefixEmbedding(prefixNodes = [], relation = null) {
-  const prefix = withoutIgnorableSpaceText(prefixNodes || []);
-  if (!prefix.length || !relation) return null;
-  return opinionStanceFrameFallback([...prefix, relation]) || cognitionContentFrameFallback([...prefix, relation]) || reportedSpeechFrameFallback([...prefix, relation]);
-}
-function hierarchicalClauseRelationEdgeFromChildren(children = []) {
-  const segments = clauseSequenceSegments(children);
-  if (segments.length !== 2) return null;
-  const separator = children.find(isClauseSequenceSeparator) || null;
-  const leftRaw = clauseRelationSegmentNodes(segments[0]);
-  const rightRaw = clauseRelationSegmentNodes(segments[1]);
-  if (!leftRaw.length || !rightRaw.length) return null;
-  let prefix = [];
-  let leftNodes = leftRaw.slice();
-  let relationSubtype = "";
-  let sourceOrder = "left_then_right";
-  let licensedAsyndetic = false;
-  let asyndeticLicense = "";
-  let immediateTemporalTrigger = false;
-  const leftLinkers = [];
-  const rightLinkers = [];
-  const leftIf = clauseRelationSurfaceIndex(leftNodes, ["如果"]);
-  const leftZi = clauseRelationSurfaceIndex(leftNodes, ["只"]);
-  const leftJiu = clauseRelationSurfaceIndex(leftNodes, ["要"]);
-  const leftHave = clauseRelationSurfaceIndex(leftNodes, ["有"]);
-  const leftNing = clauseRelationSurfaceIndex(leftNodes, ["寧"]);
-  const leftJyun = clauseRelationSurfaceIndex(leftNodes, ["願"]);
-  const leftGei = clauseRelationSurfaceIndex(leftNodes, ["既"]);
-  const leftJin = clauseRelationSurfaceIndex(leftNodes, ["然"]);
-  const leftBecause = clauseRelationSurfaceIndex(leftNodes, ["因為"]);
-  const leftAlthough = clauseRelationSurfaceIndex(leftNodes, ["雖然"]);
-  const rightBecause = clauseRelationSurfaceIndex(rightRaw, ["因為"]);
-  const rightSo = clauseRelationSurfaceIndex(rightRaw, ["所以"]);
-  const rightBut = clauseRelationSurfaceIndex(rightRaw, ["但係", "不過"]);
-  const rightThen = clauseRelationSurfaceIndex(rightRaw, ["然後", "再"]);
-  const leftFirst = clauseRelationSurfaceIndex(leftNodes, ["先"]);
-  const rightConditional = clauseRelationSurfaceIndex(rightRaw, ["就"]);
-  const rightNecessary = clauseRelationSurfaceIndex(rightRaw, ["先至", "先"]);
-  const rightDou = clauseRelationSurfaceIndex(rightRaw, ["都"]);
-  const rightM4 = clauseRelationSurfaceIndex(rightRaw, ["唔"]);
-  const rightM4Hou2 = clauseRelationSurfaceIndex(rightRaw, ["唔好"]);
-  const rightSoeng2 = clauseRelationSurfaceIndex(rightRaw, ["想"]);
-  const rightHang2 = clauseRelationSurfaceIndex(rightRaw, ["肯"]);
-  const rightGam2 = clauseRelationSurfaceIndex(rightRaw, ["噉", "咁"]);
-  const rightBat1Jyu4 = clauseRelationSurfaceIndex(rightRaw, ["不如"]);
-  const rightDang2 = clauseRelationSurfaceIndex(rightRaw, ["等"]);
-  const rightNgo5AfterDang2 = rightDang2 >= 0 ? clauseRelationSurfaceIndex(rightRaw, ["我"], rightDang2 + 1) : -1;
-  const rejectionMarkerIndexes = rightM4Hou2 === rightDou + 1 ? [rightDou, rightM4Hou2] : rightM4 === rightDou + 1 && (rightSoeng2 === rightM4 + 1 || rightHang2 === rightM4 + 1) ? [rightDou, rightM4, rightSoeng2 === rightM4 + 1 ? rightSoeng2 : rightHang2] : [];
-  const committedPreferenceProfile = leftNing >= 0 && leftJyun === leftNing + 1 && rejectionMarkerIndexes.length > 0 && leftNodes.some((node, index) => index !== leftNing && index !== leftJyun && flattenSurface(node)) && rightRaw.some((node, index) => !rejectionMarkerIndexes.includes(index) && flattenSurface(node));
-  let premiseResponseMarkerIndexes = [];
-  let premiseResponseMarkerProfile = "unmarked";
-  if (rightConditional === 0) {
-    premiseResponseMarkerIndexes = [rightConditional];
-    premiseResponseMarkerProfile = "zau6";
-  } else if (rightGam2 === 0) {
-    premiseResponseMarkerIndexes = [rightGam2];
-    premiseResponseMarkerProfile = "gam2";
-  } else if (rightBat1Jyu4 === 0) {
-    premiseResponseMarkerIndexes = [rightBat1Jyu4];
-    premiseResponseMarkerProfile = "bat1jyu4";
-  } else if (rightDang2 === 0 && rightNgo5AfterDang2 === 1) {
-    premiseResponseMarkerIndexes = [rightDang2, rightNgo5AfterDang2];
-    premiseResponseMarkerProfile = "dang2ngo5";
-  }
-  const premiseResponseProfile = leftGei === 0 && leftJin === 1 && leftNodes.some((node, index) => index !== leftGei && index !== leftJin && flattenSurface(node)) && rightRaw.some((node, index) => !premiseResponseMarkerIndexes.includes(index) && flattenSurface(node));
-  const necessaryConditionLeftContent = leftNodes.slice(leftHave + 1).flatMap((node) => clauseRelationLeafNodes(node));
-  const necessaryConditionHasPredicateOrFrame = necessaryConditionLeftContent.some((node) => {
-    if (!node || node.kind !== "token") return false;
-    const slots = nodeSlots(node);
-    return slots.some((slot) => [
-      "action_verb",
-      "comment_predicate",
-      "copula",
-      "coverb_marker",
-      "existential",
-      "locative_marker",
-      "main_verb",
-      "modal",
-      "negated_existential",
-      "predicate",
-      "stative_predicate"
-    ].includes(slot));
-  });
-  const sufficientConditionProfile = leftZi === 0 && leftJiu === leftZi + 1 && rightConditional >= 0 && leftNodes.some((node, index) => index !== leftZi && index !== leftJiu && flattenSurface(node)) && rightRaw.some((node, index) => index !== rightConditional && flattenSurface(node));
-  const necessaryResultPrefix = rightNecessary > 0 ? parsedClauseNodes(rightRaw.slice(0, rightNecessary)) : [];
-  const necessaryResultPrefixNode = necessaryResultPrefix.length === 1 ? necessaryResultPrefix[0] : null;
-  const necessaryResultMarkerPositionLicensed = rightNecessary === 0 || necessaryResultPrefixNode && (nodeCanFillSlot(necessaryResultPrefixNode, "subject") || nodeCanFillSlot(necessaryResultPrefixNode, "np") || nodeCanFillSlot(necessaryResultPrefixNode, "head_noun") || nodeCanFillSlot(necessaryResultPrefixNode, "topic"));
-  const necessaryConditionProfile = leftZi >= 0 && leftHave === leftZi + 1 && rightNecessary >= 0 && necessaryResultMarkerPositionLicensed && necessaryConditionHasPredicateOrFrame && leftNodes.some((node, index) => index !== leftZi && index !== leftHave && flattenSurface(node)) && rightRaw.some((node, index) => index !== rightNecessary && flattenSurface(node));
-  let relationProfile = "";
-  let relationResearchId = "";
-  let relationProfileScope = "";
-  const leftImmediateOne = clauseRelationSurfaceIndex(leftNodes, ["一"]);
-  const leftSurfaces = clauseRelationSurfaceList(leftNodes);
-  const rightSurfaces = clauseRelationSurfaceList(rightRaw);
-  const leftHasImmediatePredicate = leftSurfaces.includes("見到") || leftSurfaces.includes("見") && leftSurfaces.includes("到");
-  const leftTemporalNominal = leftNodes.length === 1 && leftNodes[0].kind === "construction" && leftNodes[0].type === "RelativeClauseNP" && clauseRelationTimeHead(leftNodes[0]);
-  if (premiseResponseProfile) {
-    relationSubtype = "premise_response";
-    relationProfile = "established_premise_response";
-    relationResearchId = "PRQ2-009";
-    relationProfileScope = "left_initial_gei3jin4_with_overt_premise_and_response";
-    leftLinkers.push(
-      { index: leftGei, side: "left", semantic_role: "established_premise_marker_component" },
-      { index: leftJin, side: "left", semantic_role: "established_premise_marker_component" }
-    );
-    for (const index of premiseResponseMarkerIndexes) {
-      rightLinkers.push({ index, side: "right", semantic_role: "response_marker_component" });
-    }
-  } else if (committedPreferenceProfile) {
-    relationSubtype = "committed_preference";
-    relationProfile = "rejection";
-    relationResearchId = "PRQ2-015";
-    relationProfileScope = "overt_ning4jyun6_and_negative_dou1_continuation_only";
-    leftLinkers.push(
-      { index: leftNing, side: "left", semantic_role: "chosen_option_marker_component" },
-      { index: leftJyun, side: "left", semantic_role: "chosen_option_marker_component" }
-    );
-    for (const index of rejectionMarkerIndexes) {
-      rightLinkers.push({ index, side: "right", semantic_role: "rejected_option_marker_component" });
-    }
-  } else if (leftTemporalNominal) {
-    relationSubtype = "temporal_subordinate";
-  } else if (leftBecause >= 0 || rightBecause >= 0 || rightSo >= 0) {
-    relationSubtype = "causal";
-    if (leftBecause >= 0) leftLinkers.push({ index: leftBecause, side: "left", semantic_role: "reason_introducer" });
-    if (rightSo >= 0) rightLinkers.push({ index: rightSo, side: "right", semantic_role: "result_linker" });
-    if (rightBecause >= 0) {
-      rightLinkers.push({ index: rightBecause, side: "right", semantic_role: "reason_introducer" });
-      sourceOrder = "result_then_reason";
-    }
-  } else if (leftAlthough >= 0 || rightBut >= 0) {
-    relationSubtype = "concessive";
-    if (leftAlthough >= 0) leftLinkers.push({ index: leftAlthough, side: "left", semantic_role: "concession_introducer" });
-    if (rightBut >= 0) rightLinkers.push({ index: rightBut, side: "right", semantic_role: "counterexpectation_linker" });
-  } else if (necessaryConditionProfile) {
-    relationSubtype = "conditional";
-    relationProfile = "necessary_condition";
-    relationResearchId = "PRQ2-014";
-    relationProfileScope = "overt_left_marker_with_predicate_or_frame_and_overt_right_linker_only";
-    leftLinkers.push(
-      { index: leftZi, side: "left", semantic_role: "necessary_condition_marker_component" },
-      { index: leftHave, side: "left", semantic_role: "necessary_condition_marker_component" }
-    );
-    rightLinkers.push({ index: rightNecessary, side: "right", semantic_role: "necessary_result_linker" });
-  } else if (sufficientConditionProfile) {
-    relationSubtype = "conditional";
-    relationProfile = "sufficient_condition";
-    relationResearchId = "PRQ2-008";
-    relationProfileScope = "left_initial_overt_marker_and_overt_right_linker_only";
-    leftLinkers.push(
-      { index: leftZi, side: "left", semantic_role: "sufficient_condition_marker_component" },
-      { index: leftJiu, side: "left", semantic_role: "sufficient_condition_marker_component" }
-    );
-    rightLinkers.push({ index: rightConditional, side: "right", semantic_role: "consequent_linker" });
-  } else if (leftImmediateOne >= 0 && leftHasImmediatePredicate) {
-    relationSubtype = "temporal_subordinate";
-    immediateTemporalTrigger = true;
-    leftLinkers.push({ index: leftImmediateOne, side: "left", semantic_role: "immediate_temporal_trigger" });
-    if (rightConditional >= 0) rightLinkers.push({ index: rightConditional, side: "right", semantic_role: "result_linker" });
-  } else if (leftHasImmediatePredicate && rightConditional >= 0) {
-    relationSubtype = "temporal_subordinate";
-    immediateTemporalTrigger = true;
-    rightLinkers.push({ index: rightConditional, side: "right", semantic_role: "result_linker" });
-  } else if (leftIf >= 0 || rightConditional >= 0) {
-    relationSubtype = "conditional";
-    if (leftIf >= 0) {
-      if (leftIf > 0) {
-        prefix = leftNodes.slice(0, leftIf);
-        leftNodes = leftNodes.slice(leftIf);
-      }
-      leftLinkers.push({ index: 0, side: "left", semantic_role: "condition_introducer" });
-    }
-    const adjustedRightConditional = clauseRelationSurfaceIndex(rightRaw, ["就"]);
-    if (adjustedRightConditional >= 0) rightLinkers.push({ index: adjustedRightConditional, side: "right", semantic_role: "consequent_linker" });
-  } else if (leftFirst >= 0 || rightThen >= 0 || leftSurfaces.includes("完")) {
-    relationSubtype = leftFirst < 0 && rightThen < 0 ? "asyndetic_sequence" : "sequential";
-    if (leftFirst >= 0) leftLinkers.push({ index: leftFirst, side: "left", semantic_role: "earlier_event_marker" });
-    if (rightThen >= 0) rightLinkers.push({ index: rightThen, side: "right", semantic_role: "later_event_marker" });
-    if (relationSubtype === "asyndetic_sequence") {
-      licensedAsyndetic = true;
-      asyndeticLicense = "left_completion_event_plus_following_event";
-    } else if (leftFirst >= 0 && rightThen < 0) {
-      licensedAsyndetic = true;
-      asyndeticLicense = "overt_left_sequence_marker_with_omitted_right_marker";
-    }
-  }
-  if (!relationSubtype) return null;
-  if (immediateTemporalTrigger) {
-    leftNodes = leftNodes.map((node) => node && node.kind === "token" ? token2(flattenSurface(node)) : node);
-  }
-  const relation = buildClauseRelationEdge({
-    relation_subtype: relationSubtype,
-    left_nodes: leftNodes,
-    right_nodes: rightRaw,
-    left_linkers: leftLinkers,
-    right_linkers: rightLinkers,
-    separator,
-    source_order: sourceOrder,
-    licensed_asyndetic: licensedAsyndetic,
-    asyndetic_license: asyndeticLicense,
-    immediate_temporal_trigger: immediateTemporalTrigger,
-    relation_subtype_provenance: "inherited_mapped_hierarchical_clause_relation_rule"
-  });
-  if (!relation) return null;
-  if (relationProfile) {
-    relation.trace = {
-      ...relation.trace || {},
-      relation_profile: relationProfile,
-      research_id: relationResearchId,
-      relation_profile_scope: relationProfileScope,
-      ...relationSubtype === "premise_response" ? {
-        response_marker_profile: premiseResponseMarkerProfile
-      } : {}
-    };
-  }
-  if (prefix.length) {
-    const embedded = clauseRelationPrefixEmbedding(prefix, relation);
-    if (embedded) return { node: embedded, relation, embedded: true };
-    return null;
-  }
-  const wrapperCoverage = {
-    status: "PASS",
-    policy: "A hierarchical ClauseRelationGraph accounts for its complete local ClauseRelationEdge child; the separator and overt linkers remain visible inside that typed relation.",
-    accounted_children: [{ surface: flattenSurface(relation), construction: "ClauseRelationEdge", role: "local_typed_relation" }],
-    accounted_linkers: [],
-    accounted_separators: separator ? [{ surface: flattenSurface(separator), role: "nested_visible_separator" }] : [],
-    unaccounted_tokens: [],
-    unaccounted_wrapper_token_count: 0
-  };
-  const wrapper = construction("ClauseRelationGraph", "ClauseLink", [relation], {
-    note: "Outer discourse wrapper containing one local typed clause relation. It preserves the established wrapper boundary without flattening relation semantics.",
-    trace: traceInfo("governed_discourse_wrapper", {
-      rule: "hierarchical typed clause relation under discourse wrapper",
-      reason: "The outer wrapper remains for discourse/root accounting, while ClauseRelationEdge represents the typed local relation.",
-      child_constructions: ["ClauseRelationEdge"],
-      local_relation_construction: "ClauseRelationEdge",
-      graph_container_semantic_status: "neutral_container_only",
-      independent_grammar_licensing: false,
-      relation_semantics_source: "typed_child_edge_with_inherited_subtype_provenance",
-      clause_linking_subtype: ["committed_preference", "premise_response"].includes(relationSubtype) ? relationSubtype : relationProfile || relationSubtype,
-      relation_subtype: relationSubtype,
-      ...relationProfile ? {
-        relation_profile: relationProfile,
-        research_id: relationResearchId,
-        relation_profile_scope: relationProfileScope,
-        ...relationSubtype === "premise_response" ? {
-          response_marker_profile: premiseResponseMarkerProfile
-        } : {}
-      } : {},
-      linkers: [...relation.trace && relation.trace.linker_left || [], ...relation.trace && relation.trace.linker_right || []],
-      separators: separator ? [flattenSurface(separator)] : [],
-      wrapper_coverage: wrapperCoverage
-    })
-  });
-  return { node: wrapper, relation, embedded: false };
-}
-function standaloneClauseRelationEdgeFragmentForTerminal(segment = [], terminalText = "") {
-  if (!/[。！？.!?]/u.test(String(terminalText || ""))) return null;
-  const compact = withoutIgnorableSpaceText(segment || []);
-  if (compact.length < 2 || compact[0].kind !== "token") return null;
-  const surface = flattenSurface(compact[0]);
-  const subtypeBySurface = {
-    "然後": "sequential",
-    "再": "sequential",
-    "但係": "concessive",
-    "不過": "concessive",
-    "所以": "causal",
-    "因為": "causal",
-    "如果": "conditional",
-    "雖然": "concessive",
-    "就": "conditional"
-  };
-  const relationSubtype = subtypeBySurface[surface];
-  if (!relationSubtype) return null;
-  const relationId = `clause-relation-fragment:${relationSubtype}:${compact.map((node) => flattenSurface(node)).join("")}`;
-  const missingSide = ["因為", "如果", "雖然"].includes(surface) ? "right_relation_member" : "left_relation_member";
-  const semanticRole = surface === "因為" ? "reason_introducer" : surface === "如果" ? "condition_introducer" : surface === "雖然" ? "concession_introducer" : surface === "所以" ? "result_linker" : ["但係", "不過"].includes(surface) ? "counterexpectation_linker" : ["然後", "再"].includes(surface) ? "later_event_marker" : "consequent_linker";
-  const member = clauseRelationMember(compact, {
-    role: missingSide === "left_relation_member" ? "right" : "left",
-    relation_subtype: relationSubtype,
-    relation_id: relationId,
-    linkers: [{ index: 0, side: missingSide === "left_relation_member" ? "right" : "left", semantic_role: semanticRole }]
-  });
-  if (!member) return null;
-  return construction("NeedsContext", "needs context", [member], {
-    note: "Standalone relation fragment with an overt linker but no visible relation partner.",
-    trace: traceInfo("special_ambiguity_rule", {
-      fragment_subtype: "standalone_clause_relation_fragment",
-      relation_subtype: relationSubtype,
-      clause_relation_id: relationId,
-      relation_context_status: "context_required",
-      context_requirement_status: "context_required",
-      antecedent_status: "not_observed",
-      missing_argument_slots: [missingSide],
-      missing_slot_details: [{ slot: missingSide, license_status: "unresolved" }],
-      overt_linker_surface: surface,
-      linker_ownership_status: "owned_by_incomplete_local_relation",
-      discourse_license_not_observed: true,
-      semantic_review_flags: ["standalone_relation_partner_missing", "context_required_unresolved"],
-      reason: "The overt linker requires a prior or following relation partner that is absent from the visible sentence. The following clause/VP remains transparent and no partner is fabricated.",
-      not_claims: ["not_ignored_linker", "not_fabricated_relation_partner", "not_clean_context_free_clause"]
-    })
-  });
-}
 function relativeClauseGapPredicate(leftNodes = [], headSurface = "") {
   const compact = withoutIgnorableSpaceText(leftNodes || []);
   if (compact.length !== 2 || !nodeCanFillSlot(compact[0], "subject")) return null;
@@ -19534,20 +19830,6 @@ function relativeClauseNPForTerminal(segment = []) {
       reason: "The relative-clause NP is completed before attachment to the visible matrix predicate."
     })
   });
-}
-function clauseSequenceSegments(nodes = []) {
-  const segments = [];
-  let current = [];
-  for (const node of nodes || []) {
-    if (isClauseSequenceSeparator(node)) {
-      if (withoutIgnorableSpaceText(current).length) segments.push(withoutIgnorableSpaceText(current));
-      current = [];
-    } else {
-      current.push(node);
-    }
-  }
-  if (withoutIgnorableSpaceText(current).length) segments.push(withoutIgnorableSpaceText(current));
-  return segments;
 }
 function topicChainAntecedentDescriptor(segment = []) {
   const rows = flattenNodes(segment || []);
@@ -19777,155 +20059,45 @@ function applyTopicChainNullObjectLinkage(children = []) {
     not_claims: ["not_fabricated_object_token", "not_implicit_topic_inference", "not_unrestricted_argument_deletion"]
   };
 }
-function wrapClauseSequenceByPunctuation(nodes) {
-  const hasSeparator = nodes.some(isClauseSequenceSeparator);
-  if (!hasSeparator) return nodes;
-  const finalOnly = nodes.length > 0 && isClauseSequenceTerminal(nodes[nodes.length - 1]) ? nodes[nodes.length - 1] : null;
-  const children = finalOnly ? nodes.slice(0, -1) : nodes.slice();
-  const separatorIndex = children.findIndex(isClauseSequenceSeparator);
-  if (separatorIndex >= 0) {
-    const linkerOnlySide = (side) => {
-      const meaningfulSide = side.filter((node) => node && node.kind !== "text");
-      return meaningfulSide.length === 1 && CLAUSE_LINKER_SURFACES.has(flattenSurface(meaningfulSide[0]));
-    };
-    if (linkerOnlySide(children.slice(0, separatorIndex)) || linkerOnlySide(children.slice(separatorIndex + 1))) {
-      return nodes;
-    }
-  }
-  const orderedPreferenceOpenerIndex = children.findIndex(
-    (node, index) => index < separatorIndex && node && node.kind === "token" && (node.surface || "") === "與其"
-  );
-  const rightLeaves = separatorIndex >= 0 ? clauseRelationSegmentNodes(children.slice(separatorIndex + 1)) : [];
-  if (orderedPreferenceOpenerIndex >= 0 && separatorIndex > orderedPreferenceOpenerIndex && rightLeaves.length > 1) {
-    if (surfaceOf(rightLeaves[0]) === "不如") {
-      const preferredMember = parsedClauseNodes(rightLeaves.slice(1));
-      const disfavoredMember = children.slice(orderedPreferenceOpenerIndex + 1, separatorIndex);
-      const prefix = children.slice(0, orderedPreferenceOpenerIndex);
-      if (meaningfulClauseConstructionCount(disfavoredMember) >= 1 && meaningfulClauseConstructionCount(preferredMember) >= 1) {
-        const leftNodes = [
-          ...prefix,
-          children[orderedPreferenceOpenerIndex],
-          ...disfavoredMember
-        ];
-        const rightNodes = [
-          rightLeaves[0],
-          ...preferredMember
-        ];
-        const leftLinkerIndex = clauseRelationSegmentNodes(prefix).length;
-        const relation = buildClauseRelationEdge({
-          relation_subtype: "ordered_preference",
-          left_nodes: leftNodes,
-          right_nodes: rightNodes,
-          left_linkers: [{
-            index: leftLinkerIndex,
-            side: "left",
-            semantic_role: "disfavored_option_introducer"
-          }],
-          right_linkers: [{
-            index: 0,
-            side: "right",
-            semantic_role: "preferred_option_introducer"
-          }],
-          separator: children[separatorIndex],
-          source_order: "disfavored_then_preferred",
-          relation_subtype_provenance: "inherited_mapped_hierarchical_clause_relation_rule",
-          reason: "The overt 與其 and 不如 pair orders two nonempty alternatives; the typed edge retains both members, owns both markers, and records which option is disfavored and which is preferred."
-        });
-        if (relation) {
-          const wrapperCoverage2 = {
-            status: "PASS",
-            policy: "A hierarchical ClauseRelationGraph accounts for its complete local ClauseRelationEdge child; the separator and overt linkers remain visible inside that typed relation.",
-            accounted_children: [{ surface: flattenSurface(relation), construction: "ClauseRelationEdge", role: "local_typed_relation" }],
-            accounted_linkers: [],
-            accounted_separators: [{ surface: flattenSurface(children[separatorIndex]), role: "nested_visible_separator" }],
-            unaccounted_tokens: [],
-            unaccounted_wrapper_token_count: 0
-          };
-          const wrapper = construction("ClauseRelationGraph", "ClauseLink", [relation], {
-            note: "Outer discourse wrapper containing the overt paired ordered-preference relation.",
-            trace: traceInfo("governed_discourse_wrapper", {
-              rule: "與其...不如 ordered-preference clause-linking sequence",
-              reason: "The outer wrapper preserves discourse/root accounting while the typed child edge owns the paired markers and alternative-order semantics.",
-              child_constructions: ["ClauseRelationEdge"],
-              local_relation_construction: "ClauseRelationEdge",
-              graph_container_semantic_status: "neutral_container_only",
-              independent_grammar_licensing: false,
-              relation_semantics_source: "typed_child_edge_with_inherited_subtype_provenance",
-              relation_subtype: "ordered_preference",
-              linkers: [...relation.trace && relation.trace.linker_left || [], ...relation.trace && relation.trace.linker_right || []],
-              separators: [flattenSurface(children[separatorIndex])],
-              wrapper_coverage: wrapperCoverage2,
-              clause_linking_subtype: "ordered_preference",
-              marker_profile: "jyu5kei4_bat1jyu4",
-              research_id: "PRQ2-013"
-            })
-          });
-          return [wrapper, ...finalOnly ? [finalOnly] : []];
-        }
-      }
-    }
-  }
-  const hierarchicalRelation = hierarchicalClauseRelationEdgeFromChildren(children);
-  if (hierarchicalRelation && hierarchicalRelation.node) {
-    return [hierarchicalRelation.node, ...finalOnly ? [finalOnly] : []];
-  }
-  const meaningful = children.filter(isClauseSequenceMeaningfulNode);
-  if (meaningful.length < 2) return nodes;
-  const conditionalChildIndex = children.findIndex((node) => node && node.kind === "construction" && node.type === "ConditionalClause");
-  if (conditionalChildIndex >= 0) {
-    const separatorAfterCondition = children.findIndex((node, index) => index > conditionalChildIndex && isClauseSequenceSeparator(node));
-    const resultChild = children.find((node, index) => index > separatorAfterCondition && node && node.kind === "construction");
-    if (separatorAfterCondition >= 0 && resultChild) {
-      const conditional = children[conditionalChildIndex];
-      conditional.trace = {
-        ...conditional.trace || {},
-        context_requirement_status: "context_licensed",
-        missing_argument_slots: [],
-        missing_slot_details: [{ slot: "result_clause", license_status: "licensed", licensed_by: "following_result_clause" }],
-        result_clause_status: "overt_following_clause",
-        result_construction: resultChild.type,
-        not_claims: Array.from(/* @__PURE__ */ new Set([...conditional.trace && conditional.trace.not_claims || [], "not_standalone_incomplete_condition"]))
-      };
-    }
-  }
-  const wrapperCoverage = clauseLinkingWrapperCoverage(children);
-  const topicChainTrace = applyTopicChainNullObjectLinkage(children);
-  return [
-    construction("ClauseRelationGraph", topicChainTrace && topicChainTrace.topic_chain_status === "licensed_overt_topic_chain" ? "TopicChain" : "ClauseLink", children, {
-      note: topicChainTrace && topicChainTrace.topic_chain_status === "licensed_overt_topic_chain" ? "Topic chain: one overt recoverable topic supplies the understood object/domain of later linked predicates without hidden tokens." : "Linked clauses. This governed discourse/coordination wrapper preserves all child constructions and explicitly accounts for linker/separator material; it does not replace or flatten the child clauses.",
-      trace: traceInfo("governed_discourse_wrapper", {
-        rule: "comma-separated clause-linking sequence",
-        reason: "Native speech often links short clauses or discourse units with comma-like punctuation. Add a parent wrapper only when at least two meaningful clause-like constructions are separated by visible punctuation; do not model this as a phrase-internal generative template, and do not hide unaccounted wrapper holes.",
-        graph_container_semantic_status: "neutral_container_only",
-        independent_grammar_licensing: false,
-        relation_semantics_source: "none_or_preexisting_discourse_linkage_only",
-        child_constructions: children.filter((node) => node && node.kind === "construction").map((node) => node.type),
-        linkers: clauseLinkerInventory(children),
-        separators: children.filter(isClauseSequenceSeparator).map((node) => node.text),
-        ...conditionalChildIndex >= 0 ? { clause_linking_subtype: "condition_result", condition_construction: "ConditionalClause" } : {},
-        ...topicChainTrace ? { clause_linking_subtype: topicChainTrace.topic_chain_status === "licensed_overt_topic_chain" ? "topic_chain_null_object" : "topic_chain_compatibility_review", ...topicChainTrace } : {},
-        wrapper_coverage: wrapperCoverage
-      })
-    }),
-    ...finalOnly ? [finalOnly] : []
-  ];
-}
-function clauseSequenceHasVisiblePunctuation(node) {
-  if (!node || node.kind !== "construction" || node.type !== "ClauseSequence" && node.type !== "ClauseRelationGraph") return false;
-  const traceSeparators = node.trace && Array.isArray(node.trace.separators) ? node.trace.separators : [];
-  if (traceSeparators.length) return true;
-  return (node.children || []).some(isClauseSequenceSeparator);
-}
-function shouldCollapseClauseSequenceForDisplay(node, options = {}) {
-  if (!node || node.kind !== "construction" || node.type !== "ClauseSequence") return false;
-  if (options && options.showDiagnostics) return false;
-  return clauseSequenceHasVisiblePunctuation(node);
-}
-function shouldCollapseGreedyWrapperForDisplay(node, options = {}) {
-  if (!node || node.kind !== "construction") return false;
-  if (options && options.showDiagnostics) return false;
-  return node.type === "ModalANotAQuestion";
-}
+var createClauseRelationGraph = require_graph();
+var {
+  connectorAwareClauseLinkingForTerminal,
+  completionThenClauseRelation,
+  standaloneClauseRelationEdgeFragmentForTerminal,
+  clauseRelationSurfaceIndex,
+  clauseRelationParsedChunk,
+  clauseSequenceSegments,
+  wrapClauseSequenceByPunctuation,
+  shouldCollapseClauseSequenceForDisplay,
+  shouldCollapseGreedyWrapperForDisplay
+} = createClauseRelationGraph({
+  CLAUSE_LINKER_SURFACES,
+  CLAUSE_RELATION_SUBTYPE_REGISTRY,
+  applyConstructionPatterns,
+  applyTopicChainNullObjectLinkage,
+  clauseLinkerInventory,
+  clauseLinkingWrapperCoverage,
+  wrapperCoverageForConstructionNode,
+  cleanSlots,
+  cognitionContentFrameFallback,
+  construction,
+  firstToken,
+  flattenNodes,
+  flattenSurface,
+  hasConstruction,
+  isClauseSequenceSeparator,
+  isClauseSequenceTerminal,
+  learnerDisplaySlots,
+  nodeCanFillSlot,
+  nodeSlots,
+  opinionStanceFrameFallback,
+  parserInactiveTokenClone,
+  reportedSpeechFrameFallback,
+  surfaceOf,
+  token: token2,
+  traceInfo,
+  withoutIgnorableSpaceText
+});
 function fullSpanSingleConstruction(nodes, sourceNodes) {
   if (!Array.isArray(nodes) || nodes.length !== 1) return null;
   const only = nodes[0];
