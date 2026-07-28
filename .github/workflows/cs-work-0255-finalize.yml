@@ -7,6 +7,12 @@ on:
     paths:
       - "tools/temporary/CS-WORK-0255-final.b64.part-*"
       - ".github/workflows/cs-work-0255-finalize.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "tools/temporary/CS-WORK-0255-final.b64.part-*"
+      - ".github/workflows/cs-work-0255-finalize.yml"
 
 permissions:
   contents: write
@@ -17,7 +23,7 @@ concurrency:
 
 jobs:
   finalize:
-    if: github.repository == 'Vazhi/canto-span'
+    if: github.repository == 'Vazhi/canto-span' && github.head_ref == 'agent/finalize-source-first-workflow'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -33,7 +39,7 @@ jobs:
       - name: Reconstruct validated source-first files
         run: |
           set -euo pipefail
-          test "${GITHUB_REF_NAME}" = "agent/finalize-source-first-workflow"
+          test "${GITHUB_HEAD_REF}" = "agent/finalize-source-first-workflow"
 
           cat > /tmp/CS-WORK-0255-parts.sha256 <<'EOF'
           c808b870c829f590c082519439658f23f29b6e09a375b46491ef367ab0cb843a  tools/temporary/CS-WORK-0255-final.b64.part-00
