@@ -1,0 +1,35 @@
+{
+  "source": {
+    "sourceId": "GLOSSIKA-YUEHK-A1-W18-20260719",
+    "provider": "Glossika",
+    "course": "Cantonese (HK) A1",
+    "week": 18,
+    "weekCount": 25,
+    "lessonTitle": "Common Verbs",
+    "emailSubject": "Cantonese – Common Verbs",
+    "sourceDate": "2026-07-19",
+    "gmailMessageId": "19f7923023e862d2",
+    "sourceType": "authorized_pedagogical_email",
+    "language": "yue-Hant-HK",
+    "authorization": {
+      "basis": "User states Glossika granted permission to use all lesson data in this non-commercial private-use Canto Span project.",
+      "scope": "Source-preserving corpus ingress and modular reconciliation for this lesson.",
+      "redistributionClaim": "none"
+    }
+  },
+  "ingress": {
+    "issue": 135,
+    "workClaimIssue": 278,
+    "pullRequest": 280,
+    "branch": "agent/glossika-week18-corpus-ingress",
+    "reviewState": "REQUIRES_EXPERT_CONTEXT_REVIEW",
+    "policy": "Source values and order are immutable. Existing corrections, normalization, runtime coverage, corpus identity, and evidentiary decisions remain separate review and crosswalk data."
+  },
+  "sourceClaims": {
+    "particleHeading": "Sentence-final particles (語氣助詞)",
+    "particleStatement": "These are essential to natural Cantonese and carry subtle pragmatic meaning.",
+    "phonicsHeading": "/œː/ (oe) vs /ɵ/ (eo)",
+    "phonicsStatement": "The open-mid /œː/ and close-mid /ɵ/ are both front rounded vowels unique to Cantonese. /œː/ (oe) appears before -ng and -k; /ɵ/ (eo) appears before -n, -t, and as -eoi.",
+    "status": "immutable_source_claim_requires_independent_verification"
+  }
+}
