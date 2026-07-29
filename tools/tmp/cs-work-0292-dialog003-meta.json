@@ -1,0 +1,25 @@
+{
+  "sourceId": "GLOSSIKA-YUEHK-A1-DLG-003-20251214",
+  "provider": "Glossika",
+  "course": "Cantonese (Hong Kong) A1 Dialogs",
+  "dialogNumber": 3,
+  "title": "同朋友整湯圓慶祝冬至",
+  "scenario": "Two friends discussing making tang yuan (glutinous rice balls) together to celebrate Winter Solstice (A1)",
+  "sourceDate": "2025-12-14",
+  "gmailMessageId": "19b1e8e465b300ea",
+  "sourceType": "authorized_pedagogical_email",
+  "language": "yue-Hant-HK",
+  "authorization": {
+    "basis": "User states Glossika granted permission to use all lesson data in this non-commercial private-use Canto Span project.",
+    "scope": "Source-preserving corpus ingress for this dialog.",
+    "redistributionClaim": "none"
+  },
+  "sourceNotes": "The verb 整 (zing2) means \"to make/prepare\" and is commonly used in Cantonese for cooking and crafts, whereas Mandarin typically uses 做 (zou6). Both are correct but 整 is more colloquial in Hong Kong. The comparison pattern 好似...咁 (hou2 ci5...gam3) means \"like/as...as\": 好似耳仔咁軟 (hou2 ci5 ji5 zai2 gam3 jyun5) = \"soft like an earlobe.\" This is a standard comparative structure. Reduplication of classifiers indicates plurality: 粒粒 (nap1 nap1) = \"small balls (plural).\" This is a common grammatical feature in Cantonese that adds a distributive or plural sense. The pattern 定 (ding6) in A-or-B questions: 自己整定買 (zi6 gei2 zing2 ding6 maai5) = \"make yourself or buy?\" This conjunction presents two alternatives for the listener to choose between. 左右 (zo2 jau6) means \"approximately\" and follows time expressions: 五分鐘左右 (ng5 fan1 zung1 zo2 jau6) = \"about five minutes.\" Confidence Level: High",
+  "ingress": {
+    "issue": 139,
+    "workClaimIssue": 292,
+    "branch": "agent/glossika-dialog-003-ingress",
+    "reviewState": "REQUIRES_EXPERT_CONTEXT_REVIEW",
+    "policy": "Source values are immutable. Normalization, correction, duplicate classification, naturalness review, construction routing, and evidence use are recorded separately."
+  }
+}
