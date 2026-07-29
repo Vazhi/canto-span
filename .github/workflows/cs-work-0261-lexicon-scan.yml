@@ -1,4 +1,4 @@
-name: CS-WORK-0261 Week 14 lexicon scan
+name: CS-WORK-0261 Week 14 research validation
 
 on:
   pull_request:
@@ -8,7 +8,7 @@ permissions:
   contents: write
 
 jobs:
-  scan:
+  validate:
     if: github.event.pull_request.head.ref == 'agent/glossika-week14-research'
     runs-on: ubuntu-latest
     steps:
@@ -20,9 +20,10 @@ jobs:
         with:
           node-version: 24
           package-manager-cache: false
-      - name: Generate canonical lexicon coverage matrix
+      - name: Install dependencies
+        run: npm ci
+      - name: Regenerate canonical lexicon coverage matrix
         run: |
-          mkdir -p data/research-ledgers
           node <<'NODE'
           const fs = require('fs');
           const path = require('path');
@@ -88,12 +89,7 @@ jobs:
             generatedFrom: {
               sourcePath,
               canonicalLexiconRoot: lexiconRoot,
-              exactOwnersScanned: [
-                'token-lexicon',
-                'productive-vo',
-                'formulas',
-                'compositional-lexical-phrases'
-              ]
+              exactOwnersScanned: ['token-lexicon', 'productive-vo', 'formulas', 'compositional-lexical-phrases']
             },
             policy: {
               glossikaWeight: 'pedagogical_and_lexical_attestation_only',
@@ -104,20 +100,33 @@ jobs:
             counts,
             entries
           };
-          fs.writeFileSync('data/research-ledgers/glossika-week14-lexical-ingress.json', JSON.stringify(output, null, 2) + '\n');
+          const rendered = JSON.stringify(output, null, 2) + '\n';
+          const pathOut = 'data/research-ledgers/glossika-week14-lexical-ingress.json';
+          if (fs.readFileSync(pathOut, 'utf8') !== rendered) throw new Error('Lexical ingress matrix is stale');
           NODE
-      - name: Validate generated matrix
+      - name: Validate research packet
         run: |
-          node -e "const x=require('./data/research-ledgers/glossika-week14-lexical-ingress.json'); if(x.entries.length!==35) throw new Error('Expected 35 lexical entries'); console.log(x.counts)"
+          node <<'NODE'
+          const fs = require('fs');
+          const source = require('./data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/source.json');
+          const claims = require('./data/research-ledgers/glossika-week14-claim-source.json');
+          const lexical = require('./data/research-ledgers/glossika-week14-lexical-ingress.json');
+          const followup = require('./data/research-ledgers/glossika-week14-followup-candidates.json');
+          if (source.items.length !== 61) throw new Error('Expected 61 source records');
+          if (lexical.entries.length !== 35) throw new Error('Expected 35 lexical records');
+          if (lexical.counts.lexical_ingress_candidate !== 21) throw new Error('Expected 21 lexical candidates');
+          if (lexical.counts.already_covered_exact !== 4) throw new Error('Expected 4 exact existing entries');
+          if (lexical.counts.compositional_numeral_no_opaque_entry !== 10) throw new Error('Expected 10 compositional numerals');
+          if (claims.claims.length !== 11) throw new Error('Expected 11 bounded claims');
+          if (followup.candidates.length !== 9) throw new Error('Expected 9 follow-up candidates');
+          const note = fs.readFileSync('docs/research/GLOSSIKA-YUEHK-A1-W14-20260621-RESEARCH.md', 'utf8');
+          for (const required of ['21 lexical-review candidates', 'No runtime', '唔該', '多謝', '幾辛苦㗎']) {
+            if (!note.includes(required)) throw new Error(`Research note missing ${required}`);
+          }
+          console.log({sourceRecords: source.items.length, claims: claims.claims.length, lexical: lexical.counts, followups: followup.candidates.length});
+          NODE
           git diff --check
-      - name: Commit generated matrix
+      - name: Run repository verification
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/research-ledgers/glossika-week14-lexical-ingress.json
-          if git diff --cached --quiet; then
-            echo "Lexicon matrix is already current."
-          else
-            git commit -m "Generate Week 14 lexical ingress matrix"
-            git push origin HEAD:${{ github.event.pull_request.head.ref }}
-          fi
+          npm run verify:research
+          npm run verify
