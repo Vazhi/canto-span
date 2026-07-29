@@ -1,0 +1,2912 @@
+{
+  "schema": "canto-span-pedagogical-corpus-crosswalk-v1",
+  "sourceId": "GLOSSIKA-YUEHK-A1-W17-20260712",
+  "architecture": {
+    "canonicalRuntimeInputs": [
+      "src/**",
+      "src/runtime-resources/**"
+    ],
+    "generatedExcluded": [
+      "main.js"
+    ],
+    "supportingRecords": [
+      "test-data/**",
+      "data/**",
+      "docs/**",
+      "grammar/**",
+      "config/**"
+    ],
+    "rule": "Generated main.js is never an ownership authority."
+  },
+  "sourcePayloadHash": "sha256:d77d0f434e78551d460f2f783e970fb94ec5eb1aef06d6097fe88b830ff2005b",
+  "summary": {
+    "recordCount": 75,
+    "uniqueSourceSurfaces": 72,
+    "relationCounts": {
+      "exact_duplicate": 75,
+      "normalized_duplicate": 0,
+      "partial_match": 0,
+      "new_attestation": 0,
+      "source_internal_duplicate_occurrence": 3,
+      "project_only_item": 5,
+      "missing_source_item": 5,
+      "pronunciation_discrepancy": 1,
+      "pronunciation_review_unresolved": 1,
+      "translation_difference": 2,
+      "morpheme_gloss_discrepancy": 1
+    }
+  },
+  "items": [
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I001",
+      "ordinal": 1,
+      "itemType": "sentence",
+      "sourceDisplay": "講返正題，你尋日去咗邊度呀？",
+      "sourceHash": "sha256:e10fc175e8f6953c2c04abe1f735e2953f45407b4a850f719769c6fbf01f753b",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "COR-W17-001",
+        "sourceInventory": "w17-functional-corpus",
+        "path": "test-data/w17-functional-corpus.tsv",
+        "legacySourcePath": "test-data/w17-glossika-corpus.tsv",
+        "semanticPath": "test-data/w17-corpus-semantic-disposition.tsv",
+        "lifecyclePath": "test-data/review-only-readiness.tsv",
+        "status": "PASS",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "utteranceType": "discourse_transition_plus_wh_question",
+        "notes": ""
+      },
+      "semanticReview": {
+        "verdict": "PASS",
+        "primaryIssue": "none",
+        "roleReview": "講/返=doing, 正題=what, 你=who, 尋日=when, 去=doing, 咗=func, 邊度=where, 呀=particle are transparent and justified.",
+        "structureReview": "ClauseLinkingSequence now contains transparent VerbComplementVP 講返正題 and a complete LocativeWhQuestion 你尋日去咗邊度呀; wrapper coverage has no holes.",
+        "nextAction": "Retain as accepted W17 review row; preserve ordinary destination, non-motion, and non-place-WH controls.",
+        "lifecycleStatus": "PROMOTED_ACCEPTED"
+      },
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "docs/research/EVALUATION-PACKET-BLUEPRINTS-CP021B-R37.json",
+        "docs/research/PARSER-CONSTRUCTION-CANONICAL-CONSOLIDATION-MATRIX-CP021B-R35.tsv",
+        "test-data/cp021b-lx1-construction-freeze-baseline.json",
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-functional-corpus.tsv",
+        "test-data/w17-glossika-corpus.tsv",
+        "tests/constructions/ClauseRelationGraph.json",
+        "tests/constructions/DirectionalMotionVP.json",
+        "tests/constructions/LocativeWhQuestion.json",
+        "tests/constructions/VerbComplementVP.json",
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I002",
+      "ordinal": 2,
+      "itemType": "sentence",
+      "sourceDisplay": "唔好離題喇。",
+      "sourceHash": "sha256:960da22426dbec47b799025af019c4514f34f51a2b0c2cd3b58d477b7d2c570a",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "COR-W17-002",
+        "sourceInventory": "w17-functional-corpus",
+        "path": "test-data/w17-functional-corpus.tsv",
+        "legacySourcePath": "test-data/w17-glossika-corpus.tsv",
+        "semanticPath": "test-data/w17-corpus-semantic-disposition.tsv",
+        "lifecyclePath": "test-data/review-only-readiness.tsv",
+        "status": "PASS",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "utteranceType": "negative_imperative",
+        "notes": "喇 is a sentence-final particle, not perfective aspect"
+      },
+      "semanticReview": {
+        "verdict": "PASS",
+        "primaryIssue": "none",
+        "roleReview": "唔好=func, 離題=doing, 喇=particle are transparent and justified.",
+        "structureReview": "Broad ProhibitiveImperative spans the complete utterance with no unknown or unwrapped material.",
+        "nextAction": "Retain as accepted W17 review row; no new construction label.",
+        "lifecycleStatus": "PROMOTED_ACCEPTED"
+      },
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "docs/research/EVALUATION-PACKET-BLUEPRINTS-CP021B-R37.json",
+        "docs/research/PARSER-CONSTRUCTION-CANONICAL-CONSOLIDATION-MATRIX-CP021B-R35.tsv",
+        "test-data/cp021b-lx1-construction-freeze-baseline.json",
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-functional-corpus.tsv",
+        "test-data/w17-glossika-corpus.tsv",
+        "tests/constructions/ProhibitiveImperative.json",
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "supportingNormalizedOwners": [
+        "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv"
+      ],
+      "discrepancies": [
+        {
+          "type": "morpheme_gloss_discrepancy",
+          "sourceValue": "喇 labelled (PERF)",
+          "reviewedValue": "喇 is a sentence-final particle, not perfective aspect",
+          "status": "project_reviewed"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I003",
+      "ordinal": 3,
+      "itemType": "sentence",
+      "sourceDisplay": "關於呢個問題，我想講吓。",
+      "sourceHash": "sha256:acd472bfcf192a1e7db8db8a25a423692384facf650fd484e7010e26a5f27669",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "COR-W17-003",
+        "sourceInventory": "w17-functional-corpus",
+        "path": "test-data/w17-functional-corpus.tsv",
+        "legacySourcePath": "test-data/w17-glossika-corpus.tsv",
+        "semanticPath": "test-data/w17-corpus-semantic-disposition.tsv",
+        "lifecyclePath": "test-data/review-only-readiness.tsv",
+        "status": "PASS",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "utteranceType": "topic_frame_plus_desiderative_statement",
+        "notes": ""
+      },
+      "semanticReview": {
+        "verdict": "PASS",
+        "primaryIssue": "none",
+        "roleReview": "關於=func/topic-frame linker; 呢=func; 個=measure_word; 問題=what; 我=who; 想=func; 講=doing; 吓=func remain transparent and justified.",
+        "structureReview": "ClauseLinkingSequence explicitly accounts for 關於 as the topic-frame linker, 呢個問題 as the framed nominal domain, the visible comma, and DesiderativeVP 我想講吓. Compatible omitted object/domain linkage is licensed with overt-frame provenance and no hidden token.",
+        "nextAction": "Retain as accepted W17 review row; preserve ordinary bare-topic chains, overt-object controls, incompatible-domain review, and standalone-frame boundaries.",
+        "lifecycleStatus": "PROMOTED_ACCEPTED"
+      },
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/cp021b-lx1-construction-freeze-baseline.json",
+        "test-data/native-speaker-naturalness-evidence-v1.json",
+        "test-data/native-speaker-naturalness-evidence-v1.tsv",
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-functional-corpus.tsv",
+        "test-data/w17-glossika-corpus.tsv",
+        "tests/constructions/ClauseRelationGraph.json",
+        "tests/constructions/DelimitedVP.json",
+        "tests/constructions/DesiderativeVP.json",
+        "tests/constructions/OvertHeadDemonstrativeClassifierNP.json",
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I004",
+      "ordinal": 4,
+      "itemType": "sentence",
+      "sourceDisplay": "我哋返去頭先嘅話題。",
+      "sourceHash": "sha256:5f4d4777851884c8b845c1ac731f9bce936bc37313351fd71825211e3d19f765",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "COR-W17-004",
+        "sourceInventory": "w17-functional-corpus",
+        "path": "test-data/w17-functional-corpus.tsv",
+        "legacySourcePath": "test-data/w17-glossika-corpus.tsv",
+        "semanticPath": "test-data/w17-corpus-semantic-disposition.tsv",
+        "lifecyclePath": "test-data/review-only-readiness.tsv",
+        "status": "PASS",
+        "lifecycleStatus": "REVIEW_ONLY",
+        "utteranceType": "hortative_statement",
+        "notes": ""
+      },
+      "semanticReview": {
+        "verdict": "FAIL",
+        "primaryIssue": "conditional_marker_boundary_leak",
+        "roleReview": "頭先 should remain when/modifier, 嘅 func, 話題 what; current 嘅話 tokenization is wrong inside 嘅話題.",
+        "structureReview": "Subject and goal NP are detached; conditional-marker protection steals noun material.",
+        "nextAction": "Add 話題/頭先 coverage and block 嘅話 from matching before a following noun head.",
+        "lifecycleStatus": "REVIEW_ONLY"
+      },
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-functional-corpus.tsv",
+        "test-data/w17-glossika-corpus.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I005",
+      "ordinal": 5,
+      "itemType": "sentence",
+      "sourceDisplay": "第一嘛，太貴；第二，太遠。",
+      "sourceHash": "sha256:44ed8c62ea66284ab157692897bf76f84999da5427835b8fc7a53d8070f8225d",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "COR-W17-005",
+        "sourceInventory": "w17-functional-corpus",
+        "path": "test-data/w17-functional-corpus.tsv",
+        "legacySourcePath": "test-data/w17-glossika-corpus.tsv",
+        "semanticPath": "test-data/w17-corpus-semantic-disposition.tsv",
+        "lifecyclePath": "test-data/review-only-readiness.tsv",
+        "status": "PASS",
+        "lifecycleStatus": "REVIEW_ONLY",
+        "utteranceType": "enumeration_sequence",
+        "notes": ""
+      },
+      "semanticReview": {
+        "verdict": "FAIL",
+        "primaryIssue": "enumeration_boundary_incomplete",
+        "roleReview": "太=how and 貴/遠=like are correct; 第一 and 嘛 lack reviewed roles.",
+        "structureReview": "Current sequence wrapper does not establish two complete enumeration units.",
+        "nextAction": "Add 第一 and 嘛, then review a broad enumeration/discourse sequence without a surface-specific public label.",
+        "lifecycleStatus": "REVIEW_ONLY"
+      },
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-functional-corpus.tsv",
+        "test-data/w17-glossika-corpus.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I006",
+      "ordinal": 6,
+      "itemType": "sentence",
+      "sourceDisplay": "好似我噉，我就鍾意跑步。",
+      "sourceHash": "sha256:93497872f1f5fcf28baae2876c883c1da4a41c27f013ea4ec1adb5bdd490f8d7",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "COR-W17-006",
+        "sourceInventory": "w17-functional-corpus",
+        "path": "test-data/w17-functional-corpus.tsv",
+        "legacySourcePath": "test-data/w17-glossika-corpus.tsv",
+        "semanticPath": "test-data/w17-corpus-semantic-disposition.tsv",
+        "lifecyclePath": "test-data/review-only-readiness.tsv",
+        "status": "PASS",
+        "lifecycleStatus": "REVIEW_ONLY",
+        "utteranceType": "example_frame_plus_preference_statement",
+        "notes": "噉 retained from source; 咁 is also common"
+      },
+      "semanticReview": {
+        "verdict": "FAIL",
+        "primaryIssue": "left_example_frame_unwrapped",
+        "roleReview": "鍾意=like is correct; 跑步 should be doing; 好似/噉 remain functional discourse material.",
+        "structureReview": "PreferenceVP covers only the second segment; the example frame is detached.",
+        "nextAction": "Add 跑步 and review broad discourse linkage for the first fragment.",
+        "lifecycleStatus": "REVIEW_ONLY"
+      },
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-functional-corpus.tsv",
+        "test-data/w17-glossika-corpus.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I007",
+      "ordinal": 7,
+      "itemType": "sentence",
+      "sourceDisplay": "例如中環同旺角都好出名。",
+      "sourceHash": "sha256:34ec2463bd844ba98dbe67164b733f8b4dbbd06f24d2d4ab72f0d8481c2db0fb",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "COR-W17-007",
+        "sourceInventory": "w17-functional-corpus",
+        "path": "test-data/w17-functional-corpus.tsv",
+        "legacySourcePath": "test-data/w17-glossika-corpus.tsv",
+        "semanticPath": "test-data/w17-corpus-semantic-disposition.tsv",
+        "lifecyclePath": "test-data/review-only-readiness.tsv",
+        "status": "PASS",
+        "lifecycleStatus": "REVIEW_ONLY",
+        "utteranceType": "example_statement",
+        "notes": ""
+      },
+      "semanticReview": {
+        "verdict": "FAIL",
+        "primaryIssue": "coordinated_topic_unwrapped",
+        "roleReview": "中環/旺角 are where, 同 func, 都/好 how, 出名 like.",
+        "structureReview": "Only the stative predicate is wrapped; coordinated topic and example marker are detached.",
+        "nextAction": "Add 例如/旺角 and review coordinated topic plus predicate structure.",
+        "lifecycleStatus": "REVIEW_ONLY"
+      },
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-functional-corpus.tsv",
+        "test-data/w17-glossika-corpus.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I008",
+      "ordinal": 8,
+      "itemType": "sentence",
+      "sourceDisplay": "一方面係時間，另一方面係費用。",
+      "sourceHash": "sha256:f0f05ecd005815be76a6dd4c942b7eeee8a0cec2ee10320f89b4e1618aed9ec4",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "COR-W17-008",
+        "sourceInventory": "w17-functional-corpus",
+        "path": "test-data/w17-functional-corpus.tsv",
+        "legacySourcePath": "test-data/w17-glossika-corpus.tsv",
+        "semanticPath": "test-data/w17-corpus-semantic-disposition.tsv",
+        "lifecyclePath": "test-data/review-only-readiness.tsv",
+        "status": "PASS",
+        "lifecycleStatus": "REVIEW_ONLY",
+        "utteranceType": "contrastive_enumeration",
+        "notes": ""
+      },
+      "semanticReview": {
+        "verdict": "FAIL",
+        "primaryIssue": "no_copular_contrast_structure",
+        "roleReview": "一方面/另一方面 should be functional contrast organizers; 時間 remains when and 費用 what.",
+        "structureReview": "No top construction exists.",
+        "nextAction": "Add the discourse organizers and 費用, then form two broad copular clauses under ClauseLinkingSequence.",
+        "lifecycleStatus": "REVIEW_ONLY"
+      },
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-functional-corpus.tsv",
+        "test-data/w17-glossika-corpus.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I009",
+      "ordinal": 9,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "唔開心",
+      "sourceHash": "sha256:7ea417bea47165965862f391df3bafd17d87788540634d56f8fb3fa838841ded",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-001",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Registered source phrase; runtime must preserve visible internal tokens. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [
+        "src/parser/orchestration/wrap-predicate.js"
+      ],
+      "supportingExactOwners": [
+        "docs/research/CP056-P1-NEGATED-LEXICALIZED-STATIVE-RETIREMENT-R1.md",
+        "docs/research/CP057-P1-NEGATED-STATIVE-PREDICATE-RECONCILIATION-R1.md",
+        "grammar/research_pending/NegatedStativePredicate.md",
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-functional-corpus.tsv",
+        "test-data/w17-glossika-corpus.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv",
+        "test-data/w17-naturalized-alternatives.tsv",
+        "tests/constructions/NegatedStativePredicate.json"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I010",
+      "ordinal": 10,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "攰",
+      "sourceHash": "sha256:7740eb53b4fda8c3c31740bf25dad9b8c8aaa9676c8bfe17d3026adc97a6ea29",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-002",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Integration mode atomic; runtime lexical checks pass. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "docs/research/EVALUATION-PACKET-BLUEPRINTS-CP021B-R37.json",
+        "docs/research/PARSER-CONSTRUCTION-CANONICAL-CONSOLIDATION-MATRIX-CP021B-R35.tsv",
+        "grammar/unsupported_generalization/SuggestionQuestion.md",
+        "test-data/cp021b-lx1-construction-freeze-baseline.json",
+        "test-data/native-speaker-naturalness-evidence-v1.json",
+        "test-data/native-speaker-naturalness-evidence-v1.tsv",
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-corpus-semantic-disposition.tsv",
+        "test-data/w17-functional-corpus.tsv",
+        "test-data/w17-glossika-corpus.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv",
+        "tests/constructions/ClauseRelationEdge.json",
+        "tests/constructions/ClauseRelationGraph.json",
+        "tests/constructions/ClauseRelationMemberSpan.json",
+        "tests/constructions/ClauseSpan.json",
+        "tests/constructions/DegreeStativePredicate.json",
+        "tests/constructions/ProgressiveVP.json",
+        "tests/constructions/SuggestionQuestion.json",
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I011",
+      "ordinal": 11,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "嬲",
+      "sourceHash": "sha256:044272d8b48b210305490e410d849221b4cf4feb220ef15bd7dcd82988ce5161",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-003",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Integration mode atomic; runtime lexical checks pass. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv",
+        "docs/research/PRQ2-005-HOI1-HABITUAL-ESTABLISHED-ACTIVITY-RESEARCH-R1.md",
+        "docs/research/PRQ2-007-HEI2SOENG5LAI4-INCHOATIVE-ASPECT-COLLISION-AUDIT-R1.tsv",
+        "docs/research/PRQ2-007-HEI2SOENG5LAI4-INCHOATIVE-ASPECT-RESEARCH-R1.md",
+        "docs/research/UC-RQ-001-GENERAL-ZOENG1-DISPOSAL-NATURAL-ATTESTATION-R1.tsv",
+        "grammar/research_pending/ExistentialClause.md",
+        "grammar/research_pending/ExistentialPresentationalClause.md",
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-corpus-semantic-disposition.tsv",
+        "test-data/w17-functional-corpus.tsv",
+        "test-data/w17-glossika-corpus.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I012",
+      "ordinal": 12,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "驚",
+      "sourceHash": "sha256:f5e8f2f9456cdfc5e358733a2b635450f8cadd09b20413355f4df916504c5a2e",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-004",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Integration mode atomic; runtime lexical checks pass. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/parser/detectors/np/core.js",
+        "src/runtime-resources/grammar/templates/construction-templates.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "docs/research/LANE-06-CLASSIFIER-NP-SOURCE-MAP-CP021B-R5.md",
+        "docs/research/PRQ2-007-HEI2SOENG5LAI4-INCHOATIVE-ASPECT-COLLISION-AUDIT-R1.tsv",
+        "docs/research/PRQ2-007-HEI2SOENG5LAI4-INCHOATIVE-ASPECT-RESEARCH-R1.md",
+        "docs/research/PRQ2-007-HEI2SOENG5LAI4-INCHOATIVE-ASPECT-SOURCE-VERIFICATION-R1.tsv",
+        "docs/research/PRQ2-008-ZI2JIU3-ZAU6-SUFFICIENT-CONDITION-RESEARCH-R1.md",
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I013",
+      "ordinal": 13,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "擔心",
+      "sourceHash": "sha256:19da23aa6902be2adb87f66809d4209649bcf68fb5cd44338df2add77c330637",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-005",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Integration mode atomic; runtime lexical checks pass. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "docs/research/PRQ2-015-MUI5-GO3GO3-DOU1-DISTRIBUTIVE-QUANTIFICATION-COLLISION-AUDIT-R1.tsv",
+        "docs/research/PRQ2-015-MUI5-GO3GO3-DOU1-DISTRIBUTIVE-QUANTIFICATION-RESEARCH-R1.md",
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I014",
+      "ordinal": 14,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "悶",
+      "sourceHash": "sha256:5841cd021f90fbcebbae3a2ee48fcf7c78e17c2aba56164a7b47c19a1fdb88ec",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-006",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Integration mode atomic; runtime lexical checks pass. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "data/construction-adjudication-batches/batch-08.json",
+        "data/construction-identities.json",
+        "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv",
+        "grammar/research_pending/DegreeStativePredicate.md",
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I015",
+      "ordinal": 15,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "緊張",
+      "sourceHash": "sha256:bf2625e7dc8aa78d54f67b8087502315f1dc45438395b9f3d912b8986eb88d5a",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-007",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Integration mode atomic; runtime lexical checks pass. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "docs/research/PRQ2-003-JYUT6-SCALAR-PROGRESSION-COLLISION-AUDIT-R1.tsv",
+        "docs/research/PRQ2-003-JYUT6-SCALAR-PROGRESSION-RESEARCH-R1.md",
+        "docs/research/PRQ2-015-MUI5-GO3GO3-DOU1-DISTRIBUTIVE-QUANTIFICATION-COLLISION-AUDIT-R1.tsv",
+        "docs/research/PRQ2-015-MUI5-GO3GO3-DOU1-DISTRIBUTIVE-QUANTIFICATION-RESEARCH-R1.md",
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I016",
+      "ordinal": 16,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "壓力",
+      "sourceHash": "sha256:0e49726780b9ced80f04552817d7f0310647a698da0e6e334c481553c12f249a",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-008",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Integration mode atomic; runtime lexical checks pass. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "data/construction-adjudication-batches/batch-08.json",
+        "data/construction-adjudication-batches/batch-13.json",
+        "data/construction-identities.json",
+        "docs/research/CONSTRUCTION-ADJUDICATION-BATCH-08.md",
+        "docs/research/CONSTRUCTION-ADJUDICATION-BATCH-13.md",
+        "docs/research/EVALUATION-PACKET-BLUEPRINTS-CP021B-R37.json",
+        "docs/research/PARSER-CONSTRUCTION-CANONICAL-CONSOLIDATION-MATRIX-CP021B-R35.tsv",
+        "test-data/cp021b-lx1-construction-freeze-baseline.json",
+        "test-data/native-speaker-naturalness-evidence-v1.json",
+        "test-data/native-speaker-naturalness-evidence-v1.tsv",
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-corpus-semantic-disposition.tsv",
+        "test-data/w17-functional-corpus.tsv",
+        "test-data/w17-glossika-corpus.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv",
+        "test-data/w17-naturalized-alternatives.tsv",
+        "tests/constructions/ClauseRelationGraph.json",
+        "tests/constructions/ClauseSpan.json",
+        "tests/constructions/DegreeStativePredicate.json",
+        "tests/constructions/FormulaDiscourseUnit.json",
+        "tests/constructions/ModifierNP.json",
+        "tests/fixtures/regression-snapshots.json",
+        "tests/tooling/corpus-review/test_aa91_hkcancor_profile.py"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I017",
+      "ordinal": 17,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "辛苦",
+      "sourceHash": "sha256:de029102991bded05e4f4deb6e037bad42a7351efb74ba3b02ec2c4c30a93adf",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-009",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Integration mode atomic; runtime lexical checks pass. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/source.json",
+        "data/research-ledgers/glossika-week14-claim-source.json",
+        "docs/research/GLOSSIKA-YUEHK-A1-W14-20260621-RESEARCH.md",
+        "docs/research/UC-RQ-004-005-COMPARISON-HKCANCOR-ATTESTATION-R1.md",
+        "docs/research/WECHAT-GX-TRAVEL-002-ADJUDICATION-REPORT.md",
+        "docs/research/WECHAT-GX-TRAVEL-002-REGRESSION-REMEDIATION-READINESS-R2.md",
+        "test-data/natural-corpus-wechat-guangxi-travel-002-raw.txt",
+        "test-data/natural-corpus-wechat-guangxi-travel-002-turns.json",
+        "test-data/natural-corpus-wechat-guangxi-travel-002-turns.tsv",
+        "test-data/natural-corpus-wechat-guangxi-travel-002-units.json",
+        "test-data/natural-corpus-wechat-guangxi-travel-002-units.tsv",
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv",
+        "test-data/WECHAT-GX-TRAVEL-002-ADJUDICATION-MATRIX.json",
+        "test-data/WECHAT-GX-TRAVEL-002-ADJUDICATION-MATRIX.tsv",
+        "test-data/WECHAT-GX-TRAVEL-002-QUEUE-G-grammar_research_external_evidence.tsv",
+        "test-data/WECHAT-GX-TRAVEL-002-QUEUE-R-accepted_behavior_regression.tsv",
+        "test-data/WECHAT-GX-TRAVEL-002-REGRESSION-REMEDIATION-READINESS-R2.json",
+        "test-data/WECHAT-GX-TRAVEL-002-REGRESSION-REMEDIATION-READINESS-R2.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I018",
+      "ordinal": 18,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "感動",
+      "sourceHash": "sha256:82f8fed65c35361a481c03672d33228db2a5e166526ff3a9dc389816951812f6",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-010",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Integration mode atomic; runtime lexical checks pass. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I019",
+      "ordinal": 19,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "激動",
+      "sourceHash": "sha256:5e667507c3e1285af13778d177cd089609248d37d6637641c031aa2a14b4016c",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-011",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Integration mode atomic; runtime lexical checks pass. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I020",
+      "ordinal": 20,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "失望",
+      "sourceHash": "sha256:4d05480427fa8324243a2c4b5739e4c6cabf6bce14d6964f0defdbe995d37e58",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-012",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Integration mode atomic; runtime lexical checks pass. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I021",
+      "ordinal": 21,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "放鬆",
+      "sourceHash": "sha256:87e6cfd6d5c0a18cd252705f461800c198ca7cf0e1c65d83fdc828f31a0e9124",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-013",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Integration mode atomic; runtime lexical checks pass. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "docs/research/CP024-P0-L45-VERB-VALENCY-INVENTORY-R1.tsv",
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I022",
+      "ordinal": 22,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "開心",
+      "sourceHash": "sha256:8ab23f11b98c08060c470e891bbc11f69125bdd30138ce713d17f6fa1769cdcc",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-014",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Integration mode existing_atomic; runtime lexical checks pass. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/parser/features/token-features.js",
+        "src/parser/orchestration/wrap-predicate.js",
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+        "src/runtime-resources/lexicon/token-lexicon/statives.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "data/construction-adjudication-batches/batch-08.json",
+        "data/construction-identities.json",
+        "docs/research/CONSTRUCTION-ADJUDICATION-BATCH-08.md",
+        "docs/research/CP056-P1-NEGATED-LEXICALIZED-STATIVE-RETIREMENT-R1.md",
+        "docs/research/CP057-P1-NEGATED-STATIVE-PREDICATE-RECONCILIATION-R1.md",
+        "docs/research/PRQ2-003-JYUT6-SCALAR-PROGRESSION-COLLISION-AUDIT-R1.tsv",
+        "docs/research/PRQ2-003-JYUT6-SCALAR-PROGRESSION-RESEARCH-R1.md",
+        "grammar/research_pending/NegatedStativePredicate.md",
+        "test-data/cp021b-lx1-construction-freeze-baseline.json",
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-corpus-semantic-disposition.tsv",
+        "test-data/w17-functional-corpus.tsv",
+        "test-data/w17-glossika-corpus.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv",
+        "test-data/w17-naturalized-alternatives.tsv",
+        "tests/constructions/ClauseSpan.json",
+        "tests/constructions/DegreeStativePredicate.json",
+        "tests/constructions/DiscourseParticleFrame.json",
+        "tests/constructions/NegatedStativePredicate.json",
+        "tests/constructions/OpinionStanceFrame.json",
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I023",
+      "ordinal": 23,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "傷心",
+      "sourceHash": "sha256:ed7f0128777bd15fff0e1c3efa246e4852d5b082354daa35ed3b3670e4ecee42",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-015",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Integration mode atomic; runtime lexical checks pass. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I024",
+      "ordinal": 24,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "嬲",
+      "sourceHash": "sha256:044272d8b48b210305490e410d849221b4cf4feb220ef15bd7dcd82988ce5161",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": "GLOSSIKA-YUEHK-A1-W17-20260712-I011",
+      "projectRecord": {
+        "id": "LEX-W17-003",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Integration mode atomic; runtime lexical checks pass. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv",
+        "docs/research/PRQ2-005-HOI1-HABITUAL-ESTABLISHED-ACTIVITY-RESEARCH-R1.md",
+        "docs/research/PRQ2-007-HEI2SOENG5LAI4-INCHOATIVE-ASPECT-COLLISION-AUDIT-R1.tsv",
+        "docs/research/PRQ2-007-HEI2SOENG5LAI4-INCHOATIVE-ASPECT-RESEARCH-R1.md",
+        "docs/research/UC-RQ-001-GENERAL-ZOENG1-DISPOSAL-NATURAL-ATTESTATION-R1.tsv",
+        "grammar/research_pending/ExistentialClause.md",
+        "grammar/research_pending/ExistentialPresentationalClause.md",
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-corpus-semantic-disposition.tsv",
+        "test-data/w17-functional-corpus.tsv",
+        "test-data/w17-glossika-corpus.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": [
+        {
+          "type": "source_internal_duplicate",
+          "duplicateOf": "GLOSSIKA-YUEHK-A1-W17-20260712-I011",
+          "status": "source_preserved"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I025",
+      "ordinal": 25,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "驚",
+      "sourceHash": "sha256:ab8444479dc14f4b586cd0a474065ce514634c8432578ee353b61609b043508d",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": "GLOSSIKA-YUEHK-A1-W17-20260712-I012",
+      "projectRecord": {
+        "id": "LEX-W17-004",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Integration mode atomic; runtime lexical checks pass. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/parser/detectors/np/core.js",
+        "src/runtime-resources/grammar/templates/construction-templates.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "docs/research/LANE-06-CLASSIFIER-NP-SOURCE-MAP-CP021B-R5.md",
+        "docs/research/PRQ2-007-HEI2SOENG5LAI4-INCHOATIVE-ASPECT-COLLISION-AUDIT-R1.tsv",
+        "docs/research/PRQ2-007-HEI2SOENG5LAI4-INCHOATIVE-ASPECT-RESEARCH-R1.md",
+        "docs/research/PRQ2-007-HEI2SOENG5LAI4-INCHOATIVE-ASPECT-SOURCE-VERIFICATION-R1.tsv",
+        "docs/research/PRQ2-008-ZI2JIU3-ZAU6-SUFFICIENT-CONDITION-RESEARCH-R1.md",
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": [
+        {
+          "type": "source_internal_duplicate",
+          "duplicateOf": "GLOSSIKA-YUEHK-A1-W17-20260712-I012",
+          "status": "source_preserved",
+          "glossVariation": {
+            "first": "scared",
+            "repeated": "scared / surprised"
+          }
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I026",
+      "ordinal": 26,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "攰",
+      "sourceHash": "sha256:7740eb53b4fda8c3c31740bf25dad9b8c8aaa9676c8bfe17d3026adc97a6ea29",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": "GLOSSIKA-YUEHK-A1-W17-20260712-I010",
+      "projectRecord": {
+        "id": "LEX-W17-002",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Integration mode atomic; runtime lexical checks pass. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "docs/research/EVALUATION-PACKET-BLUEPRINTS-CP021B-R37.json",
+        "docs/research/PARSER-CONSTRUCTION-CANONICAL-CONSOLIDATION-MATRIX-CP021B-R35.tsv",
+        "grammar/unsupported_generalization/SuggestionQuestion.md",
+        "test-data/cp021b-lx1-construction-freeze-baseline.json",
+        "test-data/native-speaker-naturalness-evidence-v1.json",
+        "test-data/native-speaker-naturalness-evidence-v1.tsv",
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-corpus-semantic-disposition.tsv",
+        "test-data/w17-functional-corpus.tsv",
+        "test-data/w17-glossika-corpus.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv",
+        "tests/constructions/ClauseRelationEdge.json",
+        "tests/constructions/ClauseRelationGraph.json",
+        "tests/constructions/ClauseRelationMemberSpan.json",
+        "tests/constructions/ClauseSpan.json",
+        "tests/constructions/DegreeStativePredicate.json",
+        "tests/constructions/ProgressiveVP.json",
+        "tests/constructions/SuggestionQuestion.json",
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": [
+        {
+          "type": "source_internal_duplicate",
+          "duplicateOf": "GLOSSIKA-YUEHK-A1-W17-20260712-I010",
+          "status": "source_preserved"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I027",
+      "ordinal": 27,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "鍾意",
+      "sourceHash": "sha256:bde964e876a1836cd9fe0568a72efe7958f7bdd964969e9c18266eed177f4d7b",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-016",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Integration mode existing_atomic; runtime lexical checks pass. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/parser/detectors/modality/intention-preference.js",
+        "src/parser/detectors/transfer/passive-permissive.js",
+        "src/parser/features/token-features.js",
+        "src/parser/orchestration/wrap-core.js",
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "data/construction-adjudication-batches/batch-05.json",
+        "data/construction-adjudication-batches/batch-07.json",
+        "data/construction-adjudication-batches/batch-08.json",
+        "data/construction-identities.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/source.json",
+        "docs/research/COMPLEMENT-OMISSION-AND-VALENCY-SOURCE-MAP-CP021B-R26.md",
+        "docs/research/CONSTRUCTION-ADJUDICATION-BATCH-05.md",
+        "docs/research/CONSTRUCTION-ADJUDICATION-BATCH-08.md",
+        "docs/research/CP022-IMPLEMENTATION-BACKLOG-CP021B-R37.tsv",
+        "docs/research/CP051-P1-COPULAR-ANOTA-RECONCILIATION-R1.md",
+        "docs/research/MODAL-DESIDERATIVE-PREFERENCE-SOURCE-MAP-CP021B-R14.md",
+        "docs/research/PARSER-CONSTRUCTION-CANONICAL-CONSOLIDATION-MATRIX-CP021B-R35.tsv",
+        "docs/research/PARSER-CONSTRUCTION-INTERNAL-PROVENANCE-REGISTER-CP021B-R37.tsv",
+        "docs/research/PARSER-CONSTRUCTION-INTERNAL-PROVENANCE-REGISTER-CP022-I1A-I04-R1.tsv",
+        "docs/research/PARSER-CONSTRUCTION-SOURCE-COVERAGE-CP021B-R37.tsv",
+        "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv",
+        "docs/research/PARSER-CONSTRUCTION-SOURCE-REGISTER-CP021B-R37.tsv",
+        "docs/research/PRQ2-015-MUI5-GO3GO3-DOU1-DISTRIBUTIVE-QUANTIFICATION-COLLISION-AUDIT-R1.tsv",
+        "docs/research/PRQ2-015-MUI5-GO3GO3-DOU1-DISTRIBUTIVE-QUANTIFICATION-RESEARCH-R1.md",
+        "docs/research/PRQ2-035-NING4JYUN6-DOU1-COMMITTED-PREFERENCE-COLLISION-AUDIT-R1.tsv",
+        "docs/research/UC-RQ-004-CANTONESE-EQUATIVE-CONSTRUCTION-RESEARCH-R1.md",
+        "docs/research/UC-RQ-025-NULL-ARGUMENT-ZERO-ANAPHORA-COLLISION-AUDIT-R1.tsv",
+        "docs/research/UC-RQ-025-NULL-ARGUMENT-ZERO-ANAPHORA-RESEARCH-R1.md",
+        "docs/research/UC-RQ-027-ZEOI3-SUPERLATIVE-RESEARCH-R1.md",
+        "docs/research/UC-RQ-027-ZEOI3-SUPERLATIVE-SOURCE-VERIFICATION-R1.tsv",
+        "grammar/research_pending/ComplementEllipsisFragment.md",
+        "grammar/research_pending/FragmentAnswer.md",
+        "grammar/research_pending/PreferenceVP.md",
+        "grammar/unsupported_generalization/CopularANotAQuestion.md",
+        "test-data/a1-context-status-fixture.tsv",
+        "test-data/cp021b-lx1-construction-freeze-baseline.json",
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-corpus-semantic-disposition.tsv",
+        "test-data/w17-functional-corpus.tsv",
+        "test-data/w17-glossika-corpus.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv",
+        "tests/constructions/ClauseRelationGraph.json",
+        "tests/constructions/CopularANotAQuestion.json",
+        "tests/constructions/NeedsContext.json",
+        "tests/constructions/PreferenceVP.json",
+        "tests/fixtures/regression-snapshots.json",
+        "tests/tooling/corpus-review/test_aa07_hkcancor_profile.py"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I028",
+      "ordinal": 28,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "唔鍾意",
+      "sourceHash": "sha256:ff5688d0b905c3bce9f43bcb0db4592485583eea5c7477a22be815dd0bd3f9f1",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-017",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Registered source phrase; runtime must preserve visible internal tokens. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv",
+        "docs/research/PRQ2-015-MUI5-GO3GO3-DOU1-DISTRIBUTIVE-QUANTIFICATION-RESEARCH-R1.md",
+        "docs/research/PRQ2-035-NING4JYUN6-DOU1-COMMITTED-PREFERENCE-COLLISION-AUDIT-R1.tsv",
+        "docs/research/UC-RQ-025-NULL-ARGUMENT-ZERO-ANAPHORA-RESEARCH-R1.md",
+        "test-data/a1-context-status-fixture.tsv",
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv",
+        "tests/constructions/ClauseRelationGraph.json",
+        "tests/constructions/PreferenceVP.json"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I029",
+      "ordinal": 29,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "興奮",
+      "sourceHash": "sha256:0b707fd736df0a0700a691d4f57c7c0e72f9a8d53622d706428bce2b63f66579",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-018",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Integration mode atomic; runtime lexical checks pass. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I030",
+      "ordinal": 30,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "孤獨",
+      "sourceHash": "sha256:c13a37c0c6d793560f56d0a469cab1caa8a1cae58dcc9be99444e33171478c1f",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-019",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Integration mode atomic; runtime lexical checks pass. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I031",
+      "ordinal": 31,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "滿足",
+      "sourceHash": "sha256:993adeb3be97d98abcceb2cf02556fd6d8a2ef5fd0dd0396d5ee0e1c07fa3df4",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-020",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Integration mode atomic; runtime lexical checks pass. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I032",
+      "ordinal": 32,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "驕傲",
+      "sourceHash": "sha256:24520926fde30590ae4ebffa3edf09d718d23b4ff2339f6cc007baafad800a2b",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-021",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Role is stable stative; evaluative meaning varies by context. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I033",
+      "ordinal": 33,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "嫉妒",
+      "sourceHash": "sha256:ac28b70774c2a331cb01a97fcea4b4fe269153d8773cc34b486065cfe8018f4f",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-022",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Integration mode atomic; runtime lexical checks pass. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I034",
+      "ordinal": 34,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "焦慮",
+      "sourceHash": "sha256:1b05de803a342588725f6f3017e848c5defe272e24341edca957aba7112c2007",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-023",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Integration mode atomic; runtime lexical checks pass. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I035",
+      "ordinal": 35,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "感激",
+      "sourceHash": "sha256:4f11925873c1af029c3fcd8f186f176ea2d064c922f91958e4fa3e1c318c17b4",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-024",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Integration mode atomic; runtime lexical checks pass. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I036",
+      "ordinal": 36,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "慚愧",
+      "sourceHash": "sha256:9296c37a519472cd4e0ade2f717dc0bac6865f45c380e9b3cffe5f576dcbcaa5",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-025",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Integration mode atomic; runtime lexical checks pass. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I037",
+      "ordinal": 37,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "害怕",
+      "sourceHash": "sha256:421d058b9a8f7e086b696536eb4f99a3f96d1fa0d1d956f3da6334c2b7c0bf19",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-026",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Integration mode atomic; runtime lexical checks pass. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I038",
+      "ordinal": 38,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "感恩",
+      "sourceHash": "sha256:963f968226cfcb4161c5f032ffc37547830e4ed967c21f397e533eb2b6fdcca3",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-027",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Integration mode atomic; runtime lexical checks pass. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I039",
+      "ordinal": 39,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "好奇",
+      "sourceHash": "sha256:5f7e36e9171a71ffccd51883f8070812d8fffa63d4cc505d5328ffe8a8a84b26",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-028",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "REVIEW",
+        "lifecycleStatus": "WAITING_EXTERNAL_EVIDENCE",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Role accepted; source Jyutping remains review-bearing."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": [
+        {
+          "type": "pronunciation_review_unresolved",
+          "sourceValue": "hou2 kei4",
+          "reviewedValue": null,
+          "status": "waiting_external_evidence",
+          "note": "Role accepted; source Jyutping remains review-bearing."
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I040",
+      "ordinal": 40,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "樂觀",
+      "sourceHash": "sha256:29f23f25981af31ab43f5992382a0a6d24e7f77b07b9e250fda868f9b250ac9a",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-029",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Integration mode atomic; runtime lexical checks pass. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I041",
+      "ordinal": 41,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "一千萬",
+      "sourceHash": "sha256:daffeeb416b16e16f2e8fa9444f23991da1b89d020a1a05209cf46cedad3359d",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-030",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Registered source phrase; runtime must preserve visible internal tokens. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/source.json",
+        "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I042",
+      "ordinal": 42,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "二千萬",
+      "sourceHash": "sha256:5ac412f0bc411cdb7aaf4fc2b031123925e2dfb9c95d8754155ebc164515bfde",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-031",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Registered source phrase; runtime must preserve visible internal tokens. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I043",
+      "ordinal": 43,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "三千萬",
+      "sourceHash": "sha256:d4e64fad0e69655cf69aeb2a02d61b585ccc1005041c8ff2b02da616782056f4",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-032",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Registered source phrase; runtime must preserve visible internal tokens. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I044",
+      "ordinal": 44,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "四千萬",
+      "sourceHash": "sha256:e1287c663b2ea15eb492baa4434ab12db9a39840f2eee36278bab9414f1f0166",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-033",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Registered source phrase; runtime must preserve visible internal tokens. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I045",
+      "ordinal": 45,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "五千萬",
+      "sourceHash": "sha256:cb77fb3f5e7b89c8a05dba59d4f6450641ee8a32a3648ba6620611938c85ad55",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-034",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Registered source phrase; runtime must preserve visible internal tokens. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I046",
+      "ordinal": 46,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "六千萬",
+      "sourceHash": "sha256:b9740de12d8c8f7b050f5894a20c31719081c05298a433ba5c2bd1488353965e",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-035",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Registered source phrase; runtime must preserve visible internal tokens. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I047",
+      "ordinal": 47,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "七千萬",
+      "sourceHash": "sha256:6669e3cb5b070fa829312f81c943e8948b3438510a1c456eb9c3091ab35e45af",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-036",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Registered source phrase; runtime must preserve visible internal tokens. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I048",
+      "ordinal": 48,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "八千萬",
+      "sourceHash": "sha256:e9ffcd5f9b217391819fd4f8e1dd9a872d809ab69faa43dec093965dc3e97179",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-037",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Registered source phrase; runtime must preserve visible internal tokens. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I049",
+      "ordinal": 49,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "九千萬",
+      "sourceHash": "sha256:9c2a22771089ea4c44f7f34831aaf24873a5db46644aa097e73343204c57da1a",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-038",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Registered source phrase; runtime must preserve visible internal tokens. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I050",
+      "ordinal": 50,
+      "itemType": "lexical_entry",
+      "sourceDisplay": "一億",
+      "sourceHash": "sha256:a59b10193225874e0dc5564ae10d1a527c9b48ee3c61c26777658efc58d84aae",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "LEX-W17-039",
+        "sourceInventory": "w17-lexicon",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_lexical_overlay",
+        "notes": "Registered source phrase; runtime must preserve visible internal tokens. Promoted to accepted_lexical_overlay after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I051",
+      "ordinal": 51,
+      "itemType": "sentence",
+      "sourceDisplay": "我最近好大壓力。",
+      "sourceHash": "sha256:4e9231617117c8837b4a38e8764af0f73cf573a9d23c6c214b94ca90108720ed",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "COR-W17-009",
+        "sourceInventory": "w17-functional-corpus",
+        "path": "test-data/w17-functional-corpus.tsv",
+        "legacySourcePath": "test-data/w17-glossika-corpus.tsv",
+        "semanticPath": "test-data/w17-corpus-semantic-disposition.tsv",
+        "lifecyclePath": "test-data/review-only-readiness.tsv",
+        "status": "REVIEW",
+        "lifecycleStatus": "REVIEW_ONLY",
+        "utteranceType": "stative_statement",
+        "notes": "Understandable, but 我最近壓力好大 or 我最近有好大壓力 is structurally clearer"
+      },
+      "semanticReview": {
+        "verdict": "REVIEW",
+        "primaryIssue": "source_naturalness_review",
+        "roleReview": "我=who, 最近=when, 好=how, 大=like, 壓力=what are now transparent; 最近 is no longer split.",
+        "structureReview": "The parser now produces a full SubjectPredicateClause with 最近 as a temporal adjunct and 好大壓力 as the predicate nominal. The source remains review-bearing because more idiomatic alternatives are documented.",
+        "nextAction": "Retain source REVIEW; compare 我最近壓力好大 / 我最近有好大壓力 before corpus promotion.",
+        "lifecycleStatus": "REVIEW_ONLY"
+      },
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "docs/research/EVALUATION-PACKET-BLUEPRINTS-CP021B-R37.json",
+        "docs/research/PARSER-CONSTRUCTION-CANONICAL-CONSOLIDATION-MATRIX-CP021B-R35.tsv",
+        "test-data/cp021b-lx1-construction-freeze-baseline.json",
+        "test-data/native-speaker-naturalness-evidence-v1.json",
+        "test-data/native-speaker-naturalness-evidence-v1.tsv",
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-functional-corpus.tsv",
+        "test-data/w17-glossika-corpus.tsv",
+        "tests/constructions/ClauseRelationGraph.json",
+        "tests/constructions/ClauseSpan.json",
+        "tests/constructions/DegreeStativePredicate.json",
+        "tests/constructions/FormulaDiscourseUnit.json",
+        "tests/constructions/ModifierNP.json",
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "supportingNormalizedOwners": [
+        "data/construction-adjudication-batches/batch-13.json",
+        "docs/research/CONSTRUCTION-ADJUDICATION-BATCH-13.md"
+      ],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I052",
+      "ordinal": 52,
+      "itemType": "sentence",
+      "sourceDisplay": "你攰唔攰？不如休息吓。",
+      "sourceHash": "sha256:9371a34dc84d3d993fac1ca49e88701865860a5247039b4777049ae222b11694",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "COR-W17-010",
+        "sourceInventory": "w17-functional-corpus",
+        "path": "test-data/w17-functional-corpus.tsv",
+        "legacySourcePath": "test-data/w17-glossika-corpus.tsv",
+        "semanticPath": "test-data/w17-corpus-semantic-disposition.tsv",
+        "lifecyclePath": "test-data/review-only-readiness.tsv",
+        "status": "PASS",
+        "lifecycleStatus": "REVIEW_ONLY",
+        "utteranceType": "a_not_a_question_plus_suggestion",
+        "notes": ""
+      },
+      "semanticReview": {
+        "verdict": "FAIL",
+        "primaryIssue": "stative_a_not_a_missing",
+        "roleReview": "你=who, 攰=like, 唔=func are correct.",
+        "structureReview": "Current parser wraps only 唔攰 instead of the full 攰唔攰 question.",
+        "nextAction": "Add a broad stative A-not-A path and preserve the separate SuggestionQuestion.",
+        "lifecycleStatus": "REVIEW_ONLY"
+      },
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "grammar/unsupported_generalization/SuggestionQuestion.md",
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-functional-corpus.tsv",
+        "test-data/w17-glossika-corpus.tsv",
+        "tests/constructions/SuggestionQuestion.json"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I053",
+      "ordinal": 53,
+      "itemType": "sentence",
+      "sourceDisplay": "考完試好開心！",
+      "sourceHash": "sha256:1f9458f773c12621249a0d4ae8d89a8adcb077376585705151568106b97723eb",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "COR-W17-011",
+        "sourceInventory": "w17-functional-corpus",
+        "path": "test-data/w17-functional-corpus.tsv",
+        "legacySourcePath": "test-data/w17-glossika-corpus.tsv",
+        "semanticPath": "test-data/w17-corpus-semantic-disposition.tsv",
+        "lifecyclePath": "test-data/review-only-readiness.tsv",
+        "status": "PASS",
+        "lifecycleStatus": "REVIEW_ONLY",
+        "utteranceType": "elliptical_result_state_clause",
+        "notes": ""
+      },
+      "semanticReview": {
+        "verdict": "FAIL",
+        "primaryIssue": "completion_and_object_role_leak",
+        "roleReview": "考 should be doing; 試 is what in 考完試 despite its lexical verb sense; 好=how and 開心=like.",
+        "structureReview": "Current parser treats 試 as action verb and builds false ActionStativeVP.",
+        "nextAction": "Add 考 and a contextual object-role override for 試 inside the completion VP; then link the result-state clause.",
+        "lifecycleStatus": "REVIEW_ONLY"
+      },
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-functional-corpus.tsv",
+        "test-data/w17-glossika-corpus.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I054",
+      "ordinal": 54,
+      "itemType": "sentence",
+      "sourceDisplay": "佢今日好似好嬲。",
+      "sourceHash": "sha256:f29bf4397d06a38d4db69ef0efdf0197e4c7cfd94443853816206f49f5f058f0",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "COR-W17-012",
+        "sourceInventory": "w17-functional-corpus",
+        "path": "test-data/w17-functional-corpus.tsv",
+        "legacySourcePath": "test-data/w17-glossika-corpus.tsv",
+        "semanticPath": "test-data/w17-corpus-semantic-disposition.tsv",
+        "lifecyclePath": "test-data/review-only-readiness.tsv",
+        "status": "PASS",
+        "lifecycleStatus": "REVIEW_ONLY",
+        "utteranceType": "seeming_stative_statement",
+        "notes": ""
+      },
+      "semanticReview": {
+        "verdict": "FAIL",
+        "primaryIssue": "seeming_clause_unwrapped",
+        "roleReview": "佢=who, 今日=when, 好似=func, 好=how, 嬲=like are correct.",
+        "structureReview": "Only 好嬲 is wrapped; subject, time, and seeming marker are detached.",
+        "nextAction": "Extend the existing broad seeming/stative structure rather than adding a sentence-specific label.",
+        "lifecycleStatus": "REVIEW_ONLY"
+      },
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-functional-corpus.tsv",
+        "test-data/w17-glossika-corpus.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I055",
+      "ordinal": 55,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "你塊面好似唔開心噃。",
+      "sourceHash": "sha256:73e1eea27c15d6a98ba976ba3691f84d37a4bfdfeb36a4ccb2b8b71d649b0e9d",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "COR-W17-013",
+        "sourceInventory": "w17-functional-corpus",
+        "path": "test-data/w17-functional-corpus.tsv",
+        "legacySourcePath": "test-data/w17-glossika-corpus.tsv",
+        "semanticPath": "test-data/w17-corpus-semantic-disposition.tsv",
+        "lifecyclePath": "test-data/review-only-readiness.tsv",
+        "status": "REVIEW",
+        "lifecycleStatus": "REVIEW_ONLY",
+        "utteranceType": "seeming_stative_statement",
+        "notes": "Literally attributes the state to the person's face"
+      },
+      "semanticReview": {
+        "verdict": "REVIEW",
+        "primaryIssue": "source_naturalness_and_seeming_structure",
+        "roleReview": "你=who, 塊=measure_word, 面 should be what, 好似=func, 唔=func, 開心=like, 噃=particle.",
+        "structureReview": "Negated stative is now transparent, but the NP and seeming frame are detached.",
+        "nextAction": "Add 面 and 噃; retain source REVIEW and compare the naturalized alternative.",
+        "lifecycleStatus": "REVIEW_ONLY"
+      },
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-functional-corpus.tsv",
+        "test-data/w17-glossika-corpus.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I056",
+      "ordinal": 56,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "係呀，我最近好大壓力。",
+      "sourceHash": "sha256:871939b5a861c1d308e3d8ab6de0ceaaf643a515d24c01a8304a304d00241d76",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "COR-W17-014",
+        "sourceInventory": "w17-functional-corpus",
+        "path": "test-data/w17-functional-corpus.tsv",
+        "legacySourcePath": "test-data/w17-glossika-corpus.tsv",
+        "semanticPath": "test-data/w17-corpus-semantic-disposition.tsv",
+        "lifecyclePath": "test-data/review-only-readiness.tsv",
+        "status": "REVIEW",
+        "lifecycleStatus": "REVIEW_ONLY",
+        "utteranceType": "response_plus_stative_statement",
+        "notes": "Same construction issue as COR-W17-009"
+      },
+      "semanticReview": {
+        "verdict": "REVIEW",
+        "primaryIssue": "source_naturalness_review",
+        "roleReview": "係=func, 呀=particle; 我=who, 最近=when, 好=how, 大=like, 壓力=what are now transparent.",
+        "structureReview": "ClauseLinkingSequence now cleanly contains FormulaDiscourseUnit 係呀 and a full SubjectPredicateClause. The row remains REVIEW only because the source phrasing is less idiomatic than the documented alternatives.",
+        "nextAction": "Retain source REVIEW; no parser fix is required for the 最近 boundary.",
+        "lifecycleStatus": "REVIEW_ONLY"
+      },
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "docs/research/EVALUATION-PACKET-BLUEPRINTS-CP021B-R37.json",
+        "docs/research/PARSER-CONSTRUCTION-CANONICAL-CONSOLIDATION-MATRIX-CP021B-R35.tsv",
+        "test-data/cp021b-lx1-construction-freeze-baseline.json",
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-functional-corpus.tsv",
+        "test-data/w17-glossika-corpus.tsv",
+        "tests/constructions/ClauseRelationGraph.json",
+        "tests/constructions/ClauseSpan.json",
+        "tests/constructions/DegreeStativePredicate.json",
+        "tests/constructions/FormulaDiscourseUnit.json",
+        "tests/constructions/ModifierNP.json",
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I057",
+      "ordinal": 57,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "點解呀？做嘢太忙？",
+      "sourceHash": "sha256:a75ab0a40b08b15609b382586be19d2a1bfb83377c6128ff5c799d69d52b2f98",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "COR-W17-015",
+        "sourceInventory": "w17-functional-corpus",
+        "path": "test-data/w17-functional-corpus.tsv",
+        "legacySourcePath": "test-data/w17-glossika-corpus.tsv",
+        "semanticPath": "test-data/w17-corpus-semantic-disposition.tsv",
+        "lifecyclePath": "test-data/review-only-readiness.tsv",
+        "status": "PASS",
+        "lifecycleStatus": "REVIEW_ONLY",
+        "utteranceType": "wh_question_plus_elliptical_question",
+        "notes": ""
+      },
+      "semanticReview": {
+        "verdict": "FAIL",
+        "primaryIssue": "fragment_question_unwrapped",
+        "roleReview": "點解=why, 呀=particle; 做=doing, 嘢=what, 太=how, 忙=like.",
+        "structureReview": "Second topic-comment question is plausible, but the first FragmentQuestion is detached.",
+        "nextAction": "Wrap the first question broadly and preserve two independent question roots.",
+        "lifecycleStatus": "REVIEW_ONLY"
+      },
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-functional-corpus.tsv",
+        "test-data/w17-glossika-corpus.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I058",
+      "ordinal": 58,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "係呀，日日OT到好夜。",
+      "sourceHash": "sha256:9ab02c01c66ec12d4e5b208ff4ab3df5ea950e082c26492118b0f112604134ad",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "COR-W17-016",
+        "sourceInventory": "w17-functional-corpus",
+        "path": "test-data/w17-functional-corpus.tsv",
+        "legacySourcePath": "test-data/w17-glossika-corpus.tsv",
+        "semanticPath": "test-data/w17-corpus-semantic-disposition.tsv",
+        "lifecyclePath": "test-data/review-only-readiness.tsv",
+        "status": "PASS",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "utteranceType": "response_plus_code_switched_clause",
+        "notes": "Natural Hong Kong English-Cantonese code-switching"
+      },
+      "semanticReview": {
+        "verdict": "PASS",
+        "primaryIssue": "none",
+        "roleReview": "係=func, 呀=particle, 日日=when, OT=doing, 到=func/result, 好=how, 夜=like are justified in context.",
+        "structureReview": "ClauseLinkingSequence plus the temporal/result-degree predicate structure covers the complete code-switched utterance; 日日 remains transparent reduplicated time material.",
+        "nextAction": "Retain as accepted W17 review row; fallback trace is nonblocking but remains visible in diagnostics.",
+        "lifecycleStatus": "PROMOTED_ACCEPTED"
+      },
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "docs/research/EVALUATION-PACKET-BLUEPRINTS-CP021B-R37.json",
+        "docs/research/PARSER-CONSTRUCTION-CANONICAL-CONSOLIDATION-MATRIX-CP021B-R35.tsv",
+        "test-data/cp021b-lx1-construction-freeze-baseline.json",
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-functional-corpus.tsv",
+        "test-data/w17-glossika-corpus.tsv",
+        "tests/constructions/ClauseRelationGraph.json",
+        "tests/constructions/DegreeStativePredicate.json",
+        "tests/constructions/FormulaDiscourseUnit.json",
+        "tests/constructions/TemporalClause.json",
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I059",
+      "ordinal": 59,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "你要注意身體，唞多啲呀。",
+      "sourceHash": "sha256:6e10fc9078d73d6e3bd945836c74b59a39ec33ce92556b584e8394861d007a73",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "COR-W17-017",
+        "sourceInventory": "w17-functional-corpus",
+        "path": "test-data/w17-functional-corpus.tsv",
+        "legacySourcePath": "test-data/w17-glossika-corpus.tsv",
+        "semanticPath": "test-data/w17-corpus-semantic-disposition.tsv",
+        "lifecyclePath": "test-data/review-only-readiness.tsv",
+        "status": "PASS",
+        "lifecycleStatus": "REVIEW_ONLY",
+        "utteranceType": "modal_clause_sequence",
+        "notes": ""
+      },
+      "semanticReview": {
+        "verdict": "FAIL",
+        "primaryIssue": "second_clause_unwrapped",
+        "roleReview": "要=func; 注意 and 唞 should be doing; 身體 what; 多啲 how; 呀 particle.",
+        "structureReview": "First modal clause is incomplete internally and the second advice clause is detached.",
+        "nextAction": "Add 注意/身體/唞 and test broad clause linkage plus degree/complement structure.",
+        "lifecycleStatus": "REVIEW_ONLY"
+      },
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-functional-corpus.tsv",
+        "test-data/w17-glossika-corpus.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": [
+        {
+          "type": "translation_difference",
+          "sourceValue": "Take care of yourself, get more rest.",
+          "projectValue": "Take care of yourself and get more rest.",
+          "status": "mechanical_review"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I060",
+      "ordinal": 60,
+      "itemType": "grammar_phrase",
+      "sourceDisplay": "喺屋企",
+      "sourceHash": "sha256:c8014757f759c9da9a940b94739432897e9fc87eeaf887b08c5fda094ba0ec35",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "GRAM-W17-001",
+        "sourceInventory": "w17-grammar-phrases",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PASS",
+        "lifecycleStatus": "WAITING_OWNER_OR_DEPENDENCY",
+        "promotionTarget": "accepted_construction_regression_example",
+        "notes": "Target 喺; current top constructions NeedsContext."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/parser/detectors/locatives/coverb-place.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "data/natural-corpus/wechat-father-daughter-001.txt",
+        "docs/research/COVERB-MANNER-EVENT-MODIFICATION-SOURCE-MAP-CP021B-R23.md",
+        "docs/research/CP023-P1-PROG01-CLAIM-SOURCE-EDGES.tsv",
+        "docs/research/CP023-P1-PROG01-NATURAL-ATTESTATION-ADJUDICATION.md",
+        "docs/research/CP023-P1-PROG01-REMEDIATION-DEPENDENCIES-R2.tsv",
+        "docs/research/CP061-P1-HIGH-FANOUT-BOUNDARY-CLOSURE-R1.md",
+        "docs/research/EVALUATION-PACKET-BLUEPRINTS-CP021B-R37.json",
+        "docs/research/PARSER-CONSTRUCTION-CANONICAL-CONSOLIDATION-MATRIX-CP021B-R35.tsv",
+        "docs/research/PARSER-CONSTRUCTION-INTERNAL-DISPOSITION-MATRIX-CP021B-R34.tsv",
+        "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv",
+        "docs/research/PRQ2-013-JYU5KEI4-BAT1JYU4-ORDERED-PREFERENCE-COLLISION-AUDIT-R1.tsv",
+        "docs/research/PRQ2-035-NING4JYUN6-DOU1-COMMITTED-PREFERENCE-COLLISION-AUDIT-R1.tsv",
+        "docs/research/WECHAT-GX-TRAVEL-002-ADJUDICATION-REPORT.md",
+        "test-data/a1-context-status-fixture.tsv",
+        "test-data/cp021b-lx1-construction-freeze-baseline.json",
+        "test-data/CP023-P1-PROG01-visible-research-packet.tsv",
+        "test-data/native-speaker-naturalness-evidence-v1.json",
+        "test-data/native-speaker-naturalness-evidence-v1.tsv",
+        "test-data/natural-corpus-wechat-father-daughter-001-turns.json",
+        "test-data/natural-corpus-wechat-father-daughter-001-turns.tsv",
+        "test-data/natural-corpus-wechat-father-daughter-001-units.json",
+        "test-data/natural-corpus-wechat-father-daughter-001-units.tsv",
+        "test-data/natural-corpus-wechat-guangxi-travel-002-raw.txt",
+        "test-data/natural-corpus-wechat-guangxi-travel-002-turns.json",
+        "test-data/natural-corpus-wechat-guangxi-travel-002-turns.tsv",
+        "test-data/natural-corpus-wechat-guangxi-travel-002-units.json",
+        "test-data/natural-corpus-wechat-guangxi-travel-002-units.tsv",
+        "test-data/pre-intermediate-gold-corpus.tsv",
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-grammar-phrases.tsv",
+        "test-data/WECHAT-GX-TRAVEL-002-ADJUDICATION-MATRIX.json",
+        "test-data/WECHAT-GX-TRAVEL-002-ADJUDICATION-MATRIX.tsv",
+        "test-data/WECHAT-GX-TRAVEL-002-LEXICON-PATCH-BLUEPRINT-R2.json",
+        "test-data/WECHAT-GX-TRAVEL-002-LEXICON-PATCH-BLUEPRINT-R2.tsv",
+        "test-data/WECHAT-GX-TRAVEL-002-LEXICON-PATCH-TEST-MATRIX-R2.tsv",
+        "test-data/WECHAT-GX-TRAVEL-002-QUEUE-G-grammar_research_external_evidence.tsv",
+        "test-data/WECHAT-GX-TRAVEL-002-QUEUE-L-lexicon_jyutping_enrichment.tsv",
+        "test-data/WECHAT-GX-TRAVEL-002-QUEUE-R-accepted_behavior_regression.tsv",
+        "test-data/WECHAT-GX-TRAVEL-002-REGRESSION-REMEDIATION-READINESS-R2.json",
+        "test-data/WECHAT-GX-TRAVEL-002-REGRESSION-REMEDIATION-READINESS-R2.tsv",
+        "tests/constructions/ClauseRelationEdge.json",
+        "tests/constructions/ClauseRelationGraph.json",
+        "tests/constructions/ClauseRelationMemberSpan.json",
+        "tests/constructions/ClauseSpan.json",
+        "tests/constructions/CognitionContentFrame.json",
+        "tests/constructions/CoverbFrame.json",
+        "tests/constructions/DirectionalMotionVP.json",
+        "tests/constructions/ExistentialClause.json",
+        "tests/constructions/LocativeExistentialClause.json",
+        "tests/constructions/LocativePlacePhrase.json",
+        "tests/constructions/MalformedCandidate.json",
+        "tests/constructions/MotionGoalVP.json",
+        "tests/constructions/NeedsContext.json",
+        "tests/constructions/PathPhrase.json",
+        "tests/constructions/ProductiveVO.json",
+        "tests/constructions/RelativeClauseNP.json",
+        "tests/constructions/SourceMotionClause.json",
+        "tests/fixtures/boundary-closure-v1.json",
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I061",
+      "ordinal": 61,
+      "itemType": "grammar_phrase",
+      "sourceDisplay": "去香港",
+      "sourceHash": "sha256:9d541f55a9e3cd5b103816ed2bef9dde142fe4430a83fb1c35cf17e864a972ab",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "GRAM-W17-002",
+        "sourceInventory": "w17-grammar-phrases",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_construction_regression_example",
+        "notes": "Target 去; current top constructions MotionGoalVP. Promoted to accepted_construction_regression_example after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "data/construction-adjudication-batches/batch-14.json",
+        "data/construction-identities.json",
+        "docs/research/CONSTRUCTION-ADJUDICATION-BATCH-14.md",
+        "docs/research/EVALUATION-PACKET-BLUEPRINTS-CP021B-R37.json",
+        "docs/research/PARSER-CONSTRUCTION-CANONICAL-CONSOLIDATION-MATRIX-CP021B-R35.tsv",
+        "test-data/cp021b-lx1-construction-freeze-baseline.json",
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-grammar-phrases.tsv",
+        "tests/constructions/ClauseSpan.json",
+        "tests/constructions/DirectionalMotionVP.json",
+        "tests/constructions/MotionGoalVP.json",
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I062",
+      "ordinal": 62,
+      "itemType": "grammar_phrase",
+      "sourceDisplay": "由九龍去港島",
+      "sourceHash": "sha256:c79b10f590062d6e5d7ceeeced9622d33cdd7f2b98faf8fecccc88ed1dfa712c",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "GRAM-W17-003",
+        "sourceInventory": "w17-grammar-phrases",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PASS",
+        "lifecycleStatus": "WAITING_OWNER_OR_DEPENDENCY",
+        "promotionTarget": "accepted_construction_regression_example",
+        "notes": "Target 由; current top constructions DirectionalMotionVP."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-grammar-phrases.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I063",
+      "ordinal": 63,
+      "itemType": "grammar_phrase",
+      "sourceDisplay": "同朋友",
+      "sourceHash": "sha256:a6a0368c7d676d5f5949ac18690e6aaf0926df40aa19987ab5f58a6e23ff7bd9",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "GRAM-W17-004",
+        "sourceInventory": "w17-grammar-phrases",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PASS",
+        "lifecycleStatus": "WAITING_OWNER_OR_DEPENDENCY",
+        "promotionTarget": "accepted_construction_regression_example",
+        "notes": "Target 同; current top constructions none."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/pre-intermediate-gold-corpus.tsv",
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-functional-corpus.tsv",
+        "test-data/w17-glossika-corpus.tsv",
+        "test-data/w17-grammar-phrases.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I064",
+      "ordinal": 64,
+      "itemType": "grammar_phrase",
+      "sourceDisplay": "畀你",
+      "sourceHash": "sha256:554d3da83adc3bdb0d8b8d076c2665a6769d7c3b663e774a5854007f5df6f8ba",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "GRAM-W17-005",
+        "sourceInventory": "w17-grammar-phrases",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PASS",
+        "lifecycleStatus": "WAITING_OWNER_OR_DEPENDENCY",
+        "promotionTarget": "accepted_construction_regression_example",
+        "notes": "Target 畀 remains lexical; the short phrase is no longer an accepted context-free construction example and must not fabricate a theme or recipient relation."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "data/natural-corpus/wechat-father-daughter-001.txt",
+        "docs/research/CP021B-NATIVE-NATURALNESS-INGESTION.md",
+        "docs/research/CP038-P1-SPEECH-TRANSFER-COMPLEMENT-WRAPPER-AUDIT-R1.md",
+        "docs/research/EVALUATION-PACKET-BLUEPRINTS-CP021B-R37.json",
+        "docs/research/PARSER-CONSTRUCTION-CANONICAL-CONSOLIDATION-MATRIX-CP021B-R35.tsv",
+        "docs/research/UC-RQ-002-INVERTED-DOUBLE-OBJECT-RESEARCH-R1.md",
+        "docs/research/WECHAT-GX-TRAVEL-002-ADJUDICATION-REPORT.md",
+        "docs/research/WECHAT-GX-TRAVEL-002-REGRESSION-REMEDIATION-READINESS-R2.md",
+        "test-data/cp021b-lx1-construction-freeze-baseline.json",
+        "test-data/natural-corpus-wechat-father-daughter-001-turns.json",
+        "test-data/natural-corpus-wechat-father-daughter-001-turns.tsv",
+        "test-data/natural-corpus-wechat-father-daughter-001-units.json",
+        "test-data/natural-corpus-wechat-father-daughter-001-units.tsv",
+        "test-data/natural-corpus-wechat-guangxi-travel-002-turns.json",
+        "test-data/natural-corpus-wechat-guangxi-travel-002-turns.tsv",
+        "test-data/natural-corpus-wechat-guangxi-travel-002-units.json",
+        "test-data/natural-corpus-wechat-guangxi-travel-002-units.tsv",
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-grammar-phrases.tsv",
+        "test-data/WECHAT-GX-TRAVEL-002-ADJUDICATION-MATRIX.json",
+        "test-data/WECHAT-GX-TRAVEL-002-ADJUDICATION-MATRIX.tsv",
+        "test-data/WECHAT-GX-TRAVEL-002-QUEUE-G-grammar_research_external_evidence.tsv",
+        "test-data/WECHAT-GX-TRAVEL-002-QUEUE-R-accepted_behavior_regression.tsv",
+        "test-data/WECHAT-GX-TRAVEL-002-REGRESSION-REMEDIATION-READINESS-R2.json",
+        "test-data/WECHAT-GX-TRAVEL-002-REGRESSION-REMEDIATION-READINESS-R2.tsv",
+        "tests/constructions/DirectionalMotionVP.json",
+        "tests/constructions/ModifiedNP.json",
+        "tests/constructions/TransitiveVP.json",
+        "tests/constructions/VerbComplementVP.json",
+        "tests/fixtures/regression-snapshots.json",
+        "tests/run-regression.js",
+        "tests/tooling/corpus-review/test_aa76_hkcancor_profile.py"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I065",
+      "ordinal": 65,
+      "itemType": "grammar_phrase",
+      "sourceDisplay": "用筷子",
+      "sourceHash": "sha256:6de11b615aadaf48436287ca6373b8a9e6b2d807fe1dfdd2f89290b4d8ef09b2",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "GRAM-W17-006",
+        "sourceInventory": "w17-grammar-phrases",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PASS",
+        "lifecycleStatus": "WAITING_OWNER_OR_DEPENDENCY",
+        "promotionTarget": "accepted_construction_regression_example",
+        "notes": "Target 用; current top constructions TransitiveVP."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-grammar-phrases.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I066",
+      "ordinal": 66,
+      "itemType": "grammar_phrase",
+      "sourceDisplay": "對佢好",
+      "sourceHash": "sha256:5d9402eac621421871c2abf294f9ecbfdbc02c182ce6b523a1cff114be50132a",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "GRAM-W17-007",
+        "sourceInventory": "w17-grammar-phrases",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PASS",
+        "lifecycleStatus": "WAITING_OWNER_OR_DEPENDENCY",
+        "promotionTarget": "accepted_construction_regression_example",
+        "notes": "Target 對; current top constructions none."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-grammar-phrases.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I067",
+      "ordinal": 67,
+      "itemType": "grammar_phrase",
+      "sourceDisplay": "除咗佢",
+      "sourceHash": "sha256:691a3fe12fd11d867381a2f8f7d46a1c9d33c329a36bc0c20f711090de133f5e",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "GRAM-W17-008",
+        "sourceInventory": "w17-grammar-phrases",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PASS",
+        "lifecycleStatus": "WAITING_OWNER_OR_DEPENDENCY",
+        "promotionTarget": "accepted_construction_regression_example",
+        "notes": "Target 除咗; current top constructions none."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-grammar-phrases.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I068",
+      "ordinal": 68,
+      "itemType": "sentence",
+      "sourceDisplay": "我喺香港住。",
+      "sourceHash": "sha256:fe8c171c486d73569cb6550a3c9324beee4403d130b6e61b84bd9192c7c460b0",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "COR-W17-018",
+        "sourceInventory": "w17-functional-corpus",
+        "path": "test-data/w17-functional-corpus.tsv",
+        "legacySourcePath": "test-data/w17-glossika-corpus.tsv",
+        "semanticPath": "test-data/w17-corpus-semantic-disposition.tsv",
+        "lifecyclePath": "test-data/review-only-readiness.tsv",
+        "status": "PASS",
+        "lifecycleStatus": "REVIEW_ONLY",
+        "utteranceType": "locative_clause",
+        "notes": ""
+      },
+      "semanticReview": {
+        "verdict": "FAIL",
+        "primaryIssue": "coverb_clause_incomplete",
+        "roleReview": "我=who, 喺=func, 香港=where, 住=doing.",
+        "structureReview": "Only 喺香港 is wrapped; subject and main predicate are detached.",
+        "nextAction": "Add 住 and confirm SubjectPredicateClause with preverbal CoverbFrame.",
+        "lifecycleStatus": "REVIEW_ONLY"
+      },
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "docs/research/LEGITIMACY-WORK-LEDGER.md",
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-functional-corpus.tsv",
+        "test-data/w17-glossika-corpus.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I069",
+      "ordinal": 69,
+      "itemType": "sentence",
+      "sourceDisplay": "佢同朋友去買嘢。",
+      "sourceHash": "sha256:c2e90f752a0fb06277a11552d231e8c82c065803a0956f12d8f0aef2fc3554b3",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "COR-W17-019",
+        "sourceInventory": "w17-functional-corpus",
+        "path": "test-data/w17-functional-corpus.tsv",
+        "legacySourcePath": "test-data/w17-glossika-corpus.tsv",
+        "semanticPath": "test-data/w17-corpus-semantic-disposition.tsv",
+        "lifecyclePath": "test-data/review-only-readiness.tsv",
+        "status": "PASS",
+        "lifecycleStatus": "REVIEW_ONLY",
+        "utteranceType": "comitative_motion_purpose_clause",
+        "notes": ""
+      },
+      "semanticReview": {
+        "verdict": "FAIL",
+        "primaryIssue": "comitative_subject_frame_unwrapped",
+        "roleReview": "佢/朋友=who, 同=func, 去/買=doing, 嘢=what.",
+        "structureReview": "MotionPurposeChain is correct internally, but subject and comitative frame are detached.",
+        "nextAction": "Extend broad comitative + motion-purpose clause structure without changing 同's lexical role.",
+        "lifecycleStatus": "REVIEW_ONLY"
+      },
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-functional-corpus.tsv",
+        "test-data/w17-glossika-corpus.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": [
+        {
+          "type": "translation_difference",
+          "sourceValue": "He/She goes shopping with friends.",
+          "projectValue": "He or she goes shopping with friends.",
+          "status": "mechanical_review"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I070",
+      "ordinal": 70,
+      "itemType": "phonics_pair",
+      "sourceDisplay": "書 / 蘇",
+      "sourceHash": "sha256:cdba188b9534b559eecc651fa9e046fdc2e33a7bdb44dcd8dff4326eb9329abb",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "PHO-W17-001",
+        "sourceInventory": "w17-phonics-pairs",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_pronunciation_reference",
+        "notes": "Retained as supplied Promoted to accepted_pronunciation_reference after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I071",
+      "ordinal": 71,
+      "itemType": "phonics_pair",
+      "sourceDisplay": "煮 / 祖",
+      "sourceHash": "sha256:475f2d59057630135e81a5f11920c47b152e21517fcec0dbf9ccb46a7ab51bfe",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "PHO-W17-002",
+        "sourceInventory": "w17-phonics-pairs",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_pronunciation_reference",
+        "notes": "Retained as supplied Promoted to accepted_pronunciation_reference after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I072",
+      "ordinal": 72,
+      "itemType": "phonics_pair",
+      "sourceDisplay": "全 / 存",
+      "sourceHash": "sha256:cfbcabb0f70ba22c1fed0da25b7207c1302d0d3ceb93ee27cb4cba3bd742ae6f",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "PHO-W17-003",
+        "sourceInventory": "w17-phonics-pairs",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_pronunciation_reference",
+        "notes": "Both verified with identical Jyutping Promoted to accepted_pronunciation_reference after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I073",
+      "ordinal": 73,
+      "itemType": "phonics_pair",
+      "sourceDisplay": "如 / 油",
+      "sourceHash": "sha256:02b00b6883f9f693d09b7593caa3a94bb334e2db6e520ff860de6ef89c351820",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "PHO-W17-004",
+        "sourceInventory": "w17-phonics-pairs",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_pronunciation_reference",
+        "notes": "Included as requested Promoted to accepted_pronunciation_reference after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I074",
+      "ordinal": 74,
+      "itemType": "phonics_pair",
+      "sourceDisplay": "血 / 闊",
+      "sourceHash": "sha256:7192602ba7394594fa02e602c52b6925f36ee27935169f0c5310fb237c4c598c",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "PHO-W17-005",
+        "sourceInventory": "w17-phonics-pairs",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_pronunciation_reference",
+        "notes": "闊 corrected to fut3 Promoted to accepted_pronunciation_reference after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": [
+        {
+          "type": "pronunciation_discrepancy",
+          "sourceValue": "闊 kut3",
+          "reviewedValue": "闊 fut3",
+          "status": "project_reviewed",
+          "note": "闊 corrected to fut3 Promoted to accepted_pronunciation_reference after target-specific audit on 2026-07-14."
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W17-20260712-I075",
+      "ordinal": 75,
+      "itemType": "phonics_pair",
+      "sourceDisplay": "聯 / 論",
+      "sourceHash": "sha256:84ec86bfb4eb9d7d5fd82d2f9418c54c29feaadd12b6181477f459f631ce869b",
+      "relation": "exact_duplicate",
+      "sourceInternalDuplicateOf": null,
+      "projectRecord": {
+        "id": "PHO-W17-006",
+        "sourceInventory": "w17-phonics-pairs",
+        "path": "test-data/review-only-readiness.tsv",
+        "status": "PROMOTED_ACCEPTED",
+        "lifecycleStatus": "PROMOTED_ACCEPTED",
+        "promotionTarget": "accepted_pronunciation_reference",
+        "notes": "Accepted as supplied Promoted to accepted_pronunciation_reference after target-specific audit on 2026-07-14."
+      },
+      "semanticReview": null,
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/review-only-readiness.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "discrepancies": []
+    }
+  ],
+  "projectOnlyItems": [
+    {
+      "projectItemId": "ALT-W17-001",
+      "sourceInventory": "w17-naturalized-alternatives",
+      "surface": "我最近壓力好大。",
+      "relation": "project_only_item",
+      "sourcePresence": "missing_source_item",
+      "status": "REVIEW_ONLY",
+      "currentAuditState": "WAITING_EXTERNAL_EVIDENCE",
+      "ownerTaskId": "COR-W17-009",
+      "sourceTaskId": "COR-W17-009",
+      "externalBlocker": "native_speaker_naturalness",
+      "notes": "Alternative for COR-W17-009; current top constructions SubjectPredicateClause.",
+      "path": "test-data/review-only-readiness.tsv"
+    },
+    {
+      "projectItemId": "ALT-W17-002",
+      "sourceInventory": "w17-naturalized-alternatives",
+      "surface": "我最近有好大壓力。",
+      "relation": "project_only_item",
+      "sourcePresence": "missing_source_item",
+      "status": "REVIEW_ONLY",
+      "currentAuditState": "WAITING_EXTERNAL_EVIDENCE",
+      "ownerTaskId": "COR-W17-009",
+      "sourceTaskId": "COR-W17-009",
+      "externalBlocker": "native_speaker_naturalness",
+      "notes": "Alternative for COR-W17-009; current top constructions ModifierNP.",
+      "path": "test-data/review-only-readiness.tsv"
+    },
+    {
+      "projectItemId": "ALT-W17-003",
+      "sourceInventory": "w17-naturalized-alternatives",
+      "surface": "你好似唔開心噃。",
+      "relation": "project_only_item",
+      "sourcePresence": "missing_source_item",
+      "status": "REVIEW_ONLY",
+      "currentAuditState": "WAITING_EXTERNAL_EVIDENCE",
+      "ownerTaskId": "COR-W17-013",
+      "sourceTaskId": "COR-W17-013",
+      "externalBlocker": "native_speaker_naturalness",
+      "notes": "Alternative for COR-W17-013; current top constructions FormulaDiscourseUnit, NegatedStativePredicate.",
+      "path": "test-data/review-only-readiness.tsv"
+    },
+    {
+      "projectItemId": "ALT-W17-004",
+      "sourceInventory": "w17-naturalized-alternatives",
+      "surface": "係呀，我最近壓力好大。",
+      "relation": "project_only_item",
+      "sourcePresence": "missing_source_item",
+      "status": "REVIEW_ONLY",
+      "currentAuditState": "WAITING_EXTERNAL_EVIDENCE",
+      "ownerTaskId": "COR-W17-014",
+      "sourceTaskId": "COR-W17-014",
+      "externalBlocker": "native_speaker_naturalness",
+      "notes": "Alternative for COR-W17-014; current top constructions ClauseLinkingSequence.",
+      "path": "test-data/review-only-readiness.tsv"
+    },
+    {
+      "projectItemId": "ALT-W17-005",
+      "sourceInventory": "w17-naturalized-alternatives",
+      "surface": "係呀，日日加班到好夜。",
+      "relation": "project_only_item",
+      "sourcePresence": "missing_source_item",
+      "status": "REVIEW_ONLY",
+      "currentAuditState": "WAITING_EXTERNAL_EVIDENCE",
+      "ownerTaskId": "COR-W17-016",
+      "sourceTaskId": "COR-W17-016",
+      "externalBlocker": "native_speaker_naturalness",
+      "notes": "Alternative for COR-W17-016; current top constructions ClauseLinkingSequence.",
+      "path": "test-data/review-only-readiness.tsv"
+    }
+  ]
+}
