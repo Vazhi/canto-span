@@ -1,6 +1,6 @@
 {
   "schema": "canto-span-week17-explicit-paths-v1",
-  "base": "c2e93a2d73f67a5de30cf50de44fbed28b951c57",
+  "base": "aa270f98a651e3b18fe619ccecc1117ba69d991c",
   "authority": {
     "canonical": [
       "src/**",
@@ -18,7 +18,7 @@
       "config/**"
     ]
   },
-  "pathCount": 65,
+  "pathCount": 66,
   "paths": [
     {
       "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/items.tsv",
@@ -880,6 +880,43 @@
       "filenameMatch": true,
       "identityTerms": [],
       "matchedTerms": []
+    },
+    {
+      "path": "tools/tmp/cs-work-0276-week17-seed.part00",
+      "size": 6591,
+      "filenameMatch": true,
+      "identityTerms": [
+        "w17",
+        "week17",
+        "emotions & states"
+      ],
+      "matchedTerms": [
+        "w17",
+        "week17",
+        "emotions & states",
+        "唔開心",
+        "攰",
+        "嬲",
+        "驚",
+        "擔心",
+        "悶",
+        "緊張",
+        "壓力",
+        "辛苦",
+        "感動",
+        "激動",
+        "失望",
+        "開心",
+        "鍾意",
+        "講返正題",
+        "唔好離題",
+        "關於呢個問題",
+        "返去頭先嘅話題",
+        "第一嘛",
+        "好似我噉",
+        "一方面係時間",
+        "另一方面係費用"
+      ]
     },
     {
       "path": "tools/verify-current-state.js",
