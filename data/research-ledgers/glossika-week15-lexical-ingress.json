@@ -1,0 +1,538 @@
+{
+  "schema": "canto-span-glossika-lexical-ingress-candidates-v1",
+  "packetId": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+  "sourceId": "GLOSSIKA-YUEHK-A1-W15-20260628",
+  "generatedFrom": {
+    "sourcePath": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/source.json",
+    "canonicalLexiconRoot": "src/runtime-resources/lexicon",
+    "exactOwnersScanned": [
+      "token-lexicon",
+      "productive-vo",
+      "formulas",
+      "compositional-lexical-phrases"
+    ]
+  },
+  "policy": {
+    "glossikaWeight": "pedagogical_and_lexical_attestation_only",
+    "exactCoverageRule": "An exact canonical runtime entry blocks duplicate ingress.",
+    "numeralRule": "Multiples of ten or one hundred plus 萬 remain compositional; do not add ten opaque whole-form entries.",
+    "implementationAuthorized": false
+  },
+  "counts": {
+    "lexical_ingress_candidate": 20,
+    "already_covered_exact": 10,
+    "compositional_numeral_no_opaque_entry": 9
+  },
+  "entries": [
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I009",
+      "ordinal": 9,
+      "traditional": "隔籬",
+      "sourceJyutping": "gaak3 lei4",
+      "sourceEnglish": "next to",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I010",
+      "ordinal": 10,
+      "traditional": "對面",
+      "sourceJyutping": "deoi3 min6",
+      "sourceEnglish": "opposite",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I011",
+      "ordinal": 11,
+      "traditional": "附近",
+      "sourceJyutping": "fu6 gan6",
+      "sourceEnglish": "nearby",
+      "exactRuntimeOwners": [
+        "src/runtime-resources/lexicon/token-lexicon"
+      ],
+      "rawCanonicalMentions": [
+        "src/runtime-resources/lexicon/token-lexicon/study-suite.js"
+      ],
+      "compositionalNumeral": false,
+      "disposition": "already_covered_exact",
+      "recommendation": "no_duplicate_ingress"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I012",
+      "ordinal": 12,
+      "traditional": "遠",
+      "sourceJyutping": "jyun5",
+      "sourceEnglish": "far",
+      "exactRuntimeOwners": [
+        "src/runtime-resources/lexicon/token-lexicon"
+      ],
+      "rawCanonicalMentions": [
+        "src/runtime-resources/lexicon/token-lexicon/statives.js"
+      ],
+      "compositionalNumeral": false,
+      "disposition": "already_covered_exact",
+      "recommendation": "no_duplicate_ingress"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I013",
+      "ordinal": 13,
+      "traditional": "近",
+      "sourceJyutping": "kan5",
+      "sourceEnglish": "near",
+      "exactRuntimeOwners": [
+        "src/runtime-resources/lexicon/token-lexicon"
+      ],
+      "rawCanonicalMentions": [
+        "src/runtime-resources/lexicon/token-lexicon/statives.js"
+      ],
+      "compositionalNumeral": false,
+      "disposition": "already_covered_exact",
+      "recommendation": "no_duplicate_ingress"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I014",
+      "ordinal": 14,
+      "traditional": "上面",
+      "sourceJyutping": "soeng6 min6",
+      "sourceEnglish": "above/upstairs",
+      "exactRuntimeOwners": [
+        "src/runtime-resources/lexicon/token-lexicon"
+      ],
+      "rawCanonicalMentions": [
+        "src/runtime-resources/lexicon/token-lexicon/things.js"
+      ],
+      "compositionalNumeral": false,
+      "disposition": "already_covered_exact",
+      "recommendation": "no_duplicate_ingress"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I015",
+      "ordinal": 15,
+      "traditional": "下面",
+      "sourceJyutping": "haa6 min6",
+      "sourceEnglish": "below/downstairs",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I016",
+      "ordinal": 16,
+      "traditional": "入面",
+      "sourceJyutping": "jap6 min6",
+      "sourceEnglish": "inside",
+      "exactRuntimeOwners": [
+        "src/runtime-resources/lexicon/token-lexicon"
+      ],
+      "rawCanonicalMentions": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "compositionalNumeral": false,
+      "disposition": "already_covered_exact",
+      "recommendation": "no_duplicate_ingress"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I017",
+      "ordinal": 17,
+      "traditional": "外面",
+      "sourceJyutping": "ngoi6 min6",
+      "sourceEnglish": "outside",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I018",
+      "ordinal": 18,
+      "traditional": "地鐵站",
+      "sourceJyutping": "dei6 tit3 zaam6",
+      "sourceEnglish": "MTR station",
+      "exactRuntimeOwners": [
+        "src/runtime-resources/lexicon/token-lexicon"
+      ],
+      "rawCanonicalMentions": [
+        "src/runtime-resources/lexicon/token-lexicon/study-suite.js"
+      ],
+      "compositionalNumeral": false,
+      "disposition": "already_covered_exact",
+      "recommendation": "no_duplicate_ingress"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I019",
+      "ordinal": 19,
+      "traditional": "巴士站",
+      "sourceJyutping": "baa1 si2 zaam6",
+      "sourceEnglish": "bus stop",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I020",
+      "ordinal": 20,
+      "traditional": "醫院",
+      "sourceJyutping": "ji1 jyun2",
+      "sourceEnglish": "hospital",
+      "exactRuntimeOwners": [
+        "src/runtime-resources/lexicon/token-lexicon"
+      ],
+      "rawCanonicalMentions": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "compositionalNumeral": false,
+      "disposition": "already_covered_exact",
+      "recommendation": "no_duplicate_ingress"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I021",
+      "ordinal": 21,
+      "traditional": "公園",
+      "sourceJyutping": "gung1 jyun2",
+      "sourceEnglish": "park",
+      "exactRuntimeOwners": [
+        "src/runtime-resources/lexicon/token-lexicon"
+      ],
+      "rawCanonicalMentions": [
+        "src/runtime-resources/lexicon/token-lexicon/places-and-times.js"
+      ],
+      "compositionalNumeral": false,
+      "disposition": "already_covered_exact",
+      "recommendation": "no_duplicate_ingress"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I022",
+      "ordinal": 22,
+      "traditional": "教堂",
+      "sourceJyutping": "gaau3 tong4",
+      "sourceEnglish": "church",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I023",
+      "ordinal": 23,
+      "traditional": "郵局",
+      "sourceJyutping": "jau4 guk2",
+      "sourceEnglish": "post office",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I024",
+      "ordinal": 24,
+      "traditional": "街",
+      "sourceJyutping": "gaai1",
+      "sourceEnglish": "street",
+      "exactRuntimeOwners": [
+        "src/runtime-resources/lexicon/token-lexicon"
+      ],
+      "rawCanonicalMentions": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "compositionalNumeral": false,
+      "disposition": "already_covered_exact",
+      "recommendation": "no_duplicate_ingress"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I025",
+      "ordinal": 25,
+      "traditional": "十字路口",
+      "sourceJyutping": "sap6 zi6 lou6 hau2",
+      "sourceEnglish": "intersection",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I026",
+      "ordinal": 26,
+      "traditional": "行人路",
+      "sourceJyutping": "haang4 jan4 lou6",
+      "sourceEnglish": "sidewalk",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I027",
+      "ordinal": 27,
+      "traditional": "噴泉",
+      "sourceJyutping": "pan3 cyun4",
+      "sourceEnglish": "fountain",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I028",
+      "ordinal": 28,
+      "traditional": "雕像",
+      "sourceJyutping": "diu1 zoeng6",
+      "sourceEnglish": "statue",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I029",
+      "ordinal": 29,
+      "traditional": "窄巷",
+      "sourceJyutping": "zaak3 hong6",
+      "sourceEnglish": "alley",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I030",
+      "ordinal": 30,
+      "traditional": "迴旋處",
+      "sourceJyutping": "wui4 syun4 cyu3",
+      "sourceEnglish": "roundabout",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I031",
+      "ordinal": 31,
+      "traditional": "天橋",
+      "sourceJyutping": "tin1 kiu4",
+      "sourceEnglish": "overpass",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I032",
+      "ordinal": 32,
+      "traditional": "隧道",
+      "sourceJyutping": "seoi6 dou6",
+      "sourceEnglish": "tunnel",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I033",
+      "ordinal": 33,
+      "traditional": "橋",
+      "sourceJyutping": "kiu4",
+      "sourceEnglish": "bridge",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I034",
+      "ordinal": 34,
+      "traditional": "廣場",
+      "sourceJyutping": "gwong2 coeng4",
+      "sourceEnglish": "square",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I035",
+      "ordinal": 35,
+      "traditional": "噴水池",
+      "sourceJyutping": "pan3 seoi2 ci4",
+      "sourceEnglish": "fountain",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I036",
+      "ordinal": 36,
+      "traditional": "行人天橋",
+      "sourceJyutping": "haang4 jan4 tin1 kiu4",
+      "sourceEnglish": "overpass",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I037",
+      "ordinal": 37,
+      "traditional": "戲票",
+      "sourceJyutping": "hei3 piu3",
+      "sourceEnglish": "theater ticket",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I038",
+      "ordinal": 38,
+      "traditional": "十萬",
+      "sourceJyutping": "sap6 maan6",
+      "sourceEnglish": "100 thousand",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": true,
+      "disposition": "compositional_numeral_no_opaque_entry",
+      "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I039",
+      "ordinal": 39,
+      "traditional": "二十萬",
+      "sourceJyutping": "ji6 sap6 maan6",
+      "sourceEnglish": "200 thousand",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": true,
+      "disposition": "compositional_numeral_no_opaque_entry",
+      "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I040",
+      "ordinal": 40,
+      "traditional": "三十萬",
+      "sourceJyutping": "saam1 sap6 maan6",
+      "sourceEnglish": "300 thousand",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": true,
+      "disposition": "compositional_numeral_no_opaque_entry",
+      "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I041",
+      "ordinal": 41,
+      "traditional": "四十萬",
+      "sourceJyutping": "sei3 sap6 maan6",
+      "sourceEnglish": "400 thousand",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": true,
+      "disposition": "compositional_numeral_no_opaque_entry",
+      "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I042",
+      "ordinal": 42,
+      "traditional": "五十萬",
+      "sourceJyutping": "ng5 sap6 maan6",
+      "sourceEnglish": "500 thousand",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": true,
+      "disposition": "compositional_numeral_no_opaque_entry",
+      "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I043",
+      "ordinal": 43,
+      "traditional": "六十萬",
+      "sourceJyutping": "luk6 sap6 maan6",
+      "sourceEnglish": "600 thousand",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": true,
+      "disposition": "compositional_numeral_no_opaque_entry",
+      "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I044",
+      "ordinal": 44,
+      "traditional": "七十萬",
+      "sourceJyutping": "cat1 sap6 maan6",
+      "sourceEnglish": "700 thousand",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": true,
+      "disposition": "compositional_numeral_no_opaque_entry",
+      "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I045",
+      "ordinal": 45,
+      "traditional": "八十萬",
+      "sourceJyutping": "baat3 sap6 maan6",
+      "sourceEnglish": "800 thousand",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": true,
+      "disposition": "compositional_numeral_no_opaque_entry",
+      "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I046",
+      "ordinal": 46,
+      "traditional": "九十萬",
+      "sourceJyutping": "gau2 sap6 maan6",
+      "sourceEnglish": "900 thousand",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": true,
+      "disposition": "compositional_numeral_no_opaque_entry",
+      "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W15-20260628-I047",
+      "ordinal": 47,
+      "traditional": "一百萬",
+      "sourceJyutping": "jat1 baak3 maan6",
+      "sourceEnglish": "1 million",
+      "exactRuntimeOwners": [
+        "src/runtime-resources/lexicon/token-lexicon",
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js"
+      ],
+      "rawCanonicalMentions": [
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "compositionalNumeral": true,
+      "disposition": "already_covered_exact",
+      "recommendation": "no_duplicate_ingress"
+    }
+  ]
+}
