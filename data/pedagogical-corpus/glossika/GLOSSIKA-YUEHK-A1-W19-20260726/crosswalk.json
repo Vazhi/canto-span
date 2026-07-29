@@ -1,0 +1,2077 @@
+{
+  "schema": "canto-span-pedagogical-corpus-crosswalk-v1",
+  "sourceId": "GLOSSIKA-YUEHK-A1-W19-20260726",
+  "sourcePayloadHash": "sha256:ec055012fbf34af2e99577b681c15bcd14e0a4f8e72f7f14e00c66bc8df04cdc",
+  "architecture": {
+    "canonicalRuntimeInputs": [
+      "src/**",
+      "src/runtime-resources/**"
+    ],
+    "generatedBundle": "main.js",
+    "generatedBundleExcludedFromOwnership": true
+  },
+  "summary": {
+    "recordCount": 76,
+    "classificationCounts": {
+      "compositional_numeral": 10,
+      "existing_modular_entry": 31,
+      "new_attestation": 30,
+      "source_incomplete": 5
+    },
+    "discrepancyCounts": {
+      "aspect_question_boundary": 1,
+      "classifier_semantic_class_simplification": 14,
+      "compositional_numeral": 10,
+      "dative_clause_final_ge3_particle": 1,
+      "function_word_category_simplification": 6,
+      "incomplete_tone_paradigm_cell": 5,
+      "nominal_ellipsis_and_continuation": 1,
+      "parallel_nominal_fragment": 1,
+      "particle_function_simplification": 5,
+      "pronunciation_discrepancy_candidate": 1,
+      "regional_lexical_review": 4,
+      "spatial_lexical_class_simplification": 23,
+      "tone_drill_material": 6
+    },
+    "incompleteToneCells": 5,
+    "compositionalNumeralCount": 10
+  },
+  "records": [
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I001",
+      "sourceHash": "sha256:d59bababecec24dc4b3ba0c042583c33170f24edcc883935a6aa93fce2c9dab7",
+      "sourceDisplay": "個",
+      "classification": "existing_modular_entry",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/classifier-head-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/places-and-times.js",
+        "src/runtime-resources/normalization/simplified-to-traditional.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/np/core.js",
+        "src/parser/detectors/np/token-splits.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I002",
+      "sourceHash": "sha256:86c6636976f3622b1fcd237428896ba73aebf55b3f11d262f8f8af619bc31620",
+      "sourceDisplay": "隻",
+      "classification": "existing_modular_entry",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/classifier-head-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+        "src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/np/core.js",
+        "src/parser/detectors/np/token-splits.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I003",
+      "sourceHash": "sha256:662fa54029389f67f9b0cd4724144481a0875e0c7999ad3e83943637e61b4eea",
+      "sourceDisplay": "架",
+      "classification": "existing_modular_entry",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/classifier-head-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/np/core.js",
+        "src/parser/detectors/np/token-splits.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "pronunciation_discrepancy_candidate",
+          "status": "requires_independent_verification",
+          "sourceValue": "gaa2",
+          "note": "The intake explicitly flags this reading; preserve it without runtime import or silent correction."
+        },
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I004",
+      "sourceHash": "sha256:c544497aa3ac399627a5d1c8213dbf985cdef9edbbecbe6740cec7df40a8cf43",
+      "sourceDisplay": "間",
+      "classification": "existing_modular_entry",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/classifier-head-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+        "src/runtime-resources/normalization/simplified-to-traditional.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/np/core.js",
+        "src/parser/detectors/np/token-splits.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I005",
+      "sourceHash": "sha256:c25db6bd4152ec55d6a42d31f475e51d5e36fd1dab2db9f61a86669e47e6d983",
+      "sourceDisplay": "本",
+      "classification": "existing_modular_entry",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/classifier-head-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/np/core.js",
+        "src/parser/detectors/np/token-splits.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I006",
+      "sourceHash": "sha256:0f2987e4dc32eef51ff896d5f98db8411db42a86d4509334518697e46a55730e",
+      "sourceDisplay": "枝",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/np/core.js",
+        "src/parser/detectors/np/token-splits.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I007",
+      "sourceHash": "sha256:413e4cf34cb1d19d604798ab3fd0834a003c1652e65f6e6c11876bac5c9ceac0",
+      "sourceDisplay": "碗",
+      "classification": "existing_modular_entry",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/classifier-head-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/study-suite.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/np/core.js",
+        "src/parser/detectors/np/token-splits.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I008",
+      "sourceHash": "sha256:607d9e0e812cefa627fe3afa672b9506d0beec0941667e7e6f9247493eda6def",
+      "sourceDisplay": "杯",
+      "classification": "existing_modular_entry",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/classifier-head-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/np/core.js",
+        "src/parser/detectors/np/token-splits.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I009",
+      "sourceHash": "sha256:365c5dfc06d165f72f4aac50113dabf83e58ecad2cd7380a850ecb0daefdfb0e",
+      "sourceDisplay": "對",
+      "classification": "existing_modular_entry",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+        "src/runtime-resources/normalization/simplified-to-traditional.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/np/core.js",
+        "src/parser/detectors/np/token-splits.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I010",
+      "sourceHash": "sha256:0d4925a23c3536c81613459b630e5edfe7f3e14a6ed69c4df547a9507df7ca72",
+      "sourceDisplay": "張",
+      "classification": "existing_modular_entry",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/classifier-head-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/np/core.js",
+        "src/parser/detectors/np/token-splits.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I011",
+      "sourceHash": "sha256:4114573e8eb067d501ea7abb06ca3aa957515c1d633656fc4593377677e02709",
+      "sourceDisplay": "件",
+      "classification": "existing_modular_entry",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/classifier-head-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/np/core.js",
+        "src/parser/detectors/np/token-splits.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I012",
+      "sourceHash": "sha256:9c4ddbc6e5f981988752a45e612eded90637a4a51990afe96922218b67c194e7",
+      "sourceDisplay": "部",
+      "classification": "existing_modular_entry",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/classifier-head-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/np/core.js",
+        "src/parser/detectors/np/token-splits.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I013",
+      "sourceHash": "sha256:1090d47172fe974d604ae3f90238e04f5c97bd006af0d38d2f6ffb034c7a873d",
+      "sourceDisplay": "把",
+      "classification": "existing_modular_entry",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/study-suite.js",
+        "src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/np/core.js",
+        "src/parser/detectors/np/token-splits.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I014",
+      "sourceHash": "sha256:4a8bf19a7b6174f1b4edaa98b172b3f5a609c0d65faa75b0ef240fedd2f234e2",
+      "sourceDisplay": "條",
+      "classification": "existing_modular_entry",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/np/core.js",
+        "src/parser/detectors/np/token-splits.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I015",
+      "sourceHash": "sha256:a6b15a7994e64e2436fedd419bf6921c7184d42569fb8542b16e6779250bca3f",
+      "sourceDisplay": "嘅",
+      "classification": "existing_modular_entry",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/degree-and-formulas.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/aspect/composition.js",
+        "src/parser/detectors/aspect/postverbal-zo.js",
+        "src/parser/detectors/aspect/potential-result.js",
+        "src/parser/detectors/complements/result.js",
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js",
+        "src/parser/detectors/relative-clauses/clauses.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "function_word_category_simplification",
+          "status": "route_to_issue_129",
+          "note": "The grouped forms have distinct attributive, locative, aspectual, lexical, directional, result, and extent profiles."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I016",
+      "sourceHash": "sha256:94e494ecbb16a770a017fb1766e7fe369a7d9ad060b54eb10cd9fe6bacd43bef",
+      "sourceDisplay": "喺",
+      "classification": "existing_modular_entry",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/templates/slot-generation-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/aspect/composition.js",
+        "src/parser/detectors/aspect/postverbal-zo.js",
+        "src/parser/detectors/aspect/potential-result.js",
+        "src/parser/detectors/complements/result.js",
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js",
+        "src/parser/detectors/relative-clauses/clauses.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "function_word_category_simplification",
+          "status": "route_to_issue_129",
+          "note": "The grouped forms have distinct attributive, locative, aspectual, lexical, directional, result, and extent profiles."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I017",
+      "sourceHash": "sha256:d47bd9ed41fbed5bff3abf270cee1ce77a631e203ba1a35ed441c567d7593f5c",
+      "sourceDisplay": "咗",
+      "classification": "existing_modular_entry",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/templates/category-span-templates.js",
+        "src/runtime-resources/grammar/templates/slot-generation-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js",
+        "src/runtime-resources/pronunciation/jyutping-review-expectations.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/aspect/composition.js",
+        "src/parser/detectors/aspect/postverbal-zo.js",
+        "src/parser/detectors/aspect/potential-result.js",
+        "src/parser/detectors/complements/result.js",
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js",
+        "src/parser/detectors/relative-clauses/clauses.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "function_word_category_simplification",
+          "status": "route_to_issue_129",
+          "note": "The grouped forms have distinct attributive, locative, aspectual, lexical, directional, result, and extent profiles."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I018",
+      "sourceHash": "sha256:054b47e2112f7d0650b4b6c8d9334a99deb0f87ab8ffe811d2cb1f46df261645",
+      "sourceDisplay": "緊",
+      "classification": "existing_modular_entry",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/templates/slot-generation-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js",
+        "src/runtime-resources/normalization/simplified-to-traditional.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/aspect/composition.js",
+        "src/parser/detectors/aspect/postverbal-zo.js",
+        "src/parser/detectors/aspect/potential-result.js",
+        "src/parser/detectors/complements/result.js",
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js",
+        "src/parser/detectors/relative-clauses/clauses.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "function_word_category_simplification",
+          "status": "route_to_issue_129",
+          "note": "The grouped forms have distinct attributive, locative, aspectual, lexical, directional, result, and extent profiles."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I019",
+      "sourceHash": "sha256:dfaa4e5f9109512dcbf809fd677e1a2e6a50fbb4c0ce4ea200d17efc7b65f300",
+      "sourceDisplay": "過",
+      "classification": "existing_modular_entry",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/templates/slot-generation-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js",
+        "src/runtime-resources/normalization/simplified-to-traditional.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/aspect/composition.js",
+        "src/parser/detectors/aspect/postverbal-zo.js",
+        "src/parser/detectors/aspect/potential-result.js",
+        "src/parser/detectors/complements/result.js",
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js",
+        "src/parser/detectors/relative-clauses/clauses.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "function_word_category_simplification",
+          "status": "route_to_issue_129",
+          "note": "The grouped forms have distinct attributive, locative, aspectual, lexical, directional, result, and extent profiles."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I020",
+      "sourceHash": "sha256:b231410843dc3eb98f21855fd09c544b74414175e6f817a472413bf9d3b2b6cb",
+      "sourceDisplay": "到",
+      "classification": "existing_modular_entry",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/templates/slot-generation-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/aspect/composition.js",
+        "src/parser/detectors/aspect/postverbal-zo.js",
+        "src/parser/detectors/aspect/potential-result.js",
+        "src/parser/detectors/complements/result.js",
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js",
+        "src/parser/detectors/relative-clauses/clauses.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "function_word_category_simplification",
+          "status": "route_to_issue_129",
+          "note": "The grouped forms have distinct attributive, locative, aspectual, lexical, directional, result, and extent profiles."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I021",
+      "sourceHash": "sha256:8b0ce6f6f3524c1247ea89dd64597ebd0c665b2e92b20d2bb963e75c021b8767",
+      "sourceDisplay": "啦",
+      "classification": "existing_modular_entry",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/ordered-particle-clusters.js",
+        "src/runtime-resources/lexicon/token-lexicon/degree-and-formulas.js",
+        "src/runtime-resources/pronunciation/jyutping-review-expectations.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/discourse/priority.js",
+        "src/parser/detectors/discourse/protected-formulas.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/terminal/particles/discourse.js",
+        "src/parser/terminal/particles/focus.js",
+        "src/parser/terminal/particles/ordered-cluster.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "particle_function_simplification",
+          "status": "route_to_issue_129",
+          "note": "One short gloss does not establish tone-specific force, clause type, combinations, or discourse distribution."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I022",
+      "sourceHash": "sha256:cc87714d3608a91c21cdaddba1182feeb887b64e42b3103dfae47e5fe75faa83",
+      "sourceDisplay": "㗎",
+      "classification": "existing_modular_entry",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/ordered-particle-clusters.js",
+        "src/runtime-resources/lexicon/token-lexicon/degree-and-formulas.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/discourse/priority.js",
+        "src/parser/detectors/discourse/protected-formulas.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/terminal/particles/discourse.js",
+        "src/parser/terminal/particles/focus.js",
+        "src/parser/terminal/particles/ordered-cluster.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "particle_function_simplification",
+          "status": "route_to_issue_129",
+          "note": "One short gloss does not establish tone-specific force, clause type, combinations, or discourse distribution."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I023",
+      "sourceHash": "sha256:20998c0090b4c7bcd7adec8ca74cb736f2999a53ac010c77c6a28ce057871d54",
+      "sourceDisplay": "呀",
+      "classification": "existing_modular_entry",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/degree-and-formulas.js",
+        "src/runtime-resources/pronunciation/jyutping-review-expectations.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/discourse/priority.js",
+        "src/parser/detectors/discourse/protected-formulas.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/terminal/particles/discourse.js",
+        "src/parser/terminal/particles/focus.js",
+        "src/parser/terminal/particles/ordered-cluster.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "particle_function_simplification",
+          "status": "route_to_issue_129",
+          "note": "One short gloss does not establish tone-specific force, clause type, combinations, or discourse distribution."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I024",
+      "sourceHash": "sha256:c57ff5db291b45487e4d5a54956334dd91a820b71c3a0acc12f21ae7816cf091",
+      "sourceDisplay": "嘞",
+      "classification": "existing_modular_entry",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/degree-and-formulas.js",
+        "src/runtime-resources/pronunciation/jyutping-review-expectations.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/discourse/priority.js",
+        "src/parser/detectors/discourse/protected-formulas.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/terminal/particles/discourse.js",
+        "src/parser/terminal/particles/focus.js",
+        "src/parser/terminal/particles/ordered-cluster.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "particle_function_simplification",
+          "status": "route_to_issue_129",
+          "note": "One short gloss does not establish tone-specific force, clause type, combinations, or discourse distribution."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I025",
+      "sourceHash": "sha256:a880892593dde6a6e6f0e5e512daaf2134f6ef84a5aa78bb1a193134599fcb02",
+      "sourceDisplay": "囉",
+      "classification": "existing_modular_entry",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/degree-and-formulas.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/discourse/priority.js",
+        "src/parser/detectors/discourse/protected-formulas.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/terminal/particles/discourse.js",
+        "src/parser/terminal/particles/focus.js",
+        "src/parser/terminal/particles/ordered-cluster.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "particle_function_simplification",
+          "status": "route_to_issue_129",
+          "note": "One short gloss does not establish tone-specific force, clause type, combinations, or discourse distribution."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I026",
+      "sourceHash": "sha256:412ae83fd81f53faa907e0f7fa88a61c7ab7c24f5303542db8133b36fb764f96",
+      "sourceDisplay": "周圍",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I027",
+      "sourceHash": "sha256:359b54cab3a799783e74804e83eda72a3f6d509ed981ec7cb7ba9b48be809dea",
+      "sourceDisplay": "向",
+      "classification": "existing_modular_entry",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/places-and-times.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I028",
+      "sourceHash": "sha256:7b5c0e85440ca19752b7783780ecab96922fffc1f9fa08e78e7da0176c3d75f1",
+      "sourceDisplay": "遠",
+      "classification": "existing_modular_entry",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/templates/slot-generation-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/statives.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I029",
+      "sourceHash": "sha256:4c50108d9cff51dbd0f23073c981a887a7ec76a43e85b3e5271b2fef643803b6",
+      "sourceDisplay": "穿過",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I030",
+      "sourceHash": "sha256:f13915c6fe02afd23fc6e35859166c9415b0bd365462bb8b6f0e960234bf5366",
+      "sourceDisplay": "中間",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js",
+        "src/parser/detectors/np/core.js",
+        "src/parser/detectors/np/token-splits.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I031",
+      "sourceHash": "sha256:2b5f3b1ff17700b0d58664115bb8ddd0af1c8f4144019c26ad6deca582147ae4",
+      "sourceDisplay": "出面",
+      "classification": "existing_modular_entry",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/places-and-times.js",
+        "src/runtime-resources/pronunciation/jyutping-review-expectations.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I032",
+      "sourceHash": "sha256:c38f70d811aa9f6fa2ade7a9f5974db7e2e172449889226196c22103120ab716",
+      "sourceDisplay": "東邊",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I033",
+      "sourceHash": "sha256:a9a001d529b6af9a9b5982b7e929d364a56e733058e948588a0ad3ac3cfd5187",
+      "sourceDisplay": "西邊",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I034",
+      "sourceHash": "sha256:9e68783dfae4e1d1697f1bb2c40b973832879b295136fc574c2d52e396f1f3e0",
+      "sourceDisplay": "南邊",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I035",
+      "sourceHash": "sha256:1ce636f71a35558b2908bd53eb62278fa09c1f316834524acea1af1c11003888",
+      "sourceDisplay": "北邊",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I036",
+      "sourceHash": "sha256:bdf0e5a4419562494b6014b3002a84ef2d89eed60fc4a6f4d9579a68f9b5ecbd",
+      "sourceDisplay": "盡頭",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I037",
+      "sourceHash": "sha256:7ff5d6d96de869e10b522e81db5ca0352cf2c0a1836b336bfbd6a9f32844aaf6",
+      "sourceDisplay": "轉角",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I038",
+      "sourceHash": "sha256:5ed998586c7cd5f4af5c3fc20a25cb405fff5323b4388c1b68a98e53995fc755",
+      "sourceDisplay": "入口",
+      "classification": "existing_modular_entry",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/study-suite.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I039",
+      "sourceHash": "sha256:09f2f5863579f588aafad56e2da56e10c70b1073264b20c421da9402537585d3",
+      "sourceDisplay": "出口",
+      "classification": "existing_modular_entry",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/study-suite.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I040",
+      "sourceHash": "sha256:a8c8a895f20a4e14684e5440cbd320d7553800697710ca7db795f60486603fd7",
+      "sourceDisplay": "路口",
+      "classification": "existing_modular_entry",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/study-suite.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I041",
+      "sourceHash": "sha256:7c56f4e19edbea60498dbb907603cea48d4f808795a1e4e0daa5194aebad9d33",
+      "sourceDisplay": "角落",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I042",
+      "sourceHash": "sha256:c3be317cf8f96a9b818a094f03b67f602a00cfbf2ea882a4349c1a274234112e",
+      "sourceDisplay": "頂部",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I043",
+      "sourceHash": "sha256:7d5b69ded4fa4f26ac71db8b3127cd6229ddbe4a48e4139dea49e4ed0a68cf0b",
+      "sourceDisplay": "底部",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I044",
+      "sourceHash": "sha256:0350621e7e15cfa2e82604a7194f465ce3588f707ff233164d5114e42c32fb30",
+      "sourceDisplay": "遠處",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I045",
+      "sourceHash": "sha256:40b7df3c8d92da5dc8aaf91b42d4b4c275a821302e231cca4dfb271e5bbf9159",
+      "sourceDisplay": "近處",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I046",
+      "sourceHash": "sha256:983492a937ce033f737436373f70231ea8fadee712e6128aba3834c89b9a3986",
+      "sourceDisplay": "四周",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I047",
+      "sourceHash": "sha256:378382ba92fcc111be6a1871887c545f0988c9fd137af9c985a77da60f1f3b90",
+      "sourceDisplay": "到處",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I048",
+      "sourceHash": "sha256:a5323a992dbd920f327f18c9d3b017028e8999bfa58675f124c8f816327edc05",
+      "sourceDisplay": "正中",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I049",
+      "sourceHash": "sha256:1689a766ced44d7eadd04c81725ff765b4ca032c0dd2d32949232d2ea490d09c",
+      "sourceDisplay": "的士站",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "regional_lexical_review",
+          "status": "route_to_issue_129",
+          "note": "Reading, register, Hong Kong usage, compositionality, and overlap require independent review."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I050",
+      "sourceHash": "sha256:776c981f00c75bc82883e9ebcf512bc9ae0311cb5da30a94ce45507d40d67992",
+      "sourceDisplay": "渡輪",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "regional_lexical_review",
+          "status": "route_to_issue_129",
+          "note": "Reading, register, Hong Kong usage, compositionality, and overlap require independent review."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I051",
+      "sourceHash": "sha256:f40391791cc3eb1414df48de8c5c7e97094e5f049cf2ea8837a11db9eb40ec0a",
+      "sourceDisplay": "纜車",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "regional_lexical_review",
+          "status": "route_to_issue_129",
+          "note": "Reading, register, Hong Kong usage, compositionality, and overlap require independent review."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I052",
+      "sourceHash": "sha256:a2bd1ab2319ad91b7ebec1f6c5509c1088a7771a9e4810dc3cb548734d2f5670",
+      "sourceDisplay": "港鐵",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "regional_lexical_review",
+          "status": "route_to_issue_129",
+          "note": "Reading, register, Hong Kong usage, compositionality, and overlap require independent review."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I053",
+      "sourceHash": "sha256:53f5dba550e0f160915b1c92e1b2552d241905d2cf405c7712e9f2e99c20170c",
+      "sourceDisplay": "十億",
+      "classification": "compositional_numeral",
+      "compositionalNumeral": true,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "compositional_numeral",
+          "status": "no_opaque_ingress",
+          "note": "Retain internal numeral composition and verify the source English values."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I054",
+      "sourceHash": "sha256:cecd314a5b0fbe1128c4a8e60617231eae4cbefe2f7fcc3ce31a8705d71cc9f1",
+      "sourceDisplay": "二十億",
+      "classification": "compositional_numeral",
+      "compositionalNumeral": true,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "compositional_numeral",
+          "status": "no_opaque_ingress",
+          "note": "Retain internal numeral composition and verify the source English values."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I055",
+      "sourceHash": "sha256:e265dd1ed7203e864b2f2abfc99005e0be4a8bcdb556685b4b3ee68e8ec6c655",
+      "sourceDisplay": "三十億",
+      "classification": "compositional_numeral",
+      "compositionalNumeral": true,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "compositional_numeral",
+          "status": "no_opaque_ingress",
+          "note": "Retain internal numeral composition and verify the source English values."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I056",
+      "sourceHash": "sha256:d5b38b076d6e3e6395bf6712dcfc61ff08d8580be53c5a0e9816c79671937184",
+      "sourceDisplay": "四十億",
+      "classification": "compositional_numeral",
+      "compositionalNumeral": true,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "compositional_numeral",
+          "status": "no_opaque_ingress",
+          "note": "Retain internal numeral composition and verify the source English values."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I057",
+      "sourceHash": "sha256:9ea3fabd1761d57b0cabf4d2980b908f9cfaa739c7aa0b2f0cc4c70ecdafd796",
+      "sourceDisplay": "五十億",
+      "classification": "compositional_numeral",
+      "compositionalNumeral": true,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "compositional_numeral",
+          "status": "no_opaque_ingress",
+          "note": "Retain internal numeral composition and verify the source English values."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I058",
+      "sourceHash": "sha256:0c352aca4ff6d7238176ebc4d74e01aacac1ce8aec39e04d6a47e5ec6a8edefe",
+      "sourceDisplay": "六十億",
+      "classification": "compositional_numeral",
+      "compositionalNumeral": true,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "compositional_numeral",
+          "status": "no_opaque_ingress",
+          "note": "Retain internal numeral composition and verify the source English values."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I059",
+      "sourceHash": "sha256:587a3aa99f657fd501b4646eddfffa3e10ae08683b68bcf942e7e998b51fc852",
+      "sourceDisplay": "七十億",
+      "classification": "compositional_numeral",
+      "compositionalNumeral": true,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "compositional_numeral",
+          "status": "no_opaque_ingress",
+          "note": "Retain internal numeral composition and verify the source English values."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I060",
+      "sourceHash": "sha256:c6e3e6b5c352aa65dee0967d58bb170f54a6bb1cb0bef0615299d4c432a6c6bf",
+      "sourceDisplay": "八十億",
+      "classification": "compositional_numeral",
+      "compositionalNumeral": true,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "compositional_numeral",
+          "status": "no_opaque_ingress",
+          "note": "Retain internal numeral composition and verify the source English values."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I061",
+      "sourceHash": "sha256:6d7f2d22eeb89724c191a69a36d7442b13f8e83c1375f5ae9a2885d40d878b51",
+      "sourceDisplay": "九十億",
+      "classification": "compositional_numeral",
+      "compositionalNumeral": true,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "compositional_numeral",
+          "status": "no_opaque_ingress",
+          "note": "Retain internal numeral composition and verify the source English values."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I062",
+      "sourceHash": "sha256:04581cc20b89431e58d035f4296c90fab76130f22ed96b004faae9ae3377ed16",
+      "sourceDisplay": "一百億",
+      "classification": "compositional_numeral",
+      "compositionalNumeral": true,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "compositional_numeral",
+          "status": "no_opaque_ingress",
+          "note": "Retain internal numeral composition and verify the source English values."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I063",
+      "sourceHash": "sha256:fe9df57ea580180307688c6adf077ea558fdea19058359309b653857796a7571",
+      "sourceDisplay": "我要兩杯茶。",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/aspect/composition.js",
+        "src/parser/detectors/aspect/postverbal-zo.js",
+        "src/parser/detectors/aspect/potential-result.js",
+        "src/parser/detectors/np/core.js",
+        "src/parser/detectors/np/token-splits.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/detectors/transfer/legacy-recipient.js",
+        "src/parser/detectors/transfer/lexical-give.js",
+        "src/parser/detectors/transfer/passive-permissive.js",
+        "src/parser/detectors/transfer/post-theme.js",
+        "src/parser/terminal/particles/discourse.js",
+        "src/parser/terminal/particles/focus.js",
+        "src/parser/terminal/particles/ordered-cluster.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I064",
+      "sourceHash": "sha256:7c04448411eec3a3506a62e673ade77489eec4a242892b74a618724af41b7db7",
+      "sourceDisplay": "呢間鋪頭好大。",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/aspect/composition.js",
+        "src/parser/detectors/aspect/postverbal-zo.js",
+        "src/parser/detectors/aspect/potential-result.js",
+        "src/parser/detectors/np/core.js",
+        "src/parser/detectors/np/token-splits.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/detectors/transfer/legacy-recipient.js",
+        "src/parser/detectors/transfer/lexical-give.js",
+        "src/parser/detectors/transfer/passive-permissive.js",
+        "src/parser/detectors/transfer/post-theme.js",
+        "src/parser/terminal/particles/discourse.js",
+        "src/parser/terminal/particles/focus.js",
+        "src/parser/terminal/particles/ordered-cluster.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I065",
+      "sourceHash": "sha256:b3afda7b10eee14454d12d3a430caf0d3313abf8703e8ff3cb7ed6f0209b8a60",
+      "sourceDisplay": "佢食緊飯。",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/aspect/composition.js",
+        "src/parser/detectors/aspect/postverbal-zo.js",
+        "src/parser/detectors/aspect/potential-result.js",
+        "src/parser/detectors/np/core.js",
+        "src/parser/detectors/np/token-splits.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/detectors/transfer/legacy-recipient.js",
+        "src/parser/detectors/transfer/lexical-give.js",
+        "src/parser/detectors/transfer/passive-permissive.js",
+        "src/parser/detectors/transfer/post-theme.js",
+        "src/parser/terminal/particles/discourse.js",
+        "src/parser/terminal/particles/focus.js",
+        "src/parser/terminal/particles/ordered-cluster.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I066",
+      "sourceHash": "sha256:9c55cd1fedb15803213d0a83b26a155a9965ad6934c339dc55c90c7195d9bc8d",
+      "sourceDisplay": "你去過日本未？",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/aspect/composition.js",
+        "src/parser/detectors/aspect/postverbal-zo.js",
+        "src/parser/detectors/aspect/potential-result.js",
+        "src/parser/detectors/np/core.js",
+        "src/parser/detectors/np/token-splits.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/detectors/transfer/legacy-recipient.js",
+        "src/parser/detectors/transfer/lexical-give.js",
+        "src/parser/detectors/transfer/passive-permissive.js",
+        "src/parser/detectors/transfer/post-theme.js",
+        "src/parser/terminal/particles/discourse.js",
+        "src/parser/terminal/particles/focus.js",
+        "src/parser/terminal/particles/ordered-cluster.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "aspect_question_boundary",
+          "status": "route_to_issue_129",
+          "note": "Experiential 過 plus final 未 must remain distinct from perfective, negative experiential, and A-not-A profiles."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I067",
+      "sourceHash": "sha256:78126b71e6cb2b95636dc89a567c4e10bc864de43fb5bb04764e2f4819cd26dd",
+      "sourceDisplay": "你要幾多杯咖啡？",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/aspect/composition.js",
+        "src/parser/detectors/aspect/postverbal-zo.js",
+        "src/parser/detectors/aspect/potential-result.js",
+        "src/parser/detectors/np/core.js",
+        "src/parser/detectors/np/token-splits.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/detectors/transfer/legacy-recipient.js",
+        "src/parser/detectors/transfer/lexical-give.js",
+        "src/parser/detectors/transfer/passive-permissive.js",
+        "src/parser/detectors/transfer/post-theme.js",
+        "src/parser/terminal/particles/discourse.js",
+        "src/parser/terminal/particles/focus.js",
+        "src/parser/terminal/particles/ordered-cluster.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I068",
+      "sourceHash": "sha256:a3b88aa603ed436190235e4317964bfcac64d8e299f053ae7f4757aa94948cf5",
+      "sourceDisplay": "我要一杯。佢呢？",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/aspect/composition.js",
+        "src/parser/detectors/aspect/postverbal-zo.js",
+        "src/parser/detectors/aspect/potential-result.js",
+        "src/parser/detectors/np/core.js",
+        "src/parser/detectors/np/token-splits.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/detectors/transfer/legacy-recipient.js",
+        "src/parser/detectors/transfer/lexical-give.js",
+        "src/parser/detectors/transfer/passive-permissive.js",
+        "src/parser/detectors/transfer/post-theme.js",
+        "src/parser/terminal/particles/discourse.js",
+        "src/parser/terminal/particles/focus.js",
+        "src/parser/terminal/particles/ordered-cluster.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "nominal_ellipsis_and_continuation",
+          "status": "route_to_issue_129",
+          "note": "Classifier phrase ellipsis and 呢-marked continuation require context-sensitive analysis."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I069",
+      "sourceHash": "sha256:773146f8f2c46384752cd53895e6e522e1a39934fadb8f0a11e0fa28f51499e2",
+      "sourceDisplay": "佢唔飲咖啡嘅，畀碗湯佢啦。",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/aspect/composition.js",
+        "src/parser/detectors/aspect/postverbal-zo.js",
+        "src/parser/detectors/aspect/potential-result.js",
+        "src/parser/detectors/np/core.js",
+        "src/parser/detectors/np/token-splits.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/detectors/transfer/legacy-recipient.js",
+        "src/parser/detectors/transfer/lexical-give.js",
+        "src/parser/detectors/transfer/passive-permissive.js",
+        "src/parser/detectors/transfer/post-theme.js",
+        "src/parser/terminal/particles/discourse.js",
+        "src/parser/terminal/particles/focus.js",
+        "src/parser/terminal/particles/ordered-cluster.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "dative_clause_final_ge3_particle",
+          "status": "route_to_issue_129",
+          "note": "Theme-recipient order, clause-final 嘅, and final 啦 remain separate research questions."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I070",
+      "sourceHash": "sha256:6670c95d1ba200bc8140953bc654d1d8eab2ff5e4c9e85425a5a67624c53df37",
+      "sourceDisplay": "好，一杯咖啡，一碗湯。",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/aspect/composition.js",
+        "src/parser/detectors/aspect/postverbal-zo.js",
+        "src/parser/detectors/aspect/potential-result.js",
+        "src/parser/detectors/np/core.js",
+        "src/parser/detectors/np/token-splits.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/detectors/transfer/legacy-recipient.js",
+        "src/parser/detectors/transfer/lexical-give.js",
+        "src/parser/detectors/transfer/passive-permissive.js",
+        "src/parser/detectors/transfer/post-theme.js",
+        "src/parser/terminal/particles/discourse.js",
+        "src/parser/terminal/particles/focus.js",
+        "src/parser/terminal/particles/ordered-cluster.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "parallel_nominal_fragment",
+          "status": "route_to_issue_129",
+          "note": "Parallel classifier phrases and fragment licensing require contextual analysis."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I071",
+      "sourceHash": "sha256:5a1b4513aeb5f4a5ca8ab03a6af4d0e3f5f37ef2d41022a17c32b287b2c0c2ae",
+      "sourceDisplay": "T1 ˥",
+      "classification": "existing_modular_entry",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/places-and-times.js",
+        "src/runtime-resources/lexicon/token-lexicon/study-suite.js",
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "tone_drill_material",
+          "status": "requires_independent_verification",
+          "note": "Characters, readings, lexical suitability, register, and tone labels remain provisional pronunciation material."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I072",
+      "sourceHash": "sha256:2035459db6362abbaded31fd2189bc5a0bfab37b07e446d159404010e939898b",
+      "sourceDisplay": "T2 ˧˥",
+      "classification": "source_incomplete",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/study-suite.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "tone_drill_material",
+          "status": "requires_independent_verification",
+          "note": "Characters, readings, lexical suitability, register, and tone labels remain provisional pronunciation material."
+        },
+        {
+          "type": "incomplete_tone_paradigm_cell",
+          "status": "source_incomplete",
+          "note": "The saam- column is blank for this tone."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I073",
+      "sourceHash": "sha256:ea1e5faf56c3b85267cf8fdc57b5064a0470775766a64844bab7a3e19dd1d36a",
+      "sourceDisplay": "T3 ˧",
+      "classification": "source_incomplete",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/templates/slot-generation-rules.js",
+        "src/runtime-resources/lexicon/productive-vo.js",
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "tone_drill_material",
+          "status": "requires_independent_verification",
+          "note": "Characters, readings, lexical suitability, register, and tone labels remain provisional pronunciation material."
+        },
+        {
+          "type": "incomplete_tone_paradigm_cell",
+          "status": "source_incomplete",
+          "note": "The saam- column is blank for this tone."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I074",
+      "sourceHash": "sha256:665e6a3b5ce48ec44b067d51a9e0cff58303f79d269b50a59549caff9a551590",
+      "sourceDisplay": "T4 ˨˩",
+      "classification": "source_incomplete",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/study-suite.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "tone_drill_material",
+          "status": "requires_independent_verification",
+          "note": "Characters, readings, lexical suitability, register, and tone labels remain provisional pronunciation material."
+        },
+        {
+          "type": "incomplete_tone_paradigm_cell",
+          "status": "source_incomplete",
+          "note": "The saam- column is blank for this tone."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I075",
+      "sourceHash": "sha256:7772343d57c67b47141d285958656311c445f49fb67575dbd14a5828fa87c3ac",
+      "sourceDisplay": "T5 ˩˧",
+      "classification": "source_incomplete",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/study-suite.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "tone_drill_material",
+          "status": "requires_independent_verification",
+          "note": "Characters, readings, lexical suitability, register, and tone labels remain provisional pronunciation material."
+        },
+        {
+          "type": "incomplete_tone_paradigm_cell",
+          "status": "source_incomplete",
+          "note": "The saam- column is blank for this tone."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I076",
+      "sourceHash": "sha256:43e2b8eb1eb56b9caa713a1aecba249e39269b92e919d7204909e9f8c3ab2974",
+      "sourceDisplay": "T6 ˨",
+      "classification": "source_incomplete",
+      "compositionalNumeral": false,
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/places-and-times.js",
+        "src/runtime-resources/lexicon/token-lexicon/study-suite.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "exactOrNormalizedProjectMatchPaths": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "tone_drill_material",
+          "status": "requires_independent_verification",
+          "note": "Characters, readings, lexical suitability, register, and tone labels remain provisional pronunciation material."
+        },
+        {
+          "type": "incomplete_tone_paradigm_cell",
+          "status": "source_incomplete",
+          "note": "The saam- column is blank for this tone."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish classifier productivity, particle force, construction identity, register, or linguistic status."
+    }
+  ]
+}
