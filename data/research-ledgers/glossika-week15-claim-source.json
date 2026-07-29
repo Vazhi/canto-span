@@ -1,0 +1,185 @@
+{
+  "schema": "canto-span-claim-source-ledger-v1",
+  "packetId": "GLOSSIKA-YUEHK-A1-W15-20260628-CLAIM-SOURCE-R1",
+  "sourceId": "GLOSSIKA-YUEHK-A1-W15-20260628",
+  "intakeIssue": 127,
+  "workClaimIssue": 272,
+  "evidencePolicy": {
+    "glossikaWeight": "pedagogical_and_lexical_attestation_only",
+    "externalSourceRequirement": "Grammar, register, spatial-category, question-force, and phonological conclusions require independently checkable Cantonese analysis.",
+    "corpusRule": "Attestation does not establish unrestricted productivity, preferred parsing, register, or dialect-wide naturalness.",
+    "implementationAuthorized": false
+  },
+  "sources": [
+    {
+      "id": "S-GLOSSIKA-W15",
+      "type": "authorized_pedagogical_source",
+      "citation": "Glossika Cantonese (HK) A1, Week 15, Cantonese – Directions & Places, 2026-06-28",
+      "locator": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/source.json",
+      "scope": "Exact source forms, order, labels, glosses, question claims, and phonics material only."
+    },
+    {
+      "id": "S-XIE-ZHANG-URSINI-2023-SPATIAL",
+      "type": "direct_cantonese_spatial_grammar",
+      "citation": "Xie, Qin, Yue Sara Zhang, and Francesco-Alessio Ursini. 2023. Spatial Categories in Cantonese: Morpho-Syntactic Analysis Meets Discourse Distribution.",
+      "locator": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4627515",
+      "scope": "Cantonese distinguishes verb-like predicative spatial elements such as 喺 from nominal-like localizers such as 裏面."
+    },
+    {
+      "id": "S-KWAN-2005-LOCATIVE-ORDER",
+      "type": "direct_cantonese_spatial_grammar",
+      "citation": "Kwan, Wing-man. 2005. On the word order of locative prepositional phrases in Cantonese: processing, iconicity and grammar. University of Hong Kong thesis.",
+      "locator": "https://doi.org/10.5353/th_b3145014",
+      "scope": "Direct analysis of Cantonese locative prepositional-phrase order and its grammatical and processing constraints."
+    },
+    {
+      "id": "S-SYBESMA-LI-2007-SFP",
+      "type": "direct_cantonese_particle_grammar",
+      "citation": "Sybesma, Rint, and Boya Li. 2007. The dissection and structural mapping of Cantonese sentence final particles. Lingua 117(10):1739–1783.",
+      "locator": "https://doi.org/10.1016/j.lingua.2006.10.003",
+      "scope": "Question particles and discourse particles occupy structured positions; aa3 occurs with declaratives, imperatives, exclamatives, wh-questions, and A-not-A questions and is not simply a neutral yes-no marker."
+    },
+    {
+      "id": "S-CHEUNG-2023-AA3",
+      "type": "direct_cantonese_particle_semantics",
+      "citation": "Cheung, Wang Nok. 2023. Investigating the semantic/pragmatic function(s) of the Cantonese sentence final particle aa3. University of Hong Kong thesis.",
+      "locator": "https://hub.hku.hk/handle/10722/335514",
+      "scope": "Corpus-informed investigation of the major semantic and pragmatic functions of aa3, including epistemic and discourse effects."
+    },
+    {
+      "id": "S-CHEUNG-2021-ME1",
+      "type": "direct_cantonese_question_particle",
+      "citation": "Cheung, Lawrence Yam-Leung. 2021. The origin and development of the question particle me1 in Cantonese. Lingua 254:103049.",
+      "locator": "https://doi.org/10.1016/j.lingua.2021.103049",
+      "scope": "Modern me1 has developed biased/discourse uses and negative-presupposition associations; older unbiased uses do not justify a neutral modern rule."
+    },
+    {
+      "id": "S-LAW-2004-A-NOT-A",
+      "type": "direct_cantonese_question_syntax",
+      "citation": "Law, Yan Kei Ann. 2004. A-not-A questions in Cantonese / Sentence-final focus particles in Cantonese. University College London doctoral research.",
+      "locator": "https://discovery.ucl.ac.uk/id/eprint/10101610/",
+      "scope": "A-not-A questions form a syntactically constrained question strategy distinct from particle questions and interact differently with focus particles and quantification."
+    },
+    {
+      "id": "S-LAI-PANG-2023-RESULTATIVES",
+      "type": "direct_cantonese_resultative_grammar",
+      "citation": "Lai, Ryan Ka Yau, and Michelle Man-Long Pang. 2023. Rethinking the Description and Typology of Cantonese Causative–Resultative Constructions: A Dynamic Constructionist Lens. Languages 8(2):151.",
+      "locator": "https://doi.org/10.3390/languages8020151",
+      "scope": "Cantonese resultative and directional material requires construction-specific analysis; surface sequences should not be collapsed into one decompositional rule."
+    },
+    {
+      "id": "S-LAU-LEE-RVC",
+      "type": "direct_cantonese_resultative_grammar",
+      "citation": "Lau, Yan Ping Helena, and Sophia Yat Mei Lee. On Resultative Verb Compounds in Cantonese and Mandarin.",
+      "locator": "https://research.polyu.edu.hk/en/publications/on-resultative-verb-compounds-in-cantonese-and-mandarin/",
+      "scope": "Cantonese imposes constraints on resultative verb compounds and uses several V-dou3 and causative alternatives."
+    },
+    {
+      "id": "S-LAM-LAU-LEE-2024-SEGMENTATION",
+      "type": "direct_cantonese_morphosyntax",
+      "citation": "Lam, Charles, Chaak-ming Lau, and Jackson L. Lee. 2024. Multi-Tiered Cantonese Word Segmentation. LREC-COLING 2024:11993–12002.",
+      "locator": "https://aclanthology.org/2024.lrec-main.1047/",
+      "scope": "Cantonese numerals remain compositionally structured even where a word-level tier groups the written numeral."
+    },
+    {
+      "id": "S-BAUER-BENEDICT-1997-PHONOLOGY",
+      "type": "reference_phonology",
+      "citation": "Bauer, Robert S., and Paul K. Benedict. 1997. Modern Cantonese Phonology.",
+      "locator": "https://doi.org/10.1515/9783110823707",
+      "scope": "Reference Cantonese vowel, syllable, and tone analysis for independent phonics verification."
+    }
+  ],
+  "claims": [
+    {
+      "id": "W15-C01",
+      "claim": "Cantonese spatial grammar distinguishes predicative 喺 from nominal-like localizers; the Week 15 location vocabulary must not be collapsed into one undifferentiated locative label.",
+      "status": "supported_external",
+      "sourceIds": ["S-GLOSSIKA-W15", "S-XIE-ZHANG-URSINI-2023-SPATIAL"],
+      "boundary": "Lexical localizers, place nouns, deictic regions, and predicative locatives require separate ownership and tests."
+    },
+    {
+      "id": "W15-C02",
+      "claim": "Locative phrase position in Cantonese is grammatically constrained and cannot be inferred from one route lesson or reduced to a free before/after-verb option.",
+      "status": "supported_external",
+      "sourceIds": ["S-KWAN-2005-LOCATIVE-ORDER"],
+      "boundary": "No general word-order rule or parser broadening follows from the Week 15 examples alone."
+    },
+    {
+      "id": "W15-C03",
+      "claim": "隔籬, 對面, 上面, 下面, 入面, 外面, 前面, and 右手邊 are spatial-region expressions with potentially different nominal, localizer, deictic, and relational behavior.",
+      "status": "source_attested_plus_category_support",
+      "sourceIds": ["S-GLOSSIKA-W15", "S-XIE-ZHANG-URSINI-2023-SPATIAL"],
+      "boundary": "The lesson does not establish identical syntax, obligatory reference-ground realization, or interchangeable glosses."
+    },
+    {
+      "id": "W15-C04",
+      "claim": "The route material contains several compositional clause types—destination question, imperative path instruction, locative answer, elapsed-distance expression, and sequential landmark instruction—not one route construction.",
+      "status": "conservative_source_analysis",
+      "sourceIds": ["S-GLOSSIKA-W15", "S-KWAN-2005-LOCATIVE-ORDER"],
+      "boundary": "Each relation must map to an existing canonical owner or receive separate evidence before a new identity is considered."
+    },
+    {
+      "id": "W15-C05",
+      "claim": "行兩分鐘就到 expresses an elapsed-path or duration phrase followed by an arrival/result relation, but the final 到 is not automatically the same construction as a V-到 resultative compound.",
+      "status": "source_attested_with_negative_boundary",
+      "sourceIds": ["S-GLOSSIKA-W15", "S-LAI-PANG-2023-RESULTATIVES", "S-LAU-LEE-RVC"],
+      "boundary": "Require adjacency, potential-form, argument-structure, and contextual contrasts before assigning any V-dou3 resultative label."
+    },
+    {
+      "id": "W15-C06",
+      "claim": "過咗紅綠燈就喺右手邊 attests perfective landmark passage followed by a location assertion; it does not itself establish a dedicated route-sequence construction.",
+      "status": "source_attested_only",
+      "sourceIds": ["S-GLOSSIKA-W15"],
+      "boundary": "The temporal/conditional contribution of 就 and the event relation require direct contrasts and corpus context."
+    },
+    {
+      "id": "W15-C07",
+      "claim": "Modern sentence-final me1 is not a neutral interchangeable yes-no suffix: it commonly contributes biased, negative-presuppositional, or discourse effects.",
+      "status": "supported_external",
+      "sourceIds": ["S-GLOSSIKA-W15", "S-CHEUNG-2021-ME1"],
+      "boundary": "The source example 你食飯咩 cannot be used as a generic neutral yes-no template without context."
+    },
+    {
+      "id": "W15-C08",
+      "claim": "aa3 in 點行呀 is compatible with a wh-question as a discourse particle; the source lesson's generic statement about final 呀 aa4 forming yes-no questions must not be transferred to this aa3 token.",
+      "status": "supported_external_and_source_discrepancy",
+      "sourceIds": ["S-GLOSSIKA-W15", "S-SYBESMA-LI-2007-SFP", "S-CHEUNG-2023-AA3"],
+      "boundary": "Tone-specific particle identity and question force must remain explicit."
+    },
+    {
+      "id": "W15-C09",
+      "claim": "係唔係 and 有冇 instantiate A-not-A-style question strategies distinct from me1 particle questions; wh-questions retain in-situ question expressions such as 咩, 邊個, 點, and 邊度.",
+      "status": "supported_external_narrow",
+      "sourceIds": ["S-GLOSSIKA-W15", "S-LAW-2004-A-NOT-A", "S-SYBESMA-LI-2007-SFP"],
+      "boundary": "Do not merge particle questions, A-not-A questions, and wh-questions into one generic interrogative detector."
+    },
+    {
+      "id": "W15-C10",
+      "claim": "十萬 through 九十萬 remain compositional numeral expressions; 一百萬 is already represented in canonical lexical and compositional resources.",
+      "status": "supported_external_and_repository_scan",
+      "sourceIds": ["S-GLOSSIKA-W15", "S-LAM-LAU-LEE-2024-SEGMENTATION"],
+      "boundary": "Do not add nine opaque numeral entries or duplicate 一百萬."
+    },
+    {
+      "id": "W15-C11",
+      "claim": "The formulaic response and well-wishing labels are source attestations only; Casual, Polite, and Standard do not become register features without direct pragmatics and speaker evidence.",
+      "status": "source_attested_only",
+      "sourceIds": ["S-GLOSSIKA-W15"],
+      "boundary": "唔使唔該 remains a naturalness and register review candidate rather than an accepted formula."
+    },
+    {
+      "id": "W15-C12",
+      "claim": "The phonics table requires independent item-level verification and contains an explicitly incomplete final row.",
+      "status": "source_discrepancy_supported",
+      "sourceIds": ["S-GLOSSIKA-W15", "S-BAUER-BENEDICT-1997-PHONOLOGY"],
+      "boundary": "No pronunciation-resource ingress, pair acceptance, or silent repair is authorized."
+    }
+  ],
+  "disposition": {
+    "grammarPromotionAuthorized": false,
+    "runtimeChangeAuthorized": false,
+    "statusChangeAuthorized": false,
+    "surveyDeploymentAuthorized": false,
+    "nextEvidence": "Use the follow-up ledger for bounded corpus inventories, canonical parser audits, or role-neutral panel items only after direct evidence remains inconclusive."
+  }
+}
