@@ -1,6 +1,6 @@
 {
-  "schema": "canto-span-week17-modular-inventory-v1",
-  "base": "11b194294484d5986318546160a3ec9cc7a073e1",
+  "schema": "canto-span-week17-modular-inventory-v2",
+  "base": "c2e93a2d73f67a5de30cf50de44fbed28b951c57",
   "authority": {
     "canonical": [
       "src/**",
@@ -11,1394 +11,862 @@
     ],
     "supporting": [
       "tests/**",
+      "test-data/**",
       "data/**",
       "docs/**",
       "grammar/**",
       "config/**"
     ]
   },
-  "termCount": 32,
-  "pathCount": 130,
+  "pathCount": 154,
   "paths": [
     {
       "path": "data/construction-adjudication-batches/batch-05.json",
       "size": 17671,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "鍾意",
-          "text": "\"profile_name\": \"OvertSubjectZungJiVPComplement\", \"profile_description\": \"An overt subject followed by lexical 鍾意 and a visible VP complement, as in 我鍾意聽音樂. The current subtype excludes a bare activity VP without 鍾意 and complementless or independently negated 鍾意, and does not generalize to ot"
-        }
       ]
     },
     {
       "path": "data/construction-adjudication-batches/batch-07.json",
       "size": 17417,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "鍾意",
-          "text": "\"additional_research\": [ \"The sources distinguish aspectual 有/冇 VP ellipsis, contextual object omission after 鍾意, and 係/唔係 response-particle material. The tests instead place 覺得有, 覺得係, 覺得唔係, and 覺得佢係 under one label, which does not establish a shared ellipsis mechanism or fragment boundary.\""
-        }
       ]
     },
     {
       "path": "data/construction-adjudication-batches/batch-08.json",
       "size": 18414,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "悶",
         "壓力",
         "開心",
         "鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "悶",
-          "text": "urce_id\": \"SRC-ALDERETE-ETAL-2017-SYNOPSIS\", \"scope_match\": \"close\" }, { \"term\": \"好 悶 segmentation\", \"source_id\": \"SRC-LAM-LAU-LEE-2024-SEGMENTATION\", \"scope_match\": \"exact\" }, { \"term\": \"非常 好 segmentation\", \""
-        },
-        {
-          "term": "壓力",
-          "text": "The profile excludes 幾耐 and 幾多 quantity or duration expressions, 好 modifying material inside a nominal phrase such as 好大壓力, and any claim that every degree marker or lexicalized 好-X expression belongs to this UUID.\", \"learner_label\": null, \"behavior_research_alignment\": \"runtime_broader\","
-        },
-        {
-          "term": "開心",
-          "text": "ate in copula-less predication, optionally with an overt subject, topic, or embedding clause, as in 今日好凍, 佢好高, and 我覺得佢好開心. The profile excludes 幾耐 and 幾多 quantity or duration expressions, 好 modifying material inside a nominal phrase such as 好大壓力, and any claim that every degree marker or lexicalized"
-        },
-        {
-          "term": "鍾意",
-          "text": "+ NP and omitted-subject profiles if the runtime later recognizes them\", \"add focused boundaries against 要, 諗住, 鍾意, and preference constructions\", \"complete reviewed corpus, role-neutral panel, and held-out validation\" ] } ] }"
-        }
       ]
     },
     {
       "path": "data/construction-adjudication-batches/batch-13.json",
       "size": 16381,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "壓力"
-      ],
-      "snippets": [
-        {
-          "term": "壓力",
-          "text": "\"profile_description\": \"An overt degree-marked property expression directly precedes an overt noun without 嘅, as in 好大壓力. The profile does not cover bare nouns, quantified classifier NPs, 嘅-marked modifiers, relative clauses, nominal complements, or the heterogeneous structures formerly grouped unde"
-        }
       ]
     },
     {
       "path": "data/construction-identities.json",
       "size": 342293,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "悶",
         "壓力",
         "開心",
         "鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "悶",
-          "text": "urce_id\": \"SRC-ALDERETE-ETAL-2017-SYNOPSIS\", \"scope_match\": \"close\" }, { \"term\": \"好 悶 segmentation\", \"source_id\": \"SRC-LAM-LAU-LEE-2024-SEGMENTATION\", \"scope_match\": \"exact\" }, { \"term\": \"非常 好 segmentation\", \""
-        },
-        {
-          "term": "壓力",
-          "text": "The profile excludes 幾耐 and 幾多 quantity or duration expressions, 好 modifying material inside a nominal phrase such as 好大壓力, and any claim that every degree marker or lexicalized 好-X expression belongs to this UUID.\", \"learner_label\": null, \"source_terms\": [ { \"term\": \"pre"
-        },
-        {
-          "term": "開心",
-          "text": "ate in copula-less predication, optionally with an overt subject, topic, or embedding clause, as in 今日好凍, 佢好高, and 我覺得佢好開心. The profile excludes 幾耐 and 幾多 quantity or duration expressions, 好 modifying material inside a nominal phrase such as 好大壓力, and any claim that every degree marker or lexicalized"
-        },
-        {
-          "term": "鍾意",
-          "text": "\"profile_name\": \"OvertSubjectZungJiVPComplement\", \"profile_description\": \"An overt subject followed by lexical 鍾意 and a visible VP complement, as in 我鍾意聽音樂. The current subtype excludes a bare activity VP without 鍾意 and complementless or independently negated 鍾意, and does not generalize to ot"
-        }
       ]
     },
     {
       "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/items.tsv",
       "size": 13716,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "辛苦"
-      ],
-      "snippets": [
-        {
-          "term": "辛苦",
-          "text": "2ae818cca38e361 GLOSSIKA-YUEHK-A1-W14-20260621-I050 50 vocabulary_and_situations mini_dialog dialog_turn casual 我喺酒店返工。幾辛苦㗎。 ngo5 hai2 zau2 dim3 faan1 gung1. gei2 san1 fu2 gaa3. I at hotel work quite tiring SFP I work at a hotel. It's quite tiring. sha256:fb04a4fb105a8c89ddfc81bf1e6162db579863d"
-        }
       ]
     },
     {
       "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/review.json",
       "size": 27946,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "辛苦"
-      ],
-      "snippets": [
-        {
-          "term": "辛苦",
-          "text": "eHash\": \"sha256:fb04a4fb105a8c89ddfc81bf1e6162db579863d082da76d770a728faab6dc749\", \"normalizedCantonese\": \"我喺酒店返工幾辛苦㗎\", \"duplicateStatus\": \"unreviewed\", \"duplicateOf\": [], \"ingressClassification\": \"unreviewed\", \"sourceDiscrepancies\": [], \"reviewedValues\": {},"
-        }
       ]
     },
     {
       "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/source.json",
       "size": 31220,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "辛苦"
-      ],
-      "snippets": [
-        {
-          "term": "辛苦",
-          "text": "dialog\", \"itemType\": \"dialog_turn\", \"register\": \"casual\", \"source\": { \"traditional\": \"我喺酒店返工。幾辛苦㗎。\", \"jyutping\": \"ngo5 hai2 zau2 dim3 faan1 gung1. gei2 san1 fu2 gaa3.\", \"morphemeGloss\": \"I at hotel work quite tiring SFP\", \"english\": \"I work at a hotel."
-        }
       ]
     },
     {
       "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/items.tsv",
       "size": 69622,
       "filenameMatch": false,
-      "matchedTerms": [
+      "identityTerms": [
         "w17"
       ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "neration-rules.js|src/runtime-resources/lexicon/token-lexicon/statives.js|test-data/review-only-readiness.tsv|test-data/w17-corpus-semantic-disposition.tsv|test-data/w17-functional-corpus.tsv|test-data/w17-glossika-corpus.tsv|tests/constructions/ScalarValueQuestion.json [] REQUIRES_EXPERT_CONTEXT_REVIE"
-        }
+      "matchedTerms": [
+        "w17"
       ]
     },
     {
       "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/review.json",
       "size": 88664,
       "filenameMatch": false,
-      "matchedTerms": [
+      "identityTerms": [
         "w17"
       ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "runtime-resources/lexicon/token-lexicon/statives.js\", \"test-data/review-only-readiness.tsv\", \"test-data/w17-corpus-semantic-disposition.tsv\", \"test-data/w17-functional-corpus.tsv\", \"test-data/w17-glossika-corpus.tsv\", \"tests/constructions/ScalarValueQuestion.json"
-        }
+      "matchedTerms": [
+        "w17"
       ]
     },
     {
       "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/items.tsv",
       "size": 45509,
       "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
       "matchedTerms": [
         "w17",
         "鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "s-and-boundaries.js|src/runtime-resources/presentation/learner-glosses.js|test-data/review-only-readiness.tsv|test-data/w17-corpus-semantic-disposition.tsv|test-data/w17-functional-corpus.tsv|test-data/w17-glossika-corpus.tsv|tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js [] REQUIRES_EXP"
-        },
-        {
-          "term": "鍾意",
-          "text": "T_CONTEXT_REVIEW GLOSSIKA-YUEHK-A1-W16-20260705-I044 44 vocabulary_and_situations situation_patterns sentence casual 我放假鍾意去行山。 ngo5 fong3 gaa3 zung1 ji3 heoi3 haang4 saan1 On holidays I like to go hiking. I holiday like go hike sha256:3303b186f92c5088928775cb99cab27883e4e487201d7c83fdd7f3dfc788aa18 我放"
-        }
       ]
     },
     {
       "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/review.json",
       "size": 72839,
       "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
       "matchedTerms": [
         "w17",
         "鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "c/runtime-resources/presentation/learner-glosses.js\", \"test-data/review-only-readiness.tsv\", \"test-data/w17-corpus-semantic-disposition.tsv\", \"test-data/w17-functional-corpus.tsv\", \"test-data/w17-glossika-corpus.tsv\", \"tests/tooling/lexicon/glossika-week16-runtim"
-        },
-        {
-          "term": "鍾意",
-          "text": "ourceHash\": \"sha256:3303b186f92c5088928775cb99cab27883e4e487201d7c83fdd7f3dfc788aa18\", \"normalizedCantonese\": \"我放假鍾意去行山\", \"duplicateStatus\": \"no_mechanical_match\", \"duplicateOf\": [], \"ingressClassification\": \"new_attestation\", \"runtimeCrosswalk\": null, \"sourceDiscre"
-        }
       ]
     },
     {
       "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/source.json",
       "size": 30159,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "鍾意",
-          "text": "ation_patterns\", \"itemType\": \"sentence\", \"register\": \"casual\", \"source\": { \"traditional\": \"我放假鍾意去行山。\", \"jyutping\": \"ngo5 fong3 gaa3 zung1 ji3 heoi3 haang4 saan1\", \"morphemeGloss\": \"I holiday like go hike\", \"english\": \"On holidays I like to go hiking.\""
-        }
       ]
     },
     {
       "path": "data/research-ledgers/glossika-week14-claim-source.json",
       "size": 10882,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "辛苦"
-      ],
-      "snippets": [
-        {
-          "term": "辛苦",
-          "text": "rse and syntactic analysis of each source item remains open.\" }, { \"id\": \"W14-C06\", \"claim\": \"幾 in 幾辛苦㗎 is a degree adverb modifying a scalar or stative predicate, approximately ‘quite/fairly’ in this use.\", \"status\": \"supported_external_narrow\", \"sourceIds\": [\"S-GLOSSI"
-        }
       ]
     },
     {
       "path": "data/retirement-review-state.json",
       "size": 659,
       "filenameMatch": true,
-      "matchedTerms": [],
-      "snippets": []
+      "identityTerms": [],
+      "matchedTerms": []
     },
     {
       "path": "docs/current/PROJECT-STATE.md",
       "size": 8196,
       "filenameMatch": true,
-      "matchedTerms": [],
-      "snippets": []
+      "identityTerms": [],
+      "matchedTerms": []
     },
     {
       "path": "docs/releases/v0.5.192-result-change-state-wrapper-audit.json",
       "size": 2220,
       "filenameMatch": true,
-      "matchedTerms": [],
-      "snippets": []
+      "identityTerms": [],
+      "matchedTerms": []
     },
     {
       "path": "docs/research/COMPLEMENT-OMISSION-AND-VALENCY-SOURCE-MAP-CP021B-R26.md",
       "size": 6582,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "鍾意",
-          "text": "ull objects refer to material previously mentioned or otherwise recoverable from context. Its exact dialogue contains `我鍾意` meaning “I like (it).” A one-verb surface therefore cannot by itself prove intransitivity. ### 3. `係/唔係` has a competing response-particle analysis Cheng independently analyzes"
-        }
       ]
     },
     {
       "path": "docs/research/CONSTRUCTION-ADJUDICATION-BATCH-05.md",
       "size": 5281,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "鍾意",
-          "text": "many lexical and syntactic preference strategies. The checked runtime profile is specifically overt subject + lexical `鍾意` + visible VP complement, represented by `我鍾意聽音樂`. The research also raises aspect-placement distinctions around main-verb and complement configurations. Those distinctions shoul"
-        }
       ]
     },
     {
       "path": "docs/research/CONSTRUCTION-ADJUDICATION-BATCH-08.md",
       "size": 5813,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "壓力",
         "開心",
         "鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "壓力",
-          "text": "ord. The runtime label is nevertheless broader: it also appears on `幾耐`, `幾多`, `幾多年前`, and nominal material such as `好大壓力`. These do not all instantiate the same stative-predicate construction. The permanent identity is narrowed to overt 好 + independently licensed property predication; wh-quantity, d"
-        },
-        {
-          "term": "開心",
-          "text": "te contains a strong repeated core of copula-less `好 + property predicate`, including `今日好凍`, `佢好高`, and embedded `我覺得佢好開心`. The sources support degree-modified predicative properties and independently segment 好 as a degree word. The runtime label is nevertheless broader: it also appears on `幾耐`, `幾多"
-        },
-        {
-          "term": "鍾意",
-          "text": "a lexeme-specific structural name. It does not include `想 + NP`, `要 + VP`, `諗住 + VP`, or preference predicates such as `鍾意`. Topic and coverb material surrounding the clause is outside the permanent identity's core. ## Discovery consequences After Batch 08 is applied: - completed expert adjudicatio"
-        }
       ]
     },
     {
       "path": "docs/research/CONSTRUCTION-ADJUDICATION-BATCH-13.md",
       "size": 7305,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "壓力"
-      ],
-      "snippets": [
-        {
-          "term": "壓力",
-          "text": "e narrower and defensible. - Status recommendation: retain `research_pending`. The only executable positives are `我最近好大壓力` and the same clause with a discourse preface. Both contain a degree-marked property expression directly before an overt noun without `嘅`. Sio distinguishes direct property-noun"
-        }
       ]
     },
     {
       "path": "docs/research/CP022-IMPLEMENTATION-BACKLOG-CP021B-R37.tsv",
       "size": 72354,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "鍾意",
-          "text": "TECTURE EP-R36-L30 NOT_AUTHORIZED NARROW_OR_REALIGN_ONLY_AS_PACKET_SPECIFIES CASE_BY_CASE NOT_SELECTED_NOT_OPENED Split 鍾意 main-verb NP, clause-like, and auxiliary-like VP uses; retire token-presence fallback and keep word-class analysis neutral. CognitionStatementClause L31 CognitionAndStance QUARANT"
-        }
       ]
     },
     {
       "path": "docs/research/CP024-P0-L45-VERB-VALENCY-INVENTORY-R1.tsv",
       "size": 15016,
       "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
       "matchedTerms": [
         "w17",
         "放鬆"
-      ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "rofile relevant_tags runtime_note evidence_status 放鬆 fong3 sung1 verb action_verb GENERIC_ACTION_TAG action_verb relax; W17 lexicon expansion. RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE 離題 lei4 tai4 verb topic_management_verb VERB_NO_GENERAL_VALENCY_TAG go off topic; W17 COR-002 lexical coverage. RUNTI"
-        },
-        {
-          "term": "放鬆",
-          "text": "surface jyutping runtime_syntax runtime_profile relevant_tags runtime_note evidence_status 放鬆 fong3 sung1 verb action_verb GENERIC_ACTION_TAG action_verb relax; W17 lexicon expansion. RUNTIME_HEURISTIC_NOT_LINGUISTIC_EVIDENCE 離題 lei4 tai4 verb topic_management_verb VERB_NO"
-        }
       ]
     },
     {
       "path": "docs/research/CP036-P1-RESULT-CHANGE-STATE-WRAPPER-AUDIT-R1.md",
       "size": 3490,
       "filenameMatch": true,
-      "matchedTerms": [],
-      "snippets": []
+      "identityTerms": [],
+      "matchedTerms": []
     },
     {
       "path": "docs/research/CP036-P1-RESULT-CHANGE-STATE-WRAPPER-INVENTORY-R1.tsv",
       "size": 2749,
       "filenameMatch": true,
-      "matchedTerms": [],
-      "snippets": []
+      "identityTerms": [],
+      "matchedTerms": []
     },
     {
       "path": "docs/research/CP051-P1-COPULAR-ANOTA-RECONCILIATION-R1.md",
       "size": 4655,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "鍾意",
-          "text": "A-E01` | `你係唔係識講德文咋？` | `CopularANotAQuestion` present | source-attested predicate complement | | `COPA-E02` | `係唔係每個學生都鍾意睇電視呀？` | `CopularANotAQuestion` present | source-attested clause complement | | `COPA-N01` | `你唔去喇，係唔係呀？` | `CopularANotAQuestion` absent | published terminal-tag boundary | The h"
-        }
       ]
     },
     {
       "path": "docs/research/CP056-P1-NEGATED-LEXICALIZED-STATIVE-RETIREMENT-R1.md",
       "size": 3342,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "唔開心",
         "開心"
-      ],
-      "snippets": [
-        {
-          "term": "唔開心",
-          "text": "and prohibitive analyses; - `唔好食呢個。` remains `ProhibitiveImperative`; - ordinary `唔 + property predicate`, including `唔開心`, remains `NegatedStativePredicate`. The ordinary negated-stative templates are explicitly constrained to surface `唔`; the retirement does not license `冇`, `未`, `咪`, or other n"
-        },
-        {
-          "term": "開心",
-          "text": "nd prohibitive analyses; - `唔好食呢個。` remains `ProhibitiveImperative`; - ordinary `唔 + property predicate`, including `唔開心`, remains `NegatedStativePredicate`. The ordinary negated-stative templates are explicitly constrained to surface `唔`; the retirement does not license `冇`, `未`, `咪`, or other n"
-        }
       ]
     },
     {
       "path": "docs/research/CP057-P1-NEGATED-STATIVE-PREDICATE-RECONCILIATION-R1.md",
       "size": 2792,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "唔開心",
         "開心"
-      ],
-      "snippets": [
-        {
-          "term": "唔開心",
-          "text": "egatedStativePredicate`; - boundary: `佢老婆唔係廣東人。` does not contain `NegatedStativePredicate`; - zero-weight probe: `你好似唔開心噃。` continues to protect runtime reachability only. The source examples establish the checked construction and category boundary; they do not validate the parser’s complete subj"
-        },
-        {
-          "term": "開心",
-          "text": "gatedStativePredicate`; - boundary: `佢老婆唔係廣東人。` does not contain `NegatedStativePredicate`; - zero-weight probe: `你好似唔開心噃。` continues to protect runtime reachability only. The source examples establish the checked construction and category boundary; they do not validate the parser’s complete subj"
-        }
       ]
     },
     {
       "path": "docs/research/EVALUATION-PACKET-BLUEPRINTS-CP021B-R37.json",
       "size": 112432,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "攰",
         "壓力",
         "講返正題",
         "唔好離題"
-      ],
-      "snippets": [
-        {
-          "term": "攰",
-          "text": "TransitivePredicate\", \"ProgressiveVP\" ], \"development_seed_surfaces\": [ \"你食緊咩？\", \"佢好攰，但係仲做緊。\", \"食緊飯。\", \"戴緊眼鏡。\", \"雖然好攰，但係佢仲做緊。\", \"雖然好攰，佢仲做緊。\" ], \"development_seed_limit\": \"Accepted regression examples are behavior-preserva"
-        },
-        {
-          "term": "壓力",
-          "text": "\"下年哩個時間咪過囖。\", \"有咩書？\", \"有咩書啦？\", \"有咩書啩？\", \"有咩書喎？\", \"有咩書㗎喇？\", \"我最近好大壓力。\", \"係呀，我最近好大壓力。\", \"你嚟嘅時候，我喺屋企。\", \"我食飯嘅時候，佢打電話畀我。\", \"我買嘅書好貴。\", \"我覺得係真嘅。\" ], \"development_seed_limit\": \"Accepted regression examp"
-        },
-        {
-          "term": "講返正題",
-          "text": "飯。\", \"做好功課。\", \"做好咗功課。\", \"行快啲。\", \"我攞本書返嚟畀你睇。\", \"寄返去。\", \"講大聲啲。\", \"講返正題，你尋日去咗邊度呀？\", \"講返正題。\" ], \"development_seed_limit\": \"Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence"
-        },
-        {
-          "term": "唔好離題",
-          "text": "\", \"ProhibitiveImperative\", \"SuggestionQuestion\" ], \"development_seed_surfaces\": [ \"唔好離題喇。\" ], \"development_seed_limit\": \"Accepted regression examples are behavior-preservation seeds only and are not independent linguistic evidence.\", \"minimum_requir"
-        }
       ]
     },
     {
       "path": "docs/research/GLOSSIKA-YUEHK-A1-W14-20260621-RESEARCH.md",
       "size": 14543,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "辛苦"
-      ],
-      "snippets": [
-        {
-          "term": "辛苦",
-          "text": "shows gaa3 in declaratives, interrogatives, and exclamatives. Exact item-level interpretations remain open. 4. **幾 in 幾辛苦㗎 has a supported narrow degree use.** It modifies a scalar or stative predicate approximately as “quite/fairly.” This does not license interrogative or numeral 幾, nor every ellipt"
-        }
       ]
     },
     {
       "path": "docs/research/LANE-06-CLASSIFIER-NP-SOURCE-MAP-CP021B-R5.md",
       "size": 7793,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "驚"
-      ],
-      "snippets": [
-        {
-          "term": "驚",
-          "text": "numeral or hidden noun. ### `ClassifierObjectNP` The constructor recognizes overt classifier+head material such as `樣驚喜`, but the label and slots build objecthood into the nominal node. Research treats C-N as a general nominal pattern. Simpson et al. illustrate subject and object uses; Xia shows C"
-        }
       ]
     },
     {
       "path": "docs/research/MODAL-DESIDERATIVE-PREFERENCE-SOURCE-MAP-CP021B-R14.md",
       "size": 7212,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "鍾意",
-          "text": "omplement, but its note and fallback also claim object complementation. The fallback promotes any core span containing `鍾意`, without first establishing whether the complement is an NP, VP, or clause-like structure. ## Source-derived boundaries ### 1. Auxiliary position and scope are structured, not"
-        }
       ]
     },
     {
       "path": "docs/research/PARSER-CONSTRUCTION-CANONICAL-CONSOLIDATION-MATRIX-CP021B-R35.tsv",
       "size": 89065,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "攰",
         "壓力",
         "鍾意",
         "講返正題",
         "唔好離題"
-      ],
-      "snippets": [
-        {
-          "term": "攰",
-          "text": "r context conditions. DegreeStativePredicate LANE-10 language provisional 17 21 今日好凍。 | 出面好熱。 | 仲有幾耐先到？ | 好凍。 | 好熱。 | 佢好攰，但係仲做緊。 L42 StativePredication language_family split_required RETAIN_OR_SPLIT_NARROW_SUBTYPE StativePredication CONDITIONAL_AFTER_REMEDIATION D_ARCHITECTURE_RECONSTRUCTION SOURCE_L"
-        },
-        {
-          "term": "壓力",
-          "text": "odifier branches before implementation; keep ModifiedNP internal only. ModifierNP LANE-06 language provisional 9 2 我最近好大壓力。 | 係呀，我最近好大壓力。 L19 NominalModificationAndRelatives language_family split_required RETAIN_OR_SPLIT_NARROW_SUBTYPE NominalModificationAndRelatives CONDITIONAL_AFTER_REMEDIATION C_ST"
-        },
-        {
-          "term": "鍾意",
-          "text": "Intention CONDITIONAL_AFTER_REMEDIATION C_STRUCTURAL_REALIGNMENT SOURCE_LINKED_SPLIT_AND_COMPLEMENT_TYPE_REQUIRED Split 鍾意 main-verb NP, clause-like, and auxiliary-like VP uses; retire token-presence fallback and keep word-class analysis neutral. PriorityMarkerClause LANE-03 language unsupported_gener"
-        },
-        {
-          "term": "講返正題",
-          "text": "plementation. LocativeWhQuestion LANE-07 language unsupported_generalization 14 6 去咗邊度呀？ | 你去咗邊度？ | 你尋日去咗邊度呀？ | 喺邊度呀？ | 講返正題，你尋日去咗邊度呀？ | 邊度呀？ L25 TypedWhAndStanceQuestions language_family split_required RETAIN_OR_SPLIT_NARROW_SUBTYPE TypedWhAndStanceQuestions CONDITIONAL_AFTER_REMEDIATION C_STRUCTURAL_R"
-        },
-        {
-          "term": "唔好離題",
-          "text": "retire the dormant duplicate; preserve 咪/唔好 distinctions. ProhibitiveImperative LANE-07 language research_pending 15 1 唔好離題喇。 L28 DirectivesRequestsAndSuggestions language_family split_required RETAIN_OR_SPLIT_NARROW_SUBTYPE DirectivesRequestsAndSuggestions CONDITIONAL_AFTER_REMEDIATION C_STRUCTURAL_RE"
-        }
       ]
     },
     {
       "path": "docs/research/PARSER-CONSTRUCTION-INTERNAL-PROVENANCE-REGISTER-CP021B-R37.tsv",
       "size": 32161,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "鍾意",
-          "text": "mplement fallback, clause/VP boundary bundling, 想-only desiderative routing, generic degree/cooccurrence shortcuts, and 鍾意 NP/VP/clause complement conflation across three labels. Internal provenance records parser facts, source-search outcomes, and representation decisions only; it is not independent"
-        }
       ]
     },
     {
       "path": "docs/research/PARSER-CONSTRUCTION-INTERNAL-PROVENANCE-REGISTER-CP022-I1A-I04-R1.tsv",
       "size": 33039,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "鍾意",
-          "text": "mplement fallback, clause/VP boundary bundling, 想-only desiderative routing, generic degree/cooccurrence shortcuts, and 鍾意 NP/VP/clause complement conflation across three labels. Internal provenance records parser facts, source-search outcomes, and representation decisions only; it is not independent"
-        }
       ]
     },
     {
       "path": "docs/research/PARSER-CONSTRUCTION-SOURCE-COVERAGE-CP021B-R37.tsv",
       "size": 154548,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "鍾意",
-          "text": "RROW_SUBTYPE -> DesirePreferenceAndIntention; readiness C_STRUCTURAL_REALIGNMENT. Preserve prior source boundary: Split 鍾意 main-verb NP, clause-like, and auxiliary-like VP uses; retire token-presence fallback and keep word-class analysis neutral. PriorityMarkerClause LANE-03 language unsupported_gener"
-        }
       ]
     },
     {
       "path": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv",
       "size": 676724,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "嬲",
         "悶",
         "鍾意",
         "唔鍾意",
         "唔好離題"
-      ],
-      "snippets": [
-        {
-          "term": "嬲",
-          "text": "P-MATTHEWS-2000-BASIC supports_presentational_split Unit 6, PDF p. 40 / printed p. 28 The grammar gives 有(一)個人搵你, 有幾個學生好嬲, and 有好多客人嚟咗 as introduction/presentation patterns. Separate participant-introducing/presentational structures from simple possession or location-based existence. Do not assume ev"
-        },
-        {
-          "term": "悶",
-          "text": "recede Cantonese adjective/property predicates. SRC-LAM-LAU-LEE-2024-SEGMENTATION supports p. 6 section 4.6, examples 好 悶 and 非常 好 The paper identifies degree modification as a common adjective collocation and segments 好, 幾, and 非常 as separate words. License overt degree + property-predicate structur"
-        },
-        {
-          "term": "鍾意",
-          "text": "A and an optional following complement. SRC-LAW-2001-ANOTA supports pp. 296-298, examples (1) and (8a) Examples include 鍾意唔鍾意音樂 and 去唔去巴黎, analyzed as Cantonese A-not-A polar questions. Retain an overt lexical-predicate A唔A subtype with visible complement material. Do not infer unrestricted productivi"
-        },
-        {
-          "term": "唔鍾意",
-          "text": "and an optional following complement. SRC-LAW-2001-ANOTA supports pp. 296-298, examples (1) and (8a) Examples include 鍾意唔鍾意音樂 and 去唔去巴黎, analyzed as Cantonese A-not-A polar questions. Retain an overt lexical-predicate A唔A subtype with visible complement material. Do not infer unrestricted productivity"
-        },
-        {
-          "term": "唔好離題",
-          "text": "GE_REQUIRED ProhibitiveImperative PROH-C02 fixture_impact One non-held-out accepted regression snapshot has this label: 唔好離題喇. PROJECT-CP021B-R27-DIRECTIVE-SUGGESTION-PRIORITY records_nonheldout_fixture_reach test-data/regression-snapshots.json case with source 唔好離題喇 The accepted tree preserves 唔好, 離題,"
-        }
       ]
     },
     {
       "path": "docs/research/PARSER-CONSTRUCTION-SOURCE-REGISTER-CP021B-R37.tsv",
       "size": 79135,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "鍾意",
-          "text": "cept ellipsis; core/non-core distinction; lexical inventories and meanings; main-verb/auxiliary contrasts for 想, 要, and 鍾意; suppletive 要 negation; corpus frequencies in a 22,426-word running text. The word-class analysis, speaker judgments, and one running-text corpus do not prove unrestricted product"
-        }
       ]
     },
     {
       "path": "docs/research/PRQ2-003-JYUT6-SCALAR-PROGRESSION-COLLISION-AUDIT-R1.tsv",
       "size": 8415,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "緊張",
         "開心"
-      ],
-      "snippets": [
-        {
-          "term": "緊張",
-          "text": "probe_or_target current_runtime_result overlap_or_failure decisive_difference current_disposition `你越講，佢越緊張。` NO_TOP_CONSTRUCTION; all six content units remain unwrapped. No paired scalar members or clause dependency is represented. The primary Cantonese analysis treats the two `越` phra"
-        },
-        {
-          "term": "開心",
-          "text": "may provide the first scale, but licensing must remain predicate-specific. EVENT_PROPERTY_CORRELATIVE_PENDING `佢跳得越高，我越開心。` NO_TOP_CONSTRUCTION; all content including `得` remains unwrapped. Existing extent/result infrastructure does not supply the correlative relation. The primary source directly ana"
-        }
       ]
     },
     {
       "path": "docs/research/PRQ2-003-JYUT6-SCALAR-PROGRESSION-RESEARCH-R1.md",
       "size": 21601,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "緊張",
         "開心"
-      ],
-      "snippets": [
-        {
-          "term": "緊張",
-          "text": "LE/EXTENT PREDICATE-A, (SUBJECT-B) + 越 + GRADABLE/EXTENT PREDICATE-B ``` The subjects may be different: ```text 你越講，佢越緊張。 “The more you talk, the more nervous he becomes.” ``` The second scale may move in the opposite ordinary direction: ```text 你越講，佢越唔聽。 “The more you talk, the less he listens.”"
-        },
-        {
-          "term": "開心",
-          "text": "t6 …` examples as lexical comparative correlatives. The Cantonese examples include: ```text 你越講，佢越緊張。 你越講，佢越唔聽。 佢越高，我越開心。 ``` The analysis supports these points: - Cantonese uses overt paired `越` markers in the comparative-correlative construction; - the markers relate two degree or extent varia"
-        }
       ]
     },
     {
       "path": "docs/research/PRQ2-005-HOI1-HABITUAL-ESTABLISHED-ACTIVITY-RESEARCH-R1.md",
       "size": 20339,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "嬲"
-      ],
-      "snippets": [
-        {
-          "term": "嬲",
-          "text": "nal differences. Disposition: separate research neighbor; no aliasing. ### Frequency adverbs `成日`, `通常`, `一向`, and `不嬲` can express frequency or temporal continuity without postverbal `開`. They may co-occur with `V開` in some speech, but the checked authoritative sources do not establish redundancy"
-        }
       ]
     },
     {
       "path": "docs/research/PRQ2-007-HEI2SOENG5LAI4-INCHOATIVE-ASPECT-COLLISION-AUDIT-R1.tsv",
       "size": 8108,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "嬲",
         "驚"
-      ],
-      "snippets": [
-        {
-          "term": "嬲",
-          "text": "tional onset is decomposed into unrelated fragments. Words.hk directly attests this sentence. TRIGGERED_ONSET_MISSING 我一嬲起上嚟就亂咁鬧人。 Partial; DirectionalMotionVP 上嚟 and TransitiveVP 鬧人; first-member onset and higher 一…就 relation absent. Subordinate onset is neither internally nor relationally represent"
-        },
-        {
-          "term": "驚",
-          "text": "ely spatial. Words.hk directly attests a when-property-manifests interpretation. STATE_MANIFESTATION_MISSING 老闆發起脾氣上嚟好得人驚㗎。 Partial; only DirectionalMotionVP 上嚟; 發, 起, 脾氣 and evaluation disconnected. Source-attested split verb-object inchoative is completely absent. Words.hk directly attests 發起脾氣上嚟;"
-        }
       ]
     },
     {
       "path": "docs/research/PRQ2-007-HEI2SOENG5LAI4-INCHOATIVE-ASPECT-RESEARCH-R1.md",
       "size": 28275,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "嬲",
         "驚"
-      ],
-      "snippets": [
-        {
-          "term": "嬲",
-          "text": "TOPIC + V + 起 + OBJECT + 嚟 ``` Directly checked examples include: ```text 佢好突然咁喊起上嚟。 個BB突然間喊起上嚟。 佢哋又嘈起嚟。 個天好快就光起嚟。 我一嬲起上嚟就亂咁鬧人。 佢突然間學起法文嚟。 我個仔一發起脾氣上嚟好似隻老虎咁。 佢打起網球上嚟成個張德培咁。 ``` Modern lexical attestations additionally include: ```text 佢哋聽到個消息之後都不禁喊起上嚟。 佢野蠻起上嚟，真係不可理喻㗎。 老闆發起脾氣上嚟好得人驚㗎。 佢有棚齙牙，笑起上嚟好明顯"
-        },
-        {
-          "term": "驚",
-          "text": "球上嚟成個張德培咁。 ``` Modern lexical attestations additionally include: ```text 佢哋聽到個消息之後都不禁喊起上嚟。 佢野蠻起上嚟，真係不可理喻㗎。 老闆發起脾氣上嚟好得人驚㗎。 佢有棚齙牙，笑起上嚟好明顯。 ``` The supported contribution is an **onset or activation boundary**, not merely upward movement. Depending on predicate and clause type, the construction may:"
-        }
       ]
     },
     {
       "path": "docs/research/PRQ2-007-HEI2SOENG5LAI4-INCHOATIVE-ASPECT-SOURCE-VERIFICATION-R1.tsv",
       "size": 5020,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "驚"
-      ],
-      "snippets": [
-        {
-          "term": "驚",
-          "text": "5LAI4-ATTESTATIONS VERIFIED_CANTONESE_LEXICAL_RESOURCE Words.hk entries checked 2026-07-23: 不禁 lines 22-26 and 56-64, 得人驚 lines 22-26 and 50-57, 不可理喻 lines 22-26 and 49-56, 齙牙 lines 22-26 and 50-58; examples 喊起上嚟, 發起脾氣上嚟, 野蠻起上嚟, 笑起上嚟; https://words.hk/ Supplies contemporary attestations of triggered"
-        }
       ]
     },
     {
       "path": "docs/research/PRQ2-008-ZI2JIU3-ZAU6-SUFFICIENT-CONDITION-RESEARCH-R1.md",
       "size": 6169,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "驚"
-      ],
-      "snippets": [
-        {
-          "term": "驚",
-          "text": "ic acceptance rule. ## Supported bounded core The reference grammar gives these Cantonese profiles: ```text 只要有手有腳，唔使驚餓死嘅。 只要佢肯講句對唔住，我就會原諒佢。 ``` These support the following conservative description: 1. `只要` marks the antecedent as a condition sufficient for the following consequence. 2. The c"
-        }
       ]
     },
     {
       "path": "docs/research/PRQ2-015-MUI5-GO3GO3-DOU1-DISTRIBUTIVE-QUANTIFICATION-COLLISION-AUDIT-R1.tsv",
       "size": 6134,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "擔心",
         "緊張",
         "鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "擔心",
-          "text": "domain plus dou1 NO_TOP_CONSTRUCTION No domain-dou1-predicate construction. core_positive P015-002 subject_domain 個個學生都擔心自己嘅成績。 reduplicated-classifier nominal domain PARTIAL ModifiedNP 個個學生 and local VP only; dou1 and full predicate dependency absent. core_positive P015-003 subject_domain 每間屋都有冷氣。 m"
-        },
-        {
-          "term": "緊張",
-          "text": "masks missing recurring-event dependency; 每次 only local QuantifiedTimeNP. core_positive P015-012 recurring_event 我每次考試都好緊張。 repeated exam-event domain PARTIAL 每次 and 好緊張 are separate; 考試 and 都 unintegrated. core_positive P015-013 recurring_event 佢次次都同我講大話。 reduplicated occasion domain PARTIAL False lo"
-        },
-        {
-          "term": "鍾意",
-          "text": "odifiedNP 本本書 and ExperientialVP 睇過 remain unlinked; 都 omitted from structure. core_positive P015-009 object_topic 隻隻貓我都鍾意。 quantified object before overt subject ROOT_PASS_FALSE_WRAPPER Full-span PreferenceVP plus malformed ModifiedNP 隻隻貓我 absorbs subject pronoun. critical_false_positive P015-010 obj"
-        }
       ]
     },
     {
       "path": "docs/research/PRQ2-015-MUI5-GO3GO3-DOU1-DISTRIBUTIVE-QUANTIFICATION-RESEARCH-R1.md",
       "size": 29595,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "擔心",
         "緊張",
         "鍾意",
         "唔鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "擔心",
-          "text": "onfidence community-dictionary evidence Community dictionary examples additionally attest forms such as: ```text 個個學生都擔心自己嘅成績。 佢次次都同我講大話。 我每次考試都好緊張。 ``` One community note treats postverbal `通知個個` as unacceptable for the intended distributive “notify every student” reading. Because this is not a pe"
-        },
-        {
-          "term": "緊張",
-          "text": "。 佢本本書都睇過。 隻隻貓我都鍾意。 ``` Recurring-time and recurring-event phrases also participate: ```text 每次叫佢幫手做家務，佢都話唔得閒。 我每次考試都好緊張。 佢次次都同我講大話。 佢個個月都準時交租。 ``` However, the evidence does **not** justify a rule that mechanically requires `都` after every `每` phrase or every reduplicated classifier phrase. Modern"
-        },
-        {
-          "term": "鍾意",
-          "text": "ier with the noun omitted when recoverable 所有嘅 + noun ``` Representative source examples include: ```text 個個都讚佢。 個個女仔都鍾意佢。 每間屋都有冷氣。 所有嘅同事都要準時到。 你條條褲都係黑色。 佢本本書都睇過。 我哋間間舖頭都去過。 ``` The quantified domain need not be the grammatical subject. Object-domain examples place the quantified object before the"
-        },
-        {
-          "term": "唔鍾意",
-          "text": "e combinations in which the quantified object precedes an auxiliary or evaluative predicate: ```text 我先生套套衫都嫌貴。 佢隻隻牌子都話唔鍾意。 ``` The reference grammar supports productive pedagogical paradigms, but it is not a substitute for corpus frequency or controlled judgments. Exact limits on omission, marked or"
-        }
       ]
     },
     {
       "path": "docs/research/PRQ2-035-NING4JYUN6-DOU1-COMMITTED-PREFERENCE-COLLISION-AUDIT-R1.tsv",
       "size": 2721,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "鍾意",
         "唔鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "鍾意",
-          "text": "probe_or_target current_runtime_result overlap_or_failure decisive_evidence_difference current_disposition 我寧願去啲唔鍾意嘅公司度做嘢，都唔想渾渾噩噩噉又過多年。 ClauseLink with truncated Preference and member-internal rows The generic relation and local preference do not encode chosen and rejected members. The sourced"
-        },
-        {
-          "term": "唔鍾意",
-          "text": "probe_or_target current_runtime_result overlap_or_failure decisive_evidence_difference current_disposition 我寧願去啲唔鍾意嘅公司度做嘢，都唔想渾渾噩噩噉又過多年。 ClauseLink with truncated Preference and member-internal rows The generic relation and local preference do not encode chosen and rejected members. The sourced"
-        }
       ]
     },
     {
       "path": "docs/research/UC-RQ-001-GENERAL-ZOENG1-DISPOSAL-NATURAL-ATTESTATION-R1.tsv",
       "size": 6420,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "嬲"
-      ],
-      "snippets": [
-        {
-          "term": "嬲",
-          "text": "cation-predicate class. ATT-001-07 SRC-HKCANCOR-UTF8-2015 39aeadf920e0b5ca93d0ad7792c59e740e7bdd65 FC-053_v2 221 噉所以呢佢就好嬲囖，噉跟住呢佢就將個口罩抌咗落地下就發脾氣。 overt pronoun subject classifier NP 個口罩 caused displacement with perfective and goal 抌咗落地下 USABLE_NATURAL_POSITIVE Strong physical-displacement core; followi"
-        }
       ]
     },
     {
       "path": "docs/research/UC-RQ-004-005-COMPARISON-HKCANCOR-ATTESTATION-R1.md",
       "size": 4786,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "辛苦"
-      ],
-      "snippets": [
-        {
-          "term": "辛苦",
-          "text": "`FC-108d_v2:2630` | `重新過我嗰本喎，Cobuild。` | property predicate + demonstrative nominal standard | | `FC-108a_v2:6331` | `重辛苦過A-level啊真係。` | property predicate + event/stage standard | | `FC-108a_v2:6379` | `我都覺得自己勤力過A-level好多，我都未試過咁勤力𡃉真係。` | comparative `勤力過 Standard + differential` followed by experie"
-        }
       ]
     },
     {
       "path": "docs/research/UC-RQ-004-CANTONESE-EQUATIVE-CONSTRUCTION-RESEARCH-R1.md",
       "size": 8656,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "鍾意",
-          "text": "rameter set such as `高`, `大`, `長`, and `厚`, whereas the `一樣咁` profile accepts examples with `矮`, `勤力`, `靚`, and the VP `鍾意食麵`. This blocks treating `咁` as an optional token with no structural or distributional effect. The same study also shows regional diversity across Yue and neighboring Sinitic var"
-        }
       ]
     },
     {
       "path": "docs/research/UC-RQ-025-NULL-ARGUMENT-ZERO-ANAPHORA-COLLISION-AUDIT-R1.tsv",
       "size": 3769,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "鍾意",
-          "text": "Competing null-topic, null-pronoun, argument-ellipsis, and NP-ellipsis analyses remain. QUARANTINE_ANALYSIS UC025-C01 我鍾意呢件衫。 overt baseline Full-span ClauseSpan; suspicious ModifierNP wrapper Bad overt constituency can contaminate omission contrasts. CONTROL_OVERT_VALENCY_FIRST UC025-C02 我鍾意。 specif"
-        }
       ]
     },
     {
       "path": "docs/research/UC-RQ-025-NULL-ARGUMENT-ZERO-ANAPHORA-RESEARCH-R1.md",
       "size": 9771,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "鍾意",
         "唔鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "鍾意",
-          "text": "cked sources support: - a transitive Cantonese predicate with an unpronounced, discourse-recoverable object, as in `我鍾意` after a question about a particular dress; - a definite/specific interpretation referring to an overt discourse antecedent; - non-specific existential, generic, and attributive o"
-        },
-        {
-          "term": "唔鍾意",
-          "text": "le's complete null-topic derivation as parser ontology. ### Lee 2018 Lee gives the direct question-answer contrast `你鍾唔鍾意呢件衫呀？` — `我鍾意呀`, where the dress is the understood object. The paper further documents specific and non-specific object-drop readings, dividing the latter into existential, generic"
-        }
       ]
     },
     {
       "path": "docs/research/UC-RQ-027-ZEOI3-SUPERLATIVE-RESEARCH-R1.md",
       "size": 6959,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "鍾意",
-          "text": "ates that these forms indicate the degree or extent of the state expressed by an adjective or stative verb. It gives `我最鍾意食花生` “I like to eat peanuts the most,” demonstrating a subject, preverbal `最`, a preference predicate, and its following VP complement. Its comparison section separately states tha"
-        }
       ]
     },
     {
       "path": "docs/research/UC-RQ-027-ZEOI3-SUPERLATIVE-SOURCE-VERIFICATION-R1.tsv",
       "size": 1625,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "鍾意",
-          "text": "Sample Analysis. Routledge; degree-adverb discussion and pp. 46, 57 Lists `最 zeoi3` “most” as a degree adverb; gives `我最鍾意食花生`; states that pre-adjectival `最` indicates the superlative. Clinical/developmental coding framework and selected examples do not establish an explicit comparison-set phrase, un"
-        }
       ]
     },
     {
       "path": "docs/research/WECHAT-GX-TRAVEL-002-ADJUDICATION-REPORT.md",
       "size": 7726,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "辛苦"
-      ],
-      "snippets": [
-        {
-          "term": "辛苦",
-          "text": "a negative copular response with particle; do not leave 唔係 unwrapped or require a hidden complement. | | U023 | `唔使自己開咁辛苦。` | remediation_candidate | Wrap 唔使自己開咁辛苦 as one negative-necessity predicate while preserving 咁辛苦 as manner/degree material. | | U028 | `大概開咗五個鐘頭車左右啦。` | not_ready | Analyze 開咗 a"
-        }
       ]
     },
     {
       "path": "docs/research/WECHAT-GX-TRAVEL-002-REGRESSION-REMEDIATION-READINESS-R2.md",
       "size": 2241,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "辛苦"
-      ],
-      "snippets": [
-        {
-          "term": "辛苦",
-          "text": "ations - `U018` `唔係啊。`: restore established negative-copular response coverage without hidden content. - `U023` `唔使自己開咁辛苦。`: verify negative-necessity scope and preserve manner/degree material. - `U042` `一樣㗎咋。`: prevent numeral-classifier misselection and preserve the particle cluster. ## Research-b"
-        }
       ]
     },
     {
       "path": "grammar/lexicalized_only/FormulaDiscourseUnit.md",
       "size": 7653,
       "filenameMatch": false,
-      "matchedTerms": [
+      "identityTerms": [
         "w17"
       ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "vidence-v1.tsv` - `tests/fixtures/regression-snapshots.json` - `test-data/review-only-readiness.tsv` - `test-data/w17-corpus-semantic-disposition.tsv` ## Implementation state - Lifecycle: `runtime_referenced_with_accepted_fixtures` - Visible/focused tests: `not_assessed_in_current_definition_of"
-        }
+      "matchedTerms": [
+        "w17"
       ]
     },
     {
       "path": "grammar/research_pending/ActionStativeVP.md",
       "size": 7951,
       "filenameMatch": false,
-      "matchedTerms": [
+      "identityTerms": [
         "w17"
       ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "- `test-data/native-speaker-naturalness-evidence-v1.tsv` - `tests/fixtures/regression-snapshots.json` - `test-data/w17-corpus-semantic-disposition.tsv` ## Implementation state - Lifecycle: `runtime_referenced_with_accepted_fixtures` - Visible/focused tests: `not_assessed_in_current_definition_of"
-        }
+      "matchedTerms": [
+        "w17"
       ]
     },
     {
       "path": "grammar/research_pending/ComplementEllipsisFragment.md",
       "size": 8959,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "鍾意",
-          "text": "95-196, example (5) - Verification: `VERIFIED_FULL_TEXT_AND_OFFICIAL_PUBLISHER_METADATA` - What it supports: The reply 我鍾意 omits an object whose referent is supplied by the preceding discourse. - Limit: Do not adopt the paper’s null-topic representation as the parser’s only ontology. ### SRC-ZHENG-ZH"
-        }
       ]
     },
     {
       "path": "grammar/research_pending/CoverbFrame.md",
       "size": 8242,
       "filenameMatch": false,
-      "matchedTerms": [
+      "identityTerms": [
         "w17"
       ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "- `test-data/native-speaker-naturalness-evidence-v1.tsv` - `tests/fixtures/regression-snapshots.json` - `test-data/w17-corpus-semantic-disposition.tsv` ## Implementation state - Lifecycle: `runtime_referenced_with_accepted_fixtures` - Visible/focused tests: `not_assessed_in_current_definition_of"
-        }
+      "matchedTerms": [
+        "w17"
       ]
     },
     {
       "path": "grammar/research_pending/DegreeStativePredicate.md",
       "size": 7135,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "悶"
-      ],
-      "snippets": [
-        {
-          "term": "悶",
-          "text": "of LREC-COLING 2024, 11993-12002.](https://aclanthology.org/2024.lrec-main.1047/) - Locator: p. 6 lines/examples for 好 悶 and 非常 好 - Verification: `VERIFIED_FULL_TEXT` - What it supports: The annotation treats degree markers as separate words rather than subparts of the following adjective. - Limit:"
-        }
       ]
     },
     {
       "path": "grammar/research_pending/DesiderativeVP.md",
       "size": 6180,
       "filenameMatch": false,
-      "matchedTerms": [
+      "identityTerms": [
         "w17"
       ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "-v1.tsv` - `test-data/pre-intermediate-gold-corpus.tsv` - `tests/fixtures/regression-snapshots.json` - `test-data/w17-corpus-semantic-disposition.tsv` ## Implementation state - Lifecycle: `runtime_referenced_with_accepted_fixtures` - Visible/focused tests: `not_assessed_in_current_definition_of"
-        }
+      "matchedTerms": [
+        "w17"
       ]
     },
     {
       "path": "grammar/research_pending/ExistentialClause.md",
       "size": 6845,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "嬲"
-      ],
-      "snippets": [
-        {
-          "term": "嬲",
-          "text": "6, PDF p. 40 / printed p. 28 - Verification: `VERIFIED_FULL_TEXT` - What it supports: The grammar gives 有(一)個人搵你, 有幾個學生好嬲, and 有好多客人嚟咗 as introduction/presentation patterns. - Limit: Do not assume every 有 + NP + predicate has the runtime locative-coda structure. ## Native-speaker review - Independe"
-        }
       ]
     },
     {
       "path": "grammar/research_pending/ExistentialPresentationalClause.md",
       "size": 5917,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "嬲"
-      ],
-      "snippets": [
-        {
-          "term": "嬲",
-          "text": "6, PDF p. 40 / printed p. 28 - Verification: `VERIFIED_FULL_TEXT` - What it supports: Examples include 有(一)個人搵你, 有幾個學生好嬲, and 有好多客人嚟咗. - Limit: Do not infer that the post-NP predicate must be a locative coda or that all variants share one syntax. ## Native-speaker review - Independent speaker reco"
-        }
       ]
     },
     {
       "path": "grammar/research_pending/FragmentAnswer.md",
       "size": 8126,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "鍾意",
-          "text": "AN` - What it supports: The chapter separates core/non-core auxiliaries and main-verb/auxiliary contrasts for 想, 要, and 鍾意. - Limit: Do not infer a uniform ellipsis syntax or complement type across all listed heads. ### SRC-SIO-2011-GE3 - Citation: [Sio, Joanna Ut-Seong. 2011. The Cantonese ge3. In"
-        }
       ]
     },
     {
       "path": "grammar/research_pending/FragmentQuestion.md",
       "size": 5654,
       "filenameMatch": false,
-      "matchedTerms": [
+      "identityTerms": [
         "w17"
       ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "-v1.tsv` - `test-data/pre-intermediate-gold-corpus.tsv` - `tests/fixtures/regression-snapshots.json` - `test-data/w17-corpus-semantic-disposition.tsv` ## Implementation state - Lifecycle: `runtime_referenced_with_accepted_fixtures` - Visible/focused tests: `not_assessed_in_current_definition_of"
-        }
+      "matchedTerms": [
+        "w17"
       ]
     },
     {
       "path": "grammar/research_pending/NegatedStativePredicate.md",
       "size": 7075,
       "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
       "matchedTerms": [
         "w17",
         "唔開心",
         "開心"
-      ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "reachability: `REACH-009` emits this label for `你好似唔開心噃。`; linguistic evidence weight is **0**; provenance: `test-data/w17-naturalized-alternatives.tsv#COR-W17-013`. - Evidence state: `one_exact_source_positive_and_one_exact_source_boundary` - Executable or review records containing this label: - `t"
-        },
-        {
-          "term": "唔開心",
-          "text": "inal predicate and remains outside this label. - Implementation-only reachability: `REACH-009` emits this label for `你好似唔開心噃。`; linguistic evidence weight is **0**; provenance: `test-data/w17-naturalized-alternatives.tsv#COR-W17-013`. - Evidence state: `one_exact_source_positive_and_one_exact_source_bo"
-        },
-        {
-          "term": "開心",
-          "text": "nal predicate and remains outside this label. - Implementation-only reachability: `REACH-009` emits this label for `你好似唔開心噃。`; linguistic evidence weight is **0**; provenance: `test-data/w17-naturalized-alternatives.tsv#COR-W17-013`. - Evidence state: `one_exact_source_positive_and_one_exact_source_bo"
-        }
       ]
     },
     {
       "path": "grammar/research_pending/PreferenceVP.md",
       "size": 5717,
       "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
       "matchedTerms": [
         "w17",
         "鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "e-CP021B.tsv` - `test-data/grammar-legitimacy-audit.json` - `test-data/grammar-legitimacy-audit.tsv` - `test-data/w17-corpus-semantic-disposition.tsv` ## Implementation state - Lifecycle: `runtime_referenced_with_source_linked_fixture` - Visible/focused tests: `passing` - Render review: `not_as"
-        },
-        {
-          "term": "鍾意",
-          "text": "(53)-(54) - Verification: `VERIFIED_SCHOLARLY_FULL_TEXT_SCAN` - What it supports: The article permits 咗 after main-verb 鍾意 but rejects it in the cited complement-clause configuration. - Limit: Do not convert one judgment pair into a universal ban on all aspect with all preference complements. ### SRC"
-        }
       ]
     },
     {
       "path": "grammar/research_pending/ProhibitiveImperative.md",
       "size": 6287,
       "filenameMatch": false,
-      "matchedTerms": [
+      "identityTerms": [
         "w17"
       ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "-audit.json` - `test-data/grammar-legitimacy-audit.tsv` - `tests/fixtures/regression-snapshots.json` - `test-data/w17-corpus-semantic-disposition.tsv` ## Implementation state - Lifecycle: `runtime_referenced_with_accepted_fixtures` - Visible/focused tests: `not_assessed_in_current_definition_of"
-        }
+      "matchedTerms": [
+        "w17"
       ]
     },
     {
       "path": "grammar/research_pending/VerbComplementVP.md",
       "size": 7638,
       "filenameMatch": false,
-      "matchedTerms": [
+      "identityTerms": [
         "w17"
       ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "-v1.tsv` - `test-data/pre-intermediate-gold-corpus.tsv` - `tests/fixtures/regression-snapshots.json` - `test-data/w17-corpus-semantic-disposition.tsv` ## Implementation state - Lifecycle: `runtime_referenced_with_accepted_fixtures` - Visible/focused tests: `not_assessed_in_current_definition_of"
-        }
+      "matchedTerms": [
+        "w17"
       ]
     },
     {
       "path": "grammar/unsupported_generalization/CognitionStatementClause.md",
       "size": 7713,
       "filenameMatch": true,
-      "matchedTerms": [],
-      "snippets": []
+      "identityTerms": [],
+      "matchedTerms": []
     },
     {
       "path": "grammar/unsupported_generalization/CopularANotAQuestion.md",
       "size": 10247,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "鍾意",
-          "text": "ackets/cp051-p1-copular-anota-r1/focused-evaluation-packet.json` - Positive source-linked cases: `你係唔係識講德文咋？`; `係唔係每個學生都鍾意睇電視呀？`. - Negative source-linked tag boundary: `你唔去喇，係唔係呀？`. - Historical implementation-only probe: `係唔係你嘅？`; linguistic evidence weight **0**. - Current standardized coverage: **"
-        }
       ]
     },
     {
       "path": "grammar/unsupported_generalization/LocativeWhQuestion.md",
       "size": 9112,
       "filenameMatch": false,
-      "matchedTerms": [
+      "identityTerms": [
         "w17"
       ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "- `test-data/native-speaker-naturalness-evidence-v1.tsv` - `tests/fixtures/regression-snapshots.json` - `test-data/w17-corpus-semantic-disposition.tsv` ## Implementation state - Lifecycle: `runtime_referenced_with_accepted_fixtures` - Visible/focused tests: `not_assessed_in_current_definition_of"
-        }
+      "matchedTerms": [
+        "w17"
       ]
     },
     {
       "path": "grammar/unsupported_generalization/MotionPurposeChain.md",
       "size": 7796,
       "filenameMatch": false,
-      "matchedTerms": [
+      "identityTerms": [
         "w17"
       ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "- `test-data/native-speaker-naturalness-evidence-v1.tsv` - `tests/fixtures/regression-snapshots.json` - `test-data/w17-corpus-semantic-disposition.tsv` ## Implementation state - Lifecycle: `runtime_referenced_with_accepted_fixtures` - Visible/focused tests: `not_assessed_in_current_definition_of"
-        }
+      "matchedTerms": [
+        "w17"
       ]
     },
     {
       "path": "grammar/unsupported_generalization/SourceMotionClause.md",
       "size": 8108,
       "filenameMatch": true,
-      "matchedTerms": [],
-      "snippets": []
+      "identityTerms": [],
+      "matchedTerms": []
     },
     {
       "path": "grammar/unsupported_generalization/SuggestionQuestion.md",
       "size": 7407,
       "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
       "matchedTerms": [
         "w17",
         "攰"
-      ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "achability: `REACH-013` emits this label for `你攰唔攰？不如休息吓。`; linguistic evidence weight is **0**; provenance: `test-data/w17-glossika-corpus.tsv#COR-W17-010`. - Focused PRQ2-013 coverage retains lone suggestion `不如 B` while excluding ordinary comparison `A 不如 B` and paired ordered preference `與其 A，不"
-        },
-        {
-          "term": "攰",
-          "text": "e: `tests/constructions/SuggestionQuestion.json` - Implementation-only reachability: `REACH-013` emits this label for `你攰唔攰？不如休息吓。`; linguistic evidence weight is **0**; provenance: `test-data/w17-glossika-corpus.tsv#COR-W17-010`. - Focused PRQ2-013 coverage retains lone suggestion `不如 B` while exclu"
-        }
       ]
     },
     {
       "path": "src/parser/detectors/modality/intention-preference.js",
       "size": 4551,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "鍾意",
-          "text": "ableSpaceText(bareCore); if (compact.length < 3 || !nodeCanFillSlot(compact[0], \"subject\") || !isToken(compact[1], \"鍾意\")) return null; const complement = categorySubspanFor(compact.slice(2), [ \"TransitiveVP\", \"ProductiveVO\", \"DirectionalMotionVP\", \"CompoundDirectionalMo"
-        }
       ]
     },
     {
       "path": "src/parser/detectors/np/core.js",
       "size": 12665,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "驚"
-      ],
-      "snippets": [
-        {
-          "term": "驚",
-          "text": "-NP\", [classifier, head], { note: \"v0.5.35 classifier-headed object NP without overt numeral/demonstrative, e.g. 樣驚喜.\", slots: templateDerivedSlots(\"ClassifierObjectNP\", [classifier, head]), trace: traceInfo(\"generative_template\", { construction_type: \"ClassifierObjectNP\","
-        }
       ]
     },
     {
       "path": "src/parser/detectors/transfer/passive-permissive.js",
       "size": 17627,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "鍾意",
-          "text": "PreMarkerMaterial)) return null; // The pre-marker span must be participant-like, not a matrix predicate such // as 鍾意. Unknown CJK can remain inside an NP-shaped span, but an overt // action/state/manner predicate before 畀 belongs to a larger construction. if (participantNodes.some((node) =>"
-        }
       ]
     },
     {
       "path": "src/parser/features/token-features.js",
       "size": 34308,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "開心",
         "鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "開心",
-          "text": "\"價\", \"價錢\", \"價位\", \"錢\", \"蚊\"].includes(surface)) domains.push(\"price_property\"); if (syntaxHas(syntax, \"emotion\") || [\"開心\", \"難過\"].includes(surface)) domains.push(\"emotion\"); if (isCognition || [\"覺得\", \"諗\", \"知\", \"記得\", \"唔知\"].includes(surface)) domains.push(\"cognition\"); if (isSpeech) domains.pus"
-        },
-        {
-          "term": "鍾意",
-          "text": "atures.verb_class.push(\"movement\"); if ([\"講\", \"話\"].includes(surface)) features.verb_class.push(\"speech\"); if ([\"鍾意\"].includes(surface)) features.verb_class.push(\"preference\"); if ([\"好似\"].includes(surface)) features.verb_class.push(\"seeming\"); features.semantic = [...new Set(features.s"
-        }
       ]
     },
     {
       "path": "src/parser/orchestration/wrap-core.js",
       "size": 20775,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "鍾意",
-          "text": "[sourceLinkedPreferenceSpan]; // Preference needs a top-level pass before broad NP category wrapping. // Otherwise 鍾意 + VP can be mis-wrapped as ModifiedNP because the VP exports noun/object slots from its object child. const rawPreferenceSpan = rawPreferenceTemplateFallback(core); if (rawPre"
-        }
       ]
     },
     {
       "path": "src/parser/orchestration/wrap-predicate.js",
       "size": 3275,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "開心"
-      ],
-      "snippets": [
-        {
-          "term": "開心",
-          "text": ", rule: \"single stative token\", reason: \"Generated label/syntax indicates stative.\" }) })]; } // Degree/stative: 好 開心, 太 貴, 有啲 貴 if (nodes.length >= 2 && [\"好\", \"太\", \"幾\", \"有啲\"].some((s) => isToken(nodes[0], s)) && isStativeToken(nodes[1])) { return [construction(\"StativePredicate\", \"Stative\""
-        }
       ]
     },
     {
       "path": "src/plugin-entry.js",
       "size": 272142,
       "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
       "matchedTerms": [
         "w17",
         "鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "topic-frame provenance for later licensed object/domain ellipsis without hidden tokens. --> <!-- v0.5.150-r2: Completes W17 import and the first bounded corpus lexical slice (離題, 關於, OT, 夜), while preserving learner-role/internal-slot separation and transparent negative/large-number tokenization. No ne"
-        },
-        {
-          "term": "鍾意",
-          "text": "l)) return label; if (label === \"classifier\") return \"measure_word\"; if (label === \"stance\") { if (surface === \"鍾意\") return \"like\"; if (syntax.includes(\"suggestion_marker\") || syntax.includes(\"possibility\") || syntax.includes(\"seeming\") || syntax.includes(\"should\")) return \"func\"; retu"
-        }
       ]
     },
     {
       "path": "src/runtime-resources/grammar/templates/construction-templates.js",
       "size": 21205,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "驚"
-      ],
-      "snippets": [
-        {
-          "term": "驚",
-          "text": "te: [\"classifier!\", \"head_noun!\"], note: \"Classifier-headed object NP without an overt numeral/demonstrative, e.g. 樣驚喜.\" }, { type: \"CoordinatedSubjectModalPredicateClause\", label: \"CoordSubjModal\", template: [\"subject!\", \"modal_vp!\", \"particle?\"], note: \"Coordinated-subject m"
-        }
       ]
     },
     {
       "path": "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
       "size": 1085,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "唔開心",
         "開心",
         "鍾意",
         "唔鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "唔開心",
-          "text": "\"use strict\"; module.exports = [ \"唔開心\", \"唔鍾意\", \"一百萬\", \"二百萬\", \"三百萬\", \"四百萬\", \"五百萬\", \"六百萬\", \"七百萬\", \"八百萬\", \"九百萬\", \"一千萬\", \"二千萬\", \"三千萬\", \"四千萬\", \"五千萬\", \"六千萬\", \"七千萬\", \"八千萬\", \"九千萬\", \"一億\", \"我覺得\", \"我知\", \"我唔知\", \"唔知\", \"唔可以"
-        },
-        {
-          "term": "開心",
-          "text": "\"use strict\"; module.exports = [ \"唔開心\", \"唔鍾意\", \"一百萬\", \"二百萬\", \"三百萬\", \"四百萬\", \"五百萬\", \"六百萬\", \"七百萬\", \"八百萬\", \"九百萬\", \"一千萬\", \"二千萬\", \"三千萬\", \"四千萬\", \"五千萬\", \"六千萬\", \"七千萬\", \"八千萬\", \"九千萬\", \"一億\", \"我覺得\", \"我知\", \"我唔知\", \"唔知\", \"唔可以"
-        },
-        {
-          "term": "鍾意",
-          "text": "\"use strict\"; module.exports = [ \"唔開心\", \"唔鍾意\", \"一百萬\", \"二百萬\", \"三百萬\", \"四百萬\", \"五百萬\", \"六百萬\", \"七百萬\", \"八百萬\", \"九百萬\", \"一千萬\", \"二千萬\", \"三千萬\", \"四千萬\", \"五千萬\", \"六千萬\", \"七千萬\", \"八千萬\", \"九千萬\", \"一億\", \"我覺得\", \"我知\", \"我唔知\", \"唔知\", \"唔可以\", \"唔要\""
-        },
-        {
-          "term": "唔鍾意",
-          "text": "\"use strict\"; module.exports = [ \"唔開心\", \"唔鍾意\", \"一百萬\", \"二百萬\", \"三百萬\", \"四百萬\", \"五百萬\", \"六百萬\", \"七百萬\", \"八百萬\", \"九百萬\", \"一千萬\", \"二千萬\", \"三千萬\", \"四千萬\", \"五千萬\", \"六千萬\", \"七千萬\", \"八千萬\", \"九千萬\", \"一億\", \"我覺得\", \"我知\", \"我唔知\", \"唔知\", \"唔可以\", \"唔要\""
-        }
       ]
     },
     {
       "path": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
       "size": 20707,
       "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
       "matchedTerms": [
         "w17",
         "唔開心",
@@ -1419,729 +887,56 @@
         "鍾意",
         "唔鍾意",
         "興奮",
+        "孤獨",
+        "滿足",
+        "驕傲",
+        "嫉妒",
+        "焦慮",
+        "感激",
+        "慚愧",
+        "害怕",
+        "感恩",
+        "好奇",
+        "樂觀",
         "講返正題"
-      ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "ort is implemented in the // generated construction templates below; lexical entries remain unchanged. // v0.5.151: W17 lexical-boundary blockers. These multi-character lexical items // prevent valid words from being split into independently productive grammar material. [\"正題\", { label: \"what\","
-        },
-        {
-          "term": "唔開心",
-          "text": "dances. // Negative stative/preference phrases and large numerals remain registered but tokenize compositionally. [\"唔開心\", { label: \"like\", jyutping: \"m4 hoi1 sam1\", syntax: \"negative_stative_phrase compositional_lexicon_entry\", note: \"unhappy; registered from W17 but forced to tokenize as 唔 + 開心 so"
-        },
-        {
-          "term": "攰",
-          "text": "n_entry\", note: \"unhappy; registered from W17 but forced to tokenize as 唔 + 開心 so the negator remains visible.\" }], [\"攰\", { label: \"like\", jyutping: \"gui6\", syntax: \"stative_predicate emotion_state_stative\", note: \"tired; W17 lexicon expansion.\" }], [\"嬲\", { label: \"like\", jyutping: \"nau1\", syntax"
-        },
-        {
-          "term": "嬲",
-          "text": "ke\", jyutping: \"gui6\", syntax: \"stative_predicate emotion_state_stative\", note: \"tired; W17 lexicon expansion.\" }], [\"嬲\", { label: \"like\", jyutping: \"nau1\", syntax: \"stative_predicate emotion_state_stative\", note: \"angry; W17 lexicon expansion.\" }], [\"驚\", { label: \"like\", jyutping: \"geng1\", synta"
-        },
-        {
-          "term": "驚",
-          "text": "ke\", jyutping: \"nau1\", syntax: \"stative_predicate emotion_state_stative\", note: \"angry; W17 lexicon expansion.\" }], [\"驚\", { label: \"like\", jyutping: \"geng1\", syntax: \"stative_predicate emotion_state_stative\", note: \"scared/startled/surprised; W17 lexicon expansion.\" }], [\"擔心\", { label: \"doing\", j"
-        },
-        {
-          "term": "擔心",
-          "text": "\", syntax: \"stative_predicate emotion_state_stative\", note: \"scared/startled/surprised; W17 lexicon expansion.\" }], [\"擔心\", { label: \"doing\", jyutping: \"daam1 sam1\", syntax: \"mental_state_verb cognition_predicate\", note: \"worry / be worried; learner-visible verb role remains doing while cognition is"
-        },
-        {
-          "term": "悶",
-          "text": "ate\", note: \"worry / be worried; learner-visible verb role remains doing while cognition is internal metadata.\" }], [\"悶\", { label: \"like\", jyutping: \"mun6\", syntax: \"stative_predicate emotion_state_stative\", note: \"bored; W17 lexicon expansion.\" }], [\"緊張\", { label: \"like\", jyutping: \"gan2 zoeng1\""
-        },
-        {
-          "term": "緊張",
-          "text": "ke\", jyutping: \"mun6\", syntax: \"stative_predicate emotion_state_stative\", note: \"bored; W17 lexicon expansion.\" }], [\"緊張\", { label: \"like\", jyutping: \"gan2 zoeng1\", syntax: \"stative_predicate emotion_state_stative\", note: \"nervous/tense; W17 lexicon expansion.\" }], [\"壓力\", { label: \"what\", jyutping"
-        },
-        {
-          "term": "壓力",
-          "text": "\"gan2 zoeng1\", syntax: \"stative_predicate emotion_state_stative\", note: \"nervous/tense; W17 lexicon expansion.\" }], [\"壓力\", { label: \"what\", jyutping: \"aat3 lik6\", syntax: \"abstract_noun object_np topic_np\", note: \"pressure/stress; W17 lexicon expansion.\" }], [\"辛苦\", { label: \"like\", jyutping: \"san1"
-        },
-        {
-          "term": "辛苦",
-          "text": "tping: \"aat3 lik6\", syntax: \"abstract_noun object_np topic_np\", note: \"pressure/stress; W17 lexicon expansion.\" }], [\"辛苦\", { label: \"like\", jyutping: \"san1 fu2\", syntax: \"stative_predicate emotion_state_stative\", note: \"tough/tiring/laborious; W17 lexicon expansion.\" }], [\"感動\", { label: \"like\", jy"
-        },
-        {
-          "term": "感動",
-          "text": "fu2\", syntax: \"stative_predicate emotion_state_stative\", note: \"tough/tiring/laborious; W17 lexicon expansion.\" }], [\"感動\", { label: \"like\", jyutping: \"gam2 dung6\", syntax: \"stative_predicate emotion_state_stative\", note: \"emotionally moved/touched; W17 lexicon expansion.\" }], [\"激動\", { label: \"like"
-        },
-        {
-          "term": "激動",
-          "text": "\", syntax: \"stative_predicate emotion_state_stative\", note: \"emotionally moved/touched; W17 lexicon expansion.\" }], [\"激動\", { label: \"like\", jyutping: \"gik1 dung6\", syntax: \"stative_predicate emotion_state_stative\", note: \"emotionally excited/agitated; W17 lexicon expansion.\" }], [\"失望\", { label: \"l"
-        },
-        {
-          "term": "失望",
-          "text": "syntax: \"stative_predicate emotion_state_stative\", note: \"emotionally excited/agitated; W17 lexicon expansion.\" }], [\"失望\", { label: \"like\", jyutping: \"sat1 mong6\", syntax: \"stative_predicate emotion_state_stative\", note: \"disappointed; W17 lexicon expansion.\" }], [\"放鬆\", { label: \"doing\", jyutping:"
-        },
-        {
-          "term": "放鬆",
-          "text": ": \"sat1 mong6\", syntax: \"stative_predicate emotion_state_stative\", note: \"disappointed; W17 lexicon expansion.\" }], [\"放鬆\", { label: \"doing\", jyutping: \"fong3 sung1\", syntax: \"verb action_verb\", note: \"relax; W17 lexicon expansion.\" }], [\"傷心\", { label: \"like\", jyutping: \"soeng1 sam1\", syntax: \"stat"
-        },
-        {
-          "term": "開心",
-          "text": "ances. // Negative stative/preference phrases and large numerals remain registered but tokenize compositionally. [\"唔開心\", { label: \"like\", jyutping: \"m4 hoi1 sam1\", syntax: \"negative_stative_phrase compositional_lexicon_entry\", note: \"unhappy; registered from W17 but forced to tokenize as 唔 + 開心 so"
-        },
-        {
-          "term": "傷心",
-          "text": "\", { label: \"doing\", jyutping: \"fong3 sung1\", syntax: \"verb action_verb\", note: \"relax; W17 lexicon expansion.\" }], [\"傷心\", { label: \"like\", jyutping: \"soeng1 sam1\", syntax: \"stative_predicate emotion_state_stative\", note: \"sad/heartbroken; W17 lexicon expansion.\" }], [\"唔鍾意\", { label: \"like\", jyutp"
-        },
-        {
-          "term": "鍾意",
-          "text": "eng1 sam1\", syntax: \"stative_predicate emotion_state_stative\", note: \"sad/heartbroken; W17 lexicon expansion.\" }], [\"唔鍾意\", { label: \"like\", jyutping: \"m4 zung1 ji3\", syntax: \"negative_preference_phrase compositional_lexicon_entry\", note: \"dislike/not like; registered from W17 but forced to tokenize"
-        },
-        {
-          "term": "唔鍾意",
-          "text": "oeng1 sam1\", syntax: \"stative_predicate emotion_state_stative\", note: \"sad/heartbroken; W17 lexicon expansion.\" }], [\"唔鍾意\", { label: \"like\", jyutping: \"m4 zung1 ji3\", syntax: \"negative_preference_phrase compositional_lexicon_entry\", note: \"dislike/not like; registered from W17 but forced to tokenize"
-        },
-        {
-          "term": "興奮",
-          "text": "/not like; registered from W17 but forced to tokenize as 唔 + 鍾意 so negation and preference remain transparent.\" }], [\"興奮\", { label: \"like\", jyutping: \"hing1 fan5\", syntax: \"stative_predicate emotion_state_stative\", note: \"excited; W17 lexicon expansion.\" }], [\"孤獨\", { label: \"like\", jyutping: \"gu1"
-        },
-        {
-          "term": "講返正題",
-          "text": "pic_np object_np discourse_topic\", note: \"main topic / main point; lexical boundary blocks the false 正 stative parse in 講返正題.\" }], [\"最近\", { label: \"when\", jyutping: \"zeoi3 gan6\", syntax: \"temporal_adjunct time_expression\", note: \"recently / lately; lexical boundary blocks the false 最 + 近 modifier pars"
-        }
       ]
     },
     {
       "path": "src/runtime-resources/lexicon/token-lexicon/statives.js",
       "size": 8632,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "開心"
-      ],
-      "snippets": [
-        {
-          "term": "開心",
-          "text": "\"use strict\"; module.exports = [ // Statives / property predicates [\"開心\", { label: \"like\", jyutping: \"hoi1 sam1\", syntax: \"stative_predicate\", note: \"happy\" }], [\"熟\", { label: \"like\", jyutping: \"suk6\", syntax: \"stative_predicate result_state_propert"
-        }
       ]
     },
     {
       "path": "src/runtime-resources/lexicon/token-lexicon/verbs.js",
       "size": 23639,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "驚",
         "鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "驚",
-          "text": "re_word\", jyutping: \"joeng6\", syntax: \"classifier_kind_item\", note: \"measure word / classifier for a kind/item, as in 有樣驚喜.\" }], [\"塊\", { label: \"measure_word\", jyutping: \"faai3\", syntax: \"classifier_flat_piece\", note: \"measure word / classifier for flat pieces/slices.\" }], [\"座\", { label: \"measure"
-        },
-        {
-          "term": "鍾意",
-          "text": "it\" }], [\"平均分\", { label: \"doing\", jyutping: \"ping4 gwan1 fan1\", syntax: \"compound_verb\", note: \"split evenly\" }], [\"鍾意\", { label: \"like\", jyutping: \"zung1 ji3\", syntax: \"preference_predicate\", note: \"like / prefer\" }], [\"信\", { label: \"doing\", jyutping: \"seon3\", syntax: \"belief_verb\", note: \"beli"
-        }
       ]
     },
     {
-      "path": "tests/constructions/AssociativeNP.json",
-      "size": 2375,
+      "path": "test-data/a1-context-status-fixture.tsv",
+      "size": 12502,
       "filenameMatch": false,
-      "matchedTerms": [
-        "w17"
-      ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "5, \"snapshot_cases\": [ { \"case_id\": \"REG-0390\", \"source\": \"食咗香港嘅飯。\", \"origins\": [ \"run-w17-overt-object-selection-compatibility-guard.js\" ], \"assertion\": \"construction_present_in_exact_snapshot\" } ], \"focused_cases\": [ { \"case_id\": \"CP061-A"
-        }
-      ]
-    },
-    {
-      "path": "tests/constructions/ClauseRelationEdge.json",
-      "size": 9675,
-      "filenameMatch": false,
-      "matchedTerms": [
-        "攰"
-      ],
-      "snippets": [
-        {
-          "term": "攰",
-          "text": "\"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \"REG-0165\", \"source\": \"佢好攰，但係仲做緊。\", \"origins\": [ \"accepted-v0.5.159-hierarchical-recursive-clause-linking\" ], \"assertion\": \"construction_present_in_exact_snapshot\" }, {"
-        }
-      ]
-    },
-    {
-      "path": "tests/constructions/ClauseRelationGraph.json",
-      "size": 31755,
-      "filenameMatch": false,
-      "matchedTerms": [
-        "w17",
-        "攰",
-        "壓力",
-        "鍾意",
-        "唔鍾意",
-        "講返正題",
-        "關於呢個問題"
-      ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "\"source\": \"呢個故事，我食咗，佢都食咗。\", \"origins\": [ \"run-a1-topic-chain-null-object-linkage.js\", \"run-w17-overt-object-selection-compatibility-guard.js\", \"run-w17-selection-review-wrapper-structural-preservation.js\", \"run-current-focused-v0.5.156-topic-frame-linker-acc"
-        },
-        {
-          "term": "攰",
-          "text": "\"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \"REG-0165\", \"source\": \"佢好攰，但係仲做緊。\", \"origins\": [ \"accepted-v0.5.159-hierarchical-recursive-clause-linking\" ], \"assertion\": \"construction_present_in_exact_snapshot\" }, {"
-        },
-        {
-          "term": "壓力",
-          "text": "assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \"REG-0353\", \"source\": \"係呀，我最近好大壓力。\", \"origins\": [ \"run-w17-lexical-boundary-blockers.js\" ], \"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \"REG-0358\","
-        },
-        {
-          "term": "鍾意",
-          "text": "\": 0, \"purpose\": \"runtime_reachability_only\" }, { \"case_id\": \"PRQ2-015-I01\", \"source\": \"我寧願去啲唔鍾意嘅公司度做嘢，都唔想渾渾噩噩噉又過多年。\", \"assertion\": \"trace_detail_equals\", \"expected_surface\": \"我寧願去啲唔鍾意嘅公司度做嘢，都唔想渾渾噩噩噉又過多年\", \"expected_trace_detail\": { \"clause_linking_s"
-        },
-        {
-          "term": "唔鍾意",
-          "text": "t\": 0, \"purpose\": \"runtime_reachability_only\" }, { \"case_id\": \"PRQ2-015-I01\", \"source\": \"我寧願去啲唔鍾意嘅公司度做嘢，都唔想渾渾噩噩噉又過多年。\", \"assertion\": \"trace_detail_equals\", \"expected_surface\": \"我寧願去啲唔鍾意嘅公司度做嘢，都唔想渾渾噩噩噉又過多年\", \"expected_trace_detail\": { \"clause_linking_s"
-        },
-        {
-          "term": "講返正題",
-          "text": "\"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \"REG-0495\", \"source\": \"講返正題，你尋日去咗邊度呀？\", \"origins\": [ \"run-w17-lexical-boundary-blockers.js\", \"run-w17-perfective-locative-wh-question.js\", \"run-w17-perfective-motion-goal-declar"
-        },
-        {
-          "term": "關於呢個問題",
-          "text": "\"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \"REG-0507\", \"source\": \"關於呢個問題，我想去。\", \"origins\": [ \"run-current-focused-v0.5.156-topic-frame-linker-accounting.js\" ], \"assertion\": \"construction_present_in_exact_snapshot\" }, {"
-        }
-      ]
-    },
-    {
-      "path": "tests/constructions/ClauseRelationMemberSpan.json",
-      "size": 9861,
-      "filenameMatch": false,
-      "matchedTerms": [
-        "攰"
-      ],
-      "snippets": [
-        {
-          "term": "攰",
-          "text": "\"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \"REG-0165\", \"source\": \"佢好攰，但係仲做緊。\", \"origins\": [ \"accepted-v0.5.159-hierarchical-recursive-clause-linking\" ], \"assertion\": \"construction_present_in_exact_snapshot\" }, {"
-        }
-      ]
-    },
-    {
-      "path": "tests/constructions/ClauseSpan.json",
-      "size": 31545,
-      "filenameMatch": false,
-      "matchedTerms": [
-        "w17",
-        "攰",
-        "壓力",
-        "開心"
-      ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "_in_exact_snapshot\" }, { \"case_id\": \"REG-0103\", \"source\": \"你去咗香港。\", \"origins\": [ \"run-w17-perfective-motion-goal-declarative.js\" ], \"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \"REG-0105\", \"source\": \"你去咩？\","
-        },
-        {
-          "term": "攰",
-          "text": "\"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \"REG-0165\", \"source\": \"佢好攰，但係仲做緊。\", \"origins\": [ \"accepted-v0.5.159-hierarchical-recursive-clause-linking\" ], \"assertion\": \"construction_present_in_exact_snapshot\" }, {"
-        },
-        {
-          "term": "壓力",
-          "text": "\"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \"REG-0287\", \"source\": \"我最近好大壓力。\", \"origins\": [ \"run-w17-lexical-boundary-blockers.js\", \"run-w17-perfective-locative-wh-question.js\", \"run-w17-perfective-motion-goal-declarative.js\""
-        },
-        {
-          "term": "開心",
-          "text": "\"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \"REG-0308\", \"source\": \"我覺得佢好開心喎。\", \"origins\": [ \"run-a1-final-wo3-evidential-scope-boundary.js\" ], \"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \""
-        }
-      ]
-    },
-    {
-      "path": "tests/constructions/CognitionStatementClause.json",
-      "size": 3694,
-      "filenameMatch": true,
-      "matchedTerms": [],
-      "snippets": []
-    },
-    {
-      "path": "tests/constructions/CompletionQuestion.json",
-      "size": 3851,
-      "filenameMatch": false,
-      "matchedTerms": [
-        "w17"
-      ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "in_exact_snapshot\" }, { \"case_id\": \"REG-0123\", \"source\": \"你食咗香港未？\", \"origins\": [ \"run-w17-overt-object-selection-compatibility-guard.js\", \"run-w17-selection-review-wrapper-structural-preservation.js\" ], \"assertion\": \"construction_present_in_exact_sn"
-        }
-      ]
-    },
-    {
-      "path": "tests/constructions/CopularANotAQuestion.json",
-      "size": 2511,
-      "filenameMatch": false,
-      "matchedTerms": [
-        "鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "鍾意",
-          "text": "on of source romanization\" }, { \"case_id\": \"CP051-P1-COPULAR-ANOTA-R1:COPA-E02\", \"source\": \"係唔係每個學生都鍾意睇電視呀？\", \"class\": \"full_copular_a_not_a_clause_complement\", \"expected_profile\": \"construction_present\", \"assertion\": \"construction_present\", \"provenance\": \"r"
-        }
-      ]
-    },
-    {
-      "path": "tests/constructions/DegreeStativePredicate.json",
-      "size": 6450,
-      "filenameMatch": false,
-      "matchedTerms": [
-        "w17",
-        "攰",
-        "壓力",
-        "開心"
-      ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "n_exact_snapshot\" }, { \"case_id\": \"REG-0287\", \"source\": \"我最近好大壓力。\", \"origins\": [ \"run-w17-lexical-boundary-blockers.js\", \"run-w17-perfective-locative-wh-question.js\", \"run-w17-perfective-motion-goal-declarative.js\" ], \"assertion\": \"construct"
-        },
-        {
-          "term": "攰",
-          "text": "\"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \"REG-0165\", \"source\": \"佢好攰，但係仲做緊。\", \"origins\": [ \"accepted-v0.5.159-hierarchical-recursive-clause-linking\" ], \"assertion\": \"construction_present_in_exact_snapshot\" }, {"
-        },
-        {
-          "term": "壓力",
-          "text": "\"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \"REG-0287\", \"source\": \"我最近好大壓力。\", \"origins\": [ \"run-w17-lexical-boundary-blockers.js\", \"run-w17-perfective-locative-wh-question.js\", \"run-w17-perfective-motion-goal-declarative.js\""
-        },
-        {
-          "term": "開心",
-          "text": "\"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \"REG-0308\", \"source\": \"我覺得佢好開心喎。\", \"origins\": [ \"run-a1-final-wo3-evidential-scope-boundary.js\" ], \"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \""
-        }
-      ]
-    },
-    {
-      "path": "tests/constructions/DelimitedVP.json",
-      "size": 3760,
-      "filenameMatch": false,
-      "matchedTerms": [
-        "關於呢個問題"
-      ],
-      "snippets": [
-        {
-          "term": "關於呢個問題",
-          "text": "\"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \"REG-0508\", \"source\": \"關於呢個問題，我想講吓。\", \"origins\": [ \"accepted-v0.5.159-hierarchical-recursive-clause-linking\", \"run-current-focused-v0.5.156-topic-frame-linker-accounting.js\", \"run"
-        }
-      ]
-    },
-    {
-      "path": "tests/constructions/DesiderativeVP.json",
-      "size": 5024,
-      "filenameMatch": false,
-      "matchedTerms": [
-        "關於呢個問題"
-      ],
-      "snippets": [
-        {
-          "term": "關於呢個問題",
-          "text": "\"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \"REG-0507\", \"source\": \"關於呢個問題，我想去。\", \"origins\": [ \"run-current-focused-v0.5.156-topic-frame-linker-accounting.js\" ], \"assertion\": \"construction_present_in_exact_snapshot\" }, {"
-        }
-      ]
-    },
-    {
-      "path": "tests/constructions/DiMarkedNP.json",
-      "size": 2783,
-      "filenameMatch": false,
-      "matchedTerms": [
-        "w17"
-      ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "t_in_exact_snapshot\" }, { \"case_id\": \"REG-0347\", \"source\": \"返咗啲書。\", \"origins\": [ \"run-w17-overt-object-selection-compatibility-guard.js\", \"run-w17-perfective-motion-goal-declarative.js\" ], \"assertion\": \"construction_present_in_exact_snapshot\" },"
-        }
-      ]
-    },
-    {
-      "path": "tests/constructions/DirectionalMotionVP.json",
-      "size": 19508,
-      "filenameMatch": false,
-      "matchedTerms": [
-        "w17",
-        "講返正題",
-        "關於呢個問題"
-      ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "t_in_exact_snapshot\" }, { \"case_id\": \"REG-0043\", \"source\": \"去咗香港。\", \"origins\": [ \"run-w17-perfective-motion-goal-declarative.js\" ], \"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \"REG-0044\", \"source\": \"去咗邊度呀？\","
-        },
-        {
-          "term": "講返正題",
-          "text": "\"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \"REG-0495\", \"source\": \"講返正題，你尋日去咗邊度呀？\", \"origins\": [ \"run-w17-lexical-boundary-blockers.js\", \"run-w17-perfective-locative-wh-question.js\", \"run-w17-perfective-motion-goal-declar"
-        },
-        {
-          "term": "關於呢個問題",
-          "text": "\"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \"REG-0507\", \"source\": \"關於呢個問題，我想去。\", \"origins\": [ \"run-current-focused-v0.5.156-topic-frame-linker-accounting.js\" ], \"assertion\": \"construction_present_in_exact_snapshot\" }, {"
-        }
-      ]
-    },
-    {
-      "path": "tests/constructions/DiscourseParticleFrame.json",
-      "size": 7061,
-      "filenameMatch": false,
-      "matchedTerms": [
-        "開心"
-      ],
-      "snippets": [
-        {
-          "term": "開心",
-          "text": "\"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \"REG-0308\", \"source\": \"我覺得佢好開心喎。\", \"origins\": [ \"run-a1-final-wo3-evidential-scope-boundary.js\" ], \"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \""
-        }
-      ]
-    },
-    {
-      "path": "tests/constructions/FormulaDiscourseUnit.json",
-      "size": 9634,
-      "filenameMatch": false,
-      "matchedTerms": [
-        "w17",
-        "壓力"
-      ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "xact_snapshot\" }, { \"case_id\": \"REG-0353\", \"source\": \"係呀，我最近好大壓力。\", \"origins\": [ \"run-w17-lexical-boundary-blockers.js\" ], \"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \"REG-0354\", \"source\": \"係呀，係，係啊。\", \"ori"
-        },
-        {
-          "term": "壓力",
-          "text": "assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \"REG-0353\", \"source\": \"係呀，我最近好大壓力。\", \"origins\": [ \"run-w17-lexical-boundary-blockers.js\" ], \"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \"REG-0354\","
-        }
-      ]
-    },
-    {
-      "path": "tests/constructions/LocativePlacePhrase.json",
-      "size": 5045,
-      "filenameMatch": false,
-      "matchedTerms": [
-        "w17"
-      ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "t_in_exact_snapshot\" }, { \"case_id\": \"REG-0456\", \"source\": \"喺邊度呀？\", \"origins\": [ \"run-w17-perfective-locative-wh-question.js\" ], \"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \"REG-0491\", \"source\": \"牆上面擺咗部電話。\","
-        }
-      ]
-    },
-    {
-      "path": "tests/constructions/LocativeWhQuestion.json",
-      "size": 3299,
-      "filenameMatch": false,
-      "matchedTerms": [
-        "w17",
-        "講返正題"
-      ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": ": 5, \"snapshot_cases\": [ { \"case_id\": \"REG-0044\", \"source\": \"去咗邊度呀？\", \"origins\": [ \"run-w17-perfective-locative-wh-question.js\" ], \"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \"REG-0104\", \"source\": \"你去咗邊度？\","
-        },
-        {
-          "term": "講返正題",
-          "text": "\"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \"REG-0495\", \"source\": \"講返正題，你尋日去咗邊度呀？\", \"origins\": [ \"run-w17-lexical-boundary-blockers.js\", \"run-w17-perfective-locative-wh-question.js\", \"run-w17-perfective-motion-goal-declar"
-        }
-      ]
-    },
-    {
-      "path": "tests/constructions/ModifierNP.json",
-      "size": 2140,
-      "filenameMatch": false,
-      "matchedTerms": [
-        "w17",
-        "壓力"
-      ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "5, \"snapshot_cases\": [ { \"case_id\": \"REG-0287\", \"source\": \"我最近好大壓力。\", \"origins\": [ \"run-w17-lexical-boundary-blockers.js\", \"run-w17-perfective-locative-wh-question.js\", \"run-w17-perfective-motion-goal-declarative.js\" ], \"assertion\": \"construct"
-        },
-        {
-          "term": "壓力",
-          "text": "e_active\": true, \"migration_phase\": 5, \"snapshot_cases\": [ { \"case_id\": \"REG-0287\", \"source\": \"我最近好大壓力。\", \"origins\": [ \"run-w17-lexical-boundary-blockers.js\", \"run-w17-perfective-locative-wh-question.js\", \"run-w17-perfective-motion-goal-declarative.js\""
-        }
-      ]
-    },
-    {
-      "path": "tests/constructions/MotionGoalVP.json",
-      "size": 10782,
-      "filenameMatch": false,
-      "matchedTerms": [
-        "w17"
-      ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "\": 5, \"snapshot_cases\": [ { \"case_id\": \"REG-0043\", \"source\": \"去咗香港。\", \"origins\": [ \"run-w17-perfective-motion-goal-declarative.js\" ], \"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \"REG-0046\", \"source\": \"去香港\","
-        }
-      ]
-    },
-    {
-      "path": "tests/constructions/NeedsContext.json",
-      "size": 18826,
-      "filenameMatch": false,
-      "matchedTerms": [
-        "w17",
-        "鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "in_exact_snapshot\" }, { \"case_id\": \"REG-0123\", \"source\": \"你食咗香港未？\", \"origins\": [ \"run-w17-overt-object-selection-compatibility-guard.js\", \"run-w17-selection-review-wrapper-structural-preservation.js\" ], \"assertion\": \"construction_present_in_exact_sn"
-        },
-        {
-          "term": "鍾意",
-          "text": "\"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \"REG-0305\", \"source\": \"我鍾意啩。\", \"origins\": [ \"run-a1-final-gwaa3-epistemic-scope-boundary.js\" ], \"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\":"
-        }
-      ]
-    },
-    {
-      "path": "tests/constructions/NegatedStativePredicate.json",
-      "size": 2124,
-      "filenameMatch": false,
-      "matchedTerms": [
-        "w17",
-        "唔開心",
-        "開心"
-      ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "id\": \"REACH-009\", \"source\": \"你好似唔開心噃。\", \"assertion\": \"construction_present\", \"provenance\": \"test-data/w17-naturalized-alternatives.tsv#COR-W17-013\", \"source_role\": \"reviewed_naturalized_alternative\", \"linguistic_evidence_weight\": 0, \"purpose\": \"runtime_reachability_o"
-        },
-        {
-          "term": "唔開心",
-          "text": "} ], \"np_cases\": [], \"implementation_probe_cases\": [ { \"case_id\": \"REACH-009\", \"source\": \"你好似唔開心噃。\", \"assertion\": \"construction_present\", \"provenance\": \"test-data/w17-naturalized-alternatives.tsv#COR-W17-013\", \"source_role\": \"reviewed_naturalized_alternative"
-        },
-        {
-          "term": "開心",
-          "text": "} ], \"np_cases\": [], \"implementation_probe_cases\": [ { \"case_id\": \"REACH-009\", \"source\": \"你好似唔開心噃。\", \"assertion\": \"construction_present\", \"provenance\": \"test-data/w17-naturalized-alternatives.tsv#COR-W17-013\", \"source_role\": \"reviewed_naturalized_alternative"
-        }
-      ]
-    },
-    {
-      "path": "tests/constructions/NominalHeadSpan.json",
-      "size": 8890,
-      "filenameMatch": false,
-      "matchedTerms": [
-        "w17"
-      ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "ent_in_exact_snapshot\" }, { \"case_id\": \"REG-0060\", \"source\": \"正題。\", \"origins\": [ \"run-w17-lexical-boundary-blockers.js\" ], \"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \"REG-0071\", \"source\": \"如果你去，我就去。\", \"or"
-        }
-      ]
-    },
-    {
-      "path": "tests/constructions/OpinionStanceFrame.json",
-      "size": 5417,
-      "filenameMatch": false,
-      "matchedTerms": [
-        "開心"
-      ],
-      "snippets": [
-        {
-          "term": "開心",
-          "text": "\"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \"REG-0308\", \"source\": \"我覺得佢好開心喎。\", \"origins\": [ \"run-a1-final-wo3-evidential-scope-boundary.js\" ], \"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \""
-        }
-      ]
-    },
-    {
-      "path": "tests/constructions/OvertHeadDemonstrativeClassifierNP.json",
-      "size": 9634,
-      "filenameMatch": false,
-      "matchedTerms": [
-        "w17",
-        "關於呢個問題"
-      ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "\"source\": \"呢個故事，我食咗，佢都食咗。\", \"origins\": [ \"run-a1-topic-chain-null-object-linkage.js\", \"run-w17-overt-object-selection-compatibility-guard.js\", \"run-w17-selection-review-wrapper-structural-preservation.js\", \"run-current-focused-v0.5.156-topic-frame-linker-acc"
-        },
-        {
-          "term": "關於呢個問題",
-          "text": "\"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \"REG-0507\", \"source\": \"關於呢個問題，我想去。\", \"origins\": [ \"run-current-focused-v0.5.156-topic-frame-linker-accounting.js\" ], \"assertion\": \"construction_present_in_exact_snapshot\" }, {"
-        }
-      ]
-    },
-    {
-      "path": "tests/constructions/PerfectiveVP.json",
-      "size": 7324,
-      "filenameMatch": false,
-      "matchedTerms": [
-        "w17"
-      ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "\"source\": \"呢個故事，我食咗，佢都食咗。\", \"origins\": [ \"run-a1-topic-chain-null-object-linkage.js\", \"run-w17-overt-object-selection-compatibility-guard.js\", \"run-w17-selection-review-wrapper-structural-preservation.js\", \"run-current-focused-v0.5.156-topic-frame-linker-acc"
-        }
-      ]
-    },
-    {
-      "path": "tests/constructions/PostverbalZoPerfectiveVP.json",
-      "size": 14571,
-      "filenameMatch": false,
-      "matchedTerms": [
-        "w17"
-      ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "5, \"snapshot_cases\": [ { \"case_id\": \"REG-0123\", \"source\": \"你食咗香港未？\", \"origins\": [ \"run-w17-overt-object-selection-compatibility-guard.js\", \"run-w17-selection-review-wrapper-structural-preservation.js\" ], \"assertion\": \"construction_present_in_exact_sn"
-        }
-      ]
-    },
-    {
-      "path": "tests/constructions/PreferenceVP.json",
-      "size": 1361,
-      "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "鍾意",
         "唔鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "鍾意",
-          "text": "ation_phase\": 5, \"snapshot_cases\": [], \"focused_cases\": [ { \"case_id\": \"CP060-PREF-01\", \"source\": \"我鍾意聽音樂。\", \"assertion\": \"construction_present\", \"provenance\": \"docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#PF-C05\", \"source_ids\": [ \"SRC-YI"
-        },
-        {
-          "term": "唔鍾意",
-          "text": "RSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#PF-C05\" }, { \"case_id\": \"CP060-PREF-03\", \"source\": \"我唔鍾意。\", \"assertion\": \"construction_absent\", \"provenance\": \"docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#PF-C07\" } ], \"np_cases\": [], \"implementa"
-        }
       ]
     },
     {
-      "path": "tests/constructions/ProgressiveVP.json",
-      "size": 3020,
+      "path": "test-data/cp021b-lx1-construction-freeze-baseline.json",
+      "size": 1223955,
       "filenameMatch": false,
-      "matchedTerms": [
-        "攰"
-      ],
-      "snippets": [
-        {
-          "term": "攰",
-          "text": "\"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \"REG-0165\", \"source\": \"佢好攰，但係仲做緊。\", \"origins\": [ \"accepted-v0.5.159-hierarchical-recursive-clause-linking\" ], \"assertion\": \"construction_present_in_exact_snapshot\" }, {"
-        }
-      ]
-    },
-    {
-      "path": "tests/constructions/ProhibitiveImperative.json",
-      "size": 1822,
-      "filenameMatch": false,
-      "matchedTerms": [
-        "唔好離題"
-      ],
-      "snippets": [
-        {
-          "term": "唔好離題",
-          "text": "untime_active\": true, \"migration_phase\": 5, \"snapshot_cases\": [ { \"case_id\": \"REG-0401\", \"source\": \"唔好離題喇。\", \"origins\": [ \"review-only-promotion-v0.5.161-batch1\" ], \"assertion\": \"construction_present_in_exact_snapshot\" } ], \"focused_cases\": [ {"
-        }
-      ]
-    },
-    {
-      "path": "tests/constructions/SourceMotionClause.json",
-      "size": 2562,
-      "filenameMatch": true,
-      "matchedTerms": [],
-      "snippets": []
-    },
-    {
-      "path": "tests/constructions/StativePredicate.json",
-      "size": 3256,
-      "filenameMatch": false,
-      "matchedTerms": [
+      "identityTerms": [
         "w17"
       ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "sent_in_exact_snapshot\" }, { \"case_id\": \"REG-0059\", \"source\": \"正。\", \"origins\": [ \"run-w17-lexical-boundary-blockers.js\" ], \"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \"REG-0302\", \"source\": \"我話貴。\", \"origins"
-        }
-      ]
-    },
-    {
-      "path": "tests/constructions/SuggestionQuestion.json",
-      "size": 2403,
-      "filenameMatch": false,
-      "matchedTerms": [
-        "w17",
-        "攰"
-      ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": ": \"REACH-013\", \"source\": \"你攰唔攰？不如休息吓。\", \"assertion\": \"construction_present\", \"provenance\": \"test-data/w17-glossika-corpus.tsv#COR-W17-010\", \"source_role\": \"reviewed_corpus_surface\", \"linguistic_evidence_weight\": 0, \"purpose\": \"runtime_reachability_only\" } ],"
-        },
-        {
-          "term": "攰",
-          "text": "e\" } ], \"np_cases\": [], \"implementation_probe_cases\": [ { \"case_id\": \"REACH-013\", \"source\": \"你攰唔攰？不如休息吓。\", \"assertion\": \"construction_present\", \"provenance\": \"test-data/w17-glossika-corpus.tsv#COR-W17-010\", \"source_role\": \"reviewed_corpus_surface\", \"l"
-        }
-      ]
-    },
-    {
-      "path": "tests/constructions/TemporalClause.json",
-      "size": 2867,
-      "filenameMatch": false,
-      "matchedTerms": [
-        "w17"
-      ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "in_exact_snapshot\" }, { \"case_id\": \"REG-0458\", \"source\": \"尋日去咗香港。\", \"origins\": [ \"run-w17-perfective-motion-goal-declarative.js\" ], \"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \"REG-0518\", \"source\": \"聽日打風。\","
-        }
-      ]
-    },
-    {
-      "path": "tests/constructions/TransitiveVP.json",
-      "size": 8774,
-      "filenameMatch": false,
-      "matchedTerms": [
-        "w17",
-        "關於呢個問題"
-      ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "nt_in_exact_snapshot\" }, { \"case_id\": \"REG-0394\", \"source\": \"食香港。\", \"origins\": [ \"run-w17-overt-object-selection-compatibility-guard.js\", \"run-w17-selection-review-wrapper-structural-preservation.js\" ], \"assertion\": \"construction_present_in_exact_sn"
-        },
-        {
-          "term": "關於呢個問題",
-          "text": "\"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \"REG-0509\", \"source\": \"關於呢個問題，我想講呢個故事。\", \"origins\": [ \"run-current-focused-v0.5.156-topic-frame-linker-accounting.js\" ], \"assertion\": \"construction_present_in_exact_snapshot\" },"
-        }
-      ]
-    },
-    {
-      "path": "tests/constructions/VerbComplementVP.json",
-      "size": 3882,
-      "filenameMatch": false,
-      "matchedTerms": [
-        "w17",
-        "講返正題"
-      ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "t_snapshot\" }, { \"case_id\": \"REG-0495\", \"source\": \"講返正題，你尋日去咗邊度呀？\", \"origins\": [ \"run-w17-lexical-boundary-blockers.js\", \"run-w17-perfective-locative-wh-question.js\", \"run-w17-perfective-motion-goal-declarative.js\", \"review-only-promotion-v0.5.1"
-        },
-        {
-          "term": "講返正題",
-          "text": "\"assertion\": \"construction_present_in_exact_snapshot\" }, { \"case_id\": \"REG-0495\", \"source\": \"講返正題，你尋日去咗邊度呀？\", \"origins\": [ \"run-w17-lexical-boundary-blockers.js\", \"run-w17-perfective-locative-wh-question.js\", \"run-w17-perfective-motion-goal-declar"
-        }
-      ]
-    },
-    {
-      "path": "tests/fixtures/regression-snapshots.json",
-      "size": 4938338,
-      "filenameMatch": false,
       "matchedTerms": [
         "w17",
         "攰",
@@ -2151,90 +946,798 @@
         "講返正題",
         "唔好離題",
         "關於呢個問題"
+      ]
+    },
+    {
+      "path": "test-data/native-speaker-naturalness-evidence-v1.json",
+      "size": 169658,
+      "filenameMatch": false,
+      "identityTerms": [],
+      "matchedTerms": [
+        "攰",
+        "壓力",
+        "關於呢個問題"
+      ]
+    },
+    {
+      "path": "test-data/native-speaker-naturalness-evidence-v1.tsv",
+      "size": 32022,
+      "filenameMatch": false,
+      "identityTerms": [],
+      "matchedTerms": [
+        "攰",
+        "壓力",
+        "關於呢個問題"
+      ]
+    },
+    {
+      "path": "test-data/natural-corpus-wechat-guangxi-travel-002-raw.txt",
+      "size": 1795,
+      "filenameMatch": false,
+      "identityTerms": [],
+      "matchedTerms": [
+        "辛苦"
+      ]
+    },
+    {
+      "path": "test-data/natural-corpus-wechat-guangxi-travel-002-turns.json",
+      "size": 11002,
+      "filenameMatch": false,
+      "identityTerms": [],
+      "matchedTerms": [
+        "辛苦"
+      ]
+    },
+    {
+      "path": "test-data/natural-corpus-wechat-guangxi-travel-002-turns.tsv",
+      "size": 7393,
+      "filenameMatch": false,
+      "identityTerms": [],
+      "matchedTerms": [
+        "辛苦"
+      ]
+    },
+    {
+      "path": "test-data/natural-corpus-wechat-guangxi-travel-002-units.json",
+      "size": 41535,
+      "filenameMatch": false,
+      "identityTerms": [],
+      "matchedTerms": [
+        "辛苦"
+      ]
+    },
+    {
+      "path": "test-data/natural-corpus-wechat-guangxi-travel-002-units.tsv",
+      "size": 22251,
+      "filenameMatch": false,
+      "identityTerms": [],
+      "matchedTerms": [
+        "辛苦"
+      ]
+    },
+    {
+      "path": "test-data/review-only-readiness.tsv",
+      "size": 50325,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
       ],
-      "snippets": [
-        {
-          "term": "w17",
-          "text": "} } }, \"case_id\": \"REG-0042\" }, { \"source\": \"去咗香港。\", \"origins\": [ \"run-w17-perfective-motion-goal-declarative.js\" ], \"expected\": { \"summary\": { \"top_constructions\": [ \"MotionGoalVP\" ], \"top_ch"
-        },
-        {
-          "term": "攰",
-          "text": "onary_disagreement_count\": 0 } } }, \"case_id\": \"REG-0164\" }, { \"source\": \"佢好攰，但係仲做緊。\", \"origins\": [ \"accepted-v0.5.159-hierarchical-recursive-clause-linking\" ], \"expected\": { \"summary\": { \"top_constructions\": ["
-        },
-        {
-          "term": "壓力",
-          "text": "ry_disagreement_count\": 0 } } }, \"case_id\": \"REG-0286\" }, { \"source\": \"我最近好大壓力。\", \"origins\": [ \"run-w17-lexical-boundary-blockers.js\", \"run-w17-perfective-locative-wh-question.js\", \"run-w17-perfective-motion-goal-declarative.js\""
-        },
-        {
-          "term": "開心",
-          "text": "ry_disagreement_count\": 0 } } }, \"case_id\": \"REG-0307\" }, { \"source\": \"我覺得佢好開心喎。\", \"origins\": [ \"run-a1-final-wo3-evidential-scope-boundary.js\" ], \"expected\": { \"summary\": { \"top_constructions\": [ \"Disc"
-        },
-        {
-          "term": "鍾意",
-          "text": "ionary_disagreement_count\": 0 } } }, \"case_id\": \"REG-0304\" }, { \"source\": \"我鍾意啩。\", \"origins\": [ \"run-a1-final-gwaa3-epistemic-scope-boundary.js\" ], \"expected\": { \"summary\": { \"top_constructions\": [ \"Nee"
-        },
-        {
-          "term": "講返正題",
-          "text": "tionary_disagreement_count\": 0 } } }, \"case_id\": \"REG-0494\" }, { \"source\": \"講返正題，你尋日去咗邊度呀？\", \"origins\": [ \"run-w17-lexical-boundary-blockers.js\", \"run-w17-perfective-locative-wh-question.js\", \"run-w17-perfective-motion-goal-declar"
-        },
-        {
-          "term": "唔好離題",
-          "text": "tionary_disagreement_count\": 0 } } }, \"case_id\": \"REG-0400\" }, { \"source\": \"唔好離題喇。\", \"origins\": [ \"review-only-promotion-v0.5.161-batch1\" ], \"expected\": { \"summary\": { \"top_constructions\": [ \"ProhibitiveI"
-        },
-        {
-          "term": "關於呢個問題",
-          "text": "tionary_disagreement_count\": 0 } } }, \"case_id\": \"REG-0506\" }, { \"source\": \"關於呢個問題，我想去。\", \"origins\": [ \"run-current-focused-v0.5.156-topic-frame-linker-accounting.js\" ], \"expected\": { \"summary\": { \"top_constructions\":"
-        }
+      "matchedTerms": [
+        "w17",
+        "唔開心",
+        "攰",
+        "嬲",
+        "驚",
+        "擔心",
+        "悶",
+        "緊張",
+        "壓力",
+        "辛苦",
+        "感動",
+        "激動",
+        "失望",
+        "放鬆",
+        "開心",
+        "傷心",
+        "鍾意",
+        "唔鍾意",
+        "興奮",
+        "孤獨",
+        "滿足",
+        "驕傲",
+        "嫉妒",
+        "焦慮",
+        "感激",
+        "慚愧",
+        "害怕",
+        "感恩",
+        "好奇",
+        "樂觀",
+        "講返正題",
+        "唔好離題",
+        "關於呢個問題",
+        "返去頭先嘅話題",
+        "第一嘛",
+        "好似我噉",
+        "一方面係時間",
+        "另一方面係費用"
+      ]
+    },
+    {
+      "path": "test-data/w17-corpus-semantic-disposition.tsv",
+      "size": 6663,
+      "filenameMatch": true,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "攰",
+        "嬲",
+        "壓力",
+        "開心",
+        "鍾意",
+        "講返正題"
+      ]
+    },
+    {
+      "path": "test-data/w17-functional-corpus.tsv",
+      "size": 4212,
+      "filenameMatch": true,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "唔開心",
+        "攰",
+        "嬲",
+        "壓力",
+        "開心",
+        "鍾意",
+        "講返正題",
+        "唔好離題",
+        "關於呢個問題",
+        "返去頭先嘅話題",
+        "第一嘛",
+        "好似我噉",
+        "一方面係時間",
+        "另一方面係費用"
+      ]
+    },
+    {
+      "path": "test-data/w17-glossika-corpus.tsv",
+      "size": 3942,
+      "filenameMatch": true,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "唔開心",
+        "攰",
+        "嬲",
+        "壓力",
+        "開心",
+        "鍾意",
+        "講返正題",
+        "唔好離題",
+        "關於呢個問題",
+        "返去頭先嘅話題",
+        "第一嘛",
+        "好似我噉",
+        "一方面係時間",
+        "另一方面係費用"
+      ]
+    },
+    {
+      "path": "test-data/w17-grammar-phrases.tsv",
+      "size": 720,
+      "filenameMatch": true,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17"
+      ]
+    },
+    {
+      "path": "test-data/w17-lexicon-role-review.tsv",
+      "size": 5542,
+      "filenameMatch": true,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "唔開心",
+        "攰",
+        "嬲",
+        "驚",
+        "擔心",
+        "悶",
+        "緊張",
+        "壓力",
+        "辛苦",
+        "感動",
+        "激動",
+        "失望",
+        "放鬆",
+        "開心",
+        "傷心",
+        "鍾意",
+        "唔鍾意",
+        "興奮",
+        "孤獨",
+        "滿足",
+        "驕傲",
+        "嫉妒",
+        "焦慮",
+        "感激",
+        "慚愧",
+        "害怕",
+        "感恩",
+        "好奇",
+        "樂觀"
+      ]
+    },
+    {
+      "path": "test-data/w17-lexicon.tsv",
+      "size": 5694,
+      "filenameMatch": true,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "唔開心",
+        "攰",
+        "嬲",
+        "驚",
+        "擔心",
+        "悶",
+        "緊張",
+        "壓力",
+        "辛苦",
+        "感動",
+        "激動",
+        "失望",
+        "放鬆",
+        "開心",
+        "傷心",
+        "鍾意",
+        "唔鍾意",
+        "興奮",
+        "孤獨",
+        "滿足",
+        "驕傲",
+        "嫉妒",
+        "焦慮",
+        "感激",
+        "慚愧",
+        "害怕",
+        "感恩",
+        "好奇",
+        "樂觀"
+      ]
+    },
+    {
+      "path": "test-data/w17-naturalized-alternatives.tsv",
+      "size": 722,
+      "filenameMatch": true,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "唔開心",
+        "壓力",
+        "開心"
+      ]
+    },
+    {
+      "path": "test-data/w17-phonics-pairs.tsv",
+      "size": 609,
+      "filenameMatch": true,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17"
+      ]
+    },
+    {
+      "path": "test-data/WECHAT-GX-TRAVEL-002-ADJUDICATION-MATRIX.json",
+      "size": 103522,
+      "filenameMatch": false,
+      "identityTerms": [],
+      "matchedTerms": [
+        "辛苦"
+      ]
+    },
+    {
+      "path": "test-data/WECHAT-GX-TRAVEL-002-ADJUDICATION-MATRIX.tsv",
+      "size": 43319,
+      "filenameMatch": false,
+      "identityTerms": [],
+      "matchedTerms": [
+        "辛苦"
+      ]
+    },
+    {
+      "path": "test-data/WECHAT-GX-TRAVEL-002-QUEUE-G-grammar_research_external_evidence.tsv",
+      "size": 19694,
+      "filenameMatch": false,
+      "identityTerms": [],
+      "matchedTerms": [
+        "辛苦"
+      ]
+    },
+    {
+      "path": "test-data/WECHAT-GX-TRAVEL-002-QUEUE-R-accepted_behavior_regression.tsv",
+      "size": 6831,
+      "filenameMatch": false,
+      "identityTerms": [],
+      "matchedTerms": [
+        "辛苦"
+      ]
+    },
+    {
+      "path": "test-data/WECHAT-GX-TRAVEL-002-REGRESSION-REMEDIATION-READINESS-R2.json",
+      "size": 15094,
+      "filenameMatch": false,
+      "identityTerms": [],
+      "matchedTerms": [
+        "辛苦"
+      ]
+    },
+    {
+      "path": "test-data/WECHAT-GX-TRAVEL-002-REGRESSION-REMEDIATION-READINESS-R2.tsv",
+      "size": 5727,
+      "filenameMatch": false,
+      "identityTerms": [],
+      "matchedTerms": [
+        "辛苦"
+      ]
+    },
+    {
+      "path": "tests/constructions/AssociativeNP.json",
+      "size": 2375,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17"
+      ]
+    },
+    {
+      "path": "tests/constructions/ClauseRelationEdge.json",
+      "size": 9675,
+      "filenameMatch": false,
+      "identityTerms": [],
+      "matchedTerms": [
+        "攰"
+      ]
+    },
+    {
+      "path": "tests/constructions/ClauseRelationGraph.json",
+      "size": 31755,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "攰",
+        "壓力",
+        "鍾意",
+        "唔鍾意",
+        "講返正題",
+        "關於呢個問題"
+      ]
+    },
+    {
+      "path": "tests/constructions/ClauseRelationMemberSpan.json",
+      "size": 9861,
+      "filenameMatch": false,
+      "identityTerms": [],
+      "matchedTerms": [
+        "攰"
+      ]
+    },
+    {
+      "path": "tests/constructions/ClauseSpan.json",
+      "size": 31545,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "攰",
+        "壓力",
+        "開心"
+      ]
+    },
+    {
+      "path": "tests/constructions/CognitionStatementClause.json",
+      "size": 3694,
+      "filenameMatch": true,
+      "identityTerms": [],
+      "matchedTerms": []
+    },
+    {
+      "path": "tests/constructions/CompletionQuestion.json",
+      "size": 3851,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17"
+      ]
+    },
+    {
+      "path": "tests/constructions/CopularANotAQuestion.json",
+      "size": 2511,
+      "filenameMatch": false,
+      "identityTerms": [],
+      "matchedTerms": [
+        "鍾意"
+      ]
+    },
+    {
+      "path": "tests/constructions/DegreeStativePredicate.json",
+      "size": 6450,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "攰",
+        "壓力",
+        "開心"
+      ]
+    },
+    {
+      "path": "tests/constructions/DelimitedVP.json",
+      "size": 3760,
+      "filenameMatch": false,
+      "identityTerms": [],
+      "matchedTerms": [
+        "關於呢個問題"
+      ]
+    },
+    {
+      "path": "tests/constructions/DesiderativeVP.json",
+      "size": 5024,
+      "filenameMatch": false,
+      "identityTerms": [],
+      "matchedTerms": [
+        "關於呢個問題"
+      ]
+    },
+    {
+      "path": "tests/constructions/DiMarkedNP.json",
+      "size": 2783,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17"
+      ]
+    },
+    {
+      "path": "tests/constructions/DirectionalMotionVP.json",
+      "size": 19508,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "講返正題",
+        "關於呢個問題"
+      ]
+    },
+    {
+      "path": "tests/constructions/DiscourseParticleFrame.json",
+      "size": 7061,
+      "filenameMatch": false,
+      "identityTerms": [],
+      "matchedTerms": [
+        "開心"
+      ]
+    },
+    {
+      "path": "tests/constructions/FormulaDiscourseUnit.json",
+      "size": 9634,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "壓力"
+      ]
+    },
+    {
+      "path": "tests/constructions/LocativePlacePhrase.json",
+      "size": 5045,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17"
+      ]
+    },
+    {
+      "path": "tests/constructions/LocativeWhQuestion.json",
+      "size": 3299,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "講返正題"
+      ]
+    },
+    {
+      "path": "tests/constructions/ModifierNP.json",
+      "size": 2140,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "壓力"
+      ]
+    },
+    {
+      "path": "tests/constructions/MotionGoalVP.json",
+      "size": 10782,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17"
+      ]
+    },
+    {
+      "path": "tests/constructions/NeedsContext.json",
+      "size": 18826,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "鍾意"
+      ]
+    },
+    {
+      "path": "tests/constructions/NegatedStativePredicate.json",
+      "size": 2124,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "唔開心",
+        "開心"
+      ]
+    },
+    {
+      "path": "tests/constructions/NominalHeadSpan.json",
+      "size": 8890,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17"
+      ]
+    },
+    {
+      "path": "tests/constructions/OpinionStanceFrame.json",
+      "size": 5417,
+      "filenameMatch": false,
+      "identityTerms": [],
+      "matchedTerms": [
+        "開心"
+      ]
+    },
+    {
+      "path": "tests/constructions/OvertHeadDemonstrativeClassifierNP.json",
+      "size": 9634,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "關於呢個問題"
+      ]
+    },
+    {
+      "path": "tests/constructions/PerfectiveVP.json",
+      "size": 7324,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17"
+      ]
+    },
+    {
+      "path": "tests/constructions/PostverbalZoPerfectiveVP.json",
+      "size": 14571,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17"
+      ]
+    },
+    {
+      "path": "tests/constructions/PreferenceVP.json",
+      "size": 1361,
+      "filenameMatch": false,
+      "identityTerms": [],
+      "matchedTerms": [
+        "鍾意",
+        "唔鍾意"
+      ]
+    },
+    {
+      "path": "tests/constructions/ProgressiveVP.json",
+      "size": 3020,
+      "filenameMatch": false,
+      "identityTerms": [],
+      "matchedTerms": [
+        "攰"
+      ]
+    },
+    {
+      "path": "tests/constructions/ProhibitiveImperative.json",
+      "size": 1822,
+      "filenameMatch": false,
+      "identityTerms": [],
+      "matchedTerms": [
+        "唔好離題"
+      ]
+    },
+    {
+      "path": "tests/constructions/SourceMotionClause.json",
+      "size": 2562,
+      "filenameMatch": true,
+      "identityTerms": [],
+      "matchedTerms": []
+    },
+    {
+      "path": "tests/constructions/StativePredicate.json",
+      "size": 3256,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17"
+      ]
+    },
+    {
+      "path": "tests/constructions/SuggestionQuestion.json",
+      "size": 2403,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "攰"
+      ]
+    },
+    {
+      "path": "tests/constructions/TemporalClause.json",
+      "size": 2867,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17"
+      ]
+    },
+    {
+      "path": "tests/constructions/TransitiveVP.json",
+      "size": 8774,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "關於呢個問題"
+      ]
+    },
+    {
+      "path": "tests/constructions/VerbComplementVP.json",
+      "size": 3882,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "講返正題"
+      ]
+    },
+    {
+      "path": "tests/fixtures/regression-snapshots.json",
+      "size": 4938338,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "攰",
+        "壓力",
+        "開心",
+        "鍾意",
+        "講返正題",
+        "唔好離題",
+        "關於呢個問題"
       ]
     },
     {
       "path": "tests/tooling/corpus-review/test_aa07_hkcancor_profile.py",
       "size": 7014,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "鍾意"
-      ],
-      "snippets": [
-        {
-          "term": "鍾意",
-          "text": "elf): tokens = [ Token(\"佢\", \"r\", \"keoi5\"), Token(\"最\", \"d\", \"zeoi3\"), Token(\"鍾意\", \"v\", \"zung1ji3\"), Token(\"嗰\", \"r\", \"go2\"), Token(\"本\", \"q\", \"bun2\"), Token(\"舊\", \"a\", \"gau6\"), Token(\"嘅\", \"u\", \"ge3\"), T"
-        }
       ]
     },
     {
       "path": "tests/tooling/corpus-review/test_aa91_hkcancor_profile.py",
       "size": 7749,
       "filenameMatch": false,
+      "identityTerms": [],
       "matchedTerms": [
         "壓力"
-      ],
-      "snippets": [
-        {
-          "term": "壓力",
-          "text": "self): tokens = [ Token(\"好\", \"d\", \"hou2\"), Token(\"大\", \"a\", \"daai6\"), Token(\"壓力\", \"n\", \"aat3lik6\"), Token(\"好\", \"d\", \"hou2\"), Token(\"嘅\", \"u\", \"ge3\"), Token(\"朋友\", \"n\", \"pang4jau5\"), Token(\"好\", \"d\", \"hou2\"),"
-        }
       ]
     },
     {
       "path": "tests/tooling/project-state/project-state.test.js",
       "size": 6624,
       "filenameMatch": true,
-      "matchedTerms": [],
-      "snippets": []
+      "identityTerms": [],
+      "matchedTerms": []
     },
     {
       "path": "tools/verify-current-state.js",
       "size": 3878,
       "filenameMatch": true,
-      "matchedTerms": [],
-      "snippets": []
+      "identityTerms": [],
+      "matchedTerms": []
     },
     {
       "path": "tools/verify-project-state.js",
       "size": 15154,
       "filenameMatch": true,
-      "matchedTerms": [],
-      "snippets": []
+      "identityTerms": [],
+      "matchedTerms": []
     }
   ]
 }

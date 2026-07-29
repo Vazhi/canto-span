@@ -1,0 +1,899 @@
+{
+  "schema": "canto-span-week17-explicit-paths-v1",
+  "base": "c2e93a2d73f67a5de30cf50de44fbed28b951c57",
+  "authority": {
+    "canonical": [
+      "src/**",
+      "src/runtime-resources/**"
+    ],
+    "generatedExcluded": [
+      "main.js"
+    ],
+    "supporting": [
+      "tests/**",
+      "test-data/**",
+      "data/**",
+      "docs/**",
+      "grammar/**",
+      "config/**"
+    ]
+  },
+  "pathCount": 65,
+  "paths": [
+    {
+      "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/items.tsv",
+      "size": 69622,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17"
+      ]
+    },
+    {
+      "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/review.json",
+      "size": 88664,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17"
+      ]
+    },
+    {
+      "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/items.tsv",
+      "size": 45509,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "鍾意"
+      ]
+    },
+    {
+      "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/review.json",
+      "size": 72839,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "鍾意"
+      ]
+    },
+    {
+      "path": "data/retirement-review-state.json",
+      "size": 659,
+      "filenameMatch": true,
+      "identityTerms": [],
+      "matchedTerms": []
+    },
+    {
+      "path": "docs/current/PROJECT-STATE.md",
+      "size": 8196,
+      "filenameMatch": true,
+      "identityTerms": [],
+      "matchedTerms": []
+    },
+    {
+      "path": "docs/releases/v0.5.192-result-change-state-wrapper-audit.json",
+      "size": 2220,
+      "filenameMatch": true,
+      "identityTerms": [],
+      "matchedTerms": []
+    },
+    {
+      "path": "docs/research/CP024-P0-L45-VERB-VALENCY-INVENTORY-R1.tsv",
+      "size": 15016,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "放鬆"
+      ]
+    },
+    {
+      "path": "docs/research/CP036-P1-RESULT-CHANGE-STATE-WRAPPER-AUDIT-R1.md",
+      "size": 3490,
+      "filenameMatch": true,
+      "identityTerms": [],
+      "matchedTerms": []
+    },
+    {
+      "path": "docs/research/CP036-P1-RESULT-CHANGE-STATE-WRAPPER-INVENTORY-R1.tsv",
+      "size": 2749,
+      "filenameMatch": true,
+      "identityTerms": [],
+      "matchedTerms": []
+    },
+    {
+      "path": "grammar/lexicalized_only/FormulaDiscourseUnit.md",
+      "size": 7653,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17"
+      ]
+    },
+    {
+      "path": "grammar/research_pending/ActionStativeVP.md",
+      "size": 7951,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17"
+      ]
+    },
+    {
+      "path": "grammar/research_pending/CoverbFrame.md",
+      "size": 8242,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17"
+      ]
+    },
+    {
+      "path": "grammar/research_pending/DesiderativeVP.md",
+      "size": 6180,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17"
+      ]
+    },
+    {
+      "path": "grammar/research_pending/FragmentQuestion.md",
+      "size": 5654,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17"
+      ]
+    },
+    {
+      "path": "grammar/research_pending/NegatedStativePredicate.md",
+      "size": 7075,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "唔開心",
+        "開心"
+      ]
+    },
+    {
+      "path": "grammar/research_pending/PreferenceVP.md",
+      "size": 5717,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "鍾意"
+      ]
+    },
+    {
+      "path": "grammar/research_pending/ProhibitiveImperative.md",
+      "size": 6287,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17"
+      ]
+    },
+    {
+      "path": "grammar/research_pending/VerbComplementVP.md",
+      "size": 7638,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17"
+      ]
+    },
+    {
+      "path": "grammar/unsupported_generalization/CognitionStatementClause.md",
+      "size": 7713,
+      "filenameMatch": true,
+      "identityTerms": [],
+      "matchedTerms": []
+    },
+    {
+      "path": "grammar/unsupported_generalization/LocativeWhQuestion.md",
+      "size": 9112,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17"
+      ]
+    },
+    {
+      "path": "grammar/unsupported_generalization/MotionPurposeChain.md",
+      "size": 7796,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17"
+      ]
+    },
+    {
+      "path": "grammar/unsupported_generalization/SourceMotionClause.md",
+      "size": 8108,
+      "filenameMatch": true,
+      "identityTerms": [],
+      "matchedTerms": []
+    },
+    {
+      "path": "grammar/unsupported_generalization/SuggestionQuestion.md",
+      "size": 7407,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "攰"
+      ]
+    },
+    {
+      "path": "src/plugin-entry.js",
+      "size": 272142,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "鍾意"
+      ]
+    },
+    {
+      "path": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "size": 20707,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "唔開心",
+        "攰",
+        "嬲",
+        "驚",
+        "擔心",
+        "悶",
+        "緊張",
+        "壓力",
+        "辛苦",
+        "感動",
+        "激動",
+        "失望",
+        "放鬆",
+        "開心",
+        "傷心",
+        "鍾意",
+        "唔鍾意",
+        "興奮",
+        "孤獨",
+        "滿足",
+        "驕傲",
+        "嫉妒",
+        "焦慮",
+        "感激",
+        "慚愧",
+        "害怕",
+        "感恩",
+        "好奇",
+        "樂觀",
+        "講返正題"
+      ]
+    },
+    {
+      "path": "test-data/cp021b-lx1-construction-freeze-baseline.json",
+      "size": 1223955,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "攰",
+        "壓力",
+        "開心",
+        "鍾意",
+        "講返正題",
+        "唔好離題",
+        "關於呢個問題"
+      ]
+    },
+    {
+      "path": "test-data/review-only-readiness.tsv",
+      "size": 50325,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "唔開心",
+        "攰",
+        "嬲",
+        "驚",
+        "擔心",
+        "悶",
+        "緊張",
+        "壓力",
+        "辛苦",
+        "感動",
+        "激動",
+        "失望",
+        "放鬆",
+        "開心",
+        "傷心",
+        "鍾意",
+        "唔鍾意",
+        "興奮",
+        "孤獨",
+        "滿足",
+        "驕傲",
+        "嫉妒",
+        "焦慮",
+        "感激",
+        "慚愧",
+        "害怕",
+        "感恩",
+        "好奇",
+        "樂觀",
+        "講返正題",
+        "唔好離題",
+        "關於呢個問題",
+        "返去頭先嘅話題",
+        "第一嘛",
+        "好似我噉",
+        "一方面係時間",
+        "另一方面係費用"
+      ]
+    },
+    {
+      "path": "test-data/w17-corpus-semantic-disposition.tsv",
+      "size": 6663,
+      "filenameMatch": true,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "攰",
+        "嬲",
+        "壓力",
+        "開心",
+        "鍾意",
+        "講返正題"
+      ]
+    },
+    {
+      "path": "test-data/w17-functional-corpus.tsv",
+      "size": 4212,
+      "filenameMatch": true,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "唔開心",
+        "攰",
+        "嬲",
+        "壓力",
+        "開心",
+        "鍾意",
+        "講返正題",
+        "唔好離題",
+        "關於呢個問題",
+        "返去頭先嘅話題",
+        "第一嘛",
+        "好似我噉",
+        "一方面係時間",
+        "另一方面係費用"
+      ]
+    },
+    {
+      "path": "test-data/w17-glossika-corpus.tsv",
+      "size": 3942,
+      "filenameMatch": true,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "唔開心",
+        "攰",
+        "嬲",
+        "壓力",
+        "開心",
+        "鍾意",
+        "講返正題",
+        "唔好離題",
+        "關於呢個問題",
+        "返去頭先嘅話題",
+        "第一嘛",
+        "好似我噉",
+        "一方面係時間",
+        "另一方面係費用"
+      ]
+    },
+    {
+      "path": "test-data/w17-grammar-phrases.tsv",
+      "size": 720,
+      "filenameMatch": true,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17"
+      ]
+    },
+    {
+      "path": "test-data/w17-lexicon-role-review.tsv",
+      "size": 5542,
+      "filenameMatch": true,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "唔開心",
+        "攰",
+        "嬲",
+        "驚",
+        "擔心",
+        "悶",
+        "緊張",
+        "壓力",
+        "辛苦",
+        "感動",
+        "激動",
+        "失望",
+        "放鬆",
+        "開心",
+        "傷心",
+        "鍾意",
+        "唔鍾意",
+        "興奮",
+        "孤獨",
+        "滿足",
+        "驕傲",
+        "嫉妒",
+        "焦慮",
+        "感激",
+        "慚愧",
+        "害怕",
+        "感恩",
+        "好奇",
+        "樂觀"
+      ]
+    },
+    {
+      "path": "test-data/w17-lexicon.tsv",
+      "size": 5694,
+      "filenameMatch": true,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "唔開心",
+        "攰",
+        "嬲",
+        "驚",
+        "擔心",
+        "悶",
+        "緊張",
+        "壓力",
+        "辛苦",
+        "感動",
+        "激動",
+        "失望",
+        "放鬆",
+        "開心",
+        "傷心",
+        "鍾意",
+        "唔鍾意",
+        "興奮",
+        "孤獨",
+        "滿足",
+        "驕傲",
+        "嫉妒",
+        "焦慮",
+        "感激",
+        "慚愧",
+        "害怕",
+        "感恩",
+        "好奇",
+        "樂觀"
+      ]
+    },
+    {
+      "path": "test-data/w17-naturalized-alternatives.tsv",
+      "size": 722,
+      "filenameMatch": true,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "唔開心",
+        "壓力",
+        "開心"
+      ]
+    },
+    {
+      "path": "test-data/w17-phonics-pairs.tsv",
+      "size": 609,
+      "filenameMatch": true,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17"
+      ]
+    },
+    {
+      "path": "tests/constructions/AssociativeNP.json",
+      "size": 2375,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17"
+      ]
+    },
+    {
+      "path": "tests/constructions/ClauseRelationGraph.json",
+      "size": 31755,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "攰",
+        "壓力",
+        "鍾意",
+        "唔鍾意",
+        "講返正題",
+        "關於呢個問題"
+      ]
+    },
+    {
+      "path": "tests/constructions/ClauseSpan.json",
+      "size": 31545,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "攰",
+        "壓力",
+        "開心"
+      ]
+    },
+    {
+      "path": "tests/constructions/CognitionStatementClause.json",
+      "size": 3694,
+      "filenameMatch": true,
+      "identityTerms": [],
+      "matchedTerms": []
+    },
+    {
+      "path": "tests/constructions/CompletionQuestion.json",
+      "size": 3851,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17"
+      ]
+    },
+    {
+      "path": "tests/constructions/DegreeStativePredicate.json",
+      "size": 6450,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "攰",
+        "壓力",
+        "開心"
+      ]
+    },
+    {
+      "path": "tests/constructions/DiMarkedNP.json",
+      "size": 2783,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17"
+      ]
+    },
+    {
+      "path": "tests/constructions/DirectionalMotionVP.json",
+      "size": 19508,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "講返正題",
+        "關於呢個問題"
+      ]
+    },
+    {
+      "path": "tests/constructions/FormulaDiscourseUnit.json",
+      "size": 9634,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "壓力"
+      ]
+    },
+    {
+      "path": "tests/constructions/LocativePlacePhrase.json",
+      "size": 5045,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17"
+      ]
+    },
+    {
+      "path": "tests/constructions/LocativeWhQuestion.json",
+      "size": 3299,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "講返正題"
+      ]
+    },
+    {
+      "path": "tests/constructions/ModifierNP.json",
+      "size": 2140,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "壓力"
+      ]
+    },
+    {
+      "path": "tests/constructions/MotionGoalVP.json",
+      "size": 10782,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17"
+      ]
+    },
+    {
+      "path": "tests/constructions/NeedsContext.json",
+      "size": 18826,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "鍾意"
+      ]
+    },
+    {
+      "path": "tests/constructions/NegatedStativePredicate.json",
+      "size": 2124,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "唔開心",
+        "開心"
+      ]
+    },
+    {
+      "path": "tests/constructions/NominalHeadSpan.json",
+      "size": 8890,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17"
+      ]
+    },
+    {
+      "path": "tests/constructions/OvertHeadDemonstrativeClassifierNP.json",
+      "size": 9634,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "關於呢個問題"
+      ]
+    },
+    {
+      "path": "tests/constructions/PerfectiveVP.json",
+      "size": 7324,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17"
+      ]
+    },
+    {
+      "path": "tests/constructions/PostverbalZoPerfectiveVP.json",
+      "size": 14571,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17"
+      ]
+    },
+    {
+      "path": "tests/constructions/SourceMotionClause.json",
+      "size": 2562,
+      "filenameMatch": true,
+      "identityTerms": [],
+      "matchedTerms": []
+    },
+    {
+      "path": "tests/constructions/StativePredicate.json",
+      "size": 3256,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17"
+      ]
+    },
+    {
+      "path": "tests/constructions/SuggestionQuestion.json",
+      "size": 2403,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "攰"
+      ]
+    },
+    {
+      "path": "tests/constructions/TemporalClause.json",
+      "size": 2867,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17"
+      ]
+    },
+    {
+      "path": "tests/constructions/TransitiveVP.json",
+      "size": 8774,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "關於呢個問題"
+      ]
+    },
+    {
+      "path": "tests/constructions/VerbComplementVP.json",
+      "size": 3882,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "講返正題"
+      ]
+    },
+    {
+      "path": "tests/fixtures/regression-snapshots.json",
+      "size": 4938338,
+      "filenameMatch": false,
+      "identityTerms": [
+        "w17"
+      ],
+      "matchedTerms": [
+        "w17",
+        "攰",
+        "壓力",
+        "開心",
+        "鍾意",
+        "講返正題",
+        "唔好離題",
+        "關於呢個問題"
+      ]
+    },
+    {
+      "path": "tests/tooling/project-state/project-state.test.js",
+      "size": 6624,
+      "filenameMatch": true,
+      "identityTerms": [],
+      "matchedTerms": []
+    },
+    {
+      "path": "tools/verify-current-state.js",
+      "size": 3878,
+      "filenameMatch": true,
+      "identityTerms": [],
+      "matchedTerms": []
+    },
+    {
+      "path": "tools/verify-project-state.js",
+      "size": 15154,
+      "filenameMatch": true,
+      "identityTerms": [],
+      "matchedTerms": []
+    }
+  ]
+}
