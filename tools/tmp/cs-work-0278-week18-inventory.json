@@ -1,0 +1,310 @@
+{
+  "schema": "canto-span-week18-modular-inventory-v1",
+  "generatedFrom": {
+    "base": "18e285c92b639f56e6b0eb08543e42ce7c66151e",
+    "roots": [
+      "src/",
+      "tests/",
+      "test-data/",
+      "data/",
+      "docs/",
+      "grammar/",
+      "config/"
+    ],
+    "generatedBundleExcluded": true,
+    "generatedBundlePath": "main.js"
+  },
+  "counts": {
+    "trackedFilesScanned": 1065,
+    "filenameMatches": 5,
+    "contentMatches": 39,
+    "canonicalRuntimeMatches": 4,
+    "projectDataMatches": 35
+  },
+  "filenameMatches": [
+    "docs/research/CP034-TEMPORALADVERBIALCLAUSE-RETIREMENT-R1.md",
+    "docs/research/TEMPORAL-EXPRESSIONS-SOURCE-MAP-CP021B-R12.md",
+    "docs/research/reopened-retired-labels/TemporalAdverbialClause.md",
+    "grammar/research_pending/TemporalClause.md",
+    "tests/constructions/TemporalClause.json"
+  ],
+  "canonicalRuntimeMatches": [
+    {
+      "path": "src/parser/orchestration/apply-construction-patterns.js",
+      "matchedTerms": [
+        "sentence-final particles"
+      ]
+    },
+    {
+      "path": "src/render/learner-display.js",
+      "matchedTerms": [
+        "sentence-final particles"
+      ]
+    },
+    {
+      "path": "src/runtime-resources/constructions/runtime-label-registry.js",
+      "matchedTerms": [
+        "sentence-final particles"
+      ]
+    },
+    {
+      "path": "src/runtime-resources/presentation/learner-glosses.js",
+      "matchedTerms": [
+        "sentence-final particles"
+      ]
+    }
+  ],
+  "projectDataMatches": [
+    {
+      "path": "data/construction-adjudication-batches/batch-18.json",
+      "matchedTerms": [
+        "sentence-final particles"
+      ]
+    },
+    {
+      "path": "data/research-ledgers/glossika-week14-claim-source.json",
+      "matchedTerms": [
+        "sentence-final particles"
+      ]
+    },
+    {
+      "path": "docs/research/ACTIVE-LABEL-EVIDENCE-ONTOLOGY-CLOSURE-R1.md",
+      "matchedTerms": [
+        "sentence-final particles"
+      ]
+    },
+    {
+      "path": "docs/research/ASPECTUAL-CLAUSE-WRAPPERS-SOURCE-MAP-CP021B-R24.md",
+      "matchedTerms": [
+        "sentence-final particles"
+      ]
+    },
+    {
+      "path": "docs/research/COVERB-MANNER-EVENT-MODIFICATION-SOURCE-MAP-CP021B-R23.md",
+      "matchedTerms": [
+        "sentence-final particles"
+      ]
+    },
+    {
+      "path": "docs/research/EVALUATION-PACKET-BLUEPRINTS-CP021B-R37.json",
+      "matchedTerms": [
+        "你食咗飯未"
+      ]
+    },
+    {
+      "path": "docs/research/GLOSSIKA-YUEHK-A1-W14-20260621-RESEARCH.md",
+      "matchedTerms": [
+        "sentence-final particles"
+      ]
+    },
+    {
+      "path": "docs/research/LANE-05-PROGRESSIVE-DURATIVE-EXPERIENTIAL-SOURCE-MAP-CP021B-R13.md",
+      "matchedTerms": [
+        "sentence-final particles"
+      ]
+    },
+    {
+      "path": "docs/research/LANE-07-A-NOT-A-QUESTIONS-SOURCE-MAP-CP021B-R7.md",
+      "matchedTerms": [
+        "sentence-final particles"
+      ]
+    },
+    {
+      "path": "docs/research/PARSER-CONSTRUCTION-CANONICAL-CONSOLIDATION-MATRIX-CP021B-R35.tsv",
+      "matchedTerms": [
+        "你食咗飯未"
+      ]
+    },
+    {
+      "path": "docs/research/PARSER-CONSTRUCTION-INTERNAL-DISPOSITION-MATRIX-CP021B-R34.tsv",
+      "matchedTerms": [
+        "sentence-final particles"
+      ]
+    },
+    {
+      "path": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv",
+      "matchedTerms": [
+        "sentence-final particles"
+      ]
+    },
+    {
+      "path": "docs/research/PARSER-CONSTRUCTION-SOURCE-REGISTER-CP021B-R37.tsv",
+      "matchedTerms": [
+        "sentence-final particles"
+      ]
+    },
+    {
+      "path": "docs/research/PRQ2-002-ZOU2ZI1-HINDSIGHT-REGRET-RESEARCH-R1.md",
+      "matchedTerms": [
+        "sentence-final particles"
+      ]
+    },
+    {
+      "path": "docs/research/PRQ2-003-JYUT6-SCALAR-PROGRESSION-RESEARCH-R1.md",
+      "matchedTerms": [
+        "sentence-final particles"
+      ]
+    },
+    {
+      "path": "docs/research/PRQ2-004-CAA1DI1-NEAR-MISS-COLLISION-AUDIT-R1.tsv",
+      "matchedTerms": [
+        "sentence-final particles"
+      ]
+    },
+    {
+      "path": "docs/research/PRQ2-004-CAA1DI1-NEAR-MISS-RESEARCH-R1.md",
+      "matchedTerms": [
+        "sentence-final particles"
+      ]
+    },
+    {
+      "path": "docs/research/PRQ2-004-CAA1DI1-NEAR-MISS-SOURCE-VERIFICATION-R1.tsv",
+      "matchedTerms": [
+        "sentence-final particles"
+      ]
+    },
+    {
+      "path": "docs/research/UC-RQ-006-DISLOCATION-FOCUS-COLLISION-AUDIT-R1.tsv",
+      "matchedTerms": [
+        "sentence-final particles"
+      ]
+    },
+    {
+      "path": "docs/research/UC-RQ-006-DISLOCATION-FOCUS-CONSTRUCTION-RESEARCH-R1.md",
+      "matchedTerms": [
+        "sentence-final particles"
+      ]
+    },
+    {
+      "path": "docs/research/UC-RQ-008-WH-INDETERMINATE-CONSTRUCTION-RESEARCH-R1.md",
+      "matchedTerms": [
+        "sentence-final particles"
+      ]
+    },
+    {
+      "path": "docs/research/UC-RQ-011-GAA3-CONSTRUCTION-FAMILY-RESEARCH-R1.md",
+      "matchedTerms": [
+        "sentence-final particles"
+      ]
+    },
+    {
+      "path": "docs/research/UC-RQ-012-SENTENCE-FINAL-FOCUS-PARTICLE-FAMILY-RESEARCH-R1.md",
+      "matchedTerms": [
+        "sentence-final particles"
+      ]
+    },
+    {
+      "path": "docs/research/UC-RQ-013-SENTENCE-FINAL-PARTICLE-CLUSTER-RESEARCH-R1.md",
+      "matchedTerms": [
+        "sentence-final particles"
+      ]
+    },
+    {
+      "path": "docs/research/UC-RQ-017-LIN4-DOU1-EVEN-FOCUS-SOURCE-VERIFICATION-R1.tsv",
+      "matchedTerms": [
+        "sentence-final particles"
+      ]
+    },
+    {
+      "path": "docs/research/UC-RQ-018-ALTERNATIVE-QUESTION-RESEARCH-R1.md",
+      "matchedTerms": [
+        "sentence-final particles"
+      ]
+    },
+    {
+      "path": "docs/research/UC-RQ-021-NEGATIVE-POLARITY-MINIMIZER-SOURCE-VERIFICATION-R1.tsv",
+      "matchedTerms": [
+        "sentence-final particles"
+      ]
+    },
+    {
+      "path": "docs/research/UC-RQ-040-AA3-WO3-BO3-STANCE-PARTICLE-CONTRAST-SOURCE-VERIFICATION-R1.tsv",
+      "matchedTerms": [
+        "sentence-final particles"
+      ]
+    },
+    {
+      "path": "docs/research/reopened-retired-labels/IdentityWhQuestion.md",
+      "matchedTerms": [
+        "sentence-final particles"
+      ]
+    },
+    {
+      "path": "docs/research/survey-derived/SV-RQ-009-012/SV-RQ-009-012-SOURCE-LEDGER.json",
+      "matchedTerms": [
+        "sentence-final particles"
+      ]
+    },
+    {
+      "path": "grammar/unsupported_generalization/ConditionalClause.md",
+      "matchedTerms": [
+        "sentence-final particles"
+      ]
+    },
+    {
+      "path": "test-data/cp021b-lx1-construction-freeze-baseline.json",
+      "matchedTerms": [
+        "你食咗飯未"
+      ]
+    },
+    {
+      "path": "tests/constructions/CompletionQuestion.json",
+      "matchedTerms": [
+        "你食咗飯未"
+      ]
+    },
+    {
+      "path": "tests/constructions/PostverbalZoPerfectiveVP.json",
+      "matchedTerms": [
+        "你食咗飯未"
+      ]
+    },
+    {
+      "path": "tests/fixtures/regression-snapshots.json",
+      "matchedTerms": [
+        "你食咗飯未"
+      ]
+    }
+  ],
+  "allContentMatchPaths": [
+    "data/construction-adjudication-batches/batch-18.json",
+    "data/research-ledgers/glossika-week14-claim-source.json",
+    "docs/research/ACTIVE-LABEL-EVIDENCE-ONTOLOGY-CLOSURE-R1.md",
+    "docs/research/ASPECTUAL-CLAUSE-WRAPPERS-SOURCE-MAP-CP021B-R24.md",
+    "docs/research/COVERB-MANNER-EVENT-MODIFICATION-SOURCE-MAP-CP021B-R23.md",
+    "docs/research/EVALUATION-PACKET-BLUEPRINTS-CP021B-R37.json",
+    "docs/research/GLOSSIKA-YUEHK-A1-W14-20260621-RESEARCH.md",
+    "docs/research/LANE-05-PROGRESSIVE-DURATIVE-EXPERIENTIAL-SOURCE-MAP-CP021B-R13.md",
+    "docs/research/LANE-07-A-NOT-A-QUESTIONS-SOURCE-MAP-CP021B-R7.md",
+    "docs/research/PARSER-CONSTRUCTION-CANONICAL-CONSOLIDATION-MATRIX-CP021B-R35.tsv",
+    "docs/research/PARSER-CONSTRUCTION-INTERNAL-DISPOSITION-MATRIX-CP021B-R34.tsv",
+    "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv",
+    "docs/research/PARSER-CONSTRUCTION-SOURCE-REGISTER-CP021B-R37.tsv",
+    "docs/research/PRQ2-002-ZOU2ZI1-HINDSIGHT-REGRET-RESEARCH-R1.md",
+    "docs/research/PRQ2-003-JYUT6-SCALAR-PROGRESSION-RESEARCH-R1.md",
+    "docs/research/PRQ2-004-CAA1DI1-NEAR-MISS-COLLISION-AUDIT-R1.tsv",
+    "docs/research/PRQ2-004-CAA1DI1-NEAR-MISS-RESEARCH-R1.md",
+    "docs/research/PRQ2-004-CAA1DI1-NEAR-MISS-SOURCE-VERIFICATION-R1.tsv",
+    "docs/research/UC-RQ-006-DISLOCATION-FOCUS-COLLISION-AUDIT-R1.tsv",
+    "docs/research/UC-RQ-006-DISLOCATION-FOCUS-CONSTRUCTION-RESEARCH-R1.md",
+    "docs/research/UC-RQ-008-WH-INDETERMINATE-CONSTRUCTION-RESEARCH-R1.md",
+    "docs/research/UC-RQ-011-GAA3-CONSTRUCTION-FAMILY-RESEARCH-R1.md",
+    "docs/research/UC-RQ-012-SENTENCE-FINAL-FOCUS-PARTICLE-FAMILY-RESEARCH-R1.md",
+    "docs/research/UC-RQ-013-SENTENCE-FINAL-PARTICLE-CLUSTER-RESEARCH-R1.md",
+    "docs/research/UC-RQ-017-LIN4-DOU1-EVEN-FOCUS-SOURCE-VERIFICATION-R1.tsv",
+    "docs/research/UC-RQ-018-ALTERNATIVE-QUESTION-RESEARCH-R1.md",
+    "docs/research/UC-RQ-021-NEGATIVE-POLARITY-MINIMIZER-SOURCE-VERIFICATION-R1.tsv",
+    "docs/research/UC-RQ-040-AA3-WO3-BO3-STANCE-PARTICLE-CONTRAST-SOURCE-VERIFICATION-R1.tsv",
+    "docs/research/reopened-retired-labels/IdentityWhQuestion.md",
+    "docs/research/survey-derived/SV-RQ-009-012/SV-RQ-009-012-SOURCE-LEDGER.json",
+    "grammar/unsupported_generalization/ConditionalClause.md",
+    "src/parser/orchestration/apply-construction-patterns.js",
+    "src/render/learner-display.js",
+    "src/runtime-resources/constructions/runtime-label-registry.js",
+    "src/runtime-resources/presentation/learner-glosses.js",
+    "test-data/cp021b-lx1-construction-freeze-baseline.json",
+    "tests/constructions/CompletionQuestion.json",
+    "tests/constructions/PostverbalZoPerfectiveVP.json",
+    "tests/fixtures/regression-snapshots.json"
+  ]
+}
