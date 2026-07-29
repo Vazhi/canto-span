@@ -25,10 +25,9 @@ jobs:
           mkdir -p tools/tmp
           node <<'NODE'
           const fs = require('fs');
-          const path = require('path');
           const { execFileSync } = require('child_process');
 
-          const allowedRoots = ['src/', 'tests/', 'data/', 'docs/', 'grammar/', 'config/'];
+          const allowedRoots = ['src/', 'tests/', 'test-data/', 'data/', 'docs/', 'grammar/', 'config/'];
           const excluded = new Set([
             'main.js',
             '.github/workflows/cs-work-0276-week17-inventory.yml',
@@ -50,7 +49,7 @@ jobs:
             .filter(file => allowedRoots.some(root => file.startsWith(root)))
             .filter(file => !excluded.has(file));
 
-          const filenameMatches = files.filter(file => /(?:^|[\/_.-])(w17|week[\s_.-]?17|emotion|state)(?:$|[\/_.-])/i.test(file));
+          const filenameMatches = files.filter(file => /w17|week[\s_.-]?17|emotion|state/i.test(file));
           const contentMatches = [];
           for (const file of files) {
             let stat;
@@ -58,20 +57,21 @@ jobs:
             if (!stat.isFile() || stat.size > 5_000_000) continue;
             let text;
             try { text = fs.readFileSync(file, 'utf8'); } catch { continue; }
-            const matchedTerms = terms.filter(term => text.toLowerCase().includes(term.toLowerCase()));
+            const lower = text.toLowerCase();
+            const matchedTerms = terms.filter(term => lower.includes(term.toLowerCase()));
             if (!matchedTerms.length) continue;
             const snippets = [];
-            for (const term of matchedTerms.slice(0, 12)) {
-              const index = text.toLowerCase().indexOf(term.toLowerCase());
+            for (const term of matchedTerms.slice(0, 16)) {
+              const index = lower.indexOf(term.toLowerCase());
               const start = Math.max(0, index - 100);
-              const end = Math.min(text.length, index + term.length + 160);
+              const end = Math.min(text.length, index + term.length + 180);
               snippets.push({ term, text: text.slice(start, end).replace(/\s+/g, ' ').trim() });
             }
             contentMatches.push({ path: file, matchedTerms, snippets });
           }
 
           const canonicalRuntimeMatches = contentMatches.filter(entry => entry.path.startsWith('src/'));
-          const researchCorpusTestMatches = contentMatches.filter(entry => /^(tests|data|docs|grammar)\//.test(entry.path));
+          const researchCorpusTestMatches = contentMatches.filter(entry => /^(tests|test-data|data|docs|grammar)\//.test(entry.path));
           const output = {
             schema: 'canto-span-week17-modular-inventory-v1',
             generatedFrom: {
