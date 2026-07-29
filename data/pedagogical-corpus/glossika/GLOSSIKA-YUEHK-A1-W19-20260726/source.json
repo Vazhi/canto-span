@@ -1,0 +1,1069 @@
+{
+  "schema": "canto-span-pedagogical-corpus-source-v1",
+  "source": {
+    "sourceId": "GLOSSIKA-YUEHK-A1-W19-20260726",
+    "provider": "Glossika",
+    "course": "Cantonese (HK) A1",
+    "week": 19,
+    "weekCount": 25,
+    "lessonTitle": "Classifiers / Function Words",
+    "emailSubject": "Cantonese – Classifiers / Function Words",
+    "sourceDate": "2026-07-26",
+    "gmailMessageId": "19f9d2f815d88e21",
+    "sourceType": "authorized_pedagogical_email",
+    "language": "yue-Hant-HK",
+    "authorization": {
+      "basis": "User states Glossika granted permission to use all lesson data in this non-commercial private-use Canto Span project.",
+      "scope": "Source-preserving corpus ingress and modular reconciliation for this lesson.",
+      "redistributionClaim": "none"
+    }
+  },
+  "ingress": {
+    "issue": 136,
+    "workClaimIssue": 283,
+    "branch": "agent/glossika-week19-corpus-ingress",
+    "reviewState": "REQUIRES_EXPERT_CONTEXT_REVIEW",
+    "policy": "Source values and order are immutable. Reviewed readings, lexical categories, classifier compatibility, grammar analysis, deduplication, and evidence use remain separate review and crosswalk data.",
+    "recordCount": 76,
+    "itemTypeCounts": {
+      "dialog_turn": 4,
+      "grammar_entry": 11,
+      "lexical_entry": 51,
+      "sentence": 4,
+      "tone_paradigm_row": 6
+    },
+    "sectionCounts": {
+      "phonics_drill": 6,
+      "vocabulary_and_situations": 70
+    },
+    "sourcePayloadHash": "sha256:ec055012fbf34af2e99577b681c15bcd14e0a4f8e72f7f14e00c66bc8df04cdc",
+    "sourcePayloadHashPolicy": "SHA-256 of canonical key-sorted JSON for the ordered source-field array."
+  },
+  "sourceClaims": {
+    "lessonGrouping": "Classifiers / Function Words",
+    "toneDrillHeading": "All Six Tones: The Classic Paradigms",
+    "status": "immutable_source_claim_requires_independent_verification"
+  },
+  "items": [
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I001",
+      "ordinal": 1,
+      "section": "vocabulary_and_situations",
+      "subsection": "classifiers",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "個",
+        "jyutping": "go3",
+        "english": "CL general"
+      },
+      "sourceHash": "sha256:d59bababecec24dc4b3ba0c042583c33170f24edcc883935a6aa93fce2c9dab7"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I002",
+      "ordinal": 2,
+      "section": "vocabulary_and_situations",
+      "subsection": "classifiers",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "隻",
+        "jyutping": "zek3",
+        "english": "CL animals, single items"
+      },
+      "sourceHash": "sha256:86c6636976f3622b1fcd237428896ba73aebf55b3f11d262f8f8af619bc31620"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I003",
+      "ordinal": 3,
+      "section": "vocabulary_and_situations",
+      "subsection": "classifiers",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "架",
+        "jyutping": "gaa2",
+        "english": "CL vehicles"
+      },
+      "sourceHash": "sha256:662fa54029389f67f9b0cd4724144481a0875e0c7999ad3e83943637e61b4eea"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I004",
+      "ordinal": 4,
+      "section": "vocabulary_and_situations",
+      "subsection": "classifiers",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "間",
+        "jyutping": "gaan1",
+        "english": "CL rooms, shops, buildings"
+      },
+      "sourceHash": "sha256:c544497aa3ac399627a5d1c8213dbf985cdef9edbbecbe6740cec7df40a8cf43"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I005",
+      "ordinal": 5,
+      "section": "vocabulary_and_situations",
+      "subsection": "classifiers",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "本",
+        "jyutping": "bun2",
+        "english": "CL books"
+      },
+      "sourceHash": "sha256:c25db6bd4152ec55d6a42d31f475e51d5e36fd1dab2db9f61a86669e47e6d983"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I006",
+      "ordinal": 6,
+      "section": "vocabulary_and_situations",
+      "subsection": "classifiers",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "枝",
+        "jyutping": "zi1",
+        "english": "CL pens, bottles, sticks"
+      },
+      "sourceHash": "sha256:0f2987e4dc32eef51ff896d5f98db8411db42a86d4509334518697e46a55730e"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I007",
+      "ordinal": 7,
+      "section": "vocabulary_and_situations",
+      "subsection": "classifiers",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "碗",
+        "jyutping": "wun2",
+        "english": "CL bowls of"
+      },
+      "sourceHash": "sha256:413e4cf34cb1d19d604798ab3fd0834a003c1652e65f6e6c11876bac5c9ceac0"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I008",
+      "ordinal": 8,
+      "section": "vocabulary_and_situations",
+      "subsection": "classifiers",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "杯",
+        "jyutping": "bui1",
+        "english": "CL cups of"
+      },
+      "sourceHash": "sha256:607d9e0e812cefa627fe3afa672b9506d0beec0941667e7e6f9247493eda6def"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I009",
+      "ordinal": 9,
+      "section": "vocabulary_and_situations",
+      "subsection": "classifiers",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "對",
+        "jyutping": "deoi3",
+        "english": "CL pairs"
+      },
+      "sourceHash": "sha256:365c5dfc06d165f72f4aac50113dabf83e58ecad2cd7380a850ecb0daefdfb0e"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I010",
+      "ordinal": 10,
+      "section": "vocabulary_and_situations",
+      "subsection": "classifiers",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "張",
+        "jyutping": "zoeng1",
+        "english": "CL flat things (paper, tables)"
+      },
+      "sourceHash": "sha256:0d4925a23c3536c81613459b630e5edfe7f3e14a6ed69c4df547a9507df7ca72"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I011",
+      "ordinal": 11,
+      "section": "vocabulary_and_situations",
+      "subsection": "classifiers",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "件",
+        "jyutping": "gin6",
+        "english": "CL clothing items, matters"
+      },
+      "sourceHash": "sha256:4114573e8eb067d501ea7abb06ca3aa957515c1d633656fc4593377677e02709"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I012",
+      "ordinal": 12,
+      "section": "vocabulary_and_situations",
+      "subsection": "classifiers",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "部",
+        "jyutping": "bou6",
+        "english": "CL machines, vehicles"
+      },
+      "sourceHash": "sha256:9c4ddbc6e5f981988752a45e612eded90637a4a51990afe96922218b67c194e7"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I013",
+      "ordinal": 13,
+      "section": "vocabulary_and_situations",
+      "subsection": "classifiers",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "把",
+        "jyutping": "baa2",
+        "english": "CL handled items"
+      },
+      "sourceHash": "sha256:1090d47172fe974d604ae3f90238e04f5c97bd006af0d38d2f6ffb034c7a873d"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I014",
+      "ordinal": 14,
+      "section": "vocabulary_and_situations",
+      "subsection": "classifiers",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "條",
+        "jyutping": "tiu4",
+        "english": "CL long things (roads, fish)"
+      },
+      "sourceHash": "sha256:4a8bf19a7b6174f1b4edaa98b172b3f5a609c0d65faa75b0ef240fedd2f234e2"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I015",
+      "ordinal": 15,
+      "section": "vocabulary_and_situations",
+      "subsection": "function_words",
+      "itemType": "grammar_entry",
+      "source": {
+        "traditional": "嘅",
+        "jyutping": "ge3",
+        "english": "possessive/attributive particle"
+      },
+      "sourceHash": "sha256:a6b15a7994e64e2436fedd419bf6921c7184d42569fb8542b16e6779250bca3f"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I016",
+      "ordinal": 16,
+      "section": "vocabulary_and_situations",
+      "subsection": "function_words",
+      "itemType": "grammar_entry",
+      "source": {
+        "traditional": "喺",
+        "jyutping": "hai2",
+        "english": "at/in (location)"
+      },
+      "sourceHash": "sha256:94e494ecbb16a770a017fb1766e7fe369a7d9ad060b54eb10cd9fe6bacd43bef"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I017",
+      "ordinal": 17,
+      "section": "vocabulary_and_situations",
+      "subsection": "function_words",
+      "itemType": "grammar_entry",
+      "source": {
+        "traditional": "咗",
+        "jyutping": "zo2",
+        "english": "perfective aspect (completed)"
+      },
+      "sourceHash": "sha256:d47bd9ed41fbed5bff3abf270cee1ce77a631e203ba1a35ed441c567d7593f5c"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I018",
+      "ordinal": 18,
+      "section": "vocabulary_and_situations",
+      "subsection": "function_words",
+      "itemType": "grammar_entry",
+      "source": {
+        "traditional": "緊",
+        "jyutping": "gan2",
+        "english": "progressive aspect (ongoing)"
+      },
+      "sourceHash": "sha256:054b47e2112f7d0650b4b6c8d9334a99deb0f87ab8ffe811d2cb1f46df261645"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I019",
+      "ordinal": 19,
+      "section": "vocabulary_and_situations",
+      "subsection": "function_words",
+      "itemType": "grammar_entry",
+      "source": {
+        "traditional": "過",
+        "jyutping": "gwo3",
+        "english": "experiential aspect (have done)"
+      },
+      "sourceHash": "sha256:dfaa4e5f9109512dcbf809fd677e1a2e6a50fbb4c0ce4ea200d17efc7b65f300"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I020",
+      "ordinal": 20,
+      "section": "vocabulary_and_situations",
+      "subsection": "function_words",
+      "itemType": "grammar_entry",
+      "source": {
+        "traditional": "到",
+        "jyutping": "dou3",
+        "english": "to arrive/until"
+      },
+      "sourceHash": "sha256:b231410843dc3eb98f21855fd09c544b74414175e6f817a472413bf9d3b2b6cb"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I021",
+      "ordinal": 21,
+      "section": "vocabulary_and_situations",
+      "subsection": "sentence_final_particles",
+      "itemType": "grammar_entry",
+      "source": {
+        "traditional": "啦",
+        "jyutping": "laa1",
+        "english": "suggestion particle"
+      },
+      "sourceHash": "sha256:8b0ce6f6f3524c1247ea89dd64597ebd0c665b2e92b20d2bb963e75c021b8767"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I022",
+      "ordinal": 22,
+      "section": "vocabulary_and_situations",
+      "subsection": "sentence_final_particles",
+      "itemType": "grammar_entry",
+      "source": {
+        "traditional": "㗎",
+        "jyutping": "gaa3",
+        "english": "emphatic particle"
+      },
+      "sourceHash": "sha256:cc87714d3608a91c21cdaddba1182feeb887b64e42b3103dfae47e5fe75faa83"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I023",
+      "ordinal": 23,
+      "section": "vocabulary_and_situations",
+      "subsection": "sentence_final_particles",
+      "itemType": "grammar_entry",
+      "source": {
+        "traditional": "呀",
+        "jyutping": "aa3",
+        "english": "softening particle"
+      },
+      "sourceHash": "sha256:20998c0090b4c7bcd7adec8ca74cb736f2999a53ac010c77c6a28ce057871d54"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I024",
+      "ordinal": 24,
+      "section": "vocabulary_and_situations",
+      "subsection": "sentence_final_particles",
+      "itemType": "grammar_entry",
+      "source": {
+        "traditional": "嘞",
+        "jyutping": "laak3",
+        "english": "change-of-state particle"
+      },
+      "sourceHash": "sha256:c57ff5db291b45487e4d5a54956334dd91a820b71c3a0acc12f21ae7816cf091"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I025",
+      "ordinal": 25,
+      "section": "vocabulary_and_situations",
+      "subsection": "sentence_final_particles",
+      "itemType": "grammar_entry",
+      "source": {
+        "traditional": "囉",
+        "jyutping": "lo1",
+        "english": "obviousness particle"
+      },
+      "sourceHash": "sha256:a880892593dde6a6e6f0e5e512daaf2134f6ef84a5aa78bb1a193134599fcb02"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I026",
+      "ordinal": 26,
+      "section": "vocabulary_and_situations",
+      "subsection": "spatial_directional",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "周圍",
+        "jyutping": "zau1 wai4",
+        "english": "around"
+      },
+      "sourceHash": "sha256:412ae83fd81f53faa907e0f7fa88a61c7ab7c24f5303542db8133b36fb764f96"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I027",
+      "ordinal": 27,
+      "section": "vocabulary_and_situations",
+      "subsection": "spatial_directional",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "向",
+        "jyutping": "hoeng3",
+        "english": "toward"
+      },
+      "sourceHash": "sha256:359b54cab3a799783e74804e83eda72a3f6d509ed981ec7cb7ba9b48be809dea"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I028",
+      "ordinal": 28,
+      "section": "vocabulary_and_situations",
+      "subsection": "spatial_directional",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "遠",
+        "jyutping": "jyun5",
+        "english": "far"
+      },
+      "sourceHash": "sha256:7b5c0e85440ca19752b7783780ecab96922fffc1f9fa08e78e7da0176c3d75f1"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I029",
+      "ordinal": 29,
+      "section": "vocabulary_and_situations",
+      "subsection": "spatial_directional",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "穿過",
+        "jyutping": "cyun1 gwo3",
+        "english": "through"
+      },
+      "sourceHash": "sha256:4c50108d9cff51dbd0f23073c981a887a7ec76a43e85b3e5271b2fef643803b6"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I030",
+      "ordinal": 30,
+      "section": "vocabulary_and_situations",
+      "subsection": "spatial_directional",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "中間",
+        "jyutping": "zung1 gaan1",
+        "english": "between"
+      },
+      "sourceHash": "sha256:f13915c6fe02afd23fc6e35859166c9415b0bd365462bb8b6f0e960234bf5366"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I031",
+      "ordinal": 31,
+      "section": "vocabulary_and_situations",
+      "subsection": "spatial_directional",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "出面",
+        "jyutping": "ceot1 min6",
+        "english": "outside"
+      },
+      "sourceHash": "sha256:2b5f3b1ff17700b0d58664115bb8ddd0af1c8f4144019c26ad6deca582147ae4"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I032",
+      "ordinal": 32,
+      "section": "vocabulary_and_situations",
+      "subsection": "spatial_directional",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "東邊",
+        "jyutping": "dung1 bin1",
+        "english": "east side"
+      },
+      "sourceHash": "sha256:c38f70d811aa9f6fa2ade7a9f5974db7e2e172449889226196c22103120ab716"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I033",
+      "ordinal": 33,
+      "section": "vocabulary_and_situations",
+      "subsection": "spatial_directional",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "西邊",
+        "jyutping": "sai1 bin1",
+        "english": "west side"
+      },
+      "sourceHash": "sha256:a9a001d529b6af9a9b5982b7e929d364a56e733058e948588a0ad3ac3cfd5187"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I034",
+      "ordinal": 34,
+      "section": "vocabulary_and_situations",
+      "subsection": "spatial_directional",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "南邊",
+        "jyutping": "naam4 bin1",
+        "english": "south side"
+      },
+      "sourceHash": "sha256:9e68783dfae4e1d1697f1bb2c40b973832879b295136fc574c2d52e396f1f3e0"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I035",
+      "ordinal": 35,
+      "section": "vocabulary_and_situations",
+      "subsection": "spatial_directional",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "北邊",
+        "jyutping": "bak1 bin1",
+        "english": "north side"
+      },
+      "sourceHash": "sha256:1ce636f71a35558b2908bd53eb62278fa09c1f316834524acea1af1c11003888"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I036",
+      "ordinal": 36,
+      "section": "vocabulary_and_situations",
+      "subsection": "spatial_directional",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "盡頭",
+        "jyutping": "zeon6 tau4",
+        "english": "end (of road)"
+      },
+      "sourceHash": "sha256:bdf0e5a4419562494b6014b3002a84ef2d89eed60fc4a6f4d9579a68f9b5ecbd"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I037",
+      "ordinal": 37,
+      "section": "vocabulary_and_situations",
+      "subsection": "spatial_directional",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "轉角",
+        "jyutping": "zyun3 gok3",
+        "english": "corner"
+      },
+      "sourceHash": "sha256:7ff5d6d96de869e10b522e81db5ca0352cf2c0a1836b336bfbd6a9f32844aaf6"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I038",
+      "ordinal": 38,
+      "section": "vocabulary_and_situations",
+      "subsection": "spatial_directional",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "入口",
+        "jyutping": "jap6 hau2",
+        "english": "entrance"
+      },
+      "sourceHash": "sha256:5ed998586c7cd5f4af5c3fc20a25cb405fff5323b4388c1b68a98e53995fc755"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I039",
+      "ordinal": 39,
+      "section": "vocabulary_and_situations",
+      "subsection": "spatial_directional",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "出口",
+        "jyutping": "ceot1 hau2",
+        "english": "exit"
+      },
+      "sourceHash": "sha256:09f2f5863579f588aafad56e2da56e10c70b1073264b20c421da9402537585d3"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I040",
+      "ordinal": 40,
+      "section": "vocabulary_and_situations",
+      "subsection": "spatial_directional",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "路口",
+        "jyutping": "lou6 hau2",
+        "english": "intersection"
+      },
+      "sourceHash": "sha256:a8c8a895f20a4e14684e5440cbd320d7553800697710ca7db795f60486603fd7"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I041",
+      "ordinal": 41,
+      "section": "vocabulary_and_situations",
+      "subsection": "spatial_directional",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "角落",
+        "jyutping": "gok3 lok6",
+        "english": "corner"
+      },
+      "sourceHash": "sha256:7c56f4e19edbea60498dbb907603cea48d4f808795a1e4e0daa5194aebad9d33"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I042",
+      "ordinal": 42,
+      "section": "vocabulary_and_situations",
+      "subsection": "spatial_directional",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "頂部",
+        "jyutping": "deng2 bou6",
+        "english": "top"
+      },
+      "sourceHash": "sha256:c3be317cf8f96a9b818a094f03b67f602a00cfbf2ea882a4349c1a274234112e"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I043",
+      "ordinal": 43,
+      "section": "vocabulary_and_situations",
+      "subsection": "spatial_directional",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "底部",
+        "jyutping": "dai2 bou6",
+        "english": "bottom"
+      },
+      "sourceHash": "sha256:7d5b69ded4fa4f26ac71db8b3127cd6229ddbe4a48e4139dea49e4ed0a68cf0b"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I044",
+      "ordinal": 44,
+      "section": "vocabulary_and_situations",
+      "subsection": "spatial_directional",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "遠處",
+        "jyutping": "jyun5 cyu3",
+        "english": "far away"
+      },
+      "sourceHash": "sha256:0350621e7e15cfa2e82604a7194f465ce3588f707ff233164d5114e42c32fb30"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I045",
+      "ordinal": 45,
+      "section": "vocabulary_and_situations",
+      "subsection": "spatial_directional",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "近處",
+        "jyutping": "gan6 cyu3",
+        "english": "nearby"
+      },
+      "sourceHash": "sha256:40b7df3c8d92da5dc8aaf91b42d4b4c275a821302e231cca4dfb271e5bbf9159"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I046",
+      "ordinal": 46,
+      "section": "vocabulary_and_situations",
+      "subsection": "spatial_directional",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "四周",
+        "jyutping": "sei3 zau1",
+        "english": "all around"
+      },
+      "sourceHash": "sha256:983492a937ce033f737436373f70231ea8fadee712e6128aba3834c89b9a3986"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I047",
+      "ordinal": 47,
+      "section": "vocabulary_and_situations",
+      "subsection": "spatial_directional",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "到處",
+        "jyutping": "dou3 cyu3",
+        "english": "everywhere"
+      },
+      "sourceHash": "sha256:378382ba92fcc111be6a1871887c545f0988c9fd137af9c985a77da60f1f3b90"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I048",
+      "ordinal": 48,
+      "section": "vocabulary_and_situations",
+      "subsection": "spatial_directional",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "正中",
+        "jyutping": "zing3 zung1",
+        "english": "center"
+      },
+      "sourceHash": "sha256:a5323a992dbd920f327f18c9d3b017028e8999bfa58675f124c8f816327edc05"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I049",
+      "ordinal": 49,
+      "section": "vocabulary_and_situations",
+      "subsection": "transport_places",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "的士站",
+        "jyutping": "dik1 si2 zaam6",
+        "english": "taxi stand"
+      },
+      "sourceHash": "sha256:1689a766ced44d7eadd04c81725ff765b4ca032c0dd2d32949232d2ea490d09c"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I050",
+      "ordinal": 50,
+      "section": "vocabulary_and_situations",
+      "subsection": "transport_places",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "渡輪",
+        "jyutping": "dou6 leon4",
+        "english": "ferry"
+      },
+      "sourceHash": "sha256:776c981f00c75bc82883e9ebcf512bc9ae0311cb5da30a94ce45507d40d67992"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I051",
+      "ordinal": 51,
+      "section": "vocabulary_and_situations",
+      "subsection": "transport_places",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "纜車",
+        "jyutping": "laam6 ce1",
+        "english": "cable car"
+      },
+      "sourceHash": "sha256:f40391791cc3eb1414df48de8c5c7e97094e5f049cf2ea8837a11db9eb40ec0a"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I052",
+      "ordinal": 52,
+      "section": "vocabulary_and_situations",
+      "subsection": "transport_places",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "港鐵",
+        "jyutping": "gong2 tit3",
+        "english": "MTR"
+      },
+      "sourceHash": "sha256:a2bd1ab2319ad91b7ebec1f6c5509c1088a7771a9e4810dc3cb548734d2f5670"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I053",
+      "ordinal": 53,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "十億",
+        "jyutping": "sap6 jik1",
+        "english": "1 billion"
+      },
+      "sourceHash": "sha256:53f5dba550e0f160915b1c92e1b2552d241905d2cf405c7712e9f2e99c20170c"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I054",
+      "ordinal": 54,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "二十億",
+        "jyutping": "ji6 sap6 jik1",
+        "english": "2 billion"
+      },
+      "sourceHash": "sha256:cecd314a5b0fbe1128c4a8e60617231eae4cbefe2f7fcc3ce31a8705d71cc9f1"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I055",
+      "ordinal": 55,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "三十億",
+        "jyutping": "saam1 sap6 jik1",
+        "english": "3 billion"
+      },
+      "sourceHash": "sha256:e265dd1ed7203e864b2f2abfc99005e0be4a8bcdb556685b4b3ee68e8ec6c655"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I056",
+      "ordinal": 56,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "四十億",
+        "jyutping": "sei3 sap6 jik1",
+        "english": "4 billion"
+      },
+      "sourceHash": "sha256:d5b38b076d6e3e6395bf6712dcfc61ff08d8580be53c5a0e9816c79671937184"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I057",
+      "ordinal": 57,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "五十億",
+        "jyutping": "ng5 sap6 jik1",
+        "english": "5 billion"
+      },
+      "sourceHash": "sha256:9ea3fabd1761d57b0cabf4d2980b908f9cfaa739c7aa0b2f0cc4c70ecdafd796"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I058",
+      "ordinal": 58,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "六十億",
+        "jyutping": "luk6 sap6 jik1",
+        "english": "6 billion"
+      },
+      "sourceHash": "sha256:0c352aca4ff6d7238176ebc4d74e01aacac1ce8aec39e04d6a47e5ec6a8edefe"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I059",
+      "ordinal": 59,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "七十億",
+        "jyutping": "cat1 sap6 jik1",
+        "english": "7 billion"
+      },
+      "sourceHash": "sha256:587a3aa99f657fd501b4646eddfffa3e10ae08683b68bcf942e7e998b51fc852"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I060",
+      "ordinal": 60,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "八十億",
+        "jyutping": "baat3 sap6 jik1",
+        "english": "8 billion"
+      },
+      "sourceHash": "sha256:c6e3e6b5c352aa65dee0967d58bb170f54a6bb1cb0bef0615299d4c432a6c6bf"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I061",
+      "ordinal": 61,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "九十億",
+        "jyutping": "gau2 sap6 jik1",
+        "english": "9 billion"
+      },
+      "sourceHash": "sha256:6d7f2d22eeb89724c191a69a36d7442b13f8e83c1375f5ae9a2885d40d878b51"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I062",
+      "ordinal": 62,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "一百億",
+        "jyutping": "jat1 baak3 jik1",
+        "english": "10 billion"
+      },
+      "sourceHash": "sha256:04581cc20b89431e58d035f4296c90fab76130f22ed96b004faae9ae3377ed16"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I063",
+      "ordinal": 63,
+      "section": "vocabulary_and_situations",
+      "subsection": "situation_patterns",
+      "itemType": "sentence",
+      "register": "casual",
+      "source": {
+        "traditional": "我要兩杯茶。",
+        "jyutping": "ngo5 jiu3 loeng5 bui1 caa4.",
+        "morphemeGloss": "I want two CL tea",
+        "english": "I want two cups of tea."
+      },
+      "sourceHash": "sha256:fe9df57ea580180307688c6adf077ea558fdea19058359309b653857796a7571"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I064",
+      "ordinal": 64,
+      "section": "vocabulary_and_situations",
+      "subsection": "situation_patterns",
+      "itemType": "sentence",
+      "register": "standard",
+      "source": {
+        "traditional": "呢間鋪頭好大。",
+        "jyutping": "ni1 gaan1 pou3 tau2 hou2 daai6.",
+        "morphemeGloss": "this CL shop very big",
+        "english": "This shop is very big."
+      },
+      "sourceHash": "sha256:7c04448411eec3a3506a62e673ade77489eec4a242892b74a618724af41b7db7"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I065",
+      "ordinal": 65,
+      "section": "vocabulary_and_situations",
+      "subsection": "situation_patterns",
+      "itemType": "sentence",
+      "register": "casual",
+      "source": {
+        "traditional": "佢食緊飯。",
+        "jyutping": "keoi5 sik6 gan2 faan6.",
+        "morphemeGloss": "he/she eat PROG rice",
+        "english": "He/she is eating."
+      },
+      "sourceHash": "sha256:b3afda7b10eee14454d12d3a430caf0d3313abf8703e8ff3cb7ed6f0209b8a60"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I066",
+      "ordinal": 66,
+      "section": "vocabulary_and_situations",
+      "subsection": "situation_patterns",
+      "itemType": "sentence",
+      "register": "casual",
+      "source": {
+        "traditional": "你去過日本未？",
+        "jyutping": "nei5 heoi3 gwo3 jat6 bun2 mei6?",
+        "morphemeGloss": "you go EXP Japan not.yet",
+        "english": "Have you been to Japan?"
+      },
+      "sourceHash": "sha256:9c55cd1fedb15803213d0a83b26a155a9965ad6934c339dc55c90c7195d9bc8d"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I067",
+      "ordinal": 67,
+      "section": "vocabulary_and_situations",
+      "subsection": "mini_dialog",
+      "itemType": "dialog_turn",
+      "register": "casual",
+      "dialogTurn": 1,
+      "source": {
+        "traditional": "你要幾多杯咖啡？",
+        "jyutping": "nei5 jiu3 gei2 do1 bui1 gaa3 fe1?",
+        "morphemeGloss": "you want how.many CL coffee",
+        "english": "How many cups of coffee do you want?"
+      },
+      "sourceHash": "sha256:78126b71e6cb2b95636dc89a567c4e10bc864de43fb5bb04764e2f4819cd26dd"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I068",
+      "ordinal": 68,
+      "section": "vocabulary_and_situations",
+      "subsection": "mini_dialog",
+      "itemType": "dialog_turn",
+      "register": "casual",
+      "dialogTurn": 2,
+      "source": {
+        "traditional": "我要一杯。佢呢？",
+        "jyutping": "ngo5 jiu3 jat1 bui1. keoi5 ne1?",
+        "morphemeGloss": "I want one CL he/she SFP",
+        "english": "I want one. And him/her?"
+      },
+      "sourceHash": "sha256:a3b88aa603ed436190235e4317964bfcac64d8e299f053ae7f4757aa94948cf5"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I069",
+      "ordinal": 69,
+      "section": "vocabulary_and_situations",
+      "subsection": "mini_dialog",
+      "itemType": "dialog_turn",
+      "register": "casual",
+      "dialogTurn": 3,
+      "source": {
+        "traditional": "佢唔飲咖啡嘅，畀碗湯佢啦。",
+        "jyutping": "keoi5 m4 jam2 gaa3 fe1 ge3, bei2 wun2 tong1 keoi5 laa1.",
+        "morphemeGloss": "he/she not drink coffee ATTR give CL soup him/her SFP",
+        "english": "He/she doesn't drink coffee, give him/her a bowl of soup."
+      },
+      "sourceHash": "sha256:773146f8f2c46384752cd53895e6e522e1a39934fadb8f0a11e0fa28f51499e2"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I070",
+      "ordinal": 70,
+      "section": "vocabulary_and_situations",
+      "subsection": "mini_dialog",
+      "itemType": "dialog_turn",
+      "register": "casual",
+      "dialogTurn": 4,
+      "source": {
+        "traditional": "好，一杯咖啡，一碗湯。",
+        "jyutping": "hou2, jat1 bui1 gaa3 fe1, jat1 wun2 tong1.",
+        "morphemeGloss": "OK one CL coffee one CL soup",
+        "english": "OK, one coffee and one soup."
+      },
+      "sourceHash": "sha256:6670c95d1ba200bc8140953bc654d1d8eab2ff5e4c9e85425a5a67624c53df37"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I071",
+      "ordinal": 71,
+      "section": "phonics_drill",
+      "subsection": "six_tone_paradigms",
+      "itemType": "tone_paradigm_row",
+      "source": {
+        "tone": "T1 ˥",
+        "si": "si1 詩 (poem)",
+        "saam": "saam1 三 (three)",
+        "fu": "fu1 夫 (husband)",
+        "fan": "fan1 分 (to divide)"
+      },
+      "sourceHash": "sha256:5a1b4513aeb5f4a5ca8ab03a6af4d0e3f5f37ef2d41022a17c32b287b2c0c2ae"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I072",
+      "ordinal": 72,
+      "section": "phonics_drill",
+      "subsection": "six_tone_paradigms",
+      "itemType": "tone_paradigm_row",
+      "source": {
+        "tone": "T2 ˧˥",
+        "si": "si2 史 (history)",
+        "saam": "saam2 —",
+        "fu": "fu2 虎 (tiger)",
+        "fan": "fan2 粉 (powder)"
+      },
+      "sourceHash": "sha256:2035459db6362abbaded31fd2189bc5a0bfab37b07e446d159404010e939898b"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I073",
+      "ordinal": 73,
+      "section": "phonics_drill",
+      "subsection": "six_tone_paradigms",
+      "itemType": "tone_paradigm_row",
+      "source": {
+        "tone": "T3 ˧",
+        "si": "si3 試 (to try)",
+        "saam": "saam3 —",
+        "fu": "fu3 副 (deputy)",
+        "fan": "fan3 瞓 (to sleep, colloq.)"
+      },
+      "sourceHash": "sha256:ea1e5faf56c3b85267cf8fdc57b5064a0470775766a64844bab7a3e19dd1d36a"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I074",
+      "ordinal": 74,
+      "section": "phonics_drill",
+      "subsection": "six_tone_paradigms",
+      "itemType": "tone_paradigm_row",
+      "source": {
+        "tone": "T4 ˨˩",
+        "si": "si4 時 (time)",
+        "saam": "saam4 —",
+        "fu": "fu4 扶 (to support)",
+        "fan": "fan4 焚 (to burn)"
+      },
+      "sourceHash": "sha256:665e6a3b5ce48ec44b067d51a9e0cff58303f79d269b50a59549caff9a551590"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I075",
+      "ordinal": 75,
+      "section": "phonics_drill",
+      "subsection": "six_tone_paradigms",
+      "itemType": "tone_paradigm_row",
+      "source": {
+        "tone": "T5 ˩˧",
+        "si": "si5 市 (market)",
+        "saam": "saam5 —",
+        "fu": "fu5 婦 (woman)",
+        "fan": "fan5 奮 (to strive)"
+      },
+      "sourceHash": "sha256:7772343d57c67b47141d285958656311c445f49fb67575dbd14a5828fa87c3ac"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W19-20260726-I076",
+      "ordinal": 76,
+      "section": "phonics_drill",
+      "subsection": "six_tone_paradigms",
+      "itemType": "tone_paradigm_row",
+      "source": {
+        "tone": "T6 ˨",
+        "si": "si6 事 (matter)",
+        "saam": "saam6 —",
+        "fu": "fu6 父 (father)",
+        "fan": "fan6 份 (portion)"
+      },
+      "sourceHash": "sha256:43e2b8eb1eb56b9caa713a1aecba249e39269b92e919d7204909e9f8c3ab2974"
+    }
+  ]
+}
