@@ -1,0 +1,180 @@
+{
+  "source": {
+    "sourceId": "GLOSSIKA-YUEHK-A1-W15-20260628",
+    "provider": "Glossika",
+    "course": "Cantonese (HK) A1",
+    "week": 15,
+    "weekCount": 25,
+    "lessonTitle": "Directions & Places",
+    "emailSubject": "Cantonese – Directions & Places",
+    "sourceDate": "2026-06-28",
+    "gmailMessageId": "19f0cf457d1b8ac3",
+    "sourceType": "authorized_pedagogical_email",
+    "language": "yue-Hant-HK",
+    "authorization": {
+      "basis": "User states Glossika granted permission to use all lesson data in this non-commercial private-use Canto Span project.",
+      "scope": "Source-preserving corpus ingress for this lesson.",
+      "redistributionClaim": "none"
+    }
+  },
+  "ingress": {
+    "issue": 132,
+    "workClaimIssue": 270,
+    "branch": "agent/glossika-week15-corpus-ingress",
+    "reviewState": "REQUIRES_EXPERT_CONTEXT_REVIEW",
+    "policy": "Source values are immutable. Normalization, correction, duplicate classification, naturalness review, and evidence use are recorded separately."
+  },
+  "records": [
+    {
+      "section": "functional_language",
+      "subsection": "respond_to_thanks",
+      "itemType": "sentence",
+      "register": "casual",
+      "source": {
+        "traditional": "唔使客氣。",
+        "jyutping": "M4 sai2 haak3 hei3.",
+        "morphemeGloss": "not-need polite",
+        "english": "You're welcome."
+      }
+    },
+    {
+      "section": "functional_language",
+      "subsection": "respond_to_thanks",
+      "itemType": "sentence",
+      "register": "casual",
+      "source": {
+        "traditional": "冇嘢。",
+        "jyutping": "Mou5 je5.",
+        "morphemeGloss": "not-have thing",
+        "english": "It's nothing."
+      }
+    },
+    {
+      "section": "functional_language",
+      "subsection": "respond_to_thanks",
+      "itemType": "sentence",
+      "register": "polite",
+      "source": {
+        "traditional": "唔使唔該。",
+        "jyutping": "M4 sai2 m4 goi1.",
+        "morphemeGloss": "not-need excuse-me",
+        "english": "Don't mention it."
+      }
+    },
+    {
+      "section": "functional_language",
+      "subsection": "respond_to_thanks",
+      "itemType": "sentence",
+      "register": "polite",
+      "source": {
+        "traditional": "小事啫，唔使客氣。",
+        "jyutping": "Siu2 si6 ze1, m4 sai2 haak3 hei3.",
+        "morphemeGloss": "small matter only not-need polite",
+        "english": "It's a small matter, don't mention it."
+      }
+    },
+    {
+      "section": "functional_language",
+      "subsection": "congratulations_and_well_wishes",
+      "itemType": "sentence",
+      "register": "casual",
+      "source": {
+        "traditional": "恭喜恭喜！",
+        "jyutping": "Gung1 hei2 gung1 hei2!",
+        "morphemeGloss": "congratulations congratulations",
+        "english": "Congratulations!"
+      }
+    },
+    {
+      "section": "functional_language",
+      "subsection": "congratulations_and_well_wishes",
+      "itemType": "sentence",
+      "register": "casual",
+      "source": {
+        "traditional": "生日快樂！",
+        "jyutping": "Saang1 jat6 faai3 lok6!",
+        "morphemeGloss": "birthday happy",
+        "english": "Happy birthday!"
+      }
+    },
+    {
+      "section": "functional_language",
+      "subsection": "congratulations_and_well_wishes",
+      "itemType": "sentence",
+      "register": "polite",
+      "source": {
+        "traditional": "新年快樂，身體健康。",
+        "jyutping": "San1 nin4 faai3 lok6, san1 tai2 gin6 hong1.",
+        "morphemeGloss": "new year happy body healthy",
+        "english": "Happy New Year, wishing you good health."
+      }
+    },
+    {
+      "section": "functional_language",
+      "subsection": "congratulations_and_well_wishes",
+      "itemType": "sentence",
+      "register": "polite",
+      "source": {
+        "traditional": "祝你一切順利。",
+        "jyutping": "Zuk1 nei5 jat1 cai3 seon6 lei6.",
+        "morphemeGloss": "wish you all smooth",
+        "english": "Wishing you all the best."
+      }
+    },
+    {
+      "section": "vocabulary_and_situations",
+      "subsection": "directions_and_places",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "隔籬",
+        "jyutping": "gaak3 lei4",
+        "english": "next to"
+      }
+    },
+    {
+      "section": "vocabulary_and_situations",
+      "subsection": "directions_and_places",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "對面",
+        "jyutping": "deoi3 min6",
+        "english": "opposite"
+      }
+    },
+    {
+      "section": "vocabulary_and_situations",
+      "subsection": "directions_and_places",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "附近",
+        "jyutping": "fu6 gan6",
+        "english": "nearby"
+      }
+    },
+    {
+      "section": "vocabulary_and_situations",
+      "subsection": "directions_and_places",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "遠",
+        "jyutping": "jyun5",
+        "english": "far"
+      }
+    },
+    {
+      "section": "vocabulary_and_situations",
+      "subsection": "directions_and_places",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "近",
+        "jyutping": "kan5",
+        "english": "near"
+      }
+    },
+    {
+      "section": "vocabulary_and_situations",
+      "subsection": "directions_and_places",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "上面",
+        "jyutping": "soeng6 min6",
