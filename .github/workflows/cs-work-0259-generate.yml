@@ -1,0 +1,55 @@
+name: CS-WORK-0259 AA91 generation
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    if: github.event.pull_request.head.ref == 'agent/aa91-hkcancor-hou-x-noun'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pycantonese==5.0.0
+          npm ci
+      - name: Generate deterministic AA91 outputs
+        run: |
+          python external-evidence/aa91-hkcancor/query-hkcancor-aa91-hou-x-noun.py --profile hou-x-noun
+          python external-evidence/aa91-hkcancor/query-hkcancor-aa91-hou-x-noun.py --profile hou-x-noun --check
+      - name: Run focused corpus test
+        run: python -m unittest tests/tooling/corpus-review/test_aa91_hkcancor_profile.py
+      - name: Verify repository state
+        run: |
+          npm run verify:research
+          npm run verify
+          git diff --check
+      - name: Commit generated outputs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.json \
+            external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.tsv \
+            external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-query-summary.json
+          if git diff --cached --quiet; then
+            echo "Generated outputs are already current."
+          else
+            git commit -m "Generate AA91 HKCanCor inventory"
+            git push origin HEAD:${{ github.event.pull_request.head.ref }}
+          fi
