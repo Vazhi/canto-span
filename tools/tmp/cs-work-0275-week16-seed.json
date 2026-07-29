@@ -1,0 +1,98 @@
+{
+  "source": {
+    "sourceId": "GLOSSIKA-YUEHK-A1-W16-20260705",
+    "provider": "Glossika",
+    "course": "Cantonese (HK) A1",
+    "week": 16,
+    "weekCount": 25,
+    "lessonTitle": "Hobbies & Free Time",
+    "emailSubject": "Cantonese – Hobbies & Free Time",
+    "sourceDate": "2026-07-05",
+    "gmailMessageId": "19f3100f131df130",
+    "sourceType": "authorized_pedagogical_email",
+    "language": "yue-Hant-HK",
+    "authorization": {
+      "basis": "User states Glossika granted permission to use all lesson data in this non-commercial private-use Canto Span project.",
+      "scope": "Source-preserving corpus ingress for this lesson.",
+      "redistributionClaim": "none"
+    }
+  },
+  "ingress": {
+    "issue": 133,
+    "workClaimIssue": 274,
+    "branch": "agent/glossika-week16-corpus-ingress",
+    "reviewState": "REQUIRES_EXPERT_CONTEXT_REVIEW",
+    "policy": "Source values are immutable. Runtime crosswalk, normalization, correction, duplicate classification, naturalness review, and evidence use are recorded separately."
+  },
+  "sourceClaims": {
+    "negationStatement": "The primary negation marker is 唔 (m4), which precedes the verb. For the copula 係 (hai6), negation becomes 唔係 (m4 hai6).",
+    "status": "immutable_source_claim_requires_external_verification"
+  },
+  "records": [
+    {"section":"functional_language","subsection":"address_people","itemType":"sentence","register":"casual","source":{"traditional":"阿哥/阿姐","jyutping":"Aa3 go1 / aa3 ze2","morphemeGloss":"Ah-brother / Ah-sister","english":"Bro / Sis (familiar address to strangers)"}},
+    {"section":"functional_language","subsection":"address_people","itemType":"sentence","register":"polite","source":{"traditional":"先生/小姐/女士","jyutping":"Sin1 saang1 / siu2 ze2 / neoi5 si6","morphemeGloss":"Mr. / Miss / Ms.","english":"Sir / Miss / Madam"}},
+    {"section":"functional_language","subsection":"address_people","itemType":"sentence","register":"polite","source":{"traditional":"陳太","jyutping":"Can4 taai3","morphemeGloss":"Chan Mrs.","english":"Mrs. Chan"}},
+    {"section":"functional_language","subsection":"address_people","itemType":"sentence","register":"formal","source":{"traditional":"各位","jyutping":"Gok3 wai2","morphemeGloss":"each (CL-person)","english":"Ladies and gentlemen / Everyone"}},
+    {"section":"functional_language","subsection":"open_close_conversations","itemType":"sentence","register":"casual","source":{"traditional":"喂，你得唔得閒呀？","jyutping":"Wai2, nei5 dak1 m4 dak1 haan4 aa3?","morphemeGloss":"hey you free-not-free (PART)","english":"Hey, are you free?"}},
+    {"section":"functional_language","subsection":"open_close_conversations","itemType":"sentence","register":"casual","source":{"traditional":"噉就講到呢度先喇。","jyutping":"Gam2 zau6 gong2 dou3 ni1 dou6 sin1 laa3.","morphemeGloss":"then just talk to here first (PERF)","english":"Let's stop here for now."}},
+    {"section":"functional_language","subsection":"open_close_conversations","itemType":"sentence","register":"polite","source":{"traditional":"唔該，我想同你傾件事。","jyutping":"M4 goi1, ngo5 soeng2 tung4 nei5 king1 gin6 si6.","morphemeGloss":"excuse-me I want with you chat (CL) matter","english":"Excuse me, I'd like to discuss something with you."}},
+    {"section":"functional_language","subsection":"open_close_conversations","itemType":"sentence","register":"polite","source":{"traditional":"噉我哋就講到呢度喇。","jyutping":"Gam2 ngo5 dei6 zau6 gong2 dou3 ni1 dou6 laa3.","morphemeGloss":"then we just talk to here (PERF)","english":"Then let's wrap up here."}},
+
+    {"section":"vocabulary_and_situations","subsection":"hobbies_free_time","itemType":"lexical_entry","source":{"traditional":"睇戲","jyutping":"tai2 hei3","english":"to watch a movie"}},
+    {"section":"vocabulary_and_situations","subsection":"hobbies_free_time","itemType":"lexical_entry","source":{"traditional":"行山","jyutping":"haang4 saan1","english":"to hike"}},
+    {"section":"vocabulary_and_situations","subsection":"hobbies_free_time","itemType":"lexical_entry","source":{"traditional":"游水","jyutping":"jau4 seoi2","english":"to swim"}},
+    {"section":"vocabulary_and_situations","subsection":"hobbies_free_time","itemType":"lexical_entry","source":{"traditional":"跑步","jyutping":"paau2 bou6","english":"to run"}},
+    {"section":"vocabulary_and_situations","subsection":"hobbies_free_time","itemType":"lexical_entry","source":{"traditional":"影相","jyutping":"jing2 soeng2","english":"to take photos"}},
+    {"section":"vocabulary_and_situations","subsection":"hobbies_free_time","itemType":"lexical_entry","source":{"traditional":"聽歌","jyutping":"teng1 go1","english":"to listen to music"}},
+    {"section":"vocabulary_and_situations","subsection":"hobbies_free_time","itemType":"lexical_entry","source":{"traditional":"睇書","jyutping":"tai2 syu1","english":"to read"}},
+    {"section":"vocabulary_and_situations","subsection":"hobbies_free_time","itemType":"lexical_entry","source":{"traditional":"打機","jyutping":"daa2 gei1","english":"to play video games"}},
+    {"section":"vocabulary_and_situations","subsection":"hobbies_free_time","itemType":"lexical_entry","source":{"traditional":"煮嘢食","jyutping":"zyu2 je5 sik6","english":"to cook"}},
+    {"section":"vocabulary_and_situations","subsection":"hobbies_free_time","itemType":"lexical_entry","source":{"traditional":"唱K","jyutping":"coeng3 kei1","english":"to do karaoke"}},
+    {"section":"vocabulary_and_situations","subsection":"hobbies_free_time","itemType":"lexical_entry","source":{"traditional":"行街","jyutping":"haang4 gaai1","english":"to go shopping (browsing)"}},
+    {"section":"vocabulary_and_situations","subsection":"hobbies_free_time","itemType":"lexical_entry","source":{"traditional":"去沙灘","jyutping":"heoi3 saa1 taan1","english":"to go to the beach"}},
+    {"section":"vocabulary_and_situations","subsection":"hobbies_free_time","itemType":"lexical_entry","source":{"traditional":"做運動","jyutping":"zou6 wan6 dung6","english":"to exercise"}},
+    {"section":"vocabulary_and_situations","subsection":"hobbies_free_time","itemType":"lexical_entry","source":{"traditional":"畫畫","jyutping":"waak6 waa2","english":"to draw/paint"}},
+    {"section":"vocabulary_and_situations","subsection":"hobbies_free_time","itemType":"lexical_entry","source":{"traditional":"踢波","jyutping":"tek3 bo1","english":"to play football"}},
+    {"section":"vocabulary_and_situations","subsection":"hobbies_free_time","itemType":"lexical_entry","source":{"traditional":"打波","jyutping":"daa2 bo1","english":"to play ball"}},
+    {"section":"vocabulary_and_situations","subsection":"hobbies_free_time","itemType":"lexical_entry","source":{"traditional":"彈琴","jyutping":"taan4 kam4","english":"to play piano"}},
+    {"section":"vocabulary_and_situations","subsection":"hobbies_free_time","itemType":"lexical_entry","source":{"traditional":"釣魚","jyutping":"diu3 jyu2","english":"to fish"}},
+    {"section":"vocabulary_and_situations","subsection":"hobbies_free_time","itemType":"lexical_entry","source":{"traditional":"旅行","jyutping":"leoi5 hang4","english":"to travel"}},
+    {"section":"vocabulary_and_situations","subsection":"hobbies_free_time","itemType":"lexical_entry","source":{"traditional":"唱歌","jyutping":"coeng3 go1","english":"to sing"}},
+    {"section":"vocabulary_and_situations","subsection":"hobbies_free_time","itemType":"lexical_entry","source":{"traditional":"睇波","jyutping":"tai2 bo1","english":"to watch a game"}},
+    {"section":"vocabulary_and_situations","subsection":"hobbies_free_time","itemType":"lexical_entry","source":{"traditional":"瑜伽","jyutping":"jyu4 gaa1","english":"yoga"}},
+    {"section":"vocabulary_and_situations","subsection":"hobbies_free_time","itemType":"lexical_entry","source":{"traditional":"露營","jyutping":"lou6 jing4","english":"to camp"}},
+    {"section":"vocabulary_and_situations","subsection":"hobbies_free_time","itemType":"lexical_entry","source":{"traditional":"下棋","jyutping":"haa5 kei2","english":"to play chess"}},
+    {"section":"vocabulary_and_situations","subsection":"hobbies_free_time","itemType":"lexical_entry","source":{"traditional":"行公園","jyutping":"haang4 gung1 jyun2","english":"to walk in the park"}},
+
+    {"section":"vocabulary_and_situations","subsection":"numbers","itemType":"lexical_entry","source":{"traditional":"一百萬","jyutping":"jat1 baak3 maan6","english":"1 million"}},
+    {"section":"vocabulary_and_situations","subsection":"numbers","itemType":"lexical_entry","source":{"traditional":"二百萬","jyutping":"ji6 baak3 maan6","english":"2 million"}},
+    {"section":"vocabulary_and_situations","subsection":"numbers","itemType":"lexical_entry","source":{"traditional":"三百萬","jyutping":"saam1 baak3 maan6","english":"3 million"}},
+    {"section":"vocabulary_and_situations","subsection":"numbers","itemType":"lexical_entry","source":{"traditional":"四百萬","jyutping":"sei3 baak3 maan6","english":"4 million"}},
+    {"section":"vocabulary_and_situations","subsection":"numbers","itemType":"lexical_entry","source":{"traditional":"五百萬","jyutping":"ng5 baak3 maan6","english":"5 million"}},
+    {"section":"vocabulary_and_situations","subsection":"numbers","itemType":"lexical_entry","source":{"traditional":"六百萬","jyutping":"luk6 baak3 maan6","english":"6 million"}},
+    {"section":"vocabulary_and_situations","subsection":"numbers","itemType":"lexical_entry","source":{"traditional":"七百萬","jyutping":"cat1 baak3 maan6","english":"7 million"}},
+    {"section":"vocabulary_and_situations","subsection":"numbers","itemType":"lexical_entry","source":{"traditional":"八百萬","jyutping":"baat3 baak3 maan6","english":"8 million"}},
+    {"section":"vocabulary_and_situations","subsection":"numbers","itemType":"lexical_entry","source":{"traditional":"九百萬","jyutping":"gau2 baak3 maan6","english":"9 million"}},
+    {"section":"vocabulary_and_situations","subsection":"numbers","itemType":"lexical_entry","source":{"traditional":"一千萬","jyutping":"jat1 cin1 maan6","english":"10 million"}},
+
+    {"section":"vocabulary_and_situations","subsection":"situation_patterns","itemType":"sentence","register":"casual","source":{"traditional":"我放假鍾意去行山。","jyutping":"ngo5 fong3 gaa3 zung1 ji3 heoi3 haang4 saan1","morphemeGloss":"I holiday like go hike","english":"On holidays I like to go hiking."}},
+    {"section":"vocabulary_and_situations","subsection":"situation_patterns","itemType":"sentence","register":"casual","source":{"traditional":"不如聽日去睇戲啦。","jyutping":"bat1 jyu4 ting1 jat6 heoi3 tai2 hei3 laa1","morphemeGloss":"why-not tomorrow go watch movie PART","english":"Why don't we go see a movie tomorrow?"}},
+    {"section":"vocabulary_and_situations","subsection":"situation_patterns","itemType":"sentence","register":"casual","source":{"traditional":"佢鍾意游水同跑步。","jyutping":"keoi5 zung1 ji3 jau4 seoi2 tung4 paau2 bou6","morphemeGloss":"he like swim and run","english":"He likes to swim and run."}},
+    {"section":"vocabulary_and_situations","subsection":"situation_patterns","itemType":"sentence","register":"polite","source":{"traditional":"你平時有咩嗜好？","jyutping":"nei5 ping4 si4 jau5 me1 si3 hou3","morphemeGloss":"you usually have what hobby","english":"What hobbies do you usually have?"}},
+
+    {"section":"vocabulary_and_situations","subsection":"mini_dialog","itemType":"dialog_turn","register":"polite","dialogTurn":1,"source":{"traditional":"你放假鍾意做咩？","jyutping":"nei5 fong3 gaa3 zung1 ji3 zou6 me1","morphemeGloss":"you holiday like do what","english":"What do you like to do on holidays?"}},
+    {"section":"vocabulary_and_situations","subsection":"mini_dialog","itemType":"dialog_turn","register":"casual","dialogTurn":2,"source":{"traditional":"我鍾意睇戲同行街。","jyutping":"ngo5 zung1 ji3 tai2 hei3 tung4 haang4 gaai1","morphemeGloss":"I like watch movie and go.shopping","english":"I like to watch movies and go shopping."}},
+    {"section":"vocabulary_and_situations","subsection":"mini_dialog","itemType":"dialog_turn","register":"polite","dialogTurn":3,"source":{"traditional":"今個星期六有時間嗎？","jyutping":"gam1 go3 sing1 kei4 luk6 jau5 si4 gaan3 maa3","morphemeGloss":"this CL Saturday have time Q","english":"Do you have time this Saturday?"}},
+    {"section":"vocabulary_and_situations","subsection":"mini_dialog","itemType":"dialog_turn","register":"casual","dialogTurn":4,"source":{"traditional":"有呀，不如一齊去唱K啦！","jyutping":"jau5 aa3 bat1 jyu4 jat1 cai4 heoi3 coeng3 kei1 laa1","morphemeGloss":"have PART why-not together go sing karaoke PART","english":"Yes, why don't we go do karaoke together!"}},
+
+    {"section":"grammar_patterns","subsection":"negation","itemType":"sentence","register":"standard","source":{"traditional":"我唔食肉。","jyutping":"ngo5 m4 sik6 juk6","morphemeGloss":"I NEG eat meat","english":"I don't eat meat."}},
+    {"section":"grammar_patterns","subsection":"negation","itemType":"sentence","register":"standard","source":{"traditional":"佢唔係醫生。","jyutping":"keoi5 m4 hai6 ji1 sang1","morphemeGloss":"he/she NEG COP doctor","english":"He/She is not a doctor."}},
+
+    {"section":"phonics_drill","subsection":"o_vs_u","itemType":"phonics_pair","source":{"ipa":"/kɔː˥/ vs /kuː˥/","wordA":"哥","wordB":"姑","jyutpingA":"go1","jyutpingB":"gu1","glossA":"older brother","glossB":"paternal aunt"}},
+    {"section":"phonics_drill","subsection":"o_vs_u","itemType":"phonics_pair","source":{"ipa":"/tɔː˥/ vs /tou˥/","wordA":"多","wordB":"都","jyutpingA":"do1","jyutpingB":"dou1","glossA":"many; much","glossB":"all; also"}},
+    {"section":"phonics_drill","subsection":"o_vs_u","itemType":"phonics_pair","source":{"ipa":"/sɔː˧˥/ vs /sou˧˥/","wordA":"鎖","wordB":"數","jyutpingA":"so2","jyutpingB":"sou2","glossA":"lock","glossB":"number; to count"}},
+    {"section":"phonics_drill","subsection":"o_vs_u","itemType":"phonics_pair","source":{"ipa":"/lɔːŋ˩˧/ vs /lʊŋ˨˩/","wordA":"朗","wordB":"龍","jyutpingA":"long5","jyutpingB":"lung4","glossA":"bright","glossB":"dragon"}},
+    {"section":"phonics_drill","subsection":"o_vs_u","itemType":"phonics_pair","source":{"ipa":"/hou˧˥/ vs /fuː˧˥/","wordA":"好","wordB":"虎","jyutpingA":"hou2","jyutpingB":"fu2","glossA":"good","glossB":"tiger"}},
+    {"section":"phonics_drill","subsection":"o_vs_u","itemType":"phonics_pair","source":{"ipa":"/tsɔːŋ˥/ vs /tsʊŋ˥/","wordA":"裝","wordB":"中","jyutpingA":"zong1","jyutpingB":"zung1","glossA":"to install","glossB":"middle; to hit"}}
+  ]
+}
