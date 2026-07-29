@@ -1,14 +1,14 @@
-name: CS-WORK-0281 Week 18 research audits
+name: CS-WORK-0281 Week 18 research validation
 
 on:
   pull_request:
     types: [opened, synchronize, reopened]
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  generate:
+  validate:
     if: github.event.pull_request.head.ref == 'agent/glossika-week18-research'
     runs-on: ubuntu-latest
     steps:
@@ -20,165 +20,74 @@ jobs:
         with:
           node-version: 24
           package-manager-cache: false
-      - name: Generate deterministic modular lexical audits
+      - name: Install dependencies
+        run: npm ci
+      - name: Validate source, modular audits, and research ledgers
         run: |
-          mkdir -p data/research-ledgers
           node <<'NODE'
-          const fs = require('fs');
-          const path = require('path');
+          const fs=require('fs');
+          const path=require('path');
+          const source=require('./data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/source.json');
+          const common=require('./data/research-ledgers/glossika-week18-common-verb-audit.json');
+          const temporal=require('./data/research-ledgers/glossika-week18-temporal-lexicon.json');
+          const claims=require('./data/research-ledgers/glossika-week18-claim-source.json');
+          const followup=require('./data/research-ledgers/glossika-week18-followup-candidates.json');
+          const tokenPairs=require('./src/runtime-resources/lexicon/token-lexicon');
+          const tokenMap=new Map(tokenPairs);
+          const tokenRoot='src/runtime-resources/lexicon/token-lexicon';
+          const tokenFiles=fs.readdirSync(tokenRoot).filter(file=>file.endsWith('.js')).map(file=>path.join(tokenRoot,file)).sort();
+          const tokenText=Object.fromEntries(tokenFiles.map(file=>[file,fs.readFileSync(file,'utf8')]));
+          const owners=form=>tokenFiles.filter(file=>tokenText[file].includes(JSON.stringify(form)));
 
-          const sourcePath = 'data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/source.json';
-          const source = JSON.parse(fs.readFileSync(sourcePath,'utf8'));
-          const tokenPairs = require('./src/runtime-resources/lexicon/token-lexicon');
-          const tokenMap = new Map(tokenPairs);
-          const tokenRoot = 'src/runtime-resources/lexicon/token-lexicon';
-          const tokenFiles = fs.readdirSync(tokenRoot)
-            .filter(file => file.endsWith('.js'))
-            .map(file => path.join(tokenRoot,file))
-            .sort();
-          const tokenText = Object.fromEntries(tokenFiles.map(file => [file,fs.readFileSync(file,'utf8')]));
+          if(source.items.length!==99) throw new Error('Expected 99 source records');
+          if(source.ingress.sourcePayloadHash!=='sha256:fb9efc4f693a96015740012e119a678e57645fb9017b9096a5383d8bdaa13579') throw new Error('Unexpected source payload hash');
 
-          function owners(form) {
-            return tokenFiles.filter(file => tokenText[file].includes(JSON.stringify(form)));
-          }
-          function countBy(values) {
-            return Object.fromEntries([...values.reduce((map,value)=>map.set(value,(map.get(value)||0)+1),new Map())].sort(([a],[b])=>a.localeCompare(b)));
-          }
+          const commonItems=source.items.filter(item=>item.subsection==='common_verbs');
+          const temporalItems=source.items.filter(item=>item.subsection==='temporal_lexicon');
+          if(commonItems.length!==25||common.entries.length!==25) throw new Error('Expected 25 common-verb records');
+          if(temporalItems.length!==28||temporal.entries.length!==28) throw new Error('Expected 28 temporal records');
 
-          const verbBoundary = {
-            '食':'transitive ingestion verb; edible-object selection remains lexical and contextual',
-            '飲':'transitive ingestion verb; drinkable-object selection remains lexical and contextual',
-            '瞓':'intransitive posture/state activity; do not infer a general valency frame from the bare entry',
-            '行':'motion/activity verb with reading and construction-sensitive uses; this source supplies haang4 “walk” only',
-            '跑':'motion/activity verb; source attestation does not establish every directional chain',
-            '坐':'posture verb; can participate in location and transport expressions outside this source gloss',
-            '企':'posture verb; bare lexical attestation only',
-            '睇':'perception/activity verb with look, watch, and read uses; argument selection is sense-specific',
-            '聽':'perception verb with listen and hear uses; transitivity and complement type are context-sensitive',
-            '講':'speech verb; discourse-content and manner uses require separate structures',
-            '寫':'creation/communication verb; ordinary transitive uses only',
-            '讀':'reading/study verb; source gloss does not settle dialectal or complement distinctions',
-            '做':'highly multifunctional do/make verb; no unrestricted light-verb analysis follows',
-            '買':'transitive acquisition verb; benefactive and directional chains are separate composition',
-            '賣':'transitive transfer verb; recipient and price frames require separate evidence',
-            '畀':'multifunctional give form with ditransitive, coverb-like, passive/permissive, and orthographic-variant boundaries; source records only the give reading',
-            '攞':'take/get verb; directional complements and caused-motion uses require separate analysis',
-            '嚟':'deictic motion verb and possible directional element; source records the independent “come” reading',
-            '去':'motion verb and possible directional/purpose-chain element; source records the independent “go” reading',
-            '返':'return verb and deictic/directional element; source records the return reading',
-            '住':'live/reside verb in this source; keep distinct from aspectual or complement uses of 住 zyu6',
-            '著':'wear verb zoek3 in this source; keep distinct from homographic aspectual/result and pronunciation profiles',
-            '洗':'wash verb; source reading sai2 must remain distinct from modal 使 sai2 and other homophones',
-            '煮':'cook verb; object and purpose-chain behavior remain construction-specific',
-            '開':'polysemous open/start/drive/operate form; source gloss alone does not license one broad lexical frame'
-          };
-
-          const commonItems = source.items.filter(item => item.subsection === 'common_verbs');
-          if (commonItems.length !== 25) throw new Error(`Expected 25 common verbs, found ${commonItems.length}`);
-          const commonEntries = commonItems.map(item => {
-            const form = item.source.traditional;
-            const runtime = tokenMap.get(form) || null;
-            const exactOwners = owners(form);
-            return {
-              sourceItemId:item.id,
-              ordinal:item.ordinal,
-              traditional:form,
-              sourceJyutping:item.source.jyutping,
-              sourceEnglish:item.source.english,
-              exactRuntimeOwners:exactOwners,
-              runtimeEntry:runtime,
-              coverage:runtime ? 'already_covered_exact' : 'lexical_review_gap',
-              sourceRuntimeJyutpingMatch:runtime ? runtime.jyutping === item.source.jyutping : null,
-              sourceRuntimeGlossRelation:runtime ? 'review_manually_runtime_note_is_not_a_source_translation' : 'not_applicable',
-              lexicalBoundary:verbBoundary[form],
-              implementationDisposition:runtime ? 'no_duplicate_ingress' : 'separate_lexical_review_required',
-              implementationAuthorized:false
-            };
-          });
-          const commonCounts = countBy(commonEntries.map(entry=>entry.coverage));
-          if (commonCounts.already_covered_exact !== 24 || commonCounts.lexical_review_gap !== 1) {
-            throw new Error(`Expected 24 exact and 1 gap; got ${JSON.stringify(commonCounts)}`);
-          }
-          const gap = commonEntries.find(entry=>entry.coverage==='lexical_review_gap');
-          if (gap.traditional !== '著' || gap.sourceJyutping !== 'zoek3') throw new Error('Expected 著 zoek3 as the sole common-verb gap');
-          const commonAudit = {
-            schema:'canto-span-glossika-common-verb-audit-v1',
-            packetId:'GLOSSIKA-YUEHK-A1-W18-20260719-COMMON-VERBS-R1',
-            sourceId:source.source.sourceId,
-            generatedFrom:{sourcePath,canonicalLexiconRoot:tokenRoot},
-            policy:{
-              glossikaWeight:'pedagogical_and_lexical_attestation_only',
-              exactCoverageRule:'An exact modular token-lexicon entry blocks duplicate ingress.',
-              multifunctionRule:'A bare lesson gloss does not merge valency, coverb, aspectual, directional, passive, or light-verb profiles.',
-              implementationAuthorized:false
-            },
-            counts:commonCounts,
-            entries:commonEntries
-          };
-          fs.writeFileSync('data/research-ledgers/glossika-week18-common-verb-audit.json',JSON.stringify(commonAudit,null,2)+'\n');
-
-          const classMap = {
-            '黎明':'part_of_day_noun','黃昏':'part_of_day_noun','午夜':'part_of_day_noun','正午':'part_of_day_noun','半夜':'part_of_day_noun','中午':'part_of_day_noun',
-            '世紀':'time_unit_or_period_noun','十年':'time_unit_or_period_noun','秒':'time_unit_or_period_noun','季度':'time_unit_or_period_noun','時代':'time_unit_or_period_noun',
-            '約會':'schedule_event_or_artifact_noun','日曆':'schedule_event_or_artifact_noun','日程':'schedule_event_or_artifact_noun','截止日期':'schedule_event_or_artifact_noun',
-            '早':'scalar_temporal_predicate_or_adverbial','遲':'scalar_temporal_predicate_or_adverbial',
-            '過去':'temporal_domain_or_relational_form','將來':'temporal_domain_or_relational_form','以前':'temporal_domain_or_relational_form','之後':'temporal_domain_or_relational_form',
-            '永遠':'duration_recurrence_or_adverbial','暫時':'duration_recurrence_or_adverbial','長期':'duration_recurrence_or_adverbial','短期':'duration_recurrence_or_adverbial','定期':'duration_recurrence_or_adverbial','最近':'duration_recurrence_or_adverbial',
-            '刹那':'brief_interval_noun'
-          };
-          const registerMap = {
-            '黎明':'formal_or_literary_review','黃昏':'neutral_to_formal_review','午夜':'formal_or_written_review','正午':'formal_or_written_review','世紀':'neutral_technical_period','十年':'compositional_duration_not_opaque_decade_equivalent','秒':'neutral_time_unit','約會':'event_noun_not_pure_temporal_modifier','日曆':'artifact_noun','早':'common_conversational','遲':'common_conversational','季度':'formal_or_institutional','時代':'abstract_period_noun','過去':'multifunctional_temporal_domain_or_motion_sequence','將來':'formal_or_neutral_future_domain','永遠':'common_but_scope_sensitive','以前':'common_conversational','暫時':'common_conversational','長期':'formal_or_neutral_duration_modifier','短期':'formal_or_neutral_duration_modifier','定期':'institutional_or_recurrence_modifier','最近':'common_conversational','之後':'common_conversational_relational','半夜':'common_conversational_part_of_day','中午':'common_conversational_part_of_day','刹那':'literary_or_formal_review','日程':'formal_schedule_noun','截止日期':'formal_or_administrative_deadline_noun'
-          };
-          const temporalItems = source.items.filter(item => item.subsection === 'temporal_lexicon');
-          if (temporalItems.length !== 28) throw new Error(`Expected 28 temporal entries, found ${temporalItems.length}`);
-          const temporalEntries = temporalItems.map(item => {
+          for(const [index,item] of commonItems.entries()) {
+            const entry=common.entries[index];
             const form=item.source.traditional;
+            if(entry.sourceItemId!==item.id||entry.traditional!==form) throw new Error(`Common-verb alignment failed at ${item.id}`);
             const runtime=tokenMap.get(form)||null;
-            return {
-              sourceItemId:item.id,
-              ordinal:item.ordinal,
-              traditional:form,
-              sourceJyutping:item.source.jyutping,
-              sourceEnglish:item.source.english,
-              auditClass:classMap[form],
-              classStatus:'project_audit_class_not_final_universal_pos',
-              registerReview:registerMap[form],
-              exactRuntimeOwners:owners(form),
-              runtimeEntry:runtime,
-              coverage:runtime ? 'already_covered_exact' : 'temporal_lexical_review_candidate',
-              clauseLevelModifierStatus:'requires_item_level_corpus_and_grammar_review',
-              implementationDisposition:runtime ? 'no_duplicate_ingress' : 'review_lexical_whole_compositionality_register_and_owner',
-              implementationAuthorized:false
-            };
-          });
-          if (temporalEntries.some(entry=>!entry.auditClass||!entry.registerReview)) throw new Error('Temporal audit map incomplete');
-          const temporalCounts = countBy(temporalEntries.map(entry=>entry.coverage));
-          if (temporalCounts.already_covered_exact !== 3 || temporalCounts.temporal_lexical_review_candidate !== 25) {
-            throw new Error(`Expected 3 exact and 25 candidates; got ${JSON.stringify(temporalCounts)}`);
+            const coverage=runtime?'already_covered_exact':'lexical_review_gap';
+            if(entry.coverage!==coverage) throw new Error(`Stale common-verb coverage for ${form}`);
+            if(JSON.stringify(entry.exactRuntimeOwners)!==JSON.stringify(owners(form))) throw new Error(`Stale common-verb owner for ${form}`);
+            if(runtime&&entry.runtimeEntry.jyutping!==runtime.jyutping) throw new Error(`Stale common-verb reading for ${form}`);
           }
-          const temporalAudit = {
-            schema:'canto-span-glossika-temporal-lexicon-audit-v1',
-            packetId:'GLOSSIKA-YUEHK-A1-W18-20260719-TEMPORAL-R1',
-            sourceId:source.source.sourceId,
-            generatedFrom:{sourcePath,canonicalLexiconRoot:tokenRoot},
-            policy:{
-              glossikaWeight:'pedagogical_and_lexical_attestation_only',
-              classRule:'The audit separates part-of-day nouns, period/unit nouns, schedule/event/artifact nouns, scalar temporal forms, relational forms, duration/recurrence forms, and interval nouns. These are review classes, not final universal parts of speech.',
-              bareModifierRule:'No form is licensed as a bare clause-level temporal modifier merely because the English gloss is temporal.',
-              implementationAuthorized:false
-            },
-            counts:temporalCounts,
-            classCounts:countBy(temporalEntries.map(entry=>entry.auditClass)),
-            entries:temporalEntries
-          };
-          fs.writeFileSync('data/research-ledgers/glossika-week18-temporal-lexicon.json',JSON.stringify(temporalAudit,null,2)+'\n');
-          console.log({commonCounts,temporalCounts,temporalClasses:temporalAudit.classCounts});
+          const commonExact=common.entries.filter(entry=>entry.coverage==='already_covered_exact').length;
+          const commonGap=common.entries.filter(entry=>entry.coverage==='lexical_review_gap');
+          if(commonExact!==24||commonGap.length!==1||commonGap[0].traditional!=='著'||commonGap[0].sourceJyutping!=='zoek3') throw new Error('Unexpected common-verb coverage result');
+
+          for(const [index,item] of temporalItems.entries()) {
+            const entry=temporal.entries[index];
+            const form=item.source.traditional;
+            if(entry.sourceItemId!==item.id||entry.traditional!==form) throw new Error(`Temporal alignment failed at ${item.id}`);
+            const runtime=tokenMap.get(form)||null;
+            const coverage=runtime?'already_covered_exact':'temporal_lexical_review_candidate';
+            if(entry.coverage!==coverage) throw new Error(`Stale temporal coverage for ${form}`);
+            if(JSON.stringify(entry.exactRuntimeOwners)!==JSON.stringify(owners(form))) throw new Error(`Stale temporal owner for ${form}`);
+            if(!entry.auditClass||!entry.registerReview) throw new Error(`Incomplete temporal audit for ${form}`);
+          }
+          if(temporal.entries.filter(entry=>entry.coverage==='already_covered_exact').length!==3) throw new Error('Expected 3 exact temporal entries');
+          if(temporal.entries.filter(entry=>entry.coverage==='temporal_lexical_review_candidate').length!==25) throw new Error('Expected 25 temporal review candidates');
+
+          if(claims.claims.length!==14) throw new Error('Expected 14 bounded claims');
+          if(claims.sources.length<12) throw new Error('Expected direct-source diversity');
+          if(followup.candidates.length!==11) throw new Error('Expected 11 follow-up candidates');
+          if(followup.nonCandidates.length!==2) throw new Error('Expected 2 explicit non-candidate groups');
+          if(claims.disposition.runtimeChangeAuthorized!==false||claims.disposition.grammarPromotionAuthorized!==false) throw new Error('Protected decision boundary missing');
+
+          const note=fs.readFileSync('docs/research/GLOSSIKA-YUEHK-A1-W18-20260719-RESEARCH.md','utf8');
+          for(const phrase of ['24/25 common verbs','3/28 temporal entries','No parser','main.js','咁我幫你買嘢返嚟啦','著 zoek3']) {
+            if(!note.toLowerCase().includes(phrase.toLowerCase())) throw new Error(`Research note missing ${phrase}`);
+          }
+          console.log({sourceRecords:source.items.length,commonExact,commonGap:commonGap[0].traditional,temporalExact:3,claims:claims.claims.length,followups:followup.candidates.length});
           NODE
           git diff --check
-      - name: Commit generated audits
+      - name: Run task-scoped repository verification
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/research-ledgers/glossika-week18-common-verb-audit.json data/research-ledgers/glossika-week18-temporal-lexicon.json
-          git commit -m "Generate Glossika Week 18 lexical audits"
-          git push origin HEAD:${{ github.event.pull_request.head.ref }}
+          npm run verify:research
+          npm run verify
