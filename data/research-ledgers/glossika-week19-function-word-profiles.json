@@ -1,0 +1,258 @@
+{
+  "schema": "canto-span-glossika-function-word-profiles-v1",
+  "packetId": "GLOSSIKA-YUEHK-A1-W19-20260726-FUNCTION-WORDS-R1",
+  "sourceId": "GLOSSIKA-YUEHK-A1-W19-20260726",
+  "policy": {
+    "oneTokenOneFunctionRejected": true,
+    "lexicalAndGrammaticalProfilesSeparated": true,
+    "implementationAuthorized": false
+  },
+  "entries": [
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I015",
+      "traditional": "嘅",
+      "sourceJyutping": "ge3",
+      "sourceEnglish": "possessive/attributive particle",
+      "profiles": [
+        "attributive_linker",
+        "nominalizer_or_headless_nominal",
+        "clause_final_discourse_particle"
+      ],
+      "negativeBoundaries": [
+        "not_one_undifferentiated_function_word",
+        "not_always_sentence_final",
+        "not_always_possessive"
+      ],
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/degree-and-formulas.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/aspect/composition.js",
+        "src/parser/detectors/aspect/postverbal-zo.js",
+        "src/parser/detectors/aspect/potential-result.js",
+        "src/parser/detectors/complements/result.js",
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js",
+        "src/parser/detectors/relative-clauses/clauses.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "function_word_category_simplification",
+          "status": "route_to_issue_129",
+          "note": "The grouped forms have distinct attributive, locative, aspectual, lexical, directional, result, and extent profiles."
+        }
+      ],
+      "sourceWeight": "pedagogical_attestation_only",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I016",
+      "traditional": "喺",
+      "sourceJyutping": "hai2",
+      "sourceEnglish": "at/in (location)",
+      "profiles": [
+        "locative_predicate",
+        "preverbal_event_location_marker"
+      ],
+      "negativeBoundaries": [
+        "not_copular_係",
+        "not_one_preposition_profile",
+        "following_predicate_required_for_event_location_profile"
+      ],
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/templates/slot-generation-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/aspect/composition.js",
+        "src/parser/detectors/aspect/postverbal-zo.js",
+        "src/parser/detectors/aspect/potential-result.js",
+        "src/parser/detectors/complements/result.js",
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js",
+        "src/parser/detectors/relative-clauses/clauses.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "function_word_category_simplification",
+          "status": "route_to_issue_129",
+          "note": "The grouped forms have distinct attributive, locative, aspectual, lexical, directional, result, and extent profiles."
+        }
+      ],
+      "sourceWeight": "pedagogical_attestation_only",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I017",
+      "traditional": "咗",
+      "sourceJyutping": "zo2",
+      "sourceEnglish": "perfective aspect (completed)",
+      "profiles": [
+        "postverbal_perfective",
+        "sentence_final_change_of_state_or_current_relevance_profiles"
+      ],
+      "negativeBoundaries": [
+        "not_generic_past_tense",
+        "not_interchangeable_with_完",
+        "not_licensed_by_completion_semantics_alone"
+      ],
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/templates/category-span-templates.js",
+        "src/runtime-resources/grammar/templates/slot-generation-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js",
+        "src/runtime-resources/pronunciation/jyutping-review-expectations.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/aspect/composition.js",
+        "src/parser/detectors/aspect/postverbal-zo.js",
+        "src/parser/detectors/aspect/potential-result.js",
+        "src/parser/detectors/complements/result.js",
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js",
+        "src/parser/detectors/relative-clauses/clauses.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "function_word_category_simplification",
+          "status": "route_to_issue_129",
+          "note": "The grouped forms have distinct attributive, locative, aspectual, lexical, directional, result, and extent profiles."
+        }
+      ],
+      "sourceWeight": "pedagogical_attestation_only",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I018",
+      "traditional": "緊",
+      "sourceJyutping": "gan2",
+      "sourceEnglish": "progressive aspect (ongoing)",
+      "profiles": [
+        "postverbal_progressive_or_continuative_aspect"
+      ],
+      "negativeBoundaries": [
+        "not_every_stative_predicate",
+        "not_equivalent_to_而家",
+        "placement_and_compatibility_require_controls"
+      ],
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/templates/slot-generation-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js",
+        "src/runtime-resources/normalization/simplified-to-traditional.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/aspect/composition.js",
+        "src/parser/detectors/aspect/postverbal-zo.js",
+        "src/parser/detectors/aspect/potential-result.js",
+        "src/parser/detectors/complements/result.js",
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js",
+        "src/parser/detectors/relative-clauses/clauses.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "function_word_category_simplification",
+          "status": "route_to_issue_129",
+          "note": "The grouped forms have distinct attributive, locative, aspectual, lexical, directional, result, and extent profiles."
+        }
+      ],
+      "sourceWeight": "pedagogical_attestation_only",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I019",
+      "traditional": "過",
+      "sourceJyutping": "gwo3",
+      "sourceEnglish": "experiential aspect (have done)",
+      "profiles": [
+        "postverbal_experiential_aspect",
+        "lexical_motion_or_passage_verb",
+        "directional_or_result_component"
+      ],
+      "negativeBoundaries": [
+        "not_one_aspect_only_token",
+        "not_interchangeable_with_咗",
+        "lexical_and_aspectual_uses_split"
+      ],
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/templates/slot-generation-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js",
+        "src/runtime-resources/normalization/simplified-to-traditional.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/aspect/composition.js",
+        "src/parser/detectors/aspect/postverbal-zo.js",
+        "src/parser/detectors/aspect/potential-result.js",
+        "src/parser/detectors/complements/result.js",
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js",
+        "src/parser/detectors/relative-clauses/clauses.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "function_word_category_simplification",
+          "status": "route_to_issue_129",
+          "note": "The grouped forms have distinct attributive, locative, aspectual, lexical, directional, result, and extent profiles."
+        }
+      ],
+      "sourceWeight": "pedagogical_attestation_only",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I020",
+      "traditional": "到",
+      "sourceJyutping": "dou3",
+      "sourceEnglish": "to arrive/until",
+      "profiles": [
+        "arrival_predicate",
+        "goal_or_endpoint_element",
+        "result_or_extent_complement",
+        "until_or_limit_relation"
+      ],
+      "negativeBoundaries": [
+        "not_every_occurrence_is_resultative",
+        "adjacency_and_argument_structure_matter",
+        "arrival_and_extent_profiles_split"
+      ],
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/templates/slot-generation-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/aspect/composition.js",
+        "src/parser/detectors/aspect/postverbal-zo.js",
+        "src/parser/detectors/aspect/potential-result.js",
+        "src/parser/detectors/complements/result.js",
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js",
+        "src/parser/detectors/relative-clauses/clauses.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "function_word_category_simplification",
+          "status": "route_to_issue_129",
+          "note": "The grouped forms have distinct attributive, locative, aspectual, lexical, directional, result, and extent profiles."
+        }
+      ],
+      "sourceWeight": "pedagogical_attestation_only",
+      "implementationAuthorized": false
+    }
+  ]
+}

@@ -1,0 +1,257 @@
+{
+  "schema": "canto-span-claim-source-ledger-v1",
+  "packetId": "GLOSSIKA-YUEHK-A1-W19-20260726-CLAIM-SOURCE-R1",
+  "sourceId": "GLOSSIKA-YUEHK-A1-W19-20260726",
+  "intakeIssue": 129,
+  "workClaimIssue": 286,
+  "evidencePolicy": {
+    "glossikaWeight": "pedagogical_and_lexical_attestation_only",
+    "repositoryImplementationWeight": "runtime_observation_only",
+    "externalSourceRequirement": "Classifier compatibility, changed tone, aspect, particle force, dative order, spatial category, register, and phonological conclusions require independently checkable Cantonese evidence.",
+    "implementationAuthorized": false
+  },
+  "sources": [
+    {
+      "id": "S-GLOSSIKA-W19",
+      "type": "authorized_pedagogical_source",
+      "citation": "Glossika Cantonese (HK) A1, Week 19, Cantonese – Classifiers / Function Words, 2026-07-26",
+      "locator": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/source.json",
+      "scope": "Exact source forms, order, glosses, register labels, tone rows, and lesson groupings only."
+    },
+    {
+      "id": "S-W19-CROSSWALK",
+      "type": "repository_implementation_observation",
+      "citation": "Glossika Week 19 modular crosswalk",
+      "locator": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/crosswalk.json",
+      "scope": "Current modular owners and project matches; zero independent linguistic evidence weight."
+    },
+    {
+      "id": "S-TSE-LI-LEUNG-2007-CLASSIFIERS",
+      "type": "direct_cantonese_classifier_research",
+      "citation": "Tse, Shek Kam, Hui Li, and Shing On Leung. 2007. The acquisition of Cantonese classifiers by preschool children in Hong Kong. Journal of Child Language 34(3):495–517.",
+      "locator": "https://doi.org/10.1017/S0305000906007873",
+      "scope": "Cantonese classifier acquisition requires attention to classifier semantics and syntax; the system is not reducible to English gloss labels."
+    },
+    {
+      "id": "S-LI-WONG-2014-CLASSIFIER-CHANGE",
+      "type": "direct_cantonese_classifier_corpus_research",
+      "citation": "Li, Hui, and Elaine C. M. Wong. 2014. Comparing classifier use in 1995 and 2010 early child Cantonese to explore social change in Hong Kong. Chinese Language and Discourse 5(1).",
+      "locator": "https://doi.org/10.1075/cld.5.1.04li",
+      "scope": "Reports common Cantonese classifiers including 架 gaa3 and documents overextension of general and broad classifiers in child usage."
+    },
+    {
+      "id": "S-HPSG-2024-CLASSIFIERS",
+      "type": "direct_cantonese_classifier_syntax",
+      "citation": "A Construction-based Approach to Cantonese Classifiers. 2024. Proceedings of the International Conference on Head-Driven Phrase Structure Grammar.",
+      "locator": "https://proceedings.hpsg.xyz/article/view/946",
+      "scope": "Classifier phrases with and without an overt numeral require compositional NP structure; a bare classifier can receive cardinality-one interpretation in suitable contexts."
+    },
+    {
+      "id": "S-REPO-ASPECT-R24",
+      "type": "verified_project_source_map",
+      "citation": "Aspectual clause wrappers source map, CP021B-R24",
+      "locator": "docs/research/ASPECTUAL-CLAUSE-WRAPPERS-SOURCE-MAP-CP021B-R24.md",
+      "scope": "Perfective 咗, experiential 過, preverbal 未, and final 未 question profiles remain distinct."
+    },
+    {
+      "id": "S-REPO-COVERB-R23",
+      "type": "verified_project_source_map",
+      "citation": "Coverb and manner event modification source map, CP021B-R23",
+      "locator": "docs/research/COVERB-MANNER-EVENT-MODIFICATION-SOURCE-MAP-CP021B-R23.md",
+      "scope": "Locative 喺 profiles and event-location requirements; category and clause function remain separate."
+    },
+    {
+      "id": "S-LAI-PANG-2023-RESULTATIVES",
+      "type": "direct_cantonese_resultative_grammar",
+      "citation": "Lai, Ryan Ka Yau, and Michelle Man-Long Pang. 2023. Rethinking the Description and Typology of Cantonese Causative–Resultative Constructions: A Dynamic Constructionist Lens. Languages 8(2):151.",
+      "locator": "https://doi.org/10.3390/languages8020151",
+      "scope": "Cantonese result, phase, and complement structures require construction-specific analysis; 到 cannot receive one uniform complement label."
+    },
+    {
+      "id": "S-SYBESMA-LI-2007-SFP",
+      "type": "direct_cantonese_particle_grammar",
+      "citation": "Sybesma, Rint, and Boya Li. 2007. The dissection and structural mapping of Cantonese sentence final particles. Lingua 117(10):1739–1783.",
+      "locator": "https://doi.org/10.1016/j.lingua.2006.10.003",
+      "scope": "Sentence-final particles form a structured and multifunctional system; tone, host clause, co-occurrence, and discourse context matter."
+    },
+    {
+      "id": "S-REPO-GAA3-UC011",
+      "type": "verified_project_direct_source_unit",
+      "citation": "UC-RQ-011 — Sentence-final gaa3 construction family",
+      "locator": "docs/research/UC-RQ-011-GAA3-CONSTRUCTION-FAMILY-RESEARCH-R1.md",
+      "scope": "㗎 gaa3 has multiple clause- and discourse-sensitive profiles rather than one emphasis meaning."
+    },
+    {
+      "id": "S-XIE-ZHANG-URSINI-2023-SPATIAL",
+      "type": "direct_cantonese_spatial_grammar",
+      "citation": "Xie, Qin, Yue Sara Zhang, and Francesco-Alessio Ursini. 2023. Spatial Categories in Cantonese: Morpho-Syntactic Analysis Meets Discourse Distribution.",
+      "locator": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4627515",
+      "scope": "Cantonese spatial grammar distinguishes verb-like predicative spatial elements from nominal-like localizers and spatial nouns."
+    },
+    {
+      "id": "S-KWAN-2005-LOCATIVE-ORDER",
+      "type": "direct_cantonese_spatial_grammar",
+      "citation": "Kwan, Wing-man. 2005. On the word order of locative prepositional phrases in Cantonese: processing, iconicity and grammar. University of Hong Kong thesis.",
+      "locator": "https://doi.org/10.5353/th_b3145014",
+      "scope": "Cantonese locative phrase position and interpretation are constrained; spatial forms cannot be treated as one freely positioned class."
+    },
+    {
+      "id": "S-LAM-2014-GIVE",
+      "type": "direct_cantonese_dative_grammar",
+      "citation": "Lam, Olivia S. C. 2014. Double object constructions and the anomalous syntax of GIVE in Cantonese. Language Sciences 45:71–95.",
+      "locator": "https://doi.org/10.1016/j.langsci.2014.05.001",
+      "scope": "Neutral lexical 畀 GIVE places theme before recipient and differs from other Cantonese ditransitive patterns."
+    },
+    {
+      "id": "S-WONG-ETAL-2010-DATIVES",
+      "type": "direct_cantonese_dative_grammar",
+      "citation": "Wong, Anita M.-Y., Dorcas C.-C. Chow, Catherine McBride-Cheng, and Stephanie F. Stokes. 2010. Optional elements and variant structures in bei2 'to give' dative constructions in Cantonese-speaking adults and three-year-old children. Journal of Child Language 37(1):175–196.",
+      "locator": "https://doi.org/10.1017/S0305000909009416",
+      "scope": "Documents V–T–R, V–R–T, and V–T–bei2–R patterns and the effects of construction type, optionality, weight, and discourse."
+    },
+    {
+      "id": "S-CHAN-2010-DATIVE-INPUT",
+      "type": "direct_cantonese_dative_corpus_research",
+      "citation": "Chan, Wing Shan Angel. 2010. The Cantonese double object construction with bei2 'give' in bilingual children: The role of input. International Journal of Bilingualism 14(1):65–85.",
+      "locator": "https://doi.org/10.1177/1367006909356653",
+      "scope": "Neutral theme-before-recipient order and vulnerability of recipient-before-theme order to English influence."
+    },
+    {
+      "id": "S-LAM-LAU-LEE-2024-SEGMENTATION",
+      "type": "direct_cantonese_morphosyntax",
+      "citation": "Lam, Charles, Chaak-ming Lau, and Jackson L. Lee. 2024. Multi-Tiered Cantonese Word Segmentation. LREC-COLING 2024:11993–12002.",
+      "locator": "https://aclanthology.org/2024.lrec-main.1047/",
+      "scope": "Cantonese numeral strings remain internally compositional even where a surface tier groups them."
+    },
+    {
+      "id": "S-BAUER-BENEDICT-1997-PHONOLOGY",
+      "type": "reference_phonology",
+      "citation": "Bauer, Robert S., and Paul K. Benedict. 1997. Modern Cantonese Phonology.",
+      "locator": "https://doi.org/10.1515/9783110823707",
+      "scope": "Independent Cantonese tone and syllable reference for verification of the tone paradigms and changed readings."
+    }
+  ],
+  "claims": [
+    {
+      "id": "W19-C01",
+      "claim": "Cantonese classifiers combine semantic tendencies with conventional noun-specific selection; one English class gloss does not define exhaustive compatibility.",
+      "status": "supported_external",
+      "sourceIds": ["S-GLOSSIKA-W19", "S-TSE-LI-LEUNG-2007-CLASSIFIERS", "S-LI-WONG-2014-CLASSIFIER-CHANGE"],
+      "boundary": "The classifier matrix records semantic profiles and current modular rules but promotes no classifier–noun pair."
+    },
+    {
+      "id": "W19-C02",
+      "claim": "The source reading 架 gaa2 conflicts with direct Cantonese classifier research reporting 架 gaa3 for vehicles.",
+      "status": "direct_source_discrepancy",
+      "sourceIds": ["S-GLOSSIKA-W19", "S-LI-WONG-2014-CLASSIFIER-CHANGE"],
+      "boundary": "Preserve the source value in the corpus package; do not import it into pronunciation or compatibility resources."
+    },
+    {
+      "id": "W19-C03",
+      "claim": "架 and 部 overlap in the broad vehicle domain but are not freely interchangeable; 部 additionally covers machines and devices in the current modular rule.",
+      "status": "repository_observation_plus_direct_classifier_system_support",
+      "sourceIds": ["S-W19-CROSSWALK", "S-TSE-LI-LEUNG-2007-CLASSIFIERS", "S-LI-WONG-2014-CLASSIFIER-CHANGE"],
+      "boundary": "Exact noun compatibility remains a corpus and controlled-judgment question."
+    },
+    {
+      "id": "W19-C04",
+      "claim": "Numeral–classifier phrases may occur with an overt noun or with recoverable nominal material omitted; bare 一杯 in the dialog is contextually interpretable as a cardinality-one classifier phrase.",
+      "status": "supported_external_narrow",
+      "sourceIds": ["S-GLOSSIKA-W19", "S-HPSG-2024-CLASSIFIERS"],
+      "boundary": "Do not invent a fixed omitted noun or treat every bare classifier as an unrestricted fragment."
+    },
+    {
+      "id": "W19-C05",
+      "claim": "幾多杯咖啡 and 兩杯茶 contain quantity plus classifier plus noun structure, while 一杯 can stand as a context-linked nominal answer.",
+      "status": "source_attested_with_structural_support",
+      "sourceIds": ["S-GLOSSIKA-W19", "S-HPSG-2024-CLASSIFIERS"],
+      "boundary": "A separate permanent quantity-construction identity is not established by this lesson."
+    },
+    {
+      "id": "W19-C06",
+      "claim": "嘅, 喺, 咗, 緊, 過, and 到 belong to different lexical and grammatical profiles and must not be grouped under one undifferentiated function-word class.",
+      "status": "supported_external_and_repository_maps",
+      "sourceIds": ["S-GLOSSIKA-W19", "S-REPO-ASPECT-R24", "S-REPO-COVERB-R23", "S-LAI-PANG-2023-RESULTATIVES"],
+      "boundary": "Each profile requires its own placement, host, negation, question, lexical-collision, and construction boundaries."
+    },
+    {
+      "id": "W19-C07",
+      "claim": "佢食緊飯 attests postverbal progressive 緊 in an ongoing activity clause, but it does not establish unrestricted compatibility with stative or achievement predicates.",
+      "status": "source_attested_narrow",
+      "sourceIds": ["S-GLOSSIKA-W19", "S-REPO-ASPECT-R24"],
+      "boundary": "Predicate class, placement, negation, and aspect interaction require controlled evidence."
+    },
+    {
+      "id": "W19-C08",
+      "claim": "你去過日本未 contains experiential 過 plus final 未 and must remain distinct from perfective 咗 questions, preverbal 未 negatives, and A-not-A exact-copy questions.",
+      "status": "supported_repository_boundary_plus_source_attestation",
+      "sourceIds": ["S-GLOSSIKA-W19", "S-REPO-ASPECT-R24"],
+      "boundary": "The source does not establish every regional, lexical, or discourse restriction of the exact profile."
+    },
+    {
+      "id": "W19-C09",
+      "claim": "The lesson's one-gloss descriptions of 啦, 㗎, 呀, 嘞, and 囉 are pedagogical simplifications rather than complete particle meanings.",
+      "status": "supported_external",
+      "sourceIds": ["S-GLOSSIKA-W19", "S-SYBESMA-LI-2007-SFP", "S-REPO-GAA3-UC011"],
+      "boundary": "Tone, host clause, discourse context, prosody, clusters, and orthographic variation remain explicit."
+    },
+    {
+      "id": "W19-C10",
+      "claim": "畀碗湯佢 instantiates lexical GIVE with theme before recipient, matching the characteristic neutral Cantonese bei2 order.",
+      "status": "supported_external",
+      "sourceIds": ["S-GLOSSIKA-W19", "S-LAM-2014-GIVE", "S-WONG-ETAL-2010-DATIVES", "S-CHAN-2010-DATIVE-INPUT"],
+      "boundary": "Do not merge lexical GIVE with passive, permissive, recipient-marker, or benefactive 畀 profiles."
+    },
+    {
+      "id": "W19-C11",
+      "claim": "Recipient-before-theme 畀佢一碗湯 is not freely equivalent to neutral theme-before-recipient order and requires marked-context, weight, focus, topicalization, or contact-influence review.",
+      "status": "supported_external_negative_boundary",
+      "sourceIds": ["S-LAM-2014-GIVE", "S-WONG-ETAL-2010-DATIVES", "S-CHAN-2010-DATIVE-INPUT"],
+      "boundary": "No categorical impossibility is claimed; variants must retain their conditioning factors."
+    },
+    {
+      "id": "W19-C12",
+      "claim": "Clause-final 嘅 in 佢唔飲咖啡嘅 and final 啦 in the following imperative contribute discourse structure separate from the dative argument order.",
+      "status": "source_attested_direct_profile_gap",
+      "sourceIds": ["S-GLOSSIKA-W19", "S-SYBESMA-LI-2007-SFP"],
+      "boundary": "Do not analyze clause-final 嘅 as attributive or nominalizing solely by character identity, and do not assign 啦 one context-free force."
+    },
+    {
+      "id": "W19-C13",
+      "claim": "The 23 spatial items divide among region nouns, localizers, scalar distance predicates, orientation markers, route-motion predicates, cardinal-direction regions, endpoint nouns, distributive place expressions, and compounds.",
+      "status": "supported_category_split",
+      "sourceIds": ["S-GLOSSIKA-W19", "S-XIE-ZHANG-URSINI-2023-SPATIAL", "S-KWAN-2005-LOCATIVE-ORDER"],
+      "boundary": "No catch-all locative or directional label and no free word-order rule is authorized."
+    },
+    {
+      "id": "W19-C14",
+      "claim": "的士站, 渡輪, 纜車, and 港鐵 are Hong Kong transport/place attestations requiring reading, register, compositionality, and overlap review before lexical ingress.",
+      "status": "source_attested_only",
+      "sourceIds": ["S-GLOSSIKA-W19", "S-W19-CROSSWALK"],
+      "boundary": "Absence of a modular entry is not sufficient evidence for adding an opaque whole."
+    },
+    {
+      "id": "W19-C15",
+      "claim": "十億 through 一百億 are compositionally structured; the English values align with ten hundred-million units through one hundred hundred-million units.",
+      "status": "supported_external_and_source_audit",
+      "sourceIds": ["S-GLOSSIKA-W19", "S-LAM-LAU-LEE-2024-SEGMENTATION"],
+      "boundary": "Do not create ten opaque numeral entries."
+    },
+    {
+      "id": "W19-C16",
+      "claim": "The six tone-paradigm rows are pronunciation material only and contain five explicitly blank saam- cells.",
+      "status": "source_discrepancy_supported",
+      "sourceIds": ["S-GLOSSIKA-W19", "S-BAUER-BENEDICT-1997-PHONOLOGY"],
+      "boundary": "No character, reading, tone label, lexical suitability, or missing cell is accepted or silently completed without item-level verification."
+    }
+  ],
+  "disposition": {
+    "classifierCompatibilityChangeAuthorized": false,
+    "grammarPromotionAuthorized": false,
+    "runtimeChangeAuthorized": false,
+    "lexiconChangeAuthorized": false,
+    "statusChangeAuthorized": false,
+    "surveyDeploymentAuthorized": false,
+    "nextEvidence": "Use the follow-up ledger for noun-specific classifier tests, direct particle and ge3 research, dative-context contrasts, spatial corpus inventories, transport lexical review, and tone verification."
+  }
+}

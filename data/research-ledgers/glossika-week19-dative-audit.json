@@ -1,0 +1,75 @@
+{
+  "schema": "canto-span-glossika-dative-audit-v1",
+  "packetId": "GLOSSIKA-YUEHK-A1-W19-20260726-DATIVE-R1",
+  "sourceId": "GLOSSIKA-YUEHK-A1-W19-20260726",
+  "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I069",
+  "sourceSentence": "佢唔飲咖啡嘅，畀碗湯佢啦。",
+  "sourceJyutping": "keoi5 m4 jam2 gaa3 fe1 ge3, bei2 wun2 tong1 keoi5 laa1.",
+  "sourceEnglish": "He/she doesn't drink coffee, give him/her a bowl of soup.",
+  "evidence": [
+    {
+      "id": "D-W19-01",
+      "grade": "DIRECT_SCHOLARLY_CORE",
+      "citation": "Lam, Olivia S. C. 2014. Double object constructions and the anomalous syntax of GIVE in Cantonese. Language Sciences 45:71–95.",
+      "locator": "https://doi.org/10.1016/j.langsci.2014.05.001",
+      "establishes": "For Cantonese bei2 GIVE constructions, the theme precedes the recipient in the characteristic neutral order; bei2 is exceptional relative to other Cantonese ditransitive verbs."
+    },
+    {
+      "id": "D-W19-02",
+      "grade": "DIRECT_SCHOLARLY_CORE",
+      "citation": "Wong, Anita M.-Y., Dorcas C.-C. Chow, Catherine McBride-Cheng, and Stephanie F. Stokes. 2010. Optional elements and variant structures in the productions of bei2 'to give' dative constructions in Cantonese-speaking adults and three-year-old children. Journal of Child Language 37(1):175–196.",
+      "locator": "https://doi.org/10.1017/S0305000909009416",
+      "establishes": "Cantonese bei2 datives include V–T–R, V–R–T, and V–T–bei2–R patterns; optionality, weight, discourse context, and construction type condition variants."
+    },
+    {
+      "id": "D-W19-03",
+      "grade": "DIRECT_SCHOLARLY_CORE",
+      "citation": "Chan, Wing Shan Angel. 2010. The Cantonese double object construction with bei2 'give' in bilingual children: The role of input. International Journal of Bilingualism 14(1):65–85.",
+      "locator": "https://doi.org/10.1177/1367006909356653",
+      "establishes": "The neutral Cantonese bei2 GIVE pattern is theme-before-recipient; recipient-before-theme is vulnerable to English influence and cannot be assumed equivalent."
+    },
+    {
+      "id": "D-W19-04",
+      "grade": "ATTESTATION_ONLY",
+      "citation": "Glossika Cantonese (HK) A1 Week 19",
+      "locator": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/source.json",
+      "establishes": "The exact source sentence and its pedagogical translation."
+    }
+  ],
+  "analysis": {
+    "giveClause": {
+      "surface": "畀碗湯佢啦",
+      "verb": "畀",
+      "theme": "碗湯",
+      "recipient": "佢",
+      "order": "V_THEME_RECIPIENT",
+      "status": "matches_directly_supported_neutral_bei2_give_order"
+    },
+    "contrast": {
+      "form": "畀佢一碗湯",
+      "status": "marked_or_variant_requires_contextual_review",
+      "boundary": "Do not encode recipient-before-theme as freely interchangeable with neutral theme-before-recipient order. Heavy-theme, focus, topicalization, bilingual influence, and other contextual factors must remain visible."
+    },
+    "precedingClause": {
+      "surface": "佢唔飲咖啡嘅",
+      "ge3Status": "clause_final_discourse_profile_requires_direct_analysis",
+      "boundary": "The source context favors a clause-final explanatory or stance-related profile. It must not be treated as an attributive linker or headless nominal merely because the same character is used."
+    },
+    "finalParticle": {
+      "surface": "啦",
+      "sourceReading": "laa1",
+      "status": "hortative_or_imperative_force_requires_contextual_particle_analysis",
+      "boundary": "The particle does not alter the theme–recipient order and must not be used to infer a generic imperative dative construction."
+    }
+  },
+  "negativeBoundaries": [
+    "Do not merge lexical bei2 GIVE with passive, permissive, recipient-marker, or benefactive profiles.",
+    "Do not infer omitted arguments when the theme and recipient are overt.",
+    "Do not treat V–R–T and V–T–R as unconditionally interchangeable.",
+    "Do not classify clause-final 嘅 solely as nominalization.",
+    "Do not assign final 啦 one context-free suggestion meaning."
+  ],
+  "implementationAuthorized": false,
+  "statusChangeAuthorized": false,
+  "surveyDeploymentAuthorized": false
+}

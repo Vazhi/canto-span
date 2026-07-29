@@ -1,0 +1,981 @@
+{
+  "schema": "canto-span-glossika-lexical-numeral-candidates-v1",
+  "packetId": "GLOSSIKA-YUEHK-A1-W19-20260726-LEXICAL-NUMERAL-R1",
+  "sourceId": "GLOSSIKA-YUEHK-A1-W19-20260726",
+  "policy": {
+    "opaqueNumeralIngress": false,
+    "existingCoverageBlocksDuplicates": true,
+    "sourceReadingRequiresReview": true,
+    "implementationAuthorized": false
+  },
+  "summary": {
+    "sourceCount": 51,
+    "existingCoverage": 19,
+    "reviewCandidates": [
+      "枝",
+      "周圍",
+      "穿過",
+      "中間",
+      "東邊",
+      "西邊",
+      "南邊",
+      "北邊",
+      "盡頭",
+      "轉角",
+      "角落",
+      "頂部",
+      "底部",
+      "遠處",
+      "近處",
+      "四周",
+      "到處",
+      "正中",
+      "的士站",
+      "渡輪",
+      "纜車",
+      "港鐵"
+    ],
+    "compositionalNumerals": [
+      "十億",
+      "二十億",
+      "三十億",
+      "四十億",
+      "五十億",
+      "六十億",
+      "七十億",
+      "八十億",
+      "九十億",
+      "一百億"
+    ]
+  },
+  "entries": [
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I001",
+      "subsection": "classifiers",
+      "traditional": "個",
+      "sourceJyutping": "go3",
+      "sourceEnglish": "CL general",
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/classifier-head-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/places-and-times.js",
+        "src/runtime-resources/normalization/simplified-to-traditional.js"
+      ],
+      "disposition": "existing_modular_coverage_no_duplicate_ingress",
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I002",
+      "subsection": "classifiers",
+      "traditional": "隻",
+      "sourceJyutping": "zek3",
+      "sourceEnglish": "CL animals, single items",
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/classifier-head-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+        "src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js"
+      ],
+      "disposition": "existing_modular_coverage_no_duplicate_ingress",
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I003",
+      "subsection": "classifiers",
+      "traditional": "架",
+      "sourceJyutping": "gaa2",
+      "sourceEnglish": "CL vehicles",
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/classifier-head-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "disposition": "existing_modular_coverage_no_duplicate_ingress",
+      "sourceDiscrepancies": [
+        {
+          "type": "pronunciation_discrepancy_candidate",
+          "status": "requires_independent_verification",
+          "sourceValue": "gaa2",
+          "note": "The intake explicitly flags this reading; preserve it without runtime import or silent correction."
+        },
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I004",
+      "subsection": "classifiers",
+      "traditional": "間",
+      "sourceJyutping": "gaan1",
+      "sourceEnglish": "CL rooms, shops, buildings",
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/classifier-head-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+        "src/runtime-resources/normalization/simplified-to-traditional.js"
+      ],
+      "disposition": "existing_modular_coverage_no_duplicate_ingress",
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I005",
+      "subsection": "classifiers",
+      "traditional": "本",
+      "sourceJyutping": "bun2",
+      "sourceEnglish": "CL books",
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/classifier-head-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "disposition": "existing_modular_coverage_no_duplicate_ingress",
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I006",
+      "subsection": "classifiers",
+      "traditional": "枝",
+      "sourceJyutping": "zi1",
+      "sourceEnglish": "CL pens, bottles, sticks",
+      "canonicalRuntimeResourceOwners": [],
+      "disposition": "lexical_or_resource_review_candidate",
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I007",
+      "subsection": "classifiers",
+      "traditional": "碗",
+      "sourceJyutping": "wun2",
+      "sourceEnglish": "CL bowls of",
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/classifier-head-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/study-suite.js"
+      ],
+      "disposition": "existing_modular_coverage_no_duplicate_ingress",
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I008",
+      "subsection": "classifiers",
+      "traditional": "杯",
+      "sourceJyutping": "bui1",
+      "sourceEnglish": "CL cups of",
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/classifier-head-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "disposition": "existing_modular_coverage_no_duplicate_ingress",
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I009",
+      "subsection": "classifiers",
+      "traditional": "對",
+      "sourceJyutping": "deoi3",
+      "sourceEnglish": "CL pairs",
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+        "src/runtime-resources/normalization/simplified-to-traditional.js"
+      ],
+      "disposition": "existing_modular_coverage_no_duplicate_ingress",
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I010",
+      "subsection": "classifiers",
+      "traditional": "張",
+      "sourceJyutping": "zoeng1",
+      "sourceEnglish": "CL flat things (paper, tables)",
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/classifier-head-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "disposition": "existing_modular_coverage_no_duplicate_ingress",
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I011",
+      "subsection": "classifiers",
+      "traditional": "件",
+      "sourceJyutping": "gin6",
+      "sourceEnglish": "CL clothing items, matters",
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/classifier-head-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "disposition": "existing_modular_coverage_no_duplicate_ingress",
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I012",
+      "subsection": "classifiers",
+      "traditional": "部",
+      "sourceJyutping": "bou6",
+      "sourceEnglish": "CL machines, vehicles",
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/classifier-head-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "disposition": "existing_modular_coverage_no_duplicate_ingress",
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I013",
+      "subsection": "classifiers",
+      "traditional": "把",
+      "sourceJyutping": "baa2",
+      "sourceEnglish": "CL handled items",
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/study-suite.js",
+        "src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js"
+      ],
+      "disposition": "existing_modular_coverage_no_duplicate_ingress",
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I014",
+      "subsection": "classifiers",
+      "traditional": "條",
+      "sourceJyutping": "tiu4",
+      "sourceEnglish": "CL long things (roads, fish)",
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "disposition": "existing_modular_coverage_no_duplicate_ingress",
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I026",
+      "subsection": "spatial_directional",
+      "traditional": "周圍",
+      "sourceJyutping": "zau1 wai4",
+      "sourceEnglish": "around",
+      "canonicalRuntimeResourceOwners": [],
+      "disposition": "lexical_or_resource_review_candidate",
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I027",
+      "subsection": "spatial_directional",
+      "traditional": "向",
+      "sourceJyutping": "hoeng3",
+      "sourceEnglish": "toward",
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/places-and-times.js"
+      ],
+      "disposition": "existing_modular_coverage_no_duplicate_ingress",
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I028",
+      "subsection": "spatial_directional",
+      "traditional": "遠",
+      "sourceJyutping": "jyun5",
+      "sourceEnglish": "far",
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/templates/slot-generation-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/statives.js"
+      ],
+      "disposition": "existing_modular_coverage_no_duplicate_ingress",
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I029",
+      "subsection": "spatial_directional",
+      "traditional": "穿過",
+      "sourceJyutping": "cyun1 gwo3",
+      "sourceEnglish": "through",
+      "canonicalRuntimeResourceOwners": [],
+      "disposition": "lexical_or_resource_review_candidate",
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I030",
+      "subsection": "spatial_directional",
+      "traditional": "中間",
+      "sourceJyutping": "zung1 gaan1",
+      "sourceEnglish": "between",
+      "canonicalRuntimeResourceOwners": [],
+      "disposition": "lexical_or_resource_review_candidate",
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I031",
+      "subsection": "spatial_directional",
+      "traditional": "出面",
+      "sourceJyutping": "ceot1 min6",
+      "sourceEnglish": "outside",
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/places-and-times.js",
+        "src/runtime-resources/pronunciation/jyutping-review-expectations.js"
+      ],
+      "disposition": "existing_modular_coverage_no_duplicate_ingress",
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I032",
+      "subsection": "spatial_directional",
+      "traditional": "東邊",
+      "sourceJyutping": "dung1 bin1",
+      "sourceEnglish": "east side",
+      "canonicalRuntimeResourceOwners": [],
+      "disposition": "lexical_or_resource_review_candidate",
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I033",
+      "subsection": "spatial_directional",
+      "traditional": "西邊",
+      "sourceJyutping": "sai1 bin1",
+      "sourceEnglish": "west side",
+      "canonicalRuntimeResourceOwners": [],
+      "disposition": "lexical_or_resource_review_candidate",
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I034",
+      "subsection": "spatial_directional",
+      "traditional": "南邊",
+      "sourceJyutping": "naam4 bin1",
+      "sourceEnglish": "south side",
+      "canonicalRuntimeResourceOwners": [],
+      "disposition": "lexical_or_resource_review_candidate",
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I035",
+      "subsection": "spatial_directional",
+      "traditional": "北邊",
+      "sourceJyutping": "bak1 bin1",
+      "sourceEnglish": "north side",
+      "canonicalRuntimeResourceOwners": [],
+      "disposition": "lexical_or_resource_review_candidate",
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I036",
+      "subsection": "spatial_directional",
+      "traditional": "盡頭",
+      "sourceJyutping": "zeon6 tau4",
+      "sourceEnglish": "end (of road)",
+      "canonicalRuntimeResourceOwners": [],
+      "disposition": "lexical_or_resource_review_candidate",
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I037",
+      "subsection": "spatial_directional",
+      "traditional": "轉角",
+      "sourceJyutping": "zyun3 gok3",
+      "sourceEnglish": "corner",
+      "canonicalRuntimeResourceOwners": [],
+      "disposition": "lexical_or_resource_review_candidate",
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I038",
+      "subsection": "spatial_directional",
+      "traditional": "入口",
+      "sourceJyutping": "jap6 hau2",
+      "sourceEnglish": "entrance",
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/study-suite.js"
+      ],
+      "disposition": "existing_modular_coverage_no_duplicate_ingress",
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I039",
+      "subsection": "spatial_directional",
+      "traditional": "出口",
+      "sourceJyutping": "ceot1 hau2",
+      "sourceEnglish": "exit",
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/study-suite.js"
+      ],
+      "disposition": "existing_modular_coverage_no_duplicate_ingress",
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I040",
+      "subsection": "spatial_directional",
+      "traditional": "路口",
+      "sourceJyutping": "lou6 hau2",
+      "sourceEnglish": "intersection",
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/study-suite.js"
+      ],
+      "disposition": "existing_modular_coverage_no_duplicate_ingress",
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I041",
+      "subsection": "spatial_directional",
+      "traditional": "角落",
+      "sourceJyutping": "gok3 lok6",
+      "sourceEnglish": "corner",
+      "canonicalRuntimeResourceOwners": [],
+      "disposition": "lexical_or_resource_review_candidate",
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I042",
+      "subsection": "spatial_directional",
+      "traditional": "頂部",
+      "sourceJyutping": "deng2 bou6",
+      "sourceEnglish": "top",
+      "canonicalRuntimeResourceOwners": [],
+      "disposition": "lexical_or_resource_review_candidate",
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I043",
+      "subsection": "spatial_directional",
+      "traditional": "底部",
+      "sourceJyutping": "dai2 bou6",
+      "sourceEnglish": "bottom",
+      "canonicalRuntimeResourceOwners": [],
+      "disposition": "lexical_or_resource_review_candidate",
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I044",
+      "subsection": "spatial_directional",
+      "traditional": "遠處",
+      "sourceJyutping": "jyun5 cyu3",
+      "sourceEnglish": "far away",
+      "canonicalRuntimeResourceOwners": [],
+      "disposition": "lexical_or_resource_review_candidate",
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I045",
+      "subsection": "spatial_directional",
+      "traditional": "近處",
+      "sourceJyutping": "gan6 cyu3",
+      "sourceEnglish": "nearby",
+      "canonicalRuntimeResourceOwners": [],
+      "disposition": "lexical_or_resource_review_candidate",
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I046",
+      "subsection": "spatial_directional",
+      "traditional": "四周",
+      "sourceJyutping": "sei3 zau1",
+      "sourceEnglish": "all around",
+      "canonicalRuntimeResourceOwners": [],
+      "disposition": "lexical_or_resource_review_candidate",
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I047",
+      "subsection": "spatial_directional",
+      "traditional": "到處",
+      "sourceJyutping": "dou3 cyu3",
+      "sourceEnglish": "everywhere",
+      "canonicalRuntimeResourceOwners": [],
+      "disposition": "lexical_or_resource_review_candidate",
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I048",
+      "subsection": "spatial_directional",
+      "traditional": "正中",
+      "sourceJyutping": "zing3 zung1",
+      "sourceEnglish": "center",
+      "canonicalRuntimeResourceOwners": [],
+      "disposition": "lexical_or_resource_review_candidate",
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I049",
+      "subsection": "transport_places",
+      "traditional": "的士站",
+      "sourceJyutping": "dik1 si2 zaam6",
+      "sourceEnglish": "taxi stand",
+      "canonicalRuntimeResourceOwners": [],
+      "disposition": "lexical_or_resource_review_candidate",
+      "sourceDiscrepancies": [
+        {
+          "type": "regional_lexical_review",
+          "status": "route_to_issue_129",
+          "note": "Reading, register, Hong Kong usage, compositionality, and overlap require independent review."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I050",
+      "subsection": "transport_places",
+      "traditional": "渡輪",
+      "sourceJyutping": "dou6 leon4",
+      "sourceEnglish": "ferry",
+      "canonicalRuntimeResourceOwners": [],
+      "disposition": "lexical_or_resource_review_candidate",
+      "sourceDiscrepancies": [
+        {
+          "type": "regional_lexical_review",
+          "status": "route_to_issue_129",
+          "note": "Reading, register, Hong Kong usage, compositionality, and overlap require independent review."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I051",
+      "subsection": "transport_places",
+      "traditional": "纜車",
+      "sourceJyutping": "laam6 ce1",
+      "sourceEnglish": "cable car",
+      "canonicalRuntimeResourceOwners": [],
+      "disposition": "lexical_or_resource_review_candidate",
+      "sourceDiscrepancies": [
+        {
+          "type": "regional_lexical_review",
+          "status": "route_to_issue_129",
+          "note": "Reading, register, Hong Kong usage, compositionality, and overlap require independent review."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I052",
+      "subsection": "transport_places",
+      "traditional": "港鐵",
+      "sourceJyutping": "gong2 tit3",
+      "sourceEnglish": "MTR",
+      "canonicalRuntimeResourceOwners": [],
+      "disposition": "lexical_or_resource_review_candidate",
+      "sourceDiscrepancies": [
+        {
+          "type": "regional_lexical_review",
+          "status": "route_to_issue_129",
+          "note": "Reading, register, Hong Kong usage, compositionality, and overlap require independent review."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I053",
+      "subsection": "numbers",
+      "traditional": "十億",
+      "sourceJyutping": "sap6 jik1",
+      "sourceEnglish": "1 billion",
+      "canonicalRuntimeResourceOwners": [],
+      "disposition": "retain_compositional_numeral_no_opaque_entry",
+      "sourceDiscrepancies": [
+        {
+          "type": "compositional_numeral",
+          "status": "no_opaque_ingress",
+          "note": "Retain internal numeral composition and verify the source English values."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I054",
+      "subsection": "numbers",
+      "traditional": "二十億",
+      "sourceJyutping": "ji6 sap6 jik1",
+      "sourceEnglish": "2 billion",
+      "canonicalRuntimeResourceOwners": [],
+      "disposition": "retain_compositional_numeral_no_opaque_entry",
+      "sourceDiscrepancies": [
+        {
+          "type": "compositional_numeral",
+          "status": "no_opaque_ingress",
+          "note": "Retain internal numeral composition and verify the source English values."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I055",
+      "subsection": "numbers",
+      "traditional": "三十億",
+      "sourceJyutping": "saam1 sap6 jik1",
+      "sourceEnglish": "3 billion",
+      "canonicalRuntimeResourceOwners": [],
+      "disposition": "retain_compositional_numeral_no_opaque_entry",
+      "sourceDiscrepancies": [
+        {
+          "type": "compositional_numeral",
+          "status": "no_opaque_ingress",
+          "note": "Retain internal numeral composition and verify the source English values."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I056",
+      "subsection": "numbers",
+      "traditional": "四十億",
+      "sourceJyutping": "sei3 sap6 jik1",
+      "sourceEnglish": "4 billion",
+      "canonicalRuntimeResourceOwners": [],
+      "disposition": "retain_compositional_numeral_no_opaque_entry",
+      "sourceDiscrepancies": [
+        {
+          "type": "compositional_numeral",
+          "status": "no_opaque_ingress",
+          "note": "Retain internal numeral composition and verify the source English values."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I057",
+      "subsection": "numbers",
+      "traditional": "五十億",
+      "sourceJyutping": "ng5 sap6 jik1",
+      "sourceEnglish": "5 billion",
+      "canonicalRuntimeResourceOwners": [],
+      "disposition": "retain_compositional_numeral_no_opaque_entry",
+      "sourceDiscrepancies": [
+        {
+          "type": "compositional_numeral",
+          "status": "no_opaque_ingress",
+          "note": "Retain internal numeral composition and verify the source English values."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I058",
+      "subsection": "numbers",
+      "traditional": "六十億",
+      "sourceJyutping": "luk6 sap6 jik1",
+      "sourceEnglish": "6 billion",
+      "canonicalRuntimeResourceOwners": [],
+      "disposition": "retain_compositional_numeral_no_opaque_entry",
+      "sourceDiscrepancies": [
+        {
+          "type": "compositional_numeral",
+          "status": "no_opaque_ingress",
+          "note": "Retain internal numeral composition and verify the source English values."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I059",
+      "subsection": "numbers",
+      "traditional": "七十億",
+      "sourceJyutping": "cat1 sap6 jik1",
+      "sourceEnglish": "7 billion",
+      "canonicalRuntimeResourceOwners": [],
+      "disposition": "retain_compositional_numeral_no_opaque_entry",
+      "sourceDiscrepancies": [
+        {
+          "type": "compositional_numeral",
+          "status": "no_opaque_ingress",
+          "note": "Retain internal numeral composition and verify the source English values."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I060",
+      "subsection": "numbers",
+      "traditional": "八十億",
+      "sourceJyutping": "baat3 sap6 jik1",
+      "sourceEnglish": "8 billion",
+      "canonicalRuntimeResourceOwners": [],
+      "disposition": "retain_compositional_numeral_no_opaque_entry",
+      "sourceDiscrepancies": [
+        {
+          "type": "compositional_numeral",
+          "status": "no_opaque_ingress",
+          "note": "Retain internal numeral composition and verify the source English values."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I061",
+      "subsection": "numbers",
+      "traditional": "九十億",
+      "sourceJyutping": "gau2 sap6 jik1",
+      "sourceEnglish": "9 billion",
+      "canonicalRuntimeResourceOwners": [],
+      "disposition": "retain_compositional_numeral_no_opaque_entry",
+      "sourceDiscrepancies": [
+        {
+          "type": "compositional_numeral",
+          "status": "no_opaque_ingress",
+          "note": "Retain internal numeral composition and verify the source English values."
+        }
+      ],
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I062",
+      "subsection": "numbers",
+      "traditional": "一百億",
+      "sourceJyutping": "jat1 baak3 jik1",
+      "sourceEnglish": "10 billion",
+      "canonicalRuntimeResourceOwners": [],
+      "disposition": "retain_compositional_numeral_no_opaque_entry",
+      "sourceDiscrepancies": [
+        {
+          "type": "compositional_numeral",
+          "status": "no_opaque_ingress",
+          "note": "Retain internal numeral composition and verify the source English values."
+        }
+      ],
+      "implementationAuthorized": false
+    }
+  ]
+}

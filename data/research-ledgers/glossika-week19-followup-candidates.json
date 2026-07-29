@@ -1,0 +1,187 @@
+{
+  "schema": "canto-span-research-followup-candidates-v1",
+  "packetId": "GLOSSIKA-YUEHK-A1-W19-20260726-FOLLOWUP-R1",
+  "sourceId": "GLOSSIKA-YUEHK-A1-W19-20260726",
+  "policy": {
+    "itemsAreDecisions": false,
+    "automaticDispatch": false,
+    "nativePanelRule": "Use role-neutral native-speaker tasks only after direct research and contextual corpus evidence leave noun compatibility, particle force, register, or interpretation unresolved.",
+    "promotionRule": "No item promotes a construction, classifier pair, or runtime behavior."
+  },
+  "candidates": [
+    {
+      "id": "W19-F01",
+      "cluster": "classifier_noun_compatibility",
+      "sourceItemIds": [
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I001",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I002",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I003",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I004",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I005",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I006",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I007",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I008",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I009",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I010",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I011",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I012",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I013",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I014"
+      ],
+      "question": "Which noun pairs are ordinary, marked, conventional, extended, or unacceptable for each classifier, and how do semantic tendencies interact with lexical preference?",
+      "nextMethod": "corpus_classifier_noun_inventory_then_counterbalanced_role_neutral_judgments",
+      "priority": "high",
+      "blockedActions": ["semantic_class_as_exhaustive_rule", "bulk_compatibility_expansion", "source_gloss_as_productivity_evidence"]
+    },
+    {
+      "id": "W19-F02",
+      "cluster": "gaa3_bou6_vehicle_split",
+      "sourceItemIds": [
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I003",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I012"
+      ],
+      "question": "Which vehicle and machine nouns prefer 架, 部, or both, and what semantic, lexical, regional, or register conditions distinguish the choices?",
+      "nextMethod": "direct_classifier_corpus_matrix_plus_minimal_noun_sets",
+      "priority": "high",
+      "blockedActions": ["free_interchangeability", "current_runtime_rule_as_linguistic_truth"]
+    },
+    {
+      "id": "W19-F03",
+      "cluster": "gaa_reading",
+      "sourceItemIds": ["GLOSSIKA-YUEHK-A1-W19-20260726-I003"],
+      "question": "Confirm the ordinary classifier reading of 架 and document any lexicalized or changed-tone exceptions relevant to vehicle counting.",
+      "nextMethod": "dictionary_phonology_and_native_corpus_review",
+      "priority": "high",
+      "blockedActions": ["import_gaa2", "silent_source_correction_without_ledger"]
+    },
+    {
+      "id": "W19-F04",
+      "cluster": "classifier_ellipsis_and_quantity",
+      "sourceItemIds": [
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I067",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I068",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I070"
+      ],
+      "question": "What discourse and syntactic conditions license bare 一杯, 呢-marked continuation after a classifier answer, and parallel classifier-phrase lists?",
+      "nextMethod": "classifier_np_corpus_inventory_plus_contextual_minimal_contrasts",
+      "priority": "high",
+      "blockedActions": ["invented_omitted_noun", "all_classifier_phrases_as_fragments", "new_quantity_identity_without_evidence"]
+    },
+    {
+      "id": "W19-F05",
+      "cluster": "function_word_profile_audit",
+      "sourceItemIds": [
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I015",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I016",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I017",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I018",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I019",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I020"
+      ],
+      "question": "Do current canonical owners keep lexical, aspectual, locative, attributive, nominalizing, clause-final, result, extent, and directional profiles distinct for all six forms?",
+      "nextMethod": "canonical_parser_and_resource_audit_against_existing_source_maps",
+      "priority": "high",
+      "blockedActions": ["one_function_word_family", "token_only_dispatch", "identity_merger"]
+    },
+    {
+      "id": "W19-F06",
+      "cluster": "experiential_final_mei6",
+      "sourceItemIds": ["GLOSSIKA-YUEHK-A1-W19-20260726-I066"],
+      "question": "What restrictions distinguish 去過日本未 from perfective final-未 questions, preverbal 未 negatives, and other experiential question strategies?",
+      "nextMethod": "direct_aspect_question_research_plus_contextual_corpus_contrasts",
+      "priority": "high",
+      "blockedActions": ["perfective_merger", "a_not_a_merger", "generic_final_mei6_rule"]
+    },
+    {
+      "id": "W19-F07",
+      "cluster": "particle_profiles",
+      "sourceItemIds": [
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I021",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I022",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I023",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I024",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I025"
+      ],
+      "question": "Which tone-specific host, discourse, prosodic, cluster, and response profiles are required for 啦, 㗎, 呀, 嘞, and 囉?",
+      "nextMethod": "reuse_existing_particle_units_and_open_only_missing_direct_source_units",
+      "priority": "high",
+      "blockedActions": ["one_gloss_per_particle", "orthography_only_identity", "generic_particle_assignment"]
+    },
+    {
+      "id": "W19-F08",
+      "cluster": "bei2_theme_recipient_order",
+      "sourceItemIds": ["GLOSSIKA-YUEHK-A1-W19-20260726-I069"],
+      "question": "Which contexts license neutral V–theme–recipient order, marked V–recipient–theme order, argument omission, or V–theme–bei2–recipient structure?",
+      "nextMethod": "direct_dative_corpus_and_weight_focus_contrasts",
+      "priority": "high",
+      "blockedActions": ["free_order_variation", "passive_permissive_merger", "contact_influenced_order_as_default"]
+    },
+    {
+      "id": "W19-F09",
+      "cluster": "clause_final_ge3_and_laa1",
+      "sourceItemIds": ["GLOSSIKA-YUEHK-A1-W19-20260726-I069"],
+      "question": "What explanatory, contrastive, stance, or response-demand profile does clause-final 嘅 contribute, and what request or hortative force does final 啦 contribute?",
+      "nextMethod": "direct_particle_research_plus_contextual_panel_if_needed",
+      "priority": "high",
+      "blockedActions": ["ge3_nominalizer_only", "laa1_suggestion_only", "dative_order_inference_from_particles"]
+    },
+    {
+      "id": "W19-F10",
+      "cluster": "spatial_lexical_classes",
+      "sourceItemIds": [],
+      "question": "Which of the 23 forms are nouns, localizers, relational regions, scalar predicates, orientation markers, route predicates, distributive place expressions, or formal compounds, and what grounds or complements do they require?",
+      "nextMethod": "spatial_corpus_inventory_using_week15_and_existing_motion_location_maps",
+      "priority": "high",
+      "blockedActions": ["catch_all_locative", "bulk_lexical_ingress", "free_word_order_rule"]
+    },
+    {
+      "id": "W19-F11",
+      "cluster": "transport_place_lexicon",
+      "sourceItemIds": [
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I049",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I050",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I051",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I052"
+      ],
+      "question": "Verify Hong Kong usage, reading, learner gloss, compositionality, and overlap for 的士站, 渡輪, 纜車, and 港鐵.",
+      "nextMethod": "hong_kong_dictionary_and_corpus_lexical_review",
+      "priority": "medium",
+      "blockedActions": ["source_only_runtime_ingress", "opaque_compound_assumption"]
+    },
+    {
+      "id": "W19-F12",
+      "cluster": "tone_paradigms",
+      "sourceItemIds": [
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I071",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I072",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I073",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I074",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I075",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I076"
+      ],
+      "question": "Verify every character, Jyutping reading, lexical suitability, register, tone label, and the five missing saam- cells without fabricating completions.",
+      "nextMethod": "item_level_dictionary_and_phonological_verification",
+      "priority": "high",
+      "blockedActions": ["pronunciation_resource_ingress", "silent_cell_completion", "paradigm_as_lexical_evidence"]
+    }
+  ],
+  "nonCandidates": [
+    {
+      "cluster": "large_numerals",
+      "sourceItemIds": [
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I053",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I054",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I055",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I056",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I057",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I058",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I059",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I060",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I061",
+        "GLOSSIKA-YUEHK-A1-W19-20260726-I062"
+      ],
+      "disposition": "retain_compositional_numeral_analysis",
+      "reason": "All billion-level forms remain compositionally analyzable; no opaque whole-form entries are warranted."
+    }
+  ]
+}
