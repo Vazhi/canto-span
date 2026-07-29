@@ -1,0 +1,25 @@
+{
+  "sourceId": "GLOSSIKA-YUEHK-A1-DLG-006-20260104",
+  "provider": "Glossika",
+  "course": "Cantonese (Hong Kong) A1 Dialogs",
+  "dialogNumber": 6,
+  "title": "將來想做乜？",
+  "englishTitle": "What Do You Want to Do in the Future?",
+  "sourceDate": "2026-01-04",
+  "gmailMessageId": "19b8b06b61f9e2e1",
+  "sourceType": "authorized_pedagogical_email",
+  "language": "yue-Hant-HK",
+  "sourceFormat": "Glossika interactive-dialog email; lowercase Jyutping lines omit speaker-name prefixes",
+  "authorization": {
+    "basis": "User states Glossika granted permission to use all lesson data in this non-commercial private-use Canto Span project.",
+    "scope": "Source-preserving corpus ingress for this dialog.",
+    "redistributionClaim": "none"
+  },
+  "ingress": {
+    "issue": 142,
+    "workClaimIssue": 298,
+    "branch": "agent/glossika-dialog-006-ingress",
+    "reviewState": "REQUIRES_EXPERT_CONTEXT_REVIEW",
+    "policy": "Source values are immutable. Normalization, correction, duplicate classification, naturalness review, construction routing, and evidence use are recorded separately."
+  }
+}
