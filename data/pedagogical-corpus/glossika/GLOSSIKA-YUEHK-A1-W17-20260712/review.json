@@ -1,0 +1,2450 @@
+{
+  "schema": "canto-span-pedagogical-corpus-review-v1",
+  "sourceId": "GLOSSIKA-YUEHK-A1-W17-20260712",
+  "sourcePayloadHash": "sha256:1ece0875ae59d215fbc1f09ad8b5b648ad80e448fadaf89d72f019208be28ea7",
+  "policy": {
+    "sourceLayer": "source.json is immutable and preserves all repeated lesson rows.",
+    "existingProjectLayer": "Existing w17-* records remain authoritative for their own reviewed corrections and lifecycle metadata; this package does not overwrite them.",
+    "modularRuntimeLayer": "Only src/** and src/runtime-resources/** may be named as runtime owners. main.js is generated and excluded.",
+    "evidenceBoundary": "Pedagogical attestation, tests, parser output, and prior project promotion do not independently establish grammatical productivity, identity, frequency, or dialect-wide naturalness."
+  },
+  "summary": {
+    "recordCount": 75,
+    "reviewedCount": 0,
+    "unreviewedCount": 75,
+    "sourceRepeatCount": 3,
+    "classificationCounts": {
+      "exact_duplicate": 3,
+      "normalized_duplicate": 50,
+      "partial_match": 22
+    },
+    "discrepancyCounts": {
+      "project_review_note": 23,
+      "pronunciation_discrepancy": 1,
+      "translation_discrepancy": 22
+    },
+    "projectOnlyItemCount": 5,
+    "knownSourceAlerts": [
+      {
+        "scope": "lesson-wide",
+        "type": "register_labels",
+        "status": "source_only",
+        "note": "Casual, polite, and standard labels remain source metadata."
+      },
+      {
+        "scope": "emotion_lexicon",
+        "type": "repeated_source_rows",
+        "status": "preserved",
+        "note": "攰, 嬲, and 驚 each occur twice in the source; the project later deduplicated them."
+      },
+      {
+        "scope": "grammar_patterns",
+        "type": "category_simplification",
+        "status": "requires_external_verification",
+        "note": "The lesson groups multifunctional verbs, coverbs, conjunctions, and complex forms under Prepositions."
+      },
+      {
+        "scope": "phonics_drill",
+        "type": "pronunciation_discrepancy",
+        "status": "project_reviewed_correction",
+        "note": "The source gives 闊 kut3; existing project records correct it to fut3."
+      },
+      {
+        "scope": "phonics_drill",
+        "type": "heading_scope",
+        "status": "requires_independent_verification",
+        "note": "The /yː/ versus /uː/ heading does not transparently describe every listed pair."
+      },
+      {
+        "scope": "source_claims",
+        "type": "pedagogical_generalization",
+        "status": "source_only",
+        "note": "The phonics comparison with Mandarin is preserved but not adopted as project evidence."
+      }
+    ]
+  },
+  "records": [
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I001",
+      "sourceHash": "sha256:e10fc175e8f6953c2c04abe1f735e2953f45407b4a850f719769c6fbf01f753b",
+      "normalizedCantonese": "講返正題你尋日去咗邊度呀",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-glossika-corpus.tsv",
+          "id": "COR-W17-001"
+        },
+        {
+          "path": "test-data/w17-corpus-semantic-disposition.tsv",
+          "id": "COR-W17-001"
+        },
+        {
+          "path": "test-data/w17-functional-corpus.tsv",
+          "id": "COR-W17-001"
+        }
+      ],
+      "canonicalLexiconOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "sourceDiscrepancies": [],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I002",
+      "sourceHash": "sha256:960da22426dbec47b799025af019c4514f34f51a2b0c2cd3b58d477b7d2c570a",
+      "normalizedCantonese": "唔好離題喇",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-glossika-corpus.tsv",
+          "id": "COR-W17-002"
+        },
+        {
+          "path": "test-data/w17-corpus-semantic-disposition.tsv",
+          "id": "COR-W17-002"
+        },
+        {
+          "path": "test-data/w17-functional-corpus.tsv",
+          "id": "COR-W17-002"
+        }
+      ],
+      "canonicalLexiconOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/imperatives/clauses.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "project_review_note",
+          "status": "PASS",
+          "note": "喇 is a sentence-final particle, not perfective aspect"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I003",
+      "sourceHash": "sha256:acd472bfcf192a1e7db8db8a25a423692384facf650fd484e7010e26a5f27669",
+      "normalizedCantonese": "關於呢個問題我想講吓",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-glossika-corpus.tsv",
+          "id": "COR-W17-003"
+        },
+        {
+          "path": "test-data/w17-corpus-semantic-disposition.tsv",
+          "id": "COR-W17-003"
+        },
+        {
+          "path": "test-data/w17-functional-corpus.tsv",
+          "id": "COR-W17-003"
+        }
+      ],
+      "canonicalLexiconOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/modality/intention-preference.js"
+      ],
+      "sourceDiscrepancies": [],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I004",
+      "sourceHash": "sha256:5f4d4777851884c8b845c1ac731f9bce936bc37313351fd71825211e3d19f765",
+      "normalizedCantonese": "我哋返去頭先嘅話題",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-glossika-corpus.tsv",
+          "id": "COR-W17-004"
+        },
+        {
+          "path": "test-data/w17-corpus-semantic-disposition.tsv",
+          "id": "COR-W17-004"
+        },
+        {
+          "path": "test-data/w17-functional-corpus.tsv",
+          "id": "COR-W17-004"
+        }
+      ],
+      "canonicalLexiconOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "sourceDiscrepancies": [],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I005",
+      "sourceHash": "sha256:44ed8c62ea66284ab157692897bf76f84999da5427835b8fc7a53d8070f8225d",
+      "normalizedCantonese": "第一嘛太貴第二太遠",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-glossika-corpus.tsv",
+          "id": "COR-W17-005"
+        },
+        {
+          "path": "test-data/w17-corpus-semantic-disposition.tsv",
+          "id": "COR-W17-005"
+        },
+        {
+          "path": "test-data/w17-functional-corpus.tsv",
+          "id": "COR-W17-005"
+        }
+      ],
+      "canonicalLexiconOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/terminal/particles/discourse.js",
+        "src/parser/terminal/particles/focus.js",
+        "src/parser/terminal/particles/ordered-cluster.js"
+      ],
+      "sourceDiscrepancies": [],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I006",
+      "sourceHash": "sha256:93497872f1f5fcf28baae2876c883c1da4a41c27f013ea4ec1adb5bdd490f8d7",
+      "normalizedCantonese": "好似我噉我就鍾意跑步",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-glossika-corpus.tsv",
+          "id": "COR-W17-006"
+        },
+        {
+          "path": "test-data/w17-corpus-semantic-disposition.tsv",
+          "id": "COR-W17-006"
+        },
+        {
+          "path": "test-data/w17-functional-corpus.tsv",
+          "id": "COR-W17-006"
+        }
+      ],
+      "canonicalLexiconOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/modality/intention-preference.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "project_review_note",
+          "status": "PASS",
+          "note": "噉 retained from source; 咁 is also common"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I007",
+      "sourceHash": "sha256:34ec2463bd844ba98dbe67164b733f8b4dbbd06f24d2d4ab72f0d8481c2db0fb",
+      "normalizedCantonese": "例如中環同旺角都好出名",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-glossika-corpus.tsv",
+          "id": "COR-W17-007"
+        },
+        {
+          "path": "test-data/w17-corpus-semantic-disposition.tsv",
+          "id": "COR-W17-007"
+        },
+        {
+          "path": "test-data/w17-functional-corpus.tsv",
+          "id": "COR-W17-007"
+        }
+      ],
+      "canonicalLexiconOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/predicates/basic.js"
+      ],
+      "sourceDiscrepancies": [],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I008",
+      "sourceHash": "sha256:f0f05ecd005815be76a6dd4c942b7eeee8a0cec2ee10320f89b4e1618aed9ec4",
+      "normalizedCantonese": "一方面係時間另一方面係費用",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-glossika-corpus.tsv",
+          "id": "COR-W17-008"
+        },
+        {
+          "path": "test-data/w17-corpus-semantic-disposition.tsv",
+          "id": "COR-W17-008"
+        },
+        {
+          "path": "test-data/w17-functional-corpus.tsv",
+          "id": "COR-W17-008"
+        }
+      ],
+      "canonicalLexiconOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/definition/copular-relations.js",
+        "src/parser/detectors/definition/intended-function.js",
+        "src/parser/detectors/predicates/basic.js"
+      ],
+      "sourceDiscrepancies": [],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I009",
+      "sourceHash": "sha256:7ea417bea47165965862f391df3bafd17d87788540634d56f8fb3fa838841ded",
+      "normalizedCantonese": "唔開心",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-001"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-001"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I010",
+      "sourceHash": "sha256:7740eb53b4fda8c3c31740bf25dad9b8c8aaa9676c8bfe17d3026adc97a6ea29",
+      "normalizedCantonese": "攰",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-002"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-002"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "project_review_note",
+          "status": "PASS",
+          "note": "Duplicate merged"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I011",
+      "sourceHash": "sha256:044272d8b48b210305490e410d849221b4cf4feb220ef15bd7dcd82988ce5161",
+      "normalizedCantonese": "嬲",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-003"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-003"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "project_review_note",
+          "status": "PASS",
+          "note": "Duplicate merged"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I012",
+      "sourceHash": "sha256:f5e8f2f9456cdfc5e358733a2b635450f8cadd09b20413355f4df916504c5a2e",
+      "normalizedCantonese": "驚",
+      "ingressClassification": "partial_match",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-004"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-004"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "translation_discrepancy",
+          "sourceValue": "scared",
+          "projectValue": "scared; startled; surprised"
+        },
+        {
+          "type": "project_review_note",
+          "status": "PASS",
+          "note": "Duplicate glosses merged"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I013",
+      "sourceHash": "sha256:19da23aa6902be2adb87f66809d4209649bcf68fb5cd44338df2add77c330637",
+      "normalizedCantonese": "擔心",
+      "ingressClassification": "partial_match",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-005"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-005"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "translation_discrepancy",
+          "sourceValue": "worried",
+          "projectValue": "worried; to worry"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I014",
+      "sourceHash": "sha256:5841cd021f90fbcebbae3a2ee48fcf7c78e17c2aba56164a7b47c19a1fdb88ec",
+      "normalizedCantonese": "悶",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-006"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-006"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I015",
+      "sourceHash": "sha256:bf2625e7dc8aa78d54f67b8087502315f1dc45438395b9f3d912b8986eb88d5a",
+      "normalizedCantonese": "緊張",
+      "ingressClassification": "partial_match",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-007"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-007"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "translation_discrepancy",
+          "sourceValue": "nervous",
+          "projectValue": "nervous; tense"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I016",
+      "sourceHash": "sha256:0e49726780b9ced80f04552817d7f0310647a698da0e6e334c481553c12f249a",
+      "normalizedCantonese": "壓力",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-008"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-008"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I017",
+      "sourceHash": "sha256:de029102991bded05e4f4deb6e037bad42a7351efb74ba3b02ec2c4c30a93adf",
+      "normalizedCantonese": "辛苦",
+      "ingressClassification": "partial_match",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-009"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-009"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "translation_discrepancy",
+          "sourceValue": "tough; tiring",
+          "projectValue": "tough; tiring; laborious"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I018",
+      "sourceHash": "sha256:82f8fed65c35361a481c03672d33228db2a5e166526ff3a9dc389816951812f6",
+      "normalizedCantonese": "感動",
+      "ingressClassification": "partial_match",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-010"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-010"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "translation_discrepancy",
+          "sourceValue": "touched; moved",
+          "projectValue": "touched; emotionally moved"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I019",
+      "sourceHash": "sha256:5e667507c3e1285af13778d177cd089609248d37d6637641c031aa2a14b4016c",
+      "normalizedCantonese": "激動",
+      "ingressClassification": "partial_match",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-011"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-011"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "translation_discrepancy",
+          "sourceValue": "excited",
+          "projectValue": "emotionally excited; agitated"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I020",
+      "sourceHash": "sha256:4d05480427fa8324243a2c4b5739e4c6cabf6bce14d6964f0defdbe995d37e58",
+      "normalizedCantonese": "失望",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-012"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-012"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I021",
+      "sourceHash": "sha256:87e6cfd6d5c0a18cd252705f461800c198ca7cf0e1c65d83fdc828f31a0e9124",
+      "normalizedCantonese": "放鬆",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-013"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-013"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I022",
+      "sourceHash": "sha256:8ab23f11b98c08060c470e891bbc11f69125bdd30138ce713d17f6fa1769cdcc",
+      "normalizedCantonese": "開心",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-014"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-014"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/statives.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I023",
+      "sourceHash": "sha256:ed7f0128777bd15fff0e1c3efa246e4852d5b082354daa35ed3b3670e4ecee42",
+      "normalizedCantonese": "傷心",
+      "ingressClassification": "partial_match",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-015"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-015"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "translation_discrepancy",
+          "sourceValue": "sad",
+          "projectValue": "sad; heartbroken"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I024",
+      "sourceHash": "sha256:044272d8b48b210305490e410d849221b4cf4feb220ef15bd7dcd82988ce5161",
+      "normalizedCantonese": "嬲",
+      "ingressClassification": "exact_duplicate",
+      "sourceRepeatOf": "GLOSSIKA-YUEHK-A1-W17-20260712-I011",
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-003"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-003"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "project_review_note",
+          "status": "PASS",
+          "note": "Duplicate merged"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I025",
+      "sourceHash": "sha256:ab8444479dc14f4b586cd0a474065ce514634c8432578ee353b61609b043508d",
+      "normalizedCantonese": "驚",
+      "ingressClassification": "exact_duplicate",
+      "sourceRepeatOf": "GLOSSIKA-YUEHK-A1-W17-20260712-I012",
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-004"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-004"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "translation_discrepancy",
+          "sourceValue": "scared / surprised",
+          "projectValue": "scared; startled; surprised"
+        },
+        {
+          "type": "project_review_note",
+          "status": "PASS",
+          "note": "Duplicate glosses merged"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I026",
+      "sourceHash": "sha256:7740eb53b4fda8c3c31740bf25dad9b8c8aaa9676c8bfe17d3026adc97a6ea29",
+      "normalizedCantonese": "攰",
+      "ingressClassification": "exact_duplicate",
+      "sourceRepeatOf": "GLOSSIKA-YUEHK-A1-W17-20260712-I010",
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-002"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-002"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "project_review_note",
+          "status": "PASS",
+          "note": "Duplicate merged"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I027",
+      "sourceHash": "sha256:bde964e876a1836cd9fe0568a72efe7958f7bdd964969e9c18266eed177f4d7b",
+      "normalizedCantonese": "鍾意",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-016"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-016"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I028",
+      "sourceHash": "sha256:ff5688d0b905c3bce9f43bcb0db4592485583eea5c7477a22be815dd0bd3f9f1",
+      "normalizedCantonese": "唔鍾意",
+      "ingressClassification": "partial_match",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-017"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-017"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "translation_discrepancy",
+          "sourceValue": "to dislike",
+          "projectValue": "to dislike; not like"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I029",
+      "sourceHash": "sha256:0b707fd736df0a0700a691d4f57c7c0e72f9a8d53622d706428bce2b63f66579",
+      "normalizedCantonese": "興奮",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-018"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-018"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I030",
+      "sourceHash": "sha256:c13a37c0c6d793560f56d0a469cab1caa8a1cae58dcc9be99444e33171478c1f",
+      "normalizedCantonese": "孤獨",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-019"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-019"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I031",
+      "sourceHash": "sha256:993adeb3be97d98abcceb2cf02556fd6d8a2ef5fd0dd0396d5ee0e1c07fa3df4",
+      "normalizedCantonese": "滿足",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-020"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-020"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I032",
+      "sourceHash": "sha256:24520926fde30590ae4ebffa3edf09d718d23b4ff2339f6cc007baafad800a2b",
+      "normalizedCantonese": "驕傲",
+      "ingressClassification": "partial_match",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-021"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-021"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "translation_discrepancy",
+          "sourceValue": "proud",
+          "projectValue": "proud; arrogant"
+        },
+        {
+          "type": "project_review_note",
+          "status": "PASS",
+          "note": "Meaning depends on context"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I033",
+      "sourceHash": "sha256:ac28b70774c2a331cb01a97fcea4b4fe269153d8773cc34b486065cfe8018f4f",
+      "normalizedCantonese": "嫉妒",
+      "ingressClassification": "partial_match",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-022"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-022"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "translation_discrepancy",
+          "sourceValue": "jealous",
+          "projectValue": "jealous; envious"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I034",
+      "sourceHash": "sha256:1b05de803a342588725f6f3017e848c5defe272e24341edca957aba7112c2007",
+      "normalizedCantonese": "焦慮",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-023"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-023"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I035",
+      "sourceHash": "sha256:4f11925873c1af029c3fcd8f186f176ea2d064c922f91958e4fa3e1c318c17b4",
+      "normalizedCantonese": "感激",
+      "ingressClassification": "partial_match",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-024"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-024"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "translation_discrepancy",
+          "sourceValue": "grateful",
+          "projectValue": "grateful; appreciative"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I036",
+      "sourceHash": "sha256:9296c37a519472cd4e0ade2f717dc0bac6865f45c380e9b3cffe5f576dcbcaa5",
+      "normalizedCantonese": "慚愧",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-025"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-025"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I037",
+      "sourceHash": "sha256:421d058b9a8f7e086b696536eb4f99a3f96d1fa0d1d956f3da6334c2b7c0bf19",
+      "normalizedCantonese": "害怕",
+      "ingressClassification": "partial_match",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-026"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-026"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "translation_discrepancy",
+          "sourceValue": "afraid",
+          "projectValue": "afraid; to fear"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I038",
+      "sourceHash": "sha256:963f968226cfcb4161c5f032ffc37547830e4ed967c21f397e533eb2b6fdcca3",
+      "normalizedCantonese": "感恩",
+      "ingressClassification": "partial_match",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-027"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-027"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "translation_discrepancy",
+          "sourceValue": "thankful",
+          "projectValue": "grateful; thankful"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I039",
+      "sourceHash": "sha256:5f7e36e9171a71ffccd51883f8070812d8fffa63d4cc505d5328ffe8a8a84b26",
+      "normalizedCantonese": "好奇",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-028"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-028"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "project_review_note",
+          "status": "REVIEW",
+          "note": "Source reading retained; dictionary verification recommended"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I040",
+      "sourceHash": "sha256:29f23f25981af31ab43f5992382a0a6d24e7f77b07b9e250fda868f9b250ac9a",
+      "normalizedCantonese": "樂觀",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-029"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-029"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I041",
+      "sourceHash": "sha256:daffeeb416b16e16f2e8fa9444f23991da1b89d020a1a05209cf46cedad3359d",
+      "normalizedCantonese": "一千萬",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-030"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-030"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I042",
+      "sourceHash": "sha256:5ac412f0bc411cdb7aaf4fc2b031123925e2dfb9c95d8754155ebc164515bfde",
+      "normalizedCantonese": "二千萬",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-031"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-031"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I043",
+      "sourceHash": "sha256:d4e64fad0e69655cf69aeb2a02d61b585ccc1005041c8ff2b02da616782056f4",
+      "normalizedCantonese": "三千萬",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-032"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-032"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I044",
+      "sourceHash": "sha256:e1287c663b2ea15eb492baa4434ab12db9a39840f2eee36278bab9414f1f0166",
+      "normalizedCantonese": "四千萬",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-033"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-033"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I045",
+      "sourceHash": "sha256:cb77fb3f5e7b89c8a05dba59d4f6450641ee8a32a3648ba6620611938c85ad55",
+      "normalizedCantonese": "五千萬",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-034"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-034"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I046",
+      "sourceHash": "sha256:b9740de12d8c8f7b050f5894a20c31719081c05298a433ba5c2bd1488353965e",
+      "normalizedCantonese": "六千萬",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-035"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-035"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I047",
+      "sourceHash": "sha256:6669e3cb5b070fa829312f81c943e8948b3438510a1c456eb9c3091ab35e45af",
+      "normalizedCantonese": "七千萬",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-036"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-036"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I048",
+      "sourceHash": "sha256:e9ffcd5f9b217391819fd4f8e1dd9a872d809ab69faa43dec093965dc3e97179",
+      "normalizedCantonese": "八千萬",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-037"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-037"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I049",
+      "sourceHash": "sha256:9c2a22771089ea4c44f7f34831aaf24873a5db46644aa097e73343204c57da1a",
+      "normalizedCantonese": "九千萬",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-038"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-038"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I050",
+      "sourceHash": "sha256:a59b10193225874e0dc5564ae10d1a527c9b48ee3c61c26777658efc58d84aae",
+      "normalizedCantonese": "一億",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-039"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-039"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I051",
+      "sourceHash": "sha256:4e9231617117c8837b4a38e8764af0f73cf573a9d23c6c214b94ca90108720ed",
+      "normalizedCantonese": "我最近好大壓力",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-glossika-corpus.tsv",
+          "id": "COR-W17-009"
+        },
+        {
+          "path": "test-data/w17-corpus-semantic-disposition.tsv",
+          "id": "COR-W17-009"
+        },
+        {
+          "path": "test-data/w17-functional-corpus.tsv",
+          "id": "COR-W17-009"
+        }
+      ],
+      "canonicalLexiconOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/predicates/basic.js",
+        "src/parser/orchestration/wrap-predicate.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "project_review_note",
+          "status": "REVIEW",
+          "note": "Understandable, but 我最近壓力好大 or 我最近有好大壓力 is structurally clearer"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I052",
+      "sourceHash": "sha256:9371a34dc84d3d993fac1ca49e88701865860a5247039b4777049ae222b11694",
+      "normalizedCantonese": "你攰唔攰不如休息吓",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-glossika-corpus.tsv",
+          "id": "COR-W17-010"
+        },
+        {
+          "path": "test-data/w17-corpus-semantic-disposition.tsv",
+          "id": "COR-W17-010"
+        },
+        {
+          "path": "test-data/w17-functional-corpus.tsv",
+          "id": "COR-W17-010"
+        }
+      ],
+      "canonicalLexiconOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/imperatives/clauses.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "sourceDiscrepancies": [],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I053",
+      "sourceHash": "sha256:1f9458f773c12621249a0d4ae8d89a8adcb077376585705151568106b97723eb",
+      "normalizedCantonese": "考完試好開心",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-glossika-corpus.tsv",
+          "id": "COR-W17-011"
+        },
+        {
+          "path": "test-data/w17-corpus-semantic-disposition.tsv",
+          "id": "COR-W17-011"
+        },
+        {
+          "path": "test-data/w17-functional-corpus.tsv",
+          "id": "COR-W17-011"
+        }
+      ],
+      "canonicalLexiconOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/complements/result.js",
+        "src/parser/detectors/predicates/basic.js"
+      ],
+      "sourceDiscrepancies": [],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I054",
+      "sourceHash": "sha256:f29bf4397d06a38d4db69ef0efdf0197e4c7cfd94443853816206f49f5f058f0",
+      "normalizedCantonese": "佢今日好似好嬲",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-glossika-corpus.tsv",
+          "id": "COR-W17-012"
+        },
+        {
+          "path": "test-data/w17-corpus-semantic-disposition.tsv",
+          "id": "COR-W17-012"
+        },
+        {
+          "path": "test-data/w17-functional-corpus.tsv",
+          "id": "COR-W17-012"
+        }
+      ],
+      "canonicalLexiconOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/predicates/basic.js",
+        "src/parser/orchestration/wrap-predicate.js"
+      ],
+      "sourceDiscrepancies": [],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I055",
+      "sourceHash": "sha256:73e1eea27c15d6a98ba976ba3691f84d37a4bfdfeb36a4ccb2b8b71d649b0e9d",
+      "normalizedCantonese": "你塊面好似唔開心噃",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-glossika-corpus.tsv",
+          "id": "COR-W17-013"
+        },
+        {
+          "path": "test-data/w17-corpus-semantic-disposition.tsv",
+          "id": "COR-W17-013"
+        },
+        {
+          "path": "test-data/w17-functional-corpus.tsv",
+          "id": "COR-W17-013"
+        }
+      ],
+      "canonicalLexiconOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/predicates/basic.js",
+        "src/parser/orchestration/wrap-predicate.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "project_review_note",
+          "status": "REVIEW",
+          "note": "Literally attributes the state to the person's face"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I056",
+      "sourceHash": "sha256:871939b5a861c1d308e3d8ab6de0ceaaf643a515d24c01a8304a304d00241d76",
+      "normalizedCantonese": "係呀我最近好大壓力",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-glossika-corpus.tsv",
+          "id": "COR-W17-014"
+        },
+        {
+          "path": "test-data/w17-corpus-semantic-disposition.tsv",
+          "id": "COR-W17-014"
+        },
+        {
+          "path": "test-data/w17-functional-corpus.tsv",
+          "id": "COR-W17-014"
+        }
+      ],
+      "canonicalLexiconOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/predicates/basic.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "project_review_note",
+          "status": "REVIEW",
+          "note": "Same construction issue as COR-W17-009"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I057",
+      "sourceHash": "sha256:a75ab0a40b08b15609b382586be19d2a1bfb83377c6128ff5c799d69d52b2f98",
+      "normalizedCantonese": "點解呀做嘢太忙",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-glossika-corpus.tsv",
+          "id": "COR-W17-015"
+        },
+        {
+          "path": "test-data/w17-corpus-semantic-disposition.tsv",
+          "id": "COR-W17-015"
+        },
+        {
+          "path": "test-data/w17-functional-corpus.tsv",
+          "id": "COR-W17-015"
+        }
+      ],
+      "canonicalLexiconOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/boundaries/fragments.js",
+        "src/parser/detectors/boundaries/malformed.js",
+        "src/parser/detectors/boundaries/needs-context.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "sourceDiscrepancies": [],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I058",
+      "sourceHash": "sha256:9ab02c01c66ec12d4e5b208ff4ab3df5ea950e082c26492118b0f112604134ad",
+      "normalizedCantonese": "係呀日日OT到好夜",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-glossika-corpus.tsv",
+          "id": "COR-W17-016"
+        },
+        {
+          "path": "test-data/w17-corpus-semantic-disposition.tsv",
+          "id": "COR-W17-016"
+        },
+        {
+          "path": "test-data/w17-functional-corpus.tsv",
+          "id": "COR-W17-016"
+        }
+      ],
+      "canonicalLexiconOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/complements/result.js",
+        "src/parser/detectors/discourse/formula-responses.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "project_review_note",
+          "status": "PASS",
+          "note": "Natural Hong Kong English-Cantonese code-switching"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I059",
+      "sourceHash": "sha256:6e10fc9078d73d6e3bd945836c74b59a39ec33ce92556b584e8394861d007a73",
+      "normalizedCantonese": "你要注意身體唞多啲呀",
+      "ingressClassification": "partial_match",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-glossika-corpus.tsv",
+          "id": "COR-W17-017"
+        },
+        {
+          "path": "test-data/w17-corpus-semantic-disposition.tsv",
+          "id": "COR-W17-017"
+        },
+        {
+          "path": "test-data/w17-functional-corpus.tsv",
+          "id": "COR-W17-017"
+        }
+      ],
+      "canonicalLexiconOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/modality/intention-preference.js",
+        "src/parser/detectors/modality/modal-predicates.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "translation_discrepancy",
+          "sourceValue": "Take care of yourself, get more rest.",
+          "projectValue": "Take care of yourself and get more rest."
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I060",
+      "sourceHash": "sha256:3af26b48f8a5958818feb27bbd8f4e867524d5295ecac2cc5b040bbaa94181dd",
+      "normalizedCantonese": "喺",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-040"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-040"
+        },
+        {
+          "path": "test-data/w17-grammar-phrases.tsv",
+          "id": "GRAM-W17-001"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I061",
+      "sourceHash": "sha256:cdaa223e31d501cce7296b1cfdee0a9566f36569e8dbad6785634b83e5a3ccf1",
+      "normalizedCantonese": "去",
+      "ingressClassification": "partial_match",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-041"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-041"
+        },
+        {
+          "path": "test-data/w17-grammar-phrases.tsv",
+          "id": "GRAM-W17-002"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "translation_discrepancy",
+          "sourceValue": "to (direction)",
+          "projectValue": "go; to"
+        },
+        {
+          "type": "project_review_note",
+          "status": "PASS",
+          "note": "Primarily a verb but may introduce a destination"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I062",
+      "sourceHash": "sha256:26dab5b3d78116ed319162554642cbdc1c730de60afd4637ff66e35d0192a684",
+      "normalizedCantonese": "由",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-042"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-042"
+        },
+        {
+          "path": "test-data/w17-grammar-phrases.tsv",
+          "id": "GRAM-W17-003"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I063",
+      "sourceHash": "sha256:aef8b8274829f53b4fdf1c19975d1d2be1500dc9358f785a4c27b93ac0cc71e2",
+      "normalizedCantonese": "同",
+      "ingressClassification": "partial_match",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-043"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-043"
+        },
+        {
+          "path": "test-data/w17-grammar-phrases.tsv",
+          "id": "GRAM-W17-004"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "translation_discrepancy",
+          "sourceValue": "with",
+          "projectValue": "with; and"
+        },
+        {
+          "type": "project_review_note",
+          "status": "PASS",
+          "note": "Multifunctional"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I064",
+      "sourceHash": "sha256:f64a872662ea8dde39d0ff3691ad8836d1e26db858276a2cb7476688fc4526c4",
+      "normalizedCantonese": "畀",
+      "ingressClassification": "partial_match",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-044"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-044"
+        },
+        {
+          "path": "test-data/w17-grammar-phrases.tsv",
+          "id": "GRAM-W17-005"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "translation_discrepancy",
+          "sourceValue": "to; for (giving)",
+          "projectValue": "give; to; for"
+        },
+        {
+          "type": "project_review_note",
+          "status": "PASS",
+          "note": "Also used as a passive marker"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I065",
+      "sourceHash": "sha256:8b96ba7f0484087e6823c58d06d4f74d8e2bc3a38a8d27262c62004c691d464a",
+      "normalizedCantonese": "用",
+      "ingressClassification": "partial_match",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-045"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-045"
+        },
+        {
+          "path": "test-data/w17-grammar-phrases.tsv",
+          "id": "GRAM-W17-006"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "translation_discrepancy",
+          "sourceValue": "with (using)",
+          "projectValue": "use; with; by means of"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I066",
+      "sourceHash": "sha256:24ac31ecedb08d777e545e6c9c708dec8c8ddde8c2bb437a28a8d61501743139",
+      "normalizedCantonese": "對",
+      "ingressClassification": "partial_match",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-046"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-046"
+        },
+        {
+          "path": "test-data/w17-grammar-phrases.tsv",
+          "id": "GRAM-W17-007"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "translation_discrepancy",
+          "sourceValue": "toward",
+          "projectValue": "toward; regarding"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I067",
+      "sourceHash": "sha256:f3d574c5aa273c3429300020cf14e2a181f86a55b6deffb67352737125322c76",
+      "normalizedCantonese": "除咗",
+      "ingressClassification": "partial_match",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-047"
+        },
+        {
+          "path": "test-data/w17-lexicon-role-review.tsv",
+          "id": "LEX-W17-047"
+        },
+        {
+          "path": "test-data/w17-grammar-phrases.tsv",
+          "id": "GRAM-W17-008"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "translation_discrepancy",
+          "sourceValue": "except",
+          "projectValue": "except; apart from"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I068",
+      "sourceHash": "sha256:fe8c171c486d73569cb6550a3c9324beee4403d130b6e61b84bd9192c7c460b0",
+      "normalizedCantonese": "我喺香港住",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-glossika-corpus.tsv",
+          "id": "COR-W17-018"
+        },
+        {
+          "path": "test-data/w17-corpus-semantic-disposition.tsv",
+          "id": "COR-W17-018"
+        },
+        {
+          "path": "test-data/w17-functional-corpus.tsv",
+          "id": "COR-W17-018"
+        }
+      ],
+      "canonicalLexiconOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/predicates/basic.js"
+      ],
+      "sourceDiscrepancies": [],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I069",
+      "sourceHash": "sha256:c2e90f752a0fb06277a11552d231e8c82c065803a0956f12d8f0aef2fc3554b3",
+      "normalizedCantonese": "佢同朋友去買嘢",
+      "ingressClassification": "partial_match",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-glossika-corpus.tsv",
+          "id": "COR-W17-019"
+        },
+        {
+          "path": "test-data/w17-corpus-semantic-disposition.tsv",
+          "id": "COR-W17-019"
+        },
+        {
+          "path": "test-data/w17-functional-corpus.tsv",
+          "id": "COR-W17-019"
+        }
+      ],
+      "canonicalLexiconOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "translation_discrepancy",
+          "sourceValue": "He/She goes shopping with friends.",
+          "projectValue": "He or she goes shopping with friends."
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I070",
+      "sourceHash": "sha256:cdba188b9534b559eecc651fa9e046fdc2e33a7bdb44dcd8dff4326eb9329abb",
+      "normalizedCantonese": "書蘇",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-phonics-pairs.tsv",
+          "id": "PHO-W17-001"
+        },
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-048"
+        },
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-049"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/productive-vo.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+        "src/runtime-resources/lexicon/token-lexicon/things.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "project_review_note",
+          "status": "PASS",
+          "note": "Retained as supplied"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I071",
+      "sourceHash": "sha256:475f2d59057630135e81a5f11920c47b152e21517fcec0dbf9ccb46a7ab51bfe",
+      "normalizedCantonese": "煮祖",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-phonics-pairs.tsv",
+          "id": "PHO-W17-002"
+        },
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-050"
+        },
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-051"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/productive-vo.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "project_review_note",
+          "status": "PASS",
+          "note": "Retained as supplied"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I072",
+      "sourceHash": "sha256:cfbcabb0f70ba22c1fed0da25b7207c1302d0d3ceb93ee27cb4cba3bd742ae6f",
+      "normalizedCantonese": "全存",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-phonics-pairs.tsv",
+          "id": "PHO-W17-003"
+        },
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-052"
+        },
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-053"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "project_review_note",
+          "status": "PASS",
+          "note": "Both verified with identical Jyutping"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I073",
+      "sourceHash": "sha256:02b00b6883f9f693d09b7593caa3a94bb334e2db6e520ff860de6ef89c351820",
+      "normalizedCantonese": "如油",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-phonics-pairs.tsv",
+          "id": "PHO-W17-004"
+        },
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-054"
+        },
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-055"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "project_review_note",
+          "status": "PASS",
+          "note": "Included as requested"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I074",
+      "sourceHash": "sha256:7192602ba7394594fa02e602c52b6925f36ee27935169f0c5310fb237c4c598c",
+      "normalizedCantonese": "血闊",
+      "ingressClassification": "partial_match",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-phonics-pairs.tsv",
+          "id": "PHO-W17-005"
+        },
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-056"
+        },
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-057"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "pronunciation_discrepancy",
+          "sourceValue": "hyut3|kut3",
+          "projectValue": "hyut3|fut3",
+          "note": "闊 corrected to fut3"
+        },
+        {
+          "type": "project_review_note",
+          "status": "PASS",
+          "note": "闊 corrected to fut3"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W17-20260712-I075",
+      "sourceHash": "sha256:84ec86bfb4eb9d7d5fd82d2f9418c54c29feaadd12b6181477f459f631ce869b",
+      "normalizedCantonese": "聯論",
+      "ingressClassification": "normalized_duplicate",
+      "sourceRepeatOf": null,
+      "existingProjectRecords": [
+        {
+          "path": "test-data/w17-phonics-pairs.tsv",
+          "id": "PHO-W17-006"
+        },
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-058"
+        },
+        {
+          "path": "test-data/w17-lexicon.tsv",
+          "id": "LEX-W17-059"
+        }
+      ],
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "sourceDiscrepancies": [
+        {
+          "type": "project_review_note",
+          "status": "PASS",
+          "note": "Accepted as supplied"
+        }
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    }
+  ]
+}
