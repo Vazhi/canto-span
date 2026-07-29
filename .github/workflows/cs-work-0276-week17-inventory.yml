@@ -75,7 +75,7 @@ jobs:
           const output = {
             schema: 'canto-span-week17-modular-inventory-v1',
             generatedFrom: {
-              base: process.env.GITHUB_SHA || null,
+              base: '5238bff91a60c4e5ea8e5c7005a9c21d113008cc',
               roots: allowedRoots,
               generatedBundleExcluded: true,
               generatedBundlePath: 'main.js'
