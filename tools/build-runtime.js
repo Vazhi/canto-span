@@ -10,9 +10,15 @@ const { validateRuntimeDeclarativeResources } = require("../src/runtime-resource
 
 const root = path.resolve(__dirname, "..");
 const entry = "src/plugin-entry.js";
-const outputPath = path.join(root, "main.js");
+const output = "main.js";
+const outputPath = path.join(root, output);
+const generatedBanner = [
+  "// GENERATED FILE — DO NOT EDIT DIRECTLY.",
+  "// Canonical source: src/** and src/runtime-resources/**",
+  "// Regenerate with: npm run build:runtime",
+].join("\n");
 
-const buildOptions = {
+const buildOptions = Object.freeze({
   absWorkingDir: root,
   entryPoints: [entry],
   bundle: true,
@@ -26,30 +32,50 @@ const buildOptions = {
   sourcemap: false,
   treeShaking: true,
   write: false,
-  outfile: "main.js",
+  outfile: output,
   logLevel: "warning",
-};
+  banner: { js: generatedBanner },
+});
 
 function sha256(buffer) {
   return crypto.createHash("sha256").update(buffer).digest("hex");
 }
 
-async function buildBytes() {
-  const result = await esbuild.build(buildOptions);
+function buildRuntimeBytes(overrides = {}) {
+  const result = esbuild.buildSync({ ...buildOptions, ...overrides });
   if (!result.outputFiles || result.outputFiles.length !== 1) {
     throw new Error(`expected one generated runtime file, received ${result.outputFiles?.length || 0}`);
   }
   return Buffer.from(result.outputFiles[0].contents);
 }
 
-async function main() {
+function validateRuntimeResources() {
+  return {
+    lexicalResources: validateRuntimeLexicalResources(),
+    declarativeResources: validateRuntimeDeclarativeResources(),
+  };
+}
+
+function buildSummary(status, bytes, resources, extra = {}) {
+  return {
+    status,
+    entry,
+    output,
+    bytes: bytes.length,
+    sha256: sha256(bytes),
+    ...extra,
+    lexical_resources: resources.lexicalResources,
+    declarative_resources: resources.declarativeResources,
+  };
+}
+
+function main() {
   const check = process.argv.includes("--check");
-  const lexicalResources = validateRuntimeLexicalResources();
-  const declarativeResources = validateRuntimeDeclarativeResources();
-  const first = await buildBytes();
+  const resources = validateRuntimeResources();
+  const first = buildRuntimeBytes();
 
   if (check) {
-    const second = await buildBytes();
+    const second = buildRuntimeBytes();
     if (!first.equals(second)) {
       throw new Error(`runtime build is nondeterministic: ${sha256(first)} != ${sha256(second)}`);
     }
@@ -62,32 +88,32 @@ async function main() {
         `main.js is stale: generated ${sha256(first)} != committed ${sha256(committed)}; run npm run build:runtime`,
       );
     }
-    process.stdout.write(`${JSON.stringify({
-      status: "PASS",
-      entry,
-      output: "main.js",
-      bytes: first.length,
-      sha256: sha256(first),
+    process.stdout.write(`${JSON.stringify(buildSummary("PASS", first, resources, {
       deterministic_builds: 2,
-      lexical_resources: lexicalResources,
-      declarative_resources: declarativeResources,
-    }, null, 2)}\n`);
+    }), null, 2)}\n`);
     return;
   }
 
   fs.writeFileSync(outputPath, first);
-  process.stdout.write(`${JSON.stringify({
-    status: "BUILT",
-    entry,
-    output: "main.js",
-    bytes: first.length,
-    sha256: sha256(first),
-    lexical_resources: lexicalResources,
-    declarative_resources: declarativeResources,
-  }, null, 2)}\n`);
+  process.stdout.write(`${JSON.stringify(buildSummary("BUILT", first, resources), null, 2)}\n`);
 }
 
-main().catch((error) => {
-  process.stderr.write(`${error.stack || error.message || String(error)}\n`);
-  process.exit(1);
-});
+module.exports = {
+  buildOptions,
+  buildRuntimeBytes,
+  entry,
+  generatedBanner,
+  output,
+  outputPath,
+  root,
+  sha256,
+};
+
+if (require.main === module) {
+  try {
+    main();
+  } catch (error) {
+    process.stderr.write(`${error.stack || error.message || String(error)}\n`);
+    process.exit(1);
+  }
+}

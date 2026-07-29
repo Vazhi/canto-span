@@ -7,7 +7,7 @@ const { spawnSync } = require("node:child_process");
 const { loadRuntimeApi } = require("./lib/runtime-api");
 
 const root = path.resolve(__dirname, "..");
-const api = loadRuntimeApi(path.join(root, "main.js"));
+const api = loadRuntimeApi();
 const commands = [
   ["regression", path.join(root, "tests", "run-regression.js")],
   ["np_subsystem", path.join(root, "tests", "run-np-subsystem.js")],

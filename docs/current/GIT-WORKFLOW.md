@@ -144,6 +144,21 @@ git log --oneline --decorate -5
 
 Do not rely on sandbox persistence or old download links.
 
+## Runtime source workflow
+
+Runtime edits belong in the smallest canonical owner under `src/**` or `src/runtime-resources/**`. Standard tests execute an in-memory bundle of `src/plugin-entry.js`; they do not use committed `main.js` as the source of truth.
+
+For a runtime change:
+
+```bash
+npm test
+npm run build:runtime
+npm run verify:runtime-build
+npm run test:generated-runtime
+```
+
+Commit the canonical source change and regenerated `main.js` together. Do not edit `main.js` manually or regenerate it for unrelated research, corpus, survey, governance, or documentation work.
+
 ## Runtime release artifact
 
 The Obsidian plugin ZIP remains minimal:

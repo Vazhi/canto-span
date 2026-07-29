@@ -4,25 +4,7 @@
 const assert = require("assert");
 const fs = require("fs");
 const path = require("path");
-const vm = require("vm");
-
-function loadApi(mainPath) {
-  class Plugin {} class PluginSettingTab {} class Setting {} class Notice {}
-  const moduleRecord = { exports: {} };
-  const context = {
-    module: moduleRecord, exports: moduleRecord.exports,
-    require: (id) => id === "obsidian" ? { Plugin, PluginSettingTab, Setting, Notice } : require(id),
-    console, setTimeout, clearTimeout, Buffer,
-  };
-  vm.runInNewContext(fs.readFileSync(mainPath, "utf8") + `
-module.exports.__regressionApi = {
-  analyzeLine, diagnosticSummary, diagnosticFinalRows,
-  normalizationAuditSummary, registryAuditSummary, learnerDisplayAuditSummary,
-  learnerUiHoverAuditSummary, wrapperCoverageAuditSummary, jyutpingAuditSummary,
-  runtimeVersion: CANTO_SPAN_RUNTIME_VERSION,
-};`, context, { filename: mainPath });
-  return moduleRecord.exports.__regressionApi;
-}
+const { loadRuntimeApi } = require("./lib/runtime-api");
 
 function pick(obj, keys) {
   const out = {};
@@ -102,7 +84,7 @@ function signature(api, source, contextSource = null) {
 }
 
 const root = path.resolve(__dirname, "..");
-const api = loadApi(path.join(root, "main.js"));
+const api = loadRuntimeApi();
 const fixturePath = path.join(root, "tests", "fixtures", "regression-snapshots.json");
 const fixture = JSON.parse(fs.readFileSync(fixturePath, "utf8"));
 const cp021bIntentionalSnapshotSources = new Set([

@@ -13,7 +13,7 @@ in `data/construction-identities.json` after expert adjudication.
 - UUID, short code, canonical name, family, profile, and claim layer:
   `data/construction-identities.json` plus accepted adjudications.
 - Current linguistic status and note-local evidence: this directory.
-- Actual recognition behavior: `main.js` and executable tests.
+- Actual recognition behavior: canonical modules under `src/**` plus executable tests; `main.js` is generated deployment output.
 - Promotion readiness: `data/construction-candidate-readiness.json`.
 - Explicitly parked work: `data/parked-constructions.json`.
 

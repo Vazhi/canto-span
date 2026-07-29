@@ -16,7 +16,7 @@ Volatile counts and current work order belong only in
 | UUID and permanent code | `data/construction-identities.json` and the identity lock |
 | Canonical name, family, profile, and claim layer | accepted UUID-keyed adjudications |
 | Current linguistic status and note-local evidence | one note per active runtime label under `grammar/<status>/` |
-| Runtime recognition | `main.js` and executable tests |
+| Runtime recognition | canonical `src/**` runtime modules and executable tests; generated `main.js` for deployment |
 | Construction work availability | `data/parked-constructions.json`; unlisted current constructions are available |
 | Agent workflow availability | `config/agent-workflow-settings.json` |
 | Discovery readiness | `data/construction-candidate-readiness.json` and deterministic reports |

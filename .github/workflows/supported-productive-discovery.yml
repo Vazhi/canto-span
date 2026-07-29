@@ -3,50 +3,34 @@ name: Supported productive discovery
 on:
   push:
     paths:
-      - AGENTS.md
-      - README.md
-      - HANDOFF.md
-      - main.js
-      - manifest.json
-      - package.json
-      - data/**
-      - grammar/**
-      - tests/**
-      - tools/**
-      - config/**
-      - schemas/**
-      - changes/**
-      - docs/current/**
-      - docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv
-      - docs/research/SUPPORTED-PRODUCTIVE-CANDIDATES.md
-      - docs/research/ORPHANED-CONSTRUCTION-EVIDENCE.md
-      - docs/research/CONSTRUCTION-FAMILY-GAPS.md
-      - docs/research/FULL-REPO-SUPPORTED-PRODUCTIVE-SWEEP-R1.md
-      - archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json
-      - .github/**
+      - "data/construction-identities.json"
+      - "data/construction-candidate-readiness.json"
+      - "grammar/**"
+      - "tools/generate-supported-productive-discovery.js"
+      - "tools/promotion-gate-lib.js"
+      - "tools/construction-notes-lib.js"
+      - "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv"
+      - "docs/research/SUPPORTED-PRODUCTIVE-CANDIDATES.md"
+      - "docs/research/ORPHANED-CONSTRUCTION-EVIDENCE.md"
+      - "docs/research/CONSTRUCTION-FAMILY-GAPS.md"
+      - "docs/research/FULL-REPO-SUPPORTED-PRODUCTIVE-SWEEP-R1.md"
+      - "archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json"
+      - ".github/workflows/supported-productive-discovery.yml"
   pull_request:
     paths:
-      - AGENTS.md
-      - README.md
-      - HANDOFF.md
-      - main.js
-      - manifest.json
-      - package.json
-      - data/**
-      - grammar/**
-      - tests/**
-      - tools/**
-      - config/**
-      - schemas/**
-      - changes/**
-      - docs/current/**
-      - docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv
-      - docs/research/SUPPORTED-PRODUCTIVE-CANDIDATES.md
-      - docs/research/ORPHANED-CONSTRUCTION-EVIDENCE.md
-      - docs/research/CONSTRUCTION-FAMILY-GAPS.md
-      - docs/research/FULL-REPO-SUPPORTED-PRODUCTIVE-SWEEP-R1.md
-      - archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json
-      - .github/**
+      - "data/construction-identities.json"
+      - "data/construction-candidate-readiness.json"
+      - "grammar/**"
+      - "tools/generate-supported-productive-discovery.js"
+      - "tools/promotion-gate-lib.js"
+      - "tools/construction-notes-lib.js"
+      - "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv"
+      - "docs/research/SUPPORTED-PRODUCTIVE-CANDIDATES.md"
+      - "docs/research/ORPHANED-CONSTRUCTION-EVIDENCE.md"
+      - "docs/research/CONSTRUCTION-FAMILY-GAPS.md"
+      - "docs/research/FULL-REPO-SUPPORTED-PRODUCTIVE-SWEEP-R1.md"
+      - "archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json"
+      - ".github/workflows/supported-productive-discovery.yml"
   workflow_dispatch:
 
 permissions:
@@ -61,5 +45,5 @@ jobs:
         with:
           node-version: 24
           package-manager-cache: false
-      - name: Run core verification including discovery sweep
-        run: npm run verify
+      - name: Verify discovery outputs
+        run: node tools/generate-supported-productive-discovery.js

@@ -3,11 +3,12 @@
 
 const fs = require("node:fs");
 const path = require("node:path");
-const vm = require("node:vm");
 const {
   loadConstructionNotes,
   LINGUISTIC_STATUSES,
 } = require("./construction-notes-lib");
+const { version: runtimeVersion } = require("../package.json");
+const { constructionLabelRegistry } = require("../src/runtime-resources/constructions/runtime-label-registry");
 
 const root = path.resolve(__dirname, "..");
 const outputIndex = process.argv.indexOf("--output");
@@ -20,29 +21,10 @@ if (outputIndex >= 0 && !process.argv[outputIndex + 1]) {
 }
 
 function loadRuntimeLabels() {
-  class Plugin {}
-  class PluginSettingTab {}
-  class Setting {}
-  class Notice {}
-  const moduleObject = { exports: {} };
-  const context = {
-    module: moduleObject,
-    exports: moduleObject.exports,
-    require: (id) => id === "obsidian"
-      ? { Plugin, PluginSettingTab, Setting, Notice }
-      : require(id),
-    console,
-    setTimeout,
-    clearTimeout,
-    Buffer,
+  return {
+    runtimeVersion,
+    labels: [...constructionLabelRegistry],
   };
-  const file = path.join(root, "main.js");
-  vm.runInNewContext(
-    `${fs.readFileSync(file, "utf8")}\nmodule.exports.__notesAudit={runtimeVersion:CANTO_SPAN_RUNTIME_VERSION,labels:[...CONSTRUCTION_LABEL_REGISTRY]};`,
-    context,
-    { filename: file },
-  );
-  return moduleObject.exports.__notesAudit;
 }
 
 const notes = loadConstructionNotes(root);

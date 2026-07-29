@@ -12,7 +12,7 @@ const regressionPath = path.join(root, "tests", "fixtures", "regression-snapshot
 const npPath = path.join(root, "tests", "fixtures", "np-subsystem.json");
 const boundaryClosurePath = path.join(root, "tests", "fixtures", "boundary-closure-v1.json");
 const reachabilityPath = path.join(root, "test-data", "implementation-reachability-probes-v1.json");
-const api = loadRuntimeApi(path.join(root, "main.js"));
+const api = loadRuntimeApi();
 
 function readJson(file) { return JSON.parse(fs.readFileSync(file, "utf8")); }
 function writeJson(file, value) { fs.writeFileSync(file, JSON.stringify(value, null, 2) + "\n"); }

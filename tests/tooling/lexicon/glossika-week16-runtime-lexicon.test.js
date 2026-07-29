@@ -5,43 +5,21 @@ const assert = require("assert/strict");
 const fs = require("fs");
 const path = require("path");
 const test = require("node:test");
-const vm = require("vm");
+const { loadRuntimeApi } = require("../../lib/runtime-api");
 
 const root = path.resolve(__dirname, "../../..");
-const mainPath = path.join(root, "main.js");
-
-function loadApi() {
-  class Plugin {}
-  class PluginSettingTab {}
-  class Setting {}
-  class Notice {}
-  const moduleRecord = { exports: {} };
-  const context = {
-    module: moduleRecord,
-    exports: moduleRecord.exports,
-    require: (id) => id === "obsidian"
-      ? { Plugin, PluginSettingTab, Setting, Notice }
-      : require(id),
-    console,
-    setTimeout,
-    clearTimeout,
-    Buffer,
-  };
-  vm.runInNewContext(fs.readFileSync(mainPath, "utf8") + `
-module.exports.__lexiconTestApi = {
-  analyzeLine,
-  diagnosticFinalRows,
-  jyutpingAuditSummary,
-  TOKEN_LEXICON,
-  PRODUCTIVE_VO,
-  COMPOSITIONAL_LEXICAL_PHRASES,
-  JYUTPING_REVIEW_EXPECTATIONS,
-  LEARNER_SURFACE_GLOSSES,
-};`, context, { filename: mainPath });
-  return moduleRecord.exports.__lexiconTestApi;
-}
-
-const api = loadApi();
+const api = loadRuntimeApi({
+  apiNames: [
+    "analyzeLine",
+    "diagnosticFinalRows",
+    "jyutpingAuditSummary",
+    "TOKEN_LEXICON",
+    "PRODUCTIVE_VO",
+    "COMPOSITIONAL_LEXICAL_PHRASES",
+    "JYUTPING_REVIEW_EXPECTATIONS",
+    "LEARNER_SURFACE_GLOSSES",
+  ],
+});
 const hobbyJyutping = new Map([
   ["睇戲", "tai2 hei3"],
   ["行山", "haang4 saan1"],
