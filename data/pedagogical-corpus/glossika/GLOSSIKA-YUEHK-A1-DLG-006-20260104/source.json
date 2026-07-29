@@ -1,0 +1,1241 @@
+{
+  "schema": "canto-span-pedagogical-dialog-source-v1",
+  "source": {
+    "sourceId": "GLOSSIKA-YUEHK-A1-DLG-006-20260104",
+    "provider": "Glossika",
+    "course": "Cantonese (Hong Kong) A1 Dialogs",
+    "dialogNumber": 6,
+    "title": "將來想做乜？",
+    "englishTitle": "What Do You Want to Do in the Future?",
+    "sourceDate": "2026-01-04",
+    "gmailMessageId": "19b8b06b61f9e2e1",
+    "sourceType": "authorized_pedagogical_email",
+    "language": "yue-Hant-HK",
+    "sourceFormat": "Glossika interactive-dialog email; Jyutping lines omit speaker-name prefixes and are lowercase except for preserved proper-name casing such as YouTube",
+    "authorization": {
+      "basis": "User states Glossika granted permission to use all lesson data in this non-commercial private-use Canto Span project.",
+      "scope": "Source-preserving corpus ingress for this dialog.",
+      "redistributionClaim": "none"
+    }
+  },
+  "ingress": {
+    "issue": 142,
+    "workClaimIssue": 298,
+    "branch": "agent/glossika-dialog-006-ingress",
+    "reviewState": "REQUIRES_EXPERT_CONTEXT_REVIEW",
+    "policy": "Source values are immutable. Normalization, correction, duplicate classification, naturalness review, construction routing, and evidence use are recorded separately.",
+    "recordCount": 80,
+    "turnCount": 40,
+    "vocabularyCount": 40,
+    "vocabularyExactSurfaceAbsentFromDialogCount": 12,
+    "itemTypeCounts": {
+      "dialog_turn": 40,
+      "lexical_entry": 40
+    },
+    "sourcePayloadHash": "sha256:725f276b9aab114e53349bb8a119e8ea631ae6a7eeb8d6178680482f0a45a2a0",
+    "sourcePayloadHashPolicy": "SHA-256 of canonical key-sorted JSON for the ordered source-field array.",
+    "turnEnglishPolicy": "The source email provides no per-turn English translation; each turn preserves english=null."
+  },
+  "items": [
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I001",
+      "ordinal": 1,
+      "itemType": "dialog_turn",
+      "turn": 1,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 詠思，你將來想做乜嘢工作呀？",
+        "traditional": "詠思，你將來想做乜嘢工作呀？",
+        "jyutpingLine": "/wing6 si1, nei5 zoeng1 loi4 soeng2 zou6 mat1 je5 gung1 zok3 aa3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:ce64c68c27f29fa5536d021b147c20d572099fe92827d90af324c0965a4e865b"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I002",
+      "ordinal": 2,
+      "itemType": "dialog_turn",
+      "turn": 2,
+      "speaker": "詠思",
+      "source": {
+        "sourceLine": "詠思: 我都唔係好肯定。你呢？",
+        "traditional": "我都唔係好肯定。你呢？",
+        "jyutpingLine": "/ngo5 dou1 m4 hai6 hou2 hang2 ding6. nei5 ne1?/",
+        "english": null
+      },
+      "sourceHash": "sha256:db3a9f4d58e270c2960b2bb690ba441375044bf283d8fc587386e89b42f8ce25"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I003",
+      "ordinal": 3,
+      "itemType": "dialog_turn",
+      "turn": 3,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 我想做老師，教小朋友。",
+        "traditional": "我想做老師，教小朋友。",
+        "jyutpingLine": "/ngo5 soeng2 zou6 lou5 si1, gaau3 siu2 pang4 jau5./",
+        "english": null
+      },
+      "sourceHash": "sha256:6fef732c31b8b3d927a94584c4a81c4b9ca0fbbd40399fc69746c38052763f51"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I004",
+      "ordinal": 4,
+      "itemType": "dialog_turn",
+      "turn": 4,
+      "speaker": "詠思",
+      "source": {
+        "sourceLine": "詠思: 嘩，做老師好辛苦㗎喎！",
+        "traditional": "嘩，做老師好辛苦㗎喎！",
+        "jyutpingLine": "/waa3, zou6 lou5 si1 hou2 san1 fu2 gaa3 wo3!/",
+        "english": null
+      },
+      "sourceHash": "sha256:2376632586b09530a46a973f624fd2829739d6bedb40b93281546989df7c013a"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I005",
+      "ordinal": 5,
+      "itemType": "dialog_turn",
+      "turn": 5,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 係辛苦，但係我鍾意同小朋友相處。",
+        "traditional": "係辛苦，但係我鍾意同小朋友相處。",
+        "jyutpingLine": "/hai6 san1 fu2, daan6 hai6 ngo5 zung1 ji3 tung4 siu2 pang4 jau5 soeng1 cyu5./",
+        "english": null
+      },
+      "sourceHash": "sha256:5bb246b2eeb98a30900cc1ace5d597ca55711a1e9780330c70e07b086064624c"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I006",
+      "ordinal": 6,
+      "itemType": "dialog_turn",
+      "turn": 6,
+      "speaker": "詠思",
+      "source": {
+        "sourceLine": "詠思: 咁你讀緊教育啦？",
+        "traditional": "咁你讀緊教育啦？",
+        "jyutpingLine": "/gam2 nei5 duk6 gan2 gaau3 juk6 laa1?/",
+        "english": null
+      },
+      "sourceHash": "sha256:7a82a06f166a0f94a876e9636d8e0a4e045eaa940c2445ed5b39f6b1c49fdaa0"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I007",
+      "ordinal": 7,
+      "itemType": "dialog_turn",
+      "turn": 7,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 係呀，我讀緊教育學位課程。",
+        "traditional": "係呀，我讀緊教育學位課程。",
+        "jyutpingLine": "/hai6 aa3, ngo5 duk6 gan2 gaau3 juk6 hok6 wai2 fo3 cing4./",
+        "english": null
+      },
+      "sourceHash": "sha256:94aed1f976c299be574d570ad2930fc1e4b06268df501727f19d669b3c32cfa7"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I008",
+      "ordinal": 8,
+      "itemType": "dialog_turn",
+      "turn": 8,
+      "speaker": "詠思",
+      "source": {
+        "sourceLine": "詠思: 仲有幾多年先畢業呀？",
+        "traditional": "仲有幾多年先畢業呀？",
+        "jyutpingLine": "/zung6 jau5 gei2 do1 nin4 sin1 bat1 jip6 aa3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:7bd5dc305aa30b71d90055b57b4a6c937712ccf570600c4c16177296cbcc4b26"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I009",
+      "ordinal": 9,
+      "itemType": "dialog_turn",
+      "turn": 9,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 仲有兩年。你呢？你想做咩？",
+        "traditional": "仲有兩年。你呢？你想做咩？",
+        "jyutpingLine": "/zung6 jau5 loeng5 nin4. nei5 ne1? nei5 soeng2 zou6 me1?/",
+        "english": null
+      },
+      "sourceHash": "sha256:eaf0d219927ea44b47c615b8d739cc9714aedada25419548818f5fdd51d91877"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I010",
+      "ordinal": 10,
+      "itemType": "dialog_turn",
+      "turn": 10,
+      "speaker": "詠思",
+      "source": {
+        "sourceLine": "詠思: 我鍾意畫畫，想做設計師。",
+        "traditional": "我鍾意畫畫，想做設計師。",
+        "jyutpingLine": "/ngo5 zung1 ji3 waak6 waa2, soeng2 zou6 cit3 gai3 si1./",
+        "english": null
+      },
+      "sourceHash": "sha256:a94ebed224e8949bcc49d6a28082952ca183fc803aae5d45fdd063afb581dcc8"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I011",
+      "ordinal": 11,
+      "itemType": "dialog_turn",
+      "turn": 11,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 吓？你讀緊設計？",
+        "traditional": "吓？你讀緊設計？",
+        "jyutpingLine": "/haa2? nei5 duk6 gan2 cit3 gai3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:a387dfe8c751f06b002b448326aad55b4cf6034a2a9f9f989f39653e16c01db4"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I012",
+      "ordinal": 12,
+      "itemType": "dialog_turn",
+      "turn": 12,
+      "speaker": "詠思",
+      "source": {
+        "sourceLine": "詠思: 未呀，我而家讀緊商科。",
+        "traditional": "未呀，我而家讀緊商科。",
+        "jyutpingLine": "/mei6 aa3, ngo5 ji4 gaa1 duk6 gan2 soeng1 fo1./",
+        "english": null
+      },
+      "sourceHash": "sha256:7a46795e086cf8668a15fd947e87a5dddc6f0970dd0599cb481f5edd59e5742f"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I013",
+      "ordinal": 13,
+      "itemType": "dialog_turn",
+      "turn": 13,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 點解唔讀設計呀？",
+        "traditional": "點解唔讀設計呀？",
+        "jyutpingLine": "/dim2 gaai2 m4 duk6 cit3 gai3 aa3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:72ae63e415f3f4476ab245da465cb99d0a4adfc474b79d4f532aac51e9243491"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I014",
+      "ordinal": 14,
+      "itemType": "dialog_turn",
+      "turn": 14,
+      "speaker": "詠思",
+      "source": {
+        "sourceLine": "詠思: 我屋企人話商科搵食容易啲。",
+        "traditional": "我屋企人話商科搵食容易啲。",
+        "jyutpingLine": "/ngo5 uk1 kei2 jan4 waa6 soeng1 fo1 wan2 sik6 jung4 ji6 di1./",
+        "english": null
+      },
+      "sourceHash": "sha256:a6208060b45d03d606636eb3b6cb08336f62efacbcae0aa54fcdb6d177848521"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I015",
+      "ordinal": 15,
+      "itemType": "dialog_turn",
+      "turn": 15,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 但係你真係鍾意商科咩？",
+        "traditional": "但係你真係鍾意商科咩？",
+        "jyutpingLine": "/daan6 hai6 nei5 zan1 hai6 zung1 ji3 soeng1 fo1 me1?/",
+        "english": null
+      },
+      "sourceHash": "sha256:1fcf780257b9e10ae4de687e5be6f8029fa45c19539be91a974a5f02767481f8"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I016",
+      "ordinal": 16,
+      "itemType": "dialog_turn",
+      "turn": 16,
+      "speaker": "詠思",
+      "source": {
+        "sourceLine": "詠思: 唔係好鍾意，覺得好悶。",
+        "traditional": "唔係好鍾意，覺得好悶。",
+        "jyutpingLine": "/m4 hai6 hou2 zung1 ji3, gok3 dak1 hou2 mun6./",
+        "english": null
+      },
+      "sourceHash": "sha256:733263c4e214c0951ee031f5b6874b54c86f1213c6d6be74eb2b4aadaa81f8be"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I017",
+      "ordinal": 17,
+      "itemType": "dialog_turn",
+      "turn": 17,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 咁你可以轉科呀！",
+        "traditional": "咁你可以轉科呀！",
+        "jyutpingLine": "/gam2 nei5 ho2 ji5 zyun2 fo1 aa3!/",
+        "english": null
+      },
+      "sourceHash": "sha256:f57023a042809b4845b205c7b517a5aab26ccbe0e5e29ea5e86587fff51e3c87"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I018",
+      "ordinal": 18,
+      "itemType": "dialog_turn",
+      "turn": 18,
+      "speaker": "詠思",
+      "source": {
+        "sourceLine": "詠思: 我都有諗過，但係驚屋企人嬲。",
+        "traditional": "我都有諗過，但係驚屋企人嬲。",
+        "jyutpingLine": "/ngo5 dou1 jau5 nam2 gwo3, daan6 hai6 geng1 uk1 kei2 jan4 nau1./",
+        "english": null
+      },
+      "sourceHash": "sha256:639406bc3a1edffe36cb0743bdd1210a1e7eaf63dfc7fb5b6f2a1f98c1659695"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I019",
+      "ordinal": 19,
+      "itemType": "dialog_turn",
+      "turn": 19,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 你要做自己鍾意嘅嘢先開心㗎。",
+        "traditional": "你要做自己鍾意嘅嘢先開心㗎。",
+        "jyutpingLine": "/nei5 jiu3 zou6 zi6 gei2 zung1 ji3 ge3 je5 sin1 hoi1 sam1 gaa3./",
+        "english": null
+      },
+      "sourceHash": "sha256:47ae6957f8a9c1dae90179c659396e014c7ccb2a1c389ec228cf3b6e27c9e924"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I020",
+      "ordinal": 20,
+      "itemType": "dialog_turn",
+      "turn": 20,
+      "speaker": "詠思",
+      "source": {
+        "sourceLine": "詠思: 你講得啱。我應該同屋企人傾吓。",
+        "traditional": "你講得啱。我應該同屋企人傾吓。",
+        "jyutpingLine": "/nei5 gong2 dak1 ngaam1. ngo5 jing1 goi1 tung4 uk1 kei2 jan4 king1 haa5./",
+        "english": null
+      },
+      "sourceHash": "sha256:ebd56341cb4875950f5c37ccbe70ed96a45865ea89f717d248895f473926bb1a"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I021",
+      "ordinal": 21,
+      "itemType": "dialog_turn",
+      "turn": 21,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 係呀！你將來想做設計，而家就要準備。",
+        "traditional": "係呀！你將來想做設計，而家就要準備。",
+        "jyutpingLine": "/hai6 aa3! nei5 zoeng1 loi4 soeng2 zou6 cit3 gai3, ji4 gaa1 zau6 jiu3 zeon2 bei6./",
+        "english": null
+      },
+      "sourceHash": "sha256:a69c2dfdb9a6a45fc1addc62bea747e5590bda4d18115ce9e416d12cce5642d0"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I022",
+      "ordinal": 22,
+      "itemType": "dialog_turn",
+      "turn": 22,
+      "speaker": "詠思",
+      "source": {
+        "sourceLine": "詠思: 我可以平時自己學畫畫。",
+        "traditional": "我可以平時自己學畫畫。",
+        "jyutpingLine": "/ngo5 ho2 ji5 ping4 si4 zi6 gei2 hok6 waak6 waa2./",
+        "english": null
+      },
+      "sourceHash": "sha256:18b965ca280ea3d239c8e521bfacc44faf433e8c14625def60e1b67ffbc9c9ca"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I023",
+      "ordinal": 23,
+      "itemType": "dialog_turn",
+      "turn": 23,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 啱呀！你有冇上網學？",
+        "traditional": "啱呀！你有冇上網學？",
+        "jyutpingLine": "/ngaam1 aa3! nei5 jau5 mou5 soeng5 mong5 hok6?/",
+        "english": null
+      },
+      "sourceHash": "sha256:9c5e2f111ed53b17606c4429bbec4b15c8dc3a43b1f4ca1973c2af9f6fa740fb"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I024",
+      "ordinal": 24,
+      "itemType": "dialog_turn",
+      "turn": 24,
+      "speaker": "詠思",
+      "source": {
+        "sourceLine": "詠思: 有呀，我睇緊YouTube教學。",
+        "traditional": "有呀，我睇緊YouTube教學。",
+        "jyutpingLine": "/jau5 aa3, ngo5 tai2 gan2 YouTube gaau3 hok6./",
+        "english": null
+      },
+      "sourceHash": "sha256:1658b1c6821d44f8b1930c480c3f0963018885b3aeaf9616673a06a68d056df6"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I025",
+      "ordinal": 25,
+      "itemType": "dialog_turn",
+      "turn": 25,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 好呀！慢慢學，將來一定做到設計師。",
+        "traditional": "好呀！慢慢學，將來一定做到設計師。",
+        "jyutpingLine": "/hou2 aa3! maan6 maan6 hok6, zoeng1 loi4 jat1 ding6 zou6 dou2 cit3 gai3 si1./",
+        "english": null
+      },
+      "sourceHash": "sha256:9b91b6e24dcd2cac0124c1695b20436cad3f617a307a17c952e3f479d092ed3c"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I026",
+      "ordinal": 26,
+      "itemType": "dialog_turn",
+      "turn": 26,
+      "speaker": "詠思",
+      "source": {
+        "sourceLine": "詠思: 希望啦！你呢？你有冇做過補習？",
+        "traditional": "希望啦！你呢？你有冇做過補習？",
+        "jyutpingLine": "/hei1 mong6 laa1! nei5 ne1? nei5 jau5 mou5 zou6 gwo3 bou2 zaap6?/",
+        "english": null
+      },
+      "sourceHash": "sha256:7e32d24bae65324430987b1fd72b4d1db867517b679720d6468d39daeae34701"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I027",
+      "ordinal": 27,
+      "itemType": "dialog_turn",
+      "turn": 27,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 有呀！我而家幫小學生補習。",
+        "traditional": "有呀！我而家幫小學生補習。",
+        "jyutpingLine": "/jau5 aa3! ngo5 ji4 gaa1 bong1 siu2 hok6 saang1 bou2 zaap6./",
+        "english": null
+      },
+      "sourceHash": "sha256:cd29ba378fb5d177f5439fc646815745e8d8d86c94d3301fea63ba7db794ec49"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I028",
+      "ordinal": 28,
+      "itemType": "dialog_turn",
+      "turn": 28,
+      "speaker": "詠思",
+      "source": {
+        "sourceLine": "詠思: 係咪好難教呀？",
+        "traditional": "係咪好難教呀？",
+        "jyutpingLine": "/hai6 mai6 hou2 naan4 gaau3 aa3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:c0ac34602aef5780792df97b333028277b230e117ff8d6195c6412a3b44193b9"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I029",
+      "ordinal": 29,
+      "itemType": "dialog_turn",
+      "turn": 29,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 有時難，但係好有滿足感。",
+        "traditional": "有時難，但係好有滿足感。",
+        "jyutpingLine": "/jau5 si4 naan4, daan6 hai6 hou2 jau5 mun5 zuk1 gam2./",
+        "english": null
+      },
+      "sourceHash": "sha256:06d106d39bc7f576848cb857f34c812ab2f580ec667e2f4865d8173eed613351"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I030",
+      "ordinal": 30,
+      "itemType": "dialog_turn",
+      "turn": 30,
+      "speaker": "詠思",
+      "source": {
+        "sourceLine": "詠思: 你真係好適合做老師。",
+        "traditional": "你真係好適合做老師。",
+        "jyutpingLine": "/nei5 zan1 hai6 hou2 sik1 hap6 zou6 lou5 si1./",
+        "english": null
+      },
+      "sourceHash": "sha256:6b4f869ff1cbf41961902f349ff65bed40806bdddafa4cf6cccd41f0f4935ea8"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I031",
+      "ordinal": 31,
+      "itemType": "dialog_turn",
+      "turn": 31,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 多謝！你將來做設計都一定得㗎！",
+        "traditional": "多謝！你將來做設計都一定得㗎！",
+        "jyutpingLine": "/do1 ze6! nei5 zoeng1 loi4 zou6 cit3 gai3 dou1 jat1 ding6 dak1 gaa3!/",
+        "english": null
+      },
+      "sourceHash": "sha256:016229dac64d434242da5ac7a10a633f4ecdabc21d275188dc91061a1248d763"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I032",
+      "ordinal": 32,
+      "itemType": "dialog_turn",
+      "turn": 32,
+      "speaker": "詠思",
+      "source": {
+        "sourceLine": "詠思: 希望我哋嘅夢想都會實現。",
+        "traditional": "希望我哋嘅夢想都會實現。",
+        "jyutpingLine": "/hei1 mong6 ngo5 dei6 ge3 mung6 soeng2 dou1 wui5 sat6 jin6./",
+        "english": null
+      },
+      "sourceHash": "sha256:5dc1ecbb5ea8506caa3923148df50c6b1701e2ba2bee80a8a2069cae2c3890f2"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I033",
+      "ordinal": 33,
+      "itemType": "dialog_turn",
+      "turn": 33,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 一定會㗎！最緊要有目標。",
+        "traditional": "一定會㗎！最緊要有目標。",
+        "jyutpingLine": "/jat1 ding6 wui5 gaa3! zeoi3 gan2 jiu3 jau5 muk6 biu1./",
+        "english": null
+      },
+      "sourceHash": "sha256:f0869ad79e321fa87eae3a4ef5b6fed5e603907e7c7991413d82be5bd127486b"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I034",
+      "ordinal": 34,
+      "itemType": "dialog_turn",
+      "turn": 34,
+      "speaker": "詠思",
+      "source": {
+        "sourceLine": "詠思: 我今日之後會努力啲㗎喇！",
+        "traditional": "我今日之後會努力啲㗎喇！",
+        "jyutpingLine": "/ngo5 gam1 jat6 zi1 hau6 wui5 nou5 lik6 di1 gaa3 laa3!/",
+        "english": null
+      },
+      "sourceHash": "sha256:46245dfbbdd0e5c4106040093fea769e49f2c525facfb38d23dcb84f5f91377b"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I035",
+      "ordinal": 35,
+      "itemType": "dialog_turn",
+      "turn": 35,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 好呀！我哋一齊加油！",
+        "traditional": "好呀！我哋一齊加油！",
+        "jyutpingLine": "/hou2 aa3! ngo5 dei6 jat1 cai4 gaa1 jau4!/",
+        "english": null
+      },
+      "sourceHash": "sha256:5f3931ac3cdeeb131bef707bb10303c02d7abbc94432f8692a8b0c9172b2e08c"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I036",
+      "ordinal": 36,
+      "itemType": "dialog_turn",
+      "turn": 36,
+      "speaker": "詠思",
+      "source": {
+        "sourceLine": "詠思: 你幾時畢業就做老師？",
+        "traditional": "你幾時畢業就做老師？",
+        "jyutpingLine": "/nei5 gei2 si4 bat1 jip6 zau6 zou6 lou5 si1?/",
+        "english": null
+      },
+      "sourceHash": "sha256:20848e39df60f325cc388c8a66978f1996540006a152bf2ae4091f69f2e3e005"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I037",
+      "ordinal": 37,
+      "itemType": "dialog_turn",
+      "turn": 37,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 畢業之後會搵學校，希望搵到啦。",
+        "traditional": "畢業之後會搵學校，希望搵到啦。",
+        "jyutpingLine": "/bat1 jip6 zi1 hau6 wui5 wan2 hok6 haau6, hei1 mong6 wan2 dou2 laa1./",
+        "english": null
+      },
+      "sourceHash": "sha256:d4c63288f0a6795b2da91b227a530ff51e4758c73367b87890613ff8d0ebb197"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I038",
+      "ordinal": 38,
+      "itemType": "dialog_turn",
+      "turn": 38,
+      "speaker": "詠思",
+      "source": {
+        "sourceLine": "詠思: 你咁有心，一定搵到㗎！",
+        "traditional": "你咁有心，一定搵到㗎！",
+        "jyutpingLine": "/nei5 gam3 jau5 sam1, jat1 ding6 wan2 dou2 gaa3!/",
+        "english": null
+      },
+      "sourceHash": "sha256:a8572e6c4b11ce1ebd18ff603844c4b86e6eb0967081a01be68a23935aa62d86"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I039",
+      "ordinal": 39,
+      "itemType": "dialog_turn",
+      "turn": 39,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 多謝你支持我！",
+        "traditional": "多謝你支持我！",
+        "jyutpingLine": "/do1 ze6 nei5 zi1 ci4 ngo5!/",
+        "english": null
+      },
+      "sourceHash": "sha256:cd624fc46b708e1022f3c75bb1351ee1bb1fcca2f67e3275fd48dab4e4450297"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I040",
+      "ordinal": 40,
+      "itemType": "dialog_turn",
+      "turn": 40,
+      "speaker": "詠思",
+      "source": {
+        "sourceLine": "詠思: 我哋將來都會成功㗎！",
+        "traditional": "我哋將來都會成功㗎！",
+        "jyutpingLine": "/ngo5 dei6 zoeng1 loi4 dou1 wui5 sing4 gung1 gaa3!/",
+        "english": null
+      },
+      "sourceHash": "sha256:cbc151909b3b54a71fcbda3a5068a3947dd81c7e364d0c0e5ed41f9145b88cbf"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I041",
+      "ordinal": 41,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 1,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": true,
+        "normalizedSurfacePresent": true
+      },
+      "source": {
+        "traditional": "將來",
+        "jyutping": "zoeng1 loi4",
+        "english": "future, in the future"
+      },
+      "sourceHash": "sha256:0d8cf3d8dfd168f92fefb7cf5785d89a3b883c3be3133c90d2e870460a4535f6"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I042",
+      "ordinal": 42,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 2,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": true,
+        "normalizedSurfacePresent": true
+      },
+      "source": {
+        "traditional": "想",
+        "jyutping": "soeng2",
+        "english": "want, wish, think"
+      },
+      "sourceHash": "sha256:ce8bbe5285ef0f64a917caac89680e213860cb0931bb63c8d33289ba22346b35"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I043",
+      "ordinal": 43,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 3,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": true,
+        "normalizedSurfacePresent": true
+      },
+      "source": {
+        "traditional": "做",
+        "jyutping": "zou6",
+        "english": "do, make, work as"
+      },
+      "sourceHash": "sha256:c627d787a98027b42ecb47477d1716dc69ea9cb168e28f5561656be1562be854"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I044",
+      "ordinal": 44,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 4,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": true,
+        "normalizedSurfacePresent": true
+      },
+      "source": {
+        "traditional": "乜嘢",
+        "jyutping": "mat1 je5",
+        "english": "what"
+      },
+      "sourceHash": "sha256:16ed92fefcb9b643a3fbe1ad3c02bd873e8a4b94bd4f13dfb9329340ace8e117"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I045",
+      "ordinal": 45,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 5,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": true,
+        "normalizedSurfacePresent": true
+      },
+      "source": {
+        "traditional": "工作",
+        "jyutping": "gung1 zok3",
+        "english": "work, job"
+      },
+      "sourceHash": "sha256:7544af3280a012d1c47bcd9fd925ecb94c5b98dc70d224c0f35c3603b6685509"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I046",
+      "ordinal": 46,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 6,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": true,
+        "normalizedSurfacePresent": true
+      },
+      "source": {
+        "traditional": "都",
+        "jyutping": "dou1",
+        "english": "also, all, even"
+      },
+      "sourceHash": "sha256:d9b87f32bd10c88dd8260de6d6066d3ceb8b4edf94724583a814e83dbceaf8fd"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I047",
+      "ordinal": 47,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 7,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": true,
+        "normalizedSurfacePresent": true
+      },
+      "source": {
+        "traditional": "唔係好",
+        "jyutping": "m4 hai6 hou2",
+        "english": "not very"
+      },
+      "sourceHash": "sha256:6c7e293a4f1b3e64fd21bb694a4a8a22cbb34b9f0179af9e940ea61244993c0f"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I048",
+      "ordinal": 48,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 8,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": true,
+        "normalizedSurfacePresent": true
+      },
+      "source": {
+        "traditional": "肯定",
+        "jyutping": "hang2 ding6",
+        "english": "certain, sure"
+      },
+      "sourceHash": "sha256:6303b10dae84c9bafa0eda2882c833d8465cbf7e07ec1629ccf83dba050b8b07"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I049",
+      "ordinal": 49,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 9,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": true,
+        "normalizedSurfacePresent": true
+      },
+      "source": {
+        "traditional": "呢",
+        "jyutping": "ne1",
+        "english": "[question particle]"
+      },
+      "sourceHash": "sha256:1c11e181647577f8d634071f87a0987263697ba9d58217cfd9562b12389b106d"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I050",
+      "ordinal": 50,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 10,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": true,
+        "normalizedSurfacePresent": true
+      },
+      "source": {
+        "traditional": "老師",
+        "jyutping": "lou5 si1",
+        "english": "teacher"
+      },
+      "sourceHash": "sha256:9431414a97a3de11199d8fe762569c6f6aa0e37b5662e8f740d75d7daf1a7f14"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I051",
+      "ordinal": 51,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 11,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": true,
+        "normalizedSurfacePresent": true
+      },
+      "source": {
+        "traditional": "教",
+        "jyutping": "gaau3",
+        "english": "teach"
+      },
+      "sourceHash": "sha256:101b2a0ce03e657a3fb39e5bb17ce5a968395a0cb50755af58cdeda26a1ae32c"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I052",
+      "ordinal": 52,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 12,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": true,
+        "normalizedSurfacePresent": true
+      },
+      "source": {
+        "traditional": "小朋友",
+        "jyutping": "siu2 pang4 jau5",
+        "english": "children, kids"
+      },
+      "sourceHash": "sha256:2cef24e998f3189580a62c689aa53d7286a8ca002fa0daf1ca95246f48ef653b"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I053",
+      "ordinal": 53,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 13,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": true,
+        "normalizedSurfacePresent": true
+      },
+      "source": {
+        "traditional": "嘩",
+        "jyutping": "waa1",
+        "english": "[exclamation of surprise]"
+      },
+      "sourceHash": "sha256:689911c100f49d2065cf78a0fe7a59bf2244018b8b29b46152bd8f4131cef554"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I054",
+      "ordinal": 54,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 14,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": true,
+        "normalizedSurfacePresent": true
+      },
+      "source": {
+        "traditional": "辛苦",
+        "jyutping": "san1 fu2",
+        "english": "hard, difficult, tiring"
+      },
+      "sourceHash": "sha256:d7e373e80af971b1036fd5cb4e994e25415355d9d440d61c784cc75f4bb14a60"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I055",
+      "ordinal": 55,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 15,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": true,
+        "normalizedSurfacePresent": true
+      },
+      "source": {
+        "traditional": "㗎喎",
+        "jyutping": "gaa3 wo3",
+        "english": "[emphasis + hearsay]"
+      },
+      "sourceHash": "sha256:4b117ba9952986cbafef80ac9764a401f17aa566aa49fbc0c7f4bf2f723fd7e7"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I056",
+      "ordinal": 56,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 16,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": true,
+        "normalizedSurfacePresent": true
+      },
+      "source": {
+        "traditional": "鍾意",
+        "jyutping": "zung1 ji3",
+        "english": "like, love"
+      },
+      "sourceHash": "sha256:c60d506dd65023e76c97fce3ec2968dcfe91c301cf5b0ebd39ef66ce679a582e"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I057",
+      "ordinal": 57,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 17,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": true,
+        "normalizedSurfacePresent": true
+      },
+      "source": {
+        "traditional": "同",
+        "jyutping": "tung4",
+        "english": "with, and"
+      },
+      "sourceHash": "sha256:ad2c6994c92225eded5cc3e1f16fc9e4ede23f652f543ac8dbfe4cb871481406"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I058",
+      "ordinal": 58,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 18,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": true,
+        "normalizedSurfacePresent": true
+      },
+      "source": {
+        "traditional": "相處",
+        "jyutping": "soeng1 cyu2",
+        "english": "get along, interact"
+      },
+      "sourceHash": "sha256:ab4b740dfea04e3de8e70c76e88a2a88e884dc9653aa596a243b60d52db1699a"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I059",
+      "ordinal": 59,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 19,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": true,
+        "normalizedSurfacePresent": true
+      },
+      "source": {
+        "traditional": "讀緊",
+        "jyutping": "duk6 gan2",
+        "english": "studying, reading (now)"
+      },
+      "sourceHash": "sha256:a92cf5a341a1273bd92824ba40b657dfef5df084e343f83da470f5021bc073f9"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I060",
+      "ordinal": 60,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 20,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": true,
+        "normalizedSurfacePresent": true
+      },
+      "source": {
+        "traditional": "教育",
+        "jyutping": "gaau3 juk6",
+        "english": "education"
+      },
+      "sourceHash": "sha256:dd703a3765b9d038be2c28a96e38cbcf71cfed83981ef673e2d7227a46ede599"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I061",
+      "ordinal": 61,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 21,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": true,
+        "normalizedSurfacePresent": true
+      },
+      "source": {
+        "traditional": "啦",
+        "jyutping": "laa1",
+        "english": "[assumption particle]"
+      },
+      "sourceHash": "sha256:4a22f0944e0fca919ff4420c9c95e67f48b89b916b6024797df2ce31aa7bcf46"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I062",
+      "ordinal": 62,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 22,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": true,
+        "normalizedSurfacePresent": true
+      },
+      "source": {
+        "traditional": "未",
+        "jyutping": "mei6",
+        "english": "not yet"
+      },
+      "sourceHash": "sha256:d232148f7ce6cb57f628253b5feccbd68f22a6a211219f8d315b23cddd35666d"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I063",
+      "ordinal": 63,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 23,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": false,
+        "normalizedSurfacePresent": false
+      },
+      "source": {
+        "traditional": "決定",
+        "jyutping": "kyut3 ding6",
+        "english": "decide, decision"
+      },
+      "sourceHash": "sha256:c742c878827cbed8ed169aee735689a34e92ffe0b6d1d9b6475ec62d66ea7605"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I064",
+      "ordinal": 64,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 24,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": false,
+        "normalizedSurfacePresent": false
+      },
+      "source": {
+        "traditional": "主修",
+        "jyutping": "zyu2 sau1",
+        "english": "major (in)"
+      },
+      "sourceHash": "sha256:d0e53ad19bd1a665691eb4c1cf10f5ed57ada60c9376b32e90d4b1cdd40908ef"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I065",
+      "ordinal": 65,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 25,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": true,
+        "normalizedSurfacePresent": true
+      },
+      "source": {
+        "traditional": "諗",
+        "jyutping": "nam2",
+        "english": "think, consider"
+      },
+      "sourceHash": "sha256:1b837ac3e2db31b5ffd9d7c85d9ac70501775035dc4d0c7a9c82e7318f3f6cda"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I066",
+      "ordinal": 66,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 26,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": true,
+        "normalizedSurfacePresent": true
+      },
+      "source": {
+        "traditional": "緊",
+        "jyutping": "gan2",
+        "english": "[progressive marker]"
+      },
+      "sourceHash": "sha256:2f1865eb363fe04112a75963868fb0a085d9c6f4ba80f76faec0c82027a9d9a1"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I067",
+      "ordinal": 67,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 27,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": false,
+        "normalizedSurfacePresent": false
+      },
+      "source": {
+        "traditional": "吖",
+        "jyutping": "aa1",
+        "english": "[suggestion particle]"
+      },
+      "sourceHash": "sha256:f34b416f3aa2df8f799d711f0301ec175f15f1aee803a7cc531c9639554f0e00"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I068",
+      "ordinal": 68,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 28,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": false,
+        "normalizedSurfacePresent": false
+      },
+      "source": {
+        "traditional": "或者",
+        "jyutping": "waak6 ze2",
+        "english": "or, perhaps"
+      },
+      "sourceHash": "sha256:6e627a05038ca77138ebb3b97411904347935991da6f99fbc84bf75ef3b3c248"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I069",
+      "ordinal": 69,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 29,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": false,
+        "normalizedSurfacePresent": false
+      },
+      "source": {
+        "traditional": "試吓",
+        "jyutping": "si3 haa5",
+        "english": "try (it out)"
+      },
+      "sourceHash": "sha256:08fb6a8091beb2baa250d5a5b239065a7a9b43ec5e4dbda5181ec53c5fe56f2f"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I070",
+      "ordinal": 70,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 30,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": false,
+        "normalizedSurfacePresent": false
+      },
+      "source": {
+        "traditional": "唔同",
+        "jyutping": "m4 tung4",
+        "english": "different, not the same"
+      },
+      "sourceHash": "sha256:4c2feb4bf1fa45e46e5ea55c7b4bc9a66af0d392ac226490187fa41a70c2ff58"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I071",
+      "ordinal": 71,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 31,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": false,
+        "normalizedSurfacePresent": false
+      },
+      "source": {
+        "traditional": "行業",
+        "jyutping": "hong4 jip6",
+        "english": "industry, profession"
+      },
+      "sourceHash": "sha256:3968aaf78d8599d322bc9de245826e4c24b703945f0ecf0b828a1daf540505bd"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I072",
+      "ordinal": 72,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 32,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": false,
+        "normalizedSurfacePresent": false
+      },
+      "source": {
+        "traditional": "睇吓",
+        "jyutping": "tai2 haa5",
+        "english": "see, look, check out"
+      },
+      "sourceHash": "sha256:2334083926de3005e048b6381c2ee6dbe4b718c9710e0b01ad7e3abed9f206f2"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I073",
+      "ordinal": 73,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 33,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": false,
+        "normalizedSurfacePresent": false
+      },
+      "source": {
+        "traditional": "啱唔啱",
+        "jyutping": "ngaam1 m4 ngaam1",
+        "english": "suitable or not, whether fits"
+      },
+      "sourceHash": "sha256:185d04b54771b96311ffc13bba968ed709800d3d9fcedcb76a51541a9a3e0626"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I074",
+      "ordinal": 74,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 34,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": true,
+        "normalizedSurfacePresent": true
+      },
+      "source": {
+        "traditional": "自己",
+        "jyutping": "zi6 gei2",
+        "english": "oneself, myself"
+      },
+      "sourceHash": "sha256:e8b987f0e8399dd6fc41b12c9f822364a2dd573ea2563490110de808374db249"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I075",
+      "ordinal": 75,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 35,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": true,
+        "normalizedSurfacePresent": true
+      },
+      "source": {
+        "traditional": "幾",
+        "jyutping": "gei2",
+        "english": "how many, quite"
+      },
+      "sourceHash": "sha256:8f54a7742791e413be772e1603cbfb4926c2d60b2ccd44fa44aa05f0557e2088"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I076",
+      "ordinal": 76,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 36,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": false,
+        "normalizedSurfacePresent": false
+      },
+      "source": {
+        "traditional": "咁樣",
+        "jyutping": "gam2 joeng2",
+        "english": "like this, this way"
+      },
+      "sourceHash": "sha256:7a9153e5f6c9cb322d95cf8e27ed0eadfabc2c70c13a6d2f2528fb0f46687b3a"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I077",
+      "ordinal": 77,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 37,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": false,
+        "normalizedSurfacePresent": false
+      },
+      "source": {
+        "traditional": "好主意",
+        "jyutping": "hou2 zyu2 ji3",
+        "english": "good idea"
+      },
+      "sourceHash": "sha256:3fa5a38f066f6feb18b798a68077f48152a2d94904fe069cd0d3621c102b03ff"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I078",
+      "ordinal": 78,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 38,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": true,
+        "normalizedSurfacePresent": true
+      },
+      "source": {
+        "traditional": "多",
+        "jyutping": "do1",
+        "english": "many, much, more"
+      },
+      "sourceHash": "sha256:4dec7f707c69bcace5d53892c8742c30314fda0559982ac21f8ca1e1605f8ffa"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I079",
+      "ordinal": 79,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 39,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": false,
+        "normalizedSurfacePresent": false
+      },
+      "source": {
+        "traditional": "了解",
+        "jyutping": "liu5 gaai2",
+        "english": "understand, learn about"
+      },
+      "sourceHash": "sha256:e7a3e284302eccf91b329be881701c1648289db61fde3c11865e5449166c8a2d"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104-I080",
+      "ordinal": 80,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 40,
+      "sourceDialogOccurrence": {
+        "exactSurfacePresent": true,
+        "normalizedSurfacePresent": true
+      },
+      "source": {
+        "traditional": "啲",
+        "jyutping": "di1",
+        "english": "some, a bit"
+      },
+      "sourceHash": "sha256:0faf1dccf1602e14bebee8be1d0982e2f230f0f7353294c6aad070ba090bf22d"
+    }
+  ]
+}
