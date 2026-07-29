@@ -1,0 +1,601 @@
+{
+  "schema": "canto-span-pedagogical-dialog-source-v1",
+  "source": {
+    "sourceId": "GLOSSIKA-YUEHK-A1-DLG-014-20260308",
+    "provider": "Glossika",
+    "course": "Cantonese (Hong Kong) A1 Dialogs",
+    "dialogNumber": 14,
+    "title": "傾計講技能",
+    "englishTitle": "Chatting About Skills",
+    "sourceDate": "2026-03-08",
+    "gmailMessageId": "19ccf76b16ee6610",
+    "sourceType": "authorized_pedagogical_email",
+    "language": "yue-Hant-HK",
+    "sourceFormat": "Glossika interactive-dialog email; Jyutping lines omit speaker-name prefixes; vocabulary container empty",
+    "authorization": {
+      "basis": "User states Glossika granted permission to use all lesson data in this non-commercial private-use Canto Span project.",
+      "scope": "Source-preserving corpus ingress for this dialog.",
+      "redistributionClaim": "none"
+    }
+  },
+  "ingress": {
+    "issue": 150,
+    "workClaimIssue": 341,
+    "branch": "agent/glossika-dialog-014-ingress",
+    "reviewState": "REQUIRES_EXPERT_CONTEXT_REVIEW",
+    "policy": "Source values are immutable. The absent vocabulary block, normalization, duplicate classification, naturalness review, construction routing, and evidence use are recorded separately.",
+    "recordCount": 40,
+    "turnCount": 40,
+    "vocabularyCount": 0,
+    "vocabularyBlockState": "source_empty",
+    "vocabularyExactSurfaceAbsentFromDialogCount": 0,
+    "itemTypeCounts": {
+      "dialog_turn": 40
+    },
+    "sourcePayloadHash": "sha256:35d5722555d394859c5966bdaf6c5bb5a7dc2d3d4084e63c148e6a12d206decb",
+    "sourcePayloadHashPolicy": "SHA-256 of canonical key-sorted JSON for the ordered source-field array.",
+    "turnEnglishPolicy": "The source email provides no per-turn English translation; each turn preserves english=null."
+  },
+  "items": [
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I001",
+      "ordinal": 1,
+      "itemType": "dialog_turn",
+      "turn": 1,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 詠琪，你識唔識煮飯呀？",
+        "traditional": "詠琪，你識唔識煮飯呀？",
+        "jyutpingLine": "/wing6 kei4, nei5 sik1 m4 sik1 zyu2 faan6 aa3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:e7c50065d63ffe116d503e931e1fbe17aadfe24cdf577623d6816974058394a0"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I002",
+      "ordinal": 2,
+      "itemType": "dialog_turn",
+      "turn": 2,
+      "speaker": "詠琪",
+      "source": {
+        "sourceLine": "詠琪: 識少少啫，你呢？",
+        "traditional": "識少少啫，你呢？",
+        "jyutpingLine": "/sik1 siu2 siu2 ze1, nei5 ne1?/",
+        "english": null
+      },
+      "sourceHash": "sha256:2f13c47da586802f0d315447c50b22ac3516ed6402011b059a4d61072c97c2d0"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I003",
+      "ordinal": 3,
+      "itemType": "dialog_turn",
+      "turn": 3,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 我唔識煮飯。",
+        "traditional": "我唔識煮飯。",
+        "jyutpingLine": "/ngo5 m4 sik1 zyu2 faan6./",
+        "english": null
+      },
+      "sourceHash": "sha256:879320352ae0c3eb661f0070992ac31e27b1a63bf92f7aabfa6093265bc4a71f"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I004",
+      "ordinal": 4,
+      "itemType": "dialog_turn",
+      "turn": 4,
+      "speaker": "詠琪",
+      "source": {
+        "sourceLine": "詠琪: 咁你識煮乜嘢？",
+        "traditional": "咁你識煮乜嘢？",
+        "jyutpingLine": "/gam2 nei5 sik1 zyu2 mat1 je5?/",
+        "english": null
+      },
+      "sourceHash": "sha256:bf27fe81fd3c21acb61eaf0e94530a0bee2678dfb9f1d4589b365ed333eada0e"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I005",
+      "ordinal": 5,
+      "itemType": "dialog_turn",
+      "turn": 5,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 我識煮麵啫。",
+        "traditional": "我識煮麵啫。",
+        "jyutpingLine": "/ngo5 sik1 zyu2 min6 ze1./",
+        "english": null
+      },
+      "sourceHash": "sha256:743cdccfa242dec23a12473712b366e27a616f46b262fd4a5fd93a5fbf4bb5a0"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I006",
+      "ordinal": 6,
+      "itemType": "dialog_turn",
+      "turn": 6,
+      "speaker": "詠琪",
+      "source": {
+        "sourceLine": "詠琪: 煮麵好簡單㗎。",
+        "traditional": "煮麵好簡單㗎。",
+        "jyutpingLine": "/zyu2 min6 hou2 gaan2 daan1 gaa3./",
+        "english": null
+      },
+      "sourceHash": "sha256:492c412558b0e5fc0931da86f72ef89762049191e943addeba4ee61f76c71c13"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I007",
+      "ordinal": 7,
+      "itemType": "dialog_turn",
+      "turn": 7,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 你識唔識游水？",
+        "traditional": "你識唔識游水？",
+        "jyutpingLine": "/nei5 sik1 m4 sik1 jau4 seoi2?/",
+        "english": null
+      },
+      "sourceHash": "sha256:5f9806373d1e9cb60be943edfd54599af59c214f2f8f813a697587862b84e249"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I008",
+      "ordinal": 8,
+      "itemType": "dialog_turn",
+      "turn": 8,
+      "speaker": "詠琪",
+      "source": {
+        "sourceLine": "詠琪: 識呀，你呢？",
+        "traditional": "識呀，你呢？",
+        "jyutpingLine": "/sik1 aa3, nei5 ne1?/",
+        "english": null
+      },
+      "sourceHash": "sha256:6ffc9d5846f77723ad83528e3bbe376630c81c7c39203c5cebcab3ebba110c5a"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I009",
+      "ordinal": 9,
+      "itemType": "dialog_turn",
+      "turn": 9,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 我唔識，好驚水。",
+        "traditional": "我唔識，好驚水。",
+        "jyutpingLine": "/ngo5 m4 sik1, hou2 geng1 seoi2./",
+        "english": null
+      },
+      "sourceHash": "sha256:778e7e43f02513c8a317e4d5b521be7650e96e40174b4d18669de913c29301a1"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I010",
+      "ordinal": 10,
+      "itemType": "dialog_turn",
+      "turn": 10,
+      "speaker": "詠琪",
+      "source": {
+        "sourceLine": "詠琪: 我可以教你㗎。",
+        "traditional": "我可以教你㗎。",
+        "jyutpingLine": "/ngo5 ho2 ji5 gaau3 nei5 gaa3./",
+        "english": null
+      },
+      "sourceHash": "sha256:063a212ec7a106090a95ef3fcccfdf1d19d6b60e3399707825d9041b9b133ba3"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I011",
+      "ordinal": 11,
+      "itemType": "dialog_turn",
+      "turn": 11,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 真係？幾時教我？",
+        "traditional": "真係？幾時教我？",
+        "jyutpingLine": "/zan1 hai6? gei2 si4 gaau3 ngo5?/",
+        "english": null
+      },
+      "sourceHash": "sha256:356b95b5e39335ecfb98831ef72512957d33541d8bf3f10d4cd9468e5ab4bbe5"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I012",
+      "ordinal": 12,
+      "itemType": "dialog_turn",
+      "turn": 12,
+      "speaker": "詠琪",
+      "source": {
+        "sourceLine": "詠琪: 星期六得唔得？",
+        "traditional": "星期六得唔得？",
+        "jyutpingLine": "/sing1 kei4 luk6 dak1 m4 dak1?/",
+        "english": null
+      },
+      "sourceHash": "sha256:146668ce6b550c3f9724bb34d4d0b6846e3fbb962933cefe5f1ee578b4345247"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I013",
+      "ordinal": 13,
+      "itemType": "dialog_turn",
+      "turn": 13,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 得呀，好呀。",
+        "traditional": "得呀，好呀。",
+        "jyutpingLine": "/dak1 aa3, hou2 aa3./",
+        "english": null
+      },
+      "sourceHash": "sha256:bcec501c2afa542ef51e9998903ed93d5327f274893673831464b6a5ac8ee83f"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I014",
+      "ordinal": 14,
+      "itemType": "dialog_turn",
+      "turn": 14,
+      "speaker": "詠琪",
+      "source": {
+        "sourceLine": "詠琪: 你識唔識打波？",
+        "traditional": "你識唔識打波？",
+        "jyutpingLine": "/nei5 sik1 m4 sik1 daa2 bo1?/",
+        "english": null
+      },
+      "sourceHash": "sha256:604e4c086d2bad4d5cde2031e2b74d1fe3b5d23fa83a9e8d1acdc404d9880972"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I015",
+      "ordinal": 15,
+      "itemType": "dialog_turn",
+      "turn": 15,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 識呀，我識打籃球。",
+        "traditional": "識呀，我識打籃球。",
+        "jyutpingLine": "/sik1 aa3, ngo5 sik1 daa2 laam4 kau4./",
+        "english": null
+      },
+      "sourceHash": "sha256:d28b683c3da1f6d1acc8b8f3977ded2564d55a2d4e04f62a1e1c1fedd2219628"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I016",
+      "ordinal": 16,
+      "itemType": "dialog_turn",
+      "turn": 16,
+      "speaker": "詠琪",
+      "source": {
+        "sourceLine": "詠琪: 你打得好唔好？",
+        "traditional": "你打得好唔好？",
+        "jyutpingLine": "/nei5 daa2 dak1 hou2 m4 hou2?/",
+        "english": null
+      },
+      "sourceHash": "sha256:5d7c7d93e3e4d8bec47837fcfb095f5e1b739b52d2e73fdbf2077ffe90435eb8"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I017",
+      "ordinal": 17,
+      "itemType": "dialog_turn",
+      "turn": 17,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 打得麻麻哋啦。",
+        "traditional": "打得麻麻哋啦。",
+        "jyutpingLine": "/daa2 dak1 maa4 maa4 dei2 laa1./",
+        "english": null
+      },
+      "sourceHash": "sha256:a4448ca9b30a3078d3328556c76bf5da5f335d77b5c2b9183cb5dd73b0e1bc61"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I018",
+      "ordinal": 18,
+      "itemType": "dialog_turn",
+      "turn": 18,
+      "speaker": "詠琪",
+      "source": {
+        "sourceLine": "詠琪: 我完全唔識打波。",
+        "traditional": "我完全唔識打波。",
+        "jyutpingLine": "/ngo5 jyun4 cyun4 m4 sik1 daa2 bo1./",
+        "english": null
+      },
+      "sourceHash": "sha256:97a8a3b4f4f0401779f355bd2f2a9cb4cd71513f0951e13fdbe9083ac9e5b3ef"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I019",
+      "ordinal": 19,
+      "itemType": "dialog_turn",
+      "turn": 19,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 我可以教你呀。",
+        "traditional": "我可以教你呀。",
+        "jyutpingLine": "/ngo5 ho2 ji5 gaau3 nei5 aa3./",
+        "english": null
+      },
+      "sourceHash": "sha256:51ab7124e64359317a98b45959242b7b359b8f70d44359b4a70c793c5c8f9bc9"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I020",
+      "ordinal": 20,
+      "itemType": "dialog_turn",
+      "turn": 20,
+      "speaker": "詠琪",
+      "source": {
+        "sourceLine": "詠琪: 好呀，我想學。",
+        "traditional": "好呀，我想學。",
+        "jyutpingLine": "/hou2 aa3, ngo5 soeng2 hok6./",
+        "english": null
+      },
+      "sourceHash": "sha256:7827d9249a4a0240f4c0e937060cc65e15b7e1cf52bc9df639c5cd20ee697845"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I021",
+      "ordinal": 21,
+      "itemType": "dialog_turn",
+      "turn": 21,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 你想學啲咩技能？",
+        "traditional": "你想學啲咩技能？",
+        "jyutpingLine": "/nei5 soeng2 hok6 di1 me1 gei6 nang4?/",
+        "english": null
+      },
+      "sourceHash": "sha256:a153c1d1fbe47d77675abdf35b441721c0866499724123e7f15e81b3929bf8a2"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I022",
+      "ordinal": 22,
+      "itemType": "dialog_turn",
+      "turn": 22,
+      "speaker": "詠琪",
+      "source": {
+        "sourceLine": "詠琪: 我想學彈結他。",
+        "traditional": "我想學彈結他。",
+        "jyutpingLine": "/ngo5 soeng2 hok6 taan4 git3 taa1./",
+        "english": null
+      },
+      "sourceHash": "sha256:3c32e6e886b10efb44aeb999766118c8fcc70ad92cdda472dc9a056f8585598d"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I023",
+      "ordinal": 23,
+      "itemType": "dialog_turn",
+      "turn": 23,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 結他好難學㗎。",
+        "traditional": "結他好難學㗎。",
+        "jyutpingLine": "/git3 taa1 hou2 naan4 hok6 gaa3./",
+        "english": null
+      },
+      "sourceHash": "sha256:613eb6be818e590bfa72ce56b53a949d26100ef35cd7f0bd14d2eda53a74a5c4"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I024",
+      "ordinal": 24,
+      "itemType": "dialog_turn",
+      "turn": 24,
+      "speaker": "詠琪",
+      "source": {
+        "sourceLine": "詠琪: 你識唔識彈結他？",
+        "traditional": "你識唔識彈結他？",
+        "jyutpingLine": "/nei5 sik1 m4 sik1 taan4 git3 taa1?/",
+        "english": null
+      },
+      "sourceHash": "sha256:63e20c0ffbbfc650ba5ea5fbc308c95b34623a785bf30d1aee51d3bce3650efc"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I025",
+      "ordinal": 25,
+      "itemType": "dialog_turn",
+      "turn": 25,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 我唔識，我識彈琴。",
+        "traditional": "我唔識，我識彈琴。",
+        "jyutpingLine": "/ngo5 m4 sik1, ngo5 sik1 taan4 kam4./",
+        "english": null
+      },
+      "sourceHash": "sha256:91d3ebf9a88f8a509c08e8843b2fe2ad2541f85f9cc11b463ca7934af982fd27"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I026",
+      "ordinal": 26,
+      "itemType": "dialog_turn",
+      "turn": 26,
+      "speaker": "詠琪",
+      "source": {
+        "sourceLine": "詠琪: 嘩，好勁呀！",
+        "traditional": "嘩，好勁呀！",
+        "jyutpingLine": "/waa1, hou2 geng6 aa3!/",
+        "english": null
+      },
+      "sourceHash": "sha256:bd66977a6d2de48150dec1d42d73393e8db3b2c84fa6a0b75535478cab729497"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I027",
+      "ordinal": 27,
+      "itemType": "dialog_turn",
+      "turn": 27,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 我細個學㗎啫。",
+        "traditional": "我細個學㗎啫。",
+        "jyutpingLine": "/ngo5 sai3 go3 hok6 gaa3 ze1./",
+        "english": null
+      },
+      "sourceHash": "sha256:441d7d6ba1b770a578e226f2c31c467370e41a5d79f6dd5e1e55f9705f7fa84c"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I028",
+      "ordinal": 28,
+      "itemType": "dialog_turn",
+      "turn": 28,
+      "speaker": "詠琪",
+      "source": {
+        "sourceLine": "詠琪: 仲有冇學其他嘢？",
+        "traditional": "仲有冇學其他嘢？",
+        "jyutpingLine": "/zung6 jau5 mou5 hok6 kei4 taa1 je5?/",
+        "english": null
+      },
+      "sourceHash": "sha256:b75b8288dcb6250687abd450d13f2d465075494080bf2f314483a768b4e18a79"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I029",
+      "ordinal": 29,
+      "itemType": "dialog_turn",
+      "turn": 29,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 我想學跳舞。",
+        "traditional": "我想學跳舞。",
+        "jyutpingLine": "/ngo5 soeng2 hok6 tiu3 mou5./",
+        "english": null
+      },
+      "sourceHash": "sha256:d1c4b7a6405a35749893bda388244e995e851a172627658569eebf590e364e96"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I030",
+      "ordinal": 30,
+      "itemType": "dialog_turn",
+      "turn": 30,
+      "speaker": "詠琪",
+      "source": {
+        "sourceLine": "詠琪: 我識跳舞呀！",
+        "traditional": "我識跳舞呀！",
+        "jyutpingLine": "/ngo5 sik1 tiu3 mou5 aa3!/",
+        "english": null
+      },
+      "sourceHash": "sha256:b4d00557fcc5a62248f8a80235dd921200e9d5e8a09523c0b86f689dbc91fbc3"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I031",
+      "ordinal": 31,
+      "itemType": "dialog_turn",
+      "turn": 31,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 真係？教我啦！",
+        "traditional": "真係？教我啦！",
+        "jyutpingLine": "/zan1 hai6? gaau3 ngo5 laa1!/",
+        "english": null
+      },
+      "sourceHash": "sha256:a69edd3c272d08074c0e50624778add08daa7e8cadef7009f940bbb215f64066"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I032",
+      "ordinal": 32,
+      "itemType": "dialog_turn",
+      "turn": 32,
+      "speaker": "詠琪",
+      "source": {
+        "sourceLine": "詠琪: 好呀，你想學咩舞？",
+        "traditional": "好呀，你想學咩舞？",
+        "jyutpingLine": "/hou2 aa3, nei5 soeng2 hok6 me1 mou5?/",
+        "english": null
+      },
+      "sourceHash": "sha256:5e1a2437535eea0c691c58f476729a873d49a608c3b362e73b5fe957e01ffba1"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I033",
+      "ordinal": 33,
+      "itemType": "dialog_turn",
+      "turn": 33,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 簡單嘅舞就得喇。",
+        "traditional": "簡單嘅舞就得喇。",
+        "jyutpingLine": "/gaan2 daan1 ge3 mou5 zau6 dak1 laa3./",
+        "english": null
+      },
+      "sourceHash": "sha256:fd0c98fce9b290dd9cb12043dbc10fa74b81a2fb1187794a8126f5f6e97dbe7a"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I034",
+      "ordinal": 34,
+      "itemType": "dialog_turn",
+      "turn": 34,
+      "speaker": "詠琪",
+      "source": {
+        "sourceLine": "詠琪: 我哋互相教啦。",
+        "traditional": "我哋互相教啦。",
+        "jyutpingLine": "/ngo5 dei6 wu6 soeng1 gaau3 laa1./",
+        "english": null
+      },
+      "sourceHash": "sha256:67274026735e2f600e876ed099b5ac3205c72645cf370afb4a07fd99d414c50b"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I035",
+      "ordinal": 35,
+      "itemType": "dialog_turn",
+      "turn": 35,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 好主意！",
+        "traditional": "好主意！",
+        "jyutpingLine": "/hou2 zyu2 ji3!/",
+        "english": null
+      },
+      "sourceHash": "sha256:aa89607bdecde0ce6fb98dd67a838d48639e1e0b03c631b04d30055943fbced7"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I036",
+      "ordinal": 36,
+      "itemType": "dialog_turn",
+      "turn": 36,
+      "speaker": "詠琪",
+      "source": {
+        "sourceLine": "詠琪: 你有時間就嚟搵我。",
+        "traditional": "你有時間就嚟搵我。",
+        "jyutpingLine": "/nei5 jau5 si4 gaan3 zau6 lai4 wan2 ngo5./",
+        "english": null
+      },
+      "sourceHash": "sha256:f13e945502f2c9c533d69bc807719609f8a1d3ccf1a8fedd9e5472d013ddcf64"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I037",
+      "ordinal": 37,
+      "itemType": "dialog_turn",
+      "turn": 37,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 好呀，下星期得唔得？",
+        "traditional": "好呀，下星期得唔得？",
+        "jyutpingLine": "/hou2 aa3, haa6 sing1 kei4 dak1 m4 dak1?/",
+        "english": null
+      },
+      "sourceHash": "sha256:b35a58a3e5fcad1329dfc617d99d6d06ec933a527fe33f5d96e335799fc9a05e"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I038",
+      "ordinal": 38,
+      "itemType": "dialog_turn",
+      "turn": 38,
+      "speaker": "詠琪",
+      "source": {
+        "sourceLine": "詠琪: 得呀，我得閒。",
+        "traditional": "得呀，我得閒。",
+        "jyutpingLine": "/dak1 aa3, ngo5 dak1 haan4./",
+        "english": null
+      },
+      "sourceHash": "sha256:915963f21f17609f7a2436fdc756f0b09094ec87fb6072be8b1c01993ca0276f"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I039",
+      "ordinal": 39,
+      "itemType": "dialog_turn",
+      "turn": 39,
+      "speaker": "家豪",
+      "source": {
+        "sourceLine": "家豪: 咁約好喇。",
+        "traditional": "咁約好喇。",
+        "jyutpingLine": "/gam2 joek3 hou2 laa3./",
+        "english": null
+      },
+      "sourceHash": "sha256:71d49fda80f41233a7540dfaad3dea1df4366a1c5055d73f69697a47deb6aeac"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308-I040",
+      "ordinal": 40,
+      "itemType": "dialog_turn",
+      "turn": 40,
+      "speaker": "詠琪",
+      "source": {
+        "sourceLine": "詠琪: 好呀，到時見。",
+        "traditional": "好呀，到時見。",
+        "jyutpingLine": "/hou2 aa3, dou3 si4 gin3./",
+        "english": null
+      },
+      "sourceHash": "sha256:330d8ecc48e7cf61e7f0a31d09a19c4c110bc7e443cd8b8d5fa343fc586cdf9a"
+    }
+  ]
+}
