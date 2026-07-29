@@ -1,0 +1,102 @@
+name: CS-WORK-0272 Week 15 lexicon scan
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+
+jobs:
+  scan:
+    if: github.event.pull_request.head.ref == 'agent/glossika-week15-research'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Generate canonical lexicon coverage matrix
+        run: |
+          mkdir -p data/research-ledgers
+          node <<'NODE'
+          const fs = require('fs');
+          const path = require('path');
+          const sourcePath = 'data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/source.json';
+          const source = JSON.parse(fs.readFileSync(sourcePath, 'utf8'));
+          const tokenPairs = require('./src/runtime-resources/lexicon/token-lexicon');
+          const productivePairs = require('./src/runtime-resources/lexicon/productive-vo');
+          const formulas = require('./src/runtime-resources/lexicon/formulas');
+          const compositional = require('./src/runtime-resources/lexicon/compositional-lexical-phrases');
+          const tokenMap = new Map(tokenPairs);
+          const productiveMap = new Map(productivePairs);
+          const formulaSet = new Set(formulas);
+          const compositionalSet = new Set(compositional);
+          const lexiconRoot = 'src/runtime-resources/lexicon';
+          const files = [];
+          function walk(directory) {
+            for (const entry of fs.readdirSync(directory, {withFileTypes:true})) {
+              const full = path.join(directory, entry.name);
+              if (entry.isDirectory()) walk(full);
+              else if (entry.isFile() && entry.name.endsWith('.js')) files.push(full);
+            }
+          }
+          walk(lexiconRoot);
+          const fileText = Object.fromEntries(files.map(file => [file, fs.readFileSync(file,'utf8')]));
+          const entries = source.items.filter(item => item.itemType === 'lexical_entry').map(item => {
+            const form = item.source.traditional;
+            const exactRuntimeOwners = [];
+            if (tokenMap.has(form)) exactRuntimeOwners.push('src/runtime-resources/lexicon/token-lexicon');
+            if (productiveMap.has(form)) exactRuntimeOwners.push('src/runtime-resources/lexicon/productive-vo.js');
+            if (formulaSet.has(form)) exactRuntimeOwners.push('src/runtime-resources/lexicon/formulas.js');
+            if (compositionalSet.has(form)) exactRuntimeOwners.push('src/runtime-resources/lexicon/compositional-lexical-phrases.js');
+            const rawCanonicalMentions = files.filter(file => fileText[file].includes(JSON.stringify(form)));
+            const compositionalNumeral = /^([一二三四五六七八九]十|一百)萬$/.test(form) || form === '十萬';
+            const disposition = exactRuntimeOwners.length
+              ? 'already_covered_exact'
+              : compositionalNumeral
+                ? 'compositional_numeral_no_opaque_entry'
+                : 'lexical_ingress_candidate';
+            return {
+              sourceItemId:item.id,
+              ordinal:item.ordinal,
+              traditional:form,
+              sourceJyutping:item.source.jyutping,
+              sourceEnglish:item.source.english,
+              exactRuntimeOwners,
+              rawCanonicalMentions,
+              compositionalNumeral,
+              disposition,
+              recommendation: disposition === 'lexical_ingress_candidate'
+                ? 'review_for_smallest_canonical_lexicon_owner'
+                : disposition === 'compositional_numeral_no_opaque_entry'
+                  ? 'retain_compositional_analysis_do_not_add_opaque_whole_form'
+                  : 'no_duplicate_ingress'
+            };
+          });
+          const counts = entries.reduce((out,entry) => { out[entry.disposition]=(out[entry.disposition]||0)+1; return out; },{});
+          const output = {
+            schema:'canto-span-glossika-lexical-ingress-candidates-v1',
+            packetId:'GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1',
+            sourceId:source.source.sourceId,
+            generatedFrom:{sourcePath,canonicalLexiconRoot:lexiconRoot,exactOwnersScanned:['token-lexicon','productive-vo','formulas','compositional-lexical-phrases']},
+            policy:{glossikaWeight:'pedagogical_and_lexical_attestation_only',exactCoverageRule:'An exact canonical runtime entry blocks duplicate ingress.',numeralRule:'Multiples of ten or one hundred plus 萬 remain compositional; do not add ten opaque whole-form entries.',implementationAuthorized:false},
+            counts,
+            entries
+          };
+          fs.writeFileSync('data/research-ledgers/glossika-week15-lexical-ingress.json',JSON.stringify(output,null,2)+'\n');
+          if (entries.length !== 39) throw new Error(`Expected 39 lexical entries, found ${entries.length}`);
+          console.log(counts);
+          NODE
+          git diff --check
+      - name: Commit generated matrix
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/research-ledgers/glossika-week15-lexical-ingress.json
+          git commit -m "Generate Week 15 lexical ingress matrix"
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
