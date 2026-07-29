@@ -1,0 +1,65 @@
+name: CS-WORK-0327 Dialog 010 corpus ingress
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    if: github.event.pull_request.head.ref == 'agent/glossika-dialog-010-ingress'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Install dependencies
+        run: npm ci
+      - name: Generate source-preserving dialog package
+        run: node tools/tmp/cs-work-0327-generate-dialog010.js
+      - name: Validate package and repository
+        run: |
+          node <<'NODE'
+          const fs=require('fs');
+          const root='data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-010-20260208';
+          const source=require(`./${root}/source.json`);
+          const crosswalk=require(`./${root}/crosswalk.json`);
+          const review=require(`./${root}/review.json`);
+          if(source.items.length!==80||source.ingress.turnCount!==40||source.ingress.vocabularyCount!==40) throw new Error('Unexpected source counts');
+          const turns=source.items.filter(item=>item.itemType==='dialog_turn');
+          const vocab=source.items.filter(item=>item.itemType==='lexical_entry');
+          if(turns.some((item,index)=>item.turn!==index+1||item.speaker!==((index+1)%2===1?'黃志強':'張美玲')||item.source.english!==null||/[A-Z]/.test(item.source.jyutpingLine))) throw new Error('Turn sequence, speaker, missing-English, or romanization preservation failed');
+          if(turns[27].source.traditional!=='你記得要Book枱呀。'||turns[36].source.traditional!=='好，我Book完枱就話你知。'||turns[37].source.traditional!=='OK，我等你消息。') throw new Error('Book/OK source casing preservation failed');
+          if(turns[27].source.jyutpingLine!=='/nei5 gei3 dak1 jiu3 book1 toi2 aa3./'||turns[36].source.jyutpingLine!=='/hou2, ngo5 book1 jyun4 toi2 zau6 waa6 nei5 zi1./'||turns[37].source.jyutpingLine!=='/ok1, ngo5 dang2 nei5 siu1 sik1./') throw new Error('Book/OK romanization preservation failed');
+          if(vocab.some((item,index)=>item.vocabularyOrdinal!==index+1||typeof item.sourceDialogOccurrence?.exactSurfacePresent!=='boolean')) throw new Error('Vocabulary order or source-block audit failed');
+          if(crosswalk.items.length!==80||review.records.length!==80) throw new Error('Crosswalk/review alignment failed');
+          if(crosswalk.summary.vocabularyExactSurfaceAbsentFromDialogCount!==4||crosswalk.sourceBlockAudit.absentVocabulary.length!==4) throw new Error('Expected four glossary surfaces absent from dialog');
+          const absent=new Set(crosswalk.sourceBlockAudit.absentVocabulary.map(item=>item.traditional));
+          for(const value of ['點樣','下次','唔該','冇問題']) if(!absent.has(value)) throw new Error(`Missing expected absent glossary surface ${value}`);
+          if(crosswalk.architecture.generatedExcluded[0]!=='main.js') throw new Error('main.js exclusion missing');
+          if(crosswalk.items.some(item=>[...item.canonicalExactOwners,...item.canonicalNormalizedOwners,...item.supportingExactOwners,...item.supportingNormalizedOwners].includes('main.js'))) throw new Error('main.js leaked into ownership');
+          const turnWalk=crosswalk.items.filter(item=>item.itemType==='dialog_turn');
+          if(turnWalk.some((item,index)=>item.adjacency.previousTurnId!==(index===0?null:`GLOSSIKA-YUEHK-A1-DLG-010-20260208-I${String(index).padStart(3,'0')}`)||item.adjacency.nextTurnId!==(index===39?null:`GLOSSIKA-YUEHK-A1-DLG-010-20260208-I${String(index+2).padStart(3,'0')}`))) throw new Error('Turn adjacency failed');
+          const rows=fs.readFileSync(`${root}/items.tsv`,'utf8').trimEnd().split('\n');
+          if(rows.length!==81) throw new Error(`Expected TSV header plus 80 rows, found ${rows.length}`);
+          if(!review.summary.knownSourceAlerts.some(alert=>alert.type==='vocabulary_dialog_surface_mismatch')) throw new Error('Source-block mismatch alert absent');
+          if(!review.summary.knownSourceAlerts.some(alert=>alert.type==='source_authored_latin_tokens')) throw new Error('Latin-token alert absent');
+          NODE
+          git diff --check
+          npm run verify:research
+          npm run verify
+      - name: Commit generated package
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-010-20260208 docs/research/GLOSSIKA-YUEHK-A1-DLG-010-20260208-CORPUS-INGRESS.md
+          git rm -f tools/tmp/cs-work-0327-dialog010-meta.json tools/tmp/cs-work-0327-dialog010-turns.part00.tsv tools/tmp/cs-work-0327-dialog010-turns.part01.tsv tools/tmp/cs-work-0327-dialog010-turns.part02.tsv tools/tmp/cs-work-0327-dialog010-vocab.part00.tsv tools/tmp/cs-work-0327-dialog010-vocab.part01.tsv tools/tmp/cs-work-0327-generate-dialog010.js
+          git commit -m "Add Glossika dialog 010 corpus package"
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
