@@ -41,8 +41,8 @@ jobs:
           if(turns.some((item,index)=>item.turn!==index+1||item.speaker!==((index+1)%2===1?'張美玲':'黃志明')||item.source.english!==null||/[A-Z]/.test(item.source.jyutpingLine))) throw new Error('Turn sequence, speaker, missing-English, or romanization preservation failed');
           if(vocab.some((item,index)=>item.vocabularyOrdinal!==index+1||typeof item.sourceDialogOccurrence?.exactSurfacePresent!=='boolean')) throw new Error('Vocabulary order or source-block audit failed');
           if(crosswalk.items.length!==80||review.records.length!==80) throw new Error('Crosswalk/review alignment failed');
-          const expected=['驚','怕','但係','而家','安全','覺得','難','易','睇','有啲','練習','會','美玲','張','黃'];
-          if(crosswalk.summary.vocabularyExactSurfaceAbsentFromDialogCount!==15||crosswalk.sourceBlockAudit.absentVocabulary.length!==15) throw new Error('Expected fifteen glossary surfaces absent from dialog');
+          const expected=['驚','怕','但係','而家','安全','覺得','難','易','睇','有啲','練習','會','啦','美玲','張','黃'];
+          if(crosswalk.summary.vocabularyExactSurfaceAbsentFromDialogCount!==16||crosswalk.sourceBlockAudit.absentVocabulary.length!==16) throw new Error('Expected sixteen glossary surfaces absent from dialog');
           const absent=new Set(crosswalk.sourceBlockAudit.absentVocabulary.map(item=>item.traditional));
           for(const value of expected) if(!absent.has(value)) throw new Error(`Missing expected absent glossary surface ${value}`);
           if(crosswalk.architecture.generatedExcluded[0]!=='main.js') throw new Error('main.js exclusion missing');
@@ -59,7 +59,7 @@ jobs:
       - name: Commit generated package
         run: |
           git config user.name "github-actions[bot]"
-          git config user.email "4189826+github-actions[bot]@users.noreply.github.com"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222 docs/research/GLOSSIKA-YUEHK-A1-DLG-012-20260222-CORPUS-INGRESS.md
           git rm -f tools/tmp/cs-work-0335-dialog012-meta.json tools/tmp/cs-work-0335-dialog012-turns.part00.tsv tools/tmp/cs-work-0335-dialog012-turns.part01.tsv tools/tmp/cs-work-0335-dialog012-turns.part02.tsv tools/tmp/cs-work-0335-dialog012-vocab.part00.tsv tools/tmp/cs-work-0335-dialog012-vocab.part01.tsv tools/tmp/cs-work-0335-transform-dialog012.js tools/tmp/cs-work-0335-generate-dialog012.js
           git commit -m "Add Glossika dialog 012 corpus package"
