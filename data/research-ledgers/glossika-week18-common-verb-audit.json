@@ -1,0 +1,416 @@
+{
+  "schema": "canto-span-glossika-common-verb-audit-v1",
+  "packetId": "GLOSSIKA-YUEHK-A1-W18-20260719-COMMON-VERB-AUDIT-R1",
+  "sourceId": "GLOSSIKA-YUEHK-A1-W18-20260719",
+  "generatedFrom": {
+    "sourcePath": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/source.json",
+    "crosswalkPath": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/crosswalk.json",
+    "canonicalRuntimeInputs": [
+      "src/**",
+      "src/runtime-resources/**"
+    ],
+    "generatedBundleExcluded": "main.js"
+  },
+  "policy": {
+    "sourceGlossWeight": "pedagogical_lexical_attestation_only",
+    "runtimeCoverageWeight": "implementation_observation_only",
+    "polysemyRule": "One orthographic token may require multiple lexical or grammatical profiles.",
+    "implementationAuthorized": false
+  },
+  "summary": {
+    "sourceCount": 25,
+    "covered": 24,
+    "uncovered": [
+      "著"
+    ]
+  },
+  "entries": [
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I009",
+      "traditional": "食",
+      "sourceJyutping": "sik6",
+      "sourceEnglish": "to eat",
+      "lexicalProfile": "dynamic_transitive_or_object_omission",
+      "boundary": "food_selection_and_contextual_object_omission",
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [
+        "src/runtime-resources/pronunciation/jyutping-review-expectations.js"
+      ],
+      "runtimeCoverage": "existing_modular_entry",
+      "disposition": "retain_existing_owner_no_bulk_change",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I010",
+      "traditional": "飲",
+      "sourceJyutping": "jam2",
+      "sourceEnglish": "to drink",
+      "lexicalProfile": "dynamic_transitive_or_object_omission",
+      "boundary": "beverage_selection_and_contextual_object_omission",
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "runtimeCoverage": "existing_modular_entry",
+      "disposition": "retain_existing_owner_no_bulk_change",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I011",
+      "traditional": "瞓",
+      "sourceJyutping": "fan3",
+      "sourceEnglish": "to sleep",
+      "lexicalProfile": "intransitive_activity",
+      "boundary": "locative_and_duration_modification",
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "runtimeCoverage": "existing_modular_entry",
+      "disposition": "retain_existing_owner_no_bulk_change",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I012",
+      "traditional": "行",
+      "sourceJyutping": "haang4",
+      "sourceEnglish": "to walk",
+      "lexicalProfile": "motion_or_activity_polysemy",
+      "boundary": "path_goal_and_manner_context_required",
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "runtimeCoverage": "existing_modular_entry",
+      "disposition": "retain_existing_owner_no_bulk_change",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I013",
+      "traditional": "跑",
+      "sourceJyutping": "paau2",
+      "sourceEnglish": "to run",
+      "lexicalProfile": "intransitive_motion_activity",
+      "boundary": "path_goal_and_manner_context_required",
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalPronunciationOwners": [
+        "src/runtime-resources/pronunciation/jyutping-review-expectations.js"
+      ],
+      "runtimeCoverage": "existing_modular_entry",
+      "disposition": "retain_existing_owner_no_bulk_change",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I014",
+      "traditional": "坐",
+      "sourceJyutping": "co5",
+      "sourceEnglish": "to sit",
+      "lexicalProfile": "posture_or_position_verb",
+      "boundary": "location_and_vehicle_readings_require_context",
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "runtimeCoverage": "existing_modular_entry",
+      "disposition": "retain_existing_owner_no_bulk_change",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I015",
+      "traditional": "企",
+      "sourceJyutping": "kei5",
+      "sourceEnglish": "to stand",
+      "lexicalProfile": "posture_or_position_verb",
+      "boundary": "location_and_stance_extensions_require_context",
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "runtimeCoverage": "existing_modular_entry",
+      "disposition": "retain_existing_owner_no_bulk_change",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I016",
+      "traditional": "睇",
+      "sourceJyutping": "tai2",
+      "sourceEnglish": "to look/to watch",
+      "lexicalProfile": "perception_or_activity_transitive",
+      "boundary": "object_omission_and_look_watch_readings",
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "runtimeCoverage": "existing_modular_entry",
+      "disposition": "retain_existing_owner_no_bulk_change",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I017",
+      "traditional": "聽",
+      "sourceJyutping": "teng1",
+      "sourceEnglish": "to listen/to hear",
+      "lexicalProfile": "perception_transitive_or_intransitive",
+      "boundary": "hear_listen_and_addressee_context",
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "runtimeCoverage": "existing_modular_entry",
+      "disposition": "retain_existing_owner_no_bulk_change",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I018",
+      "traditional": "講",
+      "sourceJyutping": "gong2",
+      "sourceEnglish": "to speak/to say",
+      "lexicalProfile": "speech_verb",
+      "boundary": "content_addressee_and_object_omission",
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "runtimeCoverage": "existing_modular_entry",
+      "disposition": "retain_existing_owner_no_bulk_change",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I019",
+      "traditional": "寫",
+      "sourceJyutping": "se2",
+      "sourceEnglish": "to write",
+      "lexicalProfile": "creation_activity_transitive",
+      "boundary": "created_object_and_object_omission",
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "runtimeCoverage": "existing_modular_entry",
+      "disposition": "retain_existing_owner_no_bulk_change",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I020",
+      "traditional": "讀",
+      "sourceJyutping": "duk6",
+      "sourceEnglish": "to read",
+      "lexicalProfile": "reading_or_study_activity",
+      "boundary": "object_and_institutional_readings",
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/study-suite.js"
+      ],
+      "canonicalPronunciationOwners": [
+        "src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js"
+      ],
+      "runtimeCoverage": "existing_modular_entry",
+      "disposition": "retain_existing_owner_no_bulk_change",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I021",
+      "traditional": "做",
+      "sourceJyutping": "zou6",
+      "sourceEnglish": "to do/to make",
+      "lexicalProfile": "highly_productive_light_or_lexical_verb",
+      "boundary": "object_selection_and_construction_specific_analysis",
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "runtimeCoverage": "existing_modular_entry",
+      "disposition": "retain_existing_owner_no_bulk_change",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I022",
+      "traditional": "買",
+      "sourceJyutping": "maai5",
+      "sourceEnglish": "to buy",
+      "lexicalProfile": "acquisition_transitive",
+      "boundary": "theme_recipient_and_benefactive_context",
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "runtimeCoverage": "existing_modular_entry",
+      "disposition": "retain_existing_owner_no_bulk_change",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I023",
+      "traditional": "賣",
+      "sourceJyutping": "maai6",
+      "sourceEnglish": "to sell",
+      "lexicalProfile": "transfer_transitive",
+      "boundary": "theme_recipient_and_source_context",
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "runtimeCoverage": "existing_modular_entry",
+      "disposition": "retain_existing_owner_no_bulk_change",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I024",
+      "traditional": "畀",
+      "sourceJyutping": "bei2",
+      "sourceEnglish": "to give",
+      "lexicalProfile": "give_verb_coverb_or_passive_permissive_marker",
+      "boundary": "lexical_reading_and_relation_must_be_typed_separately",
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "runtimeCoverage": "existing_modular_entry",
+      "disposition": "retain_existing_owner_no_bulk_change",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I025",
+      "traditional": "攞",
+      "sourceJyutping": "lo2",
+      "sourceEnglish": "to take/to get",
+      "lexicalProfile": "take_get_verb",
+      "boundary": "theme_source_and_result_context",
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "runtimeCoverage": "existing_modular_entry",
+      "disposition": "retain_existing_owner_no_bulk_change",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I026",
+      "traditional": "嚟",
+      "sourceJyutping": "lai4",
+      "sourceEnglish": "to come",
+      "lexicalProfile": "deictic_motion_or_directional_element",
+      "boundary": "independent_motion_purpose_and_directional_uses_split",
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [
+        "src/runtime-resources/pronunciation/jyutping-review-expectations.js"
+      ],
+      "runtimeCoverage": "existing_modular_entry",
+      "disposition": "retain_existing_owner_no_bulk_change",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I027",
+      "traditional": "去",
+      "sourceJyutping": "heoi3",
+      "sourceEnglish": "to go",
+      "lexicalProfile": "deictic_motion_or_directional_purpose_element",
+      "boundary": "destination_motion_purpose_and_directional_uses_split",
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "runtimeCoverage": "existing_modular_entry",
+      "disposition": "retain_existing_owner_no_bulk_change",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I028",
+      "traditional": "返",
+      "sourceJyutping": "faan1",
+      "sourceEnglish": "to return/to go back",
+      "lexicalProfile": "return_motion_or_directional_element",
+      "boundary": "destination_and_deictic_chain_context",
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [
+        "src/runtime-resources/pronunciation/jyutping-review-expectations.js"
+      ],
+      "runtimeCoverage": "existing_modular_entry",
+      "disposition": "retain_existing_owner_no_bulk_change",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I029",
+      "traditional": "住",
+      "sourceJyutping": "zyu6",
+      "sourceEnglish": "to live",
+      "lexicalProfile": "residence_verb_or_aspectual_durative_marker",
+      "boundary": "lexical_and_grammatical_readings_split",
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/study-suite.js"
+      ],
+      "canonicalPronunciationOwners": [
+        "src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js"
+      ],
+      "runtimeCoverage": "existing_modular_entry",
+      "disposition": "retain_existing_owner_no_bulk_change",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I030",
+      "traditional": "著",
+      "sourceJyutping": "zoek3",
+      "sourceEnglish": "to wear",
+      "lexicalProfile": "wear_verb_with_reading_collision",
+      "boundary": "source_zoek3_requires_lexical_pronunciation_review",
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "runtimeCoverage": "missing_exact_modular_entry",
+      "disposition": "dedicated_lexical_and_pronunciation_review",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I031",
+      "traditional": "洗",
+      "sourceJyutping": "sai2",
+      "sourceEnglish": "to wash",
+      "lexicalProfile": "washing_activity_transitive",
+      "boundary": "theme_omission_and_compound_readings",
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "runtimeCoverage": "existing_modular_entry",
+      "disposition": "retain_existing_owner_no_bulk_change",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I032",
+      "traditional": "煮",
+      "sourceJyutping": "zyu2",
+      "sourceEnglish": "to cook",
+      "lexicalProfile": "cooking_activity_transitive",
+      "boundary": "food_object_and_result_context",
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [
+        "src/runtime-resources/pronunciation/jyutping-review-expectations.js"
+      ],
+      "runtimeCoverage": "existing_modular_entry",
+      "disposition": "retain_existing_owner_no_bulk_change",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I033",
+      "traditional": "開",
+      "sourceJyutping": "hoi1",
+      "sourceEnglish": "to open",
+      "lexicalProfile": "open_begin_or_directional_result_verb",
+      "boundary": "lexical_senses_and_complement_readings_split",
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/statives.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "runtimeCoverage": "existing_modular_entry",
+      "disposition": "retain_existing_owner_no_bulk_change",
+      "implementationAuthorized": false
+    }
+  ]
+}
