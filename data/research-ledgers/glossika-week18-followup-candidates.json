@@ -1,0 +1,184 @@
+{
+  "schema": "canto-span-research-followup-candidates-v1",
+  "packetId": "GLOSSIKA-YUEHK-A1-W18-20260719-FOLLOWUP-R1",
+  "sourceId": "GLOSSIKA-YUEHK-A1-W18-20260719",
+  "policy": {
+    "itemsAreDecisions": false,
+    "automaticDispatch": false,
+    "nativePanelRule": "Use a role-neutral panel only after direct Cantonese research and contextual corpus evidence leave an item-level naturalness, register, or interpretation question unresolved.",
+    "promotionRule": "No follow-up item promotes a construction or changes runtime behavior."
+  },
+  "candidates": [
+    {
+      "id": "W18-F01",
+      "cluster": "clarification_and_repair",
+      "sourceItemIds": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I001",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I002",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I003",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I004"
+      ],
+      "question": "Which forms are conventional repair initiators, repetition requests, referent clarifications, or meaning clarifications in modern Cantonese, and what trouble source and response does each require?",
+      "nextMethod": "cantonese_conversation_corpus_inventory_then_contextual_panel_if_needed",
+      "priority": "high",
+      "blockedActions": ["single_repair_construction", "register_acceptance", "me1_identity_inference"]
+    },
+    {
+      "id": "W18-F02",
+      "cluster": "ge3_nominalization_and_ellipsis",
+      "sourceItemIds": ["GLOSSIKA-YUEHK-A1-W18-20260719-I002"],
+      "question": "What constituent is licensed after 你講嘅, what material may remain unspoken, and how does the phrase compose with 係邊個?",
+      "nextMethod": "direct_ge3_nominalization_research_plus_contextual_minimal_contrasts",
+      "priority": "high",
+      "blockedActions": ["invented_omitted_noun", "sentence_final_particle_only_analysis", "generic_identity_question_rule"]
+    },
+    {
+      "id": "W18-F03",
+      "cluster": "turn_management_formulas",
+      "sourceItemIds": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I005",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I006",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I007",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I008"
+      ],
+      "question": "Which interruption and floor-holding expressions are ordinary Cantonese, translated or formal, and what politeness and sequential contexts license them?",
+      "nextMethod": "conversation_corpus_and_role_neutral_context_panel",
+      "priority": "high",
+      "blockedActions": ["formula_ingress", "politeness_feature", "automatic_naturalness_acceptance"]
+    },
+    {
+      "id": "W18-F04",
+      "cluster": "dang2_completion_sequence_request",
+      "sourceItemIds": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I005",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I008"
+      ],
+      "question": "How should 等陣, 等我講完, 先, and 好唔好 be decomposed across waiting, permissive or floor-holding, completion, sequencing, and request-force relations?",
+      "nextMethod": "direct_cantonese_dang2_and_completion_research_plus_corpus_contrasts",
+      "priority": "high",
+      "blockedActions": ["one_turn_management_construction", "generic_dang2_np_vp_rule", "completion_request_merger"]
+    },
+    {
+      "id": "W18-F05",
+      "cluster": "perfective_final_mei6_question",
+      "sourceItemIds": ["GLOSSIKA-YUEHK-A1-W18-20260719-I072"],
+      "question": "What exact aspectual and discourse restrictions distinguish V咗O未 questions from preverbal 未 statements, V過未 experiential questions, 有冇 questions, and A-not-A forms?",
+      "nextMethod": "direct_aspect_question_research_plus_minimal_contexts",
+      "priority": "high",
+      "blockedActions": ["negative_experiential_routing", "a_not_a_merger", "generic_final_mei6_rule"]
+    },
+    {
+      "id": "W18-F06",
+      "cluster": "motion_purpose_relation",
+      "sourceItemIds": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I075",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I077"
+      ],
+      "question": "Do the current modular owners preserve overt destination motion and an immediately following compatible purpose VP without merging the two predicates or overgeneralizing all verb sequences?",
+      "nextMethod": "canonical_parser_audit_against_batch14_boundaries",
+      "priority": "medium",
+      "blockedActions": ["new_identity", "all_two_verb_sequences_as_purpose", "hidden_destination_or_subject"]
+    },
+    {
+      "id": "W18-F07",
+      "cluster": "stay_locative_activity",
+      "sourceItemIds": ["GLOSSIKA-YUEHK-A1-W18-20260719-I078"],
+      "question": "How do lexical 留, event-location 喺屋企, and the following activity 睇電視 compose, and which omitted coordination or purpose readings remain possible?",
+      "nextMethod": "coverb_and_locative_parser_audit_plus_corpus_contexts",
+      "priority": "medium",
+      "blockedActions": ["standalone_locative_merger", "single_serial_verb_identity", "hidden_linker_insertion"]
+    },
+    {
+      "id": "W18-F08",
+      "cluster": "bang1_benefactive",
+      "sourceItemIds": ["GLOSSIKA-YUEHK-A1-W18-20260719-I079"],
+      "question": "What lexical, coverbal, applicative, or participant relation does 幫你 contribute before 買嘢, and what argument and animacy restrictions apply?",
+      "nextMethod": "direct_cantonese_bang1_research_and_corpus_inventory",
+      "priority": "high",
+      "blockedActions": ["token_only_benefactive_assignment", "generic_bang1_np_vp_rule", "transfer_identity_change"]
+    },
+    {
+      "id": "W18-F09",
+      "cluster": "return_deictic_directional",
+      "sourceItemIds": ["GLOSSIKA-YUEHK-A1-W18-20260719-I079"],
+      "question": "What motion, return, deixis, path, and discourse relations are overt in 買嘢返嚟, and is the directional sequence attached to the buying event or a following return event?",
+      "nextMethod": "directional_verb_research_plus_contextual_corpus_contrasts",
+      "priority": "high",
+      "blockedActions": ["generic_serial_verb_parse", "aspect_marker_analysis", "speaker_location_invention"]
+    },
+    {
+      "id": "W18-F10",
+      "cluster": "zoek3_wear_lexeme",
+      "sourceItemIds": ["GLOSSIKA-YUEHK-A1-W18-20260719-I030"],
+      "question": "What canonical lexical owner, Jyutping reading, valency, written-form alternatives, and collision boundaries are required for 著 zoek3 'wear'?",
+      "nextMethod": "dictionary_and_corpus_lexical_review_then_focused_runtime_issue",
+      "priority": "medium",
+      "blockedActions": ["silent_runtime_ingress", "reading_merger", "aspectual_zyu6_collision"]
+    },
+    {
+      "id": "W18-F11",
+      "cluster": "temporal_lexical_classes_and_register",
+      "sourceItemIds": [],
+      "question": "Which of the 28 temporal forms are ordinary spoken time words, measure nouns, schedule nouns, relational expressions, scalar properties, periodicity modifiers, or formal and written vocabulary?",
+      "nextMethod": "cantonese_dictionary_corpus_and_register_inventory_using_temporal_audit",
+      "priority": "high",
+      "blockedActions": ["bulk_lexicon_ingress", "all_time_words_as_adverbs", "a1_register_acceptance"]
+    },
+    {
+      "id": "W18-F12",
+      "cluster": "sentence_final_particle_profiles",
+      "sourceItemIds": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I080",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I081",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I082",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I083",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I084",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I085",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I086",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I087",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I088",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I089",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I090"
+      ],
+      "question": "What tone-specific clause, discourse, response, prosodic, cluster, and non-final profiles are required for each source-listed particle?",
+      "nextMethod": "reuse_existing_particle_research_units_and_create_missing_particle_units_only",
+      "priority": "high",
+      "blockedActions": ["one_gloss_per_particle", "orthography_only_identity", "generic_particle_force_inference"]
+    },
+    {
+      "id": "W18-F13",
+      "cluster": "phonics_oe_eo",
+      "sourceItemIds": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I094",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I095",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I096",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I097",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I098",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I099"
+      ],
+      "question": "Are the IPA, Jyutping, tones, lexical choices, glosses, and stated /oe/ versus /eo/ membership accurate for every row, and what B-side source is missing for 香?",
+      "nextMethod": "item_level_phonological_verification",
+      "priority": "high",
+      "blockedActions": ["pronunciation_resource_ingress", "silent_completion_of_missing_pair", "heading_based_generalization"]
+    }
+  ],
+  "nonCandidates": [
+    {
+      "cluster": "large_numerals",
+      "sourceItemIds": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I061",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I062",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I063",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I064",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I065",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I066",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I067",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I068",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I069",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I070"
+      ],
+      "disposition": "retain_compositional_numeral_analysis",
+      "reason": "All ten 億 forms remain compositionally analyzable; no opaque bulk lexical entries are warranted."
+    }
+  ]
+}
