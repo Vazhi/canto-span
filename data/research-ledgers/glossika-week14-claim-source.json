@@ -1,0 +1,178 @@
+{
+  "schema": "canto-span-claim-source-ledger-v1",
+  "packetId": "GLOSSIKA-YUEHK-A1-W14-20260621-CLAIM-SOURCE-R1",
+  "sourceId": "GLOSSIKA-YUEHK-A1-W14-20260621",
+  "intakeIssue": 126,
+  "workClaimIssue": 261,
+  "evidencePolicy": {
+    "glossikaWeight": "pedagogical_and_lexical_attestation_only",
+    "externalSourceRequirement": "Grammar and register conclusions require independently checkable linguistic analysis.",
+    "corpusRule": "Attestation does not establish unrestricted productivity, preferred analysis, register, or dialect-wide naturalness.",
+    "implementationAuthorized": false
+  },
+  "sources": [
+    {
+      "id": "S-GLOSSIKA-W14",
+      "type": "authorized_pedagogical_source",
+      "citation": "Glossika Cantonese (HK) A1, Week 14, Cantonese – Making Plans & Appointments, 2026-06-21",
+      "locator": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/source.json",
+      "scope": "Exact lesson forms, source Jyutping, source glosses, source order, and pedagogical labels only."
+    },
+    {
+      "id": "S-LEE-1983-APOLOGY",
+      "type": "direct_cantonese_pragmatics",
+      "citation": "Li Lee, May-yu. 1983. Making Apologies in Cantonese.",
+      "locator": "https://eric.ed.gov/?id=ED263790",
+      "scope": "Cantonese apology choice varies with situational and social variables including role, age, severity, and interlocutor background."
+    },
+    {
+      "id": "S-LEE-2008-APOLOGY",
+      "type": "direct_cantonese_pragmatics",
+      "citation": "Lee, Cynthia. 2008. The Cantonese apology style for personal offences in native and second languages in electronic communication. Journal of Intercultural Communication 8(3):1–16.",
+      "locator": "https://doi.org/10.36923/jicc.v8i3.469",
+      "scope": "Cantonese apology strategies are multi-componential and sensitive to offence interpretation and communicative situation."
+    },
+    {
+      "id": "S-WONG-LIU-2019-GRATITUDE",
+      "type": "direct_cantonese_semantics_pragmatics",
+      "citation": "Wong, Jock, and Congyi Liu. 2019. Two Ways of Saying ‘Thank You’ in Hong Kong Cantonese: m-goi vs. do-ze. In Further Advances in Pragmatics and Philosophy, Part 2, 435–447.",
+      "locator": "https://doi.org/10.1007/978-3-030-00973-1_24",
+      "scope": "唔該 and 多謝 have distinguishable meanings and functions; they are not merely formality variants, although some contexts permit both."
+    },
+    {
+      "id": "S-LEE-2013-GRATITUDE",
+      "type": "direct_cantonese_syntax_semantics",
+      "citation": "Lee, Mei-shan. 2013. Gratitude expressions with mh-goi and do-jeh in Cantonese: their syntax, lexical semantics and sentence semantics. University of Hong Kong thesis.",
+      "locator": "https://doi.org/10.5353/th_b5091048",
+      "scope": "Direct analysis of the two principal Cantonese gratitude expressions and their syntax and semantics."
+    },
+    {
+      "id": "S-SYBESMA-LI-2007-SFP",
+      "type": "direct_cantonese_grammar",
+      "citation": "Sybesma, Rint, and Boya Li. 2007. The dissection and structural mapping of Cantonese sentence final particles. Lingua 117(10):1739–1783.",
+      "locator": "https://doi.org/10.1016/j.lingua.2006.10.003",
+      "scope": "Direct structural and semantic analysis of Cantonese sentence-final particles, including g-initial and tone-3 particle families."
+    },
+    {
+      "id": "S-YU-HU-2025-GAA3",
+      "type": "direct_cantonese_grammar",
+      "citation": "Yu, Zhiyin, and Xiaoshi Hu. 2025. The Syntax of the Sentence-final Particle gaa3 in Cantonese. Current Research in Chinese Linguistics 104(2):653–678.",
+      "locator": "https://doi.org/10.29499/CrCL.202507_104(2).0022",
+      "scope": "㗎 gaa3 occurs in declarative, interrogative, and exclamative structures across multiple discourse contexts; a single coarse gloss is inadequate."
+    },
+    {
+      "id": "S-WONG-ETAL-2022-GRAMMAR",
+      "type": "direct_cantonese_grammar",
+      "citation": "Wong, Anita M.-Y., Cheung, C. C.-H., Lo, J. M.-W., and Wan, E. K.-H. 2022. Grammatical Analysis of Cantonese Samples. In Understanding Development and Disorder in Cantonese Using Language Sample Analysis.",
+      "locator": "ISBN 9780367424190; chapter 2.3 Degree Adverbs",
+      "scope": "幾 gei2 is analyzed as a degree adverb meaning approximately ‘quite’, modifying an adjective or stative verb."
+    },
+    {
+      "id": "S-LAM-LAU-LEE-2024-SEGMENTATION",
+      "type": "direct_cantonese_morphosyntax",
+      "citation": "Lam, Charles, Chaak-ming Lau, and Jackson L. Lee. 2024. Multi-Tiered Cantonese Word Segmentation. LREC-COLING 2024:11993–12002.",
+      "locator": "https://aclanthology.org/2024.lrec-main.1047/",
+      "scope": "Cantonese numerals are compositionally structured even when a word-level segmentation tier treats the written numeral as one unit; numeral-classifier structure remains independently productive."
+    },
+    {
+      "id": "S-BAUER-BENEDICT-1997-PHONOLOGY",
+      "type": "reference_phonology",
+      "citation": "Bauer, Robert S., and Paul K. Benedict. 1997. Modern Cantonese Phonology.",
+      "locator": "https://doi.org/10.1515/9783110823707",
+      "scope": "Reference inventory and analysis of Cantonese vowels, syllables, and phonological contrasts."
+    },
+    {
+      "id": "S-LUO-LI-MOK-2020-VOWELS",
+      "type": "experimental_cantonese_phonetics",
+      "citation": "Luo, Jingxin, Vivian Guo Li, and Peggy Pik Ki Mok. 2020. The Perception of Cantonese Vowel Length Contrast by Mandarin Speakers. Language and Speech 63(3):635–659.",
+      "locator": "https://doi.org/10.1177/0023830919879471",
+      "scope": "Perception of /aː/–/ɐ/, /ɛː/–/e/, and /ɔː/–/o/ involves exposure and both quality and duration; the contrasts should not all be taught as duration-only."
+    }
+  ],
+  "claims": [
+    {
+      "id": "W14-C01",
+      "claim": "The lesson's binary Casual/Polite labels are not an adequate linguistic classification of the apology forms.",
+      "status": "supported_external",
+      "sourceIds": ["S-GLOSSIKA-W14", "S-LEE-1983-APOLOGY", "S-LEE-2008-APOLOGY"],
+      "boundary": "Retain the labels as immutable source metadata only; do not convert them into runtime register features."
+    },
+    {
+      "id": "W14-C02",
+      "claim": "唔好意思 and 對唔住 cannot be ordered by a simple casual-versus-polite scale without specifying offence, discourse purpose, severity, and interlocutor relation.",
+      "status": "supported_external_narrow",
+      "sourceIds": ["S-LEE-1983-APOLOGY", "S-LEE-2008-APOLOGY"],
+      "boundary": "The sources support contextual sensitivity, not a complete item-by-item semantic decomposition of the two lesson forms."
+    },
+    {
+      "id": "W14-C03",
+      "claim": "唔該 and 多謝 are functionally and semantically distinct gratitude expressions rather than casual and polite versions of one expression.",
+      "status": "supported_external",
+      "sourceIds": ["S-WONG-LIU-2019-GRATITUDE", "S-LEE-2013-GRATITUDE"],
+      "boundary": "Some contexts permit overlap; do not encode a categorical one-context-only rule from this packet."
+    },
+    {
+      "id": "W14-C04",
+      "claim": "Sentence-final 㗎 gaa3 is compatible with declarative, interrogative, and exclamative structures and has context-sensitive discourse interpretations.",
+      "status": "supported_external",
+      "sourceIds": ["S-SYBESMA-LI-2007-SFP", "S-YU-HU-2025-GAA3"],
+      "boundary": "The lesson's generic SFP gloss does not determine which gaa3 analysis applies in each dialog turn."
+    },
+    {
+      "id": "W14-C05",
+      "claim": "The final 嘅 ge3 in 我做會計嘅 and 人工OK嘅 should not be analyzed as occupation morphology or as the attributive marker merely from orthography.",
+      "status": "partially_supported_unresolved_item_analysis",
+      "sourceIds": ["S-GLOSSIKA-W14", "S-SYBESMA-LI-2007-SFP"],
+      "boundary": "The g-family particle analysis is externally supported, but the exact discourse and syntactic analysis of each source item remains open."
+    },
+    {
+      "id": "W14-C06",
+      "claim": "幾 in 幾辛苦㗎 is a degree adverb modifying a scalar or stative predicate, approximately ‘quite/fairly’ in this use.",
+      "status": "supported_external_narrow",
+      "sourceIds": ["S-GLOSSIKA-W14", "S-WONG-ETAL-2022-GRAMMAR"],
+      "boundary": "Exclude interrogative 幾, numeral 幾, and unsupported ellipsis from automatic identification of this degree use."
+    },
+    {
+      "id": "W14-C07",
+      "claim": "做咩工 and 做會計 are occupational question/predicate attestations, but this packet does not establish a dedicated occupational construction or the argument structure of 做.",
+      "status": "source_attested_only",
+      "sourceIds": ["S-GLOSSIKA-W14"],
+      "boundary": "Requires broader direct grammar and corpus evidence before identity or parser work."
+    },
+    {
+      "id": "W14-C08",
+      "claim": "喺 + workplace + 返工 is at minimum compatible with a locative phrase plus work predicate analysis; the source does not license a new workplace-locative construction.",
+      "status": "conservative_inference",
+      "sourceIds": ["S-GLOSSIKA-W14"],
+      "boundary": "No parser or construction change follows from this source alone."
+    },
+    {
+      "id": "W14-C09",
+      "claim": "一萬 through 十萬 should remain compositionally analyzed rather than added as ten opaque whole-form lexical entries.",
+      "status": "supported_external_and_repository_policy",
+      "sourceIds": ["S-GLOSSIKA-W14", "S-LAM-LAU-LEE-2024-SEGMENTATION"],
+      "boundary": "This does not decide every runtime token boundary for complex money and salary expressions."
+    },
+    {
+      "id": "W14-C10",
+      "claim": "The lesson's long-versus-short vowel material is pronunciation evidence only; Cantonese vowel contrasts may involve both duration and quality, and each pair requires item-level verification.",
+      "status": "supported_external",
+      "sourceIds": ["S-GLOSSIKA-W14", "S-BAUER-BENEDICT-1997-PHONOLOGY", "S-LUO-LI-MOK-2020-VOWELS"],
+      "boundary": "Do not generalize a pure-duration rule from /aː/–/ɐ/ to every vowel pair."
+    },
+    {
+      "id": "W14-C11",
+      "claim": "Glossika source glosses for 打工, 見工, and 出糧 require lexical review before learner-facing reuse.",
+      "status": "review_flag_not_correction",
+      "sourceIds": ["S-GLOSSIKA-W14"],
+      "boundary": "The source values remain immutable; this ledger does not assert corrected replacement glosses."
+    }
+  ],
+  "disposition": {
+    "grammarPromotionAuthorized": false,
+    "runtimeChangeAuthorized": false,
+    "statusChangeAuthorized": false,
+    "surveyDeploymentAuthorized": false,
+    "nextEvidence": "Use the follow-up candidate ledger for bounded corpus research or role-neutral panel design only where external evidence remains inconclusive."
+  }
+}

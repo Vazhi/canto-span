@@ -1,0 +1,464 @@
+{
+  "schema": "canto-span-glossika-lexical-ingress-candidates-v1",
+  "packetId": "GLOSSIKA-YUEHK-A1-W14-20260621-LEXICAL-INGRESS-R1",
+  "sourceId": "GLOSSIKA-YUEHK-A1-W14-20260621",
+  "generatedFrom": {
+    "sourcePath": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/source.json",
+    "canonicalLexiconRoot": "src/runtime-resources/lexicon",
+    "exactOwnersScanned": [
+      "token-lexicon",
+      "productive-vo",
+      "formulas",
+      "compositional-lexical-phrases"
+    ]
+  },
+  "policy": {
+    "glossikaWeight": "pedagogical_and_lexical_attestation_only",
+    "exactCoverageRule": "An exact canonical runtime entry blocks duplicate ingress.",
+    "numeralRule": "Digit or ten plus 萬 remains compositional; do not add ten opaque whole-form entries.",
+    "implementationAuthorized": false
+  },
+  "counts": {
+    "lexical_ingress_candidate": 21,
+    "already_covered_exact": 4,
+    "compositional_numeral_no_opaque_entry": 10
+  },
+  "entries": [
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W14-20260621-I009",
+      "ordinal": 9,
+      "traditional": "返工",
+      "sourceJyutping": "faan1 gung1",
+      "sourceEnglish": "to go to work",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W14-20260621-I010",
+      "ordinal": 10,
+      "traditional": "放工",
+      "sourceJyutping": "fong3 gung1",
+      "sourceEnglish": "to get off work",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W14-20260621-I011",
+      "ordinal": 11,
+      "traditional": "公司",
+      "sourceJyutping": "gung1 si1",
+      "sourceEnglish": "company",
+      "exactRuntimeOwners": [
+        "src/runtime-resources/lexicon/token-lexicon"
+      ],
+      "rawCanonicalMentions": [
+        "src/runtime-resources/lexicon/token-lexicon/people-and-address.js"
+      ],
+      "compositionalNumeral": false,
+      "disposition": "already_covered_exact",
+      "recommendation": "no_duplicate_ingress"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W14-20260621-I012",
+      "ordinal": 12,
+      "traditional": "辦公室",
+      "sourceJyutping": "baan6 gung1 sat1",
+      "sourceEnglish": "office",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W14-20260621-I013",
+      "ordinal": 13,
+      "traditional": "老闆",
+      "sourceJyutping": "lou5 baan2",
+      "sourceEnglish": "boss",
+      "exactRuntimeOwners": [
+        "src/runtime-resources/lexicon/token-lexicon"
+      ],
+      "rawCanonicalMentions": [
+        "src/runtime-resources/lexicon/token-lexicon/people-and-address.js"
+      ],
+      "compositionalNumeral": false,
+      "disposition": "already_covered_exact",
+      "recommendation": "no_duplicate_ingress"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W14-20260621-I014",
+      "ordinal": 14,
+      "traditional": "開會",
+      "sourceJyutping": "hoi1 wui2",
+      "sourceEnglish": "to have a meeting",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W14-20260621-I015",
+      "ordinal": 15,
+      "traditional": "出糧",
+      "sourceJyutping": "ceot1 loeng4",
+      "sourceEnglish": "to get paid",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W14-20260621-I016",
+      "ordinal": 16,
+      "traditional": "放假",
+      "sourceJyutping": "fong3 gaa3",
+      "sourceEnglish": "to have a holiday",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W14-20260621-I017",
+      "ordinal": 17,
+      "traditional": "打工",
+      "sourceJyutping": "daa2 gung1",
+      "sourceEnglish": "to work (part-time)",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W14-20260621-I018",
+      "ordinal": 18,
+      "traditional": "人工",
+      "sourceJyutping": "jan4 gung1",
+      "sourceEnglish": "salary",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W14-20260621-I019",
+      "ordinal": 19,
+      "traditional": "加班",
+      "sourceJyutping": "gaa1 baan1",
+      "sourceEnglish": "to work overtime",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W14-20260621-I020",
+      "ordinal": 20,
+      "traditional": "辭職",
+      "sourceJyutping": "ci4 zik1",
+      "sourceEnglish": "to resign",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W14-20260621-I021",
+      "ordinal": 21,
+      "traditional": "見工",
+      "sourceJyutping": "gin3 gung1",
+      "sourceEnglish": "job interview",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W14-20260621-I022",
+      "ordinal": 22,
+      "traditional": "履歷",
+      "sourceJyutping": "lei5 lik6",
+      "sourceEnglish": "resume/CV",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W14-20260621-I023",
+      "ordinal": 23,
+      "traditional": "職位",
+      "sourceJyutping": "zik1 wai2",
+      "sourceEnglish": "position/job title",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W14-20260621-I024",
+      "ordinal": 24,
+      "traditional": "合約",
+      "sourceJyutping": "hap6 joek3",
+      "sourceEnglish": "contract",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W14-20260621-I025",
+      "ordinal": 25,
+      "traditional": "遲到",
+      "sourceJyutping": "ci4 dou3",
+      "sourceEnglish": "to be late",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W14-20260621-I026",
+      "ordinal": 26,
+      "traditional": "準時",
+      "sourceJyutping": "zeon2 si4",
+      "sourceEnglish": "on time",
+      "exactRuntimeOwners": [
+        "src/runtime-resources/lexicon/token-lexicon"
+      ],
+      "rawCanonicalMentions": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "compositionalNumeral": false,
+      "disposition": "already_covered_exact",
+      "recommendation": "no_duplicate_ingress"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W14-20260621-I027",
+      "ordinal": 27,
+      "traditional": "電腦",
+      "sourceJyutping": "din6 nou5",
+      "sourceEnglish": "computer",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W14-20260621-I028",
+      "ordinal": 28,
+      "traditional": "電郵",
+      "sourceJyutping": "din6 jau4",
+      "sourceEnglish": "email",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W14-20260621-I029",
+      "ordinal": 29,
+      "traditional": "傳真",
+      "sourceJyutping": "cyun4 zan1",
+      "sourceEnglish": "fax",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W14-20260621-I030",
+      "ordinal": 30,
+      "traditional": "影印",
+      "sourceJyutping": "jing2 jan3",
+      "sourceEnglish": "to photocopy",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W14-20260621-I031",
+      "ordinal": 31,
+      "traditional": "文件",
+      "sourceJyutping": "man4 gin2",
+      "sourceEnglish": "document",
+      "exactRuntimeOwners": [
+        "src/runtime-resources/lexicon/token-lexicon"
+      ],
+      "rawCanonicalMentions": [
+        "src/runtime-resources/lexicon/token-lexicon/study-suite.js"
+      ],
+      "compositionalNumeral": false,
+      "disposition": "already_covered_exact",
+      "recommendation": "no_duplicate_ingress"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W14-20260621-I032",
+      "ordinal": 32,
+      "traditional": "客戶",
+      "sourceJyutping": "haak3 wu6",
+      "sourceEnglish": "client",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W14-20260621-I033",
+      "ordinal": 33,
+      "traditional": "實習生",
+      "sourceJyutping": "sat6 zaap6 saang1",
+      "sourceEnglish": "intern",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": false,
+      "disposition": "lexical_ingress_candidate",
+      "recommendation": "review_for_smallest_canonical_lexicon_owner"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W14-20260621-I034",
+      "ordinal": 34,
+      "traditional": "一萬",
+      "sourceJyutping": "jat1 maan6",
+      "sourceEnglish": "10,000",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": true,
+      "disposition": "compositional_numeral_no_opaque_entry",
+      "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W14-20260621-I035",
+      "ordinal": 35,
+      "traditional": "二萬",
+      "sourceJyutping": "ji6 maan6",
+      "sourceEnglish": "20,000",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": true,
+      "disposition": "compositional_numeral_no_opaque_entry",
+      "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W14-20260621-I036",
+      "ordinal": 36,
+      "traditional": "三萬",
+      "sourceJyutping": "saam1 maan6",
+      "sourceEnglish": "30,000",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": true,
+      "disposition": "compositional_numeral_no_opaque_entry",
+      "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W14-20260621-I037",
+      "ordinal": 37,
+      "traditional": "四萬",
+      "sourceJyutping": "sei3 maan6",
+      "sourceEnglish": "40,000",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": true,
+      "disposition": "compositional_numeral_no_opaque_entry",
+      "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W14-20260621-I038",
+      "ordinal": 38,
+      "traditional": "五萬",
+      "sourceJyutping": "ng5 maan6",
+      "sourceEnglish": "50,000",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": true,
+      "disposition": "compositional_numeral_no_opaque_entry",
+      "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W14-20260621-I039",
+      "ordinal": 39,
+      "traditional": "六萬",
+      "sourceJyutping": "luk6 maan6",
+      "sourceEnglish": "60,000",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": true,
+      "disposition": "compositional_numeral_no_opaque_entry",
+      "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W14-20260621-I040",
+      "ordinal": 40,
+      "traditional": "七萬",
+      "sourceJyutping": "cat1 maan6",
+      "sourceEnglish": "70,000",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": true,
+      "disposition": "compositional_numeral_no_opaque_entry",
+      "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W14-20260621-I041",
+      "ordinal": 41,
+      "traditional": "八萬",
+      "sourceJyutping": "baat3 maan6",
+      "sourceEnglish": "80,000",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": true,
+      "disposition": "compositional_numeral_no_opaque_entry",
+      "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W14-20260621-I042",
+      "ordinal": 42,
+      "traditional": "九萬",
+      "sourceJyutping": "gau2 maan6",
+      "sourceEnglish": "90,000",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": true,
+      "disposition": "compositional_numeral_no_opaque_entry",
+      "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W14-20260621-I043",
+      "ordinal": 43,
+      "traditional": "十萬",
+      "sourceJyutping": "sap6 maan6",
+      "sourceEnglish": "100,000",
+      "exactRuntimeOwners": [],
+      "rawCanonicalMentions": [],
+      "compositionalNumeral": true,
+      "disposition": "compositional_numeral_no_opaque_entry",
+      "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+    }
+  ]
+}
