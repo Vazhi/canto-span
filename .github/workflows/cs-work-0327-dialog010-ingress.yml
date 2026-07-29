@@ -40,9 +40,9 @@ jobs:
           if(turns[27].source.jyutpingLine!=='/nei5 gei3 dak1 jiu3 book1 toi2 aa3./'||turns[36].source.jyutpingLine!=='/hou2, ngo5 book1 jyun4 toi2 zau6 waa6 nei5 zi1./'||turns[37].source.jyutpingLine!=='/ok1, ngo5 dang2 nei5 siu1 sik1./') throw new Error('Book/OK romanization preservation failed');
           if(vocab.some((item,index)=>item.vocabularyOrdinal!==index+1||typeof item.sourceDialogOccurrence?.exactSurfacePresent!=='boolean')) throw new Error('Vocabulary order or source-block audit failed');
           if(crosswalk.items.length!==80||review.records.length!==80) throw new Error('Crosswalk/review alignment failed');
-          if(crosswalk.summary.vocabularyExactSurfaceAbsentFromDialogCount!==4||crosswalk.sourceBlockAudit.absentVocabulary.length!==4) throw new Error('Expected four glossary surfaces absent from dialog');
+          if(crosswalk.summary.vocabularyExactSurfaceAbsentFromDialogCount!==5||crosswalk.sourceBlockAudit.absentVocabulary.length!==5) throw new Error('Expected five glossary surfaces absent from dialog');
           const absent=new Set(crosswalk.sourceBlockAudit.absentVocabulary.map(item=>item.traditional));
-          for(const value of ['點樣','下次','唔該','冇問題']) if(!absent.has(value)) throw new Error(`Missing expected absent glossary surface ${value}`);
+          for(const value of ['點樣','下次','定','唔該','冇問題']) if(!absent.has(value)) throw new Error(`Missing expected absent glossary surface ${value}`);
           if(crosswalk.architecture.generatedExcluded[0]!=='main.js') throw new Error('main.js exclusion missing');
           if(crosswalk.items.some(item=>[...item.canonicalExactOwners,...item.canonicalNormalizedOwners,...item.supportingExactOwners,...item.supportingNormalizedOwners].includes('main.js'))) throw new Error('main.js leaked into ownership');
           const turnWalk=crosswalk.items.filter(item=>item.itemType==='dialog_turn');
