@@ -1,0 +1,56 @@
+name: CS-WORK-0341 Dialog 014 corpus ingress
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    if: github.event.pull_request.head.ref == 'agent/glossika-dialog-014-ingress'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Install dependencies
+        run: npm ci
+      - name: Build and run source-preserving generator
+        run: |
+          git show 9dda1f30b0d37cd542ea55a69b2bb1941377745e:tools/tmp/cs-work-0339-generate-dialog013.js > /tmp/dialog013-base.js
+          node tools/tmp/cs-work-0341-transform-dialog014.js /tmp/dialog013-base.js tools/tmp/cs-work-0341-generate-dialog014.js
+          node tools/tmp/cs-work-0341-generate-dialog014.js
+      - name: Validate package and repository
+        run: |
+          node <<'NODE'
+          const fs=require('fs');
+          const root='data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-014-20260308';
+          const source=require(`./${root}/source.json`),cross=require(`./${root}/crosswalk.json`),review=require(`./${root}/review.json`);
+          if(source.items.length!==40||source.ingress.turnCount!==40||source.ingress.vocabularyCount!==0||source.ingress.vocabularyBlockState!=='source_empty') throw new Error('Unexpected source counts or vocabulary state');
+          if(source.items.some((x,i)=>x.turn!==i+1||x.speaker!==(i%2===0?'家豪':'詠琪')||x.source.english!==null||/[A-Z]/.test(x.source.jyutpingLine))) throw new Error('Turn, speaker, translation, or romanization preservation failed');
+          if(cross.items.length!==40||review.records.length!==40||cross.sourceBlockAudit.state!=='source_empty'||cross.sourceBlockAudit.absentVocabulary.length!==0) throw new Error('Crosswalk, review, or empty vocabulary audit failed');
+          if(cross.items.some(x=>[...x.canonicalExactOwners,...x.canonicalNormalizedOwners,...x.supportingExactOwners,...x.supportingNormalizedOwners].includes('main.js'))) throw new Error('main.js leaked into ownership');
+          if(cross.items.some((x,i)=>x.adjacency.previousTurnId!==(i===0?null:`GLOSSIKA-YUEHK-A1-DLG-014-20260308-I${String(i).padStart(3,'0')}`)||x.adjacency.nextTurnId!==(i===39?null:`GLOSSIKA-YUEHK-A1-DLG-014-20260308-I${String(i+2).padStart(3,'0')}`))) throw new Error('Adjacency failed');
+          if(fs.readFileSync(`${root}/items.tsv`,'utf8').trimEnd().split('\n').length!==41) throw new Error('TSV row count failed');
+          if(!review.summary.knownSourceAlerts.some(x=>x.type==='empty_source_vocabulary_block')||review.summary.knownSourceAlerts.some(x=>x.type==='non_alternating_speaker_sequence')) throw new Error('Source alerts failed');
+          for(const type of ['cooking_swimming_ability_review','ball_skill_performance_review','music_learning_review','dance_reciprocal_teaching_schedule_review']) if(!review.summary.knownSourceAlerts.some(x=>x.type===type)) throw new Error(`Missing route ${type}`);
+          NODE
+          git diff --check
+          npm run verify:research
+          npm run verify
+      - name: Commit generated package
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-014-20260308 docs/research/GLOSSIKA-YUEHK-A1-DLG-014-20260308-CORPUS-INGRESS.md
+          git rm -f tools/tmp/cs-work-0341-dialog014-meta.json tools/tmp/cs-work-0341-dialog014-turns.part00.tsv tools/tmp/cs-work-0341-dialog014-turns.part01.tsv tools/tmp/cs-work-0341-dialog014-turns.part02.tsv tools/tmp/cs-work-0341-transform-dialog014.js
+          rm -f tools/tmp/cs-work-0341-generate-dialog014.js
+          git commit -m "Add Glossika dialog 014 corpus package"
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
