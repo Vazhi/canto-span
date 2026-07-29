@@ -39,7 +39,7 @@
         "scope": "romanization_format",
         "type": "new_source_format",
         "status": "source_preserved",
-        "note": "Jyutping lines omit speaker-name prefixes and remain lowercase."
+        "note": "Jyutping lines omit speaker-name prefixes and are lowercase except for preserved proper-name casing such as YouTube."
       },
       {
         "scope": "vocabulary_block",
