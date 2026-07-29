@@ -30,8 +30,15 @@ jobs:
           npm ci
       - name: Generate deterministic AA91 outputs
         run: |
-          python external-evidence/aa91-hkcancor/query-hkcancor-aa91-hou-x-noun.py --profile hou-x-noun
-          python external-evidence/aa91-hkcancor/query-hkcancor-aa91-hou-x-noun.py --profile hou-x-noun --check
+          python external-evidence/aa91-hkcancor/query-hkcancor-aa91-hou-x-noun.py \
+            --profile hou-x-noun \
+            --output-dir external-evidence/aa91-hkcancor \
+            --source-manifest external-evidence/cp021b/hkcancor-cp021b-source-manifest.sha256
+          python external-evidence/aa91-hkcancor/query-hkcancor-aa91-hou-x-noun.py \
+            --profile hou-x-noun \
+            --output-dir external-evidence/aa91-hkcancor \
+            --source-manifest external-evidence/cp021b/hkcancor-cp021b-source-manifest.sha256 \
+            --check
       - name: Run focused corpus test
         run: python -m unittest tests/tooling/corpus-review/test_aa91_hkcancor_profile.py
       - name: Verify repository state
