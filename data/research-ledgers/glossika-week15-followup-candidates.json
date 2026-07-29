@@ -1,0 +1,164 @@
+{
+  "schema": "canto-span-research-followup-candidates-v1",
+  "packetId": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+  "sourceId": "GLOSSIKA-YUEHK-A1-W15-20260628",
+  "policy": {
+    "itemsAreDecisions": false,
+    "automaticDispatch": false,
+    "nativePanelRule": "Use a role-neutral panel only after direct grammar and corpus evidence leave an item-level naturalness or interpretation question unresolved.",
+    "promotionRule": "No follow-up item promotes a construction or changes runtime behavior."
+  },
+  "candidates": [
+    {
+      "id": "W15-F01",
+      "cluster": "spatial_categories",
+      "sourceItemIds": [
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I009",
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I010",
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I014",
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I015",
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I016",
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I017",
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I051",
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I055"
+      ],
+      "question": "Which forms are nominal-like localizers, independent place nouns, relational regions, or deictic expressions, and what reference-ground material can each omit?",
+      "nextMethod": "direct_spatial_grammar_plus_corpus_distribution",
+      "priority": "high",
+      "blockedActions": ["catch_all_locative_label", "automatic_parser_broadening", "interchangeable_gloss_rule"]
+    },
+    {
+      "id": "W15-F02",
+      "cluster": "destination_question",
+      "sourceItemIds": ["GLOSSIKA-YUEHK-A1-W15-20260628-I048"],
+      "question": "What is the bounded structure of 請問去地鐵站點行, including destination, manner/path question, and discourse formula scope?",
+      "nextMethod": "canonical_parser_audit_then_controlled_corpus_contrasts",
+      "priority": "high",
+      "blockedActions": ["single_route_construction", "question_word_reordering", "purpose_chain_assumption"]
+    },
+    {
+      "id": "W15-F03",
+      "cluster": "imperative_route_chain",
+      "sourceItemIds": [
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I049",
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I055"
+      ],
+      "question": "Should 直行，然後轉左 and 直行，過咗紅綠燈就喺右手邊 be represented as discourse-linked independent clauses, a route sequence, or existing clause-relation composition?",
+      "nextMethod": "corpus_route_instruction_inventory_with_negative_boundaries",
+      "priority": "medium",
+      "blockedActions": ["new_route_sequence_identity", "punctuation_only_dispatch"]
+    },
+    {
+      "id": "W15-F04",
+      "cluster": "arrival_result_dou3",
+      "sourceItemIds": ["GLOSSIKA-YUEHK-A1-W15-20260628-I051"],
+      "question": "How does final 到 in 行兩分鐘就到 relate to arrival predicates, resultatives, V-dou3 constructions, and omitted destinations?",
+      "nextMethod": "direct_resultative_review_plus_minimal_contrasts",
+      "priority": "high",
+      "blockedActions": ["automatic_v_dou3_classification", "resultative_identity_change"]
+    },
+    {
+      "id": "W15-F05",
+      "cluster": "landmark_sequence",
+      "sourceItemIds": ["GLOSSIKA-YUEHK-A1-W15-20260628-I055"],
+      "question": "What temporal, conditional, or discourse relation does 就 express after 過咗紅綠燈, and which parts belong to motion, perfective aspect, and location assertion?",
+      "nextMethod": "corpus_contrasts_for_gwo3_zo2_zau6_sequences",
+      "priority": "medium",
+      "blockedActions": ["new_landmark_construction", "single_token_relation_inference"]
+    },
+    {
+      "id": "W15-F06",
+      "cluster": "me1_question_force",
+      "sourceItemIds": ["GLOSSIKA-YUEHK-A1-W15-20260628-I056"],
+      "question": "Which discourse contexts make 你食飯咩 natural, and what expectation, surprise, challenge, or negative-presupposition effects distinguish it from a neutral polar question?",
+      "nextMethod": "direct_particle_analysis_then_role_neutral_context_panel_if_needed",
+      "priority": "high",
+      "blockedActions": ["neutral_yes_no_template", "generic_question_particle_rule"]
+    },
+    {
+      "id": "W15-F07",
+      "cluster": "aa_tone_identity",
+      "sourceItemIds": ["GLOSSIKA-YUEHK-A1-W15-20260628-I054"],
+      "question": "What aa3 discourse contribution is present in 點行呀, and how should it be kept distinct from the lesson's prose claim about aa4 polar-question marking?",
+      "nextMethod": "tone_specific_particle_and_context_audit",
+      "priority": "high",
+      "blockedActions": ["orthography_only_particle_identity", "aa3_aa4_merger"]
+    },
+    {
+      "id": "W15-F08",
+      "cluster": "question_strategy_boundaries",
+      "sourceItemIds": [
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I052",
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I057",
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I058",
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I059"
+      ],
+      "question": "Can existing canonical owners keep 有冇 and 係唔係 A-not-A profiles separate from me1 particle questions and wh-in-situ questions?",
+      "nextMethod": "canonical_parser_and_test_audit",
+      "priority": "high",
+      "blockedActions": ["generic_interrogative_detector", "question_strategy_identity_merger"]
+    },
+    {
+      "id": "W15-F09",
+      "cluster": "formulaic_responses_register",
+      "sourceItemIds": [
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I001",
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I002",
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I003",
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I004",
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I005",
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I006",
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I007",
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I008"
+      ],
+      "question": "Which response and well-wishing formulas are conventional, what contexts license them, and are the source Casual/Polite labels accurate?",
+      "nextMethod": "dictionary_pragmatics_corpus_review_then_panel_only_for_unresolved_items",
+      "priority": "medium",
+      "blockedActions": ["runtime_register_feature", "automatic_formula_acceptance"]
+    },
+    {
+      "id": "W15-F10",
+      "cluster": "phonics_e_i",
+      "sourceItemIds": [
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I060",
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I061",
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I062",
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I063",
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I064",
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I065"
+      ],
+      "question": "Are the IPA, Jyutping, tones, lexical choices, and glosses accurate for each e/i row, and what source material is missing from the final row?",
+      "nextMethod": "item_level_phonological_and_lexical_verification",
+      "priority": "high",
+      "blockedActions": ["pronunciation_resource_ingress", "silent_completion_of_missing_pair", "pairwise_contrast_generalization"]
+    },
+    {
+      "id": "W15-F11",
+      "cluster": "lexical_ingress",
+      "sourceItemIds": [],
+      "question": "Which of the 20 uncovered place and route terms are lexical wholes versus productive compounds, and which smallest canonical lexicon owner should receive each accepted entry?",
+      "nextMethod": "dedicated_lexical_ingress_issue_with_jyutping_gloss_and_compositionality_review",
+      "priority": "medium",
+      "blockedActions": ["bulk_opaque_ingress", "duplicate_one_million_entry", "runtime_change_in_research_pr"]
+    }
+  ],
+  "nonCandidates": [
+    {
+      "cluster": "large_numerals",
+      "sourceItemIds": [
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I038",
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I039",
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I040",
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I041",
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I042",
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I043",
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I044",
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I045",
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I046",
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I047"
+      ],
+      "disposition": "retain_compositional_numeral_analysis",
+      "reason": "Nine forms are compositionally uncovered; 一百萬 is already represented. No opaque bulk ingress is warranted."
+    }
+  ]
+}
