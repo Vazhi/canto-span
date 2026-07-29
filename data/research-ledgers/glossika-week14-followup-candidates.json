@@ -1,0 +1,159 @@
+{
+  "schema": "canto-span-research-followup-candidates-v1",
+  "packetId": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+  "sourceId": "GLOSSIKA-YUEHK-A1-W14-20260621",
+  "policy": {
+    "itemsAreDecisions": false,
+    "automaticDispatch": false,
+    "nativePanelRule": "Use a role-neutral panel only for item-level naturalness or interpretation questions that remain unresolved after direct-source and corpus review.",
+    "promotionRule": "No follow-up item promotes a construction or changes runtime behavior."
+  },
+  "candidates": [
+    {
+      "id": "W14-F01",
+      "cluster": "apology_pragmatics",
+      "sourceItemIds": [
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I001",
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I002",
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I003",
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I004"
+      ],
+      "question": "Which offence, attention-management, severity, and social-relation contexts favor 唔好意思, 對唔住, or a multi-part apology?",
+      "nextMethod": "direct_pragmatics_review_then_role_neutral_panel_if_needed",
+      "priority": "medium",
+      "reason": "Direct research rejects a one-dimensional casual/polite scale but does not fully classify the four lesson items.",
+      "blockedActions": ["runtime_register_feature", "categorical_formality_rule", "status_change"]
+    },
+    {
+      "id": "W14-F02",
+      "cluster": "gratitude_semantics",
+      "sourceItemIds": [
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I005",
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I006",
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I007",
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I008"
+      ],
+      "question": "How should the semantic and pragmatic distinction between 唔該 and 多謝 be represented for learners without turning it into a false formality contrast?",
+      "nextMethod": "lexical_semantics_and_contextual_example_design",
+      "priority": "high",
+      "reason": "The distinction is directly supported and has immediate learner value, but implementation requires a separate lexical/presentation claim.",
+      "blockedActions": ["automatic_runtime_change", "one_word_politeness_labels"]
+    },
+    {
+      "id": "W14-F03",
+      "cluster": "sentence_final_particles",
+      "sourceItemIds": [
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I048",
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I050",
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I051"
+      ],
+      "question": "Which context-specific gaa3 interpretation applies to the occupational question, tiring-work evaluation, and pay evaluation?",
+      "nextMethod": "particle_context_analysis_with_minimal_contrasts",
+      "priority": "medium",
+      "reason": "Direct grammar supports gaa3 across clause types but not one generic meaning for all three lesson contexts.",
+      "blockedActions": ["single_generic_particle_gloss", "new_construction_identity"]
+    },
+    {
+      "id": "W14-F04",
+      "cluster": "sentence_final_ge3",
+      "sourceItemIds": [
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I049",
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I051"
+      ],
+      "question": "Is final 嘅 in each source turn best analyzed as a sentence-final particle, nominalization-related material, or another context-dependent structure?",
+      "nextMethod": "direct_syntax_review_plus_corpus_contrasts",
+      "priority": "high",
+      "reason": "The source gloss ATTR is too coarse and risks conflating attributive and sentence-final uses.",
+      "blockedActions": ["occupation_suffix_analysis", "attributive_marker_assumption", "parser_change"]
+    },
+    {
+      "id": "W14-F05",
+      "cluster": "occupational_predication",
+      "sourceItemIds": [
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I044",
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I048",
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I049"
+      ],
+      "question": "What is the bounded argument and predicate structure of 做 + occupation/work expression, including 做咩工 and 做會計?",
+      "nextMethod": "direct_grammar_and_corpus_inventory_before_panel",
+      "priority": "medium",
+      "reason": "The lesson supplies attestation but no independent construction analysis or negative boundaries.",
+      "blockedActions": ["new_occupation_construction", "role_inference", "runtime_broadening"]
+    },
+    {
+      "id": "W14-F06",
+      "cluster": "workplace_locative",
+      "sourceItemIds": [
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I045",
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I050"
+      ],
+      "question": "Does 喺 + workplace + 返工 require any treatment beyond existing locative phrase plus work-predicate composition?",
+      "nextMethod": "parser_and_canonical_source_audit_only_if_existing_composition_fails",
+      "priority": "low",
+      "reason": "The conservative analysis is already compositional; a new construction is not justified by these items.",
+      "blockedActions": ["new_workplace_locative_construction", "automatic_parser_change"]
+    },
+    {
+      "id": "W14-F07",
+      "cluster": "degree_gei2",
+      "sourceItemIds": ["GLOSSIKA-YUEHK-A1-W14-20260621-I050"],
+      "question": "Can existing degree-predicate coverage distinguish 幾 ‘quite’ from interrogative and numeral 幾 while preserving sentence-final particle scope?",
+      "nextMethod": "canonical_parser_and_test_audit",
+      "priority": "medium",
+      "reason": "The narrow degree use is externally supported; implementation adequacy is a separate question.",
+      "blockedActions": ["all_gei2_degree_rule", "status_change_without_audit"]
+    },
+    {
+      "id": "W14-F08",
+      "cluster": "lexical_gloss_review",
+      "sourceItemIds": [
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I015",
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I017",
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I021"
+      ],
+      "question": "What learner-facing glosses preserve the argument perspective and usage range of 出糧, 打工, and 見工?",
+      "nextMethod": "dictionary_corpus_and_native_usage_review",
+      "priority": "high",
+      "reason": "The source glosses may be perspective-bound or narrower than the Cantonese forms; no correction is asserted here.",
+      "blockedActions": ["silent_source_correction", "automatic_lexicon_ingress"]
+    },
+    {
+      "id": "W14-F09",
+      "cluster": "vowel_length",
+      "sourceItemIds": [
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I054",
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I055",
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I056",
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I057",
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I058",
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I059",
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I060",
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I061"
+      ],
+      "question": "Do all eight pedagogical pairs instantiate the intended vowel contrast with accurate Jyutping, lexical forms, and learner glosses?",
+      "nextMethod": "item_level_phonological_and_lexical_verification",
+      "priority": "medium",
+      "reason": "The general contrast is supported, but duration and quality contributions differ across vowel pairs.",
+      "blockedActions": ["pure_duration_generalization", "pronunciation_runtime_ingress_without_review"]
+    }
+  ],
+  "nonCandidates": [
+    {
+      "cluster": "large_numerals",
+      "sourceItemIds": [
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I034",
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I035",
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I036",
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I037",
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I038",
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I039",
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I040",
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I041",
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I042",
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I043"
+      ],
+      "disposition": "retain_compositional_numeral_analysis",
+      "reason": "No opaque whole-form lexical ingress or new construction is warranted."
+    }
+  ]
+}
