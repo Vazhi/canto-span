@@ -1,0 +1,25 @@
+{
+  "sourceId": "GLOSSIKA-YUEHK-A1-DLG-008-20260125",
+  "provider": "Glossika",
+  "course": "Cantonese (Hong Kong) A1 Dialogs",
+  "dialogNumber": 8,
+  "title": "借嘢",
+  "englishTitle": "Borrowing Things",
+  "sourceDate": "2026-01-25",
+  "gmailMessageId": "19bf72ba0f4339e0",
+  "sourceType": "authorized_pedagogical_email",
+  "language": "yue-Hant-HK",
+  "sourceFormat": "Glossika interactive-dialog email; Jyutping lines omit speaker-name prefixes",
+  "authorization": {
+    "basis": "User states Glossika granted permission to use all lesson data in this non-commercial private-use Canto Span project.",
+    "scope": "Source-preserving corpus ingress for this dialog.",
+    "redistributionClaim": "none"
+  },
+  "ingress": {
+    "issue": 144,
+    "workClaimIssue": 322,
+    "branch": "agent/glossika-dialog-008-ingress",
+    "reviewState": "REQUIRES_EXPERT_CONTEXT_REVIEW",
+    "policy": "Source values are immutable. Normalization, correction, duplicate classification, naturalness review, construction routing, and evidence use are recorded separately."
+  }
+}
