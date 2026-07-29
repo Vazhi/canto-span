@@ -1,0 +1,109 @@
+name: CS-WORK-0276 Week 17 modular inventory
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+
+jobs:
+  inventory:
+    if: github.event.pull_request.head.ref == 'agent/glossika-week17-corpus-reconciliation'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Inventory current modular Week 17 owners
+        run: |
+          mkdir -p tools/tmp
+          node <<'NODE'
+          const fs = require('fs');
+          const path = require('path');
+          const { execFileSync } = require('child_process');
+
+          const allowedRoots = ['src/', 'tests/', 'data/', 'docs/', 'grammar/', 'config/'];
+          const excluded = new Set([
+            'main.js',
+            '.github/workflows/cs-work-0276-week17-inventory.yml',
+            'tools/tmp/cs-work-0276-week17-inventory.json'
+          ]);
+          const terms = [
+            'GLOSSIKA-YUEHK-A1-W17-20260712',
+            'w17', 'week17', 'week 17', 'emotions & states',
+            '講返正題', '唔好離題', '關於呢個問題', '返去頭先嘅話題',
+            '第一嘛', '好似我噉', '例如中環', '一方面係時間',
+            '唔開心', '攰', '嬲', '驚', '擔心', '悶', '緊張', '壓力',
+            '辛苦', '感動', '激動', '失望', '放鬆', '開心', '傷心',
+            '鍾意', '唔鍾意', '興奮'
+          ];
+
+          const files = execFileSync('git', ['ls-files', '-z'], { encoding: 'utf8' })
+            .split('\0')
+            .filter(Boolean)
+            .filter(file => allowedRoots.some(root => file.startsWith(root)))
+            .filter(file => !excluded.has(file));
+
+          const filenameMatches = files.filter(file => /(?:^|[\/_.-])(w17|week[\s_.-]?17|emotion|state)(?:$|[\/_.-])/i.test(file));
+          const contentMatches = [];
+          for (const file of files) {
+            let stat;
+            try { stat = fs.statSync(file); } catch { continue; }
+            if (!stat.isFile() || stat.size > 5_000_000) continue;
+            let text;
+            try { text = fs.readFileSync(file, 'utf8'); } catch { continue; }
+            const matchedTerms = terms.filter(term => text.toLowerCase().includes(term.toLowerCase()));
+            if (!matchedTerms.length) continue;
+            const snippets = [];
+            for (const term of matchedTerms.slice(0, 12)) {
+              const index = text.toLowerCase().indexOf(term.toLowerCase());
+              const start = Math.max(0, index - 100);
+              const end = Math.min(text.length, index + term.length + 160);
+              snippets.push({ term, text: text.slice(start, end).replace(/\s+/g, ' ').trim() });
+            }
+            contentMatches.push({ path: file, matchedTerms, snippets });
+          }
+
+          const canonicalRuntimeMatches = contentMatches.filter(entry => entry.path.startsWith('src/'));
+          const researchCorpusTestMatches = contentMatches.filter(entry => /^(tests|data|docs|grammar)\//.test(entry.path));
+          const output = {
+            schema: 'canto-span-week17-modular-inventory-v1',
+            generatedFrom: {
+              base: process.env.GITHUB_SHA || null,
+              roots: allowedRoots,
+              generatedBundleExcluded: true,
+              generatedBundlePath: 'main.js'
+            },
+            searchTerms: terms,
+            counts: {
+              trackedFilesScanned: files.length,
+              filenameMatches: filenameMatches.length,
+              contentMatches: contentMatches.length,
+              canonicalRuntimeMatches: canonicalRuntimeMatches.length,
+              researchCorpusTestMatches: researchCorpusTestMatches.length
+            },
+            filenameMatches,
+            canonicalRuntimeMatches,
+            researchCorpusTestMatches,
+            allContentMatchPaths: contentMatches.map(entry => entry.path)
+          };
+          fs.writeFileSync('tools/tmp/cs-work-0276-week17-inventory.json', JSON.stringify(output, null, 2) + '\n');
+          console.log(output.counts);
+          NODE
+      - name: Commit inventory when changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tools/tmp/cs-work-0276-week17-inventory.json
+          if git diff --cached --quiet; then
+            echo "Inventory unchanged"
+          else
+            git commit -m "Inventory modular Week 17 project records"
+            git push origin HEAD:${{ github.event.pull_request.head.ref }}
+          fi
