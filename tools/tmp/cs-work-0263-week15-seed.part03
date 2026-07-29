@@ -1,0 +1,180 @@
+      "itemType": "sentence",
+      "register": "casual",
+      "source": {
+        "traditional": "超市喺邊度？",
+        "jyutping": "ciu1 si5 hai2 bin1 dou6?",
+        "morphemeGloss": "supermarket at where",
+        "english": "Where is the supermarket?"
+      }
+    },
+    {
+      "section": "vocabulary_and_situations",
+      "subsection": "situation_patterns",
+      "itemType": "sentence",
+      "register": "standard",
+      "source": {
+        "traditional": "就喺前面，行兩分鐘就到。",
+        "jyutping": "zau6 hai2 cin4 min6, haang4 loeng5 fan1 zung1 zau6 dou3.",
+        "morphemeGloss": "just at front walk two minute then arrive",
+        "english": "It's right ahead, two minutes' walk."
+      }
+    },
+    {
+      "section": "vocabulary_and_situations",
+      "subsection": "mini_dialog",
+      "itemType": "dialog_turn",
+      "register": "casual",
+      "dialogTurn": 1,
+      "source": {
+        "traditional": "唔該，請問附近有冇郵局？",
+        "jyutping": "m4 goi1, cing2 man6 fu6 gan6 jau5 mou5 jau4 guk2?",
+        "morphemeGloss": "please please.ask nearby have not.have post.office",
+        "english": "Excuse me, is there a post office nearby?"
+      }
+    },
+    {
+      "section": "vocabulary_and_situations",
+      "subsection": "mini_dialog",
+      "itemType": "dialog_turn",
+      "register": "casual",
+      "dialogTurn": 2,
+      "source": {
+        "traditional": "有，喺超市隔籬。",
+        "jyutping": "jau5, hai2 ciu1 si5 gaak3 lei4.",
+        "morphemeGloss": "have at supermarket next.to",
+        "english": "Yes, it's next to the supermarket."
+      }
+    },
+    {
+      "section": "vocabulary_and_situations",
+      "subsection": "mini_dialog",
+      "itemType": "dialog_turn",
+      "register": "casual",
+      "dialogTurn": 3,
+      "source": {
+        "traditional": "點行呀？",
+        "jyutping": "dim2 haang4 aa3?",
+        "morphemeGloss": "how walk SFP",
+        "english": "How do I get there?"
+      }
+    },
+    {
+      "section": "vocabulary_and_situations",
+      "subsection": "mini_dialog",
+      "itemType": "dialog_turn",
+      "register": "casual",
+      "dialogTurn": 4,
+      "source": {
+        "traditional": "直行，過咗紅綠燈就喺右手邊。",
+        "jyutping": "zik6 haang4, gwo3 zo2 hung4 luk6 dang1 zau6 hai2 jau6 sau2 bin1.",
+        "morphemeGloss": "straight walk pass PFV traffic.light then at right hand side",
+        "english": "Go straight, past the traffic light, it's on the right."
+      }
+    },
+    {
+      "section": "grammar_patterns",
+      "subsection": "yes_no_questions",
+      "itemType": "sentence",
+      "register": "standard",
+      "source": {
+        "traditional": "你食飯咩？",
+        "jyutping": "nei5 sik6 faan6 me1?",
+        "morphemeGloss": "you eat rice Q",
+        "english": "Do you eat rice?"
+      }
+    },
+    {
+      "section": "grammar_patterns",
+      "subsection": "yes_no_questions",
+      "itemType": "sentence",
+      "register": "standard",
+      "source": {
+        "traditional": "佢係唔係老師？",
+        "jyutping": "keoi5 hai6 m4 hai6 lou5 si1?",
+        "morphemeGloss": "he/she COP NEG COP teacher",
+        "english": "Is he/she a teacher?"
+      }
+    },
+    {
+      "section": "grammar_patterns",
+      "subsection": "wh_questions",
+      "itemType": "sentence",
+      "register": "standard",
+      "source": {
+        "traditional": "你叫咩名？",
+        "jyutping": "nei5 giu3 me1 meng2?",
+        "morphemeGloss": "you call what name",
+        "english": "What is your name?"
+      }
+    },
+    {
+      "section": "grammar_patterns",
+      "subsection": "wh_questions",
+      "itemType": "sentence",
+      "register": "standard",
+      "source": {
+        "traditional": "邊個嚟？",
+        "jyutping": "bin1 go3 lai4?",
+        "morphemeGloss": "who come",
+        "english": "Who is coming?"
+      }
+    },
+    {
+      "section": "phonics_drill",
+      "subsection": "e_vs_i",
+      "itemType": "phonics_pair",
+      "source": {
+        "ipa": "/sɛː˥/ vs /siː˧/",
+        "wordA": "些",
+        "wordB": "四",
+        "jyutpingA": "se1",
+        "jyutpingB": "sei3",
+        "glossA": "some",
+        "glossB": "four"
+      }
+    },
+    {
+      "section": "phonics_drill",
+      "subsection": "e_vs_i",
+      "itemType": "phonics_pair",
+      "source": {
+        "ipa": "/tsɛː˧/ vs /tsiː˨/",
+        "wordA": "借",
+        "wordB": "字",
+        "jyutpingA": "ze3",
+        "jyutpingB": "zi6",
+        "glossA": "to lend",
+        "glossB": "character; word"
+      }
+    },
+    {
+      "section": "phonics_drill",
+      "subsection": "e_vs_i",
+      "itemType": "phonics_pair",
+      "source": {
+        "ipa": "/lɛːŋ˧/ vs /lɪŋ˨/",
+        "wordA": "靚",
+        "wordB": "令",
+        "jyutpingA": "leng3",
+        "jyutpingB": "ling6",
+        "glossA": "pretty; beautiful",
+        "glossB": "order; to make"
+      }
+    },
+    {
+      "section": "phonics_drill",
+      "subsection": "e_vs_i",
+      "itemType": "phonics_pair",
+      "source": {
+        "ipa": "/tɛːk̚˧/ vs /tɪk̚˥/",
+        "wordA": "踢",
+        "wordB": "滴",
+        "jyutpingA": "tek3",
+        "jyutpingB": "dik1",
+        "glossA": "to kick",
+        "glossB": "a drop"
+      }
+    },
+    {
+      "section": "phonics_drill",
+      "subsection": "e_vs_i",
