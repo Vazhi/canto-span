@@ -1,0 +1,25 @@
+{
+  "sourceId": "GLOSSIKA-YUEHK-A1-DLG-005-20251228",
+  "provider": "Glossika",
+  "course": "Cantonese (Hong Kong) A1 Dialogs",
+  "dialogNumber": 5,
+  "title": "新年大計同朋友傾",
+  "scenario": "Two friends meeting up to discuss their New Yearʼs resolutions and goals for self-improvement (A1)",
+  "sourceDate": "2025-12-28",
+  "gmailMessageId": "19b66a73d4bba360",
+  "sourceType": "authorized_pedagogical_email",
+  "language": "yue-Hant-HK",
+  "authorization": {
+    "basis": "User states Glossika granted permission to use all lesson data in this non-commercial private-use Canto Span project.",
+    "scope": "Source-preserving corpus ingress for this dialog.",
+    "redistributionClaim": "none"
+  },
+  "sourceNotes": "The verb 諗 (nam2) means \"to think\" in Cantonese and is more colloquial than 想 (soeng2), though both are used. 諗 specifically means \"to think about/consider\" while 想 can mean both \"to think\" and \"to want.\" The pattern 有冇 (jau5 mou5) is the question form asking \"have or not have\": 你有冇諗 (nei5 jau5 mou5 nam2) = \"have you thought about...?\" This is the standard A-not-A question structure. 邊隻 (bin1 zek3) uses the classifier 隻 (zek3) for languages in Cantonese, which differs from Mandarin. This is the correct classifier for languages in Hong Kong Cantonese. 點樣 (dim2 joeng2) asks \"how/in what way\" and is composed of 點 (dim2) \"how\" + 樣 (joeng2) \"manner.\" Itʼs the standard way to ask about methods. The emphatic pattern 一定得 (jat1 ding6 dak1) means \"definitely can/will succeed\" and is commonly used for encouragement. 得 (dak1) here means \"can/be able to.\" 乜都 (mat1 dou1) means \"anything/everything\" and combines the question word 乜 (mat1) \"what\" with 都 (dou1) \"all\" to create an indefinite pronoun. Confidence Level: High",
+  "ingress": {
+    "issue": 141,
+    "workClaimIssue": 296,
+    "branch": "agent/glossika-dialog-005-ingress",
+    "reviewState": "REQUIRES_EXPERT_CONTEXT_REVIEW",
+    "policy": "Source values are immutable. Normalization, correction, duplicate classification, naturalness review, construction routing, and evidence use are recorded separately."
+  }
+}
