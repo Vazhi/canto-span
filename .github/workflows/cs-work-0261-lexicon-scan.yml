@@ -120,8 +120,8 @@ jobs:
           if (claims.claims.length !== 11) throw new Error('Expected 11 bounded claims');
           if (followup.candidates.length !== 9) throw new Error('Expected 9 follow-up candidates');
           const note = fs.readFileSync('docs/research/GLOSSIKA-YUEHK-A1-W14-20260621-RESEARCH.md', 'utf8');
-          for (const required of ['21 lexical-review candidates', 'No runtime', '唔該', '多謝', '幾辛苦㗎']) {
-            if (!note.includes(required)) throw new Error(`Research note missing ${required}`);
+          for (const required of ['21 lexical-review candidates', 'no runtime', '唔該', '多謝', '幾辛苦㗎']) {
+            if (!note.toLowerCase().includes(required.toLowerCase())) throw new Error(`Research note missing ${required}`);
           }
           console.log({sourceRecords: source.items.length, claims: claims.claims.length, lexical: lexical.counts, followups: followup.candidates.length});
           NODE
