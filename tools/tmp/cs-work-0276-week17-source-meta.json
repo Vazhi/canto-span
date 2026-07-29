@@ -1,0 +1,33 @@
+{
+  "source": {
+    "sourceId": "GLOSSIKA-YUEHK-A1-W17-20260712",
+    "provider": "Glossika",
+    "course": "Cantonese (HK) A1",
+    "week": 17,
+    "weekCount": 25,
+    "lessonTitle": "Emotions & States",
+    "emailSubject": "Cantonese – Emotions & States",
+    "sourceDate": "2026-07-12",
+    "gmailMessageId": "19f5511dfc37c9ea",
+    "sourceType": "authorized_pedagogical_email",
+    "language": "yue-Hant-HK",
+    "authorization": {
+      "basis": "User states Glossika granted permission to use all lesson data in this non-commercial private-use Canto Span project.",
+      "scope": "Source-preserving corpus ingress and reconciliation for this lesson.",
+      "redistributionClaim": "none"
+    }
+  },
+  "ingress": {
+    "issue": 134,
+    "workClaimIssue": 276,
+    "pullRequest": 277,
+    "branch": "agent/glossika-week17-corpus-reconciliation",
+    "reviewState": "REQUIRES_EXPERT_CONTEXT_REVIEW",
+    "policy": "Source values and order are immutable. Existing project corrections, normalization, deduplication, runtime ownership, and evidentiary decisions remain separate crosswalk and review data."
+  },
+  "sourceClaims": {
+    "phonicsHeading": "/yː/ (yu) vs /uː/ (u)",
+    "phonicsStatement": "The front rounded vowel /yː/ (written yu in Jyutping) contrasts with back rounded /uː/. This distinction exists in Mandarin (ü vs u) but is realized differently in Cantonese.",
+    "status": "immutable_source_claim_requires_independent_verification"
+  }
+}
