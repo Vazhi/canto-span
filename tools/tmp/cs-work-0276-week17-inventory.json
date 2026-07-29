@@ -1,6 +1,6 @@
 {
   "schema": "canto-span-week17-modular-inventory-v2",
-  "base": "aa270f98a651e3b18fe619ccecc1117ba69d991c",
+  "base": "b69fa09aee3333797ab511a538b8aaefb8f1a0ad",
   "authority": {
     "canonical": [
       "src/**",
@@ -18,7 +18,7 @@
       "config/**"
     ]
   },
-  "pathCount": 155,
+  "pathCount": 156,
   "paths": [
     {
       "path": "data/construction-adjudication-batches/batch-05.json",
@@ -1760,6 +1760,34 @@
         "好似我噉",
         "一方面係時間",
         "另一方面係費用"
+      ]
+    },
+    {
+      "path": "tools/tmp/cs-work-0276-week17-seed.part01",
+      "size": 5512,
+      "filenameMatch": true,
+      "identityTerms": [],
+      "matchedTerms": [
+        "攰",
+        "嬲",
+        "驚",
+        "放鬆",
+        "開心",
+        "傷心",
+        "鍾意",
+        "唔鍾意",
+        "興奮",
+        "孤獨",
+        "滿足",
+        "驕傲",
+        "嫉妒",
+        "焦慮",
+        "感激",
+        "慚愧",
+        "害怕",
+        "感恩",
+        "好奇",
+        "樂觀"
       ]
     },
     {
