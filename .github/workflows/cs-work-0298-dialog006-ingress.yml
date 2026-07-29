@@ -8,7 +8,7 @@ permissions:
   contents: write
 
 jobs:
-  generate:
+  validate-final:
     if: github.event.pull_request.head.ref == 'agent/glossika-dialog-006-ingress'
     runs-on: ubuntu-latest
     steps:
@@ -22,43 +22,19 @@ jobs:
           package-manager-cache: false
       - name: Install dependencies
         run: npm ci
-      - name: Align source-format validator
+      - name: Correct source-format alert wording
         run: |
           python - <<'PY'
           from pathlib import Path
           import json
 
-          meta_path = Path('tools/tmp/cs-work-0298-dialog006-meta.json')
-          meta = json.loads(meta_path.read_text())
-          meta['sourceFormat'] = 'Glossika interactive-dialog email; Jyutping lines omit speaker-name prefixes and are lowercase except for preserved proper-name casing such as YouTube'
-          meta_path.write_text(json.dumps(meta, ensure_ascii=False, indent=2) + '\n')
-
-          generator_path = Path('tools/tmp/cs-work-0298-generate-dialog006.js')
-          text = generator_path.read_text()
-          text = text.replace(
-              "if (/[A-Z]/.test(jyutpingLine)) throw new Error(`Expected lowercase source romanization at turn ${expected}`);",
-              "if (/[A-Z]/.test(jyutpingLine.replace(/YouTube/g, ''))) throw new Error(`Unexpected uppercase source romanization outside preserved proper names at turn ${expected}`);"
-          )
-          text = text.replace(
-              "Lowercase source romanization without speaker prefixes is preserved and not normalized to earlier dialog formats.",
-              "Source romanization without speaker prefixes is preserved; it is lowercase except for proper-name casing such as YouTube."
-          )
-          text = text.replace(
-              "The email supplies Cantonese and lowercase Jyutping but no per-turn English translations.",
-              "The email supplies Cantonese and primarily lowercase Jyutping, preserving proper-name case, but no per-turn English translations."
-          )
-          text = text.replace(
-              "The newer email format uses lowercase Jyutping without speaker-name prefixes.",
-              "The newer email format uses Jyutping without speaker-name prefixes and preserves proper-name casing such as YouTube."
-          )
-          text = text.replace(
-              "The lowercase Jyutping format is preserved.",
-              "The primarily lowercase Jyutping format, including proper-name casing, is preserved."
-          )
-          generator_path.write_text(text)
+          path = Path('data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-006-20260104/review.json')
+          data = json.loads(path.read_text())
+          alerts = data['summary']['knownSourceAlerts']
+          alert = next(item for item in alerts if item['type'] == 'new_source_format')
+          alert['note'] = 'Jyutping lines omit speaker-name prefixes and are lowercase except for preserved proper-name casing such as YouTube.'
+          path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n')
           PY
-      - name: Generate source-preserving dialog package
-        run: node tools/tmp/cs-work-0298-generate-dialog006.js
       - name: Validate package and repository
         run: |
           node <<'NODE'
@@ -80,17 +56,22 @@ jobs:
           if(turnWalk.some((item,index)=>item.adjacency.previousTurnId!==(index===0?null:`GLOSSIKA-YUEHK-A1-DLG-006-20260104-I${String(index).padStart(3,'0')}`)||item.adjacency.nextTurnId!==(index===39?null:`GLOSSIKA-YUEHK-A1-DLG-006-20260104-I${String(index+2).padStart(3,'0')}`))) throw new Error('Turn adjacency failed');
           const rows=fs.readFileSync(`${root}/items.tsv`,'utf8').trimEnd().split('\n');
           if(rows.length!==81) throw new Error(`Expected TSV header plus 80 rows, found ${rows.length}`);
+          const formatAlert=review.summary.knownSourceAlerts.find(alert=>alert.type==='new_source_format');
+          if(!formatAlert?.note.includes('YouTube')) throw new Error('Proper-name casing alert absent');
           if(!review.summary.knownSourceAlerts.some(alert=>alert.type==='vocabulary_dialog_surface_mismatch')) throw new Error('Source-block mismatch alert absent');
           if(!review.summary.knownSourceAlerts.some(alert=>alert.type==='pronunciation_discrepancy')) throw new Error('Pronunciation discrepancy alert absent');
           NODE
           git diff --check
           npm run verify:research
           npm run verify
-      - name: Commit generated package
+      - name: Commit final wording correction
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-006-20260104 docs/research/GLOSSIKA-YUEHK-A1-DLG-006-20260104-CORPUS-INGRESS.md
-          git rm -f tools/tmp/cs-work-0298-dialog006-meta.json tools/tmp/cs-work-0298-dialog006-turns.part00.tsv tools/tmp/cs-work-0298-dialog006-turns.part01.tsv tools/tmp/cs-work-0298-dialog006-turns.part02.tsv tools/tmp/cs-work-0298-dialog006-vocab.part00.tsv tools/tmp/cs-work-0298-dialog006-vocab.part01.tsv tools/tmp/cs-work-0298-generate-dialog006.js
-          git commit -m "Add Glossika dialog 006 corpus package"
-          git push origin HEAD:${{ github.event.pull_request.head.ref }}
+          git add data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-006-20260104/review.json
+          if git diff --cached --quiet; then
+            echo "No package correction needed."
+          else
+            git commit -m "Clarify dialog 006 romanization format"
+            git push origin HEAD:${{ github.event.pull_request.head.ref }}
+          fi
