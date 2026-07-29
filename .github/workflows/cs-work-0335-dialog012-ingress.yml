@@ -61,6 +61,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222 docs/research/GLOSSIKA-YUEHK-A1-DLG-012-20260222-CORPUS-INGRESS.md
-          git rm -f tools/tmp/cs-work-0335-dialog012-meta.json tools/tmp/cs-work-0335-dialog012-turns.part00.tsv tools/tmp/cs-work-0335-dialog012-turns.part01.tsv tools/tmp/cs-work-0335-dialog012-turns.part02.tsv tools/tmp/cs-work-0335-dialog012-vocab.part00.tsv tools/tmp/cs-work-0335-dialog012-vocab.part01.tsv tools/tmp/cs-work-0335-transform-dialog012.js tools/tmp/cs-work-0335-generate-dialog012.js
+          git rm -f tools/tmp/cs-work-0335-dialog012-meta.json tools/tmp/cs-work-0335-dialog012-turns.part00.tsv tools/tmp/cs-work-0335-dialog012-turns.part01.tsv tools/tmp/cs-work-0335-dialog012-turns.part02.tsv tools/tmp/cs-work-0335-dialog012-vocab.part00.tsv tools/tmp/cs-work-0335-dialog012-vocab.part01.tsv tools/tmp/cs-work-0335-transform-dialog012.js
+          rm -f tools/tmp/cs-work-0335-generate-dialog012.js
           git commit -m "Add Glossika dialog 012 corpus package"
           git push origin HEAD:${{ github.event.pull_request.head.ref }}
