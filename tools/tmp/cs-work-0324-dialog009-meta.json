@@ -1,0 +1,25 @@
+{
+  "sourceId": "GLOSSIKA-YUEHK-A1-DLG-009-20260201",
+  "provider": "Glossika",
+  "course": "Cantonese (Hong Kong) A1 Dialogs",
+  "dialogNumber": 9,
+  "title": "辦公室指示",
+  "englishTitle": "Office Instructions",
+  "sourceDate": "2026-02-01",
+  "gmailMessageId": "19c1b38474acaadb",
+  "sourceType": "authorized_pedagogical_email",
+  "language": "yue-Hant-HK",
+  "sourceFormat": "Glossika interactive-dialog email; Jyutping lines omit speaker-name prefixes and preserve source-authored Latin tokens send and email",
+  "authorization": {
+    "basis": "User states Glossika granted permission to use all lesson data in this non-commercial private-use Canto Span project.",
+    "scope": "Source-preserving corpus ingress for this dialog.",
+    "redistributionClaim": "none"
+  },
+  "ingress": {
+    "issue": 145,
+    "workClaimIssue": 324,
+    "branch": "agent/glossika-dialog-009-ingress",
+    "reviewState": "REQUIRES_EXPERT_CONTEXT_REVIEW",
+    "policy": "Source values are immutable. Normalization, correction, duplicate classification, naturalness review, construction routing, and evidence use are recorded separately."
+  }
+}
