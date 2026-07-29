@@ -1,0 +1,25 @@
+{
+  "sourceId": "GLOSSIKA-YUEHK-A1-DLG-014-20260308",
+  "provider": "Glossika",
+  "course": "Cantonese (Hong Kong) A1 Dialogs",
+  "dialogNumber": 14,
+  "title": "傾計講技能",
+  "englishTitle": "Chatting About Skills",
+  "sourceDate": "2026-03-08",
+  "gmailMessageId": "19ccf76b16ee6610",
+  "sourceType": "authorized_pedagogical_email",
+  "language": "yue-Hant-HK",
+  "sourceFormat": "Glossika interactive-dialog email; Jyutping lines omit speaker-name prefixes; vocabulary container empty",
+  "authorization": {
+    "basis": "User states Glossika granted permission to use all lesson data in this non-commercial private-use Canto Span project.",
+    "scope": "Source-preserving corpus ingress for this dialog.",
+    "redistributionClaim": "none"
+  },
+  "ingress": {
+    "issue": 150,
+    "workClaimIssue": 341,
+    "branch": "agent/glossika-dialog-014-ingress",
+    "reviewState": "REQUIRES_EXPERT_CONTEXT_REVIEW",
+    "policy": "Source values are immutable. The absent vocabulary block, normalization, duplicate classification, naturalness review, construction routing, and evidence use are recorded separately."
+  }
+}
