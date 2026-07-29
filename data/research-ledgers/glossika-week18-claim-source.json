@@ -1,0 +1,213 @@
+{
+  "schema": "canto-span-claim-source-ledger-v1",
+  "packetId": "GLOSSIKA-YUEHK-A1-W18-20260719-CLAIM-SOURCE-R1",
+  "sourceId": "GLOSSIKA-YUEHK-A1-W18-20260719",
+  "intakeIssue": 128,
+  "workClaimIssue": 281,
+  "evidencePolicy": {
+    "glossikaWeight": "pedagogical_and_lexical_attestation_only",
+    "externalSourceRequirement": "Repair, turn management, completion, aspect, serialization, benefactive, directional, temporal-class, particle, register, and phonological conclusions require independently checkable Cantonese evidence.",
+    "corpusRule": "Attestation or an existing runtime owner does not establish unrestricted productivity, preferred parsing, register, dialect-wide naturalness, or linguistic status.",
+    "implementationAuthorized": false
+  },
+  "sources": [
+    {
+      "id": "S-GLOSSIKA-W18",
+      "type": "authorized_pedagogical_source",
+      "citation": "Glossika Cantonese (HK) A1, Week 18, Cantonese – Common Verbs, 2026-07-19",
+      "locator": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/source.json",
+      "scope": "Exact source forms, order, readings, translations, register labels, particle glosses, and phonics claims only."
+    },
+    {
+      "id": "S-LIESENFELD-2019-TURN-INITIAL",
+      "type": "direct_cantonese_interactional_corpus",
+      "citation": "Liesenfeld, Andreas Maria. 2019. Cantonese turn-initial minimal particles: annotation of discourse-interactional functions in dialog corpora. PACLIC 33:471–479.",
+      "locator": "http://hdl.handle.net/2065/00063933",
+      "scope": "Twenty hours of naturally occurring Cantonese dialog support interactional distinctions among continuers, responses, change-of-state tokens, turn-management tokens, and repair initiators, conditioned by sequential position, pitch, and production format."
+    },
+    {
+      "id": "S-LUKE-1990-PARTICLES",
+      "type": "direct_cantonese_conversation_analysis",
+      "citation": "Luke, K. K. 1990. Utterance Particles in Cantonese Conversation.",
+      "locator": "https://doi.org/10.1075/pbns.9",
+      "scope": "Naturally occurring interaction shows that LA, LO, and WO resist one fixed truth-conditional or grammatical gloss and require conversation-sequential analysis."
+    },
+    {
+      "id": "S-SYBESMA-LI-2007-SFP",
+      "type": "direct_cantonese_particle_grammar",
+      "citation": "Sybesma, Rint, and Boya Li. 2007. The dissection and structural mapping of Cantonese sentence final particles. Lingua 117(10):1739–1783.",
+      "locator": "https://doi.org/10.1016/j.lingua.2006.10.003",
+      "scope": "Cantonese final particles form a structured, tone-sensitive system whose meanings cannot be replaced by one-word English labels."
+    },
+    {
+      "id": "S-CHEUNG-2021-ME1",
+      "type": "direct_cantonese_question_particle",
+      "citation": "Cheung, Lawrence Yam-Leung. 2021. The origin and development of the question particle me1 in Cantonese. Lingua 254:103049.",
+      "locator": "https://doi.org/10.1016/j.lingua.2021.103049",
+      "scope": "Modern sentence-final me1 has biased and discourse uses and negative-presupposition associations; older unbiased uses do not license a neutral modern rule."
+    },
+    {
+      "id": "S-LEI-LEE-2019-COMPLETION",
+      "type": "direct_cantonese_completion_semantics",
+      "citation": "Lei, Margaret Ka-yan, and Thomas Hun-tak Lee. 2019. Differentiating universal quantification from completive aspect in child Cantonese.",
+      "locator": "https://doi.org/10.1075/lald.63.09lei",
+      "scope": "The aspectual verb jyun4 ‘finish’ expresses event completion and is distinct from saai3 universal quantification."
+    },
+    {
+      "id": "S-YIU-DIRECTIONAL",
+      "type": "direct_cantonese_directional_grammar",
+      "citation": "Yiu, Carine Yuk Man. Directional verbs in Cantonese: A typological and historical study.",
+      "locator": "https://researchportal.hkust.edu.hk/en/publications/directional-verbs-in-cantonese-a-typological-and-historical-study/",
+      "scope": "Cantonese uses both directional verbs and directional complements; agentive motion and degree of fusion differ from Mandarin, so independent motion verbs and directional elements must remain distinguishable."
+    },
+    {
+      "id": "S-LUKE-BODOMO-2001-SVC",
+      "type": "direct_cantonese_serial_verb_typology",
+      "citation": "Luke, K. K., and Adams Bodomo. 2001. A comparative study of the semantics of serial verb constructions in Dagaare and Cantonese. Languages in Contrast 3(2):165–180.",
+      "locator": "https://doi.org/10.1075/lic.3.2.02luk",
+      "scope": "Cantonese serial-verb semantics includes benefactive, causative/resultative, inceptive, instrumental, and deictic serialization; surface multi-verb strings require subtype-specific analysis."
+    },
+    {
+      "id": "S-BODOMO-LAM-YU-2003-BENEFACTIVE",
+      "type": "direct_cantonese_benefactive_grammar",
+      "citation": "Bodomo, Adams, Olivia Lam, and Natalie Yu. 2003. Double Object and Serial Verb Benefactive Constructions in Cantonese. LFG03 Proceedings.",
+      "locator": "https://web.stanford.edu/group/cslipublications/cslipublications/LFG/8/abstracts/lfg03bodomoetal-abs.html",
+      "scope": "Cantonese distinguishes single-verb double-object benefactives from serial-verb benefactives, with different form and possible conceptual nuances."
+    },
+    {
+      "id": "S-TONG-YELL-GODDARD-1997-TIME",
+      "type": "direct_hong_kong_cantonese_temporal_semantics",
+      "citation": "Tong, Malindy, Michael Yell, and Cliff Goddard. 1997. Semantic primitives of time and space in Hong Kong Cantonese. Language Sciences 19(3):245–261.",
+      "locator": "https://doi.org/10.1016/S0388-0001(96)00063-0",
+      "scope": "Hong Kong Cantonese has distinct temporal exponents for time/when, now, before, after, long time, and short time, with some combinatorial restrictions."
+    },
+    {
+      "id": "S-TSE-LI-LEUNG-2014-TEMPORALITY",
+      "type": "primary_cantonese_conversation_study",
+      "citation": "Tse, Shek Kam, Hui Li, and Shing On Leung. 2014. Tense and temporality: How young children express time in Cantonese.",
+      "locator": "https://doi.org/10.1075/bct.60.03tse",
+      "scope": "Naturalistic Cantonese child conversations yielded distinct inventories of temporal nouns, temporal adverbs, and aspect markers; temporal vocabulary is not one homogeneous lexical class."
+    },
+    {
+      "id": "S-LAM-LAU-LEE-2024-SEGMENTATION",
+      "type": "direct_cantonese_morphosyntax",
+      "citation": "Lam, Charles, Chaak-ming Lau, and Jackson L. Lee. 2024. Multi-Tiered Cantonese Word Segmentation. LREC-COLING 2024:11993–12002.",
+      "locator": "https://aclanthology.org/2024.lrec-main.1047/",
+      "scope": "Cantonese numeral expressions retain internal compositional structure even when grouped at a word-level segmentation tier."
+    },
+    {
+      "id": "S-BAUER-BENEDICT-1997-PHONOLOGY",
+      "type": "reference_phonology",
+      "citation": "Bauer, Robert S., and Paul K. Benedict. 1997. Modern Cantonese Phonology.",
+      "locator": "https://doi.org/10.1515/9783110823707",
+      "scope": "Reference Cantonese vowel, syllable, and tone analysis for independent item-level phonics verification."
+    }
+  ],
+  "claims": [
+    {
+      "id": "W18-C01",
+      "claim": "The clarification and interruption examples are interactional actions whose interpretation depends on sequence, participation context, prosody, and formulation; they do not establish one repair or turn-management construction.",
+      "status": "supported_external_narrow",
+      "sourceIds": ["S-GLOSSIKA-W18", "S-LIESENFELD-2019-TURN-INITIAL"],
+      "boundary": "Keep repetition requests, reference clarification, meaning clarification, interruption, floor holding, and politeness formulae separate until direct item-level evidence supports a shared profile."
+    },
+    {
+      "id": "W18-C02",
+      "claim": "The source labels Casual and Polite are pedagogical metadata rather than established sociolinguistic features.",
+      "status": "source_attested_only",
+      "sourceIds": ["S-GLOSSIKA-W18"],
+      "boundary": "No register feature or dialect-wide acceptability conclusion follows without corpus distribution and role-neutral speaker evidence."
+    },
+    {
+      "id": "W18-C03",
+      "claim": "講完 contains the completion predicate or aspectual verb 完 jyun4; completion must remain distinct from perfective marking and from universal saai3.",
+      "status": "supported_external",
+      "sourceIds": ["S-GLOSSIKA-W18", "S-LEI-LEE-2019-COMPLETION"],
+      "boundary": "Do not infer that every V完 sequence has identical syntax, argument structure, aspectual scope, or compatibility with particles."
+    },
+    {
+      "id": "W18-C04",
+      "claim": "你食咗飯未 attests a perfective clause followed by 未 in a completion-state question, but the single item does not establish one unrestricted neutral aspect-question rule.",
+      "status": "source_attested_with_negative_boundary",
+      "sourceIds": ["S-GLOSSIKA-W18"],
+      "boundary": "Require contrasts with bare 未, sentence-final particles, experiential 過, lexical completion, context, and answer profiles before broadening any question analysis."
+    },
+    {
+      "id": "W18-C05",
+      "claim": "我要返屋企煮飯 and 我去超市買嘢 contain motion followed by an activity or purpose predicate; they are candidates for serial or motion-purpose composition, not automatically directional-complement constructions.",
+      "status": "supported_external_category_boundary",
+      "sourceIds": ["S-GLOSSIKA-W18", "S-YIU-DIRECTIONAL", "S-LUKE-BODOMO-2001-SVC"],
+      "boundary": "Independent motion verb, destination, purpose relation, and directional complement must be diagnosed separately."
+    },
+    {
+      "id": "W18-C06",
+      "claim": "我留喺屋企睇電視 combines a stay predicate, a locative phrase, and an activity predicate; source attestation does not establish a single catch-all locative-continuation construction.",
+      "status": "conservative_source_analysis",
+      "sourceIds": ["S-GLOSSIKA-W18", "S-LUKE-BODOMO-2001-SVC"],
+      "boundary": "Clause integration, shared subject, aspect, prosody, and alternative coordination require direct contrasts."
+    },
+    {
+      "id": "W18-C07",
+      "claim": "咁我幫你買嘢返嚟啦 combines a discourse linker, a 幫 benefactive relation, a buying event, deictic return material, and a final particle; these layers must not be flattened into one construction.",
+      "status": "supported_external_category_boundary",
+      "sourceIds": ["S-GLOSSIKA-W18", "S-BODOMO-LAM-YU-2003-BENEFACTIVE", "S-YIU-DIRECTIONAL", "S-LUKE-1990-PARTICLES"],
+      "boundary": "Beneficiary, helper/agent, theme, motion path, deictic center, and particle contribution require separate ownership and tests."
+    },
+    {
+      "id": "W18-C08",
+      "claim": "Twenty-four of the twenty-five common verbs already have exact modular token-lexicon owners; 著 zoek3 ‘wear’ is the sole lexical-review gap.",
+      "status": "repository_scan_plus_source_attestation",
+      "sourceIds": ["S-GLOSSIKA-W18"],
+      "boundary": "The audit authorizes no runtime addition and keeps 著 zoek3 distinct from homographic aspectual, resultative, or pronunciation profiles."
+    },
+    {
+      "id": "W18-C09",
+      "claim": "The temporal list mixes part-of-day nouns, period and unit nouns, schedule or artifact nouns, scalar temporal forms, relational forms, duration or recurrence forms, and an interval noun.",
+      "status": "supported_external_category_split",
+      "sourceIds": ["S-GLOSSIKA-W18", "S-TONG-YELL-GODDARD-1997-TIME", "S-TSE-LI-LEUNG-2014-TEMPORALITY"],
+      "boundary": "The project audit classes are review aids, not final universal parts of speech, and no item is licensed as a bare clause-level modifier from its English gloss alone."
+    },
+    {
+      "id": "W18-C10",
+      "claim": "Only three of the twenty-eight temporal entries have exact modular lexical coverage; the remaining twenty-five require lexical-whole, compositionality, register, reading, and owner review.",
+      "status": "repository_scan_only",
+      "sourceIds": ["S-GLOSSIKA-W18"],
+      "boundary": "No bulk lexical ingress, formal-to-colloquial substitution, or automatic temporal-adverb classification is authorized."
+    },
+    {
+      "id": "W18-C11",
+      "claim": "一億 through 十億 remain compositional numeral expressions; one source list does not justify ten opaque whole-form entries.",
+      "status": "supported_external_and_repository_boundary",
+      "sourceIds": ["S-GLOSSIKA-W18", "S-LAM-LAU-LEE-2024-SEGMENTATION"],
+      "boundary": "Keep coefficient, 億 unit, English-value verification, and cross-week deduplication explicit."
+    },
+    {
+      "id": "W18-C12",
+      "claim": "The source's one-word sentence-final-particle glosses are pedagogical approximations and cannot replace tone-sensitive, sequential, combinatorial, and stance analysis.",
+      "status": "supported_external",
+      "sourceIds": ["S-GLOSSIKA-W18", "S-LUKE-1990-PARTICLES", "S-SYBESMA-LI-2007-SFP"],
+      "boundary": "Do not assign a single fixed function to 呀, 啦, 喇, 㗎, 嘅, 嘛, 喎, 噃, 咩, 囉, or 啩 from this table."
+    },
+    {
+      "id": "W18-C13",
+      "claim": "Modern sentence-final me1 is not adequately characterized as merely a rhetorical-question marker; it has biased and discourse uses associated with negative presuppositions.",
+      "status": "supported_external",
+      "sourceIds": ["S-GLOSSIKA-W18", "S-CHEUNG-2021-ME1"],
+      "boundary": "The example 真係咩 requires discourse-context analysis and cannot donate a neutral polar-question rule."
+    },
+    {
+      "id": "W18-C14",
+      "claim": "The phonics heading and six rows require independent item-level verification; the source contains an incomplete 香 / — row and the heading does not transparently describe every listed pair.",
+      "status": "source_discrepancy_supported",
+      "sourceIds": ["S-GLOSSIKA-W18", "S-BAUER-BENEDICT-1997-PHONOLOGY"],
+      "boundary": "No pronunciation-resource ingress, silent completion, pair acceptance, or contrast generalization is authorized."
+    }
+  ],
+  "disposition": {
+    "grammarPromotionAuthorized": false,
+    "runtimeChangeAuthorized": false,
+    "statusChangeAuthorized": false,
+    "surveyDeploymentAuthorized": false,
+    "nextEvidence": "Use the follow-up ledger for bounded corpus inventories, canonical parser audits, direct lexical review, or role-neutral panel items only after research and corpus evidence remain inconclusive."
+  }
+}
