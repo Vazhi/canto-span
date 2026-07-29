@@ -1,0 +1,161 @@
+name: CS-WORK-0281 Week 18 research audits
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    if: github.event.pull_request.head.ref == 'agent/glossika-week18-research'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Generate common-verb and temporal audits
+        run: |
+          mkdir -p data/research-ledgers
+          node <<'NODE'
+          const fs = require('fs');
+          const sourcePath = 'data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/source.json';
+          const crosswalkPath = 'data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/crosswalk.json';
+          const source = JSON.parse(fs.readFileSync(sourcePath,'utf8'));
+          const crosswalk = JSON.parse(fs.readFileSync(crosswalkPath,'utf8'));
+          const byId = new Map(crosswalk.records.map(record => [record.sourceItemId, record]));
+
+          const verbProfiles = {
+            '食': ['dynamic_transitive_or_object_omission','food_selection_and_contextual_object_omission'],
+            '飲': ['dynamic_transitive_or_object_omission','beverage_selection_and_contextual_object_omission'],
+            '瞓': ['intransitive_activity','locative_and_duration_modification'],
+            '行': ['motion_or_activity_polysemy','path_goal_and_manner_context_required'],
+            '跑': ['intransitive_motion_activity','path_goal_and_manner_context_required'],
+            '坐': ['posture_or_position_verb','location_and_vehicle_readings_require_context'],
+            '企': ['posture_or_position_verb','location_and_stance_extensions_require_context'],
+            '睇': ['perception_or_activity_transitive','object_omission_and_look_watch_readings'],
+            '聽': ['perception_transitive_or_intransitive','hear_listen_and_addressee_context'],
+            '講': ['speech_verb','content_addressee_and_object_omission'],
+            '寫': ['creation_activity_transitive','created_object_and_object_omission'],
+            '讀': ['reading_or_study_activity','object_and_institutional_readings'],
+            '做': ['highly_productive_light_or_lexical_verb','object_selection_and_construction_specific_analysis'],
+            '買': ['acquisition_transitive','theme_recipient_and_benefactive_context'],
+            '賣': ['transfer_transitive','theme_recipient_and_source_context'],
+            '畀': ['give_verb_coverb_or_passive_permissive_marker','lexical_reading_and_relation_must_be_typed_separately'],
+            '攞': ['take_get_verb','theme_source_and_result_context'],
+            '嚟': ['deictic_motion_or_directional_element','independent_motion_purpose_and_directional_uses_split'],
+            '去': ['deictic_motion_or_directional_purpose_element','destination_motion_purpose_and_directional_uses_split'],
+            '返': ['return_motion_or_directional_element','destination_and_deictic_chain_context'],
+            '住': ['residence_verb_or_aspectual_durative_marker','lexical_and_grammatical_readings_split'],
+            '著': ['wear_verb_with_reading_collision','source_zoek3_requires_lexical_pronunciation_review'],
+            '洗': ['washing_activity_transitive','theme_omission_and_compound_readings'],
+            '煮': ['cooking_activity_transitive','food_object_and_result_context'],
+            '開': ['open_begin_or_directional_result_verb','lexical_senses_and_complement_readings_split']
+          };
+          const verbEntries = source.items.filter(item => item.subsection === 'common_verbs').map(item => {
+            const cw = byId.get(item.id);
+            const [profile,boundary] = verbProfiles[item.source.traditional] || ['unclassified','requires_review'];
+            return {
+              sourceItemId:item.id,
+              traditional:item.source.traditional,
+              sourceJyutping:item.source.jyutping,
+              sourceEnglish:item.source.english,
+              lexicalProfile:profile,
+              boundary,
+              canonicalLexiconOwners:cw.canonicalLexiconOwners,
+              canonicalPronunciationOwners:cw.canonicalPronunciationOwners,
+              runtimeCoverage:cw.canonicalLexiconOwners.length ? 'existing_modular_entry' : 'missing_exact_modular_entry',
+              disposition:item.source.traditional === '著' ? 'dedicated_lexical_and_pronunciation_review' : 'retain_existing_owner_no_bulk_change',
+              implementationAuthorized:false
+            };
+          });
+          const commonVerbAudit = {
+            schema:'canto-span-glossika-common-verb-audit-v1',
+            packetId:'GLOSSIKA-YUEHK-A1-W18-20260719-COMMON-VERB-AUDIT-R1',
+            sourceId:source.source.sourceId,
+            generatedFrom:{sourcePath,crosswalkPath,canonicalRuntimeInputs:['src/**','src/runtime-resources/**'],generatedBundleExcluded:'main.js'},
+            policy:{sourceGlossWeight:'pedagogical_lexical_attestation_only',runtimeCoverageWeight:'implementation_observation_only',polysemyRule:'One orthographic token may require multiple lexical or grammatical profiles.',implementationAuthorized:false},
+            summary:{sourceCount:verbEntries.length,covered:verbEntries.filter(entry=>entry.runtimeCoverage==='existing_modular_entry').length,uncovered:verbEntries.filter(entry=>entry.runtimeCoverage!=='existing_modular_entry').map(entry=>entry.traditional)},
+            entries:verbEntries
+          };
+
+          const temporalProfiles = {
+            '黎明':['time_of_day_noun','formal_or_written_review'],
+            '黃昏':['time_of_day_noun','register_and_frequency_review'],
+            '午夜':['time_of_day_noun','formal_written_and_midnight_collision_review'],
+            '正午':['time_of_day_noun','formal_written_and_noon_collision_review'],
+            '世紀':['calendar_measure_noun','quantification_and_classifier_profile'],
+            '十年':['duration_measure_expression','compositional_duration_not_opaque_time_adverb'],
+            '秒':['time_unit_measure_noun','classifier_and_quantity_context'],
+            '約會':['scheduled_event_noun','not_inherently_temporal_adverb'],
+            '日曆':['calendar_object_noun','not_inherently_temporal_adverb'],
+            '早':['scalar_temporal_property_or_adverb','predicate_modifier_and_fragment_uses_split'],
+            '遲':['scalar_temporal_property_or_adverb','predicate_modifier_and_fragment_uses_split'],
+            '季度':['calendar_period_noun','formal_or_domain_specific_review'],
+            '時代':['era_period_noun','nominal_not_generic_adverb'],
+            '過去':['deictic_period_noun_or_directional_lexeme','temporal_and_motion_readings_split'],
+            '將來':['deictic_future_period_noun','nominal_and_frame_uses'],
+            '永遠':['temporal_quantificational_adverb','scope_and_negation_interaction'],
+            '以前':['relative_time_word','reference_time_and_frame_function'],
+            '暫時':['bounded_duration_adverb_or_property','temporary_state_and_duration_scope'],
+            '長期':['duration_property_or_modifier','nominal_modifier_and_clause_modifier_split'],
+            '短期':['duration_property_or_modifier','nominal_modifier_and_clause_modifier_split'],
+            '定期':['periodicity_modifier','frequency_schedule_and_attributive_uses'],
+            '最近':['relative_time_word_or_superlative_property','temporal_frame_and_nominal_modifier_split'],
+            '之後':['relational_time_noun_or_localizer_like_expression','reference_event_or_time_required'],
+            '半夜':['time_of_day_noun','midnight_late_night_translation_boundary'],
+            '中午':['time_of_day_noun','ordinary_noon_form_contrast_with_正午'],
+            '刹那':['instant_noun','literary_or_written_register_review'],
+            '日程':['schedule_noun','formal_or_written_register_review'],
+            '截止日期':['deadline_date_compound_noun','compound_compositionality_and_register_review']
+          };
+          const temporalEntries = source.items.filter(item => item.subsection === 'temporal_lexicon').map(item => {
+            const cw = byId.get(item.id);
+            const [lexicalClass,boundary] = temporalProfiles[item.source.traditional] || ['unclassified','requires_review'];
+            return {
+              sourceItemId:item.id,
+              traditional:item.source.traditional,
+              sourceJyutping:item.source.jyutping,
+              sourceEnglish:item.source.english,
+              lexicalClass,
+              boundary,
+              canonicalLexiconOwners:cw.canonicalLexiconOwners,
+              runtimeCoverage:cw.canonicalLexiconOwners.length ? 'existing_modular_entry' : 'missing_exact_modular_entry',
+              functionBoundary:'Lexical category and temporal clause function must be assigned separately.',
+              implementationAuthorized:false
+            };
+          });
+          const temporalAudit = {
+            schema:'canto-span-glossika-temporal-lexicon-audit-v1',
+            packetId:'GLOSSIKA-YUEHK-A1-W18-20260719-TEMPORAL-LEXICON-R1',
+            sourceId:source.source.sourceId,
+            generatedFrom:{sourcePath,crosswalkPath,canonicalResearch:'docs/research/TEMPORAL-EXPRESSIONS-SOURCE-MAP-CP021B-R12.md'},
+            policy:{categoryFunctionSeparation:true,opaqueBulkIngress:false,registerLabelsRequireIndependentEvidence:true,implementationAuthorized:false},
+            summary:{sourceCount:temporalEntries.length,covered:temporalEntries.filter(entry=>entry.runtimeCoverage==='existing_modular_entry').length,uncovered:temporalEntries.filter(entry=>entry.runtimeCoverage!=='existing_modular_entry').map(entry=>entry.traditional)},
+            entries:temporalEntries
+          };
+
+          if(verbEntries.length!==25) throw new Error(`Expected 25 verbs, found ${verbEntries.length}`);
+          if(temporalEntries.length!==28) throw new Error(`Expected 28 temporal entries, found ${temporalEntries.length}`);
+          if(commonVerbAudit.summary.covered!==24 || commonVerbAudit.summary.uncovered.join(',')!=='著') throw new Error('Unexpected common verb coverage');
+          if(temporalAudit.summary.covered!==3) throw new Error('Unexpected temporal coverage');
+          fs.writeFileSync('data/research-ledgers/glossika-week18-common-verb-audit.json',JSON.stringify(commonVerbAudit,null,2)+'\n');
+          fs.writeFileSync('data/research-ledgers/glossika-week18-temporal-lexicon.json',JSON.stringify(temporalAudit,null,2)+'\n');
+          console.log({commonVerb:commonVerbAudit.summary,temporal:temporalAudit.summary});
+          NODE
+          git diff --check
+      - name: Commit generated audits
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/research-ledgers/glossika-week18-common-verb-audit.json data/research-ledgers/glossika-week18-temporal-lexicon.json
+          if git diff --cached --quiet; then echo "Audits unchanged"; else
+            git commit -m "Generate Week 18 lexical audits"
+            git push origin HEAD:${{ github.event.pull_request.head.ref }}
+          fi
