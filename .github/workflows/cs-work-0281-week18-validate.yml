@@ -1,0 +1,85 @@
+name: CS-WORK-0281 Week 18 research validation
+
+on:
+  pull_request:
+    types: [opened, reopened]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    if: github.event.pull_request.head.ref == 'agent/glossika-week18-research-final'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Install dependencies
+        run: npm ci
+      - name: Validate source, modular audits, and research ledgers
+        run: |
+          node <<'NODE'
+          const fs=require('fs');
+          const path=require('path');
+          const source=require('./data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/source.json');
+          const common=require('./data/research-ledgers/glossika-week18-common-verb-audit.json');
+          const temporal=require('./data/research-ledgers/glossika-week18-temporal-lexicon.json');
+          const claims=require('./data/research-ledgers/glossika-week18-claim-source.json');
+          const followup=require('./data/research-ledgers/glossika-week18-followup-candidates.json');
+          const tokenPairs=require('./src/runtime-resources/lexicon/token-lexicon');
+          const tokenMap=new Map(tokenPairs);
+          const tokenRoot='src/runtime-resources/lexicon/token-lexicon';
+          const tokenFiles=fs.readdirSync(tokenRoot).filter(file=>file.endsWith('.js')).map(file=>path.join(tokenRoot,file)).sort();
+          const tokenText=Object.fromEntries(tokenFiles.map(file=>[file,fs.readFileSync(file,'utf8')]));
+          const owners=form=>tokenFiles.filter(file=>tokenText[file].includes(JSON.stringify(form)));
+          if(source.items.length!==99) throw new Error('Expected 99 source records');
+          if(source.ingress.sourcePayloadHash!=='sha256:fb9efc4f693a96015740012e119a678e57645fb9017b9096a5383d8bdaa13579') throw new Error('Unexpected source payload hash');
+          const commonItems=source.items.filter(item=>item.subsection==='common_verbs');
+          const temporalItems=source.items.filter(item=>item.subsection==='temporal_lexicon');
+          if(commonItems.length!==25||common.entries.length!==25) throw new Error('Expected 25 common-verb records');
+          if(temporalItems.length!==28||temporal.entries.length!==28) throw new Error('Expected 28 temporal records');
+          for(const [index,item] of commonItems.entries()) {
+            const entry=common.entries[index];
+            const form=item.source.traditional;
+            if(entry.sourceItemId!==item.id||entry.traditional!==form) throw new Error(`Common-verb alignment failed at ${item.id}`);
+            const runtime=tokenMap.get(form)||null;
+            const coverage=runtime?'already_covered_exact':'lexical_review_gap';
+            if(entry.coverage!==coverage) throw new Error(`Stale common-verb coverage for ${form}`);
+            if(JSON.stringify(entry.exactRuntimeOwners)!==JSON.stringify(owners(form))) throw new Error(`Stale common-verb owner for ${form}`);
+          }
+          const commonExact=common.entries.filter(entry=>entry.coverage==='already_covered_exact').length;
+          const commonGap=common.entries.filter(entry=>entry.coverage==='lexical_review_gap');
+          if(commonExact!==24||commonGap.length!==1||commonGap[0].traditional!=='著'||commonGap[0].sourceJyutping!=='zoek3') throw new Error('Unexpected common-verb coverage result');
+          for(const [index,item] of temporalItems.entries()) {
+            const entry=temporal.entries[index];
+            const form=item.source.traditional;
+            if(entry.sourceItemId!==item.id||entry.traditional!==form) throw new Error(`Temporal alignment failed at ${item.id}`);
+            const runtime=tokenMap.get(form)||null;
+            const coverage=runtime?'already_covered_exact':'temporal_lexical_review_candidate';
+            if(entry.coverage!==coverage) throw new Error(`Stale temporal coverage for ${form}`);
+            if(JSON.stringify(entry.exactRuntimeOwners)!==JSON.stringify(owners(form))) throw new Error(`Stale temporal owner for ${form}`);
+            if(!entry.auditClass||!entry.registerReview) throw new Error(`Incomplete temporal audit for ${form}`);
+          }
+          if(temporal.entries.filter(entry=>entry.coverage==='already_covered_exact').length!==3) throw new Error('Expected 3 exact temporal entries');
+          if(temporal.entries.filter(entry=>entry.coverage==='temporal_lexical_review_candidate').length!==25) throw new Error('Expected 25 temporal review candidates');
+          if(claims.claims.length!==14) throw new Error('Expected 14 bounded claims');
+          if(claims.sources.length<12) throw new Error('Expected direct-source diversity');
+          if(followup.candidates.length!==11||followup.nonCandidates.length!==2) throw new Error('Unexpected follow-up structure');
+          if(claims.disposition.runtimeChangeAuthorized!==false||claims.disposition.grammarPromotionAuthorized!==false) throw new Error('Protected decision boundary missing');
+          const note=fs.readFileSync('docs/research/GLOSSIKA-YUEHK-A1-W18-20260719-RESEARCH.md','utf8').toLowerCase();
+          for(const phrase of ['twenty-four of twenty-five','only three of twenty-eight','no parser','main.js','咁我幫你買嘢返嚟啦','著 zoek3']) {
+            if(!note.includes(phrase.toLowerCase())) throw new Error(`Research note missing ${phrase}`);
+          }
+          console.log({sourceRecords:source.items.length,commonExact,commonGap:commonGap[0].traditional,temporalExact:3,claims:claims.claims.length,followups:followup.candidates.length});
+          NODE
+          git diff --check
+      - name: Run task-scoped repository verification
+        run: |
+          npm run verify:research
+          npm run verify

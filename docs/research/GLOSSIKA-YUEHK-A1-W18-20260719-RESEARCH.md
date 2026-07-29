@@ -6,11 +6,11 @@
 - Corpus ingress: #135 / PR #280
 - Source: `data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/source.json`
 - Source payload SHA-256: `fb9efc4f693a96015740012e119a678e57645fb9017b9096a5383d8bdaa13579`
-- Status: research complete; no runtime, lexicon, construction-status, corpus-classification, survey, version, or release change
+- Status: research complete; no parser, runtime lexicon, generated-bundle, construction-status, corpus-classification, survey, or release change
 
 ## Purpose and evidence boundary
 
-This packet evaluates the authorized Week 18 lesson as pedagogical and lexical attestation. Source Cantonese, Jyutping, English glosses, register labels, particle functions, IPA, and item order remain preserved in the corpus package. They are not automatically accepted as linguistic conclusions.
+This packet evaluates the authorized Week 18 lesson as pedagogical, lexical, and contextual attestation. The immutable corpus package preserves 99 source records, including source Jyutping, translations, register labels, particle labels, IPA, and item order. Those fields are not automatically accepted as direct linguistic conclusions.
 
 Machine-readable outputs:
 
@@ -19,286 +19,298 @@ Machine-readable outputs:
 - `data/research-ledgers/glossika-week18-temporal-lexicon.json`
 - `data/research-ledgers/glossika-week18-followup-candidates.json`
 
-Canonical runtime ownership resolves only to `src/**` and `src/runtime-resources/**`. Generated `main.js` is not an authority and was not regenerated or modified.
+Canonical runtime ownership is source-first:
+
+- `src/**` and `src/runtime-resources/**` own implementation;
+- `main.js` is generated deployment output and is excluded from research and ownership decisions;
+- this packet changes no runtime source and does not regenerate `main.js`.
 
 ## Executive findings
 
-1. **The clarification items perform different repair jobs.** Open repair initiation, repetition request, referent clarification, and meaning clarification should not be represented as one construction merely because all respond to a communication problem.
-2. **The turn-management items are analytically composite.** Interruption, apology, floor holding, waiting, completion, sequencing, imperative force, and confirmation or request force remain separate.
-3. **`V + 完` supports a completion relation, but the exact source sequence is broader.** `唔該等我講完先好唔好` cannot be reduced to one completion construction.
-4. **`你食咗飯未` is neither a preverbal `未` negative nor ordinary exact-copy A-not-A.** The exact final-`未` perfective-question profile remains a direct-source gap.
-5. **The motion examples preserve two independently parsed predicates.** `返屋企` or `去超市` supplies overt destination motion; `煮飯` or `買嘢` supplies the compatible purpose event.
-6. **`留喺屋企睇電視` is not a standalone locative predicate.** It contains lexical `留`, event location, and a following activity predicate.
-7. **`幫你買嘢返嚟` contains an unresolved benefactive relation plus return deixis.** The source does not establish a generic `幫 + NP + VP` construction or one serial-verb analysis for the complete sequence.
-8. **The 25 common verbs are not 25 complete valency entries.** Twenty-four already have exact modular lexical owners; `著 zoek3` remains a dedicated lexical and pronunciation review item. Polysemy and grammaticalized uses remain split.
-9. **The 28 temporal entries belong to several lexical classes.** Time-of-day nouns, measures, schedule nouns, relative time words, scalar properties, periodicity modifiers, and temporal adverbs cannot be collapsed into one adverb inventory.
-10. **The source particle and phonics tables are pedagogical simplifications.** Tone, clause type, discourse context, prosody, cluster behavior, lexical category, and item-level pronunciation remain necessary.
-11. **`一億` through `十億` remain compositional.** No ten-item opaque lexical expansion is justified.
+1. **Clarification and turn management are interactional actions, not one construction.** The eight functional-language examples include repair initiation, repetition requests, reference clarification, meaning clarification, floor holding, interruption, apology, completion, and negotiation. Their interpretation depends on sequence, formulation, prosody, and participation context.
+2. **Completion `完 jyun4` remains distinct from perfective and universal quantification.** `講完` and `食完喇` provide completion attestations, but they do not license every `V + 完` sequence or merge completion with `咗` or `曬`.
+3. **`你食咗飯未？` is a bounded aspect-question attestation.** It does not by itself establish a generic neutral `咗…未` rule across predicates, contexts, or competing completion and experiential profiles.
+4. **The lesson’s multi-verb strings require decomposition.** Motion, destination, purpose, location, benefactive, deictic direction, discourse linkage, and final particles must remain separate state and parser owners.
+5. **Common-verb coverage is nearly complete.** Twenty-four of twenty-five forms already have exact modular token-lexicon owners. `著 zoek3` “wear” is the sole lexical-review gap and must remain distinct from homographic aspectual or resultative material.
+6. **The temporal vocabulary is heterogeneous.** It contains part-of-day nouns, period and unit nouns, schedule or artifact nouns, scalar temporal forms, relational forms, duration or recurrence forms, and a brief-interval noun. Only three of twenty-eight have exact modular lexical coverage.
+7. **The `億` series is compositional.** The ten listed values do not warrant ten opaque whole-form entries.
+8. **Particle glosses are too coarse for grammar.** One-word labels such as “softener,” “suggestion,” “change of state,” “surprise,” “warning,” “rhetorical question,” and “resignation” suppress tone, sequence, stance, clause type, and clustering.
+9. **The phonics table remains provisional.** Six rows require independent item-level review, and the source contains an incomplete `香 / —` row.
 
-## 1. Clarification and conversational repair
+## 1. Clarification, repair, and turn management
 
-The lesson gives four forms:
+The source provides four clarification or repetition examples:
 
 - `咩話？再講多次。`
 - `你講嘅係邊個？`
 - `唔好意思，可唔可以再講一次？`
 - `唔該，你係咩意思呀？`
 
-Conversation Analysis provides a useful general distinction between **other-initiated repair** and the repair solution that follows. It does not establish the naturalness, register, internal syntax, or productivity of these Cantonese strings.
-
-### Bounded source analysis
-
-- `咩話？` is an open repair initiator in the lesson context. It must remain distinct from a productive wh-question, a clause-final `me1` particle analysis, or the source's separate particle-table gloss “rhetorical question.”
-- `再講多次` requests repetition, but `多次` versus `一次`, politeness, and ordinary spoken preference require direct Cantonese corpus and speaker evidence.
-- `你講嘅係邊個` narrows the trouble source to a referent. The overt `嘅` phrase contains context-dependent unspoken material; the parser must not invent that material or reduce `嘅` to a sentence-final particle.
-- `你係咩意思呀` requests meaning clarification. `咩` remains in a nominal question expression and final `呀 aa3` contributes discourse meaning; neither token alone defines the entire repair action.
-
-### Current disposition
-
-These are **source-attested discourse actions with Cantonese-specific evidence gaps**. They justify corpus searches and contextual judgment tasks, not formula ingress or a new repair-construction identity.
-
-## 2. Turn management, completion, and request sequencing
-
-The source gives:
+It also provides four interruption or floor-management examples:
 
 - `等陣，等我講完。`
 - `我插句嘴。`
 - `唔好意思，打斷一下。`
 - `唔該等我講完先好唔好？`
 
-The source labels alone cannot establish that all four are ordinary conversational formulas. `我插句嘴` and `打斷一下` are especially appropriate for translation-influence and register review.
+Liesenfeld’s naturally occurring Cantonese dialog study distinguishes continuers, responses, change-of-state tokens, turn-management tokens, and repair initiators. It further shows that sequential position, pitch contour, and production format are necessary to identify interactional function. That evidence supports a negative boundary: source translations or surface similarity cannot collapse these eight expressions into one formula family.
 
-### `等陣` versus `等我講完`
+### Distinctions retained
 
-`等陣` is a waiting directive or discourse-management expression. The second `等` in `等我講完` introduces a participant and an event. The exact permissive, causative, floor-holding, or lexical analysis remains unresolved in the directly checked Cantonese evidence.
+- `咩話？` can initiate repair, while `再講多次` requests repetition.
+- `你講嘅係邊個？` asks for reference identification rather than merely repeating unheard material.
+- `你係咩意思呀？` asks for intended meaning and includes a discourse particle.
+- `等我講完` combines floor holding with an embedded completion predicate.
+- `我插句嘴` is a lexicalized self-entry expression whose register and regional distribution require independent evidence.
+- `打斷一下` is a direct interruption formulation with a source-labeled polite frame.
+- `先好唔好` adds sequencing and negotiates compliance; it is not equivalent to a simple imperative.
 
-Do not infer one general `等 + NP + VP` construction from the lesson.
+The source labels Casual and Polite remain source metadata. No runtime register feature is authorized.
 
-### Completion `講完`
+## 2. Completion `完`
 
-Direct Cantonese resultative research treats `完` as a phase or result element associated with reaching the end of an event. The visible `講 + 完` sequence therefore supports a completion relation. This does not decide:
+Direct Cantonese research distinguishes the aspectual verb `完 jyun4` “finish” from `曬 saai3` universal quantification. The Week 18 items `講完` and `食完喇` are therefore useful completion attestations, but their evidence remains bounded.
 
-- which speech event or content is completed;
-- whether the complement is lexicalized or freely productive with every verb;
-- whether a following object is required, allowed, or contextually omitted;
-- how completion interacts with `等`, `先`, or a final request.
+### Positive boundary
 
-### `先好唔好`
+- `完` contributes event completion in the source examples.
+- the completed event can occur inside a larger floor-management expression;
+- a sentence-final particle may follow the completed predicate.
 
-In the complete source string, `先` relates the requested waiting to prior completion, while `好唔好` contributes an evaluative or confirmation-like request form. The exact scope and request force require direct contrasts. They must not be absorbed into `講完` or represented as one fixed completion-request construction.
+### Negative boundaries
 
-## 3. Aspect and final `未`
+The lesson does not establish:
 
-`你食咗飯未？` contains:
+- that every verb freely combines with `完`;
+- identical object placement for every predicate;
+- equivalence between completion `完` and perfective `咗`;
+- equivalence between completion `完` and universal `曬`;
+- one fixed interpretation for `完 + particle` sequences;
+- a parser or status change.
 
-- lexical predicate `食`;
-- overt object `飯`;
-- postverbal perfective `咗`;
-- sentence-final `未` in a polar-question use.
+## 3. Perfective plus final `未`
 
-Existing research already separates:
+`你食咗飯未？` attests a perfective clause followed by `未`. The safest description is a context-sensitive question about whether the relevant eating event has occurred by the reference point.
 
-- preverbal `未 + VP` negative statements;
-- `未 + V過` negative experiential statements;
-- final `未` experiential questions;
-- `有冇 + VP` questions;
-- exact-copy A-not-A forms.
+The item alone does not determine:
 
-The Week 18 item adds an attested `V咗O未` profile, but the inspected direct source set does not yet establish its full aspectual, discourse, lexical, particle, or regional restrictions. It therefore remains a bounded follow-up item rather than a parser change.
+- whether final `未` is a particle, reduced predicate, or another construction-specific element in every analysis;
+- how the profile contrasts with bare `未` clauses;
+- how it differs from experiential `過` questions;
+- whether lexical completion changes the reading;
+- which answer forms it licenses;
+- whether every predicate supports the same profile.
+
+A future audit must use direct aspect research, contextual corpus examples, and controlled contrasts. No generic `咗…未` broadening follows here.
 
 ## 4. Motion, purpose, location, benefactive, and direction
 
-### Overt destination plus purpose
+### `我要返屋企煮飯。`
 
-`我要返屋企煮飯` and `我去超市買嘢` fit the already accepted narrow distinction between:
+This item contains:
 
-1. an overt destination motion predicate (`返屋企`, `去超市`); and
-2. an immediately following semantically compatible purpose VP (`煮飯`, `買嘢`).
+- modal or necessity material `要`;
+- motion/return predicate `返`;
+- destination `屋企`;
+- following cooking event `煮飯`.
 
-The purpose relation is an inter-event relation. The two predicates retain their own arguments and lexical identities. Two adjacent verbs alone are not sufficient evidence.
+It may support a purpose relation, serial-verb composition, or another established clause relation, but it is not automatically a directional complement. Direct Cantonese research distinguishes independent directional verbs from directional complements and notes weaker fusion than Mandarin.
 
-### Locative continuation
+### `我去超市買嘢。你呢？`
 
-`我留喺屋企睇電視` contains lexical `留`, a preverbal or predicate-internal location relation `喺屋企`, and a following activity `睇電視`. Existing Cantonese coverb research distinguishes event-location `喺 + location + predicate` from a standalone locative predicate.
+The first sentence combines motion to a destination and a buying event. The second turn is a thematic continuation question. These must remain separate from each other and from any inferred purpose relation.
 
-The source does not decide whether the relation between `留喺屋企` and `睇電視` is purpose, coordination, simultaneous activity, or discourse-linked continuation in every context. No hidden linker is inserted.
+### `我留喺屋企睇電視。`
 
-### Benefactive `幫`
+This string combines:
 
-`幫你買嘢` clearly presents `你` as a participant benefiting from or associated with the buying event in the source translation. The lesson does not establish whether `幫` is:
+- stay/remain predicate `留`;
+- locative phrase `喺屋企`;
+- activity predicate `睇電視`.
 
-- an ordinary lexical verb;
-- a coverb-like marker;
-- an applicative or argument-introducing element;
-- part of a larger serial construction.
+The source does not settle whether the final activity is serialized, coordinated, subordinated, or discourse-linked in all contexts. A catch-all locative-continuation label would overstate the evidence.
 
-Argument type, animacy, scope, lexical selection, and regional/register behavior remain research gaps. Token presence alone must not assign a benefactive role.
+### `咁我幫你買嘢返嚟啦。`
 
-### Return-directional `返嚟`
+This turn contains at least five analytically separate layers:
 
-Directional research treats `返` and `嚟` as overt motion and deictic elements with spatial and extended meanings. In `買嘢返嚟`, the sequence preserves return direction and speaker-oriented deixis. It is not a generic aspect marker.
+1. discourse linker `咁`;
+2. `幫` benefactive or helping relation;
+3. buying event `買嘢`;
+4. deictic return sequence `返嚟`;
+5. final particle `啦 laa1`.
 
-The source still leaves a compositional ambiguity: `返嚟` may describe a return event following the buying event or participate in a tighter directional sequence. Context and corpus contrasts are needed; the parser must not invent speaker location.
+Cantonese research distinguishes single-verb double-object benefactives from serial-verb benefactives, and separately distinguishes directional verbs from directional complements. The participant roles, deictic center, path, event integration, and particle contribution cannot be inferred from the English translation alone.
 
 ## 5. Common-verb audit
 
-The exact modular audit contains 25 source verbs.
+The source lists twenty-five common verbs. The deterministic modular audit found:
 
-### Coverage
+- `already_covered_exact`: 24;
+- `lexical_review_gap`: 1.
 
-- Exact existing modular lexical owners: **24 / 25**
-- Missing exact owner: **`著 zoek3` “wear”**
+The covered forms are retained under their existing smallest token-lexicon owners. Source attestation does not overwrite runtime Jyutping, syntax tags, selectional metadata, or collision boundaries.
 
-Existing coverage prevents duplicate bulk ingress. It does not make the one-line source gloss a complete lexical entry.
+### Sole gap: `著 zoek3`
 
-### Required profile splits
+The source uses `著 zoek3` with the meaning “wear.” Before any implementation, a separate lexical review must establish:
 
-- **motion and direction:** `行`, `跑`, `嚟`, `去`, `返`;
-- **transfer, coverb, or permissive collisions:** `畀`;
-- **lexical versus aspectual reading:** `住`;
-- **wear versus other readings and written forms:** `著`;
-- **highly polysemous or light-verb behavior:** `做`, `開`;
-- **object selection and contextual omission:** `食`, `飲`, `睇`, `聽`, `講`, `寫`, `讀`, `買`, `賣`, `攞`, `洗`, `煮`;
-- **posture or intransitive activity:** `瞓`, `坐`, `企`.
+- exact written-form and reading ownership;
+- separation from homographic or homophonous aspectual and resultative profiles;
+- tokenization and pronunciation precedence;
+- learner gloss;
+- positive lexical examples;
+- collision tests;
+- the smallest canonical modular owner.
 
-The audit authorizes no lexical modification. `著` should receive a dedicated dictionary, corpus, Jyutping, valency, and collision review before any focused implementation issue.
+This research PR authorizes no lexical addition.
 
-## 6. Temporal lexical classes
+### Multifunctional forms retained as bounded entries
 
-The temporal audit contains 28 entries and preserves a central source-derived boundary: **lexical category and temporal clause function are not the same thing**.
+Several covered forms require continued separation among uses:
 
-### Time-of-day nouns
+- `畀`: give, ditransitive, coverb-like, passive/permissive, and spelling-variant boundaries;
+- `住`: live/reside versus aspectual or complement uses;
+- `去`, `返`, `嚟`: independent motion predicates versus directional elements;
+- `行`: `haang4` walking reading versus other readings and lexical compounds;
+- `洗 sai2`: wash versus modal `使 sai2` and unrelated homophones;
+- `開`: open, start, drive, operate, and other lexical senses;
+- `做`: ordinary do/make versus light-verb and lexicalized uses;
+- `睇` and `聽`: sense-specific perception and complement profiles.
 
-- `黎明`
-- `黃昏`
-- `午夜`
-- `正午`
-- `半夜`
-- `中午`
+## 6. Temporal lexical-class audit
 
-`午夜` and `半夜` both receive the source gloss “midnight,” while `正午` and `中午` both receive “noon.” These are translation collisions, not evidence of interchangeability. Register and distribution require comparison.
+The source’s twenty-eight temporal entries are not one uniform class. The audit uses seven provisional review classes:
 
-### Measures and period nouns
+| Review class | Count | Forms |
+|---|---:|---|
+| Part-of-day noun | 6 | `黎明`, `黃昏`, `午夜`, `正午`, `半夜`, `中午` |
+| Time-unit or period noun | 5 | `世紀`, `十年`, `秒`, `季度`, `時代` |
+| Schedule, event, or artifact noun | 4 | `約會`, `日曆`, `日程`, `截止日期` |
+| Scalar temporal predicate or adverbial | 2 | `早`, `遲` |
+| Temporal-domain or relational form | 4 | `過去`, `將來`, `以前`, `之後` |
+| Duration, recurrence, or adverbial form | 6 | `永遠`, `暫時`, `長期`, `短期`, `定期`, `最近` |
+| Brief-interval noun | 1 | `刹那` |
 
-- `世紀`
-- `十年`
-- `秒`
-- `季度`
-- `時代`
-- `刹那`
+These are project audit categories, not final universal parts of speech. Direct Cantonese work distinguishes temporal nouns, temporal adverbs, and aspectual marking, while work on Hong Kong Cantonese temporal primitives also reports combinatorial restrictions.
 
-`十年` is a compositional duration expression, not an opaque temporal adverb. Classifier and quantification behavior is head-specific.
+### Coverage result
 
-### Calendar, schedule, and event nouns
+- exact modular entries: 3;
+- temporal lexical-review candidates: 25.
 
-- `約會`
-- `日曆`
-- `日程`
-- `截止日期`
+For each uncovered form, later work must determine:
 
-These can relate to time but are not thereby lexical adverbs. `截止日期` is a compound noun and requires compositional and register review.
+- lexical whole versus productive composition;
+- reading and learner gloss;
+- ordinary versus formal, literary, technical, or administrative register;
+- noun, predicate, modifier, adverbial, or relational distribution;
+- ability to occur bare as a clause-level temporal expression;
+- smallest modular owner;
+- whether an existing component analysis is already sufficient.
 
-### Relative and deictic time expressions
+### Register review flags
 
-- `過去`
-- `將來`
-- `以前`
-- `最近`
-- `之後`
+Likely written, formal, literary, technical, or institutional items are flagged for review rather than rejected: `黎明`, `午夜`, `正午`, `世紀`, `季度`, `時代`, `將來`, `刹那`, `日程`, and `截止日期`.
 
-Their temporal interpretation depends on a reference time or event. Some also have non-temporal or lexical collisions, especially `過去`.
+Common conversational candidates include `早`, `遲`, `以前`, `暫時`, `最近`, `之後`, `半夜`, and `中午`. These labels remain hypotheses for corpus review, not accepted register decisions.
 
-### Scalar, durational, and periodic modifiers
+## 7. Large numerals
 
-- `早`
-- `遲`
-- `暫時`
-- `長期`
-- `短期`
-- `定期`
-- `永遠`
+The source lists `一億` through `十億`. Cantonese segmentation research supports an internally compositional analysis even where a whole numeral may be grouped at a surface word tier.
 
-These differ in syntax, scope, attributive use, predicate modification, frequency, and quantificational behavior. They are not one interchangeable “when” class.
+The retained analysis is:
 
-### Register review
+- coefficient plus `億` unit;
+- `十億` corresponds to one billion in the source’s English system;
+- no ten-entry opaque lexical expansion;
+- cross-week deduplication required before any future resource work.
 
-The audit flags `黎明`, `午夜`, `正午`, `世紀`, `季度`, `時代`, `刹那`, `日程`, and `截止日期` for spoken-frequency, register, and A1-appropriateness review. This is a research hypothesis, not a categorical rejection.
+## 8. Sentence-final particles
 
-## 7. Sentence-final particles
+The source table lists eleven forms:
 
-The lesson lists eleven forms and assigns one short English function to each. Direct Cantonese particle research does not support a one-character-to-one-function grammar.
+- `呀 aa3`
+- `啦 laa1`
+- `喇 laa3`
+- `㗎 gaa3`
+- `嘅 ge3`
+- `嘛 maa3`
+- `喎 wo3`
+- `噃 bo3`
+- `咩 me1`
+- `囉 lo1`
+- `啩 gwaa3`
 
-Necessary distinctions include:
+Luke’s conversation-analytic work shows that even frequently described particles such as LA, LO, and WO resist one consistent grammatical or semantic function. Sybesma and Li likewise analyze Cantonese final particles as a structured, tone-sensitive system.
 
-- tone-specific particle identity;
-- declarative, imperative, wh, A-not-A, disjunctive, and particle-question hosts;
-- assertion, focus, change of state, warning, surprise, uncertainty, request, and response demands;
-- co-occurrence and cluster order;
-- vowel length, intonation, and prosody;
-- orthographic variation;
-- non-final lexical or grammatical uses.
+Therefore, the source glosses remain pedagogical prompts only. Future analysis must consider:
 
-Specific boundaries:
+- exact tone and particle identity;
+- clause type;
+- discourse sequence and common ground;
+- speaker stance and expectation;
+- particle clusters;
+- prosody;
+- regional and register distribution.
 
-- `㗎 gaa3` has multiple clause- and discourse-sensitive profiles, not merely “emphasis; assertion.”
-- modern `咩 me1` includes biased and discourse-sensitive question uses; “rhetorical question” is incomplete.
-- `嘅 ge3` has nominalizing and attributive uses and must not be classified only as a sentence-final particle.
-- `喇 laa3`, `啦 laa1`, and other tone contrasts remain explicit identities.
+### `咩 me1`
 
-No particle function, cluster, or runtime status changes are authorized.
+The source label “rhetorical question” is too narrow and too broad at the same time. Modern sentence-final `me1` is associated with biased questions, discourse functions, and negative presuppositions. `真係咩？` requires a discourse context and cannot provide a neutral polar-question template.
 
-## 8. Large numerals
+### `喇 laa3`
 
-The ten rows `一億` through `十億` remain compositionally structured. The modular crosswalk found one existing exact whole-form entry and nine forms without opaque entries, but all ten are compositionally analyzable.
-
-Do not add ten independent lexical entries or treat a surface word grouping as proof of lexical opacity.
+The source labels `喇` “change of state (like 了).” This is an instructional approximation. It must not be merged with perfective `咗`, completion `完`, or Mandarin `了`, and its contribution in `食完喇` must be analyzed with the completed predicate and discourse state.
 
 ## 9. Phonics `/œː/` versus `/ɵ/`
 
-All six source rows remain provisional. Independent item-level review must verify:
+The six source rows require item-level verification of:
 
 - IPA nucleus and coda;
-- Jyutping and tone;
-- lexical identity and gloss;
-- whether each pair actually instantiates the stated contrast;
-- whether the heading's distributional statement is accurate.
+- Jyutping spelling and tone;
+- lexical identity;
+- English gloss;
+- whether the two words instantiate the claimed contrast;
+- whether the lesson heading accurately describes each row.
 
-The `香 / —` row lacks a B-side word, Jyutping, gloss, and IPA. It must remain incomplete; no silent reconstruction is authorized.
+The final row contains `香` on the A side and no B-side word, reading, or gloss. That missing source data must remain missing. It cannot be silently reconstructed.
+
+No pronunciation resource or runtime override is authorized.
 
 ## 10. Project consequences
 
 ### Authorized by this packet
 
-- retain the five research files;
-- preserve the direct-source and negative boundaries above;
-- retain the common-verb and temporal audits;
-- retain thirteen bounded follow-up candidates;
-- route unresolved forms to corpus work, direct-source research, parser audits, or role-neutral panels as specified.
+- retain the four research ledgers and this note;
+- retain exact modular coverage counts;
+- retain category-specific negative boundaries;
+- route unresolved work through the follow-up ledger;
+- preserve source discrepancies and register-review flags;
+- keep all implementation and status decisions separate.
 
 ### Not authorized
 
 - parser behavior changes;
 - runtime lexical or pronunciation changes;
 - generated `main.js` changes;
-- construction identity or status changes;
+- new construction identities;
+- identity or status transitions;
 - accepted corpus classifications;
-- survey deployment;
-- native-speaker judgment claims;
-- runtime version or release changes.
+- survey or panel deployment;
+- native-speaker judgments;
+- runtime version, release, or deployment changes.
 
 ## References
 
 - Bauer, Robert S., and Paul K. Benedict. 1997. *Modern Cantonese Phonology*. DOI `10.1515/9783110823707`.
+- Bodomo, Adams, Olivia Lam, and Natalie Yu. 2003. “Double Object and Serial Verb Benefactive Constructions in Cantonese.” *LFG03 Proceedings*.
 - Cheung, Lawrence Yam-Leung. 2021. “The origin and development of the question particle me1 in Cantonese.” *Lingua* 254:103049. DOI `10.1016/j.lingua.2021.103049`.
-- Lai, Ryan Ka Yau, and Michelle Man-Long Pang. 2023. “Rethinking the Description and Typology of Cantonese Causative–Resultative Constructions: A Dynamic Constructionist Lens.” *Languages* 8(2):151. DOI `10.3390/languages8020151`.
-- Lam, Charles, Chaak-ming Lau, and Jackson L. Lee. 2024. “Multi-Tiered Cantonese Word Segmentation.” *LREC-COLING 2024*, 11993–12002. `https://aclanthology.org/2024.lrec-main.1047/`
-- Mertens, Julia Beret, and Jan Peter de Ruiter. 2021. “Cognitive and social delays in the initiation of conversational repair.” *Dialogue & Discourse* 12:21–44. `https://aclanthology.org/2021.dnd-12.9/`
+- Lam, Charles, Chaak-ming Lau, and Jackson L. Lee. 2024. “Multi-Tiered Cantonese Word Segmentation.” *LREC-COLING 2024*, 11993–12002.
+- Lei, Margaret Ka-yan, and Thomas Hun-tak Lee. 2019. “Differentiating universal quantification from completive aspect in child Cantonese.” DOI `10.1075/lald.63.09lei`.
+- Liesenfeld, Andreas Maria. 2019. “Cantonese turn-initial minimal particles: annotation of discourse-interactional functions in dialog corpora.” *PACLIC 33*, 471–479.
+- Luke, K. K. 1990. *Utterance Particles in Cantonese Conversation*. DOI `10.1075/pbns.9`.
+- Luke, K. K., and Adams Bodomo. 2001. “A comparative study of the semantics of serial verb constructions in Dagaare and Cantonese.” DOI `10.1075/lic.3.2.02luk`.
 - Sybesma, Rint, and Boya Li. 2007. “The dissection and structural mapping of Cantonese sentence final particles.” *Lingua* 117(10):1739–1783. DOI `10.1016/j.lingua.2006.10.003`.
-- Wong, Lai-yin. 2002. *The Morphology, Syntax, and Semantics of Adverbs in Cantonese*. University of Hong Kong MPhil thesis. DOI `10.5353/th_b3122684`.
-- Yiu, Carine Yuk Man. *Spatial Extension: Directional Verbs in Cantonese*. Hong Kong University of Science and Technology doctoral thesis.
-- Canto Span `TEMPORAL-EXPRESSIONS-SOURCE-MAP-CP021B-R12.md`.
-- Canto Span `LANE-07-A-NOT-A-QUESTIONS-SOURCE-MAP-CP021B-R7.md`.
-- Canto Span `ASPECTUAL-CLAUSE-WRAPPERS-SOURCE-MAP-CP021B-R24.md`.
-- Canto Span `COVERB-MANNER-EVENT-MODIFICATION-SOURCE-MAP-CP021B-R23.md`.
-- Canto Span `CONSTRUCTION-ADJUDICATION-BATCH-14.md`.
-- Canto Span `UC-RQ-011-GAA3-CONSTRUCTION-FAMILY-RESEARCH-R1.md`.
+- Tong, Malindy, Michael Yell, and Cliff Goddard. 1997. “Semantic primitives of time and space in Hong Kong Cantonese.” *Language Sciences* 19(3):245–261. DOI `10.1016/S0388-0001(96)00063-0`.
+- Tse, Shek Kam, Hui Li, and Shing On Leung. 2014. “Tense and temporality: How young children express time in Cantonese.” DOI `10.1075/bct.60.03tse`.
+- Yiu, Carine Yuk Man. “Directional verbs in Cantonese: A typological and historical study.”
