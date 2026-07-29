@@ -1,0 +1,601 @@
+{
+  "schema": "canto-span-pedagogical-dialog-source-v1",
+  "source": {
+    "sourceId": "GLOSSIKA-YUEHK-A1-DLG-013-20260301",
+    "provider": "Glossika",
+    "course": "Cantonese (Hong Kong) A1 Dialogs",
+    "dialogNumber": 13,
+    "title": "唔該借借",
+    "englishTitle": "Excuse Me, May I Pass",
+    "sourceDate": "2026-03-01",
+    "gmailMessageId": "19cab6a13f7844e0",
+    "sourceType": "authorized_pedagogical_email",
+    "language": "yue-Hant-HK",
+    "sourceFormat": "Glossika interactive-dialog email; Jyutping lines omit speaker-name prefixes; vocabulary container empty",
+    "authorization": {
+      "basis": "User states Glossika granted permission to use all lesson data in this non-commercial private-use Canto Span project.",
+      "scope": "Source-preserving corpus ingress for this dialog.",
+      "redistributionClaim": "none"
+    }
+  },
+  "ingress": {
+    "issue": 149,
+    "workClaimIssue": 339,
+    "branch": "agent/glossika-dialog-013-ingress",
+    "reviewState": "REQUIRES_EXPERT_CONTEXT_REVIEW",
+    "policy": "Source values are immutable. The absent vocabulary block, speaker sequence, normalization, duplicate classification, naturalness review, construction routing, and evidence use are recorded separately.",
+    "recordCount": 40,
+    "turnCount": 40,
+    "vocabularyCount": 0,
+    "vocabularyBlockState": "source_empty",
+    "vocabularyExactSurfaceAbsentFromDialogCount": 0,
+    "itemTypeCounts": {
+      "dialog_turn": 40
+    },
+    "sourcePayloadHash": "sha256:1a81176b3c3710ae88bce8b4b9ebfa1dad78149a2f77622e4825bcef3bfc019d",
+    "sourcePayloadHashPolicy": "SHA-256 of canonical key-sorted JSON for the ordered source-field array.",
+    "turnEnglishPolicy": "The source email provides no per-turn English translation; each turn preserves english=null."
+  },
+  "items": [
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I001",
+      "ordinal": 1,
+      "itemType": "dialog_turn",
+      "turn": 1,
+      "speaker": "陳先生",
+      "source": {
+        "sourceLine": "陳先生: 唔該，借借。",
+        "traditional": "唔該，借借。",
+        "jyutpingLine": "/m4 goi1, ze3 ze3./",
+        "english": null
+      },
+      "sourceHash": "sha256:60a970e7c25a7b5adaaa7563cbddb46e70cd7a9b6f3b94b575d7171a41a1d863"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I002",
+      "ordinal": 2,
+      "itemType": "dialog_turn",
+      "turn": 2,
+      "speaker": "李生",
+      "source": {
+        "sourceLine": "李生: 早晨，先生。請問你搵邊個？",
+        "traditional": "早晨，先生。請問你搵邊個？",
+        "jyutpingLine": "/zou2 san4, sin1 saang1. cing2 man6 nei5 wan2 bin1 go3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:eea899fb11ef08826debd666dd83627bf4c7d7ae0b620827f57f62d7d7453f73"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I003",
+      "ordinal": 3,
+      "itemType": "dialog_turn",
+      "turn": 3,
+      "speaker": "陳先生",
+      "source": {
+        "sourceLine": "陳先生: 我搵王經理。",
+        "traditional": "我搵王經理。",
+        "jyutpingLine": "/ngo5 wan2 wong4 ging1 lei5./",
+        "english": null
+      },
+      "sourceHash": "sha256:e53b6d55d2858c2c34ab7b56c5dd33f3a9a86a503fb21d4e6e042e0188a328ae"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I004",
+      "ordinal": 4,
+      "itemType": "dialog_turn",
+      "turn": 4,
+      "speaker": "李生",
+      "source": {
+        "sourceLine": "李生: 你有冇預約？",
+        "traditional": "你有冇預約？",
+        "jyutpingLine": "/nei5 jau5 mou5 jyu6 joek3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:c16b9a34473e1c20c4d06950a8b4cac1a7961a912070f86697e784873bf3a805"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I005",
+      "ordinal": 5,
+      "itemType": "dialog_turn",
+      "turn": 5,
+      "speaker": "陳先生",
+      "source": {
+        "sourceLine": "陳先生: 有呀，我約咗十點。",
+        "traditional": "有呀，我約咗十點。",
+        "jyutpingLine": "/jau5 aa3, ngo5 joek3 zo2 sap6 dim2./",
+        "english": null
+      },
+      "sourceHash": "sha256:3875be10cde3d2139b7fb8abd84081c96ff5ed8b7f33eaeb59dddb3bdc3949be"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I006",
+      "ordinal": 6,
+      "itemType": "dialog_turn",
+      "turn": 6,
+      "speaker": "李生",
+      "source": {
+        "sourceLine": "李生: 請問你貴姓？",
+        "traditional": "請問你貴姓？",
+        "jyutpingLine": "/cing2 man6 nei5 gwai3 sing3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:a8e20a45c2d8051841c119a08f1546e3396c129e5b3e9c707d91003a3b20c081"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I007",
+      "ordinal": 7,
+      "itemType": "dialog_turn",
+      "turn": 7,
+      "speaker": "陳先生",
+      "source": {
+        "sourceLine": "陳先生: 我姓陳。",
+        "traditional": "我姓陳。",
+        "jyutpingLine": "/ngo5 sing3 can4./",
+        "english": null
+      },
+      "sourceHash": "sha256:b12e2764fd8b5cc6bbad01fcc923ab5ff95554684a45128dfb7cdd99d9124722"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I008",
+      "ordinal": 8,
+      "itemType": "dialog_turn",
+      "turn": 8,
+      "speaker": "李生",
+      "source": {
+        "sourceLine": "李生: 陳先生，等陣。我打電話問下。",
+        "traditional": "陳先生，等陣。我打電話問下。",
+        "jyutpingLine": "/can4 sin1 saang1, dang2 zan6. ngo5 daa2 din6 waa2 man6 haa5./",
+        "english": null
+      },
+      "sourceHash": "sha256:101626cefccc6c4b0d197867b4ad6ee132da99c99a4a593e3c4526e22b1b3e1d"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I009",
+      "ordinal": 9,
+      "itemType": "dialog_turn",
+      "turn": 9,
+      "speaker": "陳先生",
+      "source": {
+        "sourceLine": "陳先生: 好，唔該晒。",
+        "traditional": "好，唔該晒。",
+        "jyutpingLine": "/hou2, m4 goi1 saai3./",
+        "english": null
+      },
+      "sourceHash": "sha256:0bc0f840935c01a63fd42f78fefe5525ed33c67b20d2d287924e3e81a142127b"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I010",
+      "ordinal": 10,
+      "itemType": "dialog_turn",
+      "turn": 10,
+      "speaker": "李生",
+      "source": {
+        "sourceLine": "李生: 喂，王經理，有位陳先生搵你。",
+        "traditional": "喂，王經理，有位陳先生搵你。",
+        "jyutpingLine": "/wai2, wong4 ging1 lei5, jau5 wai2 can4 sin1 saang1 wan2 nei5./",
+        "english": null
+      },
+      "sourceHash": "sha256:b9c6469c0ef5b970ab09fdbf8fe5218d94eda36997732271473914d5e1d9d034"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I011",
+      "ordinal": 11,
+      "itemType": "dialog_turn",
+      "turn": 11,
+      "speaker": "李生",
+      "source": {
+        "sourceLine": "李生: 好，明白。",
+        "traditional": "好，明白。",
+        "jyutpingLine": "/hou2, ming4 baak6./",
+        "english": null
+      },
+      "sourceHash": "sha256:a8d3e2936ddab6083cd8973fbedef37d3eb393f1a0c2d103f27c090b091ab44d"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I012",
+      "ordinal": 12,
+      "itemType": "dialog_turn",
+      "turn": 12,
+      "speaker": "李生",
+      "source": {
+        "sourceLine": "李生: 陳先生，可以入去喇。",
+        "traditional": "陳先生，可以入去喇。",
+        "jyutpingLine": "/can4 sin1 saang1, ho2 ji5 jap6 heoi3 laa3./",
+        "english": null
+      },
+      "sourceHash": "sha256:fb55067895995d026f06c9ef8311710d4386a5be648ac30c285432288f03fe90"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I013",
+      "ordinal": 13,
+      "itemType": "dialog_turn",
+      "turn": 13,
+      "speaker": "陳先生",
+      "source": {
+        "sourceLine": "陳先生: 去邊度呀？",
+        "traditional": "去邊度呀？",
+        "jyutpingLine": "/heoi3 bin1 dou6 aa3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:1c013bcf0cf5f16f80554387ec5c5ab8b6c43c041e297ca55c3c70fa3e9aaa05"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I014",
+      "ordinal": 14,
+      "itemType": "dialog_turn",
+      "turn": 14,
+      "speaker": "李生",
+      "source": {
+        "sourceLine": "李生: 上三樓，轉右。",
+        "traditional": "上三樓，轉右。",
+        "jyutpingLine": "/soeng5 saam1 lau2, zyun3 jau6./",
+        "english": null
+      },
+      "sourceHash": "sha256:d9be945ed14251f8125fe91d18f3df674e2ff717087c1eb8dddc4da473795cc0"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I015",
+      "ordinal": 15,
+      "itemType": "dialog_turn",
+      "turn": 15,
+      "speaker": "陳先生",
+      "source": {
+        "sourceLine": "陳先生: 三樓，轉右？",
+        "traditional": "三樓，轉右？",
+        "jyutpingLine": "/saam1 lau2, zyun3 jau6?/",
+        "english": null
+      },
+      "sourceHash": "sha256:333b5901f304eaaee773cfd68c7d048f48c12c608d8788fbbba27b44b2450ddc"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I016",
+      "ordinal": 16,
+      "itemType": "dialog_turn",
+      "turn": 16,
+      "speaker": "李生",
+      "source": {
+        "sourceLine": "李生: 係呀，好易搵嘅。",
+        "traditional": "係呀，好易搵嘅。",
+        "jyutpingLine": "/hai6 aa3, hou2 ji6 wan2 ge3./",
+        "english": null
+      },
+      "sourceHash": "sha256:e05b2b378e553bafa3edb5d4b988648b3f7bf61f9f56b113edd882e289d44bea"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I017",
+      "ordinal": 17,
+      "itemType": "dialog_turn",
+      "turn": 17,
+      "speaker": "陳先生",
+      "source": {
+        "sourceLine": "陳先生: 要唔要拎訪客證？",
+        "traditional": "要唔要拎訪客證？",
+        "jyutpingLine": "/jiu3 m4 jiu3 ling1 fong2 haak3 zing3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:0cc1ef0bc15d239b3e215c431926def4193c050c7ab48b6679233f0437778b2a"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I018",
+      "ordinal": 18,
+      "itemType": "dialog_turn",
+      "turn": 18,
+      "speaker": "李生",
+      "source": {
+        "sourceLine": "李生: 要呀。呢張係你嘅訪客證。",
+        "traditional": "要呀。呢張係你嘅訪客證。",
+        "jyutpingLine": "/jiu3 aa3. ni1 zoeng1 hai6 nei5 ge3 fong2 haak3 zing3./",
+        "english": null
+      },
+      "sourceHash": "sha256:b1343aaaeb698ffa08759329c63ec573ef24c56af9d9b7f6fcba6e473cbf1b14"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I019",
+      "ordinal": 19,
+      "itemType": "dialog_turn",
+      "turn": 19,
+      "speaker": "陳先生",
+      "source": {
+        "sourceLine": "陳先生: 哦，多謝。",
+        "traditional": "哦，多謝。",
+        "jyutpingLine": "/o4, do1 ze6./",
+        "english": null
+      },
+      "sourceHash": "sha256:378257af07f73daac4927b5c1cf3f118ec756701fe044868e058ebe85fe98959"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I020",
+      "ordinal": 20,
+      "itemType": "dialog_turn",
+      "turn": 20,
+      "speaker": "李生",
+      "source": {
+        "sourceLine": "李生: 走嗰陣要還返畀我。",
+        "traditional": "走嗰陣要還返畀我。",
+        "jyutpingLine": "/zau2 go2 zan6 jiu3 waan4 faan1 bei2 ngo5./",
+        "english": null
+      },
+      "sourceHash": "sha256:4f655bda0043abbcadd2cd83298882fd92e2a56b1da0f05ce7a6d2f2d4d30edb"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I021",
+      "ordinal": 21,
+      "itemType": "dialog_turn",
+      "turn": 21,
+      "speaker": "陳先生",
+      "source": {
+        "sourceLine": "陳先生: 明白，冇問題。",
+        "traditional": "明白，冇問題。",
+        "jyutpingLine": "/ming4 baak6, mou5 man6 tai4./",
+        "english": null
+      },
+      "sourceHash": "sha256:d10e0ea46335ec2cda090d2f2a2386fe2bdf3b5f8f072288424ed5164dd52506"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I022",
+      "ordinal": 22,
+      "itemType": "dialog_turn",
+      "turn": 22,
+      "speaker": "李生",
+      "source": {
+        "sourceLine": "李生: 電梯喺度。",
+        "traditional": "電梯喺度。",
+        "jyutpingLine": "/din6 tai1 hai2 dou6./",
+        "english": null
+      },
+      "sourceHash": "sha256:8f9c6d112f82ff2ea86b73c31e2f24817f435e72fc2abf7fa840221a8bd13d59"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I023",
+      "ordinal": 23,
+      "itemType": "dialog_turn",
+      "turn": 23,
+      "speaker": "陳先生",
+      "source": {
+        "sourceLine": "陳先生: 好，唔該。",
+        "traditional": "好，唔該。",
+        "jyutpingLine": "/hou2, m4 goi1./",
+        "english": null
+      },
+      "sourceHash": "sha256:b9b10657e02b967b304c9d392d374664d8353f2c896034d8a59190c1e4a2698d"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I024",
+      "ordinal": 24,
+      "itemType": "dialog_turn",
+      "turn": 24,
+      "speaker": "李生",
+      "source": {
+        "sourceLine": "李生: 唔使客氣。",
+        "traditional": "唔使客氣。",
+        "jyutpingLine": "/m4 sai2 haak3 hei3./",
+        "english": null
+      },
+      "sourceHash": "sha256:a8a9206aeccc2505f0a09164e939cf2859d7a8201aca00e079c117da2f86a26f"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I025",
+      "ordinal": 25,
+      "itemType": "dialog_turn",
+      "turn": 25,
+      "speaker": "陳先生",
+      "source": {
+        "sourceLine": "陳先生: 唔該借借，我要入電梯。",
+        "traditional": "唔該借借，我要入電梯。",
+        "jyutpingLine": "/m4 goi1 ze3 ze3, ngo5 jiu3 jap6 din6 tai1./",
+        "english": null
+      },
+      "sourceHash": "sha256:b731eb784933f324329f92de4a8c44ae21f0bb884513379f7bacb903d82c873d"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I026",
+      "ordinal": 26,
+      "itemType": "dialog_turn",
+      "turn": 26,
+      "speaker": "李生",
+      "source": {
+        "sourceLine": "李生: 請。",
+        "traditional": "請。",
+        "jyutpingLine": "/cing2./",
+        "english": null
+      },
+      "sourceHash": "sha256:4e3a783a0b87c1a9d86cc1b13f7ad81f1ff82ce8f4931486d06f108acdbd6cb3"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I027",
+      "ordinal": 27,
+      "itemType": "dialog_turn",
+      "turn": 27,
+      "speaker": "陳先生",
+      "source": {
+        "sourceLine": "陳先生: 呢度好多人。",
+        "traditional": "呢度好多人。",
+        "jyutpingLine": "/ni1 dou6 hou2 do1 jan4./",
+        "english": null
+      },
+      "sourceHash": "sha256:a03dc419e641e80925b12bfe80c1954eb44414d12f5c43a159ace583d815a88d"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I028",
+      "ordinal": 28,
+      "itemType": "dialog_turn",
+      "turn": 28,
+      "speaker": "李生",
+      "source": {
+        "sourceLine": "李生: 係呀，而家係繁忙時間。",
+        "traditional": "係呀，而家係繁忙時間。",
+        "jyutpingLine": "/hai6 aa3, ji4 gaa1 hai6 faan4 mong4 si4 gaan3./",
+        "english": null
+      },
+      "sourceHash": "sha256:e9b9592b945ec53cb3e3f954ba0e26ecaafb6021d1c99703f154f2a2363895a5"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I029",
+      "ordinal": 29,
+      "itemType": "dialog_turn",
+      "turn": 29,
+      "speaker": "陳先生",
+      "source": {
+        "sourceLine": "陳先生: 平時係咪少啲人？",
+        "traditional": "平時係咪少啲人？",
+        "jyutpingLine": "/ping4 si4 hai6 mai6 siu2 di1 jan4?/",
+        "english": null
+      },
+      "sourceHash": "sha256:9d1bea2fda68bdb8d590d68284a00dd6f95f211d66643d9a62913cd671523f03"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I030",
+      "ordinal": 30,
+      "itemType": "dialog_turn",
+      "turn": 30,
+      "speaker": "李生",
+      "source": {
+        "sourceLine": "李生: 係呀，下晝少好多。",
+        "traditional": "係呀，下晝少好多。",
+        "jyutpingLine": "/hai6 aa3, haa6 zau3 siu2 hou2 do1./",
+        "english": null
+      },
+      "sourceHash": "sha256:8e376bd2aea3e453432a2c8905335bf589d56bf4e8393de5396dd95f0eb38ccc"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I031",
+      "ordinal": 31,
+      "itemType": "dialog_turn",
+      "turn": 31,
+      "speaker": "陳先生",
+      "source": {
+        "sourceLine": "陳先生: 哦，咁就好喇。",
+        "traditional": "哦，咁就好喇。",
+        "jyutpingLine": "/o4, gam2 zau6 hou2 laa3./",
+        "english": null
+      },
+      "sourceHash": "sha256:fffff4088afd31a7b3676050610d25d5a434d4f2d67e66b3e6404894fbddd894"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I032",
+      "ordinal": 32,
+      "itemType": "dialog_turn",
+      "turn": 32,
+      "speaker": "李生",
+      "source": {
+        "sourceLine": "李生: 記住去三樓。",
+        "traditional": "記住去三樓。",
+        "jyutpingLine": "/gei3 zyu6 heoi3 saam1 lau2./",
+        "english": null
+      },
+      "sourceHash": "sha256:2dae6a189db684ed38476eae6cf919e4df161d2d9375f4e6b1f978f9ac4d1b9f"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I033",
+      "ordinal": 33,
+      "itemType": "dialog_turn",
+      "turn": 33,
+      "speaker": "陳先生",
+      "source": {
+        "sourceLine": "陳先生: 記得，三樓轉右。",
+        "traditional": "記得，三樓轉右。",
+        "jyutpingLine": "/gei3 dak1, saam1 lau2 zyun3 jau6./",
+        "english": null
+      },
+      "sourceHash": "sha256:ec10fa96ba9912a38915c107f66ee89995d85fb95cbefe4cb014e382f48eba72"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I034",
+      "ordinal": 34,
+      "itemType": "dialog_turn",
+      "turn": 34,
+      "speaker": "李生",
+      "source": {
+        "sourceLine": "李生: 啱喇。",
+        "traditional": "啱喇。",
+        "jyutpingLine": "/ngaam1 laa3./",
+        "english": null
+      },
+      "sourceHash": "sha256:e592fd963f0ac7096e80e7136cf993d5f2a5d7a428d0db9851d531368eecbce3"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I035",
+      "ordinal": 35,
+      "itemType": "dialog_turn",
+      "turn": 35,
+      "speaker": "陳先生",
+      "source": {
+        "sourceLine": "陳先生: 如果搵唔到點算？",
+        "traditional": "如果搵唔到點算？",
+        "jyutpingLine": "/jyu4 gwo2 wan2 m4 dou2 dim2 syun3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:7ffd236a6b206dec855176371dda13763c26f782864b97e5e86f5eaf85e33833"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I036",
+      "ordinal": 36,
+      "itemType": "dialog_turn",
+      "turn": 36,
+      "speaker": "李生",
+      "source": {
+        "sourceLine": "李生: 打電話畀我，我幫你。",
+        "traditional": "打電話畀我，我幫你。",
+        "jyutpingLine": "/daa2 din6 waa2 bei2 ngo5, ngo5 bong1 nei5./",
+        "english": null
+      },
+      "sourceHash": "sha256:76935e3cc99148d117767c61e984ed674aba1034bf83534acae48b1c2ed1549e"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I037",
+      "ordinal": 37,
+      "itemType": "dialog_turn",
+      "turn": 37,
+      "speaker": "陳先生",
+      "source": {
+        "sourceLine": "陳先生: 好呀，你電話號碼係幾多？",
+        "traditional": "好呀，你電話號碼係幾多？",
+        "jyutpingLine": "/hou2 aa3, nei5 din6 waa2 hou6 maa5 hai6 gei2 do1?/",
+        "english": null
+      },
+      "sourceHash": "sha256:e03100b88bb26f7f914211bca0189d05242b0b504ab1c95b33ba49ecb071014e"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I038",
+      "ordinal": 38,
+      "itemType": "dialog_turn",
+      "turn": 38,
+      "speaker": "李生",
+      "source": {
+        "sourceLine": "李生: 六六八八。",
+        "traditional": "六六八八。",
+        "jyutpingLine": "/luk6 luk6 baat3 baat3./",
+        "english": null
+      },
+      "sourceHash": "sha256:e17722e45876ff24608d9d44570f0efc94e7cc9780725dd6baef2c4c8e43556e"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I039",
+      "ordinal": 39,
+      "itemType": "dialog_turn",
+      "turn": 39,
+      "speaker": "陳先生",
+      "source": {
+        "sourceLine": "陳先生: 六六八八，好。多謝你。",
+        "traditional": "六六八八，好。多謝你。",
+        "jyutpingLine": "/luk6 luk6 baat3 baat3, hou2. do1 ze6 nei5./",
+        "english": null
+      },
+      "sourceHash": "sha256:37e7c91d5ed4d7a3192b516c3691fe19fc117c4a4ebf18a6f50e0510726cbca8"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301-I040",
+      "ordinal": 40,
+      "itemType": "dialog_turn",
+      "turn": 40,
+      "speaker": "李生",
+      "source": {
+        "sourceLine": "李生: 唔使客氣，拜拜。",
+        "traditional": "唔使客氣，拜拜。",
+        "jyutpingLine": "/m4 sai2 haak3 hei3, baai1 baai3./",
+        "english": null
+      },
+      "sourceHash": "sha256:e7772fe24264d042fc00547472f6c5039ed676502a23aec0afaa06753222e371"
+    }
+  ]
+}
