@@ -1,0 +1,880 @@
+{
+  "schema": "canto-span-pedagogical-corpus-source-v1",
+  "source": {
+    "sourceId": "GLOSSIKA-YUEHK-A1-W16-20260705",
+    "provider": "Glossika",
+    "course": "Cantonese (HK) A1",
+    "week": 16,
+    "weekCount": 25,
+    "lessonTitle": "Hobbies & Free Time",
+    "emailSubject": "Cantonese – Hobbies & Free Time",
+    "sourceDate": "2026-07-05",
+    "gmailMessageId": "19f3100f131df130",
+    "sourceType": "authorized_pedagogical_email",
+    "language": "yue-Hant-HK",
+    "authorization": {
+      "basis": "User states Glossika granted permission to use all lesson data in this non-commercial private-use Canto Span project.",
+      "scope": "Source-preserving corpus ingress for this lesson.",
+      "redistributionClaim": "none"
+    }
+  },
+  "ingress": {
+    "issue": 133,
+    "workClaimIssue": 274,
+    "branch": "agent/glossika-week16-corpus-ingress",
+    "reviewState": "REQUIRES_EXPERT_CONTEXT_REVIEW",
+    "policy": "Source values are immutable. Runtime crosswalk, normalization, correction, duplicate classification, naturalness review, and evidence use are recorded separately.",
+    "recordCount": 59,
+    "itemTypeCounts": {
+      "dialog_turn": 4,
+      "lexical_entry": 35,
+      "phonics_pair": 6,
+      "sentence": 14
+    },
+    "sectionCounts": {
+      "functional_language": 8,
+      "grammar_patterns": 2,
+      "phonics_drill": 6,
+      "vocabulary_and_situations": 43
+    },
+    "sourcePayloadHash": "sha256:79aaf70c47b4cbe42e98c72d62889fffd89ff41961178e5d11efa8b6434749ae",
+    "sourcePayloadHashPolicy": "SHA-256 of canonical key-sorted JSON for the ordered source-field array."
+  },
+  "sourceClaims": {
+    "negationStatement": "The primary negation marker is 唔 (m4), which precedes the verb. For the copula 係 (hai6), negation becomes 唔係 (m4 hai6).",
+    "status": "immutable_source_claim_requires_external_verification"
+  },
+  "items": [
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I001",
+      "ordinal": 1,
+      "section": "functional_language",
+      "subsection": "address_people",
+      "itemType": "sentence",
+      "register": "casual",
+      "source": {
+        "traditional": "阿哥/阿姐",
+        "jyutping": "Aa3 go1 / aa3 ze2",
+        "morphemeGloss": "Ah-brother / Ah-sister",
+        "english": "Bro / Sis (familiar address to strangers)"
+      },
+      "sourceHash": "sha256:f2ca15a40c5d8bca9ffc6805c560e6dfe4495bac6906e2c2fbf069dc8314d105"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I002",
+      "ordinal": 2,
+      "section": "functional_language",
+      "subsection": "address_people",
+      "itemType": "sentence",
+      "register": "polite",
+      "source": {
+        "traditional": "先生/小姐/女士",
+        "jyutping": "Sin1 saang1 / siu2 ze2 / neoi5 si6",
+        "morphemeGloss": "Mr. / Miss / Ms.",
+        "english": "Sir / Miss / Madam"
+      },
+      "sourceHash": "sha256:0df390465c9cb78ab204cf5b1dbfcd8e19d4cfdf445306b63ecd687f341c3f6d"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I003",
+      "ordinal": 3,
+      "section": "functional_language",
+      "subsection": "address_people",
+      "itemType": "sentence",
+      "register": "polite",
+      "source": {
+        "traditional": "陳太",
+        "jyutping": "Can4 taai3",
+        "morphemeGloss": "Chan Mrs.",
+        "english": "Mrs. Chan"
+      },
+      "sourceHash": "sha256:df549165686eab081806a9c8b7285f5329c3ea7eb731456e8a51aae2982c604d"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I004",
+      "ordinal": 4,
+      "section": "functional_language",
+      "subsection": "address_people",
+      "itemType": "sentence",
+      "register": "formal",
+      "source": {
+        "traditional": "各位",
+        "jyutping": "Gok3 wai2",
+        "morphemeGloss": "each (CL-person)",
+        "english": "Ladies and gentlemen / Everyone"
+      },
+      "sourceHash": "sha256:7b79cf937ad2dd85bde2ccc0f5692ca7960d349ccac00252866215a28d14f149"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I005",
+      "ordinal": 5,
+      "section": "functional_language",
+      "subsection": "open_close_conversations",
+      "itemType": "sentence",
+      "register": "casual",
+      "source": {
+        "traditional": "喂，你得唔得閒呀？",
+        "jyutping": "Wai2, nei5 dak1 m4 dak1 haan4 aa3?",
+        "morphemeGloss": "hey you free-not-free (PART)",
+        "english": "Hey, are you free?"
+      },
+      "sourceHash": "sha256:400d146c986e148219d5aa3a6e0d025c6b9ed874fcc4698db72f905e0ea16b3e"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I006",
+      "ordinal": 6,
+      "section": "functional_language",
+      "subsection": "open_close_conversations",
+      "itemType": "sentence",
+      "register": "casual",
+      "source": {
+        "traditional": "噉就講到呢度先喇。",
+        "jyutping": "Gam2 zau6 gong2 dou3 ni1 dou6 sin1 laa3.",
+        "morphemeGloss": "then just talk to here first (PERF)",
+        "english": "Let's stop here for now."
+      },
+      "sourceHash": "sha256:1653bed3bb8a1610da98f7a938076a89d696a6749e2eb46af608cf884380cd4a"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I007",
+      "ordinal": 7,
+      "section": "functional_language",
+      "subsection": "open_close_conversations",
+      "itemType": "sentence",
+      "register": "polite",
+      "source": {
+        "traditional": "唔該，我想同你傾件事。",
+        "jyutping": "M4 goi1, ngo5 soeng2 tung4 nei5 king1 gin6 si6.",
+        "morphemeGloss": "excuse-me I want with you chat (CL) matter",
+        "english": "Excuse me, I'd like to discuss something with you."
+      },
+      "sourceHash": "sha256:cddb1330342bf780e01a0f164166e688fa3e01c148e62ed2ca92ec1052a82e75"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I008",
+      "ordinal": 8,
+      "section": "functional_language",
+      "subsection": "open_close_conversations",
+      "itemType": "sentence",
+      "register": "polite",
+      "source": {
+        "traditional": "噉我哋就講到呢度喇。",
+        "jyutping": "Gam2 ngo5 dei6 zau6 gong2 dou3 ni1 dou6 laa3.",
+        "morphemeGloss": "then we just talk to here (PERF)",
+        "english": "Then let's wrap up here."
+      },
+      "sourceHash": "sha256:6a341204aeb22e1c5afa111860146529b3e84670fa8cbaaaa77f27d249948249"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I009",
+      "ordinal": 9,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "睇戲",
+        "jyutping": "tai2 hei3",
+        "english": "to watch a movie"
+      },
+      "sourceHash": "sha256:5f9c6c6b0417f0fb86021041501dd4662b5ae65d23421b79e6608d3c3f561280"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I010",
+      "ordinal": 10,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "行山",
+        "jyutping": "haang4 saan1",
+        "english": "to hike"
+      },
+      "sourceHash": "sha256:4a37257ff9ad62235da8aa13c90d7f52bf592646c8bca5a57fbd07a648d04494"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I011",
+      "ordinal": 11,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "游水",
+        "jyutping": "jau4 seoi2",
+        "english": "to swim"
+      },
+      "sourceHash": "sha256:58042f064853c59020879d75988fa1fe95174ef3391ec51d13a12935feda9fde"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I012",
+      "ordinal": 12,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "跑步",
+        "jyutping": "paau2 bou6",
+        "english": "to run"
+      },
+      "sourceHash": "sha256:fdf7a04eedd7b229f72de30e92259d7bd59b4fc1e15c9104ff60a35b8ecdd808"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I013",
+      "ordinal": 13,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "影相",
+        "jyutping": "jing2 soeng2",
+        "english": "to take photos"
+      },
+      "sourceHash": "sha256:faa482957182a2c91138570250aa025bdc8958fca83b79fa98e8a32aa89a15ee"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I014",
+      "ordinal": 14,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "聽歌",
+        "jyutping": "teng1 go1",
+        "english": "to listen to music"
+      },
+      "sourceHash": "sha256:dfed353a4e5a0b0bca39b62386f01db60d710bb9fb498c88d7cd41a12df38504"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I015",
+      "ordinal": 15,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "睇書",
+        "jyutping": "tai2 syu1",
+        "english": "to read"
+      },
+      "sourceHash": "sha256:e1452fbfd32d0cefe584610558e575d06aaf111883213fb4bf1134863c8176cd"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I016",
+      "ordinal": 16,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "打機",
+        "jyutping": "daa2 gei1",
+        "english": "to play video games"
+      },
+      "sourceHash": "sha256:5be044b099d2f022fbbd727ab14bb24971dc10e0c49a2e8e8f0926d43c1e8a3c"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I017",
+      "ordinal": 17,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "煮嘢食",
+        "jyutping": "zyu2 je5 sik6",
+        "english": "to cook"
+      },
+      "sourceHash": "sha256:458fc644d91ddfe316fec1d55554233edb3728a343fa0446a14f94a29b0a1653"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I018",
+      "ordinal": 18,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "唱K",
+        "jyutping": "coeng3 kei1",
+        "english": "to do karaoke"
+      },
+      "sourceHash": "sha256:799e1e12f5309591493a9a4fe99c01b41c6a55da9965d29558420c32c8cb5124"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I019",
+      "ordinal": 19,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "行街",
+        "jyutping": "haang4 gaai1",
+        "english": "to go shopping (browsing)"
+      },
+      "sourceHash": "sha256:77c02eeaf78e2033b5f03a61af9ec56caed9e78b81e913e0605e828149eb9894"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I020",
+      "ordinal": 20,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "去沙灘",
+        "jyutping": "heoi3 saa1 taan1",
+        "english": "to go to the beach"
+      },
+      "sourceHash": "sha256:7a3ad91a48edc930a3172ae229dbba86f795944022f1ec074b4cc16d96b7275a"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I021",
+      "ordinal": 21,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "做運動",
+        "jyutping": "zou6 wan6 dung6",
+        "english": "to exercise"
+      },
+      "sourceHash": "sha256:dc60df40c87d549307b74f316d98971e77dd16224937c8124a4e09153b08bb0a"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I022",
+      "ordinal": 22,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "畫畫",
+        "jyutping": "waak6 waa2",
+        "english": "to draw/paint"
+      },
+      "sourceHash": "sha256:e46f72386f9bf3c58e7f09c2905ad40615a612e2e9291eacd047ab74f554e14f"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I023",
+      "ordinal": 23,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "踢波",
+        "jyutping": "tek3 bo1",
+        "english": "to play football"
+      },
+      "sourceHash": "sha256:84899ea145d588f9108887b4f8387ce57f8b5a9de2546b1fd9b0520a53bc80e4"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I024",
+      "ordinal": 24,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "打波",
+        "jyutping": "daa2 bo1",
+        "english": "to play ball"
+      },
+      "sourceHash": "sha256:8277bb23321cea4b9e150796d5fb8b2131abe7339f7a6d22b39c885236e166f0"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I025",
+      "ordinal": 25,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "彈琴",
+        "jyutping": "taan4 kam4",
+        "english": "to play piano"
+      },
+      "sourceHash": "sha256:694e7fef89a4f76ecb06089b7e90c00a1ab93baa88552cdec8d9617ade37a546"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I026",
+      "ordinal": 26,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "釣魚",
+        "jyutping": "diu3 jyu2",
+        "english": "to fish"
+      },
+      "sourceHash": "sha256:d5debf821bb940ebd0b0e7ffda9c2c4b7763993b6f12a3bbb55a9b8f7fd04007"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I027",
+      "ordinal": 27,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "旅行",
+        "jyutping": "leoi5 hang4",
+        "english": "to travel"
+      },
+      "sourceHash": "sha256:eee1984294cfce4c4ebbdce46bd622e22ccd93648c85adbbccb356c81bf0d637"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I028",
+      "ordinal": 28,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "唱歌",
+        "jyutping": "coeng3 go1",
+        "english": "to sing"
+      },
+      "sourceHash": "sha256:8e464878f92543c5ebc10ddf6421fc48f65600b8bbc22921fb9b9a433fbe942f"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I029",
+      "ordinal": 29,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "睇波",
+        "jyutping": "tai2 bo1",
+        "english": "to watch a game"
+      },
+      "sourceHash": "sha256:8db61f1d6d9d46e40ff6ff7ec6860f18ee3cdc043f9cadbcf6b9c9d7acd31fdb"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I030",
+      "ordinal": 30,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "瑜伽",
+        "jyutping": "jyu4 gaa1",
+        "english": "yoga"
+      },
+      "sourceHash": "sha256:d11be6b8a071f00d0e7803f04f47c9471f9703cff0aa71ef1b15d3e089d0b888"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I031",
+      "ordinal": 31,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "露營",
+        "jyutping": "lou6 jing4",
+        "english": "to camp"
+      },
+      "sourceHash": "sha256:ed1ca89e3122d23832e3f7c0767f7be8baa0d1ac4a1db6636831b326691a837f"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I032",
+      "ordinal": 32,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "下棋",
+        "jyutping": "haa5 kei2",
+        "english": "to play chess"
+      },
+      "sourceHash": "sha256:eac16a150b6ee5464ba30bad44fae71742bbdca03c1b0ffbb30d6bcb7b426d11"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I033",
+      "ordinal": 33,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "行公園",
+        "jyutping": "haang4 gung1 jyun2",
+        "english": "to walk in the park"
+      },
+      "sourceHash": "sha256:5de89fc86ab06b2bb16a7e2b9ff0360c7d9bc8779c4e00f0db5d460498729013"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I034",
+      "ordinal": 34,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "一百萬",
+        "jyutping": "jat1 baak3 maan6",
+        "english": "1 million"
+      },
+      "sourceHash": "sha256:abc17c2e798ef312a5f1a89165dc0dc509dce4d5acfc1bfe22f22c494a1b715d"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I035",
+      "ordinal": 35,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "二百萬",
+        "jyutping": "ji6 baak3 maan6",
+        "english": "2 million"
+      },
+      "sourceHash": "sha256:07f1afd84f82505110a1cb755d926c554085329b92f0f9ca22056a1a9bc9ea6b"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I036",
+      "ordinal": 36,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "三百萬",
+        "jyutping": "saam1 baak3 maan6",
+        "english": "3 million"
+      },
+      "sourceHash": "sha256:4ffca500578a3d5796b0b1abab9aeba65266e2fdc4a0f0c22906a72ed1ac6bf0"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I037",
+      "ordinal": 37,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "四百萬",
+        "jyutping": "sei3 baak3 maan6",
+        "english": "4 million"
+      },
+      "sourceHash": "sha256:d3456f59d91b02d7c4496bb51aca2056f8db1d4f1a730f60ea27081702702547"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I038",
+      "ordinal": 38,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "五百萬",
+        "jyutping": "ng5 baak3 maan6",
+        "english": "5 million"
+      },
+      "sourceHash": "sha256:43593e06304448fd35c1a189ed45bdfcc4e8041b7e7b8f8fc35c5e1f866d5fca"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I039",
+      "ordinal": 39,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "六百萬",
+        "jyutping": "luk6 baak3 maan6",
+        "english": "6 million"
+      },
+      "sourceHash": "sha256:607e482c874f514103dd32dbdff345568ad6ee87236ad245730a6f2db1d49411"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I040",
+      "ordinal": 40,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "七百萬",
+        "jyutping": "cat1 baak3 maan6",
+        "english": "7 million"
+      },
+      "sourceHash": "sha256:77e4226b40da1dd442c4d9ed032871fe2a85f3a2508ea381155fede7d3dcbfa3"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I041",
+      "ordinal": 41,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "八百萬",
+        "jyutping": "baat3 baak3 maan6",
+        "english": "8 million"
+      },
+      "sourceHash": "sha256:c4a5ae8035e0df376977fb44d0b326d59d79fdaa6ca7d0f4b50054aafbf97621"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I042",
+      "ordinal": 42,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "九百萬",
+        "jyutping": "gau2 baak3 maan6",
+        "english": "9 million"
+      },
+      "sourceHash": "sha256:83769b610be62a418d10d5f9db86086071bea33e8edefa5699b4904a7b4ecaf4"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I043",
+      "ordinal": 43,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "itemType": "lexical_entry",
+      "source": {
+        "traditional": "一千萬",
+        "jyutping": "jat1 cin1 maan6",
+        "english": "10 million"
+      },
+      "sourceHash": "sha256:daffeeb416b16e16f2e8fa9444f23991da1b89d020a1a05209cf46cedad3359d"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I044",
+      "ordinal": 44,
+      "section": "vocabulary_and_situations",
+      "subsection": "situation_patterns",
+      "itemType": "sentence",
+      "register": "casual",
+      "source": {
+        "traditional": "我放假鍾意去行山。",
+        "jyutping": "ngo5 fong3 gaa3 zung1 ji3 heoi3 haang4 saan1",
+        "morphemeGloss": "I holiday like go hike",
+        "english": "On holidays I like to go hiking."
+      },
+      "sourceHash": "sha256:3303b186f92c5088928775cb99cab27883e4e487201d7c83fdd7f3dfc788aa18"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I045",
+      "ordinal": 45,
+      "section": "vocabulary_and_situations",
+      "subsection": "situation_patterns",
+      "itemType": "sentence",
+      "register": "casual",
+      "source": {
+        "traditional": "不如聽日去睇戲啦。",
+        "jyutping": "bat1 jyu4 ting1 jat6 heoi3 tai2 hei3 laa1",
+        "morphemeGloss": "why-not tomorrow go watch movie PART",
+        "english": "Why don't we go see a movie tomorrow?"
+      },
+      "sourceHash": "sha256:876705e321f17c5ccf0907f590669c5551fc780913977c5844b826ac272ffcaf"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I046",
+      "ordinal": 46,
+      "section": "vocabulary_and_situations",
+      "subsection": "situation_patterns",
+      "itemType": "sentence",
+      "register": "casual",
+      "source": {
+        "traditional": "佢鍾意游水同跑步。",
+        "jyutping": "keoi5 zung1 ji3 jau4 seoi2 tung4 paau2 bou6",
+        "morphemeGloss": "he like swim and run",
+        "english": "He likes to swim and run."
+      },
+      "sourceHash": "sha256:c0b2f66a3905a212ee7e1b03364b42d38ceaf8cd90c5fab673569f79a4b56b22"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I047",
+      "ordinal": 47,
+      "section": "vocabulary_and_situations",
+      "subsection": "situation_patterns",
+      "itemType": "sentence",
+      "register": "polite",
+      "source": {
+        "traditional": "你平時有咩嗜好？",
+        "jyutping": "nei5 ping4 si4 jau5 me1 si3 hou3",
+        "morphemeGloss": "you usually have what hobby",
+        "english": "What hobbies do you usually have?"
+      },
+      "sourceHash": "sha256:3d02a4c9a2c6875d1ed2c509485f08626870c93434320d3e7da585e053228d29"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I048",
+      "ordinal": 48,
+      "section": "vocabulary_and_situations",
+      "subsection": "mini_dialog",
+      "itemType": "dialog_turn",
+      "register": "polite",
+      "dialogTurn": 1,
+      "source": {
+        "traditional": "你放假鍾意做咩？",
+        "jyutping": "nei5 fong3 gaa3 zung1 ji3 zou6 me1",
+        "morphemeGloss": "you holiday like do what",
+        "english": "What do you like to do on holidays?"
+      },
+      "sourceHash": "sha256:6b6f190592c2952f2426859c01ab74f55fe5554857e167f58fc7347711b57c80"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I049",
+      "ordinal": 49,
+      "section": "vocabulary_and_situations",
+      "subsection": "mini_dialog",
+      "itemType": "dialog_turn",
+      "register": "casual",
+      "dialogTurn": 2,
+      "source": {
+        "traditional": "我鍾意睇戲同行街。",
+        "jyutping": "ngo5 zung1 ji3 tai2 hei3 tung4 haang4 gaai1",
+        "morphemeGloss": "I like watch movie and go.shopping",
+        "english": "I like to watch movies and go shopping."
+      },
+      "sourceHash": "sha256:36ee8f50277fc1033c39947e4e187ccd7f3e4c5edcf8388a2da8196f212f34c9"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I050",
+      "ordinal": 50,
+      "section": "vocabulary_and_situations",
+      "subsection": "mini_dialog",
+      "itemType": "dialog_turn",
+      "register": "polite",
+      "dialogTurn": 3,
+      "source": {
+        "traditional": "今個星期六有時間嗎？",
+        "jyutping": "gam1 go3 sing1 kei4 luk6 jau5 si4 gaan3 maa3",
+        "morphemeGloss": "this CL Saturday have time Q",
+        "english": "Do you have time this Saturday?"
+      },
+      "sourceHash": "sha256:15975f854ee81c97845dfe80c5e511f78c95c2f4bed255a3f3607ebb50f13faf"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I051",
+      "ordinal": 51,
+      "section": "vocabulary_and_situations",
+      "subsection": "mini_dialog",
+      "itemType": "dialog_turn",
+      "register": "casual",
+      "dialogTurn": 4,
+      "source": {
+        "traditional": "有呀，不如一齊去唱K啦！",
+        "jyutping": "jau5 aa3 bat1 jyu4 jat1 cai4 heoi3 coeng3 kei1 laa1",
+        "morphemeGloss": "have PART why-not together go sing karaoke PART",
+        "english": "Yes, why don't we go do karaoke together!"
+      },
+      "sourceHash": "sha256:c95e887fc63f6b8411d3356d2e5a831b13d1e0d2666d9d8533e2423d75390aef"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I052",
+      "ordinal": 52,
+      "section": "grammar_patterns",
+      "subsection": "negation",
+      "itemType": "sentence",
+      "register": "standard",
+      "source": {
+        "traditional": "我唔食肉。",
+        "jyutping": "ngo5 m4 sik6 juk6",
+        "morphemeGloss": "I NEG eat meat",
+        "english": "I don't eat meat."
+      },
+      "sourceHash": "sha256:070c69da4103e606ed6cd07975bae5eee63f983f4dc6c82d62bffd734dffbffb"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I053",
+      "ordinal": 53,
+      "section": "grammar_patterns",
+      "subsection": "negation",
+      "itemType": "sentence",
+      "register": "standard",
+      "source": {
+        "traditional": "佢唔係醫生。",
+        "jyutping": "keoi5 m4 hai6 ji1 sang1",
+        "morphemeGloss": "he/she NEG COP doctor",
+        "english": "He/She is not a doctor."
+      },
+      "sourceHash": "sha256:b34febef20eca04b98961874b36159f73244a1fac9d8a2d9fddb436c5d2012c2"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I054",
+      "ordinal": 54,
+      "section": "phonics_drill",
+      "subsection": "o_vs_u",
+      "itemType": "phonics_pair",
+      "source": {
+        "ipa": "/kɔː˥/ vs /kuː˥/",
+        "wordA": "哥",
+        "wordB": "姑",
+        "jyutpingA": "go1",
+        "jyutpingB": "gu1",
+        "glossA": "older brother",
+        "glossB": "paternal aunt"
+      },
+      "sourceHash": "sha256:a51c9e5127e15a258b99f1aab5df3b0fc7a54546371cc5cecfa5c8ea75c18fd5"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I055",
+      "ordinal": 55,
+      "section": "phonics_drill",
+      "subsection": "o_vs_u",
+      "itemType": "phonics_pair",
+      "source": {
+        "ipa": "/tɔː˥/ vs /tou˥/",
+        "wordA": "多",
+        "wordB": "都",
+        "jyutpingA": "do1",
+        "jyutpingB": "dou1",
+        "glossA": "many; much",
+        "glossB": "all; also"
+      },
+      "sourceHash": "sha256:1b6bd8a3b795e5aa2326acbc1b2f92ef68faa420c98b37b01338fb9e27fb6471"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I056",
+      "ordinal": 56,
+      "section": "phonics_drill",
+      "subsection": "o_vs_u",
+      "itemType": "phonics_pair",
+      "source": {
+        "ipa": "/sɔː˧˥/ vs /sou˧˥/",
+        "wordA": "鎖",
+        "wordB": "數",
+        "jyutpingA": "so2",
+        "jyutpingB": "sou2",
+        "glossA": "lock",
+        "glossB": "number; to count"
+      },
+      "sourceHash": "sha256:bb4ced1e725d37742f944e098e8612a0071f2e262dbcc59153d7708f08ee7665"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I057",
+      "ordinal": 57,
+      "section": "phonics_drill",
+      "subsection": "o_vs_u",
+      "itemType": "phonics_pair",
+      "source": {
+        "ipa": "/lɔːŋ˩˧/ vs /lʊŋ˨˩/",
+        "wordA": "朗",
+        "wordB": "龍",
+        "jyutpingA": "long5",
+        "jyutpingB": "lung4",
+        "glossA": "bright",
+        "glossB": "dragon"
+      },
+      "sourceHash": "sha256:2b85a24ca7ffba210f5c0ea78ff53226a3db022b2c6330c6eb8d22e224aa6764"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I058",
+      "ordinal": 58,
+      "section": "phonics_drill",
+      "subsection": "o_vs_u",
+      "itemType": "phonics_pair",
+      "source": {
+        "ipa": "/hou˧˥/ vs /fuː˧˥/",
+        "wordA": "好",
+        "wordB": "虎",
+        "jyutpingA": "hou2",
+        "jyutpingB": "fu2",
+        "glossA": "good",
+        "glossB": "tiger"
+      },
+      "sourceHash": "sha256:72db396dae8899c9c6d77da2b102e1783abb20c956cec87e0fbcf76e1ce4384b"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I059",
+      "ordinal": 59,
+      "section": "phonics_drill",
+      "subsection": "o_vs_u",
+      "itemType": "phonics_pair",
+      "source": {
+        "ipa": "/tsɔːŋ˥/ vs /tsʊŋ˥/",
+        "wordA": "裝",
+        "wordB": "中",
+        "jyutpingA": "zong1",
+        "jyutpingB": "zung1",
+        "glossA": "to install",
+        "glossB": "middle; to hit"
+      },
+      "sourceHash": "sha256:6a72b1c994ce62a999678c6abcaeebe8c6e968129c312908349848caaa42dec4"
+    }
+  ]
+}
