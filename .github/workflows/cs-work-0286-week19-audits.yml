@@ -1,0 +1,256 @@
+name: CS-WORK-0286 Week 19 research audits
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    if: github.event.pull_request.head.ref == 'agent/glossika-week19-research'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Generate Week 19 audits
+        run: |
+          mkdir -p data/research-ledgers
+          node <<'NODE'
+          const fs = require('fs');
+          const sourcePath = 'data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/source.json';
+          const crosswalkPath = 'data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/crosswalk.json';
+          const source = JSON.parse(fs.readFileSync(sourcePath, 'utf8'));
+          const crosswalk = JSON.parse(fs.readFileSync(crosswalkPath, 'utf8'));
+          const classifierRules = require('./src/runtime-resources/grammar/classifier-head-rules');
+          const byId = new Map(crosswalk.records.map(record => [record.sourceItemId, record]));
+
+          const classifierProfiles = {
+            '個': ['general_count', 'Broad general classifier; human and count-noun use requires noun-specific and register-sensitive review.'],
+            '隻': ['animal_and_extended_single_entity', 'Animal use is central, but extension to objects or people is item- and register-sensitive.'],
+            '架': ['vehicle', 'Direct classifier research independently reports gaa3; the lesson source gaa2 is not adopted.'],
+            '間': ['bounded_room_shop_building', 'Compatibility depends on bounded spatial or institutional units, not every building noun.'],
+            '本': ['bound_printed_volume', 'Book-like volume use is narrow; document and publication nouns require item review.'],
+            '枝': ['long_rigid_or_container_extension', 'Pens, sticks, and some bottle-like items share an extended shape/container profile; lexical preference remains relevant.'],
+            '碗': ['bowl_container_measure', 'Container and measure readings must be distinguished from a sortal classifier.'],
+            '杯': ['cup_container_measure', 'Container and liquid-measure readings must be distinguished from a sortal classifier.'],
+            '對': ['pair_measure', 'Counts a paired set and does not independently classify the noun as an object kind.'],
+            '張': ['flat_or_spread_object', 'Flatness is a useful semantic tendency but noun-specific conventional selection remains.'],
+            '件': ['clothing_matter_or_individuated_item', 'Clothing is only one profile; event/matter and extended item uses require lexical and register controls.'],
+            '部': ['machine_device_or_vehicle', 'Overlaps with 架 for some vehicles but extends to machines and devices; free interchange is not assumed.'],
+            '把': ['handled_or_graspable_object', 'Handle/graspability is a semantic tendency; lexicalized selections and measure-like uses require controls.'],
+            '條': ['elongated_flexible_or_path_entity', 'Shape/path semantics are broad but conventional and evaluative extensions are item-sensitive.']
+          };
+          const classifierEntries = source.items.filter(item => item.subsection === 'classifiers').map(item => {
+            const form = item.source.traditional;
+            const cw = byId.get(item.id);
+            const [semanticProfile, boundary] = classifierProfiles[form];
+            const currentRule = classifierRules[form] || null;
+            return {
+              sourceItemId: item.id,
+              traditional: form,
+              sourceJyutping: item.source.jyutping,
+              sourceEnglish: item.source.english,
+              semanticProfile,
+              boundary,
+              directEvidenceStatus: form === '架' ? 'direct_reading_and_vehicle_support' : 'class_system_support_item_compatibility_requires_review',
+              currentModularRule: currentRule,
+              canonicalOwners: cw.canonicalRuntimeResourceOwners,
+              exactRuleCoverage: Boolean(currentRule),
+              sourceDiscrepancies: cw.sourceDiscrepancies,
+              acceptedNounPairs: [],
+              acceptanceBoundary: 'No noun pair is promoted by this audit; compatibility requires direct corpus or controlled speaker evidence.',
+              implementationAuthorized: false
+            };
+          });
+          const classifierAudit = {
+            schema: 'canto-span-glossika-classifier-compatibility-audit-v1',
+            packetId: 'GLOSSIKA-YUEHK-A1-W19-20260726-CLASSIFIER-AUDIT-R1',
+            sourceId: source.source.sourceId,
+            generatedFrom: {sourcePath, crosswalkPath, modularRulePath: 'src/runtime-resources/grammar/classifier-head-rules.js'},
+            policy: {
+              semanticClassIsNotExhaustiveCompatibility: true,
+              sourceGlossIsPedagogicalOnly: true,
+              changedToneMustBeVerifiedSeparately: true,
+              noCompatibilityPromotion: true,
+              implementationAuthorized: false
+            },
+            summary: {
+              sourceCount: classifierEntries.length,
+              exactModularRuleCoverage: classifierEntries.filter(entry => entry.exactRuleCoverage).length,
+              missingExactModularRules: classifierEntries.filter(entry => !entry.exactRuleCoverage).map(entry => entry.traditional),
+              sourceReadingDiscrepancies: classifierEntries.filter(entry => entry.sourceDiscrepancies.some(d => d.type === 'pronunciation_discrepancy_candidate')).map(entry => entry.traditional)
+            },
+            entries: classifierEntries
+          };
+
+          const functionProfiles = {
+            '嘅': {profiles:['attributive_linker','nominalizer_or_headless_nominal','clause_final_discourse_particle'],negativeBoundaries:['not_one_undifferentiated_function_word','not_always_sentence_final','not_always_possessive']},
+            '喺': {profiles:['locative_predicate','preverbal_event_location_marker'],negativeBoundaries:['not_copular_係','not_one_preposition_profile','following_predicate_required_for_event_location_profile']},
+            '咗': {profiles:['postverbal_perfective','sentence_final_change_of_state_or_current_relevance_profiles'],negativeBoundaries:['not_generic_past_tense','not_interchangeable_with_完','not_licensed_by_completion_semantics_alone']},
+            '緊': {profiles:['postverbal_progressive_or_continuative_aspect'],negativeBoundaries:['not_every_stative_predicate','not_equivalent_to_而家','placement_and_compatibility_require_controls']},
+            '過': {profiles:['postverbal_experiential_aspect','lexical_motion_or_passage_verb','directional_or_result_component'],negativeBoundaries:['not_one_aspect_only_token','not_interchangeable_with_咗','lexical_and_aspectual_uses_split']},
+            '到': {profiles:['arrival_predicate','goal_or_endpoint_element','result_or_extent_complement','until_or_limit_relation'],negativeBoundaries:['not_every_occurrence_is_resultative','adjacency_and_argument_structure_matter','arrival_and_extent_profiles_split']}
+          };
+          const functionEntries = source.items.filter(item => item.subsection === 'function_words').map(item => {
+            const cw = byId.get(item.id);
+            const profile = functionProfiles[item.source.traditional];
+            return {
+              sourceItemId:item.id,
+              traditional:item.source.traditional,
+              sourceJyutping:item.source.jyutping,
+              sourceEnglish:item.source.english,
+              profiles:profile.profiles,
+              negativeBoundaries:profile.negativeBoundaries,
+              canonicalRuntimeResourceOwners:cw.canonicalRuntimeResourceOwners,
+              canonicalParserOwnerCandidates:cw.canonicalParserOwnerCandidates,
+              sourceDiscrepancies:cw.sourceDiscrepancies,
+              sourceWeight:'pedagogical_attestation_only',
+              implementationAuthorized:false
+            };
+          });
+          const functionAudit = {
+            schema:'canto-span-glossika-function-word-profiles-v1',
+            packetId:'GLOSSIKA-YUEHK-A1-W19-20260726-FUNCTION-WORDS-R1',
+            sourceId:source.source.sourceId,
+            policy:{oneTokenOneFunctionRejected:true,lexicalAndGrammaticalProfilesSeparated:true,implementationAuthorized:false},
+            entries:functionEntries
+          };
+
+          const particleProfiles = {
+            '啦': {tone:'laa1',sourceGloss:'suggestion particle',profiles:['hortative_or_suggestion','imperative_softening_or_urging','cluster_sensitive_discourse_use'],boundary:'Do not assign suggestion solely from orthography; clause type, tone, prosody, and particle clusters matter.'},
+            '㗎': {tone:'gaa3',sourceGloss:'emphatic particle',profiles:['assertive_or_explanatory_declarative','response_demand_or_commitment_profiles','cluster_sensitive_profiles'],boundary:'Emphasis is not an exhaustive meaning and gaa3 must remain distinct from classifier 架 gaa3.'},
+            '呀': {tone:'aa3',sourceGloss:'softening particle',profiles:['declarative_discourse_management','imperative_or_request_mitigation','wh_or_a_not_a_question_host'],boundary:'aa3 is not a neutral clause-type marker; tone and discourse context are essential.'},
+            '嘞': {tone:'laak3',sourceGloss:'change-of-state particle',profiles:['change_of_state_or_new_situation','attention_or_update_profiles'],boundary:'Do not merge automatically with 喇 laa3 or treat every occurrence as perfective aspect.'},
+            '囉': {tone:'lo1',sourceGloss:'obviousness particle',profiles:['obvious_consequence_or_inference','resigned_acceptance_or_suggestion_profiles'],boundary:'Obviousness is only one discourse effect; clause type, intonation, and context are required.'}
+          };
+          const particleEntries = source.items.filter(item => item.subsection === 'sentence_final_particles').map(item => {
+            const cw = byId.get(item.id);
+            const profile = particleProfiles[item.source.traditional];
+            return {
+              sourceItemId:item.id,
+              traditional:item.source.traditional,
+              sourceJyutping:item.source.jyutping,
+              sourceEnglish:item.source.english,
+              ...profile,
+              canonicalRuntimeResourceOwners:cw.canonicalRuntimeResourceOwners,
+              canonicalParserOwnerCandidates:cw.canonicalParserOwnerCandidates,
+              sourceDiscrepancies:cw.sourceDiscrepancies,
+              evidenceStatus:'source_attested_direct_particle_research_required_or_reused',
+              implementationAuthorized:false
+            };
+          });
+          const particleAudit = {
+            schema:'canto-span-glossika-particle-boundaries-v1',
+            packetId:'GLOSSIKA-YUEHK-A1-W19-20260726-PARTICLE-BOUNDARIES-R1',
+            sourceId:source.source.sourceId,
+            policy:{toneSpecificIdentity:true,oneGlossPerParticleRejected:true,clustersAndProsodyRemainVisible:true,implementationAuthorized:false},
+            entries:particleEntries
+          };
+
+          const spatialProfiles = {
+            '周圍':['region_or_surroundings_noun','around_distribution_requires_clause_context'],
+            '向':['orientation_or_direction_marker','not_route_or_goal_without_complement'],
+            '遠':['scalar_distance_predicate_or_modifier','not_inherently_a_place_noun'],
+            '穿過':['route_motion_predicate','requires_path_ground_and_event_structure'],
+            '中間':['relational_region_noun_or_localizer','ground_and_between_reading_require_context'],
+            '出面':['external_region_noun_or_localizer','deictic_and_ground_reference_require_context'],
+            '東邊':['cardinal_direction_region_noun','not_a_bare_route_instruction'],
+            '西邊':['cardinal_direction_region_noun','not_a_bare_route_instruction'],
+            '南邊':['cardinal_direction_region_noun','not_a_bare_route_instruction'],
+            '北邊':['cardinal_direction_region_noun','not_a_bare_route_instruction'],
+            '盡頭':['endpoint_region_noun','path_or_container_ground_required'],
+            '轉角':['turn_or_corner_noun','lexical_event_and_place_readings_split'],
+            '入口':['entrance_place_or_path_noun','not_a_directional_predicate_by_itself'],
+            '出口':['exit_place_or_path_noun','lexical_exit_verb_reading_separate'],
+            '路口':['road_junction_noun','not_equivalent_to_every_intersection_term'],
+            '角落':['corner_region_noun','container_or_space_ground_required'],
+            '頂部':['upper_part_noun','formal_compound_and_ground_relation'],
+            '底部':['lower_part_noun','formal_compound_and_ground_relation'],
+            '遠處':['distal_place_expression','distance_and deictic_reference'],
+            '近處':['proximal_place_expression','distance_and deictic_reference'],
+            '四周':['surrounding_region_or_distribution_expression','noun_and_adverbial_uses_split'],
+            '到處':['distributive_place_expression','not_a_single_location_noun'],
+            '正中':['exact_center_region_or_modifier','predicate_and_nominal_uses_require_context']
+          };
+          const spatialEntries = source.items.filter(item => item.subsection === 'spatial_directional').map(item => {
+            const cw = byId.get(item.id);
+            const [lexicalClass,boundary] = spatialProfiles[item.source.traditional];
+            return {
+              sourceItemId:item.id,
+              traditional:item.source.traditional,
+              sourceJyutping:item.source.jyutping,
+              sourceEnglish:item.source.english,
+              lexicalClass,
+              boundary,
+              canonicalRuntimeResourceOwners:cw.canonicalRuntimeResourceOwners,
+              canonicalParserOwnerCandidates:cw.canonicalParserOwnerCandidates,
+              sourceDiscrepancies:cw.sourceDiscrepancies,
+              catchAllLocativeLabelAuthorized:false,
+              implementationAuthorized:false
+            };
+          });
+          const spatialAudit = {
+            schema:'canto-span-glossika-spatial-lexical-class-map-v1',
+            packetId:'GLOSSIKA-YUEHK-A1-W19-20260726-SPATIAL-CLASSES-R1',
+            sourceId:source.source.sourceId,
+            policy:{lexicalCategoryAndClauseFunctionSeparated:true,catchAllLocativeRejected:true,implementationAuthorized:false},
+            summary:{sourceCount:spatialEntries.length,withModularOwner:spatialEntries.filter(entry=>entry.canonicalRuntimeResourceOwners.length).length,uncovered:spatialEntries.filter(entry=>!entry.canonicalRuntimeResourceOwners.length).map(entry=>entry.traditional)},
+            entries:spatialEntries
+          };
+
+          const candidateItems = source.items.filter(item => ['classifiers','spatial_directional','transport_places','numbers'].includes(item.subsection)).map(item => {
+            const cw = byId.get(item.id);
+            const compositional = item.subsection === 'numbers';
+            let disposition;
+            if (compositional) disposition = 'retain_compositional_numeral_no_opaque_entry';
+            else if (cw.canonicalRuntimeResourceOwners.length) disposition = 'existing_modular_coverage_no_duplicate_ingress';
+            else disposition = 'lexical_or_resource_review_candidate';
+            return {
+              sourceItemId:item.id,
+              subsection:item.subsection,
+              traditional:item.source.traditional,
+              sourceJyutping:item.source.jyutping,
+              sourceEnglish:item.source.english,
+              canonicalRuntimeResourceOwners:cw.canonicalRuntimeResourceOwners,
+              disposition,
+              sourceDiscrepancies:cw.sourceDiscrepancies,
+              implementationAuthorized:false
+            };
+          });
+          const lexicalAudit = {
+            schema:'canto-span-glossika-lexical-numeral-candidates-v1',
+            packetId:'GLOSSIKA-YUEHK-A1-W19-20260726-LEXICAL-NUMERAL-R1',
+            sourceId:source.source.sourceId,
+            policy:{opaqueNumeralIngress:false,existingCoverageBlocksDuplicates:true,sourceReadingRequiresReview:true,implementationAuthorized:false},
+            summary:{sourceCount:candidateItems.length,existingCoverage:candidateItems.filter(item=>item.disposition==='existing_modular_coverage_no_duplicate_ingress').length,reviewCandidates:candidateItems.filter(item=>item.disposition==='lexical_or_resource_review_candidate').map(item=>item.traditional),compositionalNumerals:candidateItems.filter(item=>item.disposition==='retain_compositional_numeral_no_opaque_entry').map(item=>item.traditional)},
+            entries:candidateItems
+          };
+
+          if(classifierEntries.length!==14) throw new Error('Expected 14 classifiers');
+          if(functionEntries.length!==6) throw new Error('Expected 6 function words');
+          if(particleEntries.length!==5) throw new Error('Expected 5 particles');
+          if(spatialEntries.length!==23) throw new Error('Expected 23 spatial entries');
+          if(candidateItems.filter(item=>item.subsection==='numbers').length!==10) throw new Error('Expected 10 numeral entries');
+          fs.writeFileSync('data/research-ledgers/glossika-week19-classifier-compatibility.json',JSON.stringify(classifierAudit,null,2)+'\n');
+          fs.writeFileSync('data/research-ledgers/glossika-week19-function-word-profiles.json',JSON.stringify(functionAudit,null,2)+'\n');
+          fs.writeFileSync('data/research-ledgers/glossika-week19-particle-boundaries.json',JSON.stringify(particleAudit,null,2)+'\n');
+          fs.writeFileSync('data/research-ledgers/glossika-week19-spatial-lexical-classes.json',JSON.stringify(spatialAudit,null,2)+'\n');
+          fs.writeFileSync('data/research-ledgers/glossika-week19-lexical-numeral-candidates.json',JSON.stringify(lexicalAudit,null,2)+'\n');
+          console.log({classifiers:classifierAudit.summary,spatial:spatialAudit.summary,lexical:lexicalAudit.summary});
+          NODE
+          git diff --check
+      - name: Commit generated audits
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/research-ledgers/glossika-week19-*.json
+          git commit -m "Generate Week 19 research audits"
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
