@@ -1,0 +1,70 @@
+name: CS-WORK-0278 Week 18 modular inventory
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+
+jobs:
+  inventory:
+    if: github.event.pull_request.head.ref == 'agent/glossika-week18-corpus-ingress'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Inventory current modular Week 18 owners
+        run: |
+          mkdir -p tools/tmp
+          node <<'NODE'
+          const fs = require('fs');
+          const { execFileSync } = require('child_process');
+          const roots = ['src/', 'tests/', 'test-data/', 'data/', 'docs/', 'grammar/', 'config/'];
+          const excluded = new Set(['main.js','.github/workflows/cs-work-0278-week18-inventory.yml','tools/tmp/cs-work-0278-week18-inventory.json']);
+          const terms = [
+            'GLOSSIKA-YUEHK-A1-W18-20260719','w18','week18','week 18','common verbs',
+            '咩話','再講多次','你講嘅係邊個','等我講完','我插句嘴','打斷一下',
+            '黎明','黃昏','午夜','正午','截止日期','你食咗飯未','我要返屋企煮飯',
+            '我留喺屋企睇電視','幫你買嘢返嚟','sentence-final particles'
+          ];
+          const files = execFileSync('git',['ls-files','-z'],{encoding:'utf8'}).split('\0').filter(Boolean)
+            .filter(file=>roots.some(root=>file.startsWith(root))).filter(file=>!excluded.has(file));
+          const filenameMatches = files.filter(file=>/w18|week[\s_.-]?18|common[\s_.-]?verb|temporal/i.test(file));
+          const contentMatches=[];
+          for(const file of files){
+            let stat; try{stat=fs.statSync(file);}catch{continue;}
+            if(!stat.isFile()||stat.size>5_000_000)continue;
+            let text; try{text=fs.readFileSync(file,'utf8');}catch{continue;}
+            const lower=text.toLowerCase();
+            const matchedTerms=terms.filter(term=>lower.includes(term.toLowerCase()));
+            if(!matchedTerms.length)continue;
+            contentMatches.push({path:file,matchedTerms});
+          }
+          const output={
+            schema:'canto-span-week18-modular-inventory-v1',
+            generatedFrom:{base:'18e285c92b639f56e6b0eb08543e42ce7c66151e',roots,generatedBundleExcluded:true,generatedBundlePath:'main.js'},
+            counts:{trackedFilesScanned:files.length,filenameMatches:filenameMatches.length,contentMatches:contentMatches.length,canonicalRuntimeMatches:contentMatches.filter(x=>x.path.startsWith('src/')).length,projectDataMatches:contentMatches.filter(x=>/^(tests|test-data|data|docs|grammar)\//.test(x.path)).length},
+            filenameMatches,
+            canonicalRuntimeMatches:contentMatches.filter(x=>x.path.startsWith('src/')),
+            projectDataMatches:contentMatches.filter(x=>/^(tests|test-data|data|docs|grammar)\//.test(x.path)),
+            allContentMatchPaths:contentMatches.map(x=>x.path)
+          };
+          fs.writeFileSync('tools/tmp/cs-work-0278-week18-inventory.json',JSON.stringify(output,null,2)+'\n');
+          console.log(output.counts);
+          NODE
+      - name: Commit inventory when changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tools/tmp/cs-work-0278-week18-inventory.json
+          if git diff --cached --quiet; then echo "Inventory unchanged"; else
+            git commit -m "Inventory modular Week 18 project records"
+            git push origin HEAD:${{ github.event.pull_request.head.ref }}
+          fi
