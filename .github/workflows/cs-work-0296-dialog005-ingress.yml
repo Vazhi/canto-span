@@ -1,0 +1,59 @@
+name: CS-WORK-0296 Dialog 005 corpus ingress
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    if: github.event.pull_request.head.ref == 'agent/glossika-dialog-005-ingress'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Install dependencies
+        run: npm ci
+      - name: Generate source-preserving dialog package
+        run: node tools/tmp/cs-work-0296-generate-dialog005.js
+      - name: Validate package and repository
+        run: |
+          node <<'NODE'
+          const fs=require('fs');
+          const root='data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228';
+          const source=require(`./${root}/source.json`);
+          const crosswalk=require(`./${root}/crosswalk.json`);
+          const review=require(`./${root}/review.json`);
+          if(source.items.length!==114||source.ingress.turnCount!==56||source.ingress.vocabularyCount!==58) throw new Error('Unexpected source counts');
+          const turns=source.items.filter(item=>item.itemType==='dialog_turn');
+          const vocab=source.items.filter(item=>item.itemType==='lexical_entry');
+          if(turns.some((item,index)=>item.turn!==index+1||item.speaker!==((index+1)%2===1?'阿文':'阿芬')||item.source.english!==null)) throw new Error('Turn sequence, speaker, or missing-English preservation failed');
+          if(vocab.some((item,index)=>item.vocabularyOrdinal!==index+1)) throw new Error('Vocabulary order failed');
+          if(crosswalk.items.length!==114||review.records.length!==114) throw new Error('Crosswalk/review alignment failed');
+          if(crosswalk.architecture.generatedExcluded[0]!=='main.js') throw new Error('main.js exclusion missing');
+          if(crosswalk.items.some(item=>[...item.canonicalExactOwners,...item.canonicalNormalizedOwners,...item.supportingExactOwners,...item.supportingNormalizedOwners].includes('main.js'))) throw new Error('main.js leaked into ownership');
+          const turnWalk=crosswalk.items.filter(item=>item.itemType==='dialog_turn');
+          if(turnWalk.some((item,index)=>item.adjacency.previousTurnId!==(index===0?null:`GLOSSIKA-YUEHK-A1-DLG-005-20251228-I${String(index).padStart(3,'0')}`)||item.adjacency.nextTurnId!==(index===55?null:`GLOSSIKA-YUEHK-A1-DLG-005-20251228-I${String(index+2).padStart(3,'0')}`))) throw new Error('Turn adjacency failed');
+          const rows=fs.readFileSync(`${root}/items.tsv`,'utf8').trimEnd().split('\n');
+          if(rows.length!==115) throw new Error(`Expected TSV header plus 114 rows, found ${rows.length}`);
+          if(!review.summary.knownSourceAlerts.some(alert=>alert.type==='source_grammar_and_confidence_claims')) throw new Error('Source-claim alert absent');
+          NODE
+          git diff --check
+          npm run verify:research
+          npm run verify
+      - name: Commit generated package
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228 docs/research/GLOSSIKA-YUEHK-A1-DLG-005-20251228-CORPUS-INGRESS.md
+          git rm tools/tmp/cs-work-0296-dialog005-meta.json tools/tmp/cs-work-0296-dialog005-turns.part00.tsv tools/tmp/cs-work-0296-dialog005-turns.part01.tsv tools/tmp/cs-work-0296-dialog005-turns.part02.tsv tools/tmp/cs-work-0296-dialog005-turns.part03.tsv tools/tmp/cs-work-0296-dialog005-vocab.part00.tsv tools/tmp/cs-work-0296-dialog005-vocab.part01.tsv tools/tmp/cs-work-0296-dialog005-vocab.part02.tsv tools/tmp/cs-work-0296-generate-dialog005.js
+          git commit -m "Add Glossika dialog 005 corpus package"
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
