@@ -1,0 +1,2266 @@
+{
+  "schema": "canto-span-pedagogical-corpus-crosswalk-v1",
+  "sourceId": "GLOSSIKA-YUEHK-A1-W18-20260719",
+  "sourcePayloadHash": "sha256:fb9efc4f693a96015740012e119a678e57645fb9017b9096a5383d8bdaa13579",
+  "architecture": {
+    "canonicalRuntimeInputs": [
+      "src/**",
+      "src/runtime-resources/**"
+    ],
+    "generatedBundle": "main.js",
+    "generatedBundleExcludedFromOwnership": true,
+    "buildEntrypoint": "src/plugin-entry.js",
+    "buildContract": "tools/build-runtime.js"
+  },
+  "summary": {
+    "recordCount": 99,
+    "classificationCounts": {
+      "compositional_numeral": 9,
+      "exact_duplicate": 1,
+      "existing_runtime_entry": 28,
+      "new_attestation": 49,
+      "partial_match": 11,
+      "source_incomplete": 1
+    },
+    "discrepancyCounts": {
+      "ellipsis_and_nominalization": 1,
+      "incomplete_phonics_pair": 1,
+      "multifunctional_lexeme": 7,
+      "naturalness_or_translation_influence": 4,
+      "particle_function_simplification": 11,
+      "phonics_heading_scope": 6,
+      "pronunciation_material": 6,
+      "question_force_simplification": 1,
+      "register_or_a1_appropriateness": 10,
+      "repair_formula_scope": 1,
+      "source_category_simplification": 1,
+      "translation_collision": 4
+    },
+    "commonVerbCoverage": {
+      "sourceCount": 25,
+      "withCanonicalLexiconOwner": 24,
+      "uncovered": [
+        "著"
+      ]
+    },
+    "temporalCoverage": {
+      "sourceCount": 28,
+      "withCanonicalLexiconOwner": 3,
+      "uncovered": [
+        "黎明",
+        "黃昏",
+        "午夜",
+        "正午",
+        "世紀",
+        "十年",
+        "秒",
+        "約會",
+        "日曆",
+        "早",
+        "季度",
+        "時代",
+        "過去",
+        "將來",
+        "永遠",
+        "以前",
+        "暫時",
+        "長期",
+        "短期",
+        "定期",
+        "半夜",
+        "中午",
+        "刹那",
+        "日程",
+        "截止日期"
+      ]
+    },
+    "compositionalNumeralCount": 10
+  },
+  "records": [
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I001",
+      "sourceHash": "sha256:1a49fcd363da562e9f81ca18616e24538f386dd0abe373ec6b67497525e945a8",
+      "sourceDisplay": "咩話？再講多次。",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/boundaries/fragments.js",
+        "src/parser/detectors/boundaries/malformed.js",
+        "src/parser/detectors/boundaries/needs-context.js",
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/discourse/priority.js",
+        "src/parser/detectors/discourse/protected-formulas.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "Me1 waa2? Zoi3 gong2 do1 ci3.",
+      "sourceDiscrepancies": [
+        {
+          "type": "naturalness_or_translation_influence",
+          "status": "requires_native_and_corpus_review",
+          "note": "Preserve exactly; do not accept formula or register without independent Cantonese evidence."
+        },
+        {
+          "type": "repair_formula_scope",
+          "status": "route_to_issue_128",
+          "note": "Separate conventional repair initiator 咩話 from productive interrogative analysis and review 多次 versus 一次."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I002",
+      "sourceHash": "sha256:01fceac4006dcdd83cdf8156436461f4804ea14a470e68032b4c813ca1f306f4",
+      "sourceDisplay": "你講嘅係邊個？",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/boundaries/fragments.js",
+        "src/parser/detectors/boundaries/malformed.js",
+        "src/parser/detectors/boundaries/needs-context.js",
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/discourse/priority.js",
+        "src/parser/detectors/discourse/protected-formulas.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "Nei5 gong2 ge3 hai6 bin1 go3?",
+      "sourceDiscrepancies": [
+        {
+          "type": "ellipsis_and_nominalization",
+          "status": "route_to_issue_128",
+          "note": "The omitted material after 嘅 and the identity-question analysis require direct research."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I003",
+      "sourceHash": "sha256:17a86b8e7cb5c6a307abdff6335a5bc82e03bc719c61a9fc82e471a49a1f601e",
+      "sourceDisplay": "唔好意思，可唔可以再講一次？",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/boundaries/fragments.js",
+        "src/parser/detectors/boundaries/malformed.js",
+        "src/parser/detectors/boundaries/needs-context.js",
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/discourse/priority.js",
+        "src/parser/detectors/discourse/protected-formulas.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "M4 hou2 ji3 si1, ho2 m4 ho2 ji5 zoi3 gong2 jat1 ci3?",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I004",
+      "sourceHash": "sha256:6de7ef7cb21fad72d3bfa89a7d21f38a1ce17a545e4d0540b21864e26dc87ea7",
+      "sourceDisplay": "唔該，你係咩意思呀？",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/boundaries/fragments.js",
+        "src/parser/detectors/boundaries/malformed.js",
+        "src/parser/detectors/boundaries/needs-context.js",
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/discourse/priority.js",
+        "src/parser/detectors/discourse/protected-formulas.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "M4 goi1, nei5 hai6 me1 ji3 si1 aa3?",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I005",
+      "sourceHash": "sha256:973da4b5e19b4428682d9f60815231faff26b5b0d94904a65b6cb9bdd19d1f96",
+      "sourceDisplay": "等陣，等我講完。",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/complements/result.js",
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/discourse/priority.js",
+        "src/parser/detectors/discourse/protected-formulas.js",
+        "src/parser/detectors/imperatives/clauses.js"
+      ],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "Dang2 zan6, dang2 ngo5 gong2 jyun4.",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I006",
+      "sourceHash": "sha256:573dce1cb014158553651e46ad8bb3754584d269841a9977d352452375a3d16e",
+      "sourceDisplay": "我插句嘴。",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/complements/result.js",
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/discourse/priority.js",
+        "src/parser/detectors/discourse/protected-formulas.js",
+        "src/parser/detectors/imperatives/clauses.js"
+      ],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "Ngo5 caap3 geoi3 zeoi2.",
+      "sourceDiscrepancies": [
+        {
+          "type": "naturalness_or_translation_influence",
+          "status": "requires_native_and_corpus_review",
+          "note": "Preserve exactly; do not accept formula or register without independent Cantonese evidence."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I007",
+      "sourceHash": "sha256:c236cc3c3d29e8ff60b205143d306732cb8b9a143103b6325ec67e60a9d8d62b",
+      "sourceDisplay": "唔好意思，打斷一下。",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/complements/result.js",
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/discourse/priority.js",
+        "src/parser/detectors/discourse/protected-formulas.js",
+        "src/parser/detectors/imperatives/clauses.js"
+      ],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "M4 hou2 ji3 si1, daa2 dyun6 jat1 haa5.",
+      "sourceDiscrepancies": [
+        {
+          "type": "naturalness_or_translation_influence",
+          "status": "requires_native_and_corpus_review",
+          "note": "Preserve exactly; do not accept formula or register without independent Cantonese evidence."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I008",
+      "sourceHash": "sha256:d7249da4f37e7218043b49bfafadbf6a46b51c617941794fad33aa6046b4c1de",
+      "sourceDisplay": "唔該等我講完先好唔好？",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/complements/result.js",
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/discourse/priority.js",
+        "src/parser/detectors/discourse/protected-formulas.js",
+        "src/parser/detectors/imperatives/clauses.js"
+      ],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "M4 goi1 dang2 ngo5 gong2 jyun4 sin1 hou2 m4 hou2?",
+      "sourceDiscrepancies": [
+        {
+          "type": "naturalness_or_translation_influence",
+          "status": "requires_native_and_corpus_review",
+          "note": "Preserve exactly; do not accept formula or register without independent Cantonese evidence."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I009",
+      "sourceHash": "sha256:6e0e99fff6437e337f3f159ac406df942f94ab054903edb237de1f2fec198d67",
+      "sourceDisplay": "食",
+      "classification": "existing_runtime_entry",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [
+        "src/runtime-resources/pronunciation/jyutping-review-expectations.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "sik6",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I010",
+      "sourceHash": "sha256:43f57e2f86c2e340239d45dcf4d48735d4b0b04c07bd89fc99eda45b3a232b51",
+      "sourceDisplay": "飲",
+      "classification": "existing_runtime_entry",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "jam2",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I011",
+      "sourceHash": "sha256:00f8fbc2d2aafcf8049c8192e1cc9221529c643ce19eb8afe5d587f12efd14be",
+      "sourceDisplay": "瞓",
+      "classification": "existing_runtime_entry",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "fan3",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I012",
+      "sourceHash": "sha256:b19c1e685b31dfff267ae8dddb80bf005ffdf80e264fb49b574065280b984e2c",
+      "sourceDisplay": "行",
+      "classification": "existing_runtime_entry",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "haang4",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I013",
+      "sourceHash": "sha256:ea91aeadcf6c121d4e6670caba3837dc64f9d35874166848e79697ca2151e65d",
+      "sourceDisplay": "跑",
+      "classification": "existing_runtime_entry",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalPronunciationOwners": [
+        "src/runtime-resources/pronunciation/jyutping-review-expectations.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "paau2",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I014",
+      "sourceHash": "sha256:b500245e541b03b8cf7f3e1901f7b1e8442f77d760c70db50b5ecbccea74daca",
+      "sourceDisplay": "坐",
+      "classification": "existing_runtime_entry",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "co5",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I015",
+      "sourceHash": "sha256:b2cd8e4cc91452ed429a3bde50ad9afc7f6adfc7657455821bf0e5ad1fb734b4",
+      "sourceDisplay": "企",
+      "classification": "existing_runtime_entry",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "kei5",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I016",
+      "sourceHash": "sha256:fd90b28db3d5c341028b5556f8e42b048490bd948cb006f90fa21c42026c68ca",
+      "sourceDisplay": "睇",
+      "classification": "existing_runtime_entry",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "tai2",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I017",
+      "sourceHash": "sha256:94fcd620dd0b9e436332f13a36c0cdf09b11e929f41a3f0cdb78556ce95eb3d5",
+      "sourceDisplay": "聽",
+      "classification": "existing_runtime_entry",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "teng1",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I018",
+      "sourceHash": "sha256:365638679a25f36faa6f814f2532b11f8f21ee3e4da706961e711fc8a2da90ee",
+      "sourceDisplay": "講",
+      "classification": "existing_runtime_entry",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "gong2",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I019",
+      "sourceHash": "sha256:ab563ea5f7d75a5d42c87a9d8c5e698f59d8cf81c2c5ed095a0e98f9e4dbccba",
+      "sourceDisplay": "寫",
+      "classification": "existing_runtime_entry",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "se2",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I020",
+      "sourceHash": "sha256:dfa656dc19ee7caa6a86c976596aa3653c64d9762ec50a8deed51b7f2b6f0d7b",
+      "sourceDisplay": "讀",
+      "classification": "existing_runtime_entry",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/study-suite.js"
+      ],
+      "canonicalPronunciationOwners": [
+        "src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "duk6",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I021",
+      "sourceHash": "sha256:0ff227fe0a059d3113f19e23b9c1ced5506815b90525a47de0466abbf39e1716",
+      "sourceDisplay": "做",
+      "classification": "existing_runtime_entry",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "zou6",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I022",
+      "sourceHash": "sha256:3c1371317eefe4eaa63e424b4b20e55b335a8a9b4e5ae976a6d5d69ad9a24da2",
+      "sourceDisplay": "買",
+      "classification": "existing_runtime_entry",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "maai5",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I023",
+      "sourceHash": "sha256:fb68cc55f4af6b644970e0801606cb8c38b4834489241aa84a250cb10fff649a",
+      "sourceDisplay": "賣",
+      "classification": "existing_runtime_entry",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "maai6",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I024",
+      "sourceHash": "sha256:5491582f403a6a9b004208ce18b02038a4184dc637734def8e600ebd700594f9",
+      "sourceDisplay": "畀",
+      "classification": "existing_runtime_entry",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "bei2",
+      "sourceDiscrepancies": [
+        {
+          "type": "multifunctional_lexeme",
+          "status": "existing_runtime_coverage_requires_boundary_review",
+          "note": "Single source gloss does not exhaust readings, valency, coverb, directional, aspectual, or collision behavior."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I025",
+      "sourceHash": "sha256:b1cf62409b112e018be8bd7c5625d0813227cb807f6150996512ef46f46107c8",
+      "sourceDisplay": "攞",
+      "classification": "existing_runtime_entry",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "lo2",
+      "sourceDiscrepancies": [
+        {
+          "type": "multifunctional_lexeme",
+          "status": "existing_runtime_coverage_requires_boundary_review",
+          "note": "Single source gloss does not exhaust readings, valency, coverb, directional, aspectual, or collision behavior."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I026",
+      "sourceHash": "sha256:878cef68b9ad29b500ec5a2408b0994bf4a0ed39317da7cb8138d33589671b55",
+      "sourceDisplay": "嚟",
+      "classification": "existing_runtime_entry",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [
+        "src/runtime-resources/pronunciation/jyutping-review-expectations.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "lai4",
+      "sourceDiscrepancies": [
+        {
+          "type": "multifunctional_lexeme",
+          "status": "existing_runtime_coverage_requires_boundary_review",
+          "note": "Single source gloss does not exhaust readings, valency, coverb, directional, aspectual, or collision behavior."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I027",
+      "sourceHash": "sha256:45a7360fac9e1e8b42bb6116d55d7f699f6e0361da71789d861a56ad63ee7bb7",
+      "sourceDisplay": "去",
+      "classification": "existing_runtime_entry",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "heoi3",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I028",
+      "sourceHash": "sha256:3c770e554b9daeb7a68fd95e89226cb46f71592e51ca8afd5119994bca006ccb",
+      "sourceDisplay": "返",
+      "classification": "existing_runtime_entry",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [
+        "src/runtime-resources/pronunciation/jyutping-review-expectations.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "faan1",
+      "sourceDiscrepancies": [
+        {
+          "type": "multifunctional_lexeme",
+          "status": "existing_runtime_coverage_requires_boundary_review",
+          "note": "Single source gloss does not exhaust readings, valency, coverb, directional, aspectual, or collision behavior."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I029",
+      "sourceHash": "sha256:abec6d7ec2839265617eccc0e9911ffe03553c9d35e767be86aa646c3d42d980",
+      "sourceDisplay": "住",
+      "classification": "existing_runtime_entry",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/study-suite.js"
+      ],
+      "canonicalPronunciationOwners": [
+        "src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "zyu6",
+      "sourceDiscrepancies": [
+        {
+          "type": "multifunctional_lexeme",
+          "status": "existing_runtime_coverage_requires_boundary_review",
+          "note": "Single source gloss does not exhaust readings, valency, coverb, directional, aspectual, or collision behavior."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I030",
+      "sourceHash": "sha256:cf53296f63a3d724451ffc5aede9b052858a7a395c30953dafaa29b94ff1f2f9",
+      "sourceDisplay": "著",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "zoek3",
+      "sourceDiscrepancies": [
+        {
+          "type": "multifunctional_lexeme",
+          "status": "existing_runtime_coverage_requires_boundary_review",
+          "note": "Single source gloss does not exhaust readings, valency, coverb, directional, aspectual, or collision behavior."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I031",
+      "sourceHash": "sha256:70c4d3118dd90262f8726939efbb3bfa69db7ce6dd7d1d8f147a9514c3c80861",
+      "sourceDisplay": "洗",
+      "classification": "existing_runtime_entry",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "sai2",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I032",
+      "sourceHash": "sha256:8c5abfde0fdf970e09754babad61ac11fbf40bca5a8d6f84751b49e95fb8ae9d",
+      "sourceDisplay": "煮",
+      "classification": "existing_runtime_entry",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [
+        "src/runtime-resources/pronunciation/jyutping-review-expectations.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "zyu2",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I033",
+      "sourceHash": "sha256:0e38d42a03bfe1367b881994223b7e8ddef1959a13dec6dbbcac21ba7705702c",
+      "sourceDisplay": "開",
+      "classification": "existing_runtime_entry",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/statives.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "hoi1",
+      "sourceDiscrepancies": [
+        {
+          "type": "multifunctional_lexeme",
+          "status": "existing_runtime_coverage_requires_boundary_review",
+          "note": "Single source gloss does not exhaust readings, valency, coverb, directional, aspectual, or collision behavior."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I034",
+      "sourceHash": "sha256:d3364b5f0cef3fbbea36593934f37c9fdbb0f0d07c944c66f499f85882b81c52",
+      "sourceDisplay": "黎明",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "lai4 ming4",
+      "sourceDiscrepancies": [
+        {
+          "type": "register_or_a1_appropriateness",
+          "status": "requires_external_review",
+          "note": "Source form may be formal, written, literary, or unusually advanced for ordinary A1 conversation."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I035",
+      "sourceHash": "sha256:f73cb81bb1a0695d1f31b7605dfbd65cfae17e5b25a166e0fcb53035fc6df499",
+      "sourceDisplay": "黃昏",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "wong4 fan1",
+      "sourceDiscrepancies": [
+        {
+          "type": "register_or_a1_appropriateness",
+          "status": "requires_external_review",
+          "note": "Source form may be formal, written, literary, or unusually advanced for ordinary A1 conversation."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I036",
+      "sourceHash": "sha256:b94dd9731f8ed90dcfd022600e4df0cb38b1224755d0a65e0cfb75b10f4691e4",
+      "sourceDisplay": "午夜",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "ng5 je6",
+      "sourceDiscrepancies": [
+        {
+          "type": "register_or_a1_appropriateness",
+          "status": "requires_external_review",
+          "note": "Source form may be formal, written, literary, or unusually advanced for ordinary A1 conversation."
+        },
+        {
+          "type": "translation_collision",
+          "status": "source_only",
+          "note": "Both source entries are glossed midnight; lexical and register distinctions require review."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I037",
+      "sourceHash": "sha256:0f055a32a1e30d57d16eee42a08bc242d9777b2b420978d1f4667967cc2b6d3d",
+      "sourceDisplay": "正午",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "zing3 ng5",
+      "sourceDiscrepancies": [
+        {
+          "type": "register_or_a1_appropriateness",
+          "status": "requires_external_review",
+          "note": "Source form may be formal, written, literary, or unusually advanced for ordinary A1 conversation."
+        },
+        {
+          "type": "translation_collision",
+          "status": "source_only",
+          "note": "Both source entries are glossed noon; lexical and register distinctions require review."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I038",
+      "sourceHash": "sha256:d4baecb4240c111f4153577181b6ee068f73c74e3b8423c44f2f77e41e610911",
+      "sourceDisplay": "世紀",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "sai3 gei2",
+      "sourceDiscrepancies": [
+        {
+          "type": "register_or_a1_appropriateness",
+          "status": "requires_external_review",
+          "note": "Source form may be formal, written, literary, or unusually advanced for ordinary A1 conversation."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I039",
+      "sourceHash": "sha256:7d10b757ac98e6789460c19d506f07589d43713458069aecec65eb1c89b373c0",
+      "sourceDisplay": "十年",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "sap6 nin4",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I040",
+      "sourceHash": "sha256:a80fb6d10bf31a9f31def95bb667a2961d507669ab6de2f55c433031a99a8608",
+      "sourceDisplay": "秒",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "miu5",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I041",
+      "sourceHash": "sha256:d1728ac3ee76ed4b0acc5d932fdec6b680ba89c552f97a4303b6e5d9194f277e",
+      "sourceDisplay": "約會",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "joek3 wui2",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I042",
+      "sourceHash": "sha256:4dfae40b663dde36fbd2fc48f067b2202fec067f050627caf4a84e8ffe98cd44",
+      "sourceDisplay": "日曆",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "jat6 lik6",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I043",
+      "sourceHash": "sha256:d30d4c0c1966a74740cf44f4519a8627de243d21daa9194f4f502aadfa15e137",
+      "sourceDisplay": "早",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "zou2",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I044",
+      "sourceHash": "sha256:d00110d96d30ed05ce840ceca3a5b44a07e0d02fa198c79d7ebe103244ea313d",
+      "sourceDisplay": "遲",
+      "classification": "existing_runtime_entry",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/study-suite.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "ci4",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I045",
+      "sourceHash": "sha256:a6f3ec5776cc1aaee855da13489af2be6fc135cd6846d44837ff57fdc3103bd9",
+      "sourceDisplay": "季度",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "gwai3 dou6",
+      "sourceDiscrepancies": [
+        {
+          "type": "register_or_a1_appropriateness",
+          "status": "requires_external_review",
+          "note": "Source form may be formal, written, literary, or unusually advanced for ordinary A1 conversation."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I046",
+      "sourceHash": "sha256:d26dad6abe3c29d76e86e883de083d098eb63aa61a054cc8bfad05e2dfecd5cd",
+      "sourceDisplay": "時代",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "si4 doi6",
+      "sourceDiscrepancies": [
+        {
+          "type": "register_or_a1_appropriateness",
+          "status": "requires_external_review",
+          "note": "Source form may be formal, written, literary, or unusually advanced for ordinary A1 conversation."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I047",
+      "sourceHash": "sha256:f79d6d003daa31c5c92ddb045acf190759c142ee4c8749d9f7d7ec3bcba4086d",
+      "sourceDisplay": "過去",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "gwo3 heoi3",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I048",
+      "sourceHash": "sha256:2abfe0e8e32e7857cad28492e63df6a6ec96741263cc8b28a9c8f2f55d5820d3",
+      "sourceDisplay": "將來",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "zoeng1 loi4",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I049",
+      "sourceHash": "sha256:02b78686865a2038553b1e2b7b7a05488221b5f2eb260ecd7ee54b7a7891aaaa",
+      "sourceDisplay": "永遠",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "wing5 jyun5",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I050",
+      "sourceHash": "sha256:9c258bb68d614d226d702256d1792696df06e0bf1681e7d18ed75523e91ee321",
+      "sourceDisplay": "以前",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "ji5 cin4",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I051",
+      "sourceHash": "sha256:2832d3cc808d556f44171ceef418560a82cf6d43baed2c4c50ec3f6be238d1c1",
+      "sourceDisplay": "暫時",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "zaam6 si4",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I052",
+      "sourceHash": "sha256:dfa9db765b2d89b391d3586b67c52e88c8a5da3dcb931720eda70caa8f31e850",
+      "sourceDisplay": "長期",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "coeng4 kei4",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I053",
+      "sourceHash": "sha256:b403d4466e629f68c9db34ebd0958f6644db3f6301e4cb6afe0e0f7dbc747456",
+      "sourceDisplay": "短期",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "dyun2 kei4",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I054",
+      "sourceHash": "sha256:15736afa69baba27dca1b319c7d1ced40ca6b598b7921d9241beb713e5264e09",
+      "sourceDisplay": "定期",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "ding6 kei4",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I055",
+      "sourceHash": "sha256:4f3d11fe025956781a666ed330495ddef88bf4164506aab9e4dcbb670ccb40fa",
+      "sourceDisplay": "最近",
+      "classification": "existing_runtime_entry",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "zeoi3 gan6",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I056",
+      "sourceHash": "sha256:b5d78766c7c31fd2c17d5069b9fe6d239f282d141ccdffa10d75c238dbb437ef",
+      "sourceDisplay": "之後",
+      "classification": "existing_runtime_entry",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "zi1 hau6",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I057",
+      "sourceHash": "sha256:9b136c543b43f3141b60dabe1a2a21e4f7b659d7c936fa47c3d33fd7663aeab1",
+      "sourceDisplay": "半夜",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "bun3 je6",
+      "sourceDiscrepancies": [
+        {
+          "type": "translation_collision",
+          "status": "source_only",
+          "note": "Both source entries are glossed midnight; lexical and register distinctions require review."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I058",
+      "sourceHash": "sha256:794ef68fb23efd88f7c08d32db3ad773c72f140eb6f59ffc41c038c3e47cc40f",
+      "sourceDisplay": "中午",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "zung1 ng5",
+      "sourceDiscrepancies": [
+        {
+          "type": "translation_collision",
+          "status": "source_only",
+          "note": "Both source entries are glossed noon; lexical and register distinctions require review."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I059",
+      "sourceHash": "sha256:110a146c1e62d32e9ea1ba9a5cbd5f278a287160ba6db7bfc089e0b445a28bd0",
+      "sourceDisplay": "刹那",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "saat3 naa5",
+      "sourceDiscrepancies": [
+        {
+          "type": "register_or_a1_appropriateness",
+          "status": "requires_external_review",
+          "note": "Source form may be formal, written, literary, or unusually advanced for ordinary A1 conversation."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I060",
+      "sourceHash": "sha256:392008ea942fcca32491cfb6220158bffa95590251d3811f8464803bae418111",
+      "sourceDisplay": "日程",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "jat6 cing4",
+      "sourceDiscrepancies": [
+        {
+          "type": "register_or_a1_appropriateness",
+          "status": "requires_external_review",
+          "note": "Source form may be formal, written, literary, or unusually advanced for ordinary A1 conversation."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I061",
+      "sourceHash": "sha256:4f2394c457aa7a3346f4537bc7653d3d69f00b7657acb8495bc1b3600e138e0f",
+      "sourceDisplay": "截止日期",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "zit6 zi2 jat6 kei4",
+      "sourceDiscrepancies": [
+        {
+          "type": "register_or_a1_appropriateness",
+          "status": "requires_external_review",
+          "note": "Source form may be formal, written, literary, or unusually advanced for ordinary A1 conversation."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I062",
+      "sourceHash": "sha256:a59b10193225874e0dc5564ae10d1a527c9b48ee3c61c26777658efc58d84aae",
+      "sourceDisplay": "一億",
+      "classification": "existing_runtime_entry",
+      "compositionalNumeral": true,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "jat1 jik1",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I063",
+      "sourceHash": "sha256:127d587743add4d7755f44510cd05804303559bad76e10250718f465b34a5eab",
+      "sourceDisplay": "二億",
+      "classification": "compositional_numeral",
+      "compositionalNumeral": true,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "ji6 jik1",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I064",
+      "sourceHash": "sha256:aabf164eb1e30f9b4473f9da0dc05ee8de90c5a075bdef3d5b7d1e07fb0f80f0",
+      "sourceDisplay": "三億",
+      "classification": "compositional_numeral",
+      "compositionalNumeral": true,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "saam1 jik1",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I065",
+      "sourceHash": "sha256:6a76651c84d51c64bb0e159dd5fb87ce706e39ab88051198bdadc3caa9311a4c",
+      "sourceDisplay": "四億",
+      "classification": "compositional_numeral",
+      "compositionalNumeral": true,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "sei3 jik1",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I066",
+      "sourceHash": "sha256:73c75aa40c32c3670c78a6c4b62e620d92c0214e47a25b0880e6b6bed765a895",
+      "sourceDisplay": "五億",
+      "classification": "compositional_numeral",
+      "compositionalNumeral": true,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "ng5 jik1",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I067",
+      "sourceHash": "sha256:583dfb85cf852f725d017342c52b121651ae656131dd18ba7fd1bc2f01adcb59",
+      "sourceDisplay": "六億",
+      "classification": "compositional_numeral",
+      "compositionalNumeral": true,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "luk6 jik1",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I068",
+      "sourceHash": "sha256:81407db83935e955ec14a5fce61f9448ef76a5304c20409bc428d4186d731483",
+      "sourceDisplay": "七億",
+      "classification": "compositional_numeral",
+      "compositionalNumeral": true,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "cat1 jik1",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I069",
+      "sourceHash": "sha256:df3486adcbb7a093177f14001060cc4373f33642697b7f01cc6467b392f3d021",
+      "sourceDisplay": "八億",
+      "classification": "compositional_numeral",
+      "compositionalNumeral": true,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "baat3 jik1",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I070",
+      "sourceHash": "sha256:f42371d86f4c4c6cc9d349d3242cb378cc26801fd1a77a04745675c7e67be3b2",
+      "sourceDisplay": "九億",
+      "classification": "compositional_numeral",
+      "compositionalNumeral": true,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "gau2 jik1",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I071",
+      "sourceHash": "sha256:53f5dba550e0f160915b1c92e1b2552d241905d2cf405c7712e9f2e99c20170c",
+      "sourceDisplay": "十億",
+      "classification": "compositional_numeral",
+      "compositionalNumeral": true,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "sap6 jik1",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I072",
+      "sourceHash": "sha256:01057493531902e4e0644a8b9e5e89174dba71b4f5d14303731c202678906196",
+      "sourceDisplay": "你食咗飯未？",
+      "classification": "exact_duplicate",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/aspect/composition.js",
+        "src/parser/detectors/aspect/postverbal-zo.js",
+        "src/parser/detectors/aspect/potential-result.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "exactProjectMatchPaths": [
+        "docs/research/EVALUATION-PACKET-BLUEPRINTS-CP021B-R37.json",
+        "docs/research/PARSER-CONSTRUCTION-CANONICAL-CONSOLIDATION-MATRIX-CP021B-R35.tsv",
+        "test-data/cp021b-lx1-construction-freeze-baseline.json",
+        "tests/constructions/CompletionQuestion.json",
+        "tests/constructions/PostverbalZoPerfectiveVP.json",
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "sourceJyutping": "nei5 sik6 zo2 faan6 mei6?",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I073",
+      "sourceHash": "sha256:c15b929ec6a7515a2991503bc0fb814ffc91571c52c3f0c192285e28f2ce67cd",
+      "sourceDisplay": "我想飲杯嘢。",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/modality/intention-preference.js",
+        "src/parser/detectors/modality/modal-predicates.js"
+      ],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "ngo5 soeng2 jam2 bui1 je5.",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I074",
+      "sourceHash": "sha256:67103e697f816b57f39f113cb07e011691c7db85fc5d9351411d2c99112322f5",
+      "sourceDisplay": "你聽日去邊度？",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "nei5 ting1 jat6 heoi3 bin1 dou6?",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I075",
+      "sourceHash": "sha256:c1c7fdb86a07645f9292e46820fdafea8237bd8efde4eb506cca268f0602831c",
+      "sourceDisplay": "我要返屋企煮飯。",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/modality/intention-preference.js",
+        "src/parser/detectors/modality/modal-predicates.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "ngo5 jiu3 faan1 uk1 kei2 zyu2 faan6.",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I076",
+      "sourceHash": "sha256:f273b43ee379a6ea60ad68db6cd13e7dc7fd899928d079a61102b0deabcba94d",
+      "sourceDisplay": "你今日做咩？",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "nei5 gam1 jat6 zou6 me1?",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I077",
+      "sourceHash": "sha256:8e421caf74babeb88f2de365a896f938e88612b04451eb873eafcaf8d6a1bde8",
+      "sourceDisplay": "我去超市買嘢。你呢？",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "ngo5 heoi3 ciu1 si5 maai5 je5. nei5 ne1?",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I078",
+      "sourceHash": "sha256:954b77d26ec327b1931b5fbe9a9482d38756ae7e971e85445fc2b1bbdf08d713",
+      "sourceDisplay": "我留喺屋企睇電視。",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/clauses.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/predicates/basic.js"
+      ],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "ngo5 lau4 hai2 uk1 kei2 tai2 din6 si6.",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I079",
+      "sourceHash": "sha256:8e92bc5ab117ed2b91a0b818ce4cb08222dc39ff508d05afaf5231c3034eff9e",
+      "sourceDisplay": "咁我幫你買嘢返嚟啦。",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js",
+        "src/parser/detectors/transfer/legacy-recipient.js",
+        "src/parser/detectors/transfer/lexical-give.js",
+        "src/parser/detectors/transfer/passive-permissive.js",
+        "src/parser/detectors/transfer/post-theme.js"
+      ],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "gam2 ngo5 bong1 nei5 maai5 je5 faan1 lai4 laa1.",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I080",
+      "sourceHash": "sha256:5801370d9825e6f48342c921d2d438cc7fa4f823ec15af0f23c1308651a03ad6",
+      "sourceDisplay": "呀",
+      "classification": "partial_match",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/degree-and-formulas.js"
+      ],
+      "canonicalPronunciationOwners": [
+        "src/runtime-resources/pronunciation/jyutping-review-expectations.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/discourse/priority.js",
+        "src/parser/detectors/discourse/protected-formulas.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/terminal/particles/discourse.js",
+        "src/parser/terminal/particles/focus.js",
+        "src/parser/terminal/particles/ordered-cluster.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "aa3",
+      "sourceDiscrepancies": [
+        {
+          "type": "particle_function_simplification",
+          "status": "route_to_issue_128",
+          "note": "The source assigns one short function to a multifunctional particle; tone, clause type, discourse force, and cluster behavior remain separate."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I081",
+      "sourceHash": "sha256:77853cc3595205a6e629d337b08074017758a424ff668ccf70e874240468fac9",
+      "sourceDisplay": "啦",
+      "classification": "partial_match",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/degree-and-formulas.js"
+      ],
+      "canonicalPronunciationOwners": [
+        "src/runtime-resources/pronunciation/jyutping-review-expectations.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/discourse/priority.js",
+        "src/parser/detectors/discourse/protected-formulas.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/terminal/particles/discourse.js",
+        "src/parser/terminal/particles/focus.js",
+        "src/parser/terminal/particles/ordered-cluster.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "laa1",
+      "sourceDiscrepancies": [
+        {
+          "type": "particle_function_simplification",
+          "status": "route_to_issue_128",
+          "note": "The source assigns one short function to a multifunctional particle; tone, clause type, discourse force, and cluster behavior remain separate."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I082",
+      "sourceHash": "sha256:e1c67423fe209f971f4c365107ca290085367d2aefef28e723e9c3251aa3cfdd",
+      "sourceDisplay": "喇",
+      "classification": "partial_match",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/degree-and-formulas.js"
+      ],
+      "canonicalPronunciationOwners": [
+        "src/runtime-resources/pronunciation/jyutping-review-expectations.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/discourse/priority.js",
+        "src/parser/detectors/discourse/protected-formulas.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/terminal/particles/discourse.js",
+        "src/parser/terminal/particles/focus.js",
+        "src/parser/terminal/particles/ordered-cluster.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "laa3",
+      "sourceDiscrepancies": [
+        {
+          "type": "particle_function_simplification",
+          "status": "route_to_issue_128",
+          "note": "The source assigns one short function to a multifunctional particle; tone, clause type, discourse force, and cluster behavior remain separate."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I083",
+      "sourceHash": "sha256:9ee3e544d86576337f7b359af2d2fed7eb6b39bc7fd1f9c17ba19e8c40e97178",
+      "sourceDisplay": "㗎",
+      "classification": "partial_match",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/degree-and-formulas.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/discourse/priority.js",
+        "src/parser/detectors/discourse/protected-formulas.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/terminal/particles/discourse.js",
+        "src/parser/terminal/particles/focus.js",
+        "src/parser/terminal/particles/ordered-cluster.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "gaa3",
+      "sourceDiscrepancies": [
+        {
+          "type": "particle_function_simplification",
+          "status": "route_to_issue_128",
+          "note": "The source assigns one short function to a multifunctional particle; tone, clause type, discourse force, and cluster behavior remain separate."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I084",
+      "sourceHash": "sha256:fdcf7334da493cb38898c1f03e9ad7a13e34803325d6d3f43e35ac3663b4f4b1",
+      "sourceDisplay": "嘅",
+      "classification": "partial_match",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/degree-and-formulas.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/discourse/priority.js",
+        "src/parser/detectors/discourse/protected-formulas.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/terminal/particles/discourse.js",
+        "src/parser/terminal/particles/focus.js",
+        "src/parser/terminal/particles/ordered-cluster.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "ge3",
+      "sourceDiscrepancies": [
+        {
+          "type": "particle_function_simplification",
+          "status": "route_to_issue_128",
+          "note": "The source assigns one short function to a multifunctional particle; tone, clause type, discourse force, and cluster behavior remain separate."
+        },
+        {
+          "type": "source_category_simplification",
+          "status": "requires_external_review",
+          "note": "The source places 嘅 in the sentence-final-particle table while glossing nominalizer; syntactic uses must remain distinguished."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I085",
+      "sourceHash": "sha256:0436fbaf1ff3031cc98b879e28e9507e2bfec2a9adbf3b2dafa1f19532db041f",
+      "sourceDisplay": "嘛",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/discourse/priority.js",
+        "src/parser/detectors/discourse/protected-formulas.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/terminal/particles/discourse.js",
+        "src/parser/terminal/particles/focus.js",
+        "src/parser/terminal/particles/ordered-cluster.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "maa3",
+      "sourceDiscrepancies": [
+        {
+          "type": "particle_function_simplification",
+          "status": "route_to_issue_128",
+          "note": "The source assigns one short function to a multifunctional particle; tone, clause type, discourse force, and cluster behavior remain separate."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I086",
+      "sourceHash": "sha256:37d42f7709ca6158d94ec3cbba03a979d97bb939ec6e6a475c45772aeae25c94",
+      "sourceDisplay": "喎",
+      "classification": "partial_match",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/degree-and-formulas.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/discourse/priority.js",
+        "src/parser/detectors/discourse/protected-formulas.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/terminal/particles/discourse.js",
+        "src/parser/terminal/particles/focus.js",
+        "src/parser/terminal/particles/ordered-cluster.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "wo3",
+      "sourceDiscrepancies": [
+        {
+          "type": "particle_function_simplification",
+          "status": "route_to_issue_128",
+          "note": "The source assigns one short function to a multifunctional particle; tone, clause type, discourse force, and cluster behavior remain separate."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I087",
+      "sourceHash": "sha256:0f0fea31152ca63df7fd8a6c2a694f851d690dc4736e87c3bf608f81d23f1bfc",
+      "sourceDisplay": "噃",
+      "classification": "partial_match",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/study-suite.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/discourse/priority.js",
+        "src/parser/detectors/discourse/protected-formulas.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/terminal/particles/discourse.js",
+        "src/parser/terminal/particles/focus.js",
+        "src/parser/terminal/particles/ordered-cluster.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "bo3",
+      "sourceDiscrepancies": [
+        {
+          "type": "particle_function_simplification",
+          "status": "route_to_issue_128",
+          "note": "The source assigns one short function to a multifunctional particle; tone, clause type, discourse force, and cluster behavior remain separate."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I088",
+      "sourceHash": "sha256:ef7ea56ea95837f9c139ae3a360d11cf73f5b0bdd34e271688dee98dc3d7fe59",
+      "sourceDisplay": "咩",
+      "classification": "partial_match",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/discourse/priority.js",
+        "src/parser/detectors/discourse/protected-formulas.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/terminal/particles/discourse.js",
+        "src/parser/terminal/particles/focus.js",
+        "src/parser/terminal/particles/ordered-cluster.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "me1",
+      "sourceDiscrepancies": [
+        {
+          "type": "particle_function_simplification",
+          "status": "route_to_issue_128",
+          "note": "The source assigns one short function to a multifunctional particle; tone, clause type, discourse force, and cluster behavior remain separate."
+        },
+        {
+          "type": "question_force_simplification",
+          "status": "requires_external_review",
+          "note": "Rhetorical question is not a complete account of me1 uses."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I089",
+      "sourceHash": "sha256:7b9b3daf6e1e59012d54540447f4583ffe93a2f7d96e705a7decbee209071763",
+      "sourceDisplay": "囉",
+      "classification": "partial_match",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/degree-and-formulas.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/discourse/priority.js",
+        "src/parser/detectors/discourse/protected-formulas.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/terminal/particles/discourse.js",
+        "src/parser/terminal/particles/focus.js",
+        "src/parser/terminal/particles/ordered-cluster.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "lo1",
+      "sourceDiscrepancies": [
+        {
+          "type": "particle_function_simplification",
+          "status": "route_to_issue_128",
+          "note": "The source assigns one short function to a multifunctional particle; tone, clause type, discourse force, and cluster behavior remain separate."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I090",
+      "sourceHash": "sha256:39c18fdb4a94661578530ff6f19899e19de775297e5bf8bf93f66c2819f79298",
+      "sourceDisplay": "啩",
+      "classification": "partial_match",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/degree-and-formulas.js"
+      ],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/discourse/priority.js",
+        "src/parser/detectors/discourse/protected-formulas.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/terminal/particles/discourse.js",
+        "src/parser/terminal/particles/focus.js",
+        "src/parser/terminal/particles/ordered-cluster.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "gwaa3",
+      "sourceDiscrepancies": [
+        {
+          "type": "particle_function_simplification",
+          "status": "route_to_issue_128",
+          "note": "The source assigns one short function to a multifunctional particle; tone, clause type, discourse force, and cluster behavior remain separate."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I091",
+      "sourceHash": "sha256:816a99059a2fc19a0eda7f88580c0116d72faa11d960e7d71f9e2971a4a8cdad",
+      "sourceDisplay": "今日好熱呀！",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/discourse/priority.js",
+        "src/parser/detectors/discourse/protected-formulas.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/terminal/particles/discourse.js",
+        "src/parser/terminal/particles/focus.js",
+        "src/parser/terminal/particles/ordered-cluster.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "gam1 jat6 hou2 jit6 aa3!",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I092",
+      "sourceHash": "sha256:14b83938467f35ee4fdb86d797ab990572a05575e3e44f06eaab24b1f8eef47d",
+      "sourceDisplay": "你快啲去啦！",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/clause-relations/punctuation.js",
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/discourse/priority.js",
+        "src/parser/detectors/discourse/protected-formulas.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/terminal/particles/discourse.js",
+        "src/parser/terminal/particles/focus.js",
+        "src/parser/terminal/particles/ordered-cluster.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "nei5 faai3 di1 heoi3 laa1!",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I093",
+      "sourceHash": "sha256:9b2867d7edba74834ec2441c7b4dd7873b01a682c733d35ff99342f4491c54cb",
+      "sourceDisplay": "我做完功課喇。",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/discourse/priority.js",
+        "src/parser/detectors/discourse/protected-formulas.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/terminal/particles/discourse.js",
+        "src/parser/terminal/particles/focus.js",
+        "src/parser/terminal/particles/ordered-cluster.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "ngo5 zou6 jyun4 gung1 fo3 laa3",
+      "sourceDiscrepancies": [],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I094",
+      "sourceHash": "sha256:16476df3e4e34063e5dc2202f4eafd7e6a37f2ceff5d73774a1b561e9ad0442e",
+      "sourceDisplay": "上|信",
+      "classification": "partial_match",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/places-and-times.js",
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalPronunciationOwners": [
+        "src/runtime-resources/pronunciation/jyutping-review-expectations.js"
+      ],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "soeng6|seon3",
+      "sourceDiscrepancies": [
+        {
+          "type": "pronunciation_material",
+          "status": "requires_independent_verification",
+          "note": "IPA, Jyutping, tones, lexical choices, glosses, and contrast membership remain provisional."
+        },
+        {
+          "type": "phonics_heading_scope",
+          "status": "requires_independent_verification",
+          "note": "This row does not transparently instantiate the stated /œː/ versus /ɵ/ contrast."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I095",
+      "sourceHash": "sha256:f08e58de4a262b933e7e6358379fef40942efbda6dc9f4deecc8837038ca9246",
+      "sourceDisplay": "窗|春",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "coeng1|ceon1",
+      "sourceDiscrepancies": [
+        {
+          "type": "pronunciation_material",
+          "status": "requires_independent_verification",
+          "note": "IPA, Jyutping, tones, lexical choices, glosses, and contrast membership remain provisional."
+        },
+        {
+          "type": "phonics_heading_scope",
+          "status": "requires_independent_verification",
+          "note": "This row does not transparently instantiate the stated /œː/ versus /ɵ/ contrast."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I096",
+      "sourceHash": "sha256:2a61930a5c23a5a6506e3ca93666aeef1cacea47786a3b672b6f5dbe57dbbbe2",
+      "sourceDisplay": "量|輪",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "loeng4|leon4",
+      "sourceDiscrepancies": [
+        {
+          "type": "pronunciation_material",
+          "status": "requires_independent_verification",
+          "note": "IPA, Jyutping, tones, lexical choices, glosses, and contrast membership remain provisional."
+        },
+        {
+          "type": "phonics_heading_scope",
+          "status": "requires_independent_verification",
+          "note": "This row does not transparently instantiate the stated /œː/ versus /ɵ/ contrast."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I097",
+      "sourceHash": "sha256:7a13a45f6cad2b7ac44cad022f1d3c555ad6d5d0021b8c4ce9ee7048e818b4e8",
+      "sourceDisplay": "香|—",
+      "classification": "source_incomplete",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "hoeng1|—",
+      "sourceDiscrepancies": [
+        {
+          "type": "pronunciation_material",
+          "status": "requires_independent_verification",
+          "note": "IPA, Jyutping, tones, lexical choices, glosses, and contrast membership remain provisional."
+        },
+        {
+          "type": "incomplete_phonics_pair",
+          "status": "source_incomplete",
+          "note": "The B-side word, Jyutping, gloss, and IPA are absent in the source."
+        },
+        {
+          "type": "phonics_heading_scope",
+          "status": "requires_independent_verification",
+          "note": "This row does not transparently instantiate the stated /œː/ versus /ɵ/ contrast."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I098",
+      "sourceHash": "sha256:4a9b678ce6221edd8d608dc620cc423c9781df1deb3685c0fe3e07e83995cc46",
+      "sourceDisplay": "雀|卒",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "zoek3|zeot1",
+      "sourceDiscrepancies": [
+        {
+          "type": "pronunciation_material",
+          "status": "requires_independent_verification",
+          "note": "IPA, Jyutping, tones, lexical choices, glosses, and contrast membership remain provisional."
+        },
+        {
+          "type": "phonics_heading_scope",
+          "status": "requires_independent_verification",
+          "note": "This row does not transparently instantiate the stated /œː/ versus /ɵ/ contrast."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W18-20260719-I099",
+      "sourceHash": "sha256:6386ec29cf95acac3969ee404ed5f6efdb17bd3aa54ce213c2c2ad1407255a6b",
+      "sourceDisplay": "陽|圓",
+      "classification": "new_attestation",
+      "compositionalNumeral": false,
+      "canonicalLexiconOwners": [],
+      "canonicalPronunciationOwners": [],
+      "canonicalParserOwnerCandidates": [],
+      "exactProjectMatchPaths": [],
+      "sourceJyutping": "joeng4|jyun4",
+      "sourceDiscrepancies": [
+        {
+          "type": "pronunciation_material",
+          "status": "requires_independent_verification",
+          "note": "IPA, Jyutping, tones, lexical choices, glosses, and contrast membership remain provisional."
+        },
+        {
+          "type": "phonics_heading_scope",
+          "status": "requires_independent_verification",
+          "note": "This row does not transparently instantiate the stated /œː/ versus /ɵ/ contrast."
+        }
+      ],
+      "evidenceBoundary": "Source attestation, repository occurrence, tests, and runtime coverage do not establish productivity, construction identity, preferred register, or linguistic status."
+    }
+  ]
+}
