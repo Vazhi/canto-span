@@ -1,0 +1,695 @@
+{
+  "schema": "canto-span-glossika-spatial-lexical-class-map-v1",
+  "packetId": "GLOSSIKA-YUEHK-A1-W19-20260726-SPATIAL-CLASSES-R1",
+  "sourceId": "GLOSSIKA-YUEHK-A1-W19-20260726",
+  "policy": {
+    "lexicalCategoryAndClauseFunctionSeparated": true,
+    "catchAllLocativeRejected": true,
+    "implementationAuthorized": false
+  },
+  "summary": {
+    "sourceCount": 23,
+    "withModularOwner": 6,
+    "uncovered": [
+      "周圍",
+      "穿過",
+      "中間",
+      "東邊",
+      "西邊",
+      "南邊",
+      "北邊",
+      "盡頭",
+      "轉角",
+      "角落",
+      "頂部",
+      "底部",
+      "遠處",
+      "近處",
+      "四周",
+      "到處",
+      "正中"
+    ]
+  },
+  "entries": [
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I026",
+      "traditional": "周圍",
+      "sourceJyutping": "zau1 wai4",
+      "sourceEnglish": "around",
+      "lexicalClass": "region_or_surroundings_noun",
+      "boundary": "around_distribution_requires_clause_context",
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "catchAllLocativeLabelAuthorized": false,
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I027",
+      "traditional": "向",
+      "sourceJyutping": "hoeng3",
+      "sourceEnglish": "toward",
+      "lexicalClass": "orientation_or_direction_marker",
+      "boundary": "not_route_or_goal_without_complement",
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/places-and-times.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "catchAllLocativeLabelAuthorized": false,
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I028",
+      "traditional": "遠",
+      "sourceJyutping": "jyun5",
+      "sourceEnglish": "far",
+      "lexicalClass": "scalar_distance_predicate_or_modifier",
+      "boundary": "not_inherently_a_place_noun",
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/templates/slot-generation-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/statives.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "catchAllLocativeLabelAuthorized": false,
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I029",
+      "traditional": "穿過",
+      "sourceJyutping": "cyun1 gwo3",
+      "sourceEnglish": "through",
+      "lexicalClass": "route_motion_predicate",
+      "boundary": "requires_path_ground_and_event_structure",
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "catchAllLocativeLabelAuthorized": false,
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I030",
+      "traditional": "中間",
+      "sourceJyutping": "zung1 gaan1",
+      "sourceEnglish": "between",
+      "lexicalClass": "relational_region_noun_or_localizer",
+      "boundary": "ground_and_between_reading_require_context",
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js",
+        "src/parser/detectors/np/core.js",
+        "src/parser/detectors/np/token-splits.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "catchAllLocativeLabelAuthorized": false,
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I031",
+      "traditional": "出面",
+      "sourceJyutping": "ceot1 min6",
+      "sourceEnglish": "outside",
+      "lexicalClass": "external_region_noun_or_localizer",
+      "boundary": "deictic_and_ground_reference_require_context",
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/places-and-times.js",
+        "src/runtime-resources/pronunciation/jyutping-review-expectations.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "catchAllLocativeLabelAuthorized": false,
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I032",
+      "traditional": "東邊",
+      "sourceJyutping": "dung1 bin1",
+      "sourceEnglish": "east side",
+      "lexicalClass": "cardinal_direction_region_noun",
+      "boundary": "not_a_bare_route_instruction",
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "catchAllLocativeLabelAuthorized": false,
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I033",
+      "traditional": "西邊",
+      "sourceJyutping": "sai1 bin1",
+      "sourceEnglish": "west side",
+      "lexicalClass": "cardinal_direction_region_noun",
+      "boundary": "not_a_bare_route_instruction",
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "catchAllLocativeLabelAuthorized": false,
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I034",
+      "traditional": "南邊",
+      "sourceJyutping": "naam4 bin1",
+      "sourceEnglish": "south side",
+      "lexicalClass": "cardinal_direction_region_noun",
+      "boundary": "not_a_bare_route_instruction",
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "catchAllLocativeLabelAuthorized": false,
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I035",
+      "traditional": "北邊",
+      "sourceJyutping": "bak1 bin1",
+      "sourceEnglish": "north side",
+      "lexicalClass": "cardinal_direction_region_noun",
+      "boundary": "not_a_bare_route_instruction",
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "catchAllLocativeLabelAuthorized": false,
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I036",
+      "traditional": "盡頭",
+      "sourceJyutping": "zeon6 tau4",
+      "sourceEnglish": "end (of road)",
+      "lexicalClass": "endpoint_region_noun",
+      "boundary": "path_or_container_ground_required",
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "catchAllLocativeLabelAuthorized": false,
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I037",
+      "traditional": "轉角",
+      "sourceJyutping": "zyun3 gok3",
+      "sourceEnglish": "corner",
+      "lexicalClass": "turn_or_corner_noun",
+      "boundary": "lexical_event_and_place_readings_split",
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "catchAllLocativeLabelAuthorized": false,
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I038",
+      "traditional": "入口",
+      "sourceJyutping": "jap6 hau2",
+      "sourceEnglish": "entrance",
+      "lexicalClass": "entrance_place_or_path_noun",
+      "boundary": "not_a_directional_predicate_by_itself",
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/study-suite.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "catchAllLocativeLabelAuthorized": false,
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I039",
+      "traditional": "出口",
+      "sourceJyutping": "ceot1 hau2",
+      "sourceEnglish": "exit",
+      "lexicalClass": "exit_place_or_path_noun",
+      "boundary": "lexical_exit_verb_reading_separate",
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/study-suite.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "catchAllLocativeLabelAuthorized": false,
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I040",
+      "traditional": "路口",
+      "sourceJyutping": "lou6 hau2",
+      "sourceEnglish": "intersection",
+      "lexicalClass": "road_junction_noun",
+      "boundary": "not_equivalent_to_every_intersection_term",
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/study-suite.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "catchAllLocativeLabelAuthorized": false,
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I041",
+      "traditional": "角落",
+      "sourceJyutping": "gok3 lok6",
+      "sourceEnglish": "corner",
+      "lexicalClass": "corner_region_noun",
+      "boundary": "container_or_space_ground_required",
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "catchAllLocativeLabelAuthorized": false,
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I042",
+      "traditional": "頂部",
+      "sourceJyutping": "deng2 bou6",
+      "sourceEnglish": "top",
+      "lexicalClass": "upper_part_noun",
+      "boundary": "formal_compound_and_ground_relation",
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "catchAllLocativeLabelAuthorized": false,
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I043",
+      "traditional": "底部",
+      "sourceJyutping": "dai2 bou6",
+      "sourceEnglish": "bottom",
+      "lexicalClass": "lower_part_noun",
+      "boundary": "formal_compound_and_ground_relation",
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "catchAllLocativeLabelAuthorized": false,
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I044",
+      "traditional": "遠處",
+      "sourceJyutping": "jyun5 cyu3",
+      "sourceEnglish": "far away",
+      "lexicalClass": "distal_place_expression",
+      "boundary": "distance_and deictic_reference",
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "catchAllLocativeLabelAuthorized": false,
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I045",
+      "traditional": "近處",
+      "sourceJyutping": "gan6 cyu3",
+      "sourceEnglish": "nearby",
+      "lexicalClass": "proximal_place_expression",
+      "boundary": "distance_and deictic_reference",
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "catchAllLocativeLabelAuthorized": false,
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I046",
+      "traditional": "四周",
+      "sourceJyutping": "sei3 zau1",
+      "sourceEnglish": "all around",
+      "lexicalClass": "surrounding_region_or_distribution_expression",
+      "boundary": "noun_and_adverbial_uses_split",
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "catchAllLocativeLabelAuthorized": false,
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I047",
+      "traditional": "到處",
+      "sourceJyutping": "dou3 cyu3",
+      "sourceEnglish": "everywhere",
+      "lexicalClass": "distributive_place_expression",
+      "boundary": "not_a_single_location_noun",
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "catchAllLocativeLabelAuthorized": false,
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I048",
+      "traditional": "正中",
+      "sourceJyutping": "zing3 zung1",
+      "sourceEnglish": "center",
+      "lexicalClass": "exact_center_region_or_modifier",
+      "boundary": "predicate_and_nominal_uses_require_context",
+      "canonicalRuntimeResourceOwners": [],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/existential/spatial.js",
+        "src/parser/detectors/locatives/coverb-place.js",
+        "src/parser/detectors/locatives/posture.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/ordering-review.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "spatial_lexical_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "Nouns, localizers, directions, route predicates, orientation markers, and adverbials require separate classes."
+        }
+      ],
+      "catchAllLocativeLabelAuthorized": false,
+      "implementationAuthorized": false
+    }
+  ]
+}

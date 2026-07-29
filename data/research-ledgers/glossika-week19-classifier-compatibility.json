@@ -1,0 +1,409 @@
+{
+  "schema": "canto-span-glossika-classifier-compatibility-audit-v1",
+  "packetId": "GLOSSIKA-YUEHK-A1-W19-20260726-CLASSIFIER-AUDIT-R1",
+  "sourceId": "GLOSSIKA-YUEHK-A1-W19-20260726",
+  "generatedFrom": {
+    "sourcePath": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/source.json",
+    "crosswalkPath": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/crosswalk.json",
+    "modularRulePath": "src/runtime-resources/grammar/classifier-head-rules.js"
+  },
+  "policy": {
+    "semanticClassIsNotExhaustiveCompatibility": true,
+    "sourceGlossIsPedagogicalOnly": true,
+    "changedToneMustBeVerifiedSeparately": true,
+    "noCompatibilityPromotion": true,
+    "implementationAuthorized": false
+  },
+  "summary": {
+    "sourceCount": 14,
+    "exactModularRuleCoverage": 10,
+    "missingExactModularRules": [
+      "枝",
+      "對",
+      "把",
+      "條"
+    ],
+    "sourceReadingDiscrepancies": [
+      "架"
+    ]
+  },
+  "entries": [
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I001",
+      "traditional": "個",
+      "sourceJyutping": "go3",
+      "sourceEnglish": "CL general",
+      "semanticProfile": "general_count",
+      "boundary": "Broad general classifier; human and count-noun use requires noun-specific and register-sensitive review.",
+      "directEvidenceStatus": "class_system_support_item_compatibility_requires_review",
+      "currentModularRule": [
+        "person",
+        "general_count"
+      ],
+      "canonicalOwners": [
+        "src/runtime-resources/grammar/classifier-head-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/places-and-times.js",
+        "src/runtime-resources/normalization/simplified-to-traditional.js"
+      ],
+      "exactRuleCoverage": true,
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "acceptedNounPairs": [],
+      "acceptanceBoundary": "No noun pair is promoted by this audit; compatibility requires direct corpus or controlled speaker evidence.",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I002",
+      "traditional": "隻",
+      "sourceJyutping": "zek3",
+      "sourceEnglish": "CL animals, single items",
+      "semanticProfile": "animal_and_extended_single_entity",
+      "boundary": "Animal use is central, but extension to objects or people is item- and register-sensitive.",
+      "directEvidenceStatus": "class_system_support_item_compatibility_requires_review",
+      "currentModularRule": [
+        "animal"
+      ],
+      "canonicalOwners": [
+        "src/runtime-resources/grammar/classifier-head-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+        "src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js"
+      ],
+      "exactRuleCoverage": true,
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "acceptedNounPairs": [],
+      "acceptanceBoundary": "No noun pair is promoted by this audit; compatibility requires direct corpus or controlled speaker evidence.",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I003",
+      "traditional": "架",
+      "sourceJyutping": "gaa2",
+      "sourceEnglish": "CL vehicles",
+      "semanticProfile": "vehicle",
+      "boundary": "Direct classifier research independently reports gaa3; the lesson source gaa2 is not adopted.",
+      "directEvidenceStatus": "direct_reading_and_vehicle_support",
+      "currentModularRule": [
+        "vehicle"
+      ],
+      "canonicalOwners": [
+        "src/runtime-resources/grammar/classifier-head-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "exactRuleCoverage": true,
+      "sourceDiscrepancies": [
+        {
+          "type": "pronunciation_discrepancy_candidate",
+          "status": "requires_independent_verification",
+          "sourceValue": "gaa2",
+          "note": "The intake explicitly flags this reading; preserve it without runtime import or silent correction."
+        },
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "acceptedNounPairs": [],
+      "acceptanceBoundary": "No noun pair is promoted by this audit; compatibility requires direct corpus or controlled speaker evidence.",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I004",
+      "traditional": "間",
+      "sourceJyutping": "gaan1",
+      "sourceEnglish": "CL rooms, shops, buildings",
+      "semanticProfile": "bounded_room_shop_building",
+      "boundary": "Compatibility depends on bounded spatial or institutional units, not every building noun.",
+      "directEvidenceStatus": "class_system_support_item_compatibility_requires_review",
+      "currentModularRule": [
+        "building_shop"
+      ],
+      "canonicalOwners": [
+        "src/runtime-resources/grammar/classifier-head-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+        "src/runtime-resources/normalization/simplified-to-traditional.js"
+      ],
+      "exactRuleCoverage": true,
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "acceptedNounPairs": [],
+      "acceptanceBoundary": "No noun pair is promoted by this audit; compatibility requires direct corpus or controlled speaker evidence.",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I005",
+      "traditional": "本",
+      "sourceJyutping": "bun2",
+      "sourceEnglish": "CL books",
+      "semanticProfile": "bound_printed_volume",
+      "boundary": "Book-like volume use is narrow; document and publication nouns require item review.",
+      "directEvidenceStatus": "class_system_support_item_compatibility_requires_review",
+      "currentModularRule": [
+        "book"
+      ],
+      "canonicalOwners": [
+        "src/runtime-resources/grammar/classifier-head-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "exactRuleCoverage": true,
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "acceptedNounPairs": [],
+      "acceptanceBoundary": "No noun pair is promoted by this audit; compatibility requires direct corpus or controlled speaker evidence.",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I006",
+      "traditional": "枝",
+      "sourceJyutping": "zi1",
+      "sourceEnglish": "CL pens, bottles, sticks",
+      "semanticProfile": "long_rigid_or_container_extension",
+      "boundary": "Pens, sticks, and some bottle-like items share an extended shape/container profile; lexical preference remains relevant.",
+      "directEvidenceStatus": "class_system_support_item_compatibility_requires_review",
+      "currentModularRule": null,
+      "canonicalOwners": [],
+      "exactRuleCoverage": false,
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "acceptedNounPairs": [],
+      "acceptanceBoundary": "No noun pair is promoted by this audit; compatibility requires direct corpus or controlled speaker evidence.",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I007",
+      "traditional": "碗",
+      "sourceJyutping": "wun2",
+      "sourceEnglish": "CL bowls of",
+      "semanticProfile": "bowl_container_measure",
+      "boundary": "Container and measure readings must be distinguished from a sortal classifier.",
+      "directEvidenceStatus": "class_system_support_item_compatibility_requires_review",
+      "currentModularRule": [
+        "food_bowl"
+      ],
+      "canonicalOwners": [
+        "src/runtime-resources/grammar/classifier-head-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/study-suite.js"
+      ],
+      "exactRuleCoverage": true,
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "acceptedNounPairs": [],
+      "acceptanceBoundary": "No noun pair is promoted by this audit; compatibility requires direct corpus or controlled speaker evidence.",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I008",
+      "traditional": "杯",
+      "sourceJyutping": "bui1",
+      "sourceEnglish": "CL cups of",
+      "semanticProfile": "cup_container_measure",
+      "boundary": "Container and liquid-measure readings must be distinguished from a sortal classifier.",
+      "directEvidenceStatus": "class_system_support_item_compatibility_requires_review",
+      "currentModularRule": [
+        "liquid_measure"
+      ],
+      "canonicalOwners": [
+        "src/runtime-resources/grammar/classifier-head-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "exactRuleCoverage": true,
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "acceptedNounPairs": [],
+      "acceptanceBoundary": "No noun pair is promoted by this audit; compatibility requires direct corpus or controlled speaker evidence.",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I009",
+      "traditional": "對",
+      "sourceJyutping": "deoi3",
+      "sourceEnglish": "CL pairs",
+      "semanticProfile": "pair_measure",
+      "boundary": "Counts a paired set and does not independently classify the noun as an object kind.",
+      "directEvidenceStatus": "class_system_support_item_compatibility_requires_review",
+      "currentModularRule": null,
+      "canonicalOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+        "src/runtime-resources/normalization/simplified-to-traditional.js"
+      ],
+      "exactRuleCoverage": false,
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "acceptedNounPairs": [],
+      "acceptanceBoundary": "No noun pair is promoted by this audit; compatibility requires direct corpus or controlled speaker evidence.",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I010",
+      "traditional": "張",
+      "sourceJyutping": "zoeng1",
+      "sourceEnglish": "CL flat things (paper, tables)",
+      "semanticProfile": "flat_or_spread_object",
+      "boundary": "Flatness is a useful semantic tendency but noun-specific conventional selection remains.",
+      "directEvidenceStatus": "class_system_support_item_compatibility_requires_review",
+      "currentModularRule": [
+        "flat_object"
+      ],
+      "canonicalOwners": [
+        "src/runtime-resources/grammar/classifier-head-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "exactRuleCoverage": true,
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "acceptedNounPairs": [],
+      "acceptanceBoundary": "No noun pair is promoted by this audit; compatibility requires direct corpus or controlled speaker evidence.",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I011",
+      "traditional": "件",
+      "sourceJyutping": "gin6",
+      "sourceEnglish": "CL clothing items, matters",
+      "semanticProfile": "clothing_matter_or_individuated_item",
+      "boundary": "Clothing is only one profile; event/matter and extended item uses require lexical and register controls.",
+      "directEvidenceStatus": "class_system_support_item_compatibility_requires_review",
+      "currentModularRule": [
+        "clothing"
+      ],
+      "canonicalOwners": [
+        "src/runtime-resources/grammar/classifier-head-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "exactRuleCoverage": true,
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "acceptedNounPairs": [],
+      "acceptanceBoundary": "No noun pair is promoted by this audit; compatibility requires direct corpus or controlled speaker evidence.",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I012",
+      "traditional": "部",
+      "sourceJyutping": "bou6",
+      "sourceEnglish": "CL machines, vehicles",
+      "semanticProfile": "machine_device_or_vehicle",
+      "boundary": "Overlaps with 架 for some vehicles but extends to machines and devices; free interchange is not assumed.",
+      "directEvidenceStatus": "class_system_support_item_compatibility_requires_review",
+      "currentModularRule": [
+        "vehicle",
+        "machine_device"
+      ],
+      "canonicalOwners": [
+        "src/runtime-resources/grammar/classifier-head-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "exactRuleCoverage": true,
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "acceptedNounPairs": [],
+      "acceptanceBoundary": "No noun pair is promoted by this audit; compatibility requires direct corpus or controlled speaker evidence.",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I013",
+      "traditional": "把",
+      "sourceJyutping": "baa2",
+      "sourceEnglish": "CL handled items",
+      "semanticProfile": "handled_or_graspable_object",
+      "boundary": "Handle/graspability is a semantic tendency; lexicalized selections and measure-like uses require controls.",
+      "directEvidenceStatus": "class_system_support_item_compatibility_requires_review",
+      "currentModularRule": null,
+      "canonicalOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/study-suite.js",
+        "src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js"
+      ],
+      "exactRuleCoverage": false,
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "acceptedNounPairs": [],
+      "acceptanceBoundary": "No noun pair is promoted by this audit; compatibility requires direct corpus or controlled speaker evidence.",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I014",
+      "traditional": "條",
+      "sourceJyutping": "tiu4",
+      "sourceEnglish": "CL long things (roads, fish)",
+      "semanticProfile": "elongated_flexible_or_path_entity",
+      "boundary": "Shape/path semantics are broad but conventional and evaluative extensions are item-sensitive.",
+      "directEvidenceStatus": "class_system_support_item_compatibility_requires_review",
+      "currentModularRule": null,
+      "canonicalOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "exactRuleCoverage": false,
+      "sourceDiscrepancies": [
+        {
+          "type": "classifier_semantic_class_simplification",
+          "status": "route_to_issue_129",
+          "note": "The short source class is pedagogical and does not establish full noun compatibility, changed tone, or productivity."
+        }
+      ],
+      "acceptedNounPairs": [],
+      "acceptanceBoundary": "No noun pair is promoted by this audit; compatibility requires direct corpus or controlled speaker evidence.",
+      "implementationAuthorized": false
+    }
+  ]
+}

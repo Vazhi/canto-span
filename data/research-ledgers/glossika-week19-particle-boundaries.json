@@ -1,0 +1,211 @@
+{
+  "schema": "canto-span-glossika-particle-boundaries-v1",
+  "packetId": "GLOSSIKA-YUEHK-A1-W19-20260726-PARTICLE-BOUNDARIES-R1",
+  "sourceId": "GLOSSIKA-YUEHK-A1-W19-20260726",
+  "policy": {
+    "toneSpecificIdentity": true,
+    "oneGlossPerParticleRejected": true,
+    "clustersAndProsodyRemainVisible": true,
+    "implementationAuthorized": false
+  },
+  "entries": [
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I021",
+      "traditional": "啦",
+      "sourceJyutping": "laa1",
+      "sourceEnglish": "suggestion particle",
+      "tone": "laa1",
+      "sourceGloss": "suggestion particle",
+      "profiles": [
+        "hortative_or_suggestion",
+        "imperative_softening_or_urging",
+        "cluster_sensitive_discourse_use"
+      ],
+      "boundary": "Do not assign suggestion solely from orthography; clause type, tone, prosody, and particle clusters matter.",
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/ordered-particle-clusters.js",
+        "src/runtime-resources/lexicon/token-lexicon/degree-and-formulas.js",
+        "src/runtime-resources/pronunciation/jyutping-review-expectations.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/discourse/priority.js",
+        "src/parser/detectors/discourse/protected-formulas.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/terminal/particles/discourse.js",
+        "src/parser/terminal/particles/focus.js",
+        "src/parser/terminal/particles/ordered-cluster.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "particle_function_simplification",
+          "status": "route_to_issue_129",
+          "note": "One short gloss does not establish tone-specific force, clause type, combinations, or discourse distribution."
+        }
+      ],
+      "evidenceStatus": "source_attested_direct_particle_research_required_or_reused",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I022",
+      "traditional": "㗎",
+      "sourceJyutping": "gaa3",
+      "sourceEnglish": "emphatic particle",
+      "tone": "gaa3",
+      "sourceGloss": "emphatic particle",
+      "profiles": [
+        "assertive_or_explanatory_declarative",
+        "response_demand_or_commitment_profiles",
+        "cluster_sensitive_profiles"
+      ],
+      "boundary": "Emphasis is not an exhaustive meaning and gaa3 must remain distinct from classifier 架 gaa3.",
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/grammar/ordered-particle-clusters.js",
+        "src/runtime-resources/lexicon/token-lexicon/degree-and-formulas.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/discourse/priority.js",
+        "src/parser/detectors/discourse/protected-formulas.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/terminal/particles/discourse.js",
+        "src/parser/terminal/particles/focus.js",
+        "src/parser/terminal/particles/ordered-cluster.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "particle_function_simplification",
+          "status": "route_to_issue_129",
+          "note": "One short gloss does not establish tone-specific force, clause type, combinations, or discourse distribution."
+        }
+      ],
+      "evidenceStatus": "source_attested_direct_particle_research_required_or_reused",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I023",
+      "traditional": "呀",
+      "sourceJyutping": "aa3",
+      "sourceEnglish": "softening particle",
+      "tone": "aa3",
+      "sourceGloss": "softening particle",
+      "profiles": [
+        "declarative_discourse_management",
+        "imperative_or_request_mitigation",
+        "wh_or_a_not_a_question_host"
+      ],
+      "boundary": "aa3 is not a neutral clause-type marker; tone and discourse context are essential.",
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/degree-and-formulas.js",
+        "src/runtime-resources/pronunciation/jyutping-review-expectations.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/discourse/priority.js",
+        "src/parser/detectors/discourse/protected-formulas.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/terminal/particles/discourse.js",
+        "src/parser/terminal/particles/focus.js",
+        "src/parser/terminal/particles/ordered-cluster.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "particle_function_simplification",
+          "status": "route_to_issue_129",
+          "note": "One short gloss does not establish tone-specific force, clause type, combinations, or discourse distribution."
+        }
+      ],
+      "evidenceStatus": "source_attested_direct_particle_research_required_or_reused",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I024",
+      "traditional": "嘞",
+      "sourceJyutping": "laak3",
+      "sourceEnglish": "change-of-state particle",
+      "tone": "laak3",
+      "sourceGloss": "change-of-state particle",
+      "profiles": [
+        "change_of_state_or_new_situation",
+        "attention_or_update_profiles"
+      ],
+      "boundary": "Do not merge automatically with 喇 laa3 or treat every occurrence as perfective aspect.",
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/degree-and-formulas.js",
+        "src/runtime-resources/pronunciation/jyutping-review-expectations.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/discourse/priority.js",
+        "src/parser/detectors/discourse/protected-formulas.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/terminal/particles/discourse.js",
+        "src/parser/terminal/particles/focus.js",
+        "src/parser/terminal/particles/ordered-cluster.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "particle_function_simplification",
+          "status": "route_to_issue_129",
+          "note": "One short gloss does not establish tone-specific force, clause type, combinations, or discourse distribution."
+        }
+      ],
+      "evidenceStatus": "source_attested_direct_particle_research_required_or_reused",
+      "implementationAuthorized": false
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-W19-20260726-I025",
+      "traditional": "囉",
+      "sourceJyutping": "lo1",
+      "sourceEnglish": "obviousness particle",
+      "tone": "lo1",
+      "sourceGloss": "obviousness particle",
+      "profiles": [
+        "obvious_consequence_or_inference",
+        "resigned_acceptance_or_suggestion_profiles"
+      ],
+      "boundary": "Obviousness is only one discourse effect; clause type, intonation, and context are required.",
+      "canonicalRuntimeResourceOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/degree-and-formulas.js"
+      ],
+      "canonicalParserOwnerCandidates": [
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/discourse/priority.js",
+        "src/parser/detectors/discourse/protected-formulas.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/detectors/questions/completion-experiential.js",
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/terminal/particles/discourse.js",
+        "src/parser/terminal/particles/focus.js",
+        "src/parser/terminal/particles/ordered-cluster.js",
+        "src/parser/terminal/questions/final-particles.js",
+        "src/parser/terminal/questions/question-fallbacks.js"
+      ],
+      "sourceDiscrepancies": [
+        {
+          "type": "particle_function_simplification",
+          "status": "route_to_issue_129",
+          "note": "One short gloss does not establish tone-specific force, clause type, combinations, or discourse distribution."
+        }
+      ],
+      "evidenceStatus": "source_attested_direct_particle_research_required_or_reused",
+      "implementationAuthorized": false
+    }
+  ]
+}
