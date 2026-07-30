@@ -1,0 +1,132 @@
+{
+  "schema": "canto-span-corpus-evidence-aggregate-manifest-v1",
+  "manifest_id": "AB30-CORPUS-EVIDENCE-AGGREGATE-R1",
+  "construction": {
+    "construction_uuid": "2169217f-a21d-5165-9513-eb0edee2c220",
+    "permanent_code": "AB30",
+    "canonical_name": "ZoMarkedPerfectiveObjectVP",
+    "legacy_runtime_label": "PostverbalZoPerfectiveVP"
+  },
+  "accepted_findings": {
+    "issue": 263,
+    "pull_request": 301,
+    "merge_commit": "06aeff71897fc12883b6fa53536f7b4e5f191e16",
+    "research_report": "docs/research/AB30-CORPUS-DIVERSITY-GATE-REVIEW-R1.md",
+    "primary_source_ledger": "docs/research/AB30-PERFECTIVE-OBJECT-PRIMARY-SOURCE-LEDGER-R1.tsv"
+  },
+  "created_on": "2026-07-30",
+  "decision_storage_policy": "references_only_no_decisions_copied_renumbered_or_reclassified",
+  "candidate_id_namespace": "ab30-",
+  "components": [
+    {
+      "component_id": "AB30-TWO-SOURCE-PACKET-R1",
+      "component_type": "bounded_two_source_packet",
+      "query_or_packet_id": "AB30-TWO-SOURCE-PACKET-R1",
+      "decision_ledger": "review-packets/corpus-review/AB30/review-decisions-r1.json",
+      "decision_ledger_schema": "canto-span-corpus-review-decisions-v1",
+      "decision_ledger_git_blob_sha": "15980caff44db2500e949e0566d6e3de8340ff3d",
+      "source_inventory": "review-packets/corpus-review/AB30/candidate-ledger.json",
+      "source_manifest": {
+        "path": "review-packets/corpus-review/AB30/candidate-ledger.json",
+        "sha256": "1be8e59917a2f8a12da1f02f4e4e1e7d15fd9e778a9563e5630ac7bc1b5d23a3"
+      },
+      "candidate_id_namespace": "ab30-",
+      "counts": {
+        "total": 5,
+        "genuine": 2,
+        "false_positive": 3,
+        "ambiguous": 0,
+        "unusable": 0,
+        "unreviewed": 0
+      },
+      "breadth": {
+        "corpus_or_source_set": "two small user-supplied conversation sources",
+        "independent_replication": false
+      }
+    },
+    {
+      "component_id": "AB30-HKCANCOR-V-ZO-R-R2",
+      "component_type": "complete_hkcancor_pos_slice",
+      "query_or_packet_id": "AB30-HKCANCOR-V-ZO-R-R2",
+      "decision_ledger": "review-packets/corpus-review/AB30/hkcancor-zo-r-decisions-r2.json",
+      "decision_ledger_schema": "canto-span-corpus-claim-cross-reference-decisions-v1",
+      "decision_ledger_git_blob_sha": "b4c689e5ee167d627a4f1f123e998a90a8c91fc0",
+      "source_inventory": "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+      "query_summary": "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-query-summary.json",
+      "source_manifest": {
+        "path": "external-evidence/cp021b/hkcancor-cp021b-source-manifest.sha256",
+        "sha256": "d93b064614b38227889b2db20162eb0c2fee3fb75aa94e90dd9abfc64289c731"
+      },
+      "candidate_id_namespace": "ab30-",
+      "counts": {
+        "total": 121,
+        "genuine": 69,
+        "false_positive": 48,
+        "ambiguous": 4,
+        "unusable": 0,
+        "unreviewed": 0
+      },
+      "breadth": {
+        "corpus_or_source_set": "HKCanCor frozen 58-file distribution; immediate post-marker r slice",
+        "independent_replication": false
+      }
+    },
+    {
+      "component_id": "AB30-HKCANCOR-V-ZO-M-R1",
+      "component_type": "complete_hkcancor_pos_slice",
+      "query_or_packet_id": "AB30-HKCANCOR-V-ZO-M-R1",
+      "decision_ledger": "review-packets/corpus-review/AB30/hkcancor-zo-m-decisions-r1.json",
+      "decision_ledger_schema": "canto-span-corpus-claim-cross-reference-decisions-v1",
+      "decision_ledger_git_blob_sha": "cea41d2c45fe673bcf7579fe28853e3a8d539d19",
+      "source_inventory": "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+      "query_summary": "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-query-summary.json",
+      "source_manifest": {
+        "path": "external-evidence/cp021b/hkcancor-cp021b-source-manifest.sha256",
+        "sha256": "d93b064614b38227889b2db20162eb0c2fee3fb75aa94e90dd9abfc64289c731"
+      },
+      "candidate_id_namespace": "ab30-",
+      "counts": {
+        "total": 106,
+        "genuine": 52,
+        "false_positive": 52,
+        "ambiguous": 2,
+        "unusable": 0,
+        "unreviewed": 0
+      },
+      "breadth": {
+        "corpus_or_source_set": "HKCanCor frozen 58-file distribution; immediate post-marker m slice",
+        "independent_replication": false
+      }
+    }
+  ],
+  "aggregate_counts": {
+    "total": 232,
+    "genuine": 123,
+    "false_positive": 103,
+    "ambiguous": 6,
+    "unusable": 0,
+    "unreviewed": 0
+  },
+  "gate_effect": {
+    "reviewed_corpus_gate_satisfied": true,
+    "independent_corpus_replication_satisfied": false,
+    "linguistic_status_changed": false,
+    "promotion_ready": false,
+    "clean_role_neutral_panel_gate_satisfied": false,
+    "held_out_validation_satisfied": false
+  },
+  "breadth_limitations": [
+    "The two HKCanCor slices come from one frozen corpus distribution and do not constitute independent second-corpus replication.",
+    "The two-source packet contains only two small user-supplied conversation sources.",
+    "The aggregate does not estimate frequency or unrestricted lexical productivity.",
+    "The aggregate does not establish dialect-wide naturalness.",
+    "Six candidates remain explicitly ambiguous.",
+    "Clean role-neutral panel evidence and held-out validation remain incomplete."
+  ],
+  "integrity_requirements": {
+    "component_candidate_ids_disjoint": true,
+    "component_decision_counts_complete": true,
+    "component_decisions_embedded": false,
+    "component_classifications_modified": false
+  }
+}
