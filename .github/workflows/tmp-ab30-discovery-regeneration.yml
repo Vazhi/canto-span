@@ -1,16 +1,20 @@
 name: Temporary AB30 discovery regeneration
 
 on:
-  push:
+  pull_request:
     branches:
-      - agent/ab30-aggregate-corpus-manifest
+      - main
+    types:
+      - opened
+      - synchronize
+      - reopened
 
 permissions:
   contents: write
 
 jobs:
   regenerate-and-verify:
-    if: github.ref == 'refs/heads/agent/ab30-aggregate-corpus-manifest'
+    if: github.head_ref == 'agent/ab30-aggregate-corpus-manifest'
     runs-on: ubuntu-latest
     steps:
       - name: Check out claimed branch
