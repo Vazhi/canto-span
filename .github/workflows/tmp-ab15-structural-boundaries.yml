@@ -1,4 +1,4 @@
-name: Temporary AB15 structural probe
+name: Temporary AB15 structural implementation
 
 on:
   pull_request:
@@ -13,7 +13,7 @@ permissions:
   contents: write
 
 jobs:
-  probe:
+  implement-and-verify:
     if: github.head_ref == 'agent/ab15-structural-boundaries'
     runs-on: ubuntu-latest
     steps:
@@ -32,33 +32,352 @@ jobs:
       - name: Install dependencies
         run: npm ci --ignore-scripts
 
-      - name: Print exact AB15 and sibling structures
+      - name: Apply accepted AB15 structural consequences
         run: |
-          node - <<'NODE'
-          const { loadRuntimeApi, internalConstruction, rowSurface } = require('./tests/lib/runtime-api');
-          const api = loadRuntimeApi();
-          const sources = [
-            '呢本書。',
-            '嗰間餐廳。',
-            '呢個。',
-            '呢三本書。',
-            '本書。',
-            '三本書。',
-            '呢書。',
-            '嗰間新開嘅意大利餐廳。',
-          ];
-          for (const source of sources) {
-            const analysis = api.analyzeLine(source);
-            const rows = api.diagnosticFinalRows(analysis)
-              .filter((row) => row.kind === 'construction')
-              .map((row) => ({
-                construction: internalConstruction(row),
-                surface: rowSurface(row),
-                trace: row.trace_detail || {},
-              }));
-            console.log(`AB15_PROBE ${JSON.stringify({ source, rows })}`);
-            if (source === '嗰間新開嘅意大利餐廳。') {
-              console.log(`AB15_RAW ${JSON.stringify(analysis.nodes)}`);
-            }
+          python3 - <<'PY'
+          import json
+          import re
+          from pathlib import Path
+
+          root = Path('.')
+
+          def replace_once(path, old, new):
+              text = path.read_text(encoding='utf-8')
+              count = text.count(old)
+              if count != 1:
+                  raise SystemExit(f'{path}: expected one replacement, found {count}')
+              path.write_text(text.replace(old, new, 1), encoding='utf-8')
+
+          templates_path = root / 'src/runtime-resources/grammar/templates/category-span-templates.js'
+          text = templates_path.read_text(encoding='utf-8')
+          old_ab15 = '''  {
+            type: "OvertHeadDemonstrativeClassifierNP",
+            label: "NP",
+            template: ["demonstrative!", "classifier!", "head_noun!"],
+            template_family: "generative_template",
+            constraints: {
+              slot_must_not_have_slots: {
+                demonstrative: ["quantity", "wh_determiner", "di_determiner"],
+                classifier: ["quantity", "wh_determiner", "di_determiner"],
+                head_noun: ["quantity", "classifier", "wh_determiner", "di_determiner"]
+              }
+            },
+            note: "Bounded overt-head Cantonese demonstrative + classifier + complete nominal head phrase. Requires all three visible components and inserts no hidden numeral or noun."
+          },
+          '''
+          old_ab15 = '\n'.join(line[10:] if line.startswith('          ') else line for line in old_ab15.splitlines())
+          new_ab15 = '''  {
+            type: "OvertHeadDemonstrativeClassifierNP",
+            label: "NP",
+            template: ["demonstrative!", "classifier!", "head_noun!"],
+            template_family: "generative_template",
+            constraints: {
+              slot_must_not_have_slots: {
+                demonstrative: ["quantity", "wh_determiner", "di_determiner"],
+                classifier: ["quantity", "wh_determiner", "di_determiner"],
+                head_noun: ["quantity", "classifier", "wh_determiner", "di_determiner"]
+              }
+            },
+            np_subtype: "demonstrative_classifier_overt_head_no_numeral",
+            not_claims: ["not_hidden_numeral", "not_headless_np", "not_quantified_classifier_np", "not_modifier_bearing_np"],
+            note: "Bounded overt-head Cantonese demonstrative + classifier + complete nominal head phrase. Requires all three visible components and inserts no hidden numeral or noun."
+          },
+          {
+            type: "ModifiedNP",
+            label: "NP",
+            template: ["demonstrative!", "quantified_classifier_np!"],
+            template_family: "generative_template",
+            output_slots: ["modified_np", "np", "object", "topic", "demonstrative", "quantity", "classifier", "head_noun"],
+            np_subtype: "demonstrative_quantified_classifier_np",
+            not_claims: ["not_AB15", "not_hidden_numeral", "not_erased_quantity"],
+            note: "Transparent demonstrative plus an overt quantified-classifier NP sibling; preserves the numeral, classifier, and nominal head outside the narrow no-numeral AB15 profile."
+          },
+          {
+            type: "ClassifierObjectNP",
+            label: "CL-NP",
+            template: ["classifier!", "head_noun!"],
+            template_family: "generative_template",
+            constraints: {
+              slot_must_not_have_slots: {
+                classifier: ["quantity", "demonstrative", "wh_determiner", "di_determiner"],
+                head_noun: ["quantity", "classifier", "demonstrative", "wh_determiner", "di_determiner"]
+              }
+            },
+            output_slots: ["classifier_object_np", "np", "object", "topic", "classifier", "head_noun"],
+            np_subtype: "bare_classifier_noun_np",
+            not_claims: ["not_AB15", "not_hidden_demonstrative", "not_hidden_numeral"],
+            note: "Bare classifier plus overt noun sibling with no demonstrative or numeral insertion."
+          },
+          '''
+          new_ab15 = '\n'.join(line[10:] if line.startswith('          ') else line for line in new_ab15.splitlines())
+          if old_ab15 not in text:
+              raise SystemExit('AB15 template block not found')
+          text = text.replace(old_ab15, new_ab15, 1)
+
+          generic_modified = '''  {
+            type: "ModifiedNP",
+            label: "NP",
+            template: ["demonstrative?", "classifier?", "modifier?", "verb_modifier?", "nominal_linker?", "modifier?", "head_noun!"],
+          '''
+          specific_modified = '''  {
+            type: "ModifiedNP",
+            label: "NP",
+            template: ["demonstrative!", "classifier!", "modifier!", "nominal_linker!", "modifier!", "head_noun!"],
+            template_family: "generative_template",
+            output_slots: ["modified_np", "np", "object", "topic", "demonstrative", "classifier", "modifier", "nominal_linker", "head_noun"],
+            np_subtype: "demonstrative_classifier_modifier_np",
+            not_claims: ["not_AB15", "not_erased_modifier", "not_erased_nominal_linker"],
+            role_overrides: {
+              nominal_linker: {
+                label: "particle",
+                syntax: "nominal_linker associative_linker",
+                slots: ["nominal_linker"],
+                note: "Nominal linker inside a transparent modified noun phrase."
+              }
+            },
+            note: "Demonstrative + classifier + overt modifier + linker + nominal modifier + head noun composition; preserves every overt component."
+          },
+          {
+            type: "ModifiedNP",
+            label: "NP",
+            template: ["demonstrative!", "classifier!", "modifier!", "nominal_linker!", "head_noun!"],
+            template_family: "generative_template",
+            output_slots: ["modified_np", "np", "object", "topic", "demonstrative", "classifier", "modifier", "nominal_linker", "head_noun"],
+            np_subtype: "demonstrative_classifier_modifier_np",
+            not_claims: ["not_AB15", "not_erased_modifier", "not_erased_nominal_linker"],
+            role_overrides: {
+              nominal_linker: {
+                label: "particle",
+                syntax: "nominal_linker associative_linker",
+                slots: ["nominal_linker"],
+                note: "Nominal linker inside a transparent modified noun phrase."
+              }
+            },
+            note: "Demonstrative + classifier + overt modifier + linker + head noun composition; preserves every overt component."
+          },
+          ''' + generic_modified
+          if generic_modified not in text:
+              raise SystemExit('Generic ModifiedNP insertion point not found')
+          text = text.replace(generic_modified, specific_modified, 1)
+          templates_path.write_text(text, encoding='utf-8')
+
+          def recalc(spec):
+              focused = spec.get('focused_cases', [])
+              probes = spec.get('implementation_probe_cases', [])
+              positive = sum(1 for case in focused if case.get('assertion') == 'construction_present')
+              boundary = sum(1 for case in focused if case.get('assertion') == 'construction_absent')
+              review = sum(1 for case in focused if case.get('assertion') == 'review_only_parse_succeeds')
+              snapshot = len(spec.get('snapshot_cases', []))
+              np_count = len(spec.get('np_cases', []))
+              alias = sum(1 for case in probes if case.get('assertion') == 'compatibility_alias_present')
+              spec['coverage'] = {
+                  'state': 'positive_and_boundary' if snapshot + positive and boundary else ('positive_only' if snapshot + positive else 'boundary_only'),
+                  'exact_snapshot_positive_count': snapshot,
+                  'focused_positive_count': positive,
+                  'focused_boundary_count': boundary,
+                  'focused_review_only_count': review,
+                  'np_case_count': np_count,
+                  'implementation_probe_count': len(probes),
+                  'compatibility_alias_probe_count': alias,
+                  'positive_case_count': snapshot + positive,
+                  'boundary_case_count': boundary,
+                  'executable_case_count': snapshot + len(focused) + np_count + len(probes),
+              }
+
+          ab15_path = root / 'tests/constructions/OvertHeadDemonstrativeClassifierNP.json'
+          ab15 = json.loads(ab15_path.read_text(encoding='utf-8'))
+          ab15['focused_cases'] = [
+              {'case_id':'AB15-P01','source':'呢本書。','class':'no_numeral_dem_cl_overt_n','expected_profile':'construction_present','assertion':'construction_present','provenance':'docs/research/AB15-DEMONSTRATIVE-CLASSIFIER-NOUN-SCOPE-R1.md#revised-boundary-matrix','source_ids':['SRC-BOND-SIO-2024-CLASSIFIERS','SRC-CHENG-SYBESMA-2014-NP-STRUCTURE','SRC-MATTHEWS-YIP-COMPREHENSIVE-CH6']},
+              {'case_id':'AB15-P02','source':'嗰間餐廳。','class':'distal_no_numeral_dem_cl_overt_n','expected_profile':'construction_present','assertion':'construction_present','provenance':'docs/research/AB15-DEMONSTRATIVE-CLASSIFIER-NOUN-SCOPE-R1.md#revised-boundary-matrix','source_ids':['SRC-MATTHEWS-YIP-COMPREHENSIVE-CH6']},
+              {'case_id':'AB15-N01','source':'呢個。','class':'headless_demonstrative_classifier_sibling','expected_profile':'construction_absent','assertion':'construction_absent','provenance':'docs/research/AB15-DEMONSTRATIVE-CLASSIFIER-NOUN-SCOPE-R1.md#revised-boundary-matrix'},
+              {'case_id':'AB15-N02','source':'呢三本書。','class':'overt_numeral_sibling','expected_profile':'construction_absent','assertion':'construction_absent','provenance':'docs/research/AB15-DEMONSTRATIVE-CLASSIFIER-NOUN-SCOPE-R1.md#revised-boundary-matrix'},
+              {'case_id':'AB15-N03','source':'本書。','class':'bare_classifier_noun_sibling','expected_profile':'construction_absent','assertion':'construction_absent','provenance':'docs/research/AB15-DEMONSTRATIVE-CLASSIFIER-NOUN-SCOPE-R1.md#revised-boundary-matrix'},
+              {'case_id':'AB15-N04','source':'三本書。','class':'quantified_classifier_sibling','expected_profile':'construction_absent','assertion':'construction_absent','provenance':'docs/research/AB15-DEMONSTRATIVE-CLASSIFIER-NOUN-SCOPE-R1.md#revised-boundary-matrix'},
+              {'case_id':'AB15-N05','source':'呢書。','class':'missing_classifier_no_repair','expected_profile':'construction_absent','assertion':'construction_absent','provenance':'docs/research/AB15-DEMONSTRATIVE-CLASSIFIER-NOUN-SCOPE-R1.md#revised-boundary-matrix'},
+              {'case_id':'AB15-N06','source':'嗰間新開嘅意大利餐廳。','class':'modifier_bearing_composition','expected_profile':'construction_absent','assertion':'construction_absent','provenance':'docs/research/AB15-DEMONSTRATIVE-CLASSIFIER-NOUN-SCOPE-R1.md#revised-boundary-matrix'},
+          ]
+          ab15['implementation_probe_cases'] = [
+              {'case_id':'AB15-I01','source':'呢本書。','assertion':'trace_detail_equals','expected_surface':'呢本書','expected_trace_detail':{'np_subtype':'demonstrative_classifier_overt_head_no_numeral'},'purpose':'runtime_reachability_only','linguistic_evidence_weight':0}
+          ]
+          recalc(ab15)
+          ab15_path.write_text(json.dumps(ab15, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
+          classifier_path = root / 'tests/constructions/ClassifierObjectNP.json'
+          classifier = json.loads(classifier_path.read_text(encoding='utf-8'))
+          classifier['focused_cases'].insert(0, {'case_id':'AB15-CONP-P01','source':'本書。','class':'bare_classifier_noun_sibling','expected_profile':'construction_present','assertion':'construction_present','provenance':'docs/research/AB15-DEMONSTRATIVE-CLASSIFIER-NOUN-SCOPE-R1.md#revised-boundary-matrix','source_ids':['SRC-BOND-SIO-2024-CLASSIFIERS','SRC-CHENG-SYBESMA-2014-NP-STRUCTURE']})
+          classifier['implementation_probe_cases'] = [case for case in classifier.get('implementation_probe_cases', []) if case.get('case_id') != 'AB15-CONP-I01'] + [
+              {'case_id':'AB15-CONP-I01','source':'本書。','assertion':'trace_detail_equals','expected_surface':'本書','expected_trace_detail':{'np_subtype':'bare_classifier_noun_np'},'purpose':'runtime_reachability_only','linguistic_evidence_weight':0}
+          ]
+          recalc(classifier)
+          classifier_path.write_text(json.dumps(classifier, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
+          modified_path = root / 'tests/constructions/ModifiedNP.json'
+          modified = json.loads(modified_path.read_text(encoding='utf-8'))
+          modified['focused_cases'].extend([
+              {'case_id':'AB15-MNP-P01','source':'呢三本書。','class':'demonstrative_quantified_classifier_sibling','expected_profile':'construction_present','assertion':'construction_present','provenance':'docs/research/AB15-DEMONSTRATIVE-CLASSIFIER-NOUN-SCOPE-R1.md#revised-boundary-matrix','source_ids':['SRC-BOND-SIO-2024-CLASSIFIERS','SRC-CHENG-SYBESMA-2014-NP-STRUCTURE']},
+              {'case_id':'AB15-MNP-P02','source':'嗰間新開嘅意大利餐廳。','class':'modifier_bearing_composition','expected_profile':'construction_present','assertion':'construction_present','provenance':'docs/research/AB15-DEMONSTRATIVE-CLASSIFIER-NOUN-SCOPE-R1.md#revised-boundary-matrix','source_ids':['SRC-CHENG-SYBESMA-2014-NP-STRUCTURE']},
+          ])
+          modified['implementation_probe_cases'] = [case for case in modified.get('implementation_probe_cases', []) if not str(case.get('case_id','')).startswith('AB15-MNP-I')] + [
+              {'case_id':'AB15-MNP-I01','source':'呢三本書。','assertion':'trace_detail_equals','expected_surface':'呢三本書','expected_trace_detail':{'np_subtype':'demonstrative_quantified_classifier_np'},'purpose':'runtime_reachability_only','linguistic_evidence_weight':0},
+              {'case_id':'AB15-MNP-I02','source':'嗰間新開嘅意大利餐廳。','assertion':'trace_detail_equals','expected_surface':'嗰間新開嘅意大利餐廳','expected_trace_detail':{'np_subtype':'demonstrative_classifier_modifier_np'},'purpose':'runtime_reachability_only','linguistic_evidence_weight':0},
+          ]
+          recalc(modified)
+          modified_path.write_text(json.dumps(modified, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
+          note_path = root / 'grammar/research_pending/OvertHeadDemonstrativeClassifierNP.md'
+          note = note_path.read_text(encoding='utf-8')
+          front, _, _body = note.partition('\n---\n')
+          if not front.startswith('---\n'):
+              raise SystemExit('AB15 note frontmatter missing')
+          spec = ab15
+          replacements = {
+              'title': '"AB15 DemonstrativeClassifierNounNP"',
+              'confidence': '"primary_source_supported_structural_boundaries_runtime_aligned"',
+              'last_reviewed': '"2026-07-30"',
+              'source_count': '7',
+              'verified_source_count': '7',
+              'native_positive_contrasts_reviewed': 'false',
+              'native_negative_contrasts_reviewed': 'false',
+              'negative_boundary_inventory_complete': 'true',
+              'code_document_review_date': '"2026-07-30"',
+              'current_standard_reaudit_complete': 'true',
+              'source_verification_file': '"docs/research/AB15-CLASSIFIER-NP-PRIMARY-SOURCE-LEDGER-R1.tsv"',
+              'standard_positive_test_count': str(spec['coverage']['positive_case_count']),
+              'standard_boundary_test_count': str(spec['coverage']['boundary_case_count']),
+              'standard_implementation_probe_count': str(spec['coverage']['implementation_probe_count']),
+              'standard_executable_test_count': str(spec['coverage']['executable_case_count']),
+              'source_ids': '["SRC-BOND-SIO-2024-CLASSIFIERS", "SRC-CHENG-SYBESMA-2014-NP-STRUCTURE", "SRC-MATTHEWS-YIP-COMPREHENSIVE-CH6", "SRC-XIA-2025-CLASSIFIERS", "SRC-TSE-LI-LEUNG-2007-CLASSIFIER-ACQUISITION", "SRC-ERBAUGH-2013-CLASSIFIER-DISCOURSE", "SRC-NAGY-LO-2019-CANTONESE-CLASSIFIERS"]',
+              'workflow_state': '"active"',
+              'workflow_priority': '2',
+              'workflow_reason': '"structural_source_audit_complete_panel_and_item_level_choice_evidence_pending"',
+              'accepted_fixtures': str(spec['coverage']['positive_case_count']),
           }
-          NODE
+          lines = front.splitlines()
+          seen = set()
+          for index, line in enumerate(lines):
+              key, sep, _value = line.partition(':')
+              if sep and key in replacements:
+                  lines[index] = f'{key}: {replacements[key]}'
+                  seen.add(key)
+          insert_after = lines.index('construction: "OvertHeadDemonstrativeClassifierNP"')
+          additions = [
+              'construction_uuid: "4f6df953-62d1-5036-80b3-40bc8f02937e"',
+              'construction_code: "AB15"',
+              'canonical_name: "DemonstrativeClassifierNounNP"',
+              'legacy_runtime_label: "OvertHeadDemonstrativeClassifierNP"',
+          ]
+          for value in reversed(additions):
+              if value.split(':',1)[0] not in {line.split(':',1)[0] for line in lines if ':' in line}:
+                  lines.insert(insert_after + 1, value)
+          if 'source_verification_file' not in seen and not any(line.startswith('source_verification_file:') for line in lines):
+              source_index = next(i for i,line in enumerate(lines) if line.startswith('promotion_gate_version:'))
+              lines.insert(source_index + 1, f'source_verification_file: {replacements["source_verification_file"]}')
+          new_front = '\n'.join(lines)
+          body = '''
+# AB15 DemonstrativeClassifierNounNP
+
+## Canonical identity
+
+- UUID: `4f6df953-62d1-5036-80b3-40bc8f02937e`
+- Permanent identity: `AB15 DemonstrativeClassifierNounNP`
+- Legacy runtime label: `OvertHeadDemonstrativeClassifierNP`
+- Linguistic status: `research_pending` (unchanged)
+
+## Plain-language claim
+
+Primary sources directly support a narrow no-numeral Cantonese noun-phrase profile with an overt demonstrative, an overt classifier, and an overt nominal head. The runtime may represent exactly those visible components as AB15. It must not insert a hidden numeral or noun, delete an overt numeral, absorb a modifier-bearing phrase into AB15, or infer item-level classifier compatibility from the structural template.
+
+Semantic cardinality one is a source-attributed interpretation, not an unpronounced token in the parser tree.
+
+## Verified source audit
+
+The proposition-level ledger is `docs/research/AB15-CLASSIFIER-NP-PRIMARY-SOURCE-LEDGER-R1.tsv`; the accepted synthesis is `docs/research/AB15-DEMONSTRATIVE-CLASSIFIER-NOUN-SCOPE-R1.md`.
+
+Seven verified records support the structural core and its limits. Bond and Sio distinguish D-(X)-C-N, X-C-N, and C-N profiles. Cheng and Sybesma state the unmarked Dem–Numeral–Classifier–Modifier–N order, allow numeral omission after a demonstrative, require an overt classifier in the ordinary headed profile, and discuss noun ellipsis. Matthews and Yip directly attest multiple no-numeral Dem-CL-N examples. Xia supports a classifier/measure distinction only at abstract/repository level in the current review; full-PDF locators remain unavailable and no item is classified from that abstract alone. Tse, Erbaugh, and Nagy and Lo establish general-classifier use, alternatives, and population/discourse variation, which blocks a binary universal compatibility interpretation.
+
+## Structural matrix
+
+| Surface/profile | Runtime disposition |
+|---|---|
+| `呢本書`, `嗰間餐廳` | direct AB15: overt Dem + CL + N, no overt numeral |
+| `呢三本書` | transparent demonstrative + `QuantifiedClassifierNP` sibling; numeral preserved |
+| `呢個` | headless demonstrative-classifier sibling; no hidden noun |
+| `本書` | bare `ClassifierObjectNP` sibling; no hidden demonstrative or numeral |
+| `三本書` | `QuantifiedClassifierNP` sibling |
+| `呢書` | outside AB15; no hidden classifier repair |
+| `嗰間新開嘅意大利餐廳` | modifier-bearing `ModifiedNP`; demonstrative, classifier, modifier, `嘅`, nominal modifier, and head noun preserved |
+
+Classifier versus measure-word typing and item-level classifier–noun choice remain separate evidence questions. Absence from the current compatibility table is not categorical ungrammaticality.
+
+## Implementation state
+
+- The no-numeral AB15 category template requires all three overt components and records subtype `demonstrative_classifier_overt_head_no_numeral`.
+- The numeral-bearing wrapper records subtype `demonstrative_quantified_classifier_np` and retains the nested quantified-classifier structure.
+- Bare classifier–noun material receives subtype `bare_classifier_noun_np` rather than the generic modified-NP fallback.
+- Modifier-bearing demonstrative-classifier NPs receive subtype `demonstrative_classifier_modifier_np` and preserve every overt component.
+- Missing-classifier strings remain outside AB15 with no repair.
+- Runtime compatibility data and the twelve-rule unit-word evidence model are unchanged.
+- Parser tests prove implementation behavior only; they do not add linguistic evidence.
+
+## Panel, corpus, and promotion limits
+
+The single historical speaker record is not a clean role-neutral panel. The five older HKCanCor examples remain occurrence evidence but are not a productivity estimate. No clean panel threshold, held-out gate, frequency claim, dialect-wide naturalness claim, or status promotion is established.
+
+## Open questions
+
+- Item-level classifier/measure and classifier–noun evidence remains with issue #334 or later accepted work.
+- `呢啲魚`, `呢班人`, alternative classifiers, mensural profiles, and discourse-conditioned choices require their own item/profile analysis.
+- Clean role-neutral panel evidence and held-out validation remain incomplete.
+'''
+          note_path.write_text(new_front + '\n---\n' + body, encoding='utf-8')
+
+          plugin = root / 'src/plugin-entry.js'
+          replace_once(plugin, 'const CANTO_SPAN_RUNTIME_VERSION = "0.5.217";\n', 'const CANTO_SPAN_RUNTIME_VERSION = "0.5.218";\n// v0.5.218: preserves AB15 no-numeral scope and separates overt-numeral, headless, bare-classifier, missing-classifier, and modifier-bearing NP profiles.\n')
+
+          for relative in ['package.json', 'package-lock.json', 'manifest.json']:
+              path = root / relative
+              data = json.loads(path.read_text(encoding='utf-8'))
+              if relative == 'package-lock.json':
+                  data['version'] = '0.5.218'
+                  data['packages']['']['version'] = '0.5.218'
+              else:
+                  data['version'] = '0.5.218'
+                  if relative == 'manifest.json':
+                      data['description'] = 'v0.5.218 preserves AB15 no-numeral scope and separates overt numeral, headless, bare classifier, missing classifier, and modifier-bearing NP profiles.'
+              path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          replace_once(root / 'docs/current/PROJECT-STATE.md', '| Runtime | v0.5.217 |', '| Runtime | v0.5.218 |')
+          PY
+
+      - name: Run structural tests before generation
+        run: |
+          npm test
+          npm run test:np
+          npm run test:constructions
+
+      - name: Build runtime and regenerate discovery
+        run: |
+          npm run build:runtime
+          npm run verify:runtime-build
+          npm run test:generated-runtime
+          npm run discovery:generate
+          npm run verify:discovery
+
+      - name: Run repository checks
+        run: |
+          npm run verify:research
+          npm run verify
+
+      - name: Remove temporary files and commit coherent result
+        run: |
+          rm .github/workflows/tmp-ab15-structural-boundaries.yml
+          git restore --source=HEAD -- validation/current || true
+          git clean -f validation/current || true
+          git config user.name 'canto-span-automation'
+          git config user.email 'actions@users.noreply.github.com'
+          git add -A
+          if git diff --cached --quiet; then
+            echo 'No AB15 changes to commit.'
+            exit 1
+          fi
+          git commit -m 'Implement AB15 structural boundaries'
+          git push origin HEAD:agent/ab15-structural-boundaries
