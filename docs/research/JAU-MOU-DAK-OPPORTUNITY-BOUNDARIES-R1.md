@@ -148,7 +148,7 @@ The positive and negative corpus surfaces are not distributionally identical:
 | `有得` including one split-token diagnostic | 31 | 0 | 1 | 1 | 6 | 0 | 39 |
 | `冇得` | 32 | 0 | 1 | 11 | 1 | 3 | 48 |
 | `有 + 冇得` | 0 | 5 | 0 | 0 | 0 | 0 | 5 |
-| fused `冇得頂` | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 3 |
+| fused `冇得頂` | 0 | 0 | 0 | 3 | 0 | 0 | 3 |
 
 The table demonstrates a real **lexicalization asymmetry in this corpus packet**: negative
 `冇得` participates in many more discourse and semi-lexical expressions than positive
