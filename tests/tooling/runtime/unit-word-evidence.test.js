@@ -40,8 +40,15 @@ function sourceIdsFromLedger() {
   return new Set(lines.slice(1).map((line) => line.split("\t", 1)[0]));
 }
 
-test("unit-word evidence model has one stable v1 schema and exact rule inventory", () => {
+test("unit-word evidence model has one stable extensible v1 schema and exact current rule inventory", () => {
   assert.equal(schema.$id, "https://canto-span.local/schemas/unit-word-evidence.schema.json");
+  assert.equal(schema.properties.unit_word_senses.minItems, 1);
+  assert.equal(Object.hasOwn(schema.properties.unit_word_senses, "maxItems"), false);
+  assert.equal(schema.properties.noun_choice_rule_records.minItems, 1);
+  assert.equal(Object.hasOwn(schema.properties.noun_choice_rule_records, "maxItems"), false);
+  assert(schema.$defs.nounChoiceRule.properties.pair_status.enum.includes("unreviewed"));
+  assert(schema.$defs.nounChoiceRule.properties.pair_status.enum.includes("reviewed_compatible"));
+  assert(schema.$defs.unitWordSense.properties.provenance_state.enum.includes("pair_reviewed"));
   assert.equal(model.schema, "canto-span-unit-word-evidence-v1");
   assert.equal(model.version, 1);
   assert.deepEqual(model.construction_profiles, ["Dem-UNIT-N", "Num-UNIT-N"]);
