@@ -6,7 +6,7 @@
     "family": "JauMouDakOpportunity",
     "claimLayer": "research_unit"
   },
-  "endpoint": "Every frozen HKCanCor occurrence of exact single-token 有得, exact single-token 冇得, exact 有 immediately followed by single-token 冇得, single-token 有冇得, single-token 有冇 followed by 得, and adjacent split 有/冇 + 得 is inventoried. Utterance-initial, utterance-final, and predicate-less cases are retained.",
+  "endpoint": "Every frozen HKCanCor occurrence of exact single-token 有得, exact single-token 冇得, exact 有 immediately followed by single-token 冇得, single-token 有冇得, single-token 有冇 followed by 得, and adjacent split 有/冇 + 得 is inventoried. Single fused tokens beginning with 有得 or 冇得 are retained as lexical-boundary diagnostics. Utterance-initial, utterance-final, and predicate-less cases are retained.",
   "generatedWithPycantonese": "5.0.0",
   "corpusName": "HKCanCor",
   "corpusFilesInDistribution": 58,
@@ -86,16 +86,18 @@
     "polarYauMouDakDedupePolicy": "A sequence 有 + single-token 冇得 is represented once as polar 有冇得; the 冇得 token is not separately emitted at that location."
   },
   "counts": {
-    "candidateSpans": 92,
-    "candidateUtterances": 86,
-    "sourceFilesWithCandidates": 37,
+    "candidateSpans": 95,
+    "candidateUtterances": 89,
+    "sourceFilesWithCandidates": 38,
     "profileKinds": {
       "affirmative_yau_dak": 38,
       "affirmative_yau_dak_split_diagnostic": 1,
+      "negative_fused_lexeme_diagnostic": 3,
       "negative_mou_dak": 48,
       "polar_yau_mou_dak": 5
     },
     "tokenizationKinds": {
+      "single_fused_token_prefixed_mou_dak": 3,
       "single_token_mou_dak": 48,
       "single_token_yau_dak": 38,
       "split_jau_or_mou_plus_dak": 1,
@@ -103,39 +105,44 @@
     },
     "matchedSurfaces": {
       "冇得": 48,
+      "冇得頂": 3,
       "有冇得": 5,
       "有得": 39
     },
     "followingPredicateCandidate": {
-      "False": 13,
-      "True": 79
+      "False": 15,
+      "True": 80
     },
     "utteranceInitial": {
-      "False": 74,
+      "False": 77,
       "True": 18
     },
     "utteranceFinal": {
-      "False": 92
+      "False": 94,
+      "True": 1
     },
     "nearestRightLexicalForms": {
-      ",": 1,
-      "-": 3,
-      ".": 1,
+      "<NONE>": 1,
       "in": 1,
       "interview": 1,
       "second": 1,
       "surprise": 1,
       "交易": 1,
       "享用": 1,
+      "你": 2,
       "俾": 1,
       "做": 3,
       "停": 2,
+      "冇得": 1,
       "出糧": 1,
       "剪": 1,
       "即係": 1,
       "原地踏步": 1,
       "去": 3,
       "參加": 1,
+      "唔": 1,
+      "啊": 1,
+      "囖": 1,
       "好似": 1,
       "平": 2,
       "成日": 1,
@@ -167,17 +174,21 @@
       "順序": 1,
       "食": 4,
       "飯": 1,
-      "點": 1
+      "點": 1,
+      "𡃉": 1
     },
     "nearestRightLexicalUdPos": {
+      "<NONE>": 1,
       "ADJ": 4,
       "ADP": 1,
-      "ADV": 1,
+      "ADV": 2,
+      "AUX": 1,
       "CCONJ": 1,
       "NOUN": 3,
-      "PRON": 1,
+      "PART": 3,
+      "PRON": 3,
       "VERB": 75,
-      "X": 6
+      "X": 1
     },
     "sourceFileCandidateCounts": {
       "FC-001_v2.cha": 6,
@@ -209,8 +220,9 @@
       "FC-108d_v2.cha": 3,
       "FC-109a_v2.cha": 4,
       "FC-R002a_v2.cha": 2,
+      "FC-R002b_v2.cha": 2,
       "FC-R004_v2.cha": 2,
-      "FC-R005_v2.cha": 1,
+      "FC-R005_v2.cha": 2,
       "FC-R010b_v.cha": 1,
       "FC-R011_v.cha": 3,
       "FC-R013a_v.cha": 4,

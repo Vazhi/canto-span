@@ -7,7 +7,7 @@
       "family": "JauMouDakOpportunity",
       "claimLayer": "research_unit"
     },
-    "endpoint": "Every frozen HKCanCor occurrence of exact single-token 有得, exact single-token 冇得, exact 有 immediately followed by single-token 冇得, single-token 有冇得, single-token 有冇 followed by 得, and adjacent split 有/冇 + 得 is inventoried. Utterance-initial, utterance-final, and predicate-less cases are retained.",
+    "endpoint": "Every frozen HKCanCor occurrence of exact single-token 有得, exact single-token 冇得, exact 有 immediately followed by single-token 冇得, single-token 有冇得, single-token 有冇 followed by 得, and adjacent split 有/冇 + 得 is inventoried. Single fused tokens beginning with 有得 or 冇得 are retained as lexical-boundary diagnostics. Utterance-initial, utterance-final, and predicate-less cases are retained.",
     "generatedWithPycantonese": "5.0.0",
     "corpusName": "HKCanCor",
     "corpusFilesInDistribution": 58,
@@ -87,16 +87,18 @@
       "polarYauMouDakDedupePolicy": "A sequence 有 + single-token 冇得 is represented once as polar 有冇得; the 冇得 token is not separately emitted at that location."
     },
     "counts": {
-      "candidateSpans": 92,
-      "candidateUtterances": 86,
-      "sourceFilesWithCandidates": 37,
+      "candidateSpans": 95,
+      "candidateUtterances": 89,
+      "sourceFilesWithCandidates": 38,
       "profileKinds": {
         "affirmative_yau_dak": 38,
         "affirmative_yau_dak_split_diagnostic": 1,
+        "negative_fused_lexeme_diagnostic": 3,
         "negative_mou_dak": 48,
         "polar_yau_mou_dak": 5
       },
       "tokenizationKinds": {
+        "single_fused_token_prefixed_mou_dak": 3,
         "single_token_mou_dak": 48,
         "single_token_yau_dak": 38,
         "split_jau_or_mou_plus_dak": 1,
@@ -104,39 +106,44 @@
       },
       "matchedSurfaces": {
         "冇得": 48,
+        "冇得頂": 3,
         "有冇得": 5,
         "有得": 39
       },
       "followingPredicateCandidate": {
-        "False": 13,
-        "True": 79
+        "False": 15,
+        "True": 80
       },
       "utteranceInitial": {
-        "False": 74,
+        "False": 77,
         "True": 18
       },
       "utteranceFinal": {
-        "False": 92
+        "False": 94,
+        "True": 1
       },
       "nearestRightLexicalForms": {
-        ",": 1,
-        "-": 3,
-        ".": 1,
+        "<NONE>": 1,
         "in": 1,
         "interview": 1,
         "second": 1,
         "surprise": 1,
         "交易": 1,
         "享用": 1,
+        "你": 2,
         "俾": 1,
         "做": 3,
         "停": 2,
+        "冇得": 1,
         "出糧": 1,
         "剪": 1,
         "即係": 1,
         "原地踏步": 1,
         "去": 3,
         "參加": 1,
+        "唔": 1,
+        "啊": 1,
+        "囖": 1,
         "好似": 1,
         "平": 2,
         "成日": 1,
@@ -168,17 +175,21 @@
         "順序": 1,
         "食": 4,
         "飯": 1,
-        "點": 1
+        "點": 1,
+        "𡃉": 1
       },
       "nearestRightLexicalUdPos": {
+        "<NONE>": 1,
         "ADJ": 4,
         "ADP": 1,
-        "ADV": 1,
+        "ADV": 2,
+        "AUX": 1,
         "CCONJ": 1,
         "NOUN": 3,
-        "PRON": 1,
+        "PART": 3,
+        "PRON": 3,
         "VERB": 75,
-        "X": 6
+        "X": 1
       },
       "sourceFileCandidateCounts": {
         "FC-001_v2.cha": 6,
@@ -210,8 +221,9 @@
         "FC-108d_v2.cha": 3,
         "FC-109a_v2.cha": 4,
         "FC-R002a_v2.cha": 2,
+        "FC-R002b_v2.cha": 2,
         "FC-R004_v2.cha": 2,
-        "FC-R005_v2.cha": 1,
+        "FC-R005_v2.cha": 2,
         "FC-R010b_v.cha": 1,
         "FC-R011_v.cha": 3,
         "FC-R013a_v.cha": 4,
@@ -448,7 +460,7 @@
       "utteranceInitial": false,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 5,
-      "followingLexicalTokenCount": 4,
+      "followingLexicalTokenCount": 3,
       "immediateLeftToken": {
         "word": "先",
         "pos": "d",
@@ -617,7 +629,7 @@
       "utteranceInitial": true,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 0,
-      "followingLexicalTokenCount": 3,
+      "followingLexicalTokenCount": 2,
       "immediateLeftToken": null,
       "immediateRightToken": {
         "word": "去",
@@ -945,8 +957,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 9,
-      "followingLexicalTokenCount": 3,
+      "precedingLexicalTokenCount": 8,
+      "followingLexicalTokenCount": 2,
       "immediateLeftToken": {
         "word": "先至",
         "pos": "d",
@@ -1315,7 +1327,7 @@
       "utteranceInitial": false,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 5,
-      "followingLexicalTokenCount": 4,
+      "followingLexicalTokenCount": 3,
       "immediateLeftToken": {
         "word": "就",
         "pos": "d",
@@ -1633,8 +1645,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 18,
-      "followingLexicalTokenCount": 3,
+      "precedingLexicalTokenCount": 15,
+      "followingLexicalTokenCount": 2,
       "immediateLeftToken": {
         "word": "先",
         "pos": "d",
@@ -1898,7 +1910,7 @@
       "utteranceInitial": false,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 2,
-      "followingLexicalTokenCount": 10,
+      "followingLexicalTokenCount": 8,
       "immediateLeftToken": {
         "word": "度",
         "pos": "m",
@@ -2551,8 +2563,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 16,
-      "followingLexicalTokenCount": 20,
+      "precedingLexicalTokenCount": 14,
+      "followingLexicalTokenCount": 17,
       "immediateLeftToken": {
         "word": "你",
         "pos": "r",
@@ -2573,12 +2585,12 @@
       },
       "nearestLeftLexicalIndex": 15,
       "nearestRightLexicalToken": {
-        "word": ",",
-        "pos": "",
-        "jyutping": "",
-        "udPos": "X"
+        "word": "你",
+        "pos": "r",
+        "jyutping": "nei5",
+        "udPos": "PRON"
       },
-      "nearestRightLexicalIndex": 17,
+      "nearestRightLexicalIndex": 18,
       "followingPredicateCandidate": false
     },
     {
@@ -3150,8 +3162,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 13,
-      "followingLexicalTokenCount": 34,
+      "precedingLexicalTokenCount": 10,
+      "followingLexicalTokenCount": 27,
       "immediateLeftToken": {
         "word": "佢",
         "pos": "r",
@@ -3749,8 +3761,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 39,
-      "followingLexicalTokenCount": 8,
+      "precedingLexicalTokenCount": 32,
+      "followingLexicalTokenCount": 5,
       "immediateLeftToken": {
         "word": "又",
         "pos": "d",
@@ -4063,8 +4075,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 8,
-      "followingLexicalTokenCount": 9,
+      "precedingLexicalTokenCount": 7,
+      "followingLexicalTokenCount": 8,
       "immediateLeftToken": {
         "word": "你",
         "pos": "r",
@@ -4293,7 +4305,7 @@
       "utteranceInitial": true,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 0,
-      "followingLexicalTokenCount": 4,
+      "followingLexicalTokenCount": 3,
       "immediateLeftToken": null,
       "immediateRightToken": {
         "word": "享用",
@@ -4601,8 +4613,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 13,
-      "followingLexicalTokenCount": 6,
+      "precedingLexicalTokenCount": 11,
+      "followingLexicalTokenCount": 4,
       "immediateLeftToken": {
         "word": ",",
         "pos": "",
@@ -4616,20 +4628,20 @@
         "udPos": "X"
       },
       "nearestLeftLexicalToken": {
-        "word": ",",
-        "pos": "",
-        "jyutping": "",
-        "udPos": "X"
+        "word": "啊",
+        "pos": "y",
+        "jyutping": "aa3",
+        "udPos": "PART"
       },
-      "nearestLeftLexicalIndex": 12,
+      "nearestLeftLexicalIndex": 11,
       "nearestRightLexicalToken": {
-        "word": "-",
-        "pos": "",
-        "jyutping": "",
-        "udPos": "X"
+        "word": "冇得",
+        "pos": "vu",
+        "jyutping": "mou5dak1",
+        "udPos": "AUX"
       },
-      "nearestRightLexicalIndex": 14,
-      "followingPredicateCandidate": false
+      "nearestRightLexicalIndex": 15,
+      "followingPredicateCandidate": true
     },
     {
       "candidateId": "jmd-94b31e36615ce81607f1",
@@ -4910,8 +4922,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 15,
-      "followingLexicalTokenCount": 4,
+      "precedingLexicalTokenCount": 12,
+      "followingLexicalTokenCount": 3,
       "immediateLeftToken": {
         "word": "-",
         "pos": "",
@@ -4925,12 +4937,12 @@
         "udPos": "VERB"
       },
       "nearestLeftLexicalToken": {
-        "word": "-",
-        "pos": "",
-        "jyutping": "",
-        "udPos": "X"
+        "word": "冇得",
+        "pos": "vu",
+        "jyutping": "mou5dak1",
+        "udPos": "AUX"
       },
-      "nearestLeftLexicalIndex": 14,
+      "nearestLeftLexicalIndex": 13,
       "nearestRightLexicalToken": {
         "word": "要求",
         "pos": "v",
@@ -5184,8 +5196,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 3,
-      "followingLexicalTokenCount": 4,
+      "precedingLexicalTokenCount": 2,
+      "followingLexicalTokenCount": 3,
       "immediateLeftToken": {
         "word": ",",
         "pos": "",
@@ -5199,12 +5211,12 @@
         "udPos": "VERB"
       },
       "nearestLeftLexicalToken": {
-        "word": ",",
-        "pos": "",
-        "jyutping": "",
-        "udPos": "X"
+        "word": "喇",
+        "pos": "y1",
+        "jyutping": "laa1",
+        "udPos": "PART"
       },
-      "nearestLeftLexicalIndex": 2,
+      "nearestLeftLexicalIndex": 1,
       "nearestRightLexicalToken": {
         "word": "剪",
         "pos": "v",
@@ -5688,8 +5700,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 55,
-      "followingLexicalTokenCount": 5,
+      "precedingLexicalTokenCount": 47,
+      "followingLexicalTokenCount": 3,
       "immediateLeftToken": {
         "word": "快",
         "pos": "a",
@@ -5858,7 +5870,7 @@
       "utteranceInitial": true,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 0,
-      "followingLexicalTokenCount": 3,
+      "followingLexicalTokenCount": 2,
       "immediateLeftToken": null,
       "immediateRightToken": {
         "word": "計",
@@ -6032,7 +6044,7 @@
       "utteranceInitial": true,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 0,
-      "followingLexicalTokenCount": 5,
+      "followingLexicalTokenCount": 4,
       "immediateLeftToken": null,
       "immediateRightToken": {
         "word": "計",
@@ -6301,7 +6313,7 @@
       "utteranceInitial": true,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 0,
-      "followingLexicalTokenCount": 2,
+      "followingLexicalTokenCount": 1,
       "immediateLeftToken": null,
       "immediateRightToken": {
         "word": "計",
@@ -6694,8 +6706,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 7,
-      "followingLexicalTokenCount": 8,
+      "precedingLexicalTokenCount": 6,
+      "followingLexicalTokenCount": 6,
       "immediateLeftToken": {
         "word": "即係",
         "pos": "c",
@@ -6921,7 +6933,7 @@
       "utteranceInitial": false,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 2,
-      "followingLexicalTokenCount": 4,
+      "followingLexicalTokenCount": 3,
       "immediateLeftToken": {
         "word": "最近",
         "pos": "t",
@@ -7290,7 +7302,7 @@
       "utteranceInitial": false,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 9,
-      "followingLexicalTokenCount": 4,
+      "followingLexicalTokenCount": 3,
       "immediateLeftToken": {
         "word": "再",
         "pos": "d",
@@ -7968,8 +7980,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 28,
-      "followingLexicalTokenCount": 5,
+      "precedingLexicalTokenCount": 25,
+      "followingLexicalTokenCount": 4,
       "immediateLeftToken": {
         "word": "就",
         "pos": "d",
@@ -8408,7 +8420,7 @@
       "utteranceInitial": false,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 4,
-      "followingLexicalTokenCount": 7,
+      "followingLexicalTokenCount": 6,
       "immediateLeftToken": {
         "word": "應該",
         "pos": "vu",
@@ -8791,8 +8803,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 25,
-      "followingLexicalTokenCount": 4,
+      "precedingLexicalTokenCount": 21,
+      "followingLexicalTokenCount": 3,
       "immediateLeftToken": {
         "word": "即係",
         "pos": "c",
@@ -9041,7 +9053,7 @@
       "utteranceInitial": true,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 0,
-      "followingLexicalTokenCount": 2,
+      "followingLexicalTokenCount": 1,
       "immediateLeftToken": null,
       "immediateRightToken": {
         "word": "走",
@@ -9220,7 +9232,7 @@
       "utteranceInitial": true,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 0,
-      "followingLexicalTokenCount": 4,
+      "followingLexicalTokenCount": 3,
       "immediateLeftToken": null,
       "immediateRightToken": {
         "word": "減",
@@ -9399,7 +9411,7 @@
       "utteranceInitial": false,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 2,
-      "followingLexicalTokenCount": 2,
+      "followingLexicalTokenCount": 1,
       "immediateLeftToken": {
         "word": "減",
         "pos": "v",
@@ -9648,7 +9660,7 @@
       "utteranceInitial": false,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 3,
-      "followingLexicalTokenCount": 5,
+      "followingLexicalTokenCount": 3,
       "immediateLeftToken": {
         "word": "都",
         "pos": "d",
@@ -9951,8 +9963,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 17,
-      "followingLexicalTokenCount": 6,
+      "precedingLexicalTokenCount": 16,
+      "followingLexicalTokenCount": 5,
       "immediateLeftToken": {
         "word": "都",
         "pos": "d",
@@ -10111,7 +10123,7 @@
       "utteranceInitial": true,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 0,
-      "followingLexicalTokenCount": 2,
+      "followingLexicalTokenCount": 1,
       "immediateLeftToken": null,
       "immediateRightToken": {
         "word": "攞",
@@ -10270,7 +10282,7 @@
       "utteranceInitial": true,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 0,
-      "followingLexicalTokenCount": 2,
+      "followingLexicalTokenCount": 1,
       "immediateLeftToken": null,
       "immediateRightToken": {
         "word": "攞",
@@ -10508,8 +10520,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 2,
-      "followingLexicalTokenCount": 10,
+      "precedingLexicalTokenCount": 1,
+      "followingLexicalTokenCount": 8,
       "immediateLeftToken": {
         "word": ",",
         "pos": "",
@@ -10523,12 +10535,12 @@
         "udPos": "VERB"
       },
       "nearestLeftLexicalToken": {
-        "word": ",",
-        "pos": "",
-        "jyutping": "",
-        "udPos": "X"
+        "word": "冇",
+        "pos": "v1",
+        "jyutping": "mou5",
+        "udPos": "VERB"
       },
-      "nearestLeftLexicalIndex": 1,
+      "nearestLeftLexicalIndex": 0,
       "nearestRightLexicalToken": {
         "word": "攞",
         "pos": "v",
@@ -10757,8 +10769,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 8,
-      "followingLexicalTokenCount": 4,
+      "precedingLexicalTokenCount": 6,
+      "followingLexicalTokenCount": 3,
       "immediateLeftToken": {
         "word": "諗",
         "pos": "v",
@@ -11037,7 +11049,7 @@
       "utteranceInitial": true,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 0,
-      "followingLexicalTokenCount": 2,
+      "followingLexicalTokenCount": 1,
       "immediateLeftToken": null,
       "immediateRightToken": {
         "word": "攞",
@@ -11320,8 +11332,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 9,
-      "followingLexicalTokenCount": 4,
+      "precedingLexicalTokenCount": 8,
+      "followingLexicalTokenCount": 3,
       "immediateLeftToken": {
         "word": "又",
         "pos": "d",
@@ -11530,7 +11542,7 @@
       "utteranceInitial": false,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 2,
-      "followingLexicalTokenCount": 5,
+      "followingLexicalTokenCount": 4,
       "immediateLeftToken": {
         "word": "Poly",
         "pos": "xjnt",
@@ -11781,7 +11793,7 @@
       "utteranceInitial": false,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 9,
-      "followingLexicalTokenCount": 2,
+      "followingLexicalTokenCount": 1,
       "immediateLeftToken": {
         "word": "學院",
         "pos": "n",
@@ -11984,8 +11996,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 6,
-      "followingLexicalTokenCount": 2,
+      "precedingLexicalTokenCount": 5,
+      "followingLexicalTokenCount": 1,
       "immediateLeftToken": {
         "word": "先",
         "pos": "d",
@@ -12428,7 +12440,7 @@
       "utteranceInitial": false,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 3,
-      "followingLexicalTokenCount": 22,
+      "followingLexicalTokenCount": 17,
       "immediateLeftToken": {
         "word": "我",
         "pos": "r",
@@ -12855,8 +12867,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 23,
-      "followingLexicalTokenCount": 2,
+      "precedingLexicalTokenCount": 19,
+      "followingLexicalTokenCount": 1,
       "immediateLeftToken": {
         "word": ",",
         "pos": "",
@@ -12870,12 +12882,12 @@
         "udPos": "VERB"
       },
       "nearestLeftLexicalToken": {
-        "word": ",",
-        "pos": "",
-        "jyutping": "",
-        "udPos": "X"
+        "word": "啊",
+        "pos": "y",
+        "jyutping": "aa3",
+        "udPos": "PART"
       },
-      "nearestLeftLexicalIndex": 22,
+      "nearestLeftLexicalIndex": 21,
       "nearestRightLexicalToken": {
         "word": "食",
         "pos": "v",
@@ -13159,8 +13171,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 10,
-      "followingLexicalTokenCount": 3,
+      "precedingLexicalTokenCount": 9,
+      "followingLexicalTokenCount": 2,
       "immediateLeftToken": {
         "word": "先",
         "pos": "d",
@@ -13398,8 +13410,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 5,
-      "followingLexicalTokenCount": 2,
+      "precedingLexicalTokenCount": 4,
+      "followingLexicalTokenCount": 1,
       "immediateLeftToken": {
         "word": ",",
         "pos": "",
@@ -13413,12 +13425,12 @@
         "udPos": "VERB"
       },
       "nearestLeftLexicalToken": {
-        "word": ",",
-        "pos": "",
-        "jyutping": "",
-        "udPos": "X"
+        "word": "吖",
+        "pos": "y",
+        "jyutping": "aa1",
+        "udPos": "PART"
       },
-      "nearestLeftLexicalIndex": 4,
+      "nearestLeftLexicalIndex": 3,
       "nearestRightLexicalToken": {
         "word": "爆冷",
         "pos": "v",
@@ -13657,8 +13669,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 7,
-      "followingLexicalTokenCount": 3,
+      "precedingLexicalTokenCount": 6,
+      "followingLexicalTokenCount": 2,
       "immediateLeftToken": {
         "word": "可能",
         "pos": "vu",
@@ -13872,7 +13884,7 @@
       "utteranceInitial": true,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 0,
-      "followingLexicalTokenCount": 3,
+      "followingLexicalTokenCount": 2,
       "immediateLeftToken": null,
       "immediateRightToken": {
         "word": "特價",
@@ -14106,7 +14118,7 @@
       "utteranceInitial": false,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 2,
-      "followingLexicalTokenCount": 3,
+      "followingLexicalTokenCount": 2,
       "immediateLeftToken": {
         "word": "𠻺",
         "pos": "d",
@@ -14320,7 +14332,7 @@
       "utteranceInitial": false,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 3,
-      "followingLexicalTokenCount": 3,
+      "followingLexicalTokenCount": 2,
       "immediateLeftToken": {
         "word": "集",
         "pos": "n",
@@ -14534,7 +14546,7 @@
       "utteranceInitial": true,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 0,
-      "followingLexicalTokenCount": 7,
+      "followingLexicalTokenCount": 5,
       "immediateLeftToken": null,
       "immediateRightToken": {
         "word": "講",
@@ -14767,8 +14779,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 6,
-      "followingLexicalTokenCount": 5,
+      "precedingLexicalTokenCount": 5,
+      "followingLexicalTokenCount": 3,
       "immediateLeftToken": {
         "word": "難得",
         "pos": "a",
@@ -15012,7 +15024,7 @@
       "utteranceInitial": false,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 3,
-      "followingLexicalTokenCount": 6,
+      "followingLexicalTokenCount": 4,
       "immediateLeftToken": {
         "word": "都",
         "pos": "d",
@@ -15286,7 +15298,7 @@
       "utteranceInitial": false,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 4,
-      "followingLexicalTokenCount": 3,
+      "followingLexicalTokenCount": 2,
       "immediateLeftToken": {
         "word": "講",
         "pos": "v",
@@ -15514,8 +15526,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 8,
-      "followingLexicalTokenCount": 2,
+      "precedingLexicalTokenCount": 7,
+      "followingLexicalTokenCount": 1,
       "immediateLeftToken": {
         "word": "都",
         "pos": "d",
@@ -15791,7 +15803,7 @@
       "utteranceInitial": false,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 2,
-      "followingLexicalTokenCount": 7,
+      "followingLexicalTokenCount": 5,
       "immediateLeftToken": {
         "word": "蚊",
         "pos": "q",
@@ -16195,7 +16207,7 @@
       "utteranceInitial": false,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 4,
-      "followingLexicalTokenCount": 8,
+      "followingLexicalTokenCount": 6,
       "immediateLeftToken": {
         "word": "先",
         "pos": "d",
@@ -16489,7 +16501,7 @@
       "utteranceInitial": false,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 5,
-      "followingLexicalTokenCount": 5,
+      "followingLexicalTokenCount": 4,
       "immediateLeftToken": {
         "word": "就",
         "pos": "d",
@@ -16808,7 +16820,7 @@
       "utteranceInitial": false,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 2,
-      "followingLexicalTokenCount": 19,
+      "followingLexicalTokenCount": 17,
       "immediateLeftToken": {
         "word": "呢",
         "pos": "y1",
@@ -17065,9 +17077,9 @@
         "AUX"
       ],
       "utteranceInitial": false,
-      "utteranceFinal": false,
-      "precedingLexicalTokenCount": 11,
-      "followingLexicalTokenCount": 1,
+      "utteranceFinal": true,
+      "precedingLexicalTokenCount": 9,
+      "followingLexicalTokenCount": 0,
       "immediateLeftToken": {
         "word": "又",
         "pos": "d",
@@ -17087,13 +17099,8 @@
         "udPos": "ADV"
       },
       "nearestLeftLexicalIndex": 10,
-      "nearestRightLexicalToken": {
-        "word": ".",
-        "pos": "",
-        "jyutping": "",
-        "udPos": "X"
-      },
-      "nearestRightLexicalIndex": 12,
+      "nearestRightLexicalToken": null,
+      "nearestRightLexicalIndex": null,
       "followingPredicateCandidate": false
     },
     {
@@ -17251,7 +17258,7 @@
       "utteranceInitial": false,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 1,
-      "followingLexicalTokenCount": 2,
+      "followingLexicalTokenCount": 1,
       "immediateLeftToken": {
         "word": "重",
         "pos": "d",
@@ -17450,7 +17457,7 @@
       "utteranceInitial": true,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 0,
-      "followingLexicalTokenCount": 3,
+      "followingLexicalTokenCount": 2,
       "immediateLeftToken": null,
       "immediateRightToken": {
         "word": "睇",
@@ -17684,7 +17691,7 @@
       "utteranceInitial": false,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 1,
-      "followingLexicalTokenCount": 10,
+      "followingLexicalTokenCount": 8,
       "immediateLeftToken": {
         "word": "因為",
         "pos": "c",
@@ -17958,7 +17965,7 @@
       "utteranceInitial": true,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 0,
-      "followingLexicalTokenCount": 5,
+      "followingLexicalTokenCount": 4,
       "immediateLeftToken": null,
       "immediateRightToken": {
         "word": "睇",
@@ -18278,8 +18285,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 13,
-      "followingLexicalTokenCount": 9,
+      "precedingLexicalTokenCount": 11,
+      "followingLexicalTokenCount": 7,
       "immediateLeftToken": {
         "word": "知",
         "pos": "v",
@@ -18542,8 +18549,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 7,
-      "followingLexicalTokenCount": 3,
+      "precedingLexicalTokenCount": 6,
+      "followingLexicalTokenCount": 2,
       "immediateLeftToken": {
         "word": "佢",
         "pos": "r",
@@ -18987,7 +18994,7 @@
       "utteranceInitial": false,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 4,
-      "followingLexicalTokenCount": 5,
+      "followingLexicalTokenCount": 3,
       "immediateLeftToken": {
         "word": "而家",
         "pos": "t",
@@ -19008,12 +19015,12 @@
       },
       "nearestLeftLexicalIndex": 3,
       "nearestRightLexicalToken": {
-        "word": "-",
-        "pos": "",
-        "jyutping": "",
-        "udPos": "X"
+        "word": "唔",
+        "pos": "d",
+        "jyutping": "m4",
+        "udPos": "ADV"
       },
-      "nearestRightLexicalIndex": 5,
+      "nearestRightLexicalIndex": 6,
       "followingPredicateCandidate": false
     },
     {
@@ -19220,8 +19227,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 3,
-      "followingLexicalTokenCount": 3,
+      "precedingLexicalTokenCount": 2,
+      "followingLexicalTokenCount": 2,
       "immediateLeftToken": {
         "word": ",",
         "pos": "",
@@ -19235,12 +19242,12 @@
         "udPos": "VERB"
       },
       "nearestLeftLexicalToken": {
-        "word": ",",
-        "pos": "",
-        "jyutping": "",
-        "udPos": "X"
+        "word": "喇",
+        "pos": "y",
+        "jyutping": "laa1",
+        "udPos": "PART"
       },
-      "nearestLeftLexicalIndex": 2,
+      "nearestLeftLexicalIndex": 1,
       "nearestRightLexicalToken": {
         "word": "聚",
         "pos": "v",
@@ -19704,8 +19711,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 40,
-      "followingLexicalTokenCount": 5,
+      "precedingLexicalTokenCount": 33,
+      "followingLexicalTokenCount": 4,
       "immediateLeftToken": {
         "word": "係",
         "pos": "v",
@@ -20213,8 +20220,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 15,
-      "followingLexicalTokenCount": 34,
+      "precedingLexicalTokenCount": 12,
+      "followingLexicalTokenCount": 29,
       "immediateLeftToken": {
         "word": "係",
         "pos": "v",
@@ -20423,7 +20430,7 @@
       "utteranceInitial": false,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 1,
-      "followingLexicalTokenCount": 6,
+      "followingLexicalTokenCount": 5,
       "immediateLeftToken": {
         "word": "即係",
         "pos": "c",
@@ -20757,7 +20764,7 @@
       "utteranceInitial": false,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 3,
-      "followingLexicalTokenCount": 22,
+      "followingLexicalTokenCount": 18,
       "immediateLeftToken": {
         "word": "到",
         "pos": "u",
@@ -21095,8 +21102,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 10,
-      "followingLexicalTokenCount": 15,
+      "precedingLexicalTokenCount": 9,
+      "followingLexicalTokenCount": 12,
       "immediateLeftToken": {
         "word": "住",
         "pos": "u",
@@ -21395,7 +21402,7 @@
       "utteranceInitial": false,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 6,
-      "followingLexicalTokenCount": 10,
+      "followingLexicalTokenCount": 8,
       "immediateLeftToken": {
         "word": "到",
         "pos": "u",
@@ -21933,8 +21940,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 23,
-      "followingLexicalTokenCount": 34,
+      "precedingLexicalTokenCount": 20,
+      "followingLexicalTokenCount": 32,
       "immediateLeftToken": {
         "word": "就算",
         "pos": "c",
@@ -22183,7 +22190,7 @@
       "utteranceInitial": false,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 8,
-      "followingLexicalTokenCount": 3,
+      "followingLexicalTokenCount": 2,
       "immediateLeftToken": {
         "word": "噉樣",
         "pos": "c",
@@ -22622,7 +22629,7 @@
       "utteranceInitial": false,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 1,
-      "followingLexicalTokenCount": 5,
+      "followingLexicalTokenCount": 4,
       "immediateLeftToken": {
         "word": "噉",
         "pos": "c",
@@ -22850,8 +22857,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 5,
-      "followingLexicalTokenCount": 4,
+      "precedingLexicalTokenCount": 4,
+      "followingLexicalTokenCount": 3,
       "immediateLeftToken": {
         "word": "拇指",
         "pos": "n",
@@ -23055,7 +23062,7 @@
       "utteranceInitial": true,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 0,
-      "followingLexicalTokenCount": 3,
+      "followingLexicalTokenCount": 2,
       "immediateLeftToken": null,
       "immediateRightToken": {
         "word": "講",
@@ -23073,6 +23080,519 @@
       },
       "nearestRightLexicalIndex": 1,
       "followingPredicateCandidate": true
+    },
+    {
+      "candidateId": "jmd-23d75ff14dd681fdcc80",
+      "queryId": "HKCANCOR-JAU-MOU-DAK-R1",
+      "candidateIdNamespace": "HKCANCOR-JAU-MOU-DAK-R1",
+      "sourceFile": "FC-R002b_v2.cha",
+      "sourceFileSha256": "b28d73a3ee59df00086c327503f3fb5153b39c62120bf7ce3bf6e4074ea3665a",
+      "fileIndexZeroBased": 43,
+      "turnIndexZeroBased": 25,
+      "tokenIndexZeroBased": 9,
+      "recordingDate": "1998-02-20",
+      "participant": "XXA",
+      "participantMetadata": {
+        "code": "XXA",
+        "name": "A",
+        "role": "Adult",
+        "language": "yue , eng",
+        "l1": null,
+        "sex": "male",
+        "age": null
+      },
+      "text": "噉𠻺我覺得喺創意上真係好冇得頂𡃉.",
+      "tokens": [
+        {
+          "word": "噉",
+          "pos": "c",
+          "jyutping": "gam2"
+        },
+        {
+          "word": "𠻺",
+          "pos": "d",
+          "jyutping": "aa6"
+        },
+        {
+          "word": "我",
+          "pos": "r",
+          "jyutping": "ngo5"
+        },
+        {
+          "word": "覺得",
+          "pos": "v",
+          "jyutping": "gok3dak1"
+        },
+        {
+          "word": "喺",
+          "pos": "p",
+          "jyutping": "hai2"
+        },
+        {
+          "word": "創意",
+          "pos": "n",
+          "jyutping": "cong3ji3"
+        },
+        {
+          "word": "上",
+          "pos": "f",
+          "jyutping": "soeng6"
+        },
+        {
+          "word": "真係",
+          "pos": "d",
+          "jyutping": "zan1hai6"
+        },
+        {
+          "word": "好",
+          "pos": "d",
+          "jyutping": "hou2"
+        },
+        {
+          "word": "冇得頂",
+          "pos": "a",
+          "jyutping": "mou5dak1ding2"
+        },
+        {
+          "word": "𡃉",
+          "pos": "y",
+          "jyutping": "gaa3"
+        },
+        {
+          "word": ".",
+          "pos": "",
+          "jyutping": null
+        }
+      ],
+      "matchedSurfaceSpan": "冇得頂",
+      "matchedTokens": [
+        {
+          "word": "冇得頂",
+          "pos": "a",
+          "jyutping": "mou5dak1ding2"
+        }
+      ],
+      "localContext": {
+        "previous": {
+          "turnIndexZeroBased": 24,
+          "participant": "XXA",
+          "text": "亦都大家一齊覺得好興奮𡃉.",
+          "tokens": [
+            {
+              "word": "亦都",
+              "pos": "d",
+              "jyutping": "jik6dou1"
+            },
+            {
+              "word": "大家",
+              "pos": "r",
+              "jyutping": "daai6gaa1"
+            },
+            {
+              "word": "一齊",
+              "pos": "d",
+              "jyutping": "jat1cai4"
+            },
+            {
+              "word": "覺得",
+              "pos": "v",
+              "jyutping": "gok3dak1"
+            },
+            {
+              "word": "好",
+              "pos": "d",
+              "jyutping": "hou2"
+            },
+            {
+              "word": "興奮",
+              "pos": "a",
+              "jyutping": "hing1fan5"
+            },
+            {
+              "word": "𡃉",
+              "pos": "y",
+              "jyutping": "gaa3"
+            },
+            {
+              "word": ".",
+              "pos": "",
+              "jyutping": null
+            }
+          ]
+        },
+        "next": {
+          "turnIndexZeroBased": 26,
+          "participant": "XXB",
+          "text": "係.",
+          "tokens": [
+            {
+              "word": "係",
+              "pos": "v",
+              "jyutping": "hai6"
+            },
+            {
+              "word": ".",
+              "pos": "",
+              "jyutping": null
+            }
+          ]
+        }
+      },
+      "annotationStatus": "REQUIRES_EXPERT_CONTEXT_REVIEW",
+      "tokenContext": {
+        "startTokenIndexZeroBased": 5,
+        "endTokenIndexExclusive": 12,
+        "tokens": [
+          {
+            "word": "創意",
+            "pos": "n",
+            "jyutping": "cong3ji3"
+          },
+          {
+            "word": "上",
+            "pos": "f",
+            "jyutping": "soeng6"
+          },
+          {
+            "word": "真係",
+            "pos": "d",
+            "jyutping": "zan1hai6"
+          },
+          {
+            "word": "好",
+            "pos": "d",
+            "jyutping": "hou2"
+          },
+          {
+            "word": "冇得頂",
+            "pos": "a",
+            "jyutping": "mou5dak1ding2"
+          },
+          {
+            "word": "𡃉",
+            "pos": "y",
+            "jyutping": "gaa3"
+          },
+          {
+            "word": ".",
+            "pos": "",
+            "jyutping": null
+          }
+        ]
+      },
+      "duplicateGroupInputs": {
+        "profileKind": "negative_fused_lexeme_diagnostic",
+        "tokenizationKind": "single_fused_token_prefixed_mou_dak"
+      },
+      "profileKind": "negative_fused_lexeme_diagnostic",
+      "tokenizationKind": "single_fused_token_prefixed_mou_dak",
+      "matchedTokenCount": 1,
+      "matchedHkcancorTags": [
+        "a"
+      ],
+      "matchedUdTags": [
+        "ADJ"
+      ],
+      "utteranceInitial": false,
+      "utteranceFinal": false,
+      "precedingLexicalTokenCount": 9,
+      "followingLexicalTokenCount": 1,
+      "immediateLeftToken": {
+        "word": "好",
+        "pos": "d",
+        "jyutping": "hou2",
+        "udPos": "ADV"
+      },
+      "immediateRightToken": {
+        "word": "𡃉",
+        "pos": "y",
+        "jyutping": "gaa3",
+        "udPos": "PART"
+      },
+      "nearestLeftLexicalToken": {
+        "word": "好",
+        "pos": "d",
+        "jyutping": "hou2",
+        "udPos": "ADV"
+      },
+      "nearestLeftLexicalIndex": 8,
+      "nearestRightLexicalToken": {
+        "word": "𡃉",
+        "pos": "y",
+        "jyutping": "gaa3",
+        "udPos": "PART"
+      },
+      "nearestRightLexicalIndex": 10,
+      "followingPredicateCandidate": false
+    },
+    {
+      "candidateId": "jmd-5cc50147c4eedd28c543",
+      "queryId": "HKCANCOR-JAU-MOU-DAK-R1",
+      "candidateIdNamespace": "HKCANCOR-JAU-MOU-DAK-R1",
+      "sourceFile": "FC-R002b_v2.cha",
+      "sourceFileSha256": "b28d73a3ee59df00086c327503f3fb5153b39c62120bf7ce3bf6e4074ea3665a",
+      "fileIndexZeroBased": 43,
+      "turnIndexZeroBased": 117,
+      "tokenIndexZeroBased": 18,
+      "recordingDate": "1998-02-20",
+      "participant": "XXA",
+      "participantMetadata": {
+        "code": "XXA",
+        "name": "A",
+        "role": "Adult",
+        "language": "yue , eng",
+        "l1": null,
+        "sex": "male",
+        "age": null
+      },
+      "text": "同埋佢寫嗰樣嘢幾有趣就係話佢揀艷舞哩一個topic真係冇得頂囖.",
+      "tokens": [
+        {
+          "word": "同埋",
+          "pos": "c",
+          "jyutping": "tung4maai4"
+        },
+        {
+          "word": "佢",
+          "pos": "r",
+          "jyutping": "keoi5"
+        },
+        {
+          "word": "寫",
+          "pos": "v",
+          "jyutping": "se2"
+        },
+        {
+          "word": "嗰樣",
+          "pos": "r",
+          "jyutping": "go2joeng6"
+        },
+        {
+          "word": "嘢",
+          "pos": "n",
+          "jyutping": "je5"
+        },
+        {
+          "word": "幾",
+          "pos": "d",
+          "jyutping": "gei2"
+        },
+        {
+          "word": "有趣",
+          "pos": "a",
+          "jyutping": "jau5ceoi3"
+        },
+        {
+          "word": "就",
+          "pos": "d",
+          "jyutping": "zau6"
+        },
+        {
+          "word": "係",
+          "pos": "v",
+          "jyutping": "hai6"
+        },
+        {
+          "word": "話",
+          "pos": "v",
+          "jyutping": "waa6"
+        },
+        {
+          "word": "佢",
+          "pos": "r",
+          "jyutping": "keoi5"
+        },
+        {
+          "word": "揀",
+          "pos": "v",
+          "jyutping": "gaan2"
+        },
+        {
+          "word": "艷舞",
+          "pos": "n",
+          "jyutping": "jim6mou5"
+        },
+        {
+          "word": "哩",
+          "pos": "r",
+          "jyutping": "ni1"
+        },
+        {
+          "word": "一",
+          "pos": "m",
+          "jyutping": "jat1"
+        },
+        {
+          "word": "個",
+          "pos": "q",
+          "jyutping": "go3"
+        },
+        {
+          "word": "topic",
+          "pos": "xn",
+          "jyutping": null
+        },
+        {
+          "word": "真係",
+          "pos": "d",
+          "jyutping": "zan1hai6"
+        },
+        {
+          "word": "冇得頂",
+          "pos": "a",
+          "jyutping": "mou5dak1ding2"
+        },
+        {
+          "word": "囖",
+          "pos": "y",
+          "jyutping": "lo1"
+        },
+        {
+          "word": ".",
+          "pos": "",
+          "jyutping": null
+        }
+      ],
+      "matchedSurfaceSpan": "冇得頂",
+      "matchedTokens": [
+        {
+          "word": "冇得頂",
+          "pos": "a",
+          "jyutping": "mou5dak1ding2"
+        }
+      ],
+      "localContext": {
+        "previous": {
+          "turnIndexZeroBased": 116,
+          "participant": "XXA",
+          "text": "嗯.",
+          "tokens": [
+            {
+              "word": "嗯",
+              "pos": "e",
+              "jyutping": "m6"
+            },
+            {
+              "word": ".",
+              "pos": "",
+              "jyutping": null
+            }
+          ]
+        },
+        "next": {
+          "turnIndexZeroBased": 118,
+          "participant": "XXA",
+          "text": "即係男艷舞.",
+          "tokens": [
+            {
+              "word": "即係",
+              "pos": "c",
+              "jyutping": "zik1hai6"
+            },
+            {
+              "word": "男",
+              "pos": "b",
+              "jyutping": "naam4"
+            },
+            {
+              "word": "艷舞",
+              "pos": "n",
+              "jyutping": "jim6mou5"
+            },
+            {
+              "word": ".",
+              "pos": "",
+              "jyutping": null
+            }
+          ]
+        }
+      },
+      "annotationStatus": "REQUIRES_EXPERT_CONTEXT_REVIEW",
+      "tokenContext": {
+        "startTokenIndexZeroBased": 14,
+        "endTokenIndexExclusive": 21,
+        "tokens": [
+          {
+            "word": "一",
+            "pos": "m",
+            "jyutping": "jat1"
+          },
+          {
+            "word": "個",
+            "pos": "q",
+            "jyutping": "go3"
+          },
+          {
+            "word": "topic",
+            "pos": "xn",
+            "jyutping": null
+          },
+          {
+            "word": "真係",
+            "pos": "d",
+            "jyutping": "zan1hai6"
+          },
+          {
+            "word": "冇得頂",
+            "pos": "a",
+            "jyutping": "mou5dak1ding2"
+          },
+          {
+            "word": "囖",
+            "pos": "y",
+            "jyutping": "lo1"
+          },
+          {
+            "word": ".",
+            "pos": "",
+            "jyutping": null
+          }
+        ]
+      },
+      "duplicateGroupInputs": {
+        "profileKind": "negative_fused_lexeme_diagnostic",
+        "tokenizationKind": "single_fused_token_prefixed_mou_dak"
+      },
+      "profileKind": "negative_fused_lexeme_diagnostic",
+      "tokenizationKind": "single_fused_token_prefixed_mou_dak",
+      "matchedTokenCount": 1,
+      "matchedHkcancorTags": [
+        "a"
+      ],
+      "matchedUdTags": [
+        "ADJ"
+      ],
+      "utteranceInitial": false,
+      "utteranceFinal": false,
+      "precedingLexicalTokenCount": 18,
+      "followingLexicalTokenCount": 1,
+      "immediateLeftToken": {
+        "word": "真係",
+        "pos": "d",
+        "jyutping": "zan1hai6",
+        "udPos": "ADV"
+      },
+      "immediateRightToken": {
+        "word": "囖",
+        "pos": "y",
+        "jyutping": "lo1",
+        "udPos": "PART"
+      },
+      "nearestLeftLexicalToken": {
+        "word": "真係",
+        "pos": "d",
+        "jyutping": "zan1hai6",
+        "udPos": "ADV"
+      },
+      "nearestLeftLexicalIndex": 17,
+      "nearestRightLexicalToken": {
+        "word": "囖",
+        "pos": "y",
+        "jyutping": "lo1",
+        "udPos": "PART"
+      },
+      "nearestRightLexicalIndex": 19,
+      "followingPredicateCandidate": false
     },
     {
       "candidateId": "jmd-aa3955187193337207f1",
@@ -23299,7 +23819,7 @@
       "utteranceInitial": false,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 1,
-      "followingLexicalTokenCount": 2,
+      "followingLexicalTokenCount": 1,
       "immediateLeftToken": {
         "word": "重",
         "pos": "d",
@@ -23584,8 +24104,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 5,
-      "followingLexicalTokenCount": 3,
+      "precedingLexicalTokenCount": 4,
+      "followingLexicalTokenCount": 2,
       "immediateLeftToken": {
         "word": "喂",
         "pos": "e",
@@ -23769,7 +24289,7 @@
       "utteranceInitial": false,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 1,
-      "followingLexicalTokenCount": 3,
+      "followingLexicalTokenCount": 2,
       "immediateLeftToken": {
         "word": "實",
         "pos": "d",
@@ -23797,6 +24317,194 @@
       },
       "nearestRightLexicalIndex": 2,
       "followingPredicateCandidate": true
+    },
+    {
+      "candidateId": "jmd-a17aaf547bf76cde4a60",
+      "queryId": "HKCANCOR-JAU-MOU-DAK-R1",
+      "candidateIdNamespace": "HKCANCOR-JAU-MOU-DAK-R1",
+      "sourceFile": "FC-R005_v2.cha",
+      "sourceFileSha256": "df8f8770d195db050ee8b1e25bea31af22a17ecd779cff97e99594b68f5d75ab",
+      "fileIndexZeroBased": 46,
+      "turnIndexZeroBased": 192,
+      "tokenIndexZeroBased": 4,
+      "recordingDate": "1998-02-20",
+      "participant": "XXB",
+      "participantMetadata": {
+        "code": "XXB",
+        "name": "B",
+        "role": "Adult",
+        "language": "yue , eng",
+        "l1": null,
+        "sex": "male",
+        "age": null
+      },
+      "text": "有個大單真係冇得頂啊.",
+      "tokens": [
+        {
+          "word": "有",
+          "pos": "v1",
+          "jyutping": "jau5"
+        },
+        {
+          "word": "個",
+          "pos": "q",
+          "jyutping": "go3"
+        },
+        {
+          "word": "大單",
+          "pos": "a",
+          "jyutping": "daai6daan1"
+        },
+        {
+          "word": "真係",
+          "pos": "d",
+          "jyutping": "zan1hai6"
+        },
+        {
+          "word": "冇得頂",
+          "pos": "a",
+          "jyutping": "mou5dak1ding2"
+        },
+        {
+          "word": "啊",
+          "pos": "y",
+          "jyutping": "aa3"
+        },
+        {
+          "word": ".",
+          "pos": "",
+          "jyutping": null
+        }
+      ],
+      "matchedSurfaceSpan": "冇得頂",
+      "matchedTokens": [
+        {
+          "word": "冇得頂",
+          "pos": "a",
+          "jyutping": "mou5dak1ding2"
+        }
+      ],
+      "localContext": {
+        "previous": {
+          "turnIndexZeroBased": 191,
+          "participant": "XXC",
+          "text": "有個大單啊.",
+          "tokens": [
+            {
+              "word": "有",
+              "pos": "v1",
+              "jyutping": "jau5"
+            },
+            {
+              "word": "個",
+              "pos": "q",
+              "jyutping": "go3"
+            },
+            {
+              "word": "大單",
+              "pos": "a",
+              "jyutping": "daai6daan1"
+            },
+            {
+              "word": "啊",
+              "pos": "y",
+              "jyutping": "aa3"
+            },
+            {
+              "word": ".",
+              "pos": "",
+              "jyutping": null
+            }
+          ]
+        },
+        "next": null
+      },
+      "annotationStatus": "REQUIRES_EXPERT_CONTEXT_REVIEW",
+      "tokenContext": {
+        "startTokenIndexZeroBased": 0,
+        "endTokenIndexExclusive": 7,
+        "tokens": [
+          {
+            "word": "有",
+            "pos": "v1",
+            "jyutping": "jau5"
+          },
+          {
+            "word": "個",
+            "pos": "q",
+            "jyutping": "go3"
+          },
+          {
+            "word": "大單",
+            "pos": "a",
+            "jyutping": "daai6daan1"
+          },
+          {
+            "word": "真係",
+            "pos": "d",
+            "jyutping": "zan1hai6"
+          },
+          {
+            "word": "冇得頂",
+            "pos": "a",
+            "jyutping": "mou5dak1ding2"
+          },
+          {
+            "word": "啊",
+            "pos": "y",
+            "jyutping": "aa3"
+          },
+          {
+            "word": ".",
+            "pos": "",
+            "jyutping": null
+          }
+        ]
+      },
+      "duplicateGroupInputs": {
+        "profileKind": "negative_fused_lexeme_diagnostic",
+        "tokenizationKind": "single_fused_token_prefixed_mou_dak"
+      },
+      "profileKind": "negative_fused_lexeme_diagnostic",
+      "tokenizationKind": "single_fused_token_prefixed_mou_dak",
+      "matchedTokenCount": 1,
+      "matchedHkcancorTags": [
+        "a"
+      ],
+      "matchedUdTags": [
+        "ADJ"
+      ],
+      "utteranceInitial": false,
+      "utteranceFinal": false,
+      "precedingLexicalTokenCount": 4,
+      "followingLexicalTokenCount": 1,
+      "immediateLeftToken": {
+        "word": "真係",
+        "pos": "d",
+        "jyutping": "zan1hai6",
+        "udPos": "ADV"
+      },
+      "immediateRightToken": {
+        "word": "啊",
+        "pos": "y",
+        "jyutping": "aa3",
+        "udPos": "PART"
+      },
+      "nearestLeftLexicalToken": {
+        "word": "真係",
+        "pos": "d",
+        "jyutping": "zan1hai6",
+        "udPos": "ADV"
+      },
+      "nearestLeftLexicalIndex": 3,
+      "nearestRightLexicalToken": {
+        "word": "啊",
+        "pos": "y",
+        "jyutping": "aa3",
+        "udPos": "PART"
+      },
+      "nearestRightLexicalIndex": 5,
+      "followingPredicateCandidate": false
     },
     {
       "candidateId": "jmd-6d06e899e87e9f2a73d6",
@@ -23993,7 +24701,7 @@
       "utteranceInitial": false,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 3,
-      "followingLexicalTokenCount": 3,
+      "followingLexicalTokenCount": 2,
       "immediateLeftToken": {
         "word": "邊",
         "pos": "r",
@@ -24202,7 +24910,7 @@
       "utteranceInitial": false,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 3,
-      "followingLexicalTokenCount": 3,
+      "followingLexicalTokenCount": 2,
       "immediateLeftToken": {
         "word": "真係",
         "pos": "d",
@@ -24526,7 +25234,7 @@
       "utteranceInitial": false,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 1,
-      "followingLexicalTokenCount": 4,
+      "followingLexicalTokenCount": 3,
       "immediateLeftToken": {
         "word": "根本",
         "pos": "d",
@@ -24769,8 +25477,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 4,
-      "followingLexicalTokenCount": 2,
+      "precedingLexicalTokenCount": 3,
+      "followingLexicalTokenCount": 1,
       "immediateLeftToken": {
         "word": ",",
         "pos": "",
@@ -24784,12 +25492,12 @@
         "udPos": "VERB"
       },
       "nearestLeftLexicalToken": {
-        "word": ",",
-        "pos": "",
-        "jyutping": "",
-        "udPos": "X"
+        "word": "呢",
+        "pos": "y1",
+        "jyutping": "ne1",
+        "udPos": "PART"
       },
-      "nearestLeftLexicalIndex": 3,
+      "nearestLeftLexicalIndex": 2,
       "nearestRightLexicalToken": {
         "word": "諗",
         "pos": "v",
@@ -25159,7 +25867,7 @@
       "utteranceInitial": false,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 2,
-      "followingLexicalTokenCount": 9,
+      "followingLexicalTokenCount": 7,
       "immediateLeftToken": {
         "word": "你",
         "pos": "r",
@@ -25180,12 +25888,12 @@
       },
       "nearestLeftLexicalIndex": 1,
       "nearestRightLexicalToken": {
-        "word": "-",
-        "pos": "",
-        "jyutping": "",
-        "udPos": "X"
+        "word": "你",
+        "pos": "r",
+        "jyutping": "nei5",
+        "udPos": "PRON"
       },
-      "nearestRightLexicalIndex": 3,
+      "nearestRightLexicalIndex": 4,
       "followingPredicateCandidate": false
     },
     {
@@ -25447,8 +26155,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 6,
-      "followingLexicalTokenCount": 5,
+      "precedingLexicalTokenCount": 4,
+      "followingLexicalTokenCount": 4,
       "immediateLeftToken": {
         "word": "你",
         "pos": "r",
@@ -25712,7 +26420,7 @@
       "utteranceInitial": true,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 0,
-      "followingLexicalTokenCount": 2,
+      "followingLexicalTokenCount": 1,
       "immediateLeftToken": null,
       "immediateRightToken": {
         "word": "原地踏步",
@@ -25996,7 +26704,7 @@
       "utteranceInitial": false,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 1,
-      "followingLexicalTokenCount": 17,
+      "followingLexicalTokenCount": 12,
       "immediateLeftToken": {
         "word": "你",
         "pos": "r",
@@ -26239,8 +26947,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 2,
-      "followingLexicalTokenCount": 7,
+      "precedingLexicalTokenCount": 1,
+      "followingLexicalTokenCount": 6,
       "immediateLeftToken": {
         "word": "-",
         "pos": "",
@@ -26254,12 +26962,12 @@
         "udPos": "VERB"
       },
       "nearestLeftLexicalToken": {
-        "word": "-",
-        "pos": "",
-        "jyutping": "",
-        "udPos": "X"
+        "word": "冇",
+        "pos": "v1",
+        "jyutping": "mou5",
+        "udPos": "VERB"
       },
-      "nearestLeftLexicalIndex": 1,
+      "nearestLeftLexicalIndex": 0,
       "nearestRightLexicalToken": {
         "word": "俾",
         "pos": "v",
@@ -26449,7 +27157,7 @@
       "utteranceInitial": false,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 1,
-      "followingLexicalTokenCount": 3,
+      "followingLexicalTokenCount": 2,
       "immediateLeftToken": {
         "word": "即係",
         "pos": "c",
@@ -26784,8 +27492,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 7,
-      "followingLexicalTokenCount": 5,
+      "precedingLexicalTokenCount": 6,
+      "followingLexicalTokenCount": 4,
       "immediateLeftToken": {
         "word": "內地",
         "pos": "s",
@@ -26979,7 +27687,7 @@
       "utteranceInitial": true,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 0,
-      "followingLexicalTokenCount": 2,
+      "followingLexicalTokenCount": 1,
       "immediateLeftToken": null,
       "immediateRightToken": {
         "word": "講",
@@ -27153,7 +27861,7 @@
       "utteranceInitial": true,
       "utteranceFinal": false,
       "precedingLexicalTokenCount": 0,
-      "followingLexicalTokenCount": 4,
+      "followingLexicalTokenCount": 3,
       "immediateLeftToken": null,
       "immediateRightToken": {
         "word": "搞",
@@ -27406,8 +28114,8 @@
       ],
       "utteranceInitial": false,
       "utteranceFinal": false,
-      "precedingLexicalTokenCount": 7,
-      "followingLexicalTokenCount": 3,
+      "precedingLexicalTokenCount": 6,
+      "followingLexicalTokenCount": 2,
       "immediateLeftToken": {
         "word": ",",
         "pos": "",
@@ -27421,12 +28129,12 @@
         "udPos": "VERB"
       },
       "nearestLeftLexicalToken": {
-        "word": ",",
-        "pos": "",
-        "jyutping": "",
-        "udPos": "X"
+        "word": "囖",
+        "pos": "y",
+        "jyutping": "lo1",
+        "udPos": "PART"
       },
-      "nearestLeftLexicalIndex": 6,
+      "nearestLeftLexicalIndex": 5,
       "nearestRightLexicalToken": {
         "word": "講",
         "pos": "v",

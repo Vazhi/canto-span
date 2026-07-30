@@ -129,6 +129,14 @@ class JauMouDakHkcancorProfileTests(unittest.TestCase):
         )
         self.assertTrue(direct[0].extra_fields["followingPredicateCandidate"])
         self.assertTrue(direct[1].extra_fields["utteranceFinal"])
+        fused = profile_module.token_predicate(
+            [Token("冇得頂", "a", "mou5dak1ding2")], 0
+        )
+        self.assertIsNotNone(fused)
+        self.assertEqual(
+            fused.extra_fields["profileKind"],
+            "negative_fused_lexeme_diagnostic",
+        )
 
     def test_deterministic_outputs_and_summary(self):
         utterances = [

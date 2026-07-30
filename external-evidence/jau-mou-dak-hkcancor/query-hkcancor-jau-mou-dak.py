@@ -12,6 +12,7 @@ import csv
 import io
 import json
 import sys
+import unicodedata
 from collections import Counter
 from pathlib import Path
 from typing import Sequence
@@ -52,7 +53,13 @@ def token_record(token: object | None) -> dict[str, str] | None:
 
 
 def is_lexical_token(token: object) -> bool:
-    return str(token.pos) != "w" and bool(str(token.word).strip())  # type: ignore[attr-defined]
+    if str(token.pos) == "w":  # type: ignore[attr-defined]
+        return False
+    word = str(token.word)  # type: ignore[attr-defined]
+    return any(
+        unicodedata.category(character)[0] not in {"P", "S", "Z"}
+        for character in word
+    )
 
 
 def nearest_lexical(
@@ -171,6 +178,28 @@ def token_predicate(tokens: Sequence[object], token_index: int) -> Match | None:
     if word == "得" and previous_word == "有冇":
         return None
 
+    if word.startswith("有得") and word != "有得":
+        return make_match(
+            tokens,
+            start=token_index,
+            end=token_index + 1,
+            id_index=token_index,
+            surface=word,
+            profile_kind="affirmative_fused_lexeme_diagnostic",
+            tokenization_kind="single_fused_token_prefixed_yau_dak",
+        )
+
+    if word.startswith("冇得") and word != "冇得":
+        return make_match(
+            tokens,
+            start=token_index,
+            end=token_index + 1,
+            id_index=token_index,
+            surface=word,
+            profile_kind="negative_fused_lexeme_diagnostic",
+            tokenization_kind="single_fused_token_prefixed_mou_dak",
+        )
+
     if word == "有得":
         return make_match(
             tokens,
@@ -231,8 +260,9 @@ def summary_builder(
             "Every frozen HKCanCor occurrence of exact single-token 有得, exact "
             "single-token 冇得, exact 有 immediately followed by single-token 冇得, "
             "single-token 有冇得, single-token 有冇 followed by 得, and adjacent split "
-            "有/冇 + 得 is inventoried. Utterance-initial, utterance-final, and "
-            "predicate-less cases are retained."
+            "有/冇 + 得 is inventoried. Single fused tokens beginning with 有得 or "
+            "冇得 are retained as lexical-boundary diagnostics. Utterance-initial, "
+            "utterance-final, and predicate-less cases are retained."
         ),
         "generatedWithPycantonese": context.pycantonese_version,
         "corpusName": "HKCanCor",
