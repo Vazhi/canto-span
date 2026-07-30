@@ -1,0 +1,39 @@
+name: Temporary AA56 no-place inspection
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/aa56-no-place-inspect-temp.yml
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+
+      - name: Locate AA56 identity, evidence, runtime, and fixtures
+        run: |
+          echo '=== files containing AA55/AA56/AA77 or ExistentialPresentationalClause ==='
+          grep -RIl --exclude-dir=.git -E 'AA55|AA56|AA77|ExistentialPresentationalClause|PossessiveClause|ExistentialLocationClause' . | sort | sed -n '1,260p'
+          echo '=== exact matches and nearby lines ==='
+          grep -RIn --exclude-dir=.git -E 'AA55|AA56|AA77|ExistentialPresentationalClause|PossessiveClause|ExistentialLocationClause' . | sed -n '1,520p' || true
+
+      - name: Recover bounded sibling candidates
+        run: |
+          echo '=== candidate IDs ==='
+          grep -RIn --exclude-dir=.git -E 'aa77-cdab446307d61281c97f|aa77-ba4902f3f29a10129645|aa77-b5acada359fcd92ca721|aa77-6ddc58ccc92f8ab9e0b9|aa77-b97d36558671edf34450' . | sed -n '1,240p' || true
+          echo '=== candidate surface strings ==='
+          grep -RIn --exclude-dir=.git -E '冇人需求|有啲乜嘢問題|有隻船出海|有人叫New_Zealand|從來冇人講過' . | sed -n '1,240p' || true
+
+      - name: Locate corpus and workbench assets
+        run: |
+          find . -type f \( -iname '*aa77*' -o -iname '*hkcancor*' -o -iname '*existential*' -o -iname '*presentational*' -o -iname '*possessive*' \) | sort | sed -n '1,320p'
+          echo '=== top-level research and review directories ==='
+          find docs/research external-evidence review-packets tests grammar data -maxdepth 3 -type f 2>/dev/null | sort | sed -n '1,420p'
