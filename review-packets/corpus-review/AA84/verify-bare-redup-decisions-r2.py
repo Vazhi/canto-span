@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify exact, complete expert coverage for the AA84 R2 packet."""
+"""Verify exact expert coverage and report/ledger agreement for AA84 R2."""
 from __future__ import annotations
 
 import csv
@@ -9,25 +9,41 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 PACKET = ROOT / "review-packets/corpus-review/AA84/bare-redup-packet-r2.tsv"
 DECISIONS = ROOT / "review-packets/corpus-review/AA84/bare-redup-decisions-r2.tsv"
+REPORT = ROOT / "docs/research/AA84-BARE-REDUPLICATED-MANNER-CANDIDATES-R1.md"
+LEDGER = ROOT / "docs/research/AA84-BARE-REDUPLICATION-PRIMARY-SOURCE-LEDGER-R1.tsv"
 PACKET_ID = "AA84-HKCANCOR-BARE-REDUP-R2-BOUNDED-REVIEW"
 EXPECTED_ROWS = 167
-LEGAL = {
-    "genuine_bare_manner_modifier",
-    "lexicalized_nonmanner_adverb",
-    "temporal_frequency_expression",
-    "distributive_expression",
-    "quantity_degree_expression",
-    "event_reduplication_or_progressive",
-    "property_predication_or_attribution",
-    "nominal_name_or_kin_term",
-    "sound_symbolic_or_fixed_lexeme",
-    "discourse_repetition_hesitation_repair",
-    "other_lexical_or_structural",
-    "ambiguous_boundary",
+EXPECTED_COUNTS = {
+    "ambiguous_boundary": 1,
+    "discourse_repetition_hesitation_repair": 9,
+    "distributive_expression": 21,
+    "event_reduplication_or_progressive": 24,
+    "genuine_bare_manner_modifier": 8,
+    "lexicalized_nonmanner_adverb": 2,
+    "nominal_name_or_kin_term": 27,
+    "other_lexical_or_structural": 3,
+    "property_predication_or_attribution": 29,
+    "quantity_degree_expression": 10,
+    "sound_symbolic_or_fixed_lexeme": 16,
+    "temporal_frequency_expression": 17,
 }
+LEGAL = set(EXPECTED_COUNTS)
 REQUIRED_DECISION_FIELDS = (
     "expert_classification", "expert_subtype", "confidence",
     "reviewer_note", "parser_implication",
+)
+REQUIRED_REPORT_TEXT = (
+    "444 candidate rows",
+    "167 rows",
+    "genuine bare manner modifier | 8",
+    "temporal/frequency expression | 17",
+    "distributive expression | 21",
+    "event reduplication or progressive `-下` | 24",
+    "property predication or attribution | 29",
+    "None of the 50 adjacent-identical-token packet rows is a genuine manner example",
+    "maan6maan1",
+    "maan6maan2",
+    "BareReduplicatedMannerAdverbVP",
 )
 
 
@@ -69,20 +85,44 @@ def main():
             if not decision[field].strip():
                 raise RuntimeError(f"blank {field}: {cid}")
 
+    counts = Counter(row["expert_classification"] for row in decisions)
+    if dict(counts) != EXPECTED_COUNTS:
+        raise RuntimeError(f"classification totals changed: {dict(sorted(counts.items()))}")
+    confidence = Counter(row["confidence"] for row in decisions)
+    if confidence != Counter({"high": 166, "medium": 1}):
+        raise RuntimeError(f"confidence totals changed: {dict(confidence)}")
+
     manner = [row for row in decisions if row["expert_classification"] == "genuine_bare_manner_modifier"]
-    if len(manner) != 8:
-        raise RuntimeError(f"expected 8 direct manner rows, got {len(manner)}")
     if Counter(row["base_surface"] for row in manner) != Counter({"慢": 7, "好": 1}):
         raise RuntimeError("direct manner lexical distribution changed")
-    slow_jyutping = {row["matched_jyutping"] for row in manner if row["base_surface"] == "慢"}
-    if not {"maan6maan1", "maan6maan2"}.issubset(slow_jyutping):
-        raise RuntimeError("mixed attested 慢慢 Jyutping annotations were not preserved")
+    if any(row["repetition_mode"] != "internally_repeated_token" for row in manner):
+        raise RuntimeError("an adjacent-token row was incorrectly promoted as manner")
+    slow_jyutping = Counter(row["matched_jyutping"] for row in manner if row["base_surface"] == "慢")
+    if slow_jyutping != Counter({"maan6maan2": 6, "maan6maan1": 1}):
+        raise RuntimeError(f"attested 慢慢 Jyutping distribution changed: {dict(slow_jyutping)}")
 
-    counts = Counter(row["expert_classification"] for row in decisions)
-    confidence = Counter(row["confidence"] for row in decisions)
+    ledger = load(LEDGER)
+    if len(ledger) != 8:
+        raise RuntimeError(f"expected 8 source-ledger rows, got {len(ledger)}")
+    if len({row["claim_id"] for row in ledger}) != 8:
+        raise RuntimeError("duplicate source-ledger claim IDs")
+    for row in ledger:
+        for field in ("claim", "source_id", "locator", "evidence", "parser_implication", "limitation", "verification"):
+            if not row[field].strip():
+                raise RuntimeError(f"blank ledger field {field}: {row['claim_id']}")
+
+    report = REPORT.read_text(encoding="utf-8")
+    for required in REQUIRED_REPORT_TEXT:
+        if required not in report:
+            raise RuntimeError(f"report missing required audited text: {required}")
+    for row in manner:
+        if row["candidate_id"] not in report:
+            raise RuntimeError(f"report omits direct manner candidate: {row['candidate_id']}")
+
     print(f"verified_rows={len(decisions)}")
     print(f"classification_counts={dict(sorted(counts.items()))}")
     print(f"confidence_counts={dict(sorted(confidence.items()))}")
+    print(f"source_ledger_rows={len(ledger)}")
     print(f"direct_manner_ids={[row['candidate_id'] for row in manner]}")
 
 if __name__ == "__main__":
