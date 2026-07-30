@@ -31,7 +31,7 @@ jobs:
       - name: Measure HKCanCor repeated-token profiles
         run: |
           python - <<'PY'
-          from collections import Counter, defaultdict
+          from collections import Counter
           import json
           import unicodedata
           import pycantonese
@@ -51,9 +51,9 @@ jobs:
 
           adjacent = []
           internal = []
-          all_rows = []
           for file_index, chat in enumerate(corpus._files):
-              for turn_index, utter in enumerate(chat.utterances()):
+              utterances = chat.utterances if isinstance(chat.utterances, list) else chat.utterances()
+              for turn_index, utter in enumerate(utterances):
                   toks = list(utter)
                   lex = [i for i,t in enumerate(toks) if lexical(t)]
                   for p, idx in enumerate(lex):
