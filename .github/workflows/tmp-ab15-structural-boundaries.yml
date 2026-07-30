@@ -48,14 +48,17 @@ jobs:
             '嗰間新開嘅意大利餐廳。',
           ];
           for (const source of sources) {
-            const rows = api.diagnosticFinalRows(api.analyzeLine(source))
+            const analysis = api.analyzeLine(source);
+            const rows = api.diagnosticFinalRows(analysis)
               .filter((row) => row.kind === 'construction')
               .map((row) => ({
                 construction: internalConstruction(row),
                 surface: rowSurface(row),
                 trace: row.trace_detail || {},
-                children: row.children || [],
               }));
             console.log(`AB15_PROBE ${JSON.stringify({ source, rows })}`);
+            if (source === '嗰間新開嘅意大利餐廳。') {
+              console.log(`AB15_RAW ${JSON.stringify(analysis.nodes)}`);
+            }
           }
           NODE
