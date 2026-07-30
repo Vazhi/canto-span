@@ -21,6 +21,81 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
 
+      - name: Repair selector polarity diversity
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path("review-packets/corpus-review/AA77/select-bounded-profile-packet-r1.py")
+          text = path.read_text(encoding="utf-8")
+          old = '''def select_diverse(candidates: Iterable[dict[str, Any]], quota: int) -> list[dict[str, Any]]:
+              ordered = sorted(candidates, key=source_order_key)
+              selected: list[dict[str, Any]] = []
+              selected_ids: set[str] = set()
+              used_sources: set[str] = set()
+              used_forms: set[str] = set()
+
+              def take(predicate: Any) -> None:
+                  for candidate in ordered:
+                      if len(selected) >= quota:
+                          return
+                      cid = str(candidate.get("candidateId") or "")
+                      if cid in selected_ids or not predicate(candidate):
+                          continue
+                      selected.append(candidate)
+                      selected_ids.add(cid)
+                      used_sources.add(str(candidate.get("sourceFile") or ""))
+                      used_forms.add(str(candidate.get("matchedForm") or ""))
+
+              # First represent both matched forms where the stratum contains them.
+              for form in ("有", "冇"):
+                  take(lambda candidate, form=form: str(candidate.get("matchedForm") or "") == form and str(candidate.get("sourceFile") or "") not in used_sources)
+                  if len(selected) >= quota:
+                      return selected
+
+              # Then maximize source-file diversity before filling by stable source order.
+              take(lambda candidate: str(candidate.get("sourceFile") or "") not in used_sources)
+              take(lambda candidate: True)
+              return selected
+          '''
+          new = '''def select_diverse(candidates: Iterable[dict[str, Any]], quota: int) -> list[dict[str, Any]]:
+              ordered = sorted(candidates, key=source_order_key)
+              selected: list[dict[str, Any]] = []
+              selected_ids: set[str] = set()
+              used_sources: set[str] = set()
+
+              def add_first(predicate: Any) -> bool:
+                  for candidate in ordered:
+                      cid = str(candidate.get("candidateId") or "")
+                      if cid in selected_ids or not predicate(candidate):
+                          continue
+                      selected.append(candidate)
+                      selected_ids.add(cid)
+                      used_sources.add(str(candidate.get("sourceFile") or ""))
+                      return True
+                  return False
+
+              # Represent both polarities whenever both occur in this mechanical stratum.
+              present_forms = {str(candidate.get("matchedForm") or "") for candidate in ordered}
+              for form in ("有", "冇"):
+                  if form in present_forms and len(selected) < quota:
+                      add_first(lambda candidate, form=form: str(candidate.get("matchedForm") or "") == form)
+
+              # Then maximize source-file diversity before filling by stable source order.
+              while len(selected) < quota:
+                  if not add_first(lambda candidate: str(candidate.get("sourceFile") or "") not in used_sources):
+                      break
+              while len(selected) < quota:
+                  if not add_first(lambda candidate: True):
+                      break
+              return selected
+          '''
+          if old in text:
+              path.write_text(text.replace(old, new), encoding="utf-8")
+          elif new not in text:
+              raise SystemExit("selector function did not match either expected revision")
+          PY
+
       - name: Generate deterministic bounded packet
         run: python3 review-packets/corpus-review/AA77/select-bounded-profile-packet-r1.py
 
@@ -28,16 +103,33 @@ jobs:
         run: |
           test -s review-packets/corpus-review/AA77/bounded-profile-packet-r1.tsv
           test "$(wc -l < review-packets/corpus-review/AA77/bounded-profile-packet-r1.tsv)" -eq 41
+          python3 - <<'PY'
+          import csv
+          from collections import Counter
+          from pathlib import Path
+
+          path = Path("review-packets/corpus-review/AA77/bounded-profile-packet-r1.tsv")
+          with path.open(encoding="utf-8", newline="") as handle:
+              rows = list(csv.DictReader(handle, delimiter="\t"))
+          forms = Counter(row["matched_form"] for row in rows)
+          strata = Counter(row["mechanical_stratum"] for row in rows)
+          assert len(rows) == 40, len(rows)
+          assert forms["有"] > 0 and forms["冇"] > 0, forms
+          assert len(strata) == 10 and set(strata.values()) == {4}, strata
+          print("matched forms:", dict(forms))
+          print("strata:", dict(strata))
+          PY
           git diff --check
 
-      - name: Commit generated packet
+      - name: Commit corrected selector and generated packet
         run: |
-          if test -z "$(git status --porcelain -- review-packets/corpus-review/AA77/bounded-profile-packet-r1.tsv)"; then
-            echo "Packet is already current."
+          if test -z "$(git status --porcelain -- review-packets/corpus-review/AA77/select-bounded-profile-packet-r1.py review-packets/corpus-review/AA77/bounded-profile-packet-r1.tsv)"; then
+            echo "Selector and packet are already current."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add review-packets/corpus-review/AA77/select-bounded-profile-packet-r1.py
           git add review-packets/corpus-review/AA77/bounded-profile-packet-r1.tsv
-          git commit -m "Generate AA77 bounded review packet"
+          git commit -m "Balance AA77 bounded packet by polarity"
           git push origin HEAD:${{ github.event.pull_request.head.ref }}
