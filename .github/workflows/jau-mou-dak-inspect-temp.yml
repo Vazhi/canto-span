@@ -22,6 +22,93 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
 
+      - name: Repair lexical and fused-token boundaries
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          query = Path("external-evidence/jau-mou-dak-hkcancor/query-hkcancor-jau-mou-dak.py")
+          text = query.read_text(encoding="utf-8")
+          if "import unicodedata" not in text:
+              text = text.replace("import sys\n", "import sys\nimport unicodedata\n")
+          old_lexical = '''def is_lexical_token(token: object) -> bool:
+              return str(token.pos) != "w" and bool(str(token.word).strip())  # type: ignore[attr-defined]
+          '''
+          new_lexical = '''def is_lexical_token(token: object) -> bool:
+              if str(token.pos) == "w":  # type: ignore[attr-defined]
+                  return False
+              word = str(token.word)  # type: ignore[attr-defined]
+              return any(
+                  unicodedata.category(character)[0] not in {"P", "S", "Z"}
+                  for character in word
+              )
+          '''
+          if old_lexical in text:
+              text = text.replace(old_lexical, new_lexical)
+          elif new_lexical not in text:
+              raise SystemExit("lexical-token function did not match an expected revision")
+
+          marker = '''    if word == "有得":
+          '''
+          insertion = '''    if word.startswith("有得") and word != "有得":
+              return make_match(
+                  tokens,
+                  start=token_index,
+                  end=token_index + 1,
+                  id_index=token_index,
+                  surface=word,
+                  profile_kind="affirmative_fused_lexeme_diagnostic",
+                  tokenization_kind="single_fused_token_prefixed_yau_dak",
+              )
+
+              if word.startswith("冇得") and word != "冇得":
+                  return make_match(
+                      tokens,
+                      start=token_index,
+                      end=token_index + 1,
+                      id_index=token_index,
+                      surface=word,
+                      profile_kind="negative_fused_lexeme_diagnostic",
+                      tokenization_kind="single_fused_token_prefixed_mou_dak",
+                  )
+
+              if word == "有得":
+          '''
+          if marker in text and "negative_fused_lexeme_diagnostic" not in text:
+              text = text.replace(marker, insertion)
+          elif "negative_fused_lexeme_diagnostic" not in text:
+              raise SystemExit("fused-token insertion point not found")
+
+          old_endpoint = '''            "有/冇 + 得 is inventoried. Utterance-initial, utterance-final, and "
+                      "predicate-less cases are retained."
+          '''
+          new_endpoint = '''            "有/冇 + 得 is inventoried. Single fused tokens beginning with 有得 or "
+                      "冇得 are retained as lexical-boundary diagnostics. Utterance-initial, "
+                      "utterance-final, and predicate-less cases are retained."
+          '''
+          if old_endpoint in text:
+              text = text.replace(old_endpoint, new_endpoint)
+          query.write_text(text, encoding="utf-8")
+
+          test = Path("tests/tooling/corpus-review/test_jau_mou_dak_hkcancor_profile.py")
+          test_text = test.read_text(encoding="utf-8")
+          anchor = '''        self.assertTrue(direct[1].extra_fields["utteranceFinal"])
+          '''
+          addition = '''        self.assertTrue(direct[1].extra_fields["utteranceFinal"])
+              fused = profile_module.token_predicate(
+                  [Token("冇得頂", "a", "mou5dak1ding2")], 0
+              )
+              self.assertIsNotNone(fused)
+              self.assertEqual(
+                  fused.extra_fields["profileKind"],
+                  "negative_fused_lexeme_diagnostic",
+              )
+          '''
+          if anchor in test_text and "negative_fused_lexeme_diagnostic" not in test_text:
+              test_text = test_text.replace(anchor, addition)
+          test.write_text(test_text, encoding="utf-8")
+          PY
+
       - name: Install frozen corpus dependency
         run: python3 -m pip install pycantonese==5.0.0
 
@@ -49,19 +136,21 @@ jobs:
             ':(exclude)external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.tsv'
           cat external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-query-summary.json
 
-      - name: Commit generated inventory
+      - name: Commit corrected query and generated inventory
         run: |
           paths=(
+            external-evidence/jau-mou-dak-hkcancor/query-hkcancor-jau-mou-dak.py
             external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json
             external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.tsv
             external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-query-summary.json
+            tests/tooling/corpus-review/test_jau_mou_dak_hkcancor_profile.py
           )
           if test -z "$(git status --porcelain -- "${paths[@]}")"; then
-            echo "Generated inventory is already current."
+            echo "Query and generated inventory are already current."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "${paths[@]}"
-          git commit -m "Generate exhaustive 有得冇得 corpus inventory"
+          git commit -m "Repair exhaustive 有得冇得 corpus inventory"
           git push origin HEAD:${{ github.event.pull_request.head.ref }}
