@@ -19,20 +19,18 @@
     "source_ledger": { "type": "string", "minLength": 1 },
     "construction_profiles": {
       "type": "array",
-      "minItems": 2,
+      "minItems": 1,
       "uniqueItems": true,
-      "items": { "enum": ["Dem-UNIT-N", "Num-UNIT-N"] }
+      "items": { "$ref": "#/$defs/constructionProfile" }
     },
     "unit_word_senses": {
       "type": "array",
-      "minItems": 12,
-      "maxItems": 12,
+      "minItems": 1,
       "items": { "$ref": "#/$defs/unitWordSense" }
     },
     "noun_choice_rule_records": {
       "type": "array",
-      "minItems": 12,
-      "maxItems": 12,
+      "minItems": 1,
       "items": { "$ref": "#/$defs/nounChoiceRule" }
     },
     "unresolved_surfaces": {
@@ -46,6 +44,17 @@
       "minItems": 1,
       "uniqueItems": true,
       "items": { "type": "string", "minLength": 1 }
+    },
+    "constructionProfile": {
+      "type": "string",
+      "enum": [
+        "Dem-UNIT-N",
+        "Num-UNIT-N",
+        "D-X-UNIT-N",
+        "UNIT-N",
+        "bare_preverbal_unit",
+        "Num-Adj-UNIT-N"
+      ]
     },
     "unitWordSense": {
       "type": "object",
@@ -75,14 +84,27 @@
         },
         "source_terms": { "$ref": "#/$defs/nonEmptyStringArray" },
         "source_ids": { "$ref": "#/$defs/nonEmptyStringArray" },
-        "source_scope": { "const": "category_and_construction_profile_not_pair_specific" },
-        "provenance_state": { "const": "source_category_supported_pair_unreviewed" },
+        "source_scope": {
+          "enum": [
+            "category_and_construction_profile_not_pair_specific",
+            "item_specific_not_pair_specific",
+            "pair_specific"
+          ]
+        },
+        "provenance_state": {
+          "enum": [
+            "source_category_supported_pair_unreviewed",
+            "source_item_supported_pair_unreviewed",
+            "pair_attested",
+            "pair_reviewed",
+            "insufficient_evidence"
+          ]
+        },
         "construction_profiles": {
           "type": "array",
-          "minItems": 2,
-          "maxItems": 2,
+          "minItems": 1,
           "uniqueItems": true,
-          "items": { "enum": ["Dem-UNIT-N", "Num-UNIT-N"] }
+          "items": { "$ref": "#/$defs/constructionProfile" }
         },
         "migration_limitations": { "$ref": "#/$defs/nonEmptyStringArray" }
       }
@@ -108,7 +130,16 @@
         "evidence_id": { "type": "string", "pattern": "^UW-RULE-[A-Z0-9-]+$" },
         "unit_word_sense_id": { "type": "string", "pattern": "^UW-[A-Z0-9-]+$" },
         "surface": { "type": "string", "minLength": 1 },
-        "pair_status": { "const": "unreviewed" },
+        "pair_status": {
+          "enum": [
+            "unreviewed",
+            "attested",
+            "reviewed_compatible",
+            "reviewed_variable",
+            "reviewed_incompatible",
+            "insufficient_evidence"
+          ]
+        },
         "current_head_classes": { "$ref": "#/$defs/nonEmptyStringArray" },
         "legacy_status_on_match": { "const": "verified_compatible" },
         "legacy_status_on_missing_evidence": { "const": "unverified" },
@@ -128,7 +159,7 @@
         "jyutping": { "type": "string", "pattern": "^[a-z]+[1-6]( [a-z]+[1-6])*$" },
         "status": { "enum": ["unresolved_source_surface_reconciliation", "source_inventory_not_migrated"] },
         "related_runtime_surface": { "type": "string", "minLength": 1 },
-        "runtime_rule_created": { "const": false },
+        "runtime_rule_created": { "type": "boolean" },
         "note": { "type": "string", "minLength": 1 }
       }
     }
