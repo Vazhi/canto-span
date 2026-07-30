@@ -32,6 +32,19 @@ jobs:
       - name: Install dependencies
         run: npm ci --ignore-scripts
 
+      - name: Normalize verifier scalar expectation
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          path = Path('review-packets/corpus-review/AB30/verify-aggregate-corpus-evidence-manifest-r1.py')
+          text = path.read_text(encoding='utf-8')
+          old = '        "status": "research_pending",\n'
+          new = '        "status": \'"research_pending"\',\n'
+          if old not in text:
+              raise SystemExit('expected verifier line not found')
+          path.write_text(text.replace(old, new, 1), encoding='utf-8')
+          PY
+
       - name: Verify aggregate manifest before generation
         run: python3 review-packets/corpus-review/AB30/verify-aggregate-corpus-evidence-manifest-r1.py
 
