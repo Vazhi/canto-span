@@ -8,7 +8,7 @@ on:
       - .github/workflows/aa84-bare-redup-inspect-temp.yml
       - external-evidence/aa84-bare-redup-hkcancor/query-hkcancor-aa84-bare-redup.py
       - tests/tooling/corpus-review/test_aa84_bare_redup_hkcancor_profile.py
-      - review-packets/corpus-review/AA84/select-bare-redup-packet-r1.py
+      - review-packets/corpus-review/AA84/select-bare-redup-packet-r2.py
 
 permissions:
   contents: write
@@ -28,50 +28,41 @@ jobs:
       - name: Test query profile
         run: python -m unittest tests/tooling/corpus-review/test_aa84_bare_redup_hkcancor_profile.py
 
-      - name: Generate and verify high-recall inventory
+      - name: Verify high-recall inventory
         run: |
-          python external-evidence/aa84-bare-redup-hkcancor/query-hkcancor-aa84-bare-redup.py \
-            --profile aa84-bare-redup \
-            --output-dir external-evidence/aa84-bare-redup-hkcancor \
-            --source-manifest external-evidence/cp021b/hkcancor-cp021b-source-manifest.sha256
           python external-evidence/aa84-bare-redup-hkcancor/query-hkcancor-aa84-bare-redup.py \
             --profile aa84-bare-redup \
             --output-dir external-evidence/aa84-bare-redup-hkcancor \
             --source-manifest external-evidence/cp021b/hkcancor-cp021b-source-manifest.sha256 \
             --check
 
-      - name: Generate bounded expert-review packet
-        run: python review-packets/corpus-review/AA84/select-bare-redup-packet-r1.py
+      - name: Generate tightened expert-review packet
+        run: python review-packets/corpus-review/AA84/select-bare-redup-packet-r2.py
 
-      - name: Summarize generated outputs
+      - name: Summarize packet
         run: |
           python - <<'PY'
           import csv, json
           from collections import Counter
           from pathlib import Path
-          summary = json.loads(Path('external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-query-summary.json').read_text(encoding='utf-8'))
-          packet = list(csv.DictReader(Path('review-packets/corpus-review/AA84/bare-redup-packet-r1.tsv').open(encoding='utf-8'), delimiter='\t'))
+          packet = list(csv.DictReader(Path('review-packets/corpus-review/AA84/bare-redup-packet-r2.tsv').open(encoding='utf-8'), delimiter='\t'))
           print(json.dumps({
-              'inventoryCounts': summary['counts'],
               'packetRows': len(packet),
               'packetModes': dict(sorted(Counter(row['repetition_mode'] for row in packet).items())),
               'packetUdPos': dict(sorted(Counter(row['matched_ud_pos'] for row in packet).items())),
               'packetHost': dict(sorted(Counter(row['has_local_predicate_candidate'] for row in packet).items())),
+              'packetBases': dict(sorted(Counter(row['base_surface'] for row in packet).items())),
           }, ensure_ascii=False, indent=2))
           PY
 
-      - name: Commit generated inventory and packet
+      - name: Commit tightened packet
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add \
-            external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json \
-            external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv \
-            external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-query-summary.json \
-            review-packets/corpus-review/AA84/bare-redup-packet-r1.tsv
+          git add review-packets/corpus-review/AA84/bare-redup-packet-r2.tsv
           if git diff --cached --quiet; then
-            echo 'Generated outputs already current.'
+            echo 'Packet already current.'
           else
-            git commit -m 'Generate AA84 bare reduplication review packet'
+            git commit -m 'Generate tightened AA84 bare reduplication packet'
             git push origin HEAD:agent/aa84-bare-reduplication-review
           fi
