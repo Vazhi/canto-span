@@ -26,18 +26,21 @@ jobs:
           grep -RIn --exclude-dir=.git -E 'GamMarkedReduplicatedMannerVP|MannerAdverbialVP|mannerAdverbialVPFallback|慢慢|偷偷|乖乖|細細聲|求求其其|快快趣趣|日日|個個|行行下' docs grammar tests test-data external-evidence review-packets src 2>/dev/null | sed -n '1,700p' || true
 
       - name: Install frozen corpus dependency
-        run: python -m pip install 'pycantonese==3.4.0'
+        run: python -m pip install 'pycantonese==5.0.0'
 
       - name: Measure HKCanCor repeated-token profiles
         run: |
           python - <<'PY'
           from collections import Counter
+          from pathlib import Path
           import json
           import unicodedata
           import pycantonese
 
           corpus = pycantonese.hkcancor()
           predicate_pos = {'v','v1','vd','vi','vu','a','z'}
+          utterances_by_file = corpus.utterances(by_file=True)
+          source_paths = [Path(path) for path in corpus.file_paths]
 
           def lexical(tok):
               if getattr(tok, 'pos', '') == 'w':
@@ -51,10 +54,10 @@ jobs:
 
           adjacent = []
           internal = []
-          for file_index, chat in enumerate(corpus._files):
-              utterances = chat.utterances if isinstance(chat.utterances, list) else chat.utterances()
+          for file_index, utterances in enumerate(utterances_by_file):
+              source_file = source_paths[file_index].name
               for turn_index, utter in enumerate(utterances):
-                  toks = list(utter)
+                  toks = list(utter.tokens)
                   lex = [i for i,t in enumerate(toks) if lexical(t)]
                   for p, idx in enumerate(lex):
                       tok = toks[idx]
@@ -63,9 +66,10 @@ jobs:
                       next2_lex = lex[p+2] if p+2 < len(lex) else None
                       following = [j for j in lex[p+1:p+5] if getattr(toks[j], 'pos', '') in predicate_pos]
                       row = {
-                          'file': getattr(chat, 'filename', f'file-{file_index}'),
+                          'file': source_file,
                           'turn': turn_index,
                           'token': idx,
+                          'participant': utter.participant,
                           'word': word,
                           'pos': tok.pos,
                           'jyutping': tok.jyutping,
@@ -84,6 +88,7 @@ jobs:
                           r['after_pair_pos'] = toks[next2_lex].pos if next2_lex is not None else None
                           adjacent.append(r)
 
+          print('PYCANTONESE', pycantonese.__version__)
           print('CORPUS', corpus.n_files, len(corpus.utterances()), len(corpus.words()))
           print('ADJACENT_IDENTICAL_ROWS', len(adjacent))
           print('INTERNALLY_REPEATED_TOKEN_ROWS', len(internal))
