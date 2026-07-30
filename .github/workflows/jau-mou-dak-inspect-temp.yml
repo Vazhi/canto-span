@@ -8,6 +8,7 @@ on:
       - .github/workflows/jau-mou-dak-inspect-temp.yml
       - external-evidence/jau-mou-dak-hkcancor/**
       - review-packets/corpus-review/JAU-MOU-DAK/**
+      - docs/research/JAU-MOU-DAK-OPPORTUNITY-BOUNDARIES-R1.md
       - tests/tooling/corpus-review/test_jau_mou_dak_hkcancor_profile.py
 
 permissions:
@@ -22,6 +23,22 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
+
+      - name: Repair and audit findings totals
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path("docs/research/JAU-MOU-DAK-OPPORTUNITY-BOUNDARIES-R1.md")
+          text = path.read_text(encoding="utf-8")
+          wrong = "| fused `冇得頂` | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 3 |"
+          correct = "| fused `冇得頂` | 0 | 0 | 0 | 3 | 0 | 0 | 3 |"
+          if wrong in text:
+              text = text.replace(wrong, correct)
+          if correct not in text:
+              raise SystemExit("expected corrected fused-row total not found")
+          path.write_text(text, encoding="utf-8")
+          PY
 
       - name: Install frozen corpus dependency
         run: python3 -m pip install pycantonese==5.0.0
@@ -39,7 +56,7 @@ jobs:
           python3 review-packets/corpus-review/JAU-MOU-DAK/write-full-review-decisions-r1.py
           python3 review-packets/corpus-review/JAU-MOU-DAK/verify-full-review-decisions-r1.py
 
-      - name: Validate generated outputs
+      - name: Validate generated outputs and report totals
         run: |
           test -s external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json
           test -s external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.tsv
@@ -52,12 +69,35 @@ jobs:
             --source-manifest external-evidence/cp021b/hkcancor-cp021b-source-manifest.sha256 \
             --check
           python3 review-packets/corpus-review/JAU-MOU-DAK/verify-full-review-decisions-r1.py
+          python3 - <<'PY'
+          import csv
+          from collections import Counter
+          from pathlib import Path
+
+          path = Path("review-packets/corpus-review/JAU-MOU-DAK/full-review-decisions-r1.tsv")
+          with path.open(encoding="utf-8", newline="") as handle:
+              rows = list(csv.DictReader(handle, delimiter="\t"))
+          counts = Counter(row["expert_class"] for row in rows)
+          expected = {
+              "compositional_opportunity": 63,
+              "polar_opportunity_question": 5,
+              "elliptical_opportunity": 2,
+              "lexicalized_or_idiomatic": 15,
+              "ambiguous_boundary": 7,
+              "repair_or_unusable": 3,
+          }
+          assert dict(counts) == expected, counts
+          report = Path("docs/research/JAU-MOU-DAK-OPPORTUNITY-BOUNDARIES-R1.md").read_text(encoding="utf-8")
+          assert "| fused `冇得頂` | 0 | 0 | 0 | 3 | 0 | 0 | 3 |" in report
+          assert sum(expected.values()) == 95
+          print("findings totals:", expected)
+          PY
           git diff --check -- . \
             ':(exclude)external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.tsv' \
             ':(exclude)review-packets/corpus-review/JAU-MOU-DAK/full-review-packet-r1.tsv' \
             ':(exclude)review-packets/corpus-review/JAU-MOU-DAK/full-review-decisions-r1.tsv'
 
-      - name: Commit generated inventory and complete review
+      - name: Commit generated inventory, review, and report correction
         run: |
           paths=(
             external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json
@@ -65,13 +105,14 @@ jobs:
             external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-query-summary.json
             review-packets/corpus-review/JAU-MOU-DAK/full-review-packet-r1.tsv
             review-packets/corpus-review/JAU-MOU-DAK/full-review-decisions-r1.tsv
+            docs/research/JAU-MOU-DAK-OPPORTUNITY-BOUNDARIES-R1.md
           )
           if test -z "$(git status --porcelain -- "${paths[@]}")"; then
-            echo "Generated inventory and complete review are already current."
+            echo "Generated inventory, complete review, and report are current."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "${paths[@]}"
-          git commit -m "Complete full 有得冇得 corpus review"
+          git commit -m "Audit 有得冇得 findings totals"
           git push origin HEAD:${{ github.event.pull_request.head.ref }}
