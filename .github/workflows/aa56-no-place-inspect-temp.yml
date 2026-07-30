@@ -49,6 +49,58 @@ jobs:
             ':(exclude)external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv'
           cat external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-query-summary.json
 
+      - name: Measure deterministic review strata
+        run: |
+          python3 - <<'PY'
+          import csv
+          import json
+          import re
+          from collections import Counter
+          from pathlib import Path
+
+          path = Path('external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv')
+          with path.open(encoding='utf-8', newline='') as handle:
+              rows = list(csv.DictReader(handle, delimiter='\t'))
+
+          def truth(row, field):
+              return row[field].lower() == 'true'
+
+          def preceding_words(row):
+              return [
+                  str(item.get('word', ''))
+                  for item in json.loads(row['preceding_material_tokens_json'])
+                  if item and item.get('word')
+              ]
+
+          pronouns = {'我', '我哋', '你', '你哋', '佢', '佢哋', '人哋'}
+          classifier_starts = {'一', '個', '幾', '啲', '一啲', '好多', '兩', '三', '四', '五', '六', '七', '八', '九', '十', '位', '件', '份', '隻', '套'}
+          locative_cues = {'喺', '喺度', '呢度', '嗰度', '邊度', '入面', '裡面', '裏面', '上面', '下面', '出面', '香港', '屋企', '學校', '課室'}
+
+          strata = {
+              'initial_with_later_predicate': [r for r in rows if truth(r, 'utterance_initial_lexical') and truth(r, 'has_later_predicate_candidate')],
+              'initial_without_later_predicate': [r for r in rows if truth(r, 'utterance_initial_lexical') and not truth(r, 'has_later_predicate_candidate')],
+              'negative_human_with_later_predicate': [r for r in rows if r['matched_form'] == '冇' and r['nominal_start_form'] == '人' and truth(r, 'has_later_predicate_candidate')],
+              'positive_human_with_later_predicate': [r for r in rows if r['matched_form'] == '有' and r['nominal_start_form'] == '人' and truth(r, 'has_later_predicate_candidate')],
+              'classifier_start_with_later_predicate': [r for r in rows if r['nominal_start_form'] in classifier_starts and truth(r, 'has_later_predicate_candidate')],
+              'preceding_pronoun_boundary': [r for r in rows if any(word in pronouns for word in preceding_words(r)[-3:])],
+              'preceding_locative_boundary': [r for r in rows if any(word in locative_cues for word in preceding_words(r)[-5:])],
+              'postmarker_locative_coda_surface': [r for r in rows if re.search(r'(?:有|冇).{0,30}(?:喺度|喺)', r['text'])],
+              'question_or_wh_nominal': [r for r in rows if r['nominal_start_form'] in {'乜', '乜嘢', '咩'} or '?' in r['text']],
+              'repair_surface': [r for r in rows if '-' in r['text']],
+          }
+
+          print('total rows:', len(rows))
+          for name, selected in strata.items():
+              print(name, len(selected), Counter(r['matched_form'] for r in selected))
+          print('initial+predicate nominal starts:', Counter(r['nominal_start_form'] for r in strata['initial_with_later_predicate']).most_common(30))
+          print('negative human predicate examples:')
+          for row in strata['negative_human_with_later_predicate'][:40]:
+              print(row['candidate_id'], row['source_file'], row['turn_index_zero_based'], row['text'])
+          print('positive human predicate examples:')
+          for row in strata['positive_human_with_later_predicate'][:40]:
+              print(row['candidate_id'], row['source_file'], row['turn_index_zero_based'], row['text'])
+          PY
+
       - name: Commit generated inventory
         run: |
           paths=(
