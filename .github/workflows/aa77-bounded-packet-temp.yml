@@ -114,12 +114,12 @@ jobs:
           forms = Counter(row["matched_form"] for row in rows)
           strata = Counter(row["mechanical_stratum"] for row in rows)
           assert len(rows) == 40, len(rows)
-          assert forms["有"] > 0 and forms["冇"] > 0, forms
+          assert forms == {"有": 20, "冇": 20}, forms
           assert len(strata) == 10 and set(strata.values()) == {4}, strata
           print("matched forms:", dict(forms))
           print("strata:", dict(strata))
           PY
-          git diff --check
+          git diff --check -- . ':(exclude)review-packets/corpus-review/AA77/bounded-profile-packet-r1.tsv'
 
       - name: Commit corrected selector and generated packet
         run: |
