@@ -7,6 +7,7 @@ on:
     paths:
       - .github/workflows/jau-mou-dak-inspect-temp.yml
       - external-evidence/jau-mou-dak-hkcancor/**
+      - review-packets/corpus-review/JAU-MOU-DAK/**
       - tests/tooling/corpus-review/test_jau_mou_dak_hkcancor_profile.py
 
 permissions:
@@ -22,138 +23,50 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
 
-      - name: Repair lexical and fused-token boundaries
-        run: |
-          python3 - <<'PY'
-          from pathlib import Path
-
-          query = Path("external-evidence/jau-mou-dak-hkcancor/query-hkcancor-jau-mou-dak.py")
-          text = query.read_text(encoding="utf-8")
-          if "import unicodedata" not in text:
-              text = text.replace("import sys\n", "import sys\nimport unicodedata\n")
-
-          old_lexical = (
-              'def is_lexical_token(token: object) -> bool:\n'
-              '    return str(token.pos) != "w" and bool(str(token.word).strip())  # type: ignore[attr-defined]\n'
-          )
-          new_lexical = (
-              'def is_lexical_token(token: object) -> bool:\n'
-              '    if str(token.pos) == "w":  # type: ignore[attr-defined]\n'
-              '        return False\n'
-              '    word = str(token.word)  # type: ignore[attr-defined]\n'
-              '    return any(\n'
-              '        unicodedata.category(character)[0] not in {"P", "S", "Z"}\n'
-              '        for character in word\n'
-              '    )\n'
-          )
-          if old_lexical in text:
-              text = text.replace(old_lexical, new_lexical)
-          elif new_lexical not in text:
-              raise SystemExit("lexical-token function did not match an expected revision")
-
-          marker = '    if word == "有得":\n'
-          insertion = (
-              '    if word.startswith("有得") and word != "有得":\n'
-              '        return make_match(\n'
-              '            tokens,\n'
-              '            start=token_index,\n'
-              '            end=token_index + 1,\n'
-              '            id_index=token_index,\n'
-              '            surface=word,\n'
-              '            profile_kind="affirmative_fused_lexeme_diagnostic",\n'
-              '            tokenization_kind="single_fused_token_prefixed_yau_dak",\n'
-              '        )\n\n'
-              '    if word.startswith("冇得") and word != "冇得":\n'
-              '        return make_match(\n'
-              '            tokens,\n'
-              '            start=token_index,\n'
-              '            end=token_index + 1,\n'
-              '            id_index=token_index,\n'
-              '            surface=word,\n'
-              '            profile_kind="negative_fused_lexeme_diagnostic",\n'
-              '            tokenization_kind="single_fused_token_prefixed_mou_dak",\n'
-              '        )\n\n'
-              '    if word == "有得":\n'
-          )
-          if marker in text and "negative_fused_lexeme_diagnostic" not in text:
-              text = text.replace(marker, insertion)
-          elif "negative_fused_lexeme_diagnostic" not in text:
-              raise SystemExit("fused-token insertion point not found")
-
-          old_endpoint = (
-              '            "有/冇 + 得 is inventoried. Utterance-initial, utterance-final, and "\n'
-              '            "predicate-less cases are retained."\n'
-          )
-          new_endpoint = (
-              '            "有/冇 + 得 is inventoried. Single fused tokens beginning with 有得 or "\n'
-              '            "冇得 are retained as lexical-boundary diagnostics. Utterance-initial, "\n'
-              '            "utterance-final, and predicate-less cases are retained."\n'
-          )
-          if old_endpoint in text:
-              text = text.replace(old_endpoint, new_endpoint)
-          query.write_text(text, encoding="utf-8")
-
-          test = Path("tests/tooling/corpus-review/test_jau_mou_dak_hkcancor_profile.py")
-          test_text = test.read_text(encoding="utf-8")
-          anchor = '        self.assertTrue(direct[1].extra_fields["utteranceFinal"])\n'
-          addition = (
-              '        self.assertTrue(direct[1].extra_fields["utteranceFinal"])\n'
-              '        fused = profile_module.token_predicate(\n'
-              '            [Token("冇得頂", "a", "mou5dak1ding2")], 0\n'
-              '        )\n'
-              '        self.assertIsNotNone(fused)\n'
-              '        self.assertEqual(\n'
-              '            fused.extra_fields["profileKind"],\n'
-              '            "negative_fused_lexeme_diagnostic",\n'
-              '        )\n'
-          )
-          if anchor in test_text and "negative_fused_lexeme_diagnostic" not in test_text:
-              test_text = test_text.replace(anchor, addition)
-          test.write_text(test_text, encoding="utf-8")
-          PY
-
       - name: Install frozen corpus dependency
         run: python3 -m pip install pycantonese==5.0.0
 
       - name: Test query profile
         run: python3 -m unittest tests/tooling/corpus-review/test_jau_mou_dak_hkcancor_profile.py
 
-      - name: Generate exhaustive inventory
+      - name: Generate exhaustive inventory and review projection
         run: |
           python3 external-evidence/jau-mou-dak-hkcancor/query-hkcancor-jau-mou-dak.py \
             --profile jau-mou-dak \
             --output-dir external-evidence/jau-mou-dak-hkcancor \
             --source-manifest external-evidence/cp021b/hkcancor-cp021b-source-manifest.sha256
+          python3 review-packets/corpus-review/JAU-MOU-DAK/prepare-full-review-packet-r1.py
 
       - name: Validate generated outputs
         run: |
           test -s external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json
           test -s external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.tsv
           test -s external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-query-summary.json
+          test "$(wc -l < review-packets/corpus-review/JAU-MOU-DAK/full-review-packet-r1.tsv)" -eq 96
           python3 external-evidence/jau-mou-dak-hkcancor/query-hkcancor-jau-mou-dak.py \
             --profile jau-mou-dak \
             --output-dir external-evidence/jau-mou-dak-hkcancor \
             --source-manifest external-evidence/cp021b/hkcancor-cp021b-source-manifest.sha256 \
             --check
           git diff --check -- . \
-            ':(exclude)external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.tsv'
+            ':(exclude)external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.tsv' \
+            ':(exclude)review-packets/corpus-review/JAU-MOU-DAK/full-review-packet-r1.tsv'
           cat external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-query-summary.json
 
-      - name: Commit corrected query and generated inventory
+      - name: Commit generated inventory and review projection
         run: |
           paths=(
-            external-evidence/jau-mou-dak-hkcancor/query-hkcancor-jau-mou-dak.py
             external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json
             external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.tsv
             external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-query-summary.json
-            tests/tooling/corpus-review/test_jau_mou_dak_hkcancor_profile.py
+            review-packets/corpus-review/JAU-MOU-DAK/full-review-packet-r1.tsv
           )
           if test -z "$(git status --porcelain -- "${paths[@]}")"; then
-            echo "Query and generated inventory are already current."
+            echo "Generated inventory and review packet are already current."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "${paths[@]}"
-          git commit -m "Repair exhaustive 有得冇得 corpus inventory"
+          git commit -m "Generate full 有得冇得 review packet"
           git push origin HEAD:${{ github.event.pull_request.head.ref }}
