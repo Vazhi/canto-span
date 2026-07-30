@@ -29,13 +29,15 @@ jobs:
       - name: Test query profile
         run: python3 -m unittest tests/tooling/corpus-review/test_jau_mou_dak_hkcancor_profile.py
 
-      - name: Generate exhaustive inventory and review projection
+      - name: Generate exhaustive inventory and complete review
         run: |
           python3 external-evidence/jau-mou-dak-hkcancor/query-hkcancor-jau-mou-dak.py \
             --profile jau-mou-dak \
             --output-dir external-evidence/jau-mou-dak-hkcancor \
             --source-manifest external-evidence/cp021b/hkcancor-cp021b-source-manifest.sha256
           python3 review-packets/corpus-review/JAU-MOU-DAK/prepare-full-review-packet-r1.py
+          python3 review-packets/corpus-review/JAU-MOU-DAK/write-full-review-decisions-r1.py
+          python3 review-packets/corpus-review/JAU-MOU-DAK/verify-full-review-decisions-r1.py
 
       - name: Validate generated outputs
         run: |
@@ -43,30 +45,33 @@ jobs:
           test -s external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.tsv
           test -s external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-query-summary.json
           test "$(wc -l < review-packets/corpus-review/JAU-MOU-DAK/full-review-packet-r1.tsv)" -eq 96
+          test "$(wc -l < review-packets/corpus-review/JAU-MOU-DAK/full-review-decisions-r1.tsv)" -eq 96
           python3 external-evidence/jau-mou-dak-hkcancor/query-hkcancor-jau-mou-dak.py \
             --profile jau-mou-dak \
             --output-dir external-evidence/jau-mou-dak-hkcancor \
             --source-manifest external-evidence/cp021b/hkcancor-cp021b-source-manifest.sha256 \
             --check
+          python3 review-packets/corpus-review/JAU-MOU-DAK/verify-full-review-decisions-r1.py
           git diff --check -- . \
             ':(exclude)external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.tsv' \
-            ':(exclude)review-packets/corpus-review/JAU-MOU-DAK/full-review-packet-r1.tsv'
-          cat external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-query-summary.json
+            ':(exclude)review-packets/corpus-review/JAU-MOU-DAK/full-review-packet-r1.tsv' \
+            ':(exclude)review-packets/corpus-review/JAU-MOU-DAK/full-review-decisions-r1.tsv'
 
-      - name: Commit generated inventory and review projection
+      - name: Commit generated inventory and complete review
         run: |
           paths=(
             external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json
             external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.tsv
             external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-query-summary.json
             review-packets/corpus-review/JAU-MOU-DAK/full-review-packet-r1.tsv
+            review-packets/corpus-review/JAU-MOU-DAK/full-review-decisions-r1.tsv
           )
           if test -z "$(git status --porcelain -- "${paths[@]}")"; then
-            echo "Generated inventory and review packet are already current."
+            echo "Generated inventory and complete review are already current."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "${paths[@]}"
-          git commit -m "Generate full 有得冇得 review packet"
+          git commit -m "Complete full 有得冇得 corpus review"
           git push origin HEAD:${{ github.event.pull_request.head.ref }}
