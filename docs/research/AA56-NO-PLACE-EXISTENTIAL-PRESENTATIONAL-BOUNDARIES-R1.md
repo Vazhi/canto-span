@@ -29,7 +29,7 @@ runtime boundary are not accurate enough.
 The strongest supported positive profile is:
 
 ```text
-(disourse setting / condition / location outside the core)
+(discourse setting / condition / location outside the core)
     + 有
     + overt indefinite NP
     + an overt predicate linked to that NP
