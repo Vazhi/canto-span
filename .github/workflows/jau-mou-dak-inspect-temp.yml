@@ -1,4 +1,4 @@
-name: Temporary 有冇得 repository inspection
+name: Temporary 有冇得 corpus generation
 
 on:
   pull_request:
@@ -6,29 +6,62 @@ on:
       - main
     paths:
       - .github/workflows/jau-mou-dak-inspect-temp.yml
-      - review-packets/corpus-review/JAU-MOU-DAK/**
+      - external-evidence/jau-mou-dak-hkcancor/**
+      - tests/tooling/corpus-review/test_jau_mou_dak_hkcancor_profile.py
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  inspect:
+  generate:
+    if: github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
         with:
-          fetch-depth: 1
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
 
-      - name: Locate corpus and implementation files
-        run: |
-          echo '=== candidate corpus/workbench files ==='
-          find . -type f \( -iname '*hkcancor*' -o -iname '*.cha' -o -iname '*construction*registry*' -o -iname 'main.js' \) | sort | sed -n '1,240p'
-          echo '=== exact surface matches ==='
-          grep -RIn --exclude-dir=.git -E '有冇得|冇得|有得' . | sed -n '1,320p' || true
-          echo '=== ASCII identity/runtime candidates ==='
-          grep -RIn --exclude-dir=.git -E 'Opportunity|Availability|Acceptability|ANotA|ExistentialQuestion|ModalANotA|Jau|Mou|Dak' data grammar tests test-data docs main.js 2>/dev/null | sed -n '1,360p' || true
+      - name: Install frozen corpus dependency
+        run: python3 -m pip install pycantonese==5.0.0
 
-      - name: Show repository roots
+      - name: Test query profile
+        run: python3 -m unittest tests/tooling/corpus-review/test_jau_mou_dak_hkcancor_profile.py
+
+      - name: Generate exhaustive inventory
         run: |
-          echo '=== top-level ==='
-          find . -maxdepth 2 -type f | sort | sed -n '1,240p'
+          python3 external-evidence/jau-mou-dak-hkcancor/query-hkcancor-jau-mou-dak.py \
+            --profile jau-mou-dak \
+            --output-dir external-evidence/jau-mou-dak-hkcancor \
+            --source-manifest external-evidence/cp021b/hkcancor-cp021b-source-manifest.sha256
+
+      - name: Validate generated outputs
+        run: |
+          test -s external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json
+          test -s external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.tsv
+          test -s external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-query-summary.json
+          python3 external-evidence/jau-mou-dak-hkcancor/query-hkcancor-jau-mou-dak.py \
+            --profile jau-mou-dak \
+            --output-dir external-evidence/jau-mou-dak-hkcancor \
+            --source-manifest external-evidence/cp021b/hkcancor-cp021b-source-manifest.sha256 \
+            --check
+          git diff --check -- . \
+            ':(exclude)external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.tsv'
+          cat external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-query-summary.json
+
+      - name: Commit generated inventory
+        run: |
+          paths=(
+            external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json
+            external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.tsv
+            external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-query-summary.json
+          )
+          if test -z "$(git status --porcelain -- "${paths[@]}")"; then
+            echo "Generated inventory is already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "${paths[@]}"
+          git commit -m "Generate exhaustive 有得冇得 corpus inventory"
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
