@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://canto-span.local/schemas/unit-word-evidence.schema.json",
+  "title": "Canto Span unit-word evidence model",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "version",
+    "source_ledger",
+    "construction_profiles",
+    "unit_word_senses",
+    "noun_choice_rule_records",
+    "unresolved_surfaces"
+  ],
+  "properties": {
+    "schema": { "const": "canto-span-unit-word-evidence-v1" },
+    "version": { "const": 1 },
+    "source_ledger": { "type": "string", "minLength": 1 },
+    "construction_profiles": {
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "items": { "enum": ["Dem-UNIT-N", "Num-UNIT-N"] }
+    },
+    "unit_word_senses": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 12,
+      "items": { "$ref": "#/$defs/unitWordSense" }
+    },
+    "noun_choice_rule_records": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 12,
+      "items": { "$ref": "#/$defs/nounChoiceRule" }
+    },
+    "unresolved_surfaces": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/unresolvedSurface" }
+    }
+  },
+  "$defs": {
+    "nonEmptyStringArray": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "unitWordSense": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "unit_word_sense_id",
+        "surface",
+        "jyutping",
+        "unit_word_type",
+        "semantic_unit_relation",
+        "source_terms",
+        "source_ids",
+        "source_scope",
+        "provenance_state",
+        "construction_profiles",
+        "migration_limitations"
+      ],
+      "properties": {
+        "unit_word_sense_id": { "type": "string", "pattern": "^UW-[A-Z0-9-]+$" },
+        "surface": { "type": "string", "minLength": 1 },
+        "jyutping": { "type": "string", "pattern": "^[a-z]+[1-6]( [a-z]+[1-6])*$" },
+        "unit_word_type": {
+          "enum": ["general_classifier", "sortal_classifier", "honorific_classifier", "container_measure"]
+        },
+        "semantic_unit_relation": {
+          "enum": ["general_counting", "sortal_selection", "honorific_person_selection", "container_content_measure"]
+        },
+        "source_terms": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "source_ids": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "source_scope": { "const": "category_and_construction_profile_not_pair_specific" },
+        "provenance_state": { "const": "source_category_supported_pair_unreviewed" },
+        "construction_profiles": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": { "enum": ["Dem-UNIT-N", "Num-UNIT-N"] }
+        },
+        "migration_limitations": { "$ref": "#/$defs/nonEmptyStringArray" }
+      }
+    },
+    "nounChoiceRule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidence_id",
+        "unit_word_sense_id",
+        "surface",
+        "pair_status",
+        "current_head_classes",
+        "legacy_status_on_match",
+        "legacy_status_on_missing_evidence",
+        "legacy_status_on_class_mismatch",
+        "structural_np_status_on_complete_profile",
+        "downstream_argument_licensing_on_match",
+        "downstream_argument_licensing_otherwise",
+        "policy_note"
+      ],
+      "properties": {
+        "evidence_id": { "type": "string", "pattern": "^UW-RULE-[A-Z0-9-]+$" },
+        "unit_word_sense_id": { "type": "string", "pattern": "^UW-[A-Z0-9-]+$" },
+        "surface": { "type": "string", "minLength": 1 },
+        "pair_status": { "const": "unreviewed" },
+        "current_head_classes": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "legacy_status_on_match": { "const": "verified_compatible" },
+        "legacy_status_on_missing_evidence": { "const": "unverified" },
+        "legacy_status_on_class_mismatch": { "const": "incompatible" },
+        "structural_np_status_on_complete_profile": { "const": "visible_profile_complete" },
+        "downstream_argument_licensing_on_match": { "const": "allowed_by_bounded_runtime_rule" },
+        "downstream_argument_licensing_otherwise": { "const": "blocked_by_conservative_policy" },
+        "policy_note": { "type": "string", "minLength": 1 }
+      }
+    },
+    "unresolvedSurface": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["surface", "jyutping", "status", "runtime_rule_created", "note"],
+      "properties": {
+        "surface": { "type": "string", "minLength": 1 },
+        "jyutping": { "type": "string", "pattern": "^[a-z]+[1-6]( [a-z]+[1-6])*$" },
+        "status": { "enum": ["unresolved_source_surface_reconciliation", "source_inventory_not_migrated"] },
+        "related_runtime_surface": { "type": "string", "minLength": 1 },
+        "runtime_rule_created": { "const": false },
+        "note": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}
