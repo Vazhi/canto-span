@@ -1,0 +1,40 @@
+name: Temporary AA77 bounded packet generation
+
+on:
+  push:
+    branches:
+      - agent/aa77-jau-mou-profile-review
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/aa77-jau-mou-profile-review
+          fetch-depth: 0
+
+      - name: Generate deterministic bounded packet
+        run: python3 review-packets/corpus-review/AA77/select-bounded-profile-packet-r1.py
+
+      - name: Validate packet
+        run: |
+          test -s review-packets/corpus-review/AA77/bounded-profile-packet-r1.tsv
+          test "$(wc -l < review-packets/corpus-review/AA77/bounded-profile-packet-r1.tsv)" -eq 41
+          git diff --check
+
+      - name: Commit generated packet
+        run: |
+          if git diff --quiet -- review-packets/corpus-review/AA77/bounded-profile-packet-r1.tsv; then
+            echo "Packet is already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add review-packets/corpus-review/AA77/bounded-profile-packet-r1.tsv
+          git commit -m "Generate AA77 bounded review packet"
+          git push origin HEAD:agent/aa77-jau-mou-profile-review
