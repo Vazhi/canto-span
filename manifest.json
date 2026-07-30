@@ -1,9 +1,9 @@
 {
   "id": "canto-span",
   "name": "Canto Span",
-  "version": "0.5.216",
+  "version": "0.5.217",
   "minAppVersion": "1.5.0",
-  "description": "v0.5.216 closes evidence and ontology review for all active unsupported and internal labels.",
+  "description": "v0.5.217 separates unit-word category, lexical evidence, visible NP structure, and downstream licensing without expanding the twelve-rule compatibility map.",
   "author": "Chris Crawford / OpenAI ChatGPT",
   "authorUrl": "",
   "isDesktopOnly": false
