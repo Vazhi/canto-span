@@ -15,7 +15,8 @@ const createCantoSpanPlugin = require("./plugin/canto-span-plugin");
  * never overwrite child learner roles.
  */
 
-const CANTO_SPAN_RUNTIME_VERSION = "0.5.216";
+const CANTO_SPAN_RUNTIME_VERSION = "0.5.217";
+// v0.5.217: separates unit-word category, lexical evidence, visible NP structure, and downstream policy while preserving the exact twelve-rule acceptance outcomes.
 // v0.5.216: records evidence and ontology dispositions for all 52 active unsupported/internal labels and adds invariant probes without changing parser recognition or linguistic status.
 // v0.5.215: closes direct boundary coverage for every active language-facing label and corrects explanatory 嚟 plus dangling clause-linker overgeneration.
 // v0.5.213-r5: retires SchedulingQuestion because the sourced 想 + 約 + object + 幾時 profile already composes as ClauseSpan + ModalVP, while the dedicated wrapper only covered an unsourced 覺得…好 cross-product.
@@ -1014,7 +1015,34 @@ function nodeContainsUnknownNominalMaterial(node) {
   return (node.children || []).some(nodeContainsUnknownNominalMaterial);
 }
 
+const UNIT_WORD_EVIDENCE_MODEL = require("./runtime-resources/grammar/unit-word-evidence.json");
 const LICENSED_CLASSIFIER_HEAD_RULES = require("./runtime-resources/grammar/classifier-head-rules");
+const UNIT_WORD_SENSES_BY_ID = new Map(
+  UNIT_WORD_EVIDENCE_MODEL.unit_word_senses.map((entry) => [entry.unit_word_sense_id, Object.freeze(entry)]),
+);
+const UNIT_WORD_RULES_BY_SURFACE = new Map(
+  UNIT_WORD_EVIDENCE_MODEL.noun_choice_rule_records.map((entry) => [entry.surface, Object.freeze(entry)]),
+);
+
+function unitWordMetadataForSurface(surface) {
+  const rule = UNIT_WORD_RULES_BY_SURFACE.get(String(surface || ""));
+  if (!rule) return null;
+  const sense = UNIT_WORD_SENSES_BY_ID.get(rule.unit_word_sense_id);
+  if (!sense) return null;
+  return {
+    unit_word_evidence_model: UNIT_WORD_EVIDENCE_MODEL.schema,
+    unit_word_evidence_version: UNIT_WORD_EVIDENCE_MODEL.version,
+    unit_word_evidence_id: rule.evidence_id,
+    unit_word_sense_id: sense.unit_word_sense_id,
+    unit_word_type: sense.unit_word_type,
+    semantic_unit_relation: sense.semantic_unit_relation,
+    unit_word_provenance_state: sense.provenance_state,
+    unit_word_source_scope: sense.source_scope,
+    unit_word_construction_profiles: sense.construction_profiles.slice(),
+    lexical_choice_status: rule.pair_status,
+  };
+}
+
 function lexicalClassifierClassesForNode(node) {
   if (!node) return [];
   if (node.kind === "token") {
@@ -1038,13 +1066,21 @@ function classifierHeadCompatibility(children = [], trace = {}) {
   const classifierSurface = flattenSurface(classifier);
   const acceptedClasses = LICENSED_CLASSIFIER_HEAD_RULES[classifierSurface];
   const headClasses = lexicalClassifierClassesForNode(head);
+  const unitWordMetadata = unitWordMetadataForSurface(classifierSurface);
+  const evidenceMetadata = unitWordMetadata || {
+    unit_word_evidence_model: UNIT_WORD_EVIDENCE_MODEL.schema,
+    unit_word_evidence_version: UNIT_WORD_EVIDENCE_MODEL.version,
+    lexical_choice_status: "unreviewed",
+  };
   if (!acceptedClasses) {
     return {
       status: "unverified",
       classifier_surface: classifierSurface,
       head_surface: flattenSurface(head),
       observed_head_classes: headClasses,
-      reason: "This classifier does not yet have a reviewed compatibility class in the bounded NP subsystem.",
+      ...evidenceMetadata,
+      downstream_argument_licensing: "blocked_by_conservative_policy",
+      reason: "This unit word has no reviewed bounded runtime rule; its noun choice remains unreviewed and downstream consumption is blocked by conservative policy.",
     };
   }
   const matchedClasses = acceptedClasses.filter((value) => headClasses.includes(value));
@@ -1054,7 +1090,9 @@ function classifierHeadCompatibility(children = [], trace = {}) {
       classifier_surface: classifierSurface,
       head_surface: flattenSurface(head),
       matched_head_classes: matchedClasses,
-      reason: "Classifier and overt noun head match a reviewed lexical compatibility class.",
+      ...evidenceMetadata,
+      downstream_argument_licensing: "allowed_by_bounded_runtime_rule",
+      reason: "The pair matches a bounded runtime class and may license downstream structure; pair-level linguistic evidence remains separately unreviewed.",
     };
   }
   if (!headClasses.length) {
@@ -1063,7 +1101,9 @@ function classifierHeadCompatibility(children = [], trace = {}) {
       classifier_surface: classifierSurface,
       head_surface: flattenSurface(head),
       expected_head_classes: acceptedClasses,
-      reason: "The noun is known, but its classifier compatibility class has not yet been recorded.",
+      ...evidenceMetadata,
+      downstream_argument_licensing: "blocked_by_conservative_policy",
+      reason: "The noun has no recorded compatibility class; the pair remains unreviewed and downstream consumption is blocked by conservative policy.",
     };
   }
   return {
@@ -1072,7 +1112,9 @@ function classifierHeadCompatibility(children = [], trace = {}) {
     head_surface: flattenSurface(head),
     expected_head_classes: acceptedClasses,
     observed_head_classes: headClasses,
-    reason: "The overt noun head does not match the bounded compatibility class recorded for this classifier.",
+    ...evidenceMetadata,
+    downstream_argument_licensing: "blocked_by_conservative_policy",
+    reason: "The pair fails the bounded runtime class allowlist; this is a parser-policy control, not a categorical Cantonese grammaticality judgment.",
   };
 }
 
@@ -1087,6 +1129,9 @@ function npLicenseMetadata(type, children = [], trace = {}) {
     return {
       np_license_status: "provisional_np_candidate",
       construction_licensing_allowed: false,
+      structural_np_status: "structurally_incomplete_or_unknown",
+      lexical_choice_status: "not_assessed",
+      downstream_argument_licensing: "blocked_by_structural_or_unknown_material",
       np_license_reason: PROVISIONAL_NP_TYPES.has(type) || headlessQuantified
         ? "The NP lacks an overt nominal head; no hidden noun is reconstructed."
         : "At least one token is unknown or only pronunciation-backed.",
@@ -1098,17 +1143,32 @@ function npLicenseMetadata(type, children = [], trace = {}) {
       return {
         np_license_status: "provisional_np_candidate",
         construction_licensing_allowed: false,
+        structural_np_status: "visible_profile_complete",
+        lexical_choice_status: compatibility.lexical_choice_status,
+        downstream_argument_licensing: compatibility.downstream_argument_licensing,
         classifier_head_compatibility_status: compatibility.status,
         classifier_head_compatibility: compatibility,
         np_license_reason: compatibility.reason,
       };
     }
-    if (compatibility) trace = { ...trace, classifier_head_compatibility_status: compatibility.status, classifier_head_compatibility: compatibility };
+    if (compatibility) {
+      trace = {
+        ...trace,
+        structural_np_status: "visible_profile_complete",
+        lexical_choice_status: compatibility.lexical_choice_status,
+        downstream_argument_licensing: compatibility.downstream_argument_licensing,
+        classifier_head_compatibility_status: compatibility.status,
+        classifier_head_compatibility: compatibility,
+      };
+    }
   }
   if (type === "AssociativeNP" && /^啲/u.test(surface)) {
     return {
       np_license_status: "ambiguous_licensed_np",
       construction_licensing_allowed: true,
+      structural_np_status: "visible_profile_complete",
+      lexical_choice_status: "not_applicable",
+      downstream_argument_licensing: "allowed",
       np_attachment_ambiguity: ["啲 [A 嘅 N]", "[啲 A] 嘅 N"],
       np_license_reason: "The outer NP span is licensed, but internal 啲/嘅 attachment remains unresolved.",
     };
@@ -1119,6 +1179,9 @@ function npLicenseMetadata(type, children = [], trace = {}) {
   return {
     np_license_status: "licensed_np",
     construction_licensing_allowed: true,
+    structural_np_status: "visible_profile_complete",
+    lexical_choice_status: compatibility ? compatibility.lexical_choice_status : "not_applicable",
+    downstream_argument_licensing: compatibility ? compatibility.downstream_argument_licensing : "allowed",
     classifier_head_compatibility_status: compatibility ? compatibility.status : undefined,
     classifier_head_compatibility: compatibility || undefined,
     np_license_reason: compatibility
@@ -1126,7 +1189,6 @@ function npLicenseMetadata(type, children = [], trace = {}) {
       : "All required overt components are sufficiently analyzed under a reusable NP rule.",
   };
 }
-
 function nodeNpLicenseStatus(node) {
   if (!node) return "invalid_or_incomplete_np";
   if (node.kind === "construction") {
