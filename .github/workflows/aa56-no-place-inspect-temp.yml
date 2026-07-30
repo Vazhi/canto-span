@@ -29,13 +29,15 @@ jobs:
       - name: Test query profile
         run: python3 -m unittest tests/tooling/corpus-review/test_aa56_no_place_hkcancor_profile.py
 
-      - name: Generate inventory and bounded packet
+      - name: Generate inventory, packet, and complete decisions
         run: |
           python3 external-evidence/aa56-no-place-hkcancor/query-hkcancor-aa56-no-place.py \
             --profile aa56-no-place \
             --output-dir external-evidence/aa56-no-place-hkcancor \
             --source-manifest external-evidence/cp021b/hkcancor-cp021b-source-manifest.sha256
           python3 review-packets/corpus-review/AA56/select-bounded-review-packet-r1.py
+          python3 review-packets/corpus-review/AA56/write-bounded-review-decisions-r1.py
+          python3 review-packets/corpus-review/AA56/verify-bounded-review-decisions-r1.py
 
       - name: Validate deterministic outputs
         run: |
@@ -43,37 +45,23 @@ jobs:
           test -s external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv
           test -s external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-query-summary.json
           test -s review-packets/corpus-review/AA56/bounded-review-packet-r1.tsv
+          test -s review-packets/corpus-review/AA56/bounded-review-decisions-r1.tsv
           python3 external-evidence/aa56-no-place-hkcancor/query-hkcancor-aa56-no-place.py \
             --profile aa56-no-place \
             --output-dir external-evidence/aa56-no-place-hkcancor \
             --source-manifest external-evidence/cp021b/hkcancor-cp021b-source-manifest.sha256 \
             --check
           cp review-packets/corpus-review/AA56/bounded-review-packet-r1.tsv /tmp/aa56-packet.tsv
+          cp review-packets/corpus-review/AA56/bounded-review-decisions-r1.tsv /tmp/aa56-decisions.tsv
           python3 review-packets/corpus-review/AA56/select-bounded-review-packet-r1.py
+          python3 review-packets/corpus-review/AA56/write-bounded-review-decisions-r1.py
           cmp /tmp/aa56-packet.tsv review-packets/corpus-review/AA56/bounded-review-packet-r1.tsv
-          python3 - <<'PY'
-          import csv
-          from collections import Counter
-          from pathlib import Path
-
-          path = Path('review-packets/corpus-review/AA56/bounded-review-packet-r1.tsv')
-          with path.open(encoding='utf-8', newline='') as handle:
-              rows = list(csv.DictReader(handle, delimiter='\t'))
-          assert len(rows) == len({row['candidate_id'] for row in rows})
-          assert all(row['selection_strata'] for row in rows)
-          inherited = [row for row in rows if 'inherited_aa77_sibling_anchor' in row['selection_strata']]
-          assert len(inherited) == 6, len(inherited)
-          human = [row for row in rows if 'all_human_plus_predicate' in row['selection_strata']]
-          assert len(human) == 54, len(human)
-          assert Counter(row['matched_form'] for row in human) == {'有': 31, '冇': 23}
-          print('packet rows:', len(rows))
-          print('packet polarity:', dict(Counter(row['matched_form'] for row in rows)))
-          print('source files:', len({row['source_file'] for row in rows}))
-          print('selection strata:', dict(Counter(label for row in rows for label in row['selection_strata'].split(';'))))
-          PY
+          cmp /tmp/aa56-decisions.tsv review-packets/corpus-review/AA56/bounded-review-decisions-r1.tsv
+          python3 review-packets/corpus-review/AA56/verify-bounded-review-decisions-r1.py
           git diff --check -- . \
             ':(exclude)external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv' \
-            ':(exclude)review-packets/corpus-review/AA56/bounded-review-packet-r1.tsv'
+            ':(exclude)review-packets/corpus-review/AA56/bounded-review-packet-r1.tsv' \
+            ':(exclude)review-packets/corpus-review/AA56/bounded-review-decisions-r1.tsv'
 
       - name: Commit generated outputs
         run: |
@@ -82,13 +70,14 @@ jobs:
             external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv
             external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-query-summary.json
             review-packets/corpus-review/AA56/bounded-review-packet-r1.tsv
+            review-packets/corpus-review/AA56/bounded-review-decisions-r1.tsv
           )
           if test -z "$(git status --porcelain -- "${paths[@]}")"; then
-            echo "Generated inventory and packet are already current."
+            echo "Generated inventory, packet, and decisions are current."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "${paths[@]}"
-          git commit -m "Generate bounded AA56 review packet"
+          git commit -m "Complete bounded AA56 corpus review"
           git push origin HEAD:${{ github.event.pull_request.head.ref }}
