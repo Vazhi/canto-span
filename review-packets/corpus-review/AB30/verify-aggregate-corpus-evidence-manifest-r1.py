@@ -225,7 +225,7 @@ def main() -> int:
 
     frontmatter = parse_frontmatter(NOTE_PATH)
     expected_note_values = {
-        "status": "research_pending",
+        "status": '"research_pending"',
         "corpus_evidence_used": "true",
         "corpus_hits_reviewed": "true",
         "corpus_candidate_hit_count": "232",
