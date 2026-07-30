@@ -189,29 +189,31 @@ def select_diverse(candidates: Iterable[dict[str, Any]], quota: int) -> list[dic
     selected: list[dict[str, Any]] = []
     selected_ids: set[str] = set()
     used_sources: set[str] = set()
-    used_forms: set[str] = set()
 
-    def take(predicate: Any) -> None:
+    def add_first(predicate: Any) -> bool:
         for candidate in ordered:
-            if len(selected) >= quota:
-                return
             cid = str(candidate.get("candidateId") or "")
             if cid in selected_ids or not predicate(candidate):
                 continue
             selected.append(candidate)
             selected_ids.add(cid)
             used_sources.add(str(candidate.get("sourceFile") or ""))
-            used_forms.add(str(candidate.get("matchedForm") or ""))
+            return True
+        return False
 
-    # First represent both matched forms where the stratum contains them.
+    # Represent both polarities whenever both occur in this mechanical stratum.
+    present_forms = {str(candidate.get("matchedForm") or "") for candidate in ordered}
     for form in ("有", "冇"):
-        take(lambda candidate, form=form: str(candidate.get("matchedForm") or "") == form and str(candidate.get("sourceFile") or "") not in used_sources)
-        if len(selected) >= quota:
-            return selected
+        if form in present_forms and len(selected) < quota:
+            add_first(lambda candidate, form=form: str(candidate.get("matchedForm") or "") == form)
 
     # Then maximize source-file diversity before filling by stable source order.
-    take(lambda candidate: str(candidate.get("sourceFile") or "") not in used_sources)
-    take(lambda candidate: True)
+    while len(selected) < quota:
+        if not add_first(lambda candidate: str(candidate.get("sourceFile") or "") not in used_sources):
+            break
+    while len(selected) < quota:
+        if not add_first(lambda candidate: True):
+            break
     return selected
 
 
