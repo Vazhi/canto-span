@@ -10,6 +10,8 @@ on:
       - tests/tooling/corpus-review/test_aa84_bare_redup_hkcancor_profile.py
       - review-packets/corpus-review/AA84/select-bare-redup-packet-r2.py
       - review-packets/corpus-review/AA84/render-bare-redup-review-view-r2.py
+      - review-packets/corpus-review/AA84/generate-bare-redup-decisions-r2.py
+      - review-packets/corpus-review/AA84/verify-bare-redup-decisions-r2.py
 
 permissions:
   contents: write
@@ -26,7 +28,7 @@ jobs:
       - name: Install frozen corpus dependency
         run: python -m pip install 'pycantonese==5.0.0'
 
-      - name: Test query profile and verify inventory
+      - name: Verify inventory and packet generation
         run: |
           python -m unittest tests/tooling/corpus-review/test_aa84_bare_redup_hkcancor_profile.py
           python external-evidence/aa84-bare-redup-hkcancor/query-hkcancor-aa84-bare-redup.py \
@@ -34,37 +36,25 @@ jobs:
             --output-dir external-evidence/aa84-bare-redup-hkcancor \
             --source-manifest external-evidence/cp021b/hkcancor-cp021b-source-manifest.sha256 \
             --check
-
-      - name: Generate packet and compact review view
-        run: |
           python review-packets/corpus-review/AA84/select-bare-redup-packet-r2.py
           python review-packets/corpus-review/AA84/render-bare-redup-review-view-r2.py
 
-      - name: Summarize packet
+      - name: Generate and verify complete expert decisions
         run: |
-          python - <<'PY'
-          import csv, json
-          from collections import Counter
-          from pathlib import Path
-          packet = list(csv.DictReader(Path('review-packets/corpus-review/AA84/bare-redup-review-view-r2.tsv').open(encoding='utf-8'), delimiter='\t'))
-          print(json.dumps({
-              'packetRows': len(packet),
-              'packetModes': dict(sorted(Counter(row['repetition_mode'] for row in packet).items())),
-              'packetUdPos': dict(sorted(Counter(row['matched_ud_pos'] for row in packet).items())),
-              'packetHost': dict(sorted(Counter(row['has_local_predicate_candidate'] for row in packet).items())),
-          }, ensure_ascii=False, indent=2))
-          PY
+          python review-packets/corpus-review/AA84/generate-bare-redup-decisions-r2.py
+          python review-packets/corpus-review/AA84/verify-bare-redup-decisions-r2.py
 
-      - name: Commit packet and review view
+      - name: Commit expert decisions
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add \
             review-packets/corpus-review/AA84/bare-redup-packet-r2.tsv \
-            review-packets/corpus-review/AA84/bare-redup-review-view-r2.tsv
+            review-packets/corpus-review/AA84/bare-redup-review-view-r2.tsv \
+            review-packets/corpus-review/AA84/bare-redup-decisions-r2.tsv
           if git diff --cached --quiet; then
-            echo 'Review outputs already current.'
+            echo 'Decision outputs already current.'
           else
-            git commit -m 'Generate AA84 bare reduplication review view'
+            git commit -m 'Record complete AA84 bare reduplication decisions'
             git push origin HEAD:agent/aa84-bare-reduplication-review
           fi
