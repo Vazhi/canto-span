@@ -14,15 +14,42 @@ replace task routing, semantic work claims, evidence standards, or user merge re
 ## Current setting
 
 ```text
-codex.enabled: false
+codex.enabled: true
 ```
 
-Codex workflows are disabled because the user reported that Codex is out of tokens.
-The disabled-state fallback pickup target is `chatgpt`.
+Codex workflows are enabled because the user confirmed that Codex access is restored.
+The disabled-state fallback remains `chatgpt` and applies only if the toggle is changed
+back to `false` later.
+
+The allowed pickup targets are now exactly:
+
+```text
+codex
+chatgpt
+human
+```
+
+Availability does not assign work. A task still requires valid routing, an explicit
+pickup owner, a matching work claim, a branch, applicable checks, and the mandatory
+user merge-review stop.
+
+## Enabled-state rules
+
+While `codex.enabled` is `true`:
+
+1. new intake and later reassignment may use `codex`, `chatgpt`, or `human`, subject
+   to the normal routing and self-screening gates;
+2. Codex-named GitHub assignees are not blocked by the workflow-availability setting;
+3. enabling the toggle does not take over, reassign, reopen, or resume an existing
+   issue, claim, branch, or pull request;
+4. every transfer to Codex still requires a new valid ownership revision, matching
+   assignee state, overlap review, and a new or updated work claim;
+5. historical disabled-state reassignment notices remain historical and do not
+   transfer work back to Codex.
 
 ## Disabled-state rules
 
-While `codex.enabled` is `false`:
+If `codex.enabled` is changed to `false` again:
 
 1. a new intake issue may use only `pickup_target: chatgpt` or
    `pickup_target: human`;
@@ -38,23 +65,8 @@ While `codex.enabled` is `false`:
    than silently rewritten;
 8. closed historical issues remain unchanged.
 
-The allowed pickup targets are therefore exactly:
-
-```text
-chatgpt
-human
-```
-
 An issue assignment includes both the machine-readable pickup target and an actual
 GitHub issue assignee. Removing Codex from only one layer is insufficient.
-
-## Enabled-state rules
-
-When `codex.enabled` is changed to `true`, future intake and reassignment may again use
-`codex`, `chatgpt`, or `human`, subject to the normal routing and self-screening gates.
-Re-enabling Codex does not automatically take over, reassign, reopen, or resume any
-existing issue, claim, branch, or pull request. Every later transfer still requires a
-new valid ownership revision and overlap check.
 
 ## Enforcement
 
@@ -68,10 +80,11 @@ The setting is enforced through:
 - mandatory agent checks in `AGENTS.md` before issue creation, assignment, takeover,
   claim creation, branch creation, or resumed work.
 
-The issue-event workflow removes blocked Codex assignees and converts current v2 Codex
-pickup metadata to the configured fallback while disabled. The conversion is
+When disabled, the issue-event workflow removes blocked Codex assignees and converts
+current v2 Codex pickup metadata to the configured fallback. The conversion is
 idempotent: once the issue is assigned to ChatGPT or a human, another enforcement run
-does not increase its ownership revision again.
+does not increase its ownership revision again. When enabled, that disabled-state
+conversion is inactive.
 
 ## Changing the toggle
 

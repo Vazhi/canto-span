@@ -24,9 +24,9 @@ This file is the sole present-tense project snapshot. Live GitHub intake and wor
 |---|---|
 | ChatGPT | Available |
 | Human action | Available |
-| Codex | Disabled |
+| Codex | Available |
 
-The canonical setting is [`../../config/agent-workflow-settings.json`](../../config/agent-workflow-settings.json). While Codex is disabled, new and reassigned intake issues may target only ChatGPT or human action. Codex may not remain the active pickup owner or an actual GitHub issue assignee. Re-enabling it later permits future routing only and does not transfer existing work.
+The canonical setting is [`../../config/agent-workflow-settings.json`](../../config/agent-workflow-settings.json). New intake and later reassignment may target Codex, ChatGPT, or human action, subject to normal routing, assignment, overlap, claim, verification, and review gates. Re-enabling Codex permits future routing only and does not transfer, reopen, resume, or reassign existing work.
 
 Agent availability is independent of construction availability, which is owned by `data/parked-constructions.json`.
 

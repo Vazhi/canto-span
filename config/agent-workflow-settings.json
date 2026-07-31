@@ -1,7 +1,7 @@
 {
   "schema": "canto-span-agent-workflow-settings-v1",
   "codex": {
-    "enabled": false,
+    "enabled": true,
     "disabled_pickup_fallback": "chatgpt",
     "blocked_assignee_logins": [
       "codex",
