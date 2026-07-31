@@ -61,10 +61,14 @@ test("extracts exactly one portfolio-routing block", () => {
   assert.deepEqual(extractPortfolioRouting(fenced("portfolio-routing", routing)), routing);
 });
 
-test("rejects missing and duplicate portfolio-routing blocks", () => {
+test("rejects missing, duplicate, and malformed portfolio-routing blocks", () => {
   assert.throws(() => extractPortfolioRouting("no block"), /exactly one/);
   const body = `${fenced("portfolio-routing", validRouting())}\n${fenced("portfolio-routing", validRouting())}`;
   assert.throws(() => extractPortfolioRouting(body), /exactly one/);
+  assert.throws(
+    () => extractPortfolioRouting("```portfolio-routing\n{not-json}\n```"),
+    /invalid portfolio-routing JSON/,
+  );
 });
 
 test("validates current portfolio-routing fields and enums", () => {
