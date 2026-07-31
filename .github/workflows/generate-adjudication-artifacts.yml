@@ -1,9 +1,7 @@
 name: Generate adjudication artifacts
 
 on:
-  push:
-    branches:
-      - "agent/ab25-ab27-identity-adjudication"
+  pull_request:
     paths:
       - "data/construction-adjudication-batches/batch-19.json"
       - ".github/workflows/generate-adjudication-artifacts.yml"
@@ -17,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with:
-          ref: agent/ab25-ab27-identity-adjudication
+          ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
       - uses: actions/setup-node@v6
         with:
@@ -45,7 +43,7 @@ jobs:
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git commit -m "Regenerate Batch 19 identity outputs"
-            git push origin HEAD:agent/ab25-ab27-identity-adjudication
+            git push origin HEAD:${{ github.event.pull_request.head.ref }}
           fi
       - name: Fail on unclaimed generated residue
         run: git diff --exit-code && test -z "$(git status --porcelain)"
