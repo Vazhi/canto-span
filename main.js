@@ -4767,6 +4767,38 @@ var require_category_span_templates = __commonJS({
       {
         type: "ModifiedNP",
         label: "NP",
+        template: ["demonstrative!", "classifier!", "verb_modifier!", "nominal_linker!", "modifier!", "head_noun!"],
+        template_family: "generative_template",
+        output_slots: ["modified_np", "np", "object", "topic", "demonstrative", "classifier", "verb_modifier", "modifier", "nominal_linker", "head_noun"],
+        note: "Transparent demonstrative + classifier + verbal modifier + linker + nominal modifier + head noun. Preserves every overt component and remains outside AB15."
+      },
+      {
+        type: "ModifiedNP",
+        label: "NP",
+        template: ["demonstrative!", "classifier!", "modifier!", "nominal_linker!", "modifier!", "head_noun!"],
+        template_family: "generative_template",
+        output_slots: ["modified_np", "np", "object", "topic", "demonstrative", "classifier", "modifier", "nominal_linker", "head_noun"],
+        note: "Transparent demonstrative + classifier + modifier + linker + nominal modifier + head noun. Preserves every overt component and remains outside AB15."
+      },
+      {
+        type: "ModifiedNP",
+        label: "NP",
+        template: ["demonstrative!", "classifier!", "verb_modifier!", "nominal_linker!", "head_noun!"],
+        template_family: "generative_template",
+        output_slots: ["modified_np", "np", "object", "topic", "demonstrative", "classifier", "verb_modifier", "nominal_linker", "head_noun"],
+        note: "Transparent demonstrative + classifier + verbal modifier + linker + head noun. Preserves every overt component and remains outside AB15."
+      },
+      {
+        type: "ModifiedNP",
+        label: "NP",
+        template: ["demonstrative!", "classifier!", "modifier!", "nominal_linker!", "head_noun!"],
+        template_family: "generative_template",
+        output_slots: ["modified_np", "np", "object", "topic", "demonstrative", "classifier", "modifier", "nominal_linker", "head_noun"],
+        note: "Transparent demonstrative + classifier + modifier + linker + head noun. Preserves every overt component and remains outside AB15."
+      },
+      {
+        type: "ModifiedNP",
+        label: "NP",
         template: ["demonstrative?", "classifier?", "modifier?", "verb_modifier?", "nominal_linker?", "modifier?", "head_noun!"],
         role_overrides: {
           nominal_linker: {
@@ -6719,24 +6751,208 @@ var require_lexical_selection = __commonJS({
   }
 });
 
+// src/runtime-resources/grammar/unit-word-evidence.json
+var require_unit_word_evidence = __commonJS({
+  "src/runtime-resources/grammar/unit-word-evidence.json"(exports2, module2) {
+    module2.exports = {
+      schema: "canto-span-unit-word-evidence-v1",
+      version: 1,
+      source_ledger: "docs/research/CLASSIFIER-MEASURE-PRIMARY-SOURCE-LEDGER-R1.tsv",
+      construction_profiles: ["Dem-UNIT-N", "Num-UNIT-N"],
+      unit_word_senses: [
+        {
+          unit_word_sense_id: "UW-GO3-GENERAL",
+          surface: "個",
+          jyutping: "go3",
+          unit_word_type: "general_classifier",
+          semantic_unit_relation: "general_counting",
+          source_terms: ["general classifier", "general counting unit"],
+          source_ids: ["SRC-MATTHEWS-YIP-COMPREHENSIVE-CH6", "SRC-TSE-LI-LEUNG-2007-CLASSIFIER-ACQUISITION", "SRC-ERBAUGH-2013-CLASSIFIER-DISCOURSE", "SRC-NAGY-LO-2019-CANTONESE-CLASSIFIERS"],
+          source_scope: "category_and_construction_profile_not_pair_specific",
+          provenance_state: "source_category_supported_pair_unreviewed",
+          construction_profiles: ["Dem-UNIT-N", "Num-UNIT-N"],
+          migration_limitations: ["The migrated rule retains only the current person and general_count runtime classes.", "No noun receives general_count automatically.", "Pair-level preference and variation remain unreviewed."]
+        },
+        {
+          unit_word_sense_id: "UW-ZEK3-SORTAL",
+          surface: "隻",
+          jyutping: "zek3",
+          unit_word_type: "sortal_classifier",
+          semantic_unit_relation: "sortal_selection",
+          source_terms: ["sortal classifier"],
+          source_ids: ["SRC-XIA-2025-CLA-CLASSIFIER-MEASURE", "SRC-MATTHEWS-YIP-COMPREHENSIVE-CH6", "SRC-SYBESMA-2017-NOMINAL-CLASSIFIERS"],
+          source_scope: "category_and_construction_profile_not_pair_specific",
+          provenance_state: "source_category_supported_pair_unreviewed",
+          construction_profiles: ["Dem-UNIT-N", "Num-UNIT-N"],
+          migration_limitations: ["The migrated rule retains only the current animal runtime class.", "Broader colloquial, evaluative, body-part, or paired-item uses are not added."]
+        },
+        {
+          unit_word_sense_id: "UW-GAA3-SORTAL",
+          surface: "架",
+          jyutping: "gaa3",
+          unit_word_type: "sortal_classifier",
+          semantic_unit_relation: "sortal_selection",
+          source_terms: ["sortal classifier"],
+          source_ids: ["SRC-XIA-2025-CLA-CLASSIFIER-MEASURE", "SRC-MATTHEWS-YIP-COMPREHENSIVE-CH6", "SRC-SYBESMA-2017-NOMINAL-CLASSIFIERS"],
+          source_scope: "category_and_construction_profile_not_pair_specific",
+          provenance_state: "source_category_supported_pair_unreviewed",
+          construction_profiles: ["Dem-UNIT-N", "Num-UNIT-N"],
+          migration_limitations: ["The migrated rule retains only the current vehicle runtime class.", "Overlap with 部 remains unadjudicated and is not broadened."]
+        },
+        {
+          unit_word_sense_id: "UW-BOU6-SORTAL",
+          surface: "部",
+          jyutping: "bou6",
+          unit_word_type: "sortal_classifier",
+          semantic_unit_relation: "sortal_selection",
+          source_terms: ["sortal classifier"],
+          source_ids: ["SRC-XIA-2025-CLA-CLASSIFIER-MEASURE", "SRC-MATTHEWS-YIP-COMPREHENSIVE-CH6", "SRC-SYBESMA-2017-NOMINAL-CLASSIFIERS"],
+          source_scope: "category_and_construction_profile_not_pair_specific",
+          provenance_state: "source_category_supported_pair_unreviewed",
+          construction_profiles: ["Dem-UNIT-N", "Num-UNIT-N"],
+          migration_limitations: ["The migrated rule retains only the current vehicle and machine_device runtime classes.", "Overlap with 架 remains unadjudicated and is not broadened."]
+        },
+        {
+          unit_word_sense_id: "UW-BUI1-CONTAINER-MEASURE",
+          surface: "杯",
+          jyutping: "bui1",
+          unit_word_type: "container_measure",
+          semantic_unit_relation: "container_content_measure",
+          source_terms: ["container measure", "quantity expression"],
+          source_ids: ["SRC-XIA-2025-CLA-CLASSIFIER-MEASURE", "SRC-MATTHEWS-YIP-COMPREHENSIVE-CH6", "SRC-SYBESMA-2017-NOMINAL-CLASSIFIERS", "SRC-HER-HSIEH-2010-C-M-SEMANTICS", "SRC-HER-2012-C-M-MATHEMATICAL"],
+          source_scope: "category_and_construction_profile_not_pair_specific",
+          provenance_state: "source_category_supported_pair_unreviewed",
+          construction_profiles: ["Dem-UNIT-N", "Num-UNIT-N"],
+          migration_limitations: ["The migrated rule retains only the current liquid_measure runtime class.", "Physical-container noun readings and coerced content readings are not adjudicated here."]
+        },
+        {
+          unit_word_sense_id: "UW-WUN2-CONTAINER-MEASURE",
+          surface: "碗",
+          jyutping: "wun2",
+          unit_word_type: "container_measure",
+          semantic_unit_relation: "container_content_measure",
+          source_terms: ["container measure", "quantity expression"],
+          source_ids: ["SRC-XIA-2025-CLA-CLASSIFIER-MEASURE", "SRC-MATTHEWS-YIP-COMPREHENSIVE-CH6", "SRC-SYBESMA-2017-NOMINAL-CLASSIFIERS", "SRC-HER-HSIEH-2010-C-M-SEMANTICS", "SRC-HER-2012-C-M-MATHEMATICAL"],
+          source_scope: "category_and_construction_profile_not_pair_specific",
+          provenance_state: "source_category_supported_pair_unreviewed",
+          construction_profiles: ["Dem-UNIT-N", "Num-UNIT-N"],
+          migration_limitations: ["The migrated rule retains only the current food_bowl runtime class.", "Physical-container noun readings and coerced serving readings are not adjudicated here."]
+        },
+        {
+          unit_word_sense_id: "UW-BUN2-SORTAL",
+          surface: "本",
+          jyutping: "bun2",
+          unit_word_type: "sortal_classifier",
+          semantic_unit_relation: "sortal_selection",
+          source_terms: ["sortal classifier"],
+          source_ids: ["SRC-XIA-2025-CLA-CLASSIFIER-MEASURE", "SRC-MATTHEWS-YIP-COMPREHENSIVE-CH6", "SRC-SYBESMA-2017-NOMINAL-CLASSIFIERS"],
+          source_scope: "category_and_construction_profile_not_pair_specific",
+          provenance_state: "source_category_supported_pair_unreviewed",
+          construction_profiles: ["Dem-UNIT-N", "Num-UNIT-N"],
+          migration_limitations: ["The migrated rule retains only the current book runtime class.", "No additional bound-volume or publication nouns are added."]
+        },
+        {
+          unit_word_sense_id: "UW-ZOENG1-SORTAL",
+          surface: "張",
+          jyutping: "zoeng1",
+          unit_word_type: "sortal_classifier",
+          semantic_unit_relation: "sortal_selection",
+          source_terms: ["sortal classifier"],
+          source_ids: ["SRC-XIA-2025-CLA-CLASSIFIER-MEASURE", "SRC-MATTHEWS-YIP-COMPREHENSIVE-CH6", "SRC-SYBESMA-2017-NOMINAL-CLASSIFIERS"],
+          source_scope: "category_and_construction_profile_not_pair_specific",
+          provenance_state: "source_category_supported_pair_unreviewed",
+          construction_profiles: ["Dem-UNIT-N", "Num-UNIT-N"],
+          migration_limitations: ["The migrated rule retains only the current flat_object runtime class.", "Tables, beds, pictures, and other conventional extensions are not added."]
+        },
+        {
+          unit_word_sense_id: "UW-ZI1-SORTAL",
+          surface: "支",
+          jyutping: "zi1",
+          unit_word_type: "sortal_classifier",
+          semantic_unit_relation: "sortal_selection",
+          source_terms: ["sortal classifier"],
+          source_ids: ["SRC-XIA-2025-CLA-CLASSIFIER-MEASURE", "SRC-MATTHEWS-YIP-COMPREHENSIVE-CH6", "SRC-SYBESMA-2017-NOMINAL-CLASSIFIERS"],
+          source_scope: "category_and_construction_profile_not_pair_specific",
+          provenance_state: "source_category_supported_pair_unreviewed",
+          construction_profiles: ["Dem-UNIT-N", "Num-UNIT-N"],
+          migration_limitations: ["The migrated rule retains only the exact runtime surface 支 and current long_rigid class.", "The Week 19 source surface 枝 is not aliased or treated as equivalent."]
+        },
+        {
+          unit_word_sense_id: "UW-WAI2-HONORIFIC",
+          surface: "位",
+          jyutping: "wai2",
+          unit_word_type: "honorific_classifier",
+          semantic_unit_relation: "honorific_person_selection",
+          source_terms: ["honorific classifier", "polite person classifier"],
+          source_ids: ["SRC-MATTHEWS-YIP-COMPREHENSIVE-CH6", "SRC-TSE-LI-LEUNG-2007-CLASSIFIER-ACQUISITION", "SRC-ERBAUGH-2013-CLASSIFIER-DISCOURSE"],
+          source_scope: "category_and_construction_profile_not_pair_specific",
+          provenance_state: "source_category_supported_pair_unreviewed",
+          construction_profiles: ["Dem-UNIT-N", "Num-UNIT-N"],
+          migration_limitations: ["The migrated rule retains only the current person runtime class.", "Politeness, social meaning, register, and pair-level preference remain unreviewed."]
+        },
+        {
+          unit_word_sense_id: "UW-GIN6-SORTAL",
+          surface: "件",
+          jyutping: "gin6",
+          unit_word_type: "sortal_classifier",
+          semantic_unit_relation: "sortal_selection",
+          source_terms: ["sortal classifier"],
+          source_ids: ["SRC-XIA-2025-CLA-CLASSIFIER-MEASURE", "SRC-MATTHEWS-YIP-COMPREHENSIVE-CH6", "SRC-SYBESMA-2017-NOMINAL-CLASSIFIERS"],
+          source_scope: "category_and_construction_profile_not_pair_specific",
+          provenance_state: "source_category_supported_pair_unreviewed",
+          construction_profiles: ["Dem-UNIT-N", "Num-UNIT-N"],
+          migration_limitations: ["The migrated rule retains only the current clothing runtime class.", "Matter, event, and broader individuated-item extensions are not added."]
+        },
+        {
+          unit_word_sense_id: "UW-GAAN1-SORTAL",
+          surface: "間",
+          jyutping: "gaan1",
+          unit_word_type: "sortal_classifier",
+          semantic_unit_relation: "sortal_selection",
+          source_terms: ["sortal classifier"],
+          source_ids: ["SRC-XIA-2025-CLA-CLASSIFIER-MEASURE", "SRC-MATTHEWS-YIP-COMPREHENSIVE-CH6", "SRC-SYBESMA-2017-NOMINAL-CLASSIFIERS"],
+          source_scope: "category_and_construction_profile_not_pair_specific",
+          provenance_state: "source_category_supported_pair_unreviewed",
+          construction_profiles: ["Dem-UNIT-N", "Num-UNIT-N"],
+          migration_limitations: ["The migrated rule retains only the current building_shop runtime class.", "Rooms, institutions, and broader spatial uses are not added."]
+        }
+      ],
+      noun_choice_rule_records: [
+        { evidence_id: "UW-RULE-GO3", unit_word_sense_id: "UW-GO3-GENERAL", surface: "個", pair_status: "unreviewed", current_head_classes: ["person", "general_count"], legacy_status_on_match: "verified_compatible", legacy_status_on_missing_evidence: "unverified", legacy_status_on_class_mismatch: "incompatible", structural_np_status_on_complete_profile: "visible_profile_complete", downstream_argument_licensing_on_match: "allowed_by_bounded_runtime_rule", downstream_argument_licensing_otherwise: "blocked_by_conservative_policy", policy_note: "Current matches remain allowed by the bounded runtime rule; this migration makes no pair-level naturalness claim." },
+        { evidence_id: "UW-RULE-ZEK3", unit_word_sense_id: "UW-ZEK3-SORTAL", surface: "隻", pair_status: "unreviewed", current_head_classes: ["animal"], legacy_status_on_match: "verified_compatible", legacy_status_on_missing_evidence: "unverified", legacy_status_on_class_mismatch: "incompatible", structural_np_status_on_complete_profile: "visible_profile_complete", downstream_argument_licensing_on_match: "allowed_by_bounded_runtime_rule", downstream_argument_licensing_otherwise: "blocked_by_conservative_policy", policy_note: "Current matches remain allowed by the bounded runtime rule; broader uses require separate evidence." },
+        { evidence_id: "UW-RULE-GAA3", unit_word_sense_id: "UW-GAA3-SORTAL", surface: "架", pair_status: "unreviewed", current_head_classes: ["vehicle"], legacy_status_on_match: "verified_compatible", legacy_status_on_missing_evidence: "unverified", legacy_status_on_class_mismatch: "incompatible", structural_np_status_on_complete_profile: "visible_profile_complete", downstream_argument_licensing_on_match: "allowed_by_bounded_runtime_rule", downstream_argument_licensing_otherwise: "blocked_by_conservative_policy", policy_note: "Current matches remain allowed by the bounded runtime rule; overlap with 部 is not adjudicated." },
+        { evidence_id: "UW-RULE-BOU6", unit_word_sense_id: "UW-BOU6-SORTAL", surface: "部", pair_status: "unreviewed", current_head_classes: ["vehicle", "machine_device"], legacy_status_on_match: "verified_compatible", legacy_status_on_missing_evidence: "unverified", legacy_status_on_class_mismatch: "incompatible", structural_np_status_on_complete_profile: "visible_profile_complete", downstream_argument_licensing_on_match: "allowed_by_bounded_runtime_rule", downstream_argument_licensing_otherwise: "blocked_by_conservative_policy", policy_note: "Current matches remain allowed by the bounded runtime rule; overlap with 架 is not adjudicated." },
+        { evidence_id: "UW-RULE-BUI1", unit_word_sense_id: "UW-BUI1-CONTAINER-MEASURE", surface: "杯", pair_status: "unreviewed", current_head_classes: ["liquid_measure"], legacy_status_on_match: "verified_compatible", legacy_status_on_missing_evidence: "unverified", legacy_status_on_class_mismatch: "incompatible", structural_np_status_on_complete_profile: "visible_profile_complete", downstream_argument_licensing_on_match: "allowed_by_bounded_runtime_rule", downstream_argument_licensing_otherwise: "blocked_by_conservative_policy", policy_note: "Current content matches remain allowed as a bounded container-measure rule; physical-container and coercion readings are separate." },
+        { evidence_id: "UW-RULE-WUN2", unit_word_sense_id: "UW-WUN2-CONTAINER-MEASURE", surface: "碗", pair_status: "unreviewed", current_head_classes: ["food_bowl"], legacy_status_on_match: "verified_compatible", legacy_status_on_missing_evidence: "unverified", legacy_status_on_class_mismatch: "incompatible", structural_np_status_on_complete_profile: "visible_profile_complete", downstream_argument_licensing_on_match: "allowed_by_bounded_runtime_rule", downstream_argument_licensing_otherwise: "blocked_by_conservative_policy", policy_note: "Current content matches remain allowed as a bounded container-measure rule; physical-container and coercion readings are separate." },
+        { evidence_id: "UW-RULE-BUN2", unit_word_sense_id: "UW-BUN2-SORTAL", surface: "本", pair_status: "unreviewed", current_head_classes: ["book"], legacy_status_on_match: "verified_compatible", legacy_status_on_missing_evidence: "unverified", legacy_status_on_class_mismatch: "incompatible", structural_np_status_on_complete_profile: "visible_profile_complete", downstream_argument_licensing_on_match: "allowed_by_bounded_runtime_rule", downstream_argument_licensing_otherwise: "blocked_by_conservative_policy", policy_note: "Current matches remain allowed by the bounded runtime rule; no additional noun class is inferred." },
+        { evidence_id: "UW-RULE-ZOENG1", unit_word_sense_id: "UW-ZOENG1-SORTAL", surface: "張", pair_status: "unreviewed", current_head_classes: ["flat_object"], legacy_status_on_match: "verified_compatible", legacy_status_on_missing_evidence: "unverified", legacy_status_on_class_mismatch: "incompatible", structural_np_status_on_complete_profile: "visible_profile_complete", downstream_argument_licensing_on_match: "allowed_by_bounded_runtime_rule", downstream_argument_licensing_otherwise: "blocked_by_conservative_policy", policy_note: "Current matches remain allowed by the bounded runtime rule; broader conventional extensions are not inferred." },
+        { evidence_id: "UW-RULE-ZI1", unit_word_sense_id: "UW-ZI1-SORTAL", surface: "支", pair_status: "unreviewed", current_head_classes: ["long_rigid"], legacy_status_on_match: "verified_compatible", legacy_status_on_missing_evidence: "unverified", legacy_status_on_class_mismatch: "incompatible", structural_np_status_on_complete_profile: "visible_profile_complete", downstream_argument_licensing_on_match: "allowed_by_bounded_runtime_rule", downstream_argument_licensing_otherwise: "blocked_by_conservative_policy", policy_note: "Only exact 支 is migrated; 枝 remains a separate unresolved source surface." },
+        { evidence_id: "UW-RULE-WAI2", unit_word_sense_id: "UW-WAI2-HONORIFIC", surface: "位", pair_status: "unreviewed", current_head_classes: ["person"], legacy_status_on_match: "verified_compatible", legacy_status_on_missing_evidence: "unverified", legacy_status_on_class_mismatch: "incompatible", structural_np_status_on_complete_profile: "visible_profile_complete", downstream_argument_licensing_on_match: "allowed_by_bounded_runtime_rule", downstream_argument_licensing_otherwise: "blocked_by_conservative_policy", policy_note: "Current person matches remain allowed; honorific and register conditions remain separate evidence questions." },
+        { evidence_id: "UW-RULE-GIN6", unit_word_sense_id: "UW-GIN6-SORTAL", surface: "件", pair_status: "unreviewed", current_head_classes: ["clothing"], legacy_status_on_match: "verified_compatible", legacy_status_on_missing_evidence: "unverified", legacy_status_on_class_mismatch: "incompatible", structural_np_status_on_complete_profile: "visible_profile_complete", downstream_argument_licensing_on_match: "allowed_by_bounded_runtime_rule", downstream_argument_licensing_otherwise: "blocked_by_conservative_policy", policy_note: "Current clothing matches remain allowed; broader uses require separate evidence." },
+        { evidence_id: "UW-RULE-GAAN1", unit_word_sense_id: "UW-GAAN1-SORTAL", surface: "間", pair_status: "unreviewed", current_head_classes: ["building_shop"], legacy_status_on_match: "verified_compatible", legacy_status_on_missing_evidence: "unverified", legacy_status_on_class_mismatch: "incompatible", structural_np_status_on_complete_profile: "visible_profile_complete", downstream_argument_licensing_on_match: "allowed_by_bounded_runtime_rule", downstream_argument_licensing_otherwise: "blocked_by_conservative_policy", policy_note: "Current building/shop matches remain allowed; broader spatial uses require separate evidence." }
+      ],
+      unresolved_surfaces: [
+        { surface: "枝", jyutping: "zi1", status: "unresolved_source_surface_reconciliation", related_runtime_surface: "支", runtime_rule_created: false, note: "The Week 19 source surface is recorded separately; this migration does not equate or alias it with 支." },
+        { surface: "對", jyutping: "deoi3", status: "source_inventory_not_migrated", runtime_rule_created: false, note: "Pair-measure evidence requires the separate item-level review in issue #334 or later accepted work." },
+        { surface: "把", jyutping: "baa2", status: "source_inventory_not_migrated", runtime_rule_created: false, note: "The source-listed handled-object form is not added to the compatibility map in this migration." },
+        { surface: "條", jyutping: "tiu4", status: "source_inventory_not_migrated", runtime_rule_created: false, note: "The source-listed classifier is not added to the compatibility map in this migration." }
+      ]
+    };
+  }
+});
+
 // src/runtime-resources/grammar/classifier-head-rules.js
 var require_classifier_head_rules = __commonJS({
   "src/runtime-resources/grammar/classifier-head-rules.js"(exports2, module2) {
     "use strict";
-    module2.exports = Object.freeze({
-      "本": ["book"],
-      "杯": ["liquid_measure"],
-      "間": ["building_shop"],
-      "隻": ["animal"],
-      "個": ["person", "general_count"],
-      "位": ["person"],
-      "支": ["long_rigid"],
-      "件": ["clothing"],
-      "張": ["flat_object"],
-      "架": ["vehicle"],
-      "部": ["vehicle", "machine_device"],
-      "碗": ["food_bowl"]
-    });
+    var model = require_unit_word_evidence();
+    var rules = Object.fromEntries(
+      model.noun_choice_rule_records.map((record) => [
+        record.surface,
+        Object.freeze(record.current_head_classes.slice())
+      ])
+    );
+    module2.exports = Object.freeze(rules);
   }
 });
 
@@ -20478,7 +20694,7 @@ var {
 } = require_learner_glosses();
 var createLearnerDisplay = require_learner_display();
 var createCantoSpanPlugin = require_canto_span_plugin();
-var CANTO_SPAN_RUNTIME_VERSION = "0.5.216";
+var CANTO_SPAN_RUNTIME_VERSION = "0.5.218";
 var {
   runtimeConstructionRegistryVersion: RUNTIME_CONSTRUCTION_REGISTRY_VERSION,
   constructionLabelRegistry,
@@ -21296,7 +21512,32 @@ function nodeContainsUnknownNominalMaterial(node) {
   }
   return (node.children || []).some(nodeContainsUnknownNominalMaterial);
 }
+var UNIT_WORD_EVIDENCE_MODEL = require_unit_word_evidence();
 var LICENSED_CLASSIFIER_HEAD_RULES = require_classifier_head_rules();
+var UNIT_WORD_SENSES_BY_ID = new Map(
+  UNIT_WORD_EVIDENCE_MODEL.unit_word_senses.map((entry) => [entry.unit_word_sense_id, Object.freeze(entry)])
+);
+var UNIT_WORD_RULES_BY_SURFACE = new Map(
+  UNIT_WORD_EVIDENCE_MODEL.noun_choice_rule_records.map((entry) => [entry.surface, Object.freeze(entry)])
+);
+function unitWordMetadataForSurface(surface) {
+  const rule = UNIT_WORD_RULES_BY_SURFACE.get(String(surface || ""));
+  if (!rule) return null;
+  const sense = UNIT_WORD_SENSES_BY_ID.get(rule.unit_word_sense_id);
+  if (!sense) return null;
+  return {
+    unit_word_evidence_model: UNIT_WORD_EVIDENCE_MODEL.schema,
+    unit_word_evidence_version: UNIT_WORD_EVIDENCE_MODEL.version,
+    unit_word_evidence_id: rule.evidence_id,
+    unit_word_sense_id: sense.unit_word_sense_id,
+    unit_word_type: sense.unit_word_type,
+    semantic_unit_relation: sense.semantic_unit_relation,
+    unit_word_provenance_state: sense.provenance_state,
+    unit_word_source_scope: sense.source_scope,
+    unit_word_construction_profiles: sense.construction_profiles.slice(),
+    lexical_choice_status: rule.pair_status
+  };
+}
 function lexicalClassifierClassesForNode(node) {
   if (!node) return [];
   if (node.kind === "token") {
@@ -21319,13 +21560,21 @@ function classifierHeadCompatibility(children = [], trace = {}) {
   const classifierSurface = flattenSurface(classifier);
   const acceptedClasses = LICENSED_CLASSIFIER_HEAD_RULES[classifierSurface];
   const headClasses = lexicalClassifierClassesForNode(head);
+  const unitWordMetadata = unitWordMetadataForSurface(classifierSurface);
+  const evidenceMetadata = unitWordMetadata || {
+    unit_word_evidence_model: UNIT_WORD_EVIDENCE_MODEL.schema,
+    unit_word_evidence_version: UNIT_WORD_EVIDENCE_MODEL.version,
+    lexical_choice_status: "unreviewed"
+  };
   if (!acceptedClasses) {
     return {
       status: "unverified",
       classifier_surface: classifierSurface,
       head_surface: flattenSurface(head),
       observed_head_classes: headClasses,
-      reason: "This classifier does not yet have a reviewed compatibility class in the bounded NP subsystem."
+      ...evidenceMetadata,
+      downstream_argument_licensing: "blocked_by_conservative_policy",
+      reason: "This unit word has no reviewed bounded runtime rule; its noun choice remains unreviewed and downstream consumption is blocked by conservative policy."
     };
   }
   const matchedClasses = acceptedClasses.filter((value) => headClasses.includes(value));
@@ -21335,7 +21584,9 @@ function classifierHeadCompatibility(children = [], trace = {}) {
       classifier_surface: classifierSurface,
       head_surface: flattenSurface(head),
       matched_head_classes: matchedClasses,
-      reason: "Classifier and overt noun head match a reviewed lexical compatibility class."
+      ...evidenceMetadata,
+      downstream_argument_licensing: "allowed_by_bounded_runtime_rule",
+      reason: "The pair matches a bounded runtime class and may license downstream structure; pair-level linguistic evidence remains separately unreviewed."
     };
   }
   if (!headClasses.length) {
@@ -21344,7 +21595,9 @@ function classifierHeadCompatibility(children = [], trace = {}) {
       classifier_surface: classifierSurface,
       head_surface: flattenSurface(head),
       expected_head_classes: acceptedClasses,
-      reason: "The noun is known, but its classifier compatibility class has not yet been recorded."
+      ...evidenceMetadata,
+      downstream_argument_licensing: "blocked_by_conservative_policy",
+      reason: "The noun has no recorded compatibility class; the pair remains unreviewed and downstream consumption is blocked by conservative policy."
     };
   }
   return {
@@ -21353,7 +21606,9 @@ function classifierHeadCompatibility(children = [], trace = {}) {
     head_surface: flattenSurface(head),
     expected_head_classes: acceptedClasses,
     observed_head_classes: headClasses,
-    reason: "The overt noun head does not match the bounded compatibility class recorded for this classifier."
+    ...evidenceMetadata,
+    downstream_argument_licensing: "blocked_by_conservative_policy",
+    reason: "The pair fails the bounded runtime class allowlist; this is a parser-policy control, not a categorical Cantonese grammaticality judgment."
   };
 }
 function npLicenseMetadata(type, children = [], trace = {}) {
@@ -21364,6 +21619,9 @@ function npLicenseMetadata(type, children = [], trace = {}) {
     return {
       np_license_status: "provisional_np_candidate",
       construction_licensing_allowed: false,
+      structural_np_status: "structurally_incomplete_or_unknown",
+      lexical_choice_status: "not_assessed",
+      downstream_argument_licensing: "blocked_by_structural_or_unknown_material",
       np_license_reason: PROVISIONAL_NP_TYPES.has(type) || headlessQuantified ? "The NP lacks an overt nominal head; no hidden noun is reconstructed." : "At least one token is unknown or only pronunciation-backed."
     };
   }
@@ -21373,17 +21631,32 @@ function npLicenseMetadata(type, children = [], trace = {}) {
       return {
         np_license_status: "provisional_np_candidate",
         construction_licensing_allowed: false,
+        structural_np_status: "visible_profile_complete",
+        lexical_choice_status: compatibility2.lexical_choice_status,
+        downstream_argument_licensing: compatibility2.downstream_argument_licensing,
         classifier_head_compatibility_status: compatibility2.status,
         classifier_head_compatibility: compatibility2,
         np_license_reason: compatibility2.reason
       };
     }
-    if (compatibility2) trace = { ...trace, classifier_head_compatibility_status: compatibility2.status, classifier_head_compatibility: compatibility2 };
+    if (compatibility2) {
+      trace = {
+        ...trace,
+        structural_np_status: "visible_profile_complete",
+        lexical_choice_status: compatibility2.lexical_choice_status,
+        downstream_argument_licensing: compatibility2.downstream_argument_licensing,
+        classifier_head_compatibility_status: compatibility2.status,
+        classifier_head_compatibility: compatibility2
+      };
+    }
   }
   if (type === "AssociativeNP" && /^啲/u.test(surface)) {
     return {
       np_license_status: "ambiguous_licensed_np",
       construction_licensing_allowed: true,
+      structural_np_status: "visible_profile_complete",
+      lexical_choice_status: "not_applicable",
+      downstream_argument_licensing: "allowed",
       np_attachment_ambiguity: ["啲 [A 嘅 N]", "[啲 A] 嘅 N"],
       np_license_reason: "The outer NP span is licensed, but internal 啲/嘅 attachment remains unresolved."
     };
@@ -21392,6 +21665,9 @@ function npLicenseMetadata(type, children = [], trace = {}) {
   return {
     np_license_status: "licensed_np",
     construction_licensing_allowed: true,
+    structural_np_status: "visible_profile_complete",
+    lexical_choice_status: compatibility ? compatibility.lexical_choice_status : "not_applicable",
+    downstream_argument_licensing: compatibility ? compatibility.downstream_argument_licensing : "allowed",
     classifier_head_compatibility_status: compatibility ? compatibility.status : void 0,
     classifier_head_compatibility: compatibility || void 0,
     np_license_reason: compatibility ? compatibility.reason : "All required overt components are sufficiently analyzed under a reusable NP rule."

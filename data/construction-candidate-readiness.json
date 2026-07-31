@@ -18,9 +18,10 @@
   "nearest_missing_gate_counts": {
     "language_claim_defined": 38,
     "negative_boundaries_complete": 28,
-    "reviewed_corpus_evidence": 3,
-    "runtime_research_alignment": 17,
-    "source_scope_matches_claim": 47
+    "reviewed_corpus_evidence": 2,
+    "role_neutral_panel_threshold": 1,
+    "runtime_research_alignment": 18,
+    "source_scope_matches_claim": 46
   },
   "records": [
     {
@@ -38,8 +39,13 @@
       "source_ids": [
         "SRC-FAN-CHAN-2022",
         "SRC-SIO-BOND-2025",
-        "SRC-SYBESMA-2013",
-        "SRC-YIP-MATTHEWS-2000-BASIC"
+        "SRC-YIP-2025-INNER-ASPECT",
+        "SRC-MATTHEWS-YIP-COMPREHENSIVE-CH11",
+        "SRC-YIP-MATTHEWS-2000-BASIC",
+        "SRC-WONG-ETAL-2022-GACS-ASPECT",
+        "SRC-WONG-ETAL-2009-ASPECT-EXPERIMENT",
+        "SRC-WONG-STOKES-FLETCHER-2003-ZO2-DIVERSITY",
+        "SRC-WONG-ETAL-2004-ZO2-ELICITATION"
       ],
       "preserved_source_ids": [],
       "future_research_preserved_as": "",
@@ -53,7 +59,7 @@
         "independent_source_support": {
           "status": "pass",
           "evidence": "all_cited_sources_verified_and_independent",
-          "detail": "4/4"
+          "detail": "9/9"
         },
         "source_scope_matches_claim": {
           "status": "pass",
@@ -73,8 +79,9 @@
           "evidence": "complete_executable_passing_negative_inventory"
         },
         "reviewed_corpus_evidence": {
-          "status": "not_started",
-          "evidence": "no_reviewed_corpus_evidence"
+          "status": "pass",
+          "evidence": "reviewed_genuine_corpus_hits",
+          "detail": "123/232 genuine"
         },
         "role_neutral_panel_threshold": {
           "status": "partial",
@@ -101,15 +108,107 @@
         "requirement_failed:critical_contrast_coverage_complete"
       ],
       "discovery_hard_blockers": [
-        "discovery_gate:reviewed_corpus_evidence",
         "discovery_gate:held_out_validation"
       ],
-      "readiness_score": 80,
+      "readiness_score": 90,
       "candidate_state": "boundary_ready",
-      "nearest_missing_gate": "reviewed_corpus_evidence",
-      "next_best_action": "review and classify diverse corpus candidates, including false positives and ambiguous hits",
+      "nearest_missing_gate": "role_neutral_panel_threshold",
+      "next_best_action": "run or complete a locked role-neutral panel instrument with critical contrasts",
       "automatic_risk_flags": [],
       "source_path": "grammar/research_pending/PostverbalZoPerfectiveVP.md"
+    },
+    {
+      "construction_uuid": "4f6df953-62d1-5036-80b3-40bc8f02937e",
+      "construction_code": "AB15",
+      "canonical_name": "DemonstrativeClassifierNounNP",
+      "legacy_label": "OvertHeadDemonstrativeClassifierNP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "family_id": null,
+      "family_name": "ClassifierAndQuantityNP",
+      "profile_name": "DemonstrativeClassifierOvertNoun",
+      "learner_label": null,
+      "source_ids": [
+        "SRC-BOND-SIO-2024-CLASSIFIERS",
+        "SRC-CHENG-SYBESMA-2014-NP-STRUCTURE",
+        "SRC-MATTHEWS-YIP-COMPREHENSIVE-CH6",
+        "SRC-XIA-2025-CLASSIFIERS",
+        "SRC-TSE-LI-LEUNG-2007-CLASSIFIER-ACQUISITION",
+        "SRC-ERBAUGH-2013-CLASSIFIER-DISCOURSE",
+        "SRC-NAGY-LO-2019-CANTONESE-CLASSIFIERS"
+      ],
+      "preserved_source_ids": [],
+      "future_research_preserved_as": "",
+      "standard_positive_test_count": 30,
+      "standard_boundary_test_count": 6,
+      "gates": {
+        "language_claim_defined": {
+          "status": "pass",
+          "evidence": "plain_language_claim_present"
+        },
+        "independent_source_support": {
+          "status": "pass",
+          "evidence": "all_cited_sources_verified_and_independent",
+          "detail": "7/7"
+        },
+        "source_scope_matches_claim": {
+          "status": "pass",
+          "evidence": "current_standard_reaudit_complete_with_verified_sources"
+        },
+        "runtime_research_alignment": {
+          "status": "partial",
+          "evidence": "code_document_reconciled_without_complete_current_metadata"
+        },
+        "executable_positive_cases_present": {
+          "status": "pass",
+          "evidence": "executable_positive_cases_present_implementation_only",
+          "detail": "30"
+        },
+        "negative_boundaries_complete": {
+          "status": "pass",
+          "evidence": "complete_executable_passing_negative_inventory"
+        },
+        "reviewed_corpus_evidence": {
+          "status": "pass",
+          "evidence": "reviewed_genuine_corpus_hits",
+          "detail": "5/5 genuine"
+        },
+        "role_neutral_panel_threshold": {
+          "status": "partial",
+          "evidence": "panel_evidence_incomplete",
+          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":false,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
+        },
+        "held_out_validation": {
+          "status": "not_started",
+          "evidence": "no_passing_held_out_record"
+        },
+        "ontology_conflicts_resolved": {
+          "status": "pass",
+          "evidence": "completed_identity_label_review"
+        }
+      },
+      "supported_gate_eligible": false,
+      "supported_gate_blockers": [
+        "requirement_failed:locked_clean_panel_instrument",
+        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
+        "requirement_failed:role_neutral_panel",
+        "requirement_failed:instrument_quality_resolved",
+        "requirement_failed:quality_screen_complete",
+        "requirement_failed:panel_adjudication_complete",
+        "requirement_failed:critical_contrast_coverage_complete",
+        "requirement_failed:positive_and_negative_contrasts_reviewed",
+        "requirement_failed:current_code_review_metadata"
+      ],
+      "discovery_hard_blockers": [
+        "discovery_gate:held_out_validation"
+      ],
+      "readiness_score": 83,
+      "candidate_state": "source_supported",
+      "nearest_missing_gate": "runtime_research_alignment",
+      "next_best_action": "compare exact runtime paths with the source-supported construction and reconcile code plus documentation",
+      "automatic_risk_flags": [],
+      "source_path": "grammar/research_pending/OvertHeadDemonstrativeClassifierNP.md"
     },
     {
       "construction_uuid": "1087ebec-c012-5107-9c1f-6383bf40091c",
@@ -750,99 +849,6 @@
         "unsupported_generalization_requires_source_runtime_reconciliation"
       ],
       "source_path": "grammar/unsupported_generalization/NegativePotentialComplement.md"
-    },
-    {
-      "construction_uuid": "4f6df953-62d1-5036-80b3-40bc8f02937e",
-      "construction_code": "AB15",
-      "canonical_name": "DemonstrativeClassifierNounNP",
-      "legacy_label": "OvertHeadDemonstrativeClassifierNP",
-      "lifecycle_state": "current",
-      "claim_layer": "language_construction",
-      "linguistic_status": "research_pending",
-      "family_id": null,
-      "family_name": "ClassifierAndQuantityNP",
-      "profile_name": "DemonstrativeClassifierOvertNoun",
-      "learner_label": null,
-      "source_ids": [
-        "SRC-BOND-SIO-2024-CLASSIFIERS",
-        "SRC-LAM-LAU-LEE-2024-SEGMENTATION",
-        "SRC-XIA-2025-CLASSIFIERS",
-        "SRC-YU-2006-NOMINAL-MODIFIERS",
-        "SRC-HKCANCOR-PYCANTONESE-CP024-DEMO01"
-      ],
-      "preserved_source_ids": [],
-      "future_research_preserved_as": "",
-      "standard_positive_test_count": 30,
-      "standard_boundary_test_count": 2,
-      "gates": {
-        "language_claim_defined": {
-          "status": "pass",
-          "evidence": "plain_language_claim_present"
-        },
-        "independent_source_support": {
-          "status": "pass",
-          "evidence": "all_cited_sources_verified_and_independent",
-          "detail": "5/5"
-        },
-        "source_scope_matches_claim": {
-          "status": "partial",
-          "evidence": "verified_sources_but_scope_reaudit_incomplete"
-        },
-        "runtime_research_alignment": {
-          "status": "partial",
-          "evidence": "code_document_reconciled_without_complete_current_metadata"
-        },
-        "executable_positive_cases_present": {
-          "status": "pass",
-          "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "30"
-        },
-        "negative_boundaries_complete": {
-          "status": "partial",
-          "evidence": "negative_boundaries_incomplete"
-        },
-        "reviewed_corpus_evidence": {
-          "status": "pass",
-          "evidence": "reviewed_genuine_corpus_hits",
-          "detail": "5/5 genuine"
-        },
-        "role_neutral_panel_threshold": {
-          "status": "partial",
-          "evidence": "panel_evidence_incomplete",
-          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":false,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
-        },
-        "held_out_validation": {
-          "status": "not_started",
-          "evidence": "no_passing_held_out_record"
-        },
-        "ontology_conflicts_resolved": {
-          "status": "pass",
-          "evidence": "completed_identity_label_review"
-        }
-      },
-      "supported_gate_eligible": false,
-      "supported_gate_blockers": [
-        "requirement_failed:locked_clean_panel_instrument",
-        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
-        "requirement_failed:role_neutral_panel",
-        "requirement_failed:instrument_quality_resolved",
-        "requirement_failed:quality_screen_complete",
-        "requirement_failed:panel_adjudication_complete",
-        "requirement_failed:critical_contrast_coverage_complete",
-        "requirement_failed:positive_and_negative_contrasts_reviewed",
-        "requirement_failed:negative_boundary_inventory_complete",
-        "requirement_failed:current_code_review_metadata",
-        "requirement_failed:current_standard_reaudit_complete"
-      ],
-      "discovery_hard_blockers": [
-        "discovery_gate:held_out_validation"
-      ],
-      "readiness_score": 70,
-      "candidate_state": "source_supported",
-      "nearest_missing_gate": "source_scope_matches_claim",
-      "next_best_action": "complete source-scope reaudit and split any unsupported extensions",
-      "automatic_risk_flags": [],
-      "source_path": "grammar/research_pending/OvertHeadDemonstrativeClassifierNP.md"
     },
     {
       "construction_uuid": "2ea00575-67ed-5663-8fd1-869fad24d687",

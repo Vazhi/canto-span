@@ -7,13 +7,13 @@ construction_code: "AB30"
 canonical_name: "ZoMarkedPerfectiveObjectVP"
 legacy_runtime_label: "PostverbalZoPerfectiveVP"
 status: "research_pending"
-confidence: "legacy_panel_support_clean_instrument_pending"
+confidence: "source_and_reviewed_corpus_support_clean_panel_pending"
 claim_layer: "language"
 lane: "LANE-05"
-last_reviewed: "2026-07-21"
+last_reviewed: "2026-07-30"
 last_status_migrated: "2026-07-21"
-source_count: 4
-verified_source_count: 4
+source_count: 9
+verified_source_count: 9
 panel_response_count_total: 11
 eligible_panel_response_count: 0
 minimum_usable_judgments_per_critical_item: 0
@@ -40,22 +40,21 @@ negative_cases_drafted: true
 negative_tests_executable: true
 negative_tests_passing: true
 negative_boundary_inventory_complete: true
-corpus_evidence_used: false
-corpus_hits_reviewed: false
-corpus_candidate_hit_count: 0
-corpus_genuine_hit_count: 0
-corpus_false_positive_count: 0
-corpus_ambiguous_hit_count: 0
+corpus_evidence_used: true
+corpus_hits_reviewed: true
+corpus_candidate_hit_count: 232
+corpus_genuine_hit_count: 123
+corpus_false_positive_count: 103
+corpus_ambiguous_hit_count: 6
 corpus_unusable_hit_count: 0
-accepted_corpus_packet_reviewed_count: 5
-accepted_corpus_genuine_count: 2
-accepted_corpus_false_positive_count: 3
-accepted_corpus_ambiguous_count: 0
-accepted_corpus_unusable_count: 0
-corpus_decision_ledger_file: "review-packets/corpus-review/AB30/review-decisions-r1.json"
-corpus_source_ledger_file: "review-packets/corpus-review/AB30/candidate-ledger.json"
-corpus_readiness_effect: "partial_only"
-corpus_diverse_source_gate_satisfied: false
+reviewed_corpus_gate_satisfied: true
+independent_corpus_replication_satisfied: false
+corpus_aggregate_component_count: 3
+corpus_decision_ledger_file: "review-packets/corpus-review/AB30/aggregate-corpus-evidence-manifest-r1.json"
+corpus_source_ledger_file: "review-packets/corpus-review/AB30/aggregate-corpus-evidence-manifest-r1.json"
+corpus_evidence_manifest_file: "review-packets/corpus-review/AB30/aggregate-corpus-evidence-manifest-r1.json"
+corpus_readiness_effect: "reviewed_corpus_gate_satisfied_replication_pending"
+corpus_breadth_limitations: ["one frozen HKCanCor distribution", "two small user-supplied conversation sources", "no frequency estimate", "no unrestricted productivity", "no dialect-wide naturalness", "six ambiguous candidates"]
 code_document_reconciled: true
 code_document_review_date: "2026-07-21"
 code_document_review_commit: "d08367dcf0f13d57b39a406ddf72388ba079a9e6"
@@ -64,19 +63,19 @@ current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
-source_verification_file: "docs/research/CP025-P1-PFV01-SOURCE-VERIFICATION-R1.tsv"
+source_verification_file: "docs/research/AB30-PERFECTIVE-OBJECT-PRIMARY-SOURCE-LEDGER-R1.tsv"
 standard_test_file: "tests/constructions/PostverbalZoPerfectiveVP.json"
 standard_test_coverage: "positive_and_boundary"
 standard_positive_test_count: 32
 standard_boundary_test_count: 12
 standard_implementation_probe_count: 0
 standard_executable_test_count: 45
-source_ids: ["SRC-FAN-CHAN-2022", "SRC-SIO-BOND-2025", "SRC-SYBESMA-2013", "SRC-YIP-MATTHEWS-2000-BASIC"]
+source_ids: ["SRC-FAN-CHAN-2022", "SRC-SIO-BOND-2025", "SRC-YIP-2025-INNER-ASPECT", "SRC-MATTHEWS-YIP-COMPREHENSIVE-CH11", "SRC-YIP-MATTHEWS-2000-BASIC", "SRC-WONG-ETAL-2022-GACS-ASPECT", "SRC-WONG-ETAL-2009-ASPECT-EXPERIMENT", "SRC-WONG-STOKES-FLETCHER-2003-ZO2-DIVERSITY", "SRC-WONG-ETAL-2004-ZO2-ELICITATION"]
 runtime_active: true
 workflow_state: "active"
 workflow_priority: 2
 workflow_since: "2026-07-21"
-workflow_reason: "secondary_construction_for_role_neutral_panel_wave_and_lexical_scope_recheck"
+workflow_reason: "clean_role_neutral_panel_and_held_out_gates_remain_incomplete"
 runtime_code_references: 5
 accepted_fixtures: 12
 tags: ["canto-span/grammar", "canto-span/status/research_pending", "canto-span/lane/lane-05", "canto-span/workflow/active"]
@@ -93,55 +92,43 @@ tags: ["canto-span/grammar", "canto-span/status/research_pending", "canto-span/l
 
 ## Plain-language claim
 
-Checked Cantonese sources support a narrow structural profile in which an overt action predicate is followed by perfective 咗 and an overt licensed noun phrase. The parser records that visible structure. It does not treat 咗 as a past-tense suffix, does not insert hidden arguments, and does not decide the full completion or current-relevance interpretation at this node. Predicate–object naturalness is evaluated separately, so a structurally transparent but semantically anomalous string can retain the perfective span inside a `NeedsContext` review result.
+Checked Cantonese sources support a narrow structural profile in which a simple overt lexical predicate is followed immediately by outer perfective `咗` and an overt independently licensed object NP. The parser records that visible structure. It does not treat `咗` as a grammatical past-tense suffix, insert a hidden object, or assert full event completion, total affectedness, result achievement, or current relevance as an invariant meaning of this node.
 
-The existing eleven response records came from mixed legacy instruments and do not meet the role-neutral panel standard. They remain useful historical evidence, but the minimum usable judgment count from a clean instrument is zero. The construction is therefore `research_pending` until a clean survey wave supplies complete critical-item coverage.
+Completion, boundedness, result, temporal location, and current relevance remain possible or source-discussed interpretations supplied by lexical aspect, quantification, result or inner-aspect material, particles, context, discourse, or higher constructions. Predicate–object naturalness is evaluated separately from structural visibility, so a transparent `V–咗–NP` span may occur inside a `NeedsContext` result when the whole lexical combination is anomalous.
+
+The existing eleven response records came from mixed legacy instruments and do not meet the role-neutral panel standard. They remain historical evidence only. AB30 therefore remains `research_pending` despite its completed bounded reviewed-corpus gate.
 
 ## Current status
 
 - Linguistic status: `research_pending`
-- Linguistic confidence: `legacy_panel_support_clean_instrument_pending`
-- Current action: `retain_structural_research_target_and_collect_clean_role_neutral_panel_evidence`
+- Linguistic confidence: `source_and_reviewed_corpus_support_clean_panel_pending`
+- Current action: retain the narrow direct subtype while completing a clean role-neutral panel gate and later held-out validation.
 - Productive acceptance eligible: **no**
-- Last linguistic review: 2026-07-21
-- Current collection: `YUE-JUDGMENT-PILOT-01` is
-  `collection_in_progress`.
-- Follow-up state: `YUE-JUDGMENT-FOLLOWUP-01-DRAFT` is a non-deployable
-  `draft_followup`.
+- Last linguistic review: 2026-07-30
+- Reviewed-corpus gate: **satisfied** through the three-component aggregate manifest.
+- Independent second-corpus replication: **not established**.
+- Current collection: `YUE-JUDGMENT-PILOT-01` is `collection_in_progress`.
+- Follow-up state: `YUE-JUDGMENT-FOLLOWUP-01-DRAFT` remains a non-deployable `draft_followup`.
 
-## Sources
+## Source synthesis
 
-### SRC-FAN-CHAN-2022
+The current proposition-level ledger is:
 
-- Citation: [Fan, Xiaolei and Kin Wing Kevin Chan. 2022. 香港粵語「咗」的語法特點：與北京話「了1」的比較 [Grammatical properties of zo 咗 in Hong Kong Cantonese: A comparative study with le1 了1 in Beijing Mandarin]. Language and Linguistics 23(3): 371-410.](https://www.jbe-platform.com/content/journals/10.1075/lali.00110.fan?crawler=true)
-- Locator: Fan & Chan 2022, Language and Linguistics 23(3):371–410, DOI 10.1075/lali.00110.fan; article discussion and examples including p. 374 (3c)
-- Verification: `PASS`
-- What it supports: Describes Hong Kong Cantonese 咗 placement after the first predicate in complex verbal material, treats it as perfective, and includes simple V–咗–object and V完(咗)O examples.
-- Limit: The article discusses relative-past, completion, boundedness, and current-relevance analyses; it contradicts any categorical claim that 咗 has no temporal or completion-related contribution. Its three consulted informants are source-internal evidence, not project panel responses collected with the locked instrument.
+`docs/research/AB30-PERFECTIVE-OBJECT-PRIMARY-SOURCE-LEDGER-R1.tsv`.
 
-### SRC-SIO-BOND-2025
+The accepted synthesis is:
 
-- Citation: [Sio, Joanna Ut-Seong and Francis Bond. 2025. Inner and outer aspect in Cantonese. HPSG 2025 conference paper.](https://dkaramasov.github.io/hpsg2025/assets/pdf/7-inner-and-outer-aspect-in-cantonese.pdf)
-- Locator: Sio & Bond, Inner and Outer Aspect in Cantonese, HPSG 2025 PDF, section 2, example (2a), Tables 1–2
-- Verification: `PASS`
-- What it supports: Classifies 咗 as outer perfective aspect and gives exact 我食咗麵 in V–outer-aspect–object order.
-- Limit: A conference analysis and illustrative examples do not establish unrestricted predicate–object productivity or all semantic interpretations.
+`docs/research/AB30-CORPUS-DIVERSITY-GATE-REVIEW-R1.md`.
 
-### SRC-SYBESMA-2013
+Nine verified source records jointly support the bounded profile and its limits:
 
-- Citation: [Sybesma, Rint. 2013. Cantonese sin1 先 and the question of microvariation and macrovariation. In Guangshun Cao, Hilary Chappell, Redouane Djamouri, and Thekla Wiebusch (eds.), Breaking Down the Barriers: Interdisciplinary Studies in Chinese Linguistics and Beyond, 971-994. Taipei: Academia Sinica.](https://www.researchgate.net/publication/305411096_Cantonese_sin_xian_and_the_question_of_microvariation_and_macrovariation)
-- Locator: Sybesma 2013, Breaking Down the Barriers, pp. 971–994; author-uploaded full text, chapter pp. 17–18, example (25a)
-- Verification: `PASS`
-- What it supports: States that perfective 咗 follows the verb directly except for intervening verbal particles and gives 佢食完咗啲飯.
-- Limit: This is boundary evidence for V–verbal-particle–咗–object, not positive evidence for unrestricted simple V–咗–object productivity.
+- Fan and Chan 2022 analyze Hong Kong Cantonese verbal `咗` as perfective, distinguish `V + 啦` from `V + 咗 + 啦`, and discuss complex-VP placement, realis/irrealis distribution, completion, boundedness, temporal interpretation, and current relevance.
+- Sio and Bond 2025 classify `咗` as outer perfective aspect, give exact simple `V–咗–object`, and distinguish simple V–outer-aspect from valid resultative or inner-aspect predicates followed by outer `咗`.
+- Yip 2025 places resultative complements and inner aspect before outer `咗` and provides `我寫咗一封信，但未寫完`, showing that perfective viewpoint does not invariantly entail completion of the whole event.
+- Matthews and Yip's comprehensive grammar and Yip and Matthews 2000 treat perfective separately from experiential, progressive, continuous, resultative, directional, delimitative, habitual, inchoative, quantifying, and other verbal-particle profiles. Basic Cantonese also states that verbal aspect morphology does not by itself locate an event in past time.
+- Wong and colleagues provide descriptive, experimental, elicited, and natural conversational evidence that `咗` occurs with multiple simple and compound predicate types. These sources support conventional structure and lexical diversity but not unrestricted adult productivity or the complete Cantonese object system.
 
-### SRC-YIP-MATTHEWS-2000-BASIC
-
-- Citation: [Yip, V. and Matthews, S. 2000. Basic Cantonese: A Grammar and Workbook. London/New York: Routledge.](https://culturequote.wordpress.com/wp-content/uploads/2013/03/cantonese-basic.pdf)
-- Locator: Basic Cantonese (Routledge, 2000), Unit 18 printed pp. 93–96 / PDF pp. 105–108; Unit 23 printed pp. 122–123 / PDF pp. 134–135
-- Verification: `PASS`
-- What it supports: Multiple overt V–咗–object examples; 咗 analyzed as perfective aspect; verb morphology does not locate an event in past time by itself; final 未 questions are separately illustrated.
-- Limit: The source also describes the event as complete and discusses result/current relevance. It does not support the former claim that the construction lacks completion or current-relevance implications.
+Publication, experimental, elicited, child-language, and corpus attestation remain scope-bounded. None independently licenses arbitrary predicate–object combinations, every semantic interpretation, dialect-wide naturalness, or promotion.
 
 ## Native-speaker review
 
@@ -152,91 +139,93 @@ The existing eleven response records came from mixed legacy instruments and do n
 - The public legacy form omitted explicit native-language confirmation and anonymous-use consent, while the private record came from a differently administered instrument. Neither receives special weight or promotion credit.
 - Historical results remain informative: `我食咗飯` 8/10, `我食咗麵` 9/10, `佢睇咗三個醫生` 9/10, `佢寫咗一篇文` 9/10, `我答咗你嘅問題` 8/10; `我食咗香港` was accepted by 0/10.
 - Result record: `docs/research/CP029-P1-PFV01-PUBLIC-PANEL-R1-RESULT.md`.
-- Current collection state and the non-deployable follow-up are recorded in
-  `review-packets/native-panel/active-v2/followup-draft-v1-metadata.json`.
-- The live pilot must close and receive an item audit before the follow-up draft
-  may be revised, locked, generated, or deployed.
+- The live pilot must close and receive an item-level audit before the follow-up draft may be revised, locked, generated, or deployed.
 
-## Accepted corpus review
+## Accepted aggregate corpus review
 
-- Decision ledger:
-  `review-packets/corpus-review/AB30/review-decisions-r1.json`.
-- Mechanical source ledger:
-  `review-packets/corpus-review/AB30/candidate-ledger.json`.
-- Current packet: **5 reviewed; 2 genuine; 3 false positives; 0 ambiguous; 0
-  unusable**.
-- Readiness effect: `partial_only`. The packet establishes narrow natural
-  attestation and extractor boundaries, but two small user-supplied sources do
-  **not** satisfy the diverse-corpus gate or establish productivity.
-- The legacy `corpus_*` readiness-gate fields remain false/zero; accepted packet
-  counts are recorded separately because `partial_only` evidence cannot enter the
-  diverse-corpus pass gate.
+The canonical aggregate owner is:
 
-### HKCanCor claim cross-reference checkpoints
+`review-packets/corpus-review/AB30/aggregate-corpus-evidence-manifest-r1.json`.
 
-- Completed research checkpoint:
-  `docs/research/AB30-ZO-R-HKCANCOR-CLAIM-CROSS-REFERENCE-R2.md`.
-- PyCantonese 5.0.0 exhaustively retrieves the bounded high-recall
-  `v|v1|xv + 咗 + r` track: all 121 exact HKCanCor tokens across 118
-  utterances and 46 source files.
-- Context review accounts for every candidate: **69 genuine, 48 false positive,
-  4 ambiguous, 0 unusable**.
-- The genuine rows support natural surface attestation for the narrow overt-object
-  profile. The false-positive and ambiguous rows confirm that token adjacency and
-  the corpus POS tag cannot determine construction membership automatically.
-- This POS-defined track is a research cross-reference only. It does not replace
-  the accepted readiness packet, exhaust all `咗` or overt-NP candidates, satisfy
-  the diverse-corpus gate, establish productivity, or change status/readiness.
-- A second completed, disjoint checkpoint is
-  `docs/research/AB30-ZO-M-HKCANCOR-CLAIM-CROSS-REFERENCE-R1.md`.
-- PyCantonese 5.0.0 exhaustively retrieves all 106 exact HKCanCor
-  `v|v1|xv + 咗 + m` tokens across 104 utterances and 44 source files; `m` is
-  the largest remaining immediate-post-marker POS bucket.
-- Context review accounts for every candidate: **52 genuine, 52 false positive,
-  2 ambiguous, 0 unusable**.
-- Quantified-object attestations and duration, frequency, degree, threshold,
-  predicative, and postverbal-subject boundaries occur in equal numbers. This
-  checkpoint remains separate from the accepted readiness packet and does not
-  change status or readiness.
+It references rather than copies these complete decision ledgers:
 
-## Negative and boundary cases
+1. `review-packets/corpus-review/AB30/review-decisions-r1.json` — 5 reviewed; 2 genuine; 3 false positive; 0 ambiguous; 0 unusable.
+2. `review-packets/corpus-review/AB30/hkcancor-zo-r-decisions-r2.json` — 121 reviewed; 69 genuine; 48 false positive; 4 ambiguous; 0 unusable.
+3. `review-packets/corpus-review/AB30/hkcancor-zo-m-decisions-r1.json` — 106 reviewed; 52 genuine; 52 false positive; 2 ambiguous; 0 unusable.
 
-- Standard executable test file: `tests/constructions/PostverbalZoPerfectiveVP.json`
-- Reviewed boundary inventory: `docs/research/CP029-P1-PFV01-BOUNDARY-INVENTORY-R1.tsv`
-- Inventory status: **complete for the current narrow claim**.
-- Executable exclusions cover objectless `V–咗`, `V完咗O`, motion-goal perfectives, experiential `過`, progressive `緊`, bare `VO`, placement profiles, classifier-incompatible objects, unsupported nominal structures, and unknown nominal heads.
-- Selectional anomalies are not treated as construction-absence cases. The structural `V–咗–NP` span is preserved and the whole analysis is wrapped as `NeedsContext` when the high-confidence predicate–object profile is incompatible.
-- The final-`未` wrapper is covered only where the object itself is licensed; the split `呢隻牌子` survey item is not used to broaden the claim.
+Aggregate totals are **232 reviewed; 123 genuine; 103 false positive; 6 ambiguous; 0 unusable**. Every candidate retains its original stable ID, component ledger, source location, context, and classification.
+
+This satisfies the repository's bounded reviewed-corpus gate because all three declared packets are complete, provenance-preserving, and include genuine, false-positive, and ambiguous outcomes. It does **not** establish independent second-corpus replication:
+
+- the two HKCanCor tracks are disjoint query slices of one frozen 58-file corpus distribution;
+- the separate packet contains only two small user-supplied conversation sources;
+- the aggregate does not estimate frequency, unrestricted lexical productivity, dialect-wide naturalness, or the complete object system;
+- six candidates remain explicitly ambiguous;
+- clean role-neutral panel evidence and held-out validation remain incomplete.
+
+The genuine rows attest personal-pronoun, possessive, demonstrative, classifier-NP, quantified, document, utterance, headless-amount, and headless-relative object onsets. False-positive and ambiguous rows establish that token adjacency and corpus POS labels cannot determine construction membership automatically.
+
+## Direct subtype and sibling boundaries
+
+### Direct AB30 subtype
+
+```text
+simple lexical predicate + outer perfective 咗 + overt licensed object NP
+```
+
+No overt resultative or inner-aspect material intervenes between the simple predicate and `咗`. The object must be independently represented; AB30 does not infer an omitted object or expand the noun system.
+
+### Valid source-supported siblings
+
+```text
+食飽咗麵
+食完咗麵
+嚇親咗佢
+```
+
+Resultative or inner-aspect material forms a larger predicate before outer `咗`. These strings are valid sibling profiles, not malformed direct AB30 positives, and their evidence is not donated automatically to AB30.
+
+### Independent profiles and boundaries
+
+Keep separate:
+
+- objectless perfectives and discourse-recovered objects;
+- motion-goal perfectives;
+- property and state predicates;
+- post-`咗` duration, frequency, degree, threshold, and result-differential material;
+- postverbal subjects and existential structures;
+- following clauses, topics, quotations, and repairs;
+- experiential `過`, progressive `緊`, bare `VO`, final-`未` questions, and other aspect or particle profiles;
+- classifier-incompatible, unsupported, or unknown nominal structures.
+
+Selectional anomalies are not construction-absence cases. The structural `V–咗–NP` span remains visible while the whole analysis may be wrapped as `NeedsContext`.
 
 ## Implementation state
 
-- Lifecycle: `v0.5.187_panel_model_migration_research_pending`
-- Implementation validation: regression **545/545**, NP subsystem **43/43**, and construction assertions pass independently of linguistic status.
-- Code–documentation review: **PASS** against commit `d08367dcf0f13d57b39a406ddf72388ba079a9e6`.
-- Reviewed code locations: `main.js:3083-3103`, `main.js:13644-13735`, `main.js:15348-15426`, and `main.js:21168`.
-- Structural rule: overt parser action verb + perfective 咗 + overt licensed NP object.
+- Runtime behavior and executable fixtures are unchanged by the aggregate-corpus acceptance.
+- Structural rule: overt parser action verb + perfective `咗` + overt licensed NP object.
 - Semantic rule: high-confidence incompatible predicate–object combinations are separately wrapped as `NeedsContext`; unknown combinations are not asserted to be natural merely because the structural span exists.
-- Completion semantics: the node creates no separate completion/result construction, but the documentation does not deny completion, boundedness, temporal, or current-relevance interpretations of 咗.
+- The node creates no separate completion or result construction, while the documentation preserves possible completion, boundedness, temporal, result, and current-relevance interpretations.
+- Implementation tests and parser output remain implementation evidence only; current repository verification owns exact executable counts.
 
 ## Open questions and blockers
 
-- The current action-verb inventory is broader than the exact verbs independently attested in the checked sources.
+- The current action-verb inventory is broader than the exact verbs independently attested in checked sources.
 - The parser's licensed-NP inventory is deliberately bounded and does not establish the complete Cantonese object system.
 - The split `呢隻牌子` question needs a better lexical and contextual instrument before it can extend the claim.
-- Mixed legacy instruments cannot satisfy the panel threshold, regardless of the total number of historical responses.
+- Mixed legacy instruments cannot satisfy the panel threshold, regardless of total historical responses.
 - `provisional` requires at least 10 usable adjudicated judgments per critical positive and boundary item from one clean role-neutral instrument.
-- Next panel action: await closure and item-level audit of
-  `YUE-JUDGMENT-PILOT-01` before revising the non-deployable follow-up draft; do
-  not grant any respondent special status.
-- Next corpus action: expand independent source diversity. The accepted
-  `partial_only` packet does not complete corpus readiness.
+- Next panel action: await closure and item-level audit of `YUE-JUDGMENT-PILOT-01` before revising the non-deployable follow-up draft; do not grant any respondent special status.
+- The reviewed-corpus gate is complete. Additional corpus work should target genuinely independent replication only when it outranks other available evidence-triggered work; it must not reopen or dilute the accepted aggregate.
+- Held-out validation remains not started.
 
 ## Related constructions
 
-No same-family active construction was identified in the canonical consolidation table.
+No same-family active construction was identified in the canonical consolidation table. Resultative and inner-aspect sibling profiles remain separately typed evidence domains.
 
 ## Migration provenance
 
 - Full pre-migration record: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
 - Status migration date: 2026-07-21.
+- Accepted findings merge: PR #301, commit `06aeff71897fc12883b6fa53536f7b4e5f191e16`.
 - The frozen JSON preserves the former wide schema; this note is the active authoring record.

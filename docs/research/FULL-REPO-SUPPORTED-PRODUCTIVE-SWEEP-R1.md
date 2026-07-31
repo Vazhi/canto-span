@@ -26,9 +26,10 @@ The sweep evaluates every permanent identity. It separates construction identity
 |---|---|
 | `language_claim_defined` | 38 |
 | `negative_boundaries_complete` | 28 |
-| `reviewed_corpus_evidence` | 3 |
-| `runtime_research_alignment` | 17 |
-| `source_scope_matches_claim` | 47 |
+| `reviewed_corpus_evidence` | 2 |
+| `role_neutral_panel_threshold` | 1 |
+| `runtime_research_alignment` | 18 |
+| `source_scope_matches_claim` | 46 |
 
 ## Narrow-construction discovery signals
 

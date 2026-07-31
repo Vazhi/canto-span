@@ -37,6 +37,23 @@ for (const testCase of matrix.cases) {
         assert.strictEqual(trace(row).classifier_head_compatibility_status, testCase.expected_classifier_compatibility);
         checks.push("classifier_head_compatibility_exact");
       }
+      for (const [fixtureKey, traceKey, checkName] of [
+        ["expected_structural_np_status", "structural_np_status", "structural_np_status_exact"],
+        ["expected_lexical_choice_status", "lexical_choice_status", "lexical_choice_status_exact"],
+        ["expected_downstream_argument_licensing", "downstream_argument_licensing", "downstream_argument_licensing_exact"],
+      ]) {
+        if (testCase[fixtureKey]) {
+          assert.strictEqual(trace(row)[traceKey], testCase[fixtureKey]);
+          checks.push(checkName);
+        }
+      }
+      if (testCase.expected_unit_word_type || testCase.expected_semantic_unit_relation || testCase.expected_unit_word_sense_id) {
+        const compatibility = trace(row).classifier_head_compatibility || {};
+        if (testCase.expected_unit_word_type) assert.strictEqual(compatibility.unit_word_type, testCase.expected_unit_word_type);
+        if (testCase.expected_semantic_unit_relation) assert.strictEqual(compatibility.semantic_unit_relation, testCase.expected_semantic_unit_relation);
+        if (testCase.expected_unit_word_sense_id) assert.strictEqual(compatibility.unit_word_sense_id, testCase.expected_unit_word_sense_id);
+        checks.push("unit_word_evidence_metadata_exact");
+      }
     }
     if (testCase.forbid_licensed_np) {
       assert.strictEqual(licensedRows(rows).length, 0, `Unexpected licensed NP: ${licensedRows(rows).map(rowSurface).join(", ")}`);

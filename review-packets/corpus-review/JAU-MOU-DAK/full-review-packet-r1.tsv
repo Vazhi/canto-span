@@ -1,0 +1,96 @@
+candidate_id	query_id	profile_kind	tokenization_kind	matched_surface_span	source_file	turn_index_zero_based	participant	utterance_initial	utterance_final	following_predicate_candidate	nearest_left_lexical_word	nearest_left_lexical_ud_pos	nearest_right_lexical_word	nearest_right_lexical_ud_pos	text	previous_text	next_text	expert_class	semantic_subtype	composition_status	polarity_or_clause_profile	decision_confidence	decision_reason
+jmd-f1ed9ebb1df6b28aa456	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-001_v2.cha	2	XXB	false	false	true	先	ADV	平	ADJ	平機票要淡季先有得平𡃉喎.	你老公有冇平機票啊?	而家旺-.						
+jmd-091371c6b3729d5f052c	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-001_v2.cha	4	XXA	true	false	true			去	VERB	冇得去嗱.	而家旺-.	吓?						
+jmd-396ba45226c2535178c8	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-001_v2.cha	128	XXB	false	false	true	先至	ADV	睇	VERB	你要睇啱邊個時間去,先至有得睇𡃉.	即係可能嗰個時期係一群噉出來呢,所以有時間性囖.	唔係你要去就有得睇𡃉嚹.						
+jmd-6385ccf63cabf0f24314	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-001_v2.cha	129	XXB	false	false	true	就	ADV	睇	VERB	唔係你要去就有得睇𡃉嚹.	你要睇啱邊個時間去,先至有得睇𡃉.	哦,即係睇下你幾時去,又撞啱有啲團,噉先有得參加囖.						
+jmd-4df92e84dedc9b8e25c5	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-001_v2.cha	130	XXA	false	false	true	先	ADV	參加	VERB	哦,即係睇下你幾時去,又撞啱有啲團,噉先有得參加囖.	唔係你要去就有得睇𡃉嚹.	係唔係啊?						
+jmd-8003f2abe5bd40de1f24	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-001_v2.cha	158	XXA	false	false	true	度	NUM	睇	VERB	幾時度有得睇唧噉哩啲,知唔知大概?	噠你老公個朵.	我唔知𡃉.						
+jmd-82d02d2e694ac3667241	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-005a_v2.cha	109	XXA	false	false	false	你	PRON	你	PRON	佢嗰啲預早訂晒貨嗰啲呢,成年訂晒嗰啲,你冇得,你唔可以見到話個市唔好,我而家唔要嚹噉樣啊.	都賺得好多啊?	因為佢係年初嗰陣時一次過冚唪唥收晒你啲錢,成年你訂晒𡃉嘞,噉就,到時啊升𠻺梗係你着數喇,如果唔升嘅時候呢,你就,你就真係冇乜,冇乜著數𡃉咋你真係.						
+jmd-21b76d38ad19eaf9d2f3	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-005a_v2.cha	114	XXB	false	false	true	佢	PRON	揀	VERB	但係,係喇,我就唔訂,就因為佢冇得揀吖嗎,即係之前都,誒,又唔會話俾咗個sample你睇先至揀噉樣,又冇得揀直程,,一定要訂.	如果唔係𠻺真係好似,要來做收藏品噉.	"係啊,冇啊,好多嘢,好多嘢完全-,佢直程話俾你知有啲嘢""你俾錢喇."						
+jmd-ffa9c2ac4b64809e0f1f	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-005a_v2.cha	114	XXB	false	false	true	又	ADV	揀	VERB	但係,係喇,我就唔訂,就因為佢冇得揀吖嗎,即係之前都,誒,又唔會話俾咗個sample你睇先至揀噉樣,又冇得揀直程,,一定要訂.	如果唔係𠻺真係好似,要來做收藏品噉.	"係啊,冇啊,好多嘢,好多嘢完全-,佢直程話俾你知有啲嘢""你俾錢喇."						
+jmd-e6f23de440a829e7c6f6	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-005b_v2.cha	143	XXA	false	false	true	你	PRON	順序	ADJ	直版未用過嘅,如果你有得順序連埋霖把𠻺重好𠻹.	直版嗰啲吖嗎.	我有啊,我有好多啊.						
+jmd-004028dccf785f70d9b9	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-011_v.cha	41	XXB	true	false	true			享用	VERB	冇得享用哩個福利.	逼你哋要俾錢睇醫生.	都有啲同事都會𠸏.						
+jmd-a581f40a90aee290c9b9	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-018_v.cha	43	XXM	false	false	true	啊	PART	冇得	AUX	噉算合格𡃉嚹,你即係你要求高啊,冇得-冇得要求𡃉嚹.	噉好差喎,啱啱合格.	食啲乜嘢啊?						
+jmd-94b31e36615ce81607f1	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-018_v.cha	43	XXM	false	false	true	冇得	AUX	要求	VERB	噉算合格𡃉嚹,你即係你要求高啊,冇得-冇得要求𡃉嚹.	噉好差喎,啱啱合格.	食啲乜嘢啊?						
+jmd-1d7f3033a1bd3a2cf3f3	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-019_v.cha	98	XXM	false	false	true	喇	PART	剪	VERB	係喇,冇得剪𡃉其實.	所以如果剪碎你又唔想,即係噉樣削啲頭髮呢.	係啊.						
+jmd-c131987fb43bef23e8ef	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-020_v.cha	103	XXB	false	false	true	快	ADJ	放假	VERB	噉呢就之前都,誒,開頭呢就揾agent揾咗一份嘅,噉呢就但係-噉呢我又-因為佢又-本來又想叫我六月二號就返工,噉呢但係我-即係我又唔想咁快冇得放假噉-噉樣.	喀,喀,喀,喀.	哦.						
+jmd-13309b00b0193de3ec7a	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-020_v.cha	153	XXB	true	false	true			計	VERB	冇得計𡃉.	"""噉樣呢."	吓?						
+jmd-5c8bb69af902fff4d3f3	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-020_v.cha	155	XXA	true	false	true			計	VERB	冇得計返錢㗎?	吓?	係啊.						
+jmd-c93ea30d7e2dbf23b908	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-020_v.cha	164	XXB	true	false	true			計	VERB	有得計?	喀,喀,喀,喀.	係,即係計返你個basicsalary,然後再計返幾多錢俾你噉樣𡃉喎.						
+jmd-5d765b9cb33dc411c3db	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-020_v.cha	302	XXA	false	false	true	即係	CCONJ	發展	VERB	我想係要即係-即係有得發展,我而家想教書噉樣.	噉又係.	噉樣其實我教書噉可以教-教中學,噉第日可以,譬如我自己想就想譬如教大學或者大專嗰啲噉樣囖.						
+jmd-5f1cdc69d79b19147ef2	HKCANCOR-JAU-MOU-DAK-R1	polar_yau_mou_dak	yau_plus_single_token_mou_dak	有冇得	FC-020_v.cha	404	XXA	false	false	true	最近	ADV	interview	VERB	你最近有冇得interview啊其實?	咦你-喀.	最近呀?						
+jmd-1ab3bba6002e4f4544ce	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-020_v.cha	513	XXA	false	false	true	再	ADV	in	VERB	佢有冇話俾你聽話幾時再有得in噉樣啊?	係啊,係啊,即係總之係打返去promote,佢都係話好高興囖.	噉佢就話叫我等下.						
+jmd-f95fccb4087916e0d876	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-020_v.cha	518	XXB	false	false	true	就	ADV	second	ADJ	"""噉呢佢就話計完晒啲分之後呢,噉如果你係高過人哋呢,佢話噉你就有得secondinterview噉樣囖."	"噉呢佢就話,誒,應-因為哩一兩日-佢話哩一兩日都重有人去interview嘅,噉佢話-噉就-誒,同埋""我哋都要計下分噉樣喎."	佢話,誒,就應該下個禮拜之內會通知𡃉嘞,噉樣囖,係嘞.						
+jmd-5523326c043a266c8ddb	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-020_v.cha	529	XXA	false	false	true	應該	AUX	發展	VERB	同埋都好似應該有得發展𡃉係唔係啊其實?	係喇,因為比較-好似都有啲嘢學噉樣喇.	我見到啲人呢做,誒,humanresources嗰啲呢,即係我都覺得幾好𡃉喎,即係有得發展得會.						
+jmd-43ee36eaca12bffbc7ab	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-020_v.cha	530	XXA	false	false	true	即係	CCONJ	發展	VERB	我見到啲人呢做,誒,humanresources嗰啲呢,即係我都覺得幾好𡃉喎,即係有得發展得會.	同埋都好似應該有得發展𡃉係唔係啊其實?	係啊,係啊.						
+jmd-124a5670569c52ef8d51	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-025_v.cha	239	XXX	true	false	true			走	VERB	冇得走.	幾年生約,幾年死約嗰啲呢?	出得早,快咗少少𠻹,就係快少少.						
+jmd-f46ba6c6b33356ebbff8	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-025_v.cha	574	XXX	true	false	true			減	VERB	有得減有得減.	repeatonemoretime.	肥少少.						
+jmd-6034c1a9770fae387160	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-025_v.cha	574	XXX	false	false	true	減	VERB	減	VERB	有得減有得減.	repeatonemoretime.	肥少少.						
+jmd-02ac16042696cf7e5b0c	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-025_v.cha	788	XXY	false	false	true	都	ADV	掹	VERB	噉應該都有得掹𠸏,呵?	都係交惡啫.	掹嘅意思係乜嘢呢?						
+jmd-83a7242bcc1187597fc2	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-026_v2.cha	145	XXA	false	false	true	都	ADV	食	VERB	過到去呢成十一點幾嚹已經,即係去到呢飯都冇得食呢就瞓囖.	喀.	有冇時差啊?						
+jmd-c773cbe782777a53cb8e	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-026_v2.cha	440	XXA	true	false	true			攞	VERB	冇得攞.	scholarship啊.	冇得攞?						
+jmd-fcac1144f46a5cd37673	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-026_v2.cha	441	XXJ	true	false	true			攞	VERB	冇得攞?	冇得攞.	真唔真啊?						
+jmd-4e89e2927579f71e3ccb	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-026_v2.cha	443	XXA	false	false	true	冇	VERB	攞	VERB	冇,冇得攞啊,我諗冇得攞啊應該.	真唔真啊?	冇得攞?						
+jmd-ce0c6e1e3906479c6cd5	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-026_v2.cha	443	XXA	false	false	true	諗	VERB	攞	VERB	冇,冇得攞啊,我諗冇得攞啊應該.	真唔真啊?	冇得攞?						
+jmd-2cdd3b4e0b7563421974	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-026_v2.cha	444	XXJ	true	false	true			攞	VERB	冇得攞?	冇,冇得攞啊,我諗冇得攞啊應該.	因為佢嗰啲呢誒scholarship呢都係俾嗰啲繼續讀嗰啲人𠸏.						
+jmd-22c3ad42032370521a4f	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-026_v2.cha	461	XXJ	false	false	false	又	ADV	飯	NOUN	希望你攞到喇,噉我又有得飯食嘞.	遲啲留意下囖或者.	又有一餐食啊係唔係呀?						
+jmd-f17dfe94a04296e6304d	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-027_v2.cha	82	XXB	false	false	true	Poly	PROPN	讀	VERB	得Poly有得讀Physiotherapy咋咩?	係咩?	係啊.						
+jmd-3a071df46767b7e5de09	HKCANCOR-JAU-MOU-DAK-R1	polar_yau_mou_dak	yau_plus_single_token_mou_dak	有冇得	FC-027_v2.cha	182	XXB	false	false	true	學院	NOUN	讀	VERB	即係睇下嗰科喺嗰間學院有冇得讀?	揀科先囖.	係嘞.						
+jmd-d716c29b53cbdeb49e5e	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-029_v.cha	301	XXS	false	false	true	先	ADV	出糧	VERB	噉幾時啊,幾時先有得出糧?	吓?	八月二十八號.						
+jmd-ddf2f730c1317ee62620	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-035_v2.cha	141	XXX	false	false	false	我	PRON	點	PRON	搞到我冇得點食,即係嘗試下周圍嗰啲美食啊,好鬼,好鬼衰啊,冇得食.	因為今次帶咗太多無謂嘅餅乾去,同埋太多哩個公仔麵去嚹.	好慘,下次記住都係唔好點帶嘢去啊.						
+jmd-d128365280f3b1d5c20b	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-035_v2.cha	141	XXX	false	false	true	啊	PART	食	VERB	搞到我冇得點食,即係嘗試下周圍嗰啲美食啊,好鬼,好鬼衰啊,冇得食.	因為今次帶咗太多無謂嘅餅乾去,同埋太多哩個公仔麵去嚹.	好慘,下次記住都係唔好點帶嘢去啊.						
+jmd-b4dd753f1a06ba236d09	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-038a_v2.cha	85	XXY	false	false	true	先	ADV	走	VERB	噉呢,就要𠻺做到十點幾先有得走囖.	不過冇補水𡃉喎.	有時做到成點幾,兩點先走啊噉樣囖.						
+jmd-28d48e739daf79ab85f2	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-038a_v2.cha	141	XXY	false	false	true	吖	PART	爆冷	VERB	噉都好吖,有得爆冷.	佢哋次次都話我臨尾先爆冷噉樣.	係囖.						
+jmd-28a36dd4642059336c34	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-038b_v2.cha	133	XXX	false	false	true	可能	AUX	讀	VERB	即係十二,三分都可能有得讀喇.	係啊係啊,係啊.	係喇係喇.						
+jmd-767274c418d1efcbd4a0	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-044_v2.cha	390	XXE	true	false	false			特價	NOUN	冇得特價𠻹.	星期三,算喇.	為咗啲生日嘅人都冇辦法𠸏.						
+jmd-b3c86a3df7459f6fb3bb	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-045_v2.cha	352	XXK	false	false	true	𠻺	ADV	講	VERB	改𠻺冇得講啫.	不如你兩個幫下佢喇.	不如改過名叫Esprit吖.						
+jmd-1f8659093041eb221aae	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-049_v2.cha	116	XXB	false	false	true	集	NOUN	做	VERB	佢今集冇得做喎.	幾靚女𡃉佢真係.	梗係喇.						
+jmd-4603d2ccaab71614435a	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-049_v2.cha	173	XXA	true	false	true			講	VERB	冇得講啊,係唔係啊?	天意來𠸏哩啲.	天意啊.						
+jmd-c2ea2da3e7aa22dfcd70	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-049_v2.cha	312	XXA	false	false	true	難得	ADJ	用	VERB	我有身份證𡃉,難得有得用,吹呀.	閃囖你咪.	嘩.						
+jmd-28a5ca79a52d856136d4	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-052_v2.cha	70	XXA	false	false	true	都	ADV	賣	VERB	即係香港都有得賣嘅,嗰啲機?	哦.	而家一路有𡃉嚹而家.						
+jmd-62afd3e69b1615d768a5	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-055_v2.cha	216	XXF	false	false	true	講	VERB	講	VERB	噉你噉講冇得講喇.	"阿叻話齋""專業又係你班業餘."	我覺得炒股票好似真係好容易揾錢.						
+jmd-0d1f9e5f277b0cee37ce	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-055_v2.cha	331	XXF	false	false	true	都	ADV	睇	VERB	帶咗人食飯,而家乜嘢都冇得睇.	最衰係你喇.	小芙蓉.						
+jmd-20a02f1b213a7346c3ee	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak_split_diagnostic	split_jau_or_mou_plus_dak	有得	FC-056_v2.cha	64	XXY	false	false	true	蚊	NOUN	交易	VERB	千二蚊有得交易啊,一部機.	價錢而家平喇.	改埋機,有埋手掣.						
+jmd-b0d3e0f0402e1ae7d2e9	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-056_v2.cha	102	XXX	false	false	true	先	ADV	賣	VERB	即係係鴨寮街先有得賣𡃉喇,啲垃圾佬度.	噉吖雖然而家紅白機𠻺而家fadeout咗喇,已經-已經冇𡃉喇已經.	噉樣其實就,其實你覺得呢,打機哩項嗜好你點睇?						
+jmd-ab6fa06da402fc164f5f	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-101_v2.cha	4	XXG	false	false	false	就	ADV	成日	ADV	佢嗰份工就有得成日返大陸嘅.	marketing嗰啲噉嘅嘢囖.	噉我自己又鍾意成日周圍去𠺢嗎.						
+jmd-7ce58a02d186d2ad0312	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-101_v2.cha	127	XXB	false	false	true	呢	PART	食	VERB	佢呢冇得食泡菜呢,佢哋逼住呢喺度買外國嗰啲醃咗嗰啲泡菜食喎.	有辣醬啊,辣膏啊,誒辣油啊.	喀.						
+jmd-52ccdf0568ab3134d6f2	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-103_v2.cha	19	XXB	false	true	false	又	ADV			所以都-都幾開心吖,BBQ呢又有得.	係啊.	都好耐冇燒過嘢食啊.						
+jmd-7b5688d3050210fba2da	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-106a_v2.cha	93	XXB	false	false	true	重	ADV	食	VERB	重有得食?	咪係囖.	收十一點吖嗎.						
+jmd-7228ab15c0309c98998c	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-106b_v2.cha	55	XXB	true	false	true			睇	VERB	冇得睇囖.	噉點啊?	阿葉凱婷喊啊臨走嗰陣時.						
+jmd-91e6d470247adc707540	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-106b_v2.cha	58	XXB	false	false	true	因為	CCONJ	睇	VERB	因為冇得睇SailorMoon,定因為要走啊?	係啊?	冇得睇SailorMoon啊.						
+jmd-4d2f4a71c3fcb5a4c12d	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-106b_v2.cha	59	XXA	true	false	true			睇	VERB	冇得睇SailorMoon啊.	因為冇得睇SailorMoon,定因為要走啊?	噉帶埋餅帶落去睇咪得囖.						
+jmd-0b421d8f9966aca99024	HKCANCOR-JAU-MOU-DAK-R1	polar_yau_mou_dak	yau_plus_single_token_mou_dak	有冇得	FC-107_v2.cha	88	XXB	false	false	true	知	VERB	好似	VERB	唉,都話嘍,我五年後都唔知有冇得好似佢噉咯,都唔知.	不過你阿哥好鬼細.	喀.						
+jmd-585125070afc40c4d5a1	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-107_v2.cha	212	XXB	false	false	true	佢	PRON	拍戲	VERB	靠屋企𡃉喇,根本佢有得拍戲都.	唔知.	但係佢個樣好似吸毒噉樣,瘦到.						
+jmd-fe39bce00dda5e96e624	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-108a_v2.cha	159	XXB	false	false	false	而家	ADV	唔	ADV	噉咪中途而家冇得-唔讀呀?	佢係讀𡁵大學𡃉嚹已經.	係啊,不過其實我唔知啊!其實嗯-我覺得佢讀嗰個-個即係大學呢,即係唔係-即係我覺得佢自己讀唔讀都係噉囖.						
+jmd-6348d35ec8361ca9aa46	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-108a_v2.cha	275	XXA	false	false	true	喇	PART	聚	VERB	係喇,有得聚下.	係囖,咪好囖.	十幾個人啊?						
+jmd-d9520c3fb204ec4e4e17	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-108a_v2.cha	322	XXA	false	false	true	係	VERB	停	VERB	唉!諗住嘩!死嚹,重有三年有排捱,但係發覺呢原來呢啲嘢係多到呢,根本呢,一個sem係好易過,係冇得停𡃉喺中間.	我開頭呢,喺我開頭都覺得呢,好驚啊.	未完𠺢嗎都.						
+jmd-d3c438dab92ec08f56bd	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-108a_v2.cha	324	XXA	false	false	true	係	VERB	停	VERB	係-係你忙到,根本日日係-啲時間呢係冇得停啊,你根本係淨係用來做功課,做-做哩樣做嗰樣,根本係冇時間俾你覺得呢你有時間空檔出來𡃉.	未完𠺢嗎都.	不過你都幾辛苦我覺得,重辛苦過A-level啊真係.						
+jmd-38f903bf2642c2227e7e	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-108d_v2.cha	173	XXB	false	false	false	即係	CCONJ	去	ADP	即係有得去玩下吖嗎.	幾正啊.	𠻺吓.						
+jmd-cf22ca531ce770abc2f3	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-108d_v2.cha	180	XXB	false	false	true	到	PART	玩	VERB	今年搞到冇得玩𠻹,重諗住有得去CU呢八下,玩下,熱鬧下吖嗎真係.	嗯嗯.	陳子由而家點啊陳子由?						
+jmd-3607ba714e38461c5a4e	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-108d_v2.cha	180	XXB	false	false	true	住	PART	去	VERB	今年搞到冇得玩𠻹,重諗住有得去CU呢八下,玩下,熱鬧下吖嗎真係.	嗯嗯.	陳子由而家點啊陳子由?						
+jmd-9beb68e2b06ec868d53c	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-109a_v2.cha	52	XXC	false	false	true	到	PART	賣	VERB	差唔多而家周街都見到有得賣,好似等住你去買噉.	同埋係可能太普遍喇真係.	噉𠻺係.						
+jmd-9a6f394701674de198d6	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-109a_v2.cha	88	XXA	false	false	true	就算	CCONJ	做	VERB	有啲都未必夠-未必夠十五歲啊,噉佢哋做埋part-time,噉佢哋譬如佢哋就算有得做part-time都係麥當勞啊,啲幾蚊一個鐘啊嗰啲噉啊都唔夠賺埋賺埋都唔夠佢買一個袋喇.	嘩!咁細個根本就唔需要咁-點做part-time啊?	噉𠻺係.						
+jmd-5c20cfaf42cb06138915	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-109a_v2.cha	90	XXA	false	false	true	噉樣	CCONJ	講	VERB	不過佢哋而家樣樣都崇尚名牌噉樣冇得講喎.	噉𠻺係.	大人整出來𡃉咩?						
+jmd-03a9162e422372e5cda2	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-109a_v2.cha	231	XXC	false	false	true	噉	CCONJ	控制	VERB	噉冇得控制𡃉哩啲嘢.	你譬如租CD嘅話,噉已經又蝕咗喇,如果係噉,噉如果係噉啊,譬如你係我朋友,跟住我問你借CD噉樣,唔通唱片公司又蝕咗咩?	啱,我都贊成你哩個方向.						
+jmd-5451cf4f5ee55d5bd4d8	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-R002a_v2.cha	27	XXC	false	false	true	拇指	NOUN	講	VERB	豎起十-直豎拇指冇得講𡃉基本上.	得𡃉.	冇得講𡃉.						
+jmd-dee50989645bc7ff1b9c	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-R002a_v2.cha	28	XXA	true	false	true			講	VERB	冇得講𡃉.	豎起十-直豎拇指冇得講𡃉基本上.	係啊.						
+jmd-23d75ff14dd681fdcc80	HKCANCOR-JAU-MOU-DAK-R1	negative_fused_lexeme_diagnostic	single_fused_token_prefixed_mou_dak	冇得頂	FC-R002b_v2.cha	25	XXA	false	false	false	好	ADV	𡃉	PART	噉𠻺我覺得喺創意上真係好冇得頂𡃉.	亦都大家一齊覺得好興奮𡃉.	係.						
+jmd-5cc50147c4eedd28c543	HKCANCOR-JAU-MOU-DAK-R1	negative_fused_lexeme_diagnostic	single_fused_token_prefixed_mou_dak	冇得頂	FC-R002b_v2.cha	117	XXA	false	false	false	真係	ADV	囖	PART	同埋佢寫嗰樣嘢幾有趣就係話佢揀艷舞哩一個topic真係冇得頂囖.	嗯.	即係男艷舞.						
+jmd-aa3955187193337207f1	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-R004_v2.cha	3	XXB	false	false	true	重	ADV	搞	VERB	重有得搞.	噉樣就即係令到個商鋪呢,打咗支強心針,就堅持就再去講噉樣.	喀.						
+jmd-7e443549f6e29748dfcf	HKCANCOR-JAU-MOU-DAK-R1	polar_yau_mou_dak	yau_plus_single_token_mou_dak	有冇得	FC-R004_v2.cha	94	XXB	false	false	true	喂	INTJ	平	ADJ	"噉我話""喂有冇得平啊?"	誒,佢譬如佢登二千四.	"""佢話你噏個價喇."						
+jmd-1b7b25d68c7b4a4c9d54	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-R005_v2.cha	76	XXA	false	false	true	實	ADV	醫	VERB	實有得醫𠸏.	肯定醫好𠸏.	係.						
+jmd-a17aaf547bf76cde4a60	HKCANCOR-JAU-MOU-DAK-R1	negative_fused_lexeme_diagnostic	single_fused_token_prefixed_mou_dak	冇得頂	FC-R005_v2.cha	192	XXB	false	false	false	真係	ADV	啊	PART	有個大單真係冇得頂啊.	有個大單啊.							
+jmd-6d06e899e87e9f2a73d6	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-R010b_v.cha	158	XXA	false	false	false	邊	PRON	surprise	NOUN	噉你邊有得surprise唧?	而家冇哩啲surprise嚹已經.	冇晒嚹.						
+jmd-31643095d702be0777e3	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-R011_v.cha	71	XXA	false	false	true	真係	ADV	計	VERB	即係哩個真係冇得計喎.	可以噉樣講𡃉喎.	嗯.						
+jmd-56ffad37bd471f2083d6	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-R011_v.cha	103	XXB	false	false	true	根本	ADV	講	VERB	根本冇得講𡃉喎.	又或者預言到我以後呢就將會冇,或者係返返轉頭啊噉樣.	"""唉,哩一劫我係要硬食𡃉嚹."						
+jmd-0fca42095493105f46d4	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-R011_v.cha	108	XXC	false	false	true	呢	PART	諗	VERB	係四十五萬呢,有得諗.	同埋多係唔求得𡃉.	嗱,我唔攞四十六.						
+jmd-759a88c315a290e7cc2a	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-R013a_v.cha	109	XXB	false	false	false	你	PRON	你	PRON	因為你冇得-你其實冇乜點停𡃉.	其實係,誒,對-對創作人來講其實好𡃉.	即係你,譬如你一衰呢,你就要諗即係除咗你當然可以唔諗.						
+jmd-073168411eb7f659ec5e	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-R013a_v.cha	117	XXB	false	false	true	你	PRON	選擇	VERB	誒,第一,因為你冇得選擇去停步囖.	係點樣乜嘢令你覺得好玩?	即係你唔可以停𡃉其實.						
+jmd-ac700a9984d7700c18b6	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-R013a_v.cha	119	XXD	true	false	false			原地踏步	X	冇得原地踏步.	即係你唔可以停𡃉其實.	你冇得話,喂,不如揞眼,閂埋門,鎖閘放狗.						
+jmd-427728e6702c1992d3d9	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-R013a_v.cha	120	XXB	false	false	true	你	PRON	話	VERB	你冇得話,喂,不如揞眼,閂埋門,鎖閘放狗.	冇得原地踏步.	然後,誒,打下麻雀先.						
+jmd-ca926364d76ea781e87c	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-R013b_v.cha	25	XXD	false	false	true	冇	VERB	俾	VERB	冇-冇得俾你創作咁滯𠻹啊.	你做電影就死嚹而家.	唔係.						
+jmd-d25ed0de349187480d68	HKCANCOR-JAU-MOU-DAK-R1	affirmative_yau_dak	single_token_yau_dak	有得	FC-R013b_v.cha	54	XXC	false	false	true	即係	CCONJ	做	VERB	即係有得做嘅?	噉你點睇哩個大趨勢𡃉?	係𡃉.						
+jmd-6e9197c8a15312c643f6	HKCANCOR-JAU-MOU-DAK-R1	polar_yau_mou_dak	yau_plus_single_token_mou_dak	有冇得	FC-R013b_v.cha	115	XXC	false	false	false	內地	NOUN	即係	CCONJ	但係市場上邊呢,譬如內地有冇得即係諗下呢?	好正啊.	譬如我聽呢,沿海城市呢就話收亞視係清晰𡃉喎.						
+jmd-57b9b2e3d8ae1826fb40	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-R016_v.cha	51	XXA	true	false	true			講	VERB	冇得講.	嗰個沸點.	我哋細個讀健教成日都讀錯音.						
+jmd-2c0d7963a1df74385176	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-R017_v.cha	38	XXB	true	false	true			搞	VERB	冇得搞𡃉嚹.	係啊.	噉點呢?						
+jmd-78b3d8509838a8095692	HKCANCOR-JAU-MOU-DAK-R1	negative_mou_dak	single_token_mou_dak	冇得	FC-R017_v.cha	58	XXB	false	false	true	囖	PART	講	VERB	請問米請佢上來囖,冇得講𡃉.	死晒嚹班主任.	老到睇唔到字啊可能.						

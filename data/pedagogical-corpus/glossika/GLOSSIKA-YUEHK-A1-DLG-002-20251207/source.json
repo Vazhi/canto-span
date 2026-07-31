@@ -1,0 +1,980 @@
+{
+  "schema": "canto-span-pedagogical-dialog-source-v1",
+  "source": {
+    "sourceId": "GLOSSIKA-YUEHK-A1-DLG-002-20251207",
+    "provider": "Glossika",
+    "course": "Cantonese (Hong Kong) A1 Dialogs",
+    "dialogNumber": 2,
+    "title": "讚吓個蛋糕",
+    "scenario": "A customer at a bakery compliments the cakes and asks the staff about their value (A1)",
+    "sourceDate": "2025-12-07",
+    "gmailMessageId": "19afa819bdfae102",
+    "sourceType": "authorized_pedagogical_email",
+    "language": "yue-Hant-HK",
+    "authorization": {
+      "basis": "User states Glossika granted permission to use all lesson data in this non-commercial private-use Canto Span project.",
+      "scope": "Source-preserving corpus ingress for this dialog.",
+      "redistributionClaim": "none"
+    },
+    "sourceNotes": "This dialogue demonstrates value assessment using 值唔值 (zik6 m4 zik6) and appreciation expressions natural to Hong Kong customer service interactions. The progression from compliment to purchase decision reflects realistic bakery shopping behavior. Review Priority: Low. Reviewer Focus: Confirm appropriateness of value discussion phrasing and service interaction tone. Confidence Level: High"
+  },
+  "ingress": {
+    "issue": 138,
+    "workClaimIssue": 290,
+    "branch": "agent/glossika-dialog-002-ingress",
+    "reviewState": "REQUIRES_EXPERT_CONTEXT_REVIEW",
+    "policy": "Source values are immutable. Normalization, correction, duplicate classification, naturalness review, construction routing, and evidence use are recorded separately.",
+    "recordCount": 72,
+    "turnCount": 38,
+    "vocabularyCount": 34,
+    "itemTypeCounts": {
+      "dialog_turn": 38,
+      "lexical_entry": 34
+    },
+    "sourcePayloadHash": "sha256:502c3e06e9ce3902806bc77d7b68779903e3cfdafeebbd497ec072fcb1319c92",
+    "sourcePayloadHashPolicy": "SHA-256 of canonical key-sorted JSON for the ordered source-field array.",
+    "turnEnglishPolicy": "The source email provides no per-turn English translation; each turn preserves english=null."
+  },
+  "items": [
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I001",
+      "ordinal": 1,
+      "itemType": "dialog_turn",
+      "turn": 1,
+      "speaker": "阿珊",
+      "source": {
+        "sourceLine": "阿珊:哇,呢個蛋糕好靚呀!",
+        "traditional": "哇,呢個蛋糕好靚呀!",
+        "jyutpingLine": "/Aa3 Saan1: Waa1, ni1 go3 daan6 gou1 hou2 leng3 aa3!/",
+        "english": null
+      },
+      "sourceHash": "sha256:25f9ce3a662a1385ea457d08688353bdb2e33efb81fc4611d724d66c0067f609"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I002",
+      "ordinal": 2,
+      "itemType": "dialog_turn",
+      "turn": 2,
+      "speaker": "店員",
+      "source": {
+        "sourceLine": "店員:係呀,呢個係我哋新款。",
+        "traditional": "係呀,呢個係我哋新款。",
+        "jyutpingLine": "/Dim3 Jyun4: Hai6 aa3, ni1 go3 hai6 ngo5 dei6 san1 fun2./",
+        "english": null
+      },
+      "sourceHash": "sha256:f1feee3dbba9a5cf2abfa69884b108a03b4a963695d6303213a9a0f235ef4fa8"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I003",
+      "ordinal": 3,
+      "itemType": "dialog_turn",
+      "turn": 3,
+      "speaker": "阿珊",
+      "source": {
+        "sourceLine": "阿珊:好似好好食咁,幾錢呀?",
+        "traditional": "好似好好食咁,幾錢呀?",
+        "jyutpingLine": "/Aa3 Saan1: Hou2 ci5 hou2 hou2 sik6 gam2, gei2 cin2 aa3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:f9c1bca6cc17cfcbef0332b9f401503bd328be15bed62944edeea74c50ec25e0"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I004",
+      "ordinal": 4,
+      "itemType": "dialog_turn",
+      "turn": 4,
+      "speaker": "店員",
+      "source": {
+        "sourceLine": "店員:呢個一百八十蚊。",
+        "traditional": "呢個一百八十蚊。",
+        "jyutpingLine": "/Dim3 Jyun4: Ni1 go3 jat1 baak3 baat3 sap6 man1./",
+        "english": null
+      },
+      "sourceHash": "sha256:3eac99622b37471f247af1c4ab0a9e929efd851ddd0bd6df911ab8c3b5b9c45b"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I005",
+      "ordinal": 5,
+      "itemType": "dialog_turn",
+      "turn": 5,
+      "speaker": "阿珊",
+      "source": {
+        "sourceLine": "阿珊:有啲貴喎,值唔值呀?",
+        "traditional": "有啲貴喎,值唔值呀?",
+        "jyutpingLine": "/Aa3 Saan1: Jau5 di1 gwai3 wo3, zik6 m4 zik6 aa3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:57abcf0e0e92bcca1905140b9912a7e3d7f3b82ce078e782cd5b6102034f0881"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I006",
+      "ordinal": 6,
+      "itemType": "dialog_turn",
+      "turn": 6,
+      "speaker": "店員",
+      "source": {
+        "sourceLine": "店員:好值呀!用咗好多材料。",
+        "traditional": "好值呀!用咗好多材料。",
+        "jyutpingLine": "/Dim3 Jyun4: Hou2 zik6 aa3! Jung6 zo2 hou2 do1 coi4 liu2./",
+        "english": null
+      },
+      "sourceHash": "sha256:d0a4ffcdcfa79637876463e26583e720418d8239af3d181fa0b674c5081f27e4"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I007",
+      "ordinal": 7,
+      "itemType": "dialog_turn",
+      "turn": 7,
+      "speaker": "阿珊",
+      "source": {
+        "sourceLine": "阿珊:有啲咩材料呀?",
+        "traditional": "有啲咩材料呀?",
+        "jyutpingLine": "/Aa3 Saan1: Jau5 di1 me1 coi4 liu2 aa3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:058abdbcad60120b245cc212aeaf712e11b3f96925ba1cf668902dd2ed886d8a"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I008",
+      "ordinal": 8,
+      "itemType": "dialog_turn",
+      "turn": 8,
+      "speaker": "店員",
+      "source": {
+        "sourceLine": "店員:有新鮮士多啤梨,仲有忌廉同朱古力。",
+        "traditional": "有新鮮士多啤梨,仲有忌廉同朱古力。",
+        "jyutpingLine": "/Dim3 Jyun4: Jau5 san1 sin1 si6 do1 be1 lei2, zung6 jau5 gei6 lim4 tung4 zyu1 gu2 lik1./",
+        "english": null
+      },
+      "sourceHash": "sha256:c3d2a5262aaa4c890e365858c66a36b22b4e56af2c99a189c7d809f116285909"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I009",
+      "ordinal": 9,
+      "itemType": "dialog_turn",
+      "turn": 9,
+      "speaker": "阿珊",
+      "source": {
+        "sourceLine": "阿珊:士多啤梨新鮮㗎咩?",
+        "traditional": "士多啤梨新鮮㗎咩?",
+        "jyutpingLine": "/Aa3 Saan1: Si6 do1 be1 lei2 san1 sin1 gaa3 me1?/",
+        "english": null
+      },
+      "sourceHash": "sha256:47f0afad58435992ce00d594237e61e026b9eff1729d0a633cfc61f5e69c0246"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I010",
+      "ordinal": 10,
+      "itemType": "dialog_turn",
+      "turn": 10,
+      "speaker": "店員",
+      "source": {
+        "sourceLine": "店員:新鮮呀!今朝先到㗎。",
+        "traditional": "新鮮呀!今朝先到㗎。",
+        "jyutpingLine": "/Dim3 Jyun4: San1 sin1 aa3! Gam1 ziu1 sin1 dou3 gaa3./",
+        "english": null
+      },
+      "sourceHash": "sha256:72b50a640853a04761f56241ba6eb2649a05c521c9494bfbaf3266df9bbc232d"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I011",
+      "ordinal": 11,
+      "itemType": "dialog_turn",
+      "turn": 11,
+      "speaker": "阿珊",
+      "source": {
+        "sourceLine": "阿珊:咁呢個值啦!你哋仲有冇其他款式呀?",
+        "traditional": "咁呢個值啦!你哋仲有冇其他款式呀?",
+        "jyutpingLine": "/Aa3 Saan1: Gam2 ni1 go3 zik6 laa1! Nei5 dei6 zung6 jau5 mou5 kei4 taa1 fun2 sik1 aa3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:d81da242e1eef946009516ab592d9c33a912338bf4146dd6cd2cbc4f2085e149"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I012",
+      "ordinal": 12,
+      "itemType": "dialog_turn",
+      "turn": 12,
+      "speaker": "店員",
+      "source": {
+        "sourceLine": "店員:有呀,你想睇咩蛋糕呀?",
+        "traditional": "有呀,你想睇咩蛋糕呀?",
+        "jyutpingLine": "/Dim3 Jyun4: Jau5 aa3, nei5 soeng2 tai2 me1 daan6 gou1 aa3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:438779d5c44e95229244ebc0c8b16235d693e611762f27d09140057ab2ac7dc6"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I013",
+      "ordinal": 13,
+      "itemType": "dialog_turn",
+      "turn": 13,
+      "speaker": "阿珊",
+      "source": {
+        "sourceLine": "阿珊:有冇芒果蛋糕呀?",
+        "traditional": "有冇芒果蛋糕呀?",
+        "jyutpingLine": "/Aa3 Saan1: Jau5 mou5 mong1 gwo2 daan6 gou1 aa3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:88b9eae56c498340a84e68dd2ae8c578ac999fb1b78d03b5b8244f18b7d53d18"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I014",
+      "ordinal": 14,
+      "itemType": "dialog_turn",
+      "turn": 14,
+      "speaker": "店員",
+      "source": {
+        "sourceLine": "店員:有呀,嗰個係芒果蛋糕。",
+        "traditional": "有呀,嗰個係芒果蛋糕。",
+        "jyutpingLine": "/Dim3 Jyun4: Jau5 aa3, go2 go3 hai6 mong1 gwo2 daan6 gou1./",
+        "english": null
+      },
+      "sourceHash": "sha256:8ec9fff55477ac700efcfff9a65337a5ad9111d484f51e580e590300a4d0ca58"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I015",
+      "ordinal": 15,
+      "itemType": "dialog_turn",
+      "turn": 15,
+      "speaker": "阿珊",
+      "source": {
+        "sourceLine": "阿珊:嗰個幾錢呀?",
+        "traditional": "嗰個幾錢呀?",
+        "jyutpingLine": "/Aa3 Saan1: Go2 go3 gei2 cin2 aa3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:c3b66573fcba7d13ed686f0345f654143acc98030cb8850bdf5014525e008882"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I016",
+      "ordinal": 16,
+      "itemType": "dialog_turn",
+      "turn": 16,
+      "speaker": "店員",
+      "source": {
+        "sourceLine": "店員:嗰個平啲,一百二十蚊。",
+        "traditional": "嗰個平啲,一百二十蚊。",
+        "jyutpingLine": "/Dim3 Jyun4: Go2 go3 peng4 di1, jat1 baak3 ji6 sap6 man1./",
+        "english": null
+      },
+      "sourceHash": "sha256:f443d0fba90917d72de7eb7c251ebe7ddd64d8917d8c50360e573d2e32c8fde8"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I017",
+      "ordinal": 17,
+      "itemType": "dialog_turn",
+      "turn": 17,
+      "speaker": "阿珊",
+      "source": {
+        "sourceLine": "阿珊:點解平咗呀?",
+        "traditional": "點解平咗呀?",
+        "jyutpingLine": "/Aa3 Saan1: Dim2 gaai2 peng4 zo2 aa3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:536681cacdd1c6a800b1b1b96d29c43eee4c6804d9f79bc4ce5ea18e5bb600f2"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I018",
+      "ordinal": 18,
+      "itemType": "dialog_turn",
+      "turn": 18,
+      "speaker": "店員",
+      "source": {
+        "sourceLine": "店員:因為佢細個啲,用嘅材料都少啲。",
+        "traditional": "因為佢細個啲,用嘅材料都少啲。",
+        "jyutpingLine": "/Dim3 Jyun4: Jan1 wai6 keoi5 sai3 go3 di1, jung6 ge3 coi4 liu2 dou1 siu2 di1./",
+        "english": null
+      },
+      "sourceHash": "sha256:ff153a62d8d2f5db0279e8e6021cb1c53fd4e7a2ed788b34a86b8f60b13613a0"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I019",
+      "ordinal": 19,
+      "itemType": "dialog_turn",
+      "turn": 19,
+      "speaker": "阿珊",
+      "source": {
+        "sourceLine": "阿珊:明白喇。呢兩個邊個好食啲呀?",
+        "traditional": "明白喇。呢兩個邊個好食啲呀?",
+        "jyutpingLine": "/Aa3 Saan1: Ming4 baak6 laa3. Ni1 loeng5 go3 bin1 go3 hou2 sik6 di1 aa3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:ef886d19a0a25657a7e429f162f06a293c43904e3bbd0322632e8ac37a365ff6"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I020",
+      "ordinal": 20,
+      "itemType": "dialog_turn",
+      "turn": 20,
+      "speaker": "店員",
+      "source": {
+        "sourceLine": "店員:兩個都好好食,不過士多啤梨個更加受歡迎。",
+        "traditional": "兩個都好好食,不過士多啤梨個更加受歡迎。",
+        "jyutpingLine": "/Dim3 Jyun4: Loeng5 go3 dou1 hou2 hou2 sik6, bat1 gwo3 si6 do1 be1 lei2 go3 gang3 gaa1 sau6 fun1 jing4./",
+        "english": null
+      },
+      "sourceHash": "sha256:e091a6bee67f144a87960be17a604a7f1ca93115747da40d8bfd8f1ff353ef4c"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I021",
+      "ordinal": 21,
+      "itemType": "dialog_turn",
+      "turn": 21,
+      "speaker": "阿珊",
+      "source": {
+        "sourceLine": "阿珊:點解咁受歡迎呀?",
+        "traditional": "點解咁受歡迎呀?",
+        "jyutpingLine": "/Aa3 Saan1: Dim2 gaai2 gam3 sau6 fun1 jing4 aa3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:e6a00218baa3e1f3aef80beef805c73d91994e8f6085d0473bb322dd3fca82b6"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I022",
+      "ordinal": 22,
+      "itemType": "dialog_turn",
+      "turn": 22,
+      "speaker": "店員",
+      "source": {
+        "sourceLine": "店員:因為啲忌廉唔會太甜,好啱味。",
+        "traditional": "因為啲忌廉唔會太甜,好啱味。",
+        "jyutpingLine": "/Dim3 Jyun4: Jan1 wai6 di1 gei6 lim4 m4 wui5 taai3 tim4, hou2 ngaam1 mei6./",
+        "english": null
+      },
+      "sourceHash": "sha256:402319fd28d3489f6154eb71b69d7e3dc4e60858dc12e08e7693b0dd4b3913c6"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I023",
+      "ordinal": 23,
+      "itemType": "dialog_turn",
+      "turn": 23,
+      "speaker": "阿珊",
+      "source": {
+        "sourceLine": "阿珊:咁我買士多啤梨個啦!",
+        "traditional": "咁我買士多啤梨個啦!",
+        "jyutpingLine": "/Aa3 Saan1: Gam2 ngo5 maai5 si6 do1 be1 lei2 go3 laa1!/",
+        "english": null
+      },
+      "sourceHash": "sha256:9bb4cc3079170713045b2877a9f0cccf776c43c46a894705cad1e7aa5b38614a"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I024",
+      "ordinal": 24,
+      "itemType": "dialog_turn",
+      "turn": 24,
+      "speaker": "店員",
+      "source": {
+        "sourceLine": "店員:好呀!你要唔要寫嘢呀?",
+        "traditional": "好呀!你要唔要寫嘢呀?",
+        "jyutpingLine": "/Dim3 Jyun4: Hou2 aa3! Nei5 jiu3 m4 jiu3 se2 je5 aa3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:abf579f08975a6c357110e447de7dc5bf0ef0039df39859d50efda8c112511b0"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I025",
+      "ordinal": 25,
+      "itemType": "dialog_turn",
+      "turn": 25,
+      "speaker": "阿珊",
+      "source": {
+        "sourceLine": "阿珊:寫嘢?咩意思呀?",
+        "traditional": "寫嘢?咩意思呀?",
+        "jyutpingLine": "/Aa3 Saan1: Se2 je5? Me1 ji3 si1 aa3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:8163bf1f1884ceb53f589058917b6a58ce8753e4b2a24c02cfdfa69047828cd8"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I026",
+      "ordinal": 26,
+      "itemType": "dialog_turn",
+      "turn": 26,
+      "speaker": "店員",
+      "source": {
+        "sourceLine": "店員:即係喺蛋糕上面寫生日快樂之類。",
+        "traditional": "即係喺蛋糕上面寫生日快樂之類。",
+        "jyutpingLine": "/Dim3 Jyun4: Zik1 hai6 hai2 daan6 gou1 soeng6 min6 se2 saang1 jat6 faai3 lok6 zi1 leoi6./",
+        "english": null
+      },
+      "sourceHash": "sha256:f7647b4239cbdf98087cffa1782fb4fcdf99ec10e45838a887922fdee0ced87f"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I027",
+      "ordinal": 27,
+      "itemType": "dialog_turn",
+      "turn": 27,
+      "speaker": "阿珊",
+      "source": {
+        "sourceLine": "阿珊:哦!要呀!寫「生日快樂」,得唔得呀?",
+        "traditional": "哦!要呀!寫「生日快樂」,得唔得呀?",
+        "jyutpingLine": "/Aa3 Saan1: O4! Jiu3 aa3! Se2 \"saang1 jat6 faai3 lok6\", dak1 m4 dak1 aa3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:f5113f657d5742b956e63f3e18ec2ee96c9622b581c9b95e346555309b69bec8"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I028",
+      "ordinal": 28,
+      "itemType": "dialog_turn",
+      "turn": 28,
+      "speaker": "店員",
+      "source": {
+        "sourceLine": "店員:得呀,冇問題。要幾多支蠟燭呀?",
+        "traditional": "得呀,冇問題。要幾多支蠟燭呀?",
+        "jyutpingLine": "/Dim3 Jyun4: Dak1 aa3, mou5 man6 tai4. Jiu3 gei2 do1 zi1 laap6 zuk1 aa3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:15e1fa4b932264d554a338d63122e22893681f3d2bc38181328477e6fabb4e6b"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I029",
+      "ordinal": 29,
+      "itemType": "dialog_turn",
+      "turn": 29,
+      "speaker": "阿珊",
+      "source": {
+        "sourceLine": "阿珊:要五支,得唔得呀?",
+        "traditional": "要五支,得唔得呀?",
+        "jyutpingLine": "/Aa3 Saan1: Jiu3 ng5 zi1, dak1 m4 dak1 aa3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:a18b6cd9d72500cbd723fb90dcde30af8ffdb53dd96a01edab7844c62a00ba31"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I030",
+      "ordinal": 30,
+      "itemType": "dialog_turn",
+      "turn": 30,
+      "speaker": "店員",
+      "source": {
+        "sourceLine": "店員:得呀!我哋送埋蠟燭畀你。",
+        "traditional": "得呀!我哋送埋蠟燭畀你。",
+        "jyutpingLine": "/Dim3 Jyun4: Dak1 aa3! Ngo5 dei6 sung3 maai4 laap6 zuk1 bei2 nei5./",
+        "english": null
+      },
+      "sourceHash": "sha256:6decfca0a50661890af1d158d14b4d9e94f71ead553b22f4646be5516a7871cf"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I031",
+      "ordinal": 31,
+      "itemType": "dialog_turn",
+      "turn": 31,
+      "speaker": "阿珊",
+      "source": {
+        "sourceLine": "阿珊:多謝!你哋服務真係好好!",
+        "traditional": "多謝!你哋服務真係好好!",
+        "jyutpingLine": "/Aa3 Saan1: Do1 ze6! Nei5 dei6 fuk6 mou6 zan1 hai6 hou2 hou2!/",
+        "english": null
+      },
+      "sourceHash": "sha256:a97221ae21f19b9781cec4013c36dadc0ebb52244ca621b0e74d75e9043dbf6f"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I032",
+      "ordinal": 32,
+      "itemType": "dialog_turn",
+      "turn": 32,
+      "speaker": "店員",
+      "source": {
+        "sourceLine": "店員:唔使客氣!幾時要呀?",
+        "traditional": "唔使客氣!幾時要呀?",
+        "jyutpingLine": "/Dim3 Jyun4: M4 sai2 haak3 hei3! Gei2 si4 jiu3 aa3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:9d7bd27c60bb6d13e238cc88335defe70a89e31c830808bf3ed49b14ebb756a7"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I033",
+      "ordinal": 33,
+      "itemType": "dialog_turn",
+      "turn": 33,
+      "speaker": "阿珊",
+      "source": {
+        "sourceLine": "阿珊:聽日下晝三點鐘得唔得呀?",
+        "traditional": "聽日下晝三點鐘得唔得呀?",
+        "jyutpingLine": "/Aa3 Saan1: Ting1 jat6 haa6 zau3 saam1 dim2 zung1 dak1 m4 dak1 aa3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:b8cc27fa2ed70eef199d31aed0b044fe4914dc3545cf1a66d47a7bb568b5807f"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I034",
+      "ordinal": 34,
+      "itemType": "dialog_turn",
+      "turn": 34,
+      "speaker": "店員",
+      "source": {
+        "sourceLine": "店員:得呀,你嚟攞就得喇。",
+        "traditional": "得呀,你嚟攞就得喇。",
+        "jyutpingLine": "/Dim3 Jyun4: Dak1 aa3, nei5 lai4 lo2 zau6 dak1 laa3./",
+        "english": null
+      },
+      "sourceHash": "sha256:cc3b814cdbd8173612d11ab7c160c9ea8e3aff07cd07bbb2b1650038026a4681"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I035",
+      "ordinal": 35,
+      "itemType": "dialog_turn",
+      "turn": 35,
+      "speaker": "阿珊",
+      "source": {
+        "sourceLine": "阿珊:好呀!要唔要畀訂金呀?",
+        "traditional": "好呀!要唔要畀訂金呀?",
+        "jyutpingLine": "/Aa3 Saan1: Hou2 aa3! Jiu3 m4 jiu3 bei2 ding6 gam1 aa3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:031303a7b2dcd4ac832a8ee43d1f8ffc8d200fa31e86232bd94a2f69a2e6b67d"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I036",
+      "ordinal": 36,
+      "itemType": "dialog_turn",
+      "turn": 36,
+      "speaker": "店員",
+      "source": {
+        "sourceLine": "店員:唔使訂金,你嚟到畀錢就得喇。",
+        "traditional": "唔使訂金,你嚟到畀錢就得喇。",
+        "jyutpingLine": "/Dim3 Jyun4: M4 sai2 ding6 gam1, nei5 lai4 dou3 bei2 cin2 zau6 dak1 laa3./",
+        "english": null
+      },
+      "sourceHash": "sha256:2a4ace686eb951db3caf5dabc72d3c4e61810063e08812519845ee14d5265755"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I037",
+      "ordinal": 37,
+      "itemType": "dialog_turn",
+      "turn": 37,
+      "speaker": "阿珊",
+      "source": {
+        "sourceLine": "阿珊:好呀,多謝晒!聽日見!",
+        "traditional": "好呀,多謝晒!聽日見!",
+        "jyutpingLine": "/Aa3 Saan1: Hou2 aa3, do1 ze6 saai3! Ting1 jat6 gin3!/",
+        "english": null
+      },
+      "sourceHash": "sha256:c8a8b6522ca7886da3560dab62daf7d154604c0e7b1d9f0e79e4c89a8d5f34f5"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I038",
+      "ordinal": 38,
+      "itemType": "dialog_turn",
+      "turn": 38,
+      "speaker": "店員",
+      "source": {
+        "sourceLine": "店員:聽日見!拜拜!",
+        "traditional": "聽日見!拜拜!",
+        "jyutpingLine": "/Dim3 Jyun4: Ting1 jat6 gin3! Baai1 baai3!/",
+        "english": null
+      },
+      "sourceHash": "sha256:29ca75076b813994a7f79acdb04a0dc4a7bf02936c859e8365407f24aa10d4ba"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I039",
+      "ordinal": 39,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 1,
+      "source": {
+        "traditional": "蛋糕",
+        "jyutping": "daan6 gou1",
+        "english": "cake"
+      },
+      "sourceHash": "sha256:642a75c0cf72c4a8245e225a9d28a225d4272c68c71ad6dde44d1218662a03e6"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I040",
+      "ordinal": 40,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 2,
+      "source": {
+        "traditional": "靚",
+        "jyutping": "leng3",
+        "english": "pretty, beautiful"
+      },
+      "sourceHash": "sha256:57d0b0f054069a4691a6cf75615ffb64804e041b8f561c55118a071ca6955a40"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I041",
+      "ordinal": 41,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 3,
+      "source": {
+        "traditional": "新款",
+        "jyutping": "san1 fun2",
+        "english": "new style, new model"
+      },
+      "sourceHash": "sha256:b234cf32435b36c2a13c06604cf51616de4b59826976c59fc80f0a260ae56f72"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I042",
+      "ordinal": 42,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 4,
+      "source": {
+        "traditional": "好似",
+        "jyutping": "hou2 ci5",
+        "english": "seems like, appears to be"
+      },
+      "sourceHash": "sha256:641def4b6414af88be95b775fabeda74d527d068d137ebcbb96ca9d23e95af2f"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I043",
+      "ordinal": 43,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 5,
+      "source": {
+        "traditional": "幾錢",
+        "jyutping": "gei2 cin2",
+        "english": "how much money"
+      },
+      "sourceHash": "sha256:08db6f9a99fe8f2d38b4ddb17cb13d9d4389cb04819a3f7563ff49b9aa9dff30"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I044",
+      "ordinal": 44,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 6,
+      "source": {
+        "traditional": "蚊",
+        "jyutping": "man1",
+        "english": "Hong Kong dollar (colloquial)"
+      },
+      "sourceHash": "sha256:f8fba9faa6a4811aec40682b7a713e24a8c75a2acc6e1608096a18b1014e5b8d"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I045",
+      "ordinal": 45,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 7,
+      "source": {
+        "traditional": "有啲",
+        "jyutping": "jau5 di1",
+        "english": "a bit, somewhat"
+      },
+      "sourceHash": "sha256:3a1472feede916860faa58eb0d7253999f9af563e615507de52934dfa6f861c7"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I046",
+      "ordinal": 46,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 8,
+      "source": {
+        "traditional": "值",
+        "jyutping": "zik6",
+        "english": "worth it, valuable"
+      },
+      "sourceHash": "sha256:6b16041f4b92d852efb28c181e5b615c70598664f7f1a8159d3733d4f7a506b1"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I047",
+      "ordinal": 47,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 9,
+      "source": {
+        "traditional": "士多啤梨",
+        "jyutping": "si6 do1 be1 lei2",
+        "english": "strawberry"
+      },
+      "sourceHash": "sha256:6e9f784f613d82d5deacacaede2f6a62f62882b3646b57fb36a87346bdf74154"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I048",
+      "ordinal": 48,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 10,
+      "source": {
+        "traditional": "忌廉",
+        "jyutping": "gei6 lim4",
+        "english": "cream"
+      },
+      "sourceHash": "sha256:6cae9dacb6aa2ad124da2c5f2adde37f08e3ab6984193e2f3aaa3803893e6966"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I049",
+      "ordinal": 49,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 11,
+      "source": {
+        "traditional": "朱古力",
+        "jyutping": "zyu1 gu2 lik1",
+        "english": "chocolate"
+      },
+      "sourceHash": "sha256:77247107d3e4ee1c1be43c6fd6acde4de31c0506263c6e1f77c29c47bf19cf5e"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I050",
+      "ordinal": 50,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 12,
+      "source": {
+        "traditional": "今朝",
+        "jyutping": "gam1 ziu1",
+        "english": "this morning"
+      },
+      "sourceHash": "sha256:99593ecabd4a78781e101f385195b41ce784b83e95a9257061708fd2649a77f2"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I051",
+      "ordinal": 51,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 13,
+      "source": {
+        "traditional": "先",
+        "jyutping": "sin1",
+        "english": "just, only then"
+      },
+      "sourceHash": "sha256:b59e29c2a5a2b777110d937735275453cfe353e16b322e7c9db3808687596e45"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I052",
+      "ordinal": 52,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 14,
+      "source": {
+        "traditional": "芒果",
+        "jyutping": "mong1 gwo2",
+        "english": "mango"
+      },
+      "sourceHash": "sha256:d5fee1802531c9b52330eafb9137458e80e49c04dc8d44dc813c1238d87005b7"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I053",
+      "ordinal": 53,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 15,
+      "source": {
+        "traditional": "嗰個",
+        "jyutping": "go2 go3",
+        "english": "that one"
+      },
+      "sourceHash": "sha256:e338f4825fcc4a00c72dc1513ff27e76b2c0207344922cb268f5f687b187294e"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I054",
+      "ordinal": 54,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 16,
+      "source": {
+        "traditional": "平",
+        "jyutping": "peng4",
+        "english": "cheap"
+      },
+      "sourceHash": "sha256:fa30537a09bf149ce2c59f40b674a28d58e062e64130e3af9b0ca33eea920834"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I055",
+      "ordinal": 55,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 17,
+      "source": {
+        "traditional": "細個",
+        "jyutping": "sai3 go3",
+        "english": "smaller"
+      },
+      "sourceHash": "sha256:b21c8fa829a951418eb9a4e06e5740eef1914689ad1be4473c841ea69e85b5f9"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I056",
+      "ordinal": 56,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 18,
+      "source": {
+        "traditional": "少啲",
+        "jyutping": "siu2 di1",
+        "english": "less, fewer"
+      },
+      "sourceHash": "sha256:810a1236ab0bf6ada33d25fc58638aaf443584ebc17b1fd8865e72941d24ee6a"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I057",
+      "ordinal": 57,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 19,
+      "source": {
+        "traditional": "邊個",
+        "jyutping": "bin1 go3",
+        "english": "which one"
+      },
+      "sourceHash": "sha256:cdf8259924425aa2109c779aa63fcbc828f8a1315a7abd7aad20b05fa05a0025"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I058",
+      "ordinal": 58,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 20,
+      "source": {
+        "traditional": "更加",
+        "jyutping": "gang3 gaa1",
+        "english": "even more"
+      },
+      "sourceHash": "sha256:455696160126f6009c430200ebdd34c4832ebb5400920238176c9a52b421f41b"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I059",
+      "ordinal": 59,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 21,
+      "source": {
+        "traditional": "受歡迎",
+        "jyutping": "sau6 fun1 jing4",
+        "english": "popular, well-received"
+      },
+      "sourceHash": "sha256:b1fbb1f31e9fc9e4792e6039c9c34dbc6207a6df50b3cbd8887e7cffbd91360e"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I060",
+      "ordinal": 60,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 22,
+      "source": {
+        "traditional": "甜",
+        "jyutping": "tim4",
+        "english": "sweet"
+      },
+      "sourceHash": "sha256:64788a9462ac8f194fe394b33cc922739790b6e9faa3a57009c56ba5f29874fe"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I061",
+      "ordinal": 61,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 23,
+      "source": {
+        "traditional": "買",
+        "jyutping": "maai5",
+        "english": "to buy"
+      },
+      "sourceHash": "sha256:3c1371317eefe4eaa63e424b4b20e55b335a8a9b4e5ae976a6d5d69ad9a24da2"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I062",
+      "ordinal": 62,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 24,
+      "source": {
+        "traditional": "寫",
+        "jyutping": "se2",
+        "english": "to write"
+      },
+      "sourceHash": "sha256:ab563ea5f7d75a5d42c87a9d8c5e698f59d8cf81c2c5ed095a0e98f9e4dbccba"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I063",
+      "ordinal": 63,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 25,
+      "source": {
+        "traditional": "生日快樂",
+        "jyutping": "saang1 jat6 faai3 lok6",
+        "english": "happy birthday"
+      },
+      "sourceHash": "sha256:c515a27e348404549058a40e9a9cd2f461d8fae66505d573cb02f97a976c9f3b"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I064",
+      "ordinal": 64,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 26,
+      "source": {
+        "traditional": "之類",
+        "jyutping": "zi1 leoi6",
+        "english": "and so on, things like that"
+      },
+      "sourceHash": "sha256:459500e95151c572b177f37b4ff0a5052843482a5842925e23afb86688b8923a"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I065",
+      "ordinal": 65,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 27,
+      "source": {
+        "traditional": "蠟燭",
+        "jyutping": "laap6 zuk1",
+        "english": "candle"
+      },
+      "sourceHash": "sha256:b712bb04abf351bee2f466529cfc6f47dade485ef10f2ecfc82b92b03c10a41e"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I066",
+      "ordinal": 66,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 28,
+      "source": {
+        "traditional": "支",
+        "jyutping": "zi1",
+        "english": "classifier for long thin objects"
+      },
+      "sourceHash": "sha256:1effeffe6a9c571518c13d343452788a6b5a5303409c68f8dfe9ebe8fce7abb9"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I067",
+      "ordinal": 67,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 29,
+      "source": {
+        "traditional": "送",
+        "jyutping": "sung3",
+        "english": "to give, to deliver"
+      },
+      "sourceHash": "sha256:56fe6652f3e3b91087ff6ddc6c5843378495a71e44d26175e149c23ea1bbe74f"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I068",
+      "ordinal": 68,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 30,
+      "source": {
+        "traditional": "服務",
+        "jyutping": "fuk6 mou6",
+        "english": "service"
+      },
+      "sourceHash": "sha256:5353b8dc1ee47871b17991b52dc724d0906b421c314ffe5b96d493d006d7700b"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I069",
+      "ordinal": 69,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 31,
+      "source": {
+        "traditional": "鐘",
+        "jyutping": "zung1",
+        "english": "o'clock (formal)"
+      },
+      "sourceHash": "sha256:fe3e97bb6b542542fd96806ba2c1512d60ed49066504ad793cd167582a3e7fb9"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I070",
+      "ordinal": 70,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 32,
+      "source": {
+        "traditional": "攞",
+        "jyutping": "lo2",
+        "english": "to take, to get"
+      },
+      "sourceHash": "sha256:d9294786583950f01911022dcfcfa607dd9ede9c1eddd58dfd17ebd608482931"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I071",
+      "ordinal": 71,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 33,
+      "source": {
+        "traditional": "訂金",
+        "jyutping": "ding6 gam1",
+        "english": "deposit"
+      },
+      "sourceHash": "sha256:ad9dc4424a2e865390e54e0bc0e74b328f2e815e8b26943cff98f31f8bf62fa3"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I072",
+      "ordinal": 72,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 34,
+      "source": {
+        "traditional": "嚟到",
+        "jyutping": "lai4 dou3",
+        "english": "when (you) arrive, when (you) come"
+      },
+      "sourceHash": "sha256:17acbd0aab3ced3c98dfa66aac6fa441b0ee404e3623aedcaaa421b64faa9ef5"
+    }
+  ]
+}

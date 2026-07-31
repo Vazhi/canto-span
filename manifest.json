@@ -1,9 +1,9 @@
 {
   "id": "canto-span",
   "name": "Canto Span",
-  "version": "0.5.216",
+  "version": "0.5.218",
   "minAppVersion": "1.5.0",
-  "description": "v0.5.216 closes evidence and ontology review for all active unsupported and internal labels.",
+  "description": "v0.5.218 closes AB15 structural boundaries and preserves transparent modifier-bearing noun phrases.",
   "author": "Chris Crawford / OpenAI ChatGPT",
   "authorUrl": "",
   "isDesktopOnly": false

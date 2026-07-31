@@ -6,7 +6,7 @@ This file is the sole present-tense project snapshot. Live GitHub intake and wor
 
 | Measure | Current value |
 |---|---:|
-| Runtime | v0.5.216 |
+| Runtime | v0.5.218 |
 | Runtime labels | 133 |
 | Current construction notes | 133 |
 | Available construction notes | 133 |
@@ -66,6 +66,12 @@ The canonical construction blacklist is [`../../data/parked-constructions.json`]
 
 New constructions, splits, broadenings, status changes, and runtime changes still require all applicable identity, evidence, boundary, documentation, testing, and review gates. Legacy note workflow fields are compatibility metadata only.
 
+Availability does not create a fixed research queue. Recent work on one construction or family gives its follow-up tasks neither automatic priority nor automatic exclusion.
+
+A substantive research issue must cite a concrete trigger from current parser behavior, primary sources, project corpora, eligible native judgments, learner/source material, or audited survey evidence. Discovery scores, empty metadata, retired wrappers, and broad family-gap reports can locate work but are not sufficient by themselves. The issue must state a falsifiable unresolved question, bounded evidence, competing analyses and negative boundaries, the decision it could inform, and an acceptable null outcome such as no new construction, lexical-only evidence, an instrument problem, or no runtime change.
+
+Implementation specifications, human artifact requests, corpus ingestion, work claims, and pull requests are execution records rather than independent linguistic research questions.
+
 ## Discovery state
 
 | Candidate state | Records |
@@ -123,13 +129,16 @@ Stable verification is `npm run verify`; full verification is `npm run verify:al
 ## Current work order
 
 1. Keep documentation, canonical data, status notes, runtime, survey metadata, corpus records, agent settings, claims, and generated reports consistent.
-2. Select the highest-benefit non-parked task after checking live work, evidence gaps, learner impact, ontology risk, dependencies, and implementation leverage.
-3. Continue identity adjudication from the 92 pending UUIDs when it outranks other work; batches are opportunities, not a mandatory queue.
-4. Complete pending HKCanCor inventories through deterministic extraction and separate expert review, using human local execution only when access requires it.
-5. Keep `YUE-JUDGMENT-PILOT-01` in collection until its stopping rule is met, then audit items and responses before revising a follow-up.
-6. Expand AB30 corpus diversity when that work outranks other available tasks.
-7. Implement status-path or runtime-label migrations only in explicitly scoped reviewed changes.
-8. Do not create duplicate current-state ledgers, verifier families, naming systems, or unscoped automatic writers.
+2. Select the highest-benefit non-parked task after checking live work, evidence gaps, learner impact, ontology risk, source and data availability, dependencies, implementation leverage, and recent topic concentration.
+3. Require each substantive research issue to identify an actual project trigger, a falsifiable unresolved linguistic question, bounded evidence, relevant counterevidence and ambiguity, and an acceptable null outcome.
+4. Treat topic diversity as a balancing factor: do not let the same few construction families repeatedly dominate when similarly valuable alternatives exist elsewhere.
+5. Continuing within the same family is allowed when its follow-up is genuinely the strongest next task; recent work gives a topic neither automatic priority nor automatic exclusion.
+6. Keep accepted implementation, runtime/design audits, human actions, corpus ingestion, claims, and pull requests separate from the substantive research portfolio.
+7. Continue identity adjudication from the 92 pending UUIDs when it outranks other work; batches are opportunities, not a mandatory queue.
+8. Complete useful HKCanCor inventories through deterministic extraction and separate expert review when they expose a bounded empirical question that outranks other available work, using human local execution only when access requires it.
+9. Keep `YUE-JUDGMENT-PILOT-01` in collection until its stopping rule is met, then audit item wording, eligibility, exclusions, quality, comments, interpretations, controls, and regional limitations before drawing conclusions or revising a follow-up.
+10. Implement status-path or runtime-label migrations only in explicitly scoped reviewed changes.
+11. Do not create duplicate current-state ledgers, verifier families, naming systems, fixed construction queues, or unscoped automatic writers.
 
 ## Historical-material rule
 

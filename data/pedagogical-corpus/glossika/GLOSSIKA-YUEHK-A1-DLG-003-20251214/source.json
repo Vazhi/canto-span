@@ -1,0 +1,1292 @@
+{
+  "schema": "canto-span-pedagogical-dialog-source-v1",
+  "source": {
+    "sourceId": "GLOSSIKA-YUEHK-A1-DLG-003-20251214",
+    "provider": "Glossika",
+    "course": "Cantonese (Hong Kong) A1 Dialogs",
+    "dialogNumber": 3,
+    "title": "同朋友整湯圓慶祝冬至",
+    "scenario": "Two friends discussing making tang yuan (glutinous rice balls) together to celebrate Winter Solstice (A1)",
+    "sourceDate": "2025-12-14",
+    "gmailMessageId": "19b1e8e465b300ea",
+    "sourceType": "authorized_pedagogical_email",
+    "language": "yue-Hant-HK",
+    "authorization": {
+      "basis": "User states Glossika granted permission to use all lesson data in this non-commercial private-use Canto Span project.",
+      "scope": "Source-preserving corpus ingress for this dialog.",
+      "redistributionClaim": "none"
+    },
+    "sourceNotes": "The verb 整 (zing2) means \"to make/prepare\" and is commonly used in Cantonese for cooking and crafts, whereas Mandarin typically uses 做 (zou6). Both are correct but 整 is more colloquial in Hong Kong. The comparison pattern 好似...咁 (hou2 ci5...gam3) means \"like/as...as\": 好似耳仔咁軟 (hou2 ci5 ji5 zai2 gam3 jyun5) = \"soft like an earlobe.\" This is a standard comparative structure. Reduplication of classifiers indicates plurality: 粒粒 (nap1 nap1) = \"small balls (plural).\" This is a common grammatical feature in Cantonese that adds a distributive or plural sense. The pattern 定 (ding6) in A-or-B questions: 自己整定買 (zi6 gei2 zing2 ding6 maai5) = \"make yourself or buy?\" This conjunction presents two alternatives for the listener to choose between. 左右 (zo2 jau6) means \"approximately\" and follows time expressions: 五分鐘左右 (ng5 fan1 zung1 zo2 jau6) = \"about five minutes.\" Confidence Level: High"
+  },
+  "ingress": {
+    "issue": 139,
+    "workClaimIssue": 292,
+    "branch": "agent/glossika-dialog-003-ingress",
+    "reviewState": "REQUIRES_EXPERT_CONTEXT_REVIEW",
+    "policy": "Source values are immutable. Normalization, correction, duplicate classification, naturalness review, construction routing, and evidence use are recorded separately.",
+    "recordCount": 96,
+    "turnCount": 50,
+    "vocabularyCount": 46,
+    "itemTypeCounts": {
+      "dialog_turn": 50,
+      "lexical_entry": 46
+    },
+    "sourcePayloadHash": "sha256:81ba3d49d5c951e48f9b1e2716deaf6026bb23b2cea474960a851fca4daaf0c9",
+    "sourcePayloadHashPolicy": "SHA-256 of canonical key-sorted JSON for the ordered source-field array.",
+    "turnEnglishPolicy": "The source email provides no per-turn English translation; each turn preserves english=null."
+  },
+  "items": [
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I001",
+      "ordinal": 1,
+      "itemType": "dialog_turn",
+      "turn": 1,
+      "speaker": "阿明",
+      "source": {
+        "sourceLine": "阿明: 喂,下個禮拜就冬至喇!",
+        "traditional": "喂,下個禮拜就冬至喇!",
+        "jyutpingLine": "/Aa3 Ming4: Wai3, haa6 go3 lai5 baai3 zau6 dung1 zi3 laa3!/",
+        "english": null
+      },
+      "sourceHash": "sha256:a8dd8fe7670016b7223824357d83f7e429721eb03d2bc1d3949853c46e52b968"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I002",
+      "ordinal": 2,
+      "itemType": "dialog_turn",
+      "turn": 2,
+      "speaker": "小紅",
+      "source": {
+        "sourceLine": "小紅: 係呀!你屋企會唔會食湯圓呀?",
+        "traditional": "係呀!你屋企會唔會食湯圓呀?",
+        "jyutpingLine": "/Siu2 Hung4: Hai6 aa3! Nei5 uk1 kei2 wui5 m4 wui5 sik6 tong1 jyun4 aa3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:d0694cb6fd2d03fcf60b2eaaffdff034420ba9c469ed07bd746cf0e00b2f14e3"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I003",
+      "ordinal": 3,
+      "itemType": "dialog_turn",
+      "turn": 3,
+      "speaker": "阿明",
+      "source": {
+        "sourceLine": "阿明: 會呀!你呢?",
+        "traditional": "會呀!你呢?",
+        "jyutpingLine": "/Aa3 Ming4: Wui5 aa3! Nei5 ne1?/",
+        "english": null
+      },
+      "sourceHash": "sha256:32235bf80eeabe9ce0a26c3b7d1febc3f6ab17c08bf64a39aab8a16ab10fed00"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I004",
+      "ordinal": 4,
+      "itemType": "dialog_turn",
+      "turn": 4,
+      "speaker": "小紅",
+      "source": {
+        "sourceLine": "小紅: 我哋每年都整㗎。",
+        "traditional": "我哋每年都整㗎。",
+        "jyutpingLine": "/Siu2 Hung4: Ngo5 dei6 mui5 nin4 dou1 zing2 gaa3./",
+        "english": null
+      },
+      "sourceHash": "sha256:e16e74bc2fe15c22c3fc5b5ccf67c452c3148d91b2bc0def6d56d9e454ae016f"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I005",
+      "ordinal": 5,
+      "itemType": "dialog_turn",
+      "turn": 5,
+      "speaker": "阿明",
+      "source": {
+        "sourceLine": "阿明: 自己整定買㗎?",
+        "traditional": "自己整定買㗎?",
+        "jyutpingLine": "/Aa3 Ming4: Zi6 gei2 zing2 ding6 maai5 gaa3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:37bf75dbb5a239942d3137fb32ca50e0244ef1ce873329d16696f1b0ec3d302a"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I006",
+      "ordinal": 6,
+      "itemType": "dialog_turn",
+      "turn": 6,
+      "speaker": "小紅",
+      "source": {
+        "sourceLine": "小紅: 自己整呀!好玩好多!",
+        "traditional": "自己整呀!好玩好多!",
+        "jyutpingLine": "/Siu2 Hung4: Zi6 gei2 zing2 aa3! Hou2 waan2 hou2 do1!/",
+        "english": null
+      },
+      "sourceHash": "sha256:c307dfe20af5d674836a3b9feac59d19ae29b4887c2f059231ad09e1b7f66915"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I007",
+      "ordinal": 7,
+      "itemType": "dialog_turn",
+      "turn": 7,
+      "speaker": "阿明",
+      "source": {
+        "sourceLine": "阿明: 我未試過整喎。",
+        "traditional": "我未試過整喎。",
+        "jyutpingLine": "/Aa3 Ming4: Ngo5 mei6 si3 gwo3 zing2 wo3./",
+        "english": null
+      },
+      "sourceHash": "sha256:426a43079f6d6842dad6a7dfbb5083a50aa11ab3f6df0f348e29bda1b6235066"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I008",
+      "ordinal": 8,
+      "itemType": "dialog_turn",
+      "turn": 8,
+      "speaker": "小紅",
+      "source": {
+        "sourceLine": "小紅: 唔難㗎!我教你!",
+        "traditional": "唔難㗎!我教你!",
+        "jyutpingLine": "/Siu2 Hung4: M4 naan4 gaa3! Ngo5 gaau3 nei5!/",
+        "english": null
+      },
+      "sourceHash": "sha256:77ce3d0246ea0b5eef5cffe05cc5e16b80dda62f77bee2ffb0d3c0c5fe6de04f"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I009",
+      "ordinal": 9,
+      "itemType": "dialog_turn",
+      "turn": 9,
+      "speaker": "阿明",
+      "source": {
+        "sourceLine": "阿明: 真㗎?咁好呀!",
+        "traditional": "真㗎?咁好呀!",
+        "jyutpingLine": "/Aa3 Ming4: Zan1 gaa3? Gam3 hou2 aa3!/",
+        "english": null
+      },
+      "sourceHash": "sha256:b465b0faa0cb34eacd1cff4626749bc47cd01db59c60d632f6d9bfcba2647a57"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I010",
+      "ordinal": 10,
+      "itemType": "dialog_turn",
+      "turn": 10,
+      "speaker": "小紅",
+      "source": {
+        "sourceLine": "小紅: 要買糯米粉,仲有糖。",
+        "traditional": "要買糯米粉,仲有糖。",
+        "jyutpingLine": "/Siu2 Hung4: Jiu3 maai5 no6 mai5 fan2, zung6 jau5 tong4./",
+        "english": null
+      },
+      "sourceHash": "sha256:79b1d2c7da4d109ff07234bef6b487b61f94421f49ae0d1ea4ada861f32d3304"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I011",
+      "ordinal": 11,
+      "itemType": "dialog_turn",
+      "turn": 11,
+      "speaker": "阿明",
+      "source": {
+        "sourceLine": "阿明: 係咪用水溝?",
+        "traditional": "係咪用水溝?",
+        "jyutpingLine": "/Aa3 Ming4: Hai6 mai6 jung6 seoi2 kau1?/",
+        "english": null
+      },
+      "sourceHash": "sha256:f196d92b33169fcb53b48046edab4ac60d2aad4ea5d047646eb220345218cb06"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I012",
+      "ordinal": 12,
+      "itemType": "dialog_turn",
+      "turn": 12,
+      "speaker": "小紅",
+      "source": {
+        "sourceLine": "小紅: 係呀,要暖水。",
+        "traditional": "係呀,要暖水。",
+        "jyutpingLine": "/Siu2 Hung4: Hai6 aa3, jiu3 nyun5 seoi2./",
+        "english": null
+      },
+      "sourceHash": "sha256:1f9737e31e175c6efa69140af17ff71c269f049c437181a8eebfae0032fed8da"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I013",
+      "ordinal": 13,
+      "itemType": "dialog_turn",
+      "turn": 13,
+      "speaker": "阿明",
+      "source": {
+        "sourceLine": "阿明: 點解要暖水呀?",
+        "traditional": "點解要暖水呀?",
+        "jyutpingLine": "/Aa3 Ming4: Dim2 gaai2 jiu3 nyun5 seoi2 aa3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:41fde64ebe27a0b07f128c0861a46b6626c097c0121bf2280a852a3e68252775"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I014",
+      "ordinal": 14,
+      "itemType": "dialog_turn",
+      "turn": 14,
+      "speaker": "小紅",
+      "source": {
+        "sourceLine": "小紅: 暖水搓得好啲。",
+        "traditional": "暖水搓得好啲。",
+        "jyutpingLine": "/Siu2 Hung4: Nyun5 seoi2 co1 dak1 hou2 di1./",
+        "english": null
+      },
+      "sourceHash": "sha256:bf609b68e0b3bdd69794abc576f9a53366656cb2ebe0e008b705a0e7d5049118"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I015",
+      "ordinal": 15,
+      "itemType": "dialog_turn",
+      "turn": 15,
+      "speaker": "阿明",
+      "source": {
+        "sourceLine": "阿明: 哦,明白喇!",
+        "traditional": "哦,明白喇!",
+        "jyutpingLine": "/Aa3 Ming4: O4, ming4 baak6 laa3!/",
+        "english": null
+      },
+      "sourceHash": "sha256:7f3cafab6e0b5e58cfbe44a9f5188bc61512669a390fef9781957259144c3d42"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I016",
+      "ordinal": 16,
+      "itemType": "dialog_turn",
+      "turn": 16,
+      "speaker": "小紅",
+      "source": {
+        "sourceLine": "小紅: 搓到好似耳仔咁軟就得喇。",
+        "traditional": "搓到好似耳仔咁軟就得喇。",
+        "jyutpingLine": "/Siu2 Hung4: Co1 dou3 hou2 ci5 ji5 zai2 gam3 jyun5 zau6 dak1 laa3./",
+        "english": null
+      },
+      "sourceHash": "sha256:98267065465917ba8f432f3be5a50049b770d10c77506035e7e96766055d95a0"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I017",
+      "ordinal": 17,
+      "itemType": "dialog_turn",
+      "turn": 17,
+      "speaker": "阿明",
+      "source": {
+        "sourceLine": "阿明: 耳仔咁軟?好得意!",
+        "traditional": "耳仔咁軟?好得意!",
+        "jyutpingLine": "/Aa3 Ming4: Ji5 zai2 gam3 jyun5? Hou2 dak1 ji3!/",
+        "english": null
+      },
+      "sourceHash": "sha256:5ba33c8659e418a4851d953ecf711e31dea8db69040cccb4fbb7c7931e697afc"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I018",
+      "ordinal": 18,
+      "itemType": "dialog_turn",
+      "turn": 18,
+      "speaker": "小紅",
+      "source": {
+        "sourceLine": "小紅: 哈哈,係呀!然後搓成粒粒。",
+        "traditional": "哈哈,係呀!然後搓成粒粒。",
+        "jyutpingLine": "/Siu2 Hung4: Haa1 haa1, hai6 aa3! Jin4 hau6 co1 sing4 nap1 nap1./",
+        "english": null
+      },
+      "sourceHash": "sha256:cda73e6af74ea277dac44eb79eaeda9375217f8d2e34327b29f412b14318c553"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I019",
+      "ordinal": 19,
+      "itemType": "dialog_turn",
+      "turn": 19,
+      "speaker": "阿明",
+      "source": {
+        "sourceLine": "阿明: 要整幾大粒呀?",
+        "traditional": "要整幾大粒呀?",
+        "jyutpingLine": "/Aa3 Ming4: Jiu3 zing2 gei2 daai6 nap1 aa3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:8023886e3bf7f1cec2f942404b74632970af3a5c9e7aeac694f2a068c0a081df"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I020",
+      "ordinal": 20,
+      "itemType": "dialog_turn",
+      "turn": 20,
+      "speaker": "小紅",
+      "source": {
+        "sourceLine": "小紅: 好似波子咁大就得。",
+        "traditional": "好似波子咁大就得。",
+        "jyutpingLine": "/Siu2 Hung4: Hou2 ci5 bo1 zi2 gam3 daai6 zau6 dak1./",
+        "english": null
+      },
+      "sourceHash": "sha256:44310669651e1e545505a1ecd34ff4f576bb2bbb222de2d43203a875ea14ef20"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I021",
+      "ordinal": 21,
+      "itemType": "dialog_turn",
+      "turn": 21,
+      "speaker": "阿明",
+      "source": {
+        "sourceLine": "阿明: 包唔包餡㗎?",
+        "traditional": "包唔包餡㗎?",
+        "jyutpingLine": "/Aa3 Ming4: Baau1 m4 baau1 haam6 gaa3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:63919bcd41c9147b507cd3e07142a970f985a4a59d684eb5df3a8e8e753974ae"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I022",
+      "ordinal": 22,
+      "itemType": "dialog_turn",
+      "turn": 22,
+      "speaker": "小紅",
+      "source": {
+        "sourceLine": "小紅: 可以包,都可以唔包。",
+        "traditional": "可以包,都可以唔包。",
+        "jyutpingLine": "/Siu2 Hung4: Ho2 ji5 baau1, dou1 ho2 ji5 m4 baau1./",
+        "english": null
+      },
+      "sourceHash": "sha256:c2866d7d4ac12cc6de50009c80b0b3988b029892c7acae926d47919783d2380b"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I023",
+      "ordinal": 23,
+      "itemType": "dialog_turn",
+      "turn": 23,
+      "speaker": "阿明",
+      "source": {
+        "sourceLine": "阿明: 包咩餡好呀?",
+        "traditional": "包咩餡好呀?",
+        "jyutpingLine": "/Aa3 Ming4: Baau1 me1 haam6 hou2 aa3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:8a14ad981118c52f66d1e634bfd09d9af59cd82cbd70fc0380093a1696e12192"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I024",
+      "ordinal": 24,
+      "itemType": "dialog_turn",
+      "turn": 24,
+      "speaker": "小紅",
+      "source": {
+        "sourceLine": "小紅: 花生、芝麻、豆沙都得。",
+        "traditional": "花生、芝麻、豆沙都得。",
+        "jyutpingLine": "/Siu2 Hung4: Faa1 sang1, zi1 maa4, dau6 saa1 dou1 dak1./",
+        "english": null
+      },
+      "sourceHash": "sha256:2e80cb5f5abb5c4a293703f4d57544dd754bd6325d218e0736bbb9c82d58afda"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I025",
+      "ordinal": 25,
+      "itemType": "dialog_turn",
+      "turn": 25,
+      "speaker": "阿明",
+      "source": {
+        "sourceLine": "阿明: 我鍾意芝麻!",
+        "traditional": "我鍾意芝麻!",
+        "jyutpingLine": "/Aa3 Ming4: Ngo5 zung1 ji3 zi1 maa4!/",
+        "english": null
+      },
+      "sourceHash": "sha256:2354f1d98e2e9855ebd3692aaeb9f1de7104a5c1431a873a6b3cfa6240a59b6a"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I026",
+      "ordinal": 26,
+      "itemType": "dialog_turn",
+      "turn": 26,
+      "speaker": "小紅",
+      "source": {
+        "sourceLine": "小紅: 好呀!咁我哋整芝麻嘅。",
+        "traditional": "好呀!咁我哋整芝麻嘅。",
+        "jyutpingLine": "/Siu2 Hung4: Hou2 aa3! Gam2 ngo5 dei6 zing2 zi1 maa4 ge3./",
+        "english": null
+      },
+      "sourceHash": "sha256:d23024c0c6d9feae5f919aca02dc767618d0977183829513413a90b3f3e0610a"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I027",
+      "ordinal": 27,
+      "itemType": "dialog_turn",
+      "turn": 27,
+      "speaker": "阿明",
+      "source": {
+        "sourceLine": "阿明: 要煲幾耐呀?",
+        "traditional": "要煲幾耐呀?",
+        "jyutpingLine": "/Aa3 Ming4: Jiu3 bou1 gei2 noi6 aa3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:2abf117915a6843f052d637ef2bbade9a6b46da33c71d43270e8b2fb08c91010"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I028",
+      "ordinal": 28,
+      "itemType": "dialog_turn",
+      "turn": 28,
+      "speaker": "小紅",
+      "source": {
+        "sourceLine": "小紅: 唔使耐,五分鐘左右。",
+        "traditional": "唔使耐,五分鐘左右。",
+        "jyutpingLine": "/Siu2 Hung4: M4 sai2 noi6, ng5 fan1 zung1 zo2 jau6./",
+        "english": null
+      },
+      "sourceHash": "sha256:1141848fb02deb728f020b81c9613d1753d80f13c29eb9c1282f3a636b2352d8"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I029",
+      "ordinal": 29,
+      "itemType": "dialog_turn",
+      "turn": 29,
+      "speaker": "阿明",
+      "source": {
+        "sourceLine": "阿明: 點知熟咗未呀?",
+        "traditional": "點知熟咗未呀?",
+        "jyutpingLine": "/Aa3 Ming4: Dim2 zi1 suk6 zo2 mei6 aa3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:b311c0350ff10d815c5f99686363a3efc6adc1392556d2c802abd0c9be4bf2f1"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I030",
+      "ordinal": 30,
+      "itemType": "dialog_turn",
+      "turn": 30,
+      "speaker": "小紅",
+      "source": {
+        "sourceLine": "小紅: 浮起就熟喇!",
+        "traditional": "浮起就熟喇!",
+        "jyutpingLine": "/Siu2 Hung4: Fau4 hei2 zau6 suk6 laa3!/",
+        "english": null
+      },
+      "sourceHash": "sha256:53db91cfc6bf26b8e789ee76fa30dd4bc7e83d08d8f07a8cefaa29bf5ebc33cf"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I031",
+      "ordinal": 31,
+      "itemType": "dialog_turn",
+      "turn": 31,
+      "speaker": "阿明",
+      "source": {
+        "sourceLine": "阿明: 咁簡單!",
+        "traditional": "咁簡單!",
+        "jyutpingLine": "/Aa3 Ming4: Gam3 gaan1 daan1!/",
+        "english": null
+      },
+      "sourceHash": "sha256:a7260070e327aa02c4c4ae7c3354641237e1fccae44e192782a9e84ff4ff4e27"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I032",
+      "ordinal": 32,
+      "itemType": "dialog_turn",
+      "turn": 32,
+      "speaker": "小紅",
+      "source": {
+        "sourceLine": "小紅: 係呀!放啲糖水就食得喇。",
+        "traditional": "係呀!放啲糖水就食得喇。",
+        "jyutpingLine": "/Siu2 Hung4: Hai6 aa3! Fong3 di1 tong4 seoi2 zau6 sik6 dak1 laa3./",
+        "english": null
+      },
+      "sourceHash": "sha256:9bc4ae6c2796879212d4506c154a7491e6b4e9477a911499189dc9d50c7ee646"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I033",
+      "ordinal": 33,
+      "itemType": "dialog_turn",
+      "turn": 33,
+      "speaker": "阿明",
+      "source": {
+        "sourceLine": "阿明: 冬至點解要食湯圓㗎?",
+        "traditional": "冬至點解要食湯圓㗎?",
+        "jyutpingLine": "/Aa3 Ming4: Dung1 zi3 dim2 gaai2 jiu3 sik6 tong1 jyun4 gaa3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:d4aadb0422ac8b0504b99f8ac5c00d6a8f978b6e6da25fa0631f9ccb82bf3b80"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I034",
+      "ordinal": 34,
+      "itemType": "dialog_turn",
+      "turn": 34,
+      "speaker": "小紅",
+      "source": {
+        "sourceLine": "小紅: 代表一家團圓。",
+        "traditional": "代表一家團圓。",
+        "jyutpingLine": "/Siu2 Hung4: Doi6 biu2 jat1 gaa1 tyun4 jyun4./",
+        "english": null
+      },
+      "sourceHash": "sha256:33d3cb61b6f49f4b61e94c0f006978c09183c48532646c2d01530a24be0938cc"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I035",
+      "ordinal": 35,
+      "itemType": "dialog_turn",
+      "turn": 35,
+      "speaker": "阿明",
+      "source": {
+        "sourceLine": "阿明: 哦,好有意思!",
+        "traditional": "哦,好有意思!",
+        "jyutpingLine": "/Aa3 Ming4: O4, hou2 jau5 ji3 si1!/",
+        "english": null
+      },
+      "sourceHash": "sha256:059f791321ffbdb6b3d1bed89ac922425202748a8aaa7831d955151383928dec"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I036",
+      "ordinal": 36,
+      "itemType": "dialog_turn",
+      "turn": 36,
+      "speaker": "小紅",
+      "source": {
+        "sourceLine": "小紅: 仲有,湯圓係圓嘅,好意頭。",
+        "traditional": "仲有,湯圓係圓嘅,好意頭。",
+        "jyutpingLine": "/Siu2 Hung4: Zung6 jau5, tong1 jyun4 hai6 jyun4 ge3, hou2 ji3 tau4./",
+        "english": null
+      },
+      "sourceHash": "sha256:a235da75c2c24ebb84cc522d58ab42771387f93ebf4bb360084c6996a20a1ec7"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I037",
+      "ordinal": 37,
+      "itemType": "dialog_turn",
+      "turn": 37,
+      "speaker": "阿明",
+      "source": {
+        "sourceLine": "阿明: 圓代表團圓,啱喇!",
+        "traditional": "圓代表團圓,啱喇!",
+        "jyutpingLine": "/Aa3 Ming4: Jyun4 doi6 biu2 tyun4 jyun4, ngaam1 laa3!/",
+        "english": null
+      },
+      "sourceHash": "sha256:a9bee7eddacd8de469cec6ea643817cf7c49e1ea85ba51923b82f9d34f4bc412"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I038",
+      "ordinal": 38,
+      "itemType": "dialog_turn",
+      "turn": 38,
+      "speaker": "小紅",
+      "source": {
+        "sourceLine": "小紅: 冬至係一年最長嘅夜晚。",
+        "traditional": "冬至係一年最長嘅夜晚。",
+        "jyutpingLine": "/Siu2 Hung4: Dung1 zi3 hai6 jat1 nin4 zeoi3 coeng4 ge3 je6 maan5./",
+        "english": null
+      },
+      "sourceHash": "sha256:635b78bc7a59d4f59766e2f23f48e7a7dece7d58a5925f3777674f0630e20f94"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I039",
+      "ordinal": 39,
+      "itemType": "dialog_turn",
+      "turn": 39,
+      "speaker": "阿明",
+      "source": {
+        "sourceLine": "阿明: 所以一家人聚埋?",
+        "traditional": "所以一家人聚埋?",
+        "jyutpingLine": "/Aa3 Ming4: So2 ji5 jat1 gaa1 jan4 zeoi6 maai4?/",
+        "english": null
+      },
+      "sourceHash": "sha256:5a283490830dcf6dea3cd06cbb2a0d50c398ffaa78f54cba607e10bfafbaf3d9"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I040",
+      "ordinal": 40,
+      "itemType": "dialog_turn",
+      "turn": 40,
+      "speaker": "小紅",
+      "source": {
+        "sourceLine": "小紅: 係呀!同屋企人食飯最緊要。",
+        "traditional": "係呀!同屋企人食飯最緊要。",
+        "jyutpingLine": "/Siu2 Hung4: Hai6 aa3! Tung4 uk1 kei2 jan4 sik6 faan6 zeoi3 gan2 jiu3./",
+        "english": null
+      },
+      "sourceHash": "sha256:65f48fbeb82eeeb6d1688f872d9329825ea1a399a7950448ef82599a7b2f8f57"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I041",
+      "ordinal": 41,
+      "itemType": "dialog_turn",
+      "turn": 41,
+      "speaker": "阿明",
+      "source": {
+        "sourceLine": "阿明: 我哋幾時一齊整呀?",
+        "traditional": "我哋幾時一齊整呀?",
+        "jyutpingLine": "/Aa3 Ming4: Ngo5 dei6 gei2 si4 jat1 cai4 zing2 aa3?/",
+        "english": null
+      },
+      "sourceHash": "sha256:f6eefaf0209f42e008f0d3811373e51974833d61f8e983e490f730ec0470149f"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I042",
+      "ordinal": 42,
+      "itemType": "dialog_turn",
+      "turn": 42,
+      "speaker": "小紅",
+      "source": {
+        "sourceLine": "小紅: 冬至前一日得唔得?",
+        "traditional": "冬至前一日得唔得?",
+        "jyutpingLine": "/Siu2 Hung4: Dung1 zi3 cin4 jat1 jat6 dak1 m4 dak1?/",
+        "english": null
+      },
+      "sourceHash": "sha256:d12aacc9b2bbeace179654da2665b5ea79ddd60e569495d3cbef7eda8ed27c9c"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I043",
+      "ordinal": 43,
+      "itemType": "dialog_turn",
+      "turn": 43,
+      "speaker": "阿明",
+      "source": {
+        "sourceLine": "阿明: 得呀!我嚟你屋企?",
+        "traditional": "得呀!我嚟你屋企?",
+        "jyutpingLine": "/Aa3 Ming4: Dak1 aa3! Ngo5 lai4 nei5 uk1 kei2?/",
+        "english": null
+      },
+      "sourceHash": "sha256:2c8667b4ba3ae1acfe3bfabb8511fcb7e4564a17fcf32b8fbf97e74e0b99abb2"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I044",
+      "ordinal": 44,
+      "itemType": "dialog_turn",
+      "turn": 44,
+      "speaker": "小紅",
+      "source": {
+        "sourceLine": "小紅: 好呀!下晝三點得唔得?",
+        "traditional": "好呀!下晝三點得唔得?",
+        "jyutpingLine": "/Siu2 Hung4: Hou2 aa3! Haa6 zau3 saam1 dim2 dak1 m4 dak1?/",
+        "english": null
+      },
+      "sourceHash": "sha256:38668dfb957c8f5eddc94f9c3da7575b6d283d6b82a61529aae7fb9e0d84c177"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I045",
+      "ordinal": 45,
+      "itemType": "dialog_turn",
+      "turn": 45,
+      "speaker": "阿明",
+      "source": {
+        "sourceLine": "阿明: 冇問題!我帶啲嘢嚟?",
+        "traditional": "冇問題!我帶啲嘢嚟?",
+        "jyutpingLine": "/Aa3 Ming4: Mou5 man6 tai4! Ngo5 daai3 di1 je5 lai4?/",
+        "english": null
+      },
+      "sourceHash": "sha256:4fa7d46f48b394022fed32d0577453d98deea99479298fb34a040d90341557dc"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I046",
+      "ordinal": 46,
+      "itemType": "dialog_turn",
+      "turn": 46,
+      "speaker": "小紅",
+      "source": {
+        "sourceLine": "小紅: 唔使呀,我買晒喇。",
+        "traditional": "唔使呀,我買晒喇。",
+        "jyutpingLine": "/Siu2 Hung4: M4 sai2 aa3, ngo5 maai5 saai3 laa3./",
+        "english": null
+      },
+      "sourceHash": "sha256:207a8e7011342cf2e944ff35bb1b03fdc20b15e65409808f6cd4d875c9bd7c31"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I047",
+      "ordinal": 47,
+      "itemType": "dialog_turn",
+      "turn": 47,
+      "speaker": "阿明",
+      "source": {
+        "sourceLine": "阿明: 咁我帶飲品啦!",
+        "traditional": "咁我帶飲品啦!",
+        "jyutpingLine": "/Aa3 Ming4: Gam2 ngo5 daai3 jam2 ban2 laa1!/",
+        "english": null
+      },
+      "sourceHash": "sha256:f23d795b4234a5b2d9b0707b04396a1f8b6a34c092ff788741d32af57cd810cb"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I048",
+      "ordinal": 48,
+      "itemType": "dialog_turn",
+      "turn": 48,
+      "speaker": "小紅",
+      "source": {
+        "sourceLine": "小紅: 好呀!多謝!",
+        "traditional": "好呀!多謝!",
+        "jyutpingLine": "/Siu2 Hung4: Hou2 aa3! Do1 ze6!/",
+        "english": null
+      },
+      "sourceHash": "sha256:ab629518d05541ffe6b0523431d4ec1d5211af2e97716395e4599fd8dc57cf8a"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I049",
+      "ordinal": 49,
+      "itemType": "dialog_turn",
+      "turn": 49,
+      "speaker": "阿明",
+      "source": {
+        "sourceLine": "阿明: 一齊整湯圓,好期待!",
+        "traditional": "一齊整湯圓,好期待!",
+        "jyutpingLine": "/Aa3 Ming4: Jat1 cai4 zing2 tong1 jyun4, hou2 kei4 doi6!/",
+        "english": null
+      },
+      "sourceHash": "sha256:f8448c8fa807a04cede87452b146b354fdc4973f5c1a2ecb3dbebbb4fc1b8ed9"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I050",
+      "ordinal": 50,
+      "itemType": "dialog_turn",
+      "turn": 50,
+      "speaker": "小紅",
+      "source": {
+        "sourceLine": "小紅: 我都係!到時見!",
+        "traditional": "我都係!到時見!",
+        "jyutpingLine": "/Siu2 Hung4: Ngo5 dou1 hai6! Dou3 si4 gin3!/",
+        "english": null
+      },
+      "sourceHash": "sha256:d6c7c88b702bab41bc608bac9038597c948524f94d1700fb72aeeb1b53020f46"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I051",
+      "ordinal": 51,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 1,
+      "source": {
+        "traditional": "冬至",
+        "jyutping": "dung1 zi3",
+        "english": "Winter Solstice"
+      },
+      "sourceHash": "sha256:badf07eb212020af051d79fb4f355b3c740836f245e53b300e77f19487e12831"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I052",
+      "ordinal": 52,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 2,
+      "source": {
+        "traditional": "湯圓",
+        "jyutping": "tong1 jyun4",
+        "english": "tang yuan, glutinous rice balls"
+      },
+      "sourceHash": "sha256:257242053d8ab7db85af784bb358791236aee3001caf15c907238a73f6cb90a2"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I053",
+      "ordinal": 53,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 3,
+      "source": {
+        "traditional": "屋企",
+        "jyutping": "uk1 kei2",
+        "english": "home, family"
+      },
+      "sourceHash": "sha256:ad30d30796b3da5760e82c16c8a1f868854e77d5a5dfd37c9c8519bb67823e26"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I054",
+      "ordinal": 54,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 4,
+      "source": {
+        "traditional": "整",
+        "jyutping": "zing2",
+        "english": "to make, to prepare"
+      },
+      "sourceHash": "sha256:b1f8998e030115f25f675c570e2153bc2044b852e77c1054827979bf07fb3921"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I055",
+      "ordinal": 55,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 5,
+      "source": {
+        "traditional": "買",
+        "jyutping": "maai5",
+        "english": "to buy"
+      },
+      "sourceHash": "sha256:3c1371317eefe4eaa63e424b4b20e55b335a8a9b4e5ae976a6d5d69ad9a24da2"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I056",
+      "ordinal": 56,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 6,
+      "source": {
+        "traditional": "自己",
+        "jyutping": "zi6 gei2",
+        "english": "oneself"
+      },
+      "sourceHash": "sha256:f8c5a4c631190761eaf8f8001af3b93ad74e62a10f37496198e1de793140c855"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I057",
+      "ordinal": 57,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 7,
+      "source": {
+        "traditional": "定",
+        "jyutping": "ding6",
+        "english": "or (in questions)"
+      },
+      "sourceHash": "sha256:954ebd1625dc08ecd05c461485ed020c117e3230abd0bd325de5b91c18d91197"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I058",
+      "ordinal": 58,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 8,
+      "source": {
+        "traditional": "好玩",
+        "jyutping": "hou2 waan2",
+        "english": "fun"
+      },
+      "sourceHash": "sha256:a9a366ddc989fea4b46a91996a1f15ea538cd643a133e9d4b5c81afa2580684f"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I059",
+      "ordinal": 59,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 9,
+      "source": {
+        "traditional": "未試過",
+        "jyutping": "mei6 si3 gwo3",
+        "english": "havenʼt tried"
+      },
+      "sourceHash": "sha256:c12337dd2975ebc207428a90294cc6b2e5ba5ee600e487099be83aeda56cd232"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I060",
+      "ordinal": 60,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 10,
+      "source": {
+        "traditional": "唔難",
+        "jyutping": "m4 naan4",
+        "english": "not difficult"
+      },
+      "sourceHash": "sha256:99b376f2af875bb66fccf4bd60c8b71c10dfb6201ef98da6db44a209a2441b42"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I061",
+      "ordinal": 61,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 11,
+      "source": {
+        "traditional": "糯米粉",
+        "jyutping": "no6 mai5 fan2",
+        "english": "glutinous rice flour"
+      },
+      "sourceHash": "sha256:6fd5f7382950798450f9b0fb783fe9ebe7744e9a19d99264344db71bb2386172"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I062",
+      "ordinal": 62,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 12,
+      "source": {
+        "traditional": "糖",
+        "jyutping": "tong4",
+        "english": "sugar"
+      },
+      "sourceHash": "sha256:655118dc2ee39ef4c45dda9278428228bf553c5a0672a845627969751a1ce4d4"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I063",
+      "ordinal": 63,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 13,
+      "source": {
+        "traditional": "溝",
+        "jyutping": "kau1",
+        "english": "to mix"
+      },
+      "sourceHash": "sha256:5094ea60cfdbb570a3ba07a5223cbff80ae5aac59480b1905745228bb3752845"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I064",
+      "ordinal": 64,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 14,
+      "source": {
+        "traditional": "暖水",
+        "jyutping": "nyun5 seoi2",
+        "english": "warm water"
+      },
+      "sourceHash": "sha256:84de6ad40cdfc8a452af0e961441c52f93ee41097876f7fb78e2eb393ceb0569"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I065",
+      "ordinal": 65,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 15,
+      "source": {
+        "traditional": "搓",
+        "jyutping": "co1",
+        "english": "to knead, to roll"
+      },
+      "sourceHash": "sha256:55b37926e38265194bc708d61432da60ca40ad55148f3e014d854363db8bfdae"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I066",
+      "ordinal": 66,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 16,
+      "source": {
+        "traditional": "耳仔",
+        "jyutping": "ji5 zai2",
+        "english": "ear, earlobe"
+      },
+      "sourceHash": "sha256:799dd36056588ea4e22d09760c2f6dd3f1cfcb9e65fdd7f5fb0022cd6a200636"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I067",
+      "ordinal": 67,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 17,
+      "source": {
+        "traditional": "軟",
+        "jyutping": "jyun5",
+        "english": "soft"
+      },
+      "sourceHash": "sha256:db6e3589e164d8e53d3dd42c921c97329a4ea0dde379ff94391300cf7dc959cd"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I068",
+      "ordinal": 68,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 18,
+      "source": {
+        "traditional": "得意",
+        "jyutping": "dak1 ji3",
+        "english": "cute, interesting"
+      },
+      "sourceHash": "sha256:55d0fda8210fb3ea35283caf47da4850cd9c3922e9f0448a0ede4d7bd92f1953"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I069",
+      "ordinal": 69,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 19,
+      "source": {
+        "traditional": "然後",
+        "jyutping": "jin4 hau6",
+        "english": "then, afterwards"
+      },
+      "sourceHash": "sha256:2b72f614f800a3b1b8660c560ee70938b7eb2dc0b40c82a20764e07b2d2975e8"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I070",
+      "ordinal": 70,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 20,
+      "source": {
+        "traditional": "粒",
+        "jyutping": "nap1",
+        "english": "classifier for small round objects"
+      },
+      "sourceHash": "sha256:e4c4cc6cefab22b55cb05182b6fbc106de5696cb483de9d5885d0b6e3a93a7ad"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I071",
+      "ordinal": 71,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 21,
+      "source": {
+        "traditional": "波子",
+        "jyutping": "bo1 zi2",
+        "english": "marble"
+      },
+      "sourceHash": "sha256:40d5c1c9d9fc294c6505c34a6f02b50dc9f0972e7c69412803434049dd80bfc8"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I072",
+      "ordinal": 72,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 22,
+      "source": {
+        "traditional": "包",
+        "jyutping": "baau1",
+        "english": "to wrap, to fill"
+      },
+      "sourceHash": "sha256:2bfe897d00e533cb9b1f386198ad87a59120758f3c22b97dfd49757bdce36f26"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I073",
+      "ordinal": 73,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 23,
+      "source": {
+        "traditional": "餡",
+        "jyutping": "haam6",
+        "english": "filling"
+      },
+      "sourceHash": "sha256:803f16fdb674675ba9634b3a82954651d83c0b2bf990142de89bc0343650a157"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I074",
+      "ordinal": 74,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 24,
+      "source": {
+        "traditional": "花生",
+        "jyutping": "faa1 sang1",
+        "english": "peanut"
+      },
+      "sourceHash": "sha256:cdef0f64dbdc4f08e2dfe1370212bf3b5e80d69c15bc1f7b15930ae8bec0d470"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I075",
+      "ordinal": 75,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 25,
+      "source": {
+        "traditional": "芝麻",
+        "jyutping": "zi1 maa4",
+        "english": "sesame"
+      },
+      "sourceHash": "sha256:ac5528ae8e696002dab0198fc0d55e70a7742797594331ed3109ae2daf2f37ed"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I076",
+      "ordinal": 76,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 26,
+      "source": {
+        "traditional": "豆沙",
+        "jyutping": "dau6 saa1",
+        "english": "red bean paste"
+      },
+      "sourceHash": "sha256:afb130394a441d14dcce3a2025428323bec0d293255b9c9e1c58676ef2f4db48"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I077",
+      "ordinal": 77,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 27,
+      "source": {
+        "traditional": "煲",
+        "jyutping": "bou1",
+        "english": "to boil, to cook"
+      },
+      "sourceHash": "sha256:1b46e755da6e3a7a8b582da867df0b87472545ee6af0a12565e27186e6285e72"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I078",
+      "ordinal": 78,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 28,
+      "source": {
+        "traditional": "左右",
+        "jyutping": "zo2 jau6",
+        "english": "approximately, around"
+      },
+      "sourceHash": "sha256:b9976f5dbe0deded96b29422e22c99c7bad1897f80173c4460891c3eae72b54f"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I079",
+      "ordinal": 79,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 29,
+      "source": {
+        "traditional": "熟",
+        "jyutping": "suk6",
+        "english": "cooked, ripe"
+      },
+      "sourceHash": "sha256:791ada5b7a13c5f4fc0e31c8ab642d5a85d2e0921e4bb9b7cd6928015352f131"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I080",
+      "ordinal": 80,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 30,
+      "source": {
+        "traditional": "浮起",
+        "jyutping": "fau4 hei2",
+        "english": "to float up"
+      },
+      "sourceHash": "sha256:a592e4b5b3fabd651cf21562d83b5f5d6323c331f59a0c877e14e53d9243f522"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I081",
+      "ordinal": 81,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 31,
+      "source": {
+        "traditional": "簡單",
+        "jyutping": "gaan1 daan1",
+        "english": "simple, easy"
+      },
+      "sourceHash": "sha256:b73541f91a3f4184e3dba3b9e42c44b2065e0b0a9cf675b1f0c4cf5ad8651d21"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I082",
+      "ordinal": 82,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 32,
+      "source": {
+        "traditional": "糖水",
+        "jyutping": "tong4 seoi2",
+        "english": "sweet soup, syrup"
+      },
+      "sourceHash": "sha256:cc01dbe23f80d8dce32d3a1d8362949cd904083aee3fd57549dbe027459d9f16"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I083",
+      "ordinal": 83,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 33,
+      "source": {
+        "traditional": "代表",
+        "jyutping": "doi6 biu2",
+        "english": "to represent"
+      },
+      "sourceHash": "sha256:9a7886fb36e10c63bacbdb8b1e4a24246a87c8a0b7e0e6d99179c104fcc1d45b"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I084",
+      "ordinal": 84,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 34,
+      "source": {
+        "traditional": "一家",
+        "jyutping": "jat1 gaa1",
+        "english": "family, household"
+      },
+      "sourceHash": "sha256:7d795ab2ae03347cb4978de099614f61072347cc4960885e943460763e7c4634"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I085",
+      "ordinal": 85,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 35,
+      "source": {
+        "traditional": "團圓",
+        "jyutping": "tyun4 jyun4",
+        "english": "reunion, togetherness"
+      },
+      "sourceHash": "sha256:0995b4a6ac1ca7d89b89da41f196039bf5cef8dcff45e754c909dff2c30c1e98"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I086",
+      "ordinal": 86,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 36,
+      "source": {
+        "traditional": "意思",
+        "jyutping": "ji3 si1",
+        "english": "meaning"
+      },
+      "sourceHash": "sha256:a6ad1f01f58ad2d72994d05580929f3c070563992d578290aa685decf4209ec1"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I087",
+      "ordinal": 87,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 37,
+      "source": {
+        "traditional": "圓",
+        "jyutping": "jyun4",
+        "english": "round"
+      },
+      "sourceHash": "sha256:c4ce1542cf91927428ce4cf600904bb1e185211efad762b8957efee087c9076b"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I088",
+      "ordinal": 88,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 38,
+      "source": {
+        "traditional": "意頭",
+        "jyutping": "ji3 tau4",
+        "english": "good fortune, auspicious meaning"
+      },
+      "sourceHash": "sha256:92e1205b2c823d9030deaff269a74258daf24299676e0bf42757f9e8ad3d1447"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I089",
+      "ordinal": 89,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 39,
+      "source": {
+        "traditional": "夜晚",
+        "jyutping": "je6 maan5",
+        "english": "night, evening"
+      },
+      "sourceHash": "sha256:e16425c85498939ee0cabcc1b1ecbcd39fb9a9ea5b2410fb417ec80e119d90b4"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I090",
+      "ordinal": 90,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 40,
+      "source": {
+        "traditional": "聚埋",
+        "jyutping": "zeoi6 maai4",
+        "english": "to gather together"
+      },
+      "sourceHash": "sha256:9b682a9b07b5b3bd96a40a0b8fa389d41a10df600ed7a9afe113d40f907b8455"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I091",
+      "ordinal": 91,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 41,
+      "source": {
+        "traditional": "緊要",
+        "jyutping": "gan2 jiu3",
+        "english": "important"
+      },
+      "sourceHash": "sha256:cdfca4a6aa0bd645fa0a07c5fbda3532e20902ce7b9f883aef60e08e9481a17a"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I092",
+      "ordinal": 92,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 42,
+      "source": {
+        "traditional": "前一日",
+        "jyutping": "cin4 jat1 jat6",
+        "english": "the day before"
+      },
+      "sourceHash": "sha256:d19f184cc3a9e032c4ab8413b48a951ece49ca34d9d9957739a9f672db4cba84"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I093",
+      "ordinal": 93,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 43,
+      "source": {
+        "traditional": "下晝",
+        "jyutping": "haa6 zau3",
+        "english": "afternoon"
+      },
+      "sourceHash": "sha256:e1b16edfdee10efd515457bab057621c45e13da0a8ae87936363fe889952d3c1"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I094",
+      "ordinal": 94,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 44,
+      "source": {
+        "traditional": "飲品",
+        "jyutping": "jam2 ban2",
+        "english": "beverages, drinks"
+      },
+      "sourceHash": "sha256:8e09e018e658adce667a01c2681b37cdf83270f5ced6c2b13047a836cfa4dd06"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I095",
+      "ordinal": 95,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 45,
+      "source": {
+        "traditional": "期待",
+        "jyutping": "kei4 doi6",
+        "english": "to look forward to"
+      },
+      "sourceHash": "sha256:cb451a7bd38f6e043d4df665311225e1bfbb7ea27a325c43f1cb9757c09080a4"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214-I096",
+      "ordinal": 96,
+      "itemType": "lexical_entry",
+      "vocabularyOrdinal": 46,
+      "source": {
+        "traditional": "到時見",
+        "jyutping": "dou3 si4 gin3",
+        "english": "see you then"
+      },
+      "sourceHash": "sha256:14004101a87779e75dba51d7fd7a2215efeb3c5eb43e05130ac53ca8faa59db1"
+    }
+  ]
+}
