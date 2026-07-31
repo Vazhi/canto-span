@@ -1,0 +1,39 @@
+name: Generate AA82 runtime
+
+on:
+  pull_request:
+    branches:
+      - agent/aa82-attested-boundary-packet
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    if: github.event.pull_request.head.ref == 'agent/aa82-matrix-parent-force'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Install build dependency
+        run: npm install --no-audit --no-fund --ignore-scripts
+      - name: Build and test
+        run: |
+          npm run build:runtime
+          node --test tests/tooling/runtime/aa82-matrix-parent-force.test.js
+          npm run verify:runtime-build
+          npm run test:generated-runtime
+      - name: Commit canonical bundle
+        run: |
+          rm .github/workflows/generate-aa82-runtime.yml
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add main.js src/parser/orchestration/apply-terminal-patterns.js tests/tooling/runtime/aa82-matrix-parent-force.test.js .github/workflows/generate-aa82-runtime.yml
+          git commit -m "Build AA82 matrix parent-force runtime"
+          git push
