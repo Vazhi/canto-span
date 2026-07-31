@@ -1,0 +1,1209 @@
+{
+  "schema": "canto-span-pedagogical-dialog-review-v1",
+  "sourceId": "GLOSSIKA-YUEHK-A1-DLG-019-20260412",
+  "sourcePayloadHash": "sha256:d4a9416383cbc1b77c11fb0d515ab0ede3a98399a9b6ba68f07b386b23fd725c",
+  "policy": {
+    "sourceLayer": "source.json is immutable.",
+    "translationBoundary": "Missing per-turn translations are preserved and must not be generated during ingress.",
+    "sourceBlockBoundary": "Vocabulary and notes are preserved from the source email without endorsement.",
+    "deduplicationBoundary": "Exact and normalized repository matches are candidates until reviewed.",
+    "evidenceBoundary": "Dialog adjacency and pedagogical attestation do not establish productivity, construction identity, register, or parser behavior."
+  },
+  "summary": {
+    "recordCount": 80,
+    "reviewedCount": 0,
+    "unreviewedCount": 80,
+    "classificationCounts": {
+      "naturalness_review_candidate": 40,
+      "lexical_review_candidate": 40
+    },
+    "relationCounts": {
+      "no_project_match": 57,
+      "normalized_duplicate_candidate": 23
+    },
+    "vocabularyCount": 40,
+    "vocabularyBlockState": "source_present",
+    "knownSourceAlerts": [
+      {
+        "scope": "all_dialog_turns",
+        "type": "missing_turn_english_translation",
+        "status": "source_omission_preserved",
+        "note": "The email supplies Cantonese and source Jyutping but no per-turn English translations."
+      },
+      {
+        "scope": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I001 through GLOSSIKA-YUEHK-A1-DLG-019-20260412-I040",
+        "type": "sympathy_bad_news_review",
+        "status": "route_to_parent_130",
+        "note": "Potential linguistic and naturalness questions remain contextual pedagogical attestations and are routed to #130."
+      },
+      {
+        "scope": "source_notes",
+        "type": "pedagogical_claims_unverified",
+        "status": "source_claim_preserved",
+        "note": "Glossika notes are preserved as source metadata and are not adopted as Canto Span grammar conclusions."
+      }
+    ]
+  },
+  "records": [
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I001",
+      "sourceHash": "sha256:9fd103c8e03615bfa5f97fd1fe9b5ff5ddf049c201be0ed6a2c4c21297245d85",
+      "normalizedCantonese": "美玲你今日好似唔係好開心喎",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I002",
+      "sourceHash": "sha256:e4c781365776238df2b02fb6284b35f6f93659b16e1372d2a679d3e07788a60f",
+      "normalizedCantonese": "係呀啱啱發生咗啲事",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I003",
+      "sourceHash": "sha256:c8f5ad286a929cc179a83c88b20749139afb1f6179bb0366ee26a705129a7066",
+      "normalizedCantonese": "發生咩事呀方唔方便講",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I004",
+      "sourceHash": "sha256:6419d2f6e7c6b46d8ee85d90814ca91798ed7f56d73ca2b92cf80c63e8dcabbe",
+      "normalizedCantonese": "我屋企隻貓貓尋日過咗身",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I005",
+      "sourceHash": "sha256:e61cc1e4fa63027588888575dbf6a88bd0f0558cc1acfbabf4b6b056c1b48817",
+      "normalizedCantonese": "吓唔好意思聽到養咗幾耐",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I006",
+      "sourceHash": "sha256:e5d5323b90f9d878f2eca862af25e6bedcb0cc48ef2079a7f23e8fc89c556fb0",
+      "normalizedCantonese": "養咗十年啦由細養到大",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I007",
+      "sourceHash": "sha256:7eb31ce79519a995a860c5fdf7df82c3a07d650fc592e22f75ad58bfdd8911db",
+      "normalizedCantonese": "咁耐呀真係好難過",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I008",
+      "sourceHash": "sha256:ca1c6914aa9bdd0de31bf1095b5f37ac054cf1263227070bb454dcfee521f6fa",
+      "normalizedCantonese": "係呀而家成日諗起佢",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I009",
+      "sourceHash": "sha256:4b9dcd60bbe53bdf8b32cbc6325d4dd4ac767692b2d7c3a34e36e063d8433368",
+      "normalizedCantonese": "我明白嘅寵物就好似屋企人咁",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I010",
+      "sourceHash": "sha256:2aadcbc37fc8ef0e09b7b34691027ae57190f4cb10ad1bed781bb96c56f32738",
+      "normalizedCantonese": "佢平時好乖好聽話",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I011",
+      "sourceHash": "sha256:27bbd5af72472d6e24c9d640c6932e115b02929e2eeb45c024765cba2ee7b5b9",
+      "normalizedCantonese": "我記得你成日同我講佢嘅故事",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I012",
+      "sourceHash": "sha256:f82678185b4e26062322100ae1d6e7a958cb615c0c757a5af81ff96dcc07853d",
+      "normalizedCantonese": "係呀佢好得意好鍾意玩",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I013",
+      "sourceHash": "sha256:35ca6a18121a64690d4c4e447c8d98606da3380339586cbd264da911d46467a7",
+      "normalizedCantonese": "你有冇喊過",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I014",
+      "sourceHash": "sha256:ef980a78413c52070933c4cc5a1bcf7cdf817697ef62381cbdd91cf001f337f3",
+      "normalizedCantonese": "有呀尋日喊咗好耐",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I015",
+      "sourceHash": "sha256:41e3845283d4180655a6031b7dfa34426f573f2951b2f616ba27f6636bc1c083",
+      "normalizedCantonese": "喊出嚟會好啲唔好忍住",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I016",
+      "sourceHash": "sha256:4814ec14524773b090e8970e7da209722322829328018308dc37ee7d2bb42d11",
+      "normalizedCantonese": "而家屋企好靜好唔慣",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I017",
+      "sourceHash": "sha256:deee067cc858ff1b92d4c96177bf3ce9534903a708c7d067d59b340c905c8048",
+      "normalizedCantonese": "要時間慢慢習慣唔使急",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I018",
+      "sourceHash": "sha256:f5ba15c0285bb276d1451f246edb38c61c7ecf88506e01b868ff52fabb9a37fb",
+      "normalizedCantonese": "我知道但係真係好唔捨得",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I019",
+      "sourceHash": "sha256:d9ff7de8222ef38d5c13e0951ba3879013e82c6200be1b1ada375177732aeca3",
+      "normalizedCantonese": "你有冇影好多相",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I020",
+      "sourceHash": "sha256:2f95585c0b0855122833a08e1d3dd5ab8860950c38b71d945a7c42252c763007",
+      "normalizedCantonese": "有呀影咗好多尋日睇返晒",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I021",
+      "sourceHash": "sha256:16c125c23adc541bec2a7d4a978ce85c52a69ed985e58c74eaeb6a7074e73f70",
+      "normalizedCantonese": "至少有啲回憶可以留低",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I022",
+      "sourceHash": "sha256:b9ab857e49257fb34f34771d60af0835d39bc6260372f847fcd3bf1d9ccb8475",
+      "normalizedCantonese": "係呀睇相嗰陣又想喊",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I023",
+      "sourceHash": "sha256:072fd3a87bbd34f7b82be821cfcf01abb4a012bcaf559548a6481aebc34a3744",
+      "normalizedCantonese": "咁好正常嘅唔駛怕",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I024",
+      "sourceHash": "sha256:ecb6089a4b080973c8ded2b9b6ca44f3639912d9a58e92937a1e341a29cbc653",
+      "normalizedCantonese": "我爸媽都好傷心佢哋都好鍾意佢",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I025",
+      "sourceHash": "sha256:4f78c9525901675821f72a37778261e277eb674bd71e5224fa9b16c7f4923cf4",
+      "normalizedCantonese": "全家人都鍾意佢佢好幸福",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I026",
+      "sourceHash": "sha256:43f529f203c283f59cb88c826091bc2db8fb1da6ab3f62b99b65bfd2b847ad8e",
+      "normalizedCantonese": "希望佢而家喺天堂開心",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I027",
+      "sourceHash": "sha256:b5eb3ed6cb7231de279d8d3f5e2eb71a8cc658197a18d2a5208eb4c7b0b2a9a4",
+      "normalizedCantonese": "一定係嘅你今日有冇食嘢",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I028",
+      "sourceHash": "sha256:ab52d0d203ef204b793ca4d6450004d87df0afd445817d0b0967b20d86376bc3",
+      "normalizedCantonese": "未呀冇乜胃口",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I029",
+      "sourceHash": "sha256:b91fe2d7a6c79193726fd4029f4ed43c0759b8c65321e3d7f195a23f3c2b9196",
+      "normalizedCantonese": "都要食少少嘢唔好唔食",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I030",
+      "sourceHash": "sha256:7be234facabd722d11257b891afd99f49bf70a6a41bfdafdf924ae5011f0ca6f",
+      "normalizedCantonese": "我遲啲先食",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I031",
+      "sourceHash": "sha256:6e8135be38888be43f40d75d948978dd4f633e9ecab79a63ed75b9bf1d605441",
+      "normalizedCantonese": "要好好照顧自己呀",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I032",
+      "sourceHash": "sha256:a838d585fe36fc37f833947f3c3d49cd2b4e1c97746eed7e6c34e3c275077709",
+      "normalizedCantonese": "知道啦多謝你安慰我",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I033",
+      "sourceHash": "sha256:0b74d9eef776bb109fa7f24252eeef34cfa87bf8f321d145c39f98ec589368c1",
+      "normalizedCantonese": "朋友嚟㗎嘛應該嘅",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I034",
+      "sourceHash": "sha256:989de38980b7fb135864938ea8b0c6db9c6ed594f683787a45cf7062099d6d05",
+      "normalizedCantonese": "有你傾偈真係好啲",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I035",
+      "sourceHash": "sha256:3c49afa81c5271f10c1c6114a2695a6b8e740b185cb1a2fc3e04ebe05c6f834e",
+      "normalizedCantonese": "需要傾偈隨時搵我",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I036",
+      "sourceHash": "sha256:3d16e5b1adbf7b9230bbfe7a5c63a9311251ac33f6a07568babf6ba94dd05333",
+      "normalizedCantonese": "好呀多謝你",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I037",
+      "sourceHash": "sha256:c478b781ef6b9068dc40baf984849d44b709609df292d37bca95410b179e9187",
+      "normalizedCantonese": "一齊去行吓好唔好散吓心",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I038",
+      "sourceHash": "sha256:e51a20684adc56d211b7e9ba2bed9a782e3de062391b7e7f4a09525af5bccd53",
+      "normalizedCantonese": "好呀出去行吓都好",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I039",
+      "sourceHash": "sha256:886bb05b5056cecf7fc98d2c085cd293e6e529d7b8afb61f8d9e35698639ec27",
+      "normalizedCantonese": "走啦我陪你",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I040",
+      "sourceHash": "sha256:e2808c51b4fba6ca926a181d4eac27bdda6afe983a735c88c7f2c389323780d7",
+      "normalizedCantonese": "真係多謝你志明",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "sympathy_bad_news_review",
+        "source_turn_translation_not_provided"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I041",
+      "sourceHash": "sha256:321dc2f681d2002b62ef5d9c16854bfe77870486b109daaa74dec1ad192432f8",
+      "normalizedCantonese": "唔好意思",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I042",
+      "sourceHash": "sha256:6a3a104a5bb6771c22c678f462d8fe6bb13925bd0c7236be64aa3a641dcb4936",
+      "normalizedCantonese": "聽到",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I043",
+      "sourceHash": "sha256:ff41af4789a1f5c79ed28172af803b5cd13894556ba6b0dbfa75f62317f14cfc",
+      "normalizedCantonese": "今日",
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I044",
+      "sourceHash": "sha256:7b59be02737e01071f71f2458941115d0bad1cd37e11d40ae94993cde33f0218",
+      "normalizedCantonese": "好似",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I045",
+      "sourceHash": "sha256:04f4cb686450c941ab8d95a5a03632fb780cfce8500206169f805a525fdaf9b2",
+      "normalizedCantonese": "唔係",
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I046",
+      "sourceHash": "sha256:038b85348cef75a757ecd391a46b7478a7bad56419a9c36f5f37de6fb2f27ac1",
+      "normalizedCantonese": "開心",
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I047",
+      "sourceHash": "sha256:217abf5168c99c188ec658a9a09fb4292dd04a61b9f712bb7bf459cebbb15dc4",
+      "normalizedCantonese": "喎",
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I048",
+      "sourceHash": "sha256:bebbfbea4e61f562455b5edc2f18964c28b09f45fb7ff458e7b57be7277bfa12",
+      "normalizedCantonese": "係呀",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I049",
+      "sourceHash": "sha256:b62f1a9c69ceeaee6a2f9097acc63b942ba74786f3c540ceabd00c0ce3d0472d",
+      "normalizedCantonese": "啱啱",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I050",
+      "sourceHash": "sha256:4edd4417fa49445940a36b85c57f4ba500d65dfae21e3f29cef62c14483c2d2e",
+      "normalizedCantonese": "發生",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I051",
+      "sourceHash": "sha256:f76c80453d0aafef1a538e869098801745baa9f1fac118685b121facd8c7b5ea",
+      "normalizedCantonese": "咗",
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I052",
+      "sourceHash": "sha256:4134550dca4b7a4f0ca61d9bdac8ab486ef8f1ef42441ecaacddb5ed0c8691a1",
+      "normalizedCantonese": "啲",
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I053",
+      "sourceHash": "sha256:25cf27060629e00310755eb7c38a5ecc50459b169888e5ac17ba5e3970c8ec89",
+      "normalizedCantonese": "事",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I054",
+      "sourceHash": "sha256:be77fb7e19d970dd40454dc738da7ba3c37a994b4bf120cc8a757aa9953fd6dd",
+      "normalizedCantonese": "咩事",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I055",
+      "sourceHash": "sha256:61ad67b9a9a1ece8895862b9e456b35c8868015a34ecf2971e8bf18502bd14d7",
+      "normalizedCantonese": "呀",
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I056",
+      "sourceHash": "sha256:e9feb0c718dd60b8f6d20fc7c42e12840a48f241916ebbd07d32f003ab0d36e9",
+      "normalizedCantonese": "方便",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I057",
+      "sourceHash": "sha256:558db908fc7b1bdbe1804d2c949ff0af4ab3e8bb61077103cfc7dbdf0f3dca13",
+      "normalizedCantonese": "講",
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I058",
+      "sourceHash": "sha256:d9e511d7f97be9dec10256596b03de99f23ec29a460755fabc64b728d427d133",
+      "normalizedCantonese": "屋企",
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I059",
+      "sourceHash": "sha256:08905d62a46884382e1b8fe5dab2d0063d86ce53e5368acd07d32e8429b0e89e",
+      "normalizedCantonese": "隻",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I060",
+      "sourceHash": "sha256:1da9e611cce15b34fc2c9ecf5199b80f4622b44377a6d50697bdc6f477f4399b",
+      "normalizedCantonese": "貓貓",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I061",
+      "sourceHash": "sha256:548488f16d8ab57fa68942d283814fe7254eb3c5aca9dd68468660532c398762",
+      "normalizedCantonese": "尋日",
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I062",
+      "sourceHash": "sha256:9903838971fff23b52e37aedb86659e98d5e311d23aa3c098ebe8c23c2f3be22",
+      "normalizedCantonese": "過身",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I063",
+      "sourceHash": "sha256:4a3bd12afbf24c5b6be0f74fad333afe93c35f8d18985cbd380f0dd5513f8b1e",
+      "normalizedCantonese": "吓",
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I064",
+      "sourceHash": "sha256:bd0899e06f697cb6bc85ca7c9503243398315f9c09afbe10dcefbf69617e3c26",
+      "normalizedCantonese": "養",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I065",
+      "sourceHash": "sha256:8547b753cbb2ff3271cc0f0f3218fc2ae181ad8b496323236439cb21a9b37a1d",
+      "normalizedCantonese": "幾耐",
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I066",
+      "sourceHash": "sha256:b989b7cbe05549a05fff621dedcc9b641acc132efdcdfe4c4c256c2023c564c5",
+      "normalizedCantonese": "十年",
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I067",
+      "sourceHash": "sha256:320ebeb21b04c2e6d07e54309940788662297b6a4a0577aae8434ee4d6828def",
+      "normalizedCantonese": "啦",
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I068",
+      "sourceHash": "sha256:52c0ceaa8df06fca1ed2adae8a5c052d1907543e50d8d7bcd7b212125dcebe2f",
+      "normalizedCantonese": "由",
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I069",
+      "sourceHash": "sha256:47f9700d59bdb3938a3adf368a9a579dabb17f7bdf0d809e61ba81f13098606f",
+      "normalizedCantonese": "細",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I070",
+      "sourceHash": "sha256:1424fce74be51de8c4922defeefad4e06a20aca7acfa2919fc7b1848229c5331",
+      "normalizedCantonese": "到",
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I071",
+      "sourceHash": "sha256:708124f2f93c7dccedfd089002a431a72fc03918c3b83bcf0613d661181a69ec",
+      "normalizedCantonese": "大",
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I072",
+      "sourceHash": "sha256:d8f86cf62c36b09596ea44ec6f87b1c7d5b9e8f68174599ea1b85b666fddab8e",
+      "normalizedCantonese": "好",
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I073",
+      "sourceHash": "sha256:23c428f92cc5a45991d8d7cdeca3fbd52e64fd434e24b0035f5cc6482592d03f",
+      "normalizedCantonese": "你",
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I074",
+      "sourceHash": "sha256:0b4e4f72878f4142b08f06c59df2ff8aeaf7779e30e0533b0f6a0776f3db3768",
+      "normalizedCantonese": "我",
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I075",
+      "sourceHash": "sha256:c790b05405b6b8de1809c066811631116572ea848f53630454f13476d712da35",
+      "normalizedCantonese": "嘅",
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I076",
+      "sourceHash": "sha256:7a85e3a06820e4175373e7e9dd751989146894b94e58aa4a2e58f293bf09406e",
+      "normalizedCantonese": "唔",
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I077",
+      "sourceHash": "sha256:c3d82c149f3df8c72f237ab5d82dc29dd8e86650510580e2de0296d37acafe13",
+      "normalizedCantonese": "呢啲",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I078",
+      "sourceHash": "sha256:3c3a8f1ed1f63ecb57b910d6ff5c5b27480879313d2391041989c5710df38e0c",
+      "normalizedCantonese": "真係",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I079",
+      "sourceHash": "sha256:53e0bfaf0c7b18b524fef0a66b1d59adffbc3d747a85c50fe4c98b98b1c78951",
+      "normalizedCantonese": "多謝",
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412-I080",
+      "sourceHash": "sha256:cb82212d1cd0732a90b4a1bfd80acf1af33a0a7b6f299499cb78759771822b03",
+      "normalizedCantonese": "晒",
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "sympathy_bad_news_review"
+      ],
+      "reviewedValues": {},
+      "reviewerNote": "",
+      "evidenceUse": "not_authorized"
+    }
+  ]
+}

@@ -1,0 +1,2700 @@
+{
+  "schema": "canto-span-pedagogical-dialog-crosswalk-v1",
+  "sourceId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329",
+  "sourcePayloadHash": "sha256:e3c451f01b07bb81dd8936247288f9e778697fefc22762dda8c34a6a49701cb3",
+  "architecture": {
+    "canonicalRuntimeInputs": [
+      "src/**",
+      "src/runtime-resources/**"
+    ],
+    "generatedExcluded": [
+      "main.js"
+    ],
+    "supportingRecords": [
+      "tests/**",
+      "test-data/**",
+      "data/**",
+      "docs/**",
+      "grammar/**",
+      "config/**",
+      "external-evidence/**"
+    ]
+  },
+  "summary": {
+    "recordCount": 80,
+    "turnCount": 40,
+    "vocabularyCount": 40,
+    "vocabularyBlockState": "source_present",
+    "vocabularyExactSurfaceAbsentFromDialogCount": 8,
+    "classificationCounts": {
+      "naturalness_review_candidate": 40,
+      "lexical_review_candidate": 40
+    },
+    "relationCounts": {
+      "no_project_match": 59,
+      "normalized_duplicate_candidate": 21
+    }
+  },
+  "sourceBlockAudit": {
+    "state": "source_present",
+    "absentVocabulary": [
+      "姓",
+      "叫",
+      "乜嘢",
+      "幾多",
+      "零",
+      "一",
+      "二",
+      "三"
+    ]
+  },
+  "items": [
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I001",
+      "ordinal": 1,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "喂，王先生，你好呀。",
+      "sourceHash": "sha256:18b012faebbfeeccc7597b2b6a0efe4abdc11545336b5a0fa1f9f77c41dc375c",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I002",
+        "previousSpeaker": null,
+        "nextSpeaker": "王先生"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I002",
+      "ordinal": 2,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "你好，陳小姐。",
+      "sourceHash": "sha256:bfea53d95eed0dce8ec9b647c2aeafed51bd07fabf30e2ea41a6df9240b3e7de",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I001",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I003",
+        "previousSpeaker": "陳小姐",
+        "nextSpeaker": "陳小姐"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I003",
+      "ordinal": 3,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "我哋想同你確認番啲資料。",
+      "sourceHash": "sha256:b2d27e4df000fa4d95fee9f9639a93e41b97ab9604001912b360d8e5e0283b34",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I002",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I004",
+        "previousSpeaker": "王先生",
+        "nextSpeaker": "王先生"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I004",
+      "ordinal": 4,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "好呀，冇問題。",
+      "sourceHash": "sha256:9ab086f36bfaf0474b627004ddce1d0935603d0701af28cede118b7320d7cfd6",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I003",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I005",
+        "previousSpeaker": "陳小姐",
+        "nextSpeaker": "陳小姐"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I005",
+      "ordinal": 5,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "你個名係王大明，啱唔啱？",
+      "sourceHash": "sha256:f3049e1f3c20e53e45d4e4b893499e5d4f82e8db9dcf77059ee8e89807c57503",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I004",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I006",
+        "previousSpeaker": "王先生",
+        "nextSpeaker": "王先生"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I006",
+      "ordinal": 6,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "啱呀，係王大明。",
+      "sourceHash": "sha256:2068daeb2f93ac7f26b03bb8d7a4673cfea1d98803517d91beae826799939057",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I005",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I007",
+        "previousSpeaker": "陳小姐",
+        "nextSpeaker": "陳小姐"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I007",
+      "ordinal": 7,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "你住喺九龍塘，係咪？",
+      "sourceHash": "sha256:26060887bc47131422200ae8deff8f04040d7db5898f366edee30cd39c743f95",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I006",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I008",
+        "previousSpeaker": "王先生",
+        "nextSpeaker": "王先生"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I008",
+      "ordinal": 8,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "係呀，九龍塘窩打老道。",
+      "sourceHash": "sha256:455d9ed4413048d42e1cd6e789fc7294f969f0fdf5fc7cf46e881744b1c5e694",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I007",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I009",
+        "previousSpeaker": "陳小姐",
+        "nextSpeaker": "陳小姐"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I009",
+      "ordinal": 9,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "好，跟住我想確認你電話號碼。",
+      "sourceHash": "sha256:2632a0c108dabdfa6d1f0669335bb2b975d7b06bb19556f8f246b6c1c00a0a89",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I008",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I010",
+        "previousSpeaker": "王先生",
+        "nextSpeaker": "王先生"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I010",
+      "ordinal": 10,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "好呀，你講啦。",
+      "sourceHash": "sha256:d292a584f124d76969e22086323c5046f269d0f5bde5be321a52601e0d0550b1",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I009",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I011",
+        "previousSpeaker": "陳小姐",
+        "nextSpeaker": "陳小姐"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I011",
+      "ordinal": 11,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "係咪九七八四五六七八？",
+      "sourceHash": "sha256:96c35074b22854516e91f6a4b68924333b5ca7afb704f3b0a7efebd4e3ebfbac",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I010",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I012",
+        "previousSpeaker": "王先生",
+        "nextSpeaker": "王先生"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I012",
+      "ordinal": 12,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "唔係喎，唔啱呀。",
+      "sourceHash": "sha256:9c24e9d26097982ea2c9a86ec6319807f538709254a007bed589573faa6098d8",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I011",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I013",
+        "previousSpeaker": "陳小姐",
+        "nextSpeaker": "陳小姐"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I013",
+      "ordinal": 13,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "咦，唔啱？邊度錯咗？",
+      "sourceHash": "sha256:3ca5a8a4360da5f7fef542fb61b21b6bc5c71016ee45b91661f96ee6d0a71a98",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I012",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I014",
+        "previousSpeaker": "王先生",
+        "nextSpeaker": "王先生"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I014",
+      "ordinal": 14,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "頭嗰四個字冇錯。",
+      "sourceHash": "sha256:04b62aaeb6075baab03b2f2b7cd91325af127f8ba70c324c276cae69528e6f09",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I013",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I015",
+        "previousSpeaker": "陳小姐",
+        "nextSpeaker": "陳小姐"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I015",
+      "ordinal": 15,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "即係九七八四？",
+      "sourceHash": "sha256:d7a149386857ca87f7232226d6bcdeeb94acfd1a849ef0ae3731a556616361a1",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I014",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I016",
+        "previousSpeaker": "王先生",
+        "nextSpeaker": "王先生"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I016",
+      "ordinal": 16,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "係呀，九七八四係啱嘅。",
+      "sourceHash": "sha256:9629ea57bbe11655a52c7fb98fd8bbc9b6f00735b4b759a79506789512f6cc9d",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I015",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I017",
+        "previousSpeaker": "陳小姐",
+        "nextSpeaker": "陳小姐"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I017",
+      "ordinal": 17,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "咁後面嗰四個字呢？",
+      "sourceHash": "sha256:2de59f12ec1d08b313d0289895c04c73e4bc4d1b92d047763a68150bf13a5534",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I016",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I018",
+        "previousSpeaker": "王先生",
+        "nextSpeaker": "王先生"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I018",
+      "ordinal": 18,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "應該係五六八七。",
+      "sourceHash": "sha256:74923472a3fc6313a2b430bda9fd3e26034b3f17542f656196af7618d94594a5",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I017",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I019",
+        "previousSpeaker": "陳小姐",
+        "nextSpeaker": "陳小姐"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I019",
+      "ordinal": 19,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "五六八七？",
+      "sourceHash": "sha256:e9f168ce9022d6e95276bbcf6d772ad5340302ac2623de291eb1cea9d8b9effb",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I018",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I020",
+        "previousSpeaker": "王先生",
+        "nextSpeaker": "王先生"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I020",
+      "ordinal": 20,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "啱呀，唔係五六七八。",
+      "sourceHash": "sha256:52731993808429b1eeb700c0739bc24bc9371b8032c7bf80552b5a3f775f884e",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I019",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I021",
+        "previousSpeaker": "陳小姐",
+        "nextSpeaker": "陳小姐"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I021",
+      "ordinal": 21,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "明白喇，我寫錯咗。",
+      "sourceHash": "sha256:20732776ea5ea0aed6501d3642b0f99abc819751b9bab415ec3b17547d14d43c",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I020",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I022",
+        "previousSpeaker": "王先生",
+        "nextSpeaker": "王先生"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I022",
+      "ordinal": 22,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "冇問題，而家改番就得㗎喇。",
+      "sourceHash": "sha256:89d60bd9e6ac196d4daf6c752968a95b4153d0c1ba3cccd3e9bf99bd5a08e803",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I021",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I023",
+        "previousSpeaker": "陳小姐",
+        "nextSpeaker": "陳小姐"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I023",
+      "ordinal": 23,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "我而家改，九七八四五六八七。",
+      "sourceHash": "sha256:7a07887d26f32f38a704d72ca8aa6159ef693f6a60180ed718924fa148042507",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I022",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I024",
+        "previousSpeaker": "王先生",
+        "nextSpeaker": "王先生"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I024",
+      "ordinal": 24,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "啱喇，係呢個號碼。",
+      "sourceHash": "sha256:423badff1f86e50875d57aafda349579ed132fd2044979aa4c2fdcab2959fe73",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I023",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I025",
+        "previousSpeaker": "陳小姐",
+        "nextSpeaker": "陳小姐"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I025",
+      "ordinal": 25,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "唔該晒，你確認埋email好唔好？",
+      "sourceHash": "sha256:2228ed68cf84c029d08b75609808a7794960aadf4124a2449f0add1642d5a72a",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I024",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I026",
+        "previousSpeaker": "王先生",
+        "nextSpeaker": "王先生"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I026",
+      "ordinal": 26,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "好呀，你講啦。",
+      "sourceHash": "sha256:d292a584f124d76969e22086323c5046f269d0f5bde5be321a52601e0d0550b1",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I025",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I027",
+        "previousSpeaker": "陳小姐",
+        "nextSpeaker": "陳小姐"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I027",
+      "ordinal": 27,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "係咪wongdaming@email.com？",
+      "sourceHash": "sha256:4ff946a6b58bbeb491d9c8404916ecf1f82b4541e199abd793b6b9cf9a839190",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I026",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I028",
+        "previousSpeaker": "王先生",
+        "nextSpeaker": "王先生"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I028",
+      "ordinal": 28,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "係呀，啱嘅。",
+      "sourceHash": "sha256:5367756a3dd3066e75dd065c838571e7bbf1d74431ab37ff888a1601c8a2f17a",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I027",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I029",
+        "previousSpeaker": "陳小姐",
+        "nextSpeaker": "陳小姐"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I029",
+      "ordinal": 29,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "好，咁就冇問題喇。",
+      "sourceHash": "sha256:895dddc30f253628bc65f039211d1fa66f666bc49b28174651e83c366bad805d",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I028",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I030",
+        "previousSpeaker": "王先生",
+        "nextSpeaker": "王先生"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I030",
+      "ordinal": 30,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "如果有咩要改，你會打俾我？",
+      "sourceHash": "sha256:cdf36659b78fe82edfe385ba293669a42f7487375dd0844857c7d7b13814a7d1",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I029",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I031",
+        "previousSpeaker": "陳小姐",
+        "nextSpeaker": "陳小姐"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I031",
+      "ordinal": 31,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "會呀，我會打呢個新號碼。",
+      "sourceHash": "sha256:be74f6cb4ca9febf99938ed3e09431ca12a5db66736e28b9ce3be440f65e1670",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I030",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I032",
+        "previousSpeaker": "王先生",
+        "nextSpeaker": "王先生"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I032",
+      "ordinal": 32,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "好，咁就最好喇。",
+      "sourceHash": "sha256:a960be59cda503c2fcb25d0aff923c22aa3908518cab105475396e285c91477f",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I031",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I033",
+        "previousSpeaker": "陳小姐",
+        "nextSpeaker": "陳小姐"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I033",
+      "ordinal": 33,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "我哋會send個確認SMS俾你。",
+      "sourceHash": "sha256:2189297c11d7842a92e1e757b12ea3ff86c396013aafc4eb7978d85dddb467bb",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I032",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I034",
+        "previousSpeaker": "王先生",
+        "nextSpeaker": "王先生"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I034",
+      "ordinal": 34,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "幾時會收到？",
+      "sourceHash": "sha256:c830cdf32b8a12f2ca247991d10614615d153919d3a5146e20874b396ea19076",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I033",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I035",
+        "previousSpeaker": "陳小姐",
+        "nextSpeaker": "陳小姐"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I035",
+      "ordinal": 35,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "應該今日之內會收到。",
+      "sourceHash": "sha256:c8dbefb9c4c0ea37fd9c3e0defb7b9ca2973d06b30afebf05fcb471026ef8ee5",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I034",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I036",
+        "previousSpeaker": "王先生",
+        "nextSpeaker": "王先生"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I036",
+      "ordinal": 36,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "好呀，我會留意。",
+      "sourceHash": "sha256:cea5c91312e52791d977a08a94ed398047ca66c2206cf6ee0ce9f520433994b2",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I035",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I037",
+        "previousSpeaker": "陳小姐",
+        "nextSpeaker": "陳小姐"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I037",
+      "ordinal": 37,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "仲有冇其他嘢要改？",
+      "sourceHash": "sha256:a280fdb7ae0ad2cdd6cf4f6db3581744e5d28cbbee66661fec9e20d9d356bb56",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I036",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I038",
+        "previousSpeaker": "王先生",
+        "nextSpeaker": "王先生"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I038",
+      "ordinal": 38,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "冇喇，其他都啱晒。",
+      "sourceHash": "sha256:2d922c4e021a1363c57038adf77db7ebd74aafeafbdf970dc1de32fbe7496478",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I037",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I039",
+        "previousSpeaker": "陳小姐",
+        "nextSpeaker": "陳小姐"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I039",
+      "ordinal": 39,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "好，多謝你嘅時間。",
+      "sourceHash": "sha256:81a9059feaeb2662bd217a787098705428fbef793357fa76a85725a8a7d96d2e",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I038",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I040",
+        "previousSpeaker": "王先生",
+        "nextSpeaker": "王先生"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I040",
+      "ordinal": 40,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "唔使客氣，拜拜。",
+      "sourceHash": "sha256:7225b752a1c71b303781a154957e32081645dee41979602d2d8a5091f4184437",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I039",
+        "nextTurnId": null,
+        "previousSpeaker": "陳小姐",
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "correction_confirmation_contact_details_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I041",
+      "ordinal": 41,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "喂",
+      "sourceHash": "sha256:0a11f3002a35bed7141792d75d25663f6969d6de1a86c744dac46d8a23fac8f4",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I042",
+      "ordinal": 42,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "你好",
+      "sourceHash": "sha256:fdec326d1a2ce9ff9fb17614bbd30c054289880a306dc2718645e49061d1069a",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I043",
+      "ordinal": 43,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "呀",
+      "sourceHash": "sha256:d627f20024216924d22e9621a407c370fbaba5101bf3207fb6aa32cc6974cda7",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [
+        "test-data/cp021b-lx1-construction-freeze-baseline.json",
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I044",
+      "ordinal": 44,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "先生",
+      "sourceHash": "sha256:2ce3855f6cb826a48f97e4de6c0811f9f5f93b587cccda1b27f499c9d91ef31b",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I045",
+      "ordinal": 45,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "小姐",
+      "sourceHash": "sha256:223217e31d91cdbc7289bc6944b2c4e46657a71088390cbd6ba46c207ebcf6b2",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I046",
+      "ordinal": 46,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "我哋",
+      "sourceHash": "sha256:5d4a6f5799666cdf53bbd231d8c1a711f026b19def115151cbcfd2c2d43c7b80",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I047",
+      "ordinal": 47,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "想",
+      "sourceHash": "sha256:c25d512ec6c08387ca5f0fe0b9c33181523d9bd14510c599ea648d9710c88548",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I048",
+      "ordinal": 48,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "同",
+      "sourceHash": "sha256:86a36d8977574ad208b71c6a6f2b8fcf10fa8421fa0d2ffa3f3e244ef5e446d1",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I049",
+      "ordinal": 49,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "你",
+      "sourceHash": "sha256:23c428f92cc5a45991d8d7cdeca3fbd52e64fd434e24b0035f5cc6482592d03f",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I050",
+      "ordinal": 50,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "確認",
+      "sourceHash": "sha256:91bc245dcb12283471313217a44b9a92e8a4816be2eb309d536868c73a28ac05",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I051",
+      "ordinal": 51,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "番",
+      "sourceHash": "sha256:d66244633f99e69372f955703c42838a807a27a750c5a0d993b7fa44929504ed",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I052",
+      "ordinal": 52,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "啲",
+      "sourceHash": "sha256:4134550dca4b7a4f0ca61d9bdac8ab486ef8f1ef42441ecaacddb5ed0c8691a1",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [
+        "docs/research/CLASSIFIER-MEASURE-TYPING-AUDIT-R1.md",
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I053",
+      "ordinal": 53,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "資料",
+      "sourceHash": "sha256:16fb0683fd4fa6ecd5c370acffe7bedbbe28e0686feb95955fd2ed132035d763",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I054",
+      "ordinal": 54,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "好呀",
+      "sourceHash": "sha256:dc658044a6dd1321c32c779ba166c42b301b48af248e43af37798491d012a37a",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [
+        "docs/research/EVALUATION-PACKET-BLUEPRINTS-CP021B-R37.json"
+      ],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I055",
+      "ordinal": 55,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "冇問題",
+      "sourceHash": "sha256:d55528ecba5e4c699fff72276407ec0fd5bda6d7b90119f6db5cf854e1e1b932",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I056",
+      "ordinal": 56,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "個",
+      "sourceHash": "sha256:1c542d6afec7a95b9553f86778e1d001709fec8e2f85ee711170951665acefc3",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [
+        "docs/research/CLASSIFIER-MEASURE-TYPING-AUDIT-R1.md",
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I057",
+      "ordinal": 57,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "名",
+      "sourceHash": "sha256:3f35fad75208d659df14f5e7aa275d154d69925c09ba126ade7782f18bd514d7",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I058",
+      "ordinal": 58,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "係",
+      "sourceHash": "sha256:331bb6c6f47f566558e4b293865841530b95f9c95e4aa59744d4f00dc7d0b2c3",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I059",
+      "ordinal": 59,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "啱唔啱",
+      "sourceHash": "sha256:f0512e78090e3dbd38f223df4b2aef1284c7702a0af7aaeff7bb1df1141630f1",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I060",
+      "ordinal": 60,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "啱",
+      "sourceHash": "sha256:6e888b35eec37310df0ba6144b0dd729cd3a3d6a1e9106ece47211f1bbd8ddf4",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I061",
+      "ordinal": 61,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "唔",
+      "sourceHash": "sha256:7a85e3a06820e4175373e7e9dd751989146894b94e58aa4a2e58f293bf09406e",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I062",
+      "ordinal": 62,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "姓",
+      "sourceHash": "sha256:cb2c672bf5077447382d51a81d1807d6ec357eb2cc3d407c19fa6cfc7527e740",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I063",
+      "ordinal": 63,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "叫",
+      "sourceHash": "sha256:72b40b53e7a7f5b7cc47d3f24bafcbe59b817cc9e5d79957a82250c86bc1966b",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I064",
+      "ordinal": 64,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "乜嘢",
+      "sourceHash": "sha256:95acc9b6bfc2ecc37da904ba9f455a51d4ccf56d020e766b77474cd6eb050c6c",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I065",
+      "ordinal": 65,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "呢",
+      "sourceHash": "sha256:d211803b0a063318f94bb6ce078b213c5d58787fe2dde7b44136e3519ec835d3",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [
+        "docs/research/EVALUATION-PACKET-BLUEPRINTS-CP021B-R37.json",
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I066",
+      "ordinal": 66,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "電話",
+      "sourceHash": "sha256:21aa2c3ba97b20b2767b78b1a333ecdbda7fd07d93f8ac8c529e79788d4b5482",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I067",
+      "ordinal": 67,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "號碼",
+      "sourceHash": "sha256:65322cffcfebb48bfcfe340c581e1040cb93e038f6ec028243ab4e658d13b9d7",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I068",
+      "ordinal": 68,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "幾多",
+      "sourceHash": "sha256:f5b4435e6e021e41c31e1d27d3217ff3df0aff725f6051f350f692c7f0325ef8",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I069",
+      "ordinal": 69,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "零",
+      "sourceHash": "sha256:82b8ddf5cf6e1eb8d65fe4b8d16b43e1e605c05fe0bf01b8b19f9cb27d31fd59",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I070",
+      "ordinal": 70,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "一",
+      "sourceHash": "sha256:8b6ee3c5bbdcf3ab8d4102af4555fdd42ee3c550223475805f8b4d42c34a0c23",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [
+        "docs/research/EVALUATION-PACKET-BLUEPRINTS-CP021B-R37.json",
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I071",
+      "ordinal": 71,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "二",
+      "sourceHash": "sha256:1aacfe0a58148133941237844d48d52c9574ae210366dc8c0771733ada68ca62",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I072",
+      "ordinal": 72,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "三",
+      "sourceHash": "sha256:4acf5c32bcf986d1219e5bfc58ce281e9f1186e2f86c20008018e0bcb84086b7",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I073",
+      "ordinal": 73,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "四",
+      "sourceHash": "sha256:82b209f6236fef533206c3ef0b5416f365e3dda6754e91c883a62f35fd2c1fb2",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I074",
+      "ordinal": 74,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "五",
+      "sourceHash": "sha256:03e960dd6c807f5e6210276ac83c2ecb2dd3961add82ed4db0882219525e5f62",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I075",
+      "ordinal": 75,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "六",
+      "sourceHash": "sha256:27c98c69825d57e3e6741dc2895fb7812ebbe96192cb1f4f2acb81f7d76dfe06",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I076",
+      "ordinal": 76,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "七",
+      "sourceHash": "sha256:54e862e121702b386dff97bca78791e745494ebfdea53b64b5ce17cd704166b1",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I077",
+      "ordinal": 77,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "八",
+      "sourceHash": "sha256:e95ef4a0bc884f3a18ab00f6a72b8aeb48e086cfa8e275a5700f73ec729dd07d",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I078",
+      "ordinal": 78,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "九",
+      "sourceHash": "sha256:33756f73da582749c5d80b9c1e20724bff0b0de4989d8188aa2da61fdb861182",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I079",
+      "ordinal": 79,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "多謝",
+      "sourceHash": "sha256:53e0bfaf0c7b18b524fef0a66b1d59adffbc3d747a85c50fe4c98b98b1c78951",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-017-20260329-I080",
+      "ordinal": 80,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "唔使客氣",
+      "sourceHash": "sha256:2d6834a1d5ae0d0c0945046495734f4cd137c6499be5e311bb259bbb0263bd8a",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "normalized_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [
+        "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md"
+      ],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "correction_confirmation_contact_details_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "correction_confirmation_contact_details_review",
+          "status": "research_route_only"
+        }
+      ]
+    }
+  ]
+}
