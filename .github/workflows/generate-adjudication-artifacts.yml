@@ -1,0 +1,51 @@
+name: Generate adjudication artifacts
+
+on:
+  push:
+    branches:
+      - "agent/ab25-ab27-identity-adjudication"
+    paths:
+      - "data/construction-adjudication-batches/batch-19.json"
+      - ".github/workflows/generate-adjudication-artifacts.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/ab25-ab27-identity-adjudication
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Install dependencies
+        run: npm ci
+      - name: Apply adjudication and regenerate deterministic outputs
+        run: npm run adjudication:apply
+      - name: Show generated changes
+        run: git status --short
+      - name: Commit generated outputs when changed
+        run: |
+          git add \
+            data/construction-identities.json \
+            data/construction-label-sweep.json \
+            data/construction-candidate-readiness.json \
+            docs/research/CONSTRUCTION-FAMILY-GAPS.md \
+            docs/research/FULL-REPO-SUPPORTED-PRODUCTIVE-SWEEP-R1.md \
+            docs/research/ORPHANED-CONSTRUCTION-EVIDENCE.md \
+            docs/research/SUPPORTED-PRODUCTIVE-CANDIDATES.md
+          if git diff --cached --quiet; then
+            echo "Generated outputs already current"
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Regenerate Batch 19 identity outputs"
+            git push origin HEAD:agent/ab25-ab27-identity-adjudication
+          fi
+      - name: Fail on unclaimed generated residue
+        run: git diff --exit-code && test -z "$(git status --porcelain)"
