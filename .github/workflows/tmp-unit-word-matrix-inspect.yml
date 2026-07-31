@@ -1,0 +1,49 @@
+name: Temporary unit-word matrix inspection
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/tmp-unit-word-matrix-inspect.yml
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+
+      - name: Inspect project unit-word evidence
+        run: |
+          echo '=== Relevant files ==='
+          find . -type f \
+            | grep -Ei 'classifier|measure|unit-word|week.?19|vocabulary|lexicon|ClassifierObjectNP|ModifiedNP|OvertHeadDemonstrative' \
+            | sort | sed -n '1,500p'
+
+          echo '=== Exact project strings ==='
+          grep -RIn --exclude-dir=.git -E '三本水|兩杯書|兩間書|呢個蘋果|個 隻 架 間 本 枝 碗 杯 對 張 件 部 把 條|classifier_classes|unit_word_sense_id|liquid_measure|food_bowl|long_rigid|building_shop' \
+            src grammar tests test-data docs external-evidence review-packets 2>/dev/null \
+            | sed -n '1,1200p' || true
+
+      - name: Print current rule and noun-class inventory
+        run: |
+          node - <<'NODE'
+          const fs = require('fs');
+          const model = JSON.parse(fs.readFileSync('src/runtime-resources/grammar/unit-word-evidence.json', 'utf8'));
+          console.log('=== RULE RECORDS ===');
+          for (const row of model.noun_choice_rule_records) console.log(JSON.stringify(row));
+          console.log('=== SENSE RECORDS ===');
+          for (const row of model.unit_word_senses) console.log(JSON.stringify(row));
+          NODE
+
+          echo '=== Lexicon files containing classifier_classes ==='
+          grep -RIl --exclude-dir=.git 'classifier_classes' src grammar data 2>/dev/null | sort
+          for f in $(grep -RIl --exclude-dir=.git 'classifier_classes' src grammar data 2>/dev/null | sort); do
+            echo "=== $f ==="
+            grep -n -B3 -A5 'classifier_classes' "$f" | sed -n '1,1200p'
+          done
