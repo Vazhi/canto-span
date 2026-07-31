@@ -5,7 +5,7 @@ on:
     types: [opened, synchronize, reopened]
     paths:
       - ".github/workflows/export-verification-audit-snapshot.yml"
-      - ".github/workflows/verification-alignment.patch.b64"
+      - ".github/workflows/verification-alignment.part*"
 
 permissions:
   contents: write
@@ -27,10 +27,17 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          base64 -d .github/workflows/verification-alignment.patch.b64 | gzip -d > /tmp/verification-alignment.diff
-          patch -p4 < /tmp/verification-alignment.diff
+          cat .github/workflows/verification-alignment.part00 \
+              .github/workflows/verification-alignment.part01 \
+              .github/workflows/verification-alignment.part02 \
+              .github/workflows/verification-alignment.part03 \
+              > /tmp/verification-alignment.b64
+          echo "28cea6bdac0e8e3807a577626de78954f88a489f884573e5b2d127b0425d137f  /tmp/verification-alignment.b64" | sha256sum -c -
+          base64 -d /tmp/verification-alignment.b64 | gzip -d > /tmp/verification-alignment.diff
+          patch --batch -p5 < /tmp/verification-alignment.diff
           rm -f .github/workflows/export-verification-audit-snapshot.yml
           rm -f .github/workflows/verification-alignment.patch.b64
+          rm -f .github/workflows/verification-alignment.part*
           rm -f TEMP_*
       - name: Install build dependency
         run: npm ci
