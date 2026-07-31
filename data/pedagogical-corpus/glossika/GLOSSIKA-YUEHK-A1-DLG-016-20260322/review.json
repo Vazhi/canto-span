@@ -18,8 +18,8 @@
       "lexical_review_candidate": 40
     },
     "relationCounts": {
-      "no_project_match": 55,
-      "normalized_duplicate_candidate": 25
+      "no_project_match": 41,
+      "exact_duplicate_candidate": 39
     },
     "vocabularyCount": 40,
     "vocabularyBlockState": "source_present",
@@ -349,7 +349,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I021",
       "sourceHash": "sha256:95806e9a21f515029e261c14b5eb13ec0b32f2787ed3861fe1638787fe95886e",
       "normalizedCantonese": "打畀邊個",
-      "deduplicationRelation": "no_project_match",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "naturalness_review_candidate",
       "reviewFlags": [
         "naturalness_review_candidate",
@@ -649,7 +649,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I041",
       "sourceHash": "sha256:32f9a9b93c90135662aa13d41d04b049228b64ca5ba4a12f1967a6c5178b3ce4",
       "normalizedCantonese": "佢",
-      "deduplicationRelation": "normalized_duplicate_candidate",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -663,7 +663,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I042",
       "sourceHash": "sha256:558db908fc7b1bdbe1804d2c949ff0af4ab3e8bb61077103cfc7dbdf0f3dca13",
       "normalizedCantonese": "講",
-      "deduplicationRelation": "normalized_duplicate_candidate",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -677,7 +677,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I043",
       "sourceHash": "sha256:f76c80453d0aafef1a538e869098801745baa9f1fac118685b121facd8c7b5ea",
       "normalizedCantonese": "咗",
-      "deduplicationRelation": "normalized_duplicate_candidate",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -691,7 +691,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I044",
       "sourceHash": "sha256:95acc9b6bfc2ecc37da904ba9f455a51d4ccf56d020e766b77474cd6eb050c6c",
       "normalizedCantonese": "乜嘢",
-      "deduplicationRelation": "no_project_match",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -705,7 +705,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I045",
       "sourceHash": "sha256:b62f1a9c69ceeaee6a2f9097acc63b942ba74786f3c540ceabd00c0ce3d0472d",
       "normalizedCantonese": "啱啱",
-      "deduplicationRelation": "no_project_match",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -719,7 +719,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I046",
       "sourceHash": "sha256:d43ba46ab6ff0b1efb2eb4a95524feb1129067a8ff979476187338b9ee596dc3",
       "normalizedCantonese": "啲",
-      "deduplicationRelation": "normalized_duplicate_candidate",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -733,7 +733,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I047",
       "sourceHash": "sha256:61ad67b9a9a1ece8895862b9e456b35c8868015a34ecf2971e8bf18502bd14d7",
       "normalizedCantonese": "呀",
-      "deduplicationRelation": "normalized_duplicate_candidate",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -747,7 +747,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I048",
       "sourceHash": "sha256:222acb608b52f47882d13e23aedc6225c503e2178573a748a1b661dce10bc6c4",
       "normalizedCantonese": "話",
-      "deduplicationRelation": "normalized_duplicate_candidate",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -761,7 +761,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I049",
       "sourceHash": "sha256:8240bbd9003b19901b13961f0237c48fdaaf81cf1019f1023bdd9eb5ee2056b2",
       "normalizedCantonese": "聽日",
-      "deduplicationRelation": "normalized_duplicate_candidate",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -775,7 +775,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I050",
       "sourceHash": "sha256:3bced1b004c01e88a687da9c48c97897c6022885363db546e84d04ae320e4ee9",
       "normalizedCantonese": "要",
-      "deduplicationRelation": "normalized_duplicate_candidate",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -789,7 +789,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I051",
       "sourceHash": "sha256:3908f573a37c3b5fd708a140c77148e0d78e103b82cb2fb7de0e7134c8af30be",
       "normalizedCantonese": "開會",
-      "deduplicationRelation": "normalized_duplicate_candidate",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -803,7 +803,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I052",
       "sourceHash": "sha256:0fd8f4ca42d41280737ab47dcef9bf74415184940e9dea553eab041250cd9108",
       "normalizedCantonese": "幾點鐘",
-      "deduplicationRelation": "no_project_match",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -817,7 +817,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I053",
       "sourceHash": "sha256:e36210b20acfa6f56ac209a82a9245836e6b908a7666cc3209d39dfe5f1d207b",
       "normalizedCantonese": "朝早",
-      "deduplicationRelation": "no_project_match",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -831,7 +831,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I054",
       "sourceHash": "sha256:4a329d0471ca1d6bcd36221731190ca9a28338d6481c8bc2798048a69473313f",
       "normalizedCantonese": "九點",
-      "deduplicationRelation": "no_project_match",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -859,7 +859,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I056",
       "sourceHash": "sha256:5d4a6f5799666cdf53bbd231d8c1a711f026b19def115151cbcfd2c2d43c7b80",
       "normalizedCantonese": "我哋",
-      "deduplicationRelation": "normalized_duplicate_candidate",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -873,7 +873,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I057",
       "sourceHash": "sha256:27fb8f8d60c7f0d3a2637893704622fb2a8a8fdee9d73f7b642dbc1c1568c088",
       "normalizedCantonese": "早啲",
-      "deduplicationRelation": "no_project_match",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -887,7 +887,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I058",
       "sourceHash": "sha256:c5c7aa4b521d0fe429e408d74a5e7a784b2fad3f46b6ea7a4aeccdd4276c1b90",
       "normalizedCantonese": "返",
-      "deduplicationRelation": "normalized_duplicate_candidate",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -901,7 +901,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I059",
       "sourceHash": "sha256:4f7da4071288f105f22f104e683df772118ec2410118420beb38049777a7e74f",
       "normalizedCantonese": "公司",
-      "deduplicationRelation": "normalized_duplicate_candidate",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -915,7 +915,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I060",
       "sourceHash": "sha256:bebbfbea4e61f562455b5edc2f18964c28b09f45fb7ff458e7b57be7277bfa12",
       "normalizedCantonese": "係呀",
-      "deduplicationRelation": "no_project_match",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -929,7 +929,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I061",
       "sourceHash": "sha256:ffb9dca55871836cce24caa75b6d2ddf2ed8cfeaaef6bac655b84d96795eb174",
       "normalizedCantonese": "仲",
-      "deduplicationRelation": "normalized_duplicate_candidate",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -943,7 +943,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I062",
       "sourceHash": "sha256:df60a2c475cfce5b6d1359bbdc50eb324668d69d1c661b48a38169ed71e5036a",
       "normalizedCantonese": "帶",
-      "deduplicationRelation": "normalized_duplicate_candidate",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -957,7 +957,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I063",
       "sourceHash": "sha256:f809389986100be594e33f0b752fcba6d3a84c0d236f2a3c0abff6a1b27f1df1",
       "normalizedCantonese": "文件",
-      "deduplicationRelation": "normalized_duplicate_candidate",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -971,7 +971,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I064",
       "sourceHash": "sha256:f08c004ba53a19dbbb5b42a5c4a7ca992c552eb3a7c1c3133f7cfc2f0c45549d",
       "normalizedCantonese": "邊啲",
-      "deduplicationRelation": "no_project_match",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -999,7 +999,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I066",
       "sourceHash": "sha256:eb25fd4af216c9c3469e3276b709ff701b3c78ba8793b81f382638dbdd0341cd",
       "normalizedCantonese": "記得",
-      "deduplicationRelation": "no_project_match",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -1013,7 +1013,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I067",
       "sourceHash": "sha256:ff4ff51f617c5d77d5ce38e9f4639b3f1e87be10cf5c36d8dedddf7a832272d9",
       "normalizedCantonese": "唔記得",
-      "deduplicationRelation": "no_project_match",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -1027,7 +1027,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I068",
       "sourceHash": "sha256:e5e45a7b8bf79f4b94221ea47a92b99a202de7245ad8032a64f70b052adaa5a4",
       "normalizedCantonese": "冇",
-      "deduplicationRelation": "normalized_duplicate_candidate",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -1041,7 +1041,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I069",
       "sourceHash": "sha256:7ced7f281d7dbd02a151491173daddcf93a9b007e545cdebca660029ca9abee3",
       "normalizedCantonese": "問題",
-      "deduplicationRelation": "normalized_duplicate_candidate",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -1055,7 +1055,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I070",
       "sourceHash": "sha256:04814621f8c9905fb6bd7283f3f15475c05417861c3c7156344bbc0be77a7dbe",
       "normalizedCantonese": "幫",
-      "deduplicationRelation": "no_project_match",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -1069,7 +1069,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I071",
       "sourceHash": "sha256:4e7398b77f065691c13d34e8ad26827bf134967e1eb73b55737cb2e3b796164e",
       "normalizedCantonese": "問",
-      "deduplicationRelation": "normalized_duplicate_candidate",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -1083,7 +1083,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I072",
       "sourceHash": "sha256:f807cbe4ca4e834967dc532ab41fcd703ff8c382b51fdb3f9ca7f714a1d03a5f",
       "normalizedCantonese": "清楚",
-      "deduplicationRelation": "no_project_match",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -1097,7 +1097,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I073",
       "sourceHash": "sha256:8341fa56ffecfa82854bc6213572e05a07774b1545616614d6125120e6f16021",
       "normalizedCantonese": "唔該",
-      "deduplicationRelation": "normalized_duplicate_candidate",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -1111,7 +1111,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I074",
       "sourceHash": "sha256:23c428f92cc5a45991d8d7cdeca3fbd52e64fd434e24b0035f5cc6482592d03f",
       "normalizedCantonese": "你",
-      "deduplicationRelation": "normalized_duplicate_candidate",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -1125,7 +1125,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I075",
       "sourceHash": "sha256:5c9a19490435a7f43e2b7f7fea980e15c1f0477027727426e5788d84cfa3ab09",
       "normalizedCantonese": "好",
-      "deduplicationRelation": "normalized_duplicate_candidate",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -1139,7 +1139,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I076",
       "sourceHash": "sha256:c6baf7c54c582937eb8da070a969ee13ededf54c136c264d2cfa7e8a8ff10d4c",
       "normalizedCantonese": "咁",
-      "deduplicationRelation": "normalized_duplicate_candidate",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -1153,7 +1153,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I077",
       "sourceHash": "sha256:19a55edab388470b6b7393d1d551d0fd3d7f32869dc6f646de2ed822010285f8",
       "normalizedCantonese": "先",
-      "deduplicationRelation": "normalized_duplicate_candidate",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -1167,7 +1167,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I078",
       "sourceHash": "sha256:c431c1c722e3a9a317c4ed6335c4cf4d96c8be71a5c17a7e9d6bd40a7926a8a7",
       "normalizedCantonese": "返去",
-      "deduplicationRelation": "normalized_duplicate_candidate",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -1181,7 +1181,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I079",
       "sourceHash": "sha256:9e80b26f31fbea33e3f980efc6897cdb2020c9748091eb7f4da8ede5b84c77d3",
       "normalizedCantonese": "睇",
-      "deduplicationRelation": "normalized_duplicate_candidate",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",
@@ -1195,7 +1195,7 @@
       "id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322-I080",
       "sourceHash": "sha256:c207fa53fabeddce5ae9114cc15a32cf64e513304644b718a904da5a7133c9a9",
       "normalizedCantonese": "搵",
-      "deduplicationRelation": "no_project_match",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "reviewFlags": [
         "lexical_review_candidate",

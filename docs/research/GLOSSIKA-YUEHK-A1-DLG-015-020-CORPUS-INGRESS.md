@@ -25,10 +25,11 @@ Total records: **480**.
 
 ## Deduplication
 
-- `no_project_match`: **356**
-- `normalized_duplicate_candidate`: **124**
+- `exact_duplicate_candidate`: **215**
+- `no_project_match`: **264**
+- `normalized_duplicate_candidate`: **1**
 
-Exact and normalized matches are review candidates, not automatic mergers. Owners remain recorded per item in each `crosswalk.json`.
+Deduplication compares structured JSON string values, TSV fields, and textual record units. Exact and normalized matches are review candidates, not automatic mergers. Owners remain recorded per item in each `crosswalk.json`.
 
 ## Review classification
 
@@ -37,7 +38,7 @@ Exact and normalized matches are review candidates, not automatic mergers. Owner
 
 ## Discrepancy and candidate routing
 
-- Repository-match candidates recorded: **124**.
+- Repository-match candidates recorded: **216**.
 - Per-turn English translations are absent in all six emails and remain null.
 - Glossika pedagogical notes are preserved as source claims but not adopted as project conclusions.
 - All construction, naturalness, translation, pronunciation, and coverage questions route to #130 for bounded decision discovery.

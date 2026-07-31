@@ -31,8 +31,9 @@
       "lexical_review_candidate": 40
     },
     "relationCounts": {
-      "no_project_match": 69,
-      "normalized_duplicate_candidate": 11
+      "no_project_match": 50,
+      "exact_duplicate_candidate": 29,
+      "normalized_duplicate_candidate": 1
     }
   },
   "sourceBlockAudit": {
@@ -1390,15 +1391,44 @@
         "previousSpeaker": null,
         "nextSpeaker": null
       },
-      "deduplicationRelation": "normalized_duplicate_candidate",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
-      "canonicalExactOwners": [],
+      "canonicalExactOwners": [
+        "src/parser/features/token-features.js",
+        "src/plugin-entry.js",
+        "src/runtime-resources/grammar/templates/slot-generation-rules.js",
+        "src/runtime-resources/lexicon/productive-vo.js",
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js",
+        "src/runtime-resources/normalization/simplified-to-traditional.js"
+      ],
       "canonicalNormalizedOwners": [],
-      "supportingExactOwners": [],
-      "supportingNormalizedOwners": [
+      "supportingExactOwners": [
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/source.json",
+        "data/research-ledgers/glossika-week18-common-verb-audit.json",
+        "docs/research/CP024-P0-L45-PRODUCTIVE-VO-SEED-INVENTORY-R1.tsv",
+        "docs/research/CP024-P0-L45-VERB-VALENCY-INVENTORY-R1.tsv",
+        "docs/research/GLOSSIKA-YUEHK-A1-W18-20260719-RESEARCH.md",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+        "external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.tsv",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json",
         "tests/fixtures/regression-snapshots.json"
       ],
-      "runtimeLexicalOwner": null,
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": "src/parser/features/token-features.js",
       "reviewFlags": [
         "lexical_review_candidate",
         "choice_comparative_preference_review"
@@ -1424,15 +1454,23 @@
         "previousSpeaker": null,
         "nextSpeaker": null
       },
-      "deduplicationRelation": "normalized_duplicate_candidate",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
-      "canonicalExactOwners": [],
+      "canonicalExactOwners": [
+        "src/parser/features/token-features.js",
+        "src/runtime-resources/lexicon/token-lexicon/things.js"
+      ],
       "canonicalNormalizedOwners": [],
-      "supportingExactOwners": [],
-      "supportingNormalizedOwners": [
+      "supportingExactOwners": [
+        "external-evidence/aa07-hkcancor/hkcancor-aa07-ge-nominal-head-candidate-inventory.tsv",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
         "tests/fixtures/regression-snapshots.json"
       ],
-      "runtimeLexicalOwner": null,
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": "src/parser/features/token-features.js",
       "reviewFlags": [
         "lexical_review_candidate",
         "choice_comparative_preference_review"
@@ -1458,15 +1496,37 @@
         "previousSpeaker": null,
         "nextSpeaker": null
       },
-      "deduplicationRelation": "normalized_duplicate_candidate",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
-      "canonicalExactOwners": [],
+      "canonicalExactOwners": [
+        "src/parser/tokenization/contextual-overrides.js",
+        "src/runtime-resources/lexicon/token-lexicon/study-suite.js"
+      ],
       "canonicalNormalizedOwners": [],
-      "supportingExactOwners": [],
-      "supportingNormalizedOwners": [
+      "supportingExactOwners": [
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-003-20251214/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-003-20251214/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-003-20251214/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-003-20251214/source.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-010-20260208/README.md",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-010-20260208/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-010-20260208/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-010-20260208/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-010-20260208/source.json",
+        "docs/research/UC-RQ-018-ALTERNATIVE-QUESTION-RESEARCH-R1.md",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json",
         "tests/fixtures/regression-snapshots.json"
       ],
-      "runtimeLexicalOwner": null,
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": "src/parser/tokenization/contextual-overrides.js",
       "reviewFlags": [
         "lexical_review_candidate",
         "choice_comparative_preference_review"
@@ -1492,11 +1552,19 @@
         "previousSpeaker": null,
         "nextSpeaker": null
       },
-      "deduplicationRelation": "no_project_match",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "canonicalExactOwners": [],
       "canonicalNormalizedOwners": [],
-      "supportingExactOwners": [],
+      "supportingExactOwners": [
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json"
+      ],
       "supportingNormalizedOwners": [],
       "runtimeLexicalOwner": null,
       "reviewFlags": [
@@ -1556,15 +1624,56 @@
         "previousSpeaker": null,
         "nextSpeaker": null
       },
-      "deduplicationRelation": "normalized_duplicate_candidate",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
-      "canonicalExactOwners": [],
+      "canonicalExactOwners": [
+        "src/parser/detectors/modality/intention-preference.js",
+        "src/parser/features/token-features.js",
+        "src/plugin-entry.js",
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
       "canonicalNormalizedOwners": [],
-      "supportingExactOwners": [],
-      "supportingNormalizedOwners": [
+      "supportingExactOwners": [
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-006-20260104/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-006-20260104/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-006-20260104/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-006-20260104/source.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/source.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/source.json",
+        "docs/research/CONSTRUCTION-ADJUDICATION-BATCH-05.md",
+        "docs/research/CONSTRUCTION-ADJUDICATION-BATCH-08.md",
+        "docs/research/MODAL-DESIDERATIVE-PREFERENCE-SOURCE-MAP-CP021B-R14.md",
+        "docs/research/UC-RQ-025-NULL-ARGUMENT-ZERO-ANAPHORA-RESEARCH-R1.md",
+        "external-evidence/aa07-hkcancor/hkcancor-aa07-ge-nominal-head-candidate-inventory.tsv",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.json",
+        "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.tsv",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.json",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.tsv",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json",
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv",
         "tests/fixtures/regression-snapshots.json"
       ],
-      "runtimeLexicalOwner": null,
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": "src/parser/detectors/modality/intention-preference.js",
       "reviewFlags": [
         "lexical_review_candidate",
         "choice_comparative_preference_review"
@@ -1590,13 +1699,15 @@
         "previousSpeaker": null,
         "nextSpeaker": null
       },
-      "deduplicationRelation": "no_project_match",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
-      "canonicalExactOwners": [],
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js"
+      ],
       "canonicalNormalizedOwners": [],
       "supportingExactOwners": [],
       "supportingNormalizedOwners": [],
-      "runtimeLexicalOwner": null,
+      "runtimeLexicalOwner": "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js",
       "reviewFlags": [
         "lexical_review_candidate",
         "choice_comparative_preference_review"
@@ -1622,13 +1733,30 @@
         "previousSpeaker": null,
         "nextSpeaker": null
       },
-      "deduplicationRelation": "normalized_duplicate_candidate",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "canonicalExactOwners": [],
       "canonicalNormalizedOwners": [],
-      "supportingExactOwners": [],
+      "supportingExactOwners": [
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/source.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/source.json",
+        "test-data/cp021b-lx1-construction-freeze-baseline.json",
+        "tests/fixtures/regression-snapshots.json"
+      ],
       "supportingNormalizedOwners": [
-        "docs/research/EVALUATION-PACKET-BLUEPRINTS-CP021B-R37.json"
+        "docs/research/CONSTRUCTION-ADJUDICATION-BATCH-10.md",
+        "docs/research/EVALUATION-PACKET-BLUEPRINTS-CP021B-R37.json",
+        "docs/research/LANE-03-FRAGMENTS-DISCOURSE-SOURCE-MAP-CP021B-R17.md",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "test-data/native-speaker-naturalness-evidence-v1.json",
+        "test-data/native-speaker-naturalness-evidence-v1.tsv",
+        "tests/constructions/FragmentQuestion.json"
       ],
       "runtimeLexicalOwner": null,
       "reviewFlags": [
@@ -1688,13 +1816,36 @@
         "previousSpeaker": null,
         "nextSpeaker": null
       },
-      "deduplicationRelation": "no_project_match",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
-      "canonicalExactOwners": [],
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
       "canonicalNormalizedOwners": [],
-      "supportingExactOwners": [],
-      "supportingNormalizedOwners": [],
-      "runtimeLexicalOwner": null,
+      "supportingExactOwners": [
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/source.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+        "external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.tsv",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json"
+      ],
+      "supportingNormalizedOwners": [
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv"
+      ],
+      "runtimeLexicalOwner": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
       "reviewFlags": [
         "lexical_review_candidate",
         "choice_comparative_preference_review"
@@ -1720,13 +1871,36 @@
         "previousSpeaker": null,
         "nextSpeaker": null
       },
-      "deduplicationRelation": "no_project_match",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
-      "canonicalExactOwners": [],
+      "canonicalExactOwners": [
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js"
+      ],
       "canonicalNormalizedOwners": [],
-      "supportingExactOwners": [],
+      "supportingExactOwners": [
+        "docs/research/PRQ2-009-GEI3JIN4-PREMISE-RESPONSE-RESEARCH-R1.md",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+        "external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.tsv",
+        "tests/fixtures/regression-snapshots.json"
+      ],
       "supportingNormalizedOwners": [],
-      "runtimeLexicalOwner": null,
+      "runtimeLexicalOwner": "src/parser/clause-relations/graph.js",
       "reviewFlags": [
         "lexical_review_candidate",
         "choice_comparative_preference_review"
@@ -1752,12 +1926,24 @@
         "previousSpeaker": null,
         "nextSpeaker": null
       },
-      "deduplicationRelation": "no_project_match",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "canonicalExactOwners": [],
       "canonicalNormalizedOwners": [],
-      "supportingExactOwners": [],
-      "supportingNormalizedOwners": [],
+      "supportingExactOwners": [
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/source.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.json",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.tsv",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json"
+      ],
+      "supportingNormalizedOwners": [
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/items.tsv",
+        "docs/research/GLOSSIKA-YUEHK-A1-W18-20260719-RESEARCH.md"
+      ],
       "runtimeLexicalOwner": null,
       "reviewFlags": [
         "lexical_review_candidate",
@@ -1816,13 +2002,21 @@
         "previousSpeaker": null,
         "nextSpeaker": null
       },
-      "deduplicationRelation": "no_project_match",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
-      "canonicalExactOwners": [],
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js"
+      ],
       "canonicalNormalizedOwners": [],
-      "supportingExactOwners": [],
+      "supportingExactOwners": [
+        "docs/research/COMPLEMENT-OMISSION-AND-VALENCY-SOURCE-MAP-CP021B-R26.md",
+        "docs/research/CONSTRUCTION-ADJUDICATION-BATCH-11.md",
+        "docs/research/CP024-P0-L45-VERB-VALENCY-INVENTORY-R1.tsv",
+        "test-data/cp021b-lx1-construction-freeze-baseline.json",
+        "tests/fixtures/regression-snapshots.json"
+      ],
       "supportingNormalizedOwners": [],
-      "runtimeLexicalOwner": null,
+      "runtimeLexicalOwner": "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js",
       "reviewFlags": [
         "lexical_review_candidate",
         "choice_comparative_preference_review"
@@ -1944,11 +2138,14 @@
         "previousSpeaker": null,
         "nextSpeaker": null
       },
-      "deduplicationRelation": "no_project_match",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "canonicalExactOwners": [],
       "canonicalNormalizedOwners": [],
-      "supportingExactOwners": [],
+      "supportingExactOwners": [
+        "external-evidence/aa07-hkcancor/hkcancor-aa07-ge-nominal-head-candidate-inventory.tsv",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json"
+      ],
       "supportingNormalizedOwners": [],
       "runtimeLexicalOwner": null,
       "reviewFlags": [
@@ -1976,11 +2173,13 @@
         "previousSpeaker": null,
         "nextSpeaker": null
       },
-      "deduplicationRelation": "no_project_match",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "canonicalExactOwners": [],
       "canonicalNormalizedOwners": [],
-      "supportingExactOwners": [],
+      "supportingExactOwners": [
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv"
+      ],
       "supportingNormalizedOwners": [],
       "runtimeLexicalOwner": null,
       "reviewFlags": [
@@ -2040,13 +2239,21 @@
         "previousSpeaker": null,
         "nextSpeaker": null
       },
-      "deduplicationRelation": "no_project_match",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
-      "canonicalExactOwners": [],
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/study-suite.js"
+      ],
       "canonicalNormalizedOwners": [],
-      "supportingExactOwners": [],
+      "supportingExactOwners": [
+        "external-evidence/aa07-hkcancor/hkcancor-aa07-ge-nominal-head-candidate-inventory.tsv",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json"
+      ],
       "supportingNormalizedOwners": [],
-      "runtimeLexicalOwner": null,
+      "runtimeLexicalOwner": "src/runtime-resources/lexicon/token-lexicon/study-suite.js",
       "reviewFlags": [
         "lexical_review_candidate",
         "choice_comparative_preference_review"
@@ -2136,15 +2343,46 @@
         "previousSpeaker": null,
         "nextSpeaker": null
       },
-      "deduplicationRelation": "normalized_duplicate_candidate",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
-      "canonicalExactOwners": [],
-      "canonicalNormalizedOwners": [],
-      "supportingExactOwners": [],
-      "supportingNormalizedOwners": [
-        "tests/fixtures/regression-snapshots.json"
+      "canonicalExactOwners": [
+        "src/parser/tokenization/contextual-overrides.js",
+        "src/plugin-entry.js",
+        "src/runtime-resources/lexicon/productive-vo.js",
+        "src/runtime-resources/lexicon/token-lexicon/things.js"
       ],
-      "runtimeLexicalOwner": null,
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-008-20260125/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-008-20260125/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-008-20260125/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-008-20260125/source.json",
+        "docs/research/AA77-JAU-MOU-CORPUS-BOUNDARIES-R1.md",
+        "docs/research/CP024-P0-L45-PRODUCTIVE-VO-SEED-INVENTORY-R1.tsv",
+        "docs/research/WECHAT-GX-TRAVEL-002-PRIORITY-GRAMMAR-RESEARCH-R1.md",
+        "external-evidence/aa07-hkcancor/hkcancor-aa07-ge-nominal-head-candidate-inventory.tsv",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+        "external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.tsv",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.tsv",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json",
+        "tests/fixtures/regression-snapshots.json",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js"
+      ],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": "src/parser/tokenization/contextual-overrides.js",
       "reviewFlags": [
         "lexical_review_candidate",
         "choice_comparative_preference_review"
@@ -2170,15 +2408,56 @@
         "previousSpeaker": null,
         "nextSpeaker": null
       },
-      "deduplicationRelation": "normalized_duplicate_candidate",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
-      "canonicalExactOwners": [],
+      "canonicalExactOwners": [
+        "src/parser/detectors/opinion/stance.js",
+        "src/parser/features/token-features.js",
+        "src/runtime-resources/grammar/predicate-profiles.js",
+        "src/runtime-resources/grammar/templates/construction-templates.js",
+        "src/runtime-resources/grammar/templates/slot-generation-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
       "canonicalNormalizedOwners": [],
-      "supportingExactOwners": [],
-      "supportingNormalizedOwners": [
+      "supportingExactOwners": [
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-010-20260208/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-010-20260208/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-010-20260208/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-010-20260208/source.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/README.md",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/source.json",
+        "data/slot-model.json",
+        "docs/research/AA84-BARE-REDUPLICATED-MANNER-CANDIDATES-R1.md",
+        "docs/research/COMPLEMENT-OMISSION-AND-VALENCY-SOURCE-MAP-CP021B-R26.md",
+        "docs/research/CONSTRUCTION-ADJUDICATION-BATCH-17.md",
+        "docs/research/CP039-P1-EVALUATION-SCALAR-QUESTION-WRAPPER-AUDIT-R1.md",
+        "docs/research/LANE-08-REPORTED-SPEECH-COGNITION-STANCE-SOURCE-MAP-CP021B-R15.md",
+        "docs/research/NEGATION-ACCEPTABILITY-OPINION-SCHEDULING-SOURCE-MAP-CP021B-R30.md",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv",
+        "external-evidence/aa58-hkcancor/hkcancor-aa58-jau-me-candidate-inventory.json",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json",
+        "grammar/unsupported_generalization/OpinionQuestion.md",
         "tests/fixtures/regression-snapshots.json"
       ],
-      "runtimeLexicalOwner": null,
+      "supportingNormalizedOwners": [
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.tsv"
+      ],
+      "runtimeLexicalOwner": "src/parser/detectors/opinion/stance.js",
       "reviewFlags": [
         "lexical_review_candidate",
         "choice_comparative_preference_review"
@@ -2204,11 +2483,14 @@
         "previousSpeaker": null,
         "nextSpeaker": null
       },
-      "deduplicationRelation": "no_project_match",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "canonicalExactOwners": [],
       "canonicalNormalizedOwners": [],
-      "supportingExactOwners": [],
+      "supportingExactOwners": [
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json"
+      ],
       "supportingNormalizedOwners": [],
       "runtimeLexicalOwner": null,
       "reviewFlags": [
@@ -2236,15 +2518,37 @@
         "previousSpeaker": null,
         "nextSpeaker": null
       },
-      "deduplicationRelation": "normalized_duplicate_candidate",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
-      "canonicalExactOwners": [],
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
       "canonicalNormalizedOwners": [],
-      "supportingExactOwners": [],
-      "supportingNormalizedOwners": [
+      "supportingExactOwners": [
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/source.json",
+        "docs/research/UC-RQ-027-ZEOI3-SUPERLATIVE-RESEARCH-R1.md",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.json",
+        "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.tsv",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.json",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.tsv",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json",
         "tests/fixtures/regression-snapshots.json"
       ],
-      "runtimeLexicalOwner": null,
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": "src/runtime-resources/lexicon/token-lexicon/verbs.js",
       "reviewFlags": [
         "lexical_review_candidate",
         "choice_comparative_preference_review"
@@ -2270,13 +2574,30 @@
         "previousSpeaker": null,
         "nextSpeaker": null
       },
-      "deduplicationRelation": "no_project_match",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
-      "canonicalExactOwners": [],
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/statives.js"
+      ],
       "canonicalNormalizedOwners": [],
-      "supportingExactOwners": [],
+      "supportingExactOwners": [
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/README.md",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/source.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json"
+      ],
       "supportingNormalizedOwners": [],
-      "runtimeLexicalOwner": null,
+      "runtimeLexicalOwner": "src/runtime-resources/lexicon/token-lexicon/statives.js",
       "reviewFlags": [
         "lexical_review_candidate",
         "choice_comparative_preference_review"
@@ -2302,11 +2623,28 @@
         "previousSpeaker": null,
         "nextSpeaker": null
       },
-      "deduplicationRelation": "no_project_match",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "canonicalExactOwners": [],
       "canonicalNormalizedOwners": [],
-      "supportingExactOwners": [],
+      "supportingExactOwners": [
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/source.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.tsv"
+      ],
       "supportingNormalizedOwners": [],
       "runtimeLexicalOwner": null,
       "reviewFlags": [
@@ -2366,17 +2704,81 @@
         "previousSpeaker": null,
         "nextSpeaker": null
       },
-      "deduplicationRelation": "normalized_duplicate_candidate",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
-      "canonicalExactOwners": [],
+      "canonicalExactOwners": [
+        "src/parser/clause-relations/graph.js",
+        "src/parser/context/descriptors.js",
+        "src/parser/detectors/acceptability/clauses.js",
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/features/token-features.js",
+        "src/runtime-resources/grammar/templates/slot-generation-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js",
+        "src/runtime-resources/pronunciation/jyutping-review-expectations.js"
+      ],
       "canonicalNormalizedOwners": [],
-      "supportingExactOwners": [],
-      "supportingNormalizedOwners": [
+      "supportingExactOwners": [
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-006-20260104/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-006-20260104/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-006-20260104/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-006-20260104/source.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/source.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-009-20260201/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-009-20260201/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-009-20260201/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-009-20260201/source.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/source.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/source.json",
+        "docs/research/CONSTRUCTION-ADJUDICATION-BATCH-15.md",
+        "docs/research/CP039-P1-EVALUATION-SCALAR-QUESTION-WRAPPER-AUDIT-R1.md",
+        "docs/research/CP053-P1-EVALUATION-WITH-DOU-SYUN-EXTERNAL-EVIDENCE-R1.md",
+        "docs/research/CP054-P1-SCALAR-EVALUATION-RECONCILIATION-R1.md",
+        "docs/research/PRQ2-008-ZI2JIU3-ZAU6-SUFFICIENT-CONDITION-RESEARCH-R1.md",
+        "docs/research/PRQ2-010-CEOI4ZO2-ZI1NGOI6-EXCLUSION-ADDITION-RESEARCH-R1.md",
         "docs/research/PRQ2-015-MUI5-GO3GO3-DOU1-DISTRIBUTIVE-QUANTIFICATION-RESEARCH-R1.md",
+        "docs/research/PRQ2-034-MOU4LEON6-DOU1-UNCONDITIONAL-RESEARCH-R1.md",
+        "docs/research/PRQ2-035-NING4JYUN6-DOU1-COMMITTED-PREFERENCE-RESEARCH-R1.md",
+        "docs/research/QUANTITY-SCALAR-ACTION-BOUNDARIES-SOURCE-MAP-CP021B-R29.md",
+        "docs/research/RESULT-CHANGE-EVIDENCE-RECONCILIATION-R1.md",
+        "docs/research/RESULT-CHANGE-WRAPPERS-SOURCE-MAP-CP021B-R28.md",
+        "docs/research/UC-RQ-007-VERB-COPY-FOCUS-CONSTRUCTION-RESEARCH-R1.md",
         "docs/research/UC-RQ-037-ZAU6SYUN3-DOU1-SCALAR-CONCESSIVE-RESEARCH-R1.md",
+        "docs/research/reopened-retired-labels/DouSyunScalarEvaluation.md",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+        "external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv",
+        "external-evidence/aa58-hkcancor/hkcancor-aa58-jau-me-candidate-inventory.json",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.tsv",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.tsv",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.json",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.tsv",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.tsv",
+        "grammar/research_pending/ScalarEvaluation.md",
+        "test-data/WECHAT-GX-TRAVEL-002-ADJUDICATION-MATRIX.json",
+        "test-data/WECHAT-GX-TRAVEL-002-ADJUDICATION-MATRIX.tsv",
+        "test-data/WECHAT-GX-TRAVEL-002-QUEUE-D-context_disfluency_research.tsv",
+        "test-data/WECHAT-GX-TRAVEL-002-QUEUE-G-grammar_research_external_evidence.tsv",
         "tests/fixtures/regression-snapshots.json"
       ],
-      "runtimeLexicalOwner": null,
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": "src/parser/clause-relations/graph.js",
       "reviewFlags": [
         "lexical_review_candidate",
         "choice_comparative_preference_review"
@@ -2402,11 +2804,16 @@
         "previousSpeaker": null,
         "nextSpeaker": null
       },
-      "deduplicationRelation": "no_project_match",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "canonicalExactOwners": [],
       "canonicalNormalizedOwners": [],
-      "supportingExactOwners": [],
+      "supportingExactOwners": [
+        "docs/research/CP053-P1-EVALUATION-WITH-DOU-SYUN-EXTERNAL-EVIDENCE-R1.md",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json"
+      ],
       "supportingNormalizedOwners": [],
       "runtimeLexicalOwner": null,
       "reviewFlags": [
@@ -2434,13 +2841,29 @@
         "previousSpeaker": null,
         "nextSpeaker": null
       },
-      "deduplicationRelation": "no_project_match",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
-      "canonicalExactOwners": [],
+      "canonicalExactOwners": [
+        "src/parser/context/descriptors.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
       "canonicalNormalizedOwners": [],
-      "supportingExactOwners": [],
+      "supportingExactOwners": [
+        "docs/research/ACTIVE-LABEL-EVIDENCE-ONTOLOGY-CLOSURE-R1.md",
+        "docs/research/CONSTRUCTION-ADJUDICATION-BATCH-18.md",
+        "docs/research/CP051-P1-COPULAR-ANOTA-RECONCILIATION-R1.md",
+        "docs/research/LANE-07-A-NOT-A-QUESTIONS-SOURCE-MAP-CP021B-R7.md",
+        "docs/research/PRQ2-002-ZOU2ZI1-HINDSIGHT-REGRET-RESEARCH-R1.md",
+        "docs/research/UC-RQ-019-CLAUSE-FINAL-TAG-QUESTION-RESEARCH-R1.md",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv",
+        "grammar/parser_heuristic/PolarQuestionFrame.md",
+        "grammar/unsupported_generalization/CopularANotAQuestion.md"
+      ],
       "supportingNormalizedOwners": [],
-      "runtimeLexicalOwner": null,
+      "runtimeLexicalOwner": "src/parser/context/descriptors.js",
       "reviewFlags": [
         "lexical_review_candidate",
         "choice_comparative_preference_review"
@@ -2466,13 +2889,21 @@
         "previousSpeaker": null,
         "nextSpeaker": null
       },
-      "deduplicationRelation": "no_project_match",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
-      "canonicalExactOwners": [],
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/statives.js",
+        "src/runtime-resources/pronunciation/jyutping-review-expectations.js"
+      ],
       "canonicalNormalizedOwners": [],
-      "supportingExactOwners": [],
+      "supportingExactOwners": [
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-002-20251207/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-002-20251207/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-002-20251207/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-002-20251207/source.json"
+      ],
       "supportingNormalizedOwners": [],
-      "runtimeLexicalOwner": null,
+      "runtimeLexicalOwner": "src/runtime-resources/lexicon/token-lexicon/statives.js",
       "reviewFlags": [
         "lexical_review_candidate",
         "choice_comparative_preference_review"
@@ -2498,11 +2929,17 @@
         "previousSpeaker": null,
         "nextSpeaker": null
       },
-      "deduplicationRelation": "no_project_match",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "canonicalExactOwners": [],
       "canonicalNormalizedOwners": [],
-      "supportingExactOwners": [],
+      "supportingExactOwners": [
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv"
+      ],
       "supportingNormalizedOwners": [],
       "runtimeLexicalOwner": null,
       "reviewFlags": [
@@ -2530,15 +2967,36 @@
         "previousSpeaker": null,
         "nextSpeaker": null
       },
-      "deduplicationRelation": "normalized_duplicate_candidate",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
-      "canonicalExactOwners": [],
+      "canonicalExactOwners": [
+        "src/plugin-entry.js",
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
       "canonicalNormalizedOwners": [],
-      "supportingExactOwners": [],
-      "supportingNormalizedOwners": [
+      "supportingExactOwners": [
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/source.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-010-20260208/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-010-20260208/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-010-20260208/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-010-20260208/source.json",
+        "docs/research/CP024-P0-L45-VERB-VALENCY-INVENTORY-R1.tsv",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.tsv",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json",
         "tests/fixtures/regression-snapshots.json"
       ],
-      "runtimeLexicalOwner": null,
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": "src/plugin-entry.js",
       "reviewFlags": [
         "lexical_review_candidate",
         "choice_comparative_preference_review"
@@ -2564,11 +3022,13 @@
         "previousSpeaker": null,
         "nextSpeaker": null
       },
-      "deduplicationRelation": "no_project_match",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "canonicalExactOwners": [],
       "canonicalNormalizedOwners": [],
-      "supportingExactOwners": [],
+      "supportingExactOwners": [
+        "external-evidence/aa07-hkcancor/hkcancor-aa07-ge-nominal-head-candidate-inventory.tsv"
+      ],
       "supportingNormalizedOwners": [],
       "runtimeLexicalOwner": null,
       "reviewFlags": [
@@ -2596,12 +3056,15 @@
         "previousSpeaker": null,
         "nextSpeaker": null
       },
-      "deduplicationRelation": "no_project_match",
+      "deduplicationRelation": "normalized_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
       "canonicalExactOwners": [],
       "canonicalNormalizedOwners": [],
       "supportingExactOwners": [],
-      "supportingNormalizedOwners": [],
+      "supportingNormalizedOwners": [
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv"
+      ],
       "runtimeLexicalOwner": null,
       "reviewFlags": [
         "lexical_review_candidate",
@@ -2628,13 +3091,27 @@
         "previousSpeaker": null,
         "nextSpeaker": null
       },
-      "deduplicationRelation": "no_project_match",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
-      "canonicalExactOwners": [],
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/places-and-times.js",
+        "src/runtime-resources/presentation/learner-glosses.js"
+      ],
       "canonicalNormalizedOwners": [],
-      "supportingExactOwners": [],
+      "supportingExactOwners": [
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-010-20260208/README.md",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-010-20260208/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-010-20260208/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-010-20260208/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-010-20260208/source.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json"
+      ],
       "supportingNormalizedOwners": [],
-      "runtimeLexicalOwner": null,
+      "runtimeLexicalOwner": "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
       "reviewFlags": [
         "lexical_review_candidate",
         "choice_comparative_preference_review"
@@ -2660,15 +3137,36 @@
         "previousSpeaker": null,
         "nextSpeaker": null
       },
-      "deduplicationRelation": "normalized_duplicate_candidate",
+      "deduplicationRelation": "exact_duplicate_candidate",
       "ingressClassification": "lexical_review_candidate",
-      "canonicalExactOwners": [],
+      "canonicalExactOwners": [
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/detectors/coverbs/frames.js",
+        "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js"
+      ],
       "canonicalNormalizedOwners": [],
-      "supportingExactOwners": [],
-      "supportingNormalizedOwners": [
+      "supportingExactOwners": [
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+        "external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.tsv",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.tsv",
         "tests/fixtures/regression-snapshots.json"
       ],
-      "runtimeLexicalOwner": null,
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": "src/parser/clause-relations/graph.js",
       "reviewFlags": [
         "lexical_review_candidate",
         "choice_comparative_preference_review"
