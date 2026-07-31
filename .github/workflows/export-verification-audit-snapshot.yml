@@ -1,9 +1,8 @@
 name: Apply verification workflow alignment
 
 on:
-  push:
-    branches:
-      - agent/verification-workflow-alignment
+  pull_request:
+    types: [opened, synchronize, reopened]
     paths:
       - ".github/workflows/export-verification-audit-snapshot.yml"
       - ".github/workflows/verification-alignment.patch.b64"
@@ -13,6 +12,7 @@ permissions:
 
 jobs:
   apply:
+    if: github.head_ref == 'agent/verification-workflow-alignment'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -31,6 +31,7 @@ jobs:
           patch -p4 < /tmp/verification-alignment.diff
           rm -f .github/workflows/export-verification-audit-snapshot.yml
           rm -f .github/workflows/verification-alignment.patch.b64
+          rm -f TEMP_*
       - name: Install build dependency
         run: npm ci
       - name: Verify retained state and tooling
