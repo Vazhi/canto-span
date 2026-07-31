@@ -143,3 +143,13 @@ jobs:
           name: aa82-repository-inventory
           path: artifacts/aa82-repository-inventory.json
           if-no-files-found: error
+      - name: Prepare read-only repository snapshot
+        shell: bash
+        run: |
+          mkdir -p artifacts/repository
+          cp -R src tests data docs grammar external-evidence tools package.json main.js artifacts/repository/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: aa82-repository-snapshot
+          path: artifacts/repository
+          if-no-files-found: error
