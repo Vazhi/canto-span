@@ -1,9 +1,10 @@
 name: Generate AA82 boundary inventory
 
 on:
-  push:
+  pull_request:
     branches:
-      - agent/aa82-attested-boundary-packet
+      - main
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -47,9 +48,9 @@ jobs:
             const out = [];
             for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
               if (EXCLUDED_DIRS.has(entry.name)) continue;
-              const abs = path.join(dir, entry.name);
-              if (entry.isDirectory()) out.push(...filesUnder(abs));
-              else out.push(abs);
+              const absolute = path.join(dir, entry.name);
+              if (entry.isDirectory()) out.push(...filesUnder(absolute));
+              else out.push(absolute);
             }
             return out;
           }
@@ -78,8 +79,8 @@ jobs:
             if (typeof value === "string") {
               if (!value.includes(TARGET)) return;
               let context = null;
-              for (let i = ancestors.length - 1; i >= 0 && !context; i -= 1) {
-                context = summarizeObject(ancestors[i]);
+              for (let index = ancestors.length - 1; index >= 0 && !context; index -= 1) {
+                context = summarizeObject(ancestors[index]);
               }
               hits.push({ pointer, value, context });
               return;
@@ -98,29 +99,25 @@ jobs:
 
           const lineHits = [];
           const jsonHits = [];
-          const files = filesUnder(ROOT).sort();
-          for (const abs of files) {
-            const rel = path.relative(ROOT, abs).split(path.sep).join("/");
-            if (!TEXT_EXTENSIONS.has(path.extname(rel).toLowerCase())) continue;
-            const stat = fs.statSync(abs);
-            if (stat.size > 5_000_000) continue;
+          for (const absolute of filesUnder(ROOT).sort()) {
+            const relative = path.relative(ROOT, absolute).split(path.sep).join("/");
+            if (!TEXT_EXTENSIONS.has(path.extname(relative).toLowerCase())) continue;
+            if (fs.statSync(absolute).size > 5_000_000) continue;
             let text;
-            try { text = fs.readFileSync(abs, "utf8"); } catch { continue; }
+            try { text = fs.readFileSync(absolute, "utf8"); } catch { continue; }
             if (!text.includes(TARGET) && !text.includes("LocativeWhQuestion") && !text.includes("BinDouWhPlaceQuestion")) continue;
-            const lines = text.split(/\r?\n/);
-            lines.forEach((line, index) => {
+            text.split(/\r?\n/).forEach((line, index) => {
               if (line.includes(TARGET) || line.includes("LocativeWhQuestion") || line.includes("BinDouWhPlaceQuestion")) {
-                lineHits.push({ file: rel, category: classify(rel), line: index + 1, text: line.slice(0, 1000) });
+                lineHits.push({ file: relative, category: classify(relative), line: index + 1, text: line.slice(0, 1000) });
               }
             });
-            if (path.extname(rel).toLowerCase() === ".json" && text.includes(TARGET)) {
+            if (path.extname(relative).toLowerCase() === ".json" && text.includes(TARGET)) {
               try {
-                const parsed = JSON.parse(text);
                 const hits = [];
-                collectJson(parsed, "", [], hits);
-                for (const hit of hits) jsonHits.push({ file: rel, category: classify(rel), ...hit });
+                collectJson(JSON.parse(text), "", [], hits);
+                for (const hit of hits) jsonHits.push({ file: relative, category: classify(relative), ...hit });
               } catch (error) {
-                jsonHits.push({ file: rel, category: classify(rel), parseError: error.message });
+                jsonHits.push({ file: relative, category: classify(relative), parseError: error.message });
               }
             }
           }
