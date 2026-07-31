@@ -60,11 +60,11 @@ function intake(overrides = {}) {
   return `# Task\n\nCodex instructions.\n\n\`\`\`task-intake\n${JSON.stringify(metadata, null, 2)}\n\`\`\``;
 }
 
-test("checked-in toggle is valid and disabled", () => {
+test("checked-in toggle is valid and enabled", () => {
   const loaded = loadSettings();
   assert.deepEqual(validateSettings(loaded), []);
-  assert.equal(codexWorkflowsEnabled(loaded), false);
-  assert.deepEqual([...allowedPickupTargets(loaded)], ["chatgpt", "human"]);
+  assert.equal(codexWorkflowsEnabled(loaded), true);
+  assert.deepEqual([...allowedPickupTargets(loaded)], ["codex", "chatgpt", "human"]);
 });
 
 test("enabled setting permits all three pickup targets", () => {
