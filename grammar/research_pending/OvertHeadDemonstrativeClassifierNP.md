@@ -117,6 +117,6 @@ The single historical speaker record is not a clean role-neutral panel. The olde
 
 ## Open questions
 
-- Item-level classifier/measure and classifier–noun evidence remains with issue #334 or later accepted work.
+- The merged bounded pair review in `docs/research/OBSERVED-UNIT-WORD-NOUN-MISMATCH-MATRIX-R1.md` records pair-specific evidence and unresolved choices without authorizing further runtime changes.
 - `呢啲魚`, `呢班人`, alternative classifiers, mensural profiles, and discourse-conditioned choices require separate item/profile analysis.
 - Clean role-neutral panel evidence and held-out validation remain incomplete.
