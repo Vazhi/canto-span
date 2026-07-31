@@ -147,4 +147,3 @@ This decision changes no:
 ## Terminal outcome
 
 **Evidence-justified no-change decision.** The current AA82 compatibility behavior is retained under the explicit narrow contract above. Corpus testing proceeds under #313. Motion-goal and perfective interactions remain separately scoped and cannot be resolved by broadening the lexical `邊度` wrapper.
-
