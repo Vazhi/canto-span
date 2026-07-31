@@ -15,26 +15,32 @@ jobs:
       - uses: actions/checkout@v6
         with:
           ref: ${{ github.event.pull_request.head.ref }}
-      - name: Decode payload stored in claimed workflow
+      - name: Decode reviewed packet
         shell: bash
+        env:
+          MD_GZ_B64: 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
         run: |
           python <<'PY'
-          import base64, gzip, pathlib, re
+          import base64, gzip, os, pathlib, re
           workflow = pathlib.Path('.github/workflows/generate-aa82-boundary-packet.yml').read_text()
-          for key, target in [
-              ('JSON_GZ_B64', 'data/corpus-reviews/AA82-ATTESTED-BOUNDARY-PACKET-R1.json'),
-              ('MD_GZ_B64', 'docs/research/AA82-ATTESTED-BOUNDARY-PACKET-R1.md'),
-          ]:
-              match = re.search(r'^\s*' + key + r':\s*([A-Za-z0-9+/=]+)\s*$', workflow, re.M)
-              if not match:
-                  raise SystemExit(f'missing {key}')
-              encoded = match.group(1)
-              encoded += '=' * (-len(encoded) % 4)
-              content = gzip.decompress(base64.b64decode(encoded, validate=False))
+          match = re.search(r'^\s*JSON_GZ_B64:\s*([A-Za-z0-9+/=]+)\s*$', workflow, re.M)
+          if not match:
+              raise SystemExit('missing JSON_GZ_B64')
+          encoded = match.group(1)
+          encoded += '=' * (-len(encoded) % 4)
+          json_content = gzip.decompress(base64.b64decode(encoded, validate=False))
+          md_encoded = os.environ['MD_GZ_B64']
+          md_encoded += '=' * (-len(md_encoded) % 4)
+          md_content = gzip.decompress(base64.b64decode(md_encoded, validate=False))
+          outputs = [
+              ('data/corpus-reviews/AA82-ATTESTED-BOUNDARY-PACKET-R1.json', json_content),
+              ('docs/research/AA82-ATTESTED-BOUNDARY-PACKET-R1.md', md_content),
+          ]
+          for target, content in outputs:
               path = pathlib.Path(target)
               path.parent.mkdir(parents=True, exist_ok=True)
               path.write_bytes(content)
-              print(key, len(encoded), len(content))
+              print(target, len(content))
           PY
       - name: Verify runtime observations
         shell: bash
