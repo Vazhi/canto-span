@@ -1,15 +1,19 @@
 ---
-title: "OvertHeadDemonstrativeClassifierNP"
+title: "AB15 DemonstrativeClassifierNounNP"
 type: "canto-span-construction"
 construction: "OvertHeadDemonstrativeClassifierNP"
+construction_uuid: "4f6df953-62d1-5036-80b3-40bc8f02937e"
+construction_code: "AB15"
+canonical_name: "DemonstrativeClassifierNounNP"
+legacy_runtime_label: "OvertHeadDemonstrativeClassifierNP"
 status: "research_pending"
-confidence: "not_assigned_research_pending"
+confidence: "primary_source_supported_structural_boundaries_runtime_aligned"
 claim_layer: "language"
 lane: "LANE-06"
-last_reviewed: "unknown"
+last_reviewed: "2026-07-31"
 last_status_migrated: "2026-07-21"
-source_count: 5
-verified_source_count: 5
+source_count: 7
+verified_source_count: 7
 panel_response_count_total: 1
 eligible_panel_response_count: 0
 minimum_usable_judgments_per_critical_item: 0
@@ -29,7 +33,7 @@ panel_policy_file: "review-packets/native-panel/active-v2/panel-policy.json"
 negative_cases_drafted: true
 negative_tests_executable: true
 negative_tests_passing: true
-negative_boundary_inventory_complete: false
+negative_boundary_inventory_complete: true
 corpus_evidence_used: true
 corpus_hits_reviewed: true
 corpus_candidate_hit_count: 5
@@ -38,134 +42,81 @@ corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
 code_document_reconciled: true
-code_document_review_date: null
+code_document_review_date: "2026-07-31"
 code_document_review_commit: null
 code_document_code_locations: []
-current_standard_reaudit_complete: false
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
+source_verification_file: "docs/research/AB15-CLASSIFIER-NP-PRIMARY-SOURCE-LEDGER-R1.tsv"
 standard_test_file: "tests/constructions/OvertHeadDemonstrativeClassifierNP.json"
 standard_test_coverage: "positive_and_boundary"
 standard_positive_test_count: 30
-standard_boundary_test_count: 2
+standard_boundary_test_count: 6
 standard_implementation_probe_count: 0
-standard_executable_test_count: 32
-source_ids: ["SRC-BOND-SIO-2024-CLASSIFIERS", "SRC-LAM-LAU-LEE-2024-SEGMENTATION", "SRC-XIA-2025-CLASSIFIERS", "SRC-YU-2006-NOMINAL-MODIFIERS", "SRC-HKCANCOR-PYCANTONESE-CP024-DEMO01"]
+standard_executable_test_count: 38
+source_ids: ["SRC-BOND-SIO-2024-CLASSIFIERS", "SRC-CHENG-SYBESMA-2014-NP-STRUCTURE", "SRC-MATTHEWS-YIP-COMPREHENSIVE-CH6", "SRC-XIA-2025-CLASSIFIERS", "SRC-TSE-LI-LEUNG-2007-CLASSIFIER-ACQUISITION", "SRC-ERBAUGH-2013-CLASSIFIER-DISCOURSE", "SRC-NAGY-LO-2019-CANTONESE-CLASSIFIERS"]
 runtime_active: true
-workflow_state: "archived"
-workflow_priority: null
+workflow_state: "active"
+workflow_priority: 2
 workflow_since: "2026-07-21"
-workflow_reason: "not_selected_for_current_bounded_working_set"
+workflow_reason: "structural_source_audit_complete_panel_and_item_level_choice_evidence_pending"
 runtime_code_references: 14
 accepted_fixtures: 30
 tags: ["canto-span/grammar", "canto-span/status/research_pending", "canto-span/lane/lane-06", "canto-span/workflow/archived"]
 ---
 
-# OvertHeadDemonstrativeClassifierNP
+# AB15 DemonstrativeClassifierNounNP
+
+## Canonical identity
+
+- Construction UUID: `4f6df953-62d1-5036-80b3-40bc8f02937e`
+- Permanent identity: `AB15 DemonstrativeClassifierNounNP`
+- Legacy runtime label: `OvertHeadDemonstrativeClassifierNP`
+- Linguistic status: `research_pending` (unchanged)
 
 ## Plain-language claim
 
-Reviewed sources and natural examples support overt demonstrative–classifier–noun sequences. Exact productivity, classifier compatibility, and boundaries remain research pending; no active DEMO01 promotion candidate exists.
+Primary sources support a narrow no-numeral Cantonese noun-phrase profile with an overt demonstrative, overt classifier, and overt nominal head. The runtime may represent exactly those visible components as AB15. It must not insert a hidden numeral or noun, delete an overt numeral, absorb a modifier-bearing phrase into AB15, or infer item-level classifier compatibility from the structural template.
 
-This is a linguistic claim only to the extent allowed by the status and evidence below. The runtime label is not assumed to be standard linguistic terminology.
+A source analysis assigning semantic cardinality one does not license an unpronounced numeral in the parser tree.
 
-## Current status
+## Verified source audit
 
-- Linguistic status: `research_pending`
-- Linguistic confidence: `not_assigned_research_pending`
-- Current action: `retain_as_np_subsystem_structure_without_active_demo01_candidate`
-- Productive acceptance eligible: **no**
-- Last linguistic review: not recorded
+The proposition-level ledger is `docs/research/AB15-CLASSIFIER-NP-PRIMARY-SOURCE-LEDGER-R1.tsv`. The accepted synthesis is `docs/research/AB15-DEMONSTRATIVE-CLASSIFIER-NOUN-SCOPE-R1.md`.
 
-## Sources
+Seven verified source records support the structural core and its limits. Bond and Sio distinguish D-(X)-C-N, X-C-N, and C-N profiles. Cheng and Sybesma permit numeral omission after a demonstrative while requiring the overt classifier in the ordinary headed profile and treating noun ellipsis separately. Matthews and Yip directly attest multiple no-numeral Dem-CL-N examples. The remaining sources document classifier/measure distinctions, general-classifier use, alternatives, and population or discourse variation; they do not define a universal pair-level compatibility table.
 
-### SRC-BOND-SIO-2024-CLASSIFIERS
+## Executable boundary matrix
 
-- Citation: [Bond, Francis and Joanna Ut-Seong Sio. 2024. A Construction-based Approach to Cantonese Classifiers. Proceedings of the 31st International Conference on Head-Driven Phrase Structure Grammar, 60-75.](https://doi.org/10.21248/hpsg.2024.4)
-- Locator: pp. 61-66; Table 1; examples 1-3
-- Verification: `VERIFIED_FULL_TEXT`
-- What it supports: Four Cantonese NP schemata D-(X)-C-N, X-C-N, C-N, and N; classifier cardinality and cognitive-status distinctions; implemented HPSG analysis.
-- Limit: The HPSG analysis is one explicit formalization, not a settled universal ontology; its semantic type hierarchy should not be imported wholesale into Canto Span.
+| Surface/profile | Runtime disposition |
+|---|---|
+| `呢本書`, `嗰間餐廳` | direct AB15: overt Dem + CL + N, no overt numeral |
+| `呢三本書` | existing demonstrative-bearing composition containing an overt `QuantifiedClassifierNP`; numeral retained; not AB15 |
+| `呢個` | headless demonstrative-classifier sibling; no hidden noun; not AB15 |
+| `本書` | established bare classifier-noun NP behavior; no hidden demonstrative or numeral; not AB15 |
+| `三本書` | existing `QuantifiedClassifierNP`; not AB15 |
+| `呢書` | outside AB15; no hidden-classifier repair |
+| `嗰間新開嘅意大利餐廳` | transparent modifier-bearing `ModifiedNP`; demonstrative, classifier, modifier, `嘅`, nominal modifier, and head noun retained; not AB15 |
 
-### SRC-LAM-LAU-LEE-2024-SEGMENTATION
-
-- Citation: [Lam, Charles, Chaak Ming Lau, and Jackson L. Lee. 2024. Multi-Tiered Cantonese Word Segmentation. Proceedings of LREC-COLING 2024, 11993-12002.](https://aclanthology.org/2024.lrec-main.1047/)
-- Locator: pp. 11997-11999; PDF p. 5 section 4.4.3 examples 第-一 and 第-二-隻; classifier/NP and noun-ellipsis sections; PDF pp. 5-6 sections 4.5.2 and 4.6
-- Verification: `VERIFIED_FULL_TEXT`
-- What it supports: Overt segmentation of classifier NPs and noun ellipsis; ordinals with 第 treated as determiners, including classifier-headed noun ellipsis; distinction between verbal possessive 有 and existential-marker 有; degree modifiers and opaque lexical adjective units.
-- Limit: The paper specifies a word-segmentation annotation scheme rather than a complete syntax or semantics. Its segmentation decisions corroborate overt boundaries but do not establish all ordinal readings, argument structures, ellipsis licensing, or parser nodes.
-
-### SRC-XIA-2025-CLASSIFIERS
-
-- Citation: [Xia, Hengliang. 2025. Syntax of Classifiers and Measure Words in Three Chinese Languages. Proceedings of the 2025 Annual Conference of the Canadian Linguistic Association.](https://cla-acl.ca/pdfs/actes-2025/Xia-CLA-2025.pdf)
-- Locator: pp. 1, 6-11; Table 1; examples 13-15; Figures 2-3
-- Verification: `VERIFIED_FULL_TEXT`
-- What it supports: Cantonese Num-CL-N, Dem-CL-N, bare CL-N, Poss-CL-N distribution; coordination and noun-ellipsis diagnostics; limits on inserting jat1.
-- Limit: Comparative judgments and the proposed right-branching analysis are author analyses; use distributional contrasts as evidence but retain competing structural analyses.
-
-### SRC-YU-2006-NOMINAL-MODIFIERS
-
-- Citation: [Yu, Dominic. 2006. Relative clauses and nominal modifiers in Cantonese. Unpublished research paper, University of California, Berkeley.](https://linguistics.berkeley.edu/~dom/cantonese-rc.pdf)
-- Locator: pp. 3-7; examples 3, 9, and 11-12
-- Verification: `VERIFIED_FULL_TEXT_CORROBORATIVE`
-- What it supports: Cantonese nominal order, possessive classifier phrases, demonstrative-classifier phrases, and headless demonstrative+classifier NPs.
-- Limit: Not peer reviewed and partly theoretical; use only as corroboration or narrow evidence for explicitly illustrated forms, never as sole authority for productivity.
-
-### SRC-HKCANCOR-PYCANTONESE-CP024-DEMO01
-
-- Citation: HKCanCor recordings preserved through the project PyCantonese 5.0.0 evidence distribution
-- Locator: FC-020_v.cha turn 445; FC-026_v2.cha turn 234; FC-046_v2.cha turn 117; FC-108c_v2.cha turn 348; FC-R017_v.cha turn 225
-- Verification: `MANUALLY_REVIEWED_FIVE_RECORDS`
-- What it supports: Five overt demonstrative-classifier-noun spans from five recording files and participant records.
-- Limit: One corpus collection; incidental retrieval inventory; no frequency inference, arbitrary classifier-head compatibility, silent numeral, headless form, or unique syntactic theory.
-
-## Native-speaker review
-
-- Independent speaker records: **1**
-- Scope: `ONE_SPEAKER_SENTENCE_NATURALNESS_ONLY_NOT_ANALYSIS_VALIDATION`
-- Surface judgments: 6 total; 6 accepted; 0 rejected.
-- Structural-analysis validations: 0.
-- Second-speaker state: `FROZEN_BY_USER_NOT_WAIVED`.
-
-## Negative and boundary cases
-
-- Standard executable test file: `tests/constructions/OvertHeadDemonstrativeClassifierNP.json`
-- Evidence state: `source_linked_visible_packet_headless_overt_numeral_di_wh_and_incomplete_boundaries`
-- Executable or review records containing this label:
-  - `test-data/grammar-authority-origin-CP021B.tsv`
-  - `test-data/grammar-claim-provenance-CP021B.json`
-  - `test-data/grammar-claim-provenance-CP021B.tsv`
-  - `test-data/grammar-claim-source-edges-CP021A.tsv`
-  - `test-data/grammar-legitimacy-audit.json`
-  - `test-data/grammar-legitimacy-audit.tsv`
-  - `tests/fixtures/np-subsystem.json`
+Classifier versus measure-word typing and item-level classifier–noun choice remain separate evidence questions. Absence from the current compatibility table is not categorical ungrammaticality.
 
 ## Implementation state
 
-- Lifecycle: `shared_np_subsystem_component_no_active_demo01_candidate`
-- Visible/focused tests: `NP_SUBSYSTEM_TESTED_WITH_COMPATIBLE_AND_INCOMPATIBLE_CLASSIFIER_HEADS`
-- Render review: `NOT_APPLICABLE_NO_ACTIVE_PROMOTION_CANDIDATE`
-- Held-out evaluation: `NOT_APPLICABLE_DEMO01_ABANDONED_UNUSED`
-- Regression: `545_of_545_pass`
-- Code–documentation comparison: `ALIGNED_AS_RESEARCH_PENDING_SHARED_NP_COMPONENT`
+- The existing narrow AB15 template remains unchanged.
+- New exact modifier-bearing `ModifiedNP` compositions preserve every overt component and prevent the longer phrase from flattening into AB15.
+- Existing bare classifier-noun and quantified-classifier runtime behavior is preserved rather than retyped.
+- Missing-classifier strings remain outside AB15 with no repair.
+- The twelve-rule unit-word evidence model and classifier-head compatibility arrays are unchanged.
+- Parser tests establish implementation behavior only and add no independent linguistic evidence.
 
-## Open questions and blockers
+## Panel, corpus, and promotion limits
 
-- current provisional checklist remains incomplete
-- checked_exact_source;one_speaker_positive_negative_review;drafted_negative_boundaries;independent_evidence_beyond_parser_tests
-- all Definition of Done linguistic gates; no active promotion candidate; second-speaker work frozen
-- DEMO01 promotion, render, and held-out work was abandoned in v0.5.184. Prior evidence remains provenance for a research-pending shared NP component only. Classifier-head compatibility is bounded; no active promotion candidate or held-out claim remains.
-- DEMO01 is abandoned. The reusable structural component remains research_pending; no render or held-out promotion track is active.
-- Research question: Which externally documented Cantonese constructions, if any, justify the scope and boundaries currently represented by OvertHeadDemonstrativeClassifierNP?
-- Next evidence action: No DEMO01 action. Maintain the component through shared NP-subsystem tests; reopen linguistic promotion only by explicit future decision.
+The single historical speaker record is not a clean role-neutral panel. The older HKCanCor examples remain occurrence evidence, not a productivity estimate. No clean panel threshold, held-out gate, frequency claim, dialect-wide naturalness claim, or status promotion is established.
 
-## Related constructions
+## Open questions
 
-No same-family active construction was identified in the canonical consolidation table.
-
-## Migration provenance
-
-- Full pre-migration record: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
-- Status migration date: 2026-07-21.
-- The frozen JSON preserves the former wide schema; this note is the active authoring record.
+- Item-level classifier/measure and classifier–noun evidence remains with issue #334 or later accepted work.
+- `呢啲魚`, `呢班人`, alternative classifiers, mensural profiles, and discourse-conditioned choices require separate item/profile analysis.
+- Clean role-neutral panel evidence and held-out validation remain incomplete.

@@ -928,6 +928,38 @@ module.exports = [
   {
     type: "ModifiedNP",
     label: "NP",
+    template: ["demonstrative!", "classifier!", "verb_modifier!", "nominal_linker!", "modifier!", "head_noun!"],
+    template_family: "generative_template",
+    output_slots: ["modified_np", "np", "object", "topic", "demonstrative", "classifier", "verb_modifier", "modifier", "nominal_linker", "head_noun"],
+    note: "Transparent demonstrative + classifier + verbal modifier + linker + nominal modifier + head noun. Preserves every overt component and remains outside AB15."
+  },
+  {
+    type: "ModifiedNP",
+    label: "NP",
+    template: ["demonstrative!", "classifier!", "modifier!", "nominal_linker!", "modifier!", "head_noun!"],
+    template_family: "generative_template",
+    output_slots: ["modified_np", "np", "object", "topic", "demonstrative", "classifier", "modifier", "nominal_linker", "head_noun"],
+    note: "Transparent demonstrative + classifier + modifier + linker + nominal modifier + head noun. Preserves every overt component and remains outside AB15."
+  },
+  {
+    type: "ModifiedNP",
+    label: "NP",
+    template: ["demonstrative!", "classifier!", "verb_modifier!", "nominal_linker!", "head_noun!"],
+    template_family: "generative_template",
+    output_slots: ["modified_np", "np", "object", "topic", "demonstrative", "classifier", "verb_modifier", "nominal_linker", "head_noun"],
+    note: "Transparent demonstrative + classifier + verbal modifier + linker + head noun. Preserves every overt component and remains outside AB15."
+  },
+  {
+    type: "ModifiedNP",
+    label: "NP",
+    template: ["demonstrative!", "classifier!", "modifier!", "nominal_linker!", "head_noun!"],
+    template_family: "generative_template",
+    output_slots: ["modified_np", "np", "object", "topic", "demonstrative", "classifier", "modifier", "nominal_linker", "head_noun"],
+    note: "Transparent demonstrative + classifier + modifier + linker + head noun. Preserves every overt component and remains outside AB15."
+  },
+  {
+    type: "ModifiedNP",
+    label: "NP",
     template: ["demonstrative?", "classifier?", "modifier?", "verb_modifier?", "nominal_linker?", "modifier?", "head_noun!"],
     role_overrides: {
       nominal_linker: {

@@ -15,7 +15,8 @@ const createCantoSpanPlugin = require("./plugin/canto-span-plugin");
  * never overwrite child learner roles.
  */
 
-const CANTO_SPAN_RUNTIME_VERSION = "0.5.217";
+const CANTO_SPAN_RUNTIME_VERSION = "0.5.218";
+// v0.5.218: closes AB15 structural boundaries with transparent modifier-bearing NP composition while preserving established bare and quantified NP behavior.
 // v0.5.217: separates unit-word category, lexical evidence, visible NP structure, and downstream policy while preserving the exact twelve-rule acceptance outcomes.
 // v0.5.216: records evidence and ontology dispositions for all 52 active unsupported/internal labels and adds invariant probes without changing parser recognition or linguistic status.
 // v0.5.215: closes direct boundary coverage for every active language-facing label and corrects explanatory 嚟 plus dangling clause-linker overgeneration.

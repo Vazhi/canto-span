@@ -6,7 +6,7 @@ This file is the sole present-tense project snapshot. Live GitHub intake and wor
 
 | Measure | Current value |
 |---|---:|
-| Runtime | v0.5.217 |
+| Runtime | v0.5.218 |
 | Runtime labels | 133 |
 | Current construction notes | 133 |
 | Available construction notes | 133 |
