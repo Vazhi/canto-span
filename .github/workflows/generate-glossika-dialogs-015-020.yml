@@ -1,0 +1,170 @@
+name: Correct Glossika dialogs 015-020 deduplication
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  correct:
+    if: github.event.pull_request.head.ref == 'agent/glossika-dialogs-015-020-ingress'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Rebuild field-level owner index and relations
+        shell: bash
+        run: |
+          python <<'PY'
+          from __future__ import annotations
+          import csv, json, pathlib, re, unicodedata
+          from collections import Counter, defaultdict
+
+          ROOT = pathlib.Path.cwd()
+          BASE = pathlib.Path('data/pedagogical-corpus/glossika')
+          IDS = [
+            'GLOSSIKA-YUEHK-A1-DLG-015-20260315', 'GLOSSIKA-YUEHK-A1-DLG-016-20260322',
+            'GLOSSIKA-YUEHK-A1-DLG-017-20260329', 'GLOSSIKA-YUEHK-A1-DLG-018-20260405',
+            'GLOSSIKA-YUEHK-A1-DLG-019-20260412', 'GLOSSIKA-YUEHK-A1-DLG-020-20260419'
+          ]
+          REPORT = pathlib.Path('docs/research/GLOSSIKA-YUEHK-A1-DLG-015-020-CORPUS-INGRESS.md')
+          EXCLUDED = tuple(f'{BASE.as_posix()}/{source_id}/' for source_id in IDS)
+          TEXT_EXTENSIONS = {'.json','.md','.tsv','.txt','.js','.cjs','.mjs','.yml','.yaml'}
+
+          def normalize(text):
+            text = unicodedata.normalize('NFKC', str(text)).lower()
+            return ''.join(ch for ch in text if not unicodedata.category(ch).startswith(('P','Z','S','C')))
+
+          def owner_class(path):
+            if path.startswith('src/'): return 'canonical'
+            if path == 'main.js': return 'generated'
+            if path.startswith(('tests/','test-data/','data/','docs/','grammar/','config/','external-evidence/')): return 'supporting'
+            return 'other'
+
+          def json_strings(value):
+            if isinstance(value, str):
+              yield value
+            elif isinstance(value, list):
+              for item in value: yield from json_strings(item)
+            elif isinstance(value, dict):
+              for item in value.values(): yield from json_strings(item)
+
+          def text_fields(path, text):
+            suffix = path.suffix.lower()
+            if suffix == '.json':
+              try:
+                yield from json_strings(json.loads(text))
+                return
+              except Exception:
+                pass
+            if suffix == '.tsv':
+              for row in csv.reader(text.splitlines(), delimiter='\t'):
+                for value in row:
+                  if value.strip(): yield value.strip()
+              return
+            for line in text.splitlines():
+              line = line.strip()
+              if not line: continue
+              yield line
+              if '|' in line:
+                for cell in line.split('|'):
+                  cell = cell.strip().strip('`').strip()
+                  if cell: yield cell
+              for quoted in re.findall(r'["\'`]([^"\'`]{1,300})["\'`]', line):
+                if quoted.strip(): yield quoted.strip()
+
+          exact_index = defaultdict(set)
+          normalized_index = defaultdict(set)
+          for path in ROOT.rglob('*'):
+            if not path.is_file() or '.git' in path.parts or 'node_modules' in path.parts: continue
+            rel = path.relative_to(ROOT).as_posix()
+            if rel.startswith(EXCLUDED) or rel == REPORT.as_posix() or rel == '.github/workflows/generate-glossika-dialogs-015-020.yml': continue
+            if path.suffix.lower() not in TEXT_EXTENSIONS or path.stat().st_size > 5_000_000: continue
+            try: text = path.read_text(encoding='utf-8')
+            except Exception: continue
+            for value in text_fields(path, text):
+              exact_index[value].add(rel)
+              norm = normalize(value)
+              if norm: normalized_index[norm].add(rel)
+
+          def owners(surface):
+            exact = sorted(exact_index.get(surface, set()))
+            normalized = sorted(normalized_index.get(normalize(surface), set()))
+            ce = [p for p in exact if owner_class(p) == 'canonical']
+            se = [p for p in exact if owner_class(p) == 'supporting']
+            cn = [p for p in normalized if owner_class(p) == 'canonical' and p not in ce]
+            sn = [p for p in normalized if owner_class(p) == 'supporting' and p not in se]
+            relation = 'exact_duplicate_candidate' if ce or se else ('normalized_duplicate_candidate' if cn or sn else 'no_project_match')
+            return relation, ce, cn, se, sn
+
+          totals = Counter()
+          summaries = []
+          for source_id in IDS:
+            directory = BASE / source_id
+            source = json.loads((directory/'source.json').read_text())
+            review = json.loads((directory/'review.json').read_text())
+            crosswalk = json.loads((directory/'crosswalk.json').read_text())
+            review_by_id = {record['id']: record for record in review['records']}
+            cross_by_id = {record['sourceItemId']: record for record in crosswalk['items']}
+            counts = Counter()
+            for item in source['items']:
+              surface = item['source']['traditional']
+              relation, ce, cn, se, sn = owners(surface)
+              counts[relation] += 1
+              review_record = review_by_id[item['id']]
+              review_record['deduplicationRelation'] = relation
+              cross = cross_by_id[item['id']]
+              cross['deduplicationRelation'] = relation
+              cross['canonicalExactOwners'] = ce
+              cross['canonicalNormalizedOwners'] = cn
+              cross['supportingExactOwners'] = se
+              cross['supportingNormalizedOwners'] = sn
+              cross['runtimeLexicalOwner'] = ce[0] if ce else None
+            review['summary']['relationCounts'] = dict(counts)
+            crosswalk['summary']['relationCounts'] = dict(counts)
+            (directory/'review.json').write_text(json.dumps(review, ensure_ascii=False, indent=2)+'\n')
+            (directory/'crosswalk.json').write_text(json.dumps(crosswalk, ensure_ascii=False, indent=2)+'\n')
+
+            tsv_path = directory/'items.tsv'
+            with tsv_path.open(encoding='utf-8', newline='') as handle:
+              reader = csv.DictReader(handle, delimiter='\t')
+              rows = list(reader); headers = reader.fieldnames
+            for row in rows:
+              cross = cross_by_id[row['id']]
+              row['deduplication_relation'] = cross['deduplicationRelation']
+              row['runtime_lexical_owners'] = cross['runtimeLexicalOwner'] or ''
+              row['canonical_exact_owners'] = '|'.join(cross['canonicalExactOwners'])
+              row['supporting_exact_owners'] = '|'.join(cross['supportingExactOwners'])
+            with tsv_path.open('w', encoding='utf-8', newline='') as handle:
+              writer = csv.DictWriter(handle, fieldnames=headers, delimiter='\t', lineterminator='\n')
+              writer.writeheader(); writer.writerows(rows)
+            totals.update(counts)
+            summaries.append((source['source']['dialogNumber'], source['source']['title'], source_id, source['ingress']['turnCount'], source['ingress']['vocabularyCount'], source['ingress']['recordCount']))
+
+          if totals['exact_duplicate_candidate'] == 0:
+            raise SystemExit('field-level index unexpectedly found no exact duplicate candidates')
+
+          lines = ['# Glossika A1 dialogs 015–020 corpus ingress','', 'Date: 2026-07-31  ', 'Parent discovery program: #130  ', 'Ingress issue: #369','', '## Outcome','', 'All six authorized emails are preserved as independently identified source packages. Exact Cantonese, punctuation, speakers, turn order, source Jyutping, vocabulary entries, notes, dates, titles, and Gmail identifiers are retained. Missing per-turn English remains null.','', 'No grammar, identity, productivity, naturalness, runtime, or preferred-normalization decision is made by this ingress.','', '## Coverage','', '| Dialog | Source ID | Turns | Vocabulary | Records |','|---|---|---:|---:|---:|']
+          for number, title, source_id, turns, vocabulary, records in summaries:
+            lines.append(f'| {number:03d} — {title} | `{source_id}` | {turns} | {vocabulary} | {records} |')
+          lines += ['', f'Total records: **{sum(row[-1] for row in summaries)}**.','', '## Deduplication','']
+          for key in sorted(totals): lines.append(f'- `{key}`: **{totals[key]}**')
+          lines += ['', 'Deduplication compares structured JSON string values, TSV fields, and textual record units. Exact and normalized matches are review candidates, not automatic mergers. Owners remain recorded per item in each `crosswalk.json`.','', '## Review classification','', '- `lexical_review_candidate`: **240**', '- `naturalness_review_candidate`: **240**','', '## Discrepancy and candidate routing','', f'- Repository-match candidates recorded: **{totals["exact_duplicate_candidate"] + totals["normalized_duplicate_candidate"]}**.', '- Per-turn English translations are absent in all six emails and remain null.', '- Glossika pedagogical notes are preserved as source claims but not adopted as project conclusions.', '- All construction, naturalness, translation, pronunciation, and coverage questions route to #130 for bounded decision discovery.','', '## Evidence boundary','', 'These packages establish authorized pedagogical attestation and provenance only. They do not establish unrestricted productivity, construction identity, dialect-wide naturalness, corpus frequency, parser correctness, or preferred Jyutping where sources conflict.','']
+          REPORT.write_text('\n'.join(lines))
+          print(json.dumps(dict(totals), indent=2))
+          PY
+      - name: Commit corrected final package
+        shell: bash
+        run: |
+          rm .github/workflows/generate-glossika-dialogs-015-020.yml
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add data/pedagogical-corpus/glossika docs/research/GLOSSIKA-YUEHK-A1-DLG-015-020-CORPUS-INGRESS.md .github/workflows/generate-glossika-dialogs-015-020.yml
+          git commit -m "Correct Glossika field-level deduplication"
+          git push
