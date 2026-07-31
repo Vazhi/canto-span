@@ -5113,99 +5113,153 @@
     {
       "construction_uuid": "bb2b1bee-91f7-55b6-a766-45e20852c076",
       "construction_code": "AB25",
-      "canonical_name": "PossessiveNP",
+      "canonical_name": "PossessiveNominalCompositeWrapper",
       "legacy_labels": [
         "PossessiveNP"
       ],
-      "claim_layer": "unresolved",
+      "claim_layer": "parser_representation",
       "linguistic_status": "retired",
       "lifecycle_state": "retired",
       "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Possessor+嘅, possessor+classifier, and headless possessives require separate analyses; the unused umbrella risks hiding those distinctions.",
+      "family_name": "PossessiveNominalRepresentation",
+      "profile_name": "HeterogeneousPossessiveNominalAggregate",
+      "profile_description": "A retired historical umbrella over structurally distinct possessive nominal profiles, including overt possessor plus 嘅 plus overt noun, pronoun possessor plus classifier plus overt noun, and possible headless possessive material. The wrapper contributes no shared Cantonese boundary, cannot erase the classifier or 嘅 contrast, and cannot transfer evidence among headed, headless, classifier-bearing, and discourse-dependent profiles.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "the Cantonese ge3",
+          "source_id": "SRC-SIO-2011-GE3",
+          "scope_match": "subtype"
+        },
+        {
+          "term": "pronoun + classifier + noun",
+          "source_id": "SRC-LAM-LAU-LEE-2024-SEGMENTATION",
+          "scope_match": "subtype"
+        },
+        {
+          "term": "POSS-CL-N",
+          "source_id": "SRC-XIA-2025-CLASSIFIERS",
+          "scope_match": "subtype"
+        }
+      ],
+      "former_names": [
+        "PossessiveNP"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "disjoint",
+        "terminology_alignment": "misleading",
+        "recommended_action": "retain_retired_reclassify",
         "automatic_risk_flags": [
           "retired_label_research_home_check",
           "unsupported_generalization_requires_source_runtime_reconciliation"
         ],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-31. PossessiveNP grouped possession by interpretation while hiding the overt structures that determine parser boundaries. 嘅-marked possession and possessor-classifier-noun structure already have separate accepted identities, and headless possession requires independent nominal and discourse licensing. PossessiveNominalCompositeWrapper preserves the retired provenance without creating a competing umbrella or donating evidence across those profiles. Status recommendation: remain retired; preserve the UUID, code, legacy alias, and retirement provenance only, with 嘅-marked, classifier-linked, and headless possessive profiles independently represented and evidenced"
       }
     },
     {
       "construction_uuid": "c1c284c1-a094-58cb-befd-f9e075462e2c",
       "construction_code": "AB26",
-      "canonical_name": "PossessiveNominalFragment",
+      "canonical_name": "HeadlessPossessiveFragmentCompositeWrapper",
       "legacy_labels": [
         "PossessiveNominalFragment"
       ],
-      "claim_layer": "unresolved",
+      "claim_layer": "parser_representation",
       "linguistic_status": "retired",
       "lifecycle_state": "retired",
       "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Headless possessive nominals can be represented by nominal structure plus fragment status; no independent dormant fragment node is needed.",
+      "family_name": "PossessiveAndFragmentRepresentation",
+      "profile_name": "HeadlessPossessivePlusDiscourseFragmentAggregate",
+      "profile_description": "A retired historical wrapper that combined a possible headless possessive nominal with fragment or discourse-response status. Headless nominal licensing and fragment licensing are independent: the wrapper cannot fabricate an omitted head, infer a possessor relation from discourse alone, or treat every headless possessive expression as an autonomous fragment construction.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "the Cantonese ge3",
+          "source_id": "SRC-SIO-2011-GE3",
+          "scope_match": "component"
+        },
+        {
+          "term": "context-dependent nominal or response material",
+          "source_id": "SRC-YIP-MATTHEWS-2000-BASIC",
+          "scope_match": "contrastive"
+        }
+      ],
+      "former_names": [
+        "PossessiveNominalFragment"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "disjoint",
+        "terminology_alignment": "misleading",
+        "recommended_action": "retain_retired_reclassify",
         "automatic_risk_flags": [
           "generic_head_requires_boundary_definition",
           "retired_label_research_home_check",
           "unsupported_generalization_requires_source_runtime_reconciliation"
         ],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-31. PossessiveNominalFragment encoded two questions at once: whether the overt material forms a licensed headless possessive nominal and whether that nominal functions as a fragment in discourse. The former requires nominal evidence and the latter requires context or constructional fragment licensing. HeadlessPossessiveFragmentCompositeWrapper preserves the retired aggregate while preventing either layer from licensing the other automatically. Status recommendation: remain retired; preserve provenance only, and represent any future case through an independently licensed headless possessive nominal plus an independently licensed fragment or discourse relation"
       }
     },
     {
       "construction_uuid": "2a295394-6430-59fa-9cb0-8a6e186eab68",
       "construction_code": "AB27",
-      "canonical_name": "PossessiveTransferClause",
+      "canonical_name": "PossessionTransferCompositeWrapper",
       "legacy_labels": [
         "PossessiveTransferClause"
       ],
-      "claim_layer": "unresolved",
+      "claim_layer": "parser_representation",
       "linguistic_status": "retired",
       "lifecycle_state": "retired",
       "source_path": "docs/research/RETIRED-CONSTRUCTION-ARCHIVE-v0.5.186-R1.tsv",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Component evidence did not license the combined possession-plus-transfer wrapper.",
+      "family_name": "PossessionAndTransferRepresentation",
+      "profile_name": "PossessionPlusTransferAggregate",
+      "profile_description": "A retired historical wrapper that combined possession-related nominal material with a transfer or dative clause. Cantonese transfer structures distinguish overt theme, participant, marker, verb, and ordering profiles; possession inside an argument does not create a separate possession-transfer construction. The wrapper contributes no independent clause boundary and cannot collapse double-object, oblique, serial-verb, beneficiary, recipient, or possessive-nominal analyses.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "V + DO + IO",
+          "source_id": "SRC-XU-PEYRAUBE-1997-DOC",
+          "scope_match": "contrastive"
+        },
+        {
+          "term": "V + DO + Prep + IO",
+          "source_id": "SRC-XU-PEYRAUBE-1997-DOC",
+          "scope_match": "contrastive"
+        },
+        {
+          "term": "bei constructions",
+          "source_id": "SRC-WONG-2023-BEI",
+          "scope_match": "component"
+        },
+        {
+          "term": "dative construction meanings",
+          "source_id": "SRC-LI-LEE-2021-DATIVE",
+          "scope_match": "component"
+        }
+      ],
+      "former_names": [
+        "PossessiveTransferClause"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "disjoint",
+        "terminology_alignment": "misleading",
+        "recommended_action": "retain_retired_reclassify",
         "automatic_risk_flags": [
           "generic_head_requires_boundary_definition",
           "retired_label_research_home_check",
           "unsupported_generalization_requires_source_runtime_reconciliation"
         ],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-07-31. PossessiveTransferClause treated possession and transfer as one clause type even though the valid structures are compositional and the dative literature distinguishes marker, order, verb, theme, and participant profiles. PossessionTransferCompositeWrapper preserves the retired provenance while rehoming overt transfer evidence under AB28 or other independently justified dative profiles and possessive evidence under independently typed nominal structures. Status recommendation: remain retired; preserve provenance only, and represent possession and transfer through independently typed nominal and dative or transfer structures"
       }
     },
     {

@@ -31,9 +31,9 @@ Evidence is "orphaned" here only in the governance sense: it is attached to a re
 | `AB10` | `NominalModificationCompositeWrapper` | NominalModificationAndRelatives | SRC-SIO-2011-GE3, SRC-YU-2006-NOMINAL-MODIFIERS | NominalModificationAndRelatives subtype research |
 | `AB19` | `WeatherPerfectiveObjectCompositeWrapper` | ResultAndChangeStateRepresentation | SRC-KEDZIOR-2023, SRC-MATTHEWS-YIP-2011-ASPECT-MULTIMEDIA | PerfectiveVP and transitive-predicate research |
 | `AB20` | `LexicalResultPerfectiveCompositeWrapper` | ResultAndChangeStateRepresentation | SRC-FAN-CHAN-2022, SRC-KEDZIOR-2023 | PerfectiveVP plus result-complement and lexical-result research |
-| `AB25` | `PossessiveNP` | PossessiveNominals | SRC-LAM-LAU-LEE-2024-SEGMENTATION, SRC-SIO-2011-GE3, SRC-XIA-2025-CLASSIFIERS | PossessiveNominals subtype research |
-| `AB26` | `PossessiveNominalFragment` | FragmentsAndEllipsis | SRC-SIO-2011-GE3, SRC-YIP-MATTHEWS-2000-BASIC | headless possessive nominal + fragment/discourse analysis |
-| `AB27` | `PossessiveTransferClause` | SpeechTransferComplement | SRC-YIP-MATTHEWS-2000-BASIC | possession and transfer constructions represented independently |
+| `AB25` | `PossessiveNominalCompositeWrapper` | PossessiveNominalRepresentation | SRC-LAM-LAU-LEE-2024-SEGMENTATION, SRC-SIO-2011-GE3, SRC-XIA-2025-CLASSIFIERS | PossessiveNominals subtype research |
+| `AB26` | `HeadlessPossessiveFragmentCompositeWrapper` | PossessiveAndFragmentRepresentation | SRC-SIO-2011-GE3, SRC-YIP-MATTHEWS-2000-BASIC | headless possessive nominal + fragment/discourse analysis |
+| `AB27` | `PossessionTransferCompositeWrapper` | PossessionAndTransferRepresentation | SRC-YIP-MATTHEWS-2000-BASIC | possession and transfer constructions represented independently |
 | `AB29` | `PostposedExistentialQuestion` | ExistentialQuestions | SRC-YIP-MATTHEWS-2000-BASIC | ExistentialQuestion plus direct postposed-form research |
 | `AB37` | `ProgressivePlaceQuestion` | TypedWhAndStanceQuestions | SRC-ALDERETE-ETAL-2017-SYNOPSIS, SRC-LIANG-MAI-2026-GRAMMAR-CODING | ProgressiveVP plus locative-wh question structure |
 | `AB38` | `ProgressivePurposeClause` | PurposeSerialRelations | SRC-CHOR-2018-DIRECTIONALS, SRC-LAM-BODOMO-2003-VERB-ORDER, SRC-MATTHEWS-2006-SVC | progressive aspect plus independently licensed purpose relations |
