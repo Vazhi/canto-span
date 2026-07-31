@@ -21,6 +21,16 @@ jobs:
           cat scripts/tmp-nominal-finalizer.b64.part* > /tmp/nominal-finalizer.b64
           base64 -d /tmp/nominal-finalizer.b64 > scripts/tmp-finalize-nominal-review.py
           rm -f scripts/tmp-nominal-finalizer.b64.part* /tmp/nominal-finalizer.b64
+          python3 - <<'PY'
+          from pathlib import Path
+          path = Path("scripts/tmp-finalize-nominal-review.py")
+          text = path.read_text(encoding="utf-8")
+          needle = 'assert len({row["candidate_id"] for row in raw_aa07} - set(EXPECTED_AA07_IDS)) == 896'
+          replacement = 'assert len({{row["candidate_id"] for row in raw_aa07}} - set(EXPECTED_AA07_IDS)) == 896'
+          if needle not in text:
+              raise SystemExit("expected verifier set-comprehension line not found")
+          path.write_text(text.replace(needle, replacement), encoding="utf-8")
+          PY
           python3 scripts/tmp-finalize-nominal-review.py
       - name: Commit generated findings
         run: |
