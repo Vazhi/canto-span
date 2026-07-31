@@ -35,6 +35,7 @@ def write(path, data):
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+# AB15 itself remains the narrow no-numeral Dem + CL + overt N profile.
 path = ROOT / "tests/constructions/OvertHeadDemonstrativeClassifierNP.json"
 spec = json.loads(path.read_text(encoding="utf-8"))
 spec["focused_cases"] = [
@@ -47,26 +48,45 @@ spec["focused_cases"] = [
     {"case_id":"AB15-N05","source":"呢書。","class":"missing_classifier_no_repair","expected_profile":"construction_absent","assertion":"construction_absent","provenance":PROVENANCE},
     {"case_id":"AB15-N06","source":"嗰間新開嘅意大利餐廳。","class":"modifier_bearing_composition","expected_profile":"construction_absent","assertion":"construction_absent","provenance":PROVENANCE},
 ]
-spec["implementation_probe_cases"] = [{"case_id":"AB15-I01","source":"呢本書。","assertion":"trace_detail_equals","expected_surface":"呢本書","expected_trace_detail":{"np_subtype":"demonstrative_classifier_overt_head_no_numeral"},"purpose":"runtime_reachability_only","linguistic_evidence_weight":0}]
+# No new trace metadata is introduced for AB15; the construction label itself is
+# the stable implementation assertion.
+spec["implementation_probe_cases"] = [
+    case for case in spec.get("implementation_probe_cases", [])
+    if not str(case.get("case_id", "")).startswith("AB15-")
+]
 write(path, spec)
 
-path = ROOT / "tests/constructions/ClassifierObjectNP.json"
-spec = json.loads(path.read_text(encoding="utf-8"))
-spec["focused_cases"] = [case for case in spec["focused_cases"] if case.get("case_id") != "AB15-CONP-P01"]
-spec["focused_cases"].insert(0, {"case_id":"AB15-CONP-P01","source":"本書。","class":"bare_classifier_noun_sibling","expected_profile":"construction_present","assertion":"construction_present","provenance":PROVENANCE,"source_ids":["SRC-BOND-SIO-2024-CLASSIFIERS","SRC-CHENG-SYBESMA-2014-NP-STRUCTURE"]})
-spec["implementation_probe_cases"] = [case for case in spec.get("implementation_probe_cases", []) if case.get("case_id") != "AB15-CONP-I01"] + [{"case_id":"AB15-CONP-I01","source":"本書。","assertion":"trace_detail_equals","expected_surface":"本書","expected_trace_detail":{"np_subtype":"bare_classifier_noun_np"},"purpose":"runtime_reachability_only","linguistic_evidence_weight":0}]
-write(path, spec)
 
+# Preserve the established bare and modifier-bearing ModifiedNP behavior. The
+# accepted task does not retype these siblings into a new construction.
 path = ROOT / "tests/constructions/ModifiedNP.json"
 spec = json.loads(path.read_text(encoding="utf-8"))
-spec["focused_cases"] = [case for case in spec["focused_cases"] if not str(case.get("case_id", "")).startswith("AB15-MNP-")]
+spec["focused_cases"] = [
+    case for case in spec.get("focused_cases", [])
+    if not str(case.get("case_id", "")).startswith("AB15-MNP-")
+]
 spec["focused_cases"].extend([
-    {"case_id":"AB15-MNP-P01","source":"呢三本書。","class":"demonstrative_quantified_classifier_sibling","expected_profile":"construction_present","assertion":"construction_present","provenance":PROVENANCE,"source_ids":["SRC-BOND-SIO-2024-CLASSIFIERS","SRC-CHENG-SYBESMA-2014-NP-STRUCTURE"]},
-    {"case_id":"AB15-MNP-P02","source":"嗰間新開嘅意大利餐廳。","class":"modifier_bearing_composition","expected_profile":"construction_present","assertion":"construction_present","provenance":PROVENANCE,"source_ids":["SRC-CHENG-SYBESMA-2014-NP-STRUCTURE"]},
+    {"case_id":"AB15-MNP-P01","source":"本書。","class":"bare_classifier_noun_sibling","expected_profile":"construction_present","assertion":"construction_present","provenance":PROVENANCE,"source_ids":["SRC-BOND-SIO-2024-CLASSIFIERS","SRC-CHENG-SYBESMA-2014-NP-STRUCTURE"]},
+    {"case_id":"AB15-MNP-P02","source":"呢三本書。","class":"demonstrative_quantified_classifier_composition","expected_profile":"construction_present","assertion":"construction_present","provenance":PROVENANCE,"source_ids":["SRC-BOND-SIO-2024-CLASSIFIERS","SRC-CHENG-SYBESMA-2014-NP-STRUCTURE"]},
+    {"case_id":"AB15-MNP-P03","source":"嗰間新開嘅意大利餐廳。","class":"modifier_bearing_composition","expected_profile":"construction_present","assertion":"construction_present","provenance":PROVENANCE,"source_ids":["SRC-CHENG-SYBESMA-2014-NP-STRUCTURE"]},
 ])
-spec["implementation_probe_cases"] = [case for case in spec.get("implementation_probe_cases", []) if not str(case.get("case_id", "")).startswith("AB15-MNP-I")]
-spec["implementation_probe_cases"].extend([
-    {"case_id":"AB15-MNP-I01","source":"呢三本書。","assertion":"trace_detail_equals","expected_surface":"呢三本書","expected_trace_detail":{"np_subtype":"demonstrative_quantified_classifier_np"},"purpose":"runtime_reachability_only","linguistic_evidence_weight":0},
-    {"case_id":"AB15-MNP-I02","source":"嗰間新開嘅意大利餐廳。","assertion":"trace_detail_equals","expected_surface":"嗰間新開嘅意大利餐廳","expected_trace_detail":{"np_subtype":"demonstrative_classifier_modifier_np"},"purpose":"runtime_reachability_only","linguistic_evidence_weight":0},
+spec["implementation_probe_cases"] = [
+    case for case in spec.get("implementation_probe_cases", [])
+    if not str(case.get("case_id", "")).startswith("AB15-MNP-")
+]
+write(path, spec)
+
+
+# The overt numeral must remain represented by the existing quantified profile,
+# both alone and nested beneath the demonstrative-bearing composition.
+path = ROOT / "tests/constructions/QuantifiedClassifierNP.json"
+spec = json.loads(path.read_text(encoding="utf-8"))
+spec["focused_cases"] = [
+    case for case in spec.get("focused_cases", [])
+    if not str(case.get("case_id", "")).startswith("AB15-QNP-")
+]
+spec["focused_cases"].extend([
+    {"case_id":"AB15-QNP-P01","source":"三本書。","class":"quantified_classifier_sibling","expected_profile":"construction_present","assertion":"construction_present","provenance":PROVENANCE,"source_ids":["SRC-BOND-SIO-2024-CLASSIFIERS","SRC-CHENG-SYBESMA-2014-NP-STRUCTURE"]},
+    {"case_id":"AB15-QNP-P02","source":"呢三本書。","class":"demonstrative_plus_quantified_classifier_np","expected_profile":"construction_present","assertion":"construction_present","provenance":PROVENANCE,"source_ids":["SRC-BOND-SIO-2024-CLASSIFIERS","SRC-CHENG-SYBESMA-2014-NP-STRUCTURE"]},
 ])
 write(path, spec)
