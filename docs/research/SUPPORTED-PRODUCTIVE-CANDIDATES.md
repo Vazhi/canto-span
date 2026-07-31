@@ -10,7 +10,7 @@ This is a prioritization report, not a promotion decision. A score cannot overri
 | Code | Canonical name | State | Score | Nearest missing gate | Next action |
 |---|---|---|---|---|---|
 | `AB30` | `ZoMarkedPerfectiveObjectVP` | `boundary_ready` | 90 | `role_neutral_panel_threshold` | run or complete a locked role-neutral panel instrument with critical contrasts |
-| `AB15` | `DemonstrativeClassifierNounNP` | `source_supported` | 70 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
+| `AB15` | `DemonstrativeClassifierNounNP` | `source_supported` | 83 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
 | `AA84` | `GamMarkedReduplicatedMannerVP` | `source_supported` | 65 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
 | `AB28` | `BeiMarkedPostThemeParticipantConstruction` | `source_supported` | 65 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
 | `AA11` | `BinSingDimWhComplementVP` | `source_supported` | 60 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |

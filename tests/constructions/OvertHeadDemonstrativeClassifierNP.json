@@ -244,20 +244,76 @@
   ],
   "focused_cases": [
     {
-      "case_id": "CP061-ODC-N01",
-      "source": "呢個。",
-      "class": "headless_demonstrative_classifier_np",
-      "expected_profile": "construction_absent",
-      "assertion": "construction_absent",
-      "provenance": "docs/research/CP061-P1-HIGH-FANOUT-BOUNDARY-CLOSURE-R1.md#boundary-matrix"
+      "case_id": "AB15-P01",
+      "source": "呢本書。",
+      "class": "no_numeral_dem_cl_overt_n",
+      "expected_profile": "construction_present",
+      "assertion": "construction_present",
+      "provenance": "docs/research/AB15-DEMONSTRATIVE-CLASSIFIER-NOUN-SCOPE-R1.md#revised-boundary-matrix",
+      "source_ids": [
+        "SRC-BOND-SIO-2024-CLASSIFIERS",
+        "SRC-CHENG-SYBESMA-2014-NP-STRUCTURE",
+        "SRC-MATTHEWS-YIP-COMPREHENSIVE-CH6"
+      ]
     },
     {
-      "case_id": "CP061-ODC-N02",
-      "source": "三本書。",
-      "class": "nondemonstrative_quantified_classifier_np",
+      "case_id": "AB15-P02",
+      "source": "嗰間餐廳。",
+      "class": "distal_no_numeral_dem_cl_overt_n",
+      "expected_profile": "construction_present",
+      "assertion": "construction_present",
+      "provenance": "docs/research/AB15-DEMONSTRATIVE-CLASSIFIER-NOUN-SCOPE-R1.md#revised-boundary-matrix",
+      "source_ids": [
+        "SRC-MATTHEWS-YIP-COMPREHENSIVE-CH6"
+      ]
+    },
+    {
+      "case_id": "AB15-N01",
+      "source": "呢個。",
+      "class": "headless_demonstrative_classifier_sibling",
       "expected_profile": "construction_absent",
       "assertion": "construction_absent",
-      "provenance": "docs/research/CP061-P1-HIGH-FANOUT-BOUNDARY-CLOSURE-R1.md#boundary-matrix"
+      "provenance": "docs/research/AB15-DEMONSTRATIVE-CLASSIFIER-NOUN-SCOPE-R1.md#revised-boundary-matrix"
+    },
+    {
+      "case_id": "AB15-N02",
+      "source": "呢三本書。",
+      "class": "overt_numeral_sibling",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/AB15-DEMONSTRATIVE-CLASSIFIER-NOUN-SCOPE-R1.md#revised-boundary-matrix"
+    },
+    {
+      "case_id": "AB15-N03",
+      "source": "本書。",
+      "class": "bare_classifier_noun_sibling",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/AB15-DEMONSTRATIVE-CLASSIFIER-NOUN-SCOPE-R1.md#revised-boundary-matrix"
+    },
+    {
+      "case_id": "AB15-N04",
+      "source": "三本書。",
+      "class": "quantified_classifier_sibling",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/AB15-DEMONSTRATIVE-CLASSIFIER-NOUN-SCOPE-R1.md#revised-boundary-matrix"
+    },
+    {
+      "case_id": "AB15-N05",
+      "source": "呢書。",
+      "class": "missing_classifier_no_repair",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/AB15-DEMONSTRATIVE-CLASSIFIER-NOUN-SCOPE-R1.md#revised-boundary-matrix"
+    },
+    {
+      "case_id": "AB15-N06",
+      "source": "嗰間新開嘅意大利餐廳。",
+      "class": "modifier_bearing_composition",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/AB15-DEMONSTRATIVE-CLASSIFIER-NOUN-SCOPE-R1.md#revised-boundary-matrix"
     }
   ],
   "np_cases": [
@@ -286,14 +342,14 @@
   "coverage": {
     "state": "positive_and_boundary",
     "exact_snapshot_positive_count": 28,
-    "focused_positive_count": 0,
-    "focused_boundary_count": 2,
+    "focused_positive_count": 2,
+    "focused_boundary_count": 6,
     "focused_review_only_count": 0,
     "np_case_count": 2,
     "implementation_probe_count": 0,
     "compatibility_alias_probe_count": 0,
     "positive_case_count": 30,
-    "boundary_case_count": 2,
-    "executable_case_count": 32
+    "boundary_case_count": 6,
+    "executable_case_count": 38
   }
 }
