@@ -1,0 +1,70 @@
+name: Recover AA82 packet materialization
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  recover:
+    if: github.event.pull_request.head.ref == 'agent/aa82-attested-boundary-packet'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+      - name: Decode payload stored in claimed workflow
+        shell: bash
+        run: |
+          python <<'PY'
+          import base64, gzip, pathlib, re
+          workflow = pathlib.Path('.github/workflows/generate-aa82-boundary-packet.yml').read_text()
+          for key, target in [
+              ('JSON_GZ_B64', 'data/corpus-reviews/AA82-ATTESTED-BOUNDARY-PACKET-R1.json'),
+              ('MD_GZ_B64', 'docs/research/AA82-ATTESTED-BOUNDARY-PACKET-R1.md'),
+          ]:
+              match = re.search(r'^\s*' + key + r':\s*([A-Za-z0-9+/=]+)\s*$', workflow, re.M)
+              if not match:
+                  raise SystemExit(f'missing {key}')
+              encoded = match.group(1)
+              encoded += '=' * (-len(encoded) % 4)
+              content = gzip.decompress(base64.b64decode(encoded, validate=False))
+              path = pathlib.Path(target)
+              path.parent.mkdir(parents=True, exist_ok=True)
+              path.write_bytes(content)
+              print(key, len(encoded), len(content))
+          PY
+      - name: Verify runtime observations
+        shell: bash
+        run: |
+          node <<'NODE'
+          "use strict";
+          const fs = require("node:fs");
+          const vm = require("node:vm");
+          const packet = JSON.parse(fs.readFileSync("data/corpus-reviews/AA82-ATTESTED-BOUNDARY-PACKET-R1.json", "utf8"));
+          const moduleRecord = { exports: {} };
+          class Plugin {} class PluginSettingTab {} class Setting {} class Notice {}
+          const context = { module: moduleRecord, exports: moduleRecord.exports, require: id => id === "obsidian" ? { Plugin, PluginSettingTab, Setting, Notice } : require(id), console, setTimeout, clearTimeout, Buffer };
+          const code = fs.readFileSync("main.js", "utf8");
+          vm.runInNewContext(`${code}\nmodule.exports.__testApi={analyzeLine,diagnosticFinalRows};`, context);
+          const api = moduleRecord.exports.__testApi;
+          for (const record of packet.records) {
+            const rows = api.diagnosticFinalRows(api.analyzeLine(record.surface));
+            const labels = rows.filter(row => row.kind === "construction").map(row => row.internal_construction || row.construction || row.type || "");
+            const emitted = labels.includes("LocativeWhQuestion");
+            if (emitted !== record.runtime.aa82Emitted) throw new Error(`AA82 observation drift for ${record.packetItemId}`);
+            if (JSON.stringify(labels) !== JSON.stringify(record.runtime.constructionLabels)) throw new Error(`construction-label drift for ${record.packetItemId}`);
+          }
+          console.log(`Verified ${packet.records.length} runtime observations.`);
+          NODE
+      - name: Commit final packet
+        shell: bash
+        run: |
+          rm .github/workflows/generate-aa82-boundary-packet.yml .github/workflows/materialize-aa82-packet-fix.yml
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add data/corpus-reviews/AA82-ATTESTED-BOUNDARY-PACKET-R1.json docs/research/AA82-ATTESTED-BOUNDARY-PACKET-R1.md .github/workflows/generate-aa82-boundary-packet.yml .github/workflows/materialize-aa82-packet-fix.yml
+          git commit -m "Record AA82 attested boundary results"
+          git push
