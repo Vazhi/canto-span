@@ -13,6 +13,11 @@ const {
   extractTaskIntake,
   validateTaskMetadata,
 } = require("./codex-intake");
+const {
+  extractPortfolioRouting,
+  intakeRoutingCounts,
+  validatePortfolioOwnershipBinding,
+} = require("./portfolio-routing");
 
 const root = path.resolve(__dirname, "../..");
 const config = loadJson(path.join(root, "config/coordination-targets.json"));
@@ -126,6 +131,19 @@ function validateOwnershipBinding(claim, claimIssue, intake, intakeIssue, pr) {
   return errors;
 }
 
+function resolveIntakeRouting(issueBody) {
+  const counts = intakeRoutingCounts(issueBody);
+  if (counts.taskIntake === 1 && counts.portfolioRouting === 0) {
+    return { mode: "task-intake", metadata: extractTaskIntake(issueBody), counts };
+  }
+  if (counts.taskIntake === 0 && counts.portfolioRouting === 1) {
+    return { mode: "portfolio-routing", metadata: extractPortfolioRouting(issueBody), counts };
+  }
+  throw new Error(
+    `expected exactly one supported routing block; found task-intake=${counts.taskIntake}, portfolio-routing=${counts.portfolioRouting}`,
+  );
+}
+
 async function changedFiles(repository, prNumber, token) {
   const output = [];
   for (let page = 1; ; page += 1) {
@@ -174,14 +192,32 @@ async function main() {
   const intakeIssue = await github(`/repos/${repository}/issues/${intakeNumber}`, token);
   if (intakeIssue.pull_request) fail(`#${intakeNumber} is a pull request, not an intake issue`);
   if (intakeIssue.state !== "open") fail(`intake issue #${intakeNumber} is not open`);
-  let intake;
+
+  let intakeRouting;
   try {
-    intake = extractTaskIntake(intakeIssue.body);
+    intakeRouting = resolveIntakeRouting(intakeIssue.body);
   } catch (error) {
     fail(`intake issue #${intakeNumber} cannot be parsed`, error.message);
   }
-  const ownershipErrors = validateOwnershipBinding(claim, issueNumber, intake, intakeNumber, pr);
-  if (ownershipErrors.length) fail("live intake ownership does not authorize this pull request", ownershipErrors);
+
+  const ownershipErrors = intakeRouting.mode === "task-intake"
+    ? validateOwnershipBinding(claim, issueNumber, intakeRouting.metadata, intakeNumber, pr)
+    : validatePortfolioOwnershipBinding(
+      claim,
+      issueNumber,
+      intakeRouting.metadata,
+      intakeNumber,
+      pr,
+      prOwnershipFields(pr.body),
+    );
+  if (ownershipErrors.length) {
+    fail(
+      intakeRouting.mode === "task-intake"
+        ? "live intake ownership does not authorize this pull request"
+        : "portfolio routing does not authorize this pull request",
+      ownershipErrors,
+    );
+  }
 
   const files = await changedFiles(repository, pr.number, token);
   const coverage = validateChangedFiles(claim, files, config, { isDraft: Boolean(pr.draft) });
@@ -193,6 +229,7 @@ async function main() {
     pull_request: pr.number,
     work_claim_issue: issueNumber,
     intake_issue: intakeNumber,
+    intake_mode: intakeRouting.mode,
     work_id: claim.work_id,
     active_worker: claim.active_worker || null,
     ownership_revision: claim.ownership_revision || null,
@@ -215,5 +252,6 @@ module.exports = {
   intakeIssueNumber,
   legacyIntakeRequiresMigration,
   prOwnershipFields,
+  resolveIntakeRouting,
   validateOwnershipBinding,
 };
