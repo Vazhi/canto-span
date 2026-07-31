@@ -21,7 +21,7 @@ const ALLOWED_FIELDS = new Set(REQUIRED_FIELDS);
 const WORKERS = new Set(["chatgpt", "codex", "human"]);
 
 function extractFencedBlocks(body, label) {
-  const pattern = new RegExp(`\\\`\\\`\\\`${label}[^\\n\\\`]*\\n([\\s\\S]*?)\\\`\\\`\\\``, "gi");
+  const pattern = new RegExp("```" + label + "[^\\n`]*\\n([\\s\\S]*?)```", "gi");
   return [...String(body || "").matchAll(pattern)];
 }
 
