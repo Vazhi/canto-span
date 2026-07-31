@@ -17,12 +17,12 @@ updates = {
     "title": '"AB15 DemonstrativeClassifierNounNP"',
     "status": '"research_pending"',
     "confidence": '"primary_source_supported_structural_boundaries_runtime_aligned"',
-    "last_reviewed": '"2026-07-30"',
+    "last_reviewed": '"2026-07-31"',
     "source_count": "7",
     "verified_source_count": "7",
     "negative_boundary_inventory_complete": "true",
     "code_document_reconciled": "true",
-    "code_document_review_date": '"2026-07-30"',
+    "code_document_review_date": '"2026-07-31"',
     "current_standard_reaudit_complete": "true",
     "source_verification_file": '"docs/research/AB15-CLASSIFIER-NP-PRIMARY-SOURCE-LEDGER-R1.tsv"',
     "standard_positive_test_count": str(coverage["positive_case_count"]),
@@ -56,7 +56,8 @@ for index, line in enumerate(lines):
         lines[index] = f"{key}: {updates[key]}"
         seen.add(key)
 
-missing = [key for key in updates if key not in seen and key not in {line.partition(":")[0] for line in lines if ":" in line}]
+existing_keys = {line.partition(":")[0] for line in lines if ":" in line}
+missing = [key for key in updates if key not in seen and key not in existing_keys]
 if missing:
     gate_index = next((i for i, line in enumerate(lines) if line.startswith("promotion_gate_version:")), len(lines) - 1)
     for key in missing:
@@ -75,7 +76,7 @@ body = '''
 
 ## Plain-language claim
 
-Primary sources support a narrow no-numeral Cantonese noun-phrase profile with an overt demonstrative, an overt classifier, and an overt nominal head. The runtime may represent exactly those visible components as AB15. It must not insert a hidden numeral or noun, delete an overt numeral, absorb a modifier-bearing phrase into AB15, or infer item-level classifier compatibility from this structural template.
+Primary sources support a narrow no-numeral Cantonese noun-phrase profile with an overt demonstrative, overt classifier, and overt nominal head. The runtime may represent exactly those visible components as AB15. It must not insert a hidden numeral or noun, delete an overt numeral, absorb a modifier-bearing phrase into AB15, or infer item-level classifier compatibility from the structural template.
 
 A source analysis assigning semantic cardinality one does not license an unpronounced numeral in the parser tree.
 
@@ -83,41 +84,34 @@ A source analysis assigning semantic cardinality one does not license an unprono
 
 The proposition-level ledger is `docs/research/AB15-CLASSIFIER-NP-PRIMARY-SOURCE-LEDGER-R1.tsv`. The accepted synthesis is `docs/research/AB15-DEMONSTRATIVE-CLASSIFIER-NOUN-SCOPE-R1.md`.
 
-Seven verified source records support the structural core and its limits:
+Seven verified source records support the structural core and its limits. Bond and Sio distinguish D-(X)-C-N, X-C-N, and C-N profiles. Cheng and Sybesma permit numeral omission after a demonstrative while requiring the overt classifier in the ordinary headed profile and treating noun ellipsis separately. Matthews and Yip directly attest multiple no-numeral Dem-CL-N examples. The remaining sources document classifier/measure distinctions, general-classifier use, alternatives, and population or discourse variation; they do not define a universal pair-level compatibility table.
 
-- Bond and Sio distinguish D-(X)-C-N, X-C-N, and C-N profiles.
-- Cheng and Sybesma state the unmarked Dem–Numeral–Classifier–Modifier–N order, permit numeral omission after a demonstrative, require an overt classifier in the ordinary headed profile, and treat noun ellipsis separately.
-- Matthews and Yip directly attest multiple no-numeral Dem-CL-N examples.
-- Xia supports a Cantonese classifier/measure distinction only at official abstract and repository-metadata level in the current review; full-PDF locators remain unavailable, so no individual lexeme is classified from that abstract.
-- Tse, Erbaugh, and Nagy and Lo document general-classifier use, alternatives, and population or discourse variation. These findings rule out treating the bounded runtime compatibility table as a universal grammaticality table.
-
-## Structural matrix
+## Executable boundary matrix
 
 | Surface/profile | Runtime disposition |
 |---|---|
 | `呢本書`, `嗰間餐廳` | direct AB15: overt Dem + CL + N, no overt numeral |
-| `呢三本書` | demonstrative plus an overt `QuantifiedClassifierNP` sibling; numeral preserved |
-| `呢個` | headless demonstrative-classifier sibling; no hidden noun |
-| `本書` | bare `ClassifierObjectNP` sibling; no hidden demonstrative or numeral |
-| `三本書` | `QuantifiedClassifierNP` sibling |
+| `呢三本書` | existing demonstrative-bearing composition containing an overt `QuantifiedClassifierNP`; numeral retained; not AB15 |
+| `呢個` | headless demonstrative-classifier sibling; no hidden noun; not AB15 |
+| `本書` | established bare classifier-noun NP behavior; no hidden demonstrative or numeral; not AB15 |
+| `三本書` | existing `QuantifiedClassifierNP`; not AB15 |
 | `呢書` | outside AB15; no hidden-classifier repair |
-| `嗰間新開嘅意大利餐廳` | modifier-bearing `ModifiedNP`; demonstrative, classifier, modifier, `嘅`, nominal modifier, and head noun preserved |
+| `嗰間新開嘅意大利餐廳` | transparent modifier-bearing `ModifiedNP`; demonstrative, classifier, modifier, `嘅`, nominal modifier, and head noun retained; not AB15 |
 
 Classifier versus measure-word typing and item-level classifier–noun choice remain separate evidence questions. Absence from the current compatibility table is not categorical ungrammaticality.
 
 ## Implementation state
 
-- Direct AB15 records subtype `demonstrative_classifier_overt_head_no_numeral`.
-- The numeral-bearing wrapper records subtype `demonstrative_quantified_classifier_np` and preserves its nested quantified-classifier structure.
-- Bare classifier–noun material records subtype `bare_classifier_noun_np` rather than the generic modified-NP fallback.
-- Modifier-bearing demonstrative-classifier NPs record subtype `demonstrative_classifier_modifier_np` and preserve every overt component.
+- The existing narrow AB15 template remains unchanged.
+- New exact modifier-bearing `ModifiedNP` compositions preserve every overt component and prevent the longer phrase from flattening into AB15.
+- Existing bare classifier-noun and quantified-classifier runtime behavior is preserved rather than retyped.
 - Missing-classifier strings remain outside AB15 with no repair.
 - The twelve-rule unit-word evidence model and classifier-head compatibility arrays are unchanged.
 - Parser tests establish implementation behavior only and add no independent linguistic evidence.
 
 ## Panel, corpus, and promotion limits
 
-The single historical speaker record is not a clean role-neutral panel. The five older HKCanCor examples remain occurrence evidence, not a productivity estimate. No clean panel threshold, held-out gate, frequency claim, dialect-wide naturalness claim, or status promotion is established.
+The single historical speaker record is not a clean role-neutral panel. The older HKCanCor examples remain occurrence evidence, not a productivity estimate. No clean panel threshold, held-out gate, frequency claim, dialect-wide naturalness claim, or status promotion is established.
 
 ## Open questions
 
