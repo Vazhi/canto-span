@@ -1,0 +1,35 @@
+name: Finalize nominal-modification corpus review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    if: github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'agent/nominal-modification-final-corpus-review'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - name: Rebuild and verify review packet
+        run: |
+          cat scripts/tmp-nominal-finalizer.b64.part* > /tmp/nominal-finalizer.b64
+          base64 -d /tmp/nominal-finalizer.b64 > scripts/tmp-finalize-nominal-review.py
+          rm -f scripts/tmp-nominal-finalizer.b64.part* /tmp/nominal-finalizer.b64
+          python3 scripts/tmp-finalize-nominal-review.py
+      - name: Commit generated findings
+        run: |
+          git config user.name "canto-span-review-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No generated changes"
+          else
+            git commit -m "Complete nominal-modification corpus review"
+            git push origin HEAD:${{ github.head_ref }}
+          fi
