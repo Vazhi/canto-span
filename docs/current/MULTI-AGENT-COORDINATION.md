@@ -21,7 +21,7 @@ The system uses:
 4. branch-local declarative changesets for high-contention files;
 5. worker and integrator roles;
 6. integration-owned aggregate and current-state files;
-7. least-privilege pull-request validation;
+7. agent-observed claim and handoff discipline;
 8. an integrator responsible for final reconciliation and merge order after the
    mandatory user-review stop and explicit approval.
 
@@ -39,10 +39,8 @@ coherent claim when the affected state dimensions and substantive gates are clea
 - Exclusive and integration-owned paths: `config/coordination-targets.json`
 - Claim intake: `.github/ISSUE_TEMPLATE/work-claim.yml`
 - Pull-request handoff: `.github/pull_request_template.md`
-- Static validation: `tools/verify-coordination-system.js`
-- Online overlap validation: `tools/coordination/check-pr.js`
+- Optional coordination diagnostics: `tools/coordination/check-pr.js` and focused tests
 - Changeset validation and application: `tools/coordination/change-set.js`
-- Current validation workflow: `.github/workflows/coordination-check.yml`
 - Per-PR merge authorization: `docs/current/USER-MERGE-REVIEW.md`
 
 The latest valid ownership block in the canonical intake issue body owns pickup
@@ -322,10 +320,9 @@ another unresolved PR, or still requires integration. A draft must still:
   branch, and exact PR number.
 
 Immediately after GitHub assigns the draft PR number, update `active_pr` in the
-canonical intake block and fill the PR body's active worker and ownership revision.
-The PR coordination check must remain unavailable until those live values match.
-Attaching the PR does not by itself transfer ownership or authorize more repository
-writes.
+canonical intake block and keep the PR handoff truthful. Agents recheck these values
+directly under `AGENTS.md`; there is no universal metadata verifier. Attaching the PR
+does not by itself transfer ownership or authorize more repository writes.
 
 ### Ready pull request
 
@@ -345,9 +342,10 @@ Automation follows least privilege rather than a blanket read-only or no-writer
 rule.
 
 Validation-only workflows should remain read-only because they do not need write
-access. The current coordination job reads repository contents, issues, and pull
-requests to validate claims, expiry, branch, changed-file coverage, exclusive paths,
-integration ownership, pending-file readiness, and overlap.
+access. Coordination itself is agent-observed rather than enforced by a universal PR
+workflow. Optional diagnostics may inspect repository and live GitHub state when an
+agent is resolving a specific ambiguity, but their output does not grant merge
+eligibility.
 
 Write-capable automation is permitted only when all of the following hold:
 
@@ -370,7 +368,8 @@ prohibited.
 ## Stale and abandoned work
 
 An expired claim does not remain a permanent lock. It is ignored for overlap after
-expiry, but its own PR fails validation until the claim is renewed or replaced.
+expiry, but an agent must renew or replace it before resuming edits or presenting the
+PR as ready.
 
 Before taking over apparently abandoned work, inspect the intake issue, branch, PR,
 and claim activity. Record a new ownership revision first. Close, release, narrow,

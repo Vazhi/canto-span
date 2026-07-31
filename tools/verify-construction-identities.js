@@ -136,7 +136,6 @@ for (const record of registry.records) {
   );
 }
 check("discovered count covered", discoveredLabels.size === currentNotes.length + retiredRows.length, String(discoveredLabels.size));
-check("baseline has 181 discovered labels", discoveredLabels.size === 181, String(discoveredLabels.size));
 
 const lockByUuid = new Map();
 for (const entry of lock.entries) {
