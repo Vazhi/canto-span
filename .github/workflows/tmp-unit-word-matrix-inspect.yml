@@ -18,32 +18,96 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Inspect project unit-word evidence
+      - name: Inspect current project rows
         run: |
-          echo '=== Relevant files ==='
-          find . -type f \
-            | grep -Ei 'classifier|measure|unit-word|week.?19|vocabulary|lexicon|ClassifierObjectNP|ModifiedNP|OvertHeadDemonstrative' \
-            | sort | sed -n '1,500p'
+          echo '=== CURRENT NP FIXTURES ==='
+          cat tests/fixtures/np-subsystem.json
+          echo '=== WEEK 19 CLASSIFIER SOURCE ==='
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path('data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/source.json')
+          data = json.loads(path.read_text(encoding='utf-8'))
+          for item in data['items'][:14]:
+              print(json.dumps(item, ensure_ascii=False, sort_keys=True))
+          PY
+          echo '=== CURRENT UNIT-WORD MODEL ==='
+          cat src/runtime-resources/grammar/unit-word-evidence.json
 
-          echo '=== Exact project strings ==='
-          grep -RIn --exclude-dir=.git -E '三本水|兩杯書|兩間書|呢個蘋果|個 隻 架 間 本 枝 碗 杯 對 張 件 部 把 條|classifier_classes|unit_word_sense_id|liquid_measure|food_bowl|long_rigid|building_shop' \
-            src grammar tests test-data docs external-evidence review-packets 2>/dev/null \
-            | sed -n '1,1200p' || true
+      - name: Install frozen corpus dependency
+        run: python -m pip install 'pycantonese==5.0.0'
 
-      - name: Print current rule and noun-class inventory
+      - name: Measure exact HKCanCor unit-word and noun pairs
         run: |
-          node - <<'NODE'
-          const fs = require('fs');
-          const model = JSON.parse(fs.readFileSync('src/runtime-resources/grammar/unit-word-evidence.json', 'utf8'));
-          console.log('=== RULE RECORDS ===');
-          for (const row of model.noun_choice_rule_records) console.log(JSON.stringify(row));
-          console.log('=== SENSE RECORDS ===');
-          for (const row of model.unit_word_senses) console.log(JSON.stringify(row));
-          NODE
+          python - <<'PY'
+          from collections import Counter, defaultdict
+          from pathlib import Path
+          import json, unicodedata
+          import pycantonese
 
-          echo '=== Lexicon files containing classifier_classes ==='
-          grep -RIl --exclude-dir=.git 'classifier_classes' src grammar data 2>/dev/null | sort
-          for f in $(grep -RIl --exclude-dir=.git 'classifier_classes' src grammar data 2>/dev/null | sort); do
-            echo "=== $f ==="
-            grep -n -B3 -A5 'classifier_classes' "$f" | sed -n '1,1200p'
-          done
+          UNITS = {'個','隻','架','部','杯','碗','本','張','支','枝','位','件','間','對','把','條','啲'}
+          TARGET_NOUNS = {
+              '老師','醫生','問題','公司','狗','貓','車','電話','水','茶','飯','書','紙','筆','衫','屋','餐廳','蘋果','魚','筷子','鞋','襪','刀','較剪','樹枝','街','火車','機器'
+          }
+          TARGET_PAIRS = {
+              ('個','老師'),('個','問題'),('個','蘋果'),('隻','貓'),('隻','餐廳'),
+              ('架','車'),('架','電話'),('架','機器'),('部','車'),('部','電話'),('部','機器'),
+              ('杯','茶'),('杯','水'),('杯','書'),('碗','飯'),('碗','水'),
+              ('本','書'),('本','水'),('本','電話'),('張','紙'),('張','水'),
+              ('支','筆'),('枝','筆'),('位','老師'),('位','醫生'),('件','衫'),
+              ('間','屋'),('間','餐廳'),('間','醫生'),('對','鞋'),('對','筷子'),
+              ('把','刀'),('把','較剪'),('條','魚'),('條','街'),('條','樹枝'),
+              ('啲','魚'),('啲','水'),('啲','書'),('啲','蘋果')
+          }
+
+          def lexical(tok):
+              word = str(getattr(tok, 'word', ''))
+              if not word or getattr(tok, 'pos', '') == 'w':
+                  return False
+              return any(unicodedata.category(ch)[0] not in {'P','S','Z'} for ch in word)
+
+          corpus = pycantonese.hkcancor()
+          by_file = corpus.utterances(by_file=True)
+          paths = [Path(p).name for p in corpus.file_paths]
+          rows = []
+          for fi, utterances in enumerate(by_file):
+              for ti, utter in enumerate(utterances):
+                  toks = list(utter.tokens)
+                  lex = [i for i,t in enumerate(toks) if lexical(t)]
+                  for p, idx in enumerate(lex[:-1]):
+                      unit = str(toks[idx].word)
+                      if unit not in UNITS:
+                          continue
+                      nidx = lex[p+1]
+                      noun = str(toks[nidx].word)
+                      rows.append({
+                          'file': paths[fi], 'turn': ti, 'participant': utter.participant,
+                          'unit': unit, 'unit_pos': toks[idx].pos, 'unit_jyutping': toks[idx].jyutping,
+                          'noun': noun, 'noun_pos': toks[nidx].pos, 'noun_jyutping': toks[nidx].jyutping,
+                          'text': ''.join(str(t.word) for t in toks)
+                      })
+
+          counts = Counter((r['unit'], r['noun']) for r in rows)
+          print('PYCANTONESE', pycantonese.__version__)
+          print('CORPUS', corpus.n_files, len(corpus.utterances()), len(corpus.words()))
+          print('UNIT_NEXT_LEXICAL_ROWS', len(rows))
+          print('=== TARGET PAIR COUNTS ===')
+          for pair in sorted(TARGET_PAIRS):
+              print(json.dumps({'unit':pair[0],'noun':pair[1],'count':counts[pair]}, ensure_ascii=False))
+          print('=== TARGET PAIR CONTEXTS ===')
+          grouped = defaultdict(list)
+          for row in rows:
+              if (row['unit'], row['noun']) in TARGET_PAIRS:
+                  grouped[(row['unit'],row['noun'])].append(row)
+          for pair in sorted(grouped):
+              print('PAIR', pair[0], pair[1], 'COUNT', len(grouped[pair]))
+              for row in grouped[pair][:8]:
+                  print(json.dumps(row, ensure_ascii=False, sort_keys=True))
+          print('=== TOP OBSERVED UNIT+TARGET-NOUN ===')
+          for (unit,noun), count in Counter((r['unit'],r['noun']) for r in rows if r['noun'] in TARGET_NOUNS).most_common(120):
+              print(json.dumps({'unit':unit,'noun':noun,'count':count}, ensure_ascii=False))
+          print('=== TOP FOLLOWERS BY UNIT ===')
+          for unit in sorted(UNITS):
+              top = Counter(r['noun'] for r in rows if r['unit']==unit).most_common(25)
+              print(unit, json.dumps(top, ensure_ascii=False))
+          PY
