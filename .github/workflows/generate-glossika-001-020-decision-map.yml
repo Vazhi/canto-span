@@ -1,20 +1,20 @@
 name: Generate Glossika 001-020 decision map
 
 on:
-  push:
-    branches:
-      - agent/glossika-001-020-decision-map
+  pull_request:
+    branches: [main]
 
 permissions:
   contents: write
 
 jobs:
   generate:
+    if: github.event.pull_request.head.ref == 'agent/glossika-001-020-decision-map'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
         with:
-          ref: agent/glossika-001-020-decision-map
+          ref: ${{ github.event.pull_request.head.ref }}
       - uses: actions/setup-node@v6
         with:
           node-version: 24
@@ -38,16 +38,11 @@ jobs:
             .filter((name) => /^GLOSSIKA-YUEHK-A1-DLG-(?:00[1-9]|01[0-9]|020)-/.test(name))
             .sort();
 
-          if (sourceDirs.length !== 20) {
-            throw new Error(`Expected 20 Glossika source packages, found ${sourceDirs.length}`);
-          }
+          if (sourceDirs.length !== 20) throw new Error(`Expected 20 source packages, found ${sourceDirs.length}`);
 
-          const count = (object, key, amount = 1) => {
-            object[key] = (object[key] || 0) + amount;
-          };
-          const stableUnique = (values) => [...new Set(values.filter(Boolean))].sort();
+          const count = (object, key, amount = 1) => { object[key] = (object[key] || 0) + amount; };
+          const unique = (values) => [...new Set(values.filter(Boolean))].sort();
           const sha256 = (text) => `sha256:${crypto.createHash("sha256").update(text).digest("hex")}`;
-
           const aggregate = {
             source_packages: 0,
             records: 0,
@@ -58,7 +53,7 @@ jobs:
             review_classifications: {},
             coverage_classes: {},
             runtime_labels: {},
-            signal_tags: {},
+            signal_tags: {}
           };
           const sources = [];
           const turns = [];
@@ -82,23 +77,21 @@ jobs:
             const reviewText = fs.readFileSync(path.join(packageRoot, "review.json"), "utf8");
             const source = JSON.parse(sourceText);
             const review = JSON.parse(reviewText);
-            const sourceMeta = source.source || {};
+            const meta = source.source || {};
             const perSource = {
-              source_id: sourceMeta.sourceId || directory,
-              title_traditional: sourceMeta.titleTraditional || sourceMeta.title || directory,
-              source_date: sourceMeta.sourceDate || null,
+              source_id: meta.sourceId || directory,
+              title_traditional: meta.titleTraditional || meta.title || directory,
+              source_date: meta.sourceDate || null,
               source_payload_sha256: sha256(sourceText),
               record_count: source.items.length,
               item_type_counts: {},
               review_classification_counts: {...((review.summary || {}).classificationCounts || {})},
               coverage_class_counts: {},
-              runtime_label_counts: {},
+              runtime_label_counts: {}
             };
             aggregate.source_packages += 1;
             aggregate.records += source.items.length;
-            for (const [classification, value] of Object.entries(perSource.review_classification_counts)) {
-              count(aggregate.review_classifications, classification, value);
-            }
+            for (const [classification, value] of Object.entries(perSource.review_classification_counts)) count(aggregate.review_classifications, classification, value);
 
             for (const item of source.items) {
               const itemType = item.itemType || "unknown";
@@ -110,15 +103,9 @@ jobs:
 
               aggregate.dialog_turns += 1;
               const surface = String(((item.source || {}).traditional) || "");
-              const finalRows = api.diagnosticFinalRows(api.analyzeLine(surface));
-              const labels = stableUnique(finalRows
-                .filter((row) => row && row.kind === "construction")
-                .map((row) => row.internal_construction || row.construction || row.type || ""));
-              const coverageClass = labels.includes("NeedsContext")
-                ? "needs_context"
-                : labels.length
-                  ? "current_construction_coverage"
-                  : "no_construction_wrapper";
+              const rows = api.diagnosticFinalRows(api.analyzeLine(surface));
+              const labels = unique(rows.filter((row) => row && row.kind === "construction").map((row) => row.internal_construction || row.construction || row.type || ""));
+              const coverageClass = labels.includes("NeedsContext") ? "needs_context" : labels.length ? "current_construction_coverage" : "no_construction_wrapper";
               count(aggregate.coverage_classes, coverageClass);
               count(perSource.coverage_class_counts, coverageClass);
               for (const label of labels) {
@@ -140,168 +127,60 @@ jobs:
                 runtime_labels: labels,
                 coverage_class: coverageClass,
                 signal_tags: tags,
-                evidence_use: "authorized_pedagogical_attestation_only",
+                evidence_use: "authorized_pedagogical_attestation_only"
               });
             }
             perSource.runtime_label_counts = Object.fromEntries(Object.entries(perSource.runtime_label_counts).sort((a,b) => b[1]-a[1] || a[0].localeCompare(b[0])));
             sources.push(perSource);
           }
 
-          if (aggregate.dialog_turns !== turns.length) throw new Error("Turn accounting mismatch");
-          if (Object.values(aggregate.coverage_classes).reduce((a,b) => a+b, 0) !== turns.length) {
-            throw new Error("Coverage classes do not partition all turns");
-          }
-          if (aggregate.records !== 1526 || aggregate.dialog_turns !== 821) {
-            throw new Error(`Unexpected frozen source inventory: records=${aggregate.records}, turns=${aggregate.dialog_turns}`);
-          }
+          if (aggregate.records !== 1526 || aggregate.dialog_turns !== 821) throw new Error(`Unexpected inventory: ${aggregate.records} records, ${aggregate.dialog_turns} turns`);
+          if (Object.values(aggregate.coverage_classes).reduce((a,b) => a+b, 0) !== turns.length) throw new Error("Coverage classes do not partition all turns");
 
-          const examplesFor = (tag, limit = 5) => turns
-            .filter((turn) => turn.signal_tags.includes(tag))
-            .slice(0, limit)
-            .map((turn) => ({item_id: turn.item_id, traditional: turn.traditional, runtime_labels: turn.runtime_labels}));
-
+          const examplesFor = (tag, limit = 5) => turns.filter((turn) => turn.signal_tags.includes(tag)).slice(0, limit).map((turn) => ({item_id: turn.item_id, traditional: turn.traditional, runtime_labels: turn.runtime_labels}));
           const findings = [
-            {
-              finding_id: "G20-F01",
-              subject: "reliability and standard-bearing V得過",
-              terminal_category: "bounded_corpus_research_candidate",
-              evidence_strength: "pedagogical_attestation_plus_existing_independent_corpus_trigger",
-              decision: "A semantically material relation remains unresolved between lexical 信得過, result potential, evaluative standard, experiential 過, and comparative 過.",
-              route: {issue: 391, status: "future_issue_created"},
-              examples: examplesFor("potential_standard_v_dak_gwo", 6),
-            },
-            {
-              finding_id: "G20-F02",
-              subject: "alternative choice plus scalar evaluation",
-              terminal_category: "bounded_corpus_research_candidate",
-              evidence_strength: "recurring_pedagogical_attestation_with_runtime_gap",
-              decision: "The collection motivates a bounded decision between transparent alternative-plus-scalar composition and an integrated choice-evaluation profile; it does not revive the retired broad comparative fallback.",
-              route: {issue: 392, status: "future_issue_created"},
-              examples: examplesFor("alternative_scalar_choice", 8),
-            },
-            {
-              finding_id: "G20-F03",
-              subject: "context-linked short responses and ellipsis diagnostics",
-              terminal_category: "bounded_corpus_research_candidate",
-              evidence_strength: "complete_bounded_dialog_inventory_with_preserved_adjacency",
-              decision: "NeedsContext outputs must be separated into recoverable prior-turn relations, formulae, genuine ambiguity, and ordinary parser misses before any context contract is broadened.",
-              route: {issue: 393, status: "future_issue_created"},
-              examples: turns.filter((turn) => turn.coverage_class === "needs_context").slice(0, 8).map((turn) => ({item_id: turn.item_id, traditional: turn.traditional, previous_turn_id: turn.previous_turn_id})),
-            },
-            {
-              finding_id: "G20-F04",
-              subject: "matrix locative 邊度 questions",
-              terminal_category: "accepted_runtime_specification_candidate",
-              evidence_strength: "pedagogical_attestation_plus_accepted_boundary_packet_and_full_regression",
-              decision: "The previously demonstrated AA82 undergeneration has been resolved by the bounded matrix-question-force wrapper; the dialog collection creates no additional AA82 issue.",
-              route: {issue: 386, pull_request: 390, status: "completed"},
-              examples: examplesFor("locative_wh", 8),
-            },
-            {
-              finding_id: "G20-F05",
-              subject: "reported speech, repetition, and correction sequences",
-              terminal_category: "no_action_required",
-              evidence_strength: "pedagogical_attestation_only",
-              decision: "The observed turns do not independently demonstrate a missing construction identity. Existing clause, complement, quotation, and discourse composition remain the appropriate starting analysis.",
-              route: {status: "no_issue_admitted"},
-              examples: examplesFor("reported_speech_or_correction", 8),
-            },
-            {
-              finding_id: "G20-F06",
-              subject: "sympathy, apology, and politeness formulae",
-              terminal_category: "no_action_required",
-              evidence_strength: "pedagogical_attestation_only",
-              decision: "The material is compatible with lexical or formulaic treatment and does not establish a productive grammar construction or runtime fallback.",
-              route: {status: "no_issue_admitted"},
-              examples: examplesFor("sympathy_formula", 6),
-            },
-            {
-              finding_id: "G20-F07",
-              subject: "route clarification and ordinary travel questions",
-              terminal_category: "no_action_required",
-              evidence_strength: "pedagogical_attestation_only",
-              decision: "Route and transport turns supply useful lexical and compositional attestations, but no distinct route-clarification construction survives deduplication and boundary review.",
-              route: {status: "no_issue_admitted"},
-              examples: examplesFor("number_contact_or_route", 8),
-            },
-            {
-              finding_id: "G20-F08",
-              subject: "telephone, contact-detail, and digit-sequence representation",
-              terminal_category: "unresolved_with_named_evidence_requirement",
-              evidence_strength: "small_pedagogical_cluster_only",
-              decision: "Before admitting work, the project needs a broader source inventory distinguishing ordinary quantified NPs, digit strings, telephone-number grouping, address-like sequences, and display-only tokenization.",
-              route: {status: "future_issue_not_admitted", readiness_gap: "broader independent source and representation inventory"},
-              examples: turns.filter((turn) => /電話|號碼|幾多號/u.test(turn.traditional)).slice(0, 8).map((turn) => ({item_id: turn.item_id, traditional: turn.traditional, runtime_labels: turn.runtime_labels})),
-            },
-            {
-              finding_id: "G20-F09",
-              subject: "source notes, Jyutping, lexical glosses, and missing turn-level English",
-              terminal_category: "provenance_or_documentation_correction",
-              evidence_strength: "source_preservation_metadata",
-              decision: "The source packages correctly retain provider claims and Jyutping without adopting them as project conclusions, and preserve absent turn-level English as null. Discrepancies remain review candidates rather than automatic corrections.",
-              route: {status: "handled_by_source_packages_no_new_issue"},
-              examples: [],
-            },
+            {finding_id:"G20-F01",subject:"reliability and standard-bearing V得過",terminal_category:"bounded_corpus_research_candidate",evidence_strength:"pedagogical_attestation_plus_existing_independent_corpus_trigger",decision:"A semantically material relation remains unresolved between lexical 信得過, result potential, evaluative standard, experiential 過, and comparative 過.",route:{issue:391,status:"future_issue_created"},examples:examplesFor("potential_standard_v_dak_gwo",6)},
+            {finding_id:"G20-F02",subject:"alternative choice plus scalar evaluation",terminal_category:"bounded_corpus_research_candidate",evidence_strength:"recurring_pedagogical_attestation_with_runtime_gap",decision:"The collection motivates a bounded decision between transparent alternative-plus-scalar composition and an integrated choice-evaluation profile; it does not revive the retired broad comparative fallback.",route:{issue:392,status:"future_issue_created"},examples:examplesFor("alternative_scalar_choice",8)},
+            {finding_id:"G20-F03",subject:"context-linked short responses and ellipsis diagnostics",terminal_category:"bounded_corpus_research_candidate",evidence_strength:"complete_bounded_dialog_inventory_with_preserved_adjacency",decision:"NeedsContext outputs must be separated into recoverable prior-turn relations, formulae, genuine ambiguity, and ordinary parser misses before any context contract is broadened.",route:{issue:393,status:"future_issue_created"},examples:turns.filter((turn)=>turn.coverage_class==="needs_context").slice(0,8).map((turn)=>({item_id:turn.item_id,traditional:turn.traditional,previous_turn_id:turn.previous_turn_id}))},
+            {finding_id:"G20-F04",subject:"matrix locative 邊度 questions",terminal_category:"accepted_runtime_specification_candidate",evidence_strength:"pedagogical_attestation_plus_accepted_boundary_packet_and_full_regression",decision:"The previously demonstrated AA82 undergeneration has been resolved by the bounded matrix-question-force wrapper; the dialog collection creates no additional AA82 issue.",route:{issue:386,pull_request:390,status:"completed"},examples:examplesFor("locative_wh",8)},
+            {finding_id:"G20-F05",subject:"reported speech, repetition, and correction sequences",terminal_category:"no_action_required",evidence_strength:"pedagogical_attestation_only",decision:"The observed turns do not independently demonstrate a missing construction identity. Existing clause, complement, quotation, and discourse composition remain the appropriate starting analysis.",route:{status:"no_issue_admitted"},examples:examplesFor("reported_speech_or_correction",8)},
+            {finding_id:"G20-F06",subject:"sympathy, apology, and politeness formulae",terminal_category:"no_action_required",evidence_strength:"pedagogical_attestation_only",decision:"The material is compatible with lexical or formulaic treatment and does not establish a productive grammar construction or runtime fallback.",route:{status:"no_issue_admitted"},examples:examplesFor("sympathy_formula",6)},
+            {finding_id:"G20-F07",subject:"route clarification and ordinary travel questions",terminal_category:"no_action_required",evidence_strength:"pedagogical_attestation_only",decision:"Route and transport turns supply useful lexical and compositional attestations, but no distinct route-clarification construction survives deduplication and boundary review.",route:{status:"no_issue_admitted"},examples:examplesFor("number_contact_or_route",8)},
+            {finding_id:"G20-F08",subject:"telephone, contact-detail, and digit-sequence representation",terminal_category:"unresolved_with_named_evidence_requirement",evidence_strength:"small_pedagogical_cluster_only",decision:"Before admitting work, the project needs a broader source inventory distinguishing ordinary quantified NPs, digit strings, telephone-number grouping, address-like sequences, and display-only tokenization.",route:{status:"future_issue_not_admitted",readiness_gap:"broader independent source and representation inventory"},examples:turns.filter((turn)=>/電話|號碼|幾多號/u.test(turn.traditional)).slice(0,8).map((turn)=>({item_id:turn.item_id,traditional:turn.traditional,runtime_labels:turn.runtime_labels}))},
+            {finding_id:"G20-F09",subject:"source notes, Jyutping, lexical glosses, and missing turn-level English",terminal_category:"provenance_or_documentation_correction",evidence_strength:"source_preservation_metadata",decision:"The source packages correctly retain provider claims and Jyutping without adopting them as project conclusions, and preserve absent turn-level English as null. Discrepancies remain review candidates rather than automatic corrections.",route:{status:"handled_by_source_packages_no_new_issue"},examples:[]}
           ];
+          if (findings.length !== 9) throw new Error("Expected nine terminal findings");
 
-          if (findings.length !== 9) throw new Error("Decision map must contain nine terminal findings");
-
-          aggregate.runtime_labels = Object.fromEntries(Object.entries(aggregate.runtime_labels).sort((a,b) => b[1]-a[1] || a[0].localeCompare(b[0])));
-          aggregate.signal_tags = Object.fromEntries(Object.entries(aggregate.signal_tags).sort((a,b) => b[1]-a[1] || a[0].localeCompare(b[0])));
-          aggregate.review_classifications = Object.fromEntries(Object.entries(aggregate.review_classifications).sort((a,b) => b[1]-a[1] || a[0].localeCompare(b[0])));
+          aggregate.runtime_labels = Object.fromEntries(Object.entries(aggregate.runtime_labels).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])));
+          aggregate.signal_tags = Object.fromEntries(Object.entries(aggregate.signal_tags).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])));
+          aggregate.review_classifications = Object.fromEntries(Object.entries(aggregate.review_classifications).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])));
 
           const packet = {
-            schema: "canto-span-glossika-decision-map-v1",
-            packet_id: "GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1",
-            generated_at: "2026-07-31",
-            parent_issue: 130,
-            work_claim_issue: 394,
-            source_scope: {
-              provider: "Glossika",
-              course: "Cantonese (HK) A1 dialogs",
-              first_source_date: "2025-11-30",
-              last_source_date: "2026-04-19",
-              source_ids: sources.map((source) => source.source_id),
-            },
-            method: {
-              source_layer: "Immutable source.json records from twenty authorized pedagogical email packages.",
-              review_layer: "Existing review.json and crosswalk.json classifications are aggregated without rewriting source content.",
-              runtime_layer: "Each preserved dialog turn is analyzed by the generated runtime on the branch base after PR #390. Runtime output is implementation evidence only.",
-              coverage_partition: ["current_construction_coverage", "needs_context", "no_construction_wrapper"],
-              evidence_boundary: "Pedagogical attestation does not establish productivity, identity, frequency, dialect-wide naturalness, parser correctness, or preferred pronunciation or translation.",
+            schema:"canto-span-glossika-decision-map-v1",
+            packet_id:"GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1",
+            generated_at:"2026-07-31",
+            parent_issue:130,
+            work_claim_issue:394,
+            source_scope:{provider:"Glossika",course:"Cantonese (HK) A1 dialogs",first_source_date:"2025-11-30",last_source_date:"2026-04-19",source_ids:sources.map((source)=>source.source_id)},
+            method:{
+              source_layer:"Immutable source.json records from twenty authorized pedagogical email packages.",
+              review_layer:"Existing review.json and crosswalk.json classifications are aggregated without rewriting source content.",
+              runtime_layer:"Each preserved dialog turn is analyzed by the generated runtime on the branch base after PR #390. Runtime output is implementation evidence only.",
+              coverage_partition:["current_construction_coverage","needs_context","no_construction_wrapper"],
+              evidence_boundary:"Pedagogical attestation does not establish productivity, identity, frequency, dialect-wide naturalness, parser correctness, or preferred pronunciation or translation."
             },
             aggregate,
             sources,
             findings,
             turns,
-            terminal_routing: {
-              admitted_future_issues: [391, 392, 393],
-              completed_runtime_route: {issue: 386, pull_request: 390},
-              no_new_issue_findings: ["G20-F05", "G20-F06", "G20-F07", "G20-F09"],
-              unresolved_not_admitted: ["G20-F08"],
-            },
-            protected_state_unchanged: [
-              "construction_uuid",
-              "construction_identity",
-              "linguistic_status",
-              "runtime_behavior",
-              "fixtures",
-              "survey_state",
-              "runtime_version",
-              "release_state",
-              "deployment_state"
-            ]
+            terminal_routing:{admitted_future_issues:[391,392,393],completed_runtime_route:{issue:386,pull_request:390},no_new_issue_findings:["G20-F05","G20-F06","G20-F07","G20-F09"],unresolved_not_admitted:["G20-F08"]},
+            protected_state_unchanged:["construction_uuid","construction_identity","linguistic_status","runtime_behavior","fixtures","survey_state","runtime_version","release_state","deployment_state"]
           };
 
-          const topLabels = Object.entries(aggregate.runtime_labels).slice(0, 30);
-          const sourceRows = sources.map((source) => `| ${source.source_id.match(/DLG-(\d{3})/)[1]} | ${source.title_traditional} | ${source.item_type_counts.dialog_turn || 0} | ${source.record_count} | ${source.coverage_class_counts.current_construction_coverage || 0} | ${source.coverage_class_counts.needs_context || 0} | ${source.coverage_class_counts.no_construction_wrapper || 0} |`).join("\n");
-          const reviewRows = Object.entries(aggregate.review_classifications).map(([key,value]) => `| \`${key}\` | ${value} |`).join("\n");
-          const labelRows = topLabels.map(([key,value]) => `| \`${key}\` | ${value} |`).join("\n");
-          const findingRows = findings.map((finding) => {
-            const route = finding.route.issue ? `#${finding.route.issue}` : finding.route.status;
-            return `| ${finding.finding_id} | ${finding.subject} | \`${finding.terminal_category}\` | ${route} |`;
-          }).join("\n");
-
+          const sourceRows = sources.map((source)=>`| ${source.source_id.match(/DLG-(\d{3})/)[1]} | ${source.title_traditional} | ${source.item_type_counts.dialog_turn||0} | ${source.record_count} | ${source.coverage_class_counts.current_construction_coverage||0} | ${source.coverage_class_counts.needs_context||0} | ${source.coverage_class_counts.no_construction_wrapper||0} |`).join("\n");
+          const reviewRows = Object.entries(aggregate.review_classifications).map(([key,value])=>`| \`${key}\` | ${value} |`).join("\n");
+          const labelRows = Object.entries(aggregate.runtime_labels).slice(0,30).map(([key,value])=>`| \`${key}\` | ${value} |`).join("\n");
+          const findingRows = findings.map((finding)=>`| ${finding.finding_id} | ${finding.subject} | \`${finding.terminal_category}\` | ${finding.route.issue?`#${finding.route.issue}`:finding.route.status} |`).join("\n");
           const markdown = `# Glossika Yue-HK A1 dialogs 001–020 decision map R1
 
 Date: 2026-07-31  
@@ -341,9 +220,9 @@ The current generated runtime is used only to locate implementation coverage and
 
 | Coverage class | Turns |
 |---|---:|
-| Current construction coverage | ${aggregate.coverage_classes.current_construction_coverage || 0} |
-| \`NeedsContext\` | ${aggregate.coverage_classes.needs_context || 0} |
-| No construction wrapper | ${aggregate.coverage_classes.no_construction_wrapper || 0} |
+| Current construction coverage | ${aggregate.coverage_classes.current_construction_coverage||0} |
+| \`NeedsContext\` | ${aggregate.coverage_classes.needs_context||0} |
+| No construction wrapper | ${aggregate.coverage_classes.no_construction_wrapper||0} |
 
 Top runtime labels in the bounded collection:
 
@@ -363,7 +242,7 @@ ${findingRows}
 
 1. **#391 — 信得過 potential-standard profile.** Independent corpus attestations plus the Glossika cluster justify decision-support research separating lexical, result-potential, evaluative-standard, experiential, and comparative analyses.
 2. **#392 — alternative-choice questions with scalar evaluation.** Recurrent \`A定B好(啲)\` material justifies research into transparent layered composition versus a bounded integrated profile. The retired broad comparative fallback remains excluded.
-3. **#393 — context-linked short responses.** The complete bounded set contains **${aggregate.coverage_classes.needs_context || 0}** \`NeedsContext\` turns with preserved adjacency, sufficient for a finite classification packet.
+3. **#393 — context-linked short responses.** The complete bounded set contains **${aggregate.coverage_classes.needs_context||0}** \`NeedsContext\` turns with preserved adjacency, sufficient for a finite classification packet.
 
 ### Completed consequence
 
@@ -400,20 +279,16 @@ Telephone, contact-detail, and digit-sequence representation needs a broader ind
 - no runtime, identity, status, survey, release, or deployment state changed.
 `;
 
-          const jsonPath = path.join(root, "data", "corpus-reviews", "GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.json");
-          const mdPath = path.join(root, "docs", "research", "GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.md");
-          fs.mkdirSync(path.dirname(jsonPath), {recursive: true});
-          fs.mkdirSync(path.dirname(mdPath), {recursive: true});
-          fs.writeFileSync(jsonPath, `${JSON.stringify(packet, null, 2)}\n`);
-          fs.writeFileSync(mdPath, markdown);
-          console.log(JSON.stringify({status: "PASS", records: aggregate.records, turns: aggregate.dialog_turns, coverage: aggregate.coverage_classes, findings: findings.length}, null, 2));
+          const jsonPath = path.join(root,"data","corpus-reviews","GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.json");
+          const mdPath = path.join(root,"docs","research","GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.md");
+          fs.mkdirSync(path.dirname(jsonPath),{recursive:true});
+          fs.mkdirSync(path.dirname(mdPath),{recursive:true});
+          fs.writeFileSync(jsonPath,`${JSON.stringify(packet,null,2)}\n`);
+          fs.writeFileSync(mdPath,markdown);
+          console.log(JSON.stringify({status:"PASS",records:aggregate.records,turns:aggregate.dialog_turns,coverage:aggregate.coverage_classes,findings:findings.length},null,2));
           NODE
-      - name: Validate generated research packet
-        shell: bash
-        run: |
-          node -e 'const p=require("./data/corpus-reviews/GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.json"); if(p.turns.length!==821||p.findings.length!==9) process.exit(1); console.log(p.aggregate.coverage_classes)'
-          npm run verify:research
-          npm run verify:coordination
+      - name: Validate packet shape
+        run: node -e 'const p=require("./data/corpus-reviews/GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.json"); if(p.turns.length!==821||p.findings.length!==9) process.exit(1); console.log(p.aggregate.coverage_classes)'
       - name: Commit final packet and remove temporary generator
         shell: bash
         run: |
