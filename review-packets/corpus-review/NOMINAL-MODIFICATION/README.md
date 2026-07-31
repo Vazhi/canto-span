@@ -12,7 +12,7 @@ acceptability judgments and not authorization for status promotion.
 | File | Data rows | SHA-256 |
 |---|---:|---|
 | `issue-315/AA07-compact-review.tsv` | 960 | `9452e2079bc9fb9aa593c077bbb40e1cb0c566f5cfc00a81e3aec547e3921023` |
-| `issue-315/AA91-compact-review.tsv` | 78 | `4d5d12b616f80c724ed80b65c2f4113088b460590c2f4113088b460590c2c3f6564809389805ddef8` |
+| `issue-315/AA91-compact-review.tsv` | 78 | `4d5d12b616f80c724ed80b65c2f4113088b460590c2c3f6564809389805ddef8` |
 
 The files above are exact reconstructions of the human-supplied compact exports and
 match their supplied SHA-256 values. They remain unclassified and preserve the ten
