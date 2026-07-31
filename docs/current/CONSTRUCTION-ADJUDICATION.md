@@ -125,4 +125,3 @@ Completed ontology review can remove internal or composite records from direct
 linguistic promotion and can expose narrow successor work. It does not satisfy
 source-scope, runtime-alignment, corpus, panel, held-out, or promotion gates.
 Candidate scores remain planning aids only.
-
