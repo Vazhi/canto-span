@@ -2,7 +2,7 @@
 
 Date: 2026-07-31  
 Permanent code: `AA82`  
-Permanent UUID: `55b119d9-bd6c-59f4-b6fc-16e17968f539`  
+Permanent UUID: `4593e90d-b923-54af-a9ac-533409c38355`  
 Adjudicated identity: `BinDouWhPlaceQuestion`  
 Legacy runtime label: `LocativeWhQuestion`
 
