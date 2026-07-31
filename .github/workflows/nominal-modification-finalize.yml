@@ -47,22 +47,7 @@ jobs:
             > /tmp/nominal-finalizer.b64
           base64 -d /tmp/nominal-finalizer.b64 > scripts/tmp-finalize-nominal-review.py
           rm -f scripts/tmp-nominal-finalizer.b64.part* /tmp/nominal-finalizer.b64 /tmp/finalizer-parts.sha256
-          python3 - <<'PY'
-          from pathlib import Path
-          path = Path("scripts/tmp-finalize-nominal-review.py")
-          text = path.read_text(encoding="utf-8")
-          replacements = {
-              'assert len({row["candidate_id"] for row in raw_aa07} - set(EXPECTED_AA07_IDS)) == 896':
-                  'assert len({{row["candidate_id"] for row in raw_aa07}} - set(EXPECTED_AA07_IDS)) == 896',
-              'writer = csv.DictWriter(handle, fieldnames=SOURCE_FIELDS, delimiter="\\t")':
-                  'writer = csv.DictWriter(handle, fieldnames=SOURCE_FIELDS, delimiter="\\t", lineterminator="\\n")',
-          }
-          for needle, replacement in replacements.items():
-              if needle not in text:
-                  raise SystemExit(f"expected finalizer line not found: {needle}")
-              text = text.replace(needle, replacement)
-          path.write_text(text, encoding="utf-8")
-          PY
+          python3 scripts/tmp-patch-nominal-finalizer.py
           python3 scripts/tmp-finalize-nominal-review.py
       - name: Commit generated findings
         run: |
