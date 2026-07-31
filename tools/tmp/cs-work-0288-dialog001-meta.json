@@ -36,5 +36,6 @@
     "sourceValue": null,
     "status": "absent_in_source",
     "generatedTranslationAuthorized": false
-  }
+  },
+  "workflowTrigger": 2
 }
