@@ -1,0 +1,337 @@
+name: Temporary Glossika dialog 001 ingress
+
+on:
+  push:
+    branches:
+      - agent/glossika-dialog-001-ingress
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/glossika-dialog-001-ingress
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+      - name: Merge current main
+        run: |
+          git fetch origin main
+          git merge --no-edit origin/main
+      - run: npm ci --ignore-scripts
+      - name: Generate source-preserving corpus package
+        run: |
+          python3 - <<'PY'
+          import csv
+          import hashlib
+          import json
+          import re
+          import unicodedata
+          from collections import Counter
+          from pathlib import Path
+
+          root = Path('.')
+          meta = json.loads((root / 'tools/tmp/cs-work-0288-dialog001-meta.json').read_text(encoding='utf-8'))
+          turns = []
+          for name in [
+              'tools/tmp/cs-work-0288-dialog001-turns-part00.json',
+              'tools/tmp/cs-work-0288-dialog001-turns-part01.json',
+              'tools/tmp/cs-work-0288-dialog001-turns-part02.json',
+          ]:
+              turns.extend(json.loads((root / name).read_text(encoding='utf-8')))
+
+          assert len(turns) == 36
+          assert [t['turn'] for t in turns] == list(range(1, 37))
+          assert {t['speaker'] for t in turns} == {'美美', '阿文'}
+          assert all(t['traditional'] and t['jyutping'] for t in turns)
+
+          source_id = meta['source']['sourceId']
+          out_dir = root / 'data/pedagogical-corpus/glossika' / source_id
+          out_dir.mkdir(parents=True, exist_ok=True)
+          doc_path = root / 'docs/research' / f'{source_id}-CORPUS-INGRESS.md'
+
+          def canonical_hash(value):
+              raw = json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode('utf-8')
+              return 'sha256:' + hashlib.sha256(raw).hexdigest()
+
+          punct_re = re.compile(r'[\s\u3000，。！？；：、,.!?;:“”‘’「」『』（）()\[\]{}<>《》…—–\-\"\']+')
+          def normalize(text):
+              return punct_re.sub('', unicodedata.normalize('NFKC', text)).lower()
+
+          allowed_suffixes = {'.md', '.json', '.tsv', '.txt', '.js', '.mjs', '.cjs', '.yml', '.yaml', '.csv'}
+          corpus = []
+          excluded_prefixes = (
+              '.git/', 'node_modules/', 'tools/tmp/cs-work-0288-',
+              f'data/pedagogical-corpus/glossika/{source_id}/',
+              f'docs/research/{source_id}-CORPUS-INGRESS.md',
+          )
+          for path in root.rglob('*'):
+              if not path.is_file() or path.suffix.lower() not in allowed_suffixes:
+                  continue
+              rel = path.as_posix()
+              if rel.startswith(excluded_prefixes):
+                  continue
+              try:
+                  text = path.read_text(encoding='utf-8')
+              except UnicodeDecodeError:
+                  continue
+              corpus.append((rel, text, normalize(text)))
+
+          items = []
+          review_records = []
+          crosswalk_records = []
+          for index, turn in enumerate(turns, start=1):
+              item_id = f'{source_id}-I{index:03d}'
+              source = {
+                  'speaker': turn['speaker'],
+                  'traditional': turn['traditional'],
+                  'jyutping': turn['jyutping'],
+                  'english': None,
+                  'translationStatus': 'absent_in_source',
+              }
+              source_hash = canonical_hash(source)
+              exact_paths = sorted({rel for rel, text, _norm in corpus if turn['traditional'] in text})
+              norm = normalize(turn['traditional'])
+              normalized_paths = sorted({rel for rel, _text, norm_text in corpus if norm and norm in norm_text and rel not in exact_paths})
+              classification = 'exact_duplicate' if exact_paths else ('normalized_duplicate' if normalized_paths else 'new_attestation')
+              raw_jyutping = turn['jyutping']
+              prefix = f"{turn['speaker']}: "
+              utterance_jyutping = raw_jyutping[len(prefix):] if raw_jyutping.startswith(prefix) else raw_jyutping
+              previous_id = f'{source_id}-I{index-1:03d}' if index > 1 else None
+              next_id = f'{source_id}-I{index+1:03d}' if index < len(turns) else None
+              item = {
+                  'id': item_id,
+                  'ordinal': index,
+                  'section': 'dialog',
+                  'subsection': 'learning_to_dance',
+                  'itemType': 'dialog_turn',
+                  'speaker': turn['speaker'],
+                  'previousTurnId': previous_id,
+                  'nextTurnId': next_id,
+                  'source': source,
+                  'sourceHash': source_hash,
+              }
+              items.append(item)
+              review_records.append({
+                  'id': item_id,
+                  'sourceHash': source_hash,
+                  'normalizedCantonese': norm,
+                  'normalizedUtteranceJyutping': utterance_jyutping,
+                  'ingressClassification': classification,
+                  'exactProjectMatchPaths': exact_paths,
+                  'normalizedProjectMatchPaths': normalized_paths,
+                  'sourceDiscrepancies': [],
+                  'reviewedValues': {},
+                  'reviewerNote': '',
+                  'evidenceUse': 'not_authorized',
+              })
+              crosswalk_records.append({
+                  'id': item_id,
+                  'sourceHash': source_hash,
+                  'classification': classification,
+                  'exactProjectMatchPaths': exact_paths,
+                  'normalizedProjectMatchPaths': normalized_paths,
+                  'canonicalRuntimeResourceOwners': [],
+                  'constructionQuestionsRouteTo': [130],
+                  'runtimeImportAuthorized': False,
+                  'evidenceUse': 'pedagogical_attestation_only',
+              })
+
+          payload_hash = canonical_hash([item['source'] for item in items])
+          counts = Counter(record['ingressClassification'] for record in review_records)
+
+          source_doc = {
+              'schema': 'canto-span-pedagogical-corpus-source-v1',
+              'source': meta['source'],
+              'ingress': {
+                  **meta['ingress'],
+                  'recordCount': 36,
+                  'itemTypeCounts': {'dialog_turn': 36},
+                  'sectionCounts': {'dialog': 36},
+                  'sourcePayloadHash': payload_hash,
+                  'sourcePayloadHashPolicy': 'SHA-256 of canonical key-sorted JSON for the ordered immutable source-field array.',
+              },
+              'dialog': {
+                  'speakers': ['美美', '阿文'],
+                  'turnCount': 36,
+                  'adjacencyPreserved': True,
+                  'scenarioEnglish': meta['source']['scenarioEnglish'],
+                  'sourceReviewNote': meta['sourceReviewNote'],
+              },
+              'translationPolicy': meta['translationPolicy'],
+              'items': items,
+          }
+          (out_dir / 'source.json').write_text(json.dumps(source_doc, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
+          review_doc = {
+              'schema': 'canto-span-pedagogical-corpus-review-v1',
+              'sourceId': source_id,
+              'sourcePayloadHash': payload_hash,
+              'policy': {
+                  'sourceLayer': 'source.json is immutable.',
+                  'deduplication': 'Exact and normalized repository matches are descriptive and do not overwrite source values.',
+                  'translation': 'Turn-level English is absent in the source and is not generated.',
+                  'evidenceBoundary': 'Pedagogical dialog attestation does not establish productivity, naturalness, register, construction status, or parser behavior.',
+              },
+              'summary': {
+                  'recordCount': 36,
+                  'reviewedCount': 0,
+                  'unreviewedCount': 36,
+                  'classificationCounts': dict(sorted(counts.items())),
+                  'sourceAlerts': [
+                      {
+                          'type': 'turn_level_translation_absent',
+                          'status': 'preserved_as_absent',
+                          'note': 'No English turn translations were present in the authorized source.'
+                      }
+                  ],
+              },
+              'records': review_records,
+          }
+          (out_dir / 'review.json').write_text(json.dumps(review_doc, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
+          crosswalk_doc = {
+              'schema': 'canto-span-pedagogical-corpus-crosswalk-v1',
+              'sourceId': source_id,
+              'sourcePayloadHash': payload_hash,
+              'policy': 'Repository matches are deduplication metadata only. No runtime import, construction mapping, or evidence promotion is authorized.',
+              'records': crosswalk_records,
+          }
+          (out_dir / 'crosswalk.json').write_text(json.dumps(crosswalk_doc, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
+          header = [
+              'id','ordinal','section','subsection','item_type','speaker','previous_turn_id','next_turn_id',
+              'source_display','source_jyutping','source_english','source_hash','classification',
+              'exact_match_paths','normalized_match_paths','review_state'
+          ]
+          with (out_dir / 'items.tsv').open('w', encoding='utf-8', newline='') as handle:
+              writer = csv.DictWriter(handle, fieldnames=header, delimiter='\t', lineterminator='\n')
+              writer.writeheader()
+              for item, review in zip(items, review_records):
+                  writer.writerow({
+                      'id': item['id'],
+                      'ordinal': item['ordinal'],
+                      'section': item['section'],
+                      'subsection': item['subsection'],
+                      'item_type': item['itemType'],
+                      'speaker': item['speaker'],
+                      'previous_turn_id': item['previousTurnId'] or '',
+                      'next_turn_id': item['nextTurnId'] or '',
+                      'source_display': item['source']['traditional'],
+                      'source_jyutping': item['source']['jyutping'],
+                      'source_english': '',
+                      'source_hash': item['sourceHash'],
+                      'classification': review['ingressClassification'],
+                      'exact_match_paths': '|'.join(review['exactProjectMatchPaths']),
+                      'normalized_match_paths': '|'.join(review['normalizedProjectMatchPaths']),
+                      'review_state': 'REQUIRES_EXPERT_CONTEXT_REVIEW',
+                  })
+
+          readme = f'''# Glossika Cantonese (HK) A1 dialog 001 corpus package
+
+- Source ID: `{source_id}`
+- Dialog: `學跳舞`
+- Source date: 2025-11-30
+- Gmail message: `19ad6755cb93e4c5`
+- Intake issue: #137
+- Work claim: #289
+- Source records: 36 turns
+- Speakers: 美美 and 阿文
+- Source payload hash: `{payload_hash}`
+
+## Preserved source structure
+
+Every turn retains its speaker, ordinal position, exact Cantonese and punctuation, full source Jyutping string, and previous/next adjacency. The source contains no turn-level English translations, so `english` is null with `translationStatus: absent_in_source`.
+
+## Deduplication
+
+`review.json`, `crosswalk.json`, and `items.tsv` record exact and normalized repository matches without overwriting source values. Counts are descriptive only: `{dict(sorted(counts.items()))}`.
+
+## Evidence boundary
+
+The package is pedagogical attestation and dialog context. It does not establish grammatical productivity, native naturalness, register, construction identity/status, parser behavior, or runtime lexicon membership. Construction questions route to #130 or a later accepted child issue.
+'''
+          (out_dir / 'README.md').write_text(readme, encoding='utf-8')
+
+          report = f'''---
+title: Glossika Yue-HK A1 dialog 001 corpus ingress
+status: ingress_complete_review_pending
+source_id: {source_id}
+intake_issue: 137
+work_claim: 289
+reviewed_on: 2026-07-31
+---
+
+# Glossika Yue-HK A1 dialog 001 — 學跳舞
+
+## Outcome
+
+The complete authorized 36-turn dialog has been ingested as an immutable, source-preserving pedagogical corpus packet. Speaker labels, turn order, exact Cantonese punctuation, full source Jyutping strings, scenario metadata, source review metadata, and turn adjacency are retained.
+
+No turn-level English translations were present. The package records them as absent and does not generate replacements.
+
+## Coverage
+
+- Turns: 36 / 36
+- Speakers: 美美, 阿文
+- Ordered IDs: `{source_id}-I001` through `{source_id}-I036`
+- Source payload hash: `{payload_hash}`
+- Deduplication classifications: `{json.dumps(dict(sorted(counts.items())), ensure_ascii=False)}`
+
+## Files
+
+- `data/pedagogical-corpus/glossika/{source_id}/source.json`
+- `data/pedagogical-corpus/glossika/{source_id}/items.tsv`
+- `data/pedagogical-corpus/glossika/{source_id}/review.json`
+- `data/pedagogical-corpus/glossika/{source_id}/crosswalk.json`
+- `data/pedagogical-corpus/glossika/{source_id}/README.md`
+
+## Method
+
+Exact deduplication searches for the complete source Cantonese string in repository text files. Normalized deduplication uses Unicode NFKC normalization and removes whitespace and punctuation. Match paths are recorded as metadata only; they neither replace source values nor prove construction identity.
+
+## Evidence and review boundary
+
+The provider dialog is pedagogical attestation, not independent grammar evidence. `review.json` leaves all 36 records in `REQUIRES_EXPERT_CONTEXT_REVIEW`, authorizes no evidence use, and preserves source values separately from derived normalization. Runtime resources, parser behavior, fixtures, versions, construction identity/status, corpus candidate adjudications, surveys, native-panel decisions, release state, and deployment state are unchanged.
+'''
+          doc_path.write_text(report, encoding='utf-8')
+
+          # Mechanical validation
+          loaded = json.loads((out_dir / 'source.json').read_text(encoding='utf-8'))
+          assert loaded['ingress']['recordCount'] == 36
+          assert len(loaded['items']) == 36
+          assert loaded['items'][0]['previousTurnId'] is None
+          assert loaded['items'][-1]['nextTurnId'] is None
+          assert all(item['source']['english'] is None for item in loaded['items'])
+          assert all(item['source']['translationStatus'] == 'absent_in_source' for item in loaded['items'])
+          with (out_dir / 'items.tsv').open(encoding='utf-8') as handle:
+              assert len(list(csv.DictReader(handle, delimiter='\t'))) == 36
+          assert len(json.loads((out_dir / 'review.json').read_text(encoding='utf-8'))['records']) == 36
+          assert len(json.loads((out_dir / 'crosswalk.json').read_text(encoding='utf-8'))['records']) == 36
+          print(json.dumps({'source_id': source_id, 'turns': 36, 'classification_counts': dict(sorted(counts.items())), 'payload_hash': payload_hash}, ensure_ascii=False, indent=2))
+          PY
+      - name: Remove temporary assembly files and workflow
+        run: |
+          rm tools/tmp/cs-work-0288-dialog001-meta.json
+          rm tools/tmp/cs-work-0288-dialog001-turns-part00.json
+          rm tools/tmp/cs-work-0288-dialog001-turns-part01.json
+          rm tools/tmp/cs-work-0288-dialog001-turns-part02.json
+          rm .github/workflows/tmp-glossika-dialog001-ingress.yml
+      - name: Verify protected state and repository checks
+        run: |
+          git diff --exit-code origin/main -- src main.js package.json package-lock.json manifest.json tests grammar data/registry
+          npm run verify:research
+          npm run verify:coordination
+      - name: Commit coherent final package
+        run: |
+          git config user.name 'canto-span-automation'
+          git config user.email 'actions@users.noreply.github.com'
+          git add -A
+          git commit -m 'Ingest Glossika dialog 001 corpus packet'
+          git push origin HEAD:agent/glossika-dialog-001-ingress
