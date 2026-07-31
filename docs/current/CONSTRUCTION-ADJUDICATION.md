@@ -27,35 +27,37 @@ superseding decision with explicit rationale and relationships.
 ## Current progress
 
 - permanent records: **181**;
-- accepted adjudications: **89**;
-- pending adjudications: **92**;
-- accepted batches: **18**;
+- accepted adjudications: **92**;
+- pending adjudications: **89**;
+- accepted batches: **19**;
 - latest batch report:
-  `docs/research/CONSTRUCTION-ADJUDICATION-BATCH-18.md`.
+  `docs/research/CONSTRUCTION-ADJUDICATION-BATCH-19.md`.
 
 This count records completed identity and ontology judgments only. It does not
 imply runtime migration, status migration, corpus closure, panel completion,
 held-out validation, or promotion.
 
-Batch 18 accepted the following UUID-preserving decisions:
+Batch 19 accepted the following UUID-preserving decisions:
 
-1. `AB18 PerfectiveDirectionalVP` →
-   `DirectionalZoDeicticCompositeWrapper`, reclassified as an internal
-   perfective-plus-directional representation requiring independently typed
-   directional, aspect, and deictic children;
-2. `AB19 PerfectiveObjectResultPredicate` →
-   `WeatherPerfectiveObjectCompositeWrapper`, retained as a retired
-   weather-specific semantic-domain wrapper;
-3. `AB20 PerfectiveResultPredicate` →
-   `LexicalResultPerfectiveCompositeWrapper`, retained as a retired lexical
-   result-plus-perfective wrapper;
-4. `AB21 PerfectiveVP` → `ZoMarkedPerfectivePredicateWrapper`, reclassified as
-   an internal aggregate over distinct overt-`咗` predicate profiles;
-5. `AB22 PolarQuestionFrame` → `FinalMe1BiasedPolarQuestionFrame`, narrowed to
-   an internal overt-proposition plus sentence-final biased-`咩` frame.
+1. `AB25 PossessiveNP` → `PossessiveNominalCompositeWrapper`, retained as a
+   retired parser representation whose valid evidence belongs under separately
+   typed `嘅`-marked, possessor-classifier-noun, or future headless possessive
+   profiles;
+2. `AB26 PossessiveNominalFragment` →
+   `HeadlessPossessiveFragmentCompositeWrapper`, retained as a retired parser
+   representation that must not let fragment status fabricate an omitted nominal
+   head or let a possible headless possessive automatically establish discourse
+   fragment status;
+3. `AB27 PossessiveTransferClause` → `PossessionTransferCompositeWrapper`,
+   retained as a retired parser representation whose possessive nominal and
+   transfer or dative components must remain independently typed.
+
+All three records remain retired. No successor UUID, runtime behavior, emitted
+label, status migration, fixture change, corpus classification, survey change, or
+release change follows from Batch 19.
 
 No later adjudication batch is fixed as a mandatory queue. The next records are
-selected from the 92 pending identities according to current project benefit,
+selected from the 89 pending identities according to current project benefit,
 evidence opportunity, ontology risk, dependencies, and open-work overlap.
 
 ## Required decision fields
