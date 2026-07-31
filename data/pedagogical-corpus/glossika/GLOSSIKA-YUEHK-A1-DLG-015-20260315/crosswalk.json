@@ -1,0 +1,3572 @@
+{
+  "schema": "canto-span-pedagogical-dialog-crosswalk-v1",
+  "sourceId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315",
+  "sourcePayloadHash": "sha256:dcb61f38900a0bcb9d19b87203f9d64b60e9e9ba21ca0dbd5aace8ce48004003",
+  "architecture": {
+    "canonicalRuntimeInputs": [
+      "src/**",
+      "src/runtime-resources/**"
+    ],
+    "generatedExcluded": [
+      "main.js"
+    ],
+    "supportingRecords": [
+      "tests/**",
+      "test-data/**",
+      "data/**",
+      "docs/**",
+      "grammar/**",
+      "config/**",
+      "external-evidence/**"
+    ]
+  },
+  "summary": {
+    "recordCount": 80,
+    "turnCount": 40,
+    "vocabularyCount": 40,
+    "vocabularyBlockState": "source_present",
+    "vocabularyExactSurfaceAbsentFromDialogCount": 4,
+    "classificationCounts": {
+      "naturalness_review_candidate": 40,
+      "lexical_review_candidate": 40
+    },
+    "relationCounts": {
+      "no_project_match": 45,
+      "exact_duplicate_candidate": 35
+    }
+  },
+  "sourceBlockAudit": {
+    "state": "source_present",
+    "absentVocabulary": [
+      "可能",
+      "騙",
+      "驚",
+      "唔係"
+    ]
+  },
+  "items": [
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I001",
+      "ordinal": 1,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "美玲，我尋日收到個好奇怪嘅工作機會。",
+      "sourceHash": "sha256:2a1155cc586ad91787c779b780a1af634768916559809e483c519fb71dcfa122",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I002",
+        "previousSpeaker": null,
+        "nextSpeaker": "美玲"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I002",
+      "ordinal": 2,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "奇怪？點奇怪法呀？",
+      "sourceHash": "sha256:867a15b85a545bcf18ae8930fbbe87c6c9ec13246fa80dcdbe01f384278e232b",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I001",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I003",
+        "previousSpeaker": "志明",
+        "nextSpeaker": "志明"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I003",
+      "ordinal": 3,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "佢哋話人工好高，又話工作好輕鬆。",
+      "sourceHash": "sha256:ccbcd8f353c14835269e50eceb02cb82c7e2d7006ccb0a0761c74374416dfa8e",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I002",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I004",
+        "previousSpeaker": "美玲",
+        "nextSpeaker": "美玲"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I004",
+      "ordinal": 4,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "吓？有幾高人工呀？",
+      "sourceHash": "sha256:ac267889cea8abcbb83876a8f35877d5c52f800c6a6a27037d237715054ca2b4",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I003",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I005",
+        "previousSpeaker": "志明",
+        "nextSpeaker": "志明"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I005",
+      "ordinal": 5,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "一個月三萬蚊，但係我係新人嚟㗎。",
+      "sourceHash": "sha256:ec890653a8f4bc9647953dfb4e27823df970a0507532cddeb2325c202c8e8926",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I004",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I006",
+        "previousSpeaker": "美玲",
+        "nextSpeaker": "美玲"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I006",
+      "ordinal": 6,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "三萬？！咁係咪太好喇？",
+      "sourceHash": "sha256:827f3b862ba90de8241a25919ad6b2e34f7ff014a59a0757a38bfcb50d4b4d76",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I005",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I007",
+        "previousSpeaker": "志明",
+        "nextSpeaker": "志明"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I007",
+      "ordinal": 7,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "我都覺得好可疑。你話我信唔信得過佢哋？",
+      "sourceHash": "sha256:d8bae9167ec4ed29044c1527e6b8fc453e0ad3cf95e5c47dbf80e2f1b54c3396",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I006",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I008",
+        "previousSpeaker": "美玲",
+        "nextSpeaker": "美玲"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I008",
+      "ordinal": 8,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "你有冇問清楚係做咩工㗎？",
+      "sourceHash": "sha256:6991240e1690b8f536b6f4261578523d0dc1aa0e0ddc207277a64d7a8ff00a07",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I007",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I009",
+        "previousSpeaker": "志明",
+        "nextSpeaker": "志明"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I009",
+      "ordinal": 9,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "佢哋話係做銷售，但係冇講清楚賣乜嘢。",
+      "sourceHash": "sha256:1e1183589e5ef846ab58a29d2d9def68f56281ae046eb4490bb0b41f8aa654b6",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I008",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I010",
+        "previousSpeaker": "美玲",
+        "nextSpeaker": "美玲"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I010",
+      "ordinal": 10,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "咁就有問題喇！正常公司會講清楚㗎。",
+      "sourceHash": "sha256:f70995ea9c9f540dcdaf24b109528be50d20768922c60109f3bb74f6495d3606",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I009",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I011",
+        "previousSpeaker": "志明",
+        "nextSpeaker": "志明"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I011",
+      "ordinal": 11,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "仲有，佢哋話要先交一千蚊培訓費。",
+      "sourceHash": "sha256:7411d5a13f3af115b92ea76c566392e418319ae029a056b6875ddcecf2795d39",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I010",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I012",
+        "previousSpeaker": "美玲",
+        "nextSpeaker": "美玲"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I012",
+      "ordinal": 12,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "吓？！交錢先？咁一定係呃人㗎喇！",
+      "sourceHash": "sha256:1e143288290fbe1951a43579fb5e8deb8df5ee4091f9a479249c74daeb9d39d5",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I011",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I013",
+        "previousSpeaker": "志明",
+        "nextSpeaker": "志明"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I013",
+      "ordinal": 13,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "我都覺得好似係呃人。",
+      "sourceHash": "sha256:613c6029488bd25f89756b5de88e82bf9c15f1fb801b0fd64c85c1f619917969",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I012",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I014",
+        "previousSpeaker": "美玲",
+        "nextSpeaker": "美玲"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I014",
+      "ordinal": 14,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "你千祈唔好畀錢佢哋呀！",
+      "sourceHash": "sha256:305e8f98cf857883f6826cb49baf07bc9a55e8c689390a40349dff45889f413f",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I013",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I015",
+        "previousSpeaker": "志明",
+        "nextSpeaker": "志明"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I015",
+      "ordinal": 15,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "但係佢哋話培訓完就會退返畀我。",
+      "sourceHash": "sha256:379fe29e1f67d04403c5b84c1b5e36865f8df18ef22f37897205513b37129560",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I014",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I016",
+        "previousSpeaker": "美玲",
+        "nextSpeaker": "美玲"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I016",
+      "ordinal": 16,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "邊有咁大隻蛤乸隨街跳㗎？唔好信佢哋！",
+      "sourceHash": "sha256:9789cd6ade445d3ec718f45a60ea0c599305cf19cb6b2acc4d0b2e9099f1fed8",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I015",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I017",
+        "previousSpeaker": "志明",
+        "nextSpeaker": "志明"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I017",
+      "ordinal": 17,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "咁我應該點做好？",
+      "sourceHash": "sha256:4b2d21db580b99ecd3f7afeaabad4c5808cb3442ba885387d27bc4ba78a962c3",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I016",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I018",
+        "previousSpeaker": "美玲",
+        "nextSpeaker": "美玲"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I018",
+      "ordinal": 18,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "你有冇上網搵過呢間公司嘅資料？",
+      "sourceHash": "sha256:bd03d1fb9b67826a41ff558c4d11c96763fed06ee29bc11114ba9f3c2bfd5baa",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I017",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I019",
+        "previousSpeaker": "志明",
+        "nextSpeaker": "志明"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I019",
+      "ordinal": 19,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "未呀，我而家即刻搵吓先。",
+      "sourceHash": "sha256:7bedec7d40c1546c7690df154d3bfc262c0d4ad77b753803841776a8a801fade",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I018",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I020",
+        "previousSpeaker": "美玲",
+        "nextSpeaker": "美玲"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I020",
+      "ordinal": 20,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "你睇吓有冇人投訴過佢哋。",
+      "sourceHash": "sha256:bc2bf3e5e08d4ef0d626115c6f1f713a4a37bfd0dd47ab3ea2123e06fa8d4205",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I019",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I021",
+        "previousSpeaker": "志明",
+        "nextSpeaker": "志明"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I021",
+      "ordinal": 21,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "嘩！網上好多人話畀咗錢之後就搵唔返佢哋。",
+      "sourceHash": "sha256:c8754fa278bdb074fe94c48b3189f848f42f6fb2e42cc9b0066f1d8fe055dc82",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I020",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I022",
+        "previousSpeaker": "美玲",
+        "nextSpeaker": "美玲"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I022",
+      "ordinal": 22,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "你睇！我就話係呃人嘅啦！",
+      "sourceHash": "sha256:8979a08d3e703a5ff115bd25868a3819e9529fa9fc74daae3529e94be2ce5533",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I021",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I023",
+        "previousSpeaker": "志明",
+        "nextSpeaker": "志明"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I023",
+      "ordinal": 23,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "好彩我問咗你先。",
+      "sourceHash": "sha256:7c77a7ebabdec726f7a72b9c20509e6c53f6308aafdf6066e0990e6ad3ccd8b6",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I022",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I024",
+        "previousSpeaker": "美玲",
+        "nextSpeaker": "美玲"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I024",
+      "ordinal": 24,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "係呀，你信唔信得過我呢個朋友先？",
+      "sourceHash": "sha256:f7d354e468255d1bbf3be8c8d4af331a9bbcece547c3ce5122fcf36a5f175905",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I023",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I025",
+        "previousSpeaker": "志明",
+        "nextSpeaker": "志明"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I025",
+      "ordinal": 25,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "當然信你啦！多謝你提醒我。",
+      "sourceHash": "sha256:321fec5058d4cba83784ad351cd168497a1491f4f6cf366ee617888c2a06e8cf",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I024",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I026",
+        "previousSpeaker": "美玲",
+        "nextSpeaker": "美玲"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I026",
+      "ordinal": 26,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "唔使客氣。你而家唔會去啦掛？",
+      "sourceHash": "sha256:c9ba14f5e67ba77bd61a8334889a1cac9f3d1d3b77dc6d47321cc53d412987c5",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I025",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I027",
+        "previousSpeaker": "志明",
+        "nextSpeaker": "志明"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I027",
+      "ordinal": 27,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "梗係唔去啦！我會封鎖佢哋嘅電話。",
+      "sourceHash": "sha256:d8c44aa24a477e2281abba22954345cb6e27ab7cc8c4491ac55a66ecb45d1802",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I026",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I028",
+        "previousSpeaker": "美玲",
+        "nextSpeaker": "美玲"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I028",
+      "ordinal": 28,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "好呀，最緊要小心啲。",
+      "sourceHash": "sha256:60b78faa7ced216f87b8d3003ad7d9e1c9a4dad8a222c8c6ff250befe41338fd",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I027",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I029",
+        "previousSpeaker": "志明",
+        "nextSpeaker": "志明"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I029",
+      "ordinal": 29,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "我以後搵工一定會問清楚晒。",
+      "sourceHash": "sha256:4a79374ac034780b046b7490f1dce00b4f0c51d9b3d55503702cc9768836bcb2",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I028",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I030",
+        "previousSpeaker": "美玲",
+        "nextSpeaker": "美玲"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I030",
+      "ordinal": 30,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "啱呀！有懷疑就唔好信。",
+      "sourceHash": "sha256:fa5321e9b6549f8d01d53a6e5762a505fdcacdd58ceeaa6d6ad4c9225fea8b65",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I029",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I031",
+        "previousSpeaker": "志明",
+        "nextSpeaker": "志明"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I031",
+      "ordinal": 31,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "你有冇遇過類似嘅呃人公司？",
+      "sourceHash": "sha256:168fe987172b5a939ee04732cec8900be02d3121bef6732653ce330394b16c4d",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I030",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I032",
+        "previousSpeaker": "美玲",
+        "nextSpeaker": "美玲"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I032",
+      "ordinal": 32,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "有呀！我上個月都收到。",
+      "sourceHash": "sha256:04d63d399ad90579d897257122e4805222807b53228d9c6b8a188237f03922bd",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I031",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I033",
+        "previousSpeaker": "志明",
+        "nextSpeaker": "志明"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I033",
+      "ordinal": 33,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "係咩？佢哋點樣呃你㗎？",
+      "sourceHash": "sha256:0f349b7a3d412af42c0336c1a28777c27d6a2daa454b6d68595bcf4e77ea0adc",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I032",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I034",
+        "previousSpeaker": "美玲",
+        "nextSpeaker": "美玲"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I034",
+      "ordinal": 34,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "佢哋話我中咗獎，但係要交手續費。",
+      "sourceHash": "sha256:a987b496afefb850c443e25971be0aa14fa0a275f6a3c38007929c6954e55af1",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I033",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I035",
+        "previousSpeaker": "志明",
+        "nextSpeaker": "志明"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I035",
+      "ordinal": 35,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "咁你有冇畀錢呀？",
+      "sourceHash": "sha256:d2db4930ba6be91417b8db41af88af8d98a69728a5051aaad2bb4fb7ee967e1e",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I034",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I036",
+        "previousSpeaker": "美玲",
+        "nextSpeaker": "美玲"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I036",
+      "ordinal": 36,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "冇呀！我一聽就知道係假嘅。",
+      "sourceHash": "sha256:7b122742b24654ad929742349a3c4fc0dec2b84837a42ff5682d1a5e26b81df3",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I035",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I037",
+        "previousSpeaker": "志明",
+        "nextSpeaker": "志明"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I037",
+      "ordinal": 37,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "而家呃人嘅方法真係好多。",
+      "sourceHash": "sha256:a062157af1e3df0d6207eb378ee65542ff8c2cde3f8d0d8e1dbf10ac52845701",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I036",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I038",
+        "previousSpeaker": "美玲",
+        "nextSpeaker": "美玲"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I038",
+      "ordinal": 38,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "係呀，所以我哋要互相提醒。",
+      "sourceHash": "sha256:56bfecf04a7316fecf103604484d54ad1440f1eac96964d5c692de3bee06275b",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I037",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I039",
+        "previousSpeaker": "志明",
+        "nextSpeaker": "志明"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I039",
+      "ordinal": 39,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "多謝你今日幫我。",
+      "sourceHash": "sha256:8495286dd90f0d6223b5550e171e5df5e796b73877a378b2e18d300b3cabecde",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I038",
+        "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I040",
+        "previousSpeaker": "美玲",
+        "nextSpeaker": "美玲"
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I040",
+      "ordinal": 40,
+      "itemType": "dialog_turn",
+      "sourceDisplay": "唔使客氣，朋友就係要信得過㗎啦！",
+      "sourceHash": "sha256:67eba281c572f71f49b0da5e914518d009d758aebad9bc66ecf5011410eb2f79",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I039",
+        "nextTurnId": null,
+        "previousSpeaker": "志明",
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "naturalness_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "naturalness_review_candidate",
+        "trust_scam_potential_complement_review",
+        "source_turn_translation_not_provided"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I041",
+      "ordinal": 41,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "信得過",
+      "sourceHash": "sha256:b24d0626558c50fe6d8ef01204a52ad33848927e137cb49d52996f803e3ae557",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "exact_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json"
+      ],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I042",
+      "ordinal": 42,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "尋日",
+      "sourceHash": "sha256:548488f16d8ab57fa68942d283814fe7254eb3c5aca9dd68468660532c398762",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "exact_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/places-and-times.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": "src/runtime-resources/lexicon/token-lexicon/places-and-times.js",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I043",
+      "ordinal": 43,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "收到",
+      "sourceHash": "sha256:5604b54261becc96eaa691917f0b1dda4ad5fdae37fcfd23bbed6308c0709c33",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I044",
+      "ordinal": 44,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "奇怪",
+      "sourceHash": "sha256:47e826a44f361608889abbd4d7312b70dd4540ec4113e302dd37585e5e5cbb43",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "exact_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "external-evidence/aa07-hkcancor/hkcancor-aa07-ge-nominal-head-candidate-inventory.tsv",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json"
+      ],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I045",
+      "ordinal": 45,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "工作機會",
+      "sourceHash": "sha256:d036c10546cce415dddda728d3d82bb758b7125441d12ab74244f74fd7e1a3de",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I046",
+      "ordinal": 46,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "點",
+      "sourceHash": "sha256:cb3db62607f778197fd4bda111da62e5297e563007e13ee8d9f00760f963e494",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "exact_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [
+        "src/parser/detectors/complements/result.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+        "src/runtime-resources/normalization/simplified-to-traditional.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/source.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-009-20260201/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-009-20260201/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-009-20260201/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-009-20260201/source.json",
+        "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+        "external-evidence/aa07-hkcancor/hkcancor-aa07-ge-nominal-head-candidate-inventory.tsv",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+        "external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": "src/parser/detectors/complements/result.js",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I047",
+      "ordinal": 47,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "法",
+      "sourceHash": "sha256:465e48bb71b6950d014fd1ea68289dbc6245f40b15aa86dd75fe953043ef392b",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "exact_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json"
+      ],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I048",
+      "ordinal": 48,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "佢哋",
+      "sourceHash": "sha256:4f64e2674d3e95ef9579ec46f1b7ae4645463bdaa582fe967602847df0d5d830",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "exact_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [
+        "src/parser/context/descriptors.js",
+        "src/parser/detectors/transfer/lexical-give.js",
+        "src/runtime-resources/lexicon/token-lexicon/people-and-address.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "docs/research/UC-RQ-009-ASSOCIATIVE-PLURAL-CONSTRUCTION-RESEARCH-R1.md",
+        "docs/research/UC-RQ-022-DEI6-PERSONAL-PLURAL-DISPOSITION-R1.md",
+        "external-evidence/aa07-hkcancor/hkcancor-aa07-ge-nominal-head-candidate-inventory.tsv",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+        "external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.tsv",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.tsv",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json"
+      ],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": "src/parser/context/descriptors.js",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I049",
+      "ordinal": 49,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "話",
+      "sourceHash": "sha256:a65f2f1883b01715ea0c22f5c0855f879b24602f1b66845105c5677b51c79d2c",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "exact_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [
+        "src/parser/clause-relations/conditional.js",
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/reported-speech/composition.js",
+        "src/parser/features/token-features.js",
+        "src/plugin-entry.js",
+        "src/runtime-resources/grammar/predicate-profiles.js",
+        "src/runtime-resources/grammar/templates/category-span-templates.js",
+        "src/runtime-resources/grammar/templates/slot-generation-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js",
+        "src/runtime-resources/normalization/simplified-to-traditional.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-010-20260208/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-010-20260208/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-010-20260208/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-010-20260208/source.json",
+        "data/slot-model.json",
+        "docs/research/CONSTRUCTION-ADJUDICATION-BATCH-03.md",
+        "docs/research/LANE-08-REPORTED-SPEECH-COGNITION-STANCE-SOURCE-MAP-CP021B-R15.md",
+        "docs/research/UC-RQ-003-DOUBLE-OBJECT-ORDER-ALTERNATION-RESEARCH-R1.md",
+        "external-evidence/aa07-hkcancor/hkcancor-aa07-ge-nominal-head-candidate-inventory.tsv",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+        "external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.tsv",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.tsv",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.json",
+        "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.tsv",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.json",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.tsv",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.tsv",
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": "src/parser/clause-relations/conditional.js",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I050",
+      "ordinal": 50,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "人工",
+      "sourceHash": "sha256:2e4f48e552c3a634e3a93d070f18bc2ceeb0f6d87d41bf1b80ca27751d66c47b",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "exact_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [
+        "src/parser/context/descriptors.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/source.json",
+        "data/research-ledgers/glossika-week14-lexical-ingress.json",
+        "external-evidence/aa07-hkcancor/hkcancor-aa07-ge-nominal-head-candidate-inventory.tsv",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.json",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.tsv",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json"
+      ],
+      "supportingNormalizedOwners": [
+        "docs/research/GLOSSIKA-YUEHK-A1-W14-20260621-RESEARCH.md"
+      ],
+      "runtimeLexicalOwner": "src/parser/context/descriptors.js",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I051",
+      "ordinal": 51,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "高",
+      "sourceHash": "sha256:86f53436f0671e28bc3b61d1220c34cc369c6effda58e0f86370c415efc5b599",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "exact_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [
+        "src/parser/detectors/questions/wh-scalar.js",
+        "src/parser/features/token-features.js",
+        "src/runtime-resources/grammar/templates/slot-generation-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/statives.js",
+        "src/runtime-resources/pronunciation/jyutping-review-expectations.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "docs/research/UC-RQ-004-CANTONESE-EQUATIVE-CONSTRUCTION-RESEARCH-R1.md",
+        "external-evidence/aa07-hkcancor/hkcancor-aa07-ge-nominal-head-candidate-inventory.tsv",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.json",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.tsv",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json",
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": "src/parser/detectors/questions/wh-scalar.js",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I052",
+      "ordinal": 52,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "輕鬆",
+      "sourceHash": "sha256:e5b6f2f4e549f596fdd15baac9c8358aa312eede983b92202863b32a453aa4c6",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "exact_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json"
+      ],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I053",
+      "ordinal": 53,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "吓",
+      "sourceHash": "sha256:4a3bd12afbf24c5b6be0f74fad333afe93c35f8d18985cbd380f0dd5513f8b1e",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "exact_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [
+        "src/parser/features/token-features.js",
+        "src/render/learner-display.js",
+        "src/runtime-resources/grammar/templates/slot-generation-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/degree-and-formulas.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "docs/research/COGNITION-SPEECH-INTENTION-SOURCE-MAP-CP021B-R31.md",
+        "docs/research/CONSTRUCTION-ADJUDICATION-BATCH-14.md",
+        "docs/research/CP023-P1-PROG01-QUESTION-AND-SOURCE-FREEZE.md",
+        "docs/research/CP023-P1-PROG01-REMEDIATION-BLUEPRINT-R2.md",
+        "docs/research/CP035-P1-EXPERIENTIAL-DELIMITED-WRAPPER-AUDIT-R1.md",
+        "docs/research/EVENT-MODIFICATION-REDUPLICATION-DELIMITATIVE-FAAN1-SOURCE-MAP-CP021B-R21.md",
+        "docs/research/FINAL-LANGUAGE-LABEL-COVERAGE-SOURCE-MAP-CP021B-R33.md",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json",
+        "grammar/retired/README.md",
+        "grammar/unsupported_generalization/DelimitedVP.md",
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "supportingNormalizedOwners": [
+        "external-evidence/aa07-hkcancor/hkcancor-aa07-ge-nominal-head-candidate-inventory.tsv",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+        "external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.tsv",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.tsv",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.tsv",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.tsv",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.tsv",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.tsv",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.tsv"
+      ],
+      "runtimeLexicalOwner": "src/parser/features/token-features.js",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I054",
+      "ordinal": 54,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "有幾",
+      "sourceHash": "sha256:d770881e2ccd228e056725877f494ecd705530b2e360fffe6f4c83c245c545cb",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "exact_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "test-data/cp021b-lx1-construction-freeze-baseline.json"
+      ],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I055",
+      "ordinal": 55,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "一個月",
+      "sourceHash": "sha256:b71c5a68e2b17a34980ead353fabf4d3f7c1cd7dba79d2a927bb3acd9c07f8c5",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "exact_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/source.json",
+        "docs/research/TEMPORAL-EXPRESSIONS-SOURCE-MAP-CP021B-R12.md",
+        "test-data/cp021b-lx1-construction-freeze-baseline.json",
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "supportingNormalizedOwners": [
+        "docs/research/EVALUATION-PACKET-BLUEPRINTS-CP021B-R37.json",
+        "tests/constructions/NeedsContext.json",
+        "tests/constructions/QuantifiedTimeNP.json"
+      ],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I056",
+      "ordinal": 56,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "萬",
+      "sourceHash": "sha256:95bb51496e1b83ae6cf2f17851881dde9b19de31d81bd0d595180efbcbbe2f4a",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "exact_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [
+        "src/parser/context/descriptors.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": "src/parser/context/descriptors.js",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I057",
+      "ordinal": 57,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "蚊",
+      "sourceHash": "sha256:2314e9f1f3ac68dc954277c33c68847d1bc71a8e0a3de0c4a4ffc9afe2c8119a",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "exact_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [
+        "src/parser/context/descriptors.js",
+        "src/parser/detectors/nominal-predication/clauses.js",
+        "src/parser/detectors/transfer/passive-permissive.js",
+        "src/parser/features/token-features.js",
+        "src/runtime-resources/grammar/templates/slot-generation-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/things.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-002-20251207/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-002-20251207/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-002-20251207/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-002-20251207/source.json",
+        "external-evidence/aa07-hkcancor/hkcancor-aa07-ge-nominal-head-candidate-inventory.tsv",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+        "external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.tsv",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.tsv",
+        "test-data/cp021b-lx1-construction-freeze-baseline.json",
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": "src/parser/context/descriptors.js",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I058",
+      "ordinal": 58,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "但係",
+      "sourceHash": "sha256:615be7a63b00f301cb6796ecc44bfb712057e2fc220471ea4b519e2f96bafcea",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "exact_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/source.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/README.md",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/source.json",
+        "docs/research/UC-RQ-036-SEOI1JIN4-DAAN6HAI6-CONCESSIVE-RESEARCH-R1.md",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+        "external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.tsv",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json",
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": "src/parser/clause-relations/graph.js",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I059",
+      "ordinal": 59,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "新人",
+      "sourceHash": "sha256:cc26447f59e7b213287841f13ca9624f35bed2190764d4f4105679e5f22ba1c6",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "exact_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json"
+      ],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I060",
+      "ordinal": 60,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "嚟㗎",
+      "sourceHash": "sha256:3ec75f6c46f80612bf997ce72157be11f06e3c9cbb6451155026f31638542b56",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I061",
+      "ordinal": 61,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "咁",
+      "sourceHash": "sha256:c6baf7c54c582937eb8da070a969ee13ededf54c136c264d2cfa7e8a8ff10d4c",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "exact_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/manner/adjustment.js",
+        "src/parser/features/token-features.js",
+        "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-008-20260125/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-008-20260125/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-008-20260125/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-008-20260125/source.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-010-20260208/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-010-20260208/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-010-20260208/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-010-20260208/source.json",
+        "docs/research/AA84-MANNER-PROFILE-RECONCILIATION-R1.md",
+        "docs/research/PRQ2-006-LOK6HEOI3-CONTINUATIVE-ASPECT-RESEARCH-R1.md",
+        "docs/research/UC-RQ-004-CANTONESE-EQUATIVE-CONSTRUCTION-RESEARCH-R1.md",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+        "external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.tsv",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.tsv",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.json",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.tsv",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json",
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": "src/parser/clause-relations/graph.js",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I062",
+      "ordinal": 62,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "係咪",
+      "sourceHash": "sha256:bbb4b687ddba1ec64147f1895ca924210ffadd5287afc6f5270766e0568046c2",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "exact_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [
+        "src/parser/context/descriptors.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "docs/research/ACTIVE-LABEL-EVIDENCE-ONTOLOGY-CLOSURE-R1.md",
+        "docs/research/CONSTRUCTION-ADJUDICATION-BATCH-18.md",
+        "docs/research/CP051-P1-COPULAR-ANOTA-RECONCILIATION-R1.md",
+        "docs/research/LANE-07-A-NOT-A-QUESTIONS-SOURCE-MAP-CP021B-R7.md",
+        "docs/research/PRQ2-002-ZOU2ZI1-HINDSIGHT-REGRET-RESEARCH-R1.md",
+        "docs/research/UC-RQ-019-CLAUSE-FINAL-TAG-QUESTION-RESEARCH-R1.md",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv",
+        "grammar/parser_heuristic/PolarQuestionFrame.md",
+        "grammar/unsupported_generalization/CopularANotAQuestion.md"
+      ],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": "src/parser/context/descriptors.js",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I063",
+      "ordinal": 63,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "太",
+      "sourceHash": "sha256:87603d032c3c4593b89f8d4f1a3c535590e4912902e412df1437111f9c1874fc",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "exact_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [
+        "src/parser/orchestration/wrap-predicate.js",
+        "src/runtime-resources/grammar/templates/slot-generation-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/degree-and-formulas.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "docs/research/LANE-10-STATIVE-PREDICATION-SOURCE-MAP-CP021B-R8.md",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json"
+      ],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": "src/parser/orchestration/wrap-predicate.js",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I064",
+      "ordinal": 64,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "好",
+      "sourceHash": "sha256:5c9a19490435a7f43e2b7f7fea980e15c1f0477027727426e5788d84cfa3ab09",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "exact_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [
+        "src/parser/detectors/aspect/composition.js",
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/modality/intention-preference.js",
+        "src/parser/orchestration/wrap-predicate.js",
+        "src/parser/tokenization/lexical-selection.js",
+        "src/runtime-resources/grammar/templates/category-span-templates.js",
+        "src/runtime-resources/grammar/templates/slot-generation-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/degree-and-formulas.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/source.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-008-20260125/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-008-20260125/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-008-20260125/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-008-20260125/source.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-009-20260201/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-009-20260201/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-009-20260201/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-009-20260201/source.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-011-20260215/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-011-20260215/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-011-20260215/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-011-20260215/source.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/source.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/source.json",
+        "docs/research/CP039-P1-EVALUATION-SCALAR-QUESTION-WRAPPER-AUDIT-R1.md",
+        "docs/research/CP040-P1-FINAL-REACHABLE-WRAPPER-AUDIT-R1.md",
+        "docs/research/CP047-P1-DEGREE-MODIFIED-LEXICAL-STATIVE-RECONCILIATION-R1.md",
+        "docs/research/EVENT-MODIFICATION-REDUPLICATION-DELIMITATIVE-FAAN1-SOURCE-MAP-CP021B-R21.md",
+        "docs/research/LANE-03-FRAGMENTS-DISCOURSE-SOURCE-MAP-CP021B-R17.md",
+        "docs/research/LANE-05-RESULT-POTENTIAL-COMPLEMENTS-SOURCE-MAP-CP021B-R10.md",
+        "docs/research/LANE-10-STATIVE-PREDICATION-SOURCE-MAP-CP021B-R8.md",
+        "docs/research/MODAL-DESIDERATIVE-PREFERENCE-SOURCE-MAP-CP021B-R14.md",
+        "docs/research/NEGATION-ACCEPTABILITY-OPINION-SCHEDULING-SOURCE-MAP-CP021B-R30.md",
+        "docs/research/NOMINAL-MODIFICATION-PROFILE-CLOSURE-R1.md",
+        "docs/research/PRQ2-002-ZOU2ZI1-HINDSIGHT-REGRET-RESEARCH-R1.md",
+        "docs/research/UC-RQ-033-DAK1-POSTVERBAL-CONSTRUCTION-CONTRAST-RESEARCH-R1.md",
+        "external-evidence/aa07-hkcancor/hkcancor-aa07-ge-nominal-head-candidate-inventory.tsv",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+        "external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv",
+        "external-evidence/aa58-hkcancor/hkcancor-aa58-jau-me-candidate-inventory.json",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.tsv",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.json",
+        "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.tsv",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.json",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.tsv",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-query-summary.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.tsv",
+        "grammar/research_pending/DegreeModifiedLexicalStative.md",
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": "src/parser/detectors/aspect/composition.js",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I065",
+      "ordinal": 65,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "喇",
+      "sourceHash": "sha256:08d228d81a1ab1d1b7f0ee6e4c2f4c2a284978adb5b4fad5ebab44ee89030754",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "exact_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [
+        "src/parser/context/descriptors.js",
+        "src/parser/context/licensed-fragments.js",
+        "src/parser/detectors/acceptability/clauses.js",
+        "src/parser/detectors/boundaries/needs-context.js",
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/discourse/priority.js",
+        "src/parser/detectors/discourse/protected-formulas.js",
+        "src/parser/detectors/motion/purpose-chains.js",
+        "src/parser/terminal/particles/discourse.js",
+        "src/runtime-resources/grammar/ordered-particle-clusters.js",
+        "src/runtime-resources/lexicon/token-lexicon/degree-and-formulas.js",
+        "src/runtime-resources/pronunciation/jyutping-review-expectations.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/source.json",
+        "docs/research/survey-derived/Follow-Up/FOLLOW-UP-THREE-STUDY-DESIGN-SPEC-R1.json",
+        "docs/research/survey-derived/Follow-Up/FOLLOW-UP-THREE-STUDY-EXECUTION-PLAN-R1.md",
+        "docs/research/survey-derived/HKCanCor/HKCANCOR-SV-RQ-008-010-REVIEWED-RESULTS-R1.json",
+        "docs/research/survey-derived/SV-RQ-008-010/SV-RQ-008-010-FOLLOW-UP-BRIEF-R2.md",
+        "docs/research/survey-derived/SV-RQ-008-010/SV-RQ-008-010-ROUND-2.md",
+        "docs/research/survey-derived/SV-RQ-008/SV-RQ-008-RESEARCH-NOTE.md",
+        "docs/research/survey-derived/SV-RQ-008/SV-RQ-008-SOURCE-AUDIT-R1.md",
+        "docs/research/survey-derived/SV-RQ-009-012/SV-RQ-009-012-ROUND-1.md",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv",
+        "external-evidence/aa58-hkcancor/hkcancor-aa58-jau-me-candidate-inventory.json",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.tsv",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.json",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.tsv",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.tsv",
+        "test-data/cp021b-lx1-construction-freeze-baseline.json",
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": "src/parser/context/descriptors.js",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I066",
+      "ordinal": 66,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "正常",
+      "sourceHash": "sha256:5b9ac172d4601f5f2b6f520d7a993bb885e81283088bcbd15ed1641c52db9548",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "exact_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "external-evidence/aa07-hkcancor/hkcancor-aa07-ge-nominal-head-candidate-inventory.tsv",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.tsv",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json"
+      ],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I067",
+      "ordinal": 67,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "可能",
+      "sourceHash": "sha256:018778546bb447f5de158fe9d4b551abc03f96b52e576838f524ab115003c15a",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "exact_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "external-evidence/aa07-hkcancor/hkcancor-aa07-ge-nominal-head-candidate-inventory.tsv",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+        "external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.tsv",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.tsv"
+      ],
+      "supportingNormalizedOwners": [
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.tsv"
+      ],
+      "runtimeLexicalOwner": "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I068",
+      "ordinal": 68,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "騙",
+      "sourceHash": "sha256:768a4abf46dc357bf2caa19c4b3af4365ac43516746816b1e63c6148e13aaa1c",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I069",
+      "ordinal": 69,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "呀",
+      "sourceHash": "sha256:8a9e3ac3f1980440075d5d2a98bf8d2dd16d9d05da5a73d32faaa27446865480",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "exact_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [
+        "src/parser/context/descriptors.js",
+        "src/parser/detectors/acceptability/clauses.js",
+        "src/parser/detectors/definition/copular-relations.js",
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/discourse/priority.js",
+        "src/parser/detectors/discourse/protected-formulas.js",
+        "src/parser/detectors/motion/purpose-chains.js",
+        "src/plugin-entry.js",
+        "src/runtime-resources/lexicon/token-lexicon/degree-and-formulas.js",
+        "src/runtime-resources/pronunciation/jyutping-review-expectations.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/source.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-008-20260125/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-008-20260125/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-008-20260125/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-008-20260125/source.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-009-20260201/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-009-20260201/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-009-20260201/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-009-20260201/source.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-011-20260215/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-011-20260215/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-011-20260215/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-011-20260215/source.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/source.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/source.json",
+        "data/research-ledgers/glossika-week19-particle-boundaries.json",
+        "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.tsv",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.json",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.tsv",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json",
+        "test-data/a1-context-status-fixture.tsv",
+        "test-data/cp021b-lx1-construction-freeze-baseline.json",
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": "src/parser/context/descriptors.js",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I070",
+      "ordinal": 70,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "驚",
+      "sourceHash": "sha256:dc340b752aea1510028b16494a669aec1709d8550043e3013ee74c9b65238aa9",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "exact_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-009-20260201/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-009-20260201/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-009-20260201/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-009-20260201/source.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/README.md",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/source.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/source.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.json",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.tsv",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json",
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I071",
+      "ordinal": 71,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "唔係",
+      "sourceHash": "sha256:d721c1acc859ebb98ada43dcf82d9f712ed45676c5140af5ec4c55e09bb28562",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "exact_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [
+        "src/parser/context/descriptors.js",
+        "src/parser/detectors/definition/intended-function.js",
+        "src/parser/detectors/opinion/stance.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "docs/research/COMPLEMENT-OMISSION-AND-VALENCY-SOURCE-MAP-CP021B-R26.md",
+        "docs/research/CONSTRUCTION-ADJUDICATION-BATCH-04.md",
+        "docs/research/LANE-03-FRAGMENTS-DISCOURSE-SOURCE-MAP-CP021B-R17.md",
+        "docs/research/LANE-08-REPORTED-SPEECH-COGNITION-STANCE-SOURCE-MAP-CP021B-R15.md",
+        "docs/research/UC-RQ-038-CEOI4FEI1-EXCEPTION-CONDITIONAL-RESEARCH-R1.md",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+        "external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.tsv",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.tsv",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.json",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.tsv",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json",
+        "test-data/WECHAT-GX-TRAVEL-002-ADJUDICATION-MATRIX.json",
+        "test-data/WECHAT-GX-TRAVEL-002-ADJUDICATION-MATRIX.tsv",
+        "test-data/WECHAT-GX-TRAVEL-002-QUEUE-G-grammar_research_external_evidence.tsv",
+        "test-data/WECHAT-GX-TRAVEL-002-QUEUE-R-accepted_behavior_regression.tsv",
+        "test-data/cp021b-lx1-construction-freeze-baseline.json",
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "supportingNormalizedOwners": [
+        "external-evidence/aa07-hkcancor/hkcancor-aa07-ge-nominal-head-candidate-inventory.tsv",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.tsv",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.tsv",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.tsv",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.tsv"
+      ],
+      "runtimeLexicalOwner": "src/parser/context/descriptors.js",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I072",
+      "ordinal": 72,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "真",
+      "sourceHash": "sha256:5fbdf7cb0b5cd919b83f0d9c9ca1ff46966b585ca66bfda228d0835a09fa681f",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "exact_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json",
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": "src/runtime-resources/lexicon/token-lexicon/verbs.js",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I073",
+      "ordinal": 73,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "嘢",
+      "sourceHash": "sha256:b14430bb17311c6c58c674f906c747b6a02c91ea0bbc3b685cfda250c13b3f1f",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "exact_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [
+        "src/parser/tokenization/contextual-overrides.js",
+        "src/plugin-entry.js",
+        "src/runtime-resources/lexicon/productive-vo.js",
+        "src/runtime-resources/lexicon/token-lexicon/things.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-008-20260125/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-008-20260125/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-008-20260125/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-008-20260125/source.json",
+        "docs/research/AA77-JAU-MOU-CORPUS-BOUNDARIES-R1.md",
+        "docs/research/CP024-P0-L45-PRODUCTIVE-VO-SEED-INVENTORY-R1.tsv",
+        "docs/research/WECHAT-GX-TRAVEL-002-PRIORITY-GRAMMAR-RESEARCH-R1.md",
+        "external-evidence/aa07-hkcancor/hkcancor-aa07-ge-nominal-head-candidate-inventory.tsv",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+        "external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.tsv",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.tsv",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json",
+        "tests/fixtures/regression-snapshots.json",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js"
+      ],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": "src/parser/tokenization/contextual-overrides.js",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I074",
+      "ordinal": 74,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "小心",
+      "sourceHash": "sha256:99c489e982b81adead4ea214c146a8a8c68519bb2afe9bf9ec50fb6a47ebc5d5",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "exact_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/statives.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": "src/runtime-resources/lexicon/token-lexicon/statives.js",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I075",
+      "ordinal": 75,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "啲",
+      "sourceHash": "sha256:4134550dca4b7a4f0ca61d9bdac8ab486ef8f1ef42441ecaacddb5ed0c8691a1",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "exact_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [
+        "src/parser/detectors/manner/adjustment.js",
+        "src/parser/detectors/np/token-splits.js",
+        "src/parser/features/token-features.js",
+        "src/plugin-entry.js",
+        "src/runtime-resources/grammar/templates/slot-generation-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js",
+        "src/runtime-resources/pronunciation/jyutping-review-expectations.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-006-20260104/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-006-20260104/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-006-20260104/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-006-20260104/source.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-008-20260125/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-008-20260125/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-008-20260125/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-008-20260125/source.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-011-20260215/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-011-20260215/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-011-20260215/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-011-20260215/source.json",
+        "docs/research/AA56-NO-PLACE-EXISTENTIAL-PRESENTATIONAL-BOUNDARIES-R1.md",
+        "docs/research/CLASSIFIER-MEASURE-TYPING-AUDIT-R1.md",
+        "docs/research/CONSTRUCTION-ADJUDICATION-BATCH-09.md",
+        "docs/research/COVERB-MANNER-EVENT-MODIFICATION-SOURCE-MAP-CP021B-R23.md",
+        "docs/research/CP023-P1-PROG01-NOMINAL-DI-ASSOCIATIVE-SCOPE-DESIGN-R3.md",
+        "docs/research/CP023-P1-PROG01-R2-RESEARCH-CHECKPOINT.md",
+        "docs/research/CP023-P1-PROG01-R3-RESEARCH-CHECKPOINT.md",
+        "docs/research/CP023-P1-PROG01-REMEDIATION-BLUEPRINT-R2.md",
+        "docs/research/CP034-P1-LOW-REFERENCE-WRAPPER-AUDIT-R1.md",
+        "docs/research/CP045-P1-COMPARATIVE-STATIVE-RETIREMENT-R1.md",
+        "docs/research/LANE-06-NOMINAL-MODIFICATION-RELATIVES-SOURCE-MAP-CP021B-R11.md",
+        "docs/research/OBSERVED-UNIT-WORD-NOUN-MISMATCH-MATRIX-R1.md",
+        "docs/research/PRQ2-004-CAA1DI1-NEAR-MISS-RESEARCH-R1.md",
+        "docs/research/QUANTITY-SCALAR-ACTION-BOUNDARIES-SOURCE-MAP-CP021B-R29.md",
+        "docs/research/UC-RQ-004-CANTONESE-EQUATIVE-CONSTRUCTION-RESEARCH-R1.md",
+        "docs/research/UC-RQ-005-GWO3-SURPASS-COMPARATIVE-RESEARCH-R1.md",
+        "docs/research/UC-RQ-010-COREFERENTIAL-N-CL-N-CONSTRUCTION-RESEARCH-R1.md",
+        "docs/research/UC-RQ-026-DI1-DEGREE-DISPOSITION-R1.md",
+        "docs/research/UC-RQ-027-ZEOI3-SUPERLATIVE-RESEARCH-R1.md",
+        "docs/research/reopened-retired-labels/DiComparativeStative.md",
+        "external-evidence/aa07-hkcancor/hkcancor-aa07-ge-nominal-head-candidate-inventory.tsv",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+        "external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv",
+        "external-evidence/aa58-hkcancor/hkcancor-aa58-jau-me-candidate-inventory.json",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.tsv",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.tsv",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.json",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.tsv",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json",
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": "src/parser/detectors/manner/adjustment.js",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I076",
+      "ordinal": 76,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "應該",
+      "sourceHash": "sha256:d12eb09b6baaaf14784627b0675d9fe5fa89ccfd0911feb84857fbe29cb36af7",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "exact_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [
+        "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "docs/research/LANE-07-A-NOT-A-QUESTIONS-SOURCE-MAP-CP021B-R7.md",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.tsv",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.tsv"
+      ],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I077",
+      "ordinal": 77,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "去",
+      "sourceHash": "sha256:3c3db8bcf8f3a43137becfc3160544a77ef06e9fa5232eafba8f1280d0e58467",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "exact_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [
+        "src/parser/detectors/aspect/composition.js",
+        "src/parser/detectors/motion/directional.js",
+        "src/parser/detectors/motion/path-goal-source.js",
+        "src/parser/detectors/motion/purpose-chains.js",
+        "src/parser/detectors/transfer/passive-permissive.js",
+        "src/parser/features/token-features.js",
+        "src/runtime-resources/grammar/templates/category-span-templates.js",
+        "src/runtime-resources/grammar/templates/slot-generation-rules.js",
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-011-20260215/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-011-20260215/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-011-20260215/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-011-20260215/source.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/source.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/source.json",
+        "data/research-ledgers/glossika-week18-common-verb-audit.json",
+        "docs/research/ASPECTUAL-CLAUSE-WRAPPERS-SOURCE-MAP-CP021B-R24.md",
+        "docs/research/CONSTRUCTION-ADJUDICATION-BATCH-09.md",
+        "docs/research/GLOSSIKA-YUEHK-A1-W18-20260719-RESEARCH.md",
+        "docs/research/LANE-09-DIRECTIONAL-MOTION-SOURCE-MAP-CP021B-R3.md",
+        "docs/research/LANE-09-SERIAL-PURPOSE-SOURCE-MAP-CP021B-R16.md",
+        "docs/research/PRQ2-001-YAU5-MOU5-DAK1-AVAILABILITY-RESEARCH-R1.md",
+        "docs/research/PRQ2-005-HOI1-HABITUAL-ESTABLISHED-ACTIVITY-RESEARCH-R1.md",
+        "docs/research/PRQ2-006-LOK6HEOI3-CONTINUATIVE-ASPECT-RESEARCH-R1.md",
+        "docs/research/survey-derived/HKCanCor/HKCANCOR-SV-RQ-008-010-RESEARCH-NOTE-R1.md",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+        "external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.tsv",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.tsv",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.json",
+        "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.tsv",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.json",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.tsv",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.tsv",
+        "test-data/cp021b-lx1-construction-freeze-baseline.json",
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-grammar-phrases.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv",
+        "tests/fixtures/regression-snapshots.json",
+        "tests/tooling/build/licensed-fragments-complement-type.test.js"
+      ],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": "src/parser/detectors/aspect/composition.js",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I078",
+      "ordinal": 78,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "問清楚",
+      "sourceHash": "sha256:0cda514067178f9e229c57c6e064e36ddaa476a062a3ebae6bcb1195384ae2b3",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "no_project_match",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": null,
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I079",
+      "ordinal": 79,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "先",
+      "sourceHash": "sha256:19a55edab388470b6b7393d1d551d0fd3d7f32869dc6f646de2ed822010285f8",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "exact_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [
+        "src/parser/clause-relations/graph.js",
+        "src/parser/clause-relations/markers.js",
+        "src/parser/detectors/coverbs/frames.js",
+        "src/parser/detectors/discourse/priority.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js",
+        "src/runtime-resources/pronunciation/jyutping-review-expectations.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-002-20251207/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-002-20251207/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-002-20251207/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-002-20251207/source.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-008-20260125/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-008-20260125/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-008-20260125/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-008-20260125/source.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-011-20260215/README.md",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-011-20260215/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-011-20260215/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-011-20260215/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-011-20260215/source.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/source.json",
+        "docs/research/CONSTRUCTION-ADJUDICATION-BATCH-05.md",
+        "docs/research/CP049-P1-ANOTA-ACCEPTABILITY-RECONCILIATION-R1.md",
+        "docs/research/DIRECTIVE-SUGGESTION-PRIORITY-SOURCE-MAP-CP021B-R27.md",
+        "docs/research/GLOSSIKA-YUEHK-A1-W18-20260719-RESEARCH.md",
+        "docs/research/PRQ2-014-ZI2JAU5-SIN1ZI3-NECESSARY-CONDITION-RESEARCH-R1.md",
+        "docs/research/UC-RQ-031-MAAI4-VERBAL-PARTICLE-FAMILY-RESEARCH-R1.md",
+        "docs/research/UC-RQ-038-CEOI4FEI1-EXCEPTION-CONDITIONAL-RESEARCH-R1.md",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.tsv",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.tsv",
+        "grammar/parser_heuristic/ClauseRelationGraph.md",
+        "grammar/unsupported_generalization/AcceptabilityANotA.md",
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "supportingNormalizedOwners": [],
+      "runtimeLexicalOwner": "src/parser/clause-relations/graph.js",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    },
+    {
+      "sourceItemId": "GLOSSIKA-YUEHK-A1-DLG-015-20260315-I080",
+      "ordinal": 80,
+      "itemType": "vocabulary_entry",
+      "sourceDisplay": "係",
+      "sourceHash": "sha256:331bb6c6f47f566558e4b293865841530b95f9c95e4aa59744d4f00dc7d0b2c3",
+      "sourceDialogOccurrence": null,
+      "adjacency": {
+        "previousTurnId": null,
+        "nextTurnId": null,
+        "previousSpeaker": null,
+        "nextSpeaker": null
+      },
+      "deduplicationRelation": "exact_duplicate_candidate",
+      "ingressClassification": "lexical_review_candidate",
+      "canonicalExactOwners": [
+        "src/parser/context/descriptors.js",
+        "src/parser/detectors/definition/copular-relations.js",
+        "src/parser/detectors/discourse/formula-responses.js",
+        "src/parser/detectors/discourse/protected-formulas.js",
+        "src/parser/detectors/nominal-predication/clauses.js",
+        "src/parser/detectors/opinion/stance.js",
+        "src/parser/detectors/questions/a-not-a.js",
+        "src/parser/tokenization/contextual-overrides.js",
+        "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js"
+      ],
+      "canonicalNormalizedOwners": [],
+      "supportingExactOwners": [
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-011-20260215/crosswalk.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-011-20260215/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-011-20260215/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-011-20260215/source.json",
+        "docs/research/COMPLEMENT-OMISSION-AND-VALENCY-SOURCE-MAP-CP021B-R26.md",
+        "docs/research/CONSTRUCTION-ADJUDICATION-BATCH-17.md",
+        "docs/research/CP057-P1-NEGATED-STATIVE-PREDICATE-RECONCILIATION-R1.md",
+        "docs/research/GLOSSIKA-YUEHK-A1-W19-20260726-RESEARCH.md",
+        "docs/research/LANE-03-FRAGMENTS-DISCOURSE-SOURCE-MAP-CP021B-R17.md",
+        "docs/research/LANE-03-RESIDUAL-FRAGMENT-SUBTYPES-SOURCE-MAP-CP021B-R18.md",
+        "docs/research/LANE-08-REPORTED-SPEECH-COGNITION-STANCE-SOURCE-MAP-CP021B-R15.md",
+        "docs/research/LANE-10-MEASURE-SCALAR-SOURCE-MAP-CP021B-R19.md",
+        "docs/research/PRQ2-012-JAT1HAI6-EXCLUSIVE-ALTERNATIVE-RESEARCH-R1.md",
+        "docs/research/UC-RQ-016-HAI6-GE3-CLEFT-FOCUS-RESEARCH-R1.md",
+        "docs/research/UC-RQ-018-ALTERNATIVE-QUESTION-RESEARCH-R1.md",
+        "docs/research/WH-IDENTITY-NAMING-ADDRESS-SOURCE-MAP-CP021B-R20.md",
+        "docs/research/reopened-retired-labels/IdentityWhQuestion.md",
+        "docs/research/survey-derived/SV-RQ-001-007/SV-RQ-001-007-ROUND-1.md",
+        "docs/research/survey-derived/SV-RQ-001-007/SV-RQ-001-007-ROUND-2.md",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+        "external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-candidate-inventory.tsv",
+        "external-evidence/aa58-hkcancor/hkcancor-aa58-jau-me-candidate-inventory.json",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.tsv",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.json",
+        "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.tsv",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.json",
+        "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.json",
+        "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.tsv",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json",
+        "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.tsv",
+        "grammar/research_pending/NegatedStativePredicate.md",
+        "grammar/retired/README.md",
+        "test-data/cp021b-lx1-construction-freeze-baseline.json",
+        "tests/fixtures/regression-snapshots.json"
+      ],
+      "supportingNormalizedOwners": [
+        "external-evidence/aa07-hkcancor/hkcancor-aa07-ge-nominal-head-candidate-inventory.tsv",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.tsv",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.tsv",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.tsv",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.tsv"
+      ],
+      "runtimeLexicalOwner": "src/parser/context/descriptors.js",
+      "reviewFlags": [
+        "lexical_review_candidate",
+        "trust_scam_potential_complement_review"
+      ],
+      "constructionRouting": [
+        {
+          "parentIssue": 130,
+          "cluster": "trust_scam_potential_complement_review",
+          "status": "research_route_only"
+        }
+      ]
+    }
+  ]
+}
