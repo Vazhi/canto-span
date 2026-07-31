@@ -1,0 +1,148 @@
+name: Generate AA82 boundary inventory
+
+on:
+  push:
+    branches:
+      - agent/aa82-attested-boundary-packet
+
+permissions:
+  contents: read
+
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Build exact 邊度 inventory
+        shell: bash
+        run: |
+          node <<'NODE'
+          "use strict";
+          const fs = require("node:fs");
+          const path = require("node:path");
+
+          const ROOT = process.cwd();
+          const TARGET = "邊度";
+          const TEXT_EXTENSIONS = new Set([".json", ".md", ".tsv", ".txt", ".js", ".cjs", ".mjs", ".yml", ".yaml"]);
+          const EXCLUDED_DIRS = new Set([".git", "node_modules"]);
+
+          function classify(file) {
+            if (file === "main.js") return "generated_runtime";
+            if (file.startsWith("src/")) return "runtime_source";
+            if (file.startsWith("tests/fixtures/") || file.startsWith("fixtures/")) return "fixture";
+            if (file.startsWith("tests/")) return "test_or_expectation";
+            if (file.startsWith("data/pedagogical-corpus/") || file.startsWith("data/corpus/")) return "source_corpus";
+            if (file.startsWith("data/")) return "data_registry";
+            if (file.startsWith("docs/research/")) return "research_document";
+            if (file.startsWith("docs/")) return "documentation";
+            if (file.startsWith(".github/")) return "workflow";
+            return "other";
+          }
+
+          function filesUnder(dir) {
+            const out = [];
+            for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+              if (EXCLUDED_DIRS.has(entry.name)) continue;
+              const abs = path.join(dir, entry.name);
+              if (entry.isDirectory()) out.push(...filesUnder(abs));
+              else out.push(abs);
+            }
+            return out;
+          }
+
+          function summarizeObject(obj) {
+            if (!obj || typeof obj !== "object" || Array.isArray(obj)) return null;
+            const keys = [
+              "id", "sourceId", "construction_code", "construction_uuid", "type", "label", "title",
+              "speaker", "turn", "ordinal", "surface", "text", "input", "sentence", "utterance",
+              "traditional", "cantonese", "jyutping", "expected", "actual", "classification"
+            ];
+            const summary = {};
+            for (const key of keys) {
+              if (Object.prototype.hasOwnProperty.call(obj, key)) summary[key] = obj[key];
+            }
+            if (obj.source && typeof obj.source === "object") {
+              summary.source = {};
+              for (const key of ["sourceLine", "traditional", "jyutpingLine", "english"]) {
+                if (Object.prototype.hasOwnProperty.call(obj.source, key)) summary.source[key] = obj.source[key];
+              }
+            }
+            return Object.keys(summary).length ? summary : null;
+          }
+
+          function collectJson(value, pointer, ancestors, hits) {
+            if (typeof value === "string") {
+              if (!value.includes(TARGET)) return;
+              let context = null;
+              for (let i = ancestors.length - 1; i >= 0 && !context; i -= 1) {
+                context = summarizeObject(ancestors[i]);
+              }
+              hits.push({ pointer, value, context });
+              return;
+            }
+            if (!value || typeof value !== "object") return;
+            const nextAncestors = [...ancestors, value];
+            if (Array.isArray(value)) {
+              value.forEach((item, index) => collectJson(item, `${pointer}/${index}`, nextAncestors, hits));
+              return;
+            }
+            for (const [key, child] of Object.entries(value)) {
+              const escaped = key.replaceAll("~", "~0").replaceAll("/", "~1");
+              collectJson(child, `${pointer}/${escaped}`, nextAncestors, hits);
+            }
+          }
+
+          const lineHits = [];
+          const jsonHits = [];
+          const files = filesUnder(ROOT).sort();
+          for (const abs of files) {
+            const rel = path.relative(ROOT, abs).split(path.sep).join("/");
+            if (!TEXT_EXTENSIONS.has(path.extname(rel).toLowerCase())) continue;
+            const stat = fs.statSync(abs);
+            if (stat.size > 5_000_000) continue;
+            let text;
+            try { text = fs.readFileSync(abs, "utf8"); } catch { continue; }
+            if (!text.includes(TARGET) && !text.includes("LocativeWhQuestion") && !text.includes("BinDouWhPlaceQuestion")) continue;
+            const lines = text.split(/\r?\n/);
+            lines.forEach((line, index) => {
+              if (line.includes(TARGET) || line.includes("LocativeWhQuestion") || line.includes("BinDouWhPlaceQuestion")) {
+                lineHits.push({ file: rel, category: classify(rel), line: index + 1, text: line.slice(0, 1000) });
+              }
+            });
+            if (path.extname(rel).toLowerCase() === ".json" && text.includes(TARGET)) {
+              try {
+                const parsed = JSON.parse(text);
+                const hits = [];
+                collectJson(parsed, "", [], hits);
+                for (const hit of hits) jsonHits.push({ file: rel, category: classify(rel), ...hit });
+              } catch (error) {
+                jsonHits.push({ file: rel, category: classify(rel), parseError: error.message });
+              }
+            }
+          }
+
+          const categoryCounts = {};
+          for (const hit of lineHits) categoryCounts[hit.category] = (categoryCounts[hit.category] || 0) + 1;
+          const result = {
+            schema: "canto-span-aa82-repository-inventory-v1",
+            generatedAt: new Date().toISOString(),
+            target: TARGET,
+            lineHitCount: lineHits.length,
+            jsonHitCount: jsonHits.filter((hit) => !hit.parseError).length,
+            categoryCounts,
+            lineHits,
+            jsonHits
+          };
+          fs.mkdirSync("artifacts", { recursive: true });
+          fs.writeFileSync("artifacts/aa82-repository-inventory.json", JSON.stringify(result, null, 2) + "\n");
+          console.log(JSON.stringify({ lineHitCount: result.lineHitCount, jsonHitCount: result.jsonHitCount, categoryCounts }, null, 2));
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: aa82-repository-inventory
+          path: artifacts/aa82-repository-inventory.json
+          if-no-files-found: error
