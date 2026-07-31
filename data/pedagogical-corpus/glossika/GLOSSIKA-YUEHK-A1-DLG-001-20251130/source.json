@@ -1,0 +1,709 @@
+{
+  "schema": "canto-span-pedagogical-corpus-source-v1",
+  "source": {
+    "sourceId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130",
+    "provider": "Glossika",
+    "course": "Cantonese (HK) A1 dialog",
+    "titleTraditional": "學跳舞",
+    "titleEnglish": "Learning to Dance",
+    "sourceDate": "2025-11-30",
+    "gmailMessageId": "19ad6755cb93e4c5",
+    "sourceType": "authorized_pedagogical_email",
+    "language": "yue-Hant-HK",
+    "scenarioEnglish": "Two friends at a dance studio, one asking the other about their dance experience and abilities (A1)",
+    "authorization": {
+      "basis": "User states Glossika granted permission to use all lesson data in this non-commercial private-use Canto Span project.",
+      "scope": "Source-preserving corpus ingress for this dialog.",
+      "redistributionClaim": "none"
+    }
+  },
+  "ingress": {
+    "issue": 137,
+    "parentIssue": 130,
+    "workClaimIssue": 289,
+    "branch": "agent/glossika-dialog-001-ingress",
+    "reviewState": "REQUIRES_EXPERT_CONTEXT_REVIEW",
+    "policy": "Source speaker labels, Cantonese, punctuation, Jyutping, turn order, scenario text, and source review note are immutable. Turn-level English translations are absent in the source and must not be generated into the source layer.",
+    "recordCount": 36,
+    "itemTypeCounts": {
+      "dialog_turn": 36
+    },
+    "sectionCounts": {
+      "dialog": 36
+    },
+    "sourcePayloadHash": "sha256:5956a3641423f3b022422bf9207878f5459e7e45579c79506ae55d9860bf4ac5",
+    "sourcePayloadHashPolicy": "SHA-256 of canonical key-sorted JSON for the ordered immutable source-field array."
+  },
+  "dialog": {
+    "speakers": [
+      "美美",
+      "阿文"
+    ],
+    "turnCount": 36,
+    "adjacencyPreserved": true,
+    "scenarioEnglish": "Two friends at a dance studio, one asking the other about their dance experience and abilities (A1)",
+    "sourceReviewNote": {
+      "focus": "Expressing ability and inability using 識唔識 and progressing from abilities to making concrete plans.",
+      "reviewPriority": "Low",
+      "reviewerFocus": "Verify naturalness of ability inquiry patterns and appointment-making language.",
+      "confidenceLevel": "High",
+      "evidenceStatus": "provider_metadata_only_not_independent_evidence"
+    }
+  },
+  "translationPolicy": {
+    "turnLevelEnglishPresent": false,
+    "sourceValue": null,
+    "status": "absent_in_source",
+    "generatedTranslationAuthorized": false
+  },
+  "items": [
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I001",
+      "ordinal": 1,
+      "section": "dialog",
+      "subsection": "learning_to_dance",
+      "itemType": "dialog_turn",
+      "speaker": "美美",
+      "previousTurnId": null,
+      "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I002",
+      "source": {
+        "speaker": "美美",
+        "traditional": "喂,阿文,你識唔識跳舞呀?",
+        "jyutping": "Mei5 Mei5: Wai3, Aa3 Man4, nei5 sik1 m4 sik1 tiu3 mou5 aa3?",
+        "english": null,
+        "translationStatus": "absent_in_source"
+      },
+      "sourceHash": "sha256:dc5c64f680d6bf1de3c150293d8bd0932c26cd66897c5b863cea8eea39a674c2"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I002",
+      "ordinal": 2,
+      "section": "dialog",
+      "subsection": "learning_to_dance",
+      "itemType": "dialog_turn",
+      "speaker": "阿文",
+      "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I001",
+      "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I003",
+      "source": {
+        "speaker": "阿文",
+        "traditional": "識少少啫,跳得唔係好好。",
+        "jyutping": "Aa3 Man4: Sik1 siu2 siu2 ze1, tiu3 dak1 m4 hai6 hou2 hou2.",
+        "english": null,
+        "translationStatus": "absent_in_source"
+      },
+      "sourceHash": "sha256:c5c5e039a54760a276a2de0a09c9041da1817b328e5a979f4261e5d01f89d4a9"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I003",
+      "ordinal": 3,
+      "section": "dialog",
+      "subsection": "learning_to_dance",
+      "itemType": "dialog_turn",
+      "speaker": "美美",
+      "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I002",
+      "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I004",
+      "source": {
+        "speaker": "美美",
+        "traditional": "你識跳咩舞呀?",
+        "jyutping": "Mei5 Mei5: Nei5 sik1 tiu3 me1 mou5 aa3?",
+        "english": null,
+        "translationStatus": "absent_in_source"
+      },
+      "sourceHash": "sha256:dd1fb5654bcdc84e81cae439f3cfcf82bb3a3f39d0f6894669a54ab0a490c09e"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I004",
+      "ordinal": 4,
+      "section": "dialog",
+      "subsection": "learning_to_dance",
+      "itemType": "dialog_turn",
+      "speaker": "阿文",
+      "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I003",
+      "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I005",
+      "source": {
+        "speaker": "阿文",
+        "traditional": "我識跳啲基本嘅舞,好似華爾滋咁。",
+        "jyutping": "Aa3 Man4: Ngo5 sik1 tiu3 di1 gei1 bun2 ge3 mou5, hou2 ci5 Waa4 Ji5 Zi1 gam2.",
+        "english": null,
+        "translationStatus": "absent_in_source"
+      },
+      "sourceHash": "sha256:52d5d1a9b9f394e6b47e9444d7aa5e35e95b31a062160e427ba0c1375063baa2"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I005",
+      "ordinal": 5,
+      "section": "dialog",
+      "subsection": "learning_to_dance",
+      "itemType": "dialog_turn",
+      "speaker": "美美",
+      "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I004",
+      "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I006",
+      "source": {
+        "speaker": "美美",
+        "traditional": "嘩,華爾滋!你幾時學㗎?",
+        "jyutping": "Mei5 Mei5: Waa1, Waa4 Ji5 Zi1! Nei5 gei2 si4 hok6 gaa3?",
+        "english": null,
+        "translationStatus": "absent_in_source"
+      },
+      "sourceHash": "sha256:6732403b00eadb19a46b697f3b3935616a770ece190142fb4ba1525b368ce869"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I006",
+      "ordinal": 6,
+      "section": "dialog",
+      "subsection": "learning_to_dance",
+      "itemType": "dialog_turn",
+      "speaker": "阿文",
+      "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I005",
+      "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I007",
+      "source": {
+        "speaker": "阿文",
+        "traditional": "我上年學咗三個月,不過而家唔記得晒喇。",
+        "jyutping": "Aa3 Man4: Ngo5 soeng6 nin4 hok6 zo2 saam1 go3 jyut6, bat1 gwo3 ji4 gaa1 m4 gei3 dak1 saai3 laa3.",
+        "english": null,
+        "translationStatus": "absent_in_source"
+      },
+      "sourceHash": "sha256:e54638267d109aad8d6440b703677eb15bcedf5e94e29893a013b888235eae59"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I007",
+      "ordinal": 7,
+      "section": "dialog",
+      "subsection": "learning_to_dance",
+      "itemType": "dialog_turn",
+      "speaker": "美美",
+      "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I006",
+      "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I008",
+      "source": {
+        "speaker": "美美",
+        "traditional": "點解唔繼續跳呀?",
+        "jyutping": "Mei5 Mei5: Dim2 gaai2 m4 gai3 zuk6 tiu3 aa3?",
+        "english": null,
+        "translationStatus": "absent_in_source"
+      },
+      "sourceHash": "sha256:469ff4ed0962ebe7a5a2bb33770ba334280582c5b549d4ac76af824e15794799"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I008",
+      "ordinal": 8,
+      "section": "dialog",
+      "subsection": "learning_to_dance",
+      "itemType": "dialog_turn",
+      "speaker": "阿文",
+      "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I007",
+      "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I009",
+      "source": {
+        "speaker": "阿文",
+        "traditional": "因為太忙喇,冇時間。",
+        "jyutping": "Aa3 Man4: Jan1 wai6 taai3 mong4 laa3, mou5 si4 gaan3.",
+        "english": null,
+        "translationStatus": "absent_in_source"
+      },
+      "sourceHash": "sha256:36b5bffd815cfe206fa38fd827a43b08ca49f086e0c53f006816edd89ff68cf6"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I009",
+      "ordinal": 9,
+      "section": "dialog",
+      "subsection": "learning_to_dance",
+      "itemType": "dialog_turn",
+      "speaker": "美美",
+      "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I008",
+      "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I010",
+      "source": {
+        "speaker": "美美",
+        "traditional": "咁你而家有冇時間呀?",
+        "jyutping": "Mei5 Mei5: Gam2 nei5 ji4 gaa1 jau5 mou5 si4 gaan3 aa3?",
+        "english": null,
+        "translationStatus": "absent_in_source"
+      },
+      "sourceHash": "sha256:9697cd8125bb188b8c1a17f2b1f3ddff81890c6a4054601ef0d2a1f8f3628fa1"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I010",
+      "ordinal": 10,
+      "section": "dialog",
+      "subsection": "learning_to_dance",
+      "itemType": "dialog_turn",
+      "speaker": "阿文",
+      "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I009",
+      "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I011",
+      "source": {
+        "speaker": "阿文",
+        "traditional": "有呀,點解咁問呀?",
+        "jyutping": "Aa3 Man4: Jau5 aa3, dim2 gaai2 gam3 man6 aa3?",
+        "english": null,
+        "translationStatus": "absent_in_source"
+      },
+      "sourceHash": "sha256:d7d9b083f422b468874ef343631142ae45b53910a056d7b57153c0faf1651427"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I011",
+      "ordinal": 11,
+      "section": "dialog",
+      "subsection": "learning_to_dance",
+      "itemType": "dialog_turn",
+      "speaker": "美美",
+      "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I010",
+      "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I012",
+      "source": {
+        "speaker": "美美",
+        "traditional": "我想學跳舞,你可唔可以教我呀?",
+        "jyutping": "Mei5 Mei5: Ngo5 soeng2 hok6 tiu3 mou5, nei5 ho2 m4 ho2 ji5 gaau3 ngo5 aa3?",
+        "english": null,
+        "translationStatus": "absent_in_source"
+      },
+      "sourceHash": "sha256:c77445fc6d45a13d7da5203d02dd1c6b30250041bca26a03a01d4e9488b0d2d0"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I012",
+      "ordinal": 12,
+      "section": "dialog",
+      "subsection": "learning_to_dance",
+      "itemType": "dialog_turn",
+      "speaker": "阿文",
+      "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I011",
+      "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I013",
+      "source": {
+        "speaker": "阿文",
+        "traditional": "我教得唔好㗎,不如你去學校學啦。",
+        "jyutping": "Aa3 Man4: Ngo5 gaau3 dak1 m4 hou2 gaa3, bat1 jyu4 nei5 heoi3 hok6 haau6 hok6 laa1.",
+        "english": null,
+        "translationStatus": "absent_in_source"
+      },
+      "sourceHash": "sha256:1d443180bcf06f630bbcbd3bd1cfda4eae773f15dd22350e44dda904502afe05"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I013",
+      "ordinal": 13,
+      "section": "dialog",
+      "subsection": "learning_to_dance",
+      "itemType": "dialog_turn",
+      "speaker": "美美",
+      "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I012",
+      "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I014",
+      "source": {
+        "speaker": "美美",
+        "traditional": "我驚學校太貴喇。",
+        "jyutping": "Mei5 Mei5: Ngo5 geng1 hok6 haau6 taai3 gwai3 laa3.",
+        "english": null,
+        "translationStatus": "absent_in_source"
+      },
+      "sourceHash": "sha256:d750c440256b3983382b3a6870048c17d405a8e20edff28e8e877b1e2f72b705"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I014",
+      "ordinal": 14,
+      "section": "dialog",
+      "subsection": "learning_to_dance",
+      "itemType": "dialog_turn",
+      "speaker": "阿文",
+      "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I013",
+      "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I015",
+      "source": {
+        "speaker": "阿文",
+        "traditional": "咁你想學啲咩舞呀?",
+        "jyutping": "Aa3 Man4: Gam2 nei5 soeng2 hok6 di1 me1 mou5 aa3?",
+        "english": null,
+        "translationStatus": "absent_in_source"
+      },
+      "sourceHash": "sha256:c648f49132fa09754fc878622c858ae1845d7025c9127ad3667a7e9beb6a3591"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I015",
+      "ordinal": 15,
+      "section": "dialog",
+      "subsection": "learning_to_dance",
+      "itemType": "dialog_turn",
+      "speaker": "美美",
+      "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I014",
+      "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I016",
+      "source": {
+        "speaker": "美美",
+        "traditional": "我想學爵士舞,你識唔識呀?",
+        "jyutping": "Mei5 Mei5: Ngo5 soeng2 hok6 Zoek6 Si6 Mou5, nei5 sik1 m4 sik1 aa3?",
+        "english": null,
+        "translationStatus": "absent_in_source"
+      },
+      "sourceHash": "sha256:ebadd01b53569d3a4f96a83d96673c2045603d0d4aaa61831a32e6e768da4c01"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I016",
+      "ordinal": 16,
+      "section": "dialog",
+      "subsection": "learning_to_dance",
+      "itemType": "dialog_turn",
+      "speaker": "阿文",
+      "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I015",
+      "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I017",
+      "source": {
+        "speaker": "阿文",
+        "traditional": "唔識呀,我淨係識跳華爾滋。",
+        "jyutping": "Aa3 Man4: M4 sik1 aa3, ngo5 zing6 hai6 sik1 tiu3 Waa4 Ji5 Zi1.",
+        "english": null,
+        "translationStatus": "absent_in_source"
+      },
+      "sourceHash": "sha256:71c146be7ae04d7fae07c0b8a90064bf4508f33ff11475b9f057f4fcd3926815"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I017",
+      "ordinal": 17,
+      "section": "dialog",
+      "subsection": "learning_to_dance",
+      "itemType": "dialog_turn",
+      "speaker": "美美",
+      "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I016",
+      "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I018",
+      "source": {
+        "speaker": "美美",
+        "traditional": "咁你可唔可以陪我去睇下呀?",
+        "jyutping": "Mei5 Mei5: Gam2 nei5 ho2 m4 ho2 ji5 pui4 ngo5 heoi3 tai2 haa5 aa3?",
+        "english": null,
+        "translationStatus": "absent_in_source"
+      },
+      "sourceHash": "sha256:7ed67ddd57f29703a2f461cdb73d0ac3baab9f9946798e590a2ef257cada169d"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I018",
+      "ordinal": 18,
+      "section": "dialog",
+      "subsection": "learning_to_dance",
+      "itemType": "dialog_turn",
+      "speaker": "阿文",
+      "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I017",
+      "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I019",
+      "source": {
+        "speaker": "阿文",
+        "traditional": "去邊度睇呀?",
+        "jyutping": "Aa3 Man4: Heoi3 bin1 dou6 tai2 aa3?",
+        "english": null,
+        "translationStatus": "absent_in_source"
+      },
+      "sourceHash": "sha256:08988e65a4acede568062cba28fb2b56769098c2b7d98b50ef6467b4c7921d38"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I019",
+      "ordinal": 19,
+      "section": "dialog",
+      "subsection": "learning_to_dance",
+      "itemType": "dialog_turn",
+      "speaker": "美美",
+      "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I018",
+      "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I020",
+      "source": {
+        "speaker": "美美",
+        "traditional": "去跳舞學校睇吓課程。",
+        "jyutping": "Mei5 Mei5: Heoi3 tiu3 mou5 hok6 haau6 tai2 haa5 fo3 cing4.",
+        "english": null,
+        "translationStatus": "absent_in_source"
+      },
+      "sourceHash": "sha256:694dd3339db4fc05965e699675cb9a181c4a64a8a027f193294a9e411e2a33c2"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I020",
+      "ordinal": 20,
+      "section": "dialog",
+      "subsection": "learning_to_dance",
+      "itemType": "dialog_turn",
+      "speaker": "阿文",
+      "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I019",
+      "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I021",
+      "source": {
+        "speaker": "阿文",
+        "traditional": "得呀,幾時去呀?",
+        "jyutping": "Aa3 Man4: Dak1 aa3, gei2 si4 heoi3 aa3?",
+        "english": null,
+        "translationStatus": "absent_in_source"
+      },
+      "sourceHash": "sha256:e96409082202dea50746cc89f2125ce0d4a407e570d430816ab8e6f255c6017f"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I021",
+      "ordinal": 21,
+      "section": "dialog",
+      "subsection": "learning_to_dance",
+      "itemType": "dialog_turn",
+      "speaker": "美美",
+      "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I020",
+      "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I022",
+      "source": {
+        "speaker": "美美",
+        "traditional": "聽日得唔得呀?",
+        "jyutping": "Mei5 Mei5: Ting1 jat6 dak1 m4 dak1 aa3?",
+        "english": null,
+        "translationStatus": "absent_in_source"
+      },
+      "sourceHash": "sha256:5c26262b1c6d71c794d6341551f8c84ed4a9ed3621f37cb97f9cc5e212576d00"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I022",
+      "ordinal": 22,
+      "section": "dialog",
+      "subsection": "learning_to_dance",
+      "itemType": "dialog_turn",
+      "speaker": "阿文",
+      "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I021",
+      "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I023",
+      "source": {
+        "speaker": "阿文",
+        "traditional": "得呀,聽日下晝得唔得呀?",
+        "jyutping": "Aa3 Man4: Dak1 aa3, ting1 jat6 haa6 zau3 dak1 m4 dak1 aa3?",
+        "english": null,
+        "translationStatus": "absent_in_source"
+      },
+      "sourceHash": "sha256:ffadbbf0052fc2febd5c75995cb701ed19b83fb1541d068c60cd97be7a9034e0"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I023",
+      "ordinal": 23,
+      "section": "dialog",
+      "subsection": "learning_to_dance",
+      "itemType": "dialog_turn",
+      "speaker": "美美",
+      "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I022",
+      "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I024",
+      "source": {
+        "speaker": "美美",
+        "traditional": "得呀!咁我哋約幾點呀?",
+        "jyutping": "Mei5 Mei5: Dak1 aa3! Gam2 ngo5 dei6 joek3 gei2 dim2 aa3?",
+        "english": null,
+        "translationStatus": "absent_in_source"
+      },
+      "sourceHash": "sha256:6f233dfc1a936ed541f1da2302383895531176b621a7a4af708dab774598c18d"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I024",
+      "ordinal": 24,
+      "section": "dialog",
+      "subsection": "learning_to_dance",
+      "itemType": "dialog_turn",
+      "speaker": "阿文",
+      "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I023",
+      "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I025",
+      "source": {
+        "speaker": "阿文",
+        "traditional": "三點得唔得呀?",
+        "jyutping": "Aa3 Man4: Saam1 dim2 dak1 m4 dak1 aa3?",
+        "english": null,
+        "translationStatus": "absent_in_source"
+      },
+      "sourceHash": "sha256:1434703fccad0465c1befc4aec5e2849ef63a97b80b1b4e006f9be79f5c23fe3"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I025",
+      "ordinal": 25,
+      "section": "dialog",
+      "subsection": "learning_to_dance",
+      "itemType": "dialog_turn",
+      "speaker": "美美",
+      "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I024",
+      "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I026",
+      "source": {
+        "speaker": "美美",
+        "traditional": "得呀!喺邊度見呀?",
+        "jyutping": "Mei5 Mei5: Dak1 aa3! Hai2 bin1 dou6 gin3 aa3?",
+        "english": null,
+        "translationStatus": "absent_in_source"
+      },
+      "sourceHash": "sha256:023127ec12946e6d3b3afc8517d5021f9dac726d4c4bd5facb4a5d4606500b41"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I026",
+      "ordinal": 26,
+      "section": "dialog",
+      "subsection": "learning_to_dance",
+      "itemType": "dialog_turn",
+      "speaker": "阿文",
+      "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I025",
+      "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I027",
+      "source": {
+        "speaker": "阿文",
+        "traditional": "喺學校門口見啦。",
+        "jyutping": "Aa3 Man4: Hai2 hok6 haau6 mun4 hau2 gin3 laa1.",
+        "english": null,
+        "translationStatus": "absent_in_source"
+      },
+      "sourceHash": "sha256:5a80252a0db846ca5648fc8e604d1536c671432072c1ac2d91467c0f5d833557"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I027",
+      "ordinal": 27,
+      "section": "dialog",
+      "subsection": "learning_to_dance",
+      "itemType": "dialog_turn",
+      "speaker": "美美",
+      "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I026",
+      "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I028",
+      "source": {
+        "speaker": "美美",
+        "traditional": "好呀!咁學校叫咩名呀?",
+        "jyutping": "Mei5 Mei5: Hou2 aa3! Gam2 hok6 haau6 giu3 me1 meng2 aa3?",
+        "english": null,
+        "translationStatus": "absent_in_source"
+      },
+      "sourceHash": "sha256:4526f2637f335b6bd2b4fbcebff20037744a465fab2eff53a5b7d866bef442bb"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I028",
+      "ordinal": 28,
+      "section": "dialog",
+      "subsection": "learning_to_dance",
+      "itemType": "dialog_turn",
+      "speaker": "阿文",
+      "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I027",
+      "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I029",
+      "source": {
+        "speaker": "阿文",
+        "traditional": "叫「星光舞蹈學校」,你識唔識呀?",
+        "jyutping": "Aa3 Man4: Giu3 \"Sing1 Gwong1 Mou5 Dou6 Hok6 Haau6\", nei5 sik1 m4 sik1 aa3?",
+        "english": null,
+        "translationStatus": "absent_in_source"
+      },
+      "sourceHash": "sha256:dda94ae01cd7ff3cfd68af2f88c621505cf9454258e1c6aec561a54f8cf86352"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I029",
+      "ordinal": 29,
+      "section": "dialog",
+      "subsection": "learning_to_dance",
+      "itemType": "dialog_turn",
+      "speaker": "美美",
+      "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I028",
+      "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I030",
+      "source": {
+        "speaker": "美美",
+        "traditional": "唔識呀,喺邊度呀?",
+        "jyutping": "Mei5 Mei5: M4 sik1 aa3, hai2 bin1 dou6 aa3?",
+        "english": null,
+        "translationStatus": "absent_in_source"
+      },
+      "sourceHash": "sha256:bc5aee5f7e07955b5e1476bad297e72e1352ba25adc074de17038165e9c44514"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I030",
+      "ordinal": 30,
+      "section": "dialog",
+      "subsection": "learning_to_dance",
+      "itemType": "dialog_turn",
+      "speaker": "阿文",
+      "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I029",
+      "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I031",
+      "source": {
+        "speaker": "阿文",
+        "traditional": "喺旺角度,好近地鐵站。",
+        "jyutping": "Aa3 Man4: Hai2 Wong6 Gok3 dou6, hou2 kan5 dei6 tit3 zaam6.",
+        "english": null,
+        "translationStatus": "absent_in_source"
+      },
+      "sourceHash": "sha256:c217f0124aff9513140fda7f5095965011db6eae68b12d078a0f6c7295394def"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I031",
+      "ordinal": 31,
+      "section": "dialog",
+      "subsection": "learning_to_dance",
+      "itemType": "dialog_turn",
+      "speaker": "美美",
+      "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I030",
+      "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I032",
+      "source": {
+        "speaker": "美美",
+        "traditional": "好呀,咁我搵到喇!",
+        "jyutping": "Mei5 Mei5: Hou2 aa3, gam2 ngo5 wan2 dou2 laa3!",
+        "english": null,
+        "translationStatus": "absent_in_source"
+      },
+      "sourceHash": "sha256:c29562c58bf1d9d1bb8cdbe2567fc4301a90aad1304ce394d27dd140dad7da84"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I032",
+      "ordinal": 32,
+      "section": "dialog",
+      "subsection": "learning_to_dance",
+      "itemType": "dialog_turn",
+      "speaker": "阿文",
+      "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I031",
+      "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I033",
+      "source": {
+        "speaker": "阿文",
+        "traditional": "記住著運動鞋呀!",
+        "jyutping": "Aa3 Man4: Gei3 zyu6 zoek3 wan6 dung6 haai4 aa3!",
+        "english": null,
+        "translationStatus": "absent_in_source"
+      },
+      "sourceHash": "sha256:f45caee332269893f928981d4625a4a79878471f68b2dc1ad1e9cf2c0eff2fb3"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I033",
+      "ordinal": 33,
+      "section": "dialog",
+      "subsection": "learning_to_dance",
+      "itemType": "dialog_turn",
+      "speaker": "美美",
+      "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I032",
+      "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I034",
+      "source": {
+        "speaker": "美美",
+        "traditional": "好呀,我記住喇!",
+        "jyutping": "Mei5 Mei5: Hou2 aa3, ngo5 gei3 zyu6 laa3!",
+        "english": null,
+        "translationStatus": "absent_in_source"
+      },
+      "sourceHash": "sha256:20c7a88153c01238e0641adb840b1ce41e818b86c304664ac70a511c566edbf6"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I034",
+      "ordinal": 34,
+      "section": "dialog",
+      "subsection": "learning_to_dance",
+      "itemType": "dialog_turn",
+      "speaker": "阿文",
+      "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I033",
+      "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I035",
+      "source": {
+        "speaker": "阿文",
+        "traditional": "咁聽日見喇!",
+        "jyutping": "Aa3 Man4: Gam2 ting1 jat6 gin3 laa3!",
+        "english": null,
+        "translationStatus": "absent_in_source"
+      },
+      "sourceHash": "sha256:0ecc461ca26189e678eaa40c70cb555c7b5c10d239a7fee6a248d102caf8feda"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I035",
+      "ordinal": 35,
+      "section": "dialog",
+      "subsection": "learning_to_dance",
+      "itemType": "dialog_turn",
+      "speaker": "美美",
+      "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I034",
+      "nextTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I036",
+      "source": {
+        "speaker": "美美",
+        "traditional": "聽日見!多謝你呀!",
+        "jyutping": "Mei5 Mei5: Ting1 jat6 gin3! Do1 ze6 nei5 aa3!",
+        "english": null,
+        "translationStatus": "absent_in_source"
+      },
+      "sourceHash": "sha256:d91006f17570f52a785690af24a70c56b76b9aab6771bc68732efc57570e5695"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I036",
+      "ordinal": 36,
+      "section": "dialog",
+      "subsection": "learning_to_dance",
+      "itemType": "dialog_turn",
+      "speaker": "阿文",
+      "previousTurnId": "GLOSSIKA-YUEHK-A1-DLG-001-20251130-I035",
+      "nextTurnId": null,
+      "source": {
+        "speaker": "阿文",
+        "traditional": "唔使客氣!",
+        "jyutping": "Aa3 Man4: M4 sai2 haak3 hei3!",
+        "english": null,
+        "translationStatus": "absent_in_source"
+      },
+      "sourceHash": "sha256:117cac7a434aca42d216121d169f31422da9a1aaa8baadf94799e1ad4e33cfe2"
+    }
+  ]
+}
