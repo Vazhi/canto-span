@@ -1,0 +1,40 @@
+name: Export Glossika dialogs 001-020
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  export:
+    if: github.event.pull_request.head.ref == 'agent/glossika-dialogs-015-020-ingress'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+      - name: Prepare twenty-dialog snapshot
+        shell: bash
+        run: |
+          mkdir -p artifacts/glossika
+          for number in $(seq -w 1 20); do
+            directory=$(find data/pedagogical-corpus/glossika -maxdepth 1 -type d -name "GLOSSIKA-YUEHK-A1-DLG-${number}-*" | head -1)
+            test -n "$directory"
+            cp -R "$directory" artifacts/glossika/
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: glossika-dialogs-001-020
+          path: artifacts/glossika
+          if-no-files-found: error
+      - name: Remove temporary exporter
+        shell: bash
+        run: |
+          rm .github/workflows/generate-glossika-dialogs-015-020.yml
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add .github/workflows/generate-glossika-dialogs-015-020.yml
+          git commit -m "Remove temporary Glossika snapshot exporter"
+          git push
