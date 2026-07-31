@@ -1,0 +1,39 @@
+name: Temporary AA82 runtime span audit
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    if: github.head_ref == 'agent/aa82-wh-place-boundaries'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+      - name: Locate every AA82 runtime reference
+        run: |
+          set -euo pipefail
+          echo '=== EXACT LABEL REFERENCES ==='
+          grep -R -n -C 8 --exclude-dir=.git --exclude='*.md' --exclude='*.tsv' 'BinDouWhPlaceQuestion' . || true
+          echo '=== BIN DOU / 邊度 RUNTIME REFERENCES ==='
+          grep -R -n -C 6 --exclude-dir=.git --exclude='*.md' --exclude='*.tsv' -E 'bin1dou6|邊度' src tests main.js | head -n 1200 || true
+      - name: Print canonical generated-runtime regions
+        run: |
+          set -euo pipefail
+          echo '=== main.js 2368-2395 ==='
+          sed -n '2368,2395p' main.js
+          echo '=== main.js 15099-15112 ==='
+          sed -n '15099,15112p' main.js
+      - name: Inspect AA82 registry and fixtures
+        run: |
+          set -euo pipefail
+          echo '=== IDENTITY ROW ==='
+          grep -R -n -C 3 --exclude-dir=.git '4593e90d-b923-54af-a9ac-533409c38355' . || true
+          echo '=== AA82 FILES ==='
+          find grammar tests src -type f -print0 | xargs -0 grep -l -E 'AA82|BinDouWhPlaceQuestion' || true
