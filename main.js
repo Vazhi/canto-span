@@ -19191,6 +19191,7 @@ var require_apply_terminal_patterns = __commonJS({
         if (!surface.includes("邊度")) return null;
         const wrapped = ordinaryWrapped || applyConstructionPatterns2(segment);
         if (constructionTypePresent(wrapped, "LocativeWhQuestion")) return null;
+        if (constructionTypePresent(wrapped, "NeedsContext")) return null;
         const bareSurface = surface.replace(/[呀啊㗎呢嚹喎啦唧吖嘛嘅啫囉掛]+$/u, "");
         const whIndex = bareSurface.indexOf("邊度");
         const prefix = bareSurface.slice(0, whIndex);
