@@ -38,6 +38,7 @@ const boundaries = [
   "嗰陣時我哋去咗邊度食啊?",
   "你哋去邊度食嘢啊?",
   "邊度食得晒唧?",
+  "你尋日食咗邊度呀？",
 ];
 
 test("AA82 wraps attested matrix locative question families", () => {
