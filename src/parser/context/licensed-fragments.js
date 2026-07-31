@@ -111,7 +111,6 @@ module.exports = function createLicensedContextFragments(dependencies = {}) {
         aspect: target.aspect || "not_overt",
         complement_antecedent: target.predicate_family === "modal" ? "question_domain_unspecified" : "",
         complement_antecedent_span: target.predicate_family === "modal" ? question.antecedent_span : "",
-        complement_type: target.predicate_family === "modal" ? "unspecified_np_vp_or_proposition" : "",
         particle_contribution: target.particle_contribution || [],
         overt_head: target.head_surface,
         predicate_omission_profile: target.predicate_omission_profile || "",
