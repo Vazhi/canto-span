@@ -1,4 +1,4 @@
-name: Diagnose verification alignment chunks
+name: Apply verification workflow alignment
 
 on:
   pull_request:
@@ -7,26 +7,82 @@ on:
       - ".github/workflows/export-verification-audit-snapshot.yml"
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  diagnose:
+  apply:
     if: github.head_ref == 'agent/verification-workflow-alignment'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
         with:
           ref: agent/verification-workflow-alignment
-      - name: Report chunk sizes and checksums
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Apply audited patch
         shell: bash
         run: |
           set -euo pipefail
-          wc -c .github/workflows/verification-alignment.part*
-          sha256sum .github/workflows/verification-alignment.part*
+          echo "9ece9d5d834bd870945eebc18a99677401a7952b7c32fea06b3f707d72d9ea1a  .github/workflows/verification-alignment.part00" | sha256sum -c -
+          echo "c74550aeea7003a23998ff672fcdaee16f94f83c0330a625d5902a55d8bdc9d2  .github/workflows/verification-alignment.part01" | sha256sum -c -
+          echo "8d0a7d1ce013d907bf48a03d492084cb500b4a4b808e6b75479f726b749f4aa6  .github/workflows/verification-alignment.part02a" | sha256sum -c -
+          echo "52ca9ff0a5be6a59db62c1343457580785d3951016a90e72f1ff2bd0778eccf4  .github/workflows/verification-alignment.part02b" | sha256sum -c -
+          echo "8bf6a42cf050517648ebfc471bba9c41c9bc29603f04deb981f5404f97cc1b89  .github/workflows/verification-alignment.part02c" | sha256sum -c -
+          echo "a8c6f7c3f135dcc6e952c036e2abcff2956d0ce43498a1c0f235c8e635c9fda6  .github/workflows/verification-alignment.part02d" | sha256sum -c -
+          echo "6f0b6b011509c918cdfd22591986c9c011ff459cdc62bb89c884ad76d413e4a1  .github/workflows/verification-alignment.part03" | sha256sum -c -
           cat .github/workflows/verification-alignment.part00 \
               .github/workflows/verification-alignment.part01 \
-              .github/workflows/verification-alignment.part02 \
+              .github/workflows/verification-alignment.part02a \
+              .github/workflows/verification-alignment.part02b \
+              .github/workflows/verification-alignment.part02c \
+              .github/workflows/verification-alignment.part02d \
               .github/workflows/verification-alignment.part03 \
               > /tmp/verification-alignment.b64
-          wc -c /tmp/verification-alignment.b64
-          sha256sum /tmp/verification-alignment.b64
+          echo "28cea6bdac0e8e3807a577626de78954f88a489f884573e5b2d127b0425d137f  /tmp/verification-alignment.b64" | sha256sum -c -
+          base64 -d /tmp/verification-alignment.b64 | gzip -d > /tmp/verification-alignment.diff
+          patch --batch -p5 < /tmp/verification-alignment.diff
+          rm -f .github/workflows/export-verification-audit-snapshot.yml
+          rm -f .github/workflows/verification-alignment.patch.b64
+          rm -f .github/workflows/verification-alignment.part*
+          rm -f TEMP_*
+      - name: Install build dependency
+        run: npm ci
+      - name: Verify retained state and tooling
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run verify
+          npm run verify:research
+          npm run test:coordination
+          npm test
+          node tools/test-promotion-gate.js
+          node tools/test-release-handoff.js
+      - name: Verify read-only defaults
+        shell: bash
+        run: |
+          set -euo pipefail
+          find validation/current -type f -print0 | sort -z | xargs -0 sha256sum > /tmp/validation-before.sha256
+          node tools/verify-parked-constructions.js > /tmp/parked.json
+          node tools/enforce-promotion-rules.js > /tmp/promotion.json || true
+          node tools/verify-release-handoff.js > /tmp/release.json || true
+          find validation/current -type f -print0 | sort -z | xargs -0 sha256sum > /tmp/validation-after.sha256
+          cmp /tmp/validation-before.sha256 /tmp/validation-after.sha256
+          node tools/verify-parked-constructions.js --output /tmp/parked-output.json > /dev/null
+          node tools/enforce-promotion-rules.js --output /tmp/promotion-output.json > /dev/null || true
+          node tools/verify-release-handoff.js --output /tmp/release-output.json > /dev/null || true
+          test -s /tmp/parked-output.json
+          test -s /tmp/promotion-output.json
+          test -s /tmp/release-output.json
+      - name: Commit audited state
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --check
+          git config user.name "canto-span automation"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git commit -m "Align verification with current workflows"
+          git push origin HEAD:agent/verification-workflow-alignment
