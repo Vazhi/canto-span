@@ -1,0 +1,211 @@
+{
+  "schema": "canto-span-jau-mou-dak-availability-identity-decision-v1",
+  "decided_on": "2026-08-01",
+  "parent_issue": 406,
+  "work_claim": 417,
+  "pull_request": 420,
+  "decision": {
+    "new_uuid_required": true,
+    "candidate_uuid": "4e176fe2-a147-47c7-86c8-6778a379beb2",
+    "candidate_state": "candidate",
+    "construction_code": null,
+    "canonical_name_at_creation": "JauDakMouDakAvailabilityPredicate",
+    "claim_layer": "language_construction",
+    "family_name": "AvailabilityAndOpportunityPredication",
+    "profile_name": "PreverbalJauDakOrMouDakWithPredicate",
+    "intended_source_path": "grammar/research_pending/JauDakMouDakAvailabilityPredicate.md",
+    "canonicalization_authorized_in_this_package": false,
+    "canonicalization_dependency": "A later separately claimed runtime package must create the current grammar note, executable construction test, runtime label and matcher, then canonicalize this reserved candidate through tools/allocate-construction-identity.js."
+  },
+  "reason_new_uuid_is_required": [
+    "The strongest verified source treats affirmative 有得 and negative 冇得 as preverbal units that encode possibility versus unavailability or impossibility of the following event.",
+    "The exhaustive 95-span HKCanCor review contains 63 transparent compositional availability rows across affirmative and negative polarity, five suppletive-polar questions, and broad predicate and host diversity.",
+    "AA89 ModalAuxiliaryComplementVP can remain a generic structural parent but does not preserve this lexeme-specific availability relation, polarity paradigm, or lexicalized boundaries.",
+    "AA01 M4MarkedANotAInterrogative explicitly excludes suppletive 有冇; AA55 and AA57 concern nominal possession, existence, or broad existential questions; AB32 is postverbal result potential. Reusing any of them would change or conflate its accepted identity.",
+    "A lexical entry alone is insufficient because the evidence supports a recurring relation between the overt availability head, an overt predicate, polarity, embedding, host scope, and question composition."
+  ],
+  "surface_profiles": [
+    {
+      "id": "affirmative",
+      "surface": "有得 + overt predicate",
+      "relation": "circumstances, access, entitlement, qualification, or practical conditions make the predicate event available or possible",
+      "identity": "candidate UUID",
+      "question_force": "none"
+    },
+    {
+      "id": "negative",
+      "surface": "冇得 + overt predicate",
+      "relation": "circumstances, access, entitlement, qualification, or practical conditions make the predicate event unavailable or impossible",
+      "identity": "candidate UUID",
+      "question_force": "none"
+    },
+    {
+      "id": "suppletive_polar",
+      "surface": "有 + 冇得 + overt predicate, conventionally written 有冇得 + predicate",
+      "relation": "asks which of the affirmative and negative availability alternatives holds",
+      "identity": "same candidate UUID plus separately represented question force",
+      "question_force": "suppletive_jau_mou",
+      "separate_language_uuid_required": false
+    }
+  ],
+  "composition_contract": {
+    "language_node": "JauDakMouDakAvailabilityPredicate",
+    "required_overt_parts": [
+      "availability head sequence",
+      "predicate for context-free core profiles"
+    ],
+    "features": {
+      "polarity": ["affirmative", "negative", "interrogative"],
+      "head_surface": ["有得", "有 + 得", "冇得", "冇 + 得", "有 + 冇得"],
+      "question_strategy": ["none", "suppletive_jau_mou"]
+    },
+    "outer_material": [
+      "subject or experiencer",
+      "topic",
+      "location",
+      "temporal or conditional frame",
+      "focus or restriction such as 先／先至",
+      "higher modal or epistemic material",
+      "quotation or embedding predicate",
+      "clause-final particle"
+    ],
+    "predicate_children": [
+      "simple verbal predicate",
+      "adjectival or property predicate where independently licensed",
+      "predicate plus object or complement",
+      "motion or complex VP",
+      "adverb plus predicate",
+      "code-switched predicate where lexical category is recoverable"
+    ]
+  },
+  "span_contract": {
+    "start": "first overt token of the availability head sequence",
+    "end": "end of the maximal independently licensed predicate phrase",
+    "include": [
+      "availability head sequence",
+      "predicate and its overt objects or complements"
+    ],
+    "exclude": [
+      "premarker subject, topic, location, condition, or higher modal",
+      "quotation frame or embedding predicate",
+      "clause-final particle unless a separate question or particle wrapper requires it"
+    ],
+    "tokenization_rule": "Identity cannot depend on corpus whitespace or single-token annotation; fused 有得／冇得 and split 有 + 得 are compatible when the overt structural relation is otherwise satisfied.",
+    "hidden_material_rule": "Do not fabricate a repeated 得, hidden 唔, omitted argument, or covert predicate."
+  },
+  "ellipsis_disposition": {
+    "core_allows_zero_predicate": false,
+    "reviewed_recoverable_rows": 2,
+    "clear_topic_supported_affirmative_rows": 1,
+    "decision": "Route predicate-less uses to a context-linked fragment or ellipsis analysis only when an antecedent is uniquely recoverable; do not let them establish or widen the context-free availability identity.",
+    "related_issue": 393
+  },
+  "lexical_quarantine": [
+    "fused evaluative 冇得頂",
+    "formulaic or evaluative 冇得講",
+    "conventionalized 冇得計",
+    "conventionalized 冇得搞",
+    "conventionalized 有得諗",
+    "repair or interrupted 冇得 starts",
+    "category-ambiguous nominal or code-switched complements until independently resolved"
+  ],
+  "evidence_summary": {
+    "mechanical_spans": 95,
+    "utterances": 89,
+    "source_files": 38,
+    "transparent_compositional": 63,
+    "transparent_affirmative": 31,
+    "transparent_negative": 32,
+    "suppletive_polar_questions": 5,
+    "recoverable_ellipsis": 2,
+    "lexicalized_or_idiomatic": 15,
+    "ambiguous_boundary": 7,
+    "repair_or_unusable": 3,
+    "confidence": {
+      "high": 78,
+      "medium": 16,
+      "low": 1
+    }
+  },
+  "source_basis": [
+    {
+      "source_id": "SRC-LAM-LAU-LEE-2024-SEGMENTATION",
+      "scope": "exact affirmative and negative availability unit with following event-denoting predicate"
+    },
+    {
+      "source_id": "SRC-HUANG-HER-KONG-2025-INTERROGATIVES",
+      "scope": "general suppletive 有冇 interrogative and embedded question-force evidence; application to 有冇得 remains a project inference"
+    },
+    {
+      "source_id": "HKCANCOR-JAU-MOU-DAK-R1",
+      "scope": "complete distributional review and lexical, ellipsis, repair, tokenization, host, and polarity boundaries"
+    },
+    {
+      "source_id": "SRC-PENG-1996-YAU-MOU-DAK",
+      "scope": "bibliographic lead only; no substantive claim imported without recovered full text"
+    }
+  ],
+  "existing_identity_dispositions": [
+    {
+      "construction_code": "AA89",
+      "canonical_name": "ModalAuxiliaryComplementVP",
+      "disposition": "may serve as a parser parent or overlapping structural analysis, but not as the durable availability identity"
+    },
+    {
+      "construction_code": "AA01",
+      "canonical_name": "M4MarkedANotAInterrogative",
+      "disposition": "excluded because the accepted identity requires overt lexical V-唔-V and explicitly excludes suppletive 有冇"
+    },
+    {
+      "construction_code": "AA55",
+      "canonical_name": "SubjectJauPossessiveClause",
+      "disposition": "excluded because it selects a nominal possession or availability complement rather than the 有得／冇得 predicate relation"
+    },
+    {
+      "construction_code": "AA57",
+      "canonical_name": "ExistentialQuestion",
+      "disposition": "excluded because it is an unsupported broad question identity and cannot represent affirmative and negative declaratives"
+    },
+    {
+      "construction_code": "AB32",
+      "canonical_name": "PotentialResultVP",
+      "disposition": "excluded because postverbal result potential has different overt order and structural dependencies"
+    }
+  ],
+  "later_gates": {
+    "runtime_package": [
+      "create the canonical grammar note and executable test file",
+      "install overt head recognition without depending only on token boundaries",
+      "implement affirmative, negative, and suppletive-polar profiles with lexical quarantine",
+      "canonicalize the reserved candidate and allocate the next unused short code mechanically",
+      "preserve any useful generic modal or question parent without donating its evidence"
+    ],
+    "role_neutral_panel": [
+      "availability versus 可以 and postverbal potential contrasts",
+      "affirmative, negative, and suppletive-polar profiles",
+      "predicate and object classes",
+      "context-free core versus recoverable ellipsis",
+      "transparent versus lexicalized 冇得 X boundaries"
+    ],
+    "held_out": [
+      "unseen predicate classes and host orders",
+      "split and fused tokenization",
+      "embedded and quoted questions",
+      "negative lexical and discourse formulas",
+      "collision with nominal 有／冇 and generic event-occurrence 有冇 questions"
+    ]
+  },
+  "protected_state": [
+    "permanent canonical identity registry",
+    "short-code allocation",
+    "runtime behavior",
+    "executable fixtures",
+    "linguistic-status placement",
+    "corpus classifications",
+    "survey and panel state",
+    "held-out state",
+    "runtime version",
+    "release and deployment state",
+    "merge authorization"
+  ]
+}
