@@ -1,0 +1,25 @@
+name: Export 有得／冇得 specification snapshot
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/export-jau-mou-dak-spec-snapshot.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    if: github.event_name == 'workflow_dispatch' || github.head_ref == 'agent/jau-mou-dak-availability-spec'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Create repository snapshot
+        run: tar --exclude=.git -czf /tmp/canto-span-jau-mou-dak-spec-snapshot.tar.gz .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: canto-span-jau-mou-dak-spec-snapshot
+          path: /tmp/canto-span-jau-mou-dak-spec-snapshot.tar.gz
+          if-no-files-found: error
+          retention-days: 1
