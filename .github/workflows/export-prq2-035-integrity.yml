@@ -1,0 +1,26 @@
+name: Export PRQ2-035 provenance integrity snapshot
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - ".github/workflows/export-prq2-035-integrity.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    if: github.event_name == 'workflow_dispatch' || github.head_ref == 'agent/prq2-035-provenance-integrity'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Create repository snapshot
+        run: tar --exclude=.git -czf /tmp/canto-span-prq2-035-integrity.tar.gz .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: canto-span-prq2-035-integrity
+          path: /tmp/canto-span-prq2-035-integrity.tar.gz
+          if-no-files-found: error
+          retention-days: 1
