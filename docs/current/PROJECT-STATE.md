@@ -13,9 +13,9 @@ This file is the sole present-tense project snapshot. Live GitHub intake and wor
 | Parked construction notes | 0 |
 | Retired labels | 48 |
 | Permanent UUID records | 181 |
-| Expert-adjudicated UUIDs | 92 |
-| Pending UUID adjudications | 89 |
-| Accepted adjudication batches | 19 |
+| Expert-adjudicated UUIDs | 93 |
+| Pending UUID adjudications | 88 |
+| Accepted adjudication batches | 20 |
 | Promotion-ready constructions | 0 |
 
 ## Agent workflow availability
@@ -48,12 +48,13 @@ These counts describe current status-note placement. An accepted identity adjudi
 
 The permanent registry contains 133 current and 48 retired records. UUID and short code are immutable. Canonical name, family, profile, claim layer, and learner label change only through accepted UUID-keyed adjudication.
 
-Nineteen accepted batches have adjudicated 92 records; 89 remain pending. Canonical decisions live in `data/construction-adjudications.json` and immutable batch files under `data/construction-adjudication-batches/`.
+Twenty accepted batches have adjudicated 93 records; 88 remain pending. Canonical decisions live in `data/construction-adjudications.json` and immutable batch files under `data/construction-adjudication-batches/`.
 
 Current consequences include:
 
 - `AB30 ZoMarkedPerfectiveObjectVP` remains the nearest direct language-construction candidate and is distinct from broad internal perfective wrappers;
 - `AB53 ResourceInitialJungLaiFunctionClause` is canonical for the legacy runtime note `ResourceUseLaiFunctionRelation`;
+- `AA56 JauMarkedIndefiniteNPPredication` is canonical for the legacy runtime note `ExistentialPresentationalClause`; it is positive-only at the identity/specification layer, while the current locative-coda and negative runtime behavior remains unchanged pending a separate implementation;
 - Batch 18 internalized AB18 and AB21, retained AB19 and AB20 as retired, and narrowed AB22 to `FinalMe1BiasedPolarQuestionFrame`;
 - Batch 19 retains AB25, AB26, and AB27 as retired composite parser representations and rehomes their valid component evidence under separately typed possessive nominal, fragment, and transfer or dative profiles;
 - parser representations, umbrellas, and retired records do not compete for linguistic promotion or donate evidence automatically;
@@ -135,7 +136,7 @@ Stable verification is `npm run verify`; full verification is `npm run verify:al
 4. Treat topic diversity as a balancing factor: do not let the same few construction families repeatedly dominate when similarly valuable alternatives exist elsewhere.
 5. Continuing within the same family is allowed when its follow-up is genuinely the strongest next task; recent work gives a topic neither automatic priority nor automatic exclusion.
 6. Keep accepted implementation, runtime/design audits, human actions, corpus ingestion, claims, and pull requests separate from the substantive research portfolio.
-7. Continue identity adjudication from the 89 pending UUIDs when it outranks other work; batches are opportunities, not a mandatory queue.
+7. Continue identity adjudication from the 88 pending UUIDs when it outranks other work; batches are opportunities, not a mandatory queue.
 8. Complete useful HKCanCor inventories through deterministic extraction and separate expert review when they expose a bounded empirical question that outranks other available work, using human local execution only when access requires it.
 9. Keep `YUE-JUDGMENT-PILOT-01` in collection until its stopping rule is met, then audit item wording, eligibility, exclusions, quality, comments, interpretations, controls, and regional limitations before drawing conclusions or revising a follow-up.
 10. Implement status-path or runtime-label migrations only in explicitly scoped reviewed changes.
