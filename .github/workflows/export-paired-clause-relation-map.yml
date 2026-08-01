@@ -1,5 +1,6 @@
 name: Publish paired clause relation map
 
+# The checksummed payload and this publisher remove themselves after publication.
 on:
   pull_request:
     types: [synchronize, reopened]
