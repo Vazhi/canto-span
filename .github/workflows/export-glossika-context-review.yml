@@ -28,9 +28,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          echo "a74cb6387aa90a619a78b625ef8ac47a245f3afecf66fea3c388d0977b0359ea  .github/glossika-context-review-generator.py.gz.b64" | sha256sum -c -
+          echo "399f9c3fda920e999580f7560777dfe966b5a8bcb04e7f5cdce51cd2f453cbec  .github/glossika-context-review-generator.py.gz.b64" | sha256sum -c -
           base64 -d .github/glossika-context-review-generator.py.gz.b64 | gzip -d > /tmp/build_glossika_context_review.py
-          echo "d045e78fee36e55d3bddf89951f54fd368855dc638e023227880bc604fcc01b1  /tmp/build_glossika_context_review.py" | sha256sum -c -
+          echo "e8faafeac290b59959ba31066184dc120e2a4b3efe93d5c42e0d9953abc0a294  /tmp/build_glossika_context_review.py" | sha256sum -c -
       - name: Install dependencies
         run: npm ci
       - name: Generate complete review packet
