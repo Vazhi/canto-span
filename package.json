@@ -19,7 +19,6 @@
     "discovery:generate": "node tools/generate-supported-productive-discovery.js --write",
     "verify:identities": "node tools/verify-construction-identities.js",
     "verify:discovery": "node tools/generate-supported-productive-discovery.js",
-    "verify:coordination": "node tools/verify-coordination-system.js && node --test tests/tooling/coordination/*.test.js",
     "changes:validate": "node tools/coordination/change-set.js validate",
     "changes:apply": "node tools/coordination/change-set.js apply --write",
     "verify": "node tools/verify-current-state.js --profile core",

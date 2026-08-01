@@ -195,11 +195,10 @@ removed. Verifier unit tests are run when that verifier changes, not on every PR
 Run only the profiles relevant to the changed state:
 
 ```bash
-npm test                    # runtime or executable tests
-npm run verify              # canonical core state
-npm run verify:research     # research provenance
-npm run verify:coordination # coordination system changes
-npm run verify:release      # release or promotion work only
+npm test                # runtime or executable tests
+npm run verify          # canonical core repository state
+npm run verify:research # research provenance
+npm run verify:release  # release or promotion work only
 ```
 
 `npm run verify:all` is an explicit diagnostic sweep, not a routine acceptance
@@ -207,8 +206,13 @@ requirement. Individual adjudication, identity, or discovery commands may be run
 their own inputs change. Every permanent profile command records its reason and
 `run_when` scope in `config/verification-profiles.json`.
 
-A passing verifier never promotes a construction, grants merge approval, or justifies
-retaining an unnecessary check.
+Coordination is followed directly from `AGENTS.md`, this contract, and the live
+repository records. It is not confirmed by `npm run verify` or by a universal PR
+metadata check. Run `npm run test:coordination` only when coordination libraries,
+schemas, or their focused behavior change.
+
+A passing verifier never promotes a construction, grants merge approval, proves that
+an agent followed procedure, or justifies retaining an unnecessary check.
 
 ## Historical-material rule
 

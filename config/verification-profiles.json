@@ -3,12 +3,6 @@
   "profiles": {
     "core": [
       {
-        "id": "standard-tests",
-        "command": ["npm", "test"],
-        "reason": "Protect accepted parser behavior from executable regressions.",
-        "run_when": "Runtime code, parser fixtures, or construction tests change."
-      },
-      {
         "id": "construction-notes",
         "command": ["node", "tools/verify-construction-notes.js"],
         "reason": "Keep current construction notes structurally aligned with runtime labels and test files.",

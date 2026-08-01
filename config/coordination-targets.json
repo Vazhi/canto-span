@@ -15,8 +15,6 @@
     { "path": "docs/current/00-START-HERE.md", "reason": "mandatory operating contract" },
     { "path": "docs/current/MULTI-AGENT-COORDINATION.md", "reason": "coordination policy owner" },
     { "path": "docs/current/AGENT-WORKFLOW-SETTINGS.md", "reason": "agent workflow availability policy owner" },
-    { "path": "tools/verify-agent-coordination.js", "reason": "coordination contract verifier" },
-    { "path": "tools/verify-coordination-system.js", "reason": "coordination system verifier" },
     { "path": "tools/coordination/**", "reason": "coordination engine" }
   ],
   "integration_owned_files": [

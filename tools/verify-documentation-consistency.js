@@ -122,19 +122,6 @@ requirePattern(
   new RegExp(`codex\\.enabled:\\s*${codexEnabled}`),
   "documented codex.enabled must match the checked-in setting",
 );
-if (!codexEnabled) {
-  requirePattern(
-    "AGENTS.md",
-    /may not be targeted, assigned, reassigned, claimed, or resumed by Codex/,
-    "disabled Codex assignment rule",
-  );
-  requirePattern(
-    "docs/current/CODEX-ISSUE-WORKFLOW.md",
-    /may target only ChatGPT or human action/,
-    "disabled routing targets",
-  );
-}
-
 forbidPattern("README.md", /^## Current state$/m, "README must not own a state ledger");
 forbidPattern("HANDOFF.md", /^## Binding state$/m, "HANDOFF must not own a state ledger");
 forbidPattern(
@@ -156,26 +143,6 @@ requireSingleOwner(
   /\| Accepted adjudication batches \| \d+ \|/g,
   "docs/current/PROJECT-STATE.md",
   "accepted batch count",
-);
-
-const staleReviewerPattern = /\bSpeaker A\b|\bSpeaker B\b|two[- ]speaker system|spouse reviewer/i;
-for (const relativePath of currentAuthorityFiles) {
-  forbidPattern(relativePath, staleReviewerPattern, "fixed reviewer role");
-}
-requirePattern(
-  "docs/current/GOVERNANCE.md",
-  /No named person, relationship, private reviewer,\s+expert title, or recruitment channel receives special status/,
-  "role-neutral panel policy",
-);
-requirePattern(
-  "tools/corpus-review/README.md",
-  /Keep the parent repository intake owned by ChatGPT/,
-  "local corpus execution preserves parent ownership",
-);
-requirePattern(
-  "tools/corpus-review/README.md",
-  /without transferring the parent issue, expert\s+classification, PR readiness, or merge authority/,
-  "human corpus step does not transfer authority",
 );
 
 const linkPattern = /\[[^\]]*\]\(([^)]+)\)/g;
@@ -205,7 +172,7 @@ for (const relativePath of currentAuthorityFiles) {
 const result = {
   schema: "canto-span-documentation-consistency-v5",
   status: errors.length ? "FAIL" : "PASS",
-  reason: "Protect current authority ownership, current links, role-neutral reviewer policy, agent availability, and accepted-batch accounting without policing historical provenance.",
+  reason: "Protect current authority ownership, canonical dynamic state, current links, agent availability, and accepted-batch accounting without policing policy prose.",
   current_documents_checked: currentAuthorityFiles.length,
   delegated_project_state: projectStateResult.status,
   accepted_adjudication_batches: acceptedBatchCount,

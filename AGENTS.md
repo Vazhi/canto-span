@@ -92,6 +92,19 @@ Edit canonical inputs first and regenerate deterministic outputs in the same bra
 verification must not modify tracked reports. A ready pull request may not contain a
 pending changeset or generated validation byproduct.
 
+## Coordination trust boundary
+
+Coordination is a mandatory agent operating contract, not a universal merge-time
+verification target. Agents must follow this file and `docs/current/00-START-HERE.md`,
+maintain truthful issue, claim, branch, and PR records, and stop when live ownership
+or overlap is unclear. Repository verification does not parse PR wording or live
+issue metadata to prove that those duties were followed.
+
+Coordination schemas, libraries, and their focused tests may be used when those tools
+change or when an agent needs a diagnostic. They are not part of `npm run verify`, do
+not run on every pull request, and do not determine merge eligibility. Explicit user
+approval for the specific unchanged PR head remains mandatory.
+
 ## Verification anti-bloat rule
 
 Validation is task-scoped. Do not run `verify:all` as a routine requirement and do

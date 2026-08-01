@@ -183,8 +183,10 @@ explicitly covers them.
 
 ## 7. Intake ownership and portfolio routing
 
-The pull-request verifier accepts exactly one of two parent-issue routing modes.
-Mixed, missing, duplicate, malformed, or unsupported routing blocks fail closed.
+The project recognizes two parent-issue routing modes. Agents must use one coherent
+mode, keep its records truthful, and resolve mixed, missing, duplicate, malformed, or
+unsupported routing before editing or presenting a pull request. This is an operating
+contract rather than a universal merge-time metadata check.
 
 ### Ownership-aware task intake
 

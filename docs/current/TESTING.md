@@ -17,11 +17,10 @@ Run the smallest check set that covers the state changed by the task. Broad swee
 for diagnosis or release work, not a routine tax on every pull request.
 
 ```bash
-npm test                    # runtime behavior or executable tests
-npm run verify              # canonical core state
-npm run verify:research     # research provenance
-npm run verify:coordination # claims, schemas, workflows, or coordination tools
-npm run verify:release      # promotion or release work only
+npm test                # runtime behavior or executable tests
+npm run verify          # canonical core repository state
+npm run verify:research # research provenance
+npm run verify:release  # promotion or release work only
 ```
 
 `npm run verify:all` is an explicit diagnostic sweep. It is not a default acceptance
@@ -64,7 +63,6 @@ before the PR is ready unless it independently qualifies as permanent.
 
 | Check | Reason for existence | Run when |
 |---|---|---|
-| `standard-tests` | Protect accepted parser behavior from executable regressions. | Runtime code, fixtures, or construction tests change. |
 | `construction-notes` | Keep current construction notes structurally aligned with runtime labels and test files. | Runtime labels, note paths/statuses, or construction-test metadata change. |
 | `construction-adjudications` | Prevent accepted UUID-keyed adjudications from drifting from canonical records. | Identity or adjudication records change. |
 | `construction-identities` | Protect permanent UUIDs, short codes, aliases, and lifecycle coverage. | Identity, adjudication, runtime-label, or source-path data change. |
@@ -91,6 +89,21 @@ after that phase closes.
 | `release-handoff` | Block release publication when version, package, or handoff invariants are incomplete. | Preparing or changing a release. |
 
 Release checks are not part of ordinary core or research work.
+
+## Workflow alignment
+
+Permanent GitHub workflows run only for the state they protect:
+
+| Workflow | Triggered scope | Command |
+|---|---|---|
+| Runtime source-first validation | runtime source, generated runtime, build tooling, or executable tests | `verify:runtime-build`, `npm test`, `test:generated-runtime` |
+| Construction identity | identity, adjudication, identity tooling, or current grammar notes | adjudication and identity checks |
+| Supported productive discovery | readiness inputs and deterministic discovery outputs | `verify:discovery` equivalent |
+| Research provenance | research packages, evidence configuration, or research notes | `verify:research` |
+
+Core verification intentionally excludes `npm test`; runtime behavior already has a
+path-scoped workflow and remains directly runnable for local runtime work. No workflow
+runs coordination metadata checks on every pull request.
 
 ## Verifier unit tests
 
@@ -158,21 +171,22 @@ npm run discovery:generate
 Apply and regenerate before publishing a coherent PR. Do not commit an intentionally
 failing intermediate state.
 
-## Coordination
+## Coordination tools
+
+Coordination is governed by `AGENTS.md`, `00-START-HERE.md`, and truthful live
+repository records. It is not a verification profile and there is no universal PR
+metadata workflow. Agents are responsible for checking ownership, overlap, claim
+scope, branch, and PR state before editing and before presenting work for review.
+
+Reusable coordination libraries, schemas, and focused tests remain available for
+changes to those tools:
 
 ```bash
-npm run verify:coordination
+npm run test:coordination
 ```
 
-The permanent coordination verifier protects only durable safety invariants: current
-schemas, claim and PR binding, least-privilege workflows, valid pending changesets,
-and the explicit per-head merge gate. Functional coordination tests run through the
-same command when coordination code changes.
-
-The online `Coordination claim` workflow validates the live issue, claim, branch, PR,
-expiry, semantic overlap, and changed-file coverage. It remains separate from core
-verification because live GitHub state cannot be validated by a repository-only
-profile.
+That command is task-specific. It does not run on unrelated pull requests and does
+not establish merge eligibility. The user-review stop remains a separate human gate.
 
 ## Reports and generated output
 
@@ -182,6 +196,9 @@ support reports accept an explicit output path, for example:
 ```bash
 node tools/verify-current-state.js --profile core --output /tmp/core-verification.json
 node tools/verify-research-provenance.js --output /tmp/research-provenance.json
+node tools/verify-parked-constructions.js --output /tmp/parked-constructions.json
+node tools/enforce-promotion-rules.js --output /tmp/promotion-gate.json
+node tools/verify-release-handoff.js --output /tmp/release-handoff.json
 ```
 
 `validation/current/` is not a patch input or mandatory report archive. A ready PR

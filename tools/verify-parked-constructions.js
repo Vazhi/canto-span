@@ -6,6 +6,14 @@ const path = require("path");
 const { loadConstructionNotes } = require("./construction-notes-lib");
 
 const root = path.resolve(__dirname, "..");
+const outputIndex = process.argv.indexOf("--output");
+const outputPath = outputIndex >= 0
+  ? path.resolve(process.cwd(), process.argv[outputIndex + 1] || "")
+  : null;
+if (outputIndex >= 0 && !process.argv[outputIndex + 1]) {
+  console.error("--output requires a file path");
+  process.exit(2);
+}
 const registryPath = path.join(root, "data", "parked-constructions.json");
 const registry = JSON.parse(fs.readFileSync(registryPath, "utf8"));
 const identities = JSON.parse(
@@ -110,11 +118,9 @@ const report = {
   failures,
 };
 
-const outDir = path.join(root, "validation", "current");
-fs.mkdirSync(outDir, { recursive: true });
-fs.writeFileSync(
-  path.join(outDir, "parked-constructions.json"),
-  JSON.stringify(report, null, 2) + "\n"
-);
+if (outputPath) {
+  fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+  fs.writeFileSync(outputPath, JSON.stringify(report, null, 2) + "\n");
+}
 console.log(JSON.stringify(report, null, 2));
 if (failures.length) process.exit(1);
