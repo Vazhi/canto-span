@@ -17,7 +17,7 @@ The next two activation-ready packages are **#406 — 有得／冇得 availabili
 - **181** permanent identity records scanned: **133 current**, **48 retired**;
 - **89** pending identity adjudications reviewed as a selection pool, not as one coherent task;
 - **18** complete PRQ2 research units and their source/collision companions scanned;
-- **485** files under `docs/research/` inspected through the repository snapshot;
+- **487** files under `docs/research/` inspected through the repository snapshot;
 - the complete Glossika 001–020 map reviewed: **821 turns**, including **59 `NeedsContext`** and **131 no-wrapper** turns;
 - preexisting open planning issues #343, #367, #391, #392, and #393 checked for duplication;
 - recent accepted work checked so completed AA82, nominal-modification, Glossika-ingress, and verification packages were not reopened.
