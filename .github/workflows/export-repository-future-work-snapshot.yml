@@ -1,10 +1,8 @@
-# Publisher trigger revision 2
 name: Publish repository future-work map
 
 on:
-  push:
-    branches:
-      - agent/repository-future-work-map
+  pull_request:
+    types: [opened, synchronize, reopened]
     paths:
       - ".github/future-work-map-payload.part-*"
       - ".github/workflows/export-repository-future-work-snapshot.yml"
@@ -15,11 +13,12 @@ permissions:
 
 jobs:
   publish:
-    if: github.ref == 'refs/heads/agent/repository-future-work-map'
+    if: github.event_name == 'workflow_dispatch' || github.head_ref == 'agent/repository-future-work-map'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
         with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
       - uses: actions/setup-node@v6
         with:
