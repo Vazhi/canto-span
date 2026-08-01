@@ -1,0 +1,78 @@
+{
+  "schema": "canto-span-construction-adjudications-v1",
+  "adjudicated_on": "2026-08-01",
+  "adjudication_authority": "project expert systematic review",
+  "records": [
+    {
+      "construction_uuid": "258c1d00-8a77-543c-a26f-2e66d3a37849",
+      "construction_code": "AA56",
+      "legacy_label": "ExistentialPresentationalClause",
+      "approved_canonical_name": "JauMarkedIndefiniteNPPredication",
+      "claim_layer": "language_construction",
+      "family_name": "ExistentialAndPresentationalClauses",
+      "profile_name": "SubjectlessJauIndefiniteNPPredicate",
+      "profile_description": "A positive subjectless clause begins with existential marker 有, introduces an overt indefinite NP, and follows it with an overt predicate predicated of that NP. The predicate may be verbal, adjectival, copular, modal, evaluative, embedded, or locative. The core excludes overt possessor subjects, overt place or domain prefixes, partitive 有啲, temporal or durational 有, lexical 有, bare existence or listing without NP-linked predication, and negative 冇人 + predicate clauses.",
+      "learner_label": null,
+      "behavior_research_alignment": "overlapping",
+      "terminology_alignment": "neutral_descriptive_preferred",
+      "recommended_action": "rename_retain_narrow",
+      "status_recommendation": "retain research_pending; identity and parser specification are accepted, but runtime migration, role-neutral panel contrasts, and held-out validation remain separate gates",
+      "record_revision": 2,
+      "evidence_basis": {
+        "source_ids": [
+          "SRC-YIP-MATTHEWS-2000-BASIC",
+          "SRC-LAM-LAU-LEE-2024-SEGMENTATION",
+          "SRC-LAM-2018-NEGATION-ASPECT",
+          "HKCANCOR-AA56-NOPLACE-R1"
+        ],
+        "runtime_locations": [
+          "src/parser/detectors/existential/spatial.js: existentialIndex === 0 presentational branch",
+          "main.js: generated ExistentialPresentationalClause detector",
+          "src/runtime-resources/constructions/runtime-label-registry.js: legacy runtime label registration"
+        ],
+        "test_file": "tests/constructions/ExistentialPresentationalClause.json",
+        "additional_research": [
+          "docs/research/AA56-NO-PLACE-EXISTENTIAL-PRESENTATIONAL-BOUNDARIES-R1.md",
+          "docs/research/AA56-NO-PLACE-PRIMARY-SOURCE-LEDGER-R1.tsv",
+          "review-packets/corpus-review/AA56/bounded-review-decisions-r1.tsv",
+          "The complete 179-row review found 44 clear positive source-compatible NP-predication rows and separated negative-human, possession, overt-place, partitive, temporal, bare-existence, repair, and ambiguous collisions."
+        ]
+      },
+      "source_terms": [
+        {
+          "term": "有 + indefinite NP + predicate",
+          "source_id": "SRC-YIP-MATTHEWS-2000-BASIC",
+          "scope_match": "exact"
+        },
+        {
+          "term": "existential marker introducing a noun that is subject of the following predication",
+          "source_id": "SRC-LAM-LAU-LEE-2024-SEGMENTATION",
+          "scope_match": "exact"
+        },
+        {
+          "term": "negative existential and possessive 冇 distribution",
+          "source_id": "SRC-LAM-2018-NEGATION-ASPECT",
+          "scope_match": "contrastive"
+        },
+        {
+          "term": "positive participant introduction versus negative-human quantification",
+          "source_id": "HKCANCOR-AA56-NOPLACE-R1",
+          "scope_match": "distributional"
+        }
+      ],
+      "former_names": [
+        "ExistentialPresentationalClause"
+      ],
+      "successor_profiles": [],
+      "rationale": "The permanent UUID tracks a real positive Cantonese participant-introduction profile, but the legacy name and runtime conflate a locative-coda implementation subtype with a broader source-supported construction and incorrectly impose positive-negative symmetry. JauMarkedIndefiniteNPPredication retains the UUID while naming the overt marker and the structural relation supported by the sources and reviewed corpus. Locative predicates remain a subtype; overt place or domain prefixes compose through AA77, overt possessor subjects route to AA55, and ordinary 冇人 + predicate remains a separate negative-human quantificational or existential-subject profile.",
+      "unresolved_blockers": [
+        "migrate the legacy runtime label through a separately reviewed compatibility change",
+        "implement a positive-only matcher that recognizes nonlocative NP-linked predicates without widening nominal or predicate licensing beyond the accepted specification",
+        "remove negative 冇人 + predicate from AA56 without losing separately justified negative existential analyses",
+        "add the controlled positive and negative boundary matrix only in a later runtime package",
+        "collect role-neutral panel contrasts for critical lexical, definiteness, predicate, and polarity boundaries",
+        "run held-out validation not used to design the matcher"
+      ]
+    }
+  ]
+}
