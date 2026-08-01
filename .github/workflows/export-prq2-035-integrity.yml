@@ -1,26 +1,223 @@
-name: Export PRQ2-035 provenance integrity snapshot
+name: Publish PRQ2-035 provenance integrity repair
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened]
+    types: [synchronize, reopened]
     paths:
       - ".github/workflows/export-prq2-035-integrity.yml"
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  export:
+  publish:
     if: github.event_name == 'workflow_dispatch' || github.head_ref == 'agent/prq2-035-provenance-integrity'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - name: Create repository snapshot
-        run: tar --exclude=.git -czf /tmp/canto-span-prq2-035-integrity.tar.gz .
-      - uses: actions/upload-artifact@v4
         with:
-          name: canto-span-prq2-035-integrity
-          path: /tmp/canto-span-prq2-035-integrity.tar.gz
-          if-no-files-found: error
-          retention-days: 1
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Apply exact provenance repair
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp main.js /tmp/main.before.js
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          root = Path('.')
+
+          path = root / 'src/parser/clause-relations/graph.js'
+          source = path.read_text()
+          old = 'relationResearchId = "PRQ2-015";\n    relationProfileScope = "overt_ning4jyun6_and_negative_dou1_continuation_only";'
+          new = 'relationResearchId = "PRQ2-035";\n    relationProfileScope = "overt_ning4jyun6_and_negative_dou1_continuation_only";'
+          assert source.count(old) == 1
+          path.write_text(source.replace(old, new))
+
+          path = root / 'tests/constructions/ClauseRelationGraph.json'
+          data = json.loads(path.read_text())
+          changed = 0
+          for case in data.get('implementation_probe_cases', []):
+              if case.get('case_id') in {'PRQ2-015-I01', 'PRQ2-015-I02', 'PRQ2-015-N01'}:
+                  case['case_id'] = case['case_id'].replace('PRQ2-015', 'PRQ2-035', 1)
+                  expected = case.get('expected_trace_detail') or {}
+                  if expected.get('research_id') == 'PRQ2-015':
+                      expected['research_id'] = 'PRQ2-035'
+                  case['provenance'] = case['provenance'].replace('PRQ2-015-NING4JYUN6', 'PRQ2-035-NING4JYUN6')
+                  changed += 1
+          assert changed == 3
+          path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n')
+
+          path = root / 'tests/run-constructions.js'
+          source = path.read_text()
+          anchor = 'const cache = new Map();\n'
+          replacement = '''const cache = new Map();
+          const canonicalResearchIdByRelationSubtype = Object.freeze({
+            committed_preference: "PRQ2-035",
+          });
+          '''
+          assert source.count(anchor) == 1
+          source = source.replace(anchor, replacement)
+          anchor = '''      assert.strictEqual(testCase.linguistic_evidence_weight, 0);
+                assert.strictEqual(testCase.purpose, "runtime_reachability_only");
+                const rows = rowsFor(testCase.source, testCase.context_source || null);
+          '''
+          replacement = '''      assert.strictEqual(testCase.linguistic_evidence_weight, 0);
+                assert.strictEqual(testCase.purpose, "runtime_reachability_only");
+                const caseResearchMatch = /^(PRQ2-\\d{3})-/.exec(testCase.case_id || "");
+                if (caseResearchMatch) {
+                  assert(
+                    String(testCase.provenance || "").includes(caseResearchMatch[1]),
+                    `${testCase.case_id} provenance must use ${caseResearchMatch[1]}`,
+                  );
+                }
+                const declaredSubtype = testCase.expected_trace_detail?.relation_subtype
+                  || testCase.expected_trace_detail?.clause_linking_subtype
+                  || testCase.forbidden_trace_detail?.relation_subtype
+                  || testCase.forbidden_trace_detail?.clause_linking_subtype;
+                const canonicalResearchId = canonicalResearchIdByRelationSubtype[declaredSubtype];
+                if (canonicalResearchId) {
+                  assert.strictEqual(caseResearchMatch?.[1], canonicalResearchId, `${declaredSubtype} case ID provenance`);
+                  assert(
+                    String(testCase.provenance || "").includes(canonicalResearchId),
+                    `${declaredSubtype} source provenance must use ${canonicalResearchId}`,
+                  );
+                  if (testCase.expected_trace_detail) {
+                    assert.strictEqual(
+                      testCase.expected_trace_detail.research_id,
+                      canonicalResearchId,
+                      `${declaredSubtype} expected research_id`,
+                    );
+                  }
+                }
+                const rows = rowsFor(testCase.source, testCase.context_source || null);
+          '''
+          assert source.count(anchor) == 1
+          path.write_text(source.replace(anchor, replacement))
+
+          path = root / 'grammar/parser_heuristic/ClauseRelationGraph.md'
+          source = path.read_text()
+          anchor = '- Evidence state: `fixture_level_not_provenance_linked`\n'
+          replacement = '''- Implementation-only PRQ2-035 probes require the `committed_preference`
+            rejection profile only for the overt, comma-delimited `寧願 A，都唔想／唔肯／唔好 B`
+            slice. The positive `都要` continuation remains outside the matcher. Probe IDs,
+            provenance paths, runtime trace metadata, and the generated bundle must use
+            canonical research unit PRQ2-035; PRQ2-015 is reserved for distributive
+            quantification. These probes have zero independent linguistic-evidence weight.
+          - Evidence state: `fixture_level_not_provenance_linked`
+          '''
+          assert source.count(anchor) == 1
+          path.write_text(source.replace(anchor, replacement))
+
+          path = root / 'docs/current/PROJECT-STATE.md'
+          source = path.read_text()
+          old = 'The paired-clause relation map reviews PRQ2-008–015 and PRQ2-033–035 as eleven separate families across 151 checked-in collision rows. Three bounded typed cores route to identity/composition decisions in #430, four source-ready unimplemented relations route to #431, three evidence-constrained families and the PRQ2-035 provenance defect route to #432, and PRQ2-015 remains research-only through #409. Generic clause graphs remain parser infrastructure and no identity, status, runtime, or fixture changes follow from the map itself.\n'
+          new = 'The paired-clause relation map reviews PRQ2-008–015 and PRQ2-033–035 as eleven separate families across 151 checked-in collision rows. Three bounded typed cores route to identity/composition decisions in #430, four source-ready unimplemented relations route to #431, and three evidence-constrained families remain in #432. The committed-preference runtime, probes, and generated bundle now use canonical PRQ2-035 provenance; PRQ2-015 remains research-only through #409. Generic clause graphs remain parser infrastructure, and the provenance correction changes metadata only, not matching behavior, identity, status, or evidence.\n'
+          assert source.count(old) == 1
+          path.write_text(source.replace(old, new))
+          PY
+      - name: Install dependencies and rebuild runtime
+        run: |
+          npm ci
+          npm run build:runtime
+          npm run verify:runtime-build
+      - name: Prove behavior equivalence apart from research ID
+        shell: bash
+        run: |
+          node - <<'JS'
+          const fs = require('fs');
+          const vm = require('vm');
+          function load(file) {
+            const code = fs.readFileSync(file, 'utf8');
+            const moduleRecord = { exports: {} };
+            const context = {
+              module: moduleRecord,
+              exports: moduleRecord.exports,
+              require: (id) => {
+                if (id === 'obsidian') {
+                  class Plugin {} class PluginSettingTab {} class Setting {} class Notice {}
+                  return { Plugin, PluginSettingTab, Setting, Notice };
+                }
+                return require(id);
+              },
+              console, setTimeout, clearTimeout, Buffer,
+            };
+            vm.runInNewContext(`${code}\nmodule.exports.__api={analyzeLine,diagnosticFinalRows};`, context, { filename: file });
+            return moduleRecord.exports.__api;
+          }
+          function clean(value) {
+            if (Array.isArray(value)) return value.map(clean);
+            if (value && typeof value === 'object') {
+              const output = {};
+              for (const [key, item] of Object.entries(value)) {
+                if (key === 'research_id') continue;
+                output[key] = clean(item);
+              }
+              return output;
+            }
+            return value;
+          }
+          const before = load('/tmp/main.before.js');
+          const after = load('main.js');
+          const cases = [
+            '我寧願去啲唔鍾意嘅公司度做嘢，都唔想渾渾噩噩噉又過多年。',
+            '阿Tom寧願行十公里路，都唔肯俾錢買飛搭巴士。',
+            '有啲人寧願退黨，都要補上空缺。',
+            '與其搭的士，不如搭地鐵。',
+            '每個人都去。',
+          ];
+          for (const source of cases) {
+            const oldRows = clean(before.diagnosticFinalRows(before.analyzeLine(source)));
+            const newRows = clean(after.diagnosticFinalRows(after.analyzeLine(source)));
+            if (JSON.stringify(oldRows) !== JSON.stringify(newRows)) {
+              throw new Error(`behavior drift after removing research_id: ${source}`);
+            }
+          }
+          const rows = after.diagnosticFinalRows(after.analyzeLine(cases[0]));
+          const relation = rows.find((row) =>
+            (row.internal_construction || row.construction) === 'ClauseRelationGraph'
+            && row.trace_detail?.relation_subtype === 'committed_preference'
+          );
+          if (!relation || relation.trace_detail.research_id !== 'PRQ2-035') {
+            throw new Error('corrected PRQ2-035 trace metadata not found');
+          }
+          console.log('behavior equivalence and PRQ2-035 metadata: PASS');
+          JS
+      - name: Run repository verification
+        run: |
+          npm run test:generated-runtime
+          npm test
+          npm run verify
+          npm run verify:research
+          node tools/verify-project-state.js
+          git diff --check
+      - name: Remove temporary workflow and enforce final scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm .github/workflows/export-prq2-035-integrity.yml
+          git add -A
+          mapfile -t files < <(git diff --cached --name-only origin/main)
+          printf '%s\n' "${files[@]}"
+          test "${#files[@]}" -eq 6
+          printf '%s\n' "${files[@]}" | grep -Fx 'docs/current/PROJECT-STATE.md'
+          printf '%s\n' "${files[@]}" | grep -Fx 'grammar/parser_heuristic/ClauseRelationGraph.md'
+          printf '%s\n' "${files[@]}" | grep -Fx 'main.js'
+          printf '%s\n' "${files[@]}" | grep -Fx 'src/parser/clause-relations/graph.js'
+          printf '%s\n' "${files[@]}" | grep -Fx 'tests/constructions/ClauseRelationGraph.json'
+          printf '%s\n' "${files[@]}" | grep -Fx 'tests/run-constructions.js'
+          git diff --cached --check
+      - name: Commit and push clean repair
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Repair PRQ2-035 committed-preference provenance"
+          git push origin HEAD:agent/prq2-035-provenance-integrity
