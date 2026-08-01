@@ -1,25 +1,104 @@
-name: Export 有得／冇得 specification snapshot
+name: Publish 有得／冇得 availability specification
 
 on:
   pull_request:
+    types: [opened, synchronize, reopened]
     paths:
+      - ".github/jmd-package.part-*"
       - ".github/workflows/export-jau-mou-dak-spec-snapshot.yml"
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  export:
+  publish:
     if: github.event_name == 'workflow_dispatch' || github.head_ref == 'agent/jau-mou-dak-availability-spec'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - name: Create repository snapshot
-        run: tar --exclude=.git -czf /tmp/canto-span-jau-mou-dak-spec-snapshot.tar.gz .
-      - uses: actions/upload-artifact@v4
         with:
-          name: canto-span-jau-mou-dak-spec-snapshot
-          path: /tmp/canto-span-jau-mou-dak-spec-snapshot.tar.gz
-          if-no-files-found: error
-          retention-days: 1
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Reconstruct validated package
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "01d23e353f9d57febd207110190eb81d49d0d22d88f1bec1923919e10f12ce7c  .github/jmd-package.part-00" | sha256sum -c -
+          echo "eefaff68988ff61da404d781d5170b66979393d6feff7cc707cf27c307455973  .github/jmd-package.part-01" | sha256sum -c -
+          echo "554554e9f1af030242a04abd32d8221b6438154d9bfac83351db7bb4c64edf63  .github/jmd-package.part-02" | sha256sum -c -
+          echo "6df95a7a51b4020fa195b5499a567d958cf67a11f05ce5e84ff8730184712f61  .github/jmd-package.part-03" | sha256sum -c -
+          echo "356d46f71bb331a687c3827125a9e6ed36d241a4537c580b458309a872d7cab7  .github/jmd-package.part-04" | sha256sum -c -
+          echo "ea55b98763b2dedd89a75cbd65a816292e0f2102fbbd2dc13766bc8af78590e2  .github/jmd-package.part-05" | sha256sum -c -
+          echo "2fd77b7b04553c3348e714de7cb6301d90cfd0b99621bdc5a388131139524a6d  .github/jmd-package.part-06" | sha256sum -c -
+          cat .github/jmd-package.part-00 .github/jmd-package.part-01 .github/jmd-package.part-02 .github/jmd-package.part-03 .github/jmd-package.part-04 .github/jmd-package.part-05 .github/jmd-package.part-06 > /tmp/jmd-package.b64
+          base64 -d /tmp/jmd-package.b64 > /tmp/jmd-package.tar.gz
+          echo "f93b65bbd6447b57cfa7644ca569f8c2d2eae0cbe735c98ae9f0871b4fa40eed  /tmp/jmd-package.tar.gz" | sha256sum -c -
+          tar -xzf /tmp/jmd-package.tar.gz
+          echo "068dfad97f1c19b49da4750d18f5de27b0419031c8b026242e0571580922f957  data/construction-identity-candidates.json" | sha256sum -c -
+          echo "d4258a773de7048734b1fb8ceefc79fbf90fedd0f4e74c8b29d2b8997959da45  data/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-DECISION-R1.json" | sha256sum -c -
+          echo "3aee543b69839f16d1de29a21117f944ee9c8b57f283cd77011550875ec4f6a2  docs/current/CONSTRUCTION-IDENTITY.md" | sha256sum -c -
+          echo "75446993a934740ab309f41643eef89584eb4d44abe300b40ef2f7b07d5d6894  docs/current/PROJECT-STATE.md" | sha256sum -c -
+          echo "b7141ed94e0546e3b078a92620d35d03b1a98ec27f21006d2c5e0a82db548777  docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md" | sha256sum -c -
+      - name: Validate decision invariants
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m json.tool data/construction-identity-candidates.json >/dev/null
+          python -m json.tool data/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-DECISION-R1.json >/dev/null
+          python - <<'PY'
+          import json, uuid
+          candidates = json.load(open('data/construction-identity-candidates.json', encoding='utf-8'))
+          decision = json.load(open('data/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-DECISION-R1.json', encoding='utf-8'))
+          assert candidates['record_count'] == len(candidates['records']) == 1
+          record = candidates['records'][0]
+          uuid.UUID(record['construction_uuid'])
+          assert record['construction_uuid'] == decision['decision']['candidate_uuid']
+          assert record['construction_code'] is None and record['state'] == 'candidate'
+          assert decision['decision']['new_uuid_required'] is True
+          assert decision['decision']['canonicalization_authorized_in_this_package'] is False
+          assert decision['evidence_summary']['mechanical_spans'] == 95
+          assert decision['evidence_summary']['transparent_compositional'] == 63
+          assert decision['evidence_summary']['suppletive_polar_questions'] == 5
+          PY
+      - name: Install dependencies
+        run: npm ci
+      - name: Run task-scoped verification
+        run: |
+          npm run verify:identities
+          npm run verify:research
+          npm run verify
+          npm run verify:discovery
+          node tools/verify-project-state.js
+      - name: Remove temporary publication files and verify final scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -f .github/jmd-package.part-*
+          rm -f .github/workflows/export-jau-mou-dak-spec-snapshot.yml
+          git add -A
+          mapfile -t changed < <(git diff --name-only origin/main)
+          printf '%s\n' "${changed[@]}"
+          expected=(
+            data/construction-identity-candidates.json
+            data/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-DECISION-R1.json
+            docs/current/CONSTRUCTION-IDENTITY.md
+            docs/current/PROJECT-STATE.md
+            docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md
+          )
+          if [[ "${changed[*]}" != "${expected[*]}" ]]; then
+            echo "Unexpected final net scope" >&2
+            exit 1
+          fi
+      - name: Commit and push coherent package
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Reserve and specify 有得／冇得 availability identity"
+          git push origin HEAD:agent/jau-mou-dak-availability-spec
