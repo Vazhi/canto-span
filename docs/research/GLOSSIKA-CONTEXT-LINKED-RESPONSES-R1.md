@@ -50,7 +50,7 @@ Two turns should not be treated as syntactic fragments:
 - `好呀！你一定得㗎！`
 - `加油！我哋一定得！`
 
-They are encouragement/evaluation formulae. Assigning one unique omitted predicate would overstate the source.
+They are encouragement/evaluation formulae. Assigning one unique omitted predicate would overstate the source. They may still receive independently justified discourse-act or evaluative analyses, but structural coverage must not depend on an antecedent link or a reconstructed predicate.
 
 ## Independent parser routes
 
@@ -84,4 +84,3 @@ Every decision preserves the source wording and records the previous and next tu
 ## Stop rule
 
 This package is complete when all 59 rows are present exactly once, aggregate counts reconcile, the three independent families have durable routes, core and research verification pass, and the temporary snapshot exporter is absent from the final diff. Runtime implementation requires a separate claim and review.
-
