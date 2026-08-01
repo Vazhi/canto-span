@@ -1,0 +1,86 @@
+name: Publish AA56 identity specification
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - ".github/workflows/publish-aa56-spec.yml"
+      - "data/construction-adjudication-batches/batch-20.json"
+      - "docs/current/**"
+      - "docs/research/AA56-POSITIVE-PARTICIPANT-INTRODUCTION-SPECIFICATION-R1.md"
+      - "docs/research/CONSTRUCTION-ADJUDICATION-BATCH-20.md"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    if: github.event_name == 'workflow_dispatch' || github.head_ref == 'agent/aa56-positive-participant-spec'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Install dependencies
+        run: npm ci
+      - name: Regenerate adjudication and discovery outputs
+        run: npm run adjudication:apply
+      - name: Verify exact package outputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "e8acb405dc77a2582cec9ff4e44998285d41131a1eee8b8ea1d2d4de82c58368  data/construction-adjudication-batches/batch-20.json" | sha256sum -c -
+          echo "e260a12380ffcfb55a108a608c3d6439c8692b540c657a6877a64bc17bbcb72d  data/construction-candidate-readiness.json" | sha256sum -c -
+          echo "a8cd1d1bba5476e6ba74673a758f2f878f3078bd84b906b641a91535e2b72f94  data/construction-identities.json" | sha256sum -c -
+          echo "4daf73ae06246fe0e478a30cdb9602fddb7e0e1d24d29f28fb3ff6358261cf04  data/construction-label-sweep.json" | sha256sum -c -
+          echo "f848f3437ee812c447de4c6ecee29b8335e7bcb6bcaabc3e38283767c8779a9d  docs/current/CONSTRUCTION-ADJUDICATION.md" | sha256sum -c -
+          echo "29e82e2a1417caf58d3654b9520af7c9bf121763e374589730a6a535a62772a0  docs/current/CONSTRUCTION-IDENTITY.md" | sha256sum -c -
+          echo "3c82944a872cc0ccc9970f39057b64667a5119f4ac16466aecb5a82e62ab40aa  docs/current/PROJECT-STATE.md" | sha256sum -c -
+          echo "398e98b076358db188d1472c858f455acba92c46e56678e38a6c643e659efe26  docs/research/AA56-POSITIVE-PARTICIPANT-INTRODUCTION-SPECIFICATION-R1.md" | sha256sum -c -
+          echo "081d1e095daf0f33a109ac5850e7ba12a3b56539c00bbc4d6ac1aced312764a3  docs/research/CONSTRUCTION-ADJUDICATION-BATCH-20.md" | sha256sum -c -
+          echo "529f59bf6ebd605060c0f51c2d9941ecf5bebe081b4ce8dea402a02697f4dfab  docs/research/CONSTRUCTION-FAMILY-GAPS.md" | sha256sum -c -
+      - name: Run task-scoped verification
+        run: |
+          npm run verify:adjudications
+          npm run verify:identities
+          npm run verify:discovery
+          npm run verify
+          npm run verify:research
+      - name: Remove temporary publisher and check final scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -f .github/workflows/publish-aa56-spec.yml
+          git add -A
+          mapfile -t changed < <(git diff --name-only origin/main)
+          printf '%s\n' "${changed[@]}"
+          expected=(
+            data/construction-adjudication-batches/batch-20.json
+            data/construction-candidate-readiness.json
+            data/construction-identities.json
+            data/construction-label-sweep.json
+            docs/current/CONSTRUCTION-ADJUDICATION.md
+            docs/current/CONSTRUCTION-IDENTITY.md
+            docs/current/PROJECT-STATE.md
+            docs/research/AA56-POSITIVE-PARTICIPANT-INTRODUCTION-SPECIFICATION-R1.md
+            docs/research/CONSTRUCTION-ADJUDICATION-BATCH-20.md
+            docs/research/CONSTRUCTION-FAMILY-GAPS.md
+          )
+          if [[ "${changed[*]}" != "${expected[*]}" ]]; then
+            echo "Unexpected final net scope" >&2
+            exit 1
+          fi
+      - name: Commit and push coherent package
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Apply AA56 Batch 20 identity specification"
+          git push origin HEAD:agent/aa56-positive-participant-spec
