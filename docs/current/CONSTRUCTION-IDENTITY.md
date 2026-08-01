@@ -24,6 +24,7 @@ compatibility alias, not the durable key.
 - expert-adjudicated records: **93**;
 - pending expert adjudications: **88**;
 - accepted adjudication batches: **20**;
+- reserved identity candidates: **1**;
 - allocated codes: `AA01` through `AB82`.
 
 The canonical registry is `data/construction-identities.json`. The immutable lock
@@ -37,6 +38,15 @@ Batch 20 retains AA56's UUID and code while approving
 `有 + indefinite NP + NP-linked predicate`; runtime-label migration, matcher
 changes, negative-fixture reclassification, panel evidence, and held-out validation
 remain separate work. Batch 19's retired possession dispositions remain unchanged.
+
+The accepted 有得／冇得 specification reserves candidate UUID
+`4e176fe2-a147-47c7-86c8-6778a379beb2` for
+`JauDakMouDakAvailabilityPredicate`. The candidate has no short code and is not yet
+canonical: a later runtime package must create the note, test, runtime label, and
+matcher before invoking the allocation tool. The permanent registry therefore
+remains at 181 records and codes remain allocated only through `AB82`.
+Candidate reservation establishes identity continuity only; it does not make the
+construction current, runtime-available, status-promoted, or promotion-eligible.
 
 ## UUID rules
 

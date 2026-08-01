@@ -1,5 +1,18 @@
 {
   "schema": "canto-span-construction-identity-candidates-v1",
-  "record_count": 0,
-  "records": []
+  "record_count": 1,
+  "records": [
+    {
+      "construction_uuid": "4e176fe2-a147-47c7-86c8-6778a379beb2",
+      "canonical_name_at_creation": "JauDakMouDakAvailabilityPredicate",
+      "claim_layer": "language_construction",
+      "source_path": "grammar/research_pending/JauDakMouDakAvailabilityPredicate.md",
+      "profile_description": "A preverbal availability or opportunity relation uses affirmative 有得 or negative 冇得 before an overt predicate; the suppletive-polar surface 有冇得 asks which availability alternative holds. The profile excludes existential or possessive 有／冇 plus nominal complements, ordinary lexical V-唔-V, postverbal potential 得／唔到, arbitrary predicate omission, and fused or semi-lexical expressions whose meaning is not transparently availability.",
+      "state": "candidate",
+      "created_at": "2026-08-01",
+      "canonicalized_at": null,
+      "abandoned_at": null,
+      "construction_code": null
+    }
+  ]
 }

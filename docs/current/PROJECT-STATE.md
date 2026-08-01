@@ -55,6 +55,7 @@ Current consequences include:
 - `AB30 ZoMarkedPerfectiveObjectVP` remains the nearest direct language-construction candidate and is distinct from broad internal perfective wrappers;
 - `AB53 ResourceInitialJungLaiFunctionClause` is canonical for the legacy runtime note `ResourceUseLaiFunctionRelation`;
 - `AA56 JauMarkedIndefiniteNPPredication` is canonical for the legacy runtime note `ExistentialPresentationalClause`; it is positive-only at the identity/specification layer, while the current locative-coda and negative runtime behavior remains unchanged pending a separate implementation;
+- candidate UUID `4e176fe2-a147-47c7-86c8-6778a379beb2` is reserved for `JauDakMouDakAvailabilityPredicate`; it has no short code or runtime note and must remain noncanonical until a later source-first implementation package creates the required note, test, label, and matcher;
 - Batch 18 internalized AB18 and AB21, retained AB19 and AB20 as retired, and narrowed AB22 to `FinalMe1BiasedPolarQuestionFrame`;
 - Batch 19 retains AB25, AB26, and AB27 as retired composite parser representations and rehomes their valid component evidence under separately typed possessive nominal, fragment, and transfer or dative profiles;
 - parser representations, umbrellas, and retired records do not compete for linguistic promotion or donate evidence automatically;
