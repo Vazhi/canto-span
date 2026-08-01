@@ -1,0 +1,26 @@
+name: Export paired clause relation snapshot
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - ".github/workflows/export-paired-clause-relation-map.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    if: github.event_name == 'workflow_dispatch' || github.head_ref == 'agent/paired-clause-relation-map'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Create repository snapshot
+        run: tar --exclude=.git -czf /tmp/canto-span-paired-clause-relation-map.tar.gz .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: canto-span-paired-clause-relation-map
+          path: /tmp/canto-span-paired-clause-relation-map.tar.gz
+          if-no-files-found: error
+          retention-days: 1
