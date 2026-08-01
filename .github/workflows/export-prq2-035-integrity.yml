@@ -45,7 +45,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          git restore --source=origin/main -- validation/current/glossika-week16-runtime-lexicon.json
+          rm -f validation/current/glossika-week16-runtime-lexicon.json
           rm .github/workflows/export-prq2-035-integrity.yml
           rm .github/prq2-035-repair.py
           rm .github/prq2-035-behavior-check.js
