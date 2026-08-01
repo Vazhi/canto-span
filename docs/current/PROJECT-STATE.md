@@ -101,6 +101,8 @@ AA77 contains 1,730 high-recall noninitial `有` or `冇` candidates with follow
 
 Corpus extraction is separate from expert classification. A bounded human local-generation step may supply corpus access and artifacts while the parent repository issue remains ChatGPT-owned; it transfers neither judgment nor merge authority.
 
+The complete Glossika Dialogs 001–020 `NeedsContext` review classifies all 59 affected turns against preserved adjacency: 44 have bounded context licensing, 12 are independently complete parser gaps routed to #423–#425, two are formulae needing no syntactic reconstruction, and one remains genuinely unresolved. The accepted context consequence is member-local discourse metadata only; it does not fabricate omitted words, establish one shared ellipsis syntax, or change AA66, AA96, runtime behavior, fixtures, or status.
+
 ## Native-panel and survey state
 
 `YUE-JUDGMENT-PILOT-01` remains the active SoSci collection instrument. The public questionnaire is available at [https://www.soscisurvey.de/canto-span/](https://www.soscisurvey.de/canto-span/). It is anonymous, takes approximately 10 minutes, and is intended for native or childhood Cantonese speakers.
