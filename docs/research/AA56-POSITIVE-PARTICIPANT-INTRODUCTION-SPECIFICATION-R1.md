@@ -316,4 +316,5 @@ This specification changes none of the following:
 
 AA56 now has a retained-UUID identity decision and an exact positive-only parser contract.
 The next authorized step after acceptance is a separately claimed runtime implementation
-package. No parser edit is included here.
+package. The legacy runtime label remains the compatibility surface until that later package
+is accepted. No parser edit is included here.
