@@ -1,0 +1,413 @@
+{
+  "schema": "canto-span-paired-clause-relation-decision-map-v1",
+  "date": "2026-08-01",
+  "parent_issue": 407,
+  "work_claim": 426,
+  "pull_request": 427,
+  "scope": {
+    "research_units": [
+      "PRQ2-008",
+      "PRQ2-009",
+      "PRQ2-010",
+      "PRQ2-011",
+      "PRQ2-012",
+      "PRQ2-013",
+      "PRQ2-014",
+      "PRQ2-015",
+      "PRQ2-033",
+      "PRQ2-034",
+      "PRQ2-035"
+    ],
+    "family_count": 11,
+    "collision_audit_rows": 151,
+    "previous_issue_estimate": 147,
+    "count_correction": "The current checked-in collision audit files contain 151 data rows; 147 in issue #407 is superseded for this map.",
+    "dedicated_current_identity_matches": 0,
+    "identity_registry_interpretation": "No current permanent language-construction record directly identifies any of the eleven paired relations; neighboring parser and child identities do not settle relation identity."
+  },
+  "interpretive_rules": [
+    "ClauseRelationGraph, ClauseRelationEdge, and member-span nodes remain parser infrastructure and carry zero independent linguistic-evidence weight.",
+    "An identity signal means the reviewed relation is not preserved by a generic graph alone; it does not allocate a UUID, assign a short code, or change status.",
+    "Current runtime profiles are implementation evidence only and cannot establish productivity or identity.",
+    "Complete overt paired profiles must remain distinct from fragments, discourse continuations, homographs, and neighboring relation families."
+  ],
+  "summary": {
+    "bounded_typed_core_identity_decision": 3,
+    "source_ready_identity_and_runtime_specification": 4,
+    "evidence_and_runtime_scope_repair": 3,
+    "profile_split_and_evidence_architecture": 1,
+    "typed_runtime_profiles_present": 5,
+    "no_dedicated_runtime_relation": 6,
+    "new_permanent_uuids_allocated": 0,
+    "runtime_files_changed": 0
+  },
+  "routes": {
+    "issue_430": [
+      "PRQ2-008",
+      "PRQ2-013",
+      "PRQ2-014"
+    ],
+    "issue_431": [
+      "PRQ2-010",
+      "PRQ2-011",
+      "PRQ2-012",
+      "PRQ2-033"
+    ],
+    "issue_432": [
+      "PRQ2-009",
+      "PRQ2-034",
+      "PRQ2-035"
+    ],
+    "issue_409": [
+      "PRQ2-015"
+    ]
+  },
+  "implementation_batches": [
+    {
+      "batch": 0,
+      "name": "integrity_and_metadata",
+      "units": [
+        "PRQ2-035"
+      ],
+      "scope": "Correct committed-preference provenance from PRQ2-015 to PRQ2-035 in source, tests, and generated bundle only after an exact separately reviewed runtime-integrity specification."
+    },
+    {
+      "batch": 1,
+      "name": "bounded_typed_core_identity_decisions",
+      "units": [
+        "PRQ2-008",
+        "PRQ2-013",
+        "PRQ2-014"
+      ],
+      "scope": "Decide permanent identity or transparent composition for already implemented source-bounded cores without runtime expansion."
+    },
+    {
+      "batch": 2,
+      "name": "source_ready_unimplemented_relations",
+      "units": [
+        "PRQ2-010",
+        "PRQ2-011",
+        "PRQ2-012",
+        "PRQ2-033"
+      ],
+      "scope": "Specify separate identities/compositions and later implement shared infrastructure with family-specific markers and collisions."
+    },
+    {
+      "batch": 3,
+      "name": "evidence_constrained_relations",
+      "units": [
+        "PRQ2-009",
+        "PRQ2-034",
+        "PRQ2-035"
+      ],
+      "scope": "Complete evidence/runtime-scope repair before identity or broader implementation."
+    },
+    {
+      "batch": 4,
+      "name": "research_only_profile_split",
+      "units": [
+        "PRQ2-015"
+      ],
+      "scope": "Develop classifier/measure/distributive evidence architecture and split semantic profiles before any parser target."
+    }
+  ],
+  "families": [
+    {
+      "research_id": "PRQ2-008",
+      "surface": "只要 A，(就) B",
+      "relation": "sufficient_condition",
+      "research_report": "docs/research/PRQ2-008-ZI2JIU3-ZAU6-SUFFICIENT-CONDITION-RESEARCH-R1.md",
+      "source_verification": "docs/research/PRQ2-008-ZI2JIU3-ZAU6-SUFFICIENT-CONDITION-SOURCE-VERIFICATION-R1.tsv",
+      "collision_audit": "docs/research/PRQ2-008-ZI2JIU3-ZAU6-SUFFICIENT-CONDITION-COLLISION-AUDIT-R1.tsv",
+      "collision_rows": 13,
+      "source_decision": "Bounded sufficient-condition core is directly supported; the checked implementation-ready core is overt 只要 A，就 B.",
+      "identity_signal": "dedicated_relation_supported_but_uuid_undecided",
+      "runtime_state": "typed_bounded_core_implemented",
+      "runtime_profile": "conditional / sufficient_condition",
+      "runtime_research_id": "PRQ2-008",
+      "terminal_class": "bounded_typed_core_identity_decision",
+      "route_issue": 430,
+      "implementation_batch": 1,
+      "accepted_core": "Overt condition-before-consequence pair with adjacent 只+要 and overt right-member 就.",
+      "deferred_or_excluded": [
+        "unrestricted omission of 就",
+        "alternative consequence markers",
+        "discourse-spanning or fragmentary profiles",
+        "wh-indeterminate-plus-都 interaction",
+        "automatic status change"
+      ],
+      "terminal_disposition": "Route to a coordinated identity/composition decision. Retain the current narrow runtime profile without expansion."
+    },
+    {
+      "research_id": "PRQ2-009",
+      "surface": "既然 A，不如 B",
+      "relation": "causal_premise_advisory_response",
+      "research_report": "docs/research/PRQ2-009-GEI3JIN4-PREMISE-RESPONSE-RESEARCH-R1.md",
+      "source_verification": "docs/research/PRQ2-009-GEI3JIN4-PREMISE-RESPONSE-SOURCE-VERIFICATION-R1.tsv",
+      "collision_audit": "docs/research/PRQ2-009-GEI3JIN4-PREMISE-RESPONSE-COLLISION-AUDIT-R1.tsv",
+      "collision_rows": 13,
+      "source_decision": "Direct construction-level support establishes a causal 既然 premise followed by a 不如 advisory or proposal response; broader response types are not established.",
+      "identity_signal": "dedicated_narrow_relation_supported_broader_family_unresolved",
+      "runtime_state": "typed_runtime_broader_than_direct_evidence",
+      "runtime_profile": "premise_response / established_premise_response",
+      "runtime_research_id": "PRQ2-009",
+      "terminal_class": "evidence_and_runtime_scope_repair",
+      "route_issue": 432,
+      "implementation_batch": 3,
+      "accepted_core": "Clause-initial 既然 causal premise plus overt 不如 advisory/proposal response.",
+      "deferred_or_excluded": [
+        "unmarked response",
+        "就 response",
+        "噉／咁 response",
+        "等我 response",
+        "arbitrary inference, decision, request, imperative, or question responses",
+        "temporal 自從 sense"
+      ],
+      "terminal_disposition": "Audit and narrow the current response-marker inventory before any identity or runtime expansion."
+    },
+    {
+      "research_id": "PRQ2-010",
+      "surface": "除咗 A (之外)，B",
+      "relation": "exclusion_addition",
+      "research_report": "docs/research/PRQ2-010-CEOI4ZO2-ZI1NGOI6-EXCLUSION-ADDITION-RESEARCH-R1.md",
+      "source_verification": "docs/research/PRQ2-010-CEOI4ZO2-ZI1NGOI6-EXCLUSION-ADDITION-SOURCE-VERIFICATION-R1.tsv",
+      "collision_audit": "docs/research/PRQ2-010-CEOI4ZO2-ZI1NGOI6-EXCLUSION-ADDITION-COLLISION-AUDIT-R1.tsv",
+      "collision_rows": 14,
+      "source_decision": "One source-backed family has additive and restrictive/exclusive continuation profiles; the continuation determines the interpretation.",
+      "identity_signal": "dedicated_family_supported_profiles_require_preservation",
+      "runtime_state": "no_dedicated_relation",
+      "runtime_profile": null,
+      "runtime_research_id": null,
+      "terminal_class": "source_ready_identity_and_runtime_specification",
+      "route_issue": 431,
+      "implementation_batch": 2,
+      "accepted_core": "除咗 introduces a base or exception; optional 之外 precedes an overt additive or restrictive continuation.",
+      "deferred_or_excluded": [
+        "除非 exception conditionals",
+        "removal verb 除 plus perfective 咗",
+        "formal 除 A 外 variants",
+        "bare frame fragments",
+        "one fixed English gloss for both profiles"
+      ],
+      "terminal_disposition": "Specify one family with two explicit profiles, exact marker spans, and later bounded implementation."
+    },
+    {
+      "research_id": "PRQ2-011",
+      "surface": "唔單止 A，仲／而且仲 B (+ 添)",
+      "relation": "additive_correlative",
+      "research_report": "docs/research/PRQ2-011-M4DAAN1ZI2-ZUNG6-ADDITIVE-CORRELATIVE-RESEARCH-R1.md",
+      "source_verification": "docs/research/PRQ2-011-M4DAAN1ZI2-ZUNG6-ADDITIVE-CORRELATIVE-SOURCE-VERIFICATION-R1.tsv",
+      "collision_audit": "docs/research/PRQ2-011-M4DAAN1ZI2-ZUNG6-ADDITIVE-CORRELATIVE-COLLISION-AUDIT-R1.tsv",
+      "collision_rows": 10,
+      "source_decision": "The paired not-only/additional-member relation is directly supported and must remain distinct from standalone or temporal 仲.",
+      "identity_signal": "dedicated_relation_supported_but_uuid_undecided",
+      "runtime_state": "no_dedicated_relation",
+      "runtime_profile": null,
+      "runtime_research_id": null,
+      "terminal_class": "source_ready_identity_and_runtime_specification",
+      "route_issue": 431,
+      "implementation_batch": 2,
+      "accepted_core": "Shared-domain 唔單止 first member plus 仲 or 而且仲 second member, with optional final 添.",
+      "deferred_or_excluded": [
+        "standalone additive 仲",
+        "temporal still 仲",
+        "discourse formula 唔單止係噉",
+        "omitted or later-supplied second member",
+        "unchecked 唔只／唔淨止 and written forms"
+      ],
+      "terminal_disposition": "Specify a separate additive-correlative relation and bounded implementation contract."
+    },
+    {
+      "research_id": "PRQ2-012",
+      "surface": "一係 A，一係 B",
+      "relation": "exclusive_alternative",
+      "research_report": "docs/research/PRQ2-012-JAT1HAI6-EXCLUSIVE-ALTERNATIVE-RESEARCH-R1.md",
+      "source_verification": "docs/research/PRQ2-012-JAT1HAI6-EXCLUSIVE-ALTERNATIVE-SOURCE-VERIFICATION-R1.tsv",
+      "collision_audit": "docs/research/PRQ2-012-JAT1HAI6-EXCLUSIVE-ALTERNATIVE-COLLISION-AUDIT-R1.tsv",
+      "collision_rows": 12,
+      "source_decision": "The paired option-selection pattern is source-backed and distinct from suggestion, interrogative alternatives, and 或者.",
+      "identity_signal": "dedicated_relation_supported_but_uuid_undecided",
+      "runtime_state": "no_dedicated_relation",
+      "runtime_profile": null,
+      "runtime_research_id": null,
+      "terminal_class": "source_ready_identity_and_runtime_specification",
+      "route_issue": 431,
+      "implementation_batch": 2,
+      "accepted_core": "Two overt 一係-marked options, optionally with 就, under one discourse selection domain.",
+      "deferred_or_excluded": [
+        "lone suggestion 一係 X",
+        "A 定係 B questions",
+        "或者 alternatives",
+        "ordinary numeral 一 plus copula 係",
+        "unlicensed empty option members"
+      ],
+      "terminal_disposition": "Specify a separate paired alternative relation and later positive/collision fixture matrix."
+    },
+    {
+      "research_id": "PRQ2-013",
+      "surface": "與其 A，(倒)不如 B",
+      "relation": "ordered_preference",
+      "research_report": "docs/research/PRQ2-013-JYU5KEI4-BAT1JYU4-ORDERED-PREFERENCE-RESEARCH-R1.md",
+      "source_verification": "docs/research/PRQ2-013-JYU5KEI4-BAT1JYU4-ORDERED-PREFERENCE-SOURCE-VERIFICATION-R1.tsv",
+      "collision_audit": "docs/research/PRQ2-013-JYU5KEI4-BAT1JYU4-ORDERED-PREFERENCE-COLLISION-AUDIT-R1.tsv",
+      "collision_rows": 11,
+      "source_decision": "A dedicated ordered-preference relation is supported; the narrow overt 與其 A，不如 B core is implemented.",
+      "identity_signal": "dedicated_relation_supported_but_uuid_undecided",
+      "runtime_state": "typed_bounded_core_implemented",
+      "runtime_profile": "ordered_preference",
+      "runtime_research_id": "PRQ2-013",
+      "terminal_class": "bounded_typed_core_identity_decision",
+      "route_issue": 430,
+      "implementation_batch": 1,
+      "accepted_core": "Overt comma-delimited 與其 disfavored member plus 不如 preferred member.",
+      "deferred_or_excluded": [
+        "lone suggestion 不如 B",
+        "ordinary comparison A 不如 B",
+        "寧願 preference",
+        "optional 倒",
+        "marker omission and broader member types"
+      ],
+      "terminal_disposition": "Route to coordinated identity/composition decision; retain the bounded current runtime core."
+    },
+    {
+      "research_id": "PRQ2-014",
+      "surface": "只有 A，先／先至／先可以 B",
+      "relation": "necessary_condition",
+      "research_report": "docs/research/PRQ2-014-ZI2JAU5-SIN1ZI3-NECESSARY-CONDITION-RESEARCH-R1.md",
+      "source_verification": "docs/research/PRQ2-014-ZI2JAU5-SIN1ZI3-NECESSARY-CONDITION-SOURCE-VERIFICATION-R1.tsv",
+      "collision_audit": "docs/research/PRQ2-014-ZI2JAU5-SIN1ZI3-NECESSARY-CONDITION-COLLISION-AUDIT-R1.tsv",
+      "collision_rows": 12,
+      "source_decision": "A necessary-condition marker family is supported; the overt clausal core is implemented, while participant/domain restriction remains analytically open.",
+      "identity_signal": "dedicated_clausal_relation_supported_sibling_profile_unresolved",
+      "runtime_state": "typed_bounded_core_implemented",
+      "runtime_profile": "conditional / necessary_condition",
+      "runtime_research_id": "PRQ2-014",
+      "terminal_class": "bounded_typed_core_identity_decision",
+      "route_issue": 430,
+      "implementation_batch": 1,
+      "accepted_core": "Overt comma-delimited 只有 required condition plus 先, 先至, or 先可以 result.",
+      "deferred_or_excluded": [
+        "participant/domain restriction without a clausal pair",
+        "temporal-sequential 先至",
+        "bare A 至 B",
+        "existential or quantity 只有",
+        "marker omission and written 才"
+      ],
+      "terminal_disposition": "Decide the clausal core identity separately; keep participant restriction as a blocked sibling profile."
+    },
+    {
+      "research_id": "PRQ2-015",
+      "surface": "每／reduplicated classifier domain … 都 …",
+      "relation": "distributive_quantification",
+      "research_report": "docs/research/PRQ2-015-MUI5-GO3GO3-DOU1-DISTRIBUTIVE-QUANTIFICATION-RESEARCH-R1.md",
+      "source_verification": "docs/research/PRQ2-015-MUI5-GO3GO3-DOU1-DISTRIBUTIVE-QUANTIFICATION-SOURCE-VERIFICATION-R1.tsv",
+      "collision_audit": "docs/research/PRQ2-015-MUI5-GO3GO3-DOU1-DISTRIBUTIVE-QUANTIFICATION-COLLISION-AUDIT-R1.tsv",
+      "collision_rows": 32,
+      "source_decision": "The sources establish multiple distributive and universal dependencies, but not one unified paired-clause relation or identity.",
+      "identity_signal": "no_single_identity_yet_profile_split_required",
+      "runtime_state": "no_dedicated_dependency",
+      "runtime_profile": null,
+      "runtime_research_id": null,
+      "terminal_class": "profile_split_and_evidence_architecture",
+      "route_issue": 409,
+      "implementation_batch": 4,
+      "accepted_core": "No single implementation core is accepted in this map. Subject-domain, object-domain, and event/temporal distributions require separate analysis.",
+      "deferred_or_excluded": [
+        "collapsing distributive, exhaustive, collective, generic, and associative readings",
+        "ordinary additive, scalar, free-choice, concessive, or habitual 都",
+        "per-rate 每",
+        "automatic treatment as a clause-relation pair"
+      ],
+      "terminal_disposition": "Remain research-only and route evidence/schema work through #409 before any identity or implementation decision."
+    },
+    {
+      "research_id": "PRQ2-033",
+      "surface": "又 A 又 B",
+      "relation": "coexistence_correlative",
+      "research_report": "docs/research/PRQ2-033-JAU6-JAU6-COEXISTENT-PREDICATE-RESEARCH-R1.md",
+      "source_verification": "docs/research/PRQ2-033-JAU6-JAU6-COEXISTENT-PREDICATE-SOURCE-VERIFICATION-R1.tsv",
+      "collision_audit": "docs/research/PRQ2-033-JAU6-JAU6-COEXISTENT-PREDICATE-COLLISION-AUDIT-R1.tsv",
+      "collision_rows": 12,
+      "source_decision": "A source-backed paired coexistence relation places two properties, states, obligations, or activities under one subject or domain.",
+      "identity_signal": "dedicated_relation_supported_but_uuid_undecided",
+      "runtime_state": "no_dedicated_relation",
+      "runtime_profile": null,
+      "runtime_research_id": null,
+      "terminal_class": "source_ready_identity_and_runtime_specification",
+      "route_issue": 431,
+      "implementation_batch": 2,
+      "accepted_core": "Two overt 又-marked predicate members under one subject or discourse domain.",
+      "deferred_or_excluded": [
+        "single 又 recurrence",
+        "additive response",
+        "rationale or counter-expectation 又",
+        "different subjects or turns without shared domain",
+        "unchecked nominal lists and three-plus members"
+      ],
+      "terminal_disposition": "Specify a dedicated coexistence relation and a polysemy-safe later matcher."
+    },
+    {
+      "research_id": "PRQ2-034",
+      "surface": "無論 A，B 都 C",
+      "relation": "unconditional_invariance",
+      "research_report": "docs/research/PRQ2-034-MOU4LEON6-DOU1-UNCONDITIONAL-RESEARCH-R1.md",
+      "source_verification": "docs/research/PRQ2-034-MOU4LEON6-DOU1-UNCONDITIONAL-SOURCE-VERIFICATION-R1.tsv",
+      "collision_audit": "docs/research/PRQ2-034-MOU4LEON6-DOU1-UNCONDITIONAL-COLLISION-AUDIT-R1.tsv",
+      "collision_rows": 11,
+      "source_decision": "The higher 無論 alternative-domain plus 都 invariant-consequence relation is source-backed and distinct from member-level wh-plus-都 and concession.",
+      "identity_signal": "dedicated_relation_supported_evidence_packet_needed_before_runtime",
+      "runtime_state": "no_dedicated_relation",
+      "runtime_profile": null,
+      "runtime_research_id": null,
+      "terminal_class": "evidence_and_runtime_scope_repair",
+      "route_issue": 432,
+      "implementation_batch": 3,
+      "accepted_core": "Identity signal for overt 無論 domain plus overt 都 consequence; implementation awaits bounded domain/scope evidence.",
+      "deferred_or_excluded": [
+        "automatic omission of 都",
+        "unbounded domain-type inventory",
+        "就算…都 concession",
+        "ordinary universal or free-choice 都",
+        "唔理…都 and standalone 無論如何"
+      ],
+      "terminal_disposition": "Retain a dedicated-relation hypothesis, but require a bounded corpus/control packet before runtime specification."
+    },
+    {
+      "research_id": "PRQ2-035",
+      "surface": "寧願 A，都唔想／唔肯／唔好 B; 寧願 A，都要 B",
+      "relation": "committed_preference",
+      "research_report": "docs/research/PRQ2-035-NING4JYUN6-DOU1-COMMITTED-PREFERENCE-RESEARCH-R1.md",
+      "source_verification": "docs/research/PRQ2-035-NING4JYUN6-DOU1-COMMITTED-PREFERENCE-SOURCE-VERIFICATION-R1.tsv",
+      "collision_audit": "docs/research/PRQ2-035-NING4JYUN6-DOU1-COMMITTED-PREFERENCE-COLLISION-AUDIT-R1.tsv",
+      "collision_rows": 11,
+      "source_decision": "A dedicated committed-preference family has rejection and accepted-cost/commitment profiles, but stronger graded evidence and profile boundaries remain required.",
+      "identity_signal": "dedicated_relation_supported_canonicalization_blocked",
+      "runtime_state": "typed_rejection_core_implemented_with_wrong_research_id",
+      "runtime_profile": "committed_preference / rejection",
+      "runtime_research_id": "PRQ2-015 (incorrect; must be PRQ2-035)",
+      "terminal_class": "evidence_and_runtime_scope_repair",
+      "route_issue": 432,
+      "implementation_batch": 3,
+      "accepted_core": "Current narrow overt rejection slice is an implementation fact only; the source-backed family also includes an attested 都要 commitment profile.",
+      "deferred_or_excluded": [
+        "treating runtime as linguistic proof",
+        "positive continuations other than bounded 都要",
+        "marker omission",
+        "equating lone 寧願, 情願, 寧可, and 與其…不如",
+        "canonicalization before evidence repair"
+      ],
+      "terminal_disposition": "Repair evidence grading and the PRQ2-015→PRQ2-035 runtime/test provenance defect before any canonicalization or broader implementation."
+    }
+  ],
+  "protected_state": {
+    "construction_identity_registry": "unchanged",
+    "construction_identity_candidates": "unchanged",
+    "linguistic_status": "unchanged",
+    "runtime_behavior": "unchanged",
+    "fixtures": "unchanged",
+    "source_corpus": "unchanged",
+    "survey_panel_held_out": "unchanged",
+    "runtime_version": "unchanged",
+    "release_deployment": "unchanged"
+  }
+}
