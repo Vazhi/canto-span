@@ -51,3 +51,7 @@ been exported, screened, and adjudicated are not accepted panel evidence.
 The AB30 active note links the accepted decision ledger and its mechanical source
 ledger. Its five reviewed candidates (two genuine and three false positives)
 have `partial_only` readiness effect and do not satisfy the diverse-corpus gate.
+
+## Interim survey exports
+
+- [`YUE-JUDGMENT-PILOT-01` — 2026-07-31 aggregate snapshot](interim-exports/YUE-JUDGMENT-PILOT-01-2026-07-31/) preserves privacy-safe condition, item, and interpretation statistics plus a descriptive pilot report and source hashes. The raw participant-level export and open text remain private. This snapshot does not change the current `active` / `not_started` / `draft` lifecycle or count as final adjudicated panel evidence.
