@@ -27,37 +27,31 @@ superseding decision with explicit rationale and relationships.
 ## Current progress
 
 - permanent records: **181**;
-- accepted adjudications: **92**;
-- pending adjudications: **89**;
-- accepted batches: **19**;
+- accepted adjudications: **93**;
+- pending adjudications: **88**;
+- accepted batches: **20**;
 - latest batch report:
-  `docs/research/CONSTRUCTION-ADJUDICATION-BATCH-19.md`.
+  `docs/research/CONSTRUCTION-ADJUDICATION-BATCH-20.md`.
 
 This count records completed identity and ontology judgments only. It does not
 imply runtime migration, status migration, corpus closure, panel completion,
 held-out validation, or promotion.
 
-Batch 19 accepted the following UUID-preserving decisions:
+Batch 20 retains AA56's permanent UUID and code while renaming the source-backed
+positive profile from `ExistentialPresentationalClause` to
+`JauMarkedIndefiniteNPPredication`. The accepted center is positive subjectless
+`有 + overt indefinite NP + overt NP-linked predicate`. Locative predicates are
+one subtype rather than a requirement. Overt-subject possession remains AA55,
+overt-place existence remains AA77, and ordinary `冇人 + predicate` is not
+inherited as a symmetric negative member.
 
-1. `AB25 PossessiveNP` → `PossessiveNominalCompositeWrapper`, retained as a
-   retired parser representation whose valid evidence belongs under separately
-   typed `嘅`-marked, possessor-classifier-noun, or future headless possessive
-   profiles;
-2. `AB26 PossessiveNominalFragment` →
-   `HeadlessPossessiveFragmentCompositeWrapper`, retained as a retired parser
-   representation that must not let fragment status fabricate an omitted nominal
-   head or let a possible headless possessive automatically establish discourse
-   fragment status;
-3. `AB27 PossessiveTransferClause` → `PossessionTransferCompositeWrapper`,
-   retained as a retired parser representation whose possessive nominal and
-   transfer or dative components must remain independently typed.
-
-All three records remain retired. No successor UUID, runtime behavior, emitted
-label, status migration, fixture change, corpus classification, survey change, or
-release change follows from Batch 19.
+The legacy runtime label, status-note path, fixtures, and parser behavior remain
+unchanged until a separately reviewed implementation and compatibility migration.
+`research_pending` remains appropriate while role-neutral panel and held-out gates
+are incomplete.
 
 No later adjudication batch is fixed as a mandatory queue. The next records are
-selected from the 89 pending identities according to current project benefit,
+selected from the 88 pending identities according to current project benefit,
 evidence opportunity, ontology risk, dependencies, and open-work overlap.
 
 ## Required decision fields

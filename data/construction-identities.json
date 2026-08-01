@@ -2140,7 +2140,7 @@
     {
       "construction_uuid": "258c1d00-8a77-543c-a26f-2e66d3a37849",
       "construction_code": "AA56",
-      "canonical_name": "ExistentialPresentationalClause",
+      "canonical_name": "JauMarkedIndefiniteNPPredication",
       "legacy_labels": [
         "ExistentialPresentationalClause"
       ],
@@ -2148,24 +2148,47 @@
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/ExistentialPresentationalClause.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese may instantiate the structural family represented by ExistentialPresentationalClause; exact productivity and boundaries require pattern-specific independent evidence.",
+      "family_name": "ExistentialAndPresentationalClauses",
+      "profile_name": "SubjectlessJauIndefiniteNPPredicate",
+      "profile_description": "A positive subjectless clause begins with existential marker 有, introduces an overt indefinite NP, and follows it with an overt predicate predicated of that NP. The predicate may be verbal, adjectival, copular, modal, evaluative, embedded, or locative. The core excludes overt possessor subjects, overt place or domain prefixes, partitive 有啲, temporal or durational 有, lexical 有, bare existence or listing without NP-linked predication, and negative 冇人 + predicate clauses.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "有 + indefinite NP + predicate",
+          "source_id": "SRC-YIP-MATTHEWS-2000-BASIC",
+          "scope_match": "exact"
+        },
+        {
+          "term": "existential marker introducing a noun that is subject of the following predication",
+          "source_id": "SRC-LAM-LAU-LEE-2024-SEGMENTATION",
+          "scope_match": "exact"
+        },
+        {
+          "term": "negative existential and possessive 冇 distribution",
+          "source_id": "SRC-LAM-2018-NEGATION-ASPECT",
+          "scope_match": "contrastive"
+        },
+        {
+          "term": "positive participant introduction versus negative-human quantification",
+          "source_id": "HKCANCOR-AA56-NOPLACE-R1",
+          "scope_match": "distributional"
+        }
+      ],
+      "former_names": [
+        "ExistentialPresentationalClause"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "overlapping",
+        "terminology_alignment": "neutral_descriptive_preferred",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [
           "generic_head_requires_boundary_definition"
         ],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-08-01. The permanent UUID tracks a real positive Cantonese participant-introduction profile, but the legacy name and runtime conflate a locative-coda implementation subtype with a broader source-supported construction and incorrectly impose positive-negative symmetry. JauMarkedIndefiniteNPPredication retains the UUID while naming the overt marker and the structural relation supported by the sources and reviewed corpus. Locative predicates remain a subtype; overt place or domain prefixes compose through AA77, overt possessor subjects route to AA55, and ordinary 冇人 + predicate remains a separate negative-human quantificational or existential-subject profile. Status recommendation: retain research_pending; identity and parser specification are accepted, but runtime migration, role-neutral panel contrasts, and held-out validation remain separate gates"
       }
     },
     {

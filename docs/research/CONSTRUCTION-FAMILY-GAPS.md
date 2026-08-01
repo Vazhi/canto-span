@@ -38,4 +38,3 @@ Family assignments in this report are inherited from existing consolidation reco
 | L03 / TemporalAndSequentialRelations | 1 | 1 | 0 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB70 |
 | L32 / SpeechReportingAndCommunicationEffect | 1 | 1 | 0 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB52 |
 | L37 / MannerAndReduplication | 1 | 1 | 0 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB49 |
-| L39 / ExistentialAndPresentationalClauses | 1 | 1 | 0 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AA56 |

@@ -21,9 +21,9 @@ compatibility alias, not the durable key.
 - permanent records: **181**;
 - current runtime-linked records: **133**;
 - retired records: **48**;
-- expert-adjudicated records: **92**;
-- pending expert adjudications: **89**;
-- accepted adjudication batches: **19**;
+- expert-adjudicated records: **93**;
+- pending expert adjudications: **88**;
+- accepted adjudication batches: **20**;
 - allocated codes: `AA01` through `AB82`.
 
 The canonical registry is `data/construction-identities.json`. The immutable lock
@@ -31,10 +31,12 @@ is `data/construction-identity-lock.json`. Accepted naming and ontology decision
 come from the adjudication records described in
 [`CONSTRUCTION-ADJUDICATION.md`](CONSTRUCTION-ADJUDICATION.md).
 
-Batch 19 preserves AB25, AB26, and AB27 as retired UUIDs and reclassifies their
-canonical identities as historical composite parser representations. It creates no
-new UUID, successor link, runtime identity, or evidence transfer through the retired
-umbrellas.
+Batch 20 retains AA56's UUID and code while approving
+`JauMarkedIndefiniteNPPredication` as the canonical positive profile for legacy
+`ExistentialPresentationalClause`. The record now identifies positive subjectless
+`有 + indefinite NP + NP-linked predicate`; runtime-label migration, matcher
+changes, negative-fixture reclassification, panel evidence, and held-out validation
+remain separate work. Batch 19's retired possession dispositions remain unchanged.
 
 ## UUID rules
 
