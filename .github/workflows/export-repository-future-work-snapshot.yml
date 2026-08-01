@@ -32,9 +32,22 @@ jobs:
           echo "c7607608c8a623e9ce8a3ff56dbccfb9115fc1bba932a2c3bcb0fbdb8dfdff08  .github/future-work-map-payload.part-01" | sha256sum -c -
           echo "80a0f7fb2f047faee89d83af53ac431cfb5ee0110c0c41b17fdd8c17d96525c9  .github/future-work-map-payload.part-02" | sha256sum -c -
           echo "ff925631df710fb8c154c7386da6f1d4c443a8db5271f2473015a1f065fd504f  .github/future-work-map-payload.part-03" | sha256sum -c -
-          echo "55e060287a4a7fdd4dc7bf770315d7fbc1be4772a4f0c4e3d7c4e463fa371efd  .github/future-work-map-payload.part-04" | sha256sum -c -
+          echo "74b97d2bc382b387e492c8c9b31fd3304625a88fcbc91fc3651741a05efde7b8  .github/future-work-map-payload.part-04a" | sha256sum -c -
+          echo "874184c6f05459ce2a17ea2827dee6c858d7ebab9ce3854e4d868fcecf057515  .github/future-work-map-payload.part-04b" | sha256sum -c -
+          echo "3623c2378dddb2b298f71630e7796188459089eef64b836452bd79b481e0f4aa  .github/future-work-map-payload.part-04c" | sha256sum -c -
+          echo "541a676c8361e589a3456b51e62a64935d3f6bf9d18cb373b320f7a1ac19226a  .github/future-work-map-payload.part-04d" | sha256sum -c -
           echo "addac16ad05c1fc93096cbaf008a956b38c08b09b1e6264dd40f7f1b50b5c2e5  .github/future-work-map-payload.part-05" | sha256sum -c -
-          cat .github/future-work-map-payload.part-* > /tmp/future-work-map-payload.b64
+          cat \
+            .github/future-work-map-payload.part-00 \
+            .github/future-work-map-payload.part-01 \
+            .github/future-work-map-payload.part-02 \
+            .github/future-work-map-payload.part-03 \
+            .github/future-work-map-payload.part-04a \
+            .github/future-work-map-payload.part-04b \
+            .github/future-work-map-payload.part-04c \
+            .github/future-work-map-payload.part-04d \
+            .github/future-work-map-payload.part-05 \
+            > /tmp/future-work-map-payload.b64
           echo "2bdb854c5f51e04c6a4c367f3b8f61d87cd63943b77bc782c97e2576fccfe9d2  /tmp/future-work-map-payload.b64" | sha256sum -c -
           base64 -d /tmp/future-work-map-payload.b64 > /tmp/future-work-map-payload.tar.gz
           echo "02284bc380ecf160c2dd3ed9d738a6d5c9e7cbbff2ef26848a20fc8bd0cdbcf6  /tmp/future-work-map-payload.tar.gz" | sha256sum -c -
