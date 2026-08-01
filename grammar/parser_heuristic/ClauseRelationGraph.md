@@ -110,6 +110,12 @@ No pattern-specific external source is currently mapped.
   sufficient-condition controls do not receive the profile. Lexical/existential
   `只有` remains separate; these probes have zero independent
   linguistic-evidence weight.
+- Implementation-only PRQ2-035 probes require the `committed_preference`
+  rejection profile only for the overt, comma-delimited `寧願 A，都唔想／唔肯／唔好 B`
+  slice. The positive `都要` continuation remains outside the matcher. Probe IDs,
+  provenance paths, runtime trace metadata, and the generated bundle must use
+  canonical research unit PRQ2-035; PRQ2-015 is reserved for distributive
+  quantification. These probes have zero independent linguistic-evidence weight.
 - Evidence state: `fixture_level_not_provenance_linked`
 - Executable or review records containing this label:
   - `review-packets/cp022-evaluation/EP-CP022-I1A-I02-D1/README.md`

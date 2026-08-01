@@ -682,7 +682,7 @@
       "purpose": "runtime_reachability_only"
     },
     {
-      "case_id": "PRQ2-015-I01",
+      "case_id": "PRQ2-035-I01",
       "source": "我寧願去啲唔鍾意嘅公司度做嘢，都唔想渾渾噩噩噉又過多年。",
       "assertion": "trace_detail_equals",
       "expected_surface": "我寧願去啲唔鍾意嘅公司度做嘢，都唔想渾渾噩噩噉又過多年",
@@ -690,15 +690,15 @@
         "clause_linking_subtype": "committed_preference",
         "relation_subtype": "committed_preference",
         "relation_profile": "rejection",
-        "research_id": "PRQ2-015"
+        "research_id": "PRQ2-035"
       },
-      "provenance": "docs/research/PRQ2-015-NING4JYUN6-DOU1-COMMITTED-PREFERENCE-COLLISION-AUDIT-R1.tsv",
+      "provenance": "docs/research/PRQ2-035-NING4JYUN6-DOU1-COMMITTED-PREFERENCE-COLLISION-AUDIT-R1.tsv",
       "source_role": "verified_research_surface_runtime_probe",
       "linguistic_evidence_weight": 0,
       "purpose": "runtime_reachability_only"
     },
     {
-      "case_id": "PRQ2-015-I02",
+      "case_id": "PRQ2-035-I02",
       "source": "阿Tom寧願行十公里路，都唔肯俾錢買飛搭巴士。",
       "assertion": "trace_detail_equals",
       "expected_surface": "阿Tom寧願行十公里路，都唔肯俾錢買飛搭巴士",
@@ -706,21 +706,21 @@
         "clause_linking_subtype": "committed_preference",
         "relation_subtype": "committed_preference",
         "relation_profile": "rejection",
-        "research_id": "PRQ2-015"
+        "research_id": "PRQ2-035"
       },
-      "provenance": "docs/research/PRQ2-015-NING4JYUN6-DOU1-COMMITTED-PREFERENCE-COLLISION-AUDIT-R1.tsv",
+      "provenance": "docs/research/PRQ2-035-NING4JYUN6-DOU1-COMMITTED-PREFERENCE-COLLISION-AUDIT-R1.tsv",
       "source_role": "verified_research_surface_runtime_probe",
       "linguistic_evidence_weight": 0,
       "purpose": "runtime_reachability_only"
     },
     {
-      "case_id": "PRQ2-015-N01",
+      "case_id": "PRQ2-035-N01",
       "source": "有啲人寧願退黨，都要補上空缺。",
       "assertion": "trace_detail_not_equals",
       "forbidden_trace_detail": {
         "clause_linking_subtype": "committed_preference"
       },
-      "provenance": "docs/research/PRQ2-015-NING4JYUN6-DOU1-COMMITTED-PREFERENCE-COLLISION-AUDIT-R1.tsv",
+      "provenance": "docs/research/PRQ2-035-NING4JYUN6-DOU1-COMMITTED-PREFERENCE-COLLISION-AUDIT-R1.tsv",
       "source_role": "constructed_punctuated_positive_continuation_deferred_profile_runtime_probe",
       "linguistic_evidence_weight": 0,
       "purpose": "runtime_reachability_only"
