@@ -45,6 +45,8 @@ The accepted 有得／冇得 specification reserves candidate UUID
 canonical: a later runtime package must create the note, test, runtime label, and
 matcher before invoking the allocation tool. The permanent registry therefore
 remains at 181 records and codes remain allocated only through `AB82`.
+Candidate reservation establishes identity continuity only; it does not make the
+construction current, runtime-available, status-promoted, or promotion-eligible.
 
 ## UUID rules
 
