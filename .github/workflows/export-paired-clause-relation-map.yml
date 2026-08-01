@@ -27,7 +27,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          base64 -d .github/paired-clause-relation-map-payload.tar.gz.b64 > /tmp/paired-clause-relation-map.tar.gz
+          base64 --ignore-garbage -d .github/paired-clause-relation-map-payload.tar.gz.b64 > /tmp/paired-clause-relation-map.tar.gz
           echo "76bd2b589599a223e6a99d9a688a66b87f571c7b3781195b3f97d71fb928f9f8  /tmp/paired-clause-relation-map.tar.gz" | sha256sum -c -
           tar -xzf /tmp/paired-clause-relation-map.tar.gz
           echo "b4fcb835dbfc5cd4c1072488fc6ec81b16382e5e2989e5190548b6a35911d368  data/research/PAIRED-CLAUSE-RELATION-DECISION-MAP-R1.json" | sha256sum -c -
