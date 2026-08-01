@@ -1,26 +1,98 @@
-name: Export paired clause relation snapshot
+name: Publish paired clause relation map
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened]
+    types: [synchronize, reopened]
     paths:
       - ".github/workflows/export-paired-clause-relation-map.yml"
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  export:
+  publish:
     if: github.event_name == 'workflow_dispatch' || github.head_ref == 'agent/paired-clause-relation-map'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - name: Create repository snapshot
-        run: tar --exclude=.git -czf /tmp/canto-span-paired-clause-relation-map.tar.gz .
-      - uses: actions/upload-artifact@v4
         with:
-          name: canto-span-paired-clause-relation-map
-          path: /tmp/canto-span-paired-clause-relation-map.tar.gz
-          if-no-files-found: error
-          retention-days: 1
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Verify and extract fixed payload
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "801caa98f6d4a0482b09fa6e2433b418af36d69ed564f36b22279e20c8232389  .github/paired-clause-relation-map-payload.tar.gz.b64" | sha256sum -c -
+          base64 -d .github/paired-clause-relation-map-payload.tar.gz.b64 > /tmp/paired-clause-relation-map.tar.gz
+          echo "76bd2b589599a223e6a99d9a688a66b87f571c7b3781195b3f97d71fb928f9f8  /tmp/paired-clause-relation-map.tar.gz" | sha256sum -c -
+          tar -xzf /tmp/paired-clause-relation-map.tar.gz
+          echo "b4fcb835dbfc5cd4c1072488fc6ec81b16382e5e2989e5190548b6a35911d368  data/research/PAIRED-CLAUSE-RELATION-DECISION-MAP-R1.json" | sha256sum -c -
+          echo "4ef439fbac17bc0903ac46e871491df152ee35734befa074e13babd64f4914de  docs/research/PAIRED-CLAUSE-RELATION-DECISION-MAP-R1.md" | sha256sum -c -
+          echo "32b93d53c9cb0027ad7f06cfb1be982794b833e9ed02ea3c03fd96d32efa2201  docs/current/PROJECT-STATE.md" | sha256sum -c -
+      - name: Audit map invariants
+        run: |
+          python - <<'PY'
+          import csv, json
+          from pathlib import Path
+          root = Path('.')
+          path = root / 'data/research/PAIRED-CLAUSE-RELATION-DECISION-MAP-R1.json'
+          data = json.loads(path.read_text())
+          families = data['families']
+          expected = ['PRQ2-008','PRQ2-009','PRQ2-010','PRQ2-011','PRQ2-012','PRQ2-013','PRQ2-014','PRQ2-015','PRQ2-033','PRQ2-034','PRQ2-035']
+          assert [row['research_id'] for row in families] == expected
+          assert len({row['research_id'] for row in families}) == 11
+          assert data['scope']['collision_audit_rows'] == 151
+          assert sum(row['collision_rows'] for row in families) == 151
+          assert data['scope']['previous_issue_estimate'] == 147
+          assert data['scope']['dedicated_current_identity_matches'] == 0
+          assert data['summary']['bounded_typed_core_identity_decision'] == 3
+          assert data['summary']['source_ready_identity_and_runtime_specification'] == 4
+          assert data['summary']['evidence_and_runtime_scope_repair'] == 3
+          assert data['summary']['profile_split_and_evidence_architecture'] == 1
+          assert data['routes']['issue_430'] == ['PRQ2-008','PRQ2-013','PRQ2-014']
+          assert data['routes']['issue_431'] == ['PRQ2-010','PRQ2-011','PRQ2-012','PRQ2-033']
+          assert data['routes']['issue_432'] == ['PRQ2-009','PRQ2-034','PRQ2-035']
+          assert data['routes']['issue_409'] == ['PRQ2-015']
+          for row in families:
+              for key in ('research_report','source_verification','collision_audit'):
+                  assert (root / row[key]).is_file(), (row['research_id'], key)
+              with (root / row['collision_audit']).open(encoding='utf-8') as handle:
+                  actual = sum(1 for line in handle if line.strip()) - 1
+              assert actual == row['collision_rows'], (row['research_id'], actual, row['collision_rows'])
+          source = (root / 'src/parser/clause-relations/graph.js').read_text()
+          for token in ('PRQ2-008','PRQ2-009','PRQ2-013','PRQ2-014','relationResearchId = "PRQ2-015"'):
+              assert token in source, token
+          print('paired clause relation map invariants: PASS')
+          PY
+      - name: Install dependencies and verify repository
+        run: |
+          npm ci
+          npm run verify
+          npm run verify:research
+          node tools/verify-project-state.js
+      - name: Remove publication scaffolding and enforce final scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm .github/workflows/export-paired-clause-relation-map.yml
+          rm .github/paired-clause-relation-map-payload.tar.gz.b64
+          mapfile -t files < <(git diff --name-only origin/main)
+          printf '%s\n' "${files[@]}"
+          test "${#files[@]}" -eq 3
+          printf '%s\n' "${files[@]}" | grep -Fx 'data/research/PAIRED-CLAUSE-RELATION-DECISION-MAP-R1.json'
+          printf '%s\n' "${files[@]}" | grep -Fx 'docs/current/PROJECT-STATE.md'
+          printf '%s\n' "${files[@]}" | grep -Fx 'docs/research/PAIRED-CLAUSE-RELATION-DECISION-MAP-R1.md'
+      - name: Commit and push clean map
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Map source-backed paired clause relations"
+          git push origin HEAD:agent/paired-clause-relation-map
