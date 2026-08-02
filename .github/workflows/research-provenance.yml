@@ -16,10 +16,12 @@ jobs:
         with:
           ref: agent/week16-ingress-review
           fetch-depth: 0
-      - name: Preserve runtime crosswalk and extend the live builder
+
+      - name: Prepare runtime crosswalk and live candidate builder
         run: |
           python3 - <<'PY'
           import json
+          import textwrap
           from pathlib import Path
 
           package = Path('data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705')
@@ -38,6 +40,7 @@ jobs:
               })
           if len(records) != 35:
               raise SystemExit(f'expected 35 runtime crosswalk records, got {len(records)}')
+
           runtime_crosswalk = {
               'schema': 'canto-span-pedagogical-runtime-crosswalk-v1',
               'source_id': old_review['sourceId'],
@@ -50,7 +53,8 @@ jobs:
               'records': records,
           }
           (package / 'runtime-crosswalk-r1.json').write_text(
-              json.dumps(runtime_crosswalk, ensure_ascii=False, indent=2) + '\n', encoding='utf-8'
+              json.dumps(runtime_crosswalk, ensure_ascii=False, indent=2) + '\n',
+              encoding='utf-8',
           )
 
           builder = Path('tools/build-pedagogical-corpus-review-candidates.py')
@@ -70,7 +74,8 @@ jobs:
           if '"kind": "runtime_crosswalk"' not in text:
               function_start = text.index('def load_later_research(')
               return_at = text.index('    return by_item\n', function_start)
-              insertion = '''    runtime_crosswalk_path = root / f"data/pedagogical-corpus/glossika/{source_id}/runtime-crosswalk-r1.json"
+              raw_block = textwrap.dedent('''\
+              runtime_crosswalk_path = root / f"data/pedagogical-corpus/glossika/{source_id}/runtime-crosswalk-r1.json"
               if runtime_crosswalk_path.exists():
                   runtime_crosswalk = read_json(runtime_crosswalk_path)
                   if runtime_crosswalk.get("source_id") == source_id:
@@ -87,13 +92,18 @@ jobs:
                                   "source_discrepancies": entry.get("source_discrepancies", []),
                                   "reviewed_values": entry.get("reviewed_values", {}),
                               })
-          '''
-              insertion = '\n'.join(line[14:] if line.startswith('              ') else line for line in insertion.splitlines())
+              ''')
+              insertion = ''.join(
+                  ('    ' + line if line.strip() else line)
+                  for line in raw_block.splitlines(keepends=True)
+              )
               text = text[:return_at] + insertion + text[return_at:]
+
           builder.write_text(text, encoding='utf-8')
           PY
           python3 -m py_compile tools/build-pedagogical-corpus-review-candidates.py
-      - name: Execute remaining checked-in Week 16 generation steps
+
+      - name: Execute checked-in Week 16 review generation
         run: |
           python3 - <<'PY'
           from pathlib import Path
@@ -118,11 +128,32 @@ jobs:
           Path('/tmp/week16-review.sh').write_text('\n\n'.join(scripts) + '\n', encoding='utf-8')
           PY
           bash -euxo pipefail /tmp/week16-review.sh
-      - name: Commit generated review and remove temporary generator
+
+      - name: Validate generated review summary
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          package = Path('data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705')
+          review = json.loads((package / 'review.json').read_text(encoding='utf-8'))
+          summary = review['summary']
+          if summary.get('record_count') != 59:
+              raise SystemExit(f"unexpected record count: {summary}")
+          if summary.get('reviewed_count') != 59 or summary.get('unreviewed_count') != 0:
+              raise SystemExit(f"review is not terminal: {summary}")
+          crosswalk = json.loads((package / 'runtime-crosswalk-r1.json').read_text(encoding='utf-8'))
+          if crosswalk.get('record_count') != 35:
+              raise SystemExit(f"unexpected runtime crosswalk count: {crosswalk.get('record_count')}")
+          PY
+
+      - name: Commit generated review and restore permanent workflow
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add tools/build-pedagogical-corpus-review-candidates.py \
+          git show origin/agent/week15-ingress-review:.github/workflows/research-provenance.yml > .github/workflows/research-provenance.yml
+          git add .github/workflows/research-provenance.yml \
+            tools/build-pedagogical-corpus-review-candidates.py \
             config/pedagogical-corpus-source-locks.json \
             data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/README.md \
             data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/runtime-crosswalk-r1.json \
@@ -131,7 +162,7 @@ jobs:
             data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/review.json \
             data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/expert-review-r1.tsv \
             data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/research-summary.md
-          git rm -f .github/workflows/build-week16-review.yml \
+          git rm -f --ignore-unmatch .github/workflows/build-week16-review.yml \
             data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/.review-claim
           git commit -m "Complete Week 16 record-level ingress review"
           git push origin HEAD:agent/week16-ingress-review
