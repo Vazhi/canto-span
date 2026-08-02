@@ -16,7 +16,7 @@ const outputPath = outputIndex >= 0
   ? path.resolve(process.cwd(), process.argv[outputIndex + 1] || "")
   : null;
 const keepGoing = process.argv.includes("--keep-going");
-const valid = new Set(["core", "research", "release", "all"]);
+const valid = new Set(["core", "research", "runtime", "release", "all"]);
 
 if (!valid.has(requested)) {
   console.error(`Unknown verification profile: ${requested}`);
@@ -32,7 +32,7 @@ if (manifest.schema !== "canto-span-verification-profiles-v2") {
 }
 
 const selectedNames = requested === "all"
-  ? ["core", "research", "release"]
+  ? ["core", "research", "runtime", "release"]
   : requested === "release"
     ? ["core", "release"]
     : [requested];
