@@ -1,22 +1,77 @@
 name: Research provenance
 
 on:
+  push:
+    paths:
+      - "data/construction-identities.json"
+      - "data/construction-identity-lock.json"
+      - "data/construction-adjudications.json"
+      - "data/construction-adjudication-batches/**"
+      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/**"
+      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/**"
+      - "docs/research/**"
+      - "external-evidence/**"
+      - "grammar/**"
+      - "review-packets/**"
+      - "config/pedagogical-corpus-source-locks.json"
+      - "config/research-provenance-baseline.json"
+      - "config/research-evidence-grades.json"
+      - "config/verification-profiles.json"
+      - "tools/build-pedagogical-corpus-review-candidates.py"
+      - "tools/research-provenance-lib.js"
+      - "tools/verify-pedagogical-corpus-review.py"
+      - "tools/verify-research-provenance.js"
+      - "tools/verify-native-panel-lifecycle.js"
+      - "tools/verify-interim-pilot-public-package.py"
+      - "tests/tooling/native-panel/native-panel-lifecycle.test.js"
+      - "tests/tooling/research/ab30-aggregate-integrity.test.py"
+      - "tests/tooling/research/interim-pilot-public-package.test.py"
+      - "tests/tooling/research/pedagogical-corpus-review.test.py"
+      - "package.json"
+      - ".github/workflows/research-provenance.yml"
   pull_request:
     paths:
+      - "data/construction-identities.json"
+      - "data/construction-identity-lock.json"
+      - "data/construction-adjudications.json"
+      - "data/construction-adjudication-batches/**"
+      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/**"
+      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/**"
+      - "docs/research/**"
+      - "external-evidence/**"
+      - "grammar/**"
+      - "review-packets/**"
+      - "config/pedagogical-corpus-source-locks.json"
+      - "config/research-provenance-baseline.json"
+      - "config/research-evidence-grades.json"
+      - "config/verification-profiles.json"
+      - "tools/build-pedagogical-corpus-review-candidates.py"
+      - "tools/research-provenance-lib.js"
+      - "tools/verify-pedagogical-corpus-review.py"
+      - "tools/verify-research-provenance.js"
+      - "tools/verify-native-panel-lifecycle.js"
+      - "tools/verify-interim-pilot-public-package.py"
+      - "tests/tooling/native-panel/native-panel-lifecycle.test.js"
+      - "tests/tooling/research/ab30-aggregate-integrity.test.py"
+      - "tests/tooling/research/interim-pilot-public-package.test.py"
+      - "tests/tooling/research/pedagogical-corpus-review.test.py"
+      - "package.json"
       - ".github/workflows/research-provenance.yml"
+  workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  regenerate-reviewed-packages:
+  verify-research:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
-          ref: agent/week15-ingress-review
-          fetch-depth: 0
-      - name: Exclude derived files across pedagogical packages
+          node-version: 24
+          package-manager-cache: false
+      - name: Build clean cross-package candidate state in the ephemeral checkout
         run: |
           python3 - <<'PY'
           from pathlib import Path
@@ -47,26 +102,24 @@ jobs:
               raise SystemExit('package review file block not found')
           text = text.replace(old, new, 1)
           old_loop = '''            relative = path.relative_to(root)
-              if relative in excluded_files:
-                  continue
+            if relative in excluded_files:
+                continue
 '''
           new_loop = '''            relative = path.relative_to(root)
-              if relative in excluded_files:
-                  continue
-              if (
-                  len(relative.parts) >= 4
-                  and relative.parts[:3] == ("data", "pedagogical-corpus", "glossika")
-                  and relative.name in GLOBAL_PEDAGOGICAL_DERIVED_FILES
-              ):
-                  continue
+            if relative in excluded_files:
+                continue
+            if (
+                len(relative.parts) >= 4
+                and relative.parts[:3] == ("data", "pedagogical-corpus", "glossika")
+                and relative.name in GLOBAL_PEDAGOGICAL_DERIVED_FILES
+            ):
+                continue
 '''
           if old_loop not in text:
               raise SystemExit('candidate loop insertion point not found')
           path.write_text(text.replace(old_loop, new_loop, 1), encoding='utf-8')
           PY
           python3 -m py_compile tools/build-pedagogical-corpus-review-candidates.py
-      - name: Regenerate registered packages
-        run: |
           python3 tools/build-pedagogical-corpus-review-candidates.py \
             --package data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621 \
             --output data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/mechanical-cross-reference-r1.json \
@@ -75,14 +128,23 @@ jobs:
             --package data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628 \
             --output data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/mechanical-cross-reference-r1.json \
             --write
-      - name: Commit permanent state and remove temporary workflows
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add tools/build-pedagogical-corpus-review-candidates.py \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/mechanical-cross-reference-r1.json \
+      - name: Upload exact reviewed-package files
+        uses: actions/upload-artifact@v4
+        with:
+          name: reviewed-pedagogical-crossrefs
+          path: |
+            tools/build-pedagogical-corpus-review-candidates.py
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/mechanical-cross-reference-r1.json
             data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/mechanical-cross-reference-r1.json
-          git rm -f .github/workflows/extract-week15-tail.yml \
-            .github/workflows/build-week15-review-candidates.yml
-          git commit -m "Exclude derived pedagogical files from cross-reference scans"
-          git push origin HEAD:agent/week15-ingress-review
+          if-no-files-found: error
+          retention-days: 1
+      - name: Test native-panel lifecycle verifier
+        run: node --test tests/tooling/native-panel/native-panel-lifecycle.test.js
+      - name: Test AB30 aggregate integrity verifier
+        run: python3 tests/tooling/research/ab30-aggregate-integrity.test.py
+      - name: Test interim pilot public-package verifier
+        run: python3 tests/tooling/research/interim-pilot-public-package.test.py
+      - name: Test reviewed pedagogical corpus packages
+        run: python3 tests/tooling/research/pedagogical-corpus-review.test.py
+      - name: Verify durable research provenance and lifecycle state
+        run: npm run verify:research
