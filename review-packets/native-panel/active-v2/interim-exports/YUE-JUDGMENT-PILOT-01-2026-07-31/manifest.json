@@ -21,17 +21,9 @@
       "5": "明顯唔自然"
     },
     "summary_groups": {
-      "natural_or_acceptable": [
-        1,
-        2
-      ],
-      "uncertain_or_context_dependent": [
-        3
-      ],
-      "unnatural": [
-        4,
-        5
-      ]
+      "natural_or_acceptable": [1, 2],
+      "uncertain_or_context_dependent": [3],
+      "unnatural": [4, 5]
     }
   },
   "screening_totals": {
@@ -98,8 +90,8 @@
     },
     {
       "path": "PUBLIC-DISCLOSURE-POLICY.md",
-      "bytes": 2592,
-      "sha256": "5f6a85f410c9d883b246d49af567ca79f419e4d554afafe787f3ca31dd736c01"
+      "bytes": 2653,
+      "sha256": "88576405f6d01f569d42a315c579afddf2a31035590a586d81e6f16c54c02007"
     },
     {
       "path": "OFFLINE-REPRODUCIBILITY.md",
