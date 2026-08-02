@@ -1,59 +1,43 @@
 name: Coordination tooling
 
 on:
+  push:
+    paths:
+      - "tools/coordination/**"
+      - "tests/tooling/coordination/**"
+      - "schemas/task-intake.schema.json"
+      - "schemas/work-claim.schema.json"
+      - "docs/current/MULTI-AGENT-COORDINATION.md"
+      - "docs/current/CODEX-ISSUE-WORKFLOW.md"
+      - "docs/current/PORTFOLIO-ROUTING.md"
+      - "package.json"
+      - ".github/workflows/coordination-tooling.yml"
   pull_request:
     paths:
+      - "tools/coordination/**"
+      - "tests/tooling/coordination/**"
+      - "schemas/task-intake.schema.json"
+      - "schemas/work-claim.schema.json"
+      - "docs/current/MULTI-AGENT-COORDINATION.md"
+      - "docs/current/CODEX-ISSUE-WORKFLOW.md"
+      - "docs/current/PORTFOLIO-ROUTING.md"
+      - "package.json"
       - ".github/workflows/coordination-tooling.yml"
+  workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  regenerate-week14-cross-reference:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
-          ref: agent/week14-ingress-review
-          fetch-depth: 0
-      - name: Exclude derived report and regenerate mechanical packet
-        run: |
-          python3 - <<'PY'
-          from pathlib import Path
-
-          builder = Path('tools/build-pedagogical-corpus-review-candidates.py')
-          text = builder.read_text(encoding='utf-8')
-          old = '''    excluded_package_files.add(output_relative)
-    for scan_root in SCAN_ROOTS:
-'''
-          new = '''    excluded_package_files.add(output_relative)
-    derived_report = Path("docs/research") / f"{package_relative.name}-CORPUS-INGRESS.md"
-    excluded_package_files.add(derived_report)
-    for scan_root in SCAN_ROOTS:
-'''
-          if old not in text:
-              raise SystemExit('candidate-file exclusion insertion point not found')
-          text = text.replace(old, new, 1)
-          old_policy = '''            "excluded_package_files": sorted(PACKAGE_REVIEW_FILES | {output_relative.name}),
-            "excluded_path_parts": sorted(EXCLUDED_PARTS),
-'''
-          new_policy = '''            "excluded_package_files": sorted(PACKAGE_REVIEW_FILES | {output_relative.name}),
-            "excluded_derived_reports": [f"docs/research/{package_relative.name}-CORPUS-INGRESS.md"],
-            "excluded_path_parts": sorted(EXCLUDED_PARTS),
-'''
-          if old_policy not in text:
-              raise SystemExit('scan-policy insertion point not found')
-          builder.write_text(text.replace(old_policy, new_policy, 1), encoding='utf-8')
-          PY
-          python3 tools/build-pedagogical-corpus-review-candidates.py \
-            --package data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621 \
-            --output data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/mechanical-cross-reference-r1.json \
-            --write
-      - name: Commit regenerated state
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add tools/build-pedagogical-corpus-review-candidates.py \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/mechanical-cross-reference-r1.json
-          git commit -m "Exclude derived report from Week 14 cross-reference"
-          git push origin HEAD:agent/week14-ingress-review
+          node-version: 24
+          package-manager-cache: false
+      - name: Test reusable coordination tooling
+        run: npm run test:coordination
+      - name: Verify current documentation and canonical state
+        run: npm run verify
