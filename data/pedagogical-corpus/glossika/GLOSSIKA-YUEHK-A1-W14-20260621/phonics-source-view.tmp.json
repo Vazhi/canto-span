@@ -1,0 +1,146 @@
+[
+  {
+    "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I054",
+    "ordinal": 54,
+    "section": "phonics_drill",
+    "subsection": "long_aa_vs_short_a",
+    "itemType": "phonics_pair",
+    "register": null,
+    "source": {
+      "ipa": "/saːm˥/ vs /sɐm˥/",
+      "traditionalA": "三",
+      "traditionalB": "心",
+      "jyutpingA": "saam1",
+      "jyutpingB": "sam1",
+      "englishA": "three",
+      "englishB": "heart"
+    },
+    "sourceHash": "sha256:21fdcded02f546e3f169b7da312b8bcf68603d1dfa63fe9934a99a37b9b2a0e0"
+  },
+  {
+    "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I055",
+    "ordinal": 55,
+    "section": "phonics_drill",
+    "subsection": "long_aa_vs_short_a",
+    "itemType": "phonics_pair",
+    "register": null,
+    "source": {
+      "ipa": "/kaːn˥/ vs /kɐn˥/",
+      "traditionalA": "間",
+      "traditionalB": "根",
+      "jyutpingA": "gaan1",
+      "jyutpingB": "gan1",
+      "englishA": "room; between",
+      "englishB": "root"
+    },
+    "sourceHash": "sha256:e02d66b503e1014ac92afd13e8b124326d3d05aef2cca505e576fb0fa7947bb6"
+  },
+  {
+    "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I056",
+    "ordinal": 56,
+    "section": "phonics_drill",
+    "subsection": "long_aa_vs_short_a",
+    "itemType": "phonics_pair",
+    "register": null,
+    "source": {
+      "ipa": "/taːm˥/ vs /tɐm˥/",
+      "traditionalA": "擔",
+      "traditionalB": "耽",
+      "jyutpingA": "daam1",
+      "jyutpingB": "dam1",
+      "englishA": "to carry",
+      "englishB": "to delay"
+    },
+    "sourceHash": "sha256:8b59b5b0e1c774538e364b480eccc8228b2548fe18c186e4e6bca0d6e6b065d3"
+  },
+  {
+    "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I057",
+    "ordinal": 57,
+    "section": "phonics_drill",
+    "subsection": "long_aa_vs_short_a",
+    "itemType": "phonics_pair",
+    "register": null,
+    "source": {
+      "ipa": "/saːŋ˥/ vs /sɐŋ˥/",
+      "traditionalA": "生",
+      "traditionalB": "聲",
+      "jyutpingA": "saang1",
+      "jyutpingB": "seng1",
+      "englishA": "to be born; raw",
+      "englishB": "voice; sound"
+    },
+    "sourceHash": "sha256:19ff2156e2e75e77f561b530c5a5582509fd4fbe6cf1a7eae2437d834ad8e3f8"
+  },
+  {
+    "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I058",
+    "ordinal": 58,
+    "section": "phonics_drill",
+    "subsection": "long_aa_vs_short_a",
+    "itemType": "phonics_pair",
+    "register": null,
+    "source": {
+      "ipa": "/saːt̚˧/ vs /sɐt̚˥/",
+      "traditionalA": "殺",
+      "traditionalB": "失",
+      "jyutpingA": "saat3",
+      "jyutpingB": "sat1",
+      "englishA": "to kill",
+      "englishB": "to lose"
+    },
+    "sourceHash": "sha256:3a8ac17fb2dc0498fb61cdc809e0626d072473abe9e42a13c36827e9714258b7"
+  },
+  {
+    "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I059",
+    "ordinal": 59,
+    "section": "phonics_drill",
+    "subsection": "long_aa_vs_short_a",
+    "itemType": "phonics_pair",
+    "register": null,
+    "source": {
+      "ipa": "/kaːp̚˧/ vs /kɐp̚˥/",
+      "traditionalA": "夾",
+      "traditionalB": "急",
+      "jyutpingA": "gaap3",
+      "jyutpingB": "gap1",
+      "englishA": "to clamp",
+      "englishB": "urgent"
+    },
+    "sourceHash": "sha256:fd471a10da932ef06b20be77c16484e73af10503e75ecfca81698f5aeb7d00c8"
+  },
+  {
+    "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I060",
+    "ordinal": 60,
+    "section": "phonics_drill",
+    "subsection": "long_aa_vs_short_a",
+    "itemType": "phonics_pair",
+    "register": null,
+    "source": {
+      "ipa": "/faːn˥/ vs /fɐn˥/",
+      "traditionalA": "翻",
+      "traditionalB": "分",
+      "jyutpingA": "faan1",
+      "jyutpingB": "fan1",
+      "englishA": "to return",
+      "englishB": "to divide"
+    },
+    "sourceHash": "sha256:c6f71830a1ace7ca9b307bfb9c0b535f4abf25f56b91c547c513d0838a4fd548"
+  },
+  {
+    "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I061",
+    "ordinal": 61,
+    "section": "phonics_drill",
+    "subsection": "long_aa_vs_short_a",
+    "itemType": "phonics_pair",
+    "register": null,
+    "source": {
+      "ipa": "/laːm˨˩/ vs /lɐm˨˩/",
+      "traditionalA": "藍",
+      "traditionalB": "林",
+      "jyutpingA": "laam4",
+      "jyutpingB": "lam4",
+      "englishA": "blue",
+      "englishB": "forest"
+    },
+    "sourceHash": "sha256:7cd218361db385712463aa6f70d6dc0cc8f0b271f39257a6d3b55b16dbe97403"
+  }
+]
