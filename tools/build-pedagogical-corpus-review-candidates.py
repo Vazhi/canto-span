@@ -41,6 +41,15 @@ PACKAGE_REVIEW_FILES = {
     "expert-review-r1.tsv",
     "package-integrity-r1.json",
 }
+GLOBAL_PEDAGOGICAL_DERIVED_FILES = {
+    "review.json",
+    "README.md",
+    "research-summary.md",
+    "expert-review-r1.tsv",
+    "package-integrity-r1.json",
+    "mechanical-cross-reference-r1.json",
+    "crosswalk.json",
+}
 
 
 def normalize_surface(value: str) -> str:
@@ -84,6 +93,14 @@ def derived_report_path(package_relative: Path) -> Path:
     return Path("docs/research") / f"{package_relative.name}-CORPUS-INGRESS.md"
 
 
+def is_global_pedagogical_derived(relative: Path) -> bool:
+    return (
+        len(relative.parts) >= 4
+        and relative.parts[:3] == ("data", "pedagogical-corpus", "glossika")
+        and relative.name in GLOBAL_PEDAGOGICAL_DERIVED_FILES
+    )
+
+
 def candidate_files(root: Path, package_relative: Path, output_relative: Path) -> list[Path]:
     output: list[Path] = []
     excluded_files = {package_relative / name for name in PACKAGE_REVIEW_FILES}
@@ -97,7 +114,7 @@ def candidate_files(root: Path, package_relative: Path, output_relative: Path) -
             if not path.is_file() or path.suffix.lower() not in TEXT_SUFFIXES:
                 continue
             relative = path.relative_to(root)
-            if relative in excluded_files:
+            if relative in excluded_files or is_global_pedagogical_derived(relative):
                 continue
             if relative.parent == package_relative and (
                 relative.name.startswith("expert-review-brief.")
@@ -208,7 +225,6 @@ def build(root: Path, package_relative: Path, output_relative: Path) -> dict[str
     layer_counts: Counter[str] = Counter()
 
     for item in items:
-        item_id = item.get("id")
         item_source = item.get("source") or {}
         traditional = str(item_source.get("traditional") or "")
         normalized = normalize_surface(traditional)
@@ -230,6 +246,7 @@ def build(root: Path, package_relative: Path, output_relative: Path) -> dict[str
             match_counts[match["match_type"]] += 1
             layer_counts[match["layer"]] += 1
 
+        item_id = item.get("id")
         records.append({
             "id": item_id,
             "ordinal": item.get("ordinal"),
