@@ -42,7 +42,7 @@
         "id": "documentation",
         "command": ["node", "tools/verify-documentation-consistency.js"],
         "reason": "Prevent broken current-document links and competing current authority.",
-        "run_when": "Current documentation, authority settings, or canonical state changes."
+        "run_when": "Current documentation, authority settings, or canonical state change."
       }
     ],
     "research": [
@@ -51,6 +51,12 @@
         "command": ["node", "tools/verify-research-provenance.js"],
         "reason": "Prevent missing, duplicate, malformed, or overclaimed research provenance records.",
         "run_when": "Research packages, source ledgers, evidence grades, or provenance configuration change."
+      },
+      {
+        "id": "native-panel-lifecycle",
+        "command": ["node", "tools/verify-native-panel-lifecycle.js"],
+        "reason": "Prevent a follow-up native-panel instrument or artifact from becoming locked, generated, deployable, or deployed before pilot closure and accepted item audit.",
+        "run_when": "Canonical pilot, item-audit, follow-up lifecycle, or tracked-artifact metadata changes."
       }
     ],
     "runtime": [
