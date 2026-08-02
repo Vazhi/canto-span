@@ -1,6 +1,6 @@
 # Issue #444 pre-audit research: objectless `V咗喇` readings
 
-**State:** source-first work in progress  
+**State:** source-first pre-audit packet  
 **Parent issue:** #444  
 **Work claim:** #447  
 **Survey dependency:** `YUE-JUDGMENT-PILOT-01` remains active; no final audit is available.
@@ -23,13 +23,18 @@ These sources establish that an unpronounced object can be licensed and interpre
 
 The AB30 source ledger and the official aspect chapter classify postverbal `咗` as perfective and keep completion, result, temporal location, and current relevance from being treated as invariant consequences of the marker alone. Fan and Chan (2022) explicitly distinguish `V + 啦` from `V + 咗 + 啦`.
 
-Sybesma and Li (2007) describe `laa3` as marking a realized or newly relevant state in their particle analysis. The official Cantonese grammar also treats sentence-final particles as an independent layer and shows `喇` combining with predicates and with other particles.
+Sybesma and Li (2007) describe `laa3` as marking a realized or newly relevant state in their particle analysis. They discuss the particle with completed events, new states of affairs, and actions about to begin. The official Cantonese grammar also treats sentence-final particles as an independent layer.
 
-Therefore, an objectless `V咗喇` string potentially combines at least three independent questions:
+Therefore, an objectless `V咗喇` string potentially combines at least four independent questions:
 
 1. what argument structure or lexical sense the verb has in context;
-2. what perfective `咗` contributes;
-3. what sentence-final `喇` contributes to the discourse update.
+2. whether an object is discourse-recovered, non-specific, generic, or absent from the interpretation;
+3. what perfective `咗` contributes;
+4. what sentence-final `喇` contributes to the discourse update.
+
+### Natural objectless activity does not decide the syntax
+
+Lai and Pang (2023) discuss `食飽先有力減肥`, where no specific food is implied even though `食` is treated as transitive in the descriptive tradition they cite. They use the example to motivate construction-level argument accounting. The example is not itself `V咗喇`, but it provides an important boundary: a natural clause without an overt patient does not by itself decide whether a patient is syntactically omitted, contextually inferred, constructionally licensed, or absent under a conventional activity reading.
 
 ## Competing analyses
 
@@ -51,6 +56,7 @@ Therefore, an objectless `V咗喇` string potentially combines at least three in
 - Omitted objects can have specific and several non-specific interpretations.
 - Topicalization and topic chains can maintain an antecedent across clauses.
 - Perfective `咗` and sentence-final `喇` are separate grammatical layers.
+- Natural objectless activity surfaces can remain structurally ambiguous.
 - AB30 is explicitly limited to an overt independently licensed object and must not absorb objectless cases.
 
 ### Not yet supported
@@ -72,13 +78,15 @@ Therefore, an objectless `V咗喇` string potentially combines at least three in
 
 ## Working conclusion
 
-The interim result should not be summarized as either “Cantonese freely drops objects” or “the object is optional.” Current sources require a multi-analysis model. Object omission can be anaphoric and can support more than one referential type; some verb uses may instead be lexical or activity readings; and `喇` adds a separate discourse-update layer. The later survey and corpus review must identify which analysis is active for each verb and context.
+The interim result should not be summarized as either “Cantonese freely drops objects” or “the object is optional.” Current sources require a multi-analysis model. Object omission can be anaphoric and can support more than one referential type; some verb uses may instead be lexical, construction-level, or conventional activity readings; and `喇` adds a separate discourse-update layer. The later survey and corpus review must identify which analysis is active for each verb and context.
 
 ## Files
 
 - `source-ledger.tsv` — checked sources and exact claim limits;
 - `claim-matrix.tsv` — competing objectless analyses and current support;
-- `controlled-contrasts.tsv` — proposed verb/context/aspect contrasts for the frozen-audit or follow-up stage.
+- `controlled-contrasts.tsv` — proposed verb/context/aspect contrasts for the frozen-audit or follow-up stage;
+- `source-review-addendum.md` — detailed null-object, valency, aspect, and particle synthesis;
+- `corpus-review-schema.tsv` — auditable fields for future context-bearing candidate review.
 
 ## Protected state
 
