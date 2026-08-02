@@ -1,7 +1,7 @@
 # Week 14 corpus-ingress review summary
 
 Source ID: `GLOSSIKA-YUEHK-A1-W14-20260621`  
-Review date: 2026-08-02  
+Review date: `2026-08-02`  
 Review authority: project expert systematic review  
 Related research: issue #126 and merged PR #262
 
@@ -35,9 +35,9 @@ The review accepts five exact duplicates with concrete evidence-backed targets:
 
 - `I011 公司` — existing runtime lexicon owner;
 - `I013 老闆` — existing runtime lexicon owner;
-- `I022 準時` — existing runtime lexicon owner;
-- `I038 一萬` — existing runtime lexicon owner;
-- `I043 一百萬` — exact independent Week 15 pedagogical source.
+- `I026 準時` — existing runtime lexicon owner;
+- `I031 文件` — existing runtime lexicon owner;
+- `I043 十萬` — exact independent Week 15 pedagogical source.
 
 Other repository matches remain mechanical candidates or research mentions. They do not establish duplicate ownership.
 
@@ -45,9 +45,9 @@ Other repository matches remain mechanical candidates or research mentions. They
 
 The remaining ordinary vocabulary records are lexical-only attestations. Later Week 14 research distinguishes:
 
-- lexical-ingress candidates that are not implemented by this package;
-- current exact runtime owners listed above;
-- ten large-numeral forms that remain compositional evidence rather than ten opaque whole-form lexical entries.
+- 18 lexical-ingress candidates that are not implemented by this package;
+- four current exact runtime owners listed above;
+- ten large-numeral forms, of which `十萬` is an accepted exact pedagogical duplicate and the other nine remain compositional attestations rather than opaque whole-form lexical entries.
 
 The package does not infer grammar or parser licensing from lexical presence.
 
@@ -67,17 +67,17 @@ The immutable source values remain visible. The review records these problems se
 Six internally coherent long-/aː/ versus short-/ɐ/ pairs are retained as new pedagogical pronunciation attestations only:
 
 - `三／心`;
-- `間／斤`;
+- `間／根`;
 - `擔／耽`;
-- `殺／實`;
-- `甲／急`;
-- `男／林`.
+- `殺／失`;
+- `夾／急`;
+- `藍／林`.
 
 They are not adopted as learner-facing pronunciation evidence until each lexical member is independently verified. `聲` and `翻` remain discrepancy records as described above.
 
 ## Sentence and dialog evidence
 
-The 18 sentence/dialog records are retained as pedagogical corpus attestations except `I001`, whose pronunciation discrepancy is terminally recorded. Later Week 14 research links occupational predicates, clause-final `嘅`, numeral composition, and phonics contrasts to bounded follow-up questions. These links do not convert the source items into grammar proof, naturalness decisions, parser tests, or construction identities.
+The 18 sentence/dialog records are retained as pedagogical corpus attestations except `I001`, whose pronunciation discrepancy is terminally recorded. Later Week 14 research links apology pragmatics, gratitude semantics, occupational predicates, workplace locatives, clause-final particles, and degree `幾` to bounded follow-up questions. These links do not convert the source items into grammar proof, naturalness decisions, parser tests, or construction identities.
 
 ## Integrity model
 
@@ -85,7 +85,8 @@ The 18 sentence/dialog records are retained as pedagogical corpus attestations e
 - `mechanical-cross-reference-r1.json` is regenerated deterministically from the current repository and accepted later research;
 - expert decisions remain only in `review.json` and `expert-review-r1.tsv`;
 - accepted duplicate targets must be present in the mechanical exact candidates or accepted later runtime-owner links;
-- source discrepancies and reviewed replacements remain separate from immutable source values.
+- source discrepancies and reviewed replacements remain separate from immutable source values;
+- the focused mutation suite and recurring research profile enforce these invariants.
 
 ## No protected-state change
 
