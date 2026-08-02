@@ -1,95 +1,87 @@
 name: Research provenance
 
 on:
+  push:
+    paths:
+      - "data/construction-identities.json"
+      - "data/construction-identity-lock.json"
+      - "data/construction-adjudications.json"
+      - "data/construction-adjudication-batches/**"
+      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/**"
+      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/**"
+      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/**"
+      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/**"
+      - "docs/research/**"
+      - "external-evidence/**"
+      - "grammar/**"
+      - "review-packets/**"
+      - "config/pedagogical-corpus-source-locks.json"
+      - "config/research-provenance-baseline.json"
+      - "config/research-evidence-grades.json"
+      - "config/verification-profiles.json"
+      - "tools/build-pedagogical-corpus-review-candidates.py"
+      - "tools/research-provenance-lib.js"
+      - "tools/verify-pedagogical-corpus-review.py"
+      - "tools/verify-research-provenance.js"
+      - "tools/verify-native-panel-lifecycle.js"
+      - "tools/verify-interim-pilot-public-package.py"
+      - "tests/tooling/native-panel/native-panel-lifecycle.test.js"
+      - "tests/tooling/research/ab30-aggregate-integrity.test.py"
+      - "tests/tooling/research/interim-pilot-public-package.test.py"
+      - "tests/tooling/research/pedagogical-corpus-review.test.py"
+      - "package.json"
+      - ".github/workflows/research-provenance.yml"
   pull_request:
     paths:
+      - "data/construction-identities.json"
+      - "data/construction-identity-lock.json"
+      - "data/construction-adjudications.json"
+      - "data/construction-adjudication-batches/**"
+      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/**"
+      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/**"
+      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/**"
+      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/**"
+      - "docs/research/**"
+      - "external-evidence/**"
+      - "grammar/**"
+      - "review-packets/**"
+      - "config/pedagogical-corpus-source-locks.json"
+      - "config/research-provenance-baseline.json"
+      - "config/research-evidence-grades.json"
+      - "config/verification-profiles.json"
+      - "tools/build-pedagogical-corpus-review-candidates.py"
+      - "tools/research-provenance-lib.js"
+      - "tools/verify-pedagogical-corpus-review.py"
+      - "tools/verify-research-provenance.js"
+      - "tools/verify-native-panel-lifecycle.js"
+      - "tools/verify-interim-pilot-public-package.py"
+      - "tests/tooling/native-panel/native-panel-lifecycle.test.js"
+      - "tests/tooling/research/ab30-aggregate-integrity.test.py"
+      - "tests/tooling/research/interim-pilot-public-package.test.py"
+      - "tests/tooling/research/pedagogical-corpus-review.test.py"
+      - "package.json"
       - ".github/workflows/research-provenance.yml"
+  workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  finalize-week17-review:
+  verify-research:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-        with:
-          ref: agent/week17-ingress-review
-          fetch-depth: 0
       - uses: actions/setup-node@v6
         with:
           node-version: 24
           package-manager-cache: false
-      - name: Generate final Week 17 review state
-        run: |
-          sed -i 's/158/162/g' tools/finalize-week17-review-temporary.py
-          python3 - <<'PY'
-          from pathlib import Path
-          path = Path('tools/finalize-week17-review-temporary.py')
-          text = path.read_text(encoding='utf-8')
-          old = '    builder = builder.replace(marker, legacy_loader + marker, 1)\n'
-          new = '    legacy_loader = textwrap.indent(legacy_loader, "    ")\n    builder = builder.replace(marker, legacy_loader + marker, 1)\n'
-          if old not in text:
-              raise SystemExit('legacy-loader insertion marker missing')
-          path.write_text(text.replace(old, new, 1), encoding='utf-8')
-          PY
-          python3 tools/finalize-week17-review-temporary.py
-          python3 - <<'PY'
-          from pathlib import Path
-          path = Path('tools/build-pedagogical-corpus-review-candidates.py')
-          text = path.read_text(encoding='utf-8')
-          old_function = '''def derived_report_path(package_relative: Path) -> Path:
-              return Path("docs/research") / f"{package_relative.name}-CORPUS-INGRESS.md"
-          '''
-          new_function = '''def derived_report_paths(package_relative: Path) -> set[Path]:
-              stem = package_relative.name
-              return {
-                  Path("docs/research") / f"{stem}-CORPUS-INGRESS.md",
-                  Path("docs/research") / f"{stem}-CORPUS-RECONCILIATION.md",
-              }
-          '''
-          old_use = '    excluded_files.update({output_relative, derived_report_path(package_relative)})\n'
-          new_use = '    excluded_files.add(output_relative)\n    excluded_files.update(derived_report_paths(package_relative))\n'
-          if old_function not in text or old_use not in text:
-              raise SystemExit('derived report exclusion marker missing')
-          text = text.replace(old_function, new_function, 1).replace(old_use, new_use, 1)
-          path.write_text(text, encoding='utf-8')
-          PY
-          python3 -m py_compile tools/build-pedagogical-corpus-review-candidates.py
-          python3 tools/build-pedagogical-corpus-review-candidates.py \
-            --package data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712 \
-            --output data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/mechanical-cross-reference-r1.json \
-            --write
-      - name: Validate final Week 17 state
-        run: |
-          python3 -m py_compile tools/build-pedagogical-corpus-review-candidates.py tools/verify-pedagogical-corpus-review.py tests/tooling/research/pedagogical-corpus-review.test.py
-          python3 tests/tooling/research/pedagogical-corpus-review.test.py
-          npm run verify:pedagogical-corpus-review
-          npm run verify:research
-          npm run verify
-          git diff --check
-      - name: Push non-workflow review changes
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git restore .github/workflows/research-provenance.yml
-          git rm -f tools/finalize-week17-review-temporary.py \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/.review-claim
-          git add config/pedagogical-corpus-source-locks.json \
-            config/verification-profiles.json \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/README.md \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/evidence-sources-r1.json \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/expert-review-r1.tsv \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/legacy-reconciliation-r1.json \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/mechanical-cross-reference-r1.json \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/package-integrity-r1.json \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/project-only-review-r1.json \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/research-summary.md \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/review.json \
-            docs/research/GLOSSIKA-YUEHK-A1-W17-20260712-CORPUS-RECONCILIATION.md \
-            package.json \
-            tests/tooling/research/pedagogical-corpus-review.test.py \
-            tools/build-pedagogical-corpus-review-candidates.py \
-            tools/verify-pedagogical-corpus-review.py
-          git commit -m "Complete Week 17 expert reconciliation review"
-          git push origin HEAD:agent/week17-ingress-review
+      - name: Test native-panel lifecycle verifier
+        run: node --test tests/tooling/native-panel/native-panel-lifecycle.test.js
+      - name: Test AB30 aggregate integrity verifier
+        run: python3 tests/tooling/research/ab30-aggregate-integrity.test.py
+      - name: Test interim pilot public-package verifier
+        run: python3 tests/tooling/research/interim-pilot-public-package.test.py
+      - name: Test reviewed pedagogical corpus packages
+        run: python3 tests/tooling/research/pedagogical-corpus-review.test.py
+      - name: Verify durable research provenance and lifecycle state
+        run: npm run verify:research
