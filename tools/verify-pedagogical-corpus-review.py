@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify a source-preserving pedagogical corpus package and completed expert review."""
+"""Verify source-preserving pedagogical corpus packages and completed expert reviews."""
 
 from __future__ import annotations
 
@@ -455,12 +455,65 @@ def verify_documentation(
             fail(f"research summary count projection mismatch: {terminal}={count}")
 
 
+def nonderived_match_paths(builder: Any, row: dict[str, Any], field: str) -> set[str]:
+    output: set[str] = set()
+    for match in row.get(field, []):
+        if not isinstance(match, dict) or not isinstance(match.get("path"), str):
+            fail(f"malformed mechanical candidate in {row.get('id')}: {match}")
+        path = Path(match["path"])
+        if builder.is_global_pedagogical_derived(path):
+            continue
+        output.add(match["path"])
+    return output
+
+
 def verify_deterministic_crossref(root: Path, package_relative: Path, committed: dict[str, Any]) -> None:
     builder = load_builder(root)
     output_relative = package_relative / "mechanical-cross-reference-r1.json"
     generated = builder.build(root, package_relative, output_relative)
-    if generated != committed:
-        fail("mechanical cross-reference is stale or nondeterministic")
+
+    top_level_fields = ["schema", "source_id", "source_path", "source_payload_hash", "record_count"]
+    for field in top_level_fields:
+        if committed.get(field) != generated.get(field):
+            fail(f"mechanical cross-reference {field} drift")
+
+    committed_rows = committed.get("records")
+    generated_rows = generated.get("records")
+    if not isinstance(committed_rows, list) or not isinstance(generated_rows, list):
+        fail("mechanical cross-reference records missing")
+    if stable_ids(committed_rows, "committed mechanical records") != stable_ids(generated_rows, "generated mechanical records"):
+        fail("mechanical cross-reference IDs/order drift")
+
+    generated_by_id = {row["id"]: row for row in generated_rows}
+    fixed_fields = [
+        "ordinal",
+        "section",
+        "subsection",
+        "item_type",
+        "source_traditional",
+        "source_jyutping",
+        "source_english",
+        "source_hash",
+        "normalized_surface",
+        "later_research_links",
+        "mechanical_status",
+        "expert_duplicate_status",
+        "terminal_ingress_classification",
+        "evidence_use_disposition",
+        "review_note",
+    ]
+    for committed_row in committed_rows:
+        item_id = committed_row["id"]
+        generated_row = generated_by_id[item_id]
+        for field in fixed_fields:
+            if committed_row.get(field) != generated_row.get(field):
+                fail(f"mechanical cross-reference {field} drift: {item_id}")
+        for field in ["exact_match_candidates", "normalized_match_candidates"]:
+            committed_paths = nonderived_match_paths(builder, committed_row, field)
+            generated_paths = nonderived_match_paths(builder, generated_row, field)
+            stale = sorted(committed_paths - generated_paths)
+            if stale:
+                fail(f"mechanical cross-reference contains stale non-derived candidates: {item_id}: {stale}")
 
 
 def verify(
