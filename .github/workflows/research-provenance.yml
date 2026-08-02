@@ -1,126 +1,91 @@
 name: Research provenance
 
 on:
+  push:
+    paths:
+      - "data/construction-identities.json"
+      - "data/construction-identity-lock.json"
+      - "data/construction-adjudications.json"
+      - "data/construction-adjudication-batches/**"
+      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/**"
+      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/**"
+      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/**"
+      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/**"
+      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/**"
+      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/**"
+      - "docs/research/**"
+      - "external-evidence/**"
+      - "grammar/**"
+      - "review-packets/**"
+      - "config/pedagogical-corpus-source-locks.json"
+      - "config/research-provenance-baseline.json"
+      - "config/research-evidence-grades.json"
+      - "config/verification-profiles.json"
+      - "tools/build-pedagogical-corpus-review-candidates.py"
+      - "tools/research-provenance-lib.js"
+      - "tools/verify-pedagogical-corpus-review.py"
+      - "tools/verify-research-provenance.js"
+      - "tools/verify-native-panel-lifecycle.js"
+      - "tools/verify-interim-pilot-public-package.py"
+      - "tests/tooling/native-panel/native-panel-lifecycle.test.js"
+      - "tests/tooling/research/ab30-aggregate-integrity.test.py"
+      - "tests/tooling/research/interim-pilot-public-package.test.py"
+      - "tests/tooling/research/pedagogical-corpus-review.test.py"
+      - "package.json"
+      - ".github/workflows/research-provenance.yml"
   pull_request:
     paths:
+      - "data/construction-identities.json"
+      - "data/construction-identity-lock.json"
+      - "data/construction-adjudications.json"
+      - "data/construction-adjudication-batches/**"
+      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/**"
+      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/**"
+      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/**"
+      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/**"
+      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/**"
+      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/**"
+      - "docs/research/**"
+      - "external-evidence/**"
+      - "grammar/**"
+      - "review-packets/**"
+      - "config/pedagogical-corpus-source-locks.json"
+      - "config/research-provenance-baseline.json"
+      - "config/research-evidence-grades.json"
+      - "config/verification-profiles.json"
+      - "tools/build-pedagogical-corpus-review-candidates.py"
+      - "tools/research-provenance-lib.js"
+      - "tools/verify-pedagogical-corpus-review.py"
+      - "tools/verify-research-provenance.js"
+      - "tools/verify-native-panel-lifecycle.js"
+      - "tools/verify-interim-pilot-public-package.py"
+      - "tests/tooling/native-panel/native-panel-lifecycle.test.js"
+      - "tests/tooling/research/ab30-aggregate-integrity.test.py"
+      - "tests/tooling/research/interim-pilot-public-package.test.py"
+      - "tests/tooling/research/pedagogical-corpus-review.test.py"
+      - "package.json"
       - ".github/workflows/research-provenance.yml"
+  workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  finalize-week19-review:
+  verify-research:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-        with:
-          ref: agent/week19-ingress-review
-          fetch-depth: 0
       - uses: actions/setup-node@v6
         with:
           node-version: 24
           package-manager-cache: false
-
-      - name: Reconstruct and verify the reviewed finalizer
-        run: |
-          test "$(sha256sum tools/.week19-finalizer.part00 | cut -d' ' -f1)" = "8e910da6ca64e3fe1cda4f9963ddb592b39e9dcb255692b99a5dd910a7e8c6fe"
-          test "$(sha256sum tools/.week19-finalizer.part01 | cut -d' ' -f1)" = "084d8dec2f55ccf9d06f8a2b82e0647e97f7e084b29b197b9b584977d718c0b1"
-          cat tools/.week19-finalizer.part00 tools/.week19-finalizer.part01 > /tmp/finalize-week19.py.gz.b64
-          test "$(sha256sum /tmp/finalize-week19.py.gz.b64 | cut -d' ' -f1)" = "2c21e2041d30db7c41abb420de53100174877d1280170132fa26002fd352f1f3"
-          base64 --decode /tmp/finalize-week19.py.gz.b64 | gzip --decompress > tools/finalize-week19-review-temporary.py
-          test "$(sha256sum tools/finalize-week19-review-temporary.py | cut -d' ' -f1)" = "381f2c16478e2f9a491a601db18e27ca60dbf134f46f6c04282cffe8b3734930"
-          python3 -m py_compile tools/finalize-week19-review-temporary.py
-
-      - name: Generate final Week 19 review state
-        run: |
-          python3 tools/finalize-week19-review-temporary.py
-          sed -i 's/[[:space:]]\+$//' \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/README.md \
-            docs/research/GLOSSIKA-YUEHK-A1-W19-20260726-CORPUS-INGRESS.md
-
-      - name: Validate final Week 19 state
-        run: |
-          python3 -m py_compile \
-            tools/build-pedagogical-corpus-review-candidates.py \
-            tools/verify-pedagogical-corpus-review.py \
-            tests/tooling/research/pedagogical-corpus-review.test.py
-          python3 tests/tooling/research/pedagogical-corpus-review.test.py
-          npm run verify:pedagogical-corpus-review
-          npm run verify:research
-          npm run verify
-          git diff --check
-
-      - name: Commit and push only the reviewed non-workflow state
-        run: |
-          rm -f tools/finalize-week19-review-temporary.py
-          find tools tests -type d -name __pycache__ -prune -exec rm -rf {} +
-
-          git rm -f \
-            tools/.week19-finalizer.part00 \
-            tools/.week19-finalizer.part01 \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/.review-claim
-
-          git add \
-            config/pedagogical-corpus-source-locks.json \
-            config/verification-profiles.json \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/README.md \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/expert-review-r1.tsv \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/mechanical-cross-reference-r1.json \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/package-integrity-r1.json \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/research-routing-r1.json \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/research-summary.md \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/review.json \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/role-sensitive-crosswalk-r1.json \
-            docs/research/GLOSSIKA-YUEHK-A1-W19-20260726-CORPUS-INGRESS.md \
-            package.json \
-            tests/tooling/research/pedagogical-corpus-review.test.py \
-            tools/build-pedagogical-corpus-review-candidates.py \
-            tools/verify-pedagogical-corpus-review.py
-
-          git diff --cached --name-only | sort > /tmp/actual-paths.txt
-          cat > /tmp/expected-paths.txt <<'EOF'
-          config/pedagogical-corpus-source-locks.json
-          config/verification-profiles.json
-          data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/.review-claim
-          data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/README.md
-          data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/expert-review-r1.tsv
-          data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/mechanical-cross-reference-r1.json
-          data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/package-integrity-r1.json
-          data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/research-routing-r1.json
-          data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/research-summary.md
-          data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/review.json
-          data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/role-sensitive-crosswalk-r1.json
-          docs/research/GLOSSIKA-YUEHK-A1-W19-20260726-CORPUS-INGRESS.md
-          package.json
-          tests/tooling/research/pedagogical-corpus-review.test.py
-          tools/.week19-finalizer.part00
-          tools/.week19-finalizer.part01
-          tools/build-pedagogical-corpus-review-candidates.py
-          tools/verify-pedagogical-corpus-review.py
-          EOF
-          sed -i 's/^          //' /tmp/expected-paths.txt
-          sort -o /tmp/expected-paths.txt /tmp/expected-paths.txt
-          diff -u /tmp/expected-paths.txt /tmp/actual-paths.txt
-
-          git diff --quiet -- \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/source.json \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/items.tsv \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/crosswalk.json \
-            data/research-ledgers/glossika-week19-claim-source.json \
-            data/research-ledgers/glossika-week19-classifier-compatibility.json \
-            data/research-ledgers/glossika-week19-dative-audit.json \
-            data/research-ledgers/glossika-week19-followup-candidates.json \
-            data/research-ledgers/glossika-week19-function-word-profiles.json \
-            data/research-ledgers/glossika-week19-lexical-numeral-candidates.json \
-            data/research-ledgers/glossika-week19-particle-boundaries.json \
-            data/research-ledgers/glossika-week19-spatial-lexical-classes.json \
-            docs/research/GLOSSIKA-YUEHK-A1-W19-20260726-RESEARCH.md \
-            docs/research/OBSERVED-UNIT-WORD-NOUN-MISMATCH-MATRIX-R1.md \
-            docs/research/UNIT-WORD-NOUN-PRIMARY-SOURCE-LEDGER-R1.tsv \
-            review-packets/corpus-review/UNIT-WORDS/observed-unit-word-noun-matrix-r1.tsv \
-            review-packets/corpus-review/UNIT-WORDS/verify-observed-unit-word-noun-matrix-r1.py
-
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Complete Week 19 role-sensitive ingress review"
-          git push origin HEAD:agent/week19-ingress-review
+      - name: Test native-panel lifecycle verifier
+        run: node --test tests/tooling/native-panel/native-panel-lifecycle.test.js
+      - name: Test AB30 aggregate integrity verifier
+        run: python3 tests/tooling/research/ab30-aggregate-integrity.test.py
+      - name: Test interim pilot public-package verifier
+        run: python3 tests/tooling/research/interim-pilot-public-package.test.py
+      - name: Test reviewed pedagogical corpus packages
+        run: python3 tests/tooling/research/pedagogical-corpus-review.test.py
+      - name: Verify durable research provenance and lifecycle state
+        run: npm run verify:research
