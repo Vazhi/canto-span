@@ -251,7 +251,6 @@ def build(root: Path, package_relative: Path, output_relative: Path) -> dict[str
         "scan_policy": {
             "roots": SCAN_ROOTS,
             "excluded_package_files": sorted(PACKAGE_REVIEW_FILES | {output_relative.name}),
-            "excluded_derived_reports": [str(derived_report_path(package_relative))],
             "excluded_path_parts": sorted(EXCLUDED_PARTS),
             "maximum_file_bytes": 2_000_000,
             "generated_bundle_excluded": True,
