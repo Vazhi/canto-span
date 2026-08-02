@@ -20,11 +20,14 @@ for diagnosis or release work, not a routine tax on every pull request.
 npm test                # runtime behavior or executable tests
 npm run verify          # canonical core repository state
 npm run verify:research # research provenance
+npm run verify:runtime  # runtime tests, deterministic bundle equality, and bundle loading
 npm run verify:release  # promotion or release work only
 ```
 
-`npm run verify:all` is an explicit diagnostic sweep. It is not a default acceptance
-requirement and must not be added automatically to task instructions.
+`npm run verify:all` is an explicit full diagnostic sweep across the core, research,
+runtime, and release profiles. It includes the full runtime suite, deterministic
+runtime-build verification, and generated-runtime loading. It is not a default
+acceptance requirement and must not be added automatically to task instructions.
 
 ## Permanent-check admission standard
 
@@ -79,7 +82,20 @@ before the PR is ready unless it independently qualifies as permanent.
 
 Panel, survey, corpus-review, and construction-specific validation is performed by
 the workflow that creates or updates those materials. It is not permanently rerun
-after that phase closes.
+after that phase closes unless the material remains a current lifecycle owner,
+accepted gate-bearing aggregate, or other recurring canonical invariant that
+independently satisfies the permanent-check admission standard.
+
+### Runtime
+
+| Check | Reason for existence | Run when |
+|---|---|---|
+| `runtime-build` | Detect stale or nondeterministic committed runtime bundles relative to canonical runtime source. | Runtime source, runtime resources, build tooling, package metadata, or committed `main.js` changes. |
+| `runtime-tests` | Protect parser behavior and executable construction expectations across the canonical runtime test suite. | Runtime source, runtime resources, executable fixtures, lexicon data, or runtime tests change. |
+| `generated-runtime` | Ensure the committed deployment bundle remains loadable and self-contained in the supported host contract. | Runtime source, build tooling, package metadata, generated-bundle tests, or committed `main.js` changes. |
+
+The runtime profile is directly runnable with `npm run verify:runtime`. It is included
+in `verify:all` but remains separate from ordinary core or research verification.
 
 ### Release
 
@@ -102,8 +118,8 @@ Permanent GitHub workflows run only for the state they protect:
 | Research provenance | research packages, evidence configuration, or research notes | `verify:research` |
 
 Core verification intentionally excludes `npm test`; runtime behavior already has a
-path-scoped workflow and remains directly runnable for local runtime work. No workflow
-runs coordination metadata checks on every pull request.
+path-scoped workflow and remains directly runnable through `npm test` or the runtime
+profile. No workflow runs coordination metadata checks on every pull request.
 
 ## Verifier unit tests
 
@@ -146,6 +162,9 @@ npm run build:runtime          # regenerate main.js from canonical source
 npm run verify:runtime-build   # deterministic build and committed-byte equality
 npm run test:generated-runtime # load/self-containment smoke test
 ```
+
+`npm run verify:runtime` runs `verify:runtime-build`, the full runtime test suite, and
+the generated-runtime smoke test as one diagnostic profile.
 
 `main.js` is generated output and must not be edited directly. Unrelated research,
 corpus, survey, governance, and documentation work must not regenerate it.
@@ -195,6 +214,7 @@ support reports accept an explicit output path, for example:
 
 ```bash
 node tools/verify-current-state.js --profile core --output /tmp/core-verification.json
+node tools/verify-current-state.js --profile runtime --output /tmp/runtime-verification.json
 node tools/verify-research-provenance.js --output /tmp/research-provenance.json
 node tools/verify-parked-constructions.js --output /tmp/parked-constructions.json
 node tools/enforce-promotion-rules.js --output /tmp/promotion-gate.json
