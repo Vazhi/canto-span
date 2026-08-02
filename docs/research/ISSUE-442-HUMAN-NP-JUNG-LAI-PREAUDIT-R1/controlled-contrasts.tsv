@@ -9,13 +9,14 @@ HNP-C02	Presentation role	overt_user_object	公司用小美嚟介紹新產品。
 HNP-C02	Presentation role	assignment_paraphrase	小美負責介紹新產品。	小美 is responsible for presenting.	Tests whether responsibility is an independent repair
 HNP-C02	Presentation role	copular_role	小美係用嚟介紹新產品嘅。	Copular role-definition reading.	Keeps copular structure separate from bare AB53
 HNP-C03	Guarding task	bare_human_initial	阿強用嚟睇住行李。	Human resource, user with omitted material, assignment, or failure.	Matched with overt alternatives
-HNP-C03	Guarding task	overt_assignment	阿強被安排睇住行李。	Assignment reading is explicit.	Prevents inferred assignment from counting as 用嚟 syntax
-HNP-C03	Guarding task	overt_user_resource	阿強用部手機嚟睇住行李。	阿強 is the user and the resource is overt.	Tests omitted-resource competition
+HNP-C03	Guarding task	overt_assignment	公司安排阿強睇住行李。	The company assigns 阿強 to watch the luggage.	Colloquial assignment control without a formal passive
+HNP-C03	Remote luggage monitoring	overt_user_resource	阿強用個鏡頭嚟睇住行李。	阿強 is the user and the camera is the overt monitoring resource.	Explicitly compatible remote-monitoring context
 HNP-C04	Information-recording task	bare_human_initial	阿欣用嚟記低開支。	Human resource, user with omitted material, assignment, or failure.	Matched predicate from pilot family
 HNP-C04	Information-recording task	overt_user_resource	阿欣用個程式嚟記低開支。	阿欣 is the user and the program is overt.	Controls for a natural omitted-resource interpretation
 HNP-C04	Information-recording task	resource_only	個程式用嚟記低開支。	The program is the resource.	Nonhuman baseline with same VP
 HNP-C05	Question-answer discourse	question	呢把刀係邊個用嚟切方包㗎？	Asks for the user.	Creates an overt user slot
 HNP-C05	Question-answer discourse	short_answer	阿明。	User answer only.	Avoids forcing a bare human-NP 用嚟 string
-HNP-C05	Question-answer discourse	full_answer	呢把刀係阿明用嚟切方包㗎。	Resource and user are overt.	Tests complete overt frame
+HNP-C05	Question-answer discourse	bare_full_answer	呢把刀阿明用嚟切方包。	The knife is the resource and 阿明 is the overt user.	Bare resource-topic plus user counterpart
+HNP-C05	Question-answer discourse	focus_copular_answer	呢把刀係阿明用嚟切方包㗎。	Identifies 阿明 as the user in a focus/copular frame.	Keeps focus structure separate from the bare frame
 HNP-C06	Interpretation diagnostics	forced_choice	阿明用嚟切方包。	Choose: human resource; user with omitted resource; assignment; both; unclear.	Naturalness must not substitute for analysis
 HNP-C06	Interpretation diagnostics	correction_prompt	阿明用嚟切方包。	Optional correction plus reason category.	Separates syntax, context, lexical choice, and meaning
