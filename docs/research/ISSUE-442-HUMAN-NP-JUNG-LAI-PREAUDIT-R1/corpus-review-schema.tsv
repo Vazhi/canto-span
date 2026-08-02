@@ -1,0 +1,19 @@
+field	allowed_values_or_format	purpose
+candidate_id	stable packet-local ID	Preserve one reviewable unit across revisions
+source_id	repository-authorized corpus or source ID	Keep provenance explicit
+source_location	file/turn/line or stable locator	Allow independent reopening
+preceding_context	overt source text only	Record antecedents and topic setup without reconstructing words
+target_clause	overt Cantonese clause	Preserve the actual human/nonhuman 用嚟 surface
+following_context	overt source text only	Record repair, clarification, or continuation
+initial_np	verbatim overt NP	Record the pre-用嚟 expression
+initial_np_reference	human|group_of_people|institution|animal|object|location|time|method|document|opportunity|other|uncertain	Separate semantic classes
+human_role_candidate	resource|agent_user|topic|assignee|responsible_person|beneficiary|other|not_human|uncertain	Do not equate surface position with role
+overt_user_after_topic	present|absent|uncertain	Identify resource-topic + user frames such as 啲錢我用嚟...
+resource_antecedent	unique|multiple_possible|generic|none|uncertain	Test omitted-resource analyses
+purpose_predicate_class	physical_action|recording|guarding|presentation|communication|service|other	Track predicate effects
+aspect_profile	generic_bare|aspect_on_use|aspect_in_purpose_vp|completed_actual_use|other	Separate function from episodic use
+context_type	isolated|ordinary_conversation|question_answer|assignment|instruction|caption|repair|other	Record discourse licensing
+interpretation_evidence	overt_paraphrase|repair|translation|continuation|none	Use only explicit evidence in the source
+classification	genuine_human_resource|overt_user_omitted_resource|topic_or_assignment|nonhuman_control|false_positive|ambiguous|unusable	Review disposition
+classification_reason	concise evidence-based explanation	Make decisions auditable
+reviewer_notes	free text	Preserve unresolved questions without promotion
