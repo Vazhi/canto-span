@@ -34,6 +34,32 @@ jobs:
           path.write_text(text.replace(old, new, 1), encoding='utf-8')
           PY
           python3 tools/finalize-week17-review-temporary.py
+          python3 - <<'PY'
+          from pathlib import Path
+          path = Path('tools/build-pedagogical-corpus-review-candidates.py')
+          text = path.read_text(encoding='utf-8')
+          old_function = '''def derived_report_path(package_relative: Path) -> Path:
+              return Path("docs/research") / f"{package_relative.name}-CORPUS-INGRESS.md"
+          '''
+          new_function = '''def derived_report_paths(package_relative: Path) -> set[Path]:
+              stem = package_relative.name
+              return {
+                  Path("docs/research") / f"{stem}-CORPUS-INGRESS.md",
+                  Path("docs/research") / f"{stem}-CORPUS-RECONCILIATION.md",
+              }
+          '''
+          old_use = '    excluded_files.update({output_relative, derived_report_path(package_relative)})\n'
+          new_use = '    excluded_files.add(output_relative)\n    excluded_files.update(derived_report_paths(package_relative))\n'
+          if old_function not in text or old_use not in text:
+              raise SystemExit('derived report exclusion marker missing')
+          text = text.replace(old_function, new_function, 1).replace(old_use, new_use, 1)
+          path.write_text(text, encoding='utf-8')
+          PY
+          python3 -m py_compile tools/build-pedagogical-corpus-review-candidates.py
+          python3 tools/build-pedagogical-corpus-review-candidates.py \
+            --package data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712 \
+            --output data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/mechanical-cross-reference-r1.json \
+            --write
       - name: Validate final Week 17 state
         run: |
           python3 -m py_compile tools/build-pedagogical-corpus-review-candidates.py tools/verify-pedagogical-corpus-review.py tests/tooling/research/pedagogical-corpus-review.test.py
