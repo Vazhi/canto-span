@@ -1,0 +1,41 @@
+name: Extract Week 15 review tail
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/extract-week15-tail.yml
+
+permissions:
+  contents: write
+
+jobs:
+  patch-verifier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/week15-ingress-review
+          fetch-depth: 0
+      - name: Execute checked-in verifier patch
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          workflow = Path('.github/workflows/build-week15-review-candidates.yml')
+          lines = workflow.read_text(encoding='utf-8').splitlines()
+          step = lines.index('      - name: Replace Week 14-specific verifier projections')
+          start = lines.index('        run: |', step) + 1
+          end = next(index for index in range(start, len(lines)) if lines[index].startswith('      - name: '))
+          body = [line[10:] if line.startswith('          ') else line for line in lines[start:end]]
+          Path('/tmp/generalize-verifier.sh').write_text('\n'.join(body) + '\n', encoding='utf-8')
+          PY
+          bash -euxo pipefail /tmp/generalize-verifier.sh
+      - name: Commit verifier and remove temporary workflows
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tools/verify-pedagogical-corpus-review.py
+          git rm .github/workflows/extract-week15-tail.yml \
+            .github/workflows/build-week15-review-candidates.yml
+          git commit -m "Generalize pedagogical corpus review verification"
+          git push origin HEAD:agent/week15-ingress-review
