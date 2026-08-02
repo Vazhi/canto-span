@@ -35,12 +35,12 @@ jobs:
             tools/.week18-finalizer.part03 \
             tools/.week18-finalizer.part04 > /tmp/finalize-week18.py.gz.b64
           test "$(sha256sum /tmp/finalize-week18.py.gz.b64 | cut -d' ' -f1)" = "a693a3c6b9d96c1f0ff83d708da1f88939ffb53c09c554cd336417dca27eb4ca"
-          base64 --decode /tmp/finalize-week18.py.gz.b64 | gzip --decompress > /tmp/finalize-week18.py
-          test "$(sha256sum /tmp/finalize-week18.py | cut -d' ' -f1)" = "350a709a4775d7893930d1e6c08197d0f24e3d27daa0049b888ba85f6a2f421b"
-          python3 -m py_compile /tmp/finalize-week18.py
+          base64 --decode /tmp/finalize-week18.py.gz.b64 | gzip --decompress > tools/finalize-week18-review-temporary.py
+          test "$(sha256sum tools/finalize-week18-review-temporary.py | cut -d' ' -f1)" = "350a709a4775d7893930d1e6c08197d0f24e3d27daa0049b888ba85f6a2f421b"
+          python3 -m py_compile tools/finalize-week18-review-temporary.py
 
       - name: Generate final Week 18 review state
-        run: python3 /tmp/finalize-week18.py
+        run: python3 tools/finalize-week18-review-temporary.py
 
       - name: Validate final Week 18 state
         run: |
@@ -58,6 +58,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f tools/finalize-week18-review-temporary.py
           git rm -f \
             tools/.week18-finalizer.part00 \
             tools/.week18-finalizer.part01 \
