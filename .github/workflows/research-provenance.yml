@@ -21,9 +21,9 @@ jobs:
           node-version: 24
           package-manager-cache: false
 
-      - name: Repair component discrepancy and extend permanent verification
+      - name: Finalize review data, verifier, tests, and registration
         run: |
-          python3 - <<'PY'
+          cat > /tmp/finalize_week16.py <<'PY'
           import csv
           import json
           import subprocess
@@ -34,34 +34,64 @@ jobs:
           ROOT = Path('.')
           PACKAGE_REL = Path('data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705')
           PACKAGE = ROOT / PACKAGE_REL
-          WEEK16_ID = 'GLOSSIKA-YUEHK-A1-W16-20260705-I033'
+          I033 = 'GLOSSIKA-YUEHK-A1-W16-20260705-I033'
+          COMPONENT_STATUS = 'source_runtime_component_default_reading_difference'
+          COMPONENT_DISCREPANCY = {
+              'field': 'jyutping_component',
+              'issue': 'The source form 行公園 contains 公園; the runtime defaults to the common changed-tone reading gung1 jyun2 while retaining gung1 jyun4 as a review variant.',
+              'status': COMPONENT_STATUS,
+          }
+
+          def load_json(path):
+              return json.loads(path.read_text(encoding='utf-8'))
 
           def write_json(path, value):
               path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
 
-          def replace_once(text, old, new, label):
-              if old not in text:
-                  raise SystemExit(f'patch marker not found: {label}')
-              return text.replace(old, new, 1)
+          def require(condition, message):
+              if not condition:
+                  raise SystemExit(message)
 
-          # The source record is 行公園, so the component-level 公園 reading boundary
-          # must be attached to I033 explicitly rather than matched as a whole surface.
-          source = json.loads((PACKAGE / 'source.json').read_text(encoding='utf-8'))
-          review_path = PACKAGE / 'review.json'
-          review = json.loads(review_path.read_text(encoding='utf-8'))
+          # Patch the implementation-provenance packet first.
+          source = load_json(PACKAGE / 'source.json')
           source_by_id = {row['id']: row for row in source['items']}
-          review_by_id = {row['id']: row for row in review['records']}
-          source_row = source_by_id[WEEK16_ID]
-          review_row = review_by_id[WEEK16_ID]
-          if (source_row.get('source') or {}).get('traditional') != '行公園':
-              raise SystemExit('Week 16 I033 source surface changed')
-          component_status = 'source_runtime_component_default_reading_difference'
-          if not any(row.get('status') == component_status for row in review_row['source_discrepancies']):
-              review_row['source_discrepancies'].append({
-                  'field': 'jyutping_component',
-                  'issue': 'The source form 行公園 contains 公園; the runtime defaults to the common changed-tone reading gung1 jyun2 while retaining gung1 jyun4 as a review variant.',
-                  'status': component_status,
+          require((source_by_id[I033].get('source') or {}).get('traditional') == '行公園', 'Week 16 I033 source surface changed')
+
+          runtime_path = PACKAGE / 'runtime-crosswalk-r1.json'
+          runtime = load_json(runtime_path)
+          runtime_by_id = {row['id']: row for row in runtime['records']}
+          require(I033 in runtime_by_id, 'Week 16 I033 missing from runtime crosswalk')
+          runtime_row = runtime_by_id[I033]
+          if not any(row.get('status') == COMPONENT_STATUS for row in runtime_row['source_discrepancies']):
+              runtime_row['source_discrepancies'].append({
+                  'type': 'component_default_reading',
+                  'sourceComponent': '公園',
+                  'reviewedRuntimeDefault': 'gung1 jyun2',
+                  'reviewVariant': 'gung1 jyun4',
+                  'status': COMPONENT_STATUS,
+                  'note': COMPONENT_DISCREPANCY['issue'],
               })
+          write_json(runtime_path, runtime)
+
+          # Regenerate the mechanical packet so it carries the updated runtime link.
+          subprocess.run([
+              'python3', 'tools/build-pedagogical-corpus-review-candidates.py',
+              '--package', str(PACKAGE_REL),
+              '--output', str(PACKAGE_REL / 'mechanical-cross-reference-r1.json'),
+              '--write',
+          ], check=True)
+          mechanical = load_json(PACKAGE / 'mechanical-cross-reference-r1.json')
+          mechanical_by_id = {row['id']: row for row in mechanical['records']}
+
+          # Project the component discrepancy and regenerated links into expert review.
+          review_path = PACKAGE / 'review.json'
+          review = load_json(review_path)
+          review_by_id = {row['id']: row for row in review['records']}
+          for item_id, row in review_by_id.items():
+              row['later_research_links'] = mechanical_by_id[item_id]['later_research_links']
+          review_row = review_by_id[I033]
+          if not any(row.get('status') == COMPONENT_STATUS for row in review_row['source_discrepancies']):
+              review_row['source_discrepancies'].append(COMPONENT_DISCREPANCY)
           review_row['evidence_use_disposition'] = 'lexical_attestation_with_runtime_crosswalk_and_source_difference'
           review_row['review_note'] = 'The runtime representation is retained, but the component-level 公園 reading difference remains explicit and no source value is overwritten.'
 
@@ -81,26 +111,35 @@ jobs:
           summary['records_with_runtime_crosswalk'] = sum(
               bool(row.get('implementation_crosswalk_targets')) for row in review['records']
           )
-          if summary['records_with_source_discrepancies'] != 11:
-              raise SystemExit(f"expected 11 discrepancy rows, got {summary['records_with_source_discrepancies']}")
+          require(summary['records_with_source_discrepancies'] == 11, f"unexpected discrepancy count: {summary}")
+          require(summary['records_with_runtime_crosswalk'] == 35, f"unexpected runtime count: {summary}")
           write_json(review_path, review)
 
+          # Rebuild the expert TSV projection from the reviewed JSON.
           tsv_path = PACKAGE / 'expert-review-r1.tsv'
           with tsv_path.open(encoding='utf-8', newline='') as handle:
               reader = csv.DictReader(handle, delimiter='\t')
               fields = list(reader.fieldnames or [])
               rows = list(reader)
-          tsv_row = next(row for row in rows if row['id'] == WEEK16_ID)
-          tsv_row['evidence_use'] = review_row['evidence_use_disposition']
-          tsv_row['discrepancy_status'] = ';'.join(value['status'] for value in review_row['source_discrepancies'])
-          tsv_row['review_note'] = review_row['review_note']
+          for row in rows:
+              reviewed = review_by_id[row['id']]
+              row['duplicate_status'] = reviewed['expert_duplicate_status']
+              row['terminal_classification'] = reviewed['terminal_ingress_classification']
+              row['evidence_use'] = reviewed['evidence_use_disposition']
+              row['discrepancy_status'] = ';'.join(value['status'] for value in reviewed['source_discrepancies'])
+              row['implementation_crosswalk_targets'] = ';'.join(
+                  value['path'] for value in reviewed.get('implementation_crosswalk_targets', [])
+              )
+              row['review_note'] = reviewed['review_note']
           with tsv_path.open('w', encoding='utf-8', newline='') as handle:
               writer = csv.DictWriter(handle, fieldnames=fields, delimiter='\t', lineterminator='\n')
               writer.writeheader()
               writer.writerows(rows)
 
+          # Extend the shared verifier without replacing its existing review contract.
           verifier_path = ROOT / 'tools/verify-pedagogical-corpus-review.py'
           verifier = verifier_path.read_text(encoding='utf-8')
+          require('def verify_runtime_crosswalk(' not in verifier, 'runtime verifier already present unexpectedly')
 
           runtime_verifier = textwrap.dedent('''
           def verify_runtime_crosswalk(
@@ -154,33 +193,23 @@ jobs:
                       fail(f"runtime-crosswalk reviewed values malformed: {item_id}")
               return set(ids)
           ''').lstrip()
-          verifier = replace_once(
-              verifier,
-              'def allowed_duplicate_paths(crossref_row: dict[str, Any], normalized: bool) -> set[str]:\n',
-              runtime_verifier + '\n\ndef allowed_duplicate_paths(crossref_row: dict[str, Any], normalized: bool) -> set[str]:\n',
-              'runtime-crosswalk verifier insertion',
-          )
-          verifier = replace_once(
-              verifier,
-              '    replacement_count = 0\n',
-              '    replacement_count = 0\n    implementation_crosswalk_count = 0\n',
-              'implementation crosswalk counter',
+          insert_at = verifier.index('def allowed_duplicate_paths(')
+          verifier = verifier[:insert_at] + runtime_verifier + '\n\n' + verifier[insert_at:]
+
+          counter_marker = '    replacement_count = 0\n'
+          require(counter_marker in verifier, 'review counter marker missing')
+          verifier = verifier.replace(
+              counter_marker,
+              counter_marker + '    implementation_crosswalk_count = 0\n',
+              1,
           )
 
-          target_block = '''        for target in targets:
-              if not isinstance(target, dict) or target.get("path") not in allowed:
-                  fail(f"accepted duplicate target is not evidence-backed: {item_id}: {target}")
-              if not isinstance(target.get("basis"), str) or not target["basis"]:
-                  fail(f"accepted duplicate target lacks basis: {item_id}")
-
-          discrepancies = row.get("source_discrepancies")
-          '''
-          replacement_block = '''        for target in targets:
-              if not isinstance(target, dict) or target.get("path") not in allowed:
-                  fail(f"accepted duplicate target is not evidence-backed: {item_id}: {target}")
-              if not isinstance(target.get("basis"), str) or not target["basis"]:
-                  fail(f"accepted duplicate target lacks basis: {item_id}")
-
+          review_start = verifier.index('def verify_review(')
+          implementation_insert = verifier.index(
+              '        discrepancies = row.get("source_discrepancies")\n',
+              review_start,
+          )
+          implementation_block = textwrap.indent(textwrap.dedent('''
           later_links = row.get("later_research_links")
           if later_links != crossref_row.get("later_research_links"):
               fail(f"review later-research links drift from the mechanical packet: {item_id}")
@@ -216,14 +245,20 @@ jobs:
           if implementation_targets:
               implementation_crosswalk_count += 1
 
-          discrepancies = row.get("source_discrepancies")
-          '''
-          verifier = replace_once(verifier, target_block, replacement_block, 'implementation target validation')
-          verifier = replace_once(
-              verifier,
-              '    if summary.get("records_with_reviewed_replacements") != replacement_count:\n        fail("reviewed replacement summary mismatch")\n',
-              '    if summary.get("records_with_reviewed_replacements") != replacement_count:\n        fail("reviewed replacement summary mismatch")\n    if summary.get("records_with_runtime_crosswalk", 0) != implementation_crosswalk_count:\n        fail("runtime-crosswalk summary mismatch")\n',
-              'runtime summary validation',
+          '''), '        ')
+          verifier = verifier[:implementation_insert] + implementation_block + verifier[implementation_insert:]
+
+          summary_marker = (
+              '    if summary.get("records_with_reviewed_replacements") != replacement_count:\n'
+              '        fail("reviewed replacement summary mismatch")\n'
+          )
+          require(summary_marker in verifier, 'review summary marker missing')
+          verifier = verifier.replace(
+              summary_marker,
+              summary_marker +
+              '    if summary.get("records_with_runtime_crosswalk", 0) != implementation_crosswalk_count:\n'
+              '        fail("runtime-crosswalk summary mismatch")\n',
+              1,
           )
 
           tsv_start = verifier.index('def verify_expert_tsv(')
@@ -245,7 +280,7 @@ jobs:
               accepted_field = find_field(fields, ["accepted_duplicate_targets"], "expert-review-r1.tsv", required=False)
               implementation_field = find_field(fields, ["implementation_crosswalk_targets"], "expert-review-r1.tsv", required=False)
               if accepted_field is None and implementation_field is None:
-                  fail("expert-review-r1.tsv lacks both duplicate-target and implementation-crosswalk projections")
+                  fail("expert-review-r1.tsv lacks target projections")
               ids = stable_ids(rows, "expert-review-r1.tsv")
               source_ids = [row["id"] for row in source_items]
               if ids != source_ids:
@@ -286,30 +321,41 @@ jobs:
           ''').lstrip()
           verifier = verifier[:tsv_start] + new_tsv + verifier[tsv_end:]
 
-          verifier = replace_once(
-              verifier,
-              '    verify_integrity(root, package, package_relative, integrity, source_id, payload_hash)\n    verify_review(source, review, crossref, source_items, source_ids)\n',
-              '    verify_integrity(root, package, package_relative, integrity, source_id, payload_hash)\n    runtime_crosswalk_ids = verify_runtime_crosswalk(root, package, source_id, payload_hash, source_items)\n    verify_review(source, review, crossref, source_items, source_ids)\n    reviewed_crosswalk_ids = {\n        row["id"] for row in review["records"] if row.get("implementation_crosswalk_targets")\n    }\n    if reviewed_crosswalk_ids != runtime_crosswalk_ids:\n        fail("reviewed implementation targets do not match the runtime-crosswalk packet")\n',
-              'runtime-crosswalk package validation',
+          verify_call = '    verify_integrity(root, package, package_relative, integrity, source_id, payload_hash)\n'
+          require(verify_call in verifier, 'verify integrity call missing')
+          verifier = verifier.replace(
+              verify_call,
+              verify_call +
+              '    runtime_crosswalk_ids = verify_runtime_crosswalk(root, package, source_id, payload_hash, source_items)\n',
+              1,
           )
-          verifier = replace_once(
-              verifier,
-              '        "reviewed_replacements": review["summary"]["records_with_reviewed_replacements"],\n',
-              '        "reviewed_replacements": review["summary"]["records_with_reviewed_replacements"],\n        "runtime_crosswalk_records": len(runtime_crosswalk_ids),\n',
-              'runtime-crosswalk verification result',
+          review_call = '    verify_review(source, review, crossref, source_items, source_ids)\n'
+          require(review_call in verifier, 'verify review call missing')
+          verifier = verifier.replace(
+              review_call,
+              review_call +
+              '    reviewed_crosswalk_ids = {\n'
+              '        row["id"] for row in review["records"] if row.get("implementation_crosswalk_targets")\n'
+              '    }\n'
+              '    if reviewed_crosswalk_ids != runtime_crosswalk_ids:\n'
+              '        fail("reviewed implementation targets do not match the runtime-crosswalk packet")\n',
+              1,
+          )
+          result_marker = '        "reviewed_replacements": review["summary"]["records_with_reviewed_replacements"],\n'
+          require(result_marker in verifier, 'verification result marker missing')
+          verifier = verifier.replace(
+              result_marker,
+              result_marker + '        "runtime_crosswalk_records": len(runtime_crosswalk_ids),\n',
+              1,
           )
           verifier_path.write_text(verifier, encoding='utf-8')
 
+          # Register Week 16 and add focused/mutation tests.
           tests_path = ROOT / 'tests/tooling/research/pedagogical-corpus-review.test.py'
           tests = tests_path.read_text(encoding='utf-8')
-          constants_old = '''WEEK14 = Path("data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621")
-          WEEK15 = Path("data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628")
-          REGISTERED = {
-              WEEK14: {"records": 61, "discrepancies": 6, "exact": 5},
-              WEEK15: {"records": 65, "discrepancies": 4, "exact": 10},
-          }
-          '''
-          constants_new = '''WEEK14 = Path("data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621")
+          constants_start = tests.index('WEEK14 = Path(')
+          constants_end = tests.index('\n\ndef write_json', constants_start)
+          constants = '''WEEK14 = Path("data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621")
           WEEK15 = Path("data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628")
           WEEK16 = Path("data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705")
           REGISTERED = {
@@ -318,67 +364,99 @@ jobs:
               WEEK16: {"records": 59, "discrepancies": 11, "exact": 0, "runtime": 35},
           }
           '''
-          tests = replace_once(tests, textwrap.dedent(constants_old), textwrap.dedent(constants_new), 'Week 16 registered test fixture')
-          assertion_old = '''                self.assertEqual(
-                      result["duplicate_status_counts"]["accepted_exact_duplicate"],
-                      expected["exact"],
-                  )
-                  self.assertEqual(result["reviewed_replacements"], 0)
-          '''
-          assertion_new = '''                self.assertEqual(
-                      result["duplicate_status_counts"].get("accepted_exact_duplicate", 0),
-                      expected["exact"],
-                  )
-                  self.assertEqual(result["runtime_crosswalk_records"], expected["runtime"])
-                  self.assertEqual(result["reviewed_replacements"], 0)
-          '''
-          tests = replace_once(tests, textwrap.dedent(assertion_old), textwrap.dedent(assertion_new), 'registered result assertions')
-          week16_tests = textwrap.dedent('''
-              def test_week16_terminal_projection(self) -> None:
-                  review = json.loads((ROOT / WEEK16 / "review.json").read_text(encoding="utf-8"))
-                  self.assertEqual(
-                      review["summary"]["terminal_classification_counts"],
-                      {
-                          "lexical_only_attestation": 35,
-                          "naturalness_review_candidate": 4,
-                          "new_corpus_attestation": 20,
-                      },
-                  )
-                  self.assertEqual(review["summary"]["records_with_runtime_crosswalk"], 35)
-                  self.assertEqual(review["summary"]["records_with_source_discrepancies"], 11)
-
-              def test_week16_runtime_crosswalk_is_separate_from_duplicate_identity(self) -> None:
-                  source = json.loads((ROOT / WEEK16 / "source.json").read_text(encoding="utf-8"))
-                  review = json.loads((ROOT / WEEK16 / "review.json").read_text(encoding="utf-8"))
-                  runtime = json.loads((ROOT / WEEK16 / "runtime-crosswalk-r1.json").read_text(encoding="utf-8"))
-                  self.assertEqual(runtime["record_count"], 35)
-                  self.assertEqual(len(runtime["records"]), 35)
-                  self.assertTrue(all(row["expert_duplicate_status"] == "no_accepted_duplicate" for row in review["records"]))
-                  crosswalk_rows = [row for row in review["records"] if row["implementation_crosswalk_targets"]]
-                  self.assertEqual(len(crosswalk_rows), 35)
-                  source_by_id = {row["id"]: row for row in source["items"]}
-                  difference_surfaces = {
-                      source_by_id[row["id"]]["source"]["traditional"]
-                      for row in crosswalk_rows
-                      if row["evidence_use_disposition"] == "lexical_attestation_with_runtime_crosswalk_and_source_difference"
-                  }
-                  self.assertEqual(difference_surfaces, {"煮嘢食", "畫畫", "釣魚", "下棋", "行公園"})
-                  park = next(row for row in review["records"] if row["id"].endswith("I033"))
-                  self.assertEqual(
-                      park["source_discrepancies"][0]["status"],
-                      "source_runtime_component_default_reading_difference",
-                  )
-          ''')
-          tests = replace_once(
-              tests,
-              '\n\nclass PedagogicalCorpusReviewMutationTest(unittest.TestCase):\n',
-              '\n' + week16_tests + '\n\nclass PedagogicalCorpusReviewMutationTest(unittest.TestCase):\n',
-              'Week 16 focused tests',
+          tests = tests[:constants_start] + textwrap.dedent(constants).rstrip() + tests[constants_end:]
+          tests = tests.replace(
+              'result["duplicate_status_counts"]["accepted_exact_duplicate"]',
+              'result["duplicate_status_counts"].get("accepted_exact_duplicate", 0)',
+              1,
           )
+          reviewed_line = '                self.assertEqual(result["reviewed_replacements"], 0)\n'
+          require(reviewed_line in tests, 'registered assertion marker missing')
+          tests = tests.replace(
+              reviewed_line,
+              '                self.assertEqual(result["runtime_crosswalk_records"], expected["runtime"])\n' + reviewed_line,
+              1,
+          )
+
+          registered_insert = tests.index('\n\nclass PedagogicalCorpusReviewMutationTest')
+          focused_methods = textwrap.indent(textwrap.dedent('''
+          def test_week16_terminal_projection(self) -> None:
+              review = json.loads((ROOT / WEEK16 / "review.json").read_text(encoding="utf-8"))
+              self.assertEqual(
+                  review["summary"]["terminal_classification_counts"],
+                  {
+                      "lexical_only_attestation": 35,
+                      "naturalness_review_candidate": 4,
+                      "new_corpus_attestation": 20,
+                  },
+              )
+              self.assertEqual(review["summary"]["records_with_runtime_crosswalk"], 35)
+              self.assertEqual(review["summary"]["records_with_source_discrepancies"], 11)
+
+          def test_week16_runtime_crosswalk_is_separate_from_duplicate_identity(self) -> None:
+              source = json.loads((ROOT / WEEK16 / "source.json").read_text(encoding="utf-8"))
+              review = json.loads((ROOT / WEEK16 / "review.json").read_text(encoding="utf-8"))
+              runtime = json.loads((ROOT / WEEK16 / "runtime-crosswalk-r1.json").read_text(encoding="utf-8"))
+              self.assertEqual(runtime["record_count"], 35)
+              self.assertEqual(len(runtime["records"]), 35)
+              self.assertTrue(all(row["expert_duplicate_status"] == "no_accepted_duplicate" for row in review["records"]))
+              crosswalk_rows = [row for row in review["records"] if row["implementation_crosswalk_targets"]]
+              self.assertEqual(len(crosswalk_rows), 35)
+              source_by_id = {row["id"]: row for row in source["items"]}
+              difference_surfaces = {
+                  source_by_id[row["id"]]["source"]["traditional"]
+                  for row in crosswalk_rows
+                  if row["evidence_use_disposition"] == "lexical_attestation_with_runtime_crosswalk_and_source_difference"
+              }
+              self.assertEqual(difference_surfaces, {"煮嘢食", "畫畫", "釣魚", "下棋", "行公園"})
+              park = next(row for row in review["records"] if row["id"].endswith("I033"))
+              self.assertEqual(park["source_discrepancies"][0]["status"], COMPONENT_STATUS)
+          '''), '    ')
+          focused_methods = focused_methods.replace('COMPONENT_STATUS', repr(COMPONENT_STATUS))
+          tests = tests[:registered_insert] + '\n' + focused_methods.rstrip() + tests[registered_insert:]
+
+          main_insert = tests.index('\n\nif __name__ == "__main__":')
+          mutation_class = textwrap.dedent('''
+          class Week16RuntimeCrosswalkMutationTest(unittest.TestCase):
+              def setUp(self) -> None:
+                  self.temp = tempfile.TemporaryDirectory()
+                  self.root = Path(self.temp.name)
+                  shutil.copytree(ROOT / WEEK16, self.root / WEEK16, dirs_exist_ok=True)
+                  lock_target = self.root / VERIFIER.SOURCE_LOCKS_RELATIVE
+                  lock_target.parent.mkdir(parents=True, exist_ok=True)
+                  shutil.copyfile(ROOT / VERIFIER.SOURCE_LOCKS_RELATIVE, lock_target)
+                  provenance = self.root / "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md"
+                  provenance.parent.mkdir(parents=True, exist_ok=True)
+                  shutil.copyfile(ROOT / "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md", provenance)
+
+              def tearDown(self) -> None:
+                  self.temp.cleanup()
+
+              def verify(self):
+                  return VERIFIER.verify(self.root, WEEK16, check_deterministic_crossref=False)
+
+              def test_runtime_crosswalk_identity_drift_fails(self) -> None:
+                  path = self.root / WEEK16 / "runtime-crosswalk-r1.json"
+                  packet = json.loads(path.read_text(encoding="utf-8"))
+                  packet["runtime_merge_commit"] = "0" * 40
+                  write_json(path, packet)
+                  with self.assertRaisesRegex(AssertionError, "implementation identity mismatch"):
+                      self.verify()
+
+              def test_fabricated_implementation_target_fails(self) -> None:
+                  path = self.root / WEEK16 / "review.json"
+                  review = json.loads(path.read_text(encoding="utf-8"))
+                  row = next(record for record in review["records"] if record["implementation_crosswalk_targets"])
+                  row["implementation_crosswalk_targets"][0]["path"] = "data/invented-runtime-owner.json"
+                  write_json(path, review)
+                  with self.assertRaisesRegex(AssertionError, "implementation crosswalk target is not evidence-backed"):
+                      self.verify()
+          ''').lstrip()
+          tests = tests[:main_insert] + '\n\n' + mutation_class.rstrip() + tests[main_insert:]
           tests_path.write_text(tests, encoding='utf-8')
 
           package_path = ROOT / 'package.json'
-          package_json = json.loads(package_path.read_text(encoding='utf-8'))
+          package_json = load_json(package_path)
           command = package_json['scripts']['verify:pedagogical-corpus-review']
           week16_arg = '--package data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705'
           if week16_arg not in command:
@@ -387,12 +465,11 @@ jobs:
           write_json(package_path, package_json)
 
           profiles_path = ROOT / 'config/verification-profiles.json'
-          profiles = json.loads(profiles_path.read_text(encoding='utf-8'))
+          profiles = load_json(profiles_path)
           pedagogical = next(row for row in profiles['profiles']['research'] if row['id'] == 'pedagogical-corpus-review')
-          command_list = pedagogical['command']
-          if str(PACKAGE_REL) not in command_list:
-              marker_index = command_list.index('--check-deterministic-crossref')
-              command_list[marker_index:marker_index] = ['--package', str(PACKAGE_REL)]
+          if str(PACKAGE_REL) not in pedagogical['command']:
+              index = pedagogical['command'].index('--check-deterministic-crossref')
+              pedagogical['command'][index:index] = ['--package', str(PACKAGE_REL)]
           write_json(profiles_path, profiles)
 
           permanent = subprocess.check_output(
@@ -401,8 +478,7 @@ jobs:
           )
           week15_path = '      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/**"\n'
           week16_path = '      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/**"\n'
-          if permanent.count(week15_path) != 2:
-              raise SystemExit('unexpected permanent research workflow path structure')
+          require(permanent.count(week15_path) == 2, 'unexpected permanent research workflow path structure')
           permanent = permanent.replace(week15_path, week15_path + week16_path)
           (ROOT / '.github/workflows/research-provenance.yml').write_text(permanent, encoding='utf-8')
 
@@ -410,12 +486,12 @@ jobs:
 
           - Source ID: `GLOSSIKA-YUEHK-A1-W16-20260705`
           - Intake: #133
-          - Original source-ingress claim: #274 / merged PR #275
+          - Original source ingress: #274 / merged PR #275
           - Runtime lexical coverage: #119 / merged PR #121
-          - Completed review claim: #475 / PR #476
+          - Completed review: #475 / PR #476
           - Status: 59-record expert review complete; awaiting merge approval
 
-          ## Terminal review outcome
+          ## Terminal outcome
 
           - 59 of 59 records reviewed;
           - 35 lexical-only attestations with separate implementation crosswalk targets;
@@ -434,30 +510,21 @@ jobs:
 
           - `釣魚`: source `diu3 jyu2` versus reviewed runtime 魚 `jyu4`;
           - `畫畫`: verbal/noun distinction `waak6 waa2`;
-          - `行公園`: the embedded `公園` component defaults to changed-tone `gung1 jyun2`, with `gung1 jyun4` retained as a review variant;
+          - `行公園`: embedded `公園` defaults to changed-tone `gung1 jyun2`, with `gung1 jyun4` retained as a review variant;
           - `煮嘢食`: phrase-local food-object tokenization preserves global 嘢食 behavior;
           - `下棋`: reviewed runtime reading `haa5 kei2`.
 
-          The six phonics rows are preserved as unverified pedagogical pronunciation material. The `/ɔː/ versus /uː/` heading is not adopted as a verified description of every pair.
+          The six phonics rows remain unverified pedagogical pronunciation material. The `/ɔː/ versus /uː/` heading is not adopted as a verified description of every pair.
 
           ## Nonlexical boundary
 
-          The four formula/register records remain independent speaker or corpus review candidates. Other sentence and dialog records remain pedagogical attestations. Source register labels and generic negation prose are not adopted as unrestricted Cantonese rules.
+          Four formula/register records remain independent speaker or corpus review candidates. Other sentence and dialog records remain pedagogical attestations. Source register labels and generic negation prose are not adopted as unrestricted Cantonese rules.
 
           ## Permanent integrity
 
-          The shared verifier now protects:
+          The shared verifier protects immutable source hashes; all source/review/TSV IDs, hashes, order, and dispositions; the 35-record PR #121 crosswalk; separation of duplicate and implementation targets; evidence-backed implementation paths; discrepancy projections; deterministic candidates; and package documentation.
 
-          - local and external immutable hashes for `source.json` and `items.tsv`;
-          - all 59 source/review/TSV IDs, hashes, order, and terminal states;
-          - the 35-record PR #121 runtime-crosswalk packet and provenance identity;
-          - separation of duplicate targets from implementation targets;
-          - evidence-backed implementation paths;
-          - source-discrepancy and TSV projections;
-          - deterministic non-derived repository candidates;
-          - package documentation counts and evidence boundaries.
-
-          Week 16 is registered with Weeks 14 and 15 in npm, the research verification profile, focused mutation tests, and the path-scoped research workflow.
+          Week 16 is registered with Weeks 14 and 15 in npm, the research profile, focused mutation tests, and the path-scoped research workflow.
 
           ## Protected state
 
@@ -467,6 +534,7 @@ jobs:
               textwrap.dedent(report).lstrip(), encoding='utf-8'
           )
           PY
+          python3 /tmp/finalize_week16.py
 
       - name: Run focused and profile validation
         run: |
@@ -483,6 +551,8 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add .github/workflows/research-provenance.yml \
             config/verification-profiles.json \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/runtime-crosswalk-r1.json \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/mechanical-cross-reference-r1.json \
             data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/review.json \
             data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/expert-review-r1.tsv \
             docs/research/GLOSSIKA-YUEHK-A1-W16-20260705-CORPUS-INGRESS.md \
