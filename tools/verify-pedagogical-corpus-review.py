@@ -183,7 +183,8 @@ def verify_integrity(
 
 
 def verify_source_and_tsv(package: Path, source: dict[str, Any]) -> tuple[list[dict[str, Any]], list[str]]:
-    if source.get("schema") != "canto-span-pedagogical-corpus-source-v1":
+    schema = source.get("schema")
+    if schema not in {"canto-span-pedagogical-corpus-source-v1", "canto-span-pedagogical-dialog-source-v1"}:
         fail("unsupported source schema")
     items = source.get("items")
     if not isinstance(items, list) or not items:
@@ -200,7 +201,6 @@ def verify_source_and_tsv(package: Path, source: dict[str, Any]) -> tuple[list[d
             fail(f"source item hash missing or malformed: {item.get('id')}")
         if not isinstance(item.get("source"), dict):
             fail(f"source values missing: {item.get('id')}")
-
     fields, rows = load_tsv(package / "items.tsv")
     id_field = find_field(fields, ["id", "stable_id", "stableId", "item_id"], "items.tsv")
     assert id_field is not None
@@ -213,6 +213,29 @@ def verify_source_and_tsv(package: Path, source: dict[str, Any]) -> tuple[list[d
         for row in rows:
             if row[hash_field] != source_by_id[row[id_field]]["sourceHash"]:
                 fail(f"items.tsv source hash mismatch: {row[id_field]}")
+    if schema == "canto-span-pedagogical-dialog-source-v1":
+        turns = [row for row in items if row.get("itemType") == "dialog_turn"]
+        vocabulary = [row for row in items if row.get("itemType") == "lexical_entry"]
+        if ingress.get("turnCount") != len(turns) or ingress.get("vocabularyCount") != len(vocabulary):
+            fail("dialog source type counts mismatch")
+        if [row.get("turn") for row in turns] != list(range(1, len(turns) + 1)):
+            fail("dialog turn numbering drift")
+        if any((row.get("source") or {}).get("english") is not None for row in turns):
+            fail("dialog turn English must remain null when not supplied")
+        previous_field = find_field(fields, ["previous_turn_id"], "items.tsv")
+        next_field = find_field(fields, ["next_turn_id"], "items.tsv")
+        rows_by_id = {row[id_field]: row for row in rows}
+        turn_ids = [row["id"] for row in turns]
+        for index, item_id in enumerate(turn_ids):
+            expected_previous = "" if index == 0 else turn_ids[index - 1]
+            expected_next = "" if index == len(turn_ids) - 1 else turn_ids[index + 1]
+            row = rows_by_id[item_id]
+            if row[previous_field] != expected_previous or row[next_field] != expected_next:
+                fail(f"dialog source adjacency drift: {item_id}")
+        for row in vocabulary:
+            tsv = rows_by_id[row["id"]]
+            if tsv[previous_field] or tsv[next_field]:
+                fail(f"lexical row carries dialog adjacency: {row['id']}")
     return items, source_ids
 
 
@@ -703,6 +726,8 @@ def verify_research_routing(
 ) -> set[str]:
     if source_id == "GLOSSIKA-YUEHK-A1-W19-20260726":
         return verify_week19_research_routing(root, package, source_id, payload_hash, source_items, review)
+    if source_id == "GLOSSIKA-YUEHK-A1-DLG-002-20251207":
+        return verify_dialog_context_routing(root, package, source_id, payload_hash, source_items, review)
     return verify_week18_research_routing(root, package, source_id, payload_hash, source_items, review)
 
 
@@ -928,6 +953,148 @@ def verify_week19_research_routing(
     return route_ids
 
 
+
+def verifier_item_source_values(item: dict[str, Any]) -> tuple[Any, Any, Any]:
+    values = item.get("source") or {}
+    return values.get("traditional"), values.get("jyutping") or values.get("jyutpingLine") or values.get("romanizationLine"), values.get("english")
+
+
+def verifier_normalize_surface(value: Any) -> str:
+    return re.sub(r"[\s，。！？；：、,.!?;:'\"“”‘’（）()【】\[\]《》<>—–…·`~\/]+", "", str(value or "")).lower()
+
+
+def verifier_normalize_jyutping(value: Any) -> str:
+    text = str(value or "").strip().strip("/")
+    if ":" in text:
+        prefix, rest = text.split(":", 1)
+        if len(prefix.split()) <= 4:
+            text = rest
+    return " ".join(re.findall(r"[a-z]+[1-6]", text.lower()))
+
+
+def verifier_normalize_english(value: Any) -> str:
+    text = str(value or "").lower()
+    text = re.sub(r"[\[\](){},.;:!?/]+", " ", text)
+    text = re.sub(r"\b(a|an|the)\b", " ", text)
+    return " ".join(text.split())
+
+
+def find_source_record(root: Path, path: str, record_id: str) -> dict[str, Any]:
+    document = load_json(root / path)
+    records = document.get("items")
+    if not isinstance(records, list):
+        fail(f"duplicate target source lacks items: {path}")
+    matches = [row for row in records if row.get("id") == record_id]
+    if len(matches) != 1:
+        fail(f"duplicate target record missing or repeated: {path}: {record_id}")
+    return matches[0]
+
+
+def verify_dialog_duplicate_targets(root: Path, source_id: str, source_items: list[dict[str, Any]], review: dict[str, Any], crossref: dict[str, Any]) -> None:
+    if source_id != "GLOSSIKA-YUEHK-A1-DLG-002-20251207":
+        return
+    source_by_id = {row["id"]: row for row in source_items}
+    crossref_by_id = {row["id"]: row for row in crossref.get("records", [])}
+    for row in review.get("records", []):
+        terminal = row.get("terminal_ingress_classification")
+        if terminal not in {"exact_duplicate", "normalized_duplicate"}:
+            continue
+        if len(row.get("accepted_duplicate_targets", [])) != 1:
+            fail(f"dialog duplicate must have one canonical record owner: {row['id']}")
+        target = row["accepted_duplicate_targets"][0]
+        record_id = target.get("record_id")
+        path_value = target.get("path")
+        if not isinstance(record_id, str) or not isinstance(path_value, str):
+            fail(f"dialog duplicate target lacks record identity: {row['id']}")
+        candidate_field = "exact_match_candidates" if terminal == "exact_duplicate" else "normalized_match_candidates"
+        candidates = {(candidate.get("path"), candidate.get("record_id")) for candidate in crossref_by_id[row["id"]].get(candidate_field, []) if isinstance(candidate, dict)}
+        if (path_value, record_id) not in candidates:
+            fail(f"dialog duplicate target is not a record-level candidate: {row['id']}")
+        current_values = verifier_item_source_values(source_by_id[row["id"]])
+        target_values = verifier_item_source_values(find_source_record(root, path_value, record_id))
+        if terminal == "exact_duplicate":
+            if current_values != target_values:
+                fail(f"dialog exact duplicate source fields drift: {row['id']}")
+        else:
+            current_norm = verifier_normalize_surface(current_values[0]), verifier_normalize_jyutping(current_values[1]), verifier_normalize_english(current_values[2])
+            target_norm = verifier_normalize_surface(target_values[0]), verifier_normalize_jyutping(target_values[1]), verifier_normalize_english(target_values[2])
+            if current_norm != target_norm or current_values == target_values:
+                fail(f"dialog normalized duplicate identity drift: {row['id']}")
+
+
+def verify_dialog_context_routing(root: Path, package: Path, source_id: str, payload_hash: str, source_items: list[dict[str, Any]], review: dict[str, Any]) -> set[str]:
+    if source_id != "GLOSSIKA-YUEHK-A1-DLG-002-20251207":
+        return set()
+    packet = load_json(package / "dialog-context-routing-r1.json")
+    if packet.get("schema") != "canto-span-pedagogical-dialog-context-routing-v1":
+        fail("unexpected dialog context-routing schema")
+    if packet.get("source_id") != source_id or packet.get("source_payload_hash") != payload_hash:
+        fail("dialog context-routing source identity mismatch")
+    if packet.get("route_owner_issue") != 487:
+        fail("dialog context routes lack durable owner")
+    routes = packet.get("routes")
+    item_routes = packet.get("item_routes")
+    if not isinstance(routes, list) or not isinstance(item_routes, list):
+        fail("dialog context-routing arrays missing")
+    expected_route_ids = {f"D2-R{number:02d}" for number in range(1, 14)}
+    route_ids = {row.get("route_id") for row in routes}
+    if route_ids != expected_route_ids or packet.get("route_count") != 13:
+        fail("dialog context route set drift")
+    source_ids = [row["id"] for row in source_items]
+    source_id_set = set(source_ids)
+    route_ids_by_item = {item_id: [] for item_id in source_ids}
+    for route in routes:
+        if route.get("owner_issue") != 487:
+            fail(f"dialog context route lacks owner: {route.get('route_id')}")
+        if not isinstance(route.get("route_state"), str) or not isinstance(route.get("evidence_requirement"), str):
+            fail(f"dialog context route lacks state or evidence requirement: {route.get('route_id')}")
+        route_items = route.get("source_item_ids")
+        if not isinstance(route_items, list) or not set(route_items).issubset(source_id_set):
+            fail(f"dialog context route source IDs drift: {route.get('route_id')}")
+        for item_id in route_items:
+            route_ids_by_item[item_id].append(route["route_id"])
+    if stable_ids(item_routes, "dialog context item routes") != source_ids:
+        fail("dialog context item-route IDs/order drift")
+    review_by_id = {row["id"]: row for row in review.get("records", [])}
+    for row in item_routes:
+        expected = sorted(route_ids_by_item[row["id"]])
+        if row.get("route_ids") != expected or review_by_id[row["id"]].get("research_route_ids") != expected:
+            fail(f"dialog context route projection drift: {row['id']}")
+    naturalness = {f"{source_id}-{short}" for short in ["I003","I009","I017","I018","I020","I022","I023","I033","I034","I036"]}
+    reviewed_naturalness = {row["id"] for row in review.get("records", []) if row.get("terminal_ingress_classification") == "naturalness_review_candidate"}
+    if reviewed_naturalness != naturalness:
+        fail("dialog naturalness candidate set drift")
+    route12 = next(row for row in routes if row.get("route_id") == "D2-R12")
+    if set(route12.get("source_item_ids", [])) != naturalness:
+        fail("dialog naturalness route projection drift")
+    aggregate_lock = packet.get("aggregate_map")
+    aggregate_path = aggregate_lock.get("path") if isinstance(aggregate_lock, dict) else None
+    if aggregate_path != "data/corpus-reviews/GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.json":
+        fail("dialog aggregate-map path drift")
+    data = read_bytes(root / aggregate_path)
+    aggregate = load_json(root / aggregate_path)
+    expected_lock = {"path": aggregate_path, "bytes": len(data), "sha256": sha256_hex(data), "git_blob_sha": git_blob_sha(data), "schema": aggregate.get("schema"), "packet_id": aggregate.get("packet_id")}
+    if aggregate_lock != expected_lock:
+        fail("dialog aggregate-map lock drift")
+    aggregate_turns = [row for row in aggregate.get("turns", []) if row.get("source_id") == source_id]
+    if len(aggregate_turns) != 38:
+        fail("dialog aggregate-map turn projection count drift")
+    if any(row.get("previous_turn_id") is not None or row.get("next_turn_id") is not None for row in aggregate_turns):
+        fail("dialog aggregate-map limitation no longer matches retained map")
+    if packet.get("aggregate_adjacency_limitation") != {"dialog_turn_count":38,"aggregate_turns_with_null_previous_and_next":38,"source_package_adjacency_is_authoritative":True,"aggregate_map_is_not_rewritten":True}:
+        fail("dialog aggregate adjacency limitation drift")
+    turns = [row for row in source_items if row.get("itemType") == "dialog_turn"]
+    adjacency = packet.get("source_adjacency")
+    if not isinstance(adjacency, list) or stable_ids(adjacency, "dialog source adjacency") != [row["id"] for row in turns]:
+        fail("dialog source adjacency projection drift")
+    for index, row in enumerate(adjacency):
+        expected_previous = None if index == 0 else turns[index - 1]["id"]
+        expected_next = None if index == len(turns) - 1 else turns[index + 1]["id"]
+        if row.get("previous_turn_id") != expected_previous or row.get("next_turn_id") != expected_next:
+            fail(f"dialog source adjacency packet drift: {row['id']}")
+    return route_ids
+
+
 def verify_review(
     source: dict[str, Any],
     review: dict[str, Any],
@@ -1097,6 +1264,12 @@ def verify_review(
                     for key in ["field", "issue", "status"]
                 ):
                     fail(f"malformed source discrepancy: {item_id}")
+
+        if source_id == "GLOSSIKA-YUEHK-A1-DLG-002-20251207" and item.get("itemType") == "dialog_turn":
+            if row.get("source_availability") != {"english": "not_supplied"}:
+                fail(f"dialog turn missing English availability drift: {item_id}")
+            if discrepancies:
+                fail(f"dialog turn missing English cannot be a translation discrepancy: {item_id}")
 
         reviewed_values = row.get("reviewed_values")
         if not isinstance(reviewed_values, dict):
@@ -1304,6 +1477,8 @@ def verify(
         fail(f"package missing required files: {sorted(missing)}")
     if package_relative.name == "GLOSSIKA-YUEHK-A1-W19-20260726" and "role-sensitive-crosswalk-r1.json" not in actual_files:
         fail("Week 19 package lacks role-sensitive crosswalk")
+    if package_relative.name == "GLOSSIKA-YUEHK-A1-DLG-002-20251207" and "dialog-context-routing-r1.json" not in actual_files:
+        fail("dialog 002 package lacks context-routing packet")
     temporary = sorted(name for name in actual_files if ".tmp." in name or name.endswith(".tmp"))
     if temporary:
         fail(f"temporary review files remain: {temporary}")
@@ -1326,6 +1501,7 @@ def verify(
     role_sensitive_ids = verify_week19_role_sensitive_crosswalk(root, package, source_id, payload_hash, source_items)
     research_route_ids = verify_research_routing(root, package, source_id, payload_hash, source_items, review)
     verify_review(source, review, crossref, source_items, source_ids)
+    verify_dialog_duplicate_targets(root, source_id, source_items, review, crossref)
     reviewed_crosswalk_ids = {
         row["id"] for row in review["records"] if row.get("implementation_crosswalk_targets")
     }

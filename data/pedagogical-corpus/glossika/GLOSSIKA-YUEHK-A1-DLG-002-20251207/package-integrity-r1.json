@@ -1,0 +1,19 @@
+{
+  "schema": "canto-span-pedagogical-corpus-package-integrity-v1",
+  "source_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207",
+  "source_payload_hash": "sha256:502c3e06e9ce3902806bc77d7b68779903e3cfdafeebbd497ec072fcb1319c92",
+  "immutable_files": [
+    {
+      "path": "source.json",
+      "bytes": 34671,
+      "sha256": "21b0c70bdc40a22fe7eef41e5b4ebe031bab0da7150d3869fa814c6a0ca9afd2",
+      "git_blob_sha": "fecff93ce96ac84f6c38f2838c6e4ed78605b2e3"
+    },
+    {
+      "path": "items.tsv",
+      "bytes": 68580,
+      "sha256": "87fdc3af33e6fe52a39eeaaea13208b5daa6b59e25eb8d124e0352a599ab3679",
+      "git_blob_sha": "a321981adb69a409b36f073cfdbf20e54c33f4a5"
+    }
+  ]
+}

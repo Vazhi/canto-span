@@ -47,6 +47,7 @@ PACKAGE_REVIEW_FILES = {
     "implementation-crosswalk-r1.json",
     "role-sensitive-crosswalk-r1.json",
     "research-routing-r1.json",
+    "dialog-context-routing-r1.json",
 }
 GLOBAL_PEDAGOGICAL_DERIVED_FILES = {
     "review.json",
@@ -63,6 +64,7 @@ GLOBAL_PEDAGOGICAL_DERIVED_FILES = {
     "implementation-crosswalk-r1.json",
     "role-sensitive-crosswalk-r1.json",
     "research-routing-r1.json",
+    "dialog-context-routing-r1.json",
 }
 
 
@@ -325,44 +327,127 @@ def load_later_research(root: Path, source_id: str) -> dict[str, list[dict[str, 
     return by_item
 
 
+
+def normalize_jyutping(value: Any) -> str:
+    text = str(value or "").strip().strip("/")
+    if ":" in text:
+        prefix, rest = text.split(":", 1)
+        if len(prefix.split()) <= 4:
+            text = rest
+    return " ".join(re.findall(r"[a-z]+[1-6]", text.lower()))
+
+
+def normalize_english(value: Any) -> str:
+    text = str(value or "").lower()
+    text = re.sub(r"[\[\](){},.;:!?/]+", " ", text)
+    text = re.sub(r"\b(a|an|the)\b", " ", text)
+    return " ".join(text.split())
+
+
+def item_source_values(item: dict[str, Any]) -> tuple[Any, Any, Any]:
+    values = item.get("source") or {}
+    return values.get("traditional"), values.get("jyutping") or values.get("jyutpingLine") or values.get("romanizationLine"), values.get("english")
+
+
+def dialog_record_matches(root: Path, package_relative: Path, source: dict[str, Any]) -> dict[str, dict[str, list[dict[str, Any]]]]:
+    output = {row["id"]: {"exact": [], "normalized": []} for row in source.get("items", [])}
+    current_values = {row["id"]: item_source_values(row) for row in source.get("items", [])}
+    corpus_root = root / "data/pedagogical-corpus/glossika"
+    for candidate in sorted(corpus_root.glob("*/source.json")):
+        if candidate.resolve() == (root / package_relative / "source.json").resolve():
+            continue
+        try:
+            document = read_json(candidate)
+        except (OSError, ValueError, json.JSONDecodeError):
+            continue
+        records = document.get("items")
+        if not isinstance(records, list):
+            continue
+        relative = str(candidate.relative_to(root))
+        candidate_source_id = (document.get("source") or {}).get("sourceId")
+        for target in records:
+            target_values = item_source_values(target)
+            if not target_values[0]:
+                continue
+            for item_id, values in current_values.items():
+                exact = values == target_values
+                normalized = normalize_surface(values[0]) == normalize_surface(target_values[0]) and normalize_jyutping(values[1]) == normalize_jyutping(target_values[1]) and normalize_english(values[2]) == normalize_english(target_values[2])
+                if not exact and not normalized:
+                    continue
+                output[item_id]["exact" if exact else "normalized"].append({
+                    "path": relative,
+                    "record_id": target.get("id"),
+                    "source_id": candidate_source_id,
+                    "match_type": "exact_source_record" if exact else "normalized_source_record",
+                    "layer": "pedagogical_corpus",
+                })
+    for values in output.values():
+        values["exact"].sort(key=lambda row: (row["path"], row.get("record_id") or ""))
+        values["normalized"].sort(key=lambda row: (row["path"], row.get("record_id") or ""))
+    return output
+
+
+def dialog_context_links(package: Path) -> dict[str, list[dict[str, Any]]]:
+    path = package / "dialog-context-routing-r1.json"
+    if not path.is_file():
+        return {}
+    packet = read_json(path)
+    output: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for route in packet.get("routes", []):
+        for item_id in route.get("source_item_ids", []):
+            output[item_id].append({
+                "kind": "dialog_context_route",
+                "route_id": route.get("route_id"),
+                "route_owner_issue": route.get("owner_issue"),
+                "route_state": route.get("route_state"),
+                "evidence_requirement": route.get("evidence_requirement"),
+                "linked_issues": route.get("linked_issues", []),
+            })
+    for links in output.values():
+        links.sort(key=lambda row: row["route_id"])
+    return output
+
+
 def build(root: Path, package_relative: Path, output_relative: Path) -> dict[str, Any]:
     source = read_json(root / package_relative / "source.json")
-    if source.get("schema") != "canto-span-pedagogical-corpus-source-v1":
+    schema = source.get("schema")
+    if schema not in {"canto-span-pedagogical-corpus-source-v1", "canto-span-pedagogical-dialog-source-v1"}:
         raise ValueError("unsupported pedagogical source schema")
     source_id = (source.get("source") or {}).get("sourceId")
     items = source.get("items")
     if not isinstance(items, list):
         raise ValueError("source items must be an array")
-
-    documents = load_documents(root, candidate_files(root, package_relative, output_relative))
-    later = load_later_research(root, str(source_id))
+    is_dialog = schema == "canto-span-pedagogical-dialog-source-v1"
+    documents = [] if is_dialog else load_documents(root, candidate_files(root, package_relative, output_relative))
+    later = {} if is_dialog else load_later_research(root, str(source_id))
+    record_matches = dialog_record_matches(root, package_relative, source) if is_dialog else {}
+    route_links = dialog_context_links(root / package_relative) if is_dialog else {}
     records: list[dict[str, Any]] = []
     match_counts: Counter[str] = Counter()
     layer_counts: Counter[str] = Counter()
-
     for item in items:
         item_source = item.get("source") or {}
         traditional = str(item_source.get("traditional") or "")
         normalized = normalize_surface(traditional)
-        exact_paths: set[str] = set()
-        normalized_paths: set[str] = set()
-
-        if traditional:
-            for path, text, normalized_lines in documents:
-                if traditional in text:
-                    exact_paths.add(path)
-                elif len(normalized) >= MIN_NORMALIZED_MATCH_LENGTH and any(
-                    normalized == line or normalized in line for line in normalized_lines
-                ):
-                    normalized_paths.add(path)
-
-        exact, exact_omitted = ranked_matches(exact_paths, "exact_surface_file")
-        normalized_only, normalized_omitted = ranked_matches(normalized_paths, "normalized_surface_file")
+        item_id = item.get("id")
+        if is_dialog:
+            exact = record_matches.get(item_id, {}).get("exact", [])
+            normalized_only = record_matches.get(item_id, {}).get("normalized", [])
+            exact_omitted = normalized_omitted = 0
+        else:
+            exact_paths: set[str] = set()
+            normalized_paths: set[str] = set()
+            if traditional:
+                for candidate_path, text_value, normalized_lines in documents:
+                    if traditional in text_value:
+                        exact_paths.add(candidate_path)
+                    elif len(normalized) >= MIN_NORMALIZED_MATCH_LENGTH and any(normalized == line or normalized in line for line in normalized_lines):
+                        normalized_paths.add(candidate_path)
+            exact, exact_omitted = ranked_matches(exact_paths, "exact_surface_file")
+            normalized_only, normalized_omitted = ranked_matches(normalized_paths, "normalized_surface_file")
         for match in exact + normalized_only:
             match_counts[match["match_type"]] += 1
             layer_counts[match["layer"]] += 1
-
-        item_id = item.get("id")
         records.append({
             "id": item_id,
             "ordinal": item.get("ordinal"),
@@ -370,7 +455,7 @@ def build(root: Path, package_relative: Path, output_relative: Path) -> dict[str
             "subsection": item.get("subsection"),
             "item_type": item.get("itemType"),
             "source_traditional": traditional,
-            "source_jyutping": item_source.get("jyutping"),
+            "source_jyutping": item_source.get("jyutping") or item_source.get("jyutpingLine") or item_source.get("romanizationLine"),
             "source_english": item_source.get("english"),
             "source_hash": item.get("sourceHash"),
             "normalized_surface": normalized,
@@ -378,14 +463,13 @@ def build(root: Path, package_relative: Path, output_relative: Path) -> dict[str
             "exact_match_paths_omitted": exact_omitted,
             "normalized_match_candidates": normalized_only,
             "normalized_match_paths_omitted": normalized_omitted,
-            "later_research_links": later.get(item_id, []),
+            "later_research_links": route_links.get(item_id, []) if is_dialog else later.get(item_id, []),
             "mechanical_status": "candidate_scan_complete",
             "expert_duplicate_status": "unreviewed",
             "terminal_ingress_classification": "unreviewed",
             "evidence_use_disposition": "unreviewed",
             "review_note": "",
         })
-
     return {
         "schema": "canto-span-pedagogical-corpus-review-candidates-v1",
         "source_id": source_id,
@@ -399,6 +483,7 @@ def build(root: Path, package_relative: Path, output_relative: Path) -> dict[str
             "maximum_file_bytes": 2_000_000,
             "generated_bundle_excluded": True,
             "matches_are_file_level_candidates_not_decisions": True,
+            "dialog_matches_are_record_level_source_candidates": is_dialog,
             "maximum_paths_per_match_type": MAX_MATCH_PATHS_PER_TYPE,
             "minimum_normalized_match_length": MIN_NORMALIZED_MATCH_LENGTH,
             "layer_priority": LAYER_PRIORITY,
@@ -416,7 +501,6 @@ def build(root: Path, package_relative: Path, output_relative: Path) -> dict[str
         },
         "records": records,
     }
-
 
 def main() -> int:
     parser = argparse.ArgumentParser()

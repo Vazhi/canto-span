@@ -1,0 +1,960 @@
+{
+  "schema": "canto-span-pedagogical-dialog-context-routing-v1",
+  "source_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207",
+  "source_payload_hash": "sha256:502c3e06e9ce3902806bc77d7b68779903e3cfdafeebbd497ec072fcb1319c92",
+  "origin_pull_request": 291,
+  "origin_merge_commit": "42fe401deb9cd2d6d20358c7c6a704dcd0f88459",
+  "aggregate_pull_request": 395,
+  "aggregate_merge_commit": "e2483a9efdc72fc4e2982cc1f7be46f22e07f6f2",
+  "route_owner_issue": 487,
+  "route_count": 13,
+  "routes": [
+    {
+      "route_id": "D2-R01",
+      "source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I001",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I002",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I003",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I004",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I005",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I006",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I007",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I008",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I009",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I010",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I011",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I012",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I013",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I014",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I015",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I016",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I017",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I018",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I019",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I020",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I021",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I022",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I023",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I024",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I025",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I026",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I027",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I028",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I029",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I030",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I031",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I032",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I033",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I034",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I035",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I036",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I037",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I038"
+      ],
+      "route_state": "completed_provenance_finding",
+      "owner_issue": 487,
+      "evidence_requirement": "Preserve english=null because the source supplied no turn-level English; do not infer translations."
+    },
+    {
+      "route_id": "D2-R02",
+      "source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I001",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I002",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I003",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I004",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I005",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I006",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I007",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I008",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I009",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I010",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I011",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I012",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I013",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I014",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I015",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I016",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I017",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I018",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I019",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I020",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I021",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I022",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I023",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I024",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I025",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I026",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I027",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I028",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I029",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I030",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I031",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I032",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I033",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I034",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I035",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I036",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I037",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I038"
+      ],
+      "route_state": "completed_provenance_finding",
+      "owner_issue": 487,
+      "evidence_requirement": "Keep speaker prefixes and provider confidence/reviewer notes as source metadata only."
+    },
+    {
+      "route_id": "D2-R03",
+      "source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I003",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I022"
+      ],
+      "route_state": "retained_contextual_naturalness_dependency",
+      "owner_issue": 487,
+      "evidence_requirement": "Independent conversational corpus contexts and broad lexical/register references."
+    },
+    {
+      "route_id": "D2-R04",
+      "source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I009"
+      ],
+      "route_state": "retained_particle_context_dependency",
+      "owner_issue": 487,
+      "evidence_requirement": "Direct particle research plus contextual corpus examples for 㗎咩 host and question bias."
+    },
+    {
+      "route_id": "D2-R05",
+      "source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I017",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I018"
+      ],
+      "route_state": "retained_scalar_change_dependency",
+      "owner_issue": 487,
+      "evidence_requirement": "Direct scalar/comparative research and matched contextual contrasts."
+    },
+    {
+      "route_id": "D2-R06",
+      "source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I020",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I023"
+      ],
+      "route_state": "retained_nominal_ellipsis_dependency",
+      "owner_issue": 487,
+      "linked_issues": [
+        484
+      ],
+      "evidence_requirement": "Contextual corpus evidence and direct classifier-headed nominal ellipsis research."
+    },
+    {
+      "route_id": "D2-R07",
+      "source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I028",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I029"
+      ],
+      "route_state": "subsumed_by_existing_unit_word_routes",
+      "owner_issue": 487,
+      "linked_issues": [
+        484
+      ],
+      "evidence_requirement": "Use #484 classifier–noun and classifier-ellipsis evidence; preserve source adjacency."
+    },
+    {
+      "route_id": "D2-R08",
+      "source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I030"
+      ],
+      "route_state": "retained_transfer_inclusive_dependency",
+      "owner_issue": 487,
+      "linked_issues": [
+        484
+      ],
+      "evidence_requirement": "Direct dative evidence plus independent 埋 inclusive/additive research and contextual corpus examples."
+    },
+    {
+      "route_id": "D2-R09",
+      "source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I033",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I035"
+      ],
+      "route_state": "retained_temporal_anota_dependency",
+      "owner_issue": 487,
+      "linked_issues": [
+        481
+      ],
+      "evidence_requirement": "Separate temporal/register, acceptability/necessity A-not-A, and deposit lexicon evidence."
+    },
+    {
+      "route_id": "D2-R10",
+      "source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I027",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I028",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I030",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I034"
+      ],
+      "route_state": "subsumed_context_diagnostic_route",
+      "owner_issue": 487,
+      "linked_issues": [
+        393
+      ],
+      "evidence_requirement": "Classify against preserved prior-turn adjacency under #393 without fabricating antecedents."
+    },
+    {
+      "route_id": "D2-R11",
+      "source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I034",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I036"
+      ],
+      "route_state": "retained_motion_sequence_result_dependency",
+      "owner_issue": 487,
+      "linked_issues": [
+        481,
+        393
+      ],
+      "evidence_requirement": "Separate motion-purpose, arrival sequence, sufficient-condition/result, and particle/formula layers."
+    },
+    {
+      "route_id": "D2-R12",
+      "source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I003",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I009",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I017",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I018",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I020",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I022",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I023",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I033",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I034",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I036"
+      ],
+      "route_state": "terminal_unresolved_naturalness_candidates",
+      "owner_issue": 487,
+      "evidence_requirement": "Retain as naturalness-review candidates; no acceptance, rejection, productivity, or status conclusion."
+    },
+    {
+      "route_id": "D2-R13",
+      "source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I001",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I002",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I003",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I004",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I005",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I006",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I007",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I008",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I009",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I010",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I011",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I012",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I013",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I014",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I015",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I016",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I017",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I018",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I019",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I020",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I021",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I022",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I023",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I024",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I025",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I026",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I027",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I028",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I029",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I030",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I031",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I032",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I033",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I034",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I035",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I036",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I037",
+        "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I038"
+      ],
+      "route_state": "completed_aggregate_documentation_limitation",
+      "owner_issue": 487,
+      "evidence_requirement": "Source-package adjacency remains authoritative; aggregate null adjacency is documented and not rewritten."
+    }
+  ],
+  "item_routes": [
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I001",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I002",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I003",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R03",
+        "D2-R12",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I004",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I005",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I006",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I007",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I008",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I009",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R04",
+        "D2-R12",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I010",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I011",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I012",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I013",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I014",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I015",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I016",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I017",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R05",
+        "D2-R12",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I018",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R05",
+        "D2-R12",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I019",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I020",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R06",
+        "D2-R12",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I021",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I022",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R03",
+        "D2-R12",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I023",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R06",
+        "D2-R12",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I024",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I025",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I026",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I027",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R10",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I028",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R07",
+        "D2-R10",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I029",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R07",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I030",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R08",
+        "D2-R10",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I031",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I032",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I033",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R09",
+        "D2-R12",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I034",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R10",
+        "D2-R11",
+        "D2-R12",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I035",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R09",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I036",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R11",
+        "D2-R12",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I037",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I038",
+      "route_ids": [
+        "D2-R01",
+        "D2-R02",
+        "D2-R13"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I039",
+      "route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I040",
+      "route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I041",
+      "route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I042",
+      "route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I043",
+      "route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I044",
+      "route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I045",
+      "route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I046",
+      "route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I047",
+      "route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I048",
+      "route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I049",
+      "route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I050",
+      "route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I051",
+      "route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I052",
+      "route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I053",
+      "route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I054",
+      "route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I055",
+      "route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I056",
+      "route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I057",
+      "route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I058",
+      "route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I059",
+      "route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I060",
+      "route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I061",
+      "route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I062",
+      "route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I063",
+      "route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I064",
+      "route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I065",
+      "route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I066",
+      "route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I067",
+      "route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I068",
+      "route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I069",
+      "route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I070",
+      "route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I071",
+      "route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I072",
+      "route_ids": []
+    }
+  ],
+  "source_adjacency": [
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I001",
+      "previous_turn_id": null,
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I002"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I002",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I001",
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I003"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I003",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I002",
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I004"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I004",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I003",
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I005"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I005",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I004",
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I006"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I006",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I005",
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I007"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I007",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I006",
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I008"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I008",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I007",
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I009"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I009",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I008",
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I010"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I010",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I009",
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I011"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I011",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I010",
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I012"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I012",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I011",
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I013"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I013",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I012",
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I014"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I014",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I013",
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I015"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I015",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I014",
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I016"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I016",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I015",
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I017"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I017",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I016",
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I018"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I018",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I017",
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I019"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I019",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I018",
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I020"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I020",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I019",
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I021"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I021",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I020",
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I022"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I022",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I021",
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I023"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I023",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I022",
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I024"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I024",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I023",
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I025"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I025",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I024",
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I026"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I026",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I025",
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I027"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I027",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I026",
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I028"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I028",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I027",
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I029"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I029",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I028",
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I030"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I030",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I029",
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I031"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I031",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I030",
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I032"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I032",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I031",
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I033"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I033",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I032",
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I034"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I034",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I033",
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I035"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I035",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I034",
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I036"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I036",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I035",
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I037"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I037",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I036",
+      "next_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I038"
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I038",
+      "previous_turn_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207-I037",
+      "next_turn_id": null
+    }
+  ],
+  "aggregate_map": {
+    "path": "data/corpus-reviews/GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.json",
+    "bytes": 552350,
+    "sha256": "8b4bb4d92648ef44c11b96772294e84434e7a57fa323e9c2c64ffbf12d91f8a3",
+    "git_blob_sha": "3218dbced544fc2675e7041b4444471158b1b7b0",
+    "schema": "canto-span-glossika-decision-map-v1",
+    "packet_id": "GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1"
+  },
+  "aggregate_adjacency_limitation": {
+    "dialog_turn_count": 38,
+    "aggregate_turns_with_null_previous_and_next": 38,
+    "source_package_adjacency_is_authoritative": true,
+    "aggregate_map_is_not_rewritten": true
+  },
+  "authority_boundary": [
+    "dialog_adjacency_is_context_evidence_not_productivity_evidence",
+    "aggregate_runtime_labels_are_implementation_observations_only",
+    "missing_turn_translation_is_not_translation_discrepancy",
+    "routes_do_not_authorize_parser_or_status_change"
+  ]
+}

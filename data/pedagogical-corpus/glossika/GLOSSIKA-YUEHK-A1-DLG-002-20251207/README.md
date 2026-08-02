@@ -1,27 +1,25 @@
-# Glossika Cantonese A1 dialog 002 corpus package
+# Glossika dialog 002 — completed expert corpus review
 
-- Source ID: `GLOSSIKA-YUEHK-A1-DLG-002-20251207`
-- Title: 讚吓個蛋糕
-- Source date: 2025-12-07
-- Gmail message: `19afa819bdfae102`
-- Intake issue: #138
-- Work claim: #290
-- Records: 38 dialog turns + 34 vocabulary entries = 72
-- Source payload hash: `sha256:502c3e06e9ce3902806bc77d7b68779903e3cfdafeebbd497ec072fcb1319c92`
+Source ID: `GLOSSIKA-YUEHK-A1-DLG-002-20251207`
 
-## Source fidelity
+The immutable source contains 38 ordered turns and 34 vocabulary records. All 72 records are reviewed; there are **0 unreviewed records**. Per-turn English remains `null` because the provider did not supply translations.
 
-Speaker labels, Cantonese, punctuation, Jyutping lines, vocabulary glosses, scenario, notes, and order are preserved. The source contains no per-turn English translations; the turn records retain `english: null`.
+## Terminal results
 
-## Modular ownership
+- Exact source duplicates: 3
+- Normalized source duplicates: 4
+- Lexical-only attestations: 27
+- New dialog attestations: 28
+- Naturalness/context candidates: 10
 
-Canonical runtime ownership comes from `src/**` and `src/runtime-resources/**`. Generated `main.js` is excluded.
+Source adjacency is preserved for all 38 turns. `dialog-context-routing-r1.json` records 13 route outcomes and documents that the later aggregate map retained dialog 002 with null adjacency.
 
-## Files
+## Verification
 
-- `source.json`: immutable ordered source records.
-- `crosswalk.json`: adjacency, modular owners, and deduplication candidates.
-- `review.json`: review classifications and source alerts.
-- `items.tsv`: flat review rendering.
+```bash
+npm run verify:pedagogical-corpus-review
+python3 tests/tooling/research/pedagogical-corpus-review.test.py
+npm run verify:research
+```
 
-No parser, lexicon, identity/status, survey, version, release, or deployment change is included.
+The packet does not change parser behavior, runtime lexicon, construction identity/status, survey state, release state, or deployment state.

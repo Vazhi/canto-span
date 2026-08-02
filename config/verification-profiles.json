@@ -120,9 +120,11 @@
           "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719",
           "--package",
           "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726",
+          "--package",
+          "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-002-20251207",
           "--check-deterministic-crossref"
         ],
-        "reason": "Keep reviewed pedagogical source archives, deterministic repository cross-references, role-sensitive implementation observations, terminal expert dispositions, duplicate targets, discrepancy records, and research routes synchronized across all registered packages.",
+        "reason": "Keep reviewed pedagogical source archives, deterministic repository cross-references, role-sensitive and dialog-context observations, terminal expert dispositions, duplicate targets, discrepancy records, and research routes synchronized across all registered packages.",
         "run_when": "A registered pedagogical corpus package, source lock, candidate builder, review verifier, or focused mutation test changes."
       }
     ],
