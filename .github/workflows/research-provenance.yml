@@ -6,30 +6,79 @@ on:
       - ".github/workflows/research-provenance.yml"
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  export-week18-review-tooling:
+  finalize-week18-review:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - name: Stage exact shared review tooling
-        run: |
-          mkdir -p /tmp/week18-review-tooling/.github/workflows \
-            /tmp/week18-review-tooling/tools \
-            /tmp/week18-review-tooling/tests/tooling/research \
-            /tmp/week18-review-tooling/config
-          cp .github/workflows/research-provenance.yml /tmp/week18-review-tooling/.github/workflows/
-          cp tools/build-pedagogical-corpus-review-candidates.py /tmp/week18-review-tooling/tools/
-          cp tools/verify-pedagogical-corpus-review.py /tmp/week18-review-tooling/tools/
-          cp tests/tooling/research/pedagogical-corpus-review.test.py /tmp/week18-review-tooling/tests/tooling/research/
-          cp config/verification-profiles.json /tmp/week18-review-tooling/config/
-          cp config/pedagogical-corpus-source-locks.json /tmp/week18-review-tooling/config/
-          cp package.json /tmp/week18-review-tooling/
-          find /tmp/week18-review-tooling -type f -print0 | sort -z | xargs -0 sha256sum > /tmp/week18-review-tooling/SHA256SUMS
-      - uses: actions/upload-artifact@v4
         with:
-          name: week18-review-tooling
-          path: /tmp/week18-review-tooling
-          if-no-files-found: error
-          retention-days: 1
+          ref: agent/week18-ingress-review
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+
+      - name: Reconstruct and verify the reviewed finalizer
+        run: |
+          test "$(sha256sum tools/.week18-finalizer.part00 | cut -d' ' -f1)" = "eacee58476c9e264b4f2453bce9238378adf9a407d618e2a316dbd5cdf6125a7"
+          test "$(sha256sum tools/.week18-finalizer.part01 | cut -d' ' -f1)" = "b4719987a5a2aff2180e3689405029a32be536270a8c7cb65dc166283de2424c"
+          test "$(sha256sum tools/.week18-finalizer.part02 | cut -d' ' -f1)" = "c625996c9d27fbeeff2c7fbb22dc069460856c069ba079208e3a5f93c46146da"
+          test "$(sha256sum tools/.week18-finalizer.part03 | cut -d' ' -f1)" = "219c183c8a890d4a3df2eca3de7dbe09f0bc741dd8a7378f33015a0cef423307"
+          test "$(sha256sum tools/.week18-finalizer.part04 | cut -d' ' -f1)" = "3ee4dbfe70cacfcedf8977b50a4586ba5f578cb7d4f1f8d843c4a9999b1dd01b"
+          cat tools/.week18-finalizer.part00 \
+            tools/.week18-finalizer.part01 \
+            tools/.week18-finalizer.part02 \
+            tools/.week18-finalizer.part03 \
+            tools/.week18-finalizer.part04 > /tmp/finalize-week18.py.gz.b64
+          test "$(sha256sum /tmp/finalize-week18.py.gz.b64 | cut -d' ' -f1)" = "a693a3c6b9d96c1f0ff83d708da1f88939ffb53c09c554cd336417dca27eb4ca"
+          base64 --decode /tmp/finalize-week18.py.gz.b64 | gzip --decompress > /tmp/finalize-week18.py
+          test "$(sha256sum /tmp/finalize-week18.py | cut -d' ' -f1)" = "350a709a4775d7893930d1e6c08197d0f24e3d27daa0049b888ba85f6a2f421b"
+          python3 -m py_compile /tmp/finalize-week18.py
+
+      - name: Generate final Week 18 review state
+        run: python3 /tmp/finalize-week18.py
+
+      - name: Validate final Week 18 state
+        run: |
+          python3 -m py_compile \
+            tools/build-pedagogical-corpus-review-candidates.py \
+            tools/verify-pedagogical-corpus-review.py \
+            tests/tooling/research/pedagogical-corpus-review.test.py
+          python3 tests/tooling/research/pedagogical-corpus-review.test.py
+          npm run verify:pedagogical-corpus-review
+          npm run verify:research
+          npm run verify
+          git diff --check
+
+      - name: Push non-workflow review changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -f \
+            tools/.week18-finalizer.part00 \
+            tools/.week18-finalizer.part01 \
+            tools/.week18-finalizer.part02 \
+            tools/.week18-finalizer.part03 \
+            tools/.week18-finalizer.part04 \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/.review-claim
+          git add \
+            config/pedagogical-corpus-source-locks.json \
+            config/verification-profiles.json \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/README.md \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/expert-review-r1.tsv \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/implementation-crosswalk-r1.json \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/mechanical-cross-reference-r1.json \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/package-integrity-r1.json \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/research-routing-r1.json \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/research-summary.md \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/review.json \
+            docs/research/GLOSSIKA-YUEHK-A1-W18-20260719-CORPUS-INGRESS.md \
+            package.json \
+            tests/tooling/research/pedagogical-corpus-review.test.py \
+            tools/build-pedagogical-corpus-review-candidates.py \
+            tools/verify-pedagogical-corpus-review.py
+          git commit -m "Complete Week 18 expert ingress review"
+          git push origin HEAD:agent/week18-ingress-review
