@@ -83,7 +83,8 @@ before execution.
 
 Unknown tracks, kinds, modes, priorities, fields, malformed arrays, duplicate array
 members, or overlapping acquired/prohibited locks fail validation. Do not invent a
-new enum inside one issue.
+new enum inside one issue. Passing planning validation does not establish readiness,
+pickup permission, evidence sufficiency, or implementation authority.
 
 ## Mode-specific contract
 
