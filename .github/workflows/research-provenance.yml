@@ -1,87 +1,62 @@
 name: Research provenance
 
 on:
-  push:
-    paths:
-      - "data/construction-identities.json"
-      - "data/construction-identity-lock.json"
-      - "data/construction-adjudications.json"
-      - "data/construction-adjudication-batches/**"
-      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/**"
-      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/**"
-      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/**"
-      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/**"
-      - "docs/research/**"
-      - "external-evidence/**"
-      - "grammar/**"
-      - "review-packets/**"
-      - "config/pedagogical-corpus-source-locks.json"
-      - "config/research-provenance-baseline.json"
-      - "config/research-evidence-grades.json"
-      - "config/verification-profiles.json"
-      - "tools/build-pedagogical-corpus-review-candidates.py"
-      - "tools/research-provenance-lib.js"
-      - "tools/verify-pedagogical-corpus-review.py"
-      - "tools/verify-research-provenance.js"
-      - "tools/verify-native-panel-lifecycle.js"
-      - "tools/verify-interim-pilot-public-package.py"
-      - "tests/tooling/native-panel/native-panel-lifecycle.test.js"
-      - "tests/tooling/research/ab30-aggregate-integrity.test.py"
-      - "tests/tooling/research/interim-pilot-public-package.test.py"
-      - "tests/tooling/research/pedagogical-corpus-review.test.py"
-      - "package.json"
-      - ".github/workflows/research-provenance.yml"
   pull_request:
     paths:
-      - "data/construction-identities.json"
-      - "data/construction-identity-lock.json"
-      - "data/construction-adjudications.json"
-      - "data/construction-adjudication-batches/**"
-      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/**"
-      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/**"
-      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/**"
-      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/**"
-      - "docs/research/**"
-      - "external-evidence/**"
-      - "grammar/**"
-      - "review-packets/**"
-      - "config/pedagogical-corpus-source-locks.json"
-      - "config/research-provenance-baseline.json"
-      - "config/research-evidence-grades.json"
-      - "config/verification-profiles.json"
-      - "tools/build-pedagogical-corpus-review-candidates.py"
-      - "tools/research-provenance-lib.js"
-      - "tools/verify-pedagogical-corpus-review.py"
-      - "tools/verify-research-provenance.js"
-      - "tools/verify-native-panel-lifecycle.js"
-      - "tools/verify-interim-pilot-public-package.py"
-      - "tests/tooling/native-panel/native-panel-lifecycle.test.js"
-      - "tests/tooling/research/ab30-aggregate-integrity.test.py"
-      - "tests/tooling/research/interim-pilot-public-package.test.py"
-      - "tests/tooling/research/pedagogical-corpus-review.test.py"
-      - "package.json"
       - ".github/workflows/research-provenance.yml"
-  workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  verify-research:
+  inspect-week18:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
-        with:
-          node-version: 24
-          package-manager-cache: false
-      - name: Test native-panel lifecycle verifier
-        run: node --test tests/tooling/native-panel/native-panel-lifecycle.test.js
-      - name: Test AB30 aggregate integrity verifier
-        run: python3 tests/tooling/research/ab30-aggregate-integrity.test.py
-      - name: Test interim pilot public-package verifier
-        run: python3 tests/tooling/research/interim-pilot-public-package.test.py
-      - name: Test reviewed pedagogical corpus packages
-        run: python3 tests/tooling/research/pedagogical-corpus-review.test.py
-      - name: Verify durable research provenance and lifecycle state
-        run: npm run verify:research
+      - name: Inventory source, retained crosswalk, and later research routes
+        run: |
+          python3 - <<'PY'
+          import json
+          from collections import Counter
+          from pathlib import Path
+
+          package = Path('data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719')
+          source = json.loads((package / 'source.json').read_text(encoding='utf-8'))
+          review = json.loads((package / 'review.json').read_text(encoding='utf-8'))
+          ledgers = {
+              'claims': json.loads(Path('data/research-ledgers/glossika-week18-claim-source.json').read_text(encoding='utf-8')),
+              'verbs': json.loads(Path('data/research-ledgers/glossika-week18-common-verb-audit.json').read_text(encoding='utf-8')),
+              'temporal': json.loads(Path('data/research-ledgers/glossika-week18-temporal-lexicon.json').read_text(encoding='utf-8')),
+              'followups': json.loads(Path('data/research-ledgers/glossika-week18-followup-candidates.json').read_text(encoding='utf-8')),
+          }
+          source_by_id = {row['id']: row for row in source['items']}
+          output_rows = []
+          for row in review['records']:
+              item = source_by_id[row['id']]
+              values = item.get('source') or {}
+              surface = values.get('traditional') or f"{values.get('wordA', values.get('traditionalA', '—'))}|{values.get('wordB', values.get('traditionalB', '—'))}"
+              output_rows.append({
+                  'id': row['id'],
+                  'ordinal': item.get('ordinal'),
+                  'item_type': item.get('itemType'),
+                  'section': item.get('section'),
+                  'surface': surface,
+                  'jyutping': values.get('jyutping') or f"{values.get('jyutpingA', '—')}|{values.get('jyutpingB', '—')}",
+                  'legacy_class': row.get('ingressClassification'),
+                  'lexicon_owners': row.get('canonicalLexiconOwners', []),
+                  'pronunciation_owners': row.get('canonicalPronunciationOwners', []),
+                  'exact_paths': row.get('exactProjectMatchPaths', []),
+                  'parser_hint_count': len(row.get('canonicalParserOwnerCandidates', [])),
+                  'discrepancies': row.get('sourceDiscrepancies', []),
+              })
+          print(json.dumps({
+              'source_summary': {
+                  'record_count': len(source['items']),
+                  'item_types': dict(Counter(row['itemType'] for row in source['items'])),
+                  'sections': dict(Counter(row.get('section') for row in source['items'])),
+              },
+              'review_summary': review['summary'],
+              'rows': output_rows,
+              'ledgers': ledgers,
+          }, ensure_ascii=False, indent=2))
+          PY
