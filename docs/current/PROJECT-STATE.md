@@ -132,7 +132,7 @@ Canonical documentation-verifier values:
 | Per-construction assertions | 1,518 |
 | Construction test files | 133 |
 
-Stable verification is `npm run verify`; full verification is `npm run verify:all`. Passing tests and implementation reachability have zero independent linguistic evidence weight.
+Stable task-scoped core verification is `npm run verify`. Runtime verification is `npm run verify:runtime`. The explicit full diagnostic sweep is `npm run verify:all`; it includes core, research, runtime, generated-bundle, promotion, and release checks and is not a routine requirement for unrelated work. Passing tests and implementation reachability have zero independent linguistic evidence weight.
 
 ## Current work order
 
