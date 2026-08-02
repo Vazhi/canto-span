@@ -56,6 +56,7 @@ Current consequences include:
 - `AB53 ResourceInitialJungLaiFunctionClause` is canonical for the legacy runtime note `ResourceUseLaiFunctionRelation`;
 - `AA56 JauMarkedIndefiniteNPPredication` is canonical for the legacy runtime note `ExistentialPresentationalClause`; it is positive-only at the identity/specification layer, while the current locative-coda and negative runtime behavior remains unchanged pending a separate implementation;
 - candidate UUID `4e176fe2-a147-47c7-86c8-6778a379beb2` is reserved for `JauDakMouDakAvailabilityPredicate`; it has no short code or runtime note and must remain noncanonical until a later source-first implementation package creates the required note, test, label, and matcher;
+- candidate UUIDs `a476c6c6-a0ba-4cf2-9021-13ad4c717d0f`, `caae4649-29cd-4752-8e5d-48ab7d9503a4`, and `af85d495-5906-4fde-a5ba-ca39285a3281` are reserved respectively for the overt PRQ2-008 sufficient-condition, PRQ2-013 ordered-preference, and PRQ2-014 clausal necessary-condition relations; they have no short codes or current runtime identities and require a later separately claimed source-first implementation and canonicalization package;
 - Batch 18 internalized AB18 and AB21, retained AB19 and AB20 as retired, and narrowed AB22 to `FinalMe1BiasedPolarQuestionFrame`;
 - Batch 19 retains AB25, AB26, and AB27 as retired composite parser representations and rehomes their valid component evidence under separately typed possessive nominal, fragment, and transfer or dative profiles;
 - parser representations, umbrellas, and retired records do not compete for linguistic promotion or donate evidence automatically;
@@ -89,7 +90,7 @@ Implementation specifications, human artifact requests, corpus ingestion, work c
 
 Promotion-ready remains **0**.
 
-The paired-clause relation map reviews PRQ2-008–015 and PRQ2-033–035 as eleven separate families across 151 checked-in collision rows. Three bounded typed cores route to identity/composition decisions in #430, four source-ready unimplemented relations route to #431, and three evidence-constrained families remain in #432. The committed-preference runtime, probes, and generated bundle now use canonical PRQ2-035 provenance; PRQ2-015 remains research-only through #409. Generic clause graphs remain parser infrastructure, and the provenance correction changes metadata only, not matching behavior, identity, status, or evidence.
+The paired-clause relation map reviews PRQ2-008–015 and PRQ2-033–035 as eleven separate families across 151 checked-in collision rows. The three bounded typed cores in #430 now have separate reserved candidate UUIDs for overt sufficient condition, ordered preference, and clausal necessary condition; no short code, runtime identity, fixture, or status changed. Four source-ready unimplemented relations remain routed through #431, three evidence-constrained families remain in #432, and PRQ2-015 remains research-only through #409. Generic clause graphs remain parser infrastructure with zero independent linguistic-evidence weight.
 
 Discovery ranks expose gaps; they never promote, park, assign, or authorize work.
 

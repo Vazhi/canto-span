@@ -24,7 +24,7 @@ compatibility alias, not the durable key.
 - expert-adjudicated records: **93**;
 - pending expert adjudications: **88**;
 - accepted adjudication batches: **20**;
-- reserved identity candidates: **1**;
+- reserved identity candidates: **4**;
 - allocated codes: `AA01` through `AB82`.
 
 The canonical registry is `data/construction-identities.json`. The immutable lock
@@ -47,6 +47,19 @@ matcher before invoking the allocation tool. The permanent registry therefore
 remains at 181 records and codes remain allocated only through `AB82`.
 Candidate reservation establishes identity continuity only; it does not make the
 construction current, runtime-available, status-promoted, or promotion-eligible.
+
+The bounded paired-clause identity decision additionally reserves three candidates:
+
+- `a476c6c6-a0ba-4cf2-9021-13ad4c717d0f` — `ZiJiuZauSufficientConditionRelation` for overt `只要 A，就 B`;
+- `caae4649-29cd-4752-8e5d-48ab7d9503a4` — `JyuKeiBatJyuOrderedPreferenceRelation` for overt `與其 A，不如 B`;
+- `af85d495-5906-4fde-a5ba-ca39285a3281` — `ZiJauSinNecessaryConditionRelation` for overt clausal `只有 A，先／先至／先可以 B`.
+
+These candidates have no short codes, current notes, dedicated test files, or canonical
+runtime identities. Generic `ClauseRelationGraph` structure remains parser-only and carries
+zero independent linguistic-evidence weight. A later separately claimed runtime package
+must create the required artifacts and canonicalize each exact UUID through the allocation
+tool. The permanent registry therefore remains at 181 records and allocated codes remain
+`AA01` through `AB82`.
 
 ## UUID rules
 

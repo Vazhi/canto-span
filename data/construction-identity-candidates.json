@@ -1,6 +1,6 @@
 {
   "schema": "canto-span-construction-identity-candidates-v1",
-  "record_count": 1,
+  "record_count": 4,
   "records": [
     {
       "construction_uuid": "4e176fe2-a147-47c7-86c8-6778a379beb2",
@@ -10,6 +10,42 @@
       "profile_description": "A preverbal availability or opportunity relation uses affirmative 有得 or negative 冇得 before an overt predicate; the suppletive-polar surface 有冇得 asks which availability alternative holds. The profile excludes existential or possessive 有／冇 plus nominal complements, ordinary lexical V-唔-V, postverbal potential 得／唔到, arbitrary predicate omission, and fused or semi-lexical expressions whose meaning is not transparently availability.",
       "state": "candidate",
       "created_at": "2026-08-01",
+      "canonicalized_at": null,
+      "abandoned_at": null,
+      "construction_code": null
+    },
+    {
+      "construction_uuid": "a476c6c6-a0ba-4cf2-9021-13ad4c717d0f",
+      "canonical_name_at_creation": "ZiJiuZauSufficientConditionRelation",
+      "claim_layer": "language_construction",
+      "source_path": "grammar/research_pending/ZiJiuZauSufficientConditionRelation.md",
+      "profile_description": "An overt comma-delimited paired relation uses clause-initial 只要 to mark a sufficient condition and overt 就 in the following clause to mark its consequence. The profile requires licensed content in both members, preserves condition and consequence roles across the full pair, and excludes ordinary 如果 conditionals, 只有 necessary conditions, 除非 exception conditionals, 就算 concessives, lexical or focus 只 + 要, omitted-就 extensions, fragments, and discourse-spanning completions.",
+      "state": "candidate",
+      "created_at": "2026-08-02",
+      "canonicalized_at": null,
+      "abandoned_at": null,
+      "construction_code": null
+    },
+    {
+      "construction_uuid": "caae4649-29cd-4752-8e5d-48ab7d9503a4",
+      "canonical_name_at_creation": "JyuKeiBatJyuOrderedPreferenceRelation",
+      "claim_layer": "language_construction",
+      "source_path": "grammar/research_pending/JyuKeiBatJyuOrderedPreferenceRelation.md",
+      "profile_description": "An overt comma-delimited paired relation uses 與其 to introduce a disfavored option and 不如 to introduce a preferred option, preserving the ordering between two licensed members. The profile excludes lone suggestion 不如 B, ordinary comparison A 不如 B, 寧願 preference, empty members, optional 倒, marker omission, and broader constituent or discourse profiles pending separate evidence and implementation.",
+      "state": "candidate",
+      "created_at": "2026-08-02",
+      "canonicalized_at": null,
+      "abandoned_at": null,
+      "construction_code": null
+    },
+    {
+      "construction_uuid": "af85d495-5906-4fde-a5ba-ca39285a3281",
+      "canonical_name_at_creation": "ZiJauSinNecessaryConditionRelation",
+      "claim_layer": "language_construction",
+      "source_path": "grammar/research_pending/ZiJauSinNecessaryConditionRelation.md",
+      "profile_description": "An overt comma-delimited paired relation uses 只有 to mark a required clausal condition and 先, 先至, or 先可以 in the following clause to mark the consequence available only under that condition. The profile excludes participant or domain restriction without a clausal pair, bare condition-plus-先至, short 至, temporal 先至, existential or quantity 只有, 只要 sufficient conditions, 除非 exception conditionals, and empty members.",
+      "state": "candidate",
+      "created_at": "2026-08-02",
       "canonicalized_at": null,
       "abandoned_at": null,
       "construction_code": null
