@@ -1,0 +1,36 @@
+name: Extract Week 14 phonics source fields
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/extract-week14-phonics.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/week14-ingress-review
+          fetch-depth: 0
+      - name: Extract temporary phonics source view
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          package = Path('data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621')
+          source = json.loads((package / 'source.json').read_text(encoding='utf-8'))
+          items = [item for item in source['items'] if item['itemType'] == 'phonics_pair']
+          (package / 'phonics-source-view.tmp.json').write_text(
+              json.dumps(items, ensure_ascii=False, indent=2) + '\n', encoding='utf-8'
+          )
+          PY
+          git rm .github/workflows/extract-week14-phonics.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/phonics-source-view.tmp.json
+          git commit -m "Extract temporary Week 14 phonics source view"
+          git push origin HEAD:agent/week14-ingress-review
