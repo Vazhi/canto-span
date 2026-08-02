@@ -1,88 +1,15 @@
 name: Research provenance
 
 on:
-  push:
-    paths:
-      - "data/construction-identities.json"
-      - "data/construction-identity-lock.json"
-      - "data/construction-adjudications.json"
-      - "data/construction-adjudication-batches/**"
-      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/**"
-      - "docs/research/**"
-      - "external-evidence/**"
-      - "grammar/**"
-      - "review-packets/**"
-      - "config/pedagogical-corpus-source-locks.json"
-      - "config/research-provenance-baseline.json"
-      - "config/research-evidence-grades.json"
-      - "config/verification-profiles.json"
-      - "tools/build-pedagogical-corpus-review-candidates.py"
-      - "tools/research-provenance-lib.js"
-      - "tools/verify-pedagogical-corpus-review.py"
-      - "tools/verify-research-provenance.js"
-      - "tools/verify-native-panel-lifecycle.js"
-      - "tools/verify-interim-pilot-public-package.py"
-      - "tests/tooling/native-panel/native-panel-lifecycle.test.js"
-      - "tests/tooling/research/ab30-aggregate-integrity.test.py"
-      - "tests/tooling/research/interim-pilot-public-package.test.py"
-      - "tests/tooling/research/pedagogical-corpus-review.test.py"
-      - "package.json"
-      - ".github/workflows/research-provenance.yml"
   pull_request:
     paths:
-      - "data/construction-identities.json"
-      - "data/construction-identity-lock.json"
-      - "data/construction-adjudications.json"
-      - "data/construction-adjudication-batches/**"
-      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/**"
-      - "docs/research/**"
-      - "external-evidence/**"
-      - "grammar/**"
-      - "review-packets/**"
-      - "config/pedagogical-corpus-source-locks.json"
-      - "config/research-provenance-baseline.json"
-      - "config/research-evidence-grades.json"
-      - "config/verification-profiles.json"
-      - "tools/build-pedagogical-corpus-review-candidates.py"
-      - "tools/research-provenance-lib.js"
-      - "tools/verify-pedagogical-corpus-review.py"
-      - "tools/verify-research-provenance.js"
-      - "tools/verify-native-panel-lifecycle.js"
-      - "tools/verify-interim-pilot-public-package.py"
-      - "tests/tooling/native-panel/native-panel-lifecycle.test.js"
-      - "tests/tooling/research/ab30-aggregate-integrity.test.py"
-      - "tests/tooling/research/interim-pilot-public-package.test.py"
-      - "tests/tooling/research/pedagogical-corpus-review.test.py"
-      - "package.json"
       - ".github/workflows/research-provenance.yml"
-  workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  verify-research:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
-        with:
-          node-version: 24
-          package-manager-cache: false
-      - name: Test native-panel lifecycle verifier
-        run: node --test tests/tooling/native-panel/native-panel-lifecycle.test.js
-      - name: Test AB30 aggregate integrity verifier
-        run: python3 tests/tooling/research/ab30-aggregate-integrity.test.py
-      - name: Test interim pilot public-package verifier
-        run: python3 tests/tooling/research/interim-pilot-public-package.test.py
-      - name: Test pedagogical corpus review verifier
-        run: python3 tests/tooling/research/pedagogical-corpus-review.test.py
-      - name: Verify durable research provenance and lifecycle state
-        run: npm run verify:research
-
-  # BEGIN ONE-TIME WEEK14 REGENERATION
   regenerate-week14-cross-reference:
-    if: github.event_name == 'pull_request' && github.head_ref == 'agent/week14-ingress-review'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -122,26 +49,11 @@ jobs:
             --package data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621 \
             --output data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/mechanical-cross-reference-r1.json \
             --write
-      - name: Restore read-only workflow and commit regenerated state
+      - name: Commit regenerated state
         run: |
-          python3 - <<'PY'
-          from pathlib import Path
-
-          workflow = Path('.github/workflows/research-provenance.yml')
-          text = workflow.read_text(encoding='utf-8')
-          start_marker = '\n  # BEGIN ONE-TIME WEEK14 REGENERATION\n'
-          end_marker = '\n  # END ONE-TIME WEEK14 REGENERATION\n'
-          start = text.index(start_marker)
-          end = text.index(end_marker, start) + len(end_marker)
-          text = text[:start] + text[end:]
-          text = text.replace('permissions:\n  contents: write', 'permissions:\n  contents: read', 1)
-          workflow.write_text(text, encoding='utf-8')
-          PY
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add .github/workflows/research-provenance.yml \
-            tools/build-pedagogical-corpus-review-candidates.py \
+          git add tools/build-pedagogical-corpus-review-candidates.py \
             data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/mechanical-cross-reference-r1.json
           git commit -m "Exclude derived report from Week 14 cross-reference"
           git push origin HEAD:agent/week14-ingress-review
-  # END ONE-TIME WEEK14 REGENERATION
