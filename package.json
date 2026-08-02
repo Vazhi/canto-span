@@ -23,6 +23,7 @@
     "changes:apply": "node tools/coordination/change-set.js apply --write",
     "verify": "node tools/verify-current-state.js --profile core",
     "verify:research": "node tools/verify-current-state.js --profile research",
+    "verify:runtime": "node tools/verify-current-state.js --profile runtime",
     "verify:release": "node tools/verify-current-state.js --profile release",
     "verify:all": "node tools/verify-current-state.js --profile all",
     "build:legacy-forms": "node tools/build-native-review-form-script.js",
