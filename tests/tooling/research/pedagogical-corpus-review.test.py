@@ -73,7 +73,7 @@ class PedagogicalCorpusReviewTest(unittest.TestCase):
         record["git_blob_sha"] = VERIFIER.git_blob_sha(data)
         write_json(integrity_path, integrity)
 
-        with self.assertRaisesRegex(AssertionError, "package integrity does not match the external source lock"):
+        with self.assertRaisesRegex(AssertionError, "external source lock .* drift"):
             self.verify()
 
     def test_unreviewed_record_fails(self) -> None:
